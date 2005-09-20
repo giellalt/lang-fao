@@ -1,0 +1,370 @@
+Multichar_Symbols
++N +V +A +P +Adv
++Nom +Acc +Gen +Dat
++Msc +Fem +Neu
++Sg +Pl
++Def +Indef +Cmp +Sup 
++Prs +Prt
++1Sg +2Sg +3Sg
++Inf +PrfPrc +PrsPrc +Sup +Imp
+
+!Weak u
+a2 a3 i2 u2 ó2
+j2 
+%^U %^W
+
+
+! ============ !
+! Root lexicon !
+! ============ !
+
+
+LEXICON Root
+
+Nouns ;
+Adjectives ;
+Verbs ;
+
+
+! =============== !
+! Noun morphology !
+! =============== !
+
+
+! ----------------- !
+! Basic noun lexica !
+! ----------------- !
+
+LEXICON m1
++N+Msc+Sg+Nom:%>ur DF-NA-SGm ;
+ m ;
+
+LEXICON m2a
++N+Msc+Sg+Nom: DF-NA-SGm ;
+ m ;
+
+LEXICON m2b
++N+Msc+Sg+Nom: DF-NA-SGm ;
+ m ; 
+! must take care of GSg -ar
+
+LEXICON m2c
+ m2a ; !Check.
+
+LEXICON m3
++N+Msc+Sg+Nom:%>ur DF-NA-SGm ;
++N+Msc+Sg+Acc:   DF-NA-SGm ;
++N+Msc+Sg+Dat:%>i  DF-D-SGm ;
++N+Msc+Sg+Gen:%>s  DF-G-SGm ;
++N+Msc+Pl+Nom:%>ir DF-N-PLm ;
++N+Msc+Pl+Acc:%>ir DF-A-PLm ;
++N+Msc+Pl: DF-DG-PL ;
+
+LEXICON m4
++N+Msc+Sg+Nom:%>ur DF-NA-SGm ;
++N+Msc+Sg+Acc:   DF-NA-SGm ;
++N+Msc+Sg+Dat:%>i  DF-D-SGm ;
++N+Msc+Sg+Gen:%>ar  DF-G-SGm ;
++N+Msc+Pl+Nom:%>ir DF-N-PLm ;
++N+Msc+Pl+Acc:%>ir DF-A-PLm ;
++N+Msc+Pl: DF-DG-PL ;
+
+LEXICON m5
++N+Msc+Sg: weaksg ;
++N+Msc+Pl: weakpl ;
+
+!LEXICON m6
+!+N+Msc+Sg: weaksg ;
+ 
+LEXICON weaksg
++Nom:%>i DF-NA-SGm ;
++Acc:%>a   DF-NA-SGm ;
++Dat:%>a  DF-D-SGm ;
++Gen:%>a  DF-G-SGm ;
+
+LEXICON weakpl
++Nom:%>ar DF-N-PLm ;
++Acc:%>ar DF-A-PLm ;
+ DF-DG-PL ;
+
+LEXICON m
++N+Msc+Sg+Acc:   DF-NA-SGm ;
++N+Msc+Sg+Dat:%>i  DF-D-SGm ;
++N+Msc+Sg+Gen:%>s  DF-G-SGm ;
++N+Msc+Pl+Nom:%>ar DF-N-PLm ;
++N+Msc+Pl+Acc:%>ar DF-A-PLm ;
++N+Msc+Pl: DF-DG-PL ;
+
+!n
+
+LEXICON n1
++N+Neu+Sg+Nom: DF-NA-SGn ;
++N+Neu+Sg+Acc: DF-NA-SGn ;
++N+Neu+Sg+Dat:%>i DF-D-SGn ;
++N+Neu+Sg+Gen:%>s DF-G-SGn ;
++N+Neu+Pl+Nom: DF-NA-PLn ;
++N+Neu+Pl+Acc: DF-NA-PLn ;
++N+Neu+Pl: DF-DG-PL ;
+
+LEXICON n2
++N+Neu+Sg+Nom: DF-NA-SGn ;
++N+Neu+Sg+Acc: DF-NA-SGn ;
++N+Neu+Sg+Dat: DF-D-SGn ;
++N+Neu+Sg+Gen:%>s DF-G-SGn ;
++N+Neu+Pl+Nom: DF-NA-PLn ;
++N+Neu+Pl+Acc: DF-NA-PLn ;
++N+Neu+Pl: DF-DG-PL ;
+
+LEXICON n3
++N+Neu+Sg+Nom: DF-NA-SGn ;
++N+Neu+Sg+Acc: DF-NA-SGn ;
++N+Neu+Sg+Dat:%>i DF-D-SGn ;
++N+Neu+Sg+Gen:%>s DF-G-SGn ;
++N+Neu+Pl+Nom: DF-NA-PLn ;
++N+Neu+Pl+Acc: DF-NA-PLn ;
++N+Neu+Pl: DF-DG-PL ;
+
+LEXICON f1
++N+Fem+Sg+Nom:%>%^U DF-N-SGf ;
++N+Fem+Sg+Acc:%>%^U DF-A-SGf ;
++N+Fem+Sg+Dat:%>%^U DF-D-SGf ;
++N+Fem+Sg+Gen:%>ar DF-G-SGf ;
++N+Fem+Pl+Nom:%>ar DF-NA-PLf ;
++N+Fem+Pl+Acc:%>ar DF-NA-PLf ;
++N+Fem+Pl: DF-DG-PL ;
+
+LEXICON f2
++N+Fem+Sg+Nom: DF-N-SGf ;
++N+Fem+Sg+Acc: DF-A-SGf ;
++N+Fem+Sg+Dat: DF-D-SGf ;
++N+Fem+Sg+Gen:%>ar DF-G-SGf ;
++N+Fem+Pl+Nom:%>ar DF-NA-PLf ;
++N+Fem+Pl+Acc:%>ar DF-NA-PLf ;
++N+Fem+Pl: DF-DG-PL ;
+
+LEXICON f5
++N+Fem+Sg+Nom:%>%^Ua DF-N-SGf ;
++N+Fem+Sg+Acc:%>%^Uu DF-A-SGf ;
++N+Fem+Sg+Dat:%>%^Uu DF-D-SGf ;
++N+Fem+Sg+Gen:%>%^Uu DF-G-SGf ;
++N+Fem+Pl+Nom:%>%^Uar DF-NA-PLf ;
++N+Fem+Pl+Acc:%>%^Uar DF-NA-PLf ;
++N+Fem+Pl: DF-DG-PL ;
++N+Fem+Pl:%^Wn DF-G-PL ;
+
+! Common cases
+
+LEXICON DF-DG-PL
+ DF-D-PL ;
+ DF-G-PL ;
+
+LEXICON DF-D-PL
++Dat+Indef:%>%^Uum # ;
++Dat+Def:%>%^Uunum # ;
+
+LEXICON DF-G-PL
++Gen+Indef:%>a # ;
++Gen+Def:%>anna # ;
+
+
+
+! =================== !
+! Definite inflection !
+! =================== !
+
+! Masculine forms
+! ---------------
+
+LEXICON DF-NA-SGm
++Indef: # ;
++Def:%>in # ;
+
+LEXICON DF-D-SGm
++Indef: # ;
++Def:%>num # ;
+
+LEXICON DF-G-SGm
++Indef: # ;
++Def:%>ins # ;
+
+LEXICON DF-N-PLm
++Indef: # ;
++Def:%>nir # ;
+
+LEXICON DF-A-PLm
++Indef: # ;
++Def:%>nar # ;
+
+! Feminine forms
+! ---------------
+
+LEXICON DF-N-SGf
++Indef: # ;
++Def:%>in # ;
+
+LEXICON DF-A-SGf
++Indef: # ;
++Def:%>ina # ;
+
+LEXICON DF-D-SGf
++Indef: # ;
++Def:%>ini # ;
+
+LEXICON DF-G-SGf
++Indef: # ;
++Def:%>innar # ;
+
+LEXICON DF-NA-PLf
++Indef: # ;
++Def:%>nar # ;
+
+
+! Neuter forms
+! ---------------
+
+LEXICON DF-NA-SGn
++Indef: # ;
++Def:%>ið # ;
+
+LEXICON DF-D-SGn
++Indef: # ;
++Def:%>num # ;
+
+LEXICON DF-G-SGn
++Indef: # ;
++Def:%>ins # ;
+
+LEXICON DF-NA-PLn
++Indef: # ;
++Def:%>ini # ;
+
+
+
+! ==================== !
+! Adjective morphology !
+! ==================== !
+
+LEXICON a1
+ 
++A+Msc: adjdef-m ;
++A+Fem: adjdef-f ;
++A+Neu: adjdef-n ;
+
++A+Msc+Sg+Nom+Indef:%>ur # ;
++A+Msc+Sg+Acc+Indef:%>an # ;
++A+Msc+Sg+Dat+Indef:%>%^Uum # ; !spøkum
++A+Msc+Sg+Dat+Indef:%>um # ;     !spakum
++A+Msc+Sg+Gen+Indef:%>s  # ; 
++A+Msc+Pl+Nom+Indef:%>ir  # ; 
++A+Msc+Pl+Acc+Indef:%>ar  # ; 
++A+Msc+Pl+Dat+Indef:%>%^Uum  # ; 
++A+Msc+Pl+Dat+Indef:%>um  # ; 
++A+Msc+Pl+Gen+Indef:%>a  # ; 
++A+Msc+Pl+Gen+Indef:%>ra  # ; 
+
++A+Fem+Sg+Nom+Indef:%>%^U  # ; 
++A+Fem+Sg+Acc+Indef:%>a  # ;  # ; 
++A+Fem+Sg+Dat+Indef:%>ari  # ; 
++A+Fem+Sg+Gen+Indef:%>a  # ; 
++A+Fem+Sg+Gen+Indef:%>ra  # ; 
++A+Fem+Pl+Nom+Indef:%>ar  # ; 
++A+Fem+Pl+Acc+Indef:%>ar  # ; 
++A+Fem+Pl+Dat+Indef:%>%^Uum  # ; 
++A+Fem+Pl+Dat+Indef:%>um  # ; 
++A+Fem+Pl+Gen+Indef:%>a  # ; 
++A+Fem+Pl+Gen+Indef:%>ra  # ; 
+
++A+Neu+Sg+Nom+Indef:%>t  # ; 
++A+Neu+Sg+Acc+Indef:%>t  # ; 
++A+Neu+Sg+Dat+Indef:%>%^Uum  # ; 
++A+Neu+Sg+Dat+Indef:%>um  # ; 
++A+Neu+Sg+Gen+Indef:%>s  # ; 
++A+Neu+Pl+Nom+Indef:%>%^U  # ; 
++A+Neu+Pl+Acc+Indef:%>%^U  # ; 
++A+Neu+Pl+Dat+Indef:%>%^Uum  # ; 
++A+Neu+Pl+Dat+Indef:%>um  # ; 
++A+Neu+Pl+Gen+Indef:%>a  # ; 
++A+Neu+Pl+Gen+Indef:%>ra  # ; 
+
+LEXICON a2
+# ;
+
+LEXICON a3
+# ;
+
+LEXICON a4a
+# ;
+
+LEXICON a4b
+# ;
+
+LEXICON adjdef-m
++Sg+Nom+Def:%>i # ;
++Sg+Acc+Def:%>a # ;
++Sg+Dat+Def:%>a # ;
++Sg+Gen+Def:%>a # ;
+ adjdef-pl ;
+
+LEXICON adjdef-f
++Sg+Nom+Def:%>a # ;
++Sg+Acc+Def:%>u # ;
++Sg+Dat+Def:%>u # ;
++Sg+Gen+Def:%>u # ;
+ adjdef-pl ;
+
+LEXICON adjdef-n
++Sg+Nom+Def:%>a # ;
++Sg+Acc+Def:%>a # ;
++Sg+Dat+Def:%>a # ;
++Sg+Gen+Def:%>a # ;
+ adjdef-pl ;
+
+LEXICON adjdef-pl
++Pl+Nom+Def:%>u # ;
++Pl+Acc+Def:%>u # ;
++Pl+Dat+Def:%>u # ;
++Pl+Gen+Def:%>u # ;
+
+
+
+! =============== !
+! Verb morphology !
+! =============== !
+
+
+LEXICON v1a
++V+Inf: # ;
++V+Imp+Sg: # ;
++V+Imp+Pl:%>ið # ;
++V+PrsPrc:%>ndi # ;
++V+Sup:%>ð # ;
+
++V+Prs+1Sg:%>i # ;
++V+Prs+2Sg:%>r # ;
++V+Prs+3Sg:%>r # ;
++V+Prs+Pl: # ;
+
++V+Prt+1Sg:%>ði # ;
++V+Prt+2Sg:%>ði # ;
++V+Prt+3Sg:%>ði # ;
++V+Prt+Pl:ðu # ;
+
++V+Prt+1Sg:%>ti # ;
++V+Prt+2Sg:%>ti # ;
++V+Prt+3Sg:%>ti # ;
++V+Prt+Pl:%>tu # ;
+
+LEXICON v1b
+# ;
+
+LEXICON v2a
+# ;
+
+LEXICON v2b
+# ;
+
+LEXICON v3
+# ;
+
+LEXICON v4
+# ;

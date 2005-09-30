@@ -1,3 +1,7 @@
+! =================================== !
+! The Faroese morphophonological file !
+! =================================== !
+
 Alphabet
  a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å
  á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý þ ñ ð ß ç
@@ -5,88 +9,106 @@ Alphabet
  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å
  Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð
 
- a2:a a3:a ó2:ó u2:u i2:i
+! a2:a ó2:ó u2:u i2:i
 ! j2:j j2:0
  
- %^U:0 %^W:0
+ %^UUML:0 %^IUML:0 %^W:0 %^EPH:0 %^JI:0
  %>:0 ;
 
 Sets
 
- Vow = a e i o u y æ ø å a2 a3 ó2 i2 u2 
+ Vow = a e i o u y æ ø å 
        á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;
- Cns = b c d f g h j j2 k l m n p q r s t v w x z ð þ ;
- Dummy = %> ;
+ Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;
+ Nas = m n ;
+ NonNas = b c d f g h j k l p q r s t v w x z ð þ ;
+ Dummy = %>  %^UUML %^IUML %^W %^EPH %^JI ;
+
 
 Rules
+
+"Final j as i"
+ j:0 <=> _ %^JI: ;
+!€beiggj%^JI#
+!€beiggi00
 
 "Deleting the gv Verschärferung 1"
  g:0 <=> Vow _ v: %>: s ;
 
 "Deleting the gv Verschärferung 2"
  v:0 <=> Vow g: _ %>: s ;
-!!búgv%>s
-!!bú000s
+!€búgv%>s
+!€bú000s
 
 "Deleting j in j-stems"
   j:0 <=> Vow g g _ %>: [ Cns | i ] ;
 !          Vow [ Cns - j ]  _ %>: [ u r | Cns | i ] ;
-!!heyggj%>i
-!!heygg00i
-
-
-!"Deleting Vowel in Front of -um"
-! i:0 <=> _ %>: [ u m | s %>: i n s | a ] ;
-!!dømi%>um
-!!døm00um
+!€heyggj%>i
+!€heygg00i
 
 "Vowel-deletion in Vowel-initial suffix"
- i:0 <=> Vow %>: _ [ n | ð | # ] ;
-	 %>: Vow _ [ n | ð | # ] ;
-         _ %>: [ u m | s %>: i n s | a ] ;
-!!dømi%>ið
-!!dømi00ð
-!!grann%>a
-
+ Vx:0 <=> _ %>: [ i n | i ð | u m | s %>: i n s | a ] ;
+      where Vx in ( i a ) ;
+!€dømi%>um
+!€døm00um
+!€dømi%>ið
+!€dømi00ð
+!€grann%>a%>in
+!€grann0a00n
+!€ris%>i%>in
+!€ris0i00n
 
 "Epenthetic deletion"
- Vx:0 <=> _ [ r | l | n ]  %>: Vow ;
-      where Vx in (a2 i2 u2);
-!!aku2r%>a
-!!ak0r0a
-!!lyki2l%>a
-!!lyk0l0a
-!!afta2n%>a
-!!aft0n0a
+ Vx:0 <=> _ [ r | l | n ]  %^EPH: ; !%>: Vow ;
+      where Vx in (a i u) ;
+!€aku2r%^EPH
+!€ak0r0
+!€lykil%^EPH
+!€lyk0l0
+!€aftan%^EPH
+!€aft0n0
 
-"U-umlaut"
- a3:ø <=> _ Cns* %>:  %^U:  ;
-!!da3g%>%^Uum
-!!døg00um
-!!sa3g%>%^Ua
-!!søg00a
+"U-umlaut in Front of Nasal"
+ a:o <=> _ Nas (Cns:*)  %^UUML:  ;
+! a:o <=> _ Nas (Cns:*)  %^UUML:  ;
+!€tank%^UUML
+!€tonk0
+
+"General U-umlaut"
+ a:ø <=> _ NonNas:*  %^UUML: %>:  ;
+!€dag%>%^UUMLum
+!€døg00um
+
+!€sag%>%^UUMLa
+!€søg00a
 
 "I-umlaut"
- a3:e <=> _ Cns* %>: i ( %>: | #: ) ;
-!!da3g%>i
-!!deg%>i
+ Vx:Vy <=> _ Cns* %^IUML: ;
+     where Vx in ( a ó )
+	   Vy in ( e ø )
+	   matched ;
+!€dag%^IUML
+!€deg0
 
 "Deleting Double Consonant in Front of Consonant"
  Cx:0 <=> Cx _ %>: ( j: ) Cns  ;
-          Cx _ Vow:0 Cns %>: Vow ;
+!          Cx _ Vow:0 Cns %>: Vow ;
+	  Cx _ Vow:0 Cns Dummy:* Vow ;
       where Cx in ( b d f k l m n p r s t v ) ;
       matched ;
-!! hjall%>s
-!! hjal00s
-!!summa3r%>i
-!!sum00r0i
-!!hjall%>ar
-!!hjall0ar
+!€ hjall%>s
+!€ hjal00s
+!€summar%>i
+!€sum00r0i
+!€hjall%>ar
+!€hjall0ar
+!€himmal%^EPH%^UUML%>um
+!€him00l000um
 
 "Realising j in front of vowels"
  j2:j <=> _ %>: [ a | u ] ;
-!!hylj2%>ar
-!!hylj0ar
+!€hylj2%>ar
+!€hylj0ar
 
 "Vowel deletion in front of -na"
  a:0 <=> _ %^W n ;

@@ -1,3 +1,8 @@
+! ============================ !
+! Main Faroese morphology file !
+! ============================ !
+
+
 Multichar_Symbols
 +N +V +A +P +Adv
 +Nom +Acc +Gen +Dat
@@ -9,10 +14,10 @@ Multichar_Symbols
 +Inf +PrfPrc +PrsPrc +Sup +Imp
 
 !Weak u
-a2 a3 i2 u2 ó2
-j2 
-%^U %^W
-
+!a2 a3 i2 u2 ó2
+!j2 
+%^UUML %^IUML %^W %^JI %^EPH
+%>
 
 ! ============ !
 ! Root lexicon !
@@ -39,55 +44,192 @@ Verbs ;
 
 ! Weak nouns
 
-LEXICON k1 ! fg m5
-+N+Msc+Sg: weaksg ;
-+N+Msc+Pl: weakpl ;
+LEXICON k1 ! risi fg m5
++N+Msc: W-M-SGNOM ;
++N+Msc: W-M-SGACC ;
++N+Msc: W-M-SGDAT ;
++N+Msc: W-M-SGGEN ;
++N+Msc: W-M-PLNOM ;
++N+Msc: W-M-PLACC ;
++N+Msc: W-M-PLDAT ;
++N+Msc: W-M-PLGEN ;
 
-LEXICON k2
- k1 ;
-LEXICON k3
- k1 ;
-LEXICON k4
- k1 ;
-LEXICON k5
- k1 ;
+
+LEXICON k2 ! beiggi
++N+Msc:%^JI W-M-SGNOM ;
++N+Msc: W-M-SGACC ;
++N+Msc: W-M-SGDAT ;
++N+Msc: W-M-SGGEN ;
++N+Msc: W-M-PLNOM ;
++N+Msc: W-M-PLACC ;
++N+Msc: W-M-PLDAT ;
++N+Msc: W-M-PLGEN ;
+
+LEXICON k3 ! ! hagi
++N+Msc: W-M-SGNOM ;
++N+Msc: W-M-SGACC ;
++N+Msc: W-M-SGDAT ;
++N+Msc: W-M-SGGEN ;
++N+Msc: W-M-PLNOM ;
++N+Msc: W-M-PLACC ;
++N+Msc:%^UUML W-M-PLDAT ;
++N+Msc: W-M-PLGEN ;
+
+LEXICON k4 ! tanki
+ k3 ;	! Same u-umlaut, but nasal cns
+
+LEXICON k5 ! bóndi
++N+Msc: W-M-SGNOM ;
++N+Msc: W-M-SGACC ;
++N+Msc: W-M-SGDAT ;
++N+Msc: W-M-SGGEN ;
++N+Msc:%^IUML W-M-PLNOM-UR ;
++N+Msc:%^IUML W-M-PLACC-UR ;
++N+Msc: W-M-PLDAT ;
++N+Msc: W-M-PLGEN ;
 
 ! Strong nouns
 
-LEXICON k7
- # ;
-LEXICON k8
- # ;
+LEXICON k6 ! úlvur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+
+LEXICON k7 ! sandur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc:%^UUML S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k8 ! garður
+ k7 ; ! Different u-umlaut
+ 
 LEXICON k9
- # ;
+ k6 ; ! Double consonant deletion in front of s
+ 
 LEXICON k10
- # ;
-LEXICON k11
- # ;
-LEXICON k12
- # ;
-LEXICON k13
- # ;
-LEXICON k14
- # ;
-LEXICON k15
- # ;
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ; ! Double dative.
++N+Msc:%^UUML S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k11 ! ísur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN-NULL ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+
+! ir-stems
+
+LEXICON k12 ! vinur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN-AR ;
++N+Msc: S-M-PLNOM-IR ;
++N+Msc: S-M-PLACC-IR ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k13 ! vegur
+ k12 ; ! As k12, plus a zero dative
++N+Msc: S-M-SGDAT-NULL ;
+
+LEXICON k14 ! staður
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGDAT-NULL ;
++N+Msc: S-M-SGGEN-AR ;
++N+Msc: S-M-PLNOM-IR ;
++N+Msc: S-M-PLACC-IR ;
++N+Msc:%^UUML S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k15 ! gestur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ; !s-gen
++N+Msc: S-M-PLNOM-IR ;
++N+Msc: S-M-PLACC-IR ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
 LEXICON k16
- # ;
+ k15 ; ! Double consonant
+
 LEXICON k17
- # ;
-LEXICON k18
- # ;
-LEXICON k19
- # ;
-LEXICON k20
- # ;
-LEXICON k21
- # ;
-LEXICON k22
- # ;
-LEXICON k23
- # ;
+ k15 ; ! Standard, but also u-umlaut
++N+Msc:%^UUML S-M-PLDAT ;
+
+LEXICON k18 ! dansur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN-NULL ; ! s-final
++N+Msc: S-M-PLNOM-IR ;
++N+Msc: S-M-PLACC-IR ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+ 
+LEXICON k19 ! meldur
++N+Msc: S-M-SGNOM-NULL ;
++N+Msc: S-M-SGACC ;
++N+Msc:%^EPH S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc:%^EPH S-M-PLNOM ;
++N+Msc:%^EPH S-M-PLACC ;
++N+Msc:%^EPH S-M-PLDAT ;
++N+Msc:%^EPH S-M-PLGEN ;
+
+
+LEXICON k20 ! akur
++N+Msc: S-M-SGNOM-NULL ;
++N+Msc: S-M-SGACC ;
++N+Msc:%^EPH S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc:%^EPH S-M-PLNOM ;
++N+Msc:%^EPH S-M-PLACC ;
++N+Msc:%^EPH%^UUML S-M-PLDAT ;
++N+Msc:%^EPH S-M-PLGEN ;
+
+LEXICON k21 ! stuðul
+ k19 ; ! Can't see the diffrence
+
+LEXICON k22 ! himmal
+ k19 ; ! Can't see the diffrence
+
+LEXICON k23 ! róður
++N+Msc: S-M-SGNOM-NULL ;
++N+Msc: S-M-SGACC ;
++N+Msc:%^EPH S-M-SGDAT ;
++N+Msc:%^EPH S-M-SGGEN-AR ;
++N+Msc:%^EPH S-M-PLNOM ;
++N+Msc:%^EPH S-M-PLACC ;
++N+Msc:%^EPH S-M-PLDAT ;
++N+Msc:%^EPH S-M-PLGEN ;
+
 LEXICON k24
  # ;
 LEXICON k25
@@ -149,135 +291,109 @@ LEXICON k52
 LEXICON k53
  # ;
 
-LEXICON k6
-+N+Msc+Sg+Nom:%>ur DF-NA-SGm ;
- m ;
 
-LEXICON m1
- k6 ; !probably
 
-LEXICON m2a
-+N+Msc+Sg+Nom: DF-NA-SGm ;
- m ;
 
-LEXICON m2b
-+N+Msc+Sg+Nom: DF-NA-SGm ;
- m ; 
-! must take care of GSg -ar
+! =============== !
+! Case inflection !
+! =============== !
 
-LEXICON m2c
- m2a ; !Check.
+! Masculine forms
+! ---------------
 
-LEXICON m3
-+N+Msc+Sg+Nom:%>ur DF-NA-SGm ;
-+N+Msc+Sg+Acc:   DF-NA-SGm ;
-+N+Msc+Sg+Dat:%>i  DF-D-SGm ;
-+N+Msc+Sg+Gen:%>s  DF-G-SGm ;
-+N+Msc+Pl+Nom:%>ir DF-N-PLm ;
-+N+Msc+Pl+Acc:%>ir DF-A-PLm ;
-+N+Msc+Pl: DF-DG-PL ;
-
-LEXICON m4
-+N+Msc+Sg+Nom:%>ur DF-NA-SGm ;
-+N+Msc+Sg+Acc:   DF-NA-SGm ;
-+N+Msc+Sg+Dat:%>i  DF-D-SGm ;
-+N+Msc+Sg+Gen:%>ar  DF-G-SGm ;
-+N+Msc+Pl+Nom:%>ir DF-N-PLm ;
-+N+Msc+Pl+Acc:%>ir DF-A-PLm ;
-+N+Msc+Pl: DF-DG-PL ;
-
-!LEXICON m6
-!+N+Msc+Sg: weaksg ;
+! Weak case suffixes.
  
-LEXICON weaksg
-+Nom:%>i DF-NA-SGm ;
-+Acc:%>a   DF-NA-SGm ;
-+Dat:%>a  DF-D-SGm ;
-+Gen:%>a  DF-G-SGm ;
+LEXICON W-M-SGNOM
++Sg+Nom:%>i DF-NA-SGm ;
 
-LEXICON weakpl
-+Nom:%>ar DF-N-PLm ;
-+Acc:%>ar DF-A-PLm ;
- DF-DG-PL ;
+LEXICON W-M-SGACC
++Sg+Acc:%>a   DF-NA-SGm ;
 
-LEXICON m
-+N+Msc+Sg+Acc:   DF-NA-SGm ;
-+N+Msc+Sg+Dat:%>i  DF-D-SGm ;
-+N+Msc+Sg+Gen:%>s  DF-G-SGm ;
-+N+Msc+Pl+Nom:%>ar DF-N-PLm ;
-+N+Msc+Pl+Acc:%>ar DF-A-PLm ;
-+N+Msc+Pl: DF-DG-PL ;
+LEXICON W-M-SGDAT
++Sg+Dat:%>a  DF-D-SGm ;
 
-!n
+LEXICON W-M-SGGEN
++Sg+Gen:%>a  DF-G-SGm ;
 
-LEXICON n1
-+N+Neu+Sg+Nom: DF-NA-SGn ;
-+N+Neu+Sg+Acc: DF-NA-SGn ;
-+N+Neu+Sg+Dat:%>i DF-D-SGn ;
-+N+Neu+Sg+Gen:%>s DF-G-SGn ;
-+N+Neu+Pl+Nom: DF-NA-PLn ;
-+N+Neu+Pl+Acc: DF-NA-PLn ;
-+N+Neu+Pl: DF-DG-PL ;
+LEXICON W-M-PLNOM
++Pl+Nom:%>ar DF-N-PLm ;
 
-LEXICON n2
-+N+Neu+Sg+Nom: DF-NA-SGn ;
-+N+Neu+Sg+Acc: DF-NA-SGn ;
-+N+Neu+Sg+Dat: DF-D-SGn ;
-+N+Neu+Sg+Gen:%>s DF-G-SGn ;
-+N+Neu+Pl+Nom: DF-NA-PLn ;
-+N+Neu+Pl+Acc: DF-NA-PLn ;
-+N+Neu+Pl: DF-DG-PL ;
+LEXICON W-M-PLNOM-UR
++Pl+Nom:%>ur DF-N-PLm ;
 
-LEXICON n3
-+N+Neu+Sg+Nom: DF-NA-SGn ;
-+N+Neu+Sg+Acc: DF-NA-SGn ;
-+N+Neu+Sg+Dat:%>i DF-D-SGn ;
-+N+Neu+Sg+Gen:%>s DF-G-SGn ;
-+N+Neu+Pl+Nom: DF-NA-PLn ;
-+N+Neu+Pl+Acc: DF-NA-PLn ;
-+N+Neu+Pl: DF-DG-PL ;
+LEXICON W-M-PLACC
++Pl+Acc:%>ar DF-A-PLm ;
 
-LEXICON f1
-+N+Fem+Sg+Nom:%>%^U DF-N-SGf ;
-+N+Fem+Sg+Acc:%>%^U DF-A-SGf ;
-+N+Fem+Sg+Dat:%>%^U DF-D-SGf ;
-+N+Fem+Sg+Gen:%>ar DF-G-SGf ;
-+N+Fem+Pl+Nom:%>ar DF-NA-PLf ;
-+N+Fem+Pl+Acc:%>ar DF-NA-PLf ;
-+N+Fem+Pl: DF-DG-PL ;
+LEXICON W-M-PLACC-UR
++Pl+Acc:%>ur DF-A-PLm ;
 
-LEXICON f2
-+N+Fem+Sg+Nom: DF-N-SGf ;
-+N+Fem+Sg+Acc: DF-A-SGf ;
-+N+Fem+Sg+Dat: DF-D-SGf ;
-+N+Fem+Sg+Gen:%>ar DF-G-SGf ;
-+N+Fem+Pl+Nom:%>ar DF-NA-PLf ;
-+N+Fem+Pl+Acc:%>ar DF-NA-PLf ;
-+N+Fem+Pl: DF-DG-PL ;
+LEXICON W-M-PLDAT
++Pl+Dat: DF-D-PL ;
 
-LEXICON f5
-+N+Fem+Sg+Nom:%>%^Ua DF-N-SGf ;
-+N+Fem+Sg+Acc:%>%^Uu DF-A-SGf ;
-+N+Fem+Sg+Dat:%>%^Uu DF-D-SGf ;
-+N+Fem+Sg+Gen:%>%^Uu DF-G-SGf ;
-+N+Fem+Pl+Nom:%>%^Uar DF-NA-PLf ;
-+N+Fem+Pl+Acc:%>%^Uar DF-NA-PLf ;
-+N+Fem+Pl: DF-DG-PL ;
-+N+Fem+Pl:%^Wn DF-G-PL ;
+LEXICON W-M-PLGEN
++Pl+Gen:a DF-G-PL ;
+
+
+
+! Strong case suffixes
+
+LEXICON S-M-SGNOM
++Sg+Nom:%>ur DF-NA-SGm ;
+
+LEXICON S-M-SGNOM-NULL
++Sg+Nom: DF-NA-SGm ;
+
+LEXICON S-M-SGACC
++Sg+Acc: DF-NA-SGm ;
+
+LEXICON S-M-SGDAT
++Sg+Dat:%>i DF-D-SGm ;
+
+LEXICON S-M-SGDAT-NULL
++Sg+Dat: DF-D-SGm ;
+
+LEXICON S-M-SGGEN
++Sg+Gen:%>s DF-G-SGm ;
+
+LEXICON S-M-SGGEN-NULL
++Sg+Gen: DF-G-SGm ;
+
+LEXICON S-M-SGGEN-AR
++Sg+Gen:%>ar DF-G-SGm ;
+
+LEXICON S-M-PLNOM
++Pl+Nom:%>ar DF-N-PLm ;
+
+LEXICON S-M-PLACC
++Pl+Acc:%>ar DF-A-PLm ;
+
+LEXICON S-M-PLNOM-IR
++Pl+Nom:%>ir DF-N-PLm ;
+
+LEXICON S-M-PLACC-IR
++Pl+Acc:%>ir DF-A-PLm ;
+
+LEXICON S-M-PLDAT
++Pl+Dat: DF-D-PL ;
+
+LEXICON S-M-PLGEN
++Pl+Gen:%>a DF-G-PL ;
+
+
 
 ! Common cases
 
-LEXICON DF-DG-PL
- DF-D-PL ;
- DF-G-PL ;
+!LEXICON DF-DG-PL
+! DF-D-PL ;
+! DF-G-PL ;
 
 LEXICON DF-D-PL
-+Dat+Indef:%>%^Uum # ;
-+Dat+Def:%>%^Uunum # ;
++Indef:%>um # ;
++Def:%>unum # ;
 
 LEXICON DF-G-PL
-+Gen+Indef:%>a # ;
-+Gen+Def:%>anna # ;
++Indef: # ;
++Def:nna # ;
 
 
 

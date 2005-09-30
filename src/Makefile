@@ -1,5 +1,6 @@
-# This is a makefile that builds the Northern Sami morphological parser
-# *****************************************************************
+# *************************************************************** #
+# This is a makefile that builds the Faroese morphological parser #
+# *************************************************************** #
 
 # The ultimate goal is to build ifoe.fst, the generator
 # This goal depends on foe.save being up to date.

@@ -13,10 +13,10 @@ Multichar_Symbols
 +1Sg +2Sg +3Sg
 +Inf +PrfPrc +PrsPrc +Sup +Imp
 
-!Weak u
-!a2 a3 i2 u2 Ã³2
-!j2 
-%^UUML %^IUML %^W %^JI %^EPH
+ g2 j2 v2
+
+%^UUML %^IUML %^W %^JI %^EPH %^OEA %^GDEL
+%^EIO
 %>
 
 ! ============ !
@@ -78,7 +78,7 @@ LEXICON k3 ! ! hagi
 LEXICON k4 ! tanki
  k3 ;	! Same u-umlaut, but nasal cns
 
-LEXICON k5 ! bÃ³ndi
+LEXICON k5 ! bóndi
 +N+Msc: W-M-SGNOM ;
 +N+Msc: W-M-SGACC ;
 +N+Msc: W-M-SGDAT ;
@@ -90,7 +90,7 @@ LEXICON k5 ! bÃ³ndi
 
 ! Strong nouns
 
-LEXICON k6 ! Ãºlvur
+LEXICON k6 ! úlvur
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
 +N+Msc: S-M-SGDAT ;
@@ -111,7 +111,7 @@ LEXICON k7 ! sandur
 +N+Msc:%^UUML S-M-PLDAT ;
 +N+Msc: S-M-PLGEN ;
 
-LEXICON k8 ! garÃ°ur
+LEXICON k8 ! garður
  k7 ; ! Different u-umlaut
  
 LEXICON k9
@@ -128,7 +128,7 @@ LEXICON k10
 +N+Msc:%^UUML S-M-PLDAT ;
 +N+Msc: S-M-PLGEN ;
 
-LEXICON k11 ! Ã­sur
+LEXICON k11 ! ísur
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
 +N+Msc: S-M-SGDAT ;
@@ -155,7 +155,7 @@ LEXICON k13 ! vegur
  k12 ; ! As k12, plus a zero dative
 +N+Msc: S-M-SGDAT-NULL ;
 
-LEXICON k14 ! staÃ°ur
+LEXICON k14 ! staður
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
 +N+Msc: S-M-SGDAT ;
@@ -214,13 +214,13 @@ LEXICON k20 ! akur
 +N+Msc:%^EPH%^UUML S-M-PLDAT ;
 +N+Msc:%^EPH S-M-PLGEN ;
 
-LEXICON k21 ! stuÃ°ul
+LEXICON k21 ! stuðul
  k19 ; ! Can't see the diffrence
 
 LEXICON k22 ! himmal
  k19 ; ! Can't see the diffrence
 
-LEXICON k23 ! rÃ³Ã°ur
+LEXICON k23 ! róður
 +N+Msc: S-M-SGNOM-NULL ;
 +N+Msc: S-M-SGACC ;
 +N+Msc:%^EPH S-M-SGDAT ;
@@ -230,67 +230,532 @@ LEXICON k23 ! rÃ³Ã°ur
 +N+Msc:%^EPH S-M-PLDAT ;
 +N+Msc:%^EPH S-M-PLGEN ;
 
-LEXICON k24
- # ;
-LEXICON k25
- # ;
-LEXICON k26
- # ;
-LEXICON k27
- # ;
-LEXICON k28
- # ;
-LEXICON k29
- # ;
-LEXICON k30
- # ;
-LEXICON k31
- # ;
-LEXICON k32
- # ;
-LEXICON k33
- # ;
-LEXICON k34
- # ;
-LEXICON k35
- # ;
-LEXICON k36
- # ;
-LEXICON k37
- # ;
-LEXICON k38
- # ;
-LEXICON k39
- # ;
-LEXICON k40
- # ;
-LEXICON k41
- # ;
-LEXICON k42
- # ;
-LEXICON k43
- # ;
-LEXICON k44
- # ;
-LEXICON k45
- # ;
-LEXICON k46
- # ;
-LEXICON k47
- # ;
-LEXICON k48
- # ;
-LEXICON k49
- # ;
-LEXICON k50
- # ;
-LEXICON k51
- # ;
-LEXICON k52
- # ;
-LEXICON k53
+LEXICON k24 ! fløttur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc:%^OEA S-M-SGGEN-AR ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc:%^OEA S-M-PLGEN ;
+
+LEXICON k25 ! vøllur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc:%^OEA S-M-SGGEN-AR ;
++N+Msc: S-M-PLNOM-IR ;
++N+Msc: S-M-PLACC-IR ;
++N+Msc: S-M-PLDAT ;
++N+Msc:%^OEA S-M-PLGEN ;
+
+LEXICON k26 ! táttur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN-AR ;
++N+Msc:%^IUML S-M-PLNOM-IR ;
++N+Msc:%^IUML S-M-PLACC-IR ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k27 ! vøkstur
++N+Msc: S-M-SGNOM-NULL ;
++N+Msc: S-M-SGACC ;
++N+Msc:%^EPH S-M-SGDAT ;
++N+Msc:%^EPH%^OEA S-M-SGGEN-AR ;
++N+Msc:%^EPH S-M-PLNOM-IR ;
++N+Msc:%^EPH S-M-PLACC-IR ;
++N+Msc:%^EPH S-M-PLDAT ;
++N+Msc:%^EPH%^OEA S-M-PLGEN ;
+
+LEXICON k28 ! dráttur
++N+Msc: S-M-SGNOM-NULL ;
++N+Msc: S-M-SGACC ;
++N+Msc:%^EPH S-M-SGDAT ;
++N+Msc:%^EPH S-M-SGGEN-AR ;
++N+Msc:%^EPH S-M-PLNOM-IR ;
++N+Msc:%^EPH S-M-PLACC-IR ;
++N+Msc:%^EPH S-M-PLDAT ;
++N+Msc:%^EPH S-M-PLGEN ;
+
+LEXICON k29 ! tráður
+# ;
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGDAT-NULL ;
++N+Msc:%^IUMLr S-M-SGDAT ;
++N+Msc: S-M-SGGEN-AR ;
++N+Msc:%^IUML%>r S-M-PLNOM-IR ;
++N+Msc:%^IUML%>r S-M-PLACC-IR ;
++N+Msc: S-M-PLDAT ;
++N+Msc:%^IUML%>r S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k30 ! fótur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN-AR ;
++N+Msc:%^IUML S-M-PLNOM-UR ;
++N+Msc:%^IUML S-M-PLACC-UR ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k31 ! veggur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc:%>j S-M-SGGEN-AR ;
++N+Msc: S-M-PLNOM-IR ;
++N+Msc: S-M-PLACC-IR ;
++N+Msc:%>j S-M-PLDAT ;
++N+Msc:%>j S-M-PLGEN ;
+
+LEXICON k32 ! ryggur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc:%>j S-M-SGGEN-AR ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM-IR ;
++N+Msc: S-M-PLACC-IR ;
++N+Msc:%>j S-M-PLDAT ;
++N+Msc:%>j S-M-PLGEN ;
+
+LEXICON k33 ! hylur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc:%>j S-M-SGGEN-AR ;
++N+Msc: S-M-SGGEN ;
++N+Msc:%>j S-M-PLNOM ;
++N+Msc:%>j S-M-PLACC ;
++N+Msc:%>j S-M-PLDAT ;
++N+Msc:%>j S-M-PLGEN ;
+
+LEXICON k34 ! drongur
++N+Msc:%^EIO S-M-SGNOM ;
++N+Msc:%^EIO S-M-SGACC ;
++N+Msc:%^EIO S-M-SGDAT ;
++N+Msc: S-M-SGDAT ;
++N+Msc:%>j S-M-SGGEN-AR ;
++N+Msc:%^EIO S-M-SGGEN ;
++N+Msc:%> S-M-PLNOM-IR ;
++N+Msc:%> S-M-PLACC-IR ;
++N+Msc:%>j S-M-PLDAT ;
++N+Msc:%>j S-M-PLGEN ;
+
+
+LEXICON k35 ! bonkur
++N+Msc:%^EIO S-M-SGNOM ;
++N+Msc:%^EIO S-M-SGACC ;
++N+Msc:%^EIO S-M-SGDAT ;
++N+Msc: S-M-SGDAT ;
++N+Msc:%>j S-M-SGGEN-AR ;
++N+Msc:%^EIO S-M-SGGEN-AR ;
++N+Msc:%> S-M-PLNOM-IR ;
++N+Msc:%> S-M-PLACC-IR ;
++N+Msc:%>j S-M-PLDAT ;
++N+Msc:%>j S-M-PLGEN ;
+
+LEXICON k36 ! heyggjur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k37 ! skógvur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDATm ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k38 ! bógvur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc:%^IUML S-M-SGDAT ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k39 ! sjógvur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc:%^GDEL S-M-SGGEN-AR ;
++N+Msc:%^GDEL S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k40 ! hógvur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc:%^GDEL S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k41 ! maður
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc:%^IUML S-M-PLNOM-NULL ;
++N+Msc:%^IUML S-M-PLACC-NULL ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k42 ! dagur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc:%^IUML S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc:%^UUML S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k43 ! faðir
++N+Msc: S-M-SGNOM-NULL ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT-NULL ;
++N+Msc: S-M-SGGEN ;
++N+Msc:%^IUML S-M-PLNOM ;
++N+Msc:%^IUML S-M-PLACC ;
++N+Msc:%^IUML S-M-PLDAT ;
++N+Msc:%^IUML S-M-PLGEN ;
+
+LEXICON k44 ! bróðir
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT-NULL ;
++N+Msc: S-M-SGGEN-NULL ;
++N+Msc:%^IUML S-M-PLNOM-NULL ;
++N+Msc:%^IUML S-M-PLACC-NULL ;
++N+Msc:%^IUML S-M-PLDAT ;
++N+Msc:%^IUML S-M-PLGEN ;
+
+LEXICON k45 ! spónur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN-AR ;
++N+Msc:%^IUML S-M-PLNOM-IR ;
++N+Msc:%^IUML S-M-PLACC-IR ;
++N+Msc:%^IUML S-M-PLDAT ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+
+LEXICON k46 ! fjørður ! XXX start her.
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
  # ;
 
+LEXICON k47 ! somur
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+ # ;
+
+LEXICON k48 ! hamar
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+ # ;
+
+LEXICON k49 ! 
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+ # ;
+
+LEXICON k50 ! 
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+ # ;
+
+LEXICON k51 ! 
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+ # ;
+
+LEXICON k52 ! 
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+ # ;
+
+LEXICON k53 ! 
++N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGACC ;
++N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGGEN ;
++N+Msc: S-M-PLNOM ;
++N+Msc: S-M-PLACC ;
++N+Msc: S-M-PLDAT ;
++N+Msc: S-M-PLGEN ;
+ # ;
+
+
+! Feminines
+! ----------
+
+LEXICON kv1 ! 
+# ;
+
+LEXICON kv2 ! 
+# ;
+
+LEXICON kv3 ! 
+# ;
+
+LEXICON kv4 ! 
+# ;
+
+LEXICON kv5 ! 
+# ;
+
+LEXICON kv6 ! 
+# ;
+
+LEXICON kv7 ! 
+# ;
+
+LEXICON kv8 ! 
+# ;
+
+LEXICON kv9 ! 
+# ;
+
+LEXICON kv10 ! 
+# ;
+
+LEXICON kv11 ! 
+# ;
+
+LEXICON kv12 ! 
+# ;
+
+LEXICON kv13 ! 
+# ;
+
+LEXICON kv14 ! 
+# ;
+
+LEXICON kv15 ! 
+# ;
+
+LEXICON kv16 ! 
+# ;
+
+LEXICON kv17 ! 
+# ;
+
+LEXICON kv18 ! 
+# ;
+
+LEXICON kv19 ! 
+# ;
+
+LEXICON kv20 ! 
+# ;
+
+LEXICON kv21 ! 
+# ;
+
+LEXICON kv22 ! 
+# ;
+
+LEXICON kv23 ! 
+# ;
+
+LEXICON kv24 ! 
+# ;
+
+LEXICON kv25 ! 
+# ;
+
+LEXICON kv26 ! 
+# ;
+
+LEXICON kv27 ! 
+# ;
+
+LEXICON kv28 ! 
+# ;
+
+LEXICON kv29 ! 
+# ;
+
+LEXICON kv30 ! 
+# ;
+
+LEXICON kv31 ! 
+# ;
+
+LEXICON kv32 ! 
+# ;
+
+LEXICON kv33 ! 
+# ;
+
+LEXICON kv34 ! 
+# ;
+
+LEXICON h1 ! 
+# ;
+
+LEXICON h2 ! 
+# ;
+
+LEXICON h3 ! 
+# ;
+
+LEXICON h4 ! 
+# ;
+
+LEXICON h5 ! 
+# ;
+
+LEXICON h6 ! 
+# ;
+
+LEXICON h7 ! 
+# ;
+
+LEXICON h8 ! 
+# ;
+
+LEXICON h9 ! 
+# ;
+
+LEXICON h10 ! 
+# ;
+
+LEXICON h11 ! 
+# ;
+
+LEXICON h12 ! 
+# ;
+
+LEXICON h13 ! 
+# ;
+
+LEXICON h14 ! 
+# ;
+
+LEXICON h15 ! 
+# ;
+
+LEXICON h16 ! 
+# ;
+
+LEXICON h17 ! 
+# ;
+
+LEXICON h18 ! 
+# ;
+
+LEXICON hq9 ! 
+# ;
+
+LEXICON h20 ! 
+# ;
+
+LEXICON h21 ! 
+# ;
+
+LEXICON h22 ! 
+# ;
+
+LEXICON h23 ! 
+# ;
+
+LEXICON h24 ! 
+# ;
+
+LEXICON h25 ! 
+# ;
+
+LEXICON h26 ! 
+# ;
+
+LEXICON h27 ! 
+# ;
+
+LEXICON h28 ! 
+# ;
+
+LEXICON h29 ! 
+# ;
+
+LEXICON h30 ! 
+# ;
+
+LEXICON h31 ! 
+# ;
+
+LEXICON h32 ! 
+# ;
+
+LEXICON h33 ! 
+# ;
+
+LEXICON h34 ! 
+# ;
 
 
 
@@ -373,8 +838,23 @@ LEXICON S-M-PLNOM-IR
 LEXICON S-M-PLACC-IR
 +Pl+Acc:%>ir DF-A-PLm ;
 
+LEXICON S-M-PLNOM-UR
++Pl+Nom:%>ur DF-N-PLm ;
+
+LEXICON S-M-PLACC-UR
++Pl+Acc:%>ur DF-A-PLm ;
+
+LEXICON S-M-PLNOM-NULL
++Pl+Nom:%> DF-N-PLm ;
+
+LEXICON S-M-PLACC-NULL
++Pl+Acc:%> DF-A-PLm ;
+
 LEXICON S-M-PLDAT
-+Pl+Dat: DF-D-PL ;
++Pl+Dat:%>u DF-D-PL ;
+
+LEXICON S-M-PLDATm ! skóm
++Pl+Dat:%> DF-D-PL ;
 
 LEXICON S-M-PLGEN
 +Pl+Gen:%>a DF-G-PL ;
@@ -388,12 +868,16 @@ LEXICON S-M-PLGEN
 ! DF-G-PL ;
 
 LEXICON DF-D-PL
-+Indef:%>um # ;
-+Def:%>unum # ;
++Indef:%>m # ;
++Def:%>num # ;
 
 LEXICON DF-G-PL
 +Indef: # ;
 +Def:nna # ;
+
+
+
+
 
 
 
@@ -427,45 +911,45 @@ LEXICON DF-A-PLm
 ! Feminine forms
 ! ---------------
 
-LEXICON DF-N-SGf
-+Indef: # ;
-+Def:%>in # ;
+!LEXICON DF-N-SGf
+!+Indef: # ;
+!+Def:%>in # ;
 
-LEXICON DF-A-SGf
-+Indef: # ;
-+Def:%>ina # ;
+!LEXICON DF-A-SGf
+!+Indef: # ;
+!+Def:%>ina # ;
 
-LEXICON DF-D-SGf
-+Indef: # ;
-+Def:%>ini # ;
+!LEXICON DF-D-SGf
+!+Indef: # ;
+!+Def:%>ini # ;
 
-LEXICON DF-G-SGf
-+Indef: # ;
-+Def:%>innar # ;
+!LEXICON DF-G-SGf
+!+Indef: # ;
+!+Def:%>innar # ;
 
-LEXICON DF-NA-PLf
-+Indef: # ;
-+Def:%>nar # ;
+!LEXICON DF-NA-PLf
+!+Indef: # ;
+!+Def:%>nar # ;
 
 
 ! Neuter forms
 ! ---------------
 
-LEXICON DF-NA-SGn
-+Indef: # ;
-+Def:%>iÃ° # ;
+!LEXICON DF-NA-SGn
+!+Indef: # ;
+!+Def:%>ið # ;
 
-LEXICON DF-D-SGn
-+Indef: # ;
-+Def:%>num # ;
+!LEXICON DF-D-SGn
+!+Indef: # ;
+!+Def:%>num # ;
 
-LEXICON DF-G-SGn
-+Indef: # ;
-+Def:%>ins # ;
+!LEXICON DF-G-SGn
+!+Indef: # ;
+!+Def:%>ins # ;
 
-LEXICON DF-NA-PLn
-+Indef: # ;
-+Def:%>ini # ;
+!LEXICON DF-NA-PLn
+!+Indef: # ;
+!+Def:%>ini # ;
 
 
 
@@ -481,36 +965,36 @@ LEXICON a1
 
 +A+Msc+Sg+Nom+Indef:%>ur # ;
 +A+Msc+Sg+Acc+Indef:%>an # ;
-+A+Msc+Sg+Dat+Indef:%>%^Uum # ; !spÃ¸kum
++A+Msc+Sg+Dat+Indef:%>%^UUMLum # ; !spøkum
 +A+Msc+Sg+Dat+Indef:%>um # ;     !spakum
 +A+Msc+Sg+Gen+Indef:%>s  # ; 
 +A+Msc+Pl+Nom+Indef:%>ir  # ; 
 +A+Msc+Pl+Acc+Indef:%>ar  # ; 
-+A+Msc+Pl+Dat+Indef:%>%^Uum  # ; 
++A+Msc+Pl+Dat+Indef:%>%^UUMLum  # ; 
 +A+Msc+Pl+Dat+Indef:%>um  # ; 
 +A+Msc+Pl+Gen+Indef:%>a  # ; 
 +A+Msc+Pl+Gen+Indef:%>ra  # ; 
 
-+A+Fem+Sg+Nom+Indef:%>%^U  # ; 
++A+Fem+Sg+Nom+Indef:%>%^UUML  # ; 
 +A+Fem+Sg+Acc+Indef:%>a  # ;  # ; 
 +A+Fem+Sg+Dat+Indef:%>ari  # ; 
 +A+Fem+Sg+Gen+Indef:%>a  # ; 
 +A+Fem+Sg+Gen+Indef:%>ra  # ; 
 +A+Fem+Pl+Nom+Indef:%>ar  # ; 
 +A+Fem+Pl+Acc+Indef:%>ar  # ; 
-+A+Fem+Pl+Dat+Indef:%>%^Uum  # ; 
++A+Fem+Pl+Dat+Indef:%>%^UUMLum  # ; 
 +A+Fem+Pl+Dat+Indef:%>um  # ; 
 +A+Fem+Pl+Gen+Indef:%>a  # ; 
 +A+Fem+Pl+Gen+Indef:%>ra  # ; 
 
 +A+Neu+Sg+Nom+Indef:%>t  # ; 
 +A+Neu+Sg+Acc+Indef:%>t  # ; 
-+A+Neu+Sg+Dat+Indef:%>%^Uum  # ; 
++A+Neu+Sg+Dat+Indef:%>%^UUMLum  # ; 
 +A+Neu+Sg+Dat+Indef:%>um  # ; 
 +A+Neu+Sg+Gen+Indef:%>s  # ; 
-+A+Neu+Pl+Nom+Indef:%>%^U  # ; 
-+A+Neu+Pl+Acc+Indef:%>%^U  # ; 
-+A+Neu+Pl+Dat+Indef:%>%^Uum  # ; 
++A+Neu+Pl+Nom+Indef:%>%^UUML  # ; 
++A+Neu+Pl+Acc+Indef:%>%^UUML  # ; 
++A+Neu+Pl+Dat+Indef:%>%^UUMLum  # ; 
 +A+Neu+Pl+Dat+Indef:%>um  # ; 
 +A+Neu+Pl+Gen+Indef:%>a  # ; 
 +A+Neu+Pl+Gen+Indef:%>ra  # ; 
@@ -562,26 +1046,27 @@ LEXICON adjdef-pl
 
 
 LEXICON v1a
-+V+Inf: # ;
-+V+Imp+Sg: # ;
-+V+Imp+Pl:%>iÃ° # ;
-+V+PrsPrc:%>ndi # ;
-+V+Sup:%>Ã° # ;
+# ;
+!+V+Inf: # ;
+!+V+Imp+Sg: # ;
+!+V+Imp+Pl:%>ið # ;
+!+V+PrsPrc:%>ndi # ;
+!+V+Sup:%>ð # ;
 
-+V+Prs+1Sg:%>i # ;
-+V+Prs+2Sg:%>r # ;
-+V+Prs+3Sg:%>r # ;
-+V+Prs+Pl: # ;
+!+V+Prs+1Sg:%>i # ;
+!+V+Prs+2Sg:%>r # ;
+!+V+Prs+3Sg:%>r # ;
+!+V+Prs+Pl: # ;
 
-+V+Prt+1Sg:%>Ã°i # ;
-+V+Prt+2Sg:%>Ã°i # ;
-+V+Prt+3Sg:%>Ã°i # ;
-+V+Prt+Pl:Ã°u # ;
+!+V+Prt+1Sg:%>ði # ;
+!+V+Prt+2Sg:%>ði # ;
+!+V+Prt+3Sg:%>ði # ;
+!+V+Prt+Pl:%>ðu # ;
 
-+V+Prt+1Sg:%>ti # ;
-+V+Prt+2Sg:%>ti # ;
-+V+Prt+3Sg:%>ti # ;
-+V+Prt+Pl:%>tu # ;
+!+V+Prt+1Sg:%>ti # ;
+!+V+Prt+2Sg:%>ti # ;
+!+V+Prt+3Sg:%>ti # ;
+!+V+Prt+Pl:%>tu # ;
 
 LEXICON v1b
 # ;
@@ -597,3 +1082,5 @@ LEXICON v3
 
 LEXICON v4
 # ;
+
+

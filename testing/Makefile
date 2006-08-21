@@ -412,6 +412,14 @@ savefile:
 # TWOL-testing :
 #===============
 
+# Usage:
+# make twol-test (extracts the test words from src/twol-sme.txt)
+# make twol-pos  (tests for the positive test pairs, prints output to twol-pos.out)
+# make twol-neg  (tests for the positive test pairs, prints output to twol-neg.out)
+# make twol-test FILE=filename.txt (test for pairs in filename.txt)
+# make twol      (when the rules themselves are changed, will recompile the binary)
+
+
 TWOLC = twolc -utf8
 TYPE = pos
 FILE =

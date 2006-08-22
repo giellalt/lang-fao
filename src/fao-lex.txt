@@ -15,7 +15,7 @@ Multichar_Symbols
 
  g2 j2 v2
 
-%^UUML %^IUML %^W %^JI %^EPH %^OEA %^GDEL
+%^UUML %^IUML %^W %^JI %^EPH %^OEA %^GDEL %^JDEL
 %^EIO
 %>
 
@@ -464,57 +464,56 @@ LEXICON k45 ! spónur
 LEXICON k46 ! fjørður ! XXX start her.
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
-+N+Msc: S-M-SGDAT ;
-+N+Msc: S-M-SGGEN ;
-+N+Msc: S-M-PLNOM ;
-+N+Msc: S-M-PLACC ;
++N+Msc:%^IUML S-M-SGDAT ;
++N+Msc:%^OEA S-M-SGGEN-AR ;
++N+Msc:%^IUML S-M-PLNOM-IR ;
++N+Msc:%^IUML S-M-PLACC-IR ;
 +N+Msc: S-M-PLDAT ;
-+N+Msc: S-M-PLGEN ;
- # ;
++N+Msc:%^IUML S-M-PLDAT ;
++N+Msc:%^OEA S-M-PLGEN ;
 
-LEXICON k47 ! somur
+LEXICON k47 ! sonur
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
 +N+Msc: S-M-SGDAT ;
-+N+Msc: S-M-SGGEN ;
-+N+Msc: S-M-PLNOM ;
-+N+Msc: S-M-PLACC ;
++N+Msc:%^IUML S-M-SGDAT ;
++N+Msc: S-M-SGGEN-AR ;
++N+Msc:%^IUML S-M-PLNOM-IR ;
++N+Msc:%^IUML S-M-PLACC-IR ;
 +N+Msc: S-M-PLDAT ;
++N+Msc:%^IUML S-M-PLDAT ;
 +N+Msc: S-M-PLGEN ;
- # ;
 
 LEXICON k48 ! hamar
-+N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGNOM-NULL ;
 +N+Msc: S-M-SGACC ;
-+N+Msc: S-M-SGDAT ;
++N+Msc:%^EPH S-M-SGDAT ;
 +N+Msc: S-M-SGGEN ;
-+N+Msc: S-M-PLNOM ;
-+N+Msc: S-M-PLACC ;
-+N+Msc: S-M-PLDAT ;
-+N+Msc: S-M-PLGEN ;
- # ;
++N+Msc:%^EPH S-M-PLNOM ;
++N+Msc:%^EPH S-M-PLACC ;
++N+Msc:%^EPH%^UUML S-M-PLDAT ;
++N+Msc:%^EPH S-M-PLDAT ;
++N+Msc:%^EPH S-M-PLGEN ;
 
 LEXICON k49 ! 
-+N+Msc: S-M-SGNOM ;
-+N+Msc: S-M-SGACC ;
-+N+Msc: S-M-SGDAT ;
-+N+Msc: S-M-SGGEN ;
-+N+Msc: S-M-PLNOM ;
-+N+Msc: S-M-PLACC ;
++N+Msc:%^JDEL S-M-SGNOM ;
++N+Msc:%^JDEL S-M-SGACC ;
++N+Msc:%^JDEL S-M-SGDAT ;
++N+Msc:%^JDEL S-M-SGGEN ;
++N+Msc:%^JDEL S-M-PLNOM-IR ;
++N+Msc:%^JDEL S-M-PLACC-IR ;
 +N+Msc: S-M-PLDAT ;
 +N+Msc: S-M-PLGEN ;
- # ;
 
 LEXICON k50 ! 
-+N+Msc: S-M-SGNOM ;
++N+Msc: S-M-SGNOM-NULL ;
 +N+Msc: S-M-SGACC ;
-+N+Msc: S-M-SGDAT ;
-+N+Msc: S-M-SGGEN ;
-+N+Msc: S-M-PLNOM ;
-+N+Msc: S-M-PLACC ;
-+N+Msc: S-M-PLDAT ;
-+N+Msc: S-M-PLGEN ;
- # ;
++N+Msc:%^EPH S-M-SGDAT ;
++N+Msc:%^EPH%^OEA S-M-SGGEN-AR ;
++N+Msc:%^EPH S-M-PLNOM ;
++N+Msc:%^EPH S-M-PLACC ;
++N+Msc:%^EPH S-M-PLDAT ;
++N+Msc:%^EPH S-M-PLGEN ;
 
 LEXICON k51 ! 
 +N+Msc: S-M-SGNOM ;

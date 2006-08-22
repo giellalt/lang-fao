@@ -12,7 +12,7 @@ Alphabet
  g2:g j2:j v2:v
  
  %^UUML:0 %^IUML:0 %^W:0 %^EPH:0 %^JI:0
- %^OEA:0 %^GDEL:0 %^EIO:0
+ %^OEA:0 %^GDEL:0 %^JDEL:0 %^EIO:0
  %>:0 ;
 
 Sets
@@ -54,6 +54,11 @@ Rules
 !€ sjógv2%>ar
 !€ sjó0v0ar
 
+"Deleting j in exceptional stems"
+ j:0 <=> _ %^JDEL ;
+
+!€ verkj%^JDEL%>ur
+!€ verk000ur
 
 "Deleting j in j-stems"
   j:0 <=> Vow g g _ %>: [ Cns | i ] ;
@@ -89,11 +94,14 @@ Rules
 !€ aft0n0
 
 "U-umlaut in Front of Nasal"
- a:o <=> _ Nas (Cns:*)  %^UUML:  ;
-! a:o <=> _ Nas (Cns:*)  %^UUML:  ;
+ a:o <=> _ Nas (Vow:) (Cns:*)  (%^EPH:) %^UUML:  ;
 
 !€ tank%^UUML
 !€ tonk0
+
+!€ hamar%^EPH%^UUML%>um
+!€ hom0r000um
+
 
 "General U-umlaut"
  a:ø <=> _ NonNas:*  %^UUML: %>:  ;
@@ -106,16 +114,25 @@ Rules
 
 "I-umlaut"
  Vx:Vy <=> _ Cns* %^IUML: ;
-     where Vx in ( a ó á )
-	   Vy in ( e ø æ )
+     where Vx in ( a ó á ø o )
+	   Vy in ( e ø æ i y )
 	   matched ;
 
-!€ dag%^IUML
-!€ deg0
+!€ dag%^IUML%>i
+!€ deg00i
+
+!€ son%^IUML%>i
+!€ syn00i
+
+"j-Deletion in i-umlaut"
+ j:0 <=> Cns _ :i Cns:* %^IUML: ;
+
+!€ fjørð%^IUML%>i
+!€ f0irð00i
 
 
 "Inverted U-umlaut from ø"
- ø:a <=> _ Cns* ( %^EPH: ) %^OEA: ;
+ ø:a <=> _ Cns* (Vow: Cns) ( %^EPH: ) %^OEA: ;
 
 !€ fløtt%^ØAa
 !€ flatt0a

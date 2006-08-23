@@ -12,7 +12,7 @@ Alphabet
  g2:g j2:j v2:v
  
  %^UUML:0 %^IUML:0 %^W:0 %^EPH:0 %^JI:0
- %^OEA:0 %^GDEL:0 %^JDEL:0 %^EIO:0
+ %^OEA:0 %^GDEL:0 %^JDEL:0 %^EIO:0 %^OA:0
  %>:0 ;
 
 Sets
@@ -115,7 +115,7 @@ Rules
 "I-umlaut"
  Vx:Vy <=> _ Cns* %^IUML: ;
      where Vx in ( a ó á ø o )
-	   Vy in ( e ø æ i y )
+	       Vy in ( e ø æ i y )
 	   matched ;
 
 !€ dag%^IUML%>i
@@ -137,6 +137,12 @@ Rules
 !€ fløtt%^ØAa
 !€ flatt0a
 
+"Inverted U-umlaut from o"
+ o:a <=> _ Cns* (Vow: Cns) (%^EPH: ) %^OA: ;
+
+!€ fonn%^OA%>ar
+!€ fann00ar
+
 
 "o/ei-Umlaut I"
  e:o <=> _ i: Cns:+ %^EIO: ;
@@ -150,9 +156,8 @@ Rules
 
 "Deleting Double Consonant in Front of Consonant"
  Cx:0 <=> Cx _ %>: ( j: ) Cns  ;
-!          Cx _ Vow:0 Cns %>: Vow ;
 	  Cx _ Vow:0 Cns Dummy:* Vow ;
-      where Cx in ( b d f k l m n p r s t v ) ;
+      where Cx in ( b d f k l m n p r s t v ) 
       matched ;
 !€ hjall%>s
 !€ hjal00s
@@ -166,17 +171,24 @@ Rules
 !€ himmal%^EPH%^UUML%>um
 !€ him00l000um
 
+
+"Deleting stem-final s in s genitive"
+ s:0 <=> Vow s %>: _ ;
+
+!€ primus%>s
+!€ primu00a
+
 "Realising j in front of vowels"
  j2:j <=> _ %>: [ a | u ] ;
 
 !€ hylj2%>ar
 !€ hylj0ar
 
-"Vowel deletion in front of -na"
- a:0 <=> _ %^W n ;
+"Vowel deletion in front of na"
+ a:0 <=> _ %^W: n ;
 
 "Special Dative v Deletion"
- v:0 <=> g2: _ ^IUML: %> i ;
+ v:0 <=> g2: _ %^IUML: %>: i ;
 
 !€ bógv%^IUML%>i
 !€ bøg000i

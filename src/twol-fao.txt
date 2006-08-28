@@ -9,10 +9,10 @@ Alphabet
  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å
  Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð
 
- g2:g j2:j v2:v
+ g2:g j2:j v2:v 
  
  %^UUML:0 %^IUML:0 %^W:0 %^EPH:0 %^JI:0
- %^OEA:0 %^GDEL:0 %^JDEL:0 %^EIO:0 %^OA:0
+ %^OEA:0 %^GDEL:0 %^JDEL:0 %^RDEL:0 %^EIO:0 %^OA:0 %^WVV:0
  %>:0 ;
 
 Sets
@@ -53,6 +53,13 @@ Rules
 
 !€ sjógv2%>ar
 !€ sjó0v0ar
+
+"Deleting r in Genitive of ur stems"
+ r:0 <=> u: _ %^EPH  %^RDEL %>: a r ;
+
+!€ brúður%^EPH%^%RDEL%>ar
+!€ brúð0000ar
+
 
 "Deleting j in exceptional stems"
  j:0 <=> _ %^JDEL ;
@@ -199,4 +206,57 @@ Rules
 !€ faðir%^IUML%>ar
 !€ feð0r00ar
 
+
+! Verbal vowel alternations
+
+"Stem vowel change in Weak Verbs"
+ Vx:Vy <=> _ Cns:+ %^WVV: %>: t ; ! WVV = Verb
+ 	where Vx in (e y)
+ 		  Vy in (a u)
+ 		  matched ;
+ 		  
+!€ flek%^WVV%>t
+!€ flak00t 
+
+!€ flek%^WVV%>t
+!€ flak00t 
+
+
+
+! Verbal Sandhi rules
+
+"ð Assimilation in Front of Dental Past Suffix -d(i)"
+ ð:d <=> Vow _ %>: d [ #: | i | u ] ;
+ 
+!€ leið%>di
+!€ leid0di 
+
+"ð Assimilation in Front of Supine Suffix -t"
+ ð:t <=> Vow _ %>: t #: ;
+
+!€ leið%>t
+!€ leit0t
+
+"Adjusting Dental Past Suffix -d(i)"
+ d:t <=> [ p | t | k | s ] %>: _ [ #: | i | u ] ;
+
+!€ keyp%>di
+!€ keyp0ti
+
+
+"Geminate Assimilation in Past Tense"
+ Cx:0 <=> Cy _ %>: [ d | t ] ;
+ 	where Cx in ( d ð n p g k t )
+ 	      Cy in ( n r n p g k l )
+ 	      matched ;
+ 	      
+!€ send%>di
+!€ sen00di
+
+!€ hirð%>di
+!€ hir00di
+ 	      
+ 	      
+ 	      
+! Adjectival Sandhi rules
 

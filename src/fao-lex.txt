@@ -15,8 +15,9 @@ Multichar_Symbols
 
  g2 j2 v2
 
-%^UUML %^IUML %^W %^JI %^EPH %^OEA %^GDEL %^JDEL
-%^EIO %^OA
+%^UUML %^IUML %^W %^JI %^EPH %^OEA %^GDEL %^JDEL %^RDEL
+%^EIO %^OA %^WVV
+
 %>
 
 ! ============ !
@@ -672,34 +673,35 @@ LEXICON kv16 ! mús
 
 LEXICON kv17 ! mastur
 +N+Fem: S-F-SGNAD ;
-+N+Fem: S-F-SGGEN ;
-+N+Fem: F-PLNA-IR ;
-+N+Fem: F-PLDAT ;
-+N+Fem: F-PLGEN ;
++N+Fem:%^EPH S-F-SGGEN ;
++N+Fem:%^EPH F-PLNA-AR ;
++N+Fem:%^EPH F-PLDAT ;
++N+Fem:%^EPH F-PLGEN ;
 
 
 LEXICON kv18 ! brúður
 +N+Fem: S-F-SGNAD ;
-+N+Fem: S-F-SGGEN ;
-+N+Fem: F-PLNA-IR ;
-+N+Fem: F-PLDAT ;
-+N+Fem: F-PLGEN ;
++N+Fem:%^EPH%^RDEL S-F-SGGEN ;
++N+Fem:%^EPH F-PLNA-AR ;
++N+Fem:%^EPH F-PLDAT ;
++N+Fem:%^EPH F-PLGEN ;
 
 
 LEXICON kv19 ! fjøður
 +N+Fem: S-F-SGNAD ;
-+N+Fem: S-F-SGGEN ;
-+N+Fem: F-PLNA-IR ;
-+N+Fem: F-PLDAT ;
-+N+Fem: F-PLGEN ;
++N+Fem:%^EPH S-F-SGGEN ;
++N+Fem:%^EPH%^OEA F-PLNA-AR ;
++N+Fem:%^EPH F-PLDAT ;
++N+Fem:%^EPH%^OEA F-PLDAT ;
++N+Fem:%^EPH%^OEA F-PLGEN ;
 
 
-LEXICON kv20 ! ær
-+N+Fem: S-F-SGNAD ;
-+N+Fem: S-F-SGGEN ;
-+N+Fem: F-PLNA-IR ;
-+N+Fem: F-PLDAT ;
-+N+Fem: F-PLGEN ;
+LEXICON kv20 ! ær (only)
++N+Fem:ær S-F-SGNAD ;
++N+Fem:ær S-F-SGGEN-NULL ;
++N+Fem:ær F-PLNA-NULL ;
++N+Fem:ó F-PLDAT ;
++N+Fem:á F-PLGEN ;
 
 
 LEXICON kv21 ! gjógv
@@ -1039,6 +1041,11 @@ LEXICON W-F-SGOBL
 LEXICON S-F-SGGEN
 +Sg+Gen:%>ar DF-G-SGf ;
 
+LEXICON S-F-SGGEN-NULL
++Sg+Gen:%> DF-G-SGf ;
+
+
+
 
 ! Plural case suffixes
 
@@ -1165,86 +1172,321 @@ LEXICON DF-NA-PLf
 ! Adjective morphology !
 ! ==================== !
 
-LEXICON a1
- 
-+A+Msc: adjdef-m ;
-+A+Fem: adjdef-f ;
-+A+Neu: adjdef-n ;
 
+LEXICON l1	! beinur
+adj-a ;
+adj-def ;
+
+LEXICON l2	! leysur
+adj-a ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l3	! bíligur
+adj-a ;
+adj-def ;
+
+LEXICON l4	! kunnugur
+adj-a ;
+adj-def ;
+
+LEXICON l5	! spiltur
+adj-a ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l6	! brekaður
+adj-a ;
+adj-def ;
+
+LEXICON l7	! blindur
+adj-a ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l8	! kaldur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l9	! spakur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l10 ! drúgvur
+adj-a ;
+adj-def ;
+
+LEXICON l11 ! flógvur
+adj-a ; ! -gv-
+adj-def ; ! -gv-
+
+LEXICON l12 ! snjallur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-def ;
+
+LEXICON l13 ! langur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-def ;
+
+LEXICON l14 ! harður
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-def ;
+
+LEXICON l15 ! blíður
+adj-a ;
+adj-def ;
+
+! Check these
+
+LEXICON l16 ! góður
+adj-a ;
+adj-def ;
+
+LEXICON l17 ! bláur
+adj-a ;
+adj-def ;
+
+LEXICON l18 ! keddur
+adj-a ;
+adj-def ;
+
+LEXICON l19 ! n´yggjur
+adj-a ;
+adj-def ;
+
+LEXICON l20 ! stillur
+adj-a ;
+adj-def ;
+
+LEXICON l21 ! fastur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-def ;
+
+LEXICON l22 ! klæddur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+			 a-umlaut ;
+adj-def ;
+
+LEXICON l23 ! rættur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+			 a-umlaut ;
+adj-def ;
+
+LEXICON l24 ! frískur
+adj-a ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l25 ! danskur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+            adj-r-gen ;
+adj-def ;
+
+LEXICON l26 ! vakin
+adj-def ;
+
+LEXICON l27 ! heiðin
+adj-def ;
+
+LEXICON l28 ! lítil
+adj-def ;
+
+LEXICON l29 ! fakur
+adj-def ;
+
+LEXICON l30 ! tepur
+adj-def ;
+
+LEXICON l31 ! trupul
+adj-def ;
+
+LEXICON l32 ! búgvin
+adj-def ;
+
+LEXICON l33 ! gamal
+adj-def ;
+
+LEXICON l34 ! dottin
+adj-def ;
+
+LEXICON l35 ! feingin
+adj-def ;
+
+LEXICON l36 ! liðugur
+adj-def ;
+
+LEXICON l37 ! grammur
+adj-def ;
+
+LEXICON l38 ! kollutur
+adj-def ;
+
+LEXICON l39 ! settur
+adj-def ;
+
+
+
+! Intermediate adjectival lexica
+! ==============================
+
+LEXICON adj-a
+ a-non-umlaut ;
+     a-umlaut ;
+     
+LEXICON a-non-umlaut
+ a-m-sg-n ;
+ a-m-pl-n ;
+ a-f-pl-n ;
+ a-m-sg-a ;
+ a-m-pl-a ;
+ a-f-sg-a ;
+ a-f-pl-a ;
+ a-n-sg-a ;
+ a-f-sg-d ;
+ a-f-pl-d ;
+ a-m-sg-g ;
+ a-m-pl-g ;
+ a-f-sg-g ;
+ a-f-pl-g ;
+ a-n-sg-g ;
+ a-n-pl-g ;
+
+LEXICON a-umlaut
+ a-m-sg-d ;
+ a-m-pl-d ;
+ a-f-sg-n ;
+ a-n-sg-n ;
+ a-n-sg-d ;
+ a-n-pl-n ;
+ a-n-pl-a ;
+ a-n-pl-d ;
+
+
+LEXICON adj-r-gen
+a-m-pl-g-ra ;
+a-f-sg-g-rar ;
+a-f-pl-g-ra ;
+a-n-pl-g-ra ;
+
+! Adjectival case lexica
+! ======================
+
+LEXICON a-m-sg-n
 +A+Msc+Sg+Nom+Indef:%>ur # ;
+
+LEXICON a-m-sg-a
 +A+Msc+Sg+Acc+Indef:%>an # ;
-+A+Msc+Sg+Dat+Indef:%>%^UUMLum # ; !spøkum
-+A+Msc+Sg+Dat+Indef:%>um # ;     !spakum
+
+LEXICON a-m-sg-d
++A+Msc+Sg+Dat+Indef:%>um # ;
+
+LEXICON a-m-sg-g
 +A+Msc+Sg+Gen+Indef:%>s  # ; 
+
+LEXICON a-m-pl-n
 +A+Msc+Pl+Nom+Indef:%>ir  # ; 
+
+LEXICON a-m-pl-a
 +A+Msc+Pl+Acc+Indef:%>ar  # ; 
-+A+Msc+Pl+Dat+Indef:%>%^UUMLum  # ; 
+
+LEXICON a-m-pl-d
 +A+Msc+Pl+Dat+Indef:%>um  # ; 
+
+LEXICON a-m-pl-g
 +A+Msc+Pl+Gen+Indef:%>a  # ; 
+
+LEXICON a-m-pl-g-ra
 +A+Msc+Pl+Gen+Indef:%>ra  # ; 
 
+LEXICON a-f-sg-n
 +A+Fem+Sg+Nom+Indef:%>%^UUML  # ; 
+
+LEXICON a-f-sg-a
 +A+Fem+Sg+Acc+Indef:%>a  # ;  # ; 
+
+LEXICON a-f-sg-d
 +A+Fem+Sg+Dat+Indef:%>ari  # ; 
+
+LEXICON a-f-sg-g
 +A+Fem+Sg+Gen+Indef:%>a  # ; 
-+A+Fem+Sg+Gen+Indef:%>ra  # ; 
+
+LEXICON a-f-sg-g-rar
++A+Fem+Sg+Gen+Indef:%>rar  # ; 
+
+LEXICON a-f-pl-n
 +A+Fem+Pl+Nom+Indef:%>ar  # ; 
+
+LEXICON a-f-pl-a
 +A+Fem+Pl+Acc+Indef:%>ar  # ; 
-+A+Fem+Pl+Dat+Indef:%>%^UUMLum  # ; 
+
+LEXICON a-f-pl-d
 +A+Fem+Pl+Dat+Indef:%>um  # ; 
+
+LEXICON a-f-pl-g
 +A+Fem+Pl+Gen+Indef:%>a  # ; 
+
+LEXICON a-f-pl-g-ra
 +A+Fem+Pl+Gen+Indef:%>ra  # ; 
 
+LEXICON a-n-sg-n
 +A+Neu+Sg+Nom+Indef:%>t  # ; 
+
+LEXICON a-n-sg-a
 +A+Neu+Sg+Acc+Indef:%>t  # ; 
-+A+Neu+Sg+Dat+Indef:%>%^UUMLum  # ; 
+
+LEXICON a-n-sg-d
 +A+Neu+Sg+Dat+Indef:%>um  # ; 
+
+LEXICON a-n-sg-g
 +A+Neu+Sg+Gen+Indef:%>s  # ; 
-+A+Neu+Pl+Nom+Indef:%>%^UUML  # ; 
-+A+Neu+Pl+Acc+Indef:%>%^UUML  # ; 
-+A+Neu+Pl+Dat+Indef:%>%^UUMLum  # ; 
+
+LEXICON a-n-pl-n
++A+Neu+Pl+Nom+Indef:%> # ; 
+
+LEXICON a-n-pl-a
++A+Neu+Pl+Acc+Indef:%> # ; 
+
+LEXICON a-n-pl-d
 +A+Neu+Pl+Dat+Indef:%>um  # ; 
+
+LEXICON a-n-pl-g
 +A+Neu+Pl+Gen+Indef:%>a  # ; 
+
+LEXICON a-n-pl-g-ra
 +A+Neu+Pl+Gen+Indef:%>ra  # ; 
 
-LEXICON a2
-# ;
 
-LEXICON a3
-# ;
+LEXICON adj-def
+ +A+Msc+Sg+Nom+Def:%>i # ;
+ +A+Msc+Sg+Acc+Def:%>a # ;
+ +A+Msc+Sg+Dat+Def:%>a # ;
+ +A+Msc+Sg+Gen+Def:%>a # ;
+ +A+Fem+Sg+Nom+Def:%>a # ;
+ +A+Fem+Sg+Acc+Def:%>u # ;
+ +A+Fem+Sg+Dat+Def:%>u # ;
+ +A+Fem+Sg+Gen+Def:%>u # ;
+ +A+Neu+Sg+Nom+Def:%>a # ;
+ +A+Neu+Sg+Acc+Def:%>a # ;
+ +A+Neu+Sg+Dat+Def:%>a # ;
+ +A+Neu+Sg+Gen+Def:%>a # ;
+ +A+Pl+Nom+Def:%>u # ;
+ +A+Pl+Acc+Def:%>u # ;
+ +A+Pl+Dat+Def:%>u # ;
+ +A+Pl+Gen+Def:%>u # ;
 
-LEXICON a4a
-# ;
 
-LEXICON a4b
-# ;
 
-LEXICON adjdef-m
-+Sg+Nom+Def:%>i # ;
-+Sg+Acc+Def:%>a # ;
-+Sg+Dat+Def:%>a # ;
-+Sg+Gen+Def:%>a # ;
- adjdef-pl ;
-
-LEXICON adjdef-f
-+Sg+Nom+Def:%>a # ;
-+Sg+Acc+Def:%>u # ;
-+Sg+Dat+Def:%>u # ;
-+Sg+Gen+Def:%>u # ;
- adjdef-pl ;
-
-LEXICON adjdef-n
-+Sg+Nom+Def:%>a # ;
-+Sg+Acc+Def:%>a # ;
-+Sg+Dat+Def:%>a # ;
-+Sg+Gen+Def:%>a # ;
- adjdef-pl ;
-
-LEXICON adjdef-pl
-+Pl+Nom+Def:%>u # ;
-+Pl+Acc+Def:%>u # ;
-+Pl+Dat+Def:%>u # ;
-+Pl+Gen+Def:%>u # ;
 
 
 
@@ -1253,42 +1495,446 @@ LEXICON adjdef-pl
 ! =============== !
 
 
-LEXICON v1a
+LEXICON s1  ! nevna
+standard-ir ;
+:%>d l7 ;
+
+LEXICON s2  ! keypa
+standard-ir ;
+:%>d l39 ;
+
+LEXICON s3  ! leiða
+standard-ir ;
+:%>d l18 ;
+
+LEXICON s4  ! frøa
+inf ;
+pres-ir ;
+prt-dd ;
+imp-prsprt ;
+sup-tt ;
+:%>d l7 ;
+
+LEXICON s5  ! senda
+standard-ir ;
+:%>d l7 ;
+
+LEXICON s6  ! hirða
+standard-ir ;
+:%>d l7 ;
+
+LEXICON s7  ! rista
+standard-ir ;
+:%>d l5 ;
+
+LEXICON s8  ! kenna
+standard-ir ;
+:%>d l7 ;
+
+LEXICON s9  ! klippa
+standard-ir ;
+:%>d l5 ;
+
+LEXICON s10 ! fylgja
+standard-j-ir ;
+:%>d l7 ;
+
+LEXICON s11 ! roykja
+standard-j-ir ;
+:%>d l5 ;
+
+LEXICON s12 ! boyggja
+standard-j-ir ;
+:%>d l7 ;
+
+LEXICON s13 ! søkkja
+standard-j-ir ;
+:%>d l5 ;
+
+LEXICON s14 ! heingja
+jinf ;
+pres-ir ;
+:%^EIO prt-d ;
+:%^EIO imp-prsprt ;
+:%^EIO sup ;
+:%>d l7 ;
+
+LEXICON s15 ! skeinkja
+jinf ;
+pres-ir ;
+:%^EIO prt-d ;
+:%^EIO imp-prsprt ;
+:%^EIO sup ;
+:%>d l5 ;
+
+LEXICON s16 ! flekja
+jinf ;
+pres-ir ;
+:%^WVV prt-d ;
+:%^WVV imp-prsprt ;
+:%^WVV sup ;
+:%>d l5 ;
+
+LEXICON s17 ! berja
+jinf ;
+pres-ir ;
+:%^WVV prt-d ;
+:%^WVV imp-prsprt ;
+:%^WVV sup ;
+:%>d l7 ;
+
+LEXICON s18 ! krevja
+jinf ;
+pres-ur ;
+:%^WVV prt-d ;
+:%^WVV imp-prsprt ;
+:%^WVV sup ;
+:%>d l7 ;
+
+LEXICON s19 ! dylja
+jinf ;
+pres-ur ;
+:%^WVV prt-d ;
+:%^WVV imp-prsprt ;
+:%^WVV sup ;
+:%>d l7 ;
+
+LEXICON s20 ! leggja
+:%>d l8 ;
+
+LEXICON s21 ! selja
+:%>d l7 ;
+
+LEXICON s22 ! ryðja
+jinf ;
+pres-ur ;
+:%^WVV prt-d ;
+:%^WVV imp-prsprt ;
+:%^WVV sup ;
+:%>d l18 ;
+
+LEXICON s23 ! smyrja
+jinf ;
+pres-null ;
+:%^WVV prt-d ;
+:%^WVV imp-prsprt ;
+:%^WVV sup ;
+:%>d l7 ;
+
+LEXICON s24 ! flysa
+jinf ;
+pres-null ;
+:%^WVV prt-d ;
+:%^WVV imp-prsprt ;
+:%^WVV sup ;
+:%>d l5 ;
+
+LEXICON s25 ! liva
+inf ;
+pres-ir ;
+prt-d ;
+imp-prsprt ;
+:a sup-a ;
+:%>d l6 ;
+
+LEXICON s26 ! plaga
+inf ;
+pres-ar ;
+prt-d ;
+imp-prsprt ;
+sup ;
+:a sup-a ;
+
+LEXICON s27 ! spáa
+inf ;
+pres-ar ;
+prt-dd ;
+imp-prsprt ;
+sup-tt ;
+:%>d l18 ;
+
+LEXICON s28 ! skaða
+inf ;
+pres-ar ;
+prt-d ;
+imp-prsprt ;
+sup ;
+:%>d l18 ;
+
+LEXICON s29 ! brúka
+inf ;
+pres-ar ;
+prt-d ;
+imp-prsprt ;
+sup ;
+:%>d l5 ;
+
+LEXICON s30 ! kalla
+inf ;
+pres-ar ;
+prt-a ;
+:a impsg ; !deviant kalla
+imppl ;
+prsptc ;
+sup-a ;
+:%>d l5 ;
+
+LEXICON s31 ! gera
+:%>d l7 ;
+
+LEXICON s32 ! búgva
+:%>d l32 ;
+
+LEXICON s33 ! rógva
+:%>d l32 ;
+
+LEXICON s34 ! goyggja
 # ;
-!+V+Inf: # ;
-!+V+Imp+Sg: # ;
-!+V+Imp+Pl:%>ið # ;
-!+V+PrsPrc:%>ndi # ;
-!+V+Sup:%>ð # ;
 
-!+V+Prs+1Sg:%>i # ;
-!+V+Prs+2Sg:%>r # ;
-!+V+Prs+3Sg:%>r # ;
-!+V+Prs+Pl: # ;
+LEXICON s35 ! bíta
+:%>d l26 ;
 
-!+V+Prt+1Sg:%>ði # ;
-!+V+Prt+2Sg:%>ði # ;
-!+V+Prt+3Sg:%>ði # ;
-!+V+Prt+Pl:%>ðu # ;
+LEXICON s36 ! svíkja
+:%>d l26 ;
 
-!+V+Prt+1Sg:%>ti # ;
-!+V+Prt+2Sg:%>ti # ;
-!+V+Prt+3Sg:%>ti # ;
-!+V+Prt+Pl:%>tu # ;
+LEXICON s37 ! bróta
+:%>d l26 ;
 
-LEXICON v1b
+LEXICON s38 ! skjóta
+:%>d l26 ;
+
+LEXICON s39 ! bjóða
+:%>d l26 ;
+
+LEXICON s40 ! fúka
+:%>d l26 ;
+
+LEXICON s41 ! flúgva
+l26 ;
+
+LEXICON s42 ! klúgva
+l26 ;
+
+LEXICON s43 ! njóta
+l26 ;
+
+LEXICON s44 ! finna
+l26 ;
+
+LEXICON s45 ! binda
+l26 ;
+
+LEXICON s46 ! stinga
+l26 ;
+
+LEXICON s47 ! svimja
+l26 ;
+
+LEXICON s48 ! drekka
+l26 ;
+
+LEXICON s49 ! detta
+l26 ;
+
+LEXICON s50 ! røkka
+l26 ;
+
+LEXICON s51 ! ganga
+l26 ;
+
+LEXICON s52 ! veva
+l26 ;
+
+LEXICON s53 ! leypa
+l26 ;
+
+LEXICON s54 ! bera
+l26 ;
+
+LEXICON s55 ! fara
+l26 ;
+
+LEXICON s56 ! geva
+l26 ;
+
+LEXICON s57 ! sita
+l26 ;
+
+LEXICON s58 ! mala
+l26 ;
+
+LEXICON s59 ! stjala
+l26 ;
+
+LEXICON s60 ! taka
+l26 ;
+
+LEXICON s61 ! halda
+l26 ;
+
+LEXICON s62 ! sova
+l26 ;
+
+LEXICON s63 ! koma
+l26 ;
+
+LEXICON s64 ! láta
+l26 ;
+
+LEXICON s65 ! standa
+l26 ;
+
+LEXICON s66 ! biðja
+l26 ;
+
+LEXICON s67 ! draga
+l26 ;
+
+LEXICON s68 ! hvørva
+l26 ;
+
+LEXICON s69 ! sláa
+l26 ;
+
+LEXICON s70 ! siga
+l26 ;
+
+LEXICON s71 ! skerja
+l26 ;
+
+LEXICON s72 ! eta
+l26 ;
+
+LEXICON s73 ! læa
+l26 ;
+
+LEXICON s74 ! grindast
 # ;
 
-LEXICON v2a
+LEXICON s75 ! balast
 # ;
 
-LEXICON v2b
+LEXICON s76 ! ræðast
 # ;
 
-LEXICON v3
+LEXICON s77 ! minnast
 # ;
 
-LEXICON v4
+LEXICON s78 ! farast
 # ;
 
+LEXICON s79 ! skjótast
+# ;
+
+LEXICON s80 ! trivast
+# ;
+
+LEXICON s81 ! kíkjast
+# ;
+
+LEXICON s82 ! f´ylast
+# ;
+
+
+
+
+
+
+! Intermediate lexicon groups
+
+LEXICON standard-ir
+ inf ;
+ ir-verb ;
+
+LEXICON standard-j-ir
+jinf ;
+ir-verb ;
+
+LEXICON ir-verb
+pres-ir ;
+prt-d ;
+imp-prsprt ;
+sup ;
+
+
+! Suffix lexica
+! =============
+
+! Infinitive
+
+LEXICON jinf
++V+Inf:%>ja # ;
+
+LEXICON inf
++V+Inf:%>a # ;
+
+
+! Present
+
+LEXICON pres-ir
++V+Ind+Prs+1Sg:%>i  # ;
++V+Ind+Prs+2Sg:%>ir # ;
++V+Ind+Prs+3Sg:%>ir # ;
+
+LEXICON pres-ar
++V+Ind+Prs+1Sg:%>a # ;
++V+Ind+Prs+2Sg:%>ar # ;
++V+Ind+Prs+3Sg:%>ar # ;
+
+LEXICON pres-ur
++V+Ind+Prs+1Sg:%>i # ;
++V+Ind+Prs+2Sg:%>ur # ;
++V+Ind+Prs+3Sg:%>ur # ;
+
+LEXICON pres-null
++V+Ind+Prs+1Sg:%> # ;
++V+Ind+Prs+2Sg:%> # ;
++V+Ind+Prs+3Sg:%> # ;
+
+
+! Preterite
+
+LEXICON prt-d
++V+Ind+Prt+Sg:%>di # ;
++V+Ind+Prt+Pl:%>du # ;
+
+LEXICON prt-dd
++V+Ind+Prt+Sg:%>ddi # ;
++V+Ind+Prt+Pl:%>ddu # ;
+
+LEXICON prt-a
++V+Ind+Prt+Sg:%>ði # ;
++V+Ind+Prt+Pl:%>ðu # ;
+
+
+! Imperative and present participle
+
+LEXICON imp-prsprt
+impsg ;
+imppl ;
+prsptc ;
+
+LEXICON impsg
++V+Imp+Sg: # ;
+
+LEXICON imppl
++V+Imp+Pl:%>ið # ;
+
+LEXICON prsptc
++V+PrsPtc:%>andi # ;
+
+ 
+! Supine and preterite participle
+ 
+LEXICON sup
++V+Sup:%>t # ;
++V+PrtPtc:%>dur # ;
+
+LEXICON sup-tt
++V+Sup:%>tt # ;
++V+PrtPtc:%>ddur # ;
+
+LEXICON sup-a ! kalla
++V+Sup:%>ð # ;
++V+PrtPtc:%>ður # ;
 

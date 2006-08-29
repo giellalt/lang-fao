@@ -68,19 +68,23 @@ allcaps.fst: ../bin/allcaps.fst
 # This goal depends on twol-foe.bin and a bunch of lexicon files
 
 foe.save: ../bin/foe.save
-../bin/foe.save: ../bin/twol-foe.bin foe-lex.txt \
-	adj-foe-lex.txt noun-foe-lex.txt verb-foe-lex.txt
+../bin/foe.save: ../bin/twol-foe.bin foe-lex.txt noun-foe-morph.txt noun-foe-lex.txt \
+        adj-foe-morph.txt adj-foe-lex.txt adv-foe-lex.txt verb-foe-lex.txt \
+	verb-foe-morph.txt pron-foe-lex.txt punct-foe-lex.txt numeral-foe-lex.txt \
+	pp-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt interj-foe-lex.txt
 	@echo
-	@echo "*** Building foe.save ***" ;
+	@echo "*** Building foe-lex.save ***" ;
 	@echo
-	printf "compile-source foe-lex.txt \
-	adj-foe-lex.txt noun-foe-lex.txt verb-foe-lex.txt \n\
+	printf "compile-source foe-lex.txt noun-foe-morph.txt noun-foe-lex.txt \
+        adj-foe-lex.txt adj-foe-morph.txt adv-foe-lex.txt verb-foe-lex.txt \
+	verb-foe-morph.txt pron-foe-lex.txt punct-foe-lex.txt numeral-foe-lex.txt \
+	pp-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt interj-foe-lex.txt \n\
 	read-rules ../bin/twol-foe.bin \n\
 	compose-result \n\
 	save-result ../bin/foe.save \n\
-	quit \n" > /tmp/foe-save-script
-	@lexc -utf8 < /tmp/foe-save-script
-	rm -f /tmp/foe-save-script
+	quit \n" > ../../tmp/foe-lex-save-script
+	@lexc -utf8 < ../../tmp/foe-lex-save-script
+	rm -f ../../tmp/foe-lex-save-script
 
 
 # The fourth goal is to build twol-foe.bin

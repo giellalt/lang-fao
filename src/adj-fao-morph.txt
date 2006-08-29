@@ -1,0 +1,320 @@
+
+
+! ==================== !
+! Adjective morphology !
+! ==================== !
+
+
+LEXICON l1	! beinur
+adj-a ;
+adj-def ;
+
+LEXICON l2	! leysur
+adj-a ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l3	! bíligur
+adj-a ;
+adj-def ;
+
+LEXICON l4	! kunnugur
+adj-a ;
+adj-def ;
+
+LEXICON l5	! spiltur
+adj-a ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l6	! brekaður
+adj-a ;
+adj-def ;
+
+LEXICON l7	! blindur
+adj-a ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l8	! kaldur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l9	! spakur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l10 ! drúgvur
+adj-a ;
+adj-def ;
+
+LEXICON l11 ! flógvur
+adj-a ; ! -gv-
+adj-def ; ! -gv-
+
+LEXICON l12 ! snjallur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-def ;
+
+LEXICON l13 ! langur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-def ;
+
+LEXICON l14 ! harður
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-def ;
+
+LEXICON l15 ! blíður
+adj-a ;
+adj-def ;
+
+! Check these
+
+LEXICON l16 ! góður
+adj-a ;
+adj-def ;
+
+LEXICON l17 ! bláur
+adj-a ;
+adj-def ;
+
+LEXICON l18 ! keddur
+adj-a ;
+adj-def ;
+
+LEXICON l19 ! n´yggjur
+adj-a ;
+adj-def ;
+
+LEXICON l20 ! stillur
+adj-a ;
+adj-def ;
+
+LEXICON l21 ! fastur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+adj-def ;
+
+LEXICON l22 ! klæddur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+			 a-umlaut ;
+adj-def ;
+
+LEXICON l23 ! rættur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+			 a-umlaut ;
+adj-def ;
+
+LEXICON l24 ! frískur
+adj-a ;
+adj-r-gen ;
+adj-def ;
+
+LEXICON l25 ! danskur
+         a-non-umlaut ;
+:%^UUML      a-umlaut ;
+            adj-r-gen ;
+adj-def ;
+
+LEXICON l26 ! vakin
+adj-def ;
+
+LEXICON l27 ! heiðin
+adj-def ;
+
+LEXICON l28 ! lítil
+adj-def ;
+
+LEXICON l29 ! fakur
+adj-def ;
+
+LEXICON l30 ! tepur
+adj-def ;
+
+LEXICON l31 ! trupul
+adj-def ;
+
+LEXICON l32 ! búgvin
+adj-def ;
+
+LEXICON l33 ! gamal
+adj-def ;
+
+LEXICON l34 ! dottin
+adj-def ;
+
+LEXICON l35 ! feingin
+adj-def ;
+
+LEXICON l36 ! liðugur
+adj-def ;
+
+LEXICON l37 ! grammur
+adj-def ;
+
+LEXICON l38 ! kollutur
+adj-def ;
+
+LEXICON l39 ! settur
+adj-def ;
+
+
+
+! Intermediate adjectival lexica
+! ==============================
+
+LEXICON adj-a
+ a-non-umlaut ;
+     a-umlaut ;
+     
+LEXICON a-non-umlaut
+ a-m-sg-n ;
+ a-m-pl-n ;
+ a-f-pl-n ;
+ a-m-sg-a ;
+ a-m-pl-a ;
+ a-f-sg-a ;
+ a-f-pl-a ;
+ a-n-sg-a ;
+ a-f-sg-d ;
+ a-f-pl-d ;
+ a-m-sg-g ;
+ a-m-pl-g ;
+ a-f-sg-g ;
+ a-f-pl-g ;
+ a-n-sg-g ;
+ a-n-pl-g ;
+
+LEXICON a-umlaut
+ a-m-sg-d ;
+ a-m-pl-d ;
+ a-f-sg-n ;
+ a-n-sg-n ;
+ a-n-sg-d ;
+ a-n-pl-n ;
+ a-n-pl-a ;
+ a-n-pl-d ;
+
+
+LEXICON adj-r-gen
+a-m-pl-g-ra ;
+a-f-sg-g-rar ;
+a-f-pl-g-ra ;
+a-n-pl-g-ra ;
+
+! Adjectival case lexica
+! ======================
+
+LEXICON a-m-sg-n
++A+Msc+Sg+Nom+Indef:%>ur # ;
+
+LEXICON a-m-sg-a
++A+Msc+Sg+Acc+Indef:%>an # ;
+
+LEXICON a-m-sg-d
++A+Msc+Sg+Dat+Indef:%>um # ;
+
+LEXICON a-m-sg-g
++A+Msc+Sg+Gen+Indef:%>s  # ; 
+
+LEXICON a-m-pl-n
++A+Msc+Pl+Nom+Indef:%>ir  # ; 
+
+LEXICON a-m-pl-a
++A+Msc+Pl+Acc+Indef:%>ar  # ; 
+
+LEXICON a-m-pl-d
++A+Msc+Pl+Dat+Indef:%>um  # ; 
+
+LEXICON a-m-pl-g
++A+Msc+Pl+Gen+Indef:%>a  # ; 
+
+LEXICON a-m-pl-g-ra
++A+Msc+Pl+Gen+Indef:%>ra  # ; 
+
+LEXICON a-f-sg-n
++A+Fem+Sg+Nom+Indef:%>%^UUML  # ; 
+
+LEXICON a-f-sg-a
++A+Fem+Sg+Acc+Indef:%>a  # ;  # ; 
+
+LEXICON a-f-sg-d
++A+Fem+Sg+Dat+Indef:%>ari  # ; 
+
+LEXICON a-f-sg-g
++A+Fem+Sg+Gen+Indef:%>a  # ; 
+
+LEXICON a-f-sg-g-rar
++A+Fem+Sg+Gen+Indef:%>rar  # ; 
+
+LEXICON a-f-pl-n
++A+Fem+Pl+Nom+Indef:%>ar  # ; 
+
+LEXICON a-f-pl-a
++A+Fem+Pl+Acc+Indef:%>ar  # ; 
+
+LEXICON a-f-pl-d
++A+Fem+Pl+Dat+Indef:%>um  # ; 
+
+LEXICON a-f-pl-g
++A+Fem+Pl+Gen+Indef:%>a  # ; 
+
+LEXICON a-f-pl-g-ra
++A+Fem+Pl+Gen+Indef:%>ra  # ; 
+
+LEXICON a-n-sg-n
++A+Neu+Sg+Nom+Indef:%>t  # ; 
+
+LEXICON a-n-sg-a
++A+Neu+Sg+Acc+Indef:%>t  # ; 
+
+LEXICON a-n-sg-d
++A+Neu+Sg+Dat+Indef:%>um  # ; 
+
+LEXICON a-n-sg-g
++A+Neu+Sg+Gen+Indef:%>s  # ; 
+
+LEXICON a-n-pl-n
++A+Neu+Pl+Nom+Indef:%> # ; 
+
+LEXICON a-n-pl-a
++A+Neu+Pl+Acc+Indef:%> # ; 
+
+LEXICON a-n-pl-d
++A+Neu+Pl+Dat+Indef:%>um  # ; 
+
+LEXICON a-n-pl-g
++A+Neu+Pl+Gen+Indef:%>a  # ; 
+
+LEXICON a-n-pl-g-ra
++A+Neu+Pl+Gen+Indef:%>ra  # ; 
+
+
+LEXICON adj-def
+ +A+Msc+Sg+Nom+Def:%>i # ;
+ +A+Msc+Sg+Acc+Def:%>a # ;
+ +A+Msc+Sg+Dat+Def:%>a # ;
+ +A+Msc+Sg+Gen+Def:%>a # ;
+ +A+Fem+Sg+Nom+Def:%>a # ;
+ +A+Fem+Sg+Acc+Def:%>u # ;
+ +A+Fem+Sg+Dat+Def:%>u # ;
+ +A+Fem+Sg+Gen+Def:%>u # ;
+ +A+Neu+Sg+Nom+Def:%>a # ;
+ +A+Neu+Sg+Acc+Def:%>a # ;
+ +A+Neu+Sg+Dat+Def:%>a # ;
+ +A+Neu+Sg+Gen+Def:%>a # ;
+ +A+Pl+Nom+Def:%>u # ;
+ +A+Pl+Acc+Def:%>u # ;
+ +A+Pl+Dat+Def:%>u # ;
+ +A+Pl+Gen+Def:%>u # ;
+
+

@@ -1,23 +1,58 @@
 LEXICON Pronoun 
 Personal ;
-Demonstrative ;
 Reflexive ;
 
 LEXICON Personal
-er+Pron+Pers+Msc+Sg+Nom:er # ;
-er+Pron+Pers+Msc+Sg+Acc:ihn # ;
-er+Pron+Pers+Msc+Sg+Gen:ihnen # ;
-er+Pron+Pers+Msc+Sg+Dat:ihm # ;
-sie+Pron+Pers+Fem+Sg+Nom:sie # ;
-sie+Pron+Pers+Fem+Sg+Acc:sie # ;
-sie+Pron+Pers+Fem+Sg+Gen:ihnen # ;
-sie+Pron+Pers+Fem+Sg+Dat:ihnen # ;
+eg+Pron+Pers+Sg+Nom:eg # ;
+eg+Pron+Pers+Sg:m egtu-obl ;
+eg+Pron+Pers+Pl+Nom:vit # ;
+eg+Pron+Pers+Pl:okk okkumtykkum ;
+tú+Pron+Pers+Sg+Nom:tú # ;
+tú+Pron+Pers+Sg:t egtu-obl  ;
+tú+Pron+Pers+Pl+Nom:tit # ;
+tú+Pron+Pers+Pl:tykk okkumtykkum ;
+tygum+Pron+Pers+Sg+Nom:tygum # ;
+tygum+Pron+Pers+Sg:tyg okkumtykkum ;
 
-LEXICON Demonstrative
-der+Pron+Dem+Msc+Sg+Nom:der # ;
-der+Pron+Dem+Msc+Sg+Acc:den # ;
-der+Pron+Dem+Msc+Sg+Gen:des # ;
-der+Pron+Dem+Msc+Sg+Dat:dem # ;
+LEXICON egtu-obl
++Acc:eg # ;
++Dat:är # ;
++Gen:ín # ;
+
+LEXICON okkumtykkum
++Acc:um # ;
++Dat:um # ;
++Gen:ara # ;
+
+hann+Pron+Pers+Sg+Nom:hann # ;
+hann+Pron+Pers+Sg+Acc:hann # ;
+hann+Pron+Pers+Sg+Dat:honum # ;
+hann+Pron+Pers+Sg+Gen:hansara # ;
+hann+Pron+Pers+Pl+Nom:teir # ;
+hann+Pron+Pers+Pl+Acc:teir # ;
+hann+Pron+Pers+Pl: 3obl ;
+
+hon+Pron+Pers+Sg+Nom:hon # ;
+hon+Pron+Pers+Sg+Acc:hana # ;
+hon+Pron+Pers+Sg+Dat:henni # ;
+hon+Pron+Pers+Sg+Gen:hennara # ;
+hon+Pron+Pers+Pl+Nom:tær # ;
+hon+Pron+Pers+Pl+Acc:tær # ;
+hon+Pron+Pers+Pl: 3obl ;
+
+tað+Pron+Pers+Sg+Nom:tað # ;
+tað+Pron+Pers+Sg+Acc:tað # ;
+tað+Pron+Pers+Sg+Dat:tí # ;
+tað+Pron+Pers+Sg+Gen:tess # ;
+tað+Pron+Pers+Pl+Nom:tey # ;
+tað+Pron+Pers+Pl+Acc:tey # ;
+tað+Pron+Pers+Pl: 3obl ;
+
+LEXICON 3obl
++Dat:teimum # ;
++Gen:teirra # ;
 
 LEXICON Reflexive
-# ;
++Pron+Refl+Acc:seg # ;
++Pron+Refl+Dat:sær # ;
++Pron+Refl+Gen:sín # ;

@@ -15,6 +15,13 @@
 ! The next two layers are for indefinite and definite
 ! suffixes, respectively.
 
+! Compounds
+
+LEXICON R
++Cmpnd#:%- Nouns ;
++Cmpnd#:   Nouns ;
+
+
 ! Weak masculines.
 
 LEXICON k1 ! risi fg m5
@@ -757,7 +764,10 @@ LEXICON kv34 ! kraft
 # ;
 
 LEXICON h1 ! eygja
-# ;
++N+Neu: S-N-SGNADG ;
++N+Neu: N-PLNA ;
++N+Neu: N-PLD ;
++N+Neu: N-PLG ;
 
 LEXICON h2 ! hjarta
 # ;
@@ -884,7 +894,6 @@ LEXICON W-M-SGDAT
 LEXICON W-M-SGGEN
 +Sg+Gen:%>a  DF-G-SGm ;
 
-
 ! Plural
 
 LEXICON W-M-PLNOM
@@ -943,7 +952,6 @@ LEXICON S-M-SGGEN-NULL
 
 LEXICON S-M-SGGEN-AR
 +Sg+Gen:%>ar DF-G-SGm ;
-
 
 ! Plural forms
 
@@ -1047,6 +1055,27 @@ LEXICON F-PLGEN
 +Pl+Gen:%>a DF-G-PL ;
 
 
+! Neuter forms
+! ------------
+
+LEXICON S-N-SGNADG
++Sg+Nom: DF-NA-SGn ;
++Sg+Acc: DF-NA-SGn ;
++Sg+Dat: DF-D-SGn ;
++Sg+Gen: DF-G-SGn ;
+
+LEXICON N-PLNA 
++Pl+Nom:%>u DF-NA-PLn ;
++Pl+Acc:%>u DF-NA-PLn ;
++Pl+Nom:%>ur DF-NA-PLn ;
++Pl+Acc:%>ur DF-NA-PLn ;
+
+
+LEXICON N-PLD
++Dat:%>u DF-D-PL ;
+
+LEXICON N-PLG
++Pl+Gen:%>a DF-G-PL ;
 
 ! Common cases
 
@@ -1087,8 +1116,9 @@ LEXICON DF-D-SGm
 +Def:%>num # ;
 
 LEXICON DF-G-SGm
-+Indef: # ;
++Indef:    # ;
 +Def:%>ins # ;
+           R ;
 
 LEXICON DF-N-PLm
 +Indef: # ;
@@ -1114,8 +1144,9 @@ LEXICON DF-D-SGf
 +Def:%>ini # ;
 
 LEXICON DF-G-SGf
-+Indef: # ;
++Indef:      # ;
 +Def:%>innar # ;
+             R ;
 
 LEXICON DF-NA-PLf
 +Indef: # ;
@@ -1125,19 +1156,20 @@ LEXICON DF-NA-PLf
 ! Neuter forms
 ! ---------------
 
-!LEXICON DF-NA-SGn
-!+Indef: # ;
-!+Def:%>ið # ;
+LEXICON DF-NA-SGn
++Indef: # ;
++Def:%>ið # ;
 
-!LEXICON DF-D-SGn
-!+Indef: # ;
-!+Def:%>num # ;
+LEXICON DF-D-SGn
++Indef: # ;
++Def:%>num # ;
 
-!LEXICON DF-G-SGn
-!+Indef: # ;
-!+Def:%>ins # ;
+LEXICON DF-G-SGn
++Indef:    # ;
++Def:%>ins # ;
+           R ;
 
-!LEXICON DF-NA-PLn
-!+Indef: # ;
-!+Def:%>ini # ;
+LEXICON DF-NA-PLn
++Indef: # ;
++Def:%>ini # ;
 

@@ -1,0 +1,126 @@
+# ===================== #
+# Faroese disambiguator #
+# ===================== #
+
+
+
+
+# ========== #
+# Delimiters #
+# ========== #
+
+
+DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
+
+
+
+# ============= #
+# Tags and sets #
+# ============= #
+
+
+# ========
+   SETS
+# ========
+
+LIST BOS = (>>>) (<s>); LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
+
+LIST N = N ;
+LIST V = V ;
+LIST A = A ;
+LIST P = P ;
+LIST Adv = Adv ;
+LIST CC = CC ;
+LIST CS = CS ;
+LIST Interj = Interj ;
+LIST Pr = Pr ;
+LIST Pron = Pron ;
+LIST Pers = Pers ;
+LIST Det = Det ;
+LIST Refl = Refl ;
+LIST Recipr = Recipr ;
+LIST Poss = Poss ;
+LIST Nom = Nom ;
+LIST Acc = Acc ;
+LIST Gen = Gen ;
+LIST Dat = Dat ;
+LIST Msc = Msc ;
+LIST Fem = Fem ;
+LIST Neu = Neu ;
+LIST Sg = Sg ;
+LIST Pl = Pl ;
+LIST Def = Def ;
+LIST Indef = Indef ;
+LIST Cmp = Cmp ;
+LIST Superl = Superl ;
+LIST Prs = Prs ;
+LIST Prt = Prt ;
+LIST 1Sg = 1Sg ;
+LIST 2Sg = 2Sg ;
+LIST 3Sg = 3Sg ;
+LIST Inf = Inf ;
+LIST PrfPrc = PrfPrc ;
+LIST PrsPrc = PrsPrc ;
+LIST Imp = Imp ;
+LIST Cmpnd = Cmpnd ;
+LIST CLB = CLB ;
+LIST PUNCT = PUNCT ;
+LIST LEFT = LEFT ;
+LIST RIGHT = RIGHT ;
+
+
+
+
+LIST TAG = N V A P Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
+Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
+PrsPrc Sup Imp CLB PUNCT LEFT RIGHT ;
+
+# Sets
+
+LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum
+íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin
+hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin
+vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "vestan" ;
+
+LIST DATPREP = "hjá" "með" "á" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "mótvegis" "nær" "sambært" "viðvíkjandi" ;
+
+
+# Complementary set
+
+SET NOTDAT = TAG - Dat ;
+
+
+CONSTRAINTS
+
+# NP
+
+
+SELECT Msc IF (0 (A Nom))(1 (N Msc Nom));
+SELECT Msc IF (0 (A Acc))(1 (N Msc Acc));
+SELECT Msc IF (0 (A Gen))(1 (N Msc Gen));
+SELECT Msc IF (0 (A Dat))(1 (N Msc Dat));
+
+SELECT Fem IF (0 (A Nom))(1 (N Fem Nom));
+SELECT Fem IF (0 (A Acc))(1 (N Fem Acc));
+SELECT Fem IF (0 (A Gen))(1 (N Fem Gen));
+SELECT Fem IF (0 (A Dat))(1 (N Fem Dat));
+
+SELECT Neu IF (0 (A Nom))(1 (N Neu Nom));
+SELECT Neu IF (0 (A Acc))(1 (N Neu Acc));
+SELECT Neu IF (0 (A Gen))(1 (N Neu Gen));
+SELECT Neu IF (0 (A Dat))(1 (N Neu Dat));
+
+
+# PP
+
+SELECT Dat IF (*-1 DATPREP BARRIER NOTDAT);
+
+
+# Infinitive
+
+SELECT Inf IF (-1 ("at"));
+
+
+# Lexemes
+
+SELECT Pr IF (0 ("á"))(1 Dat);

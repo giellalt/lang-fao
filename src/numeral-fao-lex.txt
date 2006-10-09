@@ -3,6 +3,7 @@ LEXICON Numeral
 NUM-PREFIXES ;
 
 LEXICON NUM-PREFIXES				!^C^
+	ARABIC ;
 §	ARABIC ;      ! §24			!^C^
 §§	ARABIC ;     ! §§24			!^C^
 §% 	ARABIC ;    ! § 24			!^C^
@@ -22,7 +23,7 @@ LEXICON NUM-PREFIXES				!^C^
 %*	ARABIC ;     ! *24			!^C^
 %$	ARABIC ;     ! $24  ! And the Euro?	!^C^
 %<	ARABIC ;     ! <24			!^C^
-%>	ARABIC ;     ! >24			!^C^
+!%>	ARABIC ;     ! >24			!^C^
 s%.	ARABIC ;     ! s.24			!^C^
 	
 
@@ -40,7 +41,8 @@ LEXICON ARABIC					!^C^
 %0 ARABICLOOP ;					!^C^
 
 LEXICON ARABICLOOP				!^C^
-ARABIC ;					!^C^
+	ARABICEND ;
+	ARABIC ;				!^C^
 %-	ARABIC ;	      ! 1-2    multipart numbers	!^C^
 %.%- 	ARABIC ;	      ! 1.-2   multipart numbers	!^C^
 %-% 	ARABIC ;	      ! 1- 2   multipart numbers	!^C^
@@ -58,4 +60,5 @@ ARABIC ;					!^C^
 %%+Num+Nom:%% # ;	! 50%. It is wrong, but 75 % of us write "75%".		!^C^
 % %%+Num+Nom:% %% # ;	! We must analyse the correct ones as well... 50 % etc.	!^C^
 
-
+LEXICON ARABICEND
++Num: # ;

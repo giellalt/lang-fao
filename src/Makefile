@@ -6,7 +6,7 @@
 # This goal depends on foe.save being up to date.
 
 ifoe.fst: ../bin/ifoe.fst
-../bin/ifoe.fst: ../bin/foe.fst ../bin/foe.save ../bin/tok.fst \
+../bin/ifoe.fst: ../bin/foe.fst ../bin/foe.save ../bin/tok.fst ../bin/abbr.txt \
 	../bin/allcaps.fst
 	@echo
 	@echo "*** Building the inverse ifoe.fst ***"
@@ -34,6 +34,24 @@ foe.fst: ../bin/foe.fst
 	quit \n" > /tmp/foe-fst-script
 	@xfst < /tmp/foe-fst-script
 	@rm -f /tmp/foe-fst-script
+
+
+# Here we make the abbrevation file for our current preprocessor, 
+# the perl-based preprocess (located in the script catalogue)
+
+abbr: ../bin/abbr.txt
+../bin/abbr.txt: ../../../gt/script/abbr-extract propernoun-foe-lex.txt pron-foe-lex.txt \
+	adv-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt pp-foe-lex.txt\
+	abbr-foe-lex.txt noun-foe-lex.txt
+	@echo
+	@echo "*** Extracting abbreviations from abbr-foe-lex.txt to abbr.txt ***" ;
+	@echo
+	@perl ../../../gt/script/abbr-extract \
+		--abbr_lex=abbr-foe-lex.txt \
+		--lex=propernoun-foe-lex.txt,pron-foe-lex.txt \
+	adv-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt pp-foe-lex.txt,noun-foe-lex.txt,abbr-foe-lex.txt \
+		--output=$@
+
 
 # The second goal is to build the caseconv.fst file
 # This goal depends on case.regex
@@ -69,14 +87,16 @@ allcaps.fst: ../bin/allcaps.fst
 
 foe.save: ../bin/foe.save
 ../bin/foe.save: ../bin/twol-foe.bin foe-lex.txt noun-foe-morph.txt noun-foe-lex.txt \
-        adj-foe-morph.txt adj-foe-lex.txt adv-foe-lex.txt verb-foe-lex.txt \
+        propernoun-foe-lex.txt adj-foe-morph.txt adj-foe-lex.txt adv-foe-lex.txt \
+	verb-foe-lex.txt abbr-foe-lex.txt \
 	verb-foe-morph.txt pron-foe-lex.txt punct-foe-lex.txt numeral-foe-lex.txt \
 	pp-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt interj-foe-lex.txt det-foe-lex.txt
 	@echo
 	@echo "*** Building foe-lex.save ***" ;
 	@echo
 	printf "compile-source foe-lex.txt noun-foe-morph.txt noun-foe-lex.txt \
-        adj-foe-lex.txt adj-foe-morph.txt adv-foe-lex.txt verb-foe-lex.txt \
+        propernoun-foe-lex.txt adj-foe-lex.txt adj-foe-morph.txt adv-foe-lex.txt \
+	verb-foe-lex.txt abbr-foe-lex.txt \
 	verb-foe-morph.txt pron-foe-lex.txt punct-foe-lex.txt numeral-foe-lex.txt \
 	pp-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt interj-foe-lex.txt det-foe-lex.txt \n\
 	read-rules ../bin/twol-foe.bin \n\

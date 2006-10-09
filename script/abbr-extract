@@ -1,0 +1,91 @@
+#!/usr/bin/perl -w
+use strict;
+
+# abbr-extract
+# Perl-script for extracting abbreviations from lexicon files.
+#  - Reads different abbreviation classes from abbr-lang-lex.txt
+#  - Searches through other files for multiword expressions.
+#  - Prints abbreviation classes to file that is used by preprocess.
+#
+# Script is called from Makefile, command line parameters:
+#  --output=<file_name> The filename for output.
+#  --abbr_lex=<file_name> The filename for abbreviation lexicon.
+#  --lex=<file_name1>,<file_name2> Comma-separated list of other lexicon files.
+#
+# $Id$
+
+# Use the local character class. 
+# It means that variable \w contains Latin-1 alphabet.
+#use locale;
+#use encoding 'utf-8';
+#use open ':utf8';
+
+# permit named arguments
+use Getopt::Long;
+
+my @lex_file_names;
+my $lex_files;
+my $abbr_file;
+my $abbr_lex_file;
+
+my %idioms;
+
+GetOptions ("output=s" => \$abbr_file,
+			"abbr_lex=s" => \$abbr_lex_file,
+			"lex=s" => \$lex_files) ;
+
+@lex_file_names = split (/,/, $lex_files);
+
+# Read from lex-file and write to abbr file.
+open ABB, "> $abbr_file" or die "Cant open the file: $!\n";
+
+open LEX, "< $abbr_lex_file" or die "Cant open the file: $!\n";
+
+# read from the beginning of the file.
+# idioms come first.
+while (<LEX>) {
+	if (/^LEXICON ITRAB/) {
+		print ABB "$_\n";
+		last;
+	}
+}
+
+while (<LEX>) {	
+	chomp;
+
+	if (/^LEXICON/) {
+		print ABB "$_\n";
+		next;
+	}
+	next if /^\!/;    #discard comments
+	
+	# The regular expression matches expressions of 
+	# at least following type (see documentation)
+	# nr
+	# j.d.s
+	
+	if ((my $abbr = $_)	=~ s/^([\w\.]+(% [\w\.]+)*)\s.*/$1/) {
+		$abbr =~ s/%//g;
+		print ABB "$abbr\n";
+	}
+}
+close LEX;
+
+# There are multi-word expressions also in other files.
+# they go to IDIOM-category.
+print ABB "LEXICON IDIOM\n";
+for my  $file (@lex_file_names) {
+	open LEX, "< $file" or die "Cant open the file: $!\n";
+	while (<LEX>) {
+		chomp;
+		next if /^\!/ ;    #discard comments
+		
+		if ((my $abbr = $_) =~ s/^([\w\-]+(% [\w\-]+)+)[\s|:].*/$1/) {
+			$abbr =~ s/%//g;
+			print ABB "$abbr\n";
+		}
+	}
+	close LEX;
+}
+close ABB;
+

@@ -48,7 +48,7 @@ abbr: ../bin/abbr.txt
 	@echo
 	@perl ../../../gt/script/abbr-extract \
 		--abbr_lex=abbr-foe-lex.txt \
-		--lex=propernoun-foe-lex.txt,pron-foe-lex.txt \
+		--lex=propernoun-foe-lex.txt,pron-foe-lex.txt,acro-foe-lex.txt \
 	adv-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt pp-foe-lex.txt,noun-foe-lex.txt,abbr-foe-lex.txt \
 		--output=$@
 
@@ -88,7 +88,7 @@ allcaps.fst: ../bin/allcaps.fst
 foe.save: ../bin/foe.save
 ../bin/foe.save: ../bin/twol-foe.bin foe-lex.txt noun-foe-morph.txt noun-foe-lex.txt \
         propernoun-foe-lex.txt adj-foe-morph.txt adj-foe-lex.txt adv-foe-lex.txt \
-	verb-foe-lex.txt abbr-foe-lex.txt \
+	verb-foe-lex.txt abbr-foe-lex.txt acro-foe-lex.txt \
 	verb-foe-morph.txt pron-foe-lex.txt punct-foe-lex.txt numeral-foe-lex.txt \
 	pp-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt interj-foe-lex.txt det-foe-lex.txt
 	@echo
@@ -96,7 +96,7 @@ foe.save: ../bin/foe.save
 	@echo
 	printf "compile-source foe-lex.txt noun-foe-morph.txt noun-foe-lex.txt \
         propernoun-foe-lex.txt adj-foe-lex.txt adj-foe-morph.txt adv-foe-lex.txt \
-	verb-foe-lex.txt abbr-foe-lex.txt \
+	verb-foe-lex.txt abbr-foe-lex.txt acro-foe-lex.txt \
 	verb-foe-morph.txt pron-foe-lex.txt punct-foe-lex.txt numeral-foe-lex.txt \
 	pp-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt interj-foe-lex.txt det-foe-lex.txt \n\
 	read-rules ../bin/twol-foe.bin \n\

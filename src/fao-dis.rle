@@ -35,6 +35,7 @@ LIST CC = CC ;
 LIST CS = CS ;
 LIST Interj = Interj ;
 LIST Abbr = Abbr ;
+LIST ACR = ACR ;
 LIST Pr = Pr ;
 LIST Pron = Pron ;
 LIST Pers = Pers ;
@@ -86,11 +87,13 @@ vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "vestan" ;
 
 LIST DATPREP = "hjá" "með" "á" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "mótvegis" "nær" "sambært" "viðvíkjandi" ;
 
+LIST ACCDATPREP = "í" "á" "undir" "yfir" "eftir" "fyri" "við" ;
 
 # Complementary set
 
 SET NOTDAT = TAG - Dat ;
-
+SET NOTACC = TAG - Acc ;
+SET NOTACCDAT = TAG - Acc - Dat ;
 
 CONSTRAINTS
 
@@ -115,8 +118,10 @@ SELECT Neu IF (0 (A Dat))(1 (N Neu Dat));
 
 # PP
 
+SELECT Acc IF (*-1 ACCPREP BARRIER NOTACC);
 SELECT Dat IF (*-1 DATPREP BARRIER NOTDAT);
-
+REMOVE Gen IF (*-1 ACCDATPREP BARRIER NOTACCDAT);
+REMOVE Nom IF (*-1 ACCDATPREP BARRIER NOTACCDAT);
 
 # Infinitive
 

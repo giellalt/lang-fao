@@ -1,0 +1,139 @@
+! ========= !
+! Akronymer !
+! ========= !
+
+LEXICON Acronyms
+
+Akronymnumeralier ; ! Nogle tal först, måskje
+
+FIRSTLETTER ;  ! Dynamically generated acronyms, 	!^C^ Remove these from nonrec?
+               ! between two and four letters long.
+LETTERNUMBER ; ! Listed (still not monitored)		!^C^
+               ! Perhaps we should allow for a final arabic number at
+               ! the end of the acronyms, the NRK and NRK2 pattern.
+SOMELONGACRO ; ! Here, we collect some long acronyms, perhaps we should  !^C^
+               ! open for dynamic generation of longer acronyms, if this 
+               ! list gets long.
+smallacro ;    ! This is a pointer to a lexicon of manually listed small-letter
+               ! acronyms. They are not generated, since it would interfer with the
+               ! ordinary transducer, but listed here, as they then can point to the
+               ! same ACRO lexicon as the generated capital-letter acronyms.
+
+
+LEXICON Akronymnumeralier
+%0 anl ; 1 anl ; 2 anl ; 3 anl ; 4 anl ; 5 anl ; 6 anl ; 7 anl ; 8 anl ; 9 anl ; 
+
+LEXICON anl ! akronymloop
+     Akronymnumeralier ; ! loop
+     FIRSTLETTER ;       ! Over til bogstaverne
+ :%- FIRSTLETTER ;       ! ... med stræg først
+
+
+LEXICON FIRSTLETTER	!^C^
+B SCND ; C SCND ; D  SCND ; F  SCND ; G  SCND ; 	!^C^
+H SCND ; J SCND ; K  SCND ; L  SCND ; M  SCND ; N  SCND ; !^C^
+P SCND ; Q SCND ; R SCND ; S  SCND ; T  SCND ; V  SCND ; 	!^C^
+W SCND ; X SCND ; Z  SCND ; 								!^C^
+A SCND ; E  SCND ; I  SCND ; O  SCND ; U  SCND ; 			!^C^
+Æ SCND ; Ø SCND ; Y  SCND ; Ä  SCND ; Ö  SCND ; Å  SCND ; 			!^C^
+Á SCND ; É SCND ; Í SCND ; Ó SCND ; Ú SCND ; Ý SCND ; Þ SCND ; Ð SCND ;	!^C^
+
+LEXICON SCND		!^C^
+B THRD ; C THRD ; D THRD ; F THRD ; G THRD ; 	!^C^
+H THRD ; J THRD ; K THRD ; L THRD ; M THRD ; N THRD ; !^C^
+P THRD ; Q THRD ; R THRD ; S THRD ; T THRD ; V THRD ; 	!^C^
+W THRD ; X THRD ; Z THRD ; 								!^C^
+A THRD ; Á THRD ; E THRD ; I THRD ; O THRD ; U THRD ; 			!^C^
+Æ THRD ; Ø THRD ; Y THRD ; Ä THRD ; Ö THRD ; Å THRD ; 			!^C^
+Á THRD ; É THRD ; Í THRD ; Ó THRD ; Ú THRD ; Ý THRD ; Þ THRD ; Ð THRD ;	!^C^
+%- ARABIC ; ARABIC ; !^C^ ! N-9520 Kárášjohka
+
+LEXICON THRD			!^C^
+B FRTH ; C FRTH ; D  FRTH ; F  FRTH ; G  FRTH ; 	!^C^
+H FRTH ; J FRTH ; K  FRTH ; L  FRTH ; M  FRTH ; N  FRTH ; 	!^C^
+P FRTH ; Q FRTH ; R FRTH ; S  FRTH ; T  FRTH ; V  FRTH ; 	!^C^
+W FRTH ; X FRTH ; Z  FRTH ; Ž FRTH ; 								!^C^
+A FRTH ; Á FRTH ; E  FRTH ; I  FRTH ; O  FRTH ; U  FRTH ; 			!^C^
+Æ FRTH ; Ø FRTH ; Y  FRTH ; Ä  FRTH ; Ö  FRTH ; Å  FRTH ; 			!^C^
+Á FRTH ; É FRTH ; Í FRTH ; Ó FRTH ; Ú FRTH ; Ý FRTH ; Þ FRTH ; Ð FRTH ;	!^C^
+  ACRO ;
+				!^C^
+
+LEXICON FRTH			!^C^
+B FFTH ; C FFTH ; D  FFTH ; F  FFTH ; G  FFTH ; 	!^C^
+H FFTH ; J FFTH ; K  FFTH ; L  FFTH ; M  FFTH ; N  FFTH ;  	!^C^
+P FFTH ; Q FFTH ; R FFTH ; S  FFTH ; T  FFTH ;  V  FFTH ; 	!^C^
+W FFTH ; X FFTH ; Z  FFTH ; 								!^C^
+A FFTH ; Á FFTH ; E  FFTH ; I  FFTH ; O  FFTH ; U  FFTH ; 			!^C^
+Æ FFTH ; Ø FFTH ; Y  FFTH ; Ä  FFTH ; Ö  FFTH ; Å  FFTH  ; 			!^C^
+Á FFTH ; É FFTH ; Í FFTH ; Ó FFTH ; Ú FFTH ; Ý FFTH ; Þ FFTH ; Ð FFTH ;	!^C^
+ACRO ;				!^C^
+! # ; !To prevent cases like :as, `as and as. But this gives tagless 3-letter ACR.
+
+
+LEXICON FFTH			!^C^
+B ACRO ; C ACRO ; D  ACRO ; F  ACRO ; G  ACRO ; 	!^C^
+H ACRO ; J ACRO ; K  ACRO ; L  ACRO ; M  ACRO ; N  ACRO ;  	!^C^
+P ACRO ; Q ACRO ; R ACRO ; S  ACRO ; T  ACRO ;  V  ACRO ; 	!^C^
+W ACRO ; X ACRO ; Z  ACRO ; 								!^C^
+A ACRO ; Á ACRO ; E  ACRO ; I  ACRO ; O  ACRO ; U  ACRO ; 			!^C^
+Æ ACRO ; Ø ACRO ; Y  ACRO ; Ä  ACRO ; Ö  ACRO ; Å  ACRO  ; 			!^C^
+Á ACRO ; É ACRO ; Í ACRO ; Ó ACRO ; Ú ACRO ; Ý ACRO ; Þ ACRO ; Ð ACRO ;	!^C^
+ACRO ;
+			!^C^
+
+
+LEXICON LETTERNUMBER 
+A/S ACRO ;
+a/s ACRO ;
+O97S ACRO ;
+Bb ACRO ;
+Jk1 ACRO ;
+NRK1 ACRO ;
+NRK2 ACRO ;
+TV2 ACRO ;
+E6 ACRO ;
+L-97 ACRO ;
+LA21 ACRO ;
+O-97 ACRO ;
+P1 ACRO ; 
+P2 ACRO ; 
+P3 ACRO ; 
+P4 ACRO ; 
+P-1 ACRO ; 
+P-2 ACRO ; 
+P-3 ACRO ; 
+P-4 ACRO ; 
+Q-2 ACRO ;
+T5PC ACRO ;
+! Here, we need a good regex for
+! letter - number combination.
+
+LEXICON SOMELONGACRO		!^C^
+EXFACFON ACRO ;			!^C^
+EXFACHS ACRO ;			!^C^
+NAMMCO ACRO ;
+KANUKOKA ACRO ;
+NASCO ACRO ;
+NSR-N ACRO ;
+
+LEXICON smallacro
+as ACRO ; !A/S
+cd ACRO ;
+tv ACRO ;
+
+LEXICON ACRO               
+%-      ARABIC ;           ! Here we dive over to the numerals, 
+        ARABIC ;           ! Here we dive over to the numerals
++N+ACR: acroconnector ;    ! Here we add the POS tag and go ACRO
+
+LEXICON acroconnector  
+:%- acrocase ;             
+:%' acrocase ;             
+:   acrocase ;
+
+LEXICON acrocase
++Nom: # ;
++Gen:%>s # ;
+
+

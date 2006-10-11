@@ -24,11 +24,21 @@ LEXICON R
 
 ! Weak masculines.
 
+LEXICON k1/3
+k1 ;
+k3 ;
+
 LEXICON k1 ! risi fg m5
+k-ent1 ;
+k-flt1 ;
+
+LEXICON k-ent1
 +N+Msc: W-M-SGNOM ;
 +N+Msc: W-M-SGACC ;
 +N+Msc: W-M-SGDAT ;
 +N+Msc: W-M-SGGEN ;
+
+LEXICON k-flt1
 +N+Msc: W-M-PLNOM ;
 +N+Msc: W-M-PLACC ;
 +N+Msc: W-M-PLDAT ;
@@ -123,10 +133,16 @@ LEXICON k11 ! ísur
 ! ir-stems
 
 LEXICON k12 ! vinur
+k-ent12 ;
+k-flt12 ;
+
+LEXICON k-ent12
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
 +N+Msc: S-M-SGDAT ;
 +N+Msc: S-M-SGGEN-AR ;
+
+LEXICON k-flt12
 +N+Msc: S-M-PLNOM-IR ;
 +N+Msc: S-M-PLACC-IR ;
 +N+Msc: S-M-PLDAT ;
@@ -148,10 +164,16 @@ LEXICON k14 ! staður
 +N+Msc: S-M-PLGEN ;
 
 LEXICON k15 ! gestur
+k-ent15 ;
+k-flt15 ;
+
+LEXICON k-ent15
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
 +N+Msc: S-M-SGDAT ;
 +N+Msc: S-M-SGGEN ; !s-gen
+
+LEXICON k-flt15
 +N+Msc: S-M-PLNOM-IR ;
 +N+Msc: S-M-PLACC-IR ;
 +N+Msc: S-M-PLDAT ;
@@ -778,33 +800,57 @@ LEXICON h2 ! hjarta
 +N+Neu:%^UUML N-PLG-na ;
 
 LEXICON h3 ! orð
+ h-ent3 ;
+ h-flt3 ;
+
+LEXICON h-ent3
 +N+Neu: S-N-SGNA ;
 +N+Neu: S-N-SGDG-is ;
+
+LEXICON h-flt3
 +N+Neu: N-PLNA ;
 +N+Neu: N-PLD ;
 +N+Neu: N-PLG ;
 
 LEXICON h4 ! boð
+ h-ent4 ;
+ h-flt4 ;
+
+LEXICON h-ent4
 +N+Neu: S-N-SGNA ;
 +N+Neu: S-N-SGG ;
 +N+Neu: S-N-SGDG-is ;
+
+LEXICON h-flt4
 +N+Neu: N-PLNA ;
 +N+Neu: N-PLD ;
 +N+Neu: N-PLG ;
 
 
 LEXICON h5 ! barn
+ h-ent5 ;
+ h-flt5 ;
+
+LEXICON h-ent5
 +N+Neu: S-N-SGNA ;
 +N+Neu: S-N-SGDG-is ;
+
+LEXICON h-flt5
 +N+Neu:%^UUML N-PLNA ;
 +N+Neu:%^UUML N-PLD ;
 +N+Neu: N-PLG ;
 
 
 LEXICON h6 ! lag
+ h-ent6 ;
+ h-flt6 ;
+
+LEXICON h-ent6
 +N+Neu: S-N-SGNA ;
 +N+Neu: S-N-SGG ;
 +N+Neu: S-N-SGDG-is ;
+
+LEXICON h-flt6
 +N+Neu:%^UUML N-PLNA ;
 +N+Neu:%^UUML N-PLD ;
 +N+Neu: N-PLG ;
@@ -818,8 +864,14 @@ LEXICON h7 ! bræv
 +N+Neu: N-PLG ;
 
 LEXICON h8 ! land
+ h-ent8 ;
+ h-flt8 ;
+
+LEXICON h-ent8 ! land
 +N+Neu: S-N-SGNA ;
 +N+Neu: S-N-SGDG-is ;
+
+LEXICON h-flt8 ! land
 +N+Neu:%^UUML N-PLNA ;
 +N+Neu:%^UUML N-PLD ;
 +N+Neu: N-PLG ;
@@ -832,31 +884,55 @@ LEXICON h9 ! blikk
 +N+Neu: N-PLG ;
 
 LEXICON h10 ! fall
+ h-ent10 ;
+ h-flt10 ;
+
+LEXICON h-ent10
 +N+Neu: S-N-SGNA ;
 +N+Neu: S-N-SGDG-is ;
+
+LEXICON h-flt10
 +N+Neu:%^UUML N-PLNA ;
 +N+Neu:%^UUML N-PLD ;
 +N+Neu: N-PLG ;
 
 
 LEXICON h11 ! hús
+h-ent11 ;
+h-flt11 ;
+
+LEXICON h-ent11
 +N+Neu: S-N-SGNA ;
 +N+Neu: S-N-SGDG-is ;
+
+LEXICON h-flt11
 +N+Neu: N-PLNA ;
 +N+Neu: N-PLD ;
 +N+Neu: N-PLG ;
 
 LEXICON h12 ! glas
+h-ent12 ;
+h-flt12 ;
+
+LEXICON h-ent12 
 +N+Neu: S-N-SGNA ;
 +N+Neu: S-N-SGDG-is ;
+
+LEXICON h-flt12
 +N+Neu:%^UUML N-PLNA ;
 +N+Neu:%^UUML N-PLD ;
 +N+Neu: N-PLG ;
 
 
 LEXICON h13 ! setur
+h-ent13 ;
+h-flt13 ;
+
+LEXICON h-ent13 
 +N+Neu: S-N-SGNA ;
 +N+Neu: S-N-SGDG-is ;
+
+LEXICON h-flt13
 +N+Neu: N-PLNA ;
 +N+Neu: N-PLD ;
 +N+Neu: N-PLG ;

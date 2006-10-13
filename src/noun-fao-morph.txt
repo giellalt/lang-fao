@@ -786,8 +786,14 @@ LEXICON kv34 ! kraft
 # ;
 
 LEXICON h1 ! eygja
+h-ent1 ;
+h-flt1 ;
+
+LEXICON h-ent1
 +N+Neu: S-N-SGNA ;
 +N+Neu: S-N-SGDG ;
+
+LEXICON h-flt1
 +N+Neu: N-PLNA-u-ur ;
 +N+Neu: N-PLD ;
 +N+Neu: N-PLG-na ;
@@ -798,6 +804,10 @@ LEXICON h2 ! hjarta
 +N+Neu:%^UUML N-PLNA-u-ur ;
 +N+Neu:%^UUML N-PLD ;
 +N+Neu:%^UUML N-PLG-na ;
+
+LEXICON h3/5
+h3 ;
+h5 ;
 
 LEXICON h3 ! orð
  h-ent3 ;
@@ -1019,8 +1029,15 @@ LEXICON h23 ! egg
 
 
 LEXICON h24 ! kvæði
+h-ent24 ;
+h-flt24 ;
+
+LEXICON h-ent24
 +N+Neu: S-N-SGNA ;
-+N+Neu: S-N-SGDG-is ;
++N+Neu: S-N-SGD ;
++N+Neu: S-N-SGG-s ;
+
+LEXICON h-flt24
 +N+Neu: N-PLNA ;
 +N+Neu: N-PLD ;
 +N+Neu: N-PLG ;
@@ -1308,8 +1325,14 @@ LEXICON S-N-SGDG-is
 +Sg+Dat:%>i DF-D-SGn ;
 +Sg+Gen:%>s DF-G-SGn ;
 
+LEXICON S-N-SGD
++Sg+Dat: DF-D-SGn ;
+
 LEXICON S-N-SGG
 +Sg+Gen: DF-G-SGn ;
+
+LEXICON S-N-SGG-s
++Sg+Gen:%>s DF-G-SGn ;
 
 LEXICON N-PLNA-u-ur 
 +Pl+Nom:%>u DF-NA-PLn ;

@@ -725,7 +725,7 @@ LEXICON k38e
 +N+Msc: S-M-SGACC ;
 +N+Msc:%^IUML S-M-SGDAT ;
 +N+Msc: S-M-SGDAT ;
-+N+Msc: S-M-SGGEN ;
++N+Msc:%^VDEL S-M-SGGEN ;
 
 LEXICON k-flt38
 +N+Msc: S-M-PLNOM ;
@@ -742,7 +742,7 @@ LEXICON k39e
 +N+Msc: S-M-SGACC ;
 +N+Msc: S-M-SGDAT ;
 +N+Msc:%^GDEL S-M-SGGEN-AR ;
-+N+Msc:%^GDEL S-M-SGGEN ;
++N+Msc:%^GVDEL S-M-SGGEN ;
 
 LEXICON k-flt39
 +N+Msc: S-M-PLNOM ;
@@ -1655,7 +1655,9 @@ h-flt16 ;
 
 LEXICON h16e
 +N+Neu: S-N-SGNA ;
-+N+Neu: S-N-SGDG-is ;
++N+Neu:%^JI S-N-SGD-i ;    !skýggi
++N+Neu: S-N-SGD ;          !skýggj
++N+Neu:%^GGDEL S-N-SGG-s ; !krýs
 
 LEXICON h-flt16f
 h-flt16 ;
@@ -1665,14 +1667,15 @@ LEXICON h-flt16
 +N+Neu: N-PLD ;
 +N+Neu: N-PLG ;
 
-
 LEXICON h17 ! kriggj
 h17e ;
 h-flt17 ;
 
 LEXICON h17e
 +N+Neu: S-N-SGNA ;
-+N+Neu: S-N-SGDG-is ;
++N+Neu:%^JI S-N-SGD-i ;    !kríggi
++N+Neu: S-N-SGD ;          !kríggj
++N+Neu:%^GDEL S-N-SGG-s ;  !krígs
 
 LEXICON h-flt17
 +N+Neu: N-PLNA ;
@@ -1714,7 +1717,8 @@ h-flt20 ;
 
 LEXICON h20e
 +N+Neu: S-N-SGNA ;
-+N+Neu: S-N-SGDG-is ;
++N+Neu: S-N-SGD-i ;
++N+Neu:%^GVDEL S-N-SGG-s ;
 
 LEXICON h-flt20
 +N+Neu: N-PLNA ;
@@ -2084,15 +2088,18 @@ LEXICON S-N-SGDG
 +Sg+Dat: DF-D-SGn ;
 +Sg+Gen: DF-G-SGn ;
 
-LEXICON S-N-SGDG-is
-+Sg+Dat:%>i DF-D-SGn ;
-+Sg+Gen:%>s DF-G-SGn ;
-
 LEXICON S-N-SGD
 +Sg+Dat: DF-D-SGn ;
 
 LEXICON S-N-SGG
 +Sg+Gen: DF-G-SGn ;
+
+LEXICON S-N-SGDG-is
+S-N-SGD-i ;
+S-N-SGG-s ;
+
+LEXICON S-N-SGD-i
++Sg+Dat:%>i DF-D-SGn ;
 
 LEXICON S-N-SGG-s
 +Sg+Gen:%>s DF-G-SGn ;

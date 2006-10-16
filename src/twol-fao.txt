@@ -11,8 +11,9 @@ Alphabet
 
  g2:g j2:j v2:v 
  
- %^UUML:0 %^IUML:0 %^W:0 %^EPH:0 %^JI:0
- %^OEA:0 %^GDEL:0 %^JDEL:0 %^RDEL:0 %^EIO:0 %^OA:0 %^WVV:0
+ %^UUML:0 %^IUML:0 %^W:0 %^EPH:0 %^JI:0 %^OEA:0 
+ %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL: %^JDEL:0 %^RDEL:0
+ %^EIO:0 %^OA:0 %^WVV:0
  %>:0 ;
 
 Sets
@@ -29,29 +30,43 @@ Rules
 
 "Final j as i"
  j:0 <=> _ %^JI: ;
-!€ beiggj%^JI
-!€ beiggi0
+!€ beiggj%^JI%>i
+!€ beigg000i
 
 "Deleting the gv Verschärferung 1"
- g:0 <=> Vow _ v: %>: [ s | m ] ;
+ g:0 <=> Vow _ v: %^GVDEL: %>: ;
 
 "Deleting the gv Verschärferung 2"
- v:0 <=> Vow [ g: | g2: ] _ %>: [ s | m ] ;
+ v:0 <=> Vow g: _ %^GVDEL: %^VDEL: %>: ;
 
-!€ búgv%>s
-!€ bú000s
+!€ búgv%^GVDEL%>s
+!€ bú0000s
 
-!€ bóg2v%>s
+!€ bógv%^GDEL%>s
 !€ bóg00s
 
 !€ skógv%>m
 !€ skó000m
 
+"Deleting ggj in Genitive I"
+ g:0 <=> Vow _ g: j:  %^GGDEL: %>: s ;
+
+"Deleting ggj in Genitive II"
+ g:0 <=> Vow g: _ j: [ %^GDEL: | %^GGDEL: ] %>: s ;
+
+"Deleting ggj in Genitive III"
+ j:0 <=> Vow g: g: _  [ %^GDEL: | %^GGDEL: ] %>: s ;
+
+!€ skýggj%ˆGGDEL%>s
+!€ ský00000s
+
+!€ kríggj%^GDEL%>s
+!€ kríg0000s
 
 "Deleting g in gv strings"
- g:0 <=> Vow _ v2: %^GDEL: %>: ;
+ g:0 <=> Vow _ v: %^GDEL: %>: ;
 
-!€ sjógv2%>ar
+!€ sjógv%>ar
 !€ sjó0v0ar
 
 "Deleting r in Genitive of ur stems"
@@ -195,7 +210,7 @@ Rules
  a:0 <=> _ %^W: n ;
 
 "Special Dative v Deletion"
- v:0 <=> g2: _ %^IUML: %>: i ;
+ v:0 <=> g _ %^IUML: %>: i ;
 
 !€ bógv%^IUML%>i
 !€ bøg000i

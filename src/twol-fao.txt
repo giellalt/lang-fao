@@ -12,7 +12,7 @@ Alphabet
  g2:g j2:j v2:v 
  
  %^UUML:0 %^IUML:0 %^W:0 %^EPH:0 %^JI:0 %^OEA:0 
- %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL: %^JDEL:0 %^RDEL:0
+ %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0
  %^EIO:0 %^OA:0 %^WVV:0
  %>:0 ;
 
@@ -33,20 +33,36 @@ Rules
 !€ beiggj%^JI%>i
 !€ beigg000i
 
+"Deleting j in exceptional stems"
+ j:0 <=> _ %^JDEL ;
+
+!€ verkj%^JDEL%>ur
+!€ verk000ur
+
+"Deleting j in j-stems"
+  j:0 <=> Vow g g _ %>: [ Cns | i ] ;
+!          Vow [ Cns - j ]  _ %>: [ u r | Cns | i ] ;
+!€ heyggj%>i
+!€ heygg00i
+
+
+
+! Verschärferung
+
 "Deleting the gv Verschärferung 1"
- g:0 <=> Vow _ v: %^GVDEL: %>: ;
+ g:0 <=> Vow _ v: %^GVDEL:  ;
 
 "Deleting the gv Verschärferung 2"
- v:0 <=> Vow g: _ %^GVDEL: %^VDEL: %>: ;
+ v:0 <=> Vow g: _ [ %^GVDEL: | %^VDEL: ] ;
 
 !€ búgv%^GVDEL%>s
 !€ bú0000s
 
-!€ bógv%^GDEL%>s
-!€ bóg00s
+!€ bógv%^VDEL%>s
+!€ bóg000s
 
-!€ skógv%>m
-!€ skó000m
+!€ skógv%^GVDEL%>m
+!€ skó0000m
 
 "Deleting ggj in Genitive I"
  g:0 <=> Vow _ g: j:  %^GGDEL: %>: s ;
@@ -57,7 +73,7 @@ Rules
 "Deleting ggj in Genitive III"
  j:0 <=> Vow g: g: _  [ %^GDEL: | %^GGDEL: ] %>: s ;
 
-!€ skýggj%ˆGGDEL%>s
+!€ skýggj%^GGDEL%>s
 !€ ský00000s
 
 !€ kríggj%^GDEL%>s
@@ -73,20 +89,8 @@ Rules
  r:0 <=> u: _ %^EPH  %^RDEL %>: a r ;
 
 !€ brúður%^EPH%^%RDEL%>ar
-!€ brúð0000ar
+!€ brúð00000ar
 
-
-"Deleting j in exceptional stems"
- j:0 <=> _ %^JDEL ;
-
-!€ verkj%^JDEL%>ur
-!€ verk000ur
-
-"Deleting j in j-stems"
-  j:0 <=> Vow g g _ %>: [ Cns | i ] ;
-!          Vow [ Cns - j ]  _ %>: [ u r | Cns | i ] ;
-!€ heyggj%>i
-!€ heygg00i
 
 "Vowel-deletion in Vowel-initial suffix"
  Vx:0 <=> _ %>: [ i n | i ð | u m | s %>: i n s | a ] ;

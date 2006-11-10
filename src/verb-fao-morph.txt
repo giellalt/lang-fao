@@ -191,8 +191,10 @@ prsptc ;
 sup-a ;
 :%>d l5 ;
 
-LEXICON s31 ! gera
-inf ;
+LEXICON s31 ! only the verb gera and Xgera
+:er inf ;
+:er pres-null ;
+:jør prt-d ;
 :%>d l7 ;
 
 LEXICON s32 ! búgva
@@ -363,46 +365,222 @@ l26 ;
 
 LEXICON s74 ! grindast
 reflinf ;
-# ;
+
 
 LEXICON s75 ! balast
 reflinf ;
-# ;
+
 
 LEXICON s76 ! ræðast
 reflinf ;
-# ;
+
 
 LEXICON s77 ! minnast
 reflinf ;
-# ;
+
 
 LEXICON s78 ! farast
 reflinf ;
-# ;
+
 
 LEXICON s79 ! skjótast
 reflinf ;
-# ;
+
 
 LEXICON s80 ! trivast
 reflinf ;
-# ;
+
 
 LEXICON s81 ! kíkjast
 reflinf ;
-# ;
+
 
 LEXICON s82 ! f´ylast
 reflinf ;
-# ;
 
+
+
+! Split lexica
+! ============
+
+LEXICON s1/26
+s1 ;
+s26 ;
+
+LEXICON s1/30
+s1 ;
+s30 ;
+
+LEXICON s11/15
+s11 ;
+s15 ;
+
+LEXICON s15/11
+s15 ;
+s11 ;
+
+LEXICON s18/16
+s18 ;
+s16 ;
+
+LEXICON s19/30
+s19 ;
+s30 ;
+
+LEXICON s2/1
+s2 ;
+s1 ;
+
+LEXICON s2/30
+s2 ;
+s30 ;
+
+LEXICON s21/11
+s21 ;
+s11 ;
+
+LEXICON s21/18
+s21 ;
+s18 ;
+
+LEXICON s24/2
+s24 ;
+s2 ;
+
+LEXICON s25/1
+s25 ;
+s1 ;
+
+LEXICON s27/30
+s27 ;
+s30 ;
+
+LEXICON s28/30
+s28 ;
+s30 ;
+
+LEXICON s29/2
+s29 ;
+s2 ;
+
+LEXICON s29/30
+s29 ;
+s30 ;
+
+LEXICON s3/30
+s3 ;
+s30 ;
+
+LEXICON s30/1
+s30 ;
+s1 ;
+
+LEXICON s30/11
+s30 ;
+s11 ;
+
+LEXICON s30/19
+s30 ;
+s19 ;
+
+LEXICON s30/2
+s30 ;
+s2 ;
+
+LEXICON s30/22
+s30 ;
+s22 ;
+
+LEXICON s30/27
+s30 ;
+s27 ;
+
+LEXICON s30/28
+s30 ;
+s28 ;
+
+LEXICON s30/29
+s30 ;
+s29 ;
+
+LEXICON s30/40
+s30 ;
+s40 ;
+
+LEXICON s30/5
+s30 ;
+s5 ;
+
+LEXICON s30/6
+s30 ;
+s6 ;
+
+LEXICON s30/9
+s30 ;
+s9 ;
+
+LEXICON s36/2
+s36 ;
+s2 ;
+
+LEXICON s39/30
+s30 ;
+s39 ;
+
+LEXICON s47/19
+s47 ;
+s19 ;
+
+LEXICON s49/52
+s49 ;
+s52 ;
+
+LEXICON s49/9
+s49 ;
+s9 ;
+
+LEXICON s5/30
+s5 ;
+s30 ;
+
+LEXICON s52/30
+s52 ;
+s30 ;
+
+LEXICON s6/30
+s6 ;
+s30 ;
+
+LEXICON s60/30
+s60 ;
+s30 ;
+
+LEXICON s7/49
+s7 ;
+s49 ;
+
+LEXICON s74/75
+s74 ;
+s75 ;
+
+LEXICON s77/74
+s77 ;
+s74 ;
+
+LEXICON s8/30
+s8 ;
+s30 ;
+
+LEXICON s9/30
+s9 ;
+s30 ;
 
 
 
 
 
 ! Intermediate lexicon groups
+! ===========================
 
 LEXICON standard-ir
  inf ;
@@ -502,3 +680,19 @@ LEXICON sup-a ! kalla
 +V+Sup:%>ð # ;
 +V+PrtPtc:%>ður # ;
 
+
+
+! Ad hoc, irregular
+! =================
+
+LEXICON VERA
++V+Inf:vera # ;
++V+Ind+Prs+3Sg:er # ;
++V+Ind+Prs+Pl:eru # ;
++V+Ind+Prt+3Sg:var # ;
+
+LEXICON VERÐA
++V+Inf:verða # ;
++V+Ind+Prs+3Sg:verður # ;
++V+Ind+Prs+Pl:verða # ;
++V+Ind+Prt+3Sg:varð # ;

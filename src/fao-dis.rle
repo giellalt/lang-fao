@@ -80,6 +80,14 @@ Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
 PrsPrc Sup Imp CLB PUNCT LEFT RIGHT ;
 
 # Sets
+# ====
+
+# Verb sets
+
+LIST AUX = "vera" "verða" ;
+
+
+# Preposition sets
 
 LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum
 íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin
@@ -88,9 +96,13 @@ vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "vestan" ;
 
 LIST DATPREP = "hjá" "með" "á" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "mótvegis" "nær" "sambært" "viðvíkjandi" ;
 
-LIST ACCDATPREP = "í" "á" "undir" "yfir" "eftir" "fyri" "við" ;
+LIST ACCDATPREP = "í" "á" "undir" "yfir" "eftir" "fyri" "við" "frá" ;
 
 LIST ACCGENPREP = "innan" "uttan" "millum" "til" "vegna" ;
+
+SET SOMEACCPREP = ACCPREP | ACCDATPREP | ACCGENPREP ;
+SET SOMEDATPREP = DATPREP | ACCDATPREP ;
+SET SOMEGENPREP = ACCGENPREP ;
 
 # Complementary set
 
@@ -118,12 +130,18 @@ LIST @ADVL = @ADVL ;
   MAPPINGS #
 # ======== #
 
-MAP (@SUBJ @SPRED) TARGET (N Nom);
+MAP (@SUBJ) TARGET (N Nom);
 
-MAP (@OBJ @P<) TARGET (N Acc);
-MAP (@IOBJ @P<) TARGET (N Dat);
+ADD (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 AUX BARRIER NPNH LINK -1 (Nom));
 
-MAP (@N> @P<) TARGET (N Gen);
+MAP (@OBJ) TARGET (N Acc) IF (*-1 V BARRIER Pr);
+MAP (@IOBJ) TARGET (N Dat) IF (*1 (@OBJ) BARRIER NPNH);
+MAP (@P<) TARGET (N Dat) IF (*-1 DATPREP BARRIER NPNH);
+
+ADD (@P<) TARGET (Acc) IF (*-1 SOMEACCPREP BARRIER NPNH);
+ADD (@P<) TARGET (Gen) IF (*-1 SOMEGENPREP BARRIER NPNH);
+
+MAP (@N>) TARGET (N Gen) IF (*1 N BARRIER V OR Adv);
 
 MAP (@N>) TARGET (A Nom) OR (Dem Nom) IF (*1 (N Nom) BARRIER NPNH);
 MAP (@N>) TARGET (A Acc) OR (Dem Acc) IF (*1 (N Acc) BARRIER NPNH);
@@ -153,6 +171,7 @@ MAP (@N<) TARGET Poss IF (0 Gen)(-1 (N Gen));
 # ================
 
 SELECT Pr IF (0 ("á"))(1 Dat OR Acc);
+SELECT Pr IF (0 ("til"))(*1 (N Gen) BARRIER NPNH);
 SELECT CS IF (0 ("at"))(1C Inf);
 
 

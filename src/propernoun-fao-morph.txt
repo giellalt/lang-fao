@@ -1,0 +1,98 @@
+! ============ !
+! Proper nouns !
+! ============ !
+
+! Table of content
+! ================
+! - The morphological tags
+! - - Male first names
+! - - Female first names
+! - - Surnames
+! - - Place names and other names
+
+
+
+! The morphological tags
+! ======================
+
+! For each group, the maltag etc. lexicon functions as a default
+! lexicon. The other lexica are there for specific subgroups of the names.
+
+
+! Male first names
+! ----------------
+
+LEXICON maltag
++N+Prop+Nom: # ;
++N+Prop+Acc: # ;
++N+Prop+Dat:%>i # ;
++N+Prop+Gen:%>s # ;
+
+LEXICON MUSTAFA
++N+Prop+Nom: # ;
++N+Prop+Acc: # ;
++N+Prop+Dat: # ;
++N+Prop+Gen: # ;
+
+LEXICON ARI
++N+Prop+Nom:%>i # ;
++N+Prop+Acc:%>a # ;
++N+Prop+Dat:%>a # ;
++N+Prop+Gen:%>a # ;
+
+LEXICON WILLY
++N+Prop+Nom: # ;
++N+Prop+Acc: # ;
++N+Prop+Dat: # ;
++N+Prop+Gen:%>s # ;
+
+LEXICON DAGUR
++N+Prop+Nom:ur # ;
++N+Prop+Acc: # ;
++N+Prop+Dat:%>i # ;
++N+Prop+Gen:%>s # ;
+
+
+
+! Female first names
+! ------------------
+LEXICON RUT
++N+Prop+Nom: # ;
++N+Prop+Acc: # ;
++N+Prop+Dat: # ;
++N+Prop+Gen:%>ar # ;
+
+LEXICON ASTA
++N+Prop+Nom:%>a # ;
++N+Prop+Acc:%>u # ;
++N+Prop+Dat:%>u # ;
++N+Prop+Gen:%>u # ;
+
+! LEXICON SIV
+! LEXICON ø>a
+
+
+! Surnames
+! --------
+
+
+LEXICON surtag
++N+Prop+Nom: # ;
++N+Prop+Acc: # ;
++N+Prop+Dat:%>i # ;
++N+Prop+Gen:%>s # ;
+
+
+! Place names and other names
+! ---------------------------
+LEXICON plctag
++N+Prop+Nom: # ;
++N+Prop+Acc: # ;
++N+Prop+Dat:%>i # ;
++N+Prop+Gen:%>s # ;
+
+LEXICON plcpl
++N+Prop+Pl+Nom:%>ar # ;
++N+Prop+Pl+Acc:%>ar # ;
++N+Prop+Pl+Dat:%>um # ;
++N+Prop+Pl+Gen:%>a # ;

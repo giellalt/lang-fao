@@ -125,14 +125,18 @@ LIST @N< = @N< ;
 LIST @SPRED = @SPRED ;
 LIST @VFIN = @VFIN ;
 LIST @ADVL = @ADVL ;
+LIST @P< = @P< ;
+LIST @X = @X ;
+
+LIST SYNTAG = (@SUBJ)  (@OBJ)  (@N>)  (@N<)  (@SPRED)  (@VFIN)  (@ADVL)   (@P<) ;
 
 # ======== #
   MAPPINGS #
 # ======== #
 
-MAP (@SUBJ) TARGET (N Nom);
 
-ADD (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 AUX BARRIER NPNH LINK -1 (Nom));
+ADD (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 AUX BARRIER NPNH LINK -1 Nom);
+MAP (@SUBJ) TARGET (N Nom);
 
 MAP (@OBJ) TARGET (N Acc) IF (*-1 V BARRIER Pr);
 MAP (@IOBJ) TARGET (N Dat) IF (*1 (@OBJ) BARRIER NPNH);
@@ -156,6 +160,9 @@ MAP (@N<) TARGET Poss IF (0 Nom)(-1 (N Nom));
 MAP (@N<) TARGET Poss IF (0 Acc)(-1 (N Acc));
 MAP (@N<) TARGET Poss IF (0 Dat)(-1 (N Dat));
 MAP (@N<) TARGET Poss IF (0 Gen)(-1 (N Gen));
+
+MAP (@X) TARGET WORD ;
+
 # =========== #
   CONSTRAINTS #
 # =========== #
@@ -306,7 +313,9 @@ REMOVE Nom IF (*-1 ACCDATPREP BARRIER NOTACCDAT);
 
 SELECT Inf IF (-1 ("at"));
 
+# Present plural
 
+SELECT (V Pl) IF (-1 (N Pl Nom));
 
 
 # Syntactic disambiguation
@@ -320,6 +329,9 @@ REMOVE (@P<) IF (*-1 BOS OR (N Acc) OR (N Dat) OR (N Nom) OR V OR CLB OR CS BARR
 
 REMOVE (@N>) IF (*-1 Pr BARRIER NPNH);
 
+SELECT (Sg @SPRED) IF (*-1 AUX BARRIER NPNH LINK -1 (Nom Sg));
+SELECT (Pl @SPRED) IF (*-1 AUX BARRIER NPNH LINK -1 (Nom Pl));
+
 
 # Case disambiguation
 
@@ -330,3 +342,10 @@ REMOVE Dat IF (*-1 ACCGENPREP BARRIER NPNH)(0 (@P<));
 REMOVE Nom IF (*-1 ACCDATPREP BARRIER NPNH)(0 (@P<));
 REMOVE Gen IF (*-1 ACCDATPREP BARRIER NPNH)(0 (@P<));
 
+# Number SPRED disambiguation
+
+
+
+
+
+REMOVE (@X)  IF (0 SYNTAG);

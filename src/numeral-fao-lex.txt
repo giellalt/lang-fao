@@ -1,24 +1,121 @@
 
 LEXICON Numeral
+basic ;
 NUM-PREFIXES ;
+
+LEXICON basic
+eitt+Num:ei EITT ;
+tvey+Num:tv TVEY ;
+trı+Num:tr TRİ ;
+einir+Num:ein PAIRNUM ;
+tvinnir+Num:tvinn PAIRNUM ;
+trinnir+Num:trinn PAIRNUM ;
+fıra n ;
+fimm n ;
+seks n ;
+sjey n ;
+átta n ;
+níggju n ;
+tíggju n ;
+ellivu n ;
+tólv n ;
+trettan n ;
+fjúrtan n ;
+fimtan n ;
+sekstan n ;
+seytan n ;
+átjan n ;
+nítjan n ;
+tjúgu n ;
+tretivu n ;
+fjöruti n ;
+hálvtrıss n ;
+trıss n ;
+hálvfjerğs n ;
+fırs n ;
+hálvfems n ;
+hundrağ n ;
+túsund n ;
+millión n ;
+
+LEXICON EITT
++Msc+Nom:n # ;
++Msc+Acc:n # ;
++Msc+Dat:num # ;
++Msc+Gen:ns # ;
++Fem+Nom:n # ;
++Fem+Acc:na # ;
++Fem+Dat:ni # ;
++Fem+Dat:nari # ;
++Fem+Gen:nar # ;
++Neu+Nom:tt # ;
++Neu+Acc:tt # ;
++Neu+Dat:num # ;
++Neu+Gen:ns # ;
+
+LEXICON TVEY
++Msc+Nom:eir # ;
++Msc+Acc:eir # ;
++Msc+Dat:eimum # ;
++Msc+Gen:eggja # ;
++Fem+Nom:ær # ;
++Fem+Acc:ær # ;
++Fem+Dat:eimum # ;
++Fem+Gen:ggja # ;
++Neu+Nom:ey # ;
++Neu+Acc:ey # ;
++Neu+Dat:eimum # ;
++Neu+Gen:ggja # ;
+
+LEXICON TRİ
++Msc+Nom:íggir # ;
++Msc+Acc:íggjar # ;
++Msc+Dat:imum # ;
++Msc+Gen:íggja # ;
++Fem+Nom:íggjar # ;
++Fem+Acc:íggjar # ;
++Fem+Dat:imum # ;
++Fem+Gen:íggja # ;
++Neu+Nom:ı # ;
++Neu+Acc:ı # ;
++Neu+Dat:imimum # ;
++Neu+Gen:íggja # ;
+
+LEXICON PAIRNUM
++Msc+Pl+Nom:ir # ;
++Msc+Pl+Acc:ar # ;
++Msc+Pl+Dat:um # ;
++Msc+Pl+Gen:a # ;
++Fem+Pl+Nom:ar # ;
++Fem+Pl+Acc:ar # ;
++Fem+Pl+Dat:um # ;
++Fem+Pl+Gen:a # ;
++Neu+Pl+Nom:i # ;
++Neu+Pl+Acc:i # ;
++Neu+Pl+Dat:um # ;
++Neu+Pl+Gen:a # ;
+
+LEXICON n
++Num: # ;
+
 
 LEXICON NUM-PREFIXES				!^C^
 	ARABIC ;
-Â§	ARABIC ;      ! Â§24			!^C^
-Â§Â§	ARABIC ;     ! Â§Â§24			!^C^
-Â§% 	ARABIC ;    ! Â§ 24			!^C^
-Â§Â§% 	ARABIC ;   ! Â§Â§ 24			!^C^
+§	ARABIC ;      ! §24			!^C^
+§§	ARABIC ;     ! §§24			!^C^
+§% 	ARABIC ;    ! § 24			!^C^
+§§% 	ARABIC ;   ! §§ 24			!^C^
 %-	ARABIC ;     ! -24			!^C^
-%â€’	ARABIC ;     ! -24 U+2012 Figure line	!^C^
-%â€“	ARABIC ;     ! -24 U+2013 en dash	!^C^
-%â€”	ARABIC ;     ! -24 U+2014 em dash	!^C^
-%â€•	ARABIC ;     ! -24 U+2015 horizontal l	!^C^
+%œôòò	ARABIC ;     ! -24 U+2012 Figure line	!^C^
+%œôòó	ARABIC ;     ! -24 U+2013 en dash	!^C^
+%œôòô	ARABIC ;     ! -24 U+2014 em dash	!^C^
+%œôòõ	ARABIC ;     ! -24 U+2015 horizontal l	!^C^
 %+	ARABIC ;     ! +24			!^C^
 %-% 	ARABIC ;	! - 24			!^C^
-%â€’% 	ARABIC ;	! - 24 2012		!^C^
-%â€“% 	ARABIC ;	! - 24 2013	 	!^C^
-%â€”% 	ARABIC ;	! - 24 2014		!^C^
-%â€•% 	ARABIC ;	! - 24 2015 		!^C^
+%œôòò% 	ARABIC ;	! - 24 2012		!^C^
+%œôòó% 	ARABIC ;	! - 24 2013	 	!^C^
+%œôòô% 	ARABIC ;	! - 24 2014		!^C^
+%œôòõ% 	ARABIC ;	! - 24 2015 		!^C^
 %+% 	ARABIC ;	! + 24			!^C^
 %*	ARABIC ;     ! *24			!^C^
 %$	ARABIC ;     ! $24  ! And the Euro?	!^C^
@@ -53,7 +150,7 @@ LEXICON ARABICLOOP				!^C^
 %, ARABIC ;							!^C^
 %: ARABIC ;							!^C^
 %  ARABIC ;	   ! Allowing for "23 500".			!^C^
-Â   ARABIC ;	   ! Allowing for "23 500" w/nbsp (initial char is alt-space)	!^C^
+   ARABIC ;	   ! Allowing for "23 500" w/nbsp (initial char is alt-space)	!^C^
 %/ ARABIC ;	   ! 24/12					!^C^
 +A+Ord:%. # ;							 !^C^
 ,%-+Num:,%- # ;		! 10,-					 !^C^

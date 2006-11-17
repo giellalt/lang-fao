@@ -6,6 +6,7 @@
 
 LEXICON Numeral
 basic ;
+ordinals ;
 NUM-PREFIXES ;
 
 LEXICON basic
@@ -44,65 +45,137 @@ túsund n ;
 millión n ;
 
 LEXICON EITT
-+Msc+Nom:n # ;
-+Msc+Acc:n # ;
-+Msc+Dat:num # ;
-+Msc+Gen:ns # ;
-+Fem+Nom:n # ;
-+Fem+Acc:na # ;
-+Fem+Dat:ni # ;
-+Fem+Dat:nari # ;
-+Fem+Gen:nar # ;
-+Neu+Nom:tt # ;
-+Neu+Acc:tt # ;
-+Neu+Dat:num # ;
-+Neu+Gen:ns # ;
++Msc+Sg+Nom:n # ;
++Msc+Sg+Acc:n # ;
++Msc+Sg+Dat:num # ;
++Msc+Sg+Gen:ns # ;
++Fem+Sg+Nom:n # ;
++Fem+Sg+Acc:na # ;
++Fem+Sg+Dat:ni # ;
++Fem+Sg+Dat:nari # ;
++Fem+Sg+Gen:nar # ;
++Neu+Sg+Nom:tt # ;
++Neu+Sg+Acc:tt # ;
++Neu+Sg+Dat:num # ;
++Neu+Sg+Gen:ns # ;
 
 LEXICON TVEY
-+Msc+Nom:eir # ;
-+Msc+Acc:eir # ;
-+Msc+Dat:eimum # ;
-+Msc+Gen:eggja # ;
-+Fem+Nom:ær # ;
-+Fem+Acc:ær # ;
-+Fem+Dat:eimum # ;
-+Fem+Gen:ggja # ;
-+Neu+Nom:ey # ;
-+Neu+Acc:ey # ;
-+Neu+Dat:eimum # ;
-+Neu+Gen:ggja # ;
++Msc+Sg+Nom:eir # ;
++Msc+Sg+Acc:eir # ;
++Msc+Sg+Dat:eimum # ;
++Msc+Sg+Gen:eggja # ;
++Fem+Sg+Nom:ær # ;
++Fem+Sg+Acc:ær # ;
++Fem+Sg+Dat:eimum # ;
++Fem+Sg+Gen:ggja # ;
++Neu+Sg+Nom:ey # ;
++Neu+Sg+Acc:ey # ;
++Neu+Sg+Dat:eimum # ;
++Neu+Sg+Gen:ggja # ;
 
 LEXICON TRÝ
-+Msc+Nom:íggir # ;
-+Msc+Acc:íggjar # ;
-+Msc+Dat:imum # ;
-+Msc+Gen:íggja # ;
-+Fem+Nom:íggjar # ;
-+Fem+Acc:íggjar # ;
-+Fem+Dat:imum # ;
-+Fem+Gen:íggja # ;
-+Neu+Nom:ý # ;
-+Neu+Acc:ý # ;
-+Neu+Dat:imimum # ;
-+Neu+Gen:íggja # ;
++Msc+Sg+Nom:íggir # ;
++Msc+Sg+Acc:íggjar # ;
++Msc+Sg+Dat:imum # ;
++Msc+Sg+Gen:íggja # ;
++Fem+Sg+Nom:íggjar # ;
++Fem+Sg+Acc:íggjar # ;
++Fem+Sg+Dat:imum # ;
++Fem+Sg+Gen:íggja # ;
++Neu+Sg+Nom:ý # ;
++Neu+Sg+Acc:ý # ;
++Neu+Sg+Dat:imimum # ;
++Neu+Sg+Gen:íggja # ;
 
 LEXICON PAIRNUM
-+Msc+Pl+Nom:ir # ;
-+Msc+Pl+Acc:ar # ;
-+Msc+Pl+Dat:um # ;
-+Msc+Pl+Gen:a # ;
-+Fem+Pl+Nom:ar # ;
-+Fem+Pl+Acc:ar # ;
-+Fem+Pl+Dat:um # ;
-+Fem+Pl+Gen:a # ;
-+Neu+Pl+Nom:i # ;
-+Neu+Pl+Acc:i # ;
-+Neu+Pl+Dat:um # ;
-+Neu+Pl+Gen:a # ;
++Msc+Sg+Pl+Nom:ir # ;
++Msc+Sg+Pl+Acc:ar # ;
++Msc+Sg+Pl+Dat:um # ;
++Msc+Sg+Pl+Gen:a # ;
++Fem+Sg+Pl+Nom:ar # ;
++Fem+Sg+Pl+Acc:ar # ;
++Fem+Sg+Pl+Dat:um # ;
++Fem+Sg+Pl+Gen:a # ;
++Neu+Sg+Pl+Nom:i # ;
++Neu+Sg+Pl+Acc:i # ;
++Neu+Sg+Pl+Dat:um # ;
++Neu+Sg+Pl+Gen:a # ;
 
 LEXICON n
 +Num: # ;
 
+
+! Ordinals
+! ========
+
+LEXICON ordinals
+fyrsti:fyrst adj-def ;
+annar: ANNAR ;
+triði:trið adj-def ;
+fjórði:fjórð adj-def ;
+fimti:fimt adj-def ;
+sætti:sætt adj-def ;
+sjeyndi:sjeynd adj-def ;
+áttandi:áttand adj-def ;
+nággjundi:níggjund adj-def ;
+tíggjundi:tíggjund adj-def ;
+ellivti:ellivt adj-def ;
+ellinti:ellint adj-def ;
+tólvti:tólvt adj-def ;
+trettandi:trettand adj-def ;
+fjúrtandi:fjúrtand adj-def ;
+fimtandi:fimtand adj-def ;
+sekstandi:sekstand adj-def ;
+seytjandi:seytjand adj-def ;
+átjandi:átjand adj-def ;
+nítjandi:nítjand adj-def ;
+tjúgundi:tjúgund adj-def ;
+tretivundi:tretivund adj-def ;
+fjørutiundi:fjørutiund  adj-def ;
+hálvtrýsinstrúgundi:hálvtrýsinstrúgund adj-def ;
+hálvtrýssundi:hálvtrýssund adj-def ;
+trýsinstjúgundi:trýsinstjúgund adj-def ;
+trýssundi:trýssund adj-def ;
+hálvfjerðsinstjúgundi:hálvfjerðsinstjúgund adj-def ;
+hálvfjerðsundi:hálvfjerðsund adj-def ;
+fýrsinstjúgundi:fýrsinstjúgund adj-def ;
+fýrsundi:fýrsund adj-def ;
+hálvfemsinstjúgundi:hálvfemsinstjúgund adj-def ;
+hálvfemsundi:hálvfemsund adj-def ;
+hundrandi:hundrand adj-def ;
+túsundi:túsund adj-def ;
+
+LEXICON ANNAR
++Msc+Nom:annar # ;
++Msc+Acc:annan # ;
++Msc+Dat:øðrum # ;
++Msc+Gen:annars # ;
++Fem+Nom:onnur # ;
++Fem+Acc:aðra # ;
++Fem+Acc:aðru # ;
++Fem+Dat:aðri # ;
++Fem+Dat:aðru # ;
++Fem+Gen:annarar # ;
++Neu+Nom:annað # ;
++Neu+Acc:annað # ;
++Neu+Dat:øðrum # ;
++Neu+Gen:annars # ;
++Msc+Pl+Nom:aðrir # ;
++Msc+Pl+Acc:aðrar # ;
++Msc+Pl+Dat:øðrum # ;
++Msc+Pl+Gen:annara # ;
++Fem+Pl+Nom:aðrar # ;
++Fem+Pl+Acc:aðrar # ;
++Fem+Pl+Dat:øðrum # ;
++Fem+Pl+Gen:annara # ;
++Neu+Pl+Nom:onnur # ;
++Neu+Pl+Acc:onnur # ;
++Neu+Pl+Dat:øðrum # ;
++Neu+Pl+Gen:annara # ;
+
+
+! Arabic numerals
+! ===============
 
 LEXICON NUM-PREFIXES                            !^C^                               
         ARABIC ;

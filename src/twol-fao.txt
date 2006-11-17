@@ -14,6 +14,7 @@ Alphabet
  %^UUML:0 %^IUML:0 %^W:0 %^EPH:0 %^JI:0 %^OEA:0 
  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0
  %^EIO:0 %^OA:0 %^WVV:0
+ %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0
  %>:0 ;
 
 Sets
@@ -140,8 +141,8 @@ Rules
 
 "I-umlaut"
  Vx:Vy <=> _ Cns* %^IUML: ;
-     where Vx in ( a ó á ø o )
-	       Vy in ( e ø æ i y )
+     where Vx in ( a o ø á ó ú )
+	   Vy in ( e y i æ ø ý )
 	   matched ;
 
 !€ dag%^IUML%>i
@@ -150,12 +151,18 @@ Rules
 !€ son%^IUML%>i
 !€ syn00i
 
+
+
+
+
 "j-Deletion in i-umlaut"
- j:0 <=> Cns _ :i Cns:* %^IUML: ;
+ j:0 <=> Cns _  [ :i | :ý | :e :y ] Cns:* %^IUML: ;
 
 !€ fjørð%^IUML%>i
 !€ f0irð00i
 
+!€ bjóð%^IUML
+!€ b0ýð0
 
 "Inverted U-umlaut from ø"
  ø:a <=> _ Cns* (Vow: Cns) ( %^EPH: ) %^OEA: ;
@@ -275,6 +282,62 @@ Rules
 !€ hirð%>di
 !€ hir00di
  	      
+
+! Verbal ablaut rules
+
+! Past singular
+
+" Past tense singular diphthongs I"
+0:Vx <=> Cns _ Vy:Vz Cns:+ %^AB1: ;
+	where Vx in ( e e e )
+	      Vy in ( í ó u )
+	      Vz in ( i y y )
+	matched ;
+
+" Past tense singular diphthongs II"
+Vy:Vz <=> Cns :Vx _  Cns:+ %^AB1: ;
+	where Vx in ( e e e )
+	      Vy in ( í ó u )
+	      Vz in ( i y y )
+	matched ;
+
+"Past tense singular monophthongs"
+Vx:Vy <=> _ Cns:+ %^AB3: [ #: | %>: i ] ;
+	where Vx in ( e ø a o á i )
+	      Vy in ( a a ó a æ e )
+	matched ;
+
+!€ gev%^AB2
+
+!"Past tense singular monophthongs to ó"
+!Vx:Vy <=> _ Cns:+ %>: i ;
+!	where Vx in ( a á o i )
+!	      Vy in ( ó ó o a )
+!	matched ;
+
+"Past tense plural monophthongs"
+Vx:Vy <=> _ Cns:+ %^AB2: %>: u ;
+	where Vx in ( á í ó ú i e a ø )
+    	      Vy in ( ó i u u e u i u )
+	matched ;
+
+!"Past tense plural monophthongs to ó"
+!Vx:ó <=> _ Cns:+ %>: u ;
+!	where Vx in ( i e a o á ) ;
+	      
+"Supine u"
+Vx:u <=> Cns _ %^AB4: %>: ;
+	where Vx in ( i e ) ;
+
+
+"Supine o"
+Vx:o <=> Cns _ %^AB5: %>: ;
+	where Vx in ( í ó ú ø i e a ) ;
+
+"Supine i"
+Vx:i <=> Cns _ %^AB6: %>: ;
+	where Vx in ( í a e ) ;
+
  	      
  	      
 ! Possessive Sandhi rules

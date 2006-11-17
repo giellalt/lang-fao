@@ -103,9 +103,14 @@ LIST ACCDATPREP = "í" "á" "undir" "yfir" "eftir" "fyri" "við" "frá" ;
 
 LIST ACCGENPREP = "innan" "uttan" "millum" "til" "vegna" ;
 
-SET SOMEACCPREP = ACCPREP | ACCDATPREP | ACCGENPREP ;
-SET SOMEDATPREP = DATPREP | ACCDATPREP ;
-SET SOMEGENPREP = ACCGENPREP ;
+LIST ACCDATGENPREP = "at" "av" "hjá" "móti" "um" "undan" "úr" ;
+
+
+SET SOMEACCPREP = ACCPREP | ACCDATPREP | ACCGENPREP | ACCDATGENPREP ;
+
+SET SOMEDATPREP = DATPREP | ACCDATPREP | ACCDATGENPREP ;
+
+SET SOMEGENPREP = ACCGENPREP | ACCDATGENPREP ;
 
 # Complementary set
 
@@ -114,12 +119,15 @@ SET SOMEGENPREP = ACCGENPREP ;
 SET NOTDAT = TAG - Dat ;
 SET NOTACC = TAG - Acc ;
 SET NOTACCDAT = TAG - Acc - Dat ;
+SET OBL = Acc | Dat | Gen ;
 
 SET PRE-N =  A | Det | (N Gen) ;
 
 SET WORD = N | V | A | P | Prop | Adv | CC | CS | Interj ;
 
 SET NPNH = WORD - PRE-N ;
+SET NOT-ADV = WORD - Adv ;
+SET NOT-A = WORD - A ;
 
 # Syntax tags
 
@@ -131,24 +139,27 @@ LIST @SPRED = @SPRED ;
 LIST @VFIN = @VFIN ;
 LIST @ADVL = @ADVL ;
 LIST @P< = @P< ;
+LIST @CC = @CC ;
+#LIST @CC-VP = @CC-VP ;
 LIST @X = @X ;
 
-LIST SYNTAG = (@SUBJ)  (@OBJ)  (@N>)  (@N<)  (@SPRED)  (@VFIN)  (@ADVL)   (@P<) ;
+LIST SYNTAG = (@CC) (@CS) (@SUBJ)  (@OBJ)  (@N>)  (@N<)  (@SPRED)  (@VFIN)  (@ADVL)   (@P<) ;
 
 # ======== #
   MAPPINGS #
 # ======== #
 
-
+ADD (@CC) TARGET CC ;
+ADD (@CS) TARGET CS ;
 ADD (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 AUX BARRIER NPNH LINK -1 Nom);
 MAP (@SUBJ) TARGET (N Nom);
 
 MAP (@OBJ) TARGET (N Acc) IF (*-1 V BARRIER Pr);
 MAP (@IOBJ) TARGET (N Dat) IF (*1 (@OBJ) BARRIER NPNH);
-MAP (@P<) TARGET (N Dat) IF (*-1 DATPREP BARRIER NPNH);
+MAP (@P<) TARGET (N Dat) IF (*-1 SOMEDATPREP BARRIER NPNH);
 
-ADD (@P<) TARGET (Acc) IF (*-1 SOMEACCPREP BARRIER NPNH);
-ADD (@P<) TARGET (Gen) IF (*-1 SOMEGENPREP BARRIER NPNH);
+MAP (@P<) TARGET (Acc) IF (*-1 SOMEACCPREP BARRIER NPNH);
+MAP (@P<) TARGET (Gen) IF (*-1 SOMEGENPREP BARRIER NPNH);
 
 MAP (@N>) TARGET (N Gen) IF (*1 N BARRIER V OR Adv);
 
@@ -157,7 +168,7 @@ MAP (@N>) TARGET (A Acc) OR (Dem Acc) IF (*1 (N Acc) OR (Num Acc) BARRIER NPNH);
 MAP (@N>) TARGET (A Dat) OR (Dem Dat) IF (*1 (N Dat) OR (Num Dat) BARRIER NPNH);
 MAP (@N>) TARGET (A Gen) OR (Dem Gen) IF (*1 (N Gen) OR (Num Gen) BARRIER NPNH);
 
-MAP (@VFIN) TARGET (V Ind) OR (V Imp);
+MAP (@VFIN) TARGET (V Prs) OR (V Prt) OR (V Imp);
 
 MAP (@ADVL) TARGET Pr ;
 
@@ -353,6 +364,17 @@ REMOVE Neu IF (0 Poss)(*1 N BARRIER NPNH LINK NOT 0 Neu);
 # PP disambiguation
 # =================
 
+# P or not?
+
+# at
+REMOVE Pr IF (0 ("at"))(NOT *1 Acc OR Gen OR Dat BARRIER V);
+SELECT CS IF (0 ("at"))(*1 Nom BARRIER NPNH LINK *1 V BARRIER OBL);
+
+# til
+SELECT Pr IF (0 ("til"))(*1 N OR ("at") BARRIER NPNH);
+
+# Case within PP phrases
+
 SELECT Acc IF (*-1 ACCPREP BARRIER NOTACC);
 SELECT Dat IF (*-1 DATPREP BARRIER NOTDAT);
 REMOVE Gen IF (*-1 ACCDATPREP BARRIER NOTACCDAT);
@@ -363,13 +385,32 @@ REMOVE Nom IF (*-1 ACCDATPREP BARRIER NOTACCDAT);
 # VP disambiguation
 # =================
 
+# V or A
+
+REMOVE (A @N>) IF (0 V)(NOT 1 N OR A);
+# Alternatively: Demand Nom to the left or Num to the right.
+
+ 
 # Infinitive
 
 SELECT Inf IF (-1 ("at"));
 
+# Imperative
+
+REMOVE Imp IF (-1 Adv OR Nom)(0 Prs OR Prt);
+
+REMOVE Imp IF (0 N)(1 CC)(*2 N BARRIER NPNH);
+	## Stýrið og stjórnin hjá...
+
+# Present singular
+
+SELECT (V Prs 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH)(1 (Pron Refl Acc)) ;
+
 # Present plural
 
 SELECT (V Pl) IF (-1 (N Pl Nom));
+
+
 
 
 # Syntactic disambiguation

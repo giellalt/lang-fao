@@ -1,4 +1,4 @@
-define upper [ A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Æ|Ø|Å|Ä|Ö| 
+define uppercase [ A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Æ|Ø|Å|Ä|Ö| 
 Á]
 ;
 
@@ -11,7 +11,7 @@ define allcaps a (->) A, b (->) B, c (->) C, d (->) D, e (->) E, f
 è (->) È, é (->) É, ê (->) Ê, ë (->) Ë, ì (->) Ì, í (->) Í, î (->) Î, 
 ï (->) Ï, ð (->) Ð, ñ (->) Ñ, ò (->) Ò, ó (->) Ó, ô (->) Ô, õ (->) Õ, 
 ö (->) Ö, ø (->) Ø, ù (->) Ù, ú (->) Ú, û (->) Û, ü (->) Ü, ý (->) Ý, 
-þ (->) Þ \/ .#. upper* _ upper* .#. ;
+þ (->) Þ \/ .#. uppercase* _ uppercase* .#. ;
 
 push allcaps
 

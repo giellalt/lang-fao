@@ -2,6 +2,13 @@
 # This is a makefile that builds the Faroese morphological parser #
 # *************************************************************** #
 
+LEX = foe-lex.txt noun-foe-lex.txt \
+	propernoun-foe-lex.txt propernoun-foe-morph.txt adj-foe-morph.txt \
+    adj-foe-lex.txt adv-foe-lex.txt verb-foe-lex.txt abbr-foe-lex.txt acro-foe-lex.txt \
+    verb-foe-morph.txt pron-foe-lex.txt punct-foe-lex.txt numeral-foe-lex.txt \
+    pp-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt interj-foe-lex.txt det-foe-lex.txt \
+	abbr-foe-lex.txt
+
 # The ultimate goal is to build ifoe.fst, the generator
 # This goal depends on foe.save being up to date.
 
@@ -39,18 +46,22 @@ foe.fst: ../bin/foe.fst
 # Here we make the abbrevation file for our current preprocessor, 
 # the perl-based preprocess (located in the script catalogue)
 
+empty:=
+comma:=,
+space:=$(empty) $(empty)
+ABBRSRCS=$(subst $(space),$(comma),$(LEX))
+
+scripts=$(HOME)/gt/script
+
 abbr: ../bin/abbr.txt
-../bin/abbr.txt: ../../../gt/script/abbr-extract propernoun-foe-lex.txt pron-foe-lex.txt \
-	adv-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt pp-foe-lex.txt\
-	abbr-foe-lex.txt noun-foe-lex.txt
+../bin/abbr.txt: $(scripts)/abbr-extract $(scripts)/langTools/Util.pm $(LEX)
 	@echo
 	@echo "*** Extracting abbreviations from abbr-foe-lex.txt to abbr.txt ***" ;
 	@echo
-	@perl ../../../gt/script/abbr-extract \
+	@perl -I $(scripts) $(scripts)/abbr-extract \
+		--output=$@ \
 		--abbr_lex=abbr-foe-lex.txt \
-		--lex=propernoun-foe-lex.txt,pron-foe-lex.txt,acro-foe-lex.txt \
-	adv-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt pp-foe-lex.txt,noun-foe-lex.txt,abbr-foe-lex.txt \
-		--output=$@
+		--lex=$(ABBRSRCS)
 
 
 # The second goal is to build the caseconv.fst file

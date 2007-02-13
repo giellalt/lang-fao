@@ -122,11 +122,12 @@ SET NOTACC = TAG - Acc ;
 SET NOTACCDAT = TAG - Acc - Dat ;
 SET OBL = Acc | Dat | Gen ;
 
-SET PRE-N =  A | Det | (N Gen) ;
+SET PRE-N =  A | Det | (N Gen) | Num ;
 
-SET WORD = N | V | A | P | Prop | Adv | CC | CS | Interj ;
+SET WORD = N | V | A | P | Prop | Adv | CC | CS | Interj | Num ;
 
 SET NPNH = WORD - PRE-N ;
+SET NPNHA = WORD - PRE-N - Adv ;
 SET NOT-ADV = WORD - Adv ;
 SET NOT-A = WORD - A ;
 
@@ -152,22 +153,22 @@ LIST SYNTAG = (@CC) (@CS) (@SUBJ)  (@OBJ)  (@N>)  (@N<)  (@SPRED)  (@VFIN)  (@AD
 
 ADD (@CC) TARGET CC ;
 ADD (@CS) TARGET CS ;
-ADD (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 AUX BARRIER NPNH LINK -1 Nom);
+ADD (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 AUX BARRIER NPNHA LINK -1 Nom);
 MAP (@SUBJ) TARGET (N Nom);
 
 MAP (@OBJ) TARGET (N Acc) IF (*-1 V BARRIER Pr);
-MAP (@IOBJ) TARGET (N Dat) IF (*1 (@OBJ) BARRIER NPNH);
-MAP (@P<) TARGET (N Dat) IF (*-1 SOMEDATPREP BARRIER NPNH);
+MAP (@IOBJ) TARGET (N Dat) IF (*1 (@OBJ) BARRIER NPNHA);
+MAP (@P<) TARGET (N Dat) IF (*-1 SOMEDATPREP BARRIER NPNHA);
 
-MAP (@P<) TARGET (Acc) IF (*-1 SOMEACCPREP BARRIER NPNH);
-MAP (@P<) TARGET (Gen) IF (*-1 SOMEGENPREP BARRIER NPNH);
+MAP (@P<) TARGET (Acc) IF (*-1 SOMEACCPREP BARRIER NPNHA);
+MAP (@P<) TARGET (Gen) IF (*-1 SOMEGENPREP BARRIER NPNHA);
 
 MAP (@N>) TARGET (N Gen) IF (*1 N BARRIER V OR Adv);
 
-MAP (@N>) TARGET (A Nom) OR (Dem Nom) IF (*1 (N Nom) OR (Num Nom) BARRIER NPNH);
-MAP (@N>) TARGET (A Acc) OR (Dem Acc) IF (*1 (N Acc) OR (Num Acc) BARRIER NPNH);
-MAP (@N>) TARGET (A Dat) OR (Dem Dat) IF (*1 (N Dat) OR (Num Dat) BARRIER NPNH);
-MAP (@N>) TARGET (A Gen) OR (Dem Gen) IF (*1 (N Gen) OR (Num Gen) BARRIER NPNH);
+MAP (@N>) TARGET (A Nom) OR (Dem Nom) IF (*1 (N Nom) OR (Num Nom) BARRIER NPNHA);
+MAP (@N>) TARGET (A Acc) OR (Dem Acc) IF (*1 (N Acc) OR (Num Acc) BARRIER NPNHA);
+MAP (@N>) TARGET (A Dat) OR (Dem Dat) IF (*1 (N Dat) OR (Num Dat) BARRIER NPNHA);
+MAP (@N>) TARGET (A Gen) OR (Dem Gen) IF (*1 (N Gen) OR (Num Gen) BARRIER NPNHA);
 
 MAP (@VFIN) TARGET (V Prs) OR (V Prt) OR (V Imp);
 
@@ -177,6 +178,8 @@ MAP (@N<) TARGET Poss IF (0 Nom)(-1 (N Nom));
 MAP (@N<) TARGET Poss IF (0 Acc)(-1 (N Acc));
 MAP (@N<) TARGET Poss IF (0 Dat)(-1 (N Dat));
 MAP (@N<) TARGET Poss IF (0 Gen)(-1 (N Gen));
+
+MAP (@ADVL) TARGET Adv ;
 
 MAP (@X) TARGET WORD ;
 
@@ -193,141 +196,146 @@ MAP (@X) TARGET WORD ;
 
 # Det
 
-REMOVE (Num) IF (0 ("ein" Det))(*1 N BARRIER NPNH);
+REMOVE (Num) IF (0 ("ein" Det))(*1 N BARRIER NPNHA);
 	## eina mynd
 
 # Specific lexemes
 # ================
 
 SELECT Pr IF (0 ("á"))(1 Dat OR Acc);
-SELECT Pr IF (0 ("til"))(*1 (N Gen) BARRIER NPNH);
+SELECT Pr IF (0 ("til"))(*1 (N Gen) BARRIER NPNHA);
 SELECT CS IF (0 ("at"))(1C Inf);
 
 
-REMOVE Dem IF (0 Pers)(NOT 1 NPNH OR N);
+REMOVE Dem IF (0 Pers)(NOT 1 NPNHA OR N);
+
+# Adverb
+
+SELECT Adv IF (-1 DATPREP)(*1 Dat BARRIER NPNHA);
+
 
 # NP internal constraints
 # =======================
 
 # Determiner disambiguation
 
-REMOVE Neu IF (0 (Pron Dem Nom))(*1 (N Msc Nom) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Dem Nom))(*1 (N Fem Nom) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Dem Acc))(*1 (N Msc Acc) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Dem Acc))(*1 (N Fem Acc) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Dem Gen))(*1 (N Msc Gen) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Dem Gen))(*1 (N Fem Gen) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Dem Dat))(*1 (N Msc Dat) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Dem Dat))(*1 (N Fem Dat) BARRIER NPNH LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Dem Nom))(*1 (N Msc Nom) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Dem Nom))(*1 (N Fem Nom) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Dem Acc))(*1 (N Msc Acc) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Dem Acc))(*1 (N Fem Acc) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Dem Gen))(*1 (N Msc Gen) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Dem Gen))(*1 (N Fem Gen) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Dem Dat))(*1 (N Msc Dat) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Dem Dat))(*1 (N Fem Dat) BARRIER NPNHA LINK NOT 0 Neu);
 
-REMOVE Msc IF (0 (Pron Dem Nom))(*1 (N Fem Nom) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Dem Nom))(*1 (N Neu Nom) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Dem Acc))(*1 (N Fem Acc) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Dem Acc))(*1 (N Neu Acc) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Dem Gen))(*1 (N Fem Gen) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Dem Gen))(*1 (N Neu Gen) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Dem Dat))(*1 (N Fem Dat) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Dem Dat))(*1 (N Neu Dat) BARRIER NPNH LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Dem Nom))(*1 (N Fem Nom) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Dem Nom))(*1 (N Neu Nom) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Dem Acc))(*1 (N Fem Acc) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Dem Acc))(*1 (N Neu Acc) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Dem Gen))(*1 (N Fem Gen) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Dem Gen))(*1 (N Neu Gen) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Dem Dat))(*1 (N Fem Dat) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Dem Dat))(*1 (N Neu Dat) BARRIER NPNHA LINK NOT 0 Msc);
 
-REMOVE Fem IF (0 (Pron Dem Nom))(*1 (N Msc Nom) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Dem Nom))(*1 (N Neu Nom) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Dem Acc))(*1 (N Msc Acc) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Dem Acc))(*1 (N Neu Acc) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Dem Gen))(*1 (N Msc Gen) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Dem Gen))(*1 (N Neu Gen) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Dem Dat))(*1 (N Msc Dat) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Dem Dat))(*1 (N Neu Dat) BARRIER NPNH LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Dem Nom))(*1 (N Msc Nom) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Dem Nom))(*1 (N Neu Nom) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Dem Acc))(*1 (N Msc Acc) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Dem Acc))(*1 (N Neu Acc) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Dem Gen))(*1 (N Msc Gen) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Dem Gen))(*1 (N Neu Gen) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Dem Dat))(*1 (N Msc Dat) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Dem Dat))(*1 (N Neu Dat) BARRIER NPNHA LINK NOT 0 Fem);
 
 
-REMOVE Neu IF (0 (Pron Det Nom))(*1 (N Msc Nom) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Det Nom))(*1 (N Fem Nom) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Det Acc))(*1 (N Msc Acc) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Det Acc))(*1 (N Fem Acc) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Det Gen))(*1 (N Msc Gen) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Det Gen))(*1 (N Fem Gen) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Det Dat))(*1 (N Msc Dat) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (Pron Det Dat))(*1 (N Fem Dat) BARRIER NPNH LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Det Nom))(*1 (N Msc Nom) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Det Nom))(*1 (N Fem Nom) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Det Acc))(*1 (N Msc Acc) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Det Acc))(*1 (N Fem Acc) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Det Gen))(*1 (N Msc Gen) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Det Gen))(*1 (N Fem Gen) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Det Dat))(*1 (N Msc Dat) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (Pron Det Dat))(*1 (N Fem Dat) BARRIER NPNHA LINK NOT 0 Neu);
 
-REMOVE Msc IF (0 (Pron Det Nom))(*1 (N Fem Nom) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Det Nom))(*1 (N Neu Nom) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Det Acc))(*1 (N Fem Acc) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Det Acc))(*1 (N Neu Acc) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Det Gen))(*1 (N Fem Gen) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Det Gen))(*1 (N Neu Gen) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Det Dat))(*1 (N Fem Dat) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (Pron Det Dat))(*1 (N Neu Dat) BARRIER NPNH LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Det Nom))(*1 (N Fem Nom) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Det Nom))(*1 (N Neu Nom) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Det Acc))(*1 (N Fem Acc) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Det Acc))(*1 (N Neu Acc) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Det Gen))(*1 (N Fem Gen) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Det Gen))(*1 (N Neu Gen) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Det Dat))(*1 (N Fem Dat) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (Pron Det Dat))(*1 (N Neu Dat) BARRIER NPNHA LINK NOT 0 Msc);
 
-REMOVE Fem IF (0 (Pron Det Nom))(*1 (N Msc Nom) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Det Nom))(*1 (N Neu Nom) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Det Acc))(*1 (N Msc Acc) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Det Acc))(*1 (N Neu Acc) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Det Gen))(*1 (N Msc Gen) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Det Gen))(*1 (N Neu Gen) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Det Dat))(*1 (N Msc Dat) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (Pron Det Dat))(*1 (N Neu Dat) BARRIER NPNH LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Det Nom))(*1 (N Msc Nom) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Det Nom))(*1 (N Neu Nom) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Det Acc))(*1 (N Msc Acc) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Det Acc))(*1 (N Neu Acc) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Det Gen))(*1 (N Msc Gen) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Det Gen))(*1 (N Neu Gen) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Det Dat))(*1 (N Msc Dat) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (Pron Det Dat))(*1 (N Neu Dat) BARRIER NPNHA LINK NOT 0 Fem);
 
 # Case disambiguation
-SELECT Nom IF (0 (Pron Dem))(*1C Nom BARRIER NPNH);
-SELECT Acc IF (0 (Pron Dem))(*1C Acc BARRIER NPNH);
-SELECT Dat IF (0 (Pron Dem))(*1C Dat BARRIER NPNH);
-SELECT Gen IF (0 (Pron Dem))(*1C Gen BARRIER NPNH);
+SELECT Nom IF (0 (Pron Dem))(*1C Nom BARRIER NPNHA);
+SELECT Acc IF (0 (Pron Dem))(*1C Acc BARRIER NPNHA);
+SELECT Dat IF (0 (Pron Dem))(*1C Dat BARRIER NPNHA);
+SELECT Gen IF (0 (Pron Dem))(*1C Gen BARRIER NPNHA);
 						  
-REMOVE Nom IF (0 (Pron Dem))(*1 N    BARRIER NPNH LINK NOT 0 Nom);
-REMOVE Acc IF (0 (Pron Dem))(*1 N    BARRIER NPNH LINK NOT 0 Acc);
-REMOVE Dat IF (0 (Pron Dem))(*1 N    BARRIER NPNH LINK NOT 0 Dat);
-REMOVE Gen IF (0 (Pron Dem))(*1 N    BARRIER NPNH LINK NOT 0 Gen);
+REMOVE Nom IF (0 (Pron Dem))(*1 N    BARRIER NPNHA LINK NOT 0 Nom);
+REMOVE Acc IF (0 (Pron Dem))(*1 N    BARRIER NPNHA LINK NOT 0 Acc);
+REMOVE Dat IF (0 (Pron Dem))(*1 N    BARRIER NPNHA LINK NOT 0 Dat);
+REMOVE Gen IF (0 (Pron Dem))(*1 N    BARRIER NPNHA LINK NOT 0 Gen);
 
-SELECT Nom IF (0 (Pron Det))(*1C Nom BARRIER NPNH);
-SELECT Acc IF (0 (Pron Det))(*1C Acc BARRIER NPNH);
-SELECT Dat IF (0 (Pron Det))(*1C Dat BARRIER NPNH);
-SELECT Gen IF (0 (Pron Det))(*1C Gen BARRIER NPNH);
+SELECT Nom IF (0 (Pron Det))(*1C Nom BARRIER NPNHA);
+SELECT Acc IF (0 (Pron Det))(*1C Acc BARRIER NPNHA);
+SELECT Dat IF (0 (Pron Det))(*1C Dat BARRIER NPNHA);
+SELECT Gen IF (0 (Pron Det))(*1C Gen BARRIER NPNHA);
 						  
-REMOVE Nom IF (0 (Pron Det))(*1 N    BARRIER NPNH LINK NOT 0 Nom);
-REMOVE Acc IF (0 (Pron Det))(*1 N    BARRIER NPNH LINK NOT 0 Acc);
-REMOVE Dat IF (0 (Pron Det))(*1 N    BARRIER NPNH LINK NOT 0 Dat);
-REMOVE Gen IF (0 (Pron Det))(*1 N    BARRIER NPNH LINK NOT 0 Gen);
+REMOVE Nom IF (0 (Pron Det))(*1 N    BARRIER NPNHA LINK NOT 0 Nom);
+REMOVE Acc IF (0 (Pron Det))(*1 N    BARRIER NPNHA LINK NOT 0 Acc);
+REMOVE Dat IF (0 (Pron Det))(*1 N    BARRIER NPNHA LINK NOT 0 Dat);
+REMOVE Gen IF (0 (Pron Det))(*1 N    BARRIER NPNHA LINK NOT 0 Gen);
 
 
 # Adjective disambiguation
 # ------------------------
 
-REMOVE Neu IF (0 (A Nom))(*1 (N Msc Nom) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (A Nom))(*1 (N Fem Nom) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (A Acc))(*1 (N Msc Acc) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (A Acc))(*1 (N Fem Acc) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (A Gen))(*1 (N Msc Gen) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (A Gen))(*1 (N Fem Gen) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (A Dat))(*1 (N Msc Dat) BARRIER NPNH LINK NOT 0 Neu);
-REMOVE Neu IF (0 (A Dat))(*1 (N Fem Dat) BARRIER NPNH LINK NOT 0 Neu);
+REMOVE Neu IF (0 (A Nom))(*1 (N Msc Nom) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (A Nom))(*1 (N Fem Nom) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (A Acc))(*1 (N Msc Acc) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (A Acc))(*1 (N Fem Acc) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (A Gen))(*1 (N Msc Gen) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (A Gen))(*1 (N Fem Gen) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (A Dat))(*1 (N Msc Dat) BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE Neu IF (0 (A Dat))(*1 (N Fem Dat) BARRIER NPNHA LINK NOT 0 Neu);
 														       
-REMOVE Msc IF (0 (A Nom))(*1 (N Fem Nom) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (A Nom))(*1 (N Neu Nom) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (A Acc))(*1 (N Fem Acc) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (A Acc))(*1 (N Neu Acc) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (A Gen))(*1 (N Fem Gen) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (A Gen))(*1 (N Neu Gen) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (A Dat))(*1 (N Fem Dat) BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Msc IF (0 (A Dat))(*1 (N Neu Dat) BARRIER NPNH LINK NOT 0 Msc);
+REMOVE Msc IF (0 (A Nom))(*1 (N Fem Nom) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (A Nom))(*1 (N Neu Nom) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (A Acc))(*1 (N Fem Acc) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (A Acc))(*1 (N Neu Acc) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (A Gen))(*1 (N Fem Gen) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (A Gen))(*1 (N Neu Gen) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (A Dat))(*1 (N Fem Dat) BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Msc IF (0 (A Dat))(*1 (N Neu Dat) BARRIER NPNHA LINK NOT 0 Msc);
 														       
-REMOVE Fem IF (0 (A Nom))(*1 (N Msc Nom) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (A Nom))(*1 (N Neu Nom) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (A Acc))(*1 (N Msc Acc) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (A Acc))(*1 (N Neu Acc) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (A Gen))(*1 (N Msc Gen) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (A Gen))(*1 (N Neu Gen) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (A Dat))(*1 (N Msc Dat) BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Fem IF (0 (A Dat))(*1 (N Neu Dat) BARRIER NPNH LINK NOT 0 Fem);
+REMOVE Fem IF (0 (A Nom))(*1 (N Msc Nom) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (A Nom))(*1 (N Neu Nom) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (A Acc))(*1 (N Msc Acc) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (A Acc))(*1 (N Neu Acc) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (A Gen))(*1 (N Msc Gen) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (A Gen))(*1 (N Neu Gen) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (A Dat))(*1 (N Msc Dat) BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Fem IF (0 (A Dat))(*1 (N Neu Dat) BARRIER NPNHA LINK NOT 0 Fem);
 
 # Case disambiguation
-SELECT Nom IF (0 A)(*1C Nom BARRIER NPNH);
-SELECT Acc IF (0 A)(*1C Acc BARRIER NPNH);
-SELECT Dat IF (0 A)(*1C Dat BARRIER NPNH);
-SELECT Gen IF (0 A)(*1C Gen BARRIER NPNH);
+SELECT Nom IF (0 A)(*1C Nom BARRIER NPNHA)(NOT 0 V);
+SELECT Acc IF (0 A)(*1C Acc BARRIER NPNHA)(NOT 0 V);
+SELECT Dat IF (0 A)(*1C Dat BARRIER NPNHA)(NOT 0 V);
+SELECT Gen IF (0 A)(*1C Gen BARRIER NPNHA)(NOT 0 V);
 
-REMOVE Nom IF (0 A)(*1 N    BARRIER NPNH LINK NOT 0 Nom);
-REMOVE Acc IF (0 A)(*1 N    BARRIER NPNH LINK NOT 0 Acc);
-REMOVE Dat IF (0 A)(*1 N    BARRIER NPNH LINK NOT 0 Dat);
-REMOVE Gen IF (0 A)(*1 N    BARRIER NPNH LINK NOT 0 Gen);
+REMOVE Nom IF (0 A)(*1 N    BARRIER NPNHA LINK NOT 0 Nom);
+REMOVE Acc IF (0 A)(*1 N    BARRIER NPNHA LINK NOT 0 Acc);
+REMOVE Dat IF (0 A)(*1 N    BARRIER NPNHA LINK NOT 0 Dat);
+REMOVE Gen IF (0 A)(*1 N    BARRIER NPNHA LINK NOT 0 Gen);
 
 
 # Numeral disambiguation
@@ -357,9 +365,9 @@ REMOVE Msc IF (-1 N LINK NOT 0 Msc)(0 Poss);
 REMOVE Fem IF (-1 N LINK NOT 0 Fem)(0 Poss);
 REMOVE Neu IF (-1 N LINK NOT 0 Neu)(0 Poss);
 
-REMOVE Msc IF (0 Poss)(*1 N BARRIER NPNH LINK NOT 0 Msc);
-REMOVE Fem IF (0 Poss)(*1 N BARRIER NPNH LINK NOT 0 Fem);
-REMOVE Neu IF (0 Poss)(*1 N BARRIER NPNH LINK NOT 0 Neu);
+REMOVE Msc IF (0 Poss)(*1 N BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE Fem IF (0 Poss)(*1 N BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE Neu IF (0 Poss)(*1 N BARRIER NPNHA LINK NOT 0 Neu);
 
 
 # PP disambiguation
@@ -369,15 +377,17 @@ REMOVE Neu IF (0 Poss)(*1 N BARRIER NPNH LINK NOT 0 Neu);
 
 # at
 REMOVE Pr IF (0 ("at"))(NOT *1 Acc OR Gen OR Dat BARRIER V);
-SELECT CS IF (0 ("at"))(*1 Nom BARRIER NPNH LINK *1 V BARRIER OBL);
+SELECT CS IF (0 ("at"))(*1 Nom BARRIER NPNHA LINK *1 V BARRIER OBL);
 
 # til
-SELECT Pr IF (0 ("til"))(*1 N OR ("at") BARRIER NPNH);
+SELECT Pr IF (0 ("til"))(*1 N OR ("at") BARRIER NPNHA);
 
 # Case within PP phrases
 
 SELECT Acc IF (*-1 ACCPREP BARRIER NOTACC);
-SELECT Dat IF (*-1 DATPREP BARRIER NOTDAT);
+REMOVE Nom IF (*-1 DATPREP BARRIER NOTDAT);
+REMOVE Acc IF (*-1 DATPREP BARRIER NOTDAT);
+REMOVE Gen IF (*-1 DATPREP BARRIER NOTDAT);
 REMOVE Gen IF (*-1 ACCDATPREP BARRIER NOTACCDAT);
 REMOVE Nom IF (*-1 ACCDATPREP BARRIER NOTACCDAT);
 
@@ -391,6 +401,9 @@ REMOVE Nom IF (*-1 ACCDATPREP BARRIER NOTACCDAT);
 REMOVE (A @N>) IF (0 V)(NOT 1 N OR A);
 # Alternatively: Demand Nom to the left or Num to the right.
 
+REMOVE A IF (0 ("vera"))(1 (N Sg));
+	## Enskt mál er móðurmál.
+
  
 # Infinitive
 
@@ -400,12 +413,12 @@ SELECT Inf IF (-1 ("at"));
 
 REMOVE Imp IF (-1 Adv OR Nom)(0 Prs OR Prt);
 
-REMOVE Imp IF (0 N)(1 CC)(*2 N BARRIER NPNH);
+REMOVE Imp IF (0 N)(1 CC)(*2 N BARRIER NPNHA);
 	## Stýrið og stjórnin hjá...
 
 # Present singular
 
-SELECT (V Prs 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH)(1 (Pron Refl Acc)) ;
+SELECT (V Prs 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) LINK NOT *-1 CC BARRIER NPNHA)(1 (Pron Refl Acc)) ;
 
 # Present plural
 
@@ -417,7 +430,7 @@ SELECT (V Pl) IF (-1 (N Pl Nom));
 # Genitive is marginal in faroese. The strategy should be : 
 # 1. Write rules selecting genitive. (such rules are still forthcoming)
 
-SELECT Gen IF (*-1 ACCGENPREP BARRIER NPNH)(NOT 0 Acc);
+SELECT Gen IF (*-1 ACCGENPREP BARRIER NPNHA)(NOT 0 Acc);
 
 # 2. Remove the remaining genitives. 
 
@@ -428,25 +441,25 @@ REMOVE Gen ;
 # ========================
 
 REMOVE (@SPRED) IF (NOT *-1 (@SUBJ))(NOT *1 (@SUBJ));
-REMOVE (@OBJ) IF (*-1 Pr BARRIER NPNH);
-REMOVE (@IOBJ) IF (*-1 Pr BARRIER NPNH);
+REMOVE (@OBJ) IF (*-1 Pr BARRIER NPNHA);
+REMOVE (@IOBJ) IF (*-1 Pr BARRIER NPNHA);
 
 REMOVE (@P<) IF (*-1 BOS OR (N Acc) OR (N Dat) OR (N Nom) OR V OR CLB OR CS BARRIER Pr);
 
-REMOVE (@N>) IF (*-1 Pr BARRIER NPNH);
+REMOVE (@N>) IF (*-1 Pr BARRIER NPNHA);
 
-SELECT (Sg @SPRED) IF (*-1 AUX BARRIER NPNH LINK -1 (Nom Sg));
-SELECT (Pl @SPRED) IF (*-1 AUX BARRIER NPNH LINK -1 (Nom Pl));
+SELECT (Sg @SPRED) IF (*-1 AUX BARRIER NPNHA LINK -1 (Sg Nom));
+SELECT (Pl @SPRED) IF (*-1 AUX BARRIER NPNHA LINK -1 (Pl Nom));
 
 
 # Case disambiguation
 
-SELECT Acc IF (*-1 ACCPREP BARRIER NPNH)(0 (@P<));
-SELECT Dat IF (*-1 DATPREP BARRIER NPNH)(0 (@P<));
-REMOVE Nom IF (*-1 ACCGENPREP BARRIER NPNH)(0 (@P<));
-REMOVE Dat IF (*-1 ACCGENPREP BARRIER NPNH)(0 (@P<));
-REMOVE Nom IF (*-1 ACCDATPREP BARRIER NPNH)(0 (@P<));
-REMOVE Gen IF (*-1 ACCDATPREP BARRIER NPNH)(0 (@P<));
+#SELECT Acc IF (*-1 ACCPREP BARRIER NPNHA)(0 (@P<));
+#SELECT Dat IF (*-1 DATPREP BARRIER NPNHA)(0 (@P<));
+#REMOVE Nom IF (*-1 ACCGENPREP BARRIER NPNHA)(0 (@P<));
+#REMOVE Dat IF (*-1 ACCGENPREP BARRIER NPNHA)(0 (@P<));
+#REMOVE Nom IF (*-1 ACCDATPREP BARRIER NPNHA)(0 (@P<));
+#REMOVE Gen IF (*-1 ACCDATPREP BARRIER NPNHA)(0 (@P<));
 
 # Number SPRED disambiguation
 

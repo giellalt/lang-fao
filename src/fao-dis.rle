@@ -23,7 +23,8 @@ DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
    SETS
 # ========
 
-LIST BOS = (>>>) (<s>); LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
+LIST BOS = (>>>) (<s>); 
+LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
 
 LIST N = N ;
 LIST V = V ;
@@ -127,12 +128,14 @@ SET OBL = Acc | Dat | Gen ;
 
 SET PRE-N =  A | Det | (N Gen) | Num ;
 
-SET WORD = N | V | A | Pr | Pron | Adv | CC | CS | Interj | Num ;
+SET WORD = N | V | A | Pr | Pron | Adv | CC | CS | Interj | Num | ("\?") ;
+SET MARK =  ("\,") | ("\:") | ("\;") ;
+SET WORDMARK = WORD | MARK ;
 
-SET NPNH = WORD - PRE-N ;
-SET NPNHA = WORD - PRE-N - Adv ;
-SET NOT-ADV = WORD - Adv ;
-SET NOT-A = WORD - A ;
+SET NPNH = WORDMARK - PRE-N ;
+SET NPNHA = WORDMARK - PRE-N - Adv ;
+SET NOT-ADV = WORDMARK - Adv ;
+SET NOT-A = WORDMARK - A ;
 
 # Syntax tags
 
@@ -190,6 +193,8 @@ MAP (@X) TARGET WORD ;
   CONSTRAINTS #
 # =========== #
 
+# No-syntax early
+REMOVE (@X)  IF (0 SYNTAG);
 
 
 # POS disambiguation
@@ -347,6 +352,21 @@ REMOVE Gen IF (0 A)(*1 N    BARRIER NPNHA LINK NOT 0 Gen);
 REMOVE (A Sg @N>) IF (1 (Num Sg));
 	## fyrstu tríggjar mánðirnar.
 
+# Gender disamb of numerals
+SELECT Msc IF (0 Num)(*1C (N Msc) BARRIER A);
+SELECT Fem IF (0 Num)(*1C (N Fem) BARRIER A);
+SELECT Neu IF (0 Num)(*1C (N Neu) BARRIER A);
+	## eit sindur
+
+# Case disamb of numerals
+SELECT Nom IF (0 Num)(*1C (N Nom) BARRIER A);
+SELECT Acc IF (0 Num)(*1C (N Acc) BARRIER A);
+SELECT Dat IF (0 Num)(*1C (N Dat) BARRIER A);
+SELECT Gen IF (0 Num)(*1C (N Gen) BARRIER A);
+
+# Perhaps also rules that remove Neu if Msc or Fem, etc.
+
+
 # Noun disambiguation
 # -------------------
 
@@ -372,6 +392,9 @@ REMOVE Msc IF (0 Poss)(*1 N BARRIER NPNHA LINK NOT 0 Msc);
 REMOVE Fem IF (0 Poss)(*1 N BARRIER NPNHA LINK NOT 0 Fem);
 REMOVE Neu IF (0 Poss)(*1 N BARRIER NPNHA LINK NOT 0 Neu);
 
+# Number disambiguation
+REMOVE Pl IF (*-1 (Num Sg) OR (Dem Sg) BARRIER NOT-A)(0 (N Sg));
+# Here, we need vislcg3 and variable notation!
 
 # PP disambiguation
 # =================
@@ -460,6 +483,15 @@ SELECT (Sg @SPRED) IF (*-1 AUX BARRIER NPNHA LINK -1 (Sg Nom));
 SELECT (Pl @SPRED) IF (*-1 AUX BARRIER NPNHA LINK -1 (Pl Nom));
 
 
+# PPs
+
+REMOVE (@SUBJ) IF (*-1C Pr BARRIER NPNH)(1 (@P<));
+REMOVE (@OBJ) IF (*-1C Pr BARRIER NPNH)(1 (@P<));
+REMOVE (@ADVL) IF (*-1C Pr BARRIER NPNH)(1 (@P<));
+REMOVE (@SPRED) IF (*-1C Pr BARRIER NPNH)(1 (@P<));
+REMOVE (@OPRED) IF (*-1C Pr BARRIER NPNH)(1 (@P<));
+
+	## av tilvild
 
 # Case disambiguation
 
@@ -476,4 +508,4 @@ SELECT (Pl @SPRED) IF (*-1 AUX BARRIER NPNHA LINK -1 (Pl Nom));
 
 
 
-REMOVE (@X)  IF (0 SYNTAG);
+#REMOVE (@X)  IF (0 SYNTAG);

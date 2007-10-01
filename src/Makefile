@@ -2,45 +2,45 @@
 # This is a makefile that builds the Faroese morphological parser #
 # *************************************************************** #
 
-LEX = foe-lex.txt noun-foe-lex.txt \
-	propernoun-foe-lex.txt propernoun-foe-morph.txt adj-foe-morph.txt \
-    adj-foe-lex.txt adv-foe-lex.txt verb-foe-lex.txt abbr-foe-lex.txt acro-foe-lex.txt \
-    verb-foe-morph.txt pron-foe-lex.txt punct-foe-lex.txt numeral-foe-lex.txt \
-    pp-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt interj-foe-lex.txt det-foe-lex.txt \
-	abbr-foe-lex.txt
+LEX = fao-lex.txt noun-fao-lex.txt \
+	propernoun-fao-lex.txt propernoun-fao-morph.txt adj-fao-morph.txt \
+    adj-fao-lex.txt adv-fao-lex.txt verb-fao-lex.txt abbr-fao-lex.txt acro-fao-lex.txt \
+    verb-fao-morph.txt pron-fao-lex.txt punct-fao-lex.txt numeral-fao-lex.txt \
+    pp-fao-lex.txt cc-fao-lex.txt cs-fao-lex.txt interj-fao-lex.txt det-fao-lex.txt \
+	abbr-fao-lex.txt
 
-# The ultimate goal is to build ifoe.fst, the generator
-# This goal depends on foe.save being up to date.
+# The ultimate goal is to build ifao.fst, the generator
+# This goal depends on fao.save being up to date.
 
-ifoe.fst: ../bin/ifoe.fst
-../bin/ifoe.fst: ../bin/foe.fst ../bin/foe.save ../bin/tok.fst ../bin/abbr.txt \
+ifao.fst: ../bin/ifao.fst
+../bin/ifao.fst: ../bin/fao.fst ../bin/fao.save ../bin/tok.fst ../bin/abbr.txt \
 	../bin/allcaps.fst
 	@echo
-	@echo "*** Building the inverse ifoe.fst ***"
+	@echo "*** Building the inverse ifao.fst ***"
 	@echo
-	@printf "load ../bin/foe.save \n\
+	@printf "load ../bin/fao.save \n\
 	invert net \n\
-	save stack ../bin/ifoe.fst \n\
-	quit \n" > /tmp/ifoe-fst-script
-	@xfst < /tmp/ifoe-fst-script
-	@rm -f /tmp/ifoe-fst-script
+	save stack ../bin/ifao.fst \n\
+	quit \n" > /tmp/ifao-fst-script
+	@xfst < /tmp/ifao-fst-script
+	@rm -f /tmp/ifao-fst-script
 
  
-# The first goal is to build foe.fst, the analyzer.
-# This goal depends on foe.save and caseconv.fst being up to date
+# The first goal is to build fao.fst, the analyzer.
+# This goal depends on fao.save and caseconv.fst being up to date
 
-foe.fst: ../bin/foe.fst
-../bin/foe.fst: ../bin/foe.save ../bin/caseconv.fst ../bin/allcaps.fst \
+fao.fst: ../bin/fao.fst
+../bin/fao.fst: ../bin/fao.save ../bin/caseconv.fst ../bin/allcaps.fst \
 	../bin/tok.fst
 	@echo
-	@echo "*** Building foe.fst ***" ;
+	@echo "*** Building fao.fst ***" ;
 	@echo
-	@printf "read regex @\"../bin/foe.save\" .o. \
+	@printf "read regex @\"../bin/fao.save\" .o. \
 	@\"../bin/caseconv.fst\" ; \n\
-	save stack ../bin/foe.fst \n\
-	quit \n" > /tmp/foe-fst-script
-	@xfst < /tmp/foe-fst-script
-	@rm -f /tmp/foe-fst-script
+	save stack ../bin/fao.fst \n\
+	quit \n" > /tmp/fao-fst-script
+	@xfst < /tmp/fao-fst-script
+	@rm -f /tmp/fao-fst-script
 
 
 # Here we make the abbrevation file for our current preprocessor, 
@@ -56,11 +56,11 @@ scripts=$(HOME)/gt/script
 abbr: ../bin/abbr.txt
 ../bin/abbr.txt: $(scripts)/abbr-extract $(scripts)/langTools/Util.pm $(LEX)
 	@echo
-	@echo "*** Extracting abbreviations from abbr-foe-lex.txt to abbr.txt ***" ;
+	@echo "*** Extracting abbreviations from abbr-fao-lex.txt to abbr.txt ***" ;
 	@echo
 	@perl -I $(scripts) $(scripts)/abbr-extract \
 		--output=$@ \
-		--abbr_lex=abbr-foe-lex.txt \
+		--abbr_lex=abbr-fao-lex.txt \
 		--lex=$(ABBRSRCS)
 
 
@@ -93,45 +93,45 @@ allcaps.fst: ../bin/allcaps.fst
 	@rm -f /tmp/tok-script
 
 
-# The third goal is to build foe.save
-# This goal depends on twol-foe.bin and a bunch of lexicon files
+# The third goal is to build fao.save
+# This goal depends on twol-fao.bin and a bunch of lexicon files
 
-foe.save: ../bin/foe.save
-../bin/foe.save: ../bin/twol-foe.bin foe-lex.txt noun-foe-morph.txt noun-foe-lex.txt \
-        propernoun-foe-lex.txt propernoun-foe-morph.txt adj-foe-morph.txt \
-	adj-foe-lex.txt adv-foe-lex.txt verb-foe-lex.txt abbr-foe-lex.txt acro-foe-lex.txt \
-	verb-foe-morph.txt pron-foe-lex.txt punct-foe-lex.txt numeral-foe-lex.txt \
-	pp-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt interj-foe-lex.txt det-foe-lex.txt
+fao.save: ../bin/fao.save
+../bin/fao.save: ../bin/twol-fao.bin fao-lex.txt noun-fao-morph.txt noun-fao-lex.txt \
+        propernoun-fao-lex.txt propernoun-fao-morph.txt adj-fao-morph.txt \
+	adj-fao-lex.txt adv-fao-lex.txt verb-fao-lex.txt abbr-fao-lex.txt acro-fao-lex.txt \
+	verb-fao-morph.txt pron-fao-lex.txt punct-fao-lex.txt numeral-fao-lex.txt \
+	pp-fao-lex.txt cc-fao-lex.txt cs-fao-lex.txt interj-fao-lex.txt det-fao-lex.txt
 	@echo
-	@echo "*** Building foe-lex.save ***" ;
+	@echo "*** Building fao-lex.save ***" ;
 	@echo
-	printf "compile-source foe-lex.txt noun-foe-morph.txt noun-foe-lex.txt \
-        propernoun-foe-lex.txt propernoun-foe-morph.txt adj-foe-lex.txt \
-	adj-foe-morph.txt adv-foe-lex.txt verb-foe-lex.txt abbr-foe-lex.txt acro-foe-lex.txt \
-	verb-foe-morph.txt pron-foe-lex.txt punct-foe-lex.txt numeral-foe-lex.txt \
-	pp-foe-lex.txt cc-foe-lex.txt cs-foe-lex.txt interj-foe-lex.txt det-foe-lex.txt \n\
-	read-rules ../bin/twol-foe.bin \n\
+	printf "compile-source fao-lex.txt noun-fao-morph.txt noun-fao-lex.txt \
+        propernoun-fao-lex.txt propernoun-fao-morph.txt adj-fao-lex.txt \
+	adj-fao-morph.txt adv-fao-lex.txt verb-fao-lex.txt abbr-fao-lex.txt acro-fao-lex.txt \
+	verb-fao-morph.txt pron-fao-lex.txt punct-fao-lex.txt numeral-fao-lex.txt \
+	pp-fao-lex.txt cc-fao-lex.txt cs-fao-lex.txt interj-fao-lex.txt det-fao-lex.txt \n\
+	read-rules ../bin/twol-fao.bin \n\
 	compose-result \n\
-	save-result ../bin/foe.save \n\
-	quit \n" > ../../tmp/foe-lex-save-script
-	@lexc -utf8 < ../../tmp/foe-lex-save-script
-	rm -f ../../tmp/foe-lex-save-script
+	save-result ../bin/fao.save \n\
+	quit \n" > ../../tmp/fao-lex-save-script
+	@lexc -utf8 < ../../tmp/fao-lex-save-script
+	rm -f ../../tmp/fao-lex-save-script
 
 
-# The fourth goal is to build twol-foe.bin
-# This goal depends on twol-foe.txt
+# The fourth goal is to build twol-fao.bin
+# This goal depends on twol-fao.txt
 
-twol-foe.bin: ../bin/twol.foe.bin
-../bin/twol-foe.bin: twol-foe.txt
+twol-fao.bin: ../bin/twol.fao.bin
+../bin/twol-fao.bin: twol-fao.txt
 	@echo
-	@echo "*** Building twol-foe.bin ***" ;
+	@echo "*** Building twol-fao.bin ***" ;
 	@echo
-	@printf "read-grammar twol-foe.txt \n\
+	@printf "read-grammar twol-fao.txt \n\
 	compile \n\
-	save-binary ../bin/twol-foe.bin \n\
-	quit \n" > /tmp/twol-foe-script
-	@twolc -utf8 < /tmp/twol-foe-script
-	@rm -f /tmp/twol-foe-script
+	save-binary ../bin/twol-fao.bin \n\
+	quit \n" > /tmp/twol-fao-script
+	@twolc -utf8 < /tmp/twol-fao-script
+	@rm -f /tmp/twol-fao-script
 
 # Here we include a preprocessor.
 # This goal depends on tok.txt
@@ -155,21 +155,21 @@ clean:
 
 
 
-#foe.save: ../bin/foe.save
-#../bin/foe.save: ../bin/twol-foe.bin foe-lex.txt adj-foe-lex.txt \
-#	adv-foe-lex.txt noun-foe-lex.txt verb-foe-lex.txt \
-#	closed-foe-lex.txt pp-foe-lex.txt propernoun-foe-lex.txt
+#fao.save: ../bin/fao.save
+#../bin/fao.save: ../bin/twol-fao.bin fao-lex.txt adj-fao-lex.txt \
+#	adv-fao-lex.txt noun-fao-lex.txt verb-fao-lex.txt \
+#	closed-fao-lex.txt pp-fao-lex.txt propernoun-fao-lex.txt
 #	@echo
-#	@echo "*** Building foe.save ***" ;
+#	@echo "*** Building fao.save ***" ;
 #	@echo
-#	printf "compile-source foe-lex.txt adj-foe-lex.txt adv-foe-lex.txt \
-#	noun-foe-lex.txt verb-foe-lex.txt closed-foe-lex.txt \
-#	pp-foe-lex.txt propernoun-foe-lex.txt \n\
-#	read-rules ../bin/twol-foe.bin \n\
+#	printf "compile-source fao-lex.txt adj-fao-lex.txt adv-fao-lex.txt \
+#	noun-fao-lex.txt verb-fao-lex.txt closed-fao-lex.txt \
+#	pp-fao-lex.txt propernoun-fao-lex.txt \n\
+#	read-rules ../bin/twol-fao.bin \n\
 #	compose-result \n\
-#	save-result ../bin/foe.save \n\
-#	quit \n" > /tmp/foe-save-script
-#	@lexc < /tmp/foe-save-script
-#	rm -f /tmp/foe-save-script
+#	save-result ../bin/fao.save \n\
+#	quit \n" > /tmp/fao-save-script
+#	@lexc < /tmp/fao-save-script
+#	rm -f /tmp/fao-save-script
 
 

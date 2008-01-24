@@ -14,16 +14,25 @@
     <section id="General_information_for_new_users">
       <title>General information for new users</title>
 
-      <p>Here you find the technical documentation of the Faroese parser project.</p>
+      <p>Here you will, at some point in the future, find the technical documentation of the Faroese parser project at the university of Tromsø. While waiting for that, you should have a look at <a href="http://giellatekno.uit.no/doc/index.html">the technical documentation of the Sámi project</a>.</p>
 
-<p>The parser is a finite state transducer, capable of analysing and generating any Faroese wordform. The parser is still under development. In november 2006, it recognises 85 % of the wordforms in a corpus containing appr. 2.35 million words.</p>
+<p>The parser is a finite state transducer, capable of analysing and generating any Faroese wordform. The parser is still under development. In november 2006, it recognised 85 % of the wordforms in a corpus containing appr. 2.35 million words. The grammatical part of the parser is written at the University of Tromsø, and the lexicon is the set of lexemes found in the two-volume <emph>Føroysk orðabók</emph> (Føroya Fróðskaparfelag 1998).</p>
+
+<p>The project also contains a morphological disambiguator, built upon constraint grammar technology. The Faroese disambiguator is still in an embryonic state (as you can verify by testing it out).</p>
       </section>
       
 <section><title>Usage</title>
-<p>The parser can be used online, and, with a password, offline, in a command line environment.</p>
+<p>The parser can be used online (cf. the project home page for the link to text analysis and paradigm and wordform generation), and, with a password, offline, in a command line environment.</p>
 </section>
+
 <section><title>Source code structure</title>
 <p>The parser is construed along the lines of the Sámi parser project, and much of what is said in the documentation of that project will hold also for Faroese. The obvious difference is the grammatical analysis.</p>
+</section>
+
+
+<section>
+<title>Accessibility</title>
+<p>The code is written as open source, and available upon request. The exception is the lexicon part, where access must be negotiated with Føroya Fróðskaparfelag.</p>
 </section>      
       
 

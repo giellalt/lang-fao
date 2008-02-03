@@ -11,10 +11,10 @@ Alphabet
 
  g2:g j2:j v2:v 
  
- %^UUML:0 %^IUML:0 %^W:0 %^EPH:0 %^JI:0 %^OEA:0 
+ %^UUML:0 %^IUML:0 %^eIUML:0 %^W:0 %^EPH:0 %^JI:0 %^OEA:0 
  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0
  %^EIO:0 %^OA:0 %^WVV:0
- %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0
+ %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0
  %>:0 ;
 
 Sets
@@ -24,7 +24,7 @@ Sets
  Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;
  Nas = m n ;
  NonNas = b c d f g h j k l p q r s t v w x z ð þ ;
- Dummy = %>  %^UUML %^IUML %^W %^EPH %^JI ;
+ Dummy = %>  %^UUML %^IUML %^eIUML %^W %^EPH %^JI ;
 
 
 Rules
@@ -152,6 +152,11 @@ Rules
 !€ son%^IUML%>i
 !€ syn00i
 
+"eI-umlaut"
+ Vx:Vy <=> _ Cns* %^eIUML: ;
+     where Vx in ( o )
+	   Vy in ( e )
+	   matched ;
 
 
 
@@ -327,17 +332,18 @@ Vx:Vy <=> _ Cns:+ %^AB2: %>: u ;
 !	where Vx in ( i e a o á ) ;
 	      
 "Supine u"
-Vx:u <=> Cns _ %^AB4: %>: ;
+Vx:u <=> Cns+ _ %^AB4: %>: ;
 	where Vx in ( i e ) ;
 
 
 "Supine o"
-Vx:o <=> Cns _ %^AB5: %>: ;
+Vx:o <=> Cns+ _ %^AB5: %>: ;
 	where Vx in ( í ó ú ø i e a ) ;
 
 "Supine i"
-Vx:i <=> Cns _ %^AB6: %>: ;
+Vx:i <=> Cns+ _ %^AB6: %>: ;
 	where Vx in ( í a e ) ;
+
 
  	      
  	      

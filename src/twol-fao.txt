@@ -15,6 +15,7 @@ Alphabet
  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0
  %^EIO:0 %^OA:0 %^WVV:0
  %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0
+ %^aAB:0 %^uAB:0
  %>:0 ;
 
 Sets
@@ -330,6 +331,16 @@ Vx:Vy <=> _ Cns:+ %^AB2: %>: u ;
 !"Past tense plural monophthongs to ó"
 !Vx:ó <=> _ Cns:+ %>: u ;
 !	where Vx in ( i e a o á ) ;
+
+
+"Past tense plural monophthongs to a"
+Vx:a <=> _ Cns:+ %^aAB:  ;
+	where Vx in ( i e ø ) ;
+
+"Past tense plural monophthongs to u"
+Vx:u <=> _ Cns:+ %^uAB:  ;
+	where Vx in ( i e ø ) ;
+
 	      
 "Supine u"
 Vx:u <=> Cns+ _ %^AB4: %>: ;

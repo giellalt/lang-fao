@@ -23,7 +23,7 @@ LEXICON s4  ! frøa
 inf ;
 pres-ir ;
 prt-dd ;
-imp-prsprt ;
+imp-prsptc ;
 sup-tt ;
 :%>d l7 ;
 
@@ -67,7 +67,7 @@ LEXICON s14 ! heingja
 jinf ;
 pres-ir ;
 :%^EIO prt-d ;
-:%^EIO imp-prsprt ;
+:%^EIO imp-prsptc ;
 :%^EIO sup ;
 :%>d l7 ;
 
@@ -75,7 +75,7 @@ LEXICON s15 ! skeinkja
 jinf ;
 pres-ir ;
 :%^EIO prt-d ;
-:%^EIO imp-prsprt ;
+:%^EIO imp-prsptc ;
 :%^EIO sup ;
 :%>d l5 ;
 
@@ -83,7 +83,7 @@ LEXICON s16 ! flekja
 jinf ;
 pres-ir ;
 :%^WVV prt-d ;
-:%^WVV imp-prsprt ;
+:%^WVV imp-prsptc ;
 :%^WVV sup ;
 :%>d l5 ;
 
@@ -91,7 +91,7 @@ LEXICON s17 ! berja
 jinf ;
 pres-ir ;
 :%^WVV prt-d ;
-:%^WVV imp-prsprt ;
+:%^WVV imp-prsptc ;
 :%^WVV sup ;
 :%>d l7 ;
 
@@ -99,7 +99,7 @@ LEXICON s18 ! krevja
 jinf ;
 pres-ur ;
 :%^WVV prt-d ;
-:%^WVV imp-prsprt ;
+:%^WVV imp-prsptc ;
 :%^WVV sup ;
 :%>d l7 ;
 
@@ -107,7 +107,7 @@ LEXICON s19 ! dylja
 jinf ;
 pres-ur ;
 :%^WVV prt-d ;
-:%^WVV imp-prsprt ;
+:%^WVV imp-prsptc ;
 :%^WVV sup ;
 :%>d l7 ;
 
@@ -121,7 +121,7 @@ LEXICON s22 ! ryðja
 jinf ;
 pres-ur ;
 :%^WVV prt-d ;
-:%^WVV imp-prsprt ;
+:%^WVV imp-prsptc ;
 :%^WVV sup ;
 :%>d l18 ;
 
@@ -129,7 +129,7 @@ LEXICON s23 ! smyrja
 jinf ;
 pres-null ;
 :%^WVV prt-d ;
-:%^WVV imp-prsprt ;
+:%^WVV imp-prsptc ;
 :%^WVV sup ;
 :%>d l7 ;
 
@@ -137,7 +137,7 @@ LEXICON s24 ! flysa
 jinf ;
 pres-null ;
 :%^WVV prt-d ;
-:%^WVV imp-prsprt ;
+:%^WVV imp-prsptc ;
 :%^WVV sup ;
 :%>d l5 ;
 
@@ -145,7 +145,7 @@ LEXICON s25 ! liva
 inf ;
 pres-ir ;
 prt-d ;
-imp-prsprt ;
+imp-prsptc ;
 :a sup-a ;
 :%>d l6 ;
 
@@ -153,7 +153,7 @@ LEXICON s26 ! plaga
 inf ;
 pres-ar ;
 prt-d ;
-imp-prsprt ;
+imp-prsptc ;
 sup ;
 :a sup-a ;
 
@@ -161,7 +161,7 @@ LEXICON s27 ! spáa
 inf ;
 pres-ar ;
 prt-dd ;
-imp-prsprt ;
+imp-prsptc ;
 sup-tt ;
 :%>d l18 ;
 
@@ -169,7 +169,7 @@ LEXICON s28 ! skaða
 inf ;
 pres-ar ;
 prt-d ;
-imp-prsprt ;
+imp-prsptc ;
 sup ;
 :%>d l18 ;
 
@@ -177,9 +177,9 @@ LEXICON s29 ! brúka
 inf ;
 pres-ar ;
 prt-d ;
-imp-prsprt ;
+imp-prsptc ;
 sup ;
-:%>d l5 ;
+:%>t l5 ;
 
 LEXICON s30 ! kalla
 inf ;
@@ -189,13 +189,15 @@ prt-a ;
 imppl ;
 prsptc ;
 sup-a ;
-:%>d l5 ;
+:%>að l6 ;
 
 LEXICON s31 ! only the verb gera and Xgera
 :er inf ;
 :er pres-null ;
+:er imp-prsptc ;
 :jør prt-d ;
-:%>d l7 ;
+:jør sup ;
+:jørd%> l7 ;
 
 LEXICON s32 ! búgva
 :gv      inf ;
@@ -203,7 +205,7 @@ LEXICON s32 ! búgva
 :r%^IUML pres-strong-s23 ;
 :gv      pres-pl ; 
          prt-a ;
-:%>gvin  l32 ;
+:gvin  l32 ;
 
 LEXICON s33 ! rógva
 :gv      inf ;
@@ -324,16 +326,16 @@ l26 ;
 LEXICON s45 ! binda
 inf ;
           pres-ur ;
-:%^AB3    prt-null-s ;
-:%^AB2    prt-u-p ;
+:%^aAB    prt-null-s ;
+:%^uAB    prt-u-p ;
 :i        sup-a ;
 l26 ;
 
 LEXICON s46 ! stinga
           inf ;
           pres-ur ;
-:%^AB1    prt-null-s ;
-:%^AB2    prt-u-p ;
+:%^aAB    prt-null-s ;
+:%^uAB    prt-u-p ;
 :i        sup-a ;
 :%>in     l26 ;
 
@@ -388,7 +390,8 @@ LEXICON s52 ! veva
 
 LEXICON s53 ! leypa
 :leyp   inf ;
-:loyp   pres-strong-ur ;
+:loyp   pres-strong-s1 ;
+:loyp   pres-strong-s23 ;
 :leyp   prt-null-s ;
 :lup    prt-u-p ;
 :lopi   sup-a ;
@@ -542,7 +545,8 @@ LEXICON s70 ! siga
 :sig        pres-ur ;
 :segði      prt-null-s ;
 :søgð       prt-u-p ;
-:sagt       sup-a ;
+:søgd	    prt-u-p ; !XXX SUB?
+:sag       sup ;
 :sagd%>     l8 ;
 
 LEXICON s71 ! skerja
@@ -800,7 +804,7 @@ ir-verb ;
 LEXICON ir-verb
 pres-ir ;
 prt-d ;
-imp-prsprt ;
+imp-prsptc ;
 sup ;
 
 
@@ -811,12 +815,14 @@ sup ;
 
 LEXICON jinf
 +V+Inf:%>ja # ;
++V+Inf+Pass:%>jast #;
 
 LEXICON inf
 +V+Inf:%>a # ;
++V+Inf+Pass:%>ast # ;
 
 LEXICON reflinf
-+V+Inf:%>ast # ;
++V+Inf+Pass:%>ast # ;
 
 ! Present
 
@@ -893,10 +899,13 @@ LEXICON prt-u-p
 
 ! Imperative and present participle
 
-LEXICON imp-prsprt
+LEXICON imp-prsptc
+imp ;
+prsptc ;
+
+LEXICON imp
 impsg ;
 imppl ;
-prsptc ;
 
 LEXICON impsg
 +V+Imp+Sg: # ;
@@ -950,7 +959,7 @@ LEXICON HAVA
 +Ind+Prs+3Sg:hevur # ;
 +Ind+Prs+Pl:hava # ;
 +Ind+Prt+Sg:hevði # ;
-+Ind+Prt+Pl:vøvdu # ;
++Ind+Prt+Pl:høvdu # ;
 +Imp+Sg:hav # ;
 +Imp+Pl:havið # ;
 +PrsPtc:havandi # ;
@@ -1047,3 +1056,50 @@ LEXICON VITA
 +Ind+Prt+Pl:vistu # ;
 +Sup:vitað # ;
 
+
+LEXICON SÍGGJA
++Inf:síggja # ;
++Ind+Prs+1Sg:síggi # ;
++Ind+Prs+2Sg:sært # ;
++Ind+Prs+3Sg:sær # ;
++Ind+Prs+Pl:síggja # ;
++Ind+Prt+1Sg:sá # ;
++Ind+Prt+2Sg:sást # ;
++Ind+Prt+3Sg:sá # ;
++Ind+Prt+Pl:sóu # ;
++Imp+Sg:síggj # ;
++Imp+Sg:sí # ;
++Imp+Pl:síggið # ;
++PrsPrc:síggjandi # ;
++PrfPrc:sæddur # ;
++Sup:sæð # ;
++Sup:sætt # ;
+
+LEXICON FÁA
++Inf:fáa # ;
++Ind+Prs+1Sg:fái # ;
++Ind+Prs+2Sg:fært # ;
++Ind+Prs+3Sg:fær # ;
++Ind+Prs+Pl:fáa # ;
++Ind+Prt+1Sg:fekk # ;
++Ind+Prt+2Sg:fekst # ;
++Ind+Prt+3Sg:fekk # ;
++Ind+Prt+Pl:fingu # ;
++Imp+Sg:fá # ;
++Imp+Pl:fáið # ;
++PrfPrc:fingin # ;
++Sup:fingið # ;
+
+!LEXICON 
+!+Inf:
+!+Ind+Prs+1Sg:
+!+Ind+Prs+2Sg:
+!+Ind+Prs+3Sg:
+!+Ind+Prs+Pl:
+!+Ind+Prt+Sg:
+!+Ind+Prt+Pl:
+!+Imp+Sg:
+!+Imp+Pl:
+!+PrsPrc:
+!+PrfPrc:
+!+Sup:

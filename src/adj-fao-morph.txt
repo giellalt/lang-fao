@@ -7,165 +7,192 @@
 
 LEXICON l1	! beinur
 adj-a ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l2	! leysur
 adj-a ;
 adj-r-gen ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l3	! bíligur
 adj-a ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l4	! kunnugur
 adj-a ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l5	! spiltur
 adj-a ;
 adj-r-gen ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l6	! brekaður
 adj-a ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l7	! blindur
 adj-a ;
 adj-r-gen ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l8	! kaldur
          a-non-umlaut ;
 :%^UUML      a-umlaut ;
 adj-r-gen ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l9	! spakur
          a-non-umlaut ;
 :%^UUML      a-umlaut ;
 adj-r-gen ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l10 ! drúgvur
 adj-a ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l11 ! flógvur
 adj-a ; ! -gv-
-adj-def ; ! -gv-
++A: adj-def ; ! -gv-
+adjcmp1 ;
 
 LEXICON l12 ! snjallur
          a-non-umlaut ;
 :%^UUML      a-umlaut ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l13 ! langur
          a-non-umlaut ;
 :%^UUML      a-umlaut ;
-adj-def ;
++A: adj-def ;
 
 LEXICON l14 ! harður
          a-non-umlaut ;
 :%^UUML      a-umlaut ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l15 ! blíður
 adj-a ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 ! Check these
 
 LEXICON l16 ! góður
 adj-a ;
-adj-def ;
++A: adj-def ;
 
 LEXICON l17 ! bláur
 adj-a ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l18 ! keddur
 adj-a ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l19 ! n´yggjur
 adj-a ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l20 ! stillur
 adj-a ;
-adj-def ;
++A: adj-def ;
 
 LEXICON l21 ! fastur
          a-non-umlaut ;
 :%^UUML      a-umlaut ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l22 ! klæddur
          a-non-umlaut ;
 :%^UUML      a-umlaut ;
 			 a-umlaut ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l23 ! rættur
          a-non-umlaut ;
 :%^UUML      a-umlaut ;
 			 a-umlaut ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l24 ! frískur
 adj-a ;
 adj-r-gen ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l25 ! danskur
          a-non-umlaut ;
 :%^UUML      a-umlaut ;
             adj-r-gen ;
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l26 ! vakin
-adj-def ;
++A: adj-def ;
 
 LEXICON l27 ! heiðin
-adj-def ;
++A: adj-def ;
 
 LEXICON l28 ! lítil
-adj-def ;
++A: adj-def ;
 
 LEXICON l29 ! fakur
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l30 ! tepur
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l31 ! trupul
-adj-def ;
++A: adj-def ;
 
 LEXICON l32 ! búgvin
-adj-def ;
++A: adj-def ;
 
 LEXICON l33 ! gamal
-adj-def ;
++A: adj-def ;
 
 LEXICON l34 ! dottin
-adj-def ;
++A: adj-def ;
 
 LEXICON l35 ! feingin
-adj-def ;
++A: adj-def ;
 
 LEXICON l36 ! liðugur
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l37 ! grammur
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 LEXICON l38 ! kollutur
-adj-def ;
++A: adj-def ;
 
 LEXICON l39 ! settur
-adj-def ;
++A: adj-def ;
+adjcmp1 ;
 
 
 ! Irregular comaratives
@@ -175,12 +202,13 @@ LEXICON ELDRI
 eldri-m ;
 eldri-f ;
 eldri-n ;
+adj-def ;
 
 LEXICON ELSTUR
 :%>ur eldri-m ;
       eldri-f ;
       eldri-n ;
-
+      adj-def ;
 
 LEXICON eldri-m
 +Msc: # ;
@@ -336,9 +364,62 @@ LEXICON adj-def
  +A+Neu+Sg+Acc+Def:%>a # ;
  +A+Neu+Sg+Dat+Def:%>a # ;
  +A+Neu+Sg+Gen+Def:%>a # ;
- +A+Pl+Nom+Def:%>u # ;
- +A+Pl+Acc+Def:%>u # ;
- +A+Pl+Dat+Def:%>u # ;
- +A+Pl+Gen+Def:%>u # ;
+ +A+Pl+Nom+Def:%^UUML%>u # ;
+ +A+Pl+Acc+Def:%^UUML%>u # ;
+ +A+Pl+Dat+Def:%^UUML%>u # ;
+ +A+Pl+Gen+Def:%^UUML%>u # ;
 
 
+! Comparative
+! ===========
+
+LEXICON adjcmp1
++A+Cmp:ar indef-cmp-adj-decl ;
++A+Superl:ast indef-superl-adj-decl ;
+
+LEXICON adjcmp2
++A+Cmp:r indef-cmp-adj-decl ;
++A+Superl:st indef-superl-adj-decl ;
+
+LEXICON indef-cmp-adj-decl
++Msc+Sg+Indef:%>i # ;
++Fem+Sg+Indef:%>i # ;
++Neu+Sg+Indef:%>i # ;
+
++Msc+Sg+Def+Nom:%>i # ;
++Msc+Sg+Def+Acc:%>a # ;
++Msc+Sg+Def+Dat:%>a # ;
++Msc+Sg+Def+Pl:%>u # ;
++Fem+Sg+Def+Nom:%>a # ;
++Fem+Sg+Def+Acc:%>u # ;
++Fem+Sg+Def+Dat:%>u # ;
++Fem+Sg+Def+Pl:%>u # ;
++Neu+Sg+Def+Nom:%>a # ;
++Neu+Sg+Def+Acc:%>a # ;
++Neu+Sg+Def+Dat:%>a # ;
++Neu+Sg+Def+Pl:%>u # ;
+
+
+!+A+Cmp+Indef
+!+A+Cmp+Msc+Sg+Def
+!+A+Cmp+Fem+Sg+Def
+!+A+Cmp+Neu+Sg+Def
+!+A+Cmp+Pl
+
+
+! Superlative
+! ===========
+
+LEXICON indef-superl-adj-decl
++Msc+Sg+Indef:%>ur # ;
++Fem+Sg+Indef:     # ;
++Neu+Sg+Indef:     # ;
+
+
+
+!+A+Superl+Pl
+!+A+Superl+Indef
+!+A+Superl+Msc+Sg+Def
+!+A+Superl+Fem+Sg+Def
+!+A+Superl+Neu+Sg+Def
+!+A+Superl+Pl

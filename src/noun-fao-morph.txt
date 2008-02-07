@@ -776,7 +776,7 @@ k41e ;
 k-flt41 ;
 
 LEXICON k41e
-+N+Msc+Sg+Nom:maður DF-NA-SGm ;
++N+Msc+Sg+Nom:maður DF-N-SGm ;
              :mann k41-obl ;
 +N+Msc+Pl+Dat:monnu DF-D-PL ;
 
@@ -823,7 +823,7 @@ LEXICON k-flt43
 +N+Msc:%^IUML S-M-PLGEN ;
 
 LEXICON k44 ! bróðir
-+N+Msc+Sg:ir DF-NA-SGm ; 
++N+Msc+Sg:ir DF-N-SGm ; 
          :ur k44-obl ;
 
 LEXICON k44-obl
@@ -1914,10 +1914,10 @@ LEXICON h42
 ! Weak case suffixes.
  
 LEXICON W-M-SGNOM
-+Sg+Nom:%>i DF-NA-SGm ;
++Sg+Nom:%>i DF-N-SGm ;
 
 LEXICON W-M-SGACC
-+Sg+Acc:%>a   DF-NA-SGm ;
++Sg+Acc:%>a   DF-A-SGm ;
 
 LEXICON W-M-SGDAT
 +Sg+Dat:%>a  DF-D-SGm ;
@@ -1953,16 +1953,17 @@ LEXICON W-M-PLGEN
 ! Nominative Sg
 
 LEXICON S-M-SGNOM
-+Sg+Nom:%>ur DF-NA-SGm ;
++Sg+Nom:%>ur DF-N-SGm ;
 
 LEXICON S-M-SGNOM-NULL
-+Sg+Nom: DF-NA-SGm ;
++Sg+Nom: DF-N-SGm ;
 
 
 ! Accusative Sg
 
 LEXICON S-M-SGACC
-+Sg+Acc: DF-NA-SGm ;
++Sg+Acc: DF-A-SGm-indef ;
++Sg+Acc:%>i DF-A-SGm-def ;
 
 
 ! Dative Sg
@@ -2159,9 +2160,19 @@ LEXICON DF-G-PL
 ! Masculine forms
 ! ---------------
 
-LEXICON DF-NA-SGm
+LEXICON DF-N-SGm
 +Indef: # ;
 +Def:%>in # ;
+
+LEXICON DF-A-SGm
+DF-A-SGm-indef ;
+DF-A-SGm-def ;
+
+LEXICON DF-A-SGm-indef 
++Indef: # ;
+
+LEXICON DF-A-SGm-def 
++Def:%>n # ;
 
 LEXICON DF-D-SGm
 +Indef: # ;

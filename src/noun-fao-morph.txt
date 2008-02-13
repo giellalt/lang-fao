@@ -1950,6 +1950,14 @@ LEXICON W-M-PLGEN
 ! Strong case suffixes
 ! --------------------
 
+
+
+LEXICON DF-NA-SGm-S ! luður
++Sg+Nom:%> DF-N-SGm ;
++Sg+Acc:%> DF-A-SGm-indef ;
++Sg+Acc:%> DF-A-SGm-def ;
+
+
 ! Nominative Sg
 
 LEXICON S-M-SGNOM
@@ -2039,17 +2047,17 @@ LEXICON S-M-PLGEN
 ! Nominative
 
 LEXICON W-F-SGNOM
-+Sg+Nom:%>a DF-N-SGf ;
++Sg+Nom:%>a DF-N-SGf-W ;
 
 LEXICON S-F-SGNAD
-+Sg+Nom:%> DF-N-SGf ;
-+Sg+Acc:%> DF-A-SGf ;
++Sg+Nom:%> DF-N-SGf-S ;
++Sg+Acc:%> DF-A-SGf-S ;
 +Sg+Dat:%> DF-D-SGf ;
 
 ! Oblique
 
 LEXICON W-F-SGOBL
-+Sg+Acc:%>u DF-A-SGf ;
++Sg+Acc:%>u DF-A-SGf-W ;
 +Sg+Dat:%>u DF-D-SGf ;
 +Sg+Gen:%>u DF-G-SGf ;
 
@@ -2194,11 +2202,19 @@ LEXICON DF-A-PLm
 ! Feminine forms
 ! ---------------
 
-LEXICON DF-N-SGf
+LEXICON DF-N-SGf-W
++Indef: # ;
++Def:%>n # ;
+
+LEXICON DF-N-SGf-S
 +Indef: # ;
 +Def:%>in # ;
 
-LEXICON DF-A-SGf
+LEXICON DF-A-SGf-W
++Indef: # ;
++Def:%>na # ;
+
+LEXICON DF-A-SGf-S
 +Indef: # ;
 +Def:%>ina # ;
 

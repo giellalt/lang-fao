@@ -41,7 +41,7 @@ LEXICON k1/4
 k1 ;
 k4 ;
 
-LEXICON k1e/48f
+LEXICON k1e/48fb
 k1e ;
 k-flt48 ;
 
@@ -72,7 +72,7 @@ LEXICON k2 ! beiggi
 +N+Msc: W-M-PLDAT ;
 +N+Msc: W-M-PLGEN ;
 
-LEXICON k3 ! ! hagi
+LEXICON k3 ! hagi
 k3e ;
 k-flt3 ;
 
@@ -480,7 +480,7 @@ k26 ;
 k-flt6 ;
 
 LEXICON k27/25
-:ur k27 ;
+: k27 ;
 k25 ;
 
 LEXICON k28/12
@@ -580,7 +580,7 @@ LEXICON k27 ! vøkstur
 +N+Msc:%^EPH%^OEA S-M-PLGEN ;
 
 LEXICON k28 ! dráttur
-k28e
+k28e ;
 k-flt28 ;
 
 LEXICON k28e
@@ -633,24 +633,27 @@ LEXICON k31e
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
 +N+Msc: S-M-SGDAT ;
-+N+Msc:%>j S-M-SGGEN-AR ;
++N+Msc:j S-M-SGGEN-AR ;
 
 LEXICON k-flt31
 +N+Msc: S-M-PLNOM-IR ;
 +N+Msc: S-M-PLACC-IR ;
-+N+Msc:%>j S-M-PLDAT ;
-+N+Msc:%>j S-M-PLGEN ;
++N+Msc:j S-M-PLDAT ;
++N+Msc:j S-M-PLGEN ;
 
 LEXICON k32 ! ryggur
-+N+Msc: S-M-SGNOM ;
-+N+Msc: S-M-SGACC ;
-+N+Msc: S-M-SGDAT ;
-+N+Msc:%>j S-M-SGGEN-AR ;
+k31e ;
+#+N+Msc: S-M-SGNOM ;
+#+N+Msc: S-M-SGACC ;
+#+N+Msc: S-M-SGDAT ;
+#+N+Msc:j S-M-SGGEN-AR ;
 +N+Msc: S-M-SGGEN ;
-+N+Msc: S-M-PLNOM-IR ;
-+N+Msc: S-M-PLACC-IR ;
-+N+Msc:%>j S-M-PLDAT ;
-+N+Msc:%>j S-M-PLGEN ;
+
+k-flt31 ;
+#+N+Msc: S-M-PLNOM-IR ;
+#+N+Msc: S-M-PLACC-IR ;
+#+N+Msc:j S-M-PLDAT ;
+#+N+Msc:j S-M-PLGEN ;
 
 LEXICON k33 ! hylur
 +N+Msc: S-M-SGNOM ;
@@ -698,7 +701,7 @@ LEXICON k36 ! heyggjur
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
 +N+Msc: S-M-SGDAT ;
-+N+Msc: S-M-SGGEN ;
++N+Msc:%^GDEL S-M-SGGEN ;
 +N+Msc: S-M-PLNOM ;
 +N+Msc: S-M-PLACC ;
 +N+Msc: S-M-PLDAT ;
@@ -712,13 +715,13 @@ LEXICON k37e
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
 +N+Msc: S-M-SGDAT ;
-+N+Msc: S-M-SGGEN ;
++N+Msc:%^GVDEL S-M-SGGEN ;
 
 
 LEXICON k-flt37 
 +N+Msc: S-M-PLNOM ;
 +N+Msc: S-M-PLACC ;
-+N+Msc: S-M-PLDATm ;
++N+Msc:%^GVDEL S-M-PLDATm ;
 +N+Msc: S-M-PLGEN ;
 
 LEXICON k38 ! bógvur
@@ -734,7 +737,10 @@ LEXICON k38e
 
 LEXICON k-flt38
 +N+Msc: S-M-PLNOM ;
++N+Msc:%^IUML S-M-PLNOM-IR ;
 +N+Msc: S-M-PLACC ;
++N+Msc:%^IUML S-M-PLACC-IR ;
++N+Msc: S-M-PLDAT ;
 +N+Msc: S-M-PLDAT ;
 +N+Msc: S-M-PLGEN ;
 
@@ -745,7 +751,7 @@ k-flt39 ;
 LEXICON k39e
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
-+N+Msc: S-M-SGDAT ;
++N+Msc: S-M-SGDAT-2 ;
 +N+Msc:%^GDEL S-M-SGGEN-AR ;
 +N+Msc:%^GVDEL S-M-SGGEN ;
 
@@ -763,7 +769,7 @@ LEXICON k40e
 +N+Msc: S-M-SGNOM ;
 +N+Msc: S-M-SGACC ;
 +N+Msc: S-M-SGDAT ;
-+N+Msc:%^GDEL S-M-SGGEN ;
++N+Msc:%^GDEL S-M-SGGEN;
 
 LEXICON k-flt40
 +N+Msc: S-M-PLNOM ;
@@ -778,7 +784,7 @@ k-flt41 ;
 LEXICON k41e
 +N+Msc+Sg+Nom:maður DF-N-SGm ;
              :mann k41-obl ;
-+N+Msc+Pl+Dat:monnu DF-D-PL ;
++N+Msc+Pl+Dat:monn%>um DF-D-PL ;
 
 LEXICON k41-obl
 +N+Msc: S-M-SGACC ;
@@ -786,6 +792,8 @@ LEXICON k41-obl
 +N+Msc: S-M-SGGEN ;
 
 LEXICON k-flt41
+!+N+Msc:mann%^IUML S-M-PLNOM-NULL-I ;
+!+N+Msc:mann%^IUML S-M-PLACC-NULL-I ;
 +N+Msc:mann%^IUML S-M-PLNOM-NULL ;
 +N+Msc:mann%^IUML S-M-PLACC-NULL ;
 +N+Msc:mann S-M-PLGEN ;
@@ -811,19 +819,34 @@ k43e ;
 k-flt43 ;
 
 LEXICON k43e
-+N+Msc: S-M-SGNOM-NULL ;
-+N+Msc: S-M-SGACC ;
-+N+Msc: S-M-SGDAT-NULL ;
-+N+Msc: S-M-SGGEN ;
+!+N+Msc: S-M-SGNOM-NULL ;
+!+N+Msc: S-M-SGACC ;
+!+N+Msc: S-M-SGDAT-NULL ;
+!+N+Msc: S-M-SGGEN ;
+
++N+Msc: faðir S-M-SGNOM-NULL ;
++N+Msc: faðir S-M-SGACC ;
++N+Msc: faðir S-M-SGDAT-NULL ;
++N+Msc: faðir S-M-SGGEN ;
 
 LEXICON k-flt43
-+N+Msc:%^IUML S-M-PLNOM ;
-+N+Msc:%^IUML S-M-PLACC ;
-+N+Msc:%^IUML S-M-PLDAT ;
-+N+Msc:%^IUML S-M-PLGEN ;
+!+N+Msc:%^IUML S-M-PLNOM ;
+!+N+Msc:%^IUML S-M-PLACC ;
+!+N+Msc:%^IUML S-M-PLDAT ;
+!+N+Msc:%^IUML S-M-PLGEN ;
+
++N+Msc: fedr S-M-PLNOM ;
++N+Msc: fedr S-M-PLACC ;
++N+Msc: fedr S-M-PLDAT ;
++N+Msc: fedr S-M-PLGEN ;
+
 
 LEXICON k44 ! bróðir
-+N+Msc+Sg:ir DF-N-SGm ; 
+!<<<<<<< noun-fao-morph.txt
++N+Msc+Sg+Nom:ir DF-N-SGm ;
+!=======
+!+N+Msc+Sg:ir DF-N-SGm ; 
+!>>>>>>> 1.14
          :ur k44-obl ;
 
 LEXICON k44-obl
@@ -838,8 +861,8 @@ k-flt44 ;
 LEXICON k-flt44
 +N+Msc:%^IUML S-M-PLNOM-NULL ;
 +N+Msc:%^IUML S-M-PLACC-NULL ;
-+N+Msc:%^IUML S-M-PLDAT ;
-+N+Msc:%^IUML S-M-PLGEN ;
++N+Msc:%^EPH%^IUML S-M-PLDAT ;
++N+Msc:%^EPH%^IUML S-M-PLGEN ;
 
 LEXICON k45 ! spónur
 k45e ;
@@ -931,13 +954,14 @@ LEXICON k50 ! skjøldur (non-poetic)
 +N+Msc:%^EPH%^OEA S-M-PLGEN ;
 
 LEXICON k51 ! luður
-+N+Msc: S-M-SGACC ;
-+N+Msc: S-M-SGDAT ;
-+N+Msc: S-M-SGGEN ;
-+N+Msc: S-M-PLNOM ;
-+N+Msc: S-M-PLACC ;
-+N+Msc: S-M-PLDAT ;
-+N+Msc: S-M-PLGEN ;
++N+Msc:ð S-M-SGNOM ;
++N+Msc:nn S-M-SGACC ;
++N+Msc:nn S-M-SGDAT ;
++N+Msc:nn S-M-SGGEN ;
++N+Msc:nn S-M-PLNOM ;
++N+Msc:nn S-M-PLACC ;
++N+Msc:nn S-M-PLDAT ;
++N+Msc:nn S-M-PLGEN ;
 
 LEXICON k52 ! primus
 k52e ;
@@ -1940,7 +1964,11 @@ LEXICON W-M-PLACC-UR
 +Pl+Acc:%>ur DF-A-PLm ;
 
 LEXICON W-M-PLDAT
-+Pl+Dat:%>u DF-D-PL ;
+!<<<<<<< noun-fao-morph.txt
++Pl+Dat:%>um DF-D-PL ;
+!=======
+!+Pl+Dat:%>u DF-D-PL ;
+!>>>>>>> 1.14
 
 LEXICON W-M-PLGEN
 +Pl+Gen:%>a DF-G-PL ;
@@ -1964,7 +1992,11 @@ LEXICON S-M-SGNOM
 +Sg+Nom:%>ur DF-N-SGm ;
 
 LEXICON S-M-SGNOM-NULL
-+Sg+Nom: DF-N-SGm ;
+!<<<<<<< noun-fao-morph.txt
++Sg+Nom:%> DF-N-SGm ;
+!=======
+!+Sg+Nom: DF-N-SGm ;
+!>>>>>>> 1.14
 
 
 ! Accusative Sg
@@ -1979,8 +2011,12 @@ LEXICON S-M-SGACC
 LEXICON S-M-SGDAT
 +Sg+Dat:%>i DF-D-SGm ;
 
+LEXICON S-M-SGDAT-2
++Sg+Dat:%>i DF-D-SGm ;
++Sg+Dat+Def:%^GVDEL%>num #;
+
 LEXICON S-M-SGDAT-NULL
-+Sg+Dat: DF-D-SGm ;
++Sg+Dat:%> DF-D-SGm ;
 
 ! Genitive Sg
 
@@ -1988,7 +2024,7 @@ LEXICON S-M-SGGEN
 +Sg+Gen:%>s DF-G-SGm ;
 
 LEXICON S-M-SGGEN-NULL
-+Sg+Gen: DF-G-SGm ;
++Sg+Gen:%> DF-G-SGm ;
 
 LEXICON S-M-SGGEN-AR
 +Sg+Gen:%>ar DF-G-SGm ;
@@ -2009,6 +2045,8 @@ LEXICON S-M-PLNOM-UR
 LEXICON S-M-PLNOM-NULL
 +Pl+Nom:%> DF-N-PLm ;
 
+!LEXICON S-M-PLNOM-NULL-I
+!+Pl+Nom:%> DF-N-PLm-I ;
 
 ! Accusative
 
@@ -2022,16 +2060,20 @@ LEXICON S-M-PLACC-UR
 +Pl+Acc:%>ur DF-A-PLm ;
 
 LEXICON S-M-PLACC-NULL
-+Pl+Acc:%>i DF-A-PLm ;
++Pl+Acc:%> DF-A-PLm ;
+
+
+!LEXICON S-M-PLACC-NULL-I
+!+Pl+Acc:%> DF-A-PLm-I ;
 
 
 ! Dative
 
 LEXICON S-M-PLDAT
-+Pl+Dat:%>u DF-D-PL ;
++Pl+Dat:%>um DF-D-PL ;
 
 LEXICON S-M-PLDATm ! skóm
-+Pl+Dat:%> DF-D-PL ;
++Pl+Dat:%>m DF-D-PL ;
 
 ! Genitive
 
@@ -2099,18 +2141,18 @@ LEXICON F-PLGEN
 ! ------------
 
 LEXICON S-N-SGNA
-+Sg+Nom: DF-NA-SGn ;
-+Sg+Acc: DF-NA-SGn ;
++Sg+Nom:%> DF-NA-SGn ;
++Sg+Acc:%> DF-NA-SGn ;
 
 LEXICON S-N-SGDG
-+Sg+Dat: DF-D-SGn ;
-+Sg+Gen: DF-G-SGn ;
++Sg+Dat:%> DF-D-SGn ;
++Sg+Gen:%> DF-G-SGn ;
 
 LEXICON S-N-SGD
-+Sg+Dat: DF-D-SGn ;
++Sg+Dat:%> DF-D-SGn ;
 
 LEXICON S-N-SGG
-+Sg+Gen: DF-G-SGn ;
++Sg+Gen:%> DF-G-SGn ;
 
 LEXICON S-N-SGDG-is
 S-N-SGD-i ;
@@ -2129,8 +2171,8 @@ LEXICON N-PLNA-u-ur
 +Pl+Acc:%>ur DF-NA-PLn ;
 
 LEXICON N-PLNA 
-+Pl+Nom: DF-NA-PLn ;
-+Pl+Acc: DF-NA-PLn ;
++Pl+Nom:%> DF-NA-PLn ;
++Pl+Acc:%> DF-NA-PLn ;
 
 
 LEXICON N-PLD
@@ -2145,7 +2187,7 @@ LEXICON N-PLG-na
 ! Common cases
 
 LEXICON DF-D-PL
-+Indef:%>m # ;
++Indef: # ;
 +Def:%>num # ;
 
 LEXICON DF-G-PL
@@ -2172,6 +2214,13 @@ LEXICON DF-N-SGm
 +Indef: # ;
 +Def:%>in # ;
 
+!<<<<<<< noun-fao-morph.txt
+!LEXICON DF-A-SGm
+!+Indef: # ;
+!+Def:%>in # ;
+
+
+!=======
 LEXICON DF-A-SGm
 DF-A-SGm-indef ;
 DF-A-SGm-def ;
@@ -2180,24 +2229,35 @@ LEXICON DF-A-SGm-indef
 +Indef: # ;
 
 LEXICON DF-A-SGm-def 
-+Def:%>n # ;
++Def:%>in # ;
 
+!>>>>>>> 1.14
 LEXICON DF-D-SGm
 +Indef: # ;
-+Def:%>num # ;
++Def:%>inum # ;
 
 LEXICON DF-G-SGm
-+Indef:    # ;
++Indef: # ;
 +Def:%>ins # ;
            R ;
 
 LEXICON DF-N-PLm
 +Indef: # ;
-+Def:%>nir # ;
++Def:%>inir # ; 
 
 LEXICON DF-A-PLm
 +Indef: # ;
-+Def:%>nar # ;
++Def:%>inar # ;
+
+
+!LEXICON DF-N-PLm-I
+!+Indef: # ;
+!+Def:%>inir # ;
+
+!LEXICON DF-A-PLm-I
+!+Indef: # ;
+!+Def:%>inar # ;
+
 
 ! Feminine forms
 ! ---------------

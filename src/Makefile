@@ -22,7 +22,7 @@ ifao.fst: ../bin/ifao.fst
 	invert net \n\
 	save stack ../bin/ifao.fst \n\
 	quit \n" > /tmp/ifao-fst-script
-	@xfst < /tmp/ifao-fst-script
+	@xfst -utf8 < /tmp/ifao-fst-script
 	@rm -f /tmp/ifao-fst-script
 
  
@@ -39,7 +39,7 @@ fao.fst: ../bin/fao.fst
 	@\"../bin/caseconv.fst\" ; \n\
 	save stack ../bin/fao.fst \n\
 	quit \n" > /tmp/fao-fst-script
-	@xfst < /tmp/fao-fst-script
+	@xfst -utf8 < /tmp/fao-fst-script
 	@rm -f /tmp/fao-fst-script
 
 

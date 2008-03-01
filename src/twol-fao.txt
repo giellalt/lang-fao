@@ -9,11 +9,12 @@ Alphabet
  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å
  Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð
 
- g2:g j2:j v2:v 
- 
+ g2:g i2:i j2:j v2:v 
  %^UUML:0 %^IUML:0 %^eIUML:0 %^W:0 %^EPH:0 %^JI:0 %^OEA:0 
+
  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0
  %^EIO:0 %^OA:0 %^WVV:0
+
  %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0
  %^aAB:0 %^uAB:0
  %>:0 ;
@@ -23,9 +24,11 @@ Sets
  Vow = a e i o u y æ ø å 
        á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;
  Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;
+ 
  Nas = m n ;
  NonNas = b c d f g h j k l p q r s t v w x z ð þ ;
  Dummy = %>  %^UUML %^IUML %^eIUML %^W %^EPH %^JI ;
+ Special = %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL; 
 
 
 Rules
@@ -42,17 +45,16 @@ Rules
 !€ verk000ur
 
 "Deleting j in j-stems"
-  j:0 <=> Vow g g _ %>: [ Cns | i ] ;
+  j:0 <=> Vow g g: _ %>: [ Cns | i ] ;
 !          Vow [ Cns - j ]  _ %>: [ u r | Cns | i ] ;
 !€ heyggj%>i
 !€ heygg00i
 
 
-
 ! Verschärferung
 
 "Deleting the gv Verschärferung 1"
- g:0 <=> Vow _ v: %^GVDEL:  ;
+ g:0 <=> Vow _ v: %^GVDEL:  ; Vow _ v: %^GDEL: %>: ;
 
 "Deleting the gv Verschärferung 2"
  v:0 <=> Vow g: _ [ %^GVDEL: | %^VDEL: ] ;
@@ -70,7 +72,7 @@ Rules
  g:0 <=> Vow _ g: j:  %^GGDEL: %>: s ;
 
 "Deleting ggj in Genitive II"
- g:0 <=> Vow g: _ j: [ %^GDEL: | %^GGDEL: ] %>: s ;
+ g:0 <=> Vow g: _ j: [ %^GDEL: | %^GGDEL: ] %>: s ; 
 
 "Deleting ggj in Genitive III"
  j:0 <=> Vow g: g: _  [ %^GDEL: | %^GGDEL: ] %>: s ;
@@ -81,40 +83,65 @@ Rules
 !€ kríggj%^GDEL%>s
 !€ kríg0000s
 
-"Deleting g in gv strings"
- g:0 <=> Vow _ v: %^GDEL: %>: ;
+!"Deleting g in gv strings"
+! g:0 <=> Vow _ v: %^GDEL: %>: ;
 
 !€ sjógv%>ar
 !€ sjó0v0ar
 
 "Deleting r in Genitive of ur stems"
- r:0 <=> u: _ %^EPH:  %^RDEL: %>: a r ;
+ r:0 <=> u: _ %^EPH: %^RDEL: %>: a r ;
 
 !€ brúður%^EPH%^%RDEL%>ar
 !€ brúð00000ar
 
 
-"Vowel-deletion in Vowel-initial suffix"
- Vx:0 <=> _ %>: [ i n | i ð | u m | s %>: i n s | a ] ;
-      where Vx in ( i a ) ;
-!€ dømi%>um
-!€ døm00um
+!"Vowel-deletion in Vowel-initial suffix"
+! Vx:0 <=> _ %>: [ i n | i ð | u m | s %>: i n s | a ] ;
+!      where Vx in ( i a ) ;
+
+!"Vowel-deletion in Vowel-initial suffix"
+! i:0 <=> _ %>: [ i n #: | i ð | u m | s %>: i n s | a ] ; 
+! i:0 <=> _ %>: [ i n #: | i ð | u m | s %>: i n s | a ] ; d a: g %^IUML: %>: _ %>: n u m #: ; Vow Cns:0* %>: _ %>: n u m ;
+
+"Deleting initial i in definite suffix"
+ i:0 <=> %>: Vow %>: _ [ n u m #: | n s #: | n #: | ð #: | n i #: | n a #: | n n a r #: ] ; 
+                       [ a | u | i ] r (Special:*) %>:* %>: _ [ n i r #: | n a r #: ]; 
+                       Vow %>:+ _ [ n | ð | n i ] #: ; _ %>:+ [ a | u m ] ;
+
+"Deleting initial i in definite suffix after wowel, ð or g last in stem"
+ i:0 <=> Vow %>: %>: _ n u m #: ; Vow: %>: _ %>: i:0 n u m #: ; Vow: %>: i:0 %>: _ n u m #: ;
+              [ Vow: | a:e ] [ ð | g ] (Special:*) %>: ( i:0 ) %>: _ n u m #: ; Vow: [ ð | g ] (Special:*) %>: _ %>: i: n u m #: ;
+
+!€ døm%>i%>um
+!€ døm000um
 
 !€ dømi%>ið
 !€ dømi00ð
 
-!€ grann%>a%>in
-!€ grann0a00n
+!€ grann%>i%>in
+!€ grann00in
 
 !€ ris%>i%>in
-!€ ris0i00n
+!€ ris00in
+
+
+"Deleting m in um%>num "
+ m:0 <=> %>: u: _ %>: n u m #: ; %>: _ %>: n u m #: ;
+!ris%>um%>num
+!ris00u000num
+
+!skógv%>m%>num
+!skó0000000num
+
 
 "Epenthetic deletion"
- Vx:0 <=> _ [ r | l | n ]  %^EPH: %>: ; !Vow ;
+ Vx:0 <=> _ [ r | l | n ] %^EPH: ( Special:* ) %>: ; !Vow ;
       where Vx in (a i u) ;
-      
-!€ akur%^EPH%>
+
 !€ ak0r00
+!€ økur%^EPH%^UUML%> um
+!€ øk0r000um
 
 !€ lykil%^EPH%>
 !€ lyk0l00
@@ -122,18 +149,26 @@ Rules
 !€ aftan%^EPH%>
 !€ aft0n00
 
+
+!"U-umlaut in Front of Nasal"
+! a:o <=> _ Nas (Vow:) (Cns:*)  (%^EPH:) %^UUML:  ;
+
 "U-umlaut in Front of Nasal"
- a:o <=> _ Nas (Vow:) (Cns:*)  (%^EPH:) %^UUML:  ;
+ a:o <=> _ m Vow: (Cns:*) (%^EPH:) %^UUML:  ; _ n Cns:+ (Vow:*) (%^EPH:) %^UUML: ;
 
 !€ tank%^UUML
 !€ tonk0
+
+!€ band^UUML
+!€ bond00
 
 !€ hamar%^EPH%^UUML%>um
 !€ hom0r000um
 
 
+
 "General U-umlaut"
- a:ø <=> _ NonNas:* (Nas) %^UUML: ;
+  a:ø <=> _ NonNas: NonNas:* (Nas) %^UUML: ;
 
 !€ dag%>%^UUMLum
 !€ døg00um
@@ -141,8 +176,16 @@ Rules
 !€ sag%>%^UUMLa
 !€ søg00a
 
+
+"U-umlaut for akur"
+  a:ø <=> _ k u:0 r (%^EPH:) %^UUML: %>: ;
+
+!akur%^EPH%^UUML%>um
+!øk0r000um
+
+
 "I-umlaut"
- Vx:Vy <=> _ Cns* %^IUML: ;
+ Vx:Vy <=> _ Cns:* (Dummy:*) %^IUML: ;
      where Vx in ( a o ø á ó ú )
 	   Vy in ( e y i æ ø ý )
 	   matched ;
@@ -153,6 +196,9 @@ Rules
 !€ son%^IUML%>i
 !€ syn00i
 
+!€ bógv%^IUML%>i
+!€ bøg000i
+
 "eI-umlaut"
  Vx:Vy <=> _ Cns* %^eIUML: ;
      where Vx in ( o )
@@ -160,7 +206,8 @@ Rules
 	   matched ;
 
 
-
+"I-umlaut for bróðir"
+ ó:ø <=> _ Cns:* u: r (Dummy:*) %^IUML: ;
 
 "j-Deletion in i-umlaut"
  j:0 <=> Cns _  [ :i | :ý | :e :y ] Cns:* %^IUML: ;
@@ -195,10 +242,10 @@ Rules
 
 
 "Deleting Double Consonant in Front of Consonant"
- Cx:0 <=> Cx _ %>: ( j: ) Cns  ;
-	  Cx _ Vow:0 Cns Dummy:* Vow ;
-      where Cx in ( b d f k l m n p r s t v ) 
+ Cx:0 <=> Cx _ %>: Cns ; Cx _ [ i:0 | a:0 | u:0 ] l ( %^EPH: ) %>: ;
+      where Cx in ( b d f g k l m n p r s t v ) 
       matched ;
+
 !€ hjall%>s
 !€ hjal00s
 
@@ -211,12 +258,30 @@ Rules
 !€ himmal%^EPH%^UUML%>um
 !€ him00l000um
 
+!rygg%>s
+!ryg00s
+
+!tunnil%>i
+!tun00l%>i
+
+!himmal%>i
+!him00l0i
 
 "Deleting stem-final s in s genitive"
  s:0 <=> Vow s %>: _ ;
 
 !€ primus%>s
-!€ primu00a
+!€ primus000
+
+!grís%>s
+!grís000
+
+
+"Realising i2 as i"
+ i2:i <= _ %>: ;
+
+!svii2%>
+!svii%>
 
 "Realising j in front of vowels"
  j2:j <=> _ %>: [ a | u ] ;
@@ -233,8 +298,8 @@ Rules
 !€ bógv%^IUML%>i
 !€ bøg000i
 
-"Plural i Deletion in faðir"
- i:0 <=> :e ð _ r %^IUML: %>: ;
+!"Plural i Deletion in faðir"
+! i:0 <=> :e ð _ r %^IUML: %>: ;
 
 !€ faðir%^IUML%>ar
 !€ feð0r00ar
@@ -277,12 +342,22 @@ Rules
 !€ keyp0ti
 
 
+!"Geminate Assimilation in Past Tense"
+! Cx:0 <=> Cy _ %>: [ d | t ] ;
+! 	where Cx in ( d ð n p g k t )
+! 	      Cy in ( n r n p g k l )
+! 	      matched ;
+ 
+! conflicts with the 
+! "Deleting Double Consonant in Front of Consonant" rule 
+! what to do? HJ
+
 "Geminate Assimilation in Past Tense"
  Cx:0 <=> Cy _ %>: [ d | t ] ;
- 	where Cx in ( d ð n p g k t )
- 	      Cy in ( n r n p g k l )
+ 	where Cx in ( d ð t )
+ 	      Cy in ( n r l )
  	      matched ;
- 	      
+	      
 !€ send%>di
 !€ sen00di
 
@@ -360,8 +435,9 @@ Vx:i <=> Cns+ _ %^AB6: %>: ;
  	      
 ! Possessive Sandhi rules
 
-"n Deletion in Neuter"
- n:0 <=> _ %>: t t ;
+! "n Deletion in Neuter" conflicts with the "Deleting Double Consonant in Front of Consonant" rule - HJ
+!"n Deletion in Neuter"
+! n:0 <=> _ %>: t t ;
 
 "t Deletion in Neuter"
  t:o <=> r %>: _ t ;

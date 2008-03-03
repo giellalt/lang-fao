@@ -4,7 +4,6 @@
 
 
 
-
 # ========== #
 # Delimiters #
 # ========== #
@@ -113,7 +112,7 @@ LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
 
 # Noun-Verb sets
 
-SET THIRD = Sg 3Sg Pl 3Pl ;
+LIST THIRD = Sg 3Sg Pl 3Pl ;
 
 # Number sets
 
@@ -509,7 +508,7 @@ REMOVE:NotVerbIfPrCompl V IF (-1 Pr)(0 (@P<));
 # VP disambiguation
 
 
-
+END
 
 # Ordinals
 REMOVE (A Sg @N>) IF (1 (Num Sg));
@@ -525,7 +524,7 @@ SELECT:FiniteVerb VFIN IF (NEGATE 0* VFIN);
 
 SELECT:InitialCC CC IF (-1 BOS)(1C (@SUBJ));
 	## Men tað var hált.
+## 
 
-REMOVE:Not12VerbTo3Subj NONTHIRDV IF (*-1 THIRD + (@SUBJ) BARRIER NOT-ADV);
-	## Tað var, sum vóru tey sett.
+## 	## Tað var, sum vóru tey sett.
 

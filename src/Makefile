@@ -149,7 +149,7 @@ tok.fst: ../bin/tok.fst
 
 # Let us just make a binary disambiguator
 # It can be used instead of the source file.
-fao-dis.bin: ../bin/fao-dis.bin
+dis-bin: ../bin/fao-dis.bin
 ../bin/fao-dis.bin: fao-dis.rle
 	@echo
 	@echo "*** Building a binary disambiguator fao-dis.bin ***" ;

@@ -2,7 +2,8 @@
 # Faroese disambiguator #
 # ===================== #
 
-
+# ///////////////////////////////////////////////////////
+# This section shall be copied to fao-dep.rle if changed
 
 # ========== #
 # Delimiters #
@@ -165,6 +166,13 @@ SET NPNH = WORDMARK - PRE-N ;
 SET NPNHA = WORDMARK - PRE-N - Adv ;
 SET NOT-ADV = WORDMARK - Adv ;
 SET NOT-A = WORDMARK - A ;
+
+
+
+
+# The section to be copied to fao-dep.rle stops here
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 
 
 SECTION
@@ -388,12 +396,14 @@ REMOVE ("hannur") IF (0 ("hann" Nom))(1 (V 3Sg));
 # Syntactic disambiguation
 # ========================
 
+# ////////////////
+# Copy this list to sme-dep.rle
 
 # Syntax tags
 
 LIST @SUBJ = @SUBJ ;
 LIST @OBJ = @OBJ ;
-LIST @N> = @N> ;
+LIST @>N = @>N ;
 LIST @N< = @N< ;
 LIST @SPRED = @SPRED ;
 LIST @VAUX = @VAUX ;
@@ -401,12 +411,15 @@ LIST @VMAIN = @VMAIN ;
 LIST @ADVL = @ADVL ;
 LIST @P< = @P< ;
 LIST @CC = @CC ;
+LIST @CS = @CS ;
 #LIST @CC-VP = @CC-VP ;
 LIST @APP @APP :
 LIST @X = @X ;
 
-LIST SYNTAG = (@CC) (@CS) (@SUBJ)  (@OBJ)  (@N>)  (@N<)  (@SPRED)  (@VFIN)  (@ADVL) (@P<) (@APP) ;
+LIST SYNTAG = (@CC) (@CS) (@SUBJ)  (@OBJ)  (@>N)  (@N<)  (@SPRED)  (@VFIN)  (@ADVL) (@P<) (@APP) ;
 
+# Stop copy here
+# \\\\\\\\\\\\\\\\
 
 # ======== #
   SECTION  #
@@ -434,9 +447,9 @@ MAP:GenPrComplTag (@P<) TARGET NOMINALHEAD + Gen IF (*-1 SOMEGENPREP BARRIER NPN
 MAP:MapDemToN (@>N) TARGET Dem + $$GENDER + $$NAGD IF (+1 N + $$GENDER + $$NAGD BARRIER NPNHA);
 #MAP (@P<) TARGET Acc IF
 
-MAP (@N>) TARGET (N Gen) IF (*1 N BARRIER V OR Adv);
+MAP (@>N) TARGET (N Gen) IF (*1 N BARRIER V OR Adv);
 
-MAP (@N>) TARGET A + $$NAGD OR Dem + $$NAGD IF (*1 N + $$NAGD OR Num + $$NAGD BARRIER NPNHA);
+MAP (@>N) TARGET A + $$NAGD OR Dem + $$NAGD IF (*1 N + $$NAGD OR Num + $$NAGD BARRIER NPNHA);
 
 
 MAP (@VFIN) TARGET (V Prs) OR (V Prt) OR (V Imp);
@@ -471,7 +484,7 @@ REMOVE (@IOBJ) IF (*-1 Pr BARRIER NPNHA);
 
 REMOVE (@P<) IF (*-1 BOS OR (N Acc) OR (N Dat) OR (N Nom) OR V OR CLB OR CS BARRIER Pr);
 
-REMOVE (@N>) IF (*-1 Pr BARRIER NPNHA);
+REMOVE (@>N) IF (*-1 Pr BARRIER NPNHA);
 
 SELECT (Sg @SPRED) IF (*-1 AUX BARRIER NPNHA LINK -1 (Sg Nom));
 
@@ -511,11 +524,11 @@ REMOVE:NotVerbIfPrCompl V IF (-1 Pr)(0 (@P<));
 END
 
 # Ordinals
-REMOVE (A Sg @N>) IF (1 (Num Sg));
+REMOVE (A Sg @>N) IF (1 (Num Sg));
 	## fyrstu tríggjar mánðirnar.
 
 
-REMOVE (A @N>) IF (0 V)(NOT 1 N OR A);
+REMOVE (A @>N) IF (0 V)(NOT 1 N OR A);
 # Alternatively: Demand Nom to the left or Num to the right.
 
 # Postsyntactical verbal dis

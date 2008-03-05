@@ -154,7 +154,7 @@ dis-bin: ../bin/fao-dis.bin
 	@echo
 	@echo "*** Building a binary disambiguator fao-dis.bin ***" ;
 	@echo
-	@vislcg3 --grammar fao-dis.rle --grammar-only --grammar-bin ../bin/fao-dis.bin
+	@vislcg3 --grammar fao-dis.rle --grammar-only --grammar-bin ../bin/fao-dis.bin -C UTF-8
 
 
 # "make clean" is there to remove the binary files at will.

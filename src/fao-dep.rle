@@ -1,0 +1,229 @@
+# ========================== #
+# Faroese dependency grammar #
+# ========================== #
+
+
+# ///////////////////////////////////////////////////////
+# This section shall be copied to fao-dep.rle if changed
+
+# ========== #
+# Delimiters #
+# ========== #
+
+
+DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
+
+
+
+# ============= #
+# Tags and sets #
+# ============= #
+
+
+# ========
+   SETS
+# ========
+
+LIST BOS = (>>>) (<s>); 
+LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
+
+LIST N = N ;
+LIST V = V ;
+LIST A = A ;
+LIST Prop = Prop ;
+LIST Adv = Adv ;
+LIST Num = Num ;
+LIST CC = CC ;
+LIST CS = CS ;
+LIST Interj = Interj ;
+LIST Abbr = Abbr ;
+LIST ACR = ACR ;
+LIST Pr = Pr ;
+LIST Pron = Pron ;
+LIST Pers = Pers ;
+LIST Dem = Dem ;
+LIST Det = Det ;
+LIST Refl = Refl ;
+LIST Recipr = Recipr ;
+LIST Poss = Poss ;
+LIST Interr = Interr ;
+LIST Nom = Nom ;
+LIST Acc = Acc ;
+LIST Gen = Gen ;
+LIST Dat = Dat ;
+LIST Msc = Msc ;
+LIST Fem = Fem ;
+LIST Neu = Neu ;
+LIST Sg = Sg ;
+LIST Pl = Pl ;
+LIST Def = Def ;
+LIST Indef = Indef ;
+LIST Cmp = Cmp ;
+LIST Superl = Superl ;
+LIST Prs = Prs ;
+LIST Prt = Prt ;
+LIST 1Sg = 1Sg ;
+LIST 2Sg = 2Sg ;
+LIST 3Sg = 3Sg ;
+LIST Inf = Inf ;
+LIST PrfPrc = PrfPrc ;
+LIST PrsPrc = PrsPrc ;
+LIST Imp = Imp ;
+LIST Cmpnd = Cmpnd ;
+LIST CLB = CLB ;
+LIST PUNCT = PUNCT ;
+LIST LEFT = LEFT ;
+LIST RIGHT = RIGHT ;
+
+
+
+
+LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
+Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
+PrsPrc Sup Imp CLB PUNCT LEFT RIGHT ;
+
+
+LIST NAGD = Nom Acc Gen Dat ;
+LIST GENDER = Msc Fem Neu ;
+LIST NUMBER = Sg Pl ;
+
+# Sets
+# ====
+
+# Noun sets
+
+
+SET NounMscFem = (N Msc) OR (N Fem) ;
+SET NounMscNeu = (N Msc) OR (N Neu) ;
+SET NounFemNeu = (N Fem) OR (N Neu) ;
+
+# Nominal sets
+
+LIST NOMINALHEAD = N Num Pron ;
+
+# Verb sets
+
+LIST AUX = "vera" "verða" ;
+
+LIST VFIN = Prs Prt Imp ;
+LIST Ind = Prs Prt ;
+
+LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
+
+LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
+
+# Noun-Verb sets
+
+LIST THIRD = Sg 3Sg Pl 3Pl ;
+
+# Number sets
+
+SET NUMBERS = Num - ("eitt") - ("1") ;
+# Preposition sets
+
+LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum
+íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin
+hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin
+vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "vestan" ;
+
+LIST DATPREP = "hjá" "með" "á" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "mótvegis" "nær" "sambært" "viðvíkjandi" ;
+
+LIST ACCDATPREP = "í" "á" "undir" "yfir" "eftir" "fyri" "við" "frá" ;
+
+LIST ACCGENPREP = "innan" "uttan" "millum" "til" "vegna" ;
+
+LIST ACCDATGENPREP = "at" "av" "hjá" "móti" "um" "undan" "úr" ;
+
+
+SET SOMEACCPREP = ACCPREP | ACCDATPREP | ACCGENPREP | ACCDATGENPREP ;
+
+SET SOMEDATPREP = DATPREP | ACCDATPREP | ACCDATGENPREP ;
+
+SET SOMEGENPREP = ACCGENPREP | ACCDATGENPREP ;
+
+# Boundary sets
+
+SET S-BOUNDARY = CS | Interr ;
+
+
+# Complementary set
+
+# Case sets
+
+SET NOTDAT = Nom | Gen | Acc ;
+SET NOTACC = Nom | Gen | Dat ;
+SET NOTACCDAT = Nom | Gen ;
+SET OBL = Acc | Dat | Gen ;
+
+#SET NO
+
+SET PRE-N =  A | Det | Dem | (N Gen) | Num ; # Det???
+
+SET WORD = N | V | A | Pr | Pron | Adv | CC | CS | Interj | Num | ("\?") ;
+SET MARK =  ("\,") | ("\:") | ("\;") ;
+SET WORDMARK = WORD | MARK ;
+
+SET NPNH = WORDMARK - PRE-N ;
+SET NPNHA = WORDMARK - PRE-N - Adv ;
+SET NOT-ADV = WORDMARK - Adv ;
+SET NOT-A = WORDMARK - A ;
+
+
+
+
+# The section to be copied to fao-dep.rle stops here
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+# ////////////////
+# Copy this list to sme-dep.rle
+
+# Syntax tags
+
+LIST @SUBJ = @SUBJ ;
+LIST @OBJ = @OBJ ;
+LIST @>N = @>N ;
+LIST @N< = @N< ;
+LIST @SPRED = @SPRED ;
+LIST @VAUX = @VAUX ;
+LIST @VMAIN = @VMAIN ;
+LIST @ADVL = @ADVL ;
+LIST @P< = @P< ;
+LIST @CC = @CC ;
+LIST @CS = @CS ;
+#LIST @CC-VP = @CC-VP ;
+LIST @APP @APP :
+LIST @X = @X ;
+
+LIST SYNTAG = (@CC) (@CS) (@SUBJ)  (@OBJ)  (@>N)  (@N<)  (@SPRED)  (@VFIN)  (@ADVL) (@P<) (@APP) ;
+
+# Stop copy here
+# \\\\\\\\\\\\\\\\
+
+
+SECTION
+
+# NPs
+
+SETPARENT @>N TO (*1 N BARRIER NPNH);
+
+SETPARENT @CS TO (-1 NOMINALHEAD);
+# PPs
+
+SETPARENT @P< TO (*-1 Pr BARRIER NPNH);
+
+# VPs
+
+SETPARENT VINFIN TO (*-1 AUX BARRIER CS);
+
+
+# S
+SETPARENT @SUBJ TO (*1 VFIN BARRIER CS);
+SETPARENT @SUBJ TO (-*1 VFIN BARRIER CS);
+SETPARENT @OBJ TO (-*1 V BARRIER CS);
+SETPARENT @OBJ TO (*1 V BARRIER CS);
+SETPARENT @ADVL TO (0* AUX);
+SETPARENT @ADVL TO (0* VFIN);
+
+
+

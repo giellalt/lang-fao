@@ -275,7 +275,7 @@ SELECT:GenderNounToAdj $$GENDER IF (-1C (A) + $$GENDER)(0 N);
 
 SELECT:NagdNounToAdj $$NAGD IF (-1C (A) + $$NAGD)(0 N);
 
-SELECT:NumberNounToAdj $$NUMBER IF (-1C (A) $$NUMBER)(0 N);
+SELECT:NumberNounToAdj $$NUMBER IF (-1C (A) + $$NUMBER)(0 N);
 
 # Poss disambiguation
 
@@ -413,7 +413,7 @@ LIST @P< = @P< ;
 LIST @CC = @CC ;
 LIST @CS = @CS ;
 #LIST @CC-VP = @CC-VP ;
-LIST @APP @APP :
+LIST @APP = @APP :
 LIST @X = @X ;
 
 LIST SYNTAG = (@CC) (@CS) (@SUBJ)  (@OBJ)  (@>N)  (@N<)  (@SPRED)  (@VFIN)  (@ADVL) (@P<) (@APP) ;
@@ -434,8 +434,8 @@ MAP (@VMAIN) TARGET V ;
 
 ADD (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 AUX BARRIER NPNHA LINK -1 Nom);
 #MAP (@SUBJ) TARGET (N Nom) OR (Num Nom) OR (Pron Nom);
-MAP:SubjSg (@SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*0 V 3Sg);
-MAP:SubmPl (@SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*0 V Pl);
+MAP:SubjSg (@SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*0 (V 3Sg));
+MAP:SubmPl (@SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*0 (V Pl));
 
 MAP (@OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr);
 MAP (@IOBJ) TARGET (N Dat) OR (Num Dat) OR (Pron Dat) IF (*1 (@OBJ) BARRIER NPNHA);
@@ -462,9 +462,9 @@ MAP (@N<) TARGET Poss IF (0 $$NAGD)(-1 N + $$NAGD);
 MAP (@ADVL) TARGET Adv ;
 
 
-
-MAP:SpredIfSpecial @SPRED (-1 ("síggja"))(0 A)(1 ("út"))
-MAP:SpredIfSpecialCC @SPRED (-1 ("síggja"))(0 A)(1 CC)(*2 A);
+# ')(0 A)(1 ("út"))' 
+MAP:SpredIfSpecial (@SPRED) TARGET A IF (-1 ("síggja"))(1 ("út"));
+MAP:SpredIfSpecialCC (@SPRED) TARGET A IF (-1 ("síggja"))(1 CC)(*2 A);
 
 
 MAP (@X) TARGET WORD ;

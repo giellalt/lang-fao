@@ -100,6 +100,9 @@ SET NounFemNeu = (N Fem) OR (N Neu) ;
 
 LIST NOMINALHEAD = N Num Pron ;
 
+LIST PRENAGR = Det Dem A ;
+
+
 # Verb sets
 
 LIST AUX = "vera" "verða" ;
@@ -434,7 +437,7 @@ MAP (@VMAIN) TARGET V ;
 
 ADD (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 AUX BARRIER NPNHA LINK -1 Nom);
 #MAP (@SUBJ) TARGET (N Nom) OR (Num Nom) OR (Pron Nom);
-MAP:SubjSg (@SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*0 (V 3Sg));
+MAP:SubjSg (@SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*0 (V 3Sg) OR (V Sg));
 MAP:SubmPl (@SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*0 (V Pl));
 
 MAP (@OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr);
@@ -448,7 +451,8 @@ MAP:MapDemToN (@>N) TARGET Dem + $$GENDER + $$NAGD IF (+1 N + $$GENDER + $$NAGD 
 #MAP (@P<) TARGET Acc IF
 
 MAP (@>N) TARGET (N Gen) IF (*1 N BARRIER V OR Adv);
-
+MAP (@>N) TARGET (Det) IF (*1 N BARRIER V OR Adv);
+MAP (@>N) TARGET (Dem) IF (*1 N BARRIER V OR Adv);
 MAP (@>N) TARGET A + $$NAGD OR Dem + $$NAGD IF (*1 N + $$NAGD OR Num + $$NAGD BARRIER NPNHA);
 
 
@@ -461,8 +465,8 @@ MAP (@N<) TARGET Poss IF (0 $$NAGD)(-1 N + $$NAGD);
 
 MAP (@ADVL) TARGET Adv ;
 
+MAP (@N<) TARGET N IF (0 $$NAGD)(-1 (N $$NAGD));
 
-# ')(0 A)(1 ("út"))' 
 MAP:SpredIfSpecial (@SPRED) TARGET A IF (-1 ("síggja"))(1 ("út"));
 MAP:SpredIfSpecialCC (@SPRED) TARGET A IF (-1 ("síggja"))(1 CC)(*2 A);
 
@@ -494,6 +498,9 @@ REMOVE (@SUBJ) IF (*-1 VFIN BARRIER S-BOUNDARY LINK -1 (@SUBJ));
 
 
 
+
+
+
 # PPs
 
 REMOVE (@SUBJ) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
@@ -520,8 +527,11 @@ REMOVE:NotVerbIfPrCompl V IF (-1 Pr)(0 (@P<));
 
 # VP disambiguation
 
+#REMOVE:NotVIfLeftDet V IF (-1 PRENAGR + $$NAGD)(0 (N $$NAGD));
+#REMOVE:NotVIfLeftDet V IF (-1 (Det $$NAGD))(0 (N $$NAGD));
+REMOVE:NotVIfLeftDet V IF (-1 (Det Nom))(0 (N Nom));
 
-END
+#END
 
 # Ordinals
 REMOVE (A Sg @>N) IF (1 (Num Sg));

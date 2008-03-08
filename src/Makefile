@@ -14,7 +14,7 @@ LEX = fao-lex.txt noun-fao-lex.txt \
 
 ifao.fst: ../bin/ifao.fst
 ../bin/ifao.fst: ../bin/fao.fst ../bin/fao.save ../bin/tok.fst ../bin/abbr.txt \
-	../bin/allcaps.fst ../bin/fao-dis.bin
+	../bin/allcaps.fst ../bin/fao-dis.bin ../bin/fao-dep.bin
 	@echo
 	@echo "*** Building the inverse ifao.fst ***"
 	@echo
@@ -155,6 +155,16 @@ dis-bin: ../bin/fao-dis.bin
 	@echo "*** Building a binary disambiguator fao-dis.bin ***" ;
 	@echo
 	@vislcg3 --grammar fao-dis.rle --grammar-only --grammar-bin ../bin/fao-dis.bin -C UTF-8
+
+
+# Let us just make a binary dependency grammar
+# It can be used instead of the source file.
+dep-bin: ../bin/fao-dep.bin
+../bin/fao-dep.bin: fao-dep.rle
+	@echo
+	@echo "*** Building a binary disambiguator fao-dep.bin ***" ;
+	@echo
+	@vislcg3 --grammar fao-dep.rle --grammar-only --grammar-bin ../bin/fao-dep.bin -C UTF-8
 
 
 # "make clean" is there to remove the binary files at will.

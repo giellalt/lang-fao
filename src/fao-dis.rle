@@ -1,9 +1,8 @@
+
 # ===================== #
 # Faroese disambiguator #
 # ===================== #
 
-# ///////////////////////////////////////////////////////
-# This section shall be copied to fao-dep.rle if changed
 
 # ========== #
 # Delimiters #
@@ -99,12 +98,14 @@ SET NounFemNeu = (N Fem) OR (N Neu) ;
 
 # Nominal sets
 
-LIST NOMINALHEAD = N Num Pron ;
+LIST NOMINALHEAD = N Num Pers Refl Recipr ;
 
 LIST PRENAGR = Det Dem A ;
 
 
 # Verb sets
+
+LIST COPULA = "vera" "verða" ;
 
 LIST AUX = "kunna" "skula" "vera" "verða" ;
 
@@ -115,7 +116,9 @@ LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
 
 LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
 
-LIST MODV = "kunna" "skula" ;
+LIST MODV = "kunna" "láta" "skula" ;
+
+LIST DATV = "smakka" ;
 
 
 
@@ -148,9 +151,11 @@ SET SOMEDATPREP = DATPREP | ACCDATPREP | ACCDATGENPREP ;
 
 SET SOMEGENPREP = ACCGENPREP | ACCDATGENPREP ;
 
+
+
 # Boundary sets
 
-SET S-BOUNDARY = CS | Interr ;
+SET S-BOUNDARY = CS | Interr | BOS  | EOS ;
 
 
 # Complementary set
@@ -258,7 +263,9 @@ REMOVE:NotNagdAdjToAdjNotNagd $$NAGD IF (0 A)(*1 N BARRIER NPNHA LINK NOT 0 $$NA
 
 # Numeral disambiguation
 
-SELECT:NumAdjToN $$NUMBER IF (0 A)(1 N + $$NUMBER);
+#SELECT:NumAdjToN $$NUMBER IF (0 A)(1 N + $$NUMBER);
+REMOVE:NumAdjToNpl (A Sg) IF (1C N + Pl);
+REMOVE:NumAdjToNsg (A Pl) IF (1C N + Sg);
 	## í ta døkku moldina.
 
 SELECT:NumDetToN $$NUMBER IF (0 Det)(*1 N + $$NUMBER BARRIER NOT-A);
@@ -306,6 +313,10 @@ REMOVE:NotInverseNonSubj Acc IF (-2 CS)(-1 (V Pl))(0 (Pl Nom)) ;
 	## Tað var, sum váru tey sett út úr luftini.
 
 
+# A or N
+
+REMOVE A IF (*-1 Pr BARRIER NPNH)(0 N)(1 S-BOUNDARY);
+
 # PP disambiguation
 # =================
 
@@ -315,20 +326,24 @@ REMOVE:NotInverseNonSubj Acc IF (-2 CS)(-1 (V Pl))(0 (Pl Nom)) ;
 REMOVE Pr IF (0 ("at"))(NOT *1 Acc OR Gen OR Dat BARRIER V);
 SELECT CS IF (0 ("at"))(*1 Nom BARRIER NPNHA LINK *1 V BARRIER OBL);
 
+# millum
+REMOVE Adv IF (0 Dat OR Acc)(*-1 ("millum") BARRIER NPNH);
+
+
 # til
 SELECT Pr IF (0 ("til"))(*1 N OR NPNH OR ("at") BARRIER NPNHA);
 
 # Case within PP phrases
 
-SELECT:PPAcc Acc IF (*-1 ACCPREP BARRIER NOTACC);
-SELECT:PPDat Dat IF (*-1 DATPREP BARRIER NOTDAT);
+SELECT:PPAcc Acc IF (*-1 ACCPREP BARRIER NOTACC OR V OR Pr);
+SELECT:PPDat Dat IF (*-1 DATPREP BARRIER NOTDAT OR V OR Pr);
 
-REMOVE:NotPPNotDat NOTDAT IF (*-1 DATPREP BARRIER NOTDAT);
+REMOVE:NotPPNotDat NOTDAT IF (*-1 DATPREP BARRIER NOTDAT OR S-BOUNDARY OR V OR Pr);
 #REMOVE Acc IF (*-1 DATPREP BARRIER NOTDAT);
 #REMOVE Gen IF (*-1 DATPREP BARRIER NOTDAT);
 
-REMOVE:NotPPGen Gen IF (*-1 ACCDATPREP BARRIER NOTACCDAT);
-REMOVE:NotPPNom Nom IF (*-1 ACCDATPREP BARRIER NOTACCDAT);
+REMOVE:NotPPGen Gen IF (*-1 ACCDATPREP BARRIER NOTACCDAT OR S-BOUNDARY OR V OR Pr);
+REMOVE:NotPPNom Nom IF (*-1 ACCDATPREP BARRIER NOTACCDAT OR S-BOUNDARY OR V OR Pr);
 
 # P chains or not
 
@@ -352,6 +367,8 @@ REMOVE:NotDemBeforeNonDef Dem IF (0 Pers)(NEGATE *1 Def BARRIER NPNH);
 REMOVE A IF (0 ("vera"))(1 (N Sg));
 	## Enskt mál er móðurmál.
 
+SELECT ("vera" 3Sg) IF (-1 ("tað" Pron Pers Sg Nom));
+	## Tað var, sum váru tey sett av tilvild av einum fóti út úr luftini.
  
 # Infinitive
 
@@ -361,7 +378,11 @@ SELECT Inf IF (*-1 MODV BARRIER V);
 
 # Imperative
 
-REMOVE Imp IF (-1 Adv OR Nom)(0 Prs OR Prt);
+#REMOVE Imp IF (-1 Adv OR Nom OR Pr OR CS OR V)(0 Prs OR Prt);
+REMOVE Imp IF (NOT *-1 BOS BARRIER WORD); # hmm
+
+# The Imp section must be written when there are genuine 
+# examples to build upon.
 
 REMOVE Imp IF (0 N)(1 CC)(*2 N BARRIER NPNHA);
 	## Stýrið og stjórnin hjá...
@@ -370,6 +391,8 @@ REMOVE (Imp Pl) IF (0 (N Neu))(1 VFIN);
 	## Húsið er stórt.
 
 # Supine
+
+SELECT Sup IF 
 
 REMOVE Sup IF (0 VFIN)(NOT *-1C VFIN BARRIER S-BOUNDARY)(NOT *1C VFIN BARRIER S-BOUNDARY);
 
@@ -384,6 +407,20 @@ SELECT (V 2Sg) IF (*-1 ("tú" Pron Pers Sg Nom) BARRIER NOT-ADV);
 # Present plural
 
 SELECT (V Pl) IF (-1 (N Pl Nom));
+
+
+# V + Refl
+
+SELECT ("seg" Refl) IF (-1 (Inf OR 3Sg or 3Pl)) ;
+
+
+# Accusative
+# ==========
+
+REMOVE Nom IF (*-1 AUX OR MODV LINK -1 CC OR Nom BARRIER NPNH)(1 Inf);
+
+
+
 
 # Genitive
 # ========
@@ -413,8 +450,6 @@ REMOVE ("hannur") IF (0 ("hann" Nom))(1 (V 3Sg));
 # Syntactic disambiguation
 # ========================
 
-# ////////////////
-# Copy this list to sme-dep.rle
 
 # Syntax tags
 
@@ -429,7 +464,6 @@ LIST @ADVL = @ADVL ;
 LIST @P< = @P< ;
 LIST @CC = @CC ;
 LIST @CS = @CS ;
-#LIST @CC-VP = @CC-VP ;
 LIST @APP = @APP :
 LIST @X = @X ;
 
@@ -445,11 +479,11 @@ LIST SYNTAG = (@CC) (@CS) (@SUBJ)  (@OBJ)  (@>N)  (@N<)  (@SPRED)  (@VFIN)  (@AD
 ADD (@CC) TARGET CC ;
 ADD (@CS) TARGET CS ;
 
-MAP (@VAUX) TARGET AUX + VFIN IF (0* VINFIN BARRIER CS);
+MAP (@VAUX) TARGET AUX + VFIN IF (0* VINFIN BARRIER CS OR CC);
 MAP (@VMAIN) TARGET V ;
 #MAP (@VMAIN) TARGET VFIN IF (NEGATE 0* VFIN BARRIER CS OR CLB);
 
-ADD (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 AUX BARRIER NPNHA LINK -1 Nom);
+ADD (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK -1 Nom);
 #MAP (@SUBJ) TARGET (N Nom) OR (Num Nom) OR (Pron Nom);
 
 
@@ -461,6 +495,7 @@ MAP:SubmPl (@SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*0 (V Pl));
 
 MAP (@OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr);
 MAP (@IOBJ) TARGET (N Dat) OR (Num Dat) OR (Pron Dat) IF (*1 (@OBJ) BARRIER NPNHA);
+MAP (@OBJ) TARGET Dat IF (*-1 DATV);
 
 MAP:DatPrComplTag (@P<) TARGET NOMINALHEAD + Dat IF (*-1 SOMEDATPREP BARRIER NPNHA);
 MAP:AccPrComplTag (@P<) TARGET NOMINALHEAD + Acc IF (*-1 SOMEACCPREP BARRIER NPNHA);
@@ -509,14 +544,15 @@ REMOVE (@P<) IF (*-1 BOS OR (N Acc) OR (N Dat) OR (N Nom) OR V OR CLB OR CS BARR
 
 REMOVE (@>N) IF (*-1 Pr BARRIER NPNHA);
 
-SELECT (Sg @SPRED) IF (*-1 AUX BARRIER NPNHA LINK -1 (Sg Nom));
+SELECT (Sg @SPRED) IF (*-1 COPULA BARRIER NPNHA LINK -1 (Sg Nom));
 
-SELECT (Pl @SPRED) IF (*-1 AUX BARRIER NPNHA LINK -1 (Pl Nom));
+SELECT (Pl @SPRED) IF (*-1 COPULA BARRIER NPNHA LINK -1 (Pl Nom));
 
 REMOVE (@SUBJ) IF (*-1 VFIN BARRIER S-BOUNDARY LINK -1 (@SUBJ));
 
 
-
+SELECT (@SUBJ) IF (-1 CS)(1 VFIN);
+	## sum hann hevði í lummanum.
 
 
 

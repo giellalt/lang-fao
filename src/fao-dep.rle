@@ -3,8 +3,6 @@
 # ========================== #
 
 
-# ///////////////////////////////////////////////////////
-# This section shall be copied to fao-dep.rle if changed
 
 # ========== #
 # Delimiters #
@@ -23,9 +21,6 @@ DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
 # ========
    SETS
 # ========
-
-LIST BOS = (>>>) (<s>); 
-LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
 
 LIST N = N ;
 LIST V = V ;
@@ -47,6 +42,7 @@ LIST Refl = Refl ;
 LIST Recipr = Recipr ;
 LIST Poss = Poss ;
 LIST Interr = Interr ;
+
 LIST Nom = Nom ;
 LIST Acc = Acc ;
 LIST Gen = Gen ;
@@ -69,11 +65,15 @@ LIST Inf = Inf ;
 LIST PrfPrc = PrfPrc ;
 LIST PrsPrc = PrsPrc ;
 LIST Imp = Imp ;
+LIST Sup = Sup ;
 LIST Cmpnd = Cmpnd ;
 LIST CLB = CLB ;
 LIST PUNCT = PUNCT ;
 LIST LEFT = LEFT ;
 LIST RIGHT = RIGHT ;
+
+ 
+SET WORD = N | V | A | Pr | Pron | Adv | CC | CS | Interj | Num | ("\?") ;
 
 
 
@@ -101,49 +101,8 @@ SET NounFemNeu = (N Fem) OR (N Neu) ;
 
 LIST NOMINALHEAD = N Num Pron ;
 
-# Verb sets
+LIST PRENAGR = Det Dem A ;
 
-LIST AUX = "vera" "verða" ;
-
-LIST VFIN = Prs Prt Imp ;
-LIST Ind = Prs Prt ;
-
-LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
-
-LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
-
-# Noun-Verb sets
-
-LIST THIRD = Sg 3Sg Pl 3Pl ;
-
-# Number sets
-
-SET NUMBERS = Num - ("eitt") - ("1") ;
-# Preposition sets
-
-LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum
-íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin
-hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin
-vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "vestan" ;
-
-LIST DATPREP = "hjá" "með" "á" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "mótvegis" "nær" "sambært" "viðvíkjandi" ;
-
-LIST ACCDATPREP = "í" "á" "undir" "yfir" "eftir" "fyri" "við" "frá" ;
-
-LIST ACCGENPREP = "innan" "uttan" "millum" "til" "vegna" ;
-
-LIST ACCDATGENPREP = "at" "av" "hjá" "móti" "um" "undan" "úr" ;
-
-
-SET SOMEACCPREP = ACCPREP | ACCDATPREP | ACCGENPREP | ACCDATGENPREP ;
-
-SET SOMEDATPREP = DATPREP | ACCDATPREP | ACCDATGENPREP ;
-
-SET SOMEGENPREP = ACCGENPREP | ACCDATGENPREP ;
-
-# Boundary sets
-
-SET S-BOUNDARY = CS | Interr ;
 
 
 # Complementary set
@@ -171,12 +130,23 @@ SET NOT-A = WORDMARK - A ;
 
 
 
-# The section to be copied to fao-dep.rle stops here
-# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# Verb sets
 
+LIST COPULA = "vera" "verða" ;
 
-# ////////////////
-# Copy this list to sme-dep.rle
+LIST AUX = "kunna" "skula" "vera" "verða" ;
+
+LIST VFIN = Prs Prt Imp ;
+LIST Ind = Prs Prt ;
+
+LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
+
+LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
+
+LIST MODV = "kunna" "skula" ;
+
+LIST DATV = "smakka" ;
+
 
 # Syntax tags
 
@@ -197,27 +167,43 @@ LIST @X = @X ;
 
 LIST SYNTAG = (@CC) (@CS) (@SUBJ)  (@OBJ)  (@>N)  (@N<)  (@SPRED)  (@VFIN)  (@ADVL) (@P<) (@APP) ;
 
-# Stop copy here
-# \\\\\\\\\\\\\\\\
+
+# §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§                               §§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§     dep grammar starts here   §§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§                               §§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+
+
 
 
 SECTION
 
-# NPs
+### NPs
 
 SETPARENT @>N TO (*1 N BARRIER NPNH);
 
 SETPARENT @CS TO (-1 NOMINALHEAD);
-# PPs
 
-SETPARENT @P< TO (0 OBL)(*-1 Pr BARRIER NPNH);
+SETPARENT ("sjálvur") TO (-1 ("seg"));
 
-# VPs
+SETPARENT ("sum" @CS) TO (-1 N OR V);
+SETPARENT ("sum" @CS) TO (*-1 N OR V BARRIER WORD);
+
+
+### PPs
+
+SETPARENT @P< TO (*-1 Pr BARRIER NPNH);
+
+### VPs
 
 SETPARENT VINFIN TO (*-1 AUX BARRIER CS);
+SETPARENT Sup TO (*-1 VFIN BARRIER CS);
 
+### S
 
-# S
 SETPARENT @SUBJ TO (*1 VFIN BARRIER CS);
 SETPARENT @SUBJ TO (-*1 VFIN BARRIER CS);
 SETPARENT @OBJ TO (-*1 V BARRIER CS);
@@ -233,3 +219,8 @@ SETPARENT VFIN TO (*-1 (@CS) LINK **1 V LINK -1 CLB);
 
 SETPARENT @VMAIN TO (*-1 @VAUX BARRIER VFIN); 
 
+SETPARENT (Inf @VMAIN) TO (*-1 @VMAIN);
+
+### CS
+
+SETPARENT @CS TO (*-1 (@VMAIN));

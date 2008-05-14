@@ -183,9 +183,6 @@ SET NOT-A = WORDMARK - A ;
 
 
 
-# The section to be copied to fao-dep.rle stops here
-# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
 
 
 SECTION
@@ -453,11 +450,14 @@ REMOVE ("hannur") IF (0 ("hann" Nom))(1 (V 3Sg));
 
 # Syntax tags
 
-LIST @SUBJ = @SUBJ ;
-LIST @OBJ = @OBJ ;
+LIST @<SUBJ = @<SUBJ ;
+LIST @SUBJ> = @SUBJ> ;
+LIST @<OBJ = @<OBJ ;
+LIST @OBJ> = @OBJ> ;
 LIST @>N = @>N ;
 LIST @N< = @N< ;
-LIST @SPRED = @SPRED ;
+LIST @<SPRED = @<SPRED ;
+LIST @SPRED> = @SPRED> ;
 LIST @VAUX = @VAUX ;
 LIST @VMAIN = @VMAIN ;
 LIST @ADVL = @ADVL ;
@@ -469,8 +469,6 @@ LIST @X = @X ;
 
 LIST SYNTAG = (@CC) (@CS) (@SUBJ)  (@OBJ)  (@>N)  (@N<)  (@SPRED)  (@VFIN)  (@ADVL) (@P<) (@APP) ;
 
-# Stop copy here
-# \\\\\\\\\\\\\\\\
 
 # ======== #
   SECTION  #
@@ -487,15 +485,17 @@ ADD (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK -1 Nom)
 #MAP (@SUBJ) TARGET (N Nom) OR (Num Nom) OR (Pron Nom);
 
 
-MAP:Subj2 (@SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*1 (V 2Sg) BARRIER VFIN);
-MAP:Subj2 (@SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V 2Sg) BARRIER VFIN);
+MAP:Subj2 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (*1 (V 2Sg) BARRIER VFIN);
+MAP:Subj2 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V 2Sg) BARRIER VFIN);
 
-MAP:SubjSg (@SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*0 (V 3Sg) OR (V Sg));
-MAP:SubmPl (@SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*0 (V Pl));
+MAP:SubjSg (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*0 (V 3Sg) OR (V Sg));
+MAP:SubjSg (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*0 (V 3Sg) OR (V Sg));
+MAP:SubmPl (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*0 (V Pl));
+MAP:SubmPl (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*0 (V Pl));
 
-MAP (@OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr);
-MAP (@IOBJ) TARGET (N Dat) OR (Num Dat) OR (Pron Dat) IF (*1 (@OBJ) BARRIER NPNHA);
-MAP (@OBJ) TARGET Dat IF (*-1 DATV);
+MAP (@<OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr);
+MAP (@<IOBJ) TARGET (N Dat) OR (Num Dat) OR (Pron Dat) IF (*1 (@OBJ) BARRIER NPNHA);
+MAP (@<OBJ) TARGET Dat IF (*-1 DATV);
 
 MAP:DatPrComplTag (@P<) TARGET NOMINALHEAD + Dat IF (*-1 SOMEDATPREP BARRIER NPNHA);
 MAP:AccPrComplTag (@P<) TARGET NOMINALHEAD + Acc IF (*-1 SOMEACCPREP BARRIER NPNHA);
@@ -512,20 +512,22 @@ MAP (@>N) TARGET A + $$NAGD OR Dem + $$NAGD IF (*1 N + $$NAGD OR Num + $$NAGD BA
 
 MAP (@VFIN) TARGET (V Prs) OR (V Prt) OR (V Imp);
 
-MAP (@ADVL) TARGET Pr ;
+MAP (@<ADVL) TARGET Pr OR Adv IF (*-1 VFIN BARRIER CS);
+MAP (@ADVL>) TARGET Pr OR Adv (NEGATE *-1 VFIN BARRIER CS)(*1 VFIN);
 
 MAP (@N<) TARGET Poss IF (0 $$NAGD)(-1 N + $$NAGD);
 
 
-MAP (@ADVL) TARGET Adv ;
+#MAP (@ADVL) TARGET Adv ;
 
 MAP (@N<) TARGET N IF (0 $$NAGD)(-1 (N $$NAGD));
 
-MAP:SpredIfSpecial (@SPRED) TARGET A IF (-1 ("síggja"))(1 ("út"));
-MAP:SpredIfSpecialCC (@SPRED) TARGET A IF (-1 ("síggja"))(1 CC)(*2 A);
+MAP:SpredIfSpecial (@<SPRED) TARGET A IF (-1 ("síggja"))(1 ("út"));
+MAP:SpredIfSpecialCC (@<SPRED) TARGET A IF (-1 ("síggja"))(1 CC)(*2 A);
 
 
 MAP (@X) TARGET WORD ;
+
 
 
 
@@ -533,8 +535,16 @@ MAP (@X) TARGET WORD ;
     SECTION   #
 # =========== #
 
+
+LIST (@SPRED) = @<SPRED @>SPRED> ;
+LIST (@SUBJ) = @<SUBJ @>SUBJ> ;
+LIST (@OBJ) = @<OBJ @>OBJ> ;
+LIST (@IOBJ) = @<IOBJ @>IOBJ> ;
+
+
+
 # No-syntax early
-REMOVE (@X)  IF (0 SYNTAG);
+REMOVE (@X) ;
 
 REMOVE (@SPRED) IF (NOT *-1 (@SUBJ))(NOT *1 (@SUBJ));
 REMOVE (@OBJ) IF (*-1 Pr BARRIER NPNHA);
@@ -586,7 +596,6 @@ REMOVE:NotVerbIfPrCompl V IF (-1 Pr)(0 (@P<));
 #REMOVE:NotVIfLeftDet V IF (-1 (Det $$NAGD))(0 (N $$NAGD));
 REMOVE:NotVIfLeftDet V IF (-1 (Det Nom))(0 (N Nom));
 
-#END
 
 # Ordinals
 REMOVE (A Sg @>N) IF (1 (Num Sg));

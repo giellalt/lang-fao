@@ -118,8 +118,7 @@ SET OBL = Acc | Dat | Gen ;
 
 SET PRE-N =  A | Det | Dem | (N Gen) | Num ; # Det???
 
-SET WORD = N | V | A | Pr | Pron | Adv | CC | CS | Interj | Num | ("\?") ;
-SET MARK =  ("\,") | ("\:") | ("\;") ;
+SET MARK =  ("\,") | ("\ | ("\;") ;
 SET WORDMARK = WORD | MARK ;
 
 SET NPNH = WORDMARK - PRE-N ;
@@ -150,8 +149,10 @@ LIST DATV = "smakka" ;
 
 # Syntax tags
 
-LIST @SUBJ = @SUBJ ;
-LIST @OBJ = @OBJ ;
+LIST @<SUBJ = @<SUBJ ;
+LIST @SUBJ> = @SUBJ> ;
+LIST @<OBJ = @<OBJ ;
+LIST @OBJ> = @OBJ> ;
 LIST @>N = @>N ;
 LIST @N< = @N< ;
 LIST @SPRED = @SPRED ;
@@ -162,10 +163,10 @@ LIST @P< = @P< ;
 LIST @CC = @CC ;
 LIST @CS = @CS ;
 #LIST @CC-VP = @CC-VP ;
-LIST @APP = @APP :
+LIST @APP = @APP 
 LIST @X = @X ;
 
-LIST SYNTAG = (@CC) (@CS) (@SUBJ)  (@OBJ)  (@>N)  (@N<)  (@SPRED)  (@VFIN)  (@ADVL) (@P<) (@APP) ;
+LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>)  (@>N)  (@N<)  (@SPRED)  (@VAUX) (@VMAIN)  (@ADVL) (@P<) (@APP) ;
 
 
 # §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
@@ -183,44 +184,44 @@ SECTION
 
 ### NPs
 
-SETPARENT @>N TO (*1 N BARRIER NPNH);
+SETPARENT:r1 @>N TO (*1 N BARRIER NPNH);
 
-SETPARENT @CS TO (-1 NOMINALHEAD);
+SETPARENT:r2 @CS TO (-1 NOMINALHEAD);
 
-SETPARENT ("sjálvur") TO (-1 ("seg"));
+SETPARENT:r3 ("sjálvur") TO (-1 ("seg"));
 
-SETPARENT ("sum" @CS) TO (-1 N OR V);
-SETPARENT ("sum" @CS) TO (*-1 N OR V BARRIER WORD);
+SETPARENT:r4 ("sum" @CS) TO (-1 N OR V);
+SETPARENT:r5 ("sum" @CS) TO (*-1 N OR V BARRIER WORD);
 
 
 ### PPs
 
-SETPARENT @P< TO (*-1 Pr BARRIER NPNH);
+SETPARENT:r6 @P< TO (*-1 Pr BARRIER NPNH);
 
 ### VPs
 
-SETPARENT VINFIN TO (*-1 AUX BARRIER CS);
-SETPARENT Sup TO (*-1 VFIN BARRIER CS);
+SETPARENT:r7 VINFIN TO (*-1 AUX BARRIER CS);
+SETPARENT:r8 Sup TO (*-1 VFIN BARRIER CS);
 
 ### S
 
-SETPARENT @SUBJ TO (*1 VFIN BARRIER CS);
-SETPARENT @SUBJ TO (-*1 VFIN BARRIER CS);
-SETPARENT @OBJ TO (-*1 V BARRIER CS);
-SETPARENT @OBJ TO (*1 V BARRIER CS);
-SETPARENT @ADVL TO (0* AUX);
-SETPARENT @ADVL TO (0* VFIN);
+SETPARENT:r9 @SUBJ> TO (*1 VFIN BARRIER CS);
+SETPARENT:r10 @<SUBJ TO (-*1 VFIN BARRIER CS);
+SETPARENT:r11 @<OBJ TO (-*1 V BARRIER CS);
+SETPARENT:r12 @OBJ> TO (*1 V BARRIER CS);
+SETPARENT:r13 @ADVL TO (0* AUX);
+SETPARENT:r14 @ADVL TO (0* VFIN);
 
-SETPARENT @CS TO (1 Inf);
+SETPARENT:r15 @CS TO (1 Inf);
 
-SETPARENT @CS TO (**1 V LINK -1 CLB);
+SETPARENT:r16 @CS TO (**1 V LINK -1 CLB);
 
-SETPARENT VFIN TO (*-1 (@CS) LINK **1 V LINK -1 CLB);
+SETPARENT:r17 VFIN TO (*-1 (@CS) LINK **1 V LINK -1 CLB);
 
-SETPARENT @VMAIN TO (*-1 @VAUX BARRIER VFIN); 
+SETPARENT:r18 @VMAIN TO (*-1 @VAUX BARRIER VFIN); 
 
-SETPARENT (Inf @VMAIN) TO (*-1 @VMAIN);
+SETPARENT:r19 (Inf @VMAIN) TO (*-1 @VMAIN);
 
 ### CS
 
-SETPARENT @CS TO (*-1 (@VMAIN));
+SETPARENT:r20 @CS TO (*-1 (@VMAIN));

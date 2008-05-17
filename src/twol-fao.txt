@@ -178,14 +178,14 @@ Rules
 
 
 "U-umlaut for akur"
-  a:ø <=> _ k u:0 r (%^EPH:) %^UUML: %>: ;
+  a:ø <=> _ k u:0 r (%^EPH:) %^UUML: %>: u ;
 
 !akur%^EPH%^UUML%>um
 !øk0r000um
 
 
 "I-umlaut"
- Vx:Vy <=> _ Cns:* (Dummy:*) %^IUML: ;
+ Vx:Vy <=> _ Cns:* (Dummy:*) %^IUML: %> i ;
      where Vx in ( a o ø á ó ú )
 	   Vy in ( e y i æ ø ý )
 	   matched ;
@@ -242,9 +242,9 @@ Rules
 
 
 "Deleting Double Consonant in Front of Consonant"
- Cx:0 <=> Cx _ %>: Cns ; Cx _ [ i:0 | a:0 | u:0 ] l ( %^EPH: ) %>: ;
-      where Cx in ( b d f g k l m n p r s t v ) 
-      matched ;
+ Cx:0 <=> Cx _ %>: s ; 
+!          Cx _ [ i:0 | a:0 | u:0 ] [ l | r ] ( %^EPH: ) %>: Vow ;
+      where Cx in ( b d f g k l m n p r s t v ) ;
 
 !€ hjall%>s
 !€ hjal00s
@@ -350,21 +350,21 @@ Rules
 !€ keyp0ti
 
 
-!"Geminate Assimilation in Past Tense"
-! Cx:0 <=> Cy _ %>: [ d | t ] ;
-! 	where Cx in ( d ð n p g k t )
-! 	      Cy in ( n r n p g k l )
-! 	      matched ;
+"Geminate Assimilation in Past Tense"
+ Cx:0 <=> Cy _ %>: [ d | t ] ;
+ 	where Cx in ( d ð n p g k t )
+ 	      Cy in ( n r n p g k l )
+ 	      matched ;
  
 ! conflicts with the 
 ! "Deleting Double Consonant in Front of Consonant" rule 
 ! what to do? HJ
 
-"Geminate Assimilation in Past Tense"
- Cx:0 <=> Cy _ %>: [ d | t ] ;
- 	where Cx in ( d ð t )
- 	      Cy in ( n r l )
- 	      matched ;
+!"Geminate Assimilation in Past Tense"
+! Cx:0 <=> Cy _ %>: [ d | t ] ;
+! 	where Cx in ( d ð t )
+! 	      Cy in ( n r l )
+! 	      matched ;
 	      
 !€ send%>di
 !€ sen00di
@@ -441,11 +441,14 @@ Vx:i <=> Cns+ _ %^AB6: %>: ;
 
 
 "Adjective neuter after nlr 1"
-t:ð <=> [ r: | l: | n: ] ( %^EPH: ) %>: _ ;
+t:ð <=> Vow: [ r: | l: | n: ] ( %^EPH: ) %>: _ #:  ;
 
 "Adjective neuter after nlr 2"
 Cx:0 <=> _ ( %^EPH: ) %>: t: ;
      where Cx in ( l n r ) ; 	      
+
+
+
  	      
 ! Possessive Sandhi rules
 

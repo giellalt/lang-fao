@@ -172,7 +172,8 @@ SET OBL = Acc | Dat | Gen ;
 SET PRE-N =  A | Det | Dem | (N Gen) | Num ; # Det???
 
 SET WORD = N | V | A | Pr | Pron | Adv | CC | CS | Interj | Num | ("\?") ;
-SET MARK =  ("\,") | ("\ | ("\;") ;
+SET MARK =  ("\,") | ("\") | ("\;") ; #"
+
 SET WORDMARK = WORD | MARK ;
 
 SET NPNH = WORDMARK - PRE-N ;
@@ -435,7 +436,7 @@ REMOVE:r63 Nom IF (*-1 AUX OR MODV LINK -1 CC OR Nom BARRIER NPNH)(1 Inf);
 # Genitive
 # ========
 
-# Genitive is marginal in faroese. The strategy should be  
+# Genitive is marginal in Faroese. The strategy should be  
 # 1. Write rules selecting genitive. (such rules are still forthcoming)
 
 SELECT:r64 Gen IF (*-1 ACCGENPREP BARRIER NPNHA)(NOT 0 Acc);
@@ -540,7 +541,7 @@ MAP:r91 (@ADVL>) TARGET Pr OR Adv (NEGATE *-1 VFIN BARRIER CS)(*1 VFIN);
 MAP:r92 (@N<) TARGET Poss IF (0 $$NAGD)(-1 N + $$NAGD);
 
 
-#MAP (@ADVL) TARGET Adv ;
+MAP:advl (@ADVL) TARGET Adv OR Pr ;
 
 MAP:r93 (@N<) TARGET N IF (0 $$NAGD)(-1 (N $$NAGD));
 

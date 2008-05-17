@@ -2,6 +2,19 @@
 # This is a makefile that builds the Faroese morphological parser #
 # *************************************************************** #
 
+#XFST = fst -utf8
+#LEXC = lexc -utf8
+#TWOLC = twolc -utf8
+
+ifeq (victorio.uit.no, $(shell hostname))
+XFST = /opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/fst -utf8
+LEXC = /opt/sami/xerox/bin/lexc -utf8
+TWOLC = /opt/sami/xerox/bin/twolc -utf8
+endif
+
+
+
+
 LEX = fao-lex.txt noun-fao-lex.txt \
 	propernoun-fao-lex.txt propernoun-fao-morph.txt adj-fao-morph.txt \
     adj-fao-lex.txt adv-fao-lex.txt verb-fao-lex.txt abbr-fao-lex.txt acro-fao-lex.txt \
@@ -22,7 +35,7 @@ ifao.fst: ../bin/ifao.fst
 	invert net \n\
 	save stack ../bin/ifao.fst \n\
 	quit \n" > /tmp/ifao-fst-script
-	@xfst -utf8 < /tmp/ifao-fst-script
+	$(XFST)  < /tmp/ifao-fst-script
 	@rm -f /tmp/ifao-fst-script
 
  
@@ -39,7 +52,7 @@ fao.fst: ../bin/fao.fst
 	@\"../bin/caseconv.fst\" ; \n\
 	save stack ../bin/fao.fst \n\
 	quit \n" > /tmp/fao-fst-script
-	@xfst -utf8 < /tmp/fao-fst-script
+	$(XFST)  < /tmp/fao-fst-script
 	@rm -f /tmp/fao-fst-script
 
 
@@ -75,7 +88,7 @@ caseconv.fst: ../bin/caseconv.fst
 	@printf "read regex < case.regex \n\
 	save stack ../bin/caseconv.fst \n\
 	quit \n" > /tmp/caseconv-script
-	@xfst -utf8 < /tmp/caseconv-script
+	$(XFST)  < /tmp/caseconv-script
 	@rm -f /tmp/caseconv-script
 
 
@@ -89,7 +102,7 @@ allcaps.fst: ../bin/allcaps.fst
 	@printf "source allcaps.regex \n\
 	save stack ../bin/allcaps.fst \n\
 	quit \n" > /tmp/tok-script
-	@xfst -utf8 < /tmp/tok-script
+	$(XFST)  < /tmp/tok-script
 	@rm -f /tmp/tok-script
 
 
@@ -114,7 +127,7 @@ fao.save: ../bin/fao.save
 	compose-result \n\
 	save-result ../bin/fao.save \n\
 	quit \n" > ../../tmp/fao-lex-save-script
-	@lexc -utf8 < ../../tmp/fao-lex-save-script
+	$(LEXC)  < ../../tmp/fao-lex-save-script
 	rm -f ../../tmp/fao-lex-save-script
 
 
@@ -130,7 +143,7 @@ twol-fao.bin: ../bin/twol.fao.bin
 	compile \n\
 	save-binary ../bin/twol-fao.bin \n\
 	quit \n" > /tmp/twol-fao-script
-	@twolc -utf8 < /tmp/twol-fao-script
+	$(TWOLC)  < /tmp/twol-fao-script
 	@rm -f /tmp/twol-fao-script
 
 # Here we include a preprocessor.
@@ -144,7 +157,7 @@ tok.fst: ../bin/tok.fst
 	@printf "source tok.txt \n\
 	save stack ../bin/tok.fst \n\
 	quit \n" > /tmp/tok-script
-	@xfst -utf8 < /tmp/tok-script
+	$(XFST)  < /tmp/tok-script
 	@rm -f /tmp/tok-script
 
 # Let us just make a binary disambiguator
@@ -188,7 +201,7 @@ clean:
 #	compose-result \n\
 #	save-result ../bin/fao.save \n\
 #	quit \n" > /tmp/fao-save-script
-#	@lexc < /tmp/fao-save-script
+#	$(LEXC) < /tmp/fao-save-script
 #	rm -f /tmp/fao-save-script
 
 

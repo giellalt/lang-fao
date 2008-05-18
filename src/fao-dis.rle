@@ -447,7 +447,7 @@ SELECT:r64 Gen IF (*-1 ACCGENPREP BARRIER NPNHA)(NOT 0 Acc);
 
 # 2. Remove the remaining genitives. 
 
-REMOVE:r65 Gen ;
+REMOVE:r65 Gen IF (NOT *-1 ACCGENPREP BARRIER NPNHA);
 
 
 # Pronoun disambiguation
@@ -535,7 +535,7 @@ MAP:r85 (@>N) TARGET (N Gen) IF (*1 N BARRIER V OR Adv);
 MAP:r86 (@>N) TARGET (Det) IF (*1 N BARRIER V OR Adv);
 MAP:r87 (@>N) TARGET (Dem) IF (*1 N BARRIER V OR Adv);
 MAP:r88 (@>N) TARGET A + $$NAGD OR Dem + $$NAGD IF (*1 N + $$NAGD OR Num + $$NAGD BARRIER NPNHA);
-
+MAP (@>N) TARGET Num IF (*1 N BARRIER NPNHA);
 
 MAP:r89 (@VFIN) TARGET (V Prs) OR (V Prt) OR (V Imp);
 

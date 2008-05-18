@@ -11,6 +11,7 @@ Alphabet
 
  g2:g i2:i j2:j v2:v 
  %^UUML:0 %^IUML:0 %^eIUML:0 %^W:0 %^EPH:0 %^JI:0 %^OEA:0 
+ %^EDH:0
 
  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0
  %^EIO:0 %^OA:0 %^WVV:0
@@ -27,7 +28,7 @@ Sets
  
  Nas = m n ;
  NonNas = b c d f g h j k l p q r s t v w x z ð þ ;
- Dummy = %>  %^UUML %^IUML %^eIUML %^W %^EPH %^JI ;
+ Dummy = %>  %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^EDH ;
  Special = %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL; 
 
 
@@ -96,13 +97,15 @@ Rules
 !€ brúð00000ar
 
 
-!"Vowel-deletion in Vowel-initial suffix"
-! Vx:0 <=> _ %>: [ i n | i ð | u m | s %>: i n s | a ] ;
-!      where Vx in ( i a ) ;
+"Vowel-deletion in Vowel-initial suffix"
+ Vx:0 <=> _ (Dummy:) %>: (Dummy:) [ i n | i ð | u m | s %>: i n s | a | u ] ;
+      where Vx in ( i a ) ;
 
 !"Vowel-deletion in Vowel-initial suffix"
-! i:0 <=> _ %>: [ i n #: | i ð | u m | s %>: i n s | a ] ; 
-! i:0 <=> _ %>: [ i n #: | i ð | u m | s %>: i n s | a ] ; d a: g %^IUML: %>: _ %>: n u m #: ; Vow Cns:0* %>: _ %>: n u m ;
+! i:0 <=>                   _ %>: [ i n #: | i ð | u m | s %>: i n s | a ] ; 
+! i:0 <=>                   _ %>: [ i n #: | i ð | u m | s %>: i n s | a ] ; 
+!        d a: g %^IUML: %>: _ %>: n u m #: 
+!          ; Vow Cns:0* %>: _ %>: n u m ;
 
 "Deleting initial i in definite suffix"
  i:0 <=> %>: Vow %>: _ [ n u m #: | n s #: | n #: | ð #: | n i #: | n a #: | n n a r #: ] ; 
@@ -127,7 +130,9 @@ Rules
 
 
 "Deleting m in um%>num "
- m:0 <=> %>: u: _ %>: n u m #: ; %>: _ %>: n u m #: ;
+ m:0 <=>     %>: u _ %>: n u m ; 
+         g v %>:   _ %>: n u m ; 
+
 !ris%>um%>num
 !ris00u000num
 
@@ -136,15 +141,15 @@ Rules
 
 
 "Epenthetic deletion"
- Vx:0 <=> _ [ r | l | n ] %^EPH: ( Special:* ) %>: ; !Vow ;
+ Vx:0 <=> _ [ r | l | n ] %^EPH: ( Special:* ) %>: Vow ; !Vow was commented out?
       where Vx in (a i u) ;
 
 !€ ak0r00
-!€ økur%^EPH%^UUML%> um
+!€ økur%^EPH%^UUML%>um
 !€ øk0r000um
 
-!€ lykil%^EPH%>
-!€ lyk0l00
+!€ lykil%^EPH%>an
+!€ lyk0l00an
 
 !€ aftan%^EPH%>
 !€ aft0n00
@@ -168,7 +173,7 @@ Rules
 
 
 "General U-umlaut"
-  a:ø <=> _ NonNas: NonNas:* (Nas) %^UUML: ;
+  a:ø <=> _ NonNas: NonNas:* (Nas) (Vow:) %^UUML: ;
 
 !€ dag%>%^UUMLum
 !€ døg00um
@@ -185,7 +190,7 @@ Rules
 
 
 "I-umlaut"
- Vx:Vy <=> _ Cns:* (Dummy:*) %^IUML: %> i ;
+ Vx:Vy <=> _ Cns:* (Dummy:*) %^IUML: %>: i ;
      where Vx in ( a o ø á ó ú )
 	   Vy in ( e y i æ ø ý )
 	   matched ;
@@ -242,7 +247,7 @@ Rules
 
 
 "Deleting Double Consonant in Front of Consonant"
- Cx:0 <=> Cx _ %>: s ; 
+ Cx:0 <=> Cx _ %>: s #: ; 
 !          Cx _ [ i:0 | a:0 | u:0 ] [ l | r ] ( %^EPH: ) %>: Vow ;
       where Cx in ( b d f g k l m n p r s t v ) ;
 
@@ -438,16 +443,25 @@ Vx:o <=> Cns+ _ %^AB5: %>: ;
 Vx:i <=> Cns+ _ %^AB6: %>: ;
 	where Vx in ( í a e ) ;
 
+"Adjective neuter after ð"
+t:0 <=> Vow Cns+ Vow ð %^EDH: %>: _ #: ;
+
+!€ brekað%>t
+!€ brekað00
 
 
 "Adjective neuter after nlr 1"
-t:ð <=> Vow: [ r: | l: | n: ] ( %^EPH: ) %>: _ #:  ;
+t:ð <=> Vow Cns+ i [ r: | l: | n: ] ( %^EPH: ) %>: _ #:  ;
 
 "Adjective neuter after nlr 2"
-Cx:0 <=> _ ( %^EPH: ) %>: t: ;
+Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
      where Cx in ( l n r ) ; 	      
 
+!€ mikil%^EPH%>t
+!€ miki000ð
 
+!€ gamal%^EPH%>t
+!€ gamal00t
 
  	      
 ! Possessive Sandhi rules

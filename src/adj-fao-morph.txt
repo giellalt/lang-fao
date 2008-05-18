@@ -33,7 +33,7 @@ LEXICON l5	! spiltur
 +A: adjcmp1 ;
 
 LEXICON l6	! brekaður
-+A: adj-a ;
++A:%^EDH adj-a ; ! no ð deletion
 +A: adj-def ;
 +A: adjcmp1 ;
 
@@ -148,40 +148,46 @@ LEXICON l25 ! danskur
 +A: adjcmp1 ;
 
 LEXICON l26 ! vakin
-+A:%^EPH a-non-umlaut ;
++A:%^EPH adj-a ;
 +A: adj-def ;
 
 LEXICON l27 ! heiðin
-+A:%^EPH a-non-umlaut ;
++A:%^EPH adj-a ;
 +A: adj-def ;
 
 LEXICON l28 ! lítil
-+A:%^EPH a-non-umlaut ;
++A:%^EPH adj-a ;
 +A: adj-def ;
 
 LEXICON l29 ! fakur
++A:%^EPH       a-non-umlaut ;
++A:%^EPH%^UUML a-umlaut ;
 +A: adj-def ;
 +A: adjcmp1 ;
 
 LEXICON l30 ! tepur
++A:%^EPH adj-a ;
 +A: adj-def ;
 +A: adjcmp1 ;
 
 LEXICON l31 ! trupul
++A:%^EPH adj-a ;
 +A: adj-def ;
 
 LEXICON l32 ! búgvin
++A:%^EPH adj-a ;
 +A: adj-def ;
 
 LEXICON l33 ! gamal
-+A:%^EPH a-non-umlaut ;
++A:%^EPH       a-non-umlaut ;
++A:%^EPH%^UUML a-umlaut ;
 +A: adj-def ;
 
 LEXICON l34 ! dottin
-+A:%^EPH a-non-umlaut ;
++A:%^EPH adj-a ;
 +A: adj-def ;
 
-LEXICON l35 ! feingin
+LEXICON l35 ! feingin ! not complete, needs umlaut
 +A:%^EPH a-non-umlaut ;
 +A: adj-def ;
 
@@ -236,27 +242,34 @@ LEXICON adj-a
      
 LEXICON a-non-umlaut
  a-m-sg-n ;
- a-m-pl-n ;
- a-f-pl-n ;
  a-m-sg-a ;
- a-m-pl-a ;
- a-f-sg-a ;
- a-f-pl-a ;
- a-n-sg-a ;
- a-f-sg-d ;
- a-f-pl-d ;
  a-m-sg-g ;
+
+ a-m-pl-n ;
+ a-m-pl-a ;
  a-m-pl-g ;
+
+ a-f-sg-a ;
+ a-f-sg-d ;
  a-f-sg-g ;
+
+ a-f-pl-n ;
+ a-f-pl-a ;
+ a-f-pl-d ;
  a-f-pl-g ;
+
+ a-n-sg-n ;
+ a-n-sg-a ;
+
  a-n-sg-g ;
  a-n-pl-g ;
 
 LEXICON a-umlaut
  a-m-sg-d ;
  a-m-pl-d ;
+
  a-f-sg-n ;
- a-n-sg-n ;
+
  a-n-sg-d ;
  a-n-pl-n ;
  a-n-pl-a ;
@@ -309,7 +322,7 @@ LEXICON a-f-sg-d
 +Fem+Sg+Dat+Indef:%>ari  # ; 
 
 LEXICON a-f-sg-g
-+Fem+Sg+Gen+Indef:%>a  # ; 
++Fem+Sg+Gen+Indef:%>ar  # ; 
 
 LEXICON a-f-sg-g-rar
 +Fem+Sg+Gen+Indef:%>rar  # ; 
@@ -395,15 +408,15 @@ LEXICON indef-cmp-adj-decl
 +Msc+Sg+Def+Nom:%>i # ;
 +Msc+Sg+Def+Acc:%>a # ;
 +Msc+Sg+Def+Dat:%>a # ;
-+Msc+Sg+Def+Pl:%>u # ;
++Msc+Pl+Def:%>u # ;
 +Fem+Sg+Def+Nom:%>a # ;
 +Fem+Sg+Def+Acc:%>u # ;
 +Fem+Sg+Def+Dat:%>u # ;
-+Fem+Sg+Def+Pl:%>u # ;
++Fem+Pl+Def:%>u # ;
 +Neu+Sg+Def+Nom:%>a # ;
 +Neu+Sg+Def+Acc:%>a # ;
 +Neu+Sg+Def+Dat:%>a # ;
-+Neu+Sg+Def+Pl:%>u # ;
++Neu+Pl+Def:%>u # ;
 
 
 !+Cmp+Indef

@@ -2,9 +2,9 @@
 # This is a makefile that builds the Faroese morphological parser #
 # *************************************************************** #
 
-#XFST = fst -utf8
-#LEXC = lexc -utf8
-#TWOLC = twolc -utf8
+XFST = fst -utf8
+LEXC = lexc -utf8
+TWOLC = twolc -utf8
 
 ifeq (victorio.uit.no, $(shell hostname))
 XFST = /opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/fst -utf8
@@ -15,12 +15,13 @@ endif
 
 
 
-LEX = fao-lex.txt noun-fao-lex.txt \
-	propernoun-fao-lex.txt propernoun-fao-morph.txt adj-fao-morph.txt \
-    adj-fao-lex.txt adv-fao-lex.txt verb-fao-lex.txt abbr-fao-lex.txt acro-fao-lex.txt \
-    verb-fao-morph.txt pron-fao-lex.txt punct-fao-lex.txt numeral-fao-lex.txt \
-    pp-fao-lex.txt cc-fao-lex.txt cs-fao-lex.txt interj-fao-lex.txt det-fao-lex.txt \
-	abbr-fao-lex.txt
+LEX = fao-lex.txt noun-fao-lex.txt noun-fao-morph.txt \
+	propernoun-fao-lex.txt propernoun-fao-morph.txt adj-fao-lex.txt \
+	adj-fao-morph.txt adv-fao-lex.txt verb-fao-lex.txt abbr-fao-lex.txt acro-fao-lex.txt \
+	verb-fao-morph.txt pron-fao-lex.txt punct-fao-lex.txt numeral-fao-lex.txt \
+	pp-fao-lex.txt cc-fao-lex.txt cs-fao-lex.txt interj-fao-lex.txt det-fao-lex.txt
+
+
 
 # The ultimate goal is to build ifao.fst, the generator
 # This goal depends on fao.save being up to date.
@@ -110,19 +111,11 @@ allcaps.fst: ../bin/allcaps.fst
 # This goal depends on twol-fao.bin and a bunch of lexicon files
 
 fao.save: ../bin/fao.save
-../bin/fao.save: ../bin/twol-fao.bin fao-lex.txt noun-fao-morph.txt noun-fao-lex.txt \
-        propernoun-fao-lex.txt propernoun-fao-morph.txt adj-fao-morph.txt \
-	adj-fao-lex.txt adv-fao-lex.txt verb-fao-lex.txt abbr-fao-lex.txt acro-fao-lex.txt \
-	verb-fao-morph.txt pron-fao-lex.txt punct-fao-lex.txt numeral-fao-lex.txt \
-	pp-fao-lex.txt cc-fao-lex.txt cs-fao-lex.txt interj-fao-lex.txt det-fao-lex.txt
+../bin/fao.save: ../bin/twol-fao.bin $(LEX)
 	@echo
 	@echo "*** Building fao-lex.save ***" ;
 	@echo
-	printf "compile-source fao-lex.txt noun-fao-morph.txt noun-fao-lex.txt \
-        propernoun-fao-lex.txt propernoun-fao-morph.txt adj-fao-lex.txt \
-	adj-fao-morph.txt adv-fao-lex.txt verb-fao-lex.txt abbr-fao-lex.txt acro-fao-lex.txt \
-	verb-fao-morph.txt pron-fao-lex.txt punct-fao-lex.txt numeral-fao-lex.txt \
-	pp-fao-lex.txt cc-fao-lex.txt cs-fao-lex.txt interj-fao-lex.txt det-fao-lex.txt \n\
+	printf "compile-source $(LEX)  \n\
 	read-rules ../bin/twol-fao.bin \n\
 	compose-result \n\
 	save-result ../bin/fao.save \n\

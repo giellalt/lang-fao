@@ -170,7 +170,6 @@ n-para.ptest: noun-codes.txt
 	@chmod 660 $@
 
 # Paradigm generation:
-.PHONY: n-paradigm
 n-paradigm: n-para.ptest savefile
 	@echo
 	@echo "*** Running the paradigm generator for '$(WORD)' ***"

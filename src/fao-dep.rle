@@ -121,6 +121,9 @@ SET PRE-N =  A | Det | Dem | (N Gen) | Num ; # Det???
 SET MARK =  ("\,") | ("\ | ("\;") ;
 SET WORDMARK = WORD | MARK ;
 
+LIST COMMA = "," ;
+
+
 SET NPNH = WORDMARK - PRE-N ;
 SET NPNHA = WORDMARK - PRE-N - Adv ;
 SET NOT-ADV = WORDMARK - Adv ;
@@ -158,7 +161,8 @@ LIST @N< = @N< ;
 LIST @SPRED = @SPRED ;
 LIST @VAUX = @VAUX ;
 LIST @VMAIN = @VMAIN ;
-LIST @ADVL = @ADVL ;
+LIST @<ADVL = @<ADVL ;
+LIST @ADVL> = @ADVL> ;
 LIST @P< = @P< ;
 LIST @CC = @CC ;
 LIST @CS = @CS ;
@@ -168,6 +172,9 @@ LIST @X = @X ;
 
 LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>)  (@>N)  (@N<)  (@SPRED)  (@VAUX) (@VMAIN)  (@ADVL) (@P<) (@APP) ;
 
+LIST @SUBJ = @<SUBJ @SUBJ> ;
+LIST @OBJ = @<OBJ @OBJ> ;
+LIST @ADVL = @<ADVL @ADVL> ;
 
 # §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
 # §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
@@ -211,6 +218,8 @@ SETPARENT:r11 @<OBJ TO (-*1 V BARRIER CS);
 SETPARENT:r12 @OBJ> TO (*1 V BARRIER CS);
 SETPARENT:r13 @ADVL TO (0* AUX);
 SETPARENT:r14 @ADVL TO (0* VFIN);
+SETPARENT @<ADVL TO (-1* @VMAIN BARRIER CS);
+SETPARENT @ADVL> TO (1* @VMAIN BARRIER CS);
 
 SETPARENT:r15 @CS TO (1 Inf);
 
@@ -219,6 +228,11 @@ SETPARENT:r16 @CS TO (**1 V LINK -1 CLB);
 SETPARENT:r17 VFIN TO (*-1 (@CS) LINK **1 V LINK -1 CLB);
 
 SETPARENT:r18 @VMAIN TO (*-1 @VAUX BARRIER VFIN); 
+
+SETPARENT @VMAIN TO (*-1 @VAUX LINK *1 @CS);
+SETPARENT @VAUX TO (*-1 @VAUX LINK *1 @CS);
+SETPARENT @VAUX TO (*-1 @VMAIN BARRIER @VAUX LINK *1 @CS);
+SETPARENT @VMAIN TO (*-1 @VMAIN BARRIER @VAUX LINK *1 @CS);
 
 SETPARENT:r19 (Inf @VMAIN) TO (*-1 @VMAIN);
 

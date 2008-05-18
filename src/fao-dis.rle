@@ -136,7 +136,7 @@ LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hó
 hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin
 vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "vestan" ;
 
-LIST DATPREP = "hjá" "með" "á" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "mótvegis" "nær" "sambært" "viðvíkjandi" ;
+LIST DATPREP = "hjá" "með" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "mótvegis" "nær" "sambært" "viðvíkjandi" ;
 
 LIST ACCDATPREP = "í" "á" "undir" "yfir" "eftir" "fyri" "við" "frá" ;
 
@@ -174,13 +174,14 @@ SET PRE-N =  A | Det | Dem | (N Gen) | Num ; # Det???
 SET WORD = N | V | A | Pr | Pron | Adv | CC | CS | Interj | Num | ("\?") ;
 SET MARK =  ("\,") | ("\") | ("\;") ; #"
 
+LIST COMMA = "," ;
+
 SET WORDMARK = WORD | MARK ;
 
 SET NPNH = WORDMARK - PRE-N ;
 SET NPNHA = WORDMARK - PRE-N - Adv ;
 SET NOT-ADV = WORDMARK - Adv ;
 SET NOT-A = WORDMARK - A ;
-
 
 
 
@@ -301,20 +302,23 @@ REMOVE:r17 $$NAGD IF (0 Det)(*1 N    BARRIER NPNHA LINK NOT 0 $$NAGD);
 
 
 
-# Numeral disambiguation
+# Number disambiguation
 
 #SELECT $$NUMBER IF (0 A)(1 N + $$NUMBER);
 REMOVE:r23 (A Sg) IF (1C N + Pl);
 REMOVE:r24 (A Pl) IF (1C N + Sg);
 	## í ta døkku moldina.
 
+
+REMOVE (N Pl) IF (*-1C (Det Sg) BARRIER NPNH) (0 (N Sg));
+
 SELECT:r25 $$NUMBER IF (0 Det)(*1 N + $$NUMBER BARRIER NOT-A);
 
 # Gender disamb of numerals
 
 SELECT:r26 $$GENDER IF (0 Num)(*1C (N $$GENDER) BARRIER A);
-
 	## eit sindur
+
 
 # Case disamb of numerals
 
@@ -511,10 +515,10 @@ ADD:r71 (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK -1 
 MAP:r72 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (*1 (V 2Sg) BARRIER VFIN);
 MAP:r73 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V 2Sg) BARRIER VFIN);
 
-MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*0 (V 3Sg) OR (V Sg));
-MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*0 (V 3Sg) OR (V Sg));
-MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*0 (V Pl));
-MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*0 (V Pl));
+MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg));
+MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg));
+MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl));
+MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
 
 MAP:r78 (@<OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr);
 MAP:r79 (@<IOBJ) TARGET (N Dat) OR (Num Dat) OR (Pron Dat) IF (*1 (@<OBJ) BARRIER NPNHA);
@@ -592,10 +596,18 @@ SELECT:r106 (@SUBJ>) IF (-1 CS)(1 VFIN);
 # PPs
 
 REMOVE:r107 (@<SUBJ) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
+REMOVE:r107 (@<SUBJ) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
+
 REMOVE:r108 (@<OBJ) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
+REMOVE:r108 (@<OBJ) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
+
 REMOVE:r109 (@<ADVL) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
+
 REMOVE:r110 (@<SPRED) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
+REMOVE:r110 (@<SPRED) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
+
 REMOVE:r111 (@<OPRED) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
+REMOVE:r111 (@<OPRED) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
 
 REMOVE:r112 V IF (-1 Pr)(0 (@P<));
 

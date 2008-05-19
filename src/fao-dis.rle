@@ -96,6 +96,8 @@ SET NounMscFem = (N Msc) OR (N Fem) ;
 SET NounMscNeu = (N Msc) OR (N Neu) ;
 SET NounFemNeu = (N Fem) OR (N Neu) ;
 
+LIST 3PERS = "hann" "hon" "tad" ;
+
 # Nominal sets
 
 LIST NOMINALHEAD = N Num Pers Refl Recipr ;
@@ -413,7 +415,7 @@ REMOVE:r56 Sup IF (0 VFIN)(NOT *-1C VFIN BARRIER S-BOUNDARY)(NOT *1C VFIN BARRIE
 
 # Present singular
 
-SELECT:r57 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) LINK NOT *-1 CC BARRIER NPNHA)(1 (Pron Refl Acc)) ;
+SELECT:r57 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) OR (3PRON Pers Sg Nom) LINK NOT *-1 CC BARRIER NPNHA)(1 (Pron Refl Acc)) ;
 REMOVE:r58 (V Ind 2Sg) IF (*-1 (N Sg Nom) BARRIER NOT-ADV);
 SELECT:r59 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) LINK NOT *-1 CC BARRIER NPNHA OR S-BOUNDARY) ;
 
@@ -442,6 +444,9 @@ REMOVE:r63 Nom IF (*-1 AUX OR MODV LINK -1 CC OR Nom BARRIER NPNH)(1 Inf);
 
 # Genitive is marginal in Faroese. The strategy should be  
 # 1. Write rules selecting genitive. (such rules are still forthcoming)
+
+SELECT:TILRULE Gen IF (-1 ("til"))(0 (N Indef) OR (Prop) OR Pron);
+
 
 SELECT:r64 Gen IF (*-1 ACCGENPREP BARRIER NPNHA)(NOT 0 Acc);
 

@@ -118,10 +118,10 @@ SET OBL = Acc | Dat | Gen ;
 
 SET PRE-N =  A | Det | Dem | (N Gen) | Num ; # Det???
 
-SET MARK =  ("\,") | ("\ | ("\;") ;
+SET MARK =  ("\,") | ("\") | ("\;") ; #"
 SET WORDMARK = WORD | MARK ;
 
-LIST COMMA = "," ;
+LIST COMMA = "," ; 
 
 
 SET NPNH = WORDMARK - PRE-N ;

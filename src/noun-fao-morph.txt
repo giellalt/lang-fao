@@ -792,8 +792,6 @@ LEXICON k41-obl
 +N+Msc: S-M-SGGEN ;
 
 LEXICON k-flt41
-!+N+Msc:mann%^IUML S-M-PLNOM-NULL-I ;
-!+N+Msc:mann%^IUML S-M-PLACC-NULL-I ;
 +N+Msc:mann%^IUML S-M-PLNOM-NULL ;
 +N+Msc:mann%^IUML S-M-PLACC-NULL ;
 +N+Msc:mann S-M-PLGEN ;
@@ -2033,10 +2031,9 @@ LEXICON S-M-PLNOM-UR
 +Pl+Nom:%>ur DF-N-PLm ;
 
 LEXICON S-M-PLNOM-NULL
-+Pl+Nom:%> DF-N-PLm ;
++Pl+Nom:    DF-N-PLm-indef ;
++Pl+Nom:%>i DF-N-PLm-def ;
 
-!LEXICON S-M-PLNOM-NULL-I
-!+Pl+Nom:%> DF-N-PLm-I ;
 
 ! Accusative
 
@@ -2050,7 +2047,8 @@ LEXICON S-M-PLACC-UR
 +Pl+Acc:%>ur DF-A-PLm ;
 
 LEXICON S-M-PLACC-NULL
-+Pl+Acc:%> DF-A-PLm ;
++Pl+Acc:    DF-A-PLm-indef ;
++Pl+Acc:%>i DF-A-PLm-def ;
 
 
 !LEXICON S-M-PLACC-NULL-I
@@ -2232,7 +2230,7 @@ LEXICON DF-A-SGm-def
 
 LEXICON DF-D-SGm
 +Indef: # ;
-+Def:%>inum # ;
++Def:num # ;
 
 LEXICON DF-G-SGm
 +Indef: # ;
@@ -2240,12 +2238,25 @@ LEXICON DF-G-SGm
            R ;
 
 LEXICON DF-N-PLm
-+Indef: # ;
-+Def:%>inir # ; 
+DF-N-PLm-indef ;
+DF-N-PLm-def ;
+
+
+LEXICON DF-N-PLm-indef
++Indef:  #  ; 
+
+LEXICON DF-N-PLm-def
++Def:%>nir # ; ! no -i-
 
 LEXICON DF-A-PLm
+DF-A-PLm-indef ;
+DF-A-PLm-def ;
+
+LEXICON DF-A-PLm-indef
 +Indef: # ;
-+Def:%>inar # ;
+
+LEXICON DF-A-PLm-def
++Def:%>nar # ; ! no -i
 
 
 

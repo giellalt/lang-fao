@@ -184,7 +184,7 @@ SET NPNHA = WORDMARK - PRE-N - Adv ;
 SET NOT-ADV = WORDMARK - Adv ;
 SET NOT-A = WORDMARK - A ;
 
-
+LIST TIME = "sunnudagur" ;
 
 
 
@@ -243,7 +243,8 @@ REMOVE:r42 NOTDAT IF (*-1 DATPREP BARRIER NOTDAT OR S-BOUNDARY OR V OR Pr);
 REMOVE:r43 Gen IF (*-1 ACCDATPREP BARRIER NOTACCDAT OR S-BOUNDARY OR V OR Pr);
 REMOVE:r44 Nom IF (*-1 ACCDATPREP BARRIER NOTACCDAT OR S-BOUNDARY OR V OR Pr);
 
-
+REMOVE:AccPronNotIndef (N Indef) IF (-1 ACCPREP OR ACCDATPREP)(0 (Pron Acc)) ;
+REMOVE:DatPronNotIndef (N Indef) IF (-1 DATPREP OR ACCDATPREP)(0 (Pron Dat)) ;
 
 
 
@@ -394,6 +395,8 @@ REMOVE:r48 A IF (0 ("vera"))(1 (N Sg));
 
 SELECT:r49 ("vera" 3Sg) IF (-1 ("tað" Pron Pers Sg Nom));
 	## Tað var, sum váru tey sett av tilvild av einum fóti út úr luftini.
+
+REMOVE:PrtNotAdj A IF (-1 NOMINALHEAD + Sg + Nom)(0 (V Prt Sg) OR (V Prt 3Sg) OR (V Prt 1Sg)) ;
  
 # Infinitive
 
@@ -526,8 +529,8 @@ ADD:r71 (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK -1 
 MAP:r72 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (*1 (V 2Sg) BARRIER VFIN);
 MAP:r73 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V 2Sg) BARRIER VFIN);
 
-MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg));
-MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg));
+MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg) BARRIER S-BOUNDARY);
+MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER S-BOUNDARY);
 MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl));
 MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
 
@@ -640,7 +643,7 @@ SELECT:r116 VFIN IF (NEGATE 0* VFIN);
 
 SELECT:r117 CC IF (-1 BOS)(1C (@SUBJ));
 	## Men tað var hált.
-## 
+ 	## Tað var, sum vóru tey sett.
 
-## 	## Tað var, sum vóru tey sett.
-
+REMOVE:TEST 1Sg IF (-1 (@SUBJ>))(0 3Sg);
+REMOVE:TEST 1Sg IF (*1 (@<SUBJ) BARRIER NPNH)(0 3Sg);

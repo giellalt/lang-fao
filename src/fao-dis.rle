@@ -170,7 +170,7 @@ SET OBL = Acc | Dat | Gen ;
 
 #SET NO
 
-SET PRE-N =  A | Det | (N Gen) | Num ; # Det???
+SET PRE-N =  A | Det | (N Gen) | Num | CC ; # Det???
 
 SET WORD = N | V | A | Pr | Pron | Adv | CC | CS | Interj | Num | ("\?") ;
 SET MARK =  ("\,") | ("\") | ("\;") ; #"
@@ -222,7 +222,11 @@ REMOVE:AVS OBL IF (*-1 VFIN BARRIER NPNH LINK *-1 BOS BARRIER NOT-ADV)(0 (N Nom)
 # PP disambiguation
 # =================
 
-# P or not?
+# Preposition or not?
+
+# á
+REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
+REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
 
 # millum
 REMOVE:r38 Adv IF (0 Dat OR Acc)(*-1 ("millum") BARRIER NPNH);
@@ -230,6 +234,12 @@ REMOVE:r38 Adv IF (0 Dat OR Acc)(*-1 ("millum") BARRIER NPNH);
 
 # til
 SELECT:r39 Pr IF (0 ("til"))(*1 N OR NPNH OR ("at") BARRIER NPNHA);
+
+SELECT:r3 Pr IF (0 ("til"))(*1 (N Gen) BARRIER NPNHA);
+
+# um
+SELECT:um1 CS IF (-1 ("sjálvur"))(0 ("um"));
+REMOVE:um2 CS IF (0 ("um"));
 
 # Case within PP phrases
 
@@ -246,7 +256,9 @@ REMOVE:r44 Nom IF (*-1 ACCDATPREP BARRIER NOTACCDAT OR S-BOUNDARY OR V OR Pr);
 REMOVE:AccPronNotIndef (N Indef) IF (-1 ACCPREP OR ACCDATPREP)(0 (Pron Acc)) ;
 REMOVE:DatPronNotIndef (N Indef) IF (-1 DATPREP OR ACCDATPREP)(0 (Pron Dat)) ;
 
+SELECT:AccNP (N Acc) IF (-1C (Det Acc));
 
+REMOVE:Fragment Acc IF (*-1 ACCDATPREP BARRIER NPNH)(NOT *-1 V)(NOT *1 V);
 
 # POS disambiguation
 # ==================
@@ -267,8 +279,10 @@ REMOVE:r1 (Num) IF (0 ("ein" Det))(*1 N BARRIER NPNHA);
 SELECT CC IF (-1 CLB)(0 ("men"));
 SELECT CS IF (-1 CLB)(0 ("ið"));
 
-SELECT:r3 Pr IF (0 ("til"))(*1 (N Gen) BARRIER NPNHA);
+SELECT:hon Pron IF (0 ("hon"))(-1 BOS OR NPNH);
 
+SELECT:eg ("eg" Pron Pers Pl Nom) IF (*1 (V Pl) BARRIER NOT-ADV); #(*1 V + Pl BARRIER NOT-ADV);
+	  ## Vit mugu sleppa.
 
 REMOVE:r5 Det IF (0 Pers)(NOT 1 NPNHA OR N);
 
@@ -277,6 +291,10 @@ REMOVE:r5 Det IF (0 Pers)(NOT 1 NPNHA OR N);
 SELECT:r6 Adv IF (-1 DATPREP)(*1 Dat BARRIER NPNHA);
 
 SELECT:r7 Adv IF (-1 VFIN)(1 Inf);
+
+REMOVE Adv IF (-1 Det OR Pr)(0 A)(1 N);
+       ## ið stakk í bleyta jørð,
+
 
 # NP internal constraints
 # =======================
@@ -315,6 +333,7 @@ REMOVE:r17 $$NAGD IF (0 Det)(*1 N    BARRIER NPNHA LINK NOT 0 $$NAGD);
 
 #SELECT $$NUMBER IF (0 A)(1 N + $$NUMBER);
 REMOVE:r23 (A Sg) IF (1C N + Pl);
+REMOVE:r23b (A Sg) IF (1 CC)(2 A + Pl)(3C N + Pl);
 REMOVE:r24 (A Pl) IF (1C N + Sg);
 	## í ta døkku moldina.
 
@@ -505,6 +524,7 @@ LIST @P< = @P< ;
 LIST @CC = @CC ;
 LIST @CS = @CS ;
 LIST @APP = @APP 
+LIST @Pron< = @Pron< ;
 LIST @X = @X ;
 
 LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>)  (@>N)  (@N<)  (@SPRED)  (@VAUX) (@VMAIN)  (@ADVL) (@P<) (@APP) ;
@@ -515,6 +535,7 @@ LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>)  (@>N)  (@N<)  (@SPR
   SECTION  #
 # ======== #
 
+MAP (@INTERJ) TARGET Interj ;  
 ADD:r67 (@CC) TARGET CC ;
 ADD:r68 (@CS) TARGET CS ;
 
@@ -525,12 +546,17 @@ MAP:r70 (@VMAIN) TARGET V ;
 ADD:r71 (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK -1 Nom);
 #MAP (@SUBJ) TARGET (N Nom) OR (Num Nom) OR (Pron Nom);
 
+MAP (@Pron<) TARGET ("sjálvur") IF (-1 Refl);
+
+# Number can be both NOMINALHEAD and Det, map that first
+MAP (@N>) TARGET Num + $$NAGD IF (1 N + $$NAGD);
+MAP (@N>) TARGET Num + $$NAGD IF (1 A + $$NAGD)(2 N + $$NAGD);
 
 MAP:r72 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (*1 (V 2Sg) BARRIER VFIN);
 MAP:r73 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V 2Sg) BARRIER VFIN);
 
-MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg) BARRIER S-BOUNDARY);
 MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER S-BOUNDARY);
+MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg) BARRIER S-BOUNDARY);
 MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl));
 MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
 
@@ -595,7 +621,7 @@ REMOVE:r100 (@IOBJ) IF (*-1 Pr BARRIER NPNHA);
 
 REMOVE:r101 (@P<) IF (*-1 BOS OR (N Acc) OR (N Dat) OR (N Nom) OR V OR CLB OR CS BARRIER Pr);
 
-REMOVE:r102 (@>N) IF (*-1 Pr BARRIER NPNHA);
+REMOVE:r102 (@>N) IF (0C N)(*-1 Pr BARRIER NPNHA);
 
 SELECT:r103 (Sg @<SPRED) IF (*-1 COPULA BARRIER NPNHA LINK -1 (Sg Nom));
 
@@ -606,6 +632,8 @@ REMOVE:r105 (@<SUBJ) IF (*-1 VFIN BARRIER S-BOUNDARY LINK -1 (@SUBJ>));
 
 SELECT:r106 (@SUBJ>) IF (-1 CS)(1 VFIN);
 	## sum hann hevði í lummanum.
+
+# Topicalised non-subjects
 
 
 
@@ -632,6 +660,9 @@ REMOVE:r112 V IF (-1 Pr)(0 (@P<));
 
 # Number SPRED disambiguation
 
+SELECT (Nom @N>) IF (1C N + Nom);
+SELECT (Acc @N>) IF (1C N + Acc);
+SELECT (Dat @N>) IF (1C N + Dat);
 
 
 REMOVE:r115 (A @>N) IF (0 V)(NOT 1 N OR A);

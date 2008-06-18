@@ -156,7 +156,7 @@ SET SOMEGENPREP = ACCGENPREP | ACCDATGENPREP ;
 
 # Boundary sets
 
-SET S-BOUNDARY = CS | Interr | BOS  | EOS ;
+SET S-BOUNDARY = CS | Interr | (";") | BOS  | EOS ;
 
 
 # Complementary set
@@ -284,7 +284,7 @@ SELECT:hon Pron IF (0 ("hon"))(-1 BOS OR NPNH);
 SELECT:eg ("eg" Pron Pers Pl Nom) IF (*1 (V Pl) BARRIER NOT-ADV); #(*1 V + Pl BARRIER NOT-ADV);
 	  ## Vit mugu sleppa.
 
-REMOVE:r5 Det IF (0 Pers)(NOT 1 NPNHA OR N);
+REMOVE:r5 Det IF (0 Pers)(NEGATE 0 Gen LINK -1 N)(NOT 1 NPNHA OR N);
 
 # Adverb
 
@@ -400,7 +400,7 @@ SELECT:r45 Adv IF (0 Pr)(1C Pr);
 REMOVE:r46 Det IF (0 Pers)(1C V);
 	## Tey vóru so hugnalig.
 
-REMOVE:r47 Det IF (0 Pers)(NEGATE *1 Def BARRIER NPNH);
+REMOVE:r47 Det IF (0 Pers)(NEGATE *1 Def BARRIER NPNH)(NEGATE 0 Gen LINK -1 N);
 	##
 
 
@@ -497,7 +497,7 @@ REMOVE:r113 V IF (-1 (Det Nom))(0 (N Nom));
 
 
 # Ordinals
-REMOVE:r114 (A Sg @>N) IF (1 (Num Sg));
+REMOVE:r114 (A Sg) IF (1 (Num Sg));
 	## fyrstu tríggjar mánðirnar.
 
 
@@ -530,18 +530,18 @@ LIST @ADVL = @ADVL ;
 LIST @P< = @P< ;
 LIST @CC = @CC ;
 LIST @CS = @CS ;
-LIST @APP = @APP 
+LIST @APP = @APP ;
+LIST @HNOUN = @HNOUN ;
 LIST @Pron< = @Pron< ;
 LIST @X = @X ;
 
-LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>)  (@>N)  (@N<)  (@SPRED)  (@VAUX) (@VMAIN)  (@ADVL) (@P<) (@APP) ;
+LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>)  (@>N)  (@N<)  (@SPRED)  (@VAUX) (@VMAIN)  (@ADVL) (@P<) (@APP) (@HNOUN) ;
 
 
 
 # ======== #
   SECTION  #
 # ======== #
-
 
 
 
@@ -570,7 +570,7 @@ MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg) BARRIER 
 MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl));
 MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
 
-MAP:r78 (@<OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr);
+MAP:r78 (@<OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr OR S-BOUNDARY);
 MAP:r79 (@<IOBJ) TARGET (N Dat) OR (Num Dat) OR (Pron Dat) IF (*1 (@<OBJ) BARRIER NPNHA);
 MAP:r80 (@<OBJ) TARGET Dat IF (*-1 DATV);
 
@@ -582,7 +582,7 @@ MAP:r84 (@>N) TARGET Det + $$GENDER + $$NAGD IF (+1 N + $$GENDER + $$NAGD BARRIE
 #MAP (@P<) TARGET Acc IF
 
 MAP:r85 (@>N) TARGET (N Gen) IF (*1 N BARRIER V OR Adv);
-MAP:r86 (@>N) TARGET Det IF (*1 N BARRIER V OR Adv);
+MAP:r86 (@>N) TARGET Det IF (*1 N BARRIER V OR Adv OR (";"));
 MAP:r87 (@>N) TARGET (Det) IF (*1 N BARRIER V OR Adv);
 MAP:r88 (@>N) TARGET A + $$NAGD OR Det + $$NAGD IF (*1 N + $$NAGD OR Num + $$NAGD BARRIER NPNHA);
 MAP (@>N) TARGET Num IF (*1 N BARRIER NPNHA);
@@ -603,7 +603,10 @@ MAP:r94 (@<SPRED) TARGET A IF (-1 ("síggja"))(1 ("út"));
 MAP:r95 (@<SPRED) TARGET A IF (-1 ("síggja"))(1 CC)(*2 A);
 
 MAP (@P<) TARGET Det IF (-1 Pr)(1 EOS);
+MAP:PostGen (@N<) TARGET (N Gen) IF (-1 N);
+MAP:PronPostGen (@N<) TARGET (Pron Gen) IF (-1 N);
     
+MAP (@HNOUN) TARGET N IF (NOT 0* V) ;
 
 MAP:r96 (@X) TARGET WORD ;
 
@@ -642,6 +645,11 @@ REMOVE:r105 (@<SUBJ) IF (*-1 VFIN BARRIER S-BOUNDARY LINK -1 (@SUBJ>));
 
 SELECT:r106 (@SUBJ>) IF (-1 CS)(1 VFIN);
 	## sum hann hevði í lummanum.
+
+
+# NPs
+
+REMOVE (@>N) IF (0 (Gen @N<))(-1 N);
 
 # Topicalised non-subjects
 

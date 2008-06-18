@@ -25,82 +25,89 @@
 !this is like BOAS
 !It means just "not checked"
 LEXICON maltag
-+N+Prop+Nom: # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat:%>i # ;
-+N+Prop+Gen:%>s # ;
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
 
 LEXICON MUSTAFA
-+N+Prop+Nom: # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat: # ;
-+N+Prop+Gen: # ;
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat: # ;
++N+Prop+Sg+Gen: # ;
 
 LEXICON ARI
-+N+Prop+Nom:%>i # ;
-+N+Prop+Acc:%>a # ;
-+N+Prop+Dat:%>a # ;
-+N+Prop+Gen:%>a # ;
++N+Prop+Sg+Nom:%>i # ;
++N+Prop+Sg+Acc:%>a # ;
++N+Prop+Sg+Dat:%>a # ;
++N+Prop+Sg+Gen:%>a # ;
 
 LEXICON WILLY
-+N+Prop+Nom: # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat: # ;
-+N+Prop+Gen:%>s # ;
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat: # ;
++N+Prop+Sg+Gen:%>s # ;
 
 LEXICON DAGUR
-+N+Prop+Nom:ur # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat:%>i # ;
-+N+Prop+Gen:%>s # ;
++N+Prop+Sg+Nom:ur # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
 
 LEXICON TRÓNDUR
-+N+Prop+Nom:ur # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat:%>i # ;
-+N+Prop+Gen:%>ar # ;
++N+Prop+Sg+Nom:ur # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>ar # ;
 
 LEXICON HÁVARÐUR
-+N+Prop+Nom:ur # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat:%>i # ;
-+N+Prop+Gen:%>ar # ;
-+N+Prop+Gen:%>s # ;
++N+Prop+Sg+Nom:ur # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>ar # ;
++N+Prop+Sg+Gen:%>s # ;
 
 LEXICON DÁVUR
-+N+Prop+Nom:ur # ;
-+N+Prop+Acc:%>a # ;
-+N+Prop+Dat:%>a # ;
-+N+Prop+Gen:%>a # ;
++N+Prop+Sg+Nom:ur # ;
++N+Prop+Sg+Acc:%>a # ;
++N+Prop+Sg+Dat:%>a # ;
++N+Prop+Sg+Gen:%>a # ;
 
 LEXICON BOAS
-+N+Prop+Nom: # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat:%>i # ;
-+N+Prop+Gen:%>ar # ;
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>ar # ;
 
 LEXICON BJØRN
-+N+Prop+Nom: # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat: # ;
-+N+Prop+Dat:%>i # ;  !birni, fix
-+N+Prop+Gen:%>ar # ; !bjarnar
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat: # ;
++N+Prop+Sg+Dat:%>i # ;  !birni, fix
++N+Prop+Sg+Gen:%>ar # ; !bjarnar
 
 
 
 ! Female first names
 ! ------------------
 LEXICON RUT
-+N+Prop+Nom: # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat: # ;
-+N+Prop+Gen:%>ar # ;
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat: # ;
++N+Prop+Sg+Gen:%>ar # ;
+
+LEXICON RUT
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
+
 
 LEXICON ASTA
-+N+Prop+Nom:%>a # ;
-+N+Prop+Acc:%>u # ;
-+N+Prop+Dat:%>u # ;
-+N+Prop+Gen:%>u # ;
++N+Prop+Sg+Nom:%>a # ;
++N+Prop+Sg+Acc:%>u # ;
++N+Prop+Sg+Dat:%>u # ;
++N+Prop+Sg+Gen:%>u # ;
 
 ! LEXICON SIV
 ! LEXICON ø>a
@@ -111,41 +118,41 @@ LEXICON ASTA
 
 
 LEXICON surtag
-+N+Prop+Nom: # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat:%>i # ;
-+N+Prop+Gen:%>s # ;
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
 
 
 ! Place names and other names
 ! ---------------------------
 LEXICON plctag
-+N+Prop+Nom: # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat:%>i # ;
-+N+Prop+Gen:%>s # ;
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
 
 LEXICON fplctag
-+N+Prop+Nom: # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat: # ;
-+N+Prop+Gen:%>ar # ;
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat: # ;
++N+Prop+Sg+Gen:%>ar # ;
 
 LEXICON orgtag ! XXXcheck
-+N+Prop+Nom: # ;
-+N+Prop+Acc: # ;
-+N+Prop+Dat:%>i # ;
-+N+Prop+Gen:%>s # ;
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
 
 
 LEXICON ROMA
-+N+Prop+Nom:%>a # ;
-+N+Prop+Acc:%>u # ;
-+N+Prop+Dat:%>u # ;
-+N+Prop+Gen:%>u # ;
++N+Prop+Sg+Nom:%>a # ;
++N+Prop+Sg+Acc:%>u # ;
++N+Prop+Sg+Dat:%>u # ;
++N+Prop+Sg+Gen:%>u # ;
 
 LEXICON plcpl
-+N+Prop+Pl+Nom:%>ar # ;
-+N+Prop+Pl+Acc:%>ar # ;
-+N+Prop+Pl+Dat:%>um # ;
-+N+Prop+Pl+Gen:%>a # ;
++N+Prop+Sg+Pl+Nom:%>ar # ;
++N+Prop+Sg+Pl+Acc:%>ar # ;
++N+Prop+Sg+Pl+Dat:%>um # ;
++N+Prop+Sg+Pl+Gen:%>a # ;

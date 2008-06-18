@@ -502,6 +502,13 @@ REMOVE:r114 (A Sg @>N) IF (1 (Num Sg));
 
 
 
+# Substituting tags
+
+SUBSTITUTE:sumPr (CS) (Pr) TARGET ("sum") (NOT -1 BOS OR COMMA);
+
+
+
+
 
 # Syntactic disambiguation
 # ========================
@@ -534,6 +541,9 @@ LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>)  (@>N)  (@N<)  (@SPR
 # ======== #
   SECTION  #
 # ======== #
+
+
+
 
 MAP (@INTERJ) TARGET Interj ;  
 ADD:r67 (@CC) TARGET CC ;
@@ -678,3 +688,8 @@ SELECT:r117 CC IF (-1 BOS)(1C (@SUBJ));
 
 REMOVE:TEST 1Sg IF (-1 (@SUBJ>))(0 3Sg);
 REMOVE:TEST 1Sg IF (*1 (@<SUBJ) BARRIER NPNH)(0 3Sg);
+
+
+# Substitute rules
+
+SUBSTITUTE:SUBS_vfin (@VAUX) (@rc-VAUX) TARGET V (*-1 ("sum" CS) BARRIER VFIN OR CLB); 

@@ -792,8 +792,8 @@ LEXICON k41-obl
 +N+Msc: S-M-SGGEN ;
 
 LEXICON k-flt41
-+N+Msc:mann%^IUML S-M-PLNOM-NULL ;
-+N+Msc:mann%^IUML S-M-PLACC-NULL ;
++N+Msc:menn S-M-PLNOM-NULL ;
++N+Msc:menn S-M-PLACC-NULL ;
 +N+Msc:mann S-M-PLGEN ;
 
 LEXICON k42 ! dagur
@@ -839,9 +839,9 @@ LEXICON k-flt43
 +N+Msc: fedr S-M-PLGEN ;
 
 
-LEXICON k44 ! bróðir
-+N+Msc+Sg+Nom:ir DF-N-SGm ;
-              :ur k44-obl ;
+LEXICON k44 ! bróðir, stem is bróð
+ir+N+Msc+Sg+Nom:ir DF-N-SGm ;
+             ir:ur k44-obl ;
 
 LEXICON k44-obl
 +N+Msc: S-M-SGACC ;
@@ -1399,25 +1399,31 @@ LEXICON kv-flt28
 # ;
 
 LEXICON kv29 ! móðir
-kv29e ;
-kv-flt29 ;
++N+Fem+Sg:móð kv29e ;
++N+Fem+Pl:møð kv-flt29 ;
 
 
 LEXICON kv29e 
-# ;
++Nom:ir%> DF-N-SGf-S ;
++Acc:ur%> DF-A-SGf-S ;
++Dat:ur%> DF-D-SGf-S ;
++Gen:ur%> DF-G-SGf-S ;
 
 LEXICON kv-flt29 
-# ;
++Nom:ur%> DF-NA-PLf ;
++Acc:ur%> DF-NA-PLf ;
++Dat:r%>u DF-D-PL ;
++Gen:r%>a DF-G-PL ;
 
 LEXICON kv30 ! dóttir
-kv30e ;
-kv-flt30 ;
++N+Fem+Sg:dótt kv30e ;
++N+Fem+Pl:døt  kv-flt30 ;
 
-LEXICON kv30e
-# ;
+LEXICON kv30e ! Remove for kv29e?
+kv29e ;
 
 LEXICON kv-flt30
-# ;
+kv-flt29 ;
 
 LEXICON kv31 ! systir
 # ;
@@ -1980,7 +1986,7 @@ LEXICON DF-NA-SGm-S ! luður
 
 LEXICON S-M-SGNOM
 +Sg+Nom:%>ur DF-N-SGm-indef ;
-+Sg+Nom:%>i DF-N-SGm-def ;
++Sg+Nom:%>uri DF-N-SGm-def ;
 
 LEXICON S-M-SGNOM-NULL
 +Sg+Nom:%> DF-N-SGm ;
@@ -2083,20 +2089,20 @@ LEXICON W-F-SGNOM
 LEXICON S-F-SGNAD
 +Sg+Nom:%> DF-N-SGf-S ;
 +Sg+Acc:%> DF-A-SGf-S ;
-+Sg+Dat:%> DF-D-SGf ;
++Sg+Dat:%> DF-D-SGf-S ;
 
 ! Oblique
 
 LEXICON W-F-SGOBL
 +Sg+Acc:%>u DF-A-SGf-W ;
-+Sg+Dat:%>u DF-D-SGf ;
-+Sg+Gen:%>u DF-G-SGf ;
++Sg+Dat:%>u DF-D-SGf-W ;
++Sg+Gen:%>u DF-G-SGf-W ;
 
 LEXICON S-F-SGGEN
-+Sg+Gen:%>ar DF-G-SGf ;
++Sg+Gen:%>ar DF-G-SGf-S ;
 
 LEXICON S-F-SGGEN-NULL
-+Sg+Gen:%> DF-G-SGf ;
++Sg+Gen:%> DF-G-SGf-S ;
 
 
 
@@ -2272,6 +2278,7 @@ LEXICON DF-N-SGf-S
 +Indef: # ;
 +Def:%>in # ;
 
+
 LEXICON DF-A-SGf-W
 +Indef: # ;
 +Def:%>na # ;
@@ -2280,11 +2287,22 @@ LEXICON DF-A-SGf-S
 +Indef: # ;
 +Def:%>ina # ;
 
-LEXICON DF-D-SGf
+
+LEXICON DF-D-SGf-W
++Indef: # ;
++Def:%>ni # ;
+
+LEXICON DF-D-SGf-S
 +Indef: # ;
 +Def:%>ini # ;
 
-LEXICON DF-G-SGf
+
+LEXICON DF-G-SGf-W
++Indef:      # ;
++Def:%>nnar  # ;
+             R ;
+
+LEXICON DF-G-SGf-S
 +Indef:      # ;
 +Def:%>innar # ;
              R ;

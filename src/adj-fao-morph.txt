@@ -206,6 +206,14 @@ LEXICON l39 ! settur
 +A: adj-def ;
 +A: adjcmp1 ;
 
+! Irregular adjectives
+
+LEXICON STOR
++A:stór adj-a ;
++A:stór adj-def ;
++A+Cmp:størr indef-cmp-adj-decl ;
++A+Superl:størst indef-superl-adj-decl ;
+
 
 ! Irregular comaratives
 ! =====================
@@ -231,7 +239,8 @@ LEXICON eldri-f
 LEXICON eldri-n
 +Neu: # ;
 
-
+LEXICON indecladj ! Still no tags here.
++A: # ;
 
 ! Intermediate adjectival lexica
 ! ==============================

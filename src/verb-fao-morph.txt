@@ -112,9 +112,15 @@ pres-ur ;
 :%>d l7 ;
 
 LEXICON s20 ! leggja
-:%>d l8 ;
+:egg   jinf ;
+:egg   pres-ur ;
+:ag    prt-d ; !XXX legði???
+:ag    imp-prsptc ;
+:ag    sup ;
+:ag%>d l8 ;
 
 LEXICON s21 ! selja
+jinf ;
 :%>d l7 ;
 
 LEXICON s22 ! ryðja
@@ -204,6 +210,7 @@ LEXICON s32 ! búgva
 :gv      pres-strong-s1 ;
 :r%^IUML pres-strong-s23 ;
 :gv      pres-pl ; 
+:gv      imp-prsptc ; 
          prt-a ;
 :gvin  l32 ;
 
@@ -212,6 +219,7 @@ LEXICON s33 ! rógva
 :gv      pres-strong-s1 ;
 :r%^IUML pres-strong-s23 ;
 :gv      pres-pl ; 
+:gv      imp-prsptc ; 
          prt-a ;
 :%>gvin  l32 ;
 
@@ -221,6 +229,7 @@ LEXICON s34 ! goyggja
 :r       pres-strong-s1 ;
 :r       pres-strong-s23 ;
          pres-pl ; 
+:ggj     imp-prsptc ; 
          prt-a ;
          sup-a ;
 
@@ -234,6 +243,7 @@ LEXICON s35 ! bíta
           pres-ur ;
 :%^AB1    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 :%>in     l26 ;
 
@@ -242,6 +252,7 @@ LEXICON s36 ! svíkja
           pres-ur ;
 :%^AB1    prt-null-s ;
 :%^AB2    prt-u-p ;
+:j        imp-prsptc ;
 :i        sup-a ;
 :%>in     l26 ;
 
@@ -252,6 +263,7 @@ LEXICON s37 ! bróta
 :%^IUML   pres-strong-s23 ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 :%>in     l26 ;
 
@@ -262,6 +274,7 @@ LEXICON s38 ! skjóta
 :%^IUML   pres-strong-s23 ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 :%>in     l26 ;
 
@@ -272,6 +285,7 @@ LEXICON s39 ! bjóða
           pres-ur ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 :%>d l26 ;
 
@@ -282,6 +296,7 @@ inf ;
           pres-ur ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 :%>d l26 ;
 
@@ -292,6 +307,7 @@ inf ;
           pres-ur ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 l26 ;
 
@@ -302,6 +318,7 @@ inf ;
           pres-ur ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 l26 ;
 
@@ -312,6 +329,7 @@ inf ;
           pres-ur ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 l26 ;
 
@@ -320,6 +338,7 @@ inf ;
           pres-ur ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 l26 ;
 
@@ -328,6 +347,7 @@ inf ;
           pres-ur ;
 :%^aAB    prt-null-s ;
 :%^uAB    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 l26 ;
 
@@ -336,6 +356,7 @@ LEXICON s46 ! stinga
           pres-ur ;
 :%^aAB    prt-null-s ;
 :%^uAB    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 :%>in     l26 ;
 
@@ -344,6 +365,7 @@ inf ;
           pres-ur ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 :%>in     l26 ;
 
@@ -352,6 +374,7 @@ inf ;
           pres-ur ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 :%>in     l26 ;
 
@@ -360,6 +383,7 @@ inf ;
           pres-ur ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 :%>in     l26 ;
 
@@ -368,6 +392,7 @@ LEXICON s50 ! røkka
           pres-ur ;
 :%^AB3    prt-null-s ;
 :%^AB2    prt-u-p ;
+          imp-prsptc ;
 :i        sup-a ;
 :%>in     l26 ;
 
@@ -377,6 +402,7 @@ LEXICON s51 ! ganga
 :ong       pres-strong-s23 ; !2?
 :ekk       prt-null-s ;
 :ing       prt-u-p ;
+           imp-prsptc ;
 :ingi      sup-a ;
 :ing%>in   l26 ;
 
@@ -385,6 +411,7 @@ LEXICON s52 ! veva
 :vev   pres-ur ;
 :vav   prt-null-s ;
 :vóv   prt-u-p ;
+:vev   imp-prsptc ;
 :vovi  sup-a ;
 :vovin l26 ;
 
@@ -393,6 +420,7 @@ LEXICON s53 ! leypa
 :loyp   pres-strong-s1 ;
 :loyp   pres-strong-s23 ;
 :leyp   prt-null-s ;
+:leyp   imp-prsptc ;
 :lup    prt-u-p ;
 :lopi   sup-a ;
 :lopin  l26 ;
@@ -402,6 +430,7 @@ LEXICON s54 ! bera
 :ber       pres-null;
 :bar       prt-null-s ;
 :bór       prt-u-p ;
+:ber       imp-prsptc ;
 :bóri      sup-a ;
 :bór%>in   l26 ;
 
@@ -411,6 +440,7 @@ LEXICON s55 ! fara
 :fór       prt-null-s ;
 :fór       prt-u-p ;
 :fari      sup-a ;
+:far       imp-prsptc ;
 :far%>in   l26 ;
 
 LEXICON s56 ! geva
@@ -419,6 +449,7 @@ LEXICON s56 ! geva
 :gav       prt-null-s ;
 :góv       prt-u-p ;
 :givi      sup-a ;
+:gev       imp-prsptc ;
 :giv%>in   l26 ;
 
 LEXICON s57 ! sita
@@ -427,6 +458,7 @@ LEXICON s57 ! sita
 :sat      prt-null-s ;
 :sót      prt-u-p ;
 :siti     sup-a ;
+:sit      imp-prsptc ;
 :sit%>in  l26 ;
 
 LEXICON s58 ! mala
@@ -435,6 +467,7 @@ LEXICON s58 ! mala
 :mel      pres-strong-s23 ;
 :mól      prt-null-s ;
 :mól      prt-u-p ;
+:mal      imp-prsptc ;
 :mali     sup-a ;
 :mal%>in  l26 ;
 
@@ -445,6 +478,7 @@ LEXICON s59 ! stjala
 :stjól    prt-null-s ;
 :stjól    prt-u-p ;
 :stoli    sup-a ;
+:stjel    imp-prsptc ;
 :stol%>in     l26 ;
 
 LEXICON s60 ! taka, aka
@@ -453,6 +487,7 @@ LEXICON s60 ! taka, aka
 :ek       pres-strong-s23 ;
 :ók       prt-null-s ;
 :ók       prt-u-p ;
+:ak       imp-prsptc ;
 :iki      sup-a ;
 :ik%>in   l26 ;
 
@@ -463,6 +498,7 @@ LEXICON s61 ! halda
 :helt     prt-null-s ;
 :hild     prt-u-p ;
 :hildi    sup-a ;
+:hald     imp-prsptc ;
 :hild%>in l26 ;
 
 LEXICON s62 ! sova
@@ -472,6 +508,7 @@ LEXICON s62 ! sova
 :svav     prt-null-s ;
 :svóv     prt-u-p ;
 :sovi     sup-a ;
+:sov      imp-prsptc ;
 :%>in     l26 ;
 
 LEXICON s63 ! koma
@@ -481,6 +518,7 @@ LEXICON s63 ! koma
 :kom      prt-null-s ;
 :kom      prt-u-p ;
 :komi     sup-a ;
+:kom      imp-prsptc ;
 :kom%>in  l26 ;
 
 LEXICON s64 ! láta
@@ -490,6 +528,7 @@ LEXICON s64 ! láta
 :læt      prt-null-s ;
 :lót      prt-u-p ;
 :láti     sup-a ;
+:lát      imp-prsptc ;
 :lát%>in  l26 ;
 
 LEXICON s65 ! standa
@@ -499,6 +538,7 @@ LEXICON s65 ! standa
 :stóð     prt-null-s ;
 :stóð     prt-u-p ;
 :staði    sup-a ;
+:stand    imp-prsptc ;
 
 
 LEXICON s66 ! biðja
@@ -516,6 +556,7 @@ LEXICON s67 ! draga
 :dró      prt-null-s ;
 :dróg     prt-u-p ;
 :drigi    sup-a ;
+:drag     imp-prsptc ;
 :drig%>in l26 ;
 
 LEXICON s68 ! hvørva
@@ -524,8 +565,9 @@ LEXICON s68 ! hvørva
 :hvørv  pres-strong-s23 ;
 :hvarv  prt-null-s ;
 :hvurv  prt-u-p ;
-:hvorvi  sup-a ;
+:hvorvi sup-a ;
 :horvi  sup-a ;
+:hvørv  imp-prsptc ;
 :hvorv%>in  l26 ;
 :hvorv%>in  l26 ;
 
@@ -546,7 +588,8 @@ LEXICON s70 ! siga
 :segði      prt-null-s ;
 :søgð       prt-u-p ;
 :søgd	    prt-u-p ; !XXX SUB?
-:sag       sup ;
+:sig        imp-prsptc ;
+:sag        sup ;
 :sagd%>     l8 ;
 
 LEXICON s71 ! skerja
@@ -554,6 +597,7 @@ LEXICON s71 ! skerja
 :sker   pres-ir ;
 :sker   prt-d ;
 :skert  sup-a ;
+:sker   imp-prsptc ;
 :skerd  l7 ;
 
 LEXICON s72 ! eta
@@ -562,6 +606,7 @@ LEXICON s72 ! eta
 :át       prt-null-s ;
 :ót       prt-u-p ;
 :eti      sup-a ;
+:et       imp-prsptc ;
 :et%>in   l26 ;
 
 LEXICON s73 ! læa
@@ -571,6 +616,7 @@ LEXICON s73 ! læa
 :ló    prt-null-s ;
 :læð   sup-a ;
 :læið  sup-a ;
+:læ    imp-prsptc ;
 :læin  l26 ; !?
 
 LEXICON s74 ! grindast
@@ -911,7 +957,7 @@ LEXICON impsg
 +V+Imp+Sg: # ;
 
 LEXICON imppl
-+V+Imp+Pl:%>ið # ;
++V+Imp+Pl:%^JI%>ið # ;
 
 LEXICON prsptc
 +V+PrsPtc:%>andi # ;
@@ -1043,6 +1089,7 @@ LEXICON VERÐA
 +Ind+Prt+3Sg:vórð # ;
 +Ind+Prt+Pl:vórðu # ;
 +Imp+Sg:verð # ;
++Imp+3Sg:verði # ; !XXX verði ljós
 +Imp+Pl:verðið # ;
 +PrsPtc:verðandi # ;
 +PrtPtc:vorðin # ;

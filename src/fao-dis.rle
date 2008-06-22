@@ -95,6 +95,10 @@ SET NounMscFem = (N Msc) OR (N Fem) ;
 SET NounMscNeu = (N Msc) OR (N Neu) ;
 SET NounFemNeu = (N Fem) OR (N Neu) ;
 
+SET MscFem = Msc OR Fem ;
+SET MscNeu = Msc OR Neu ;
+SET FemNeu = Fem OR Neu ;
+
 LIST 3PERS = "hann" "hon" "tad" ;
 
 # Nominal sets
@@ -121,7 +125,8 @@ LIST MODV = "kunna" "láta" "skula" ;
 
 LIST DATV = "smakka" ;
 
-
+LIST DATPREPV = "liggja" "vera" "standa" "fiska" ;
+LIST ACCPREPV = "leggja" "fara" "renda" "koma" "liða" "seta" ;
 
 # Noun-Verb sets
 
@@ -262,6 +267,9 @@ REMOVE:DatPronNotIndef (N Indef) IF (-1 DATPREP OR ACCDATPREP)(0 (Pron Dat)) ;
 SELECT:AccNP (N Acc) IF (-1C (Det Acc));
 
 REMOVE:Fragment Acc IF (*-1 ACCDATPREP BARRIER NPNH)(NOT *-1 V)(NOT *1 V);
+
+REMOVE:ACCPREPVERB Dat IF (*-1 ACCDATPREP BARRIER NPNH LINK *-1 ACCPREPV BARRIER NOT-ADV)(0 Acc);
+REMOVE:DATPREPVERB Acc IF (*-1 ACCDATPREP BARRIER NPNH LINK *-1 DATPREPV BARRIER NOT-ADV)(0 Dat);
 
 # POS disambiguation
 # ==================
@@ -407,8 +415,11 @@ REMOVE:r34 Acc IF (-2 CS)(-1 (V Pl))(0 (Pl Nom)) ;
 
 
 # A or N
-
+# ======
 REMOVE:r35 A IF (*-1 Pr BARRIER NPNH)(0 N)(1 S-BOUNDARY);
+
+REMOVE (A Fem) IF (0 (N Neu))(-1 COPULA)(-2 ("tað" Nom));
+REMOVE (A Msc) IF (0 (N Neu))(-1 COPULA)(-2 ("tað" Nom));
 
 
 # P chains or not
@@ -445,7 +456,7 @@ SELECT:r51 Inf IF (*-1 MODV BARRIER V);
 # Imperative
 
 #REMOVE Imp IF (-1 Adv OR Nom OR Pr OR CS OR V)(0 Prs OR Prt);
-REMOVE:r52 Imp IF (NOT *-1 BOS BARRIER WORD); # hmm
+REMOVE:r52 Imp IF (NOT *-1 BOS OR PUNCT BARRIER WORD); # hmm
 
 # The Imp section must be written when there are genuine 
 # examples to build upon.
@@ -533,6 +544,7 @@ SELECT Prt IF (2C Prt)(1 CC);
 SELECT Prs IF (2C Prs)(1 CC);
 SELECT Imp IF (2C Imp)(1 CC);
 
+SELECT A IF (0 (A $$GENDER $$NAGD))(-1 CC)(-2 (A $$GENDER $$NAGD));
 
 
 # Substituting tags
@@ -571,7 +583,7 @@ LIST @HNOUN = @HNOUN ;
 LIST @Pron< = @Pron< ;
 LIST @X = @X ;
 
-LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>N)  (@N<)  (@SPRED)  (@VAUX) (@VMAIN)  (@ADVL) (@P<) (@APP) (@HNOUN) ;
+LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@VAUX) (@VMAIN)  (@ADVL) (@P<) (@APP) (@HNOUN) ;
 
 
 
@@ -589,7 +601,8 @@ MAP:r69 (@VAUX) TARGET AUX + VFIN IF (0* VINFIN BARRIER CS OR CC);
 MAP:r70 (@VMAIN) TARGET V ;
 #MAP (@VMAIN) TARGET VFIN IF (NEGATE 0* VFIN BARRIER CS OR CLB);
 
-ADD:r71 (@SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK -1 Nom);
+ADD:r71 (@<SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK 0 Imp);
+ADD:r71 (@<SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK -1 Nom);
 #MAP (@SUBJ) TARGET (N Nom) OR (Num Nom) OR (Pron Nom);
 
 MAP (@Pron<) TARGET ("sjálvur") IF (-1 Refl);
@@ -657,17 +670,17 @@ MAP:r96 (@X) TARGET WORD ;
 # =========== #
 
 
-LIST (@SPRED) = @<SPRED @>SPRED> ;
-LIST (@SUBJ) = @<SUBJ @>SUBJ> ;
-LIST (@OBJ) = @<OBJ @>OBJ> ;
-LIST (@IOBJ) = @<IOBJ @>IOBJ> ;
+LIST (@SPRED) = @<SPRED @SPRED> ;
+LIST (@SUBJ) = @<SUBJ @SUBJ> ;
+LIST (@OBJ) = @<OBJ @OBJ> ;
+LIST (@IOBJ) = @<IOBJ @IOBJ> ;
 
 
 
 # No-syntax early
 REMOVE:r97 (@X) ;
 
-REMOVE:r98 (@SPRED) IF (NOT *-1 (@SUBJ))(NOT *1 (@SUBJ));
+REMOVE:r98 (@SPRED) IF (NOT *0 (@SUBJ));#(NOT *1 (@SUBJ));
 REMOVE:r99 (@OBJ) IF (*-1 Pr BARRIER NPNHA);
 REMOVE:r100 (@IOBJ) IF (*-1 Pr BARRIER NPNHA);
 

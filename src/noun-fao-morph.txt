@@ -792,8 +792,8 @@ LEXICON k41-obl
 +N+Msc: S-M-SGGEN ;
 
 LEXICON k-flt41
-+N+Msc:menn S-M-PLNOM-NULL ;
-+N+Msc:menn S-M-PLACC-NULL ;
++N+Msc:menn S-M-PLNOM-NULL-IR ;
++N+Msc:menn S-M-PLACC-NULL-IR ;
 +N+Msc:mann S-M-PLGEN ;
 
 LEXICON k42 ! dagur
@@ -2040,6 +2040,10 @@ LEXICON S-M-PLNOM-NULL
 +Pl+Nom:    DF-N-PLm-indef ;
 +Pl+Nom:%>i DF-N-PLm-def ;
 
+LEXICON S-M-PLNOM-NULL-IR
++Pl+Nom:     DF-N-PLm-indef ;
++Pl+Nom:%>ir DF-N-PLm-def ;
+
 
 ! Accusative
 
@@ -2056,6 +2060,9 @@ LEXICON S-M-PLACC-NULL
 +Pl+Acc:    DF-A-PLm-indef ;
 +Pl+Acc:%>i DF-A-PLm-def ;
 
+LEXICON S-M-PLACC-NULL-IR
++Pl+Acc:     DF-A-PLm-indef ;
++Pl+Acc:%>ir DF-A-PLm-def ;
 
 !LEXICON S-M-PLACC-NULL-I
 !+Pl+Acc:%> DF-A-PLm-I ;

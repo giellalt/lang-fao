@@ -11,7 +11,7 @@ Alphabet
 
  g2:g i2:i j2:j v2:v 
  %^UUML:0 %^IUML:0 %^eIUML:0 %^W:0 %^EPH:0 %^JI:0 %^OEA:0 
- %^EDH:0
+ %^EDH:0 %^VSH:0
 
  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0
  %^EIO:0 %^OA:0 %^WVV:0
@@ -28,7 +28,7 @@ Sets
  
  Nas = m n ;
  NonNas = b c d f g h j k l p q r s t v w x z ð þ ;
- Dummy = %>  %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^EDH ;
+ Dummy = %>  %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^EDH %^VSH ;
  Special = %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL; 
 
 
@@ -323,6 +323,12 @@ Rules
 
 !€ flek%^WVV%>t
 !€ flak00t 
+
+"Stem Vowel Shortening in Supine and Participle"
+Vx:Vy <=> _ Cns* %^VSH: ;
+	where Vx in ( á ó í )
+		  Vy in ( a o i )
+		  matched ;
 
 
 ! Adjectival Sandhi rule

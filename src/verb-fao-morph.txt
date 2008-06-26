@@ -114,7 +114,9 @@ pres-ur ;
 LEXICON s20 ! leggja
 :egg   jinf ;
 :egg   pres-ur ;
-:ag    prt-d ; !XXX legði???
+:eg    prt-sg ; 
+:eg    prt-di ; 
+:øg    prt-ðu ;
 :ag    imp-prsptc ;
 :ag    sup ;
 :ag%>d l8 ;
@@ -924,8 +926,17 @@ LEXICON pres-ast
 ! Preterite
 
 LEXICON prt-d
+ prt-di ;
+ prt-du ;
+ 
+LEXICON prt-di 
 +V+Ind+Prt+Sg:%>di # ;
+
+LEXICON prt-du
 +V+Ind+Prt+Pl:%>du # ;
+
+LEXICON prt-ðu
++V+Ind+Prt+Pl:%>ðu # ;
 
 LEXICON prt-dd
 +V+Ind+Prt+Sg:%>ddi # ;

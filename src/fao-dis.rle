@@ -451,7 +451,7 @@ REMOVE:PrtNotAdj A IF (-1 NOMINALHEAD + Sg + Nom)(0 (V Prt Sg) OR (V Prt 3Sg) OR
  
 # ið Subject relative clauses
 
-SELECT:ið V IF (-1 ("ið" CS))
+REMOVE:N IF (-1 ("ið" CS))
     ## ið subject relative clauses
     
 # Infinitive

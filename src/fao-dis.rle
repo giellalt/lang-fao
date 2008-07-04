@@ -449,11 +449,6 @@ SELECT:r49 ("vera" 3Sg) IF (-1 ("tað" Pron Pers Sg Nom));
 
 REMOVE:PrtNotAdj A IF (-1 NOMINALHEAD + Sg + Nom)(0 (V Prt Sg) OR (V Prt 3Sg) OR (V Prt 1Sg)) ;
  
-# ið Subject relative clauses
-
-REMOVE:ið N IF (-1 ("ið" CS))
-    ## ið subject relative clauses
-    
 # Infinitive
 
 SELECT:r51 Inf IF (*-1 MODV BARRIER V);

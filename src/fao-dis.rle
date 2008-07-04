@@ -449,11 +449,6 @@ SELECT:r49 ("vera" 3Sg) IF (-1 ("tað" Pron Pers Sg Nom));
 
 REMOVE:PrtNotAdj A IF (-1 NOMINALHEAD + Sg + Nom)(0 (V Prt Sg) OR (V Prt 3Sg) OR (V Prt 1Sg)) ;
  
-# ið Subject relative clauses
-
-SELECT:ið V IF (-1 ("ið" CS))
-    ## ið subject relative clauses
-    
 # Infinitive
 
 SELECT:r51 Inf IF (*-1 MODV BARRIER V);
@@ -783,3 +778,9 @@ REMOVE:NoHnoun (@HNOUN) IF (0* VFIN);
 # Substitute rules
 
 SUBSTITUTE:SUBS_vfin (@VAUX) (@rc-VAUX) TARGET V (*-1 ("sum" CS) BARRIER VFIN OR CLB); 
+
+# ið Subject relative clauses
+
+SELECT:r118 V IF (-1 ("ið" CS @CS))
+    ## ið subject relative clauses
+    

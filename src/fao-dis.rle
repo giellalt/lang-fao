@@ -783,3 +783,5 @@ SUBSTITUTE:SUBS_vfin (@VAUX) (@rc-VAUX) TARGET V (*-1 ("sum" CS) BARRIER VFIN OR
 
 SELECT:r118 V IF (-1 ("ið" CS @CS));
     ## ið subject relative clauses
+    
+REMOVE:r119 (@SUBJ>) IF (0 Adv)(1 Pr);

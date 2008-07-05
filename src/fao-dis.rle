@@ -778,3 +778,8 @@ REMOVE:NoHnoun (@HNOUN) IF (0* VFIN);
 # Substitute rules
 
 SUBSTITUTE:SUBS_vfin (@VAUX) (@rc-VAUX) TARGET V (*-1 ("sum" CS) BARRIER VFIN OR CLB); 
+
+# ið Subject relative clauses
+
+SELECT:r118 V IF (-1 ("ið" CS @CS));
+    ## ið subject relative clauses

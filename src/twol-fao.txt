@@ -14,7 +14,7 @@ Alphabet
  %^EDH:0 %^VSH:0
 
  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0
- %^EIO:0 %^OA:0 %^WVV:0
+ %^EIO:0 %^OA:0 %^WVV:0 %^NGKK:0
 
  %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0
  %^aAB:0 %^uAB:0
@@ -28,19 +28,23 @@ Sets
  
  Nas = m n ;
  NonNas = b c d f g h j k l p q r s t v w x z ð þ ;
- Dummy = %>  %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^EDH %^VSH ;
- Special = %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL; 
+ 
+ Dummy = %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^OEA
+ %^EDH %^VSH %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL
+ %^RDEL %^EIO %^OA %^WVV %^NGKK %^AB1 %^AB2 %^AB3
+ %^AB4 %^AB5 %^AB6 %^AB7 %^aAB %^uAB %> ; 
+
+ Special =  %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL 
+ %^GVDEL %^VDEL  %^JDEL %^RDEL;
 
 
 Rules
 
-"Final j as i"
- j:0 <=> _ %^JI: ;
+"Deleting j"
+ j:0 <=> _ [ %^JI: | %^JDEL: ] ;
+ 
 !€ beiggj%^JI%>i
 !€ beigg000i
-
-"Deleting j in exceptional stems"
- j:0 <=> _ %^JDEL: ;
 
 !€ verkj%^JDEL%>ur
 !€ verk000ur
@@ -101,20 +105,18 @@ Rules
  Vx:0 <=> _ (Dummy:) %>: (Dummy:) [ i n | i ð | u m | s %>: i n s | a | u ] ;
       where Vx in ( i a ) ;
 
-!"Vowel-deletion in Vowel-initial suffix"
-! i:0 <=>                   _ %>: [ i n #: | i ð | u m | s %>: i n s | a ] ; 
-! i:0 <=>                   _ %>: [ i n #: | i ð | u m | s %>: i n s | a ] ; 
-!        d a: g %^IUML: %>: _ %>: n u m #: 
-!          ; Vow Cns:0* %>: _ %>: n u m ;
-
 "Deleting initial i in definite suffix"
- i:0 <=> %>: Vow %>: _ [ n u m #: | n s #: | n #: | ð #: | n i #: | n a #: | n n a r #: ] ; 
-                       [ a | u | i ] r (Special:*) %>:* %>: _ [ n i r #: | n a r #: ]; 
-                       Vow %>:+ _ [ n | ð | n i ] #: ; _ %>:+ [ a | u m ] ;
+ i:0 <=> %>:  Vow                              %>: _ [ n u m | n s | n | ð | n i | n a | n n a r ] #: ; 
+             [ a | u | i ] r (Special:*) %>:*  %>: _ [ n [i|a] r #: ]; 
+               Vow %>:+                              _ [ n | ð | n i ] #: ;
+                                                   _ %>:+ [ a | u m ] ;
 
 "Deleting initial i in definite suffix after wowel, ð or g last in stem"
- i:0 <=> Vow %>: %>: _ n u m #: ; Vow: %>: _ %>: i:0 n u m #: ; Vow: %>: i:0 %>: _ n u m #: ;
-              [ Vow: | a:e ] [ ð | g ] (Special:*) %>: ( i:0 ) %>: _ n u m #: ; Vow: [ ð | g ] (Special:*) %>: _ %>: i: n u m #: ;
+ i:0 <=> Vow %>: %>:                                _         n u m #: ; 
+         Vow: %>:                                   _ %>: i:0 n u m #: ; 
+         Vow: %>: i:0 %>:                           _         n u m #: ;
+         Vow: [ ð | g ] (Special:*) %>: ( i:0 ) %>: _         n u m #: ; 
+         Vow: [ ð | g ] (Special:*) %>:             _ %>:  i: n u m #: ;
 
 !€ døm%>i%>um
 !€ døm000um
@@ -484,3 +486,11 @@ Cx:0 <=> Vow Cx _ %>: t ;
 "t Deletion in Neuter"
  t:0 <=> r  _ %>: t ;
  
+
+"ng to kk Part 1"
+n:k <=> Vow: _ k: (Dummy:) %^NGKK: ;
+
+"ng to kk Part 2"
+g:k <=> Vow: n: _ (Dummy:) %^NGKK: ;
+
+

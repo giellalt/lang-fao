@@ -1457,16 +1457,17 @@ LEXICON kv-flt34
 # ;
 
 LEXICON h1 ! eyga
-:%>a h1e ; !eyga
+h1e ; !eyga
 h-flt1 ;
 
 LEXICON h1e
-+N+Neu+Sg+Nom: DF-NA-SGn-indef ;
-+N+Neu+Sg+Nom: DF-NA-SGn-def ;
-+N+Neu+Sg+Acc: DF-NA-SGn-indef ;
-+N+Neu+Sg+Acc: DF-NA-SGn-def ;
++N+Neu+Sg+Nom:%>a DF-NA-SGn-indef ;
++N+Neu+Sg+Nom:%>a DF-NA-SGn-def ;
++N+Neu+Sg+Acc:%>a DF-NA-SGn-indef ;
++N+Neu+Sg+Acc:%>a DF-NA-SGn-def ;
 
-+N+Neu: S-N-SGDG ;
++N+Neu+Sg+Dat:%>a DF-D-SGn ;
++N+Neu+Sg+Gen:%>a DF-G-SGn-a ;
 
 LEXICON h-flt1
 +N+Neu: N-PLNA-u-ur ;
@@ -1474,7 +1475,7 @@ LEXICON h-flt1
 +N+Neu: N-PLG-na ;
 
 LEXICON h2 ! hjarta
-:%>a h1e ;
+              h1e ;
 +N+Neu:%^UUML N-PLNA-u-ur ;
 +N+Neu:%^UUML N-PLD ;
 +N+Neu:%^UUML N-PLG-na ;
@@ -2349,9 +2350,16 @@ LEXICON DF-D-SGn
 +Def:%>num # ;
 
 LEXICON DF-G-SGn
-+Indef:    # ;
 +Def:%>ins # ;
+g-indef-r ;
+
+LEXICON g-indef-r
++Indef:    # ;
            R ;
+
+LEXICON DF-G-SGn-a
++Def:%>ns # ;
+g-indef-r ;
 
 LEXICON DF-NA-PLn ! orðini
 +Indef: # ;

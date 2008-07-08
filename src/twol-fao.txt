@@ -101,24 +101,29 @@ Rules
 !€ brúð00000ar
 
 
-"Vowel-deletion in Vowel-initial suffix"
- Vx:0 <=> _ (Dummy:) %>: (Dummy:) [ i n | i ð | u m | s %>: i n s | a | u ] ;
-      where Vx in ( i a ) ;
+! Let us go in one direction only:
+! Either delete in the suffix, or delete in the stem
 
-"Deleting initial i in definite suffix"
- i:0 <=> %>:  Vow                              %>: _ [ n u m | n s | n | ð | n i | n a | n n a r ] #: ; 
-             [ a | u | i ] r (Special:*) %>:*  %>: _ [ n [i|a] r #: ]; 
-               Vow %>:+                              _ [ n | ð | n i ] #: ;
+!"Vowel-deletion in definite article suffix"
+! Vx:0 <=> _ (Dummy:) %>: (Dummy:) [ i [ n | ð ] | u m | s %>: i n s | a | u ] ;
+!      where Vx in ( i a ) ;
+
+
+!"Deleting initial i in definite suffix"
+! i:0 <=> %>:  Vow                              %>: _ [ n u m | n s | n | ð | n i | n a | n n a r ] #: ; 
+!             [ a | u | i ] r (Special:*) %>:*  %>: _ [ n [i|a] r #: ]; 
+!               Vow %>:+                            _ [ n | ð | n i ] #: ;
                                                    _ %>:+ [ a | u m ] ;
 
-"Deleting initial i in definite suffix after wowel, ð or g last in stem"
- i:0 <=> Vow %>: %>:                                _         n u m #: ; 
-         Vow: %>:                                   _ %>: i:0 n u m #: ; 
-         Vow: %>: i:0 %>:                           _         n u m #: ;
-         Vow: [ ð | g ] (Special:*) %>: ( i:0 ) %>: _         n u m #: ; 
-         Vow: [ ð | g ] (Special:*) %>:             _ %>:  i: n u m #: ;
+!"Deleting initial i in definite suffix after vowel, ð or g last in stem"
+! i:0 <=> Vow %>: %>:                                _         n u m #: ; 
+!         Vow: %>:                                   _ %>: i:0 n u m #: ; 
+!         Vow: %>: i:0 %>:                           _         n u m #: ;
+!         Vow: [ ð | g ] (Special:*) %>: ( i:0 ) %>: _         n u m #: ; 
+!         Vow: [ ð | g ] (Special:*) %>:             _ %>:  i: n u m #: ;
 
-!€ døm%>i%>um
+! the problem with this is that the
+!€ døm%>i%>um 
 !€ døm000um
 
 !€ dømi%>ið
@@ -126,6 +131,24 @@ Rules
 
 !€ grann%>i%>in
 !€ grann00in
+
+!granni+N+Sg+Acc
+!grann%>an
+!grann0an
+
+!granni+N+Sg+Nom
+!grann%>in
+!grann0in
+
+!dømi+N+Sg+Nom
+!dømi%>ið
+!døm0ið
+
+!dømi%>um
+!døm00um
+
+!eyga%%ið
+!eyg00ið
 
 !€ ris%>i%>in
 !€ ris00in
@@ -192,9 +215,9 @@ Rules
 
 
 "I-umlaut"
- Vx:Vy <=> _ Cns:* (Dummy:*) %^IUML: %>: i ;
+ Vx:Vy <=> _ Cns:* (Dummy:) %^IUML: %>: i ;
      where Vx in ( a o ø á ó ú )
-	   Vy in ( e y i æ ø ý )
+	       Vy in ( e y i æ ø ý )
 	   matched ;
 
 !€ dag%^IUML%>i

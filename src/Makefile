@@ -35,9 +35,9 @@ ifao.fst: ../bin/ifao.fst
 	@printf "load ../bin/fao.save \n\
 	invert net \n\
 	save stack ../bin/ifao.fst \n\
-	quit \n" > /tmp/ifao-fst-script
-	$(XFST)  < /tmp/ifao-fst-script
-	@rm -f /tmp/ifao-fst-script
+	quit \n" > ../../tmp/ifao-fst-script
+	$(XFST)  < ../../tmp/ifao-fst-script
+	@rm -f ../../tmp/ifao-fst-script
 
  
 # The first goal is to build fao.fst, the analyzer.
@@ -52,9 +52,9 @@ fao.fst: ../bin/fao.fst
 	@printf "read regex @\"../bin/fao.save\" .o. \
 	@\"../bin/caseconv.fst\" ; \n\
 	save stack ../bin/fao.fst \n\
-	quit \n" > /tmp/fao-fst-script
-	$(XFST)  < /tmp/fao-fst-script
-	@rm -f /tmp/fao-fst-script
+	quit \n" > ../../tmp/fao-fst-script
+	$(XFST)  < ../../tmp/fao-fst-script
+	@rm -f ../../tmp/fao-fst-script
 
 
 # Here we make the abbrevation file for our current preprocessor, 
@@ -88,9 +88,9 @@ caseconv.fst: ../bin/caseconv.fst
 	@echo
 	@printf "read regex < case.regex \n\
 	save stack ../bin/caseconv.fst \n\
-	quit \n" > /tmp/caseconv-script
-	$(XFST)  < /tmp/caseconv-script
-	@rm -f /tmp/caseconv-script
+	quit \n" > ../../tmp/caseconv-script
+	$(XFST)  < ../../tmp/caseconv-script
+	@rm -f ../../tmp/caseconv-script
 
 
 # This goal depends on allcaps.regex
@@ -102,9 +102,9 @@ allcaps.fst: ../bin/allcaps.fst
 	@echo
 	@printf "source allcaps.regex \n\
 	save stack ../bin/allcaps.fst \n\
-	quit \n" > /tmp/tok-script
-	$(XFST)  < /tmp/tok-script
-	@rm -f /tmp/tok-script
+	quit \n" > ../../tmp/tok-script
+	$(XFST)  < ../../tmp/tok-script
+	@rm -f ../../tmp/tok-script
 
 
 # The third goal is to build fao.save
@@ -135,9 +135,9 @@ twol-fao.bin: ../bin/twol.fao.bin
 	@printf "read-grammar twol-fao.txt \n\
 	compile \n\
 	save-binary ../bin/twol-fao.bin \n\
-	quit \n" > /tmp/twol-fao-script
-	$(TWOLC)  < /tmp/twol-fao-script
-	@rm -f /tmp/twol-fao-script
+	quit \n" > ../../tmp/twol-fao-script
+	$(TWOLC)  < ../../tmp/twol-fao-script
+	@rm -f ../../tmp/twol-fao-script
 
 # Here we include a preprocessor.
 # This goal depends on tok.txt
@@ -149,9 +149,9 @@ tok.fst: ../bin/tok.fst
 	@echo
 	@printf "source tok.txt \n\
 	save stack ../bin/tok.fst \n\
-	quit \n" > /tmp/tok-script
-	$(XFST)  < /tmp/tok-script
-	@rm -f /tmp/tok-script
+	quit \n" > ../../tmp/tok-script
+	$(XFST)  < ../../tmp/tok-script
+	@rm -f ../../tmp/tok-script
 
 # Let us just make a binary disambiguator
 # It can be used instead of the source file.
@@ -193,8 +193,8 @@ clean:
 #	read-rules ../bin/twol-fao.bin \n\
 #	compose-result \n\
 #	save-result ../bin/fao.save \n\
-#	quit \n" > /tmp/fao-save-script
-#	$(LEXC) < /tmp/fao-save-script
-#	rm -f /tmp/fao-save-script
+#	quit \n" > ../../tmp/fao-save-script
+#	$(LEXC) < ../../tmp/fao-save-script
+#	rm -f ../../tmp/fao-save-script
 
 

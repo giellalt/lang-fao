@@ -1457,11 +1457,15 @@ LEXICON kv-flt34
 # ;
 
 LEXICON h1 ! eyga
-h1e ;
+:%>a h1e ; !eyga
 h-flt1 ;
 
 LEXICON h1e
-+N+Neu: S-N-SGNA ;
++N+Neu+Sg+Nom: DF-NA-SGn-indef ;
++N+Neu+Sg+Nom: DF-NA-SGn-def ;
++N+Neu+Sg+Acc: DF-NA-SGn-indef ;
++N+Neu+Sg+Acc: DF-NA-SGn-def ;
+
 +N+Neu: S-N-SGDG ;
 
 LEXICON h-flt1
@@ -1470,8 +1474,7 @@ LEXICON h-flt1
 +N+Neu: N-PLG-na ;
 
 LEXICON h2 ! hjarta
-+N+Neu: S-N-SGNA ;
-+N+Neu: S-N-SGDG ;
+:%>a h1e ;
 +N+Neu:%^UUML N-PLNA-u-ur ;
 +N+Neu:%^UUML N-PLD ;
 +N+Neu:%^UUML N-PLG-na ;
@@ -1799,7 +1802,7 @@ LEXICON h-flt23
 
 LEXICON h24 ! kvæði
 h24e ;
-h-flt24 ;
+h-flt24r ;
 
 LEXICON h-flt24e
 h24e ;
@@ -1810,8 +1813,11 @@ LEXICON h24e
 +N+Neu: S-N-SGG-s ;
 
 LEXICON h-flt24r
-          h-flt24 ; ! Ordinary pl
-+N+Neu:r N-PLNA ;  ! "Danish" r pl.
++N+Neu: N-PLNA-i-ir ;
+!          h-flt24 ; ! Ordinary pl
+!+N+Neu:r N-PLNA ;   ! "Danish" r pl.
++N+Neu: N-PLD ;
++N+Neu: N-PLG ;
 
 LEXICON h-flt24
 +N+Neu: N-PLNA ;
@@ -2167,20 +2173,26 @@ LEXICON S-N-SGG-s
 +Sg+Gen:%>s DF-G-SGn ;
 
 LEXICON i-N-SGNA
-+Sg+Nom:%> DF-NA-SGn-indef ;
-+Sg+Nom:%> DF-NA-SGn-def ;
-+Sg+Acc:%> DF-NA-SGn-indef ;
-+Sg+Acc:%> DF-NA-SGn-def ;
++Sg+Nom:%>i DF-NA-SGn-indef ;
++Sg+Nom:%>i DF-NA-SGn-def ;
++Sg+Acc:%>i DF-NA-SGn-indef ;
++Sg+Acc:%>i DF-NA-SGn-def ;
 
 LEXICON i-N-SGDG-is
 +Sg+Gen:%>is DF-G-SGn ;
 +Sg+Dat:%>is DF-D-SGn ;
 
 LEXICON N-PLNA-u-ur 
-+Pl+Nom:%>u DF-NA-PLn ;
-+Pl+Acc:%>u DF-NA-PLn ;
-+Pl+Nom:%>ur DF-NA-PLn ;
-+Pl+Acc:%>ur DF-NA-PLn ;
++Pl+Nom:%>u DF-NA-PLn-W ;
++Pl+Acc:%>u DF-NA-PLn-W ;
++Pl+Nom+Indef:%>ur # ;
++Pl+Acc+Indef:%>ur # ;
+
+LEXICON N-PLNA-i-ir 
++Pl+Nom:%>i DF-NA-PLn-W ;
++Pl+Acc:%>i DF-NA-PLn-W ;
++Pl+Nom+Indef:%>ir # ;
++Pl+Acc+Indef:%>ir # ;
 
 LEXICON N-PLNA 
 +Pl+Nom:%> DF-NA-PLn ;
@@ -2341,7 +2353,11 @@ LEXICON DF-G-SGn
 +Def:%>ins # ;
            R ;
 
-LEXICON DF-NA-PLn
+LEXICON DF-NA-PLn ! orðini
 +Indef: # ;
 +Def:%>ini # ;
+
+LEXICON DF-NA-PLn-W ! eyguni, hjørtuni
++Indef: # ;
++Def:%>ni # ;
 

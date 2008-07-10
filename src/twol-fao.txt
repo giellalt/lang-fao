@@ -151,7 +151,7 @@ Rules
 
 
 "I-umlaut"
- Vx:Vy <=> _ Cns:*  %^IUML: (Dummy:) %>: i ;
+ Vx:Vy <=> _ Cns:*  %^IUML: (Dummy:) %>: [ i | u r | Cns:* # | # ] ;
      where Vx in ( a o ø á ó ú )
 	       Vy in ( e y i æ ø ý )
 	   matched ;
@@ -353,7 +353,7 @@ Vy:Vz <=> Cns :Vx _  Cns:+ %^AB1: ;
 	matched ;
 
 "Past tense singular monophthongs"
-Vx:Vy <=> _ Cns:+ %^AB3: [ #: | %>: i ] ;
+Vx:Vy <=> _ Cns:+ %^AB3: [ #: | %>: i | %>: ] ;
 	where Vx in ( e ø a o á i )
 	      Vy in ( a a ó a æ a )
 	matched ;
@@ -369,7 +369,7 @@ Vx:Vy <=> _ Cns:+ %^AB3: [ #: | %>: i ] ;
 "Past tense plural monophthongs"
 Vx:Vy <=> _ Cns:+ %^AB2: %>: u ;
 	where Vx in ( á í ó ú i e a ø )
-    	      Vy in ( ó i u u e u i u )
+    	      Vy in ( ó i u u ó ó i u )
 	matched ;
 
 !"Past tense plural monophthongs to ó"
@@ -414,7 +414,7 @@ Vx:i <=> _ Cns:+ %^AB6: ;
 
 "Present tense ý"
 Vx:ý <=> _ Cns:+ %^AB7: ;
-	where Vx in ( ó ú ) ;
+	where Vx in ( ó ) ;
 
 "Adjective neuter after ð"
 t:0 <=> Vow Cns+ Vow ð %^EDH: %>: _ #: ;

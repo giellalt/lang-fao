@@ -398,7 +398,7 @@ Vx:u <=> _ Cns:+ %^AB4: ;
 
 "Supine o"
 Vx:o <=> _ Cns:+ %^AB5: ;
-	where Vx in ( i e ø ó ú ) ;
+	where Vx in ( a i e ø ó ú ) ;
 
 !"Supine o"
 !Vx:o <=> Cns+ _ %^AB5: %>: ;
@@ -451,13 +451,11 @@ Cx:0 <=> Vow Cx _ %>: t ;
 "t Deletion in Neuter"
  t:0 <=> r  _ %>: t ;
  
-
 "ng to kk Part 1"
-n:k <=> Vow: _ k: (Dummy:) %^NGKK: ;
+ n:k <=> Vow _ g:k %^NGKK: ;
 
 "ng to kk Part 2"
-g:k <=> Vow: n: _ (Dummy:) %^NGKK: ;
-
+ g:k <=> Vow n: _ %^NGKK: ;
 
 
 ! Remove these when the dust has settled

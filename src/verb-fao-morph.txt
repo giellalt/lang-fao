@@ -263,7 +263,7 @@ LEXICON s37 ! bróta
                     pres-strong-s1 ;
 :%^AB7              pres-strong-s23 ;
 :%^AB1              prt-null-s ;
-:%^AB2              prt-u-p ;
+:%^AB4              prt-u-p ;
                     imp-prsptc ;
 :%^AB5              sup-null ;
 +V+PrtPtc:%^VSHin   l26 ;
@@ -317,10 +317,10 @@ LEXICON s39a ! bjóða present singular past tense and participles
 LEXICON s40 ! fúka
                     inf ;
                     pres-strong-s1 ;
-:%^AB7              pres-strong-s23 ;
-!:%^IUML             pres-ur ;
+:%^IUML             pres-strong-s23 ;
+!:%^IUML            pres-ur ;
 :%^AB1              prt-null-s ;
-:%^AB2              prt-u-p ;
+:%^AB4              prt-u-p ;
                     imp-prsptc ;
 :%^AB5              sup-null ;
 +V+PrtPtc:%^AB5in   l26 ;
@@ -328,10 +328,8 @@ LEXICON s40 ! fúka
 LEXICON s41 ! flúgva
                     inf ;
                     pres-strong-s1 ;
-!:%^VDEL%^AB7       pres-strong-s23 ; !flúg, should be flýg
-:%^AB7              pres-strong-s23 ; !flýgv, should be flýg
-!:%^AB7%^VDEL       pres-strong-s23 ; !flýgv, should be flýg
-!:%^IUML            pres-ur ; !flúgv, should be flýg
+!:%^IUML%^VDEL       pres-strong-s23 ; !flýgv, should be flýg
+:%^IUML            pres-ur ; !flýgv, should be flýg
 :%^AB1              prt-null-s ; !fleygv, should be fleyg
 :%^VSH              prt-u-p ; !flugv, should be flug
                     imp-prsptc ;
@@ -341,7 +339,7 @@ LEXICON s41 ! flúgva
 LEXICON s42 ! klúgva
                     inf ;
                     pres-strong-s1 ;
-:%^AB7              pres-strong-s23 ; ! klýgv, should be klýv
+:%^IUML              pres-strong-s23 ; ! klýgv, should be klýv
 !:%^IUML            pres-ur ;
 :%^AB1              prt-null-s ; !kleygv, should be kleyv
 :%^VSH              prt-u-p ; !klugv, should be kluv
@@ -352,11 +350,10 @@ LEXICON s42 ! klúgva
 LEXICON s43 ! njóta
                     inf ;
                     pres-strong-s1 ;
-:%^AB7              pres-strong-s23 ; !njýt, should be nýt
-!:%^IUML            pres-strong-s23 ; !njót, should be nýt
+:%^IUML            pres-strong-s23 ; !njót, should be nýt
 !                   pres-ur ;
 :%^AB1              prt-null-s ; !njeyt, should be neyt
-:%^AB2              prt-u-p ; !njut, should be nut
+:%^AB4              prt-u-p ; !njut, should be nut
                     imp-prsptc ;
 :%^AB5              sup-null ; !njot, should be not
 +V+PrtPtc:%^AB5in   l26 ; !njotin, should be notin
@@ -367,185 +364,189 @@ LEXICON s44 ! finna
 :%^AB3              prt-null-s ;
 :%^AB4              prt-du ; !funndu, should be fundu
                     imp-prsptc ;
-:%^AB4               sup-null ;
+:%^AB4              sup-null ;
 +V+PrtPtc:%^AB4in   l26 ;
 
 LEXICON s45 ! binda
-inf ;
-          pres-ur ;
-:%^aAB    prt-null-s ;
-:%^AB4    prt-u-p ;
-          imp-prsptc ;
-:i        sup-a ;
-l26 ;
+                    inf ;
+                    pres-ur ;
+:%^aAB              prt-null-s ; !band, should be bant
+:%^AB4              prt-u-p ;
+                    imp-prsptc ;
+:%^AB4              sup-null ;
++V+PrtPtc:%^AB4in   l26 ;
 
-LEXICON s46 ! vinna
-                inf ;
-                pres-ur ;
-:%^aAB%^NGKK    prt-null-s ;
-:%^AB4          prt-u-p ;
-                imp-prsptc ;
-:%^AB4         sup-null   ;
-+V+PrtPtc:%^AB4%>in     l26 ;
-
-LEXICON s46a ! stinga
-:ing       inf ;   !sting
-:ing       pres-ur ;   !stingur
-:akk       prt-null-s ; !stakk
-:ung       prt-u-p ; !stungu
-:ing       imp-prsptc ; !sting
-:ung       sup-null ; !stungið, stungiður :-( ok ... 
-+V+PrtPtc:ung%>in    l26 ;
+LEXICON s46 ! stinga
+                    inf ;
+                    pres-ur ;
+:%^NGKK%^aAB        prt-null-s ; !stikk, should be stakk
+:%^AB4              prt-u-p ;
+                    imp-prsptc ;
+:%^AB4              sup-null   ;
++V+PrtPtc:%^AB4in   l26 ;
 
 LEXICON s47 ! svimja
-:imj        inf ;
-:im         pres-ur-j ;
-:am         prt-null-s ;
-:um         prt-u-p ;
-:im         imp-prsptc ;
-:om         sup-null ;
-+V+PrtPtc:om%>in     l26 ;
+:imj                inf ;
+:im                 pres-ur-j ;
+:am                 prt-null-s ;
+:um                 prt-u-p ;
+:im                 imp-prsptc ;
+:om                 sup-null ;
++V+PrtPtc:om%>in    l26 ;
 
 !LEXICON s47 ! svimja
-!          inf ;
-!          pres-ur ;
-!:%^aAB    prt-null-s ;
-!:%^AB4    prt-u-p ;
-!          imp-prsptc ;
-!:%^oAB    sup-null ;
-!+V+PrtPtc:%^oAB%>in     l26 ;
+!                   inf ;
+!                   pres-ur ;
+!:%^aAB             prt-null-s ;
+!:%^AB4             prt-u-p ;
+!                   imp-prsptc ;
+!:%^oAB             sup-null ;
+!+V+PrtPtc:%^oABin  l26 ;
 
 LEXICON s48 ! drekka
-inf ;
-          pres-ur ;
-:%^AB3    prt-null-s ;
-:%^AB2    prt-u-p ;
-          imp-prsptc ;
-:%^AB4    sup-null ;
-+V+PrtPtc:%>in     l26 ;
+                    inf ;
+                    pres-ur ;
+:%^AB3              prt-null-s ;
+:%^AB4              prt-u-p ;
+                    imp-prsptc ;
+:%^AB4              sup-null ;
++V+PrtPtc:%>in      l26 ;
 
 LEXICON s49 ! detta
-inf ;
-pres-ur ;
-:%^AB3  prt-null-s ;
-:%^AB2  prt-u-p ;
-        imp-prsptc ;
-:%^AB5    sup-null ;
-+V+PrtPtc:%^AB5%>in l26 ;
+                    inf ;
+                    pres-ur ;
+:%^AB3              prt-null-s ;
+:%^AB4  	        prt-u-p ;
+                    imp-prsptc ;
+:%^AB5              sup-null ;
++V+PrtPtc:%^AB5in   l26 ;
 
 LEXICON s50 ! røkka
-          inf ;
-          pres-ur ;
-:%^AB3    prt-null-s ;
-:%^AB2    prt-u-p ;
-          imp-prsptc ;
-:i        sup-a ;
-:%>in     l26 ;
+                    inf ;
+                    pres-ur ;
+:%^AB3              prt-null-s ;
+:                   prt-null-s ;
+:%^AB4              prt-u-p ;
+                    imp-prsptc ;
+:%^AB5              sup-null ;
++V+PrtPtc:%^AB5in   l26 ;
 
 LEXICON s51 ! ganga
-:ang       inf ;
-:ang       pres-strong-s1 ;
-:ong       pres-strong-s23 ; !2?
-:ekk       prt-null-s ;
-:ing       prt-u-p ;
-           imp-prsptc ;
-:ingi      sup-a ;
-:ing%>in   l26 ;
+:ang                inf ;
+!:ang                pres-strong-s1 ;
+!:ong                pres-strong-s23 ; !2?
+!:ekk                prt-null-s ;
+!:ing                prt-u-p ;
+!                    imp-prsptc ;
+!:ingi               sup-a ;
+!:ing%>in            l26 ;
+
+LEXICON s51a ! ganga
+                    inf ; !ganga
+                    pres-strong-s1 ; !gang
+:%^AB5              pres-strong-s23 ; !2? gong
+:%^IUML%^NGKK       prt-null-s ; !gakk, should be gekk
+:%^AB2              prt-u-p ; !gingu
+                    imp-prsptc ;
+:%^AB6              sup-null ;
++V+PrtPtc:%^AB6in   l26 ;
 
 LEXICON s52 ! veva
-:vev   inf ;
-:vev   pres-ur ;
-:vav   prt-null-s ;
-:vóv   prt-u-p ;
-:vev   imp-prsptc ;
-:vovi  sup-a ;
-:vovin l26 ;
+                    inf ;
+                    pres-ur ;
+:%^AB3              prt-null-s ;
+:%^AB2              prt-u-p ;
+                    imp-prsptc ;
+:%^AB5              sup-null ;
++V+PrtPtc:%^AB5in   l26 ;
 
 LEXICON s53 ! leypa
-:leyp   inf ;
-:loyp   pres-strong-s1 ;
-:loyp   pres-strong-s23 ;
-:leyp   prt-null-s ;
-:leyp   imp-prsptc ;
-:lup    prt-u-p ;
-:lopi   sup-a ;
-:lopin  l26 ;
+:leyp               inf ;
+:loyp   	        pres-strong-s1 ;
+:loyp               pres-strong-s23 ;
+:leyp               prt-null-s ;
+:leyp               imp-prsptc ;
+:lup                prt-u-p ;
+:lop                sup-null ;
++V+PrtPtc:lopin     l26 ;
 
 LEXICON s54 ! bera
-:ber       inf ;
-:ber       pres-null;
-:bar       prt-null-s ;
-:bór       prt-u-p ;
-:ber       imp-prsptc ;
-:bóri      sup-a ;
-:bór%>in   l26 ;
+                    inf ;
+                    pres-strong-s1 ;
+                    pres-strong-s23-t0;
+:%^AB3              prt-null-s ;
+:%^AB2              prt-u-p ;
+                    imp-prsptc ;
+:%^AB5              sup-null ;
++V+PrtPtc:%^AB5in   l26 ;
 
 LEXICON s55 ! fara
-:far       inf ;
-:fer       pres-null ;
-:fór       prt-null-s ;
-:fór       prt-u-p ;
-:fari      sup-a ;
-:far       imp-prsptc ;
-:far%>in   l26 ;
+                    inf ;
+                    pres-strong-s1 ;
+:%^IUML             pres-strong-s23-t0 ; !far, should be fer
+:%^AB3              prt-null-s2 ;
+:%^AB3              prt-u-p ;
+                    sup-null ;
+                    imp-prsptc ;
++V+PrtPtc:%>in      l26 ;
 
 LEXICON s56 ! geva
-:gev       inf ;
-:gev       pres-ur ;
-:gav       prt-null-s ;
-:góv       prt-u-p ;
-:givi      sup-a ;
-:gev       imp-prsptc ;
-:giv%>in   l26 ;
+                    inf ;
+                    pres-ur ;
+:%^AB3              prt-null-s ;
+:%^AB2              prt-u-p ;
+:%^AB6              sup-null ;
+                    imp-prsptc ;
++V+PrtPtc:%^AB6%>in l26 ;
 
 LEXICON s57 ! sita
-:sit      inf ;
-:sit      pres-ur ;
-:sat      prt-null-s ;
-:sót      prt-u-p ;
-:siti     sup-a ;
-:sit      imp-prsptc ;
-:sit%>in  l26 ;
+                    inf ;
+                    pres-ur ;
+:%^AB3              prt-null-s ;
+:%^AB2              prt-u-p ;
+                    sup-null ;
+                    imp-prsptc ;
++V+PrtPtc:%>in      l26 ;
 
 LEXICON s58 ! mala
-:mal      inf ;
-:mel      pres-strong-s1 ;
-:mel      pres-strong-s23 ;
-:mól      prt-null-s ;
-:mól      prt-u-p ;
-:mal      imp-prsptc ;
-:mali     sup-a ;
-:mal%>in  l26 ;
+                    inf ;
+                    pres-strong-s1 ;
+:%^IUML             pres-strong-s23 ;
+:%^AB3              prt-null-s ;
+:%^AB3              prt-u-p ;
+                    imp-prsptc ;
+                    sup-null ;
++V+PrtPtc:%>in      l26 ;
 
 LEXICON s59 ! stjala
-:stjal    inf ;
-:stjel    pres-strong-s1 ;
-:stjel    pres-strong-s23 ;
-:stjól    prt-null-s ;
-:stjól    prt-u-p ;
-:stoli    sup-a ;
-:stjel    imp-prsptc ;
-:stol%>in     l26 ;
+                    inf ;
+                    pres-strong-s1 ;
+:%^IUML             pres-strong-s23 ;
+:%^AB3              prt-null-s ;
+:%^AB3              prt-u-p ;
+:%^AB5              sup-null ; ! stjol, should be stol
+                    imp-prsptc ;
++V+PrtPtc:%^AB5in   l26 ; ! stjol, should be stol
 
 LEXICON s60 ! taka, aka
-:ak       inf ;
-:ek       pres-strong-s1 ;
-:ek       pres-strong-s23 ;
-:ók       prt-null-s ;
-:ók       prt-u-p ;
-:ak       imp-prsptc ;
-:iki      sup-a ;
-:ik%>in   l26 ;
+                    inf ;
+                    pres-strong-s1 ;
+:%^IUML             pres-strong-s23 ;
+:%^AB3              prt-null-s ;
+:%^AB3              prt-u-p ;
+                    imp-prsptc ;
+:%^AB6              sup-null ;
++V+PrtPtc:%^AB6in   l26 ;
 
 LEXICON s61 ! halda
-:hald     inf ;
-:held     pres-strong-s1 ;
-:held     pres-strong-s23 ;
-:helt     prt-null-s ;
-:hild     prt-u-p ;
-:hildi    sup-a ;
-:hald     imp-prsptc ;
-:hild%>in l26 ;
+                    inf ;
+                    pres-strong-s1 ;
+:%^IUML             pres-strong-s23 ;
+:%^IUML             prt-null-s ; ! hald / held%>st, should be helt / helt%>st
+:%^AB6              prt-u-p ;
+:%^AB6              sup-null ;
+                    imp-prsptc ;
++V+PrtPtc:%^AB6in   l26 ;
 
 LEXICON s62 ! sova
 :sov      inf ;
@@ -565,7 +566,7 @@ LEXICON s63 ! koma
 :kom      prt-u-p ;
 :komi     sup-a ;
 :kom      imp-prsptc ;
-:kom%>in  l26 ;
++V+PrtPtc:kom%>in  l26 ;
 
 LEXICON s64 ! láta
 :lát      inf ;
@@ -1002,6 +1003,11 @@ LEXICON prt-a
 LEXICON prt-null-s
 +V+Ind+Prt+1Sg: # ;
 +V+Ind+Prt+2Sg:%>st # ;
++V+Ind+Prt+3Sg: # ;
+
+LEXICON prt-null-s2
++V+Ind+Prt+1Sg: # ;
++V+Ind+Prt+2Sg:%>t # ;
 +V+Ind+Prt+3Sg: # ;
 
 LEXICON prt-u-p

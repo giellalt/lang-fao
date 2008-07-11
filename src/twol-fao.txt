@@ -63,8 +63,11 @@ Rules
          Vow     _ g:0 j:0  %^GGDEL: %>: s ;              ! Deleting gg in ggj Genitive I
          Vow g:0 _     j:0 [ %^GDEL: | %^GGDEL: ] %>: s ; ! Deleting gg in ggj Genitive II
 
-"Deleting the gv Verschärferung 2"
- v:0 <=> Vow g: _ [ %^GVDEL: | %^VDEL: ] ;
+"Deleting v in gv sequences"
+ v:0 <=> Vow g: _ [ %^GVDEL: | (%^IUML:) %^VDEL: ] ;
+
+!€ flúgv%^IUML%^VDEL
+!€ flýg000
 
 !€ búgv%^GVDEL%>s
 !€ bú0000s
@@ -118,12 +121,16 @@ Rules
 
 
 "U-umlaut in Front of Nasal"
- a:o <=> _ Nas (Cns:*) (Vow:) (Cns:*) %^UUML: (%>:) [Vow:|Nas:] ;        ! not %^EPH
-         _ Nas (Cns:*)  Vow:0  (Cns:*) %^EPH: %^UUML:  ; ! %^EPH
+! a:o <=> _ Nas (Cns:*) (Vow:) (Cns:*) %^UUML: (%>:) [Vow:|Nas:] ;        ! not %^EPH
+!         _ Nas (Cns:*)  Vow:0  (Cns:*) %^EPH: %^UUML:  ; ! %^EPH
 !         _ n    Cns:+ (Vow:*) (%^EPH:) %^UUML: ;
+! a:o <=> _ Nas (Cns:) (Vow:) (Cns:) (%^EPH:) %^UUML: ; ! kva med denne? hva er forskjellen?
+! men kunne 126 ikke skrives slik: eg er usikker på *
+ a:o <=> _ n Cns: (Vow:*) (%^EPH:) %^UUML: ;
 
 !€ tank%^UUML
 !€ tonk0
+!denne klarer den ikke. Eg ser det. Du får sjå på det.
 
 !€ band^UUML
 !€ bond00
@@ -134,7 +141,8 @@ Rules
 
 
 "General U-umlaut"
-  a:ø <=> _ NonNas: NonNas:* (Nas) (Vow:) %^UUML: (%>:) [Vow:|Nas:]  ;
+  a:ø <=> _ NonNas: NonNas:* (Nas) (Vow:) %^UUML: ;!(%>:) [Vow:|Nas:]  ;
+!  a:ø <=> _ NonNas: NonNas:* (Nas) (Vow:) %^UUML: (%>:) [Vow:|Nas:]  ; !
 
 !€ dag%>%^UUMLum
 !€ døg00um
@@ -142,13 +150,15 @@ Rules
 !€ sag%>%^UUMLa
 !€ søg00a
 
+!€ all%>%^UUML
+!€ øll00
+
 
 "U-umlaut for akur"
   a:ø <=> _ k u:0 r (%^EPH:) %^UUML: %>: u ;
 
 !akur%^EPH%^UUML%>um
 !øk0r000um
-
 
 "I-umlaut"
  Vx:Vy <=> _ Cns:*  %^IUML: (Dummy:) %>: [ i | u r | Cns:* # | # | g ] ;
@@ -167,8 +177,8 @@ Rules
 
 "eI-umlaut"
  Vx:Vy <=> _ Cns:* %^eIUML: ;
-    where Vx in ( o á )
-          Vy in ( e e )
+    where Vx in ( o á i )
+          Vy in ( e e e )
    matched;
 
 "I-umlaut for bróðir"
@@ -356,7 +366,8 @@ Vy:Vz <=> Cns :Vx _  Cns:+ %^AB1: ;
 	matched ;
 
 "Past tense singular monophthongs"
-Vx:Vy <=> _ Cns:+ %^AB3: [ #: | %>: i | %>: ] ;
+Vx:Vy <=> _  Cns:+ %^AB3: [ #: | %>: i | %>: ] ;
+        _  %^AB3: ;
 	where Vx in ( e ø a o á i )
 	      Vy in ( a a ó a æ a )
 	matched ;
@@ -371,7 +382,8 @@ Vx:Vy <=> _ Cns:+ %^AB3: [ #: | %>: i | %>: ] ;
 
 "Past tense plural monophthongs"
 Vx:Vy <=> _ Cns:+ %^AB2: %>: u ;
-	where Vx in ( á í ó ú i e a ø )
+          _ %^AB2: ;	
+        where Vx in ( á í ó ú i e a ø )
     	      Vy in ( ó i u u ó ó i u )
 	matched ;
 
@@ -380,7 +392,7 @@ Vx:Vy <=> _ Cns:+ %^AB2: %>: u ;
 !	where Vx in ( i e a o á ) ;
 
 "Past tense plural monophthongs to a"
-Vx:a <=> _ Cns:+ %^aAB: ;
+Vx:a <=> _ Cns:+ (%^NGKK:) %^aAB: ;
 	where Vx in ( i e ø ) ;
 
 !"Past tense plural monophthongs to u"
@@ -409,7 +421,7 @@ Vx:o <=> _ Cns:+ %^AB5: ;
 
 "Supine i"
 Vx:i <=> _ Cns:+ %^AB6: ;
-	where Vx in ( í a e ) ;
+	where Vx in ( í a e á ) ;
 
 !"Supine i"
 !Vx:i <=> Cns+ _ %^AB6: %>: ;

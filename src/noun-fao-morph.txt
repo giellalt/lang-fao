@@ -1810,8 +1810,8 @@ h24e ;
 
 LEXICON h24e
 +N+Neu: i-N-SGNA ;
-+N+Neu: S-N-SGD ;
-+N+Neu: S-N-SGG-s ;
++N+Neu: S-N-SGD-i ;
++N+Neu: S-N-SGG-is ;
 
 LEXICON h-flt24r
 +N+Neu: N-PLNA-i-ir ;
@@ -1867,8 +1867,10 @@ h28e ;
 h-flt28 ;
 
 LEXICON h28e
-+N+Neu: S-N-SGNA ;
-+N+Neu: S-N-SGDG-is ;
++N+Neu: S-N-SGNA ;  !bakarí
++N+Neu: S-N-SGD ;   ! bakarí
++N+Neu: S-N-SGD-i ; ! bakaríi
++N+Neu: S-N-SGG-s ; ! bakarís
 
 LEXICON h-flt28
 +N+Neu: N-PLNA ;
@@ -2172,6 +2174,9 @@ LEXICON S-N-SGD-i
 
 LEXICON S-N-SGG-s
 +Sg+Gen:%>s DF-G-SGn ;
+
+LEXICON S-N-SGG-is
++Sg+Gen:%>is DF-G-SGn ;
 
 LEXICON i-N-SGNA
 +Sg+Nom:%>i DF-NA-SGn-indef ;

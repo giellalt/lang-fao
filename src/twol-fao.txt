@@ -121,16 +121,11 @@ Rules
 
 
 "U-umlaut in Front of Nasal"
-! a:o <=> _ Nas (Cns:*) (Vow:) (Cns:*) %^UUML: (%>:) [Vow:|Nas:] ;        ! not %^EPH
-!         _ Nas (Cns:*)  Vow:0  (Cns:*) %^EPH: %^UUML:  ; ! %^EPH
-!         _ n    Cns:+ (Vow:*) (%^EPH:) %^UUML: ;
- a:o <=> _ Nas (Cns:) (Vow:) (Cns:) (%^EPH:) %^UUML: ; ! kva med denne? hva er forskjellen?
-! men kunne 126 ikke skrives slik: eg er usikker på *
-! a:o <=> _ n Cns: (Vow:*) (%^EPH:) %^UUML: ;
+ a:o <=> _ Nas (Cns:) (Vow:) (Cns:) (%^EPH:) %^UUML: ;
+         _ Nas (Cns:)  Vow:  (Cns:)          %^UUML: ;
 
 !€ tank%^UUML
 !€ tonk0
-!denne klarer den ikke. Eg ser det. Du får sjå på det.
 !den skal heller ikke klare det. den skal klare tonkum, og det gjør den.
 
 !€ band^UUML
@@ -142,9 +137,8 @@ Rules
 
 
 "General U-umlaut"
-  a:ø <=> _ NonNas: NonNas:* (Nas) (Vow:) %^UUML: ;!(%>:) [Vow:|Nas:]  ;
-!  a:ø <=> _ NonNas: NonNas:* (Nas) (Vow:) %^UUML: (%>:) [Vow:|Nas:]  ; !
-
+  a:ø <=> _ NonNas: NonNas:* (Nas) (Vow:) %^UUML: ;
+  
 !€ dag%>%^UUMLum
 !€ døg00um
 
@@ -158,8 +152,8 @@ Rules
 "U-umlaut for akur"
   a:ø <=> _ k u:0 r (%^EPH:) %^UUML: %>: u ;
 
-!akur%^EPH%^UUML%>um
-!øk0r000um
+!€ akur%^EPH%^UUML%>um
+!€ øk0r000um
 
 "I-umlaut"
  Vx:Vy <=> _ Cns:*  %^IUML: (Dummy:) %>: [ i | u r | Cns:* # | # | g ] ;
@@ -352,14 +346,14 @@ Vx:Vy <=> _ Cns* %^VSH: ;
 
 ! Past singular
 
-" Past tense singular diphthongs I"
+"Past tense singular diphthongs I"
 0:Vx <=> Cns _ Vy:Vz Cns:+ %^AB1: ;
 	where Vx in ( e e e e )
 	      Vy in ( í ó u ú )
 	      Vz in ( i y y y )
 	matched ;
 
-" Past tense singular diphthongs II"
+"Past tense singular diphthongs II"
 Vy:Vz <=> Cns :Vx _  Cns:+ %^AB1: ;
 	where Vx in ( e e e e )
 	      Vy in ( í ó u ú )
@@ -374,12 +368,7 @@ Vx:Vy <=> _  Cns:+ %^AB3: [ #: | %>: i | %>: ] ;
 	matched ;
 
 !€ gev%^AB2
-
-!"Past tense singular monophthongs to ó"
-!Vx:Vy <=> _ Cns:+ %>: i ;
-!	where Vx in ( a á o i )
-!	      Vy in ( ó ó o a )
-!	matched ;
+!€ gav0
 
 "Past tense plural monophthongs"
 Vx:Vy <=> _ Cns:+ %^AB2: %>: u ;
@@ -472,6 +461,8 @@ Cx:0 <=> Vow Cx _ %>: t ;
 
 "ng to kk Part 2"
  g:k <=> Vow n: _ %^NGKK: ;
+
+
 
 
 ! Remove these when the dust has settled

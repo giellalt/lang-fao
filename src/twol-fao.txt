@@ -64,7 +64,10 @@ Rules
          Vow g:0 _     j:0 [ %^GDEL: | %^GGDEL: ] %>: s ; ! Deleting gg in ggj Genitive II
 
 "Deleting v in gv sequences"
- v:0 <=> Vow g: _ [ %^GVDEL: | (%^IUML:) %^VDEL: ] ;
+ v:0 <=> Vow g: _ [ %^GVDEL: | (%^IUML:) %^VDEL: | %^IUML: %>: i ] ;
+
+!€ bógv%^IUML%>i
+!€ bøg000i
 
 !€ flúgv%^IUML%^VDEL
 !€ flýg000
@@ -121,8 +124,8 @@ Rules
 
 
 "U-umlaut in Front of Nasal"
- a:o <=> _ Nas (Cns:) (Vow:) (Cns:) (%^EPH:) %^UUML: ;
-         _ Nas (Cns:)  Vow:  (Cns:)          %^UUML: ;
+ a:o <=> _ Nas (Cns:)  Vow: (Cns:)  %^EPH: %^UUML: ;
+         _ Nas (Cns:)  Vow: (Cns:)         %^UUML: ;
 
 !€ tank%^UUML
 !€ tonk0
@@ -259,11 +262,8 @@ Rules
 "Vowel deletion in front of na"
  a:0 <=> _ %^W: n ;
 
-"Special Dative v Deletion"
- v:0 <=> g _ %^IUML: %>: i ;
-
-!€ bógv%^IUML%>i
-!€ bøg000i
+!"Special Dative v Deletion"
+! v:0 <=> g _ %^IUML: %>: i ;
 
 !"Plural i Deletion in faðir"
 ! i:0 <=> :e ð _ r %^IUML: %>: ;

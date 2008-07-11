@@ -64,13 +64,17 @@ Rules
          Vow g:0 _     j:0 [ %^GDEL: | %^GGDEL: ] %>: s ; ! Deleting gg in ggj Genitive II
 
 "Deleting v in gv sequences"
- v:0 <=> Vow g: _ [ %^GVDEL: | (%^IUML:) %^VDEL: | %^IUML: %>: i ] ;
+ v:0 <=> Vow g: _ [ %^GVDEL: | [(%^AB1:)| (%^AB5:)|(%^VSH:) | (%^IUML:)] %^VDEL: | %^IUML: %>: i ] ;
+
 
 !€ bógv%^IUML%>i
 !€ bøg000i
 
 !€ flúgv%^IUML%^VDEL
 !€ flýg000
+
+!€ flúgv%VHS%VDEL%>u
+!€ flug0000u
 
 !€ búgv%^GVDEL%>s
 !€ bú0000s
@@ -125,7 +129,8 @@ Rules
 
 "U-umlaut in Front of Nasal"
  a:o <=> _ Nas (Cns:)  Vow: (Cns:)  %^EPH: %^UUML: ;
-         _ Nas (Cns:)  Vow: (Cns:)         %^UUML: ;
+         _ Nas (Cns:)       (Cns:)         %^UUML: ;
+!        _ Nas (Cns:)  Vow: (Cns:)         %^UUML: ; !Needed???
 
 !€ tank%^UUML
 !€ tonk0
@@ -159,7 +164,7 @@ Rules
 !€ øk0r000um
 
 "I-umlaut"
- Vx:Vy <=> _ Cns:*  %^IUML: (Dummy:) %>: [ i | u r | Cns:* # | # | g ] ;
+ Vx:Vy <=> _ Cns:* %^IUML: ;!(Dummy:) [ %>: i | %>: u r | (%>: Cns:*) #: | %>: g ] ;
      where Vx in ( a o ø á ó ú )
 	       Vy in ( e y i æ ø ý )
 	   matched ;
@@ -287,9 +292,9 @@ Rules
 !€ flak00t 
 
 "Stem Vowel Shortening in Supine and Participle"
-Vx:Vy <=> _ Cns* %^VSH: ;
-	where Vx in ( á ó í )
-		  Vy in ( a o i )
+Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
+	where Vx in ( á ó í ú )
+		  Vy in ( a o i u )
 		  matched ;
 
 

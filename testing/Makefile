@@ -13,8 +13,8 @@ SHELL = /bin/sh
 XFST = xfst -utf8
 
 # Where all the perl scripts are:
-#BINDIR = ../../script/testing
-BINDIR = ~/gtsvn/gt/script/testing
+BINDIR = ../../script/testing
+#BINDIR = ~/gtsvn/gt/script/testing
 
 # Directory where all the compiled fst's are:
 FSTDIR = ../bin

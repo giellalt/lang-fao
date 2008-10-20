@@ -2,9 +2,9 @@
 # This is a makefile that builds the Faroese morphological parser #
 # *************************************************************** #
 
-XFST = xfst -utf8
-LEXC = lexc -utf8
-TWOLC = twolc -utf8
+XFST = xfst #-utf8
+LEXC = lexc #-utf8
+TWOLC = twolc #-utf8
 
 ifeq (victorio.uit.no, $(shell hostname))
 XFST = /opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/fst -utf8

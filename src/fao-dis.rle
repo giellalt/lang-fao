@@ -144,7 +144,7 @@ LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hó
 
 LIST DATPREP = "hjá" "með" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "mótvegis" "nær" "sambært" "viðvíkjandi" ;
 
-LIST ACCDATPREP = "í" "á" "undir" "yfir" "eftir" "fyri" "við" "frá" ;
+LIST ACCDATPREP = "í" "á" "undir" "yfir" "yvir" "eftir" "fyri" "við" "frá" ;
 
 LIST ACCGENPREP = "innan" "uttan" "millum" "til" "vegna" ;
 
@@ -188,6 +188,7 @@ SET NPNH = WORDMARK - PRE-N ;
 SET NPNHA = WORDMARK - PRE-N - Adv ;
 SET NOT-ADV = WORDMARK - Adv ;
 SET NOT-A = WORDMARK - A ;
+SET NOT-CC = WORDMARK - CC ;
 SET NOUNADJ = N | A ;
 
 SET NP-MEMBER = PRE-N | N | Pron ;
@@ -400,10 +401,10 @@ REMOVE:r31 $$GENDER IF (-1 N LINK NOT 0 $$GENDER)(0 Poss);
 REMOVE:r32 $$GENDER IF (0 Poss)(*1 N BARRIER NPNHA LINK NOT 0 $$GENDER);
 
 # Number disambiguation
-REMOVE:r33 Pl IF (*-1 (Num Sg) OR (Det Sg) BARRIER NOT-A)(0 (N Sg));
+REMOVE:r33 Pl IF (*-1 ("eitt" Num Sg) OR (Det Sg) BARRIER NOT-A)(0 (N Sg));
 # Here, we need vislcg3 and variable notation!
 
-SELECT:NumNPl (N Pl) IF (-1 Num);
+SELECT:NumNPl (N Pl) IF (-1 NUMBERS);
 
 # NP head disambiguation
 # ======================
@@ -711,6 +712,11 @@ SELECT (N Pl) IF (1C  Poss + Pl + @N<);
 
 SELECT (Poss $$NAGD) IF (-1C N + $$NAGD)(0 (@N<));
 
+# Postverbal subjects
+
+SELECT (@<SUBJ) IF (-2 (@OBJ>) OR (@ADVL>))(-1 VFIN + Pl)(0 Pl);
+       ## Men her hafa tey ikki fullt yvirlit.
+
 
 # Topicalised non-subjects
 
@@ -750,6 +756,10 @@ SELECT (Dat @>N) IF (1C N + Dat);
 
 REMOVE:r115 (A @>N) IF (0 V)(NOT 1 N OR A);
 # Alternatively Demand Nom to the left or Num to the right.
+
+SELECT Pl IF (-1 Pl + (@SUBJ>) LINK *-1 S-BOUNDARY BARRIER NOT-CC)(0 V);
+       ## Men vit vita, at...
+
 
 # Postsyntactical verbal dis
 

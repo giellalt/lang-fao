@@ -379,32 +379,6 @@ REMOVE:r17 $$NAGD IF (0 Det)(*1 N    BARRIER NPNHA LINK NOT 0 $$NAGD);
 
 
 
-# Number disambiguation
-
-#SELECT $$NUMBER IF (0 A)(1 N + $$NUMBER);
-REMOVE:r23 (A Sg) IF (1C N + Pl);
-REMOVE:r23b (A Sg) IF (1 CC)(2 A + Pl)(3C N + Pl);
-REMOVE:r24 (A Pl) IF (1C N + Sg);
-	## í ta døkku moldina.
-
-
-REMOVE (N Pl) IF (*-1C (Det Sg) BARRIER NPNH) (0 (N Sg));
-
-SELECT:r25 $$NUMBER IF (0 Det)(*1 N + $$NUMBER BARRIER NOT-A);
-
-# Gender disamb of numerals
-
-SELECT:r26 $$GENDER IF (0 Num)(*1C (N $$GENDER) BARRIER A);
-	## eit sindur
-
-
-# Case disamb of numerals
-
-SELECT:r27 $$NAGD IF (0 Num)(*1C (N $$NAGD) BARRIER A);
-
-
-# Perhaps also rules that remove Neu if Msc or Fem, etc.
-
 
 # Noun disambiguation
 # -------------------
@@ -563,6 +537,34 @@ REMOVE:r66 ("hannur") IF (0 ("hann" Nom))(1 (V 3Sg));
 REMOVE:r113 V IF (-1 (Det Nom))(0 (N Nom));
 
 
+
+# Number disambiguation
+
+#SELECT $$NUMBER IF (0 A)(1 N + $$NUMBER);
+REMOVE:r23 (A Sg) IF (1C N + Pl);
+REMOVE:r23b (A Sg) IF (1 CC)(2 A + Pl)(3C N + Pl);
+REMOVE:r24 (A Pl) IF (1C N + Sg);
+	## í ta døkku moldina.
+
+
+REMOVE (N Pl) IF (*-1C (Det Sg) BARRIER NPNH) (0 (N Sg));
+
+SELECT:r25 $$NUMBER IF (0 Det)(*1 N + $$NUMBER BARRIER NOT-A);
+
+# Gender disamb of numerals
+
+SELECT:r26 $$GENDER IF (0 Num)(*1C N + $$GENDER BARRIER NOT-A);
+	## eit sindur
+
+
+# Case disamb of numerals
+
+SELECT:r27 $$NAGD IF (0 Num)(*1C N + $$NAGD BARRIER NOT-A);
+
+
+# Perhaps also rules that remove Neu if Msc or Fem, etc.
+
+
 # Ordinals
 REMOVE:r114 (A Sg) IF (1 (Num Sg));
 	## fyrstu tríggjar mánðirnar.
@@ -585,6 +587,7 @@ SELECT A IF (0 (A $$GENDER $$NAGD))(-1 CC)(-2 (A $$GENDER $$NAGD));
 # Substituting tags
 
 SUBSTITUTE:sumPr (CS) (Pr) TARGET ("sum") (NOT -1 BOS OR COMMA);
+
 
 
 
@@ -825,3 +828,7 @@ REMOVE:NoHnoun (@HNOUN) IF (0* VFIN);
 # Substitute rules
 
 SUBSTITUTE:SUBS_vfin (@VAUX) (@rc-VAUX) TARGET V (*-1 ("sum" CS) BARRIER VFIN OR CLB); 
+
+
+SUBSTITUTE:AorB (@>N) (@P<) TARGET Det (-1 Pr LINK *-1 Pr)(1 CLB);
+# Perhaps also demand an intermediate sem or og

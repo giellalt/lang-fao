@@ -191,7 +191,7 @@ SECTION
 
 ### NPs
 
-SETPARENT:r1 @>N TO (*1 N BARRIER NPNH);
+SETPARENT:r1 @>N (0 Det OR A ) TO (*1 N BARRIER NPNH);
 
 SETPARENT:r2 @CS TO (-1 NOMINALHEAD);
 
@@ -202,10 +202,16 @@ SETPARENT:r5 ("sum" @CS) TO (*-1 N OR V BARRIER WORD);
 
 SETPARENT (A $$NAGD) TO (-1 CC)(-2 (A $$NAGD));  # Look at the cc structure !!
 
-
+SETPARENT (@CC)(1 N) TO (-1 N);
+	## Per og Kari
+SETPARENT (@CC)(1 A) TO (-1 A);
+	## oydin og ber.
+	
 ### PPs
 
 SETPARENT:r6 @P< TO (*-1 Pr BARRIER NPNH);
+
+# SETPARENT:r6 @P< TO (*-1 Pr); would be an alternative.
 
 ### VPs
 
@@ -248,3 +254,9 @@ SETPARENT:r23 (Inf @VMAIN) TO (*-1 @VMAIN);
 ### CS
 
 SETPARENT:r24 @CS TO (*-1 (@VMAIN));
+
+### CC
+
+SETPARENT:r25 @CC TO (*1 @SUBJ> LINK *1  (@VMAIN)) ;#IF (-1 CLB);
+
+

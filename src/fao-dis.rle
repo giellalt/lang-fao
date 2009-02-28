@@ -72,13 +72,13 @@ LIST CLB = CLB ;
 LIST PUNCT = PUNCT ;
 LIST LEFT = LEFT ;
 LIST RIGHT = RIGHT ;
-
+LIST Guess = Guess ;
 
 
 
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
 Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
-PrsPrc Sup Imp CLB PUNCT LEFT RIGHT ;
+PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Guess ;
 
 
 LIST NAGD = Nom Acc Gen Dat ;
@@ -212,7 +212,8 @@ SELECT:r2 Pr IF (0 ("á"))(1 Dat OR Acc);
 REMOVE:r36 Pr IF (0 ("at"))(NOT *1 Acc OR Gen OR Dat BARRIER V);
 SELECT:r37 CS IF (0 ("at"))(*1 Nom BARRIER NPNHA LINK *1 V BARRIER OBL);
 
-
+REMOVE:rAtN N IF (0 ("at"))(NOT -1 PRE-N) ;
+	## soleiðis at kvøða einsamallur.
 
 # Adjective disambiguation
 # ------------------------
@@ -582,6 +583,10 @@ SELECT Prs IF (2C Prs)(1 CC);
 SELECT Imp IF (2C Imp)(1 CC);
 
 SELECT A IF (0 (A $$GENDER $$NAGD))(-1 CC)(-2 (A $$GENDER $$NAGD));
+
+
+REMOVE Guess ; # If any other reading is possible.
+
 
 
 # Substituting tags

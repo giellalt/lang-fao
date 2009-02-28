@@ -179,7 +179,8 @@ LEXICON l32 ! búgvin
 +A: adj-def ;
 
 LEXICON l33 ! gamal
-+A:%^EPH       a-non-umlaut ;
++A:            a-m-sg-n-null ; ! gamal
++A:%^EPH       a-non-umlaut-obl ;
 +A:%^EPH%^UUML a-umlaut ;
 +A: adj-def ;
 
@@ -213,6 +214,9 @@ LEXICON STOR
 +A:stór adj-def ;
 +A+Cmp:størr indef-cmp-adj-decl ;
 +A+Superl:størst indef-superl-adj-decl ;
+
+LEXICON andi
++A: # ;
 
 
 ! Irregular comaratives
@@ -251,6 +255,9 @@ LEXICON adj-a
      
 LEXICON a-non-umlaut
  a-m-sg-n ;
+ a-non-umlaut-obl ;
+
+LEXICON a-non-umlaut-obl
  a-m-sg-a ;
  a-m-sg-g ;
 
@@ -296,6 +303,9 @@ a-n-pl-g-ra ;
 
 LEXICON a-m-sg-n
 +Msc+Sg+Nom+Indef:%>ur # ;
+
+LEXICON a-m-sg-n-null
++Msc+Sg+Nom+Indef: # ;
 
 LEXICON a-m-sg-a
 +Msc+Sg+Acc+Indef:%>an # ;

@@ -268,50 +268,27 @@ LEXICON s37 ! bróta
 +V+PrtPtc:%^VSHin   l26 ;
 
 
-!LEXICON s38 ! skjóta
-!                   inf ;
-!                   pres-strong-s1 ;
-!:%^AB7             pres-strong-s23 ;
-!:%^IUML            prt-null-s ;
-!:%^AB2             prt-u-p ;
-!                   imp-prsptc ;
-!:%^AB5             sup-null ;
-!+V+PrtPtc:%^VSHin  l26 ;
-
 LEXICON s38 ! skjóta present tense
-                    inf ;
-                    pres-strong-s1 ;
-:%^AB7              pres-strong-s23 ;
-                    imp-prsptc ;
-:%^AB1%^JDEL        prt-null-s ;
-
-LEXICON s38a ! skjóta past tense and participles
+:jót                inf ;
+:ýt                 pres-strong-s1 ;
+:ýt                 pres-strong-s23 ;
+:ýt                 imp-prsptc ; !XXX
 :ut                 prt-u-p ;
 :ot                 sup-null ;
 +V+PrtPtc:otin      l26 ;
 
-!LEXICON s39 ! bjóða
-!	                inf ;
-!                   pres-strong-s1 ;
-!:%^AB7             pres-strong-s23 ;
-!                   pres-ur ;
-!:%^AB1             prt-null-s ;
-!:%^AB2             prt-u-p ;
-!                   imp-prsptc ;
-!:%^AB5             sup-null ;
-!+V+PrtPtc:%^VSHin  l26 ;
-
-LEXICON s39 ! bjóða present tense
-                    inf ;
-                    pres-strong-s1 ;
-                    imp-prsptc ;
-:%^JI               pres-strong-s23 ;
-
-LEXICON s39a ! bjóða present singular past tense and participles
-:eyð                prt-null-s ;
-:uð                 prt-u-p ;
-:oð                 sup-null ;
-+V+PrtPtc:oðin      l26 ;
+LEXICON s39/30
+:jóð s30 ; ! weak infl + common forms
+     s39 ; ! umlauted forms, XXX check.
+     
+LEXICON s39 ! bjóða umlaut forms
+:ýð                 pres-strong-s1 ;
+:ýð                 pres-strong-s23 ;
+:eyð                prt-null-s ; ! Gunnar
+:úði                prt-null-s ; ! 1Mos
+:úð                 prt-u-p ;
+:óð                 sup-null ;
++V+PrtPtc:óðin      l26 ;
 
 LEXICON s40 ! fúka
                     inf ;
@@ -431,23 +408,14 @@ LEXICON s50 ! røkka
 
 LEXICON s51 ! ganga
 :ang                inf ;
-!:ang                pres-strong-s1 ;
-!:ong                pres-strong-s23 ; !2?
-!:ekk                prt-null-s ;
-!:ing                prt-u-p ;
-!                    imp-prsptc ;
-!:ingi               sup-a ;
-!:ing%>in            l26 ;
+:ang                pres-strong-s1 ;
+:ong                pres-strong-s23 ; !2?
+:ekk                prt-null-s ;
+:ing                prt-u-p ;
+:ang                imp-prsptc ;
+:ingi               sup-a ;
+:ing%>in            l26 ;
 
-LEXICON s51a ! ganga
-                    inf ; !ganga
-                    pres-strong-s1 ; !gang
-:%^AB5              pres-strong-s23 ; !2? gong
-:%^NGKK             prt-null-s ; !gakk, should be gekk
-:%^AB2              prt-u-p ; !gingu
-                    imp-prsptc ;
-:%^AB6              sup-null ;
-+V+PrtPtc:%^AB6in   l26 ;
 
 LEXICON s52 ! veva
                     inf ;
@@ -603,17 +571,14 @@ LEXICON s66 ! biðja
 +V+PrtPtc:%>in      l26 ;
 
 LEXICON s67 ! draga
-                    inf ;
-                    pres-strong-s1 ;
-:%^IUML             pres-strong-s23 ;
-!:%^AB3              prt-null-s ; !dróg, should be dró
-:%^AB3              prt-u-p ;
-:%^AB2              sup-null ;
-                    imp-prsptc ;
+:ag                    inf ;
+:ag                    pres-strong-s1 ;
+:eg                    pres-strong-s23 ;
+:ó                     prt-null-s ; !dróg, should be dró
+:óg                    prt-u-p ;
+:ag                    sup-null ;  ! %^AB2
+:ag                    imp-prsptc ;
 +V+PrtPtc:%AB2%>in  l26 ;
-
-LEXICON s67a ! draga preterite singular
-:dró                prt-null-s ;
 
 LEXICON s68 ! hvørva
                     inf ;
@@ -1049,8 +1014,8 @@ LEXICON imppl
 
 LEXICON prsptc
 +V+PrsPtc:%>andi # ;
++A:%>andi # ;
 
- 
 ! Supine and preterite participle
  
 LEXICON sup
@@ -1236,6 +1201,22 @@ LEXICON FÁA
 +Imp+Pl:fáið # ;
 +PrfPrc:fingin # ;
 +Sup:fingið # ;
+
+LEXICON LIGGJA
++Inf:iggja # ;
++Ind+Prs+1Sg:iggi # ;
++Ind+Prs+2Sg:iggur # ;
++Ind+Prs+3Sg:iggur # ;
++Ind+Prs+Pl:iggja # ;
++Ind+Prt+1Sg:á # ;
++Ind+Prt+2Sg:ást # ;
++Ind+Prt+3Sg:á # ;
++Ind+Prt+Pl:ógu # ;
++Imp+Sg:igg # ;
++Imp+Pl:iggið # ;
++PrsPrc:iggjandi # ;
++PrfPrc:igin # ; ! XXX fix link to adj
++Sup:igið # ;
 
 !LEXICON 
 !+Inf:

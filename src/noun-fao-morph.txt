@@ -2241,6 +2241,8 @@ LEXICON DF-G-PL
 ! Masculine forms
 ! ---------------
 
+! Masc def sg
+
 LEXICON DF-N-SGm
    DF-N-SGm-indef ;
 :i DF-N-SGm-def ;
@@ -2249,7 +2251,7 @@ LEXICON DF-N-SGm-indef
 +Indef: # ; !risi
 
 LEXICON DF-N-SGm-def 
-+Def:n # ; ! risin
++Def:%>n # ; ! risin
 
 LEXICON DF-A-SGm
 DF-A-SGm-indef ;
@@ -2263,12 +2265,15 @@ LEXICON DF-A-SGm-def
 
 LEXICON DF-D-SGm
 +Indef: # ;
-+Def:num # ;
++Def:%>num # ;
 
 LEXICON DF-G-SGm
 +Indef: # ;
 +Def:%>ins # ;
            R ;
+
+
+! Masc def pl
 
 LEXICON DF-N-PLm
 DF-N-PLm-indef ;

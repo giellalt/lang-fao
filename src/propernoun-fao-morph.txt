@@ -29,36 +29,62 @@ LEXICON maltag
 +N+Prop+Sg+Acc: # ;
 +N+Prop+Sg+Dat:%>i # ;
 +N+Prop+Sg+Gen:%>s # ;
+sdóttir+N+Prop+Sg:sdótt kv30e ;
+ssonur+N+Prop+Sg:sson k47 ;
+sonur:son k47 ;
 
 LEXICON MUSTAFA
 +N+Prop+Sg+Nom: # ;
 +N+Prop+Sg+Acc: # ;
 +N+Prop+Sg+Dat: # ;
 +N+Prop+Sg+Gen: # ;
+dóttir+N+Prop+Sg:dótt kv30e ;
+sonur+N+Prop+Sg:son k47 ;
 
 LEXICON ARI
 +N+Prop+Sg+Nom:%>i # ;
 +N+Prop+Sg+Acc:%>a # ;
 +N+Prop+Sg+Dat:%>a # ;
 +N+Prop+Sg+Gen:%>a # ;
+adóttir+N+Prop+Sg:adótt kv30e ;
+asonur+N+Prop+Sg:ason k47 ;
+
+LEXICON HARRIGUD 
++N+Prop+Sg+Nom+Indef:%>i # ;
++N+Prop+Sg+Acc+Indef:%>a # ;
++N+Prop+Sg+Dat+Indef:%>a # ;
++N+Prop+Sg+Gen+Indef:%>a # ;
++N+Prop+Sg+Nom+Def:%>in # ;
++N+Prop+Sg+Acc+Def:%>an # ;
++N+Prop+Sg+Dat+Def:%>anum # ;
++N+Prop+Sg+Gen+Def:%>ans # ;
 
 LEXICON WILLY
 +N+Prop+Sg+Nom: # ;
 +N+Prop+Sg+Acc: # ;
 +N+Prop+Sg+Dat: # ;
 +N+Prop+Sg+Gen:%>s # ;
+sdóttir+N+Prop+Sg:sdótt kv30e ;
+ssonur+N+Prop+Sg:sson k47 ;
 
 LEXICON DAGUR
 +N+Prop+Sg+Nom:ur # ;
 +N+Prop+Sg+Acc: # ;
 +N+Prop+Sg+Dat:%>i # ;
 +N+Prop+Sg+Gen:%>s # ;
+sdóttir+N+Prop+Sg:sdótt kv30e ;
+ssonur+N+Prop+Sg:sson k47 ;
 
 LEXICON TRÓNDUR
 +N+Prop+Sg+Nom:ur # ;
 +N+Prop+Sg+Acc: # ;
 +N+Prop+Sg+Dat:%>i # ;
 +N+Prop+Sg+Gen:%>ar # ;
++N+Prop+Sg+Gen:%>s # ; ! XXX s-gen?
+ardóttir+N+Prop+Sg:ardótt kv30e ;
+arsonur+N+Prop+Sg:arson k47 ;
+sdóttir+N+Prop+Sg:sdótt kv30e ;
+ssonur+N+Prop+Sg:sson k47 ;
 
 LEXICON HÁVARÐUR
 +N+Prop+Sg+Nom:ur # ;
@@ -66,18 +92,26 @@ LEXICON HÁVARÐUR
 +N+Prop+Sg+Dat:%>i # ;
 +N+Prop+Sg+Gen:%>ar # ;
 +N+Prop+Sg+Gen:%>s # ;
+sdóttir+N+Prop+Sg:sdótt kv30e ;
+ardóttir+N+Prop+Sg:ardótt kv30e ;
+ssonur+N+Prop+Sg:sson k47 ;
+arsonur+N+Prop+Sg:arson k47 ;
 
 LEXICON DÁVUR
 +N+Prop+Sg+Nom:ur # ;
 +N+Prop+Sg+Acc:%>a # ;
 +N+Prop+Sg+Dat:%>a # ;
 +N+Prop+Sg+Gen:%>a # ;
+adóttir+N+Prop+Sg:adótt kv30e ;
+asonur+N+Prop+Sg:ason k47 ;
 
 LEXICON BOAS
 +N+Prop+Sg+Nom: # ;
 +N+Prop+Sg+Acc: # ;
 +N+Prop+Sg+Dat:%>i # ;
 +N+Prop+Sg+Gen:%>ar # ;
+ardóttir+N+Prop+Sg:ardótt kv30e ;
+arsonur+N+Prop+Sg:arson k47 ;
 
 LEXICON BJØRN
 +N+Prop+Sg+Nom: # ;
@@ -85,6 +119,8 @@ LEXICON BJØRN
 +N+Prop+Sg+Dat: # ;
 +N+Prop+Sg+Dat:%>i # ;  !birni, fix
 +N+Prop+Sg+Gen:%>ar # ; !bjarnar
+ardóttir+N+Prop+Sg:ardótt kv30e ;
+arsonur+N+Prop+Sg:arson k47 ;
 
 
 
@@ -133,6 +169,12 @@ LEXICON plctag
 +N+Prop+Sg+Dat:%>i # ;
 +N+Prop+Sg+Gen:%>s # ;
 
+LEXICON aplctag
++N+Prop+Sg+Nom:%>a # ;
++N+Prop+Sg+Acc:%>u # ;
++N+Prop+Sg+Dat:%>u # ;
++N+Prop+Sg+Gen:%>u # ;
+
 LEXICON fplctag !fem
 +N+Prop+Sg+Nom: # ;
 +N+Prop+Sg+Acc: # ;
@@ -151,6 +193,11 @@ LEXICON mscorgtag ! XXXcheck
 +N+Prop+Msc: S-M-SGDAT ;
 +N+Prop+Msc: S-M-SGGEN ;
 ! Sosialurin
+
+LEXICON neuorgtag ! XXXcheck
++N+Prop+Neu: S-N-SGNA ;
++N+Prop+Neu: S-N-SGDG ;
+! eimskip
 
 
 LEXICON ROMA

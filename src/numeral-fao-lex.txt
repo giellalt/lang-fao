@@ -34,12 +34,18 @@ seytan n ;
 nítjan n ;
 tjúgu n ;
 tretivu n ;
+tríati n ;     ! 1Mos
 fjøruti n ;
 hálvtrýss n ;
+fimmti n ;     ! 1Mos
 trýss n ;
+seksti n ;     ! 1Mos
 hálvfjerðs n ;
+sjeyti n ;     ! 1Mos
 fýrs n ;
+áttati n ;     ! 1Mos
 hálvfems n ;
+níti n ;       ! 1Mos
 hundrað n ;
 túsund n ;
 millión n ;
@@ -232,13 +238,14 @@ LEXICON ARABICLOOP                              !^C^
 %. ARABIC ;                                                     !^C^                                                              
 %, ARABIC ;                                                     !^C^                                                              
 %: ARABIC ;                                                     !^C^                                                              
-%  ARABIC ;        ! Allowing for "23 500".                     !^C^                                                              
-   ARABIC ;        ! Allowing for "23 500" w/nbsp (initial char is alt-space)   !^C^                                              
-%/ ARABIC ;        ! 24/12                                      !^C^                                                              
+%  ARABIC ;   ! Allowing for "23 500".                     !^C^                                                              
+   ARABIC ;   ! Allowing for "23 500" w/nbsp (initial char = alt-space) !^C^                                              
+%/ ARABIC ;   ! 24/12                                      !^C^                                                              
 +A+Ord:%. # ;                                                    !^C^                                                             
-,%-+Num:,%- # ;         ! 10,-                                   !^C^                                                             
-%%+Num+Nom:%% # ;       ! 50%. It is wrong, but 75 % of us write "75%".         !^C^                                              
-% %%+Num+Nom:% %% # ;   ! We must analyse the correct ones as well... 50 % etc. !^C^                                              
+%-+Num:%- # ;         ! 10-  (high on missing list)                            !^C^                                                             
+,%-+Num:,%- # ;       ! 10,-                                   !^C^                                                             
+%%+Num+Nom:%% # ;     ! 50%. It is wrong, but 75 % of us write "75%".    !^C^                                              
+% %%+Num+Nom:% %% # ; ! We must analyse the corr. ones too... 50 % etc. !^C^                                              
 
 LEXICON ARABICEND
 +Num+Nom: # ;

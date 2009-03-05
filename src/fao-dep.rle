@@ -18,6 +18,10 @@ DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
 # ============= #
 
 
+LIST BOS = (>>>) (<s>); 
+LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
+
+
 # ========
    SETS
 # ========
@@ -116,10 +120,12 @@ SET OBL = Acc | Dat | Gen ;
 
 SET PRE-N =  A | Det | Dem | (N Gen) | Num ; # Det???
 
-SET MARK =  ("\,") | ("\") | ("\;") ; #"
+LIST COMMA = "," ; 
+
+SET MARK =  COMMA | ("\") | ("\;") ; #"
 SET WORDMARK = WORD | MARK ;
 
-LIST COMMA = "," ; 
+
 
 
 SET NPNH = WORDMARK - PRE-N ;
@@ -159,6 +165,9 @@ LIST @N< = @N< ;
 LIST @SPRED = @SPRED ;
 LIST @<SPRED = @<SPRED ;
 LIST @SPRED> = @SPRED> ;
+LIST @OPRED = @OPRED ;
+LIST @<OPRED = @<OPRED ;
+LIST @OPRED> = @OPRED> ;
 LIST @VAUX = @VAUX ;
 LIST @VMAIN = @VMAIN ;
 LIST @<ADVL = @<ADVL ;
@@ -170,7 +179,7 @@ LIST @CS = @CS ;
 LIST @APP = @APP 
 LIST @X = @X ;
 
-LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>)  (@>N)  (@N<)  (@SPRED)  (@VAUX) (@VMAIN)  (@ADVL) (@P<) (@APP) ;
+LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>)  (@>N)  (@N<)  (@SPRED) (@OPRED) (@VAUX) (@VMAIN)  (@ADVL) (@P<) (@APP) ;
 
 LIST @SUBJ = @<SUBJ @SUBJ> ;
 LIST @OBJ = @<OBJ @OBJ> ;
@@ -202,7 +211,7 @@ SETPARENT:r5 ("sum" @CS) TO (*-1 N OR V BARRIER WORD);
 
 SETPARENT (A $$NAGD) TO (-1 CC)(-2 (A $$NAGD));  # Look at the cc structure !!
 
-SETPARENT:CCNP (@CC)(*1 N BARRIER NON-NP) TO (-1 N);
+SETPARENT:CCNP (@CC)(*1 N BARRIER NPNH) TO (-1 N);
 	## Per og Kari
 SETPARENT:CCA (@CC)(1 A) TO (-1 A);
 	## oydin og ber.
@@ -257,6 +266,6 @@ SETPARENT:r24 @CS TO (*-1 (@VMAIN));
 
 ### CC
 
-SETPARENT:r25 @CC (-1 CLB) TO (*1 @SUBJ> LINK *1  (@VMAIN)) ;
+SETPARENT:r25 @CC (-1 BOS OR CLB OR LEFT) TO (*1  (@VMAIN)) ;
 
 

@@ -62,6 +62,18 @@ LEXICON k-flt1
 +N+Msc: W-M-PLGEN ;
 
 
+LEXICON k1_3stem
++N+Msc: W-M-SGNOM ;
++N+Msc: W-M-SGACC ;
++N+Msc: W-M-SGDAT-mixed ;
++N+Msc: W-M-SGGEN ;
++N+Msc: W-M-PLNOM ;
++N+Msc: W-M-PLACC ;
++N+Msc: W-M-PLDAT ;
++N+Msc:%^UUML W-M-PLDAT ;
++N+Msc: W-M-PLGEN ;
+
+
 LEXICON k2 ! beiggi
 +N+Msc:%^JI W-M-SGNOM ;
 +N+Msc: W-M-SGACC ;
@@ -1956,8 +1968,16 @@ LEXICON W-M-SGACC
 LEXICON W-M-SGDAT
 +Sg+Dat:%>a  DF-D-SGm ;
 
+LEXICON W-M-SGDAT-mixed !felagnum
++Sg+Dat+Indef:%>a  # ;
++Sg+Dat+Def:%>num # ;
++Sg+Dat+Def:%>num R ;
+
 LEXICON W-M-SGGEN
-+Sg+Gen:%>a  DF-G-SGm ;
++Sg+Gen+Indef:%>a # ;
++Sg+Gen+Def:%>ins # ;
++Sg+Gen+Def:%>ins R ;
+
 
 ! Plural
 

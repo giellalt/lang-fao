@@ -28,7 +28,7 @@ LEX = fao-lex.txt noun-fao-lex.txt noun-fao-morph.txt \
 
 ifao.fst: ../bin/ifao.fst
 ../bin/ifao.fst: ../bin/fao.fst ../bin/fao.save ../bin/tok.fst ../bin/abbr.txt \
-	../bin/allcaps.fst ../bin/fao-dis.bin ../bin/fao-dep.bin
+	../bin/allcaps.fst ../bin/fao-dis.bin ../bin/fao-dep.bin ../bin/tagfix.fst
 	@echo
 	@echo "*** Building the inverse ifao.fst ***"
 	@echo
@@ -45,12 +45,12 @@ ifao.fst: ../bin/ifao.fst
 
 fao.fst: ../bin/fao.fst
 ../bin/fao.fst: ../bin/fao.save ../bin/caseconv.fst ../bin/allcaps.fst \
-	../bin/tok.fst
+	../bin/tok.fst ../bin/tagfix.fst
 	@echo
 	@echo "*** Building fao.fst ***" ;
 	@echo
-	@printf "read regex @\"../bin/fao.save\" .o. \
-	@\"../bin/caseconv.fst\" ; \n\
+	@printf "read regex @\"../bin/tagfix.fst\" .o. @\"../bin/fao.save\" \
+	.o. @\"../bin/caseconv.fst\" ; \n\
 	save stack ../bin/fao.fst \n\
 	quit \n" > ../../tmp/fao-fst-script
 	$(XFST)  < ../../tmp/fao-fst-script
@@ -102,6 +102,19 @@ allcaps.fst: ../bin/allcaps.fst
 	@echo
 	@printf "source allcaps.regex \n\
 	save stack ../bin/allcaps.fst \n\
+	quit \n" > ../../tmp/tok-script
+	$(XFST)  < ../../tmp/tok-script
+	@rm -f ../../tmp/tok-script
+
+# This goal depends on tagfix.regex
+
+tagfix.fst: ../bin/tagfix.fst
+../bin/tagfix.fst: tagfix.regex
+	@echo
+	@echo "*** Building tagfix.fst ***" ;
+	@echo
+	@printf "source tagfix.regex \n\
+	save stack ../bin/tagfix.fst \n\
 	quit \n" > ../../tmp/tok-script
 	$(XFST)  < ../../tmp/tok-script
 	@rm -f ../../tmp/tok-script

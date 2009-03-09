@@ -103,11 +103,13 @@ LIST 3PERS = "hann" "hon" "tad" ;
 
 # Nominal sets
 
-LIST NOMINALHEAD = N Num Pers Refl Recipr Interr ;
+LIST NOMINALHEAD = N Num Pers Refl Recipr Interr Indef ;
 
 LIST PRENAGR = Det A ;
 
 LIST MIDJA = "miðja" ; # in the middle of - construction. More N in here, also bottle constr.
+
+SET NOT-ACC = TAG - Acc ;
 
 
 # Verb sets
@@ -123,7 +125,7 @@ LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
 
 LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
 
-LIST MODV = "kunna" "láta" "skula" "vilja" ;
+LIST MODV = "kunna" "láta" "skula" "vilja" "munna" ;
 
 LIST DATV = "bjóða" "smakka" ;
 
@@ -204,6 +206,10 @@ LIST TIME = "sunnudagur" ;
 
 
 SECTION
+
+
+REMOVE Guess ; # If any other reading is possible.
+
 
 # Early and popular rules
 
@@ -298,7 +304,7 @@ REMOVE:r1 (Num) IF (0 ("ein" Det))(*1 N BARRIER NPNHA);
 
 # Prop
 
-SELECT:InternalProp Prop IF (NOT -1 (CLB OR PUNCT OR LEFT));
+SELECT:InternalProp Prop IF (NOT -1 (CLB OR PUNCT OR LEFT))(NOT 0 Guess);
 
 # Specific lexemes
 # ================
@@ -307,6 +313,8 @@ SELECT:InternalProp Prop IF (NOT -1 (CLB OR PUNCT OR LEFT));
 SELECT CS IF (-2 ("av"))(-1 ("tað"))(0 ("at"));
 REMOVE Pr IF (0 ("at"))(NEGATE 1 NP-MEMBER);
 
+# ár
+SELECT (Neu Sg Acc) IF (-1 ("i"))(0 ("ár"));
 
 # bara
 SELECT ("bara" Adv) IF (1 Pron);
@@ -368,6 +376,7 @@ SELECT:r7 Adv IF (-1 VFIN)(1 Inf);
 
 REMOVE Adv IF (-1 Det OR Pr)(0 A)(1 N);
        ## ið stakk í bleyta jørð,
+
 
 
 
@@ -613,7 +622,7 @@ SELECT Imp IF (NOT 0 OBL LINK *-1 Pr BARRIER NPNH)(2C Imp)(1 CC);
 SELECT A IF (0 (A $$GENDER $$NAGD))(-1 CC)(-2 (A $$GENDER $$NAGD));
 
 
-REMOVE Guess ; # If any other reading is possible.
+
 
 
 
@@ -684,6 +693,10 @@ MAP:PostPoss (@N<) TARGET Det + Poss + $$GENDER IF (-1 N + $$GENDER)(NEGATE 1 NO
 #MAP PostPoss (@N<) TARGET (Det Poss $$GENDER) IF (-1 (N $$GENDER));
 # Number can be both NOMINALHEAD and Det, map that first
 
+MAP:DetPossGen (@N<) TARGET (Det Poss Sg Gen) IF (-1 N);
+
+
+
 MAP (@>N) TARGET Num + $$NAGD IF (1 N + $$NAGD);
 MAP (@>N) TARGET Num + $$NAGD IF (1 A + $$NAGD)(2 N + $$NAGD);
 
@@ -708,6 +721,7 @@ MAP:r82 (@P<) TARGET NOMINALHEAD + Acc IF (*-1 SOMEACCPREP BARRIER NPNHA);
 MAP:r83 (@P<) TARGET NOMINALHEAD + Gen IF (*-1 SOMEGENPREP BARRIER NPNHA);
 
 MAP:r84 (@>N) TARGET Det + $$GENDER + $$NAGD IF (+1 N + $$GENDER + $$NAGD BARRIER NPNHA);
+MAP:r84b (@>N) TARGET Pron + Indef  + $$GENDER + $$NAGD IF (+1 N + $$GENDER + $$NAGD BARRIER NPNHA);
 #MAP (@P<) TARGET Acc IF
 
 MAP:r85 (@>N) TARGET (N Gen) IF (*1 N BARRIER V OR Adv);
@@ -735,7 +749,8 @@ MAP:r95 (@<SPRED) TARGET A IF (-1 ("síggja"))(1 CC)(*2 A);
 
 MAP (@P<) TARGET Det IF (-1 Pr)(1 EOS);
 MAP:PostGen (@N<) TARGET (N Gen) IF (-1 N);
-MAP:PronPostGen (@N<) TARGET (Pron Gen) IF (-1 N);
+# MAP:PronPostGen (@N<) TARGET (Pron Gen) IF (-1 N); This is a Det
+
 
 # Specific constructions
 MAP (@N<) TARGET (N Dat) IF (-1 MIDJA);
@@ -793,7 +808,6 @@ SELECT:r106 (@SUBJ>) IF (-1 CS)(1 VFIN);
 # NPs
 
 REMOVE (@>N) IF (0 (Gen @N<))(-1 N);
-SELECT (@N<) IF (0 (Poss @N<))(-1 N)(NEGATE 1 PRE-N OR N);
 
 SELECT (N Sg) IF (1C  Poss + Sg + @N<);
 SELECT (N Pl) IF (1C  Poss + Pl + @N<);
@@ -820,6 +834,12 @@ SELECT:defsubj (Def) IF (NOT -1 Indef)(0C (@SUBJ>))(1 VFIN);
 REMOVE (@<IOBJ) IF (*-1 V BARRIER NPNH LINK NOT *-1 (@OBJ>))(NEGATE *1 (@OBJ>) BARRIER S-BOUNDARY OR CC OR V);
 
 SELECT (@<OBJ) IF (*-1 CC BARRIER NPNH LINK -1C (@<OBJ));
+
+
+# Direct objects
+
+REMOVE Acc IF (*-1 ("seg" Acc) LINK -1 V BARRIER NOT-ACC);
+REMOVE:NotPostSubj (@SUBJ>) IF (0 (@<OBJ))(*1 CLB BARRIER VFIN);
 
 # PPs
 

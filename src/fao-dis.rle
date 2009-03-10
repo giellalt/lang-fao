@@ -241,7 +241,7 @@ SELECT A IF (-1 COPULA)(1 CC)(2C A)(1 CLB);
 SELECT:r21 $$NAGD IF (0 A)(*1C $$NAGD BARRIER NPNHA)(NOT 0 V);
 REMOVE:r22 $$NAGD IF (0 A)(*1 N BARRIER NPNHA LINK NOT 0 $$NAGD);
 
-REMOVE:AVS OBL IF (*-1 VFIN BARRIER NPNH LINK *-1 BOS BARRIER NOT-ADV)(0 (N Nom));
+REMOVE:AVS OBL IF (*-1 VFIN BARRIER NPNH LINK *-1 BOS OR CLB BARRIER NOT-ADV)(0 (N Nom));
 REMOVE:AVS2 OBL IF (-2 CLB)(-1 Adv OR CC OR CS)(0 Nom)(1 V + THIRDSG)(NOT *2 Nom BARRIER CLB);
 
 # PP disambiguation
@@ -489,6 +489,8 @@ SELECT:r51 Inf IF (*-1 MODV BARRIER V);
 #REMOVE Imp IF (-1 Adv OR Nom OR Pr OR CS OR V)(0 Prs OR Prt);
 REMOVE:r52 Imp IF (NOT *-1 BOS OR PUNCT BARRIER WORD); # hmm
 
+REMOVE Sup IF (*-1 CLB BARRIER WORD)(0 Imp)(*1 CLB  BARRIER Ind);
+
 # The Imp section must be written when there are genuine 
 # examples to build upon.
 
@@ -509,7 +511,8 @@ REMOVE:SFregel N IF (0 Sup)(1 VFIN);
 # Present singular
 
 SELECT:r57 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) OR (3PRON Pers Sg Nom) LINK NOT *-1 CC BARRIER NPNHA)(1 (Pron Refl Acc)) ;
-REMOVE:test (V Ind 2Sg) IF (NOT 0* ("tú" Pron Pers Sg Nom)); # Tino!!
+REMOVE:test1 (V Ind 1Sg) IF (NOT 0* ("eg" Pron Pers Sg Nom)); # Tino!!
+REMOVE:test2 (V Ind 2Sg) IF (NOT 0* ("tú" Pron Pers Sg Nom)); # Tino!!
 REMOVE:r58b (V Ind 1Sg) IF (*-1 (N Sg Nom) BARRIER NOT-ADV LINK NOT *1 Pron + 1Sg BARRIER CLB) ;
 SELECT:r59 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) LINK NOT *-1 CC BARRIER NPNHA OR S-BOUNDARY) ;
 
@@ -569,6 +572,7 @@ REMOVE:r66 ("hannur") IF (0 ("hann" Nom))(1 (V 3Sg));
        ## Han var her.
 
 
+REMOVE:r66b (Pl Nom Indef) IF (1 (N Sg) OR (V Sg) OR (V 3Sg));
 
 
 # VP disambiguation
@@ -703,8 +707,9 @@ MAP (@>N) TARGET Num + $$NAGD IF (1 A + $$NAGD)(2 N + $$NAGD);
 MAP:r72 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (*1 (V 2Sg) BARRIER VFIN);
 MAP:r73 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V 2Sg) BARRIER VFIN);
 
+MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER NPNH LINK NOT -1 Nom);
 MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg));
-MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER NPNH);
+
 
 MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl));
 MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
@@ -844,18 +849,21 @@ REMOVE:NotPostSubj (@SUBJ>) IF (0 (@<OBJ))(*1 CLB BARRIER VFIN);
 # PPs
 
 REMOVE:r107 (@<SUBJ) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
-REMOVE:r107 (@<SUBJ) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
+REMOVE:r107a (@<SUBJ) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
+
+REMOVE:r107b (@SUBJ>) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
+REMOVE:r107c (@SUBJ>) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
 
 REMOVE:r108 (@<OBJ) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
-REMOVE:r108 (@<OBJ) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
+REMOVE:r108a (@<OBJ) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
 
 REMOVE:r109 (@<ADVL) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
 
 REMOVE:r110 (@<SPRED) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
-REMOVE:r110 (@<SPRED) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
+REMOVE:r110a (@<SPRED) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
 
 REMOVE:r111 (@<OPRED) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
-REMOVE:r111 (@<OPRED) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
+REMOVE:r111a (@<OPRED) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
 
 REMOVE:r112 V IF (-1 Pr)(0 (@P<));
 

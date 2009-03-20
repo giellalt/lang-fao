@@ -545,22 +545,14 @@ LEXICON s64 ! láta
 +V+PrtPtc:%>in      l26 ;
 
 LEXICON s65 ! standa
-                    inf ;
-                    pres-strong-s1 ;
-:%^IUML             pres-strong-s23 ;
-!:%^AB3             prt-null-s ;  !stónd, should be stóð
-!:%^AB3     	    prt-u-p ; !stónd, should be stóð
-!                   sup-null ; !stand, should be stað
-                    imp-prsptc ;
-
-LEXICON s65a ! standa
-!                    inf ;
-!                   pres-strong-s1 ;
-!:%^IUML            pres-strong-s23 ;
-:%^AB3              prt-null-s ;  !stónd, should be stóð
-:%^AB3     	        prt-u-p ; !stónd, should be stóð
-                    sup-null ; !stand, should be stað
-!                   imp-prsptc ;
+:and                inf ;
+:and                pres-strong-s1 ;
+:end                pres-strong-s23 ;
+:óð                 prt-null-s ;  
+:óð     	    prt-u-p ; 
+:að                 sup-null ;
+:att                imp ;
+:and                prsptc ;
 
 LEXICON s66 ! biðja
                     jinf ;
@@ -581,18 +573,14 @@ LEXICON s67 ! draga
 +V+PrtPtc:%AB2%>in  l26 ;
 
 LEXICON s68 ! hvørva
-                    inf ;
-                    pres-strong-s1 ;
-                    pres-strong-s23 ;
-:%^AB3              prt-null-s ;
-:%^AB2              prt-u-p ;
-:%^AB5              sup-null ;
-                    imp-prsptc ;
-+V+PrtPtc:%^AB5in   l26 ;
-
-LEXICON s68a ! hvørva (hv to h missing in tvol)
-:horv              sup-null ;
-+V+PrtPtc:horv%>in  l26 ;
+:vørv               inf ;
+:vørv               pres-ur ;
+:varv               prt-null-s ;
+:vurv               prt-u-p ;
+:orv                sup-null ;
+:vorv               sup-null ;
+:vørv               imp-prsptc ;
++V+PrtPtc:vorv%>in  l26 ;
 
 LEXICON s69 ! sláa
                     inf ;

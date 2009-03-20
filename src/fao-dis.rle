@@ -129,10 +129,10 @@ LIST MODV = "kunna" "láta" "skula" "vilja" "munna" ;
 
 LIST DATV = "bjóða" "smakka" ;
 
-LIST DATPREPV = "liggja" "vera" "standa" "fiska" ;
+LIST DATPREPV = "liggja" "vera" "standa" "fiska" "vera"; # use only ACCPREPV
 LIST ACCPREPV = "leggja" "fara" "renda" "koma" "liða" "seta" ;
 
-LIST OBJPREDVERB = "kalla" "doypa" ;
+LIST OBJPREDVERB = "kalla" "doypa" "nevna"  ;
 
 # Noun-Verb sets
 
@@ -183,12 +183,12 @@ SET OBL = Acc | Dat | Gen ;
 
 #SET NO
 
-SET PRE-N =  A | Det | (N Gen) | Num | CC ; # Det???
+SET PRE-N =  A | Det | (N Gen) | Num | (Pron Gen) | CC ; # Det???
 
-SET WORD = N | V | A | Pr | Pron | Adv | CC | CS | Interj | Num | ("\?") ;
+SET WORD = N | V | A | Pr | Pron | Det | Adv | CC | CS | Interj | Num | ("\?") ;
 SET MARK =  (",") | ("\") | ("\;") ; #"
 
-LIST COMMA = "," ;
+LIST COMMA = (",") ;
 
 SET WORDMARK = WORD | MARK ;
 
@@ -239,15 +239,24 @@ SELECT A IF (-1 COPULA)(1 CC)(2C A)(1 CLB);
 
 # Case disambiguation
 SELECT:r21 $$NAGD IF (0 A)(*1C $$NAGD BARRIER NPNHA)(NOT 0 V);
-REMOVE:r22 $$NAGD IF (0 A)(*1 N BARRIER NPNHA LINK NOT 0 $$NAGD);
+SELECT:r21b $$NAGD IF (0 A)(-*1C $$NAGD BARRIER NPNHA)(NOT 0 V);
+REMOVE:r22 $$NAGD IF (0 A)(*1C N BARRIER NPNHA LINK NOT 0 $$NAGD);
 
 REMOVE:AVS OBL IF (*-1 VFIN BARRIER NPNH LINK *-1 BOS OR CLB BARRIER NOT-ADV)(0 (N Nom));
 REMOVE:AVS2 OBL IF (-2 CLB)(-1 Adv OR CC OR CS)(0 Nom)(1 V + THIRDSG)(NOT *2 Nom BARRIER CLB);
+
+REMOVE Nom IF (-2 V)(-1C Pr)(0 N)(1 CLB); # Too specific, this.
+
+
 
 # PP disambiguation
 # =================
 
 # Preposition or not?
+
+#REMOVE Pr IF (NOT *-1 S-BOUNDARY LINK *1 OBL BARRIER NPNH)(0 Adv)(NOT *1 OBL BARRIER NPNH)
+REMOVE Pr IF (0 Adv)(NOT *1 OBL BARRIER NPNH)
+# This rule does not handle stranded prepositions, it must be relaxed.
 
 # á
 REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
@@ -325,6 +334,10 @@ SELECT ("bara" Adv) IF (*1 N BARRIER NPNH);
 SELECT:eg ("eg" Pron Pers Pl Nom) IF (*1 (V Pl) BARRIER NOT-ADV); #(*1 V + Pl BARRIER NOT-ADV);
 	  ## Vit mugu sleppa.
 
+# eingin
+SELECT:eingin ("eingin") IF (-1 ("til"))(0 Gen);
+	      ## til einkis.
+
 # hafa
 SELECT ("hava") IF (0 ("høva"))(*1 Sup BARRIER NOT-ADV);
 SELECT ("hava") IF (0 ("høva"))(-1 Sup);
@@ -362,10 +375,10 @@ REMOVE ("skal") IF (0 ("skula"))(1 Inf);
 SELECT ("tann" Det) IF (1 ("sum"));
 SELECT ("tann" Det $$NAGD) IF (*1 N + $$NAGD BARRIER NPNH); 
 
-# tá ið
+# tá and tá ið
 SELECT Adv IF  (0 ("tá"))(1 ("ið"));
 SELECT Adv IF (-1 ("tá"))(0 ("ið"));
-
+SELECT Adv IF (-1 NPNH)(1 V);
 
 REMOVE:r5 Det IF (0 Pers)(NEGATE 0 Gen LINK -1 N)(NOT 1 NPNHA OR N);
 
@@ -394,6 +407,20 @@ REMOVE:r11 Neu IF (0 A + $$NAGD)(*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0
 REMOVE:r12 Msc IF (0 A + $$NAGD)(*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
 REMOVE:r13 Fem IF (0 A + $$NAGD)(*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 
+# Postnominal determiner disambiguation
+
+
+SELECT:PossNum Sg IF (0 Poss)(-1C N + Sg);
+SELECT:PossNum Pl IF (0 Poss)(-1C N + Pl);
+
+REMOVE:r8b Neu IF (0 Poss + $$NAGD)(-1 NounMscFem + $$NAGD LINK NOT 0 Neu);
+REMOVE:r9b Msc IF (0 Poss + $$NAGD)(-1 NounFemNeu + $$NAGD LINK NOT 0 Msc);
+REMOVE:r10b Fem IF (0 Poss + $$NAGD)(-1 NounMscNeu + $$NAGD LINK NOT 0 Fem);
+
+
+#REMOVE:r11b Neu IF (0 A + $$NAGD)(-1 NounMscFem + $$NAGD LINK NOT 0 Neu);
+#REMOVE:r12b Msc IF (0 A + $$NAGD)(-1 NounFemNeu + $$NAGD LINK NOT 0 Msc);
+#REMOVE:r13b Fem IF (0 A + $$NAGD)(-1 NounMscNeu + $$NAGD LINK NOT 0 Fem);
 
 
 
@@ -405,24 +432,23 @@ REMOVE:r15 $$NAGD IF (0 Det)(*1 N    BARRIER NPNHA LINK NOT 0 $$NAGD);
 
 SELECT:r16 $$NAGD IF (0 Det)(*1C $$NAGD BARRIER NPNHA);
 
-
 REMOVE:r17 $$NAGD IF (0 Det)(*1 N    BARRIER NPNHA LINK NOT 0 $$NAGD);						  
-
-
-
-
-
-
-
 
 # Noun disambiguation
 # -------------------
 
 SELECT:r28 $$GENDER IF (-1C (A) + $$GENDER)(0 N);
+SELECT:r30b $$GENDER IF (-1C (Det) + $$GENDER)(0 N);
+SELECT:r30c $$GENDER IF (-1C (Pron Indef) + $$GENDER)(0 N);
 
 SELECT:r29 $$NAGD IF (-1C (A) + $$NAGD)(0 N);
+SELECT:r30b $$NAGD IF (-1C (Det) + $$NAGD)(0 N);
+SELECT:r30c $$NAGD IF (-1C (Pron Indef) + $$NAGD)(0 N);
 
 SELECT:r30 $$NUMBER IF (-1C (A) + $$NUMBER)(0 N);
+SELECT:r30b $$NUMBER IF (-1C (Det) + $$NUMBER)(0 N);
+SELECT:r30c $$NUMBER IF (-1C (Pron Indef) + $$NUMBER)(0 N);
+
 
 # Poss disambiguation
 
@@ -430,11 +456,14 @@ REMOVE:r31 $$GENDER IF (-1 N LINK NOT 0 $$GENDER)(0 Poss);
 
 REMOVE:r32 $$GENDER IF (0 Poss)(*1 N BARRIER NPNHA LINK NOT 0 $$GENDER);
 
+SELECT:DisPostPoss Poss IF (-1 N + $$GENDER + $$NAGD)(0 $$GENDER + $$NAGD); #(NOT 1 ...)
+
 # Number disambiguation
 REMOVE:r33 Pl IF (*-1 ("eitt" Num Sg) OR (Det Sg) BARRIER NOT-A)(0 (N Sg));
 # Here, we need vislcg3 and variable notation!
 
 SELECT:NumNPl (N Pl) IF (-1 NUMBERS);
+
 
 # NP head disambiguation
 # ======================
@@ -447,7 +476,7 @@ REMOVE:r34 Acc IF (-2 CS)(-1 (V Pl))(0 (Pl Nom)) ;
 
 # A or N
 # ======
-REMOVE:r35 A IF (*-1 Pr BARRIER NPNH)(0 N)(1 S-BOUNDARY);
+REMOVE:r35 A IF (*-1 Pr OR CLB BARRIER NPNH)(0 N)(1 S-BOUNDARY OR V);
 
 REMOVE (A Fem) IF (0 (N Neu))(-1 COPULA)(-2 ("tað" Nom));
 REMOVE (A Msc) IF (0 (N Neu))(-1 COPULA)(-2 ("tað" Nom));
@@ -512,7 +541,7 @@ REMOVE:SFregel N IF (0 Sup)(1 VFIN);
 
 SELECT:r57 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) OR (3PRON Pers Sg Nom) LINK NOT *-1 CC BARRIER NPNHA)(1 (Pron Refl Acc)) ;
 REMOVE:test1 (V Ind 1Sg) IF (NOT 0* ("eg" Pron Pers Sg Nom)); # Tino!!
-REMOVE:test2 (V Ind 2Sg) IF (NOT 0* ("tú" Pron Pers Sg Nom)); # Tino!!
+REMOVE:test2 (V Ind 2Sg) IF (NOT *0 ("tú" + Pron + Pers + Sg + Nom)); # Tino!!
 REMOVE:r58b (V Ind 1Sg) IF (*-1 (N Sg Nom) BARRIER NOT-ADV LINK NOT *1 Pron + 1Sg BARRIER CLB) ;
 SELECT:r59 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) LINK NOT *-1 CC BARRIER NPNHA OR S-BOUNDARY) ;
 
@@ -575,6 +604,12 @@ REMOVE:r66 ("hannur") IF (0 ("hann" Nom))(1 (V 3Sg));
 REMOVE:r66b (Pl Nom Indef) IF (1 (N Sg) OR (V Sg) OR (V 3Sg));
 
 
+# Verb disambiguation
+# ===================
+
+SELECT:2Sg 2Sg IF (-1C (Pron Nom 2Sg));
+	   ## Tú ert.
+
 # VP disambiguation
 REMOVE:r113 V IF (-1 (Det Nom))(0 (N Nom));
 
@@ -627,8 +662,8 @@ SELECT A IF (0 (A $$GENDER $$NAGD))(-1 CC)(-2 (A $$GENDER $$NAGD));
 
 
 
-
-
+SELECT:AlwaysVfin VFIN IF (NOT 0* VFIN BARRIER CLB);
+ 
 
 # Substituting tags
 
@@ -698,8 +733,8 @@ MAP:PostPoss (@N<) TARGET Det + Poss + $$GENDER IF (-1 N + $$GENDER)(NEGATE 1 NO
 # Number can be both NOMINALHEAD and Det, map that first
 
 MAP:DetPossGen (@N<) TARGET (Det Poss Sg Gen) IF (-1 N);
-
-
+MAP:PostGenPron (@N<) TARGET (Pron Pers Gen) IF (-1 N + Indef);
+MAP:PreGenPron (@>N) TARGET (Pron Pers Gen) IF (*1 N + Indef BARRIER NOT-A) ;
 
 MAP (@>N) TARGET Num + $$NAGD IF (1 N + $$NAGD);
 MAP (@>N) TARGET Num + $$NAGD IF (1 A + $$NAGD)(2 N + $$NAGD);
@@ -715,9 +750,10 @@ MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl));
 MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
 
 ADD:rOPR1 (@<OBJ) TARGET (N Acc) OR (Pron Acc) IF (*-1 OBJPREDVERB BARRIER Pr OR S-BOUNDARY)(*1 N + Acc BARRIER NPNHA);
-MAP:rOPR2 (@<OPRED) TARGET (N Acc) OR (Pron Acc) IF (*-1 N + Acc BARRIER NPNHA LINK *-1 OBJPREDVERB BARRIER S-BOUNDARY);
+MAP:rOPR2 (@<OPRED) TARGET (N Acc) OR (Pron Acc) IF (*-1 NOMINALHEAD + Acc BARRIER NPNHA LINK *-1 OBJPREDVERB BARRIER S-BOUNDARY);
 
 MAP:r78 (@<OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr OR S-BOUNDARY);
+MAP:r78 (@<OBJ) TARGET (Det Acc) (*-1 V BARRIER Pr OR S-BOUNDARY)(NOT *1 N BARRIER NPNHA);
 MAP:r79 (@<IOBJ) TARGET (N Dat) OR (Num Dat) OR (Pron Dat) IF (*1 (@<OBJ) BARRIER NPNHA);
 MAP:r80 (@<OBJ) TARGET Dat IF (*-1 DATV);
 
@@ -832,6 +868,12 @@ SELECT:onesubj (@SUBJ>) IF (1 VFIN)(NOT *2 (@<SUBJ) BARRIER CLB);
 SELECT:defsubj (Def) IF (NOT -1 Indef)(0C (@SUBJ>))(1 VFIN);
 	       ## at talan var um ein dyst
 
+
+# Third position subjects, postverbal subjects
+
+SELECT:PostVSubj1 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 BOS OR (@ADVL) OR (@P<));
+SELECT:PostVSubj2 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 COMMA); # (XX want more conditions)
+
 # Topicalised non-subjects
 
 # Indirect objects
@@ -918,3 +960,10 @@ SUBSTITUTE:SUBS_vfin (@VAUX) (@rc-VAUX) TARGET V (*-1 ("sum" CS) BARRIER VFIN OR
 
 SUBSTITUTE:AorB (@>N) (@P<) TARGET Det (-1 Pr LINK *-1 Pr)(1 CLB);
 # Perhaps also demand an intermediate sem or og
+
+
+SECTION
+
+# Late rules
+
+SELECT $$NAGD IF (0C Poss)(-1C N + $$NAGD);

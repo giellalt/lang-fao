@@ -1401,14 +1401,16 @@ LEXICON kv27 ! rás
 
 
 LEXICON kv28 ! dyr
-kv28e ;
+! kv28e ;
 kv-flt28 ;
 
-LEXICON kv28e
-# ;
+!LEXICON kv28e ! no ex
+!# ;
 
 LEXICON kv-flt28
-# ;
++N+Fem+Pl:%^IUML F-PLNA-NULL ;
++N+Fem+Pl: F-PLDAT ;
++N+Fem+Pl: F-PLGEN ;
 
 LEXICON kv29 ! móðir
 +N+Fem+Sg:móð kv29e ;
@@ -1438,35 +1440,58 @@ LEXICON kv-flt30
 kv-flt29 ;
 
 LEXICON kv31 ! systir
-# ;
++N+Fem+Sg+Nom:ir # ;
++N+Fem+Sg+Acc:ur # ;
++N+Fem+Sg+Dat:ur # ;
++N+Fem+Sg+Gen:ur # ;
++N+Fem+Sg+Nom:rar # ;
++N+Fem+Sg+Acc:rar # ;
++N+Fem+Sg+Dat:rum # ;
++N+Fem+Sg+Gen:ra # ;
 
 LEXICON kv32 ! mýri
 kv32e ;
 kv-flt32 ;
 
 LEXICON kv32e
-# ;
++N+Fem+Sg+Nom:i # ;
++N+Fem+Sg+Acc:i # ;
++N+Fem+Sg+Dat:i # ;
++N+Fem+Sg+Gen:ar # ;
 
 LEXICON kv-flt32
-# ;
++N+Fem+Pl+Nom:ar # ;
++N+Fem+Pl+Acc:ar # ;
++N+Fem+Pl+Dat:um # ;
++N+Fem+Pl+Gen:a # ;
+
 
 LEXICON kv33 ! gleði
 kv33e ;
 kv-flt33 ;
 
 LEXICON kv33e 
-# ;
++N+Fem+Sg+Nom: # ;
++N+Fem+Sg+Acc: # ;
++N+Fem+Sg+Dat: # ;
++N+Fem+Sg+Gen: # ;
+
 LEXICON kv-flt33 
-# ;
++N+Fem+Sg+Nom:r # ;
++N+Fem+Sg+Acc:r # ;
 
 LEXICON kv34 ! kraft
 kv34e;
 kv-flt34 ;
 
 LEXICON kv34e
-# ;
++N+Fem: S-F-SGNAD ;
++N+Fem: S-F-SGGEN ;
+
 LEXICON kv-flt34 
-# ;
++N+Fem:%^IUML F-PLNA-IR ;
++N+Fem:%^IUML F-PLDAT ;
++N+Fem:%^IUML F-PLGEN ;
 
 LEXICON h1 ! eyga
 h1e ; !eyga
@@ -1477,7 +1502,6 @@ LEXICON h1e
 +N+Neu+Sg+Nom:%>a DF-NA-SGn-def ;
 +N+Neu+Sg+Acc:%>a DF-NA-SGn-indef ;
 +N+Neu+Sg+Acc:%>a DF-NA-SGn-def ;
-
 +N+Neu+Sg+Dat:%>a DF-D-SGn ;
 +N+Neu+Sg+Gen:%>a DF-G-SGn-a ;
 
@@ -1943,7 +1967,7 @@ LEXICON h34 ! fæ
 +N+Neu: N-PLG ;
 
 LEXICON h42
-# ; !check.
++N+Neu: # ; !check.
 
 
 ! =============== !

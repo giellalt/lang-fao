@@ -238,8 +238,8 @@ SELECT A IF (-1 COPULA)(1 CC)(2C A)(1 CLB);
 
 
 # Case disambiguation
-SELECT:r21 $$NAGD IF (0 A)(*1C $$NAGD BARRIER NPNHA)(NOT 0 V);
-SELECT:r21b $$NAGD IF (0 A)(-*1C $$NAGD BARRIER NPNHA)(NOT 0 V);
+SELECT:r21 $$NAGD IF (0C A)(*1C $$NAGD BARRIER NPNHA)(NOT 0 V); #XXX C?
+SELECT:r21b $$NAGD IF (0C A)(-*1C $$NAGD BARRIER NPNHA)(NOT 0 V); #XXX C?
 REMOVE:r22 $$NAGD IF (0 A)(*1C N BARRIER NPNHA LINK NOT 0 $$NAGD);
 
 REMOVE:AVS OBL IF (*-1 VFIN BARRIER NPNH LINK *-1 BOS OR CLB BARRIER NOT-ADV)(0 (N Nom));
@@ -322,6 +322,9 @@ SELECT:InternalProp Prop IF (NOT -1 (CLB OR PUNCT OR LEFT))(NOT 0 Guess);
 SELECT CS IF (-2 ("av"))(-1 ("tað"))(0 ("at"));
 REMOVE Pr IF (0 ("at"))(NEGATE 1 NP-MEMBER);
 
+# á 
+SELECT Interj IF (-1 BOS)(0 ("á"))(1 COMMA OR CC);
+       ## Á, eg veit ikki.
 # ár
 SELECT (Neu Sg Acc) IF (-1 ("i"))(0 ("ár"));
 
@@ -363,6 +366,9 @@ SELECT CC IF (-1 CLB OR BOS OR PUNCT)(0 ("men"));
 
 # niðan
 SELECT Adv IF (0 ("niðan"))(1 Pr);
+
+# seg
+SELECT Refl IF (0 ("seg" Refl $$NAGD))(1 ("sjálvur" + $$NAGD));
 
 # sjalvur
 SELECT Adv IF (0 ("sjálvt"))(1 ("um") OR EOS);
@@ -407,8 +413,9 @@ REMOVE:r11 Neu IF (0 A + $$NAGD)(*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0
 REMOVE:r12 Msc IF (0 A + $$NAGD)(*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
 REMOVE:r13 Fem IF (0 A + $$NAGD)(*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 
-# Postnominal determiner disambiguation
 
+
+# Postnominal determiner disambiguation
 
 SELECT:PossNum Sg IF (0 Poss)(-1C N + Sg);
 SELECT:PossNum Pl IF (0 Poss)(-1C N + Pl);
@@ -516,7 +523,8 @@ SELECT:r51 Inf IF (*-1 MODV BARRIER V);
 # Imperative
 
 #REMOVE Imp IF (-1 Adv OR Nom OR Pr OR CS OR V)(0 Prs OR Prt);
-REMOVE:r52 Imp IF (NOT *-1 BOS OR PUNCT BARRIER WORD); # hmm
+SELECT:CoordImp Imp IF (*-1 CC OR COMMA BARRIER VFIN LINK *-1C Imp BARRIER VFIN);
+REMOVE:r52 Imp IF (NOT *-1 CC OR COMMA LINK *-1 Imp)(NOT *-1 BOS OR PUNCT BARRIER WORD); # hmm
 
 REMOVE Sup IF (*-1 CLB BARRIER WORD)(0 Imp)(*1 CLB  BARRIER Ind);
 
@@ -540,8 +548,8 @@ REMOVE:SFregel N IF (0 Sup)(1 VFIN);
 # Present singular
 
 SELECT:r57 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) OR (3PRON Pers Sg Nom) LINK NOT *-1 CC BARRIER NPNHA)(1 (Pron Refl Acc)) ;
-REMOVE:test1 (V Ind 1Sg) IF (NOT 0* ("eg" Pron Pers Sg Nom)); # Tino!!
-REMOVE:test2 (V Ind 2Sg) IF (NOT *0 ("tú" + Pron + Pers + Sg + Nom)); # Tino!!
+REMOVE:test1 (V Ind 1Sg) IF (NOT 0* ("eg" Pron Pers Sg Nom)); 
+REMOVE:test2 (V Ind 2Sg) IF (NOT *0 ("tú" + Pron + Pers + Sg + Nom)); # Tino!
 REMOVE:r58b (V Ind 1Sg) IF (*-1 (N Sg Nom) BARRIER NOT-ADV LINK NOT *1 Pron + 1Sg BARRIER CLB) ;
 SELECT:r59 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) LINK NOT *-1 CC BARRIER NPNHA OR S-BOUNDARY) ;
 
@@ -596,6 +604,10 @@ REMOVE:r65 Gen IF (NOT *-1 ACCGENPREP BARRIER NPNHA);
 
 # Pronoun disambiguation
 # =======================
+
+REMOVE ("hon") IF (*-1 (Imp Sg) BARRIER ("tú"));
+   ## Tak við tær barnið og flýggja til Egyptalands.
+      
 
 REMOVE:r66 ("hannur") IF (0 ("hann" Nom))(1 (V 3Sg));
        ## Han var her.
@@ -662,8 +674,12 @@ SELECT A IF (0 (A $$GENDER $$NAGD))(-1 CC)(-2 (A $$GENDER $$NAGD));
 
 
 
-SELECT:AlwaysVfin VFIN IF (NOT 0* VFIN BARRIER CLB);
- 
+#SELECT:AlwaysVfin VFIN IF (NOT 0* VFIN BARRIER CLB); # Tino!
+  ## Hugur hansara føldist stórur og heitur , fylti alt upp inni í honum og bara hvíldi í sær sjálvum . 
+  ## Læt ymist mala fram fyri eina løtu , til tað hevði tømt seg , fyri so at fara burtur av sær sjálvum 
+# The first sentence indicates the 0* does not work.
+# The second sentence indicates the rule is too strict.
+
 
 # Substituting tags
 
@@ -722,6 +738,11 @@ MAP:r69 (@VAUX) TARGET AUX + VFIN IF (0* VINFIN BARRIER CS OR CC);
 MAP:r70 (@VMAIN) TARGET V ;
 #MAP (@VMAIN) TARGET VFIN IF (NEGATE 0* VFIN BARRIER CS OR CLB);
 
+MAP:DetPossGen (@N<) TARGET (Det Poss Sg Gen) IF (-1 N);
+MAP:PostGenPron (@N<) TARGET (Pron Pers Gen) IF (-1C N + Indef)(NOT *1 N + Indef BARRIER NOT-A);
+#MAP:PostGenPron (@N<) TARGET (Pron Pers Gen) IF (-1 N + Indef);
+MAP:PreGenPron (@>N) TARGET (Pron Pers Gen) IF (*1 N + Indef BARRIER NOT-A) ;
+
 ADD:r71 (@<SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK 0 Imp);
 ADD:r71 (@<SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK -1 Nom);
 #MAP (@SUBJ) TARGET (N Nom) OR (Num Nom) OR (Pron Nom);
@@ -731,10 +752,6 @@ MAP (@Pron<) TARGET ("sjálvur") IF (-1 Refl);
 MAP:PostPoss (@N<) TARGET Det + Poss + $$GENDER IF (-1 N + $$GENDER)(NEGATE 1 NOUNADJ + $$GENDER + $$NAGD);
 #MAP PostPoss (@N<) TARGET (Det Poss $$GENDER) IF (-1 (N $$GENDER));
 # Number can be both NOMINALHEAD and Det, map that first
-
-MAP:DetPossGen (@N<) TARGET (Det Poss Sg Gen) IF (-1 N);
-MAP:PostGenPron (@N<) TARGET (Pron Pers Gen) IF (-1 N + Indef);
-MAP:PreGenPron (@>N) TARGET (Pron Pers Gen) IF (*1 N + Indef BARRIER NOT-A) ;
 
 MAP (@>N) TARGET Num + $$NAGD IF (1 N + $$NAGD);
 MAP (@>N) TARGET Num + $$NAGD IF (1 A + $$NAGD)(2 N + $$NAGD);
@@ -830,7 +847,7 @@ REMOVE:r100 (@IOBJ) IF (*-1 Pr BARRIER NPNHA);
 
 REMOVE Acc IF (0 (Sg @<SUBJ) LINK *-1 (V Sg) OR (V 3Sg) BARRIER (@<SUBJ))(*-1 S-BOUNDARY BARRIER (@SUBJ>)); 
 
-REMOVE:r101 (@P<) IF (*-1 BOS OR (N Acc) OR (N Dat) OR (N Nom) OR V OR CLB OR CS BARRIER Pr);
+REMOVE:r101 (@P<) IF (*-1 BOS OR (N Acc) OR (N Dat) OR (N Nom) OR V OR CLB OR CS BARRIER Pr LINK NOT 0 Pr);
 
 REMOVE:r102 (@>N) IF (0C N)(*-1 Pr BARRIER NPNHA);
 
@@ -871,8 +888,8 @@ SELECT:defsubj (Def) IF (NOT -1 Indef)(0C (@SUBJ>))(1 VFIN);
 
 # Third position subjects, postverbal subjects
 
-SELECT:PostVSubj1 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 BOS OR (@ADVL) OR (@P<));
-SELECT:PostVSubj2 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 COMMA); # (XX want more conditions)
+SELECT:PostVSubj1 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 BOS OR (@ADVL) OR (@P<) OR COMMA);
+SELECT:PostVSubj2 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 PUNCT LINK -1 COMMA); # (XX want more conditions)
 
 # Topicalised non-subjects
 

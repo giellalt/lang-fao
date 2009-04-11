@@ -141,7 +141,7 @@ pres-null ;
 :%>d l7 ;
 
 LEXICON s24 ! flysa
-jinf ;
+inf ;
 pres-null ;
 :%^WVV prt-d ;
 :%^WVV imp-prsptc ;
@@ -871,11 +871,11 @@ sup ;
 ! Infinitive
 
 LEXICON jinf
-+V+Inf:%>ja # ;
++V+Inf:%>ja PASS ;
 +V+Inf+Pass:%>jast #;
 
 LEXICON inf
-+V+Inf:%>a # ;
++V+Inf:%>a PASS ;
 +V+Inf+Pass:%>ast # ;
 
 LEXICON reflinf
@@ -884,56 +884,56 @@ LEXICON reflinf
 ! Present
 
 LEXICON pres-ir
-+V+Ind+Prs+1Sg:%>i  # ;
-+V+Ind+Prs+2Sg:%>ir # ;
-+V+Ind+Prs+3Sg:%>ir # ;
++V+Ind+Prs+1Sg:%>i  PASS ;
++V+Ind+Prs+2Sg:%>ir PASS ;
++V+Ind+Prs+3Sg:%>ir PASS ;
 pres-pl ;
 
 LEXICON pres-ar
-+V+Ind+Prs+1Sg:%>a # ;
-+V+Ind+Prs+2Sg:%>ar # ;
-+V+Ind+Prs+3Sg:%>ar # ;
++V+Ind+Prs+1Sg:%>a PASS ;
++V+Ind+Prs+2Sg:%>ar PASS ;
++V+Ind+Prs+3Sg:%>ar PASS ;
 pres-pl ;
 
 LEXICON pres-ur
-+V+Ind+Prs+1Sg:%>i # ;
-+V+Ind+Prs+2Sg:%>ur # ;
-+V+Ind+Prs+3Sg:%>ur # ;
++V+Ind+Prs+1Sg:%>i PASS ;
++V+Ind+Prs+2Sg:%>ur PASS ;
++V+Ind+Prs+3Sg:%>ur PASS ;
 pres-pl ;
 
 LEXICON pres-ur-j
-+V+Ind+Prs+1Sg:%>ji # ;
-+V+Ind+Prs+2Sg:%>ur # ;
-+V+Ind+Prs+3Sg:%>ur # ;
++V+Ind+Prs+1Sg:%>ji PASS ;
++V+Ind+Prs+2Sg:%>ur PASS ;
++V+Ind+Prs+3Sg:%>ur PASS ;
 pres-pl ;
 
 LEXICON pres-null
-+V+Ind+Prs+1Sg:%> # ;
-+V+Ind+Prs+2Sg:%> # ;
-+V+Ind+Prs+3Sg:%> # ;
++V+Ind+Prs+1Sg:%> PASS ;
++V+Ind+Prs+2Sg:%> PASS ;
++V+Ind+Prs+3Sg:%> PASS ;
 pres-pl ;
 
 LEXICON pres-strong-s1
-+V+Ind+Prs+1Sg:%>i  # ;
++V+Ind+Prs+1Sg:%>i  PASS ;
 !pres-pl ;
 
 LEXICON pres-strong-s23
-+V+Ind+Prs+2Sg:%>ur # ;
-+V+Ind+Prs+3Sg:%>ur # ;
++V+Ind+Prs+2Sg:%>ur PASS ;
++V+Ind+Prs+3Sg:%>ur PASS ;
 !pres-pl ;
 
 LEXICON pres-strong-s23-t0
-+V+Ind+Prs+2Sg:%>t # ;
-+V+Ind+Prs+3Sg:%> # ;
++V+Ind+Prs+2Sg:%>t PASS ;
++V+Ind+Prs+3Sg:%> PASS ;
 !pres-pl ;
 
 LEXICON pres-strong-s23-t1
-+V+Ind+Prs+2Sg:%>rt # ;
-+V+Ind+Prs+3Sg:%>r # ;
++V+Ind+Prs+2Sg:%>rt PASS ;
++V+Ind+Prs+3Sg:%>r PASS ;
 !pres-pl ;
 
 LEXICON pres-pl
-+V+Ind+Prs+Pl:%>a # ;
++V+Ind+Prs+Pl:%>a PASS ;
 
 LEXICON pres-ast
 +V+Ind+Prs+1Sg:%> # ;
@@ -950,37 +950,37 @@ LEXICON prt-d
  prt-du ;
  
 LEXICON prt-di 
-+V+Ind+Prt+Sg:%>di # ;
++V+Ind+Prt+Sg:%>di PASS ;
 
 LEXICON prt-ði 
-+V+Ind+Prt+Sg:%>ði # ;
++V+Ind+Prt+Sg:%>ði PASS ;
 
 LEXICON prt-du
-+V+Ind+Prt+Pl:%>du # ;
++V+Ind+Prt+Pl:%>du PASS ;
 
 !LEXICON prt-ðu
-!+V+Ind+Prt+Pl:%>ðu # ;
+!+V+Ind+Prt+Pl:%>ðu PASS ;
 
 LEXICON prt-dd
-+V+Ind+Prt+Sg:%>ddi # ;
-+V+Ind+Prt+Pl:%>ddu # ;
++V+Ind+Prt+Sg:%>ddi PASS ;
++V+Ind+Prt+Pl:%>ddu PASS ;
 
 LEXICON prt-a
-+V+Ind+Prt+Sg:%>aði # ;
-+V+Ind+Prt+Pl:%>aðu # ;
++V+Ind+Prt+Sg:%>aði PASS ;
++V+Ind+Prt+Pl:%>aðu PASS ;
 
 LEXICON prt-null-s
-+V+Ind+Prt+1Sg: # ;
-+V+Ind+Prt+2Sg:%>st # ;
-+V+Ind+Prt+3Sg: # ;
++V+Ind+Prt+1Sg: PASS ;
++V+Ind+Prt+2Sg:%>st PASS ;
++V+Ind+Prt+3Sg: PASS ;
 
 LEXICON prt-null-s2
-+V+Ind+Prt+1Sg: # ;
-+V+Ind+Prt+2Sg:%>t # ;
-+V+Ind+Prt+3Sg: # ;
++V+Ind+Prt+1Sg: PASS ;
++V+Ind+Prt+2Sg:%>t PASS ;
++V+Ind+Prt+3Sg: PASS ;
 
 LEXICON prt-u-p
-+V+Ind+Prt+Pl:%>u # ;
++V+Ind+Prt+Pl:%>u PASS ;
 
 
 
@@ -995,75 +995,75 @@ impsg ;
 imppl ;
 
 LEXICON impsg
-+V+Imp+Sg: # ;
++V+Imp+Sg: PASS ;
 
 LEXICON imppl
-+V+Imp+Pl:%^JI%>ið # ;
++V+Imp+Pl:%^JI%>ið PASS ;
 
 LEXICON prsptc
-+V+PrsPtc:%>andi # ;
-+A:%>andi # ;
++V+PrsPtc:%>andi PASS ;
++A:%>andi PASS ;
 
 ! Supine and preterite participle
  
 LEXICON sup
-+V+Sup:%>t # ;
-+V+PrtPtc:%>dur # ;
++V+Sup:%>t PASS ;
++V+PrtPtc:%>d%>ur PASS ;
 
 LEXICON sup-tt
-+V+Sup:%>tt # ;
-+V+PrtPtc:%>ddur # ;
++V+Sup:%>tt PASS ;
++V+PrtPtc:%>dd%>ur PASS ;
 
 LEXICON sup-a ! kalla
-+V+Sup:%>að # ;
-+V+PrtPtc:%>aður # ; 
++V+Sup:%>að PASS ;
++V+PrtPtc:%>að%>ur PASS ; 
 
 LEXICON sup-null ! stungið
-+V+Sup:%>ið # ;
++V+Sup:%>ið PASS ;
 
 ! Ad hoc, irregular
 ! =================
 
 LEXICON BLÍVA
-+Inf:blíva # ;
-+Ind+Prs+1Sg:blívi # ;
-+Ind+Prs+2Sg:blívur # ;
-+Ind+Prs+3Sg:blívur # ;
-+Ind+Prs+Pl:blíva # ;
-+Ind+Prt+1Sg:bleiv # ;
-+Ind+Prt+2Sg:bleivst # ;
-+Ind+Prt+3Sg:bleiv # ;
-+Ind+Prt+Pl:blivu # ;
-+Imp+Sg:blív # ;
-+Imp+Pl:blívið # ;
-+PrsPtc:blívandi # ;
-+PrtPtc:blívin # ;
-+Sup:blívið # ;
++Inf:blíva PASS ;
++Ind+Prs+1Sg:blívi PASS ;
++Ind+Prs+2Sg:blív%>ur PASS ;
++Ind+Prs+3Sg:blív%>ur PASS ;
++Ind+Prs+Pl:blíva PASS ;
++Ind+Prt+1Sg:bleiv PASS ;
++Ind+Prt+2Sg:bleivst PASS ;
++Ind+Prt+3Sg:bleiv PASS ;
++Ind+Prt+Pl:blivu PASS ;
++Imp+Sg:blív PASS ;
++Imp+Pl:blívið PASS ;
++PrsPtc:blívandi PASS ;
++PrtPtc:blívin PASS ;
++Sup:blívið PASS ;
 
 LEXICON EIGA
-+Inf:eiga # ;
-+Ind+Prs+1Sg:eigi # ;
-+Ind+Prs+2Sg:eigur # ;
-+Ind+Prs+2Sg:eigur # ;
-+Ind+Prt+Sg:átti # ;
-+Ind+Prt+Pl:áttu # ;
-+PrsPtc:eigandi # ;
-+PrtPtc:eigin # ;
-+Sup:eigið  # ;
++Inf:eiga PASS ;
++Ind+Prs+1Sg:eigi PASS ;
++Ind+Prs+2Sg:eig%>ur PASS ;
++Ind+Prs+2Sg:eig%>ur PASS ;
++Ind+Prt+Sg:átti PASS ;
++Ind+Prt+Pl:áttu PASS ;
++PrsPtc:eigandi PASS ;
++PrtPtc:eigin PASS ;
++Sup:eigið  PASS ;
 
 LEXICON HAVA
-+Inf:hava # ;
-+Ind+Prs+1Sg:havi # ;
-+Ind+Prs+2Sg:hevur # ;
-+Ind+Prs+3Sg:hevur # ;
-+Ind+Prs+Pl:hava # ;
-+Ind+Prt+Sg:hevði # ;
-+Ind+Prt+Pl:høvdu # ;
-+Imp+Sg:hav # ;
-+Imp+Pl:havið # ;
-+PrsPtc:havandi # ;
-+PrtPtc:havdur # ;
-+Sup:havt # ;
++Inf:hava PASS ;
++Ind+Prs+1Sg:havi PASS ;
++Ind+Prs+2Sg:hev%>ur PASS ;
++Ind+Prs+3Sg:hev%>ur PASS ;
++Ind+Prs+Pl:hava PASS ;
++Ind+Prt+Sg:hevði PASS ;
++Ind+Prt+Pl:høvdu PASS ;
++Imp+Sg:hav PASS ;
++Imp+Pl:havið PASS ;
++PrsPtc:havandi PASS ;
++PrtPtc:havd%>ur PASS ;
++Sup:havt PASS ;
 
 LEXICON KUNNA
 +Inf:kunna # ;
@@ -1123,8 +1123,8 @@ LEXICON VERA
 LEXICON VERÐA
 +Inf:verða # ;
 +Ind+Prs+1Sg:verði # ;
-+Ind+Prs+2Sg:verður # ;
-+Ind+Prs+3Sg:verður # ;
++Ind+Prs+2Sg:verð%>ur # ;
++Ind+Prs+3Sg:verð%>ur # ;
 +Ind+Prs+Pl:verða # ;
 +Ind+Prt+3Sg:varð # ;
 +Ind+Prt+3Sg:varðst # ;
@@ -1147,64 +1147,64 @@ LEXICON VILJA
 +Sup:viljað # ;
 
 LEXICON VITA
-+Inf:vita # ;
-+Ind+Prs+1Sg:veit # ;
-+Ind+Prs+2Sg:veitst # ;
-+Ind+Prs+3Sg:veit # ;
-+Ind+Prs+Pl:vita # ;
-+Ind+Prt+Sg:visti # ;
-+Ind+Prt+Pl:vistu # ;
-+Sup:vitað # ;
++Inf:vita PASS ;
++Ind+Prs+1Sg:veit PASS ;
++Ind+Prs+2Sg:veitst PASS ;
++Ind+Prs+3Sg:veit PASS ;
++Ind+Prs+Pl:vita PASS ;
++Ind+Prt+Sg:visti PASS ;
++Ind+Prt+Pl:vistu PASS ;
++Sup:vitað PASS ;
 
 
 LEXICON SÍGGJA
-+Inf:síggja # ;
-+Ind+Prs+1Sg:síggi # ;
-+Ind+Prs+2Sg:sært # ;
-+Ind+Prs+3Sg:sær # ;
-+Ind+Prs+Pl:síggja # ;
-+Ind+Prt+1Sg:sá # ;
-+Ind+Prt+2Sg:sást # ;
-+Ind+Prt+3Sg:sá # ;
-+Ind+Prt+Pl:sóu # ;
-+Imp+Sg:síggj # ;
-+Imp+Sg:sí # ;
-+Imp+Pl:síggið # ;
-+PrsPrc:síggjandi # ;
-+PrfPrc:sæddur # ;
-+Sup:sæð # ;
-+Sup:sætt # ;
++Inf:síggja PASS ;
++Ind+Prs+1Sg:síggi PASS ;
++Ind+Prs+2Sg:sært PASS ;
++Ind+Prs+3Sg:sær PASS ;
++Ind+Prs+Pl:síggja PASS ;
++Ind+Prt+1Sg:sá PASS ;
++Ind+Prt+2Sg:sást PASS ;
++Ind+Prt+3Sg:sá PASS ;
++Ind+Prt+Pl:sóu PASS ;
++Imp+Sg:síggj PASS ;
++Imp+Sg:sí PASS ;
++Imp+Pl:síggið PASS ;
++PrsPrc:síggjandi PASS ;
++PrfPrc:sædd%>ur PASS ;
++Sup:sæð PASS ;
++Sup:sætt PASS ;
 
 LEXICON FÁA
-+Inf:fáa # ;
-+Ind+Prs+1Sg:fái # ;
-+Ind+Prs+2Sg:fært # ;
-+Ind+Prs+3Sg:fær # ;
-+Ind+Prs+Pl:fáa # ;
-+Ind+Prt+1Sg:fekk # ;
-+Ind+Prt+2Sg:fekst # ;
-+Ind+Prt+3Sg:fekk # ;
-+Ind+Prt+Pl:fingu # ;
-+Imp+Sg:fá # ;
-+Imp+Pl:fáið # ;
-+PrfPrc:fingin # ;
-+Sup:fingið # ;
++Inf:fáa PASS ;
++Ind+Prs+1Sg:fái PASS ;
++Ind+Prs+2Sg:fært PASS ;
++Ind+Prs+3Sg:fær PASS ;
++Ind+Prs+Pl:fáa PASS ;
++Ind+Prt+1Sg:fekk PASS ;
++Ind+Prt+2Sg:fekst PASS ;
++Ind+Prt+3Sg:fekk PASS ;
++Ind+Prt+Pl:fingu PASS ;
++Imp+Sg:fá PASS ;
++Imp+Pl:fáið PASS ;
++PrfPrc:fingin PASS ;
++Sup:fingið PASS ;
 
 LEXICON LIGGJA
-+Inf:iggja # ;
-+Ind+Prs+1Sg:iggi # ;
-+Ind+Prs+2Sg:iggur # ;
-+Ind+Prs+3Sg:iggur # ;
-+Ind+Prs+Pl:iggja # ;
-+Ind+Prt+1Sg:á # ;
-+Ind+Prt+2Sg:ást # ;
-+Ind+Prt+3Sg:á # ;
-+Ind+Prt+Pl:ógu # ;
-+Imp+Sg:igg # ;
-+Imp+Pl:iggið # ;
-+PrsPrc:iggjandi # ;
-+PrfPrc:igin # ; ! XXX fix link to adj
-+Sup:igið # ;
++Inf:iggja PASS ;
++Ind+Prs+1Sg:iggi PASS ;
++Ind+Prs+2Sg:igg%>ur PASS ;
++Ind+Prs+3Sg:igg%>ur PASS ;
++Ind+Prs+Pl:iggja PASS ;
++Ind+Prt+1Sg:á PASS ;
++Ind+Prt+2Sg:ást PASS ;
++Ind+Prt+3Sg:á PASS ;
++Ind+Prt+Pl:ógu PASS ;
++Imp+Sg:igg PASS ;
++Imp+Pl:iggið PASS ;
++PrsPrc:iggjandi PASS ;
++PrfPrc:igin PASS ; ! XXX fix link to adj
++Sup:igið PASS ;
 
 !LEXICON 
 !+Inf:
@@ -1220,3 +1220,10 @@ LEXICON LIGGJA
 !+PrfPrc:
 !+Sup:
 
+
+
+! Middle lexicon
+
+LEXICON PASS
+ # ; ! Verbs as usual
+ +Pass:%^PASS%>st # ;

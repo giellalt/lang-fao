@@ -15,7 +15,7 @@ XFST = xfst -utf8
 # Where all the perl scripts are:
 #BINDIR = ../../script/testing
 #BINDIR = ../../../gt/script/testing
-BINDIR = ~/gtsvn/gt/script/testing
+BINDIR = ~/svnredone/gt/script/testing
 
 # Directory where all the compiled fst's are:
 FSTDIR = ../bin

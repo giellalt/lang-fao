@@ -404,9 +404,9 @@ REMOVE Adv IF (-1 Det OR Pr)(0 A)(1 N);
 
 # Determiner disambiguation
 
-REMOVE:r8 Neu IF (0 Det + $$NAGD)(*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
-REMOVE:r9 Msc IF (0 Det + $$NAGD)(*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
-REMOVE:r10 Fem IF (0 Det + $$NAGD)(*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE:r8 Neu IF (0 Det + $$NAGD)(NOT 0 Poss + $$NAGD LINK -1 N + $$NAGD)(*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE:r9 Msc IF (0 Det + $$NAGD)(NOT 0 Poss + $$NAGD LINK -1 N + $$NAGD)(*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE:r10 Fem IF (0 Det + $$NAGD)(NOT 0 Poss + $$NAGD LINK -1 N + $$NAGD)(*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 
 
 REMOVE:r11 Neu IF (0 A + $$NAGD)(*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
@@ -433,13 +433,10 @@ REMOVE:r10b Fem IF (0 Poss + $$NAGD)(-1 NounMscNeu + $$NAGD LINK NOT 0 Fem);
 
 # Case disambiguation
 
-SELECT:r14 $$NAGD IF (0 Det)(*1C $$NAGD BARRIER NPNHA);
-
-REMOVE:r15 $$NAGD IF (0 Det)(*1 N    BARRIER NPNHA LINK NOT 0 $$NAGD);						  
-
-SELECT:r16 $$NAGD IF (0 Det)(*1C $$NAGD BARRIER NPNHA);
-
-REMOVE:r17 $$NAGD IF (0 Det)(*1 N    BARRIER NPNHA LINK NOT 0 $$NAGD);						  
+SELECT:r14 $$NAGD IF (0 Det)(NOT 0 Poss LINK -1 N)(*1C $$NAGD BARRIER NPNHA);
+REMOVE:r15 $$NAGD IF (0 Det)(NOT 0 Poss LINK -1 N)(*1 N    BARRIER NPNHA LINK NOT 0 $$NAGD);						  
+SELECT:r16 $$NAGD IF (0 Det)(NOT 0 Poss LINK -1 N)(*1C $$NAGD BARRIER NPNHA);
+REMOVE:r17 $$NAGD IF (0 Det)(NOT 0 Poss LINK -1 N)(*1 N    BARRIER NPNHA LINK NOT 0 $$NAGD);						  
 
 # Noun disambiguation
 # -------------------
@@ -522,6 +519,11 @@ SELECT:r51 Inf IF (*-1 MODV BARRIER V);
 
 # Imperative
 
+REMOVE:ImpFirst N IF (-1 BOS OR PUNCT)(0 Imp)(*1 ("tín" Poss) BARRIER VFIN);
+
+REMOVE Imp IF (-1C Ind);
+	## Gu∂ gjør∂i hvalvi∂.
+
 #REMOVE Imp IF (-1 Adv OR Nom OR Pr OR CS OR V)(0 Prs OR Prt);
 SELECT:CoordImp Imp IF (*-1 CC OR COMMA BARRIER VFIN LINK *-1C Imp BARRIER VFIN);
 REMOVE:r52 Imp IF (NOT *-1 CC OR COMMA LINK *-1 Imp)(NOT *-1 BOS OR PUNCT BARRIER WORD); # hmm
@@ -548,7 +550,7 @@ REMOVE:SFregel N IF (0 Sup)(1 VFIN);
 # Present singular
 
 SELECT:r57 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) OR (3PRON Pers Sg Nom) LINK NOT *-1 CC BARRIER NPNHA)(1 (Pron Refl Acc)) ;
-REMOVE:test1 (V Ind 1Sg) IF (NOT 0* ("eg" Pron Pers Sg Nom)); 
+REMOVE:test1 (V Ind 1Sg) IF (NOT *0 ("eg" Pron Pers Sg Nom)); 
 REMOVE:test2 (V Ind 2Sg) IF (NOT *0 ("tú" + Pron + Pers + Sg + Nom)); # Tino!
 REMOVE:r58b (V Ind 1Sg) IF (*-1 (N Sg Nom) BARRIER NOT-ADV LINK NOT *1 Pron + 1Sg BARRIER CLB) ;
 SELECT:r59 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) LINK NOT *-1 CC BARRIER NPNHA OR S-BOUNDARY) ;
@@ -662,6 +664,9 @@ REMOVE:r114 (A Sg) IF (1 (Num Sg));
 
 # Coordination
 
+SUBSTITUTE:einsog (CC) (CS) TARGET ("og") IF (-1 ("ein" Det Neu Sg Gen));
+
+
 SELECT Prt IF (NOT 0 OBL LINK *-1 Pr BARRIER NPNH)(-2C Prt)(-1 CC);
 SELECT Prs IF (NOT 0 OBL LINK *-1 Pr BARRIER NPNH)(-2C Prs)(-1 CC);
 SELECT Imp IF (NOT 0 OBL LINK *-1 Pr BARRIER NPNH)(-2C Imp)(-1 CC);
@@ -685,6 +690,10 @@ SELECT A IF (0 (A $$GENDER $$NAGD))(-1 CC)(-2 (A $$GENDER $$NAGD));
 
 SUBSTITUTE:sumPr (CS) (Pr) TARGET ("sum") (NOT -1 BOS OR COMMA);
 
+
+# CC Coordinate NPs
+
+SELECT (V Pl) IF (-1 N + Nom + Sg LINK *-1 CC BARRIER NPNH LINK -1 N + Nom);
 
 
 
@@ -715,6 +724,7 @@ LIST @ADVL = @ADVL ;
 LIST @P< = @P< ;
 LIST @CC = @CC ;
 LIST @CS = @CS ;
+LIST @>CS = @>CS ;
 LIST @APP = @APP ;
 LIST @HNOUN = @HNOUN ;
 LIST @Pron< = @Pron< ;
@@ -733,6 +743,7 @@ LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (
 MAP (@INTERJ) TARGET Interj ;  
 ADD:r67 (@CC) TARGET CC ;
 ADD:r68 (@CS) TARGET CS ;
+MAP (@>CS) TARGET ("ein" Det Neu Sg Gen) IF (1 ("og" CS));
 
 MAP:r69 (@VAUX) TARGET AUX + VFIN IF (0* VINFIN BARRIER CS OR CC);
 MAP:r70 (@VMAIN) TARGET V ;
@@ -762,8 +773,11 @@ MAP:r73 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V 2Sg) BARRIER VFIN);
 MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER NPNH LINK NOT -1 Nom);
 MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg));
 
+MAP:mapcoordsubj2 (@SUBJ>) TARGET N + Nom IF (*-1 CC BARRIER NPNH LINK -1 N + Nom)(1 VFIN + Pl);
+MAP:mapcoordsubj1 (@SUBJ>) TARGET N + Nom IF (1 CC LINK *1 N + Nom BARRIER NPNH LINK 1 VFIN + Pl);
 
-MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl));
+
+MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl) BARRIER CLB);#(":" CLB) OR (";" CLB));
 MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
 
 ADD:rOPR1 (@<OBJ) TARGET (N Acc) OR (Pron Acc) IF (*-1 OBJPREDVERB BARRIER Pr OR S-BOUNDARY)(*1 N + Acc BARRIER NPNHA);
@@ -862,6 +876,7 @@ REMOVE:r105 (@<SUBJ) IF (*-1 (@<SUBJ) BARRIER S-BOUNDARY LINK *-1 VFIN BARRIER N
 SELECT:r106 (@SUBJ>) IF (-1 CS)(1 VFIN);
 	## sum hann hevði í lummanum.
 
+SELECT (@>CS);
 
 # NPs
 
@@ -871,6 +886,14 @@ SELECT (N Sg) IF (1C  Poss + Sg + @N<);
 SELECT (N Pl) IF (1C  Poss + Pl + @N<);
 
 SELECT (Poss $$NAGD) IF (-1C N + $$NAGD)(0 (@N<));
+
+REMOVE (Det Msc) IF (NOT 0 Poss)(1C (N Neu));
+REMOVE (Det Fem) IF (NOT 0 Poss)(1C (N Neu));
+REMOVE (Det Neu) IF (NOT 0 Poss)(1C (N Msc));
+REMOVE (Det Fem) IF (NOT 0 Poss)(1C (N Msc));
+REMOVE (Det Msc) IF (NOT 0 Poss)(1C (N Fem));
+REMOVE (Det Neu) IF (NOT 0 Poss)(1C (N Fem));
+
 
 # Postverbal subjects
 
@@ -885,6 +908,8 @@ SELECT:onesubj (@SUBJ>) IF (1 VFIN)(NOT *2 (@<SUBJ) BARRIER CLB);
 SELECT:defsubj (Def) IF (NOT -1 Indef)(0C (@SUBJ>))(1 VFIN);
 	       ## at talan var um ein dyst
 
+SELECT:coordsubj (@SUBJ>) IF (*-1 CC BARRIER NPNH LINK -1 N)(1 VFIN + Pl);
+
 
 # Third position subjects, postverbal subjects
 
@@ -898,12 +923,15 @@ SELECT:PostVSubj2 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 PUNCT LINK -1 COMMA
 REMOVE (@<IOBJ) IF (*-1 V BARRIER NPNH LINK NOT *-1 (@OBJ>))(NEGATE *1 (@OBJ>) BARRIER S-BOUNDARY OR CC OR V);
 
 SELECT (@<OBJ) IF (*-1 CC BARRIER NPNH LINK -1C (@<OBJ));
+REMOVE (@SUBJ>) IF (*-1 VFIN LINK -1C (@SUBJ>))(0 (@<OBJ));
 
 
 # Direct objects
 
 REMOVE Acc IF (*-1 ("seg" Acc) LINK -1 V BARRIER NOT-ACC);
 REMOVE:NotPostSubj (@SUBJ>) IF (0 (@<OBJ))(*1 CLB BARRIER VFIN);
+
+REMOVE (@SUBJ>) IF (0 (@<OBJ))(NOT *1 VFIN BARRIER S-BOUNDARY);
 
 # PPs
 
@@ -942,6 +970,10 @@ REMOVE:r115 (A @>N) IF (0 V)(NOT 1 N OR A);
 SELECT Pl IF (-1 Pl + (@SUBJ>) LINK *-1 S-BOUNDARY BARRIER NOT-CC)(0 V);
        ## Men vit vita, at...
 
+
+# OPRED
+
+REMOVE (@SUBJ>) IF (0 (@<OPRED));
 
 # Postsyntactical verbal dis
 

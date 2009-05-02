@@ -118,7 +118,7 @@ LIST COPULA = "vera" "verða" ;
 
 LIST AUX = "kunna" "skula" "vera" "verða" ;
 
-LIST VFIN = Prs Prt Imp ;
+LIST VFIN = Prs Prt Imp Sbj ;
 LIST Ind = Prs Prt ;
 
 LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
@@ -356,6 +356,8 @@ SELECT:hon Pron IF (0 ("hon"))(-1 BOS OR NPNH);
 
 # ið
 SELECT CS IF (-1 CLB)(0 ("ið"));
+
+# SELECT CS IF (-2 CLB)(-1 ("tá"))(0 ("ið"));
 
 # liggja
 SELECT ("liggja") + Prt IF (-1 N OR Pron) ;

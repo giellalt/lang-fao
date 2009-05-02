@@ -88,6 +88,7 @@ PrsPrc Sup Imp CLB PUNCT LEFT RIGHT ;
 LIST NAGD = Nom Acc Gen Dat ;
 LIST GENDER = Msc Fem Neu ;
 LIST NUMBER = Sg Pl ;
+LIST POS = N V A Adv Pr Pron ;
 
 # Sets
 # ====
@@ -142,7 +143,7 @@ LIST COPULA = "vera" "verða" ;
 
 LIST AUX = "kunna" "skula" "vera" "verða" ;
 
-LIST VFIN = Prs Prt Imp ;
+LIST VFIN = Prs Prt Imp Sbj ;
 LIST Ind = Prs Prt ;
 
 LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
@@ -175,6 +176,7 @@ LIST @ADVL> = @ADVL> ;
 LIST @P< = @P< ;
 LIST @CC = @CC ;
 LIST @CS = @CS ;
+LIST @>CS = @>CS ;
 #LIST @CC-VP = @CC-VP ;
 LIST @APP = @APP 
 LIST @X = @X ;
@@ -211,9 +213,10 @@ SETPARENT:r5 ("sum" @CS) TO (*-1 N OR V BARRIER WORD);
 
 SETPARENT (A $$NAGD) TO (-1 CC)(-2 (A $$NAGD));  # Look at the cc structure !!
 
-SETPARENT:CCNP (@CC)(*1 N BARRIER NPNH) TO (-1 N);
+SETPARENT:CCNP (@CC)(-1 N) TO (*1 N BARRIER NPNH);
 	## Per og Kari
-SETPARENT:CCA (@CC)(1 A) TO (-1 A);
+
+SETPARENT:CCA (@CC)(-1 $$POS + $$NAGD) TO (1 $$POS + $$NAGD);
 	## oydin og ber.
 
 SETPARENT @N< TO (*-1 N BARRIER NPNH);
@@ -224,10 +227,7 @@ SETPARENT:r6 @P< TO (*-1 Pr BARRIER NPNH);
 
 # SETPARENT:r6 @P< TO (*-1 Pr); would be an alternative.
 
-### VPs
 
-SETPARENT:r7 VINFIN TO (*-1 AUX BARRIER CS);
-SETPARENT:r8 Sup TO (*-1 VFIN BARRIER CS);
 
 ### S
 
@@ -252,6 +252,11 @@ SETPARENT:r15 @CS TO (1 Inf);
 
 SETPARENT:r16 @CS TO (**1 V LINK -1 CLB);
 
+SETPARENT:toCS @>CS TO (1 (@CS));
+
+SETPARENT:CStoNEXT @CS (-1 (@>CS)) TO (*1 NOMINALHEAD BARRIER VFIN); #ellipsis
+SETPARENT:r16 @CS (-1 (@>CS)) TO (*1 VFIN LINK -1 CLB) ;
+
 SETPARENT:r17 VFIN TO (*-1 (@CS) LINK **1 V LINK -1 CLB);
 
 SETPARENT:r18 @VMAIN TO (*-1 @VAUX BARRIER VFIN); 
@@ -263,7 +268,16 @@ SETPARENT:r22 @VMAIN TO (*-1 @VMAIN BARRIER @VAUX LINK *1 @CS);
 
 SETPARENT:r23 (Inf @VMAIN) TO (*-1 @VMAIN);
 
+### VPs
+
+SETPARENT:r7 VINFIN TO (*-1 AUX BARRIER CS);
+SETPARENT:r8 Sup TO (*-1 VFIN BARRIER CS);
+
 ### CS
+
+#SETPARENT:TaId ("IÐ" @CS) TO (-1 ("tá"));
+#SETPARENT:TaId2 ("tá" Adv)(-1 COMMA) TO (-2 N);
+SETPARENT:RelCL (@CS)(-1 COMMA) TO (-2 N);
 
 SETPARENT:r24 @CS TO (*-1 (@VMAIN));
 
@@ -271,4 +285,13 @@ SETPARENT:r24 @CS TO (*-1 (@VMAIN));
 
 SETPARENT:r25 @CC (-1 BOS OR CLB OR LEFT) TO (*1  (@VMAIN)) ;
 
+SETPARENT:2vCC @CC TO (1 VFIN);
+
+### Relative clause
+
+#SETPARENT:
+
+### Root
+
+SETPARENT VFIN (NOT p (*)) TO (@0 (*));
 

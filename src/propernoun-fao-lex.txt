@@ -27,11 +27,13 @@ LEXICON Propernouns
 ! ===============
 
 LEXICON guess 
- < [A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Æ|Ø|Å] 
+ < [A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Æ|Ø|Å
+   |Á|É|Í|Ó|Ú|Ý|Ä|Ö|Ü] 
+   [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å
+   |á|ð|é|í|ó|ú|ý|ä|ö|ü]* 
+   [a|e|i|o|u|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü] 
    [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å]* 
-   [a|e|i|o|u|æ|ø|å] 
-   [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å]* 
-   [b|c|d|e|f|h|j|o|q|v|w|x|y|z|ø|å]
+   [b|c|d|e|f|g|h|j|k|l|o|q|v|w|x|y|z|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü]
    %+N:0 %+Prop:0 %+Sg:0  
    > guesstag ;
 
@@ -49,7 +51,19 @@ Færøerne plctag ;
 Lakjuni+N+Prop+Sg+Dat+Def:Lakjuni # ; !XXX
 
 Keypmannahavn propnoun-kv2e ;
-Tvøroyri propnoun-kv32e ;
+Tvøroyri:Tvøroyr propnoun-kv32e ;
+Suðyroy SUDUROY ;
+Kalsoy SUDUROY ;
+Borðoy 	  SUDUROY ;
+Eysturoy  SUDUROY ;
+Fugloy 	  SUDUROY ;
+Kunoy 	  SUDUROY ;
+Nólsoy 	  SUDUROY ;
+Sandoy 	  SUDUROY ;
+Skúvoy 	  SUDUROY ;
+Streymoy  SUDUROY ;
+Svínoy 	  SUDUROY ;
+Viðoy	  SUDUROY ;
 
 !Genova:!Genov ROMA ;
 !Heddy RUT ;
@@ -364,6 +378,7 @@ Ainettijoki plctag ;
 Aino RUT ;
 Ainon surtag ;
 Aintab plctag ;
+Air orgtag ;
 Aira:Air ASTA ;
 Airaksinen surtag ;
 Airamo surtag ;
@@ -2819,6 +2834,7 @@ Brava surtag ;
 Brazzaville plctag ;
 Breanná plctag ;
 Brecker surtag ;
+Breckmann surtag ;
 Breda:Bred ROMA ;
 Bredahl surtag ;
 Bredal plctag ;
@@ -3671,6 +3687,7 @@ Colchester plctag ;
 Cold surtag ;
 Coldevin surtag ;
 Colett surtag ;
+Colin maltag ;
 Colima:Colim ROMA ;
 Coll surtag ;
 Collet plctag ;
@@ -4153,6 +4170,7 @@ Djupedal plctag ;
 Djupvatn plctag ;
 Djupvik plctag ;
 Djurholm  plctag ;
+Djurhuus surtag ;
 Djursland propnoun-h8e ;
 Djuvik plctag ;
 Djäkneboda:Djäknebod ROMA ;
@@ -7629,6 +7647,9 @@ Ham plctag ;
 Hamadan plctag ;
 Hamamatsu plctag ;
 Hamar plctag ;
+Hamas orgtag ;
+Qaeda orgtag ;
+Yasser maltag ;
 Hamara:Hamar ASTA ;
 Hamari surtag ;
 Hamarvik plctag ;
@@ -13017,6 +13038,7 @@ Lacq plctag ;
 Ladakh plctag ;
 Ladegaard surtag ;
 Lademoen plctag ;
+Laden surtag ;
 Ladnesunda:Ladnesund ROMA ;
 Ladoga:Ladog ROMA ;
 Ladogasjön plctag ;
@@ -18077,6 +18099,7 @@ Petrina:Petrin ASTA ;
 Petrine RUT ;
 Petrof surtag ;
 Petrograd plctag ;
+Petroleum orgtag ;
 Petropavlovsk plctag ;
 Petrozavodsk plctag ;
 Petrus maltag ;
@@ -21208,6 +21231,7 @@ Sitten surtag ;
 Siuko plctag ;
 Siukola surtag ;
 Siukonen surtag ;
+Siumut orgtag ;
 Siurua:Siuru ROMA ;
 Siuruainen surtag ;
 Siv RUT ;
@@ -26925,3 +26949,50 @@ knø		   plctag ;
 Þórisvatn plctag ;
 Þórlákshöfn surtag ;
 Þórsmörk plctag ;
+AaB orgtag ;
+SvF orgtag ;
+StÌF orgtag ;
+OyÍF orgtag ;
+KíF orgtag ;
+LíF orgtag ;
+STíF orgtag ;
+VíF orgtag ;
+StíF orgtag ;
+ReproZ orgtag ;
+Pahat-Móab plctag ;
+Bet-Rehob plctag ;
+Inc orgtag ;
+Gal-Ed plctag ;
+Dibon-Gad plctag ;
+Hor-Hagidgad plctag ;
+InterSeafood orgtag ;
+BullGuard orgtag ;
+Byrd surtag ;
+Adbe plctag ;
+Ice plctag ;
+FarIce plctag ;
+McBride orgtag ;
+DeCode orgtag ;
+Hyde plctag ;
+Brygge plctag ;
+Inge maltag ;
+Jyske orgtag ;
+Isle plctag ;
+One orgtag ;
+FjordLine orgtag ;
+Byrne surtag ;
+Slyne plctag ;
+Edre surtag ;
+Skytte surtag ;
+SeWave orgtag ;
+Kol-Hoze orgtag ;
+McVeigh surtag ;
+SeaFish orgtag ;
+IntraFish orgtag ;
+Bahurim maltag ;
+Kasim   maltag ;
+Yassim  maltag ;
+Husim   maltag ;
+Sittim  maltag ;
+Efraim maltag ;
+Mizráim maltag ;

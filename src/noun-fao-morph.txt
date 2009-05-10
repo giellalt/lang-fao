@@ -21,11 +21,14 @@ LEXICON R
 +Cmpnd#:%- Nouns ;
 +Cmpnd#:   Nouns ;
 
+LEXICON FINAL
++Cmpnd:%- # ; ! menningar- og granskingarskipan
+          # ;
 
 ! Irregular
 
 LEXICON k0
-+N+Msc+Sg: # ; ! januar
++N+Msc+Sg: FINAL ; ! januar
 
 ! Weak masculines.
 
@@ -1440,30 +1443,30 @@ LEXICON kv-flt30
 kv-flt29 ;
 
 LEXICON kv31 ! systir
-+N+Fem+Sg+Nom:ir # ;
-+N+Fem+Sg+Acc:ur # ;
-+N+Fem+Sg+Dat:ur # ;
-+N+Fem+Sg+Gen:ur # ;
-+N+Fem+Sg+Nom:rar # ;
-+N+Fem+Sg+Acc:rar # ;
-+N+Fem+Sg+Dat:rum # ;
-+N+Fem+Sg+Gen:ra # ;
++N+Fem+Sg+Nom:ir FINAL ;
++N+Fem+Sg+Acc:ur FINAL ;
++N+Fem+Sg+Dat:ur FINAL ;
++N+Fem+Sg+Gen:ur FINAL ;
++N+Fem+Sg+Nom:rar FINAL ;
++N+Fem+Sg+Acc:rar FINAL ;
++N+Fem+Sg+Dat:rum FINAL ;
++N+Fem+Sg+Gen:ra FINAL ;
 
 LEXICON kv32 ! mýri
 kv32e ;
 kv-flt32 ;
 
 LEXICON kv32e
-+N+Fem+Sg+Nom:i # ;
-+N+Fem+Sg+Acc:i # ;
-+N+Fem+Sg+Dat:i # ;
-+N+Fem+Sg+Gen:ar # ;
++N+Fem+Sg+Nom:i FINAL ;
++N+Fem+Sg+Acc:i FINAL ;
++N+Fem+Sg+Dat:i FINAL ;
++N+Fem+Sg+Gen:ar FINAL ;
 
 LEXICON kv-flt32
-+N+Fem+Pl+Nom:ar # ;
-+N+Fem+Pl+Acc:ar # ;
-+N+Fem+Pl+Dat:um # ;
-+N+Fem+Pl+Gen:a # ;
++N+Fem+Pl+Nom:ar FINAL ;
++N+Fem+Pl+Acc:ar FINAL ;
++N+Fem+Pl+Dat:um FINAL ;
++N+Fem+Pl+Gen:a FINAL ;
 
 
 LEXICON kv33 ! gleði
@@ -1471,14 +1474,14 @@ kv33e ;
 kv-flt33 ;
 
 LEXICON kv33e 
-+N+Fem+Sg+Nom: # ;
-+N+Fem+Sg+Acc: # ;
-+N+Fem+Sg+Dat: # ;
-+N+Fem+Sg+Gen: # ;
++N+Fem+Sg+Nom: FINAL ;
++N+Fem+Sg+Acc: FINAL ;
++N+Fem+Sg+Dat: FINAL ;
++N+Fem+Sg+Gen: FINAL ;
 
 LEXICON kv-flt33 
-+N+Fem+Sg+Nom:r # ;
-+N+Fem+Sg+Acc:r # ;
++N+Fem+Sg+Nom:r FINAL ;
++N+Fem+Sg+Acc:r FINAL ;
 
 LEXICON kv34 ! kraft
 kv34e;
@@ -1967,7 +1970,7 @@ LEXICON h34 ! fæ
 +N+Neu: N-PLG ;
 
 LEXICON h42
-+N+Neu: # ; !check.
++N+Neu: FINAL ; !check.
 
 
 ! =============== !
@@ -1993,13 +1996,13 @@ LEXICON W-M-SGDAT
 +Sg+Dat:%>a  DF-D-SGm ;
 
 LEXICON W-M-SGDAT-mixed !felagnum
-+Sg+Dat+Indef:%>a  # ;
-+Sg+Dat+Def:%>num # ;
++Sg+Dat+Indef:%>a  FINAL ;
++Sg+Dat+Def:%>num FINAL ;
 +Sg+Dat+Def:%>num R ;
 
 LEXICON W-M-SGGEN
-+Sg+Gen+Indef:%>a # ;
-+Sg+Gen+Def:%>ins # ; !XXX ans?
++Sg+Gen+Indef:%>a FINAL ;
++Sg+Gen+Def:%>ins FINAL ; !XXX ans?
 +Sg+Gen+Def:%>ins R ;
 
 
@@ -2246,14 +2249,14 @@ LEXICON i-N-SGDG-is
 LEXICON N-PLNA-u-ur 
 +Pl+Nom:%>u DF-NA-PLn-W ;
 +Pl+Acc:%>u DF-NA-PLn-W ;
-+Pl+Nom+Indef:%>ur # ;
-+Pl+Acc+Indef:%>ur # ;
++Pl+Nom+Indef:%>ur FINAL ;
++Pl+Acc+Indef:%>ur FINAL ;
 
 LEXICON N-PLNA-i-ir 
 +Pl+Nom:%>i DF-NA-PLn-W ;
 +Pl+Acc:%>i DF-NA-PLn-W ;
-+Pl+Nom+Indef:%>ir # ;
-+Pl+Acc+Indef:%>ir # ;
++Pl+Nom+Indef:%>ir FINAL ;
++Pl+Acc+Indef:%>ir FINAL ;
 
 LEXICON N-PLNA 
 +Pl+Nom:%> DF-NA-PLn ;
@@ -2272,12 +2275,12 @@ LEXICON N-PLG-na
 ! Common cases
 
 LEXICON DF-D-PL
-+Indef:m # ;
-+Def:num # ;
++Indef:m FINAL ;
++Def:num FINAL ;
 
 LEXICON DF-G-PL
-+Indef: # ;
-+Def:nna # ;
++Indef: FINAL ;
++Def:nna FINAL ;
 
 
 
@@ -2302,28 +2305,28 @@ LEXICON DF-N-SGm
 :i DF-N-SGm-def ;
 
 LEXICON DF-N-SGm-indef 
-+Indef: # ; !risi
++Indef: FINAL ; !risi
 
 LEXICON DF-N-SGm-def 
-+Def:%>n # ; ! risin
++Def:%>n FINAL ; ! risin
 
 LEXICON DF-A-SGm
 DF-A-SGm-indef ;
 DF-A-SGm-def ;
 
 LEXICON DF-A-SGm-indef 
-+Indef: # ;
++Indef: FINAL ;
 
 LEXICON DF-A-SGm-def 
-+Def:%>n # ; ! risan, sandin
++Def:%>n FINAL ; ! risan, sandin
 
 LEXICON DF-D-SGm
-+Indef: # ;
-+Def:%>num # ;
++Indef: FINAL ;
++Def:%>num FINAL ;
 
 LEXICON DF-G-SGm
-+Indef: # ;
-+Def:%>ins # ;
++Indef: FINAL ;
++Def:%>ins FINAL ;
            R ;
 
 
@@ -2335,20 +2338,20 @@ DF-N-PLm-def ;
 
 
 LEXICON DF-N-PLm-indef
-+Indef:  #  ; 
++Indef:  FINAL  ; 
 
 LEXICON DF-N-PLm-def
-+Def:%>nir # ; ! no -i-
++Def:%>nir FINAL ; ! no -i-
 
 LEXICON DF-A-PLm
 DF-A-PLm-indef ;
 DF-A-PLm-def ;
 
 LEXICON DF-A-PLm-indef
-+Indef: # ;
++Indef: FINAL ;
 
 LEXICON DF-A-PLm-def
-+Def:%>nar # ; ! no -i
++Def:%>nar FINAL ; ! no -i
 
 
 
@@ -2356,45 +2359,45 @@ LEXICON DF-A-PLm-def
 ! ---------------
 
 LEXICON DF-N-SGf-W
-+Indef: # ;
-+Def:%>n # ;
++Indef: FINAL ;
++Def:%>n FINAL ;
 
 LEXICON DF-N-SGf-S
-+Indef: # ;
-+Def:%>in # ;
++Indef: FINAL ;
++Def:%>in FINAL ;
 
 
 LEXICON DF-A-SGf-W
-+Indef: # ;
-+Def:%>na # ;
++Indef: FINAL ;
++Def:%>na FINAL ;
 
 LEXICON DF-A-SGf-S
-+Indef: # ;
-+Def:%>ina # ;
++Indef: FINAL ;
++Def:%>ina FINAL ;
 
 
 LEXICON DF-D-SGf-W
-+Indef: # ;
-+Def:%>ni # ;
++Indef: FINAL ;
++Def:%>ni FINAL ;
 
 LEXICON DF-D-SGf-S
-+Indef: # ;
-+Def:%>ini # ;
++Indef: FINAL ;
++Def:%>ini FINAL ;
 
 
 LEXICON DF-G-SGf-W
-+Indef:      # ;
-+Def:%>nnar  # ;
++Indef:      FINAL ;
++Def:%>nnar  FINAL ;
              R ;
 
 LEXICON DF-G-SGf-S
-+Indef:      # ;
-+Def:%>innar # ;
++Indef:      FINAL ;
++Def:%>innar FINAL ;
              R ;
 
 LEXICON DF-NA-PLf
-+Indef: # ;
-+Def:%>nar # ;
++Indef: FINAL ;
++Def:%>nar FINAL ;
 
 
 ! Neuter forms
@@ -2405,32 +2408,32 @@ LEXICON DF-NA-SGn
 :i DF-NA-SGn-def ;
 
 LEXICON DF-NA-SGn-indef
-+Indef: # ;
++Indef: FINAL ;
 
 LEXICON DF-NA-SGn-def
-+Def:%>ð # ;
++Def:%>ð FINAL ;
 
 LEXICON DF-D-SGn
-+Indef: # ;
-+Def:%>num # ;
++Indef: FINAL ;
++Def:%>num FINAL ;
 
 LEXICON DF-G-SGn
-+Def:%>ins # ;
++Def:%>ins FINAL ;
 g-indef-r ;
 
 LEXICON g-indef-r
-+Indef:    # ;
++Indef:    FINAL ;
            R ;
 
 LEXICON DF-G-SGn-a
-+Def:%>ns # ;
++Def:%>ns FINAL ;
 g-indef-r ;
 
 LEXICON DF-NA-PLn ! orðini
-+Indef: # ;
-+Def:%>ini # ;
++Indef: FINAL ;
++Def:%>ini FINAL ;
 
 LEXICON DF-NA-PLn-W ! eyguni, hjørtuni
-+Indef: # ;
-+Def:%>ni # ;
++Indef: FINAL ;
++Def:%>ni FINAL ;
 

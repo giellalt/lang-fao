@@ -1,4 +1,3 @@
-
 \documentclass{beamer}
 \usepackage{ucs}
 \usepackage[utf8x]{inputenc}
@@ -139,9 +138,10 @@ The disambiguator (Fdis) consists of
 \frame{\frametitle{Small, but relatively efficient rule set}
 
 \begin{table}[htdp]
-\caption{default}
+%\caption{default}
 \begin{center}
 \begin{tabular}{|l|r|r|r|}
+\hline
 Parser & Rules & Ambiguity & Accuracy \\
 \hline
 North Sámi	  & 3537 & 2.42 & 1.08 \\
@@ -162,9 +162,9 @@ Faroese		  &  294 & 2.45 & 1.24 \\
 \begin{frame}
 \frametitle{Accuracy}
 
-but partly it illustrates the efficiency of an innovation in vislcg3, namely set unification for tags. 
+The efficiency of the ruleset illustrates the efficiency of an innovation in vislcg3, namely set unification for tags. 
 
-With the set unification operator \$\$ it is possible to refer to a set, so that the tag that first satisfies the set must be the same as all subsequent matches of the same set.
+With the set unification operator $\$\$$ it is possible to refer to a set, so that the tag that first satisfies the set must be the same as all subsequent matches of the same set.
 
 SET NAGD = Nom Acc Gen Dat ;
 
@@ -196,8 +196,8 @@ A common strategy for such words is to write specific rules just for these words
 For Fdis, only approximately 15 such words have received special treatment until now:
 
 \begin{description}
-\item[Pronouns:] \textit{hon, vit}
-\item[Subjunctions:] \textit{at, ið, men}
+\item [Pronouns:] \textit{hon, vit}
+\item [Subjunctions:] \textit{at, ið, men}
 \end{description}
 
 
@@ -205,12 +205,9 @@ For Fdis, only approximately 15 such words have received special treatment until
 
 
 \frame{\frametitle{Verb homonymy}
-
 The Faroese verbal paradigm shows much homonymy. 
-
 Ffst specifies 3 persons in the singular (also when the conjugation in question shows homonymy), 
-
-but only one plural form. 
+but there is only one plural form (no disambiguation here). 
 }
 
 
@@ -239,7 +236,10 @@ The dependency grammar (Fdep) consists of 49 rules.
 The dependency grammar quite reliably delimits NPs, and the governed constituents of P and V. Eventual errors here are due to errors in Fdis. 
 
 The main obstacles for a good depencency analyses are coordination and relative clauses. Attaching appropriate constituents to the clause mother node is quite a reliable process as long as the rest of the analysis is correct. 
+}
 
+
+\frame{\frametitle{The dependency grammar}
 Unfortunately shortcomings in coordination and relative clause analysis, and especially the low coverage of the Ffst gives too many top nodes 
 
 (2.3 alleged clausal heads per clause on average, compared to the correct 1 head/clause). 
@@ -250,7 +250,7 @@ Even with these shortcomings, the Fdep is already at this stage a good tool for 
 \section{Processing speed}
 \frame{\frametitle{Processing speed}
 
-the bottleneck in the system is the disambiguator. 
+The bottleneck in the system is the disambiguator. 
 
 Even though it is much smaller than most CG grammars, it performs clearly worse than all the other parts of the pipeline.
 
@@ -282,11 +282,10 @@ Dependency & vislcg3 & 18814 \\
 
 \frame{\frametitle{Conclusion}
 
-The Faroese grammatical analyser presented here is still in the making. 
-
-It still shows that with a modest number of CG rules, one may achive results good enough for several languaguage processing tasks. 
-
-Future improvements of the analyser will concentrate upon key parts of the Ffst, upon disambiguation of complex syntactic patterns, and upon the dependency analysis of coordination and relative clauses.
-
+\begin{itemize}
+\item The Faroese grammatical analyser presented here is still in the making. 
+\item It still shows that with a modest number of CG rules, one may achive results good enough for several languaguage processing tasks. 
+\item Future improvements of the analyser will concentrate upon key parts of the Ffst, upon disambiguation of complex syntactic patterns, and upon the dependency analysis of coordination and relative clauses.
+\end{itemize}
 }	
 \end{document}

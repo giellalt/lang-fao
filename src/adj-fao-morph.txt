@@ -1,5 +1,3 @@
-
-
 ! ==================== !
 ! Adjective morphology !
 ! ==================== !
@@ -45,14 +43,14 @@ LEXICON l7	! blindur
 
 LEXICON l8	! kaldur
 +A:         a-non-umlaut ;
-+A:%^UUML      a-umlaut ;
++A:%^UUML   a-umlaut ;
 +A: adj-r-gen ;
 +A: adj-def ;
 +A: adjcmp1 ;
 
 LEXICON l9	! spakur
 +A:         a-non-umlaut ;
-+A:%^UUML      a-umlaut ;
++A:%^UUML   a-umlaut ;
 +A: adj-r-gen ;
 +A: adj-def ;
 +A: adjcmp1 ;
@@ -220,7 +218,26 @@ LEXICON STOR
 +A+Superl:størst indef-superl-adj-decl ;
 
 LEXICON andi
-+A: # ;
++A: HOMONYM-ADJ-FORMS ;
+
+LEXICON HOMONYM-ADJ-FORMS
++Msc: HOMONYM-ADJ-NUM ;
++Fem: HOMONYM-ADJ-NUM ;
++Neu: HOMONYM-ADJ-NUM ;
+
+LEXICON HOMONYM-ADJ-NUM
++Sg: HOMONYM-ADJ-CASE ;
++Pl: HOMONYM-ADJ-CASE ;
+
+LEXICON HOMONYM-ADJ-CASE
++Nom: HOMONYM-ADJ-DEF ;
++Acc: HOMONYM-ADJ-DEF ;
++Gen: HOMONYM-ADJ-DEF ;
++Dat: HOMONYM-ADJ-DEF ;
+
+LEXICON HOMONYM-ADJ-DEF
++Indef: # ;
++Def:   # ;
 
 
 ! Irregular comaratives
@@ -239,16 +256,16 @@ LEXICON ELSTUR
       adj-def ;
 
 LEXICON eldri-m
-+Msc: # ;
++Msc: HOMONYM-ADJ-FORMS ; !XXX
 
 LEXICON eldri-f
-+Fem: # ;
++Fem: HOMONYM-ADJ-FORMS ;
 
 LEXICON eldri-n
-+Neu: # ;
++Neu: HOMONYM-ADJ-FORMS ;
 
 LEXICON indecladj ! Still no tags here.
-+A: # ;
++A: HOMONYM-ADJ-FORMS ;
 
 ! Intermediate adjectival lexica
 ! ==============================
@@ -305,6 +322,11 @@ a-n-pl-g-ra ;
 ! Adjectival case lexica
 ! ======================
 
+
+! Indefinite declension
+! ---------------------
+
+! Msc
 LEXICON a-m-sg-n
 +Msc+Sg+Nom+Indef:%>ur # ;
 
@@ -334,6 +356,9 @@ LEXICON a-m-pl-g
 
 LEXICON a-m-pl-g-ra
 +Msc+Pl+Gen+Indef:%>ra  # ; 
+
+
+! Fem
 
 LEXICON a-f-sg-n
 +Fem+Sg+Nom+Indef:%>%^UUML  # ; 
@@ -365,6 +390,9 @@ LEXICON a-f-pl-g
 LEXICON a-f-pl-g-ra
 +Fem+Pl+Gen+Indef:%>ra  # ; 
 
+
+! Neu
+
 LEXICON a-n-sg-n
 +Neu+Sg+Nom+Indef:%>t  # ; 
 
@@ -393,19 +421,51 @@ LEXICON a-n-pl-g-ra
 +Neu+Pl+Gen+Indef:%>ra  # ; 
 
 
+! Definite declension
+! -------------------
+
 LEXICON adj-def
- +Msc+Sg+Nom+Def:%>i # ;
- +Msc+Sg+Acc+Def:%>a # ;
- +Msc+Sg+Dat+Def:%>a # ;
- +Msc+Sg+Gen+Def:%>a # ;
- +Fem+Sg+Nom+Def:%>a # ;
- +Fem+Sg+Acc+Def:%>u # ;
- +Fem+Sg+Dat+Def:%>u # ;
- +Fem+Sg+Gen+Def:%>u # ;
- +Neu+Sg+Nom+Def:%>a # ;
- +Neu+Sg+Acc+Def:%>a # ;
- +Neu+Sg+Dat+Def:%>a # ;
- +Neu+Sg+Gen+Def:%>a # ;
++Msc: adj-def-msc ;
++Fem: adj-def-fem ;
++Neu: adj-def-neu ;
+
+
+! Gender tags
+
+LEXICON adj-def-msc 
++Sg: adj-def-msc-case ;
++Pl: adj-def-pl ;
+
+LEXICON adj-def-fem 
++Sg:  adj-def-fem-case ;
++Pl: adj-def-pl ;
+
+LEXICON adj-def-neu 
++Sg: adj-def-neu-case ;
++Pl: adj-def-pl ;
+
+
+! Case tags
+ 
+LEXICON adj-def-msc-case
++Nom+Def:%>i # ;
++Acc+Def:%>a # ;
++Dat+Def:%>a # ;
++Gen+Def:%>a # ;
+
+LEXICON adj-def-fem-case 
++Nom+Def:%>a # ;
++Acc+Def:%>u # ;
++Dat+Def:%>u # ;
++Gen+Def:%>u # ;
+
+LEXICON adj-def-neu-case
++Nom+Def:%>a # ;
++Acc+Def:%>a # ;
++Dat+Def:%>a # ;
++Gen+Def:%>a # ;
+
+LEXICON adj-def-pl
  +Pl+Nom+Def:%^UUML%>u # ;
  +Pl+Acc+Def:%^UUML%>u # ;
  +Pl+Dat+Def:%^UUML%>u # ;
@@ -423,49 +483,81 @@ LEXICON adjcmp2
 +Cmp:r indef-cmp-adj-decl ;
 +Superl:st indef-superl-adj-decl ;
 
+! Gender
+
 LEXICON indef-cmp-adj-decl
-+Msc+Sg+Indef:%>i # ;
-+Fem+Sg+Indef:%>i # ;
-+Neu+Sg+Indef:%>i # ;
++Msc+Sg: indef-case ;
++Fem+Sg: indef-case ;
++Neu+Sg: indef-case ;
 
-+Msc+Sg+Def+Nom:%>i # ;
-+Msc+Sg+Def+Acc:%>a # ;
-+Msc+Sg+Def+Dat:%>a # ;
-+Msc+Pl+Def:%>u # ;
-+Fem+Sg+Def+Nom:%>a # ;
-+Fem+Sg+Def+Acc:%>u # ;
-+Fem+Sg+Def+Dat:%>u # ;
-+Fem+Pl+Def:%>u # ;
-+Neu+Sg+Def+Nom:%>a # ;
-+Neu+Sg+Def+Acc:%>a # ;
-+Neu+Sg+Def+Dat:%>a # ;
-+Neu+Pl+Def:%>u # ;
++Msc+Sg+Nom:%>i deftag ;
++Msc+Sg+Acc:%>a deftag ;
++Msc+Sg+Dat:%>a deftag ;
++Msc+Pl:%>u deftag ;
++Fem+Sg+Nom:%>a deftag ;
++Fem+Sg+Acc:%>u deftag ;
++Fem+Sg+Dat:%>u deftag ;
++Fem+Pl:%>u deftag ;
++Neu+Sg+Nom:%>a deftag ;
++Neu+Sg+Acc:%>a deftag ;
++Neu+Sg+Dat:%>a deftag ;
++Neu+Pl:%>u deftag ;
+
+LEXICON indef-case
++Nom: indeftag ;
++Acc: indeftag ;
++Gen: indeftag ;
++Dat: indeftag ;
+
+LEXICON def-case
++Nom: deftag ;
++Acc: deftag ;
++Gen: deftag ;
++Dat: deftag ;
 
 
-!+Cmp+Indef
-!+Cmp+Msc+Sg+Def
-!+Cmp+Fem+Sg+Def
-!+Cmp+Neu+Sg+Def
-!+Cmp+Pl
+! Definiteness
+
+LEXICON indeftag
++Indef:%>i # ;
+
+LEXICON deftag
++Def: # ;
+
 
 
 ! Superlative
 ! ===========
 
 LEXICON indef-superl-adj-decl
-+Msc+Sg+Indef:%>ur # ;
-+Fem+Sg+Indef:     # ;
-+Neu+Sg+Indef:     # ;
++Msc+Sg: indef-superl-msc-case ;
++Fem+Sg: indef-superl-femneu-case ;
++Neu+Sg: indef-superl-femneu-case ;
 
-+Msc+Sg+Def:%>i    # ; !XXX check.
-+Fem+Sg+Def:%>a    # ;
-+Neu+Sg+Def:%>a    # ;
+LEXICON indef-superl-msc-case
++Nom: indef-superl-msc ;
++Acc: indef-superl-msc ;
++Gen: indef-superl-msc ;
++Dat: indef-superl-msc ;
+
+LEXICON indef-superl-femneu-case
++Nom: indef-superl-femneu ;
++Acc: indef-superl-femneu ;
++Gen: indef-superl-femneu ;
++Dat: indef-superl-femneu ;
 
 
 
-!+Superl+Pl
-!+Superl+Indef
-!+Superl+Msc+Sg+Def
-!+Superl+Fem+Sg+Def
-!+Superl+Neu+Sg+Def
-!+Superl+Pl
+LEXICON indef-superl-msc
++Indef:%>ur # ;
+
+LEXICON indef-superl-femneu
++Indef: # ;
+
+! fjerna 17.5.
+! +Msc+Sg+Def:%>i    # ; !XXX check.
+! +Fem+Sg+Def:%>a    # ;
+! +Neu+Sg+Def:%>a    # ;
+
+
+

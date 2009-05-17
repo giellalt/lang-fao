@@ -18,8 +18,12 @@
 ! Compounds
 
 LEXICON R
-+Cmpnd#:%- Nouns ;
 +Cmpnd#:   Nouns ;
+           R- ;
+
+LEXICON R-
++Cmpnd#:%- Nouns ;
+
 
 LEXICON FINAL
 +Cmpnd:%- # ; ! menningar- og granskingarskipan
@@ -107,14 +111,14 @@ LEXICON k4 ! tanki
  k3 ;	! Same u-umlaut, but nasal cns
 
 LEXICON k5 ! bóndi
-+N+Msc: W-M-SGNOM ;
-+N+Msc: W-M-SGACC ;
-+N+Msc: W-M-SGDAT ;
-+N+Msc: W-M-SGGEN ;
++N+Msc:       W-M-SGNOM ;
++N+Msc:       W-M-SGACC ;
++N+Msc:       W-M-SGDAT ;
++N+Msc:       W-M-SGGEN ;
 +N+Msc:%^IUML W-M-PLNOM-UR ;
 +N+Msc:%^IUML W-M-PLACC-UR ;
-+N+Msc: W-M-PLDAT ;
-+N+Msc: W-M-PLGEN ;
++N+Msc:       W-M-PLDAT ;
++N+Msc:       W-M-PLGEN ;
 
 
 ! Strong masculines

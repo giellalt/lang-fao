@@ -67,6 +67,7 @@ LIST Inf = Inf ;
 LIST PrfPrc = PrfPrc ;
 LIST PrsPrc = PrsPrc ;
 LIST Imp = Imp ;
+LIST Sbj = Sbj ;
 LIST Sup = Sup ;
 LIST Cmpnd = Cmpnd ;
 LIST CLB = CLB ;
@@ -259,6 +260,9 @@ REMOVE Nom IF (-2 V)(-1C Pr)(0 N)(1 CLB); # Too specific, this.
 REMOVE Pr IF (0 Adv)(NOT *1 OBL BARRIER NPNH)
 # This rule does not handle stranded prepositions, it must be relaxed.
 
+REMOVE:PrAdv Adv IF (*-1 N OR V)(0 Pr + SOMEACCPREP)(*1 Acc BARRIER NPNH);
+	## Altjóða samstarv innan gransking og útbúgving.
+
 # á
 REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
 REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
@@ -358,8 +362,10 @@ SELECT:hon Pron IF (0 ("hon"))(-1 BOS OR NPNH);
 # ið
 SELECT CS IF (-1 CLB)(0 ("ið"));
 
-# SELECT CS IF (-2 CLB)(-1 ("tá"))(0 ("ið"));
-
+# innan
+REMOVE ("inni") IF (0 ("innan" Pr))(*1 Acc BARRIER NPNH);
+	## Samstarv innan gransking.
+	
 # liggja
 SELECT ("liggja") + Prt IF (-1 N OR Pron) ;
 SELECT ("liggja") + Prt IF (1 Pr);
@@ -387,7 +393,7 @@ SELECT ("tann" Det $$NAGD) IF (*1 N + $$NAGD BARRIER NPNH);
 # tá and tá ið
 SELECT Adv IF  (0 ("tá"))(1 ("ið"));
 SELECT Adv IF (-1 ("tá"))(0 ("ið"));
-SELECT Adv IF (-1 NPNH)(1 V);
+SELECT Adv IF (-1 NPNH)(1 Ind OR Sbj);
 
 REMOVE:r5 Det IF (0 Pers)(NEGATE 0 Gen LINK -1 N)(NOT 1 NPNHA OR N);
 
@@ -416,6 +422,8 @@ REMOVE:r11 Neu IF (0 A + $$NAGD)(*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0
 REMOVE:r12 Msc IF (0 A + $$NAGD)(*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
 REMOVE:r13 Fem IF (0 A + $$NAGD)(*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 
+REMOVE:Def Def IF (0 A + $$NAGD)(*1 A OR N BARRIER NPNHA LINK 0C $$NAGD + Indef);
+REMOVE:Def Indef IF (0 A + $$NAGD)(*1 A OR N BARRIER NPNHA LINK 0C $$NAGD + Def);
 
 
 # Postnominal determiner disambiguation
@@ -432,6 +440,10 @@ REMOVE:r10b Fem IF (0 Poss + $$NAGD)(-1 NounMscNeu + $$NAGD LINK NOT 0 Fem);
 #REMOVE:r12b Msc IF (0 A + $$NAGD)(-1 NounFemNeu + $$NAGD LINK NOT 0 Msc);
 #REMOVE:r13b Fem IF (0 A + $$NAGD)(-1 NounMscNeu + $$NAGD LINK NOT 0 Fem);
 
+# Definiteness disambiguation
+
+REMOVE Def IF (0 A + Indef + $$NAGD)(1C N + Indef + $$NAGD);
+REMOVE Indef IF (0 A + Def + $$NAGD)(1C N + Def + $$NAGD);
 
 
 # Case disambiguation
@@ -472,6 +484,13 @@ REMOVE:r33 Pl IF (*-1 ("eitt" Num Sg) OR (Det Sg) BARRIER NOT-A)(0 (N Sg));
 SELECT:NumNPl (N Pl) IF (-1 NUMBERS);
 
 
+# Coordination
+
+
+REMOVE Def   IF (0 N + Indef)(1 CC)(2C N + Indef);
+REMOVE Indef IF (0 N + Def)  (1 CC)(2C N + Def);
+
+
 # NP head disambiguation
 # ======================
 
@@ -502,6 +521,11 @@ REMOVE:r46 Det IF (0 Pers)(1C V);
 REMOVE:r47 Det IF (0 Pers)(NEGATE *1 Def BARRIER NPNH)(NEGATE 0 Gen LINK -1 N);
 	##
 
+#NP Coordination
+
+REMOVE:CCPrs Prs + 3Sg IF (0 Pl + Nom)(1 CC)(*2 Pl + Nom BARRIER NPNH OR OBL);
+
+
 
 # VP disambiguation
 # =================
@@ -526,6 +550,8 @@ REMOVE:ImpFirst N IF (-1 BOS OR PUNCT)(0 Imp)(*1 ("tín" Poss) BARRIER VFIN);
 
 REMOVE Imp IF (-1C Ind);
 	## Gu∂ gjør∂i hvalvi∂.
+
+REMOVE Imp IF (-1 CS)(0 Ind OR Sbj);
 
 #REMOVE Imp IF (-1 Adv OR Nom OR Pr OR CS OR V)(0 Prs OR Prt);
 SELECT:CoordImp Imp IF (*-1 CC OR COMMA BARRIER VFIN LINK *-1C Imp BARRIER VFIN);
@@ -610,6 +636,8 @@ REMOVE:r65 Gen IF (NOT *-1 ACCGENPREP BARRIER NPNHA);
 # Pronoun disambiguation
 # =======================
 
+REMOVE Det IF (0 Pron)(NOT 1 A OR N);
+
 REMOVE ("hon") IF (*-1 (Imp Sg) BARRIER ("tú"));
    ## Tak við tær barnið og flýggja til Egyptalands.
       
@@ -644,6 +672,8 @@ REMOVE:r24 (A Pl) IF (1C N + Sg);
 REMOVE (N Pl) IF (*-1C (Det Sg) BARRIER NPNH) (0 (N Sg));
 
 SELECT:r25 $$NUMBER IF (0 Det)(*1 N + $$NUMBER BARRIER NOT-A);
+
+SELECT (Num Nom) IF (-1 BOS)(1 EOS);
 
 # Gender disamb of numerals
 
@@ -795,6 +825,10 @@ MAP:r81 (@P<) TARGET NOMINALHEAD + Dat IF (*-1 SOMEDATPREP BARRIER NPNHA);
 MAP:r82 (@P<) TARGET NOMINALHEAD + Acc IF (*-1 SOMEACCPREP BARRIER NPNHA);
 MAP:r83 (@P<) TARGET NOMINALHEAD + Gen IF (*-1 SOMEGENPREP BARRIER NPNHA);
 
+MAP:r81 (@P<) TARGET NOMINALHEAD + Dat IF (*-1 CC BARRIER NPNHA LINK -1 NOMINALHEAD LINK *-1 SOMEDATPREP BARRIER NPNH);
+MAP:r82 (@P<) TARGET NOMINALHEAD + Acc IF (*-1 CC BARRIER NPNHA LINK -1 NOMINALHEAD LINK *-1 SOMEACCPREP BARRIER NPNH);
+MAP:r83 (@P<) TARGET NOMINALHEAD + Gen IF (*-1 CC BARRIER NPNHA LINK -1 NOMINALHEAD LINK *-1 SOMEGENPREP BARRIER NPNH);
+
 MAP:r84 (@>N) TARGET Det + $$GENDER + $$NAGD IF (+1 N + $$GENDER + $$NAGD BARRIER NPNHA);
 MAP:r84b (@>N) TARGET Pron + Indef  + $$GENDER + $$NAGD IF (+1 N + $$GENDER + $$NAGD BARRIER NPNHA);
 #MAP (@P<) TARGET Acc IF
@@ -834,7 +868,9 @@ MAP (@>N) TARGET ("Harri") IF (1 ("Guð"));
     
 # Fragments
 
-MAP (@HNOUN) TARGET N IF (NOT 0* V) ;
+MAP (@HNOUN) TARGET N IF (NOT *-1 VFIN)(NOT *1 Ind OR Sbj)(NOT 0 SYNTAG) ;
+MAP (@HNOUN) TARGET A IF (NOT *-1 VFIN)(NOT *1 Ind OR Sbj)(NOT 0 SYNTAG) ;
+MAP (@HNOUN) TARGET Num IF (-1 BOS)(1 EOS);
 
 # We give in
 
@@ -864,7 +900,7 @@ REMOVE:r100 (@IOBJ) IF (*-1 Pr BARRIER NPNHA);
 
 REMOVE Acc IF (0 (Sg @<SUBJ) LINK *-1 (V Sg) OR (V 3Sg) BARRIER (@<SUBJ))(*-1 S-BOUNDARY BARRIER (@SUBJ>)); 
 
-REMOVE:r101 (@P<) IF (*-1 BOS OR (N Acc) OR (N Dat) OR (N Nom) OR V OR CLB OR CS BARRIER Pr LINK NOT 0 Pr);
+REMOVE:r101 (@P<) IF (*-1 BOS OR (N Acc) OR (N Dat) OR (N Nom) OR V OR CLB OR CS BARRIER Pr OR CC LINK NOT 0 Pr);
 
 REMOVE:r102 (@>N) IF (0C N)(*-1 Pr BARRIER NPNHA);
 
@@ -956,6 +992,10 @@ REMOVE:r111 (@<OPRED) IF (*-1C Pr BARRIER NPNH)(1C (@P<));
 REMOVE:r111a (@<OPRED) IF (*-1C Pr BARRIER NPNH)(0 (@P<));
 
 REMOVE:r112 V IF (-1 Pr)(0 (@P<));
+REMOVE:r112b (@HNOUN) IF (*-1 Pr BARRIER NPNH)(0 (@P<));
+
+
+
 
 	## av tilvild
 
@@ -980,7 +1020,9 @@ REMOVE (@SUBJ>) IF (0 (@<OPRED));
 
 # Postsyntactical verbal dis
 
-SELECT:r116 VFIN IF (NEGATE 0* VFIN);
+#SELECT:r116 Ind IF (NEGATE 0* VFIN);
+
+
 
 
 SELECT (3Sg) IF (-1C (Sg @SUBJ>));

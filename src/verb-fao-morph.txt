@@ -855,8 +855,12 @@ LEXICON standard-ir
  ir-verb ;
 
 LEXICON standard-j-ir
-jinf ;
-ir-verb ;
+   jinf ;
+   pres-ir-sg ;
+:j pres-pl ;
+   prt-d ;
+   imp-prsptc ;
+   sup ;
 
 LEXICON ir-verb
 pres-ir ;
@@ -884,10 +888,13 @@ LEXICON reflinf
 ! Present
 
 LEXICON pres-ir
+pres-ir-sg ;
+pres-pl ;
+
+LEXICON pres-ir-sg
 +V+Ind+Prs+1Sg:%>i  PASS ;
 +V+Ind+Prs+2Sg:%>ir PASS ;
 +V+Ind+Prs+3Sg:%>ir PASS ;
-pres-pl ;
 
 LEXICON pres-ar
 +V+Ind+Prs+1Sg:%>a PASS ;

@@ -111,7 +111,7 @@ LIST REALADJ = A OR A* ;
 
 # Nominal sets
 
-LIST NOMINALHEAD = N Num Pers Refl Recipr Interr Indef ;
+LIST NOMINALHEAD = N Num Pers Refl Recipr Interr "Pron Indef" ;
 
 LIST PRENAGR = Det A ;
 
@@ -134,7 +134,7 @@ LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
 
 LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
 
-LIST MODV = "kunna" "láta" "skula" "vilja" "munna" ;
+LIST MODV = "kunna" "láta" "skula" "vilja" "munna" "mega" ;
 
 LIST DATV = "bjóða" "smakka" ; # "undirvísa" 
 
@@ -551,6 +551,8 @@ SELECT:r49 ("vera" 3Sg) IF (-1 ("tað" Pron Pers Sg Nom));
 	## Tað var, sum váru tey sett av tilvild av einum fóti út úr luftini.
 
 REMOVE:PrtNotAdj A IF (-1 NOMINALHEAD + Sg + Nom)(0 (V Prt Sg) OR (V Prt 3Sg) OR (V Prt 1Sg)) ;
+
+#REMOVE 
  
 # Infinitive
 
@@ -582,7 +584,7 @@ REMOVE:r54 (Imp Pl) IF (0 (N Neu))(1 VFIN);
 
 # Supine
 
-#SELECT:r55 Sup IF 
+SELECT:r55 Sup IF (*-1 ("fáa" V) BARRIER NOT-ADV);
 
 REMOVE:r56 Sup IF (0 VFIN)(NOT *-1C VFIN BARRIER S-BOUNDARY)(NOT *1C VFIN BARRIER S-BOUNDARY);
 
@@ -591,8 +593,8 @@ REMOVE:SFregel N IF (0 Sup)(1 VFIN);
 # Present singular
 
 SELECT:r57 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) OR (3PRON Pers Sg Nom) LINK NOT *-1 CC BARRIER NPNHA)(1 (Pron Refl Acc)) ;
-REMOVE:test1 (V Ind 1Sg) IF (NOT *0 ("eg" Pron Pers Sg Nom)); 
-REMOVE:test2 (V Ind 2Sg) IF (NOT *0 ("tú" + Pron + Pers + Sg + Nom)); # Tino!
+#REMOVE:test1 (V Ind 1Sg) IF (NOT *0 ("eg" Pron Pers Sg Nom)); 
+#REMOVE:test2 (V Ind 2Sg) IF (NOT *0 ("tú" + Pron + Pers + Sg + Nom)); # Tino!
 REMOVE:r58b (V Ind 1Sg) IF (*-1 (N Sg Nom) BARRIER NOT-ADV LINK NOT *1 Pron + 1Sg BARRIER CLB) ;
 SELECT:r59 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) LINK NOT *-1 CC BARRIER NPNHA OR S-BOUNDARY) ;
 
@@ -816,6 +818,9 @@ MAP (@>N) TARGET Num + $$NAGD IF (1 A + $$NAGD)(2 N + $$NAGD);
 
 MAP:r72 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (*1 (V 2Sg) BARRIER VFIN);
 MAP:r73 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V 2Sg) BARRIER VFIN);
+
+MAP:r72b (@SUBJ>) TARGET ("eg" Pron Pers Sg Nom) IF (*1 (V 1Sg) BARRIER VFIN);
+MAP:r73b (@<SUBJ) TARGET ("eg" Pron Pers Sg Nom) IF (*-1 (V 1Sg) BARRIER VFIN);
 
 MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER NPNH LINK NOT -1 Nom);
 MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg));

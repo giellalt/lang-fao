@@ -41,12 +41,9 @@ Sections 2, 3 and 4 present the grammatical analyser Ffst, the disambiguator Fdi
 
 \section{The grammatical analyser}
 
-
-
-
 \subsection{Lexicon}
 
-The analyser uses the same inflectional codes as  \cite{Poulsen98}.  New words annotated with the same codes may thus be added directly to the Ffst. The analyser has a dynamic compounding component, genitive singular nouns have the basic noun lexicon as one of their continuation lexica, thereby creating a loop allowing any compound with genitive singular first part. This gives rise to a circular automaton, for generation this component must thus be switched off.
+The Ffst lexicon uses the same inflectional codes as does \cite{Poulsen98}.  Dictionary updates and new words annotated with the same codes may thus be added directly to the Ffst. The analyser has a dynamic compounding component, genitive singular nouns have the basic noun lexicon as one of their continuation lexica, thereby creating a loop allowing any compound with genitive singular first part. This gives rise to a circular transducer, for generation this component must thus be switched off.
 
 Ffst also contains a name guesser. The guesser detects words with capital first letter and non-Faroese phonotax. The candidate words must contain at least one vowel. The final letter cannot be a Faroese suffixal sound (\textit{a, i, u, n, m, r, s, t} (to avoid explicit case endings). The putative name is then assigned Nom, Acc and Dat. If there is any other analysis available, the guessed form is automatically discarded. The guesser is very reliable: Of the 500 most common guesses all 500 were actually names. It is also (too) careful: Banning Faroese case suffixes from the guesser avoids analysig case-inflected forms as baseforms, but at the same time it prevents the parser from making many correct guesses. 
 
@@ -65,7 +62,7 @@ The morphological part of \textit{Fdis} is built in several layers. For the nomi
 
 The dictionary contains xx nominal declension types, but including singular-only and plural-only declension patterns, and combined patterns (words declined for more than one pattern), the system totals 269 distinct first-layer continuation lexica for nouns, one of them being the $k5$ lexicon in Figure \ref{bondi}.
 
-The second layer gives case and number morphology. Figure \ref{wmplnom} gives the continuation lexica for weak masculine plurals, i.e., also for \textit{bóndi} and the other $k5$ words. 
+The second layer gives case and number morphology. Figure \ref{wmplnom} gives the continuation lexica for weak masculine plurals, i.e., also for \textit{bóndi} and the other $k5$ words. \\
  
 \begin{figure}[hp]
 \begin{center}
@@ -73,7 +70,7 @@ The second layer gives case and number morphology. Figure \ref{wmplnom} gives th
 \caption{Second layer - case and number}
 \label{wmplnom}
 \end{center}
-\end{figure}
+\end{figure} \\
 
 The third layer gives definiteness morphology. Due to the agglutinative nature of Faroese morphology, the lexica either only add the indefinite tag, or the definite tag and suffix. The exception is dative, which shows an \textit{n:m} alternation. Rather than writing a morphophonological rule deleting \textit{m} in front of \textit{num}, the alternation is written into the morphology file.
 
@@ -102,7 +99,7 @@ The lower part of the string pairs from the morphological transducer are then fe
  
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{0.35}[0.35]{\includegraphics{img/twoliumlaut.png}}
+\scalebox{0.33}[0.33]{\includegraphics{img/twoliumlaut.png}}
 \caption{The twolc i-umlaut rule}
 \label{twoliumlaut}
 \end{center}
@@ -143,18 +140,9 @@ A list of the morphophonological rules is given in Figure \ref{twolrules} on pag
 \subsection{Status quo for Ffst}
 
 
-At present (May 2009), the Faroese morphological transducer recognises 93.5 \% of all wordform tokens and 62.8 \% of all wordform types in running text (the discrepancy indicates that Ffst handles common words better than rare ones). 
+At present (May 2009), the Faroese morphological transducer recognises 94.3 \% of all wordform tokens and 62.8 \% of all wordform types in running text, for a corpus of 2.7 million words (dominated by newspaper text). The discrepancy indicates that Ffst handles common words better than rare ones. 
 
-The results could still be better, but for certain subgenres (such as the Bible), Ffst gives better results (96.3 \% and 83.3 \%, respectively), results good enough to evaluate the subsequent CG component. Note that even for the known text, Ffst misses approximately 16 \% of the wordform types. The reason for this high number is that certain parts of the transducer are still under construction, especially parts of the irregular verbs, and of comparative and superlative forms of adjectives.
-
-\begin{itemize}
-\setlength{\itemsep}{-0.2cm}
-\item The parser recognises 94.3 \% of the wordforms and 63.3  \% of the wordform types in running text
-\item The discrepancy indicates that Ffst handles common words better than rare ones
-\item{Certain common forms are missing (some strong verbs, irregular adjective forms, comparatives (partly))}
-\item{Faroese names are missing (except the most central person names), but many are taken care of by the guesser}
-\end{itemize}
-
+The results could still be better, but for certain subgenres (such as the Bible), Ffst gives better results (96.3 \% and 83.3 \%, respectively), results good enough to evaluate the subsequent CG component. Note that even for the known text, Ffst misses approximately 16 \% of the wordform types. The reason for this high number is that certain parts of the transducer are still under construction, especially parts of the irregular verbs, and of comparative and superlative forms of adjectives. Also Faroese names are missing, except the most central person names. The foreign names are mainly taken care of by the name guesser.
 
 The top 84 missing wordforms from an 2.7 m wd corpus are shown in Figure \ref{84miss} on page \pageref{84miss}. 
 
@@ -165,7 +153,6 @@ The top 84 missing wordforms from an 2.7 m wd corpus are shown in Figure \ref{84
 \label{84miss}
 \end{center}
 \end{figure*}
-
 
 The 43093 missing wordforms represent 5.67\% of the 2.7 mill corpus. In order to reduce the number of missing wordforms in running text by 50\%, the top 2117 wordforms of the missing list would have to be added to the analyser. Important areas for lexicon improvement include the following:
 
@@ -184,7 +171,7 @@ The 43093 missing wordforms represent 5.67\% of the 2.7 mill corpus. In order to
 
 \section{The Faroese disambiguator}
 
-The disambiguator (Fdis) consists of 120 rules for morphological disambiguation,  49 mapping rules, and 46 rules for disambiguation of grammatical functions. This is a small, but relatively efficient rule set, compared to the disambiguators for some other languages in Table \ref{rulecount}\footnote{The Sámi parsers are developed at the University of Tromsø (UiT), the Greenlandic parser is joint work between Oqaasileriffik and UiT, and the Bokmål parser is developed at Tesktlaboratoriet in Oslo}. For each language, the table gives number or rules, and the average numbers of readings before and after disambiguation, as applied on a compatible corpus (Genesis and the New Testament).
+The disambiguator (Fdis) consists of 166 rules for morphological disambiguation,  67 mapping rules, and 68 rules for disambiguation of grammatical functions. This is a small, but relatively efficient rule set, compared to the disambiguators for some other languages in Table \ref{rulecount}\footnote{The Sámi parsers are developed at the University of Tromsø (UiT), the Greenlandic parser is joint work between Oqaasileriffik and UiT, and the Bokmål parser is developed at Tesktlaboratoriet in Oslo. Thanks to Kristin Hagen for running the Bokmål analysis for this comparison.}. For each language, the table gives number or rules, and the average numbers of readings before and after disambiguation, as applied on a compatible corpus (Genesis and the New Testament.).
 
 \begin{table}[htdp]
 \caption{Rules and results for some CG parsers}
@@ -196,7 +183,7 @@ Parser & Rules & Input & Output \\
 North Sámi	  & 3537 & 2.42 & 1.08 \\
 Norsk Bokmål  & 1964 & 2.13 & 1.17 \\
 Lule Sámi	  &  832 & 2.18 & 1.21 \\
-Faroese		  &  294 & 2.45 & 1.24 \\
+Faroese		  &  301 & 2.45 & 1.24 \\
 Greenlandic	  &  518 & 2.69 & 1.42 \\
 \hline
 \end{tabular}
@@ -215,13 +202,7 @@ The efficiency of the Fdis ruleset illustrates the efficiency of an innovation i
 \end{flushleft}
 
 
-The disambiguator (Fdis) consists of 120 rules for morphological disambiguation, 49 mapping rules, and 46 rules for GF-disambiguation. The dependency grammar (Fdep) consists of 49 rules. With this rule set, Fdis works with an accuracy of 1.14 (an average of 1.14 analyses per word in running text), on an input where the wordforms on average had 3.01 analyses (the results were obtained on a corpus of 100000 words of newstext , previously not used for rule development, disregarding the unknown words, who had no cohorts to disambiguate).
-
-Remarkable here is the low number of disambiguation rules. A standard CG grammar usually has several thousand rules. Partly, the low number of rules in Fdis reflects the intermediate status of the parser, and also its low accuracy (for a CG parser an accuracy of 1.14 is not a good result), but partly it illustrates the efficiency of an innovation in vislcg3, namely set unification for tags. With the set unification operator \$\$ it is possible to refer to a set, so that the tag that first satisfies the set must be the same as all subsequent matches of the same set. Cf. (\ref{NAGD}), where the case of the determiner is selected based upon any unambiguous case form within the same NP.
-
-\ex.\label{NAGD} \small{SELECT \$\$NAGD IF (0 Det)(*1C \$\$NAGD BARRIER NOT-NP);}
-
-The bulk of the rules aims at disambiguating case, number and gender within the NP. One clue as to determining the correct case is the choice of preposition, as it is for the human listener. Unfortunately, most Faroese prepositions subcategorise for more than one case. What case to choose if there is a tie is ultimately dependant upon the combination of verb and preposition. At the present stage, Fdis does not specify subcategorisation frames for verbs and verb + preposition combinations, this is an area for future improvement.
+The bulk of the rules aims at disambiguating case, number and gender within the NP. One clue as to determining the correct case is the choice of preposition, as it is for the human listener. Unfortunately, most Faroese prepositions subcategorise for more than one case. What case to choose if there is a tie is ultimately dependant upon the combination of verb and preposition. At the present stage, Fdis selects Accusative for motion verbs and change of relationship PPs, otherwise it chooses Dative.
 
 When disambiguating running text, certain high-frequent words need special attention, both because they get multiple interpretations in the morphological component, and for their key role in the sentence. A common strategy for such words is to write specific rules just for these words. For Fdis, only approximately 15 such words have received special treatment until now, among them the pronouns \textit{hon, vit} and the ambiguous function words \textit{at, ið, men}. Also this is an area for improvement.
 
@@ -229,25 +210,11 @@ The Faroese verbal paradigm shows much homonymy. Ffst follows the practice of th
 
 Mapping of grammatical functions is done on the basis of morphological cues and word order, and their disambiguation mainly on the basis of word order. The grammatical function tags are directional (the distinction @OBJ> / @<OBJ indicates whether the governing verb is to found to the right or to the left, respectively). This distinction is heavily utilised in the dependency grammar.
 
-The dependency grammar quite reliably delimits NPs, and the governed constituents of P and V. Eventual errors here are due to errors in Fdis. The main obstacles for a good depencency analyses are coordination and relative clauses. Attaching appropriate constituents to the clause mother node is quite a reliable process as long as the rest of the analysis is correct. Unfortunately shortcomings in coordination and relative clause analysis, and especially the low coverage of the Ffst gives too many top nodes (2.3 alleged clausal heads per clause on average, compared to the correct 1 head/clause). Even with these shortcomings, the Fdep is already at this stage a good tool for research on basic dependency relations.
 
-Unfortunately, most Faroese prepositions subcategorise for more than one case.  The choice of case is ultimately dependant upon the combination of verb (or sentence frame) and preposition.  Fdis selects Accusative for motion verbs and change of relationship PPs, otherwise it chooses Dative.
-
-\subsection{High-frequent ambiguous words}
-
-Certain high-frequent words need special attention, both because they get multiple interpretations in the morphological component, and for their key role in the sentence. A common strategy for such words is to write specific rules just for these words.  For Fdis, only approximately 15 such words have received special treatment until now, mainly pronouns (\textit{hon, vit, ..}) and subjunctions (\textit{at, ið, men, ...}).
-
-\subsection{Verb homonymy}
-
-The Faroese verbal paradigm shows much homonymy.  Ffst specifies 3 persons in the singular (also when the conjugation in question shows homonymy), but there is only one plural form, which, according to the Faroese grammatical tradition, is not disambiguated further.
-
-\subsection{Grammatical functions}
-
-The input to Fdis contains morphological information only. During Fdis analysis grammatical functions are mapped onto each reading on the basis of morphological cues, word order, and thereafter disambiguated on the basis of word order. The grammatical function tags are directional ( @OBJ> / @<OBJ, meaning “I am an object, and my governor is to my right / left”). This distinction is heavily utilised in the dependency grammar.
 
 \section{The dependency grammar}
 
-The dependency grammar (Fdep) consists of 49 rules. It quite reliably delimits NPs, and the governed constituents of P and V.  Eventual errors here are due to errors in Fdis.  The hard obstacles for a good depencency analyses are long-distance dependencies:  coordination and relative clauses, topicalisation.
+The dependency grammar quite reliably delimits NPs, and the governed constituents of P and V. Eventual errors here are due to errors in Fdis. The main obstacles for a good depencency analyses are coordination and relative clauses. Attaching appropriate constituents to the clause mother node is quite a reliable process as long as the rest of the analysis is correct. Unfortunately shortcomings in coordination and relative clause analysis, and especially the low coverage of the Ffst gives too many top nodes (2.3 alleged clausal heads per clause on average, compared to the correct 1 head/clause). Even with these shortcomings, the Fdep is already at this stage a good tool for research on basic dependency relations.
 
 \section{Evaluation}
 \subsection{Precision and recall}
@@ -277,9 +244,6 @@ Dependency  &  0.7  &  1  &  0.7  &  0.82 \\
 \end{center}
 \label{prec}
 \end{table}%
-
-
-
 
 
 Thus, Fdis is work in progress 

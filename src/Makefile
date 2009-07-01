@@ -2,9 +2,9 @@
 # This is a makefile that builds the Faroese morphological parser #
 # *************************************************************** #
 
-XFST = xfst #-utf8
-LEXC = lexc #-utf8
-TWOLC = twolc #-utf8
+XFST = xfst
+LEXC = lexc
+TWOLC = twolc
 
 ifeq (victorio.uit.no, $(shell hostname))
 XFST = /opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/fst -utf8
@@ -12,14 +12,28 @@ LEXC = /opt/sami/xerox/bin/lexc -utf8
 TWOLC = /opt/sami/xerox/bin/twolc -utf8
 endif
 
+scripts=$(GTHOME)/gt/script
 
-
-
-LEX = fao-lex.txt noun-fao-lex.txt noun-fao-morph.txt \
-	propernoun-fao-lex.txt propernoun-fao-morph.txt adj-fao-lex.txt \
-	adj-fao-morph.txt adv-fao-lex.txt verb-fao-lex.txt abbr-fao-lex.txt acro-fao-lex.txt \
-	verb-fao-morph.txt pron-fao-lex.txt punct-fao-lex.txt numeral-fao-lex.txt \
-	pp-fao-lex.txt cc-fao-lex.txt cs-fao-lex.txt interj-fao-lex.txt det-fao-lex.txt
+LEX = fao-lex.txt \
+	  noun-fao-lex.txt \
+	  noun-fao-morph.txt \
+	  propernoun-fao-lex.txt \
+	  propernoun-fao-morph.txt \
+	  adj-fao-lex.txt \
+	  adj-fao-morph.txt \
+	  verb-fao-lex.txt \
+	  verb-fao-morph.txt \
+	  adv-fao-lex.txt \
+	  abbr-fao-lex.txt \
+	  acro-fao-lex.txt \
+	  pron-fao-lex.txt \
+	  punct-fao-lex.txt \
+	  numeral-fao-lex.txt \
+	  pp-fao-lex.txt \
+	  cc-fao-lex.txt \
+	  cs-fao-lex.txt \
+	  interj-fao-lex.txt \
+	  det-fao-lex.txt
 
 
 
@@ -27,14 +41,20 @@ LEX = fao-lex.txt noun-fao-lex.txt noun-fao-morph.txt \
 # This goal depends on fao.save being up to date.
 
 ifao.fst: ../bin/ifao.fst
-../bin/ifao.fst: ../bin/fao.fst ../bin/fao.save ../bin/tok.fst ../bin/abbr.txt \
-	../bin/allcaps.fst ../bin/fao-dis.bin ../bin/fao-dep.bin ../bin/tagfix.fst
+../bin/ifao.fst: ../bin/fao.save \
+				 ../bin/fao.fst \
+				 ../bin/tok.fst \
+				 ../bin/abbr.txt \
+            	 ../bin/allcaps.fst \
+            	 ../bin/fao-dis.bin \
+            	 ../bin/fao-dep.bin \
+            	 ../bin/tagfix.fst
 	@echo
 	@echo "*** Building the inverse ifao.fst ***"
 	@echo
-	@printf "load ../bin/fao.save \n\
+	@printf "load $< \n\
 	invert net \n\
-	save stack ../bin/ifao.fst \n\
+	save stack $@ \n\
 	quit \n" > ../../tmp/ifao-fst-script
 	$(XFST)  < ../../tmp/ifao-fst-script
 	@rm -f ../../tmp/ifao-fst-script
@@ -44,14 +64,18 @@ ifao.fst: ../bin/ifao.fst
 # This goal depends on fao.save and caseconv.fst being up to date
 
 fao.fst: ../bin/fao.fst
-../bin/fao.fst: ../bin/fao.save ../bin/caseconv.fst ../bin/allcaps.fst \
-	../bin/tok.fst ../bin/tagfix.fst
+../bin/fao.fst: ../bin/fao.save \
+				../bin/caseconv.fst \
+				../bin/allcaps.fst \
+				../bin/tok.fst \
+				../bin/tagfix.fst
 	@echo
 	@echo "*** Building fao.fst ***" ;
 	@echo
-	@printf "read regex @\"../bin/tagfix.fst\" .o. @\"../bin/fao.save\" \
-	.o. @\"../bin/caseconv.fst\" ; \n\
-	save stack ../bin/fao.fst \n\
+	@printf "read regex @\"../bin/tagfix.fst\" \
+					.o. @\"../bin/fao.save\" \
+					.o. @\"../bin/caseconv.fst\" ; \n\
+	save stack $@ \n\
 	quit \n" > ../../tmp/fao-fst-script
 	$(XFST)  < ../../tmp/fao-fst-script
 	@rm -f ../../tmp/fao-fst-script
@@ -65,10 +89,10 @@ comma:=,
 space:=$(empty) $(empty)
 ABBRSRCS=$(subst $(space),$(comma),$(LEX))
 
-scripts=$(HOME)/gtsvn/gt/script
-
 abbr: ../bin/abbr.txt
-../bin/abbr.txt: $(scripts)/abbr-extract $(scripts)/langTools/Util.pm $(LEX)
+../bin/abbr.txt: $(scripts)/abbr-extract \
+				 $(scripts)/langTools/Util.pm \
+				 $(LEX)
 	@echo
 	@echo "*** Extracting abbreviations from abbr-fao-lex.txt to abbr.txt ***" ;
 	@echo
@@ -173,7 +197,10 @@ dis-bin: ../bin/fao-dis.bin
 	@echo
 	@echo "*** Building a binary disambiguator fao-dis.bin ***" ;
 	@echo
-	@vislcg3 --grammar fao-dis.rle --grammar-only --grammar-bin ../bin/fao-dis.bin -C UTF-8
+	@vislcg3 --grammar fao-dis.rle \
+			 --grammar-only \
+			 --grammar-bin ../bin/fao-dis.bin \
+			 -C UTF-8
 
 
 # Let us just make a binary dependency grammar
@@ -183,7 +210,10 @@ dep-bin: ../bin/fao-dep.bin
 	@echo
 	@echo "*** Building a binary disambiguator fao-dep.bin ***" ;
 	@echo
-	@vislcg3 --grammar fao-dep.rle --grammar-only --grammar-bin ../bin/fao-dep.bin -C UTF-8
+	@vislcg3 --grammar fao-dep.rle \
+			 --grammar-only \
+			 --grammar-bin ../bin/fao-dep.bin \
+			 -C UTF-8
 
 
 # "make clean" is there to remove the binary files at will.

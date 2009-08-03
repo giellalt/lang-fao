@@ -29,8 +29,6 @@ The present paper presents ongoing work on a finite-state transducer, a Constrai
 
 \section{Introduction} 
 
-... two words about the parser ...
-
 The transducer is based upon the lemma list of \emph{Føroysk orðabók} (\cite{Poulsen98})\footnote{Thanks to the authors for making lemmalist and inflection codes electronically accessible, Without it this project would of course not have been realisable.}, and upon the grammatical description found in \cite{Thr04}. 
 
 The Faroese parser uses the computational infrastructure from the Sámi parser project (\textit{giellatekno.uit.no}). It has the same file setup, similar makefiles, etc. There are also benefits in the opposite relation: The Sámi morphophonology testsuite was taken from work on the Faroese \textit{twolc} file. 
@@ -62,7 +60,7 @@ The morphological part of \textit{Fdis} is built in several layers. For the nomi
 
 The dictionary contains xx nominal declension types, but including singular-only and plural-only declension patterns, and combined patterns (words declined for more than one pattern), the system totals 269 distinct first-layer continuation lexica for nouns, one of them being the $k5$ lexicon in Figure \ref{bondi}.
 
-The second layer gives case and number morphology. Figure \ref{wmplnom} gives the continuation lexica for weak masculine plurals, i.e., also for \textit{bóndi} and the other $k5$ words. \\
+The second layer gives case and number morphology. Figure \ref{wmplnom} gives the continuation lexica for weak masculine plurals, i.e., also for \textit{bóndi} and the other $k5$ words.
  
 \begin{figure}[hp]
 \begin{center}
@@ -70,7 +68,7 @@ The second layer gives case and number morphology. Figure \ref{wmplnom} gives th
 \caption{Second layer - case and number}
 \label{wmplnom}
 \end{center}
-\end{figure} \\
+\end{figure}
 
 The third layer gives definiteness morphology. Due to the agglutinative nature of Faroese morphology, the lexica either only add the indefinite tag, or the definite tag and suffix. The exception is dative, which shows an \textit{n:m} alternation. Rather than writing a morphophonological rule deleting \textit{m} in front of \textit{num}, the alternation is written into the morphology file.
 

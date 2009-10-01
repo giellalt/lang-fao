@@ -854,11 +854,25 @@ LEXICON standard-ir
  inf ;
  ir-verb ;
 
-LEXICON standard-j-ir
+LEXICON standard-j-ir-t
+   prt-t ; !XXX skilti
+   standard-j-ir-nopret ;
+
+! possibly also
+!LEXICON standard-j-ir-td
+!   prt-t ;
+!   prt-d ;
+!   standard-j-ir-nopret ;
+
+
+LEXICON standard-j-ir ! the pret-d
+   standard-j-ir-nopret ;
+   prt-d ; 
+
+LEXICON standard-j-ir-nopret
    jinf ;
    pres-ir-sg ;
 :j pres-pl ;
-   prt-d ; !XXX skilti
    imp-prsptc ;
    sup ;
 

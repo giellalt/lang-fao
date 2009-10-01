@@ -228,7 +228,6 @@ Rules
 
 "Deleting Double Consonant in Front of Consonant"
  Cx:0 <=> Vow Cx _ %>: s #: ; 
-!          Cx _ [ i:0 | a:0 | u:0 ] [ l | r ] ( %^EPH: ) %>: Vow ;
       where Cx in ( b d f g k l m n p r s t v ) ;
 
 !€ hjall%>s
@@ -239,6 +238,10 @@ Rules
 
 !€ hjall%>ar
 !€ hjall0ar
+
+"Deleting Double Consonant in Front of Epenthesis mark"
+ Cx:0 <=> Cx _ [ i:0 | a:0 | u:0 ] [ l | r ] ( %^EPH: ) %>: Vow ;
+      where Cx in ( b d f g k l m n p r s t v ) ;
 
 !€ himmal%^EPH%^UUML%>um
 !€ him00l000um
@@ -289,7 +292,7 @@ Rules
 
 "u Deletion in unum after Stressed Vowel"
  u:0 <=> Vx %>: _ n u m ;
- 	where Vx in (á é í ó ú ý ) ;
+ 	where Vx in (á é í ó ú ý æ) ;
 
 !€ bý%>unum
 !€ by00num 	

@@ -143,6 +143,8 @@ LIST ACCPREPV = "leggja" "fara" "renda" "koma" "liða" "seta" ;
 
 LIST OBJPREDVERB = "kalla" "doypa" "nevna"  ;
 
+LIST MOVEMENTVERB = "koma" "koyra" ;
+
 # Noun-Verb sets
 
 LIST THIRDSG = Sg 3Sg ;
@@ -384,6 +386,10 @@ REMOVE ("hera" Imp) IF (0 ("her"));
 
 # hon
 SELECT:hon Pron IF (0 ("hon"))(-1 BOS OR NPNH);
+
+# húsi
+REMOVE:húsi ("húsi") IF (*-1 MOVEMENTVERB)(0 ("hús"));
+	    ## koma til húsa.
 
 # ið
 SELECT CS IF (-1 CLB)(0 ("ið"));
@@ -636,9 +642,9 @@ REMOVE:SFregel N IF (0 Sup)(1 VFIN);
 
 SELECT:r57 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) OR (3PRON Pers Sg Nom) LINK NOT *-1 CC BARRIER NPNHA)(1 (Pron Refl Acc)) ;
 
-# This fucking *0 operator still does not work!!
-# REMOVE:test1 (V Ind 1Sg) IF (NOT *0 ("eg" Pron Pers Sg Nom)); 
-# REMOVE:test2 (V Ind 2Sg) IF (NOT *0 ("tú" + Pron + Pers + Sg + Nom)); # Tino!
+
+REMOVE:test1 (V Ind 1Sg) IF (NEGATE 0* ("eg" Pron Pers Sg Nom)); 
+REMOVE:test2 (V Ind 2Sg) IF (NEGATE 0* ("tú" + Pron + Pers + Sg + Nom)); # Tino!
 
 SELECT 1Sg IF (-1 ("eg" Pron Pers Sg Nom));
 

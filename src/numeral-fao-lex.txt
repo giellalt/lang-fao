@@ -116,7 +116,7 @@ LEXICON n
 
 LEXICON ordinals
 fyrsti:fyrst ord-decl ;
-annar+A: ANNAR ;
+annar: ANNAR ;
 triðji:triðj ord-decl ;
 fjórði:fjórð ord-decl ;
 fimti:fimt ord-decl ;
@@ -155,6 +155,10 @@ LEXICON ord-decl
 +A: adj-def ;
 
 LEXICON ANNAR
++A: ANNARMORPH ;
++Pron+Indef: ANNARMORPH ;
+
+LEXICON ANNARMORPH
 +Msc+Nom:annar # ;
 +Msc+Acc:annan # ;
 +Msc+Dat:øðrum # ;

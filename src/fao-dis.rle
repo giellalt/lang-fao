@@ -1059,7 +1059,7 @@ SELECT:coordsubj (@SUBJ>) IF (*-1 CC BARRIER NPNH LINK -1 N)(1 VFIN + Pl);
 
 # Third position subjects, postverbal subjects
 
-SELECT:PostVSubj1 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 BOS OR (@ADVL) OR (@P<) OR COMMA);
+SELECT:PostVSubj1 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 BOS OR (@ADVL) OR (@P<) OR COMMA OR (PUNCT LEFT));
 SELECT:PostVSubj2 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 PUNCT LINK -1 COMMA); # (XX want more conditions)
 
 # Topicalised non-subjects

@@ -1,0 +1,66 @@
+# *************************************************************** #
+# This is a makefile that builds the Faroese morphological parser #
+# *************************************************************** #
+
+LEX = fao-lex.txt \
+	  noun-fao-lex.txt \
+	  noun-fao-morph.txt \
+	  adj-fao-lex.txt \
+	  adj-fao-morph.txt \
+	  verb-fao-lex.txt \
+	  verb-fao-morph.txt \
+	  adv-fao-lex.txt \
+	  abbr-fao-lex.txt \
+	  acro-fao-lex.txt \
+	  pron-fao-lex.txt \
+	  punct-fao-lex.txt \
+	  numeral-fao-lex.txt \
+	  pp-fao-lex.txt \
+	  cc-fao-lex.txt \
+	  cs-fao-lex.txt \
+	  interj-fao-lex.txt \
+	  det-fao-lex.txt
+
+#	  propernoun-fao-lex.txt 
+#	  propernoun-fao-morph.txt 
+
+all: ../bin/fao-gen.hfst ../bin/fao-morph.hfst
+
+../tmp/lexc-all.txt: $(LEX)
+	cat $(LEX) > $@
+
+lexc-fao.bin: ../bin/lexc-fao.bin
+../bin/lexc-fao.bin: ../tmp/lexc-all.txt
+	@echo
+	@echo "*** Building lexc-fao.bin ***" ;
+	@echo
+	printf "compile-source ../tmp/lexc-all.txt\n\
+	save-source ../bin/lexc-fao.bin\n\
+	quit\n" > ../../tmp/fao-lex-save-script
+	hfst-lexc  < ../../tmp/fao-lex-save-script
+	rm -f ../../tmp/fao-lex-save-script
+	
+twol-fao.bin: ../bin/twol-fao.bin
+../bin/twol-fao.bin: twol-fao.txt
+	@echo
+	@echo "*** Building twol-fao.bin ***" ;
+	@echo
+	hfst-twolc twol-fao.txt > $@ 
+
+
+fao-gen.hfst: ../bin/fao-gen.hfst 
+../bin/fao-gen.hfst: ../bin/twol-fao.bin ../bin/lexc-fao.bin
+	@echo
+	@echo "*** Building fao-gen.hfst ***" ;
+	@echo
+	hfst-compose-intersect -l ../bin/lexc-fao.bin ../bin/twol-fao.bin -o $@
+
+fao-morph.hfst: ../bin/fao-morph.hfst
+../bin/fao-morph.hfst: ../bin/fao-gen.hfst
+	@echo
+	@echo "*** Building fao-morph.hfst ***" ;
+	@echo
+	hfst-invert ../bin/fao-gen.hfst -o $@
+
+clean:
+	rm -f ../bin/* ../tmp/*

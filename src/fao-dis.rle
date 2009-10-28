@@ -124,7 +124,7 @@ SET NOT-ACC = TAG - Acc ;
 
 LIST COPULA = "vera" "verða" ;
 
-LIST AUX = "kunna" "skula" "vera" "verða" ;
+LIST AUX = "kunna" "skula" "vera" "verða" "hava" ;
 
 LIST VFIN = Prs Prt Imp Sbj ;
 LIST INDSBJ = Ind Sbj ;
@@ -827,8 +827,12 @@ LIST @<SPRED = @<SPRED ;
 LIST @SPRED> = @SPRED> ;
 LIST @<OPRED = @<OPRED ;
 LIST @OPRED> = @OPRED> ;
-LIST @VAUX = @VAUX ;
-LIST @VMAIN = @VMAIN ;
+LIST @+FAUXV = @+FAUXV ;
+LIST @-FAUXV = @-FAUXV ;
+LIST @+FMAINV = @+FMAINV ;
+LIST @-FMAINV = @-FMAINV ;
+LIST @<ADVL = @<ADVL ;
+LIST @ADVL> = @ADVL> ;
 LIST @ADVL = @ADVL ;
 LIST @P< = @P< ;
 LIST @CC = @CC ;
@@ -839,7 +843,7 @@ LIST @HNOUN = @HNOUN ;
 LIST @Pron< = @Pron< ;
 LIST @X = @X ;
 
-LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@VAUX) (@VMAIN)  (@ADVL) (@P<) (@APP) (@HNOUN) ;
+LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@ADVL) (@<ADVL) (@ADVL>) (@P<) (@APP) (@HNOUN) ;
 
 
 
@@ -854,11 +858,16 @@ ADD:r67 (@CC) TARGET CC ;
 ADD:r68 (@CS) TARGET CS ;
 MAP (@>CS) TARGET ("ein" Det Neu Sg Gen) IF (1 ("og" CS));
 
-MAP:r69 (@VAUX) TARGET AUX + VFIN IF (0*C VINFIN BARRIER CS OR CC);
+MAP:r69 (@+FAUXV) TARGET AUX + VFIN IF (0*C VINFIN BARRIER CS OR CC);
 # Added C. The rule introduces too many imperatives.
 # An laternative restriction would be (0 NOT Imp)
-MAP:r70 (@VMAIN) TARGET V ;
-#MAP (@VMAIN) TARGET VFIN IF (NEGATE 0* VFIN BARRIER CS OR CLB);
+
+MAP (@-FAUXV) TARGET Inf IF (0 AUX)(*-1 AUX BARRIER V) ;
+MAP (@-FMAINV) TARGET Inf IF (*-1 AUX BARRIER V) ;
+
+MAP:r70 (@+FAUXV) TARGET AUX + VFIN ;
+MAP:r70 (@+FMAINV) TARGET V ;
+#MAP (@+FMAINV) TARGET VFIN IF (NEGATE 0* VFIN BARRIER CS OR CLB);
 
 MAP:DetPossGen (@N<) TARGET (Det Poss Sg Gen) IF (-1 N);
 MAP:PostGenPron (@N<) TARGET (Pron Pers Gen) IF (-1C N + Indef)(NOT *1 N + Indef BARRIER NOT-A);
@@ -1175,7 +1184,7 @@ REMOVE:NoHnoun (@HNOUN) IF (0* VFIN);
 
 # Substitute rules
 
-SUBSTITUTE:SUBS_vfin (@VAUX) (@rc-VAUX) TARGET V (*-1 ("sum" CS) BARRIER VFIN OR CLB); 
+SUBSTITUTE:SUBS_vfin (@+FAUXV) (@rc-VAUX) TARGET V (*-1 ("sum" CS) BARRIER VFIN OR CLB); 
 
 
 SUBSTITUTE:AorB (@>N) (@P<) TARGET Det (-1 Pr LINK *-1 Pr)(1 CLB);

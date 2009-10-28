@@ -156,6 +156,35 @@ LIST DATV = "smakka" ;
 
 SET NONVFIN = VINFIN ; # sme compatibility
 
+# Boundary sets
+
+
+
+SET S-BOUNDARY = CS | Interr | (";") | BOS | EOS ;
+
+
+
+
+
+
+SET NOT-CC = WORDMARK - CC ;
+SET NOUNADJ = N | A ;
+
+SET NP-MEMBER = PRE-N | N | Pron ;
+
+LIST TIME = "sunnudagur" ;
+
+
+
+# Semantic sets
+
+
+LIST ABSTRACT = "ráð" "byráð" ;
+
+
+
+
+
 # Syntax tags
 
 LIST @<SUBJ = @<SUBJ ;
@@ -174,6 +203,17 @@ LIST @+FAUXV = @+FAUXV ;
 LIST @-FAUXV = @-FAUXV ;
 LIST @+FMAINV = @+FMAINV ;
 LIST @-FMAINV = @-FMAINV ;
+
+LIST @-FSUBJ> = @-FSUBJ> ;
+LIST @-F<OBJ = @-F<OBJ ;
+LIST @-FOBJ> = @-FOBJ> ;
+LIST @SPRED<OBJ = @SPRED<OBJ ;
+LIST @-FADVL = @-FADVL ;
+
+SET FOBJ = @-F<OBJ OR @-FOBJ> ; 
+SET FMAINV = @-FMAINV OR @+FMAINV ;
+SET FAUXV = @-FAUXV OR @+FAUXV ;
+
 LIST @<ADVL = @<ADVL ;
 LIST @ADVL> = @ADVL> ;
 LIST @ADVL = @ADVL ;
@@ -182,7 +222,15 @@ LIST @CC = @CC ;
 LIST @CS = @CS ;
 LIST @>CS = @>CS ;
 #LIST @CC-VP = @CC-VP ;
-LIST @APP = @APP 
+LIST @APP = @APP ;
+
+LIST @IMV = @IMV ;             # infinite main verb
+LIST @ICL-ADVL = @ICL-ADVL ;             # non-finite subclause ...
+LIST @ICL-AUX< = @ICL-AUX< ;             # "right" argument of auxiliary (?)
+LIST @ICL-OBJ = @ICL-OBJ ; 	         # non-finite subclause ...
+LIST @ICL-STA = @ICL-STA ; 	         # non-finite subclause ...
+LIST @HNOUN = @HNOUN ;
+
 LIST @X = @X ;
 
 LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>)  (@>N)  (@N<)  (@SPRED) (@OPRED) (@+FAUXV) (@+FMAINV)  (@-FAUXV) (@-FMAINV)  (@<ADVL) (@ADVL>) (@ADVL) (@P<) (@APP) ;
@@ -200,7 +248,7 @@ LIST @IAUX = @IAUX ;
 LIST @FS-IAUX = @FS-IAUX ;
 LIST <mv> = <mv> ;
 LIST <aux> = <aux> ;
-LIST @V = @FMV @IMV @FAUX @IAUX @FS-STA @FS-IMV @FS-N<IMV @FS-N< @FS-IAUX @FS-N<IAUX ;
+LIST @V = @FMV @FAUX @IMV @IAUX @FS-STA @FS-IMV @FS-N<IMV @FS-N< @FS-IAUX @FS-N<IAUX ; # 
 LIST @MCLV = @FMV @IMV @FAUX @IAUX ;
 LIST @SCLV = @FS-STA @FS-IMV @FS-N<IMV @FS-N< @FS-IAUX @FS-N<IAUX;
 LIST @FV = @FMV @FAUX ;
@@ -240,39 +288,31 @@ SUBSTITUTE:SubV=mv (V) (<mv> V) TARGET @MV ;
 SUBSTITUTE:SubV=aux (V) (<aux> V) TARGET @AUX ;
 
 # infinite clauses:
-SUBSTITUTE:SubV=mvICL (V) (<mv> V) TARGET NONVFIN (0 @<OBJ LINK NEGATE *1 @IMV BARRIER S-BOUNDARY2 OR V) ;
-SUBSTITUTE:SubV=auxICL (V) (<aux> V) TARGET NONVFIN (0 AUX LINK 0 @<OBJ LINK *1 @IMV BARRIER S-BOUNDARY2 OR V) ;
+SUBSTITUTE:SubV=mvICL (V) (<mv> V) TARGET NONVFIN (0 @<OBJ LINK NEGATE *1 (@IMV) BARRIER S-BOUNDARY OR V) ;
+SUBSTITUTE:SubV=auxICL (V) (<aux> V) TARGET NONVFIN (0 AUX LINK 0 @<OBJ LINK *1 @IMV BARRIER S-BOUNDARY OR V) ;
 
 # the finite verb
 # ------------------
 
-SUBSTITUTE (@FAUX) (@FS-STA) TARGET V (0 Neg LINK 1 GOSTEGE) ;
-SUBSTITUTE (@FAUX) (@FS-STA) TARGET V (*-1 Neg BARRIER VFIN)(0 (Neg Foc/ge)) ;
-    ## Muhtun geasi nieida jávkkai, ja olbmot ohce su, muhto eai gávdnan su eai gostege, eaige diehtán gosa lei šaddan.
-
-
 # in subclauses:
-SUBSTITUTE:SubV=FS-STAmv (@FMV)(@FS-STA) TARGET V ((*-1 CS BARRIER VFIN) OR (*-1 MO BARRIER VFIN LINK NEGATE *1 ("?"))) ;
-SUBSTITUTE:SubV=FS-STAmv (@FMV)(@FS-STA) TARGET V ((*-1 CC LINK NOT 0 ("de") BARRIER @V LINK *-1 (@FS-STA) BARRIER @V)) ;
+SUBSTITUTE:SubV=FS-STAmv (@FMV)(@FS-STA) TARGET V ((*-1 CS BARRIER VFIN));
 SUBSTITUTE:SubV=FS-IMVcs (@IMV) (@FS-IMV) TARGET V (*-1 (<aux>) BARRIER @MV LINK NOT 0 (@FAUX) LINK *-1 CS BARRIER @MCLV) ;
-SUBSTITUTE:SubV=FS-IMVmo (@IMV) (@FS-IMV) TARGET V (*-1 (<aux>) BARRIER @MV LINK *-1 MO BARRIER @MV LINK NEGATE *1 ("?")) ;
-SUBSTITUTE:SubVmain=FS-STAaux (@FAUX) (@FS-STA) TARGET V ((*-1 CS BARRIER VFIN) OR (*-1 MO BARRIER VFIN LINK NEGATE *1 ("?"))) ;
-SUBSTITUTE:SubVmain=FS-STAaux (@FAUX) (@FS-STA) TARGET V (*-1 CC LINK NOT 0 ("de") BARRIER @V LINK *-1 (@FS-STA) BARRIER VFIN) ;
+SUBSTITUTE:SubVmain=FS-STAaux (@FAUX) (@FS-STA) TARGET V (*-1 CC BARRIER @V LINK *-1 (@FS-STA) BARRIER VFIN) ;
 SUBSTITUTE:SubV=FS-IAUXcs (@IAUX) (@FS-IAUX) TARGET V (*-1 (<aux>) BARRIER @MV LINK *-1 CS BARRIER @MV) ;
-SUBSTITUTE:SubV=FS-IAUXmo (@IAUX) (@FS-IAUX) TARGET V (*-1 (<aux>) BARRIER @MV LINK *-1 MO BARRIER VFIN LINK NEGATE *1 ("?")) ;
+SUBSTITUTE:SubV=FS-IAUXmo (@IAUX) (@FS-IAUX) TARGET V (*-1 (<aux>) BARRIER @MV ) ;
 SUBSTITUTE:SubV=FS-IMVcs (@IAUX) (@FS-IAUX) TARGET V (*-1 (<aux>) BARRIER @MV LINK 0 (@FS-STA)) ;
 SUBSTITUTE:SubV=FS-IMVcs (@IMV) (@FS-IMV) TARGET V (*-1 (<aux>) BARRIER @MV LINK 0 (@FS-IAUX) OR (@FS-STA)) ;
 
 # in relative clauses:
-SUBSTITUTE:SubV=FS-Nmv (@FMV) (@FS-N<) TARGET V (*-1 Rel BARRIER VFIN) ;
-#SUBSTITUTE (@FAUX) (@FS-N<) TARGET V (*-1 Rel BARRIER COMMA)(0 Neg LINK 1 GOSTEGE) ;
-SUBSTITUTE:SubV=FSN-IMV (@IMV) (@FS-N<IMV) TARGET V (*-1 (<aux>) BARRIER @MV LINK *-1 Rel BARRIER COMMA OR CS) ;
-SUBSTITUTE:SubVmain=FS-Naux (@FAUX) (@FS-N<) TARGET V (*-1 Rel BARRIER VFIN) ;
-SUBSTITUTE:SubV=FSN-IAUX (@IAUX) (@FS-N<IAUX) TARGET V (*-1 (<aux>) BARRIER @MV LINK *-1 Rel BARRIER @MV) ;
+SUBSTITUTE:SubV=FS-Nmv (@FMV) (@FS-N<) TARGET V (*-1 Interr BARRIER VFIN) ;
+#SUBSTITUTE (@FAUX) (@FS-N<) TARGET V (*-1 Interr BARRIER COMMA)(0 Neg LINK 1 GOSTEGE) ;
+SUBSTITUTE:SubV=FSN-IMV (@IMV) (@FS-N<IMV) TARGET V (*-1 (<aux>) BARRIER @MV LINK *-1 Interr BARRIER COMMA OR CS) ;
+SUBSTITUTE:SubVmain=FS-Naux (@FAUX) (@FS-N<) TARGET V (*-1 Interr BARRIER VFIN) ;
+SUBSTITUTE:SubV=FSN-IAUX (@IAUX) (@FS-N<IAUX) TARGET V (*-1 (<aux>) BARRIER @MV LINK *-1 Interr BARRIER @MV) ;
 
 
-SUBSTITUTE:SubV=FS-STAmv (@FMV)(@FS-STA) TARGET V ((*-1 CS BARRIER @V LINK *-1 @V) OR (*-1 MO BARRIER @V LINK NEGATE *1 ("?") LINK *-1 @V)) ;
-SUBSTITUTE:SubV=FS-STAmv (@FMV)(@FS-STA) TARGET V ((*-1 CS BARRIER @V LINK *-1 @V) OR (*-1 MO BARRIER @V LINK NEGATE *1 ("?") LINK *-1 @V)) ;
+SUBSTITUTE:SubV=FS-STAmv (@FMV)(@FS-STA) TARGET V ((*-1 CS BARRIER @V LINK *-1 @V)) ;
+SUBSTITUTE:SubV=FS-STAmv (@FMV)(@FS-STA) TARGET V ((*-1 CS BARRIER @V LINK *-1 @V)) ;
 
 # infinite clauses:
 SUBSTITUTE:SubV=iclaux (@<OBJ) (@ICL-OBJ) TARGET NONVFIN (*-1 @-FSUBJ> BARRIER @V) ;

@@ -616,7 +616,7 @@ LEXICON s72 ! eta
 :et       pres-ur ;
 :át       prt-null-s ;
 :ót       prt-u-p ;
-:eti      sup-a ;
+:et       sup-null ;
 :et       imp-prsptc ;
 +V+PrfPrc:et%>in   l26 ;
 
@@ -1157,8 +1157,8 @@ LEXICON VERÐA
 +Ind+Prs+2Sg:verð%>ur # ;
 +Ind+Prs+3Sg:verð%>ur # ;
 +Ind+Prs+Pl:verða # ;
-+Ind+Prt+3Sg:varð # ;
-+Ind+Prt+3Sg:varðst # ;
++Ind+Prt+1Sg:varð # ;
++Ind+Prt+2Sg:varðst # ;
 +Ind+Prt+3Sg:vórð # ;
 +Ind+Prt+Pl:vórðu # ;
 +Imp+Sg:verð # ;
@@ -1237,19 +1237,35 @@ LEXICON LIGGJA
 +PrfPrc:igin PASS ; ! XXX fix link to adj
 +Sup:igið PASS ;
 
+LEXICON RADA
++Inf:ráða PASS ;
++Ind+Prs+1Sg:ræði PASS ;
++Ind+Prs+2Sg:ræður PASS ;
++Ind+Prs+3Sg:ræður PASS ;
++Ind+Prs+Pl:ráða PASS ;
++Ind+Prt+Sg:ráddi PASS ;
++Ind+Prt+Sg:ræð PASS ; ! old form
++Ind+Prt+Pl:ráddu PASS ;
++Imp+Sg:ráð PASS ;
++Imp+Pl:ráðið PASS ;
++PrsPrc:ráðandi PASS ;
++PrfPrc:ráðin PASS ;
++Sup:rátt PASS ;
++Sup:ráðið PASS ; ! old form
+
 !LEXICON 
-!+Inf:
-!+Ind+Prs+1Sg:
-!+Ind+Prs+2Sg:
-!+Ind+Prs+3Sg:
-!+Ind+Prs+Pl:
-!+Ind+Prt+Sg:
-!+Ind+Prt+Pl:
-!+Imp+Sg:
-!+Imp+Pl:
-!+PrsPrc:
-!+PrfPrc:
-!+Sup:
+!+Inf: PASS ;
+!+Ind+Prs+1Sg: PASS ;
+!+Ind+Prs+2Sg: PASS ;
+!+Ind+Prs+3Sg: PASS ;
+!+Ind+Prs+Pl: PASS ;
+!+Ind+Prt+Sg: PASS ;
+!+Ind+Prt+Pl: PASS ;
+!+Imp+Sg: PASS ;
+!+Imp+Pl: PASS ;
+!+PrsPrc: PASS ;
+!+PrfPrc: PASS ;
+!+Sup: PASS ;
 
 
 

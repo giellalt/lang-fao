@@ -141,7 +141,7 @@ LIST DATV = "bjóða" "smakka" "takka" ; # "undirvísa"
 LIST DATPREPV = "liggja" "vera" "standa" "fiska" "vera"; # use only ACCPREPV
 LIST ACCPREPV = "leggja" "fara" "renda" "koma" "liða" "seta" ;
 
-LIST OBJPREDVERB = "kalla" "doypa" "nevna"  ;
+LIST OBJPREDVERB = "kalla" "doypa" "nevna" "taka"  ;
 
 LIST MOVEMENTVERB = "koma" "koyra" ;
 
@@ -904,7 +904,7 @@ MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl) BARRIER CLB);#(":" 
 MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
 
 ADD:rOPR1 (@<OBJ) TARGET (N Acc) OR (Pron Acc) IF (*-1 OBJPREDVERB BARRIER Pr OR S-BOUNDARY)(*1 N + Acc BARRIER NPNHA);
-MAP:rOPR2 (@<OPRED) TARGET (N Acc) OR (Pron Acc) IF (*-1 NOMINALHEAD + Acc BARRIER NPNHA LINK *-1 OBJPREDVERB BARRIER S-BOUNDARY);
+MAP:rOPR2 (@<OPRED) TARGET (N Acc) OR (Pron Acc) OR (A Acc) IF (*-1 NOMINALHEAD + Acc BARRIER NPNHA LINK *-1 OBJPREDVERB BARRIER S-BOUNDARY);
 
 MAP:r78 (@<OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr OR S-BOUNDARY);
 MAP:r78 (@<OBJ) TARGET (Det Acc) (*-1 V BARRIER Pr OR S-BOUNDARY)(NOT *1 N BARRIER NPNHA);
@@ -1137,13 +1137,13 @@ SELECT Pl IF (-1 Pl + (@SUBJ>) LINK *-1 S-BOUNDARY BARRIER NOT-CC)(0 V);
 # OPRED
 
 REMOVE (@SUBJ>) IF (0 (@<OPRED));
-
+REMOVE (@<ADVL) IF (0 (@<OPRED));
 # Postsyntactical verbal dis
 
 #SELECT:r116 Ind IF (NEGATE 0* VFIN);
 
-
-
+#SELECT Neu IF (0C (@<OPRED))(*-1 (@<OBJ) + Neu OR (@<OBJ) + ("tað"));
+#so, does OPRED agree with OBJ or with SUBJ?
 
 SELECT (3Sg) IF (-1C (Sg @SUBJ>));
 

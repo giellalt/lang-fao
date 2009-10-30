@@ -1250,8 +1250,10 @@ LEXICON RADA
 +Imp+Pl:ráðið PASS ;
 +PrsPrc:ráðandi PASS ;
 +PrfPrc:ráðin PASS ;
-+Sup:rátt PASS ;
-+Sup:ráðið PASS ; ! old form
+! The following two lines are commented out because they cause
+! a segmentation fault in lexc!!!
+!+Sup:rátt PASS ;
+!+Sup:ráðið PASS ; ! old form
 
 !LEXICON 
 !+Inf: PASS ;

@@ -41,6 +41,7 @@ LIST Pr = Pr ;
 LIST Pron = Pron ;
 LIST Pers = Pers ;
 LIST Det = Det ;
+LIST Dem = Dem ;
 LIST Refl = Refl ;
 LIST Recipr = Recipr ;
 LIST Poss = Poss ;
@@ -882,11 +883,11 @@ MAP:r69 (@+FAUXV) TARGET AUX + VFIN IF (0*C VINFIN BARRIER CS OR CC);
 # Added C. The rule introduces too many imperatives.
 # An laternative restriction would be (0 NOT Imp)
 
-MAP (@-FAUXV) TARGET Inf IF (0 AUX)(*-1 AUX BARRIER V) ;
-MAP (@-FMAINV) TARGET Inf IF (*-1 AUX BARRIER V) ;
+MAP (@-FAUXV) TARGET VINFIN IF (0 AUX)(*-1 AUX BARRIER V) ;
+MAP (@-FMAINV) TARGET VINFIN IF (*-1 AUX BARRIER V) ;
 
 MAP:r70 (@+FAUXV) TARGET AUX + VFIN ;
-MAP:r70 (@+FMAINV) TARGET V ;
+MAP:r70 (@+FMAINV) TARGET VFIN ;
 #MAP (@+FMAINV) TARGET VFIN IF (NEGATE 0* VFIN BARRIER CS OR CLB);
 
 MAP:DetPossGen (@N<) TARGET (Det Poss Sg Gen) IF (-1 N);

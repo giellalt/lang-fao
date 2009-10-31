@@ -346,8 +346,8 @@ REMOVE:r1 (Num) IF (0 ("ein" Det))(*1 N OR A BARRIER NPNHA);
 
 SELECT:InternalProp Prop IF (NOT -1 (CLB OR PUNCT OR LEFT))(NOT 0 Guess);
 
-# Specific lexemes
-# ================
+# Specific lexemes, words 
+# =======================
 
 # at
 SELECT CS IF (-2 ("av"))(-1 ("tað"))(0 ("at"));
@@ -367,6 +367,10 @@ SELECT ("bara" Adv) IF (*1 N OR A BARRIER NPNH);
 # eg
 SELECT:eg ("eg" Pron Pers Pl Nom) IF (*1 (V Pl) BARRIER NOT-ADV); #(*1 V + Pl BARRIER NOT-ADV);
 	  ## Vit mugu sleppa.
+
+# ein
+REMOVE ("eini") IF (0 Dat + Dat )(1 A + Dat OR N + Dat) ;
+
 
 # eingin
 SELECT:eingin ("eingin") IF (-1 ("til"))(0 Gen);
@@ -433,6 +437,25 @@ SELECT Adv IF (-1 NPNH)(1 Ind OR Sbj);
 
 REMOVE:r5 Det IF (0 Pers)(NEGATE 0 Gen LINK -1 N)(NOT 1 NPNHA OR N);
 
+
+# um
+REMOVE Imp IF (0 ("um")) ;
+# This is against the verb ymja, súsa, brúsa, dynja, (kvæð.) munnur og nasar umdu í blóði 
+# (blóðið fossaði)
+# In order to write a good rule for this we need examples of imperative use (which is "um").
+# I did not intend to write a 'remove all ymja' rule, but simply cannot come up with good 
+# contexts including 'ymja' but excluding 'um'.
+
+# væl
+REMOVE Imp IF (NOT -1 BOS)(0 ("væl"))(NOT 1 ("um"));
+# Again, we need real-life examples for imperative of
+# væla 2 -di s 1: ~ um 1 bøta um, hjálpa upp á, umvæla, ~ um húsini 
+#     2 (sj.) hjúkla um, hugsa ikki um at ~ um meg
+
+# á
+REMOVE Interj IF (1 WORD)(0 ("á" Pr));
+REMOVE Interj IF (-1 V)(0 ("á" Pr));
+
 # General adverb
 SELECT:r6 Adv IF (-1 DATPREP)(*1 Dat BARRIER NPNHA);
 
@@ -441,9 +464,6 @@ SELECT:r7 Adv IF (-1 VFIN)(1 Inf);
 REMOVE Adv IF (-1 Det OR Pr)(0 A)(1 N);
        ## ið stakk í bleyta jørð,
 
-# á
-REMOVE Interj IF (1 WORD)(0 ("á" Pr));
-REMOVE Interj IF (-1 V)(0 ("á" Pr));
 
 
 # Idioms

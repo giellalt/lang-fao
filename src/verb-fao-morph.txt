@@ -1032,7 +1032,7 @@ LEXICON imppl
 +V+Imp+Pl:%^JI%>ið PASS ;
 
 LEXICON prsptc
-+V+PrsPtc:%>andi PASS ;
++V+PrsPtc:%>andi VANDI ;
 +A:%>andi HOMONYM-ADJ-FORMS ;
 
 ! Supine and preterite participle
@@ -1067,7 +1067,7 @@ LEXICON BLÍVA
 +Ind+Prt+Pl:blivu PASS ;
 +Imp+Sg:blív PASS ;
 +Imp+Pl:blívið PASS ;
-+PrsPtc:blívandi PASS ;
++PrsPtc:blívandi VANDI ;
 +PrfPrc:blívin PASS ;
 +Sup:blívið PASS ;
 
@@ -1078,7 +1078,7 @@ LEXICON EIGA
 +Ind+Prs+2Sg:eig%>ur PASS ;
 +Ind+Prt+Sg:átti PASS ;
 +Ind+Prt+Pl:áttu PASS ;
-+PrsPtc:eigandi PASS ;
++PrsPtc:eigandi VANDI ;
 +PrfPrc:eigin PASS ;
 +Sup:eigið  PASS ;
 
@@ -1092,7 +1092,7 @@ LEXICON HAVA
 +Ind+Prt+Pl:høvdu PASS ;
 +Imp+Sg:hav PASS ;
 +Imp+Pl:havið PASS ;
-+PrsPtc:havandi PASS ;
++PrsPtc:havandi VANDI ;
 +PrfPrc:havd%>ur PASS ;
 +Sup:havt PASS ;
 
@@ -1201,7 +1201,7 @@ LEXICON SÍGGJA
 +Imp+Sg:síggj PASS ;
 +Imp+Sg:sí PASS ;
 +Imp+Pl:síggið PASS ;
-+PrsPrc:síggjandi PASS ;
++PrsPrc:síggjandi VANDI ;
 +PrfPrc:sædd%>ur PASS ;
 +Sup:sæð PASS ;
 +Sup:sætt PASS ;
@@ -1233,7 +1233,7 @@ LEXICON LIGGJA
 +Ind+Prt+Pl:ógu PASS ;
 +Imp+Sg:igg PASS ;
 +Imp+Pl:iggið PASS ;
-+PrsPrc:iggjandi PASS ;
++PrsPrc:iggjandi VANDI ;
 +PrfPrc:igin PASS ; ! XXX fix link to adj
 +Sup:igið PASS ;
 
@@ -1248,12 +1248,22 @@ LEXICON RADA
 +Ind+Prt+Pl:ráddu PASS ;
 +Imp+Sg:ráð PASS ;
 +Imp+Pl:ráðið PASS ;
-+PrsPrc:ráðandi PASS ;
++PrsPrc:ráðandi VANDI ;
 +PrfPrc:ráðin PASS ;
 ! The following two lines are commented out because they cause
 ! a segmentation fault in lexc!!!
 !+Sup:rátt PASS ;
 !+Sup:ráðið PASS ; ! old form
+
+LEXICON DAMA
+inf ;
+pres-ar ;
+pret-a ;
+pret-d ;
+pret-t ; ! rare
+imp-prsptc ;
+sup ;
++V+PrfPrc:%> l7 ;
 
 !LEXICON 
 !+Inf: PASS ;
@@ -1276,3 +1286,7 @@ LEXICON RADA
 LEXICON PASS
  # ; ! Verbs as usual
  +Pass:%^PASS%>st # ;
+
+LEXICON VANDI
+ # ; ! Verbs as usual
+ andi ; ! participles

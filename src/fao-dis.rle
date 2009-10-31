@@ -389,7 +389,7 @@ REMOVE ("hera" Imp) IF (0 ("her"));
 	# Cannot come up with a condition calling for Imp of "hera"
 
 # hon
-SELECT:hon Pron IF (0 ("hon"))(-1 BOS OR NPNH);
+SELECT:hon Pron IF (0 ("hon"))(NOT 0 PRE-N);
 
 # húsi
 REMOVE:húsi ("húsi") IF (*-1 MOVEMENTVERB)(0 ("hús"));

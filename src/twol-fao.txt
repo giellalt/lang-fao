@@ -227,7 +227,7 @@ Rules
 
 
 "Deleting Double Consonant in Front of Consonant"
- Cx:0 <=> Vow Cx _ (Dummy:) %>: s #: ; 
+ Cx:0 <=> Vow Cx _ ( ( u: r: ) Dummy:) %>: s #: ; 
       where Cx in ( b d f g k l m n p r s t v ) ;
 
 !€ hjall%>s
@@ -340,7 +340,7 @@ Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
 ! Verbal Sandhi rules
 
 "ð Assimilation in Front of Dental Past Suffix -d(i)"
- ð:d <=> Vow _ %>: d [ #: | i | u ] ;
+ ð:d <=> Vow _ %>: d (%>:) [ #: | Vow ] ;
  
 !€ leið%>di
 !€ leid0di 
@@ -352,7 +352,7 @@ Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
 !€ leit0t
 
 "Adjusting Dental Past Suffix -d(i)"
- d:t <=> [ p | t | k | s ] %>: _ [ #: | i | u ] ;
+ d:t <=> [ p | t | k | s ] %>: _ (%>:) [ #: | Vow ] ;
 
 !€ keyp%>di
 !€ keyp0ti

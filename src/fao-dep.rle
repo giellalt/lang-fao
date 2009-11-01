@@ -193,6 +193,8 @@ LIST @<OBJ = @<OBJ ;
 LIST @OBJ> = @OBJ> ;
 LIST @>N = @>N ;
 LIST @N< = @N< ;
+LIST @>A = @>A ;
+LIST @A< = @A< ;
 LIST @SPRED = @SPRED ;
 LIST @<SPRED = @<SPRED ;
 LIST @SPRED> = @SPRED> ;
@@ -233,7 +235,7 @@ LIST @HNOUN = @HNOUN ;
 
 LIST @X = @X ;
 
-LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>)  (@>N)  (@N<)  (@SPRED) (@OPRED) (@+FAUXV) (@+FMAINV)  (@-FAUXV) (@-FMAINV)  (@<ADVL) (@ADVL>) (@ADVL) (@P<) (@APP) ;
+LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>A) (@A<) (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@ADVL) (@<ADVL) (@ADVL>) (@P<) (@APP) (@HNOUN) ;
 
 LIST @SUBJ = @<SUBJ @SUBJ> ;
 LIST @OBJ = @<OBJ @OBJ> ;

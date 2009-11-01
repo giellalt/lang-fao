@@ -137,8 +137,9 @@ LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
 
 LIST MODV = "kunna" "láta" "skula" "vilja" "munna" "mega" ;
 
-LIST DATV = "bjóða" "smakka" "takka" ; # "undirvísa" 
-
+LIST DATV = "bjóða" "hýsa" "sleppa" "smakka" "takka" ; # "undirvísa" 
+ # sleppa3 = sleppa manninum leysum
+ 
 LIST DATPREPV = "liggja" "vera" "standa" "fiska" "vera"; # use only ACCPREPV
 LIST ACCPREPV = "leggja" "fara" "renda" "koma" "liða" "seta" ;
 
@@ -844,6 +845,8 @@ LIST @OBJ> = @OBJ> ;
 LIST @IOBJ> = @IOBJ> ;
 LIST @>N = @>N ;
 LIST @N< = @N< ;
+LIST @>A = @>A ;
+LIST @A< = @A< ;
 LIST @<SPRED = @<SPRED ;
 LIST @SPRED> = @SPRED> ;
 LIST @<OPRED = @<OPRED ;
@@ -864,7 +867,7 @@ LIST @HNOUN = @HNOUN ;
 LIST @Pron< = @Pron< ;
 LIST @X = @X ;
 
-LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@ADVL) (@<ADVL) (@ADVL>) (@P<) (@APP) (@HNOUN) ;
+LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>A) (@A<) (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@ADVL) (@<ADVL) (@ADVL>) (@P<) (@APP) (@HNOUN) ;
 
 
 

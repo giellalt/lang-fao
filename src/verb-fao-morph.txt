@@ -12,8 +12,8 @@ standard-ir ;  ! Verbal forms
 +V+PrfPrc:%>d l7 ;      ! Adjectival forms
 
 LEXICON s2  ! keypa
-standard-ir ;
-+V+PrfPrc:%>d l39 ;
+standard-ir-t ;
++V+PrfPrc:%>t l39 ;
 
 LEXICON s3  ! leiða
 standard-ir ;
@@ -675,6 +675,12 @@ reflinf ;
 ! Split lexica
 ! ============
 
+! The lexicon names are, as always, from FO.
+! Now, these are just mechanically split.
+! They should be split more precisely,
+! just like s2/1, in order to keep
+! things minimal.
+
 LEXICON s1/26
 s1 ;
 s26 ;
@@ -701,7 +707,7 @@ s30 ;
 
 LEXICON s2/1
 s2 ;
-s1 ;
+prt-d ; ! this is the s1 part
 
 LEXICON s2/30
 s2 ;
@@ -856,13 +862,19 @@ s30 ;
 
 LEXICON standard-ir
  inf ;
+ prt-d ;
+ ir-verb ;
+
+LEXICON standard-ir-t
+ inf ;
+ prt-t ; !XXX skilti
  ir-verb ;
 
 LEXICON standard-j-ir-t
-   prt-t ; !XXX skilti
-   standard-j-ir-nopret ;
+  prt-t ; !XXX skilti
+  standard-j-ir-nopret ;
 
-! possibly also
+! possibly also (no, handled by s1/2
 !LEXICON standard-j-ir-td
 !   prt-t ;
 !   prt-d ;
@@ -882,7 +894,6 @@ LEXICON standard-j-ir-nopret
 
 LEXICON ir-verb
 pres-ir ;
-prt-d ;
 imp-prsptc ;
 sup ;
 

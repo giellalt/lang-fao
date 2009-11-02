@@ -356,6 +356,16 @@ SETPARENT:r6 @P< TO (*-1 Pr BARRIER NPNH);
 
 
 
+
+### ellipse
+SETPARENT:SetSubjtoLeftMV @<SUBJ TO (*-1 @CVP BARRIER @V LINK *-1 VFIN) ;
+    ## Ovdal buorida son dálkkiidis go neavrres olmmoš dábiidis.
+SETPARENT:SetSubjtoRightMV @SUBJ> TO (*1 @CVP BARRIER @V LINK *1 VFIN) ;
+    ## Mađe losit siivu, dađe njoazebut manná mátki.
+
+
+
+
 ### S
 
 
@@ -416,6 +426,24 @@ SETPARENT:r24 @CVP TO (*-1 (@MAINV));
 SETPARENT:r25 @CNP (-1 BOS OR CLB OR LEFT) TO (*1  (@MAINV)) ;
 
 SETPARENT:2vCC @CNP TO (1 VFIN);
+
+
+### subjunction and coordination
+
+#SETPARENT:SetCcsToCs @COMP-CS< TO (*-1 CS) ;
+SETPARENT:SetCCellipse KONJ + @CVP TO (*1 @<SUBJ BARRIER VFIN) ;
+SETPARENT:SetCCellipse KONJ + @CVP TO (*1 KONJ + @CVP BARRIER @V LINK *-1 @SUBJ> BARRIER @CVP) ;
+SETPARENT:SetCCToCC (CC @CVP) TO (1 CS) ;
+SETPARENT:SetKonjToFMV KONJ + @CVP TO (*1 @FMV) ;
+SETPARENT:SetKonjToV KONJ + @CVP TO (*1 VFIN OR NONVFIN BARRIER S-BOUNDARY2) ;
+
+### coordination
+
+SETPARENT:SetCNPToWord @CNP TO (*-1 WORD) ;
+SETPARENT:SetCNPToWord @CVP + CC TO (*-1 WORD) ;
+
+
+
 
 ### Relative clause
 

@@ -180,7 +180,7 @@ SET SOMEACCDATPREP = ACCDATPREP | ACCDATGENPREP ;
 # Boundary sets
 
 SET S-BOUNDARY = CS | Interr | (";") | BOS | EOS ;
-
+SET S-BOUNDARY2 = CS | Interr | (";") | BOS | EOS | (@CVP) ;
 
 # Complementary set
 
@@ -859,15 +859,15 @@ LIST @<ADVL = @<ADVL ;
 LIST @ADVL> = @ADVL> ;
 LIST @ADVL = @ADVL ;
 LIST @P< = @P< ;
-LIST @CC = @CC ;
-LIST @CS = @CS ;
+LIST @CNP = @CNP ;
+LIST @CVP = @CVP ;
 LIST @>CS = @>CS ;
 LIST @APP = @APP ;
 LIST @HNOUN = @HNOUN ;
 LIST @Pron< = @Pron< ;
 LIST @X = @X ;
 
-LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>A) (@A<) (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@ADVL) (@<ADVL) (@ADVL>) (@P<) (@APP) (@HNOUN) ;
+LIST SYNTAG = (@CNP) (@CVP) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>A) (@A<) (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@ADVL) (@<ADVL) (@ADVL>) (@P<) (@APP) (@HNOUN) ;
 
 
 
@@ -878,8 +878,8 @@ LIST SYNTAG = (@CC) (@CS) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (
 
 
 MAP (@INTERJ) TARGET Interj ;  
-ADD:r67 (@CC) TARGET CC ;
-ADD:r68 (@CS) TARGET CS ;
+ADD:r67 (@CNP) TARGET CC ;
+ADD:r68 (@CVP) TARGET CS ;
 MAP (@>CS) TARGET ("ein" Det Neu Sg Gen) IF (1 ("og" CS));
 
 MAP:r69 (@+FAUXV) TARGET AUX + VFIN IF (0*C VINFIN BARRIER CS OR CC);

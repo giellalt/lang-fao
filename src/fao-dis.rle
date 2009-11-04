@@ -125,7 +125,7 @@ SET NOT-ACC = TAG - Acc ;
 
 LIST COPULA = "vera" "verða" ;
 
-LIST AUX = "kunna" "skula" "vera" "verða" "hava" ;
+LIST AUX = "kunna" "skula" "vera" "verða" "hava" "munna" ;
 
 LIST VFIN = Prs Prt Imp Sbj ;
 LIST INDSBJ = Ind Sbj ;
@@ -881,6 +881,8 @@ MAP (@INTERJ) TARGET Interj ;
 ADD:r67 (@CNP) TARGET CC ;
 ADD:r68 (@CVP) TARGET CS ;
 MAP (@>CS) TARGET ("ein" Det Neu Sg Gen) IF (1 ("og" CS));
+
+MAP:ONEV (@+FMAINV) TARGET VFIN IF (NEGATE *0 VERB BARRIER S-BOUNDARY2);
 
 MAP:r69 (@+FAUXV) TARGET AUX + VFIN IF (0*C VINFIN BARRIER CS OR CC);
 # Added C. The rule introduces too many imperatives.

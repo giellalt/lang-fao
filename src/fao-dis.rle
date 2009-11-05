@@ -186,6 +186,7 @@ SET S-BOUNDARY2 = CS | Interr | (";") | BOS | EOS | (@CVP) ;
 
 # Case sets
 
+SET NOTNOM = Dat | Gen | Acc ;
 SET NOTDAT = Nom | Gen | Acc ;
 SET NOTACC = Nom | Gen | Dat ;
 SET NOTACCDAT = Nom | Gen ;
@@ -882,7 +883,7 @@ ADD:r67 (@CNP) TARGET CC ;
 ADD:r68 (@CVP) TARGET CS ;
 MAP (@>CS) TARGET ("ein" Det Neu Sg Gen) IF (1 ("og" CS));
 
-MAP:ONEV (@+FMAINV) TARGET VFIN IF (NEGATE *0 VERB BARRIER S-BOUNDARY2);
+MAP:ONEV (@+FMAINV) TARGET VFIN IF (NEGATE *0 V BARRIER S-BOUNDARY2);
 
 MAP:r69 (@+FAUXV) TARGET AUX + VFIN IF (0*C VINFIN BARRIER CS OR CC);
 # Added C. The rule introduces too many imperatives.
@@ -1062,12 +1063,12 @@ SELECT (N Pl) IF (1C  Poss + Pl + @N<);
 
 SELECT (Poss $$NAGD) IF (-1C N + $$NAGD)(0 (@N<));
 
-REMOVE (Det Msc) IF (NOT 0 Poss)(1C (N Neu));
-REMOVE (Det Fem) IF (NOT 0 Poss)(1C (N Neu));
-REMOVE (Det Neu) IF (NOT 0 Poss)(1C (N Msc));
-REMOVE (Det Fem) IF (NOT 0 Poss)(1C (N Msc));
-REMOVE (Det Msc) IF (NOT 0 Poss)(1C (N Fem));
-REMOVE (Det Neu) IF (NOT 0 Poss)(1C (N Fem));
+REMOVE (Det Msc) IF (NOT 0 Poss)(*1C (N Neu) BARRIER NPNH);
+REMOVE (Det Fem) IF (NOT 0 Poss)(*1C (N Neu) BARRIER NPNH);
+REMOVE (Det Neu) IF (NOT 0 Poss)(*1C (N Msc) BARRIER NPNH);
+REMOVE (Det Fem) IF (NOT 0 Poss)(*1C (N Msc) BARRIER NPNH);
+REMOVE (Det Msc) IF (NOT 0 Poss)(*1C (N Fem) BARRIER NPNH);
+REMOVE (Det Neu) IF (NOT 0 Poss)(*1C (N Fem) BARRIER NPNH);
 
 #REMOVE (@SUBJ>) IF (0 (@>N))(*1 (@SUBJ>) BARRIER NPNH);
 
@@ -1148,9 +1149,9 @@ REMOVE:r112b (@HNOUN) IF (*-1 Pr BARRIER NPNH)(0 (@P<));
 
 # Number SPRED disambiguation
 
-SELECT (Nom @>N) IF (1C N + Nom);
-SELECT (Acc @>N) IF (1C N + Acc);
-SELECT (Dat @>N) IF (1C N + Dat);
+SELECT (Nom @>N) IF (*1C N + Nom BARRIER NPNH OR PRE-N + NOTNOM);
+SELECT (Acc @>N) IF (1C N + Acc BARRIER NPNH OR PRE-N + NOTACC);
+SELECT (Dat @>N) IF (1C N + Dat BARRIER NPNH OR PRE-N + NOTDAT);
 
 
 REMOVE:r115 (A @>N) IF (0 V)(NOT 1 N OR A);

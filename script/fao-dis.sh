@@ -16,7 +16,7 @@ do                                          # run the following loop
 echo -n "Skriv setning: "                   # (message to user)
 read sentence                               # next 3 lines is the usual command
 echo $sentence | preprocess --abbr=~/gtsvn/st/fao/bin/abbr.txt | \
-$LOOKUP -flags mbTT -utf8 ~/gtsvn/st/fao/bin/fao.fst | ~/gtsvn/st/script/lookup2cg | \
+$LOOKUP -flags mbTT -utf8 ~/gtsvn/st/fao/bin/fao.fst | ~/gtsvn/gt/script/lookup2cg | \
  vislcg3 -g ~/gtsvn/st/fao/src/fao-dis.rle --trace  # no m4
 #dis.sh --grammar ~/st/fao/bin/fao-dis.rle --minimal  # m4
 

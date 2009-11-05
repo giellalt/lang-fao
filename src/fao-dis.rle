@@ -46,6 +46,8 @@ LIST Refl = Refl ;
 LIST Recipr = Recipr ;
 LIST Poss = Poss ;
 LIST Interr = Interr ;
+LIST IM = IM ;
+
 LIST Nom = Nom ;
 LIST Acc = Acc ;
 LIST Gen = Gen ;
@@ -848,6 +850,7 @@ LIST @>N = @>N ;
 LIST @N< = @N< ;
 LIST @>A = @>A ;
 LIST @A< = @A< ;
+LIST @IM = @IM ;
 LIST @<SPRED = @<SPRED ;
 LIST @SPRED> = @SPRED> ;
 LIST @<OPRED = @<OPRED ;
@@ -877,7 +880,7 @@ LIST SYNTAG = (@CNP) (@CVP) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>) 
 # ======== #
 
 
-
+MAP (@IM) TARGET IM ;
 MAP (@INTERJ) TARGET Interj ;  
 ADD:r67 (@CNP) TARGET CC ;
 ADD:r68 (@CVP) TARGET CS ;

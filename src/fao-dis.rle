@@ -876,7 +876,7 @@ LIST SYNTAG = (@CNP) (@CVP) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>) 
 
 
 # ======== #
-  ###SECTION  #
+###SECTION  #
 # ======== #
 
 
@@ -885,6 +885,7 @@ MAP (@INTERJ) TARGET Interj ;
 ADD:r67 (@CNP) TARGET CC ;
 ADD:r68 (@CVP) TARGET CS ;
 MAP (@>CS) TARGET ("ein" Det Neu Sg Gen) IF (1 ("og" CS));
+MAP:sa (@>N) TARGET Prop + Poss IF (*1 N BARRIER NPNH);
 
 MAP:ONEV (@+FMAINV) TARGET VFIN IF (NEGATE *0 V BARRIER S-BOUNDARY2);
 

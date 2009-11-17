@@ -238,7 +238,7 @@ REMOVE Guess ; # If any other reading is possible.
 
 
 SELECT:r50 Inf IF (-1 ("at"));
-SELECT:r4 CS IF (0 ("at"))(1C Inf);
+SELECT:r4 IM IF (0 ("at"))(1C Inf);# TODO: was SELECT CS... should it be? -KBU
 SELECT:r2 Pr IF (0 ("á"))(1 Dat OR Acc);
 
 # at

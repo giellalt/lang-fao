@@ -105,7 +105,7 @@ SET MscFem = Msc OR Fem ;
 SET MscNeu = Msc OR Neu ;
 SET FemNeu = Fem OR Neu ;
 
-LIST 3PERS = "hann" "hon" "tad" ;
+LIST 3PERS = "hann" "hon" "tað" ;
 
 # Adjective sets
 
@@ -281,8 +281,8 @@ REMOVE Dat IF (*-1 V LINK NOT 0 DATV BARRIER NPNH)(0 Acc)(1 EOS OR CS);
 
 # Preposition or not?
 
-#REMOVE Pr IF (NOT *-1 S-BOUNDARY LINK *1 OBL BARRIER NPNH)(0 Adv)(NOT *1 OBL BARRIER NPNH)
-REMOVE Pr IF (0 Adv)(NOT *1 OBL BARRIER NPNH)
+#REMOVE Pr IF (NOT *-1 S-BOUNDARY LINK *1 OBL BARRIER NPNH)(0 Adv)(NOT *1 OBL BARRIER NPNH);
+REMOVE Pr IF (0 Adv)(NOT *1 OBL BARRIER NPNH);
 # This rule does not handle stranded prepositions, it must be relaxed.
 
 REMOVE:PrAdv Adv IF (*-1 N OR V)(0 Pr + SOMEACCPREP)(*1 Acc BARRIER NPNH);
@@ -432,9 +432,9 @@ SELECT ("tann" Det) IF (1 ("sum"));
 SELECT ("tann" Det $$NAGD) IF (*1 N + $$NAGD OR A + $$NAGD BARRIER NPNH); 
 
 # tá and tá ið
-SELECT Adv IF  (0 ("tá"))(1 (("ið") OR V OR Det OR Pron OR N);
+SELECT Adv IF  (0 ("tá"))(1 ("ið") OR V OR Det OR Pron OR N);
 SELECT Adv IF (-1 ("tá"))(0 ("ið"));
-SELECT Adv IF (-1 (Adv OR NPNH OR COMMA))(0 ("tá"))(1 (Det OR Pron OR V));
+SELECT Adv IF (-1 Adv OR NPNH OR COMMA)(0 ("tá"))(1 Det OR Pron OR V);
 	# Og tá eg havi...
 	# Fá boð, tá nýtt er at frætta.
 	
@@ -895,6 +895,9 @@ MAP:r69 (@+FAUXV) TARGET AUX + VFIN IF (0*C VINFIN BARRIER CS OR CC);
 
 MAP (@-FAUXV) TARGET VINFIN IF (0 AUX)(*-1 AUX BARRIER V) ;
 MAP (@-FMAINV) TARGET VINFIN IF (*-1 AUX BARRIER V) ;
+MAP (@-FMAINV) TARGET VINFIN IF (-1 ("at") LINK -1* VFIN) ;
+# Tað fær tíðin at vísa<@-FMAINV>
+# BARRIER NOT-ADV-NOUN? or might be a bit strict? -KBU
 
 MAP:r70 (@+FAUXV) TARGET AUX + VFIN IF (*0 V BARRIER S-BOUNDARY2) ;
 MAP:r70b (@+FMAINV) TARGET VFIN ;

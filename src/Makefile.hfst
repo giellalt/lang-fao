@@ -33,12 +33,14 @@ lexc-fao.bin: ../bin/lexc-fao.bin
 	@echo
 	@echo "*** Building lexc-fao.bin ***" ;
 	@echo
-	printf "compile-source ../tmp/lexc-all.txt\n\
-	save-source ../bin/lexc-fao.bin\n\
-	quit\n" > ../../tmp/fao-lex-save-script
-	hfst-lexc  < ../../tmp/fao-lex-save-script
-	rm -f ../../tmp/fao-lex-save-script
-	
+	hfst-lexc < ../tmp/lexc-all.txt > ../bin/lexc-fao.bin
+# The old hfst version required this:
+# 	printf "compile-source ../tmp/lexc-all.txt\n\
+# 	save-source ../bin/lexc-fao.bin\n\
+# 	quit\n" > ../../tmp/fao-lex-save-script
+# 	hfst-lexc  < ../../tmp/fao-lex-save-script
+# 	rm -f ../../tmp/fao-lex-save-script
+
 twol-fao.bin: ../bin/twol-fao.bin
 ../bin/twol-fao.bin: twol-fao.txt
 	@echo

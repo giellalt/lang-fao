@@ -928,6 +928,8 @@ MAP:r72b (@SUBJ>) TARGET ("eg" Pron Pers Sg Nom) IF (*1 (V 1Sg) BARRIER VFIN);
 MAP:r73b (@<SUBJ) TARGET ("eg" Pron Pers Sg Nom) IF (*-1 (V 1Sg) BARRIER VFIN);
 
 MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER NPNH LINK NOT -1 Nom);
+MAP:r75b (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER NPNH) (0C Nom);
+
 MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg));
 
 MAP:mapcoordsubj2 (@SUBJ>) TARGET N + Nom IF (*-1 CC BARRIER NPNH LINK -1 N + Nom)(1 VFIN + Pl);
@@ -944,6 +946,7 @@ MAP:r78 (@<OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr O
 MAP:r78 (@<OBJ) TARGET (Det Acc) (*-1 V BARRIER Pr OR S-BOUNDARY)(NOT *1 N BARRIER NPNHA);
 MAP:r79 (@<IOBJ) TARGET (N Dat) OR (Num Dat) OR (Pron Dat) IF (*1 (@<OBJ) BARRIER NPNHA);
 MAP:r80 (@<OBJ) TARGET Dat IF (*-1 DATV);
+MAP:topic (@OBJ>) TARGET OBL IF (-1* S-BOUNDARY)(1* VFIN LINK 1* Nom) ; #TODO
 
 # PP
 

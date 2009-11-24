@@ -23,45 +23,40 @@ LEX = fao-lex.txt \
 
 #	  propernoun-fao-lex.txt 
 #	  propernoun-fao-morph.txt 
-all: ../bin/fao-gen.hfst ../bin/fao-morph.hfst
 
-../tmp/lexc-all.txt: $(LEX)
-	cat $(LEX) > $@
+all: ../bin/fao.hfst
 
 lexc-fao.bin: ../bin/lexc-fao.bin
-../bin/lexc-fao.bin: ../tmp/lexc-all.txt
+../bin/lexc-fao.bin: $(LEX)
 	@echo
-	@echo "*** Building lexc-fao.bin ***" ;
+	@echo "*** Building $(notdir $@) ***" ;
 	@echo
-	hfst-lexc < ../tmp/lexc-all.txt > ../bin/lexc-fao.bin
-# The old hfst version required this:
-# 	printf "compile-source ../tmp/lexc-all.txt\n\
-# 	save-source ../bin/lexc-fao.bin\n\
-# 	quit\n" > ../../tmp/fao-lex-save-script
-# 	hfst-lexc  < ../../tmp/fao-lex-save-script
-# 	rm -f ../../tmp/fao-lex-save-script
+	hfst-lexc $^ -o $@
 
 twol-fao.bin: ../bin/twol-fao.bin
 ../bin/twol-fao.bin: twol-fao.txt
 	@echo
-	@echo "*** Building twol-fao.bin ***" ;
+	@echo "*** Building $(notdir $@) ***" ;
 	@echo
-	hfst-twolc twol-fao.txt > $@ 
-
+	hfst-twolc $< -o $@ 
 
 fao-gen.hfst: ../bin/fao-gen.hfst 
-../bin/fao-gen.hfst: ../bin/twol-fao.bin ../bin/lexc-fao.bin
+../bin/fao-gen.hfst: ../bin/lexc-fao.bin ../bin/twol-fao.bin
 	@echo
-	@echo "*** Building fao-gen.hfst ***" ;
+	@echo "*** Building $(notdir $@) ***" ;
 	@echo
-	hfst-compose-intersect -l ../bin/lexc-fao.bin ../bin/twol-fao.bin -o $@
+	hfst-compose-intersect -l $+ -o $@
 
-fao-morph.hfst: ../bin/fao-morph.hfst
-../bin/fao-morph.hfst: ../bin/fao-gen.hfst
+fao.hfst: ../bin/fao.hfst
+../bin/fao.hfst: ../bin/fao-gen.hfst
 	@echo
-	@echo "*** Building fao-morph.hfst ***" ;
+	@echo "*** Building $(notdir $@) ***" ;
 	@echo
-	hfst-invert ../bin/fao-gen.hfst -o $@
+	hfst-invert $^ -o $@
+	@echo
+	@echo "*** Building lookup-optimized $(notdir $@).ol ***" ;
+	@echo
+	hfst-lookup-optimize $@ -o $@.ol
 
 clean:
 	rm -f ../bin/* ../tmp/*

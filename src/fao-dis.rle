@@ -203,6 +203,10 @@ SET WORD = N | V | A | Pr | Pron | Det | Adv | CC | CS | Interj | Num | ("\?") ;
 LIST COMMA = (",") ;
 SET MARK =  COMMA | ("\") | ("\;") ; #"
 
+LIST PUNCT-LEFT = (PUNCT LEFT) ;
+LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
+SET PRE-APP   = COMMA OR PUNCT-LEFT ;
+
 
 SET WORDMARK = WORD | MARK ;
 
@@ -285,8 +289,9 @@ REMOVE Dat IF (*-1 V LINK NOT 0 DATV BARRIER NPNH)(0 Acc)(1 EOS OR CS);
 REMOVE Pr IF (0 Adv)(NOT *1 OBL BARRIER NPNH);
 # This rule does not handle stranded prepositions, it must be relaxed.
 
-REMOVE:PrAdv Adv IF (*-1 N OR V)(0 Pr + SOMEACCPREP)(*1 Acc BARRIER NPNH);
-	## Altjóða samstarv innan gransking og útbúgving.
+REMOVE:PrAdv Adv IF (*-1 N BARRIER V)(0 Pr + SOMEACCPREP)(*1 Acc BARRIER NPNH)
+	## Altjóða samstarv innan gransking og útbúgving.	
+	##  Hon las síðan bókina.
 
 # á
 REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
@@ -882,7 +887,7 @@ LIST SYNTAG = (@CNP) (@CVP) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>) 
 
 MAP (@IM) TARGET IM ;
 MAP (@INTERJ) TARGET Interj ;  
-ADD:r67 (@CNP) TARGET CC ;
+MAP:r67 (@CNP @CVP) TARGET CC ;
 ADD:r68 (@CVP) TARGET CS ;
 MAP (@>CS) TARGET ("ein" Det Neu Sg Gen) IF (1 ("og" CS));
 MAP:sa (@>N) TARGET Prop + Poss IF (*1 N BARRIER NPNH);
@@ -946,8 +951,8 @@ MAP:r78 (@<OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr O
 MAP:r78 (@<OBJ) TARGET (Det Acc) (*-1 V BARRIER Pr OR S-BOUNDARY)(NOT *1 N BARRIER NPNHA);
 MAP:r79 (@<IOBJ) TARGET (N Dat) OR (Num Dat) OR (Pron Dat) IF (*1 (@<OBJ) BARRIER NPNHA);
 MAP:r80 (@<OBJ) TARGET Dat IF (*-1 DATV);
-MAP:topic (@OBJ>) TARGET OBL IF (-1* S-BOUNDARY)(1* VFIN LINK 1* Nom) ; #TODO
-
+MAP:topic (@OBJ>) TARGET OBL IF (-1* S-BOUNDARY BARRIER VFIN)(1* VFIN LINK 1* Nom) ; #TODO
+  # better verb than VFIN, parametrize wrt verb, or TV, or whatever.
 # PP
 
 
@@ -1063,6 +1068,27 @@ SELECT:r106 (@SUBJ>) IF (-1 CS)(1 VFIN);
 	## sum hann hevði í lummanum.
 
 SELECT (@>CS);
+
+
+# Coordination type
+
+REMOVE:rCC1 (@CNP) IF (-1 COMMA)(0 ("og" CC))(*1 VFIN BARRIER S-BOUNDARY);
+REMOVE:rCC2 (@CNP) IF (*-1 BOS BARRIER NOT-ADV);
+REMOVE:rCC3 (@CNP) IF (-2 BOS)(-1 CC);
+REMOVE:rCC4 (@CNP) IF (-1 PUNCT LINK -1 Abbr OR PUNCT LINK -1 BOS);
+REMOVE:rCC5 (@CNP) IF (-1 (""") LINK -1 (":")); #"
+REMOVE:rCC6 (@CVP) IF (-1 Cmpnd);
+REMOVE:rCC7 (@CVP) IF (-1 ("\-") LINK -1 (\?) LINK -1 BOS)(0 ("og"))(1 N);
+REMOVE:rCC8 (@CVP) IF (-1 (\?) LINK -1 BOS)(0 ("ja"))(1 N OR A OR (\?));
+REMOVE:rCC9 (@CVP) IF (-1 Nom LINK *-1 COMMA BARRIER NPNH LINK -1 Nom)(0 CC)(*1 Nom BARRIER NPNH);
+REMOVE (@CVP) IF (-1C A)(1C A LINK *1 N BARRIER NPNH);
+REMOVE (@CVP) IF (NEGATE *1 VFIN BARRIER S-BOUNDARY OR PUNCT-RIGHT OR COMMA);
+REMOVE (@CVP) IF (-1C A)(1C A LINK *1 N BARRIER NPNH);
+REMOVE (@CNP) IF (1 CS);
+REMOVE (@CNP) IF (0 CC)(1C VFIN);
+REMOVE (@CNP) IF (1C VFIN);
+SELECT (@CVP) IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C N OR Pron BARRIER NPNHA);
+SELECT (@CVP) IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C V BARRIER NPNHA);
 
 # NPs
 

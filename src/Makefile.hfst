@@ -27,22 +27,22 @@ LEX = fao-lex.txt \
 
 all: ../bin/fao.hfst
 
-lexc-fao.bin: ../bin/lexc-fao.bin
-../bin/lexc-fao.bin: $(LEX)
+lexc-fao.hfst: ../bin/lexc-fao.hfst
+../bin/lexc-fao.hfst: $(LEX)
 	@echo
 	@echo "*** Building $(notdir $@) ***" ;
 	@echo
 	hfst-lexc $^ -o $@
 
-twol-fao.bin: ../bin/twol-fao.bin
-../bin/twol-fao.bin: twol-fao.txt
+twol-fao.hfst: ../bin/twol-fao.hfst
+../bin/twol-fao.hfst: twol-fao.txt
 	@echo
 	@echo "*** Building $(notdir $@) ***" ;
 	@echo
 	hfst-twolc $< -o $@ 
 
 fao-gen.hfst: ../bin/fao-gen.hfst 
-../bin/fao-gen.hfst: ../bin/lexc-fao.bin ../bin/twol-fao.bin
+../bin/fao-gen.hfst: ../bin/lexc-fao.hfst ../bin/twol-fao.hfst
 	@echo
 	@echo "*** Building $(notdir $@) ***" ;
 	@echo

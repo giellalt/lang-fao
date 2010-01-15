@@ -177,14 +177,14 @@ twol-fao.bin: ../bin/twol.fao.bin
 	@rm -f ../../tmp/twol-fao-script
 
 # Here we include a preprocessor.
-# This goal depends on tok.txt
+# This goal depends on tok.regex
 
 tok.fst: ../bin/tok.fst 
-../bin/tok.fst: tok.txt
+../bin/tok.fst: tok.regex
 	@echo
 	@echo "*** Building the tokenizer tok.fst ***" ;
 	@echo
-	@printf "source tok.txt \n\
+	@printf "source tok.regex \n\
 	save stack ../bin/tok.fst \n\
 	quit \n" > ../../tmp/tok-script
 	$(XFST)  < ../../tmp/tok-script

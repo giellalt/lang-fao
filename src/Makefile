@@ -100,19 +100,28 @@ abbr: ../bin/abbr.txt
 		--lex=$(ABBRSRCS)
 
 
-# The second goal is to build several fst files:
-# - inituppercase.fst - accept initial uppercase variants
-# - allcaps.fst        - accept all uppercase variants
-# - tagfix.fst         - cleaning up bad lexicon design: +N+Prop+N -> +N+Prop
-# - tok.fst            - a regex tokenizer
-# They all depend on the corresponding *.regex file.
-allcaps: ../bin/allcaps.fst
-inituppercase: ../bin/inituppercase.fst
-tagfix: ../bin/tagfix.fst
-tok: ../bin/tok.fst
+tagfix.fst: ../bin/tagfix.fst
+../bin/tagfix.fst: tagfix.xfst
+	@echo
+	@echo "*** Building $(notdir $@) ***" ;
+	@echo
+	$(XFST) -e "source < tagfix.xfst" \
+			-e "save stack   ../bin/tagfix.fst " \
+			-stop
 
-%.fst: ../bin/%.fst
-../bin/%.fst: %.regex
+
+allcaps.fst: ../bin/allcaps.fst
+../bin/allcaps.fst: allcaps.xfst
+	@echo
+	@echo "*** Building $(notdir $@) ***" ;
+	@echo
+	$(XFST) -e "source < $< " \
+			-e "save stack   $@ " \
+			-stop
+
+
+inituppercase.fst: ../bin/inituppercase.fst
+../bin/inituppercase.fst: inituppercase.regex
 	@echo
 	@echo "*** Building $(notdir $@) ***" ;
 	@echo
@@ -154,7 +163,7 @@ twol-fao.bin: ../bin/twol-fao.bin
 # Here we include a preprocessor.
 # This goal depends on tok.regex
 tok.fst: ../bin/tok.fst 
-../bin/tok.fst: tok.regex
+../bin/tok.fst: tok.xfst
 	@echo
 	@echo "*** Building the tokenizer $(notdir $@) ***" ;
 	@echo

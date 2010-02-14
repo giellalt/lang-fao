@@ -202,10 +202,8 @@ LIST @N< = @N< ;
 LIST @>A = @>A ;
 LIST @A< = @A< ;
 LIST @IM = @IM ;
-LIST @SPRED = @SPRED ;
 LIST @<SPRED = @<SPRED ;
 LIST @SPRED> = @SPRED> ;
-LIST @OPRED = @OPRED ;
 LIST @<OPRED = @<OPRED ;
 LIST @OPRED> = @OPRED> ;
 LIST @+FAUXV = @+FAUXV ;
@@ -225,7 +223,6 @@ SET FAUXV = @-FAUXV OR @+FAUXV ;
 
 LIST @<ADVL = @<ADVL ;
 LIST @ADVL> = @ADVL> ;
-LIST @ADVL = @ADVL ;
 LIST @P< = @P< ;
 LIST @CNP = @CNP ;
 LIST @CVP = @CVP ;
@@ -240,9 +237,56 @@ LIST @ICL-OBJ = @ICL-OBJ ; 	         # non-finite subclause ...
 LIST @ICL-STA = @ICL-STA ; 	         # non-finite subclause ...
 LIST @HNOUN = @HNOUN ;
 
+# Tags from sme-dep.rle:
+
+LIST @-FOBJ = @-FOBJ ;
+LIST @-FSUBJ = @-FSUBJ ;
+LIST @<-FSUBJ = @<-FSUBJ ;
+LIST @<PPRED = @<PPRED ;
+LIST @>ADVL = @>ADVL ;
+LIST @>CC = @>CC ;
+LIST @>Num = @>Num ;
+LIST @>P = @>P ;
+LIST @>Pron = @>Pron ;
+LIST @ADVL = @<ADVL @ADVL> @ADVL @-FADVL @APP-ADVL< ;
+LIST @ADVL< = @ADVL< ;
+LIST @ADVL<OBJ = @ADVL<OBJ ;
+LIST @ADVL>CS = @ADVL>CS ;
+LIST @ADVL>SUBJ = @ADVL>SUBJ ;
+LIST @APP-ADVL< = @APP-ADVL< ;
+LIST @APP-N< = @APP-N< ;
+LIST @APP-Num< = @APP-Num< ;
+LIST @APP-Pron< = @APP-Pron< ;
+LIST @APP>Pron = @APP>Pron ;
+LIST @CMPND = @CMPND ;
+LIST @COMP-CS< = @COMP-CS< ;
+LIST @FS-ACC>> = @FS-ACC>> ;
+LIST @FS-ADVL = @FS-ADVL ;
+LIST @FS-IMV = @FS-IMV ;
+LIST @FS-N< = @FS-N< ;
+LIST @FS-N<IAUX = @FS-N<IAUX ;
+LIST @FS-OBJ = @FS-OBJ ;
+LIST @FS-STA = @FS-STA ;
+LIST @HAB = @HAB ;
+LIST @INTERJ = @INTERJ ;
+LIST @Num< = @Num< ;
+LIST @OBJ>SPRED = @OBJ>SPRED ;
+LIST @OPRED = @OPRED> @<OPRED ;
+LIST @PCLE = @PCLE ;
+LIST @Pron< = @Pron< ;
+LIST @SPRED = @SPRED> @<SPRED ;
+LIST @SUBJ<ADVL = @SUBJ<ADVL ;
+LIST @SUBJ<OBJ = @SUBJ<OBJ ;
+LIST @V = @FMV @IMV @FAUX @IAUX @FS-STA @FS-IMV @FS-N<IMV @FS-N< @FS-IAUX @FS-N<IAUX ;
+LIST @VOC = @VOC ;
+
+
+
 LIST @X = @X ;
 
-LIST SYNTAG = (@CNP) (@CVP) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>A) (@A<) (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@ADVL) (@<ADVL) (@ADVL>) (@P<) (@APP) (@HNOUN) ;
+
+LIST SYNTAG = (@+FAUXV) (@+FMAINV) (@-F<OBJ) (@-FADVL) (@-FAUXV) (@-FMAINV) (@-FOBJ) (@-FOBJ>) (@-FSUBJ) (@-FSUBJ>) (@<-FSUBJ) (@<ADVL) (@<IOBJ) (@<OBJ) (@<OPRED) (@<PPRED) (@<SPRED) (@<SUBJ) (@>A) (@>ADVL) (@>CC) (@>CS) (@>N) (@>Num) (@>P) (@>Pron) (@A<) (@ADVL) (@ADVL<) (@ADVL<OBJ) (@ADVL>) (@ADVL>CS) (@ADVL>SUBJ) (@APP) (@APP-ADVL<) (@APP-N<) (@APP-Num<) (@APP-Pron<) (@APP>Pron) (@CMPND) (@CNP) (@CNP-VP) (@COMP-CS<) (@CVP) (@FS-ACC>>) (@FS-ADVL) (@FS-IMV) (@FS-N<) (@FS-N<IAUX) (@FS-OBJ) (@FS-STA) (@HAB) (@HNOUN) (@ICL-ADVL) (@ICL-AUX<) (@ICL-OBJ) (@ICL-STA) (@IM) (@IMV) (@INTERJ) (@IOBJ>) (@N<) (@Num<) (@OBJ>) (@OBJ>SPRED) (@OPRED) (@OPRED>) (@P<) (@PCLE) (@Pron<) (@SPRED) (@SPRED<OBJ) (@SPRED>) (@SUBJ<ADVL) (@SUBJ<OBJ) (@SUBJ>) (@V) (@VOC) ;
+
 
 LIST @SUBJ = @<SUBJ @SUBJ> ;
 LIST @OBJ = @<OBJ @OBJ> ;
@@ -390,10 +434,12 @@ SETPARENT:r11 @<OBJ TO (-*1 V BARRIER CS);
 SETPARENT:r12 @OBJ> TO (*1 V BARRIER CS);
 SETPARENT:r11 @<IOBJ TO (-*1 V BARRIER CS);
 SETPARENT:r12 @IOBJ> TO (*1 V BARRIER CS);
-SETPARENT:r13 @ADVL TO (0* AUX);
-SETPARENT:r14 @ADVL TO (0* VFIN);
+#SETPARENT:r13 @ADVL TO (0* AUX);
+#SETPARENT:r14 @ADVL TO (0* VFIN);
+SETPARENT @<ADVL TO (-1* <aux> BARRIER <mv>);
 SETPARENT @<ADVL TO (-1* <mv> BARRIER CS);
 SETPARENT @ADVL> TO (*1 <mv> BARRIER CS);
+SETPARENT @ADVL> TO (*1 <aux> BARRIER <mv>);
 
 SETPARENT @<ADVL TO (-1* @rc-VAUX BARRIER CS);
 
@@ -472,7 +518,9 @@ SETPARENT:SetCNPToWord @CVP + CC TO (*-1 WORD) ;
 
 ### Relative clause
 
-#SETPARENT:
+SETPARENT:RelVtoVfin @FS-N< OR @FS-STA (NONE p (*)) TO (*1 @FV) ; 
+SETPARENT:RelVtoVfin @FS-N< OR @FS-STA (NONE p (*)) TO (*-1 @FV) ; 
+SETPARENT:RelVtoVfin @FS-N< OR @FS-STA TO (*-1 @ADVL>SUBJ BARRIER VFIN LINK *1 @SUBJ) ; 
 
 ### Root
 

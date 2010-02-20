@@ -185,7 +185,7 @@ LIST TIME = "sunnudagur" ;
 
 LIST ABSTRACT = "ráð" "byráð" ;
 
-
+LIST SPEECHACT = "mæla" "siga" ;
 
 
 
@@ -518,9 +518,18 @@ SETPARENT:SetCNPToWord @CVP + CC TO (*-1 WORD) ;
 
 ### Relative clause
 
-SETPARENT:RelVtoVfin @FS-N< OR @FS-STA (NONE p (*)) TO (*1 @FV) ; 
-SETPARENT:RelVtoVfin @FS-N< OR @FS-STA (NONE p (*)) TO (*-1 @FV) ; 
-SETPARENT:RelVtoVfin @FS-N< OR @FS-STA TO (*-1 @ADVL>SUBJ BARRIER VFIN LINK *1 @SUBJ) ; 
+SETPARENT:RelVtoVfin @FS-STA (NONE p (*)) TO (*1 @FV) ; 
+SETPARENT:RelVtoVfin @FS-STA (NONE p (*)) TO (*-1 @FV) ; 
+SETPARENT:RelVtoVfin @FS-STA TO (*-1 @ADVL>SUBJ BARRIER VFIN LINK *1 @SUBJ) ; 
+
+SETPARENT:RelVtoN @FS-N< TO (*-1 CS LINK -1 COMMA LINK -1 N OR A OR Pron) ; 
+SETPARENT:RelVtoN @FS-N< TO (*-1 CS LINK -1 N OR A OR Pron) ; 
+
+### Embedded clause
+
+SETPARENT:Quotation @FS-OBJ OR @FS-STA TO (*-1 PUNCT + LEFT OR ("at") + CS LINK *-1 SPEECHACT BARRIER VFIN);
+
+
 
 ### Root
 

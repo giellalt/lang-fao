@@ -59,7 +59,7 @@ ifao.fst: ../bin/ifao.fst
 	$(XFST)  < ../../tmp/ifao-fst-script
 	@rm -f ../../tmp/ifao-fst-script
 
- 
+
 # The first goal is to build fao.fst, the analyzer.
 # This goal depends on fao.save and inituppercase.fst being up to date
 fao.fst: ../bin/fao.fst

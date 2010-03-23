@@ -1,9 +1,3 @@
-hmm, her må du kjenne taggane
-la meg gå gjennom dei første eitt elelr anna
-
-her er mange @ADVL uten pil - har merka av
-
-
 "<Tú>"
 	"tú" Pron Pers Sg Nom @SUBJ> 
 "<ristir>"
@@ -409,7 +403,7 @@ her er mange @ADVL uten pil - har merka av
 "<Tú>"
 	"tú" Pron Pers Sg Nom @SUBJ> 
 "<kemur>"
-	"koma" V Ind Prs 3Sg @+FMAINV -- 2Sg ?
+	"koma" V Ind Prs 2Sg @+FMAINV 
 "<út>"
 	"út" Adv @<ADVL 
 "<úr>"
@@ -427,19 +421,19 @@ her er mange @ADVL uten pil - har merka av
 "<tú>"
 	"tú" Pron Pers Sg Nom @SUBJ> 
 "<steðgar>"
-	"steðga" V Ind Prs 3Sg @+FMAINV -- 2Sg ?
+	"steðga" V Ind Prs 2Sg @+FMAINV 
 "<,>"
 	"," CLB 
 "<pilkar>"
-	"pilka" V Ind Prs 3Sg @+FMAINV -- 2Sg ?
+	"pilka" V Ind Prs 2Sg @+FMAINV 
 "<nøs>"
-	"nøs" N Fem Sg Nom Indef @<SUBJ -- Acc @<OBJ?
+	"nøs" N Fem Sg Acc Indef @<Obj 
 "<,>"
 	"," CLB 
 "<og>"
 	"og" CC @CVP 
 "<tað>"
-	"tað" Pron Pers Sg Nom @SUBJ> -- @tSUBJ>
+	"tað" Pron Pers Sg Nom @tSUBJ>
 "<rennur>"
 	"renna" V Ind Prs 3Sg @+FMAINV 
 "<upp>"
@@ -483,17 +477,17 @@ her er mange @ADVL uten pil - har merka av
 	"." CLB 
 
 "<hvat>"
-	"hvør" Pron Interr Neu Sg Nom @SUBJ> -- @SPRED>
+	"hvør" Pron Interr Neu Sg Nom @SPRED>
 "<er>"
 	"vera" V Ind Prs 3Sg @+FMAINV
 "<tað>"
-	"tað" Pron Pers Sg Nom @<SUBJ -- @tSUBJ>
+	"tað" Pron Pers Sg Nom @<tSUBJ
 "<at>"
 	"at" IM @IM 
 "<vera>"
-	"vera" V Inf @-FMAINV -- @<SUBJ
+	"vera" V Inf @<SUBJ
 "<góður>"
-	"góður" A Msc Sg Nom Indef @<SPRED --@-F<SPRED
+	"góður" A Msc Sg Nom Indef @-F<SPRED 
 "<við>"
 	"við" Pr @<ADVL 
 "<nakað>"
@@ -506,7 +500,7 @@ her er mange @ADVL uten pil - har merka av
 "<gekk>"
 	"ganga" V Ind Prt 3Sg @+MAINV  
 "<hann>"
-	"hann" Pron Pers Sg Acc @OBJ> --- @SUBJ>
+	"hann" Pron Pers Sg Nom @SUBJ>
 "<út>"
 	"út" Adv @<ADVL 
 "<eftir>"
@@ -542,7 +536,7 @@ her er mange @ADVL uten pil - har merka av
 "<uppruna>"
 	"uppruni" N Msc Sg Acc Indef @OBJ> 
 "<hava>"
-	"hava" V Ind Prs Pl @rc-VAUX --- @+FMAINV
+	"hava" V Ind Prs Pl @+FMAINV
 "<,>"
 	"," CLB 
 "<doyðu>"
@@ -571,7 +565,7 @@ her er mange @ADVL uten pil - har merka av
 "<eitt>"
 	"ein" Det Neu Sg Nom @>N 
 "<sindur>"
-	"sindur" N Neu Sg Nom Indef @<ADVL --- @>N ??
+	"sindur" N Neu Sg Nom Indef @>N 
 "<óhugnaligt>"
 	"óhugnaligur" A* Adv @<SPRED 
 "<.>"
@@ -584,7 +578,7 @@ her er mange @ADVL uten pil - har merka av
 "<hann>"
 	"hann" Pron Pers Sg Nom @<SUBJ 
 "<í>"
-	"í" Pr @N< -- @<ADVL
+	"í" Pr @<ADVL
 "<miðjuni>"
 	"miðja" N Fem Sg Dat Def @P< 
 "<.>"
@@ -628,10 +622,12 @@ her er mange @ADVL uten pil - har merka av
 	"men" CC @CVP 
 "<kom>"
 	"koma" V Ind Prt 3Sg @+FMAINV  (samme som l 54, men uten "so")
-"<so_at>"
-	"so_at" CS @CVP --- so Adv at IM  ?
+"<so>"
+	"so" Adv @ADVL
+"<at>"
+	"at" IM @IM 
 "<hugsa>"
-	"hugsa" V Ind Prs Pl @+FMAINV -- Inf  ?
+	"hugsa" V Inf @-FMAINV 
 "<um>"
 	"um" Pr @<ADVL 
 "<sjóverk>"
@@ -677,9 +673,9 @@ her er mange @ADVL uten pil - har merka av
 "<at>"
 	"at" IM @IM 
 "<hugsa>"
-	"hugsa" V Inf @-FMAINV -- OBJ?
+	"hugsa" V Inf @<OBJ 
 "<um>"
-	"um" Pr @<ADVL -- i tilfelle, så skal denne @-F<ADVL
+	"um" Pr @-F<ADVL
 "<brennivín>"
 	"brennivín" N Neu Sg Acc Indef @P< 
 "<og>"
@@ -718,9 +714,9 @@ her er mange @ADVL uten pil - har merka av
 "<at>"
 	"at" IM @IM 
 "<rópa>"
-	"rópa" V Inf @-FMAINV -- @N<
+	"rópa" V Inf @N<
 "<reyvarhol>"
-	"reyvarhol" N Neu Sg Acc Indef @<OBJ -- @-F<OBJ
+	"reyvarhol" N Neu Sg Acc Indef @-F<OBJ
 "<.>"
 	"." CLB 
 
@@ -767,7 +763,6 @@ her er mange @ADVL uten pil - har merka av
 "<dottin>"
 	"detta" V* PrfPrc A Fem Sg Nom Indef @<SPRED -- "detta" V PrfPrc @-FMAINV ?
 	"detta" V* PrfPrc A Msc Sg Nom Indef @<SPRED 
-	"dottin" A Fem Sg Nom Indef @<SPRED 
 "<av>"
 	"av" Pr @<ADVL 
 "<nótablaðnum>"
@@ -1036,7 +1031,7 @@ her er mange @ADVL uten pil - har merka av
 "<lortdeyminum>"
 	"lortdeyminum" ? 
 "<úr>"
-	"úr" Pr @ADVL  --- @<ADVL
+	"úr" Pr @<ADVL 
 "<Vestaruvág>"
 	"Vestaruvág" N Prop Sg Dat Guess @P< 
 "<.>"
@@ -1281,13 +1276,13 @@ her er mange @ADVL uten pil - har merka av
 "<,>"
 	"," CLB 
 "<Vilt>"
-	"villur" A* Adv @ADVL  --- vilja+V+Ind+Prs+2Sg @+FAUXV
+	"vilja" V Ind Prs 2Sg @+FAUXV
 "<tú>"
 	"tú" Pron Pers Sg Nom @<SUBJ 
 "<ikki>"
-	"ikki" Adv @ADVL --- @ADVL>
+	"ikki" Adv @ADVL>
 "<hava>"
-	"hava" V Inf @X 
+	"hava" V Inf @-FMAINV 
 "<ein>"
 	"ein" Det Msc Sg Acc @>N 
 "<lítlan>"
@@ -1298,7 +1293,6 @@ her er mange @ADVL uten pil - har merka av
 "<">"
 	""" PUNCT 
 "<spyr>"
-	"spyrja" V Imp Sg @+FMAINV 
 	"spyrja" V Ind Prs 3Sg @+FMAINV 
 "<hann>"
 	"hann" Pron Pers Sg Nom @<SUBJ 
@@ -1547,11 +1541,11 @@ her er mange @ADVL uten pil - har merka av
 "<sum>"
 	"sum" CS @CVP 
 "<offraðu>"
-	"offraðu" ? --- @+FMAINV
+	"offra" V Ind Prt 3Sg @+FMAINV
 "<seg>"
 	"seg" Pron Refl Acc @X @<OBJ
 "<fyri>"
-	"fyri" Pr @ADVL --- @<ADVL
+	"fyri" Pr @<ADVL
 "<ólukkudýrum>"
 	"ólukkudýr" N Neu Pl Dat Indef @P< 
 "<.>"
@@ -2056,11 +2050,11 @@ her er mange @ADVL uten pil - har merka av
 "<">"
 	""" PUNCT 
 "<spyrji>"
-	"spyrji" ? 
+	"spyrja" V Ind Prs 1Sg @+FMAINV 
 "<eg>"
-	"eg" Pron Pers Sg Nom @X 
+	"eg" Pron Pers Sg Nom @<SUBJ 
 "<so>"
-	"so" Adv @ADVL -- @<ADVL
+	"so" Adv @<ADVL
 "<.>"
 	"." CLB 
 
@@ -2159,9 +2153,9 @@ her er mange @ADVL uten pil - har merka av
 	"hús" N Neu Sg Acc Indef @<OBJ 
 "<her>"
 	"herur" N Msc Sg Acc Indef @<OBJ 
-	"her" Adv @ADVL --- @<ADVL --- evt @>ADVL
+	"her" Adv @<ADVL 
 "<niðri>"
-	"niðri" Adv @ADVL --- @<ADVL
+	"niðri" Adv @<ADVL 
 "<.>"
 	"." CLB 
 
@@ -2179,11 +2173,10 @@ her er mange @ADVL uten pil - har merka av
 	"byggja" V Inf @X 
 "<tað>"
 	"tað" Pron Pers Sg Acc @<OBJ 
-	"tað" Pron Dem Neu Sg Acc @<OBJ 
 "<oman>"
-	"oman" Adv @ADVL -- @<ADVL
+	"oman" Adv @<ADVL
 "<yvir>"
-	"yvir" Pr @ADVL --- @<ADVL
+	"yvir" Pr @<ADVL 
 "<meg>"
 	"eg" Pron Pers Sg Acc @P< 
 "<.>"
@@ -2399,7 +2392,7 @@ her er mange @ADVL uten pil - har merka av
 "<Og>"
 	"og" CC @CVP 
 "<so>"
-	"so" Adv @ADVL -- @ADVL>
+	"so" Adv @ADVL>
 "<hetta>"
 	"hesin" Det Neu Sg Nom @>N 
 "<ljóðið>"

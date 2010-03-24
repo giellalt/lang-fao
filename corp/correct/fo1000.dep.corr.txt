@@ -352,9 +352,9 @@
 "<,>"
 	"," CLB #5->5 
 "<heldur>"
-	"halda" <mv> V Ind Prs 3Sg @FMV #6->2 
+	"heldur" Adv @ADVL> #6->7 
 "<skitið>"
-	"skitin" A* Adv @<SPRED #7->6 
+	"skitin" A* Adv @<SPRED #7->2 
 "<,>"
 	"," CLB #8->8 
 "<so>"
@@ -386,7 +386,7 @@
 "<tú>"
 	"tú" Pron Pers Sg Nom @SUBJ> #22->23 
 "<fert>"
-	"fara" <mv> V Ind Prs 2Sg @FS-N< #23->20 
+	"fara" <mv> V Ind Prs 2Sg @FMV #23->11 
 "<bara>"
 	"bara" Adv @<ADVL #24->23 
 "<sum>"
@@ -394,7 +394,7 @@
 "<vatnið>"
 	"vatn" N Neu Sg Acc @P< #26->25 
 "<í>"
-	"í" Pr @<ADVL #27->23 
+	"í" Pr @N< #27->26 
 "<rennusteininum>"
 	"rennu#steinur" N Msc Sg Dat Def @P< #28->27 
 "<.>"
@@ -413,21 +413,21 @@
 "<og>"
 	"og" CC @CNP #6->5 
 "<sært>"
-	"særa" V Ind Prs 2Sg @+MAINV #7->7 
+	"særa" V Ind Prs 2Sg @FMV #7->2 
 "<skipini>"
-	"skip" N Neu Pl Acc Def @<OBJ #8->2 
+	"skip" N Neu Pl Acc Def @<OBJ #8->7 
 "<,>"
 	"," CLB #9->9 
 "<tú>"
 	"tú" Pron Pers Sg Nom @SUBJ> #10->11 
 "<steðgar>"
-	"steðga" <mv> V Ind Prs 2Sg @FS-N< #11->8 
+	"steðga" <mv> V Ind Prs 2Sg @FMV #11->2 
 "<,>"
 	"," CLB #12->12 
 "<pilkar>"
 	"pilka" <mv> V Ind Prs 2Sg @FMV #13->2 
 "<nøs>"
-	"nøs" N Fem Sg Acc Indef @<Obj #14->14 
+	"nøs" N Fem Sg Acc Indef @<Obj #14->13 
 "<,>"
 	"," CLB #15->15 
 "<og>"
@@ -496,25 +496,25 @@
 	"." CLB #9->9 
 
 "<Viljaleysur>"
-	"viljaleysur" A Msc Sg Nom Indef @ADVL> #1->21 
+	"viljaleysur" A Msc Sg Nom Indef @ADVL> #1->0 
 "<gekk>"
-	"ganga" V Ind Prt 3Sg @+MAINV #2->2 
+	"ganga" V Ind Prt 3Sg @FMV #2->0 
 "<hann>"
-	"hann" Pron Pers Sg Nom @SUBJ> #3->21 
+	"hann" Pron Pers Sg Nom @<SUBJ #3->2 
 "<út>"
-	"út" Adv @<ADVL #4->3 
+	"út" Adv @<ADVL #4->2 
 "<eftir>"
-	"eftir" Pr @<ADVL #5->3 
+	"eftir" Pr @<ADVL #5->2 
 "<bryggjuni>"
 	"bryggja" N Fem Sg Dat Def @P< #6->5 
 "<,>"
 	"," CLB #7->7 
 "<so>"
-	"so" Adv @<ADVL #8->3 
+	"so" Adv @>Adv #8->10 
 "<langt>"
-	"langur" A* Adv @<ADVL #9->3 
+	"langur" A* Adv @>Adv #9->10 
 "<út>"
-	"út" Adv @<ADVL #10->3 
+	"út" Adv @<ADVL #10->2 
 "<,>"
 	"," CLB #11->11 
 "<at>"
@@ -532,15 +532,15 @@
 "<næstan>"
 	"næstan" Adv @ADVL> #18->21 
 "<ongan>"
-	"ongan" Pron Acc @N> #19->19 
+	"ongan" Pron Acc @>N #19->19 
 "<uppruna>"
 	"uppruni" N Msc Sg Acc Indef @OBJ> #20->21 
 "<hava>"
-	"hava" <mv> V Ind Prs Pl @FS-N< #21->15 
+	"hava" <mv> V Ind Prs Pl @FS-N< #21->13 
 "<,>"
 	"," CLB #22->22 
 "<doyðu>"
-	"doyðu" <mv> V Ind Prt 3Sg @FMV #23->0 
+	"doyðu" <mv> V Ind Prt 3Sg @FMV #23->2 
 "<burtur>"
 	"burtur" Adv @<ADVL #24->23 
 "<sum>"
@@ -563,9 +563,9 @@
 "<var>"
 	"vera" <mv> V Ind Prt 3Sg @FMV #2->0 
 "<eitt>"
-	"ein" Det Neu Sg Nom @>N #3->4 
+	"ein" Det Neu Sg Nom @>A #3->4 
 "<sindur>"
-	"sindur" N Neu Sg Nom Indef @>N #4->4 
+	"sindur" N Neu Sg Nom Indef @>Adv #4->5 
 "<óhugnaligt>"
 	"óhugnaligur" A* Adv @<SPRED #5->2 
 "<.>"
@@ -623,7 +623,7 @@
 "<kom>"
 	"koma" <mv> V Ind Prt 3Sg @FMV #19->4 
 "<so>"
-	"so" Adv @ADVL #20->20 
+	"so" Adv @<ADVL #20->19 
 "<at>"
 	"at" IM @IM #21->22 
 "<hugsa>"
@@ -721,9 +721,9 @@
 	"." CLB #12->12 
 
 "<Aftur>"
-	"aftur" Adv @ADVL> #1->3 
+	"aftur" Pr @ADVL> #1->3 
 "<einaferð>"
-	"einaferð" N Fem Sg Acc @P< #2->2 
+	"einaferð" N Fem Sg Acc @P< #2->1 
 "<var>"
 	"vera" <mv> <ctjHead> V Ind Prt 3Sg @FMV #3->0 
 "<hann>"
@@ -767,10 +767,10 @@
 "<nótablaðnum>"
 	"nótablaðnum" N Neu Sg Dat @P< #23->22 
 "<.>"
-	"." #24->24 
+	"." CLB #24->24 
 
 "<Inni>"
-	"Inn" Adv @ADVL #1->1 
+	"Inn" Adv @ADVL> #1->19 
 "<í>"
 	"í" Pr @ADVL> #2->19 
 "<myrkrinum>"

@@ -115,7 +115,6 @@ Rules
 "Epenthetic deletion"
  Vx:0 <=> Vow: Cns:* (%>:) _ [ r | l | n ] %^EPH: ( Special:* ) %>: Vow ; !Vow ;
       where Vx in (a i u) ;
-
  !Vow was commented out?
 
 !€ ak0r00
@@ -127,6 +126,18 @@ Rules
 
 !€ aftan%^EPH%>
 !€ aft0n00
+
+
+"U-umlaut of Epenthetic vowel"
+ a:u <=> a: m _ Cns: %^EPH: %^UUML: (%^UUML:) #:0 ;
+! check the double umlaut marking...
+! question is whether Fem umlaut is always there.
+
+!€ gamal%^EPH%^UUML
+!€ gomul00
+
+!€ gamal%^EPH%^UUML%>u
+!€ goml000u
 
 
 "U-umlaut in Front of Nasal"
@@ -143,8 +154,6 @@ Rules
 
 !€ hamar%^EPH%^UUML%>um
 !€ hom0r000um
-
-
 
 "General U-umlaut"
   a:ø <=> _ NonNas: NonNas:* (Nas) (Vow:) %^UUML: ;
@@ -166,9 +175,9 @@ Rules
 !€ øk0r000um
 
 "I-umlaut"
- Vx:Vy <=> _ Cns:* %^IUML: ;!(Dummy:) [ %>: i | %>: u r | (%>: Cns:*) #: | %>: g ] ;
+ Vx:Vy <=> _ Cns:* %^IUML: ; !(Dummy:) [ %>: i | %>: u r | (%>: Cns:*) #: | %>: g ] ;
      where Vx in ( a o ø á ó ú )
-	       Vy in ( e y i æ ø ý )
+	   Vy in ( e y i æ ø ý )
 	   matched ;
 
 !€ dag%^IUML%>i
@@ -223,14 +232,28 @@ Rules
 !! The rule conflicts with the "Cns Deletion in front of Pass" rule at the
 !! end of the file - but only when using the Xerox tools! XXX - please have a look!
 "Deleting Double Consonant in Front of Consonant"
- Cx:0 <=> Vow Cx _ ( ( u: r: ) Dummy:) %>: s #: ; 
+ Cx:0 <=> Vow Cx _ (%>:) (u: r:) (Dummy:) %>: [d|ðs|(s) t] ([a|i|u]) #:0 ; 
+! Cx:0 <=> Vow Cx _ ( %>: u: r: ) ([Dummy: - %^PASS:]) %>: [s|t] #:0 ; 
       where Cx in ( b d f g k l m n p r s t v ) ;
+
+!"Double consonant simplification in front of t"
+!Cx:0 <=> Vow Cx _ %>: t ;
+!     where Cx in ( b g l m n p r k ) ;
+
+!€ all%>t
+!€ al00t
+
+
+!"Deleting Double Consonant in Front of t + vow"
+! Cx:0 <=> Vow Cx _ ( (%>:) ( u: r: ) Dummy:) %>: t [a|i|u]  ; 
+!      where Cx in ( b d f g k l m n p r s t v ) ;
+! added t to right context, check this!!
 
 !€ hjall%>s
 !€ hjal00s
 
-!€ summar%>i
-!€ sum00r0i
+!€ rygg%>s
+!€ ryg00s
 
 !€ hjall%>ar
 !€ hjall0ar
@@ -239,11 +262,11 @@ Rules
  Cx:0 <=> Cx _ [ i:0 | a:0 | u:0 ] [ l | r ] ( %^EPH: ) %>: Vow ;
       where Cx in ( b d f g k l m n p r s t v ) ;
 
+!€ summar%^EPH%>i
+!€ sum00r00i
+
 !€ himmal%^EPH%^UUML%>um
 !€ him00l000um
-
-!rygg%>s
-!ryg00s
 
 !tunnil%>i
 !tun00l%>i
@@ -260,6 +283,9 @@ Rules
 !grís%>s
 !grís000
 
+
+"Double ð Deletion"
+ð:0 <=> _ %>:0 ð ;
 
 "Realising i2 as i"
  i2:i => _ %>: ;
@@ -474,12 +500,6 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !€ gamal%^EPH%>t
 !€ gamal00t
 
-"Double consonant simplification in front of t"
-Cx:0 <=> Vow Cx _ %>: t ;
-     where Cx in ( b g l m n p r k ) ;
-
-!€ all%>t
-!€ al00t
  	      
 ! Possessive Sandhi rules
 
@@ -500,11 +520,13 @@ Cx:0 <=> Vow Cx _ %>: t ;
 ! Morphological passive rules
 
 "u in ur Deletion in front of Pass"
- u:0 <=> %>: _ r: %^PASS: ;
+ u:0 <=> %>: _ r: %^PASS:0 %>: s t #: ;
 
-"Cns Deletion in front of Pass"
- Cx:0 <=> _ %^PASS: ;
-      where Cx in ( ð r ) ;
+"r Deletion in front of Pass"
+ r:0 <=> [i:|u:] _ %^PASS:0 %>: s t #: ;
+
+"ð Deletion in front of Pass"
+ ð:0 <=> _ %^PASS:0 %>: s t #: ;
 
 
 ! Remove these when the dust has settled

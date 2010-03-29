@@ -19,6 +19,10 @@ LEXICON s3 ! leiða
 standard-ir ;
 +V+PrfPrc:%>d p18 ;
 
+LEXICON s3b ! oeyða
+ s3 ;
+ prt-ðu ;
+
 LEXICON s4 ! frøa
 inf ;
 pres-ir ;
@@ -73,7 +77,8 @@ pres-ir ;
 :%^EIO prt-d ;
 :%^EIO imp-prsptc ;
 :%^EIO sup ;
-+V+PrfPrc:%>d p7 ;
+!+V+PrfPrc:%>d p7 ;
++V+PrfPrc:%^EIO%>d p7 ; !XXX check steingdir/stongdir
 
 LEXICON s15 ! skeinkja
 jinf ;
@@ -201,6 +206,17 @@ prsptc ;
 sup-a ;
 +V+PrfPrc:%>að p6 ;
 
+LEXICON s30b !trúa - trúði
+inf ;
+pres-ar ;
+prt-ð ;
+:a impsg ; !deviant kalla
+imppl ;
+prsptc ;
+sup-a ;
++V+PrfPrc:%>að p6 ;
+
+
 LEXICON s31 ! only the verb gera and Xgera
 :er inf ;
 :er pres-null ;
@@ -212,7 +228,7 @@ LEXICON s31 ! only the verb gera and Xgera
 LEXICON s32 ! búgva
 :gv inf ;
 :gv pres-strong-s1 ;
-:r%^IUML pres-strong-s23 ;
+:r%^IUML pres-strong-s23-t1 ;
 :gv pres-pl ; 
 :gv imp-prsptc ; 
  prt-a ;
@@ -637,7 +653,7 @@ LEXICON s73 ! læa
 LEXICON s74 ! grindast
 reflinf ;
 pres-ast ;
-
+pret-st ;
 
 LEXICON s75 ! balast
 reflinf ;
@@ -902,6 +918,7 @@ sup ;
 ! =============
 
 ! Infinitive
+! ----------
 
 LEXICON jinf
 +V+Inf:%>ja PASS ;
@@ -914,7 +931,9 @@ LEXICON inf
 LEXICON reflinf
 +V+Inf+Pass:%>ast # ;
 
+
 ! Present
+! -------
 
 LEXICON pres-ir
 pres-ir-sg ;
@@ -972,11 +991,16 @@ LEXICON pres-pl
 +V+Ind+Prs+Pl:%>a PASS ;
 
 LEXICON pres-ast
-+V+Ind+Prs+1Sg:%> # ;
++V+Ind+Prs+1Sg:%>ast # ; ! XXX check
 +V+Ind+Prs+2Sg:%>ast # ;
 +V+Ind+Prs+3Sg:%>ast # ;
 +V+Ind+Prs+Pl:%>ast # ;
 
+LEXICON pret-st
++V+Ind+Prt+1Sg:%>aðist # ;
++V+Ind+Prt+2Sg:%>aðist # ;
++V+Ind+Prt+3Sg:%>aðist # ;
++V+Ind+Prt+Pl:%>aðist # ;
 
 
 ! Preterite
@@ -984,6 +1008,10 @@ LEXICON pres-ast
 LEXICON prt-d
  prt-di ;
  prt-du ;
+ 
+LEXICON prt-ð
+ prt-ði ;
+ prt-ðu ;
  
 LEXICON prt-t
  prt-ti ;
@@ -1004,8 +1032,8 @@ LEXICON prt-du
 LEXICON prt-tu
 +V+Ind+Prt+Pl:%>tu PASS ;
 
-!LEXICON prt-ðu
-!+V+Ind+Prt+Pl:%>ðu PASS ;
+LEXICON prt-ðu
++V+Ind+Prt+Pl:%>ðu PASS ;
 
 LEXICON prt-dd
 +V+Ind+Prt+Sg:%>ddi PASS ;
@@ -1155,6 +1183,13 @@ LEXICON SKULA
 +Ind+Prt+Pl:skuldu # ;
 +Sup:skulað # ;
 
+LEXICON TYKJA
++Inf:tykja PASS ;
++Ind+Prs+3Sg:tykir PASS ;
++Ind+Prs+Pl:tykti PASS ;
++Ind+Prt+Sg:tókti PASS ;
++Sup:tykt # ;
+
 LEXICON VERA
 +Inf:vera # ;
 +Ind+Prs+1Sg:eri # ;
@@ -1185,14 +1220,14 @@ LEXICON VERÐA
 
 
 LEXICON VILJA
-+Inf:vilja # ;
-+Ind+Prs+1Sg:vil # ;
-+Ind+Prs+2Sg:vilt # ;
-+Ind+Prs+3Sg:vil # ;
-+Ind+Prs+Pl:vilja # ;
-+Ind+Prt+Sg:vildi # ;
-+Ind+Prt+Pl:vildu # ;
-+Sup:viljað # ;
++Inf:vilja PASS ;
++Ind+Prs+1Sg:vil PASS ;
++Ind+Prs+2Sg:vilt PASS ;
++Ind+Prs+3Sg:vil PASS ;
++Ind+Prs+Pl:vilja PASS ;
++Ind+Prt+Sg:vildi PASS ;
++Ind+Prt+Pl:vildu PASS ;
++Sup:viljað PASS ;
 
 LEXICON VITA
 +Inf:vita PASS ;
@@ -1302,7 +1337,7 @@ sup ;
 
 LEXICON PASS
  # ; ! Verbs as usual
- +Pass:%^PASS%>st # ;
++Pass:%^PASS%>st # ;
 
 LEXICON VANDI
  # ; ! Verbs as usual

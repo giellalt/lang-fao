@@ -201,7 +201,7 @@ SET PRE-N =  A | Det | (N Gen) | Num | (Pron Gen) | CC ; # Det???
 SET WORD = N | V | A | Pr | Pron | Det | Adv | CC | CS | Interj | Num | ("\?") ;
 
 LIST COMMA = (",") ;
-SET MARK =  COMMA | ("\") | ("\;") ; #"
+SET MARK =  COMMA | ("\\") | ("\;") ; #"
 
 LIST PUNCT-LEFT = (PUNCT LEFT) ;
 LIST PUNCT-RIGHT = (PUNCT RIGHT) ;

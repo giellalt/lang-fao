@@ -232,7 +232,7 @@ Rules
 !! The rule conflicts with the "Cns Deletion in front of Pass" rule at the
 !! end of the file - but only when using the Xerox tools! XXX - please have a look!
 "Deleting Double Consonant in Front of Consonant"
- Cx:0 <=> Vow Cx _ (%>:) (u: r:) (Dummy:) %>: [d|ðs|(s) t] ([a|i|u]) #:0 ; 
+ Cx:0 <=> Vow Cx _ (%>:) (u: r:) (Dummy:) %>: [d|ð|s|(s) t] ([a|i|u]) #:0 ; 
 ! Cx:0 <=> Vow Cx _ ( %>: u: r: ) ([Dummy: - %^PASS:]) %>: [s|t] #:0 ; 
       where Cx in ( b d f g k l m n p r s t v ) ;
 
@@ -508,7 +508,15 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 ! n:0 <=> _ %>: t t ;
 
 "t Deletion in Neuter"
- t:0 <=> [ r t | Vow Cns+ Vow ð %^EDH: ] %>: _ ;
+ t:0 <=> [ Cns t | Vow Cns+ Vow ð %^EDH: ] %>: _ #: ;
+!t:0 <=> [ r t | Vow Cns+ Vow ð %^EDH: ] %>: _ ;
+
+!"t Deletion in Supine"
+! t:0 <=> Cns t  %>: _ #:0;
+
+!€ lyft%>t#
+!€ lyft000
+
  
 "ng to kk Part 1"
  n:k <=> Vow _ g:k %^NGKK: ;

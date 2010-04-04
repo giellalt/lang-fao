@@ -29,6 +29,7 @@ LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
 LIST N = N ;
 LIST V = V ;
 LIST A = A ;
+LIST A* = A* ;
 LIST Prop = Prop ;
 LIST Adv = Adv ;
 LIST Num = Num ;
@@ -90,9 +91,14 @@ PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Guess ;
 LIST NAGD = Nom Acc Gen Dat ;
 LIST GENDER = Msc Fem Neu ;
 LIST NUMBER = Sg Pl ;
+SET NAGDNUMBERGENDER = (Msc Sg Nom) OR (Msc Sg Acc) OR (Msc Sg Gen) OR (Msc Sg Dat) OR (Msc Pl Nom) OR (Msc Pl Acc) OR (Msc Pl Gen) OR (Msc Pl Dat) OR (Fem Sg Nom) OR (Fem Sg Acc) OR (Fem Sg Gen) OR (Fem Sg Dat) OR (Fem Pl Nom) OR (Fem Pl Acc) OR (Fem Pl Gen) OR (Fem Pl Dat) OR (Neu Sg Nom) OR (Neu Sg Acc) OR (Neu Sg Gen) OR (Neu Sg Dat) OR (Neu Pl Nom) OR (Neu Pl Acc) OR (Neu Pl Gen) OR (Neu Pl Dat) ;
+
 
 # Sets
 # ====
+
+SET WORD = N | V | A | Pr | Pron | Det | Adv | CC | CS | Interj | Num | ("\?") ;
+
 
 # Noun sets
 
@@ -127,7 +133,11 @@ SET NOT-ACC = TAG - Acc ;
 
 LIST COPULA = "vera" "verða" ;
 
-LIST AUX = "kunna" "skula" "vera" "verða" "hava" "munna" ;
+LIST HAVA = "hava" ;
+
+LIST MODV = "kunna" "láta" "skula" "vilja" "munna" "mega" ;
+
+SET AUX = COPULA OR HAVA OR MODV ;
 
 LIST VFIN = Prs Prt Imp Sbj ;
 LIST INDSBJ = Ind Sbj ;
@@ -137,7 +147,6 @@ LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
 
 LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
 
-LIST MODV = "kunna" "láta" "skula" "vilja" "munna" "mega" ;
 
 LIST DATV = "bjóða" "hýsa" "sleppa" "smakka" "takka" ; # "undirvísa" 
  # sleppa3 = sleppa manninum leysum
@@ -148,6 +157,8 @@ LIST ACCPREPV = "leggja" "fara" "renda" "koma" "liða" "seta" ;
 LIST OBJPREDVERB = "kalla" "doypa" "nevna" "taka"  ;
 
 LIST MOVEMENTVERB = "koma" "koyra" ;
+
+SET TV = V - COPULA - MODV ;
 
 # Noun-Verb sets
 
@@ -160,7 +171,7 @@ LIST THIRD = Sg 3Sg Pl 3Pl ;
 SET NUMBERS = Num - ("eitt") - ("1") ;
 # Preposition sets
 
-LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum" "íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin" "hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin" "vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "vestan" ;
+LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum" "íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin" "hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin" "vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "sum" "vestan" ;
 
 LIST DATPREP = "hjá" "með" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "frá" "mótvegis" "nær" "sambært" "viðvíkjandi" ;
 
@@ -188,17 +199,23 @@ SET S-BOUNDARY2 = CS | Interr | (";") | BOS | EOS | (@CVP) ;
 
 # Case sets
 
+# Some case, but not...
 SET NOTNOM = Dat | Gen | Acc ;
 SET NOTDAT = Nom | Gen | Acc ;
 SET NOTACC = Nom | Gen | Dat ;
 SET NOTACCDAT = Nom | Gen ;
 SET OBL = Acc | Dat | Gen ;
 
+# Anything but the following case...
+SET NOACC = WORD - Acc ;
+SET NODAT = WORD - Dat ;
+SET NOACCDAT = WORD - Acc - Dat ;
+
+
 #SET NO
 
 SET PRE-N =  A | Det | (N Gen) | Num | (Pron Gen) | CC ; # Det???
 
-SET WORD = N | V | A | Pr | Pron | Det | Adv | CC | CS | Interj | Num | ("\?") ;
 
 LIST COMMA = (",") ;
 SET MARK =  COMMA | ("\\") | ("\;") ; #"
@@ -213,6 +230,7 @@ SET WORDMARK = WORD | MARK ;
 SET NPNH = WORDMARK - PRE-N ;
 SET NPNHA = WORDMARK - PRE-N - Adv ;
 SET NOT-ADV = WORDMARK - Adv ;
+SET LEX-ADV = Adv - (A*) ;
 SET NOT-A = WORDMARK - A ;
 SET NOT-CC = WORDMARK - CC ;
 SET NOUNADJ = N | A ;
@@ -228,9 +246,18 @@ LIST TIME = "sunnudagur" ;
 
 LIST ABSTRACT = "ráð" "byráð" ;
 
+LIST BAREPLURALS = "barn" "fólk" "bygdafólk" "konufólk" ;
+# these words are usually plurals when used alone. All countable neuters?
+## Tú sært barn standa.
 
 
 
+
+########################                  #########################
+########################                  #########################
+                        # disambiguation #
+########################                  #########################
+########################                  #########################
 
 SECTION
 
@@ -262,7 +289,7 @@ REMOVE:r20 A + Neu IF (0  $$NAGD) (*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT
 SELECT A IF (-3 COPULA)(-2C A)(-1 CC)(1 CLB);
 SELECT A IF (-1 COPULA)(1 CC)(2C A)(1 CLB);
 
-
+REMOVE (V PrfPrc) IF (NOT *-1 AUX BARRIER S-BOUNDARY)(0 PrfPrc + A);
 
 # Case disambiguation
 SELECT:r21 $$NAGD IF (0C A)(*1C $$NAGD BARRIER NPNHA)(NOT 0 V); #XXX C?
@@ -306,6 +333,10 @@ SELECT:r39 Pr IF (0 ("til"))(*1 N OR NPNH OR ("at") BARRIER NPNHA);
 
 SELECT:r3 Pr IF (0 ("til"))(*1 (N Gen) BARRIER NPNHA);
 
+# tíður
+SELECT ("tíður" A* Adv) IF (-1 VFIN); #(NOT 0 (Det $$NAGD) LINK 1 N + $$NAGD OR A + $$NAGD);
+	## Tú hugsar títt um bygdafólk.
+	
 # um
 SELECT:um1 CS IF (-1 ("sjálvur"))(0 ("um"));
 REMOVE:um2 CS IF (0 ("um"));
@@ -347,9 +378,26 @@ REMOVE:STRONGDATPREPVERB Acc IF (*-1 SOMEACCDATPREP BARRIER NPNH LINK *-1 S-BOUN
 REMOVE Pers IF (-1 Pr)(0 (Det Gen))(*1 N OR A BARRIER NPNH);
        ## vendu móti hansara bygd.
 
-# Det
+REMOVE Det IF (0 Pers)(1 EOS OR VFIN OR Pr OR CC OR S-BOUNDARY);
+REMOVE Dem IF (0 Pers)(1 EOS OR VFIN OR Pr OR CC OR Num OR S-BOUNDARY);
 
-REMOVE:r1 (Num) IF (0 ("ein" Det))(*1 N OR A BARRIER NPNHA);
+# Det (no idea why $$ does not work)
+
+REMOVE (Num Msc Nom) IF (0 (Det Msc Nom))(1 (N Msc Nom) OR (A Msc Nom));
+REMOVE (Num Msc Acc) IF (0 (Det Msc Acc))(1 (N Msc Acc) OR (A Msc Acc));
+REMOVE (Num Msc Gen) IF (0 (Det Msc Gen))(1 (N Msc Gen) OR (A Msc Gen));
+REMOVE (Num Msc Dat) IF (0 (Det Msc Dat))(1 (N Msc Dat) OR (A Msc Dat));
+
+REMOVE (Num Fem Nom) IF (0 (Det Fem Nom))(1 (N Fem Nom) OR (A Fem Nom));
+REMOVE (Num Fem Acc) IF (0 (Det Fem Acc))(1 (N Fem Acc) OR (A Fem Acc));
+REMOVE (Num Fem Gen) IF (0 (Det Fem Gen))(1 (N Fem Gen) OR (A Fem Gen));
+REMOVE (Num Fem Dat) IF (0 (Det Fem Dat))(1 (N Fem Dat) OR (A Fem Dat));
+
+REMOVE (Num Neu Nom) IF (0 (Det Neu Nom))(1 (N Neu Nom) OR (A Neu Nom));
+REMOVE (Num Neu Acc) IF (0 (Det Neu Acc))(1 (N Neu Acc) OR (A Neu Acc));
+REMOVE (Num Neu Gen) IF (0 (Det Neu Gen))(1 (N Neu Gen) OR (A Neu Gen));
+REMOVE (Num Neu Dat) IF (0 (Det Neu Dat))(1 (N Neu Dat) OR (A Neu Dat));
+
 	## eina mynd
 
 # Prop
@@ -358,6 +406,10 @@ SELECT:InternalProp Prop IF (NOT -1 (CLB OR PUNCT OR LEFT))(NOT 0 Guess);
 
 # Specific lexemes, words 
 # =======================
+
+# aftan
+SELECT Pr IF (0 ("aftan"))(1 Pr);
+	## aftan fyri sparikassan...
 
 # at
 SELECT CS IF (-2 ("av"))(-1 ("tað"))(0 ("at"));
@@ -422,6 +474,14 @@ SELECT CC IF (-1 CLB OR BOS OR PUNCT)(0 ("men"));
 # niðan
 SELECT Adv IF (0 ("niðan"))(1 Pr);
 
+# nú
+REMOVE N IF (0 ("nú" Adv));
+	## í núið.
+	
+# ruður
+REMOVE ("ruður") IF (0 ("runnur"));
+# Synonyms
+
 # seg
 SELECT Refl IF (0 ("seg" Refl $$NAGD))(1 ("sjálvur" + $$NAGD));
 
@@ -456,6 +516,10 @@ REMOVE Imp IF (0 ("um")) ;
 # I did not intend to write a 'remove all ymja' rule, but simply cannot come up with good 
 # contexts including 'ymja' but excluding 'um'.
 
+# unglingi
+REMOVE ("unglingi") IF (0 ("unglingur"));
+# perhaps with regex *lingi vs *lingur
+
 # væl
 REMOVE Imp IF (NOT -1 BOS)(0 ("væl"))(NOT 1 ("um"));
 # Again, we need real-life examples for imperative of
@@ -474,8 +538,11 @@ SELECT:r7 Adv IF (-1 VFIN)(1 Inf);
 REMOVE Adv IF (-1 Det OR Pr)(0 A)(1 N);
        ## ið stakk í bleyta jørð,
 
-
-
+# Lexicalised adverbs.
+REMOVE:r566 (A* Adv) IF (0 LEX-ADV) ;
+	## Serliga er tað ein.
+	
+	
 # Idioms
 
 SELECT ("stórur" A Neu Sg Dat) IF (-2 ("í"))(-1 ("tað"))(1 ("og"))(2 ("heilur"));
@@ -563,6 +630,11 @@ REMOVE:r33 Pl IF (*-1 ("eitt" Num Sg) OR (Det Sg) BARRIER NOT-A)(0 (N Sg));
 
 SELECT:NumNPl (N Pl) IF (-1 NUMBERS);
 
+SELECT:BarePl (N Pl) IF (NOT -1 PRE-N)(0 BAREPLURALS);
+
+
+
+
 
 # Coordination
 
@@ -587,6 +659,9 @@ REMOVE:r35 A IF (*-1 Pr OR CLB BARRIER NPNH)(0 N)(1 S-BOUNDARY OR V);
 REMOVE (A Fem) IF (0 (N Neu))(-1 COPULA)(-2 ("tað" Nom));
 REMOVE (A Msc) IF (0 (N Neu))(-1 COPULA)(-2 ("tað" Nom));
 
+REMOVE N IF (*-1 SOMEDATPREP BARRIER NODAT)(0 A + Dat)(1 N + Dat) ;
+REMOVE N IF (*-1 SOMEACCPREP BARRIER NOACC)(0 A + Acc)(1 N + Acc) ;
+REMOVE N IF (*-1 SOMEACCDATPREP BARRIER NOACCDAT)(0 A + Dat OR A + Acc)(1 N + Dat OR N + Acc) ;
 
 # Elliptic AP as NP
 # =================
@@ -634,30 +709,44 @@ SELECT:r51 Inf IF (*-1 MODV BARRIER V);
 REMOVE (V Pl) IF (-2 VFIN + Sg)(-1 (Pron Sg))(0 Inf);
 REMOVE (V Pl) IF (-1 N + Sg LINK *-1 VFIN + Sg BARRIER NPNH)(0 Inf);
 
+#REMOVE Inf IF (-1 (Pl Nom))(0 (V Pl))(NOT -1 Acc LINK *-2 VFIN BARRIER NPNHA OR CLB);
+REMOVE Inf IF (-1 (Pl Nom))(0 (V Pl))(NOT -1 Acc)(NOT -2 VFIN);
+
 # Imperative
 
-REMOVE:ImpFirst N IF (-1 BOS OR PUNCT)(0 Imp)(*1 ("tín" Poss) BARRIER VFIN);
+# The best would be to make a corpus of imperative sentences, identify
+# all the imperatives, and then just remove the rest.
 
-REMOVE Imp IF (-1C Ind OR PrfPrc OR Inf OR PrsPrc OR Sup);
-	## Gu∂ gjør∂i hvalvi∂.
-
-REMOVE Imp IF (-1 CS)(0 Ind OR Sbj);
-
-REMOVE Imp IF (-1 Adv OR Nom OR Pr OR CS OR V)(0 Prs OR Prt);
+# REMOVE:ImpFirst N IF (-1 BOS OR PUNCT)(0 Imp)(*1 ("tín" Poss) BARRIER VFIN);
+# 
+# REMOVE Imp IF (-1C Ind OR PrfPrc OR Inf OR PrsPrc OR Sup OR Refl);
+# 	## Gu∂ gjør∂i hvalvi∂.
+# REMOVE Imp IF (-1 COMMA)(-2C Ind OR PrfPrc OR Inf OR PrsPrc OR Sup OR Refl);
+# 
+# REMOVE Imp IF (-1 CS)(0 Ind OR Sbj);
+# 
+# REMOVE Imp IF (-1 Adv OR Nom OR Pr OR CS OR V)(0 Prs OR Prt);
 # This rule was commented out, but seems to be sensible, after all.
 
+# Here come all rules selecting Imp.
+
 SELECT:CoordImp Imp IF (*-1 CC OR COMMA BARRIER VFIN LINK *-1C Imp BARRIER VFIN);
-REMOVE:r52 Imp IF (NOT *-1 CC OR COMMA LINK *-1 Imp)(NOT *-1 BOS OR PUNCT BARRIER WORD); # hmm
+
+
+# Then we remove the remaining ones.
+REMOVE Imp ;
+
+#REMOVE:r52 Imp IF (NOT *-1 CC OR COMMA LINK *-1 Imp)(NOT *-1 BOS OR PUNCT BARRIER WORD); # hmm
 
 REMOVE Sup IF (*-1 CLB BARRIER WORD)(0 Imp)(*1 CLB  BARRIER Ind);
 
-# The Imp section must be written when there are genuine 
-# examples to build upon.
 
-REMOVE:r53 Imp IF (0 N)(1 CC)(*2 N BARRIER NPNHA);
+
+
+#REMOVE:r53 Imp IF (0 N)(1 CC)(*2 N BARRIER NPNHA);
 	## Stýrið og stjórnin hjá...
 
-REMOVE:r54 (Imp Pl) IF (0 (N Neu))(1 VFIN);
+#REMOVE:r54 (Imp Pl) IF (0 (N Neu))(1 VFIN);
 	## Húsið er stórt.
 
 # Supine
@@ -677,6 +766,8 @@ SELECT:r57 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) OR (3PRON Pers Sg Nom) 
 REMOVE:test1 (V Ind 1Sg) IF (NEGATE 0* ("eg" Pron Pers Sg Nom)); 
 REMOVE:test2 (V Ind 2Sg) IF (NEGATE 0* ("tú" Pron Pers Sg Nom)); # Tino!
 
+REMOVE (V Ind 2Sg) IF (*-1 CLB LINK *-1 2Sg OR Prt + Sg LINK -1 ("tú" Pron Pers Sg Nom) LINK -1 ("sum") OR ("ið"));
+
 SELECT 1Sg IF (-1 ("eg" Pron Pers Sg Nom));
 
 REMOVE:r58b (V Ind 1Sg) IF (*-1 (N Sg Nom) BARRIER NOT-ADV LINK NOT *1 Pron + 1Sg BARRIER CLB) ;
@@ -691,10 +782,11 @@ REMOVE:CoordVerb (V Ind 1Sg) IF (-1 CS OR CC LINK *-1C (V Ind Sg) OR (V Ind 3Sg)
 
 
 SELECT:r60 (V 2Sg) IF (*-1 ("tú" Pron Pers Sg Nom) BARRIER NOT-ADV);
+SELECT:r60b (V 2Sg) IF (-1 ("og") LINK *-1C (V 2Sg) BARRIER S-BOUNDARY);
 
 # Present plural
 
-SELECT:r61 (V Pl) IF (-1 (N Pl Nom) OR ("eg" Pron Pers Pl Nom));
+SELECT:r61 (V Pl) IF (-1 (N Pl Nom) OR ("eg" Pron Pers Pl Nom))(NOT -1 (Acc) LINK *-1 VFIN BARRIER NPNH);
 
 
 # V + Refl
@@ -746,7 +838,7 @@ REMOVE:r66 ("hannur") IF (0 ("hann" Nom))(1 (V 3Sg));
 
 SELECT (Pron Pers Pl Nom) IF (1 ("sum"))(2 Pl);
 
-REMOVE:r66b (Pl Nom Indef) IF (1 (N Sg) OR (V Sg) OR (V 3Sg));
+REMOVE:r66b (Pl Nom Indef) IF (1 (N Sg) OR (V Sg) OR (V 3Sg))(NOT 1 (V Pl));
 
 REMOVE ("vit") IF (*-1 V + Pl BARRIER V)(0 (Pron Pers Pl Nom));
 	## Eru vit helst...
@@ -835,6 +927,8 @@ SUBSTITUTE:sumPr (CS) (Pr) TARGET ("sum") (NOT -1 BOS OR COMMA);
 
 SELECT (V Pl) IF (-1 N + Nom + Sg LINK *-1 CC BARRIER NPNH LINK -1 N + Nom);
 
+REMOVE:Dangerous (V Ind 2Sg) IF (0 (V Ind 3Sg)); #
+
 
 
 
@@ -848,6 +942,9 @@ SELECT (V Pl) IF (-1 N + Nom + Sg LINK *-1 CC BARRIER NPNH LINK -1 N + Nom);
 
 LIST @<SUBJ = @<SUBJ ;
 LIST @SUBJ> = @SUBJ> ;
+LIST @<tSUBJ = @<tSUBJ ;
+LIST @tSUBJ> = @tSUBJ> ;
+LIST @-FSUBJ> = @-FSUBJ> ;
 LIST @<OBJ = @<OBJ ;
 LIST @<IOBJ = @<IOBJ ;
 LIST @OBJ> = @OBJ> ;
@@ -865,6 +962,7 @@ LIST @+FAUXV = @+FAUXV ;
 LIST @-FAUXV = @-FAUXV ;
 LIST @+FMAINV = @+FMAINV ;
 LIST @-FMAINV = @-FMAINV ;
+LIST @-F<ADVL = @-F<ADVL ;
 LIST @<ADVL = @<ADVL ;
 LIST @ADVL> = @ADVL> ;
 LIST @ADVL = @ADVL ;
@@ -877,8 +975,9 @@ LIST @HNOUN = @HNOUN ;
 LIST @Pron< = @Pron< ;
 LIST @X = @X ;
 
-LIST SYNTAG = (@CNP) (@CVP) (@<SUBJ) (@SUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>A) (@A<) (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@ADVL) (@<ADVL) (@ADVL>) (@P<) (@APP) (@HNOUN) ;
+LIST SYNTAG = (@CNP) (@CVP) (@<SUBJ) (@SUBJ>) (@-FSUBJ>) (@<OBJ) (@OBJ>) (@<IOBJ) (@IOBJ>)  (@>A) (@A<) (@>N)  (@N<)  (@<SPRED) (@SPRED>) (@<OPRED) (@OPRED>) (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@ADVL) (@-F<ADVL) (@<ADVL) (@ADVL>) (@P<) (@APP) (@HNOUN) ;
 
+SET SUBJ =  (@<SUBJ) OR (@SUBJ>) OR (@-FSUBJ>) ;
 
 
 # ======== #
@@ -895,66 +994,57 @@ MAP:sa (@>N) TARGET Prop + Poss IF (*1 N BARRIER NPNH);
 
 MAP:ONEV (@+FMAINV) TARGET VFIN IF (NEGATE *0 V BARRIER S-BOUNDARY2);
 
-MAP:r69 (@+FAUXV) TARGET AUX + VFIN IF (0*C VINFIN BARRIER CS OR CC);
+MAP:r69 (@+FAUXV) TARGET COPULA + VFIN IF (*1C Sup BARRIER CS OR CC OR COMMA);
+MAP:r69 (@+FAUXV) TARGET ("hava") + VFIN IF (*1C Sup OR PrfPrc BARRIER CS OR CC OR COMMA);
+MAP:r69 (@+FAUXV) TARGET COPULA + VFIN IF (*-1C Sup BARRIER CS OR CC OR COMMA);
+MAP:r69 (@+FAUXV) TARGET ("hava") + VFIN IF (*-1C Sup OR PrfPrc BARRIER CS OR CC OR COMMA);
+MAP:r69 (@+FAUXV) TARGET MODV + VFIN IF (*-1 Inf BARRIER CS OR CC OR COMMA LINK NOT -1 IM OR AUX);
+MAP:r69 (@+FAUXV) TARGET MODV + VFIN IF (*1 Inf BARRIER CS OR CC OR COMMA OR IM OR AUX);
+#MAP:r69 (@+FAUXV) TARGET AUX + VFIN IF (0*C VINFIN BARRIER CS OR CC OR IM);
 # Added C. The rule introduces too many imperatives.
 # An laternative restriction would be (0 NOT Imp)
 
 MAP (@-FAUXV) TARGET VINFIN IF (0 AUX)(*-1 AUX BARRIER V) ;
 MAP (@-FMAINV) TARGET VINFIN IF (*-1 AUX BARRIER V) ;
-MAP (@-FMAINV) TARGET VINFIN IF (-1 ("at") LINK -1* VFIN) ;
-# Tað fær tíðin at vísa<@-FMAINV>
+
+MAP (@P<) TARGET Inf IF (-1 ("at"))(-2 Pr);
+	## … unglingar hava slongt seg fyri at tosa um brennivin.
+MAP (@-FMAINV) TARGET Inf IF (-1 ("at") LINK -1* VFIN) ;
+	## Tað fær tíðin at vísa<@-FMAINV>
 # BARRIER NOT-ADV-NOUN? or might be a bit strict? -KBU
 
-MAP:r70 (@+FAUXV) TARGET AUX + VFIN IF (*0 V BARRIER S-BOUNDARY2) ;
-MAP:r70b (@+FMAINV) TARGET VFIN ;
-#MAP (@+FMAINV) TARGET VFIN IF (NEGATE 0* VFIN BARRIER CS OR CLB);
+MAP:infsubj (@-FSUBJ>) TARGET (N Pl Acc) IF (1 Inf);
+
+MAP:infsubj (@-FSUBJ>) TARGET NOMINALHEAD + Acc IF (*-1 VFIN BARRIER NPNH)(1 Inf);
+
+# VAUX was here
 
 MAP:DetPossGen (@N<) TARGET (Det Poss Sg Gen) IF (-1 N);
 MAP:PostGenPron (@N<) TARGET (Pron Pers Gen) IF (-1C N + Indef)(NOT *1 N + Indef BARRIER NOT-A);
 #MAP:PostGenPron (@N<) TARGET (Pron Pers Gen) IF (-1 N + Indef);
 MAP:PreGenPron (@>N) TARGET (Pron Pers Gen) IF (*1 N + Indef BARRIER NOT-A) ;
 
+
+
+
+MAP (@<tSUBJ) TARGET ("tað" Pron Pers Sg Nom) IF (-1 V)(-2 BOS OR Adv)(1 Nom);
+MAP (@tSUBJ>) TARGET ("tað" Pron Pers Sg Nom) IF (1 V)(2 (N Nom Indef));
+MAP (@tSUBJ>) TARGET ("tað" Pron Pers Sg Nom) IF (1 V)(2 ("ein" Det Nom))(*3 (N Nom Indef) BARRIER NPNH);
+MAP (@tSUBJ>) TARGET ("tað" Pron Pers Sg Nom) IF (1 V)(*2 (N Nom Indef) BARRIER NOT-ADV);
+MAP (@tSUBJ>) TARGET ("tað" Pron Pers Sg Nom) IF (1 V)(*2 ("ein" Det Nom) BARRIER NOT-ADV LINK 1 (N Nom Indef) BARRIER NPNH);
+
+MAP:r71 (@<SUBJ) TARGET (Num Nom) IF (*-1 (@<tSUBJ) BARRIER NPNHA LINK -1 COPULA)(NOT 1 PRE-N);
+MAP:r71 (@<SUBJ) TARGET (N Nom) IF (*-1 (@<tSUBJ) BARRIER NPNHA LINK -1 COPULA);
+
 ADD:r71 (@<SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK 0 Imp);
 ADD:r71 (@<SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK -1 Nom);
-#MAP (@SUBJ) TARGET (N Nom) OR (Num Nom) OR (Pron Nom);
+ADD:r71rel (@<SPRED) TARGET (N Nom) OR (A Nom) IF (*-1 COPULA BARRIER NPNHA LINK -1 COMMA LINK *-1 COMMA LINK -1 Nom);
 
 MAP (@Pron<) TARGET ("sjálvur") IF (-1 Refl);
-#MAP:PostPoss (@N<) TARGET (Det Poss $$NAGD $$GENDER) IF (-1 (N $$GENDER))(NOT 1 (NPNH OR N $$GENDER $$NAGD));
 MAP:PostPoss (@N<) TARGET Det + Poss + $$GENDER IF (-1 N + $$GENDER)(NEGATE 1 NOUNADJ + $$GENDER + $$NAGD);
-#MAP PostPoss (@N<) TARGET (Det Poss $$GENDER) IF (-1 (N $$GENDER));
-# Number can be both NOMINALHEAD and Det, map that first
 
 MAP (@>N) TARGET Num + $$NAGD IF (1 N + $$NAGD);
 MAP (@>N) TARGET Num + $$NAGD IF (1 A + $$NAGD)(2 N + $$NAGD);
-
-MAP:r72 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (*1 (V 2Sg) BARRIER VFIN);
-MAP:r73 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V 2Sg) BARRIER VFIN);
-
-MAP:r72b (@SUBJ>) TARGET ("eg" Pron Pers Sg Nom) IF (*1 (V 1Sg) BARRIER VFIN);
-MAP:r73b (@<SUBJ) TARGET ("eg" Pron Pers Sg Nom) IF (*-1 (V 1Sg) BARRIER VFIN);
-
-MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER NPNH LINK NOT -1 Nom);
-MAP:r75b (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER NPNH) (0C Nom);
-
-MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg));
-
-MAP:mapcoordsubj2 (@SUBJ>) TARGET N + Nom IF (*-1 CC BARRIER NPNH LINK -1 N + Nom)(1 VFIN + Pl);
-MAP:mapcoordsubj1 (@SUBJ>) TARGET N + Nom IF (1 CC LINK *1 N + Nom BARRIER NPNH LINK 1 VFIN + Pl);
-
-
-MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl) BARRIER CLB);#(":" CLB) OR (";" CLB));
-MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
-
-ADD:rOPR1 (@<OBJ) TARGET (N Acc) OR (Pron Acc) IF (*-1 OBJPREDVERB BARRIER Pr OR S-BOUNDARY)(*1 N + Acc BARRIER NPNHA);
-MAP:rOPR2 (@<OPRED) TARGET (N Acc) OR (Pron Acc) OR (A Acc) IF (*-1 NOMINALHEAD + Acc BARRIER NPNHA LINK *-1 OBJPREDVERB BARRIER S-BOUNDARY);
-
-MAP:r78 (@<OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 V BARRIER Pr OR S-BOUNDARY);
-MAP:r78 (@<OBJ) TARGET (Det Acc) (*-1 V BARRIER Pr OR S-BOUNDARY)(NOT *1 N BARRIER NPNHA);
-MAP:r79 (@<IOBJ) TARGET (N Dat) OR (Num Dat) OR (Pron Dat) IF (*1 (@<OBJ) BARRIER NPNHA);
-MAP:r80 (@<OBJ) TARGET Dat IF (*-1 DATV);
-MAP:topic (@OBJ>) TARGET OBL IF (-1* S-BOUNDARY BARRIER VFIN)(1* VFIN LINK 1* Nom) ; #TODO
-  # better verb than VFIN, parametrize wrt verb, or TV, or whatever.
-# PP
 
 
 MAP:r81 (@P<) TARGET NOMINALHEAD + Dat IF (*-1 SOMEDATPREP BARRIER NPNHA);
@@ -969,6 +1059,10 @@ MAP:r81 (@P<) TARGET NOMINALHEAD + Dat IF (*-1 CC BARRIER NPNHA LINK -1 NOMINALH
 MAP:r82 (@P<) TARGET NOMINALHEAD + Acc IF (*-1 CC BARRIER NPNHA LINK -1 NOMINALHEAD LINK *-1 SOMEACCPREP BARRIER NPNH);
 MAP:r83 (@P<) TARGET NOMINALHEAD + Gen IF (*-1 CC BARRIER NPNHA LINK -1 NOMINALHEAD LINK *-1 SOMEGENPREP BARRIER NPNH);
 
+
+
+# np
+
 #MAP:r84 (@>N) TARGET Det + $$GENDER + $$NAGD IF (1 N + $$GENDER + $$NAGD);
 MAP:r84c (@>N) TARGET Det + $$GENDER + $$NAGD IF (1 A + $$GENDER + $$NAGD); # BARRIER NPNHA);
 ## sjekk denne!!
@@ -979,12 +1073,58 @@ MAP:r84a (@>A) TARGET Det + $$GENDER + $$NAGD IF (1 A + $$GENDER + $$NAGD BARRIE
 
 
 MAP:r85 (@>N) TARGET (N Gen) IF (*1 N BARRIER V OR Adv);
-MAP:r86 (@>N) TARGET Det IF (*1 N BARRIER V OR Adv OR (";"));
-MAP:r87 (@>N) TARGET (Det) IF (*1 N BARRIER V OR Adv);
+MAP:r86 (@>N) TARGET Det IF (*1 N BARRIER V OR Adv OR Pr OR (";"));
+MAP:r87 (@>N) TARGET (Det) IF (*1 N BARRIER V OR Adv OR Pr OR (";"));
 MAP:r88 (@>N) TARGET A + $$NAGD OR Det + $$NAGD IF (*1 N + $$NAGD OR Num + $$NAGD BARRIER NPNHA);
 MAP (@>N) TARGET Num IF (*1 N BARRIER NPNHA);
 
-MAP:r89 (@VFIN) TARGET (V Prs) OR (V Prt) OR (V Imp);
+
+# subjects
+
+
+MAP:r72 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (*1 (V 2Sg) BARRIER VFIN);
+MAP:r72 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (1 (V Prt Sg) BARRIER VFIN);
+MAP:r73 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V 2Sg) BARRIER VFIN);
+MAP:r73 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V Prt Sg) BARRIER VFIN);
+
+MAP:r72b (@SUBJ>) TARGET ("eg" Pron Pers Sg Nom) IF (*1 (V 1Sg) BARRIER VFIN);
+MAP:r73b (@<SUBJ) TARGET ("eg" Pron Pers Sg Nom) IF (*-1 (V 1Sg) BARRIER VFIN);
+
+MAP:r75 (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER NPNH LINK NOT -1 Nom);
+MAP:r75b (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIER NPNH) (0C Nom);
+
+MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg))#;(NOT 0 Acc LINK 1 CC LINK 1C VFIN);
+	## Tíkin hevur lyft beinið og pissar.
+
+
+MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl) BARRIER CLB);#(":" CLB) OR (";" CLB));
+MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
+
+# subject with relclause
+
+MAP (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (1 COMMA LINK *1 VFIN LINK *1 COMMA LINK 1 (V Pl)); 
+
+# coordinated subjects
+
+MAP:mapcoordsubj2 (@SUBJ>) TARGET N + Nom IF (*-1 CC BARRIER NPNH LINK -1 N + Nom)(1 VFIN + Pl);
+MAP:mapcoordsubj1 (@SUBJ>) TARGET N + Nom IF (1 CC LINK *1 N + Nom BARRIER NPNH LINK 1 VFIN + Pl);
+
+MAP (@SUBJ>) TARGET N + Nom IF (1 CC LINK *1 N + Nom BARRIER NPNH LINK 1 COMMA LINK *1 VFIN LINK *1 COMMA LINK 1 (V Pl));
+
+
+
+ADD:rOPR1 (@<OBJ) TARGET (N Acc) OR (Pron Acc) IF (*-1 OBJPREDVERB BARRIER Pr OR S-BOUNDARY)(*1 N + Acc BARRIER NPNHA);
+MAP:rOPR2 (@<OPRED) TARGET (N Acc) OR (Pron Acc) OR (A Acc) IF (*-1 NOMINALHEAD + Acc BARRIER NPNHA LINK *-1 OBJPREDVERB BARRIER S-BOUNDARY);
+
+MAP:AcI (@<OBJ) TARGET Inf IF (-1 (@-FSUBJ>));
+MAP:r78 (@-F<OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 TV + Inf BARRIER Pr OR S-BOUNDARY OR VFIN OR Sup);
+MAP:r78 (@<OBJ) TARGET (N Acc) OR (Num Acc) OR (Pron Acc) IF (*-1 TV OR Sup BARRIER Pr OR S-BOUNDARY OR Inf);
+MAP:r78 (@<OBJ) TARGET (Det Acc) (*-1 TV BARRIER Pr OR S-BOUNDARY)(NOT *1 N BARRIER NPNHA);
+MAP:r79 (@<IOBJ) TARGET (N Dat) OR (Num Dat) OR (Pron Dat) IF (*1 (@<OBJ) BARRIER NPNHA);
+MAP:r80 (@<OBJ) TARGET Dat IF (*-1 DATV);
+MAP:topic (@OBJ>) TARGET OBL IF (-1* S-BOUNDARY BARRIER VFIN)(NOT 0 Nom LINK 1 VFIN)(1* TV LINK 1* Nom BARRIER CS) ; #TODO
+  # better verb than VFIN, parametrize wrt verb, or TV, or whatever.
+# PP
 
 
 
@@ -993,16 +1133,14 @@ MAP (@ADVL>) TARGET ("bara" Adv) IF (1 Pron)(2 V);
 MAP (@ADVL>) TARGET ("bara" Adv) IF (*1 N BARRIER NPNH LINK 1 V);
 
 # PPs
+MAP:P+PP (@P<) TARGET Pr IF (-1 ("aftan"))(0 Pr);
+	## aftan fyri sparikassan...
 
 MAP:N+PP (@N<) TARGET Pr IF (-1 N)(*-2 BOS BARRIER V);
 
-MAP:r90 (@<ADVL) TARGET Pr OR Adv IF (*-1 VFIN BARRIER CS);
-MAP:r91 (@ADVL>) TARGET Pr OR Adv (NEGATE *-1 VFIN BARRIER CS)(*1 VFIN);
 
 MAP:r92 (@N<) TARGET Poss IF (0 $$NAGD)(-1 N + $$NAGD);
 
-
-MAP:advl (@ADVL) TARGET Adv OR Pr ;
 
 MAP:r93 (@N<) TARGET N IF (0 $$NAGD)(-1 (N $$NAGD));
 
@@ -1025,6 +1163,28 @@ MAP (@HNOUN) TARGET N IF (NOT *-1 VFIN)(NOT *1 Ind OR Sbj)(NOT 0 SYNTAG) ;
 MAP (@HNOUN) TARGET A IF (NOT *-1 VFIN)(NOT *1 Ind OR Sbj)(NOT 0 SYNTAG) ;
 MAP (@HNOUN) TARGET Num IF (-1 BOS)(1 EOS);
 
+
+
+ADD:r90b (@-F<ADVL) TARGET Pr OR Adv IF (*-1 Inf BARRIER CS OR COMMA OR VFIN OR Sup);
+MAP:r90    (@<ADVL) TARGET Pr OR Adv IF (*-1 VFIN OR Sup BARRIER CS OR COMMA OR Inf);
+
+MAP:r91 (@ADVL>) TARGET Pr OR Adv (NEGATE *-1 VFIN BARRIER CS OR COMMA)(*1 VFIN);
+
+
+
+MAP (@+FMAINV) TARGET COPULA + VFIN IF (*1 (@<SPRED) BARRIER S-BOUNDARY2 OR CLB) ;
+MAP:r70 (@+FAUXV) TARGET AUX + VFIN IF (*1 Sup BARRIER S-BOUNDARY2 OR CLB OR (Nom)) ;
+MAP:r70b (@+FAUXV) TARGET AUX + VFIN IF (*-1 V BARRIER S-BOUNDARY2 OR CLB) ;
+#MAP:r70c (@+FMAINV) TARGET VFIN ;
+MAP:r70c (@+FMAINV) TARGET VFIN IF (NEGATE 0* VFIN BARRIER CS OR CLB);
+
+
+ADD:r89 (@+FAUXV) TARGET AUX + Ind OR AUX + Imp IF (*1 V BARRIER S-BOUNDARY OR CLB OR SUBJ ) ;
+
+MAP:r89 (@+FMAINV) TARGET (V Prs) OR (V Prt) OR (V Imp);
+
+
+
 # We give in
 
 MAP:r96 (@X) TARGET WORD ;
@@ -1033,7 +1193,7 @@ MAP:r96 (@X) TARGET WORD ;
 
 
 # =========== #
-    ###SECTION   #
+ ###SECTION   #
 # =========== #
 
 
@@ -1093,6 +1253,8 @@ SELECT (@CVP) IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C V BARRIER NPNHA);
 
 # NPs
 
+REMOVE (Pron @>N) IF (0 (Det @>N))(Not 0 Gen);
+
 REMOVE (@>N) IF (0 (Gen @N<))(-1 N);
 
 SELECT (N Sg) IF (1C  Poss + Sg + @N<);
@@ -1124,15 +1286,23 @@ SELECT (@<SUBJ) IF (-2 (@OBJ>) OR (@ADVL>))(-1 VFIN + Pl)(0 Pl);
 
 SELECT:onesubj (@SUBJ>) IF (1 VFIN)(NOT *2 (@<SUBJ) BARRIER CLB);
 
+
 SELECT:defsubj (Def) IF (NOT -1 Indef)(0C (@SUBJ>))(1 VFIN);
 	       ## at talan var um ein dyst
 
 SELECT:coordsubj (@SUBJ>) IF (*-1 CC BARRIER NPNH LINK -1 N)(1 VFIN + Pl);
 
 
+# Subject predicatives, SPRED
+
+REMOVE (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 (@SUBJ>))(0 (@<SPRED));
+REMOVE (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 COMMA LINK *-1 VFIN LINK *-1 COMMA LINK -1 (@SUBJ>))(0 (@<SPRED));
+
+REMOVE (@SUBJ>) IF (0 (@<SPRED)); # more strict context for spred
+
 # Third position subjects, postverbal subjects
 
-SELECT:PostVSubj1 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 BOS OR (@ADVL) OR (@P<) OR COMMA OR (PUNCT LEFT));
+SELECT:PostVSubj1 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 BOS OR (@<ADVL) OR (@P<) OR COMMA OR (PUNCT LEFT));
 SELECT:PostVSubj2 (@<SUBJ) IF (*-1 VFIN BARRIER NPNH LINK -1 PUNCT LINK -1 COMMA); # (XX want more conditions)
 
 # Topicalised non-subjects
@@ -1151,6 +1321,9 @@ REMOVE Acc IF (*-1 ("seg" Acc) LINK -1 V BARRIER NOT-ACC);
 REMOVE:NotPostSubj (@SUBJ>) IF (0 (@<OBJ))(*1 CLB BARRIER VFIN);
 
 REMOVE (@SUBJ>) IF (0 (@<OBJ))(NOT *1 VFIN BARRIER S-BOUNDARY);
+REMOVE (@SUBJ>) IF (0 (@<OBJ))(1 CC)(2C VFIN);
+
+REMOVE (@+FMAINV) IF (0 (V @<OBJ));
 
 # Subject predicatives
 
@@ -1179,6 +1352,11 @@ REMOVE:r112 V IF (-1 Pr)(0 (@P<));
 REMOVE:r112b (@HNOUN) IF (*-1 Pr BARRIER NPNH)(0 (@P<));
 
 
+# Adverbials
+# (after the Pl / Inf disambiguation)
+REMOVE (@<ADVL) IF (0 (@-F<ADVL))(-1C Inf);
+REMOVE (@-F<ADVL) IF (0 (@<ADVL))(*-1C VFIN BARRIER VINFIN);
+	## Tú sært fólk standa í gøtunum. 
 
 
 	## av tilvild
@@ -1197,6 +1375,15 @@ REMOVE:r115 (A @>N) IF (0 V)(NOT 1 N OR A);
 SELECT Pl IF (-1 Pl + (@SUBJ>) LINK *-1 S-BOUNDARY BARRIER NOT-CC)(0 V);
        ## Men vit vita, at...
 
+# Gender SPRED disambiguation
+
+REMOVE (Neu @<SPRED) IF (*-1C Fem + @SUBJ>)(0 Fem + @<SPRED);
+REMOVE (Msc @<SPRED) IF (*-1C Fem + @SUBJ>)(0 Fem + @<SPRED);
+REMOVE (Neu @<SPRED) IF (*-1C Msc + @SUBJ>)(0 Msc + @<SPRED);
+REMOVE (Fem @<SPRED) IF (*-1C Msc + @SUBJ>)(0 Msc + @<SPRED);
+REMOVE (Fem @<SPRED) IF (*-1C Neu + @SUBJ>)(0 Neu + @<SPRED);
+REMOVE (Msc @<SPRED) IF (*-1C Neu + @SUBJ>)(0 Neu + @<SPRED);
+
 
 # OPRED
 
@@ -1208,6 +1395,8 @@ REMOVE (@<ADVL) IF (0 (@<OPRED));
 
 #SELECT Neu IF (0C (@<OPRED))(*-1 (@<OBJ) + Neu OR (@<OBJ) + ("tað"));
 #so, does OPRED agree with OBJ or with SUBJ?
+
+REMOVE (@+FAUXV) IF (0 (@+FMAINV))(NOT *0 Inf OR PrfPrc OR Sup BARRIER S-BOUNDARY OR CLB OR SUBJ);
 
 SELECT (3Sg) IF (-1C (Sg @SUBJ>));
 
@@ -1260,3 +1449,5 @@ SECTION
 # Late rules
 
 SELECT $$NAGD IF (0C Poss)(-1C N + $$NAGD);
+
+REMOVE (@+FMAINV) IF (0 (+FAUXV));

@@ -88,13 +88,13 @@ space:=$(empty) $(empty)
 ABBRSRCS=$(subst $(space),$(comma),$(LEX))
 
 abbr: ../bin/abbr.txt
-../bin/abbr.txt: $(scripts)/abbr-extract \
+../bin/abbr.txt: $(scripts)/abbr-extract.pl \
 				 $(scripts)/langTools/Util.pm \
 				 $(LEX)
 	@echo
 	@echo "*** Extracting abbreviations from abbr-fao-lex.txt to abbr.txt ***" ;
 	@echo
-	@perl -I $(scripts) $(scripts)/abbr-extract \
+	@perl -I $(scripts) $(scripts)/abbr-extract.pl \
 		--output=$@ \
 		--abbr_lex=abbr-fao-lex.txt \
 		--lex=$(ABBRSRCS)

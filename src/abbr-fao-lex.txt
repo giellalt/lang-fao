@@ -6,12 +6,12 @@
 ! ----------------------------------
 
 ! Splitting in 3 groups, because of the preprocessor
-! - - - - - - - - - - - - - - - - - - - - - - - - - 
+! - - - - - - - - - - - - - - - - - - - - - - - - -
 
 LEXICON Abbreviation
-        ITRAB ;     
-        TRNUMAB ;
-        TRAB ;  
+ITRAB ;
+TRNUMAB ;
+TRAB ;
 
 ! Now splitting according to POS, and according to dot or not
 ! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -42,23 +42,23 @@ ab-dot-noun ;
 
 ! Here come POS and Case tags, and no period.
 
-LEXICON ab-nodot-noun ! The bulk 
- +Abbr+N: # ;  ! no period, that is.
+LEXICON ab-nodot-noun ! The bulk
++Abbr+N: # ;  ! no period, that is.
 ! +Abbr+N:%- R ; !^C^ TRY OUT THIS ONE
 
 !LEXICON ab-nodot-adj
 !!+Abbr: # ;  ! no period, that is.
-!! +Abbr+A+Attr: # ;  ! no period, that is. 
+!! +Abbr+A+Attr: # ;  ! no period, that is.
 ! +Abbr+A: # ;  ! no period, that is.
 !! +Abbr+A:%- R ; !^C^ TRY OUT THIS ONE
 
 !LEXICON ab-nodot-adv
 !! +Abbr: # ;  ! no period, that is.
 !  +Abbr+Adv: # ;      ! Adv without case, consider this.
-!! +Abbr+Adv+Attr: # ; ! no period, that is. 
+!! +Abbr+Adv+Attr: # ; ! no period, that is.
 !! +Abbr+Adv: # ;  ! no period, that is.
 !! +Abbr+Adv:%- R ; !^C^ TRY OUT THIS ONE
- 
+
 !  LEXICON ab-nodot-num
 !!+Abbr: # ;  ! no period, that is.
 ! +Abbr+Num: # ;  ! no period, that is.
@@ -66,51 +66,51 @@ LEXICON ab-nodot-noun ! The bulk
 
 LEXICON ab-nodot ! default
 !+Abbr: # ;  ! no period, that is.
-! +Abbr+Attr: # ;  ! no period, that is. 
- +Abbr: # ;  ! no period, that is.
+! +Abbr+Attr: # ;  ! no period, that is.
++Abbr: # ;  ! no period, that is.
 ! +Abbr:%- R ; !^C^ TRY OUT THIS ONE
 
 ! Here come POS and Case tags, with the period added.
 
 LEXICON ab-dot ! Default
-! +Abbr+Attr:%. # ;  
- +Abbr:%. # ; 
+! +Abbr+Attr:%. # ;
++Abbr:%. # ;
 
 LEXICON ab-dot-noun ! This is the lexicon for abbrs that must have a period.
-! +Abbr+N+Attr:%. # ;  
- +Abbr+N:%. # ; 
+! +Abbr+N+Attr:%. # ;
++Abbr+N:%. # ;
 ! +Abbr+N:%- R ; !^C^ TRY OUT THIS ONE
 
-! The idea is that the nominal ones may have case, like e.g. P.E.N. 
+! The idea is that the nominal ones may have case, like e.g. P.E.N.
 
 !LEXICON ab-dot-adj ! This is the lexicon for abbrs that must have a period.
-!! +Abbr:%. # ; 
-!! +Abbr+A+Attr:%. # ;  
-! +Abbr+A:%. # ; 
- 
+!! +Abbr:%. # ;
+!! +Abbr+A+Attr:%. # ;
+! +Abbr+A:%. # ;
+
 !LEXICON ab-dot-adv ! This is the lexicon for abbrs that must have a period.
 !  +Abbr+Adv:%. # ;        ! Adv without case.
- 
+
 !LEXICON ab-dot-num ! This is the lexicon for abbrs that must have a period.
-!! +Abbr:%. # ; 
-! +Abbr+Num:%. # ; 
+!! +Abbr:%. # ;
+! +Abbr+Num:%. # ;
 
 !LEXICON ab-dot-cc
-! +Abbr+CC:%. # ;  
+! +Abbr+CC:%. # ;
 
-!LEXICON ab-verb 
+!LEXICON ab-verb
 ! ab-dot-verb ;
 ! ab-nodot-verb ;
 
 !LEXICON ab-dot-verb
 ! +Abbr+V+TV+Imprt:%.   # ; ! Period.
 
-!LEXICON ab-nodot-verb 
+!LEXICON ab-nodot-verb
 ! +Abbr+V+TV+Imprt:    # ; ! No period.
 ! # ;
- 
 
-  
+
+
 ! The abbreviation lexicon itself
 ! -------------------------------
 
@@ -294,7 +294,7 @@ Gnr		ab-noun ;                                 !
 Kommunenr	ab-dot-noun ;
 O.nr		ab-noun ;                                 !
 P.b ab ;
-Pb              ab-noun ; ! Postbox 
+Pb              ab-noun ; ! Postbox
 Pb ab ;
 Postnr		ab-dot-noun ;
 Rt		ab-dot ;                                      !

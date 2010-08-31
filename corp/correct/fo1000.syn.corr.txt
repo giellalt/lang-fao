@@ -36,7 +36,7 @@
 "<sært>"
 	"síggja" V Ind Prs 2Sg @+FMAINV 
 "<fólk>"
-	"fólk" N Neu Pl Nom Indef @-FSUBJ> 
+	"fólk" N Neu Pl Acc Indef @-FSUBJ> 
 "<standa>"
 	"standa" V Inf @<OBJ 
 "<í>"
@@ -52,7 +52,7 @@
 "<hugsa>"
 	"hugsa" V Inf @-FMAINV 
 "<um>"
-	"um" Pr @<ADVL 
+	"um" Pr @-F<ADVL 
 "<tómar>"
 	"tómur" A Fem Pl Acc Indef @>N 
 "<tunnur>"
@@ -79,7 +79,7 @@
 "<rennur>"
 	"renna" V Ind Prs 3Sg @+FMAINV 
 "<ein>"
-	"ein" Det Msc Sg Nom @>N 
+	"eitt" Num Fem Sg Nom @>N 
 "<tík>"
 	"tík" N Fem Sg Nom Indef @<SUBJ 
 "<.>"
@@ -96,13 +96,13 @@
 "<til>"
 	"til" Pr @<ADVL 
 "<ein>"
-	"ein" Det Msc Sg Nom @>N 
+	"ein" Det Msc Sg Acc @>N 
 "<bonk>"
 	"bonkur" N Msc Sg Acc Indef @P< 
 "<,>"
 	"," CLB 
 "<har>"
-	"har" Adv @<ADVL 
+	"har" Adv @ADVL> 
 "<nakrir>"
 	"nakar" Det Indef Msc Pl Nom @>N 
 "<unglingar>"
@@ -137,7 +137,7 @@
 "<teir>"
 	"hann" Pron Pers Pl Nom @SUBJ> 
 "<spekulera>"
-	"spekulera" V Ind Pl @+FMAINV 
+	"spekulera" V Ind Prs Pl @+FMAINV 
 "<saman>"
 	"saman" Adv @<ADVL 
 "<,>"
@@ -172,7 +172,7 @@
 "<Tú>"
 	"tú" Pron Pers Sg Nom @SUBJ> 
 "<andar>"
-	"anda" V Ind Prs 3Sg @+FMAINV 
+	"anda" V Ind Prs 2Sg @+FMAINV 
 "<út>"
 	"út" Adv @<ADVL 
 "<og>"
@@ -192,13 +192,13 @@
 "<tú>"
 	"tú" Pron Pers Sg Nom @SUBJ> 
 "<trúði>"
-	"trúði" V Ind Prt 2Sg @+FMAINV 
+	"trúa" V Ind Prt Sg @+FMAINV 
 "<,>"
 	"," CLB 
 "<var>"
 	"vera" V Ind Prt 3Sg @+FMAINV 
 "<ein>"
-	"ein" Det Msc Sg Nom @>N 
+	"eitt" Num Fem Sg Nom @>N 
 "<tík>"
 	"tík" N Fem Sg Nom Indef @<SPRED 
 "<,>"
@@ -206,7 +206,7 @@
 "<er>"
 	"vera" V Ind Prs 3Sg @+FAUXV 
 "<vilst>"
-	"vilst" V PrsPrc Pass @-FMAINV 
+	"vilja" V PrsPrc Pass @-FMAINV 
 "<niðan>"
 	"niðan" Adv @<ADVL 
 "<til>"
@@ -237,7 +237,7 @@
 "<,>"
 	"," CLB 
 "<sært>"
-	"særa" V Ind Prs 2Sg @+FMAINV 
+	"síggja" V Ind Prs 2Sg @+FMAINV 
 "<,>"
 	"," CLB 
 "<at>"
@@ -247,7 +247,7 @@
 "<eru>"
 	"vera" V Ind Prs Pl @+FMAINV 
 "<stongdir>"
-	"stongdir" A Msc Pl Nom @<SPRED 
+	"steingja" V* PrfPrc A Msc Pl Nom Indef @<SPRED 
 "<,>"
 	"," CLB 
 "<sært>"
@@ -276,15 +276,15 @@
 "<Tú>"
 	"tú" Pron Pers Sg Nom @SUBJ> 
 "<ert>"
-	 "vera" V Ind Prs 2Sg @+FMAINV 
+	"vera" V Ind Prs 2Sg @+FMAINV 
 "<ikki>"
 	"ikki" Adv @<ADVL 
 "<fordómsfríur>"
-	"fordómsfríur" @<SPRED 
+	"fordómsfríur" A Msc Sg Nom Indef @<SPRED 
 "<og>"
 	"og" CC @CVP 
 "<hugsar>"
-	"hugsa" V Ind Prs 3Sg @+FMAINV 
+	"hugsa" V Ind Prs 2Sg @+FMAINV 
 "<títt>"
 	"tíður" A* Adv @<ADVL 
 "<um>"
@@ -317,7 +317,8 @@
 "<tað>"
 	"tað" Pron Pers Sg Nom @<tSUBJ 
 "<ein>"
-	"eitt" Pron Dem Fem Sg Nom @<SUBJ 
+	"eitt" Num Fem Sg Nom @<SUBJ 
+	"eitt" Num Msc Sg Nom @<SUBJ 
 "<,>"
 	"," CLB 
 "<hon>"

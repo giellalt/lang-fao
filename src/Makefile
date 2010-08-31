@@ -55,9 +55,9 @@ ifao.fst: ../bin/ifao.fst
 	@printf "load $< \n\
 	invert net \n\
 	save stack $@ \n\
-	quit \n" > ../../tmp/ifao-fst-script
-	$(XFST)  < ../../tmp/ifao-fst-script
-	@rm -f ../../tmp/ifao-fst-script
+	quit \n" > ../tmp/ifao-fst-script
+	$(XFST)  < ../tmp/ifao-fst-script
+	@rm -f ../tmp/ifao-fst-script
 
 
 # The first goal is to build fao.fst, the analyzer.
@@ -75,9 +75,9 @@ fao.fst: ../bin/fao.fst
 					.o. @\"../bin/fao.save\" \
 					.o. @\"../bin/inituppercase.fst\" ; \n\
 	save stack $@ \n\
-	quit \n" > ../../tmp/fao-fst-script
-	$(XFST)  < ../../tmp/fao-fst-script
-	@rm -f ../../tmp/fao-fst-script
+	quit \n" > ../tmp/fao-fst-script
+	$(XFST)  < ../tmp/fao-fst-script
+	@rm -f ../tmp/fao-fst-script
 
 
 # Here we make the abbrevation file for our current preprocessor, 
@@ -141,9 +141,9 @@ fao.save: ../bin/fao.save
 	read-rules $< \n\
 	compose-result \n\
 	save-result $@ \n\
-	quit \n" > ../../tmp/fao-lex-save-script
-	$(LEXC)  < ../../tmp/fao-lex-save-script
-	rm -f ../../tmp/fao-lex-save-script
+	quit \n" > ../tmp/fao-lex-save-script
+	$(LEXC)  < ../tmp/fao-lex-save-script
+	rm -f ../tmp/fao-lex-save-script
 
 
 # The fourth goal is to build twol-fao.bin
@@ -156,9 +156,9 @@ twol-fao.bin: ../bin/twol-fao.bin
 	@printf "read-grammar twol-fao.txt \n\
 	compile \n\
 	save-binary ../bin/twol-fao.bin \n\
-	quit \n" > ../../tmp/twol-fao-script
-	$(TWOLC)  < ../../tmp/twol-fao-script
-	@rm -f ../../tmp/twol-fao-script
+	quit \n" > ../tmp/twol-fao-script
+	$(TWOLC)  < ../tmp/twol-fao-script
+	@rm -f ../tmp/twol-fao-script
 
 # Here we include a preprocessor.
 # This goal depends on tok.regex
@@ -169,9 +169,9 @@ tok.fst: ../bin/tok.fst
 	@echo
 	@printf "source $< \n\
 	save stack $@ \n\
-	quit \n" > ../../tmp/tok-script
-	$(XFST)  < ../../tmp/tok-script
-	@rm -f ../../tmp/tok-script
+	quit \n" > ../tmp/tok-script
+	$(XFST)  < ../tmp/tok-script
+	@rm -f ../tmp/tok-script
 
 # Let us just make a binary disambiguator
 # and dependency grammar.

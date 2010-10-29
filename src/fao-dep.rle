@@ -2,6 +2,12 @@
 # Faroese dependency grammar #
 # ========================== #
 
+This file is deprecated.
+
+For Faroese dep analysis, use
+
+$GTHOME/gt/smi/src/smi-dep.rle
+
 
 
 # ========== #
@@ -159,12 +165,6 @@ LIST DATV = "smakka" ;
 
 SET NONVFIN = VINFIN ; # sme compatibility
 
-# Boundary sets
-
-
-
-SET S-BOUNDARY  = CS | Interr | (";") | BOS | EOS ;
-SET S-BOUNDARY2 = CS | Interr | (";") | BOS | EOS | (@CVP) ;
 
 
 
@@ -277,7 +277,7 @@ LIST @Pron< = @Pron< ;
 LIST @SPRED = @SPRED> @<SPRED ;
 LIST @SUBJ<ADVL = @SUBJ<ADVL ;
 LIST @SUBJ<OBJ = @SUBJ<OBJ ;
-LIST @V = @FMV @IMV @FAUX @IAUX @FS-STA @FS-IMV @FS-N<IMV @FS-N< @FS-IAUX @FS-N<IAUX ;
+LIST @V = @FAUX @FMV @FS-IAUX @FS-IMV @FS-N< @FS-N<IAUX @FS-N<IMV @FS-STA @IAUX @IMV ; # 
 LIST @VOC = @VOC ;
 
 
@@ -301,7 +301,6 @@ LIST @IAUX = @IAUX ;
 LIST @FS-IAUX = @FS-IAUX ;
 LIST <mv> = <mv> ;
 LIST <aux> = <aux> ;
-LIST @V = @FMV @FAUX @IMV @IAUX @FS-STA @FS-IMV @FS-N<IMV @FS-N< @FS-IAUX @FS-N<IAUX ; # 
 LIST @MCLV = @FMV @IMV @FAUX @IAUX ;
 LIST @SCLV = @FS-STA @FS-IMV @FS-N<IMV @FS-N< @FS-IAUX @FS-N<IAUX;
 LIST @FV = @FMV @FAUX ;
@@ -315,6 +314,12 @@ SET @ARG = @SUBJ OR @OBJ OR @SPRED OR @OPRED OR @ADVL  ; #  OR @ICL-OBJ OR @<PPR
 SET @-FARG/ADVL = @-FARG ; # OR @-FADVL ;
 SET @ARG/ADVL = @ARG OR @ADVL - (@ADVL + CC) ;
 SET @CLAUSE = @ARG/ADVL OR @-FARG/ADVL OR @V ;
+
+
+# Boundary sets
+
+SET S-BOUNDARY  = CS | Interr | (";") | BOS | EOS ;
+SET S-BOUNDARY2 = CS | Interr | (";") | BOS | EOS | (@CVP) ;
 
 
 

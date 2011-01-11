@@ -29,7 +29,7 @@ TEMP = ../../tmp
 # This variable is holding the filename of the save file:
 # (makes the Makefile truly language independent for
 # the Sami languages)
-SAVEFILE = $(wildcard $(FSTDIR)/mhr.save)
+SAVEFILE = $(wildcard $(FSTDIR)/fao.save)
 
 # Copied from old LS makefile:
 # Bond, James Bond
@@ -426,14 +426,14 @@ FILE =
 FILEPOS = twol-pos.in
 FILENEG = twol-neg.in
 
-twol-extract: ../src/twol-mhr.txt
+twol-extract: ../src/twol-fao.txt
 	@echo
 	@echo "*** Extracting twol tests ***"
 	@echo
 	@grep '^!€' $< > $(FILEPOS)
 	@grep '^!\$$' $< > $(FILENEG)
 
-twol-test: ../bin/twol-mhr.bin twol-extract
+twol-test: ../bin/twol-fao.bin twol-extract
 	@echo
 	@echo "*** Testing twolc rules ***"
 	@echo

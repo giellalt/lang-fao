@@ -2,5 +2,6 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-## N.B. GNU standards COPYING AUTHORS INSTALL README NEWS need not be declared
 SUBDIRS = src testing
+
+include $(top_srcdir)/am-shared/Makefile.am

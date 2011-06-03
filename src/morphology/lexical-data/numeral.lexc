@@ -1,0 +1,258 @@
+! ======== !
+! Numerals !
+! ======== !
+
+
+
+LEXICON Numeral
+basic ;
+ordinals ;
+NUM-PREFIXES ;
+
+LEXICON basic
+eitt+Num:ei EITT ;
+tvey+Num:tv TVEY ;
+trý+Num:tr TRÝ ;
+einir+Num:ein PAIRNUM ;
+tvinnir+Num:tvinn PAIRNUM ;
+trinnir+Num:trinn PAIRNUM ;
+fýra n ;
+fimm n ;
+seks n ;
+sjey n ;
+átta n ;
+níggju n ;
+tíggju n ;
+ellivu n ;
+tólv n ;
+trettan n ;
+fjúrtan n ;
+fimtan n ;
+sekstan n ;
+seytan n ;
+átjan n ;
+nítjan n ;
+tjúgu n ;
+tretivu n ;
+tríati n ;     ! 1Mos
+fjøruti n ;
+hálvtrýss n ;
+fimmti n ;     ! 1Mos
+trýss n ;
+seksti n ;     ! 1Mos
+hálvfjerðs n ;
+sjeyti n ;     ! 1Mos
+fýrs n ;
+áttati n ;     ! 1Mos
+hálvfems n ;
+níti n ;       ! 1Mos
+hundrað n ;
+túsund n ;
+millión n ;
+
+LEXICON EITT
++Msc+Sg+Nom:n # ;
++Msc+Sg+Acc:n # ;
++Msc+Sg+Dat:num # ;
++Msc+Sg+Gen:ns # ;
++Fem+Sg+Nom:n # ;
++Fem+Sg+Acc:na # ;
++Fem+Sg+Dat:ni # ;
++Fem+Sg+Dat:nari # ;
++Fem+Sg+Gen:nar # ;
++Neu+Sg+Nom:tt # ;
++Neu+Sg+Acc:tt # ;
++Neu+Sg+Dat:num # ;
++Neu+Sg+Gen:ns # ;
+
+LEXICON TVEY
++Msc+Sg+Nom:eir # ;
++Msc+Sg+Acc:eir # ;
++Msc+Sg+Dat:eimum # ;
++Msc+Sg+Gen:eggja # ;
++Fem+Sg+Nom:ær # ;
++Fem+Sg+Acc:ær # ;
++Fem+Sg+Dat:eimum # ;
++Fem+Sg+Gen:ggja # ;
++Neu+Sg+Nom:ey # ;
++Neu+Sg+Acc:ey # ;
++Neu+Sg+Dat:eimum # ;
++Neu+Sg+Gen:ggja # ;
+
+LEXICON TRÝ
++Msc+Sg+Nom:íggir # ;
++Msc+Sg+Acc:íggjar # ;
++Msc+Sg+Dat:imum # ;
++Msc+Sg+Gen:íggja # ;
++Fem+Sg+Nom:íggjar # ;
++Fem+Sg+Acc:íggjar # ;
++Fem+Sg+Dat:imum # ;
++Fem+Sg+Gen:íggja # ;
++Neu+Sg+Nom:ý # ;
++Neu+Sg+Acc:ý # ;
++Neu+Sg+Dat:imimum # ;
++Neu+Sg+Gen:íggja # ;
+
+LEXICON PAIRNUM
++Msc+Sg+Pl+Nom:ir # ;
++Msc+Sg+Pl+Acc:ar # ;
++Msc+Sg+Pl+Dat:um # ;
++Msc+Sg+Pl+Gen:a # ;
++Fem+Sg+Pl+Nom:ar # ;
++Fem+Sg+Pl+Acc:ar # ;
++Fem+Sg+Pl+Dat:um # ;
++Fem+Sg+Pl+Gen:a # ;
++Neu+Sg+Pl+Nom:i # ;
++Neu+Sg+Pl+Acc:i # ;
++Neu+Sg+Pl+Dat:um # ;
++Neu+Sg+Pl+Gen:a # ;
+
+LEXICON n
++Num: # ;
+
+
+! Ordinals
+! ========
+
+LEXICON ordinals
+fyrsti:fyrst ord-decl ;
+annar: ANNAR ;
+triðji:triðj ord-decl ;
+fjórði:fjórð ord-decl ;
+fimti:fimt ord-decl ;
+sætti:sætt ord-decl ;
+sjeyndi:sjeynd ord-decl ;
+áttandi:áttand ord-decl ;
+nággjundi:níggjund ord-decl ;
+tíggjundi:tíggjund ord-decl ;
+ellivti:ellivt ord-decl ;
+ellinti:ellint ord-decl ;
+tólvti:tólvt ord-decl ;
+trettandi:trettand ord-decl ;
+fjúrtandi:fjúrtand ord-decl ;
+fimtandi:fimtand ord-decl ;
+sekstandi:sekstand ord-decl ;
+seytjandi:seytjand ord-decl ;
+átjandi:átjand ord-decl ;
+nítjandi:nítjand ord-decl ;
+tjúgundi:tjúgund ord-decl ;
+tretivundi:tretivund ord-decl ;
+fjørutiundi:fjørutiund  ord-decl ;
+hálvtrýsinstrúgundi:hálvtrýsinstrúgund ord-decl ;
+hálvtrýssundi:hálvtrýssund ord-decl ;
+trýsinstjúgundi:trýsinstjúgund ord-decl ;
+trýssundi:trýssund ord-decl ;
+hálvfjerðsinstjúgundi:hálvfjerðsinstjúgund ord-decl ;
+hálvfjerðsundi:hálvfjerðsund ord-decl ;
+fýrsinstjúgundi:fýrsinstjúgund ord-decl ;
+fýrsundi:fýrsund ord-decl ;
+hálvfemsinstjúgundi:hálvfemsinstjúgund ord-decl ;
+hálvfemsundi:hálvfemsund ord-decl ;
+hundrandi:hundrand ord-decl ;
+túsundi:túsund ord-decl ;
+
+LEXICON ord-decl
++A: adj-def ;
+
+LEXICON ANNAR
++A: ANNARMORPH ;
++Pron+Indef: ANNARMORPH ;
+
+LEXICON ANNARMORPH
++Msc+Nom:annar # ;
++Msc+Acc:annan # ;
++Msc+Dat:øðrum # ;
++Msc+Gen:annars # ;
++Fem+Nom:onnur # ;
++Fem+Acc:aðra # ;
++Fem+Acc:aðru # ;
++Fem+Dat:aðri # ;
++Fem+Dat:aðru # ;
++Fem+Gen:annarar # ;
++Neu+Nom:annað # ;
++Neu+Acc:annað # ;
++Neu+Dat:øðrum # ;
++Neu+Gen:annars # ;
++Msc+Pl+Nom:aðrir # ;
++Msc+Pl+Acc:aðrar # ;
++Msc+Pl+Dat:øðrum # ;
++Msc+Pl+Gen:annara # ;
++Fem+Pl+Nom:aðrar # ;
++Fem+Pl+Acc:aðrar # ;
++Fem+Pl+Dat:øðrum # ;
++Fem+Pl+Gen:annara # ;
++Neu+Pl+Nom:onnur # ;
++Neu+Pl+Acc:onnur # ;
++Neu+Pl+Dat:øðrum # ;
++Neu+Pl+Gen:annara # ;
+
+
+! Arabic numerals
+! ===============
+
+LEXICON NUM-PREFIXES                            !^C^                               
+        ARABIC ;
+§       ARABIC ;      ! §24                     !^C^                               
+§§      ARABIC ;     ! §§24                     !^C^                               
+§%      ARABIC ;    ! § 24                      !^C^                               
+§§%     ARABIC ;   ! §§ 24                      !^C^                               
+%-      ARABIC ;     ! -24                      !^C^                               
+%‒      ARABIC ;     ! -24 U+2012 Figure line   !^C^                               
+%–      ARABIC ;     ! -24 U+2013 en dash       !^C^                               
+%—      ARABIC ;     ! -24 U+2014 em dash       !^C^                               
+%―      ARABIC ;     ! -24 U+2015 horizontal l  !^C^                               
+%+      ARABIC ;     ! +24                      !^C^                               
+%-%     ARABIC ;        ! - 24                  !^C^                               
+%‒%     ARABIC ;        ! - 24 2012             !^C^                               
+%–%     ARABIC ;        ! - 24 2013             !^C^                               
+%—%     ARABIC ;        ! - 24 2014             !^C^                               
+%―%     ARABIC ;        ! - 24 2015             !^C^                               
+%+%     ARABIC ;        ! + 24                  !^C^                               
+%*      ARABIC ;     ! *24                      !^C^                               
+%$      ARABIC ;     ! $24  ! And the Euro?     !^C^                               
+%<      ARABIC ;     ! <24                      !^C^                               
+!%>     ARABIC ;     ! >24                      !^C^                               
+s%.     ARABIC ;     ! s.24                     !^C^                               
+
+
+
+LEXICON ARABIC                                  !^C^                               
+1 ARABICLOOP ;                                  !^C^                               
+2 ARABICLOOP ;                                  !^C^                               
+3 ARABICLOOP ;                                  !^C^                               
+4 ARABICLOOP ;                                  !^C^                               
+5 ARABICLOOP ;                                  !^C^                               
+6 ARABICLOOP ;                                  !^C^                               
+7 ARABICLOOP ;                                  !^C^                               
+8 ARABICLOOP ;                                  !^C^                               
+9 ARABICLOOP ;                                  !^C^                               
+%0 ARABICLOOP ;                                 !^C^                               
+
+
+
+LEXICON ARABICLOOP                              !^C^                                                                              
+        ARABICEND ;
+        ARABIC ;                                !^C^                                                                              
+%-      ARABIC ;              ! 1-2    multipart numbers        !^C^                                                              
+%.%-    ARABIC ;              ! 1.-2   multipart numbers        !^C^                                                              
+%-%     ARABIC ;              ! 1- 2   multipart numbers        !^C^                                                              
+% %-    ARABIC ;              ! 1 -2   multipart numbers        !^C^                                                              
+% %-%   ARABIC ;              ! 1 - 2  multipart numbers        !^C^                                                              
+% %-%-%   ARABIC ;            ! 1 -- 2 multipart numbers        !^C^                                                              
+%. ARABIC ;                                                     !^C^                                                              
+%, ARABIC ;                                                     !^C^                                                              
+%: ARABIC ;                                                     !^C^                                                              
+%  ARABIC ;   ! Allowing for "23 500".                     !^C^                                                              
+   ARABIC ;   ! Allowing for "23 500" w/nbsp (initial char = alt-space) !^C^                                              
+%/ ARABIC ;   ! 24/12                                      !^C^                                                              
++A+Ord:%. # ;                                                    !^C^                                                             
+%-+Num:%- # ;         ! 10-  (high on missing list)                            !^C^                                                             
+,%-+Num:,%- # ;       ! 10,-                                   !^C^                                                             
+%%+Num+Nom:%% # ;     ! 50%. It is wrong, but 75 % of us write "75%".    !^C^                                              
+% %%+Num+Nom:% %% # ; ! We must analyse the corr. ones too... 50 % etc. !^C^                                              
+
+LEXICON ARABICEND
++Num+Nom: # ;
++Num+Acc: # ;
++Num+Dat: # ;
++Num+Gen: # ;

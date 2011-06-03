@@ -1,0 +1,401 @@
+! ============ !
+! Proper nouns !
+! ============ !
+
+! Table of content
+! ================
+! - The morphological tags
+! - - Male first names
+! - - Female first names
+! - - Surnames
+! - - Place names and other names
+
+
+
+! The morphological tags
+! ======================
+
+! For each group, the maltag etc. lexicon functions as a default
+! lexicon. The other lexica are there for specific subgroups of the names.
+
+
+! Male first names
+! ----------------
+
+!this is like BOAS
+!It means just "not checked"
+LEXICON maltag
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
+sdóttir+N+Prop+Sg:sdótt kv30e ;
+ssonur+N+Prop+Sg:sson k47 ;
+sonur:son k47 ;
+
+LEXICON MUSTAFA
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat: # ;
++N+Prop+Sg+Gen: # ;
+dóttir+N+Prop+Sg:dótt kv30e ;
+sonur+N+Prop+Sg:son k47 ;
++N+Prop+Sg+Poss:%>sa # ; !SAFORM
+
+LEXICON ARI
++N+Prop+Sg+Nom:%>i # ;
++N+Prop+Sg+Acc:%>a # ;
++N+Prop+Sg+Dat:%>a # ;
++N+Prop+Sg+Gen:%>a # ;
+adóttir+N+Prop+Sg:adótt kv30e ;
+asonur+N+Prop+Sg:ason k47 ;
++N+Prop+Sg+Poss:%>asa # ; !SAFORM
+
+LEXICON HARRIGUD 
++N+Prop+Sg+Nom+Indef:%>i # ;
++N+Prop+Sg+Acc+Indef:%>a # ;
++N+Prop+Sg+Dat+Indef:%>a # ;
++N+Prop+Sg+Gen+Indef:%>a # ;
++N+Prop+Sg+Nom+Def:%>in # ;
++N+Prop+Sg+Acc+Def:%>an # ;
++N+Prop+Sg+Dat+Def:%>anum # ;
++N+Prop+Sg+Gen+Def:%>ans # ;
++N+Prop+Sg+Poss:%>asa # ; !SAFORM
+
+LEXICON WILLY
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat: # ;
++N+Prop+Sg+Gen:%>s # ;
+sdóttir+N+Prop+Sg:sdótt kv30e ;
+ssonur+N+Prop+Sg:sson k47 ;
++N+Prop+Sg+Poss:%>sa # ; !SAFORM
+
+LEXICON DAGUR
++N+Prop+Sg+Nom:ur # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
+sdóttir+N+Prop+Sg:sdótt kv30e ;
+ssonur+N+Prop+Sg:sson k47 ;
++N+Prop+Sg+Poss:%>asa # ; !SAFORM
+
+LEXICON TRÓNDUR
++N+Prop+Sg+Nom:ur # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>ar # ;
++N+Prop+Sg+Gen:%>s # ; ! XXX s-gen?
+ardóttir+N+Prop+Sg:ardótt kv30e ;
+arsonur+N+Prop+Sg:arson k47 ;
+sdóttir+N+Prop+Sg:sdótt kv30e ;
+ssonur+N+Prop+Sg:sson k47 ;
++N+Prop+Sg+Poss:%>asa # ; !SAFORM
+
+LEXICON HÁVARÐUR
++N+Prop+Sg+Nom:ur # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>ar # ;
++N+Prop+Sg+Gen:%>s # ;
+sdóttir+N+Prop+Sg:sdótt kv30e ;
+ardóttir+N+Prop+Sg:ardótt kv30e ;
+ssonur+N+Prop+Sg:sson k47 ;
+arsonur+N+Prop+Sg:arson k47 ;
++N+Prop+Sg+Poss:%>asa # ; !SAFORM
+
+LEXICON DÁVUR
++N+Prop+Sg+Nom:ur # ;
++N+Prop+Sg+Acc:%>a # ;
++N+Prop+Sg+Dat:%>a # ;
++N+Prop+Sg+Gen:%>a # ;
+adóttir+N+Prop+Sg:adótt kv30e ;
+asonur+N+Prop+Sg:ason k47 ;
++N+Prop+Sg+Poss:%>asa # ; !SAFORM
+
+LEXICON BOAS
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>ar # ;
+ardóttir+N+Prop+Sg:ardótt kv30e ;
+arsonur+N+Prop+Sg:arson k47 ;
++N+Prop+Sg+Poss:%>asa # ; !SAFORM
+
+LEXICON BJØRN
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat: # ;
++N+Prop+Sg+Dat:%>i # ;  !birni, fix
++N+Prop+Sg+Gen:%>ar # ; !bjarnar
+ardóttir+N+Prop+Sg:ardótt kv30e ;
+arsonur+N+Prop+Sg:arson k47 ;
++N+Prop+Sg+Poss:%>asa # ; !SAFORM
+
+
+! Female first names
+! ------------------
+LEXICON RUT
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat: # ;
++N+Prop+Sg+Gen:%>ar # ;
++N+Prop+Sg+Poss:%>asa # ; !SAFORM
+
+LEXICON SARA
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
++N+Prop+Sg+Poss:%>sa # ; !SAFORM
+
+LEXICON ASTA
++N+Prop+Sg+Nom:%>a # ;
++N+Prop+Sg+Acc:%>u # ;
++N+Prop+Sg+Dat:%>u # ;
++N+Prop+Sg+Gen:%>u # ;
++N+Prop+Sg+Poss:%>usa # ; !SAFORM
+
+! LEXICON SIV
+! LEXICON ø>a
+
+
+! Surnames
+! --------
+
+
+LEXICON surtag
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;        ! ..ssoni
++N+Prop+Sg+Dat:%^IUML%>i # ;  ! ..ssyni
++N+Prop+Sg+Gen:%>s # ;
++N+Prop+Sg+Poss:%>asa # ; !SAFORM
+
+! Place names and other names
+! ---------------------------
+LEXICON plctag
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
+
+LEXICON fplctag !fem
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat: # ;
++N+Prop+Sg+Gen:%>ar # ;
+
+LEXICON orgtag ! XXXcheck
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
+
+LEXICON mscorgtag ! XXXcheck
++N+Prop+Msc: S-M-SGNOM ;
++N+Prop+Msc: S-M-SGACC ;
++N+Prop+Msc: S-M-SGDAT ;
++N+Prop+Msc: S-M-SGGEN ;
+! Sosialurin
+
+LEXICON neuorgtag ! XXXcheck
++N+Prop+Neu: S-N-SGNA ;
++N+Prop+Neu: S-N-SGDG ;
+! eimskip
+
+
+LEXICON ROMA
++N+Prop+Sg+Nom:%>a # ;
++N+Prop+Sg+Acc:%>u # ;
++N+Prop+Sg+Dat:%>u # ;
++N+Prop+Sg+Gen:%>u # ;
+
+LEXICON plcpl
++N+Prop+Sg+Pl+Nom:%>ar # ;
++N+Prop+Sg+Pl+Acc:%>ar # ;
++N+Prop+Sg+Pl+Dat:%>um # ;
++N+Prop+Sg+Pl+Gen:%>a # ;
+
+
+LEXICON SUDUROY
+
++N+Prop+Sg+Nom+Indef:%> # ;
++N+Prop+Sg+Acc+Indef:%> # ;
++N+Prop+Sg+Dat+Indef:%> # ;
++N+Prop+Sg+Gen+Indef:%>ar # ;
++N+Prop+Sg+Nom+Def:%>in # ;
++N+Prop+Sg+Acc+Def:%>ina # ;
++N+Prop+Sg+Dat+Def:%>nni # ;
++N+Prop+Sg+Gen+Def:%>arinnar # ;
+
+! These are the lexica taken from the noun-fao-lex.txt file.
+
+
+LEXICON propnoun-h-flt10
+ +N+Prop:    h-flt10 ;
+
+LEXICON propnoun-h-flt25
+ +N+Prop:    h-flt25 ;
+
+LEXICON propnoun-h-flt8
+ +N+Prop:    h-flt8 ;
+
+LEXICON propnoun-h11
+ +N+Prop:    h11 ;
+
+LEXICON propnoun-h11e
+ +N+Prop:    h11e ;
+
+LEXICON propnoun-h13
+ +N+Prop:    h13 ;
+
+LEXICON propnoun-h13e
+ +N+Prop:    h13e ;
+
+LEXICON propnoun-h1e
+ +N+Prop:    h1e ;
+
+LEXICON propnoun-h24
+ +N+Prop:    h24 ;
+
+LEXICON propnoun-h24e
+ +N+Prop:    h24e ;
+
+LEXICON propnoun-h25
+ +N+Prop:    h25 ;
+
+LEXICON propnoun-h3
+ +N+Prop:    h3 ;
+
+LEXICON propnoun-h3e
+ +N+Prop:    h3e ;
+
+LEXICON propnoun-h4
+ +N+Prop:    h4 ;
+
+LEXICON propnoun-h4e
+ +N+Prop:    h4e ;
+
+LEXICON propnoun-h5
+ +N+Prop:    h5 ;
+
+LEXICON propnoun-h5e
+ +N+Prop:    h5e ;
+
+LEXICON propnoun-h8
+ +N+Prop:    h8 ;
+
+LEXICON propnoun-h8e
+ +N+Prop:    h8e ;
+
+LEXICON propnoun-k-flt17
+ +N+Prop:    k-flt17 ;
+
+LEXICON propnoun-k-flt20
+ +N+Prop:    k-flt20 ;
+
+LEXICON propnoun-k1
+ +N+Prop:    k1 ;
+
+LEXICON propnoun-k12
+ +N+Prop:    k12 ;
+
+LEXICON propnoun-k14
+ +N+Prop:    k14 ;
+
+LEXICON propnoun-k17
+ +N+Prop:    k17 ;
+
+LEXICON propnoun-k1e
+ +N+Prop:    k1e ;
+
+LEXICON propnoun-k21
+ +N+Prop:    k21 ;
+
+LEXICON propnoun-k3
+ +N+Prop:    k3 ;
+
+LEXICON propnoun-k39e
+ +N+Prop:    k39e ;
+
+LEXICON propnoun-k3e
+ +N+Prop:    k3e ;
+
+LEXICON propnoun-k43e
+ +N+Prop:    k43e ;
+
+LEXICON propnoun-k46
+ +N+Prop:    k46 ;
+
+LEXICON propnoun-k6
+ +N+Prop:    k6 ;
+
+LEXICON propnoun-k7
+ +N+Prop:    k7 ;
+
+LEXICON propnoun-k8
+ +N+Prop:    k8 ;
+
+LEXICON propnoun-k9
+ +N+Prop:    k9 ;
+
+LEXICON propnoun-kv-flt1
+ +N+Prop:    kv-flt1 ;
+
+LEXICON propnoun-kv-flt17
+ +N+Prop:    kv-flt17 ;
+
+LEXICON propnoun-kv-flt2
+ +N+Prop:    kv-flt2 ;
+
+LEXICON propnoun-kv-flt32
+ +N+Prop:    kv-flt32 ;
+
+LEXICON propnoun-kv-flt6
+ +N+Prop:    kv-flt6 ;
+
+LEXICON propnoun-kv-flt8
+ +N+Prop:    kv-flt8 ;
+
+LEXICON propnoun-kv-flt9
+ +N+Prop:    kv-flt9 ;
+
+LEXICON propnoun-kv1
+ +N+Prop:    kv1 ;
+
+LEXICON propnoun-kv12e
+ +N+Prop:    kv12e ;
+
+LEXICON propnoun-kv13e
+ +N+Prop:    kv13e ;
+
+LEXICON propnoun-kv1e
+ +N+Prop:    kv1e ;
+
+LEXICON propnoun-kv2
+ +N+Prop:    kv2 ;
+
+LEXICON propnoun-kv21
+ +N+Prop:    kv21 ;
+
+LEXICON propnoun-kv2e
+ +N+Prop:    kv2e ;
+
+LEXICON propnoun-kv3
+ +N+Prop:    kv3 ;
+
+LEXICON propnoun-kv32e
+ +N+Prop:    kv32e ;
+
+LEXICON propnoun-kv3e
+ +N+Prop:    kv3e ;
+
+LEXICON propnoun-kv6
+ +N+Prop:    kv6 ;
+
+LEXICON propnoun-kv6e
+ +N+Prop:    kv6e ;
+
+LEXICON propnoun-kv9
+ +N+Prop:    kv9 ;

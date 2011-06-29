@@ -32,7 +32,7 @@ noinst_DATA=$(GT_PHONOLOGY)
 	$(HFST_TWOLC) $(HFST_FLAGS) --resolve -i $< -o $@
 
 %.xfst: %.twolc
-	$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@̋\nquit\n" |\
+	$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" |\
 		$(TWOLC)
 
 # vim: set ft=automake:

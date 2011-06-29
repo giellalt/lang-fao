@@ -29,10 +29,11 @@ AC_SUBST([GT_639_2], [fao])
 # will be GT_PROG_SCRIPTS_PATHS:
 AC_ARG_VAR([GTHOME], [root directory of giellatekno scripts])
 AC_PATH_PROG([GTSCRIPT], [gt-version.sh], [false],
-             [$GTHOME/scripts/$PATH_SEPARATOR../scripts/])
+             [$GTHOME/scripts/$PATH_SEPARATOR$GTHOME/newinfra/scripts/$PATH_SEPARATOR../scripts/])
 AS_IF([test "x$GTSCRIPT" = xfalse], 
       [AC_MSG_ERROR([could not find a giellatekno installation in: \
        $GTHOME/scripts \
+       $GTHOME/newinfra/scripts \
        ../scripts \
        $PATH \
        please do at least first step of the following: \

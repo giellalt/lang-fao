@@ -30,7 +30,7 @@ if WANT_DICTIONARY
 MAYBE_DICTIONARY+=dictionary.default.xfst
 endif
 endif # WANT_XFST
-hfstdir=$(sharedir)/hfst/$(GTLANG)
+hfstdir=$(datadir)/hfst/$(GTLANG)
 hfst_DATA=$(MAYBE_MORPHOLOGY) $(MAYBE_GENERATION) $(MAYBE_DICTIONARY)
 
 morphology.gt.hfst: morphology/$(GTLANG).hfst phonology/$(GTLANG).hfst

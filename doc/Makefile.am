@@ -2,4 +2,5 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = src doc
+# e.g. install as-is
+doc_DATA=fao-testdiary.xml index.xml site-frag.xml tabs-frag.xml

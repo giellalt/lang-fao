@@ -1,4 +1,3 @@
-
 This folder contains source files for Faroese.
 
 Installation and compilation, and a short note on usage,
@@ -9,5 +8,50 @@ Documentation is scattered around on giellateknos pages, e.g.
 * http://giellatekno.uit.no/doc/tools/docu-sme-manual.html
 
 
+Installation
+------------
 
+INSTALL describes the GNU build system in detail, but for most users the usual:
 
+	./configure
+	make
+	(as root) make install
+
+should result in a local installation and::
+
+	(as root) make uninstall
+
+in its uninstallation.
+
+If you would rather install in e.g. your home directory
+(or aren't the system administrator), you can tell ./configure::
+
+        ./configure --prefix=$HOME
+
+If you are checking out the development versions from SVN you must first create
+and install the necessary autotools files from the host system:
+
+  autoreconf -i
+
+It is common practice to keep `generated files out of version control
+<http://www.gnu.org/software/automake/manual/automake.html#CVS>`_.
+
+VPATH builds
+------------
+
+If you want to keep the source code tree clean, a VPATH build is the solution.
+The idea is to create a build dir somewhere outside of the source code tree,
+and call `configure` from there. Here is one VPATH variant of the standard procedure:
+
+	mkdir build && cd build
+	../configure
+	make
+	(as root) make install
+
+This will keep all the generated files within the build/ dir, and keep the src/
+dir (mostly) free of generated files.
+
+WARNING!!! Presently there is a bug in LexC that limits the size of the input argument to 1064 chars. As VPATH builds tend to increase the character count in the input string (all filenames are prefixed with a relative path from the VPATH build dir to the source dir), it is easy to break this limit. If you follow the simple example above, you should be fine (it has been tested), but if you try to build from a more distant location you will be out of luck (this is also tested and confirmed). A bug report will be sent to the Xerox tools' authors.
+
+For further installation instruction refer to file ``INSTALL``, which contains
+the standard installation instructions for GNU autoconf based software.

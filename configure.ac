@@ -79,6 +79,8 @@ AC_PATH_PROG([HFST_CONCATENATE], [hfst-concatenate], [false],
              [$PATH$PATH_SEPARATOR$with_hfst])
 AC_PATH_PROG([HFST_SUBTRACT], [hfst-subtract], [false], 
              [$PATH$PATH_SEPARATOR$with_hfst])
+AC_PATH_PROG([HFST_TXT2FST], [hfst-txt2fst], [false], 
+             [$PATH$PATH_SEPARATOR$with_hfst])
 AC_MSG_CHECKING([whether we can enable hfst building])
 AM_CONDITIONAL([CAN_HFST], [test "x$HFST_LEXC" != xfalse])
 AS_IF([test "x$HFST_LEXC" != xfalse], [AC_MSG_RESULT([yes])], 
@@ -133,9 +135,15 @@ AC_ARG_ENABLE([dictionary],
               [enable_dictionary=$enableval],
               [enable_dictionary=yes])
 AM_CONDITIONAL([WANT_DICTIONARY], [test "x$enable_dictionary" != xno])
+AC_ARG_ENABLE([voikko],
+              [AS_HELP_STRING([--enable-voikko],
+                              [build voikko support @<:@default=yes@:>@])],
+              [enable_voikko=$enableval],
+              [enable_voikko=yes])
+AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_dictionary" != xno])
 
 # will be GT_CONFIG_FILES =:
-AC_CONFIG_FILES([Makefile src/Makefile src/morphology/Makefile src/orthography/Makefile src/phonology/Makefile src/syntax/Makefile doc/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile src/morphology/Makefile src/orthography/Makefile src/phonology/Makefile src/spellchecker/Makefile src/syntax/Makefile doc/Makefile])
 
 # must retain as-is
 AC_OUTPUT
@@ -148,6 +156,7 @@ cat<<EOF
     * morphological analyser: $enable_morphology
     * morphological generator: $enable_generation
     * dictionary: $enable_dictionary
+    * voikko support: $enable_voikko
 to build, test and install:
     make
     make check

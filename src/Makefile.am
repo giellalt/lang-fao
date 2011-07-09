@@ -3,7 +3,7 @@
 ## Licence: GPL v3+
 
 # order is always . last here
-SUBDIRS = morphology phonology orthography syntax .
+SUBDIRS = morphology phonology orthography syntax spellchecker .
 
 MAYBE_MORPHOLOGY=
 MAYBE_DICTIONARY=
@@ -17,6 +17,10 @@ MAYBE_GENERATION+=generation.gt.hfst
 endif
 if WANT_DICTIONARY
 MAYBE_DICTIONARY+=dictionary.default.hfst
+endif
+if WANT_VOIKKO
+MAYBE_VOIKKO=spl.hfstol sug.hfstol err.hfstol alphabet.hfstol \
+			 $(GTLANG2).zhfst
 endif
 endif # WANT_HFST
 if WANT_XFST
@@ -47,6 +51,25 @@ dictionary.default.hfst: morphology.gt.hfst
 
 %.hfstol: %.hfst
 	$(HFST_FST2FST) -f olw -i $< -o $@
+
+# version 0 hfst speller support:
+spl.hfstol: dictionary.default.hfstol
+	cp -f $< $@
+
+err.hfstol: spellchecker/errmodel.default.hfstol
+	cp -f $< $@
+
+sug.hfstol: dictionary.default.hfstol
+	cp -f $< $@
+
+alphabet.hfstol: spellechecker/errmodel.default.hfstol
+	cp -f $< $@
+
+voikko-fi_FI.pro:
+	$(GTHOME)/voikko-fi-fi-pro-generator.bash $(GTLANG2) > $@
+
+$(GTLANG).zhfst: acceptor.default.hfst errmodel.default.hfst $(GT_OTHER_VOIKKO_FILES) index.xml
+	$(ZIP) $(ZIPFLAGS) $@ $^
 
 morphology.gt.xfst: morphology/$(GTLANG).xfst phonology/$(GTLANG).xfst
 	$(PRINTF) "read-source morphology/$(GTLANG).xfst\nread-rules phonology/$(GTLANG).xfst\ncompose-result\nsave-result $@\nquit\n" | $(LEXC)

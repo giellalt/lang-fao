@@ -28,6 +28,8 @@ endif
 
 noinst_DATA=$(GT_PHONOLOGY)
 
+EXTRA_DIST=$(GT_TWOLC)
+
 %.hfst: %.twolc
 	$(HFST_TWOLC) $(HFST_FLAGS) --resolve -i $< -o $@
 

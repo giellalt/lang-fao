@@ -47,6 +47,8 @@ GT_LEXICAL+=$(GTLANG).xfst
 endif
 noinst_DATA=$(GT_LEXICAL)
 
+EXTRA_DIST=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
+
 $(GTLANG).hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
 	$(HFST_LEXC) -o $@ $^
 

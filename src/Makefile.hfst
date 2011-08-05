@@ -46,7 +46,7 @@ fao-gen.hfst: ../bin/fao-gen.hfst
 	@echo
 	@echo "*** Building $(notdir $@) ***" ;
 	@echo
-	hfst-compose-intersect -l $+ -o $@
+	hfst-compose-intersect -1 ../bin/lexc-fao.hfst -2 ../bin/twol-fao.hfst -o $@
 
 fao.hfst: ../bin/fao.hfst
 ../bin/fao.hfst: ../bin/fao-gen.hfst
@@ -57,7 +57,7 @@ fao.hfst: ../bin/fao.hfst
 	@echo
 	@echo "*** Building lookup-optimized $(notdir $@).ol ***" ;
 	@echo
-	hfst-lookup-optimize $@ -o $@.ol
+	hfst-fst2fst -O -i ../bin/fao-gen.hfst -o ../bin/fao.hfst.ol
 
 clean:
 	rm -f ../bin/* ../tmp/*

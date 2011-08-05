@@ -12,7 +12,7 @@
 
 DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
 
-
+PARENTHESES = ("<(>" "<)>") ("<[>" "<]>") ("<{>" "<}>") ;
 
 # ============= #
 # Tags and sets #
@@ -1096,7 +1096,7 @@ MAP:r75b (@<SUBJ) TARGET NOMINALHEAD + Sg + Nom IF (*-1 (V 3Sg) OR (V Sg) BARRIE
 MAP:r74 (@SUBJ>) TARGET NOMINALHEAD + Sg + Nom IF (*1 (V 3Sg) OR (V Sg))#;(NOT 0 Acc LINK 1 CC LINK 1C VFIN);
 	## Tíkin hevur lyft beinið og pissar.
 
-
+MAP:r77b (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (-1C (V Pl));
 MAP:r76 (@SUBJ>) TARGET NOMINALHEAD + Pl + Nom IF (*1 (V Pl) BARRIER CLB);#(":" CLB) OR (";" CLB));
 MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
 
@@ -1222,8 +1222,13 @@ SELECT:r103 (Sg @<SPRED) IF (*-1 COPULA BARRIER NPNHA LINK -1 (Sg Nom));
 SELECT:r104 (Pl Nom @<SPRED) IF (*-1 COPULA BARRIER NPNHA LINK -1 (Pl Nom));
 SELECT:r121 (Pl Nom @<SPRED) IF (*-1 ("síggja") BARRIER NPNHA LINK -1 (Pl Nom))(*1 ("út") BARRIER NPNHA);
 
+#REMOVE:Eckhard (@SUBJ>) IF (*1 @+FMAINV BARRIER CLB LINK *1C @<SUBJ BARRIER @+FMAINV) ;
+REMOVE:Eckhard (@SUBJ>) IF (*1 @+FMAINV BARRIER S-BOUNDARY LINK *1C @<SUBJ BARRIER @+FMAINV) ;
+
 REMOVE:r105 (@<SUBJ) IF (*-1 VFIN BARRIER S-BOUNDARY LINK -1 (@SUBJ>));
 REMOVE:r105 (@<SUBJ) IF (*-1 (@<SUBJ) BARRIER S-BOUNDARY LINK *-1 VFIN BARRIER NPNHA);
+
+
 
 SELECT:r106 (@SUBJ>) IF (-1 CS)(1 VFIN);
 	## sum hann hevði í lummanum.
@@ -1358,6 +1363,14 @@ REMOVE (@<ADVL) IF (0 (@-F<ADVL))(-1C Inf);
 REMOVE (@-F<ADVL) IF (0 (@<ADVL))(*-1C VFIN BARRIER VINFIN);
 	## Tú sært fólk standa í gøtunum. 
 
+
+REMOVE (Neu Pl Adv) IF (-1 V + Pl)(-2 Msc + Pl + Nom)(0 (@<ADVL))
+REMOVE (Fem Pl Adv) IF (-1 V + Pl)(-2 Msc + Pl + Nom)(0 (@<ADVL))
+REMOVE (Msc Pl Adv) IF (-1 V + Pl)(-2 Neu + Pl + Nom)(0 (@<ADVL))
+REMOVE (Fem Pl Adv) IF (-1 V + Pl)(-2 Neu + Pl + Nom)(0 (@<ADVL))
+REMOVE (Neu Pl Adv) IF (-1 V + Pl)(-2 Fem + Pl + Nom)(0 (@<ADVL))
+REMOVE (Msc Pl Adv) IF (-1 V + Pl)(-2 Fem + Pl + Nom)(0 (@<ADVL))
+	## Skógvarnir gingu sáttiliga
 
 	## av tilvild
 

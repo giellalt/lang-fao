@@ -37,7 +37,7 @@ AS_IF([test "x$GTSCRIPT" = xfalse],
        ../scripts \
        $PATH \
        please do at least first step of the following: \
-       a. cd .. && svn co https://victorio.uit.no/langtech/trunk/gtlangs/scripts \
+       a. cd .. && svn co https://victorio.uit.no/langtech/trunk/newinfra/scripts \
        b. cd scripts && autoreconf && ./configure && make install \
        c. gtsetup.sh \
        ])])

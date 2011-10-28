@@ -5,5 +5,5 @@
 # order is always . last here
 SUBDIRS = morphology phonology orthography syntax spellchecker .
 
-include $(GTCORE)/am-shared/topdir-include.am
+include $(top_srcdir)/am-shared/topdir-include.am
 

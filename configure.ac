@@ -23,13 +23,15 @@ AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 # set all language codes usable
 AC_SUBST([GTLANG], [fao])
+AC_SUBST([GTLANG2], [fo])
 AC_SUBST([GT_639_1], [fo])
 AC_SUBST([GT_639_2], [fao])
 
 # will be GT_PROG_SCRIPTS_PATHS:
 AC_ARG_VAR([GTHOME], [root directory of giellatekno scripts])
+AC_ARG_VAR([GTCORE], [directory for giellatekno core data])
 AC_PATH_PROG([GTSCRIPT], [gt-version.sh], [false],
-             [$GTHOME/scripts/$PATH_SEPARATOR$GTHOME/newinfra/scripts/$PATH_SEPARATOR../scripts/])
+             [$GTCORE/scripts/$PATH_SEPARATOR$GTHOME/newinfra/scripts/$PATH_SEPARATOR../scripts/])
 AS_IF([test "x$GTSCRIPT" = xfalse], 
       [AC_MSG_ERROR([could not find a giellatekno installation in: \
        $GTHOME/scripts \

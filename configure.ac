@@ -145,7 +145,7 @@ AC_ARG_ENABLE([voikko],
 AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_dictionary" != xno])
 
 # will be GT_CONFIG_FILES =:
-AC_CONFIG_FILES([Makefile src/Makefile src/morphology/Makefile src/orthography/Makefile src/phonology/Makefile src/spellchecker/Makefile src/syntax/Makefile doc/Makefile], [ln -sf $GTCORE/am-shared $ac_top_srcdir/am-shared])
+AC_CONFIG_FILES([Makefile src/Makefile src/morphology/Makefile src/orthography/Makefile src/phonology/Makefile src/spellchecker/Makefile src/syntax/Makefile doc/Makefile])
 
 # must retain as-is
 AC_OUTPUT

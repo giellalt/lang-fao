@@ -37,28 +37,4 @@ GT_LEXC_SRCS=\
 			 inflection/propernoun.lexc \
 			 inflection/verb.lexc
 
-#include $(GT_COMMON_AM)/lexc-include.am =:
-GT_LEXICAL=
-if WANT_HFST
-GT_LEXICAL+=$(GTLANG).lexc.hfst
-endif
-if WANT_XFST
-GT_LEXICAL+=$(GTLANG).lexc.xfst
-endif
-noinst_DATA=$(GT_LEXICAL)
-
-EXTRA_DIST=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
-
-$(GTLANG).lexc.hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
-	$(HFST_LEXC) -f foma -o $@.foma $^
-	$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
-	-rm -r $@.foma
-
-$(GTLANG).lexc.xfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
-	$(PRINTF) "compile-source $^\nsource-to-result\nsave-source $@\nquit\n" |\
-		$(LEXC)
-
-clean-local:
-	-rm -f $(GTLANG).lexc.hfst $(GTLANG).lexc.xfst
-
-# vim: set ft=automake:
+include $(top_srcdir)/am-shared/lexc-include.am

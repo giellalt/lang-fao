@@ -15,29 +15,6 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-GT_TWOLC=$(GTLANG).twolc
-
-#include $(GT_COMMON_AM)/twolc-include.am =:
-GT_PHONOLOGY=
-if WANT_HFST
-GT_PHONOLOGY+=$(GTLANG).hfst
-endif
-if WANT_XFST
-GT_PHONOLOGY+=$(GTLANG).xfst
-endif
-
-noinst_DATA=$(GT_PHONOLOGY)
-
-EXTRA_DIST=$(GT_TWOLC)
-
-%.hfst: %.twolc
-	$(HFST_TWOLC) $(HFST_FLAGS) --resolve -i $< -o $@
-
-%.xfst: %.twolc
-	$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" |\
-		$(TWOLC)
-
-clean-local:
-	-rm -f *.hfst *.ol
+include $(top_srcdir)/am-shared/twolc-include.am
 
 # vim: set ft=automake:

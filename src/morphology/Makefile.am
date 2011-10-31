@@ -38,3 +38,5 @@ GT_LEXC_SRCS=\
 			 inflection/verb.lexc
 
 include $(top_srcdir)/am-shared/lexc-include.am
+
+# vim: set ft=automake:

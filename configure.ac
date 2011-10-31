@@ -144,6 +144,11 @@ AC_ARG_ENABLE([voikko],
               [enable_voikko=yes])
 AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_dictionary" != xno])
 
+AS_IF([test "x$enable_voikko" = "xyes"], 
+      [AC_PATH_PROG([ZIP], [zip], [false])
+       AS_IF([test "x$ZIP" = "xfalse"],
+             [AC_MSG_ERROR([zip is required for voikko speller packages])])])
+
 # will be GT_CONFIG_FILES =:
 AC_CONFIG_FILES([Makefile src/Makefile src/morphology/Makefile src/orthography/Makefile src/phonology/Makefile src/spellchecker/Makefile src/syntax/Makefile doc/Makefile])
 
@@ -164,4 +169,3 @@ to build, test and install:
     make check
     make install
 EOF
-

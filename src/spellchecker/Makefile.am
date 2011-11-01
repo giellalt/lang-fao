@@ -15,17 +15,27 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
+GT_DICTIONARY_HFST=dictionary.default.hfst
 
 #include $(GT_COMMON_AM)/spellchecker-include.am =:
 GT_ERRMODELS=
 if WANT_HFST
-GT_ERRMODELS+=errmodel.edit-distance-1.hfst
+#GT_ERRMODELS+=errmodel.edit-distance-1.hfst
+GT_ERRMODELS+=default-error-model.hfst
 endif
 
 noinst_DATA=$(GT_ERRMODELS)
 
-%.hfst: %.txt
-	$(HFST_TXT2FST) $(HFST_FLAGS) -i $< -o $@
+%.hfst: %.txt ../$(GT_DICTIONARY_HFST)
+	$(GTHOME)/gt/script/editdist.py -v -s -d 2 -e '@0@' -i $<   \
+		-a ../$(GT_DICTIONARY_HFST) | \
+		hfst-txt2fst $(HFST_FLAGS) -e '@0@'      | \
+		hfst-fst2fst $(HFST_FLAGS) -f optimized-lookup-weighted -o $@
+
+# %.hfst: %.txt
+# 	$(HFST_TXT2FST) $(HFST_FLAGS) -i $< -o $@
+
+clean-local:
+	-rm -f *.hfst *.xfst
 
 # vim: set ft=automake:

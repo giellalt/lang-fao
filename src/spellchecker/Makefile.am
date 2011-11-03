@@ -26,11 +26,14 @@ endif
 
 noinst_DATA=$(GT_ERRMODELS)
 
+../$(GT_DICTIONARY_HFST):
+	$(MAKE) -C .. $(GT_DICTIONARY_HFST)
+
 %.hfst: %.txt ../$(GT_DICTIONARY_HFST)
 	$(GTHOME)/gt/script/editdist.py -v -s -d 2 -e '@0@' -i $<   \
 		-a ../$(GT_DICTIONARY_HFST) | \
-		hfst-txt2fst $(HFST_FLAGS) -e '@0@'      | \
-		hfst-fst2fst $(HFST_FLAGS) -f optimized-lookup-weighted -o $@
+		$(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' | \
+		$(HFST_FST2FST) $(HFST_FLAGS) -f optimized-lookup-weighted -o $@
 
 # %.hfst: %.txt
 # 	$(HFST_TXT2FST) $(HFST_FLAGS) -i $< -o $@

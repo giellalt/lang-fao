@@ -33,7 +33,7 @@ noinst_DATA=$(GT_ERRMODELS)
 	$(GTHOME)/gt/script/editdist.py -v -s -d 2 -e '@0@' -i $<   \
 		-a ../$(GT_DICTIONARY_HFST) | \
 		$(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' | \
-		$(HFST_FST2FST) $(HFST_FLAGS) -f optimized-lookup-weighted -o $@
+		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 # %.hfst: %.txt
 # 	$(HFST_TXT2FST) $(HFST_FLAGS) -i $< -o $@

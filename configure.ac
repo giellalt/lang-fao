@@ -31,7 +31,7 @@ AC_SUBST([GT_639_2], [fao])
 AC_ARG_VAR([GTHOME], [root directory of giellatekno scripts])
 AC_ARG_VAR([GTCORE], [directory for giellatekno core data])
 AC_PATH_PROG([GTSCRIPT], [gt-version.sh], [false],
-             [$GTCORE/scripts/$PATH_SEPARATOR$GTHOME/newinfra/scripts/$PATH_SEPARATOR../scripts/])
+             [$GTCORE/scripts/$PATH_SEPARATOR$GTHOME/newinfra/gtcore/scripts/$PATH_SEPARATOR../../gtcore/scripts/])
 AS_IF([test "x$GTSCRIPT" = xfalse], 
       [AC_MSG_ERROR([could not find a giellatekno installation in: \
        $GTHOME/scripts \

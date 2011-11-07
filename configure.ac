@@ -40,9 +40,11 @@ gt_PROG_SCRIPTS_PATHS
 gt_PROG_HFST
 gt_PROG_HFST_PATH
 
-
 # check and setup xfst
 gt_PROG_XFST
+
+# check and setup vislcg3
+gt_PROG_VISLCG3
 
 # allow enabling and disabling hfst and xfst
 gt_ENABLE_TOOLKITS

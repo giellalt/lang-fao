@@ -1,0 +1,96 @@
+## Include this file in top-level srcdir to compile FSTs
+
+if WANT_HFST
+GT_MORPHOLOGY_HFST=morphology.gt.hfst
+GT_GENERATION_HFST=generation.gt.hfst
+GT_DICTIONARY_HFST=dictionary.default.hfst
+GT_SPELLING_HFST=speller.zhfst
+endif
+if WANT_XFST
+GT_MORPHOLOGY_XFST=morphology.gt.xfst
+GT_GENERATION_XFST=generation.gt.xfst
+GT_DICTIONARY_XFST=dictionary.default.xfst
+endif
+
+if WANT_HFST
+voikkosharedir=$(libdir)/voikko/2/mor-hfst-$(GTLANG2)/
+#! @param GT_VOIKKO optional, set to spell checker automata names if
+#!					installable
+voikkoshare_DATA=$(GT_SPELLING_HFST) voikko-fi_FI.pro
+
+hfstdatadir=$(datadir)/hfst/$(GTLANG)
+hfstdata_DATA=$(GT_MORPHOLOGY_HFST) $(GT_DICTIONARY_HFST) \
+			  $(GT_HYPHENATION_HFST) $(GT_GENERATION_HFST)
+endif
+
+noinst_DATA=$(GT_MORPHOLOGY_XFST) $(GT_DICTIONARY_XFST) \
+			$(GT_HYPHENATION_XFST) $(GT_GENERATION_XFST)
+
+
+temporary.phon.hfst: morphology/$(GTLANG).lexc.hfst phonology/$(GTLANG).twolc.hfst
+	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 morphology/$(GTLANG).lexc.hfst \
+		-2 phonology/$(GTLANG).twolc.hfst |\
+		$(HFST_INVERT) $(HFST_FLAGS) |\
+		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
+
+morphology.gt.hfst: temporary.phon.hfst
+	$(HFST_PREPROCESS_FOR_OPTIMIZED_LOOKUP_FORMAT) $(HFST_FLAGS) $< |\
+		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+
+generation.gt.hfst: temporary.phon.hfst
+	$(HFST_INVERT) $(HFST_FLAGS) -i $< |\
+		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
+		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+
+dictionary.default.hfst: temporary.phon.hfst
+	$(HFST_PROJECT) $(HFST_FLAGS) --project=upper -i $< |\
+		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
+		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+
+index.xml: $(GTCORE)/scripts/index.xml.template
+	sed -e "s_DATE_`date`_" -e "s/GTLANG2/$(GTLANG2)/" < $< > $@
+
+voikko-fi_FI.pro: $(GTCORE)/scripts/voikko-fi_FI.pro.template
+	sed -e "s/GTLANG2/$(GTLANG2)/" < $< > $@
+
+acceptor.default.hfst: dictionary.default.hfst
+	$(HFST_FST2FST) $(HFST_FLAGS) -f olw $< -o $@
+
+errmodel.default.hfst: spellchecker/default-error-model.hfst
+	$(HFST_FST2FST) $(HFST_FLAGS) -f olw $< -o $@
+
+speller.zhfst: acceptor.default.hfst errmodel.default.hfst $(GT_OTHER_VOIKKO_FILES) index.xml
+	$(ZIP) $(ZIPFLAGS) $@ $^
+
+morphology.gt.xfst: morphology/$(GTLANG).lexc.xfst phonology/$(GTLANG).twolc.xfst
+	$(PRINTF) "read-source morphology/$(GTLANG).lexc.xfst\nread-rules phonology/$(GTLANG).twolc.xfst\ncompose-result\nsave-result $@\nquit\n" | $(LEXC)
+
+generation.gt.xfst: morphology.gt.xfst
+	$(PRINTF) "load stack $<\ninvert net\nsave stack $@\nquit\n" | $(XFST)
+
+dictionary.default.xfst: morphology.gt.xfst
+	$(PRINTF) "load stack $<\nlower net\nsave stack $@\nquit\n" | $(XFST)
+
+
+# create generic tagset variants of analyzers
+morphology.%.hfst: morphology.gt.hfst tagsets/%.relabel
+	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
+
+# create tagset variants of generators
+generation.%.hfst: generation.omor.hfst tagsets/%.relabel
+	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
+
+# lemmatization is a special case of tagset variant
+lemmatize.default.hfst: morphology.gt.hfst tagsets/lemmatize.relabel
+	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
+
+# optimizing
+%.hfstol: %.hfst
+	$(HFST_PREP) $(HFST_FLAGS) -i $< |\
+		$(HFST_FST2FST) $(HOPT_FLAGS) -f olw -o $@
+
+# cleaning
+clean-local:
+	-rm -f *.hfst *.hfstol *.zhfst *.xfst voikko-fi_FI.pro index.xml
+
+# vim: set ft=automake:

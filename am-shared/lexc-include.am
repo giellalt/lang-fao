@@ -1,0 +1,51 @@
+## Include this file to lexc directory to build lexical automata
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#! @param GT_LEXC_ROOT required, define name of file holding root lexicon
+#! @param GT_LEXC_SRCS optional, space separated list of file names holding
+#!		  supplementary lexicon data
+GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
+
+# All sources need to be included in the tarball
+EXTRA_DIST=$(GT_LEXC_ALLSRC)
+
+# The transducers we build and don't distribute depend on the configuration:
+GT_LEXICAL=
+if WANT_HFST
+GT_LEXICAL+=$(GTLANG).lexc.hfst
+endif
+if WANT_XFST
+GT_LEXICAL+=$(GTLANG).lexc.xfst
+endif
+noinst_DATA=$(GT_LEXICAL)
+
+# lexical transducer building rules:
+# HFST:
+$(GTLANG).lexc.hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
+	$(HFST_LEXC) -f foma -o $@.foma $^
+	$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
+	-rm -f $@.foma
+
+# Xerox:
+$(GTLANG).lexc.xfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
+	$(PRINTF) "compile-source $^\nsource-to-result\nsave-source $@\nquit\n" |\
+		$(LEXC)
+
+clean-local:
+	-rm -f $(GTLANG).lexc.hfst $(GTLANG).lexc.xfst
+
+# vim: set ft=automake:

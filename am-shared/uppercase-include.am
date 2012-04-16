@@ -36,11 +36,11 @@ noinst_DATA=$(GT_ERRMODELS)
 $(GTLANG).%.hfst: %.regex
 	-$(HFST_REGEXP2FST) $(HFST_FLAGS) -i $< -o $@
 
-$(GTLANG).%.xfst: %.xfst
+$(GTLANG).%.xfst: %.xfscript
 	$(XFST) -l $< -e "save stack $@" -stop
 
 $(GTLANG).%.xfst: %.regex
-	$(PRINTF) "read regex @re\"$<\"\nsave stack $@\nquit" |\
+	$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit" |\
 		$(XFST)
 
 clean-local:

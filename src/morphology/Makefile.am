@@ -15,27 +15,27 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-GT_LEXC_ROOT=definitions.lexc
+GT_LEXC_ROOT=root.lexc
 GT_LEXC_SRCS=\
-			 lexical-data/abbr.lexc \
-			 lexical-data/acro.lexc \
-			 lexical-data/adj.lexc \
-			 lexical-data/adv.lexc \
-			 lexical-data/cc.lexc \
-			 lexical-data/cs.lexc \
-			 lexical-data/det.lexc \
-			 lexical-data/interj.lexc \
-			 lexical-data/noun.lexc \
-			 lexical-data/numeral.lexc \
-			 lexical-data/pp.lexc \
-			 lexical-data/pron.lexc \
-			 lexical-data/propernoun.lexc \
-			 lexical-data/punct.lexc \
-			 lexical-data/verb.lexc \
-			 inflection/adj.lexc \
-			 inflection/noun.lexc \
-			 inflection/propernoun.lexc \
-			 inflection/verb.lexc
+			 stems/abbr.lexc \
+			 stems/acro.lexc \
+			 stems/adj.lexc \
+			 stems/adv.lexc \
+			 stems/cc.lexc \
+			 stems/cs.lexc \
+			 stems/det.lexc \
+			 stems/interj.lexc \
+			 stems/noun.lexc \
+			 stems/numeral.lexc \
+			 stems/pp.lexc \
+			 stems/pron.lexc \
+			 stems/propernoun.lexc \
+			 stems/punct.lexc \
+			 stems/verb.lexc \
+			 affixes/adj.lexc \
+			 affixes/noun.lexc \
+			 affixes/propernoun.lexc \
+			 affixes/verb.lexc
 
 include $(top_srcdir)/am-shared/lexc-include.am
 

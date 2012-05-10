@@ -1,0 +1,20 @@
+$Rev: 58484 $
+
+Corrected path to speller metadata files, corrected commands for them.
+
+r58482:
+Updated zhfst building according to new location of files.
+
+r58478:
+Replaced direct command calls with variables, completed and corrected a couple of commands, made the transducer commands consistent across applications.
+
+r58471:
+The timestamp file has been renamed, with corresponding changes in the Makefile.am.
+
+r58456:
+Making the echo silent for clean output.
+
+r58409:
+Renamed a couple of folders and files, moved hfst & voikko speller metadata files to a more appropriate place.
+
+Updated the top Makefile.am to properly check for changes to this file before building anything else.

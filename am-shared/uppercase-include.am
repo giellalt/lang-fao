@@ -40,8 +40,8 @@ $(GTLANG).%.xfst: %.xfscript
 	$(XFST) -l $< -e "save stack $@" -stop
 
 $(GTLANG).%.xfst: %.regex
-	$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit" |\
-		$(XFST)
+	$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
+		$(XFST) $(XFSTFLAGS)
 
 clean-local:
 	-rm -f *.hfst *.xfst

@@ -32,7 +32,8 @@ noinst_DATA=$(GT_REGEX_TARGETS)
 
 # xfst needs a script to read regex file
 %.xfst: %.regex
-	printf "read regex @\"$<\"\nsave stack $@" | $(XFST) $(XFSTFLAGS)
+	$(PRINTF) "read regex @\"$<\";\nsave stack $@\nquit\n" |\
+		$(XFST) $(XFSTFLAGS)
 
 clean-local:
 	-rm -f *.hfst *.ol

@@ -2,9 +2,12 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
+# set this to name of cg3 dependency rules
 GT_DEPENDENCY=dependency.rle
+# set this to name of cg3 disambiguation rules
 GT_DISAMBIGUATION=disambiguation.rle
 
+# set this to names of cg3 binaries 
 GT_CG_TARGETS=disambiguation.bin
 
 include $(top_srcdir)/am-shared/syntax-include.am

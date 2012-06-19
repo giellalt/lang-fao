@@ -6,11 +6,5 @@ if test -z $GTCORE ; then
     exit 1
 fi
 
-# the include directive of automake needs to have shared templates
-# in $topdir at setup time; currently we use symlinks to achieve this
-if ! test -L am-shared ; then
-    ln -s $GTCORE/am-shared am-shared
-fi
-
 # autoreconf should work for most platforms
 autoreconf -i

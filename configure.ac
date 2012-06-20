@@ -76,3 +76,4 @@ AC_OUTPUT
 
 # Prints the informative blurb at the end of ./configure command
 gt_PRINT_FOOTER
+# vim: set ft=autoconf:

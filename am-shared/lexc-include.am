@@ -34,7 +34,7 @@ endif
 noinst_DATA=$(GT_LEXICAL)
 
 # lexical transducer building rules:
-# HFST:
+# for HFST:
 $(GTLANG).lexc.hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
 	$(HFST_LEXC) -f foma -o $@.foma $^
 	$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@

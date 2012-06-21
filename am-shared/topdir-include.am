@@ -108,12 +108,12 @@ dictionary.default.xfst: raw.gt.xfst
 
 
 # create generic tagset variants of analyzers
-morphology.%.hfst: analyser.gt.hfst tagsets/%.relabel
+analyser.%.hfst: analyser.gt.hfst tagsets/%.relabel
 	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
 
 # remove sub-standard forms to get a normative transducer
-morphology.norm.hfst: morphology.default.hfst filters/remove-sub-forms.hfst
-    $(HFSTCOMPOSE) $(HFSTFLAGS) -1 filtes/remove-sub-forms.hfst -2 morphology.default.hfst
+analyser.norm.hfst: analyser.gt.hfst filters/remove-sub-forms.hfst
+	$(HFSTCOMPOSE) $(HFSTFLAGS) -1 filters/remove-sub-forms.hfst -2 $< -o $@
 
 # create tagset variants of generators
 generation.%.hfst: generation.omor.hfst tagsets/%.relabel

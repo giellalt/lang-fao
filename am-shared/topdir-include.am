@@ -1,14 +1,19 @@
 ## Include this file in top-level srcdir to compile FSTs
 
+# *.gt.* designates the tagset being used.
+# At the end of the makefile, there is support for automatic compilation of
+# other tagsets, given that the proper tagset relabeling files are defined,
+# and that the target files are defined as part of the 'all' target.
+
 if WANT_HFST
-GT_MORPHOLOGY_HFST=morphology.gt.hfst
-GT_GENERATION_HFST=generation.gt.hfst
+GT_MORPHOLOGY_HFST=analyser.gt.hfst
+GT_GENERATION_HFST=generator.gt.hfst
 GT_DICTIONARY_HFST=dictionary.default.hfst
 GT_SPELLING_HFST=speller.zhfst
 endif
 if WANT_XFST
-GT_MORPHOLOGY_XFST=morphology.gt.xfst
-GT_GENERATION_XFST=generation.gt.xfst
+GT_MORPHOLOGY_XFST=analyser.gt.xfst
+GT_GENERATION_XFST=generator.gt.xfst
 GT_DICTIONARY_XFST=dictionary.default.xfst
 endif
 
@@ -26,27 +31,35 @@ endif
 noinst_DATA=$(GT_MORPHOLOGY_XFST) $(GT_DICTIONARY_XFST) \
 			$(GT_HYPHENATION_XFST) $(GT_GENERATION_XFST)
 
+# HFST basic transducer compilation starting here:
 
-temporary.phon.hfst: morphology/$(GTLANG).lexc.hfst \
+# The "raw" transducer contains all tags and symbols available on the analysis
+# side. Some of them are optional for generation, some are only needed for
+# special tools. Each final transducer needs to apply it's own filtering to get
+# exactly what is required.
+raw.gt.hfst: morphology/$(GTLANG).lexc.hfst \
 					 phonology/$(GTLANG).twolc.hfst
 	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 morphology/$(GTLANG).lexc.hfst \
 		-2 phonology/$(GTLANG).twolc.hfst |\
 		$(HFST_INVERT) $(HFST_FLAGS) |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
-morphology.gt.hfst: temporary.phon.hfst
-	$(HFST_PREPROCESS_FOR_OPTIMIZED_LOOKUP_FORMAT) $(HFST_FLAGS) $< |\
+analyser.gt.hfst: raw.gt.hfst orthography/$(GTLANG).inituppercase.hfst
+	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 $< \
+		-2 orthography/$(GTLANG).inituppercase.hfst |\
+		$(HFST_PREPROCESS_FOR_OPTIMIZED_LOOKUP_FORMAT) $(HFST_FLAGS) $< |\
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
-generation.gt.hfst: temporary.phon.hfst
+generator.gt.hfst: raw.gt.hfst
 	$(HFST_INVERT) $(HFST_FLAGS) -i $< |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
-dictionary.default.hfst: temporary.phon.hfst
+dictionary.default.hfst: raw.gt.hfst
 	$(HFST_PROJECT) $(HFST_FLAGS) --project=upper -i $< |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+# HFST transducer compilation ends.
 
 # HFST/Voikko speller compilation starting here:
 index.xml: spellchecker/index.xml
@@ -68,32 +81,46 @@ speller.zhfst: acceptor.default.hfst \
 	$(ZIP) $(ZIPFLAGS) $@ $^
 # HFST/Voikko speller compilation ends.
 
-# Xerox transducer compilation starting here:
-morphology.gt.xfst: morphology/$(GTLANG).lexc.xfst \
+# Xerox basic transducer compilation starting here:
+
+# The "raw" transducer contains all tags and symbols available on the analysis
+# side. Some of them are optional for generation, some are only needed for
+# special tools. Each final transducer needs to apply it's own filtering to get
+# exactly what is required.
+raw.gt.xfst: morphology/$(GTLANG).lexc.xfst \
 					phonology/$(GTLANG).twolc.xfst
 	$(PRINTF) \
 		"read-source morphology/$(GTLANG).lexc.xfst\n\
 		 read-rules phonology/$(GTLANG).twolc.xfst\n\
 		 compose-result\nsave-result $@\nquit\n" | $(LEXC)
 
-generation.gt.xfst: morphology.gt.xfst
+analyser.gt.xfst: raw.gt.xfst orthography/$(GTLANG).inituppercase.xfst
+	$(PRINTF) "read regex @\"$<\" .o. @\"orthography/$(GTLANG).inituppercase.xfst\" ;\n\
+	save stack $@\nquit\n" | $(XFST)
+
+# This is the standard generating transducer. It 
+generator.gt.xfst: raw.gt.xfst
 	$(PRINTF) "load stack $<\ninvert net\nsave stack $@\nquit\n" | $(XFST)
 
-dictionary.default.xfst: morphology.gt.xfst
+dictionary.default.xfst: raw.gt.xfst
 	$(PRINTF) "load stack $<\nlower net\nsave stack $@\nquit\n" | $(XFST)
 # Xerox transducer compilation ends.
 
 
 # create generic tagset variants of analyzers
-morphology.%.hfst: morphology.gt.hfst tagsets/%.relabel
+morphology.%.hfst: analyser.gt.hfst tagsets/%.relabel
 	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
+
+# remove sub-standard forms to get a normative transducer
+morphology.norm.hfst: morphology.default.hfst filters/remove-sub-forms.hfst
+    $(HFSTCOMPOSE) $(HFSTFLAGS) -1 filtes/remove-sub-forms.hfst -2 morphology.default.hfst
 
 # create tagset variants of generators
 generation.%.hfst: generation.omor.hfst tagsets/%.relabel
 	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
 
 # lemmatization is a special case of tagset variant
-lemmatize.default.hfst: morphology.gt.hfst tagsets/lemmatize.relabel
+lemmatize.default.hfst: analyser.gt.hfst tagsets/lemmatize.relabel
 	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
 
 # optimizing

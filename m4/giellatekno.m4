@@ -36,7 +36,7 @@ AS_IF([test "x$GTSCRIPT" = xfalse],
       [cat<<<EOT
 could not find a giellatekno core scripts in:
        $GTCORE/scripts 
-       $GTHOME/gtcore/newinfra/scripts 
+       $GTHOME/newinfra/gtcore/scripts 
        $PATH 
        please do at least first step of the following: 
        a. svn co https://victorio.uit.no/langtech/trunk/newinfra/gtcore

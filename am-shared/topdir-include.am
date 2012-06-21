@@ -27,7 +27,8 @@ noinst_DATA=$(GT_MORPHOLOGY_XFST) $(GT_DICTIONARY_XFST) \
 			$(GT_HYPHENATION_XFST) $(GT_GENERATION_XFST)
 
 
-temporary.phon.hfst: morphology/$(GTLANG).lexc.hfst phonology/$(GTLANG).twolc.hfst
+temporary.phon.hfst: morphology/$(GTLANG).lexc.hfst \
+					 phonology/$(GTLANG).twolc.hfst
 	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 morphology/$(GTLANG).lexc.hfst \
 		-2 phonology/$(GTLANG).twolc.hfst |\
 		$(HFST_INVERT) $(HFST_FLAGS) |\
@@ -47,6 +48,7 @@ dictionary.default.hfst: temporary.phon.hfst
 		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
+# HFST/Voikko speller compilation starting here:
 index.xml: spellchecker/index.xml
 	cp -f $< $@
 
@@ -59,17 +61,27 @@ acceptor.default.hfst: dictionary.default.hfst
 errmodel.default.hfst: spellchecker/default-error-model.hfst
 	$(HFST_FST2FST) $(HFST_FLAGS) -f olw $< -o $@
 
-speller.zhfst: acceptor.default.hfst errmodel.default.hfst $(GT_OTHER_VOIKKO_FILES) index.xml
+speller.zhfst: acceptor.default.hfst \
+			   errmodel.default.hfst \
+			   $(GT_OTHER_VOIKKO_FILES) \
+			   index.xml
 	$(ZIP) $(ZIPFLAGS) $@ $^
+# HFST/Voikko speller compilation ends.
 
-morphology.gt.xfst: morphology/$(GTLANG).lexc.xfst phonology/$(GTLANG).twolc.xfst
-	$(PRINTF) "read-source morphology/$(GTLANG).lexc.xfst\nread-rules phonology/$(GTLANG).twolc.xfst\ncompose-result\nsave-result $@\nquit\n" | $(LEXC)
+# Xerox transducer compilation starting here:
+morphology.gt.xfst: morphology/$(GTLANG).lexc.xfst \
+					phonology/$(GTLANG).twolc.xfst
+	$(PRINTF) \
+		"read-source morphology/$(GTLANG).lexc.xfst\n\
+		 read-rules phonology/$(GTLANG).twolc.xfst\n\
+		 compose-result\nsave-result $@\nquit\n" | $(LEXC)
 
 generation.gt.xfst: morphology.gt.xfst
 	$(PRINTF) "load stack $<\ninvert net\nsave stack $@\nquit\n" | $(XFST)
 
 dictionary.default.xfst: morphology.gt.xfst
 	$(PRINTF) "load stack $<\nlower net\nsave stack $@\nquit\n" | $(XFST)
+# Xerox transducer compilation ends.
 
 
 # create generic tagset variants of analyzers

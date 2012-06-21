@@ -21,21 +21,33 @@ EXTRA_DIST=$(GT_UPPERCASING)
 
 GT_ERRMODELS=
 if WANT_HFST
-#GT_ERRMODELS+=
-#$(GTLANG).inituppercase.hfst
-#$(GTLANG).allcaps.hfst 
+GT_ERRMODELS+=$(GTLANG).allcaps.hfst $(GTLANG).inituppercase.hfst
 endif
 if WANT_XFST
-GT_ERRMODELS+=$(GTLANG).allcaps.xfst 
-# $(GTLANG).inituppercase.xfst
+GT_ERRMODELS+=$(GTLANG).allcaps.xfst $(GTLANG).inituppercase.xfst
 endif
 
 noinst_DATA=$(GT_ERRMODELS)
 
-# not working in hfst-3.3
-$(GTLANG).%.hfst: %.regex
-	-$(HFST_REGEXP2FST) $(HFST_FLAGS) -i $< -o $@
+# HFST fst targets:
+$(GTLANG).%.hfst: %.xfscript
+	cp $< $@.script
+	$(PRINTF) "save stack $@" >> $@.script
+	$(HFST_XFST) -f $@.script
+	-rm -f $@.script
 
+# The following is not working in hfst-3.3
+#$(GTLANG).%.hfst: %.regex
+#	-$(HFST_REGEXP2FST) $(HFST_FLAGS) -i $< -o $@
+
+# Instead using foma via the hfst-xfst wrapper
+$(GTLANG).%.hfst: %.regex
+	$(PRINTF) \
+		"read regex @re\"$<\";\nsave stack $@ \n" > $@.script
+	$(HFST_XFST) -f $@.script
+	-rm -f $@.script
+
+# Xerox fst targets:
 $(GTLANG).%.xfst: %.xfscript
 	$(XFST) -l $< -e "save stack $@" -stop
 
@@ -43,6 +55,7 @@ $(GTLANG).%.xfst: %.regex
 	$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
 		$(XFST) $(XFSTFLAGS)
 
+# The "clean" target:
 clean-local:
 	-rm -f *.hfst *.xfst
 

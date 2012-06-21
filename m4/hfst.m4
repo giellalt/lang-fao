@@ -81,6 +81,7 @@ AC_PATH_PROG(HFST_STRINGS2FST, hfst-minimize, false, $PATH$PATH_SEPARATOR$with_h
 AC_PATH_PROG(HFST_SUBTRACT, hfst-minimize, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_TWOLC, hfst-twolc, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_TXT2FST, hfst-txt2fst, false, $PATH$PATH_SEPARATOR$with_hfst)
+AC_PATH_PROG(HFST_XFST, hfst-xfst, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_MSG_CHECKING([whether we can enable hfst builds])
 AM_CONDITIONAL([CAN_HFST], [test "x$HFST_LEXC" != xfalse])
 AS_IF([test "x$HFST_LEXC" != xfalse], [AC_MSG_RESULT([yes])], 

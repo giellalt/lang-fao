@@ -700,8 +700,8 @@ LEXICON k34e
 +N+Msc:%^EIO S-M-SGGEN ;
 
 LEXICON k-flt34
-+N+Msc:%> S-M-PLNOM-IR ;
-+N+Msc:%> S-M-PLACC-IR ;
++N+Msc: S-M-PLNOM-IR ;
++N+Msc: S-M-PLACC-IR ;
 +N+Msc:%>j S-M-PLDAT ;
 +N+Msc:%>j S-M-PLGEN ;
 
@@ -713,8 +713,8 @@ LEXICON k35 ! bonkur
 +N+Msc: S-M-SGDAT ;
 +N+Msc:%>j S-M-SGGEN-AR ;
 +N+Msc:%^EIO S-M-SGGEN-AR ;
-+N+Msc:%> S-M-PLNOM-IR ;
-+N+Msc:%> S-M-PLACC-IR ;
++N+Msc: S-M-PLNOM-IR ;
++N+Msc: S-M-PLACC-IR ;
 +N+Msc:%>j S-M-PLDAT ;
 +N+Msc:%>j S-M-PLGEN ;
 
@@ -1427,14 +1427,14 @@ LEXICON kv29 ! móðir
 
 
 LEXICON kv29e 
-+Nom:ir%> DF-N-SGf-S ;
-+Acc:ur%> DF-A-SGf-S ;
-+Dat:ur%> DF-D-SGf-S ;
-+Gen:ur%> DF-G-SGf-S ;
++Nom:%>ir DF-N-SGf-S ;
++Acc:%>ur DF-A-SGf-S ;
++Dat:%>ur DF-D-SGf-S ;
++Gen:%>ur DF-G-SGf-S ;
 
 LEXICON kv-flt29 
-+Nom:ur%> DF-NA-PLf ;
-+Acc:ur%> DF-NA-PLf ;
++Nom:%>ur DF-NA-PLf ;
++Acc:%>ur DF-NA-PLf ;
 +Dat:r%>u DF-D-PL ;
 +Gen:r%>a DF-G-PL ;
 
@@ -1449,30 +1449,30 @@ LEXICON kv-flt30
 kv-flt29 ;
 
 LEXICON kv31 ! systir
-+N+Fem+Sg+Nom:ir DF-N-SGf-S ;
-+N+Fem+Sg+Acc:ur DF-A-SGf-S ;
-+N+Fem+Sg+Dat:ur DF-D-SGf-S ;
-+N+Fem+Sg+Gen:ur DF-G-SGf-S ;
-+N+Fem+Sg+Nom:rar DF-NA-PLf ;
-+N+Fem+Sg+Acc:rar DF-NA-PLf ;
-+N+Fem+Sg+Dat:rum DF-D-PL ;
-+N+Fem+Sg+Gen:ra DF-G-PL ;
++N+Fem+Sg+Nom:%>ir DF-N-SGf-S ;
++N+Fem+Sg+Acc:%>ur DF-A-SGf-S ;
++N+Fem+Sg+Dat:%>ur DF-D-SGf-S ;
++N+Fem+Sg+Gen:%>ur DF-G-SGf-S ;
++N+Fem+Sg+Nom:%>rar DF-NA-PLf ;
++N+Fem+Sg+Acc:%>rar DF-NA-PLf ;
++N+Fem+Sg+Dat:%>rum DF-D-PL ;
++N+Fem+Sg+Gen:%>ra DF-G-PL ;
 
 LEXICON kv32 ! mýri
 kv32e ;
 kv-flt32 ;
 
 LEXICON kv32e
-+N+Fem+Sg+Nom:i FINAL ;
-+N+Fem+Sg+Acc:i FINAL ;
-+N+Fem+Sg+Dat:i FINAL ;
-+N+Fem+Sg+Gen:ar FINAL ;
++N+Fem+Sg+Nom:%>i FINAL ;
++N+Fem+Sg+Acc:%>i FINAL ;
++N+Fem+Sg+Dat:%>i FINAL ;
++N+Fem+Sg+Gen:%>ar FINAL ;
 
 LEXICON kv-flt32
-+N+Fem+Pl+Nom:ar FINAL ;
-+N+Fem+Pl+Acc:ar FINAL ;
-+N+Fem+Pl+Dat:um FINAL ;
-+N+Fem+Pl+Gen:a FINAL ;
++N+Fem+Pl+Nom:%>ar FINAL ;
++N+Fem+Pl+Acc:%>ar FINAL ;
++N+Fem+Pl+Dat:%>um FINAL ;
++N+Fem+Pl+Gen:%>a FINAL ;
 
 
 LEXICON kv33 ! gleði
@@ -1486,8 +1486,8 @@ LEXICON kv33e
 +N+Fem+Sg+Gen: FINAL ;
 
 LEXICON kv-flt33 
-+N+Fem+Sg+Nom:r FINAL ;
-+N+Fem+Sg+Acc:r FINAL ;
++N+Fem+Sg+Nom:%>r FINAL ;
++N+Fem+Sg+Acc:%>r FINAL ;
 
 LEXICON kv34 ! kraft
 kv34e;
@@ -1560,7 +1560,7 @@ LEXICON h4 ! boð
 LEXICON h4e
 +N+Neu: S-N-SGNA ;
 +N+Neu: S-N-SGG ;
-+N+Neu: S-N-SGDG-is ;
++N+Neu: S-N-SGDG-is ; ! check
 
 LEXICON h-flt4
 +N+Neu: N-PLNA ;
@@ -2041,9 +2041,9 @@ LEXICON W-M-PLGEN
 
 
 LEXICON DF-NA-SGm-S ! luður
-+Sg+Nom:%> DF-N-SGm ;
++Sg+Nom: DF-N-SGm ;
 +Sg+Acc: DF-A-SGm-indef ;
-+Sg+Acc:%> DF-A-SGm-def ;
++Sg+Acc: DF-A-SGm-def ;
 
 
 ! Nominative Sg
@@ -2053,8 +2053,8 @@ LEXICON S-M-SGNOM
 +Sg+Nom:%>uri DF-N-SGm-def ;
 
 LEXICON S-M-SGNOM-NULL
-+Sg+Nom:%> DF-N-SGm ;
-+Sg+Nom:%> DF-N-SGm ;
++Sg+Nom: DF-N-SGm ;
++Sg+Nom: DF-N-SGm ;
 
 
 ! Accusative Sg
@@ -2074,7 +2074,7 @@ LEXICON S-M-SGDAT-2
 +Sg+Dat+Def:%^GVDEL%>num #;
 
 LEXICON S-M-SGDAT-NULL
-+Sg+Dat:%> DF-D-SGm ;
++Sg+Dat: DF-D-SGm ;
 
 ! Genitive Sg
 
@@ -2082,7 +2082,7 @@ LEXICON S-M-SGGEN
 +Sg+Gen:%>s DF-G-SGm ;
 
 LEXICON S-M-SGGEN-NULL
-+Sg+Gen:%> DF-G-SGm ;
++Sg+Gen: DF-G-SGm ;
 
 LEXICON S-M-SGGEN-AR
 +Sg+Gen:%>ar DF-G-SGm ;
@@ -2139,7 +2139,7 @@ LEXICON S-M-PLACC-NULL-I-IR
 +Pl+Acc:%>ir DF-A-PLm-def ;
 
 !LEXICON S-M-PLACC-NULL-I
-!+Pl+Acc:%> DF-A-PLm-I ;
+!+Pl+Acc: DF-A-PLm-I ;
 
 
 ! Dative
@@ -2148,7 +2148,7 @@ LEXICON S-M-PLDAT
 +Pl+Dat:%>u DF-D-PL ;
 
 LEXICON S-M-PLDATm ! skóm
-+Pl+Dat:%> DF-D-PL ;
++Pl+Dat: DF-D-PL ;
 
 ! Genitive
 
@@ -2168,9 +2168,9 @@ LEXICON W-F-SGNOM
 +Sg+Nom:%>a DF-N-SGf-W ;
 
 LEXICON S-F-SGNAD
-+Sg+Nom:%> DF-N-SGf-S ;
-+Sg+Acc:%> DF-A-SGf-S ;
-+Sg+Dat:%> DF-D-SGf-S ;
++Sg+Nom: DF-N-SGf-S ;
++Sg+Acc: DF-A-SGf-S ;
++Sg+Dat: DF-D-SGf-S ;
 
 ! Oblique
 
@@ -2183,7 +2183,7 @@ LEXICON S-F-SGGEN
 +Sg+Gen:%>ar DF-G-SGf-S ;
 
 LEXICON S-F-SGGEN-NULL
-+Sg+Gen:%> DF-G-SGf-S ;
++Sg+Gen: DF-G-SGf-S ;
 
 
 
@@ -2203,8 +2203,8 @@ LEXICON F-PLNA-AR
 +Pl+Acc:%>ar DF-NA-PLf ;
 
 LEXICON F-PLNA-NULL
-+Pl+Nom:%> DF-NA-PLf ;
-+Pl+Acc:%> DF-NA-PLf ;
++Pl+Nom: DF-NA-PLf ;
++Pl+Acc: DF-NA-PLf ;
 
 LEXICON F-PLDAT 
 +Pl+Dat:%>u DF-D-PL ;
@@ -2217,18 +2217,18 @@ LEXICON F-PLGEN
 ! ------------
 
 LEXICON S-N-SGNA
-+Sg+Nom:%> DF-NA-SGn ;
-+Sg+Acc:%> DF-NA-SGn ;
++Sg+Nom: DF-NA-SGn ;
++Sg+Acc: DF-NA-SGn ;
 
 LEXICON S-N-SGDG
-+Sg+Dat:%> DF-D-SGn ;
-+Sg+Gen:%> DF-G-SGn ;
++Sg+Dat: DF-D-SGn ;
++Sg+Gen: DF-G-SGn ;
 
 LEXICON S-N-SGD
-+Sg+Dat:%> DF-D-SGn ;
++Sg+Dat: DF-D-SGn ;
 
 LEXICON S-N-SGG
-+Sg+Gen:%> DF-G-SGn ;
++Sg+Gen: DF-G-SGn ;
 
 LEXICON S-N-SGDG-is
 S-N-SGD-i ;
@@ -2266,8 +2266,8 @@ LEXICON N-PLNA-i-ir
 +Pl+Acc+Indef:%>ir FINAL ;
 
 LEXICON N-PLNA 
-+Pl+Nom:%> DF-NA-PLn ;
-+Pl+Acc:%> DF-NA-PLn ;
++Pl+Nom: DF-NA-PLn ;
++Pl+Acc: DF-NA-PLn ;
 
 
 LEXICON N-PLD
@@ -2282,12 +2282,12 @@ LEXICON N-PLG-na
 ! Common cases
 
 LEXICON DF-D-PL
-+Indef:m FINAL ;
-+Def:num FINAL ;
++Indef:%>m FINAL ;
++Def:%>num FINAL ;
 
 LEXICON DF-G-PL
 +Indef: FINAL ;
-+Def:nna FINAL ;
++Def:%>nna FINAL ;
 
 
 
@@ -2309,7 +2309,7 @@ LEXICON DF-G-PL
 
 LEXICON DF-N-SGm
    DF-N-SGm-indef ;
-:i DF-N-SGm-def ;
+:%>i DF-N-SGm-def ;
 
 LEXICON DF-N-SGm-indef 
 +Indef: FINAL ; !risi
@@ -2423,6 +2423,7 @@ LEXICON DF-NA-SGn-def
 LEXICON DF-D-SGn
 +Indef: FINAL ;
 +Def:%>num FINAL ;
++Def:%^EPH%>num FINAL ; ! XXX check inum vs num
 
 LEXICON DF-G-SGn
 +Def:%>ins FINAL ;

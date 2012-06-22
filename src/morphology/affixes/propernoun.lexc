@@ -18,6 +18,24 @@
 ! For each group, the maltag etc. lexicon functions as a default
 ! lexicon. The other lexica are there for specific subgroups of the names.
 
+! Indeclineables
+! --------------
+
+LEXICON indeclattr
++Det+Prop+Attr: # ; ! "The" i "The full Monty"
+
+LEXICON indeclorg ! Den Danske Bank
++N+Prop+Org: indeclcase ;
+
+LEXICON indeclplc ! Færøerne
++N+Prop+Plc: indeclcase ;
+
+LEXICON indeclcase
++Sg+Nom: # ;
++Sg+Acc: # ;
++Sg+Dat: # ;
++Sg+Gen: # ;
+
 
 ! Male first names
 ! ----------------
@@ -25,13 +43,13 @@
 !this is like BOAS
 !It means just "not checked"
 LEXICON maltag
-+N+Prop+Sg+Nom: # ;
-+N+Prop+Sg+Acc: # ;
-+N+Prop+Sg+Dat:%>i # ;
-+N+Prop+Sg+Gen:%>s # ;
-sdóttir+N+Prop+Sg:sdótt kv30e ;
-ssonur+N+Prop+Sg:sson k47 ;
-sonur:son k47 ;
++N+Prop+Mal+Sg+Nom: # ;
++N+Prop+Mal+Sg+Acc: # ;
++N+Prop+Mal+Sg+Dat:%>i # ;
++N+Prop+Mal+Sg+Gen:%>s # ;
+sdóttir+N+Prop+Fem+Sg:sdótt kv30e ;
+ssonur+N+Prop+Mal+Sg:sson k47 ;
+sonur+N+Prop+Mal+Sg:son k47 ;
 
 LEXICON MUSTAFA
 +N+Prop+Sg+Nom: # ;
@@ -229,6 +247,9 @@ LEXICON SUDUROY
 +N+Prop+Sg+Dat+Def:%>nni # ;
 +N+Prop+Sg+Gen+Def:%>arinnar # ;
 
+LEXICON FLOKKUR
+flokkur:flokk propnoun-org-k9 ;
+
 ! These are the lexica taken from the noun-fao-lex.txt file.
 
 
@@ -241,8 +262,14 @@ LEXICON propnoun-h-flt25
 LEXICON propnoun-h-flt8
  +N+Prop:    h-flt8 ;
 
+LEXICON propnoun-plc-h11
+ +N+Prop+Plc:    h11 ;
+
 LEXICON propnoun-h11
  +N+Prop:    h11 ;
+
+LEXICON propnoun-plc-h11e
+ +N+Prop+Plc:    h11e ;
 
 LEXICON propnoun-h11e
  +N+Prop:    h11e ;
@@ -264,6 +291,9 @@ LEXICON propnoun-h24e
 
 LEXICON propnoun-h25
  +N+Prop:    h25 ;
+
+LEXICON propnoun-plc-h3
+ +N+Prop+Plc:    h3 ;
 
 LEXICON propnoun-h3
  +N+Prop:    h3 ;
@@ -328,6 +358,9 @@ LEXICON propnoun-k43e
 LEXICON propnoun-k46
  +N+Prop:    k46 ;
 
+LEXICON propnoun-plc-k6
+ +N+Prop+Plc:    k6 ;
+
 LEXICON propnoun-k6
  +N+Prop:    k6 ;
 
@@ -339,6 +372,9 @@ LEXICON propnoun-k8
 
 LEXICON propnoun-k9
  +N+Prop:    k9 ;
+
+LEXICON propnoun-org-k9
+ +N+Prop+Org:    k9 ;
 
 LEXICON propnoun-kv-flt1
  +N+Prop:    kv-flt1 ;
@@ -361,6 +397,9 @@ LEXICON propnoun-kv-flt8
 LEXICON propnoun-kv-flt9
  +N+Prop:    kv-flt9 ;
 
+LEXICON propnoun-org-kv1
+ +N+Prop+Org:    kv1 ;
+
 LEXICON propnoun-kv1
  +N+Prop:    kv1 ;
 
@@ -372,6 +411,9 @@ LEXICON propnoun-kv13e
 
 LEXICON propnoun-kv1e
  +N+Prop:    kv1e ;
+
+LEXICON propnoun-fem-kv2
+ +N+Prop+Fem:    kv2 ;
 
 LEXICON propnoun-kv2
  +N+Prop:    kv2 ;

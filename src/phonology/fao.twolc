@@ -40,21 +40,6 @@ Sets
 
 Rules
 
-"Deleting j"
- j:0 <=>           _     [ %^JI: | %^JDEL: ] ;          ! j for j-deletion dummies
-         Vow g g:  _ %>: [ Cns | i ] ;                  ! j in j-stems
-         Vow g: g: _     [ %^GDEL: | %^GGDEL: ] %>: s ; ! j in ggj genitive
-             Cns   _     [ :i | :ý | :e :y ] Cns:* %^IUML: ;
-         
-!€ beiggj%^JI%>i
-!€ beigg000i
-
-!€ verkj%^JDEL%>ur
-!€ verk000ur
-
-!€ heyggj%>i
-!€ heygg00i
-
 
 ! Verschärferung
 
@@ -110,6 +95,180 @@ Rules
 
 !skógv%>m%>num
 !skó0000000num
+
+
+
+!! The following rule is fishy - the test cases below don't fit the context
+!! requirements, and the >s# in the right context seems to indicate passive.
+!! The rule conflicts with the "Cns Deletion in front of Pass" rule at the
+!! end of the file - but only when using the Xerox tools! XXX - please have a look!
+"Deleting Double Consonant in Front of Consonant"
+ Cx:0 <=> Vow Cx _ (%>:)  (u: r:) ([Dummy: - %^EPH:]) %>: [d|ð|s|t] ([a|i|u]) #:0 ; 
+! Cx:0 <=> Vow Cx _ (%>:) (u: r:) (Dummy:) %>: [d|ð|s|(s) t] ([a|i|u]) #:0 ; 
+! Cx:0 <=> Vow Cx _ ( %>: u: r: ) ([Dummy: - %^PASS:]) %>: [s|t] #:0 ; 
+      where Cx in ( b d f g k l m n p r s t v ) ;
+
+!"Double consonant simplification in front of t"
+!Cx:0 <=> Vow Cx _ %>: t ;
+!     where Cx in ( b g l m n p r k ) ;
+
+!€ all%>t
+!€ al00t
+
+
+!"Deleting Double Consonant in Front of t + vow"
+! Cx:0 <=> Vow Cx _ ( (%>:) ( u: r: ) Dummy:) %>: t [a|i|u]  ; 
+!      where Cx in ( b d f g k l m n p r s t v ) ;
+! added t to right context, check this!!
+
+!€ hjall%>s
+!€ hjal00s
+
+!€ rygg%>s
+!€ ryg00s
+
+!€ hjall%>ar
+!€ hjall0ar
+
+! Verbal Sandhi rules
+
+"Geminate Assimilation in Past Tense d"
+ Cx:0 <=> Vow Cy _ %>: d ;
+ 	where Cx in ( d ð t )
+ 	      Cy in ( n r l )
+! 	where Cx in ( d ð n p g k t ) ! removing geminates due to prev rule.
+! 	      Cy in ( n r n p g k l )
+ 	      matched ;
+
+"Geminate Assimilation in Past Tense t"
+ Cx:0 <=> Vow Cy _ %>: t ;
+ 	where Cx in ( d ð ) ! t:0 is covered by the next rule
+ 	      Cy in ( n r ) ! l   in front of all consonants
+ 	      matched ; 
+
+!€ send%>di
+!€ sen00di
+
+!€ hirð%>di
+!€ hir00di
+
+!"Geminate Assimilation After t Final Stem Cluster"
+! t:0 <=> Vow Cns _ %>: t ;
+ 	      
+!€ sett%>ti
+!€ set00ti 	      
+
+
+"ð Assimilation in Front of Dental Past Suffix -d(i)"
+ ð:d <=> Vow _ %>: d (%>:) [ #: | Vow ] ;
+ 
+!€ leið%>di
+!€ leid0di 
+
+"Deleting Double Consonant in Front of Epenthesis mark"
+ Cx:0 <=> Cx _ [ i:0 | a:0 | u:0 ] [ l | r ] ( %^EPH: ) %>: Vow ;
+      where Cx in ( b d f g k l m n p r s t v ) ;
+
+!€ summar%^EPH%>i
+!€ sum00r00i
+
+!€ himmal%^EPH%^UUML%>um
+!€ him00l000um
+
+!tunnil%>i
+!tun00l%>i
+
+!himmal%>i
+!him00l0i
+
+"Deleting stem-final s in s genitive"
+ s:0 <=> Vow s %>: _ #:0 ; ! added #:0
+
+!€ primus%>s
+!€ primus000
+
+!grís%>s
+!grís000
+
+
+"Double ð Deletion"
+ð:0 <=> _ %>:0 ð ;
+
+
+"ð Assimilation in Front of Supine Suffix -t"
+ ð:t <=> Vow _ %>: t #: ;
+
+!€ leið%>t
+!€ leit0t
+
+"Adjusting Dental Past Suffix -d(i)"
+ d:t <=> Vow [ p | t | k | s ] %>: _ (%>:) [ #: | Vow ] ;
+
+!€ keyp%>di
+!€ keyp0ti
+
+"Adjective neuter after nlr 1"
+t:ð <=> Vow Cns+ i [ r: | l: | n: ] ( %^EPH: ) %>: _ #:  ;
+
+"Adjective neuter after nlr 2"
+Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
+     where Cx in ( l n r ) ; 	      
+
+!€ mikil%^EPH%>t
+!€ miki000ð
+
+!€ gamal%^EPH%>t
+!€ gamal00t
+
+"t Deletion in Neuter"
+ t:0 <=> [ Cns t | Vow Cns+ Vow ð %^EDH: ] %>: _ #: ;
+!t:0 <=> [ r t | Vow Cns+ Vow ð %^EDH: ] %>: _ ;
+
+ 
+"ng to kk Part 1"
+ n:k <=> Vow _ g:k %^NGKK: ;
+
+"ng to kk Part 2"
+ g:k <=> Vow n: _ %^NGKK: ;
+
+
+
+"Deleting j"
+ j:0 <=>           _     [ %^JI: | %^JDEL: ] ;          ! j for j-deletion dummies
+         Vow g g:  _ %>: [ Cns | i ] ;                  ! j in j-stems
+         Vow g: g: _     [ %^GDEL: | %^GGDEL: ] %>: s ; ! j in ggj genitive
+             Cns   _     [ :i | :ý | :e :y ] Cns:* %^IUML: ;
+         
+!€ beiggj%^JI%>i
+!€ beigg000i
+
+!€ verkj%^JDEL%>ur
+!€ verk000ur
+
+!€ heyggj%>i
+!€ heygg00i
+
+
+"Realising j in front of vowels"
+ j2:j => _ %>: [ a | u ] ;
+
+!€ hylj2%>ar
+!€ hylj0ar
+
+
+
+
+!   ===========  !
+!   Vowel rules  !
+!   ===========  !
+
+
+"Realising i2 as i"
+ i2:i => _ %>: ;
+
+!svii2%>
+!svii%>
+
 
 
 "Epenthetic deletion"
@@ -227,77 +386,7 @@ Rules
 !€ dro0ng00i
 
 
-!! The following rule is fishy - the test cases below don't fit the context
-!! requirements, and the >s# in the right context seems to indicate passive.
-!! The rule conflicts with the "Cns Deletion in front of Pass" rule at the
-!! end of the file - but only when using the Xerox tools! XXX - please have a look!
-"Deleting Double Consonant in Front of Consonant"
- Cx:0 <=> Vow Cx _ (%>:) (u: r:) (Dummy:) %>: [d|ð|s|(s) t] ([a|i|u]) #:0 ; 
-! Cx:0 <=> Vow Cx _ ( %>: u: r: ) ([Dummy: - %^PASS:]) %>: [s|t] #:0 ; 
-      where Cx in ( b d f g k l m n p r s t v ) ;
 
-!"Double consonant simplification in front of t"
-!Cx:0 <=> Vow Cx _ %>: t ;
-!     where Cx in ( b g l m n p r k ) ;
-
-!€ all%>t
-!€ al00t
-
-
-!"Deleting Double Consonant in Front of t + vow"
-! Cx:0 <=> Vow Cx _ ( (%>:) ( u: r: ) Dummy:) %>: t [a|i|u]  ; 
-!      where Cx in ( b d f g k l m n p r s t v ) ;
-! added t to right context, check this!!
-
-!€ hjall%>s
-!€ hjal00s
-
-!€ rygg%>s
-!€ ryg00s
-
-!€ hjall%>ar
-!€ hjall0ar
-
-"Deleting Double Consonant in Front of Epenthesis mark"
- Cx:0 <=> Cx _ [ i:0 | a:0 | u:0 ] [ l | r ] ( %^EPH: ) %>: Vow ;
-      where Cx in ( b d f g k l m n p r s t v ) ;
-
-!€ summar%^EPH%>i
-!€ sum00r00i
-
-!€ himmal%^EPH%^UUML%>um
-!€ him00l000um
-
-!tunnil%>i
-!tun00l%>i
-
-!himmal%>i
-!him00l0i
-
-"Deleting stem-final s in s genitive"
- s:0 <=> Vow s %>: _ ;
-
-!€ primus%>s
-!€ primus000
-
-!grís%>s
-!grís000
-
-
-"Double ð Deletion"
-ð:0 <=> _ %>:0 ð ;
-
-"Realising i2 as i"
- i2:i => _ %>: ;
-
-!svii2%>
-!svii%>
-
-"Realising j in front of vowels"
- j2:j => _ %>: [ a | u ] ;
-
-!€ hylj2%>ar
-!€ hylj0ar
 
 "Vowel deletion in front of na"
  a:0 <=> _ %^W: n ;
@@ -358,50 +447,6 @@ Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
 !€ skjót0t
 
 
-
-! Verbal Sandhi rules
-
-"ð Assimilation in Front of Dental Past Suffix -d(i)"
- ð:d <=> Vow _ %>: d (%>:) [ #: | Vow ] ;
- 
-!€ leið%>di
-!€ leid0di 
-
-"ð Assimilation in Front of Supine Suffix -t"
- ð:t <=> Vow _ %>: t #: ;
-
-!€ leið%>t
-!€ leit0t
-
-"Adjusting Dental Past Suffix -d(i)"
- d:t <=> [ p | t | k | s ] %>: _ (%>:) [ #: | Vow ] ;
-
-!€ keyp%>di
-!€ keyp0ti
-
-"Geminate Assimilation in Past Tense d"
- Cx:0 <=> Cy _ %>: d: ;
- 	where Cx in ( d ð n p g k t )
- 	      Cy in ( n r n p g k l )
- 	      matched ;
-
-"Geminate Assimilation in Past Tense t"
- Cx:0 <=> Cy _ %>: t ;
- 	where Cx in ( d ð ) ! t:0 is covered by the next rule
- 	      Cy in ( n r ) ! l   in front of all consonants
- 	      matched ; 
-
-!€ send%>di
-!€ sen00di
-
-!€ hirð%>di
-!€ hir00di
-
-"Geminate Assimilation After t Final Stem Cluster"
- t:0 <=> Cns _ %>: t ;
- 	      
-!€ sett%>ti
-!€ set00ti 	      
 
 ! Verbal ablaut rules
 
@@ -487,42 +532,7 @@ Vx:ý <=> _ Cns:+ %^AB7: ;
 !€ brekað%>t
 !€ brekað00
 
-"Adjective neuter after nlr 1"
-t:ð <=> Vow Cns+ i [ r: | l: | n: ] ( %^EPH: ) %>: _ #:  ;
 
-"Adjective neuter after nlr 2"
-Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
-     where Cx in ( l n r ) ; 	      
-
-!€ mikil%^EPH%>t
-!€ miki000ð
-
-!€ gamal%^EPH%>t
-!€ gamal00t
-
- 	      
-! Possessive Sandhi rules
-
-! "n Deletion in Neuter" conflicts with the "Deleting Double Consonant in Front of Consonant" rule - HJ
-!"n Deletion in Neuter"
-! n:0 <=> _ %>: t t ;
-
-"t Deletion in Neuter"
- t:0 <=> [ Cns t | Vow Cns+ Vow ð %^EDH: ] %>: _ #: ;
-!t:0 <=> [ r t | Vow Cns+ Vow ð %^EDH: ] %>: _ ;
-
-!"t Deletion in Supine"
-! t:0 <=> Cns t  %>: _ #:0;
-
-!€ lyft%>t#
-!€ lyft000
-
- 
-"ng to kk Part 1"
- n:k <=> Vow _ g:k %^NGKK: ;
-
-"ng to kk Part 2"
- g:k <=> Vow n: _ %^NGKK: ;
 
 
 ! Morphological passive rules

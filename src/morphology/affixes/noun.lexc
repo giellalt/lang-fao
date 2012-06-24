@@ -1560,11 +1560,12 @@ LEXICON h4 ! boð
 LEXICON h4e
 +N+Neu: S_N_SGNA ;
 +N+Neu: S_N_SGG ;
-+N+Neu: S_N_SGDG_is ; ! check
++N+Neu: S_N_SGDG_is ; 
 
 LEXICON h_flt4
 +N+Neu: N_PLNA ;
-+N+Neu: N_PLD ;
++N+Neu: N_PLD_0_U ; ! liðnum
+!+N+Neu: N_PLD ;    ! liðunum, comment in if OK
 +N+Neu: N_PLG ;
 
 LEXICON h5/3
@@ -2273,6 +2274,10 @@ LEXICON N_PLNA
 LEXICON N_PLD
 +Pl+Dat:%>u DF_D_PL ;
 
+LEXICON N_PLD_0_U
++Pl+Dat+Indef:%>um FINAL ;
++Pl+Dat+Def:%>num FINAL ;
+
 LEXICON N_PLG
 +Pl+Gen:%>a DF_G_PL ;
 
@@ -2424,7 +2429,6 @@ LEXICON DF_NA_SGn_def
 LEXICON DF_D_SGn
 +Indef: FINAL ;
 +Def:%>num FINAL ;
-+Def:%^EPH%>num FINAL ; ! XXX check inum vs num
 
 LEXICON DF_G_SGn
 +Def:%>ins FINAL ;

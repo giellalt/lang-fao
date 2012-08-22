@@ -69,7 +69,7 @@ gt_ENABLE_TARGETS
 
 # List all directories that are used in this project and have automake-style
 # Makefiles
-AC_CONFIG_FILES([Makefile src/Makefile src/morphology/Makefile src/orthography/Makefile src/phonology/Makefile src/spellchecker/Makefile src/syntax/Makefile doc/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile src/morphology/Makefile src/orthography/Makefile src/phonology/Makefile src/spellchecker/Makefile src/syntax/Makefile src/filters/Makefile doc/Makefile])
 
 # This must be near the end of all configure.ac files:
 AC_OUTPUT

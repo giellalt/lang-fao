@@ -29,7 +29,7 @@ noinst_DATA=$(GT_ERRMODELS)
 	$(MAKE) -C .. $(GT_DICTIONARY_HFST)
 
 %.hfst: %.txt ../$(GT_DICTIONARY_HFST)
-	$(GTHOME)/gt/script/editdist.py -v -s -d 2 -e '@0@' -i $<   \
+	$(GTCORE)/scripts/editdist.py -v -s -d 2 -e '@0@' -i $<   \
 		-a ../$(GT_DICTIONARY_HFST) | \
 		$(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' | \
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@

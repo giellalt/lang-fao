@@ -27,7 +27,7 @@ noinst_DATA=$(GT_FILTER_TARGETS)
 	$(HREGEX) $(HFSTFLAGS) -o $@ -i $<
 
 %.hfst: $(GTCORE)/gtshared/src/filters/%.regex
-    $(HFSTREGEX2FST) $(HFSTFLAGS) -i $< -o $@
+	$(HFSTREGEX2FST) $(HFSTFLAGS) -i $< -o $@
 
 clean-local:
 	-rm -f *.hfst *.ol

@@ -1,4 +1,12 @@
-$Rev: 59759 $
+$Rev: 61318 $ 
+More elaborate dir structure in test/, added Makefile.am files everywhere in
+test/, added test/ to SUBDIRS.
+
+r59870:
+Include filters and indent properly, use gtcore version of editdist.py in
+spellers
+
+r59759:
 Corrected syntax error, renamed a couple of errors.
 
 r59755:
@@ -36,15 +44,19 @@ r58482:
 Updated zhfst building according to new location of files.
 
 r58478:
-Replaced direct command calls with variables, completed and corrected a couple of commands, made the transducer commands consistent across applications.
+Replaced direct command calls with variables, completed and corrected a couple
+of commands, made the transducer commands consistent across applications.
 
 r58471:
-The timestamp file has been renamed, with corresponding changes in the Makefile.am.
+The timestamp file has been renamed, with corresponding changes in the
+Makefile.am.
 
 r58456:
 Making the echo silent for clean output.
 
 r58409:
-Renamed a couple of folders and files, moved hfst & voikko speller metadata files to a more appropriate place.
+Renamed a couple of folders and files, moved hfst & voikko speller metadata
+files to a more appropriate place.
 
-Updated the top Makefile.am to properly check for changes to this file before building anything else.
+Updated the top Makefile.am to properly check for changes to this file before
+building anything else.

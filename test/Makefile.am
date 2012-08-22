@@ -2,5 +2,4 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-#
-#TESTS=pairs.sh 
+SUBDIRS = phonology morphology syntax spellchecker

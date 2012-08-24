@@ -1,4 +1,29 @@
-$Rev: 61346 $
+$Rev: 61472 $
+Reverted the ignores - merging wasn't working properly for properties, and
+caused a lot of noise. Hopefully this commit will cancel that noise.
+
+r61464:
+Added svn:ignore on most dirs, in the hope that they will be copied over to the
+language dirs.
+
+r61458:
+A lot of cleanup and corrections:
+* suffix rules in more places (although not in all - that is not possible)
+* removed automake warning about pattern rules - we need them
+* checked all *-include.am files for consistency, added missing Xerox and HFST
+  targets were needed, corrected vars to HFST tools, added comments and
+  generally made the files easier to maintain (I hope).
+
+r61422:
+Only pattern rules for uppercasing targets.
+
+r61380:
+Replaced pattern rules with suffix rules in phonology (twolc) processing. First
+step in switching to suffix rules everywhere, for backwards compatibility, and
+fewer automake errors. Also added support for compiling phonologies written as
+xfst script files.
+
+r61346:
 Added Autoconf processing of the Makefile.am files in test/.
 
 r61318:

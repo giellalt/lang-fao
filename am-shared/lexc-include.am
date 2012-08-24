@@ -15,6 +15,8 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+####### Source file defs: ########
+
 #! @param GT_LEXC_ROOT required, define name of file holding root lexicon
 #! @param GT_LEXC_SRCS optional, space separated list of file names holding
 #!		  supplementary lexicon data
@@ -22,6 +24,8 @@ GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
 
 # All sources need to be included in the tarball
 EXTRA_DIST=$(GT_LEXC_ALLSRC)
+
+####### Automake targets: ########
 
 # The transducers we build and don't distribute depend on the configuration:
 GT_LEXICAL=
@@ -33,6 +37,8 @@ GT_LEXICAL+=$(GTLANG).lexc.xfst
 endif
 noinst_DATA=$(GT_LEXICAL)
 
+####### HFST build rules: ########
+
 # lexical transducer building rules:
 # for HFST:
 $(GTLANG).lexc.hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
@@ -40,11 +46,13 @@ $(GTLANG).lexc.hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
 	$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
 	-rm -f $@.foma
 
-# Xerox:
+####### Xerox build rules: #######
+
 $(GTLANG).lexc.xfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
 	$(PRINTF) "compile-source $^\nsource-to-result\nsave-source $@\nquit\n" |\
 		$(LEXC)
 
+####### Other targets: ###########
 clean-local:
 	-rm -f $(GTLANG).lexc.hfst $(GTLANG).lexc.xfst
 

@@ -4,6 +4,7 @@
 
 # set this to name of cg3 dependency rules
 GT_DEPENDENCY=dependency.rle
+
 # set this to name of cg3 disambiguation rules
 GT_DISAMBIGUATION=disambiguation.rle
 

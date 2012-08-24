@@ -5,12 +5,15 @@
 # other tagsets, given that the proper tagset relabeling files are defined,
 # and that the target files are defined as part of the 'all' target.
 
+####### Automake targets: ########
+
 if WANT_HFST
 GT_MORPHOLOGY_HFST=analyser.gt.hfst
 GT_GENERATION_HFST=generator.gt.hfst
 GT_DICTIONARY_HFST=dictionary.default.hfst
 GT_SPELLING_HFST=speller.zhfst
 endif
+
 if WANT_XFST
 GT_MORPHOLOGY_XFST=analyser.gt.xfst
 GT_GENERATION_XFST=generator.gt.xfst
@@ -31,7 +34,7 @@ endif
 noinst_DATA=$(GT_MORPHOLOGY_XFST) $(GT_DICTIONARY_XFST) \
 			$(GT_HYPHENATION_XFST) $(GT_GENERATION_XFST)
 
-# HFST basic transducer compilation starting here:
+####### HFST build rules: ########
 
 # The "raw" transducer contains all tags and symbols available on the analysis
 # side. Some of them are optional for generation, some are only needed for
@@ -59,6 +62,28 @@ dictionary.default.hfst: raw.gt.hfst
 	$(HFST_PROJECT) $(HFST_FLAGS) --project=upper -i $< |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+
+# create generic tagset variants of analyzers
+analyser.%.hfst: analyser.gt.hfst tagsets/%.relabel
+	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
+
+# remove sub-standard forms to get a normative transducer
+analyser.norm.hfst: analyser.gt.hfst filters/remove-sub-forms.hfst
+	$(HFSTCOMPOSE) $(HFSTFLAGS) -1 filters/remove-sub-forms.hfst -2 $< -o $@
+
+# create tagset variants of generators
+generation.%.hfst: generation.omor.hfst tagsets/%.relabel
+	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
+
+# lemmatization is a special case of tagset variant
+lemmatize.default.hfst: analyser.gt.hfst tagsets/lemmatize.relabel
+	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
+
+# optimizing
+.hfst.hfstol:
+	$(HFST_PREP) $(HFST_FLAGS) -i $< |\
+		$(HFST_FST2FST) $(HOPT_FLAGS) -f olw -o $@
+
 # HFST transducer compilation ends.
 
 # HFST/Voikko speller compilation starting here:
@@ -81,7 +106,7 @@ speller.zhfst: acceptor.default.hfst \
 	$(ZIP) $(ZIPFLAGS) $@ $^
 # HFST/Voikko speller compilation ends.
 
-# Xerox basic transducer compilation starting here:
+####### Xerox build rules: #######
 
 # The "raw" transducer contains all tags and symbols available on the analysis
 # side. Some of them are optional for generation, some are only needed for
@@ -106,28 +131,7 @@ dictionary.default.xfst: raw.gt.xfst
 	$(PRINTF) "load stack $<\nlower net\nsave stack $@\nquit\n" | $(XFST)
 # Xerox transducer compilation ends.
 
-
-# create generic tagset variants of analyzers
-analyser.%.hfst: analyser.gt.hfst tagsets/%.relabel
-	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
-
-# remove sub-standard forms to get a normative transducer
-analyser.norm.hfst: analyser.gt.hfst filters/remove-sub-forms.hfst
-	$(HFSTCOMPOSE) $(HFSTFLAGS) -1 filters/remove-sub-forms.hfst -2 $< -o $@
-
-# create tagset variants of generators
-generation.%.hfst: generation.omor.hfst tagsets/%.relabel
-	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
-
-# lemmatization is a special case of tagset variant
-lemmatize.default.hfst: analyser.gt.hfst tagsets/lemmatize.relabel
-	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
-
-# optimizing
-%.hfstol: %.hfst
-	$(HFST_PREP) $(HFST_FLAGS) -i $< |\
-		$(HFST_FST2FST) $(HOPT_FLAGS) -f olw -o $@
-
+####### Other targets: ###########
 # cleaning
 clean-local:
 	-rm -f *.hfst *.hfstol *.zhfst *.xfst voikko-fi_FI.pro index.xml

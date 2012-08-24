@@ -15,20 +15,39 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+####### Source file defs: ########
+
 # need to check way to list build targets like automake
 #! @param GT_REGEX_SRCS required, list all regular expressions used
 EXTRA_DIST=$(GT_FILTER_SRCS)
+
+####### Automake targets: ########
+
 # @param GT_REGEX_TARGETS required
 noinst_DATA=$(GT_FILTER_TARGETS)
 
-# other twolc targets should be built by suffix rules;
-# just list them in some nice automake targets and you're good to go
-%.hfst: %.regex
-	$(HREGEX) $(HFSTFLAGS) -o $@ -i $<
+####### HFST build rules: ########
+
+.regex.hfst:
+	$(PRINTF) \
+		"read regex @re\"$<\";\nsave stack $@ \n" > $@.script
+	$(HFST_XFST) -f $@.script
+	-rm -f $@.script
 
 %.hfst: $(GTCORE)/gtshared/src/filters/%.regex
-	$(HFSTREGEX2FST) $(HFSTFLAGS) -i $< -o $@
+	$(HFST_REGEXP2FST) $(HFSTFLAGS) -i $< -o $@
 
+####### Xerox build rules: #######
+
+.regex.xfst:
+	$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
+		$(XFST) $(XFSTFLAGS)
+
+%.hfst: $(GTCORE)/gtshared/src/filters/%.regex
+	$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
+		$(XFST) $(XFSTFLAGS)
+
+####### Other targets: ###########
 clean-local:
 	-rm -f *.hfst *.ol
 

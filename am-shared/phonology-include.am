@@ -15,43 +15,60 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+####### Source file defs: ########
+
 #! @param GT_TWOLC_MAIN required, the source of phonology
 #! @param GT_TWOLC_SUPPLEMENTS optional, other sources to distribute and
 #! 		  compile for other things
-GT_TWOLC_MAIN=$(GTLANG).twolc
-GT_TWOLC_SRCS=$(GT_TWOLC_MAIN) $(GT_TWOLC_SUPPLEMENTS)
+GT_PHONOLOGY_MAIN=$(GTLANG)-phon.twolc
+GT_PHONOLOGY_SRCS=$(GT_PHONOLOGY_MAIN) $(GT_PHONOLOGY_SUPPLEMENTS)
 
 # All sources need to be included in the tarball
-EXTRA_DIST=$(GT_TWOLC_SRCS)
+EXTRA_DIST=$(GT_PHONOLOGY_SRCS)
+
+####### Automake targets: ########
 
 # The rule transducer will be built, not installed
 GT_PHONOLOGY=
 if WANT_HFST
-GT_PHONOLOGY+=$(GTLANG).twolc.hfst
+GT_PHONOLOGY+=$(GTLANG)-phon.hfst
 endif
 if WANT_XFST
-GT_PHONOLOGY+=$(GTLANG).twolc.xfst
+GT_PHONOLOGY+=$(GTLANG)-phon.xfst
 endif
 
 noinst_DATA=$(GT_PHONOLOGY)
 
+####### HFST build rules: ########
+
 # hfst-twolc should by default resolve
 HFSTTWOLFLAGS=--resolve
 
-# by default build at least main target from main source (might not
-# follow % rule)
-$(GTLANG).twolc.hfst: $(GT_TWOLC_MAIN)
-	$(HFST_TWOLC) $(HFSTFLAGS) $(HFSTTWOLCFLAGS) -i $< -o $@
-
-# other twolc targets should be built by suffix rules;
+# All twolc targets should be built by suffix rules;
 # just list them in some nice automake targets and you're good to go
-%.twolc.hfst: %.twolc
+.twolc.hfst:
 	$(HFST_TWOLC) $(HFSTFLAGS) $(HFSTTWOLCFLAGS) -i $< -o $@
 
-%.twolc.xfst: %.twolc
+# Phonology rules as xfst scripts (typically a cascade of regex rules):
+.xfscript.hfst:
+	cp $< $@.script
+	$(PRINTF) "save stack $@" >> $@.script
+	$(HFST_XFST) -f $@.script
+	-rm -f $@.script
+
+####### Xerox build rules: #######
+
+# All twolc targets should be built by suffix rules;
+# just list them in some nice automake targets and you're good to go
+.twolc.xfst:
 	$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" |\
 		$(TWOLC)
 
+# Phonology rules as xfst scripts (typically a cascade of regex rules):
+.xfscript.xfst:
+	$(XFST) -l $< -e "save stack $@" -stop
+
+####### Other targets: ###########
 clean-local:
 	-rm -f *.hfst *.xfst
 

@@ -20,7 +20,11 @@
 #! @param GT_LEXC_ROOT required, define name of file holding root lexicon
 #! @param GT_LEXC_SRCS optional, space separated list of file names holding
 #!		  supplementary lexicon data
-GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
+#! @param GENERATED_LEXC_SRCS optional, space separated list of file names
+#!        holding supplementary lexicon data generated from xml files.
+#! @param GT_XML_SRCS optional, space separated list of xml source file names
+GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS) \
+				$(GENERATED_LEXC_SRCS) $(GT_XML_SRCS)
 
 # All sources need to be included in the tarball
 EXTRA_DIST=$(GT_LEXC_ALLSRC)
@@ -37,18 +41,32 @@ GT_LEXICAL+=$(GTLANG).lexc.xfst
 endif
 noinst_DATA=$(GT_LEXICAL)
 
+####### XML2LEXC build rules: ####
+JV   = java
+MF   = -Xmx1024m
+#EF   = -it main # Saxon-B compatible version
+EF   = -it:main # Saxon-HE compatible version
+XSLPROC = net.sf.saxon.Transform
+XSLDIR = $(GTCORE)/scripts/xsl
+curdir   := $(shell pwd)
+
+# This target will convert each individual xml file to lexc:
+stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
+	$(JV) $(MF) $(XSLPROC) $(EF) $(XSLDIR)/generate_lex-fileVM.xsl \
+		inFile=$(curdir)/$< > $@
+
 ####### HFST build rules: ########
 
 # lexical transducer building rules:
 # for HFST:
-$(GTLANG).lexc.hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
+$(GTLANG).lexc.hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 	$(HFST_LEXC) -f foma -o $@.foma $^
 	$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
 	-rm -f $@.foma
 
 ####### Xerox build rules: #######
 
-$(GTLANG).lexc.xfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
+$(GTLANG).lexc.xfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 	$(PRINTF) "compile-source $^\nsource-to-result\nsave-source $@\nquit\n" |\
 		$(LEXC)
 
@@ -56,3 +74,5 @@ $(GTLANG).lexc.xfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS)
 clean-local:
 	-rm -f $(GTLANG).lexc.hfst $(GTLANG).lexc.xfst
 
+maintainer-clean-local:
+	-rm -f $(GENERATED_LEXC_SRCS)

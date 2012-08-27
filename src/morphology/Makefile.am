@@ -16,6 +16,8 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 GT_LEXC_ROOT=root.lexc
+
+# Set this to the names of all other source lexc files
 GT_LEXC_SRCS=\
 			 stems/abbr.lexc \
 			 stems/acro.lexc \
@@ -36,6 +38,12 @@ GT_LEXC_SRCS=\
 			 affixes/noun.lexc \
 			 affixes/propernoun.lexc \
 			 affixes/verb.lexc
+
+# Set this to the names of all generated lexc files, if any
+GENERATED_LEXC_SRCS=
+
+# Set this to the names of all source xml files, if any
+GT_XML_SRCS=
 
 include $(top_srcdir)/am-shared/lexc-include.am
 

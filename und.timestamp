@@ -1,4 +1,14 @@
-$Rev: 61605 $
+$Rev: 61658 $
+Added an empty Hunspell dir to indicate the home of Hunspell building.
+
+r61640:
+Removed (auto)make processing of the now deleted src/spellchecker/ dir.
+Refactored the phonotactics processing, such that xfst script files are on an
+equal foot with twolc files, and such that it is easy to switch from one to the
+other. Also added some basic template files for disambiguation and dependency
+tagging, taken from the faroese source.
+
+r61605:
 Reorganized spell checker build structure, moving it to a new tools/ dir, which
 will also be home to other applications of the basic linguistic analysers.
 

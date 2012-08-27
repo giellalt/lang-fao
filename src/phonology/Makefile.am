@@ -15,6 +15,14 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+####### Source file defs: ########
+
+#! @param GT_TWOLC_MAIN required, the source of phonology
+#! @param GT_TWOLC_SUPPLEMENTS optional, other sources to distribute and
+#! 		  compile for other things
+GT_PHONOLOGY_MAIN=$(GTLANG)-phon.twolc
+GT_PHONOLOGY_SUPPLEMENTS=
+
 include $(top_srcdir)/am-shared/phonology-include.am
 
 # vim: set ft=automake:

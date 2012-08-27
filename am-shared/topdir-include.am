@@ -11,7 +11,6 @@ if WANT_HFST
 GT_MORPHOLOGY_HFST=analyser.gt.hfst
 GT_GENERATION_HFST=generator.gt.hfst
 GT_DICTIONARY_HFST=dictionary.default.hfst
-GT_SPELLING_HFST=speller.zhfst
 endif
 
 if WANT_XFST
@@ -21,11 +20,6 @@ GT_DICTIONARY_XFST=dictionary.default.xfst
 endif
 
 if WANT_HFST
-voikkosharedir=$(libdir)/voikko/2/mor-hfst-$(GTLANG2)/
-#! @param GT_VOIKKO optional, set to spell checker automata names if
-#!					installable
-voikkoshare_DATA=$(GT_SPELLING_HFST) voikko-fi_FI.pro
-
 hfstdatadir=$(datadir)/hfst/$(GTLANG)
 hfstdata_DATA=$(GT_MORPHOLOGY_HFST) $(GT_DICTIONARY_HFST) \
 			  $(GT_HYPHENATION_HFST) $(GT_GENERATION_HFST)
@@ -41,9 +35,9 @@ noinst_DATA=$(GT_MORPHOLOGY_XFST) $(GT_DICTIONARY_XFST) \
 # special tools. Each final transducer needs to apply it's own filtering to get
 # exactly what is required.
 raw.gt.hfst: morphology/$(GTLANG).lexc.hfst \
-					 phonology/$(GTLANG).twolc.hfst
+					 phonology/$(GTLANG)-phon.hfst
 	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 morphology/$(GTLANG).lexc.hfst \
-		-2 phonology/$(GTLANG).twolc.hfst |\
+		-2 phonology/$(GTLANG)-phon.hfst |\
 		$(HFST_INVERT) $(HFST_FLAGS) |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
@@ -86,26 +80,6 @@ lemmatize.default.hfst: analyser.gt.hfst tagsets/lemmatize.relabel
 
 # HFST transducer compilation ends.
 
-# HFST/Voikko speller compilation starting here:
-index.xml: spellchecker/index.xml
-	cp -f $< $@
-
-voikko-fi_FI.pro: spellchecker/voikko-fi_FI.pro
-	cp -f $< $@
-
-acceptor.default.hfst: dictionary.default.hfst
-	$(HFST_FST2FST) $(HFST_FLAGS) -f olw $< -o $@
-
-errmodel.default.hfst: spellchecker/default-error-model.hfst
-	$(HFST_FST2FST) $(HFST_FLAGS) -f olw $< -o $@
-
-speller.zhfst: acceptor.default.hfst \
-			   errmodel.default.hfst \
-			   $(GT_OTHER_VOIKKO_FILES) \
-			   index.xml
-	$(ZIP) $(ZIPFLAGS) $@ $^
-# HFST/Voikko speller compilation ends.
-
 ####### Xerox build rules: #######
 
 # The "raw" transducer contains all tags and symbols available on the analysis
@@ -113,10 +87,10 @@ speller.zhfst: acceptor.default.hfst \
 # special tools. Each final transducer needs to apply it's own filtering to get
 # exactly what is required.
 raw.gt.xfst: morphology/$(GTLANG).lexc.xfst \
-					phonology/$(GTLANG).twolc.xfst
+					phonology/$(GTLANG)-phon.xfst
 	$(PRINTF) \
 		"read-source morphology/$(GTLANG).lexc.xfst\n\
-		 read-rules phonology/$(GTLANG).twolc.xfst\n\
+		 read-rules phonology/$(GTLANG)-phon.xfst\n\
 		 compose-result\nsave-result $@\nquit\n" | $(LEXC)
 
 analyser.gt.xfst: raw.gt.xfst orthography/$(GTLANG).inituppercase.xfst

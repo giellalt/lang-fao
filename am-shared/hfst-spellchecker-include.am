@@ -17,26 +17,43 @@
 
 GT_DICTIONARY_HFST=dictionary.default.hfst
 
+####### Automake targets: ########
+
 GT_ERRMODELS=
 if WANT_HFST
 #GT_ERRMODELS+=errmodel.edit-distance-1.hfst
-GT_ERRMODELS+=default-error-model.hfst
+GT_ERRMODELS+=errmodel.default.hfst
+GT_SPELLING_HFST=speller.zhfst
+endif
+
+if WANT_HFST
+voikkosharedir=$(libdir)/voikko/2/mor-hfst-$(GTLANG2)/
+#! @param GT_VOIKKO optional, set to spell checker automata names if
+#!					installable
+voikkoshare_DATA=$(GT_SPELLING_HFST) voikko-fi_FI.pro
 endif
 
 noinst_DATA=$(GT_ERRMODELS)
 
-../$(GT_DICTIONARY_HFST):
-	$(MAKE) -C .. $(GT_DICTIONARY_HFST)
+####### HFST build rules: ########
 
-%.hfst: %.txt ../$(GT_DICTIONARY_HFST)
+# Error model building:
+%.hfst: %.txt $(top_srcdir)/$(GT_DICTIONARY_HFST)
 	$(GTCORE)/scripts/editdist.py -v -s -d 2 -e '@0@' -i $<   \
-		-a ../$(GT_DICTIONARY_HFST) | \
+		-a $(top_srcdir)/$(GT_DICTIONARY_HFST) | \
 		$(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' | \
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
-# %.hfst: %.txt
-# 	$(HFST_TXT2FST) $(HFST_FLAGS) -i $< -o $@
+acceptor.default.hfst: $(top_srcdir)/$(GT_DICTIONARY_HFST)
+	$(HFST_FST2FST) $(HFST_FLAGS) -f olw $< -o $@
 
+$(GT_SPELLING_HFST): acceptor.default.hfst \
+					 $(GT_ERRMODELS) \
+					 $(GT_OTHER_VOIKKO_FILES) \
+					 index.xml
+	$(ZIP) $(ZIPFLAGS) $@ $^
+
+####### Other targets: ###########
 clean-local:
 	-rm -f *.hfst *.xfst
 

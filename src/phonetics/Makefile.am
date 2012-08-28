@@ -17,12 +17,12 @@
 
 ####### Source file defs: ########
 
-#! @param GT_TWOLC_MAIN required, the source of phonology
-#! @param GT_TWOLC_SUPPLEMENTS optional, other sources to distribute and
+#! @param GT_PHONETICS_MAIN required, the source of phonetic transcription
+#! @param GT_PHONETICS_SUPPLEMENTS optional, other sources to distribute and
 #! 		  compile for other things
-GT_PHONOLOGY_MAIN=$(GTLANG)-phon.twolc
-GT_PHONOLOGY_SUPPLEMENTS=
+GT_PHONETICS_MAIN=convert2ipa.xfscript
+GT_PHONETICS_SUPPLEMENTS=
 
-include $(top_srcdir)/am-shared/phonology-include.am
+include $(top_srcdir)/am-shared/phonetics-include.am
 
 # vim: set ft=automake:

@@ -17,27 +17,27 @@
 
 ####### Source file defs: ########
 
-#! @param GT_PHONOLOGY_MAIN required, the source of phonology
-#! @param GT_PHONOLOGY_SUPPLEMENTS optional, other sources to distribute and
+#! @param GT_PHONETICS_MAIN required, the source of phonetic transcription
+#! @param GT_PHONETICS_SUPPLEMENTS optional, other sources to distribute and
 #! 		  compile for other things
-#! Both @params are specified in $(GTLANG)/src/phonology/Makefile.am.
-GT_PHONOLOGY_SRCS=$(GT_PHONOLOGY_MAIN) $(GT_PHONOLOGY_SUPPLEMENTS)
+#! Both @params are specified in $(GTLANG)/src/phonetics/Makefile.am.
+GT_PHONETICS_SRCS=$(GT_PHONETICS_MAIN) $(GT_PHONETICS_SUPPLEMENTS)
 
 # All sources need to be included in the tarball
-EXTRA_DIST=$(GT_PHONOLOGY_SRCS)
+EXTRA_DIST=$(GT_PHONETICS_SRCS)
 
 ####### Automake targets: ########
 
 # The rule transducer will be built, not installed
-GT_PHONOLOGY=
+GT_PHONETICS=
 if WANT_HFST
-GT_PHONOLOGY+=$(GTLANG)-phon.hfst
+GT_PHONETICS+=convert2ipa.hfst
 endif
 if WANT_XFST
-GT_PHONOLOGY+=$(GTLANG)-phon.xfst
+GT_PHONETICS+=convert2ipa.xfst
 endif
 
-noinst_DATA=$(GT_PHONOLOGY)
+noinst_DATA=$(GT_PHONETICS)
 
 ####### HFST build rules: ########
 

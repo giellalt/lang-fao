@@ -41,9 +41,9 @@ raw.gt.hfst: morphology/$(GTLANG).lexc.hfst \
 		$(HFST_INVERT) $(HFST_FLAGS) |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
-analyser.gt.hfst: raw.gt.hfst orthography/$(GTLANG).inituppercase.hfst
+analyser.gt.hfst: raw.gt.hfst orthography/inituppercase.hfst
 	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 $< \
-		-2 orthography/$(GTLANG).inituppercase.hfst |\
+		-2 orthography/inituppercase.hfst |\
 		$(HFST_PREPROCESS_FOR_OPTIMIZED_LOOKUP_FORMAT) $(HFST_FLAGS) $< |\
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
@@ -93,8 +93,8 @@ raw.gt.xfst: morphology/$(GTLANG).lexc.xfst \
 		 read-rules phonology/$(GTLANG)-phon.xfst\n\
 		 compose-result\nsave-result $@\nquit\n" | $(LEXC)
 
-analyser.gt.xfst: raw.gt.xfst orthography/$(GTLANG).inituppercase.xfst
-	$(PRINTF) "read regex @\"$<\" .o. @\"orthography/$(GTLANG).inituppercase.xfst\" ;\n\
+analyser.gt.xfst: raw.gt.xfst orthography/inituppercase.xfst
+	$(PRINTF) "read regex @\"$<\" .o. @\"orthography/inituppercase.xfst\" ;\n\
 	save stack $@\nquit\n" | $(XFST)
 
 # This is the standard generating transducer. It 

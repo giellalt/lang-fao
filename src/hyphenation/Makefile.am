@@ -20,9 +20,9 @@
 #! @param GT_TWOLC_MAIN required, the source of phonology
 #! @param GT_TWOLC_SUPPLEMENTS optional, other sources to distribute and
 #! 		  compile for other things
-GT_PHONOLOGY_MAIN=$(GTLANG)-phon.twolc
-GT_PHONOLOGY_SUPPLEMENTS=
+GT_HYPHENATION_MAIN=hyphenation.xfscript
+GT_HYPHENATION_SUPPLEMENTS=
 
-include $(top_srcdir)/am-shared/phonology-include.am
+include $(top_srcdir)/am-shared/hyphenation-include.am
 
 # vim: set ft=automake:

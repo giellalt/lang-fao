@@ -71,11 +71,13 @@ gt_ENABLE_TARGETS
 # Makefiles
 AC_CONFIG_FILES([Makefile \
                 src/Makefile \
+                src/filters/Makefile \
+                src/hyphenation/Makefile \
                 src/morphology/Makefile \
                 src/orthography/Makefile \
+                src/phonetics/Makefile \
                 src/phonology/Makefile \
                 src/syntax/Makefile \
-                src/filters/Makefile \
                 doc/Makefile \
                 test/Makefile \
                 test/morphology/Makefile \

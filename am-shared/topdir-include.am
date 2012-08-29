@@ -50,17 +50,23 @@ raw.gt.hfst: morphology/$(GTLANG).lexc.hfst \
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
 # This is the standard analyser:
-analyser.gt.hfst: raw.gt.hfst orthography/inituppercase.hfst
+analyser.gt.hfst: raw.gt.hfst \
+					orthography/inituppercase.hfst \
+					filters/remove-morph-borders.hfst
 	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 $< \
-		-2 orthography/inituppercase.hfst |\
+			-2 orthography/inituppercase.hfst |\
+		$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) \
+			-2 filters/remove-morph-borders.hfst |\
 		$(HFST_PREPROCESS_FOR_OPTIMIZED_LOOKUP_FORMAT) $(HFST_FLAGS) $< |\
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 # This is the standard generating transducer.
-generator.gt.hfst: raw.gt.hfst
-	$(HFST_INVERT) $(HFST_FLAGS) -i $< |\
+generator.gt.hfst: raw.gt.hfst filters/remove-morph-borders.hfst
+	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 $< \
+			-2 filters/remove-morph-borders.hfst |\
+		$(HFST_INVERT)   $(HFST_FLAGS) |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
-		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+		$(HFST_FST2FST)  $(HFST_FLAGS) -f olw -o $@
 
 # This is a one-level, descriptive automaton - accepts/rejects without analysis:
 dictionary.default.hfst: raw.gt.hfst
@@ -106,16 +112,18 @@ raw.gt.xfst: morphology/$(GTLANG).lexc.xfst \
 		 save-result $@\nquit\n" | $(LEXC)
 
 # This is the standard analyser:
-analyser.gt.xfst: raw.gt.xfst orthography/inituppercase.xfst
+analyser.gt.xfst: raw.gt.xfst orthography/inituppercase.xfst \
+					filters/remove-morph-borders.xfst
 	$(PRINTF) \
-		"read regex @\"$<\" .o. @\"orthography/inituppercase.xfst\" ;\n\
+		"read regex @\"$<\" .o. @\"orthography/inituppercase.xfst\" \
+		 .o. @\"filters/remove-morph-borders.xfst\" ;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST)
 
 # This is the standard generating transducer.
-generator.gt.xfst: raw.gt.xfst
+generator.gt.xfst: raw.gt.xfst filters/remove-morph-borders.xfst
 	$(PRINTF) \
-		"load stack $<\n\
+		"read regex @\"$<\" .o. @\"filters/remove-morph-borders.xfst\" ;\n\
 		 invert net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST)

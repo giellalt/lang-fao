@@ -19,7 +19,14 @@
 GT_FILTER_SRCS=
 
 # The common filter targets (don't change locally):
-GT_FILTER_TARGETS=remove-sub-forms.hfst
+GT_FILTER_TARGETS=
+if WANT_HFST
+GT_FILTER_TARGETS+=remove-sub-forms.hfst remove-morph-borders.hfst
+endif
+
+if WANT_XFST
+GT_FILTER_TARGETS+=remove-sub-forms.xfst remove-morph-borders.xfst
+endif
 
 # Add the target of local additions here:
 GT_FILTER_TARGETS+=

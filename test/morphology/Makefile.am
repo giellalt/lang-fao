@@ -2,9 +2,15 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-# Uncomment and list here (space separated) all test scripts that should be run:
-#TESTS=pairs.sh 
+######## Test targets: ###########
+
+# List here (space separated) all test scripts that should be run:
+TESTS=generate-noun-lemmas.sh
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 # XFAIL_TESTS=
+
+####### Other targets: ###########
+clean-local:
+	-rm -f *.txt

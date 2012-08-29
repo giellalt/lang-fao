@@ -5,6 +5,14 @@
 # other tagsets, given that the proper tagset relabeling files are defined,
 # and that the target files are defined as part of the 'all' target.
 
+# Filenames are built as follows:
+# function[-subfunction].tagset.variant.transducertype
+#
+# Examples:
+# analyser-ped.gt.norm.hfst
+# analyser-ped.gt.desc.hfst
+# generator-dicts.gt.desc.xfst
+
 ####### Automake targets: ########
 
 if WANT_HFST
@@ -41,17 +49,20 @@ raw.gt.hfst: morphology/$(GTLANG).lexc.hfst \
 		$(HFST_INVERT) $(HFST_FLAGS) |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
+# This is the standard analyser:
 analyser.gt.hfst: raw.gt.hfst orthography/inituppercase.hfst
 	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 $< \
 		-2 orthography/inituppercase.hfst |\
 		$(HFST_PREPROCESS_FOR_OPTIMIZED_LOOKUP_FORMAT) $(HFST_FLAGS) $< |\
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
+# This is the standard generating transducer.
 generator.gt.hfst: raw.gt.hfst
 	$(HFST_INVERT) $(HFST_FLAGS) -i $< |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
+# This is a one-level, descriptive automaton - accepts/rejects without analysis:
 dictionary.default.hfst: raw.gt.hfst
 	$(HFST_PROJECT) $(HFST_FLAGS) --project=upper -i $< |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
@@ -87,22 +98,35 @@ lemmatize.default.hfst: analyser.gt.hfst tagsets/lemmatize.relabel
 # special tools. Each final transducer needs to apply it's own filtering to get
 # exactly what is required.
 raw.gt.xfst: morphology/$(GTLANG).lexc.xfst \
-					phonology/$(GTLANG)-phon.xfst
+			 phonology/$(GTLANG)-phon.xfst
 	$(PRINTF) \
 		"read-source morphology/$(GTLANG).lexc.xfst\n\
-		 read-rules phonology/$(GTLANG)-phon.xfst\n\
-		 compose-result\nsave-result $@\nquit\n" | $(LEXC)
+		 read-rules  phonology/$(GTLANG)-phon.xfst\n\
+		 compose-result\n\
+		 save-result $@\nquit\n" | $(LEXC)
 
+# This is the standard analyser:
 analyser.gt.xfst: raw.gt.xfst orthography/inituppercase.xfst
-	$(PRINTF) "read regex @\"$<\" .o. @\"orthography/inituppercase.xfst\" ;\n\
-	save stack $@\nquit\n" | $(XFST)
+	$(PRINTF) \
+		"read regex @\"$<\" .o. @\"orthography/inituppercase.xfst\" ;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST)
 
-# This is the standard generating transducer. It 
+# This is the standard generating transducer.
 generator.gt.xfst: raw.gt.xfst
-	$(PRINTF) "load stack $<\ninvert net\nsave stack $@\nquit\n" | $(XFST)
+	$(PRINTF) \
+		"load stack $<\n\
+		 invert net\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST)
 
+# This is a one-level, descriptive automaton - accepts/rejects without analysis:
 dictionary.default.xfst: raw.gt.xfst
-	$(PRINTF) "load stack $<\nlower net\nsave stack $@\nquit\n" | $(XFST)
+	$(PRINTF) \
+		"load stack $<\n\
+		 lower net\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST)
 # Xerox transducer compilation ends.
 
 ####### Other targets: ###########

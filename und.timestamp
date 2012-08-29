@@ -1,4 +1,15 @@
 $Rev: 61723 $
+Added border removal to the basic analyser and generator, such that they become
+useful.
+
+r61731:
+Made the first test script more robust: it bails out if no transducer is found,
+and gives basic feedback to whether it is testing Xerox or Hfst. The test data
+files are not deleted after the test run, so that they can be easily inspected
+if needed, even after a successful test run. It also uses the more common
+filename and morphological tags (=less typing by default).
+
+r61723:
 Added the first test script: it tests whether noun lemmas do generate. The
 script does contain some language-specific bits, and must thus be adapted to the
 requirements of each language.

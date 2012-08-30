@@ -1,4 +1,9 @@
-$Rev: 61723 $
+$Rev: 61776 $
+Remove duplicate methods to enable toolkits; --with-options are to be used
+with optional path to tools. The automake tree will still have two
+conditionals on whether CAN and WANT hfst, xfst or somesuch
+
+r61734:
 Added border removal to the basic analyser and generator, such that they become
 useful.
 

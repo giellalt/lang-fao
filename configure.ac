@@ -47,25 +47,20 @@ AC_SUBST([GTLANG], [fao])
 # as above
 AC_SUBST([GTLANG2], [fo])
 
+# Adds --enable/disable-morphology, -speller, -hyphenation, etc.
+gt_ENABLE_TARGETS
+
 # Tests and sets up giellatekno directories and scripts
 gt_PROG_SCRIPTS_PATHS
 
-
 # Tests and sets up HFST
 gt_PROG_HFST
-gt_PROG_HFST_PATH
 
 # Tests and sets up XFST
 gt_PROG_XFST
 
 # Tests and sets up vislcg3
 gt_PROG_VISLCG3
-
-# Adds --enable/disable-hfst and -xfst
-gt_ENABLE_TOOLKITS
-
-# Adds --enable/disable-morphology, -speller, -hyphenation, etc.
-gt_ENABLE_TARGETS
 
 # List all directories that are used in this project and have automake-style
 # Makefiles

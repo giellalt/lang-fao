@@ -51,7 +51,8 @@ AC_DEFUN([gt_PROG_XFST],
             [AS_HELP_STRING([--with-xfst=DIRECTORY],
                             [search xfst in DIRECTORY @<:@default=PATH@:>@])],
             [with_xfst=$withval],
-            [with_xfst=check])
+            [with_xfst=yes])
+AM_CONDITIONAL([WANT_XFST], [test x$with_xfst != xno])
 AC_PATH_PROG([PRINTF], [printf], [echo -n])
 AC_PATH_PROG([XFST], [xfst], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_PATH_PROG([TWOLC], [twolc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
@@ -75,21 +76,6 @@ AS_IF([test "x$VISLCG3" != xno], [AC_MSG_RESULT([yes])],
       [AC_MSG_RESULT([no])])
 ]) # gt_PROG_VISLCG3
 
-AC_DEFUN([gt_ENABLE_TOOLKITS],
-[
-AC_ARG_ENABLE([hfst],
-              [AS_HELP_STRING([--enable-hfst],
-                              [build with hfst tools @<:@default=no@:>@])],
-              [enable_hfst=$enableval],
-              [enable_hfst=no])
-AM_CONDITIONAL([WANT_HFST], [test "x$enable_hfst" != xno])
-AC_ARG_ENABLE([xfst],
-              [AS_HELP_STRING([--enable-xfst],
-                              [build with xfst tools @<:@default=yes@:>@])],
-              [enable_xfst=$enableval],
-              [enable_xfst=yes])
-AM_CONDITIONAL([WANT_XFST], [test "x$enable_xfst" != xno])
-]) # gt_ENABLE_TOOLKITS
 
 AC_DEFUN([gt_ENABLE_TARGETS],
 [
@@ -128,8 +114,8 @@ AC_DEFUN([gt_PRINT_FOOTER],
 [
 cat<<EOF
 -- Building $PACKAGE_STRING:
-    * build with Xerox: $enable_xfst
-    * build with HFST: $enable_hfst
+    * build with Xerox: $with_xfst
+    * build with HFST: $with_hfst
     * morphological analyser: $enable_morphology
     * morphological generator: $enable_generation
     * dictionary: $enable_dictionary

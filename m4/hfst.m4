@@ -31,7 +31,13 @@
 #   check the current version.
 # ---------------------------
 AC_DEFUN([gt_PROG_HFST],
-[AC_PATH_PROG(HFST_INFO, hfst-info, false, $PATH$PATH_SEPARATOR$with_hfst)
+[AC_ARG_WITH([hfst], 
+            [AS_HELP_STRING([--with-hfst=DIRECTORY],
+            [define HFST binary path if not in PATH @<:@default=no@:>@])],
+            [with_hfst=$withval],
+            [with_hfst=no])
+AM_CONDITIONAL([WANT_HFST], [test x$with_hfst != xno])
+AC_PATH_PROG(HFST_INFO, hfst-info, false, $PATH$PATH_SEPARATOR$with_hfst)
 _gt_hfst_min_version=m4_default([$1], [3.3])
 AC_MSG_CHECKING([hfst is at least $_gt_hfst_min_version])
 if test x$HFST_INFO != xfalse; then
@@ -43,24 +49,10 @@ if test x$HFST_INFO != xfalse; then
         AC_MSG_RESULT([no])
     fi
 else
-    gt_prog_hfst=no
+    gt_prog_hfst=check
     AC_MSG_RESULT([unknown])
-    AC_MSG_WARN([Unable to determine hfst version, assuming uninstalled or too old])
+    AC_MSG_WARN([Unable to determine hfst version, might be too old and break])
 fi
-]) # gt_PROG_HFST
-
-# gt_PROG_HFST_PATH
-#
-# check and define paths for all hfst programs. The variables usable for HFST
-# building use the name of the tool capitalised with hyphens replaced by
-# underscores, to fit sh syntax.
-# --------------------------------
-AC_DEFUN([gt_PROG_HFST_PATH],
-[AC_ARG_WITH([hfst], 
-            [AS_HELP_STRING([--with-hfst=DIRECTORY],
-            [define HFST binary path if not in PATH @<:@default=PATH@:>@])],
-            [],
-            [with_hfst=yes])
 AC_PATH_PROG(HFST_COMPOSE, hfst-compose, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_COMPOSE_INTERSECT, hfst-compose-intersect, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_CONCATENATE, hfst-minimize, false, $PATH$PATH_SEPARATOR$with_hfst)
@@ -83,9 +75,12 @@ AC_PATH_PROG(HFST_TWOLC, hfst-twolc, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_TXT2FST, hfst-txt2fst, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_XFST, hfst-xfst, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_MSG_CHECKING([whether we can enable hfst builds])
-AM_CONDITIONAL([CAN_HFST], [test "x$HFST_LEXC" != xfalse])
 AS_IF([test "x$HFST_LEXC" != xfalse], [AC_MSG_RESULT([yes])], 
       [AC_MSG_RESULT([no])])
+AS_IF([test x$gt_prog_hfst = xcheck ], 
+      [AS_IF([test x$HFST_LEXC != xfalse], [gt_prog_hfst=yes], 
+             [gt_prog_hfst=no])])
+AM_CONDITIONAL([CAN_HFST], [test "x$gt_prog_hfst" = xyes])
 ]) # gt_PROG_HFST_PATH
 
 # vim: set ft=config:

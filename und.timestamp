@@ -1,4 +1,42 @@
-$Rev: 61776 $
+$Rev: 62084 $
+Added core filters for making transitivity and semantic tags optional in the default generator. This change fixes most of the generation issues.
+
+r62039:
+Generalised the local/language-specific *fst processing.
+
+r62010:
+Adding support for local/language-specific *fst processing.
+
+r61971:
+Reverting the copy source file step for $GTCORE/gtshare/src/filters/, replacing
+it with direct compilation. The main reason for copying was to have the source
+files available for distribution, but that is not required, since the
+distribution and installations of the languages depends on the presence of
+GTCORE. Instead we risk that people start to add the copied source files to svn.
+
+r61965:
+The GT_FILTER_TARGETS variable needs to be parametrised for HFST and Xerox also
+for the local modifications.
+
+r61961:
+Several small typos and glitches in building the main xfst's fixed.
+
+r61959:
+Removed an extraneous backslash that broke compilation.
+
+r61954:
+Hopefully this version of cp will work.
+
+r61953:
+Forgot to force the copy, which stopped the compilation.
+
+r61949:
+Added several (tag removal) filters from the old infra, and added compilation of
+them as well. Applied (composed) them on the generator and the analyser, such
+that the gen. and anal. should now produce the same output as in the old infra.
+Corrected the README file.
+
+r61776:
 Remove duplicate methods to enable toolkits; --with-options are to be used
 with optional path to tools. The automake tree will still have two
 conditionals on whether CAN and WANT hfst, xfst or somesuch

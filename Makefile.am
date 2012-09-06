@@ -9,6 +9,7 @@ EXTRA_DIST = und.timestamp
 
 configure: und.timestamp
 
+if WANT_MAINTAIN
 und.timestamp: ${GTCORE}/templates/und/und.timestamp
 	@echo
 	@echo "	The build templates are newer than this language directory"
@@ -19,3 +20,9 @@ und.timestamp: ${GTCORE}/templates/und/und.timestamp
 	@echo "	The build will die now, but if you do not want to update your"
 	@echo "	templates, touch $@ and run make again."
 	@exit 1
+else
+# leave a small note for non-maintainers...
+und.timestamp: ${GTCORE}/templates/und/und.timestamp
+	-cp -v -f $< $@
+endif
+

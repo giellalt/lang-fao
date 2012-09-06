@@ -18,7 +18,8 @@
 ####### Source file defs: ########
 
 # need to check way to list build targets like automake
-#! @param GT_REGEX_SRCS required, list all regular expressions used
+#! @param GT_COREFILTER_SRCS required, contains all core filter sources
+#! @param GT_LOCALFILTER_SRCS required, contains all local additions
 EXTRA_DIST=$(GT_FILTER_SRCS)
 
 ####### Automake targets: ########
@@ -27,7 +28,6 @@ EXTRA_DIST=$(GT_FILTER_SRCS)
 noinst_DATA=$(GT_FILTER_TARGETS)
 
 ####### HFST build rules: ########
-
 .regex.hfst:
 	$(PRINTF) \
 		"read regex @re\"$<\";\nsave stack $@ \n" > $@.script
@@ -35,10 +35,12 @@ noinst_DATA=$(GT_FILTER_TARGETS)
 	-rm -f $@.script
 
 %.hfst: $(GTCORE)/gtshared/src/filters/%.regex
-	$(HFST_REGEXP2FST) $(HFSTFLAGS) -i $< -o $@
+	$(PRINTF) \
+		"read regex @re\"$<\";\nsave stack $@ \n" > $@.script
+	$(HFST_XFST) -f $@.script
+	-rm -f $@.script
 
 ####### Xerox build rules: #######
-
 .regex.xfst:
 	$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
 		$(XFST) $(XFSTFLAGS)
@@ -49,6 +51,6 @@ noinst_DATA=$(GT_FILTER_TARGETS)
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.ol
+	-rm -f *.hfst *.xfst
 
 # vim: set ft=automake:

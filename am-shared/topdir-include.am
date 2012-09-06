@@ -50,7 +50,7 @@ raw.gt.hfst: morphology/$(GTLANG).lexc.hfst \
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
 # This is the standard analyser:
-analyser.gt.hfst: raw.gt.hfst \
+analyser.gt.hfst.tmp: raw.gt.hfst \
 					orthography/inituppercase.hfst \
 					filters/remove-morph-borders.hfst
 	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 $< \
@@ -61,7 +61,7 @@ analyser.gt.hfst: raw.gt.hfst \
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 # This is the standard generating transducer.
-generator.gt.hfst: raw.gt.hfst filters/remove-morph-borders.hfst
+generator.gt.hfst.tmp: raw.gt.hfst filters/remove-morph-borders.hfst
 	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 $< \
 			-2 filters/remove-morph-borders.hfst |\
 		$(HFST_INVERT)   $(HFST_FLAGS) |\
@@ -111,19 +111,57 @@ raw.gt.xfst: morphology/$(GTLANG).lexc.xfst \
 		 compose-result\n\
 		 save-result $@\nquit\n" | $(LEXC)
 
-# This is the standard analyser:
-analyser.gt.xfst: raw.gt.xfst orthography/inituppercase.xfst \
-					filters/remove-morph-borders.xfst
-	$(PRINTF) \
-		"read regex @\"$<\" .o. @\"orthography/inituppercase.xfst\" \
-		 .o. @\"filters/remove-morph-borders.xfst\" ;\n\
+# This is the standard, descriptive analyser, giving only the basic
+# morphological analysis.
+analyser.gt.xfst.tmp: raw.gt.xfst \
+					filters/remove-derivation-position-tags.xfst \
+					filters/remove-dialect-tags.xfst \
+					filters/remove-dictionary-tags.xfst \
+					filters/remove-morph-borders.xfst \
+					filters/remove-norm-comp-tags.xfst \
+					filters/remove-number-string-tags.xfst \
+					filters/remove-usage-tags.xfst \
+					filters/remove-morph-borders.xfst \
+					orthography/inituppercase.xfst
+	$(PRINTF) "read regex \
+				@\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-dialect-tags.xfst\" \
+			.o. @\"filters/remove-dictionary-tags.xfst\" \
+			.o. @\"filters/remove-norm-comp-tags.xfst\" \
+			.o. @\"filters/remove-number-string-tags.xfst\" \
+			.o. @\"filters/remove-usage-tags.xfst\" \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-morph-borders.xfst\" \
+			.o. @\"orthography/inituppercase.xfst\" \
+			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST)
 
-# This is the standard generating transducer.
-generator.gt.xfst: raw.gt.xfst filters/remove-morph-borders.xfst
-	$(PRINTF) \
-		"read regex @\"$<\" .o. @\"filters/remove-morph-borders.xfst\" ;\n\
+# This is the standard generating transducer. It should not require any tags
+# beyond the standard morphological analysis, thus all other tags are deleted.
+generator.gt.xfst.tmp: raw.gt.xfst \
+					filters/make-optional-semantic-tags.xfst \
+					filters/make-optional-transitivity-tags.xfst \
+					filters/remove-derivation-position-tags.xfst \
+					filters/remove-dialect-tags.xfst \
+					filters/remove-dictionary-tags.xfst \
+					filters/remove-morph-borders.xfst \
+					filters/remove-norm-comp-tags.xfst \
+					filters/remove-number-string-tags.xfst \
+					filters/remove-sub-forms.xfst \
+					filters/remove-usage-tags.xfst
+	$(PRINTF) "read regex \
+				@\"filters/make-optional-semantic-tags.xfst\" \
+			.o. @\"filters/make-optional-transitivity-tags.xfst\" \
+			.o. @\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-dialect-tags.xfst\" \
+			.o. @\"filters/remove-dictionary-tags.xfst\" \
+			.o. @\"filters/remove-norm-comp-tags.xfst\" \
+			.o. @\"filters/remove-number-string-tags.xfst\" \
+			.o. @\"filters/remove-usage-tags.xfst\" \
+			.o. @\"filters/remove-sub-forms.xfst\" \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-morph-borders.xfst\" ;\n\
 		 invert net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST)

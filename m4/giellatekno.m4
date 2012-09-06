@@ -30,6 +30,8 @@ AC_DEFUN([gt_PROG_SCRIPTS_PATHS],
          [
 AC_ARG_VAR([GTHOME], [root directory of giellatekno scripts])
 AC_ARG_VAR([GTCORE], [directory for giellatekno core data])
+AC_ARG_VAR([GTMAINTAINER], [define if you are maintaining the infra to get additional complaining about infra integrity])
+AM_CONDITIONAL([WANT_MAINTAIN], [test x"$GTMAINTAINER" != x])
 AC_PATH_PROG([GTVERSION], [gt-version.sh], [false],
              [$GTCORE/scripts/$PATH_SEPARATOR$GTHOME/newinfra/gtcore/scripts/])
 AS_IF([test "x$GTSCRIPT" = xfalse], 

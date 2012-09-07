@@ -18,8 +18,7 @@
 ####### Source file defs: ########
 
 # need to check way to list build targets like automake
-#! @param GT_COREFILTER_SRCS required, contains all core filter sources
-#! @param GT_LOCALFILTER_SRCS required, contains all local additions
+#! @param GT_FILTER_SRCS required, contains all local additions
 EXTRA_DIST=$(GT_FILTER_SRCS)
 
 ####### Automake targets: ########

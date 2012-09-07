@@ -1,5 +1,11 @@
-$Rev: 62084 $
-Added core filters for making transitivity and semantic tags optional in the default generator. This change fixes most of the generation issues.
+$Rev: 62122 $
+Added test/data/typos.txt to hold a list of collected typos. The list is used
+both for testing spellers, and as part of the preprocessor used with the Xerox
+lookup tool.
+
+r62084:
+Added core filters for making transitivity and semantic tags optional in the
+default generator. This change fixes most of the generation issues.
 
 r62039:
 Generalised the local/language-specific *fst processing.

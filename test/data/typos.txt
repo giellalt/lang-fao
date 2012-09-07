@@ -1,0 +1,35 @@
+# Divvun & Giellatekno - open source grammars for Sámi and other languages
+# Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+# http://giellatekno.uit.no & http://divvun.no
+#
+# This program is free software; you can redistribute and/or modify
+# this file under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version. The GNU General Public License
+# is found at http://www.gnu.org/licenses/gpl.html. It is
+# also available in the file $GTHOME/LICENSE.txt.
+#
+# Other licensing options are available upon request, please contact
+# giellatekno@hum.uit.no or divvun@samediggi.no
+#
+# typos.txt
+# This file contains common typos and their corrections separated by
+# a <tab> character, optionally followed by a comment. That is, the
+# format is: three columns, separated by TAB:
+#
+# Column 1: error word/typo
+# Column 2: correction
+# Column 3: Comment, starting with # or !
+#
+# Example:
+#
+# leif	feil	# This is just an example
+#
+# Corrections that consist of two or more parts are not split
+# further in the preprocessor, because there is no way of knowing
+# whether the token is a multipart expression or not.
+# Beware of removing sentence delimiters (.!?) in correction, since
+# they may indicate sentence boundaries.
+#
+#
+åvtohke	åvtehke

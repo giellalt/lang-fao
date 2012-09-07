@@ -75,10 +75,12 @@ AC_CONFIG_FILES([Makefile \
                 src/syntax/Makefile \
                 doc/Makefile \
                 test/Makefile \
-                test/morphology/Makefile \
-                test/phonology/Makefile \
-                test/spellchecker/Makefile \
-                test/syntax/Makefile \
+                test/src/Makefile \
+                test/src/morphology/Makefile \
+                test/src/phonology/Makefile \
+                test/src/syntax/Makefile \
+                test/tools/Makefile \
+                test/tools/spellcheckers/Makefile \
                 tools/Makefile \
                 tools/spellcheckers/Makefile \
                 tools/spellcheckers/hfst/Makefile])

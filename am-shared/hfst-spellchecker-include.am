@@ -38,13 +38,13 @@ noinst_DATA=$(GT_ERRMODELS)
 ####### HFST build rules: ########
 
 # Error model building:
-%.hfst: %.txt $(top_srcdir)/$(GT_DICTIONARY_HFST)
+%.hfst: %.txt acceptor.default.hfst
 	$(GTCORE)/scripts/editdist.py -v -s -d 2 -e '@0@' -i $<   \
-		-a $(top_srcdir)/$(GT_DICTIONARY_HFST) | \
+		-a acceptor.default.hfst | \
 		$(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' | \
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
-acceptor.default.hfst: $(top_srcdir)/$(GT_DICTIONARY_HFST)
+acceptor.default.hfst: $(top_srcdir)/src/$(GT_DICTIONARY_HFST)
 	$(HFST_FST2FST) $(HFST_FLAGS) -f olw $< -o $@
 
 $(GT_SPELLING_HFST): acceptor.default.hfst \

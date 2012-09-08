@@ -25,6 +25,7 @@ GT_FILTER_TARGETS+=\
 				   make-optional-semantic-tags.hfst     \
 				   make-optional-transitivity-tags.hfst \
 				   remove-derivation-position-tags.hfst \
+				   remove-dialect-tags.hfst             \
 				   remove-dictionary-tags.hfst          \
 				   remove-morph-borders.hfst            \
 				   remove-norm-comp-tags.hfst           \
@@ -38,6 +39,7 @@ GT_FILTER_TARGETS+=\
 				   make-optional-semantic-tags.xfst     \
 				   make-optional-transitivity-tags.xfst \
 				   remove-derivation-position-tags.xfst \
+				   remove-dialect-tags.xfst             \
 				   remove-dictionary-tags.xfst          \
 				   remove-morph-borders.xfst            \
 				   remove-norm-comp-tags.xfst           \

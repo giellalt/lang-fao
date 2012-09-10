@@ -1,4 +1,9 @@
-$Rev: 62192 $
+$Rev: 62265 $
+Don't remove the *.tmp files - that destroys the dependency relationships for
+(auto)make, which forces a full recompilation of all target fst's, and a lot of
+extra waiting time.
+
+r62192:
 Add missing src to hfst spellchecker automaton path
 
 r62171:

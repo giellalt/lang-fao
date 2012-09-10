@@ -1,4 +1,7 @@
-$Rev: 62265 $
+$Rev: 62270 $
+Renamed the default error model file, to follow the naming scheme used in the zhfst guidelines.
+
+r62265:
 Don't remove the *.tmp files - that destroys the dependency relationships for
 (auto)make, which forces a full recompilation of all target fst's, and a lot of
 extra waiting time.

@@ -1,5 +1,14 @@
-$Rev: 62270 $
-Renamed the default error model file, to follow the naming scheme used in the zhfst guidelines.
+$Rev: 62276 $
+Added missing entries in configure.ac and src/Makefile.am.
+
+r62275:
+Added support for transcribing transducers, ie transducers that change the input
+from one orthographical representation to another, e.g. date and time
+expressions as strings or digits to the opposite form.
+
+r62270:
+Renamed the default error model file, to follow the naming scheme used in the
+zhfst guidelines.
 
 r62265:
 Don't remove the *.tmp files - that destroys the dependency relationships for

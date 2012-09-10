@@ -3,7 +3,7 @@
 ## Licence: GPL v3+
 
 # order is always . last here
-SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax .
+SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax transcriptions .
 
 #### Local modifications in *fst processing: ####
 ####

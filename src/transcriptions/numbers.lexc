@@ -1,0 +1,345 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@hum.uit.no or divvun@samediggi.no
+
+Multichar_Symbols
+
+  +Use/NG    ! Do not generate, for isme-ped.fst and apertium
+  +String    ! Tag to denote non-numeric strings
+  +NumNum    ! Tag to denote real numbers in one form or another
+
+LEXICON Root
+< %+String [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|q|y|z|æ|ø|å|ä|ö|á|č|đ|ŋ|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Æ|Ø|Å|Ä|Ö|Á|Č|Đ|Ŋ|Š|Ŧ|Ž]* > COMMA ; ! This first line is to allow all letter strings.
++NumNum NUMBERSECTION ;
++NumNum COMMASECTION ;
+
+LEXICON NUMBERSECTION
+HUNDREDSM ;		! 200M
+tjuetie:1 HUNDREDM ;	! 100M
+stoereluhkie+Use/NG:1 HUNDREDM ;	! 100M
+stoerreluhkie+Use/NG:1 HUNDREDM ;	! 100M
+TENSM ;			! 20-99M
+TEENSM ;		! 10-19M
+ONESM ;			! 1-9M
+HUNDREDST ;		! 200000-999999
+tjuetie:1 HUNDREDT ;	! 100000-100999
+TENST ;			! 20000-99999,10000-10999
+TEENST ;		! 11000-19999
+ONEST ;			! 2000-9999
+tåvsene:1 THOUSAND ;	! 1000-1999
+UNDERTHOUSAND ;		! 100-999
+TENS ;			! 20-99
+TEENS ;			! 10-19
+ONES ;			! 1-9
+
+LEXICON HUNDREDSM
+göökte:2  CUODIM ;
+golme:3 CUODIM ;
+njieljie:4 CUODIM ; ! Google: 459
+njielje+Use/NG:4 CUODIM ;  ! Google: 218
+nieljie+Use/NG:4 CUODIM ;  ! Google:  61
+ nielje+Use/NG:4 CUODIM ;  ! Google: irrelevant (20,600)
+vïjhte:5 CUODIM ;
+govhte:6 CUODIM ;
+tjïjhtje:7 CUODIM ;
+gaektsie:8 CUODIM ;
+uktsie:9 CUODIM ;
+
+LEXICON CUODIM
+tjuetie: HUNDREDM ;
+stoereluhkie: HUNDREDM ;
+stoerreluhkie: HUNDREDM ;
+
+LEXICON HUNDREDM
+      TENSM ;
+      TEENSM ;
+:%0   ONESM ;
+:%0%0 MILJON ;
+
+LEXICON TEENSM
+luhkie:1 TEENM ;
+
+LEXICON TEENM
+akte:1     LOHKAIM ;
+göökte:2   LOHKAIM ;
+golme:3    LOHKAIM ;
+njieljie:4 LOHKAIM ;
+njielje+Use/NG:4  LOHKAIM ;
+nieljie+Use/NG:4  LOHKAIM ;
+ nielje+Use/NG:4  LOHKAIM ;
+vïjhte:5   LOHKAIM ;
+govhte:6   LOHKAIM ;
+tjïjhtje:7 LOHKAIM ;
+gaektsie:8 LOHKAIM ;
+uktsie:9   LOHKAIM ;
+
+LEXICON LOHKAIM
+MILJON ;
+
+LEXICON TENSM
+luhkie:1%0 MILJON ;
+göökte:2   LUHKIEM ;
+golme:3    LUHKIEM ;
+njieljie:4 LUHKIEM ;
+njielje+Use/NG:4  LUHKIEM ;
+nieljie+Use/NG:4  LUHKIEM ;
+ nielje+Use/NG:4  LUHKIEM ;
+vïjhte:5   LUHKIEM ;
+govhte:6   LUHKIEM ;
+tjïjhtje:7 LUHKIEM ;
+gaektsie:8 LUHKIEM ;
+uktsie:9   LUHKIEM ;
+
+LEXICON LUHKIEM
+luhkie:%0 MILJON ;
+luhkie:   ONESM ;
+
+LEXICON ONESM
+akte% miljon% :1 OVERTHOUSANDS ;
+göökte:2         MILJON ;
+golme:3          MILJON ;
+njieljie:4       MILJON ;
+njielje+Use/NG:4        MILJON ;
+nieljie+Use/NG:4        MILJON ;
+ nielje+Use/NG:4        MILJON ;
+vïjhte:5         MILJON ;
+govhte:6         MILJON ;
+tjïjhtje:7       MILJON ;
+gaektsie:8       MILJON ;
+uktsie:9         MILJON ; 
+
+LEXICON MILJON
+% miljona% : OVERTHOUSANDS ;
+
+! =================
+! Under the million
+! =================
+
+LEXICON OVERTHOUSANDS
+HUNDREDST ;		! x00.000.000
+tjuetie:1 HUNDREDT ;	! 100.000.000
+stoereluhkie:1 HUNDREDT ;	! 100.000.000
+stoerreluhkie:1 HUNDREDT ;	! 100.000.000
+:%0 TENST ;		!  20.000.000
+:%0 TEENST ;		!  10.000.000
+:%0%0 ONEST ;		!   2.000.000
+tåvsene:%0%01 THOUSAND ;	!   1.000.000
+:%0%0%0 UNDERTHOUSAND ;	
+:%0%0%0%0 TENS ;
+:%0%0%0%0 TEENS ;
+:%0%0%0%0%0 ONES ;
+:%0%0%0%0%0%0 COMMA ;	!  x000000
+
+LEXICON HUNDREDST
+göökte:2   CUODIT ;	! 200000-299999
+golme:3    CUODIT ;	! 300000-399999
+njieljie:4 CUODIT ;	! 400000-499999
+njielje+Use/NG:4  CUODIT ;
+nieljie+Use/NG:4  CUODIT ;
+nielje+Use/NG:4  CUODIT ;
+vïjhte:5   CUODIT ;	! 500000-599999
+govhte:6   CUODIT ;	! 600000-699999
+tjïjhtje:7 CUODIT ;	! 700000-799999
+gaektsie:8 CUODIT ;	! 800000-899999
+uktsie:9   CUODIT ;	! 900000-999999
+
+LEXICON CUODIT
+tjuetie: HUNDREDT ;	! 100000-199999
+stoereluhkie+Use/NG: HUNDREDT ;	! 100000-199999
+stoerreluhkie+Use/NG: HUNDREDT ;	! 100000-199999
+
+LEXICON HUNDREDT	! X = 1-9, Y = 0-9
+TENST ;			! X2XYYY, X10YYY
+TEENST ;		! X1XYYY
+akte:%01 THOUSANDS ;
+:%0 ONEST ;		! XX0YYY
+:%0%0 THOUSANDS ;	! X00YYY
+
+LEXICON TEENST
+luhkie:1   TEENT ;
+luhkie:1%0 THOUSANDS ;
+
+LEXICON TEENT
+akte:1     LOHKAIT ;
+göökte:2   LOHKAIT ;
+golme:3    LOHKAIT ;
+njieljie:4 LOHKAIT ;
+njielje+Use/NG:4  LOHKAIT ;
+nieljie+Use/NG:4  LOHKAIT ;
+nielje+Use/NG:4  LOHKAIT ;
+vïjhte:5   LOHKAIT ;
+govhte:6   LOHKAIT ;
+tjïjhtje:7 LOHKAIT ;
+gaektsie:8 LOHKAIT ;
+uktsie:9   LOHKAIT ;
+
+LEXICON LOHKAIT
+THOUSANDS ;
+
+LEXICON TENST
+göökteluhkie:2   LUHKIET ;
+golmeluhkie:3    LUHKIET ;
+njieljieluhkie:4 LUHKIET ;
+njieljeluhkie+Use/NG:4  LUHKIET ;
+nieljieluhkie+Use/NG:4  LUHKIET ;
+ nieljeluhkie+Use/NG:4  LUHKIET ;
+vïjhteluhkie:5   LUHKIET ;
+govhteluhkie:6   LUHKIET ;
+tjïjhtjeluhkie:7 LUHKIET ;
+gaektsieluhkie:8 LUHKIET ;
+uktsieluhkie:9   LUHKIET ;
+
+LEXICON LUHKIET
+:%0 THOUSANDS ;
+akte:1 THOUSANDS ;
+ONEST ;
+
+LEXICON ONEST
+göökte:2 THOUSANDS ;
+golme:3 THOUSANDS ;
+njieljie:4 THOUSANDS ;
+njielje+Use/NG:4 THOUSANDS ;
+nieljie+Use/NG:4 THOUSANDS ;  
+ nielje+Use/NG:4 THOUSANDS ;   
+vïjhte:5 THOUSANDS ;
+govhte:6 THOUSANDS ;
+tjïjhtje:7 THOUSANDS ;
+gaektsie:8 THOUSANDS ;
+uktsie:9 THOUSANDS ;
+
+LEXICON THOUSANDS      ! x > 1
+tåvsene: THOUSAND ;
+stoerretjuetie+Use/NG: THOUSAND ; 
+stoeretjuetie+Use/NG: THOUSAND ; 
+
+LEXICON THOUSAND
+UNDERTHOUSAND ;	   ! 1100-1999
+:%0 TENS ;	   ! 1020-1099
+:%0 TEENS ;	   ! 1010-1019
+:%0%0 ONES ;	   ! 1001-1009
+:%0%0%0 COMMA ;	   ! 1000
+
+!===========================
+!Here starts the 999 numbers
+!===========================
+
+LEXICON UNDERTHOUSAND
+HUNDREDS ;
+tjuetie:1 HUNDRED ;
+stoereluhkie+Use/NG:1 HUNDRED ;
+stoerreluhkie+Use/NG:1 HUNDRED ;
+tjuatede:1  CUODAAT ;
+stoerelåhkede+Use/NG:1  CUODAAT ;
+stoerrelåhkede+Use/NG:1  CUODAAT ;
+
+LEXICON HUNDREDS
+göökte:2   CUODI ;
+golme:3    CUODI ;
+njieljie:4 CUODI ;
+njielje+Use/NG:4  CUODI ;
+nieljie+Use/NG:4  CUODI ;
+nielje+Use/NG:4  CUODI ;
+vïjhte:5   CUODI ;
+govhte:6   CUODI ;
+tjïjhtje:7 CUODI ;
+gaektsie:8 CUODI ;
+uktsie:9   CUODI ;
+
+LEXICON CUODI
+tjuetie:   HUNDRED ;
+stoereluhkie+Use/NG:   HUNDRED ;
+stoerreluhkie+Use/NG:   HUNDRED ;
+tjuatede:  CUODAAT ;
+stoerelåhkede+Use/NG:  CUODAAT ;
+stoerrelåhkede+Use/NG:  CUODAAT ;
+
+LEXICON HUNDRED
+      TENS ;
+      TEENS ;
+:%0   ONES ;
+:%0%0 COMMA ;
+
+LEXICON CUODAAT
+:%0%0%.    COMMA ;
+
+LEXICON TEENS
+luhkie:1 ONES ;
+
+
+LEXICON TENS
+luhkie:1%0 COMMA ;
+låhkede:1%0%. COMMA ;
+göökte:2 LUHKIE ;
+golme:3 LUHKIE ;
+njieljie:4 LUHKIE ;
+njielje+Use/NG:4 LUHKIE ;
+nieljie+Use/NG:4 LUHKIE ;
+nielje+Use/NG:4 LUHKIE ;
+vïjhte:5 LUHKIE ;
+govhte:6 LUHKIE ;
+tjïjhtje:7 LUHKIE ;
+gaektsie:8 LUHKIE ;
+uktsie:9 LUHKIE ;
+
+LEXICON LUHKIE
+luhkie:%0 COMMA ;
+låhkede:%0%. COMMA ;
+luhkie: ONES ;
+
+LEXICON ONES
+CARDINAL ;
+ORDINAL ;
+
+LEXICON CARDINAL
+akte:1 COMMA ;
+göökte:2 COMMA ;
+golme:3 COMMA ;
+njieljie:4 COMMA ;
+njielje+Use/NG:4 COMMA ;
+nieljie+Use/NG:4 COMMA ;  
+nielje+Use/NG:4 COMMA ; 
+vïjhte:5 COMMA ;
+govhte:6 COMMA ;
+tjïjhtje:7 COMMA ;
+gaektsie:8 COMMA ;
+uktsie:9 COMMA ;
+
+LEXICON ORDINAL
+voestes:1%.     COMMA ;
+mubpie:2%.   COMMA ;
+gåalmede:3%.   COMMA ;
+njealjede:4%. COMMA ;
+vïjhtede:5%.   COMMA ;
+govhtede:6%.   COMMA ;
+tjïjhtjede:7%.    COMMA ;
+gaaktsede:8%.   COMMA ;
+åktsede:9%.    COMMA ;
+
+LEXICON COMMA
+ ENDLEX ;
+ COMMASECTION ;
+
+LEXICON COMMASECTION  ! these are not spellchecked!!!
+                  ENDLEX ;
+! % komma% :,      Root ;
+! % tjuohkkis% :%. Root ;
+! % kolon% :%:     Root ;
+! % sárggis% :%-   Root ; 
+ % la% :%=         Root ; 
+ % gráda% :%°      Root ; 
+ % paragráfa% :§   Root ; 
+! % násti% :%*     Root ; 
+ % ja% :&          Root ; 
+
+LEXICON ENDLEX
+ # ;

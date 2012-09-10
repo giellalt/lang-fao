@@ -73,6 +73,7 @@ AC_CONFIG_FILES([Makefile \
                 src/phonetics/Makefile \
                 src/phonology/Makefile \
                 src/syntax/Makefile \
+                src/transcriptions/Makefile \
                 doc/Makefile \
                 test/Makefile \
                 test/src/Makefile \

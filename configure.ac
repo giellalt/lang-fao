@@ -35,21 +35,29 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign -Wno-portability])
 
 # Some software that we either depend on or we need for certain functionality:
-AM_PATH_PYTHON([3.1],, [:])
-AX_PYTHON_MODULE(yaml)
 
 AC_ARG_ENABLE([yamltests],
               [AS_HELP_STRING([--enable-yamltests],
-                              [enable yaml tests @<:@default=yes@:>@])],
+                              [enable yaml tests @<:@default=check@:>@])],
               [enable_yamltests=$enableval],
-              [enable_yamltests=yes])
-AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
+              [enable_yamltests=check])
 
-AS_IF([test "x$enable_yamltests" = "xyes"], 
-      [AS_IF([test "$PYTHON" = ":"],
-        [AC_MSG_ERROR([You need at least Python 3.1 for the Yaml testing to work])])],
-      [AS_IF([test "x$HAVE_PYMOD_yaml" != "xyes"],
-        [AC_MSG_ERROR([The Yaml testing requires that you have the Python Yaml module installed.])])])
+AS_IF([test "x$enable_yamltests" = "xcheck"], 
+     [AM_PATH_PYTHON([3.1],, [:])
+     AX_PYTHON_MODULE(yaml)
+     AC_MSG_CHECKING([Whether to enable yaml-based test])
+     AS_IF([test "$PYTHON" = ":"],
+           [enable_yamltests=no
+            AC_MSG_RESULT([no, python is missing or old])
+            ],
+           [AS_IF([test "x$HAVE_PYMOD_YAML" != "xyes"],
+                  [enable_yamltests=no
+                   AC_MSG_RESULT([no, yaml is missing])
+                   ],
+                  [enable_yamltests=yes
+                   AC_MSG_RESULT([yes])])])])
+
+AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
 
 # Following Giellatekno specific variables are used to make external software
 # work; HFST analysers, spell-checkers and so on. These also control

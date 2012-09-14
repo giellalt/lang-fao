@@ -1,4 +1,7 @@
-$Rev: 62581 $
+$Rev: 62590 $
+Added conditional support for running python-based tests in test/src/morphology.
+
+r62581:
 Added checks for Python 3.1+ and py-yaml, and defined CAN_YAML_TEST. The idea is
 that we will run the python-based tests only if the prerequisites are available
 to us, and skip them if not.

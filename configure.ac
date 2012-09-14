@@ -109,7 +109,8 @@ AC_CONFIG_FILES([Makefile \
                 test/tools/spellcheckers/Makefile \
                 tools/Makefile \
                 tools/spellcheckers/Makefile \
-                tools/spellcheckers/hfst/Makefile])
+                tools/spellcheckers/hfst/Makefile],
+      [chmod +x test/src/morphology/test-yaml-testcases.sh])
 
 # This must be near the end of all configure.ac files:
 AC_OUTPUT

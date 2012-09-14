@@ -34,6 +34,23 @@ AC_CONFIG_MACRO_DIR([m4])
 # AM_INIT_AUTOMAKE sets up make conventions
 AM_INIT_AUTOMAKE([-Wall -Werror foreign -Wno-portability])
 
+# Some software that we either depend on or we need for certain functionality:
+AM_PATH_PYTHON([3.1],, [:])
+AX_PYTHON_MODULE(yaml)
+
+AC_ARG_ENABLE([yamltests],
+              [AS_HELP_STRING([--enable-yamltests],
+                              [enable yaml tests @<:@default=yes@:>@])],
+              [enable_yamltests=$enableval],
+              [enable_yamltests=yes])
+AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
+
+AS_IF([test "x$enable_yamltests" = "xyes"], 
+      [AS_IF([test "$PYTHON" = ":"],
+        [AC_MSG_ERROR([You need at least Python 3.1 for the Yaml testing to work])])],
+      [AS_IF([test "x$HAVE_PYMOD_yaml" != "xyes"],
+        [AC_MSG_ERROR([The Yaml testing requires that you have the Python Yaml module installed.])])])
+
 # Following Giellatekno specific variables are used to make external software
 # work; HFST analysers, spell-checkers and so on. These also control
 # some temporary file names etc.

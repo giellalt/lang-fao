@@ -122,6 +122,7 @@ cat<<EOF
     * morphological generator: $enable_generation
     * dictionary: $enable_dictionary
     * voikko support: $enable_voikko
+    * yaml tests enabled: $enable_yamltests
 to build, test and install:
     make
     make check

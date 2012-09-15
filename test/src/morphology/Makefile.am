@@ -9,7 +9,7 @@ TESTS=generate-noun-lemmas.sh
 
 # Add your shell scripts for running python-based tests here:
 if CAN_YAML_TEST
-TESTS+=test-yaml-testcases.sh
+TESTS+=run-yaml-testcases.sh
 endif
 
 # List tests that are presently (expected) failures here, ie things that should

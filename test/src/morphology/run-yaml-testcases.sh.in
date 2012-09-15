@@ -15,11 +15,9 @@ for f in .xfst .hfst; do
 	if [ $f == ".xfst" ]; then
 		lookuptool="lookup"
 		section="xerox"
-#		echo "Xerox test"
 	else
 		lookuptool="hfst-lookup"
 		section="hfst"
-#		echo "Hfst test"
 	fi
 	if [ -f "$generatorfile$f" ]; then
 		let "transducer_found += 1"
@@ -30,11 +28,12 @@ for f in .xfst .hfst; do
 		
 		# Loop over the available yaml files, and run the tests:
 		for file in ${srcdir}/*.yaml; do
+			(( i += 1 ))
 			echo
-			echo Testing $file using $analyserfile$f
+			echo "$section subtest $i: Testing $file using $analyserfile$f"
 			echo
 			@PYTHON@ $GTCORE/scripts/morph-test.py \
-				-c -C \
+				-c -C -i \
 				-S $section \
 				--app $lookuptool \
 				--gen $generatorfile$f \

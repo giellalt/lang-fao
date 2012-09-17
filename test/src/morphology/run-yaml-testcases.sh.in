@@ -10,6 +10,7 @@ generatorfile=${srcdir}/../../../src/generator.gt
 
 ###### Start testing: #######
 transducer_found=0
+Fail=0
 
 # Loop over the transducer types first - we test both hfst and xfst if found:
 for f in .xfst .hfst; do
@@ -33,7 +34,7 @@ for f in .xfst .hfst; do
 		for file in ${srcdir}/*.yaml; do
 			(( i += 1 ))
 			echo
-			echo "$section subtest $i: Testing $file using $analyserfile$f"
+			echo "Subtest $i - $section: Testing $file using $analyserfile$f"
 			echo
 			@PYTHON@ $GTCORE/scripts/morph-test.py \
 				-c -C -i \
@@ -42,9 +43,23 @@ for f in .xfst .hfst; do
 				--gen $generatorfile$f \
 				--morph $analyserfile$f \
 				$file
+			ScriptSuccess=$?
+			if [ $ScriptSuccess -gt 0 ]; then
+			    Fail=1
+			    echo
+			    echo "Test failed. To rerun with more details, please do:"
+			    echo
+			    echo "pushd $(pwd); @PYTHON@ $GTCORE/scripts/morph-test.py -c -i -S $section --app $lookuptool --gen $generatorfile$f --morph $analyserfile$f $file; popd"
+			    echo
+			fi
 		done
 	fi
 done
+
+# At least one of the Xerox or HFST tests failed:
+if [ "$Fail" = "1" ]; then
+	exit 1
+fi
 
 # Fail if no transducer were found:
 if [ $transducer_found -eq 0 ]; then

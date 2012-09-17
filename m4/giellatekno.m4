@@ -59,6 +59,7 @@ AC_PATH_PROG([PRINTF], [printf], [echo -n])
 AC_PATH_PROG([XFST], [xfst], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_PATH_PROG([TWOLC], [twolc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_PATH_PROG([LEXC], [lexc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
+AC_PATH_PROG([LOOKUP], [lookup], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_MSG_CHECKING([whether we can enable xfst building])
 AM_CONDITIONAL([CAN_XFST], [test "x$XFST" != xfalse])
 AS_IF([test "x$XFST" != xfalse], [AC_MSG_RESULT([yes])],

@@ -17,7 +17,7 @@ for f in .xfst .hfst; do
 		lookuptool="@LOOKUP@"
 		section="xerox"
 	else
-		lookuptool="@HFST-LOOKUP@"
+		lookuptool="@HFST_LOOKUP@"
 		section="hfst"
 	fi
 	if [ -f "$generatorfile$f" ]; then

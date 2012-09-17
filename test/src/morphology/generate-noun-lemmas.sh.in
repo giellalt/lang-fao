@@ -37,7 +37,7 @@ for f in  .xfst .hfst; do
 		lookuptool="@LOOKUP@ -q -flags mbTT"
 		echo "Xerox test"
 	else
-		lookuptool="@HFST-LOOKUP@ -q"
+		lookuptool="@HFST_LOOKUP@ -q"
 		echo "Hfst test"
 	fi
 	if [ -f "${srcdir}/../../src/generator.gt$f" ]; then

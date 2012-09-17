@@ -1,4 +1,10 @@
-$Rev: 62643 $
+$Rev: 62648 $
+Several testing shell script updates: correct exit value when data files are not
+found, proper use of Autoconf-made variables (will free the test scripts from
+relying on the user setting up environment variables), and better checks on the
+availability of test data for the lemma generation test.
+
+r62643:
 Added check for the Xerox lookup tool, which also defines the LOOKUP variable.
 
 r62639:

@@ -1,4 +1,5 @@
 #!/bin/bash
+# @configure_input@
 
 # Automake interprets the exit status as follows:
 # - an exit status of 0 will denote a success
@@ -12,29 +13,40 @@
 
 ###### Variables: #######
 sourcefile=${srcdir}/../../../src/morphology/stems/nouns.lexc
+lemmas=nouns.txt
+generatedlemmas=gen-nouns.txt
 generatorfile=${srcdir}/../../../src/generator.gt
+
+# FAIL if source file does not exist:
+if [ ! -f $sourcefile ]; then
+    echo
+    echo "*** Warning: Source file $sourcefile not found."
+    echo
+    exit 77
+fi
 
 ###### Extraction: #######
 $GTCORE/scripts/extract-lemmas.sh \
-	$sourcefile "(CmpN/Last)" > nouns.txt
+	$sourcefile "(CmpN/Last)" > $lemmas
 
 ###### Start testing: #######
 # The script tests both Xerox and Hfst transducers if available:
 transducer_found=0
 for f in  .xfst .hfst; do
 	if [ $f == ".xfst" ]; then
-		lookuptool="lookup -q -flags mbTT"
+		lookuptool="@LOOKUP@ -q -flags mbTT"
 		echo "Xerox test"
 	else
-		lookuptool="hfst-lookup -q"
+		lookuptool="@HFST-LOOKUP@ -q"
 		echo "Hfst test"
 	fi
 	if [ -f "${srcdir}/../../src/generator.gt$f" ]; then
 		let "transducer_found += 1"
-		sed 's/$/+N+Sg+Nom/' nouns.txt | \
-				$lookuptool $generatorfile$f > gen-nouns$f.txt
-		if [ `grep '\?' gen-nouns$f.txt | wc -l` -gt 0 ]; then
-			see gen-nouns$f.txt
+		sed 's/$/+N+Sg+Nom/' $lemmas | \
+				$lookuptool $generatorfile$f > $f-$generatedlemmas
+		rm -f $lemmas
+		if [ `grep '\?' $f-$generatedlemmas | wc -l` -gt 0 ]; then
+			see $f-$generatedlemmas
 			exit 1
 		fi
 	fi

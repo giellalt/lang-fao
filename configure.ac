@@ -87,31 +87,32 @@ gt_PROG_XFST
 # Tests and sets up vislcg3
 gt_PROG_VISLCG3
 
-# List all directories that are used in this project and have automake-style
-# Makefiles
+# List all non-script files processed by Autoconf.
 AC_CONFIG_FILES([Makefile \
-                src/Makefile \
-                src/filters/Makefile \
-                src/hyphenation/Makefile \
-                src/morphology/Makefile \
-                src/orthography/Makefile \
-                src/phonetics/Makefile \
-                src/phonology/Makefile \
-                src/syntax/Makefile \
-                src/transcriptions/Makefile \
-                doc/Makefile \
-                test/Makefile \
-                test/src/Makefile \
-                test/src/morphology/Makefile \
-                test/src/morphology/run-yaml-testcases.sh \
-                test/src/phonology/Makefile \
-                test/src/syntax/Makefile \
-                test/tools/Makefile \
-                test/tools/spellcheckers/Makefile \
-                tools/Makefile \
-                tools/spellcheckers/Makefile \
-                tools/spellcheckers/hfst/Makefile],
-      [chmod +x test/src/morphology/run-yaml-testcases.sh])
+                 src/Makefile \
+                 src/filters/Makefile \
+                 src/hyphenation/Makefile \
+                 src/morphology/Makefile \
+                 src/orthography/Makefile \
+                 src/phonetics/Makefile \
+                 src/phonology/Makefile \
+                 src/syntax/Makefile \
+                 src/transcriptions/Makefile \
+                 doc/Makefile \
+                 test/Makefile \
+                 test/src/Makefile \
+                 test/src/morphology/Makefile \
+                 test/src/phonology/Makefile \
+                 test/src/syntax/Makefile \
+                 test/tools/Makefile \
+                 test/tools/spellcheckers/Makefile \
+                 tools/Makefile \
+                 tools/spellcheckers/Makefile \
+                 tools/spellcheckers/hfst/Makefile])
+# Add one AC_CONFIG_FILES for each script file that needs processing. This gives
+# the most pleasant user experience and most readable autoconf code to maintain.
+AC_CONFIG_FILES([test/src/morphology/run-yaml-testcases.sh], \
+      [chmod a+x test/src/morphology/run-yaml-testcases.sh])
 
 # This must be near the end of all configure.ac files:
 AC_OUTPUT

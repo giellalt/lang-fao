@@ -7,6 +7,8 @@
 ###### Variables: #######
 analyserfile=${srcdir}/../../../src/analyser.gt
 generatorfile=${srcdir}/../../../src/generator.gt
+pythonbin=@PYTHON@
+runtests="$pythonbin $GTCORE/scripts/morph-test.py"
 
 ###### Start testing: #######
 transducer_found=0
@@ -36,20 +38,17 @@ for f in .xfst .hfst; do
 			echo
 			echo "Subtest $i - $section: Testing $file using $analyserfile$f"
 			echo
-			@PYTHON@ $GTCORE/scripts/morph-test.py \
-				-c -C -i \
-				-S $section \
+			$runtests -c -C -i -S $section \
 				--app $lookuptool \
 				--gen $generatorfile$f \
 				--morph $analyserfile$f \
 				$file
-			ScriptSuccess=$?
-			if [ $ScriptSuccess -gt 0 ]; then
+			if [ $? -gt 0 ]; then
 			    Fail=1
 			    echo
 			    echo "Test failed. To rerun with more details, please do:"
 			    echo
-			    echo "pushd $(pwd); @PYTHON@ $GTCORE/scripts/morph-test.py -c -i -S $section --app $lookuptool --gen $generatorfile$f --morph $analyserfile$f $file; popd"
+			    echo "pushd $(pwd); $runtests -c -i -S $section --app $lookuptool --gen $generatorfile$f --morph $analyserfile$f $file; popd"
 			    echo
 			fi
 		done

@@ -13,8 +13,8 @@
 
 ###### Variables: #######
 sourcefile=${srcdir}/../../../src/morphology/stems/nouns.lexc
-lemmas=nouns.txt
-generatedlemmas=gen-nouns.txt
+lemmas=${srcdir}/nouns.txt
+generatedlemmas=${srcdir}/gen-nouns
 generatorfile=${srcdir}/../../../src/generator.gt
 
 # FAIL if source file does not exist:
@@ -26,7 +26,7 @@ if [ ! -f $sourcefile ]; then
 fi
 
 ###### Extraction: #######
-$GTCORE/scripts/extract-lemmas.sh \
+${GTCORE}/scripts/extract-lemmas.sh \
 	$sourcefile "(CmpN/Last)" > $lemmas
 
 ###### Start testing: #######
@@ -35,22 +35,26 @@ transducer_found=0
 for f in  .xfst .hfst; do
 	if [ $f == ".xfst" ]; then
 		lookuptool="@LOOKUP@ -q -flags mbTT"
+		fsttype=xfst
 		echo "Xerox test"
 	else
 		lookuptool="@HFST_LOOKUP@ -q"
+		fsttype=hfst
 		echo "Hfst test"
 	fi
-	if [ -f "${srcdir}/../../src/generator.gt$f" ]; then
+	if [ -f "$generatorfile$f" ]; then
 		let "transducer_found += 1"
 		sed 's/$/+N+Sg+Nom/' $lemmas | \
-				$lookuptool $generatorfile$f > $f-$generatedlemmas
-		rm -f $lemmas
-		if [ `grep '\?' $f-$generatedlemmas | wc -l` -gt 0 ]; then
-			see $f-$generatedlemmas
+				$lookuptool $generatorfile$f > $generatedlemmas.$fsttype.txt
+		if [ `grep '\?' $generatedlemmas.$fsttype.txt | wc -l` -gt 0 ]; then
+			see $generatedlemmas.$fsttype.txt
 			exit 1
 		fi
 	fi
 done
+
+# When done, remove the generated data file:
+rm -f $lemmas
 
 if [ $transducer_found -eq 0 ]; then
     echo No transducer found

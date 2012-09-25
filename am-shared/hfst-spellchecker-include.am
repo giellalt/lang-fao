@@ -1,0 +1,60 @@
+## Process this file with automake to produce Makefile.in
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+GT_DICTIONARY_HFST=dictionary.default.hfst
+
+####### Automake targets: ########
+
+GT_ERRMODELS=
+if WANT_HFST
+#GT_ERRMODELS+=errmodel.edit-distance-1.hfst
+GT_ERRMODELS+=errmodel.default.hfst
+GT_SPELLING_HFST=speller.zhfst
+endif
+
+if WANT_HFST
+voikkosharedir=$(libdir)/voikko/2/mor-hfst-$(GTLANG2)/
+#! @param GT_VOIKKO optional, set to spell checker automata names if
+#!					installable
+voikkoshare_DATA=$(GT_SPELLING_HFST) voikko-fi_FI.pro
+endif
+
+noinst_DATA=$(GT_ERRMODELS)
+
+####### HFST build rules: ########
+
+# Error model building:
+%.hfst: %.txt acceptor.default.hfst
+	$(GTCORE)/scripts/editdist.py -v -s -d 2 -e '@0@' -i $<   \
+		-a acceptor.default.hfst | \
+		$(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' | \
+		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+
+acceptor.default.hfst: $(top_srcdir)/src/$(GT_DICTIONARY_HFST)
+	$(HFST_FST2FST) $(HFST_FLAGS) -f olw $< -o $@
+
+$(GT_SPELLING_HFST): acceptor.default.hfst \
+					 $(GT_ERRMODELS) \
+					 $(GT_OTHER_VOIKKO_FILES) \
+					 index.xml
+	$(ZIP) $(ZIPFLAGS) $@ $^
+
+####### Other targets: ###########
+clean-local:
+	-rm -f *.hfst *.xfst
+
+# vim: set ft=automake:

@@ -1,0 +1,579 @@
+! ==================== !
+! Adjective morphology !
+! ==================== !
+
+
+LEXICON l1	! beinur
++A: adj_a ; !XXX check!
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l2	! leysur
++A: adj_a ;
++A: adj_r_gen ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l3	! bíligur
++A: adj_a ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l4	! kunnugur
++A: adj_a ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l5	! spiltur
++A: adj_a ;
++A: adj_r_gen ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l6	! brekaður
++A:%^EDH adj_a ; ! no ð deletion
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l7	! blindur
++A: adj_a ;
++A: adj_r_gen ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l8	! kaldur
++A:         a_non_umlaut ;
++A:%^UUML   a_umlaut ;
++A: adj_r_gen ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l9	! spakur
++A:         a_non_umlaut ;
++A:%^UUML   a_umlaut ;
++A: adj_r_gen ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l10 ! drúgvur
++A: adj_a ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l11 ! flógvur
++A: adj_a ; ! _gv_
++A: adj_def ; ! _gv_
++A: adjcmp1 ;
+
+LEXICON l12 ! snjallur
++A:         a_non_umlaut ;
++A:%^UUML      a_umlaut ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l13 ! langur
++A:         a_non_umlaut ;
++A:%^UUML      a_umlaut ;
++A: adj_def ;
+
+LEXICON l14 ! harður
++A:         a_non_umlaut ;
++A:%^UUML      a_umlaut ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l15 ! blíður
++A: adj_a ;
++A: adj_def ;
++A: adjcmp1 ;
+
+! Check these
+
+LEXICON l16 ! góður
++A: adj_a ;
++A: adj_def ;
+
+LEXICON l17 ! bláur
++A: adj_a ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l18 ! keddur
++A: adj_a ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l19 ! nýggjur
++A: adj_a ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l20 ! stillur
++A: adj_a ;
++A: adj_def ;
+
+LEXICON l21 ! fastur
++A:         a_non_umlaut ;
++A:%^UUML      a_umlaut ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l22 ! klæddur
++A:         a_non_umlaut ;
++A:%^UUML      a_umlaut ;
++A:			 a_umlaut ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l23 ! rættur
++A:         a_non_umlaut ;
++A:%^UUML      a_umlaut ;
++A:			 a_umlaut ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l24 ! frískur
++A: adj_a ;
++A: adj_r_gen ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l25 ! danskur
++A:         a_non_umlaut ;
++A:%^UUML      a_umlaut ;
++A:            adj_r_gen ;
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l26 ! vakin
++A:%^EPH a_m_sg_n_null ;
++A:%^EPH a_non_umlaut_obl ;
++A:%^EPH a_umlaut ;
++A:%^EPH adj_def ;
+
+LEXICON l27 ! heiðin
++A:%^EPH a_m_sg_n_null ;
++A:%^EPH a_non_umlaut_obl ;
++A:%^EPH a_umlaut ;
++A:%^EPH adj_def ;
+
+LEXICON l28 ! lítil
++A:%^EPH a_m_sg_n_null ;
++A:%^EPH a_non_umlaut_obl ;
++A:%^EPH a_umlaut ;
++A:%^EPH adj_def ;
+
+LEXICON l29 ! fakur
++A:%^EPH       a_non_umlaut ;
++A:%^EPH%^UUML a_umlaut ;
++A:%^EPH adj_def ;
++A: adjcmp1 ;
+
+LEXICON l30 ! tepur
++A:%^EPH adj_a ;
++A:%^EPH adj_def ;
++A: adjcmp1 ;
+
+LEXICON l31 ! trupul
++A:%^EPH       a_non_umlaut ;
++A:%^EPH%^UUML a_umlaut ;
++A:%^EPH adj_def ;
++A:%^EPH adj_def ;
+
+LEXICON l32 ! búgvin
++A:%^EPH       a_non_umlaut ;
++A:%^EPH%^UUML a_umlaut ;
++A:%^EPH adj_def ;
++A:%^EPH adj_def ;
+
+LEXICON l33 ! gamal
++A:            a_m_sg_n_null ; ! gamal
++A:%^EPH       a_non_umlaut_obl ;
++A:%^EPH%^UUML a_umlaut ;
++A:%^EPH adj_def ;
+
+LEXICON l34 ! dottin
++A:%^EPH       a_non_umlaut ;
++A:%^EPH%^UUML a_umlaut ;
++A:%^EPH adj_def ;
++A:%^EPH adj_def ;
+
+LEXICON l35 ! feingin ! not complete, needs umlaut
++A:%^EPH       a_non_umlaut ;
++A:%^EPH%^UUML a_umlaut ;
++A:%^EPH adj_def ;
++A:%^EPH adj_def ;
+
+LEXICON l36 ! liðugur
++A: adj_a ; !XXX check!
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l37 ! grammur
++A: adj_a ; !XXX check!
++A: adj_def ;
++A: adjcmp1 ;
+
+LEXICON l38 ! kollutur
++A: adj_a ; !XXX check!
++A: adj_def ;
+
+LEXICON l39 ! settur
++A: adj_a ; !XXX check!
++A: adj_def ;
++A: adjcmp1 ;
+
+! Irregular adjectives
+
+LEXICON STOR
++A:stór adj_a ;
++A:stór adj_def ;
++A+Cmp:størr indef_cmp_adj_decl ;
++A+Superl:størst indef_superl_adj_decl ;
+
+LEXICON andi
++A: HOMONYM_ADJ_FORMS ;
++Adv: # ;
+
+LEXICON HOMONYM_ADJ_FORMS
++Msc: HOMONYM_ADJ_NUM ;
++Fem: HOMONYM_ADJ_NUM ;
++Neu: HOMONYM_ADJ_NUM ;
+
+LEXICON HOMONYM_ADJ_NUM
++Sg: HOMONYM_ADJ_CASE ;
++Pl: HOMONYM_ADJ_CASE ;
+
+LEXICON HOMONYM_ADJ_CASE
++Nom: HOMONYM_ADJ_DEF ;
++Acc: HOMONYM_ADJ_DEF ;
++Gen: HOMONYM_ADJ_DEF ;
++Dat: HOMONYM_ADJ_DEF ;
+
+LEXICON HOMONYM_ADJ_DEF
++Indef: # ;
++Def:   # ;
+
+
+! Irregular comaratives
+! =====================
+
+LEXICON ELDRI
+eldri_m ;
+eldri_f ;
+eldri_n ;
+
+LEXICON ELSTUR
+:%>ur eldri_m ;
+      eldri_f ;
+      eldri_n ;
+      adj_def ;
+
+LEXICON eldri_m
++Msc: HOMONYM_ADJ_NUM ; 
+
+LEXICON eldri_f
++Fem: HOMONYM_ADJ_NUM ;
+
+LEXICON eldri_n
++Neu: HOMONYM_ADJ_NUM ;
++Adv: # ;
+
+LEXICON indecladj 
++A: HOMONYM_ADJ_FORMS ;
+
+! Intermediate adjectival lexica
+! ==============================
+
+LEXICON adj_a
+ a_non_umlaut ; ! For the non-umlauted forms
+     a_umlaut ; ! for the umlauted forms
+     
+LEXICON a_non_umlaut
+ a_m_sg_n ;
+ a_non_umlaut_obl ;
+
+LEXICON a_non_umlaut_obl
+ a_m_sg_a ;
+ a_m_sg_g ;
+
+ a_m_pl_n ;
+ a_m_pl_a ;
+ a_m_pl_g ;
+
+ a_f_sg_a ;
+ a_f_sg_d ;
+ a_f_sg_g ;
+
+ a_f_pl_n ;
+ a_f_pl_a ;
+ a_f_pl_d ;
+ a_f_pl_g ;
+
+ a_n_sg_n ;
+ a_n_sg_a ;
+
+ a_n_sg_g ;
+ a_n_pl_g ;
+
+LEXICON a_umlaut
+ a_m_sg_d ;
+ a_m_pl_d ;
+
+ a_f_sg_n ;
+
+ a_n_sg_d ;
+ a_n_pl_n ;
+ a_n_pl_a ;
+ a_n_pl_d ;
+
+
+LEXICON adj_r_gen
+a_m_pl_g_ra ;
+a_f_sg_g_rar ;
+a_f_pl_g_ra ;
+a_n_pl_g_ra ;
+
+! Adjectival case lexica
+! ======================
+
+
+! Indefinite declension
+! _____________________
+
+! Msc
+LEXICON a_m_sg_n
++Msc+Sg+Nom+Indef:%>ur # ;
+
+LEXICON a_m_sg_n_null
++Msc+Sg+Nom+Indef: # ;
+
+LEXICON a_m_sg_a
++Msc+Sg+Acc+Indef:%>an # ;
+
+LEXICON a_m_sg_d
++Msc+Sg+Dat+Indef:%>um # ;
+
+LEXICON a_m_sg_g
++Msc+Sg+Gen+Indef:%>s  # ; 
+
+LEXICON a_m_pl_n
++Msc+Pl+Nom+Indef:%>ir  # ; 
+
+LEXICON a_m_pl_a
++Msc+Pl+Acc+Indef:%>ar  # ; 
+
+LEXICON a_m_pl_d
++Msc+Pl+Dat+Indef:%>um  # ; 
+
+LEXICON a_m_pl_g
++Msc+Pl+Gen+Indef:%>a  # ; 
+
+LEXICON a_m_pl_g_ra
++Msc+Pl+Gen+Indef:%>ra  # ; 
+
+
+! Fem
+
+LEXICON a_f_sg_n
++Fem+Sg+Nom+Indef:%>%^UUML  # ; 
+
+LEXICON a_f_sg_a
++Fem+Sg+Acc+Indef:%>a  # ; 
+
+LEXICON a_f_sg_d
++Fem+Sg+Dat+Indef:%>ari  # ; 
+
+LEXICON a_f_sg_g
++Fem+Sg+Gen+Indef:%>ar  # ; 
+
+LEXICON a_f_sg_g_rar
++Fem+Sg+Gen+Indef:%>rar  # ; 
+
+LEXICON a_f_pl_n
++Fem+Pl+Nom+Indef:%>ar  # ; 
+
+LEXICON a_f_pl_a
++Fem+Pl+Acc+Indef:%>ar  # ; 
+
+LEXICON a_f_pl_d
++Fem+Pl+Dat+Indef:%>um  # ; 
+
+LEXICON a_f_pl_g
++Fem+Pl+Gen+Indef:%>a  # ; 
+
+LEXICON a_f_pl_g_ra
++Fem+Pl+Gen+Indef:%>ra  # ; 
+
+
+! Neu
+
+LEXICON a_n_sg_n
++Neu+Sg+Nom+Indef:%>t  # ; 
++Adv:%>t # ;
+
+LEXICON a_n_sg_a
++Neu+Sg+Acc+Indef:%>t  # ; 
+
+LEXICON a_n_sg_d
++Neu+Sg+Dat+Indef:%>um  # ; 
+
+LEXICON a_n_sg_g
++Neu+Sg+Gen+Indef:%>s  # ; 
+
+LEXICON a_n_pl_n
++Neu+Pl+Nom+Indef:%> # ; 
+
+LEXICON a_n_pl_a
++Neu+Pl+Acc+Indef:%> # ; 
+
+LEXICON a_n_pl_d
++Neu+Pl+Dat+Indef:%>um  # ; 
+
+LEXICON a_n_pl_g
++Neu+Pl+Gen+Indef:%>a  # ; 
+
+LEXICON a_n_pl_g_ra
++Neu+Pl+Gen+Indef:%>ra  # ; 
+
+
+! Definite declension
+! ___________________
+
+LEXICON adj_def
++Msc: adj_def_msc ;
++Fem: adj_def_fem ;
++Neu: adj_def_neu ;
+
+
+! Gender tags
+
+LEXICON adj_def_msc 
++Sg: adj_def_msc_case ;
++Pl: adj_def_pl ;
+
+LEXICON adj_def_fem 
++Sg:  adj_def_fem_case ;
++Pl: adj_def_pl ;
+
+LEXICON adj_def_neu 
++Sg: adj_def_neu_case ;
++Pl: adj_def_pl ;
+
+
+! Case tags
+ 
+LEXICON adj_def_msc_case
++Nom+Def:%>i # ;
++Acc+Def:%>a # ;
++Dat+Def:%>a # ;
++Gen+Def:%>a # ;
+
+LEXICON adj_def_fem_case 
++Nom+Def:%>a # ;
++Acc+Def:%>u # ;
++Dat+Def:%>u # ;
++Gen+Def:%>u # ;
+
+LEXICON adj_def_neu_case
++Nom+Def:%>a # ;
++Acc+Def:%>a # ;
++Dat+Def:%>a # ;
++Gen+Def:%>a # ;
+
+LEXICON adj_def_pl
++Nom+Def:%^UUML%>u # ;
++Acc+Def:%^UUML%>u # ;
++Dat+Def:%^UUML%>u # ;
++Gen+Def:%^UUML%>u # ;
++Adv:%>a # ; 
+
+! Comparative
+! ===========
+
+LEXICON adjcmp1
++Cmp:ar indef_cmp_adj_decl ;
++Superl:ast indef_superl_adj_decl ;
+
+LEXICON adjcmp2
++Cmp:r indef_cmp_adj_decl ;
++Superl:st indef_superl_adj_decl ;
+
+! Gender
+
+LEXICON indef_cmp_adj_decl
++Msc+Sg: indef_case ;
++Fem+Sg: indef_case ;
++Neu+Sg: indef_case ;
+
++Msc+Sg+Nom:%>i deftag ;
++Msc+Sg+Acc:%>a deftag ;
++Msc+Sg+Dat:%>a deftag ;
++Msc+Pl:%>u deftag ;
++Fem+Sg+Nom:%>a deftag ;
++Fem+Sg+Acc:%>u deftag ;
++Fem+Sg+Dat:%>u deftag ;
++Fem+Pl:%>u deftag ;
++Neu+Sg+Nom:%>a deftag ;
++Neu+Sg+Acc:%>a deftag ;
++Neu+Sg+Dat:%>a deftag ;
++Neu+Pl:%>u deftag ;
+
+LEXICON indef_case
++Nom: indeftag ;
++Acc: indeftag ;
++Gen: indeftag ;
++Dat: indeftag ;
+
+LEXICON def_case
++Nom: deftag ;
++Acc: deftag ;
++Gen: deftag ;
++Dat: deftag ;
+
+
+! Definiteness
+
+LEXICON indeftag
++Indef:%>i # ;
+
+LEXICON deftag
++Def: # ;
+
+
+
+! Superlative
+! ===========
+
+LEXICON indef_superl_adj_decl
++Msc+Sg: indef_superl_msc_case ;
++Fem+Sg: indef_superl_femneu_case ;
++Neu+Sg: indef_superl_femneu_case ;
+
+LEXICON indef_superl_msc_case
++Nom: indef_superl_msc ;
++Acc: indef_superl_msc ;
++Gen: indef_superl_msc ;
++Dat: indef_superl_msc ;
+
+LEXICON indef_superl_femneu_case
++Nom: indef_superl_femneu ;
++Acc: indef_superl_femneu ;
++Gen: indef_superl_femneu ;
++Dat: indef_superl_femneu ;
+
+
+
+LEXICON indef_superl_msc
++Indef:%>ur # ;
+
+LEXICON indef_superl_femneu
++Indef: # ;
+
+! fjerna 17.5.
+! +Msc+Sg+Def:%>i    # ; !XXX check.
+! +Fem+Sg+Def:%>a    # ;
+! +Neu+Sg+Def:%>a    # ;
+
+
+

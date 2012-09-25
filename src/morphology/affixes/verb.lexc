@@ -1,0 +1,1397 @@
+
+
+
+
+! =============== !
+! Verb morphology !
+! =============== !
+
+
+LEXICON s1 ! nevna
+standard_ir ; ! Verbal forms
++V+PrfPrc:%>d p7 ; ! Adjectival forms
+
+LEXICON s2 ! keypa
+standard_ir_t ;
++V+PrfPrc:%>t p39 ;
+
+LEXICON s3 ! leiða
+standard_ir ;
++V+PrfPrc:%>d p18 ;
+
+LEXICON s3b ! oeyða
+ s3 ;
+ prt_ðu ;
+
+LEXICON s4 ! frøa
+inf ;
+pres_ir ;
+prt_dd ;
+imp_prsptc ;
+sup_tt ;
++V+PrfPrc:%>d p7 ;
+
+LEXICON s5 ! senda
+standard_ir ;
++V+PrfPrc:%>d p7 ;
+
+LEXICON s6 ! hirða
+standard_ir ;
++V+PrfPrc:%>d p7 ;
+
+LEXICON s7 ! rista
+standard_ir ;
++V+PrfPrc:%>d p5 ;
+
+LEXICON s8 ! kenna
+standard_ir ;
++V+PrfPrc:%>d p7 ;
+
+LEXICON s9 ! klippa
+inf ;
+pres_ir ;
+prt_t ;
+imp_prsptc ;
+sup ;
++V+PrfPrc:%>t p5 ;
+
+LEXICON s10 ! fylgja
+standard_j_ir ;
++V+PrfPrc:%>d p7 ;
+
+LEXICON s11 ! roykja
+standard_j_ir ;
++V+PrfPrc:%>d p5 ;
+
+LEXICON s12 ! boyggja
+standard_j_ir ;
++V+PrfPrc:%>d p7 ;
+
+LEXICON s13 ! søkkja
+standard_j_ir ;
++V+PrfPrc:%>d p5 ;
+
+LEXICON s14 ! heingja
+jinf ;
+pres_ir ;
+:%^EIO prt_d ;
+:%^EIO imp_prsptc ;
+:%^EIO sup ;
+!+V+PrfPrc:%>d p7 ;
++V+PrfPrc:%^EIO%>d p7 ; !XXX check steingdir/stongdir
+
+LEXICON s15 ! skeinkja
+jinf ;
+pres_ir ;
+:%^EIO prt_d ;
+:%^EIO imp_prsptc ;
+:%^EIO sup ;
++V+PrfPrc:%>d p5 ;
+
+LEXICON s16 ! flekja
+jinf ;
+pres_ir ;
+:%^WVV prt_d ;
+:%^WVV imp_prsptc ;
+:%^WVV sup ;
++V+PrfPrc:%>d p5 ;
+
+LEXICON s17 ! berja
+jinf ;
+pres_ir ;
+:%^WVV prt_d ;
+:%^WVV imp_prsptc ;
+:%^WVV sup ;
++V+PrfPrc:%>d p7 ;
+
+LEXICON s18 ! krevja
+jinf ;
+pres_ur ;
+:%^WVV prt_d ;
+:%^WVV imp_prsptc ;
+:%^WVV sup ;
++V+PrfPrc:%>d p7 ;
+
+LEXICON s19 ! dylja
+jinf ;
+pres_ur ;
+:%^WVV prt_d ;
+:%^WVV imp_prsptc ;
+:%^WVV sup ;
++V+PrfPrc:%>d p7 ;
+
+LEXICON s20 ! leggja
+:egg jinf ;
+:egg pres_ur ;
+:eg prt_ði ; 
+:øg prt_du ;
+:ag imp_prsptc ;
+:ag sup ;
+:ag%>d p8 ;
+
+LEXICON s21 ! selja
+jinf ;
++V+PrfPrc:%>d p7 ;
+
+LEXICON s22 ! ryðja
+jinf ;
+pres_ur ;
+:%^WVV prt_d ;
+:%^WVV imp_prsptc ;
+:%^WVV sup ;
++V+PrfPrc:%>d p18 ;
+
+LEXICON s23 ! smyrja
+:yr jinf ;
+:yr pres_null ;
+:ur prt_d ;
+:yr imp_prsptc ;
+:yr sup ;
+:ur%>d p7 ;
+
+LEXICON s24 ! flysa
+inf ;
+pres_ur ; ! XXX not pres_null
+:%^WVV prt_d ;
+:%^WVV imp_prsptc ;
+:%^WVV sup ;
++V+PrfPrc:%>d p5 ;
+
+LEXICON s25 ! liva
+inf ;
+pres_ir ;
+prt_d ;
+imp_prsptc ;
+sup_a ;
++V+PrfPrc:%>d p6 ;
+
+LEXICON s26 ! plaga
+inf ;
+pres_ar ;
+prt_d ;
+imp_prsptc ;
+sup_a ;
+
+LEXICON s27 ! spáa
+inf ;
+pres_ar ;
+prt_dd ;
+imp_prsptc ;
+sup_tt ;
++V+PrfPrc:%>d p18 ;
+
+LEXICON s28 ! skaða
+inf ;
+pres_ar ;
+prt_d ;
+imp_prsptc ;
+sup ;
++V+PrfPrc:%>d p18 ;
+
+LEXICON s29 ! brúka
+inf ;
+pres_ar ;
+prt_d ;
+imp_prsptc ;
+sup ;
++V+PrfPrc:%>t p5 ;
+
+LEXICON s30 ! kalla
+inf ;
+pres_ar ;
+prt_a ;
+:a impsg ; !deviant kalla
+imppl ;
+prsptc ;
+sup_a ;
++V+PrfPrc:%>að p6 ;
+
+LEXICON s30b !trúa _ trúði
+inf ;
+pres_ar ;
+prt_ð ;
+:a impsg ; !deviant kalla
+imppl ;
+prsptc ;
+sup_a ;
++V+PrfPrc:%>að p6 ;
+
+
+LEXICON s31 ! only the verb gera and Xgera
+:er inf ;
+:er pres_null ;
+:er imp_prsptc ;
+:jør prt_d ;
+:jør sup ;
++V+PrfPrc:jørd%> p7 ;
+
+LEXICON s32 ! búgva
+:gv inf ;
+:gv pres_strong_s1 ;
+:%^IUML pres_strong_s23_t1 ;
+:gv pres_pl ; 
+:gv imp_prsptc ; 
+ prt_a ;
++V+PrfPrc:gvin p32 ;
+
+LEXICON s33 ! rógva
+:gv inf ;
+:gv pres_strong_s1 ;
+:r%^IUML pres_strong_s23 ;
+:gv pres_pl ; 
+:gv imp_prsptc ; 
+ prt_a ;
++V+PrfPrc:%>gvin p32 ;
+
+
+LEXICON s34 ! goyggja
+:ggj inf ;
+:r pres_strong_s1 ;
+:r pres_strong_s23 ;
+ pres_pl ; 
+:ggj imp_prsptc ; 
+ prt_a ;
+ sup_a ;
+
+
+
+! Strong verbs starting here
+! ==========================
+
+LEXICON s35 ! bíta
+ inf ;
+ pres_ur ;
+:%^AB1 prt_null_s ;
+:%^AB2 prt_u_p ;
+ imp_prsptc ;
+:%^VSH sup_null ;
++V+PrfPrc:%^VSHin p26 ;
+
+LEXICON s36 ! svíkja
+:j inf ;
+ pres_ur ;
+:%^AB1 prt_null_s ;
+:%^AB2 prt_u_p ;
+:j imp_prsptc ;
+:%^VSH sup_null ;
++V+PrfPrc:%^VSHin p26 ;
+
+
+LEXICON s37 ! bróta
+ inf ;
+ pres_strong_s1 ;
+:%^AB7 pres_strong_s23 ;
+:%^AB1 prt_null_s ;
+:%^AB4 prt_u_p ;
+ imp_prsptc ;
+:%^AB5 sup_null ;
++V+PrfPrc:%^VSHin p26 ;
+
+
+LEXICON s38 ! skjóta present tense
+:jót inf ;
+:ýt pres_strong_s1 ;
+:ýt pres_strong_s23 ;
+:ýt imp_prsptc ; !XXX
+:ut prt_u_p ;
+:ot sup_null ;
++V+PrfPrc:otin p26 ;
+
+LEXICON s39/30
+:jóð s30 ; ! weak infl + common forms
+ s39 ; ! umlauted forms, XXX check.
+ 
+LEXICON s39 ! bjóða umlaut forms
+:ýð pres_strong_s1 ;
+:ýð pres_strong_s23 ;
+:eyð prt_null_s ; ! Gunnar
+:úði prt_null_s ; ! 1Mos
+:úð prt_u_p ;
+:óð sup_null ;
++V+PrfPrc:óðin p26 ;
+
+LEXICON s40 ! fúka
+ inf ;
+ pres_strong_s1 ;
+:%^IUML pres_strong_s23 ;
+!:%^IUML pres_ur ;
+:%^AB1 prt_null_s ;
+:%^AB4 prt_u_p ;
+ imp_prsptc ;
+:%^AB5 sup_null ;
++V+PrfPrc:%^AB5in p26 ;
+
+LEXICON s41 ! flúgva
+ inf ;
+ pres_strong_s1 ;
+:%^IUML%^VDEL pres_strong_s23 ; !flýgv, should be flýg
+:%^AB1%^VDEL prt_null_s ;
+:%^VSH%^VDEL prt_u_p ;
+ imp_prsptc ;
+:%^AB5%^VDEL sup_null ; 
++V+PrfPrc:%^AB5%^VDELin p26 ; 
+
+LEXICON s42 ! klúgva
+ inf ;
+ pres_strong_s1 ;
+:%^IUML pres_strong_s23 ; ! klýgv, should be klýv
+!:%^IUML pres_ur ;
+:%^AB1 prt_null_s ; !kleygv, should be kleyv
+:%^VSH prt_u_p ; !klugv, should be kluv
+ imp_prsptc ;
+:%^AB5 sup_null ; !klogv, should be klov
++V+PrfPrc:%^AB5in p26 ; !klogvin, should be klovin
+
+LEXICON s43 ! njóta
+ inf ;
+ pres_strong_s1 ;
+:%^IUML pres_strong_s23 ; !njót, should be nýt
+! pres_ur ;
+:%^AB1 prt_null_s ; !njeyt, should be neyt
+:%^AB4 prt_u_p ; !njut, should be nut
+ imp_prsptc ;
+:%^AB5 sup_null ; !njot, should be not
++V+PrfPrc:%^AB5in p26 ; !njotin, should be notin
+
+LEXICON s44 ! finna
+ inf ;
+ pres_ur ;
+:%^AB3 prt_null_s ;
+:%^AB4 prt_du ; !funndu, should be fundu
+ imp_prsptc ;
+:%^AB4 sup_null ;
++V+PrfPrc:%^AB4in p26 ;
+
+LEXICON s45 ! binda
+ inf ;
+ pres_ur ;
+:%^aAB prt_null_s ; !band, should be bant
+:%^AB4 prt_u_p ;
+ imp_prsptc ;
+:%^AB4 sup_null ;
++V+PrfPrc:%^AB4in p26 ;
+
+LEXICON s46 ! stinga
+ inf ;
+ pres_ur ;
+:%^NGKK%^aAB prt_null_s ; !stikk, should be stakk
+:%^AB4 prt_u_p ;
+ imp_prsptc ;
+:%^AB4 sup_null ;
++V+PrfPrc:%^AB4in p26 ;
+
+LEXICON s47 ! svimja
+:imj inf ;
+:im pres_ur_j ;
+:am prt_null_s ;
+:um prt_u_p ;
+:im imp_prsptc ;
+:om sup_null ;
++V+PrfPrc:om%>in p26 ;
+
+!LEXICON s47 ! svimja
+! inf ;
+! pres_ur ;
+!:%^aAB prt_null_s ;
+!:%^AB4 prt_u_p ;
+! imp_prsptc ;
+!:%^oAB sup_null ;
+!+V+PrfPrc:%^oABin p26 ;
+
+LEXICON s48 ! drekka
+ inf ;
+ pres_ur ;
+:%^AB3 prt_null_s ;
+:%^AB4 prt_u_p ;
+ imp_prsptc ;
+:%^AB4 sup_null ;
++V+PrfPrc:%>in p26 ;
+
+LEXICON s49 ! detta
+ inf ;
+ pres_ur ;
+:%^AB3 prt_null_s ;
+:%^AB4 prt_u_p ;
+ imp_prsptc ;
+:%^AB5 sup_null ;
++V+PrfPrc:%^AB5in p26 ;
+
+LEXICON s50 ! røkka
+ inf ;
+ pres_ur ;
+:%^AB3 prt_null_s ;
+: prt_null_s ;
+:%^AB4 prt_u_p ;
+ imp_prsptc ;
+:%^AB5 sup_null ;
++V+PrfPrc:%^AB5in p26 ;
+
+LEXICON s51 ! ganga
+:ang inf ;
+:ang pres_strong_s1 ;
+:ong pres_strong_s23 ; !2?
+:ekk prt_null_s ;
+:ing prt_u_p ;
+:ang imp_prsptc ;
+:ing sup_null ;
++V+PrfPrc:ing%>in p26 ;
+
+
+LEXICON s52 ! veva
+ inf ;
+ pres_ur ;
+:%^AB3 prt_null_s ;
+:%^AB2 prt_u_p ;
+ imp_prsptc ;
+:%^AB5 sup_null ;
++V+PrfPrc:%^AB5in p26 ;
+
+LEXICON s53 ! leypa
+:leyp inf ;
+:loyp pres_strong_s1 ;
+:loyp pres_strong_s23 ;
+:leyp prt_null_s ;
+:leyp imp_prsptc ;
+:lup prt_u_p ;
+:lop sup_null ;
++V+PrfPrc:lopin p26 ;
+
+LEXICON s54 ! bera
+ inf ;
+ pres_strong_s1 ;
+ pres_strong_s23_t0;
+:%^AB3 prt_null_s ;
+:%^AB2 prt_u_p ;
+ imp_prsptc ;
+:%^AB5 sup_null ;
++V+PrfPrc:%^AB5in p26 ;
+
+LEXICON s55 ! fara
+ inf ;
+ pres_strong_s1 ;
+:%^IUML pres_strong_s23_t0 ; !far, should be fer
+:%^AB3 prt_null_s2 ;
+:%^AB3 prt_u_p ;
+ sup_null ;
+ imp_prsptc ;
++V+PrfPrc:%>in p26 ;
+
+LEXICON s56 ! geva
+ inf ;
+ pres_ur ;
+:%^AB3 prt_null_s ;
+:%^AB2 prt_u_p ;
+:%^AB6 sup_null ;
+ imp_prsptc ;
++V+PrfPrc:%^AB6%>in p26 ;
+
+LEXICON s57 ! sita
+ inf ;
+ pres_ur ;
+:%^AB3 prt_null_s ;
+:%^AB2 prt_u_p ;
+ sup_null ;
+ imp_prsptc ;
++V+PrfPrc:%>in p26 ;
+
+LEXICON s58 ! mala
+ inf ;
+ pres_strong_s1 ;
+:%^IUML pres_strong_s23 ;
+:%^AB3 prt_null_s ;
+:%^AB3 prt_u_p ;
+ imp_prsptc ;
+ sup_null ;
++V+PrfPrc:%>in p26 ;
+
+LEXICON s59 ! stjala
+ inf ;
+ pres_strong_s1 ;
+:%^IUML pres_strong_s23 ;
+:%^AB3 prt_null_s ;
+:%^AB3 prt_u_p ;
+:%^AB5 sup_null ; ! stjol, should be stol
+ imp_prsptc ;
++V+PrfPrc:%^AB5in p26 ; ! stjol, should be stol
+
+LEXICON s60 ! taka, aka
+ inf ;
+ pres_strong_s1 ;
+:%^IUML pres_strong_s23 ;
+:%^AB3 prt_null_s ;
+:%^AB3 prt_u_p ;
+ imp_prsptc ;
+:%^AB6 sup_null ;
++V+PrfPrc:%^AB6in p26 ;
+
+LEXICON s61 ! halda
+ inf ;
+ pres_strong_s1 ;
+:%^IUML pres_strong_s23 ;
+:%^IUML prt_null_s ; ! hald / held%>st, should be helt / helt%>st
+:%^AB6 prt_u_p ;
+:%^AB6 sup_null ;
+ imp_prsptc ;
++V+PrfPrc:%^AB6in p26 ;
+
+LEXICON s62 ! sova
+:sov inf ;
+:svev pres_strong_s1 ;
+:svev pres_strong_s23 ;
+:svav prt_null_s ;
+:svóv prt_u_p ;
+:sovi sup_a ;
+:sov imp_prsptc ;
++V+PrfPrc:%>in p26 ;
+
+LEXICON s63 ! koma
+ inf ;
+ pres_strong_s1 ;
+:%^eIUML pres_strong_s23 ;
+ prt_null_s ;
+ prt_u_p ;
+ sup_null ;
+ imp_prsptc ;
++V+PrfPrc:%>in p26 ;
+
+LEXICON s64 ! láta
+ inf ;
+ pres_strong_s1 ;
+:%^eIUML pres_strong_s23 ;
+:%^AB3 prt_null_s ;
+:%^AB2 prt_u_p ;
+ sup_null ;
+ imp_prsptc ;
++V+PrfPrc:%>in p26 ;
+
+LEXICON s65 ! standa
+:and inf ;
+:and pres_strong_s1 ;
+:end pres_strong_s23 ;
+:óð prt_null_s ; 
+:óð prt_u_p ; 
+:að sup_null ;
+:att imp ;
+:and prsptc ;
+
+LEXICON s66 ! biðja
+ jinf ;
+ pres_ur_j ;
+:%^AB3 prt_null_s ;
+:%^AB2 prt_u_p ;
+ sup_null ;
++V+PrfPrc:%>in p26 ;
+
+LEXICON s67 ! draga
+:ag inf ;
+:ag pres_strong_s1 ;
+:eg pres_strong_s23 ;
+:ó prt_null_s ; !dróg, should be dró
+:óg prt_u_p ;
+:ag sup_null ; ! %^AB2
+:ag imp_prsptc ;
++V+PrfPrc:%AB2%>in p26 ;
+
+LEXICON s68 ! hvørva
+:vørv inf ;
+:vørv pres_ur ;
+:varv prt_null_s ;
+:vurv prt_u_p ;
+:orv sup_null ;
+:vorv sup_null ;
+:vørv imp_prsptc ;
++V+PrfPrc:vorv%>in p26 ;
+
+LEXICON s69 ! sláa
+ inf ;
+ pres_strong_s1 ;
+:%^IUML pres_strong_s23_t1 ; 
+:%^AB2 prt_null_s ;
+!:slerdi prt_null_s ;
+!:slóg prt_u_p ;
+!:slerd prt_u_p ;
+!:sligi sup_a ;
+!:sligin p26 ;
+
+LEXICON s70 ! siga
+:sig inf ;
+:sig pres_ur ;
+:segði prt_null_s ;
+:søgð prt_u_p ;
+:søgd prt_u_p ; !XXX SUB?
+:sig imp_prsptc ;
+:sag sup ;
++V+PrfPrc:sagd%> p8 ;
+
+LEXICON s71 ! skerja
+:sker jinf ;
+:sker pres_ir ;
+:sker prt_d ;
+:skert sup_a ;
+:sker imp_prsptc ;
++V+PrfPrc:skerd p7 ;
+
+LEXICON s72 ! eta
+:et inf ;
+:et pres_ur ;
+:át prt_null_s ;
+:ót prt_u_p ;
+:et sup_null ;
+:et imp_prsptc ;
++V+PrfPrc:et%>in p26 ;
+
+LEXICON s73 ! læa
+:læ inf ;
+:lær pres_ur ;
+:læ prt_d ;
+:ló prt_null_s ;
+:læð sup_a ;
+:læið sup_a ;
+:læ imp_prsptc ;
++V+PrfPrc:læin p26 ; !?
+
+LEXICON s74 ! grindast
+reflinf ;
+pres_ast ;
+pret_st ;
+
+LEXICON s75 ! balast
+reflinf ;
+
+
+LEXICON s76 ! ræðast
+reflinf ;
+
+
+LEXICON s77 ! minnast
+reflinf ;
+
+
+LEXICON s78 ! farast
+reflinf ;
+
+
+LEXICON s79 ! skjótast
+reflinf ;
+
+
+LEXICON s80 ! trivast
+reflinf ;
+
+
+LEXICON s81 ! kíkjast
+reflinf ;
+
+
+LEXICON s82 ! f´ylast
+reflinf ;
+
+
+
+! Split lexica
+! ============
+
+! The lexicon names are, as always, from FO.
+! Now, these are just mechanically split.
+! They should be split more precisely,
+! just like s2/1, in order to keep
+! things minimal.
+
+LEXICON s1/26
+s1 ;
+s26 ;
+
+LEXICON s1/30
+s1 ;
+s30 ;
+
+LEXICON s11/15
+s11 ;
+s15 ;
+
+LEXICON s15/11
+s15 ;
+s11 ;
+
+LEXICON s18/16
+s18 ;
+s16 ;
+
+LEXICON s19/30
+s19 ;
+s30 ;
+
+LEXICON s2/1
+s2 ;
+prt_d ; ! this is the s1 part
+
+LEXICON s2/30
+s2 ;
+s30 ;
+
+LEXICON s21/11
+s21 ;
+s11 ;
+
+LEXICON s21/18
+s21 ;
+s18 ;
+
+LEXICON s24/2
+s24 ;
+s2 ;
+
+LEXICON s25/1
+s25 ;
+s1 ;
+
+LEXICON s27/30
+s27 ;
+s30 ;
+
+LEXICON s28/30
+s28 ;
+s30 ;
+
+LEXICON s29/2
+s29 ;
+s2 ;
+
+LEXICON s29/30
+s29 ;
+s30 ;
+
+LEXICON s3/30
+s3 ;
+s30 ;
+
+LEXICON s30/1
+s30 ;
+s1 ;
+
+LEXICON s30/11
+s30 ;
+s11 ;
+
+LEXICON s30/19
+s30 ;
+s19 ;
+
+LEXICON s30/2
+s30 ;
+s2 ;
+
+LEXICON s30/22
+s30 ;
+s22 ;
+
+LEXICON s30/27
+s30 ;
+s27 ;
+
+LEXICON s30/28
+s30 ;
+s28 ;
+
+LEXICON s30/29
+s30 ;
+s29 ;
+
+LEXICON s30/40
+s30 ;
+s40 ;
+
+LEXICON s30/5
+s30 ;
+s5 ;
+
+LEXICON s30/6
+s30 ;
+s6 ;
+
+LEXICON s30/9
+s30 ;
+s9 ;
+
+LEXICON s36/2
+s36 ;
+s2 ;
+
+!LEXICON s39/30
+!s30 ;
+!s39 ;
+
+LEXICON s47/19
+s47 ;
+s19 ;
+
+LEXICON s49/52
+s49 ;
+s52 ;
+
+LEXICON s49/9
+s49 ;
+s9 ;
+
+LEXICON s5/30
+s5 ;
+s30 ;
+
+LEXICON s52/30
+s52 ;
+s30 ;
+
+LEXICON s6/30
+s6 ;
+s30 ;
+
+LEXICON s60/30
+s60 ;
+s30 ;
+
+LEXICON s7/49
+s7 ;
+s49 ;
+
+LEXICON s74/75
+s74 ;
+s75 ;
+
+LEXICON s77/74
+s77 ;
+s74 ;
+
+LEXICON s8/30
+s8 ;
+s30 ;
+
+LEXICON s9/30
+s9 ;
+s30 ;
+
+
+
+
+
+! Intermediate lexicon groups
+! ===========================
+
+LEXICON standard_ir
+ inf ;
+ prt_d ;
+ ir_verb ;
+
+LEXICON standard_ir_t
+ inf ;
+ prt_t ; !XXX skilti
+ ir_verb ;
+
+LEXICON standard_j_ir_t
+ prt_t ; !XXX skilti
+ standard_j_ir_nopret ;
+
+! possibly also (no, handled by s1/2
+!LEXICON standard_j_ir_td
+! prt_t ;
+! prt_d ;
+! standard_j_ir_nopret ;
+
+
+LEXICON standard_j_ir ! the prt_d
+ standard_j_ir_nopret ;
+ prt_d ; 
+
+LEXICON standard_j_ir_nopret
+ jinf ;
+ pres_ir_sg ;
+:j pres_pl ;
+ imp_prsptc ;
+ sup ;
+
+LEXICON ir_verb
+pres_ir ;
+imp_prsptc ;
+sup ;
+
+
+! Suffix lexica
+! =============
+
+! Infinitive
+! __________
+
+LEXICON jinf
++V+Inf:%>ja PASS ;
++V+Inf+Pass:%>jast #;
+
+LEXICON inf
++V+Inf:%>a PASS ;
++V+Inf+Pass:%>ast # ;
+
+LEXICON reflinf
++V+Inf+Pass:%>ast # ;
+
+
+! Present
+! _______
+
+LEXICON pres_ir
+pres_ir_sg ;
+pres_pl ;
+
+LEXICON pres_ir_sg
++V+Ind+Prs+1Sg:%>i PASS ;
++V+Ind+Prs+2Sg:%>ir PASS ;
++V+Ind+Prs+3Sg:%>ir PASS ;
+
+LEXICON pres_ar
++V+Ind+Prs+1Sg:%>a PASS ;
++V+Ind+Prs+2Sg:%>ar PASS ;
++V+Ind+Prs+3Sg:%>ar PASS ;
+pres_pl ;
+
+LEXICON pres_ur
++V+Ind+Prs+1Sg:%>i PASS ;
++V+Ind+Prs+2Sg:%>ur PASS ;
++V+Ind+Prs+3Sg:%>ur PASS ;
+pres_pl ;
+
+LEXICON pres_ur_j
++V+Ind+Prs+1Sg:%>ji PASS ;
++V+Ind+Prs+2Sg:%>ur PASS ;
++V+Ind+Prs+3Sg:%>ur PASS ;
+pres_pl ;
+
+LEXICON pres_null
++V+Ind+Prs+1Sg:%> PASS ;
++V+Ind+Prs+2Sg:%> PASS ;
++V+Ind+Prs+3Sg:%> PASS ;
+pres_pl ;
+
+LEXICON pres_strong_s1
++V+Ind+Prs+1Sg:%>i PASS ;
+pres_pl ; !XXX
+
+LEXICON pres_strong_s23
++V+Ind+Prs+2Sg:%>ur PASS ;
++V+Ind+Prs+3Sg:%>ur PASS ;
+!pres_pl ;
+
+LEXICON pres_strong_s23_t0
++V+Ind+Prs+2Sg:%>t PASS ;
++V+Ind+Prs+3Sg:%> PASS ;
+!pres_pl ;
+
+LEXICON pres_strong_s23_t1
++V+Ind+Prs+2Sg:%>rt PASS ;
++V+Ind+Prs+3Sg:%>r PASS ;
+!pres_pl ;
+
+LEXICON pres_pl
++V+Ind+Prs+Pl:%>a PASS ;
+
+LEXICON pres_ast
++V+Ind+Prs+1Sg:%>ast # ; ! XXX check
++V+Ind+Prs+2Sg:%>ast # ;
++V+Ind+Prs+3Sg:%>ast # ;
++V+Ind+Prs+Pl:%>ast # ;
+
+LEXICON pret_st
++V+Ind+Prt+1Sg:%>aðist # ;
++V+Ind+Prt+2Sg:%>aðist # ;
++V+Ind+Prt+3Sg:%>aðist # ;
++V+Ind+Prt+Pl:%>aðist # ;
+
+
+! Preterite
+
+LEXICON prt_d
+ prt_di ;
+ prt_du ;
+ 
+LEXICON prt_ð
+ prt_ði ;
+ prt_ðu ;
+ 
+LEXICON prt_t
+ prt_ti ;
+ prt_tu ;
+ 
+LEXICON prt_di 
++V+Ind+Prt+Sg:%>di PASS ;
+
+LEXICON prt_ði 
++V+Ind+Prt+Sg:%>ði PASS ;
+
+LEXICON prt_ti 
++V+Ind+Prt+Sg:%>di PASS ;
+
+LEXICON prt_du
++V+Ind+Prt+Pl:%>du PASS ;
+
+LEXICON prt_tu
++V+Ind+Prt+Pl:%>tu PASS ;
+
+LEXICON prt_ðu
++V+Ind+Prt+Pl:%>ðu PASS ;
+
+LEXICON prt_dd
++V+Ind+Prt+Sg:%>ddi PASS ;
++V+Ind+Prt+Pl:%>ddu PASS ;
+
+LEXICON prt_a
++V+Ind+Prt+Sg:%>aði PASS ;
++V+Ind+Prt+Pl:%>aðu PASS ;
+
+LEXICON prt_null_s
++V+Ind+Prt+1Sg: PASS ;
++V+Ind+Prt+2Sg:%>st PASS ;
++V+Ind+Prt+3Sg: PASS ;
+
+LEXICON prt_null_s2
++V+Ind+Prt+1Sg: PASS ;
++V+Ind+Prt+2Sg:%>t PASS ;
++V+Ind+Prt+3Sg: PASS ;
+
+LEXICON prt_u_p
++V+Ind+Prt+Pl:%>u PASS ;
+
+
+
+! Imperative and present participle
+
+LEXICON imp_prsptc
+imp ;
+prsptc ;
+
+LEXICON imp
+impsg ;
+imppl ;
+
+LEXICON impsg
++V+Imp+Sg: PASS ;
+
+LEXICON imppl
++V+Imp+Pl:%^JI%>ið PASS ;
+
+LEXICON prsptc
++V+PrsPrc:%>andi VANDI ;
++A:%>andi HOMONYM_ADJ_FORMS ;
+
+! Supine and preterite participle
+ 
+LEXICON sup
++V+Sup:%>t PASS ;
++V+PrfPrc:%>d%>ur PASS ;
+
+LEXICON sup_tt
++V+Sup:%>tt PASS ;
++V+PrfPrc:%>dd%>ur PASS ;
+
+LEXICON sup_a ! kalla
++V+Sup:%>að PASS ;
++V+PrfPrc:%>að%>ur PASS ; 
+
+LEXICON sup_null ! stungið
++V+Sup:%>ið PASS ;
+
+! Ad hoc, irregular
+! =================
+
+LEXICON BLÍVA
++Inf:blíva PASS ;
++Ind+Prs+1Sg:blívi PASS ;
++Ind+Prs+2Sg:blív%>ur PASS ;
++Ind+Prs+3Sg:blív%>ur PASS ;
++Ind+Prs+Pl:blíva PASS ;
++Ind+Prt+1Sg:bleiv PASS ;
++Ind+Prt+2Sg:bleivst PASS ;
++Ind+Prt+3Sg:bleiv PASS ;
++Ind+Prt+Pl:blivu PASS ;
++Imp+Sg:blív PASS ;
++Imp+Pl:blívið PASS ;
++PrsPrc:blívandi VANDI ;
++PrfPrc:blívin PASS ;
++Sup:blívið PASS ;
+
+LEXICON EIGA
++Inf:eiga PASS ;
++Ind+Prs+1Sg:eigi PASS ;
++Ind+Prs+2Sg:eig%>ur PASS ;
++Ind+Prs+2Sg:eig%>ur PASS ;
++Ind+Prs+Pl:eiga PASS ;
++Ind+Prt+Sg:átti PASS ;
++Ind+Prt+Pl:áttu PASS ;
++PrsPrc:eigandi VANDI ;
++PrfPrc:eigin PASS ;
++Sup:eigið PASS ;
+
+LEXICON HAVA
++Inf:hava PASS ;
++Ind+Prs+1Sg:havi PASS ;
++Ind+Prs+2Sg:hev%>ur PASS ;
++Ind+Prs+3Sg:hev%>ur PASS ;
++Ind+Prs+Pl:hava PASS ;
++Ind+Prt+Sg:hevði PASS ;
++Ind+Prt+Pl:høvdu PASS ;
++Imp+Sg:hav PASS ;
++Imp+Pl:havið PASS ;
++PrsPrc:havandi VANDI ;
++PrfPrc:havd%>ur PASS ;
++Sup:havt PASS ;
+
+LEXICON KUNNA
++Inf:kunna # ;
++Ind+Prs+1Sg:kann # ;
++Ind+Prs+2Sg:kanst # ;
++Ind+Prs+3Sg:kann # ;
++Ind+Prs+Pl:kunnu # ;
++Ind+Prs+Pl:kunna # ;
++Ind+Prt+Sg:kundi # ;
++Ind+Prt+Pl:kundu # ;
++Sup:kunnað # ;
+
+LEXICON MEGA
++Inf:mega # ;
++Ind+Prs+1Sg:má # ;
++Ind+Prs+2Sg:mást # ;
++Ind+Prs+3Sg:má # ;
++Ind+Prs+Pl:mugu # ;
++Ind+Prs+Pl:muga # ;
++Ind+Prt+Sg:mátti # ;
++Ind+Prt+Pl:máttu # ;
+
+LEXICON MUNNA
++Inf:munna # ;
++Ind+Prs+1Sg:man # ;
++Ind+Prs+2Sg:manst # ;
++Ind+Prs+3Sg:man # ;
++Ind+Prs+Pl:munnu # ;
++Ind+Prs+Pl:munna # ;
++Ind+Prt+Sg:mundi # ;
++Ind+Prt+Pl:mundu # ;
++Sup:munnað # ;
+
+LEXICON SKULA
++Inf:skula # ;
++Ind+Prs+1Sg:skal # ;
++Ind+Prs+2Sg:skalt # ;
++Ind+Prs+3Sg:skal # ;
++Ind+Prs+Pl:skulu # ;
++Ind+Prs+Pl:skula # ;
++Ind+Prt+Sg:skuldi # ;
++Ind+Prt+Pl:skuldu # ;
++Sup:skulað # ;
+
+LEXICON TYKJA
++Inf:tykja PASS ;
++Ind+Prs+3Sg:tykir PASS ;
++Ind+Prs+Pl:tykti PASS ;
++Ind+Prt+Sg:tókti PASS ;
++Sup:tykt # ;
+
+LEXICON VERA
++Inf:vera # ;
++Ind+Prs+1Sg:eri # ;
++Ind+Prs+2Sg:ert # ;
++Ind+Prs+3Sg:er # ;
++Ind+Prs+Pl:eru # ;
++Ind+Prt+1Sg:var # ;
++Ind+Prt+2Sg:varst # ;
++Ind+Prt+3Sg:var # ;
++Ind+Prt+Pl:vóru # ;
++Sup:verið # ;
+
+LEXICON VERÐA
++Inf:verða # ;
++Ind+Prs+1Sg:verði # ;
++Ind+Prs+2Sg:verð%>ur # ;
++Ind+Prs+3Sg:verð%>ur # ;
++Ind+Prs+Pl:verða # ;
++Ind+Prt+1Sg:varð # ;
++Ind+Prt+2Sg:varðst # ;
++Ind+Prt+3Sg:varð # ;
++Ind+Prt+Pl:vórðu # ;
++Imp+Sg:verð # ;
++Sbj+3Sg:verði # ; !XXX verði ljós
++Imp+Pl:verðið # ;
++PrsPrc:verðandi # ;
++PrfPrc:vorðin p26 ;
+
+
+LEXICON VILJA
++Inf:vilja PASS ;
++Ind+Prs+1Sg:vil PASS ;
++Ind+Prs+2Sg:vilt PASS ;
++Ind+Prs+3Sg:vil PASS ;
++Ind+Prs+Pl:vilja PASS ;
++Ind+Prt+Sg:vildi PASS ;
++Ind+Prt+Pl:vildu PASS ;
++Sup:viljað PASS ;
+
+LEXICON VITA
++Inf:vita PASS ;
++Ind+Prs+1Sg:veit PASS ;
++Ind+Prs+2Sg:veitst PASS ;
++Ind+Prs+3Sg:veit PASS ;
++Ind+Prs+Pl:vita PASS ;
++Ind+Prt+Sg:visti PASS ;
++Ind+Prt+Pl:vistu PASS ;
++Sup:vitað PASS ;
+
+
+LEXICON SÍGGJA
++Inf:síggja PASS ;
++Ind+Prs+1Sg:síggi PASS ;
++Ind+Prs+2Sg:sært PASS ;
++Ind+Prs+3Sg:sær PASS ;
++Ind+Prs+Pl:síggja PASS ;
++Ind+Prt+1Sg:sá PASS ;
++Ind+Prt+2Sg:sást PASS ;
++Ind+Prt+3Sg:sá PASS ;
++Ind+Prt+Pl:sóu PASS ;
++Imp+Sg:síggj PASS ;
++Imp+Sg:sí PASS ;
++Imp+Pl:síggið PASS ;
++PrsPrc:síggjandi VANDI ;
++PrfPrc:sædd%>ur PASS ;
++Sup:sæð PASS ;
++Sup:sætt PASS ;
+
+LEXICON FÁA
++Inf:fáa PASS ;
++Ind+Prs+1Sg:fái PASS ;
++Ind+Prs+2Sg:fært PASS ;
++Ind+Prs+3Sg:fæ PASS ;
++Ind+Prs+Pl:fáa PASS ;
++Ind+Prt+1Sg:fekk PASS ;
++Ind+Prt+2Sg:fekst PASS ;
++Ind+Prt+3Sg:fekk PASS ;
++Ind+Prt+Pl:fingu PASS ;
++Imp+Sg:fá PASS ;
++Imp+Pl:fáið PASS ;
++PrfPrc:fingin PASS ;
++Sup:fingið PASS ;
+
+LEXICON LIGGJA
++Inf:iggja PASS ;
++Ind+Prs+1Sg:iggi PASS ;
++Ind+Prs+2Sg:igg%>ur PASS ;
++Ind+Prs+3Sg:igg%>ur PASS ;
++Ind+Prs+Pl:iggja PASS ;
++Ind+Prt+1Sg:á PASS ;
++Ind+Prt+2Sg:ást PASS ;
++Ind+Prt+3Sg:á PASS ;
++Ind+Prt+Pl:ógu PASS ;
++Imp+Sg:igg PASS ;
++Imp+Pl:iggið PASS ;
++PrsPrc:iggjandi VANDI ;
++PrfPrc:igin PASS ; ! XXX fix link to adj
++Sup:igið PASS ;
+
+LEXICON RADA
++Inf:ráða PASS ;
++Ind+Prs+1Sg:ræði PASS ;
++Ind+Prs+2Sg:ræður PASS ;
++Ind+Prs+3Sg:ræður PASS ;
++Ind+Prs+Pl:ráða PASS ;
++Ind+Prt+Sg:ráddi PASS ;
++Ind+Prt+Sg:ræð PASS ; ! old form
++Ind+Prt+Pl:ráddu PASS ;
++Imp+Sg:ráð PASS ;
++Imp+Pl:ráðið PASS ;
++PrsPrc:ráðandi VANDI ;
++PrfPrc:ráðin PASS ;
+! The following two lines are commented out because they cause
+! a segmentation fault in lexc!!!
+!+Sup:rátt PASS ;
+!+Sup:ráðið PASS ; ! old form
+
+LEXICON DAMA
+inf ;
+pres_ar ;
+prt_a ;
+prt_d ;
+prt_t ; ! rare
+imp_prsptc ;
+sup ;
++V+PrfPrc:%> p7 ;
+
+!LEXICON 
+!+Inf: PASS ;
+!+Ind+Prs+1Sg: PASS ;
+!+Ind+Prs+2Sg: PASS ;
+!+Ind+Prs+3Sg: PASS ;
+!+Ind+Prs+Pl: PASS ;
+!+Ind+Prt+Sg: PASS ;
+!+Ind+Prt+Pl: PASS ;
+!+Imp+Sg: PASS ;
+!+Imp+Pl: PASS ;
+!+PrsPrc: PASS ;
+!+PrfPrc: PASS ;
+!+Sup: PASS ;
+
+
+
+! Middle lexicon
+
+LEXICON PASS
+ # ; ! Verbs as usual
++Pass:%^PASS%>st # ;
+
+LEXICON VANDI
+ # ; ! Verbs as usual
+ andi ; ! participles
+
+
+
+
+! =================== !
+! Perfect Participles !
+! =================== !
+
+
+
+
+LEXICON p18
+adj_a ;
+l18 ;
+
+LEXICON p26
+:%^EPH a_m_sg_n_null ;
+:%^EPH a_non_umlaut_obl ;
+:%^EPH a_umlaut ;
+l26 ;
+
+LEXICON p32
+:%^EPH adj_a ;
+l32 ;
+
+LEXICON p39
+adj_a ; !XXX check!
+l39 ;
+
+LEXICON p5
+adj_a ;
+adj_r_gen ;
+l5  ;
+
+LEXICON p6
+:%^EDH adj_a ; ! no ð deletion
+l6  ;
+
+LEXICON p7
+adj_a ;
+adj_r_gen ;
+l7  ;
+
+LEXICON p8
+        a_non_umlaut ;
+:%^UUML   a_umlaut ;
+adj_r_gen ;
+l8  ;
+
+
+
+
+

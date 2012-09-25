@@ -1,0 +1,2452 @@
+! =============== !
+! Noun morphology !
+! =============== !
+
+
+! ----------------- !
+! Basic noun lexica !
+! ----------------- !
+
+! Taken from the dictionary
+
+! The nominal morphology is added in three layers.
+! In this first one we add gender tags and morpho-
+! phonological diacritics.
+! The next two layers are for indefinite and definite
+! suffixes, respectively.
+
+! Compounds
+
+LEXICON R
++Cmpnd#:   Nouns ;
+           R- ;
+
+LEXICON R-
++Cmpnd#:%- Nouns ;
+
+
+LEXICON FINAL
++Cmpnd:%- # ; ! menningar- og granskingarskipan
+          # ;
+
+! Irregular
+
+LEXICON k0
++N+Msc+Sg: FINAL ; ! januar
+
+! Weak masculines.
+
+LEXICON k1/3e
+k1e ;
+k3e ;
+
+LEXICON k1/3
+k1 ;
+k3 ;
+
+LEXICON k1/4
+k1 ;
+k4 ;
+
+LEXICON k1e/48f !k1e/f84b Heini
+k1e ;
+k_flt48 ;
+
+LEXICON k1 ! risi 
+k1e ;
+k_flt1 ;
+
+LEXICON k1e
++N+Msc: W_M_SGNOM ;
++N+Msc: W_M_SGACC ;
++N+Msc: W_M_SGDAT ;
++N+Msc: W_M_SGGEN ;
+
+LEXICON k_flt1
++N+Msc: W_M_PLNOM ;
++N+Msc: W_M_PLACC ;
++N+Msc: W_M_PLDAT ;
++N+Msc: W_M_PLGEN ;
+
+
+LEXICON k1_3stem
++N+Msc: W_M_SGNOM ;
++N+Msc: W_M_SGACC ;
++N+Msc: W_M_SGDAT_mixed ;
++N+Msc: W_M_SGGEN ;
++N+Msc: W_M_PLNOM ;
++N+Msc: W_M_PLACC ;
++N+Msc: W_M_PLDAT ;
++N+Msc:%^UUML W_M_PLDAT ;
++N+Msc: W_M_PLGEN ;
+
+
+LEXICON k2 ! beiggi
++N+Msc:%^JI W_M_SGNOM ;
++N+Msc: W_M_SGACC ;
++N+Msc: W_M_SGDAT ;
++N+Msc: W_M_SGGEN ;
++N+Msc: W_M_PLNOM ;
++N+Msc: W_M_PLACC ;
++N+Msc: W_M_PLDAT ;
++N+Msc: W_M_PLGEN ;
+
+LEXICON k3 ! hagi
+k3e ;
+k_flt3 ;
+
+LEXICON k3e 
++N+Msc: W_M_SGNOM ;
++N+Msc: W_M_SGACC ;
++N+Msc: W_M_SGDAT ;
++N+Msc: W_M_SGGEN ;
+
+LEXICON k_flt3
++N+Msc: W_M_PLNOM ;
++N+Msc: W_M_PLACC ;
++N+Msc:%^UUML W_M_PLDAT ;
++N+Msc: W_M_PLGEN ;
+
+LEXICON k4 ! tanki
+ k3 ;	! Same u_umlaut, but nasal cns
+
+LEXICON k5 ! bóndi
++N+Msc:       W_M_SGNOM ;
++N+Msc:       W_M_SGACC ;
++N+Msc:       W_M_SGDAT ;
++N+Msc:       W_M_SGGEN ;
++N+Msc:%^IUML W_M_PLNOM_UR ;
++N+Msc:%^IUML W_M_PLACC_UR ;
++N+Msc:       W_M_PLDAT ;
++N+Msc:       W_M_PLGEN ;
+
+
+! Strong masculines
+
+LEXICON k6/7
+k6 ;
+k7 ;
+
+LEXICON k6/8
+k6 ;
+k8 ;
+
+LEXICON k6e/12e
+k6e ;
+k12e ;
+
+LEXICON k6e/19e
+k6e ;
+k19e ;
+
+LEXICON k7/6
+k7 ;
+k6 ;
+
+LEXICON k8/11
+k8 ;
+k11 ;
+
+LEXICON k8/17
+k8 ;
+k17 ;
+
+LEXICON k8/17e
+k8 ;
+k17e ;
+
+LEXICON k8/6
+k8 ;
+k6 ;
+
+LEXICON k9/16
+k9 ;
+k16 ;
+
+LEXICON k6 ! úlvur
+k6e ;
+k_flt6 ;
+
+LEXICON k6e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN ;
+
+LEXICON k_flt6
++N+Msc: S_M_PLNOM ;
++N+Msc: S_M_PLACC ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+
+LEXICON k7 ! sandur
+k7e ;
+k_flt7 ;
+
+LEXICON k7e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN ;
+
+
+LEXICON k_flt7
++N+Msc: S_M_PLNOM ;
++N+Msc: S_M_PLACC ;
++N+Msc:%^UUML S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k_flt8
+k_flt7 ;
+
+LEXICON k8e
+k7e ;
+
+LEXICON k8 ! garður
+ k7 ; ! Different u_umlaut
+ 
+LEXICON k_flt9
+k_flt6 ;
+
+LEXICON k9e
+k6e ;
+
+LEXICON k9
+ k6 ; ! Double consonant deletion in front of s
+ 
+LEXICON k10/11
+k10 ;
+k11 ;
+
+LEXICON k10
+k10e ;
+k_flt10 ;
+
+LEXICON k10e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN ;
+
+LEXICON k_flt10
++N+Msc: S_M_PLNOM ;
++N+Msc: S_M_PLACC ;
++N+Msc: S_M_PLDAT ; ! Double dative.
++N+Msc:%^UUML S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k11/18
+k11 ;
+k18 ;
+
+LEXICON k11 ! ísur
+k11e ;
+k_flt11 ;
+
+LEXICON k11e/17f
+k11e ;
+k_flt17 ;
+
+LEXICON k11e/26f
+k11e ;
+k_flt26 ;
+
+LEXICON k11e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN_NULL ;
+
+LEXICON k_flt11
++N+Msc: S_M_PLNOM ;
++N+Msc: S_M_PLACC ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+
+! ir_stems
+
+LEXICON k12/15
+k12 ;
+k15 ;
+
+LEXICON k12/45
+k12 ;
+k45 ;
+ 
+LEXICON k12/6f
+k12 ;
+k_flt6 ;
+
+LEXICON k12 ! vinur
+k12e ;
+k_flt12 ;
+
+LEXICON k12e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN_AR ;
+
+LEXICON k_flt12
++N+Msc: S_M_PLNOM_IR ;
++N+Msc: S_M_PLACC_IR ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k13e
+k12e ;
++N+Msc: S_M_SGDAT_NULL ;
+
+LEXICON k13 ! vegur
+ k12 ; ! As k12, plus a zero dative
++N+Msc: S_M_SGDAT_NULL ;
+
+LEXICON k14 ! staður
+k14e ;
+k_flt14 ;
+
+LEXICON k14e 
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGDAT_NULL ;
++N+Msc: S_M_SGGEN_AR ;
+
+LEXICON k_flt14
++N+Msc: S_M_PLNOM_IR ;
++N+Msc: S_M_PLACC_IR ;
++N+Msc:%^UUML S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k15/6
+k15 ;
+k6 ;
+
+LEXICON k15 ! gestur
+k15e ;
+k_flt15 ;
+
+LEXICON k15e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN ; !s_gen
+
+LEXICON k_flt15
++N+Msc: S_M_PLNOM_IR ;
++N+Msc: S_M_PLACC_IR ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k16/27
+k16 ;
+k27 ;
+
+LEXICON k16/9
+k16 ;
+k9 ;
+
+LEXICON k16e
+k15e ;
+
+LEXICON k16
+ k15 ; ! Double consonant
+
+LEXICON k_flt17
+k_flt15 ;
++N+Msc:%^UUML S_M_PLDAT ;
+
+LEXICON k17/8/6
+k17 ;
+k8 ;
+k6 ;
+
+LEXICON k17e
+ k15e ;
+
+LEXICON k17
+ k15 ; ! Standard, but also u_umlaut
++N+Msc:%^UUML S_M_PLDAT ;
+
+LEXICON k18/11
+k18 ;
+k11 ;
+
+LEXICON k18 ! dansur
+k18e ;
+k_flt18 ;
+
+LEXICON k18e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN_NULL ; ! s_final
+
+LEXICON k_flt18
++N+Msc: S_M_PLNOM_IR ;
++N+Msc: S_M_PLACC_IR ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+ 
+LEXICON k19/12
+k19 ;
+k12 ;
+
+LEXICON k19 ! meldur
+k19e ;
+k_flt19 ;
+
+LEXICON k19e/15e
+k19e ;
+k15e ;
+
+LEXICON k19e
++N+Msc: S_M_SGNOM_NULL ;
++N+Msc: S_M_SGACC ;
++N+Msc:%^EPH S_M_SGDAT ;
++N+Msc: S_M_SGGEN ;
+
+LEXICON k_flt19 
++N+Msc:%^EPH S_M_PLNOM ;
++N+Msc:%^EPH S_M_PLACC ;
++N+Msc:%^EPH S_M_PLDAT ;
++N+Msc:%^EPH S_M_PLGEN ;
+
+
+LEXICON k20 ! akur
+k20e ;
+k_flt20 ;
+
+LEXICON k20e
++N+Msc: S_M_SGNOM_NULL ;
++N+Msc: S_M_SGACC ;
++N+Msc:%^EPH S_M_SGDAT ;
++N+Msc: S_M_SGGEN ;
+
+LEXICON k_flt20
++N+Msc:%^EPH S_M_PLNOM ;
++N+Msc:%^EPH S_M_PLACC ;
++N+Msc:%^EPH%^UUML S_M_PLDAT ;
++N+Msc:%^EPH S_M_PLGEN ;
+
+LEXICON k_flt21
+k_flt19 ;
+
+LEXICON k21/20
+k21 ;
+k20 ;
+
+LEXICON k21e
+k19e ;
+
+LEXICON k21 ! stuðul
+ k19 ; ! Can't see the diffrence ==> but:
++N+Msc: S_M_SGDAT ; ! here is the difference
+
+LEXICON k22e 
+k19e ;
+
+LEXICON k22 ! himmal
+ k19 ;               ! himlinum etc.
++N+Msc: S_M_SGDAT ;  ! himmalinum
+
+LEXICON k23/19
+k23 ;
+k19 ;
+
+LEXICON k23e/19e
+k23e ;
+k19e ;
+
+LEXICON k23 ! róður
+k23e ;
+k_flt23 ;
+
+LEXICON k23e
++N+Msc: S_M_SGNOM_NULL ;
++N+Msc: S_M_SGACC ;
++N+Msc:%^EPH S_M_SGDAT ;
++N+Msc:%^EPH S_M_SGGEN_AR ;
+
+LEXICON k_flt23
++N+Msc:%^EPH S_M_PLNOM ;
++N+Msc:%^EPH S_M_PLACC ;
++N+Msc:%^EPH S_M_PLDAT ;
++N+Msc:%^EPH S_M_PLGEN ;
+
+LEXICON k24/25
+k24 ;
+k25 ;
+
+LEXICON k25/17f
+k25 ;
+k_flt17 ;
+
+LEXICON k25/24
+k25 ;
+k24 ;
+
+LEXICON k26/12
+k26 ;
+k12 ;
+
+LEXICON k26/45
+k26 ;
+k45 ;
+
+LEXICON k26/6f
+k26 ;
+k_flt6 ;
+
+LEXICON k27/25
+: k27 ;
+k25 ;
+
+LEXICON k28/12
+k28 ;
+k12 ;
+
+LEXICON k28/23
+k28 ;
+k23 ;
+
+LEXICON k28e/12e
+k28e ;
+k12e ;
+
+LEXICON k3/1
+k3 ;
+k1 ;
+
+LEXICON k32/9
+k32 ;
+k9 ;
+
+LEXICON k4/1
+k4 ;
+k1 ;
+
+LEXICON k45/6f
+k45 ;
+k_flt6 ;
+
+LEXICON k6/12e
+k6 ;
+k12e ;
+
+LEXICON k6/15
+k6 ;
+k15 ;
+
+LEXICON k6e/12
+k6e ;
+k12 ;
+
+LEXICON k3e/14f
+k3e ;
+k_flt14 ;
+
+LEXICON k24 ! fløttur
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc:%^OEA S_M_SGGEN_AR ;
++N+Msc: S_M_PLNOM ;
++N+Msc: S_M_PLACC ;
++N+Msc: S_M_PLDAT ;
++N+Msc:%^OEA S_M_PLGEN ;
+
+LEXICON k25 ! vøllur
+k25e ;
+k_flt25 ;
+
+LEXICON k25e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc:%^OEA S_M_SGGEN_AR ;
+
+LEXICON k_flt25
++N+Msc: S_M_PLNOM_IR ;
++N+Msc: S_M_PLACC_IR ;
++N+Msc: S_M_PLDAT ;
++N+Msc:%^OEA S_M_PLGEN ;
+
+LEXICON k26 ! táttur
+k26e ;
+k_flt26 ;
+
+LEXICON k26e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN_AR ;
+
+LEXICON k_flt26
++N+Msc:%^IUML S_M_PLNOM_IR ;
++N+Msc:%^IUML S_M_PLACC_IR ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k27 ! vøkstur
++N+Msc: S_M_SGNOM_NULL ;
++N+Msc: S_M_SGACC ;
++N+Msc:%^EPH S_M_SGDAT ;
++N+Msc:%^EPH%^OEA S_M_SGGEN_AR ;
++N+Msc:%^EPH S_M_PLNOM_IR ;
++N+Msc:%^EPH S_M_PLACC_IR ;
++N+Msc:%^EPH S_M_PLDAT ;
++N+Msc:%^EPH%^OEA S_M_PLGEN ;
+
+LEXICON k28 ! dráttur
+k28e ;
+k_flt28 ;
+
+LEXICON k28e
++N+Msc: S_M_SGNOM_NULL ;
++N+Msc: S_M_SGACC ;
++N+Msc:%^EPH S_M_SGDAT ;
++N+Msc:%^EPH S_M_SGGEN_AR ;
+
+LEXICON k_flt28
++N+Msc:%^EPH S_M_PLNOM_IR ;
++N+Msc:%^EPH S_M_PLACC_IR ;
++N+Msc:%^EPH S_M_PLDAT ;
++N+Msc:%^EPH S_M_PLGEN ;
+
+LEXICON k29 ! tráður
+
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGDAT_NULL ;
++N+Msc:%^IUMLr S_M_SGDAT ;
++N+Msc: S_M_SGGEN_AR ;
++N+Msc:%^IUML%>r S_M_PLNOM_IR ;
++N+Msc:%^IUML%>r S_M_PLACC_IR ;
++N+Msc: S_M_PLDAT ;
++N+Msc:%^IUML%>r S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k30 ! fótur
+k30e ;
+k_flt30 ;
+
+LEXICON  k30e 
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN_AR ;
+
+LEXICON k_flt30
++N+Msc:%^IUML S_M_PLNOM_UR ;
++N+Msc:%^IUML S_M_PLACC_UR ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k31 ! veggur
+k31e ;
+k_flt31 ;
+
+LEXICON k31e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc:j S_M_SGGEN_AR ;
+
+LEXICON k_flt31
++N+Msc: S_M_PLNOM_IR ;
++N+Msc: S_M_PLACC_IR ;
++N+Msc:j S_M_PLDAT ;
++N+Msc:j S_M_PLGEN ;
+
+LEXICON k32 ! ryggur
+k31e ;
+#+N+Msc: S_M_SGNOM ;
+#+N+Msc: S_M_SGACC ;
+#+N+Msc: S_M_SGDAT ;
+#+N+Msc:j S_M_SGGEN_AR ;
++N+Msc: S_M_SGGEN ;
+
+k_flt31 ;
+#+N+Msc: S_M_PLNOM_IR ;
+#+N+Msc: S_M_PLACC_IR ;
+#+N+Msc:j S_M_PLDAT ;
+#+N+Msc:j S_M_PLGEN ;
+
+LEXICON k33 ! hylur
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc:%>j S_M_SGGEN_AR ;
++N+Msc: S_M_SGGEN ;
++N+Msc:%>j S_M_PLNOM ;
++N+Msc:%>j S_M_PLACC ;
++N+Msc:%>j S_M_PLDAT ;
++N+Msc:%>j S_M_PLGEN ;
+
+LEXICON k34 ! drongur
+k34e ;
+k_flt34 ;
+
+LEXICON k34e
++N+Msc:%^EIO S_M_SGNOM ;
++N+Msc:%^EIO S_M_SGACC ;
++N+Msc:%^EIO S_M_SGDAT ;
++N+Msc: S_M_SGDAT ;
++N+Msc:%>j S_M_SGGEN_AR ;
++N+Msc:%^EIO S_M_SGGEN ;
+
+LEXICON k_flt34
++N+Msc: S_M_PLNOM_IR ;
++N+Msc: S_M_PLACC_IR ;
++N+Msc:%>j S_M_PLDAT ;
++N+Msc:%>j S_M_PLGEN ;
+
+
+LEXICON k35 ! bonkur
++N+Msc:%^EIO S_M_SGNOM ;
++N+Msc:%^EIO S_M_SGACC ;
++N+Msc:%^EIO S_M_SGDAT ;
++N+Msc: S_M_SGDAT ;
++N+Msc:%>j S_M_SGGEN_AR ;
++N+Msc:%^EIO S_M_SGGEN_AR ;
++N+Msc: S_M_PLNOM_IR ;
++N+Msc: S_M_PLACC_IR ;
++N+Msc:%>j S_M_PLDAT ;
++N+Msc:%>j S_M_PLGEN ;
+
+LEXICON k36 ! heyggjur
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc:%^GDEL S_M_SGGEN ;
++N+Msc: S_M_PLNOM ;
++N+Msc: S_M_PLACC ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k37 ! skógvur
+k37e ;
+k_flt37 ;
+
+LEXICON k37e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc:%^GVDEL S_M_SGGEN ;
+
+
+LEXICON k_flt37 
++N+Msc: S_M_PLNOM ;
++N+Msc: S_M_PLACC ;
++N+Msc:%^GVDEL S_M_PLDATm ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k38 ! bógvur
+k38e ;
+k_flt38 ;
+
+LEXICON k38e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc:%^IUML S_M_SGDAT ;
++N+Msc: S_M_SGDAT ;
++N+Msc:%^VDEL S_M_SGGEN ;
+
+LEXICON k_flt38
++N+Msc: S_M_PLNOM ;
++N+Msc:%^IUML S_M_PLNOM_IR ;
++N+Msc: S_M_PLACC ;
++N+Msc:%^IUML S_M_PLACC_IR ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k39 ! sjógvur
+k39e ;
+k_flt39 ;
+
+LEXICON k39e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT_2 ;
++N+Msc:%^GDEL S_M_SGGEN_AR ;
++N+Msc:%^GVDEL S_M_SGGEN ;
+
+LEXICON k_flt39
++N+Msc: S_M_PLNOM ;
++N+Msc: S_M_PLACC ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k40 ! hógvur
+k40e ;
+k_flt40 ;
+
+LEXICON k40e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc:%^GDEL S_M_SGGEN;
+
+LEXICON k_flt40
++N+Msc: S_M_PLNOM ;
++N+Msc: S_M_PLACC ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k41 ! maður
+k41e ;
+k_flt41 ;
+
+LEXICON k41e
++N+Msc+Sg+Nom:maður DF_N_SGm ;
+             :mann k41_obl ;
++N+Msc+Pl+Dat:monn%>u DF_D_PL ;
+
+LEXICON k41_obl
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN ;
+
+LEXICON k_flt41
++N+Msc:menn S_M_PLNOM_NULL_I_IR ;
++N+Msc:menn S_M_PLACC_NULL_I_IR ;
++N+Msc:mann S_M_PLGEN ;
+
+LEXICON k42 ! dagur
+k42e ;
+k_flt42 ;
+
+LEXICON k42e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc:%^IUML S_M_SGDAT ;
++N+Msc: S_M_SGGEN ;
+
+LEXICON k_flt42
++N+Msc: S_M_PLNOM ;
++N+Msc: S_M_PLACC ;
++N+Msc:%^UUML S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k43 ! faðir
+k43e ;
+k_flt43 ;
+
+LEXICON k43e
+!+N+Msc: S_M_SGNOM_NULL ;
+!+N+Msc: S_M_SGACC ;
+!+N+Msc: S_M_SGDAT_NULL ;
+!+N+Msc: S_M_SGGEN ;
+
++N+Msc:faðir S_M_SGNOM_NULL ;
++N+Msc:faðir S_M_SGACC ;
++N+Msc:faðir S_M_SGDAT_NULL ;
++N+Msc:faðir S_M_SGGEN ;
+
+LEXICON k_flt43
+!+N+Msc:%^IUML S_M_PLNOM ;
+!+N+Msc:%^IUML S_M_PLACC ;
+!+N+Msc:%^IUML S_M_PLDAT ;
+!+N+Msc:%^IUML S_M_PLGEN ;
+
++N+Msc:fedr S_M_PLNOM ;
++N+Msc:fedr S_M_PLACC ;
++N+Msc:fedr S_M_PLDAT ;
++N+Msc:fedr S_M_PLGEN ;
+
+
+LEXICON k44 ! bróðir, stem is bróð
++N+Msc+Sg+Nom:ir DF_N_SGm ;
+            :ur k44_obl ;
+
+LEXICON k44_obl
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT_NULL ;
++N+Msc: S_M_SGGEN_NULL ;
+k_flt44 ;
+
+LEXICON k_flt44f
+k_flt44 ;
+
+LEXICON k_flt44
++N+Msc:%^IUML S_M_PLNOM_NULL ;
++N+Msc:%^IUML S_M_PLACC_NULL ;
++N+Msc:%^EPH%^IUML S_M_PLDAT ;
++N+Msc:%^EPH%^IUML S_M_PLGEN ;
+
+LEXICON k45 ! spónur
+k45e ;
+k_flt45 ;
+
+LEXICON k45e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN_AR ;
+
+LEXICON k_flt45
++N+Msc:%^IUML S_M_PLNOM_IR ;
++N+Msc:%^IUML S_M_PLACC_IR ;
++N+Msc:%^IUML S_M_PLDAT ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k46 ! fjørður ! XXX start her.
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc:%^IUML S_M_SGDAT ;
++N+Msc:%^OEA S_M_SGGEN_AR ;
++N+Msc:%^IUML S_M_PLNOM_IR ;
++N+Msc:%^IUML S_M_PLACC_IR ;
++N+Msc: S_M_PLDAT ;
++N+Msc:%^IUML S_M_PLDAT ;
++N+Msc:%^OEA S_M_PLGEN ;
+
+LEXICON k47 ! sonur
+k47e ;
+k_flt47 ;
+
+LEXICON k47e
++N+Msc: S_M_SGNOM ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc:%^IUML S_M_SGDAT ;
++N+Msc: S_M_SGGEN_AR ;
+
+LEXICON k_flt47
++N+Msc:%^IUML S_M_PLNOM_IR ;
++N+Msc:%^IUML S_M_PLACC_IR ;
++N+Msc: S_M_PLDAT ;
++N+Msc:%^IUML S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k48 ! hamar
+k48e ;
+k_flt48 ;
+
+LEXICON k48e
++N+Msc: S_M_SGNOM_NULL ;
++N+Msc: S_M_SGACC ;
++N+Msc:%^EPH S_M_SGDAT ;
++N+Msc: S_M_SGGEN ;
+
+LEXICON k_flt48
++N+Msc:%^EPH S_M_PLNOM ;
++N+Msc:%^EPH S_M_PLACC ;
++N+Msc:%^EPH%^UUML S_M_PLDAT ;
++N+Msc:%^EPH S_M_PLDAT ;
++N+Msc:%^EPH S_M_PLGEN ;
+
+LEXICON k49 ! verkur
+k49e ;
+k_flt49 ;
+
+LEXICON k49e
++N+Msc:%^JDEL S_M_SGNOM ;
++N+Msc:%^JDEL S_M_SGACC ;
++N+Msc:%^JDEL S_M_SGDAT ;
++N+Msc:%^JDEL S_M_SGGEN ;
+
+LEXICON k_flt49
++N+Msc:%^JDEL S_M_PLNOM_IR ;
++N+Msc:%^JDEL S_M_PLACC_IR ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k50 ! skjøldur (non_poetic)
++N+Msc: S_M_SGNOM_NULL ;
++N+Msc: S_M_SGACC ;
++N+Msc:%^EPH S_M_SGDAT ;
++N+Msc:%^EPH%^OEA S_M_SGGEN_AR ;
++N+Msc:%^EPH S_M_PLNOM ;
++N+Msc:%^EPH S_M_PLACC ;
++N+Msc:%^EPH S_M_PLDAT ;
++N+Msc:%^EPH%^OEA S_M_PLGEN ;
+
+LEXICON k51 ! luður
++N+Msc:ð S_M_SGNOM ;
++N+Msc:nn S_M_SGACC ;
++N+Msc:nn S_M_SGDAT ;
++N+Msc:nn S_M_SGGEN ;
++N+Msc:nn S_M_PLNOM ;
++N+Msc:nn S_M_PLACC ;
++N+Msc:nn S_M_PLDAT ;
++N+Msc:nn S_M_PLGEN ;
+
+LEXICON k52 ! primus
+k52e ;
+k_flt52 ;
+
+LEXICON k52e
++N+Msc: S_M_SGNOM_NULL ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN ;
+
+LEXICON k_flt52
++N+Msc: S_M_PLNOM ;
++N+Msc: S_M_PLACC ;
++N+Msc: S_M_PLDAT ;
++N+Msc: S_M_PLGEN ;
+
+LEXICON k53 ! aðal
++N+Msc: S_M_SGNOM_NULL ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN ;
+
+
+! Feminines
+! __________
+
+LEXICON kv1/2
+kv1 ;
+kv2 ;
+
+LEXICON kv1/6f
+kv1 ;
+kv6 ;
+
+LEXICON kv1 ! genta
+kv1e ;
+kv_flt1 ;
+
+LEXICON kv1e
++N+Fem: W_F_SGNOM ;
++N+Fem: W_F_SGOBL ;
+
+LEXICON kv_flt1
++N+Fem: F_PLNA_UR ;
++N+Fem: F_PLDAT ;
++N+Fem: F_PLGEN ;
+
+LEXICON kv2/22
+kv2 ;
+kv22 ;
+
+
+LEXICON kv2/6
+kv2 ;
+kv6 ;
+
+LEXICON kv2/27
+kv2 ;
+kv27 ;
+
+LEXICON kv2/3
+kv2 ;
+kv3 ;
+
+LEXICON kv2e/17e
+kv2e ;
+kv17e ;
+
+LEXICON kv2 ! bygd
+kv2e ;
+kv_flt2 ;
+
+LEXICON kv_bd2e
+kv2e ;
+
+LEXICON kv2e
++N+Fem: S_F_SGNAD ;
++N+Fem: S_F_SGGEN ;
+
+LEXICON kv_flt2
++N+Fem: F_PLNA_IR ;
++N+Fem: F_PLDAT ;
++N+Fem: F_PLGEN ;
+
+LEXICON kv3/2
+kv3 ;
+kv2 ;
+
+LEXICON kv3/5
+kv3 ;
+kv5 ;
+
+LEXICON kv3/7
+kv3 ;
+kv7 ;
+
+LEXICON kv3 ! søgn
+kv3e ;
+kv_flt3 ;
+
+LEXICON kv3e
++N+Fem: S_F_SGNAD ;
++N+Fem:%^OEA S_F_SGGEN ;
+
+LEXICON kv_flt3 
++N+Fem:%^OEA F_PLNA_IR ;
++N+Fem:%^OEA F_PLDAT ;
++N+Fem:      F_PLDAT ;
++N+Fem:%^OEA F_PLGEN ;
+
+
+LEXICON kv4 ! fonn
+kv4e ;
+kv_flt4 ;
+
+LEXICON kv4e
++N+Fem: S_F_SGNAD ;
++N+Fem:%^OA S_F_SGGEN ;
+
+LEXICON kv_flt4
++N+Fem:%^OA F_PLNA_IR ;
++N+Fem:     F_PLDAT ;
++N+Fem:%^OA F_PLGEN ;
+
+LEXICON kv5 ! øld
+kv5e ;
+kv_flt5 ;
+
+LEXICON kv5e
++N+Fem:      S_F_SGNAD ;
++N+Fem:%^OEA S_F_SGGEN ;
+
+LEXICON kv_flt5
++N+Fem:      F_PLNA_IR ;
++N+Fem:      F_PLDAT ;
++N+Fem:%^OEA F_PLGEN ;
+
+LEXICON kv6/2
+kv6 ;
+kv2 ;
+
+LEXICON kv6 ! ár
+kv6e ;
+kv_flt6 ;
+
+LEXICON kv6e
++N+Fem: S_F_SGNAD ;
++N+Fem: S_F_SGGEN ;
+
+LEXICON kv_flt6
++N+Fem: F_PLNA_AR ;
++N+Fem: F_PLDAT ;
++N+Fem: F_PLGEN ;
+
+LEXICON kv7/3
+kv7 ;
+kv3 ;
+
+LEXICON kv7 ! vørr
+kv7e ;
+kv_flt7 ;
+
+LEXICON kv7e
++N+Fem:       S_F_SGNAD ;
++N+Fem:%^OEA  S_F_SGGEN ;
+
+LEXICON kv_flt7
++N+Fem:%^OEA  F_PLNA_AR ;
++N+Fem:       F_PLDAT ;
++N+Fem:%^OEA  F_PLDAT ;
++N+Fem:%^OEA  F_PLGEN ;
+
+LEXICON kv8 ! egg
+kv8e ;
+kv_flt8 ;
+
+LEXICON kv8e
++N+Fem:%^JDEL S_F_SGNAD ;
++N+Fem:       S_F_SGGEN ;
+
+LEXICON kv_flt8
++N+Fem:       F_PLNA_AR ;
++N+Fem:       F_PLDAT ;
++N+Fem:       F_PLGEN ;
+
+LEXICON kv9/2
+kv9 ;
+kv2 ;
+
+LEXICON kv9 ! stong
+kv9e ;
+kv_flt9 ;
+
+LEXICON kv9e
++N+Fem:       S_F_SGNAD ;
++N+Fem:%^OA   S_F_SGGEN ;
+
+LEXICON kv_flt9
++N+Fem:%^eIUML F_PLNA_UR ;
++N+Fem:       F_PLDAT ;
++N+Fem:%^OA   F_PLGEN ;
+
+LEXICON kv10 ! dorg
++N+Fem:       S_F_SGNAD ;
++N+Fem:       S_F_SGGEN ;
++N+Fem:%^IUML F_PLNA_UR ;
++N+Fem:       F_PLDAT ;
++N+Fem:       F_PLGEN ;
+
+LEXICON kv11 ! song
+kv11e ;
+kv_flt11 ;
+
+LEXICON kv11e
++N+Fem:%^JDEL S_F_SGNAD ;
++N+Fem:%^JDEL S_F_SGGEN ;
++N+Fem:%^EIO  S_F_SGGEN ;
+
+
+LEXICON kv_flt11
++N+Fem:%^EIO  F_PLNA_IR ;
++N+Fem:%^IUML F_PLNA_UR ;
++N+Fem:%^EIO  F_PLDAT ;
++N+Fem:%^EIO  F_PLGEN ;
+
+LEXICON kv12 ! bók
+kv12e ;
+kv_flt12 ;
+
+LEXICON kv12e 
++N+Fem:       S_F_SGNAD ;
++N+Fem:       S_F_SGGEN ;
+
+LEXICON kv12f
+kv_flt12 ;
+
+LEXICON kv_flt12 
++N+Fem:%^IUML F_PLNA_UR ;
++N+Fem:       F_PLDAT ;
++N+Fem:       F_PLGEN ;
+
+LEXICON kv13 ! mørk
+kv13e ;
+kv_flt13 ;
+
+LEXICON kv13e
++N+Fem:       S_F_SGNAD ;
++N+Fem:%^OEA  S_F_SGGEN ;
+
+LEXICON kv_flt13
++N+Fem:%^IUML F_PLNA_UR ;
++N+Fem:       F_PLDAT ;
++N+Fem:%^OEA  F_PLGEN ;
+
+LEXICON kv14 ! nátt
+kv14e ;
+kv_flt14 ;
+
+LEXICON kv14e
++N+Fem:       S_F_SGNAD ;
++N+Fem:       S_F_SGGEN ;
+
+LEXICON kv_flt14
++N+Fem:%^IUML F_PLNA_UR ; ! XXX one t, nætur
++N+Fem:       F_PLDAT ;
++N+Fem:       F_PLGEN ;
+
+LEXICON kv15 ! tonn
+kv15e ;
+kv_flt15 ;
+
+LEXICON kv15e
++N+Fem:       S_F_SGNAD ;
++N+Fem:%^OA  S_F_SGGEN ;
+
+LEXICON kv_flt15f
+kv_flt15 ;
+
+LEXICON kv_flt15
++N+Fem:%^IUML F_PLNA_NULL ;
++N+Fem:       F_PLDAT ;
++N+Fem:%^OEA  F_PLGEN ;
+
+LEXICON kv16 ! mús
++N+Fem:       S_F_SGNAD ;
++N+Fem:       S_F_SGGEN ;
++N+Fem:%^IUML F_PLNA_NULL ;
++N+Fem:       F_PLDAT ;
++N+Fem:       F_PLGEN ;
+
+LEXICON kv17 ! mastur
+kv17e ;
+kv_flt17 ;
+
+LEXICON kv17e
++N+Fem: S_F_SGNAD ;
++N+Fem:%^EPH S_F_SGGEN ;
+
+LEXICON kv_flt17
++N+Fem:%^EPH F_PLNA_AR ;
++N+Fem:%^EPH F_PLDAT ;
++N+Fem:%^EPH F_PLGEN ;
+
+LEXICON kv18/17
+kv18 ;
+kv17 ;
+
+LEXICON kv18 ! brúður
++N+Fem: S_F_SGNAD ;
++N+Fem:%^EPH%^RDEL S_F_SGGEN ;
++N+Fem:%^EPH F_PLNA_AR ;
++N+Fem:%^EPH F_PLDAT ;
++N+Fem:%^EPH F_PLGEN ;
+
+
+LEXICON kv19 ! fjøður
+kv19e ;
+kv_flt19 ;
+
+LEXICON kv19e
++N+Fem: S_F_SGNAD ;
++N+Fem:%^EPH S_F_SGGEN ;
+
+LEXICON kv_flt19f
+kv_flt19f ;
+
+LEXICON kv_flt19
++N+Fem:%^EPH%^OEA F_PLNA_AR ;
++N+Fem:%^EPH F_PLDAT ;
++N+Fem:%^EPH%^OEA F_PLDAT ;
++N+Fem:%^EPH%^OEA F_PLGEN ;
+
+
+LEXICON kv20 ! ær (only)
++N+Fem:ær S_F_SGNAD ;
++N+Fem:ær S_F_SGGEN_NULL ;
++N+Fem:ær F_PLNA_NULL ;
++N+Fem:ó F_PLDAT ;
++N+Fem:á F_PLGEN ;
+
+
+LEXICON kv21 ! gjógv
++N+Fem: S_F_SGNAD ;
++N+Fem: S_F_SGGEN ;
++N+Fem: F_PLNA_IR ;
++N+Fem: F_PLDAT ;
++N+Fem: F_PLGEN ;
+
+
+LEXICON kv22 ! klógv
+kv22e ;
+kv_flt22 ;
+
+LEXICON kv22e
++N+Fem: S_F_SGNAD ;
++N+Fem: S_F_SGGEN ;
+
+LEXICON kv_flt22
++N+Fem: F_PLNA_IR ;
++N+Fem: F_PLDAT ;
++N+Fem: F_PLGEN ;
+
+
+LEXICON kv23 ! trúgv
+kv23e ;
+kv_flt23 ;
+
+LEXICON kv23e
++N+Fem: S_F_SGNAD ;
++N+Fem: S_F_SGGEN ;
+
+LEXICON kv_flt23
++N+Fem: F_PLNA_IR ;
++N+Fem: F_PLDAT ;
++N+Fem: F_PLGEN ;
+
+LEXICON kv24/2
+kv24 ;
+kv2 ;
+
+LEXICON kv24/6
+kv24 ;
+kv6 ;
+
+LEXICON kv24 ! kúgv
+kv24e ;
+kv_flt24 ;
+
+LEXICON kv24e
++N+Fem: S_F_SGNAD ;
++N+Fem: S_F_SGGEN ;
+
+LEXICON kv_flt24f
+kv_flt24 ;
+
+LEXICON kv_flt24
++N+Fem: F_PLNA_IR ;
++N+Fem: F_PLDAT ;
++N+Fem: F_PLGEN ;
+
+
+LEXICON kv25 ! gás
++N+Fem: S_F_SGNAD ;
++N+Fem: S_F_SGGEN ;
++N+Fem: F_PLNA_IR ;
++N+Fem: F_PLDAT ;
++N+Fem: F_PLGEN ;
+
+
+LEXICON kv26 ! tá
+kv26e ;
+kv_flt26 ;
+
+LEXICON kv26e
++N+Fem: S_F_SGNAD ;
++N+Fem: S_F_SGGEN ;
+
+LEXICON kv_flt26
++N+Fem: F_PLNA_IR ;
++N+Fem: F_PLDAT ;
++N+Fem: F_PLGEN ;
+
+
+LEXICON kv27 ! rás
++N+Fem: S_F_SGNAD ;
++N+Fem: S_F_SGGEN ;
++N+Fem: F_PLNA_IR ;
++N+Fem: F_PLDAT ;
++N+Fem: F_PLGEN ;
+
+
+LEXICON kv28 ! dyr
+! kv28e ;
+kv_flt28 ;
+
+!LEXICON kv28e ! no ex
+!# ;
+
+LEXICON kv_flt28
++N+Fem+Pl:%^IUML F_PLNA_NULL ;
++N+Fem+Pl: F_PLDAT ;
++N+Fem+Pl: F_PLGEN ;
+
+LEXICON kv29 ! móðir
++N+Fem+Sg:móð kv29e ;
++N+Fem+Pl:møð kv_flt29 ;
+
+
+LEXICON kv29e 
++Nom:%>ir DF_N_SGf_S ;
++Acc:%>ur DF_A_SGf_S ;
++Dat:%>ur DF_D_SGf_S ;
++Gen:%>ur DF_G_SGf_S ;
+
+LEXICON kv_flt29 
++Nom:%>ur DF_NA_PLf ;
++Acc:%>ur DF_NA_PLf ;
++Dat:r%>u DF_D_PL ;
++Gen:r%>a DF_G_PL ;
+
+LEXICON kv30 ! dóttir
++N+Fem+Sg:dótt kv30e ;
++N+Fem+Pl:døt  kv_flt30 ;
+
+LEXICON kv30e ! Remove for kv29e?
+kv29e ;
+
+LEXICON kv_flt30
+kv_flt29 ;
+
+LEXICON kv31 ! systir
++N+Fem+Sg+Nom:%>ir DF_N_SGf_S ;
++N+Fem+Sg+Acc:%>ur DF_A_SGf_S ;
++N+Fem+Sg+Dat:%>ur DF_D_SGf_S ;
++N+Fem+Sg+Gen:%>ur DF_G_SGf_S ;
++N+Fem+Sg+Nom:%>rar DF_NA_PLf ;
++N+Fem+Sg+Acc:%>rar DF_NA_PLf ;
++N+Fem+Sg+Dat:%>rum DF_D_PL ;
++N+Fem+Sg+Gen:%>ra DF_G_PL ;
+
+LEXICON kv32 ! mýri
+kv32e ;
+kv_flt32 ;
+
+LEXICON kv32e
++N+Fem+Sg+Nom:%>i FINAL ;
++N+Fem+Sg+Acc:%>i FINAL ;
++N+Fem+Sg+Dat:%>i FINAL ;
++N+Fem+Sg+Gen:%>ar FINAL ;
+
+LEXICON kv_flt32
++N+Fem+Pl+Nom:%>ar FINAL ;
++N+Fem+Pl+Acc:%>ar FINAL ;
++N+Fem+Pl+Dat:%>um FINAL ;
++N+Fem+Pl+Gen:%>a FINAL ;
+
+
+LEXICON kv33 ! gleði
+kv33e ;
+kv_flt33 ;
+
+LEXICON kv33e 
++N+Fem+Sg+Nom: FINAL ;
++N+Fem+Sg+Acc: FINAL ;
++N+Fem+Sg+Dat: FINAL ;
++N+Fem+Sg+Gen: FINAL ;
+
+LEXICON kv_flt33 
++N+Fem+Sg+Nom:%>r FINAL ;
++N+Fem+Sg+Acc:%>r FINAL ;
+
+LEXICON kv34 ! kraft
+kv34e;
+kv_flt34 ;
+
+LEXICON kv34e
++N+Fem: S_F_SGNAD ;
++N+Fem: S_F_SGGEN ;
+
+LEXICON kv_flt34 
++N+Fem:%^IUML F_PLNA_IR ;
++N+Fem:%^IUML F_PLDAT ;
++N+Fem:%^IUML F_PLGEN ;
+
+LEXICON h1 ! eyga
+h1e ; !eyga
+h_flt1 ;
+
+LEXICON h1e
++N+Neu+Sg+Nom:%>a DF_NA_SGn_indef ;
++N+Neu+Sg+Nom:%>a DF_NA_SGn_def ;
++N+Neu+Sg+Acc:%>a DF_NA_SGn_indef ;
++N+Neu+Sg+Acc:%>a DF_NA_SGn_def ;
++N+Neu+Sg+Dat:%>a DF_D_SGn ;
++N+Neu+Sg+Gen:%>a DF_G_SGn_a ;
+
+LEXICON h_flt1
++N+Neu: N_PLNA_u_ur ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG_na ;
+
+LEXICON h2 ! hjarta
+              h1e ;
++N+Neu:%^UUML N_PLNA_u_ur ;
++N+Neu:%^UUML N_PLD ;
++N+Neu:%^UUML N_PLG_na ;
+
+LEXICON h3/5
+h3 ;
+h5 ;
+
+LEXICON h3/22
+h3 ;
+h22 ;
+
+LEXICON h3 ! orð
+ h3e ;
+ h_flt3 ;
+
+LEXICON h3e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt3f
+h_flt3 ;
+
+LEXICON h_flt3
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+LEXICON h4/5
+h4 ;
+h5 ;
+
+LEXICON h4 ! boð
+ h4e ;
+ h_flt4 ;
+
+LEXICON h4e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGG ;
++N+Neu: S_N_SGDG_is ; 
+
+LEXICON h_flt4
++N+Neu: N_PLNA ;
++N+Neu: N_PLD_0_U ; ! liðnum
+!+N+Neu: N_PLD ;    ! liðunum, comment in if OK
++N+Neu: N_PLG ;
+
+LEXICON h5/3
+h5 ;
+h3 ;
+
+LEXICON h5 ! barn
+ h5e ;
+ h_flt5 ;
+
+LEXICON h5e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt5
++N+Neu:%^UUML N_PLNA ;
++N+Neu:%^UUML N_PLD ;
++N+Neu: N_PLG ;
+
+LEXICON h6/4
+h6 ;
+h4 ;
+
+LEXICON h6 ! lag
+ h6e ;
+ h_flt6 ;
+
+LEXICON h6e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGG ;
++N+Neu: S_N_SGDG_is ; ! blaðinum
++N+Neu: S_N_SGD ; ! blaðnum XXX check
+
+LEXICON h_flt6
++N+Neu:%^UUML N_PLNA ;
++N+Neu:%^UUML N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h7 ! bræv
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
++N+Neu:%^UUML N_PLNA ;
++N+Neu:%^UUML N_PLD ;
++N+Neu: N_PLG ;
+
+LEXICON h8 ! land
+ h8e ;
+ h_flt8 ;
+
+LEXICON h8e ! land
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt8 ! land
++N+Neu:%^UUML N_PLNA ;
++N+Neu:%^UUML N_PLD ;
++N+Neu: N_PLG ;
+
+LEXICON h9/10
+h9 ;
+h10 ;
+
+LEXICON h9 ! blikk
+h9e ;
+h_flt9 ;
+
+LEXICON h9e 
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt9
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+LEXICON h10 ! fall
+ h10e ;
+ h_flt10 ;
+
+LEXICON h10e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt10
++N+Neu:%^UUML N_PLNA ;
++N+Neu:%^UUML N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h11e/22f
+h11e ;
+h_flt22 ;
+
+LEXICON h11 ! hús
+h11e ;
+h_flt11 ;
+
+LEXICON h11e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt11
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+LEXICON h12 ! glas
+h12e ;
+h_flt12 ;
+
+LEXICON h12e 
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt12
++N+Neu:%^UUML N_PLNA ;
++N+Neu:%^UUML N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h13 ! setur
+h13e ;
+h_flt13 ;
+
+LEXICON h13e 
++N+Neu:%^EPH S_N_SGNA ;
++N+Neu:%^EPH S_N_SGDG_is ;
+
+LEXICON h_flt13
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h14 ! pistr
+h14e ;
+h_flt14 ;
+
+LEXICON h14e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt14
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h15 ! tjaldur
+h15e ;
+h15f ;
+
+LEXICON h15e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h15f
++N+Neu:%^UUML N_PLNA ;
++N+Neu:%^UUML N_PLD ;
++N+Neu: N_PLG ;
+
+! Start here.
+LEXICON h16 ! skýggj
+h16e ;
+h_flt16 ;
+
+LEXICON h16e
++N+Neu: S_N_SGNA ;
++N+Neu:%^JI S_N_SGD_i ;    !skýggi
++N+Neu: S_N_SGD ;          !skýggj
++N+Neu:%^GGDEL S_N_SGG_s ; !krýs
+
+LEXICON h_flt16f
+h_flt16 ;
+
+LEXICON h_flt16
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+LEXICON h17 ! kriggj
+h17e ;
+h_flt17 ;
+
+LEXICON h17e
++N+Neu: S_N_SGNA ;
++N+Neu:%^JI S_N_SGD_i ;    !kríggi
++N+Neu: S_N_SGD ;          !kríggj
++N+Neu:%^GDEL S_N_SGG_s ;  !krígs
+
+LEXICON h_flt17
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h18 ! týggi
+h18e ;
+h_flt18 ;
+
+LEXICON h18e
++N+Neu: i_N_SGNA ;
++N+Neu: i_N_SGDG_is ;
+
+LEXICON h_flt18
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h19 ! prógv
+h19e ;
+h_flt19 ;
+
+LEXICON h19e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt19
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h20 ! búgv
+h20e ;
+h_flt20 ;
+
+LEXICON h20e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGD_i ;
++N+Neu:%^GVDEL S_N_SGG_s ;
+
+LEXICON h_flt20
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h21 ! plógv
+h21e ;
+h_flt21 ;
+
+LEXICON h21e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt21
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h22 ! ber
+h22e ;
+h_flt22 ;
+
+LEXICON h22e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt22
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h23 ! egg
+h23e ;
+h_flt23 ;
+
+LEXICON h23e 
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt23
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h24 ! kvæði
+h24e ;
+h_flt24r ;
+
+LEXICON h_flt24e
+h24e ;
+
+LEXICON h24e
++N+Neu: i_N_SGNA ;
++N+Neu: S_N_SGD_i ;
++N+Neu: S_N_SGG_is ;
+
+LEXICON h_flt24r
++N+Neu: N_PLNA_i_ir ;
+!          h_flt24 ; ! Ordinary pl
+!+N+Neu:r N_PLNA ;   ! "Danish" r pl.
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+LEXICON h_flt24
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h25 ! merki
+h25e ;
+h_flt25 ;
+
+LEXICON h25e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt25
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h26 ! tiðindi
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h27 ! systkin
+h27e ;
+h_flt27 ;
+
+LEXICON h27e
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt27
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h28 ! bakari
+h28e ;
+h_flt28 ;
+
+LEXICON h28e
++N+Neu: S_N_SGNA ;  !bakarí
++N+Neu: S_N_SGD ;   ! bakarí
++N+Neu: S_N_SGD_i ; ! bakaríi
++N+Neu: S_N_SGG_s ; ! bakarís
+
+LEXICON h_flt28
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h29 ! kamar
+h29e ;
+h_flt29 ;
+
+LEXICON h29e 
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt29 
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+LEXICON h30 ! summar
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h31 ! nummar
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h32 ! høvd
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h33 ! høvur
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+
+LEXICON h34 ! fæ
++N+Neu: S_N_SGNA ;
++N+Neu: S_N_SGDG_is ;
++N+Neu: N_PLNA ;
++N+Neu: N_PLD ;
++N+Neu: N_PLG ;
+
+LEXICON h42
++N+Neu: FINAL ; !check.
+
+
+! =============== !
+! Case inflection !
+! =============== !
+
+! This is the second layer. Here we do the indefinite
+! forms.
+
+! Masculine forms
+! _______________
+
+! Weak case suffixes.
+ 
+LEXICON W_M_SGNOM
++Sg+Nom:%>i DF_N_SGm_indef ;
++Sg+Nom:%>i DF_N_SGm_def ;
+
+LEXICON W_M_SGACC
++Sg+Acc:%>a   DF_A_SGm ; ! risan
+
+LEXICON W_M_SGDAT
++Sg+Dat:%>a  DF_D_SGm ;
+
+LEXICON W_M_SGDAT_mixed !felagnum
++Sg+Dat+Indef:%>a  FINAL ;
++Sg+Dat+Def:%>num FINAL ;
++Sg+Dat+Def:%>num R ;
+
+LEXICON W_M_SGGEN
++Sg+Gen+Indef:%>a FINAL ;
++Sg+Gen+Def:%>ans FINAL ; !XXX ans?
++Sg+Gen+Def:%>ans R ;
+
+
+! Plural
+
+LEXICON W_M_PLNOM
++Pl+Nom:%>ar DF_N_PLm ;
+
+LEXICON W_M_PLNOM_UR
++Pl+Nom:%>ur DF_N_PLm ;
+
+LEXICON W_M_PLACC
++Pl+Acc:%>ar DF_A_PLm ;
+
+LEXICON W_M_PLACC_UR
++Pl+Acc:%>ur DF_A_PLm ;
+
+LEXICON W_M_PLDAT
++Pl+Dat:%>u DF_D_PL ;
+
+LEXICON W_M_PLGEN
++Pl+Gen:%>a DF_G_PL ;
+
+
+
+! Strong case suffixes
+! ____________________
+
+
+
+LEXICON DF_NA_SGm_S ! luður
++Sg+Nom: DF_N_SGm ;
++Sg+Acc: DF_A_SGm_indef ;
++Sg+Acc: DF_A_SGm_def ;
+
+
+! Nominative Sg
+
+LEXICON S_M_SGNOM
++Sg+Nom:%>ur DF_N_SGm_indef ;
++Sg+Nom:%>uri DF_N_SGm_def ;
+
+LEXICON S_M_SGNOM_NULL
++Sg+Nom: DF_N_SGm ;
++Sg+Nom: DF_N_SGm ;
+
+
+! Accusative Sg
+
+LEXICON S_M_SGACC
++Sg+Acc: DF_A_SGm_indef ;
++Sg+Acc:%>i DF_A_SGm_def ; !sandin
+
+
+! Dative Sg
+
+LEXICON S_M_SGDAT
++Sg+Dat:%>i DF_D_SGm ;
+
+LEXICON S_M_SGDAT_2
++Sg+Dat:%>i DF_D_SGm ;
++Sg+Dat+Def:%^GVDEL%>num #;
+
+LEXICON S_M_SGDAT_NULL
++Sg+Dat: DF_D_SGm ;
+
+! Genitive Sg
+
+LEXICON S_M_SGGEN
++Sg+Gen:%>s DF_G_SGm ;
+
+LEXICON S_M_SGGEN_NULL
++Sg+Gen: DF_G_SGm ;
+
+LEXICON S_M_SGGEN_AR
++Sg+Gen:%>ar DF_G_SGm ;
+
+! Plural forms
+
+! Nominative
+
+LEXICON S_M_PLNOM
++Pl+Nom:%>ar DF_N_PLm ;
+
+LEXICON S_M_PLNOM_IR
++Pl+Nom:%>ir DF_N_PLm ;
+
+LEXICON S_M_PLNOM_UR
++Pl+Nom:%>ur DF_N_PLm ;
+
+LEXICON S_M_PLNOM_NULL
++Pl+Nom:    DF_N_PLm_indef ;
++Pl+Nom:%>i DF_N_PLm_def ;
+
+LEXICON S_M_PLNOM_NULL_IR
++Pl+Nom:     DF_N_PLm_indef ;
++Pl+Nom:%>ir DF_N_PLm_def ;
+
+LEXICON S_M_PLNOM_NULL_I_IR
++Pl+Nom:     DF_N_PLm_indef ;
++Pl+Nom:%>i DF_N_PLm_def ; !SUB Bible
++Pl+Nom:%>ir DF_N_PLm_def ;
+
+
+! Accusative
+
+LEXICON S_M_PLACC
++Pl+Acc:%>ar DF_A_PLm ;
+
+LEXICON S_M_PLACC_IR
++Pl+Acc:%>ir DF_A_PLm ;
+
+LEXICON S_M_PLACC_UR
++Pl+Acc:%>ur DF_A_PLm ;
+
+LEXICON S_M_PLACC_NULL
++Pl+Acc:    DF_A_PLm_indef ;
++Pl+Acc:%>i DF_A_PLm_def ;
+
+LEXICON S_M_PLACC_NULL_IR
++Pl+Acc:     DF_A_PLm_indef ;
++Pl+Acc:%>ir DF_A_PLm_def ;
+
+LEXICON S_M_PLACC_NULL_I_IR
++Pl+Acc:     DF_A_PLm_indef ;
++Pl+Acc:%>ir DF_A_PLm_def ;
++Pl+Acc:%>ir DF_A_PLm_def ;
+
+!LEXICON S_M_PLACC_NULL_I
+!+Pl+Acc: DF_A_PLm_I ;
+
+
+! Dative
+
+LEXICON S_M_PLDAT
++Pl+Dat:%>u DF_D_PL ;
+
+LEXICON S_M_PLDATm ! skóm
++Pl+Dat: DF_D_PL ;
+
+! Genitive
+
+LEXICON S_M_PLGEN
++Pl+Gen:%>a DF_G_PL ;
++Pl+Gen:%>a R ; !XXX
+
+
+! Feminine forms
+! ______________
+
+! Singular case suffixes.
+
+! Nominative
+
+LEXICON W_F_SGNOM
++Sg+Nom:%>a DF_N_SGf_W ;
+
+LEXICON S_F_SGNAD
++Sg+Nom: DF_N_SGf_S ;
++Sg+Acc: DF_A_SGf_S ;
++Sg+Dat: DF_D_SGf_S ;
+
+! Oblique
+
+LEXICON W_F_SGOBL
++Sg+Acc:%>u DF_A_SGf_W ;
++Sg+Dat:%>u DF_D_SGf_W ;
++Sg+Gen:%>u DF_G_SGf_W ;
+
+LEXICON S_F_SGGEN
++Sg+Gen:%>ar DF_G_SGf_S ;
+
+LEXICON S_F_SGGEN_NULL
++Sg+Gen: DF_G_SGf_S ;
+
+
+
+
+! Plural case suffixes
+
+LEXICON F_PLNA_UR
++Pl+Nom:%>ur DF_NA_PLf ;
++Pl+Acc:%>ur DF_NA_PLf ;
+
+LEXICON F_PLNA_IR
++Pl+Nom:%>ir DF_NA_PLf ;
++Pl+Acc:%>ir DF_NA_PLf ;
+
+LEXICON F_PLNA_AR
++Pl+Nom:%>ar DF_NA_PLf ;
++Pl+Acc:%>ar DF_NA_PLf ;
+
+LEXICON F_PLNA_NULL
++Pl+Nom: DF_NA_PLf ;
++Pl+Acc: DF_NA_PLf ;
+
+LEXICON F_PLDAT 
++Pl+Dat:%>u DF_D_PL ;
+
+LEXICON F_PLGEN 
++Pl+Gen:%>a DF_G_PL ;
+
+
+! Neuter forms
+! ____________
+
+LEXICON S_N_SGNA
++Sg+Nom: DF_NA_SGn ;
++Sg+Acc: DF_NA_SGn ;
+
+LEXICON S_N_SGDG
++Sg+Dat: DF_D_SGn ;
++Sg+Gen: DF_G_SGn ;
+
+LEXICON S_N_SGD
++Sg+Dat: DF_D_SGn ;
+
+LEXICON S_N_SGG
++Sg+Gen: DF_G_SGn ;
+
+LEXICON S_N_SGDG_is
+S_N_SGD_i ;
+S_N_SGG_s ;
+
+LEXICON S_N_SGD_i
++Sg+Dat:%>i DF_D_SGn ;
+
+LEXICON S_N_SGG_s
++Sg+Gen:%>s DF_G_SGn ;
+
+LEXICON S_N_SGG_is
++Sg+Gen:%>is DF_G_SGn ;
+
+LEXICON i_N_SGNA
++Sg+Nom:%>i DF_NA_SGn_indef ;
++Sg+Nom:%>i DF_NA_SGn_def ;
++Sg+Acc:%>i DF_NA_SGn_indef ;
++Sg+Acc:%>i DF_NA_SGn_def ;
+
+LEXICON i_N_SGDG_is
++Sg+Gen:%>is DF_G_SGn ;
++Sg+Dat:%>is DF_D_SGn ;
+
+LEXICON N_PLNA_u_ur 
++Pl+Nom:%>u DF_NA_PLn_W ;
++Pl+Acc:%>u DF_NA_PLn_W ;
++Pl+Nom+Indef:%>ur FINAL ;
++Pl+Acc+Indef:%>ur FINAL ;
+
+LEXICON N_PLNA_i_ir 
++Pl+Nom:%>i DF_NA_PLn_W ;
++Pl+Acc:%>i DF_NA_PLn_W ;
++Pl+Nom+Indef:%>ir FINAL ;
++Pl+Acc+Indef:%>ir FINAL ;
+
+LEXICON N_PLNA 
++Pl+Nom: DF_NA_PLn ;
++Pl+Acc: DF_NA_PLn ;
+
+
+LEXICON N_PLD
++Pl+Dat:%>u DF_D_PL ;
+
+LEXICON N_PLD_0_U
++Pl+Dat+Indef:%>um FINAL ;
++Pl+Dat+Def:%>num FINAL ;
+
+LEXICON N_PLG
++Pl+Gen:%>a DF_G_PL ;
+
+LEXICON N_PLG_na
++Pl+Gen:%>na DF_G_PL ;
+
+! Common cases
+
+LEXICON DF_D_PL
++Indef:%>m FINAL ;
++Def:%>num FINAL ;
+
+LEXICON DF_G_PL
++Indef: FINAL ;
++Def:%>nna FINAL ;
+
+
+
+
+
+
+
+! =================== !
+! Definite inflection !
+! =================== !
+
+! This is the third layer. Here we do the definite forms.
+
+
+! Masculine forms
+! _______________
+
+! Masc def sg
+
+LEXICON DF_N_SGm
+   DF_N_SGm_indef ;
+:%>i DF_N_SGm_def ;
+
+LEXICON DF_N_SGm_indef 
++Indef: FINAL ; !risi
+
+LEXICON DF_N_SGm_def 
++Def:%>n FINAL ; ! risin
+
+LEXICON DF_A_SGm
+DF_A_SGm_indef ;
+DF_A_SGm_def ;
+
+LEXICON DF_A_SGm_indef 
++Indef: FINAL ;
+
+LEXICON DF_A_SGm_def 
++Def:%>n FINAL ; ! risan, sandin
+
+LEXICON DF_D_SGm
++Indef: FINAL ;
++Def:%>num FINAL ;
+
+LEXICON DF_G_SGm
++Indef: FINAL ;
++Def:%>ins FINAL ;
+           R ;
+
+
+! Masc def pl
+
+LEXICON DF_N_PLm
+DF_N_PLm_indef ;
+DF_N_PLm_def ;
+
+
+LEXICON DF_N_PLm_indef
++Indef:  FINAL  ; 
+
+LEXICON DF_N_PLm_def
++Def:%>nir FINAL ; ! no _i_
+
+LEXICON DF_A_PLm
+DF_A_PLm_indef ;
+DF_A_PLm_def ;
+
+LEXICON DF_A_PLm_indef
++Indef: FINAL ;
+
+LEXICON DF_A_PLm_def
++Def:%>nar FINAL ; ! no _i
+
+
+
+! Feminine forms
+! _______________
+
+LEXICON DF_N_SGf_W
++Indef: FINAL ;
++Def:%>n FINAL ;
+
+LEXICON DF_N_SGf_S
++Indef: FINAL ;
++Def:%>in FINAL ;
+
+
+LEXICON DF_A_SGf_W
++Indef: FINAL ;
++Def:%>na FINAL ;
+
+LEXICON DF_A_SGf_S
++Indef: FINAL ;
++Def:%>ina FINAL ;
+
+
+LEXICON DF_D_SGf_W
++Indef: FINAL ;
++Def:%>ni FINAL ;
+
+LEXICON DF_D_SGf_S
++Indef: FINAL ;
++Def:%>ini FINAL ; ! árini
++Def:%>nni FINAL ; ! oynni, consider i:n <=> Vow %>: _ n i
+
+
+LEXICON DF_G_SGf_W
++Indef:      FINAL ;
++Def:%>nnar  FINAL ;
+             R ;
+
+LEXICON DF_G_SGf_S
++Indef:      FINAL ;
++Def:%>innar FINAL ;
+             R ;
+
+LEXICON DF_NA_PLf
++Indef: FINAL ;
++Def:%>nar FINAL ;
+
+
+! Neuter forms
+! _______________
+
+LEXICON DF_NA_SGn
+   DF_NA_SGn_indef ;
+:i DF_NA_SGn_def ;
+
+LEXICON DF_NA_SGn_indef
++Indef: FINAL ;
+
+LEXICON DF_NA_SGn_def
++Def:%>ð FINAL ;
+
+LEXICON DF_D_SGn
++Indef: FINAL ;
++Def:%>num FINAL ;
+
+LEXICON DF_G_SGn
++Def:%>ins FINAL ;
+g_indef_r ;
+
+LEXICON g_indef_r
++Indef:    FINAL ;
+           R ;
+
+LEXICON DF_G_SGn_a
++Def:%>ns FINAL ;
+g_indef_r ;
+
+LEXICON DF_NA_PLn ! orðini
++Indef: FINAL ;
++Def:%>ini FINAL ;
+
+LEXICON DF_NA_PLn_W ! eyguni, hjørtuni
++Indef: FINAL ;
++Def:%>ni FINAL ;
+

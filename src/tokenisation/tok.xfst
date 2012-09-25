@@ -1,0 +1,75 @@
+# =============================================================
+# CONTENT: Sample Finite-State Tokenizer (no multi-words)
+# AUTHOR: Original version by Anne Schiller, copied from the
+# Karttunen/Beesley book on finite state grammar
+# Modified by Trond Trosterud, 2002.
+# CREATED: 12-Jun-1997
+# UPDATED: 05-Sep-2001
+# =============================================================
+# Usage: xfst -f [ThisFile]
+# =============================================================
+
+clear stack
+echo >>> define white space
+define SP " ";
+define TAB "\t";
+define NL "\n";
+
+define WS [SP|NL|TAB];
+
+# =============================================================
+echo >>> define single character symbols
+define SINGLE [ %" | %. | %, | %; | %: | %! | %?
+| %( | %) | %[ | %] | %{ | %} | %« | %» 
+];
+define PUNCT [ %. %. (%.) | %' %' | %' %' | %, %, ] ;
+define Char \[ WS | SINGLE ] ;
+
+# =============================================================
+echo >>> define SYMBOL
+define SYMBOL [ SINGLE | PUNCT ] ;
+
+echo >>> define WORD
+define WORD [ Char ]+ ;
+
+# =============================================================
+#echo >>> list of abbreviations
+#define ABBR [
+#Mr. | Mrs. | Ms.
+#| etc. | e.g. | i.e.
+#| ltd. | Ltd. | inc. | Inc.
+#];
+
+# =============================================================
+echo >>> regular abbreviations
+define Letter [A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|
+Å|Ä|Ö|Ø|Æ|Á|É|Ó|Ú|Í|À|È|Ò|Ù|Ì|Ë|Ü|Ï|Â|Ê|Ô|Û|Î|Ã|Ý|þ|Ñ|Ð|
+a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z
+å|ä|ö|ø|æ|á|é|ó|ú|í|à|è|ò|ù|ì|ë|ü|ï|â|ê|ô|û|î|ã|ý|þ|ñ|ð|ç|ß];
+define INIT [ Letter %. ]+ ;
+
+# =============================================================
+echo >>> numeric expressions
+define Digit [ %0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9];
+define NumOp [ %- | %+ | %* | %/ | %= | %: ];
+define NumSep [ %. | %, ];
+define NUM [ Digit | NumOp | NumSep]+ & $[Digit] ;
+
+# =============================================================
+echo >>> define tokens
+define Token [ WORD | SYMBOL | INIT ];
+# commenting out NUM in order to allow 7-bit encoding
+# commenting them in again since this is Lule Sámi
+define Token [ WORD | SYMBOL | ABBR | INIT | NUM ];
+# =============================================================
+echo >>> longest match--insert a newline after each token
+define TOK1 [ Token @-> ... NL ] ;
+echo >>> map spaces to a newline
+define TOK2 [ [WS]+ @-> NL ];
+
+# =============================================================
+echo >>> compose
+read regex [TOK1 .o. TOK2 ];
+invert net
+save stack ../bin/tok.fst
+ 

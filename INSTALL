@@ -1,0 +1,130 @@
+This file documents installation of the Faroese analysers.
+
+
+Prerequisites:
+==============
+You must have a Unix system (Linux or Mac), and a terminal supporting
+UTF-8.  Mac users must make sure they have standard developer tools
+installed, from the developer tools on the Mac OS system CD.
+
+In order to compile the analyser you need compilers from __one__ of
+these two sites (both are not needed, they compile the same
+analysers):
+
+* xerox tools: http://fsmbook.com
+* hfst tools:  http://sourceforge.projects.net/hfst/
+
+The xerox tools are available as binary compilers, for non-commercial
+use. You will need both lexc, xfst, lookup and twolc. All the programs
+must be installed in a folder in your path.
+
+The hfst tools are open source. Follow the instructions in the downloaded
+folders.
+
+At present (2010), the xerox tools are better tested and supported,
+and easier to install (no compilation needed). Hfst is open source and
+without restrictions, and contrary to xerox, has support for weighted
+transducers.
+
+For syntactic analysis you will need the Constraint Grammar compiler
+vislcg3. It can be obtained from http://visl.sdu.dk/vislcg3/.
+Note that Mac users must install ICU (http://...)
+If you do not need syntax you may ignore this compiler, and ignore the 
+corresponding error message which will come during compilation.
+
+
+Installation:
+=============
+The simplest way to compile this package is:
+
+  1. `cd' to the directory containing the package's source code and type
+     `./configure' to configure the package for your system.
+
+     Running `configure' might take a while.  While running, it prints
+     some messages telling which features it is checking for.
+
+  2. Type `make' to compile the package.
+
+  3. Optionally, type `make check' to run any self-tests that come with
+     the package.
+
+  4. Type `make install' to install the programs and any data files and
+     documentation.
+
+  5. You can remove the program binaries and object files from the
+     source code directory by typing `make clean'.  To also remove the
+     files that `configure' created (so you can compile the package for
+     a different kind of computer), type `make distclean'.  There is
+     also a `make maintainer-clean' target, but that is intended mainly
+     for the package's developers.  If you use it, you may have to get
+     all sorts of other programs in order to regenerate files that came
+     with the distribution.
+
+
+Compiled files:
+===============
+Here are the compiled files:
+
+Files for use:
+--------------
+Analysers from xerox compilation
+* fao.fst = Faroese analyser
+* ifao.fst = Faroese generator
+
+Analysers from hfst compilation
+* fao-gen.hfst
+* fao.hfst
+* fao.hfst.ol
+
+Syntax files
+* fao-dep.bin
+* fao-dis.bin
+
+For a list of auxiliary files, see below *).
+
+
+Usage notes:
+============
+(standing in fao/ (one level up):
+
+morphological analysis:
+-----------------------
+xerox:
+cat textfile | preprocess --abbr=bin/abbr.txt \
+lookup bin/fao.fst
+
+hfst:
+cat textfile | preprocess --abbr=bin/abbr.txt \
+hfst-optimized-lookup bin/fao.hfst.ol
+
+syntactic analysis: pipe the output from morphology, and do this:
+| lookup2cg | vislcg3 -g bin/fao-dis.bin \
+| lookup2cg | vislcg3 -g bin/fao-dep.bin \
+
+fao-dis.bin gives syntax and fao-dep.bin gives dependency.
+A better dependency analysis is given by using the common dep file::
+
+| lookup2cg | vislcg3 -g bin/fao-dis.bin \
+| lookup2cg | vislcg3 -g ../../gt/sme/bin/sme-dep.bin \
+
+
+
+
+
+*) List of auxiliary files in the bin/ catalogue:
+=================================================
+Auxiliary files from xerox compilation
+* fao.save = Faroese analyser, without initial capital letters
+* twol-fao.bin = Faroese analyser
+
+Auxiliary files from xerox compilation
+* lexc-fao.hfst
+* twol-fao.hfst
+
+General files
+* abbr.txt = list of abbreviations for use in preprocessor
+* allcaps.fst
+* inituppercase.fst
+* tagfix.fst
+* tok.fst
+

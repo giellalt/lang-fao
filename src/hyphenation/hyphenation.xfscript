@@ -1,0 +1,75 @@
+! =============================== !
+! Hyphenator for West Greenlandic !
+! =============================== !
+
+echo << defining Cns and Vow... >>
+
+define Vow	[ a | á | e | i | o | u | y | æ | ø | å | ä | ö |
+                  A | Á | E | I | O | U | Y | Æ | Ø | Å | Ä | Ö | 
+é | ó | ú | í | à | è | ò | ù | ì | ë | ü | ï | â | ê | ô | û | î | ã | ý |
+É | Ó | Ú | Í | À | È | Ò | Ù | Ì | Ë | Ü | Ï | Â | Ê | Ô | Û | Î | Ã | Ý ] ;
+
+define KalVow [ a | e | i | o | u | A | E | I | O | U ] ;
+
+define ForVow [ Vow - KalVow ] ;
+
+define LongVow [ a a | A a | A A | e e | E e | E E | i i | I i | I I |
+                 o o | O o | O O | u u | U u | U U | a i | A i | A I ] ;
+
+
+define A2 [ a | A | i | I ] ;
+define E2 [ e | E ] ;
+define I2 [ i | I ] ;
+define O2 [ o | O ] ;
+define U2 [ u | U ] ;
+
+define Cns [ b | c | č | d | đ | ð | f | g | h | j | k | l | m | n | ŋ | 
+             B | C | Č | D | Đ | Ð | F | G | H | J | K | L | M | N | Ŋ | 
+             ñ | p | q | r | s | š | t | ŧ | v | w | x | z | ž |   
+             Ñ | P | Q | R | S | Š | T | Ŧ | V | W | X | Z | Ž ] ; 
+
+define S [ S | s ] ; 
+
+define Cnss [ Cns - S ] ;
+
+!define Sgm [ Cns | Vow ] ;
+
+!define Cns [ Cnssymb | Vow i ] ;
+
+define Dummy [ %^K ] ;
+
+echo << Rules>>
+
+define NG          [..] -> %-  || Vow ([r|R|n|N]) _ [ n g | N G ] ;
+define beforeCV    [..] -> %-  || Vow           _ Cns Vow ;  !a-te-qu-seq
+define sC          [..] -> %-  || Vow S Cns*    _ Cns Vow ;
+define Css         [..] -> %-  || Vow Cns S     _ S ;
+define CCV         [..] -> %-  || Vow Cnss+     _ Cns Vow ;  !il-lu, Matt-hæ-u-sip
+define CsCV        [..] -> %-  || Vow Cnss+     _ S Cnss Vow ; !Kron-stadt, Kris-tus
+define keep       [..] -> %^K || [a|A]         _ A2 ,
+                                  [e|E]         _ E2 ,
+                                  [i|I]         _ I2 ,
+                                  [o|O]         _ O2 ,
+                                  [u|U]         _ U2 ; 
+define VV          [..] -> %-  || Vow           _ Vow ;      !Matt-hæ-u-sip
+
+echo << Cleanup...>>
+define clean  Dummy -> 0 ;
+
+! Lagre denne fila: i xfst: source < dennefila.txt og deretter: save hy.fst
+! cat fil.txt | preprocess | ./lookup -utf8 hy.fst | cut -f2 | tr '\n' ' ' | less
+
+echo <<Combining...>>
+
+read regex [
+NG .o.
+beforeCV .o.
+sC .o.
+Css .o.
+CCV .o.
+CsCV .o.
+keep .o.
+VV .o.
+clean ] ;
+
+invert net ;

@@ -33,15 +33,15 @@ AC_ARG_VAR([GTCORE], [directory for giellatekno core data])
 AC_ARG_VAR([GTMAINTAINER], [define if you are maintaining the infra to get additional complaining about infra integrity])
 AM_CONDITIONAL([WANT_MAINTAIN], [test x"$GTMAINTAINER" != x])
 AC_PATH_PROG([GTVERSION], [gt-version.sh], [false],
-             [$GTCORE/scripts/$PATH_SEPARATOR$GTHOME/newinfra/gtcore/scripts/])
+             [$GTCORE/scripts/$PATH_SEPARATOR$GTHOME/gtcore/scripts/])
 AS_IF([test "x$GTSCRIPT" = xfalse], 
       [cat<<<EOT
 could not find a giellatekno core scripts in:
        $GTCORE/scripts 
-       $GTHOME/newinfra/gtcore/scripts 
+       $GTHOME/gtcore/scripts 
        $PATH 
        please do at least first step of the following: 
-       a. svn co https://victorio.uit.no/langtech/trunk/newinfra/gtcore
+       a. svn co https://victorio.uit.no/langtech/trunk/gtcore
        b. cd gtcore/scripts && ./autogen.sh && ./configure && make install
        c. gtsetup.sh
 EOT

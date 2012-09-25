@@ -121,3 +121,13 @@ AC_OUTPUT
 
 # Prints the informative blurb at the end of ./configure command
 gt_PRINT_FOOTER
+
+dnl stick important warnings to bottom
+dnl YAML test warning:
+AS_IF([test "x$enable_yamltests" == "xno"],
+      [AC_MSG_WARN([YAML testing could not be automatically enabled. To enable it, on MacOSX please do:
+
+sudo port install python32
+sudo port install py-yaml subport=py32-yaml
+
+On other systems, install python 3.1+ and the corresponding py-yaml using the corresponding tools for that system.])])

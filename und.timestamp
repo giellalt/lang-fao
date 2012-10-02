@@ -1,4 +1,8 @@
-$Rev: 63469 $
+$Rev: 63483 $
+Added a simple header to the beginning of the compilation, to make it easier to
+spot each new language when building all languages in $GTHOME/langs/.
+
+r63469:
 With the recent fixes to regexp parsing in hfst-regexp2fst it was possible to
 bring the hfst compilation up to par with the Xerox compilation. In principle
 the Xerox and Hfst transducers should behave exactly the same - any deviation is

@@ -7,7 +7,13 @@ SUBDIRS = . src tools doc test
 
 EXTRA_DIST = und.timestamp
 
-configure: und.timestamp
+configure: banner und.timestamp
+
+.PHONY: banner
+banner:
+	@echo
+	@echo "*** Compiling the $(GTLANG) language. ***"
+	@echo
 
 if WANT_MAINTAIN
 und.timestamp: ${GTCORE}/templates/und/und.timestamp

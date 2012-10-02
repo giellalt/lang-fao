@@ -27,6 +27,10 @@ SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax 
 %.xfst: %.tmp.xfst
 	cp -f $< $@
 
-#### Add local processing instructions below this line:
+#### BEGIN: Add local processing instructions BELOW this line ####
+
+
+
+#### END: Add local processing instructions ABOVE this line ######
 
 include $(top_srcdir)/am-shared/topdir-include.am

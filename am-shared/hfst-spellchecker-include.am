@@ -15,7 +15,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-GT_DICTIONARY_HFST=dictionary.default.hfst
+GT_DICTIONARY_HFST=analyser-gt-norm.tmp.hfst
 
 ####### Automake targets: ########
 
@@ -44,8 +44,11 @@ noinst_DATA=$(GT_ERRMODELS)
 		$(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' | \
 		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
+# Build the automaton used for the speller
 acceptor.default.hfst: $(top_srcdir)/src/$(GT_DICTIONARY_HFST)
-	$(HFST_FST2FST) $(HFST_FLAGS) -f olw $< -o $@
+	$(HFST_PROJECT) $(HFST_FLAGS) --project=lower -i $< |\
+		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
+		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 $(GT_SPELLING_HFST): acceptor.default.hfst \
 					 $(GT_ERRMODELS) \

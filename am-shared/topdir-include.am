@@ -4,14 +4,21 @@
 # At the end of the makefile, there is support for automatic compilation of
 # other tagsets, given that the proper tagset relabeling files are defined,
 # and that the target files are defined as part of the 'all' target.
-
+#
 # Filenames are built as follows:
-# function[-subfunction].tagset.variant.transducertype
+# basictype-application-tagset-normativity[-dialect].fsttype
+#
+# 'application' is not specified for the regular/default morphological
+# analysis/generation.
 #
 # Examples:
-# analyser-ped.gt.norm.hfst
-# analyser-ped.gt.desc.hfst
-# generator-dicts.gt.desc.xfst
+# analyser-oahpa-gt-desc.hfst
+# generator-apert-apert-single.hfst
+# analyser-gt-desc.xfst
+#
+# Full details regarding transducer filenames can be found at:
+#
+# http://divvun.no/doc/infra/infraremake/TransducerNamesInTheNewInfra.html
 
 ####### Automake targets: ########
 
@@ -36,73 +43,32 @@ endif
 noinst_DATA=$(GT_MORPHOLOGY_XFST) $(GT_DICTIONARY_XFST) \
 			$(GT_HYPHENATION_XFST) $(GT_GENERATION_XFST)
 
-####### HFST build rules: ########
+##################################################
+######## Build rules for Xerox and HFST: #########
+#
+#       Each target transducer is defined together
+#       for both transducer types,
+#       first for HFST then for Xerox. This
+#       makes it easy to check that the build
+#       is parallell for the two transducer
+#       types.
+##################################################
 
 # The "raw" transducer contains all tags and symbols available on the analysis
 # side. Some of them are optional for generation, some are only needed for
-# special tools. Each final transducer needs to apply it's own filtering to get
-# exactly what is required.
+# special tools. On the lower side, the raw transducer contains all
+# morphological boundaries and hyphenation symbols. As such, this transducer
+# can NOT be used for morphological analysis, and hardly for generation.
+#
+# To get a transducer usable for a certain application, the raw transducer needs
+# to be filtered and manipulated to get the target tag set and surface symbols.
+# That is done in all subsequent targets, which builds on this one.
 raw.gt.hfst: morphology/$(GTLANG).lexc.hfst \
 					 phonology/$(GTLANG)-phon.hfst
 	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 morphology/$(GTLANG).lexc.hfst \
 		-2 phonology/$(GTLANG)-phon.hfst |\
-		$(HFST_INVERT) $(HFST_FLAGS) |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
-# This is the standard analyser:
-analyser.gt.hfst.tmp: raw.gt.hfst \
-					orthography/inituppercase.hfst \
-					filters/remove-morph-borders.hfst
-	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 $< \
-			-2 orthography/inituppercase.hfst |\
-		$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) \
-			-2 filters/remove-morph-borders.hfst |\
-		$(HFST_PREPROCESS_FOR_OPTIMIZED_LOOKUP_FORMAT) $(HFST_FLAGS) $< |\
-		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
-
-# This is the standard generating transducer.
-generator.gt.hfst.tmp: raw.gt.hfst filters/remove-morph-borders.hfst
-	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 $< \
-			-2 filters/remove-morph-borders.hfst |\
-		$(HFST_INVERT)   $(HFST_FLAGS) |\
-		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
-		$(HFST_FST2FST)  $(HFST_FLAGS) -f olw -o $@
-
-# This is a one-level, descriptive automaton - accepts/rejects without analysis:
-dictionary.default.hfst: raw.gt.hfst
-	$(HFST_PROJECT) $(HFST_FLAGS) --project=upper -i $< |\
-		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
-		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
-
-# create generic tagset variants of analyzers
-analyser.%.hfst: analyser.gt.hfst tagsets/%.relabel
-	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
-
-# remove sub-standard forms to get a normative transducer
-analyser.norm.hfst: analyser.gt.hfst filters/remove-sub-forms.hfst
-	$(HFSTCOMPOSE) $(HFSTFLAGS) -1 filters/remove-sub-forms.hfst -2 $< -o $@
-
-# create tagset variants of generators
-generation.%.hfst: generation.omor.hfst tagsets/%.relabel
-	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
-
-# lemmatization is a special case of tagset variant
-lemmatize.default.hfst: analyser.gt.hfst tagsets/lemmatize.relabel
-	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
-
-# optimizing
-.hfst.hfstol:
-	$(HFST_PREP) $(HFST_FLAGS) -i $< |\
-		$(HFST_FST2FST) $(HOPT_FLAGS) -f olw -o $@
-
-# HFST transducer compilation ends.
-
-####### Xerox build rules: #######
-
-# The "raw" transducer contains all tags and symbols available on the analysis
-# side. Some of them are optional for generation, some are only needed for
-# special tools. Each final transducer needs to apply it's own filtering to get
-# exactly what is required.
 raw.gt.xfst: morphology/$(GTLANG).lexc.xfst \
 			 phonology/$(GTLANG)-phon.xfst
 	$(PRINTF) \
@@ -111,13 +77,38 @@ raw.gt.xfst: morphology/$(GTLANG).lexc.xfst \
 		 compose-result\n\
 		 save-result $@\nquit\n" | $(LEXC)
 
-# This is the standard, descriptive analyser, giving only the basic
-# morphological analysis.
-analyser.gt.xfst.tmp: raw.gt.xfst \
+# This is the standard analyser:
+analyser.gt.tmp.hfst: raw.gt.hfst \
+					filters/remove-derivation-position-tags.hfst \
+					filters/remove-dialect-tags.hfst \
+					filters/remove-dictionary-tags.hfst \
+					filters/remove-norm-comp-tags.hfst \
+					filters/remove-number-string-tags.hfst \
+					filters/remove-usage-tags.hfst \
+					filters/remove-morph-borders.hfst \
+					orthography/inituppercase.hfst
+	$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
+			-2 filters/remove-morph-borders.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 orthography/inituppercase.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-usage-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-number-string-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-norm-comp-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-dictionary-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-dialect-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-derivation-position-tags.hfst \
+		-o $@
+
+analyser.gt.tmp.xfst: raw.gt.xfst \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst \
 					filters/remove-dictionary-tags.xfst \
-					filters/remove-morph-borders.xfst \
 					filters/remove-norm-comp-tags.xfst \
 					filters/remove-number-string-tags.xfst \
 					filters/remove-usage-tags.xfst \
@@ -137,9 +128,42 @@ analyser.gt.xfst.tmp: raw.gt.xfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST)
 
-# This is the standard generating transducer. It should not require any tags
-# beyond the standard morphological analysis, thus all other tags are deleted.
-generator.gt.xfst.tmp: raw.gt.xfst \
+# This is the standard generating transducer.
+generator.gt.tmp.hfst: raw.gt.hfst \
+					filters/make-optional-semantic-tags.hfst \
+					filters/make-optional-transitivity-tags.hfst \
+					filters/remove-derivation-position-tags.hfst \
+					filters/remove-dialect-tags.hfst \
+					filters/remove-dictionary-tags.hfst \
+					filters/remove-morph-borders.hfst \
+					filters/remove-norm-comp-tags.hfst \
+					filters/remove-number-string-tags.hfst \
+					filters/remove-sub-forms.hfst \
+					filters/remove-usage-tags.hfst
+	$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
+			-2 filters/remove-morph-borders.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-sub-forms.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-usage-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-number-string-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-norm-comp-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-dictionary-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-dialect-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-derivation-position-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/make-optional-transitivity-tags.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/make-optional-semantic-tags.hfst \
+		| $(HFST_INVERT)  $(HFST_FLAGS) \
+		-o $@
+
+generator.gt.tmp.xfst: raw.gt.xfst \
 					filters/make-optional-semantic-tags.xfst \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/remove-derivation-position-tags.xfst \
@@ -166,14 +190,40 @@ generator.gt.xfst.tmp: raw.gt.xfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST)
 
-# This is a one-level, descriptive automaton - accepts/rejects without analysis:
+# This is a one-level, descriptive automaton - accepts/rejects without analysis.
+# It is used as the basis for spellers.
+dictionary.default.hfst: raw.gt.hfst
+	$(HFST_PROJECT) $(HFST_FLAGS) --project=lower -i $< |\
+		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
+		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+
 dictionary.default.xfst: raw.gt.xfst
 	$(PRINTF) \
 		"load stack $<\n\
 		 lower net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST)
-# Xerox transducer compilation ends.
+
+# create generic tagset variants of analyzers
+analyser.%.hfst: analyser.gt.hfst tagsets/%.relabel
+	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
+
+# remove sub-standard forms to get a normative transducer
+analyser.norm.hfst: analyser.gt.hfst filters/remove-sub-forms.hfst
+	$(HFSTCOMPOSE) $(HFSTFLAGS) -1 filters/remove-sub-forms.hfst -2 $< -o $@
+
+# create tagset variants of generators
+generation.%.hfst: generation.omor.hfst tagsets/%.relabel
+	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
+
+# lemmatization is a special case of tagset variant
+lemmatize.default.hfst: analyser.gt.hfst tagsets/lemmatize.relabel
+	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
+
+# optimizing
+.hfst.hfstol:
+	$(HFST_PREP) $(HFST_FLAGS) -i $< |\
+		$(HFST_FST2FST) $(HOPT_FLAGS) -f olw -o $@
 
 ####### Other targets: ###########
 # cleaning

@@ -1,4 +1,11 @@
-$Rev: 63149 $
+$Rev: 63469 $
+With the recent fixes to regexp parsing in hfst-regexp2fst it was possible to
+bring the hfst compilation up to par with the Xerox compilation. In principle
+the Xerox and Hfst transducers should behave exactly the same - any deviation is
+a candidate bug in either the Xerox or the Hfst tools. This update requires hfst
+3.3.14 to work properly, the requirement is added to the configure.ac file.
+
+r63149:
 Removed references to newinfra/.
 
 r63144:

@@ -27,8 +27,8 @@
 # enough to support gt building.
 #
 # MIN-VERSION should be a version vector with one to three digit series
-#   separated by full stops. A default is 3.3 since it introduced ability to
-#   check the current version.
+#   separated by full stops. The default is 3.3.14 since it contains important
+#   bug fixes required for the GT infra+HFST compilation to work.
 # ---------------------------
 AC_DEFUN([gt_PROG_HFST],
 [AC_ARG_WITH([hfst], 
@@ -38,7 +38,7 @@ AC_DEFUN([gt_PROG_HFST],
             [with_hfst=no])
 AM_CONDITIONAL([WANT_HFST], [test x$with_hfst != xno])
 AC_PATH_PROG(HFST_INFO, hfst-info, false, $PATH$PATH_SEPARATOR$with_hfst)
-_gt_hfst_min_version=m4_default([$1], [3.3])
+_gt_hfst_min_version=m4_default([$1], [3.3.14])
 AC_MSG_CHECKING([hfst is at least $_gt_hfst_min_version])
 if test x$HFST_INFO != xfalse; then
     if $HFST_INFO --atleast-version=$_gt_hfst_min_version ; then

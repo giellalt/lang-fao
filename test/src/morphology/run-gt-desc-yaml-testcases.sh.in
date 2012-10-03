@@ -26,7 +26,7 @@ for f in .xfst .hfst; do
 	fi
 	if [ -f "$generatorfile$f" -a -f "$analyserfile$f" ]; then
 		let "transducer_found += 1"
-		if [ ! -n "$(find ${srcdir} -name '*$transducer.yaml')" ]; then
+		if [ ! -n "$(find ${srcdir} -name \'*$transducer.yaml\')" ]; then
 			echo
 			echo "*** Warning: No YAML data files found. Skipping test."
 			echo "*** Filenames covered by this test needs to end in:"
@@ -37,7 +37,7 @@ for f in .xfst .hfst; do
 		fi
 		
 		# Loop over the available yaml files, and run the tests:
-		for file in ${srcdir}/*.yaml; do
+		for file in ${srcdir}/*$transducer.yaml; do
 			(( i += 1 ))
 			echo
 			echo "Subtest $i - $section: Testing $file using $analyserfile$f"

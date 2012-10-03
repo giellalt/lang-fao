@@ -48,10 +48,12 @@ for f in  .xfst .hfst; do
 		sed 's/$/+N+Sg+Nom/' $lemmas | \
 				$lookuptool $generatorfile$f > $generatedlemmas.$fsttype.txt
 		fgrep '?' $generatedlemmas.$fsttype.txt > $failedlemmas.$fsttype.txt
-		if [ `wc -l $failedlemmas.$fsttype.txt` -gt 0 ]; then
+		if [ $(wc -l $failedlemmas.$fsttype.txt | tr -s ' ' | sed 's/^ //' \
+				| cut -d' ' -f1) -gt 0 ]; then
 			see $failedlemmas.$fsttype.txt
 		    Fail=1
 		    echo "$fsttype - FAIL"
+		    continue
 		fi
 	    echo "$fsttype - PASS"
 	fi

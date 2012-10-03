@@ -1,4 +1,9 @@
-$Rev: 63501 $
+$Rev: 63522 $
+Split the yaml test runner in two, one for norm and one for desc transducers,
+and updated the autoconf file correspondingly. Updated the lemma generator test
+to work with the renamed transducer. Made all test runners more robust.
+
+r63501:
 Renamed all existing targets to follow the naming scheme defined at
 http://divvun.no/doc/infra/infraremake/TransducerNamesInTheNewInfra.html. Also
 added making of true normative and descriptive analysers and generators, as well

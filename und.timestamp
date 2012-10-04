@@ -1,4 +1,8 @@
-$Rev: 63579 $
+$Rev: 63602 $
+The local modifications to Makefile.am files must be before the fallback pattern
+targets, it seems, otherwise the fallback targets are used.
+
+r63579:
 I believe I finally have fixed the yaml testing shell scripts.
 
 r63573:

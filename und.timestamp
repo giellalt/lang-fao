@@ -1,4 +1,10 @@
-$Rev: 63571 $
+$Rev: 63579 $
+I believe I finally have fixed the yaml testing shell scripts.
+
+r63573:
+One more fix for the yaml testing shell scripts.
+
+r63571:
 Escaping in the yaml test scripts didn't work - removing the single quotes did.
 Also added an underscore in front of the transducer string in the yaml testing,
 to avoid that the test scripts get too greedy when we get more transducers and

@@ -30,10 +30,10 @@ EXTRA_DIST=$(GT_HYPHENATION_SRCS)
 
 # The rule transducer will be built, not installed
 GT_HYPHENATION=
-if WANT_HFST
+if CAN_HFST
 GT_HYPHENATION+=hyphenation.hfst
 endif
-if WANT_XFST
+if CAN_XFST
 GT_HYPHENATION+=hyphenation.xfst
 endif
 

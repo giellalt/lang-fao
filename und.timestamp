@@ -1,4 +1,8 @@
-$Rev: 63602 $
+$Rev: 63667 $
+Add requirement of foma for hfst compilation; remove distinction between
+WANT_[HX]FST and CAN_[HX]FST.
+
+r63602:
 The local modifications to Makefile.am files must be before the fallback pattern
 targets, it seems, otherwise the fallback targets are used.
 

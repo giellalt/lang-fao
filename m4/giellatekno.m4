@@ -54,7 +54,6 @@ AC_DEFUN([gt_PROG_XFST],
                             [search xfst in DIRECTORY @<:@default=PATH@:>@])],
             [with_xfst=$withval],
             [with_xfst=yes])
-AM_CONDITIONAL([WANT_XFST], [test x$with_xfst != xno])
 AC_PATH_PROG([PRINTF], [printf], [echo -n])
 AC_PATH_PROG([XFST], [xfst], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_PATH_PROG([TWOLC], [twolc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
@@ -118,7 +117,7 @@ AC_DEFUN([gt_PRINT_FOOTER],
 cat<<EOF
 -- Building $PACKAGE_STRING:
     * build with Xerox: $with_xfst
-    * build with HFST: $with_hfst
+    * build with HFST: $gt_prog_hfst
     * morphological analyser: $enable_morphology
     * morphological generator: $enable_generation
     * dictionary: $enable_dictionary

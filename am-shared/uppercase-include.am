@@ -24,10 +24,10 @@ EXTRA_DIST=$(GT_UPPERCASING)
 ####### Automake targets: ########
 
 GT_UPPERCASE_FSTS=
-if WANT_HFST
+if CAN_HFST
 GT_UPPERCASE_FSTS+=allcaps.hfst inituppercase.hfst
 endif
-if WANT_XFST
+if CAN_XFST
 GT_UPPERCASE_FSTS+=allcaps.xfst inituppercase.xfst
 endif
 

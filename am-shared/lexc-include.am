@@ -33,10 +33,10 @@ EXTRA_DIST=$(GT_LEXC_ALLSRC)
 
 # The transducers we build and don't distribute depend on the configuration:
 GT_LEXICAL=
-if WANT_HFST
+if CAN_HFST
 GT_LEXICAL+=$(GTLANG).lexc.hfst
 endif
-if WANT_XFST
+if CAN_XFST
 GT_LEXICAL+=$(GTLANG).lexc.xfst
 endif
 noinst_DATA=$(GT_LEXICAL)
@@ -76,3 +76,5 @@ clean-local:
 
 maintainer-clean-local:
 	-rm -f $(GENERATED_LEXC_SRCS)
+
+# vim: set ft=automake: 

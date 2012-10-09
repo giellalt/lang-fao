@@ -69,10 +69,9 @@ if test x$HFST_INFO != xfalse; then
         AC_MSG_RESULT([no])
     fi
 else
-    AC_MSG_RESULT([maybe])
-    AS_IF([test x$HFST_LEXC != xfalse], [gt_prog_hfst=yes], 
-          [gt_prog_hfst=no])
+    AC_MSG_RESULT([no])
     AC_MSG_WARN([Unable to determine hfst version, might be too old and break])
+    gt_prog_hfst=no
 fi
 AM_CONDITIONAL([CAN_HFST], [test "x$gt_prog_hfst" = xyes])
 ]) # gt_PROG_HFST_PATH

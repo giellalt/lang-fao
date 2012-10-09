@@ -36,23 +36,7 @@ AC_DEFUN([gt_PROG_HFST],
             [define HFST binary path if not in PATH @<:@default=no@:>@])],
             [with_hfst=$withval],
             [with_hfst=no])
-AM_CONDITIONAL([WANT_HFST], [test x$with_hfst != xno])
 AC_PATH_PROG(HFST_INFO, hfst-info, false, $PATH$PATH_SEPARATOR$with_hfst)
-_gt_hfst_min_version=m4_default([$1], [3.3.14])
-AC_MSG_CHECKING([hfst is at least $_gt_hfst_min_version])
-if test x$HFST_INFO != xfalse; then
-    if $HFST_INFO --atleast-version=$_gt_hfst_min_version ; then
-        gt_prog_hfst=yes
-        AC_MSG_RESULT([yes])
-    else
-        gt_prog_hfst=no
-        AC_MSG_RESULT([no])
-    fi
-else
-    gt_prog_hfst=check
-    AC_MSG_RESULT([unknown])
-    AC_MSG_WARN([Unable to determine hfst version, might be too old and break])
-fi
 AC_PATH_PROG(HFST_COMPOSE, hfst-compose, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_COMPOSE_INTERSECT, hfst-compose-intersect, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_CONCATENATE, hfst-minimize, false, $PATH$PATH_SEPARATOR$with_hfst)
@@ -74,12 +58,22 @@ AC_PATH_PROG(HFST_SUBTRACT, hfst-minimize, false, $PATH$PATH_SEPARATOR$with_hfst
 AC_PATH_PROG(HFST_TWOLC, hfst-twolc, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_TXT2FST, hfst-txt2fst, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_XFST, hfst-xfst, false, $PATH$PATH_SEPARATOR$with_hfst)
-AC_MSG_CHECKING([whether we can enable hfst builds])
-AS_IF([test "x$HFST_LEXC" != xfalse], [AC_MSG_RESULT([yes])], 
-      [AC_MSG_RESULT([no])])
-AS_IF([test x$gt_prog_hfst = xcheck ], 
-      [AS_IF([test x$HFST_LEXC != xfalse], [gt_prog_hfst=yes], 
-             [gt_prog_hfst=no])])
+_gt_hfst_min_version=m4_default([$1], [3.3.14])
+AC_MSG_CHECKING([hfst is at least $_gt_hfst_min_version])
+if test x$HFST_INFO != xfalse; then
+    if $HFST_INFO --require-feature=foma --atleast-version=$_gt_hfst_min_version ; then
+        gt_prog_hfst=yes
+        AC_MSG_RESULT([yes])
+    else
+        gt_prog_hfst=no
+        AC_MSG_RESULT([no])
+    fi
+else
+    AC_MSG_RESULT([maybe])
+    AS_IF([test x$HFST_LEXC != xfalse], [gt_prog_hfst=yes], 
+          [gt_prog_hfst=no])
+    AC_MSG_WARN([Unable to determine hfst version, might be too old and break])
+fi
 AM_CONDITIONAL([CAN_HFST], [test "x$gt_prog_hfst" = xyes])
 ]) # gt_PROG_HFST_PATH
 

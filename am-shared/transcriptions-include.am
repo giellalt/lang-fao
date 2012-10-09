@@ -26,10 +26,10 @@ EXTRA_DIST=$(GT_TRANSCRIPTIONS_SRCS)
 
 # The transducers we build and don't distribute depend on the configuration:
 GT_TRANSCRIPTORS=
-if WANT_HFST
+if CAN_HFST
 GT_TRANSCRIPTORS+=clock.hfst date.hfst numbers.hfst
 endif
-if WANT_XFST
+if CAN_XFST
 GT_TRANSCRIPTORS+=clock.xfst date.xfst numbers.xfst
 endif
 noinst_DATA=$(GT_TRANSCRIPTORS)
@@ -52,3 +52,5 @@ noinst_DATA=$(GT_TRANSCRIPTORS)
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.hfst *.xfst
+
+# vim: set ft=automake:

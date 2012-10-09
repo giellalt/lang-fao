@@ -20,13 +20,13 @@ GT_DICTIONARY_HFST=analyser-gt-norm.tmp.hfst
 ####### Automake targets: ########
 
 GT_ERRMODELS=
-if WANT_HFST
+if CAN_HFST
 #GT_ERRMODELS+=errmodel.edit-distance-1.hfst
 GT_ERRMODELS+=errmodel.default.hfst
 GT_SPELLING_HFST=speller.zhfst
 endif
 
-if WANT_HFST
+if CAN_HFST
 voikkosharedir=$(libdir)/voikko/2/mor-hfst-$(GTLANG2)/
 #! @param GT_VOIKKO optional, set to spell checker automata names if
 #!					installable

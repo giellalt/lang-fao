@@ -22,17 +22,17 @@
 
 ####### Automake targets: ########
 
-if WANT_HFST
+if CAN_HFST
 GT_ANALYSERS_HFST=analyser-gt-desc.hfst analyser-gt-norm.hfst
 GT_GENERATORS_HFST=generator-gt-desc.hfst generator-gt-norm.hfst
 endif
 
-if WANT_XFST
+if CAN_XFST
 GT_ANALYSERS_XFST=analyser-gt-desc.xfst analyser-gt-norm.xfst
 GT_GENERATORS_XFST=generator-gt-desc.xfst generator-gt-norm.xfst
 endif
 
-if WANT_HFST
+if CAN_HFST
 hfstdatadir=$(datadir)/hfst/$(GTLANG)
 hfstdata_DATA=$(GT_ANALYSERS_HFST) $(GT_GENERATORS_HFST) \
 			  $(GT_HYPHENATION_HFST)

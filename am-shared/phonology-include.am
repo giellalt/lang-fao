@@ -30,10 +30,10 @@ EXTRA_DIST=$(GT_PHONOLOGY_SRCS)
 
 # The rule transducer will be built, not installed
 GT_PHONOLOGY=
-if WANT_HFST
+if CAN_HFST
 GT_PHONOLOGY+=$(GTLANG)-phon.hfst
 endif
-if WANT_XFST
+if CAN_XFST
 GT_PHONOLOGY+=$(GTLANG)-phon.xfst
 endif
 

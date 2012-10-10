@@ -25,7 +25,6 @@ SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax 
 #### Xerox, and the other commands makes the final transducer ready for use.
 %.hfst: %.tmp.hfst
 	$(HFST_INVERT) $< \
-		| $(HFST_PREPROCESS_FOR_OPTIMIZED_LOOKUP_FORMAT) $(HFST_FLAGS) \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 #### Xerox transducer fallback target:

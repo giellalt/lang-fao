@@ -47,26 +47,26 @@ HFSTTWOLFLAGS=--resolve
 # All twolc targets should be built by suffix rules;
 # just list them in some nice automake targets and you're good to go
 .twolc.hfst:
-	$(HFST_TWOLC) $(HFSTFLAGS) $(HFSTTWOLCFLAGS) -i $< -o $@
+	$(AM_V_GEN)$(HFST_TWOLC) $(HFSTFLAGS) $(HFSTTWOLCFLAGS) -i $< -o $@
 
 # Phonology rules as xfst scripts (typically a cascade of regex rules):
 .xfscript.hfst:
-	cp $< $@.script
-	$(PRINTF) "save stack $@" >> $@.script
-	$(HFST_XFST) -f $@.script
-	-rm -f $@.script
+	$(AM_V_GEN)cp $< $@.script
+	$(AM_V_GEN)$(PRINTF) "save stack $@" >> $@.script
+	$(AM_V_GEN)$(HFST_XFST) -f $@.script
+	$(AM_V_GEN)rm -f $@.script
 
 ####### Xerox build rules: #######
 
 # All twolc targets should be built by suffix rules;
 # just list them in some nice automake targets and you're good to go
 .twolc.xfst:
-	$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" |\
+	$(AM_V_GEN)$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" |\
 		$(TWOLC)
 
 # Phonology rules as xfst scripts (typically a cascade of regex rules):
 .xfscript.xfst:
-	$(XFST) -l $< -e "save stack $@" -stop
+	$(AM_V_GEN)$(XFST) -l $< -e "save stack $@" -stop
 
 ####### Other targets: ###########
 clean-local:

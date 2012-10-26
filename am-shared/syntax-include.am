@@ -31,7 +31,7 @@ endif
 ####### Build rules: ########
 
 .cg3.bin:
-	$(VISLCG3_COMP) $< $@
+	$(AM_V_GEN)$(VISLCG3_COMP) $< $@
 
 ####### Other targets: ###########
 clean-local:

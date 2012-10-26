@@ -24,11 +24,11 @@ SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax 
 #### - inversion is needed because the hfst model is upside-down compared to
 #### Xerox, and the other commands makes the final transducer ready for use.
 %.hfst: %.tmp.hfst
-	$(HFST_INVERT) $< \
+	$(AM_V_GEN)$(HFST_INVERT) $< \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 #### Xerox transducer fallback target:
 %.xfst: %.tmp.xfst
-	cp -f $< $@
+	$(AM_V_GEN)cp -f $< $@
 
 include $(top_srcdir)/am-shared/topdir-include.am

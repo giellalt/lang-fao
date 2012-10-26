@@ -311,16 +311,18 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 
 # create generic tagset variants of analyzers
 analyser-%-desc.hfst: analyser-gt-desc.hfst tagsets/%.relabel
-	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
+	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
+		-i $< -o $@
 
 # create tagset variants of generators
 generator-%-desc.hfst: generator-gt-desc.hfst tagsets/%.relabel
-	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel -i $< -o $@
+	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
+		-i $< -o $@
 
 # lemmatization is a special case of tagset variant
 lemmatize.default.hfst: analyser-gt-desc.hfst tagsets/lemmatize.relabel
-	$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/lemmatize.relabel \
-		-i $< -o $@
+	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) \
+		-F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
 
 ####### Other targets: ###########
 # cleaning

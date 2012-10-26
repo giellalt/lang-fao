@@ -39,15 +39,15 @@ noinst_DATA=$(GT_TRANSCRIPTORS)
 # lexical transducer building rules:
 # for HFST:
 %.hfst: %.lexc
-	$(HFST_LEXC) -f foma -o $@.foma $^
-	$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
-	-rm -f $@.foma
+	$(AM_V_GEN)$(HFST_LEXC) -f foma -o $@.foma $^
+	$(AM_V_GEN)$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
+	$(AM_V_GEN)rm -f $@.foma
 
 ####### Xerox build rules: #######
 
 %.xfst: %.lexc
-	$(PRINTF) "compile-source $^\nsource-to-result\nsave-source $@\nquit\n" |\
-		$(LEXC)
+	$(AM_V_GEN)$(PRINTF) \
+		"compile-source $^\nsource-to-result\nsave-source $@\nquit\n" | $(LEXC)
 
 ####### Other targets: ###########
 clean-local:

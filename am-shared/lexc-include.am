@@ -52,7 +52,7 @@ curdir   := $(shell pwd)
 
 # This target will convert each individual xml file to lexc:
 stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
-	$(JV) $(MF) $(XSLPROC) $(EF) $(XSLDIR)/generate_lex-fileVM.xsl \
+	$(AM_V_GEN)$(JV) $(MF) $(XSLPROC) $(EF) $(XSLDIR)/generate_lex-fileVM.xsl \
 		inFile=$(curdir)/$< > $@
 
 ####### HFST build rules: ########
@@ -60,15 +60,15 @@ stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
 # lexical transducer building rules:
 # for HFST:
 $(GTLANG).lexc.hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
-	$(HFST_LEXC) -f foma -o $@.foma $^
-	$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
-	-rm -f $@.foma
+	$(AM_V_GEN)$(HFST_LEXC) -f foma -o $@.foma $^
+	$(AM_V_GEN)$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
+	$(AM_V_GEN)rm -f $@.foma
 
 ####### Xerox build rules: #######
 
 $(GTLANG).lexc.xfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
-	$(PRINTF) "compile-source $^\nsource-to-result\nsave-source $@\nquit\n" |\
-		$(LEXC)
+	$(AM_V_GEN)$(PRINTF) \
+		"compile-source $^\nsource-to-result\nsave-source $@\nquit\n" | $(LEXC)
 
 ####### Other targets: ###########
 clean-local:

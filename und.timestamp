@@ -1,4 +1,17 @@
-$Rev: 63846 $
+$Rev: 64552 $
+Reapplied the simplification of hfst regex expressions, now with the correct
+command, thus working. Corrected hfst filter compilation. Took the first steps
+in silencing the verbose make output.
+
+r64550:
+Reverted the simplification of hfst regex compilation.
+
+r64539:
+Added support for spellrelax. Also renamed the orthography include file to be
+more generic. Simplified regex build commands now that the bugs in
+hfst-regexp2fst have been corrected.
+
+r63846:
 hfst-preprocess-for-optimized-lookup-format has been removed from the hfst
 distribution.
 

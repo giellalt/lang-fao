@@ -32,7 +32,8 @@ AC_REVISION([$Revision$])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 # AM_INIT_AUTOMAKE sets up make conventions
-AM_INIT_AUTOMAKE([-Wall -Werror foreign -Wno-portability])
+AM_INIT_AUTOMAKE([1.11 -Wall -Werror foreign -Wno-portability])
+AM_SILENT_RULES([yes])
 
 # Some software that we either depend on or we need for certain functionality:
 

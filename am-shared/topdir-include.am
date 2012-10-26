@@ -63,13 +63,14 @@ noinst_DATA=$(GT_ANALYSERS_XFST) $(GT_GENERATORS_XFST) \
 # That is done in all subsequent targets, which builds on this one.
 analyser-raw-gt-desc.hfst: morphology/$(GTLANG).lexc.hfst \
 					 phonology/$(GTLANG)-phon.hfst
-	$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) -1 morphology/$(GTLANG).lexc.hfst \
+	$(AM_V_GEN)$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) \
+		-1 morphology/$(GTLANG).lexc.hfst \
 		-2 phonology/$(GTLANG)-phon.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
 analyser-raw-gt-desc.xfst: morphology/$(GTLANG).lexc.xfst \
 			 phonology/$(GTLANG)-phon.xfst
-	$(PRINTF) \
+	$(AM_V_GEN)$(PRINTF) \
 		"read-source morphology/$(GTLANG).lexc.xfst\n\
 		 read-rules  phonology/$(GTLANG)-phon.xfst\n\
 		 compose-result\n\
@@ -84,11 +85,14 @@ analyser-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/remove-number-string-tags.hfst \
 					filters/remove-usage-tags.hfst \
 					filters/remove-morph-borders.hfst \
-					orthography/inituppercase.hfst
-	$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
+					orthography/inituppercase.hfst \
+					orthography/spellrelax.hfst
+	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
 			-2 filters/remove-morph-borders.hfst \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-2 orthography/inituppercase.hfst \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 orthography/spellrelax.hfst \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-usage-tags.hfst \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
@@ -111,8 +115,9 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-number-string-tags.xfst \
 					filters/remove-usage-tags.xfst \
 					filters/remove-morph-borders.xfst \
-					orthography/inituppercase.xfst
-	$(PRINTF) "read regex \
+					orthography/inituppercase.xfst \
+					orthography/spellrelax.xfst
+	$(AM_V_GEN)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\" \
 			.o. @\"filters/remove-dictionary-tags.xfst\" \
@@ -122,6 +127,7 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"$<\" \
 			.o. @\"filters/remove-morph-borders.xfst\" \
 			.o. @\"orthography/inituppercase.xfst\" \
+			.o. @\"orthography/spellrelax.xfst\" \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST)
@@ -137,7 +143,7 @@ generator-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/remove-norm-comp-tags.hfst \
 					filters/remove-number-string-tags.hfst \
 					filters/remove-usage-tags.hfst
-	$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
+	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
 			-2 filters/remove-morph-borders.hfst \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-usage-tags.hfst \
@@ -168,7 +174,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-norm-comp-tags.xfst \
 					filters/remove-number-string-tags.xfst \
 					filters/remove-usage-tags.xfst
-	$(PRINTF) "read regex \
+	$(AM_V_GEN)$(PRINTF) "read regex \
 				@\"filters/make-optional-semantic-tags.xfst\" \
 			.o. @\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
@@ -195,7 +201,7 @@ analyser-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/remove-sub-forms.hfst \
 					filters/remove-morph-borders.hfst \
 					orthography/inituppercase.hfst
-	$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
+	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
 			-2 filters/remove-morph-borders.hfst \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-2 orthography/inituppercase.hfst \
@@ -225,7 +231,7 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-sub-forms.xfst \
 					filters/remove-morph-borders.xfst \
 					orthography/inituppercase.xfst
-	$(PRINTF) "read regex \
+	$(AM_V_GEN)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\" \
 			.o. @\"filters/remove-dictionary-tags.xfst\" \
@@ -252,7 +258,7 @@ generator-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/remove-number-string-tags.hfst \
 					filters/remove-usage-tags.hfst \
 					filters/remove-sub-forms.hfst
-	$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
+	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
 			-2 filters/remove-morph-borders.hfst \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-sub-forms.hfst \
@@ -286,7 +292,7 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-number-string-tags.xfst \
 					filters/remove-usage-tags.xfst \
 					filters/remove-sub-forms.xfst
-	$(PRINTF) "read regex \
+	$(AM_V_GEN)$(PRINTF) "read regex \
 				@\"filters/make-optional-semantic-tags.xfst\" \
 			.o. @\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \

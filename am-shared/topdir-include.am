@@ -161,7 +161,6 @@ generator-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
 			-1 filters/make-optional-transitivity-tags.hfst \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/make-optional-semantic-tags.hfst \
-		| $(HFST_INVERT)  $(HFST_FLAGS) \
 		-o $@
 
 generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
@@ -278,7 +277,6 @@ generator-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
 			-1 filters/make-optional-transitivity-tags.hfst \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/make-optional-semantic-tags.hfst \
-		| $(HFST_INVERT)  $(HFST_FLAGS) \
 		-o $@
 
 generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \

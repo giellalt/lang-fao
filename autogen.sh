@@ -6,5 +6,7 @@ if test -z $GTCORE ; then
     exit 1
 fi
 
+echo "Initial automake setup of $(basename $(pwd))"
+
 # autoreconf should work for most platforms
 autoreconf -i

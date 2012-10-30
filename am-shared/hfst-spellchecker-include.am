@@ -40,15 +40,15 @@ noinst_DATA=$(GT_ERRMODELS)
 # Error model building:
 %.hfst: %.txt acceptor.default.hfst
 	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py -v -s -d 2 -e '@0@' -i $<   \
-		-a acceptor.default.hfst | \
-		$(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' | \
-		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+		-a acceptor.default.hfst \
+		| $(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 # Build the automaton used for the speller
 acceptor.default.hfst: $(top_srcdir)/src/$(GT_DICTIONARY_HFST)
-	$(AM_V_GEN)$(HFST_PROJECT) $(HFST_FLAGS) --project=lower -i $< |\
-		$(HFST_MINIMIZE) $(HFST_FLAGS) |\
-		$(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+	$(AM_V_GEN)$(HFST_PROJECT) $(HFST_FLAGS) --project=lower -i $< \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 $(GT_SPELLING_HFST): acceptor.default.hfst \
 					 $(GT_ERRMODELS) \

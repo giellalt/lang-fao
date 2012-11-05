@@ -1,4 +1,8 @@
-$Rev: 64645 $
+$Rev: 64988 $
+Only check hfst version if requested using '--with-hfst', otherwise disable.
+Likewise, disable xfst if requested and print warning if both are disabled.
+
+r64645:
 Added simple feedback to autogen.sh, valuable when processing many languages.
 Some reformatting of am-shared/hfst-spellchecker-include.am.
 

@@ -57,6 +57,7 @@ AC_PATH_PROG(HFST_SUBTRACT, hfst-minimize, false, $PATH$PATH_SEPARATOR$with_hfst
 AC_PATH_PROG(HFST_TWOLC, hfst-twolc, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_TXT2FST, hfst-txt2fst, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_XFST, hfst-xfst, false, $PATH$PATH_SEPARATOR$with_hfst)
+AS_IF([test x$with_hfst != xno], [
 _gt_hfst_min_version=m4_default([$1], [3.3.14])
 AC_MSG_CHECKING([hfst is at least $_gt_hfst_min_version])
 if test x$HFST_INFO != xfalse; then
@@ -72,6 +73,7 @@ else
     AC_MSG_WARN([Unable to determine hfst version, might be too old and break])
     gt_prog_hfst=no
 fi
+], [gt_prog_hfst=no])
 AM_CONDITIONAL([CAN_HFST], [test "x$gt_prog_hfst" = xyes])
 ]) # gt_PROG_HFST_PATH
 

@@ -60,9 +60,12 @@ AC_PATH_PROG([TWOLC], [twolc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_PATH_PROG([LEXC], [lexc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_PATH_PROG([LOOKUP], [lookup], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_MSG_CHECKING([whether we can enable xfst building])
-AM_CONDITIONAL([CAN_XFST], [test "x$XFST" != xfalse])
-AS_IF([test "x$XFST" != xfalse], [AC_MSG_RESULT([yes])],
-      [AC_MSG_RESULT([no])])
+AS_IF([test x$with_xfst != xno], [
+    AS_IF([test "x$XFST" != xfalse], [gt_prog_xfst=yes],
+          [gt_prog_xfst=no])
+], [gt_prog_xfst=no])
+AC_MSG_RESULT([gt_prog_xfst])
+AM_CONDITIONAL([CAN_XFST], [test "x$gt_prog_xfst" != xno])
 ]) # gt_PROG_XFST
 
 AC_DEFUN([gt_PROG_VISLCG3],
@@ -116,7 +119,7 @@ AC_DEFUN([gt_PRINT_FOOTER],
 [
 cat<<EOF
 -- Building $PACKAGE_STRING:
-    * build with Xerox: $with_xfst
+    * build with Xerox: $gt_prog_xfst
     * build with HFST: $gt_prog_hfst
     * morphological analyser: $enable_morphology
     * morphological generator: $enable_generation
@@ -128,5 +131,7 @@ to build, test and install:
     make check
     make install
 EOF
+AS_IF([test x$gt_prog_xfst = xno -a x$gt_prog_hfst = xno],
+      [AC_MSG_WARN([Both XFST and HFST are disabled: no automata will be built])])
 ]) # gt_PRINT_FOOTER
 # vim: set ft=config: 

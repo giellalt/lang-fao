@@ -42,19 +42,25 @@ endif
 noinst_DATA=$(GT_LEXICAL)
 
 ####### XML2LEXC build rules: ####
-JV   = java
+if CAN_SAXON
+XSLDIR = $(GTCORE)/scripts/xsl
+
+stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
+	$(AM_V_GEN)$(SAXON) -xsl:$(XSLDIR)/generate_lex-fileVM.xsl $(abs_srcdir)/$< \
+		inFile=$(abs_srcdir)/$< > $@
+else
+if CAN_JAVA
 MF   = -Xmx1024m
 #EF   = -it main # Saxon-B compatible version
 EF   = -it:main # Saxon-HE compatible version
 XSLPROC = net.sf.saxon.Transform
-XSLDIR = $(GTCORE)/scripts/xsl
-curdir   := $(shell pwd)
 
 # This target will convert each individual xml file to lexc:
 stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
 	$(AM_V_GEN)$(JV) $(MF) $(XSLPROC) $(EF) $(XSLDIR)/generate_lex-fileVM.xsl \
-		inFile=$(curdir)/$< > $@
-
+		inFile=$(abs_srcdir)/$< > $@
+endif
+endif
 ####### HFST build rules: ########
 
 # lexical transducer building rules:

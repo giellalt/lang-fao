@@ -42,9 +42,8 @@ endif
 noinst_DATA=$(GT_LEXICAL)
 
 ####### XML2LEXC build rules: ####
-if CAN_SAXON
 XSLDIR = $(GTCORE)/scripts/xsl
-
+if CAN_SAXON
 stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
 	$(AM_V_GEN)$(SAXON) -xsl:$(XSLDIR)/generate_lex-fileVM.xsl $(abs_srcdir)/$< \
 		inFile=$(abs_srcdir)/$< > $@

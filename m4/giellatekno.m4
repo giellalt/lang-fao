@@ -81,6 +81,24 @@ AS_IF([test "x$VISLCG3" != xno], [AC_MSG_RESULT([yes])],
       [AC_MSG_RESULT([no])])
 ]) # gt_PROG_VISLCG3
 
+AC_DEFUN([gt_PROG_SAXON],
+[AC_ARG_WITH([saxon],
+             [AS_HELP_STRING([--with-saxon=DIRECTORY],
+                             [search saxon wrapper script in DIRECTORY @<:@default=PATH@:>@])],
+             [with_saxon=$withval],
+             [with_saxon=check])
+AC_PATH_PROG([SAXON], [saxonb-xslt saxon9 saxon8 saxon], [false], [$PATH$PATH_SEPARATOR$with_saxon])
+AC_PATH_PROG([JV], [java], [false])
+AC_MSG_CHECKING([whether we can enable xslt2 transformations])
+AS_IF([test x$with_saxon != xno], [
+    AS_IF([test "x$SAXON" != xfalse], [gt_prog_saxon=yes],
+          [gt_prog_saxon=no])
+    AS_IF([test x$JV != xfalse], [gt_prog_java=yes], [gt_prog_java=no])
+], [gt_prog_saxon=no])
+AC_MSG_RESULT([$gt_prog_saxon])
+AM_CONDITIONAL([CAN_SAXON], [test "x$gt_prog_saxon" != xno])
+AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$gt_prog_saxon" = xno]) 
+])
 
 AC_DEFUN([gt_ENABLE_TARGETS],
 [

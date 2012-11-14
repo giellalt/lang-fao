@@ -43,10 +43,10 @@ noinst_DATA=$(GT_UPPERCASE_FSTS)
 	$(AM_V_GEN)rm -f $@.script
 
 .regex.hfst:
-	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFST_FLAGS) -S -i $< -o $@
+	$(AM_V_GEN)grep -v '^!' $< | $(HFST_REGEXP2FST) $(HFST_FLAGS) -S -o $@
 
 %.hfst: $(GTCORE)/gtshared/src/orthography/%.regex
-	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFST_FLAGS) -S -i $< -o $@
+	$(AM_V_GEN)grep -v '^!' $< | $(HFST_REGEXP2FST) $(HFST_FLAGS) -S -o $@
 
 ####### Xerox build rules: #######
 

@@ -110,22 +110,22 @@ AC_ARG_ENABLE([morphology],
 AM_CONDITIONAL([WANT_MORPHOLOGY], [test "x$enable_morphology" != xno])
 AC_ARG_ENABLE([generation],
               [AS_HELP_STRING([--enable-generation],
-                              [build morphological analyser @<:@default=yes@:>@])],
+                              [build morphological generator @<:@default=yes@:>@])],
               [enable_generation=$enableval],
               [enable_generation=yes])
 AM_CONDITIONAL([WANT_GENERATION], [test "x$enable_generation" != xno])
-AC_ARG_ENABLE([dictionary],
-              [AS_HELP_STRING([--enable-dictionary],
-                              [build morphological analyser @<:@default=yes@:>@])],
-              [enable_dictionary=$enableval],
-              [enable_dictionary=yes])
-AM_CONDITIONAL([WANT_DICTIONARY], [test "x$enable_dictionary" != xno])
+AC_ARG_ENABLE([spellerautomat],
+              [AS_HELP_STRING([--enable-spellerautomat],
+                              [build speller automaton @<:@default=yes@:>@])],
+              [enable_spellerautomat=$enableval],
+              [enable_spellerautomat=yes])
+AM_CONDITIONAL([WANT_SPELLERAUTOMAT], [test "x$enable_spellerautomat" != xno])
 AC_ARG_ENABLE([voikko],
               [AS_HELP_STRING([--enable-voikko],
                               [build voikko support @<:@default=yes@:>@])],
               [enable_voikko=$enableval],
               [enable_voikko=yes])
-AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_dictionary" != xno])
+AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_spellerautomat" != xno])
 
 AS_IF([test "x$enable_voikko" = "xyes"], 
       [AC_PATH_PROG([ZIP], [zip], [false])
@@ -141,7 +141,7 @@ cat<<EOF
     * build with HFST: $gt_prog_hfst
     * morphological analyser: $enable_morphology
     * morphological generator: $enable_generation
-    * dictionary: $enable_dictionary
+    * hfst speller automaton: $enable_spellerautomat
     * voikko support: $enable_voikko
     * yaml tests enabled: $enable_yamltests
 to build, test and install:

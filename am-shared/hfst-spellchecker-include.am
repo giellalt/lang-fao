@@ -15,22 +15,33 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-GT_DICTIONARY_HFST=analyser-gt-norm.tmp.hfst
+GT_SPELLER_HFST=analyser-gt-norm.hfst
+GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 
 ####### Automake targets: ########
 
 GT_ERRMODELS=
 if CAN_HFST
 #GT_ERRMODELS+=errmodel.edit-distance-1.hfst
+
+# Only build speller if it is enabled (default=yes)
+if WANT_SPELLERAUTOMAT
 GT_ERRMODELS+=errmodel.default.hfst
+
+# Require zip to turn on zhfts target:
+if WANT_VOIKKO
 GT_SPELLING_HFST=speller.zhfst
+endif # WANT_VOIKKO
+endif # WANT_SPELLERAUTOMAT
 endif
 
 if CAN_HFST
+if WANT_VOIKKO
 voikkosharedir=$(libdir)/voikko/2/mor-hfst-$(GTLANG2)/
 #! @param GT_VOIKKO optional, set to spell checker automata names if
 #!					installable
 voikkoshare_DATA=$(GT_SPELLING_HFST) voikko-fi_FI.pro
+endif # WANT_VOIKKO
 endif
 
 noinst_DATA=$(GT_ERRMODELS)
@@ -38,19 +49,20 @@ noinst_DATA=$(GT_ERRMODELS)
 ####### HFST build rules: ########
 
 # Error model building:
-%.hfst: %.txt acceptor.default.hfst
+%.hfst: %.txt $(GT_SPELLER_ACCEPTOR)
 	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py -v -s -d 2 -e '@0@' -i $<   \
-		-a acceptor.default.hfst \
+		-a $(GT_SPELLER_ACCEPTOR) \
 		| $(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 # Build the automaton used for the speller
-acceptor.default.hfst: $(top_srcdir)/src/$(GT_DICTIONARY_HFST)
-	$(AM_V_GEN)$(HFST_PROJECT) $(HFST_FLAGS) --project=lower -i $< \
+$(GT_SPELLER_ACCEPTOR): $(top_srcdir)/src/$(GT_SPELLER_HFST)
+	$(AM_V_GEN)$(HFST_FST2FST) $(HFST_FLAGS) -f openfst-tropical -i $< \
+		| $(HFST_PROJECT) $(HFST_FLAGS) --project=upper \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
-$(GT_SPELLING_HFST): acceptor.default.hfst \
+$(GT_SPELLING_HFST): $(GT_SPELLER_ACCEPTOR) \
 					 $(GT_ERRMODELS) \
 					 $(GT_OTHER_VOIKKO_FILES) \
 					 index.xml

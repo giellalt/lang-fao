@@ -139,6 +139,14 @@ AC_ARG_ENABLE([oahpa],
               [enable_oahpa=$enableval],
               [enable_oahpa=no])
 AM_CONDITIONAL([WANT_OAHPA], [test "x$enable_oahpa" != xno])
+
+# Enable Hunspell production - default is 'no'
+AC_ARG_ENABLE([hunspell],
+              [AS_HELP_STRING([--enable-hunspell],
+                              [enable hunspell building @<:@default=no@:>@])],
+              [enable_hunspell=$enableval],
+              [enable_hunspell=no])
+AM_CONDITIONAL([WANT_HUNSPELL], [test "x$enable_hunspell" != xno])
 ]) # gt_ENABLE_TARGETS
 
 AC_DEFUN([gt_PRINT_FOOTER],

@@ -26,6 +26,18 @@ if [ ! -f $sourcefile ]; then
     exit 77
 fi
 
+# Use autotools mechanisms to only run the configured fst types in the tests:
+fsttype=
+@CAN_HFST_TRUE@fsttype="$fsttype hfst"
+@CAN_XFST_TRUE@fsttype="$fsttype xfst"
+
+# Exit if both hfst and xerox have been shut off:
+if [ -z $fsttype ]; then
+    echo "All transducer types have been shut off at configure time."
+    echo "Nothing to test. Skipping."
+    exit 77
+fi
+
 ###### Extraction: #######
 ${GTCORE}/scripts/extract-lemmas.sh \
 	$sourcefile "(CmpN/Last)" > $lemmas
@@ -35,27 +47,30 @@ transducer_found=0
 Fail=0
 
 # The script tests both Xerox and Hfst transducers if available:
-for f in  .xfst .hfst; do
-	if [ $f == ".xfst" ]; then
+for f in $fsttype; do
+	if [ $f == "xfst" ]; then
 		lookuptool="@LOOKUP@ -q -flags mbTT"
-		fsttype=xfst
-	else
+	elif [ $f == "hfst" ]; then
 		lookuptool="@HFST_LOOKUP@ -q"
-		fsttype=hfst
+	else
+	    Fail=1
+		echo "Unknown fst type!"
+	    echo "$f - FAIL"
+	    continue
 	fi
-	if [ -f "$generatorfile$f" ]; then
+	if [ -f "$generatorfile.$f" ]; then
 		let "transducer_found += 1"
 		sed 's/$/+N+Sg+Nom/' $lemmas | \
-				$lookuptool $generatorfile$f > $generatedlemmas.$fsttype.txt
-		fgrep '?' $generatedlemmas.$fsttype.txt > $failedlemmas.$fsttype.txt
-		if [ $(wc -l $failedlemmas.$fsttype.txt | tr -s ' ' | sed 's/^ //' \
+				$lookuptool $generatorfile.$f > $generatedlemmas.$f.txt
+		fgrep '?' $generatedlemmas.$f.txt > $failedlemmas.$f.txt
+		if [ $(wc -l $failedlemmas.$f.txt | tr -s ' ' | sed 's/^ //' \
 				| cut -d' ' -f1) -gt 0 ]; then
-			see $failedlemmas.$fsttype.txt
+			see $failedlemmas.$f.txt
 		    Fail=1
-		    echo "$fsttype - FAIL"
+		    echo "$f - FAIL"
 		    continue
 		fi
-	    echo "$fsttype - PASS"
+	    echo "$f - PASS"
 	fi
 done
 

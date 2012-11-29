@@ -1,4 +1,9 @@
-$Rev: 66316 $
+$Rev: 66329 $
+Automake requirement reduced to 1.11, after getting confirmation that that
+version is fine for finding Python (the main problem issue that triggered the
+version requirement).
+
+r66316:
 There's too much trouble with finding the correct Python version when using
 Automake v.1.10. We thus require 1.12 from now on.
 

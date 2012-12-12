@@ -1,4 +1,8 @@
-$Rev: 66329 $
+$Rev: 66815 $
+Made the yaml test scrips obey configuration options, ie only run the hfst tests
+if hfst is turned on at configuration time.
+
+r66329:
 Automake requirement reduced to 1.11, after getting confirmation that that
 version is fine for finding Python (the main problem issue that triggered the
 version requirement).

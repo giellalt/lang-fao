@@ -11,22 +11,40 @@ generatorfile=${srcdir}/../../../src/generator-$transducer
 pythonbin=@PYTHON@
 runtests="$pythonbin $GTCORE/scripts/morph-test.py"
 
+# Use autotools mechanisms to only run the configured fst types in the tests:
+fsttype=
+@CAN_HFST_TRUE@fsttype="$fsttype hfst"
+@CAN_XFST_TRUE@fsttype="$fsttype xfst"
+
+# Exit if both hfst and xerox have been shut off:
+if [ "$fsttype" == "" ]; then
+    echo "All transducer types have been shut off at configure time."
+    echo "Nothing to test. Skipping."
+    exit 77
+fi
+
 ###### Start testing: #######
 transducer_found=0
 Fail=0
 
 # Loop over the transducer types first - we test both hfst and xfst if found:
-for f in .xfst .hfst; do
-	if [ $f == ".xfst" ]; then
+for f in $fsttype; do
+	if [ $f == "xfst" ]; then
 		lookuptool="@LOOKUP@"
 		section="xerox"
-	else
+	elif [ $f == "hfst" ]; then
 		lookuptool="@HFST_LOOKUP@"
 		section="hfst"
+	else
+	    Fail=1
+		echo "Unknown fst type!"
+	    echo "$f - FAIL"
+	    continue
 	fi
-	if [ -f "$generatorfile$f" -a -f "$analyserfile$f" ]; then
+	if [ -f "$generatorfile.$f" -a -f "$analyserfile.$f" ]; then
 		let "transducer_found += 1"
-		if [ -z $(find ${srcdir} -name "*_$transducer.yaml") ]; then
+		testfiles=$(find ${srcdir} -name "*_$transducer.yaml")
+		if [ "$testfiles" == "" ]; then
 			echo
 			echo "*** Warning: No YAML data files found. Skipping test."
 			echo "*** Filenames covered by this test needs to end in:"
@@ -40,19 +58,19 @@ for f in .xfst .hfst; do
 		for file in ${srcdir}/*_$transducer.yaml; do
 			(( i += 1 ))
 			echo
-			echo "Subtest $i - $section: Testing $file using $analyserfile$f"
+			echo "Subtest $i - $section: Testing $file using $analyserfile.$f"
 			echo
 			$runtests -c -C -i -S $section \
 				--app $lookuptool \
-				--gen $generatorfile$f \
-				--morph $analyserfile$f \
+				--gen $generatorfile.$f \
+				--morph $analyserfile.$f \
 				$file
 			if [ $? -gt 0 ]; then
 			    Fail=1
 			    echo
 			    echo "Test failed. To rerun with more details, please do:"
 			    echo
-			    echo "pushd $(pwd); $runtests -c -i -S $section --app $lookuptool --gen $generatorfile$f --morph $analyserfile$f $file; popd"
+			    echo "pushd $(pwd); $runtests -c -i -S $section --app $lookuptool --gen $generatorfile.$f --morph $analyserfile.$f $file; popd"
 			    echo
 			fi
 		done

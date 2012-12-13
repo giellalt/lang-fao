@@ -1,4 +1,12 @@
-$Rev: 66815 $
+$Rev: 66833 $
+First step in making the digit transcriptor transducers work. The transducers
+are compiled, and are given proper names according to the fst naming
+conventions, and the Xerox transducers work in the digit-2-string direction. The
+Hfst transducers do not yet work (segmentation fault due to running out of
+memory because of an infinite recursion), and the string-2-digit direction is
+not yet in place.
+
+r66815:
 Made the yaml test scrips obey configuration options, ie only run the hfst tests
 if hfst is turned on at configuration time.
 

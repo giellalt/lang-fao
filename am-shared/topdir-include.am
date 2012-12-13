@@ -25,11 +25,17 @@
 if CAN_HFST
 GT_ANALYSERS_HFST=analyser-gt-desc.hfst analyser-gt-norm.hfst
 GT_GENERATORS_HFST=generator-gt-desc.hfst generator-gt-norm.hfst
+GT_TRANSFORMERS_HFST=transcriptor-clock2text-desc.hfst \
+					 transcriptor-date2text-desc.hfst \
+					 transcriptor-numbers2text-desc.hfst
 endif
 
 if CAN_XFST
 GT_ANALYSERS_XFST=analyser-gt-desc.xfst analyser-gt-norm.xfst
 GT_GENERATORS_XFST=generator-gt-desc.xfst generator-gt-norm.xfst
+GT_TRANSFORMERS_XFST=transcriptor-clock2text-desc.xfst \
+					 transcriptor-date2text-desc.xfst \
+					 transcriptor-numbers2text-desc.xfst
 endif
 
 if WANT_OAHPA
@@ -40,12 +46,14 @@ endif # WANT_OAHPA
 
 if CAN_HFST
 hfstdatadir=$(datadir)/hfst/$(GTLANG)
-hfstdata_DATA=$(GT_ANALYSERS_HFST) $(GT_GENERATORS_HFST) \
-			  $(GT_HYPHENATION_HFST)
+hfstdata_DATA=$(GT_ANALYSERS_HFST) \
+			  $(GT_GENERATORS_HFST) \
+			  $(GT_TRANSFORMERS_HFST)
 endif
 
-noinst_DATA=$(GT_ANALYSERS_XFST) $(GT_GENERATORS_XFST) \
-			$(GT_HYPHENATION_XFST)
+noinst_DATA=$(GT_ANALYSERS_XFST) \
+			$(GT_GENERATORS_XFST) \
+			$(GT_TRANSFORMERS_XFST)
 
 ##################################################
 ######## Build rules for Xerox and HFST: #########
@@ -80,7 +88,7 @@ analyser-raw-gt-desc.xfst: morphology/$(GTLANG).lexc.xfst \
 		"read-source morphology/$(GTLANG).lexc.xfst\n\
 		 read-rules  phonology/$(GTLANG)-phon.xfst\n\
 		 compose-result\n\
-		 save-result $@\nquit\n" | $(LEXC)
+		 save-result $@\nquit\n" | $(LEXC) -q
 
 # This is the default, descriptive analyser:
 analyser-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
@@ -145,7 +153,7 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"orthography/spellrelax.xfst\" \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(XFST)
+		 quit\n" | $(XFST) -q
 
 # This is the default, descriptive generating transducer.
 generator-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
@@ -210,7 +218,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"filters/remove-morph-borders.xfst\" ;\n\
 		 invert net\n\
 		 save stack $@\n\
-		 quit\n" | $(XFST)
+		 quit\n" | $(XFST) -q
 
 # This is the normative analyser:
 # Remove sub-standard forms to get a normative transducer
@@ -376,6 +384,43 @@ generator-oahpa-gt-norm.xfst: analyser-raw-gt-desc.xfst \
 		 invert net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST)
+
+# The number-clock-date2text conversion transducers:
+transcriptor-%2text-desc.hfst: \
+					transcriptions/transcriptor-%2text-raw.hfst \
+					filters/remove-NA-strings.hfst \
+					filters/remove-NG-strings.hfst \
+					filters/remove-usage-tags.hfst
+	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
+			-2 filters/remove-usage-tags.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-NA-strings.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-NG-strings.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_INVERT) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-usage-tags.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw \
+		-o $@
+
+transcriptor-%2text-desc.xfst: \
+					transcriptions/transcriptor-%2text-raw.xfst \
+					filters/remove-NA-strings.xfst \
+					filters/remove-NG-strings.xfst \
+					filters/remove-usage-tags.xfst
+	$(AM_V_GEN)$(PRINTF) "read regex \
+				@\"filters/remove-NA-strings.xfst\" \
+			.o. @\"filters/remove-NG-strings.xfst\" \
+			.o. @\"filters/remove-usage-tags.xfst\" \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-usage-tags.xfst\".i \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) -q
 
 # create generic tagset variants of analyzers
 analyser-%-desc.hfst: analyser-gt-desc.hfst tagsets/%.relabel

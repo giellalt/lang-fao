@@ -27,10 +27,14 @@ EXTRA_DIST=$(GT_TRANSCRIPTIONS_SRCS)
 # The transducers we build and don't distribute depend on the configuration:
 GT_TRANSCRIPTORS=
 if CAN_HFST
-GT_TRANSCRIPTORS+=clock.hfst date.hfst numbers.hfst
+GT_TRANSCRIPTORS+=transcriptor-clock2text-raw.hfst \
+				  transcriptor-date2text-raw.hfst \
+				  transcriptor-numbers2text-raw.hfst
 endif
 if CAN_XFST
-GT_TRANSCRIPTORS+=clock.xfst date.xfst numbers.xfst
+GT_TRANSCRIPTORS+=transcriptor-clock2text-raw.xfst \
+				  transcriptor-date2text-raw.xfst \
+				  transcriptor-numbers2text-raw.xfst
 endif
 noinst_DATA=$(GT_TRANSCRIPTORS)
 
@@ -38,14 +42,14 @@ noinst_DATA=$(GT_TRANSCRIPTORS)
 
 # lexical transducer building rules:
 # for HFST:
-%.hfst: %.lexc
+transcriptor-%2text-raw.hfst: %.lexc
 	$(AM_V_GEN)$(HFST_LEXC) -f foma -o $@.foma $^
 	$(AM_V_GEN)$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
 	$(AM_V_GEN)rm -f $@.foma
 
 ####### Xerox build rules: #######
 
-%.xfst: %.lexc
+transcriptor-%2text-raw.xfst: %.lexc
 	$(AM_V_GEN)$(PRINTF) \
 		"compile-source $^\nsource-to-result\nsave-source $@\nquit\n" | $(LEXC)
 

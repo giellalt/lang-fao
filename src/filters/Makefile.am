@@ -31,7 +31,9 @@ GT_FILTER_TARGETS+=\
 				   remove-norm-comp-tags.hfst           \
 				   remove-number-string-tags.hfst       \
 				   remove-sub-forms.hfst                \
-				   remove-usage-tags.hfst
+				   remove-usage-tags.hfst               \
+				   remove-NA-strings.hfst               \
+				   remove-NG-strings.hfst
 endif
 
 if CAN_XFST
@@ -45,7 +47,9 @@ GT_FILTER_TARGETS+=\
 				   remove-norm-comp-tags.xfst           \
 				   remove-number-string-tags.xfst       \
 				   remove-sub-forms.xfst                \
-				   remove-usage-tags.xfst
+				   remove-usage-tags.xfst               \
+				   remove-NA-strings.xfst               \
+				   remove-NG-strings.xfst
 endif
 
 # Add the target of local additions here:

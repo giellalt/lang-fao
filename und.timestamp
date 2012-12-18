@@ -1,4 +1,8 @@
-$Rev: 66833 $
+$Rev: 66959 $
+Refactored the yaml test code, moving duplicate parts to a separate file. Makes
+for much easier adaption to new transducer types.
+
+r66833;
 First step in making the digit transcriptor transducers work. The transducers
 are compiled, and are given proper names according to the fst naming
 conventions, and the Xerox transducers work in the digit-2-string direction. The

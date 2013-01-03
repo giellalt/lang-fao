@@ -1,4 +1,8 @@
-$Rev: 67043 $
+$Rev: 67309 $
+Require at least HFST 3.4 - it includes all backends, and simplifies dependency
+handling quite a bit.
+
+r67043:
 Fixed parsing of regexes for hfst, due to a bug in hfst-regex2fst when parsing
 regexes with comments after the regex is closed.
 

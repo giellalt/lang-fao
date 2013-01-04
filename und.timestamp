@@ -1,4 +1,9 @@
-$Rev: 67309 $
+$Rev: 67353 $
+More robust Saxon/Java setup: no need to define CLASSPATH. The M4 macros will
+look for a couple of predefined pathnames, and pick the first saxon9he.jar file
+it finds. More locations should be added as needed.
+
+r67309:
 Require at least HFST 3.4 - it includes all backends, and simplifies dependency
 handling quite a bit.
 

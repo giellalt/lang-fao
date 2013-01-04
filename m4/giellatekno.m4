@@ -89,16 +89,27 @@ AC_DEFUN([gt_PROG_SAXON],
              [with_saxon=check])
 AC_PATH_PROG([SAXON], [saxonb-xslt saxon9 saxon8 saxon], [false], [$PATH$PATH_SEPARATOR$with_saxon])
 AC_PATH_PROG([JV], [java], [false])
+AC_CHECK_FILE([/opt/local/share/java/saxon9he.jar],
+    AC_SUBST(SAXONJAR, [/opt/local/share/java/saxon9he.jar]),
+        [AC_CHECK_FILE([$HOME/lib/saxon9he.jar],
+            AC_SUBST(SAXONJAR, [$HOME/lib/saxon9he.jar]),
+                [AC_CHECK_FILE([$HOME/lib/saxon9.jar],
+                    AC_SUBST(SAXONJAR, [$HOME/lib/saxon9.jar]),
+                [saxonjar=no])
+                ])]
+)
 AC_MSG_CHECKING([whether we can enable xslt2 transformations])
 AS_IF([test x$with_saxon != xno], [
     AS_IF([test "x$SAXON" != xfalse], [gt_prog_saxon=yes],
           [gt_prog_saxon=no])
     AS_IF([test x$JV != xfalse], [gt_prog_java=yes], [gt_prog_java=no])
-], [gt_prog_saxon=no])
-AC_MSG_RESULT([$gt_prog_saxon])
+    AS_IF([test x$gt_prog_java != xno -a x$saxonjar != xno],
+          [gt_prog_xslt=yes], [gt_prog_xslt=no])
+], [gt_prog_xslt=no])
+AC_MSG_RESULT([$gt_prog_xslt])
 AM_CONDITIONAL([CAN_SAXON], [test "x$gt_prog_saxon" != xno])
-AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$gt_prog_saxon" = xno]) 
-])
+AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$saxonjar" != xno]) 
+]) # gt_PROG_SAXON
 
 AC_DEFUN([gt_ENABLE_TARGETS],
 [
@@ -171,5 +182,10 @@ To build, test and install:
 EOF
 AS_IF([test x$gt_prog_xfst = xno -a x$gt_prog_hfst = xno],
       [AC_MSG_WARN([Both XFST and HFST are disabled: no automata will be built])])
+AS_IF([test x$gt_prog_xslt = xno -a \
+      "$(find ./src/morphology/stems -name "*.xml" | head -n 1)" != "" ],
+      [AC_MSG_WARN([You have XML source files, but XML transformation to LexC is
+disabled. Please check the output of configure to locate any problems.
+])])
 ]) # gt_PRINT_FOOTER
 # vim: set ft=config: 

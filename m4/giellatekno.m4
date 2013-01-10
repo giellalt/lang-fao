@@ -138,10 +138,11 @@ AC_ARG_ENABLE([voikko],
               [enable_voikko=yes])
 AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_spellerautomat" != xno])
 
-AS_IF([test "x$enable_voikko" = "xyes"], 
+AS_IF([test "x$enable_voikko" = "xyes" -a "x$gt_prog_hfst" != xno], 
       [AC_PATH_PROG([ZIP], [zip], [false])
        AS_IF([test "x$ZIP" = "xfalse"],
-             [AC_MSG_ERROR([zip is required for voikko speller packages])])])
+             [enable_voikko=no
+              AC_MSG_WARN([zip missing, spellers disabled])])])
 
 # Enable Oahpa transducers - default is 'no'
 AC_ARG_ENABLE([oahpa],

@@ -85,11 +85,10 @@ analyser-raw-gt-desc.hfst: morphology/$(GTLANG).lexc.hfst \
 analyser-raw-gt-desc.xfst: morphology/$(GTLANG).lexc.xfst \
 			 phonology/$(GTLANG)-phon.xfst
 	$(AM_V_GEN)$(PRINTF) \
-		"read-source morphology/$(GTLANG).lexc.xfst\n\
-		 read-rules  phonology/$(GTLANG)-phon.xfst\n\
-		 compose-result\n\
-		 save-result $@\nquit\n" | $(LEXC) -q
-	-mv -f analyser-raw-gt-decc.xfst analyser-raw-gt-desc.xfst
+		"read-source morphology/$(GTLANG).lexc.xfst\nread-rules  phonology/$(GTLANG)-phon.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		> $@.script
+	$(AM_V_GEN)$(LEXC) < $@.script
+	$(AM_V_GEN)rm -f $@.script
 
 # This is the default, descriptive analyser:
 analyser-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \

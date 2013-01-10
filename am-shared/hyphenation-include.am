@@ -61,8 +61,10 @@ HFSTTWOLFLAGS=--resolve
 # All twolc targets should be built by suffix rules;
 # just list them in some nice automake targets and you're good to go
 .twolc.xfst:
-	$(AM_V_GEN)$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" |\
-		$(TWOLC)
+	$(AM_V_GEN)$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" \
+		> $@.script
+	$(AM_V_GEN)$(TWOLC) < $@.script
+	$(AM_V_GEN)rm -f $@.script
 
 # Phonology rules as xfst scripts (typically a cascade of regex rules):
 .xfscript.xfst:

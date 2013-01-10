@@ -74,7 +74,10 @@ $(GTLANG).lexc.hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 
 $(GTLANG).lexc.xfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 	$(AM_V_GEN)$(PRINTF) \
-		"compile-source $^\nsource-to-result\nsave-source $@\nquit\n" | $(LEXC)
+		"compile-source $^\nsource-to-result\nsave-source $@\nquit\n" \
+		> $@.script
+	$(AM_V_GEN)$(LEXC) < $@.script
+	$(AM_V_GEN)rm -f $@.script
 
 ####### Other targets: ###########
 clean-local:

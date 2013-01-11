@@ -62,7 +62,7 @@ AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
 
 # We need special treatment of Java paths in Cygwin:
 AC_CANONICAL_HOST
-case "$target" in
+case "${host}" in
   *-cygwin* | *-mingw*)
     CYGWINJAVAPATH='cygpath -m'
     ;;

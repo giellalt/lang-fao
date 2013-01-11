@@ -1,4 +1,9 @@
-$Rev: 67840 $
+$Rev: 67860 $
+Concatenate all LexC source files into one file explicitly, instead of letting
+hfst-lexc do it. This is more robust cross-platform, and makes the file used for
+transducer compilation easily available for debugging.
+
+r67840:
 Corrected the host detection test for Cygwin.
 
 r67828:

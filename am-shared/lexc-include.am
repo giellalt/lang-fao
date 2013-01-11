@@ -56,8 +56,8 @@ XSLPROC = net.sf.saxon.Transform
 
 # This target will convert each individual xml file to lexc:
 stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
-	$(AM_V_GEN)$(JV) $(MF) -cp @SAXONJAR@ $(XSLPROC) \
-		$(EF) $(XSLDIR)/generate_lex-fileVM.xsl \
+	$(AM_V_GEN)$(JV) $(MF) -cp $$(@CYGWINJAVAPATH@ "@SAXONJAR@") $(XSLPROC) \
+		$(EF) $$(@CYGWINJAVAPATH@ "$(XSLDIR)/generate_lex-fileVM.xsl") \
 		inFile=$(abs_srcdir)/$< > $@
 endif
 endif

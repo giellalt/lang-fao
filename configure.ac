@@ -60,6 +60,19 @@ AS_IF([test "x$enable_yamltests" = "xcheck"],
 
 AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
 
+# We need special treatment of Java paths in Cygwin:
+AC_CANONICAL_HOST
+case "$target" in
+  *-cygwin* | *-mingw*)
+    CYGWINJAVAPATH='cygpath -m'
+    ;;
+  *)
+    # Assume Unix.
+    CYGWINJAVAPATH=echo
+    ;;
+esac
+AC_SUBST(CYGWINJAVAPATH)
+
 # Following Giellatekno specific variables are used to make external software
 # work; HFST analysers, spell-checkers and so on. These also control
 # some temporary file names etc.

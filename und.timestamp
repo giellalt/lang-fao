@@ -1,4 +1,7 @@
-$Rev: 67860 $
+$Rev: 67871 $
+The final fix to get the XML-to-LexC conversion working on Cygwin.
+
+r67860:
 Concatenate all LexC source files into one file explicitly, instead of letting
 hfst-lexc do it. This is more robust cross-platform, and makes the file used for
 transducer compilation easily available for debugging.

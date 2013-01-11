@@ -58,7 +58,7 @@ XSLPROC = net.sf.saxon.Transform
 stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
 	$(AM_V_GEN)$(JV) $(MF) -cp $$(@CYGWINJAVAPATH@ "@SAXONJAR@") $(XSLPROC) \
 		$(EF) $$(@CYGWINJAVAPATH@ "$(XSLDIR)/generate_lex-fileVM.xsl") \
-		inFile=$(abs_srcdir)/$< > $@
+		inFile=$$(@CYGWINJAVAPATH@ "$(abs_srcdir)/$<") > $@
 endif
 endif
 ####### HFST build rules: ########

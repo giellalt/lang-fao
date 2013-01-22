@@ -1,0 +1,42 @@
+## Process this file with automake to produce Makefile.in
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+doc_DATA=$(JSP_PAGES) $(ALLINONE_JSP_PAGE)
+
+DOCC2RST=$(GTCORE)/scripts/doccomments2rst.awk
+DOCC2TEX=$(GTCORE)/scripts/doccomments2tex.awk
+DOCC2JSPWIKI=$(GTCORE)/scripts/doccomments2jspwiki.awk
+
+RST2HTML=rst2html
+LATEX=xelatex
+
+%-morphology.jspwiki: $(top_srcdir)/src/morphology/%.lexc
+	$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
+
+%-stems.jspwiki: $(top_srcdir)/src/morphology/stems/%.lexc
+	$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
+
+%-affixes.jspwiki: $(top_srcdir)/src/morphology/affixes/%.lexc
+	$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
+
+$(GTLANG).jspwiki: $(srcdir)/preamble.jspwiki $(JSP_PAGES)
+	-rm -f $@
+	cat $(srcdir)/preamble.jspwiki $(JSP_PAGES) > $@
+
+#$(GTLANG).tex: $(srcdir)/preamble.tex $(srcdir)/doc-comments.conf
+#	-rm -f $@
+#	cat $(srcdir)/preamble.tex > $@
+#
+#
+#$(GTLANG).rst: $(srcdir)/preamble.rst $(srcdir)/doc-comments.conf
+#	-rm -f $@
+#	cat $(srcdir)/preamble.rst > $@
+#
+#%.html: %.rst
+#	$(RST2HTML) < $< > $@
+#
+#%.pdf: %.tex
+#	$(LATEX) $<
+#	$(LATEX) $<
+#	$(LATEX) $<

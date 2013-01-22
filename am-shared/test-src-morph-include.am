@@ -1,0 +1,25 @@
+## Process this file with automake to produce Makefile.in
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+DOCC2YAML=$(GTCORE)/scripts/doccomments2yaml.awk
+
+check_DATA=$(SOURCE_CODE_YAML_TESTS)
+
+%-morphology_gt-norm.yaml: $(top_srcdir)/src/morphology/%.lexc
+	$(AWK) -f $(DOCC2YAML) < $< > $@
+
+%-morphology_gt-desc.yaml: $(top_srcdir)/src/morphology/%.lexc
+	$(AWK) -f $(DOCC2YAML) --assign=TYPE=gt-desc < $< > $@
+
+%-stems_gt-norm.yaml: $(top_srcdir)/src/morphology/stems/%.lexc
+	$(AWK) -f $(DOCC2YAML) < $< > $@
+
+%-stems_gt-desc.yaml: $(top_srcdir)/src/morphology/stems/%.lexc
+	$(AWK) -f $(DOCC2YAML) --assign=TYPE=gt-desc < $< > $@
+ 
+%-affixes_gt-norm.yaml: $(top_srcdir)/src/morphology/affixes/%.lexc
+	$(AWK) -f $(DOCC2YAML) < $< > $@
+
+%-affixes_gt-desc.yaml: $(top_srcdir)/src/morphology/affixes/%.lexc
+	$(AWK) -f $(DOCC2YAML) --assign=TYPE=gt-desc < $< > $@

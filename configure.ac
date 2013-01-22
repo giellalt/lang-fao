@@ -104,6 +104,11 @@ gt_PROG_VISLCG3
 # Tests and sets up XML to lexc conversion
 gt_PROG_SAXON
 
+AC_PATH_PROG([AWK], [gawk], [], [$PATH$PATH_SEPARATOR$with_awk])
+AC_MSG_CHECKING([whether we can enable in-source documentation building])
+AS_IF([test "x$AWK" != x], [gt_prog_awk=yes], [gt_prog_awk=no])
+AC_MSG_RESULT([$gt_prog_awk])
+AM_CONDITIONAL([CAN_DOCC], [test "x$gt_prog_awk" != xno])
 
 # List all non-script files processed by Autoconf.
 AC_CONFIG_FILES([Makefile \

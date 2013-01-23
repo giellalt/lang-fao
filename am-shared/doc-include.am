@@ -2,7 +2,7 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-doc_DATA=$(JSP_PAGES) $(ALLINONE_JSP_PAGE)
+doc_DATA=$(JSP_PAGES) $(ALLINONE_JSP_PAGE) $(LINKS)
 
 DOCC2RST=$(GTCORE)/scripts/doccomments2rst.awk
 DOCC2TEX=$(GTCORE)/scripts/doccomments2tex.awk
@@ -23,6 +23,13 @@ LATEX=xelatex
 $(GTLANG).jspwiki: $(srcdir)/preamble.jspwiki $(JSP_PAGES)
 	-rm -f $@
 	cat $(srcdir)/preamble.jspwiki $(JSP_PAGES) > $@
+
+$(LINKS): $(JSP_PAGES)
+	-rm -f $@
+	echo $^ | sed 's/\.jspwiki/\.html/g' \
+			| sed 's/[a-z.-]*/*[&]/g' \
+			| tr ' ' '\n'  \
+			| cat $(srcdir)/link-header.jspwiki - > $@
 
 #$(GTLANG).tex: $(srcdir)/preamble.tex $(srcdir)/doc-comments.conf
 #	-rm -f $@

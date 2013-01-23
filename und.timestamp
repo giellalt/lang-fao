@@ -1,4 +1,9 @@
-$Rev: 68823 $
+$Rev: 68844 $
+Finally found out how to get the old test behaviour back. We want the serial
+tests, because it gives direct feedback to the linguists. Automake 1.13 uses
+parallel testing by default, which logs all test results to files.
+
+r68823:
 Added support for processing twolc files for documentation extraction.
 
 r68816:

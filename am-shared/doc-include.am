@@ -11,6 +11,9 @@ DOCC2JSPWIKI=$(GTCORE)/scripts/doccomments2jspwiki.awk
 RST2HTML=rst2html
 LATEX=xelatex
 
+%-syntax.jspwiki: $(top_srcdir)/src/syntax/%.cg3
+	$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
+
 %-phonology.jspwiki: $(top_srcdir)/src/phonology/%.twolc
 	$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
 

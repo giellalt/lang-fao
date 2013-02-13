@@ -134,8 +134,8 @@ AC_CONFIG_FILES([Makefile \
                  tools/spellcheckers/hfst/Makefile])
 # Add one AC_CONFIG_FILES for each script file that needs processing. This gives
 # the most pleasant user experience and most readable autoconf code to maintain.
-AC_CONFIG_FILES([test/src/morphology/run-yaml-testcases.sh], \
-      [chmod a+x test/src/morphology/run-yaml-testcases.sh])
+AC_CONFIG_FILES([test/src/morphology/run-morph-tester.sh], \
+      [chmod a+x test/src/morphology/run-morph-tester.sh])
 AC_CONFIG_FILES([test/src/morphology/generate-noun-lemmas.sh], \
       [chmod a+x test/src/morphology/generate-noun-lemmas.sh])
 

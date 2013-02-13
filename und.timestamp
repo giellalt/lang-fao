@@ -1,4 +1,10 @@
-$Rev: 70633 $
+$Rev: 70961 $
+Major update to the LexC testing. Now test data directly in the LexC code is
+supported by the python test script morph-tester.py (it reads the lexc files
+directly), which solves the bugs with multiple wordforms for the same
+morphosyntactic inflection. It is also a bit faster than the awk solution.
+
+r70633:
 Added initial documentation extraction of CG3 files. Probably more work to be
 done to get things working as intended.
 

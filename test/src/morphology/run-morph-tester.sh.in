@@ -1,0 +1,100 @@
+#!/bin/bash
+# @configure_input@
+
+# This is a shell script that will take one test file
+# and run it through the Apertium Quality morph-test.py tool, using Xerox
+# or Hfst transducers to the extent found.
+#
+# It takes two arguments: the transducer type and the file to be tested
+#
+# The script is typically called by a simple shell script listed in the TESTS
+# variable in the Makefile.am file, and will then be automatically called when
+# issuing 'make check'
+#
+# This file must be processed by ./configure before being used.
+
+# Wrong usage - short instruction:
+if ! test $# -eq 2 ; then
+    echo
+    echo "Usage: $0 TRANSDUCERTYPE TESTFILE"
+    echo
+    echo "were TRANSDUCERTYPE is the type of transducer targeted for testing,"
+    echo "gt-norm, gt-desc, etc., and the optional TESTFILE is either a LexC"
+    echo "file or a Yaml test data file, both containing test data."
+    echo
+    exit 77
+fi
+
+###### Variables: #######
+transducer=$1
+testfile=$2
+
+analyserfile=${srcdir}/../../../src/analyser-$transducer
+generatorfile=${srcdir}/../../../src/generator-$transducer
+pythonbin=@PYTHON@
+runtests="$pythonbin $GTCORE/scripts/morph-test.py"
+
+# Use autotools mechanisms to only run the configured fst types in the tests:
+fsttype=
+@CAN_HFST_TRUE@fsttype="$fsttype hfst"
+@CAN_XFST_TRUE@fsttype="$fsttype xfst"
+
+# Exit if both hfst and xerox have been shut off:
+if [ "$fsttype" == "" ]; then
+    echo "All transducer types have been shut off at configure time."
+    echo "Nothing to test. Skipping."
+    exit 77
+fi
+
+function run_tests() {
+	$runtests \
+		--colour \
+		--compact \
+		--ignore-extra-analyses \
+		--section $section \
+	    --app $lookuptool \
+	    --gen $generatorfile.$f \
+	    --morph $analyserfile.$f \
+	    $testfile
+	if [ $? -gt 0 ]; then
+	    let "Fail += 1"
+	    echo
+	    echo "Test failed. To rerun with more details, please do:"
+	    echo
+	    echo "pushd $(pwd); $runtests -c -i -S $section --app $lookuptool --gen $generatorfile.$f --morph $analyserfile.$f $testfile; popd"
+	    echo
+	fi
+}
+
+###### Start testing: #######
+transducer_found=0
+
+# Loop over the transducer types first - we test both hfst and xfst if found:
+for f in $fsttype; do
+	if [ $f == "xfst" ]; then
+		lookuptool="@LOOKUP@"
+		section="xerox"
+	elif [ $f == "hfst" ]; then
+		lookuptool="@HFST_LOOKUP@"
+		section="hfst"
+	else
+	    let "Fail += 1"
+		echo "Unknown fst type! FST=$f"
+	    echo "$f - FAIL"
+	    continue
+	fi
+
+	if [ -f "$generatorfile.$f" -a -f "$analyserfile.$f" ]; then
+		let "transducer_found += 1"
+		echo "Testing: $testfile"
+		echo "using transducer: $analyserfile.$f"
+		echo
+		run_tests
+	else
+	    let "Fail += 1"
+		echo "FAIL: Transducer not found! $analyserfile.$f"
+		echo "Referenced by: $testfile"
+	    echo
+	    continue
+	fi
+done

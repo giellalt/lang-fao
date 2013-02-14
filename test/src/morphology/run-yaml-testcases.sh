@@ -31,7 +31,7 @@ transducer=$1
 Fail=0
 
 testfiles=$(find ${srcdir} -name "*_$transducer.yaml")
-if [[ "$testfiles" == "" ]]; then
+if test "$testfiles" == ""; then
     echo
     echo "*** Warning: No YAML data files found. Skipping test."
     echo "*** Filenames covered by this test needs to end in:"

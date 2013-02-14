@@ -7,12 +7,12 @@
 # source error-handling-stubs.sh
 
 # At least one of the Xerox or HFST tests failed:
-if [[ $Fail -ge 1 ]]; then
+if test $Fail -ge 1; then
     exit 1
 fi
 
 # Fail if no transducer were found:
-if [[ $transducer_found -eq 0 ]]; then
+if test $transducer_found -eq 0; then
     echo No transducer found
     exit 1
 fi

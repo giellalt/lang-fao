@@ -40,7 +40,7 @@ fsttype=
 @CAN_XFST_TRUE@fsttype="$fsttype xfst"
 
 # Exit if both hfst and xerox have been shut off:
-if [ "$fsttype" == "" ]; then
+if [[ "$fsttype" == "" ]]; then
     echo "All transducer types have been shut off at configure time."
     echo "Nothing to test. Skipping."
     exit 77
@@ -56,7 +56,7 @@ function run_tests() {
 	    --gen $generatorfile.$f \
 	    --morph $analyserfile.$f \
 	    $testfile
-	if [ $? -gt 0 ]; then
+	if [[ $? -gt 0 ]]; then
 	    let "Fail += 1"
 	    echo
 	    echo "Test failed. To rerun with more details, please do:"
@@ -71,10 +71,10 @@ transducer_found=0
 
 # Loop over the transducer types first - we test both hfst and xfst if found:
 for f in $fsttype; do
-	if [ $f == "xfst" ]; then
+	if [[ $f == "xfst" ]]; then
 		lookuptool="@LOOKUP@"
 		section="xerox"
-	elif [ $f == "hfst" ]; then
+	elif [[ $f == "hfst" ]]; then
 		lookuptool="@HFST_LOOKUP@"
 		section="hfst"
 	else
@@ -84,7 +84,7 @@ for f in $fsttype; do
 	    continue
 	fi
 
-	if [ -f "$generatorfile.$f" -a -f "$analyserfile.$f" ]; then
+	if [[ -f "$generatorfile.$f" -a -f "$analyserfile.$f" ]]; then
 		let "transducer_found += 1"
 		echo "Testing: $testfile"
 		echo "using transducer: $analyserfile.$f"

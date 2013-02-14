@@ -14,12 +14,12 @@ for file in ${srcdir}/../../../src/morphology/*.lexc \
 			${srcdir}/../../../src/morphology/*/*.lexc; do
 	fsts=$(grep '^\!\!€[^ :]' $file | sed 's/.*€\([a-z-]*\)\:.*/\1/' | sort -u)
 	tests=$(grep '^\!\!€ ' $file)
-	if [ "$fsts" == "" -a "$tests" == "" ]; then
+	if [[ "$fsts" == "" -a "$tests" == "" ]]; then
 		echo
 		echo "* WARNING: the LexC file $file"
 		echo "doesn't contain any tests - SKIPPED"
 		echo
-	elif [ "$fsts" == "" -a ! "$tests" == "" ]; then
+	elif [[ "$fsts" == "" -a ! "$tests" == "" ]]; then
 #		echo "$file has tests, but no fst specified - defaulting to gt-norm."
 #		source ./run-yaml-testcases.sh $transducer $file
 		echo

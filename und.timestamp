@@ -1,4 +1,13 @@
-$Rev: 71071 $
+$Rev: 71326 $
+Corrected cut&paste error.
+
+r71325:
+Added check for forrest as part of configuring the documentation extraction.
+Forrest will be used to validate the jspwiki documents during the build, to
+avoid that invalid documents enter the svn repository and corrupts the web page
+building.
+
+r71071:
 Upped the required automake version from 1.11 to 1.12, to avoid all hassles with
 the test harnesses and backwards compatibility.
 

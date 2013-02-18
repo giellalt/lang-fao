@@ -188,5 +188,9 @@ AS_IF([test x$gt_prog_xslt = xno -a \
       [AC_MSG_WARN([You have XML source files, but XML transformation to LexC is
 disabled. Please check the output of configure to locate any problems.
 ])])
+AS_IF([test x$gt_prog_docc = xno],
+      [AC_MSG_WARN([Could not find awk, java or forrest. In-source documentation
+      will not be extracted and validated. Please install the required
+      tools.])])
 ]) # gt_PRINT_FOOTER
 # vim: set ft=config: 

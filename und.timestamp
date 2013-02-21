@@ -1,4 +1,14 @@
-$Rev: 71326 $
+$Rev: 71576 $
+Several adjustments to the forrest setup for jspwiki validation.
+
+r71421:
+Added support files to enable forrest validation of jspwiki files. Second part
+of making sure extracted documentation comments won't break site building. Also
+added another make step to actually run forrest at the end of building the
+documentation. Make will now break if there are fatal errors in the jspwiki
+markup.
+
+r71326:
 Corrected cut&paste error.
 
 r71325:

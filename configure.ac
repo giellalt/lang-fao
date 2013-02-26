@@ -136,7 +136,8 @@ AC_CONFIG_FILES([Makefile \
                  test/tools/spellcheckers/Makefile \
                  tools/Makefile \
                  tools/spellcheckers/Makefile \
-                 tools/spellcheckers/hfst/Makefile])
+                 tools/spellcheckers/fstbased/Makefile \
+                 tools/spellcheckers/fstbased/hfst/Makefile])
 # Add one AC_CONFIG_FILES for each script file that needs processing. This gives
 # the most pleasant user experience and most readable autoconf code to maintain.
 AC_CONFIG_FILES([test/src/morphology/run-morph-tester.sh], \

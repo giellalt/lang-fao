@@ -56,3 +56,7 @@ $(LINKS): $(JSP_PAGES)
 #	$(LATEX) $<
 #	$(LATEX) $<
 #	$(LATEX) $<
+
+####### Other targets: ###########
+clean-local:
+	-rm -rf build

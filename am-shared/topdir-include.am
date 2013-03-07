@@ -94,7 +94,8 @@ analyser-raw-gt-desc.xfst: morphology/$(GTLANG).lexc.xfst \
 analyser-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst \
-					filters/remove-dictionary-tags.hfst \
+					filters/remove-homonymy-tags.hfst \
+					filters/remove-variant-tags.hfst \
 					filters/remove-norm-comp-tags.hfst \
 					filters/remove-number-string-tags.hfst \
 					filters/remove-usage-tags.hfst \
@@ -120,7 +121,10 @@ analyser-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
 			-1 filters/remove-norm-comp-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-dictionary-tags.hfst \
+			-1 filters/remove-homonymy-tags.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-variant-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-dialect-tags.hfst \
@@ -133,7 +137,8 @@ analyser-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
 analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst \
-					filters/remove-dictionary-tags.xfst \
+					filters/remove-homonymy-tags.xfst \
+					filters/remove-variant-tags.xfst \
 					filters/remove-norm-comp-tags.xfst \
 					filters/remove-number-string-tags.xfst \
 					filters/remove-usage-tags.xfst \
@@ -143,7 +148,8 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 	$(AM_V_GEN)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\" \
-			.o. @\"filters/remove-dictionary-tags.xfst\" \
+			.o. @\"filters/remove-homonymy-tags.xfst\" \
+			.o. @\"filters/remove-variant-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\" \
 			.o. @\"filters/remove-number-string-tags.xfst\" \
 			.o. @\"filters/remove-usage-tags.xfst\" \
@@ -161,7 +167,8 @@ generator-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/make-optional-transitivity-tags.hfst \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst \
-					filters/remove-dictionary-tags.hfst \
+					filters/remove-homonymy-tags.hfst \
+					filters/remove-variant-tags.hfst \
 					filters/remove-morph-borders.hfst \
 					filters/remove-norm-comp-tags.hfst \
 					filters/remove-number-string-tags.hfst \
@@ -179,7 +186,10 @@ generator-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
 			-1 filters/remove-norm-comp-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-dictionary-tags.hfst \
+			-1 filters/remove-homonymy-tags.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-variant-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-dialect-tags.hfst \
@@ -200,7 +210,8 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst \
-					filters/remove-dictionary-tags.xfst \
+					filters/remove-homonymy-tags.xfst \
+					filters/remove-variant-tags.xfst \
 					filters/remove-morph-borders.xfst \
 					filters/remove-norm-comp-tags.xfst \
 					filters/remove-number-string-tags.xfst \
@@ -210,7 +221,8 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\" \
-			.o. @\"filters/remove-dictionary-tags.xfst\" \
+			.o. @\"filters/remove-homonymy-tags.xfst\" \
+			.o. @\"filters/remove-variant-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\" \
 			.o. @\"filters/remove-number-string-tags.xfst\" \
 			.o. @\"filters/remove-usage-tags.xfst\" \
@@ -225,7 +237,8 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 analyser-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst \
-					filters/remove-dictionary-tags.hfst \
+					filters/remove-homonymy-tags.hfst \
+					filters/remove-variant-tags.hfst \
 					filters/remove-norm-comp-tags.hfst \
 					filters/remove-number-string-tags.hfst \
 					filters/remove-usage-tags.hfst \
@@ -251,7 +264,10 @@ analyser-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
 			-1 filters/remove-norm-comp-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-dictionary-tags.hfst \
+			-1 filters/remove-homonymy-tags.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-variant-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-dialect-tags.hfst \
@@ -264,7 +280,8 @@ analyser-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
 analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst \
-					filters/remove-dictionary-tags.xfst \
+					filters/remove-homonymy-tags.xfst \
+					filters/remove-variant-tags.xfst \
 					filters/remove-norm-comp-tags.xfst \
 					filters/remove-number-string-tags.xfst \
 					filters/remove-usage-tags.xfst \
@@ -274,7 +291,8 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 	$(AM_V_GEN)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\" \
-			.o. @\"filters/remove-dictionary-tags.xfst\" \
+			.o. @\"filters/remove-homonymy-tags.xfst\" \
+			.o. @\"filters/remove-variant-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\" \
 			.o. @\"filters/remove-number-string-tags.xfst\" \
 			.o. @\"filters/remove-usage-tags.xfst\" \
@@ -292,7 +310,8 @@ generator-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/make-optional-transitivity-tags.hfst \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst \
-					filters/remove-dictionary-tags.hfst \
+					filters/remove-homonymy-tags.hfst \
+					filters/remove-variant-tags.hfst \
 					filters/remove-morph-borders.hfst \
 					filters/remove-norm-comp-tags.hfst \
 					filters/remove-number-string-tags.hfst \
@@ -314,7 +333,10 @@ generator-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
 			-1 filters/remove-norm-comp-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-dictionary-tags.hfst \
+			-1 filters/remove-homonymy-tags.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-variant-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-dialect-tags.hfst \
@@ -335,7 +357,8 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst \
-					filters/remove-dictionary-tags.xfst \
+					filters/remove-homonymy-tags.xfst \
+					filters/remove-variant-tags.xfst \
 					filters/remove-morph-borders.xfst \
 					filters/remove-norm-comp-tags.xfst \
 					filters/remove-number-string-tags.xfst \
@@ -346,7 +369,8 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\" \
-			.o. @\"filters/remove-dictionary-tags.xfst\" \
+			.o. @\"filters/remove-homonymy-tags.xfst\" \
+			.o. @\"filters/remove-variant-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\" \
 			.o. @\"filters/remove-number-string-tags.xfst\" \
 			.o. @\"filters/remove-usage-tags.xfst\" \
@@ -363,7 +387,8 @@ generator-oahpa-gt-norm.xfst: analyser-raw-gt-desc.xfst \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst \
-					filters/remove-dictionary-tags.xfst \
+					filters/remove-homonymy-tags.xfst \
+					filters/remove-variant-tags.xfst \
 					filters/remove-morph-borders.xfst \
 					filters/remove-norm-comp-tags.xfst \
 					filters/remove-number-string-tags.xfst \
@@ -374,7 +399,8 @@ generator-oahpa-gt-norm.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\" \
-			.o. @\"filters/remove-dictionary-tags.xfst\" \
+			.o. @\"filters/remove-homonymy-tags.xfst\" \
+			.o. @\"filters/remove-variant-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\" \
 			.o. @\"filters/remove-number-string-tags.xfst\" \
 			.o. @\"filters/remove-usage-tags.xfst\" \

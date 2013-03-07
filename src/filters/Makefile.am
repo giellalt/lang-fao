@@ -26,7 +26,8 @@ GT_FILTER_TARGETS+=\
 				   make-optional-transitivity-tags.hfst \
 				   remove-derivation-position-tags.hfst \
 				   remove-dialect-tags.hfst             \
-				   remove-dictionary-tags.hfst          \
+				   remove-homonymy-tags.hfst          \
+				   remove-variant-tags.hfst          \
 				   remove-morph-borders.hfst            \
 				   remove-norm-comp-tags.hfst           \
 				   remove-number-string-tags.hfst       \
@@ -43,7 +44,8 @@ GT_FILTER_TARGETS+=\
 				   make-optional-transitivity-tags.xfst \
 				   remove-derivation-position-tags.xfst \
 				   remove-dialect-tags.xfst             \
-				   remove-dictionary-tags.xfst          \
+				   remove-homonymy-tags.xfst          \
+				   remove-variant-tags.xfst          \
 				   remove-morph-borders.xfst            \
 				   remove-norm-comp-tags.xfst           \
 				   remove-number-string-tags.xfst       \

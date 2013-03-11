@@ -5,6 +5,33 @@
 # order is always . last here
 SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax transcriptions .
 
+####### Automake targets: ########
+
+if CAN_HFST
+GT_ANALYSERS_HFST=analyser-gt-desc.hfst analyser-gt-norm.hfst
+GT_GENERATORS_HFST=generator-gt-desc.hfst generator-gt-norm.hfst
+GT_TRANSFORMERS_HFST=transcriptor-clock2text-desc.hfst \
+					 transcriptor-date2text-desc.hfst \
+					 transcriptor-numbers2text-desc.hfst
+endif
+
+if CAN_XFST
+GT_ANALYSERS_XFST=analyser-gt-desc.xfst analyser-gt-norm.xfst
+GT_GENERATORS_XFST=generator-gt-desc.xfst generator-gt-norm.xfst
+GT_TRANSFORMERS_XFST=transcriptor-clock2text-desc.xfst \
+					 transcriptor-date2text-desc.xfst \
+					 transcriptor-numbers2text-desc.xfst
+endif
+
+if WANT_OAHPA
+if CAN_HFST
+GT_GENERATORS_HFST+=generator-oahpa-gt-norm.hfst
+endif # CAN_HFST
+if CAN_XFST
+GT_GENERATORS_XFST+=generator-oahpa-gt-norm.xfst
+endif # CAN_XFST
+endif # WANT_OAHPA
+
 #### Local modifications in *fst processing: ####
 ####
 #### Copy the fallback targets, and rename them to the desired targets. Then:
@@ -13,6 +40,13 @@ SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax 
 #### the processing to get the final target transducer.
 #### Remember to add the dependencies as well.
 #### Also make sure that HFST and Xerox processing are the same.
+####
+#### If you add new transducers to be built, you need to add them to the
+#### relevant variable, e.g.:
+####
+#### if CAN_HFST
+#### GT_GENERATORS_HFST+=generator-oahpa-gt-norm.hfst
+#### endif
 ####
 #### NB!!!! The HFST targets should get a hyphen after 'analyser'/'generator'
 #### respectively, to make the local targets minimally different from and

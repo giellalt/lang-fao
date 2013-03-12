@@ -83,7 +83,7 @@ $(GTLANG).lexc.xfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f $(GTLANG).lexc.hfst $(GTLANG).lexc.xfst
+	-rm -f $(GT_LEXICAL) *.foma *.tmp.* *.hfst *.xfst *.script
 
 maintainer-clean-local:
 	-rm -f $(GENERATED_LEXC_SRCS)

@@ -86,7 +86,9 @@ for f in $fsttype; do
 	# Check whether the actual fst's exist, run the tests if true, FAIL if not:
 	if test -f "$generatorfile.$f" -a -f "$analyserfile.$f"; then
 		let "transducer_found += 1"
-		echo "testing $(basename $testfile) using $(basename $analyserfile.$f)"
+		testfileshort=$(echo "$(basename \
+			$(dirname $testfile))/$(basename $testfile)")
+		echo "testing $testfileshort using $(basename $analyserfile.$f)"
 		run_tests
 	else
 	    let "Fail += 1"

@@ -44,8 +44,8 @@ i=0
 # Loop over the available yaml files, and run the tests:
 for file in ${srcdir}/*_$transducer.yaml; do
     (( i += 1 ))
-    printf "YAML test $i: "
-	source ./run-morph-tester.sh $transducer $file
+    leadtext=$(echo "YAML test $i: ")
+	source ./run-morph-tester.sh $transducer $file $leadtext
 done
 
 source error-handling-stubs.sh

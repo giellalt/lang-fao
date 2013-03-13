@@ -5,7 +5,9 @@
 # and run it through the Apertium Quality morph-test.py tool, using Xerox
 # or Hfst transducers to the extent found.
 #
-# It takes two arguments: the transducer type and the file to be tested
+# It takes three arguments: the transducer type, the file to be tested
+#                           and the text to precede each output line, e.g.
+#                           test run number.
 #
 # The script is typically sourced by another shell script listed in the TESTS
 # variable in the Makefile.am file. This other shell script identifies the fst
@@ -14,13 +16,16 @@
 # This file must be processed by ./configure before being used.
 
 # Wrong usage - short instruction:
-if ! test $# -eq 2 ; then
+if ! test $# -ge 2 ; then
     echo
-    echo "Usage: $0 TRANSDUCERTYPE TESTFILE"
+    echo "Usage: $0 TRANSDUCERTYPE TESTFILE LEADTEXT"
     echo
     echo "were TRANSDUCERTYPE is the type of transducer targeted for testing,"
     echo "gt-norm, gt-desc, etc., and the optional TESTFILE is either a LexC"
     echo "file or a Yaml test data file, both containing test data."
+    echo "LEADTEXT is typically the number of the test data in a loop."
+    echo "LEADTEXT can contain spaces, it is effectively everything after the"
+    echo "second argument."
     echo
     exit 77
 fi
@@ -28,6 +33,9 @@ fi
 ###### Variables: #######
 transducer=$1
 testfile=$2
+shift 2
+leadtext="$@"
+
 testfileshort=$(echo "$(basename \
 	$(dirname $testfile))/$(basename $testfile)")
 
@@ -87,7 +95,7 @@ for f in $fsttype; do
 	# Check whether the actual fst's exist, run the tests if true, FAIL if not:
 	if test -f "$generatorfile.$f" -a -f "$analyserfile.$f"; then
 		let "transducer_found += 1"
-		printf "$testfileshort + $(basename $analyserfile.$f) - "
+		printf "$leadtext $testfileshort + $(basename $analyserfile.$f) - "
 		run_tests
 	else
 	    let "Fail += 1"

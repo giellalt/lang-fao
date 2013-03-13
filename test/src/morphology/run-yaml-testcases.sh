@@ -44,7 +44,7 @@ i=0
 # Loop over the available yaml files, and run the tests:
 for file in ${srcdir}/*_$transducer.yaml; do
     (( i += 1 ))
-    printf "YAML Subtest $i: "
+    printf "YAML test $i: "
 	source ./run-morph-tester.sh $transducer $file
 done
 

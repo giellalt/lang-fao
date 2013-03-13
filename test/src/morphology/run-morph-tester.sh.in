@@ -28,6 +28,8 @@ fi
 ###### Variables: #######
 transducer=$1
 testfile=$2
+testfileshort=$(echo "$(basename \
+	$(dirname $testfile))/$(basename $testfile)")
 
 analyserfile=${srcdir}/../../../src/analyser-$transducer
 generatorfile=${srcdir}/../../../src/generator-$transducer
@@ -49,7 +51,7 @@ fi
 function run_tests() {
 	$runtests \
 		--colour \
-		--compact \
+		--terse \
 		--ignore-extra-analyses \
 		--section $section \
 	    --app $lookuptool \
@@ -59,8 +61,7 @@ function run_tests() {
 	# If the test failed, print instructions to rerun and get more details:
 	if [[ $? -gt 0 ]]; then
 	    let "Fail += 1"
-	    echo
-	    echo "FAIL: To rerun with more details, please do:"
+	    echo "To rerun with more details, please triple-click, copy and paste the following:"
 	    echo
 	    echo "pushd $(pwd); $runtests -c -i -S $section --app $lookuptool --gen $generatorfile.$f --morph $analyserfile.$f $testfile; popd"
 	    echo
@@ -86,14 +87,12 @@ for f in $fsttype; do
 	# Check whether the actual fst's exist, run the tests if true, FAIL if not:
 	if test -f "$generatorfile.$f" -a -f "$analyserfile.$f"; then
 		let "transducer_found += 1"
-		testfileshort=$(echo "$(basename \
-			$(dirname $testfile))/$(basename $testfile)")
-		echo "testing $testfileshort using $(basename $analyserfile.$f)"
+		printf "$testfileshort + $(basename $analyserfile.$f) - "
 		run_tests
 	else
 	    let "Fail += 1"
-		printf "FAIL: Transducer not found! $analyserfile.$f,"
-		echo "referenced by: $(baseform $testfile)"
+		echo "FAIL: Transducer not found! $(basename $analyserfile.$f)"
+		echo "referenced by: $testfileshort"
 	    continue
 	fi
 done

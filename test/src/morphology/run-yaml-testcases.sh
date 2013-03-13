@@ -16,11 +16,10 @@
 # Wrong usage - short instruction:
 if ! test $# -ge 1 ; then
     echo
-    echo "Usage: $0 TRANSDUCERTYPE [LEXCFILE]"
+    echo "Usage: $0 TRANSDUCERTYPE"
     echo
-    echo "were TRANSDUCERTYPE is the type of transducer targeted for testing,"
-    echo "gt-norm, gt-desc, etc., and the optional LEXCFILE is a LexC file"
-    echo "containing test data. If no LEXCFILE is specified, it will loop"
+    echo "were TRANSDUCERTYPE is the type of transducer targeted"
+    echo "for testing: gt-norm, gt-desc, etc. It will loop"
     echo "over all yaml tests for the specified TRANSDUCERTYPE."
     echo
     exit 77
@@ -45,9 +44,7 @@ i=0
 # Loop over the available yaml files, and run the tests:
 for file in ${srcdir}/*_$transducer.yaml; do
     (( i += 1 ))
-    echo
-    echo "YAML Subtest $i: Testing $file using transducer: $transducer"
-    echo
+    printf "YAML Subtest $i: "
 	source ./run-morph-tester.sh $transducer $file
 done
 

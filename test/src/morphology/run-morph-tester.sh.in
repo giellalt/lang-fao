@@ -7,9 +7,9 @@
 #
 # It takes two arguments: the transducer type and the file to be tested
 #
-# The script is typically called by a simple shell script listed in the TESTS
-# variable in the Makefile.am file, and will then be automatically called when
-# issuing 'make check'
+# The script is typically sourced by another shell script listed in the TESTS
+# variable in the Makefile.am file. This other shell script identifies the fst
+# and the test file to be used.
 #
 # This file must be processed by ./configure before being used.
 
@@ -42,7 +42,7 @@ fsttype=
 # Exit if both hfst and xerox have been shut off:
 if [[ "$fsttype" == "" ]]; then
     echo "All transducer types have been shut off at configure time."
-    echo "Nothing to test. Skipping."
+    echo "Nothing to test. SKIPPED."
     exit 77
 fi
 
@@ -56,10 +56,11 @@ function run_tests() {
 	    --gen $generatorfile.$f \
 	    --morph $analyserfile.$f \
 	    $testfile
+	# If the test failed, print instructions to rerun and get more details:
 	if [[ $? -gt 0 ]]; then
 	    let "Fail += 1"
 	    echo
-	    echo "Test failed. To rerun with more details, please do:"
+	    echo "FAIL: To rerun with more details, please do:"
 	    echo
 	    echo "pushd $(pwd); $runtests -c -i -S $section --app $lookuptool --gen $generatorfile.$f --morph $analyserfile.$f $testfile; popd"
 	    echo
@@ -79,22 +80,18 @@ for f in $fsttype; do
 		section="hfst"
 	else
 	    let "Fail += 1"
-		echo "Unknown fst type! FST=$f"
-	    echo "$f - FAIL"
+		echo "FAIL: Unknown fst type! FST=$f"
 	    continue
 	fi
-
+	# Check whether the actual fst's exist, run the tests if true, FAIL if not:
 	if test -f "$generatorfile.$f" -a -f "$analyserfile.$f"; then
 		let "transducer_found += 1"
-		echo "Testing: $testfile"
-		echo "using transducer: $analyserfile.$f"
-		echo
+		echo "testing $(basename $testfile) using $(basename $analyserfile.$f)"
 		run_tests
 	else
 	    let "Fail += 1"
-		echo "FAIL: Transducer not found! $analyserfile.$f"
-		echo "Referenced by: $testfile"
-	    echo
+		printf "FAIL: Transducer not found! $analyserfile.$f,"
+		echo "referenced by: $(baseform $testfile)"
 	    continue
 	fi
 done

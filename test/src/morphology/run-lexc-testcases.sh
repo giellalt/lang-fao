@@ -30,8 +30,8 @@ for file in ${srcdir}/../../../src/morphology/*.lexc \
 	else
 		for fst in $fsts; do
 		    (( i += 1 ))
-		    printf "LEXC test $i: "
-			source ./run-morph-tester.sh $fst $file
+		    leadtext=$(echo "LEXC test $i: ")
+			source ./run-morph-tester.sh $fst $file $leadtext
 		done
 	fi
 done

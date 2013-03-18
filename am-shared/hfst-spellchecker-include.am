@@ -28,21 +28,21 @@ if CAN_HFST
 if WANT_SPELLERAUTOMAT
 GT_ERRMODELS+=errmodel.default.hfst
 
-# Require zip to turn on zhfts target:
+# Require zip to turn on zhfst target:
 if WANT_VOIKKO
-GT_SPELLING_HFST=speller.zhfst
+GT_SPELLING_HFST=$(GTLANG2).zhfst
 endif # WANT_VOIKKO
 endif # WANT_SPELLERAUTOMAT
-endif
+endif # CAN_HFST
 
 if CAN_HFST
 if WANT_VOIKKO
-voikkosharedir=$(libdir)/voikko/2/mor-hfst-$(GTLANG2)/
+voikkosharedir=$(libdir)/voikko/3/
 #! @param GT_VOIKKO optional, set to spell checker automata names if
 #!					installable
-voikkoshare_DATA=$(GT_SPELLING_HFST) voikko-fi_FI.pro
+voikkoshare_DATA=$(GT_SPELLING_HFST)
 endif # WANT_VOIKKO
-endif
+endif # CAN_HFST
 
 noinst_DATA=$(GT_ERRMODELS)
 
@@ -64,12 +64,13 @@ $(GT_SPELLER_ACCEPTOR): $(top_srcdir)/src/$(GT_SPELLER_HFST)
 
 $(GT_SPELLING_HFST): $(GT_SPELLER_ACCEPTOR) \
 					 $(GT_ERRMODELS) \
-					 $(GT_OTHER_VOIKKO_FILES) \
 					 index.xml
 	$(AM_V_GEN)$(ZIP) $(ZIPFLAGS) $@ $^
+	$(AM_V_GEN)$(MKDIR_P) 3
+	$(AM_V_GEN)cp -f $@ 3/
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.xfst
+	-rm -rf *.hfst *.xfst *.zhfst 3
 
 # vim: set ft=automake:

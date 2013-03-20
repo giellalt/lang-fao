@@ -56,7 +56,7 @@ noinst_DATA=$(GT_ERRMODELS)
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 # Build the automaton used for the speller
-$(GT_SPELLER_ACCEPTOR): $(top_srcdir)/src/$(GT_SPELLER_HFST)
+$(GT_SPELLER_ACCEPTOR): $(top_builddir)/src/$(GT_SPELLER_HFST)
 	$(AM_V_GEN)$(HFST_FST2FST) $(HFST_FLAGS) -f openfst-tropical -i $< \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=upper \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \

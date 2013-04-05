@@ -24,10 +24,12 @@ if CAN_HFST
 GT_FILTER_TARGETS+=\
 				   make-optional-semantic-tags.hfst     \
 				   make-optional-transitivity-tags.hfst \
+				   make-optional-homonymy-tags.hfst     \
+				   make-optional-variant-tags.hfst      \
 				   remove-derivation-position-tags.hfst \
 				   remove-dialect-tags.hfst             \
-				   remove-homonymy-tags.hfst          \
-				   remove-variant-tags.hfst          \
+				   remove-homonymy-tags.hfst            \
+				   remove-variant-tags.hfst             \
 				   remove-morph-borders.hfst            \
 				   remove-norm-comp-tags.hfst           \
 				   remove-number-string-tags.hfst       \
@@ -42,10 +44,12 @@ if CAN_XFST
 GT_FILTER_TARGETS+=\
 				   make-optional-semantic-tags.xfst     \
 				   make-optional-transitivity-tags.xfst \
+				   make-optional-homonymy-tags.xfst     \
+				   make-optional-variant-tags.xfst      \
 				   remove-derivation-position-tags.xfst \
 				   remove-dialect-tags.xfst             \
-				   remove-homonymy-tags.xfst          \
-				   remove-variant-tags.xfst          \
+				   remove-homonymy-tags.xfst            \
+				   remove-variant-tags.xfst             \
 				   remove-morph-borders.xfst            \
 				   remove-norm-comp-tags.xfst           \
 				   remove-number-string-tags.xfst       \

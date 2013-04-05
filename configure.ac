@@ -160,4 +160,4 @@ AS_IF([test "x$enable_yamltests" == "xno"],
 sudo port install python32
 sudo port install py-yaml subport=py32-yaml
 
-On other systems, install python 3.1+ and the corresponding py-yaml using the corresponding tools for that system.])])
+On other systems, install python 3.1+ and the corresponding py-yaml using suitable tools for those systems.])])

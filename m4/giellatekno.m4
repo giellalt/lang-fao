@@ -167,11 +167,10 @@ cat<<EOF
 -- Building $PACKAGE_STRING:
     * build with Xerox: $gt_prog_xfst
     * build with HFST: $gt_prog_hfst
-    * morphological analyser: $enable_morphology
-    * morphological generator: $enable_generation
     * hfst speller automaton: $enable_spellerautomat
     * voikko support: $enable_voikko
     * yaml tests enabled: $enable_yamltests
+    * generated documentation enabled: $gt_prog_docc
     * Oahpa transducers enabled: $enable_oahpa
 
 For more ./configure options, run ./configure --help
@@ -189,8 +188,6 @@ AS_IF([test x$gt_prog_xslt = xno -a \
 disabled. Please check the output of configure to locate any problems.
 ])])
 AS_IF([test x$gt_prog_docc = xno],
-      [AC_MSG_WARN([Could not find awk, java or forrest. In-source documentation
-      will not be extracted and validated. Please install the required
-      tools.])])
+      [AC_MSG_WARN([Could not find gawk, java or forrest. In-source documentation will not be extracted and validated. Please install the required tools.])])
 ]) # gt_PRINT_FOOTER
 # vim: set ft=config: 

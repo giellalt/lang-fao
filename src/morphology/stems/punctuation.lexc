@@ -1,0 +1,60 @@
+! ================= !
+! Punctuation marks !
+! ================= !
+
+
+LEXICON Punctuation
+
+
+! Clause boundary symbols
+
+%,+CLB:%,           # ;
+%.+CLB:%.           # ;
+%.%.+CLB:%.%.       # ;
+%.%.%.+CLB:%.%.%.   # ;
+%:+CLB:%:           # ;
+%;+CLB:%;	        # ;
+^excl+CLB:%!	    # ;	!^C^
+%?+CLB:%?	        # ;
+…+CLB:…		        # ;
+¿+CLB:¿		        # ;	! Only seen as noise.
+¶+CLB:¶		        # ;	
+
+•+PUNCT:•	        # ;
+-+PUNCT:-           # ; !hyphen
+--+PUNCT:--         # ; !double hyphen
+–+PUNCT:–           # ; !endash
+—+PUNCT:—           # ; !emdash
+=+PUNCT:=           # ;
+%%+PUNCT:%%         # ;
+&+PUNCT:&           # ;
+%"+PUNCT:%"         # ;
+'+PUNCT:'           # ;
+%*+PUNCT:%*         # ;
+++PUNCT:+           # ;
+`+PUNCT:`           # ;
+´+PUNCT:´           # ;
+/+PUNCT:/           # ; 
++/-+PUNCT:+/-       # ;
+%~+PUNCT:%~	        # ;
+
+
+! Paired punctuation marks
+
+%«+PUNCT+RIGHT:%«   # ;
+%»+PUNCT+LEFT:%»    # ;
+%“+PUNCT+LEFT:%“    # ;
+%”+PUNCT+RIGHT:%”   # ;
+%‘+PUNCT+LEFT:%‘    # ;
+%’+PUNCT+RIGHT:%’   # ;
+%‹+PUNCT+LEFT:%‹    # ;
+%›+PUNCT+RIGHT:%›   # ;
+%(+PUNCT+LEFT:%(    # ;
+%)+PUNCT+RIGHT:%)   # ;
+%[+PUNCT+LEFT:%[    # ;
+%]+PUNCT+RIGHT:%]   # ;
+%{+PUNCT+LEFT:%{    # ;
+%}+PUNCT+RIGHT:%}   # ;
+%<+PUNCT+LEFT:%<    # ;
+%>+PUNCT+LEFT:%>    # ;
+

@@ -1,0 +1,543 @@
+# ========================== #
+# Faroese dependency grammar #
+# ========================== #
+
+# This file is deprecated.
+
+# For Faroese dep analysis, use
+
+# $GTHOME/gt/smi/src/smi-dep.rle
+
+
+
+# ========== #
+# Delimiters #
+# ========== #
+
+
+DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
+
+
+
+# ============= #
+# Tags and sets #
+# ============= #
+
+
+LIST BOS = (>>>) (<s>); 
+LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
+
+
+# ========
+   SETS
+# ========
+
+LIST N = N ;
+LIST V = V ;
+LIST A = A ;
+LIST Prop = Prop ;
+LIST Adv = Adv ;
+LIST Num = Num ;
+LIST CC = CC ;
+LIST CS = CS ;
+LIST Interj = Interj ;
+LIST Abbr = Abbr ;
+LIST ACR = ACR ;
+LIST Pr = Pr ;
+LIST Pron = Pron ;
+LIST Pers = Pers ;
+LIST Dem = Dem ;
+LIST Det = Det ;
+LIST Refl = Refl ;
+LIST Recipr = Recipr ;
+LIST Poss = Poss ;
+LIST Interr = Interr ;
+LIST IM = IM ;
+
+LIST Nom = Nom ;
+LIST Acc = Acc ;
+LIST Gen = Gen ;
+LIST Dat = Dat ;
+LIST Msc = Msc ;
+LIST Fem = Fem ;
+LIST Neu = Neu ;
+LIST Sg = Sg ;
+LIST Pl = Pl ;
+LIST Def = Def ;
+LIST Indef = Indef ;
+LIST Cmp = Cmp ;
+LIST Superl = Superl ;
+LIST Prs = Prs ;
+LIST Prt = Prt ;
+LIST 1Sg = 1Sg ;
+LIST 2Sg = 2Sg ;
+LIST 3Sg = 3Sg ;
+LIST Inf = Inf ;
+LIST PrfPrc = PrfPrc ;
+LIST PrsPrc = PrsPrc ;
+LIST Imp = Imp ;
+LIST Sbj = Sbj ;
+LIST Sup = Sup ;
+LIST Cmpnd = Cmpnd ;
+LIST CLB = CLB ;
+LIST PUNCT = PUNCT ;
+LIST LEFT = LEFT ;
+LIST RIGHT = RIGHT ;
+
+LIST V* = V* ;
+ 
+SET WORD = N | V | A | Pr | Pron | Adv | CC | CS | Interj | Num | ("\?") ;
+
+
+LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
+Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
+PrsPrc Sup Imp CLB PUNCT LEFT RIGHT ;
+
+
+LIST NAGD = Nom Acc Gen Dat ;
+LIST GENDER = Msc Fem Neu ;
+LIST NUMBER = Sg Pl ;
+LIST POS = N V A Adv Pr Pron ;
+
+# Sets
+# ====
+
+# Noun sets
+
+
+SET NounMscFem = (N Msc) OR (N Fem) ;
+SET NounMscNeu = (N Msc) OR (N Neu) ;
+SET NounFemNeu = (N Fem) OR (N Neu) ;
+
+# Nominal sets
+
+LIST NOMINALHEAD = N Num Pron ;
+
+LIST PRENAGR = Det Dem A ;
+
+
+
+# Complementary set
+
+# Case sets
+
+SET NOTDAT = Nom | Gen | Acc ;
+SET NOTACC = Nom | Gen | Dat ;
+SET NOTACCDAT = Nom | Gen ;
+SET OBL = Acc | Dat | Gen ;
+
+#SET NO
+
+SET PRE-N =  A | Det | Dem | (N Gen) | Num ; # Det???
+
+LIST COMMA = "," ; 
+
+SET MARK =  COMMA | ("\") | ("\;") ; #"
+SET WORDMARK = WORD | MARK ;
+
+
+
+
+SET NPNH = WORDMARK - PRE-N ;
+SET NPNHA = WORDMARK - PRE-N - Adv ;
+SET NOT-ADV = WORDMARK - Adv ;
+SET NOT-A = WORDMARK - A ;
+
+
+
+
+# Verb sets
+
+LIST COPULA = "vera" "verða" ;
+
+LIST AUX = "kunna" "skula" "vera" "verða" "hava" ;
+
+LIST VFIN = Prs Prt Imp Sbj ;
+LIST Ind = Prs Prt ;
+
+LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
+
+LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
+
+LIST MODV = "kunna" "skula" ;
+
+LIST DATV = "smakka" ;
+
+SET NONVFIN = VINFIN ; # sme compatibility
+
+
+
+
+
+
+
+SET NOT-CC = WORDMARK - CC ;
+SET NOUNADJ = N | A ;
+
+SET NP-MEMBER = PRE-N | N | Pron ;
+
+LIST TIME = "sunnudagur" ;
+
+
+
+# Semantic sets
+
+
+LIST ABSTRACT = "ráð" "byráð" ;
+
+LIST SPEECHACT = "mæla" "siga" ;
+
+
+
+# Syntax tags
+
+LIST @<SUBJ = @<SUBJ ;
+LIST @SUBJ> = @SUBJ> ;
+LIST @<OBJ = @<OBJ ;
+LIST @OBJ> = @OBJ> ;
+LIST @<IOBJ = @<IOBJ ;
+LIST @IOBJ> = @IOBJ> ;
+LIST @>N = @>N ;
+LIST @N< = @N< ;
+LIST @>A = @>A ;
+LIST @A< = @A< ;
+LIST @IM = @IM ;
+LIST @<SPRED = @<SPRED ;
+LIST @SPRED> = @SPRED> ;
+LIST @<OPRED = @<OPRED ;
+LIST @OPRED> = @OPRED> ;
+LIST @+FAUXV = @+FAUXV ;
+LIST @-FAUXV = @-FAUXV ;
+LIST @+FMAINV = @+FMAINV ;
+LIST @-FMAINV = @-FMAINV ;
+
+LIST @-FSUBJ> = @-FSUBJ> ;
+LIST @-F<OBJ = @-F<OBJ ;
+LIST @-FOBJ> = @-FOBJ> ;
+LIST @SPRED<OBJ = @SPRED<OBJ ;
+LIST @-FADVL = @-FADVL ;
+
+SET FOBJ = @-F<OBJ OR @-FOBJ> ; 
+SET FMAINV = @-FMAINV OR @+FMAINV ;
+SET FAUXV = @-FAUXV OR @+FAUXV ;
+
+LIST @<ADVL = @<ADVL ;
+LIST @ADVL> = @ADVL> ;
+LIST @P< = @P< ;
+LIST @CNP = @CNP ;
+LIST @CVP = @CVP ;
+LIST @>CS = @>CS ;
+#LIST @CNP-VP = @CNP-VP ;
+LIST @APP = @APP ;
+
+LIST @IMV = @IMV ;             # infinite main verb
+LIST @ICL-ADVL = @ICL-ADVL ;             # non-finite subclause ...
+LIST @ICL-AUX< = @ICL-AUX< ;             # "right" argument of auxiliary (?)
+LIST @ICL-OBJ = @ICL-OBJ ; 	         # non-finite subclause ...
+LIST @ICL-STA = @ICL-STA ; 	         # non-finite subclause ...
+LIST @HNOUN = @HNOUN ;
+
+# Tags from sme-dep.rle:
+
+LIST @-FOBJ = @-FOBJ ;
+LIST @-FSUBJ = @-FSUBJ ;
+LIST @<-FSUBJ = @<-FSUBJ ;
+LIST @<PPRED = @<PPRED ;
+LIST @>ADVL = @>ADVL ;
+LIST @>CC = @>CC ;
+LIST @>Num = @>Num ;
+LIST @>P = @>P ;
+LIST @>Pron = @>Pron ;
+LIST @ADVL = @<ADVL @ADVL> @ADVL @-FADVL @APP-ADVL< ;
+LIST @ADVL< = @ADVL< ;
+LIST @ADVL<OBJ = @ADVL<OBJ ;
+LIST @ADVL>CS = @ADVL>CS ;
+LIST @ADVL>SUBJ = @ADVL>SUBJ ;
+LIST @APP-ADVL< = @APP-ADVL< ;
+LIST @APP-N< = @APP-N< ;
+LIST @APP-Num< = @APP-Num< ;
+LIST @APP-Pron< = @APP-Pron< ;
+LIST @APP>Pron = @APP>Pron ;
+LIST @CMPND = @CMPND ;
+LIST @COMP-CS< = @COMP-CS< ;
+LIST @FS-ACC>> = @FS-ACC>> ;
+LIST @FS-ADVL = @FS-ADVL ;
+LIST @FS-IMV = @FS-IMV ;
+LIST @FS-N< = @FS-N< ;
+LIST @FS-N<IAUX = @FS-N<IAUX ;
+LIST @FS-OBJ = @FS-OBJ ;
+LIST @FS-STA = @FS-STA ;
+LIST @HAB = @HAB ;
+LIST @INTERJ = @INTERJ ;
+LIST @Num< = @Num< ;
+LIST @OBJ>SPRED = @OBJ>SPRED ;
+LIST @OPRED = @OPRED> @<OPRED ;
+LIST @PCLE = @PCLE ;
+LIST @Pron< = @Pron< ;
+LIST @SPRED = @SPRED> @<SPRED ;
+LIST @SUBJ<ADVL = @SUBJ<ADVL ;
+LIST @SUBJ<OBJ = @SUBJ<OBJ ;
+LIST @V = @FAUX @FMV @FS-IAUX @FS-IMV @FS-N< @FS-N<IAUX @FS-N<IMV @FS-STA @IAUX @IMV ; # 
+LIST @VOC = @VOC ;
+
+
+
+LIST @X = @X ;
+
+
+LIST SYNTAG = (@+FAUXV) (@+FMAINV) (@-F<OBJ) (@-FADVL) (@-FAUXV) (@-FMAINV) (@-FOBJ) (@-FOBJ>) (@-FSUBJ) (@-FSUBJ>) (@<-FSUBJ) (@<ADVL) (@<IOBJ) (@<OBJ) (@<OPRED) (@<PPRED) (@<SPRED) (@<SUBJ) (@>A) (@>ADVL) (@>CC) (@>CS) (@>N) (@>Num) (@>P) (@>Pron) (@A<) (@ADVL) (@ADVL<) (@ADVL<OBJ) (@ADVL>) (@ADVL>CS) (@ADVL>SUBJ) (@APP) (@APP-ADVL<) (@APP-N<) (@APP-Num<) (@APP-Pron<) (@APP>Pron) (@CMPND) (@CNP) (@CNP-VP) (@COMP-CS<) (@CVP) (@FS-ACC>>) (@FS-ADVL) (@FS-IMV) (@FS-N<) (@FS-N<IAUX) (@FS-OBJ) (@FS-STA) (@HAB) (@HNOUN) (@ICL-ADVL) (@ICL-AUX<) (@ICL-OBJ) (@ICL-STA) (@IM) (@IMV) (@INTERJ) (@IOBJ>) (@N<) (@Num<) (@OBJ>) (@OBJ>SPRED) (@OPRED) (@OPRED>) (@P<) (@PCLE) (@Pron<) (@SPRED) (@SPRED<OBJ) (@SPRED>) (@SUBJ<ADVL) (@SUBJ<OBJ) (@SUBJ>) (@V) (@VOC) ;
+
+
+LIST @SUBJ = @<SUBJ @SUBJ> ;
+LIST @OBJ = @<OBJ @OBJ> ;
+LIST @MAINV = @-FMAINV @+FMAINV ;
+LIST @AUXV = @-FAUXV @+FAUXV ;
+LIST @rc-VAUX = @rc-VAUX ;
+
+
+# Syntactic set definitions 
+# =========================
+LIST @IAUX = @IAUX ;
+LIST @FS-IAUX = @FS-IAUX ;
+LIST <mv> = <mv> ;
+LIST <aux> = <aux> ;
+LIST @MCLV = @FMV @IMV @FAUX @IAUX ;
+LIST @SCLV = @FS-STA @FS-IMV @FS-N<IMV @FS-N< @FS-IAUX @FS-N<IAUX;
+LIST @FV = @FMV @FAUX ;
+LIST @AUX = @IAUX @FAUX ;
+LIST @MV = @IMV @FMV ;
+LIST @FMV = @FMV ;
+LIST KONJ = CS CC ;
+
+LIST @-FARG = @-FOBJ @-FSUBJ ;
+SET @ARG = @SUBJ OR @OBJ OR @SPRED OR @OPRED OR @ADVL  ; #  OR @ICL-OBJ OR @<PPRED OR @ADVL>SUBJ
+SET @-FARG/ADVL = @-FARG ; # OR @-FADVL ;
+SET @ARG/ADVL = @ARG OR @ADVL - (@ADVL + CC) ;
+SET @CLAUSE = @ARG/ADVL OR @-FARG/ADVL OR @V ;
+
+
+# Boundary sets
+
+SET S-BOUNDARY  = CS | Interr | (";") | BOS | EOS ;
+SET S-BOUNDARY2 = CS | Interr | (";") | BOS | EOS | (@CVP) ;
+
+
+
+# §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§                               §§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§     dep grammar starts here   §§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§                               §§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+# §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+
+
+SECTION
+
+SUBSTITUTE:SubFmainv=V (@+FMAINV) (@FMV) TARGET V ;
+SUBSTITUTE:SubNfmainv=V (@-FMAINV) (@IMV) TARGET V ;
+SUBSTITUTE:SubFaux=V (@+FAUXV) (@FAUX) TARGET V ;
+SUBSTITUTE:SubNfaux=V (@-FAUXV) (@IAUX) TARGET V ;
+
+
+# <mv> and <aux>
+# --------------
+SUBSTITUTE:SubV=mv (V) (<mv> V) TARGET @MV ;
+SUBSTITUTE:SubV=aux (V) (<aux> V) TARGET @AUX ;
+
+# infinite clauses:
+
+SUBSTITUTE:SubV=mvICL (V) (<mv> V) TARGET NONVFIN (0 @<OBJ LINK NEGATE *1 (@IMV) BARRIER S-BOUNDARY2 OR V) ;
+SUBSTITUTE:SubV=auxICL (V) (<aux> V) TARGET NONVFIN (0 AUX LINK 0 @<OBJ LINK *1 (@IMV) BARRIER S-BOUNDARY2 OR V) ;
+
+# the finite verb
+# ------------------
+
+# in subclauses:
+SUBSTITUTE:SubV=FS-STAmv (@FMV)(@FS-STA) TARGET V (*-1 CS BARRIER VFIN LINK *-1 VFIN);
+SUBSTITUTE:SubV=FS-IMVcs (@IMV) (@FS-IMV) TARGET V (*-1 (<aux>) BARRIER @MV LINK NOT 0 (@FAUX) LINK *-1 CS BARRIER @MCLV LINK *-1 VFIN) ;
+SUBSTITUTE:SubVmain=FS-STAaux (@FAUX) (@FS-STA) TARGET V (*-1 CC BARRIER @V LINK *-1 (@FS-STA) BARRIER VFIN) ;
+SUBSTITUTE:SubV=FS-IAUXcs (@IAUX) (@FS-IAUX) TARGET V (*-1 (<aux>) BARRIER @MV LINK *-1 CS BARRIER @MV) ;
+SUBSTITUTE:SubV=FS-IAUXmo (@IAUX) (@FS-IAUX) TARGET V (*-1 (<aux>) BARRIER @MV ) ;
+SUBSTITUTE:SubV=FS-IMVcs (@IAUX) (@FS-IAUX) TARGET V (*-1 (<aux>) BARRIER @MV LINK 0 (@FS-STA)) ;
+SUBSTITUTE:SubV=FS-IMVcs (@IMV) (@FS-IMV) TARGET V (*-1 (<aux>) BARRIER @MV LINK 0 (@FS-IAUX) OR (@FS-STA)) ;
+
+# in relative clauses:
+SUBSTITUTE:SubV=FS-Nmv (@FMV) (@FS-N<) TARGET V (*-1 Interr BARRIER VFIN) ;
+SUBSTITUTE:SubV=FS-Nmv (@FMV) (@FS-N<) TARGET V (*-1 ("sum" CS @CVP) BARRIER VFIN) ;
+#SUBSTITUTE (@FAUX) (@FS-N<) TARGET V (*-1 Interr BARRIER COMMA)(0 Neg LINK 1 GOSTEGE) ;
+SUBSTITUTE:SubV=FSN-IMV (@IMV) (@FS-N<IMV) TARGET V (*-1 (<aux>) BARRIER @MV LINK *-1 Interr BARRIER COMMA OR CS) ;
+SUBSTITUTE:SubVmain=FS-Naux (@FAUX) (@FS-N<) TARGET V (*-1 Interr BARRIER VFIN) ;
+SUBSTITUTE:SubV=FSN-IAUX (@IAUX) (@FS-N<IAUX) TARGET V (*-1 (<aux>) BARRIER @MV LINK *-1 Interr BARRIER @MV) ;
+
+
+SUBSTITUTE:SubV=FS-STAmv (@FMV)(@FS-STA) TARGET V (*-1 CS BARRIER @V LINK *-1 @V) ;
+SUBSTITUTE:SubV=FS-STAmv (@FMV)(@FS-STA) TARGET V (*-1 CS BARRIER @V LINK *-1 @V) ;
+
+# infinite clauses:
+SUBSTITUTE:SubV=iclaux (@<OBJ) (@ICL-OBJ) TARGET NONVFIN (*-1 @-FSUBJ> BARRIER @V) ;
+
+SUBSTITUTE:SubV=icl (@IMV)(@<OBJ) TARGET Inf (-1 (@IM))(*-2 <mv>);
+
+
+
+SECTION
+
+
+### IM
+
+SETPARENT:r0 @IM TO (1 Inf);
+
+### NP rules
+
+SETPARENT:r1 @>N TO (*1 N BARRIER NPNH);
+SETPARENT:r1adj @>N TO (*2 Pr OR V OR S-BOUNDARY2 BARRIER NOT-A LINK -1 A);
+SETPARENT:r1adjcomma @>N TO (*3 Pr OR V OR S-BOUNDARY2 BARRIER NOT-A LINK -1 COMMA LINK -1 A);
+
+SETPARENT:r2 @CVP TO (-1 NOMINALHEAD);
+
+SETPARENT:r3 ("sjálvur") TO (-1 ("seg"));
+
+SETPARENT:r4 ("sum" @CVP) TO (-1 N OR V);
+SETPARENT:r5 ("sum" @CVP) TO (*-1 N OR V BARRIER WORD);
+
+SETPARENT (A $$NAGD) TO (-1 CC)(-2 (A $$NAGD));  # Look at the cc structure !!
+
+SETPARENT:CCNP (@CNP)(-1 N) TO (*1 N BARRIER NPNH);
+	## Per og Kari
+
+SETPARENT:CCA (@CNP)(-1 $$POS + $$NAGD) TO (1 $$POS + $$NAGD);
+	## oydin og ber.
+
+SETPARENT @N< TO (*-1 N OR Pron BARRIER NPNH);
+	
+### PPs
+
+#SETPARENT:r6 @P< TO (*-1 Pr BARRIER NPNH);
+SETPARENT:r6 @P< TO (*-1 Pr BARRIER V);
+
+# SETPARENT:r6 @P< TO (*-1 Pr); would be an alternative.
+
+#SETPARENT:r6CC @P< TO (*-1 Pr LINK *1 CC);
+
+
+### ellipse
+SETPARENT:SetSubjtoLeftMV @<SUBJ TO (*-1 @CVP BARRIER @V LINK *-1 VFIN) ;
+    ## Ovdal buorida son dálkkiidis go neavrres olmmoš dábiidis.
+SETPARENT:SetSubjtoRightMV @SUBJ> TO (*1 @CVP BARRIER @V LINK *1 VFIN) ;
+    ## Mađe losit siivu, dađe njoazebut manná mátki.
+
+
+
+
+### S
+
+
+SETPARENT:r9 @SUBJ> TO (*1 VFIN BARRIER CS);
+SETPARENT:r10 @<SUBJ TO (-*1 VFIN BARRIER CS);
+SETPARENT:r11 @<OBJ TO (-*1 V BARRIER CS);
+SETPARENT:r12 @OBJ> TO (*1 V BARRIER CS);
+SETPARENT:r11 @<IOBJ TO (-*1 V BARRIER CS);
+SETPARENT:r12 @IOBJ> TO (*1 V BARRIER CS);
+#SETPARENT:r13 @ADVL TO (0* AUX);
+#SETPARENT:r14 @ADVL TO (0* VFIN);
+SETPARENT @<ADVL TO (-1* <aux> BARRIER <mv>);
+SETPARENT @<ADVL TO (-1* <mv> BARRIER CS);
+SETPARENT @ADVL> TO (*1 <mv> BARRIER CS);
+SETPARENT @ADVL> TO (*1 <aux> BARRIER <mv>);
+
+SETPARENT @<ADVL TO (-1* @rc-VAUX BARRIER CS);
+
+SETPARENT @<ADVL TO (-1* V* BARRIER CS);
+SETPARENT @<ADVL TO (1 Num LINK -2 Num);
+	## 11 av 12.
+
+SETPARENT @<SPRED TO (*-1 V BARRIER CS);
+SETPARENT @SPRED> TO (*1 V BARRIER CS);
+SETPARENT:Opred @<OPRED TO (*-1 @OBJ);
+SETPARENT:Opred2 @OPRED> TO (*1 @OBJ);
+
+SETPARENT ("bara" @ADVL>) TO (1 Pron LINK 1 V);
+SETPARENT ("bara" @ADVL>) TO (*1 N );#BARRIER NPNH LINK 1 V);
+
+SETPARENT:r15 @CVP TO (1 Inf);
+
+SETPARENT:r16 @CVP TO (**1 V LINK -1 CLB);
+
+SETPARENT:toCS @>CS TO (1 (@CVP));
+
+SETPARENT:CStoNEXT @CVP (-1 (@>CS)) TO (*1 NOMINALHEAD BARRIER VFIN); #ellipsis
+SETPARENT:r16 @CVP (-1 (@>CS)) TO (*1 VFIN LINK -1 CLB) ;
+
+#SETPARENT:r17 VFIN TO (*-1 (@CVP) LINK **1 V LINK -1 CLB);
+#SETPARENT:r17 VFIN TO (*-1 (@CVP) LINK **1 V LINK -1 CLB);
+
+SETPARENT:r18 @MAINV TO (*-1 @AUXV BARRIER VFIN); 
+
+SETPARENT:r19  @IMV TO (*-1 @-FAUXV LINK *1 @CVP);
+SETPARENT:r19b @IMV TO (*-1 @+FAUXV LINK *1 @CVP);
+SETPARENT:r20 @-FAUXV TO (*-1 @+FAUXV LINK *1 @CVP);
+#SETPARENT:r21 @AUXV TO (*-1 @MAINV BARRIER @AUXV LINK *1 @CVP);
+#SETPARENT:r22 @MAINV TO (*-1 @MAINV BARRIER @AUXV LINK *1 @CVP);
+
+#SETPARENT:r23 (Inf @MAINV) TO (*-1 @MAINV);
+
+### VPs
+
+SETPARENT:r7 VINFIN TO (*-1 AUX BARRIER CS);
+SETPARENT:r8 Sup TO (*-1 VFIN BARRIER CS);
+SETPARENT:r8b Inf TO (*-1 VFIN BARRIER CS);
+SETPARENT:r8c PrsPrc TO (*-1 VFIN BARRIER CS);
+SETPARENT:r8d PrfPrc TO (*-1 VFIN BARRIER CS);
+
+### CS
+
+#SETPARENT:TaId ("IÐ" @CVP) TO (-1 ("tá"));
+#SETPARENT:TaId2 ("tá" Adv)(-1 COMMA) TO (-2 N);
+SETPARENT:RelCL (@CVP)(-1 COMMA) TO (-2 N);
+
+SETPARENT:r24 @CVP TO (*-1 (@MAINV));
+
+### CC
+
+SETPARENT:r25 @CNP (-1 BOS OR CLB OR LEFT) TO (*1  (@MAINV)) ;
+
+SETPARENT:2vCC @CNP TO (1 VFIN);
+
+
+### subjunction and coordination
+
+#SETPARENT:SetCcsToCs @COMP-CS< TO (*-1 CS) ;
+SETPARENT:SetCCellipse KONJ + @CVP TO (*1 @<SUBJ BARRIER VFIN) ;
+SETPARENT:SetCCellipse KONJ + @CVP TO (*1 KONJ + @CVP BARRIER @V LINK *-1 @SUBJ> BARRIER @CVP) ;
+SETPARENT:SetCCToCC (CC @CVP) TO (1 CS) ;
+SETPARENT:SetKonjToFMV KONJ + @CVP TO (*1 @FMV) ;
+SETPARENT:SetKonjToV KONJ + @CVP TO (*1 VFIN OR NONVFIN BARRIER S-BOUNDARY2) ;
+
+### coordination
+
+SETPARENT:SetCNPToWord @CNP TO (*-1 WORD) ;
+SETPARENT:SetCNPToWord @CVP + CC TO (*-1 WORD) ;
+
+
+
+
+### Relative clause
+
+SETPARENT:RelVtoVfin @FS-STA (NONE p (*)) TO (*1 @FV) ; 
+SETPARENT:RelVtoVfin @FS-STA (NONE p (*)) TO (*-1 @FV) ; 
+SETPARENT:RelVtoVfin @FS-STA TO (*-1 @ADVL>SUBJ BARRIER VFIN LINK *1 @SUBJ) ; 
+
+SETPARENT:RelVtoN @FS-N< TO (*-1 CS LINK -1 COMMA LINK -1 N OR A OR Pron) ; 
+SETPARENT:RelVtoN @FS-N< TO (*-1 CS LINK -1 N OR A OR Pron) ; 
+
+### Embedded clause
+
+SETPARENT:Quotation @FS-OBJ OR @FS-STA TO (*-1 PUNCT + LEFT OR ("at") + CS LINK *-1 SPEECHACT BARRIER VFIN);
+
+
+
+### Root
+
+SETPARENT VFIN (NONE p (*)) TO (@0 (*));
+

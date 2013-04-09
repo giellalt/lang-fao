@@ -4,12 +4,29 @@
 
 ! Table of content
 ! ================
-! - The morphological tags
-! - - Male first names
-! - - Female first names
-! - - Surnames
-! - - Place names and other names
+! _ The guessed ones
+! _ The morphological tags
+! _ _ Male first names
+! _ _ Female first names
+! _ _ Surnames
+! _ _ Place names and other names
 
+LEXICON guess 
+ < [A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Æ|Ø|Å
+   |Á|É|Í|Ó|Ú|Ý|Ä|Ö|Ü] 
+   [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å
+   |á|ð|é|í|ó|ú|ý|ä|ö|ü]* 
+   [a|e|i|o|u|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü] 
+   [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å]* 
+   [b|c|d|e|f|g|h|j|k|l|o|q|v|w|x|y|z|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü]
+   %+N:0 %+Prop:0 %+Sg:0  
+   > guesstag ;
+
+LEXICON guesstag
+ +Nom+Guess: # ;
+ +Acc+Guess: # ;
+ +Dat+Guess: # ; !+i ?
+ +Gen+Guess:s # ;
 
 
 ! The morphological tags
@@ -18,20 +35,38 @@
 ! For each group, the maltag etc. lexicon functions as a default
 ! lexicon. The other lexica are there for specific subgroups of the names.
 
+! Indeclineables
+! ______________
+
+LEXICON indeclattr
++Det+Prop+Attr: # ; ! "The" i "The full Monty"
+
+LEXICON indeclorg ! Den Danske Bank
++N+Prop+Org: indeclcase ;
+
+LEXICON indeclplc ! Færøerne
++N+Prop+Plc: indeclcase ;
+
+LEXICON indeclcase
++Sg+Nom: # ;
++Sg+Acc: # ;
++Sg+Dat: # ;
++Sg+Gen: # ;
+
 
 ! Male first names
-! ----------------
+! ________________
 
 !this is like BOAS
 !It means just "not checked"
 LEXICON maltag
-+N+Prop+Sg+Nom: # ;
-+N+Prop+Sg+Acc: # ;
-+N+Prop+Sg+Dat:%>i # ;
-+N+Prop+Sg+Gen:%>s # ;
-sdóttir+N+Prop+Sg:sdótt kv30e ;
-ssonur+N+Prop+Sg:sson k47 ;
-sonur:son k47 ;
++N+Prop+Mal+Sg+Nom: # ;
++N+Prop+Mal+Sg+Acc: # ;
++N+Prop+Mal+Sg+Dat:%>i # ;
++N+Prop+Mal+Sg+Gen:%>s # ;
+sdóttir+N+Prop+Fem+Sg:sdótt kv30e ;
+ssonur+N+Prop+Mal+Sg:sson k47 ;
+sonur+N+Prop+Mal+Sg:son k47 ;
 
 LEXICON MUSTAFA
 +N+Prop+Sg+Nom: # ;
@@ -85,7 +120,7 @@ LEXICON TRÓNDUR
 +N+Prop+Sg+Acc: # ;
 +N+Prop+Sg+Dat:%>i # ;
 +N+Prop+Sg+Gen:%>ar # ;
-+N+Prop+Sg+Gen:%>s # ; ! XXX s-gen?
++N+Prop+Sg+Gen:%>s # ; ! XXX s_gen?
 ardóttir+N+Prop+Sg:ardótt kv30e ;
 arsonur+N+Prop+Sg:arson k47 ;
 sdóttir+N+Prop+Sg:sdótt kv30e ;
@@ -134,7 +169,7 @@ arsonur+N+Prop+Sg:arson k47 ;
 
 
 ! Female first names
-! ------------------
+! __________________
 LEXICON RUT
 +N+Prop+Sg+Nom: # ;
 +N+Prop+Sg+Acc: # ;
@@ -161,7 +196,7 @@ LEXICON ASTA
 
 
 ! Surnames
-! --------
+! ________
 
 
 LEXICON surtag
@@ -173,7 +208,7 @@ LEXICON surtag
 +N+Prop+Sg+Poss:%>asa # ; !SAFORM
 
 ! Place names and other names
-! ---------------------------
+! ___________________________
 LEXICON plctag
 +N+Prop+Sg+Nom: # ;
 +N+Prop+Sg+Acc: # ;
@@ -192,16 +227,22 @@ LEXICON orgtag ! XXXcheck
 +N+Prop+Sg+Dat:%>i # ;
 +N+Prop+Sg+Gen:%>s # ;
 
+LEXICON vehtag ! XXXcheck
++N+Prop+Sg+Nom: # ;
++N+Prop+Sg+Acc: # ;
++N+Prop+Sg+Dat:%>i # ;
++N+Prop+Sg+Gen:%>s # ;
+
 LEXICON mscorgtag ! XXXcheck
-+N+Prop+Msc: S-M-SGNOM ;
-+N+Prop+Msc: S-M-SGACC ;
-+N+Prop+Msc: S-M-SGDAT ;
-+N+Prop+Msc: S-M-SGGEN ;
++N+Prop+Msc: S_M_SGNOM ;
++N+Prop+Msc: S_M_SGACC ;
++N+Prop+Msc: S_M_SGDAT ;
++N+Prop+Msc: S_M_SGGEN ;
 ! Sosialurin
 
 LEXICON neuorgtag ! XXXcheck
-+N+Prop+Neu: S-N-SGNA ;
-+N+Prop+Neu: S-N-SGDG ;
++N+Prop+Neu: S_N_SGNA ;
++N+Prop+Neu: S_N_SGDG ;
 ! eimskip
 
 
@@ -229,173 +270,197 @@ LEXICON SUDUROY
 +N+Prop+Sg+Dat+Def:%>nni # ;
 +N+Prop+Sg+Gen+Def:%>arinnar # ;
 
-! These are the lexica taken from the noun-fao-lex.txt file.
+LEXICON FLOKKUR
+flokkur:flokk propnoun_org_k9 ;
+
+! These are the lexica taken from the noun_fao_lex.txt file.
 
 
-LEXICON propnoun-h-flt10
- +N+Prop:    h-flt10 ;
+LEXICON propnoun_h_flt10
+ +N+Prop:    h_flt10 ;
 
-LEXICON propnoun-h-flt25
- +N+Prop:    h-flt25 ;
+LEXICON propnoun_h_flt25
+ +N+Prop:    h_flt25 ;
 
-LEXICON propnoun-h-flt8
- +N+Prop:    h-flt8 ;
+LEXICON propnoun_h_flt8
+ +N+Prop:    h_flt8 ;
 
-LEXICON propnoun-h11
+LEXICON propnoun_plc_h11
+ +N+Prop+Plc:    h11 ;
+
+LEXICON propnoun_h11
  +N+Prop:    h11 ;
 
-LEXICON propnoun-h11e
+LEXICON propnoun_plc_h11e
+ +N+Prop+Plc:    h11e ;
+
+LEXICON propnoun_h11e
  +N+Prop:    h11e ;
 
-LEXICON propnoun-h13
+LEXICON propnoun_h13
  +N+Prop:    h13 ;
 
-LEXICON propnoun-h13e
+LEXICON propnoun_h13e
  +N+Prop:    h13e ;
 
-LEXICON propnoun-h1e
+LEXICON propnoun_h1e
  +N+Prop:    h1e ;
 
-LEXICON propnoun-h24
+LEXICON propnoun_h24
  +N+Prop:    h24 ;
 
-LEXICON propnoun-h24e
+LEXICON propnoun_h24e
  +N+Prop:    h24e ;
 
-LEXICON propnoun-h25
+LEXICON propnoun_h25
  +N+Prop:    h25 ;
 
-LEXICON propnoun-h3
+LEXICON propnoun_plc_h3
+ +N+Prop+Plc:    h3 ;
+
+LEXICON propnoun_h3
  +N+Prop:    h3 ;
 
-LEXICON propnoun-h3e
+LEXICON propnoun_h3e
  +N+Prop:    h3e ;
 
-LEXICON propnoun-h4
+LEXICON propnoun_h4
  +N+Prop:    h4 ;
 
-LEXICON propnoun-h4e
+LEXICON propnoun_h4e
  +N+Prop:    h4e ;
 
-LEXICON propnoun-h5
+LEXICON propnoun_h5
  +N+Prop:    h5 ;
 
-LEXICON propnoun-h5e
+LEXICON propnoun_h5e
  +N+Prop:    h5e ;
 
-LEXICON propnoun-h8
+LEXICON propnoun_h8
  +N+Prop:    h8 ;
 
-LEXICON propnoun-h8e
+LEXICON propnoun_h8e
  +N+Prop:    h8e ;
 
-LEXICON propnoun-k-flt17
- +N+Prop:    k-flt17 ;
+LEXICON propnoun_k_flt17
+ +N+Prop:    k_flt17 ;
 
-LEXICON propnoun-k-flt20
- +N+Prop:    k-flt20 ;
+LEXICON propnoun_k_flt20
+ +N+Prop:    k_flt20 ;
 
-LEXICON propnoun-k1
+LEXICON propnoun_k1
  +N+Prop:    k1 ;
 
-LEXICON propnoun-k12
+LEXICON propnoun_k12
  +N+Prop:    k12 ;
 
-LEXICON propnoun-k14
+LEXICON propnoun_k14
  +N+Prop:    k14 ;
 
-LEXICON propnoun-k17
+LEXICON propnoun_k17
  +N+Prop:    k17 ;
 
-LEXICON propnoun-k1e
+LEXICON propnoun_k1e
  +N+Prop:    k1e ;
 
-LEXICON propnoun-k21
+LEXICON propnoun_k21
  +N+Prop:    k21 ;
 
-LEXICON propnoun-k3
+LEXICON propnoun_k3
  +N+Prop:    k3 ;
 
-LEXICON propnoun-k39e
+LEXICON propnoun_k39e
  +N+Prop:    k39e ;
 
-LEXICON propnoun-k3e
+LEXICON propnoun_k3e
  +N+Prop:    k3e ;
 
-LEXICON propnoun-k43e
+LEXICON propnoun_k43e
  +N+Prop:    k43e ;
 
-LEXICON propnoun-k46
+LEXICON propnoun_k46
  +N+Prop:    k46 ;
 
-LEXICON propnoun-k6
+LEXICON propnoun_plc_k6
+ +N+Prop+Plc:    k6 ;
+
+LEXICON propnoun_k6
  +N+Prop:    k6 ;
 
-LEXICON propnoun-k7
+LEXICON propnoun_k7
  +N+Prop:    k7 ;
 
-LEXICON propnoun-k8
+LEXICON propnoun_k8
  +N+Prop:    k8 ;
 
-LEXICON propnoun-k9
+LEXICON propnoun_k9
  +N+Prop:    k9 ;
 
-LEXICON propnoun-kv-flt1
- +N+Prop:    kv-flt1 ;
+LEXICON propnoun_org_k9
+ +N+Prop+Org:    k9 ;
 
-LEXICON propnoun-kv-flt17
- +N+Prop:    kv-flt17 ;
+LEXICON propnoun_kv_flt1
+ +N+Prop:    kv_flt1 ;
 
-LEXICON propnoun-kv-flt2
- +N+Prop:    kv-flt2 ;
+LEXICON propnoun_kv_flt17
+ +N+Prop:    kv_flt17 ;
 
-LEXICON propnoun-kv-flt32
- +N+Prop:    kv-flt32 ;
+LEXICON propnoun_kv_flt2
+ +N+Prop:    kv_flt2 ;
 
-LEXICON propnoun-kv-flt6
- +N+Prop:    kv-flt6 ;
+LEXICON propnoun_kv_flt32
+ +N+Prop:    kv_flt32 ;
 
-LEXICON propnoun-kv-flt8
- +N+Prop:    kv-flt8 ;
+LEXICON propnoun_kv_flt6
+ +N+Prop:    kv_flt6 ;
 
-LEXICON propnoun-kv-flt9
- +N+Prop:    kv-flt9 ;
+LEXICON propnoun_kv_flt8
+ +N+Prop:    kv_flt8 ;
 
-LEXICON propnoun-kv1
+LEXICON propnoun_kv_flt9
+ +N+Prop:    kv_flt9 ;
+
+LEXICON propnoun_org_kv1
+ +N+Prop+Org:    kv1 ;
+
+LEXICON propnoun_kv1
  +N+Prop:    kv1 ;
 
-LEXICON propnoun-kv12e
+LEXICON propnoun_kv12e
  +N+Prop:    kv12e ;
 
-LEXICON propnoun-kv13e
+LEXICON propnoun_kv13e
  +N+Prop:    kv13e ;
 
-LEXICON propnoun-kv1e
+LEXICON propnoun_kv1e
  +N+Prop:    kv1e ;
 
-LEXICON propnoun-kv2
+LEXICON propnoun_fem_kv2
+ +N+Prop+Fem:    kv2 ;
+
+LEXICON propnoun_kv2
  +N+Prop:    kv2 ;
 
-LEXICON propnoun-kv21
+LEXICON propnoun_kv21
  +N+Prop:    kv21 ;
 
-LEXICON propnoun-kv2e
+LEXICON propnoun_kv2e
  +N+Prop:    kv2e ;
 
-LEXICON propnoun-kv3
+LEXICON propnoun_kv3
  +N+Prop:    kv3 ;
 
-LEXICON propnoun-kv32e
+LEXICON propnoun_kv32e
  +N+Prop:    kv32e ;
 
-LEXICON propnoun-kv3e
+LEXICON propnoun_kv3e
  +N+Prop:    kv3e ;
 
-LEXICON propnoun-kv6
+LEXICON propnoun_kv6
  +N+Prop:    kv6 ;
 
-LEXICON propnoun-kv6e
+LEXICON propnoun_kv6e
  +N+Prop:    kv6e ;
 
-LEXICON propnoun-kv9
+LEXICON propnoun_kv9
  +N+Prop:    kv9 ;

@@ -1,36 +1,50 @@
-! ============================ !
-! Main Faroese morphology file !
-! ============================ !
+! ========================================================================== !
+! !!               !!!Faroese morphological analyser
+! ========================================================================== !
+ 
 
+Multichar_Symbols  !!≈ !!!@CODE@ definitions
 
-Multichar_Symbols
-+N +V +A +Adv +Prop
-+CC +CS +Interj +Pr +Pron +IM
-+Pers +Det +Refl +Recipr +Poss +Dem
-+Nom +Acc +Gen +Dat
-+Msc +Fem +Neu
-+Sg +Pl
-+Def +Indef +Cmp +Superl
-+Prs +Prt
-+1Sg +2Sg +3Sg
-+Inf +PrfPrc +PrsPrc +Sup +Imp +Sbj
-+Cmpnd +Abbr +ACR
-+CLB +PUNCT +LEFT +RIGHT
-+Guess
+                                       !!  !!Tags for POS			,
++N +V +A +Adv +Prop                    !!≈ ; @CODE@ : Open POS's	,
++CC +CS +Interj +Pr +Pron +IM		    !!≈ ; @CODE@ : Closed POS's	,
++Pers +Det +Refl +Recipr +Poss +Dem		!!≈ ; @CODE@ : Pron types	,
++Nom +Acc +Gen +Dat					    !!≈ ; @CODE@ : Case			,
++Msc +Fem +Neu						    !!≈ ; @CODE@ : Gender		,
++Sg +Pl								    !!≈ ; @CODE@ : Number		,
++Def +Indef 						    !!≈ ; @CODE@ : Definiteness	,
++Cmp +Superl						    !!≈ ; @CODE@ : Comparison	,
++Prs +Prt							    !!≈ ; @CODE@ : Tense		,
++1Sg +2Sg +3Sg						    !!≈ ; @CODE@ : Person-Number,
++Inf +PrfPrc +PrsPrc +Sup +Imp +Sbj	    !!≈ ; @CODE@ : Verb forms	,
++Cmpnd								    !!≈ ; @CODE@ : Compound		,
++Abbr +ACR							    !!≈ ; @CODE@ : Abbreviations, acronyms ,
++CLB +PUNCT +LEFT +RIGHT			    !!≈ ; @CODE@ : Punctuation, parentheses ,
++Guess									!!≈ ; @CODE@ : Tag for Name Guesser component
 
+                                        !!  !!Semantic tags
++Sur +Mal +Fem +Plc +Org +Veh
+
+                                        !!  !!Non-changing letters
  g2 i2 j2 v2
 
-%^UUML %^IUML %^eIUML %^W %^JI %^EPH %^OEA 
-%^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL
-%^EIO %^OA %^WVV %^EDH %^VSH
-%^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7
-%^aAB %^uAB %^NGKK
-%^PASS
-%>
+                                           !!  !!Triggers for Morphophonology
+%^UUML %^IUML %^eIUML 						!!≈ ; @CODE@ : Umlaut types ,
+%^W %^JI 									!!≈ ; @CODE@ : Cns changes ,
+%^EPH %^OEA 								!!≈ ; @CODE@ : Epenthesis,  ,
+%^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL	!!≈ ; @CODE@ : Cns deletion triggers,
+%^EIO %^OA %^WVV %^EDH %^VSH				!!≈ ; @CODE@ : TODO ,
+%^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7	!!≈ ; @CODE@ : Ablaut series ,
+%^aAB %^uAB 								!!≈ ; @CODE@ : More Ablaut ,
+%^NGKK										!!≈ ; @CODE@ : NG to KK	,
+%^PASS										!!≈ ; @CODE@ : todo ,
+%>											!!≈ ; @CODE@ : Suffix boundary ,
 
-æ ø å 
-á é í ó ú ý Á É Í Ó Ý
-ä ö ü Ä Ö Ö
+
+!!  !!Non-ascii letters, perhaps needed as multichar symbols
+æ ø å 				  !!≈  @CODE@
+á é í ó ú ý Á É Í Ó Ý !!≈  @CODE@
+ä ö ü Ä Ö Ö			  !!≈  @CODE@
 
 ! ============ !
 ! Root lexicon !
@@ -38,6 +52,9 @@ Multichar_Symbols
 
 
 LEXICON Root
+!! !!!Lexicon @LEXNAME@
+!! This is the beginning of everything. The __@LEXNAME@__ lexicon is reserved in the
+!! LexC language, and must be the first lexicon defined.
 
 Nouns ;
 Propernouns ;
@@ -55,3 +72,4 @@ Punctuation ;
 Abbreviation ;
 Acronyms ;
 
+! vim: set ft=xfst-lexc:

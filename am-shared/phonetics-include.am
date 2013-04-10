@@ -31,10 +31,10 @@ EXTRA_DIST=$(GT_PHONETICS_SRCS)
 # The rule transducer will be built, not installed
 GT_PHONETICS=
 if CAN_HFST
-GT_PHONETICS+=convert2ipa.hfst
+GT_PHONETICS+=text2ipa.hfst
 endif
 if CAN_XFST
-GT_PHONETICS+=convert2ipa.xfst
+GT_PHONETICS+=text2ipa.xfst
 endif
 
 noinst_DATA=$(GT_PHONETICS)

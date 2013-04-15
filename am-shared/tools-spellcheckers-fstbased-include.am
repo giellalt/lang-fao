@@ -16,7 +16,13 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 GT_SPELLER_SRC_HFST=analyser-raw-gt-desc.hfst
-GT_COMMON_SPELLER_HFST=acceptor-gt-norm.hfst
+GT_COMMON_SPELLER_HFST=
+
+####### Automake targets: ########
+
+if CAN_HFST
+GT_COMMON_SPELLER_HFST+=acceptor-gt-norm.hfst
+endif # CAN_HFST
 
 noinst_DATA=$(GT_COMMON_SPELLER_HFST)
 

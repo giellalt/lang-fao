@@ -22,44 +22,52 @@ GT_FILTER_SRCS=
 GT_FILTER_TARGETS=
 if CAN_HFST
 GT_FILTER_TARGETS+=\
-				   make-optional-semantic-tags.hfst     \
-				   make-optional-transitivity-tags.hfst \
-				   make-optional-homonymy-tags.hfst     \
-				   make-optional-variant-tags.hfst      \
-				   remove-derivation-position-tags.hfst \
-				   remove-dialect-tags.hfst             \
-				   remove-homonymy-tags.hfst            \
-				   remove-variant-tags.hfst             \
-				   remove-morph-borders.hfst            \
-				   remove-norm-comp-tags.hfst           \
-				   remove-number-string-tags.hfst       \
-				   remove-sub-forms.hfst                \
-				   remove-usage-tags.hfst               \
-				   remove-NA-strings.hfst               \
-				   remove-NG-strings.hfst               \
-				   remove-NGminip-strings.hfst          \
-				   remove-MinusSpell-strings.hfst
+				   make-optional-semantic-tags.hfst       \
+				   make-optional-transitivity-tags.hfst   \
+				   make-optional-homonymy-tags.hfst       \
+				   make-optional-variant-tags.hfst        \
+				   remove-derivation-position-tags.hfst   \
+				   remove-dialect-tags.hfst               \
+				   remove-homonymy-tags.hfst              \
+				   remove-variant-tags.hfst               \
+				   remove-norm-comp-tags.hfst             \
+				   remove-number-string-tags.hfst         \
+				   remove-usage-tags.hfst                 \
+				   remove-morph-borders.hfst              \
+				   remove-sub-forms.hfst                  \
+				   remove-NA-strings.hfst                 \
+				   remove-NG-strings.hfst                 \
+				   remove-NGminip-strings.hfst            \
+				   remove-MinusSpell-strings.hfst         \
+				   remove-ABBR-strings.hfst               \
+				   remove-illegal-derivation-strings.hfst \
+				   remove-PUNCT-strings.hfst              \
+				   remove-UseCirc-strings.hfst
 endif
 
 if CAN_XFST
 GT_FILTER_TARGETS+=\
-				   make-optional-semantic-tags.xfst     \
-				   make-optional-transitivity-tags.xfst \
-				   make-optional-homonymy-tags.xfst     \
-				   make-optional-variant-tags.xfst      \
-				   remove-derivation-position-tags.xfst \
-				   remove-dialect-tags.xfst             \
-				   remove-homonymy-tags.xfst            \
-				   remove-variant-tags.xfst             \
-				   remove-morph-borders.xfst            \
-				   remove-norm-comp-tags.xfst           \
-				   remove-number-string-tags.xfst       \
-				   remove-sub-forms.xfst                \
-				   remove-usage-tags.xfst               \
-				   remove-NA-strings.xfst               \
-				   remove-NG-strings.xfst               \
-				   remove-NGminip-strings.xfst          \
-				   remove-MinusSpell-strings.xfst
+				   make-optional-semantic-tags.xfst       \
+				   make-optional-transitivity-tags.xfst   \
+				   make-optional-homonymy-tags.xfst       \
+				   make-optional-variant-tags.xfst        \
+				   remove-derivation-position-tags.xfst   \
+				   remove-dialect-tags.xfst               \
+				   remove-homonymy-tags.xfst              \
+				   remove-variant-tags.xfst               \
+				   remove-norm-comp-tags.xfst             \
+				   remove-number-string-tags.xfst         \
+				   remove-usage-tags.xfst                 \
+				   remove-morph-borders.xfst              \
+				   remove-sub-forms.xfst                  \
+				   remove-NA-strings.xfst                 \
+				   remove-NG-strings.xfst                 \
+				   remove-NGminip-strings.xfst            \
+				   remove-MinusSpell-strings.xfst         \
+				   remove-ABBR-strings.xfst               \
+				   remove-illegal-derivation-strings.xfst \
+				   remove-PUNCT-strings.xfst              \
+				   remove-UseCirc-strings.xfst
 endif
 
 # Add the target of local additions here:

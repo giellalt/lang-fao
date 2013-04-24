@@ -21,8 +21,10 @@ GT_FOMA_ACCEPTOR=acceptor-$(GTLANG).foma
 ####### Automake targets: ########
 
 if CAN_HFST
+if CAN_FOMA_SPELLER
 hfstdatadir=$(datadir)/hfst/$(GTLANG)
 hfstdata_DATA=$(GT_FOMA_ACCEPTOR)
+endif #CAN_FOMA_SPELLER
 endif # CAN_HFST
 
 ####### HFST build rules: ########
@@ -60,7 +62,7 @@ $(GT_FOMA_ACCEPTOR): \
 			-1 $(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f foma -b \
-		-o $@
+		| $(GZIP) > $@
 
 ####### Other targets: ###########
 clean-local:

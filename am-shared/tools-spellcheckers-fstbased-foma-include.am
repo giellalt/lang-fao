@@ -15,7 +15,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-GT_SPELLER_HFST=acceptor-gt-norm.hfst
+GT_SPELLER_HFST=analyser-speller-gt-norm.hfst
 GT_FOMA_ACCEPTOR=acceptor-$(GTLANG).foma
 
 ####### Automake targets: ########
@@ -37,8 +37,9 @@ $(GT_FOMA_ACCEPTOR): \
 		$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
 		$(top_builddir)/src/filters/remove-number-string-tags.hfst       \
 		$(top_builddir)/src/filters/remove-usage-tags.hfst
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 $(top_builddir)/src/filters/remove-usage-tags.hfst \
+	$(AM_V_GEN)$(HFST_INVERT) $(HFST_FLAGS) $< \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 $(top_builddir)/src/filters/remove-usage-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 $(top_builddir)/src/filters/remove-number-string-tags.hfst \

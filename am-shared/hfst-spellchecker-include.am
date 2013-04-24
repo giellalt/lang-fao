@@ -15,7 +15,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-GT_SPELLER_HFST=acceptor-gt-norm.hfst
+GT_SPELLER_HFST=analyser-speller-gt-norm.hfst
 GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 
 ####### Automake targets: ########
@@ -66,9 +66,9 @@ $(GT_SPELLER_ACCEPTOR): \
 $(GT_SPELLING_HFST): $(GT_SPELLER_ACCEPTOR) \
 					 $(GT_ERRMODELS) \
 					 index.xml
-	$(AM_V_GEN)$(ZIP) $(ZIPFLAGS) $@ $^
-	$(AM_V_GEN)$(MKDIR_P) 3
-	$(AM_V_GEN)cp -f $@ 3/
+	$(AM_V_GEN)rm -f $@ && $(ZIP) $(ZIPFLAGS) $@ $^ && \
+		$(MKDIR_P) 3 && \
+		cp -f $@ 3/
 
 ####### Other targets: ###########
 clean-local:

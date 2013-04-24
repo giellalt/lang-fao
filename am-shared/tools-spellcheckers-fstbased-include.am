@@ -21,7 +21,7 @@ GT_COMMON_SPELLER_HFST=
 ####### Automake targets: ########
 
 if CAN_HFST
-GT_COMMON_SPELLER_HFST+=acceptor-gt-norm.hfst
+GT_COMMON_SPELLER_HFST+=analyser-speller-gt-norm.hfst
 endif # CAN_HFST
 
 noinst_DATA=$(GT_COMMON_SPELLER_HFST)
@@ -30,7 +30,8 @@ noinst_DATA=$(GT_COMMON_SPELLER_HFST)
 $(GT_COMMON_SPELLER_HFST): $(top_builddir)/src/$(GT_SPELLER_SRC_HFST)        \
 			$(top_builddir)/src/filters/remove-sub-forms.hfst                \
 			$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst       \
-			$(top_builddir)/src/filters/remove-morph-borders.hfst
+			$(top_builddir)/src/filters/remove-morph-borders.hfst            \
+			$(top_builddir)/src/filters/remove-PUNCT-strings.hfst
 	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
 			-2 $(top_builddir)/src/filters/remove-morph-borders.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
@@ -40,6 +41,10 @@ $(GT_COMMON_SPELLER_HFST): $(top_builddir)/src/$(GT_SPELLER_SRC_HFST)        \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 $(top_builddir)/src/filters/remove-MinusSpell-strings.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 $(top_builddir)/src/filters/remove-PUNCT-strings.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_INVERT) $(HFST_FLAGS) \
 		-o $@
 
 ####### Other targets: ###########

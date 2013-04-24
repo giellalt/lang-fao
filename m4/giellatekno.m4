@@ -142,7 +142,20 @@ AS_IF([test "x$enable_voikko" = "xyes" -a "x$gt_prog_hfst" != xno],
       [AC_PATH_PROG([ZIP], [zip], [false])
        AS_IF([test "x$ZIP" = "xfalse"],
              [enable_voikko=no
-              AC_MSG_WARN([zip missing, spellers disabled])])])
+              AC_MSG_WARN([zip missing, hfst spellers disabled])])])
+
+# Enable Foma-based spellers, requires gzip:
+AC_ARG_ENABLE([fomaspeller],
+              [AS_HELP_STRING([--enable-fomaspeller],
+                              [build support for foma speller @<:@default=yes@:>@])],
+              [enable_fomaspeller=$enableval],
+              [enable_fomaspeller=yes])
+AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno], 
+      [AC_PATH_PROG([GZIP], [gzip], [false])
+       AS_IF([test "x$GZIP" = "xfalse"],
+             [enable_fomaspeller=no
+              AC_MSG_WARN([gzip missing, foma spellers disabled])])])
+AM_CONDITIONAL([CAN_FOMA_SPELLER], [test "x$enable_fomaspeller" != xno])
 
 # Enable Oahpa transducers - default is 'no'
 AC_ARG_ENABLE([oahpa],
@@ -167,9 +180,11 @@ cat<<EOF
 -- Building $PACKAGE_STRING:
     * build with Xerox: $gt_prog_xfst
     * build with HFST: $gt_prog_hfst
-    * hfst speller automaton: $enable_spellerautomat
-    * voikko support: $enable_voikko
+    * analysers enabled: $enable_morphology
+    * generators enabled: $enable_generation
     * yaml tests enabled: $enable_yamltests
+    * foma speller support: $enable_fomaspeller
+    * voikko speller support: $enable_voikko
     * generated documentation enabled: $gt_prog_docc
     * Oahpa transducers enabled: $enable_oahpa
 

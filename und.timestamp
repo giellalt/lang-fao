@@ -1,4 +1,8 @@
-$Rev: 75256 $
+$Rev: 75275 $
+Added gzip compression of foma speller transducer, and proper checks for
+prerequisites. Foma spellers can now be disabled, they are enabled by default.
+
+r75256:
 Corrected a bug when building foma-based spellers. Changed one fst filename to
 follow the naming scheme for the new infra. Improved building of the zfst
 speller file.

@@ -10,7 +10,9 @@ generator-oahpa-gt-norm.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-dialect-tags.xfst \
 					filters/remove-homonymy-tags.xfst \
 					filters/remove-variant-tags.xfst \
-					filters/remove-morph-borders.xfst \
+					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-infl_deriv-borders.xfst       \
+					filters/remove-word-boundary.xfst            \
 					filters/remove-norm-comp-tags.xfst \
 					filters/remove-number-string-tags.xfst \
 					filters/remove-usage-tags.xfst \
@@ -27,7 +29,10 @@ generator-oahpa-gt-norm.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"filters/remove-usage-tags.xfst\" \
 			.o. @\"filters/remove-sub-forms.xfst\" \
 			.o. @\"$<\" \
-			.o. @\"filters/remove-morph-borders.xfst\" ;\n\
+			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
+			.o. @\"filters/remove-word-boundary.xfst\"            \
+			;\n\
 		 invert net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST)

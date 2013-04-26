@@ -33,7 +33,9 @@ GT_FILTER_TARGETS+=\
 				   remove-norm-comp-tags.hfst             \
 				   remove-number-string-tags.hfst         \
 				   remove-usage-tags.hfst                 \
-				   remove-morph-borders.hfst              \
+				   remove-hyphenation-marks.hfst          \
+				   remove-infl_deriv-borders.hfst         \
+				   remove-word-boundary.hfst              \
 				   remove-sub-forms.hfst                  \
 				   remove-NA-strings.hfst                 \
 				   remove-NG-strings.hfst                 \
@@ -58,7 +60,9 @@ GT_FILTER_TARGETS+=\
 				   remove-norm-comp-tags.xfst             \
 				   remove-number-string-tags.xfst         \
 				   remove-usage-tags.xfst                 \
-				   remove-morph-borders.xfst              \
+				   remove-hyphenation-marks.xfst          \
+				   remove-infl_deriv-borders.xfst         \
+				   remove-word-boundary.xfst              \
 				   remove-sub-forms.xfst                  \
 				   remove-NA-strings.xfst                 \
 				   remove-NG-strings.xfst                 \

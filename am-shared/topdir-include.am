@@ -79,11 +79,19 @@ analyser-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/remove-norm-comp-tags.hfst \
 					filters/remove-number-string-tags.hfst \
 					filters/remove-usage-tags.hfst \
-					filters/remove-morph-borders.hfst \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst            \
 					orthography/inituppercase.hfst \
 					orthography/spellrelax.hfst
 	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-morph-borders.hfst \
+			-2 filters/remove-hyphenation-marks.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-infl_deriv-borders.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-word-boundary.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-2 orthography/inituppercase.hfst \
@@ -122,7 +130,9 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-norm-comp-tags.xfst \
 					filters/remove-number-string-tags.xfst \
 					filters/remove-usage-tags.xfst \
-					filters/remove-morph-borders.xfst \
+					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-infl_deriv-borders.xfst       \
+					filters/remove-word-boundary.xfst            \
 					orthography/inituppercase.xfst \
 					orthography/spellrelax.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex \
@@ -134,7 +144,9 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"filters/remove-number-string-tags.xfst\" \
 			.o. @\"filters/remove-usage-tags.xfst\" \
 			.o. @\"$<\" \
-			.o. @\"filters/remove-morph-borders.xfst\" \
+			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
+			.o. @\"filters/remove-word-boundary.xfst\"            \
 			.o. @\"orthography/inituppercase.xfst\" \
 			.o. @\"orthography/spellrelax.xfst\" \
 			;\n\
@@ -149,12 +161,20 @@ generator-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/make-optional-variant-tags.hfst \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst \
-					filters/remove-morph-borders.hfst \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst            \
 					filters/remove-norm-comp-tags.hfst \
 					filters/remove-number-string-tags.hfst \
 					filters/remove-usage-tags.hfst
 	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-morph-borders.hfst \
+			-2 filters/remove-hyphenation-marks.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-infl_deriv-borders.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-word-boundary.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-usage-tags.hfst \
@@ -192,7 +212,9 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/make-optional-variant-tags.xfst \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst \
-					filters/remove-morph-borders.xfst \
+					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-infl_deriv-borders.xfst       \
+					filters/remove-word-boundary.xfst            \
 					filters/remove-norm-comp-tags.xfst \
 					filters/remove-number-string-tags.xfst \
 					filters/remove-usage-tags.xfst
@@ -207,7 +229,10 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"filters/remove-number-string-tags.xfst\" \
 			.o. @\"filters/remove-usage-tags.xfst\" \
 			.o. @\"$<\" \
-			.o. @\"filters/remove-morph-borders.xfst\" ;\n\
+			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
+			.o. @\"filters/remove-word-boundary.xfst\"            \
+			;\n\
 		 invert net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) -q
@@ -223,10 +248,18 @@ analyser-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/remove-number-string-tags.hfst \
 					filters/remove-usage-tags.hfst \
 					filters/remove-sub-forms.hfst \
-					filters/remove-morph-borders.hfst \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst            \
 					orthography/inituppercase.hfst
 	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-morph-borders.hfst \
+			-2 filters/remove-hyphenation-marks.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-infl_deriv-borders.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-word-boundary.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-2 orthography/inituppercase.hfst \
@@ -266,7 +299,9 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-number-string-tags.xfst \
 					filters/remove-usage-tags.xfst \
 					filters/remove-sub-forms.xfst \
-					filters/remove-morph-borders.xfst \
+					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-infl_deriv-borders.xfst       \
+					filters/remove-word-boundary.xfst            \
 					orthography/inituppercase.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
@@ -278,7 +313,9 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"filters/remove-usage-tags.xfst\" \
 			.o. @\"filters/remove-sub-forms.xfst\" \
 			.o. @\"$<\" \
-			.o. @\"filters/remove-morph-borders.xfst\" \
+			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
+			.o. @\"filters/remove-word-boundary.xfst\"            \
 			.o. @\"orthography/inituppercase.xfst\" \
 			;\n\
 		 save stack $@\n\
@@ -292,13 +329,21 @@ generator-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
 					filters/make-optional-variant-tags.hfst \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst \
-					filters/remove-morph-borders.hfst \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst            \
 					filters/remove-norm-comp-tags.hfst \
 					filters/remove-number-string-tags.hfst \
 					filters/remove-usage-tags.hfst \
 					filters/remove-sub-forms.hfst
 	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-morph-borders.hfst \
+			-2 filters/remove-hyphenation-marks.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-infl_deriv-borders.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-word-boundary.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-sub-forms.hfst \
@@ -339,7 +384,9 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/make-optional-variant-tags.xfst \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst \
-					filters/remove-morph-borders.xfst \
+					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-infl_deriv-borders.xfst       \
+					filters/remove-word-boundary.xfst            \
 					filters/remove-norm-comp-tags.xfst \
 					filters/remove-number-string-tags.xfst \
 					filters/remove-usage-tags.xfst \
@@ -356,7 +403,10 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"filters/remove-usage-tags.xfst\" \
 			.o. @\"filters/remove-sub-forms.xfst\" \
 			.o. @\"$<\" \
-			.o. @\"filters/remove-morph-borders.xfst\" ;\n\
+			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
+			.o. @\"filters/remove-word-boundary.xfst\"            \
+			;\n\
 		 invert net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST)
@@ -417,7 +467,9 @@ lemmatize.default.hfst: analyser-gt-desc.hfst tagsets/lemmatize.relabel
 morpher-gt-desc.hfst: analyser-raw-gt-desc.hfst \
 					 orthography/inituppercase.hfst \
 					 orthography/spellrelax.hfst \
-					 filters/remove-morph-borders.hfst
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst
 	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
 					-2 orthography/inituppercase.hfst \
 			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
@@ -427,7 +479,13 @@ morpher-gt-desc.hfst: analyser-raw-gt-desc.hfst \
 			| $(HFST_PROJECT) $(HFST_FLAGS) -p lower \
 			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 			| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-					-2 filters/remove-morph-borders.hfst \
+				-2 filters/remove-hyphenation-marks.hfst \
+			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+			| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+				-2 filters/remove-infl_deriv-borders.hfst \
+			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+			| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+				-2 filters/remove-word-boundary.hfst \
 			| $(HFST_INVERT) $(HFST_FLAGS) \
 			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 			| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@

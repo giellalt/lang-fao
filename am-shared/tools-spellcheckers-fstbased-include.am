@@ -38,10 +38,10 @@ $(GT_COMMON_SPELLER_HFST): $(top_builddir)/src/$(GT_SPELLER_SRC_HFST)  \
 			-2 $(top_builddir)/src/filters/remove-hyphenation-marks.hfst  \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS)                                  \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F                                \
-			-1 $(top_builddir)/src/filters/remove-infl_deriv-borders.hfst \
+			-2 $(top_builddir)/src/filters/remove-infl_deriv-borders.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS)                                  \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F                                \
-			-1 $(top_builddir)/src/filters/remove-word-boundary.hfst      \
+			-2 $(top_builddir)/src/filters/remove-word-boundary.hfst      \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS)                                  \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F                                \
 			-1 $(top_builddir)/src/filters/remove-sub-forms.hfst          \

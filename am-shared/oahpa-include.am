@@ -2,33 +2,40 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
+
+# oahpa-norm / generator-oahpa-gt-norm
+# Require:
+# * homonym tags: Hom1, Hom2 (ie don't remove)  - done
+# Optionally allow these tags:
+# * transitivity tags: IV, TV,                  - done
+# * variant tags: v1, v2, v3, v4, v5,           - done
+# * generation restriction tags: Use/NGminip    - not implemented
+#
 # Build the normative Oahpa generator:
-generator-oahpa-gt-norm.xfst: analyser-raw-gt-desc.xfst \
-					filters/make-optional-semantic-tags.xfst \
+generator-oahpa-gt-norm.xfst: analyser-raw-gt-desc.xfst          \
+					filters/make-optional-semantic-tags.xfst     \
 					filters/make-optional-transitivity-tags.xfst \
+					filters/make-optional-variant-tags.xfst      \
 					filters/remove-derivation-position-tags.xfst \
-					filters/remove-dialect-tags.xfst \
-					filters/remove-homonymy-tags.xfst \
-					filters/remove-variant-tags.xfst \
+					filters/remove-dialect-tags.xfst             \
 					filters/remove-hyphenation-marks.xfst        \
 					filters/remove-infl_deriv-borders.xfst       \
 					filters/remove-word-boundary.xfst            \
-					filters/remove-norm-comp-tags.xfst \
-					filters/remove-number-string-tags.xfst \
-					filters/remove-usage-tags.xfst \
+					filters/remove-norm-comp-tags.xfst           \
+					filters/remove-number-string-tags.xfst       \
+					filters/remove-usage-tags.xfst               \
 					filters/remove-sub-forms.xfst
-	$(AM_V_GEN)$(PRINTF) "read regex \
-				@\"filters/make-optional-semantic-tags.xfst\" \
+	$(AM_V_GEN)$(PRINTF) "read regex                              \
+				@\"filters/make-optional-semantic-tags.xfst\"     \
 			.o. @\"filters/make-optional-transitivity-tags.xfst\" \
+			.o. @\"filters/make-optional-variant-tags.xfst\"      \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
-			.o. @\"filters/remove-dialect-tags.xfst\" \
-			.o. @\"filters/remove-homonymy-tags.xfst\" \
-			.o. @\"filters/remove-variant-tags.xfst\" \
-			.o. @\"filters/remove-norm-comp-tags.xfst\" \
-			.o. @\"filters/remove-number-string-tags.xfst\" \
-			.o. @\"filters/remove-usage-tags.xfst\" \
-			.o. @\"filters/remove-sub-forms.xfst\" \
-			.o. @\"$<\" \
+			.o. @\"filters/remove-dialect-tags.xfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
+			.o. @\"filters/remove-number-string-tags.xfst\"       \
+			.o. @\"filters/remove-usage-tags.xfst\"               \
+			.o. @\"filters/remove-sub-forms.xfst\"                \
+			.o. @\"$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
 			.o. @\"filters/remove-word-boundary.xfst\"            \
@@ -36,3 +43,7 @@ generator-oahpa-gt-norm.xfst: analyser-raw-gt-desc.xfst \
 		 invert net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST)
+
+# Dummy hfst rule to avoid build errors:
+generator-oahpa-gt-norm.hfst: analyser-raw-gt-desc.hfst
+	$(AM_V_GEN)cp -f $< $@

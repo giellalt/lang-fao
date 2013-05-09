@@ -18,12 +18,15 @@
 # Wrong usage - short instruction:
 if ! test $# -ge 2 ; then
     echo
-    echo "Usage: $0 TRANSDUCERTYPE TESTFILE LEADTEXT"
+    echo "Usage: $0 TRANSDUCERTYPE TESTFILE HALFTEST LEADTEXT"
     echo
     echo "were TRANSDUCERTYPE is the type of transducer targeted for testing,"
     echo "gt-norm, gt-desc, etc., and the optional TESTFILE is either a LexC"
     echo "file or a Yaml test data file, both containing test data."
-    echo "LEADTEXT is typically the number of the test data in a loop."
+    echo "HALFTEST is a string with one of the values 'ana', 'gen' or 'full',"
+    echo "indicating that only the analyser, only the generator, or both are"
+    echo "tested, respectively."
+    echo "LEADTEXT is typically the number of the test in a test set loop."
     echo "LEADTEXT can contain spaces, it is effectively everything after the"
     echo "second argument."
     echo
@@ -33,14 +36,15 @@ fi
 ###### Variables: #######
 transducer=$1
 testfile=$2
-shift 2
+halftest=$3
+shift 3
 leadtext="$@"
 
 testfileshort=$(echo "$(basename \
 	$(dirname $testfile))/$(basename $testfile)")
 
-analyserfile=${srcdir}/../../../src/analyser-$transducer
-generatorfile=${srcdir}/../../../src/generator-$transducer
+analyserfile=./../../../src/analyser-$transducer
+generatorfile=./../../../src/generator-$transducer
 pythonbin=@PYTHON@
 runtests="$pythonbin $GTCORE/scripts/morph-test.py"
 
@@ -56,6 +60,15 @@ if [[ "$fsttype" == "" ]]; then
     exit 77
 fi
 
+# Construct the correct argument for running either analysis, generation or both tests
+if test "$halftest" == "ana"; then
+    halftestoption="--surface"
+elif test "$halftest" == "gen"; then
+    halftestoption="--lexical"
+else
+    halftestoption=""
+fi
+
 function run_tests() {
 	$runtests \
 		--colour \
@@ -65,13 +78,14 @@ function run_tests() {
 	    --app $lookuptool \
 	    --gen $generatorfile.$f \
 	    --morph $analyserfile.$f \
+	    $halftestoption \
 	    $testfile
 	# If the test failed, print instructions to rerun and get more details:
 	if [[ $? -gt 0 ]]; then
 	    let "Fail += 1"
 	    echo "To rerun with more details, please triple-click, copy and paste the following:"
 	    echo
-	    echo "pushd $(pwd); $runtests -c -i -S $section --app $lookuptool --gen $generatorfile.$f --morph $analyserfile.$f $testfile; popd"
+	    echo "pushd $(pwd); $runtests -c -i -S $section --app $lookuptool --gen $generatorfile.$f --morph $analyserfile.$f $halftestoption $testfile; popd"
 	    echo
 	fi
 }

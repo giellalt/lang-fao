@@ -6,5 +6,6 @@
 
 ###### Variables: #######
 transducer=gt-norm
+halftest=ana # analysis test
 
-source $srcdir/run-yaml-testcases.sh $transducer
+source $srcdir/run-yaml-testcases.sh $transducer $halftest

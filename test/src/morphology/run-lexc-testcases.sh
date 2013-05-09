@@ -36,4 +36,4 @@ for file in ${srcdir}/../../../src/morphology/*.lexc \
 	fi
 done
 
-source error-handling-stubs.sh
+source $srcdir/error-handling-stubs.sh

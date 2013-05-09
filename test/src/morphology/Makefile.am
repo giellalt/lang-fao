@@ -11,6 +11,8 @@ if CAN_YAML_TEST
 # Add your shell scripts for running python-based tests here:
 TESTS+=run-gt-norm-yaml-testcases.sh \
 	   run-gt-desc-yaml-testcases.sh \
+	   run-gt-norm-anayaml-testcases.sh \
+	   run-gt-norm-genyaml-testcases.sh \
 	   run-lexc-testcases.sh
 endif # CAN_YAML_TEST
 

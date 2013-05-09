@@ -13,10 +13,10 @@
 
 ###### Variables: #######
 sourcefile=${srcdir}/../../../src/morphology/stems/nouns.lexc
-lemmas=${srcdir}/nouns.txt
-generatedlemmas=${srcdir}/gen-nouns
-failedlemmas=${srcdir}/fail-lemmas
-generatorfile=${srcdir}/../../../src/generator-gt-norm
+lemmas=./nouns.txt
+generatedlemmas=./gen-nouns
+failedlemmas=./fail-lemmas
+generatorfile=./../../../src/generator-gt-norm
 
 # FAIL if source file does not exist:
 if [ ! -f $sourcefile ]; then
@@ -54,7 +54,7 @@ for f in $fsttype; do
 		lookuptool="@HFST_LOOKUP@ -q"
 	else
 	    Fail=1
-		echo "Unknown fst type!"
+		printf "ERROR: Unknown fst type! "
 	    echo "$f - FAIL"
 	    continue
 	fi
@@ -83,6 +83,6 @@ if [ "$Fail" = "1" ]; then
 fi
 
 if [ $transducer_found -eq 0 ]; then
-    echo No transducer found
+    echo ERROR: No transducer found
     exit 1
 fi

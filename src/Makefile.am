@@ -2,8 +2,8 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-# order is always . last here
-SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax transcriptions .
+# always build . last here, and tagsets have to be built after morphology
+SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax transcriptions tagsets .
 
 ####### Automake targets: ########
 
@@ -13,6 +13,10 @@ GT_GENERATORS_HFST=generator-gt-desc.hfst generator-gt-norm.hfst
 GT_TRANSFORMERS_HFST=transcriptor-clock2text-desc.hfst \
 					 transcriptor-date2text-desc.hfst \
 					 transcriptor-numbers2text-desc.hfst
+#APERTIUM_ANALYSERS_HFST=analyser-apertium-desc.hfst \
+#						analyser-apertium-norm.hfst
+#APERTIUM_GENERATORS_HFST=generator-apertium-desc.hfst \
+#						generator-apertium-norm.hfst
 endif
 
 if CAN_XFST

@@ -25,4 +25,12 @@
         <type type="default"/>
         <model>errormodel.default.hfst</model>
     </errmodel>
+  <errmodel id="errmodel.ocr.hfst">
+    <title>OCR error model transducer</title>
+    <description>
+        Correction model for OCR misstakes.
+    </description>
+        <type type="ocr"/>
+        <model>errormodel.ocr.hfst</model>
+    </errmodel>
 </hfstspeller>

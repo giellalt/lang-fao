@@ -2,4 +2,7 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = fstbased listbased
+# The current dir must be built first.
+SUBDIRS = . fstbased listbased
+
+include $(top_srcdir)/am-shared/tools-spellcheckers-include.am

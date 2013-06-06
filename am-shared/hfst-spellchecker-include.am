@@ -26,7 +26,7 @@ if CAN_HFST
 
 # Only build speller if it is enabled (default=yes)
 if WANT_SPELLERAUTOMAT
-GT_ERRMODELS+=errmodel.default.hfst
+GT_ERRMODELS+=errmodel.default.hfst errmodel.ocr.hfst
 
 # Require zip to turn on zhfst target:
 if WANT_VOIKKO
@@ -48,12 +48,45 @@ noinst_DATA=$(GT_ERRMODELS)
 
 ####### HFST build rules: ########
 
-# Error model building:
-%.hfst: %.txt $(GT_SPELLER_ACCEPTOR)
-	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py -v -s -d 2 -e '@0@' -i $<   \
+# Error model building - edit distance based on transducer alphabet:
+editdist.%.hfst: editdist.%.txt $(GT_SPELLER_ACCEPTOR)
+	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py -v -s -d 1 -e '@0@' -i $<   \
 		-a $(GT_SPELLER_ACCEPTOR) \
-		| $(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' \
+		| $(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' -o $@
+
+# Helper fst:
+anystar.hfst:
+	$(AM_V_GEN)echo "?*;" | $(HFST_REGEXP2FST) -S -o $@
+
+# Error model building - list of strings known to be misspelled:
+strings.%.hfst: strings.%.txt anystar.hfst
+	$(AM_V_GEN)grep -v '^#' $< | grep -v '^$$'   \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
+		| $(HFST_CONCATENATE)   anystar.hfst - \
+		| $(HFST_CONCATENATE) - anystar.hfst   \
+		-o $@
+
+# Combine edit distance with string pattern edits:
+editStrings.%.hfst: strings.%.hfst editdist.%.hfst
+	$(AM_V_GEN)$(HFST_DISJUNCT) $^       \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_REPEAT) -f 1 -t 2       \
+		-o $@
+
+# Error model building - list of words known to be misspelled:
+words.%.hfst: words.%.txt
+	$(AM_V_GEN)grep -v '^#' $< | grep -v '^$$'   \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -o $@
+
+# The final error model is assembled here:
+errmodel.%.hfst: words.%.hfst editStrings.%.hfst
+	$(AM_V_GEN)$(HFST_DISJUNCT) $^ \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+
+# Alternatively, the error model can be constructed as a long list of regular
+# expressions, semicolon separated:
+errmodel.%.hfst: errmodel.%.regex
+	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -o $@ -i $<
 
 # Build the automaton used for the speller
 $(GT_SPELLER_ACCEPTOR): ../$(GT_SPELLER_HFST)
@@ -62,6 +95,8 @@ $(GT_SPELLER_ACCEPTOR): ../$(GT_SPELLER_HFST)
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
+# Finally build the zhfst file, and make a copy in a subdir named '3', so that
+# we can test it without installing it (the '3' dir is a voikko requirement):
 $(GT_SPELLING_HFST): $(GT_SPELLER_ACCEPTOR) \
 					 $(GT_ERRMODELS) \
 					 index.xml

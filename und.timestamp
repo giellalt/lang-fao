@@ -1,4 +1,9 @@
-$Rev: 77356 $
+$Rev: 77364 $
+Added an explicit copy operation into the hfst speller dir, to facilitate local
+modifications of the speller transducer before further processing, by just
+replacing the copy operation with whatever is needed.
+
+r77356:
 Added string pairs and whole-word corrections to the speller error model.
 Added support for an ocr error model. Removed obsolete Voikko config file.
 Corrected bugs in the hfst M4 macros.

@@ -1,4 +1,8 @@
-$Rev: 77364 $
+$Rev: 77368 $
+Removed the ocr error model from the zhfst building, it causes libvoikko 3.4 to
+segfault.
+
+r77364:
 Added an explicit copy operation into the hfst speller dir, to facilitate local
 modifications of the speller transducer before further processing, by just
 replacing the copy operation with whatever is needed.

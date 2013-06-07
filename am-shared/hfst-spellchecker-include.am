@@ -26,7 +26,9 @@ if CAN_HFST
 
 # Only build speller if it is enabled (default=yes)
 if WANT_SPELLERAUTOMAT
-GT_ERRMODELS+=errmodel.default.hfst errmodel.ocr.hfst
+GT_ERRMODELS+=errmodel.default.hfst
+# libvoikko can't yet handle multiple error models - do NOT include this line:
+# errmodel.ocr.hfst
 
 # Require zip to turn on zhfst target:
 if WANT_VOIKKO

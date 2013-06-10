@@ -37,30 +37,36 @@ noinst_DATA=$(GT_COMMON_SPELLER_HFST) $(GT_COMMON_SPELLER_XFST)
 
 # Build the common speller transducer by removing everything we don't want in
 # any of the spellers:
-$(GT_COMMON_SPELLER_HFST): $(top_builddir)/src/$(GT_SPELLER_SRC_HFST)  \
-			$(top_builddir)/src/filters/remove-sub-forms.hfst          \
-			$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst \
-			$(top_builddir)/src/filters/remove-PUNCT-strings.hfst
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -2 $<                     \
-			-1 $(top_builddir)/src/filters/remove-sub-forms.hfst          \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS)                                  \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F                                \
-			-1 $(top_builddir)/src/filters/remove-MinusSpell-strings.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS)                                  \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F                                \
-			-1 $(top_builddir)/src/filters/remove-PUNCT-strings.hfst      \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS)                                  \
-		| $(HFST_INVERT) $(HFST_FLAGS)                                    \
+$(GT_COMMON_SPELLER_HFST): ../../src/$(GT_SPELLER_SRC_HFST)  \
+			../../src/filters/remove-sub-forms.hfst          \
+			../../src/filters/remove-MinusSpell-strings.hfst \
+			../../src/filters/remove-PUNCT-strings.hfst      \
+			../../src/filters/remove-CLB-strings.hfst
+	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -2 $<           \
+			-1 ../../src/filters/remove-sub-forms.hfst          \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS)                        \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F                      \
+			-1 ../../src/filters/remove-MinusSpell-strings.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS)                        \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F                      \
+			-1 ../../src/filters/remove-PUNCT-strings.hfst      \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS)                        \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F                      \
+			-1 ../../src/filters/remove-CLB-strings.hfst        \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS)                        \
+		| $(HFST_INVERT) $(HFST_FLAGS)                          \
 		-o $@
 
-$(GT_COMMON_SPELLER_XFST): $(top_builddir)/src/$(GT_SPELLER_SRC_XFST)  \
-			$(top_builddir)/src/filters/remove-sub-forms.xfst          \
-			$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst \
-			$(top_builddir)/src/filters/remove-PUNCT-strings.xfst
+$(GT_COMMON_SPELLER_XFST): ../../src/$(GT_SPELLER_SRC_XFST)  \
+			../../src/filters/remove-sub-forms.xfst          \
+			../../src/filters/remove-MinusSpell-strings.xfst \
+			../../src/filters/remove-PUNCT-strings.xfst      \
+			../../src/filters/remove-CLB-strings.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex \
-				@\"../../src/filters/remove-sub-forms.xfst\" \
+				@\"../../src/filters/remove-sub-forms.xfst\"          \
 			.o. @\"../../src/filters/remove-MinusSpell-strings.xfst\" \
-			.o. @\"../../src/filters/remove-PUNCT-strings.xfst\" \
+			.o. @\"../../src/filters/remove-PUNCT-strings.xfst\"      \
+			.o. @\"../../src/filters/remove-CLB-strings.xfst\"        \
 			.o. @\"$<\" \
 			;\n\
 		 save stack $@\n\

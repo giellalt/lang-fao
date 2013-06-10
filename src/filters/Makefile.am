@@ -44,6 +44,7 @@ GT_FILTER_TARGETS+=\
 				   remove-ABBR-strings.hfst               \
 				   remove-illegal-derivation-strings.hfst \
 				   remove-PUNCT-strings.hfst              \
+				   remove-CLB-strings.hfst                \
 				   remove-UseCirc-strings.hfst
 endif
 
@@ -71,6 +72,7 @@ GT_FILTER_TARGETS+=\
 				   remove-ABBR-strings.xfst               \
 				   remove-illegal-derivation-strings.xfst \
 				   remove-PUNCT-strings.xfst              \
+				   remove-CLB-strings.xfst                \
 				   remove-UseCirc-strings.xfst
 endif
 

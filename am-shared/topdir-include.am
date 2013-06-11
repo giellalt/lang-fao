@@ -15,7 +15,7 @@
 #
 # Examples:
 # analyser-oahpa-gt-desc.hfst
-# generator-apert-apert-single.hfst
+# generator-apertium-apertium-norm_single.hfst
 # analyser-gt-desc.xfst
 #
 # Full details regarding transducer filenames can be found at:
@@ -55,7 +55,7 @@ noinst_DATA=$(GT_ANALYSERS_XFST) \
 # To get a transducer usable for a certain application, the raw transducer needs
 # to be filtered and manipulated to get the target tag set and surface symbols.
 # That is done in all subsequent targets, which builds on this one.
-analyser-raw-gt-desc.hfst: morphology/$(GTLANG).lexc.hfst \
+generator-raw-gt-desc.hfst: morphology/$(GTLANG).lexc.hfst \
 					 phonology/$(GTLANG)-phon.hfst
 	$(AM_V_GEN)$(HFST_COMPOSE_INTERSECT) $(HFST_FLAGS) \
 		-1 morphology/$(GTLANG).lexc.hfst \
@@ -71,7 +71,7 @@ analyser-raw-gt-desc.xfst: morphology/$(GTLANG).lexc.xfst \
 	$(AM_V_GEN)rm -f $@.script
 
 # This is the default, descriptive analyser:
-analyser-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
+analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst \
 					filters/remove-homonymy-tags.hfst \
@@ -154,7 +154,7 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 		 quit\n" | $(XFST) -q
 
 # This is the default, descriptive generating transducer.
-generator-gt-desc.tmp.hfst: analyser-raw-gt-desc.hfst \
+generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst \
 					filters/make-optional-semantic-tags.hfst \
 					filters/make-optional-transitivity-tags.hfst \
 					filters/make-optional-homonymy-tags.hfst \
@@ -239,7 +239,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
 
 # This is the normative analyser:
 # Remove sub-standard forms to get a normative transducer
-analyser-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
+analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst \
 					filters/remove-homonymy-tags.hfst \
@@ -322,7 +322,7 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 		 quit\n" | $(XFST)
 
 # This is the normative generating transducer.
-generator-gt-norm.tmp.hfst: analyser-raw-gt-desc.hfst \
+generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst \
 					filters/make-optional-semantic-tags.hfst \
 					filters/make-optional-transitivity-tags.hfst \
 					filters/make-optional-homonymy-tags.hfst \
@@ -464,7 +464,7 @@ lemmatize.default.hfst: analyser-gt-desc.hfst tagsets/lemmatize.relabel
 		-F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
 
 # morpher is a morph segmenting variant
-morpher-gt-desc.hfst: analyser-raw-gt-desc.hfst \
+morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
 					 orthography/inituppercase.hfst \
 					 orthography/spellrelax.hfst \
 					filters/remove-hyphenation-marks.hfst        \

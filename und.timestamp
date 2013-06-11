@@ -1,4 +1,10 @@
-$Rev: 77459 $
+$Rev: 77475 $
+Renamed analyser-raw-gt-desc.hfst to generator-raw-gt-desc.hfst, to make the
+behavior in hfst-lookup explicit and clear. Still, the "generator" behaves as
+the Xerox "analyser" in hfst when in comes to composition and filtering.
+Confusing, I know.
+
+r77459:
 Build the filter to remove CLB strings from speller transducers, and use it.
 
 r77449:

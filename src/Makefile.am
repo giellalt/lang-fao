@@ -13,11 +13,14 @@ GT_GENERATORS_HFST=generator-gt-desc.hfst generator-gt-norm.hfst
 GT_TRANSFORMERS_HFST=transcriptor-clock2text-desc.hfst \
 					 transcriptor-date2text-desc.hfst \
 					 transcriptor-numbers2text-desc.hfst
-#APERTIUM_ANALYSERS_HFST=analyser-apertium-desc.hfst \
-#						analyser-apertium-norm.hfst
-#APERTIUM_GENERATORS_HFST=generator-apertium-desc.hfst \
-#						generator-apertium-norm.hfst
-endif
+
+if WANT_APERTIUM
+APERTIUM_ANALYSERS_HFST=analyser-apertium-desc.hfst \
+						analyser-apertium-norm.hfst
+APERTIUM_GENERATORS_HFST=generator-apertium-desc.hfst \
+						generator-apertium-norm.hfst
+endif # WANT_APERTIUM
+endif # CAN_HFST
 
 if CAN_XFST
 GT_ANALYSERS_XFST=analyser-gt-desc.xfst analyser-gt-norm.xfst

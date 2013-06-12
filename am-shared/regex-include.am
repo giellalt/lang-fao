@@ -28,8 +28,10 @@ noinst_DATA=$(GT_REGEX_TARGETS)
 
 ####### HFST build rules: ########
 
+# By default, and for Xerox compatibility, all regexes are semicolon separated
+# (that is the '-S' flag):
 .regex.hfst:
-	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -o $@ -i $<
+	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S $< -o $@
 
 # foma needs a script to read regex file
 .regex.foma:
@@ -45,6 +47,6 @@ noinst_DATA=$(GT_REGEX_TARGETS)
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.ol
+	-rm -f *.hfst *.xfst *.txt
 
 # vim: set ft=automake:

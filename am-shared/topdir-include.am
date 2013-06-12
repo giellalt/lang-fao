@@ -28,7 +28,9 @@ if CAN_HFST
 hfstdatadir=$(datadir)/hfst/$(GTLANG)
 hfstdata_DATA=$(GT_ANALYSERS_HFST) \
 			  $(GT_GENERATORS_HFST) \
-			  $(GT_TRANSFORMERS_HFST)
+			  $(GT_TRANSFORMERS_HFST) \
+			  $(APERTIUM_ANALYSERS_HFST) \
+			  $(APERTIUM_GENERATORS_HFST)
 endif
 
 noinst_DATA=$(GT_ANALYSERS_XFST) \
@@ -448,15 +450,35 @@ transcriptor-%2text-desc.xfst: \
 		 save stack $@\n\
 		 quit\n" | $(XFST) -q
 
-# create generic tagset variants of analyzers
+# Create generic tagset variants of *analyzers*
+# Standard descriptive
 analyser-%-desc.hfst: analyser-gt-desc.hfst tagsets/%.relabel
-	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
-		-i $< -o $@
+	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+		-o $@
 
-# create tagset variants of generators
+# Standard normative
+analyser-%-norm.hfst: analyser-gt-norm.hfst tagsets/%.relabel
+	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+		-o $@
+
+# Create tagset variants of *generators*
+# Standard descriptive
 generator-%-desc.hfst: generator-gt-desc.hfst tagsets/%.relabel
-	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
-		-i $< -o $@
+	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+		-o $@
+
+# Standard normative
+generator-%-norm.hfst: generator-gt-norm.hfst tagsets/%.relabel
+	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+		-o $@
 
 # lemmatization is a special case of tagset variant
 lemmatize.default.hfst: analyser-gt-desc.hfst tagsets/lemmatize.relabel

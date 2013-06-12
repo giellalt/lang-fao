@@ -1,4 +1,9 @@
-$Rev: 77475 $
+$Rev: 77523 $
+Added support for making variant analysers and generators using the Apertium tag
+convensions. The generated transducers are still not fully Apertium-compatible
+but they are a major step forward.
+
+r77475:
 Renamed analyser-raw-gt-desc.hfst to generator-raw-gt-desc.hfst, to make the
 behavior in hfst-lookup explicit and clear. Still, the "generator" behaves as
 the Xerox "analyser" in hfst when in comes to composition and filtering.

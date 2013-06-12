@@ -165,6 +165,14 @@ AC_ARG_ENABLE([oahpa],
               [enable_oahpa=no])
 AM_CONDITIONAL([WANT_OAHPA], [test "x$enable_oahpa" != xno])
 
+# Enable Apertium transducers - default is 'no'
+AC_ARG_ENABLE([apertium],
+              [AS_HELP_STRING([--enable-apertium],
+                              [enable apertium transducers @<:@default=no@:>@])],
+              [enable_apertium=$enableval],
+              [enable_apertium=no])
+AM_CONDITIONAL([WANT_APERTIUM], [test "x$enable_apertium" != xno])
+
 # Enable Hunspell production - default is 'no'
 AC_ARG_ENABLE([hunspell],
               [AS_HELP_STRING([--enable-hunspell],
@@ -187,6 +195,7 @@ cat<<EOF
     * voikko speller support: $enable_voikko
     * generated documentation enabled: $gt_prog_docc
     * Oahpa transducers enabled: $enable_oahpa
+    * Apertium transducers enabled: $enable_apertium
 
 For more ./configure options, run ./configure --help
 

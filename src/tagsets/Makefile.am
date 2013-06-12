@@ -22,25 +22,63 @@
 
 GT_TAGSET_SRCS=
 GT_GENERATED_TAGSET_SRCS=
-#apertium.regex
-
-BUILT_SOURCES=$(GT_GENERATED_TAGSET_SRCS)
 
 ####### Automake targets: ########
 
 # The transducers we build and don't distribute depend on the configuration:
 GT_TAGSETS=
-if CAN_HFST
-#GT_TAGSETS+=apertium.hfst
-endif
 
-GT_REGEX_TARGETS=$(GT_TAGSETS)
+if CAN_HFST
+GT_TAGSETS+=
+
+if WANT_APERTIUM
+GT_GENERATED_TAGSET_SRCS+=apertium.relabel
+endif WANT_APERTIUM
+endif # CAN_HFST
+
+if CAN_XFST
+GT_TAGSETS+=
+endif # CAN_XFST
+
+GT_REGEX_TARGETS=$(GT_TAGSETS) $(GT_GENERATED_TAGSET_SRCS)
+GT_REGEX_SRCS=$(GT_TAGSET_SRCS)
 
 ####### HFST build rules: ########
 
-# Generate relabel source file for Apertium tags:
-apertium.regex: ../morphology/$(GTLANG).lexc.hfst
-	$(AM_V_GEN)$(GTCORE)/scripts/gttags2apertium.sh $< $@
+# Extract the GT tags:
+gttags.hfst.txt: ../morphology/$(GTLANG).lexc.hfst
+	$(AM_V_GEN)$(HFST_PROJECT) -p upper $< \
+		| $(HFST_MINIMIZE)     \
+		| $(HFST_SUMMARIZE) -v -s \
+		| grep -A1 'arc symbols actually seen' \
+		| grep -F '+'   \
+		| tr ' ' '\n'   \
+		| grep '\+[^,]' \
+		| tr -d ',' > $@
+
+# Convert GT-tags to Apertium-tags:
+apertiumtags.hfst.txt: gttags.hfst.txt
+	$(AM_V_GEN)tr -d '+' < $< \
+		| tr '/[:upper:]' '_[:lower:]' \
+		| awk '{print "%<"$$0"%>"}' > $@
+
+# Generate relabel file for replacing GT with Apertium tags:
+apertium.relabel: gttags.hfst.txt apertiumtags.hfst.txt
+	$(AM_V_GEN)paste $^ | tr -d '%' > $@
+
+# The regex generating rule isn't used for hfst, but the target below can be
+# a useful reference for future Xerox relabeling targets.
+## Generate regex for replacing GT with Apertium tags:
+#apertium.regex: gttags.hfst.txt apertiumtags.hfst.txt
+#	$(AM_V_GEN)paste $^ \
+#		| awk '{print $$0","}' \
+#		| sed 's/_/%_/g' \
+#		| sed 's/-/%-/g' \
+#		| sed 's/\//%\//g' \
+#		| sed '$$ s/,/;/' \
+#		| sed 's/^/%/' \
+#		| sed 's/	/ -> /g' \
+#		> $@
 
 include $(top_srcdir)/am-shared/regex-include.am
 

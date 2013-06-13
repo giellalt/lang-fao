@@ -1,4 +1,11 @@
-$Rev: 77523 $
+$Rev: 77567 $
+Cleaned up speller fst building, removing all unnecessary inverts and
+streamlining the code. Prepared for the introduction of weights, but commented
+out for now because of bugs or inefficiences in openfst. Renamed the included
+hfst speller build file, to follow an emerging naming standard for the include
+files.
+
+r77523:
 Added support for making variant analysers and generators using the Apertium tag
 convensions. The generated transducers are still not fully Apertium-compatible
 but they are a major step forward.

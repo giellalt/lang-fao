@@ -15,7 +15,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-GT_SPELLER_HFST=analyser-fstspeller-gt-norm.hfst
+GT_SPELLER_HFST=generator-fstspeller-gt-norm.hfst
 GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 
 ####### Automake targets: ########
@@ -92,10 +92,11 @@ errmodel.%.hfst: errmodel.%.regex
 
 # Build the automaton used for the speller
 $(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST)
-	$(AM_V_GEN)$(HFST_FST2FST) $(HFST_FLAGS) -f openfst-tropical -i $< \
-		| $(HFST_PROJECT) $(HFST_FLAGS) --project=upper \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+	$(AM_V_GEN)cat $< \
+		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS)                \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw          \
+		-o $@
 
 # Finally build the zhfst file, and make a copy in a subdir named '3', so that
 # we can test it without installing it (the '3' dir is a voikko requirement):

@@ -26,7 +26,7 @@ GT_COMMON_SPELLER_XFST=
 ####### Automake targets: ########
 
 if CAN_HFST
-GT_COMMON_SPELLER_HFST+=analyser-speller-gt-norm.hfst
+GT_COMMON_SPELLER_HFST+=generator-speller-gt-norm.hfst
 endif # CAN_HFST
 
 if CAN_XFST
@@ -54,7 +54,6 @@ $(GT_COMMON_SPELLER_HFST): ../../src/$(GT_SPELLER_SRC_HFST)  \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F                      \
 			-1 ../../src/filters/remove-CLB-strings.hfst        \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS)                        \
-		| $(HFST_INVERT) $(HFST_FLAGS)                          \
 		-o $@
 
 $(GT_COMMON_SPELLER_XFST): ../../src/$(GT_SPELLER_SRC_XFST)  \

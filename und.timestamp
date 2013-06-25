@@ -1,4 +1,9 @@
-$Rev: 77567 $
+$Rev: 77898 $
+Commented out examples of error models for string and word pairs - they would in
+most cases add symbols to the error model not found in the acceptor, and this
+combination would crash the speller badly.
+
+r77567:
 Cleaned up speller fst building, removing all unnecessary inverts and
 streamlining the code. Prepared for the introduction of weights, but commented
 out for now because of bugs or inefficiences in openfst. Renamed the included

@@ -1,4 +1,8 @@
-$Rev: 77898 $
+$Rev: 78059 $
+Renamed refs to template dir in preparation for support for multiple template
+dirs.
+
+r77898:
 Commented out examples of error models for string and word pairs - they would in
 most cases add symbols to the error model not found in the acceptor, and this
 combination would crash the speller badly.

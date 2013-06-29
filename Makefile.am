@@ -16,7 +16,7 @@ banner:
 	@echo
 
 if WANT_MAINTAIN
-und.timestamp: ${GTCORE}/templates/und/und.timestamp
+und.timestamp: ${GTCORE}/langs-templates/und/und.timestamp
 	@echo
 	@echo "	The build templates are newer than this language directory"
 	@echo "	To get new build rules and conventions, run: "
@@ -28,7 +28,7 @@ und.timestamp: ${GTCORE}/templates/und/und.timestamp
 	@exit 1
 else
 # leave a small note for non-maintainers...
-und.timestamp: ${GTCORE}/templates/und/und.timestamp
+und.timestamp: ${GTCORE}/langs-templates/und/und.timestamp
 	-cp -v -f $< $@
 endif
 

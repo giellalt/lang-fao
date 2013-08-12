@@ -66,7 +66,7 @@ apertiumtags.hfst.txt: gttags.hfst.txt
 # Generate relabel file for replacing GT with Apertium tags:
 apertium.relabel: gttags.hfst.txt apertiumtags.hfst.txt
 	$(AM_V_GEN)paste $^ | tr -d '%' > $@
-	echo -e "#\t+" >> $@
+	printf "#\t+\n" >> $@
 
 # The regex generating rule isn't used for hfst, but the target below can be
 # a useful reference for future Xerox relabeling targets.

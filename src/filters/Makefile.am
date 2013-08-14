@@ -37,6 +37,7 @@ GT_FILTER_TARGETS+=\
 				   remove-infl_deriv-borders.hfst         \
 				   remove-word-boundary.hfst              \
 				   remove-sub-forms.hfst                  \
+				   remove-variant-strings.hfst            \
 				   remove-NA-strings.hfst                 \
 				   remove-NG-strings.hfst                 \
 				   remove-NGminip-strings.hfst            \
@@ -65,6 +66,7 @@ GT_FILTER_TARGETS+=\
 				   remove-infl_deriv-borders.xfst         \
 				   remove-word-boundary.xfst              \
 				   remove-sub-forms.xfst                  \
+				   remove-variant-strings.xfst            \
 				   remove-NA-strings.xfst                 \
 				   remove-NG-strings.xfst                 \
 				   remove-NGminip-strings.xfst            \

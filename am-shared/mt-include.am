@@ -20,7 +20,6 @@ generator-mt-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst \
 					filters/remove-NG-strings.hfst \
 					filters/remove-usage-tags.hfst \
 					filters/remove-sub-forms.hfst \
-					filters/remove-test-tags.hfst \
 					filters/remove-hyphenation-marks.hfst        \
 					filters/remove-infl_deriv-borders.hfst       \
 					filters/remove-word-boundary.hfst
@@ -60,9 +59,6 @@ generator-mt-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-derivation-position-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-test-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		-o $@
 
 analyser-mt-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst \
@@ -72,7 +68,6 @@ analyser-mt-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst \
 					filters/remove-norm-comp-tags.hfst \
 					filters/remove-number-string-tags.hfst \
 					filters/remove-usage-tags.hfst \
-					filters/remove-test-tags.hfst \
 					filters/remove-semantic-tags-except-prop.hfst \
 					filters/remove-hyphenation-marks.hfst        \
 					filters/remove-infl_deriv-borders.hfst       \
@@ -106,9 +101,6 @@ analyser-mt-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-derivation-position-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-test-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		-o $@
 

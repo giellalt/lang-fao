@@ -83,7 +83,8 @@ if CAN_HFST
 GT_ANALYSERS_HFST+=
 GT_GENERATORS_HFST+=
 if WANT_APERTIUM
-APERTIUM_ANALYSERS_HFST+=analyser-mt-gt-desc.und.hfst
+APERTIUM_ANALYSERS_HFST+=analyser-mt-apertium-desc.und.hfst \
+						 analyser-mt-apertium-desc.und.att
 APERTIUM_GENERATORS_HFST+=
 
 endif

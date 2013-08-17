@@ -44,6 +44,7 @@ AC_PATH_PROG(HFST_CONJUNCT, hfst-conjunct, false, $PATH$PATH_SEPARATOR$with_hfst
 AC_PATH_PROG(HFST_DETERMINIZE, hfst-determinize, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_DISJUNCT, hfst-disjunct, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_FST2FST, hfst-fst2fst, false, $PATH$PATH_SEPARATOR$with_hfst)
+AC_PATH_PROG(HFST_FST2TXT, hfst-fst2txt, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_INVERT, hfst-invert, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_LEXC, hfst-lexc, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_LOOKUP, hfst-lookup, false, $PATH$PATH_SEPARATOR$with_hfst)

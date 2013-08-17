@@ -1,4 +1,19 @@
-$Rev: 79152 $
+$Rev: 79327 $
+Added missing check and variable definition for hfst-fst2txt. Several minor
+changes to the apertium build instructions.
+
+r79316:
+Added missing reference to the remove-semantic-tags-except-prop filter.
+
+r79315:
+One small change forgotten in the previous commit: comments and one less target
+in the default setup (more to be added on a per-language base).
+
+r79308:
+Moved MT/Apertium code to the und template from sma. Not tested, most likely
+buggy.
+
+r79152:
 Added remove-variant-string.regex, for removing strings containing +v2,
 +v3, +v4, +v5, but not removing +v1.
 

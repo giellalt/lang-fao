@@ -517,6 +517,7 @@ morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
 clean-local:
 	-rm -f *.hfst *.xfst
 
+include $(top_srcdir)/am-shared/mt-include.am
 include $(top_srcdir)/am-shared/oahpa-include.am
 include $(top_srcdir)/am-shared/dictionary-include.am
 

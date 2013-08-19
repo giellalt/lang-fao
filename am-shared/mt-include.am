@@ -116,9 +116,12 @@ analyser-mt-apertium-desc.%.hfst: \
 			$(srcdir)/tagsets/apertium.relabel
 	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
 		-F $(srcdir)/tagsets/apertium.relabel \
-		| $(HFST_FST2FST) $(HFSTFLAGS) -f olw \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
 		-o $@
 
 %.att: %.hfst
 	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -w -i $< \
 		| $(HFST_FST2TXT) -o $@
+
+%.att.gz: %.att
+	$(AM_V_GEN)$(GZIP) -9 -c $< > $@

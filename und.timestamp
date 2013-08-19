@@ -1,4 +1,12 @@
-$Rev: 79373 $
+$Rev: 79408 $
+Still one more case of optimised lookup format removed. The underlying problem
+remains, though: that the hfst tools can't take all produced formats as input.
+Also added gzip compression of the att file transferred to Apertium.
+
+r79402:
+Another bugfix: switched from -f owl to -t in another case, to avoid hfst crash.
+
+r79373:
 Bugfix: hfst-substitute can't take lookup-optimised fst's as input.
 
 r79338:

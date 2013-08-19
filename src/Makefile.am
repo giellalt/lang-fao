@@ -20,7 +20,7 @@ if WANT_APERTIUM
 APERTIUM_ANALYSERS_HFST=analyser-mt-gt-desc.hfst
 APERTIUM_GENERATORS_HFST=generator-mt-gt-norm.hfst \
 						generator-mt-apertium-norm.hfst \
-						generator-mt-apertium-norm.att
+						generator-mt-apertium-norm.att.gz
 endif # WANT_APERTIUM
 endif # CAN_HFST
 
@@ -84,7 +84,7 @@ GT_ANALYSERS_HFST+=
 GT_GENERATORS_HFST+=
 if WANT_APERTIUM
 APERTIUM_ANALYSERS_HFST+=analyser-mt-apertium-desc.und.hfst \
-						 analyser-mt-apertium-desc.und.att
+						 analyser-mt-apertium-desc.und.att.gz
 APERTIUM_GENERATORS_HFST+=
 
 endif
@@ -111,7 +111,7 @@ analyser%.hfst: analyser%.tmp.hfst
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 generator%.hfst: generator%.tmp.hfst
-	$(AM_V_GEN)$(HFST_FST2FST) $(HFST_FLAGS) -f olw -i $< -o $@
+	$(AM_V_GEN)$(HFST_FST2FST) $(HFST_FLAGS) -t -i $< -o $@
 
 #### Xerox transducer fallback target:
 %.xfst: %.tmp.xfst

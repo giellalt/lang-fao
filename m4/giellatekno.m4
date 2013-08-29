@@ -138,6 +138,14 @@ AC_ARG_ENABLE([voikko],
               [enable_voikko=yes])
 AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_spellerautomat" != xno])
 
+# Enable dictionary transducers - default is 'no'
+AC_ARG_ENABLE([dicts],
+              [AS_HELP_STRING([--enable-dicts],
+                              [enable dictionary transducers @<:@default=no@:>@])],
+              [enable_dicts=$enableval],
+              [enable_dicts=no])
+AM_CONDITIONAL([WANT_DICTIONARIES], [test "x$enable_dicts" != xno])
+
 AS_IF([test "x$enable_voikko" = "xyes" -a "x$gt_prog_hfst" != xno], 
       [AC_PATH_PROG([ZIP], [zip], [false])
        AS_IF([test "x$ZIP" = "xfalse"],
@@ -190,6 +198,7 @@ cat<<EOF
     * build with HFST: $gt_prog_hfst
     * analysers enabled: $enable_morphology
     * generators enabled: $enable_generation
+    * dictionary fst's enabled: $enable_generation
     * yaml tests enabled: $enable_yamltests
     * foma speller support: $enable_fomaspeller
     * voikko speller support: $enable_voikko

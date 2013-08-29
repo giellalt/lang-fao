@@ -1,4 +1,9 @@
-$Rev: 79408 $
+$Rev: 79929 $
+Reorganised the build code for dictionaries, added a dictionary option for
+configure (disabled by default), and added the new filter for mobile keyboard
+spellrelax.
+
+r79408:
 Still one more case of optimised lookup format removed. The underlying problem
 remains, though: that the hfst tools can't take all produced formats as input.
 Also added gzip compression of the att file transferred to Apertium.

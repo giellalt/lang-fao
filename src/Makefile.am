@@ -30,7 +30,14 @@ GT_GENERATORS_XFST=generator-gt-desc.xfst generator-gt-norm.xfst
 GT_TRANSFORMERS_XFST=transcriptor-clock2text-desc.xfst \
 					 transcriptor-date2text-desc.xfst \
 					 transcriptor-numbers2text-desc.xfst
-endif
+
+if WANT_DICTIONARIES
+GT_ANALYSERS_XFST+=analyser-dict-gt-desc.xfst \
+					analyser-dict-gt-norm.xfst
+GT_GENERATORS_XFST+=generator-dict-gt-norm.xfst \
+					generator-dict-gt-desc.xfst
+endif # WANT_DICTIONARIES
+endif # CAN_XFST
 
 if WANT_OAHPA
 if CAN_HFST
@@ -74,8 +81,6 @@ endif # WANT_OAHPA
 
 #### Xerox transducers:
 if CAN_XFST
-GT_ANALYSERS_XFST+=analyser-dict-gt-desc.xfst analyser-dict-gt-norm.xfst
-GT_GENERATORS_XFST+=generator-dict-gt-norm.xfst generator-dict-gt-desc.xfst
 endif
 
 #### HFST transducers

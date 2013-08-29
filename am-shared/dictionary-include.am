@@ -15,7 +15,8 @@ analyser-dict-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst        \
 					filters/remove-infl_deriv-borders.xfst       \
 					filters/remove-word-boundary.xfst            \
 					orthography/inituppercase.xfst               \
-					orthography/spellrelax.xfst
+					orthography/spellrelax.xfst                  \
+					orthography/spellrelax-mobile-keyboard.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
@@ -27,33 +28,36 @@ analyser-dict-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst        \
 			.o. @\"filters/remove-word-boundary.xfst\"            \
 			.o. @\"orthography/inituppercase.xfst\"               \
 			.o. @\"orthography/spellrelax.xfst\"                  \
+			.o. @\"orthography/spellrelax-mobile-keyboard.xfst\"  \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) -q
 
 # We also want the corresponding generator, so that we can easily add yaml tests
 # to the lexc files (yaml tests always go in symmetric analyser-generator pairs)
-generator-dict-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst \
+generator-dict-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst       \
 					filters/remove-derivation-position-tags.xfst \
-					filters/remove-dialect-tags.xfst \
-					filters/remove-norm-comp-tags.xfst \
-					filters/remove-usage-tags.xfst \
+					filters/remove-dialect-tags.xfst             \
+					filters/remove-norm-comp-tags.xfst           \
+					filters/remove-usage-tags.xfst               \
 					filters/remove-hyphenation-marks.xfst        \
 					filters/remove-infl_deriv-borders.xfst       \
 					filters/remove-word-boundary.xfst            \
-					orthography/inituppercase.xfst \
-					orthography/spellrelax.xfst
+					orthography/inituppercase.xfst               \
+					orthography/spellrelax.xfst                  \
+					orthography/spellrelax-mobile-keyboard.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
-			.o. @\"filters/remove-dialect-tags.xfst\" \
-			.o. @\"filters/remove-norm-comp-tags.xfst\" \
-			.o. @\"filters/remove-usage-tags.xfst\" \
+			.o. @\"filters/remove-dialect-tags.xfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
+			.o. @\"filters/remove-usage-tags.xfst\"               \
 			.o. @\"$<\" \
 			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
 			.o. @\"filters/remove-word-boundary.xfst\"            \
-			.o. @\"orthography/inituppercase.xfst\" \
-			.o. @\"orthography/spellrelax.xfst\" \
+			.o. @\"orthography/inituppercase.xfst\"               \
+			.o. @\"orthography/spellrelax.xfst\"                  \
+			.o. @\"orthography/spellrelax-mobile-keyboard.xfst\"  \
 			;\n\
 		 invert net\n\
 		 save stack $@\n\

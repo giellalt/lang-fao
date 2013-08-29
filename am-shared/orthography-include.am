@@ -17,21 +17,12 @@
 
 ####### Source file defs: ########
 
-#! @var GT_UPPERCASING names of uppercasing rule source files, should be one of:
+#! @var GT_ORTHOGRAPHIC_SRCS names of orthographic rule source files, should
+#! be one of:
 #!		xfst, regex or twolc files
-EXTRA_DIST=$(GT_UPPERCASING)
+EXTRA_DIST=$(GT_ORTHOGRAPHIC_SRCS)
 
-####### Automake targets: ########
-
-GT_UPPERCASE_FSTS=
-if CAN_HFST
-GT_UPPERCASE_FSTS+=allcaps.hfst inituppercase.hfst spellrelax.hfst
-endif
-if CAN_XFST
-GT_UPPERCASE_FSTS+=allcaps.xfst inituppercase.xfst spellrelax.xfst
-endif
-
-noinst_DATA=$(GT_UPPERCASE_FSTS)
+noinst_DATA=$(GT_ORTHOGRAPHIC_FSTS)
 
 ####### HFST build rules: ########
 

@@ -198,7 +198,7 @@ cat<<EOF
     * build with HFST: $gt_prog_hfst
     * analysers enabled: $enable_morphology
     * generators enabled: $enable_generation
-    * dictionary fst's enabled: $enable_generation
+    * dictionary fst's enabled: $enable_dicts
     * yaml tests enabled: $enable_yamltests
     * foma speller support: $enable_fomaspeller
     * voikko speller support: $enable_voikko

@@ -34,6 +34,7 @@ GT_FILTER_TARGETS+=\
 				   remove-norm-comp-tags.hfst             \
 				   remove-number-string-tags.hfst         \
 				   remove-usage-tags.hfst                 \
+				   remove-orthography-tags.hfst           \
 				   remove-hyphenation-marks.hfst          \
 				   remove-infl_deriv-borders.hfst         \
 				   remove-word-boundary.hfst              \
@@ -47,7 +48,9 @@ GT_FILTER_TARGETS+=\
 				   remove-illegal-derivation-strings.hfst \
 				   remove-PUNCT-strings.hfst              \
 				   remove-CLB-strings.hfst                \
-				   remove-UseCirc-strings.hfst
+				   remove-UseCirc-strings.hfst            \
+				   remove-Orth_IPA-strings.hfst           \
+				   remove-Orth_Strd-strings.hfst
 endif
 
 if CAN_XFST
@@ -64,6 +67,7 @@ GT_FILTER_TARGETS+=\
 				   remove-norm-comp-tags.xfst             \
 				   remove-number-string-tags.xfst         \
 				   remove-usage-tags.xfst                 \
+				   remove-orthography-tags.xfst           \
 				   remove-hyphenation-marks.xfst          \
 				   remove-infl_deriv-borders.xfst         \
 				   remove-word-boundary.xfst              \
@@ -77,7 +81,9 @@ GT_FILTER_TARGETS+=\
 				   remove-illegal-derivation-strings.xfst \
 				   remove-PUNCT-strings.xfst              \
 				   remove-CLB-strings.xfst                \
-				   remove-UseCirc-strings.xfst
+				   remove-UseCirc-strings.xfst            \
+				   remove-Orth_IPA-strings.xfst           \
+				   remove-Orth_Strd-strings.xfst
 endif
 
 # Add the target of local additions here:

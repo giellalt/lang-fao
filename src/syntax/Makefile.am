@@ -9,6 +9,6 @@ GT_DEPENDENCY=dependency.cg3
 GT_DISAMBIGUATION=disambiguation.cg3
 
 # set this to names of cg3 binaries 
-GT_CG_TARGETS=disambiguation.bin
+GT_CG_TARGETS=disambiguation.bin dependency.bin
 
 include $(top_srcdir)/am-shared/syntax-include.am

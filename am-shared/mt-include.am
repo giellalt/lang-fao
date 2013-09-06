@@ -22,6 +22,8 @@ generator-mt-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst \
 					filters/remove-sub-forms.hfst \
 					filters/remove-hyphenation-marks.hfst        \
 					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-orthography-tags.hfst         \
+					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-word-boundary.hfst
 	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
 			-2 filters/remove-hyphenation-marks.hfst \
@@ -31,6 +33,12 @@ generator-mt-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-2 filters/remove-word-boundary.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-Orth_IPA-strings.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-orthography-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/make-optional-semantic-tags.hfst \
@@ -71,6 +79,8 @@ analyser-mt-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst \
 					filters/remove-semantic-tags-except-prop.hfst \
 					filters/remove-hyphenation-marks.hfst        \
 					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-orthography-tags.hfst         \
+					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-word-boundary.hfst
 	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
 			-2 filters/remove-hyphenation-marks.hfst \
@@ -80,6 +90,12 @@ analyser-mt-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-2 filters/remove-word-boundary.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-Orth_IPA-strings.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-1 filters/remove-orthography-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-1 filters/remove-usage-tags.hfst \

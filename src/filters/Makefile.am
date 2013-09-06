@@ -45,6 +45,7 @@ GT_FILTER_TARGETS+=\
 				   remove-NGminip-strings.hfst            \
 				   remove-MinusSpell-strings.hfst         \
 				   remove-ABBR-strings.hfst               \
+				   remove-ACR-strings.hfst                \
 				   remove-illegal-derivation-strings.hfst \
 				   remove-PUNCT-strings.hfst              \
 				   remove-CLB-strings.hfst                \
@@ -78,6 +79,7 @@ GT_FILTER_TARGETS+=\
 				   remove-NGminip-strings.xfst            \
 				   remove-MinusSpell-strings.xfst         \
 				   remove-ABBR-strings.xfst               \
+				   remove-ACR-strings.xfst                \
 				   remove-illegal-derivation-strings.xfst \
 				   remove-PUNCT-strings.xfst              \
 				   remove-CLB-strings.xfst                \

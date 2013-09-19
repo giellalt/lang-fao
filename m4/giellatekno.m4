@@ -76,9 +76,9 @@ AC_DEFUN([gt_PROG_VISLCG3],
             [with_vislcg3=check])
 AC_PATH_PROG([VISLCG3_COMP], [cg-comp], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 AC_MSG_CHECKING([whether we can enable vislcg3 building])
-AM_CONDITIONAL([CAN_VISLCG], [test "x$VISLCG3_COMP" != xno])
 AS_IF([test "x$VISLCG3" != xno], [AC_MSG_RESULT([yes])],
       [AC_MSG_RESULT([no])])
+AM_CONDITIONAL([CAN_VISLCG], [test "x$VISLCG3_COMP" != xno])
 ]) # gt_PROG_VISLCG3
 
 AC_DEFUN([gt_PROG_SAXON],
@@ -173,6 +173,14 @@ AC_ARG_ENABLE([oahpa],
               [enable_oahpa=no])
 AM_CONDITIONAL([WANT_OAHPA], [test "x$enable_oahpa" != xno])
 
+# Enable IPA conversion - default is 'no'
+AC_ARG_ENABLE([phonetic],
+              [AS_HELP_STRING([--enable-phonetic],
+                              [enable phonetic transducers @<:@default=no@:>@])],
+              [enable_phonetic=$enableval],
+              [enable_phonetic=no])
+AM_CONDITIONAL([WANT_PHONETIC], [test "x$enable_phonetic" != xno])
+
 # Enable Apertium transducers - default is 'no'
 AC_ARG_ENABLE([apertium],
               [AS_HELP_STRING([--enable-apertium],
@@ -203,6 +211,7 @@ cat<<EOF
     * foma speller support: $enable_fomaspeller
     * voikko speller support: $enable_voikko
     * generated documentation enabled: $gt_prog_docc
+    * phonetic/IPA conversion enabled: $enable_phonetic
     * Oahpa transducers enabled: $enable_oahpa
     * Apertium transducers enabled: $enable_apertium
 

@@ -29,18 +29,12 @@ GT_TRANSCRIPTORS=
 if CAN_HFST
 GT_TRANSCRIPTORS+=transcriptor-clock2text-raw.hfst \
 				  transcriptor-date2text-raw.hfst \
-				  transcriptor-numbers2text-raw.hfst \
-				  transcriptor-text2clock-raw.hfst \
-				  transcriptor-text2date-raw.hfst \
-				  transcriptor-text2numbers-raw.hfst
+				  transcriptor-numbers2text-raw.hfst
 endif
 if CAN_XFST
 GT_TRANSCRIPTORS+=transcriptor-clock2text-raw.xfst \
 				  transcriptor-date2text-raw.xfst \
-				  transcriptor-numbers2text-raw.xfst \
-				  transcriptor-text2clock-raw.xfst \
-				  transcriptor-text2date-raw.xfst \
-				  transcriptor-text2numbers-raw.xfst
+				  transcriptor-numbers2text-raw.xfst
 endif
 noinst_DATA=$(GT_TRANSCRIPTORS)
 
@@ -53,24 +47,11 @@ transcriptor-%2text-raw.hfst: %.lexc
 	$(AM_V_GEN)$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
 	$(AM_V_GEN)rm -f $@.foma
 
-transcriptor-text2%-raw.hfst: %.lexc
-	$(AM_V_GEN)$(HFST_LEXC) -f foma -o $@.foma $^
-	$(AM_V_GEN)$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@.tmp
-	$(AM_V_GEN)$(HFST_INVERT) -i $@.tmp -o $@
-	$(AM_V_GEN)rm -f $@.foma $@.tmp
-
 ####### Xerox build rules: #######
 
 transcriptor-%2text-raw.xfst: %.lexc
 	$(AM_V_GEN)$(PRINTF) \
 		"compile-source $^\nsave-source $@\nquit\n" \
-		> $@.script
-	$(AM_V_GEN)$(LEXC) < $@.script
-	$(AM_V_GEN)rm -f $@.script
-
-transcriptor-text2%-raw.xfst: %.lexc
-	$(AM_V_GEN)$(PRINTF) \
-		"compile-source $^\ninvert-source\nsave-source $@\nquit\n" \
 		> $@.script
 	$(AM_V_GEN)$(LEXC) < $@.script
 	$(AM_V_GEN)rm -f $@.script

@@ -63,14 +63,14 @@ transcriptor-text2%-raw.hfst: %.lexc
 
 transcriptor-%2text-raw.xfst: %.lexc
 	$(AM_V_GEN)$(PRINTF) \
-		"compile-source $^\nsource-to-result\nsave-source $@\nquit\n" \
+		"compile-source $^\nsave-source $@\nquit\n" \
 		> $@.script
 	$(AM_V_GEN)$(LEXC) < $@.script
 	$(AM_V_GEN)rm -f $@.script
 
 transcriptor-text2%-raw.xfst: %.lexc
 	$(AM_V_GEN)$(PRINTF) \
-		"compile-source $^\nsource-to-result\ninvert net\nsave-source $@\nquit\n" \
+		"compile-source $^\ninvert-source\nsave-source $@\nquit\n" \
 		> $@.script
 	$(AM_V_GEN)$(LEXC) < $@.script
 	$(AM_V_GEN)rm -f $@.script

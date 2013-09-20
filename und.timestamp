@@ -1,4 +1,9 @@
-$Rev: 81065 $
+$Rev: 81078 $
+Completely redid the text2num etc transducers. The previous solution was in the
+wrong place, and didn't incorporate the actual filtering. Now it does, but
+whether this is the way it should be needs to be tested.
+
+r81065
 Another Xerox error correction - we're using LexC, not Xfst. Skipped the result
 stack - not needed.
 

@@ -461,7 +461,7 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST)
 
-# The number-clock-date2text conversion transducers:
+# The number-clock-date2text & inverse conversion transducers:
 transcriptor-%2text-desc.hfst: \
 					transcriptions/transcriptor-%2text-raw.hfst \
 					filters/remove-NA-strings.hfst \
@@ -483,6 +483,25 @@ transcriptor-%2text-desc.hfst: \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw \
 		-o $@
 
+transcriptor-text2%-desc.hfst: \
+					transcriptions/transcriptor-%2text-raw.hfst \
+					filters/remove-usage-tags.hfst \
+					orthography/spellrelax.hfst
+	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
+			-2 filters/remove-usage-tags.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_INVERT) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-usage-tags.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 orthography/spellrelax.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_INVERT) \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw \
+		-o $@
+
+
 transcriptor-%2text-desc.xfst: \
 					transcriptions/transcriptor-%2text-raw.xfst \
 					filters/remove-NA-strings.xfst \
@@ -495,6 +514,20 @@ transcriptor-%2text-desc.xfst: \
 			.o. @\"$<\" \
 			.o. @\"filters/remove-usage-tags.xfst\".i \
 			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) -q
+
+transcriptor-text2%-desc.xfst: \
+					transcriptions/transcriptor-%2text-raw.xfst \
+					filters/remove-usage-tags.xfst \
+					orthography/spellrelax.xfst
+	$(AM_V_GEN)$(PRINTF) "read regex \
+			    @\"filters/remove-usage-tags.xfst\" \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-usage-tags.xfst\".i \
+			.o. @\"orthography/spellrelax.xfst\" \
+			;\n\
+		 invert net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) -q
 

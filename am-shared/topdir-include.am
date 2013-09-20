@@ -468,13 +468,13 @@ transcriptor-%2text-desc.hfst: \
 					filters/remove-NG-strings.hfst \
 					filters/remove-usage-tags.hfst
 	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-usage-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-2 filters/remove-NA-strings.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-2 filters/remove-NG-strings.hfst \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 filters/remove-usage-tags.hfst \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		| $(HFST_INVERT) \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
@@ -508,9 +508,9 @@ transcriptor-%2text-desc.xfst: \
 					filters/remove-NG-strings.xfst \
 					filters/remove-usage-tags.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex \
-				@\"filters/remove-NA-strings.xfst\" \
+			    @\"filters/remove-usage-tags.xfst\" \
+			.o. @\"filters/remove-NA-strings.xfst\" \
 			.o. @\"filters/remove-NG-strings.xfst\" \
-			.o. @\"filters/remove-usage-tags.xfst\" \
 			.o. @\"$<\" \
 			.o. @\"filters/remove-usage-tags.xfst\".i \
 			;\n\

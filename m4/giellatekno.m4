@@ -129,6 +129,14 @@ AC_ARG_ENABLE([generation],
               [enable_generation=yes])
 AM_CONDITIONAL([WANT_GENERATION], [test "x$enable_generation" != xno])
 
+# Enable all spellers - default is 'no'
+AC_ARG_ENABLE([spellers],
+              [AS_HELP_STRING([--enable-spellers],
+                              [build any/all spellers @<:@default=no@:>@])],
+              [enable_spellers=$enableval],
+              [enable_spellers=no])
+AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
+
 # Enable hfst speller transducers - default is 'no'
 AC_ARG_ENABLE([spellerautomat],
               [AS_HELP_STRING([--enable-spellerautomat],
@@ -143,8 +151,29 @@ AC_ARG_ENABLE([voikko],
                               [build voikko support @<:@default=yes@:>@])],
               [enable_voikko=$enableval],
               [enable_voikko=yes])
-AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_spellerautomat" != xno
-                                -a  "x$enable_voikko"         != xno ])
+AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_spellerautomat" = xyes \
+                                -a  "x$enable_voikko"         = xyes ])
+
+# Enable Foma-based spellers, requires gzip - default is no
+AC_ARG_ENABLE([fomaspeller],
+              [AS_HELP_STRING([--enable-fomaspeller],
+                              [build support for foma speller @<:@default=no@:>@])],
+              [enable_fomaspeller=$enableval],
+              [enable_fomaspeller=no])
+AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno], 
+      [AC_PATH_PROG([GZIP], [gzip], [false])
+       AS_IF([test "x$GZIP" = "xfalse"],
+             [enable_fomaspeller=no
+              AC_MSG_WARN([gzip missing, foma spellers disabled])])])
+AM_CONDITIONAL([CAN_FOMA_SPELLER], [test "x$enable_fomaspeller" != xno])
+
+# Enable Hunspell production - default is 'no'
+AC_ARG_ENABLE([hunspell],
+              [AS_HELP_STRING([--enable-hunspell],
+                              [enable hunspell building @<:@default=no@:>@])],
+              [enable_hunspell=$enableval],
+              [enable_hunspell=no])
+AM_CONDITIONAL([WANT_HUNSPELL], [test "x$enable_hunspell" != xno])
 
 # Enable dictionary transducers - default is 'no'
 AC_ARG_ENABLE([dicts],
@@ -159,19 +188,6 @@ AS_IF([test "x$enable_voikko" = "xyes" -a "x$gt_prog_hfst" != xno],
        AS_IF([test "x$ZIP" = "xfalse"],
              [enable_voikko=no
               AC_MSG_WARN([zip missing, hfst spellers disabled])])])
-
-# Enable Foma-based spellers, requires gzip - default is no
-AC_ARG_ENABLE([fomaspeller],
-              [AS_HELP_STRING([--enable-fomaspeller],
-                              [build support for foma speller @<:@default=no@:>@])],
-              [enable_fomaspeller=$enableval],
-              [enable_fomaspeller=no])
-AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno], 
-      [AC_PATH_PROG([GZIP], [gzip], [false])
-       AS_IF([test "x$GZIP" = "xfalse"],
-             [enable_fomaspeller=no
-              AC_MSG_WARN([gzip missing, foma spellers disabled])])])
-AM_CONDITIONAL([CAN_FOMA_SPELLER], [test "x$enable_fomaspeller" != xno])
 
 # Enable Oahpa transducers - default is 'no'
 AC_ARG_ENABLE([oahpa],
@@ -197,29 +213,30 @@ AC_ARG_ENABLE([apertium],
               [enable_apertium=no])
 AM_CONDITIONAL([WANT_APERTIUM], [test "x$enable_apertium" != xno])
 
-# Enable Hunspell production - default is 'no'
-AC_ARG_ENABLE([hunspell],
-              [AS_HELP_STRING([--enable-hunspell],
-                              [enable hunspell building @<:@default=no@:>@])],
-              [enable_hunspell=$enableval],
-              [enable_hunspell=no])
-AM_CONDITIONAL([WANT_HUNSPELL], [test "x$enable_hunspell" != xno])
 ]) # gt_ENABLE_TARGETS
 
 AC_DEFUN([gt_PRINT_FOOTER],
 [
 cat<<EOF
 -- Building $PACKAGE_STRING:
+
+    -- basic package (on by default except hfst): --
     * build with Xerox: $gt_prog_xfst
     * build with HFST: $gt_prog_hfst
     * analysers enabled: $enable_morphology
     * generators enabled: $enable_generation
-    * dictionary fst's enabled: $enable_dicts
     * yaml tests enabled: $enable_yamltests
-    * foma speller support: $enable_fomaspeller
-    * voikko speller support: $enable_voikko
     * generated documentation enabled: $gt_prog_docc
+
+    -- proofing tools (off by default): --
+    * spellers enabled: $enable_spellers
+      * hfst speller fst's enabled: $enable_spellerautomat
+      * voikko speller enabled: $enable_voikko
+      * foma speller enabled: $enable_fomaspeller
+
+    -- specialised fst's (off by default): --
     * phonetic/IPA conversion enabled: $enable_phonetic
+    * dictionary fst's enabled: $enable_dicts
     * Oahpa transducers enabled: $enable_oahpa
     * Apertium transducers enabled: $enable_apertium
 

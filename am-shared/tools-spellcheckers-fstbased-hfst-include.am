@@ -21,6 +21,7 @@ GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 ####### Automake targets: ########
 
 GT_ERRMODELS=
+if WANT_SPELLERS
 if CAN_HFST
 #GT_ERRMODELS+=errmodel.edit-distance-1.hfst
 
@@ -45,6 +46,7 @@ voikkosharedir=$(libdir)/voikko/3/
 voikkoshare_DATA=$(GT_SPELLING_HFST)
 endif # WANT_VOIKKO
 endif # CAN_HFST
+endif # WANT_SPELLERS
 
 noinst_DATA=$(GT_ERRMODELS)
 

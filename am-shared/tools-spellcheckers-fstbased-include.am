@@ -20,9 +20,11 @@ GT_COMMON_FSTSPELLER_HFST=
 
 ####### Automake targets: ########
 
+if WANT_SPELLERS
 if CAN_HFST
 GT_COMMON_FSTSPELLER_HFST+=generator-fstspeller-gt-norm.hfst
 endif # CAN_HFST
+endif # WANT_SPELLERS
 
 noinst_DATA=$(GT_COMMON_FSTSPELLER_HFST)
 

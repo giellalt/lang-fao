@@ -116,7 +116,7 @@ AC_DEFUN([gt_ENABLE_TARGETS],
 # Enable morphological analysers - default is 'yes'
 AC_ARG_ENABLE([morphology],
               [AS_HELP_STRING([--enable-morphology],
-                              [build morphological analyser @<:@default=yes@:>@])],
+                              [build morphological analysers @<:@default=yes@:>@])],
               [enable_morphology=$enableval],
               [enable_morphology=yes])
 AM_CONDITIONAL([WANT_MORPHOLOGY], [test "x$enable_morphology" != xno])
@@ -124,7 +124,7 @@ AM_CONDITIONAL([WANT_MORPHOLOGY], [test "x$enable_morphology" != xno])
 # Enable morphological generators - default is 'yes'
 AC_ARG_ENABLE([generation],
               [AS_HELP_STRING([--enable-generation],
-                              [build morphological generator @<:@default=yes@:>@])],
+                              [build morphological generators @<:@default=yes@:>@])],
               [enable_generation=$enableval],
               [enable_generation=yes])
 AM_CONDITIONAL([WANT_GENERATION], [test "x$enable_generation" != xno])
@@ -140,24 +140,25 @@ AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
 # Enable hfst speller transducers - default is 'no'
 AC_ARG_ENABLE([spellerautomat],
               [AS_HELP_STRING([--enable-spellerautomat],
-                              [build speller automaton @<:@default=no@:>@])],
+                              [build speller hfst (dependent on --enable-spellers) @<:@default=yes@:>@])],
               [enable_spellerautomat=$enableval],
-              [enable_spellerautomat=no])
+              [enable_spellerautomat=yes])
+AS_IF([test "x$enable_spellers" = xno], [enable_spellerautomat=no])
 AM_CONDITIONAL([WANT_SPELLERAUTOMAT], [test "x$enable_spellerautomat" != xno])
 
 # Enable voikko - default is 'yes', but only if the speller automate is enabled
 AC_ARG_ENABLE([voikko],
               [AS_HELP_STRING([--enable-voikko],
-                              [build voikko support @<:@default=yes@:>@])],
+                              [build voikko speller (dependent on --enable-spellers) @<:@default=yes@:>@])],
               [enable_voikko=$enableval],
               [enable_voikko=yes])
-AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_spellerautomat" = xyes \
-                                -a  "x$enable_voikko"         = xyes ])
+AS_IF([test "x$enable_spellerautomat" = xno], [enable_voikko=no])
+AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_voikko" != xno ])
 
 # Enable Foma-based spellers, requires gzip - default is no
 AC_ARG_ENABLE([fomaspeller],
               [AS_HELP_STRING([--enable-fomaspeller],
-                              [build support for foma speller @<:@default=no@:>@])],
+                              [build foma speller (dependent on --enable-spellers) @<:@default=no@:>@])],
               [enable_fomaspeller=$enableval],
               [enable_fomaspeller=no])
 AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno], 
@@ -187,7 +188,7 @@ AS_IF([test "x$enable_voikko" = "xyes" -a "x$gt_prog_hfst" != xno],
       [AC_PATH_PROG([ZIP], [zip], [false])
        AS_IF([test "x$ZIP" = "xfalse"],
              [enable_voikko=no
-              AC_MSG_WARN([zip missing, hfst spellers disabled])])])
+              AC_MSG_WARN([zip missing, voikko spellers disabled])])])
 
 # Enable Oahpa transducers - default is 'no'
 AC_ARG_ENABLE([oahpa],

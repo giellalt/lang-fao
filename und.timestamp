@@ -1,4 +1,10 @@
-$Rev: 81095 $
+$Rev: 81544 $
+Changed the default setup to only include morphological analysis and generation.
+This is done to reduce the build time during regular development. This means
+that to build spellers and other specialised fst's, the must now be enabled
+using ./configure. Cf. bugzilla #1710.
+
+r81095:
 Corrected filter order for the text2X transcriptors.
 
 r81078:

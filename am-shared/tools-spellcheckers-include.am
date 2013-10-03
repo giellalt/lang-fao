@@ -24,6 +24,7 @@ GT_SPELLER_SRC_XFST=analyser-raw-gt-desc.xfst
 GT_COMMON_SPELLER_XFST=
 
 ####### Automake targets: ########
+if WANT_SPELLERS
 
 if CAN_HFST
 GT_COMMON_SPELLER_HFST+=generator-speller-gt-norm.hfst
@@ -32,6 +33,8 @@ endif # CAN_HFST
 if CAN_XFST
 GT_COMMON_SPELLER_XFST+=analyser-speller-gt-norm.xfst
 endif # CAN_XFST
+
+endif # WANT_SPELLERS
 
 noinst_DATA=$(GT_COMMON_SPELLER_HFST) $(GT_COMMON_SPELLER_XFST)
 

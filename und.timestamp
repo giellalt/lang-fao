@@ -1,4 +1,11 @@
-$Rev: 81544 $
+$Rev: 81556 $
+Corrected syntax error in a test. Improved config feedback further.
+
+r81551:
+Now all speller fst's are turned off by default (I missed a few in the previous
+commit). The configure feedback is slightly improved.
+
+r81544:
 Changed the default setup to only include morphological analysis and generation.
 This is done to reduce the build time during regular development. This means
 that to build spellers and other specialised fst's, the must now be enabled

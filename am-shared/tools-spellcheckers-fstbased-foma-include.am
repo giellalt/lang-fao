@@ -20,12 +20,14 @@ GT_FOMA_ACCEPTOR=acceptor-$(GTLANG).foma
 
 ####### Automake targets: ########
 
+if WANT_SPELLERS
 if CAN_HFST
 if CAN_FOMA_SPELLER
 hfstdatadir=$(datadir)/hfst/$(GTLANG)
 hfstdata_DATA=$(GT_FOMA_ACCEPTOR)
 endif #CAN_FOMA_SPELLER
 endif # CAN_HFST
+endif # WANT_SPELLERS
 
 ####### HFST build rules: ########
 

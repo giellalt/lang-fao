@@ -1,5 +1,11 @@
-$Rev: 81579 $
-Added compilation of the remove-orig_lang-tags filter.
+$Rev: 81588 $
+Remove copying of the timestamp file for non-maintainers. It breaks the
+automatic merge, and requires a revision-explicit merge for each such language.
+Also added removal of originating language tags - they are only used in TTS.
+
+r81579:
+Added compilation of the remove-orig_lang-tags filter. Sorted the filter
+targets.
 
 r81562:
 Improved and corrected configure feedback for spellers.

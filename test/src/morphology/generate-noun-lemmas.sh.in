@@ -38,6 +38,9 @@ if [ -z $fsttype ]; then
     exit 77
 fi
 
+# Get external Mac editor for viewing failed results from configure:
+EXTEDITOR=@SEE@
+
 ###### Extraction: #######
 ${GTCORE}/scripts/extract-lemmas.sh \
 	$sourcefile "(CmpN/Last)" > $lemmas
@@ -65,7 +68,10 @@ for f in $fsttype; do
 		fgrep '?' $generatedlemmas.$f.txt > $failedlemmas.$f.txt
 		if [ $(wc -l $failedlemmas.$f.txt | tr -s ' ' | sed 's/^ //' \
 				| cut -d' ' -f1) -gt 0 ]; then
-			see $failedlemmas.$f.txt
+			# Only open the failed lemmas in see if @SEE@ is defined:
+			if [ "$EXTEDITOR" ]; then
+				$EXTEDITOR $failedlemmas.$f.txt
+			fi
 		    Fail=1
 		    echo "$f - FAIL"
 		    continue

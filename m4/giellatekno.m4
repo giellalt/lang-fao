@@ -78,6 +78,8 @@ AC_PATH_PROG([VISLCG3_COMP], [cg-comp], [no], [$PATH$PATH_SEPARATOR$with_vislcg3
 AC_MSG_CHECKING([whether we can enable vislcg3 building])
 AS_IF([test "x$VISLCG3" != xno], [AC_MSG_RESULT([yes])],
       [AC_MSG_RESULT([no])])
+AS_IF([test "x$VISLCG3" != xno], [gt_prog_vislcg3=yes],
+      [gt_prog_vislcg3=no])
 AM_CONDITIONAL([CAN_VISLCG], [test "x$VISLCG3_COMP" != xno])
 ]) # gt_PROG_VISLCG3
 
@@ -219,27 +221,29 @@ AM_CONDITIONAL([WANT_APERTIUM], [test "x$enable_apertium" != xno])
 AC_DEFUN([gt_PRINT_FOOTER],
 [
 cat<<EOF
+
 -- Building $PACKAGE_STRING:
 
-    -- basic package (on by default except hfst): --
-    * build with Xerox: $gt_prog_xfst
-    * build with HFST: $gt_prog_hfst
-    * analysers enabled: $enable_morphology
-    * generators enabled: $enable_generation
-    * yaml tests enabled: $enable_yamltests
-    * generated documentation enabled: $gt_prog_docc
+  -- basic package (on by default except hfst): --
+  * build with Xerox: $gt_prog_xfst
+  * build with HFST: $gt_prog_hfst
+  * analysers enabled: $enable_morphology
+  * generators enabled: $enable_generation
+  * syntactic processing enabled: $gt_prog_vislcg3
+  * yaml tests enabled: $enable_yamltests
+  * generated documentation enabled: $gt_prog_docc
 
-    -- proofing tools (off by default): --
-    * spellers enabled: $enable_spellers
-      * hfst speller fst's enabled: $enable_spellerautomat
-      * voikko speller enabled: $enable_voikko
-      * foma speller enabled: $enable_fomaspeller
+  -- proofing tools (off by default): --
+  * spellers enabled: $enable_spellers
+    * hfst speller fst's enabled: $enable_spellerautomat
+    * voikko speller enabled: $enable_voikko
+    * foma speller enabled: $enable_fomaspeller
 
-    -- specialised fst's (off by default): --
-    * phonetic/IPA conversion enabled: $enable_phonetic
-    * dictionary fst's enabled: $enable_dicts
-    * Oahpa transducers enabled: $enable_oahpa
-    * Apertium transducers enabled: $enable_apertium
+  -- specialised fst's (off by default): --
+  * phonetic/IPA conversion enabled: $enable_phonetic
+  * dictionary fst's enabled: $enable_dicts
+  * Oahpa transducers enabled: $enable_oahpa
+  * Apertium transducers enabled: $enable_apertium
 
 For more ./configure options, run ./configure --help
 

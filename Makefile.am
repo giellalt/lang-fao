@@ -26,9 +26,5 @@ und.timestamp: ${GTCORE}/langs-templates/und/und.timestamp
 	@echo "	The build will die now, but if you do not want to update your"
 	@echo "	templates, touch $@ and run make again."
 	@exit 1
-else
-# leave a small note for non-maintainers...
-und.timestamp: ${GTCORE}/langs-templates/und/und.timestamp
-	-cp -v -f $< $@
 endif
 

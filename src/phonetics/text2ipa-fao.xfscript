@@ -1,0 +1,428 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@hum.uit.no or divvun@samediggi.no
+
+! ===================================== !
+! Phonological converter for South Sámi !
+! ===================================== !
+
+! This file tries out conversion from Sámi orthography to a phonetic
+! translation based upon IPA. There is a switch at the end to get 
+! SAMPA instaead
+
+! Usage:
+! make GTLANG=sma
+! cat text | preprocess | lookup -flags mbTT bin/phon-sma.fst | ..
+
+
+! We might also add syllable boundaries. Here the simple version:
+!cat text | preprocess | lookup -flags mbTT -utf8 bin/hyphrules-sma.fst | cut -f2 | lookup -flags mbTT -utf8 bin/phon-sma.fst | cut -f2 | tr '\n' ' '  | see
+
+! echo "dïhte lea 123" | preprocess | 
+! lookup -flags mbTT -utf8 bin/sma-num.fst | cut -f2 |
+! lookup -flags mbTT -utf8 bin/hyphrules-sma.fst | cut -f2 | 
+! lookup -flags mbTT -utf8 bin/phon-sma.fst | cut -f2 | tr '\n' ' ' | l
+
+
+echo <<defining Cns and Vow...>>
+
+define Vow       [ a | á | e | i | o | u | y | æ | ø | å | ä | ö | 
+                   A | Á | E | I | O | U | Y | Æ | Ø | Å | Ä | Ö | 
+                   é | ó | ú | í | à | è | ò | ù | ì | ë | ü | ï | 
+                   â | ê | ô | û | î | ã | ý |
+                   É | Ó | Ú | Í | À | È | Ò | Ù | Ì | Ë | Ü | Ï | 
+                   Â | Ê | Ô | Û | Î | Ã | Ý |
+                   ʉ | ə ] ;
+
+define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | 
+             B | C | Č | D | Đ | F | G | H | J | K | L | M | N | Ŋ | 
+             p | q | r | s | š | t | ŧ | v | w | x | z | ž |   
+             P | Q | R | S | Š | T | Ŧ | V | W | X | Z | Ž | 
+             ɟ | ʎ | ɲ | ʧ ] ; 
+
+define Sgm [ Vow | Cns ] ;
+
+define Stop [ p | t | k | c | č | ʧ ] ;
+
+define Alv [ t | T | d | D | ŧ | Ŧ | đ | Đ | s | S | l | L | r | R | n | N ] ;
+
+define Son [ m | n | ŋ | ɲ | l | r | j | v | đ ] ;
+
+define Nas [ m | M | n | N | ŋ | Ŋ | ɲ ] ;
+
+!define Dummy %^SL ;
+
+define Syll Cns* Vow+ (ː) Cns*  ;
+! define Syll Cns* Vow+ Cns* (Dummy) Cns* (ə) %^ ;
+
+
+echo << Rules>>
+
+define down [ A -> a, Á -> á, B -> b, C -> c, Č -> č, D -> d, E -> e, F -> f, 
+              G -> g, H -> h, I -> i, J -> j, K -> k, L -> l, M -> m, N -> n, 
+              Ŋ -> ŋ, O -> o, P -> p, Q -> q, R -> r, S -> s, Š -> š, T -> t, 
+              U -> u, V -> v, W -> w, X -> x, Y -> y, Z -> z, Ž -> ž, Æ -> æ, 
+              Ø -> ø, Å -> å, Ö -> ö, Ä -> ä, Ï -> i  ] ;
+
+define LexicalRules j ï h   -> j e h || .#. _ .#. ;
+
+define LoanwordAssimilation c h -> ʧ  ; ! n d -> ɲ ɲ ;
+
+define InitialAspiration p -> p ʰ , t -> t ʰ , k -> k ʰ || [.#.|%-] _ ( [ l | r | v | n ] ) Vow ;
+
+define Geminates b p -> p p , d t -> t t , g k -> k k , g n -> ŋ ŋ , n n g -> ŋ ŋ ;
+
+define ngRule n g -> ŋ ;
+
+!define eApocope e -> 0 || Syll [o|i] _ [.#.| m i n i e ] ; ! berkoe > berko
+
+define ueDiph u e -> ʉ ə ;
+
+define uRule u -> ʉ ;
+
+define oeDiph o e -> u ə ;
+
+!define uvLengthening o v -> u u v ;
+
+define aeRule  a e -> æ ː ;
+
+define Diphthong a -> æ || e _ ;
+
+define ïeDiphthong ï e -> i ə ;
+
+define ijRule j -> i || .#. Cns+ i _ [\j] ,,
+              v -> ʉ || .#. Cns+ ʉ _ [\v] ,,
+              j -> y || .#. Cns+ y _ [\j] ;
+
+
+define slRule s l -> ʃ l̥ , s k j -> ʃ || [.#.|%#|%-] _ ;
+
+define snjRule s -> ʃ || [.#.|%#|%-] _ n j ;
+
+define oRule o -> u ;
+
+define wRule v -> w || [ Vow - ʉ ] _ [ [ Cns - v ] Vow | .#. ] ;
+
+define wRule2 v -> ɥ || ʉ _ [ [ Cns - v] Vow | .#. ] ;
+
+define SyllShortening b b -> b , d d -> d , f f -> f , g g -> g , j j -> j , 
+	                  k k -> k , l l -> l , m m -> m , n n -> n , p p -> p ,
+	                  r r -> r , s s -> s , t t -> t , v v -> v || Vow Vow _ ;
+
+! Late rules
+
+define åASo å -> ɔ ;
+
+define schwa e -> ə || Syll Cns _  ;
+
+define LongAffricates s s j -> š š ;
+
+define Affricates t j -> ʧ , s j -> š ; 
+
+define WeakPenultimate ə -> 0 || Syll Cns [Cns - l]  _ [s|h] ə .#. ,, 
+                       ə -> 0 || Alv _ n .#. ;
+
+define Auslaut d h -> t ʰ , g h -> k ʰ , r h -> r̥ , l h -> l̥ , m h -> m̥ , s h -> s ʰ || _ .#. ;
+
+!define SchwaBetweenCons [..] -> ə || v _ l ,
+!                                     l _ m ,
+!                                     m _ s ;
+
+echo << And now we go for IPA OUTPUTFORMAT >>
+
+define OUTPUTFORMAT a -> ɑ , ä -> æ , ö -> ø , n j -> ɲ , š -> ʃ , ï -> ɨ , %^ -> %. ;
+
+define COLONLENGTH   ɑ ɑ -> ɑ ː , e e -> e ː , i i -> i ː , o o -> o ː , u u -> u ː ,
+                     y y -> y ː , ø ø -> ø ː , æ æ -> æ ː , ʉ ʉ -> ʉ ː , ɔ ɔ -> ɔ ː ,
+                     b b -> b ː , β β -> β ː , ɸ ɸ -> ɸ ː , ɟ ɟ -> ɟ ː , c c -> c ː , 
+                     d d -> d ː , ð ð -> ð ː , f f -> f ː , g g -> g ː , 
+                     h h -> h ː , j j -> j ː , k k -> k ː , l l -> l ː , ʎ ʎ -> ʎ ː ,
+                     m m -> m ː , n n -> n ː , ɲ ɲ -> ɲ ː , p p -> p ː , r r -> r ː , 
+                     s s -> s ː , t t -> t ː , ʃ ʃ -> ʃ ː , v v -> v ː ,
+                    l̥ l̥  -> l̥ ː , r̥ r̥  -> r̥ ː , m̥ m̥ -> m̥ ː , n̥ n̥ -> n̥ ː , 
+                    ŋ̊ ŋ̊ -> ŋ̊ ː , v̥ v̥ -> v̥ ː ,
+                     ŋ ŋ -> ŋ ː ;
+
+! Cleaning up
+! define DummyDeletion Dummy -> 0 ;
+
+
+echo <<Combining...>>
+
+read regex [ 
+    down 
+.o. LexicalRules    
+.o. LoanwordAssimilation    
+.o. InitialAspiration    
+.o. Geminates    
+.o. ngRule
+!.o. eApocope
+.o. ueDiph
+.o. uRule
+.o. oeDiph
+!.o. uvLengthening
+.o. aeRule
+.o. Diphthong
+.o. ïeDiphthong
+!.o. ijRule
+.o. slRule
+.o. snjRule
+.o. oRule
+.o. wRule
+.o. wRule2
+!.o. SyllShortening
+.o. åASo
+.o. schwa
+.o. LongAffricates
+.o. Affricates
+.o. WeakPenultimate
+.o. Auslaut
+.o. OUTPUTFORMAT
+.o. COLONLENGTH
+
+] ;
+
+echo <<Inverting...>>
+
+invert net
+
+
+!  For reference: The SAMPA - IPA correspondence
+
+!  SAMPA   IPA  Description
+!  p       p    voiceless bilabial stop
+!  b       b    voiced bilabial stop
+!  t       t    voiceless alveolar or dental stop
+!  d       d    voiced alveolar or dental stop
+!  ts      ʦ    voiceless alveolar affricate
+!  dz      ʣ    voiced alveolar affricate
+!  tS      ʧ    voiceless postalveolar affricate
+!  dZ      ʤ    voiced postalveolar affricate
+!  c       c    voiceless palatal stop
+!  J\      ɟ    (overstroked j)    voiced palatal stop
+!  k       k    voiceless velar stop
+!  g       g    voiced velar stop
+!  q       q    voiceless uvular stop
+!  p\      ɸ    (Greek phi)    voiceless bilabial fricative
+!  B       β    (Greek beta)    voiced bilabial fricative
+!          ϐ    (Greek beta alt)    voiced bilabial approximant
+!  f       f    voiceless labiodental fricative
+!  v       v    voiced labiodental fricative
+!  T       θ    (Greek theta)    voiceless dental fricative
+!          ϑ    (Greek theta alt)    voiceless dental approximant
+!  D       ð    (Icelandic eth)    voiced dental fricative
+!          δ    (Greek delta)    voiced dental approximant
+!  s       s    voiceless alveolar fricative
+!  z       z    voiced alveolar fricative
+!  S       ʃ    voiceless postalveolar fricative
+!  Z       ʒ    voiced postalveolar fricative
+!  C       ç    (cedilla)    voiceless palatal fricative
+!  j\ (jj) ʝ    (j with crossed tail)    voiced palatal fricative
+!  x       x    voiceless velar fricative
+!  G       γ    (Greek gamma)    voiced velar fricative
+!          ɰ    voiced velar approximant
+!  X\      ħ    (overstroked h)    voiceless pharyngeal fricative
+!  ?\      ʕ    (Inverted ?)    voiced pharyngeal fricative
+!  h       h    voiceless glottal approximant
+!  h\      ɦ    (h with upper tail to the right)    voiced glottal approximant
+!  m       m    bilabial nasal
+!  F       ɱ    (m with downward right tail)    labiodental nasal
+!  n       n    alveolar or dental nasal
+!  J       ɲ    (n with downward left tail)    palatal nasal
+!  N       ŋ    (n with downward right tail)    velar nasal
+!  l       l    alveolar lateral
+!  L       ʎ    turned down y, alt. λ (Greek lambda)    palatal lateral
+!  5       ɫ    (l with middle tilde)    velarized dental lateral
+!  4 (r)   ɾ    (r without upper-left serif)    alveolar flap
+!  r (rr)  r    alveolar trill
+!  r\      ɹ    (r rotated 180°)    retroflexed alveolar approximant
+!  R       ʀ    (small capital R)    uvular trill
+!  P       ʋ    labiodental approximant
+!  w       w    velo-labial approximant
+!  H       ɥ    (turned down h)    palato-labial approximant
+!  j       j    palatal approximant
+!  
+!  Vowels
+!                front   near-front    central   near-back   back
+!  close          i • y               1 • }                 M • u
+!  near-close              I • Y                    U
+!  close-mid      e • 2              @\ • 8                 7 • o
+!  mid                                  @            
+!  open-mid       E • 9               3 • 3\                V • O
+!  near-open        {                    6           
+!  open           a • &                                     A • Q
+
+
+
+! More documentation
+
+!! retroflex plosive, voiceless			t`  ʈ	    0288, 648 (` = ASCII 096)
+!! retroflex plosive, voiced			d`	ɖ		0256, 598
+!! labiodental nasal					F 	ɱ		0271, 625
+!! retroflex nasal						n` 	ɳ		0273, 627
+!! palatal nasal						J 	ɲ		0272, 626
+!! velar nasal							N 	ŋ		014B, 331
+!! uvular nasal							N\	ɴ		0274, 628
+!! 	
+!! bilabial trill						B\ 	ʙ		0299, 665
+!! uvular trill							R\ 	ʀ		0280, 640
+!! alveolar tap							4	ɾ		027E, 638
+!! retroflex flap						r` 	ɽ		027D, 637
+!! bilabial fricative, voiceless		p\ 	ɸ		0278, 632
+!! bilabial fricative, voiced			B 	β		03B2, 946
+!! dental fricative, voiceless			T 	θ		03B8, 952
+!! dental fricative, voiced				D 	ð		00F0, 240
+!! postalveolar fricative, voiceless	S	ʃ		0283, 643
+!! postalveolar fricative, voiced		Z 	ʒ		0292, 658
+!! retroflex fricative, voiceless		s` 	ʂ		0282, 642
+!! retroflex fricative, voiced			z` 	ʐ		0290, 656
+!! palatal fricative, voiceless			C 	ç		00E7, 231
+!! palatal fricative, voiced			j\ 	ʝ		029D, 669
+!! velar fricative, voiced	        	G 	ɣ		0263, 611
+!! uvular fricative, voiceless			X	χ		03C7, 967
+!! uvular fricative, voiced				R 	ʁ		0281, 641
+!! pharyngeal fricative, voiceless		X\ 	ħ		0127, 295
+!! pharyngeal fricative, voiced			?\ 	ʕ		0295, 661
+!! glottal fricative, voiced			h\	ɦ		0266, 614
+!! 
+!! alveolar lateral fricative, vl.		K 
+!! alveolar lateral fricative, vd.		K\
+!! 
+!! labiodental approximant				P (or v\) 
+!! alveolar approximant					r\ 
+!! retroflex approximant				r\` 
+!! velar approximant					M\
+!! 
+!! retroflex lateral approximant		l` 
+!! palatal lateral approximant			L 
+!! velar lateral approximant			L\
+!! Clicks
+!! 
+!! bilabial								O\	(O = capital letter) 
+!! dental								|\
+!! (post)alveolar						!\ 
+!! palatoalveolar						=\ 
+!! alveolar lateral						|\|\
+!! Ejectives, implosives
+!! 
+!! ejective								_>	e.g. ejective p		p_>
+!! implosive							_<	e.g. implosive b	b_<
+!! Vowels
+!! 
+!! close back unrounded					M
+!! close central unrounded 				1 
+!! close central rounded				} 
+!! lax i								I 
+!! lax y								Y 
+!! lax u								U
+!! 
+!! close-mid front rounded				2 
+!! close-mid central unrounded			@\ 
+!! close-mid central rounded			8 
+!! close-mid back unrounded				7
+!! 
+!! schwa	ə							@
+!! 
+!! open-mid front unrounded				E 
+!! open-mid front rounded				9
+!! open-mid central unrounded			3 
+!! open-mid central rounded				3\ 
+!! open-mid back unrounded				V 
+!! open-mid back rounded				O
+!! 
+!! ash (ae digraph)						{ 
+!! open schwa (turned a)				6
+!! 
+!! open front rounded					& 
+!! open back unrounded	        		A 
+!! open back rounded					Q
+!! Other symbols
+!! 
+!! voiceless labial-velar fricative		W 
+!! voiced labial-palatal approx.		H 
+!! voiceless epiglottal fricative		H\ 
+!! voiced epiglottal fricative			<\ 
+!! epiglottal plosive					>\
+!! 
+!! alveolo-palatal fricative, vl. 		s\ 
+!! alveolo-palatal fricative, voiced	z\ 
+!! alveolar lateral flap				l\ 
+!! simultaneous S and x					x\ 
+!! tie bar								_
+!! Suprasegmentals
+!! 
+!! primary stress						" 
+!! secondary stress						% 
+!! long									: 
+!! half-long							:\ 
+!! extra-short							_X 
+!! linking mark							-\
+!! Tones and word accents
+!! 
+!! level extra high						_T 
+!! level high							_H
+!! level mid							_M 
+!! level low							_L 
+!! level extra low						_B
+!! downstep								! 
+!! upstep								^	(caret, circumflex)
+!! 
+!! contour, rising						 
+!! contour, falling						_F 
+!! contour, high rising					_H_T 
+!! contour, low rising					_B_L 
+!! 
+!! contour, rising-falling				_R_F 
+!! (NB Instead of being written as diacritics with _, all prosodic 
+!! marks can alternatively be placed in a separate tier, set off 
+!! by < >, as recommended for the next two symbols.)
+!!
+!! global rise						<R> 
+!! global fall						<F>
+!!									
+!! Diacritics						
+!! 									
+!! voiceless						_0	(0 = figure), e.g. n_0
+!! voiced							_v 
+!! aspirated						_h 
+!! more rounded						_O	(O = letter) 
+!! less rounded						_c 
+!! advanced							_+
+!! retracted						_-
+!! centralized						_" 
+!! syllabic							=	(or _=) e.g. n= (or n_=) 
+!! non-syllabic						_^ 
+!! rhoticity						`
+!! 									
+!! breathy voiced					_t 
+!! creaky voiced					_k
+!! linguolabial						_N 
+!! labialized						_w 
+!! palatalized						'	(or _j) e.g. t' (or t_j) 
+!! velarized						_G 
+!! pharyngealized					_?\
+!! 									
+!! dental							_d 
+!! apical							_a 
+!! laminal							_m
+!! nasalized						~	(or _~) e.g. A~ (or A_~) 
+!! nasal release					_n
+!! lateral release					_l 
+!! no audible release				_}
+!! 
+!! velarized or pharyngealized		_e 
+!! velarized l, alternatively		5 
+!! raised							_r 
+!! lowered							_o 
+!! advanced tongue root				_A 
+!! retracted tongue root			_q

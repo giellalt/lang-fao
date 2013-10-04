@@ -104,6 +104,10 @@ gt_PROG_VISLCG3
 # Tests and sets up XML to lexc conversion
 gt_PROG_SAXON
 
+# Check for SubEthaEdit/see
+AC_PATH_PROG([SEE], [see], [], [$PATH$PATH_SEPARATOR$with_see])
+
+# Check prerequisites for generated documentation
 AC_PATH_PROG([AWK],     [gawk],    [], [$PATH$PATH_SEPARATOR$with_awk])
 AC_PATH_PROG([FORREST], [forrest], [], [$PATH$PATH_SEPARATOR$with_forrest])
 AC_MSG_CHECKING([whether we can enable in-source documentation building])

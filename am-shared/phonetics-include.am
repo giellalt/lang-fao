@@ -28,21 +28,6 @@ EXTRA_DIST=$(GT_PHONETICS_SRCS)
 
 ####### Automake targets: ########
 
-# The rule transducer will be built, not installed
-GT_PHONETICS=
-
-if WANT_PHONETIC
-
-if CAN_HFST
-GT_PHONETICS+=text2ipa.hfst
-endif # CAN_HFST
-
-if CAN_XFST
-GT_PHONETICS+=text2ipa.xfst
-endif # CAN_XFST
-
-endif # WANT_PHONETIC
-
 noinst_DATA=$(GT_PHONETICS)
 
 ####### HFST build rules: ########

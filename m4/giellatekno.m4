@@ -178,6 +178,17 @@ AC_ARG_ENABLE([hunspell],
               [enable_hunspell=no])
 AM_CONDITIONAL([WANT_HUNSPELL], [test "x$enable_hunspell" != xno])
 
+# Enable grammar checkers - default is 'no'
+AC_ARG_ENABLE([grammarchecker],
+              [AS_HELP_STRING([--enable-grammarchecker],
+                              [enable grammar checker @<:@default=no@:>@])],
+              [enable_grammarchecker=$enableval],
+              [enable_grammarchecker=no])
+AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" != xno], 
+      [enable_grammarchecker=no
+       AC_MSG_WARN([vislcg3 missing, grammar checker disabled])])
+AM_CONDITIONAL([WANT_GRAMCHECK], [test "x$enable_grammarchecker" != xno])
+
 # Enable dictionary transducers - default is 'no'
 AC_ARG_ENABLE([dicts],
               [AS_HELP_STRING([--enable-dicts],
@@ -238,6 +249,7 @@ cat<<EOF
     * hfst speller fst's enabled: $enable_spellerautomat
     * voikko speller enabled: $enable_voikko
     * foma speller enabled: $enable_fomaspeller
+  * grammar checker enabled: $enable_grammarchecker
 
   -- specialised fst's (off by default): --
   * phonetic/IPA conversion enabled: $enable_phonetic

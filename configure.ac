@@ -140,6 +140,7 @@ AC_CONFIG_FILES([Makefile \
                  test/tools/Makefile \
                  test/tools/spellcheckers/Makefile \
                  tools/Makefile \
+                 tools/grammarcheckers/Makefile \
                  tools/spellcheckers/Makefile \
                  tools/spellcheckers/fstbased/Makefile \
                  tools/spellcheckers/fstbased/hfst/Makefile \

@@ -184,7 +184,7 @@ AC_ARG_ENABLE([grammarchecker],
                               [enable grammar checker @<:@default=no@:>@])],
               [enable_grammarchecker=$enableval],
               [enable_grammarchecker=no])
-AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" != xno], 
+AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$VISLCG3_COMP" = "x"], 
       [enable_grammarchecker=no
        AC_MSG_WARN([vislcg3 missing, grammar checker disabled])])
 AM_CONDITIONAL([WANT_GRAMCHECK], [test "x$enable_grammarchecker" != xno])

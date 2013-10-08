@@ -17,16 +17,18 @@
 
 ####### Source file defs: ########
 
-#! @var GT_DEPENDENCY source for rules of dependency gramamr
-#! @var GT_DISAMBIGUATION source for rules of disambiguation
-EXTRA_DIST=$(GT_DEPENDENCY) $(GT_DISAMBIGUATION)
+#! @var GT_GRAMMARCHECKER source for rules of vislcg3 grammar checker
+EXTRA_DIST=$(GT_GRAMMARCHECKER)
 
 ####### Automake targets: ########
 
-#! @var GT_CG_TARGETS the files that should be built for cg
+#! @var GT_GC_TARGETS contains the CG3 files that should be built for
+#!      the grammar checker.
+if WANT_GRAMCHECK
 if CAN_VISLCG
-noinst_DATA=$(GT_CG_TARGETS)
-endif
+noinst_DATA=$(GT_GC_TARGETS)
+endif # CAN_VISLCG
+endif # WANT_GRAMCHECK
 
 ####### Build rules via include: ########
 

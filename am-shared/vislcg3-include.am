@@ -15,21 +15,13 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-####### Source file defs: ########
+####### Build rules: ########
 
-#! @var GT_DEPENDENCY source for rules of dependency gramamr
-#! @var GT_DISAMBIGUATION source for rules of disambiguation
-EXTRA_DIST=$(GT_DEPENDENCY) $(GT_DISAMBIGUATION)
+.cg3.bin:
+	$(AM_V_GEN)$(VISLCG3_COMP) $< $@
 
-####### Automake targets: ########
-
-#! @var GT_CG_TARGETS the files that should be built for cg
-if CAN_VISLCG
-noinst_DATA=$(GT_CG_TARGETS)
-endif
-
-####### Build rules via include: ########
-
-include $(top_srcdir)/am-shared/vislcg3-include.am
+####### Other targets: ###########
+clean-local:
+	-rm -f *.bin
 
 # vim: set ft=automake:

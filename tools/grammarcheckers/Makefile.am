@@ -8,4 +8,8 @@ GT_GRAMMARCHECKER=grammarchecker.cg3
 # set this to names of cg3 binaries 
 GT_GC_TARGETS=grammarchecker.bin
 
+# set this to the filename of the file being used by voikkogc:
+GT_GC_DISTRO=gramchk.bin
+GT_GC_ZDISTRO=grammarchecker.zhfst
+
 include $(top_srcdir)/am-shared/tools-grammarcheckers-include.am

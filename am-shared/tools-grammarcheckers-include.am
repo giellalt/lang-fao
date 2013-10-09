@@ -22,15 +22,39 @@ EXTRA_DIST=$(GT_GRAMMARCHECKER)
 
 ####### Automake targets: ########
 
-#! @var GT_GC_TARGETS contains the CG3 files that should be built for
-#!      the grammar checker.
 if WANT_GRAMCHECK
 if CAN_VISLCG
 noinst_DATA=$(GT_GC_TARGETS)
+
+if WANT_VOIKKO
+GT_SPELLING_HFST=$(top_srcdir)/tools/spellcheckers/fstbased/hfst/$(GTLANG2).zhfst
+GT_ANALYSER_HFST=$(top_srcdir)/src/analyser-gt-desc.hfst
+
+#! @var GT_GC_TARGETS contains the CG3 files that should be built for
+#!      the grammar checker.
+
+voikkosharedir=$(libdir)/voikko/4/
+voikkoshare_DATA=$(GT_SPELLING_HFST) \
+				 $(GT_ANALYSER_HFST) \
+				 $(GT_GC_DISTRO) \
+				 $(GT_GC_ZDISTRO)
+endif # WANT_VOIKKO
+
 endif # CAN_VISLCG
 endif # WANT_GRAMCHECK
 
-####### Build rules via include: ########
+####### Build rules - locally and via include: ########
+$(GT_GC_DISTRO): $(GT_GC_TARGETS)
+	$(AM_V_GEN)cp -f $< $@
+
+# Finally build the zhfst file, and make a copy in a subdir named '3', so that
+# we can test it without installing it (the '3' dir is a voikko requirement):
+$(GT_GC_ZDISTRO): $(GT_SPELLING_HFST) \
+				  $(GT_ANALYSER_HFST) \
+				  $(GT_GC_DISTRO)
+	$(AM_V_GEN)rm -f $@ && $(ZIP) $(ZIPFLAGS) $@ $^ && \
+		$(MKDIR_P) $(GTLANG2)-x-standard/4 && \
+		cp -f $@ $(GTLANG2)-x-standard/4/
 
 include $(top_srcdir)/am-shared/vislcg3-include.am
 

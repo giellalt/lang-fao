@@ -66,20 +66,18 @@ endif
 # lexical transducer building rules:
 # for HFST:
 $(GTLANG).lexc.hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
-	$(AM_V_GEN)cat $^ > $@.tmp.lexc
-	$(AM_V_GEN)$(HFST_LEXC) -f foma -o $@.foma $@.tmp.lexc
-	$(AM_V_GEN)$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
-	$(AM_V_GEN)rm -f $@.tmp.lexc
-	$(AM_V_GEN)rm -f $@.foma
+	$(AM_V_GEN)$(HFST_LEXC) -f foma -o $@.foma $^ \
+		&& $(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@ \
+		&& rm -f $@.foma
 
 ####### Xerox build rules: #######
 
 $(GTLANG).lexc.xfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 	$(AM_V_GEN)$(PRINTF) \
 		"compile-source $^\nsource-to-result\nsave-source $@\nquit\n" \
-		> $@.script
-	$(AM_V_GEN)$(LEXC) < $@.script
-	$(AM_V_GEN)rm -f $@.script
+		> $@.script \
+		&& $(LEXC) < $@.script \
+		&& rm -f $@.script
 
 ####### Other targets: ###########
 clean-local:

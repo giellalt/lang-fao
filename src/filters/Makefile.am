@@ -51,7 +51,6 @@ GT_FILTER_TARGETS+=\
 				   remove-Orth_Strd-strings.hfst          \
 				   remove-PUNCT-strings.hfst              \
 				   remove-UseCirc-strings.hfst            \
-				   remove-illegal-derivation-strings.hfst \
 				   remove-variant-strings.hfst
 endif
 
@@ -86,7 +85,6 @@ GT_FILTER_TARGETS+=\
 				   remove-Orth_Strd-strings.xfst          \
 				   remove-PUNCT-strings.xfst              \
 				   remove-UseCirc-strings.xfst            \
-				   remove-illegal-derivation-strings.xfst \
 				   remove-variant-strings.xfst
 endif
 

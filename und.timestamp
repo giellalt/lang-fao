@@ -1,4 +1,8 @@
-$Rev: 82022 $
+$Rev: 82028 $
+Made LexC compilation break on error, at least for Xerox (Hfst only gives a
+warning for the same error).
+
+r82022:
 Moved the remove-illegal-derivation-strings.regex from all langs to only the
 three Sámi langs actually using it. Even though potentially useful for more
 languages, it can hardly be considered a language universal...

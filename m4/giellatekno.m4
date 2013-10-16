@@ -28,24 +28,43 @@
 
 AC_DEFUN([gt_PROG_SCRIPTS_PATHS],
          [
-AC_ARG_VAR([GTHOME], [root directory of giellatekno scripts])
-AC_ARG_VAR([GTCORE], [directory for giellatekno core data])
 AC_ARG_VAR([GTMAINTAINER], [define if you are maintaining the infra to get additional complaining about infra integrity])
 AM_CONDITIONAL([WANT_MAINTAIN], [test x"$GTMAINTAINER" != x])
 AC_PATH_PROG([GTVERSION], [gt-version.sh], [false],
-             [$GTCORE/scripts/$PATH_SEPARATOR$GTHOME/gtcore/scripts/])
-AS_IF([test "x$GTSCRIPT" = xfalse], 
-      [cat<<<EOT
-could not find a giellatekno core scripts in:
+             [$GTCORE/scripts/$PATH_SEPARATOR$GTHOME/gtcore/scripts/$PATH_SEPARATOR$PATH])
+AC_PATH_PROG([GTCORESH], [gt-core.sh], [false],
+             [$GTCORE/scripts/$PATH_SEPARATOR$GTHOME/gtcore/scripts/$PATH_SEPARATOR$PATH])
+
+AC_MSG_CHECKING([whether GTCORE is found])
+AS_IF([test "x$GTCORE"    = x -a \
+            "x$GTCORESH" != xfalse ],
+            [GTCORE=$(${GTCORESH}); AC_MSG_RESULT([yes - via script])],
+	  [test "x$GTCORE" != x], [AC_MSG_RESULT([yes - via environment])],
+      [AC_MSG_RESULT([no])])
+
+AC_ARG_VAR([GTCORE], [directory for giellatekno core data])
+
+AS_IF([test "x$GTCORE" = x], 
+      [cat<<EOT
+
+Could not set GTCORE and thus not find required scripts in:
        $GTCORE/scripts 
        $GTHOME/gtcore/scripts 
        $PATH 
-       please do at least first step of the following: 
-       a. svn co https://victorio.uit.no/langtech/trunk/gtcore
-       b. cd gtcore/scripts && ./autogen.sh && ./configure && make install
-       c. gtsetup.sh
+
+       Please do the following: 
+       1. svn co https://victorio.uit.no/langtech/trunk/gtcore
+       2. then either:
+         a: cd gtcore && ./autogen.sh && ./configure && make install
+          or:
+         b: add the following to your ~/.bash_profile or ~/.profile:
+
+       export \$GTCORE=/path/to/gtcore/checkout/dir/
+
+       (replace the path with the real path from 1. above)
+
 EOT
-       AC_MSG_ERROR([gtversion.sh could not be executed])])
+       AC_MSG_ERROR([GTCORE could not be set])])
 ]) # gt_PROG_SCRIPTS_PATHS
 
 AC_DEFUN([gt_PROG_XFST],

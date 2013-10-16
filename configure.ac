@@ -46,7 +46,7 @@ AC_ARG_ENABLE([yamltests],
 AS_IF([test "x$enable_yamltests" = "xcheck"], 
      [AM_PATH_PYTHON([3.1],, [:])
      AX_PYTHON_MODULE(yaml)
-     AC_MSG_CHECKING([Whether to enable yaml-based test])
+     AC_MSG_CHECKING([whether to enable yaml-based test])
      AS_IF([test "$PYTHON" = ":"],
            [enable_yamltests=no
             AC_MSG_RESULT([no, python is missing or old])

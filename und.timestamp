@@ -1,4 +1,10 @@
-$Rev: 82063 $
+$Rev: 82203 $
+Made the check for GTCORE functional, looking for both the gt-core.sh script
+(and using its output if found), and the environment variable $GTCORE. This
+means that there is no need anymore to set the GTCORE variable as long as one
+configure, make and make install in the gtcore directory.
+
+r82063:
 Corrected bug/feedback e-mail address to one actually working.
 
 r82028:

@@ -1,4 +1,10 @@
-$Rev: 82203 $
+$Rev: 82207 $
+Changed back the Automake requirement to 1.11 - 1.12 is creating too much
+trouble. We'll have to see what to do with the test output - the version
+requirements change must be followed by another change that will substantially
+degrade test reports on newer automakes.
+
+r82203:
 Made the check for GTCORE functional, looking for both the gt-core.sh script
 (and using its output if found), and the environment variable $GTCORE. This
 means that there is no need anymore to set the GTCORE variable as long as one

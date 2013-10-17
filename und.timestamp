@@ -1,4 +1,17 @@
-$Rev: 82231 $
+$Rev: 82261 $
+Had to remove the Makefile as well, adding only the dir in the first go - no
+text replacement was done inside the Makefile.
+
+r82258:
+Removed the shell script, to take the merge in two steps: first create the dir,
+then add the shell script file. This makes it possible to rename the file at the
+same time, whereas if we merge the dir and the file in one go, no renaming will
+take place. That leaves us with a tedious manual rename process afterwards.
+
+r82255:
+The first lookup shell script added, with supporting infrastructure.
+
+r82231:
 Added option to automatically create a language home dir environment variable.
 The idea is that by setting this variable, we can reliably find transducers in
 the working copy dirs of the users. The default is to not do anything (but give

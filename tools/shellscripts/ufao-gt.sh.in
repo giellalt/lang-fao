@@ -35,6 +35,6 @@ else
 	exit 1
 fi
 
-echo "$lookuptool $fstflags $analyserfile"
+echo "$lookuptool $fstflags $analyserfile" >&2
 
 $lookuptool $fstflags $analyserfile

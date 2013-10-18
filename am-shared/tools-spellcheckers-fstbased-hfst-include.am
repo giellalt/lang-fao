@@ -105,7 +105,7 @@ $(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST)
 $(GT_SPELLING_HFST): $(GT_SPELLER_ACCEPTOR) \
 					 $(GT_ERRMODELS) \
 					 index.xml
-	$(AM_V_GEN)rm -f $@ && $(ZIP) $(ZIPFLAGS) $@ $^ && \
+	$(AM_V_GEN)rm -f $@ && $(GZIP) $(ZIPFLAGS) $@ $^ && \
 		$(MKDIR_P) 3 && \
 		cp -f $@ 3/
 

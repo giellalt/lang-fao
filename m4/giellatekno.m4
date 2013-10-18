@@ -176,6 +176,8 @@ AC_ARG_ENABLE([voikko],
 AS_IF([test "x$enable_spellerautomat" = xno], [enable_voikko=no])
 AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_voikko" != xno ])
 
+AC_PATH_PROG([GZIP], [gzip], [false], [$PATH$PATH_SEPARATOR$with_gzip])
+
 # Enable Foma-based spellers, requires gzip - default is no
 AC_ARG_ENABLE([fomaspeller],
               [AS_HELP_STRING([--enable-fomaspeller],
@@ -183,8 +185,7 @@ AC_ARG_ENABLE([fomaspeller],
               [enable_fomaspeller=$enableval],
               [enable_fomaspeller=no])
 AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno], 
-      [AC_PATH_PROG([GZIP], [gzip], [false])
-       AS_IF([test "x$GZIP" = "xfalse"],
+      [AS_IF([test "x$GZIP" = "xfalse"],
              [enable_fomaspeller=no
               AC_MSG_WARN([gzip missing, foma spellers disabled])])])
 AM_CONDITIONAL([CAN_FOMA_SPELLER], [test "x$enable_fomaspeller" != xno])
@@ -217,10 +218,9 @@ AC_ARG_ENABLE([dicts],
 AM_CONDITIONAL([WANT_DICTIONARIES], [test "x$enable_dicts" != xno])
 
 AS_IF([test "x$enable_voikko" = "xyes" -a "x$gt_prog_hfst" != xno], 
-      [AC_PATH_PROG([ZIP], [zip], [false])
-       AS_IF([test "x$ZIP" = "xfalse"],
+      [AS_IF([test "x$GZIP" = "xfalse"],
              [enable_voikko=no
-              AC_MSG_WARN([zip missing, voikko spellers disabled])])])
+              AC_MSG_WARN([gzip missing, voikko spellers disabled])])])
 
 # Enable Oahpa transducers - default is 'no'
 AC_ARG_ENABLE([oahpa],

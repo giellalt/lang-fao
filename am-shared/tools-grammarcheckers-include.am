@@ -52,7 +52,7 @@ $(GT_GC_DISTRO): $(GT_GC_TARGETS)
 $(GT_GC_ZDISTRO): $(GT_SPELLING_HFST) \
 				  $(GT_ANALYSER_HFST) \
 				  $(GT_GC_DISTRO)
-	$(AM_V_GEN)rm -f $@ && $(ZIP) $(ZIPFLAGS) $@ $^ && \
+	$(AM_V_GEN)rm -f $@ && $(GZIP) $(ZIPFLAGS) $@ $^ && \
 		$(MKDIR_P) $(GTLANG2)-x-standard/4 && \
 		cp -f $@ $(GTLANG2)-x-standard/4/
 

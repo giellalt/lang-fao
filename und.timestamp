@@ -1,4 +1,7 @@
-$Rev: 82308 $
+$Rev: 82316 $
+Consistently use gzip instead of zip, and find gzip outside any conditionals.
+
+r82308:
 Redirected command feedback of the analyser shell script to stderr, to avoid
 cluttering the analysed text in pipe use.
 

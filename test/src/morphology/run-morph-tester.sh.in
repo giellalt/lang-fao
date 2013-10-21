@@ -46,7 +46,7 @@ testfileshort=$(echo "$(basename \
 analyserfile=./../../../src/analyser-$transducer
 generatorfile=./../../../src/generator-$transducer
 pythonbin=@PYTHON@
-runtests="$pythonbin $GTCORE/scripts/morph-test.py"
+runtests="$pythonbin @GTCORE@/scripts/morph-test.py"
 
 # Use autotools mechanisms to only run the configured fst types in the tests:
 fsttype=

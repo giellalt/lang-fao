@@ -1,4 +1,13 @@
-$Rev: 82403 $
+$Rev: 82434 $
+FINALLY fixed the automake 1.11 vs 1.13 test incompatibilities. Now we can allow
+version 1.11, and still get the pretty output we want in newer automakes.
+
+r82406:
+Fixed references to GTCORE in test scripts. Earlier we relied solely on it
+beingset in the environment, now we take it from configure (which can take it
+from the environment or from a script).
+
+r82403:
 One more gzip option fix.
 
 r82399:

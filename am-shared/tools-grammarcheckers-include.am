@@ -20,6 +20,8 @@
 #! @var GT_GRAMMARCHECKER source for rules of vislcg3 grammar checker
 EXTRA_DIST=$(GT_GRAMMARCHECKER)
 
+ZIPFLAGS=--stdout
+
 ####### Automake targets: ########
 
 if WANT_GRAMCHECK

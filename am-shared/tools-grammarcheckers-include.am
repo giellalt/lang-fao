@@ -20,8 +20,6 @@
 #! @var GT_GRAMMARCHECKER source for rules of vislcg3 grammar checker
 EXTRA_DIST=$(GT_GRAMMARCHECKER)
 
-ZIPFLAGS=--stdout
-
 ####### Automake targets: ########
 
 if WANT_GRAMCHECK
@@ -54,7 +52,7 @@ $(GT_GC_DISTRO): $(GT_GC_TARGETS)
 $(GT_GC_ZDISTRO): $(GT_SPELLING_HFST) \
 				  $(GT_ANALYSER_HFST) \
 				  $(GT_GC_DISTRO)
-	$(AM_V_GEN)rm -f $@ && $(GZIP) $(ZIPFLAGS) $^ > $@ && \
+	$(AM_V_GEN)rm -f $@ && $(ZIP) $(ZIPFLAGS) $@ $^ && \
 		$(MKDIR_P) $(GTLANG2)-x-standard/4 && \
 		cp -f $@ $(GTLANG2)-x-standard/4/
 

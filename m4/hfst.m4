@@ -43,6 +43,7 @@ AC_PATH_PROG(HFST_CONCATENATE, hfst-concatenate, false, $PATH$PATH_SEPARATOR$wit
 AC_PATH_PROG(HFST_CONJUNCT, hfst-conjunct, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_DETERMINIZE, hfst-determinize, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_DISJUNCT, hfst-disjunct, false, $PATH$PATH_SEPARATOR$with_hfst)
+AC_PATH_PROG(HFST_FOMA, hfst-foma, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_FST2FST, hfst-fst2fst, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_FST2STRINGS, hfst-fst2strings, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_FST2TXT, hfst-fst2txt, false, $PATH$PATH_SEPARATOR$with_hfst)
@@ -65,7 +66,7 @@ AC_PATH_PROG(HFST_TWOLC, hfst-twolc, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_TXT2FST, hfst-txt2fst, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_XFST, hfst-xfst, false, $PATH$PATH_SEPARATOR$with_hfst)
 AS_IF([test x$with_hfst != xno], [
-_gt_hfst_min_version=m4_default([$1], [3.4])
+_gt_hfst_min_version=m4_default([$1], [3.5])
 AC_MSG_CHECKING([hfst is at least $_gt_hfst_min_version])
 if test x$HFST_INFO != xfalse; then
     if $HFST_INFO --require-feature=foma --atleast-version=$_gt_hfst_min_version ; then

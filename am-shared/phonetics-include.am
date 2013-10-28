@@ -45,7 +45,7 @@ HFSTTWOLFLAGS=--resolve
 .xfscript.hfst:
 	$(AM_V_GEN)cp $< $@.script
 	$(AM_V_GEN)$(PRINTF) "invert \nsave stack $@" >> $@.script
-	$(AM_V_GEN)$(HFST_XFST) -f $@.script
+	$(AM_V_GEN)$(HFST_FOMA) -f $@.script
 	$(AM_V_GEN)rm -f $@.script
 
 ####### Xerox build rules: #######

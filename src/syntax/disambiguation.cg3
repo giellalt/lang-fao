@@ -122,6 +122,8 @@ SET REALADJ = A OR A* ;
 
 LIST NOMINALHEAD = N Num Pers Refl Recipr "Pron Interr" "Pron Indef" ;
 
+LIST NorA = N A ;
+
 LIST PRENAGR = Det A ;
 
 LIST MIDJA = "miðja" ; # in the middle of - construction. More N in here, also bottle constr.
@@ -301,7 +303,7 @@ REMOVE:AVS2 OBL IF (-2 CLB)(-1 Adv OR CC OR CS)(0 Nom)(1 V + THIRDSG)(NOT *2 Nom
 
 REMOVE Nom IF (-2 V)(-1C Pr)(0 N)(1 CLB); # Too specific, this.
 
-REMOVE Dat IF (*-1 V LINK NOT 0 DATV BARRIER NPNH)(0 Acc)(1 EOS OR CS);
+REMOVE Dat IF (*-1 V BARRIER NPNH LINK NOT 0 DATV)(0 Acc)(1 EOS OR CS);
 	## at fáa høvi at...
 
 
@@ -319,6 +321,9 @@ REMOVE Pr IF (0 Adv)(NOT *1 OBL BARRIER NPNH);
 REMOVE:PrAdv Adv IF (*-1 N BARRIER V)(0 Pr + SOMEACCPREP)(*1 Acc BARRIER NPNH);
 	## Altjóða samstarv innan gransking og útbúgving.	
 	##  Hon las síðan bókina.
+
+REMOVE:PrCS Pr IF (0 CS)(1C Nom OR VFIN);
+
 
 # á
 REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
@@ -380,6 +385,9 @@ REMOVE Pers IF (-1 Pr)(0 (Det Gen))(*1 N OR A BARRIER NPNH);
 
 REMOVE Det IF (0 Pers)(1 EOS OR VFIN OR Pr OR CC OR S-BOUNDARY);
 REMOVE Dem IF (0 Pers)(1 EOS OR VFIN OR Pr OR CC OR Num OR S-BOUNDARY);
+
+REMOVE:DetNotDem (Pron Pers) IF (0 Dem + $$GENDER + $$NUMBER + $$NAGD)(1 NorA + $$GENDER + $$NUMBER + $$NAGD);
+
 
 # Det (no idea why $$ does not work)
 
@@ -530,10 +538,14 @@ REMOVE Imp IF (NOT -1 BOS)(0 ("væl"))(NOT 1 ("um"));
 REMOVE Interj IF (1 WORD)(0 ("á" Pr));
 REMOVE Interj IF (-1 V)(0 ("á" Pr));
 
+# Adverbs
 # General adverb
 SELECT:r6 Adv IF (-1 DATPREP)(*1 Dat BARRIER NPNHA);
 
 SELECT:r7 Adv IF (-1 VFIN)(1 Inf);
+
+SELECT:her Adv IF (0 ("herur"))(-1 N OR BOS OR Adv);
+
 
 REMOVE Adv IF (-1 Det OR Pr)(0 A)(1 N);
        ## ið stakk í bleyta jørð,
@@ -541,7 +553,10 @@ REMOVE Adv IF (-1 Det OR Pr)(0 A)(1 N);
 # Lexicalised adverbs.
 REMOVE:r566 (A* Adv) IF (0 LEX-ADV) ;
 	## Serliga er tað ein.
-	
+
+# Adverb verbs
+
+SELECT:umleid Adv IF (0 ("umleið"))(1 Num);
 	
 # Idioms
 
@@ -628,6 +643,8 @@ SELECT:DisPostPoss Poss IF (-1 N + $$GENDER + $$NAGD)(0 $$GENDER + $$NAGD); #(NO
 REMOVE:r33 Pl IF (*-1 ("eitt" Num Sg) OR (Det Sg) BARRIER NOT-A)(0 (N Sg));
 # Here, we need vislcg3 and variable notation!
 
+REMOVE:PlPl (N Sg) IF (0 (N Pl))(-1 Pl)(NOT -1 Sg);
+
 SELECT:NumNPl (N Pl) IF (-1 NUMBERS);
 
 SELECT:BarePl (N Pl) IF (NOT -1 PRE-N)(0 BAREPLURALS);
@@ -680,6 +697,10 @@ REMOVE:r46 Det IF (0 Pers)(1C V);
 
 REMOVE:r47 Det IF (0 Pers)(NEGATE *1 Def BARRIER NPNH)(NEGATE 0 Gen LINK -1 N);
 	##
+
+#REMOVE:annar Pron IF (0 ("annar" $$NUMBER))(1 (N $$NUMBER));
+#REMOVE:annar ("annar" Pron $$NAGD) IF (1 (N $$NAGD));
+REMOVE:annar ("annar" Pron) + $$NAGD IF (1 N + $$NAGD);
 
 #NP Coordination
 
@@ -749,6 +770,12 @@ REMOVE Sup IF (*-1 CLB BARRIER WORD)(0 Imp)(*1 CLB  BARRIER Ind);
 #REMOVE:r54 (Imp Pl) IF (0 (N Neu))(1 VFIN);
 	## Húsið er stórt.
 
+
+# Present participle 
+
+
+
+
 # Supine
 
 #SELECT:r55 Sup IF (*-1 ("fáa" V) OR ("hava" V Ind) BARRIER NOT-ADV);
@@ -804,7 +831,7 @@ SELECT:r62 ("seg" Refl) IF (-1 Inf OR 3Sg OR Pl) ;
 # Accusative
 # ==========
 
-REMOVE:r63 Nom IF (*-1 AUX OR MODV LINK -1 CC OR Nom BARRIER NPNH)(1 Inf);
+REMOVE:r63 Nom IF (*-1 AUX OR MODV BARRIER NPNH LINK -1 CC OR Nom)(1 Inf);
 
 
 
@@ -1031,7 +1058,7 @@ MAP (@<tSUBJ) TARGET ("tað" Pron Pers Sg Nom) IF (-1 V)(-2 BOS OR Adv)(1 Nom);
 MAP (@tSUBJ>) TARGET ("tað" Pron Pers Sg Nom) IF (1 V)(2 (N Nom Indef));
 MAP (@tSUBJ>) TARGET ("tað" Pron Pers Sg Nom) IF (1 V)(2 ("ein" Det Nom))(*3 (N Nom Indef) BARRIER NPNH);
 MAP (@tSUBJ>) TARGET ("tað" Pron Pers Sg Nom) IF (1 V)(*2 (N Nom Indef) BARRIER NOT-ADV);
-MAP (@tSUBJ>) TARGET ("tað" Pron Pers Sg Nom) IF (1 V)(*2 ("ein" Det Nom) BARRIER NOT-ADV LINK 1 (N Nom Indef) BARRIER NPNH);
+MAP (@tSUBJ>) TARGET ("tað" Pron Pers Sg Nom) IF (1 V)(*2 ("ein" Det Nom) BARRIER NPNHA LINK 1 (N Nom Indef));
 
 MAP:r71 (@<SUBJ) TARGET (Num Nom) IF (*-1 (@<tSUBJ) BARRIER NPNHA LINK -1 COPULA)(NOT 1 PRE-N);
 MAP:r71 (@<SUBJ) TARGET (N Nom) IF (*-1 (@<tSUBJ) BARRIER NPNHA LINK -1 COPULA);
@@ -1047,17 +1074,18 @@ MAP (@>N) TARGET Num + $$NAGD IF (1 N + $$NAGD);
 MAP (@>N) TARGET Num + $$NAGD IF (1 A + $$NAGD)(2 N + $$NAGD);
 
 
-MAP:r81 (@P<) TARGET NOMINALHEAD + Dat IF (*-1 SOMEDATPREP BARRIER NPNHA);
-MAP:r82 (@P<) TARGET NOMINALHEAD + Acc IF (*-1 SOMEACCPREP BARRIER NPNHA);
-MAP:r83 (@P<) TARGET NOMINALHEAD + Gen IF (*-1 SOMEGENPREP BARRIER NPNHA);
+# CBARRIER eller BARRIER?
+MAP:r81 (@P<) TARGET NOMINALHEAD + Dat IF (*-1 SOMEDATPREP CBARRIER NPNHA);
+MAP:r82 (@P<) TARGET NOMINALHEAD + Acc IF (*-1 SOMEACCPREP CBARRIER NPNHA);
+MAP:r83 (@P<) TARGET NOMINALHEAD + Gen IF (*-1 SOMEGENPREP CBARRIER NPNHA);
 
-MAP:r81a (@P<) TARGET A + Dat IF (*-1 SOMEDATPREP BARRIER NPNHA)(NOT *1 N OR A);
-MAP:r82a (@P<) TARGET A + Acc IF (*-1 SOMEACCPREP BARRIER NPNHA)(NOT *1 N OR A);
-MAP:r83a (@P<) TARGET A + Gen IF (*-1 SOMEGENPREP BARRIER NPNHA)(NOT *1 N OR A);
+MAP:r81a (@P<) TARGET A + Dat IF (*-1 SOMEDATPREP CBARRIER NPNHA)(NOT *1 N OR A);
+MAP:r82a (@P<) TARGET A + Acc IF (*-1 SOMEACCPREP CBARRIER NPNHA)(NOT *1 N OR A);
+MAP:r83a (@P<) TARGET A + Gen IF (*-1 SOMEGENPREP CBARRIER NPNHA)(NOT *1 N OR A);
 
-MAP:r81 (@P<) TARGET NOMINALHEAD + Dat IF (*-1 CC BARRIER NPNHA LINK -1 NOMINALHEAD LINK *-1 SOMEDATPREP BARRIER NPNH);
-MAP:r82 (@P<) TARGET NOMINALHEAD + Acc IF (*-1 CC BARRIER NPNHA LINK -1 NOMINALHEAD LINK *-1 SOMEACCPREP BARRIER NPNH);
-MAP:r83 (@P<) TARGET NOMINALHEAD + Gen IF (*-1 CC BARRIER NPNHA LINK -1 NOMINALHEAD LINK *-1 SOMEGENPREP BARRIER NPNH);
+MAP:r81 (@P<) TARGET NOMINALHEAD + Dat IF (*-1 CC CBARRIER NPNHA LINK -1 NOMINALHEAD LINK *-1 SOMEDATPREP CBARRIER NPNH);
+MAP:r82 (@P<) TARGET NOMINALHEAD + Acc IF (*-1 CC CBARRIER NPNHA LINK -1 NOMINALHEAD LINK *-1 SOMEACCPREP CBARRIER NPNH);
+MAP:r83 (@P<) TARGET NOMINALHEAD + Gen IF (*-1 CC CBARRIER NPNHA LINK -1 NOMINALHEAD LINK *-1 SOMEGENPREP CBARRIER NPNH);
 
 
 
@@ -1067,10 +1095,14 @@ MAP:r83 (@P<) TARGET NOMINALHEAD + Gen IF (*-1 CC BARRIER NPNHA LINK -1 NOMINALH
 MAP:r84c (@>N) TARGET Det + $$GENDER + $$NAGD IF (1 A + $$GENDER + $$NAGD); # BARRIER NPNHA);
 ## sjekk denne!!
 
-MAP:r84b (@>N) TARGET Pron + Indef  + $$GENDER + $$NAGD IF (1 N + $$GENDER + $$NAGD BARRIER NPNHA);
+MAP:r84c (@>N) TARGET Pron + Dem  + $$GENDER + $$NAGD IF (*1 N + $$GENDER + $$NAGD BARRIER NPNHA);
+MAP:r84b (@>N) TARGET Pron + Indef  + $$GENDER + $$NAGD IF (*1 N + $$GENDER + $$NAGD BARRIER NPNHA);
 
-MAP:r84a (@>A) TARGET Det + $$GENDER + $$NAGD IF (1 A + $$GENDER + $$NAGD BARRIER NPNHA LINK 1 S-BOUNDARY);
+MAP:r84a (@>A) TARGET Det + $$GENDER + $$NAGD IF (1 A + $$GENDER + $$NAGD LINK 1 S-BOUNDARY);
+MAP:r84a (@>A) TARGET Det + $$GENDER + $$NAGD IF (1 A + $$GENDER + $$NAGD);
 
+MAP:r84a (@>A) TARGET Pron + Dem + $$GENDER + $$NAGD IF (1 A + $$GENDER + $$NAGD LINK 1 S-BOUNDARY);
+MAP:r84a (@>A) TARGET Pron + Indef + $$GENDER + $$NAGD IF (1 A + $$GENDER + $$NAGD LINK 1 S-BOUNDARY); # hmm
 
 MAP:r85 (@>N) TARGET (N Gen) IF (*1 N BARRIER V OR Adv);
 MAP:r86 (@>N) TARGET Det IF (*1 N BARRIER V OR Adv OR Pr OR (";"));
@@ -1083,7 +1115,7 @@ MAP (@>N) TARGET Num IF (*1 N BARRIER NPNHA);
 
 
 MAP:r72 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (*1 (V 2Sg) BARRIER VFIN);
-MAP:r72 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (1 (V Prt Sg) BARRIER VFIN);
+MAP:r72 (@SUBJ>) TARGET ("tú" Pron Pers Sg Nom) IF (*1 (V Prt Sg) BARRIER VFIN);
 MAP:r73 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V 2Sg) BARRIER VFIN);
 MAP:r73 (@<SUBJ) TARGET ("tú" Pron Pers Sg Nom) IF (*-1 (V Prt Sg) BARRIER VFIN);
 
@@ -1318,7 +1350,7 @@ REMOVE (@SUBJ>) IF (*-1 VFIN LINK -1C (@SUBJ>))(0 (@<OBJ));
 
 # Direct objects
 
-REMOVE Acc IF (*-1 ("seg" Acc) LINK -1 V BARRIER NOT-ACC);
+REMOVE Acc IF (*-1 ("seg" Acc) BARRIER NOT-ACC LINK -1 V);
 REMOVE:NotPostSubj (@SUBJ>) IF (0 (@<OBJ))(*1 CLB BARRIER VFIN);
 
 REMOVE (@SUBJ>) IF (0 (@<OBJ))(NOT *1 VFIN BARRIER S-BOUNDARY);
@@ -1366,8 +1398,8 @@ REMOVE (@-F<ADVL) IF (0 (@<ADVL))(*-1C VFIN BARRIER VINFIN);
 # Number SPRED disambiguation
 
 SELECT (Nom @>N) IF (*1C N + Nom BARRIER NPNH OR PRE-N + NOTNOM);
-SELECT (Acc @>N) IF (1C N + Acc BARRIER NPNH OR PRE-N + NOTACC);
-SELECT (Dat @>N) IF (1C N + Dat BARRIER NPNH OR PRE-N + NOTDAT);
+SELECT (Acc @>N) IF (*1C N + Acc BARRIER NPNH OR PRE-N + NOTACC);
+SELECT (Dat @>N) IF (*1C N + Dat BARRIER NPNH OR PRE-N + NOTDAT);
 
 
 REMOVE:r115 (A @>N) IF (0 V)(NOT 1 N OR A);

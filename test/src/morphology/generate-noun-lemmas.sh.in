@@ -32,7 +32,7 @@ fsttype=
 @CAN_XFST_TRUE@fsttype="$fsttype xfst"
 
 # Exit if both hfst and xerox have been shut off:
-if [ -z $fsttype ]; then
+if test -z "$fsttype" ; then
     echo "All transducer types have been shut off at configure time."
     echo "Nothing to test. Skipping."
     exit 77

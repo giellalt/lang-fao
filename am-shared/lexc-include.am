@@ -61,27 +61,34 @@ stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
 		inFile=$$(@CYGWINJAVAPATH@ "$(abs_srcdir)/$<") > $@
 endif
 endif
-####### HFST build rules: ########
 
-# lexical transducer building rules:
-# for HFST:
-$(GTLANG).lexc.hfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
-	$(AM_V_GEN)$(HFST_LEXC) -f foma -o $@.foma $^ \
-		&& $(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@ \
-		&& rm -f $@.foma
+####### Concatenate all lexc files - Xerox lexc doesn't quit on fail, and
+####### Xerox xfst can only read one lexc file (we prefer to get an error
+####### when something doesn't work); hfst does the concatenation automatically
+####### but by doing it explicitly we have a source file to relate line numbers
+####### in error messages to.
+$(GTLANG)-all.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
+	$(AM_V_GEN)cat $^ > $@
+
+##################################################
+####### lexical transducer building rules: #######
+
+####### HFST build rules: ########
+$(GTLANG).lexc.hfst: $(GTLANG)-all.lexc
+	$(AM_V_GEN)$(HFST_LEXC) -f openfst-tropical -o $@ $^
 
 ####### Xerox build rules: #######
-
-$(GTLANG).lexc.xfst: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
-	$(AM_V_GEN)$(PRINTF) \
-		"compile-source $^\nsource-to-result\nsave-source $@\nquit\n" \
-		> $@.script \
-		&& $(LEXC) < $@.script \
-		&& rm -f $@.script
+$(GTLANG).lexc.xfst: $(GTLANG)-all.lexc
+	$(AM_V_GEN)$(XFST) -q \
+			-e "read lexc $^" \
+			-e "compose net" \
+			-e "save stack $@ " \
+			-stop
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f $(GT_LEXICAL) *.foma *.tmp.* *.hfst *.xfst *.script
+	-rm -f $(GT_LEXICAL) *.foma *.tmp.* \
+		*.hfst *.xfst *.script $(GTLANG)-all.lexc
 
 maintainer-clean-local:
 	-rm -f $(GENERATED_LEXC_SRCS)

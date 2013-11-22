@@ -45,19 +45,8 @@ GT_REGEX_SRCS=$(GT_TAGSET_SRCS)
 
 ####### HFST build rules: ########
 
-# Extract the GT tags:
-gttags.hfst.txt: ../morphology/$(GTLANG).lexc.hfst
-	$(AM_V_GEN)$(HFST_PROJECT) -p upper $< \
-		| $(HFST_MINIMIZE)     \
-		| $(HFST_SUMMARIZE) -v \
-		| grep -A1 'arc symbols actually seen' \
-		| grep -F '+'   \
-		| tr ' ' '\n'   \
-		| grep '\+[^,]' \
-		| tr -d ',' > $@
-
 # Convert GT-tags to Apertium-tags:
-apertiumtags.hfst.txt: gttags.hfst.txt
+apertiumtags.hfst.txt: ../filters/gttags.hfst.txt
 	$(AM_V_GEN)tr -d '+' < $< \
 		| tr '#' '+' \
 		| tr '/[:upper:]' '_[:lower:]' \
@@ -66,7 +55,7 @@ apertiumtags.hfst.txt: gttags.hfst.txt
 # Generate relabel file for replacing GT with Apertium tags:
 apertium.relabel: gttags.hfst.txt apertiumtags.hfst.txt
 	$(AM_V_GEN)paste $^ | tr -d '%' > $@
-	printf "#\t+\n" >> $@
+	$(AM_V_GEN)printf "#\t+\n" >> $@
 
 # The regex generating rule isn't used for hfst, but the target below can be
 # a useful reference for future Xerox relabeling targets.

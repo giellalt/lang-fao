@@ -24,7 +24,42 @@ EXTRA_DIST=$(GT_FILTER_SRCS)
 ####### Automake targets: ########
 
 # @param GT_REGEX_TARGETS required
-noinst_DATA=$(GT_FILTER_TARGETS)
+noinst_DATA=$(GT_FILTER_TARGETS) $(GT_TAGS)
+
+# Variable to hold of filenames created to hold all tags used
+# (all symbols starting with '+')
+GT_TAGS=
+if CAN_HFST
+GT_TAGS+=gttags.hfst.txt
+endif
+
+if CAN_XFST
+GT_TAGS+=gttags.xfst.txt
+endif
+
+####### Build rules for extracting tags: #######
+
+gttags.xfst.txt: ../morphology/$(GTLANG).lexc.xfst
+	$(AM_V_GEN)$(XFST) -q \
+			-e "load stack $^" \
+			-e "print sigma" \
+			-stop \
+		| grep -v '^Size' \
+		| tr ' ' '\n' \
+		| sort \
+		| grep -v '^$$' \
+		| grep -v '^Sigma:' \
+		| grep -E '(^\+.|.\+$$)' \
+		> $@
+
+gttags.hfst.txt: ../morphology/$(GTLANG).lexc.hfst
+	$(AM_V_GEN)$(HFST_SUMMARIZE) -v $^ \
+		| grep -A1 '^sigma set' \
+		| grep -F '+' \
+		| tr ' ' '\n' \
+		| sed 's/,$$//g' \
+		| grep -E '(^\+.|.\+$$)' \
+		> $@
 
 ####### HFST build rules: ########
 .regex.hfst:
@@ -44,6 +79,6 @@ noinst_DATA=$(GT_FILTER_TARGETS)
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.xfst
+	-rm -f *.hfst *.xfst *.txt
 
 # vim: set ft=automake:

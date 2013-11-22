@@ -1,4 +1,9 @@
-$Rev: 83906 $
+$Rev: 83961 $
+Moved tag extraction from tagsets to filters, as it has a more general use as
+the basis for dynamic filter construction. Tag extraction now works with both
+Xerox and Hfst.
+
+r83906:
 Xerox will now stop on lexc syntax errors. Hfst will not until (hfst_)foma is
 fixed, because foma doesn't stop on syntax errors. But one is better than none.
 

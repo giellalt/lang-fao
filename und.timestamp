@@ -1,4 +1,7 @@
-$Rev: 83961 $
+$Rev: 83976 $
+Reverted a change to hfst lexc compilation - the -f option doesn't work.
+
+r83961:
 Moved tag extraction from tagsets to filters, as it has a more general use as
 the basis for dynamic filter construction. Tag extraction now works with both
 Xerox and Hfst.

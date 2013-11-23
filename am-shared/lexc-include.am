@@ -75,7 +75,9 @@ $(GTLANG)-all.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 
 ####### HFST build rules: ########
 $(GTLANG).lexc.hfst: $(GTLANG)-all.lexc
-	$(AM_V_GEN)$(HFST_LEXC) -f openfst-tropical -o $@ $^
+	$(AM_V_GEN)$(HFST_LEXC) -f foma -o $@.foma $^
+	$(AM_V_GEN)$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
+	$(AM_V_GEN)rm -f $@.foma
 
 ####### Xerox build rules: #######
 $(GTLANG).lexc.xfst: $(GTLANG)-all.lexc

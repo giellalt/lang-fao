@@ -26,20 +26,27 @@ EXTRA_DIST=$(GT_FILTER_SRCS)
 # @param GT_REGEX_TARGETS required
 noinst_DATA=$(GT_FILTER_TARGETS) $(GT_TAGS)
 
-# Variable to hold of filenames created to hold all tags used
+# Variable to hold filenames for files containing all tags used
 # (all symbols starting with '+')
 GT_TAGS=
 if CAN_HFST
-GT_TAGS+=gttags.hfst.txt
-endif
+GT_TAGS+=gttags.txt
+
+gttags.txt: ../morphology/$(GTLANG).lexc.hfst
+	$(AM_V_GEN)$(HFST_SUMMARIZE) -v $^ \
+		| grep -A1 '^sigma set' \
+		| grep -F '+' \
+		| tr ' ' '\n' \
+		| sed 's/,$$//g' \
+		| grep -E '(^\+.|.\+$$)' \
+		> $@
+
+else
 
 if CAN_XFST
-GT_TAGS+=gttags.xfst.txt
-endif
+GT_TAGS+=gttags.txt
 
-####### Build rules for extracting tags: #######
-
-gttags.xfst.txt: ../morphology/$(GTLANG).lexc.xfst
+gttags.txt: ../morphology/$(GTLANG).lexc.xfst
 	$(AM_V_GEN)$(XFST) -q \
 			-e "load stack $^" \
 			-e "print sigma" \
@@ -52,14 +59,13 @@ gttags.xfst.txt: ../morphology/$(GTLANG).lexc.xfst
 		| grep -E '(^\+.|.\+$$)' \
 		> $@
 
-gttags.hfst.txt: ../morphology/$(GTLANG).lexc.hfst
-	$(AM_V_GEN)$(HFST_SUMMARIZE) -v $^ \
-		| grep -A1 '^sigma set' \
-		| grep -F '+' \
-		| tr ' ' '\n' \
-		| sed 's/,$$//g' \
-		| grep -E '(^\+.|.\+$$)' \
-		> $@
+endif # CAN_XFST
+endif # CAN_HFST
+
+####### Build rules for extracting tags: #######
+
+semtags.txt: gttags.txt
+	$(AM_V_GEN)grep -F '+Sem/' $< > $@
 
 ####### HFST build rules: ########
 .regex.hfst:

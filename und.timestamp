@@ -1,4 +1,9 @@
-$Rev: 84086 $
+$Rev: 84090 $
+Added rules to generate regexes automatically from the list of extracted tags.
+First out is the regex to make semantic tags optional, and another to remove
+them completely. Also fixed file references in the relabel targets.
+
+r84086:
 Added a rule to generate phonology documentation from xfscript, not 
 only from twolc.
 

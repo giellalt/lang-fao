@@ -64,8 +64,16 @@ endif # CAN_HFST
 
 ####### Build rules for extracting tags: #######
 
-semtags.txt: gttags.txt
+semantic-tags.txt: gttags.txt
 	$(AM_V_GEN)grep -F '+Sem/' $< > $@
+
+####### Build rules for creating regexes from tag list: #######
+
+make-optional-%-tags.regex: %-tags.txt
+	$(AM_V_GEN)$(GTCORE)/scripts/taglist2make_optional_tags_regex.sh $< > $@
+
+remove-%-tags.regex: %-tags.txt
+	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_tags_regex.sh $< > $@
 
 ####### HFST build rules: ########
 .regex.hfst:

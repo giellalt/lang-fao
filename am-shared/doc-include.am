@@ -19,6 +19,9 @@ FORRESTARGS=-Dforrest.jvmargs="-Dfile.encoding=utf-8 -Djava.awt.headless=true"
 %-phonology.jspwiki: $(top_srcdir)/src/phonology/%.twolc
 	$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
 
+%-phonology.jspwiki: $(top_srcdir)/src/phonology/%.xfscript
+	$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
+
 %-morphology.jspwiki: $(top_srcdir)/src/morphology/%.lexc
 	$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
 

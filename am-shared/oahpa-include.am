@@ -14,8 +14,7 @@
 # * generation restriction tags: Use/NGminip    - not implemented
 #
 # Build the normative Oahpa generator:
-generator-oahpa-gt-norm.xfst: analyser-raw-gt-desc.xfst          \
-					filters/make-optional-semantic-tags.xfst     \
+generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/make-optional-variant-tags.xfst      \
 					filters/remove-derivation-position-tags.xfst \
@@ -30,8 +29,7 @@ generator-oahpa-gt-norm.xfst: analyser-raw-gt-desc.xfst          \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-sub-forms.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex                              \
-				@\"filters/make-optional-semantic-tags.xfst\"     \
-			.o. @\"filters/make-optional-transitivity-tags.xfst\" \
+				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \

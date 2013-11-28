@@ -76,7 +76,6 @@ generator-dict-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst       \
 # time, this transducer DOES CONTAIN the homonym and variant tags, to govern
 # proper paradigm generation:
 generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
-					filters/make-optional-semantic-tags.xfst \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst \
@@ -91,8 +90,7 @@ generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-sub-forms.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex \
-				@\"filters/make-optional-semantic-tags.xfst\" \
-			.o. @\"filters/make-optional-transitivity-tags.xfst\" \
+				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\" \
@@ -113,7 +111,6 @@ generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 
 # Even in this case we want the "other" transducer, to be able to test them.
 analyser-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
-					filters/make-optional-semantic-tags.xfst \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst \
@@ -128,8 +125,7 @@ analyser-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-sub-forms.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex \
-				@\"filters/make-optional-semantic-tags.xfst\" \
-			.o. @\"filters/make-optional-transitivity-tags.xfst\" \
+				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\" \

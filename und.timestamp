@@ -1,4 +1,12 @@
-$Rev: 84090 $
+$Rev: 84212 $
+Further cleanup of semantic tag filtering: no processing of semantic filters in
+the shared makefiles.
+
+r84117:
+Remove semantic tag filtering from the common targets, it is only used by sme
+and sma.
+
+r84090:
 Added rules to generate regexes automatically from the list of extracted tags.
 First out is the regex to make semantic tags optional, and another to remove
 them completely. Also fixed file references in the relabel targets.

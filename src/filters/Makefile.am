@@ -23,7 +23,6 @@ GT_FILTER_TARGETS=
 if CAN_HFST
 GT_FILTER_TARGETS+=\
 				   make-optional-homonymy-tags.hfst       \
-				   make-optional-semantic-tags.hfst       \
 				   make-optional-transitivity-tags.hfst   \
 				   make-optional-variant-tags.hfst        \
 				   remove-derivation-position-tags.hfst   \
@@ -33,7 +32,6 @@ GT_FILTER_TARGETS+=\
 				   remove-number-string-tags.hfst         \
 				   remove-orig_lang-tags.hfst             \
 				   remove-orthography-tags.hfst           \
-				   remove-semantic-tags-except-prop.hfst  \
 				   remove-usage-tags.hfst                 \
 				   remove-variant-tags.hfst               \
 				   remove-hyphenation-marks.hfst          \
@@ -59,7 +57,6 @@ endif
 if CAN_XFST
 GT_FILTER_TARGETS+=\
 				   make-optional-homonymy-tags.xfst       \
-				   make-optional-semantic-tags.xfst       \
 				   make-optional-transitivity-tags.xfst   \
 				   make-optional-variant-tags.xfst        \
 				   remove-derivation-position-tags.xfst   \
@@ -69,7 +66,6 @@ GT_FILTER_TARGETS+=\
 				   remove-number-string-tags.xfst         \
 				   remove-orig_lang-tags.xfst             \
 				   remove-orthography-tags.xfst           \
-				   remove-semantic-tags-except-prop.xfst  \
 				   remove-usage-tags.xfst                 \
 				   remove-variant-tags.xfst               \
 				   remove-hyphenation-marks.xfst          \

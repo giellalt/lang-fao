@@ -49,5 +49,5 @@ generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
 		 quit\n" | $(XFST)
 
 # Dummy hfst rule to avoid build errors:
-generator-oahpa-gt-norm.hfst: generator-raw-gt-desc.hfst
+generator-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst
 	$(AM_V_GEN)cp -f $< $@

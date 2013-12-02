@@ -71,11 +71,30 @@ semantic-tags.txt: gttags.txt
 # Do not delete intermediate files:
 .SECONDARY:
 
+# Create regex from tag list for making that tag list optional.
+# The conditional is there to allow for tag list specific shell scripts, ie only
+# optional in certain contexts. If not found, it will fall back to a default
+# shell script.
 make-optional-%-tags.regex: %-tags.txt
-	$(AM_V_GEN)$(GTCORE)/scripts/taglist2make_optional_tags_regex.sh $< > $@
+	$(AM_V_GEN)if \
+		test -e $(GTCORE)/scripts/taglist2make_optional_$*_tags_regex.sh ; \
+		then \
+			$(GTCORE)/scripts/taglist2make_optional_$*_tags_regex.sh $< > $@ ; \
+		else \
+			$(GTCORE)/scripts/taglist2make_optional_tags_regex.sh $< > $@ ; \
+		fi
 
+# Create regex from tag list for removing the tags in the tag list from the fst.
+# The conditional is there to allow for tag list specific shell scripts, ie only
+# remove in certain contexts. If not found, it will fall back to a default
+# shell script.
 remove-%-tags.regex: %-tags.txt
-	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_tags_regex.sh $< > $@
+	$(AM_V_GEN)if test -e $(GTCORE)/scripts/taglist2remove_$*_tags_regex.sh ; \
+		then \
+			$(GTCORE)/scripts/taglist2remove_$*_tags_regex.sh $< > $@ ; \
+		else \
+			$(GTCORE)/scripts/taglist2remove_tags_regex.sh $< > $@ ; \
+		fi
 
 ####### HFST build rules: ########
 .regex.hfst:

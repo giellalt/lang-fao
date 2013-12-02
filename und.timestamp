@@ -1,4 +1,10 @@
-$Rev: 84350 $
+$Rev: 84363 $
+Adding possibility to first look for specific regex creation shell script before
+falling back to a default shell script. This will allow us to create more
+complex or tailored regexes for certain tag sets (like the semantic tags), while
+having a reasonable fallback for other cases.
+
+r84350:
 Keeping intermediate files didn't work, created an error. Now it works.
 
 r84334:

@@ -9,7 +9,11 @@ Alphabet
  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å
  Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð
 
- g2:g i2:i j2:j v2:v 
+ a2:a ! for da2n -> dønum
+ g2:g 
+ i2:i 
+ j2:j 
+ v2:v 
  %^UUML:0 %^IUML:0 %^eIUML:0 %^W:0 %^EPH:0 %^JI:0 %^OEA:0 
  %^EDH:0 %^VSH:0
 
@@ -18,7 +22,10 @@ Alphabet
 
  %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0
  %^aAB:0 %^uAB:0
- %>:0 ;
+ %>:0 
+ 
+ « »
+ ;
 
 Sets
 
@@ -325,10 +332,13 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 
 "U-umlaut in Front of Nasal"
 !! __@RULENAME@__ 
- a:o <=> _ Nas (Cns:)  Vow: (Cns:)  %^EPH: %^UUML: ;
+ Vx:Vy <=> _ Nas (Cns:)  Vow: (Cns:)  %^EPH: %^UUML: ;
          _ Nas (Cns:)       (Cns:)         %^UUML: ;
 !        _ Nas (Cns:)  Vow: (Cns:)         %^UUML: ; !Needed???
-
+	where Vx in ( a a2 )
+		  Vy in ( o ø  )
+		  matched ;
+	
 !€ tank%^UUML
 !€ tonk0
 !den skal heller ikke klare det. den skal klare tonkum, og det gjør den.

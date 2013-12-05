@@ -81,6 +81,9 @@ LIST LEFT = LEFT ;
 LIST RIGHT = RIGHT ;
 LIST Guess = Guess ;
 
+LIST Mal = Mal ;
+LIST Plc = Plc ;
+
 
 
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
@@ -235,7 +238,7 @@ SET WORDMARK = WORD | MARK ;
 
 SET NPNH = WORDMARK - PRE-N ;
 SET NPNHA = WORDMARK - PRE-N - Adv ;
-SET NOT-ADV = WORDMARK - Adv ;
+SET NOT-ADV = WORDMARK - Adv - CC ; # adding CC
 SET LEX-ADV = Adv - (A*) ;
 SET NOT-A = WORDMARK - A ;
 SET NOT-CC = WORDMARK - CC ;
@@ -335,7 +338,12 @@ REMOVE Dat IF (*-1 V BARRIER NPNH LINK NOT 0 DATV)(0 Acc)(1 EOS OR CS);
 # Conjunctions
 
 
+# Subjunctions
 
+SELECT CS IF (-1 BOS)(0 ("tí"));
+# tí is also a dative pronoun. No instances have been observed
+# so far. Needed is thus real examples, in order to select them
+# before going for CS.
 
 # PP disambiguation
 # =================
@@ -408,6 +416,24 @@ REMOVE:STRONGDATPREPVERB Acc IF (*-1 SOMEACCDATPREP BARRIER NPNH LINK *-1 S-BOUN
 # POS disambiguation
 # ==================
 
+
+# Verbs
+
+# hava
+REMOVE ("havi") IF (0 ("hava") + V)(0* Pl + Nom BARRIER Det);
+
+# bera
+SELECT V IF (-1 Adv)(0 ("bar"))(1 ("til"));
+       ## Soleiðis bar til.
+
+# vera
+SELECT:vera ("vera") IF (0 ("ver"))(*-1 ("hava") BARRIER V);
+
+# verða
+SELECT:verda ("verða") IF (0 ("verður"))(*1 A OR Sup CBARRIER NOT-ADV);
+	     ## ... sum av tær verður gitin.
+
+
 # Pron Pers or Det
 
 REMOVE Pers IF (-1 Pr)(0 (Det Gen))(*1 N OR A BARRIER NPNH);
@@ -438,9 +464,9 @@ REMOVE (Num Neu Dat) IF (0 (Det Neu Dat))(1 (N Neu Dat) OR (A Neu Dat));
 
 	## eina mynd
 
-# Prop
+# Proper nouns
 
-SELECT:InternalProp Prop IF (NOT -1 CLB OR PUNCT OR LEFT)(NOT 0 Guess);
+#REMOVE:InternalProp Guess IF (NOT -1 CLB OR PUNCT OR LEFT)(NOT 0 Guess);
 
 # Specific lexemes, words 
 # =======================
@@ -448,6 +474,11 @@ SELECT:InternalProp Prop IF (NOT -1 CLB OR PUNCT OR LEFT)(NOT 0 Guess);
 # aftan
 SELECT Pr IF (0 ("aftan"))(1 Pr);
 	## aftan fyri sparikassan...
+	
+
+# allur
+SELECT:ØllumSum Det + Neu + Sg + Dat IF (0 ("allur"))(1 COMMA)(2 ("sum")); 
+	
 
 # at
 SELECT CS IF (-2 ("av"))(-1 ("tað"))(0 ("at"));
@@ -490,6 +521,12 @@ REMOVE:hannur ("hannur") IF (NOT -1 PRE-N)(0 ("hann")); # hannur must be ein han
 # her
 REMOVE ("hera" Imp) IF (0 ("her"));
 	# Cannot come up with a condition calling for Imp of "hera"
+	
+# hetta	
+SELECT:hesinNom ("hesin" Pron Dem Neu Sg Nom) IF (1 VFIN)(NOT 2 Nom);
+SELECT:hesinAcc ("hesin" Pron Dem Neu Sg Acc) IF (1 VFIN)(2C Nom);
+
+REMOVE:Hetta ("Hetta" Prop) IF (NOT -1 Mal);
 
 # hon
 SELECT:hon Pron IF (0 ("hon"))(NOT 0 PRE-N);
@@ -511,6 +548,9 @@ SELECT ("liggja") + Prt IF (1 Pr);
 
 # men
 SELECT CC IF (*-1 CLB OR BOS OR PUNCT BARRIER WORD)(0 ("men"));
+
+# munandi
+SELECT:munandi Adv IF (0 ("munandi"))(1 Adv);
 
 # niðan
 SELECT Adv IF (0 ("niðan"))(1 Pr);
@@ -922,20 +962,6 @@ SELECT:1Sg 1Sg IF (-1C Adv)(0C V)(1 ("eg" Pron Nom))(NOT 2 CC);
 	
 REMOVE N IF (-1 ("sum" CS))(0 INDSBJ)(NOT 1 INDSBJ);
 
-# hava
-REMOVE ("havi") IF (0 ("hava") + V)(0* Pl + Nom BARRIER Det);
-
-# bera
-SELECT V IF (-1 Adv)(0 ("bar"))(1 ("til"));
-       ## Soleiðis bar til.
-
-# vera
-SELECT:vera ("vera") IF (0 ("ver"))(*-1 ("hava") BARRIER V);
-
-# verða
-SELECT:verda ("verða") IF (0 ("verður"))(1 A);
-	     ## ... sum av tær verður gitin.
-
 # VP disambiguation
 REMOVE:r113 V IF (-1 (Det Nom))(0 (N Nom));
 
@@ -1088,7 +1114,7 @@ MAP:DetPron (@>Pron) TARGET Det + $$GENDER + $$NAGD IF (1 Pron + $$GENDER + $$NA
 MAP:r84c (@>N) TARGET Det + $$GENDER + $$NAGD IF (1 A + $$GENDER + $$NAGD); # BARRIER NPNHA);
 ## sjekk denne!!
 
-MAP:r84c (@>N) TARGET Pron + Dem  + $$GENDER + $$NAGD IF (*1 N + $$GENDER + $$NAGD BARRIER NPNHA);
+MAP:r84c (@>N) TARGET Pron + Dem  + $$GENDER + $$NAGD IF (*1C N + $$GENDER + $$NAGD BARRIER NPNHA);
 MAP:r84b (@>N) TARGET Pron + Indef  + $$GENDER + $$NAGD IF (*1 N + $$GENDER + $$NAGD BARRIER NPNHA);
 
 MAP:r84a (@>A) TARGET Det + $$GENDER + $$NAGD IF (1 A + $$GENDER + $$NAGD LINK 1 S-BOUNDARY);
@@ -1234,6 +1260,7 @@ MAP:r77 (@<SUBJ) TARGET NOMINALHEAD + Pl + Nom IF (*-1 (V Pl));
 # allur should have another POS.
 MAP:r77 (@<SUBJ) TARGET Det + Pl + Nom IF (*-1 (V Pl))(0 ("allur"))(1 V); # Tað munnu øll vera samd um.
 MAP:r77 (@SUBJ>) TARGET Det + Pl + Nom IF (0 ("allur") + Pl + Nom)(1 (V Pl)); # Tað munnu øll vera samd um.
+
 
 # subject with relclause
 

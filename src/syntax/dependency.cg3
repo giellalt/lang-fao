@@ -49,6 +49,7 @@ LIST Pers = Pers ;
 LIST Dem = Dem ;
 LIST Det = Det ;
 LIST Refl = Refl ;
+LIST Rel = Rel ;
 LIST Recipr = Recipr ;
 LIST Poss = Poss ;
 LIST Interr = Interr ;
@@ -167,6 +168,7 @@ SET NONVFIN = VINFIN ; # sme compatibility
 
 
 
+LIST ADVL-COMPfao = ("ið" Adv) ("hvi" Adv) ("hagar" Adv) ("tá" Adv) ("hvussu" Adv) ("um" CS) ("áðrenn" CS) ("tí" CS) ("tá_ið" Adv) ;
 
 
 
@@ -277,7 +279,7 @@ LIST @Pron< = @Pron< ;
 LIST @SPRED = @SPRED> @<SPRED ;
 LIST @SUBJ<ADVL = @SUBJ<ADVL ;
 LIST @SUBJ<OBJ = @SUBJ<OBJ ;
-LIST @V = @FAUX @FMV @FS-IAUX @FS-IMV @FS-N< @FS-N<IAUX @FS-N<IMV @FS-STA @IAUX @IMV ; # 
+LIST @V = @FMV @IMV @FAUX @IAUX @FS-VFIN< @FS-ADVL @FS-<ADVL @FS-ADVL> @FS-OBJ @FS-OBJ> @FS-<OBJ @FS-SUBJ @FS-SUBJ> @FS-<SUBJ @FS-IMV @FS-N<IMV @FS-N< @FS-P< @FS-P<IMV @FS-IAUX @ICL-P< @ICL-P<IMV @FS-N<IAUX @ICL-OBJ @ICL-SUBJ @PRED @PRED2;
 LIST @VOC = @VOC ;
 
 
@@ -297,29 +299,80 @@ LIST @rc-VAUX = @rc-VAUX ;
 
 # Syntactic set definitions 
 # =========================
+### LIST @IAUX = @IAUX ;
+### LIST @FS-IAUX = @FS-IAUX ;
+### LIST <mv> = <mv> ;
+### LIST <aux> = <aux> ;
+### LIST @MCLV = @FMV @IMV @FAUX @IAUX ;
+### LIST @SCLV = @FS-STA @FS-IMV @FS-N<IMV @FS-N< @FS-IAUX @FS-N<IAUX;
+### LIST @FV = @FMV @FAUX ;
+### LIST @AUX = @IAUX @FAUX ;
+### LIST @MV = @IMV @FMV ;
+### LIST @FMV = @FMV ;
+### LIST KONJ = CS CC ;
+### 
+### #LIST @-FARG = @-FOBJ @-FSUBJ ;
+### #SET @ARG = @SUBJ OR @OBJ OR @SPRED OR @OPRED OR @ADVL  ; #  OR @ICL-OBJ OR @<PPRED OR @ADVL>SUBJ
+### #SET @-FARG/ADVL = @-FARG ; # OR @-FADVL ;
+### #SET @ARG/ADVL = @ARG OR @ADVL - (@ADVL + CC) ; # syntax err
+### #SET @CLAUSE = @ARG/ADVL OR @-FARG/ADVL OR @V ;
+### 
+### LIST @-FARG = @-FOBJ> @-F<OBJ @-FADVL> @-F<ADVL @-F<SPRED @-F<OPRED @-FSUBJ> @-FIOBJ> @-F<IOBJ ;
+### SET @ARG = SUBJ OR OBJ OR SPRED OR OPRED OR ADVL OR @ICL-OBJ OR @<PPRED OR IOBJ OR @POSS> OR @APP-N< OR @P< ;
+### SET @CLAUSE = @HNOUN OR @ARG OR @-FARG OR @V - CC ;
+### 
+### # Boundary sets
+### 
+### SET S-BOUNDARY  = CS | Interr | (";") | BOS | EOS ;
+### SET S-BOUNDARY2 = CS | Interr | (";") | BOS | EOS | (@CVP) ;
+
+
+LIST SPRED = @SPRED> @<SPRED @SPRED ;
+LIST OPRED = @OPRED> @<OPRED ;
+LIST SUBJ = @<SUBJ @SUBJ> @SUBJ @-FSUBJ> ;
+LIST SUBJ> = @SUBJ> @tSUBJ> ;
+LIST <SUBJ = @<SUBJ @<tSUBJ ;
+LIST OBJ = @<OBJ @OBJ> @OBJ @-FOBJ> @-F<OBJ ;
+LIST IOBJ = @<IOBJ @IOBJ> ;
+LIST OBJ> = @OBJ> @IOBJ> ;
+LIST <OBJ = @<OBJ @<IOBJ ;
+LIST FOBJ> = @-FOBJ> @-FIOBJ> ;
+LIST F<OBJ = @-F<OBJ @-F<IOBJ ;
+LIST APP = @APP>Pron @APP-ADVL< @APP-N< @APP-Num< @APP-Pron< ;
+
+LIST @<ARG = @<SUBJ @<SPRED @<OBJ @<OPRED @-F<OBJ @-F<OPRED @<IOBJ ;
+
+LIST ADVL = @<ADVL @ADVL> @ADVL @-FADVL> @-F<ADVL @APP-ADVL< @CL-<ADVL @CL-ADVL> ; # @i-<ADVL @i-ADVL> ;                         # adverbial                        
+
 LIST @IAUX = @IAUX ;
 LIST @FS-IAUX = @FS-IAUX ;
+LIST @FS-N<IMV = @FS-N<IMV ;
+LIST @ICL-P< = @ICL-P< ;
 LIST <mv> = <mv> ;
 LIST <aux> = <aux> ;
 LIST @MCLV = @FMV @IMV @FAUX @IAUX ;
-LIST @SCLV = @FS-STA @FS-IMV @FS-N<IMV @FS-N< @FS-IAUX @FS-N<IAUX;
+LIST @SCLV = @FS-VFIN< @FS-IMV @FS-N<IMV @FS-N< @FS-IAUX @FS-N<IAUX @FS-ADVL @FS-ADVL> @FS-<ADVL @FS-OBJ @FS-OBJ> @FS-<OBJ @FS-SUBJ @FS-SUBJ> @FS-<SUBJ;
 LIST @FV = @FMV @FAUX ;
 LIST @AUX = @IAUX @FAUX ;
-LIST @MV = @IMV @FMV ;
+LIST @MV = @IMV @FMV @FMVdic @IMVdic ;
 LIST @FMV = @FMV ;
-LIST KONJ = CS CC ;
+LIST @FAUX = @FAUX ;
+LIST @FMVdic = @FMVdic ;
+LIST @IMVdic = @IMVdic ;
+LIST KONJ = CS CC <cs> ;
 
-LIST @-FARG = @-FOBJ @-FSUBJ ;
-SET @ARG = @SUBJ OR @OBJ OR @SPRED OR @OPRED OR @ADVL  ; #  OR @ICL-OBJ OR @<PPRED OR @ADVL>SUBJ
-SET @-FARG/ADVL = @-FARG ; # OR @-FADVL ;
-SET @ARG/ADVL = @ARG OR @ADVL - (@ADVL + CC) ;
-SET @CLAUSE = @ARG/ADVL OR @-FARG/ADVL OR @V ;
+LIST @-FARG = @-FOBJ> @-F<OBJ @-FADVL> @-F<ADVL @-F<SPRED @-F<OPRED @-FSUBJ> @-FIOBJ> @-F<IOBJ ;
+SET @ARG = SUBJ OR OBJ OR SPRED OR OPRED OR ADVL OR @ICL-OBJ OR @<PPRED OR IOBJ OR @APP-N< OR @P< ;
+SET @CLAUSE = @HNOUN OR @ARG OR @-FARG OR @V - CC ;
+LIST @NOARROW = @ADVL @SUBJ @OBJ ;
+
+LIST COMPOUND = (".*#.*"r) ;
+
+SET S-BOUNDARY = (Pron Interr) OR Rel OR ADVL-COMPfao OR ("\;") OR (":") OR ("-") OR ("–") OR (@CVP) ;
+
+SET S-BOUNDARY2 = CS | Interr | (";") | BOS | EOS | (@CVP) ; # Difference between these ?
 
 
-# Boundary sets
-
-SET S-BOUNDARY  = CS | Interr | (";") | BOS | EOS ;
-SET S-BOUNDARY2 = CS | Interr | (";") | BOS | EOS | (@CVP) ;
 
 
 

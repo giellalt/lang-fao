@@ -1,4 +1,9 @@
-$Rev: 84363 $
+$Rev: 84648 $
+Two dict analysers, one with mobile spellrelax, and one without. Also removing
+certain semantic tags and orig_lang tags which prevent POS from being the first
+tag, and messing with lookups for NDS
+
+r84363:
 Adding possibility to first look for specific regex creation shell script before
 falling back to a default shell script. This will allow us to create more
 complex or tailored regexes for certain tag sets (like the semantic tags), while

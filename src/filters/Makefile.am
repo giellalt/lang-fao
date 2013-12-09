@@ -98,7 +98,7 @@ endif
 # And Xerox targets here:
 if CAN_XFST
 GT_FILTER_TARGETS+=\
-					reorder-semantic-tags.hfst
+					reorder-semantic-tags.xfst
 endif
 
 include $(top_srcdir)/am-shared/filters-include.am

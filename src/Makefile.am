@@ -101,6 +101,56 @@ APERTIUM_GENERATORS_HFST+=
 endif
 endif
 
+
+# Standard transducers
+# HFST:
+generator-gt-norm.hfst: generator-gt-norm.tmp.hfst \
+					filters/make-optional-semantic-tags.hfst \
+					filters/reorder-semantic-tags.hfst
+	$(AM_V_GEN)$(PRINTF) \
+			   "@bin\"filters/make-optional-semantic-tags.hfst\" \
+			   "@bin\"filters/reorder-semantic-tags.hfst\" \
+			.o. @bin\"$<\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+
+# Xerox:
+generator-gt-norm.xfst: generator-gt-norm.tmp.xfst \
+					filters/make-optional-semantic-tags.xfst \
+					filters/reorder-semantic-tags.xfst
+	$(AM_V_GEN)$(PRINTF) "read regex                          \
+				@\"filters/make-optional-semantic-tags.xfst\" \
+				@\"filters/reorder-semantic-tags.xfst\" \
+			.o. @\"$<\".i                                     \
+			;\n\
+		 invert net\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST)
+
+
+# Standard analysers
+# HFST:
+analyser-gt-norm.hfst: analyser-gt-norm.tmp.hfst \
+					filters/reorder-semantic-tags.hfst
+	$(AM_V_GEN)$(PRINTF) \
+			   "@bin\"filters/reorder-semantic-tags.hfst\" \
+			.o. @bin\"$<\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+
+# Xerox:
+analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
+					filters/reorder-semantic-tags.xfst
+	$(AM_V_GEN)$(PRINTF) "read regex                          \
+				@\"filters/reorder-semantic-tags.xfst\" \
+			.o. @\"$<\".i                                     \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST)
+
+
 #################################################
 #### Add language-specific build rules here: ####
 

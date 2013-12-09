@@ -1,0 +1,37 @@
+!# This script reshuffles semantic tags to follow their POS
+
+! For Faroese only the N Prop is so far relevant.
+
+%+N %+Prop <- %+Prop %+N ;
+!
+!%+N %+Sem%/Ani <- %+Sem%/Ani %+N  ,
+!%+N %+Sem%/Body <- %+Sem%/Body %+N  ,
+!%+N %+Sem%/Build <- %+Sem%/Build %+N  ,
+!%+N %+Sem%/Clth <- %+Sem%/Clth %+N  ,
+!%+N %+Sem%/Edu <- %+Sem%/Edu %+N  ,
+!%+N %+Sem%/Event <- %+Sem%/Event %+N  ,
+!%+N %+Sem%/Fem <- %+Sem%/Fem %+N  ,
+!%+N %+Sem%/Food <- %+Sem%/Food %+N  ,
+!%+N %+Sem%/Group <- %+Sem%/Group %+N  ,
+!%+N %+Sem%/Hum <- %+Sem%/Hum %+N  ,
+!%+N %+Sem%/Act <- %+Sem%/Act %+N  ,
+!%+N %+Sem%/Lang <- %+Sem%/Lang %+N  ,
+!%+N %+Sem%/Mal <- %+Sem%/Mal %+N  ,
+!%+N %+Sem%/Measr <- %+Sem%/Measr %+N  ,
+!%+N %+Sem%/Obj <- %+Sem%/Obj %+N  ,
+!%+N %+Sem%/Org <- %+Sem%/Org %+N  ,
+!%+N %+Sem%/Plant <- %+Sem%/Plant %+N  ,
+!%+N %+Sem%/Plc <- %+Sem%/Plc %+N  ,
+!%+N %+Sem%/Route <- %+Sem%/Route %+N  ,
+!%+N %+Sem%/Sur <- %+Sem%/Sur %+N  ,
+!%+N %+Sem%/Time <- %+Sem%/Time %+N  ,
+!%+N %+Sem%/Txt <- %+Sem%/Txt %+N  ,
+!%+N %+Sem%/Veh <- %+Sem%/Veh %+N  ,
+!%+N %+Sem%/Wpn <- %+Sem%/Wpn %+N  ,
+!%+N %+Sem%/Wthr <- %+Sem%/Wthr %+N  ,
+!%+N %+Sem%/Money <- %+Sem%/Money %+N  ,
+!%+N %+Sem%/Mat <- %+Sem%/Mat %+N  ,
+!%+N %+Sem%/Semcon <- %+Sem%/Semcon %+N  ,
+!%+N %+Sem%/Ctain <- %+Sem%/Ctain %+N || ?* _ ?* ;
+
+

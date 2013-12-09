@@ -91,14 +91,14 @@ endif
 # Add the target of local additions here:
 # HFST targets here:
 if CAN_HFST
-GT_FILTER_TARGETS+=
-
+GT_FILTER_TARGETS+=\
+					reorder-semantic-tags.hfst
 endif
 
 # And Xerox targets here:
 if CAN_XFST
-GT_FILTER_TARGETS+=
-
+GT_FILTER_TARGETS+=\
+					reorder-semantic-tags.hfst
 endif
 
 include $(top_srcdir)/am-shared/filters-include.am

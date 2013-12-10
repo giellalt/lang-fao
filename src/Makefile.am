@@ -102,26 +102,26 @@ endif
 endif
 
 
-# Standard transducers
+# Standard generators
 # HFST:
-generator-gt-norm.hfst: generator-gt-norm.tmp.hfst \
+generator-gt-%.hfst: generator-gt-%.tmp.hfst \
 					filters/make-optional-semantic-tags.hfst \
 					filters/reorder-semantic-tags.hfst
 	$(AM_V_GEN)$(PRINTF) \
 			   "@bin\"filters/make-optional-semantic-tags.hfst\" \
-			   "@bin\"filters/reorder-semantic-tags.hfst\" \
+			.o. @bin\"filters/reorder-semantic-tags.hfst\" \
 			.o. @bin\"$<\" \
 			;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
 		> $@
 
 # Xerox:
-generator-gt-norm.xfst: generator-gt-norm.tmp.xfst \
+generator-gt-%.xfst: generator-gt-%.tmp.xfst \
 					filters/make-optional-semantic-tags.xfst \
 					filters/reorder-semantic-tags.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex                          \
 				@\"filters/make-optional-semantic-tags.xfst\" \
-				@\"filters/reorder-semantic-tags.xfst\" \
+			.o. @\"filters/reorder-semantic-tags.xfst\"       \
 			.o. @\"$<\".i                                     \
 			;\n\
 		 invert net\n\
@@ -131,24 +131,28 @@ generator-gt-norm.xfst: generator-gt-norm.tmp.xfst \
 
 # Standard analysers
 # HFST:
-analyser-gt-norm.hfst: analyser-gt-norm.tmp.hfst \
+analyser-gt-%.hfst: analyser-gt-%.tmp.hfst \
 					filters/reorder-semantic-tags.hfst
 	$(AM_V_GEN)$(PRINTF) \
 			   "@bin\"filters/reorder-semantic-tags.hfst\" \
 			.o. @bin\"$<\" \
 			;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_INVERT) \
 		> $@
 
 # Xerox:
-analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
+analyser-gt-%.xfst: analyser-gt-%.tmp.xfst \
 					filters/reorder-semantic-tags.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex                          \
 				@\"filters/reorder-semantic-tags.xfst\" \
-			.o. @\"$<\".i                                     \
+			.o. @\"$<\"                                     \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST)
+
+
+
 
 
 #################################################

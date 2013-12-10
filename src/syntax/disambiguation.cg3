@@ -81,15 +81,17 @@ LIST LEFT = LEFT ;
 LIST RIGHT = RIGHT ;
 LIST Guess = Guess ;
 
-LIST Mal = Mal ;
-LIST Plc = Plc ;
-LIST Sur = Sur ;
-
+LIST Sem/Fem = Sem/Fem ;
+LIST Sem/Mal = Sem/Mal ;
+LIST Sem/Plc = Sem/Plc ;
+LIST Sem/Sur = Sem/Sur ;
+LIST Sem/Org = Sem/Org ;
+LIST Sem/Veh = Sem/Veh ;
 
 
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
 Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
-PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Guess ;
+PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Sem/Fem Sem/Mal Sem/Plc Sem/Sur Sem/Org Sem/Veh Guess ;
 
 
 LIST NAGD = Nom Acc Gen Dat ;
@@ -528,7 +530,7 @@ REMOVE ("hera" Imp) IF (0 ("her"));
 SELECT:hesinNom ("hesin" Pron Dem Neu Sg Nom) IF (1 VFIN)(NOT 2 Nom);
 SELECT:hesinAcc ("hesin" Pron Dem Neu Sg Acc) IF (1 VFIN)(2C Nom);
 
-REMOVE:Hetta ("Hetta" Prop) IF (NOT -1 Mal);
+REMOVE:Hetta ("Hetta" Prop) IF (NOT -1 Sem/Mal);
 
 # hon
 SELECT:hon Pron IF (0 ("hon"))(NOT 0 PRE-N);
@@ -1111,9 +1113,9 @@ ADD:r68 (@CVP) TARGET CS ;
 MAP (@>CS) TARGET ("ein" Det Neu Sg Gen) IF (1 ("og" CS));
 
 
-MAP:Attr1 (@ATTR>) TARGET Prop IF (1 Sur) ;
-MAP:Attr2 (@ATTR>) TARGET Prop IF (1 Mal OR Fem)(2 Sur) ;
-MAP:Attr3 (@ATTR>) TARGET Prop IF (1 Mal OR Fem)(2 CC)(3 Mal OR Fem)(4 Sur) ;
+MAP:Attr1 (@ATTR>) TARGET Prop IF (1 Sem/Sur) ;
+MAP:Attr2 (@ATTR>) TARGET Prop IF (1 Sem/Mal OR Sem/Fem)(2 Sem/Sur) ;
+MAP:Attr3 (@ATTR>) TARGET Prop IF (1 Sem/Mal OR Sem/Fem)(2 CC)(3 Sem/Mal OR Sem/Fem)(4 Sem/Sur) ;
 
 # np
 
@@ -1143,17 +1145,17 @@ MAP (@>N) TARGET Num IF (*1 N BARRIER NPNHA);
 MAP:sa (@>N) TARGET Prop + Poss IF (*1 N BARRIER NPNH);
 
 # PP
-MAP:PropToDatPr (@P<) TARGET Prop + Dat IF (*-1 SOMEDATPREP CBARRIER NPNHA )(NOT *1 Sur BARRIER NOT-PROP);
-MAP:PropToAccPr (@P<) TARGET Prop + Acc IF (*-1 SOMEACCPREP CBARRIER NPNHA )(NOT *1 Sur BARRIER NOT-PROP);
-MAP:PropToGenPr (@P<) TARGET Prop + Gen IF (*-1 SOMEGENPREP CBARRIER NPNHA )(NOT *1 Sur BARRIER NOT-PROP);
+MAP:PropToDatPr (@P<) TARGET Prop + Dat IF (*-1 SOMEDATPREP CBARRIER NPNHA )(NOT *1 Sem/Sur BARRIER NOT-PROP);
+MAP:PropToAccPr (@P<) TARGET Prop + Acc IF (*-1 SOMEACCPREP CBARRIER NPNHA )(NOT *1 Sem/Sur BARRIER NOT-PROP);
+MAP:PropToGenPr (@P<) TARGET Prop + Gen IF (*-1 SOMEGENPREP CBARRIER NPNHA )(NOT *1 Sem/Sur BARRIER NOT-PROP);
 
-MAP:PropPropToDatPr (@P<) TARGET Prop + Dat IF (-1 (@ATTR>))(-2 SOMEDATPREP)(NOT *1 Sur BARRIER NOT-PROP);
-MAP:PropPropToAccPr (@P<) TARGET Prop + Acc IF (-1 (@ATTR>))(-2 SOMEACCPREP)(NOT *1 Sur BARRIER NOT-PROP);
-MAP:PropPropToGenPr (@P<) TARGET Prop + Gen IF (-1 (@ATTR>))(-2 SOMEGENPREP)(NOT *1 Sur BARRIER NOT-PROP);
+MAP:PropPropToDatPr (@P<) TARGET Prop + Dat IF (-1 (@ATTR>))(-2 SOMEDATPREP)(NOT *1 Sem/Sur BARRIER NOT-PROP);
+MAP:PropPropToAccPr (@P<) TARGET Prop + Acc IF (-1 (@ATTR>))(-2 SOMEACCPREP)(NOT *1 Sem/Sur BARRIER NOT-PROP);
+MAP:PropPropToGenPr (@P<) TARGET Prop + Gen IF (-1 (@ATTR>))(-2 SOMEGENPREP)(NOT *1 Sem/Sur BARRIER NOT-PROP);
 
-MAP:PropPropPropToDatPr (@P<) TARGET Prop + Dat IF (-1 (@ATTR>))(-2 (@ATTR>))(-3 SOMEDATPREP)(NOT *1 Sur BARRIER NOT-PROP);
-MAP:PropPropPropToAccPr (@P<) TARGET Prop + Acc IF (-1 (@ATTR>))(-2 (@ATTR>))(-3 SOMEACCPREP)(NOT *1 Sur BARRIER NOT-PROP);
-MAP:PropPropPropToGenPr (@P<) TARGET Prop + Gen IF (-1 (@ATTR>))(-2 (@ATTR>))(-3 SOMEGENPREP)(NOT *1 Sur BARRIER NOT-PROP);
+MAP:PropPropPropToDatPr (@P<) TARGET Prop + Dat IF (-1 (@ATTR>))(-2 (@ATTR>))(-3 SOMEDATPREP)(NOT *1 Sem/Sur BARRIER NOT-PROP);
+MAP:PropPropPropToAccPr (@P<) TARGET Prop + Acc IF (-1 (@ATTR>))(-2 (@ATTR>))(-3 SOMEACCPREP)(NOT *1 Sem/Sur BARRIER NOT-PROP);
+MAP:PropPropPropToGenPr (@P<) TARGET Prop + Gen IF (-1 (@ATTR>))(-2 (@ATTR>))(-3 SOMEGENPREP)(NOT *1 Sem/Sur BARRIER NOT-PROP);
 
 MAP:PronToDatPr (@P<) TARGET Pron + Indef + Dat IF (*-1 SOMEDATPREP CBARRIER NPNHA);
 MAP:PronToAccPr (@P<) TARGET Pron + Indef + Acc IF (*-1 SOMEACCPREP CBARRIER NPNHA);

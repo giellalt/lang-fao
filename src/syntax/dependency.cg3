@@ -85,6 +85,13 @@ LIST PUNCT = PUNCT ;
 LIST LEFT = LEFT ;
 LIST RIGHT = RIGHT ;
 
+LIST Sem/Fem = Sem/Fem ;
+LIST Sem/Mal = Sem/Mal ;
+LIST Sem/Plc = Sem/Plc ;
+LIST Sem/Sur = Sem/Sur ;
+LIST Sem/Org = Sem/Org ;
+LIST Sem/Veh = Sem/Veh ;
+
 LIST V* = V* ;
  
 SET WORD = N | V | A | Pr | Pron | Adv | CC | CS | Interj | Num | ("\?") ;
@@ -339,6 +346,7 @@ LIST <OBJ = @<OBJ @<IOBJ ;
 LIST FOBJ> = @-FOBJ> @-FIOBJ> ;
 LIST F<OBJ = @-F<OBJ @-F<IOBJ ;
 LIST APP = @APP>Pron @APP-ADVL< @APP-N< @APP-Num< @APP-Pron< ;
+LIST @ATTR> = @ATTR> ;
 
 LIST @<ARG = @<SUBJ @<SPRED @<OBJ @<OPRED @-F<OBJ @-F<OPRED @<IOBJ ;
 
@@ -442,6 +450,8 @@ SECTION
 SETPARENT:r0 @IM TO (1 Inf);
 
 ### NP rules
+
+SETPARENT:PropAttr @ATTR> TO (1 Prop) ;
 
 SETPARENT:r1 @>N TO (*1 N BARRIER NPNH);
 SETPARENT:r1adj @>N TO (*2 Pr OR V OR S-BOUNDARY2 BARRIER NOT-A LINK -1 A);

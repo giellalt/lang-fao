@@ -1511,7 +1511,7 @@ REMOVE:NotPostSubj (@SUBJ>) IF (0 (@<OBJ))(*1 CLB BARRIER VFIN);
 REMOVE (@SUBJ>) IF (0 (@<OBJ))(NOT *1 VFIN BARRIER S-BOUNDARY);
 REMOVE (@SUBJ>) IF (0 (@<OBJ))(1 CC)(2C VFIN);
 
-REMOVE (@+FMAINV) IF (0 (V @<OBJ));
+REMOVE (@+FMAINV) IF (0* VFIN)(0 (V @<OBJ));
 
 # Subject predicatives
 

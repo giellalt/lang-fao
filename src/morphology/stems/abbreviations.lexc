@@ -28,6 +28,20 @@ LEXICON ab-noun
 ab-nodot-noun ;
 ab-dot-noun ;
 
+LEXICON ab-nodot ! default
++Abbr: # ;  ! no period, that is.
+
+LEXICON ab-dot ! Default
++Abbr:%. # ;
+
+LEXICON ab-nodot-noun ! The bulk
++Abbr+N: # ;  ! no period, that is.
+
+LEXICON ab-dot-noun ! This is the lexicon for abbrs that must have a period.
++Abbr+N:%. # ;
+
+
+
 !LEXICON ab-adj
 !ab-nodot-adj ;
 !ab-dot-adj ;
@@ -42,9 +56,6 @@ ab-dot-noun ;
 
 ! Here come POS and Case tags, and no period.
 
-LEXICON ab-nodot-noun ! The bulk
-+Abbr+N: # ;  ! no period, that is.
-! +Abbr+N:%- R ; !^C^ TRY OUT THIS ONE
 
 !LEXICON ab-nodot-adj
 !+Abbr: # ;  ! no period, that is.
@@ -64,22 +75,9 @@ LEXICON ab-nodot-noun ! The bulk
 ! +Abbr+Num: # ;  ! no period, that is.
 ! +Abbr+Num:%- R ; !^C^ TRY OUT THIS ONE
 
-LEXICON ab-nodot ! default
-!+Abbr: # ;  ! no period, that is.
-! +Abbr+Attr: # ;  ! no period, that is.
-+Abbr: # ;  ! no period, that is.
-! +Abbr:%- R ; !^C^ TRY OUT THIS ONE
 
 ! Here come POS and Case tags, with the period added.
 
-LEXICON ab-dot ! Default
-! +Abbr+Attr:%. # ;
-+Abbr:%. # ;
-
-LEXICON ab-dot-noun ! This is the lexicon for abbrs that must have a period.
-! +Abbr+N+Attr:%. # ;
-+Abbr+N:%. # ;
-! +Abbr+N:%- R ; !^C^ TRY OUT THIS ONE
 
 ! The idea is that the nominal ones may have case, like e.g. P.E.N.
 
@@ -328,7 +326,7 @@ pb ab ;
 pgf ab ;
 pkt ab ;
 rv ab ;
-s		ab-noun ;                                     !
+!s		ab-noun ;                                     !
 tab	ab ; ! or: Add capital Tab.               !
 tlf		ab-dot-noun ;                                 !
 tlf ab ;
@@ -641,7 +639,7 @@ refl ab ;
 repr ab ;
 res ab ;
 resp ab ;
-s ab ;
+!s ab ;
 s.% a ab ;
 s.% br ab ;
 s.% d ab ;

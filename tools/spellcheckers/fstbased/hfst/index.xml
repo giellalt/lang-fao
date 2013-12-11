@@ -2,19 +2,23 @@
 <hfstspeller dtdversion="1.0" hfstversion="3">
   <info>
     <locale>fo</locale>
-    <title>Giellatekno/divvun/UiT morphological analyser-based speller (Faroese)</title>
-    <description>
+    <title>Giellatekno/Divvun/UiT fst-based speller for Faroese</title>
+    <description>This is an fst-based speller for Faroese. It is based
+    on the normative subset of the morphological analyser for Faroese.
+    The source code can be found at:
+    https://victorio.uit.no/langtech/trunk/langs/fao/
+    License: GPL3+.
     </description>
     <version vcsrev="GT_REVISION">GT_VERSION</version>
     <date>DATE</date>
-    <producer>giellatekno/divvun/UiT contributors</producer>
-    <contact email="bugs@divvun.no" 
+    <producer>giellatekno/Divvun/UiT contributors</producer>
+    <contact email="feedback@divvun.no" 
         website="http://divvun.no"/>
   </info>
   <acceptor type="general" id="acceptor.default.hfst">
-    <title>Giellatekno/divvun/UiT dictionary Faroese</title>
+    <title>Giellatekno/Divvun/UiT dictionary Faroese</title>
     <description>
-        Giellatekno/divvun/UiT dictionary for Faroese compiled for HFST.
+        Giellatekno/Divvun/UiT dictionary for Faroese compiled for HFST.
     </description>
   </acceptor>
   <errmodel id="errmodel.default.hfst">

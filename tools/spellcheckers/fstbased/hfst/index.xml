@@ -7,8 +7,7 @@
     on the normative subset of the morphological analyser for Faroese.
     The source code can be found at:
     https://victorio.uit.no/langtech/trunk/langs/fao/
-    License: GPL3+.
-    </description>
+    License: GPL3+.</description>
     <version vcsrev="GT_REVISION">GT_VERSION</version>
     <date>DATE</date>
     <producer>Giellatekno/Divvun/UiT contributors</producer>
@@ -16,15 +15,13 @@
   </info>
   <acceptor type="general" id="acceptor.default.hfst">
     <title>Giellatekno/Divvun/UiT dictionary Faroese</title>
-    <description>
-        Giellatekno/Divvun/UiT dictionary for Faroese compiled for HFST.
-    </description>
+    <description>Giellatekno/Divvun/UiT dictionary for
+    Faroese compiled for HFST.</description>
   </acceptor>
   <errmodel id="errmodel.default.hfst">
     <title>Levenshtein edit distance transducer</title>
-    <description>
-        Correction model for keyboard misstrokes, at most 2 per word.
-    </description>
+    <description>Correction model for keyboard misstrokes, at most 2 per
+    word.</description>
         <type type="default"/>
         <model>errormodel.default.hfst</model>
     </errmodel>

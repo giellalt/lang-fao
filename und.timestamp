@@ -1,6 +1,15 @@
-Removed the filter "remove-NG-string.regex" from the
-analyser-dict-gt-norm.xfst target, in order to allow Use/NG entries in dict fsts.
+$Rev: 85421 $
+Added version checking of the GTD core: if the core is too old, configure will
+stop and print an error message with instructions on how to proceed. Added an
+external Autoconf M4 macro for version comparison, and renamed the file of an
+existing module, to be more consistent and explicit in the filenames. This work
+is done in preparations for other changes in the GTD core, which will require
+the core to be updated to not render all languages broken.
 
+r85356:
+Removed the filter "remove-NG-string.regex" from the
+analyser-dict-gt-norm.xfst target, in order to allow Use/NG entries in dict
+fsts.
 
 r85211:
 No PCDATA text elements should be on a line of its own, that seems to trip off

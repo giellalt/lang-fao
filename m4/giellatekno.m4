@@ -30,10 +30,8 @@ AC_DEFUN([gt_PROG_SCRIPTS_PATHS],
          [
 AC_ARG_VAR([GTMAINTAINER], [define if you are maintaining the infra to get additional complaining about infra integrity])
 AM_CONDITIONAL([WANT_MAINTAIN], [test x"$GTMAINTAINER" != x])
-AC_PATH_PROG([GTVERSION], [gt-version.sh], [false],
-             [$GTCORE/scripts/$PATH_SEPARATOR$GTHOME/gtcore/scripts/$PATH_SEPARATOR$PATH])
 AC_PATH_PROG([GTCORESH], [gt-core.sh], [false],
-             [$GTCORE/scripts/$PATH_SEPARATOR$GTHOME/gtcore/scripts/$PATH_SEPARATOR$PATH])
+             [$GTCORE/scripts$PATH_SEPARATOR$GTHOME/gtcore/scripts$PATH_SEPARATOR$PATH])
 
 AC_MSG_CHECKING([whether GTCORE is found])
 AS_IF([test "x$GTCORE"    = x -a \
@@ -42,7 +40,8 @@ AS_IF([test "x$GTCORE"    = x -a \
 	  [test "x$GTCORE" != x], [AC_MSG_RESULT([yes - via environment])],
       [AC_MSG_RESULT([no])])
 
-AC_ARG_VAR([GTCORE], [directory for giellatekno core data])
+# GTCORE env. variable is required by the infrastructure to find scripts:
+AC_ARG_VAR([GTCORE], [directory for giellatekno/divvun core data; gtcore path should always be declared by gtsetup.sh])
 
 AS_IF([test "x$GTCORE" = x], 
       [cat<<EOT
@@ -65,6 +64,35 @@ Could not set GTCORE and thus not find required scripts in:
 
 EOT
        AC_MSG_ERROR([GTCORE could not be set])])
+
+##### Check the version of the gtd-core, and stop with error message if too old:
+# This is the error message:
+gtd_core_too_old_message="the gtd-core
+is too old, we require at least $required_gtd_core_version. Please do:
+
+cd $GTCORE
+svn up
+make
+sudo make install # optional, not needed if not installed earlier, or
+not on a server.
+"
+
+# Identify the version of gtd-core:
+AC_PATH_PROG([GTD_VERSION], [gt-version.sh], [no], [])
+AS_IF([test "x${GTD_VERSION}" != xno],
+        [_gtd_version=$( ${GTD_VERSION} )],
+        [AC_MSG_ERROR([$gtd_core_too_old_message])
+    ])
+AC_MSG_CHECKING([the version of the GTD Core])
+AC_MSG_RESULT([$_gtd_version])
+
+AC_MSG_CHECKING([whether the GTD Core version is recent enough])
+# Compare it to the required version, and error out if too old:
+AX_COMPARE_VERSION([$_gtd_version], [ge], [$required_gtd_core_version],
+                   [gtd_version_ok=yes], [gtd_version_ok=no])
+AS_IF([test "x${gtd_version_ok}" != xno], [AC_MSG_RESULT([$gtd_version_ok])],
+[AC_MSG_ERROR([$gtd_core_too_old_message])])
+
 ]) # gt_PROG_SCRIPTS_PATHS
 
 AC_DEFUN([gt_PROG_XFST],

@@ -1,4 +1,8 @@
-$Rev: 85430 $
+Added the requirement to remove orig_lang-tags (OLang/NOB etc) by
+adding filters/remove-orig_lang-tags.xfst also to generator fsts, not 
+only to analyser, for the dicts fst-s.
+
+r85430
 Fixed a bug that hindered the GTD core from finding the version info script in
 the core (as opposed to installed).
 

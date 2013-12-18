@@ -78,7 +78,8 @@ not on a server.
 "
 
 # Identify the version of gtd-core:
-AC_PATH_PROG([GTD_VERSION], [gt-version.sh], [no], [])
+AC_PATH_PROG([GTD_VERSION], [gt-version.sh], [no],
+    [$GTCORE/scripts$PATH_SEPARATOR$GTHOME/gtcore/scripts$PATH_SEPARATOR$PATH])
 AS_IF([test "x${GTD_VERSION}" != xno],
         [_gtd_version=$( ${GTD_VERSION} )],
         [AC_MSG_ERROR([$gtd_core_too_old_message])

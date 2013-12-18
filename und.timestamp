@@ -1,4 +1,8 @@
-$Rev: 85421 $
+$Rev: 85430 $
+Fixed a bug that hindered the GTD core from finding the version info script in
+the core (as opposed to installed).
+
+r85421:
 Added version checking of the GTD core: if the core is too old, configure will
 stop and print an error message with instructions on how to proceed. Added an
 external Autoconf M4 macro for version comparison, and renamed the file of an

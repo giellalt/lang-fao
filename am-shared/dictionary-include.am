@@ -82,6 +82,7 @@ generator-dict-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst       \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst             \
 					filters/remove-norm-comp-tags.xfst           \
+					filters/remove-orig_lang-tags.xfst           \
 					filters/remove-usage-tags.xfst               \
 					filters/remove-hyphenation-marks.xfst        \
 					filters/remove-infl_deriv-borders.xfst       \
@@ -96,6 +97,7 @@ generator-dict-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst       \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
 			.o. @\"filters/remove-usage-tags.xfst\"               \
+			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
 			.o. @\"filters/remove-orthography-tags.xfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
 			.o. @\"$<\" \
@@ -122,9 +124,9 @@ generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-infl_deriv-borders.xfst       \
 					filters/remove-word-boundary.xfst            \
 					filters/remove-norm-comp-tags.xfst \
+					filters/remove-orig_lang-tags.xfst           \
 					filters/remove-usage-tags.xfst \
 					filters/remove-NGminip-strings.xfst \
-					filters/remove-NG-strings.xfst \
 					filters/remove-orthography-tags.xfst         \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-sub-forms.xfst
@@ -133,8 +135,8 @@ generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\" \
+			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
 			.o. @\"filters/remove-usage-tags.xfst\" \
-			.o. @\"filters/remove-NG-strings.xfst\" \
 			.o. @\"filters/remove-NGminip-strings.xfst\" \
 			.o. @\"filters/remove-sub-forms.xfst\" \
 			.o. @\"filters/remove-orthography-tags.xfst\"         \

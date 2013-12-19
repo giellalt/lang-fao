@@ -100,7 +100,7 @@ remove-%-tags.regex: %-tags.txt
 .regex.hfst:
 	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFST_FLAGS) -S -i $< -o $@
 
-%.hfst: $(GTCORE)/gtshared/src/filters/%.regex
+%.hfst: $(GTCORE)/gtdshared/common/src/filters/%.regex
 	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFST_FLAGS) -S -i $< -o $@
 
 ####### Xerox build rules: #######
@@ -108,7 +108,7 @@ remove-%-tags.regex: %-tags.txt
 	$(AM_V_GEN)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
 		$(XFST) $(XFSTFLAGS)
 
-%.xfst: $(GTCORE)/gtshared/src/filters/%.regex
+%.xfst: $(GTCORE)/gtdshared/common/src/filters/%.regex
 	$(AM_V_GEN)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
 		$(XFST) $(XFSTFLAGS)
 

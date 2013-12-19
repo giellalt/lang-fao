@@ -1,6 +1,13 @@
-Added the requirement to remove orig_lang-tags (OLang/NOB etc) by
-adding filters/remove-orig_lang-tags.xfst also to generator fsts, not 
-only to analyser, for the dicts fst-s.
+$Rev: 85468 $
+Moved the common src/filters/ inside a common/ dir, to allow for other parallel
+dirs like smi/ and und-Cyrl/ that target only a subset of the languages. At the
+same time renamed gtshared/ to gtdshared/. This change require version 0.2.0 of
+the gtdcore.
+
+r85453:
+Added the requirement to remove orig_lang-tags (OLang/NOB etc) by adding
+filters/remove-orig_lang-tags.xfst also to generator fsts, not only to analyser,
+for the dicts fst-s.
 
 r85430
 Fixed a bug that hindered the GTD core from finding the version info script in

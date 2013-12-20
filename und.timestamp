@@ -1,4 +1,7 @@
-$Rev: 85468 $
+$Rev: 85550 $
+Finally fixed the libvoikko/zhfst spellers. Ready for Windows!
+
+r85468:
 Moved the common src/filters/ inside a common/ dir, to allow for other parallel
 dirs like smi/ and und-Cyrl/ that target only a subset of the languages. At the
 same time renamed gtshared/ to gtdshared/. This change require version 0.2.0 of

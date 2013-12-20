@@ -106,9 +106,9 @@ $(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST)
 
 # Finally build the zhfst file, and make a copy in a subdir named '3', so that
 # we can test it without installing it (the '3' dir is a voikko requirement):
-$(GT_SPELLING_HFST): $(GT_SPELLER_ACCEPTOR) \
+$(GT_SPELLING_HFST): index.xml \
 					 $(GT_ERRMODELS) \
-					 index.xml
+					 $(GT_SPELLER_ACCEPTOR)
 	$(AM_V_GEN)rm -f $@ && $(ZIP) $(ZIPFLAGS) $@ $^ && \
 		$(MKDIR_P) 3 && \
 		cp -f $@ 3/

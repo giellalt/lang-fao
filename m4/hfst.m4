@@ -77,10 +77,10 @@ AC_PATH_PROG(HFST_XFST,              hfst-xfst,              false, $PATH$PATH_S
 AC_PATH_PROG(HFST_XFST2FST,          hfst-xfst2fst,          false, $PATH$PATH_SEPARATOR$with_hfst)
 
 AS_IF([test x$with_hfst != xno], [
-_gt_hfst_min_version=m4_default([$1], [3.5.1])
-AC_MSG_CHECKING([hfst is at least $_gt_hfst_min_version])
+_gtd_hfst_min_version=m4_default([$1], [3.5.1])
+AC_MSG_CHECKING([whether hfst is at least $_gtd_hfst_min_version])
 if test x$HFST_INFO != xfalse; then
-    if $HFST_INFO --require-feature=foma --atleast-version=$_gt_hfst_min_version ; then
+    if $HFST_INFO --require-feature=foma --atleast-version=$_gtd_hfst_min_version ; then
         gt_prog_hfst=yes
         AC_MSG_RESULT([yes])
     else

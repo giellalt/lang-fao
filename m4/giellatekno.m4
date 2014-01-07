@@ -25,7 +25,7 @@
 # macros. It is the same as gettext and probably others, but I expect no
 # collisions really.
 
-
+# Define functions for setting up paths and checking the GTD core environment:
 AC_DEFUN([gt_PROG_SCRIPTS_PATHS],
          [
 AC_ARG_VAR([GTMAINTAINER], [define if you are maintaining the infra to get additional complaining about infra integrity])
@@ -68,7 +68,7 @@ EOT
 ##### Check the version of the gtd-core, and stop with error message if too old:
 # This is the error message:
 gtd_core_too_old_message="the gtd-core
-is too old, we require at least $required_gtd_core_version. Please do:
+is too old, we require at least $_gtd_core_min_version. Please do:
 
 cd $GTCORE
 svn up
@@ -87,15 +87,16 @@ AS_IF([test "x${GTD_VERSION}" != xno],
 AC_MSG_CHECKING([the version of the GTD Core])
 AC_MSG_RESULT([$_gtd_version])
 
-AC_MSG_CHECKING([whether the GTD Core version is recent enough])
+AC_MSG_CHECKING([whether the GTD Core version is at least $_gtd_core_min_version])
 # Compare it to the required version, and error out if too old:
-AX_COMPARE_VERSION([$_gtd_version], [ge], [$required_gtd_core_version],
+AX_COMPARE_VERSION([$_gtd_version], [ge], [$_gtd_core_min_version],
                    [gtd_version_ok=yes], [gtd_version_ok=no])
 AS_IF([test "x${gtd_version_ok}" != xno], [AC_MSG_RESULT([$gtd_version_ok])],
 [AC_MSG_ERROR([$gtd_core_too_old_message])])
 
 ]) # gt_PROG_SCRIPTS_PATHS
 
+# Define functions for checking the availability of the Xerox tools:
 AC_DEFUN([gt_PROG_XFST],
 [AC_ARG_WITH([xfst],
             [AS_HELP_STRING([--with-xfst=DIRECTORY],
@@ -116,21 +117,35 @@ AC_MSG_RESULT([gt_prog_xfst])
 AM_CONDITIONAL([CAN_XFST], [test "x$gt_prog_xfst" != xno])
 ]) # gt_PROG_XFST
 
+# Define functions for checking the availability of the VISLCG3 tools:
 AC_DEFUN([gt_PROG_VISLCG3],
 [AC_ARG_WITH([vislcg3],
             [AS_HELP_STRING([--with-vislcg3=DIRECTORY],
                             [search vislcg3 in DIRECTORY @<:@default=PATH@:>@])],
             [with_vislcg3=$withval],
             [with_vislcg3=check])
+AC_PATH_PROG([VISLCG3], [vislcg3], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 AC_PATH_PROG([VISLCG3_COMP], [cg-comp], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
-AC_MSG_CHECKING([whether we can enable vislcg3 building])
-AS_IF([test "x$VISLCG3" != xno], [AC_MSG_RESULT([yes])],
+
+AS_IF([test "x$VISLCG3" != xno], [
+_gtd_vislcg3_min_version=m4_default([$1], [0.9.8.9406])
+AC_MSG_CHECKING([whether vislcg3 is at least $_gtd_vislcg3_min_version])
+_vislcg3_version=$( ${VISLCG3} --version 2>&1 | grep -Eo '@<:@0-9@:>@+\.@<:@0-9.@:>@+' )
+AX_COMPARE_VERSION([$_vislcg3_version], [ge], [$_gtd_vislcg3_min_version],
+                   [gt_prog_vislcg3=yes
+                    AC_MSG_RESULT([yes - $_vislcg3_version])
+                   ], [gt_prog_vislcg3=no
+                    AC_MSG_RESULT([no - $_vislcg3_version])
+                   ])
+],
+[gt_prog_vislcg3=no])
+AC_MSG_CHECKING([whether we can enable vislcg3 targets])
+AS_IF([test "x$gt_prog_vislcg3" != xno], [AC_MSG_RESULT([yes])],
       [AC_MSG_RESULT([no])])
-AS_IF([test "x$VISLCG3" != xno], [gt_prog_vislcg3=yes],
-      [gt_prog_vislcg3=no])
-AM_CONDITIONAL([CAN_VISLCG], [test "x$VISLCG3_COMP" != xno])
+AM_CONDITIONAL([CAN_VISLCG], [test "x$gt_prog_vislcg3" != xno])
 ]) # gt_PROG_VISLCG3
 
+# Define functions for checking the availability of Saxon:
 AC_DEFUN([gt_PROG_SAXON],
 [AC_ARG_WITH([saxon],
              [AS_HELP_STRING([--with-saxon=DIRECTORY],
@@ -161,6 +176,7 @@ AM_CONDITIONAL([CAN_SAXON], [test "x$gt_prog_saxon" != xno])
 AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$saxonjar" != xno]) 
 ]) # gt_PROG_SAXON
 
+# Define functions for configuration of the build targets:
 AC_DEFUN([gt_ENABLE_TARGETS],
 [
 # Enable morphological analysers - default is 'yes'
@@ -235,9 +251,9 @@ AC_ARG_ENABLE([grammarchecker],
                               [enable grammar checker @<:@default=no@:>@])],
               [enable_grammarchecker=$enableval],
               [enable_grammarchecker=no])
-AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$VISLCG3_COMP" = "x"], 
+AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" = "xno"], 
       [enable_grammarchecker=no
-       AC_MSG_WARN([vislcg3 missing, grammar checker disabled])])
+       AC_MSG_WARN([vislcg3 missing or too old, grammar checker disabled])])
 AM_CONDITIONAL([WANT_GRAMCHECK], [test "x$enable_grammarchecker" != xno])
 
 # Enable dictionary transducers - default is 'no'
@@ -286,11 +302,11 @@ cat<<EOF
 -- Building $PACKAGE_STRING:
 
   -- basic package (on by default except hfst): --
-  * build with Xerox: $gt_prog_xfst
-  * build with HFST: $gt_prog_hfst
+  * build Xerox fst's: $gt_prog_xfst
+  * build HFST fst's: $gt_prog_hfst
   * analysers enabled: $enable_morphology
   * generators enabled: $enable_generation
-  * syntactic processing enabled: $gt_prog_vislcg3
+  * vislcg3 tools enabled: $gt_prog_vislcg3
   * yaml tests enabled: $enable_yamltests
   * generated documentation enabled: $gt_prog_docc
 

@@ -18,14 +18,16 @@
 ####### Source file defs: ########
 
 #! @var GT_DEPENDENCY source for rules of dependency gramamr
+#! @var GT_FUNCTIONS source for rules for syntactic functions
 #! @var GT_DISAMBIGUATION source for rules of disambiguation
-EXTRA_DIST=$(GT_DEPENDENCY) $(GT_DISAMBIGUATION)
+EXTRA_DIST=$(GT_DEPENDENCY) $(GT_DISAMBIGUATION) $(GT_FUNCTIONS)
 
 ####### Automake targets: ########
 
 #! @var GT_CG_TARGETS the files that should be built for cg
 if CAN_VISLCG
-noinst_DATA=$(GT_CG_TARGETS)
+gtddatadir=$(datadir)/hfst/$(GTLANG)
+gtddata_DATA=$(GT_CG_TARGETS)
 endif
 
 ####### Build rules via include: ########

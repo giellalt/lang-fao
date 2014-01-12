@@ -56,6 +56,24 @@ noinst_DATA=$(GT_ERRMODELS)
 
 ####### HFST build rules: ########
 
+# Easter egg content:
+easteregg.txt: $(srcdir)/version.txt
+	$(AM_V_GEN)$(GTCORE)/scripts/make-hfstspeller-version-easter-egg.sh \
+		$(GTLANG2) $(top_srcdir) $^ > $@
+
+# Easter egg suggestions:
+easteregg.suggs.txt: easteregg.txt
+	$(AM_V_GEN)sed -e 's/^/nuvviDspeller:/' < $< \
+		| sed = \
+		| sed 'N;s/\n/	/' \
+		| perl -pe 's/(.)\t(.+)/\2\t\1/' \
+		> $@
+
+# Easter egg string acceptor:
+easteregg.hfst: easteregg.txt
+	$(AM_V_GEN)$(HFST_STRINGS2FST) $(HFST_FLAGS) -j < $< \
+		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower > $@
+
 # Error model building - edit distance based on transducer alphabet:
 editdist.%.hfst: editdist.%.txt $(GT_SPELLER_ACCEPTOR)
 	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py -v -s -d 1 -e '@0@' -i $<   \
@@ -82,8 +100,8 @@ editStrings.%.hfst: strings.%.hfst editdist.%.hfst
 		-o $@
 
 # Error model building - list of words known to be misspelled:
-words.%.hfst: words.%.txt
-	$(AM_V_GEN)grep -v '^#' $< | grep -v '^$$'   \
+words.%.hfst: words.%.txt easteregg.suggs.txt
+	$(AM_V_GEN)grep -h -v '^#' $^ | grep -v '^$$'   \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -o $@
 
 # The final error model is assembled here:
@@ -93,14 +111,17 @@ errmodel.%.hfst: words.%.hfst editStrings.%.hfst
 
 # Alternatively, the error model can be constructed as a long list of regular
 # expressions, semicolon separated:
-errmodel.%.hfst: errmodel.%.regex
-	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -o $@ -i $<
+errmodel.%.hfst: errmodel.%.regex easteregg.suggs.hfst
+	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
+		| $(HFST_DISJUNCT) - easteregg.hfst \
+		-o $@
 
 # Build the automaton used for the speller
-$(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST)
+$(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST) easteregg.hfst
 	$(AM_V_GEN)cat $< \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS)                \
+		| $(HFST_DISJUNCT) - easteregg.hfst \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw          \
 		-o $@
 
@@ -115,6 +136,6 @@ $(GT_SPELLING_HFST): index.xml \
 
 ####### Other targets: ###########
 clean-local:
-	-rm -rf *.hfst *.xfst *.zhfst 3
+	-rm -rf *.hfst *.xfst *.zhfst 3 easteregg.*
 
 # vim: set ft=automake:

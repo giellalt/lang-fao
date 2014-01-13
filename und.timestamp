@@ -1,4 +1,10 @@
-$Rev: 86655 $
+$Rev: 86719 $
+Removed unused twolc.am file. Reorganised the code for twolc and xfscript
+compilation, to avoid duplicate code and prepare for improvements. Added M4
+macro check that either hfst-xfst or hfst-foma is included, hfst compilation is
+turned off if none of them is.
+
+r86655:
 Reduced weights for the easter egg suggestions, to avoid other suggestions to
 come in between.
 

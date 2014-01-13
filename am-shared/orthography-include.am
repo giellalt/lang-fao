@@ -27,12 +27,6 @@ noinst_DATA=$(GT_ORTHOGRAPHIC_FSTS)
 ####### HFST build rules: ########
 
 # HFST fst targets:
-.xfscript.hfst:
-	$(AM_V_GEN)cp $< $@.script
-	$(AM_V_GEN)$(PRINTF) "save stack $@" >> $@.script
-	$(AM_V_GEN)$(HFST_FOMA) -f $@.script
-	$(AM_V_GEN)rm -f $@.script
-
 .regex.hfst:
 	$(AM_V_GEN)grep -v '^[#!]' $< | $(HFST_REGEXP2FST) $(HFST_FLAGS) -S -o $@
 
@@ -40,10 +34,6 @@ noinst_DATA=$(GT_ORTHOGRAPHIC_FSTS)
 	$(AM_V_GEN)grep -v '^[#!]' $< | $(HFST_REGEXP2FST) $(HFST_FLAGS) -S -o $@
 
 ####### Xerox build rules: #######
-
-.xfscript.xfst:
-	$(AM_V_GEN)$(XFST) -l $< -e "save stack $@" -stop
-
 .regex.xfst:
 	$(AM_V_GEN)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
 		$(XFST) $(XFSTFLAGS)
@@ -51,6 +41,10 @@ noinst_DATA=$(GT_ORTHOGRAPHIC_FSTS)
 %.xfst: $(GTCORE)/gtdshared/common/src/orthography/%.regex
 	$(AM_V_GEN)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
 		$(XFST) $(XFSTFLAGS)
+
+##########################################
+# General build rules included from here:#
+include $(top_srcdir)/am-shared/xfscript-include.am
 
 ####### Other targets: ###########
 # The "clean" target:

@@ -1,4 +1,9 @@
-$Rev: 86734 $
+$Rev: 86740 $
+Added automatic switch between hfst-foma and hfst-xfst for compiling xfscript
+files into transducers. hfst-foma is the default, with fallback to hfst-xfst if
+hfst-foma is not found. There are still issues with hfst-xfst.
+
+r86734:
 Moved xfscript compilation out of phonetics-include and hyphenation include.
 These am-files contained and invert command that combined with an invert command
 in the actual xfscripts created a meaningless double inversion.

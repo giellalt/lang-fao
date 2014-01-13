@@ -19,18 +19,32 @@
 ########## XFScript build rules. ##########
 ###########################################
 
+VERBOSITY=-q
+
 ####### HFST build rules: ########
+
+# Which hfst xfscript processor to use? Foma is default, there are still issues
+# with hfst-xfst.
+if CAN_HFST_FOMA
+HFST_XFST_COMPILER=$(HFST_FOMA) $(VERBOSITY) -f
+else
+if CAN_HFST_XFST
+HFST_XFST_COMPILER=$(HFST_XFST) $(VERBOSITY) -F
+else
+HFST_XFST_COMPILER=false
+endif # CAN_HFST_XFST
+endif # CAN_HFST_FOMA
 
 # HFST fst targets:
 .xfscript.hfst:
 	$(AM_V_GEN)cp $< $@.script
 	$(AM_V_GEN)$(PRINTF) "save stack $@" >> $@.script
-	$(AM_V_GEN)$(HFST_FOMA) -f $@.script
+	$(AM_V_GEN)$(HFST_XFST_COMPILER) $@.script
 	$(AM_V_GEN)rm -f $@.script
 
 ####### Xerox build rules: #######
 
 .xfscript.xfst:
-	$(AM_V_GEN)$(XFST) -l $< -e "save stack $@" -stop
+	$(AM_V_GEN)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
 
 # vim: set ft=automake:

@@ -1,4 +1,9 @@
-$Rev: 86719 $
+$Rev: 86734 $
+Moved xfscript compilation out of phonetics-include and hyphenation include.
+These am-files contained and invert command that combined with an invert command
+in the actual xfscripts created a meaningless double inversion.
+
+r86719:
 Removed unused twolc.am file. Reorganised the code for twolc and xfscript
 compilation, to avoid duplicate code and prepare for improvements. Added M4
 macro check that either hfst-xfst or hfst-foma is included, hfst compilation is

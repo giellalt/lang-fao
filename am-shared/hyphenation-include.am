@@ -41,15 +41,6 @@ noinst_DATA=$(GT_HYPHENATION)
 
 ####### HFST build rules: ########
 
-# hfst-twolc should by default resolve
-HFSTTWOLFLAGS=--resolve
-
-# All twolc targets should be built by suffix rules;
-# just list them in some nice automake targets and you're good to go
-.twolc.hfst:
-	$(AM_V_GEN)$(HFST_TWOLC) $(HFSTFLAGS) $(HFSTTWOLCFLAGS) -i $< \
-	| $(HFST-INVERT) $(HFSTFLAGS) -o $@
-
 # Phonology rules as xfst scripts (typically a cascade of regex rules):
 .xfscript.hfst:
 	$(AM_V_GEN)cp $< $@.script
@@ -59,17 +50,13 @@ HFSTTWOLFLAGS=--resolve
 
 ####### Xerox build rules: #######
 
-# All twolc targets should be built by suffix rules;
-# just list them in some nice automake targets and you're good to go
-.twolc.xfst:
-	$(AM_V_GEN)$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" \
-		> $@.script
-	$(AM_V_GEN)$(TWOLC) < $@.script
-	$(AM_V_GEN)rm -f $@.script
-
 # Phonology rules as xfst scripts (typically a cascade of regex rules):
 .xfscript.xfst:
 	$(AM_V_GEN)$(XFST) -l $< -e "save stack $@" -stop
+
+##########################################
+# General build rules included from here:#
+include $(top_srcdir)/am-shared/twolc-include.am
 
 ####### Other targets: ###########
 clean-local:

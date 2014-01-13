@@ -80,9 +80,15 @@ AS_IF([test x$with_hfst != xno], [
 _gtd_hfst_min_version=m4_default([$1], [3.5.1])
 AC_MSG_CHECKING([whether hfst is at least $_gtd_hfst_min_version])
 if test x$HFST_INFO != xfalse; then
-    if $HFST_INFO --require-feature=foma --atleast-version=$_gtd_hfst_min_version ; then
-        gt_prog_hfst=yes
-        AC_MSG_RESULT([yes])
+    if $HFST_INFO --atleast-version=$_gtd_hfst_min_version ; then
+        if test x$HFST_FOMA != "xfalse" -o x$HFST_XFST != "xfalse"; then
+            gt_prog_hfst=yes
+            AC_MSG_RESULT([yes])
+        else
+            AC_MSG_RESULT([yes, but...])
+            AC_MSG_WARN([Neither hfst-foma nor hfst-xfst found, one of them is needed])
+            gt_prog_hfst=no
+        fi
     else
         gt_prog_hfst=no
         AC_MSG_RESULT([no])
@@ -93,7 +99,9 @@ else
     gt_prog_hfst=no
 fi
 ], [gt_prog_hfst=no])
-AM_CONDITIONAL([CAN_HFST], [test "x$gt_prog_hfst" = xyes])
+AM_CONDITIONAL([CAN_HFST],      [test "x$gt_prog_hfst" = "xyes"])
+AM_CONDITIONAL([CAN_HFST_FOMA], [test "x$HFST_FOMA" != "xfalse"])
+AM_CONDITIONAL([CAN_HFST_XFST], [test "x$HFST_XFST" != "xfalse"])
 ]) # gt_PROG_HFST_PATH
 
 # vim: set ft=config:

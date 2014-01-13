@@ -15,42 +15,22 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-####### Source file defs: ########
-
-#! @param GT_PHONETICS_MAIN required, the source of phonetic transcription
-#! @param GT_PHONETICS_SUPPLEMENTS optional, other sources to distribute and
-#! 		  compile for other things
-#! Both @params are specified in $(GTLANG)/src/phonetics/Makefile.am.
-GT_PHONETICS_SRCS=$(GT_PHONETICS_MAIN) $(GT_PHONETICS_SUPPLEMENTS)
-
-# All sources need to be included in the tarball
-EXTRA_DIST=$(GT_PHONETICS_SRCS)
-
-####### Automake targets: ########
-
-noinst_DATA=$(GT_PHONETICS)
+###########################################
+########## XFScript build rules. ##########
+###########################################
 
 ####### HFST build rules: ########
 
-# Phonology rules as xfst scripts (typically a cascade of regex rules):
+# HFST fst targets:
 .xfscript.hfst:
 	$(AM_V_GEN)cp $< $@.script
-	$(AM_V_GEN)$(PRINTF) "invert \nsave stack $@" >> $@.script
+	$(AM_V_GEN)$(PRINTF) "save stack $@" >> $@.script
 	$(AM_V_GEN)$(HFST_FOMA) -f $@.script
 	$(AM_V_GEN)rm -f $@.script
 
 ####### Xerox build rules: #######
 
-# Phonology rules as xfst scripts (typically a cascade of regex rules):
 .xfscript.xfst:
 	$(AM_V_GEN)$(XFST) -l $< -e "save stack $@" -stop
-
-##########################################
-# General build rules included from here:#
-include $(top_srcdir)/am-shared/twolc-include.am
-
-####### Other targets: ###########
-clean-local:
-	-rm -f *.hfst *.xfst
 
 # vim: set ft=automake:

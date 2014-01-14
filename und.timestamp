@@ -1,4 +1,7 @@
-$Rev: 86806 $
+$Rev: 86820 $
+Experimenting with feedback on silent builds (make V=0). Looks good.
+
+r86806:
 Added Autotools support for building the abbr.txt file. This file is _not_
 included in the regular make commands, one has to cd into the tools/preprocess/
 directory, and to 'make abbr' there. This is on purpose.

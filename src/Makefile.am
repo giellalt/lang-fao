@@ -182,4 +182,4 @@ generator%.hfst: generator%.tmp.hfst
 %.xfst: %.tmp.xfst
 	$(AM_V_GEN)cp -f $< $@
 
-include $(top_srcdir)/am-shared/topdir-include.am
+include $(top_srcdir)/am-shared/src-include.am

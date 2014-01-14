@@ -1,4 +1,9 @@
-$Rev: 86774 $
+$Rev: 86806 $
+Added Autotools support for building the abbr.txt file. This file is _not_
+included in the regular make commands, one has to cd into the tools/preprocess/
+directory, and to 'make abbr' there. This is on purpose.
+
+r86774:
 Added a new dir tools/preprocess/ to hold resources for the preprocess utility.
 
 r86740:

@@ -44,6 +44,10 @@ noinst_DATA=$(GT_PHONOLOGY)
 include $(top_srcdir)/am-shared/twolc-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
 
+# We need a target to properly finish the Xerox fst build:
+%.xfst: %.tmp.xfst
+	$(AM_V_GEN)cp -f $< $@
+
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.hfst *.xfst

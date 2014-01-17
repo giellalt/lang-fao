@@ -1,4 +1,9 @@
-$Rev: 86874 $
+$Rev: 86991 $
+Corrected the compilation of xfscript files such that we still have a general
+build rule for xfscript files, but now with a following inversion when needed.
+Also added better feedback on the build steps in silent mode.
+
+r86874:
 Updated required and actual version number of gtdcore. The easter egg creation
 for hfst spellers depends on new files in the core, and also the abbr.txt
 building does so. Without an updated core e.g. speller builds will fail.

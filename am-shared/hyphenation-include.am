@@ -44,6 +44,14 @@ noinst_DATA=$(GT_HYPHENATION)
 include $(top_srcdir)/am-shared/twolc-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
 
+# We need a target to properly finish the Xerox fst build:
+%.xfst: %.tmp.xfst
+	$(XFST_verbose)$(XFST) $(VERBOSITY) \
+			-e "load stack < $<" \
+			-e "invert net" \
+			-e "save stack $@ " \
+			-stop
+
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.hfst *.xfst

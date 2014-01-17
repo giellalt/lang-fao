@@ -19,6 +19,15 @@
 ########## XFScript build rules. ##########
 ###########################################
 
+XFST_verbose   = $(XFST_verbose_@AM_V@)
+XFST_verbose_  = $(XFST_verbose_@AM_DEFAULT_V@)
+XFST_verbose_0 = @echo "  XFST     $@";
+
+HXFST_verbose   = $(HXFST_verbose_@AM_V@)
+HXFST_verbose_  = $(HXFST_verbose_@AM_DEFAULT_V@)
+# The last line is defined conditionally below, depending on whether foma
+# or hfst-xfst is used.
+
 VERBOSITY=-q
 
 ####### HFST build rules: ########
@@ -27,24 +36,36 @@ VERBOSITY=-q
 # with hfst-xfst.
 if CAN_HFST_FOMA
 HFST_XFST_COMPILER=$(HFST_FOMA) $(VERBOSITY) -f
+HXFST_verbose_0 = @echo "  HFOMA    $@";
+
 else
 if CAN_HFST_XFST
 HFST_XFST_COMPILER=$(HFST_XFST) $(VERBOSITY) -F
+HXFST_verbose_0 = @echo "  HXFST    $@";
+
 else
 HFST_XFST_COMPILER=false
 endif # CAN_HFST_XFST
 endif # CAN_HFST_FOMA
 
 # HFST fst targets:
-.xfscript.hfst:
-	$(AM_V_GEN)cp $< $@.script
-	$(AM_V_GEN)$(PRINTF) "save stack $@" >> $@.script
-	$(AM_V_GEN)$(HFST_XFST_COMPILER) $@.script
-	$(AM_V_GEN)rm -f $@.script
+# Hfst will always build fst's that can be used directly - no need for a tmp
+# file (not even for local modifications, since all modifications can be done
+# directly in the xfscript file)-
+%.hfst: %.xfscript
+	$(AM_V_at)      cp $< $@.script
+	$(AM_V_at)      $(PRINTF) "save stack $@" >> $@.script
+	$(HXFST_verbose)$(HFST_XFST_COMPILER) $@.script
+	$(AM_V_at)      rm -f $@.script
 
 ####### Xerox build rules: #######
-
-.xfscript.xfst:
-	$(AM_V_GEN)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
+# Xerox fst's will need to be inverted *IFF* used stand-alone. xfscript files
+# used for intersection & composition can and must be  used as is. For this
+# reason we need to go via a tmp file, such that we can invert the tmp file for
+# e.g. orthography conversion fst's. In the case of fst's for intersection and
+# composition, the fst will just be copied from tmp to the target. These oper-
+# ations are done in the *.am files which include this file.
+%.tmp.xfst: %.xfscript
+	$(XFST_verbose)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
 
 # vim: set ft=automake:

@@ -1,4 +1,11 @@
-$Rev: 86991 $
+$Rev: 87099 $
+Corrected a fatal bug for non-latin spell checkers: the error model contained
+one letter from the easter egg not found in the acceptor. This symbol mismatch
+is fatal for hfst-ospell, and caused all non-latin spellers to crash (the latin
+spellers would all have this symbol ('p') anyway, so no problem was noticed
+earlier).
+
+r86991:
 Corrected the compilation of xfscript files such that we still have a general
 build rule for xfscript files, but now with a following inversion when needed.
 Also added better feedback on the build steps in silent mode.

@@ -339,6 +339,11 @@ REMOVE Nom IF (-2 V)(-1C Pr)(0 N)(1 CLB); # Too specific, this.
 REMOVE Dat IF (*-1 V BARRIER NPNH LINK NOT 0 DATV)(0 Acc)(1 EOS OR CS);
 	## at fáa høvi at...
 
+REMOVE:SgSgNP Pl IF (-1C Det + Sg)(0 A)(1 N + Sg);
+REMOVE:PlPlNP Sg IF (-1C Det + Pl)(0 A)(1 N + Pl);
+
+
+
 # Conjunctions
 
 

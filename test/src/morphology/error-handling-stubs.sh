@@ -16,3 +16,8 @@ if test "$transducer_found" = 0 ; then
     echo No transducer found
     exit 1
 fi
+
+# If Skipped=yes (used in lexc tests), no tests were found, and we return 77:
+if test "$Skipped" == "yes" ; then
+    exit 77
+fi

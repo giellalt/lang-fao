@@ -17,8 +17,13 @@
 
 ####### Build rules: ########
 
+#### Tailored silent output text: ####
+CGCOMP_verbose   = $(CGCOMP_verbose_@AM_V@)
+CGCOMP_verbose_  = $(CGCOMP_verbose_@AM_DEFAULT_V@)
+CGCOMP_verbose_0 = @echo "  CG3COMP  $@";
+
 .cg3.bin:
-	$(AM_V_GEN)$(VISLCG3_COMP) $< $@
+	$(CGCOMP_verbose)$(VISLCG3_COMP) $< $@
 
 ####### Other targets: ###########
 clean-local:

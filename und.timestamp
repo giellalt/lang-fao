@@ -1,4 +1,9 @@
-$Rev: 87099 $
+$Rev: 87206 $
+Increased the actual and required version number after a small bugfix in
+thespeller version easter egg, to ensure all generated spellers have proper
+version info.
+
+r87099:
 Corrected a fatal bug for non-latin spell checkers: the error model contained
 one letter from the easter egg not found in the acceptor. This symbol mismatch
 is fatal for hfst-ospell, and caused all non-latin spellers to crash (the latin

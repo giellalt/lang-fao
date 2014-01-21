@@ -28,7 +28,7 @@ HXFST_verbose_  = $(HXFST_verbose_@AM_DEFAULT_V@)
 # The last line is defined conditionally below, depending on whether foma
 # or hfst-xfst is used.
 
-VERBOSITY=-q
+VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
 
 ####### HFST build rules: ########
 

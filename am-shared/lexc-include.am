@@ -16,6 +16,14 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #### Tailored silent output text: ####
+SAXON_verbose   = $(SAXON_verbose_@AM_V@)
+SAXON_verbose_  = $(SAXON_verbose_@AM_DEFAULT_V@)
+SAXON_verbose_0 = @echo "  SAXON    $@";
+
+XSLPROC_verbose   = $(XSLPROC_verbose_@AM_V@)
+XSLPROC_verbose_  = $(XSLPROC_verbose_@AM_DEFAULT_V@)
+XSLPROC_verbose_0 = @echo "  XSLPROC  $@";
+
 HLEXC_verbose   = $(HLEXC_verbose_@AM_V@)
 HLEXC_verbose_  = $(HLEXC_verbose_@AM_DEFAULT_V@)
 HLEXC_verbose_0 = @echo "  HLEXC    $@";
@@ -57,9 +65,9 @@ noinst_DATA=$(GT_LEXICAL)
 ####### XML2LEXC build rules: ####
 XSLDIR = $(GTCORE)/scripts/xsl
 if CAN_SAXON
-stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
-	$(AM_V_GEN)$(SAXON) -xsl:$(XSLDIR)/generate_lex-fileVM.xsl $(abs_srcdir)/$< \
-		inFile=$(abs_srcdir)/$< > $@
+$(srcdir)/stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
+	$(SAXON_verbose)$(SAXON) -xsl:$(XSLDIR)/generate_lex-fileVM.xsl \
+		$(abs_srcdir)/$< inFile=$(abs_builddir)/$< > $@
 else
 if CAN_JAVA
 MF   = -Xmx1024m
@@ -68,10 +76,11 @@ EF   = -it:main # Saxon-HE compatible version
 XSLPROC = net.sf.saxon.Transform
 
 # This target will convert each individual xml file to lexc:
-stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
-	$(AM_V_GEN)$(JV) $(MF) -cp $$(@CYGWINJAVAPATH@ "@SAXONJAR@") $(XSLPROC) \
+$(srcdir)/stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
+	$(XSLPROC_verbose)$(JV) $(MF) \
+		-cp $$(@CYGWINJAVAPATH@ "@SAXONJAR@") $(XSLPROC) \
 		$(EF) $$(@CYGWINJAVAPATH@ "$(XSLDIR)/generate_lex-fileVM.xsl") \
-		inFile=$$(@CYGWINJAVAPATH@ "$(abs_srcdir)/$<") > $@
+		inFile=$$(@CYGWINJAVAPATH@ "$(abs_builddir)/$<") > $@
 endif
 endif
 

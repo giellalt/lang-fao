@@ -333,7 +333,7 @@ EOF
 AS_IF([test x$gt_prog_xfst = xno -a x$gt_prog_hfst = xno],
       [AC_MSG_WARN([Both XFST and HFST are disabled: no automata will be built])])
 AS_IF([test x$gt_prog_xslt = xno -a \
-      "$(find ./src/morphology/stems -name "*.xml" | head -n 1)" != "" ],
+      "$(find ${srcdir}/src/morphology/stems -name "*.xml" | head -n 1)" != "" ],
       [AC_MSG_WARN([You have XML source files, but XML transformation to LexC is
 disabled. Please check the output of configure to locate any problems.
 ])])

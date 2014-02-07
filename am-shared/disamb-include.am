@@ -1,0 +1,134 @@
+## Include this file in top-level srcdir to compile FSTs
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+# First attempt at building disambiguation fsts. The analyser differs from the
+# regular analyser by NEITHER removing variant and homonym tags, NOR removing
+# semantic tags or Use/Sub. The variant and homonym tags are there to help choosing
+# forms, as are Use/Sub and Sem-tags.
+analyser-disamb-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst     \
+					filters/remove-derivation-position-tags.hfst \
+					filters/remove-dialect-tags.hfst             \
+					filters/remove-norm-comp-tags.hfst           \
+					filters/remove-orig_lang-tags.hfst           \
+					filters/remove-usage-tags.hfst               \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst            \
+					filters/remove-orthography-tags.hfst         \
+					filters/remove-Orth_IPA-strings.hfst         \
+					orthography/inituppercase.hfst
+	$(AM_V_GEN)$(PRINTF) \
+			   "@\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-dialect-tags.hfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
+			.o. @\"filters/remove-usage-tags.hfst\"               \
+			.o. @\"filters/remove-orthography-tags.hfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
+			.o. @\"filters/remove-word-boundary.hfst\"            \
+			.o. @\"orthography/inituppercase.hfst\"               \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+
+# Even in this case we want the "other" transducer, to be able to test them.
+analyser-disamb-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst     \
+					filters/make-optional-transitivity-tags.hfst \
+					filters/remove-derivation-position-tags.hfst \
+					filters/remove-dialect-tags.hfst \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst            \
+					filters/remove-norm-comp-tags.hfst \
+					filters/remove-usage-tags.hfst \
+					filters/remove-NGminip-strings.hfst \
+					filters/remove-orthography-tags.hfst         \
+					filters/remove-Orth_IPA-strings.hfst         \
+					filters/remove-sub-forms.hfst
+	$(AM_V_GEN)$(PRINTF) \
+			   "@\"filters/make-optional-transitivity-tags.hfst\" \
+			.o. @\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-dialect-tags.hfst\" \
+			.o. @\"filters/remove-norm-comp-tags.hfst\" \
+			.o. @\"filters/remove-usage-tags.hfst\" \
+			.o. @\"filters/remove-NGminip-strings.hfst\" \
+			.o. @\"filters/remove-sub-forms.hfst\" \
+			.o. @\"filters/remove-orthography-tags.hfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
+			.o. @\"filters/remove-word-boundary.hfst\"            \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+
+
+# First attempt at building disambiguation fsts. The analyser differs from the
+# regular analyser by NEITHER removing variant and homonym tags, NOR removing
+# semantic tags or Use/Sub. The variant and homonym tags are there to help choosing
+# forms, as are Use/Sub and Sem-tags.
+analyser-disamb-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst        \
+					filters/remove-derivation-position-tags.xfst \
+					filters/remove-dialect-tags.xfst             \
+					filters/remove-norm-comp-tags.xfst           \
+					filters/remove-orig_lang-tags.xfst           \
+					filters/remove-usage-tags.xfst               \
+					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-infl_deriv-borders.xfst       \
+					filters/remove-word-boundary.xfst            \
+					filters/remove-orthography-tags.xfst         \
+					filters/remove-Orth_IPA-strings.xfst         \
+					orthography/inituppercase.xfst
+	$(AM_V_GEN)$(PRINTF) "read regex \
+				@\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-dialect-tags.xfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
+			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
+			.o. @\"filters/remove-usage-tags.xfst\"               \
+			.o. @\"filters/remove-orthography-tags.xfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
+			.o. @\"filters/remove-word-boundary.xfst\"            \
+			.o. @\"orthography/inituppercase.xfst\"               \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) -q
+
+# Even in this case we want the "other" transducer, to be able to test them.
+analyser-disamb-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst \
+					filters/make-optional-transitivity-tags.xfst \
+					filters/remove-derivation-position-tags.xfst \
+					filters/remove-dialect-tags.xfst \
+					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-infl_deriv-borders.xfst       \
+					filters/remove-word-boundary.xfst            \
+					filters/remove-norm-comp-tags.xfst \
+					filters/remove-usage-tags.xfst \
+					filters/remove-NGminip-strings.xfst \
+					filters/remove-orthography-tags.xfst         \
+					filters/remove-Orth_IPA-strings.xfst         \
+					filters/remove-sub-forms.xfst
+	$(AM_V_GEN)$(PRINTF) "read regex \
+				@\"filters/make-optional-transitivity-tags.xfst\" \
+			.o. @\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-dialect-tags.xfst\" \
+			.o. @\"filters/remove-norm-comp-tags.xfst\" \
+			.o. @\"filters/remove-usage-tags.xfst\" \
+			.o. @\"filters/remove-NGminip-strings.xfst\" \
+			.o. @\"filters/remove-sub-forms.xfst\" \
+			.o. @\"filters/remove-orthography-tags.xfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
+			.o. @\"filters/remove-word-boundary.xfst\"            \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) -q

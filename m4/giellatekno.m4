@@ -72,6 +72,8 @@ is too old, we require at least $_gtd_core_min_version. Please do:
 
 cd $GTCORE
 svn up
+./autogen.sh # required only the first time
+./configure  # required only the first time
 make
 sudo make install # optional, not needed if not installed earlier, or
 not on a server.

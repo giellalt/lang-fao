@@ -23,6 +23,6 @@
 GT_PHONOLOGY_MAIN=$(GTLANG)-phon.twolc
 GT_PHONOLOGY_SUPPLEMENTS=
 
-include $(top_srcdir)/am-shared/phonology-include.am
+include $(top_srcdir)/am-shared/src-phonology-dir-include.am
 
 # vim: set ft=automake:

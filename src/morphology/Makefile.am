@@ -45,6 +45,6 @@ GENERATED_LEXC_SRCS=
 # Set this to the names of all source xml files, if any
 GT_XML_SRCS=
 
-include $(top_srcdir)/am-shared/lexc-include.am
+include $(top_srcdir)/am-shared/src-morphology-dir-include.am
 
 # vim: set ft=automake:

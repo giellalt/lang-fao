@@ -50,6 +50,6 @@ GT_PHONETICS+=
 endif # CAN_XFST
 endif # WANT_PHONETIC
 
-include $(top_srcdir)/am-shared/phonetics-include.am
+include $(top_srcdir)/am-shared/src-phonetics-dir-include.am
 
 # vim: set ft=automake:

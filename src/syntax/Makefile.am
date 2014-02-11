@@ -37,4 +37,4 @@ GT_CG_LOCAL_NOINST_TARGETS=
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
 
-include $(top_srcdir)/am-shared/syntax-include.am
+include $(top_srcdir)/am-shared/src-syntax-dir-include.am

@@ -1,4 +1,10 @@
-$Rev: 88522 $
+$Rev: 88526 $
+Removed 130 lines of code, and made the code much more readable by replacing the
+long pipe of hfst commands with one regex pr target. The actual regex is a
+mirror copy of the xfst regex already in the file, which means that it is also
+very easy to maintain functional parity between the two architectures.
+
+r88522:
 Renamed the lexc include file to follow the correct naming convention.
 
 r88520:

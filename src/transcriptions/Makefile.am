@@ -21,6 +21,6 @@
 #!        transcriptions.
 GT_TRANSCRIPTIONS_SRCS=clock.lexc date.lexc numbers.lexc
 
-include $(top_srcdir)/am-shared/transcriptions-include.am
+include $(top_srcdir)/am-shared/src-transcriptions-dir-include.am
 
 # vim: set ft=automake:

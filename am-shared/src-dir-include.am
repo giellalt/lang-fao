@@ -89,52 +89,26 @@ analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
 					filters/remove-orig_lang-tags.hfst           \
 					orthography/inituppercase.hfst               \
 					orthography/spellrelax.hfst
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-hyphenation-marks.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-infl_deriv-borders.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-word-boundary.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 orthography/inituppercase.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 orthography/spellrelax.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-Orth_IPA-strings.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-orthography-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-orig_lang-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-usage-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-number-string-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-norm-comp-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-homonymy-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-variant-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-dialect-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-derivation-position-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		-o $@
+	$(AM_V_GEN)$(PRINTF) "\
+				@\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-dialect-tags.hfst\"             \
+			.o. @\"filters/remove-homonymy-tags.hfst\"            \
+			.o. @\"filters/remove-variant-tags.hfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+			.o. @\"filters/remove-number-string-tags.hfst\"       \
+			.o. @\"filters/remove-usage-tags.hfst\"               \
+			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
+			.o. @\"filters/remove-orthography-tags.hfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
+			.o. @\"filters/remove-word-boundary.hfst\"            \
+			.o. @\"orthography/inituppercase.hfst\"               \
+			.o. @\"orthography/spellrelax.hfst\"                  \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
 
 analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 					filters/remove-derivation-position-tags.xfst \
@@ -189,49 +163,25 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
 					filters/remove-usage-tags.hfst
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-hyphenation-marks.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-infl_deriv-borders.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-word-boundary.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-Orth_IPA-strings.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-orthography-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-orig_lang-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-usage-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-number-string-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-norm-comp-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-dialect-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-derivation-position-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/make-optional-homonymy-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/make-optional-variant-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/make-optional-transitivity-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		-o $@
+	$(AM_V_GEN)$(PRINTF) "\
+				@\"filters/make-optional-transitivity-tags.hfst\" \
+			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
+			.o. @\"filters/make-optional-variant-tags.hfst\"      \
+			.o. @\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-dialect-tags.hfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+			.o. @\"filters/remove-number-string-tags.hfst\"       \
+			.o. @\"filters/remove-usage-tags.hfst\"               \
+			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
+			.o. @\"filters/remove-orthography-tags.hfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
+			.o. @\"filters/remove-word-boundary.hfst\"            \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
 
 generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/make-optional-transitivity-tags.xfst \
@@ -287,52 +237,26 @@ analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst            \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
 					orthography/inituppercase.hfst
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-hyphenation-marks.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-infl_deriv-borders.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-word-boundary.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 orthography/inituppercase.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-Orth_IPA-strings.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-orthography-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-orig_lang-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-sub-forms.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-usage-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-number-string-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-norm-comp-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-homonymy-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-variant-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-dialect-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-derivation-position-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		-o $@
+	$(AM_V_GEN)$(PRINTF) "\
+				@\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-dialect-tags.hfst\"             \
+			.o. @\"filters/remove-homonymy-tags.hfst\"            \
+			.o. @\"filters/remove-variant-tags.hfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+			.o. @\"filters/remove-number-string-tags.hfst\"       \
+			.o. @\"filters/remove-usage-tags.hfst\"               \
+			.o. @\"filters/remove-sub-forms.hfst\"                \
+			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
+			.o. @\"filters/remove-orthography-tags.hfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
+			.o. @\"filters/remove-word-boundary.hfst\"            \
+			.o. @\"orthography/inituppercase.hfst\"               \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
 
 analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst             \
 					filters/remove-derivation-position-tags.xfst \
@@ -388,52 +312,26 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
 					filters/remove-sub-forms.hfst
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-hyphenation-marks.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-infl_deriv-borders.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-word-boundary.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-Orth_IPA-strings.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-orthography-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-orig_lang-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-sub-forms.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-usage-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-number-string-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-norm-comp-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-dialect-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-derivation-position-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/make-optional-homonymy-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/make-optional-variant-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/make-optional-transitivity-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		-o $@
+	$(AM_V_GEN)$(PRINTF) "\
+				@\"filters/make-optional-transitivity-tags.hfst\" \
+			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
+			.o. @\"filters/make-optional-variant-tags.hfst\"      \
+			.o. @\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-dialect-tags.hfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+			.o. @\"filters/remove-number-string-tags.hfst\"       \
+			.o. @\"filters/remove-usage-tags.hfst\"               \
+			.o. @\"filters/remove-sub-forms.hfst\"                \
+			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
+			.o. @\"filters/remove-orthography-tags.hfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
+			.o. @\"filters/remove-word-boundary.hfst\"            \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
 
 generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/make-optional-transitivity-tags.xfst \
@@ -479,39 +377,28 @@ transcriptor-%2text-desc.hfst: \
 					filters/remove-NA-strings.hfst \
 					filters/remove-NG-strings.hfst \
 					filters/remove-usage-tags.hfst
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-NA-strings.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-NG-strings.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-usage-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_INVERT) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-usage-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw \
-		-o $@
+	$(AM_V_GEN)$(PRINTF) "\
+			    @\"filters/remove-usage-tags.hfst\" \
+			.o. @\"filters/remove-NA-strings.hfst\" \
+			.o. @\"filters/remove-NG-strings.hfst\" \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-usage-tags.hfst\".i \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
 
 transcriptor-text2%-desc.hfst: \
 					transcriptions/transcriptor-%2text-raw.hfst \
 					filters/remove-usage-tags.hfst \
 					orthography/spellrelax.hfst
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-usage-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_INVERT) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-usage-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 orthography/spellrelax.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_INVERT) \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw \
-		-o $@
+	$(AM_V_GEN)$(PRINTF) "\
+			    @\"filters/remove-usage-tags.hfst\" \
+			.o. @\"$<\" \
+			.o. @\"filters/remove-usage-tags.hfst\".i \
+			.o. @\"orthography/spellrelax.hfst\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
 
 
 transcriptor-%2text-desc.xfst: \
@@ -578,40 +465,23 @@ lemmatize.default.hfst: analyser-gt-desc.hfst tagsets/lemmatize.relabel
 	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) \
 		-F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
 
-# morpher is a morph segmenting variant
+# morpher is a morph segmenting variant: taloautoissani -> talo#auto>i>ssa>ni
 morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
 					 orthography/inituppercase.hfst \
 					 orthography/spellrelax.hfst \
 					filters/remove-hyphenation-marks.hfst        \
 					filters/remove-infl_deriv-borders.hfst       \
-					filters/remove-orthography-tags.hfst         \
-					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-word-boundary.hfst
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-					-2 orthography/inituppercase.hfst \
-			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-			| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-					-2 orthography/spellrelax.hfst \
-			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-			| $(HFST_PROJECT) $(HFST_FLAGS) -p lower \
-			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-			| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-				-2 filters/remove-hyphenation-marks.hfst \
-			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-			| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-				-2 filters/remove-infl_deriv-borders.hfst \
-			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-			| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-				-2 filters/remove-word-boundary.hfst \
-			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-			| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-				-1 filters/remove-Orth_IPA-strings.hfst \
-			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-			| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-				-1 filters/remove-orthography-tags.hfst \
-			| $(HFST_INVERT) $(HFST_FLAGS) \
-			| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-			| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+	$(AM_V_GEN)$(PRINTF) "\
+			 [ [@\"$<\" \
+			.o. @\"orthography/inituppercase.hfst\"         \
+			.o. @\"orthography/spellrelax.hfst\"  ].l       \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"  \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\" \
+			.o. @\"filters/remove-word-boundary.hfst\"  ].i \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
 
 ####### Other targets: ###########
 # cleaning

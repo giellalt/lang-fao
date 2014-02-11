@@ -1,4 +1,7 @@
-$Rev: 88526 $
+$Rev: 88531 $
+Renamed disamb-include.am to follow the naming scheme.
+
+r88526:
 Removed 130 lines of code, and made the code much more readable by replacing the
 long pipe of hfst commands with one regex pr target. The actual regex is a
 mirror copy of the xfst regex already in the file, which means that it is also

@@ -12,4 +12,4 @@ GT_GC_TARGETS=grammarchecker.bin
 GT_GC_DISTRO=gramchk.bin
 GT_GC_ZDISTRO=grammarchecker.zhfst
 
-include $(top_srcdir)/am-shared/tools-grammarcheckers-include.am
+include $(top_srcdir)/am-shared/tools-grammarcheckers-dir-include.am

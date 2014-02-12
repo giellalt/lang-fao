@@ -46,6 +46,6 @@
 $(GT_SPELLER_HFST): ../$(GT_SPELLER_HFST)
 	$(AM_V_GEN)cp -f $< $@
 
-include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst-dir-include.am
 
 # vim: set ft=automake:

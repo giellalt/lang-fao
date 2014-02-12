@@ -1,4 +1,9 @@
-$Rev: 88584 $
+$Rev: 88596 $
+Moved word border removed to each fst-based speller, as we need it in the hfst
+speller production (for word-based weighting) but not in the foma-based speller.
+Rewrote all (fst-)speller build steps to regexes instead of hfst pipelines.
+
+r88584:
 Rewrote the mt build instructions to a regex instead of an hfst pipe.
 
 r88578:

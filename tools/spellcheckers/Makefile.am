@@ -5,4 +5,4 @@
 # The current dir must be built first.
 SUBDIRS = . fstbased listbased
 
-include $(top_srcdir)/am-shared/tools-spellcheckers-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-dir-include.am

@@ -7,4 +7,4 @@
 # first build the transducers here, then further utilise them in the subdirs.
 SUBDIRS = .
 
-include $(top_srcdir)/am-shared/listbased-spellchecker-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-listbased-dir-include.am

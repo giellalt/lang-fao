@@ -1,4 +1,7 @@
-$Rev: 88596 $
+$Rev: 88615 $
+Removed test-src-morph-include.am - it was in reality empty.
+
+r88596:
 Moved word border removed to each fst-based speller, as we need it in the hfst
 speller production (for word-based weighting) but not in the foma-based speller.
 Rewrote all (fst-)speller build steps to regexes instead of hfst pipelines.

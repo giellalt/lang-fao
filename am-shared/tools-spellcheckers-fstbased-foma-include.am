@@ -32,7 +32,7 @@ endif # WANT_SPELLERS
 ####### HFST build rules: ########
 
 # Build the automaton used for the speller
-$(GT_FOMA_ACCEPTOR): \
+generator-fomaspeller-gt-norm.hfst: \
 		$(top_builddir)/tools/spellcheckers/fstbased/$(GT_SPELLER_HFST)  \
 		$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
 		$(top_builddir)/src/filters/remove-dialect-tags.hfst             \
@@ -40,30 +40,24 @@ $(GT_FOMA_ACCEPTOR): \
 		$(top_builddir)/src/filters/remove-variant-tags.hfst             \
 		$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
 		$(top_builddir)/src/filters/remove-number-string-tags.hfst       \
-		$(top_builddir)/src/filters/remove-usage-tags.hfst
-	$(AM_V_GEN)cat $< \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 $(top_builddir)/src/filters/remove-usage-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 $(top_builddir)/src/filters/remove-number-string-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 $(top_builddir)/src/filters/remove-norm-comp-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 $(top_builddir)/src/filters/remove-homonymy-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 $(top_builddir)/src/filters/remove-variant-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 $(top_builddir)/src/filters/remove-dialect-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 $(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -f foma -b \
+		$(top_builddir)/src/filters/remove-usage-tags.hfst               \
+		$(top_builddir)/src/filters/remove-word-boundary.hfst
+	$(AM_V_GEN)$(PRINTF) "\
+			@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
+    	.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
+    	.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"            \
+    	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
+    	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
+    	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
+    	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
+    	.o. @\"$<\" \
+    	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+
+$(GT_FOMA_ACCEPTOR): generator-fomaspeller-gt-norm.hfst
+	$(AM_V_GEN)$(HFST_FST2FST) $(HFST_FLAGS) -f foma -b -i $< \
 		| $(GZIP) > $@
 
 ####### Other targets: ###########

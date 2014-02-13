@@ -141,11 +141,12 @@ AM_CONDITIONAL([CAN_DOCC], [test "x$gt_prog_docc" != xno])
 
 ################ can rsync oxt template? ################
 AC_PATH_PROG([RSYNC], [rsync], [no], [$PATH$PATH_SEPARATOR$with_rsync])
-AC_MSG_CHECKING([whether we can rsync voikko oxt template locally])
-AS_IF([test "x$GTHOME" != "x" -a
-            "x$RSYNC"  != "x" -a
+AC_MSG_CHECKING([whether we can rsync LO-voikko oxt template locally])
+AS_IF([test "x$GTHOME" != "x" -a \
+            "x$RSYNC"  != "x" -a \
           -d "${GTHOME}/prooftools" ],
       [can_local_sync=yes], [can_local_sync=no])
+AC_MSG_RESULT([$can_local_sync])
 AM_CONDITIONAL([CAN_LOCALSYNC], [test "x$can_local_sync" != xno ])
 
 AC_PATH_PROG([WGET],  [wget],  [no], [$PATH$PATH_SEPARATOR$with_wget])
@@ -166,15 +167,15 @@ AC_PATH_PROG([XFST], [xfst], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_PATH_PROG([TWOLC], [twolc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_PATH_PROG([LEXC], [lexc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_PATH_PROG([LOOKUP], [lookup], [false], [$PATH$PATH_SEPARATOR$with_xfst])
-AC_MSG_CHECKING([whether we can enable xfst building])
+AC_MSG_CHECKING([whether to enable xfst building])
 AS_IF([test x$with_xfst != xno], [
-    AS_IF([test "x$XFST"   != xfalse -a
-                "x$TWOLC"  != xfalse -a
-                "x$LEXC"   != xfalse -a
+    AS_IF([test "x$XFST"   != xfalse -a \
+                "x$TWOLC"  != xfalse -a \
+                "x$LEXC"   != xfalse -a \
                 "x$LOOKUP" != xfalse  ], [gt_prog_xfst=yes],
           [gt_prog_xfst=no])
 ], [gt_prog_xfst=no])
-AC_MSG_RESULT([gt_prog_xfst])
+AC_MSG_RESULT([$gt_prog_xfst])
 AM_CONDITIONAL([CAN_XFST], [test "x$gt_prog_xfst" != xno])
 ]) # gt_PROG_XFST
 

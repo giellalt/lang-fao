@@ -142,11 +142,11 @@ AM_CONDITIONAL([CAN_DOCC], [test "x$gt_prog_docc" != xno])
 ################ can rsync oxt template? ################
 AC_PATH_PROG([RSYNC], [rsync], [no], [$PATH$PATH_SEPARATOR$with_rsync])
 AC_MSG_CHECKING([whether we can rsync voikko oxt template locally])
-AS_IF([test x"$GTHOME" != x -a
-            x"$RSYNC"  != x -a
+AS_IF([test "x$GTHOME" != "x" -a
+            "x$RSYNC"  != "x" -a
           -d "${GTHOME}/prooftools" ],
       [can_local_sync=yes], [can_local_sync=no])
-AM_CONDITIONAL([CAN_LOCALSYNC], [test x"$can_local_sync" != xno ])
+AM_CONDITIONAL([CAN_LOCALSYNC], [test "x$can_local_sync" != xno ])
 
 AC_PATH_PROG([WGET],  [wget],  [no], [$PATH$PATH_SEPARATOR$with_wget])
 

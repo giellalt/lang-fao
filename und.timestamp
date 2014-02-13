@@ -1,4 +1,12 @@
-$Rev: 88620 $
+$Rev: 88669 $
+Made minimisation of speller automatas configurable (default=no), since it can
+be extremely time and resource consuming for some languages, and the size
+difference for the final fst is not very big; we might loose some speed thoug,
+which needs to be tested. Reorganised the configure.ac coce by moving most code
+to the m4/giellatekno.m4 macro file. What remains in configure.ac is pretty
+clean and mostly easily understood.
+
+r88620:
 Renamed the last files in am-shared/ to follow the correct naming scheme.
 
 r88615:

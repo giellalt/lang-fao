@@ -50,31 +50,6 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 ### It is possible to specify also subversion revision: 0.1.2-12345
 _gtd_core_min_version=0.2.4
 
-# Some software that we either depend on or we need for certain functionality:
-
-AC_ARG_ENABLE([yamltests],
-              [AS_HELP_STRING([--enable-yamltests],
-                              [enable yaml tests @<:@default=check@:>@])],
-              [enable_yamltests=$enableval],
-              [enable_yamltests=check])
-
-AS_IF([test "x$enable_yamltests" = "xcheck"], 
-     [AM_PATH_PYTHON([3.1],, [:])
-     AX_PYTHON_MODULE(yaml)
-     AC_MSG_CHECKING([whether to enable yaml-based test])
-     AS_IF([test "$PYTHON" = ":"],
-           [enable_yamltests=no
-            AC_MSG_RESULT([no, python is missing or old])
-            ],
-           [AS_IF([test "x$HAVE_PYMOD_YAML" != "xyes"],
-                  [enable_yamltests=no
-                   AC_MSG_RESULT([no, yaml is missing])
-                   ],
-                  [enable_yamltests=yes
-                   AC_MSG_RESULT([yes])])])])
-
-AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
-
 # We need special treatment of Java paths in Cygwin:
 AC_CANONICAL_HOST
 case "${host}" in
@@ -118,18 +93,6 @@ gt_PROG_SAXON
 
 # Check for SubEthaEdit/see
 AC_PATH_PROG([SEE], [see], [], [$PATH$PATH_SEPARATOR$with_see])
-
-# Check prerequisites for generated documentation
-AC_PATH_PROG([AWK],     [gawk],    [], [$PATH$PATH_SEPARATOR$with_awk])
-AC_PATH_PROG([FORREST], [forrest], [], [$PATH$PATH_SEPARATOR$with_forrest])
-AC_MSG_CHECKING([whether we can enable in-source documentation building])
-AS_IF([test "x$AWK" != x], [
-    AS_IF([test "x$JV" != xfalse], [
-    	AS_IF([test "x$FORREST" != x], [gt_prog_docc=yes], [gt_prog_docc=no])
-    ],[gt_prog_docc=no])
-],[gt_prog_docc=no])
-AC_MSG_RESULT([$gt_prog_docc])
-AM_CONDITIONAL([CAN_DOCC], [test "x$gt_prog_docc" != xno])
 
 # Adds --enable/disable-morphology, -speller, -hyphenation, etc.
 # This should be the last step so that all program variables are available
@@ -179,13 +142,3 @@ AC_OUTPUT
 
 # Prints the informative blurb at the end of ./configure command
 gt_PRINT_FOOTER
-
-dnl stick important warnings to bottom
-dnl YAML test warning:
-AS_IF([test "x$enable_yamltests" == "xno"],
-      [AC_MSG_WARN([YAML testing could not be automatically enabled. To enable it, on MacOSX please do:
-
-sudo port install python32
-sudo port install py-yaml subport=py32-yaml
-
-On other systems, install python 3.1+ and the corresponding py-yaml using suitable tools for those systems.])])

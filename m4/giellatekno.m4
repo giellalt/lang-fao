@@ -25,7 +25,9 @@
 # macros. It is the same as gettext and probably others, but I expect no
 # collisions really.
 
+################################################################################
 # Define functions for setting up paths and checking the GTD core environment:
+################################################################################
 AC_DEFUN([gt_PROG_SCRIPTS_PATHS],
          [
 AC_ARG_VAR([GTMAINTAINER], [define if you are maintaining the infra to get additional complaining about infra integrity])
@@ -96,9 +98,51 @@ AX_COMPARE_VERSION([$_gtd_version], [ge], [$_gtd_core_min_version],
 AS_IF([test "x${gtd_version_ok}" != xno], [AC_MSG_RESULT([$gtd_version_ok])],
 [AC_MSG_ERROR([$gtd_core_too_old_message])])
 
+################################
+### Some software that we either depend on or we need for certain functionality: 
+################
+
+################ YAML-based testing ################
+AC_ARG_ENABLE([yamltests],
+              [AS_HELP_STRING([--enable-yamltests],
+                              [enable yaml tests @<:@default=check@:>@])],
+              [enable_yamltests=$enableval],
+              [enable_yamltests=check])
+
+AS_IF([test "x$enable_yamltests" = "xcheck"], 
+     [AM_PATH_PYTHON([3.1],, [:])
+     AX_PYTHON_MODULE(yaml)
+     AC_MSG_CHECKING([whether to enable yaml-based test])
+     AS_IF([test "$PYTHON" = ":"],
+           [enable_yamltests=no
+            AC_MSG_RESULT([no, python is missing or old])
+            ],
+           [AS_IF([test "x$HAVE_PYMOD_YAML" != "xyes"],
+                  [enable_yamltests=no
+                   AC_MSG_RESULT([no, yaml is missing])
+                   ],
+                  [enable_yamltests=yes
+                   AC_MSG_RESULT([yes])])])])
+
+AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
+
+################ Generated documentation ################
+AC_PATH_PROG([AWK],     [gawk],    [], [$PATH$PATH_SEPARATOR$with_awk])
+AC_PATH_PROG([FORREST], [forrest], [], [$PATH$PATH_SEPARATOR$with_forrest])
+AC_MSG_CHECKING([whether we can enable in-source documentation building])
+AS_IF([test "x$AWK" != x], [
+    AS_IF([test "x$JV" != xfalse], [
+    	AS_IF([test "x$FORREST" != x], [gt_prog_docc=yes], [gt_prog_docc=no])
+    ],[gt_prog_docc=no])
+],[gt_prog_docc=no])
+AC_MSG_RESULT([$gt_prog_docc])
+AM_CONDITIONAL([CAN_DOCC], [test "x$gt_prog_docc" != xno])
+
 ]) # gt_PROG_SCRIPTS_PATHS
 
+################################################################################
 # Define functions for checking the availability of the Xerox tools:
+################################################################################
 AC_DEFUN([gt_PROG_XFST],
 [AC_ARG_WITH([xfst],
             [AS_HELP_STRING([--with-xfst=DIRECTORY],
@@ -119,7 +163,9 @@ AC_MSG_RESULT([gt_prog_xfst])
 AM_CONDITIONAL([CAN_XFST], [test "x$gt_prog_xfst" != xno])
 ]) # gt_PROG_XFST
 
+################################################################################
 # Define functions for checking the availability of the VISLCG3 tools:
+################################################################################
 AC_DEFUN([gt_PROG_VISLCG3],
 [AC_ARG_WITH([vislcg3],
             [AS_HELP_STRING([--with-vislcg3=DIRECTORY],
@@ -147,7 +193,9 @@ AS_IF([test "x$gt_prog_vislcg3" != xno], [AC_MSG_RESULT([yes])],
 AM_CONDITIONAL([CAN_VISLCG], [test "x$gt_prog_vislcg3" != xno])
 ]) # gt_PROG_VISLCG3
 
+################################################################################
 # Define functions for checking the availability of Saxon:
+################################################################################
 AC_DEFUN([gt_PROG_SAXON],
 [AC_ARG_WITH([saxon],
              [AS_HELP_STRING([--with-saxon=DIRECTORY],
@@ -178,7 +226,9 @@ AM_CONDITIONAL([CAN_SAXON], [test "x$gt_prog_saxon" != xno])
 AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$saxonjar" != xno]) 
 ]) # gt_PROG_SAXON
 
+################################################################################
 # Define functions for configuration of the build targets:
+################################################################################
 AC_DEFUN([gt_ENABLE_TARGETS],
 [
 # Enable morphological analysers - default is 'yes'
@@ -213,6 +263,16 @@ AC_ARG_ENABLE([spellerautomat],
               [enable_spellerautomat=yes])
 AS_IF([test "x$enable_spellers" = xno], [enable_spellerautomat=no])
 AM_CONDITIONAL([WANT_SPELLERAUTOMAT], [test "x$enable_spellerautomat" != xno])
+
+# Disable minimised speller fst by default:
+AC_ARG_ENABLE([minimised-spellers],
+              [AS_HELP_STRING([--enable-minimised-spellers],
+                              [minimise hfst spellers @<:@default=no@:>@])],
+              [enable_minimised_spellers=$enableval],
+              [enable_minimised_spellers=no])
+AS_IF([test "x$enable_minimised_spellers" = "xno"],
+      [AC_SUBST([HFST_MINIMIZE_SPELLER], $ac_cv_path_HFST_REMOVE_EPSILONS)],
+      [AC_SUBST([HFST_MINIMIZE_SPELLER], $ac_cv_path_HFST_MINIMIZE)])
 
 # Enable voikko - default is 'yes', but only if the speller automate is enabled
 AC_ARG_ENABLE([voikko],
@@ -297,6 +357,9 @@ AM_CONDITIONAL([WANT_APERTIUM], [test "x$enable_apertium" != xno])
 
 ]) # gt_ENABLE_TARGETS
 
+################################################################################
+# Define function to print the configure footer
+################################################################################
 AC_DEFUN([gt_PRINT_FOOTER],
 [
 cat<<EOF
@@ -315,6 +378,7 @@ cat<<EOF
   -- proofing tools (off by default): --
   * spellers enabled: $enable_spellers
     * hfst speller fst's enabled: $enable_spellerautomat
+      * enable minimised speller (time&mem consuming): $enable_minimised_spellers
     * voikko speller enabled: $enable_voikko
     * foma speller enabled: $enable_fomaspeller
   * grammar checker enabled: $enable_grammarchecker
@@ -341,5 +405,16 @@ disabled. Please check the output of configure to locate any problems.
 ])])
 AS_IF([test x$gt_prog_docc = xno],
       [AC_MSG_WARN([Could not find gawk, java or forrest. In-source documentation will not be extracted and validated. Please install the required tools.])])
+
+dnl stick important warnings to bottom
+dnl YAML test warning:
+AS_IF([test "x$enable_yamltests" == "xno"],
+      [AC_MSG_WARN([YAML testing could not be automatically enabled. To enable it, on MacOSX please do:
+
+sudo port install python32
+sudo port install py-yaml subport=py32-yaml
+
+On other systems, install python 3.1+ and the corresponding py-yaml using suitable tools for those systems.])])
+
 ]) # gt_PRINT_FOOTER
 # vim: set ft=config: 

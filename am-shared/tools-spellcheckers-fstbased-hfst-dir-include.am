@@ -120,7 +120,7 @@ errmodel.%.hfst: errmodel.%.regex easteregg.suggs.hfst
 $(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST) easteregg.hfst
 	$(AM_V_GEN)cat $< \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS)                \
+		| $(HFST_MINIMIZE_SPELLER) $(HFST_FLAGS)                \
 		| $(HFST_DISJUNCT) - easteregg.hfst \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw          \
 		-o $@

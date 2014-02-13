@@ -50,6 +50,10 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 ### It is possible to specify also subversion revision: 0.1.2-12345
 _gtd_core_min_version=0.2.4
 
+### Earliest LibreOffice version that supports the language in question.
+### Used for building the LO-voikko oxt package for the language.
+AC_SUBST([LO_min_version], [3.6])
+
 # We need special treatment of Java paths in Cygwin:
 AC_CANONICAL_HOST
 case "${host}" in

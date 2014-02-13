@@ -1,4 +1,8 @@
-$Rev: 88669 $
+$Rev: 88677 $
+Added a variable to hold the LibreOffice version number where speller support
+for a language was initially available.
+
+r88669:
 Made minimisation of speller automatas configurable (default=no), since it can
 be extremely time and resource consuming for some languages, and the size
 difference for the final fst is not very big; we might loose some speed thoug,

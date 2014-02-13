@@ -69,26 +69,27 @@ EOT
 
 ##### Check the version of the gtd-core, and stop with error message if too old:
 # This is the error message:
-gtd_core_too_old_message="the gtd-core
-is too old, we require at least $_gtd_core_min_version. Please do:
+gtd_core_too_old_message="
+
+The gtd-core is too old, we require at least $_gtd_core_min_version. Please do:
 
 cd $GTCORE
 svn up
 ./autogen.sh # required only the first time
 ./configure  # required only the first time
 make
-sudo make install # optional, not needed if not installed earlier, or
-not on a server.
+sudo make install # optional, not needed if not installed
+                  # earlier, or not on a server.
 "
 
 # Identify the version of gtd-core:
+AC_MSG_CHECKING([the version of the GTD Core])
 AC_PATH_PROG([GTD_VERSION], [gt-version.sh], [no],
     [$GTCORE/scripts$PATH_SEPARATOR$GTHOME/gtcore/scripts$PATH_SEPARATOR$PATH])
 AS_IF([test "x${GTD_VERSION}" != xno],
         [_gtd_version=$( ${GTD_VERSION} )],
         [AC_MSG_ERROR([$gtd_core_too_old_message])
     ])
-AC_MSG_CHECKING([the version of the GTD Core])
 AC_MSG_RESULT([$_gtd_version])
 
 AC_MSG_CHECKING([whether the GTD Core version is at least $_gtd_core_min_version])
@@ -138,6 +139,17 @@ AS_IF([test "x$AWK" != x], [
 AC_MSG_RESULT([$gt_prog_docc])
 AM_CONDITIONAL([CAN_DOCC], [test "x$gt_prog_docc" != xno])
 
+################ can rsync oxt template? ################
+AC_PATH_PROG([RSYNC], [rsync], [no], [$PATH$PATH_SEPARATOR$with_rsync])
+AC_MSG_CHECKING([whether we can rsync voikko oxt template locally])
+AS_IF([test x"$GTHOME" != x -a
+            x"$RSYNC"  != x -a
+          -d "${GTHOME}/prooftools" ],
+      [can_local_sync=yes], [can_local_sync=no])
+AM_CONDITIONAL([CAN_LOCALSYNC], [test x"$can_local_sync" != xno ])
+
+AC_PATH_PROG([WGET],  [wget],  [no], [$PATH$PATH_SEPARATOR$with_wget])
+
 ]) # gt_PROG_SCRIPTS_PATHS
 
 ################################################################################
@@ -156,7 +168,10 @@ AC_PATH_PROG([LEXC], [lexc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_PATH_PROG([LOOKUP], [lookup], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_MSG_CHECKING([whether we can enable xfst building])
 AS_IF([test x$with_xfst != xno], [
-    AS_IF([test "x$XFST" != xfalse], [gt_prog_xfst=yes],
+    AS_IF([test "x$XFST"   != xfalse -a
+                "x$TWOLC"  != xfalse -a
+                "x$LEXC"   != xfalse -a
+                "x$LOOKUP" != xfalse  ], [gt_prog_xfst=yes],
           [gt_prog_xfst=no])
 ], [gt_prog_xfst=no])
 AC_MSG_RESULT([gt_prog_xfst])

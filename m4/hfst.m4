@@ -90,7 +90,7 @@ if test x$HFST_INFO != xfalse; then
             gt_prog_hfst=no
         fi
     else
-	    AC_MSG_ERROR([You requested --with-hfst, but your hfst is broken, bailing out.])
+        AC_MSG_ERROR([You requested --with-hfst, but your hfst is broken. Bailing out.])
     fi
 else
     AC_MSG_RESULT([no])

@@ -144,7 +144,7 @@ AC_PATH_PROG([RSYNC], [rsync], [no], [$PATH$PATH_SEPARATOR$with_rsync])
 AC_MSG_CHECKING([whether we can rsync LO-voikko oxt template locally])
 AS_IF([test "x$GTHOME" != "x" -a \
             "x$RSYNC"  != "x" -a \
-          -d "${GTHOME}/prooftools" ],
+          -d "${GTHOME}/prooftools/toollibs/LibreOffice-voikko" ],
       [can_local_sync=yes], [can_local_sync=no])
 AC_MSG_RESULT([$can_local_sync])
 AM_CONDITIONAL([CAN_LOCALSYNC], [test "x$can_local_sync" != xno ])

@@ -20,7 +20,7 @@ GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 
 # This is how we zip files to work with hfst-ospell and libvoikko
 # (=max compression, working from 28.1.2014 for all platforms):
-ZIPFLAGS=-9
+ZIPFLAGS=-9 -r
 
 ####### Automake targets: ########
 
@@ -52,10 +52,12 @@ endif # WANT_VOIKKO
 endif # CAN_HFST
 endif # WANT_SPELLERS
 
-noinst_DATA=$(GT_ERRMODELS)
+noinst_DATA=$(GT_ERRMODELS) $(OXT_FILES)
 
-####### HFST build rules: ########
+###################################
+####### HFST build rules: #########
 
+####### Esater egg version info: #######
 # Easter egg content:
 easteregg.txt: $(srcdir)/version.txt
 	$(AM_V_GEN)$(GTCORE)/scripts/make-hfstspeller-version-easter-egg.sh \
@@ -74,6 +76,7 @@ easteregg.hfst: easteregg.txt
 	$(AM_V_GEN)$(HFST_STRINGS2FST) $(HFST_FLAGS) -j < $< \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower > $@
 
+####### Error model: #######
 # Error model building - edit distance based on transducer alphabet:
 editdist.%.hfst: editdist.%.txt $(GT_SPELLER_ACCEPTOR)
 	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py -v -s -d 1 -e '@0@' -i $<   \
@@ -109,6 +112,7 @@ errmodel.%.hfst: words.%.hfst editStrings.%.hfst
 	$(AM_V_GEN)$(HFST_DISJUNCT) $^ \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
+####### Alternate error model: #######
 # Alternatively, the error model can be constructed as a long list of regular
 # expressions, semicolon separated:
 errmodel.%.hfst: errmodel.%.regex easteregg.suggs.hfst
@@ -116,6 +120,46 @@ errmodel.%.hfst: errmodel.%.regex easteregg.suggs.hfst
 		| $(HFST_DISJUNCT) - easteregg.hfst \
 		-o $@
 
+####### Add corpus-based weights: #######
+# copy cleaned corpus into the local dir:
+$(CORPUSNAME).clean.txt: \
+	$(top_srcdir)/tools/spellcheckers/fstbased/data/$(CORPUSNAME).clean.txt
+	$(AM_V_GEN)cp -f $< $@
+
+# sort the clean corpus:
+%.sort.txt: %.clean.txt
+	$(AM_V_GEN)sort < $< > $@
+
+# token count:
+%.wordcount.txt: %.sort.txt
+	$(AM_V_GEN)wc -l < $< > $@
+
+%.uniq.txt: %.sort.txt
+	$(AM_V_at)uniq -c < $< > $@
+
+# type count:
+%.typecount.txt: %.uniq.txt
+	$(AM_V_GEN)wc -l < $< > $@
+
+# calculate unit weight, smoothed using ALPHA:
+%.unitweight.txt: %.wordcount.txt %.typecount.txt
+	$(AM_V_GEN)paste $*.wordcount.txt $*.typecount.txt |\
+		sed -e "s/^/scale=5; -l($(ALPHA)\/(/" \
+		-e "s/	/ + ($(ALPHA) */" -e "s/$$/)))/" |\
+		bc -l > $@
+
+# add tropical weights to the corpus:
+%.tropical.txt: %.uniq.txt %.wordcount.txt %.typecount.txt
+	$(AM_V_GEN)cat $*.uniq.txt |\
+		$(AWK) -v CS="$$(cat $*.wordcount.txt)" -v ALPHA=$(ALPHA) \
+		-v DS="$$(cat $*.typecount.txt)" -f uniqc2tropical.awk > $@
+
+# build an fst of surface forms with tropical weights for each word form:
+%.surfs.hfst: %.tropical.txt
+	$(AM_V_GEN)cat $< |\
+		$(HFST_STRINGS2FST) -j $(HFST_FLAGS) -f openfst-tropical -o $@
+
+####### Speller acceptor: #######
 # Build the automaton used for the speller
 $(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST) easteregg.hfst
 	$(AM_V_GEN)cat $< \
@@ -125,6 +169,7 @@ $(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST) easteregg.hfst
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw          \
 		-o $@
 
+####### *.zhfst file: #######
 # Finally build the zhfst file, and make a copy in a subdir named '3', so that
 # we can test it without installing it (the '3' dir is a voikko requirement):
 $(GT_SPELLING_HFST): index.xml \
@@ -133,6 +178,68 @@ $(GT_SPELLING_HFST): index.xml \
 	$(AM_V_GEN)rm -f $@ && $(ZIP) $(ZIPFLAGS) $@ $^ && \
 		$(MKDIR_P) 3 && \
 		cp -f $@ 3/
+
+####### *.oxt files: #######
+# Hard-coded paths for the time being - to be generalised later.
+
+OXT_FILES=
+
+if CAN_LOCALSYNC
+
+OXT_FILES+=$(GTLANG2)_LO-voikko-3.6-32b-win.oxt \
+           $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt
+
+endif # CAN_LOCALSYNC
+
+#### LO versions and bit width, valid values: ####
+# 3.6 (actually 3.6-4.0, implicitly 32-bit, both LO and OOo)
+# 4.1 (actually 4.1+,    implicitly 32-bit, LO only)
+#
+# These values corresponds to the version ID in the dir name of
+# the oxt template
+LO_VERSIONS=3.6 4.1
+
+# List of platforms supported by the build (Linux excluded, because the
+# oxt is distributed via package managers instead):
+LO_PLATFORMS=mac win
+
+# Bitness:
+LO_BITNESS=32b 64b
+
+#$(GTLANG2)_LO-voikko-$(LO_VERSION)-32b-win.oxt
+#OXT_FILES+=$(addsuffix .oxt, \
+#            $(addprefix \
+#                $(addprefix $(GTLANG2)_LO-voikko-,$(LO_VERSIONS)), \
+#                    $(addprefix $(GTLANG2)_LO-voikko-,$(LO_BITNESS)), \
+#                        $(LO_PLATFORMS)))
+#
+#LO_BIT_PLATFORMS=$(addprefix ,$(addprefix -,$(LO_PLATFORMS)))
+
+OXT_ROOT_DIR=$(GTHOME)/prooftools/toollibs/LibreOffice-voikko
+
+# Build receipt for OXT:
+# mkdir build dir
+# rsync into build/subdir
+# cp zhfst
+# modify oxt index file
+# zip build/subdir
+# copy to ./
+$(GTLANG2)_LO-voikko-4.1-32b-mac.oxt: $(GT_SPELLING_HFST)
+	$(AM_V_GEN)rm -f $@ && \
+		$(MKDIR_P) build/mac/ && \
+		cd build/mac && \
+		$(RSYNC) -av $(OXT_ROOT_DIR)/4.1-32b-mac/ ./ && \
+		cp ../../$< 3/ && \
+		$(ZIP) $(ZIPFLAGS) ../../$@ *
+
+$(GTLANG2)_LO-voikko-3.6-32b-win.oxt: $(GT_SPELLING_HFST)
+	$(AM_V_GEN)rm -f $@ && \
+		$(MKDIR_P) build/win/ && \
+		cd build/win && \
+		$(RSYNC) -av $(OXT_ROOT_DIR)/3.6-32b-win/ ./ && \
+		cp ../../$< 3/ && \
+		$(ZIP) $(ZIPFLAGS) ../../$@ *
+
 
 ####### Other targets: ###########
 clean-local:

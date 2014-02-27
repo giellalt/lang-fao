@@ -89,20 +89,18 @@ endif
 ####### when something doesn't work); hfst does the concatenation automatically
 ####### but by doing it explicitly we have a source file to relate line numbers
 ####### in error messages to.
-$(GTLANG)-all.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
+$(GTLANG).all.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 	$(AM_V_GEN)cat $^ > $@
 
 ##################################################
 ####### lexical transducer building rules: #######
 
 ####### HFST build rules: ########
-$(GTLANG).lexc.hfst: $(GTLANG)-all.lexc
-	$(HLEXC_verbose)  $(HFST_LEXC)    -f foma -o $@.foma $^
-	$(FST2FST_verbose)$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
-	$(AM_V_at)        rm -f $@.foma
+%.lexc.hfst: %.all.lexc
+	$(HLEXC_verbose)$(HFST_LEXC) $(HFST_LEXC_FLAGS) -f openfst-tropical -o $@ $^
 
 ####### Xerox build rules: #######
-$(GTLANG).lexc.xfst: $(GTLANG)-all.lexc
+%.lexc.xfst: %.all.lexc
 	$(XFST_verbose)$(XFST) -q \
 			-e "read lexc $^" \
 			-e "compose net" \
@@ -111,8 +109,8 @@ $(GTLANG).lexc.xfst: $(GTLANG)-all.lexc
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f $(GT_LEXICAL) *.foma *.tmp.* \
-		*.hfst *.xfst *.script $(GTLANG)-all.lexc
+	-rm -f $(GT_LEXICAL) \
+		*.hfst *.xfst *.script *.all.lexc
 
 maintainer-clean-local:
 	-rm -f $(GENERATED_LEXC_SRCS)

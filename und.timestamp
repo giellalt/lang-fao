@@ -1,4 +1,12 @@
-$Rev: 89561 $
+$Rev: 89570 $
+Fixed pattern rule error.
+
+r89569:
+Simplified the building of the hfst lexical transducer, and made it easy to use
+the -F option to hyperminimise the lexical fst. Using pattern rules instead of
+fixed filenames.
+
+r89561:
 Added first working build of oxt files. Not yet generalised, but working with
 the paths we have. Will build Windows and Mac OXT files for all languages.
 

@@ -240,6 +240,20 @@ $(GTLANG2)_LO-voikko-3.6-32b-win.oxt: $(GT_SPELLING_HFST)
 		cp ../../$< 3/ && \
 		$(ZIP) $(ZIPFLAGS) ../../$@ *
 
+DATE=$(shell date +%Y%m%d)
+UPLOADSITE=sd@divvun.no:static_files/oxts
+
+upload:
+	scp $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt \
+		$(UPLOADSITE)/$(GTLANG2)_LO-voikko-4.1-32b-mac-$(DATE).oxt
+	scp $(GTLANG2)_LO-voikko-3.6-32b-win.oxt \
+		$(UPLOADSITE)/$(GTLANG2)_LO-voikko-3.6-32b-win-$(DATE).oxt
+	ssh sd@divvun.no "cd staticfiles/oxts/ && \
+	   ln -sf $(GTLANG2)_LO-voikko-4.1-32b-mac-$(DATE).oxt \
+	          $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt"
+	ssh sd@divvun.no "cd staticfiles/oxts/ && \
+	   ln -sf $(GTLANG2)_LO-voikko-3.6-32b-win-$(DATE).oxt \
+	          $(GTLANG2)_LO-voikko-3.6-32b-win.oxt"
 
 ####### Other targets: ###########
 clean-local:

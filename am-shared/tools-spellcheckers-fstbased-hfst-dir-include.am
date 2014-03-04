@@ -184,12 +184,16 @@ $(GT_SPELLING_HFST): index.xml \
 
 OXT_FILES=
 
+if WANT_SPELLERS
+if CAN_HFST
 if CAN_LOCALSYNC
 
 OXT_FILES+=$(GTLANG2)_LO-voikko-3.6-32b-win.oxt \
            $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt
 
 endif # CAN_LOCALSYNC
+endif # CAN_HFST
+endif # WANT_SPELLERS
 
 #### LO versions and bit width, valid values: ####
 # 3.6 (actually 3.6-4.0, implicitly 32-bit, both LO and OOo)

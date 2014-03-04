@@ -1,4 +1,9 @@
-$Rev: 89623 $
+$Rev: 89769 $
+Fixed a build bug: it tried to build oxt files also when hfst support was not
+enabled. Now oxt files will only be built if hfst is on, and spellers have been
+requested.
+
+r89623:
 Fixed a problem with building zhfst files using VPATH builds.
 
 r89587:

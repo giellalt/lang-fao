@@ -161,8 +161,11 @@ $(CORPUSNAME).clean.txt: \
 
 ####### Speller acceptor: #######
 # Build the automaton used for the speller
-$(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST) easteregg.hfst
+$(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST) easteregg.hfst \
+						$(top_builddir)/src/filters/remove-word-boundary.hfst
 	$(AM_V_GEN)cat $< \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+			-2 $(top_builddir)/src/filters/remove-word-boundary.hfst \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
 		| $(HFST_MINIMIZE_SPELLER) $(HFST_FLAGS)                \
 		| $(HFST_DISJUNCT) - easteregg.hfst \

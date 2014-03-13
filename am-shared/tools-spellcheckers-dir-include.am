@@ -44,12 +44,14 @@ $(GT_COMMON_SPELLER_HFST): $(top_builddir)/src/$(GT_SPELLER_SRC_HFST)  \
 			$(top_builddir)/src/filters/remove-sub-forms.hfst          \
 			$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst \
 			$(top_builddir)/src/filters/remove-PUNCT-strings.hfst      \
-			$(top_builddir)/src/filters/remove-CLB-strings.hfst
+			$(top_builddir)/src/filters/remove-CLB-strings.hfst        \
+			$(top_builddir)/src/filters/remove-semantic-tags.hfst
 	$(AM_V_GEN)$(PRINTF) "\
 			@\"$(top_builddir)/src/filters/remove-sub-forms.hfst\"          \
     	.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst\" \
     	.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.hfst\"      \
     	.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.hfst\"        \
+    	.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.hfst\"      \
     	.o. @\"$<\" \
     	;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
@@ -59,12 +61,14 @@ $(GT_COMMON_SPELLER_XFST): $(top_builddir)/src/$(GT_SPELLER_SRC_XFST)  \
 			$(top_builddir)/src/filters/remove-sub-forms.xfst          \
 			$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst \
 			$(top_builddir)/src/filters/remove-PUNCT-strings.xfst      \
-			$(top_builddir)/src/filters/remove-CLB-strings.xfst
+			$(top_builddir)/src/filters/remove-CLB-strings.xfst        \
+			$(top_builddir)/src/filters/remove-semantic-tags.xfst
 	$(AM_V_GEN)$(PRINTF) "read regex \
 			@\"$(top_builddir)/src/filters/remove-sub-forms.xfst\"          \
     	.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst\" \
     	.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.xfst\"      \
     	.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.xfst\"        \
+    	.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.xfst\"      \
     	.o. @\"$<\" \
     	;\n\
 		 save stack $@\n\

@@ -1,4 +1,13 @@
-$Rev: 89769 $
+$Rev: 90368 $
+Fixed bug http://giellatekno.uit.no/bugzilla/show_bug.cgi?id=1830. The word
+border mark removal had earlier been moved from a preceding step to the final
+product compilation step. It was added to the foma speller compilation, but not
+included in the hfst speller compilation for some reason. Now it is.
+At the same time removed semantic tags from the speller transducers, to make the
+analysis/generation string more readable when debugging - they are not used by
+the speller builds.
+
+r89769:
 Fixed a build bug: it tried to build oxt files also when hfst support was not
 enabled. Now oxt files will only be built if hfst is on, and spellers have been
 requested.

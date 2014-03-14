@@ -79,7 +79,7 @@ endif # CAN_HFST
 ####### Build rules for extracting tags: #######
 
 semantic-tags.txt: gttags.txt
-	$(AM_V_GEN)grep -F '+Sem/' $< > $@
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-semantic-tags.sh $< $@
 
 ####### Build rules for creating regexes from tag list: #######
 # Do not delete intermediate files:

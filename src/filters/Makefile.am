@@ -32,6 +32,7 @@ GT_FILTER_TARGETS+=\
 				   remove-number-string-tags.hfst         \
 				   remove-orig_lang-tags.hfst             \
 				   remove-orthography-tags.hfst           \
+				   remove-semantic-tags.hfst              \
 				   remove-usage-tags.hfst                 \
 				   remove-variant-tags.hfst               \
 				   remove-hyphenation-marks.hfst          \
@@ -66,6 +67,7 @@ GT_FILTER_TARGETS+=\
 				   remove-number-string-tags.xfst         \
 				   remove-orig_lang-tags.xfst             \
 				   remove-orthography-tags.xfst           \
+				   remove-semantic-tags.xfst              \
 				   remove-usage-tags.xfst                 \
 				   remove-variant-tags.xfst               \
 				   remove-hyphenation-marks.xfst          \

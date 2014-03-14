@@ -1,0 +1,20 @@
+#!/bin/bash
+
+HFST_OSPELL=@HFST_OSPELL@
+LANG=@GTLANG2@
+ZHFSTFILE=../../../tools/spellcheckers/fstbased/hfst/${LANG}.zhfst
+
+if test -x ${HFST_OSPELL} ; then
+  if test -f ${ZHFSTFILE} ; then
+    if ! echo nuvviDspeller | ${HFST_OSPELL} -v ${ZHFSTFILE} ; then
+        exit 1
+    fi
+  else
+      echo ${ZHFSTFILE} not found
+      exit 77
+  fi
+else
+    echo ${HFST_OSPELL} not found
+    exit 77
+fi
+

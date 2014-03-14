@@ -76,6 +76,9 @@ AC_PATH_PROG(HFST_TXT2FST,           hfst-txt2fst,           false, $PATH$PATH_S
 AC_PATH_PROG(HFST_XFST,              hfst-xfst,              false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_XFST2FST,          hfst-xfst2fst,          false, $PATH$PATH_SEPARATOR$with_hfst)
 
+# hfst-ospell is a separate package:
+AC_PATH_PROG(HFST_OSPELL,            hfst-ospell,            false, $PATH$PATH_SEPARATOR$with_hfst)
+
 AS_IF([test x$with_hfst != xno], [
 _gtd_hfst_min_version=m4_default([$1], [3.5.1])
 AC_MSG_CHECKING([whether hfst is at least $_gtd_hfst_min_version])

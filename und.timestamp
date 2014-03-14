@@ -1,4 +1,12 @@
-$Rev: 90368 $
+$Rev: 90415 $
+Moved the new test script processing in configure.ac up a few lines to avoid
+conflicts during template merge.
+
+r90414:
+Added a test to check zhfst file validity. Not functional yet, because of a bug
+in hfst-ospell.
+
+r90368:
 Fixed bug http://giellatekno.uit.no/bugzilla/show_bug.cgi?id=1830. The word
 border mark removal had earlier been moved from a preceding step to the final
 product compilation step. It was added to the foma speller compilation, but not

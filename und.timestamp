@@ -1,4 +1,8 @@
-$Rev: 90437 $
+$Rev: 90588 $
+Made documentation build process work properly when using VPATH builds, and at
+the same time silenced the doc build by default.
+
+r90437:
 Replaced grep in Makefile with a shell script for extracting semantic tags. This
 is done to catch the case where there are no semantic tags to extract. Earlier
 this caused a failed build, now it is handled properly. Required GTD core

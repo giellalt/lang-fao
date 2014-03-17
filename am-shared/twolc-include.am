@@ -15,6 +15,18 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#### Tailored silent output text: ####
+HTWOLC_verbose   = $(HTWOLC_verbose_@AM_V@)
+HTWOLC_verbose_  = $(HTWOLC_verbose_@AM_DEFAULT_V@)
+HTWOLC_verbose_0 = @echo "  HTWOLC   $@";
+
+TWOLC_verbose   = $(TWOLC_verbose_@AM_V@)
+TWOLC_verbose_  = $(TWOLC_verbose_@AM_DEFAULT_V@)
+TWOLC_verbose_0 = @echo "  TWOLC    $@";
+
+# Let the verbosity of some command line tools follow the automake verbosity:
+TWOLCVERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
+
 ########################################
 ########## Twolc build rules. ##########
 ########################################
@@ -27,16 +39,17 @@ HFSTTWOLFLAGS=--resolve
 # All twolc targets should be built by suffix rules;
 # just list them in some nice automake targets and you're good to go
 .twolc.hfst:
-	$(AM_V_GEN)$(HFST_TWOLC) $(HFSTFLAGS) $(HFSTTWOLCFLAGS) -i $< -o $@
+	$(HTWOLC_verbose)$(HFST_TWOLC) $(TWOLCVERBOSITY) \
+			$(HFSTFLAGS) $(HFSTTWOLCFLAGS) -i $< -o $@
 
 ####### Xerox build rules: #######
 
 # All twolc targets should be built by suffix rules;
 # just list them in some nice automake targets and you're good to go
 .twolc.xfst:
-	$(AM_V_GEN)$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" \
+	$(AM_V_at)$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" \
 		> $@.script
-	$(AM_V_GEN)$(TWOLC) < $@.script
-	$(AM_V_GEN)rm -f $@.script
+	$(TWOLC_verbose)$(TWOLC) $(TWOLCVERBOSITY) < $@.script
+	$(AM_V_at)rm -f $@.script
 
 # vim: set ft=automake:

@@ -15,6 +15,18 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#### Tailored silent output text: ####
+HLEXC_verbose   = $(HLEXC_verbose_@AM_V@)
+HLEXC_verbose_  = $(HLEXC_verbose_@AM_DEFAULT_V@)
+HLEXC_verbose_0 = @echo "  HLEXC    $@";
+
+LEXC_verbose   = $(LEXC_verbose_@AM_V@)
+LEXC_verbose_  = $(LEXC_verbose_@AM_DEFAULT_V@)
+LEXC_verbose_0 = @echo "  LEXC     $@";
+
+# Let the verbosity of some command line tools follow the automake verbosity:
+VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
+
 ####### Source file defs: ########
 
 #! @param GT_TRANSCRIPTIONS_SRCS required, the source files for orthographic
@@ -43,18 +55,17 @@ noinst_DATA=$(GT_TRANSCRIPTORS)
 # lexical transducer building rules:
 # for HFST:
 transcriptor-%2text-raw.hfst: %.lexc
-	$(AM_V_GEN)$(HFST_LEXC) -f foma -o $@.foma $^
-	$(AM_V_GEN)$(HFST_FST2FST) -f openfst-tropical -i $@.foma -o $@
-	$(AM_V_GEN)rm -f $@.foma
+	$(HLEXC_verbose)$(HFST_LEXC) $(VERBOSITY) \
+		$(HFST_LEXC_FLAGS) -f openfst-tropical -o $@ $^
 
 ####### Xerox build rules: #######
 
 transcriptor-%2text-raw.xfst: %.lexc
-	$(AM_V_GEN)$(PRINTF) \
+	$(AM_V_at)     $(PRINTF) \
 		"compile-source $^\nsave-source $@\nquit\n" \
 		> $@.script
-	$(AM_V_GEN)$(LEXC) < $@.script
-	$(AM_V_GEN)rm -f $@.script
+	$(LEXC_verbose)$(LEXC) $(VERBOSITY) < $@.script
+	$(AM_V_at)     rm -f $@.script
 
 ####### Other targets: ###########
 clean-local:

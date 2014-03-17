@@ -28,19 +28,20 @@ HXFST_verbose_  = $(HXFST_verbose_@AM_DEFAULT_V@)
 # The last line is defined conditionally below, depending on whether foma
 # or hfst-xfst is used.
 
-VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
+# Let the verbosity of some command line tools follow the automake verbosity:
+XFSCRIPVERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
 
 ####### HFST build rules: ########
 
 # Which hfst xfscript processor to use? Foma is default, there are still issues
 # with hfst-xfst.
 if CAN_HFST_FOMA
-HFST_XFST_COMPILER=$(HFST_FOMA) $(VERBOSITY) -f
+HFST_XFST_COMPILER=$(HFST_FOMA) $(XFSCRIPVERBOSITY) -f
 HXFST_verbose_0 = @echo "  HFOMA    $@";
 
 else
 if CAN_HFST_XFST
-HFST_XFST_COMPILER=$(HFST_XFST) $(VERBOSITY) -F
+HFST_XFST_COMPILER=$(HFST_XFST) $(XFSCRIPVERBOSITY) -F
 HXFST_verbose_0 = @echo "  HXFST    $@";
 
 else
@@ -66,6 +67,6 @@ endif # CAN_HFST_FOMA
 # composition, the fst will just be copied from tmp to the target. These oper-
 # ations are done in the *.am files which include this file.
 %.tmp.xfst: %.xfscript
-	$(XFST_verbose)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
+	$(XFST_verbose)$(XFST) $(XFSCRIPVERBOSITY) -l $< -e "save stack $@" -stop
 
 # vim: set ft=automake:

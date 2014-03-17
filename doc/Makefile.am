@@ -41,9 +41,9 @@ JSP_PAGES=root-morphology.jspwiki  \
 # propernouns-affixes.jspwiki      \
 # verbs-affixes.jspwiki
 
-ALLINONE_JSP_PAGE=$(GTLANG).jspwiki
+ALLINONE_JSP_PAGE=$(srcdir)/$(GTLANG).jspwiki
 
-LINKS=Links.jspwiki
+LINKS=$(srcdir)/Links.jspwiki
 
 endif # CAN_DOCC
 

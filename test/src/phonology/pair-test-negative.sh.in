@@ -1,0 +1,32 @@
+#!/bin/bash
+
+PRINTF=@PRINTF@
+TWOLC=@TWOLC@
+GTLANG=@GTLANG@
+SOURCEFILE=${srcdir}/../../../src/phonology/${GTLANG}-phon.twolc
+FSTFILE=../../../src/phonology/${GTLANG}-phon.xfst
+TWOLCSCRIPT=twolcscript.sh
+TESTDATA=negative-pairs.txt
+TESTRESULT=negative-pairs-out.txt
+
+if test -x ${TWOLC} ; then
+  if test -f ${SOURCEFILE} ; then
+    grep '^!\$' ${SOURCEFILE} | cut -d' ' -f2- > ${TESTDATA}
+    ${PRINTF} "\
+install-binary ${FSTFILE}\n\
+pair-test-file ${TESTDATA} ${TESTRESULT}\n\
+quit\n" \
+    	> ${TWOLCSCRIPT}
+    ${TWOLC} -q < ${TWOLCSCRIPT}
+    if ! grep -E '(REJECTED|Error)' ${TESTDATA} ; then
+        exit 1
+    fi
+    rm -f ${TWOLCSCRIPT} ${TESTDATA} ${TESTRESULT}
+  else
+      echo ${SOURCEFILE} not found
+      exit 77
+  fi
+else
+    echo ${TWOLC} not found
+    exit 77
+fi

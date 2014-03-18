@@ -136,6 +136,10 @@ AC_CONFIG_FILES([Makefile \
 # the most pleasant user experience and most readable autoconf code to maintain.
 AC_CONFIG_FILES([test/tools/spellcheckers/test-zhfst-file.sh], \
       [chmod a+x test/tools/spellcheckers/test-zhfst-file.sh])
+AC_CONFIG_FILES([test/src/phonology/pair-test-positive.sh], \
+      [chmod a+x test/src/phonology/pair-test-positive.sh])
+AC_CONFIG_FILES([test/src/phonology/pair-test-negative.sh], \
+      [chmod a+x test/src/phonology/pair-test-negative.sh])
 AC_CONFIG_FILES([test/src/morphology/run-morph-tester.sh], \
       [chmod a+x test/src/morphology/run-morph-tester.sh])
 AC_CONFIG_FILES([test/src/morphology/generate-noun-lemmas.sh], \

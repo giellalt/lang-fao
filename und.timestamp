@@ -1,4 +1,10 @@
-$Rev: 90692 $
+$Rev: 90726 $
+Rewrote the test for awk to check for a feature found only in GNU awk, and use
+the one found. Will check both awk and gawk, and use whichever supports the
+feature (gawk on some Linux systems is renamed awk). This should make the
+build configuration more robust.
+
+r90692:
 Added twolc pair string testing for Xerox. Hfst requires another type of pair
 strings, and can't easily be tested at present.
 

@@ -128,7 +128,16 @@ AS_IF([test "x$enable_yamltests" = "xcheck"],
 AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
 
 ################ Generated documentation ################
-AC_PATH_PROG([AWK],     [gawk],    [], [$PATH$PATH_SEPARATOR$with_awk])
+# Check for awk with required feature:
+AC_CACHE_CHECK([for awk that supports gensub], [ac_cv_path_AWK],
+  [AC_PATH_PROGS_FEATURE_CHECK([AWK], [awk gawk],
+    [[awkout=`$ac_path_AWK 'BEGIN{gensub(/a/,"b","g");}'`
+      test "x$awkout" = x0 \
+      && ac_cv_path_AWK=$ac_path_AWK ac_path_AWK_found=:]],
+    [AC_MSG_WARN([could not find awk that supports gensub])])])
+AC_SUBST([AWK], [$ac_cv_path_AWK])
+
+# Check for Forrest:
 AC_PATH_PROG([FORREST], [forrest], [], [$PATH$PATH_SEPARATOR$with_forrest])
 AC_MSG_CHECKING([whether we can enable in-source documentation building])
 AS_IF([test "x$AWK" != x], [

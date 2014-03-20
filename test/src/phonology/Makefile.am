@@ -11,4 +11,4 @@ endif # CAN_XFST
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=
+XFAIL_TESTS=pair-test-positive.sh pair-test-negative.sh

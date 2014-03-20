@@ -18,7 +18,7 @@ pair-test-file ${TESTDATA} ${TESTRESULT}\n\
 quit\n" \
     	> ${TWOLCSCRIPT}
     ${TWOLC} -q < ${TWOLCSCRIPT}
-    if ! grep -E '(REJECTED|Error)' ${TESTDATA} ; then
+    if ! grep 'ACCEPTED' ${TESTDATA} ; then
         exit 1
     fi
     rm -f ${TWOLCSCRIPT} ${TESTDATA} ${TESTRESULT}

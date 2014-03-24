@@ -39,9 +39,9 @@ GT_TRANSFORMERS_XFST=transcriptor-clock2text-desc.xfst \
 
 if WANT_DICTIONARIES
 GT_ANALYSERS_XFST+=analyser-dict-gt-desc.xfst \
-					analyser-dict-gt-norm.xfst
-GT_GENERATORS_XFST+=generator-dict-gt-norm.xfst \
-					generator-dict-gt-desc.xfst
+				   analyser-dict-gt-desc-mobile.xfst
+GT_GENERATORS_XFST+=generator-dict-gt-norm.xfst
+
 endif # WANT_DICTIONARIES
 endif # CAN_XFST
 
@@ -180,6 +180,6 @@ generator%.hfst: generator%.tmp.hfst
 
 #### Xerox transducer fallback target:
 %.xfst: %.tmp.xfst
-	$(AM_V_GEN)cp -f $< $@
+	$(AM_V_CP)cp -f $< $@
 
 include $(top_srcdir)/am-shared/src-dir-include.am

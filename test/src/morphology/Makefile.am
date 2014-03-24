@@ -14,6 +14,12 @@ TESTS+=run-gt-norm-yaml-testcases.sh \
 	   run-gt-norm-anayaml-testcases.sh \
 	   run-gt-norm-genyaml-testcases.sh \
 	   run-lexc-testcases.sh
+
+if WANT_DICTIONARIES
+TESTS+=run-dict-gt-desc-anayaml-testcases.sh \
+	   run-dict-gt-norm-genyaml-testcases.sh
+endif # WANT_DICTIONARIES
+
 endif # CAN_YAML_TEST
 
 # List tests that are presently (expected) failures here, ie things that should

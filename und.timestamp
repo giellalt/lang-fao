@@ -1,4 +1,19 @@
-$Rev: 90845 $
+$Rev: 91015 $
+Greatly improved support for the dictionary fst building:
+* filtering semantic tags now work properly (removed for all but Prop)
+* properly silent when using silent builds
+* added dict-specific yaml test files and corresponding test runners
+* removed building of reduntant dictionary fst's since we now can test
+  generation and analysis independently - we only test the fst's we
+  are actually going to use, in the intended "direction"; this should
+  noticably speed up compilation, especially when using hfst
+* all languages now build a dictionary analyser with a mobile phone
+  spell relax
+Also removed semantic tags from the regular analyser, as discussed earlier.
+Increased the required GTD core version, as the new version is required to
+fix the bug mentioned above.
+
+r90845:
 Corrected the test that triggers a FAIL in the twolc negative test script.
 
 r90799:

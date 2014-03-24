@@ -37,8 +37,10 @@ EXTRA_DIST=$(GT_FILTER_SRCS)
 
 ####### Automake targets: ########
 
-# @param GT_REGEX_TARGETS required
+# @param GT_FILTER_TARGETS required
 noinst_DATA=$(GT_FILTER_TARGETS) $(GT_TAGS)
+BUILT_SOURCES=$(GENERATED_REGEXES)
+CLEANFILES   =$(GENERATED_REGEXES)
 
 # Variable to hold filenames for files containing all tags used
 # (all symbols starting with '+')
@@ -82,8 +84,6 @@ semantic-tags.txt: gttags.txt
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-semantic-tags.sh $< $@
 
 ####### Build rules for creating regexes from tag list: #######
-# Do not delete intermediate files:
-.SECONDARY:
 
 # Create regex from tag list for making that tag list optional.
 # The conditional is there to allow for tag list specific shell scripts, ie only

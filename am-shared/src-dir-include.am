@@ -31,6 +31,10 @@ RGX2FST_verbose   = $(RGX2FST_verbose_@AM_V@)
 RGX2FST_verbose_  = $(RGX2FST_verbose_@AM_DEFAULT_V@)
 RGX2FST_verbose_0 = @echo "  RGX2FST  $@";
 
+AM_V_HFSTOL   = $(AM_V_HFSTOL_@AM_V@)
+AM_V_HFSTOL_  = $(AM_V_HFSTOL_@AM_DEFAULT_V@)
+AM_V_HFSTOL_0 = @echo "  HFSTOL   $@";
+
 LEXC_verbose   = $(LEXC_verbose_@AM_V@)
 LEXC_verbose_  = $(LEXC_verbose_@AM_DEFAULT_V@)
 LEXC_verbose_0 = @echo "  LEXC     $@";
@@ -38,6 +42,10 @@ LEXC_verbose_0 = @echo "  LEXC     $@";
 XFST_verbose   = $(XFST_verbose_@AM_V@)
 XFST_verbose_  = $(XFST_verbose_@AM_DEFAULT_V@)
 XFST_verbose_0 = @echo "  XFST     $@";
+
+AM_V_CP   = $(AM_V_CP_@AM_V@)
+AM_V_CP_  = $(AM_V_CP_@AM_DEFAULT_V@)
+AM_V_CP_0 = @echo "  CP       $@";
 
 # Let the verbosity of some command line tools follow the automake verbosity:
 VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
@@ -101,6 +109,7 @@ analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
 					filters/remove-norm-comp-tags.hfst           \
 					filters/remove-number-string-tags.hfst       \
 					filters/remove-usage-tags.hfst               \
+					filters/remove-semantic-tags.hfst            \
 					filters/remove-hyphenation-marks.hfst        \
 					filters/remove-infl_deriv-borders.hfst       \
 					filters/remove-word-boundary.hfst            \
@@ -117,6 +126,7 @@ analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
 			.o. @\"filters/remove-number-string-tags.hfst\"       \
 			.o. @\"filters/remove-usage-tags.hfst\"               \
+			.o. @\"filters/remove-semantic-tags.hfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
@@ -138,6 +148,7 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 					filters/remove-norm-comp-tags.xfst           \
 					filters/remove-number-string-tags.xfst       \
 					filters/remove-usage-tags.xfst               \
+					filters/remove-semantic-tags.xfst            \
 					filters/remove-hyphenation-marks.xfst        \
 					filters/remove-infl_deriv-borders.xfst       \
 					filters/remove-word-boundary.xfst            \
@@ -154,6 +165,7 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
 			.o. @\"filters/remove-number-string-tags.xfst\"       \
 			.o. @\"filters/remove-usage-tags.xfst\"               \
+			.o. @\"filters/remove-semantic-tags.xfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
 			.o. @\"filters/remove-orthography-tags.xfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \

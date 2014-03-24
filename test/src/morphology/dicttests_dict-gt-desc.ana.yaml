@@ -1,0 +1,61 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-dict-gt-desc.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-dict-gt-desc.xfst
+    App: lookup
+
+Tests:
+
+# Tag tests:
+  G3 - vuorru:
+    vuorru+G3+N+Sg+Gen: vuorru
+
+# Replace with proper data for your language:
+#  G7 - gálli:
+#    gálli+G7+N+Sg+Gen: gálli
+#
+#  NomAg - nubbijođiheaddji:
+#    nubbijođiheaddji+N+NomAg+Sg+Gen: nubbijođiheaddji
+#
+#  v1 - rekruterenoassi:
+#    rekruterenoassi+v1+N+Sg+Gen: rekruterenoasi
+#
+#  v2 - servodatfágalinjá:
+#    servodatfágalinjá+v2+N+Sg+Gen: servvodatfágalinjá
+#
+#  v3 - lohkanlistu:
+#    lohkanlistu+v3+N+Sg+Gen: lohkanlisttá
+#
+#  v4 - servodatvásihus:
+#    servodatvásihus+v4+N+Sg+Gen: servvodatvásihusa
+#
+#  v5 - sihkkelkursa:
+#    sihkkelkursa+v5+N+Sg+Gen: syhkkelgurssa
+#
+#  v6 - eanahálddašanláhka:
+#    eanahálddašanláhka+v6+N+Sg+Gen: eatnanhálddahanlága
+#
+#  v7 - eahkediskursa:
+#    eahkediskursa+v7+N+Sg+Gen: eahketkurssa
+#
+#  v8 - diibmolistu:
+#    diibmolistu+v8+N+Sg+Gen: tiibmalistta
+#
+## Sem tags only after Prop:
+#
+## Sem tags only after Prop:
+#  Sem/Sur - Risten:
+#    Risten+N+Prop+Sem/Sur+Sg+Gen: Risten
+#
+#  Sem/Plc - Romsa:
+#    Romsa+N+Prop+Sem/Plc+Sg+Gen: Romssa
+#
+#  Sem/Hum - ipmil: # No tag here:
+#    ipmil+N+Sg+Gen: ipmil
+#
+## Spell relax tests:
+#  eth - diehtit:
+#    diehtit+V+TV+Ind+Prs+ConNeg: dieðe

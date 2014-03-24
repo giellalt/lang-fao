@@ -90,6 +90,9 @@ GT_FILTER_TARGETS+=\
 				   remove-variant-strings.xfst
 endif
 
+GENERATED_REGEXES=remove-semantic-tags.regex \
+                  make-optional-semantic-tags.regex
+
 # Add the target of local additions here:
 # HFST targets here:
 if CAN_HFST

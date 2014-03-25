@@ -78,6 +78,17 @@ gttags.txt: ../morphology/$(GTLANG).lexc.xfst
 endif # CAN_XFST
 endif # CAN_HFST
 
+####### Build rules for building dialect filters: #######
+if HAVE_DIALECTS
+
+DIALECT_PREFIXES=$(addprefix remove-all_dialects_but_,$(DIALECTS))
+DIALECT_SUFFIXES=$(addsuffix -strings,$(DIALECT_PREFIXES))
+DIALECT_REGEXES=$(addsuffix .regex,$(DIALECT_SUFFIXES))
+DIALECT_TARGETS_XFST=$(addsuffix .xfst,$(DIALECT_SUFFIXES))
+DIALECT_TARGETS_HFST=$(addsuffix .hfst,$(DIALECT_SUFFIXES))
+
+endif # HAVE_DIALECTS
+
 ####### Build rules for extracting tags: #######
 
 semantic-tags.txt: gttags.txt
@@ -109,6 +120,10 @@ remove-%-tags.regex: %-tags.txt
 		else \
 			$(GTCORE)/scripts/taglist2remove_tags_regex.sh $< > $@ ; \
 		fi
+
+remove-all_dialects_but_%-strings.regex:
+	$(AM_V_GEN)$(GTCORE)/scripts/generate-dialect-filter-regex.sh \
+		$@ $* "$(DIALECTS)"
 
 ####### HFST build rules: ########
 .regex.hfst:

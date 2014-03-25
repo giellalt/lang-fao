@@ -48,11 +48,29 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 ### This is the version of the GTD core that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
-_gtd_core_min_version=0.2.6
+_gtd_core_min_version=0.2.7
 
 ### Earliest LibreOffice version that supports the language in question.
 ### Used for building the LO-voikko oxt package for the language.
 AC_SUBST([LO_min_version], [3.6])
+
+# Following Giellatekno specific variables are used to make external software
+# work; HFST analysers, spell-checkers and so on. These also control
+# some temporary file names etc.
+
+# Specify the tags for all dialects in this variable, leave it empty if you do
+# support dialectal variant fst's. Use upper case, separate with space.
+AC_SUBST([DIALECTS], [""])
+AM_CONDITIONAL([HAVE_DIALECTS], [test "x$DIALECTS" != "x"])
+
+# GTLANG is the language code used to identify this project; it should be same
+# as the directory name in gtsvn and same as ISO 639 three-letter code for the
+# language if possible
+AC_SUBST([GTLANG], [fao])
+# GTLANG2 is the shortest unambiguous language code for this project; it
+# should be the ISO 639-1 two-letter code if possible, otherwise usually same
+# as above
+AC_SUBST([GTLANG2], [fo])
 
 # We need special treatment of Java paths in Cygwin:
 AC_CANONICAL_HOST
@@ -66,19 +84,6 @@ case "${host}" in
     ;;
 esac
 AC_SUBST(CYGWINJAVAPATH)
-
-# Following Giellatekno specific variables are used to make external software
-# work; HFST analysers, spell-checkers and so on. These also control
-# some temporary file names etc.
-
-# GTLANG is the language code used to identify this project; it should be same
-# as the directory name in gtsvn and same as ISO 639 three-letter code for the
-# language if possible
-AC_SUBST([GTLANG], [fao])
-# GTLANG2 is the shortest unambiguous language code for this project; it
-# should be the ISO 639-1 two-letter code if possible, otherwise usually same
-# as above
-AC_SUBST([GTLANG2], [fo])
 
 # Tests and sets up giellatekno directories and scripts
 gt_PROG_SCRIPTS_PATHS

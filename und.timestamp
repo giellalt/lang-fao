@@ -1,4 +1,9 @@
-$Rev: 91028 $
+$Rev: 91100 $
+Added support for dialectal fst's in Oahpa. The dialect tags need only be
+specified in $GTLANG/configure.ac, and all filters and fst's will be constructed
+automatically.
+
+r91028:
 Made generated regex files build and be retained, as well as deleted when using
 'make clean'.
 

@@ -47,10 +47,10 @@ endif # CAN_XFST
 
 if WANT_OAHPA
 if CAN_HFST
-GT_GENERATORS_HFST+=generator-oahpa-gt-norm.hfst
+GT_GENERATORS_HFST+=generator-oahpa-gt-norm.hfst $(DIALECT_TARGETS_HFST)
 endif # CAN_HFST
 if CAN_XFST
-GT_GENERATORS_XFST+=generator-oahpa-gt-norm.xfst
+GT_GENERATORS_XFST+=generator-oahpa-gt-norm.xfst $(DIALECT_TARGETS_XFST)
 endif # CAN_XFST
 endif # WANT_OAHPA
 

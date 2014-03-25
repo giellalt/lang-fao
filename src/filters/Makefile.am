@@ -52,7 +52,8 @@ GT_FILTER_TARGETS+=\
 				   remove-Orth_Strd-strings.hfst          \
 				   remove-PUNCT-strings.hfst              \
 				   remove-UseCirc-strings.hfst            \
-				   remove-variant-strings.hfst
+				   remove-variant-strings.hfst            \
+				   $(DIALECT_TARGETS_HFST)
 endif
 
 if CAN_XFST
@@ -87,11 +88,13 @@ GT_FILTER_TARGETS+=\
 				   remove-Orth_Strd-strings.xfst          \
 				   remove-PUNCT-strings.xfst              \
 				   remove-UseCirc-strings.xfst            \
-				   remove-variant-strings.xfst
+				   remove-variant-strings.xfst            \
+				   $(DIALECT_TARGETS_XFST)
 endif
 
 GENERATED_REGEXES=remove-semantic-tags.regex \
-                  make-optional-semantic-tags.regex
+                  make-optional-semantic-tags.regex \
+                  $(DIALECT_REGEXES)
 
 # Add the target of local additions here:
 # HFST targets here:

@@ -1,4 +1,8 @@
-$Rev: 91100 $
+$Rev: 91222 $
+Added a tmp-file step for the raw fst, to allow local/language specific
+overrides when building the raw transducer. Required for Estionan.
+
+r91100:
 Added support for dialectal fst's in Oahpa. The dialect tags need only be
 specified in $GTLANG/configure.ac, and all filters and fst's will be constructed
 automatically.

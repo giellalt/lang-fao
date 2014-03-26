@@ -85,14 +85,14 @@ noinst_DATA=$(GT_ANALYSERS_XFST) \
 # To get a transducer usable for a certain application, the raw transducer needs
 # to be filtered and manipulated to get the target tag set and surface symbols.
 # That is done in all subsequent targets, which builds on this one.
-generator-raw-gt-desc.hfst: morphology/$(GTLANG).lexc.hfst \
+generator-raw-gt-desc.tmp.hfst: morphology/$(GTLANG).lexc.hfst \
 					 phonology/$(GTLANG)-phon.hfst
 	$(INTRSCT_verbose)$(HFST_COMPOSE_INTERSECT) $(VERBOSITY) $(HFST_FLAGS) \
 		-1 morphology/$(GTLANG).lexc.hfst \
 		-2 phonology/$(GTLANG)-phon.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
-analyser-raw-gt-desc.xfst: morphology/$(GTLANG).lexc.xfst \
+analyser-raw-gt-desc.tmp.xfst: morphology/$(GTLANG).lexc.xfst \
 			 phonology/$(GTLANG)-phon.xfst
 	$(AM_V_at)$(PRINTF) \
 		"read-source morphology/$(GTLANG).lexc.xfst\nread-rules  phonology/$(GTLANG)-phon.xfst\ncompose-result\nsave-result $@\nquit\n" \
@@ -516,6 +516,15 @@ morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
 		> $@
 
 ####### Other targets: ###########
+
+# Copy the raw transducer. This enables language-specific processing of the raw
+# transducer, if required.
+%-raw-gt-desc.xfst: %-raw-gt-desc.tmp.xfst
+	$(AM_V_CP)cp -f $< $@
+
+%-raw-gt-desc.hfst: %-raw-gt-desc.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
+
 # cleaning
 clean-local:
 	-rm -f *.hfst *.xfst

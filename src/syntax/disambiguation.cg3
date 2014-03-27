@@ -377,6 +377,9 @@ REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
 # millum
 REMOVE:r38 Adv IF (0 Dat OR Acc)(*-1 ("millum") BARRIER NPNH);
 
+# móti
+SELECT:moti Pr if (0 ("móti"))(1 Num)(2 Dat);
+SELECT:moti Pr if (0 ("móti"))(1 Dat);
 
 # til
 SELECT:r39 Pr IF (0 ("til"))(*1 N OR NPNH OR ("at") BARRIER NPNHA);
@@ -479,6 +482,9 @@ REMOVE (Num Neu Dat) IF (0 (Det Neu Dat))(1 (N Neu Dat) OR (A Neu Dat));
 # Proper nouns
 
 #REMOVE:InternalProp Guess IF (NOT -1 CLB OR PUNCT OR LEFT)(NOT 0 Guess);
+
+REMOVE:SgProp Pl IF (0C Prop);
+
 
 # Specific lexemes, words 
 # =======================

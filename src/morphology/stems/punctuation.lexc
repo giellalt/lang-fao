@@ -5,9 +5,6 @@
 
 LEXICON Punctuation
 
-«+PUNCT+RIGHT:«   # ;
-»+PUNCT+LEFT:»    # ;
-
 ! Clause boundary symbols
 
 %,+CLB:%,           # ;
@@ -17,44 +14,55 @@ LEXICON Punctuation
 %:+CLB:%:           # ;
 %;+CLB:%;	        # ;
 ^excl+CLB:%!	    # ;	!^C^
+ ^pipe+CLB:%|     # ;
 %?+CLB:%?	        # ;
 …+CLB:…		        # ;
 ¿+CLB:¿		        # ;	! Only seen as noise.
 ¶+CLB:¶		        # ;	
 
-•+PUNCT:•	        # ;
--+PUNCT:-           # ; !hyphen
---+PUNCT:--         # ; !double hyphen
-–+PUNCT:–           # ; !endash
-—+PUNCT:—           # ; !emdash
-=+PUNCT:=           # ;
-%%+PUNCT:%%         # ;
-&+PUNCT:&           # ;
-%"+PUNCT:%"         # ;
-'+PUNCT:'           # ;
-%*+PUNCT:%*         # ;
-++PUNCT:+           # ;
-`+PUNCT:`           # ;
-´+PUNCT:´           # ;
-/+PUNCT:/           # ; 
-+/-+PUNCT:+/-       # ;
-%~+PUNCT:%~	        # ;
+  •+PUNCT:•   # ;
+  ●+PUNCT:●   # ;
+  ·+PUNCT:·   # ;
+   ּ+PUNCT:ּ    # ;
+  ·+PUNCT:·   # ;
+  -+PUNCT:-   # ; ! hyphen
+ --+PUNCT:--  # ; ! double hyphen
+  –+PUNCT:–   # ; ! endash
+  —+PUNCT:—   # ; ! emdash
+  ―+PUNCT:―   # ; ! horizontal bar
+  =+PUNCT:=   # ;
+  ≈+PUNCT:≈   # ;
+ %%+PUNCT:%%  # ;
+  &+PUNCT:&   # ;
+ %"+PUNCT:%"  # ;
+  '+PUNCT:'  # ; 
+ %*+PUNCT:%*  # ;
+  ++PUNCT:+   # ;
+  ±+PUNCT:±   # ;
+  `+PUNCT:`   # ;
+  ´+PUNCT:´   # ;
+  /+PUNCT:/   # ; 
++/-+PUNCT:+/- # ;
+ %~+PUNCT:%~  # ;
 
 
 ! Paired punctuation marks
 
-%“+PUNCT+LEFT:%“    # ;
-%”+PUNCT+RIGHT:%”   # ;
-%‘+PUNCT+LEFT:%‘    # ;
-%’+PUNCT+RIGHT:%’   # ;
-%‹+PUNCT+LEFT:%‹    # ;
-%›+PUNCT+RIGHT:%›   # ;
-%(+PUNCT+LEFT:%(    # ;
-%)+PUNCT+RIGHT:%)   # ;
-%[+PUNCT+LEFT:%[    # ;
-%]+PUNCT+RIGHT:%]   # ;
-%{+PUNCT+LEFT:%{    # ;
-%}+PUNCT+RIGHT:%}   # ;
-%<+PUNCT+LEFT:%<    # ;
-%>+PUNCT+LEFT:%>    # ;
+ %«+PUNCT+LEFT:%«     # ;
+ %»+PUNCT+RIGHT:%»    # ;
+ %“+PUNCT+LEFT:%“     # ;
+ %”+PUNCT+RIGHT:%”    # ;
+ %‘+PUNCT+LEFT:%‘     # ;
+ %’+PUNCT+RIGHT:%’    # ;
+ %„+PUNCT+LEFT:%„     # ;
+ %‹+PUNCT+LEFT:%‹     # ;
+ %›+PUNCT+RIGHT:%›    # ;
+ %(+PUNCT+LEFT:%(     # ;
+ %)+PUNCT+RIGHT:%)    # ;
+ %[+PUNCT+LEFT:%[     # ;
+ %]+PUNCT+RIGHT:%]    # ;
+ %{+PUNCT+LEFT:%{     # ;
+ %}+PUNCT+RIGHT:%}    # ;
+ %<+PUNCT+LEFT:%[%<%] # ;
+ %>+PUNCT+LEFT:%[%>%] # ;
 

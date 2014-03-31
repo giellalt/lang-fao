@@ -1,0 +1,95 @@
+## Include this file in top-level srcdir to compile FSTs
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+# First attempt at building mt/apertium fst's.
+# We only do hfst here, since that's what we actually use. Xerox can be added
+# later if needed
+
+# The analyser differs from the
+# regular analyser by NOT removing variant and homonym tags, so that we can
+# generate proper (mini)paradigms for the given lemmas and variants (the
+# analysis string is used as input to the generator).
+generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
+			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
+			$(top_builddir)/src/filters/remove-homonymy-tags.hfst            \
+			$(top_builddir)/src/filters/remove-variant-tags.hfst             \
+			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
+			$(top_builddir)/src/filters/remove-number-string-tags.hfst       \
+			$(top_builddir)/src/filters/remove-NG-strings.hfst               \
+			$(top_builddir)/src/filters/remove-usage-tags.hfst               \
+			$(top_builddir)/src/filters/remove-sub-forms.hfst                \
+			$(top_builddir)/src/filters/remove-orthography-tags.hfst         \
+			$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst         \
+			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst        \
+			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst       \
+			$(top_builddir)/src/filters/remove-word-boundary.hfst
+	$(AM_V_GEN)$(PRINTF) "\
+		@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
+	.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"            \
+	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
+	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
+	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
+	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
+	.o. @\"$(top_builddir)/src/filters/remove-sub-forms.hfst\"                \
+	.o. @\"$(top_builddir)/src/filters/remove-NG-strings.hfst\"               \
+	.o. @\"$(top_builddir)/src/filters/remove-orthography-tags.hfst\"         \
+	.o. @\"$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst\"         \
+   	.o. @\"$<\" \
+   	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
+   	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"        \
+   	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"       \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+
+analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
+			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
+			$(top_builddir)/src/filters/remove-homonymy-tags.hfst            \
+			$(top_builddir)/src/filters/remove-variant-tags.hfst             \
+			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
+			$(top_builddir)/src/filters/remove-number-string-tags.hfst       \
+			$(top_builddir)/src/filters/remove-usage-tags.hfst               \
+			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst        \
+			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst       \
+			$(top_builddir)/src/filters/remove-orthography-tags.hfst         \
+			$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst         \
+			$(top_builddir)/src/filters/remove-word-boundary.hfst
+	$(AM_V_GEN)$(PRINTF) "\
+		@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
+	.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"            \
+	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
+	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
+	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
+	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
+	.o. @\"$(top_builddir)/src/filters/remove-orthography-tags.hfst\"         \
+	.o. @\"$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst\"         \
+   	.o. @\"$<\" \
+   	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
+   	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"        \
+   	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"       \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+
+generator-mt-apertium-norm.hfst: \
+			generator-mt-gt-norm.hfst \
+			$(srcdir)/tagsets/apertium.relabel
+	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
+		-F $(srcdir)/tagsets/apertium.relabel \
+		-o $@
+
+analyser-mt-apertium-desc.%.hfst: \
+			analyser-mt-gt-desc.%.hfst \
+			$(top_builddir)/src/tagsets/apertium.relabel
+	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
+		-F $(top_builddir)/src/tagsets/apertium.relabel \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+		-o $@
+
+%.att: %.hfst
+	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -w -i $< \
+		| $(HFST_FST2TXT) -o $@
+
+%.att.gz: %.att
+	$(AM_V_GEN)$(GZIP) -9 -c $< > $@

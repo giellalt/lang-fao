@@ -1,4 +1,9 @@
-$Rev: 91222 $
+$Rev: 91448 $
+Reorganised MT fst building, moving it to a new dir in tools/. This is done to
+avoid too much stuff in one dir (src/), and to make it easier to extend the MT
+support without making the build files too large for one dir.
+
+r91222:
 Added a tmp-file step for the raw fst, to allow local/language specific
 overrides when building the raw transducer. Required for Estionan.
 

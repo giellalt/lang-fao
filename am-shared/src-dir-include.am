@@ -56,9 +56,7 @@ if CAN_HFST
 hfstdatadir=$(datadir)/hfst/$(GTLANG)
 hfstdata_DATA=$(GT_ANALYSERS_HFST) \
 			  $(GT_GENERATORS_HFST) \
-			  $(GT_TRANSFORMERS_HFST) \
-			  $(APERTIUM_ANALYSERS_HFST) \
-			  $(APERTIUM_GENERATORS_HFST)
+			  $(GT_TRANSFORMERS_HFST)
 endif
 
 noinst_DATA=$(GT_ANALYSERS_XFST) \
@@ -529,7 +527,6 @@ morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
 clean-local:
 	-rm -f *.hfst *.xfst
 
-include $(top_srcdir)/am-shared/src_mt-include.am
 include $(top_srcdir)/am-shared/src_oahpa-include.am
 include $(top_srcdir)/am-shared/src_dictionary-include.am
 include $(top_srcdir)/am-shared/src_disamb-include.am

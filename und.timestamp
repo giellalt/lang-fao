@@ -1,4 +1,12 @@
-$Rev: 91448 $
+$Rev: 91559 $
+Finalised moving the Apertium MT build code to the new location. All parts have
+been generalised, and the set of target languages to go with a specific source
+language (when analysing) is specified in configure.ac. That is, just list your
+target languages in configure.ac, and off you go. One feature still missing:
+target language derivation (and other) string filtering for the source language
+analyser. Coming soon.
+
+r91448:
 Reorganised MT fst building, moving it to a new dir in tools/. This is done to
 avoid too much stuff in one dir (src/), and to make it easier to extend the MT
 support without making the build files too large for one dir.

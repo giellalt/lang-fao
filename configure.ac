@@ -63,6 +63,11 @@ AC_SUBST([LO_min_version], [3.6])
 AC_SUBST([DIALECTS], [""])
 AM_CONDITIONAL([HAVE_DIALECTS], [test "x$DIALECTS" != "x"])
 
+# Replace the language code 'und' (= undefined) with the language codes for the
+# machine translation target languages in apertium to be used together with
+# fao as the source language:
+AC_SUBST([MT_AP_TARGET_LANGS], ["und"])
+
 # GTLANG is the language code used to identify this project; it should be same
 # as the directory name in gtsvn and same as ISO 639 three-letter code for the
 # language if possible

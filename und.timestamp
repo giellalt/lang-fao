@@ -1,4 +1,8 @@
-$Rev: 91605 $
+$Rev: 91623 $
+Moved some back-end scripts for yaml testing to the uppermost test directory, to
+ease sharing of the same code across test subdirectories.
+
+r91605:
 Moved all silencing code to a separate include file (except in a few cases of
 double includes). Made the yaml testing a bit more verbose when rerunning
 individual tests (copy-paste testing).

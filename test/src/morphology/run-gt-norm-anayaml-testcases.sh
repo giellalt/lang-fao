@@ -8,4 +8,4 @@
 transducer=gt-norm
 halftest=ana # analysis test
 
-source $srcdir/run-yaml-testcases.sh $transducer $halftest
+source $srcdir/../../run-yaml-testcases.sh $transducer $halftest

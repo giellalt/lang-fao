@@ -8,4 +8,4 @@
 transducer=dict-gt-norm
 halftest=gen # analysis test
 
-source $srcdir/run-yaml-testcases.sh $transducer $halftest
+source $srcdir/../../run-yaml-testcases.sh $transducer $halftest

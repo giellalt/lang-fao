@@ -15,6 +15,14 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+####### Silent builds: ########
+# Must be defined here, to avoid double definitions via xfscript-include.am
+# for XFST
+
+AM_V_RGX2FST   = $(AM_V_RGX2FST_@AM_V@)
+AM_V_RGX2FST_  = $(AM_V_RGX2FST_@AM_DEFAULT_V@)
+AM_V_RGX2FST_0 = @echo "  RGX2FST  $@";
+
 ####### Source file defs: ########
 
 #! @var GT_ORTHOGRAPHIC_SRCS names of orthographic rule source files, should
@@ -28,19 +36,21 @@ noinst_DATA=$(GT_ORTHOGRAPHIC_FSTS)
 
 # HFST fst targets:
 .regex.hfst:
-	$(AM_V_GEN)grep -v '^[#!]' $< | $(HFST_REGEXP2FST) $(HFST_FLAGS) -S -o $@
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(XFSTVERBOSITY) $(HFST_FLAGS) \
+		-S -i $< -o $@
 
 %.hfst: $(GTCORE)/gtdshared/common/src/orthography/%.regex
-	$(AM_V_GEN)grep -v '^[#!]' $< | $(HFST_REGEXP2FST) $(HFST_FLAGS) -S -o $@
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(XFSTVERBOSITY) $(HFST_FLAGS) \
+		-S -i $< -o $@
 
 ####### Xerox build rules: #######
 .regex.xfst:
-	$(AM_V_GEN)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
-		$(XFST) $(XFSTFLAGS)
+	$(AM_V_XFST)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
+		$(XFST) $(XFSTVERBOSITY) $(XFSTFLAGS)
 
 %.xfst: $(GTCORE)/gtdshared/common/src/orthography/%.regex
-	$(AM_V_GEN)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
-		$(XFST) $(XFSTFLAGS)
+	$(AM_V_XFST)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
+		$(XFST) $(XFSTVERBOSITY) $(XFSTFLAGS)
 
 ##########################################
 # General build rules included from here:#
@@ -48,7 +58,7 @@ include $(top_srcdir)/am-shared/xfscript-include.am
 
 # We need a target to properly finish the Xerox fst build:
 %.xfst: %.tmp.xfst
-	$(XFST_verbose)$(XFST) $(VERBOSITY) \
+	$(AM_V_XFST)$(XFST) $(XFSTVERBOSITY) \
 			-e "load stack < $<" \
 			-e "invert net" \
 			-e "save stack $@ " \

@@ -22,34 +22,6 @@
 #
 # http://divvun.no/doc/infra/infraremake/TransducerNamesInTheNewInfra.html
 
-#### Tailored silent output text: ####
-INTRSCT_verbose   = $(INTRSCT_verbose_@AM_V@)
-INTRSCT_verbose_  = $(INTRSCT_verbose_@AM_DEFAULT_V@)
-INTRSCT_verbose_0 = @echo "  INTRSCT  $@";
-
-RGX2FST_verbose   = $(RGX2FST_verbose_@AM_V@)
-RGX2FST_verbose_  = $(RGX2FST_verbose_@AM_DEFAULT_V@)
-RGX2FST_verbose_0 = @echo "  RGX2FST  $@";
-
-AM_V_HFSTOL   = $(AM_V_HFSTOL_@AM_V@)
-AM_V_HFSTOL_  = $(AM_V_HFSTOL_@AM_DEFAULT_V@)
-AM_V_HFSTOL_0 = @echo "  HFSTOL   $@";
-
-LEXC_verbose   = $(LEXC_verbose_@AM_V@)
-LEXC_verbose_  = $(LEXC_verbose_@AM_DEFAULT_V@)
-LEXC_verbose_0 = @echo "  LEXC     $@";
-
-XFST_verbose   = $(XFST_verbose_@AM_V@)
-XFST_verbose_  = $(XFST_verbose_@AM_DEFAULT_V@)
-XFST_verbose_0 = @echo "  XFST     $@";
-
-AM_V_CP   = $(AM_V_CP_@AM_V@)
-AM_V_CP_  = $(AM_V_CP_@AM_DEFAULT_V@)
-AM_V_CP_0 = @echo "  CP       $@";
-
-# Let the verbosity of some command line tools follow the automake verbosity:
-VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
-
 ####### Automake targets: ########
 
 if CAN_HFST
@@ -85,7 +57,7 @@ noinst_DATA=$(GT_ANALYSERS_XFST) \
 # That is done in all subsequent targets, which builds on this one.
 generator-raw-gt-desc.tmp.hfst: morphology/$(GTLANG).lexc.hfst \
 					 phonology/$(GTLANG)-phon.hfst
-	$(INTRSCT_verbose)$(HFST_COMPOSE_INTERSECT) $(VERBOSITY) $(HFST_FLAGS) \
+	$(AM_V_INTRSCT)$(HFST_COMPOSE_INTERSECT) $(VERBOSITY) $(HFST_FLAGS) \
 		-1 morphology/$(GTLANG).lexc.hfst \
 		-2 phonology/$(GTLANG)-phon.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
@@ -95,7 +67,7 @@ analyser-raw-gt-desc.tmp.xfst: morphology/$(GTLANG).lexc.xfst \
 	$(AM_V_at)$(PRINTF) \
 		"read-source morphology/$(GTLANG).lexc.xfst\nread-rules  phonology/$(GTLANG)-phon.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		> $@.script
-	$(LEXC_verbose)$(LEXC) $(VERBOSITY) < $@.script
+	$(AM_V_LEXC)$(LEXC) $(VERBOSITY) < $@.script
 	$(AM_V_at)     rm -f $@.script
 
 # This is the default, descriptive analyser:
@@ -116,7 +88,7 @@ analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
 					filters/remove-orig_lang-tags.hfst           \
 					orthography/inituppercase.hfst               \
 					orthography/spellrelax.hfst
-	$(RGX2FST_verbose)$(PRINTF) "\
+	$(AM_V_RGX2FST)$(PRINTF) "\
 				@\"filters/remove-derivation-position-tags.hfst\" \
 			.o. @\"filters/remove-dialect-tags.hfst\"             \
 			.o. @\"filters/remove-homonymy-tags.hfst\"            \
@@ -155,7 +127,7 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 					filters/remove-orig_lang-tags.xfst           \
 					orthography/inituppercase.xfst               \
 					orthography/spellrelax.xfst
-	$(XFST_verbose)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
 			.o. @\"filters/remove-homonymy-tags.xfst\"            \
@@ -193,7 +165,7 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
 					filters/remove-usage-tags.hfst
-	$(RGX2FST_verbose)$(PRINTF) "\
+	$(AM_V_RGX2FST)$(PRINTF) "\
 				@\"filters/make-optional-transitivity-tags.hfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
 			.o. @\"filters/make-optional-variant-tags.hfst\"      \
@@ -228,7 +200,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-orig_lang-tags.xfst           \
 					filters/remove-usage-tags.xfst
-	$(XFST_verbose)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
@@ -267,7 +239,7 @@ analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst            \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
 					orthography/inituppercase.hfst
-	$(RGX2FST_verbose)$(PRINTF) "\
+	$(AM_V_RGX2FST)$(PRINTF) "\
 				@\"filters/remove-derivation-position-tags.hfst\" \
 			.o. @\"filters/remove-dialect-tags.hfst\"             \
 			.o. @\"filters/remove-homonymy-tags.hfst\"            \
@@ -304,7 +276,7 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst             \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-orig_lang-tags.xfst           \
 					orthography/inituppercase.xfst
-	$(XFST_verbose)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
 			.o. @\"filters/remove-homonymy-tags.xfst\"            \
@@ -342,7 +314,7 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
 					filters/remove-sub-forms.hfst
-	$(RGX2FST_verbose)$(PRINTF) "\
+	$(AM_V_RGX2FST)$(PRINTF) "\
 				@\"filters/make-optional-transitivity-tags.hfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
 			.o. @\"filters/make-optional-variant-tags.hfst\"      \
@@ -379,7 +351,7 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-orig_lang-tags.xfst           \
 					filters/remove-sub-forms.xfst
-	$(XFST_verbose)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
@@ -407,7 +379,7 @@ transcriptor-%2text-desc.hfst: \
 					filters/remove-NA-strings.hfst \
 					filters/remove-NG-strings.hfst \
 					filters/remove-usage-tags.hfst
-	$(RGX2FST_verbose)$(PRINTF) "\
+	$(AM_V_RGX2FST)$(PRINTF) "\
 			    @\"filters/remove-usage-tags.hfst\" \
 			.o. @\"filters/remove-NA-strings.hfst\" \
 			.o. @\"filters/remove-NG-strings.hfst\" \
@@ -421,7 +393,7 @@ transcriptor-text2%-desc.hfst: \
 					transcriptions/transcriptor-%2text-raw.hfst \
 					filters/remove-usage-tags.hfst \
 					orthography/spellrelax.hfst
-	$(RGX2FST_verbose)$(PRINTF) "\
+	$(AM_V_RGX2FST)$(PRINTF) "\
 			    @\"filters/remove-usage-tags.hfst\" \
 			.o. @\"$<\" \
 			.o. @\"filters/remove-usage-tags.hfst\".i \
@@ -436,7 +408,7 @@ transcriptor-%2text-desc.xfst: \
 					filters/remove-NA-strings.xfst \
 					filters/remove-NG-strings.xfst \
 					filters/remove-usage-tags.xfst
-	$(XFST_verbose)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "read regex \
 			    @\"filters/remove-usage-tags.xfst\" \
 			.o. @\"filters/remove-NA-strings.xfst\" \
 			.o. @\"filters/remove-NG-strings.xfst\" \
@@ -450,7 +422,7 @@ transcriptor-text2%-desc.xfst: \
 					transcriptions/transcriptor-%2text-raw.xfst \
 					filters/remove-usage-tags.xfst \
 					orthography/spellrelax.xfst
-	$(XFST_verbose)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "read regex \
 			    @\"filters/remove-usage-tags.xfst\" \
 			.o. @\"$<\" \
 			.o. @\"filters/remove-usage-tags.xfst\".i \
@@ -463,14 +435,14 @@ transcriptor-text2%-desc.xfst: \
 # Create generic tagset variants of *analyzers*
 # Standard descriptive
 analyser-%-desc.hfst: analyser-gt-desc.hfst tagsets/%.relabel
-	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
 		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
 		-o $@
 
 # Standard normative
 analyser-%-norm.hfst: analyser-gt-norm.hfst tagsets/%.relabel
-	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
 		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
 		-o $@
@@ -478,21 +450,21 @@ analyser-%-norm.hfst: analyser-gt-norm.hfst tagsets/%.relabel
 # Create tagset variants of *generators*
 # Standard descriptive
 generator-%-desc.hfst: generator-gt-desc.hfst tagsets/%.relabel
-	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
 		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
 		-o $@
 
 # Standard normative
 generator-%-norm.hfst: generator-gt-norm.hfst tagsets/%.relabel
-	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
 		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
 		-o $@
 
 # lemmatization is a special case of tagset variant
 lemmatize.default.hfst: analyser-gt-desc.hfst tagsets/lemmatize.relabel
-	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) \
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) \
 		-F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
 
 # morpher is a morph segmenting variant: taloautoissani -> talo#auto>i>ssa>ni
@@ -502,7 +474,7 @@ morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
 					filters/remove-hyphenation-marks.hfst        \
 					filters/remove-infl_deriv-borders.hfst       \
 					filters/remove-word-boundary.hfst
-	$(RGX2FST_verbose)$(PRINTF) "\
+	$(AM_V_RGX2FST)$(PRINTF) "\
 			 [ [@\"$<\" \
 			.o. @\"orthography/inituppercase.hfst\"         \
 			.o. @\"orthography/spellrelax.hfst\"  ].l       \
@@ -530,5 +502,6 @@ clean-local:
 include $(top_srcdir)/am-shared/src_oahpa-include.am
 include $(top_srcdir)/am-shared/src_dictionary-include.am
 include $(top_srcdir)/am-shared/src_disamb-include.am
+include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

@@ -17,16 +17,13 @@
 
 ####### Build rules: ########
 
-#### Tailored silent output text: ####
-CGCOMP_verbose   = $(CGCOMP_verbose_@AM_V@)
-CGCOMP_verbose_  = $(CGCOMP_verbose_@AM_DEFAULT_V@)
-CGCOMP_verbose_0 = @echo "  CG3COMP  $@";
-
 .cg3.bin:
-	$(CGCOMP_verbose)$(VISLCG3_COMP) $< $@
+	$(AM_V_CGCOMP)$(VISLCG3_COMP) $< $@
 
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.bin
+
+include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

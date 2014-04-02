@@ -7,4 +7,4 @@
 ###### Variables: #######
 transducer=gt-norm
 
-source $srcdir/run-yaml-testcases.sh $transducer
+source $srcdir/../../run-yaml-testcases.sh $transducer

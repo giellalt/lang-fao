@@ -46,9 +46,9 @@ for file in ${srcdir}/../../../src/morphology/*.lexc \
 		for fst in $fsts; do
 		    (( i += 1 ))
 		    leadtext=$(echo "LEXC test $i: ")
-			source ./run-morph-tester.sh $fst $file $leadtext
+			source ./../../run-morph-tester.sh $fst $file $leadtext
 		done
 	fi
 done
 
-source $srcdir/error-handling-stubs.sh
+source $srcdir/../../error-handling-stubs.sh

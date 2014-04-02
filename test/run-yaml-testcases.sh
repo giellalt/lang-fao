@@ -57,7 +57,7 @@ i=0
 for file in ${srcdir}/*_$transducer.$suffix; do
     (( i += 1 ))
     leadtext=$(echo "YAML test $i: ")
-	source ./run-morph-tester.sh $transducer $file $halftest $leadtext
+	source ./../../run-morph-tester.sh $transducer $file $halftest $leadtext
 done
 
-source $srcdir/error-handling-stubs.sh
+source $srcdir/../../error-handling-stubs.sh

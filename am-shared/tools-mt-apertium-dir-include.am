@@ -133,9 +133,8 @@ analyser-mt-apertium-desc.%.hfst: \
 # Target language specific filtering + inversion to a real analyser:
 # (filtering not yet implemented, coming soon)
 $(APERTIUM_ANALYSERS_GT_HFST): \
-analyser-mt-gt-desc.%.hfst: analyser-mt-gt-desc.tmp.hfst
-	$(AM_V_GEN)$(HFST_INVERT) $< \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -t -o $@
+analyser-mt-gt-desc.%.hfst: analyser-mt-gt-desc.hfst
+	$(AM_V_GEN)$(HFST_FST2FST) $(HFST_FLAGS) -t -i $< -o $@
 
 %.att: %.hfst
 	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -w -i $< \

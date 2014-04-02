@@ -1,4 +1,9 @@
-$Rev: 91564 $
+$Rev: 91581 $
+Changed target language specifc analysers to be based off of
+analyser-mt-gt-desc.hfst, instead of the *.tmp.hfst file, to allow local post
+processing to be applied in the step from *.tmp.hfst to the *.hfst file.
+
+r91564:
 Forgot to remove all the targets and build instructions in the old location.
 
 r91559:

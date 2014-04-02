@@ -2,18 +2,6 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-#### Tailored silent output text: ####
-AWK_verbose   = $(AWK_verbose_@AM_V@)
-AWK_verbose_  = $(AWK_verbose_@AM_DEFAULT_V@)
-AWK_verbose_0 = @echo "  AWK      $@";
-
-FORREST_verbose   = $(FORREST_verbose_@AM_V@)
-FORREST_verbose_  = $(FORREST_verbose_@AM_DEFAULT_V@)
-FORREST_verbose_0 = @echo "  FORREST  $@";
-
-# Let the verbosity of some command line tools follow the automake verbosity:
-VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
-
 # Variables:
 VPATH_JSP_PAGES=$(addprefix $(srcdir)/,$(JSP_PAGES))
 
@@ -29,22 +17,22 @@ LATEX=xelatex
 FORRESTARGS=-Dforrest.jvmargs="-Dfile.encoding=utf-8 -Djava.awt.headless=true"
 
 $(srcdir)/%-syntax.jspwiki: $(top_srcdir)/src/syntax/%.cg3
-	$(AWK_verbose)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-phonology.jspwiki: $(top_srcdir)/src/phonology/%.twolc
-	$(AWK_verbose)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-phonology.jspwiki: $(top_srcdir)/src/phonology/%.xfscript
-	$(AWK_verbose)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/morphology/%.lexc
-	$(AWK_verbose)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-stems.jspwiki: $(top_srcdir)/src/morphology/stems/%.lexc
-	$(AWK_verbose)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-affixes.jspwiki: $(top_srcdir)/src/morphology/affixes/%.lexc
-	$(AWK_verbose)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)$(AWK) -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/$(GTLANG).jspwiki: $(srcdir)/preamble.jspwiki $(VPATH_JSP_PAGES)
 	$(AM_V_at)-rm -f $@
@@ -57,7 +45,7 @@ $(LINKS): $(VPATH_JSP_PAGES)
 			| sed 's/[a-z0-9.-]*/*[&]/g' \
 			| tr ' ' '\n'  \
 			| cat $(srcdir)/link-header.jspwiki - > $@
-	$(FORREST_verbose)cd $(srcdir) && \
+	$(AM_V_FORREST)cd $(srcdir) && \
 			$(FORREST) $(VERBOSITY) site $(FORRESTARGS)
 
 #$(GTLANG).tex: $(srcdir)/preamble.tex $(srcdir)/doc-comments.conf
@@ -80,3 +68,5 @@ $(LINKS): $(VPATH_JSP_PAGES)
 ####### Other targets: ###########
 clean-local:
 	-rm -rf build
+
+include $(top_srcdir)/am-shared/silent_build-include.am

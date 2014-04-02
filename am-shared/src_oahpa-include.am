@@ -28,7 +28,7 @@ generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
 					filters/remove-orthography-tags.xfst         \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-sub-forms.xfst
-	$(XFST_verbose)$(PRINTF) "read regex                              \
+	$(AM_V_XFST)$(PRINTF) "read regex                              \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
@@ -46,7 +46,7 @@ generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
 			;\n\
 		 invert net\n\
 		 save stack $@\n\
-		 quit\n" | $(XFST) -q
+		 quit\n" | $(XFST) $(VERBOSITY)
 
 
 if HAVE_DIALECTS
@@ -73,7 +73,7 @@ generator-oahpa-gt-norm-dial_%.xfst: analyser-raw-gt-desc.xfst     \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-NG-strings.xfst               \
 					filters/remove-sub-forms.xfst
-	$(XFST_verbose)$(PRINTF) "read regex                                 \
+	$(AM_V_XFST)$(PRINTF) "read regex                                 \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
@@ -93,9 +93,9 @@ generator-oahpa-gt-norm-dial_%.xfst: analyser-raw-gt-desc.xfst     \
 			;\n\
 		 invert net\n\
 		 save stack $@\n\
-		 quit\n" | $(XFST) -q
+		 quit\n" | $(XFST) $(VERBOSITY)
 
 
 # Dummy hfst rule to avoid build errors:
 generator-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst
-	$(AM_V_GEN)cp -f $< $@
+	$(AM_V_CP)cp -f $< $@

@@ -84,7 +84,7 @@ function run_tests() {
 	    let "Fail += 1"
 	    echo "To rerun with more details, please triple-click, copy and paste the following:"
 	    echo
-	    echo "pushd $(pwd); $runtests -c -i -S $section --app $lookuptool $fstoptions $halftestoption $testfile; popd"
+	    echo "pushd $(pwd); $runtests -c -i -v -S $section --app $lookuptool $fstoptions $halftestoption $testfile; popd"
 	    echo
 	fi
 }

@@ -15,27 +15,6 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#### Tailored silent output text: ####
-SAXON_verbose   = $(SAXON_verbose_@AM_V@)
-SAXON_verbose_  = $(SAXON_verbose_@AM_DEFAULT_V@)
-SAXON_verbose_0 = @echo "  SAXON    $@";
-
-XSLPROC_verbose   = $(XSLPROC_verbose_@AM_V@)
-XSLPROC_verbose_  = $(XSLPROC_verbose_@AM_DEFAULT_V@)
-XSLPROC_verbose_0 = @echo "  XSLPROC  $@";
-
-HLEXC_verbose   = $(HLEXC_verbose_@AM_V@)
-HLEXC_verbose_  = $(HLEXC_verbose_@AM_DEFAULT_V@)
-HLEXC_verbose_0 = @echo "  HLEXC    $@";
-
-FST2FST_verbose   = $(FST2FST_verbose_@AM_V@)
-FST2FST_verbose_  = $(FST2FST_verbose_@AM_DEFAULT_V@)
-FST2FST_verbose_0 = @echo "  FST2FST  $@";
-
-XFST_verbose   = $(XFST_verbose_@AM_V@)
-XFST_verbose_  = $(XFST_verbose_@AM_DEFAULT_V@)
-XFST_verbose_0 = @echo "  XFST     $@";
-
 ####### Source file defs: ########
 
 #! @param GT_LEXC_ROOT required, define name of file holding root lexicon
@@ -66,7 +45,7 @@ noinst_DATA=$(GT_LEXICAL)
 XSLDIR = $(GTCORE)/scripts/xsl
 if CAN_SAXON
 $(srcdir)/stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
-	$(SAXON_verbose)$(SAXON) -xsl:$(XSLDIR)/generate_lex-fileVM.xsl \
+	$(AM_V_SAXON)$(SAXON) -xsl:$(XSLDIR)/generate_lex-fileVM.xsl \
 		$(abs_srcdir)/$< inFile=$(abs_builddir)/$< > $@
 else
 if CAN_JAVA
@@ -77,7 +56,7 @@ XSLPROC = net.sf.saxon.Transform
 
 # This target will convert each individual xml file to lexc:
 $(srcdir)/stems/%.lexc: stems/%.xml $(XSLDIR)/generate_lex-fileVM.xsl
-	$(XSLPROC_verbose)$(JV) $(MF) \
+	$(AM_V_XSLPROC)$(JV) $(MF) \
 		-cp $$(@CYGWINJAVAPATH@ "@SAXONJAR@") $(XSLPROC) \
 		$(EF) $$(@CYGWINJAVAPATH@ "$(XSLDIR)/generate_lex-fileVM.xsl") \
 		inFile=$$(@CYGWINJAVAPATH@ "$(abs_builddir)/$<") > $@
@@ -97,11 +76,12 @@ $(GTLANG).all.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 
 ####### HFST build rules: ########
 %.lexc.hfst: %.all.lexc
-	$(HLEXC_verbose)$(HFST_LEXC) $(HFST_LEXC_FLAGS) -f openfst-tropical -o $@ $^
+	$(AM_V_HLEXC)$(HFST_LEXC) $(VERBOSITY) $(HFST_LEXC_FLAGS) \
+		-f openfst-tropical -o $@ $^
 
 ####### Xerox build rules: #######
 %.lexc.xfst: %.all.lexc
-	$(XFST_verbose)$(XFST) -q \
+	$(AM_V_XFST)$(XFST) $(VERBOSITY) \
 			-e "read lexc $^" \
 			-e "compose net" \
 			-e "save stack $@ " \
@@ -114,5 +94,7 @@ clean-local:
 
 maintainer-clean-local:
 	-rm -f $(GENERATED_LEXC_SRCS)
+
+include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake: 

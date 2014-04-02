@@ -46,7 +46,7 @@ include $(top_srcdir)/am-shared/xfscript-include.am
 
 # We need a target to properly finish the Xerox fst build:
 %.xfst: %.tmp.xfst
-	$(AM_V_GEN)cp -f $< $@
+	$(AM_V_CP)cp -f $< $@
 
 ####### Other targets: ###########
 clean-local:

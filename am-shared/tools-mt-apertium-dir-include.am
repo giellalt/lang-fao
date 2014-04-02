@@ -4,20 +4,20 @@
 
 ####### Automake targets: ########
 
-if WANT_APERTIUM
-# This is just a generic analyser. You need to add pair-specific analysers to
-# the language-specific part further down.
-APERTIUM_ANALYSER_HFST=analyser-mt-gt-desc.hfst
+APERTIUM_ANALYSER_HFST=
 APERTIUM_ANALYSERS_GT_HFST=
 APERTIUM_ANALYSERS_AP_HFST=
 APERTIUM_ANALYSERS_ATTGZ=
 
-APERTIUM_GENERATORS_HFST=generator-mt-gt-norm.hfst \
-						generator-mt-apertium-norm.hfst \
-						generator-mt-apertium-norm.att.gz
+APERTIUM_GENERATORS_HFST=
 
 # The list of target languages are taken from configure.ac:
 TARGET_LANGS=$(MT_AP_TARGET_LANGS)
+
+if WANT_APERTIUM
+# This is just a generic analyser. You need to add pair-specific analysers to
+# the language-specific part further down.
+APERTIUM_ANALYSER_HFST+=analyser-mt-gt-desc.hfst
 
 # Build list of target language transducers from the list of target languages:
 APERTIUM_ANALYSERS_GT_HFST+=\
@@ -32,7 +32,9 @@ APERTIUM_ANALYSERS_AP_HFST+=\
 APERTIUM_ANALYSERS_ATTGZ+=\
 	$(addsuffix .att.gz,$(basename $(APERTIUM_ANALYSERS_AP_HFST)))
 
-APERTIUM_GENERATORS_HFST+=
+APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfst \
+						  generator-mt-apertium-norm.hfst \
+						  generator-mt-apertium-norm.att.gz
 
 endif # WANT_APERTIUM
 

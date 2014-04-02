@@ -1,4 +1,9 @@
-$Rev: 91581 $
+$Rev: 91605 $
+Moved all silencing code to a separate include file (except in a few cases of
+double includes). Made the yaml testing a bit more verbose when rerunning
+individual tests (copy-paste testing).
+
+r91581:
 Changed target language specifc analysers to be based off of
 analyser-mt-gt-desc.hfst, instead of the *.tmp.hfst file, to allow local post
 processing to be applied in the step from *.tmp.hfst to the *.hfst file.

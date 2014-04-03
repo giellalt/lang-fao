@@ -1,4 +1,8 @@
-$Rev: 91672 $
+$Rev: 91682 $
+Moved yaml test scripts for different transducer types up one level, to
+correspond to the parallel location of the fst files in the build tree.
+
+r91672:
 Generalised the yaml test runner code, to identify the relative paths of the
 test scripts and the fst's being tested, so that all sorts of fst's can be
 tested irrespective of where they are built. Added yaml testing for MT/Apertium.

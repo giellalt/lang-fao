@@ -3,3 +3,35 @@
 ## Licence: GPL v3+
 
 SUBDIRS = phonology morphology syntax
+
+######## Test targets: ###########
+
+# List here (space separated) all test scripts that should be run:
+TESTS=
+
+if CAN_YAML_TEST
+# Add your shell scripts for running python-based tests here:
+TESTS+=run-gt-norm-yaml-testcases.sh \
+       run-gt-desc-yaml-testcases.sh \
+       run-gt-norm-anayaml-testcases.sh \
+       run-gt-norm-genyaml-testcases.sh
+
+if WANT_DICTIONARIES
+TESTS+=run-dict-gt-desc-anayaml-testcases.sh \
+       run-dict-gt-norm-genyaml-testcases.sh
+endif # WANT_DICTIONARIES
+
+endif # CAN_YAML_TEST
+
+# List tests that are presently (expected) failures here, ie things that should
+# be fixed *later*, but is not critical at the moment:
+XFAIL_TESTS=run-dict-gt-desc-anayaml-testcases.sh \
+            run-dict-gt-norm-genyaml-testcases.sh \
+            run-gt-norm-yaml-testcases.sh \
+            run-gt-desc-yaml-testcases.sh \
+            run-gt-norm-anayaml-testcases.sh \
+            run-gt-norm-genyaml-testcases.sh
+
+####### Other targets: ###########
+clean-local:
+	-rm -f *.txt

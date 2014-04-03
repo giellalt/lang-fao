@@ -18,11 +18,14 @@
 # Wrong usage - short instruction:
 if ! test $# -ge 2 ; then
     echo
-    echo "Usage: $0 TRANSDUCERTYPE TESTFILE HALFTEST LEADTEXT"
+    echo "Usage: $0 TRANSDUCERTYPE TESTFILE RELPATH HALFTEST LEADTEXT"
     echo
     echo "were TRANSDUCERTYPE is the type of transducer targeted for testing,"
     echo "gt-norm, gt-desc, etc., and the optional TESTFILE is either a LexC"
     echo "file or a Yaml test data file, both containing test data."
+    echo "RELPATH gives the relative path between the calling"
+    echo "script and this script, and is used several places to"
+    echo "find the correct location of required files."
     echo "HALFTEST is a string with one of the values 'ana', 'gen' or 'full',"
     echo "indicating that only the analyser, only the generator, or both are"
     echo "tested, respectively."
@@ -36,15 +39,29 @@ fi
 ###### Variables: #######
 transducer=$1
 testfile=$2
-halftest=$3
-shift 3
+relpath=$3
+halftest=$4
+shift 4
 leadtext="$@"
 
 testfileshort=$(echo "$(basename \
 	$(dirname $testfile))/$(basename $testfile)")
 
-analyserfile=./../../../src/analyser-$transducer
-generatorfile=./../../../src/generator-$transducer
+# Identify the relative subdirs where the fst's are built by:
+# getting the root test dir in the source tree ($GTLANG/test/):
+roottestdir="$(cd "$(dirname "$srcdir/$relpath")"/.. && pwd)/"
+# getting the absolute path of the $srcdir of the test script:
+abs_srcdir=$(cd $srcdir && pwd)
+# subtracting the root test dir from the test script source dir - the
+# remaining intervening dirs equals the path to the fst dir as long as the
+# directory structure within $GTLANG/test/ mirrors the structure of the other
+# directories - this mirroring thus becomes imperative for the yaml testing:
+fstdir=${abs_srcdir:${#roottestdir}:${#roottestdir}}
+
+# The analyser files are built $relpath relative to the test dir, one further
+# dir up, and then in the identified fst dir (see above):
+analyserfile=./$relpath/../$fstdir/analyser-$transducer
+generatorfile=./$relpath/../$fstdir/generator-$transducer
 pythonbin=@PYTHON@
 runtests="$pythonbin @GTCORE@/scripts/morph-test.py"
 
@@ -126,7 +143,8 @@ for f in $fsttype; do
 	else
 	    let "Fail += 1"
 		echo "FAIL: Transducer not found! $(basename $analyserfile.$f)"
-		echo "referenced by: $testfileshort"
+		echo "FAIL: $analyserfile.$f"
+		echo "FAIL: referenced by: $testfileshort"
 	    continue
 	fi
 done

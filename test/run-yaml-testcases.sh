@@ -14,13 +14,17 @@
 # the actual test runner.
 
 # Wrong usage - short instruction:
-if ! test $# -ge 1 ; then
+if ! test $# -ge 2 ; then
     echo
-    echo "Usage: $0 TRANSDUCERTYPE [HALFTEST]"
+    echo "Usage: $0 TRANSDUCERTYPE RELPATH YAMLSUBDIR [HALFTEST]"
     echo
     echo "were TRANSDUCERTYPE is the type of transducer targeted"
     echo "for testing: gt-norm, gt-desc, etc. It will loop"
     echo "over all yaml tests for the specified TRANSDUCERTYPE."
+    echo "The  argument YAMLSUBDIR specifies the subdir containing"
+    echo "yaml test files - the default is ./ (ie the current dir)."
+    echo "This makes it possible to move all yaml files out of the"
+    echo "test dir, making for a much cleaner directory."
     echo "The optional argument HALFTEST is one of the strings"
     echo "'ana' or 'gen', indicating that the test runs should"
     echo "only run the analyser or generator tests respectively."
@@ -30,8 +34,25 @@ fi
 
 ###### Variables: #######
 transducer=$1
-halftest=$2
+yaml_file_subdir=$2
+halftest=$3
 Fail=0
+
+if test "x$yaml_file_subdir" = "x" ; then
+    yaml_file_subdir=.
+fi
+
+relpath=.
+testrunner=run-morph-tester.sh
+
+while test ! -x $relpath/$testrunner ; do
+    relpath="$relpath/.."
+#    echo relpath: $relpath     # debug
+    if test "$(cd $relpath && pwd)" = "/" ; then
+        echo "run-yaml-testcases.sh: No test runner found!"
+        exit 77
+    fi
+done
 
 # Build filename suffix dependent on the content of $halftest
 if test "$halftest" == ""; then
@@ -41,10 +62,12 @@ else
     suffix="$halftest.yaml"
 fi
 
-testfiles=$(find ${srcdir} -name "*_$transducer.$suffix")
+testfiles=$(find $srcdir/$yaml_file_subdir -name "*_$transducer.$suffix")
 if test "$testfiles" == ""; then
     echo
-    echo "*** Warning: No YAML data files found. Skipping test."
+    echo "*** Warning: No YAML data files found in:"
+    echo "$srcdir/$yaml_file_subdir"
+    echo "*** Skipping test."
     echo "*** Filenames covered by this test needs to end in:"
     echo "***"
     echo "*** _$transducer.$suffix"
@@ -54,10 +77,10 @@ fi
 
 i=0
 # Loop over the available yaml files, and run the tests:
-for file in ${srcdir}/*_$transducer.$suffix; do
+for file in ${srcdir}/$yaml_file_subdir/*_$transducer.$suffix; do
     (( i += 1 ))
     leadtext=$(echo "YAML test $i: ")
-	source ./../../run-morph-tester.sh $transducer $file $halftest $leadtext
+	source ./$relpath/run-morph-tester.sh $transducer $file $relpath $halftest $leadtext
 done
 
-source $srcdir/../../error-handling-stubs.sh
+source $srcdir/$relpath/error-handling-stubs.sh

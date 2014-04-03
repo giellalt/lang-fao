@@ -1,0 +1,58 @@
+Config:
+  hfst:
+    Gen:   ../../../../tools/mt/apertium/generator-mt-gt-norm.hfst
+    Morph: ../../../../tools/mt/apertium/analyser-mt-gt-desc.hfst
+  xerox:
+    Gen:   ../../../../tools/mt/apertium/generator-mt-gt-norm.xfst
+    Morph: ../../../../tools/mt/apertium/analyser-mt-gt-desc.xfst
+    App: lookup
+
+Tests:
+
+# Tag tests:
+  G3 - vuorru:
+    vuorru+N+G3+Sg+Gen: vuorru
+
+  G7 - gálli:
+    gálli+N+G7+Sg+Gen: gálli
+
+  NomAg - nubbijođiheaddji:
+    nubbijođiheaddji+N+NomAg+Sg+Gen: nubbijođiheaddji
+
+  v1 - rekruterenoassi:
+    rekruterenoassi+N+Sg+Gen: rekruterenoasi
+
+  v2 - servodatfágalinjá:
+    servodatfágalinjá+N+Sg+Gen: servvodatfágalinjjá
+
+  v3 - lohkanlistu:
+    lohkanlistu+N+Sg+Gen: lohkanlisttá
+
+  v4 - servodatvásihus:
+    servodatvásihus+N+Sg+Gen: servvodatvásihusa
+
+  v5 - sihkkelkursa:
+    sihkkelkursa+N+Sg+Gen: syhkkelgurssa
+
+  v6 - eanahálddašanláhka:
+    eanahálddašanláhka+N+Sg+Gen: eatnanhálddahanlága
+
+  v7 - eahkediskursa:
+    eahkediskursa+N+Sg+Gen: eahketkurssa
+
+  v8 - diibmolistu:
+    diibmolistu+N+Sg+Gen: tiibmalistta
+
+# Sem tags only after Prop:
+  Sem/Sur - Risten:
+    Risten+N+Prop+Sem/Sur+Sg+Gen: Risten
+
+  Sem/Plc - Romsa:
+    Romsa+N+Prop+Sem/Plc+Sg+Gen: Romssa
+
+  Sem/Hum - ipmil: # No tag here:
+    ipmil+N+Sg+Gen: ipmil
+
+# Spell relax tests:
+  eth - diehtit: # no spell relax in MT
+    diehtit+V+TV+Ind+Prs+ConNeg: ~dieðe

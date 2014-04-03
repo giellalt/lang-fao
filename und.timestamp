@@ -1,4 +1,9 @@
-$Rev: 91623 $
+$Rev: 91672 $
+Generalised the yaml test runner code, to identify the relative paths of the
+test scripts and the fst's being tested, so that all sorts of fst's can be
+tested irrespective of where they are built. Added yaml testing for MT/Apertium.
+
+r91623:
 Moved some back-end scripts for yaml testing to the uppermost test directory, to
 ease sharing of the same code across test subdirectories.
 

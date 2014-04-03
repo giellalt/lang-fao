@@ -127,12 +127,14 @@ AC_CONFIG_FILES([Makefile \
                  src/transcriptions/Makefile \
                  doc/Makefile \
                  test/Makefile \
+                 test/tools/Makefile \
+                 test/tools/mt/Makefile \
+                 test/tools/mt/apertium/Makefile \
+                 test/tools/spellcheckers/Makefile \
                  test/src/Makefile \
                  test/src/morphology/Makefile \
                  test/src/phonology/Makefile \
                  test/src/syntax/Makefile \
-                 test/tools/Makefile \
-                 test/tools/spellcheckers/Makefile \
                  tools/Makefile \
                  tools/grammarcheckers/Makefile \
                  tools/mt/Makefile \

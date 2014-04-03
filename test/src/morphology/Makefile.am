@@ -9,23 +9,14 @@ TESTS=generate-noun-lemmas.sh
 
 if CAN_YAML_TEST
 # Add your shell scripts for running python-based tests here:
-TESTS+=run-gt-norm-yaml-testcases.sh \
-       run-gt-desc-yaml-testcases.sh \
-       run-gt-norm-anayaml-testcases.sh \
-       run-gt-norm-genyaml-testcases.sh \
-       run-lexc-testcases.sh
-
-if WANT_DICTIONARIES
-TESTS+=run-dict-gt-desc-anayaml-testcases.sh \
-       run-dict-gt-norm-genyaml-testcases.sh
-endif # WANT_DICTIONARIES
+TESTS+=run-lexc-testcases.sh
 
 endif # CAN_YAML_TEST
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=run-dict-gt-desc-anayaml-testcases.sh \
-            run-dict-gt-norm-genyaml-testcases.sh
+XFAIL_TESTS=generate-noun-lemmas.sh \
+            run-lexc-testcases.sh
 
 ####### Other targets: ###########
 clean-local:

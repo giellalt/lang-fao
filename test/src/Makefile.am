@@ -14,7 +14,8 @@ if CAN_YAML_TEST
 TESTS+=run-gt-norm-yaml-testcases.sh \
        run-gt-desc-yaml-testcases.sh \
        run-gt-norm-anayaml-testcases.sh \
-       run-gt-norm-genyaml-testcases.sh
+       run-gt-norm-genyaml-testcases.sh \
+       run-lexc-testcases.sh
 
 if WANT_DICTIONARIES
 TESTS+=run-dict-gt-desc-anayaml-testcases.sh \
@@ -30,7 +31,8 @@ XFAIL_TESTS=run-dict-gt-desc-anayaml-testcases.sh \
             run-gt-norm-yaml-testcases.sh \
             run-gt-desc-yaml-testcases.sh \
             run-gt-norm-anayaml-testcases.sh \
-            run-gt-norm-genyaml-testcases.sh
+            run-gt-norm-genyaml-testcases.sh \
+            run-lexc-testcases.sh
 
 ####### Other targets: ###########
 clean-local:

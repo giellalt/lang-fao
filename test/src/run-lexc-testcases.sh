@@ -9,10 +9,23 @@ transducer=gt-norm
 Fail=0
 Tests_found=no
 Skipped=no
+testtype=full
+
+relpath=.
+testrunner=run-morph-tester.sh
+
+while test ! -x $relpath/$testrunner ; do
+    relpath="$relpath/.."
+    echo relpath: $relpath     # debug
+    if test "$(cd $relpath && pwd)" = "/" ; then
+        echo "$0: No test runner found!"
+        exit 77
+    fi
+done
 
 # Loop over all lexc source files:
-for file in ${srcdir}/../../../src/morphology/*.lexc \
-			${srcdir}/../../../src/morphology/*/*.lexc; do
+for file in ${srcdir}/$relpath/../src/morphology/*.lexc \
+			${srcdir}/$relpath/../src/morphology/*/*.lexc; do
 	fileshort=$(echo "$(basename \
 		$(dirname $file))/$(basename $file)")
 	# Skip the GTLANG-all.lexc file - it will cause the tests to be run twice:
@@ -45,10 +58,12 @@ for file in ${srcdir}/../../../src/morphology/*.lexc \
 		Skipped=no
 		for fst in $fsts; do
 		    (( i += 1 ))
+		    echo $fst
 		    leadtext=$(echo "LEXC test $i: ")
-			source ./../../run-morph-tester.sh $fst $file $leadtext
+			source $relpath/run-morph-tester.sh \
+				$fst $file $relpath $testtype $leadtext
 		done
 	fi
 done
 
-source $srcdir/../../error-handling-stubs.sh
+source $srcdir/$relpath/error-handling-stubs.sh

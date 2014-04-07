@@ -77,7 +77,8 @@ if [[ "$fsttype" == "" ]]; then
     exit 77
 fi
 
-# Construct the correct argument for running either analysis, generation or both tests
+# Construct the correct argument for running either analysis, generation or
+# both tests
 if test "$halftest" == "ana"; then
     halftestoption="--surface"
 elif test "$halftest" == "gen"; then
@@ -99,9 +100,11 @@ function run_tests() {
 	# If the test failed, print instructions to rerun and get more details:
 	if [[ $? -gt 0 ]]; then
 	    let "Fail += 1"
-	    echo "To rerun with more details, please triple-click, copy and paste the following:"
+	    echo "To rerun with more details, please triple-click, copy and paste"
+	    echo "the following:"
 	    echo
-	    echo "pushd $(pwd); $runtests -c -i -v -S $section --app $lookuptool $fstoptions $halftestoption $testfile; popd"
+	    echo "pushd $(pwd); $runtests -c -i -v -S $section --app $lookuptool \
+	           $fstoptions $halftestoption $testfile; popd"
 	    echo
 	fi
 }
@@ -126,25 +129,33 @@ for f in $fsttype; do
     if test "$halftest" == "ana" -a -f "$analyserfile.$f"; then
 		let "transducer_found += 1"
 		printf "$leadtext $testfileshort + $(basename $analyserfile.$f) - "
-        fstoptions="--morph $analyserfile.$f"
+		fstoptions="--morph $analyserfile.$f"
 		run_tests
-    elif test "$halftest" == "gen" -a -f "$generatorfile.$f"; then
+	elif test "$halftest" == "gen" -a -f "$generatorfile.$f"; then
 		let "transducer_found += 1"
 		printf "$leadtext $testfileshort + $(basename $generatorfile.$f) - "
-        fstoptions="--gen $generatorfile.$f"
+		fstoptions="--gen $generatorfile.$f"
 		run_tests
-    elif test "$halftest" == "full" \
-        -a -f "$analyserfile.$f"    \
-        -a -f "$generatorfile.$f"; then
+	elif test "$halftest" == "full" \
+		-a -f "$analyserfile.$f"    \
+		-a -f "$generatorfile.$f"; then
 		let "transducer_found += 1"
 		printf "$leadtext $testfileshort + $(basename $analyserfile.$f) - "
-        fstoptions="--morph $analyserfile.$f --gen $generatorfile.$f"
+		fstoptions="--morph $analyserfile.$f --gen $generatorfile.$f"
 		run_tests
 	else
-	    let "Fail += 1"
-		echo "FAIL: Transducer not found! $(basename $analyserfile.$f)"
-		echo "FAIL: $analyserfile.$f"
+		let "Fail += 1"
+		if test "$halftest" == "ana" -o "$halftest" == "full"; then
+			echo "FAIL: Analyser file not found! $(basename $analyserfile.$f)"
+			echo "FAIL: $analyserfile.$f"
+		fi
+		if test "$halftest" == "gen" -o "$halftest" == "full"; then
+			echo "FAIL: Generator file not found! $(basename $generatorfile.$f)"
+			echo "FAIL: $generatorfile.$f"
+		fi
 		echo "FAIL: referenced by: $testfileshort"
+		echo "FAIL: in $(pwd)"
+		echo "FAIL: testtype: $halftest"
 	    continue
 	fi
 done

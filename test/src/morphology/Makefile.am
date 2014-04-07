@@ -9,14 +9,13 @@ TESTS=generate-noun-lemmas.sh
 
 if CAN_YAML_TEST
 # Add your shell scripts for running python-based tests here:
-TESTS+=run-lexc-testcases.sh
+TESTS+=
 
 endif # CAN_YAML_TEST
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=generate-noun-lemmas.sh \
-            run-lexc-testcases.sh
+XFAIL_TESTS=generate-noun-lemmas.sh
 
 ####### Other targets: ###########
 clean-local:

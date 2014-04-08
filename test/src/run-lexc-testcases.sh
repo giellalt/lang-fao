@@ -16,7 +16,7 @@ testrunner=run-morph-tester.sh
 
 while test ! -x $relpath/$testrunner ; do
     relpath="$relpath/.."
-    echo relpath: $relpath     # debug
+#    echo relpath: $relpath     # debug
     if test "$(cd $relpath && pwd)" = "/" ; then
         echo "$0: No test runner found!"
         exit 77

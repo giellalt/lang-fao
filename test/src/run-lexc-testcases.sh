@@ -58,7 +58,7 @@ for file in ${srcdir}/$relpath/../src/morphology/*.lexc \
 		Skipped=no
 		for fst in $fsts; do
 		    (( i += 1 ))
-		    echo $fst
+#		    echo $fst    # debug
 		    leadtext=$(echo "LEXC test $i: ")
 			source $relpath/run-morph-tester.sh \
 				$fst $file $relpath $testtype $leadtext

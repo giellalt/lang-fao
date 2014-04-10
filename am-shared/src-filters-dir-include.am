@@ -40,7 +40,7 @@ gttags.txt: ../morphology/$(GTLANG).lexc.hfst
 		| grep -F '+' \
 		| tr ' ' '\n' \
 		| sed 's/,$$//g' \
-		| grep -E '(^\+.|.\+$$)' \
+		| grep -E '(^\+.|.\+$$)' || echo '+NoTagsFound' \
 		> $@
 
 else
@@ -58,7 +58,7 @@ gttags.txt: ../morphology/$(GTLANG).lexc.xfst
 		| sort \
 		| grep -v '^$$' \
 		| grep -v '^Sigma:' \
-		| grep -E '(^\+.|.\+$$)' \
+		| grep -E '(^\+.|.\+$$)' || echo '+NoTagsFound' \
 		> $@
 
 endif # CAN_XFST

@@ -1,4 +1,8 @@
-$Rev: 92100 $
+$Rev: 92118 $
+Corrected several errors in the MT Apertium fst builds: now removing semantic
+tags and tags for originating language. Silent hfst-invert.
+
+r92100:
 Modified the gttags.txt target to produce output also in cases where no GTD tags
 are defined. Earlier the build would break in this case.
 

@@ -61,10 +61,11 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-sub-forms.hfst                 \
 			$(top_builddir)/src/filters/remove-orthography-tags.hfst          \
 			$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst          \
+			$(top_builddir)/src/filters/remove-orig_lang-tags.hfst            \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst         \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst        \
 			$(top_builddir)/src/filters/remove-word-boundary.hfst
-	$(AM_V_GEN)$(PRINTF) "\
+	$(AM_V_RGX2FST)$(PRINTF) "\
 		@\"$(top_builddir)/src/filters/make-optional-semantic-tags.hfst\"     \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"            \
@@ -74,6 +75,7 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
 	.o. @\"$(top_builddir)/src/filters/remove-sub-forms.hfst\"                \
 	.o. @\"$(top_builddir)/src/filters/remove-NG-strings.hfst\"               \
+	.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-orthography-tags.hfst\"         \
 	.o. @\"$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst\"         \
    	.o. @\"$<\" \
@@ -92,19 +94,23 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst             \
 			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
 			$(top_builddir)/src/filters/remove-number-string-tags.hfst       \
+			$(top_builddir)/src/filters/remove-semantic-tags.hfst             \
 			$(top_builddir)/src/filters/remove-usage-tags.hfst               \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst        \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst       \
 			$(top_builddir)/src/filters/remove-orthography-tags.hfst         \
+			$(top_builddir)/src/filters/remove-orig_lang-tags.hfst            \
 			$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst         \
 			$(top_builddir)/src/filters/remove-word-boundary.hfst
-	$(AM_V_GEN)$(PRINTF) "\
+	$(AM_V_RGX2FST)$(PRINTF) "\
 		@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
+	.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
+	.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-orthography-tags.hfst\"         \
 	.o. @\"$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst\"         \
    	.o. @\"$<\" \
@@ -119,7 +125,7 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 generator-mt-apertium-norm.hfst: \
 			generator-mt-gt-norm.hfst \
 			$(top_builddir)/src/tagsets/apertium.relabel
-	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
 		-F $(top_builddir)/src/tagsets/apertium.relabel \
 		-o $@
 
@@ -127,7 +133,7 @@ generator-mt-apertium-norm.hfst: \
 analyser-mt-apertium-desc.%.hfst: \
 			analyser-mt-gt-desc.%.hfst \
 			$(top_builddir)/src/tagsets/apertium.relabel
-	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
 		-F $(top_builddir)/src/tagsets/apertium.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
 		-o $@
@@ -136,26 +142,28 @@ analyser-mt-apertium-desc.%.hfst: \
 # (filtering not yet implemented, coming soon)
 $(APERTIUM_ANALYSERS_GT_HFST): \
 analyser-mt-gt-desc.%.hfst: analyser-mt-gt-desc.hfst
-	$(AM_V_GEN)$(HFST_FST2FST) $(HFST_FLAGS) -t -i $< -o $@
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) -t -i $< -o $@
 
 %.att: %.hfst
-	$(AM_V_GEN)$(HFST_FST2FST) $(HFSTFLAGS) -w -i $< \
+	$(AM_V_FST2TXT)$(HFST_FST2FST) $(HFSTFLAGS) -w -i $< \
 		| $(HFST_FST2TXT) -o $@
 
 %.att.gz: %.att
-	$(AM_V_GEN)$(GZIP) -9 -c $< > $@
+	$(AM_V_GZIP)$(GZIP) -9 -c $< > $@
 
 #### HFST transducer fallback target:
 #### - inversion is needed FOR THE ANALYSER because the hfst model is upside
 #### down compared to Xerox AT APPLICATION TIME. The other command makes the
 #### final transducer ready for use.
 analyser%.hfst: analyser%.tmp.hfst
-	$(AM_V_GEN)$(HFST_INVERT) $< \
+	$(AM_V_INVERT)$(HFST_INVERT) $< \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 generator%.hfst: generator%.tmp.hfst
-	$(AM_V_GEN)$(HFST_FST2FST) $(HFST_FLAGS) -t -i $< -o $@
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) -t -i $< -o $@
 
 #### Xerox transducer fallback target:
 %.xfst: %.tmp.xfst
 	$(AM_V_CP)cp -f $< $@
+
+include $(top_srcdir)/am-shared/silent_build-include.am

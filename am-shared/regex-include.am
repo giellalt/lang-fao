@@ -47,6 +47,6 @@ noinst_DATA=$(GT_REGEX_TARGETS)
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.xfst *.txt
+	-rm -f $(GT_REGEX_TARGETS)
 
 # vim: set ft=automake:

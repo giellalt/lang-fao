@@ -1,4 +1,10 @@
-$Rev: 92118 $
+$Rev: 92144 $
+Dialect tags are now removed in the Apertium fst compilation. In addition, tags
+can now be custom changed and reordered on a language pair basis, see README.txt
+in tools/mt/apertium/tagsets/.
+
+
+r92118:
 Corrected several errors in the MT Apertium fst builds: now removing semantic
 tags and tags for originating language. Silent hfst-invert.
 

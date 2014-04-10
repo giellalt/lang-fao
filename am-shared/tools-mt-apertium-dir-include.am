@@ -52,6 +52,7 @@ endif # CAN_HFST
 generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/make-optional-semantic-tags.hfst      \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst  \
+			$(top_builddir)/src/filters/remove-dialect-tags.hfst              \
 			$(top_builddir)/src/filters/remove-homonymy-tags.hfst             \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst              \
 			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst            \
@@ -68,6 +69,7 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	$(AM_V_RGX2FST)$(PRINTF) "\
 		@\"$(top_builddir)/src/filters/make-optional-semantic-tags.hfst\"     \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
+	.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
@@ -90,6 +92,7 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 # happens here:
 analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
+			$(top_builddir)/src/filters/remove-dialect-tags.hfst              \
 			$(top_builddir)/src/filters/remove-homonymy-tags.hfst            \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst             \
 			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
@@ -104,6 +107,7 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-word-boundary.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
 		@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
+	.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
@@ -130,13 +134,41 @@ generator-mt-apertium-norm.hfst: \
 		-o $@
 
 # Relabel GTD tags to Apertium tags - analyser:
-analyser-mt-apertium-desc.%.hfst: \
+analyser-mt-apertium-desc.%.tmp.hfst: \
 			analyser-mt-gt-desc.%.hfst \
 			$(top_builddir)/src/tagsets/apertium.relabel
 	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
 		-F $(top_builddir)/src/tagsets/apertium.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
 		-o $@
+
+# If there exists a relabel file for the target language specific analyser,
+# apply the relabeling...
+analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
+								  tagsets/reorder-tags.%.hfst \
+								  $(srcdir)/tagsets/apertium.%.relabel
+	$(AM_V_RGX2FST)$(PRINTF) "\
+   		@\"$<\" \
+	.o. @\"tagsets/reorder-tags.$*.hfst\" \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) \
+		-F $(srcdir)/tagsets/apertium.$*.relabel \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+		-o $@
+
+# If there exists a relabel file for the target language specific analyser,
+# apply the relabeling...
+analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
+								  $(srcdir)/tagsets/apertium.%.relabel
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
+		-F $(srcdir)/tagsets/apertium.$*.relabel \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+		-o $@
+
+# ... if not, just copy the tmp file to the final target:
+analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
 
 # Target language specific filtering + inversion to a real analyser:
 # (filtering not yet implemented, coming soon)

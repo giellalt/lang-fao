@@ -24,9 +24,9 @@ EXTRA_DIST=$(GT_FILTER_SRCS)
 ####### Automake targets: ########
 
 # @param GT_FILTER_TARGETS required
-noinst_DATA=$(GT_FILTER_TARGETS) $(GT_TAGS)
+noinst_DATA=$(GT_FILTER_TARGETS)
 BUILT_SOURCES=$(GENERATED_REGEXES)
-CLEANFILES   =$(GENERATED_REGEXES)
+CLEANFILES=$(GENERATED_REGEXES)
 
 # Variable to hold filenames for files containing all tags used
 # (all symbols starting with '+')
@@ -34,13 +34,18 @@ GT_TAGS=
 if CAN_HFST
 GT_TAGS+=gttags.txt
 
+# The or construction needs to be put into a variable for the parentheses to
+# survive 'make' and be visible to the shell - this at the same time silences
+# grep.
+GREPTAGSCOMMAND=( grep -E '(^\+.|.\+$$)' || echo '+NoTagsFound' )
+
 gttags.txt: ../morphology/$(GTLANG).lexc.hfst
 	$(AM_V_GEN)$(HFST_SUMMARIZE) -v $^ \
 		| grep -A1 '^sigma set' \
 		| grep -F '+' \
 		| tr ' ' '\n' \
 		| sed 's/,$$//g' \
-		| grep -E '(^\+.|.\+$$)' || echo '+NoTagsFound' \
+		| $(GREPTAGSCOMMAND) \
 		> $@
 
 else
@@ -58,7 +63,7 @@ gttags.txt: ../morphology/$(GTLANG).lexc.xfst
 		| sort \
 		| grep -v '^$$' \
 		| grep -v '^Sigma:' \
-		| grep -E '(^\+.|.\+$$)' || echo '+NoTagsFound' \
+		| $(GREPTAGSCOMMAND) \
 		> $@
 
 endif # CAN_XFST
@@ -75,10 +80,22 @@ DIALECT_TARGETS_HFST=$(addsuffix .hfst,$(DIALECT_SUFFIXES))
 
 endif # HAVE_DIALECTS
 
-####### Build rules for extracting tags: #######
+######## Build rules for extracting tags: ########
+##
+## Add  one  target  for each  type of  tags to be
+## extracted, specifying  the string  to match the
+## tag set as the last option in the command. This
+## is safe even for languages not using a specific
+## tag set,  as a default  dummy tag  will be used
+## instead,  and  the  resulting  filter  will  be 
+## harmless   (unless  a  language  uses  the  tag
+## +Sem/DummyTag, +Dial/DummyTag, etc.).
 
-semantic-tags.txt: gttags.txt
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-semantic-tags.sh $< $@
+semantic-tags.txt: $(GT_TAGS)
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Sem/
+
+dialect-tags.txt: $(GT_TAGS)
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Dial/
 
 ####### Build rules for creating regexes from tag list: #######
 

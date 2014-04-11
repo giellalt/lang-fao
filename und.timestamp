@@ -1,8 +1,11 @@
-$Rev: 92144 $
+$Rev: 92170 $
+Now building the remove dialect tag removal filter dynamically, in the same way
+as done for the semantic tags. Requires a new version of the GTD core.
+
+r92144:
 Dialect tags are now removed in the Apertium fst compilation. In addition, tags
 can now be custom changed and reordered on a language pair basis, see README.txt
 in tools/mt/apertium/tagsets/.
-
 
 r92118:
 Corrected several errors in the MT Apertium fst builds: now removing semantic

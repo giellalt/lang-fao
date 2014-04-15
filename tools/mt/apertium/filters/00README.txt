@@ -16,6 +16,16 @@
 #
 # remove-derivation-strings-modifications.regex
 #
+# If the filtering is specific for a given target language, the end of the
+# filename should be:
+#
+# *.LANGCODE.regex
+#
+# e.g.: remove-derivation-strings-modifications.nob.regex
+#
+# for a filter removing derivations from an analyser used in an Apertium
+# language pair with Norwegian Bokmål as the target language.
+#
 # The regex fragment in the modification file should asume a context as follows:
 #
 # ~[ $[ +Der/A | +Der/B | ... | +Der/Z ] -

@@ -103,8 +103,7 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-orthography-tags.hfst         \
 			$(top_builddir)/src/filters/remove-orig_lang-tags.hfst           \
 			$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst         \
-			$(top_builddir)/src/filters/remove-word-boundary.hfst            \
-			filters/remove-derivation-strings.hfst
+			$(top_builddir)/src/filters/remove-word-boundary.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
 		@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
@@ -116,7 +115,6 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-orthography-tags.hfst\"         \
 	.o. @\"$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst\"         \
-	.o. @\"filters/remove-derivation-strings.hfst\"                           \
 	.o. @\"$<\" \
 	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"        \
@@ -170,9 +168,21 @@ analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
 analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst
 	$(AM_V_CP)cp -f $< $@
 
-# Target language specific filtering + inversion to a real analyser:
-# (filtering not yet implemented, coming soon)
-$(APERTIUM_ANALYSERS_GT_HFST): \
+# Target language specific filtering - build set depends on the availability
+# of the filter file.
+# With filter file available:
+analyser-mt-gt-desc.%.hfst: analyser-mt-gt-desc.hfst \
+			filters/remove-derivation-strings.%.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+		@\"filters/remove-derivation-strings.$*.hfst\" \
+   	.o. @\"$<\".i \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_INVERT) $(HFSTFLAGS) \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+		-o $@
+
+# With NO filter file available, just make sure the file is weighted:
 analyser-mt-gt-desc.%.hfst: analyser-mt-gt-desc.hfst
 	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) -t -i $< -o $@
 
@@ -189,7 +199,7 @@ analyser-mt-gt-desc.%.hfst: analyser-mt-gt-desc.hfst
 #### final transducer ready for use.
 analyser%.hfst: analyser%.tmp.hfst
 	$(AM_V_INVERT)$(HFST_INVERT) $< \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+		| $(HFST_FST2FST) $(HFST_FLAGS) -t -o $@
 
 generator%.hfst: generator%.tmp.hfst
 	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) -t -i $< -o $@

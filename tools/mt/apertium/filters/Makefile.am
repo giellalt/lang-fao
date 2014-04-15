@@ -15,12 +15,6 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# List any local additions here:
-GT_FILTER_SRCS=
-
-# DIALECT_TARGETS_HFST is constructed dynamically based on the dialects
-# specified in configure.ac.
-
 # The common filter targets (don't change locally):
 GT_FILTER_TARGETS=
 if CAN_HFST
@@ -33,6 +27,16 @@ endif
 
 GENERATED_REGEXES=remove-derivation-strings.regex
 
+##################################################################
+#### BEGIN: Add local processing instructions BELOW this line ####
+##################################################################
+
+# List any local additions here:
+GT_FILTER_SRCS=
+
+# List generated regexes here:
+GENERATED_REGEXES+=
+
 # Add the target of local additions here:
 # HFST targets here:
 if CAN_HFST
@@ -43,6 +47,12 @@ endif
 if CAN_XFST
 GT_FILTER_TARGETS+=
 endif
+
+# Add the build code of local additions here:
+
+##################################################################
+#### END: Add local processing instructions ABOVE this line ######
+##################################################################
 
 include $(top_srcdir)/am-shared/src-filters-dir-include.am
 

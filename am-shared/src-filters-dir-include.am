@@ -28,18 +28,18 @@ noinst_DATA=$(GT_FILTER_TARGETS)
 BUILT_SOURCES=$(GENERATED_REGEXES)
 CLEANFILES=$(GENERATED_REGEXES)
 
+# The or construction needs to be put into a variable for the parentheses to
+# survive 'make' and be visible to the shell - this at the same time silences
+# grep.
+GREPTAGSCOMMAND=( grep -E '(^\+.|.\+$$)' || echo '+NoTagsFound' )
+
 # Variable to hold filenames for files containing all tags used
 # (all symbols starting with '+')
 GT_TAGS=
 if CAN_HFST
 GT_TAGS+=gttags.txt
 
-# The or construction needs to be put into a variable for the parentheses to
-# survive 'make' and be visible to the shell - this at the same time silences
-# grep.
-GREPTAGSCOMMAND=( grep -E '(^\+.|.\+$$)' || echo '+NoTagsFound' )
-
-gttags.txt: ../morphology/$(GTLANG).lexc.hfst
+gttags.txt: $(top_builddir)/src/morphology/$(GTLANG).lexc.hfst
 	$(AM_V_GEN)$(HFST_SUMMARIZE) -v $^ \
 		| grep -A1 '^sigma set' \
 		| grep -F '+' \
@@ -53,7 +53,7 @@ else
 if CAN_XFST
 GT_TAGS+=gttags.txt
 
-gttags.txt: ../morphology/$(GTLANG).lexc.xfst
+gttags.txt: $(top_builddir)/src/morphology/$(GTLANG).lexc.xfst
 	$(AM_V_GEN)$(XFST) -q \
 			-e "load stack $^" \
 			-e "print sigma" \
@@ -97,6 +97,9 @@ semantic-tags.txt: $(GT_TAGS)
 dialect-tags.txt: $(GT_TAGS)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Dial/
 
+derivation-tags.txt: $(GT_TAGS)
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Der/
+
 ####### Build rules for creating regexes from tag list: #######
 
 # Create regex from tag list for making that tag list optional.
@@ -124,9 +127,22 @@ remove-%-tags.regex: %-tags.txt
 			$(GTCORE)/scripts/taglist2remove_tags_regex.sh $< > $@ ; \
 		fi
 
+# Remove strings specific to other dialects than the requested one:
 remove-all_dialects_but_%-strings.regex:
 	$(AM_V_GEN)$(GTCORE)/scripts/generate-dialect-filter-regex.sh \
 		$@ $* "$(DIALECTS)"
+
+### Remove strings with tags as specified:
+# Specific variant - take into account an exception file:
+remove-%-strings.regex: %-tags.txt \
+						remove-%-strings-modifications.regex
+	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh \
+		$@ $^
+
+# General variant - remove all strings without exception:
+remove-%-strings.regex: %-tags.txt
+	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh \
+		$@ $^
 
 ####### HFST build rules: ########
 .regex.hfst:

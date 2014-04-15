@@ -3,7 +3,7 @@
 ## Licence: GPL v3+
 
 # Process subdirs first:
-SUBDIRS = tagsets .
+SUBDIRS = filters tagsets .
 
 ##################################################################
 #### BEGIN: Add local processing instructions BELOW this line ####

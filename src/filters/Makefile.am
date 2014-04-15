@@ -99,6 +99,7 @@ endif
 
 GENERATED_REGEXES=remove-semantic-tags.regex \
                   remove-dialect-tags.regex \
+                  remove-derivation-strings.regex \
                   make-optional-semantic-tags.regex \
                   $(DIALECT_REGEXES)
 

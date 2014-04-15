@@ -48,7 +48,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 ### This is the version of the GTD core that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
-_gtd_core_min_version=0.2.8
+_gtd_core_min_version=0.2.9
 
 ### Earliest LibreOffice version that supports the language in question.
 ### Used for building the LO-voikko oxt package for the language.
@@ -139,6 +139,7 @@ AC_CONFIG_FILES([Makefile \
                  tools/grammarcheckers/Makefile \
                  tools/mt/Makefile \
                  tools/mt/apertium/Makefile \
+                 tools/mt/apertium/filters/Makefile \
                  tools/mt/apertium/tagsets/Makefile \
                  tools/preprocess/Makefile \
                  tools/shellscripts/Makefile \

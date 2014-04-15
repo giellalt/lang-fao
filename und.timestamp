@@ -1,4 +1,15 @@
-$Rev: 92170 $
+$Rev: 92295 $
+A major update to the Apertium fst building:
+* corrected broken logic when building the list of tags used by a language
+* build filter to remove derivation strings dynamically from the list of tags
+* added a new taglist2remove...strings-regex.sh file to the core
+* added a new dir filters/ within tools/mt/apertium/ for building apertium
+  specific filters
+* added facility to modify locally remove...strings.regex files by using an
+  exception file
+* build the remove-derivation-strings.regex dynamically also for regular fst's
+
+r92170:
 Now building the remove dialect tag removal filter dynamically, in the same way
 as done for the semantic tags. Requires a new version of the GTD core.
 

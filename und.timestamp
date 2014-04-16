@@ -1,4 +1,12 @@
-$Rev: 92339 $
+$Rev: 92369 $
+Rewrote tag reordering of semantic tags to use a dynamically generated regex,
+and split tag reordering in three: reordering sub-POS tags, semantic tags, and
+language specific tags. The two first reordering operations are done on all
+languages. The reordering is done when building the raw file, to build a fixed
+tag order that other fst operations can rely on. The raw file build had to be
+split in two steps because of this.
+
+r92339:
 Added support for target-language specific filtering for the Apertium analysers.
 
 r92295:

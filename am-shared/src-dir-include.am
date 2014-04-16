@@ -51,24 +51,52 @@ noinst_DATA=$(GT_ANALYSERS_XFST) \
 # special tools. On the lower side, the raw transducer contains all
 # morphological boundaries and hyphenation symbols. As such, this transducer
 # can NOT be used for morphological analysis, and hardly for generation.
-#
-# To get a transducer usable for a certain application, the raw transducer needs
-# to be filtered and manipulated to get the target tag set and surface symbols.
-# That is done in all subsequent targets, which builds on this one.
-generator-raw-gt-desc.tmp.hfst: morphology/$(GTLANG).lexc.hfst \
+
+# First build a tmp1 raw file as the intersection between lexicon and rules:
+generator-raw-gt-desc.tmp1.hfst: morphology/$(GTLANG).lexc.hfst \
 					 phonology/$(GTLANG)-phon.hfst
 	$(AM_V_INTRSCT)$(HFST_COMPOSE_INTERSECT) $(VERBOSITY) $(HFST_FLAGS) \
 		-1 morphology/$(GTLANG).lexc.hfst \
 		-2 phonology/$(GTLANG)-phon.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
-analyser-raw-gt-desc.tmp.xfst: morphology/$(GTLANG).lexc.xfst \
+analyser-raw-gt-desc.tmp1.xfst: morphology/$(GTLANG).lexc.xfst \
 			 phonology/$(GTLANG)-phon.xfst
 	$(AM_V_at)$(PRINTF) \
 		"read-source morphology/$(GTLANG).lexc.xfst\nread-rules  phonology/$(GTLANG)-phon.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		> $@.script
 	$(AM_V_LEXC)$(LEXC) $(VERBOSITY) < $@.script
 	$(AM_V_at)     rm -f $@.script
+
+# ... then apply tag reordering to tmp1 to ensure the same tag order in all
+# subsequent processing; this creates the regular tmp file, which can further
+# get local processing to produce the final raw file:
+generator-raw-gt-desc.tmp.hfst: generator-raw-gt-desc.tmp1.hfst  \
+					filters/reorder-semantic-tags.hfst           \
+					filters/reorder-subpos-tags.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+				@\"filters/reorder-subpos-tags.hfst\"   \
+			.o. @\"filters/reorder-semantic-tags.hfst\" \
+			.o. @\"$<\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+
+analyser-raw-gt-desc.tmp.xfst: analyser-raw-gt-desc.tmp1.xfst  \
+					filters/reorder-semantic-tags.xfst           \
+					filters/reorder-subpos-tags.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+				@\"filters/reorder-subpos-tags.xfst\"   \
+			.o. @\"filters/reorder-semantic-tags.xfst\" \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# To get a transducer usable for a certain application, the raw transducer needs
+# to be filtered and manipulated to get the target tag set and surface symbols.
+# That is done in all subsequent targets, which builds on the raw transducer
+# built above.
 
 # This is the default, descriptive analyser:
 analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \

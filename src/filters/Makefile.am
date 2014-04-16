@@ -57,6 +57,8 @@ GT_FILTER_TARGETS+=\
 				   remove-PUNCT-strings.hfst              \
 				   remove-UseCirc-strings.hfst            \
 				   remove-variant-strings.hfst            \
+				   reorder-semantic-tags.hfst             \
+				   reorder-subpos-tags.hfst               \
 				   $(DIALECT_TARGETS_HFST)
 endif
 
@@ -94,12 +96,15 @@ GT_FILTER_TARGETS+=\
 				   remove-PUNCT-strings.xfst              \
 				   remove-UseCirc-strings.xfst            \
 				   remove-variant-strings.xfst            \
+				   reorder-semantic-tags.xfst             \
+				   reorder-subpos-tags.xfst               \
 				   $(DIALECT_TARGETS_XFST)
 endif
 
 GENERATED_REGEXES=remove-semantic-tags.regex \
                   remove-dialect-tags.regex \
                   remove-derivation-strings.regex \
+                  reorder-semantic-tags.regex \
                   make-optional-semantic-tags.regex \
                   $(DIALECT_REGEXES)
 

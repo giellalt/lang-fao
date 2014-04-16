@@ -144,6 +144,11 @@ remove-%-strings.regex: %-tags.txt
 	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh \
 		$@ $^
 
+### Reorder tags:
+reorder-%-tags.regex: %-tags.txt
+	$(AM_V_GEN)$(GTCORE)/scripts/taglist2reorder_$*_tags_regex.sh \
+		$@ $^
+
 ####### HFST build rules: ########
 .regex.hfst:
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S -i $< -o $@

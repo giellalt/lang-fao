@@ -1,4 +1,8 @@
-$Rev: 92369 $
+$Rev: 92404 $
+Added support for tmp files in the apertium target language specific analysers,
+to allow local processing of those analysers.
+
+r92369:
 Rewrote tag reordering of semantic tags to use a dynamically generated regex,
 and split tag reordering in three: reordering sub-POS tags, semantic tags, and
 language specific tags. The two first reordering operations are done on all

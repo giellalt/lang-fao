@@ -123,7 +123,26 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
 		> $@
 
-# Relabel GTD tags to Apertium tags - generator:
+# Target language specific filtering - build depends on the availability
+# of the filter file.
+# WITH filter file available (the source file is inverted with the .i modifier):
+analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst \
+			filters/remove-derivation-strings.%.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+		@\"filters/remove-derivation-strings.$*.hfst\" \
+   	.o. @\"$<\".i \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		-o $@
+
+# With NO filter file available, invert the file to allow the general pattern
+# *.tmp.hfst -> invert -> *.hfst
+# to apply correctly:
+analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst
+	$(AM_V_INVERT)$(HFST_INVERT) $< \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -t -o $@
+
+# Relabel GTDivvun tags to Apertium tags - generator:
 generator-mt-apertium-norm.hfst: \
 			generator-mt-gt-norm.hfst \
 			$(top_builddir)/src/tagsets/apertium.relabel
@@ -132,6 +151,8 @@ generator-mt-apertium-norm.hfst: \
 		-o $@
 
 # Relabel GTD tags to Apertium tags - analyser:
+# % = TARGETLANG
+# Step 1 - gt -> apertium.tmp
 analyser-mt-apertium-desc.%.tmp.hfst: \
 			analyser-mt-gt-desc.%.hfst \
 			$(top_builddir)/src/tagsets/apertium.relabel
@@ -140,8 +161,10 @@ analyser-mt-apertium-desc.%.tmp.hfst: \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
 		-o $@
 
-# If there exists a relabel file for the target language specific analyser,
-# apply the relabeling...
+# Relabel GTD tags to Apertium tags - analyser:
+# % = TARGETLANG
+# Step 2a - apertium.tmp -> apertium
+#         - BOTH target language specific reordering AND relabeling
 analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
 								  tagsets/reorder-tags.%.hfst \
 								  $(srcdir)/tagsets/apertium.%.relabel
@@ -155,8 +178,10 @@ analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
 		-o $@
 
-# If there exists a relabel file for the target language specific analyser,
-# apply the relabeling...
+# Relabel GTD tags to Apertium tags - analyser:
+# % = TARGETLANG
+# Step 2b - apertium.tmp -> apertium
+#         - ONLY target language specific relabeling
 analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
 								  $(srcdir)/tagsets/apertium.%.relabel
 	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
@@ -164,27 +189,12 @@ analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
 		-o $@
 
-# ... if not, just copy the tmp file to the final target:
+# Relabel GTD tags to Apertium tags - analyser:
+# % = TARGETLANG
+# Step 2c - apertium.tmp -> apertium
+#         - NO target language specific processing - just copy
 analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst
 	$(AM_V_CP)cp -f $< $@
-
-# Target language specific filtering - build set depends on the availability
-# of the filter file.
-# With filter file available:
-analyser-mt-gt-desc.%.hfst: analyser-mt-gt-desc.hfst \
-			filters/remove-derivation-strings.%.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
-		@\"filters/remove-derivation-strings.$*.hfst\" \
-   	.o. @\"$<\".i \
-    	;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
-		| $(HFST_INVERT) $(HFSTFLAGS) \
-		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
-		-o $@
-
-# With NO filter file available, just make sure the file is weighted:
-analyser-mt-gt-desc.%.hfst: analyser-mt-gt-desc.hfst
-	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) -t -i $< -o $@
 
 %.att: %.hfst
 	$(AM_V_FST2TXT)$(HFST_FST2FST) $(HFSTFLAGS) -w -i $< \

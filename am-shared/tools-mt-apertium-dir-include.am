@@ -10,6 +10,7 @@ APERTIUM_ANALYSERS_AP_HFST=
 APERTIUM_ANALYSERS_ATTGZ=
 
 APERTIUM_GENERATORS_HFST=
+APERTIUM_CG_BIN=
 
 # The list of target languages are taken from configure.ac:
 TARGET_LANGS=$(MT_AP_TARGET_LANGS)
@@ -36,16 +37,21 @@ APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfst \
 						  generator-mt-apertium-norm.hfst \
 						  generator-mt-apertium-norm.att.gz
 
+#APERTIUM_CG_BIN+=disambiguation-mt-apertium.bin \
+#				 dependency-mt-apertium.bin \
+#				 functions-mt-apertium.bin
+
 endif # WANT_APERTIUM
 
 
 if CAN_HFST
-hfstdatadir=$(datadir)/hfst/$(GTLANG)
+hfstdatadir=$(datadir)/gtdivvun/$(GTLANG)
 noinst_DATA=$(APERTIUM_ANALYSER_HFST) \
 			$(APERTIUM_ANALYSERS_GT_HFST)
 hfstdata_DATA=$(APERTIUM_ANALYSERS_AP_HFST) \
 			  $(APERTIUM_ANALYSERS_ATTGZ) \
-			  $(APERTIUM_GENERATORS_HFST)
+			  $(APERTIUM_GENERATORS_HFST) \
+			  $(APERTIUM_CG_BIN)
 endif # CAN_HFST
 
 # Apertium generator - GTD tags. All filtering happens here:
@@ -203,6 +209,25 @@ analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst
 %.att.gz: %.att
 	$(AM_V_GZIP)$(GZIP) -9 -c $< > $@
 
+##### Disambiguation and syntactic parsing targets
+# Copy files from the src dirs:
+dependency-mt-gt.cg3: \
+				$(GTCORE)/gtdshared/smi/src/syntax/dependency.cg3
+	$(AM_V_CP)cp -f $< $@
+
+functions-mt-gt.cg3: \
+				$(GTCORE)/gtdshared/smi/src/syntax/functions.cg3
+	$(AM_V_CP)cp -f $< $@
+
+disambiguation-mt-gt.cg3: \
+				$(top_srcdir)/src/syntax/disambiguation.cg3
+	$(AM_V_CP)cp -f $< $@
+
+# Change the tags from GTDivvun format to Apertium format:
+%-apertium.cg3: %-gt.cg3
+	$(AM_V_GEN)$(PYTHON) \
+		$(GTCORE)/scripts/cg-tag-convertor-for-apertium.py < $< > $@
+
 #### HFST transducer fallback target:
 #### - inversion is needed FOR THE ANALYSER because the hfst model is upside
 #### down compared to Xerox AT APPLICATION TIME. The other command makes the
@@ -218,4 +243,5 @@ generator%.hfst: generator%.tmp.hfst
 %.xfst: %.tmp.xfst
 	$(AM_V_CP)cp -f $< $@
 
+include $(top_srcdir)/am-shared/vislcg3-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am

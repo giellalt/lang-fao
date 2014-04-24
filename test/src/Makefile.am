@@ -6,17 +6,33 @@ SUBDIRS = phonology morphology syntax
 
 ######## Test targets: ###########
 
-# List here (space separated) all test scripts that should be run:
+# List here (space separated) all test scripts that should be run
+# _unconditionally_:
 TESTS=
 
 if CAN_YAML_TEST
-# Add your shell scripts for running python-based tests here:
+# Add your shell scripts for running python-based tests below here, so that
+# they are only run if the preconditions for yaml tests are met.
+
+# This is for yaml tests requiring ONLY an analyser
+if WANT_MORPHOLOGY
+TESTS+=run-gt-norm-anayaml-testcases.sh
+
+# This is for yaml tests requiring BOTH an analyser AND a generator:
+if WANT_GENERATION
 TESTS+=run-gt-norm-yaml-testcases.sh \
        run-gt-desc-yaml-testcases.sh \
-       run-gt-norm-anayaml-testcases.sh \
-       run-gt-norm-genyaml-testcases.sh \
        run-lexc-testcases.sh
+endif # WANT_GENERATION
+endif # WANT_MORPHOLOGY
 
+# This is for yaml tests requiring ONLY a generator
+if WANT_GENERATION
+TESTS+=run-gt-norm-genyaml-testcases.sh
+endif # WANT_GENERATION
+
+# This is for yaml tests to be run when building fst's tailored to the needs of
+# electronic dictionaries:
 if WANT_DICTIONARIES
 TESTS+=run-dict-gt-desc-anayaml-testcases.sh \
        run-dict-gt-norm-genyaml-testcases.sh

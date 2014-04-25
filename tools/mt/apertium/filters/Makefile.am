@@ -17,6 +17,9 @@
 
 # The common filter targets (don't change locally):
 GT_FILTER_TARGETS=
+
+# Only build these things if apertium fst's are enabled:
+if WANT_APERTIUM
 if CAN_HFST
 GT_FILTER_TARGETS+=remove-derivation-strings.hfst
 endif
@@ -26,6 +29,7 @@ GT_FILTER_TARGETS+=remove-derivation-strings.xfst
 endif
 
 GENERATED_REGEXES=remove-derivation-strings.regex
+endif # WANT_APERTIUM
 
 ##################################################################
 #### BEGIN: Add local processing instructions BELOW this line ####
@@ -34,6 +38,8 @@ GENERATED_REGEXES=remove-derivation-strings.regex
 # List any local additions here:
 GT_FILTER_SRCS=
 
+# Only build these things if apertium fst's are enabled:
+if WANT_APERTIUM
 # List generated regexes here:
 GENERATED_REGEXES+=
 
@@ -47,6 +53,8 @@ endif
 if CAN_XFST
 GT_FILTER_TARGETS+=
 endif
+
+endif # WANT_APERTIUM
 
 # Add the build code of local additions here:
 

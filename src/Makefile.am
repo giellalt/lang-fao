@@ -7,27 +7,67 @@ SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax 
 
 ####### Automake targets: ########
 
+# Define target variables first, with obligatory raw fst's included:
+GT_ANALYSERS_HFST=
+GT_GENERATORS_HFST=
+GT_TRANSFORMERS_HFST=
+GT_ANALYSERS_XFST=
+GT_GENERATORS_XFST=
+GT_TRANSFORMERS_XFST=
+
+##### BEGIN Hfst target list #####
 if CAN_HFST
-GT_ANALYSERS_HFST=analyser-gt-desc.hfst analyser-gt-norm.hfst
-GT_GENERATORS_HFST=generator-gt-desc.hfst generator-gt-norm.hfst
-GT_TRANSFORMERS_HFST=transcriptor-clock2text-desc.hfst \
-					 transcriptor-date2text-desc.hfst \
-					 transcriptor-numbers2text-desc.hfst \
-					 transcriptor-text2clock-desc.hfst \
-					 transcriptor-text2date-desc.hfst \
-					 transcriptor-text2numbers-desc.hfst
 
+# Always build the raw generator if hfst is enabled:
+GT_GENERATORS_HFST+=generator-raw-gt-desc.hfst
+
+if WANT_MORPHOLOGY
+GT_ANALYSERS_HFST+=analyser-gt-desc.hfst \
+				   analyser-gt-norm.hfst \
+				   analyser-disamb-gt-desc.hfst
+endif # WANT_MORPHOLOGY
+
+if WANT_GENERATION
+GT_GENERATORS_HFST+=generator-gt-desc.hfst \
+					generator-gt-norm.hfst 
+endif # WANT_GENERATION
+
+if WANT_TRANSCRIPTORS
+GT_TRANSFORMERS_HFST+=transcriptor-clock2text-desc.hfst \
+					  transcriptor-date2text-desc.hfst \
+					  transcriptor-numbers2text-desc.hfst \
+					  transcriptor-text2clock-desc.hfst \
+					  transcriptor-text2date-desc.hfst \
+					  transcriptor-text2numbers-desc.hfst
+endif # WANT_TRANSCRIPTORS
 endif # CAN_HFST
+##### END Hfst target list #####
 
+##### BEGIN Xerox target list #####
 if CAN_XFST
-GT_ANALYSERS_XFST=analyser-gt-desc.xfst analyser-gt-norm.xfst
-GT_GENERATORS_XFST=generator-gt-desc.xfst generator-gt-norm.xfst
-GT_TRANSFORMERS_XFST=transcriptor-clock2text-desc.xfst \
-					 transcriptor-date2text-desc.xfst \
-					 transcriptor-numbers2text-desc.xfst \
-					 transcriptor-text2clock-desc.xfst \
-					 transcriptor-text2date-desc.xfst \
-					 transcriptor-text2numbers-desc.xfst
+
+# Always build the raw analsyer if Xerox is enabled:
+GT_ANALYSERS_XFST+=analyser-raw-gt-desc.xfst
+
+if WANT_MORPHOLOGY
+GT_ANALYSERS_XFST+=analyser-gt-desc.xfst \
+				   analyser-gt-norm.xfst \
+				   analyser-disamb-gt-desc.xfst
+endif # WANT_MORPHOLOGY
+
+if WANT_GENERATION
+GT_GENERATORS_XFST+=generator-gt-desc.xfst \
+					generator-gt-norm.xfst
+endif # WANT_GENERATION
+
+if WANT_TRANSCRIPTORS
+GT_TRANSFORMERS_XFST+=transcriptor-clock2text-desc.xfst \
+					  transcriptor-date2text-desc.xfst \
+					  transcriptor-numbers2text-desc.xfst \
+					  transcriptor-text2clock-desc.xfst \
+					  transcriptor-text2date-desc.xfst \
+					  transcriptor-text2numbers-desc.xfst
+endif # WANT_TRANSCRIPTORS
 
 if WANT_DICTIONARIES
 GT_ANALYSERS_XFST+=analyser-dict-gt-desc.xfst \
@@ -36,6 +76,7 @@ GT_GENERATORS_XFST+=generator-dict-gt-norm.xfst
 
 endif # WANT_DICTIONARIES
 endif # CAN_XFST
+##### END Xerox target list #####
 
 if WANT_OAHPA
 if CAN_HFST

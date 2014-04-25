@@ -26,16 +26,21 @@ EXTRA_DIST=$(GT_TRANSCRIPTIONS_SRCS)
 
 # The transducers we build and don't distribute depend on the configuration:
 GT_TRANSCRIPTORS=
+
+if WANT_TRANSCRIPTORS
 if CAN_HFST
 GT_TRANSCRIPTORS+=transcriptor-clock2text-raw.hfst \
 				  transcriptor-date2text-raw.hfst \
 				  transcriptor-numbers2text-raw.hfst
-endif
+endif # CAN_HFST
+
 if CAN_XFST
 GT_TRANSCRIPTORS+=transcriptor-clock2text-raw.xfst \
 				  transcriptor-date2text-raw.xfst \
 				  transcriptor-numbers2text-raw.xfst
-endif
+endif # CAN_XFST
+endif # WANT_TRANSCRIPTORS
+
 noinst_DATA=$(GT_TRANSCRIPTORS)
 
 ####### HFST build rules: ########

@@ -1,4 +1,8 @@
-$Rev: 92866 $
+$Rev: 92913 $
+Started work on adding hyphenators. No substantial changes, just Automake
+conditionals.
+
+r92866:
 Actually made the options --disable-analysers and --disable-generators do what
 they should, earlier they had no effect. Also renamed those options. Wrapped the
 filter targets in mt/tools/apertium/filters/ in apertium conditionals, so that

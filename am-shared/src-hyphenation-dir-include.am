@@ -29,15 +29,21 @@ EXTRA_DIST=$(GT_HYPHENATION_SRCS)
 ####### Automake targets: ########
 
 # The rule transducer will be built, not installed
-GT_HYPHENATION=
+GT_HYPHEN_PATTERNS=
+
+# if WANT_FST_HYPHENATOR
+
 if CAN_HFST
-GT_HYPHENATION+=hyphenation.hfst
-endif
-if CAN_XFST
-GT_HYPHENATION+=hyphenation.xfst
+GT_HYPHEN_PATTERNS+=hyphenation.hfst
 endif
 
-noinst_DATA=$(GT_HYPHENATION)
+if CAN_XFST
+GT_HYPHEN_PATTERNS+=hyphenation.xfst
+endif
+
+# endif # WANT_FST_HYPHENATOR
+
+noinst_DATA=$(GT_HYPHEN_PATTERNS)
 
 ##########################################
 # General build rules included from here:#

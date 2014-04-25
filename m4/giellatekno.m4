@@ -257,20 +257,28 @@ AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$saxonjar" != xno]
 AC_DEFUN([gt_ENABLE_TARGETS],
 [
 # Enable morphological analysers - default is 'yes'
-AC_ARG_ENABLE([morphology],
-              [AS_HELP_STRING([--enable-morphology],
+AC_ARG_ENABLE([analysers],
+              [AS_HELP_STRING([--enable-analysers],
                               [build morphological analysers @<:@default=yes@:>@])],
-              [enable_morphology=$enableval],
-              [enable_morphology=yes])
-AM_CONDITIONAL([WANT_MORPHOLOGY], [test "x$enable_morphology" != xno])
+              [enable_analysers=$enableval],
+              [enable_analysers=yes])
+AM_CONDITIONAL([WANT_MORPHOLOGY], [test "x$enable_analysers" != xno])
 
 # Enable morphological generators - default is 'yes'
-AC_ARG_ENABLE([generation],
-              [AS_HELP_STRING([--enable-generation],
+AC_ARG_ENABLE([generators],
+              [AS_HELP_STRING([--enable-generators],
                               [build morphological generators @<:@default=yes@:>@])],
-              [enable_generation=$enableval],
-              [enable_generation=yes])
-AM_CONDITIONAL([WANT_GENERATION], [test "x$enable_generation" != xno])
+              [enable_generators=$enableval],
+              [enable_generators=yes])
+AM_CONDITIONAL([WANT_GENERATION], [test "x$enable_generators" != xno])
+
+# Enable text transcriptors - default is 'yes'
+AC_ARG_ENABLE([transcriptors],
+              [AS_HELP_STRING([--enable-transcriptors],
+                              [build text transcriptors @<:@default=yes@:>@])],
+              [enable_transcriptors=$enableval],
+              [enable_transcriptors=yes])
+AM_CONDITIONAL([WANT_TRANSCRIPTORS], [test "x$enable_transcriptors" != xno])
 
 # Enable all spellers - default is 'no'
 AC_ARG_ENABLE([spellers],
@@ -394,8 +402,9 @@ cat<<EOF
   -- basic package (on by default except hfst): --
   * build Xerox fst's: $gt_prog_xfst
   * build HFST fst's: $gt_prog_hfst
-  * analysers enabled: $enable_morphology
-  * generators enabled: $enable_generation
+  * analysers enabled: $enable_analysers
+  * generators enabled: $enable_generators
+  * transcriptors enabled: $enable_transcriptors
   * vislcg3 tools enabled: $gt_prog_vislcg3
   * yaml tests enabled: $enable_yamltests
   * generated documentation enabled: $gt_prog_docc

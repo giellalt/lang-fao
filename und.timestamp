@@ -1,4 +1,11 @@
-$Rev: 92827 $
+$Rev: 92866 $
+Actually made the options --disable-analysers and --disable-generators do what
+they should, earlier they had no effect. Also renamed those options. Wrapped the
+filter targets in mt/tools/apertium/filters/ in apertium conditionals, so that
+they will only be built if the apertium option is enabled. Added separate
+configure.ac option to disable the transcriptors (the num2text family).
+
+r92827:
 Make sure all tests are within conditionals - only run them if the fst's have
 been built.
 

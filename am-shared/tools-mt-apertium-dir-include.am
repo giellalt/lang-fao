@@ -37,9 +37,9 @@ APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfst \
 						  generator-mt-apertium-norm.hfst \
 						  generator-mt-apertium-norm.att.gz
 
-#APERTIUM_CG_BIN+=disambiguation-mt-apertium.bin \
-#				 dependency-mt-apertium.bin \
-#				 functions-mt-apertium.bin
+APERTIUM_CG_BIN+=disambiguation-mt-apertium.bin \
+				 dependency-mt-apertium.bin \
+				 functions-mt-apertium.bin
 
 endif # WANT_APERTIUM
 

@@ -40,6 +40,19 @@ GT_TRANSFORMERS_HFST+=transcriptor-clock2text-desc.hfst \
 					  transcriptor-text2date-desc.hfst \
 					  transcriptor-text2numbers-desc.hfst
 endif # WANT_TRANSCRIPTORS
+
+if WANT_DICTIONARIES
+GT_ANALYSERS_HFST+=analyser-dict-gt-desc.hfst \
+				   analyser-dict-gt-desc-mobile.hfst
+GT_GENERATORS_HFST+=generator-dict-gt-norm.hfst
+
+endif # WANT_DICTIONARIES
+
+if WANT_OAHPA
+GT_GENERATORS_HFST+=generator-oahpa-gt-norm.hfst \
+					$(DIALECT_TARGETS_HFST)
+endif # WANT_OAHPA
+
 endif # CAN_HFST
 ##### END Hfst target list #####
 
@@ -75,17 +88,15 @@ GT_ANALYSERS_XFST+=analyser-dict-gt-desc.xfst \
 GT_GENERATORS_XFST+=generator-dict-gt-norm.xfst
 
 endif # WANT_DICTIONARIES
+
+if WANT_OAHPA
+GT_GENERATORS_XFST+=generator-oahpa-gt-norm.xfst \
+					$(DIALECT_TARGETS_XFST)
+endif # WANT_OAHPA
+
 endif # CAN_XFST
 ##### END Xerox target list #####
 
-if WANT_OAHPA
-if CAN_HFST
-GT_GENERATORS_HFST+=generator-oahpa-gt-norm.hfst $(DIALECT_TARGETS_HFST)
-endif # CAN_HFST
-if CAN_XFST
-GT_GENERATORS_XFST+=generator-oahpa-gt-norm.xfst $(DIALECT_TARGETS_XFST)
-endif # CAN_XFST
-endif # WANT_OAHPA
 
 #### Local modifications in *fst processing: ####
 ####
@@ -120,13 +131,15 @@ endif # WANT_OAHPA
 
 #### Xerox transducers:
 if CAN_XFST
-endif
+GT_ANALYSERS_XFST+=
+GT_GENERATORS_XFST+=
+endif # CAN_XFST
 
 #### HFST transducers
 if CAN_HFST
 GT_ANALYSERS_HFST+=
 GT_GENERATORS_HFST+=
-endif
+endif # CAN_HFST
 
 
 #################################################

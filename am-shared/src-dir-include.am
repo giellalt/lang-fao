@@ -182,6 +182,7 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/make-optional-transitivity-tags.hfst \
 					filters/make-optional-homonymy-tags.hfst     \
 					filters/make-optional-variant-tags.hfst      \
+					filters/make-optional-semantic-tags.hfst     \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
 					filters/remove-hyphenation-marks.hfst        \
@@ -197,6 +198,7 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 				@\"filters/make-optional-transitivity-tags.hfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
 			.o. @\"filters/make-optional-variant-tags.hfst\"      \
+			.o. @\"filters/make-optional-semantic-tags.hfst\"     \
 			.o. @\"filters/remove-derivation-position-tags.hfst\" \
 			.o. @\"filters/remove-dialect-tags.hfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
@@ -217,6 +219,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/make-optional-homonymy-tags.xfst     \
 					filters/make-optional-variant-tags.xfst      \
+					filters/make-optional-semantic-tags.xfst     \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst             \
 					filters/remove-hyphenation-marks.xfst        \
@@ -232,6 +235,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
+			.o. @\"filters/make-optional-semantic-tags.xfst\"     \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
@@ -330,6 +334,7 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/make-optional-transitivity-tags.hfst \
 					filters/make-optional-homonymy-tags.hfst     \
 					filters/make-optional-variant-tags.hfst      \
+					filters/make-optional-semantic-tags.hfst     \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
 					filters/remove-hyphenation-marks.hfst        \
@@ -346,6 +351,7 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 				@\"filters/make-optional-transitivity-tags.hfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
 			.o. @\"filters/make-optional-variant-tags.hfst\"      \
+			.o. @\"filters/make-optional-semantic-tags.hfst\"     \
 			.o. @\"filters/remove-derivation-position-tags.hfst\" \
 			.o. @\"filters/remove-dialect-tags.hfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
@@ -367,6 +373,7 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/make-optional-homonymy-tags.xfst     \
 					filters/make-optional-variant-tags.xfst      \
+					filters/make-optional-semantic-tags.xfst     \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst             \
 					filters/remove-hyphenation-marks.xfst        \
@@ -383,6 +390,7 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
+			.o. @\"filters/make-optional-semantic-tags.xfst\"     \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \

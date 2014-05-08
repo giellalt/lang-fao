@@ -1,4 +1,9 @@
-$Rev: 93810 $
+$Rev: 93880 $
+Changed datadir from $(datadir)/hfst/* to $(datadir)/gtdivvun/*, as it is the
+directory used to install the gtdivvun products, and not only hfst transducers
+are installed.
+
+r93810:
 Require Automake 1.11.6 to avoid errors caused by older Automake's.
 
 r93210:

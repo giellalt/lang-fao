@@ -35,7 +35,7 @@ EXTRA_DIST=$(GT_CG_SRCS) $(GT_CG_LOCAL_SRCS)
 #! @var GT_CG_LOCAL_INST_TARGETS local cg files to build and install
 #! @var GT_CG_LOCAL_NOINST_TARGETS local cg files to build but NOT install
 if CAN_VISLCG
-gtddatadir=$(datadir)/gtdivvun/$(GTLANG)
+gtddatadir=$(datadir)/giella/$(GTLANG)
 gtddata_DATA=$(GT_CG_TARGETS) $(GT_CG_LOCAL_INST_TARGETS)
 
 noinst_DATA=$(GT_CG_LOCAL_NOINST_TARGETS)

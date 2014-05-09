@@ -45,7 +45,7 @@ endif # WANT_APERTIUM
 
 
 if CAN_HFST
-hfstdatadir=$(datadir)/gtdivvun/$(GTLANG)
+hfstdatadir=$(datadir)/giella/$(GTLANG)
 noinst_DATA=$(APERTIUM_ANALYSER_HFST) \
 			$(APERTIUM_ANALYSERS_GT_HFST)
 hfstdata_DATA=$(APERTIUM_ANALYSERS_AP_HFST) \

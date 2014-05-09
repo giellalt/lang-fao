@@ -7,6 +7,10 @@ SUBDIRS = . src tools doc test
 
 EXTRA_DIST = und.timestamp
 
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = giella-$(GTLANG).pc
+
+
 configure: banner und.timestamp
 
 .PHONY: banner

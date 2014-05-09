@@ -23,7 +23,7 @@ GT_FOMA_ACCEPTOR=acceptor-$(GTLANG).foma
 if WANT_SPELLERS
 if CAN_HFST
 if CAN_FOMA_SPELLER
-hfstdatadir=$(datadir)/gtdivvun/$(GTLANG)
+hfstdatadir=$(datadir)/giella/$(GTLANG)
 hfstdata_DATA=$(GT_FOMA_ACCEPTOR)
 endif #CAN_FOMA_SPELLER
 endif # CAN_HFST

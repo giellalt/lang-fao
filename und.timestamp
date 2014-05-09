@@ -1,4 +1,9 @@
-$Rev: 93880 $
+$Rev: 93927 $
+After a long discussion, the moniker 'giella' was chosen instead of gtdivvun.
+Changed datadir from $(datadir)/gtdivvun/* to $(datadir)/giella/*. Added a
+pkg-config file so that all installed resources can be found automatically.
+
+r93880:
 Changed datadir from $(datadir)/hfst/* to $(datadir)/gtdivvun/*, as it is the
 directory used to install the gtdivvun products, and not only hfst transducers
 are installed.

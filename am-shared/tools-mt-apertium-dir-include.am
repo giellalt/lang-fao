@@ -13,6 +13,7 @@ APERTIUM_GENERATORS_HFST=
 APERTIUM_CG_BIN=
 
 # The list of target languages are taken from configure.ac:
+# TARGET_LANGS="sma smj nob"
 TARGET_LANGS=$(MT_AP_TARGET_LANGS)
 
 if WANT_APERTIUM
@@ -21,25 +22,53 @@ if WANT_APERTIUM
 APERTIUM_ANALYSER_HFST+=analyser-mt-gt-desc.hfst
 
 # Build list of target language transducers from the list of target languages:
+# => analyser-mt-gt-desc.nob.hfst etc.
 APERTIUM_ANALYSERS_GT_HFST+=\
 	$(addsuffix .hfst,$(addprefix analyser-mt-gt-desc.,$(TARGET_LANGS)))
 
 # Build list of apertium tagged files by replacing -gt- with -apertium-:
+# analyser-mt-gt-desc.nob.hfst => analyser-mt-apertium-desc.nob.hfst etc.
 APERTIUM_ANALYSERS_AP_HFST+=\
 	$(subst -gt-,-apertium-,$(APERTIUM_ANALYSERS_GT_HFST))
 
 # Build list of att.gz files by adding the suffix .att.gz to the basenames
 # of the filenames:
+# analyser-mt-apertium-desc.nob.hfst => analyser-mt-apertium-desc.nob.att.gz
 APERTIUM_ANALYSERS_ATTGZ+=\
 	$(addsuffix .att.gz,$(basename $(APERTIUM_ANALYSERS_AP_HFST)))
+
+# Build a list of Apertium style target filenames:
+# "sma smj nob" -> "sme-nob, etc":
+AP_PAIRS=$(addprefix sme-,$(TARGET_LANGS))
+# "sme-nob" -> "sme-nob.sme-nob":
+AP_EXPANDED_PAIRS=$(foreach pair,$(AP_PAIRS),$(addprefix $(pair).,$(pair)))
+# "sme-nob.sme-nob" -> "apertium-sme-nob.sme-nob":
+AP_PRE_EXP_PAIRS=$(addprefix apertium-,$(AP_EXPANDED_PAIRS))
+# "apertium-sme-nob.sme-nob" -> "apertium-sme-nob.sme-nob.LR.att.gz":
+APERTIUM_MORPH_PAIRS=$(addsuffix .LR.att.gz,$(AP_PRE_EXP_PAIRS))
+
+# Apertium style target filenames with stem variable % instead of target
+# language, used in pattern rule below:
+# "sme-nob" -> "sme-%.sme-nob":
+AP_EXPANDED_PAIRS_V=$(addprefix $(GTLANG)-%.,$(AP_PAIRS))
+# "sme-%.sme-nob" -> "apertium-sme-%.sme-nob":
+AP_PRE_EXP_PAIRS_V=$(addprefix apertium-,$(AP_EXPANDED_PAIRS_V))
+# "apertium-sme-%.sme-nob" -> "apertium-sme-%.sme-nob.LR.att.gz":
+APERTIUM_MORPH_PAIRS_V=$(addsuffix .LR.att.gz,$(AP_PRE_EXP_PAIRS_V))
 
 APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfst \
 						  generator-mt-apertium-norm.hfst \
 						  generator-mt-apertium-norm.att.gz
 
-APERTIUM_CG_BIN+=disambiguation-mt-apertium.bin \
-				 dependency-mt-apertium.bin \
-				 functions-mt-apertium.bin
+APERTIUM_CG_BIN+=sme.mor.rlx.bin \
+				 sme.syn.rlx.bin
+#				 sme.dep.rlx.bin
+
+# Apertium - GTDivvun filename correspondences:
+# apertium-sme-nob.sme-nob.LR.att.gz = analyser-mt-apertium-desc.nob.att.gz
+# sme.mor.rlx.bin = disambiguation-mt-apertium.bin
+# sme.syn.rlx.bin = functions-mt-apertium.bin
+# sme.dep.rlx.bin = dependency-mt-apertium.bin
 
 endif # WANT_APERTIUM
 
@@ -47,9 +76,9 @@ endif # WANT_APERTIUM
 if CAN_HFST
 hfstdatadir=$(datadir)/giella/$(GTLANG)
 noinst_DATA=$(APERTIUM_ANALYSER_HFST) \
-			$(APERTIUM_ANALYSERS_GT_HFST)
-hfstdata_DATA=$(APERTIUM_ANALYSERS_AP_HFST) \
-			  $(APERTIUM_ANALYSERS_ATTGZ) \
+			$(APERTIUM_ANALYSERS_GT_HFST) \
+			$(APERTIUM_ANALYSERS_AP_HFST)
+hfstdata_DATA=$(APERTIUM_MORPH_PAIRS) \
 			  $(APERTIUM_GENERATORS_HFST) \
 			  $(APERTIUM_CG_BIN)
 endif # CAN_HFST
@@ -227,6 +256,17 @@ disambiguation-mt-gt.cg3: \
 %-apertium.cg3: %-gt.cg3
 	$(AM_V_GEN)$(PYTHON) \
 		$(GTCORE)/scripts/cg-tag-convertor-for-apertium.py < $< > $@
+
+#### Copy to Apertium filenames
+$(APERTIUM_MORPH_PAIRS_V): \
+				analyser-mt-apertium-desc.%.att.gz
+	$(AM_V_CP)cp -f $< $@
+
+$(GTLANG).mor.rlx.bin: disambiguation-mt-apertium.bin
+	$(AM_V_CP)cp -f $< $@
+
+$(GTLANG).syn.rlx.bin: functions-mt-apertium.bin
+	$(AM_V_CP)cp -f $< $@
 
 #### HFST transducer fallback target:
 #### - inversion is needed FOR THE ANALYSER because the hfst model is upside

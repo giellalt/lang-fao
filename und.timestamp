@@ -1,4 +1,11 @@
-$Rev: 93938 $
+$Rev: 94002 $
+Added renaming to Apertium style filenames, changed installation file list to
+only include files actually used by Apertium. With this change, everything
+should be in place for a fully automatic integration between the GT-Divvun
+infrastructure and the Apertium infrastructure through the use of pkg-config
+files, with one exception: morphological generators.
+
+r93938:
 A rewritten pc file, with proper paths actually reflecting where things are
 installed, and with a shortened description to better fit the use of it.
 

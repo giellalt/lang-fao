@@ -10,6 +10,7 @@ APERTIUM_ANALYSERS_AP_HFST=
 APERTIUM_ANALYSERS_ATTGZ=
 
 APERTIUM_GENERATORS_HFST=
+APERTIUM_GENERATOR_ATTGZ=
 APERTIUM_CG_BIN=
 
 # The list of target languages are taken from configure.ac:
@@ -57,8 +58,9 @@ AP_PRE_EXP_PAIRS_V=$(addprefix apertium-,$(AP_EXPANDED_PAIRS_V))
 APERTIUM_MORPH_PAIRS_V=$(addsuffix .LR.att.gz,$(AP_PRE_EXP_PAIRS_V))
 
 APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfst \
-						  generator-mt-apertium-norm.hfst \
-						  generator-mt-apertium-norm.att.gz
+						  generator-mt-apertium-norm.hfst
+
+APERTIUM_GENERATOR_ATTGZ+=apertium-$(GTLANG).$(GTLANG).RL.att.gz
 
 APERTIUM_CG_BIN+=sme.mor.rlx.bin \
 				 sme.syn.rlx.bin
@@ -66,6 +68,7 @@ APERTIUM_CG_BIN+=sme.mor.rlx.bin \
 
 # Apertium - GTDivvun filename correspondences:
 # apertium-sme-nob.sme-nob.LR.att.gz = analyser-mt-apertium-desc.nob.att.gz
+# apertium-sme.sme.RL.att.gz = generator-mt-apertium-norm.att.gz
 # sme.mor.rlx.bin = disambiguation-mt-apertium.bin
 # sme.syn.rlx.bin = functions-mt-apertium.bin
 # sme.dep.rlx.bin = dependency-mt-apertium.bin
@@ -77,9 +80,10 @@ if CAN_HFST
 hfstdatadir=$(datadir)/giella/$(GTLANG)
 noinst_DATA=$(APERTIUM_ANALYSER_HFST) \
 			$(APERTIUM_ANALYSERS_GT_HFST) \
-			$(APERTIUM_ANALYSERS_AP_HFST)
+			$(APERTIUM_ANALYSERS_AP_HFST) \
+			$(APERTIUM_GENERATORS_HFST)
 hfstdata_DATA=$(APERTIUM_MORPH_PAIRS) \
-			  $(APERTIUM_GENERATORS_HFST) \
+			  $(APERTIUM_GENERATOR_ATTGZ) \
 			  $(APERTIUM_CG_BIN)
 endif # CAN_HFST
 
@@ -260,6 +264,9 @@ disambiguation-mt-gt.cg3: \
 #### Copy to Apertium filenames
 $(APERTIUM_MORPH_PAIRS_V): \
 				analyser-mt-apertium-desc.%.att.gz
+	$(AM_V_CP)cp -f $< $@
+
+apertium-$(GTLANG).$(GTLANG).RL.att.gz: generator-mt-apertium-norm.att.gz
 	$(AM_V_CP)cp -f $< $@
 
 $(GTLANG).mor.rlx.bin: disambiguation-mt-apertium.bin

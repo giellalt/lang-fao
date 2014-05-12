@@ -17,6 +17,7 @@ lemmas=./nouns.txt
 generatedlemmas=./gen-nouns
 failedlemmas=./fail-lemmas
 generatorfile=./../../../src/generator-gt-norm
+resultfile=lemma-gen-diff
 
 # FAIL if source file does not exist:
 if [ ! -f $sourcefile ]; then
@@ -63,14 +64,32 @@ for f in $fsttype; do
 	fi
 	if [ -f "$generatorfile.$f" ]; then
 		let "transducer_found += 1"
-		sed 's/$/+N+Sg+Nom/' $lemmas | \
-				$lookuptool $generatorfile.$f > $generatedlemmas.$f.txt
-		fgrep '?' $generatedlemmas.$f.txt > $failedlemmas.$f.txt
-		if [ $(wc -l $failedlemmas.$f.txt | tr -s ' ' | sed 's/^ //' \
-				| cut -d' ' -f1) -gt 0 ]; then
+
+###### Test non-comopunds: #######
+		# generate nouns in Singular, extract the resulting generated lemma,
+		# store it:
+		sed 's/$/+N+Sg+Nom/' $lemmas | $lookuptool $generatorfile.$f \
+			| cut -f2 | fgrep -v "+N+Sg" | grep -v "^$" | sort -u \
+			> $generatedlemmas.$f.txt 
+		# Generate nouns, extract those that do not generate in singular,
+		# generate the rest in plural:
+		sed 's/$/+N+Sg+Nom/' $lemmas | $lookuptool $generatorfile.$f \
+			| cut -f2 | grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Pl+Nom/' \
+			| $lookuptool $generatorfile.$f | cut -f2 \
+			| grep -v "^$" >> $generatedlemmas.$f.txt 
+
+###### Collect results: #######
+		# Sort and compare original input with resulting output - the diff is
+		# stored and opened in SEE:
+		sort -u -o $generatedlemmas.$f.txt $generatedlemmas.$f.txt 
+		comm -23 $lemmas $generatedlemmas.$f.txt > $resultfile.$f.txt
+
+		# if at least one word is found, the test failed, and the list of failed
+		# lemmas is opened in SubEthaEdit:
+		if [ -s $resultfile.$f.txt ]; then
 			# Only open the failed lemmas in see if @SEE@ is defined:
 			if [ "$EXTEDITOR" ]; then
-				$EXTEDITOR $failedlemmas.$f.txt
+				$EXTEDITOR $resultfile.$f.txt
 			fi
 		    Fail=1
 		    echo "$f - FAIL"
@@ -90,5 +109,5 @@ fi
 
 if [ $transducer_found -eq 0 ]; then
     echo ERROR: No transducer found
-    exit 1
+    exit 77
 fi

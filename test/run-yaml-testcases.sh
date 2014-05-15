@@ -65,13 +65,7 @@ fi
 testfiles=$(find $srcdir/$yaml_file_subdir -name "*_$transducer.$suffix")
 if test "$testfiles" == ""; then
     echo
-    echo "*** Warning: No YAML data files found in:"
-    echo "$srcdir/$yaml_file_subdir"
-    echo "*** Skipping test."
-    echo "*** Filenames covered by this test needs to end in:"
-    echo "***"
-    echo "*** _$transducer.$suffix"
-    echo
+    echo "** No YAML files matching: $srcdir/$yaml_file_subdir/*_$transducer.$suffix"
     exit 77
 fi
 

@@ -88,9 +88,15 @@ else
 fi
 
 function run_tests() {
+# --output terse/compact/normal - OR:
+# --silent
+outputformat="--silent"
+    if [ ! "$outputformat" == "--silent" ]; then
+       echo
+    fi
 	$runtests \
 		--colour \
-		--terse \
+		$outputformat \
 		--ignore-extra-analyses \
 		--section $section \
 	    --app $lookuptool \
@@ -100,12 +106,18 @@ function run_tests() {
 	# If the test failed, print instructions to rerun and get more details:
 	if [[ $? -gt 0 ]]; then
 	    let "Fail += 1"
-	    echo "To rerun with more details, please triple-click, copy and paste"
-	    echo "the following:"
+        printf "\033[1;31mFAIL\033[m\n"
+	    echo
+	    printf "To rerun with more details, please triple-click, copy and paste"
+	    echo " the following:"
 	    echo
 	    echo "pushd $(pwd); $runtests -c -i -v -S $section --app $lookuptool \
-	           $fstoptions $halftestoption $testfile; popd"
+$fstoptions $halftestoption $testfile; popd"
 	    echo
+	else
+	    if [ "$outputformat" == "--silent" ]; then
+	       printf "\033[0;32mPASS\033[m\n"
+	    fi
 	fi
 }
 
@@ -128,19 +140,19 @@ for f in $fsttype; do
 	# Check whether the actual fst's exist, run the tests if true, FAIL if not:
     if test "$halftest" == "ana" -a -f "$analyserfile.$f"; then
 		let "transducer_found += 1"
-		printf "$leadtext $testfileshort + $(basename $analyserfile.$f) - "
+		printf "$leadtext $(basename $analyserfile.$f) + $testfileshort - "
 		fstoptions="--morph $analyserfile.$f"
 		run_tests
 	elif test "$halftest" == "gen" -a -f "$generatorfile.$f"; then
 		let "transducer_found += 1"
-		printf "$leadtext $testfileshort + $(basename $generatorfile.$f) - "
+		printf "$leadtext $(basename $generatorfile.$f) + $testfileshort - "
 		fstoptions="--gen $generatorfile.$f"
 		run_tests
 	elif test "$halftest" == "full" \
 		-a -f "$analyserfile.$f"    \
 		-a -f "$generatorfile.$f"; then
 		let "transducer_found += 1"
-		printf "$leadtext $testfileshort + $(basename $analyserfile.$f) - "
+		printf "$leadtext $(basename $analyserfile.$f) + $testfileshort - "
 		fstoptions="--morph $analyserfile.$f --gen $generatorfile.$f"
 		run_tests
 	else

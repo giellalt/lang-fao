@@ -88,11 +88,13 @@ else
 fi
 
 function run_tests() {
-# --output terse/compact/normal - OR:
+# --output final/terse/compact/normal - OR:
 # --silent
-outputformat="--silent"
+outputformat="--output final"
     if [ ! "$outputformat" == "--silent" ]; then
-       echo
+        if [ ! "$outputformat" == "--output final" ]; then
+            echo
+        fi
     fi
 	$runtests \
 		--colour \
@@ -115,7 +117,8 @@ outputformat="--silent"
 $fstoptions $halftestoption $testfile; popd"
 	    echo
 	else
-	    if [ "$outputformat" == "--silent" ]; then
+	    if [ "$outputformat" == "--silent" \
+	      -o "$outputformat" == "--output final" ]; then
 	       printf "\033[0;32mPASS\033[m\n"
 	    fi
 	fi

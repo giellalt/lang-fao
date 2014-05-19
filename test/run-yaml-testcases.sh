@@ -37,6 +37,10 @@ transducer=$1
 yaml_file_subdir=$2
 halftest=$3
 Fail=0
+testtotalsfile=testtotals.tmp.txt
+
+# Remove summary file before we start:
+rm -f $testtotalsfile
 
 if test "x$yaml_file_subdir" = "x" ; then
     yaml_file_subdir=.
@@ -58,8 +62,14 @@ done
 if test "$halftest" == ""; then
     suffix="yaml"
     halftest="full"
+    summaryhalftext=""
 else
     suffix="$halftest.yaml"
+    if test "$halftest" == "ana"; then
+        summaryhalftext="analysing "
+    else
+        summaryhalftext="generating "
+    fi
 fi
 
 testfiles=$(find $srcdir/$yaml_file_subdir -name "*_$transducer.$suffix")
@@ -76,5 +86,25 @@ for file in ${srcdir}/$yaml_file_subdir/*_$transducer.$suffix; do
     leadtext=$(echo "YAML test $i: ")
 	source ./$relpath/run-morph-tester.sh $transducer $file $relpath $halftest $leadtext
 done
+
+totalpasses=$(cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f1 | tr '\n' ' ' \
+			 | sed 's/ / + /g' | sed 's/ + $//' | bc )
+totalfails=$( cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f2 | tr '\n' ' ' \
+			 | sed 's/ / + /g' | sed 's/ + $//' | bc )
+totaltotals=$(cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f3 | tr '\n' ' ' \
+			 | sed 's/ / + /g' | sed 's/ + $//' | bc )
+rm -f $testtotalsfile
+
+# red=\033[1;31m
+# green=\033[0;32m
+# orange=\033[0;33m
+# yellow=\033[1;33m
+# blue=\033[0;34m
+# light_blue=\033[0;36m
+# reset=\033[m
+printf "SUMMARY for the \033[0;33m$summaryhalftext$transducer\033[m fst(s): "
+printf "\033[0;32mPASSES: $totalpasses\033[m / "
+printf "\033[1;31mFAILS: $totalfails\033[m / "
+printf "\033[0;34mTOTAL:  $totaltotals\033[m\n\n"
 
 source $srcdir/$relpath/error-handling-stubs.sh

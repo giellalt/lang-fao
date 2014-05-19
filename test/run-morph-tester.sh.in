@@ -104,9 +104,11 @@ outputformat="--output final"
 	    --app $lookuptool \
 	    $fstoptions \
 	    $halftestoption \
-	    $testfile
+	    $testfile | tee -a testtotals.tmp.txt
+	exitv=$( echo ${PIPESTATUS[0]} )
+
 	# If the test failed, print instructions to rerun and get more details:
-	if [[ $? -gt 0 ]]; then
+	if [[ $exitv -gt 0 ]]; then
 	    let "Fail += 1"
         printf "\033[1;31mFAIL\033[m\n"
 	    echo

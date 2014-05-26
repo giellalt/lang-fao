@@ -1,4 +1,12 @@
-$Rev: 94398 $
+$Rev: 94834 $
+Extracting flag diacritics, to build regexes that can ignore them in certain
+cases (like optional initial upper case). Requires new version of the gtd core.
+At the same time split tag extraction in two - the first step extracts the whole
+sigma set, and from that we can extract tags, flag diacritics, etc. The sigma
+set extraction was greatly improved, removing a number of small errors due to
+handling of reserved symbols in Hfst and Xfst.
+
+r94398:
 Added test summary for all yaml tests for a given fst.
 
 r94272:

@@ -2,14 +2,13 @@
 # or any later version.
 
 # ==================================================================== #
-#!!    S Y N T A C T I C   F U N C T I O N S   F O R   S Á M I
+#!!  S Y N T A C T I C   F U N C T I O N S   F O R   F A R O E S E
 # ==================================================================== #
 # ==================================================================== 
 
 #!!  Sámi language technology project 2003-2014, University of Tromsø # 
 
-#!! This file adds syntactic functions. It is common for all the Saami
-##! languages, so far for sma, sme, smj.
+#!! This file adds syntactic functions. It was copied from sme.
 
 # ========== #
 # Delimiters #
@@ -23,980 +22,1098 @@ DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
 # Tags and sets #
 # ============= #
 
-SETS
 
-# I define end of clause and beginning of clause in a way so that the file
-# may be read both by the CG-2 and the vislcg formalisms.
+# ========
+   SETS
+# ========
 
-LIST BOS = (>>>) (<s>);
-LIST EOS = (<<<) (</s>);
-
-# CG3 doesn´t function without >>> and <<< !
-
-# Tags declared as single-membered LISTs 
-# ======================================
-
-# Parts of speech
-# ---------------
+LIST BOS = (>>>) (<s>); 
+LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
 
 LIST N = N ;
-LIST A = A ;
-LIST Adv = Adv ;
 LIST V = V ;
-LIST Pron = Pron ;
-
-LIST CS = CS ;
-LIST CC = CC ;
-SET CC-CS = CC OR CS ;
-LIST Po = Po ;
-LIST Pr = Pr ;
-LIST Pcle = Pcle ;
-LIST Num = Num ;
-LIST Interj = Interj ;
-LIST ABBR = ABBR ;
-LIST ACR = ACR ;
-
-LIST CLB = CLB ;
-LIST LEFT = LEFT ;
-LIST RIGHT = RIGHT ;
-LIST WEB = WEB ;
-LIST QMARK = """ ; # ADD " FOR SYNTAX COLOURING.
-LIST PPUNCT = PUNCT ;
-SET PUNCT = PPUNCT - QMARK ;
-
-LIST COMMA = "," ;
-LIST ¶ = ¶;
-
-#LIST V* = V* ;
-
-#!! * Sets for POS sub-categories
-# ------------------
-
-LIST Pers = Pers ;
-LIST Dem = Dem ;
-LIST Interr = Interr ;
-LIST Indef = Indef ;
-
-LIST Recipr = Recipr ;
-LIST Refl = Refl ;
-LIST Rel = Rel ;
- 
-#LIST Adp = Adp ;
-
-LIST Coll = Coll ;
-LIST NomAg = NomAg ;
-LIST G3 = G3 ;
+LIST A = A ;
+LIST A* = A* ;
 LIST Prop = Prop ;
-
-#!! * Sets for Semantic tags
-# -------------
-
-LIST Sem/Ani = Sem/Ani ;
-LIST Sem/Date = Sem/Date ;
-LIST Sem/Fem = Sem/Fem ;
-LIST Sem/Group = Sem/Group ;
-LIST Sem/Hum = Sem/Hum ;
-LIST Sem/Mal = Sem/Mal ;
-LIST Sem/Measr = Sem/Measr ;
-LIST Sem/Money = Sem/Money ;
-LIST Sem/Obj = Sem/Obj ;
-LIST Sem/Org = Sem/Org ;
-LIST Sem/Plc = Sem/Plc ;
-LIST Sem/Sur = Sem/Sur ;
-LIST Sem/Time = Sem/Time ;
-LIST Sem/Year = Sem/Year ;
-SET FIRSTNAME = (Prop Sem/Fem) OR (Prop Sem/Mal) ;
-
-LIST TIME-N-SET = (N Sem/Time) ;
-LIST NOT-TIME = "dulvi" "lohpi" "vuorru" ;
-SET TIME-N = TIME-N-SET - NOT-TIME ;
-
-
-LIST HUMAN = Sem/Hum Sem/Mal Sem/Fem Sem/Sur Pers NumAg Der/NumAg ;
-
-#!! * Sets for Morphosyntactic properties
-# --------------------------
+LIST Adv = Adv ;
+LIST Num = Num ;
+LIST CC = CC ;
+LIST CS = CS ;
+LIST Interj = Interj ;
+LIST Abbr = Abbr ;
+LIST ACR = ACR ;
+LIST Pr = Pr ;
+LIST Pron = Pron ;
+LIST Pers = Pers ;
+LIST Det = Det ;
+LIST Dem = Dem ;
+LIST Refl = Refl ;
+LIST Recipr = Recipr ;
+LIST Poss = Poss ;
+LIST Interr = Interr ;
+LIST IM = IM ;
 
 LIST Nom = Nom ;
 LIST Acc = Acc ;
 LIST Gen = Gen ;
-LIST Ill = Ill ;
-LIST Loc = Loc ;
-LIST Com = Com ;
-LIST Ess = Ess ;
-LIST Ine = Ine ;
-LIST Ela = Ela ;
-
-LIST LOC = Loc Ine Ela ;
-
+LIST Dat = Dat ;
+LIST Msc = Msc ;
+LIST Fem = Fem ;
+LIST Neu = Neu ;
 LIST Sg = Sg ;
-LIST Du = Du ;
 LIST Pl = Pl ;
-
-LIST RCmpnd = RCmpnd ;
-
-LIST Cmpnd = Cmpnd ;
- 
-LIST SgNomCmp = SgNomCmp ;
- 
-LIST SgGenCmp = SgGenCmp ;
-
-LIST ShCmp = ShCmp ;
-
-LIST PxSg1 = PxSg1 ;
-LIST PxSg2 = PxSg2 ;
-LIST PxSg3 = PxSg3 ;
- 
-LIST PxDu1 = PxDu1 ;
-LIST PxDu2 = PxDu2 ;
-LIST PxDu3 = PxDu3 ;
- 
-LIST PxPl1 = PxPl1 ;
-LIST PxPl2 = PxPl2 ;
-LIST PxPl3 = PxPl3 ;
-
-LIST Comp = Comp ;
+LIST Def = Def ;
+LIST Indef = Indef ;
+LIST Cmp = Cmp ;
 LIST Superl = Superl ;
-
-LIST Attr = Attr ;
-LIST Ord = Ord ;
- 
-LIST Qst = Qst ;
- 
-# The ("ge" Pcle) etc. are used in Apertium
-LIST Foc/ge = Foc/ge ("ge" Pcle) ;
-LIST Foc/gen = Foc/gen ("gen" Pcle) ;
-LIST Foc/ges = Foc/ges ("ges" Pcle) ;
-LIST Foc/gis = Foc/gis ("gis" Pcle) ;
-LIST Foc/naj = Foc/naj ("naj" Pcle) ;
-LIST Foc/ba = Foc/ba ("ba" Pcle) ;
-LIST Foc/be = Foc/be ("be" Pcle) ;
-LIST Foc/hal = Foc/hal ("hal" Pcle) ;
-LIST Foc/han = Foc/han ("han" Pcle) ;
-LIST Foc/bat = Foc/bat ("bat" Pcle) ;
-LIST Foc/son = Foc/son ("son" Pcle) ;
-
-LIST IV = IV ;
-LIST TV = TV ;
-
-LIST Der/Pass = Der/PassL Der/PassS ;
-
-LIST Prt = Prt;
 LIST Prs = Prs ;
- 
-
-LIST Ind = Ind ;
-LIST Pot = Pot ;
-LIST Cond = Cond ;
-
-LIST Imprt = Imprt ;
-LIST ImprtII = ImprtII ;
-
-LIST Sg1 = Sg1 ;
-LIST Sg2 = Sg2 ;
-LIST Sg3 = Sg3 ;
-
-LIST Du1 = Du1 ;
-LIST Du2 = Du2 ;
-LIST Du3 = Du3 ;
-
-LIST Pl1 = Pl1 ;
-LIST Pl2 = Pl2 ;
-LIST Pl3 = Pl3 ;
-
+LIST Prt = Prt ;
+LIST 1Sg = 1Sg ;
+LIST 2Sg = 2Sg ;
+LIST 3Sg = 3Sg ;
 LIST Inf = Inf ;
-LIST ConNeg = ConNeg ;
-LIST Neg = Neg ;
-
 LIST PrfPrc = PrfPrc ;
-LIST VGen = VGen ;
-
 LIST PrsPrc = PrsPrc ;
- 
-
-LIST Ger = Ger ;
+LIST Ind = Ind ;
+LIST Imp = Imp ;
+LIST Sbj = Sbj ;
 LIST Sup = Sup ;
-LIST Actio = Actio ;
+LIST Cmpnd = Cmpnd ;
+LIST CLB = CLB ;
+LIST PUNCT = PUNCT ;
+LIST LEFT = LEFT ;
+LIST RIGHT = RIGHT ;
+LIST Guess = Guess ;
 
-LIST Der/PassL = Der/PassL ;
-LIST Der/NomAg = Der/NomAg ;
-LIST Actor = NomAg Der/NomAg ;
-LIST VAbess = VAbess ;
-
-# Derivation
-# ----------
-
-LIST Der/adda = Der/adda ;
-LIST Der/ahtti = Der/ahtti ;
-LIST Der/alla = Der/alla ;
-LIST Der/asti = Der/asti ;
-LIST Der/easti = Der/easti ;
-LIST Der/d = Der/d ;
-LIST Der/NomAct = Der/NomAct ;
-LIST Der/eamoš = Der/eamoš ;
-LIST Der/amoš = Der/amoš ;
-LIST Der/eapmi = Der/eapmi ;
-LIST Der/geahtes = Der/geahtes ;
-LIST Der/gielat = Der/gielat ;
-LIST !better: = !better: ;
-LIST Der/NuA = Der/NuA ;
-
-LIST Der/h = Der/h ;
-LIST Der/heapmi = Der/heapmi ;
-LIST Der/hudda = Der/hudda ;
-LIST Der/huhtti = Der/huhtti ;
-LIST Der/huvva = Der/huvva ;
-LIST Der/halla = Der/halla ;
-LIST Der/j = Der/j ;
-LIST Der/l = Der/l ;
-LIST Der/laš = Der/laš ;
-LIST Der/las = Der/las ;
-LIST Der/hat = Der/hat ;
-
-LIST Der/meahttun = Der/meahttun ;
-LIST Der/muš = Der/muš ;
-LIST Der/n = Der/n ;
-LIST Der/st = Der/st ;
-LIST Der/stuvva = Der/stuvva ;
-LIST Der/upmi = Der/upmi ;
-LIST Der/supmi = Der/supmi ;
-LIST Der/vuohta = Der/vuohta ;
-LIST Der/goahti = Der/goahti ;
-
-LIST Der/lágan = Der/lágan ;
-LIST Der/lágán = Der/lágán ;
-LIST Der/lágaš = Der/lágaš ;
-LIST Der/jagáš = Der/jagáš ;
-LIST Der/jahkásaš = Der/jahkásaš ;
-LIST Der/diibmosaš = Der/diibmosaš ;
-
-LIST Der/Dimin = Der/Dimin ;
-LIST Der/viđá = Der/viđá ;
-LIST Der/viđi = Der/viđi ;
-LIST Der/veara = Der/veara ;
-LIST Der/duohke = Der/duohke ;
-LIST Der/duohkai = Der/duohkai ;
-LIST Der/vuolle = Der/vuolle ;
-LIST Der/vuollai = Der/vuollai ;
-LIST Der/vuolde = Der/vuolde ;
-
-# Syntactic tags
-# --------------
-
-LIST @+FAUXV = @+FAUXV ;
-LIST @+FMAINV = @+FMAINV ;
-LIST @-FAUXV = @-FAUXV ;
- 
-LIST @-FMAINV = @-FMAINV ;
-LIST @-FSUBJ> = @-FSUBJ> ;
-LIST @-F<OBJ = @-F<OBJ ;
-LIST @-FOBJ> = @-FOBJ> ;
-LIST @SPRED<OBJ = @SPRED<OBJ ;
-LIST @-FADVL = @-FADVL ;
-
-SET FOBJ = @-F<OBJ OR @-FOBJ> ; 
-SET FMAINV = @-FMAINV OR @+FMAINV OR (V @<OBJ) OR (V @N<) OR (V @A<) OR (V @<SUBJ) OR (V @<ADVL) ;
-SET FAUXV = @-FAUXV OR @+FAUXV ;
-
-LIST @ADVL = @ADVL @ADVL> @ADVL< @<ADVL @>ADVL @-F<ADVL ;
-LIST @>ADVL = @>ADVL ;
-LIST @ADVL< = @ADVL< ;
-LIST @<ADVL = @<ADVL ;
-LIST @ADVL> = @ADVL> ;
-LIST @ADVL>CS = @ADVL>CS ;
-
-LIST <hab> = <hab> ;
-LIST <ext> = <ext> ;
-
- 
-LIST HAB-V-TAGS = Pl3 Sg3 ConNeg PrfPrc Inf ;
- 
-LIST @>N = @>N ;
-
-LIST @N< = @N< ;
- 
-
-LIST @>A = @>A ;
-
-LIST @P< = @P< ;
-
-LIST @>P = @>P ;
-
-LIST @HNOUN = @HNOUN ;
-LIST @INTERJ = @INTERJ ;
- 
-LIST @>Num = @>Num;
-
-LIST @Pron< = @Pron< ;
-LIST @>Pron = @>Pron ;
-
-LIST @Num< = @Num< ;
-
-LIST @OBJ = @OBJ ;
-LIST @<OBJ = @<OBJ ;
-LIST @OBJ> = @OBJ> ;
-LIST @OPRED = @OPRED ;
-LIST @<OPRED = @<OPRED ;
-LIST @OPRED> = @OPRED> ;
-LIST @PCLE = @PCLE ;
-LIST @COMP-CS< = @COMP-CS< ;
- 
-LIST @SPRED = @SPRED ;
-LIST @<SPRED = @<SPRED ;
-LIST @SPRED> = @SPRED> ;
-LIST @SUBJ = @SUBJ ;
-LIST @<SUBJ = @<SUBJ ;
-LIST @SUBJ> = @SUBJ> ;
-SET SUBJ = @<SUBJ OR @SUBJ> OR @SUBJ ;
-SET SPRED = @<SPRED OR @SPRED> OR @SPRED ;
-SET OPRED = @<OPRED OR @OPRED> OR @OPRED ;
-
-LIST @PPRED = @PPRED ;
- 
-LIST @APP = @APP ;
-LIST @APP-N< = @APP-N< ;
-LIST @APP-Pron< = @APP-Pron< ;
-LIST @APP>Pron = @APP>Pron ;
-LIST @APP-Num< = @APP-Num< ;
-LIST @APP-ADVL< = @APP-ADVL< ;
-LIST @VOC = @VOC ;
-
-LIST @CVP = @CVP ;
-LIST @CNP = @CNP ;
-
-SET OBJ = (@<OBJ) OR (@OBJ>) OR (@OBJ) OR (@-F<OBJ) OR (@-FOBJ>) ;
-LIST <OBJ = @-F<OBJ @<OBJ ;
-LIST OBJ> = @OBJ> @-FOBJ> ;
-
-SET <OBJ-OTHERS = <OBJ OR (Gen) OR (Nom) OR (Ess) OR (Loc) OR (Adv) OR (Ine) OR (Ela) ;
-SET OBJ>-OTHERS = OBJ> OR (Gen) OR (Nom) OR (Ess) OR (Loc) OR (Adv) OR (Ine) OR (Ela) ;
-
-SET SYN-V = V + SUBJ OR OBJ + V OR @ADVL + V OR (V @N<) OR (V @A<) OR V + SPRED OR (V @COMP-CS<) ;
+LIST Sem/Fem = Sem/Fem ;
+LIST Sem/Mal = Sem/Mal ;
+LIST Sem/Plc = Sem/Plc ;
+LIST Sem/Sur = Sem/Sur ;
+LIST Sem/Org = Sem/Org ;
+LIST Sem/Veh = Sem/Veh ;
 
 
-LIST @X = @X ;
+LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
+Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
+PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Sem/Fem Sem/Mal Sem/Plc Sem/Sur Sem/Org Sem/Veh Guess ;
 
 
-LIST OKTA = "akta" "okta";
-LIST go = "go" ;
- 
-
-# Initials
-# --------
-
-LIST INITIAL = "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m"
-        "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
-        "á" "æ" "ø" "å" "ö" "ä" ;
-
-LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
-        "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"
-        "Á" "Æ" "Ø" "Å" "Ö" "Ä" ;
-
-# Tag sets
-# ========
-  SETS
-# ========
+LIST NAGD = Nom Acc Gen Dat ;
+LIST AGD = Acc Gen Dat ;
+LIST GENDER = Msc Fem Neu ;
+LIST NUMBER = Sg Pl ;
+SET NAGDNUMBERGENDER = (Msc Sg Nom) OR (Msc Sg Acc) OR (Msc Sg Gen) OR (Msc Sg Dat) OR (Msc Pl Nom) OR (Msc Pl Acc) OR (Msc Pl Gen) OR (Msc Pl Dat) OR (Fem Sg Nom) OR (Fem Sg Acc) OR (Fem Sg Gen) OR (Fem Sg Dat) OR (Fem Pl Nom) OR (Fem Pl Acc) OR (Fem Pl Gen) OR (Fem Pl Dat) OR (Neu Sg Nom) OR (Neu Sg Acc) OR (Neu Sg Gen) OR (Neu Sg Dat) OR (Neu Pl Nom) OR (Neu Pl Acc) OR (Neu Pl Gen) OR (Neu Pl Dat) ;
 
 
-# Word or not
-# -----------
-LIST WORD = N A Adv V Pron CS CC Po Pr Interj Pcle Num ABBR ACR  \? ;
- # any word
+# Sets
+# ====
 
-SET REALWORD = WORD - Num - Ord ;
+SET WORD = N | V | A | Pr | Pron | Det | Adv | CC | CS | Interj | Num | ("\?") ;
 
-SET REALWORD-NOTABBR = WORD - Num - Ord - ABBR ;
 
-SET WORD-NOTDE = WORD - ("de") ; 
+# Noun sets
+
+
+SET NounMscFem = (N Msc) OR (N Fem) ;
+SET NounMscNeu = (N Msc) OR (N Neu) ;
+SET NounFemNeu = (N Fem) OR (N Neu) ;
+
+SET MscFem = Msc OR Fem ;
+SET MscNeu = Msc OR Neu ;
+SET FemNeu = Fem OR Neu ;
+
+LIST 3PERS = "hann" "hon" "tað" ;
+
+# Adjective sets
+
+SET REALADJ = A OR A* ;
+
+
+# Nominal sets
+
+LIST NOMINALHEAD = N Num Pers Refl Recipr "Pron Interr" "Pron Indef" ;
+
+LIST NorA = N A ;
+
+LIST PRENAGR = Det A ;
+
+LIST MIDJA = "miðja" ; # in the middle of - construction. More N in here, also bottle constr.
+
+SET NOT-ACC = TAG - Acc ;
+
 
 # Verb sets
-# ---------
 
-# Verbs and their complements
-# - - - - - - - - - - - - - -
+LIST COPULA = "vera" "verða" ;
 
-SET NOT-VERB = WORD - V ;
+LIST HAVA = "hava" ;
 
-# Finiteness and mood
-# - - - - - - - - - -
+LIST MODV = "kunna" "láta" "skula" "vilja" "munna" "mega" ;
 
-SET V-IND-FIN = Prs OR Prt ;
- # Problem: "In boahtán" is an invisible indicative
+SET AUX = COPULA OR HAVA OR MODV ;
 
-SET V-MOOD = Ind OR Pot OR Imprt OR ImprtII OR Cond OR (Neg Sup) ;
+LIST VFIN = Prs Prt Imp Sbj ;
+LIST INDSBJ = Ind Sbj ;
+#LIST Ind = Prs Prt ;
 
-LIST GC = ("gč") ;
+LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
 
-SET VFIN = GC OR V-MOOD - ConNeg ;
+LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
 
-SET VFIN-POS = V-MOOD - ConNeg - Neg ;
 
-SET VFIN-NOT-IMP = VFIN - Imprt ;
-
-SET VFIN-NOT-NEG = VFIN - Neg ;
-  # this might be to strict, besides, "iige" can be written "ii ge"
-
-SET NOT-PRFPRC = WORD - PrfPrc ;
-
-# Person
-# - - - - 
-
-LIST V-SG1 = (V Sg1)  ;
+LIST DATV = "bjóða" "hýsa" "sleppa" "smakka" "takka" ; # "undirvísa" 
+ # sleppa3 = sleppa manninum leysum
  
-LIST V-SG2 = (V Sg2) ;
- 
-LIST V-SG3 = (V Sg3) ;
- 
-LIST V-DU1 = (V Du1) ;
- 
-LIST V-DU2 = (V Du2) ;
- 
-LIST V-DU3 = (V Du3) ;
- 
-LIST V-PL1 = (V Pl1) ;
- 
-LIST V-PL2 = (V Pl2) ;
- 
-LIST V-PL3 = (V Pl3) ;
+LIST DATPREPV = "liggja" "vera" "standa" "fiska" "vera"; # use only ACCPREPV
+LIST ACCPREPV = "leggja" "fara" "renda" "koma" "liða" "seta" ;
 
- 
-
- # Note that imperative verbs are not included in these sets!
-
-# Some subsets of the VFIN sets
-# - - - - - - - - - - - - - - -
-SET V-SG = V-SG1 OR V-SG2 OR V-SG3 ;
-SET V-DU = V-DU1 OR V-DU2 OR V-DU3 ;
-SET V-PL = V-PL1 OR V-PL2 OR V-PL3 ;
-
-SET V-DU-PL = V-DU1 OR V-DU2 OR V-DU3 OR V-PL1 OR V-PL2 OR V-PL3 ;
-
-SET V-NOT-SG1 = VFIN-NOT-IMP - V-SG1 ;
-SET V-NOT-SG2 = VFIN-NOT-IMP - V-SG2 ;
-SET V-NOT-SG3 = VFIN-NOT-IMP - V-SG3 ;
-SET V-NOT-DU1 = VFIN-NOT-IMP - V-DU1 ;
-SET V-NOT-DU2 = VFIN-NOT-IMP - V-DU2 ;
-SET V-NOT-DU3 = VFIN-NOT-IMP - V-DU3 ;
-SET V-NOT-PL1 = VFIN-NOT-IMP - V-PL1 ;
-SET V-NOT-PL2 = VFIN-NOT-IMP - V-PL2 ;
-SET V-NOT-PL3 = VFIN-NOT-IMP - V-PL3 ;
-
-
-SET V-1-2 = V-SG1 OR V-SG2 OR V-DU1 OR V-DU2 OR V-PL1 OR V-PL2 ;
-SET V-3  = V-SG3 OR V-DU3 OR V-PL3 ;
-
-# Sets consisting of LEAT
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-LIST LEAT = "leat" "liehket" "lea" ;
-
-SET LEAT-FIN-NOT-IMP = LEAT - Imprt;
- 
-LIST VPRFPRC = (V PrfPrc) ;
-LIST LEATPRFPRC = ("leat" PrfPrc) ("liehket" PrfPrc) ("lea" PrfPrc) ;
-SET PRC-NOT-LEAT = VPRFPRC - LEATPRFPRC ;
-    # In order to distinguish between real leat-constructions and participles of other verbs
-LIST HABEO-SG3 = ("leat" Sg3) (V Neg Sg3) ("šaddat" Sg3) ("sjaddat" Sg3) ("liehket" Sg3) ("lea" Sg3) ;
-
-LIST HABEO-PL3 = ("leat" Pl3) (V Neg Pl3) ("šaddat" Pl3)  ("sjaddat" Pl3) ("liehket" Pl3) ("lea" Pl3)  ;
+LIST OBJPREDVERB = "kalla" "doypa" "nevna" "taka"  ;
 
-SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
-
-# Pronoun sets
-# ------------
+LIST MOVEMENTVERB = "koma" "koyra" ;
 
-LIST MUN = (Pron Pers Sg1 Nom);
-LIST DON = (Pron Pers Sg2 Nom);
-LIST SON = ("son" Pron Pers Sg3 Nom);
-LIST MOAI = (Pron Pers Du1 Nom);
-LIST DOAI = (Pron Pers Du2 Nom);
-LIST SOAI = (Pron Pers Du3 Nom);
-LIST MII-PERS = (Pron Pers Pl1 Nom);
-LIST DII = (Pron Pers Pl2 Nom);
-LIST SII = ("son" Pron Pers Pl3 Nom);
-
-SET PPRON-NOM-NOT-DAT = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
-
-SET PPRON-NOT-DAT = (Pron Pers) - ("dat") ;
-
-SET PPRON-DU-PL = MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
-SET PPRON-PL = MII-PERS OR DII OR SII ;
-
-SET PRON-DU = MOAI OR DOAI OR SOAI ;
+SET TV = V - COPULA - MODV ;
 
-SET PPRON-NOT-SII = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII ;
+# Noun-Verb sets
 
-LIST PPRON-GEN = (Sg1 Gen) (Sg2 Gen) (Sg3 Gen) (Du1 Gen) (Du2 Gen) (Du3 Gen) 
-	(Pl1 Gen) (Pl2 Gen) (Pl3 Gen);
+LIST THIRDSG = Sg 3Sg ;
+LIST THIRDPL = Sg 3Pl ;
+LIST THIRD = Sg 3Sg Pl 3Pl ;
 
-SET PPRON-NOT-GEN = (Pron Pers) - PPRON-GEN ;
+# Number sets
 
-LIST DEM-SG = (Pron Dem Sg Nom);
-LIST DEM-PL = (Pron Dem Pl Nom);
-SET NOT-DEM = WORD - Dem ;
+SET NUMBERS = Num - ("eitt") - ("1") ;
 
-LIST SGPRON = (Pron Sg1) (Pron Sg2) (Pron Sg3) (Pron Sg) (Pron PxSg1) (Pron PxSg2) (Pron PxSg3);
-LIST DUPRON = (Pron Du1) (Pron Du2) (Pron Du3)  (Pron PxDu1) (Pron PxDu2) (Pron PxDu3);
-LIST PLPRON = (Pron Pl1) (Pron Pl2) (Pron Pl3) (Pron Pl) (Pron PxPl1) (Pron PxPl2) (Pron PxPl3);
-LIST DUPRON-NOTPX = (Pron Du1) (Pron Du2) (Pron Du3) ;
+# Preposition sets
 
-SET PRON-NOT-SG = DUPRON OR PLPRON ;
+LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum" "íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin" "hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin" "vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "sum" "vestan" ;
 
-LIST DAT-PRON = ("dat") ("dát") ("diet") ("duot") ("dot") ;
+LIST DATPREP = "hjá" "með" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "frá" "mótvegis" "nær" "sambært" "viðvíkjandi" "úr" ; # úr?
 
-LIST QUANT-PRON = "ollu" "olu" "unnán" "váháš" "veaháš" "veháš" ;
-# This set is for choosing between Adv and Pron Indef.
+LIST ACCDATPREP = "í" "á" "undir" "yvir" "eftir" "fyri" "við" ;
 
-# Adjectival sets and their complements
-# -------------------------------------
+LIST ACCGENPREP = "innan" "uttan" "millum" "til" "vegna" ;
 
-SET NOT-A = WORD - A ;
-SET NOT-A-COMMA = WORD - A - COMMA ;
-SET NOT-Attr = WORD - Attr ;
-SET NOT-A-PCLE = WORD - A - Pcle ;
+LIST ACCDATGENPREP = "at" "av" "hjá" "móti" "um" "undan" "úr" ;
 
-SET NOT-A-ADV = WORD - A - Adv OR ("maid") ;
 
-LIST NOMINAL-ADJ = "guoktilaš" "lámis" "oasálaš" ("suddu" Der/laš) "viissis";
- 
- # and many others
- 
-# Adverbial sets and their complements
-# ------------------------------------
-SET LEX-ADV = Adv - (A*) ;
+SET SOMEACCPREP = ACCPREP | ACCDATPREP | ACCGENPREP | ACCDATGENPREP ;
 
-SET NOT-ADV-DE            = WORD - Adv ;
-SET NOT-ADV            = NOT-ADV-DE OR ("de" Adv) OR CLB ;
-SET NOT-ADV-N          = NOT-ADV - N;
-SET NOT-ADV-PCLE       = NOT-ADV - Pcle ;
-SET NOT-ADV-INDEF      = NOT-ADV - Indef ;
-SET NOT-ADV-PCLE-ILL   = WORD - Adv - Pcle - Ill ;
-SET NOT-ADV-PCLE-Refl  = WORD - Adv - Pcle - Refl ;
-SET NOT-ADV-PCLE-INDEF = WORD - Adv - Pcle - Indef ;
-SET NOT-ADV-PCLE-NEG   = WORD - Adv - Pcle - Neg ;
-SET NOT-ADVL-PCLE-NEG  = WORD - @ADVL - @P< - Pcle - Neg ;
+SET SOMEDATPREP = DATPREP | ACCDATPREP | ACCDATGENPREP ;
 
+SET SOMEGENPREP = ACCGENPREP | ACCDATGENPREP ;
 
-LIST MO-MANge = "goas" "gokko" "gos" "gosa" "govt" "makkár" "man" "manne" ("manin" Adv) "mo" "mot" "mov" "movt" ("nugo" @CVP) (V Qst);
- 
-SET MO = MO-MANge - ("man" Foc/ge) ; 
- 
- # Introduce finite clauses.
- 
-LIST PLACE-ADV =  "davá#bealde" "mátta#bealde" "nuortta#bealde" "oarje#bealde" "olggo#beale" ;
-# There will usually be a Gen in front. 
+SET SOMEACCDATPREP = ACCDATPREP | ACCDATGENPREP ;
 
-LIST TIME-ADVL = "dalle" "diibmá" "dolin" "dovle" "duvle" "eske" "gieskat" "ikte" "ovdal" ("ovdditbeaivi" Gen) ("vássánáigi" Loc) ("boaresáigi" Gen) "dál" "ihttin" "odne" "otne" ("boahtteáigi" Loc) ("boahtteáigi" Gen)  ;
+# Boundary sets
 
-LIST TIME-ADV = (Adv Sem/Time) ;
+SET S-BOUNDARY = CS | Interr | (";") | (":") | BOS | EOS ;
+SET S-BOUNDARY2 = CS | Interr | (";") | (":") | BOS | EOS | (@CVP) ;
 
+# Complementary set
 
-LIST DOPPE = "badjin" "bajil" "dakko" "dá" "dákko" "dáppe" "diekko" "dieppe" "do" "dokko" "doppe" "duo" "duokko" "duoppe" "olgun" ;
-# Adverbs with a locativic form, but don´t get Loc as a tag. 
 
-LIST DOHKO = "bajás" "deike" "diehke" "diehko" "dohko" "duohko" "lulás" "olggos" "ruoktot" "sisa" "vuovdimassii" ;
-# Adverbs with a illativic form, but they don´t get Ill as a tag.
 
+# Case sets
 
-# Coordinators
-# ------------
-SET Foc = Foc/ge  OR Foc/gen  OR Foc/ges  OR Foc/gis  OR Foc/naj OR Foc/ba  OR Foc/be  OR Foc/hal  OR Foc/han  OR Foc/bat OR Foc/son ;
+# Some case, but not...
+SET NOTNOM = Dat | Gen | Acc ;
+SET NOTDAT = Nom | Gen | Acc ;
+SET NOTACC = Nom | Gen | Dat ;
+SET NOTACCDAT = Nom | Gen ;
+SET OBL = Acc | Dat | Gen ;
 
-LIST NEGFOC = (Neg Foc/ge) ;
+# Anything but the following case...
+SET NOACC = WORD - Acc ;
+SET NODAT = WORD - Dat ;
+SET NOACCDAT = WORD - Acc - Dat ;
 
-LIST XGO = "dego" "dugo" "nugo" "seammaládjego" "seammaláhkaigo" ;
-  # Compounds
-LIST SEAMMAX = "seamma#ládje" "seamma#láhkai" "seamma#láhkái" ;
-  # Those combine with go
-  
-LIST MADE = "mađe" "mađi" ;
-LIST DADE = "dađe" "dađi" ; 
-  
- 
-SET CRD = @CNP OR COMMA OR NEGFOC OR XGO OR ("/") OR ("-") OR DADE ;
-    # AFTER LCRD vs. GCRD disambiguation
-    
 
-LIST ADV-AFTER-NUM = "geardde" ;
+#SET NO
 
-LIST DUSSE = "áibbas" "dušše" "erenoamážit" "goitge" "man" "measta" "meastui" "oalle" "oba" "oktiibuot" "oppa" "sullii" ;
+SET PRE-N =  A | Det | (N Gen) | Num | (Pron Gen) | CC ; # Det???
 
-LIST GRADE-ADV =  "áibbas" "beare" ("eanet" Adv) "erenoamán" "erenoamáš" "hirbmat" "hui" "ila" "issoras" ("man" Adv) ("mealgat" Adv) "measta" "menddo" "muđui" "muhtun_muddui" "nu" "oalle" "oba" ("oppa" Adv) "sakka" "seammá" ("veaháš" Adv) ("uhccán" Adv) ("unnán" Adv) "vehá" "veháš" "veahá" "veaháš" "viehka" ;
 
-LIST BUOT = "buot" "gait" "gaitin" "gaitdivnnat" "visot" ;
-
-
-LIST EASKKA = "easkka" ("easka" Adv) ; 
-
-LIST ADV-NOT-ARG = "aiddo" "ain" "aivve" "albma" "aŋkke" "álggos" "bái#fáhkka" "beanta" "beare" ;
-
-
-
-LIST ADV-NOT-VERB = "dušše" "viimmat" ;
-
-LIST ADV-NOT-NOUN = "easka" "várra" ;
-
-LIST ADV-NOT-NAMES = "Ain" "Anne" "Diego" "Dieppe" "Enge" "Galle" "Haga"
-           "Joba" "Johan" "Liikka" "Mai" "Mannes" "Mo" "Mot" "Naba"
-           "Nan" "Oktan" "Sierra" "Sokka" "Villa" ;
-
-SET ADV-NOT-OTHER-POS = ADV-NOT-VERB OR ADV-NOT-NOUN OR ADV-NOT-NAMES ;
-
-LIST HAB-CASE = Loc (<smj> Ine) (<sma> Gen) ;
-LIST HAB-ACTOR-ALL = Sem/Hum Sem/Mal Sem/Sur Sem/Fem Sem/Ani  Pers ("gii") Indef Coll ;
-SET HAB-ACTOR = HAB-ACTOR-ALL - ("cihca") ;
-SET HAB-ACTOR-NOT-HUMAN = Sem/Org ;
-
-# Sets of elements with common syntactic behaviour
-# ================================================
-
-SETS
-
-#!! * Sets for verbs
-# -----
-
-LIST NOT-REAL-V = (Actio Nom) (Actio Gen) (Actio Loc) (Actio Com) PrsPrc ;
-
-SET REAL-V = V - NOT-REAL-V  ;
-  #!! ** V is all readings with a V tag in them, REAL-V should
-  #!! be the ones without an N tag following the V.  
-  #!! The REAL-V set thus awaits a fix to the preprocess V ... N bug.
-            
- 
- # The set REAL is smaller than COPULAS, made for verbs with PrfPrc complements: Seammás REAL-COPULAS son dovdan iežas...
-LIST REAL-COPULAS = "dáidit" "leat" "soaitit" "veadjit" "liehket" "lea";
-
-#!! * The set COPULAS is for predicative constructions
-LIST COPULAS = "dáidit" "gártat" "leat" "soaitit" "šaddat" "orrut" "veadjit" "liehket" "sjaddat" "lea" "sjïdtedh" ;
- #  "bissut" ? 
- # 'Dáidit' can appear without 'leat'.
-
-SET NOT-COP-V = V - COPULAS ;
-
-SET MAIN-V = V - FAUXV ;
- 
-# All active verbs with a TV tag, including AUX-OR-MAIN.
-
-LIST V-TRANS = (V TV) (IV Der/ahtti) (IV Der/h) ;
-
-
-SET TRANS-V = V-TRANS - Der/Pass + REAL-V ;
-
-#!! * NP sets defined according to their morphosyntactic features
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-
-LIST N-SG-NOM = (N Sg Nom);
-
-SET HEAD-N = N - RCmpnd ;
-
-SET HEAD-N-NOM = (N Nom) - RCmpnd ;
-
-SET SUBJECTHEAD = N OR A OR Pron - Refl ; # These, can be subject heads
-
-SET NP = N OR A ;                      # anything that can take except numerals
-SET NP-HEAD        = Pron OR HEAD-N - ("buorre") ;
-SET NP-HEAD-SG     = SGPRON OR (N Sg) OR (A Sg) - RCmpnd  - Dem - ("buorre");
-SET NP-HEAD-PL     = PLPRON OR (N Pl) OR (A Pl) - RCmpnd  - Dem - ("buorre");
-SET NP-HEAD-SG-NOM = SGPRON + Nom OR (N Sg Nom) OR (A Sg Nom) - ("buorre") - RCmpnd ;
-SET NP-HEAD-PL-NOM = PLPRON + Nom OR (N Pl Nom) OR (A Pl Nom) - RCmpnd  - ("buorre");
-SET NP-HEAD-NOM    = NP-HEAD-SG-NOM OR NP-HEAD-PL-NOM ;
-SET NP-HEAD-ACC    = (Pron Acc) OR (N Acc) OR (A Acc) - RCmpnd - (Dem Attr) - ("buorre");
-SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) OR (A Gen) - Der/NomAct - RCmpnd - (Dem Attr) - ("buorre")   ;
-
-#!! * The PRE-NP-HEAD family of sets
-
-#!! These sets model noun phrases (NPs). The idea is to first define whatever can
-#!! occur in front of the head of the NP, and thereafter negate that with the
-#!! expression __WORD - premodifiers__.
-
-
-SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr) OR ("buorre") 
-         OR (Pron Pers Gen) OR (N Gen) OR (A Gen) OR ("buot") OR
-         Num OR RCmpnd OR CC OR (Pron Dem) OR (Pron Refl Gen) OR (Indef Attr) OR 
-         (PrfPrc @>N) OR PrsPrc OR (A Ord) OR (Num @>N) OR (A @>N) OR @>N OR @>A OR @>Pron OR @Num< OR (CC @CNP) OR (@>CC) OR (Action Gen) OR (@Pron<) ;
-         # The strict version of items that can only be premodifiers, not parts of the predicate
-
-#LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
-         
-SET PRE-NP-V = PrfPrc OR PrsPrc OR Der/NomAg OR Actio OR Der/NomAct OR (V A) OR (Prs Sg3) + Ind OR (Prs Sg1) + Ind OR (Imprt Du2) ;
-    # to be used together with PRE-NP-HEAD before @>N is disambiguated
-         
-SET NP-MEMBER   = PRE-NP-HEAD OR N ;
-
-SET PRE-A-N     = (Pron Pers Gen) OR (Pron Pers Acc) OR (Pron Indef) OR Num OR (A Ord) OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Refl Acc) ; # Acc pga av manglende disambiguering tidlig i fila
-
-SET NOT-PRE-A-N = WORD - PRE-A-N ;
+LIST COMMA = (",") ;
+SET MARK =  COMMA | ("\\") | ("\;") ; #"
 
 LIST PUNCT-LEFT = (PUNCT LEFT) ;
 LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
-
-SET PRE-APP   = COMMA OR PUNCT-LEFT OR PRE-NP-HEAD ;
- # This set ist not only for what can
-                            # stand in front of appositions but also
-                            # postmodifiers.
+SET PRE-APP   = COMMA OR PUNCT-LEFT ;
 
 
+SET WORDMARK = WORD | MARK ;
 
-#!! The set __NOT-NPMOD__ is used to find barriers between NPs.
-#!! Typical usage: ... (*1 N BARRIER NPT-NPMOD) ...
-#!! meaning: Scan to the first noun, ignoring anything that can be
-#!! part of the noun phrase of that noun (i.e., "scan to the next NP head")
+SET NPNH = WORDMARK - PRE-N ;
+SET NPNHA = WORDMARK - PRE-N - Adv ;
+SET NOT-ADV = WORDMARK - Adv - CC ; # adding CC
+SET NOT-PROP = WORDMARK - Prop - CC ;
+SET LEX-ADV = Adv - (A*) ;
+SET NOT-A = WORDMARK - A ;
+SET NOT-CC = WORDMARK - CC ;
+SET NOUNADJ = N | A ;
 
-SET NOT-NPMOD     = WORD - PRE-NP-HEAD OR ABBR ;                     
-# This is the previous NPNH (npnh) set.
-# NOT-NPMOD  = "NOT-PRE-NP-HEAD"
- 
-SET NOT-NPMOD-ACC     = NOT-NPMOD - Acc OR ABBR ; 
-SET NOT-NPMOD-ACC-ADV     = NOT-NPMOD - Acc - Adv OR ABBR ; 
-# To be used in mappingrules, before the disambuation of Acc and Gen.                     
+SET NP-MEMBER = PRE-N | N | Pron ;
 
-SET NOT-NPMODADV    = WORD - PRE-NP-HEAD - Adv ;                      
-# NOT-NPMODADV = "NOT-PRE-NP-HEAD-OR-ADV"
-SET NOT-NPMODADV-INDEF   = WORD - PRE-NP-HEAD - Adv - Indef ;              
-## NOT-NPMODADVI = "     ...-OR-INDEF"
-SET NOT-NPMODADVII  = WORD - PRE-NP-HEAD - Adv - Indef - Ill ;        
-# Illative indir.obj.
-SET NOT-NPMODADVIIP = WORD - PRE-NP-HEAD - Adv - Indef - Ill - Pcle ; 
-# <== is this our NOT-NPMOD set?
-SET NOT-NPMODCC   = WORD - PRE-NP-HEAD - COMMA - @CNP ;
-SET NAPP     = WORD - PRE-APP ;
+LIST TIME = "sunnudagur" ;
 
 
 
-#!! * Miscellaneous sets
-# ------------------
-LIST Px = PxSg1 PxSg2 PxSg3 PxDu1 PxDu2 PxDu3 PxPl1 PxPl2 PxPl3 ;
-
-LIST GASKAL = "gaskal" "gaskkal" "gaskii" "gaskka" "gaskkas" ;
- 
- # p-positions that like coordination
- 
-LIST TIME-PP = "badjel" "čađa" "earret" "gaskkal" "guovddáš" "maŋŋel" "maŋŋil" "maŋŋá" "miehtá" "ovdal" ;
- 
-
-SET NUM = Num - OKTA ;
-
-# this set does not contain ordinals, I am not sure if that is necessary.
-
-SET NOT-NUM = WORD - Num ;
-
-LIST MANGA = "máŋga" "galle" ;
- # Not referred to by any rule.
-
-SET CARDINALS = Num - Ord - MANGA ;
-
-SET NOT-CC = WORD - CC ;
-
-SET NOT-PCLE = WORD - Pcle ;
-
-LIST COMPAR = ("dávji" A Comp) "eanet" "earalágan" "eará" "earret" "seammás" "seammalágan" "seamma_láhkái" ;
- 
- # These combine with "go" Pcle, but COMPAR stands for 'comparison' rather than
- # 'comparative'.
-
-LIST CONTRA = "muhto" ;
- # In lean muitalan, muhto dál muitalan.
-
-LIST PROSEANTA = "proseanta" "%" ;
-
-SET REAL-CLB = CLB - COMMA ;
+# Semantic sets
 
 
-SET NOT-INITIAL-CC = WORD - INITIAL - CC ;
+LIST ABSTRACT = "ráð" "byráð" ;
+
+LIST BAREPLURALS = "barn" "fólk" "bygdafólk" "konufólk" ;
+# these words are usually plurals when used alone. All countable neuters?
+## Tú sært barn standa.
 
 
 
-#!! * Border sets and their complements
-# ---------------------------------
 
-SET CP = (Pron Interr) OR (Pron Rel) OR MO ;
-
-LIST BOUNDARYSYMBOLS =  "\;" ":" "-" "–" ;
-	
-SET S-BOUNDARY = CP OR BOUNDARYSYMBOLS OR ("muhto") OR ("de" Adv) OR (Neg Sup) OR @CVP OR ("vel" Adv Qst) ;
-	# does not include CS, because of "go" in questions, before it is disambugated.
-	# includes CP
-	# this one includes @CVP, the conjunction which actually connects two sentences (each with a finite verb) to each other, 
-	# and not @CNP, which coordinates internal NP-/AdvP-/AP ... coordination
-	# To be used only AFTER the disambiguation of @CVP and @CNP taking place in the chapter right before "Disambiguating pronouns"
-
-
-SET BOC = S-BOUNDARY OR BOS ;
-SET BOC-PUNCT = BOC - ("-") - ("–") ; 
-SET EOC = S-BOUNDARY OR EOS ;
-
-SET NP-BOUNDARY = BOS OR EOS OR REAL-CLB OR VFIN OR Inf OR (Actio Ess) OR ConNeg OR VGen OR Sup OR PPRON-NOT-GEN OR Recipr OR Po OR Pr OR Pcle OR ("jed") OR Interj OR CS OR CP OR @CVP ;
-
-SET APP-BOUNDARY = REAL-CLB OR VFIN OR Inf OR (Actio Ess) OR ConNeg OR VGen OR Sup OR Recipr OR Po OR Pr OR Pcle OR Interj OR CS OR CP OR PrfPrc - @>N ;
-# A special barrier used with mapping of appositions. 
-
-# This set contains FMAINV with @, which means that it functions for all kind of mainverbs after the verb-mapping rules 
-SET SV-BOUNDARY = S-BOUNDARY OR Inf - FAUXV OR Sup OR FMAINV ;
- # VFIN-NOT-AUX ;
- # should be MAIN-V linked to VFIN-aux to the left. (cg-3)
-# This set is ment to use in rules for disambiguating due to verbs or verbsets. It contents @.
-
-SET SVF-BOUNDARY = S-BOUNDARY OR VFIN ;
-
-# This set is ment to use in rules for disambiguating due to verbs or verbsets. 
-# Here we search for either an S-BOUNDARY or a finite verb, either aux or main.
-
-LIST ADVLCASE = Ill Loc Com Ess Ine Ela ;
-LIST CASE = Nom Acc Gen Ill Loc Com Ess Ine Ela ;
-
-
-#!! * Syntactic sets
-# --------------
-
-LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ>)(@-FOBJ)(@-F<ADVL)(@-FADVL>)(@>A) (@>ADVL) (@ADVL<) (@<ADVL) (@ADVL>) (@ADVL) (@>N) (@APP) (@APP-N<) (@APP-Pron<) (@APP>Pron) (@APP-Num<) (@APP-ADVL<) (@VOC)(@CNP) (@CVP) (@P<) (@>P) (@HNOUN) (@INTERJ) (@Pron<) (@OBJ) (@OBJ>) (@<OBJ) (@OPRED) (@<OPRED) (@OPRED>) (@SPRED<OBJ) (@PCLE) (@COMP-CS<) (@N<) (@SPRED) (@<SPRED) (@SPRED>) (@PPRED) (@Num<) (@SUBJ) (@<SUBJ) (@SUBJ>) (@X);
- 
-LIST HEAD = @SUBJ> @<SUBJ @SUBJ @OBJ @OBJ> @<OBJ @ADVL @ADVL> @<ADVL @SPRED> @<SPRED @SPRED @OPRED> @<OPRED @OPRED @-FSUBJ> @-FOBJ> @-FADVL> @-FSPRED> @-F<SUBJ @-F<OBJ @-F<ADVL @-F<SPRED ;
- 
-
-SET NON-APP = ALLSYNTAG - (@APP);
-
-#!! These were the set types.
+#sets# 
+#sets# SETS
+#sets# 
+#sets# # I define end of clause and beginning of clause in a way so that the file
+#sets# # may be read both by the CG-2 and the vislcg formalisms.
+#sets# 
+#sets# LIST BOS = (>>>) (<s>);
+#sets# LIST EOS = (<<<) (</s>);
+#sets# 
+#sets# # CG3 doesn´t function without >>> and <<< !
+#sets# 
+#sets# # Tags declared as single-membered LISTs 
+#sets# # ======================================
+#sets# 
+#sets# # Parts of speech
+#sets# # ---------------
+#sets# 
+#sets# LIST N = N ;
+#sets# LIST A = A ;
+#sets# LIST Adv = Adv ;
+#sets# LIST V = V ;
+#sets# LIST Pron = Pron ;
+#sets# 
+#sets# LIST CS = CS ;
+#sets# LIST CC = CC ;
+#sets# SET CC-CS = CC OR CS ;
+#sets# LIST Po = Po ;
+#sets# LIST Pr = Pr ;
+#sets# LIST Pcle = Pcle ;
+#sets# LIST Num = Num ;
+#sets# LIST Interj = Interj ;
+#sets# LIST ABBR = ABBR ;
+#sets# LIST ACR = ACR ;
+#sets# 
+#sets# LIST CLB = CLB ;
+#sets# LIST LEFT = LEFT ;
+#sets# LIST RIGHT = RIGHT ;
+#sets# LIST WEB = WEB ;
+#sets# LIST QMARK = """ ; # ADD " FOR SYNTAX COLOURING.
+#sets# LIST PPUNCT = PUNCT ;
+#sets# SET PUNCT = PPUNCT - QMARK ;
+#sets# 
+#sets# LIST COMMA = "," ;
+#sets# LIST ¶ = ¶;
+#sets# 
+#sets# #LIST V* = V* ;
+#sets# 
+#sets# #!! * Sets for POS sub-categories
+#sets# # ------------------
+#sets# 
+#sets# LIST Pers = Pers ;
+#sets# LIST Dem = Dem ;
+#sets# LIST Interr = Interr ;
+#sets# LIST Indef = Indef ;
+#sets# 
+#sets# LIST Recipr = Recipr ;
+#sets# LIST Refl = Refl ;
+#sets# LIST Rel = Rel ;
+#sets#  
+#sets# #LIST Adp = Adp ;
+#sets# 
+#sets# LIST Coll = Coll ;
+#sets# LIST NomAg = NomAg ;
+#sets# LIST G3 = G3 ;
+#sets# LIST Prop = Prop ;
+#sets# 
+#sets# #!! * Sets for Semantic tags
+#sets# # -------------
+#sets# 
+#sets# LIST Sem/Ani = Sem/Ani ;
+#sets# LIST Sem/Date = Sem/Date ;
+#sets# LIST Sem/Fem = Sem/Fem ;
+#sets# LIST Sem/Group = Sem/Group ;
+#sets# LIST Sem/Hum = Sem/Hum ;
+#sets# LIST Sem/Mal = Sem/Mal ;
+#sets# LIST Sem/Measr = Sem/Measr ;
+#sets# LIST Sem/Money = Sem/Money ;
+#sets# LIST Sem/Obj = Sem/Obj ;
+#sets# LIST Sem/Org = Sem/Org ;
+#sets# LIST Sem/Plc = Sem/Plc ;
+#sets# LIST Sem/Sur = Sem/Sur ;
+#sets# LIST Sem/Time = Sem/Time ;
+#sets# LIST Sem/Year = Sem/Year ;
+#sets# SET FIRSTNAME = (Prop Sem/Fem) OR (Prop Sem/Mal) ;
+#sets# 
+#sets# LIST TIME-N-SET = (N Sem/Time) ;
+#sets# LIST NOT-TIME = "dulvi" "lohpi" "vuorru" ;
+#sets# SET TIME-N = TIME-N-SET - NOT-TIME ;
+#sets# 
+#sets# 
+#sets# LIST HUMAN = Sem/Hum Sem/Mal Sem/Fem Sem/Sur Pers NumAg Der/NumAg ;
+#sets# 
+#sets# #!! * Sets for Morphosyntactic properties
+#sets# # --------------------------
+#sets# 
+#sets# LIST Nom = Nom ;
+#sets# LIST Acc = Acc ;
+#sets# LIST Gen = Gen ;
+#sets# LIST Ill = Ill ;
+#sets# LIST Loc = Loc ;
+#sets# LIST Com = Com ;
+#sets# LIST Ess = Ess ;
+#sets# LIST Ine = Ine ;
+#sets# LIST Ela = Ela ;
+#sets# 
+#sets# LIST LOC = Loc Ine Ela ;
+#sets# 
+#sets# LIST Sg = Sg ;
+#sets# LIST Du = Du ;
+#sets# LIST Pl = Pl ;
+#sets# 
+#sets# LIST RCmpnd = RCmpnd ;
+#sets# 
+#sets# LIST Cmpnd = Cmpnd ;
+#sets#  
+#sets# LIST SgNomCmp = SgNomCmp ;
+#sets#  
+#sets# LIST SgGenCmp = SgGenCmp ;
+#sets# 
+#sets# LIST ShCmp = ShCmp ;
+#sets# 
+#sets# LIST PxSg1 = PxSg1 ;
+#sets# LIST PxSg2 = PxSg2 ;
+#sets# LIST PxSg3 = PxSg3 ;
+#sets#  
+#sets# LIST PxDu1 = PxDu1 ;
+#sets# LIST PxDu2 = PxDu2 ;
+#sets# LIST PxDu3 = PxDu3 ;
+#sets#  
+#sets# LIST PxPl1 = PxPl1 ;
+#sets# LIST PxPl2 = PxPl2 ;
+#sets# LIST PxPl3 = PxPl3 ;
+#sets# 
+#sets# LIST Comp = Comp ;
+#sets# LIST Superl = Superl ;
+#sets# 
+#sets# LIST Attr = Attr ;
+#sets# LIST Ord = Ord ;
+#sets#  
+#sets# LIST Qst = Qst ;
+#sets#  
+#sets# # The ("ge" Pcle) etc. are used in Apertium
+#sets# LIST Foc/ge = Foc/ge ("ge" Pcle) ;
+#sets# LIST Foc/gen = Foc/gen ("gen" Pcle) ;
+#sets# LIST Foc/ges = Foc/ges ("ges" Pcle) ;
+#sets# LIST Foc/gis = Foc/gis ("gis" Pcle) ;
+#sets# LIST Foc/naj = Foc/naj ("naj" Pcle) ;
+#sets# LIST Foc/ba = Foc/ba ("ba" Pcle) ;
+#sets# LIST Foc/be = Foc/be ("be" Pcle) ;
+#sets# LIST Foc/hal = Foc/hal ("hal" Pcle) ;
+#sets# LIST Foc/han = Foc/han ("han" Pcle) ;
+#sets# LIST Foc/bat = Foc/bat ("bat" Pcle) ;
+#sets# LIST Foc/son = Foc/son ("son" Pcle) ;
+#sets# 
+#sets# LIST IV = IV ;
+#sets# LIST TV = TV ;
+#sets# 
+#sets# LIST Der/Pass = Der/PassL Der/PassS ;
+#sets# 
+#sets# LIST Prt = Prt;
+#sets# LIST Prs = Prs ;
+#sets#  
+#sets# 
+#sets# LIST Ind = Ind ;
+#sets# LIST Pot = Pot ;
+#sets# LIST Cond = Cond ;
+#sets# 
+#sets# LIST Imprt = Imprt ;
+#sets# LIST ImprtII = ImprtII ;
+#sets# 
+#sets# LIST Sg1 = Sg1 ;
+#sets# LIST Sg2 = Sg2 ;
+#sets# LIST Sg3 = Sg3 ;
+#sets# 
+#sets# LIST Du1 = Du1 ;
+#sets# LIST Du2 = Du2 ;
+#sets# LIST Du3 = Du3 ;
+#sets# 
+#sets# LIST Pl1 = Pl1 ;
+#sets# LIST Pl2 = Pl2 ;
+#sets# LIST Pl3 = Pl3 ;
+#sets# 
+#sets# LIST Inf = Inf ;
+#sets# LIST ConNeg = ConNeg ;
+#sets# LIST Neg = Neg ;
+#sets# 
+#sets# LIST PrfPrc = PrfPrc ;
+#sets# LIST VGen = VGen ;
+#sets# 
+#sets# LIST PrsPrc = PrsPrc ;
+#sets#  
+#sets# 
+#sets# LIST Ger = Ger ;
+#sets# LIST Sup = Sup ;
+#sets# LIST Actio = Actio ;
+#sets# 
+#sets# LIST Der/PassL = Der/PassL ;
+#sets# LIST Der/NomAg = Der/NomAg ;
+#sets# LIST Actor = NomAg Der/NomAg ;
+#sets# LIST VAbess = VAbess ;
+#sets# 
+#sets# # Derivation
+#sets# # ----------
+#sets# 
+#sets# LIST Der/adda = Der/adda ;
+#sets# LIST Der/ahtti = Der/ahtti ;
+#sets# LIST Der/alla = Der/alla ;
+#sets# LIST Der/asti = Der/asti ;
+#sets# LIST Der/easti = Der/easti ;
+#sets# LIST Der/d = Der/d ;
+#sets# LIST Der/NomAct = Der/NomAct ;
+#sets# LIST Der/eamoš = Der/eamoš ;
+#sets# LIST Der/amoš = Der/amoš ;
+#sets# LIST Der/eapmi = Der/eapmi ;
+#sets# LIST Der/geahtes = Der/geahtes ;
+#sets# LIST Der/gielat = Der/gielat ;
+#sets# LIST !better: = !better: ;
+#sets# LIST Der/NuA = Der/NuA ;
+#sets# 
+#sets# LIST Der/h = Der/h ;
+#sets# LIST Der/heapmi = Der/heapmi ;
+#sets# LIST Der/hudda = Der/hudda ;
+#sets# LIST Der/huhtti = Der/huhtti ;
+#sets# LIST Der/huvva = Der/huvva ;
+#sets# LIST Der/halla = Der/halla ;
+#sets# LIST Der/j = Der/j ;
+#sets# LIST Der/l = Der/l ;
+#sets# LIST Der/laš = Der/laš ;
+#sets# LIST Der/las = Der/las ;
+#sets# LIST Der/hat = Der/hat ;
+#sets# 
+#sets# LIST Der/meahttun = Der/meahttun ;
+#sets# LIST Der/muš = Der/muš ;
+#sets# LIST Der/n = Der/n ;
+#sets# LIST Der/st = Der/st ;
+#sets# LIST Der/stuvva = Der/stuvva ;
+#sets# LIST Der/upmi = Der/upmi ;
+#sets# LIST Der/supmi = Der/supmi ;
+#sets# LIST Der/vuohta = Der/vuohta ;
+#sets# LIST Der/goahti = Der/goahti ;
+#sets# 
+#sets# LIST Der/lágan = Der/lágan ;
+#sets# LIST Der/lágán = Der/lágán ;
+#sets# LIST Der/lágaš = Der/lágaš ;
+#sets# LIST Der/jagáš = Der/jagáš ;
+#sets# LIST Der/jahkásaš = Der/jahkásaš ;
+#sets# LIST Der/diibmosaš = Der/diibmosaš ;
+#sets# 
+#sets# LIST Der/Dimin = Der/Dimin ;
+#sets# LIST Der/viđá = Der/viđá ;
+#sets# LIST Der/viđi = Der/viđi ;
+#sets# LIST Der/veara = Der/veara ;
+#sets# LIST Der/duohke = Der/duohke ;
+#sets# LIST Der/duohkai = Der/duohkai ;
+#sets# LIST Der/vuolle = Der/vuolle ;
+#sets# LIST Der/vuollai = Der/vuollai ;
+#sets# LIST Der/vuolde = Der/vuolde ;
+#sets# 
+#sets# # Syntactic tags
+#sets# # --------------
+#sets# 
+#sets# LIST @+FAUXV = @+FAUXV ;
+#sets# LIST @+FMAINV = @+FMAINV ;
+#sets# LIST @-FAUXV = @-FAUXV ;
+#sets#  
+#sets# LIST @-FMAINV = @-FMAINV ;
+#sets# LIST @-FSUBJ> = @-FSUBJ> ;
+#sets# LIST @-F<OBJ = @-F<OBJ ;
+#sets# LIST @-FOBJ> = @-FOBJ> ;
+#sets# LIST @SPRED<OBJ = @SPRED<OBJ ;
+#sets# LIST @-FADVL = @-FADVL ;
+#sets# 
+#sets# SET FOBJ = @-F<OBJ OR @-FOBJ> ; 
+#sets# SET FMAINV = @-FMAINV OR @+FMAINV OR (V @<OBJ) OR (V @N<) OR (V @A<) OR (V @<SUBJ) OR (V @<ADVL) ;
+#sets# SET FAUXV = @-FAUXV OR @+FAUXV ;
+#sets# 
+#sets# LIST @ADVL = @ADVL @ADVL> @ADVL< @<ADVL @>ADVL @-F<ADVL ;
+#sets# LIST @>ADVL = @>ADVL ;
+#sets# LIST @ADVL< = @ADVL< ;
+#sets# LIST @<ADVL = @<ADVL ;
+#sets# LIST @ADVL> = @ADVL> ;
+#sets# LIST @ADVL>CS = @ADVL>CS ;
+#sets# 
+#sets# LIST <hab> = <hab> ;
+#sets# LIST <ext> = <ext> ;
+#sets# 
+#sets#  
+#sets# LIST HAB-V-TAGS = Pl3 Sg3 ConNeg PrfPrc Inf ;
+#sets#  
+#sets# LIST @>N = @>N ;
+#sets# 
+#sets# LIST @N< = @N< ;
+#sets#  
+#sets# 
+#sets# LIST @>A = @>A ;
+#sets# 
+#sets# LIST @P< = @P< ;
+#sets# 
+#sets# LIST @>P = @>P ;
+#sets# 
+#sets# LIST @HNOUN = @HNOUN ;
+#sets# LIST @INTERJ = @INTERJ ;
+#sets#  
+#sets# LIST @>Num = @>Num;
+#sets# 
+#sets# LIST @Pron< = @Pron< ;
+#sets# LIST @>Pron = @>Pron ;
+#sets# 
+#sets# LIST @Num< = @Num< ;
+#sets# 
+#sets# LIST @OBJ = @OBJ ;
+#sets# LIST @<OBJ = @<OBJ ;
+#sets# LIST @OBJ> = @OBJ> ;
+#sets# LIST @OPRED = @OPRED ;
+#sets# LIST @<OPRED = @<OPRED ;
+#sets# LIST @OPRED> = @OPRED> ;
+#sets# LIST @PCLE = @PCLE ;
+#sets# LIST @COMP-CS< = @COMP-CS< ;
+#sets#  
+#sets# LIST @SPRED = @SPRED ;
+#sets# LIST @<SPRED = @<SPRED ;
+#sets# LIST @SPRED> = @SPRED> ;
+#sets# LIST @SUBJ = @SUBJ ;
+#sets# LIST @<SUBJ = @<SUBJ ;
+#sets# LIST @SUBJ> = @SUBJ> ;
+#sets# SET SUBJ = @<SUBJ OR @SUBJ> OR @SUBJ ;
+#sets# SET SPRED = @<SPRED OR @SPRED> OR @SPRED ;
+#sets# SET OPRED = @<OPRED OR @OPRED> OR @OPRED ;
+#sets# 
+#sets# LIST @PPRED = @PPRED ;
+#sets#  
+#sets# LIST @APP = @APP ;
+#sets# LIST @APP-N< = @APP-N< ;
+#sets# LIST @APP-Pron< = @APP-Pron< ;
+#sets# LIST @APP>Pron = @APP>Pron ;
+#sets# LIST @APP-Num< = @APP-Num< ;
+#sets# LIST @APP-ADVL< = @APP-ADVL< ;
+#sets# LIST @VOC = @VOC ;
+#sets# 
+#sets# LIST @CVP = @CVP ;
+#sets# LIST @CNP = @CNP ;
+#sets# 
+#sets# SET OBJ = (@<OBJ) OR (@OBJ>) OR (@OBJ) OR (@-F<OBJ) OR (@-FOBJ>) ;
+#sets# LIST <OBJ = @-F<OBJ @<OBJ ;
+#sets# LIST OBJ> = @OBJ> @-FOBJ> ;
+#sets# 
+#sets# SET <OBJ-OTHERS = <OBJ OR (Gen) OR (Nom) OR (Ess) OR (Loc) OR (Adv) OR (Ine) OR (Ela) ;
+#sets# SET OBJ>-OTHERS = OBJ> OR (Gen) OR (Nom) OR (Ess) OR (Loc) OR (Adv) OR (Ine) OR (Ela) ;
+#sets# 
+#sets# SET SYN-V = V + SUBJ OR OBJ + V OR @ADVL + V OR (V @N<) OR (V @A<) OR V + SPRED OR (V @COMP-CS<) ;
+#sets# 
+#sets# 
+#sets# LIST @X = @X ;
+#sets# 
+#sets# 
+#sets# LIST OKTA = "akta" "okta";
+#sets# LIST go = "go" ;
+#sets#  
+#sets# 
+#sets# # Initials
+#sets# # --------
+#sets# 
+#sets# LIST INITIAL = "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m"
+#sets#         "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
+#sets#         "á" "æ" "ø" "å" "ö" "ä" ;
+#sets# 
+#sets# LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
+#sets#         "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"
+#sets#         "Á" "Æ" "Ø" "Å" "Ö" "Ä" ;
+#sets# 
+#sets# # Tag sets
+#sets# # ========
+#sets#   SETS
+#sets# # ========
+#sets# 
+#sets# 
+#sets# # Word or not
+#sets# # -----------
+#sets# LIST WORD = N A Adv V Pron CS CC Po Pr Interj Pcle Num ABBR ACR  \? ;
+#sets#  # any word
+#sets# 
+#sets# SET REALWORD = WORD - Num - Ord ;
+#sets# 
+#sets# SET REALWORD-NOTABBR = WORD - Num - Ord - ABBR ;
+#sets# 
+#sets# SET WORD-NOTDE = WORD - ("de") ; 
+#sets# 
+#sets# # Verb sets
+#sets# # ---------
+#sets# 
+#sets# # Verbs and their complements
+#sets# # - - - - - - - - - - - - - -
+#sets# 
+#sets# SET NOT-VERB = WORD - V ;
+#sets# 
+#sets# # Finiteness and mood
+#sets# # - - - - - - - - - -
+#sets# 
+#sets# SET V-IND-FIN = Prs OR Prt ;
+#sets#  # Problem: "In boahtán" is an invisible indicative
+#sets# 
+#sets# SET V-MOOD = Ind OR Pot OR Imprt OR ImprtII OR Cond OR (Neg Sup) ;
+#sets# 
+#sets# LIST GC = ("gč") ;
+#sets# 
+#sets# SET VFIN = GC OR V-MOOD - ConNeg ;
+#sets# 
+#sets# SET VFIN-POS = V-MOOD - ConNeg - Neg ;
+#sets# 
+#sets# SET VFIN-NOT-IMP = VFIN - Imprt ;
+#sets# 
+#sets# SET VFIN-NOT-NEG = VFIN - Neg ;
+#sets#   # this might be to strict, besides, "iige" can be written "ii ge"
+#sets# 
+#sets# SET NOT-PRFPRC = WORD - PrfPrc ;
+#sets# 
+#sets# # Person
+#sets# # - - - - 
+#sets# 
+#sets# LIST V-SG1 = (V Sg1)  ;
+#sets#  
+#sets# LIST V-SG2 = (V Sg2) ;
+#sets#  
+#sets# LIST V-SG3 = (V Sg3) ;
+#sets#  
+#sets# LIST V-DU1 = (V Du1) ;
+#sets#  
+#sets# LIST V-DU2 = (V Du2) ;
+#sets#  
+#sets# LIST V-DU3 = (V Du3) ;
+#sets#  
+#sets# LIST V-PL1 = (V Pl1) ;
+#sets#  
+#sets# LIST V-PL2 = (V Pl2) ;
+#sets#  
+#sets# LIST V-PL3 = (V Pl3) ;
+#sets# 
+#sets#  
+#sets# 
+#sets#  # Note that imperative verbs are not included in these sets!
+#sets# 
+#sets# # Some subsets of the VFIN sets
+#sets# # - - - - - - - - - - - - - - -
+#sets# SET V-SG = V-SG1 OR V-SG2 OR V-SG3 ;
+#sets# SET V-DU = V-DU1 OR V-DU2 OR V-DU3 ;
+#sets# SET V-PL = V-PL1 OR V-PL2 OR V-PL3 ;
+#sets# 
+#sets# SET V-DU-PL = V-DU1 OR V-DU2 OR V-DU3 OR V-PL1 OR V-PL2 OR V-PL3 ;
+#sets# 
+#sets# SET V-NOT-SG1 = VFIN-NOT-IMP - V-SG1 ;
+#sets# SET V-NOT-SG2 = VFIN-NOT-IMP - V-SG2 ;
+#sets# SET V-NOT-SG3 = VFIN-NOT-IMP - V-SG3 ;
+#sets# SET V-NOT-DU1 = VFIN-NOT-IMP - V-DU1 ;
+#sets# SET V-NOT-DU2 = VFIN-NOT-IMP - V-DU2 ;
+#sets# SET V-NOT-DU3 = VFIN-NOT-IMP - V-DU3 ;
+#sets# SET V-NOT-PL1 = VFIN-NOT-IMP - V-PL1 ;
+#sets# SET V-NOT-PL2 = VFIN-NOT-IMP - V-PL2 ;
+#sets# SET V-NOT-PL3 = VFIN-NOT-IMP - V-PL3 ;
+#sets# 
+#sets# 
+#sets# SET V-1-2 = V-SG1 OR V-SG2 OR V-DU1 OR V-DU2 OR V-PL1 OR V-PL2 ;
+#sets# SET V-3  = V-SG3 OR V-DU3 OR V-PL3 ;
+#sets# 
+#sets# # Sets consisting of LEAT
+#sets# # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#sets# LIST LEAT = "leat" "liehket" "lea" ;
+#sets# 
+#sets# SET LEAT-FIN-NOT-IMP = LEAT - Imprt;
+#sets#  
+#sets# LIST VPRFPRC = (V PrfPrc) ;
+#sets# LIST LEATPRFPRC = ("leat" PrfPrc) ("liehket" PrfPrc) ("lea" PrfPrc) ;
+#sets# SET PRC-NOT-LEAT = VPRFPRC - LEATPRFPRC ;
+#sets#     # In order to distinguish between real leat-constructions and participles of other verbs
+#sets# LIST HABEO-SG3 = ("leat" Sg3) (V Neg Sg3) ("šaddat" Sg3) ("sjaddat" Sg3) ("liehket" Sg3) ("lea" Sg3) ;
+#sets# 
+#sets# LIST HABEO-PL3 = ("leat" Pl3) (V Neg Pl3) ("šaddat" Pl3)  ("sjaddat" Pl3) ("liehket" Pl3) ("lea" Pl3)  ;
+#sets# 
+#sets# SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
+#sets# 
+#sets# # Pronoun sets
+#sets# # ------------
+#sets# 
+#sets# LIST MUN = (Pron Pers Sg1 Nom);
+#sets# LIST DON = (Pron Pers Sg2 Nom);
+#sets# LIST SON = ("son" Pron Pers Sg3 Nom);
+#sets# LIST MOAI = (Pron Pers Du1 Nom);
+#sets# LIST DOAI = (Pron Pers Du2 Nom);
+#sets# LIST SOAI = (Pron Pers Du3 Nom);
+#sets# LIST MII-PERS = (Pron Pers Pl1 Nom);
+#sets# LIST DII = (Pron Pers Pl2 Nom);
+#sets# LIST SII = ("son" Pron Pers Pl3 Nom);
+#sets# 
+#sets# SET PPRON-NOM-NOT-DAT = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
+#sets# 
+#sets# SET PPRON-NOT-DAT = (Pron Pers) - ("dat") ;
+#sets# 
+#sets# SET PPRON-DU-PL = MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
+#sets# SET PPRON-PL = MII-PERS OR DII OR SII ;
+#sets# 
+#sets# SET PRON-DU = MOAI OR DOAI OR SOAI ;
+#sets# 
+#sets# SET PPRON-NOT-SII = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII ;
+#sets# 
+#sets# LIST PPRON-GEN = (Sg1 Gen) (Sg2 Gen) (Sg3 Gen) (Du1 Gen) (Du2 Gen) (Du3 Gen) 
+#sets# 	(Pl1 Gen) (Pl2 Gen) (Pl3 Gen);
+#sets# 
+#sets# SET PPRON-NOT-GEN = (Pron Pers) - PPRON-GEN ;
+#sets# 
+#sets# LIST DEM-SG = (Pron Dem Sg Nom);
+#sets# LIST DEM-PL = (Pron Dem Pl Nom);
+#sets# SET NOT-DEM = WORD - Dem ;
+#sets# 
+#sets# LIST SGPRON = (Pron Sg1) (Pron Sg2) (Pron Sg3) (Pron Sg) (Pron PxSg1) (Pron PxSg2) (Pron PxSg3);
+#sets# LIST DUPRON = (Pron Du1) (Pron Du2) (Pron Du3)  (Pron PxDu1) (Pron PxDu2) (Pron PxDu3);
+#sets# LIST PLPRON = (Pron Pl1) (Pron Pl2) (Pron Pl3) (Pron Pl) (Pron PxPl1) (Pron PxPl2) (Pron PxPl3);
+#sets# LIST DUPRON-NOTPX = (Pron Du1) (Pron Du2) (Pron Du3) ;
+#sets# 
+#sets# SET PRON-NOT-SG = DUPRON OR PLPRON ;
+#sets# 
+#sets# LIST DAT-PRON = ("dat") ("dát") ("diet") ("duot") ("dot") ;
+#sets# 
+#sets# LIST QUANT-PRON = "ollu" "olu" "unnán" "váháš" "veaháš" "veháš" ;
+#sets# # This set is for choosing between Adv and Pron Indef.
+#sets# 
+#sets# # Adjectival sets and their complements
+#sets# # -------------------------------------
+#sets# 
+#sets# SET NOT-A = WORD - A ;
+#sets# SET NOT-A-COMMA = WORD - A - COMMA ;
+#sets# SET NOT-Attr = WORD - Attr ;
+#sets# SET NOT-A-PCLE = WORD - A - Pcle ;
+#sets# 
+#sets# SET NOT-A-ADV = WORD - A - Adv OR ("maid") ;
+#sets# 
+#sets# LIST NOMINAL-ADJ = "guoktilaš" "lámis" "oasálaš" ("suddu" Der/laš) "viissis";
+#sets#  
+#sets#  # and many others
+#sets#  
+#sets# # Adverbial sets and their complements
+#sets# # ------------------------------------
+#sets# SET LEX-ADV = Adv - (A*) ;
+#sets# 
+#sets# SET NOT-ADV-DE            = WORD - Adv ;
+#sets# SET NOT-ADV            = NOT-ADV-DE OR ("de" Adv) OR CLB ;
+#sets# SET NOT-ADV-N          = NOT-ADV - N;
+#sets# SET NOT-ADV-PCLE       = NOT-ADV - Pcle ;
+#sets# SET NOT-ADV-INDEF      = NOT-ADV - Indef ;
+#sets# SET NOT-ADV-PCLE-ILL   = WORD - Adv - Pcle - Ill ;
+#sets# SET NOT-ADV-PCLE-Refl  = WORD - Adv - Pcle - Refl ;
+#sets# SET NOT-ADV-PCLE-INDEF = WORD - Adv - Pcle - Indef ;
+#sets# SET NOT-ADV-PCLE-NEG   = WORD - Adv - Pcle - Neg ;
+#sets# SET NOT-ADVL-PCLE-NEG  = WORD - @ADVL - @P< - Pcle - Neg ;
+#sets# 
+#sets# 
+#sets# LIST MO-MANge = "goas" "gokko" "gos" "gosa" "govt" "makkár" "man" "manne" ("manin" Adv) "mo" "mot" "mov" "movt" ("nugo" @CVP) (V Qst);
+#sets#  
+#sets# SET MO = MO-MANge - ("man" Foc/ge) ; 
+#sets#  
+#sets#  # Introduce finite clauses.
+#sets#  
+#sets# LIST PLACE-ADV =  "davá#bealde" "mátta#bealde" "nuortta#bealde" "oarje#bealde" "olggo#beale" ;
+#sets# # There will usually be a Gen in front. 
+#sets# 
+#sets# LIST TIME-ADVL = "dalle" "diibmá" "dolin" "dovle" "duvle" "eske" "gieskat" "ikte" "ovdal" ("ovdditbeaivi" Gen) ("vássánáigi" Loc) ("boaresáigi" Gen) "dál" "ihttin" "odne" "otne" ("boahtteáigi" Loc) ("boahtteáigi" Gen)  ;
+#sets# 
+#sets# LIST TIME-ADV = (Adv Sem/Time) ;
+#sets# 
+#sets# 
+#sets# LIST DOPPE = "badjin" "bajil" "dakko" "dá" "dákko" "dáppe" "diekko" "dieppe" "do" "dokko" "doppe" "duo" "duokko" "duoppe" "olgun" ;
+#sets# # Adverbs with a locativic form, but don´t get Loc as a tag. 
+#sets# 
+#sets# LIST DOHKO = "bajás" "deike" "diehke" "diehko" "dohko" "duohko" "lulás" "olggos" "ruoktot" "sisa" "vuovdimassii" ;
+#sets# # Adverbs with a illativic form, but they don´t get Ill as a tag.
+#sets# 
+#sets# 
+#sets# # Coordinators
+#sets# # ------------
+#sets# SET Foc = Foc/ge  OR Foc/gen  OR Foc/ges  OR Foc/gis  OR Foc/naj OR Foc/ba  OR Foc/be  OR Foc/hal  OR Foc/han  OR Foc/bat OR Foc/son ;
+#sets# 
+#sets# LIST NEGFOC = (Neg Foc/ge) ;
+#sets# 
+#sets# LIST XGO = "dego" "dugo" "nugo" "seammaládjego" "seammaláhkaigo" ;
+#sets#   # Compounds
+#sets# LIST SEAMMAX = "seamma#ládje" "seamma#láhkai" "seamma#láhkái" ;
+#sets#   # Those combine with go
+#sets#   
+#sets# LIST MADE = "mađe" "mađi" ;
+#sets# LIST DADE = "dađe" "dađi" ; 
+#sets#   
+#sets#  
+#sets# SET CRD = @CNP OR COMMA OR NEGFOC OR XGO OR ("/") OR ("-") OR DADE ;
+#sets#     # AFTER LCRD vs. GCRD disambiguation
+#sets#     
+#sets# 
+#sets# LIST ADV-AFTER-NUM = "geardde" ;
+#sets# 
+#sets# LIST DUSSE = "áibbas" "dušše" "erenoamážit" "goitge" "man" "measta" "meastui" "oalle" "oba" "oktiibuot" "oppa" "sullii" ;
+#sets# 
+#sets# LIST GRADE-ADV =  "áibbas" "beare" ("eanet" Adv) "erenoamán" "erenoamáš" "hirbmat" "hui" "ila" "issoras" ("man" Adv) ("mealgat" Adv) "measta" "menddo" "muđui" "muhtun_muddui" "nu" "oalle" "oba" ("oppa" Adv) "sakka" "seammá" ("veaháš" Adv) ("uhccán" Adv) ("unnán" Adv) "vehá" "veháš" "veahá" "veaháš" "viehka" ;
+#sets# 
+#sets# LIST BUOT = "buot" "gait" "gaitin" "gaitdivnnat" "visot" ;
+#sets# 
+#sets# 
+#sets# LIST EASKKA = "easkka" ("easka" Adv) ; 
+#sets# 
+#sets# LIST ADV-NOT-ARG = "aiddo" "ain" "aivve" "albma" "aŋkke" "álggos" "bái#fáhkka" "beanta" "beare" ;
+#sets# 
+#sets# 
+#sets# 
+#sets# LIST ADV-NOT-VERB = "dušše" "viimmat" ;
+#sets# 
+#sets# LIST ADV-NOT-NOUN = "easka" "várra" ;
+#sets# 
+#sets# LIST ADV-NOT-NAMES = "Ain" "Anne" "Diego" "Dieppe" "Enge" "Galle" "Haga"
+#sets#            "Joba" "Johan" "Liikka" "Mai" "Mannes" "Mo" "Mot" "Naba"
+#sets#            "Nan" "Oktan" "Sierra" "Sokka" "Villa" ;
+#sets# 
+#sets# SET ADV-NOT-OTHER-POS = ADV-NOT-VERB OR ADV-NOT-NOUN OR ADV-NOT-NAMES ;
+#sets# 
+#sets# LIST HAB-CASE = Loc (<smj> Ine) (<sma> Gen) ;
+#sets# LIST HAB-ACTOR-ALL = Sem/Hum Sem/Mal Sem/Sur Sem/Fem Sem/Ani  Pers ("gii") Indef Coll ;
+#sets# SET HAB-ACTOR = HAB-ACTOR-ALL - ("cihca") ;
+#sets# SET HAB-ACTOR-NOT-HUMAN = Sem/Org ;
+#sets# 
+#sets# # Sets of elements with common syntactic behaviour
+#sets# # ================================================
+#sets# 
+#sets# SETS
+#sets# 
+#sets# #!! * Sets for verbs
+#sets# # -----
+#sets# 
+#sets# LIST NOT-REAL-V = (Actio Nom) (Actio Gen) (Actio Loc) (Actio Com) PrsPrc ;
+#sets# 
+#sets# SET REAL-V = V - NOT-REAL-V  ;
+#sets#   #!! ** V is all readings with a V tag in them, REAL-V should
+#sets#   #!! be the ones without an N tag following the V.  
+#sets#   #!! The REAL-V set thus awaits a fix to the preprocess V ... N bug.
+#sets#             
+#sets#  
+#sets#  # The set REAL is smaller than COPULAS, made for verbs with PrfPrc complements: Seammás REAL-COPULAS son dovdan iežas...
+#sets# LIST REAL-COPULAS = "dáidit" "leat" "soaitit" "veadjit" "liehket" "lea";
+#sets# 
+#sets# #!! * The set COPULAS is for predicative constructions
+#sets# LIST COPULAS = "dáidit" "gártat" "leat" "soaitit" "šaddat" "orrut" "veadjit" "liehket" "sjaddat" "lea" "sjïdtedh" ;
+#sets#  #  "bissut" ? 
+#sets#  # 'Dáidit' can appear without 'leat'.
+#sets# 
+#sets# SET NOT-COP-V = V - COPULAS ;
+#sets# 
+#sets# SET MAIN-V = V - FAUXV ;
+#sets#  
+#sets# # All active verbs with a TV tag, including AUX-OR-MAIN.
+#sets# 
+#sets# LIST V-TRANS = (V TV) (IV Der/ahtti) (IV Der/h) ;
+#sets# 
+#sets# 
+#sets# SET TRANS-V = V-TRANS - Der/Pass + REAL-V ;
+#sets# 
+#sets# #!! * NP sets defined according to their morphosyntactic features
+#sets# # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+#sets# 
+#sets# 
+#sets# LIST N-SG-NOM = (N Sg Nom);
+#sets# 
+#sets# SET HEAD-N = N - RCmpnd ;
+#sets# 
+#sets# SET HEAD-N-NOM = (N Nom) - RCmpnd ;
+#sets# 
+#sets# SET SUBJECTHEAD = N OR A OR Pron - Refl ; # These, can be subject heads
+#sets# 
+#sets# SET NP = N OR A ;                      # anything that can take except numerals
+#sets# SET NP-HEAD        = Pron OR HEAD-N - ("buorre") ;
+#sets# SET NP-HEAD-SG     = SGPRON OR (N Sg) OR (A Sg) - RCmpnd  - Dem - ("buorre");
+#sets# SET NP-HEAD-PL     = PLPRON OR (N Pl) OR (A Pl) - RCmpnd  - Dem - ("buorre");
+#sets# SET NP-HEAD-SG-NOM = SGPRON + Nom OR (N Sg Nom) OR (A Sg Nom) - ("buorre") - RCmpnd ;
+#sets# SET NP-HEAD-PL-NOM = PLPRON + Nom OR (N Pl Nom) OR (A Pl Nom) - RCmpnd  - ("buorre");
+#sets# SET NP-HEAD-NOM    = NP-HEAD-SG-NOM OR NP-HEAD-PL-NOM ;
+#sets# SET NP-HEAD-ACC    = (Pron Acc) OR (N Acc) OR (A Acc) - RCmpnd - (Dem Attr) - ("buorre");
+#sets# SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) OR (A Gen) - Der/NomAct - RCmpnd - (Dem Attr) - ("buorre")   ;
+#sets# 
+#sets# #!! * The PRE-NP-HEAD family of sets
+#sets# 
+#sets# #!! These sets model noun phrases (NPs). The idea is to first define whatever can
+#sets# #!! occur in front of the head of the NP, and thereafter negate that with the
+#sets# #!! expression __WORD - premodifiers__.
+#sets# 
+#sets# 
+#sets# SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr) OR ("buorre") 
+#sets#          OR (Pron Pers Gen) OR (N Gen) OR (A Gen) OR ("buot") OR
+#sets#          Num OR RCmpnd OR CC OR (Pron Dem) OR (Pron Refl Gen) OR (Indef Attr) OR 
+#sets#          (PrfPrc @>N) OR PrsPrc OR (A Ord) OR (Num @>N) OR (A @>N) OR @>N OR @>A OR @>Pron OR @Num< OR (CC @CNP) OR (@>CC) OR (Action Gen) OR (@Pron<) ;
+#sets#          # The strict version of items that can only be premodifiers, not parts of the predicate
+#sets# 
+#sets# #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
+#sets#          
+#sets# SET PRE-NP-V = PrfPrc OR PrsPrc OR Der/NomAg OR Actio OR Der/NomAct OR (V A) OR (Prs Sg3) + Ind OR (Prs Sg1) + Ind OR (Imprt Du2) ;
+#sets#     # to be used together with PRE-NP-HEAD before @>N is disambiguated
+#sets#          
+#sets# SET NP-MEMBER   = PRE-NP-HEAD OR N ;
+#sets# 
+#sets# SET PRE-A-N     = (Pron Pers Gen) OR (Pron Pers Acc) OR (Pron Indef) OR Num OR (A Ord) OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Refl Acc) ; # Acc pga av manglende disambiguering tidlig i fila
+#sets# 
+#sets# SET NOT-PRE-A-N = WORD - PRE-A-N ;
+#sets# 
+#sets# LIST PUNCT-LEFT = (PUNCT LEFT) ;
+#sets# LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
+#sets# 
+#sets# SET PRE-APP   = COMMA OR PUNCT-LEFT OR PRE-NP-HEAD ;
+#sets#  # This set ist not only for what can
+#sets#                             # stand in front of appositions but also
+#sets#                             # postmodifiers.
+#sets# 
+#sets# 
+#sets# 
+#sets# #!! The set __NOT-NPMOD__ is used to find barriers between NPs.
+#sets# #!! Typical usage: ... (*1 N BARRIER NPT-NPMOD) ...
+#sets# #!! meaning: Scan to the first noun, ignoring anything that can be
+#sets# #!! part of the noun phrase of that noun (i.e., "scan to the next NP head")
+#sets# 
+#sets# SET NOT-NPMOD     = WORD - PRE-NP-HEAD OR ABBR ;                     
+#sets# # This is the previous NPNH (npnh) set.
+#sets# # NOT-NPMOD  = "NOT-PRE-NP-HEAD"
+#sets#  
+#sets# SET NOT-NPMOD-ACC     = NOT-NPMOD - Acc OR ABBR ; 
+#sets# SET NOT-NPMOD-ACC-ADV     = NOT-NPMOD - Acc - Adv OR ABBR ; 
+#sets# # To be used in mappingrules, before the disambuation of Acc and Gen.                     
+#sets# 
+#sets# SET NOT-NPMODADV    = WORD - PRE-NP-HEAD - Adv ;                      
+#sets# # NOT-NPMODADV = "NOT-PRE-NP-HEAD-OR-ADV"
+#sets# SET NOT-NPMODADV-INDEF   = WORD - PRE-NP-HEAD - Adv - Indef ;              
+#sets# ## NOT-NPMODADVI = "     ...-OR-INDEF"
+#sets# SET NOT-NPMODADVII  = WORD - PRE-NP-HEAD - Adv - Indef - Ill ;        
+#sets# # Illative indir.obj.
+#sets# SET NOT-NPMODADVIIP = WORD - PRE-NP-HEAD - Adv - Indef - Ill - Pcle ; 
+#sets# # <== is this our NOT-NPMOD set?
+#sets# SET NOT-NPMODCC   = WORD - PRE-NP-HEAD - COMMA - @CNP ;
+#sets# SET NAPP     = WORD - PRE-APP ;
+#sets# 
+#sets# 
+#sets# 
+#sets# #!! * Miscellaneous sets
+#sets# # ------------------
+#sets# LIST Px = PxSg1 PxSg2 PxSg3 PxDu1 PxDu2 PxDu3 PxPl1 PxPl2 PxPl3 ;
+#sets# 
+#sets# LIST GASKAL = "gaskal" "gaskkal" "gaskii" "gaskka" "gaskkas" ;
+#sets#  
+#sets#  # p-positions that like coordination
+#sets#  
+#sets# LIST TIME-PP = "badjel" "čađa" "earret" "gaskkal" "guovddáš" "maŋŋel" "maŋŋil" "maŋŋá" "miehtá" "ovdal" ;
+#sets#  
+#sets# 
+#sets# SET NUM = Num - OKTA ;
+#sets# 
+#sets# # this set does not contain ordinals, I am not sure if that is necessary.
+#sets# 
+#sets# SET NOT-NUM = WORD - Num ;
+#sets# 
+#sets# LIST MANGA = "máŋga" "galle" ;
+#sets#  # Not referred to by any rule.
+#sets# 
+#sets# SET CARDINALS = Num - Ord - MANGA ;
+#sets# 
+#sets# SET NOT-CC = WORD - CC ;
+#sets# 
+#sets# SET NOT-PCLE = WORD - Pcle ;
+#sets# 
+#sets# LIST COMPAR = ("dávji" A Comp) "eanet" "earalágan" "eará" "earret" "seammás" "seammalágan" "seamma_láhkái" ;
+#sets#  
+#sets#  # These combine with "go" Pcle, but COMPAR stands for 'comparison' rather than
+#sets#  # 'comparative'.
+#sets# 
+#sets# LIST CONTRA = "muhto" ;
+#sets#  # In lean muitalan, muhto dál muitalan.
+#sets# 
+#sets# LIST PROSEANTA = "proseanta" "%" ;
+#sets# 
+#sets# SET REAL-CLB = CLB - COMMA ;
+#sets# 
+#sets# 
+#sets# SET NOT-INITIAL-CC = WORD - INITIAL - CC ;
+#sets# 
+#sets# 
+#sets# 
+#sets# #!! * Border sets and their complements
+#sets# # ---------------------------------
+#sets# 
+#sets# SET CP = (Pron Interr) OR (Pron Rel) OR MO ;
+#sets# 
+#sets# LIST BOUNDARYSYMBOLS =  "\;" ":" "-" "–" ;
+#sets# 	
+#sets# SET S-BOUNDARY = CP OR BOUNDARYSYMBOLS OR ("muhto") OR ("de" Adv) OR (Neg Sup) OR @CVP OR ("vel" Adv Qst) ;
+#sets# 	# does not include CS, because of "go" in questions, before it is disambugated.
+#sets# 	# includes CP
+#sets# 	# this one includes @CVP, the conjunction which actually connects two sentences (each with a finite verb) to each other, 
+#sets# 	# and not @CNP, which coordinates internal NP-/AdvP-/AP ... coordination
+#sets# 	# To be used only AFTER the disambiguation of @CVP and @CNP taking place in the chapter right before "Disambiguating pronouns"
+#sets# 
+#sets# 
+#sets# SET BOC = S-BOUNDARY OR BOS ;
+#sets# SET BOC-PUNCT = BOC - ("-") - ("–") ; 
+#sets# SET EOC = S-BOUNDARY OR EOS ;
+#sets# 
+#sets# SET NP-BOUNDARY = BOS OR EOS OR REAL-CLB OR VFIN OR Inf OR (Actio Ess) OR ConNeg OR VGen OR Sup OR PPRON-NOT-GEN OR Recipr OR Po OR Pr OR Pcle OR ("jed") OR Interj OR CS OR CP OR @CVP ;
+#sets# 
+#sets# SET APP-BOUNDARY = REAL-CLB OR VFIN OR Inf OR (Actio Ess) OR ConNeg OR VGen OR Sup OR Recipr OR Po OR Pr OR Pcle OR Interj OR CS OR CP OR PrfPrc - @>N ;
+#sets# # A special barrier used with mapping of appositions. 
+#sets# 
+#sets# # This set contains FMAINV with @, which means that it functions for all kind of mainverbs after the verb-mapping rules 
+#sets# SET SV-BOUNDARY = S-BOUNDARY OR Inf - FAUXV OR Sup OR FMAINV ;
+#sets#  # VFIN-NOT-AUX ;
+#sets#  # should be MAIN-V linked to VFIN-aux to the left. (cg-3)
+#sets# # This set is ment to use in rules for disambiguating due to verbs or verbsets. It contents @.
+#sets# 
+#sets# SET SVF-BOUNDARY = S-BOUNDARY OR VFIN ;
+#sets# 
+#sets# # This set is ment to use in rules for disambiguating due to verbs or verbsets. 
+#sets# # Here we search for either an S-BOUNDARY or a finite verb, either aux or main.
+#sets# 
+#sets# LIST ADVLCASE = Ill Loc Com Ess Ine Ela ;
+#sets# LIST CASE = Nom Acc Gen Ill Loc Com Ess Ine Ela ;
+#sets# 
+#sets# 
+#sets# #!! * Syntactic sets
+#sets# # --------------
+#sets# 
+#sets# LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ>)(@-FOBJ)(@-F<ADVL)(@-FADVL>)(@>A) (@>ADVL) (@ADVL<) (@<ADVL) (@ADVL>) (@ADVL) (@>N) (@APP) (@APP-N<) (@APP-Pron<) (@APP>Pron) (@APP-Num<) (@APP-ADVL<) (@VOC)(@CNP) (@CVP) (@P<) (@>P) (@HNOUN) (@INTERJ) (@Pron<) (@OBJ) (@OBJ>) (@<OBJ) (@OPRED) (@<OPRED) (@OPRED>) (@SPRED<OBJ) (@PCLE) (@COMP-CS<) (@N<) (@SPRED) (@<SPRED) (@SPRED>) (@PPRED) (@Num<) (@SUBJ) (@<SUBJ) (@SUBJ>) (@X);
+#sets#  
+#sets# LIST HEAD = @SUBJ> @<SUBJ @SUBJ @OBJ @OBJ> @<OBJ @ADVL @ADVL> @<ADVL @SPRED> @<SPRED @SPRED @OPRED> @<OPRED @OPRED @-FSUBJ> @-FOBJ> @-FADVL> @-FSPRED> @-F<SUBJ @-F<OBJ @-F<ADVL @-F<SPRED ;
+#sets#  
+#sets# 
+#sets# SET NON-APP = ALLSYNTAG - (@APP);
+#sets# 
+#sets# #!! These were the set types.
 
 
          SECTION         #
 
-#!! !!HABITIVE MAPPING
-
-	# Habitives - HAB
-	
-#!! * __hab1__ 
-MAP:hab1 (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE - Attr (NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(1 FAUXV + HAB-V-TAGS LINK *1 LEAT BARRIER NP-HEAD OR MAIN-V);
-	#$ Mus eai leat girjjit mielde.
-	#% Dorskis sáhttet leat vuoivvas ja meađđemat.
-
-MAP:hab_numo (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE - Attr (NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(1 COPULAS + HAB-V-TAGS LINK 1 COMMA LINK *1 COMMA LINK 1 (N Nom)) ;
-	#%Dus lea, nu mo buot eará bargiin, vuoigatvuohta oahppasoahpamuša lassin maiddái čálalaš bargosoahpamuššii oahppafitnodagain.
-
-#!! * __hab2__ 
-MAP:hab2 (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE - Attr (NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(1 FAUXV + HAB-V-TAGS LINK 1 Adv LINK *1 LEAT BARRIER NOT-ADV-PCLE);
-
-#!! * __hab3__ (<hab> @ADVL>) for hab-actor and hab-case; if leat to the right, and Nom to the right of leat. Lots of restrictions.
-MAP:hab3 (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE - Attr (NEGATE 0 Sem/Group OR Pl - Rel LINK *-1 Indef - BUOT + Nom OR HUMAN + Nom BARRIER NOT-NPMOD-ACC)(NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(NEGATE 0 (Sem/Ani Sem/Group) LINK *1 Sem/Ani BARRIER (N Nom))(NEGATE 0 (Sem/Hum Sem/Group) LINK *1 Sem/Hum BARRIER (N Nom))(NEGATE 0 N OR Pers OR Indef LINK *-1 HAB-ACTOR + HAB-CASE BARRIER NOT-NPMOD-ACC OR CC)(NEGATE -1 Num LINK -1 Num)(*1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE LINK *1 Nom BARRIER S-BOUNDARY);
-	#$ Máhtes lea beana.
-	#% Sis lei unnán dahje ii makkárge oktavuohta earáiguin earretgo internáhtas orodettiin, vaikko máŋggas sis ledje fulkkežagat.
-	#% Juos gorreválggain Sámedikkis lea dárbbašlaš deavdit gáibádusa, ahte okta stivrralahtuin ja su sadjásašlahttu galgaba leat boazodoalu ovddasteaddjit, de galgá boazodoalu ovddasteddjiid loktet badjeliidda dan listtas, mii lea ožžon uhcimus jienaid daid listtaid gaskkas, mat galget ovddastuvvot ja main leat dakkár evttohasat. 
-	#% Ealus leat eanaš álddut.
-
-
-MAP:habInf (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE OR ("dat" Dem) +  HAB-CASE - Attr (1 LEAT + Sg3 LINK 1 Inf) ;
-	#$ Mis lea cahkkehit dola.
-
-#!! * __habNomLeft__ 
-MAP:habNomLeft (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE - Attr ((-1 Nom LINK NEGATE *-1 (Pers Gen) BARRIER NOT-NPMOD) OR (-1 (Sg Gen) LINK -1 (Sg Num Nom) LINK NEGATE *-1 (Pers Gen) BARRIER NOT-NPMOD))(NEGATE -1 Num LINK -1 Num)(*1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE);
-	#$ Mii dus lea?
-
-MAP:habAdvl (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE - Attr  (NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(NEGATE 0 (Sem/Ani Sem/Group) LINK *1 Sem/Ani BARRIER (N Nom))(NEGATE 0 (Sem/Hum Sem/Group) LINK *1 Sem/Hum BARRIER (N Nom))((*1 HAB-CASE BARRIER NOT-NPMOD-ACC LINK *1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE) OR (*1 HAB-CASE BARRIER NOT-NPMODADV LINK *1 FAUXV LINK *1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE));
-	#$ Ii han ovttasge du sogas leat dat namma.
-	#Comment: "bealli" is probably not listed as HAB-ACTOR, even if it could mean "spouce".
-
-#!! * __hab4__ 	
-MAP:hab4 (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE - Attr (NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(1 CC LINK *1 HAB-ACTOR BARRIER NOT-NPMOD LINK *1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE);
-
-
-
-#!! * __hab6__ 
-MAP:hab6 (<hab> @<ADVL) TARGET HAB-ACTOR + HAB-CASE - Attr ((*-1 go BARRIER NOT-NPMOD LINK -1 LEAT + HAB-V-TAGS LINK -1 BOC) OR (*-1 LEAT + Qst BARRIER NOT-NPMOD LINK -1 BOC));
-	#$ Lea go dis ruhta?
-	#$ Leago sámeálbmogis vuoigatvuođat vai eai?
-
-#!! * __hab7__ 
-MAP:hab7 (<hab> @<ADVL) TARGET HAB-ACTOR + HAB-CASE - Attr (*-1 go BARRIER NOT-NPMOD LINK -1 LEAT + HAB-V-TAGS LINK -1 MAIN-V);
-	#$ Dalle mun ferten iskat lea go dus feber.
-
-#!! * __hab8__ This is not HAB
-#MAP:hab8 (<hab> @ADVL>) TARGET HAB-ACTOR + Ill IF (*-1 BOS BARRIER NOT-NPMODADV)(*1 COPULAS BARRIER NOT-ADV-PCLE LINK *1 A OR N BARRIER NOT-ADV-PCLE);
-	#$ Ellii šattai hoahppu.
-#!! * __hab5__  This is not HAB
-#MAP:hab5 (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE (NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(*1 HAB-V BARRIER NOT-ADV-PCLE LINK *1 Nom BARRIER VFIN);
-	#$ Mánás gollot gieđat. 
-
-MAP:hab9 (<hab> @ADVL>) TARGET HAB-CASE IF (-1 FIRSTNAME)(0 Ord)(NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(*1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE);
-	#$ Heinrich njealjádis lea rikkis eamit.
-	
-MAP:hab10 (<hab> @<ADVL) TARGET HAB-ACTOR + HAB-CASE (NEGATE 0 HAB-ACTOR-NOT-HUMAN OR Sem/Group LINK *1 HUMAN + Nom BARRIER S-BOUNDARY) (NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 Num BARRIER S-BOUNDARY LINK 1 HUMAN + Gen)(*-1 LEAT + HAB-V-TAGS BARRIER Nom OR S-BOUNDARY OR MAIN-V LINK -1 ADVLCASE OR Adv OR Po)((*1 Nom BARRIER NOT-NPMOD-ACC) OR (1 CC LINK *1 HAB-CASE BARRIER NOT-NPMOD-ACC LINK *1 Nom BARRIER NOT-NPMOD-ACC));
-	#$ Dál leat sus 137 gáicca.
-	#$ De lea sihke divššohasas ja su lagamus oapmahaččas vuoigatvuohta oažžut dieđuid.
-	#$ Doppe leamaš sámiin stuora deaddu.
-
-#!! * __habDain__ (<hab> @ADVL>) for (Pron Dem Pl Loc) if leat followed by Nom to the right
-MAP:habDain (<hab> @ADVL>) TARGET (Pron Dem Pl Loc)(*1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE - FAUXV LINK 1 Nom) ;
-MAP:habDain2 (<hab> @ADVL>) TARGET (Pron Dem Pl Loc)(-1 Nom LINK -1 (Pron Interr))(*1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE - FAUXV LINK *1 Ess) ;
-	#$ Hui dávjá lea nu ahte dain leat olbmot, geat eai doarvái bures dovdda sámi kultuvrra eaige sin jurddašanvuogi.
-	#$ Makkár vuoigatvuođat dain leat Norgga riikavuložin?
-	#% Dat bulle ja goldne go dain ii leat ruohtas. 
-	#Comment: hard to determin whether 'dain' is HAB or ADVL.
-
-	
-# before relative clause
-MAP:habRel (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE (NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN BARRIER (N Nom))(*1 Rel BARRIER WORD LINK *1 FMAINV BARRIER S-BOUNDARY LINK *1 LEAT + HAB-V-TAGS BARRIER S-BOUNDARY OR MAIN-V);
-	#$ Divššohasas, gii dárbbaša guhkit áiggi ja oktiiheivehuvvon dearvvašvuođabálvalusaid, lea vuoigatvuohta oažžut ráhkaduvvot oktagaslaš plána.
-
-MAP:habEllipse (<hab> @<ADVL) TARGET HAB-ACTOR + HAB-CASE (1 Adv LINK 1 (N Nom))(-1 COMMA LINK -1 (N Nom) LINK *-1 LEAT + HAB-V-TAGS BARRIER NOT-NPMOD LINK -1 HAB-ACTOR + HAB-CASE);
-	#$ Buot gánddain lea dreassa, nieiddain fas gákti.
-
-#!! * __habGen__ (<hab> @<ADVL) hab for Gen; if Gen is located in the end of the sentence and Nom is sentence initial
-MAP:habGen (<hab> @<ADVL) TARGET HAB-ACTOR + Gen (*-1 LEAT + HAB-V-TAGS BARRIER NOT-NPMODADV LINK -1 (N Nom) OR (Dem Nom))(1 EOC) ;
-	#$ Dát lea áhči.
-	
-#!! * __habGenQst__ (<hab> @<ADVL) hab for Gen; in a question sentence. Gen is located sentence initially and SUBJ is found to the right. To the right of SUBJ is copulas
-MAP:<habGenQst (<hab> @<ADVL) TARGET (Pron Interr) + Gen (-1 BOS)(*1 Nom BARRIER NOT-NPMODADV LINK 1 LEAT + HAB-V-TAGS LINK NEGATE *1 FMAINV BARRIER SV-BOUNDARY) ;
-	#$ Gean dat livččii? 
-	#% Gean vuorru lea dál bálkestit birccu?
-
-	#$ Riššat dat gal leat musge, jus eai leačča njuoskan.
-	#$ Dán čieža oassálasti searvvis ii lean oktage boazodoalli, muhto kurssa oahpaheaddjis, Kjell Smestadas, lea doaivva ahte boazodolliide maid galgá gávdnot sierra heivehuvvon fálaldat.
-	#$ Dás ii gávdno eará ágga go ahte njunuš olbmuin gielddas lea vuosteháhku sámegillii, go jo ákkat dán mearrádussii maid váilot, čujuha son das mii dáhpáhuvvá gieldda siste politihkalaččat.
-	#$ Mu mielas goit galggaše sáhttit ovttasbargat, sis dat han leat ollu seamma beroštumit, galggaše goit sin áigumušaid ektui, luonddu gáhttet.
-	#$ Ja son ii dahkan maidege dan jagi, muhto bođii fas nuppi jagi, ja de ledje sus guoimmit mielde, ja sii dahke darfegoađi vuohččan ja vuojehedje sámiid eret dasnai.
-	#$ Sámediggi berošta erenoamážit das ahte ođđa boazodoalloláhka galgá sihkkarastit ja ovddidit boazodoalu vai mis maiddái boahtteáiggis sáhttá leat ceavzilis boazodoallu.
-	#$ Dás lei buohkain vejolašvuohta vuoitit jus beare ledje doarvái áirruid oastán ja dan gal maiddái ollusat dahkege.
-	#$ Juohke darfegoađášlágan goahti muohtaduoddaris ferte dohkket skuvlan; dás galget nuorat, čohkut dahje veallut duorggaid alde buolli árrandola ovddas vuostáiváldit oahpahusa olbmáin, geain alddiset lei unnán máhttu.
-	#$ Buot gánddain lea dreassa, nieiddain fas gákti.
-	#$ Doppe leamaš sámiin stuora deaddu.
-	#$ Giellakantuvrras ii leat formála váldi álggahit gielladoaimmaid etáhtain, muhto veahkehit.
-	#$ Duođalaš nana jáhku geažil lea divššohasas vuoigatvuohta biehttalit vuostáváldimis vara dahje varabuktagiid dahje biehttalit botkemis nealgudeami mii lea jođus.
-	#$ Sin mearridanorgánain berre mearridanváldi leat nu viiddis go vejolaš ja nu čadni go vejolaš.
-	#$ Sámedikkiin lea ráđđeaddi váldi buot sámi beroštumiide guoskevaš áššiin.
-	#$ Sápmelaččat oasálaste maid dasa, muhto lassin ledje sis vel eará resursat.
-	
-	#% Olbmot jáhkke ahte stáhtainternáhtain lei buoret dássi, muhto dat guhkin eret duhtadedje dáláš gáibádusaid.
-	#% Dan ulbmil das lea nannet oktavuođa ja mearridit vejolaš ovttasbargosurggiid mat leat ealáhusa oasálaččaide ávkin.
-	#% Earát su luohkás ledje juo vissa njeallje siiddu su ovdalis matematihkka-girjjis.
-	#% Mánáid-skuvllas gal lei mannan bures, muhto go álggii nuoraid-skuvlii, de ii gillen šat oba bargat ge rehkenastimiin.
-	#% Dávjá muhtun sin fulkkiin lei várjaleaddji, doarjjan sidjiide.
-	#% Das leat buorit lanjat čáppa guovllus.
-	#% Das leat mielde olbmot geain lea sihke suoma ja sámi gullevašvuohta.
-	#% Dat bulle ja goldne go dain ii lean ruohtas.
-	#% Joavkkus leat guokte Riikaoasselávdegotti ovddasteaddji ja 2 Sámedikkis.
-	#% Jus lea sáhka 12 jagi deavdán mánás, gii ii leat ovtta oaivilis mearrádusain, gozihanlávdegoddi galgá gieđahallat mearrádusa.
-	#% Muhtin biirres leat gávcci 12 áirasis leamaš nissonolbmot, ja eará biirres leat buohkat geat leat válljejuvvon leamaš dievddut.
-	#% Politihkas lei 1866 rájes sáhka ahte galggai go stivrregoahtit gii oažžu eatnama láigohit stáhtas.
-	#% Searvegottiin lei dál ráfi miehtá Judea ja Galilea ja Samaria.
-	#% Soabadanráđis galget leat golbma miellahtu ja seamma ollu várrelahtut.
-	#% Sámedikkis lea leamaš čoahkkin 14.03.01.
-
-LIST MEASR-N-SET = (N Sem/Measr) (N Sem/Money) (N Sem/Time) ;
-
-SET MEASR-N = MEASR-N-SET - NOT-TIME ;
 
 
 MAP:pcle (@PCLE) TARGET Pcle ;
 MAP:interj (@INTERJ) TARGET Interj ;
-MAP:>P (@>P) Gen (1 Po) ;
-MAP:>Pcoor (@>P) Gen (1 CC LINK *1 @>P BARRIER NOT-NPMOD) ;
-MAP:>P (@>P) Gen - TIME-N (NEGATE -1 Pr)(1 Pr LINK 1 Gen) ;
-	#$ Sápmelaččat guđet orrot Norgga bealde Deanu, geavahit seammá gávtti go sápmelaččat Suoma bealde Deanu.
 
-MAP:p< (@P<) Gen (*-1 Pr BARRIER NOT-NPMOD)(NEGATE 1 Gen) ;
-MAP:p<coor (@P<) Gen (-1 CRD OR COMMA LINK -1 @P<) ;
-	#$ Maŋŋegiđa ja árrageasi guohtu boazu lulábeali rámaid, čohkaid ja jekkiid.
 
-LIST JAHKI = "jahke" "jahki" ;
 
 MAP:num< (@Num<) TARGET (N Sg Gen)(*-1 NUM + (Sg Nom) OR NUM + (Sg Acc) BARRIER NOT-A LINK NOT -1 JAHKI) ;
 
@@ -1104,7 +1221,7 @@ MAP:n<:Refl (@N<) TARGET (Refl Nom) IF ((*-1 (N Nom) BARRIER NOT-ADV-PCLE) OR (-
 
 
 #!! * __>pron1__ (@>Pron) for GRADE-ADV, DUSSE, BUOT if; first one to the right is Pron
-MAP:>pron1 (@>Pron) GRADE-ADV OR DUSSE OR BUOT (1 Pron) ;
+#MAP:>pron1 (@>Pron) GRADE-ADV OR DUSSE OR BUOT (1 Pron) ; #Lene: ??
 	#$ Ja nugo olmmoš gohčodii guđege ealli, nu dat šattai navdojuvvot.
 	
 #!! * __>pron2__ (@>Pron) for (Refl Nom) if; first one to the right is Refl
@@ -1198,7 +1315,11 @@ MAP:voc (@VOC) TARGET Nom IF (*-1 COMMA BARRIER NOT-NP OR CC LINK *-1 (V Sg2) OR
 	#$ Vuoi du, Betsaida!
 	
 MAP:voc (@VOC) TARGET Nom IF (-1 Attr LINK *-1 COMMA BARRIER NOT-NP OR CC LINK *-1 (V Sg2) OR (V Du2) OR (V Pl2) OR (Pron Sg2) OR (Pron Du2) OR (Pron Pl2) LINK NOT 0 LEAT)(1 EOS)(0 HUMAN)(NEGATE 0 Sg LINK *-1 V-SG3 BARRIER REAL-V);
-	
+
+MAP:voc (@VOC) TARGET HUMAN IF (*-1 BOS BARRIER WORD - Interj)(1 COMMA LINK *1 VFIN) ;	
+	#$ - Áhčči, mii lea duot čáppa alit násti doppe guhkkelis?
+	#$ Áhččámet, don guhte leat almmis. 
+
 	
 MAP:voc (@VOC) TARGET (N Nom) IF (*-1 COMMA BARRIER NP-BOUNDARY LINK *-1 ("boahtin" Nom) BARRIER REAL-V OR S-BOUNDARY LINK -1 ("bures"))(1 EOC);
 	## Bures boahtin Čáhppes Bearralii, Miss Turner!	
@@ -1611,8 +1732,11 @@ MAP:advl>cs (@ADVL>CS) TARGET ("beare" Adv) (1 CS LINK *1 FMAINV) ;
 
 LIST ADVL = Adv Ill Com Loc Po Pr Ine Ela ;
 
-MAP:r39 (@ADVL<) TARGET (N Sg Loc) IF (-1 ("oktii") OR ("guktii") OR ("golbmii") OR ("njelljii") OR ("vihttii") OR ("geardde"))(0 TIME-N);
+MAP:advl< (@ADVL<) TARGET (N Sg Loc) IF (-1 ("oktii") OR ("guktii") OR ("golbmii") OR ("njelljii") OR ("vihttii") OR ("geardde"))(0 TIME-N);
 	#$ Mun ferten málestit guktii vahkus.
+MAP:advl< (@ADVL<) (Pl Acc) (-1 MO)(*1 ("?")) ;
+	#$ Gos nevrriid Fávdna lei fidnen dan fiinna dávgebissu?
+	
 
 SET MOD-ADV = DUSSE OR ("njuolga") OR ("njuolgga") OR EASKKA OR ("gitta") ;
 
@@ -1734,7 +1858,7 @@ MAP:comma<advlEOS (@<ADVL) TARGET Adv (*-1 COMMA BARRIER V LINK *-1 FMAINV BARRI
 	#$ Guovdageainnu guovllut gal leat vel mu mielas sestojuvvon oalle bures dássážii, movt šat guhká.
 	#$ De eai leat šat dušše tálat, muhto bustávat maid.
 	
-MAP:<advlØ (@<ADVL) TARGET Adv OR TIME-N (*-1 Nom)(*1 Po OR EOS BARRIER SV-BOUNDARY) ;
+MAP:<advlØ (@<ADVL) TARGET Adv OR TIME-N (*-1 Nom BARRIER (":"))(*1 Po OR EOS BARRIER SV-BOUNDARY) ;
 	#$ Maid mii dál vihtaniiguin?
 	#$ Lákca vel alde!
 	#$ Sámi dutkan ii leat dan dihte soaittáhagas válljejuvvon dutkansuorgi.
@@ -1946,7 +2070,6 @@ MAP:hnoun>ifV (@HNOUN) TARGET NP-HEAD-NOM - A OR DUPRON + Nom (*1 FMAINV BARRIER
 	#$ Ávdugasat sii geat moraštit.
 	#$ Gonagas Agrippa ja dii buohkat geat lehpet dás minguin!
 	#$ Olbmot geat ellet náitoslágan dahje guimmešvuođalágan gaskavuođain.
-	#$ Áhččámet, don guhte leat almmis. 
 	#$ Dat geat ieža eai máhttán oppanassiige lohkat girjjiid.
 	#% Sihke son ja su viellja Paul Danielsen, gii lei ovdaolmmoš vieljas maŋis, vácciiga osiid skuvlla Haviikkas.
 
@@ -1968,9 +2091,10 @@ MAP:hnounInterj (@HNOUN) TARGET Acc (*-1 Interj BARRIER NOT-NPMOD) ;
 
 
 
-MAP:HNOUN<advl (@N<) TARGET ADVL (*-1 @HNOUN - Num BARRIER CRD) ; 
+MAP:HNOUN<advl (@N<) TARGET ADVL (*-1 @HNOUN BARRIER CRD OR (":") LINK NOT 0 Num OR Pron) ; 
 MAP:HNOUN<advl (@N<) TARGET ADVL (-1 CRD LINK -1 @N<)(1 EOS) ; 
-MAP:advl>HNOUN (@ADVL>) TARGET ADVL (*1 @HNOUN BARRIER CRD) ; 
+MAP:HNOUN<advl (@ADVL>) TARGET ADVL (*-1 @HNOUN BARRIER CRD OR (":")) ; 
+MAP:advl>HNOUN (@ADVL>) TARGET ADVL (*1 @HNOUN BARRIER CRD OR (":")) ; 
 MAP:HNOUN<obj (@<OBJ) TARGET Acc (*-1 @HNOUN) ;
 	#% Birasgáhttenlihkadus ja álgoálbmogat - ovttasbargit vai vuostálágaid? 
 MAP:obj>HNOUN (@OBJ>) TARGET Acc (*1 @HNOUN) ; 
@@ -2049,6 +2173,7 @@ SELECT SEMTAGS ;
 #!! proper nouns.  
 
 SUBSTITUTE (Sem/Act) (*) TARGET (Sem/Act) ; #RemoveFromApertium
+SUBSTITUTE (Sem/Amount) (*) TARGET (Sem/Amount) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Ani) (*) TARGET (Sem/Ani) (NOT 0 Prop) ; #RemoveFromApertium
 SUBSTITUTE (Sem/AniProd) (*) TARGET (Sem/AniProd) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Body) (*) TARGET (Sem/Body) ; #RemoveFromApertium
@@ -2061,17 +2186,22 @@ SUBSTITUTE (Sem/Ctain-clth) (*) TARGET (Sem/Ctain-clth) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Ctain-abstr) (*) TARGET (Sem/Ctain-abstr) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Curr) (*) TARGET (Sem/Curr) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Date) (*) TARGET (Sem/Date) ; #RemoveFromApertium
+SUBSTITUTE (Sem/Dir) (*) TARGET (Sem/Dir) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Domain) (*) TARGET (Sem/Domain) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Drink) (*) TARGET (Sem/Drink) ; #RemoveFromApertium
+SUBSTITUTE (Sem/DummyTag) (*) TARGET (Sem/DummyTag) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Edu) (*) TARGET (Sem/Edu) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Emo) (*) TARGET (Sem/Emo) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Event) (*) TARGET (Sem/Event) (NOT 0 Prop) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Feat-psych) (*) TARGET (Sem/Feat-psych) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Fem) (*) TARGET (Sem/Fem) (NOT 0 Prop) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Food) (*) TARGET (Sem/Food) ; #RemoveFromApertium
+SUBSTITUTE (Sem/Food-med) (*) TARGET (Sem/Food-med) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Furn) (*) TARGET (Sem/Furn) ; #RemoveFromApertium
+SUBSTITUTE (Sem/Game) (*) TARGET (Sem/Game) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Group) (*) TARGET (Sem/Group) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Hum) (*) TARGET (Sem/Hum) (NOT 0 Prop) ; #RemoveFromApertium
+SUBSTITUTE (Sem/Ideol) (*) TARGET (Sem/Ideol) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Year) (*) TARGET (Sem/Year) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Lang) (*) TARGET (Sem/Lang) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Mal) (*) TARGET (Sem/Mal) (NOT 0 Prop) ; #RemoveFromApertium
@@ -2086,6 +2216,7 @@ SUBSTITUTE (Sem/Perc-emo) (*) TARGET (Sem/Perc-emo) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Perc-phys) (*) TARGET (Sem/Perc-phys) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Plant) (*) TARGET (Sem/Plant) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Plc) (*) TARGET (Sem/Plc) (NOT 0 Prop) ; #RemoveFromApertium
+SUBSTITUTE (Sem/Plc-abstr) (*) TARGET (Sem/Plc-abstr) (NOT 0 Prop) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Plc-line) (*) TARGET (Sem/Plc-line) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Plc-water) (*) TARGET (Sem/Plc-water) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Plc-elevate) (*) TARGET (Sem/Plc-elevate) ; #RemoveFromApertium
@@ -2108,13 +2239,14 @@ SUBSTITUTE (Sem/Feat) (*) TARGET (Sem/Feat) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Part) (*) TARGET (Sem/Part) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Tool) (*) TARGET (Sem/Tool) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Tool-catch) (*) TARGET (Sem/Tool-catch) ; #RemoveFromApertium
+SUBSTITUTE (Sem/Tool-measr) (*) TARGET (Sem/Tool-measr) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Tool-music) (*) TARGET (Sem/Tool-music) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Feat-phys) (*) TARGET (Sem/Feat-phys) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Clth-part) (*) TARGET (Sem/Clth-part) ; #RemoveFromApertium
 SUBSTITUTE (Sem/Body-abstr) (*) TARGET (Sem/Body-abstr) ; #RemoveFromApertium
 SUBSTITUTE (Sem/State) (*) TARGET (Sem/State) ; #RemoveFromApertium
+SUBSTITUTE (Sem/State-sick) (*) TARGET (Sem/State-sick) ; #RemoveFromApertium
 SUBSTITUTE (<vdic>) (*) TARGET (<vdic>) ;
-SUBSTITUTE (MWE) (*) TARGET (MWE) ;
 
 
 	#=====#

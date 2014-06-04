@@ -4,8 +4,8 @@
 
 # First attempt at building disambiguation fsts. The analyser differs from the
 # regular analyser by NEITHER removing variant and homonym tags, NOR removing
-# semantic tags or Use/Sub. The variant and homonym tags are there to help choosing
-# forms, as are Use/Sub and Sem-tags.
+# semantic tags or Err/Sub. The variant and homonym tags are there to help choosing
+# forms, as are Err/Sub and Sem-tags.
 analyser-disamb-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst     \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
@@ -70,8 +70,8 @@ analyser-disamb-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst     \
 
 # First attempt at building disambiguation fsts. The analyser differs from the
 # regular analyser by NEITHER removing variant and homonym tags, NOR removing
-# semantic tags or Use/Sub. The variant and homonym tags are there to help choosing
-# forms, as are Use/Sub and Sem-tags.
+# semantic tags or Err/Sub. The variant and homonym tags are there to help choosing
+# forms, as are Err/Sub and Sem-tags.
 analyser-disamb-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst        \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst             \

@@ -1,0 +1,82 @@
+# Make initial downcasing after the misnamed U.Cap.Opt
+# This gives oslolaš across the board
+# like Pariisi -> pariisilainen
+
+# ---- starts here: ------
+
+define compoundtag  [ %+SgCmp      | %+SgNomCmp      | %+SgGenCmp      | %+PlGenCmp
+					| %+CmpN/First | %+CmpN/Last     | %+CmpN/None     | %+CmpN/Only
+					| %+CmpN/SgLeft| %+CmpN/SgNomLeft| %+CmpN/SgGenLeft| %+CmpN/PlGenLeft
+					| %+CmpN/All   | %+CmpN/Def      | %+CmpN/DefSgGen | %+CmpN/DefPlGen
+					] ;
+
+define Flag %@U%.Cap%.Opt%@ ;
+
+read regex [ 
+A -> a,
+B -> b,
+C -> c,
+D -> d,
+E -> e,
+F -> f,
+G -> g,
+H -> h,
+I -> i,
+J -> j,
+K -> k,
+L -> l,
+M -> m,
+N -> n,
+O -> o,
+P -> p,
+Q -> q,
+R -> r,
+S -> s,
+T -> t,
+U -> u,
+V -> v,
+W -> w,
+X -> x,
+Y -> y,
+Z -> z,
+Á -> á,
+Č -> č,
+Đ -> đ,
+Ŋ -> ŋ,
+Š -> š,
+Ŧ -> ŧ,
+Ž -> ž
+|| .#. FLAG (compoundtag)*       _ ,
+       FLAG (compoundtag)* ?* %- _
+
+# ---- ends here: ------
+
+# The lower context fixes issue when downcasing words like Davvi-Suopma
+# -> davvi-suopmelaš
+
+# Kept for reference: The old version, i.e., 
+# The Book's treatment of paloaltolainen and pariisilainen, p. 368 ff.
+# Allow optional initial downcasing after @U.Cap.Opt@ 
+#A (->) a, B (->) b, C (->) c, D (->) d, E (->) e, 
+#F (->) f, G (->) g, H (->) h, I (->) i, J (->) j, 
+#K (->) k, L (->) l, M (->) m, N (->) n, O (->) o, 
+#P (->) p, Q (->) q, R (->) r, S (->) s, T (->) t, 
+#U (->) u, V (->) v, W (->) w, X (->) x, Y (->) y, 
+#Z (->) z, Á (->) á,
+#Č (->) č, Đ (->) đ, Ŋ (->) ŋ, Š (->) š, Ŧ (->) ŧ, Ž (->) ž
+#|| .#. %@U%.Cap%.Opt%@ _ 
+#.o. 
+# No uppercase in the middle of a downcasable word
+#A->a, B->b, C->c, D->d, E->e, F->f, G->g, H->h,
+#I->i, J->j, K->k, L->l, M->m, N->n, O->o, P->p,
+#Q->q, R->r, S->s, T->t, U->u, V->v, W->w, X->x,
+#Y->y, Z->z  || %@U%.Cap%.Opt%@ ?+ _
+#.o. 
+# Eliminate internal spaces inside a downcasable word 
+# Spaces are indicated here with the literal 
+# underscore character 
+#%_  -> [] || .#. %@U%.Cap%.Opt%@ ?+ _ 
+
+] ;
+
+substitute defined Flag for FLAG

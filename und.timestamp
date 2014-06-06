@@ -1,4 +1,11 @@
-$Rev: 94834 $
+$Rev: 95796 $
+Properly handle downcasing of derived proper nouns as well as optional initial
+upper case. The optional initial upper-casing doesn't work for derived proper
+nouns when using Hfst because of an unimplemented featuare in hfst-xfst. It is
+reported to the hfst team. Increased gtd core version number due to new scripts
+and possible dependencies in the gtd core.
+
+r94834:
 Extracting flag diacritics, to build regexes that can ignore them in certain
 cases (like optional initial upper case). Requires new version of the gtd core.
 At the same time split tag extraction in two - the first step extracts the whole

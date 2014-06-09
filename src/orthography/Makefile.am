@@ -22,11 +22,26 @@ GT_ORTHOGRAPHIC_FSTS+=allcaps.hfst \
 					  downcase-derived_proper-strings.hfst
 endif
 if CAN_XFST
-GT_ORTHOGRAPHIC_FSTS+=allcaps.xfst \
+
+# Variable assignment is split in two, to allow the making of inverted fst's.
+# This is required because of the inverted behavior of Xerox' lookup tool.
+
+# 1. list the target fst's:
+GT_ORTHOGRAPHIC_XFSTS=allcaps.xfst \
 					  inituppercase.xfst \
 					  spellrelax.xfst \
 					  spellrelax-mobile-keyboard.xfst \
 					  downcase-derived_proper-strings.xfst
+
+# 2. assign this list to the general list of fst's to build:
+GT_ORTHOGRAPHIC_FSTS+=$(GT_ORTHOGRAPHIC_XFSTS)
+
+# 3. also assign a modified variant of it to a variable used to build fst's only
+#    used when testing. These fst's are the inversion of the original, thus they
+#    work as expected when used with Xerox' lookup tool. The modification is a
+#    new suffix to distinguish them from the real targets.
+GT_TEST_ORTH_XFSTS=$(GT_ORTHOGRAPHIC_XFSTS:.xfst=.inv.xfst)
+
 endif
 
 # This pattern rule is required to block inversion of the xfscript fst's.

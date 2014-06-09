@@ -2,7 +2,7 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = phonology morphology syntax
+SUBDIRS = phonology orthography morphology syntax
 
 ######## Test targets: ###########
 

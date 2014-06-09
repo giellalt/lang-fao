@@ -62,6 +62,7 @@ fstdir=${abs_srcdir:${#roottestdir}:${#roottestdir}}
 # dir up, and then in the identified fst dir (see above):
 analyserfile=./$relpath/../$fstdir/analyser-$transducer
 generatorfile=./$relpath/../$fstdir/generator-$transducer
+bare_fst_file=./$relpath/../$fstdir/$transducer
 pythonbin=@PYTHON@
 runtests="$pythonbin @GTCORE@/scripts/morph-test.py"
 
@@ -143,15 +144,33 @@ for f in $fsttype; do
 	    continue
 	fi
 	# Check whether the actual fst's exist, run the tests if true, FAIL if not:
+	# First check for analysis tests only:
     if test "$halftest" == "ana" -a -f "$analyserfile.$f"; then
 		let "transducer_found += 1"
 		printf "$leadtext $(basename $analyserfile.$f) + $testfileshort - "
 		fstoptions="--morph $analyserfile.$f"
 		run_tests
+	# Then check for generation tests only:
 	elif test "$halftest" == "gen" -a -f "$generatorfile.$f"; then
 		let "transducer_found += 1"
 		printf "$leadtext $(basename $generatorfile.$f) + $testfileshort - "
 		fstoptions="--gen $generatorfile.$f"
+		run_tests
+	# Then check for generation test used for other things than word form gener:
+	# This must be split in two because of Xerox' inverted lookup style.
+	elif test "$halftest" == "gen" \
+		   -a "$f" == "hfst" \
+		   -a -f "$bare_fst_file.$f"; then
+		let "transducer_found += 1"
+		printf "$leadtext $(basename $bare_fst_file.$f) + $testfileshort - "
+		fstoptions="--gen $bare_fst_file.$f"
+		run_tests
+	elif test "$halftest" == "gen" \
+		   -a "$f" == "xfst" \
+		   -a -f "$bare_fst_file.inv.$f"; then
+		let "transducer_found += 1"
+		printf "$leadtext $(basename $bare_fst_file.inv.$f) + $testfileshort - "
+		fstoptions="--gen $bare_fst_file.inv.$f"
 		run_tests
 	elif test "$halftest" == "full" \
 		-a -f "$analyserfile.$f"    \
@@ -168,7 +187,7 @@ for f in $fsttype; do
 		fi
 		if test "$halftest" == "gen" -o "$halftest" == "full"; then
 			echo "FAIL: Generator file not found! $(basename $generatorfile.$f)"
-			echo "FAIL: $generatorfile.$f"
+			echo "FAIL: full path: $generatorfile.$f"
 		fi
 		echo "FAIL: referenced by: $testfileshort"
 		echo "FAIL: in $(pwd)"

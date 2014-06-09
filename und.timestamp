@@ -1,4 +1,11 @@
-$Rev: 95796 $
+$Rev: 95955 $
+Forgot two files in the previous commit.
+
+r95954:
+Added support for testing the fst for initial upper casing of strings. This also
+includes yaml test support for non-analysing/-genereting fst's.
+
+r95796:
 Properly handle downcasing of derived proper nouns as well as optional initial
 upper case. The optional initial upper-casing doesn't work for derived proper
 nouns when using Hfst because of an unimplemented featuare in hfst-xfst. It is

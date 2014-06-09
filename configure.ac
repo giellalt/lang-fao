@@ -134,6 +134,7 @@ AC_CONFIG_FILES([Makefile \
                  test/tools/spellcheckers/Makefile \
                  test/src/Makefile \
                  test/src/morphology/Makefile \
+                 test/src/orthography/Makefile \
                  test/src/phonology/Makefile \
                  test/src/syntax/Makefile \
                  tools/Makefile \

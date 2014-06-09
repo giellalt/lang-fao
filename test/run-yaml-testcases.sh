@@ -105,6 +105,6 @@ rm -f $testtotalsfile
 printf "SUMMARY for the \033[0;33m$summaryhalftext$transducer\033[m fst(s): "
 printf "\033[0;32mPASSES: $totalpasses\033[m / "
 printf "\033[1;31mFAILS: $totalfails\033[m / "
-printf "\033[0;34mTOTAL:  $totaltotals\033[m\n\n"
+printf "\033[0;34mTOTAL: $totaltotals\033[m\n\n"
 
 source $srcdir/$relpath/error-handling-stubs.sh

@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen:   ../../../src/inituppercase.hfst
+  xerox:
+    Gen:   ../../../src/inituppercase.xfst
+    App: lookup
+
+Tests:
+
+# Please add tests for each possible initial letter.
+# Beyond the initial letter, the strings can be random.
+
+# Possible lower case letters of the alphabet:
+#
+# a b c d e f g h i ï j k l m n o p q r s t u v w x y z
+# æ ä ø ö å
+# á é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý þ ñ ð ß ç
+# č ǩ ǯ ǧ ž đ ǥ ʒ š ŋ
+
+# This test sample should be replaced with real strings from
+# the language in question:
+  Optional Initial Upper:
+    oslo: [oslo, Oslo]
+    hAre: [hAre, HAre]
+    teST: [teST, TeST]

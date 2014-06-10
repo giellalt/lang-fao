@@ -46,10 +46,10 @@ endif
 
 # This pattern rule is required to block inversion of the xfscript fst's.
 # We do want inversion in the general case, but not for the orthographic fst's.
-%s.hfst: %s.tmp.hfst
-	$(AM_V_GEN)cp -f $< $@
+%.hfst: %.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
 
-%s.xfst: %s.tmp.xfst
-	$(AM_V_GEN)cp -f $< $@
+%.xfst: %.tmp.xfst
+	$(AM_V_CP)cp -f $< $@
 
 include $(top_srcdir)/am-shared/src-orthography-dir-include.am

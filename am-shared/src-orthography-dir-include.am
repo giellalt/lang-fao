@@ -23,6 +23,10 @@ AM_V_RGX2FST   = $(AM_V_RGX2FST_@AM_V@)
 AM_V_RGX2FST_  = $(AM_V_RGX2FST_@AM_DEFAULT_V@)
 AM_V_RGX2FST_0 = @echo "  RGX2FST  $@";
 
+AM_V_CP   = $(AM_V_CP_@AM_V@)
+AM_V_CP_  = $(AM_V_CP_@AM_DEFAULT_V@)
+AM_V_CP_0 = @echo "  CP       $@";
+
 ####### Source file defs: ########
 
 #! @var GT_ORTHOGRAPHIC_SRCS names of orthographic rule source files, should

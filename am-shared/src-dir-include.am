@@ -130,7 +130,6 @@ analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.hfst\" \
 			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
 			.o. @\"filters/remove-word-boundary.hfst\"            \
@@ -175,12 +174,12 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
 			.o. @\"filters/remove-word-boundary.xfst\"            \
-			.o. @\"orthography/spellrelax.xfst\"                  \
 			; \n\
 			define fst \n\
 			set flag-is-epsilon ON\n\
 			read regex fst \
 			.o. @\"orthography/inituppercase.xfst\"               \
+			.o. @\"orthography/spellrelax.xfst\"                  \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
@@ -217,7 +216,6 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.hfst\" \
 			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
 			.o. @\"filters/remove-word-boundary.hfst\"            \
@@ -299,7 +297,6 @@ analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst            \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.hfst\" \
 			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
 			.o. @\"filters/remove-word-boundary.hfst\"            \
@@ -387,7 +384,6 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.hfst\" \
 			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
 			.o. @\"filters/remove-word-boundary.hfst\"            \

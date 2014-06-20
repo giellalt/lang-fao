@@ -203,13 +203,13 @@ analyser-mt-apertium-desc.%.tmp.hfst: \
 # Relabel GTD tags to Apertium tags - analyser:
 # % = TARGETLANG
 # Step 2a - apertium.tmp -> apertium
-#         - BOTH target language specific reordering AND relabeling
+#         - BOTH target language specific modifying AND relabeling
 analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
-								  tagsets/reorder-tags.%.hfst \
+								  tagsets/modify-tags.%.hfst \
 								  $(srcdir)/tagsets/apertium.%.relabel
 	$(AM_V_RGX2FST)$(PRINTF) "\
    		@\"$<\" \
-	.o. @\"tagsets/reorder-tags.$*.hfst\" \
+	.o. @\"tagsets/modify-tags.$*.hfst\" \
     	;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
 		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) \
@@ -231,6 +231,20 @@ analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
 # Relabel GTD tags to Apertium tags - analyser:
 # % = TARGETLANG
 # Step 2c - apertium.tmp -> apertium
+#         - ONLY target language specific modifying
+analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
+								  tagsets/modify-tags.%.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+   		@\"$<\" \
+	.o. @\"tagsets/modify-tags.$*.hfst\" \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+		-o $@
+
+# Relabel GTD tags to Apertium tags - analyser:
+# % = TARGETLANG
+# Step 2d - apertium.tmp -> apertium
 #         - NO target language specific processing - just copy
 analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst
 	$(AM_V_CP)cp -f $< $@

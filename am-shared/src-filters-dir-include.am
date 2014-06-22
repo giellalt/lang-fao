@@ -50,7 +50,7 @@ sigma.txt: $(top_builddir)/src/morphology/$(GTLANG).lexc.hfst
 		| grep -A1 '^sigma set' \
 		| grep -v '^sigma set' \
 		| sed 's/, /\\\\\\/g' \
-		| tr '\\\' '\n' \
+		| perl -pe 's/\\\\\\/\n/g' \
 		| grep -v '^$$' \
 		| egrep -v '(@_EPSILON_SYMBOL_@|@_IDENTITY_SYMBOL_@|@_UNKNOWN_SYMBOL_@)' \
 		> $@

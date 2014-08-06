@@ -92,8 +92,7 @@ generated_files/$(GTLANG).all.lexc: $(GT_LEXC_ROOT) \
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f $(GT_LEXICAL) \
-		*.hfst *.xfst *.script generated_files/*.all.lexc
+	-rm -f *.all.* *fst *.script generated_files/*.lexc
 
 maintainer-clean-local:
 	-rm -f $(GENERATED_LEXC_SRCS)

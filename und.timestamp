@@ -1,4 +1,8 @@
-$Rev: 98024 $
+$Rev: 98034 $
+Encapsulated most shell variable names in {} to handle hyphens etc in the
+variable names (after merge/update substitution of the __UND__ string).
+
+r98024:
 Added a dir src/morphology/generated_files/ containing files generated during
 the build process. This is done to make a clear separation between files to be
 edited and files to be ignored. Also added a directory src/morphology/incoming/
@@ -6,7 +10,8 @@ to hold incoming lexical resources used to build the lexc or xml source files.
 Both dirs have a 00README.txt file explaining their use.
 
 r97047:
-Added WANT_OAHPA option for analysers for all languages (until now only generator)
+Added WANT_OAHPA option for analysers for all languages (until now only
+generator)
 
 r97041:
 Added oahpa analyser as target (oahpa here meaning L2 transducer)

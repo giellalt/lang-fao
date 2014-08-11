@@ -192,6 +192,7 @@ if CAN_HFST
 if CAN_LOCALSYNC
 
 OXT_FILES+=$(GTLANG2)_LO-voikko-3.6-32b-win.oxt \
+           $(GTLANG2)_LO-voikko-3.6-32b-mac.oxt \
            $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt
 
 endif # CAN_LOCALSYNC
@@ -233,16 +234,24 @@ OXT_ROOT_DIR=$(GTHOME)/prooftools/toollibs/LibreOffice-voikko
 # copy to ./
 $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt: $(GT_SPELLING_HFST)
 	$(AM_V_GEN)rm -f $@ && \
-		$(MKDIR_P) build/mac/ && \
-		cd build/mac && \
+		$(MKDIR_P) build/mac41/ && \
+		cd build/mac41 && \
 		$(RSYNC) -av $(OXT_ROOT_DIR)/4.1-32b-mac/ ./ && \
+		cp ../../$< 3/ && \
+		$(ZIP) -r $(ZIPFLAGS) ../../$@ *
+
+$(GTLANG2)_LO-voikko-3.6-32b-mac.oxt: $(GT_SPELLING_HFST)
+	$(AM_V_GEN)rm -f $@ && \
+		$(MKDIR_P) build/mac36/ && \
+		cd build/mac36 && \
+		$(RSYNC) -av $(OXT_ROOT_DIR)/3.6-32b-mac/ ./ && \
 		cp ../../$< 3/ && \
 		$(ZIP) -r $(ZIPFLAGS) ../../$@ *
 
 $(GTLANG2)_LO-voikko-3.6-32b-win.oxt: $(GT_SPELLING_HFST)
 	$(AM_V_GEN)rm -f $@ && \
-		$(MKDIR_P) build/win/ && \
-		cd build/win && \
+		$(MKDIR_P) build/win36/ && \
+		cd build/win36 && \
 		$(RSYNC) -av $(OXT_ROOT_DIR)/3.6-32b-win/ ./ && \
 		cp ../../$< 3/ && \
 		$(ZIP) -r $(ZIPFLAGS) ../../$@ *
@@ -251,10 +260,15 @@ DATE=$(shell date +%Y%m%d)
 UPLOADSITE=sd@divvun.no:static_files/oxts
 
 upload:
+	scp $(GTLANG2)_LO-voikko-3.6-32b-mac.oxt \
+		$(UPLOADSITE)/$(GTLANG2)_LO-voikko-3.6-32b-mac-$(DATE).oxt
 	scp $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt \
 		$(UPLOADSITE)/$(GTLANG2)_LO-voikko-4.1-32b-mac-$(DATE).oxt
 	scp $(GTLANG2)_LO-voikko-3.6-32b-win.oxt \
 		$(UPLOADSITE)/$(GTLANG2)_LO-voikko-3.6-32b-win-$(DATE).oxt
+	ssh sd@divvun.no "cd staticfiles/oxts/ && \
+	   ln -sf $(GTLANG2)_LO-voikko-3.6-32b-mac-$(DATE).oxt \
+	          $(GTLANG2)_LO-voikko-3.6-32b-mac.oxt"
 	ssh sd@divvun.no "cd staticfiles/oxts/ && \
 	   ln -sf $(GTLANG2)_LO-voikko-4.1-32b-mac-$(DATE).oxt \
 	          $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt"

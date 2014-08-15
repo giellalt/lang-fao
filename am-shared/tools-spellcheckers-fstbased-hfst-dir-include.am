@@ -143,21 +143,29 @@ $(CORPUSNAME).clean.txt: \
 
 # calculate unit weight, smoothed using ALPHA:
 %.unitweight.txt: %.wordcount.txt %.typecount.txt
-	$(AM_V_GEN)paste $*.wordcount.txt $*.typecount.txt |\
+	$(AM_V_GEN)paste $^ |\
 		sed -e "s/^/scale=5; -l($(ALPHA)\/(/" \
 		-e "s/	/ + ($(ALPHA) */" -e "s/$$/)))/" |\
 		bc -l > $@
 
 # add tropical weights to the corpus:
 %.tropical.txt: %.uniq.txt %.wordcount.txt %.typecount.txt
-	$(AM_V_GEN)cat $*.uniq.txt |\
+	$(AM_V_GEN)cat $< |\
 		$(AWK) -v CS="$$(cat $*.wordcount.txt)" -v ALPHA=$(ALPHA) \
-		-v DS="$$(cat $*.typecount.txt)" -f uniqc2tropical.awk > $@
+		-v DS="$$(cat $*.typecount.txt)" -f $(srcdir)/uniqc2tropical.awk > $@
 
 # build an fst of surface forms with tropical weights for each word form:
 %.surfs.hfst: %.tropical.txt
 	$(AM_V_GEN)cat $< |\
 		$(HFST_STRINGS2FST) -j $(HFST_FLAGS) -f openfst-tropical -o $@
+
+# Keep these intermediate targets when building using --debug:
+.SECONDARY: spellercorpus.sort.txt \
+            spellercorpus.surfs.hfst \
+            spellercorpus.tropical.txt \
+            spellercorpus.typecount.txt \
+            spellercorpus.wordcount.txt \
+            word-boundary.hfst
 
 ####### Speller acceptor: #######
 # Build the automaton used for the speller
@@ -278,6 +286,6 @@ upload:
 
 ####### Other targets: ###########
 clean-local:
-	-rm -rf *.hfst *.xfst *.zhfst 3 easteregg.*
+	-rm -rf *.hfst *.xfst *.zhfst 3 easteregg.* $(CORPUSNAME).*
 
 # vim: set ft=automake:

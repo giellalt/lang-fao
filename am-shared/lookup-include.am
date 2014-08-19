@@ -33,6 +33,10 @@
 %.lookup.hfst: %.hfst
 	$(AM_V_CP)cp $< $@
 
+# We also want a generic build rule for making optimised lookup hfst's:
+%.hfstol: %.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -w -i $< -o $@
+
 ####### Xerox build rules: #######
 
 # The fst used for composition should be taken as is, just copy:

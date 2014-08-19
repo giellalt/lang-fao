@@ -493,6 +493,7 @@ transcriptor-text2%-desc.xfst: \
 		 quit\n" | $(XFST) $(VERBOSITY)
 
 # Create generic tagset variants of *analyzers*
+# HFST:
 # Standard descriptive
 analyser-%-desc.hfst: analyser-gt-desc.hfst tagsets/%.relabel
 	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
@@ -500,12 +501,34 @@ analyser-%-desc.hfst: analyser-gt-desc.hfst tagsets/%.relabel
 		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
 		-o $@
 
+# Relabeling using compiled regex:
+analyser-%-desc.hfst: analyser-gt-desc.hfst tagsets/%.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t -i $< -o $<.tmp
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			    @\"$<.tmp\" \
+			.o. @\"tagsets/$*.hfst\".i \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+	$(AM_V_at)rm -f $<.tmp
+
 # Standard normative
 analyser-%-norm.hfst: analyser-gt-norm.hfst tagsets/%.relabel
 	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
 		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
 		-o $@
+
+# Relabeling using compiled regex:
+analyser-%-norm.hfst: analyser-gt-norm.hfst tagsets/%.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t -i $< -o $<.tmp
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			    @\"$<.tmp\" \
+			.o. @\"tagsets/$*.hfst\".i \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+	$(AM_V_at)rm -f $<.tmp
 
 # Create tagset variants of *generators*
 # Standard descriptive
@@ -515,12 +538,73 @@ generator-%-desc.hfst: generator-gt-desc.hfst tagsets/%.relabel
 		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
 		-o $@
 
+# Relabeling using compiled regex:
+generator-%-desc.hfst: generator-gt-desc.hfst tagsets/%.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t -i $< -o $<.tmp
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			    @\"tagsets/$*.hfst\" \
+			.o. @\"$<.tmp\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+	$(AM_V_at)rm -f $<.tmp
+
 # Standard normative
 generator-%-norm.hfst: generator-gt-norm.hfst tagsets/%.relabel
 	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
 		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
 		-o $@
+
+# Relabeling using compiled regex:
+generator-%-norm.hfst: generator-gt-norm.hfst tagsets/%.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t -i $< -o $<.tmp
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			    @\"tagsets/$*.hfst\" \
+			.o. @\"$<.tmp\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+	$(AM_V_at)rm -f $<.tmp
+
+# XEROX/XFST:
+# Standard descriptive
+analyser-%-desc.xfst: analyser-gt-desc.xfst tagsets/%.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			    @\"tagsets/$*.xfst\" \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# Standard normative
+analyser-%-norm.xfst: analyser-gt-norm.xfst tagsets/%.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			    @\"tagsets/$*.xfst\" \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# Create tagset variants of *generators*
+# Standard descriptive
+generator-%-desc.xfst: generator-gt-desc.xfst tagsets/%.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			    @\"$<\" \
+			.o. @\"tagsets/$*.xfst\".i \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# Standard normative
+generator-%-norm.xfst: generator-gt-norm.xfst tagsets/%.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			    @\"$<\" \
+			.o. @\"tagsets/$*.xfst\".i \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
 
 # lemmatization is a special case of tagset variant
 lemmatize.default.hfst: analyser-gt-desc.hfst tagsets/lemmatize.relabel

@@ -1,4 +1,9 @@
-$Rev: 98459 $
+$Rev: 98469 $
+Added build step to explicitly convert hfst transducers to optimised lookup
+format. Whitespace changes in the silent rule variables. Included the new
+lookup-include file in src-dir-include.am.
+
+r98459:
 Preparations for better handling of lookup & testing of free-standing lexc and
 rewrite rule transducers: added build rules to do inversion of fst's intended
 for lookup.

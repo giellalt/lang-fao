@@ -40,9 +40,6 @@ if CAN_XFST
 GT_TAGSETS+=
 endif # CAN_XFST
 
-GT_REGEX_TARGETS=$(GT_TAGSETS) $(GT_GENERATED_TAGSET_SRCS)
-GT_REGEX_SRCS=$(GT_TAGSET_SRCS)
-
 ####### HFST build rules: ########
 
 # Convert GT-tags to Apertium-tags:
@@ -71,6 +68,6 @@ apertium.relabel: ../filters/gttags.txt apertiumtags.txt
 #		| sed 's/	/ -> /g' \
 #		> $@
 
-include $(top_srcdir)/am-shared/regex-include.am
+include $(top_srcdir)/am-shared/src-tagsets-dir-include.am
 
 # vim: set ft=automake:

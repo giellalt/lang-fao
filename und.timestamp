@@ -1,4 +1,10 @@
-$Rev: 98469 $
+$Rev: 98486 $
+Updated the tagset targets to support Xerox fst's, and tagset replacement using
+regexes instead of the hfst-only relabel tool. Now all languages can get
+localised analysis and generation tags by adding a regex file and specifying a
+few targets.
+
+r98469:
 Added build step to explicitly convert hfst transducers to optimised lookup
 format. Whitespace changes in the silent rule variables. Included the new
 lookup-include file in src-dir-include.am.

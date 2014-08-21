@@ -58,6 +58,7 @@ AC_PATH_PROG(HFST_MULTIPLY,          hfst-multiply,          false, $PATH$PATH_S
 AC_PATH_PROG(HFST_NAME,              hfst-name,              false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_PAIR_TEST,         hfst-pair-test,         false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_PROC,              hfst-proc,              false, $PATH$PATH_SEPARATOR$with_hfst)
+AC_PATH_PROG(HFST_PROC2,             hfst-proc2,             false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_PROJECT,           hfst-project,           false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_PRUNE_ALPHABET,    hfst-prune-alphabet,    false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_PUSH_WEIGHTS,      hfst-push-weights,      false, $PATH$PATH_SEPARATOR$with_hfst)
@@ -104,6 +105,6 @@ fi
 AM_CONDITIONAL([CAN_HFST],      [test "x$gt_prog_hfst" = "xyes"])
 AM_CONDITIONAL([CAN_HFST_FOMA], [test "x$HFST_FOMA" != "xfalse"])
 AM_CONDITIONAL([CAN_HFST_XFST], [test "x$HFST_XFST" != "xfalse"])
-]) # gt_PROG_HFST_PATH
+]) # gt_PROG_HFST
 
 # vim: set ft=config:

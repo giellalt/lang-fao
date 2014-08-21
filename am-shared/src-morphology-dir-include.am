@@ -15,6 +15,14 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+########### Variables: ###########
+
+HFST_LEXC_FLAGS=
+
+if WANT_HYPERMINIMISATION
+HFST_LEXC_FLAGS+=--withFlags --minimizeFlags
+endif # WANT_HYPERMINIMISATION
+
 ####### Source file defs: ########
 
 #! @param GT_LEXC_ROOT required, define name of file holding root lexicon

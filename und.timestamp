@@ -1,4 +1,9 @@
-$Rev: 98486 $
+$Rev: 98563 $
+Hyperminimisation seems to be stable now, and we offer it as a standard
+configuration option. Also added autoconf support for the preliminary tool
+hfst-proc2, to facilitate easier testing of the tokeniser/analyser.
+
+r98486:
 Updated the tagset targets to support Xerox fst's, and tagset replacement using
 regexes instead of the hfst-only relabel tool. Now all languages can get
 localised analysis and generation tags by adding a regex file and specifying a

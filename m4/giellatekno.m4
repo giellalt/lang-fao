@@ -260,6 +260,14 @@ AC_DEFUN([gt_ENABLE_TARGETS],
 AC_PATH_PROG([ZIP],  [zip],  [false], [$PATH$PATH_SEPARATOR$with_zip])
 AC_PATH_PROG([GZIP], [gzip], [false], [$PATH$PATH_SEPARATOR$with_gzip])
 
+# Enable hyperminimisation of the lexical transducer - default is 'no'
+AC_ARG_ENABLE([hyperminimisation],
+              [AS_HELP_STRING([--enable-hyperminimisation],
+                              [enable hyperminimisation of lexical fst @<:@default=no@:>@])],
+              [enable_hyperminimisation=$enableval],
+              [enable_hyperminimisation=no])
+AM_CONDITIONAL([WANT_HYPERMINIMISATION], [test "x$enable_hyperminimisation" != xno])
+
 # Enable morphological analysers - default is 'yes'
 AC_ARG_ENABLE([analysers],
               [AS_HELP_STRING([--enable-analysers],
@@ -405,9 +413,10 @@ cat<<EOF
 
 -- Building $PACKAGE_STRING:
 
-  -- basic package (on by default except hfst): --
+  -- basic package (on by default except hfst and hyperminimisation): --
   * build Xerox fst's: $gt_prog_xfst
   * build HFST fst's: $gt_prog_hfst
+    * hyperminimisation of lexical fst: $enable_hyperminimisation
   * analysers enabled: $enable_analysers
   * generators enabled: $enable_generators
   * transcriptors enabled: $enable_transcriptors

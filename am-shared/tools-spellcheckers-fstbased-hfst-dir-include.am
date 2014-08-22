@@ -175,9 +175,12 @@ $(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST) easteregg.hfst \
 		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			-2 $(top_builddir)/src/filters/remove-word-boundary.hfst \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
-		| $(HFST_MINIMIZE_SPELLER) $(HFST_FLAGS)                \
-		| $(HFST_DISJUNCT) - easteregg.hfst \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw          \
+		| $(HFST_REMOVE_EPSILONS) $(HFST_FLAGS)         \
+		| $(HFST_PUSH_WEIGHTS)    $(HFST_FLAGS)         \
+		| $(HFST_DETERMINIZE)     $(HFST_FLAGS)         \
+		| $(HFST_MINIMIZE)        $(HFST_FLAGS)         \
+		| $(HFST_DISJUNCT) - easteregg.hfst             \
+		| $(HFST_FST2FST)         $(HFST_FLAGS) -f olw  \
 		-o $@
 
 ####### *.zhfst file: #######

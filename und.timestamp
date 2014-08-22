@@ -1,4 +1,10 @@
-$Rev: 98563 $
+$Rev: 98616 $
+Added size and speed optimisations to the speller compilation process:
+remove-epsilons, push-weights, determinise and minimise. Together this made
+the KAL speller *much* smaller and *much* faster. It is now as fast and small
+as any other fst-based speller.
+
+r98563:
 Hyperminimisation seems to be stable now, and we offer it as a standard
 configuration option. Also added autoconf support for the preliminary tool
 hfst-proc2, to facilitate easier testing of the tokeniser/analyser.

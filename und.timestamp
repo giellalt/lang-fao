@@ -1,4 +1,11 @@
-$Rev: 98616 $
+$Rev: 98633 $
+The optimisations that worked for Greenlandic didn't work for Finnish,
+potentially due to Finnish being corpus-weighted and thus posing more
+challenges to determinisation and minimisation. Because of this the
+Greenlandic optimisation is now rolled into the configuration
+option --enable-minimised-spellers.
+
+r98616:
 Added size and speed optimisations to the speller compilation process:
 remove-epsilons, push-weights, determinise and minimise. Together this made
 the KAL speller *much* smaller and *much* faster. It is now as fast and small

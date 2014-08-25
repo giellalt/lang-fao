@@ -319,8 +319,8 @@ AS_IF([test "x$enable_minimised_spellers" = "xno"],
       [AC_SUBST([HFST_MINIMIZE_SPELLER], $ac_cv_path_HFST_REMOVE_EPSILONS)],
       [AC_SUBST([HFST_MINIMIZE_SPELLER], ["$ac_cv_path_HFST_REMOVE_EPSILONS \$(HFST_FLAGS) \
                                          | $ac_cv_path_HFST_PUSH_WEIGHTS    \$(HFST_FLAGS) \
-                                         | $ac_cv_path_HFST_DETERMINIZE     \$(HFST_FLAGS) \
-                                         | $ac_cv_path_HFST_MINIMIZE"])])
+                                         | $ac_cv_path_HFST_DETERMINIZE --encode-weights \$(HFST_FLAGS) \
+                                         | $ac_cv_path_HFST_MINIMIZE    --encode-weights "])])
 
 # Enable voikko - default is 'yes', but only if the speller automate is enabled
 AC_ARG_ENABLE([voikko],

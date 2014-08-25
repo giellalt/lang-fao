@@ -1,4 +1,8 @@
-$Rev: 98633 $
+$Rev: 98671 $
+Added --encode-weights to determinise and minimise. This fixed the never-ending
+compilation of Finnish spellers.
+
+r98633:
 The optimisations that worked for Greenlandic didn't work for Finnish,
 potentially due to Finnish being corpus-weighted and thus posing more
 challenges to determinisation and minimisation. Because of this the

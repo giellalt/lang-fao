@@ -309,16 +309,16 @@ AC_ARG_ENABLE([spellerautomat],
 AS_IF([test "x$enable_spellers" = xno], [enable_spellerautomat=no])
 AM_CONDITIONAL([WANT_SPELLERAUTOMAT], [test "x$enable_spellerautomat" != xno])
 
-# Disable minimised speller fst by default:
+# Enable minimised fst-spellers by default:
 AC_ARG_ENABLE([minimised-spellers],
               [AS_HELP_STRING([--enable-minimised-spellers],
-                              [minimise hfst spellers @<:@default=no@:>@])],
+                              [minimise hfst spellers @<:@default=yes@:>@])],
               [enable_minimised_spellers=$enableval],
-              [enable_minimised_spellers=no])
-AS_IF([test "x$enable_minimised_spellers" = "xno"],
+              [enable_minimised_spellers=yes])
+AS_IF([test "x$enable_minimised_spellers" != "xyes"],
       [AC_SUBST([HFST_MINIMIZE_SPELLER], $ac_cv_path_HFST_REMOVE_EPSILONS)],
       [AC_SUBST([HFST_MINIMIZE_SPELLER], ["$ac_cv_path_HFST_REMOVE_EPSILONS \$(HFST_FLAGS) \
-                                         | $ac_cv_path_HFST_PUSH_WEIGHTS    \$(HFST_FLAGS) \
+                                         | $ac_cv_path_HFST_PUSH_WEIGHTS -p final \$(HFST_FLAGS) \
                                          | $ac_cv_path_HFST_DETERMINIZE --encode-weights \$(HFST_FLAGS) \
                                          | $ac_cv_path_HFST_MINIMIZE    --encode-weights "])])
 
@@ -430,7 +430,7 @@ cat<<EOF
   -- proofing tools (off by default): --
   * spellers enabled: $enable_spellers
     * hfst speller fst's enabled: $enable_spellerautomat
-      * enable minimised speller (time&mem consuming): $enable_minimised_spellers
+      * enable minimised speller: $enable_minimised_spellers
     * voikko speller enabled: $enable_voikko
     * foma speller enabled: $enable_fomaspeller
   * hyphenators:

@@ -20,12 +20,12 @@ TARGET_LANGS=$(MT_AP_TARGET_LANGS)
 if WANT_APERTIUM
 # This is just a generic analyser. You need to add pair-specific analysers to
 # the language-specific part further down.
-APERTIUM_ANALYSER_HFST+=analyser-mt-gt-desc.hfst
+APERTIUM_ANALYSER_HFST+=analyser-mt-gt-desc.hfstol
 
 # Build list of target language transducers from the list of target languages:
 # => analyser-mt-gt-desc.nob.hfst etc.
 APERTIUM_ANALYSERS_GT_HFST+=\
-	$(addsuffix .hfst,$(addprefix analyser-mt-gt-desc.,$(TARGET_LANGS)))
+	$(addsuffix .hfstol,$(addprefix analyser-mt-gt-desc.,$(TARGET_LANGS)))
 
 # Build list of apertium tagged files by replacing -gt- with -apertium-:
 # analyser-mt-gt-desc.nob.hfst => analyser-mt-apertium-desc.nob.hfst etc.
@@ -57,8 +57,8 @@ AP_PRE_EXP_PAIRS_V=$(addprefix apertium-,$(AP_EXPANDED_PAIRS_V))
 # "apertium-sme-%.sme-nob" -> "apertium-sme-%.sme-nob.LR.att.gz":
 APERTIUM_MORPH_PAIRS_V=$(addsuffix .LR.att.gz,$(AP_PRE_EXP_PAIRS_V))
 
-APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfst \
-						  generator-mt-apertium-norm.hfst
+APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfstol \
+						  generator-mt-apertium-norm.hfstol
 
 APERTIUM_GENERATOR_ATTGZ+=apertium-$(GTLANG).$(GTLANG).RL.att.gz
 
@@ -308,3 +308,4 @@ generator%.hfst: generator%.tmp.hfst
 
 include $(top_srcdir)/am-shared/vislcg3-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
+include $(top_srcdir)/am-shared/lookup-include.am

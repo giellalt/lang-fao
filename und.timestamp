@@ -1,4 +1,7 @@
-$Rev: 98767 $
+$Rev: 98986 $
+Switched to universal binary build for the LO41 voikko OXT.
+
+r98767:
 Made the hfst optimised lookup file format explicit by using the .hfstol suffix,
 and by optimising files for lookup in a separate build step, instead of
 implicitly as before. So far only for tools/mt/apertium/, but more will come.

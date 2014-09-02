@@ -244,7 +244,7 @@ $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt: $(GT_SPELLING_HFST)
 	$(AM_V_GEN)rm -f $@ && \
 		$(MKDIR_P) build/mac41/ && \
 		cd build/mac41 && \
-		$(RSYNC) -av $(OXT_ROOT_DIR)/4.1-32b-mac/ ./ && \
+		$(RSYNC) -av $(OXT_ROOT_DIR)/4.1-univ-mac/ ./ && \
 		cp ../../$< 3/ && \
 		$(ZIP) -r $(ZIPFLAGS) ../../$@ *
 

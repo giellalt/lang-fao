@@ -1,4 +1,11 @@
-$Rev: 98986 $
+$Rev: 99109 $
+Generalised and simplified the code for building oxt - no more hard-coded
+filenames. Now the LO-voikko versions supported as well as the platforms are
+just defined in two variables, and the rest follows from there. The build code
+also handles cases of unsupported combinations of voikko versions and platforms.
+Also silenced the build quite a lot in non-verbose mode.
+
+r98986:
 Switched to universal binary build for the LO41 voikko OXT.
 
 r98767:

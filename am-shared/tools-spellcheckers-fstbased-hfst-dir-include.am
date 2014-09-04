@@ -22,6 +22,9 @@ GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 # (=max compression, working from 28.1.2014 for all platforms):
 ZIPFLAGS=-9
 
+# Let the verbosity of some command line tools follow the automake verbosity:
+VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
+
 ####### Automake targets: ########
 
 GT_ERRMODELS=
@@ -199,37 +202,32 @@ if WANT_SPELLERS
 if CAN_HFST
 if CAN_LOCALSYNC
 
-OXT_FILES+=$(GTLANG2)_LO-voikko-3.6-32b-win.oxt \
-           $(GTLANG2)_LO-voikko-3.6-32b-mac.oxt \
-           $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt
+# Generate target file names dynamically based on the variables VK_VERSIONS
+# and VK_PLATFORMS, whose cross product is available in VOIKKO_VERS_PLATFORMS.
+# The resulting file names follow this pattern:
+#
+#$(GTLANG2)_LO-voikko-3.4.1-win.oxt
+OXT_FILES+=$(addsuffix .oxt, \
+              $(addprefix $(GTLANG2)_LO-voikko-,$(VOIKKO_VERS_PLATFORMS)))
+
 
 endif # CAN_LOCALSYNC
 endif # CAN_HFST
 endif # WANT_SPELLERS
 
-#### LO versions and bit width, valid values: ####
-# 3.6 (actually 3.6-4.0, implicitly 32-bit, both LO and OOo)
-# 4.1 (actually 4.1+,    implicitly 32-bit, LO only)
+#### Voikko versions: ####
+# 3.4.1
+# 4.0
 #
 # These values corresponds to the version ID in the dir name of
 # the oxt template
-LO_VERSIONS=3.6 4.1
+VK_VERSIONS=3.4.1 4.0
 
-# List of platforms supported by the build (Linux excluded, because the
-# oxt is distributed via package managers instead):
-LO_PLATFORMS=mac win
+# LO-Voikko platforms:
+VK_PLATFORMS=mac win
 
-# Bitness:
-LO_BITNESS=32b 64b
-
-#$(GTLANG2)_LO-voikko-$(LO_VERSION)-32b-win.oxt
-#OXT_FILES+=$(addsuffix .oxt, \
-#            $(addprefix \
-#                $(addprefix $(GTLANG2)_LO-voikko-,$(LO_VERSIONS)), \
-#                    $(addprefix $(GTLANG2)_LO-voikko-,$(LO_BITNESS)), \
-#                        $(LO_PLATFORMS)))
-#
-#LO_BIT_PLATFORMS=$(addprefix ,$(addprefix -,$(LO_PLATFORMS)))
+VOIKKO_VERS_PLATFORMS=$(foreach version,$(VK_VERSIONS), \
+                    $(addprefix $(version)-,$(VK_PLATFORMS)))
 
 OXT_ROOT_DIR=$(GTHOME)/prooftools/toollibs/LibreOffice-voikko
 
@@ -240,49 +238,32 @@ OXT_ROOT_DIR=$(GTHOME)/prooftools/toollibs/LibreOffice-voikko
 # modify oxt index file
 # zip build/subdir
 # copy to ./
-$(GTLANG2)_LO-voikko-4.1-32b-mac.oxt: $(GT_SPELLING_HFST)
-	$(AM_V_GEN)rm -f $@ && \
-		$(MKDIR_P) build/mac41/ && \
-		cd build/mac41 && \
-		$(RSYNC) -av $(OXT_ROOT_DIR)/4.1-univ-mac/ ./ && \
-		cp ../../$< 3/ && \
-		$(ZIP) -r $(ZIPFLAGS) ../../$@ *
 
-$(GTLANG2)_LO-voikko-3.6-32b-mac.oxt: $(GT_SPELLING_HFST)
+$(GTLANG2)_LO-voikko-%.oxt: $(GT_SPELLING_HFST)
 	$(AM_V_GEN)rm -f $@ && \
-		$(MKDIR_P) build/mac36/ && \
-		cd build/mac36 && \
-		$(RSYNC) -av $(OXT_ROOT_DIR)/3.6-32b-mac/ ./ && \
-		cp ../../$< 3/ && \
-		$(ZIP) -r $(ZIPFLAGS) ../../$@ *
-
-$(GTLANG2)_LO-voikko-3.6-32b-win.oxt: $(GT_SPELLING_HFST)
-	$(AM_V_GEN)rm -f $@ && \
-		$(MKDIR_P) build/win36/ && \
-		cd build/win36 && \
-		$(RSYNC) -av $(OXT_ROOT_DIR)/3.6-32b-win/ ./ && \
-		cp ../../$< 3/ && \
-		$(ZIP) -r $(ZIPFLAGS) ../../$@ *
+		if [ -d "$(OXT_ROOT_DIR)/$*" ]; then \
+			$(MKDIR_P) build/$*/ && \
+			cd build/$* && \
+			$(RSYNC) -av $(VERBOSITY) $(OXT_ROOT_DIR)/$*/ ./ && \
+			cp ../../$< 3/ && \
+			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
+		else \
+			echo "  SKIP     $@: Not yet supported." ; \
+		fi
 
 DATE=$(shell date +%Y%m%d)
 UPLOADSITE=sd@divvun.no:static_files/oxts
 
-upload:
-	scp $(GTLANG2)_LO-voikko-3.6-32b-mac.oxt \
-		$(UPLOADSITE)/$(GTLANG2)_LO-voikko-3.6-32b-mac-$(DATE).oxt
-	scp $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt \
-		$(UPLOADSITE)/$(GTLANG2)_LO-voikko-4.1-32b-mac-$(DATE).oxt
-	scp $(GTLANG2)_LO-voikko-3.6-32b-win.oxt \
-		$(UPLOADSITE)/$(GTLANG2)_LO-voikko-3.6-32b-win-$(DATE).oxt
-	ssh sd@divvun.no "cd staticfiles/oxts/ && \
-	   ln -sf $(GTLANG2)_LO-voikko-3.6-32b-mac-$(DATE).oxt \
-	          $(GTLANG2)_LO-voikko-3.6-32b-mac.oxt"
-	ssh sd@divvun.no "cd staticfiles/oxts/ && \
-	   ln -sf $(GTLANG2)_LO-voikko-4.1-32b-mac-$(DATE).oxt \
-	          $(GTLANG2)_LO-voikko-4.1-32b-mac.oxt"
-	ssh sd@divvun.no "cd staticfiles/oxts/ && \
-	   ln -sf $(GTLANG2)_LO-voikko-3.6-32b-win-$(DATE).oxt \
-	          $(GTLANG2)_LO-voikko-3.6-32b-win.oxt"
+upload: $(OXT_FILES)
+	$(AM_V_GEN)for file in $(OXT_FILES); do \
+		if [ -e $$file ]; then \
+			stem=$$(basename $$file .oxt) ; \
+			scp $$file $(UPLOADSITE)/$$stem-$(DATE).oxt ; \
+			ssh sd@divvun.no "cd staticfiles/oxts/ && \
+			ln -sf $$stem-$(DATE).oxt $$file" ; \
+			echo "  SYMLINK  $$file" ; \
+		fi \
+	done
 
 ####### Other targets: ###########
 clean-local:

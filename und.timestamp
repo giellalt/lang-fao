@@ -1,5 +1,8 @@
-$Rev: 99109 $
-Generalised and simplified the code for building oxt - no more hard-coded
+$Rev: 99176 $
+Added support for local overrides of the base speller fst.
+
+r99109:
+Generalised and simplified the code for building oxt's - no more hard-coded
 filenames. Now the LO-voikko versions supported as well as the platforms are
 just defined in two variables, and the rest follows from there. The build code
 also handles cases of unsupported combinations of voikko versions and platforms.

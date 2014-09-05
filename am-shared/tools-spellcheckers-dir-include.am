@@ -23,15 +23,17 @@ GT_COMMON_SPELLER_HFST=
 GT_SPELLER_SRC_XFST=analyser-raw-gt-desc.xfst
 GT_COMMON_SPELLER_XFST=
 
+GT_COMMON_SPELLER_NAME=speller-gt-norm
+
 ####### Automake targets: ########
 if WANT_SPELLERS
 
 if CAN_HFST
-GT_COMMON_SPELLER_HFST+=generator-speller-gt-norm.hfst
+GT_COMMON_SPELLER_HFST+=generator-$(GT_COMMON_SPELLER_NAME).hfst
 endif # CAN_HFST
 
 if CAN_XFST
-GT_COMMON_SPELLER_XFST+=analyser-speller-gt-norm.xfst
+GT_COMMON_SPELLER_XFST+=analyser-$(GT_COMMON_SPELLER_NAME).xfst
 endif # CAN_XFST
 
 endif # WANT_SPELLERS
@@ -40,13 +42,14 @@ noinst_DATA=$(GT_COMMON_SPELLER_HFST) $(GT_COMMON_SPELLER_XFST)
 
 # Build the common speller transducer by removing everything we don't want in
 # any of the spellers:
-$(GT_COMMON_SPELLER_HFST): $(top_builddir)/src/$(GT_SPELLER_SRC_HFST)  \
+generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: \
+			$(top_builddir)/src/$(GT_SPELLER_SRC_HFST)  \
 			$(top_builddir)/src/filters/remove-sub-forms.hfst          \
 			$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst \
 			$(top_builddir)/src/filters/remove-PUNCT-strings.hfst      \
 			$(top_builddir)/src/filters/remove-CLB-strings.hfst        \
 			$(top_builddir)/src/filters/remove-semantic-tags.hfst
-	$(AM_V_GEN)$(PRINTF) "\
+	$(AM_V_RGX2FST)$(PRINTF) "\
 			@\"$(top_builddir)/src/filters/remove-sub-forms.hfst\"          \
     	.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst\" \
     	.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.hfst\"      \
@@ -57,13 +60,14 @@ $(GT_COMMON_SPELLER_HFST): $(top_builddir)/src/$(GT_SPELLER_SRC_HFST)  \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
 		> $@
 
-$(GT_COMMON_SPELLER_XFST): $(top_builddir)/src/$(GT_SPELLER_SRC_XFST)  \
+analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: \
+			$(top_builddir)/src/$(GT_SPELLER_SRC_XFST)  \
 			$(top_builddir)/src/filters/remove-sub-forms.xfst          \
 			$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst \
 			$(top_builddir)/src/filters/remove-PUNCT-strings.xfst      \
 			$(top_builddir)/src/filters/remove-CLB-strings.xfst        \
 			$(top_builddir)/src/filters/remove-semantic-tags.xfst
-	$(AM_V_GEN)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "read regex \
 			@\"$(top_builddir)/src/filters/remove-sub-forms.xfst\"          \
     	.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst\" \
     	.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.xfst\"      \
@@ -74,6 +78,15 @@ $(GT_COMMON_SPELLER_XFST): $(top_builddir)/src/$(GT_SPELLER_SRC_XFST)  \
 		 save stack $@\n\
 		 quit\n" | $(XFST) -q
 
+# Copy the tmp transducer to the final one. This allows local overrides.
+%.xfst: %.tmp.xfst
+	$(AM_V_CP)cp -f $< $@
+
+%.hfst: %.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
+
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.hfst *.xfst
+
+include $(top_srcdir)/am-shared/silent_build-include.am

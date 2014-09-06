@@ -288,7 +288,7 @@ LEXICON k12e
 +N+Msc: S_M_SGACC ;
 +N+Msc: S_M_SGDAT ;
 +N+Msc: S_M_SGGEN_AR ;
-+N+Msc: LEXICON CMPND_STEM ;
++N+Msc: CMPND_STEM ;
 
 LEXICON k_flt12
 +N+Msc: S_M_PLNOM_IR ;
@@ -1534,13 +1534,21 @@ LEXICON h3/22
 h3 ;
 h22 ;
 
+
+LEXICON h3_s ! universitet
+ h3e ;
+ +N+Neu: S_N_S_CMPND ;
+ h_flt3 ;
+
 LEXICON h3 ! orð
  h3e ;
+ +N+Neu: S_N_A_CMPND ;
  h_flt3 ;
 
 LEXICON h3e
 +N+Neu: S_N_SGNA ;
 +N+Neu: S_N_SGDG_is ;
+
 
 LEXICON h_flt3f
 h_flt3 ;
@@ -2044,6 +2052,12 @@ LEXICON W_M_PLGEN
 LEXICON CMPND_STEM
 +Cmpnd: R ;
 
+LEXICON S_N_A_CMPND
++Sg+Cmpnd:a R ;
+
+LEXICON S_N_S_CMPND
++Sg+Cmpnd:s R ;
+
 ! Strong case suffixes
 ! ____________________
 
@@ -2242,7 +2256,6 @@ LEXICON S_N_SGG
 LEXICON S_N_SGDG_is
 S_N_SGD_i ;
 S_N_SGG_s ;
-S_N_A_CMP ;
 
 LEXICON S_N_SGD_i
 +Sg+Dat:%>i DF_D_SGn ;
@@ -2250,8 +2263,6 @@ LEXICON S_N_SGD_i
 LEXICON S_N_SGG_s
 +Sg+Gen:%>s DF_G_SGn ;
 
-LEXICON S_N_A_CMP
-+Sg+Cmpnd:a R ;
 
 LEXICON S_N_SGG_is
 +Sg+Gen:%>is DF_G_SGn ;

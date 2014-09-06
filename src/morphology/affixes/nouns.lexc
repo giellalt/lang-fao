@@ -288,6 +288,7 @@ LEXICON k12e
 +N+Msc: S_M_SGACC ;
 +N+Msc: S_M_SGDAT ;
 +N+Msc: S_M_SGGEN_AR ;
++N+Msc: LEXICON CMPND_STEM ;
 
 LEXICON k_flt12
 +N+Msc: S_M_PLNOM_IR ;
@@ -1636,6 +1637,7 @@ h_flt9 ;
 LEXICON h9e 
 +N+Neu: S_N_SGNA ;
 +N+Neu: S_N_SGDG_is ;
++N+Neu: CMPND_STEM ;
 
 LEXICON h_flt9
 +N+Neu: N_PLNA ;
@@ -2036,6 +2038,12 @@ LEXICON W_M_PLGEN
 
 
 
+! Compounding
+! -----------
+
+LEXICON CMPND_STEM
++Cmpnd: R ;
+
 ! Strong case suffixes
 ! ____________________
 
@@ -2234,12 +2242,16 @@ LEXICON S_N_SGG
 LEXICON S_N_SGDG_is
 S_N_SGD_i ;
 S_N_SGG_s ;
+S_N_A_CMP ;
 
 LEXICON S_N_SGD_i
 +Sg+Dat:%>i DF_D_SGn ;
 
 LEXICON S_N_SGG_s
 +Sg+Gen:%>s DF_G_SGn ;
+
+LEXICON S_N_A_CMP
++Sg+Cmpnd:a R ;
 
 LEXICON S_N_SGG_is
 +Sg+Gen:%>is DF_G_SGn ;

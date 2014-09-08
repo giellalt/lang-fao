@@ -13,7 +13,7 @@ SUBDIRS = . fstbased listbased
 # generator-speller-gt-norm.hfst: generator-speller-gt-norm.tmp.hfst
 #	build rules
 #
-# generator-speller-gt-norm.xfst: generator-speller-gt-norm.tmp.xfst
+# analyser-speller-gt-norm.xfst: analyser-speller-gt-norm.tmp.xfst
 #	build rules
 
 

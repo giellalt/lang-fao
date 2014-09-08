@@ -1,4 +1,15 @@
-$Rev: 99176 $
+$Rev: 99221 $
+The first major step for adding support for generating list-based spellers such
+as Hunspell and the PLX (Polderland/MS Word) spellers. The conversion is not
+trivial, since we try to control compounding according to the linguistic
+specifiation in the lexicon (using tags). Although PLX is only for three Sámi
+languages, Hunspell conversion should be useful for all languages in our
+infrastructure. No real Hunspell or PLX files produced yet, only prerequisite
+fst's. - At the same time fixed a glitch in the version checking of VislCG3
+that would turn off support for CG files now that the vislcg3 svn revision
+number has turned 10 000.
+
+r99176:
 Added support for local overrides of the base speller fst.
 
 r99109:

@@ -37,6 +37,7 @@ GT_FILTER_TARGETS+=\
 				   remove-orig_lang-tags.hfst             \
 				   remove-orthography-tags.hfst           \
 				   remove-semantic-tags.hfst              \
+				   remove-transitivity-tags.hfst          \
 				   remove-usage-tags.hfst                 \
 				   remove-variant-tags.hfst               \
 				   remove-hyphenation-marks.hfst          \
@@ -48,6 +49,7 @@ GT_FILTER_TARGETS+=\
 				   remove-CLB-strings.hfst                \
 				   remove-derivation-strings.hfst         \
 				   remove-lexsub-strings.hfst             \
+				   remove-use_marg-strings.hfst           \
 				   remove-MinusSpell-strings.hfst         \
 				   remove-NA-strings.hfst                 \
 				   remove-NG-strings.hfst                 \
@@ -76,6 +78,7 @@ GT_FILTER_TARGETS+=\
 				   remove-orig_lang-tags.xfst             \
 				   remove-orthography-tags.xfst           \
 				   remove-semantic-tags.xfst              \
+				   remove-transitivity-tags.xfst          \
 				   remove-usage-tags.xfst                 \
 				   remove-variant-tags.xfst               \
 				   remove-hyphenation-marks.xfst          \
@@ -87,6 +90,7 @@ GT_FILTER_TARGETS+=\
 				   remove-CLB-strings.xfst                \
 				   remove-derivation-strings.xfst         \
 				   remove-lexsub-strings.xfst             \
+				   remove-use_marg-strings.xfst           \
 				   remove-MinusSpell-strings.xfst         \
 				   remove-NA-strings.xfst                 \
 				   remove-NG-strings.xfst                 \

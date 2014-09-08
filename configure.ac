@@ -149,7 +149,8 @@ AC_CONFIG_FILES([Makefile \
                  tools/spellcheckers/fstbased/Makefile \
                  tools/spellcheckers/fstbased/hfst/Makefile \
                  tools/spellcheckers/fstbased/foma/Makefile \
-                 tools/spellcheckers/listbased/Makefile])
+                 tools/spellcheckers/listbased/Makefile \
+                 tools/spellcheckers/listbased/filters/Makefile])
 # Add one AC_CONFIG_FILES for each script file that needs processing. This gives
 # the most pleasant user experience and most readable autoconf code to maintain.
 AC_CONFIG_FILES([test/tools/spellcheckers/test-zhfst-file.sh], \

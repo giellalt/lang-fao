@@ -1,4 +1,8 @@
-$Rev: 99221 $
+$Rev: 99350 $
+Downcasing of the initial letter of derived proper nouns (Pariisi ->
+pariisilainen) is now finally working with Hfst. It requires Hfst svn rev. 4000.
+
+r99221:
 The first major step for adding support for generating list-based spellers such
 as Hunspell and the PLX (Polderland/MS Word) spellers. The conversion is not
 trivial, since we try to control compounding according to the linguistic

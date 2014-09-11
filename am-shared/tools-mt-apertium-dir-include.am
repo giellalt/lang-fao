@@ -104,8 +104,10 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-orig_lang-tags.hfst            \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst         \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst        \
-			$(top_builddir)/src/filters/remove-word-boundary.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
+			$(top_builddir)/src/filters/remove-word-boundary.hfst             \
+			$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst
+	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
+			read regex \
 		@\"$(top_builddir)/src/filters/make-optional-semantic-tags.hfst\"     \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
@@ -120,12 +122,13 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-orthography-tags.hfst\"         \
 	.o. @\"$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst\"         \
 	.o. @\"$<\" \
+	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"        \
 	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"       \
-	;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
-		> $@
+   	;\n\
+        save stack $@\n\
+        quit\n" | $(HFST_XFST) $(VERBOSITY)
 
 # Apertium analyser - GTD tags. Target language independent filtering
 # happens here:
@@ -142,8 +145,10 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-orthography-tags.hfst         \
 			$(top_builddir)/src/filters/remove-orig_lang-tags.hfst           \
 			$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst         \
-			$(top_builddir)/src/filters/remove-word-boundary.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
+			$(top_builddir)/src/filters/remove-word-boundary.hfst            \
+			$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst
+	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
+			read regex \
 		@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"            \
@@ -155,12 +160,13 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-orthography-tags.hfst\"         \
 	.o. @\"$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst\"         \
 	.o. @\"$<\" \
+	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"        \
 	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"       \
-	;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
-		> $@
+   	;\n\
+        save stack $@\n\
+        quit\n" | $(HFST_XFST) $(VERBOSITY)
 
 # Target language specific filtering - build depends on the availability
 # of the filter file.

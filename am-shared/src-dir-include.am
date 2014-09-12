@@ -99,11 +99,16 @@ analyser-raw-gt-desc.tmp.xfst: analyser-raw-gt-desc.tmp1.xfst  \
 # built above.
 
 # This is the default, descriptive analyser:
+# Visible tags (ie do NOT remove):
+#   - variant tags
+#   - the Err/Sub tag
+# Invisible tags (ie to be removed):
+#   - semantic tags
+#   - homonymy tags
 analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
 					filters/remove-homonymy-tags.hfst            \
-					filters/remove-variant-tags.hfst             \
 					filters/remove-norm-comp-tags.hfst           \
 					filters/remove-number-string-tags.hfst       \
 					filters/remove-usage-tags.hfst               \
@@ -122,7 +127,6 @@ analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
 				@\"filters/remove-derivation-position-tags.hfst\" \
 			.o. @\"filters/remove-dialect-tags.hfst\"             \
 			.o. @\"filters/remove-homonymy-tags.hfst\"            \
-			.o. @\"filters/remove-variant-tags.hfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
 			.o. @\"filters/remove-number-string-tags.hfst\"       \
 			.o. @\"filters/remove-usage-tags.hfst\"               \
@@ -149,7 +153,6 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst             \
 					filters/remove-homonymy-tags.xfst            \
-					filters/remove-variant-tags.xfst             \
 					filters/remove-norm-comp-tags.xfst           \
 					filters/remove-number-string-tags.xfst       \
 					filters/remove-usage-tags.xfst               \
@@ -167,7 +170,6 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 				@\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
 			.o. @\"filters/remove-homonymy-tags.xfst\"            \
-			.o. @\"filters/remove-variant-tags.xfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
 			.o. @\"filters/remove-number-string-tags.xfst\"       \
 			.o. @\"filters/remove-usage-tags.xfst\"               \

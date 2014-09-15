@@ -61,6 +61,9 @@ generator-listspeller-gt-norm.tmp.hfst: $(GT_SPELLER_SRC_HFST) \
 			.o. @\"$<\" \
 			; \n\
 			set flag-is-epsilon ON \n\
+			read regex @\"$(top_builddir)/src/hyphenation/hyphenation.hfst\".i ;  \n\
+			turn stack \n\
+			compose net \n\
 			define fst \n\
 			load stack filters/extract-RCmpnd-strings.hfst \n\
 			define rcmpnd \n\
@@ -72,29 +75,6 @@ generator-listspeller-gt-norm.tmp.hfst: $(GT_SPELLER_SRC_HFST) \
 		 save stack $@ \n\
 		 quit\n" | $(HFST_XFST) $(VERBOSITY)
 
-## Not working due to hyph fst mismatch or something:
-#analyser-listspeller-gt-norm.tmp.xfst: $(GT_SPELLER_SRC_XFST) \
-#		$(top_builddir)/src/filters/remove-UseCirc-strings.xfst \
-#		$(top_builddir)/src/hyphenation/hyphenation.xfst
-#	$(AM_V_XFST)$(PRINTF) "read regex \
-#			    @\"$(top_builddir)/src/filters/remove-UseCirc-strings.xfst\" \
-#			.o. @\"$<\" \
-#			; \n\
-#			set flag-is-epsilon ON \n\
-#			read regex @\"$(top_builddir)/src/hyphenation/hyphenation.xfst\".i ;  \n\
-#			turn stack \n\
-#			compose net \n\
-#			define fst \n\
-#			load stack filters/extract-RCmpnd-strings.xfst \n\
-#			define rcmpnd \n\
-#			read regex rcmpnd .o. fst ; \n\
-#			define cmps \n\
-#			read regex cmps .o. [%%- -> 0 || _ .#.] ; \n\
-#			read regex fst - cmps ; \n\
-#			union net \n\
-#		 save stack $@ \n\
-#		 quit\n" | $(XFST) $(VERBOSITY)
-
 analyser-listspeller-gt-norm.tmp.xfst: $(GT_SPELLER_SRC_XFST) \
 		$(top_builddir)/src/filters/remove-UseCirc-strings.xfst \
 		$(top_builddir)/src/hyphenation/hyphenation.xfst
@@ -103,6 +83,9 @@ analyser-listspeller-gt-norm.tmp.xfst: $(GT_SPELLER_SRC_XFST) \
 			.o. @\"$<\" \
 			; \n\
 			set flag-is-epsilon ON \n\
+			read regex @\"$(top_builddir)/src/hyphenation/hyphenation.xfst\" ;  \n\
+			turn stack \n\
+			compose net \n\
 			define fst \n\
 			load stack filters/extract-RCmpnd-strings.xfst \n\
 			define rcmpnd \n\

@@ -6,7 +6,7 @@
 # included by $GTLANG/src/Makefile.am. All file references are relative to
 # that Makefile.am.
 
-# analyser-oahpa-gt-desc
+# analyser-oahpa-gt-norm - only used for testing in parallel with the generator
 # Require:
 # * homonym tags: Hom1, Hom2 (ie don't remove)  - done
 # Optionally allow these tags:
@@ -15,7 +15,7 @@
 # * generation restriction tags: Use/NGminip    - not implemented
 
 # Build the general descriptive Oahpa analyser:
-analyser-oahpa-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst      \
+analyser-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst      \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
 					filters/remove-norm-comp-tags.hfst           \
@@ -55,7 +55,7 @@ analyser-oahpa-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst      \
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) $(VERBOSITY)
 
-analyser-oahpa-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst        \
+analyser-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst        \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst             \
 					filters/remove-norm-comp-tags.xfst           \

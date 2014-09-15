@@ -49,7 +49,7 @@ GT_GENERATORS_HFST+=generator-dict-gt-norm.hfst
 endif # WANT_DICTIONARIES
 
 if WANT_OAHPA
-GT_ANALYSERS_HFST+=analyser-oahpa-gt-desc.hfst
+GT_ANALYSERS_HFST+=analyser-oahpa-gt-norm.hfst
 GT_GENERATORS_HFST+=generator-oahpa-gt-norm.hfst \
 					$(DIALECT_TARGETS_HFST)
 endif # WANT_OAHPA
@@ -91,7 +91,7 @@ GT_GENERATORS_XFST+=generator-dict-gt-norm.xfst
 endif # WANT_DICTIONARIES
 
 if WANT_OAHPA
-GT_ANALYSERS_XFST+=analyser-oahpa-gt-desc.xfst
+GT_ANALYSERS_XFST+=analyser-oahpa-gt-norm.xfst
 GT_GENERATORS_XFST+=generator-oahpa-gt-norm.xfst \
 					$(DIALECT_TARGETS_XFST)
 endif # WANT_OAHPA

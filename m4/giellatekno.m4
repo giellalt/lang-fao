@@ -300,14 +300,14 @@ AC_ARG_ENABLE([spellers],
               [enable_spellers=no])
 AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
 
-# Enable hfst speller transducers - default is 'no'
-AC_ARG_ENABLE([spellerautomat],
-              [AS_HELP_STRING([--enable-spellerautomat],
+# Enable hfst speller transducers - default is 'yes'
+AC_ARG_ENABLE([hfstspeller],
+              [AS_HELP_STRING([--enable-hfstspeller],
                               [build speller hfst (dependent on --enable-spellers) @<:@default=yes@:>@])],
-              [enable_spellerautomat=$enableval],
-              [enable_spellerautomat=yes])
-AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" != xno], [enable_spellerautomat=no])
-AM_CONDITIONAL([WANT_SPELLERAUTOMAT], [test "x$enable_spellerautomat" != xno])
+              [enable_hfstspeller=$enableval],
+              [enable_hfstspeller=yes])
+AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_hfstspeller=no])
+AM_CONDITIONAL([WANT_SPELLERAUTOMAT], [test "x$enable_hfstspeller" != xno])
 
 # Enable minimised fst-spellers by default:
 AC_ARG_ENABLE([minimised-spellers],
@@ -325,11 +325,11 @@ AS_IF([test "x$enable_minimised_spellers" != "xyes"],
 # Enable voikko - default is 'yes', but only if the speller automate is enabled
 AC_ARG_ENABLE([voikko],
               [AS_HELP_STRING([--enable-voikko],
-                              [build voikko speller (dependent on --enable-spellers) @<:@default=yes@:>@])],
+                              [build voikko speller (dependent on --enable-hfstspeller) @<:@default=yes@:>@])],
               [enable_voikko=$enableval],
               [enable_voikko=yes])
-AS_IF([test "x$enable_spellerautomat" = xno], [enable_voikko=no], 
-      [AS_IF([test "x$enable_spellerautomat" = xyes -a "x$ZIP" = "xfalse"],
+AS_IF([test "x$enable_hfstspeller" = xno], [enable_voikko=no], 
+      [AS_IF([test "x$enable_hfstspeller" = xyes -a "x$ZIP" = "xfalse"],
              [enable_voikko=no
               AC_MSG_WARN([zip missing, voikko spellers disabled])])])
 AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_voikko" != xno ])
@@ -349,7 +349,7 @@ AM_CONDITIONAL([CAN_FOMA_SPELLER], [test "x$enable_fomaspeller" != xno])
 # Disable Hunspell production by default:
 AC_ARG_ENABLE([hunspell],
               [AS_HELP_STRING([--enable-hunspell],
-                              [enable hunspell building @<:@default=no@:>@])],
+                              [enable hunspell building (dependent on --enable-spellers) @<:@default=no@:>@])],
               [enable_hunspell=$enableval],
               [enable_hunspell=no])
 AS_IF([test "x$enable_spellers" = xno], [enable_hunspell=no])
@@ -430,7 +430,7 @@ cat<<EOF
 
   -- proofing tools (off by default): --
   * spellers enabled: $enable_spellers
-    * hfst speller fst's enabled: $enable_spellerautomat
+    * hfst speller fst's enabled: $enable_hfstspeller
       * enable minimised speller: $enable_minimised_spellers
     * voikko speller enabled: $enable_voikko
     * foma speller enabled: $enable_fomaspeller

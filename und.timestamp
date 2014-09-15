@@ -1,4 +1,7 @@
-$Rev: 99425 $
+$Rev: 99445 $
+Only build Apertium tagsets in tools/mt/ if Apertium is turned on.
+
+r99425:
 Corrected a syntax error in the src_disamb-include.am file. Moved all fst
 trimming of general interest from tools-spellcheckers-listbased to
 tools-spellcheckers. Made the configuration so that list-based spellers will

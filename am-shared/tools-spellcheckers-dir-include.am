@@ -44,42 +44,62 @@ noinst_DATA=$(GT_COMMON_SPELLER_HFST) $(GT_COMMON_SPELLER_XFST)
 # any of the spellers:
 generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: \
 			$(top_builddir)/src/$(GT_SPELLER_SRC_HFST)  \
-			$(top_builddir)/src/filters/remove-sub-forms.hfst          \
+			$(top_builddir)/src/filters/remove-CLB-strings.hfst        \
 			$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst \
 			$(top_builddir)/src/filters/remove-PUNCT-strings.hfst      \
-			$(top_builddir)/src/filters/remove-CLB-strings.hfst        \
+			$(top_builddir)/src/filters/remove-dialect-tags.hfst       \
 			$(top_builddir)/src/filters/remove-semantic-tags.hfst      \
+			$(top_builddir)/src/filters/remove-sub-forms.hfst          \
+			$(top_builddir)/src/filters/remove-transitivity-tags.hfst  \
+			$(top_builddir)/src/filters/remove-usage-tags.hfst         \
+			$(top_builddir)/src/filters/remove-use_marg-strings.hfst   \
+			$(top_builddir)/src/filters/remove-variant-tags.hfst       \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
-			@\"$(top_builddir)/src/filters/remove-sub-forms.hfst\"          \
-    	.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst\" \
-    	.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.hfst\"      \
-    	.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.hfst\"        \
-    	.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.hfst\"      \
-    	.o. @\"$<\" \
+		    @\"$(top_builddir)/src/filters/remove-CLB-strings.hfst\"        \
+		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst\" \
+		.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.hfst\"      \
+		.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"       \
+		.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.hfst\"      \
+		.o. @\"$(top_builddir)/src/filters/remove-sub-forms.hfst\"          \
+		.o. @\"$(top_builddir)/src/filters/remove-transitivity-tags.hfst\"  \
+		.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"         \
+		.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.hfst\"   \
+		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"       \
+		.o. @\"$<\" \
 		.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst\" \
-    	;\n\
-	     save stack $@\n\
-	     quit\n" | $(HFST_XFST) $(VERBOSITY)
+		;\n\
+		 save stack $@\n\
+		 quit\n" | $(HFST_XFST) $(VERBOSITY)
 
 analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: \
 			$(top_builddir)/src/$(GT_SPELLER_SRC_XFST)  \
-			$(top_builddir)/src/filters/remove-sub-forms.xfst          \
+			$(top_builddir)/src/filters/remove-CLB-strings.xfst        \
 			$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst \
 			$(top_builddir)/src/filters/remove-PUNCT-strings.xfst      \
-			$(top_builddir)/src/filters/remove-CLB-strings.xfst        \
+			$(top_builddir)/src/filters/remove-dialect-tags.xfst       \
 			$(top_builddir)/src/filters/remove-semantic-tags.xfst      \
+			$(top_builddir)/src/filters/remove-sub-forms.xfst          \
+			$(top_builddir)/src/filters/remove-transitivity-tags.xfst  \
+			$(top_builddir)/src/filters/remove-usage-tags.xfst         \
+			$(top_builddir)/src/filters/remove-use_marg-strings.xfst   \
+			$(top_builddir)/src/filters/remove-variant-tags.xfst       \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
-			@\"$(top_builddir)/src/filters/remove-sub-forms.xfst\"          \
-    	.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst\" \
-    	.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.xfst\"      \
-    	.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.xfst\"        \
-    	.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.xfst\"      \
-    	.o. @\"$<\" \
+		    @\"$(top_builddir)/src/filters/remove-CLB-strings.xfst\"        \
+		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst\" \
+		.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.xfst\"      \
+		.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.xfst\"       \
+		.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.xfst\"      \
+		.o. @\"$(top_builddir)/src/filters/remove-sub-forms.xfst\"          \
+		.o. @\"$(top_builddir)/src/filters/remove-transitivity-tags.xfst\"  \
+		.o. @\"$(top_builddir)/src/filters/remove-usage-tags.xfst\"         \
+		.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.xfst\"   \
+		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.xfst\"       \
+		.o. @\"$<\" \
 		.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.xfst\" \
-    	;\n\
+		;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
 

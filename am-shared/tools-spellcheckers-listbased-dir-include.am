@@ -30,17 +30,17 @@ GT_SPELLER_SRC_XFST=../analyser-speller-gt-norm.xfst
 GT_COMMON_LISTSPELLER_XFST=
 
 ####### Automake targets: ########
-if WANT_SPELLERS
+if WANT_HUNSPELL
 
 if CAN_HFST
-GT_COMMON_LISTSPELLER_HFST+=generator-speller-gt-norm_nonrec.hfst
+GT_COMMON_LISTSPELLER_HFST+=generator-listspeller-gt-norm.hfst
 endif # CAN_HFST
 
 if CAN_XFST
-GT_COMMON_LISTSPELLER_XFST+=analyser-speller-gt-norm_nonrec.xfst
+GT_COMMON_LISTSPELLER_XFST+=analyser-listspeller-gt-norm.xfst
 endif # CAN_XFST
 
-endif # WANT_SPELLERS
+endif # WANT_HUNSPELL
 
 noinst_DATA=$(GT_COMMON_LISTSPELLER_HFST) $(GT_COMMON_LISTSPELLER_XFST)
 
@@ -52,41 +52,15 @@ noinst_DATA=$(GT_COMMON_LISTSPELLER_HFST) $(GT_COMMON_LISTSPELLER_XFST)
 # later in the PLX conversion. The word forms in question can still be
 # identified using the +RCmpnd tag.
 
-generator-speller-gt-norm_nonrec.tmp.hfst: $(GT_SPELLER_SRC_HFST) \
-		$(top_builddir)/src/filters/remove-semantic-tags.hfst \
-		$(top_builddir)/src/filters/remove-dialect-tags.hfst \
-		$(top_builddir)/src/filters/remove-transitivity-tags.hfst \
-		$(top_builddir)/src/filters/remove-variant-tags.hfst \
+generator-listspeller-gt-norm.tmp.hfst: $(GT_SPELLER_SRC_HFST) \
 		$(top_builddir)/src/filters/remove-UseCirc-strings.hfst \
-		$(top_builddir)/src/filters/remove-CLB-strings.hfst \
-		$(top_builddir)/src/filters/remove-PUNCT-strings.hfst \
-		$(top_builddir)/src/filters/remove-use_marg-strings.hfst \
-		$(top_builddir)/src/filters/remove-sub-forms.hfst \
-		$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst \
-		$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst \
-		$(top_builddir)/src/filters/remove-usage-tags.hfst \
 		$(top_builddir)/src/hyphenation/hyphenation.hfst
-	@echo
-	@echo "*** Building $@ ***" ;
-	@echo
-	$(AM_V_HXFST)$(PRINTF) "read regex \
-				@\"$(top_builddir)/src/filters/remove-semantic-tags.hfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-transitivity-tags.hfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.hfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.hfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-UseCirc-strings.hfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.hfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-sub-forms.hfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst\" \
+	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
+			read regex \
+			    @\"$(top_builddir)/src/filters/remove-UseCirc-strings.hfst\" \
 			.o. @\"$<\" \
-			.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst\" \
 			; \n\
 			set flag-is-epsilon ON \n\
-			read regex @\"$(top_builddir)/src/hyphenation/hyphenation.hfst\".i ;  \n\
-			turn stack \n\
-			compose net \n\
 			define fst \n\
 			load stack filters/extract-RCmpnd-strings.hfst \n\
 			define rcmpnd \n\
@@ -98,41 +72,37 @@ generator-speller-gt-norm_nonrec.tmp.hfst: $(GT_SPELLER_SRC_HFST) \
 		 save stack $@ \n\
 		 quit\n" | $(HFST_XFST) $(VERBOSITY)
 
-analyser-speller-gt-norm_nonrec.tmp.xfst: $(GT_SPELLER_SRC_XFST) \
-		$(top_builddir)/src/filters/remove-semantic-tags.xfst \
-		$(top_builddir)/src/filters/remove-dialect-tags.xfst \
-		$(top_builddir)/src/filters/remove-transitivity-tags.xfst \
-		$(top_builddir)/src/filters/remove-variant-tags.xfst \
+## Not working due to hyph fst mismatch or something:
+#analyser-listspeller-gt-norm.tmp.xfst: $(GT_SPELLER_SRC_XFST) \
+#		$(top_builddir)/src/filters/remove-UseCirc-strings.xfst \
+#		$(top_builddir)/src/hyphenation/hyphenation.xfst
+#	$(AM_V_XFST)$(PRINTF) "read regex \
+#			    @\"$(top_builddir)/src/filters/remove-UseCirc-strings.xfst\" \
+#			.o. @\"$<\" \
+#			; \n\
+#			set flag-is-epsilon ON \n\
+#			read regex @\"$(top_builddir)/src/hyphenation/hyphenation.xfst\".i ;  \n\
+#			turn stack \n\
+#			compose net \n\
+#			define fst \n\
+#			load stack filters/extract-RCmpnd-strings.xfst \n\
+#			define rcmpnd \n\
+#			read regex rcmpnd .o. fst ; \n\
+#			define cmps \n\
+#			read regex cmps .o. [%%- -> 0 || _ .#.] ; \n\
+#			read regex fst - cmps ; \n\
+#			union net \n\
+#		 save stack $@ \n\
+#		 quit\n" | $(XFST) $(VERBOSITY)
+
+analyser-listspeller-gt-norm.tmp.xfst: $(GT_SPELLER_SRC_XFST) \
 		$(top_builddir)/src/filters/remove-UseCirc-strings.xfst \
-		$(top_builddir)/src/filters/remove-CLB-strings.xfst \
-		$(top_builddir)/src/filters/remove-PUNCT-strings.xfst \
-		$(top_builddir)/src/filters/remove-use_marg-strings.xfst \
-		$(top_builddir)/src/filters/remove-sub-forms.xfst \
-		$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst \
-		$(top_builddir)/src/orthography/downcase-derived_proper-strings.xfst \
-		$(top_builddir)/src/filters/remove-usage-tags.xfst \
 		$(top_builddir)/src/hyphenation/hyphenation.xfst
-	@echo
-	@echo "*** Building $@ ***" ;
-	@echo
 	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"$(top_builddir)/src/filters/remove-semantic-tags.xfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.xfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-transitivity-tags.xfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-variant-tags.xfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.xfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.xfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-UseCirc-strings.xfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.xfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-sub-forms.xfst\" \
-			.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst\" \
+			    @\"$(top_builddir)/src/filters/remove-UseCirc-strings.xfst\" \
 			.o. @\"$<\" \
-			.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.xfst\" \
 			; \n\
 			set flag-is-epsilon ON \n\
-			read regex @\"$(top_builddir)/src/hyphenation/hyphenation.xfst\".i ;  \n\
-			turn stack \n\
-			compose net \n\
 			define fst \n\
 			load stack filters/extract-RCmpnd-strings.xfst \n\
 			define rcmpnd \n\

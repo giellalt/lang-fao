@@ -1,4 +1,12 @@
-$Rev: 99366 $
+$Rev: 99425 $
+Corrected a syntax error in the src_disamb-include.am file. Moved all fst
+trimming of general interest from tools-spellcheckers-listbased to
+tools-spellcheckers. Made the configuration so that list-based spellers will
+only compile if configured to build Hunspell. Also tried to make the
+configuration of other spellers such that they are automatically off
+when spellers are off.
+
+r99366:
 Batch two of the initial letter downcasing fix.
 
 r99350:

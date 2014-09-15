@@ -306,7 +306,7 @@ AC_ARG_ENABLE([spellerautomat],
                               [build speller hfst (dependent on --enable-spellers) @<:@default=yes@:>@])],
               [enable_spellerautomat=$enableval],
               [enable_spellerautomat=yes])
-AS_IF([test "x$enable_spellers" = xno], [enable_spellerautomat=no])
+AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" != xno], [enable_spellerautomat=no])
 AM_CONDITIONAL([WANT_SPELLERAUTOMAT], [test "x$enable_spellerautomat" != xno])
 
 # Enable minimised fst-spellers by default:
@@ -352,6 +352,7 @@ AC_ARG_ENABLE([hunspell],
                               [enable hunspell building @<:@default=no@:>@])],
               [enable_hunspell=$enableval],
               [enable_hunspell=no])
+AS_IF([test "x$enable_spellers" = xno], [enable_hunspell=no])
 AM_CONDITIONAL([WANT_HUNSPELL], [test "x$enable_hunspell" != xno])
 
 # Enable fst hyphenator - default is 'no'
@@ -433,6 +434,7 @@ cat<<EOF
       * enable minimised speller: $enable_minimised_spellers
     * voikko speller enabled: $enable_voikko
     * foma speller enabled: $enable_fomaspeller
+    * hunspell generation enabled: $enable_hunspell
   * hyphenators:
     * fst hyphenator enabled: $enable_fst_hyphenator
   * grammar checker enabled: $enable_grammarchecker

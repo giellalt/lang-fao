@@ -1,4 +1,13 @@
-$Rev: 99473 $
+$Rev: 99544 $
+Major cleanup of filter and tagset compilation:
+* moved all non-local data and build instructions into am-shared/
+* created dir-specific am-include files
+* clean use of regex-include.am
+* removed sme-specific source files from tools/mt/apertium/tagsets/Makefile.am
+* switched the apertium filter use to use the one built in src/filters/ instead
+  of rebuilding it
+
+r99473:
 analyser-oahpa-gt-desc should be analyser-oahpa-gt-norm. Now renamed.
 
 r99462:

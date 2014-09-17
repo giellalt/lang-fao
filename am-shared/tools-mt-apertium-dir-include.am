@@ -172,9 +172,9 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 # of the filter file.
 # WITH filter file available (the source file is inverted with the .i modifier):
 analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst \
-			filters/remove-derivation-strings.%.hfst
+			$(top_builddir)/src/filters/remove-derivation-strings.%.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
-		@\"filters/remove-derivation-strings.$*.hfst\" \
+		@\"$(top_builddir)/src/filters/remove-derivation-strings.$*.hfst\" \
    	.o. @\"$<\".i \
     	;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \

@@ -15,102 +15,11 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# List any local additions here:
-GT_FILTER_SRCS=
-
-# DIALECT_TARGETS_HFST is constructed dynamically based on the dialects
-# specified in configure.ac.
-
-# The common filter targets (don't change locally):
+# Define variable before using it:
 GT_FILTER_TARGETS=
-if CAN_HFST
-GT_FILTER_TARGETS+=\
-				   make-optional-homonymy-tags.hfst       \
-				   make-optional-semantic-tags.hfst       \
-				   make-optional-transitivity-tags.hfst   \
-				   make-optional-variant-tags.hfst        \
-				   remove-derivation-position-tags.hfst   \
-				   remove-dialect-tags.hfst               \
-				   remove-homonymy-tags.hfst              \
-				   remove-norm-comp-tags.hfst             \
-				   remove-number-string-tags.hfst         \
-				   remove-orig_lang-tags.hfst             \
-				   remove-orthography-tags.hfst           \
-				   remove-semantic-tags.hfst              \
-				   remove-transitivity-tags.hfst          \
-				   remove-usage-tags.hfst                 \
-				   remove-variant-tags.hfst               \
-				   remove-hyphenation-marks.hfst          \
-				   remove-infl_deriv-borders.hfst         \
-				   remove-word-boundary.hfst              \
-				   remove-sub-forms.hfst                  \
-				   remove-ABBR-strings.hfst               \
-				   remove-ACR-strings.hfst                \
-				   remove-CLB-strings.hfst                \
-				   remove-derivation-strings.hfst         \
-				   remove-lexsub-strings.hfst             \
-				   remove-use_marg-strings.hfst           \
-				   remove-MinusSpell-strings.hfst         \
-				   remove-NA-strings.hfst                 \
-				   remove-NG-strings.hfst                 \
-				   remove-NGminip-strings.hfst            \
-				   remove-Orth_IPA-strings.hfst           \
-				   remove-Orth_Strd-strings.hfst          \
-				   remove-PUNCT-strings.hfst              \
-				   remove-UseCirc-strings.hfst            \
-				   remove-variant-strings.hfst            \
-				   reorder-semantic-tags.hfst             \
-				   reorder-subpos-tags.hfst               \
-				   $(DIALECT_TARGETS_HFST)
-endif
 
-if CAN_XFST
-GT_FILTER_TARGETS+=\
-				   make-optional-homonymy-tags.xfst       \
-				   make-optional-semantic-tags.xfst       \
-				   make-optional-transitivity-tags.xfst   \
-				   make-optional-variant-tags.xfst        \
-				   remove-derivation-position-tags.xfst   \
-				   remove-dialect-tags.xfst               \
-				   remove-homonymy-tags.xfst              \
-				   remove-norm-comp-tags.xfst             \
-				   remove-number-string-tags.xfst         \
-				   remove-orig_lang-tags.xfst             \
-				   remove-orthography-tags.xfst           \
-				   remove-semantic-tags.xfst              \
-				   remove-transitivity-tags.xfst          \
-				   remove-usage-tags.xfst                 \
-				   remove-variant-tags.xfst               \
-				   remove-hyphenation-marks.xfst          \
-				   remove-infl_deriv-borders.xfst         \
-				   remove-word-boundary.xfst              \
-				   remove-sub-forms.xfst                  \
-				   remove-ABBR-strings.xfst               \
-				   remove-ACR-strings.xfst                \
-				   remove-CLB-strings.xfst                \
-				   remove-derivation-strings.xfst         \
-				   remove-lexsub-strings.xfst             \
-				   remove-use_marg-strings.xfst           \
-				   remove-MinusSpell-strings.xfst         \
-				   remove-NA-strings.xfst                 \
-				   remove-NG-strings.xfst                 \
-				   remove-NGminip-strings.xfst            \
-				   remove-Orth_IPA-strings.xfst           \
-				   remove-Orth_Strd-strings.xfst          \
-				   remove-PUNCT-strings.xfst              \
-				   remove-UseCirc-strings.xfst            \
-				   remove-variant-strings.xfst            \
-				   reorder-semantic-tags.xfst             \
-				   reorder-subpos-tags.xfst               \
-				   $(DIALECT_TARGETS_XFST)
-endif
-
-GENERATED_REGEXES=remove-semantic-tags.regex \
-                  remove-dialect-tags.regex \
-                  remove-derivation-strings.regex \
-                  reorder-semantic-tags.regex \
-                  make-optional-semantic-tags.regex \
-                  $(DIALECT_REGEXES)
+# List any local additions here:
+GT_FILTER_LOCAL_SRCS=
 
 # Add the target of local additions here:
 # HFST targets here:

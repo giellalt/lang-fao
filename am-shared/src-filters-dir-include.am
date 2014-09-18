@@ -17,39 +17,57 @@
 
 ####### Source file defs: ########
 GT_FILTER_CORE_SRCS=\
-				make-optional-homonymy-tags.regex      \
-				make-optional-transitivity-tags.regex  \
-				make-optional-variant-tags.regex       \
-				remove-derivation-position-tags.regex  \
-				remove-homonymy-tags.regex             \
-				remove-norm-comp-tags.regex            \
-				remove-number-string-tags.regex        \
-				remove-orig_lang-tags.regex            \
-				remove-orthography-tags.regex          \
-				remove-transitivity-tags.regex         \
-				remove-usage-tags.regex                \
-				remove-usage_except_NGminip-tags.regex \
-				remove-variant-tags.regex              \
-				remove-hyphenation-marks.regex         \
-				remove-infl_deriv-borders.regex        \
-				remove-word-boundary.regex             \
-				remove-sub-forms.regex                 \
-				remove-ABBR-strings.regex              \
-				remove-ACR-strings.regex               \
-				remove-CLB-strings.regex               \
-				remove-derivation-strings.regex        \
-				remove-lexsub-strings.regex            \
-				remove-use_marg-strings.regex          \
-				remove-MinusSpell-strings.regex        \
-				remove-NA-strings.regex                \
-				remove-NG-strings.regex                \
-				remove-NGminip-strings.regex           \
-				remove-Orth_IPA-strings.regex          \
-				remove-Orth_Strd-strings.regex         \
-				remove-PUNCT-strings.regex             \
-				remove-UseCirc-strings.regex           \
-				remove-variant-strings.regex           \
-				reorder-subpos-tags.regex
+				make-optional-homonymy-tags.regex         \
+				make-optional-transitivity-tags.regex     \
+				make-optional-variant-tags.regex          \
+				remove-derivation-position-tags.regex     \
+				remove-homonymy-tags.regex                \
+				remove-norm-comp-tags.regex               \
+				remove-number-string-tags.regex           \
+				remove-orig_lang-tags.regex               \
+				remove-orthography-tags.regex             \
+				remove-transitivity-tags.regex            \
+				remove-usage-tags.regex                   \
+				remove-usage_except_NGminip-tags.regex    \
+				remove-variant-tags.regex                 \
+				remove-hyphenation-marks.regex            \
+				remove-infl_boundary-marks.regex          \
+				remove-infl_deriv-borders.regex           \
+				remove-nonfirst_infl_boundary-marks.regex \
+				remove-word-boundary.regex                \
+				remove-sub-forms.regex                    \
+				remove-ABBR-strings.regex                 \
+				remove-ACR-strings.regex                  \
+				remove-CLB-strings.regex                  \
+				remove-hyphenated-strings.regex           \
+				remove-lexsub-strings.regex               \
+				remove-MinusSpell-strings.regex           \
+				remove-MT-strings.regex                   \
+				remove-NA-strings.regex                   \
+				remove-NG-strings.regex                   \
+				remove-NGminip-strings.regex              \
+				remove-Orth_IPA-strings.regex             \
+				remove-Orth_Strd-strings.regex            \
+				remove-Prop-strings.regex                 \
+				remove-PUNCT-strings.regex                \
+				remove-RCmpnd-strings.regex               \
+				remove-UseCirc-strings.regex              \
+				remove-use_marg-strings.regex             \
+				remove-variant-strings.regex              \
+				reorder-subpos-tags.regex                 \
+				extract-OLang_ENG-strings.regex           \
+				extract-OLang_FIN-strings.regex           \
+				extract-OLang_NNO-strings.regex           \
+				extract-OLang_NOB-strings.regex           \
+				extract-OLang_SME-strings.regex           \
+				extract-OLang_SWE-strings.regex           \
+				remove-OLang_ENG-strings.regex            \
+				remove-OLang_FIN-strings.regex            \
+				remove-OLang_NNO-strings.regex            \
+				remove-OLang_NOB-strings.regex            \
+				remove-OLang_SME-strings.regex            \
+				remove-OLang_SWE-strings.regex            \
+				remove-OLang_UND-strings.regex
 
 GENERATED_REGEXES=remove-semantic-tags.regex        \
                   remove-dialect-tags.regex         \
@@ -60,6 +78,8 @@ GENERATED_REGEXES=remove-semantic-tags.regex        \
 
 REGEX_SRCS=$(GT_FILTER_CORE_SRCS) $(GT_FILTER_LOCAL_SRCS) $(GENERATED_REGEXES)
 
+# Define variable before using it:
+GT_FILTER_TARGETS=
 # Generate the filter targets from the source filenames:
 if CAN_HFST
 GT_FILTER_TARGETS+=$(patsubst %.regex,%.hfst,$(REGEX_SRCS))

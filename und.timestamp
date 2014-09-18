@@ -1,4 +1,15 @@
-$Rev: 99574 $
+$Rev: 99587 $
+Another filter build cleanup: all filter regexes in core are now built for all
+languages. One obsolete filter was removed.
+
+r99584:
+Fixed a problem with MT filter compilation that only revealed itself in sme.
+
+r99579:
+Cleaned the filter build files even more. Now only local / language specific
+regex source files need to be listed in the local Makefile.am.
+
+r99574:
 Added a new filter to the filter compilation. Used the new filter to build
 correct fst's for dictionary analysis and generation. Increased the version
 number of the required gtd core version, due to the new and required filter

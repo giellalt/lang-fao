@@ -1,4 +1,10 @@
-$Rev: 99544 $
+$Rev: 99574 $
+Added a new filter to the filter compilation. Used the new filter to build
+correct fst's for dictionary analysis and generation. Increased the version
+number of the required gtd core version, due to the new and required filter
+in the core.
+
+r99544:
 Major cleanup of filter and tagset compilation:
 * moved all non-local data and build instructions into am-shared/
 * created dir-specific am-include files

@@ -18,7 +18,9 @@
 ####### Source file and target defs: ########
 
 # These will be included in the distribution:
-EXTRA_DIST=$(GT_FILTER_SRCS)
+EXTRA_DIST=$(GT_MT_FILTER_SRCS)
+
+MT_FILTER_ALL_SRCS=$(GT_MT_FILTER_SRCS) $(GENERATED_REGEXES)
 
 # This is what we build:
 noinst_DATA=$(GT_FILTER_TARGETS)
@@ -28,11 +30,11 @@ GT_FILTER_TARGETS=
 
 if WANT_APERTIUM
 if CAN_HFST
-GT_FILTER_TARGETS+=$(patsubst %.regex,%.hfst,$(GT_FILTER_SRCS))
+GT_FILTER_TARGETS+=$(patsubst %.regex,%.hfst,$(MT_FILTER_ALL_SRCS))
 endif # CAN_HFST
 
 if CAN_XFST
-GT_FILTER_TARGETS+=$(patsubst %.regex,%.xfst,$(GT_FILTER_SRCS))
+GT_FILTER_TARGETS+=$(patsubst %.regex,%.xfst,$(MT_FILTER_ALL_SRCS))
 endif # CAN_XFST
 endif # WANT_APERTIUM
 

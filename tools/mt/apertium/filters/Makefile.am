@@ -22,7 +22,20 @@
 # List any local additions here:
 GT_FILTER_SRCS=
 
-# Add the build code of local additions here:
+# Only build these things if apertium fst's are enabled:
+if WANT_APERTIUM
+
+# List generated regexes here:
+GENERATED_REGEXES+=
+# E.g.: remove-derivation-strings.nob.regex
+
+endif # WANT_APERTIUM
+
+# Add the build code of local additions and generated regexes here, e.g.:
+# remove-%-strings.nob.regex: $(top_builddir)/src/filters/%-tags.txt \
+# 						remove-%-strings-modifications.nob.regex
+# 	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh \
+# 		$@ $^
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######

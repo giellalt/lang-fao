@@ -15,25 +15,10 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Define variable before using it:
-GT_FILTER_TARGETS=
-
-# List any local additions here:
+# List any local filter regexes here:
 GT_FILTER_LOCAL_SRCS=
 
-# Add the target of local additions here:
-# HFST targets here:
-if CAN_HFST
-GT_FILTER_TARGETS+=\
-					reorder-semantic-tags.hfst
-endif
-
-# And Xerox targets here:
-if CAN_XFST
-GT_FILTER_TARGETS+=\
-					reorder-semantic-tags.xfst
-endif
-
+# Included build file, where the actual build instructions are:
 include $(top_srcdir)/am-shared/src-filters-dir-include.am
 
 # vim: set ft=automake:

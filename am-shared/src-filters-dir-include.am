@@ -16,7 +16,8 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ####### Source file defs: ########
-GT_FILTER_CORE_SRCS=\
+# 1) GTD Core regex files:
+GIELLA_FILTER_CORE_REGEX_SRCS=\
 				make-optional-homonymy-tags.regex         \
 				make-optional-transitivity-tags.regex     \
 				make-optional-variant-tags.regex          \
@@ -69,36 +70,84 @@ GT_FILTER_CORE_SRCS=\
 				remove-OLang_SWE-strings.regex            \
 				remove-OLang_UND-strings.regex
 
-GENERATED_REGEXES=remove-semantic-tags.regex        \
+# 2) GTD Core **generated** regex files:
+GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS=\
+                  remove-semantic-tags.regex        \
                   remove-dialect-tags.regex         \
                   remove-derivation-strings.regex   \
                   reorder-semantic-tags.regex       \
                   make-optional-semantic-tags.regex \
                   $(DIALECT_REGEXES)
 
-REGEX_SRCS=$(GT_FILTER_CORE_SRCS) $(GT_FILTER_LOCAL_SRCS) $(GENERATED_REGEXES)
+# 3) GTD Core xfscript filter files:
+GIELLA_FILTER_CORE_XFSCRIPT_SRCS=
+
+# 4) GTD Core **generated** xfscript files:
+GIELLA_FILTER_CORE_GENERATED_XFSCRIPT_SRCS=
+
+# 5) GTD Core lexc filter files:
+GIELLA_FILTER_CORE_LEXC_SRCS=
+
+# 6) GTD Core **generated** lexc files:
+GIELLA_FILTER_CORE_GENERATED_LEXC_SRCS=
+
+
+# Variable for all source files - regex:
+REGEX_SRCS=$(GIELLA_FILTER_CORE_REGEX_SRCS) \
+		   $(GIELLA_FILTER_LOCAL_REGEX_SRCS) \
+		   $(GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS) \
+		   $(GIELLA_FILTER_LOCAL_GENERATED_REGEX_SRCS)
+
+# Variable for all source files - xfscript:
+XFSCRIPT_SRCS=\
+			$(GIELLA_FILTER_CORE_XFSCRIPT_SRCS) \
+			$(GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS) \
+			$(GIELLA_FILTER_CORE_GENERATED_XFSCRIPT_SRCS) \
+			$(GIELLA_FILTER_LOCAL_GENERATED_XFSCRIPT_SRCS)
+
+# Variable for all source files - lexc:
+LEXC_SRCS=$(GIELLA_FILTER_CORE_LEXC_SRCS) \
+		  $(GIELLA_FILTER_LOCAL_LEXC_SRCS) \
+		  $(GIELLA_FILTER_CORE_GENERATED_LEXC_SRCS) \
+		  $(GIELLA_FILTER_LOCAL_GENERATED_LEXC_SRCS)
+
+# Variable for all generated source files:
+GENERATED_FILES=\
+		   $(GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS) \
+		   $(GIELLA_FILTER_LOCAL_GENERATED_REGEX_SRCS) \
+		   $(GIELLA_FILTER_CORE_GENERATED_XFSCRIPT_SRCS) \
+		   $(GIELLA_FILTER_LOCAL_GENERATED_XFSCRIPT_SRCS)\
+		   $(GIELLA_FILTER_CORE_GENERATED_LEXC_SRCS) \
+		   $(GIELLA_FILTER_LOCAL_GENERATED_LEXC_SRCS)
 
 # Define variable before using it:
-GT_FILTER_TARGETS=
+GIELLA_FILTER_TARGETS=
 # Generate the filter targets from the source filenames:
 if CAN_HFST
-GT_FILTER_TARGETS+=$(patsubst %.regex,%.hfst,$(REGEX_SRCS))
+GIELLA_FILTER_TARGETS+=$(patsubst %.regex,%.hfst,$(REGEX_SRCS))
+GIELLA_FILTER_TARGETS+=$(patsubst %.xfscript,%.hfst,$(XFSCRIPT_SRCS))
+GIELLA_FILTER_TARGETS+=$(patsubst %.lexc,%.hfst,$(LEXC_SRCS))
 endif
 
 if CAN_XFST
-GT_FILTER_TARGETS+=$(patsubst %.regex,%.xfst,$(REGEX_SRCS))
+GIELLA_FILTER_TARGETS+=$(patsubst %.regex,%.xfst,$(REGEX_SRCS))
+GIELLA_FILTER_TARGETS+=$(patsubst %.xfscript,%.xfst,$(XFSCRIPT_SRCS))
+GIELLA_FILTER_TARGETS+=$(patsubst %.lexc,%.xfst,$(LEXC_SRCS))
 endif
 
 # need to check way to list build targets like automake
-#! @param GT_FILTER_LOCAL_SRCS required, contains all local additions
-EXTRA_DIST=$(GT_FILTER_LOCAL_SRCS)
+#! @param GIELLA_FILTER_LOCAL_SRCS required, contains all local additions
+EXTRA_DIST=$(GIELLA_FILTER_LOCAL_REGEX_SRCS) \
+		   $(GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS) \
+		   $(GIELLA_FILTER_LOCAL_LEXC_SRCS) \
+		   $(EXTRA_SRCS)
 
 ####### Automake targets: ########
 
-# @param GT_FILTER_TARGETS required
-noinst_DATA=$(GT_FILTER_TARGETS)
-BUILT_SOURCES=$(GENERATED_REGEXES)
-CLEANFILES=$(GENERATED_REGEXES)
+# @param GIELLA_FILTER_TARGETS required
+noinst_DATA=$(GIELLA_FILTER_TARGETS)
+BUILT_SOURCES=$(GENERATED_FILES)
+CLEANFILES=$(GENERATED_FILES)
 
 # The or construction needs to be put into a variable for the parentheses to
 # survive 'make' and be visible to the shell - this at the same time silences
@@ -252,9 +301,12 @@ reorder-%-tags.regex: %-tags.txt
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.xfst *.txt $(GT_FILTER_CORE_SRCS)
+	-rm -f *.hfst *.xfst *.txt $(GIELLA_FILTER_CORE_REGEX_SRCS)
 
+# Include files for the actual build instructions and for verbosity control:
 include $(top_srcdir)/am-shared/regex-include.am
+include $(top_srcdir)/am-shared/xfscript-include.am
+include $(top_srcdir)/am-shared/lexc-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

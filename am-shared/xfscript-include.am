@@ -19,39 +19,16 @@
 ########## XFScript build rules. ##########
 ###########################################
 
-####### Silent builds: ########
-# Silence macros defined here instead of using the include file to avoid
-# warnings of double definitions of the macros by
-# the src-phonetics-dir-include.am file - it includes both this file
-# and the twolc-include file. If they were to use the silent_build-include.am
-# file, all macros would be defined twice, and AM would bork and stop.
-AM_V_HXFST   = $(AM_V_HXFST_@AM_V@)
-AM_V_HXFST_  = $(AM_V_HXFST_@AM_DEFAULT_V@)
-if CAN_HFST_FOMA
-AM_V_HXFST_0 = @echo "  HFOMA    $@";
-else
-if CAN_HFST_XFST
-AM_V_HXFST_0 = @echo "  HXFST    $@";
-endif # CAN_HFST_XFST
-endif # CAN_HFST_FOMA
-
-AM_V_XFST   = $(AM_V_XFST_@AM_V@)
-AM_V_XFST_  = $(AM_V_XFST_@AM_DEFAULT_V@)
-AM_V_XFST_0 = @echo "  XFST     $@";
-
-# Let the verbosity of some command line tools follow the automake verbosity:
-XFSTVERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
-
 ####### HFST build rules: ########
 
 # Which hfst xfscript processor to use? Foma is default, there are still issues
 # with hfst-xfst.
 if CAN_HFST_FOMA
-HFST_XFST_COMPILER=$(HFST_FOMA) $(XFSTVERBOSITY) -f
+HFST_XFST_COMPILER=$(HFST_FOMA) $(VERBOSITY) -f
 
 else
 if CAN_HFST_XFST
-HFST_XFST_COMPILER=$(HFST_XFST) $(XFSTVERBOSITY) -F
+HFST_XFST_COMPILER=$(HFST_XFST) $(VERBOSITY) -F
 
 else
 HFST_XFST_COMPILER=false
@@ -76,6 +53,6 @@ endif # CAN_HFST_FOMA
 # composition, the fst will just be copied from tmp to the target. These oper-
 # ations are done in the *.am files which include this file.
 %.tmp.xfst: %.xfscript
-	$(AM_V_XFST)$(XFST) $(XFSTVERBOSITY) -l $< -e "save stack $@" -stop
+	$(AM_V_XFST)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
 
 # vim: set ft=automake:

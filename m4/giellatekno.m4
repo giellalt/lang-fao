@@ -390,6 +390,17 @@ AC_ARG_ENABLE([oahpa],
               [enable_oahpa=no])
 AM_CONDITIONAL([WANT_OAHPA], [test "x$enable_oahpa" != xno])
 
+AC_ARG_ENABLE([L2],
+              [AS_HELP_STRING([--enable-L2],
+                              [enable L2 analyser for Oahpa @<:@default=no@:>@])],
+              [enable_L2=$enableval],
+              [enable_L2=no])
+AS_IF([test x$enable_oahpa = xno], [enable_L2=no],
+    [AS_IF([test x$enable_L2 != xno -a \
+      "$(find ${srcdir}/src -name "*-L2.*" | head -n 1)" = "" ],
+      [AC_MSG_ERROR([You asked for the L2 analyser, but no L2 files were found])])])
+AM_CONDITIONAL([WANT_L2], [test "x$enable_L2" != xno])
+
 # Enable IPA conversion - default is 'no'
 AC_ARG_ENABLE([phonetic],
               [AS_HELP_STRING([--enable-phonetic],
@@ -443,6 +454,7 @@ cat<<EOF
   * phonetic/IPA conversion enabled: $enable_phonetic
   * dictionary fst's enabled: $enable_dicts
   * Oahpa transducers enabled: $enable_oahpa
+    * L2 analyser: $enable_L2
   * Apertium transducers enabled: $enable_apertium
 
 For more ./configure options, run ./configure --help

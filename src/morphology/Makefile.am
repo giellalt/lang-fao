@@ -17,8 +17,8 @@
 
 GT_LEXC_ROOT=root.lexc
 
-# Set this to the names of all other source lexc files
-GT_LEXC_SRCS=\
+# Set this to the names of all regular lexc source files:
+GT_LEXC_SRCS_L1_L2=\
 			 affixes/adjectives.lexc  \
 			 affixes/nouns.lexc       \
 			 affixes/propernouns.lexc \
@@ -38,6 +38,21 @@ GT_LEXC_SRCS=\
 			 stems/punctuation.lexc   \
 			 stems/subjunctions.lexc  \
 			 stems/verbs.lexc
+
+# If you are building an error-detecting L2 analyser, specify the lexc files
+# that differ between the regular L1 and the L2 analysers below, in L1 and
+# L2 respectively. L2 files must end in "*-L2.lexc". See SME for an example.
+L1=\
+
+L2=\
+
+GT_LEXC_SRCS=\
+			$(GT_LEXC_SRCS_L1_L2) \
+			$(L1)
+
+GT_LEXC_L2_SRCS=\
+			$(GT_LEXC_SRCS_L1_L2) \
+			$(L2)
 
 # Set this to the names of all generated lexc files, if any
 GENERATED_LEXC_SRCS=

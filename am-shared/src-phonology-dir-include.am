@@ -37,12 +37,22 @@ if CAN_XFST
 GT_PHONOLOGY+=$(GTLANG)-phon.xfst
 endif
 
+if WANT_L2
+if CAN_HFST
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.hfst
+endif # CAN_HFST
+if CAN_XFST
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.xfst
+endif # CAN_XFST
+endif # WANT_L2
+
 noinst_DATA=$(GT_PHONOLOGY)
 
 ##########################################
 # General build rules included from here:#
 include $(top_srcdir)/am-shared/twolc-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
+include $(top_srcdir)/am-shared/silent_build-include.am
 
 # We need a target to properly finish the Xerox fst build:
 %.xfst: %.tmp.xfst

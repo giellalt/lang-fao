@@ -1,4 +1,15 @@
-$Rev: 99793 $
+$Rev: 99883 $
+Several fixes to accomodate L2 (language learner) analysers for Oahpa:
+* removed silent build instructions from twolc-include (they are taken from the
+  silent-build-include instead)
+* added support for compiling L2 phonology/twolc files when configured to
+* renamed $(GTLANG)-lexc.?fst to just lexicon.?fst.
+* added support for the error analyser in src_oahpa-include.am
+* added configure support for the L2 analyser (off by default)
+* added support for building the L2 lexical fst using L2 source files
+* added variables a.o. to support specifying L2 source files in src/morphology/
+
+r99793:
 Added support for filters written in lexc and xfscript. Renamed variables and
 added a lexc-include.am file to support general lexc compilation.
 

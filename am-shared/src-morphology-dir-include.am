@@ -31,7 +31,7 @@ endif # WANT_HYPERMINIMISATION
 #! @param GENERATED_LEXC_SRCS optional, space separated list of file names
 #!        holding supplementary lexicon data generated from xml files.
 #! @param GT_XML_SRCS optional, space separated list of xml source file names
-GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS) \
+GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GT_LEXC_L2_SRCS) \
 				$(GENERATED_LEXC_SRCS) $(GT_XML_SRCS)
 
 # All sources need to be included in the tarball
@@ -42,12 +42,22 @@ EXTRA_DIST=$(GT_LEXC_ALLSRC)
 # The transducers we build and don't distribute depend on the configuration:
 GT_LEXICAL=
 if CAN_HFST
-GT_LEXICAL+=$(GTLANG).lexc.hfst
+GT_LEXICAL+=lexicon.hfst
 endif
 if CAN_XFST
-GT_LEXICAL+=$(GTLANG).lexc.xfst
+GT_LEXICAL+=lexicon.xfst
 endif
 noinst_DATA=$(GT_LEXICAL)
+
+if WANT_L2
+if CAN_HFST
+GT_LEXICAL+=lexicon-error.hfst
+endif # CAN_HFST
+if CAN_XFST
+GT_LEXICAL+=lexicon-error.xfst
+endif # CAN_XFST
+endif # WANT_L2
+
 
 ####### XML2LEXC build rules: ####
 XSLDIR = $(GTCORE)/scripts/xsl
@@ -76,8 +86,14 @@ endif
 ####### when something doesn't work); hfst does the concatenation automatically
 ####### but by doing it explicitly we have a source file to relate line numbers
 ####### in error messages to.
-generated_files/$(GTLANG).all.lexc: $(GT_LEXC_ROOT) \
+generated_files/lexicon.lexc: $(GT_LEXC_ROOT) \
                                     $(GT_LEXC_SRCS) \
+                                    $(GENERATED_LEXC_SRCS)
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)cat $^ > $@
+
+generated_files/lexicon-error.lexc: $(GT_LEXC_ROOT) \
+                                    $(GT_LEXC_L2_SRCS) \
                                     $(GENERATED_LEXC_SRCS)
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cat $^ > $@
@@ -85,18 +101,9 @@ generated_files/$(GTLANG).all.lexc: $(GT_LEXC_ROOT) \
 ##################################################
 ####### lexical transducer building rules: #######
 
-####### HFST build rules: ########
-%.lexc.hfst: generated_files/%.all.lexc
-	$(AM_V_HLEXC)$(HFST_LEXC) $(VERBOSITY) $(HFST_LEXC_FLAGS) \
-		-f openfst-tropical -o $@ $^
-
-####### Xerox build rules: #######
-%.lexc.xfst: generated_files/%.all.lexc
-	$(AM_V_XFST)$(XFST) $(VERBOSITY) \
-			-e "read lexc $^" \
-			-e "compose net" \
-			-e "save stack $@ " \
-			-stop
+# Look in the subdir generated_files/ for lexc source files, use the regular
+# pattern rule in the included lexc-include.am file to compile.
+vpath %.lexc generated_files
 
 ####### Other targets: ###########
 clean-local:
@@ -105,6 +112,7 @@ clean-local:
 maintainer-clean-local:
 	-rm -f $(GENERATED_LEXC_SRCS)
 
+include $(top_srcdir)/am-shared/lexc-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake: 

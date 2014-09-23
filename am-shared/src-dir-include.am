@@ -53,17 +53,17 @@ noinst_DATA=$(GT_ANALYSERS_XFST) \
 # can NOT be used for morphological analysis, and hardly for generation.
 
 # First build a tmp1 raw file as the intersection between lexicon and rules:
-generator-raw-gt-desc.tmp1.hfst: morphology/$(GTLANG).lexc.hfst \
+generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.hfst \
 					 phonology/$(GTLANG)-phon.hfst
 	$(AM_V_INTRSCT)$(HFST_COMPOSE_INTERSECT) $(VERBOSITY) $(HFST_FLAGS) \
-		-1 morphology/$(GTLANG).lexc.hfst \
+		-1 morphology/lexicon.hfst \
 		-2 phonology/$(GTLANG)-phon.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
-analyser-raw-gt-desc.tmp1.xfst: morphology/$(GTLANG).lexc.xfst \
+analyser-raw-gt-desc.tmp1.xfst: morphology/lexicon.xfst \
 			 phonology/$(GTLANG)-phon.xfst
 	$(AM_V_at)$(PRINTF) \
-		"read-source morphology/$(GTLANG).lexc.xfst\nread-rules  phonology/$(GTLANG)-phon.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/lexicon.xfst\nread-rules  phonology/$(GTLANG)-phon.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		> $@.script
 	$(AM_V_LEXC)$(LEXC) $(VERBOSITY) < $@.script
 	$(AM_V_at)     rm -f $@.script

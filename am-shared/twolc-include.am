@@ -19,23 +19,6 @@
 ########## Twolc build rules. ##########
 ########################################
 
-####### Silent builds: ########
-# Silence macros defined here instead of using the include file to avoid
-# warnings of double definitions of the macros by
-# the src-phonetics-dir-include.am file - it includes both this file
-# and the xfscript-include file. If they were to use the silent_build-include.am
-# file, all macros would be defined twice, and AM would bork and stop.
-AM_V_HTWOLC   = $(AM_V_HTWOLC_@AM_V@)
-AM_V_HTWOLC_  = $(AM_V_HTWOLC_@AM_DEFAULT_V@)
-AM_V_HTWOLC_0 = @echo "  HTWOLC   $@";
-
-AM_V_TWOLC   = $(AM_V_TWOLC_@AM_V@)
-AM_V_TWOLC_  = $(AM_V_TWOLC_@AM_DEFAULT_V@)
-AM_V_TWOLC_0 = @echo "  TWOLC    $@";
-
-# Let the verbosity of some command line tools follow the automake verbosity:
-TWOLCVERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
-
 ####### HFST build rules: ########
 
 # hfst-twolc should by default resolve
@@ -44,7 +27,7 @@ HFSTTWOLFLAGS=--resolve
 # All twolc targets should be built by suffix rules;
 # just list them in some nice automake targets and you're good to go
 .twolc.hfst:
-	$(AM_V_HTWOLC)$(HFST_TWOLC) $(TWOLCVERBOSITY) \
+	$(AM_V_HTWOLC)$(HFST_TWOLC) $(VERBOSITY) \
 			$(HFSTFLAGS) $(HFSTTWOLCFLAGS) -i $< -o $@
 
 ####### Xerox build rules: #######
@@ -54,7 +37,7 @@ HFSTTWOLFLAGS=--resolve
 .twolc.xfst:
 	$(AM_V_at)$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" \
 		> $@.script
-	$(AM_V_TWOLC)$(TWOLC) $(TWOLCVERBOSITY) < $@.script
+	$(AM_V_TWOLC)$(TWOLC) $(VERBOSITY) < $@.script
 	$(AM_V_at)rm -f $@.script
 
 # vim: set ft=automake:

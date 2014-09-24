@@ -1,4 +1,11 @@
-$Rev: 99883 $
+$Rev: 100035 $
+There were a couple of issues in the previous commit:
+* vpath directive didn't work reliably
+* L1 and L2 variabless were declared for easy merging, but in a way that
+  AM didn't like
+* forgot to change the name of the lexical fst in the filter processing
+
+r99883:
 Several fixes to accomodate L2 (language learner) analysers for Oahpa:
 * removed silent build instructions from twolc-include (they are taken from the
   silent-build-include instead)

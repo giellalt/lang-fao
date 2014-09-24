@@ -86,24 +86,17 @@ endif
 ####### when something doesn't work); hfst does the concatenation automatically
 ####### but by doing it explicitly we have a source file to relate line numbers
 ####### in error messages to.
-generated_files/lexicon.lexc: $(GT_LEXC_ROOT) \
+lexicon.lexc: $(GT_LEXC_ROOT) \
                                     $(GT_LEXC_SRCS) \
                                     $(GENERATED_LEXC_SRCS)
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cat $^ > $@
 
-generated_files/lexicon-error.lexc: $(GT_LEXC_ROOT) \
+lexicon-error.lexc: $(GT_LEXC_ROOT) \
                                     $(GT_LEXC_L2_SRCS) \
                                     $(GENERATED_LEXC_SRCS)
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cat $^ > $@
-
-##################################################
-####### lexical transducer building rules: #######
-
-# Look in the subdir generated_files/ for lexc source files, use the regular
-# pattern rule in the included lexc-include.am file to compile.
-vpath %.lexc generated_files
 
 ####### Other targets: ###########
 clean-local:

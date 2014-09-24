@@ -166,7 +166,7 @@ GT_TAGS=gttags.txt
 
 if CAN_HFST
 # Hfst: break on comma + space in three steps, to preserve space as a symbol.
-sigma.txt: $(top_builddir)/src/morphology/$(GTLANG).lexc.hfst
+sigma.txt: $(top_builddir)/src/morphology/lexicon.hfst
 	$(AM_V_GEN)$(HFST_SUMMARIZE) -v $^ \
 		| grep -A1 '^sigma set' \
 		| grep -v '^sigma set' \
@@ -181,7 +181,7 @@ else
 if CAN_XFST
 # Special treatment of space (" "), break on space, special treatment of
 # reserved symbols ("X") and double quote. The Xfst file needs to be sorted.
-sigma.txt: $(top_builddir)/src/morphology/$(GTLANG).lexc.xfst
+sigma.txt: $(top_builddir)/src/morphology/lexicon.xfst
 	$(AM_V_GEN)$(XFST) -q \
 			-e "load stack $^" \
 			-e "print sigma" \

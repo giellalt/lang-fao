@@ -19,7 +19,11 @@
 
 #! @param GT_TRANSCRIPTIONS_SRCS required, the source files for orthographic
 #!        transcriptions.
-GT_TRANSCRIPTIONS_SRCS=clock.lexc date.lexc numbers.lexc
+#GT_TRANSCRIPTIONS_SRCS=clock.lexc date.lexc numbers.lexc
+GT_TRANSCRIPTIONS_SRCS=\
+		transcriptor-clock-digit2text.lexc \
+		transcriptor-date-digit2text.lexc \
+		transcriptor-numbers-digit2text.lexc
 
 include $(top_srcdir)/am-shared/src-transcriptions-dir-include.am
 

@@ -10,10 +10,8 @@ SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax 
 # Define target variables first, with obligatory raw fst's included:
 GT_ANALYSERS_HFST=
 GT_GENERATORS_HFST=
-GT_TRANSFORMERS_HFST=
 GT_ANALYSERS_XFST=
 GT_GENERATORS_XFST=
-GT_TRANSFORMERS_XFST=
 
 ##### BEGIN Hfst target list #####
 if CAN_HFST
@@ -31,15 +29,6 @@ if WANT_GENERATION
 GT_GENERATORS_HFST+=generator-gt-desc.hfst \
 					generator-gt-norm.hfst 
 endif # WANT_GENERATION
-
-if WANT_TRANSCRIPTORS
-GT_TRANSFORMERS_HFST+=transcriptor-clock2text-desc.hfst \
-					  transcriptor-date2text-desc.hfst \
-					  transcriptor-numbers2text-desc.hfst \
-					  transcriptor-text2clock-desc.hfst \
-					  transcriptor-text2date-desc.hfst \
-					  transcriptor-text2numbers-desc.hfst
-endif # WANT_TRANSCRIPTORS
 
 if WANT_DICTIONARIES
 GT_ANALYSERS_HFST+=analyser-dict-gt-desc.hfst \
@@ -73,15 +62,6 @@ if WANT_GENERATION
 GT_GENERATORS_XFST+=generator-gt-desc.xfst \
 					generator-gt-norm.xfst
 endif # WANT_GENERATION
-
-if WANT_TRANSCRIPTORS
-GT_TRANSFORMERS_XFST+=transcriptor-clock2text-desc.xfst \
-					  transcriptor-date2text-desc.xfst \
-					  transcriptor-numbers2text-desc.xfst \
-					  transcriptor-text2clock-desc.xfst \
-					  transcriptor-text2date-desc.xfst \
-					  transcriptor-text2numbers-desc.xfst
-endif # WANT_TRANSCRIPTORS
 
 if WANT_DICTIONARIES
 GT_ANALYSERS_XFST+=analyser-dict-gt-desc.xfst \

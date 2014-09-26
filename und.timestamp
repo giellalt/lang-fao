@@ -1,4 +1,11 @@
-$Rev: 100035 $
+$Rev: 100126 $
+Several changes to clean up the mess with the transcriptors:
+* moved transcriptor final builds from src/ to src/transcriptions/
+* renamed transcriptor source files and targets
+* streamlined transcriptor compilation to use lexc-include and lookup-include
+* also silenced xfst in lookup-include.am
+
+r100035:
 There were a couple of issues in the previous commit:
 * vpath directive didn't work reliably
 * L1 and L2 variabless were declared for easy merging, but in a way that

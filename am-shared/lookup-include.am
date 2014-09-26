@@ -46,7 +46,7 @@
 # The lookup variant of the Xerox fst needs to be inverted, since Xerox turns
 # the fst upside down / backwards when doing lookup:
 %.lookup.xfst: %.xfst
-	$(AM_V_XFST)$(XFST) $(XFSTVERBOSITY) \
+	$(AM_V_XFST)$(XFST) $(VERBOSITY) \
 			-e "load stack < $<" \
 			-e "invert net" \
 			-e "save stack $@ " \

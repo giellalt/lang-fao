@@ -27,13 +27,11 @@
 if CAN_HFST
 hfstdatadir=$(datadir)/giella/$(GTLANG)
 hfstdata_DATA=$(GT_ANALYSERS_HFST) \
-			  $(GT_GENERATORS_HFST) \
-			  $(GT_TRANSFORMERS_HFST)
+			  $(GT_GENERATORS_HFST)
 endif
 
 noinst_DATA=$(GT_ANALYSERS_XFST) \
-			$(GT_GENERATORS_XFST) \
-			$(GT_TRANSFORMERS_XFST)
+			$(GT_GENERATORS_XFST)
 
 ##################################################
 ######## Build rules for Xerox and HFST: #########
@@ -446,65 +444,6 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
 			.o. @\"filters/remove-word-boundary.xfst\"            \
-			;\n\
-		 invert net\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
-# The number-clock-date2text & inverse conversion transducers:
-transcriptor-%2text-desc.hfst: \
-					transcriptions/transcriptor-%2text-raw.hfst \
-					filters/remove-NA-strings.hfst \
-					filters/remove-NG-strings.hfst \
-					filters/remove-usage-tags.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
-			    @\"filters/remove-usage-tags.hfst\" \
-			.o. @\"filters/remove-NA-strings.hfst\" \
-			.o. @\"filters/remove-NG-strings.hfst\" \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-usage-tags.hfst\".i \
-			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
-		> $@
-
-transcriptor-text2%-desc.hfst: \
-					transcriptions/transcriptor-%2text-raw.hfst \
-					filters/remove-usage-tags.hfst \
-					orthography/spellrelax.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
-			    @\"filters/remove-usage-tags.hfst\" \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-usage-tags.hfst\".i \
-			.o. @\"orthography/spellrelax.hfst\" \
-			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
-		> $@
-
-
-transcriptor-%2text-desc.xfst: \
-					transcriptions/transcriptor-%2text-raw.xfst \
-					filters/remove-NA-strings.xfst \
-					filters/remove-NG-strings.xfst \
-					filters/remove-usage-tags.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-			    @\"filters/remove-usage-tags.xfst\" \
-			.o. @\"filters/remove-NA-strings.xfst\" \
-			.o. @\"filters/remove-NG-strings.xfst\" \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-usage-tags.xfst\".i \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
-transcriptor-text2%-desc.xfst: \
-					transcriptions/transcriptor-%2text-raw.xfst \
-					filters/remove-usage-tags.xfst \
-					orthography/spellrelax.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-			    @\"filters/remove-usage-tags.xfst\" \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-usage-tags.xfst\".i \
-			.o. @\"orthography/spellrelax.xfst\" \
 			;\n\
 		 invert net\n\
 		 save stack $@\n\

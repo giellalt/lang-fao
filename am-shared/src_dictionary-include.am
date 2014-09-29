@@ -2,6 +2,24 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
+####### Automake targets: ########
+
+if WANT_DICTIONARIES
+if CAN_HFST
+GT_ANALYSERS_HFST+=analyser-dict-gt-desc.hfstol \
+				   analyser-dict-gt-desc-mobile.hfstol
+GT_GENERATORS_HFST+=generator-dict-gt-norm.hfstol
+endif # CAN_HFST
+
+if CAN_XFST
+GT_ANALYSERS_XFST+=analyser-dict-gt-desc.xfst \
+				   analyser-dict-gt-desc-mobile.xfst
+GT_GENERATORS_XFST+=generator-dict-gt-norm.xfst
+endif # CAN_XFST
+endif # WANT_DICTIONARIES
+
+##### END Xerox target list #####
+
 # Building dictionary fsts. The dictionary analyser differs from the
 # regular analyser by NOT removing variant and homonym tags, so that we can
 # generate proper (mini)paradigms for the given lemmas and variants (the
@@ -48,7 +66,7 @@ analyser-dict-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst        \
 			.o. @\"orthography/spellrelax.hfst\"                   \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 analyser-dict-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst         \
 					filters/remove-derivation-position-tags.xfst  \
@@ -151,7 +169,7 @@ generator-dict-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst       \
 			.o. @\"filters/remove-word-boundary.hfst\"             \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst        \
 					filters/make-optional-transitivity-tags.xfst  \

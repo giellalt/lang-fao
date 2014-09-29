@@ -24,6 +24,46 @@
 
 ####### Automake targets: ########
 
+##### BEGIN Hfst target list #####
+if CAN_HFST
+
+# Always build the raw generator if hfst is enabled:
+GT_GENERATORS_HFST+=generator-raw-gt-desc.hfst
+
+if WANT_MORPHOLOGY
+GT_ANALYSERS_HFST+=analyser-gt-desc.hfstol \
+				   analyser-gt-norm.hfstol \
+				   analyser-disamb-gt-desc.hfstol
+endif # WANT_MORPHOLOGY
+
+if WANT_GENERATION
+GT_GENERATORS_HFST+=generator-gt-desc.hfstol \
+					generator-gt-norm.hfstol 
+endif # WANT_GENERATION
+
+endif # CAN_HFST
+##### END Hfst target list #####
+
+##### BEGIN Xerox target list #####
+if CAN_XFST
+
+# Always build the raw analsyer if Xerox is enabled:
+GT_ANALYSERS_XFST+=analyser-raw-gt-desc.xfst
+
+if WANT_MORPHOLOGY
+GT_ANALYSERS_XFST+=analyser-gt-desc.xfst \
+				   analyser-gt-norm.xfst \
+				   analyser-disamb-gt-desc.xfst
+endif # WANT_MORPHOLOGY
+
+if WANT_GENERATION
+GT_GENERATORS_XFST+=generator-gt-desc.xfst \
+					generator-gt-norm.xfst
+endif # WANT_GENERATION
+
+endif # CAN_XFST
+##### END Xerox target list #####
+
 if CAN_HFST
 hfstdatadir=$(datadir)/giella/$(GTLANG)
 hfstdata_DATA=$(GT_ANALYSERS_HFST) \
@@ -145,7 +185,7 @@ analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
 			.o. @\"orthography/spellrelax.hfst\"                  \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 					filters/remove-derivation-position-tags.xfst \
@@ -229,7 +269,7 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 			.o. @\"filters/remove-word-boundary.hfst\"            \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/make-optional-transitivity-tags.xfst \
@@ -317,7 +357,7 @@ analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst            \
 			.o. @\"orthography/inituppercase.hfst\"               \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst             \
 					filters/remove-derivation-position-tags.xfst \
@@ -405,7 +445,7 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 			.o. @\"filters/remove-word-boundary.hfst\"            \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/make-optional-transitivity-tags.xfst \

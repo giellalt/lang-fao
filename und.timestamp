@@ -1,4 +1,12 @@
-$Rev: 100346 $
+$Rev: 100356 $
+Cleaned up building of target fst's using the lookup-include.am file. Now all
+hfst transducers in optimised lookup format have the suffix .hfstol, and
+optimisation should not be hidden or implisit anymore. All test scripts should
+be updated as well. Also move all common targets from src/Makefile.am to
+am-shared/src-dir-include.am and sub-included AM files. This cleans up the
+src/ dir Makefile.am quite a lot.
+
+r100346:
 Added support for additional local lexc files not part of the lexical fst.
 
 r100126:

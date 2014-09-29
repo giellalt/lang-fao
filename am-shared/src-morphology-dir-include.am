@@ -32,7 +32,7 @@ endif # WANT_HYPERMINIMISATION
 #!        holding supplementary lexicon data generated from xml files.
 #! @param GT_XML_SRCS optional, space separated list of xml source file names
 GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GT_LEXC_L2_SRCS) \
-				$(GENERATED_LEXC_SRCS) $(GT_XML_SRCS)
+				$(GENERATED_LEXC_SRCS) $(GT_XML_SRCS) $(GT_LOCAL_SRCS)
 
 # All sources need to be included in the tarball
 EXTRA_DIST=$(GT_LEXC_ALLSRC)
@@ -47,7 +47,17 @@ endif
 if CAN_XFST
 GT_LEXICAL+=lexicon.xfst
 endif
-noinst_DATA=$(GT_LEXICAL)
+
+# Define variable before using it:
+GIELLA_LOCALTARGETS=
+# Generate the filter targets from the source filenames:
+if CAN_HFST
+GIELLA_LOCALTARGETS+=$(patsubst %.lexc,%.hfst,$(GT_LOCAL_SRCS))
+endif
+
+if CAN_XFST
+GIELLA_LOCALTARGETS+=$(patsubst %.lexc,%.xfst,$(GT_LOCAL_SRCS))
+endif
 
 if WANT_L2
 if CAN_HFST
@@ -58,6 +68,7 @@ GT_LEXICAL+=lexicon-error.xfst
 endif # CAN_XFST
 endif # WANT_L2
 
+noinst_DATA=$(GT_LEXICAL) $(GIELLA_LOCALTARGETS)
 
 ####### XML2LEXC build rules: ####
 XSLDIR = $(GTCORE)/scripts/xsl

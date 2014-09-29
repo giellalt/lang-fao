@@ -60,6 +60,15 @@ GENERATED_LEXC_SRCS=
 # Set this to the names of all source xml files, if any
 GT_XML_SRCS=
 
+# Define any additional sources here (compiled on their own, or just included
+# in the distro):
+GT_LOCAL_SRCS=
+
+### BEGIN: Local processing: ###
+
+
+### END: Local processing: ###
+
 include $(top_srcdir)/am-shared/src-morphology-dir-include.am
 
 # vim: set ft=automake:

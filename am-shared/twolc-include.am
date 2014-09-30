@@ -20,24 +20,16 @@
 ########################################
 
 ####### HFST build rules: ########
-
-# hfst-twolc should by default resolve
+# hfst-twolc should resolve by default (just like the Xerox tool):
 HFSTTWOLFLAGS=--resolve
 
-# All twolc targets should be built by suffix rules;
-# just list them in some nice automake targets and you're good to go
 .twolc.hfst:
 	$(AM_V_HTWOLC)$(HFST_TWOLC) $(VERBOSITY) \
 			$(HFSTFLAGS) $(HFSTTWOLCFLAGS) -i $< -o $@
 
 ####### Xerox build rules: #######
-
-# All twolc targets should be built by suffix rules;
-# just list them in some nice automake targets and you're good to go
 .twolc.xfst:
-	$(AM_V_at)$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" \
-		> $@.script
-	$(AM_V_TWOLC)$(TWOLC) $(VERBOSITY) < $@.script
-	$(AM_V_at)rm -f $@.script
+	$(AM_V_TWOLC)$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" \
+		| $(TWOLC) $(VERBOSITY)
 
 # vim: set ft=automake:

@@ -31,35 +31,36 @@ EXTRA_DIST=$(GT_PHONOLOGY_SRCS)
 # The rule transducer will be built, not installed
 GT_PHONOLOGY=
 if CAN_HFST
-GT_PHONOLOGY+=$(GTLANG)-phon.hfst
+GT_PHONOLOGY+=$(GTLANG)-phon.compose.hfst
+GT_PHONOLOGY+=$(GTLANG)-phon.lookup.hfst
 endif
 if CAN_XFST
-GT_PHONOLOGY+=$(GTLANG)-phon.xfst
+GT_PHONOLOGY+=$(GTLANG)-phon.compose.xfst
+GT_PHONOLOGY+=$(GTLANG)-phon.lookup.xfst
 endif
 
 if WANT_L2
 if CAN_HFST
-GT_PHONOLOGY+=$(GTLANG)-phon-L2.hfst
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.hfst
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.hfst
 endif # CAN_HFST
 if CAN_XFST
-GT_PHONOLOGY+=$(GTLANG)-phon-L2.xfst
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.xfst
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.xfst
 endif # CAN_XFST
 endif # WANT_L2
 
 noinst_DATA=$(GT_PHONOLOGY)
 
+####### Other targets: ###########
+clean-local:
+	-rm -f *.hfst *.xfst
+
 ##########################################
 # General build rules included from here:#
 include $(top_srcdir)/am-shared/twolc-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
+include $(top_srcdir)/am-shared/lookup-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
-
-# We need a target to properly finish the Xerox fst build:
-%.xfst: %.tmp.xfst
-	$(AM_V_CP)cp -f $< $@
-
-####### Other targets: ###########
-clean-local:
-	-rm -f *.hfst *.xfst
 
 # vim: set ft=automake:

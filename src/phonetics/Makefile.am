@@ -23,33 +23,8 @@
 GT_PHONETICS_MAIN=text2ipa-$(GTLANG).xfscript
 GT_PHONETICS_SUPPLEMENTS=
 
-####### Automake targets: ########
-
-# The rule transducer will be built, not installed
-GT_PHONETICS=
-
-if WANT_PHONETIC
-if CAN_HFST
-GT_PHONETICS+=text2ipa-$(GTLANG).hfst
-endif # CAN_HFST
-
-if CAN_XFST
-GT_PHONETICS+=text2ipa-$(GTLANG).xfst
-endif # CAN_XFST
-endif # WANT_PHONETIC
-
-############ Local additions: ############
-## Add the target of local additions here:
-if WANT_PHONETIC
-if CAN_HFST
-GT_PHONETICS+=
-endif # CAN_HFST
-
-if CAN_XFST
-GT_PHONETICS+=
-endif # CAN_XFST
-endif # WANT_PHONETIC
-
+##########################################
+# General build rules included from here:#
 include $(top_srcdir)/am-shared/src-phonetics-dir-include.am
 
 # vim: set ft=automake:

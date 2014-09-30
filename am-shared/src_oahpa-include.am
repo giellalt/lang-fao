@@ -309,19 +309,17 @@ generator-oahpa-gt-norm-dial_%.xfst: analyser-raw-gt-desc.xfst     \
 
 # First build a tmp1 raw file as the intersection between lexicon and rules:
 generator-raw-gt-error.tmp1.hfst: morphology/lexicon-error.hfst \
-					 phonology/$(GTLANG)-phon.hfst
+					 phonology/$(GTLANG)-phon-L2.compose.hfst
 	$(AM_V_INTRSCT)$(HFST_COMPOSE_INTERSECT) $(VERBOSITY) $(HFST_FLAGS) \
 		-1 morphology/lexicon-error.hfst \
-		-2 phonology/$(GTLANG)-phon-L2.hfst |\
+		-2 phonology/$(GTLANG)-phon-L2.compose.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
 analyser-raw-gt-error.tmp1.xfst: morphology/$(GTLANG).lexc.xfst \
-			 phonology/$(GTLANG)-phon.xfst
-	$(AM_V_at)$(PRINTF) \
-		"read-source morphology/$(GTLANG).lexc.xfst\nread-rules  phonology/$(GTLANG)-phon-L2.xfst\ncompose-result\nsave-result $@\nquit\n" \
-		> $@.script
-	$(AM_V_LEXC)$(LEXC) $(VERBOSITY) < $@.script
-	$(AM_V_at)     rm -f $@.script
+			 phonology/$(GTLANG)-phon-L2.compose.xfst
+	$(AM_V_LEXC)$(PRINTF) \
+		"read-source morphology/$(GTLANG).lexc.xfst\nread-rules phonology/$(GTLANG)-phon-L2.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		| $(LEXC) $(VERBOSITY)
 
 # ... then apply tag reordering to tmp1 to ensure the same tag order in all
 # subsequent processing; this creates the regular tmp file, which can further

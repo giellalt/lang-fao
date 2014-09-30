@@ -610,15 +610,15 @@ lemmatize.default.hfst: analyser-gt-desc.hfst tagsets/lemmatize.relabel
 
 # morpher is a morph segmenting variant: taloautoissani -> talo#auto>i>ssa>ni
 morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
-					 orthography/inituppercase.hfst \
-					 orthography/spellrelax.hfst \
+					 orthography/inituppercase.compose.hfst \
+					 orthography/spellrelax.compose.hfst \
 					filters/remove-hyphenation-marks.hfst        \
 					filters/remove-infl_deriv-borders.hfst       \
 					filters/remove-word-boundary.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
 			 [ [@\"$<\" \
-			.o. @\"orthography/inituppercase.hfst\"         \
-			.o. @\"orthography/spellrelax.hfst\"  ].l       \
+				.o. @\"orthography/inituppercase.compose.hfst\"         \
+				.o. @\"orthography/spellrelax.compose.hfst\"  ].l       \
 			.o. @\"filters/remove-hyphenation-marks.hfst\"  \
 			.o. @\"filters/remove-infl_deriv-borders.hfst\" \
 			.o. @\"filters/remove-word-boundary.hfst\"  ].i \

@@ -1,4 +1,9 @@
-$Rev: 100453 $
+$Rev: 100468 $
+Corrected a couple of cases where old filenames were still used, and thus
+broke compilation. Also improved filtering of transcriptors, and constructed
+transcriptor target names dynamically based on the source files.
+
+r100453:
 Xfscript and lookup cleanup: now we explicitly build files made for lookup and
 composition marked in the filenames. This is done for hyphenation and for
 orthography, phonology and phonetics still to be done. From now on there should

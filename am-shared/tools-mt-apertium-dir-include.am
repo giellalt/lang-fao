@@ -13,14 +13,12 @@ APERTIUM_GENERATORS_HFST=
 APERTIUM_GENERATOR_ATTGZ=
 APERTIUM_CG_BIN=
 
-# The list of target languages are taken from configure.ac:
-# TARGET_LANGS="sma smj nob"
-TARGET_LANGS=$(MT_AP_TARGET_LANGS)
-
 if WANT_APERTIUM
-# This is just a generic analyser. You need to add pair-specific analysers to
-# the language-specific part further down.
-APERTIUM_ANALYSER_HFST+=analyser-mt-gt-desc.hfstol
+# The multiple parallel pattern rules further down are fragile (or: make is
+# fragile). We need to specify here as the first target to build the dependency
+# of the first pattern target (ie the non-last pattern dependency). Without
+# this make will give up. DO NOT REMOVE analyser-mt-gt-desc.hfst BELOW!!!
+APERTIUM_ANALYSER_HFST+=analyser-mt-gt-desc.hfst analyser-mt-gt-desc.hfstol
 
 # Build list of target language transducers from the list of target languages:
 # => analyser-mt-gt-desc.nob.hfst etc.
@@ -39,23 +37,46 @@ APERTIUM_ANALYSERS_ATTGZ+=\
 	$(addsuffix .att.gz,$(basename $(APERTIUM_ANALYSERS_AP_HFST)))
 
 # Build a list of Apertium style target filenames:
-# "sma smj nob" -> "sme-nob, etc":
-AP_PAIRS=$(addprefix $(GTLANG)-,$(TARGET_LANGS))
-# "sme-nob" -> "sme-nob.sme-nob":
-AP_EXPANDED_PAIRS=$(foreach pair,$(AP_PAIRS),$(addprefix $(pair).,$(pair)))
-# "sme-nob.sme-nob" -> "apertium-sme-nob.sme-nob":
-AP_PRE_EXP_PAIRS=$(addprefix apertium-,$(AP_EXPANDED_PAIRS))
+#
+# Analysers:
+# apertium-sme-nob.sme-nob.LR.att.gz
+# apertium-smn-sme.sme-smn.LR.att.gz
+#
+# Generators:
+# apertium-sme-nob.sme-nob.RL.att.gz
+#
+# Apertium filename pattern:
+#
+# dirname-with-lang-pair.lang-pair.LR
+# - dirname-with-lang-pair = fixed string, same as containing AP dir name
+# - lang-pair = the pair in the direction being used, as in: from-to
+# - LR = analyser
+# - RL = generator
+
+# Loop over target languages and pair names and build the final target names
+# except the suffix part:
+APERTIUM_PAIRS=$(shell for ll in $(APERTIUM_TARGET_LANGS); do\
+    for ld in $(APERTIUM_TARGET_LANG_NAME); do\
+        if test $$(echo $$ld | grep $$ll); then\
+            echo "$$ld.$(GTLANG)-$$ll" ;\
+        fi\
+    done ;\
+done)
+# Add the suffixes:
 # "apertium-sme-nob.sme-nob" -> "apertium-sme-nob.sme-nob.LR.att.gz":
-APERTIUM_MORPH_PAIRS=$(addsuffix .LR.att.gz,$(AP_PRE_EXP_PAIRS))
+APERTIUM_MORPH_PAIRS=$(addsuffix .LR.att.gz,$(APERTIUM_PAIRS))
 
 # Apertium style target filenames with stem variable % instead of target
-# language, used in pattern rule below:
-# "sme-nob" -> "sme-%.sme-nob":
-AP_EXPANDED_PAIRS_V=$(addprefix $(GTLANG)-%.,$(AP_PAIRS))
-# "sme-%.sme-nob" -> "apertium-sme-%.sme-nob":
-AP_PRE_EXP_PAIRS_V=$(addprefix apertium-,$(AP_EXPANDED_PAIRS_V))
+# language, used in a pattern rule further down:
+APERTIUM_PAIRS_VAR=$(shell for ll in $(APERTIUM_TARGET_LANGS); do\
+    for ld in $(APERTIUM_TARGET_LANG_NAME); do\
+        if test $$(echo $$ld | grep $$ll); then\
+            echo "$$ld.$(GTLANG)-%" ;\
+        fi\
+    done ;\
+done)
 # "apertium-sme-%.sme-nob" -> "apertium-sme-%.sme-nob.LR.att.gz":
-APERTIUM_MORPH_PAIRS_V=$(addsuffix .LR.att.gz,$(AP_PRE_EXP_PAIRS_V))
+APERTIUM_MORPH_PAIRS_V=$(addsuffix .LR.att.gz,$(APERTIUM_PAIRS_VAR))
 
 APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfstol \
 						  generator-mt-apertium-norm.hfstol
@@ -74,7 +95,6 @@ APERTIUM_CG_BIN+=$(GTLANG).mor.rlx.bin \
 # sme.dep.rlx.bin = dependency-mt-apertium.bin
 
 endif # WANT_APERTIUM
-
 
 if CAN_HFST
 hfstdatadir=$(datadir)/giella/$(GTLANG)
@@ -169,7 +189,7 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
         quit\n" | $(HFST_XFST) $(VERBOSITY)
 
 # Target language specific filtering - build depends on the availability
-# of the filter file.
+# of a filter file.
 # WITH filter file available (the source file is inverted with the .i modifier):
 analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-derivation-strings.%.hfst
@@ -184,8 +204,7 @@ analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst \
 # *.tmp.hfst -> invert -> *.hfst
 # to apply correctly:
 analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst
-	$(AM_V_INVERT)$(HFST_INVERT) $< \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -t -o $@
+	$(AM_V_INVERT) $(HFST_INVERT) -i $< -o $@
 
 # Relabel GTDivvun tags to Apertium tags - generator:
 generator-mt-apertium-norm.hfst: \
@@ -302,11 +321,10 @@ $(GTLANG).syn.rlx.bin: functions-mt-apertium.bin
 #### down compared to Xerox AT APPLICATION TIME. The other command makes the
 #### final transducer ready for use.
 analyser%.hfst: analyser%.tmp.hfst
-	$(AM_V_INVERT)$(HFST_INVERT) $< \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -t -o $@
+	$(AM_V_INVERT)$(HFST_INVERT) $< -o $@
 
 generator%.hfst: generator%.tmp.hfst
-	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) -t -i $< -o $@
+	$(AM_V_CP)cp -f $< $@
 
 #### Xerox transducer fallback target:
 %.xfst: %.tmp.xfst

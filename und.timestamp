@@ -1,4 +1,11 @@
-$Rev: 100468 $
+$Rev: 100478 $
+Last part of the lookup & composition cleanup: phonetics and phonology now
+covered. Now all non-lexical and non-filter files have a suffix .compose.*
+or .lookup.* depending on their intended use, and they are all properly
+inverted where needed (i.e. only for Xerox' lookup tool). There might still
+be source files to clean, but that is a separate step.
+
+r100468:
 Corrected a couple of cases where old filenames were still used, and thus
 broke compilation. Also improved filtering of transcriptors, and constructed
 transcriptor target names dynamically based on the source files.

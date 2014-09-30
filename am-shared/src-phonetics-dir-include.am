@@ -28,23 +28,32 @@ EXTRA_DIST=$(GT_PHONETICS_SRCS)
 
 ####### Automake targets: ########
 
+# The rule transducer will be built, not installed
+GT_PHONETICS=
+
+if WANT_PHONETIC
+if CAN_HFST
+GT_PHONETICS+=$(patsubst %.xfscript,%.lookup.hfst,$(GT_PHONETICS_SRCS))
+GT_PHONETICS+=$(patsubst %.xfscript,%.compose.hfst,$(GT_PHONETICS_SRCS))
+endif # CAN_HFST
+
+if CAN_XFST
+GT_PHONETICS+=$(patsubst %.xfscript,%.lookup.xfst,$(GT_PHONETICS_SRCS))
+GT_PHONETICS+=$(patsubst %.xfscript,%.compose.xfst,$(GT_PHONETICS_SRCS))
+endif # CAN_XFST
+endif # WANT_PHONETIC
+
 noinst_DATA=$(GT_PHONETICS)
+
+####### Other targets: ###########
+clean-local:
+	-rm -f *.hfst *.xfst
 
 ##########################################
 # General build rules included from here:#
 include $(top_srcdir)/am-shared/twolc-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
-
-# We need a target to properly finish the Xerox fst build:
-%.xfst: %.tmp.xfst
-	$(AM_V_XFST)$(XFST) $(XFSTVERBOSITY) \
-			-e "load stack < $<" \
-			-e "invert net" \
-			-e "save stack $@ " \
-			-stop
-
-####### Other targets: ###########
-clean-local:
-	-rm -f *.hfst *.xfst
+include $(top_srcdir)/am-shared/lookup-include.am
+include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

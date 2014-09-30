@@ -20,39 +20,12 @@
 ###########################################
 
 ####### HFST build rules: ########
-
-# Which hfst xfscript processor to use? Foma is default, there are still issues
-# with hfst-xfst.
-if CAN_HFST_FOMA
-HFST_XFST_COMPILER=$(HFST_FOMA) $(VERBOSITY) -f
-
-else
-if CAN_HFST_XFST
-HFST_XFST_COMPILER=$(HFST_XFST) $(VERBOSITY) -F
-
-else
-HFST_XFST_COMPILER=false
-endif # CAN_HFST_XFST
-endif # CAN_HFST_FOMA
-
-# HFST fst targets:
-# Hfst will always build fst's that can be used directly - no need for a tmp
-# file (not even for local modifications, since all modifications can be done
-# directly in the xfscript file)-
 %.hfst: %.xfscript
-	$(AM_V_at)   cp $< $@.script
-	$(AM_V_at)   $(PRINTF) "save stack $@" >> $@.script
-	$(AM_V_HXFST)$(HFST_XFST_COMPILER) $@.script
-	$(AM_V_at)   rm -f $@.script
+	$(AM_V_HXFST)(cat $< ; echo "save stack $@"; echo "quit") \
+		| $(HFST_XFST) -p $(VERBOSITY)
 
 ####### Xerox build rules: #######
-# Xerox fst's will need to be inverted *IFF* used stand-alone. xfscript files
-# used for intersection & composition can and must be  used as is. For this
-# reason we need to go via a tmp file, such that we can invert the tmp file for
-# e.g. orthography conversion fst's. In the case of fst's for intersection and
-# composition, the fst will just be copied from tmp to the target. These oper-
-# ations are done in the *.am files which include this file.
-%.tmp.xfst: %.xfscript
+%.xfst: %.xfscript
 	$(AM_V_XFST)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
 
 # vim: set ft=automake:

@@ -1,4 +1,12 @@
-$Rev: 100424 $
+$Rev: 100453 $
+Xfscript and lookup cleanup: now we explicitly build files made for lookup and
+composition marked in the filenames. This is done for hyphenation and for
+orthography, phonology and phonetics still to be done. From now on there should
+be no need to use invert as part of the xfscript code - DON'T DO IT! All
+targets updated to use the new filenames. Removed inversion from the
+hyphenation xfscript.
+
+r100424:
 Use explicit pipe mode with hfst-xfst.
 
 r100413:

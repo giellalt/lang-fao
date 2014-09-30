@@ -125,7 +125,7 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst         \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst        \
 			$(top_builddir)/src/filters/remove-word-boundary.hfst             \
-			$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst
+			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
 		@\"$(top_builddir)/src/filters/make-optional-semantic-tags.hfst\"     \
@@ -142,7 +142,7 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-orthography-tags.hfst\"         \
 	.o. @\"$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst\"         \
 	.o. @\"$<\" \
-	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst\" \
+	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"        \
 	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"       \
@@ -166,7 +166,7 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-orig_lang-tags.hfst           \
 			$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst         \
 			$(top_builddir)/src/filters/remove-word-boundary.hfst            \
-			$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst
+			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
 		@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
@@ -180,7 +180,7 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-orthography-tags.hfst\"         \
 	.o. @\"$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst\"         \
 	.o. @\"$<\" \
-	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.hfst\" \
+	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"        \
 	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"       \

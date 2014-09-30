@@ -109,8 +109,8 @@ analyser-raw-gt-desc.tmp1.xfst: morphology/lexicon.xfst \
 # ... then apply tag reordering to tmp1 to ensure the same tag order in all
 # subsequent processing; this creates the regular tmp file, which can further
 # get local processing to produce the final raw file:
-generator-raw-gt-desc.tmp.hfst: generator-raw-gt-desc.tmp1.hfst  \
-					filters/reorder-semantic-tags.hfst           \
+generator-raw-gt-desc.tmp.hfst: generator-raw-gt-desc.tmp1.hfst \
+					filters/reorder-semantic-tags.hfst          \
 					filters/reorder-subpos-tags.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
 				@\"filters/reorder-subpos-tags.hfst\"   \
@@ -120,8 +120,8 @@ generator-raw-gt-desc.tmp.hfst: generator-raw-gt-desc.tmp1.hfst  \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
 		> $@
 
-analyser-raw-gt-desc.tmp.xfst: analyser-raw-gt-desc.tmp1.xfst  \
-					filters/reorder-semantic-tags.xfst           \
+analyser-raw-gt-desc.tmp.xfst: analyser-raw-gt-desc.tmp1.xfst \
+					filters/reorder-semantic-tags.xfst        \
 					filters/reorder-subpos-tags.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/reorder-subpos-tags.xfst\"   \
@@ -157,9 +157,9 @@ analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
 					filters/remove-orthography-tags.hfst         \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
-					orthography/inituppercase.hfst               \
-					orthography/spellrelax.hfst                  \
-					orthography/downcase-derived_proper-strings.hfst
+					orthography/inituppercase.compose.hfst       \
+					orthography/spellrelax.compose.hfst          \
+					orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
 				@\"filters/remove-derivation-position-tags.hfst\" \
@@ -173,7 +173,7 @@ analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.hfst\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.hfst\" \
 			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
 			.o. @\"filters/remove-word-boundary.hfst\"            \
@@ -181,8 +181,8 @@ analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
 			define fst \n\
 			set flag-is-epsilon ON\n\
 			read regex fst \
-			.o. @\"orthography/inituppercase.hfst\"               \
-			.o. @\"orthography/spellrelax.hfst\"                  \
+			.o. @\"orthography/inituppercase.compose.hfst\"       \
+			.o. @\"orthography/spellrelax.compose.hfst\"          \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
@@ -201,9 +201,9 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 					filters/remove-orthography-tags.xfst         \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-orig_lang-tags.xfst           \
-					orthography/inituppercase.xfst               \
-					orthography/spellrelax.xfst                  \
-					orthography/downcase-derived_proper-strings.xfst
+					orthography/inituppercase.compose.xfst       \
+					orthography/spellrelax.compose.xfst          \
+					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
@@ -216,7 +216,7 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 			.o. @\"filters/remove-orthography-tags.xfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.xfst\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.xfst\" \
 			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
 			.o. @\"filters/remove-word-boundary.xfst\"            \
@@ -224,8 +224,8 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 			define fst \n\
 			set flag-is-epsilon ON\n\
 			read regex fst \
-			.o. @\"orthography/inituppercase.xfst\"               \
-			.o. @\"orthography/spellrelax.xfst\"                  \
+			.o. @\"orthography/inituppercase.compose.xfst\"       \
+			.o. @\"orthography/spellrelax.compose.xfst\"          \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
@@ -247,7 +247,7 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
 					filters/remove-usage-tags.hfst               \
-					orthography/downcase-derived_proper-strings.hfst
+					orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
 				@\"filters/make-optional-transitivity-tags.hfst\" \
@@ -263,7 +263,7 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.hfst\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.hfst\" \
 			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
 			.o. @\"filters/remove-word-boundary.hfst\"            \
@@ -287,7 +287,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-orig_lang-tags.xfst           \
 					filters/remove-usage-tags.xfst               \
-					orthography/downcase-derived_proper-strings.xfst
+					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
@@ -302,7 +302,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 			.o. @\"filters/remove-orthography-tags.xfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.xfst\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.xfst\" \
 			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
 			.o. @\"filters/remove-word-boundary.xfst\"            \
@@ -329,8 +329,8 @@ analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst            \
 					filters/remove-orthography-tags.hfst         \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
-					orthography/inituppercase.hfst               \
-					orthography/downcase-derived_proper-strings.hfst
+					orthography/inituppercase.compose.hfst       \
+					orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
 				@\"filters/remove-derivation-position-tags.hfst\" \
@@ -346,7 +346,7 @@ analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst            \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.hfst\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.hfst\" \
 			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
 			.o. @\"filters/remove-word-boundary.hfst\"            \
@@ -354,7 +354,7 @@ analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst            \
 			define fst \n\
 			set flag-is-epsilon ON\n\
 			read regex fst \
-			.o. @\"orthography/inituppercase.hfst\"               \
+			.o. @\"orthography/inituppercase.compose.hfst\"       \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
@@ -375,8 +375,8 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst             \
 					filters/remove-orthography-tags.xfst         \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-orig_lang-tags.xfst           \
-					orthography/inituppercase.xfst               \
-					orthography/downcase-derived_proper-strings.xfst
+					orthography/inituppercase.compose.xfst       \
+					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
@@ -391,7 +391,7 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst             \
 			.o. @\"filters/remove-orthography-tags.xfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.xfst\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.xfst\" \
 			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
 			.o. @\"filters/remove-word-boundary.xfst\"            \
@@ -399,7 +399,7 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst             \
 			define fst \n\
 			set flag-is-epsilon ON\n\
 			read regex fst \
-			.o. @\"orthography/inituppercase.xfst\"               \
+			.o. @\"orthography/inituppercase.compose.xfst\"       \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
@@ -422,7 +422,7 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
 					filters/remove-sub-forms.hfst                \
-					orthography/downcase-derived_proper-strings.hfst
+					orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
 				@\"filters/make-optional-transitivity-tags.hfst\" \
@@ -439,7 +439,7 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.hfst\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.hfst\" \
 			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
 			.o. @\"filters/remove-word-boundary.hfst\"            \
@@ -464,7 +464,7 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-orig_lang-tags.xfst           \
 					filters/remove-sub-forms.xfst                \
-					orthography/downcase-derived_proper-strings.xfst
+					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
@@ -480,7 +480,7 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 			.o. @\"filters/remove-orthography-tags.xfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
 			.o. @\"$<\" \
-			.o. @\"orthography/downcase-derived_proper-strings.xfst\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.xfst\" \
 			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
 			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
 			.o. @\"filters/remove-word-boundary.xfst\"            \

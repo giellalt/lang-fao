@@ -55,14 +55,11 @@ AM_V_HSUBST_0  = @echo "  HSUBST   $@";
 
 AM_V_HXFST     = $(AM_V_HXFST_@AM_V@)
 AM_V_HXFST_    = $(AM_V_HXFST_@AM_DEFAULT_V@)
-
-if CAN_HFST_FOMA
-AM_V_HXFST_0   = @echo "  HFOMA    $@";
-else
-if CAN_HFST_XFST
 AM_V_HXFST_0   = @echo "  HXFST    $@";
-endif # CAN_HFST_XFST
-endif # CAN_HFST_FOMA
+
+AM_V_HFOMA     = $(AM_V_HFOMA_@AM_V@)
+AM_V_HFOMA_    = $(AM_V_HFOMA_@AM_DEFAULT_V@)
+AM_V_HFOMA_0   = @echo "  HFOMA    $@";
 
 AM_V_HTWOLC    = $(AM_V_HTWOLC_@AM_V@)
 AM_V_HTWOLC_   = $(AM_V_HTWOLC_@AM_DEFAULT_V@)

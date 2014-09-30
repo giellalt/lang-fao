@@ -54,14 +54,14 @@ noinst_DATA=$(GT_COMMON_LISTSPELLER_HFST) $(GT_COMMON_LISTSPELLER_XFST)
 
 generator-listspeller-gt-norm.tmp.hfst: $(GT_SPELLER_SRC_HFST) \
 		$(top_builddir)/src/filters/remove-UseCirc-strings.hfst \
-		$(top_builddir)/src/hyphenation/hyphenation.hfst
+		$(top_builddir)/src/hyphenation/hyphenation.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
 			    @\"$(top_builddir)/src/filters/remove-UseCirc-strings.hfst\" \
 			.o. @\"$<\" \
 			; \n\
 			set flag-is-epsilon ON \n\
-			read regex @\"$(top_builddir)/src/hyphenation/hyphenation.hfst\".i ;  \n\
+			read regex @\"$(top_builddir)/src/hyphenation/hyphenation.compose.hfst\" ;  \n\
 			turn stack \n\
 			compose net \n\
 			define fst \n\
@@ -77,13 +77,13 @@ generator-listspeller-gt-norm.tmp.hfst: $(GT_SPELLER_SRC_HFST) \
 
 analyser-listspeller-gt-norm.tmp.xfst: $(GT_SPELLER_SRC_XFST) \
 		$(top_builddir)/src/filters/remove-UseCirc-strings.xfst \
-		$(top_builddir)/src/hyphenation/hyphenation.xfst
+		$(top_builddir)/src/hyphenation/hyphenation.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 			    @\"$(top_builddir)/src/filters/remove-UseCirc-strings.xfst\" \
 			.o. @\"$<\" \
 			; \n\
 			set flag-is-epsilon ON \n\
-			read regex @\"$(top_builddir)/src/hyphenation/hyphenation.xfst\" ;  \n\
+			read regex @\"$(top_builddir)/src/hyphenation/hyphenation.compose.xfst\" ;  \n\
 			turn stack \n\
 			compose net \n\
 			define fst \n\

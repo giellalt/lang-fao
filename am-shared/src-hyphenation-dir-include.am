@@ -28,38 +28,32 @@ EXTRA_DIST=$(GT_HYPHENATION_SRCS)
 
 ####### Automake targets: ########
 
-# The rule transducer will be built, not installed
-GT_HYPHEN_PATTERNS=
-
+# Define variable before using it:
+GIELLA_HYPH_TARGETS=
 # if WANT_FST_HYPHENATOR
-
+# Generate the filter targets from the source filenames:
 if CAN_HFST
-GT_HYPHEN_PATTERNS+=hyphenation.hfst
+GIELLA_HYPH_TARGETS+=$(patsubst %.xfscript,%.lookup.hfst,$(GT_HYPHENATION_SRCS))
+GIELLA_HYPH_TARGETS+=$(patsubst %.xfscript,%.compose.hfst,$(GT_HYPHENATION_SRCS))
 endif
 
 if CAN_XFST
-GT_HYPHEN_PATTERNS+=hyphenation.xfst
+GIELLA_HYPH_TARGETS+=$(patsubst %.xfscript,%.lookup.xfst,$(GT_HYPHENATION_SRCS))
+GIELLA_HYPH_TARGETS+=$(patsubst %.xfscript,%.compose.xfst,$(GT_HYPHENATION_SRCS))
 endif
 
 # endif # WANT_FST_HYPHENATOR
 
-noinst_DATA=$(GT_HYPHEN_PATTERNS)
-
-##########################################
-# General build rules included from here:#
-include $(top_srcdir)/am-shared/twolc-include.am
-include $(top_srcdir)/am-shared/xfscript-include.am
-
-# We need a target to properly finish the Xerox fst build:
-%.xfst: %.tmp.xfst
-	$(AM_V_XFST)$(XFST) $(VERBOSITY) \
-			-e "load stack < $<" \
-			-e "invert net" \
-			-e "save stack $@ " \
-			-stop
+noinst_DATA=$(GIELLA_HYPH_TARGETS)
 
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.hfst *.xfst
+
+##########################################
+# General build rules included from here:#
+include $(top_srcdir)/am-shared/xfscript-include.am
+include $(top_srcdir)/am-shared/lookup-include.am
+include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

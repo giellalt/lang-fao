@@ -15,38 +15,35 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-####### Silent builds: ########
-# Must be defined here, to avoid double definitions via xfscript-include.am
-# for XFST
-
-AM_V_RGX2FST   = $(AM_V_RGX2FST_@AM_V@)
-AM_V_RGX2FST_  = $(AM_V_RGX2FST_@AM_DEFAULT_V@)
-AM_V_RGX2FST_0 = @echo "  RGX2FST  $@";
-
-AM_V_CP   = $(AM_V_CP_@AM_V@)
-AM_V_CP_  = $(AM_V_CP_@AM_DEFAULT_V@)
-AM_V_CP_0 = @echo "  CP       $@";
-
 ####### Source file defs: ########
 
 #! @var GT_ORTHOGRAPHIC_SRCS names of orthographic rule source files, should
 #! be one of:
 #!		xfst, regex or twolc files
+GT_ORTHOGRAPHIC_SRCS=$(GT_ORTHOGRAPHIC_REGEX_SRCS) \
+					 $(GT_ORTHOGRAPHIC_XFSCRIPT_SRCS)
+
 EXTRA_DIST=$(GT_ORTHOGRAPHIC_SRCS)
+####### Automake targets: ########
 
-noinst_DATA=$(GT_ORTHOGRAPHIC_FSTS) $(GT_TEST_ORTH_XFSTS)
+# Define variable before using it:
+GIELLA_ORTH_TARGETS=
+# Generate the filter targets from the source filenames:
+if CAN_HFST
+GIELLA_ORTH_TARGETS+=$(patsubst %.xfscript,%.lookup.hfst,$(GT_ORTHOGRAPHIC_XFSCRIPT_SRCS))
+GIELLA_ORTH_TARGETS+=$(patsubst %.xfscript,%.compose.hfst,$(GT_ORTHOGRAPHIC_XFSCRIPT_SRCS))
+GIELLA_ORTH_TARGETS+=$(patsubst %.regex,%.lookup.hfst,$(GT_ORTHOGRAPHIC_REGEX_SRCS))
+GIELLA_ORTH_TARGETS+=$(patsubst %.regex,%.compose.hfst,$(GT_ORTHOGRAPHIC_REGEX_SRCS))
+endif
 
-####### HFST build rules: ########
+if CAN_XFST
+GIELLA_ORTH_TARGETS+=$(patsubst %.xfscript,%.lookup.xfst,$(GT_ORTHOGRAPHIC_XFSCRIPT_SRCS))
+GIELLA_ORTH_TARGETS+=$(patsubst %.xfscript,%.compose.xfst,$(GT_ORTHOGRAPHIC_XFSCRIPT_SRCS))
+GIELLA_ORTH_TARGETS+=$(patsubst %.regex,%.lookup.xfst,$(GT_ORTHOGRAPHIC_REGEX_SRCS))
+GIELLA_ORTH_TARGETS+=$(patsubst %.regex,%.compose.xfst,$(GT_ORTHOGRAPHIC_REGEX_SRCS))
+endif
 
-# HFST fst targets:
-.regex.hfst:
-	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(XFSTVERBOSITY) $(HFST_FLAGS) \
-		-S -i $< -o $@
-
-####### Xerox build rules: #######
-.regex.xfst:
-	$(AM_V_XFST)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
-		$(XFST) $(XFSTVERBOSITY) $(XFSTFLAGS)
+noinst_DATA=$(GIELLA_ORTH_TARGETS)
 
 ####### Copy source files from common location if not found locally: #######
 %.regex: $(GTCORE)/gtdshared/common/src/orthography/%.regex
@@ -55,21 +52,16 @@ noinst_DATA=$(GT_ORTHOGRAPHIC_FSTS) $(GT_TEST_ORTH_XFSTS)
 %.xfscript: $(GTCORE)/gtdshared/common/src/orthography/%.xfscript
 	$(AM_V_CP)cp $< $@
 
-##########################################
-# General build rules included from here:#
-include $(top_srcdir)/am-shared/xfscript-include.am
-
-# We need a target to properly finish the Xerox fst build:
-%.inv.xfst: %.xfst
-	$(AM_V_XFST)$(XFST) $(XFSTVERBOSITY) \
-			-e "load stack < $<" \
-			-e "invert net" \
-			-e "save stack $@ " \
-			-stop
-
 ####### Other targets: ###########
 # The "clean" target:
 clean-local:
 	-rm -f *.hfst *.xfst
+
+##########################################
+# General build rules included from here:#
+include $(top_srcdir)/am-shared/regex-include.am
+include $(top_srcdir)/am-shared/xfscript-include.am
+include $(top_srcdir)/am-shared/lookup-include.am
+include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

@@ -20,13 +20,13 @@
 # By default, and for Xerox compatibility, all regexes are semicolon separated
 # (that is the '-S' flag):
 .regex.hfst:
-	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S $< -o $@
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(HFSTFLAGS) $(VERBOSITY) -S $< -o $@
 
 ####### Xerox build rules: #######
 
 # xfst needs a script to read regex file
 .regex.xfst:
-	$(AM_V_XFST)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
-		$(XFST) $(XFSTFLAGS)
+	$(AM_V_XFST)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" \
+		| $(XFST) $(XFSTFLAGS) $(VERBOSITY)
 
 # vim: set ft=automake:

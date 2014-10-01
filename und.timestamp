@@ -1,4 +1,8 @@
-$Rev: 100478 $
+$Rev: 100499 $
+Simplified the building of hfst's with alternative tagsets. Silenced regex
+compilation.
+
+r100478:
 Last part of the lookup & composition cleanup: phonetics and phonology now
 covered. Now all non-lexical and non-filter files have a suffix .compose.*
 or .lookup.* depending on their intended use, and they are all properly

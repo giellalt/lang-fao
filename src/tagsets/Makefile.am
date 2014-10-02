@@ -17,11 +17,11 @@
 
 ####### Source file defs: ########
 
-#! @param GT_TAGSET_SRCS - manually written tagset source files
-#! @param GT_GENERATED_TAGSET_SRCS - automatically generated tagset source files
+#! @param GT_TAGSET_RGX_SRCS     - manually written regex tagset source files
+#! @param GT_TAGSET_RELABEL_SRCS - manually written hfst-relabel tagset sources
 
-GT_TAGSET_SRCS=
-GT_GENERATED_TAGSET_SRCS=
+GT_TAGSET_RGX_SRCS=
+GT_TAGSET_RELABEL_SRCS=
 
 ####### Includes: ########
 

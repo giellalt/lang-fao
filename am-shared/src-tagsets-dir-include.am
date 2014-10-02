@@ -16,9 +16,16 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ####### Source file and target defs: ########
+#! GT_GENERATED_TAGSET_RGX_SRCS     - automatically generated regex files
+#! GT_GENERATED_TAGSET_RELABEL_SRCS - automatically generated relabel files
 
-EXTRA_DIST=$(GT_TAGSET_SRCS)
-noinst_DATA=$(GT_TAGSETS) $(GT_GENERATED_TAGSET_SRCS)
+GT_GENERATED_TAGSET_RGX_SRCS=
+GT_GENERATED_TAGSET_RELABEL_SRCS=
+
+GT_ALL_TAGSET_RGX_SRCS=$(GT_TAGSET_RGX_SRCS) $(GT_GENERATED_TAGSET_RGX_SRCS)
+
+EXTRA_DIST=$(GT_TAGSET_RGX_SRCS) $(GT_TAGSET_RELABEL_SRCS)
+noinst_DATA=$(GT_TAGSETS)
 
 
 ####### Automake targets: ########
@@ -27,15 +34,16 @@ noinst_DATA=$(GT_TAGSETS) $(GT_GENERATED_TAGSET_SRCS)
 GT_TAGSETS=
 
 if CAN_HFST
-GT_TAGSETS+=
+GT_TAGSETS+=$(patsubst %.regex,%.hfst,$(GT_ALL_TAGSET_RGX_SRCS))
 
 if WANT_APERTIUM
-GT_GENERATED_TAGSET_SRCS+=apertium.relabel
+GT_GENERATED_TAGSET_RELABEL_SRCS+=apertium.relabel
 endif WANT_APERTIUM
+
 endif # CAN_HFST
 
 if CAN_XFST
-GT_TAGSETS+=
+GT_TAGSETS+=$(patsubst %.regex,%.xfst,$(GT_ALL_TAGSET_RGX_SRCS))
 endif # CAN_XFST
 
 ####### HFST build rules: ########

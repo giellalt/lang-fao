@@ -61,10 +61,10 @@ endif
 
 if WANT_L2
 if CAN_HFST
-GT_LEXICAL+=lexicon-error.hfst
+GT_LEXICAL+=lexicon-L2.hfst
 endif # CAN_HFST
 if CAN_XFST
-GT_LEXICAL+=lexicon-error.xfst
+GT_LEXICAL+=lexicon-L2.xfst
 endif # CAN_XFST
 endif # WANT_L2
 
@@ -103,7 +103,7 @@ lexicon.lexc: $(GT_LEXC_ROOT) \
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cat $^ > $@
 
-lexicon-error.lexc: $(GT_LEXC_ROOT) \
+lexicon-L2.lexc: $(GT_LEXC_ROOT) \
                                     $(GT_LEXC_L2_SRCS) \
                                     $(GENERATED_LEXC_SRCS)
 	$(AM_V_at)$(MKDIR_P) generated_files

@@ -401,6 +401,14 @@ AS_IF([test x$enable_oahpa = xno], [enable_L2=no],
       [AC_MSG_ERROR([You asked for the L2 analyser, but no L2 files were found])])])
 AM_CONDITIONAL([WANT_L2], [test "x$enable_L2" != xno])
 
+AC_ARG_ENABLE([downcaseerror],
+              [AS_HELP_STRING([--enable-downcaseerror],
+                              [enable downcaseerror analyser for Oahpa @<:@default=no@:>@])],
+              [enable_downcaseerror=$enableval],
+              [enable_downcaseerror=no])
+AS_IF([test x$enable_oahpa = xno], [enable_downcaseerror=no])
+AM_CONDITIONAL([WANT_DOWNCASEERROR], [test "x$enable_downcaseerror" != xno])
+
 # Enable IPA conversion - default is 'no'
 AC_ARG_ENABLE([phonetic],
               [AS_HELP_STRING([--enable-phonetic],
@@ -455,6 +463,7 @@ cat<<EOF
   * dictionary fst's enabled: $enable_dicts
   * Oahpa transducers enabled: $enable_oahpa
     * L2 analyser: $enable_L2
+    * downcase error analyser: $enable_downcaseerror
   * Apertium transducers enabled: $enable_apertium
 
 For more ./configure options, run ./configure --help

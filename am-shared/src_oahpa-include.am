@@ -37,6 +37,15 @@ GT_ANALYSERS_XFST+=analyser-oahpa-gt-error.xfst
 endif # CAN_XFST
 endif # WANT_L2
 
+if WANT_DOWNCASEERROR
+if CAN_HFST
+GT_ANALYSERS_HFST+=analyser-oahpa-gt-downcaseerror.hfstol
+endif # CAN_HFST
+if CAN_XFST
+GT_ANALYSERS_XFST+=analyser-oahpa-gt-downcaseerror.xfst
+endif # CAN_XFST
+endif # WANT_DOWNCASEERROR
+
 ##################################################
 ######## Build rules for Xerox and HFST: #########
 
@@ -308,23 +317,40 @@ generator-oahpa-gt-norm-dial_%.xfst: analyser-raw-gt-desc.xfst     \
 # can NOT be used for morphological analysis, and hardly for generation.
 
 # First build a tmp1 raw file as the intersection between lexicon and rules:
-generator-raw-gt-error.tmp1.hfst: morphology/lexicon-error.hfst \
-					 phonology/$(GTLANG)-phon-L2.compose.hfst
+# This raw error/L2 lexical transducer uses both L2 lexicon and L2 twolc:
+generator-raw-gt-%.tmp1.hfst: morphology/lexicon-%.hfst \
+					 phonology/$(GTLANG)-phon-%.compose.hfst
 	$(AM_V_INTRSCT)$(HFST_COMPOSE_INTERSECT) $(VERBOSITY) $(HFST_FLAGS) \
 		-1 morphology/lexicon-error.hfst \
-		-2 phonology/$(GTLANG)-phon-L2.compose.hfst |\
+		-2 phonology/$(GTLANG)-phon-$*.compose.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
-analyser-raw-gt-error.tmp1.xfst: morphology/lexicon-error.xfst \
-			 phonology/$(GTLANG)-phon-L2.compose.xfst
+# This is an alternative error fst for cases where the L2 phonology file is not
+# available (because of configuration or no source file):
+generator-raw-gt-%.tmp1.hfst: morphology/lexicon-%.hfst \
+					 phonology/$(GTLANG)-phon.compose.hfst
+	$(AM_V_INTRSCT)$(HFST_COMPOSE_INTERSECT) $(VERBOSITY) $(HFST_FLAGS) \
+		-1 morphology/lexicon-error.hfst \
+		-2 phonology/$(GTLANG)-phon.compose.hfst |\
+		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
+
+# The same for Xerox:
+analyser-raw-gt-%.tmp1.xfst: morphology/lexicon-%.xfst \
+			 phonology/$(GTLANG)-phon-%.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/lexicon-error.xfst\nread-rules phonology/$(GTLANG)-phon-L2.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/lexicon-error.xfst\nread-rules phonology/$(GTLANG)-phon-$*.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		| $(LEXC) $(VERBOSITY)
+
+analyser-raw-gt-%.tmp1.xfst: morphology/lexicon-%.xfst \
+			 phonology/$(GTLANG)-phon.compose.xfst
+	$(AM_V_LEXC)$(PRINTF) \
+		"read-source morphology/lexicon-error.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		| $(LEXC) $(VERBOSITY)
 
 # ... then apply tag reordering to tmp1 to ensure the same tag order in all
 # subsequent processing; this creates the regular tmp file, which can further
 # get local processing to produce the final raw file:
-generator-raw-gt-error.tmp.hfst: generator-raw-gt-error.tmp1.hfst  \
+generator-raw-gt-error.tmp.hfst: generator-raw-gt-L2.tmp1.hfst  \
 					filters/reorder-semantic-tags.hfst           \
 					filters/reorder-subpos-tags.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
@@ -335,7 +361,7 @@ generator-raw-gt-error.tmp.hfst: generator-raw-gt-error.tmp1.hfst  \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
 		> $@
 
-analyser-raw-gt-error.tmp.xfst: analyser-raw-gt-error.tmp1.xfst  \
+analyser-raw-gt-error.tmp.xfst: analyser-raw-gt-L2.tmp1.xfst  \
 					filters/reorder-semantic-tags.xfst           \
 					filters/reorder-subpos-tags.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
@@ -422,6 +448,39 @@ analyser-oahpa-gt-error.tmp.xfst: analyser-raw-gt-error.xfst     \
 			read regex fst \
 			.o. @\"orthography/inituppercase.compose.xfst\"       \
 			.o. @\"orthography/spellrelax.compose.xfst\"          \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# Build an error fst that also recognises initial case error for place names:
+analyser-oahpa-gt-downcaseerror.tmp.hfst: analyser-oahpa-gt-error.tmp.hfst \
+					filters/downcase_UCletters.hfst      \
+					filters/extract-Sem_Plc-strings.hfst \
+					filters/tag-lowercase_error-strings.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			[ [   @\"filters/tag-lowercase_error-strings.hfst\" \
+			  .o. @\"filters/extract-Sem_Plc-strings.hfst\"     \
+			  .o. @\"$<\" \
+			  ] \
+			  .o. @\"filters/downcase_UCletters.hfst\"          \
+			] \
+			|   @\"$<\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		> $@
+
+analyser-oahpa-gt-downcaseerror.tmp.xfst: analyser-oahpa-gt-error.tmp.xfst \
+					filters/downcase_UCletters.xfst      \
+					filters/extract-Sem_Plc-strings.xfst \
+					filters/tag-lowercase_error-strings.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			[ [   @\"filters/tag-lowercase_error-strings.xfst\" \
+			  .o. @\"filters/extract-Sem_Plc-strings.xfst\"     \
+			  .o. @\"$<\" \
+			  ] \
+			  .o. @\"filters/downcase_UCletters.xfst\"          \
+			] \
+			|   @\"$<\" \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)

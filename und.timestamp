@@ -1,4 +1,15 @@
-$Rev: 100542 $
+$Rev: 100565 $
+Several changes to accomodate a downcaseerror variant of the L2 error fst for
+Oahpa:
+* added configure.ac option --enable-downcaseerror (independent of the L2 opt)
+* a number of changes to the build instructions for Oahpa to support the new fst
+* made the error fst compilation independent of whether an L2 twolc/xfscript
+  file is used - if not, it will just use the ordinary twolc/xfscript file.
+  This way it is possible to 
+* svn-copied regexes from the old to the new infra, including to the core
+* increased gtcore version number and required version number due to new regexes
+
+r100542:
 Corrected wrong filenames and file references that blocked the oahpa L2 build.
 
 r100538:

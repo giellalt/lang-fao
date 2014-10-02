@@ -18,6 +18,7 @@
 ####### Source file defs: ########
 # 1) GTD Core regex files:
 GIELLA_FILTER_CORE_REGEX_SRCS=\
+				extract-Sem_Plc-strings.regex             \
 				make-optional-homonymy-tags.regex         \
 				make-optional-transitivity-tags.regex     \
 				make-optional-variant-tags.regex          \
@@ -56,6 +57,7 @@ GIELLA_FILTER_CORE_REGEX_SRCS=\
 				remove-use_marg-strings.regex             \
 				remove-variant-strings.regex              \
 				reorder-subpos-tags.regex                 \
+				tag-lowercase_error-strings.regex         \
 				extract-OLang_ENG-strings.regex           \
 				extract-OLang_FIN-strings.regex           \
 				extract-OLang_NNO-strings.regex           \

@@ -30,10 +30,10 @@ endif # HAVE_DIALECTS
 
 if WANT_L2
 if CAN_HFST
-GT_ANALYSERS_HFST+=analyser-oahpa-error.hfstol
+GT_ANALYSERS_HFST+=analyser-oahpa-gt-error.hfstol
 endif # CAN_HFST
 if CAN_XFST
-GT_ANALYSERS_XFST+=analyser-oahpa-error.xfst
+GT_ANALYSERS_XFST+=analyser-oahpa-gt-error.xfst
 endif # CAN_XFST
 endif # WANT_L2
 
@@ -315,10 +315,10 @@ generator-raw-gt-error.tmp1.hfst: morphology/lexicon-error.hfst \
 		-2 phonology/$(GTLANG)-phon-L2.compose.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
-analyser-raw-gt-error.tmp1.xfst: morphology/$(GTLANG).lexc.xfst \
+analyser-raw-gt-error.tmp1.xfst: morphology/lexicon-error.xfst \
 			 phonology/$(GTLANG)-phon-L2.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/$(GTLANG).lexc.xfst\nread-rules phonology/$(GTLANG)-phon-L2.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/lexicon-error.xfst\nread-rules phonology/$(GTLANG)-phon-L2.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		| $(LEXC) $(VERBOSITY)
 
 # ... then apply tag reordering to tmp1 to ensure the same tag order in all

@@ -110,19 +110,19 @@ analyser-dict-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst         \
 # The mobile analyser is just like the regular dictionary analyser,
 # except for one additional set of spellrelaxes:
 analyser-dict-gt-desc-mobile.tmp.hfst: analyser-dict-gt-desc.tmp.hfst \
-					orthography/spellrelax-mobile-keyboard.hfst
+					orthography/spellrelax-mobile-keyboard.compose.hfst
 	$(AM_V_RGX2FST)$(PRINTF)                                    "\
 			    @\"$<\"                                          \
-			.o. @\"orthography/spellrelax-mobile-keyboard.hfst\" \
+			.o. @\"orthography/spellrelax-mobile-keyboard.compose.hfst\" \
 			;" \
-		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 
 analyser-dict-gt-desc-mobile.tmp.xfst: analyser-dict-gt-desc.tmp.xfst \
-					orthography/spellrelax-mobile-keyboard.xfst
+					orthography/spellrelax-mobile-keyboard.compose.xfst
 	$(AM_V_XFST)$(PRINTF)                            "read regex \
 			    @\"$<\"                                          \
-			.o. @\"orthography/spellrelax-mobile-keyboard.xfst\" \
+			.o. @\"orthography/spellrelax-mobile-keyboard.compose.xfst\" \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)

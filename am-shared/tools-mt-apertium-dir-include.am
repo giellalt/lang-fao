@@ -197,7 +197,7 @@ analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst \
 		@\"$(top_builddir)/src/filters/remove-derivation-strings.$*.hfst\" \
    	.o. @\"$<\".i \
     	;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		-o $@
 
 # With NO filter file available, invert the file to allow the general pattern
@@ -236,7 +236,7 @@ analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
    		@\"$<\" \
 	.o. @\"tagsets/modify-tags.$*.hfst\" \
     	;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) \
 		-F $(srcdir)/tagsets/apertium.$*.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
@@ -263,7 +263,7 @@ analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
    		@\"$<\" \
 	.o. @\"tagsets/modify-tags.$*.hfst\" \
     	;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
 		-o $@
 

@@ -37,7 +37,7 @@ $(GT_COMMON_FSTSPELLER_HFST): ../$(GT_SPELLER_SRC_HFST)  \
     	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"  \
     	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" \
     	;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 
 ####### Other targets: ###########

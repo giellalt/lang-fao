@@ -61,7 +61,7 @@ transcriptor-%-digit2text.filtered.hfst: \
 			.o. @\"../filters/remove-NG-strings.hfst\" \
 			.o. @\"../filters/remove-usage-tags.hfst\".i \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 
 transcriptor-%-digit2text.filtered.xfst: \
@@ -91,7 +91,7 @@ transcriptor-%-text2digit.filtered.hfst: \
 			.o. @\"../filters/remove-usage-tags.hfst\".i \
 			.o. @\"../orthography/spellrelax.compose.hfst\" \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		| $(HFST_INVERT) $(HFST_FLAGS) \
 		> $@
 

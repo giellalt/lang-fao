@@ -53,7 +53,7 @@ generator-fomaspeller-gt-norm.hfst: \
     	.o. @\"$<\" \
     	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
     	;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 
 $(GT_FOMA_ACCEPTOR): generator-fomaspeller-gt-norm.hfst

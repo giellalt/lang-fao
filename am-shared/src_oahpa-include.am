@@ -358,7 +358,7 @@ generator-raw-gt-error.tmp.hfst: generator-raw-gt-L2.tmp1.hfst  \
 			.o. @\"filters/reorder-semantic-tags.hfst\" \
 			.o. @\"$<\" \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 
 analyser-raw-gt-error.tmp.xfst: analyser-raw-gt-L2.tmp1.xfst  \
@@ -466,7 +466,7 @@ analyser-oahpa-gt-downcaseerror.tmp.hfst: analyser-oahpa-gt-error.tmp.hfst \
 			] \
 			|   @\"$<\" \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 
 analyser-oahpa-gt-downcaseerror.tmp.xfst: analyser-oahpa-gt-error.tmp.xfst \

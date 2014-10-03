@@ -81,7 +81,7 @@ AC_PATH_PROG(HFST_XFST2FST,          hfst-xfst2fst,          false, $PATH$PATH_S
 AC_PATH_PROG(HFST_OSPELL,            hfst-ospell,            false, $PATH$PATH_SEPARATOR$with_hfst)
 
 AS_IF([test x$with_hfst != xno], [
-_gtd_hfst_min_version=m4_default([$1], [3.5.1])
+_gtd_hfst_min_version=m4_default([$1], [3.8.0])
 AC_MSG_CHECKING([whether hfst is at least $_gtd_hfst_min_version])
 if test x$HFST_INFO != xfalse; then
     if $HFST_INFO --atleast-version=$_gtd_hfst_min_version ; then

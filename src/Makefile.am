@@ -66,7 +66,7 @@ analyser-raw-gt-desc.hfst: analyser-raw-gt-desc.tmp.hfst \
 				@\"filters/reorder-semantic-tags.hfst\"            \
 			.o. @\"$<\" \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 
 analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.tmp.xfst \
@@ -86,7 +86,7 @@ generator-gt-%.hfst: generator-gt-%.tmp.hfst \
 			   "@bin\"filters/make-optional-semantic-tags.hfst\" \
 			.o. @bin\"$<\" \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 
 # Xerox:

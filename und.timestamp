@@ -1,4 +1,8 @@
-$Rev: 100719 $
+$Rev: 100786 $
+Fixed a bug in the core for generated regexes - a reserved char was not escaped.
+Required core version bumped.
+
+r100719:
 Hfst 3.8.0 is out, with a number of important bug fixes and improvements,
 including new options required to make our code build properly.
 

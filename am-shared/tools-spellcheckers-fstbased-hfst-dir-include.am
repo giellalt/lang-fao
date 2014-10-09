@@ -154,7 +154,7 @@ $(CORPUSNAME).clean.txt: \
 # add tropical weights to the corpus:
 %.tropical.txt: %.uniq.txt %.wordcount.txt %.typecount.txt
 	$(AM_V_GEN)cat $< |\
-		$(AWK) -v CS="$$(cat $*.wordcount.txt)" -v ALPHA=$(ALPHA) \
+		$(GAWK) -v CS="$$(cat $*.wordcount.txt)" -v ALPHA=$(ALPHA) \
 		-v DS="$$(cat $*.typecount.txt)" -f $(srcdir)/uniqc2tropical.awk > $@
 
 # build an fst of surface forms with tropical weights for each word form:

@@ -129,18 +129,18 @@ AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
 
 ################ Generated documentation ################
 # Check for awk with required feature:
-AC_CACHE_CHECK([for awk that supports gensub], [ac_cv_path_AWK],
-  [AC_PATH_PROGS_FEATURE_CHECK([AWK], [awk gawk],
-    [[awkout=`$ac_path_AWK 'BEGIN{gensub(/a/,"b","g");}'; exvalue=$?; echo $exvalue`
+AC_CACHE_CHECK([for awk that supports gensub], [ac_cv_path_GAWK],
+  [AC_PATH_PROGS_FEATURE_CHECK([GAWK], [awk mawk nawk gawk],
+    [[awkout=`$ac_path_GAWK 'BEGIN{gensub(/a/,"b","g");}'; exvalue=$?; echo $exvalue`
       test "x$awkout" = x0 \
-      && ac_cv_path_AWK=$ac_path_AWK ac_path_AWK_found=:]],
+      && ac_cv_path_GAWK=$ac_path_GAWK ac_path_GAWK_found=:]],
     [AC_MSG_WARN([could not find awk that supports gensub])])])
-AC_SUBST([AWK], [$ac_cv_path_AWK])
+AC_SUBST([GAWK], [$ac_cv_path_GAWK])
 
 # Check for Forrest:
 AC_PATH_PROG([FORREST], [forrest], [], [$PATH$PATH_SEPARATOR$with_forrest])
 AC_MSG_CHECKING([whether we can enable in-source documentation building])
-AS_IF([test "x$AWK" != x], [
+AS_IF([test "x$GAWK" != x], [
     AS_IF([test "x$JV" != xfalse], [
     	AS_IF([test "x$FORREST" != x], [gt_prog_docc=yes], [gt_prog_docc=no])
     ],[gt_prog_docc=no])

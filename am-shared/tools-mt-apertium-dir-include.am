@@ -209,9 +209,9 @@ analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst
 # Relabel GTDivvun tags to Apertium tags - generator:
 generator-mt-apertium-norm.hfst: \
 			generator-mt-gt-norm.hfst \
-			$(top_builddir)/src/tagsets/apertium.relabel
+			tagsets/apertium.relabel
 	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
-		-F $(top_builddir)/src/tagsets/apertium.relabel \
+		-F tagsets/apertium.relabel \
 		-o $@
 
 # Relabel GTD tags to Apertium tags - analyser:
@@ -219,9 +219,9 @@ generator-mt-apertium-norm.hfst: \
 # Step 1 - gt -> apertium.tmp
 analyser-mt-apertium-desc.%.tmp.hfst: \
 			analyser-mt-gt-desc.%.hfst \
-			$(top_builddir)/src/tagsets/apertium.relabel
+			tagsets/apertium.relabel
 	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
-		-F $(top_builddir)/src/tagsets/apertium.relabel \
+		-F tagsets/apertium.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
 		-o $@
 

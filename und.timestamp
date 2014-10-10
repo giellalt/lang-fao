@@ -1,4 +1,9 @@
-$Rev: 100989 $
+$Rev: 101043 $
+Moved Apertium tagset creation and relabeling from src/tagsets/ to
+tools/mt/apertium/tagsets/. This should fix building of apertium fst's for
+fin, smn.
+
+r100989:
 Renamed AWK to GAWK in relevant places to get around another AWK test. Now gawk
 is found properly in all cases.
 

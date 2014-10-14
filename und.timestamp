@@ -1,4 +1,8 @@
-$Rev: 101043 $
+$Rev: 101162 $
+Fixed a bug in building Oahpa generators - orig-lang tags were not removed.
+Clean *.hfstol files in tools/mt/apertium/.
+
+r101043:
 Moved Apertium tagset creation and relabeling from src/tagsets/ to
 tools/mt/apertium/tagsets/. This should fix building of apertium fst's for
 fin, smn.

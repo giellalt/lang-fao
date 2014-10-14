@@ -45,14 +45,12 @@ endif # WANT_APERTIUM
 # Convert GT-tags to Apertium-tags:
 apertiumtags.txt: $(top_builddir)/src/filters/gttags.txt
 	$(AM_V_GEN)tr -d '+' < $< \
-		| tr '#' '+' \
 		| tr '/[:upper:]' '_[:lower:]' \
 		| awk '{print "%<"$$0"%>"}' > $@
 
 # Generate relabel file for replacing Giella tags with Apertium tags:
 apertium.relabel: $(top_builddir)/src/filters/gttags.txt apertiumtags.txt
 	$(AM_V_GEN)paste $^ | tr -d '%' > $@
-	$(AM_V_GEN)printf "#\t+\n" >> $@
 
 
 ##########################################

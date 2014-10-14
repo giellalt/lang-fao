@@ -112,7 +112,6 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/make-optional-semantic-tags.hfst      \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst  \
 			$(top_builddir)/src/filters/remove-dialect-tags.hfst              \
-			$(top_builddir)/src/filters/remove-homonymy-tags.hfst             \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst              \
 			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst            \
 			$(top_builddir)/src/filters/remove-number-string-tags.hfst        \
@@ -131,7 +130,6 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 		@\"$(top_builddir)/src/filters/make-optional-semantic-tags.hfst\"     \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
-	.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
@@ -155,7 +153,6 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
 			$(top_builddir)/src/filters/remove-dialect-tags.hfst             \
-			$(top_builddir)/src/filters/remove-homonymy-tags.hfst            \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst             \
 			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
 			$(top_builddir)/src/filters/remove-number-string-tags.hfst       \
@@ -171,7 +168,6 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			read regex \
 		@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
-	.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
@@ -206,9 +202,27 @@ analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst \
 analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst
 	$(AM_V_INVERT) $(HFST_INVERT) -i $< -o $@
 
-# Relabel GTDivvun tags to Apertium tags - generator:
-generator-mt-apertium-norm.hfst: \
+# Relabel GTDivvun tags to Apertium tags - generator, step 1:
+generator-mt-apertium-norm.tmp1.hfst: \
 			generator-mt-gt-norm.hfst \
+			tagsets/apertium.relabel
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
+		-F tagsets/apertium.relabel \
+		-o $@
+
+# Relabel GTDivvun tags to Apertium tags - generator, step 2:
+generator-mt-apertium-norm.tmp.hfst: \
+			generator-mt-apertium-norm.tmp1.hfst \
+			$(srcdir)/tagsets/apertium.postproc.relabel
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
+		-F $(srcdir)/tagsets/apertium.postproc.relabel \
+		-o $@
+
+# Relabel GTD tags to Apertium tags - analyser:
+# % = TARGETLANG
+# Step 1a - gt -> apertium.tmp1
+analyser-mt-apertium-desc.%.tmp1.hfst: \
+			analyser-mt-gt-desc.%.hfst \
 			tagsets/apertium.relabel
 	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
 		-F tagsets/apertium.relabel \
@@ -216,13 +230,12 @@ generator-mt-apertium-norm.hfst: \
 
 # Relabel GTD tags to Apertium tags - analyser:
 # % = TARGETLANG
-# Step 1 - gt -> apertium.tmp
+# Step 1b - apertium.tmp1 -> apertium.tmp
 analyser-mt-apertium-desc.%.tmp.hfst: \
-			analyser-mt-gt-desc.%.hfst \
-			tagsets/apertium.relabel
+			analyser-mt-apertium-desc.%.tmp1.hfst \
+			$(srcdir)/tagsets/apertium.postproc.relabel
 	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
-		-F tagsets/apertium.relabel \
-		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+		-F $(srcdir)/tagsets/apertium.postproc.relabel \
 		-o $@
 
 # Relabel GTD tags to Apertium tags - analyser:

@@ -1,4 +1,12 @@
-$Rev: 101189 $
+$Rev: 101193 $
+Do not remove homonymy tags from the apertium fst's. Also simplified the
+automatic conversion by moving all non-automatic changes to a separate file,
+run as a sort of tag conversion postprocessing. Updated the tagset/README.txt
+file to contain info aobut the manually maintained postprocessing relabel file.
+Added an initial postprocessing relabel file containing word boundary and
+homonymy tag changes.
+
+r101189:
 Do not remove homonymy tags from the regular analysers.
 
 r101162:

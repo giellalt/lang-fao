@@ -10,9 +10,9 @@ SUBDIRS = filters tagsets .
 ##################################################################
 
 # Specify the list of target languages and their corresponding
-# Apertium directory names in these two variables:
-APERTIUM_TARGET_LANGS=
-APERTIUM_TARGET_LANG_NAME=
+# Apertium directory names in these two variables (replace und):
+APERTIUM_TARGET_LANGS=und
+APERTIUM_TARGET_LANG_NAME=apertium-und
 
 ##################################################################
 #### BEGIN: Add local processing instructions BELOW this line ####

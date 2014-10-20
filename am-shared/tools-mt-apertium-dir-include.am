@@ -23,7 +23,7 @@ APERTIUM_ANALYSER_HFST+=analyser-mt-gt-desc.hfst analyser-mt-gt-desc.hfstol
 # Build list of target language transducers from the list of target languages:
 # => analyser-mt-gt-desc.nob.hfst etc.
 APERTIUM_ANALYSERS_GT_HFST+=\
-	$(addsuffix .hfstol,$(addprefix analyser-mt-gt-desc.,$(TARGET_LANGS)))
+	$(addsuffix .hfstol,$(addprefix analyser-mt-gt-desc.,$(APERTIUM_TARGET_LANGS)))
 
 # Build list of apertium tagged files by replacing -gt- with -apertium-:
 # analyser-mt-gt-desc.nob.hfst => analyser-mt-apertium-desc.nob.hfst etc.

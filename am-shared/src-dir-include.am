@@ -34,6 +34,7 @@ if WANT_MORPHOLOGY
 GT_ANALYSERS_HFST+=analyser-gt-desc.hfstol \
 				   analyser-gt-norm.hfstol \
 				   analyser-disamb-gt-desc.hfstol
+GT_ANALYSERS_HFST_NO_INSTALL=analyser-gt-desc.hfst
 endif # WANT_MORPHOLOGY
 
 if WANT_GENERATION
@@ -71,7 +72,8 @@ hfstdata_DATA=$(GT_ANALYSERS_HFST) \
 endif
 
 noinst_DATA=$(GT_ANALYSERS_XFST) \
-			$(GT_GENERATORS_XFST)
+			$(GT_GENERATORS_XFST) \
+			$(GT_ANALYSERS_HFST_NO_INSTALL)
 
 ##################################################
 ######## Build rules for Xerox and HFST: #########

@@ -1,34 +1,28 @@
 README
 ======
 
-This directory may contain additional reordering and relabeling files to be
-used by language pair specific analysers in Apertium.
+This directory contains reordering and relabeling files to be
+used by analysers and generators in Apertium. One file is generated, and the
+manually written files can either be general or language-pair specific.
 
-The recognised filename patterns are:
+The recognised filenames and filename patterns, and their use in the order they
+are applied, are:
 
-apertium.TARGETLANG.relabel
-reorder-rags.TARGETLANG.regex
+apertium.relabel             - automatically generated, Giella -> Apertium
+modify-tags.regex            - general tagset changes, man. added/maintained
+apertium.postproc.relabel    - general relabelling, manually added/maintained
+modify-rags.TARGETLANG.regex - pair-specific changes using regex, manually m.
+apertium.TARGETLANG.relabel  - pair-specific relabelling, manually add/maint.
 
 Replace TARGETLANG with the language code of the actual target language you
 are building your Faroese apertium analyser for.
 
-If no such file is found for a specific target language, then no such
-processing is applied.
 
-If only a relabel file is found, it will be applied.
+The file apertium.postproc.relabel is added to all languages and contain some
+default tag changes between the Giella and Apertium tag sets.
 
-If BOTH a relabel and a regex file is found, the regex file is applied _first_,
-then the relabel file. This is important to remember, since it could affect the
-actual tags you want to reorder. Rule of thumb:
+The remaining files can be added as needed, and will be automatically picked up
+by the build process if found.
 
-Reorder tags in the form created by the default GTD-to-Apertium tag converter.
-
-NB! Remember to escape Xerox regex special characters with %, e.g. the < and >
-characters conventionally used to delimit tags in Apertium.
-
-The file apertium.postproc.relabel is a manually edited relabelling file that
-is applied after the automatic relabelling. Use this file to add or modify any
-relabelling that is not covered by the automatic relabelling. Remember that
-the relabeling tool only can replace single symbols (multichar or otherwise) -
-if you need to do more advanced changes (reordering, multiple symbols at once)
-please use the target language specific regexes in addition (see above).
+NB! Regex files are applied BEFORE relabel files if both files are used. See
+order of application above!

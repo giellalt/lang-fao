@@ -1,4 +1,13 @@
-$Rev: 101434 $
+$Rev: 101554 $
+Now both general and language-pair specific relabelling using regexes
+are supported, in addition to using relabel files. The regexes allow
+context-dependent and multisymbol changes, whereas the relabel files only
+cover 1:1 mappings of single symbols. The actual change was to add support
+for regex files in the language-pair independent processing. The
+tools/mt/apertium/tagsets/README.txt file was more or less completely rewritten
+to better document the filenames being recognised, and how they should be used.
+
+r101434:
 Retain the regular non-optimised hfst analyser for easy paradigm generation
 using a regex plus composition.
 

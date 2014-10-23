@@ -148,48 +148,44 @@ for f in $fsttype; do
 	# Check whether the actual fst's exist, run the tests if true, FAIL if not:
 	# First check for analysis tests only:
     if test "$halftest" == "ana" -a -f "$analyserfile.$suffix"; then
+		analyser=$analyserfile.$suffix
 		let "transducer_found += 1"
-		printf "$leadtext $(basename $analyserfile.$suffix) + $testfileshort - "
-		fstoptions="--morph $analyserfile.$suffix"
+		printf "$leadtext $(basename $analyser) + $testfileshort - "
+		fstoptions="--morph $analyser"
 		run_tests
 	# Then check for generation tests only:
 	elif test "$halftest" == "gen" -a -f "$generatorfile.$suffix"; then
+		generator=$generatorfile.$suffix
 		let "transducer_found += 1"
-		printf "$leadtext $(basename $generatorfile.$suffix) + $testfileshort - "
-		fstoptions="--gen $generatorfile.$suffix"
+		printf "$leadtext $(basename $generator) + $testfileshort - "
+		fstoptions="--gen $generator"
 		run_tests
 	# Then check for generation test used for other things than word form gener:
-	# This must be split in two because of Xerox' inverted lookup style.
 	elif test "$halftest" == "gen" \
-		   -a "$f" == "hfst" \
-		   -a -f "$bare_fst_file.$f"; then
+		   -a -f "$bare_fst_file.lookup.$f"; then
+		generator=$bare_fst_file.lookup.$f
 		let "transducer_found += 1"
-		printf "$leadtext $(basename $bare_fst_file.$f) + $testfileshort - "
-		fstoptions="--gen $bare_fst_file.$f"
-		run_tests
-	elif test "$halftest" == "gen" \
-		   -a "$f" == "xfst" \
-		   -a -f "$bare_fst_file.inv.$f"; then
-		let "transducer_found += 1"
-		printf "$leadtext $(basename $bare_fst_file.inv.$f) + $testfileshort - "
-		fstoptions="--gen $bare_fst_file.inv.$f"
+		printf "$leadtext $(basename $generator) + $testfileshort - "
+		fstoptions="--gen $generator"
 		run_tests
 	elif test "$halftest" == "full" \
 		-a -f "$analyserfile.$suffix"    \
 		-a -f "$generatorfile.$suffix"; then
+		analyser=$analyserfile.$suffix
+		generator=$generatorfile.$suffix
 		let "transducer_found += 1"
-		printf "$leadtext $(basename $analyserfile.$suffix) + $testfileshort - "
-		fstoptions="--morph $analyserfile.$suffix --gen $generatorfile.$suffix"
+		printf "$leadtext $(basename $analyser) + $testfileshort - "
+		fstoptions="--morph $analyser --gen $generator"
 		run_tests
 	else
 		let "Fail += 1"
 		if test "$halftest" == "ana" -o "$halftest" == "full"; then
-			echo "FAIL: Analyser file not found! $(basename $analyserfile.$suffix)"
-			echo "FAIL: $analyserfile.$suffix"
+			echo "FAIL: Analyser file not found! $(basename $analyser)"
+			echo "FAIL: $analyser"
 		fi
 		if test "$halftest" == "gen" -o "$halftest" == "full"; then
-			echo "FAIL: Generator file not found! $(basename $generatorfile.$suffix)"
-			echo "FAIL: full path: $generatorfile.$suffix"
+			echo "FAIL: Generator file not found! $(basename $generator)"
+			echo "FAIL: full path: $generator"
 		fi
 		echo "FAIL: referenced by: $testfileshort"
 		echo "FAIL: in $(pwd)"

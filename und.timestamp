@@ -1,4 +1,8 @@
-$Rev: 101554 $
+$Rev: 101575 $
+Corrrected references to the new lookup style fst names. Fixes broken
+inituppercase tests. Updated config header in initcap yaml file correspondingly.
+
+r101554:
 Now both general and language-pair specific relabelling using regexes
 are supported, in addition to using relabel files. The regexes allow
 context-dependent and multisymbol changes, whereas the relabel files only

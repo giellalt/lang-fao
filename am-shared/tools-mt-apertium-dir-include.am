@@ -210,12 +210,42 @@ generator-mt-apertium-norm.tmp1.hfst: \
 		-F tagsets/apertium.relabel \
 		-o $@
 
-# Relabel GTDivvun tags to Apertium tags - generator, step 2:
-generator-mt-apertium-norm.tmp.hfst: \
-			generator-mt-apertium-norm.tmp1.hfst \
+# Relabel GTDivvun tags to Apertium tags - generator, step 2a:
+# * relabel file
+#   AND
+# * general tag change regex file
+generator-mt-apertium-norm.%.hfst: \
+			generator-mt-apertium-norm.%1.hfst \
+			tagsets/modify-tags.hfst \
+			$(srcdir)/tagsets/apertium.postproc.relabel
+	$(AM_V_RGX2FST)$(PRINTF) "\
+		@\"tagsets/modify-tags.hfst\".i \
+   	.o. @\"$<\" \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) \
+		-F $(srcdir)/tagsets/apertium.postproc.relabel \
+		-o $@
+
+# Relabel GTDivvun tags to Apertium tags - generator, step 2b:
+# * relabel file ONLY
+generator-mt-apertium-norm.%.hfst: \
+			generator-mt-apertium-norm.%1.hfst \
 			$(srcdir)/tagsets/apertium.postproc.relabel
 	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
 		-F $(srcdir)/tagsets/apertium.postproc.relabel \
+		-o $@
+
+# Relabel GTDivvun tags to Apertium tags - generator, step 2c:
+# * general tag change regex file ONLY
+generator-mt-apertium-norm.%.hfst: \
+			generator-mt-apertium-norm.%1.hfst \
+			tagsets/modify-tags.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+		@\"tagsets/modify-tags.hfst\".i \
+   	.o. @\"$<\" \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		-o $@
 
 # Relabel GTD tags to Apertium tags - analyser:
@@ -230,12 +260,38 @@ analyser-mt-apertium-desc.%.tmp1.hfst: \
 
 # Relabel GTD tags to Apertium tags - analyser:
 # % = TARGETLANG
-# Step 1b - apertium.tmp1 -> apertium.tmp
+# Step 1b.a - apertium.tmp1 -> apertium.tmp
+# * relabel file
+#   AND
+# * general tag change regex file
+analyser-mt-apertium-desc.%.tmp.hfst: \
+			analyser-mt-apertium-desc.%.tmp1.hfst \
+			tagsets/modify-tags.hfst \
+			$(srcdir)/tagsets/apertium.postproc.relabel
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
+		-F $(srcdir)/tagsets/apertium.postproc.relabel \
+		| $(HFST_COMPOSE) -F -2 tagsets/modify-tags.hfst \
+		-o $@
+
+# Step 1b.b - apertium.tmp1 -> apertium.tmp
+# * relabel file ONLY
 analyser-mt-apertium-desc.%.tmp.hfst: \
 			analyser-mt-apertium-desc.%.tmp1.hfst \
 			$(srcdir)/tagsets/apertium.postproc.relabel
 	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
 		-F $(srcdir)/tagsets/apertium.postproc.relabel \
+		-o $@
+
+# Step 1b.c - apertium.tmp1 -> apertium.tmp
+# * general tag change regex file ONLY
+analyser-mt-apertium-desc.%.tmp.hfst: \
+			analyser-mt-apertium-desc.%.tmp1.hfst \
+			tagsets/modify-tags.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+   		@\"$<\" \
+	.o. @\"tagsets/modify-tags.hfst\" \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		-o $@
 
 # Relabel GTD tags to Apertium tags - analyser:

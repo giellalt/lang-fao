@@ -1,6 +1,14 @@
-$Rev: 101575 $
-Corrrected references to the new lookup style fst names. Fixes broken
-inituppercase tests. Updated config header in initcap yaml file correspondingly.
+$Rev: 101729 $
+Corrected names of compiled twolc files in test/src/phonology/pair-test*.sh.in.
+We need to use the 'compose' fst because compiled twolc files are not treated
+the same as other fst's. We can't just skip the new lookup friendly filenames
+either, because morphophonological rules can be written using xfscript, in
+which case the lookup renaming (and inversion) is essential.
+
+r101575:
+Corrrected references to the new lookup style fst names in the inituppercase
+test. Fixes broken inituppercase tests. Updated config header in initcap yaml
+file correspondingly.
 
 r101554:
 Now both general and language-pair specific relabelling using regexes

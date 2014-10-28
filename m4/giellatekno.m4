@@ -436,7 +436,8 @@ cat<<EOF
 
 -- Building $PACKAGE_STRING:
 
-  -- basic package (on by default except hfst and hyperminimisation): --
+  -- basic packages (on by default except hfst and hyperminimisation): --
+  -- (either Xerox or Hfst is required; w/o Xerox, Hfst is automatically on) --
   * build Xerox fst's: $gt_prog_xfst
   * build HFST fst's: $gt_prog_hfst
     * hyperminimisation of lexical fst: $enable_hyperminimisation

@@ -37,6 +37,9 @@ AC_DEFUN([gt_PROG_HFST],
             [with_hfst=$withval],
             [with_hfst=no])
 
+# If Xerox tools are not found, assume we want Hfst:
+AS_IF([test x$gt_prog_xfst = xno], [with_hfst=yes])
+
 AC_PATH_PROG(HFST_COMPOSE,           hfst-compose,           false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_COMPOSE_INTERSECT, hfst-compose-intersect, false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_CONCATENATE,       hfst-concatenate,       false, $PATH$PATH_SEPARATOR$with_hfst)
@@ -50,7 +53,6 @@ AC_PATH_PROG(HFST_FST2TXT,           hfst-fst2txt,           false, $PATH$PATH_S
 AC_PATH_PROG(HFST_INFO,              hfst-info, 	         false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_INVERT,            hfst-invert,            false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_LEXC,              hfst-lexc,              false, $PATH$PATH_SEPARATOR$with_hfst)
-AC_PATH_PROG(HFST_LEXC2FST,          hfst-lexc2fst,          false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_LOOKUP,            hfst-lookup,            false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_MINIMIZE,          hfst-minimize,          false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_MINUS,             hfst-minus,             false, $PATH$PATH_SEPARATOR$with_hfst)
@@ -75,26 +77,36 @@ AC_PATH_PROG(HFST_SUMMARIZE,         hfst-summarize,         false, $PATH$PATH_S
 AC_PATH_PROG(HFST_TWOLC,             hfst-twolc,             false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_TXT2FST,           hfst-txt2fst,           false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_XFST,              hfst-xfst,              false, $PATH$PATH_SEPARATOR$with_hfst)
-AC_PATH_PROG(HFST_XFST2FST,          hfst-xfst2fst,          false, $PATH$PATH_SEPARATOR$with_hfst)
 
 # hfst-ospell is a separate package:
 AC_PATH_PROG(HFST_OSPELL,            hfst-ospell,            false, $PATH$PATH_SEPARATOR$with_hfst)
 
 AS_IF([test x$with_hfst != xno], [
-_gtd_hfst_min_version=m4_default([$1], [3.8.0])
-AC_MSG_CHECKING([whether hfst is at least $_gtd_hfst_min_version])
+_gtd_hfst_min_version=m4_default([$1], [$_required_hfst_version])
+AC_MSG_CHECKING([whether hfst is at least $_gtd_hfst_min_version and has the required tools])
 if test x$HFST_INFO != xfalse; then
     if $HFST_INFO --atleast-version=$_gtd_hfst_min_version ; then
-        if test x$HFST_FOMA != "xfalse" -o x$HFST_XFST != "xfalse"; then
-            gt_prog_hfst=yes
-            AC_MSG_RESULT([yes])
-        else
-            AC_MSG_RESULT([yes, but...])
-            AC_MSG_WARN([Neither hfst-foma nor hfst-xfst found, one of them is needed])
+        if test x$HFST_COMPOSE         = "xfalse" \
+             -o x$HFST_DETERMINIZE     = "xfalse" \
+             -o x$HFST_FST2FST         = "xfalse" \
+             -o x$HFST_INVERT          = "xfalse" \
+             -o x$HFST_LEXC            = "xfalse" \
+             -o x$HFST_LOOKUP          = "xfalse" \
+             -o x$HFST_MINIMIZE        = "xfalse" \
+             -o x$HFST_REGEXP2FST      = "xfalse" \
+             -o x$HFST_REMOVE_EPSILONS = "xfalse" \
+             -o x$HFST_SUBSTITUTE      = "xfalse" \
+             -o x$HFST_TWOLC           = "xfalse" \
+             -o x$HFST_XFST            = "xfalse" \
+             ; then
             gt_prog_hfst=no
+            AC_MSG_ERROR([One of the required Hfst tools were not found. For details, see above.])
+        else
+            AC_MSG_RESULT([yes])
+            gt_prog_hfst=yes
         fi
     else
-        AC_MSG_ERROR([You requested --with-hfst, but your hfst is broken. Bailing out.])
+        AC_MSG_ERROR([You requested --with-hfst / you have no Xerox tools, but your hfst is too old.])
     fi
 else
     AC_MSG_RESULT([no])

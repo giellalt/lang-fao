@@ -1,4 +1,15 @@
-$Rev: 101729 $
+$Rev: 101818 $
+Changed Hfst configuration:
+* moved xerox check before hfst check to ...
+* automatically enable hfst if the Xerox tools are not found
+* moved minimum version requirement definition to configure.ac
+* removed hfst-foma requirement, instead checking for all required tools
+* removed path check for obsolete hfst tools
+* improved hfst configuration messages
+* updated the summary text to reflect that hfst is automatically enabled
+These changes should ease configuration on systems without Xerox.
+
+r101729:
 Corrected names of compiled twolc files in test/src/phonology/pair-test*.sh.in.
 We need to use the 'compose' fst because compiled twolc files are not treated
 the same as other fst's. We can't just skip the new lookup friendly filenames

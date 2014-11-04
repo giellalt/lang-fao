@@ -292,6 +292,18 @@ AC_ARG_ENABLE([transcriptors],
               [enable_transcriptors=yes])
 AM_CONDITIONAL([WANT_TRANSCRIPTORS], [test "x$enable_transcriptors" != xno])
 
+# Enable syntactic parsing - default is 'yes'
+AC_ARG_ENABLE([syntax],
+              [AS_HELP_STRING([--enable-syntax],
+                              [build syntax parsing tools @<:@default=yes@:>@])],
+              [enable_syntax=$enableval],
+              [enable_syntax=yes])
+AS_IF([test "x$enable_syntax" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
+             [enable_syntax=no
+              AC_MSG_WARN([vislcg3 tools missing or too old, syntax tools disabled!])])
+AM_CONDITIONAL([WANT_SYNTAX], [test "x$enable_syntax" != xno])
+# $gt_prog_vislcg3
+
 # Enable all spellers - default is 'no'
 AC_ARG_ENABLE([spellers],
               [AS_HELP_STRING([--enable-spellers],
@@ -444,7 +456,7 @@ cat<<EOF
   * analysers enabled: $enable_analysers
   * generators enabled: $enable_generators
   * transcriptors enabled: $enable_transcriptors
-  * vislcg3 tools enabled: $gt_prog_vislcg3
+  * syntactic tools enabled: $enable_syntax
   * yaml tests enabled: $enable_yamltests
   * generated documentation enabled: $gt_prog_docc
 

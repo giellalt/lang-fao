@@ -17,6 +17,15 @@
 
 ####### Source file defs: ########
 
+# set this to name of cg3 dependency rules
+GT_DEPENDENCY=dependency.cg3
+
+# set this to name of cg3 dependency rules
+GT_FUNCTIONS=functions.cg3
+
+# set this to name of cg3 disambiguation rules
+GT_DISAMBIGUATION=disambiguation.cg3
+
 ### Standard sources:
 #! @var GT_DEPENDENCY source for rules of dependency gramamr
 #! @var GT_FUNCTIONS source for rules for syntactic functions
@@ -31,15 +40,20 @@ EXTRA_DIST=$(GT_CG_SRCS) $(GT_CG_LOCAL_SRCS)
 
 ####### Automake targets: ########
 
+# set this to names of cg3 binaries
+GT_CG_TARGETS=
+if WANT_SYNTAX
+GT_CG_TARGETS+=disambiguation.bin functions.bin dependency.bin
+endif # WANT_SYNTAX
+
 #! @var GT_CG_TARGETS the files that should be built and installed for cg
 #! @var GT_CG_LOCAL_INST_TARGETS local cg files to build and install
 #! @var GT_CG_LOCAL_NOINST_TARGETS local cg files to build but NOT install
-if CAN_VISLCG
+
 gtddatadir=$(datadir)/giella/$(GTLANG)
 gtddata_DATA=$(GT_CG_TARGETS) $(GT_CG_LOCAL_INST_TARGETS)
 
 noinst_DATA=$(GT_CG_LOCAL_NOINST_TARGETS)
-endif
 
 ####### Build rules via include: ########
 

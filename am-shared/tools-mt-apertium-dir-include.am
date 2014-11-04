@@ -83,9 +83,11 @@ APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfstol \
 
 APERTIUM_GENERATOR_ATTGZ+=apertium-$(GTLANG).$(GTLANG).RL.att.gz
 
+if WANT_SYNTAX
 APERTIUM_CG_BIN+=$(GTLANG).mor.rlx.bin \
 				 $(GTLANG).syn.rlx.bin
 #				 $(GTLANG).dep.rlx.bin
+endif # WANT_SYNTAX
 
 # Apertium - GTDivvun filename correspondences:
 # apertium-sme-nob.sme-nob.LR.att.gz = analyser-mt-apertium-desc.nob.att.gz

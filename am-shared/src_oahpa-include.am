@@ -66,6 +66,8 @@ analyser-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst      \
 					filters/remove-usage-tags.hfst               \
 					filters/remove-semantic-tags.hfst            \
 					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-sub-forms.hfst                \
+					filters/remove-lexsub-strings.hfst           \
 					filters/remove-infl_deriv-borders.hfst       \
 					filters/remove-word-boundary.hfst            \
 					filters/remove-orthography-tags.hfst         \
@@ -80,6 +82,8 @@ analyser-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst      \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
 			.o. @\"filters/remove-usage-tags.hfst\"               \
+			.o. @\"filters/remove-sub-forms.hfst\"                \
+			.o. @\"filters/remove-lexsub-strings.hfst\"           \
 			.o. @\"filters/remove-semantic-tags.hfst\"            \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
@@ -106,6 +110,8 @@ analyser-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst       \
 					filters/remove-usage-tags.xfst               \
 					filters/remove-semantic-tags.xfst            \
 					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-sub-forms.xfst                \
+					filters/remove-lexsub-strings.xfst           \
 					filters/remove-infl_deriv-borders.xfst       \
 					filters/remove-word-boundary.xfst            \
 					filters/remove-orthography-tags.xfst         \
@@ -119,6 +125,8 @@ analyser-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst       \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
 			.o. @\"filters/remove-usage-tags.xfst\"               \
+			.o. @\"filters/remove-sub-forms.xfst\"                \
+			.o. @\"filters/remove-lexsub-strings.xfst\"           \
 			.o. @\"filters/remove-semantic-tags.xfst\"            \
 			.o. @\"filters/remove-orthography-tags.xfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
@@ -163,6 +171,7 @@ generator-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst     \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
 					filters/remove-sub-forms.hfst                \
+					filters/remove-lexsub-strings.hfst           \
 					orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON\n\
 			read regex \
@@ -175,6 +184,7 @@ generator-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst     \
 			.o. @\"filters/remove-number-string-tags.hfst\"       \
 			.o. @\"filters/remove-usage-tags.hfst\"               \
 			.o. @\"filters/remove-sub-forms.hfst\"                \
+			.o. @\"filters/remove-lexsub-strings.hfst\"           \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
@@ -203,6 +213,7 @@ generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-orig_lang-tags.xfst           \
 					filters/remove-sub-forms.xfst                \
+					filters/remove-lexsub-strings.xfst           \
 					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF)                             "read regex \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
@@ -214,6 +225,7 @@ generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
 			.o. @\"filters/remove-number-string-tags.xfst\"       \
 			.o. @\"filters/remove-usage-tags.xfst\"               \
 			.o. @\"filters/remove-sub-forms.xfst\"                \
+			.o. @\"filters/remove-lexsub-strings.xfst\"           \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
 			.o. @\"filters/remove-orthography-tags.xfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
@@ -248,6 +260,7 @@ generator-oahpa-gt-norm-dial_%.hfst: generator-raw-gt-desc.hfst    \
 					filters/remove-orig_lang-tags.hfst             \
 					filters/remove-NG-strings.hfst                 \
 					filters/remove-sub-forms.hfst                  \
+					filters/remove-lexsub-strings.hfst             \
 					orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON\n\
 			read regex \
@@ -260,6 +273,7 @@ generator-oahpa-gt-norm-dial_%.hfst: generator-raw-gt-desc.hfst    \
 			.o. @\"filters/remove-number-string-tags.hfst\"          \
 			.o. @\"filters/remove-usage-tags.hfst\"                  \
 			.o. @\"filters/remove-sub-forms.hfst\"                   \
+			.o. @\"filters/remove-lexsub-strings.hfst\"              \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"              \
 			.o. @\"filters/remove-orthography-tags.hfst\"            \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"            \
@@ -292,6 +306,7 @@ generator-oahpa-gt-norm-dial_%.xfst: analyser-raw-gt-desc.xfst     \
 					filters/remove-orig_lang-tags.xfst             \
 					filters/remove-NG-strings.xfst                 \
 					filters/remove-sub-forms.xfst                  \
+					filters/remove-lexsub-strings.xfst             \
 					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.xfst\"    \
@@ -303,6 +318,7 @@ generator-oahpa-gt-norm-dial_%.xfst: analyser-raw-gt-desc.xfst     \
 			.o. @\"filters/remove-number-string-tags.xfst\"          \
 			.o. @\"filters/remove-usage-tags.xfst\"                  \
 			.o. @\"filters/remove-sub-forms.xfst\"                   \
+			.o. @\"filters/remove-lexsub-strings.xfst\"              \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"              \
 			.o. @\"filters/remove-orthography-tags.xfst\"            \
 			.o. @\"filters/remove-Orth_IPA-strings.xfst\"            \

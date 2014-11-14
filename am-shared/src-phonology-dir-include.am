@@ -21,6 +21,8 @@
 #! @param GT_PHONOLOGY_SUPPLEMENTS optional, other sources to distribute and
 #! 		  compile for other things
 #! Both @params are specified in $(GTLANG)/src/phonology/Makefile.am.
+
+# The source files are the sum of GT_PHONOLOGY_MAIN and GT_PHONOLOGY_SUPPLEMENTS
 GT_PHONOLOGY_SRCS=$(GT_PHONOLOGY_MAIN) $(GT_PHONOLOGY_SUPPLEMENTS)
 
 # All sources need to be included in the tarball
@@ -28,15 +30,15 @@ EXTRA_DIST=$(GT_PHONOLOGY_SRCS)
 
 ####### Automake targets: ########
 
-# The rule transducer will be built, not installed
+# The rule transducer(s) will be built, not installed
 GT_PHONOLOGY=
 if CAN_HFST
-GT_PHONOLOGY+=$(GTLANG)-phon.compose.hfst
-GT_PHONOLOGY+=$(GTLANG)-phon.lookup.hfst
+GT_PHONOLOGY+=$(addsuffix .compose.hfst, $(basename $(GT_PHONOLOGY_SRCS)))
+GT_PHONOLOGY+=$(addsuffix .lookup.hfst,  $(basename $(GT_PHONOLOGY_SRCS)))
 endif
 if CAN_XFST
-GT_PHONOLOGY+=$(GTLANG)-phon.compose.xfst
-GT_PHONOLOGY+=$(GTLANG)-phon.lookup.xfst
+GT_PHONOLOGY+=$(addsuffix .compose.xfst, $(basename $(GT_PHONOLOGY_SRCS)))
+GT_PHONOLOGY+=$(addsuffix .lookup.xfst,  $(basename $(GT_PHONOLOGY_SRCS)))
 endif
 
 if WANT_L2

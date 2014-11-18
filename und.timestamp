@@ -1,4 +1,8 @@
-$Rev: 102809 $
+$Rev: 102952 $
+Only delete (aka 'make clean') generated corpus files used for weighting if
+such files exist. Removes a very dangerous 'rm -rf .*' command.
+
+r102809:
 Fixed bug in the phonology building that caused extra source files not to
 be compiled.
 

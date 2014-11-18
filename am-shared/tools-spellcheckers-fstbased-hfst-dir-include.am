@@ -267,6 +267,9 @@ upload: $(OXT_FILES)
 
 ####### Other targets: ###########
 clean-local:
-	-rm -rf *.hfst *.xfst *.zhfst 3 easteregg.* $(CORPUSNAME).*
+	-rm -rf *.hfst *.xfst *.zhfst 3 easteregg.*
+	if ! [ "x$(CORPUSNAME)" = "x" ] ; then \
+		rm -f $(CORPUSNAME).* ; \
+	fi
 
 # vim: set ft=automake:

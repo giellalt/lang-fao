@@ -28,11 +28,12 @@ endif # CAN_XFST
 STEMSRCS:=$(wildcard $(top_srcdir)/src/morphology/stems/*.lexc)
 AFFXSRCS:=$(wildcard $(top_srcdir)/src/morphology/affixes/*.lexc)
 GENRSRCS:=$(wildcard $(top_builddir)/src/morphology/generated_files/*.lexc)
+OTHRSRCS:=$(filter-out %lexicon.lexc,$(wildcard $(top_srcdir)/src/morphology/*.lexc))
 
 empty:=
 comma:=,
 space:=$(empty) $(empty)
-ABBRSRCS:=$(subst $(space),$(comma),$(STEMSRCS) $(AFFXSRCS) $(GENRSRCS))
+ABBRSRCS:=$(subst $(space),$(comma),$(STEMSRCS) $(AFFXSRCS) $(GENRSRCS) $(OTHRSRCS))
 
 SCRIPTDIR=$(GTCORE)/scripts
 
@@ -41,7 +42,7 @@ abbr.txt: \
 		$(top_srcdir)/src/morphology/stems/abbreviations.lexc \
 		$(top_srcdir)/test/data/paradigm.$(GTLANG).txt        \
 		$(top_srcdir)/test/data/korpustags.$(GTLANG).txt      \
-		$(STEMSRCS) $(AFFXSRCS) $(GENRSRCS)                   \
+		$(STEMSRCS) $(AFFXSRCS) $(GENRSRCS) $(OTHRSRCS)       \
 		../../src/$(GENERATOR)
 	$(AM_V_GEN)perl -I $(SCRIPTDIR) $(SCRIPTDIR)/extract-abbr.pl  \
 		--paradigm=$(top_srcdir)/test/data/paradigm.$(GTLANG).txt \

@@ -1,4 +1,8 @@
-$Rev: 102952 $
+$Rev: 103027 $
+Expanded the source file base for building the abbr file, more like the old
+infra.
+
+r102952:
 Only delete (aka 'make clean') generated corpus files used for weighting if
 such files exist. Removes a very dangerous 'rm -rf .*' command.
 

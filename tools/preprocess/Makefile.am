@@ -25,11 +25,14 @@ GENERATOR=false
 endif # CAN_HFST
 endif # CAN_XFST
 
-SRCS:=$(wildcard $(top_srcdir)/src/morphology/stems/*.lexc)
+STEMSRCS:=$(wildcard $(top_srcdir)/src/morphology/stems/*.lexc)
+AFFXSRCS:=$(wildcard $(top_srcdir)/src/morphology/affixes/*.lexc)
+GENRSRCS:=$(wildcard $(top_builddir)/src/morphology/generated_files/*.lexc)
+
 empty:=
 comma:=,
 space:=$(empty) $(empty)
-ABBRSRCS:=$(subst $(space),$(comma),$(SRCS))
+ABBRSRCS:=$(subst $(space),$(comma),$(STEMSRCS) $(AFFXSRCS) $(GENRSRCS))
 
 SCRIPTDIR=$(GTCORE)/scripts
 
@@ -38,7 +41,7 @@ abbr.txt: \
 		$(top_srcdir)/src/morphology/stems/abbreviations.lexc \
 		$(top_srcdir)/test/data/paradigm.$(GTLANG).txt        \
 		$(top_srcdir)/test/data/korpustags.$(GTLANG).txt      \
-		$(SRCS) \
+		$(STEMSRCS) $(AFFXSRCS) $(GENRSRCS)                   \
 		../../src/$(GENERATOR)
 	$(AM_V_GEN)perl -I $(SCRIPTDIR) $(SCRIPTDIR)/extract-abbr.pl  \
 		--paradigm=$(top_srcdir)/test/data/paradigm.$(GTLANG).txt \

@@ -33,7 +33,7 @@ OTHRSRCS:=$(filter-out %lexicon.lexc,$(wildcard $(top_srcdir)/src/morphology/*.l
 empty:=
 comma:=,
 space:=$(empty) $(empty)
-ABBRSRCS:=$(subst $(space),$(comma),$(STEMSRCS) $(AFFXSRCS) $(GENRSRCS) $(OTHRSRCS))
+ABBRSRCS:=$(subst $(space),$(comma),$(strip $(STEMSRCS) $(AFFXSRCS) $(GENRSRCS) $(OTHRSRCS)))
 
 SCRIPTDIR=$(GTCORE)/scripts
 

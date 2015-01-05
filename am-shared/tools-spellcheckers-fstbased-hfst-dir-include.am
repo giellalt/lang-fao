@@ -193,10 +193,10 @@ $(GT_SPELLING_HFST): index.xml \
 		$(MKDIR_P) 3 && \
 		cp -f $@ 3/
 
-####### *.oxt files: #######
-# Hard-coded paths for the time being - to be generalised later.
+####### Distribution files, *.oxt and MacVoikko : #######
 
 OXT_FILES=
+MACVOIKKOFILE=
 
 if WANT_SPELLERS
 if CAN_HFST
@@ -210,6 +210,11 @@ if CAN_LOCALSYNC
 OXT_FILES+=$(addsuffix .oxt, \
               $(addprefix $(GTLANG2)_LO-voikko-,$(VOIKKO_VERS_PLATFORMS)))
 
+# Generate target filename as follows:
+#
+# MacVoikko-North_Sami.service
+LANGSTRING=$(shell echo "${GTLANGUAGE}" | sed -e 's/ /_/g')
+MACVOIKKOFILE+=$(addsuffix .service,$(addsuffix $(LANGSTRING),MacVoikko-))
 
 endif # CAN_LOCALSYNC
 endif # CAN_HFST
@@ -230,7 +235,9 @@ VOIKKO_VERS_PLATFORMS=$(foreach version,$(VK_VERSIONS), \
                     $(addprefix $(version)-,$(VK_PLATFORMS)))
 
 OXT_ROOT_DIR=$(GTHOME)/prooftools/toollibs/LibreOffice-voikko
+MACVKO_ROOT_DIR=$(GTHOME)/prooftools/toollibs/mac/MacVoikko
 
+#### OXT file: ####
 # Build receipt for OXT:
 # mkdir build dir
 # rsync into build/subdir
@@ -238,7 +245,6 @@ OXT_ROOT_DIR=$(GTHOME)/prooftools/toollibs/LibreOffice-voikko
 # modify oxt index file
 # zip build/subdir
 # copy to ./
-
 $(GTLANG2)_LO-voikko-%.oxt: $(GT_SPELLING_HFST)
 	$(AM_V_GEN)rm -f $@ && \
 		if [ -d "$(OXT_ROOT_DIR)/$*" ]; then \
@@ -251,11 +257,30 @@ $(GTLANG2)_LO-voikko-%.oxt: $(GT_SPELLING_HFST)
 			echo "  SKIP     $@: Not yet supported." ; \
 		fi
 
+#### MacVoikko: ####
+# create package dir
+# rsynk package content from template
+# cp zhfst file
+# replace und language code with correct language code
+%.service: $(GT_SPELLING_HFST)
+	$(AM_V_GEN)rm -rf $@ && \
+		if [ -d "$(MACVKO_ROOT_DIR)/MacVoikko.service" ]; then \
+			$(MKDIR_P) $@ && \
+			$(RSYNC) -av $(VERBOSITY) \
+				$(MACVKO_ROOT_DIR)/MacVoikko.service/ ./$@/ && \
+			cp $< ./$@/Contents/Resources/Dictionaries/3/ ; \
+		fi
+	$(AM_V_GEN)sed "s/<string>und<\/string>/<string>$(GTLANG2)<\/string>/" \
+		< ./$@/Contents/Info.plist > ./$@/Contents/Info.plist.tmp && \
+		mv -f ./$@/Contents/Info.plist.tmp ./$@/Contents/Info.plist
+
+#### Upload for distro: ####
 DATE=$(shell date +%Y%m%d)
 UPLOADSITE=sd@divvun.no:static_files/oxts
 
-upload: $(OXT_FILES)
-	$(AM_V_GEN)for file in $(OXT_FILES); do \
+upload: uploadoxt
+uploadoxt: $(OXT_FILES)
+	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
 			stem=$$(basename $$file .oxt) ; \
 			scp $$file $(UPLOADSITE)/$$stem-$(DATE).oxt ; \
@@ -267,7 +292,7 @@ upload: $(OXT_FILES)
 
 ####### Other targets: ###########
 clean-local:
-	-rm -rf *.hfst *.xfst *.zhfst 3 easteregg.*
+	-rm -rf *.hfst *.xfst *.zhfst 3 easteregg.* *.service
 	if ! [ "x$(CORPUSNAME)" = "x" ] ; then \
 		rm -f $(CORPUSNAME).* ; \
 	fi

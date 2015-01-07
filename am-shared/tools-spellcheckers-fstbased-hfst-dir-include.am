@@ -22,9 +22,6 @@ GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 # (=max compression, working from 28.1.2014 for all platforms):
 ZIPFLAGS=-9
 
-# Let the verbosity of some command line tools follow the automake verbosity:
-VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
-
 ####### Automake targets: ########
 
 GT_ERRMODELS=
@@ -55,7 +52,8 @@ endif # WANT_VOIKKO
 endif # CAN_HFST
 endif # WANT_SPELLERS
 
-noinst_DATA=$(GT_ERRMODELS) $(OXT_FILES) $(MACVOIKKOFILE)
+noinst_DATA=$(GT_ERRMODELS) $(OXT_FILES) $(MACVOIKKOFILE) \
+            $(MACVOIKKOFILE)/Contents/Resources/Dictionaries/3/$(GT_SPELLING_HFST)
 
 ###################################
 ####### HFST build rules: #########
@@ -262,13 +260,16 @@ $(GTLANG2)_LO-voikko-%.oxt: $(GT_SPELLING_HFST)
 # rsynk package content from template
 # cp zhfst file
 # replace und language code with correct language code
-%.service: $(GT_SPELLING_HFST)
+$(MACVOIKKOFILE)/Contents/Resources/Dictionaries/3/$(GT_SPELLING_HFST): \
+		$(GT_SPELLING_HFST) | $(MACVOIKKOFILE)
+	$(AM_V_CP)cp $< $@
+
+$(MACVOIKKOFILE):
 	$(AM_V_GEN)rm -rf $@ && \
 		if [ -d "$(MACVKO_ROOT_DIR)/MacVoikko.service" ]; then \
 			$(MKDIR_P) $@ && \
 			$(RSYNC) -av $(VERBOSITY) \
-				$(MACVKO_ROOT_DIR)/MacVoikko.service/ ./$@/ && \
-			cp $< ./$@/Contents/Resources/Dictionaries/3/ ; \
+				$(MACVKO_ROOT_DIR)/MacVoikko.service/ ./$@/ ; \
 		fi
 	$(AM_V_GEN)sed "s/<string>und<\/string>/<string>$(GTLANG2)<\/string>/" \
 		< ./$@/Contents/Info.plist > ./$@/Contents/Info.plist.tmp && \
@@ -292,9 +293,12 @@ uploadoxt: $(OXT_FILES)
 
 ####### Other targets: ###########
 clean-local:
-	-rm -rf *.hfst *.xfst *.zhfst 3 easteregg.* *.service
+	-rm -f  *.hfst *.xfst *.zhfst easteregg.*
+	-rm -rf 3 *.service
 	if ! [ "x$(CORPUSNAME)" = "x" ] ; then \
 		rm -f $(CORPUSNAME).* ; \
 	fi
+
+include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

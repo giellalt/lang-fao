@@ -1,4 +1,8 @@
-$Rev: 105194 $
+$Rev: 105201 $
+A number of changes to make the MacVoikko.service build cleanly with proper
+dependency tracking. Also a bit safer cleaning.
+
+r105194:
 Fixed: The MacVoikko target was missing from noinst_DATA, thus it was not built.
 
 r105104:

@@ -55,7 +55,7 @@ endif # WANT_VOIKKO
 endif # CAN_HFST
 endif # WANT_SPELLERS
 
-noinst_DATA=$(GT_ERRMODELS) $(OXT_FILES)
+noinst_DATA=$(GT_ERRMODELS) $(OXT_FILES) $(MACVOIKKOFILE)
 
 ###################################
 ####### HFST build rules: #########

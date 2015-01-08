@@ -52,8 +52,7 @@ endif # WANT_VOIKKO
 endif # CAN_HFST
 endif # WANT_SPELLERS
 
-noinst_DATA=$(GT_ERRMODELS) $(OXT_FILES) $(MACVOIKKOFILE) \
-            $(MACVOIKKOFILE)/Contents/Resources/Dictionaries/3/$(GT_SPELLING_HFST)
+noinst_DATA=$(GT_ERRMODELS) $(OXT_FILES) $(MACVOIKKOFILE) $(MACVKOFST)
 
 ###################################
 ####### HFST build rules: #########
@@ -213,6 +212,7 @@ OXT_FILES+=$(addsuffix .oxt, \
 # MacVoikko-North_Sami.service
 LANGSTRING=$(shell echo "${GTLANGUAGE}" | sed -e 's/ /_/g')
 MACVOIKKOFILE+=$(addsuffix .service,$(addsuffix $(LANGSTRING),MacVoikko-))
+MACVKOFST=$(MACVOIKKOFILE)/Contents/Resources/Dictionaries/3/$(GT_SPELLING_HFST)
 
 endif # CAN_LOCALSYNC
 endif # CAN_HFST

@@ -1,4 +1,8 @@
-$Rev: 105201 $
+$Rev: 105238 $
+Fixed: The MacVoikko target contained one subtarget that built even when
+spellers were not enabled, and thus failed because of a missing dependency.
+
+r105201:
 A number of changes to make the MacVoikko.service build cleanly with proper
 dependency tracking. Also a bit safer cleaning.
 

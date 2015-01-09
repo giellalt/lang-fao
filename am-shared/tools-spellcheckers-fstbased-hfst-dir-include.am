@@ -62,7 +62,7 @@ noinst_DATA=$(GT_ERRMODELS) $(OXT_FILES) $(MACVOIKKOFILE) $(MACVKOFST)
 # make sure the easter egg is rebuilt every time the fst is rebuilt:
 easteregg.txt: $(srcdir)/version.txt $(GT_SPELLER_HFST)
 	$(AM_V_GEN)$(GTCORE)/scripts/make-hfstspeller-version-easter-egg.sh \
-		$(GTLANG2) $(top_srcdir) $^ > $@
+		$(GTLANG2) $(top_srcdir) $< > $@
 
 # Easter egg suggestions:
 easteregg.suggs.txt: easteregg.txt

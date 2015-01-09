@@ -1,4 +1,7 @@
-$Rev: 105238 $
+$Rev: 105284 $
+Make sure the easter egg is rebuilt every time the fst is rebuilt.
+
+r105238:
 Fixed: The MacVoikko target contained one subtarget that built even when
 spellers were not enabled, and thus failed because of a missing dependency.
 

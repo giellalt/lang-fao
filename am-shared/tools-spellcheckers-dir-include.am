@@ -29,11 +29,13 @@ GT_COMMON_SPELLER_NAME=speller-gt-norm
 if WANT_SPELLERS
 
 if CAN_HFST
+GT_COMMON_SPELLER_XFST+=analyser-$(GT_COMMON_SPELLER_NAME).hfst
 GT_COMMON_SPELLER_HFST+=generator-$(GT_COMMON_SPELLER_NAME).hfst
 endif # CAN_HFST
 
 if CAN_XFST
 GT_COMMON_SPELLER_XFST+=analyser-$(GT_COMMON_SPELLER_NAME).xfst
+GT_COMMON_SPELLER_HFST+=generator-$(GT_COMMON_SPELLER_NAME).xfst
 endif # CAN_XFST
 
 endif # WANT_SPELLERS
@@ -113,6 +115,17 @@ analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: \
 
 %.hfst: %.tmp.hfst
 	$(AM_V_CP)cp -f $< $@
+
+# Invert the basic fst's, to enable symmetric yaml tests:
+generator-%.xfst: analyser-%.xfst
+	$(AM_V_XFST)$(PRINTF) \
+		"load stack $< \n\
+		 invert net\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+analyser-%.hfst: generator-%.hfst
+	$(AM_V_INVERT)$(HFST_INVERT) $(VERBOSITY) $(HFST_FLAGS) -i $< -o $@
 
 ####### Other targets: ###########
 clean-local:

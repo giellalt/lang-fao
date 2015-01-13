@@ -15,20 +15,32 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Hfst fst variables:
 GT_SPELLER_SRC_HFST=generator-speller-gt-norm.hfst
+GT_COMMON_SPELLER_HFST=
+
+# Xerox fst variables - Xerox can be used to test the build and compare with hfst
+GT_SPELLER_SRC_XFST=analyser-speller-gt-norm.xfst
+GT_COMMON_SPELLER_XFST=
+
 GT_COMMON_SPELLER_NAME=fstspeller-gt-norm
-GT_COMMON_FSTSPELLER_HFST=
 
 ####### Automake targets: ########
 
 if WANT_SPELLERS
 if CAN_HFST
-GT_COMMON_FSTSPELLER_HFST+=generator-$(GT_COMMON_SPELLER_NAME).hfst
-GT_COMMON_FSTSPELLER_HFST+=analyser-$(GT_COMMON_SPELLER_NAME).hfst
+GT_COMMON_SPELLER_HFST+=generator-$(GT_COMMON_SPELLER_NAME).hfst
+GT_COMMON_SPELLER_HFST+=analyser-$(GT_COMMON_SPELLER_NAME).hfst
 endif # CAN_HFST
+
+if CAN_XFST
+GT_COMMON_SPELLER_XFST+=analyser-$(GT_COMMON_SPELLER_NAME).xfst
+GT_COMMON_SPELLER_HFST+=generator-$(GT_COMMON_SPELLER_NAME).xfst
+endif # CAN_XFST
+
 endif # WANT_SPELLERS
 
-noinst_DATA=$(GT_COMMON_FSTSPELLER_HFST)
+noinst_DATA=$(GT_COMMON_SPELLER_HFST) $(GT_COMMON_SPELLER_XFST)
 
 # Build the speller transducer
 generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: ../$(GT_SPELLER_SRC_HFST)  \
@@ -42,13 +54,34 @@ generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: ../$(GT_SPELLER_SRC_HFST)  \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 
+analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: ../$(GT_SPELLER_SRC_XFST)  \
+			$(top_builddir)/src/filters/remove-hyphenation-marks.xfst  \
+			$(top_builddir)/src/filters/remove-infl_deriv-borders.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			@\"$<\" \
+    	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.xfst\"  \
+    	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.xfst\" \
+		;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
 # Copy the tmp transducer to the final one. This allows local overrides.
 %.hfst: %.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
+
+%.xfst: %.tmp.xfst
 	$(AM_V_CP)cp -f $< $@
 
 # Invert the basic fst, to enable symmetric yaml tests:
 analyser-%.hfst: generator-%.hfst
 	$(AM_V_INVERT)$(HFST_INVERT) $(VERBOSITY) $(HFST_FLAGS) -i $< -o $@
+
+generator-%.xfst: analyser-%.xfst
+	$(AM_V_XFST)$(PRINTF) \
+		"load stack $< \n\
+		 invert net\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
 
 ####### Other targets: ###########
 clean-local:

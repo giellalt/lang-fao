@@ -7,9 +7,17 @@
 # - an exit status of 99 a hard error
 # - any other exit status will denote a failure.
 
+# To run this test script only, do:
+#
+# make check TESTS=generate-noun-lemmas.sh
 
-# Test that all noun lemmas do generate as themselves:
-
+# This test script will test that all noun lemmas do generate as themselves.
+# Extend as needed, and copy to new files to adapt to other parts of speech.
+# The changes usually needed are:
+#
+# 1. change the reference to the source file (line 23)
+# 2. extend the extract lemmas egrep expression (lines 53 ff)
+# 3. adapt the tag addition and lemma generation instructions (lines 79 ff)
 
 ###### Variables: #######
 sourcefile=${srcdir}/../../../src/morphology/stems/nouns.lexc
@@ -42,7 +50,8 @@ fi
 # Get external Mac editor for viewing failed results from configure:
 EXTEDITOR=@SEE@
 
-###### Extraction: #######
+##### Extract lemmas - extend the egrep exclude pattern in the #####
+##### parenthesis as needed to exclude unwanted lexc lines:    #####
 @GTCORE@/scripts/extract-lemmas.sh \
 	$sourcefile "(CmpN/Last)" > $lemmas
 
@@ -86,8 +95,7 @@ for f in $fsttype; do
 		sort -u -o $generatedlemmas.$f.txt $generatedlemmas.$f.txt 
 		comm -23 $lemmas $generatedlemmas.$f.txt > $resultfile.$f.txt
 
-		# if at least one word is found, the test failed, and the list of failed
-		# lemmas is opened in SubEthaEdit:
+		# Open the diff file in SubEthaEdit (if there is a diff):
 		if [ -s $resultfile.$f.txt ]; then
 			# Only open the failed lemmas in see if @SEE@ is defined:
 			if [ "$EXTEDITOR" ]; then

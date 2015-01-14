@@ -5,9 +5,9 @@
 # over by the test runner.
 
 ###### Variables: #######
-transducer=speller-gt-norm
+transducer=fstspeller-gt-norm
 
-yaml_file_subdir=speller-gt-norm-yamls
+yaml_file_subdir=fstspeller-gt-norm-yamls
 
 # Find relative path from test script to test runner:
 relpath=.

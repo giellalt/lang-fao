@@ -1,0 +1,13 @@
+Config:
+  hfst:
+    Gen:  ../../../tools/spellcheckers/fstbased/generator-fstspeller-gt-norm.hfst
+    Morph: ../../../tools/spellcheckers/fstbased/analyser-fstspeller-gt-norm.hfst
+  xerox:
+    Gen:  ../../../tools/spellcheckers/fstbased/generator-fstspeller-gt-norm.xfst
+    Morph: ../../../tools/spellcheckers/fstbased/analyser-fstspeller-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Compound tests: # testing different compounding patterns that should be accepted:
+    guaktah+CmpN/SgNomLeft+Cmp#maana+CmpN/SgN+CmpN/SgG+CmpN/PlG+N+Sg+Nom: [ ~guaktah#maana ]
+    maana+CmpN/SgN+CmpN/SgG+CmpN/PlG+Cmp#guaktah+CmpN/SgNomLeft+N+Pl+Nom: maana#guaktah

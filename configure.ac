@@ -128,6 +128,7 @@ AC_CONFIG_FILES([Makefile \
                  test/tools/mt/Makefile \
                  test/tools/mt/apertium/Makefile \
                  test/tools/spellcheckers/Makefile \
+                 test/tools/spellcheckers/fstbased/Makefile \
                  test/src/Makefile \
                  test/src/morphology/Makefile \
                  test/src/orthography/Makefile \

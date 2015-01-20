@@ -1,7 +1,13 @@
-$Rev: 105616 $
-Added Multichar symbol definitions for controlling compounding based on position
-tags. Done for all langs, the symbols will essentially be ignored for languages
-without compounding.
+$Rev: 105673 $
+Added conversion of tags to flag diacritica for position-restricting tags. These
+are currently used in sma, sme, smj and sje. Together with some additions to the
+R lexicon, the tags will finally do what they are meant to do for hfst-based
+spellers.
+
+r105616:
+Added Multichar symbol definitions for flag diacritica controlling compounding
+based on position tags. Done for most langs, the symbols will be ignored if not
+used.
 
 r105496:
 New: added example test file for the fstspeller fst file (starting point for

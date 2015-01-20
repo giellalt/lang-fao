@@ -25,6 +25,10 @@
 #### Tailored silent output text: ####
 
 #### HFST tools
+AM_V_COMPOSE   = $(AM_V_COMPOSE_@AM_V@)
+AM_V_COMPOSE_  = $(AM_V_COMPOSE_@AM_DEFAULT_V@)
+AM_V_COMPOSE_0 = @echo "  COMPOSE  $@";
+
 AM_V_HLEXC     = $(AM_V_HLEXC_@AM_V@)
 AM_V_HLEXC_    = $(AM_V_HLEXC_@AM_DEFAULT_V@)
 AM_V_HLEXC_0   = @echo "  HLEXC    $@";
@@ -48,6 +52,10 @@ AM_V_FST2TXT_0 = @echo "  FST2TXT  $@";
 AM_V_FST2FST   = $(AM_V_FST2FST_@AM_V@)
 AM_V_FST2FST_  = $(AM_V_FST2FST_@AM_DEFAULT_V@)
 AM_V_FST2FST_0 = @echo "  FST2FST  $@";
+
+AM_V_PROJECT   = $(AM_V_PROJECT_@AM_V@)
+AM_V_PROJECT_  = $(AM_V_PROJECT_@AM_DEFAULT_V@)
+AM_V_PROJECT_0 = @echo "  PROJECT  $@";
 
 AM_V_HSUBST    = $(AM_V_HSUBST_@AM_V@)
 AM_V_HSUBST_   = $(AM_V_HSUBST_@AM_DEFAULT_V@)

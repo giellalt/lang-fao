@@ -46,19 +46,28 @@ noinst_DATA=$(GT_COMMON_SPELLER_HFST) $(GT_COMMON_SPELLER_XFST)
 generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: ../$(GT_SPELLER_SRC_HFST)  \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst  \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
-			@\"$<\" \
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+		[ \"@U.CmpFrst.TRUE@\" <- \"+CmpN/First\", \
+    	  \"@U.CmpFrst.TRUE@\" <- \"+CmpN/Pref\", \
+    	  \"@P.CmpLast.TRUE@\" <- \"+CmpN/Last\", \
+    	  \"@U.CmpNone.TRUE@\" <- \"+CmpN/None\" ] \
+    	.o. @\"$<\" \
     	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"  \
     	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" \
-    	;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
+		; \n\
+		 twosided flag-diacritics\n\
+		 save stack $@\n\
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: ../$(GT_SPELLER_SRC_XFST)  \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.xfst  \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
-			@\"$<\" \
+		[ \"@U.CmpFrst.TRUE@\" <- \"+CmpN/First\", \
+    	  \"@U.CmpFrst.TRUE@\" <- \"+CmpN/Pref\", \
+    	  \"@P.CmpLast.TRUE@\" <- \"+CmpN/Last\", \
+    	  \"@U.CmpNone.TRUE@\" <- \"+CmpN/None\" ] \
+    	.o. @\"$<\" \
     	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.xfst\"  \
     	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.xfst\" \
 		;\n\

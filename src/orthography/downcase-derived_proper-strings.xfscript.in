@@ -10,8 +10,15 @@ define compoundtag  [ %+SgCmp      | %+SgNomCmp      | %+SgGenCmp      | %+PlGen
 					| %+CmpN/All   | %+CmpN/Def      | %+CmpN/DefSgGen | %+CmpN/DefPlGen
 					] ;
 
-define Flag       "@U.Cap.Opt@"      ;
-define HypMinFlag "@P.LEXNAME.Root@" ;
+# The value of HypMinFlag depends on the configuration: if hyperminimisation is
+# enabled, it will expand to a flag diacritic, if not it will be the empty string.
+# This will ensure that lowercasing will work correctly for all proper strings
+# independent of configuration. The alternative is to make the flag diacritic
+# optional, but then a hyperminimised generator will overgenerate, producing
+# an initial capital variant in addition to the lowercase string intended.
+# Don't be mislead by the notation: Autoconf also uses @STRING@ notation!
+define Flag       "@U.Cap.Opt@"    ;
+define HypMinFlag "@HYPERMINFLAG@" ;
 
 read regex [ 
 A -> a,
@@ -47,8 +54,8 @@ Z -> z,
 Š -> š,
 Ŧ -> ŧ,
 Ž -> ž
-|| .#. ( HYPMINFLAG ) FLAG (compoundtag)*       _ ,
-                      FLAG (compoundtag)* ?* %- _
+|| .#. HYPMINFLAG FLAG (compoundtag)*       _ ,
+                  FLAG (compoundtag)* ?* %- _
 
 # ---- ends here: ------
 

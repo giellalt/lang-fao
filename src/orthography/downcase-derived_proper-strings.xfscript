@@ -10,7 +10,8 @@ define compoundtag  [ %+SgCmp      | %+SgNomCmp      | %+SgGenCmp      | %+PlGen
 					| %+CmpN/All   | %+CmpN/Def      | %+CmpN/DefSgGen | %+CmpN/DefPlGen
 					] ;
 
-define Flag %@U%.Cap%.Opt%@ ;
+define Flag       "@U.Cap.Opt@"      ;
+define HypMinFlag "@P.LEXNAME.Root@" ;
 
 read regex [ 
 A -> a,
@@ -46,8 +47,8 @@ Z -> z,
 Š -> š,
 Ŧ -> ŧ,
 Ž -> ž
-|| .#. FLAG (compoundtag)*       _ ,
-       FLAG (compoundtag)* ?* %- _
+|| .#. ( HYPMINFLAG ) FLAG (compoundtag)*       _ ,
+                      FLAG (compoundtag)* ?* %- _
 
 # ---- ends here: ------
 
@@ -79,4 +80,5 @@ Z -> z,
 
 ] ;
 
-substitute defined Flag for FLAG
+substitute defined Flag       for FLAG
+substitute defined HypMinFlag for HYPMINFLAG

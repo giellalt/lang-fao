@@ -118,6 +118,7 @@ generator-raw-gt-desc.tmp.hfst: generator-raw-gt-desc.tmp1.hfst \
 			.o. @\"$<\" \
 			;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+			-X flag-is-epsilon \
 		> $@
 
 analyser-raw-gt-desc.tmp.xfst: analyser-raw-gt-desc.tmp1.xfst \

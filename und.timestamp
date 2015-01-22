@@ -1,4 +1,9 @@
-$Rev: 105715 $
+$Rev: 105926 $
+Added xerox variable flag-is-epsilon to the tag reorder regex. This fixes most
+of the cases of errors after the hyperminimisation bug was fixed in hfst-lexc.
+The remaining errors must be fixed in the downcase-derived-proper regex.
+
+r105715:
 Added more silent builds for hfst tools.
 
 r105673:

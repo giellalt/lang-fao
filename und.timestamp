@@ -1,4 +1,7 @@
-$Rev: 105935 $
+$Rev: 105950 $
+Last change to get hyperminimisation to produce the correct output: made the derived-proper downcase script being processed by autoconf, so that we can require a symbol in a certain context, and at the same time in the end let the symbol be empty if not needed.
+
+r105935:
 Added optional flag diacritic inserted by Hfst hyperminimisation. This resolves
 the remaining cases of errors after the hfst team fixed a bug in lexc
 compilation with hyperminimisation turned on. Since it is optional, it does not

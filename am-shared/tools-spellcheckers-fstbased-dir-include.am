@@ -47,13 +47,18 @@ generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: ../$(GT_SPELLER_SRC_HFST)  \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst  \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
-		[ \"@U.CmpFrst.TRUE@\" <- \"+CmpN/First\", \
-    	  \"@U.CmpFrst.TRUE@\" <- \"+CmpN/Pref\", \
-    	  \"@P.CmpLast.TRUE@\" <- \"+CmpN/Last\", \
-    	  \"@U.CmpNone.TRUE@\" <- \"+CmpN/None\" ] \
-    	.o. @\"$<\" \
-    	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"  \
-    	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" \
+			[ \"@U.CmpFrst.TRUE@\" <- \"+CmpN/First\",              \
+			  \"@U.CmpFrst.TRUE@\" <- \"+CmpN/Pref\" ,              \
+			  \"@P.CmpLast.TRUE@\" <- \"+CmpN/Last\" ,              \
+			  [ \"@P.CmpOnly.FALSE@\"                               \
+			  | \"@R.CmpOnly.TRUE@\" ] <- \"+CmpN/Only\" ,          \
+			  \"@U.CmpNone.TRUE@\" <- \"+CmpN/None\" ]              \
+		.o.                 ~\$$[  \"+CmpN/First\" \"+CmpN/Last\" ] \
+		.o. [ \"+CmpN/Last\"  (<-) \"+CmpN/First\" \"+CmpN/Last\",  \
+		      \"+CmpN/First\" (<-) \"+CmpN/First\" \"+CmpN/Last\" ] \
+		.o. @\"$<\" \
+		.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"  \
+		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" \
 		; \n\
 		 twosided flag-diacritics\n\
 		 save stack $@\n\
@@ -62,11 +67,16 @@ generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: ../$(GT_SPELLER_SRC_HFST)  \
 analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: ../$(GT_SPELLER_SRC_XFST)  \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.xfst  \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-		[ \"@U.CmpFrst.TRUE@\" <- \"+CmpN/First\", \
-    	  \"@U.CmpFrst.TRUE@\" <- \"+CmpN/Pref\", \
-    	  \"@P.CmpLast.TRUE@\" <- \"+CmpN/Last\", \
-    	  \"@U.CmpNone.TRUE@\" <- \"+CmpN/None\" ] \
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+			[ \"@U.CmpFrst.TRUE@\" <- \"+CmpN/First\",              \
+			  \"@U.CmpFrst.TRUE@\" <- \"+CmpN/Pref\" ,              \
+			  \"@P.CmpLast.TRUE@\" <- \"+CmpN/Last\" ,              \
+			  [ \"@P.CmpOnly.FALSE@\"                               \
+			  | \"@R.CmpOnly.TRUE@\" ] <- \"+CmpN/Only\" ,          \
+			  \"@U.CmpNone.TRUE@\" <- \"+CmpN/None\" ]              \
+		.o.                 ~\$$[  \"+CmpN/First\" \"+CmpN/Last\" ] \
+		.o. [ \"+CmpN/Last\"  (<-) \"+CmpN/First\" \"+CmpN/Last\",  \
+		      \"+CmpN/First\" (<-) \"+CmpN/First\" \"+CmpN/Last\" ] \
     	.o. @\"$<\" \
     	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.xfst\"  \
     	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.xfst\" \

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# This is a shell script that will call the actual test runner with the
+# specified transducer. This determines also the set of yaml test files looped
+# over by the test runner.
+
+###### User variables - adjust as needed: #######
+# Specify the invariable part of the transducer name:
+transducer=speller-gt-norm
+
+# Specify the name of the subdir where the yaml files are, use '.' if it is the
+# same dir as this script:
+yaml_file_subdir=speller-gt-norm-yamls
+
+####### Include helper script from GTCORE: ########
+gtcore=@GTCORE@
+source ${gtcore}/scripts/include-scripts/yaml-runner-include.sh

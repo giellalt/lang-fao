@@ -48,7 +48,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 ### This is the version of the GTD core that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
-_gtd_core_min_version=0.2.18
+_gtd_core_min_version=0.2.19
 
 ### Required version of the Hfst tools:
 _required_hfst_version=3.8.0
@@ -151,18 +151,28 @@ AC_CONFIG_FILES([Makefile \
                  tools/spellcheckers/listbased/filters/Makefile])
 # Add one AC_CONFIG_FILES for each script file that needs processing. This gives
 # the most pleasant user experience and most readable autoconf code to maintain.
+# Spell checker tests, all languages:
 AC_CONFIG_FILES([test/tools/spellcheckers/test-zhfst-file.sh], \
       [chmod a+x test/tools/spellcheckers/test-zhfst-file.sh])
+AC_CONFIG_FILES([test/tools/spellcheckers/run-spellers-gt-norm-yaml-testcases.sh], \
+      [chmod a+x test/tools/spellcheckers/run-spellers-gt-norm-yaml-testcases.sh])
 AC_CONFIG_FILES([test/run-morph-tester.sh], \
       [chmod a+x test/run-morph-tester.sh])
+# Phonology tests, all languages:
 AC_CONFIG_FILES([test/src/phonology/pair-test-positive.sh], \
       [chmod a+x test/src/phonology/pair-test-positive.sh])
 AC_CONFIG_FILES([test/src/phonology/pair-test-negative.sh], \
       [chmod a+x test/src/phonology/pair-test-negative.sh])
+# Lemma generation tests, all languages:
 AC_CONFIG_FILES([test/src/morphology/generate-noun-lemmas.sh], \
       [chmod a+x test/src/morphology/generate-noun-lemmas.sh])
+# Shorthand shell scripts instead of the old-type aliases - all languages:
 AC_CONFIG_FILES([tools/shellscripts/ufao-gt.sh], \
       [chmod a+x tools/shellscripts/ufao-gt.sh])
+
+#### BEGIN: Add language-specific scripts below here: ####
+
+############ END: Language-specific scripts. #############
 
 # This must be near the end of all configure.ac files:
 AC_OUTPUT

@@ -1,4 +1,12 @@
-$Rev: 105950 $
+$Rev: 106122 $
+Moved code common to all yaml testrunner shell scripts to an include file in
+GTCORE to avoid code duplication and reduce the risk for introducing bugs.
+This requires the newest version of the CORE. Because of the inclusion, I had
+to rename the test runner to .sh.in, and added autoconf processing of it. Also
+added a test file for testing the base speller fst (it must be tailored to each
+language of course).
+
+r105950:
 Last change to get hyperminimisation to produce the correct output: made the derived-proper downcase script being processed by autoconf, so that we can require a symbol in a certain context, and at the same time in the end let the symbol be empty if not needed.
 
 r105935:

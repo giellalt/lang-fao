@@ -1,4 +1,9 @@
-$Rev: 106160 $
+$Rev: 106226 $
+Finally nailed all combinations of fst compilator and lexicon minimisation - now
+downcasing of derived proper nouns is working as it should again for both Xerox,
+Hfst hyperminimised and Hfst normal lexc compilation.
+
+r106160:
 +CmpN/Only supported, first steps in tag splitting taken.
 
 r106122:
@@ -10,7 +15,10 @@ added a test file for testing the base speller fst (it must be tailored to each
 language of course).
 
 r105950:
-Last change to get hyperminimisation to produce the correct output: made the derived-proper downcase script being processed by autoconf, so that we can require a symbol in a certain context, and at the same time in the end let the symbol be empty if not needed.
+Last change to get hyperminimisation to produce the correct output: made the
+derived-proper downcase script being processed by autoconf, so that we can
+require a symbol in a certain context, and at the same time in the end let
+the symbol be empty if not needed.
 
 r105935:
 Added optional flag diacritic inserted by Hfst hyperminimisation. This resolves

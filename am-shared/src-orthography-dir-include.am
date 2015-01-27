@@ -45,6 +45,33 @@ endif
 
 noinst_DATA=$(GIELLA_ORTH_TARGETS)
 
+################################################################################
+########## We need special treatment of the downcase script because   ##########
+########## of incompatible treatment of empty strings between Xerox   ##########
+########## and Hfst. The following targets work around that.          ##########
+################################################################################
+downcase-derived_proper-strings.xeroxscript: \
+		downcase-derived_proper-strings.xfscript
+	$(AM_V_SED)sed 's/@IF_HFST@/#/g; s/HYPMINFLAG//g' $^ > $@
+
+downcase-derived_proper-strings.hfstscript: \
+		downcase-derived_proper-strings.xfscript
+	$(AM_V_SED)sed s/@IF_HFST@//g $^ > $@
+
+####### HFST build rules: ########
+downcase-derived_proper-strings.hfst: \
+		downcase-derived_proper-strings.hfstscript
+	$(AM_V_HXFST)(cat $< ; echo "save stack $@"; echo "quit") \
+		| $(HFST_XFST) -p $(VERBOSITY)
+
+####### Xerox build rules: #######
+downcase-derived_proper-strings.xfst: \
+		downcase-derived_proper-strings.xeroxscript
+	$(AM_V_XFST)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
+################################################################################
+########## End of special build rules.                                ##########
+################################################################################
+
 ####### Copy source files from common location if not found locally: #######
 %.regex: $(GTCORE)/gtdshared/common/src/orthography/%.regex
 	$(AM_V_CP)cp $< $@

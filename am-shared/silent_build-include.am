@@ -116,6 +116,10 @@ AM_V_AWK       = $(AM_V_AWK_@AM_V@)
 AM_V_AWK_      = $(AM_V_AWK_@AM_DEFAULT_V@)
 AM_V_AWK_0     = @echo "  AWK      $@";
 
+AM_V_SED       = $(AM_V_SED_@AM_V@)
+AM_V_SED_      = $(AM_V_SED_@AM_DEFAULT_V@)
+AM_V_SED_0     = @echo "  SED      $@";
+
 AM_V_FORREST   = $(AM_V_FORREST_@AM_V@)
 AM_V_FORREST_  = $(AM_V_FORREST_@AM_DEFAULT_V@)
 AM_V_FORREST_0 = @echo "  FORREST  $@";

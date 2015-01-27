@@ -18,7 +18,7 @@ define compoundtag  [ %+SgCmp      | %+SgNomCmp      | %+SgGenCmp      | %+PlGen
 # an initial capital variant in addition to the lowercase string intended.
 # Don't be mislead by the notation: Autoconf also uses @STRING@ notation!
 define Flag       "@U.Cap.Opt@"    ;
-@WANT_HYPERMINIMISATION_TRUE@@IF_HFST@define HypMinFlag "@HYPERMINFLAG@" ;
+@WANT_HYPERMINIMISATION_TRUE@@IF_HFST@define HypMinFlag "@P.LEXNAME.Root@" ;
 
 read regex [ 
 A -> a,

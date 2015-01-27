@@ -267,11 +267,6 @@ AC_ARG_ENABLE([hyperminimisation],
               [enable_hyperminimisation=$enableval],
               [enable_hyperminimisation=no])
 AM_CONDITIONAL([WANT_HYPERMINIMISATION], [test "x$enable_hyperminimisation" != xno])
-# Insert a flag diacritic created by hyperminimisation in the
-# downcase-derived_proper-strings.xfscript file when hyperminimisation is enabled.
-AS_IF([test "x$enable_hyperminimisation" != xno],[
-    AC_SUBST(HYPERMINFLAG, [@P.LEXNAME.Root@]),
-])
 
 # Enable morphological analysers - default is 'yes'
 AC_ARG_ENABLE([analysers],

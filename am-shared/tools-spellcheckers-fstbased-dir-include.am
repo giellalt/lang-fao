@@ -48,7 +48,7 @@ generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: ../$(GT_SPELLER_SRC_HFST)  \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 			[ \"@U.CmpFrst.TRUE@\" <- \"+CmpN/First\",              \
-			  \"@U.CmpFrst.TRUE@\" <- \"+CmpN/Pref\" ,              \
+			  \"@U.CmpPref.TRUE@\" <- \"+CmpN/Pref\" ,              \
 			  \"@P.CmpLast.TRUE@\" <- \"+CmpN/Last\" ,              \
 			  [ \"@P.CmpOnly.FALSE@\"                               \
 			  | \"@R.CmpOnly.TRUE@\" ] <- \"+CmpN/Only\" ,          \
@@ -69,7 +69,7 @@ analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: ../$(GT_SPELLER_SRC_XFST)  \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.xfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 			[ \"@U.CmpFrst.TRUE@\" <- \"+CmpN/First\",              \
-			  \"@U.CmpFrst.TRUE@\" <- \"+CmpN/Pref\" ,              \
+			  \"@U.CmpPref.TRUE@\" <- \"+CmpN/Pref\" ,              \
 			  \"@P.CmpLast.TRUE@\" <- \"+CmpN/Last\" ,              \
 			  [ \"@P.CmpOnly.FALSE@\"                               \
 			  | \"@R.CmpOnly.TRUE@\" ] <- \"+CmpN/Only\" ,          \

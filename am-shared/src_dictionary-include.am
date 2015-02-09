@@ -207,6 +207,5 @@ generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst        \
 			.o. @\"filters/remove-infl_deriv-borders.xfst\"        \
 			.o. @\"filters/remove-word-boundary.xfst\"             \
 			;\n\
-		 invert net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)

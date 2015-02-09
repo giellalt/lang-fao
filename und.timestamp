@@ -1,4 +1,7 @@
-$Rev: 106957 $
+$Rev: 106966 $
+Removed 'invert net' from a couple of more instances.
+
+r106957:
 Treat Hfst and Xerox the same during *tmp.Xfst and *.Xfst build - invert both
 only in the last step when going from tmp to non-tmp fst (invert the analyser
 for hfst, the generator for xfst). This should remove one more confusing

@@ -106,8 +106,7 @@ generator-gt-%.xfst: generator-gt-%.tmp.xfst \
 
 #### HFST transducer fallback target:
 #### - inversion is needed FOR THE ANALYSER because the hfst model is upside
-#### down compared to Xerox AT APPLICATION TIME. The other command makes the
-#### final transducer ready for use.
+#### down compared to Xerox AT APPLICATION TIME.
 analyser%.hfst: analyser%.tmp.hfst
 	$(AM_V_INVERT)$(HFST_INVERT) -i $< -o $@
 
@@ -115,7 +114,15 @@ generator%.hfst: generator%.tmp.hfst
 	$(AM_V_CP)cp -f $< $@
 
 #### Xerox transducer fallback target:
-%.xfst: %.tmp.xfst
+#### - inversion is needed in the final step for the GENERATOR.
+analyser%.xfst: analyser%.tmp.xfst
 	$(AM_V_CP)cp -f $< $@
+
+generator%.xfst: generator%.tmp.xfst
+	$(AM_V_XFST)$(PRINTF) "\
+		 load stack $<\n\
+		 invert net\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
 
 include $(top_srcdir)/am-shared/src-dir-include.am

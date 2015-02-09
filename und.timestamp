@@ -1,4 +1,10 @@
-$Rev: 106951 $
+$Rev: 106957 $
+Treat Hfst and Xerox the same during *tmp.Xfst and *.Xfst build - invert both
+only in the last step when going from tmp to non-tmp fst (invert the analyser
+for hfst, the generator for xfst). This should remove one more confusing
+difference between the two.
+
+r106951:
 Check that we have at least Python3.1 when enabling Apertium, error out if not.
 Also add AM check for hfst-optimized-lookup.
 

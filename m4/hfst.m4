@@ -58,6 +58,7 @@ AC_PATH_PROG(HFST_MINIMIZE,          hfst-minimize,          false, $PATH$PATH_S
 AC_PATH_PROG(HFST_MINUS,             hfst-minus,             false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_MULTIPLY,          hfst-multiply,          false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_NAME,              hfst-name,              false, $PATH$PATH_SEPARATOR$with_hfst)
+AC_PATH_PROG(HFST_OPTIMIZED_LOOKUP,  hfst-optimized-lookup,  false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_PAIR_TEST,         hfst-pair-test,         false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_PROC,              hfst-proc,              false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_PROC2,             hfst-proc2,             false, $PATH$PATH_SEPARATOR$with_hfst)

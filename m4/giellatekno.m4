@@ -116,13 +116,16 @@ AS_IF([test "x$enable_yamltests" = "xcheck"],
      AC_MSG_CHECKING([whether to enable yaml-based test])
      AS_IF([test "$PYTHON" = ":"],
            [enable_yamltests=no
+            python_31_or_newer_available=no
             AC_MSG_RESULT([no, python is missing or old])
             ],
            [AS_IF([test "x$HAVE_PYMOD_YAML" != "xyes"],
                   [enable_yamltests=no
+                   python_31_or_newer_available=yes
                    AC_MSG_RESULT([no, yaml is missing])
                    ],
                   [enable_yamltests=yes
+                   python_31_or_newer_available=yes
                    AC_MSG_RESULT([yes])])])])
 
 AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
@@ -435,6 +438,9 @@ AC_ARG_ENABLE([apertium],
                               [enable apertium transducers @<:@default=no@:>@])],
               [enable_apertium=$enableval],
               [enable_apertium=no])
+AS_IF([test "x$enable_apertium" = "xyes" -a "x$python_31_or_newer_available" = "xno"], 
+      [enable_apertium=no
+       AC_MSG_ERROR([Python3 missing or too old, Python 3.1 or newer required])])
 AM_CONDITIONAL([WANT_APERTIUM], [test "x$enable_apertium" != xno])
 
 ]) # gt_ENABLE_TARGETS

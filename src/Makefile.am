@@ -60,46 +60,6 @@ endif # CAN_HFST
 #################################################
 #### Add language-specific build rules here: ####
 
-analyser-raw-gt-desc.hfst: analyser-raw-gt-desc.tmp.hfst \
-					filters/reorder-semantic-tags.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
-				@\"filters/reorder-semantic-tags.hfst\"            \
-			.o. @\"$<\" \
-			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
-
-analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.tmp.xfst \
-					filters/reorder-semantic-tags.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/reorder-semantic-tags.xfst\"            \
-			.o. @\"$<\" \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
-# Standard generators
-# HFST:
-generator-gt-%.hfst: generator-gt-%.tmp.hfst \
-					filters/make-optional-semantic-tags.hfst
-	$(AM_V_GEN)$(PRINTF) \
-			   "@bin\"filters/make-optional-semantic-tags.hfst\" \
-			.o. @bin\"$<\" \
-			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
-
-# Xerox:
-generator-gt-%.xfst: generator-gt-%.tmp.xfst \
-					filters/make-optional-semantic-tags.xfst
-	$(AM_V_GEN)$(PRINTF) "read regex                          \
-				@\"filters/make-optional-semantic-tags.xfst\" \
-			.o. @\"$<\".i                                     \
-			;\n\
-		 invert net\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################

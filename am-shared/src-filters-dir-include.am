@@ -75,11 +75,14 @@ GIELLA_FILTER_CORE_REGEX_SRCS=\
 
 # 2) GTD Core **generated** regex files:
 GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS=\
-                  remove-semantic-tags.regex        \
-                  remove-dialect-tags.regex         \
-                  remove-derivation-strings.regex   \
-                  reorder-semantic-tags.regex       \
                   make-optional-semantic-tags.regex \
+                  remove-semantic-tags.regex        \
+                  reorder-semantic-tags.regex       \
+                  remove-derivation-strings.regex   \
+                  make-optional-error-tags.regex    \
+                  remove-error-tags.regex           \
+                  remove-error-strings.regex        \
+                  remove-dialect-tags.regex         \
                   $(DIALECT_REGEXES)
 
 # 3) GTD Core xfscript filter files:
@@ -237,17 +240,17 @@ endif # HAVE_DIALECTS
 ## harmless   (unless  a  language  uses  the  tag
 ## +Sem/DummyTag, +Dial/DummyTag, etc.).
 
-semantic-tags.txt: $(GT_TAGS)
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Sem/
-
 dialect-tags.txt: $(GT_TAGS)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Dial/
 
 derivation-tags.txt: $(GT_TAGS)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Der/
 
-flag-diacritics.txt: sigma.txt
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-flag-diacritics.sh $< $@
+error-tags.txt: $(GT_TAGS)
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Err/
+
+semantic-tags.txt: $(GT_TAGS)
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Sem/
 
 ####### Build rules for creating regexes from tag list: #######
 
@@ -285,13 +288,21 @@ remove-all_dialects_but_%-strings.regex:
 # Specific variant - take into account an exception file:
 remove-%-strings.regex: %-tags.txt \
 						remove-%-strings-modifications.regex
-	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh \
-		$@ $^
+	$(AM_V_GEN)if test -e $(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh;\
+		then \
+			$(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh $@ $* $^ ; \
+		else \
+			$(GTCORE)/scripts/taglist2remove_strings_regex.sh $@ $* $^ ; \
+		fi
 
 # General variant - remove all strings without exception:
 remove-%-strings.regex: %-tags.txt
-	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh \
-		$@ $^
+	$(AM_V_GEN)if test -e $(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh;\
+		then \
+			$(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh $@ $* $^ ; \
+		else \
+			$(GTCORE)/scripts/taglist2remove_strings_regex.sh $@ $* $^ ; \
+		fi
 
 ### Reorder tags:
 reorder-%-tags.regex: %-tags.txt

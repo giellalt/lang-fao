@@ -35,9 +35,6 @@ if CAN_HFST
 GT_REGEX_TARGETS+=$(patsubst %.regex,%.hfst,$(REGEX_SRCS))
 endif # CAN_HFST
 
-if CAN_XFST
-GT_REGEX_TARGETS+=$(patsubst %.regex,%.xfst,$(REGEX_SRCS))
-endif # CAN_XFST
 endif # WANT_APERTIUM
 
 ####### Build rules: ########

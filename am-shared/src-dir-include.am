@@ -233,6 +233,7 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/make-optional-homonymy-tags.hfst     \
 					filters/make-optional-variant-tags.hfst      \
 					filters/make-optional-semantic-tags.hfst     \
+					filters/make-optional-error-tags.hfst        \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
 					filters/remove-hyphenation-marks.hfst        \
@@ -251,6 +252,7 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
 			.o. @\"filters/make-optional-variant-tags.hfst\"      \
 			.o. @\"filters/make-optional-semantic-tags.hfst\"     \
+			.o. @\"filters/make-optional-error-tags.hfst\"        \
 			.o. @\"filters/remove-derivation-position-tags.hfst\" \
 			.o. @\"filters/remove-dialect-tags.hfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
@@ -273,6 +275,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/make-optional-homonymy-tags.xfst     \
 					filters/make-optional-variant-tags.xfst      \
 					filters/make-optional-semantic-tags.xfst     \
+					filters/make-optional-error-tags.xfst        \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst             \
 					filters/remove-hyphenation-marks.xfst        \
@@ -290,6 +293,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
 			.o. @\"filters/make-optional-semantic-tags.xfst\"     \
+			.o. @\"filters/make-optional-error-tags.xfst\"        \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
@@ -308,7 +312,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 		 quit\n" | $(XFST) $(VERBOSITY)
 
 # This is the normative analyser:
-# Remove sub-standard forms to get a normative transducer
+# Remove sub-standard/error forms to get a normative transducer
 analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst            \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
@@ -316,8 +320,7 @@ analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst            \
 					filters/remove-norm-comp-tags.hfst           \
 					filters/remove-number-string-tags.hfst       \
 					filters/remove-usage-tags.hfst               \
-					filters/remove-sub-forms.hfst                \
-					filters/remove-lexsub-strings.hfst           \
+					filters/remove-error-strings.hfst            \
 					filters/remove-semantic-tags.hfst            \
 					filters/remove-hyphenation-marks.hfst        \
 					filters/remove-infl_deriv-borders.hfst       \
@@ -335,8 +338,7 @@ analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst            \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
 			.o. @\"filters/remove-number-string-tags.hfst\"       \
 			.o. @\"filters/remove-usage-tags.hfst\"               \
-			.o. @\"filters/remove-sub-forms.hfst\"                \
-			.o. @\"filters/remove-lexsub-strings.hfst\"           \
+			.o. @\"filters/remove-error-strings.hfst\"            \
 			.o. @\"filters/remove-semantic-tags.hfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
@@ -362,8 +364,7 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst             \
 					filters/remove-norm-comp-tags.xfst           \
 					filters/remove-number-string-tags.xfst       \
 					filters/remove-usage-tags.xfst               \
-					filters/remove-sub-forms.xfst                \
-					filters/remove-lexsub-strings.xfst           \
+					filters/remove-error-strings.xfst            \
 					filters/remove-semantic-tags.xfst            \
 					filters/remove-hyphenation-marks.xfst        \
 					filters/remove-infl_deriv-borders.xfst       \
@@ -381,8 +382,7 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst             \
 			.o. @\"filters/remove-number-string-tags.xfst\"       \
 			.o. @\"filters/remove-usage-tags.xfst\"               \
 			.o. @\"filters/remove-semantic-tags.xfst\"            \
-			.o. @\"filters/remove-sub-forms.xfst\"                \
-			.o. @\"filters/remove-lexsub-strings.xfst\"           \
+			.o. @\"filters/remove-error-strings.xfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
 			.o. @\"filters/remove-orthography-tags.xfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
@@ -417,8 +417,7 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/remove-orthography-tags.hfst         \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-orig_lang-tags.hfst           \
-					filters/remove-sub-forms.hfst                \
-					filters/remove-lexsub-strings.hfst           \
+					filters/remove-error-strings.hfst            \
 					orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
@@ -431,8 +430,7 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
 			.o. @\"filters/remove-number-string-tags.hfst\"       \
 			.o. @\"filters/remove-usage-tags.hfst\"               \
-			.o. @\"filters/remove-sub-forms.hfst\"                \
-			.o. @\"filters/remove-lexsub-strings.hfst\"           \
+			.o. @\"filters/remove-error-strings.hfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
 			.o. @\"filters/remove-orthography-tags.hfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
@@ -461,8 +459,7 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/remove-orthography-tags.xfst         \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-orig_lang-tags.xfst           \
-					filters/remove-sub-forms.xfst                \
-					filters/remove-lexsub-strings.xfst           \
+					filters/remove-error-strings.xfst            \
 					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
@@ -474,8 +471,7 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
 			.o. @\"filters/remove-number-string-tags.xfst\"       \
 			.o. @\"filters/remove-usage-tags.xfst\"               \
-			.o. @\"filters/remove-sub-forms.xfst\"                \
-			.o. @\"filters/remove-lexsub-strings.xfst\"           \
+			.o. @\"filters/remove-error-strings.xfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
 			.o. @\"filters/remove-orthography-tags.xfst\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \

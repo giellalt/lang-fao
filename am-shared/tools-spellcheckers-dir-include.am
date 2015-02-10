@@ -52,10 +52,9 @@ generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: \
 			$(top_builddir)/src/filters/remove-usage-tags.hfst         \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst       \
 			$(top_builddir)/src/filters/remove-CLB-strings.hfst        \
-			$(top_builddir)/src/filters/remove-lexsub-strings.hfst     \
+			$(top_builddir)/src/filters/remove-error-strings.hfst      \
 			$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst \
 			$(top_builddir)/src/filters/remove-PUNCT-strings.hfst      \
-			$(top_builddir)/src/filters/remove-sub-forms.hfst          \
 			$(top_builddir)/src/filters/remove-use_marg-strings.hfst   \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
@@ -66,10 +65,9 @@ generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: \
 		.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"         \
 		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"       \
 		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.hfst\"        \
-		.o. @\"$(top_builddir)/src/filters/remove-lexsub-strings.hfst\"     \
+		.o. @\"$(top_builddir)/src/filters/remove-error-strings.hfst\"      \
 		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst\" \
 		.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.hfst\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-sub-forms.hfst\"          \
 		.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.hfst\"   \
 		.o. @\"$<\" \
 		.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
@@ -85,10 +83,9 @@ analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: \
 			$(top_builddir)/src/filters/remove-usage-tags.xfst         \
 			$(top_builddir)/src/filters/remove-variant-tags.xfst       \
 			$(top_builddir)/src/filters/remove-CLB-strings.xfst        \
-			$(top_builddir)/src/filters/remove-lexsub-strings.xfst     \
+			$(top_builddir)/src/filters/remove-error-strings.xfst      \
 			$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst \
 			$(top_builddir)/src/filters/remove-PUNCT-strings.xfst      \
-			$(top_builddir)/src/filters/remove-sub-forms.xfst          \
 			$(top_builddir)/src/filters/remove-use_marg-strings.xfst   \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
@@ -98,10 +95,9 @@ analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: \
 		.o. @\"$(top_builddir)/src/filters/remove-usage-tags.xfst\"         \
 		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.xfst\"       \
 		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.xfst\"        \
-		.o. @\"$(top_builddir)/src/filters/remove-lexsub-strings.xfst\"     \
+		.o. @\"$(top_builddir)/src/filters/remove-error-strings.xfst\"      \
 		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst\" \
 		.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.xfst\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-sub-forms.xfst\"          \
 		.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.xfst\"   \
 		.o. @\"$<\" \
 		.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.xfst\" \

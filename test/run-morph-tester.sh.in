@@ -138,6 +138,7 @@ for f in $fsttype; do
 		suffix="xfst"
 	elif test $f == "hfst"; then
 		lookuptool="@HFST_LOOKUP@"
+		fastlookup="@HFST_OPTIMIZED_LOOKUP@"
 		section="hfst"
 		suffix="hfstol hfst"
 	else
@@ -152,6 +153,9 @@ for f in $fsttype; do
 			if test -f "$analyserfile.$suff"; then
 				analyser=$analyserfile.$suff
 				let "transducer_found += 1"
+				if test "$suff" == "hfstol" ; then
+					lookuptool=$fastlookup
+				fi
 			fi
 		done
 		printf "$leadtext $(basename $analyser) + $testfileshort - "
@@ -168,6 +172,9 @@ for f in $fsttype; do
 			elif test -f "$bare_fst_file.lookup.$suff"; then
 				generator=$bare_fst_file.lookup.$suff
 				let "transducer_found += 1"
+				if test "$suff" == "hfstol" ; then
+					lookuptool=$fastlookup
+				fi
 			fi
 		done
 		printf "$leadtext $(basename $generator) + $testfileshort - "
@@ -181,6 +188,9 @@ for f in $fsttype; do
 				analyser=$analyserfile.$suff
 				generator=$generatorfile.$suff
 				let "transducer_found += 1"
+				if test "$suff" == "hfstol" ; then
+					lookuptool=$fastlookup
+				fi
 			fi
 		done
 		printf "$leadtext $(basename $analyser) + $testfileshort - "

@@ -156,6 +156,7 @@ generator-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst     \
 					filters/make-optional-variant-tags.hfst      \
 					filters/make-optional-semantic-tags.hfst     \
 					filters/make-optional-NGminip-tags.hfst      \
+					filters/make-optional-adv_comp-tags.hfst     \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
 					filters/remove-hyphenation-marks.hfst        \
@@ -175,6 +176,7 @@ generator-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst     \
 			.o. @\"filters/make-optional-variant-tags.hfst\"      \
 			.o. @\"filters/make-optional-semantic-tags.hfst\"     \
 			.o. @\"filters/make-optional-NGminip-tags.hfst\"      \
+			.o. @\"filters/make-optional-adv_comp-tags.hfst\"     \
 			.o. @\"filters/remove-derivation-position-tags.hfst\" \
 			.o. @\"filters/remove-dialect-tags.hfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
@@ -198,6 +200,7 @@ generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
 					filters/make-optional-variant-tags.xfst      \
 					filters/make-optional-semantic-tags.xfst     \
 					filters/make-optional-NGminip-tags.xfst      \
+					filters/make-optional-adv_comp-tags.xfst     \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst             \
 					filters/remove-hyphenation-marks.xfst        \
@@ -216,6 +219,7 @@ generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
 			.o. @\"filters/make-optional-semantic-tags.xfst\"     \
 			.o. @\"filters/make-optional-NGminip-tags.xfst\"      \
+			.o. @\"filters/make-optional-adv_comp-tags.xfst\"     \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
@@ -237,11 +241,12 @@ generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
 
 # Build the dialect-targeted normative Oahpa generator -
 # the dialects are defined in configure.ac:
-generator-oahpa-gt-norm-dial_%.tmp.hfst: generator-raw-gt-desc.hfst    \
+generator-oahpa-gt-norm-dial_%.tmp.hfst: generator-raw-gt-desc.hfst\
 					filters/remove-all_dialects_but_%-strings.hfst \
 					filters/make-optional-transitivity-tags.hfst   \
 					filters/make-optional-variant-tags.hfst        \
 					filters/make-optional-semantic-tags.hfst       \
+					filters/make-optional-adv_comp-tags.hfst       \
 					filters/remove-derivation-position-tags.hfst   \
 					filters/remove-dialect-tags.hfst               \
 					filters/remove-hyphenation-marks.hfst          \
@@ -261,6 +266,7 @@ generator-oahpa-gt-norm-dial_%.tmp.hfst: generator-raw-gt-desc.hfst    \
 				@\"filters/make-optional-transitivity-tags.hfst\"    \
 			.o. @\"filters/make-optional-variant-tags.hfst\"         \
 			.o. @\"filters/make-optional-semantic-tags.hfst\"        \
+			.o. @\"filters/make-optional-adv_comp-tags.hfst\"        \
 			.o. @\"filters/remove-derivation-position-tags.hfst\"    \
 			.o. @\"filters/remove-dialect-tags.hfst\"                \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"              \
@@ -281,11 +287,12 @@ generator-oahpa-gt-norm-dial_%.tmp.hfst: generator-raw-gt-desc.hfst    \
 		save stack $@\n\
 		quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
-generator-oahpa-gt-norm-dial_%.tmp.xfst: analyser-raw-gt-desc.xfst     \
+generator-oahpa-gt-norm-dial_%.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-all_dialects_but_%-strings.xfst \
 					filters/make-optional-transitivity-tags.xfst   \
 					filters/make-optional-variant-tags.xfst        \
 					filters/make-optional-semantic-tags.xfst       \
+					filters/make-optional-adv_comp-tags.xfst       \
 					filters/remove-derivation-position-tags.xfst   \
 					filters/remove-dialect-tags.xfst               \
 					filters/remove-hyphenation-marks.xfst          \
@@ -304,6 +311,7 @@ generator-oahpa-gt-norm-dial_%.tmp.xfst: analyser-raw-gt-desc.xfst     \
 				@\"filters/make-optional-transitivity-tags.xfst\"    \
 			.o. @\"filters/make-optional-variant-tags.xfst\"         \
 			.o. @\"filters/make-optional-semantic-tags.xfst\"        \
+			.o. @\"filters/make-optional-adv_comp-tags.xfst\"        \
 			.o. @\"filters/remove-derivation-position-tags.xfst\"    \
 			.o. @\"filters/remove-dialect-tags.xfst\"                \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"              \

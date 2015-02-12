@@ -59,6 +59,7 @@ endif # WANT_DOWNCASEERROR
 
 # Build the normative Oahpa analyser as a complement to the generator:
 analyser-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst      \
+					filters/remove-adv_comp-tags.hfst            \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
 					filters/remove-norm-comp-tags.hfst           \
@@ -77,6 +78,7 @@ analyser-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst      \
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
 				@\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-adv_comp-tags.hfst\"            \
 			.o. @\"filters/remove-dialect-tags.hfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
@@ -101,6 +103,7 @@ analyser-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst      \
 		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 analyser-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst       \
+					filters/remove-adv_comp-tags.xfst            \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst             \
 					filters/remove-norm-comp-tags.xfst           \
@@ -118,6 +121,7 @@ analyser-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst       \
 					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-adv_comp-tags.xfst\"            \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
@@ -396,6 +400,7 @@ analyser-raw-gt-error.tmp.xfst: analyser-raw-gt-L2.tmp1.xfst  \
 
 # Build the descriptive Oahpa analyser with extra error tags:
 analyser-oahpa-gt-error.tmp.hfst: generator-raw-gt-error.hfst    \
+					filters/remove-adv_comp-tags.hfst            \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
 					filters/remove-norm-comp-tags.hfst           \
@@ -413,6 +418,7 @@ analyser-oahpa-gt-error.tmp.hfst: generator-raw-gt-error.hfst    \
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON\n\
 			read regex \
 				@\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-adv_comp-tags.hfst\"            \
 			.o. @\"filters/remove-dialect-tags.hfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
@@ -436,6 +442,7 @@ analyser-oahpa-gt-error.tmp.hfst: generator-raw-gt-error.hfst    \
 		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 analyser-oahpa-gt-error.tmp.xfst: analyser-raw-gt-error.xfst     \
+					filters/remove-adv_comp-tags.xfst            \
 					filters/remove-derivation-position-tags.xfst \
 					filters/remove-dialect-tags.xfst             \
 					filters/remove-norm-comp-tags.xfst           \
@@ -452,6 +459,7 @@ analyser-oahpa-gt-error.tmp.xfst: analyser-raw-gt-error.xfst     \
 					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-adv_comp-tags.xfst\"            \
 			.o. @\"filters/remove-dialect-tags.xfst\"             \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"           \

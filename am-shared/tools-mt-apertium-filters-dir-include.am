@@ -32,10 +32,6 @@ if WANT_APERTIUM
 if CAN_HFST
 GT_FILTER_TARGETS+=$(patsubst %.regex,%.hfst,$(MT_FILTER_ALL_SRCS))
 endif # CAN_HFST
-
-if CAN_XFST
-GT_FILTER_TARGETS+=$(patsubst %.regex,%.xfst,$(MT_FILTER_ALL_SRCS))
-endif # CAN_XFST
 endif # WANT_APERTIUM
 
 ##########################################

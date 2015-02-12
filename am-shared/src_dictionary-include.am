@@ -140,6 +140,7 @@ analyser-dict-gt-desc-mobile.tmp.xfst: analyser-dict-gt-desc.tmp.xfst \
 #   - variant tags
 #   - Use/NGminip ??? - check with Lene!
 generator-dict-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst       \
+					filters/make-optional-hyph-tags.hfst          \
 					filters/make-optional-transitivity-tags.hfst  \
 					filters/make-optional-semantic-tags.hfst      \
 					filters/make-optional-v1-tags.hfst            \
@@ -159,6 +160,7 @@ generator-dict-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst       \
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
 				@\"filters/make-optional-transitivity-tags.hfst\"  \
+			.o. @\"filters/make-optional-hyph-tags.hfst\"          \
 			.o. @\"filters/make-optional-semantic-tags.hfst\"      \
 			.o. @\"filters/make-optional-v1-tags.hfst\"            \
 			.o. @\"filters/make-optional-adv_comp-tags.hfst\"      \
@@ -180,6 +182,7 @@ generator-dict-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst       \
 		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst        \
+					filters/make-optional-hyph-tags.xfst          \
 					filters/make-optional-transitivity-tags.xfst  \
 					filters/make-optional-semantic-tags.xfst      \
 					filters/make-optional-v1-tags.xfst            \
@@ -198,6 +201,7 @@ generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst        \
 					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF)                             "read regex  \
 				@\"filters/make-optional-transitivity-tags.xfst\"  \
+			.o. @\"filters/make-optional-hyph-tags.xfst\"          \
 			.o. @\"filters/make-optional-semantic-tags.xfst\"      \
 			.o. @\"filters/make-optional-v1-tags.xfst\"            \
 			.o. @\"filters/make-optional-adv_comp-tags.xfst\"      \

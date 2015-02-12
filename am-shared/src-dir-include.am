@@ -235,6 +235,7 @@ analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
 generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/make-optional-transitivity-tags.hfst \
 					filters/make-optional-homonymy-tags.hfst     \
+					filters/make-optional-hyph-tags.hfst         \
 					filters/make-optional-variant-tags.hfst      \
 					filters/make-optional-semantic-tags.hfst     \
 					filters/make-optional-error-tags.hfst        \
@@ -255,6 +256,7 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 			read regex \
 				@\"filters/make-optional-transitivity-tags.hfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
+			.o. @\"filters/make-optional-hyph-tags.hfst\"         \
 			.o. @\"filters/make-optional-variant-tags.hfst\"      \
 			.o. @\"filters/make-optional-semantic-tags.hfst\"     \
 			.o. @\"filters/make-optional-error-tags.hfst\"        \
@@ -279,6 +281,7 @@ generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
 generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/make-optional-homonymy-tags.xfst     \
+					filters/make-optional-hyph-tags.xfst         \
 					filters/make-optional-variant-tags.xfst      \
 					filters/make-optional-semantic-tags.xfst     \
 					filters/make-optional-error-tags.xfst        \
@@ -298,6 +301,7 @@ generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
+			.o. @\"filters/make-optional-hyph-tags.xfst\"         \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
 			.o. @\"filters/make-optional-semantic-tags.xfst\"     \
 			.o. @\"filters/make-optional-error-tags.xfst\"        \
@@ -416,6 +420,7 @@ analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst             \
 generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 					filters/make-optional-transitivity-tags.hfst \
 					filters/make-optional-homonymy-tags.hfst     \
+					filters/make-optional-hyph-tags.hfst         \
 					filters/make-optional-variant-tags.hfst      \
 					filters/make-optional-semantic-tags.hfst     \
 					filters/make-optional-adv_comp-tags.hfst     \
@@ -436,6 +441,7 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 			read regex \
 				@\"filters/make-optional-transitivity-tags.hfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
+			.o. @\"filters/make-optional-hyph-tags.hfst\"         \
 			.o. @\"filters/make-optional-variant-tags.hfst\"      \
 			.o. @\"filters/make-optional-semantic-tags.hfst\"     \
 			.o. @\"filters/make-optional-adv_comp-tags.hfst\"     \
@@ -460,6 +466,7 @@ generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
 generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/make-optional-homonymy-tags.xfst     \
+					filters/make-optional-hyph-tags.xfst         \
 					filters/make-optional-variant-tags.xfst      \
 					filters/make-optional-semantic-tags.xfst     \
 					filters/make-optional-adv_comp-tags.xfst     \
@@ -479,6 +486,7 @@ generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
 			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
+			.o. @\"filters/make-optional-hyph-tags.xfst\"         \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
 			.o. @\"filters/make-optional-semantic-tags.xfst\"     \
 			.o. @\"filters/make-optional-adv_comp-tags.xfst\"     \

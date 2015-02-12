@@ -156,6 +156,7 @@ analyser-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst       \
 
 # Build the general normative Oahpa generator:
 generator-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst     \
+					filters/make-optional-hyph-tags.hfst         \
 					filters/make-optional-transitivity-tags.hfst \
 					filters/make-optional-variant-tags.hfst      \
 					filters/make-optional-semantic-tags.hfst     \
@@ -177,6 +178,7 @@ generator-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst     \
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON\n\
 			read regex \
 				@\"filters/make-optional-transitivity-tags.hfst\" \
+			.o. @\"filters/make-optional-hyph-tags.hfst\"         \
 			.o. @\"filters/make-optional-variant-tags.hfst\"      \
 			.o. @\"filters/make-optional-semantic-tags.hfst\"     \
 			.o. @\"filters/make-optional-NGminip-tags.hfst\"      \
@@ -200,6 +202,7 @@ generator-oahpa-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst     \
 		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
+					filters/make-optional-hyph-tags.xfst         \
 					filters/make-optional-transitivity-tags.xfst \
 					filters/make-optional-variant-tags.xfst      \
 					filters/make-optional-semantic-tags.xfst     \
@@ -220,6 +223,7 @@ generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
 					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF)                             "read regex \
 				@\"filters/make-optional-transitivity-tags.xfst\" \
+			.o. @\"filters/make-optional-hyph-tags.xfst\"         \
 			.o. @\"filters/make-optional-variant-tags.xfst\"      \
 			.o. @\"filters/make-optional-semantic-tags.xfst\"     \
 			.o. @\"filters/make-optional-NGminip-tags.xfst\"      \
@@ -247,6 +251,7 @@ generator-oahpa-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst      \
 # the dialects are defined in configure.ac:
 generator-oahpa-gt-norm-dial_%.tmp.hfst: generator-raw-gt-desc.hfst\
 					filters/remove-all_dialects_but_%-strings.hfst \
+					filters/make-optional-hyph-tags.hfst           \
 					filters/make-optional-transitivity-tags.hfst   \
 					filters/make-optional-variant-tags.hfst        \
 					filters/make-optional-semantic-tags.hfst       \
@@ -268,6 +273,7 @@ generator-oahpa-gt-norm-dial_%.tmp.hfst: generator-raw-gt-desc.hfst\
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON\n\
 			read regex \
 				@\"filters/make-optional-transitivity-tags.hfst\"    \
+			.o. @\"filters/make-optional-hyph-tags.hfst\"            \
 			.o. @\"filters/make-optional-variant-tags.hfst\"         \
 			.o. @\"filters/make-optional-semantic-tags.hfst\"        \
 			.o. @\"filters/make-optional-adv_comp-tags.hfst\"        \
@@ -293,6 +299,7 @@ generator-oahpa-gt-norm-dial_%.tmp.hfst: generator-raw-gt-desc.hfst\
 
 generator-oahpa-gt-norm-dial_%.tmp.xfst: analyser-raw-gt-desc.xfst \
 					filters/remove-all_dialects_but_%-strings.xfst \
+					filters/make-optional-hyph-tags.xfst           \
 					filters/make-optional-transitivity-tags.xfst   \
 					filters/make-optional-variant-tags.xfst        \
 					filters/make-optional-semantic-tags.xfst       \
@@ -313,6 +320,7 @@ generator-oahpa-gt-norm-dial_%.tmp.xfst: analyser-raw-gt-desc.xfst \
 					orthography/downcase-derived_proper-strings.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.xfst\"    \
+			.o. @\"filters/make-optional-hyph-tags.xfst\"            \
 			.o. @\"filters/make-optional-variant-tags.xfst\"         \
 			.o. @\"filters/make-optional-semantic-tags.xfst\"        \
 			.o. @\"filters/make-optional-adv_comp-tags.xfst\"        \

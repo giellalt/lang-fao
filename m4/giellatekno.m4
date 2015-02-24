@@ -71,15 +71,17 @@ EOT
 # This is the error message:
 gtd_core_too_old_message="
 
-The gtd-core is too old, we require at least $_gtd_core_min_version. Please do:
+The gtd-core is too old, we require at least $_gtd_core_min_version.
+
+*** ==> PLEASE ENTER THE FOLLOWING COMMANDS: <== ***
 
 cd $GTCORE
 svn up
 ./autogen.sh # required only the first time
 ./configure  # required only the first time
 make
-sudo make install # optional, not needed if not installed
-                  # earlier, or not on a server.
+sudo make install # optional, only needed if installed
+                  # earlier or installed on a server.
 "
 
 # Identify the version of gtd-core:

@@ -53,12 +53,30 @@ _gtd_core_min_version=0.2.25
 ### Required version of the Hfst tools:
 _required_hfst_version=3.8.2
 
-### Earliest LibreOffice version that supports the language in question.
-### Used for building the LO-voikko oxt package for the language.
-AC_SUBST([LO_min_version], [3.6])
+# Alternate writing system(s) should be listed here using the ISO 15924 code.
+# Multiple alternate WS's should be space separated. For a list of such codes
+# see http://en.wikipedia.org/wiki/ISO_15924 and
+# http://www.unicode.org/iso15924/codelists.html
+# It is assumed that conversion from the default WS to the alternate WS(s)
+# can be done programmatically with a regex or xfscript. If not, resources
+# for multiple WS's must be developed and maintained as separate languages.
+AC_SUBST([DEFAULT_WS], [Latn])
+AC_SUBST([ALT_WSS], [""])
+AM_CONDITIONAL([HAVE_ALT_WSS], [test "x$ALT_WSS" != "x"])
+
+# Names for default and alternate orthographies. The names are free form, but
+# should be kept short. If only one orthography is used, leave the variables
+# empty. If there are alternate orthographies, also the default must have a name.
+# It is assumed that conversion from the default orthography to the alternate
+# orthographies can be done programmatically with a regex or xfscript.
+AC_SUBST([DEFAULT_ORTH], [])
+AC_SUBST([ALT_ORTHS], [""])
+AM_CONDITIONAL([HAVE_ALT_ORTHS], [test "x$ALT_ORTHS" != "x"] -a "x$DEFAULT_ORTH" != "x"])
 
 # Specify the tags for all dialects in this variable, leave it empty if you do
-# support dialectal variant fst's. Use upper case, separate with space.
+# NOT support dialectal variant fst's. Use upper case, separate with space.
+# Dialects are presently only used in Oahpa fst's, and only support dialectal
+# variation within the -norm- fst's.
 AC_SUBST([DIALECTS], [""])
 AM_CONDITIONAL([HAVE_DIALECTS], [test "x$DIALECTS" != "x"])
 

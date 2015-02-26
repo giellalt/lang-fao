@@ -64,7 +64,7 @@ endif # HAVE_ALT_WSS
 
 ####### Build rules for the default set of fst's for ########
 ####### alternate writing systems:                   ########
-analyser-gt-desc.%.tmp.hfst: analyser-raw-gt-desc.hfst           \
+analyser-gt-desc.%.tmp.hfst: generator-raw-gt-desc.hfst          \
 					filters/remove-adv_comp-tags.hfst            \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
@@ -99,7 +99,7 @@ analyser-gt-desc.%.tmp.hfst: analyser-raw-gt-desc.hfst           \
 			.o. @\"orthography/spellrelax.$*.compose.hfst\"       \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 analyser-gt-desc.%.tmp.xfst: analyser-raw-gt-desc.xfst           \
 					filters/remove-adv_comp-tags.xfst            \
@@ -138,7 +138,7 @@ analyser-gt-desc.%.tmp.xfst: analyser-raw-gt-desc.xfst           \
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
 
-analyser-gt-norm.%.tmp.hfst: analyser-raw-gt-desc.hfst           \
+analyser-gt-norm.%.tmp.hfst: generator-raw-gt-desc.hfst          \
 					filters/remove-adv_comp-tags.hfst            \
 					filters/remove-derivation-position-tags.hfst \
 					filters/remove-dialect-tags.hfst             \
@@ -175,7 +175,7 @@ analyser-gt-norm.%.tmp.hfst: analyser-raw-gt-desc.hfst           \
 			.o. @\"orthography/$(DEFAULT_WS)-to-$*.compose.hfst\" \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 analyser-gt-norm.%.tmp.xfst: analyser-raw-gt-desc.xfst           \
 					filters/remove-adv_comp-tags.xfst            \
@@ -216,7 +216,7 @@ analyser-gt-norm.%.tmp.xfst: analyser-raw-gt-desc.xfst           \
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
 
-generator-gt-desc.%.tmp.hfst: analyser-raw-gt-desc.hfst          \
+generator-gt-desc.%.tmp.hfst: generator-raw-gt-desc.hfst         \
 					filters/make-optional-transitivity-tags.hfst \
 					filters/make-optional-homonymy-tags.hfst     \
 					filters/make-optional-hyph-tags.hfst         \
@@ -259,7 +259,7 @@ generator-gt-desc.%.tmp.hfst: analyser-raw-gt-desc.hfst          \
 			.o. @\"orthography/$(DEFAULT_WS)-to-$*.compose.hfst\" \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 generator-gt-desc.%.tmp.xfst: analyser-raw-gt-desc.xfst          \
 					filters/make-optional-transitivity-tags.xfst \
@@ -306,7 +306,7 @@ generator-gt-desc.%.tmp.xfst: analyser-raw-gt-desc.xfst          \
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
 
-generator-gt-norm.%.tmp.hfst: analyser-raw-gt-desc.hfst          \
+generator-gt-norm.%.tmp.hfst: generator-raw-gt-desc.hfst         \
 					filters/make-optional-transitivity-tags.hfst \
 					filters/make-optional-homonymy-tags.hfst     \
 					filters/make-optional-hyph-tags.hfst         \
@@ -349,7 +349,7 @@ generator-gt-norm.%.tmp.hfst: analyser-raw-gt-desc.hfst          \
 			.o. @\"orthography/$(DEFAULT_WS)-to-$*.compose.hfst\" \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 generator-gt-norm.%.tmp.xfst: analyser-raw-gt-desc.xfst          \
 					filters/make-optional-transitivity-tags.xfst \

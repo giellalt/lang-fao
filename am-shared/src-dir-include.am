@@ -28,7 +28,7 @@
 if CAN_HFST
 
 # Always build the raw generator if hfst is enabled:
-GT_GENERATORS_HFST+=generator-raw-gt-desc.hfst
+GT_RAW_HFST=generator-raw-gt-desc.hfst
 
 if WANT_MORPHOLOGY
 GT_ANALYSERS_HFST+=analyser-gt-desc.hfstol \
@@ -49,7 +49,7 @@ endif # CAN_HFST
 if CAN_XFST
 
 # Always build the raw analsyer if Xerox is enabled:
-GT_ANALYSERS_XFST+=analyser-raw-gt-desc.xfst
+GT_RAW_XFST=analyser-raw-gt-desc.xfst
 
 if WANT_MORPHOLOGY
 GT_ANALYSERS_XFST+=analyser-gt-desc.xfst \
@@ -65,14 +65,18 @@ endif # WANT_GENERATION
 endif # CAN_XFST
 ##### END Xerox target list #####
 
-if CAN_HFST
 hfstdatadir=$(datadir)/giella/$(GTLANG)
-hfstdata_DATA=$(GT_ANALYSERS_HFST) \
-			  $(GT_GENERATORS_HFST)
-endif
+hfstdata_DATA=$(GT_ANALYSERS_HFST)     \
+			  $(GT_GENERATORS_HFST)    \
+			  $(ALT_WS_ANALYSERS_HFST) \
+			  $(ALT_WS_GENERATORS_HFST)
 
-noinst_DATA=$(GT_ANALYSERS_XFST) \
-			$(GT_GENERATORS_XFST) \
+noinst_DATA=$(GT_ANALYSERS_XFST)      \
+			$(GT_GENERATORS_XFST)     \
+			$(ALT_WS_ANALYSERS_XFST)  \
+			$(ALT_WS_GENERATORS_XFST) \
+			$(GT_RAW_HFST)            \
+			$(GT_RAW_XFST)            \
 			$(GT_ANALYSERS_HFST_NO_INSTALL)
 
 ##################################################
@@ -654,6 +658,7 @@ clean-local:
 include $(top_srcdir)/am-shared/src_oahpa-include.am
 include $(top_srcdir)/am-shared/src_dictionary-include.am
 include $(top_srcdir)/am-shared/src_disamb-include.am
+include $(top_srcdir)/am-shared/src_alt_ws-include.am
 include $(top_srcdir)/am-shared/lookup-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 

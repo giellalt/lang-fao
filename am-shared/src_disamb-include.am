@@ -44,7 +44,7 @@ analyser-disamb-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst     \
 			.o. @\"orthography/spellrelax.compose.hfst\"          \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 analyser-disamb-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst      \
 					filters/remove-Orth_IPA-strings.xfst         \
@@ -86,7 +86,7 @@ analyser-disamb-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst      \
 		 quit\n" | $(XFST) $(VERBOSITY)
 
 # Additional targets to support languages with alternative writing systems:
-analyser-disamb-gt-desc.%.tmp.hfst: analyser-raw-gt-desc.hfst      \
+analyser-disamb-gt-desc.%.tmp.hfst: generator-raw-gt-desc.hfst   \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-hyphenation-marks.hfst        \
 					filters/remove-infl_deriv-borders.hfst       \
@@ -117,9 +117,9 @@ analyser-disamb-gt-desc.%.tmp.hfst: analyser-raw-gt-desc.hfst      \
 			.o. @\"orthography/spellrelax.$*.compose.hfst\"       \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
-analyser-disamb-gt-desc.%.tmp.xfst: analyser-raw-gt-desc.xfst      \
+analyser-disamb-gt-desc.%.tmp.xfst: analyser-raw-gt-desc.xfst    \
 					filters/remove-Orth_IPA-strings.xfst         \
 					filters/remove-hyphenation-marks.xfst        \
 					filters/remove-infl_deriv-borders.xfst       \

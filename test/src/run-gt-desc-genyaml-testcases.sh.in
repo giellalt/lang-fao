@@ -6,17 +6,17 @@
 
 ###### User variables - adjust as needed: #######
 # Specify the invariable part of the transducer name:
-transducer=speller-gt-norm
+transducer=gt-desc
 
 # Specify whether the test runner should test only generation, analysis or both:
 # gen = generation test
 # ana = analysis test
 # full / both / "" (ie nothing) = test both directions
-halftest=
+halftest=gen
 
 # Specify the name of the subdir where the yaml files are, use '.' if it is the
 # same dir as this script:
-yaml_file_subdir=speller-gt-norm-yamls
+yaml_file_subdir=gt-desc-yamls
 
 ####### Include helper script from GTCORE: ########
 gtcore=@GTCORE@

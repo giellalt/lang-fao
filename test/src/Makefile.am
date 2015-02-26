@@ -16,7 +16,8 @@ if CAN_YAML_TEST
 
 # This is for yaml tests requiring ONLY an analyser
 if WANT_MORPHOLOGY
-TESTS+=run-gt-norm-anayaml-testcases.sh
+TESTS+=run-gt-norm-anayaml-testcases.sh \
+       run-gt-desc-anayaml-testcases.sh
 
 # This is for yaml tests requiring BOTH an analyser AND a generator:
 if WANT_GENERATION
@@ -28,7 +29,8 @@ endif # WANT_MORPHOLOGY
 
 # This is for yaml tests requiring ONLY a generator
 if WANT_GENERATION
-TESTS+=run-gt-norm-genyaml-testcases.sh
+TESTS+=run-gt-norm-genyaml-testcases.sh \
+       run-gt-desc-genyaml-testcases.sh
 endif # WANT_GENERATION
 
 # This is for yaml tests to be run when building fst's tailored to the needs of

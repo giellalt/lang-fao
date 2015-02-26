@@ -174,6 +174,10 @@ AC_CONFIG_FILES([test/tools/spellcheckers/test-zhfst-file.sh], \
       [chmod a+x test/tools/spellcheckers/test-zhfst-file.sh])
 AC_CONFIG_FILES([test/tools/spellcheckers/run-spellers-gt-norm-yaml-testcases.sh], \
       [chmod a+x test/tools/spellcheckers/run-spellers-gt-norm-yaml-testcases.sh])
+AC_CONFIG_FILES([test/src/run-gt-desc-genyaml-testcases.sh], \
+      [chmod a+x test/src/run-gt-desc-genyaml-testcases.sh])
+AC_CONFIG_FILES([test/src/run-gt-desc-anayaml-testcases.sh], \
+      [chmod a+x test/src/run-gt-desc-anayaml-testcases.sh])
 AC_CONFIG_FILES([test/run-morph-tester.sh], \
       [chmod a+x test/run-morph-tester.sh])
 # Phonology tests, all languages:

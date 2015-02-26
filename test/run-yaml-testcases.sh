@@ -59,7 +59,9 @@ while test ! -x $relpath/$testrunner ; do
 done
 
 # Build filename suffix dependent on the content of $halftest
-if test "$halftest" == ""; then
+if test "$halftest" == "" \
+     -o "$halftest" == "full" \
+     -o "$halftest" == "both"; then
     suffix="yaml"
     halftest="full"
     summaryhalftext=""

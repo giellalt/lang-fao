@@ -273,6 +273,14 @@ AC_ARG_ENABLE([hyperminimisation],
               [enable_hyperminimisation=no])
 AM_CONDITIONAL([WANT_HYPERMINIMISATION], [test "x$enable_hyperminimisation" != xno])
 
+#enable_twostep_intersect
+AC_ARG_ENABLE([twostep-intersect],
+              [AS_HELP_STRING([--enable-twostep-intersect],
+                              [enable two-step compose-intersect (more correct in rare cases, might be slower) @<:@default=no@:>@])],
+              [enable_twostep_intersect=$enableval],
+              [enable_twostep_intersect=no])
+AM_CONDITIONAL([WANT_TWOSTEP_INTERSECT], [test "x$enable_twostep_intersect" != xno])
+
 # Enable morphological analysers - default is 'yes'
 AC_ARG_ENABLE([analysers],
               [AS_HELP_STRING([--enable-analysers],
@@ -461,6 +469,7 @@ cat<<EOF
   * build Xerox fst's: $gt_prog_xfst
   * build HFST fst's: $gt_prog_hfst
     * hyperminimisation of lexical fst: $enable_hyperminimisation
+    * slow but correct compose-intersect: $enable_twostep_intersect
   * analysers enabled: $enable_analysers
   * generators enabled: $enable_generators
   * transcriptors enabled: $enable_transcriptors

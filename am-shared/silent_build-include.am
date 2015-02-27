@@ -124,5 +124,8 @@ AM_V_FORREST   = $(AM_V_FORREST_@AM_V@)
 AM_V_FORREST_  = $(AM_V_FORREST_@AM_DEFAULT_V@)
 AM_V_FORREST_0 = @echo "  FORREST  $@";
 
-# Let the verbosity of some command line tools follow the automake verbosity:
+# Let the verbosity of some command line tools follow the automake verbosity.
+# VERBOSITY      = be quiet if V=0, unspecified otherwise
+# MORE_VERBOSITY = be quiet if V=0, be verbose otherwise
 VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
+MORE_VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))),-v,-q)

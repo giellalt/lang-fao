@@ -1,4 +1,8 @@
-$Rev: 108384 $
+$Rev: 108395 $
+Finalised the basic multiple writing system support, by adding support for Oahpa
+and dictionary fst's.
+
+r108384:
 Added a configuration flag to enable two-step compose-intersect. In most cases
 this will not make any difference, but for some languages it will correct a
 bug in compose-intersect that would otherwise create a bad fst, and for other

@@ -1,4 +1,13 @@
-$Rev: 108355 $
+$Rev: 108384 $
+Added a configuration flag to enable two-step compose-intersect. In most cases
+this will not make any difference, but for some languages it will correct a
+bug in compose-intersect that would otherwise create a bad fst, and for other
+languages it will make the operation much slower without changing the fst.
+Disabled by default, whether it is useful must be tested in each case /
+language. Also made the verbosity handling such that when verbosity is
+on (V=1), some tools are now more verbose, for better help when debugging.
+
+r108355:
 Corrected errors in hfst compilation of alternative writing system fst's.
 
 r108322:

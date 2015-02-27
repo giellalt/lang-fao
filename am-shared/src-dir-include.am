@@ -29,6 +29,9 @@ if CAN_HFST
 
 # Always build the raw generator if hfst is enabled:
 GT_RAW_HFST=generator-raw-gt-desc.hfst
+if WANT_TWOSTEP_INTERSECT
+COMPOSE_INTERSECT_FLAG=--fast
+endif # WANT_TWOSTEP_INTERSECT
 
 if WANT_MORPHOLOGY
 GT_ANALYSERS_HFST+=analyser-gt-desc.hfstol \
@@ -99,10 +102,12 @@ noinst_DATA=$(GT_ANALYSERS_XFST)      \
 # First build a tmp1 raw file as the intersection between lexicon and rules:
 generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.hfst \
 					 phonology/$(GTLANG)-phon.compose.hfst
-	$(AM_V_INTRSCT)$(HFST_COMPOSE_INTERSECT) $(VERBOSITY) $(HFST_FLAGS) \
-		-1 morphology/lexicon.hfst \
-		-2 phonology/$(GTLANG)-phon.compose.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
+	$(AM_V_INTRSCT)$(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
+			$(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-2 phonology/$(GTLANG)-phon.compose.hfst \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) -o $@
 
 analyser-raw-gt-desc.tmp1.xfst: morphology/lexicon.xfst \
 			 phonology/$(GTLANG)-phon.compose.xfst
@@ -121,7 +126,8 @@ generator-raw-gt-desc.tmp.hfst: generator-raw-gt-desc.tmp1.hfst \
 			.o. @\"filters/reorder-semantic-tags.hfst\" \
 			.o. @\"$<\" \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+		| $(HFST_REGEXP2FST) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-S --xerox-composition=ON \
 			-X flag-is-epsilon \
 		> $@
 

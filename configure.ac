@@ -60,16 +60,25 @@ _required_hfst_version=3.8.2
 # It is assumed that conversion from the default WS to the alternate WS(s)
 # can be done programmatically with a regex or xfscript. If not, resources
 # for multiple WS's must be developed and maintained as separate languages.
-AC_SUBST([DEFAULT_WS], [Latn])
+AC_SUBST([DEFAULT_WS], ["Latn"])
 AC_SUBST([ALT_WSS], [""])
 AM_CONDITIONAL([HAVE_ALT_WSS], [test "x$ALT_WSS" != "x"])
+
+# Specify the ISO 3166-1 alpha-2 codes for countries as pr BCP-47. A list of
+# codes can be found at http://en.wikipedia.org/wiki/ISO_3166-1.
+# Only specify country codes if there is a real difference between and real need
+# for country-specific normative tools. E.g. in SMJ, people write æ or ä
+# depending on whether they are in Norway or Sweden, and restricting a speller
+# to only the relevant variant will improve the overall quality of the speller.
+AC_SUBST([COUNTRIES], [""])
+AM_CONDITIONAL([HAVE_COUNTRIES], [test "x$COUNTRIES" != "x"])
 
 # Names for default and alternate orthographies. The names are free form, but
 # should be kept short. If only one orthography is used, leave the variables
 # empty. If there are alternate orthographies, also the default must have a name.
 # It is assumed that conversion from the default orthography to the alternate
 # orthographies can be done programmatically with a regex or xfscript.
-AC_SUBST([DEFAULT_ORTH], [])
+AC_SUBST([DEFAULT_ORTH], [""])
 AC_SUBST([ALT_ORTHS], [""])
 AM_CONDITIONAL([HAVE_ALT_ORTHS], [test "x$ALT_ORTHS" != "x"] -a "x$DEFAULT_ORTH" != "x"])
 

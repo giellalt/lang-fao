@@ -113,21 +113,21 @@ AC_ARG_ENABLE([yamltests],
               [enable_yamltests=check])
 
 AS_IF([test "x$enable_yamltests" = "xcheck"], 
-     [AM_PATH_PYTHON([3.1],, [:])
+     [AM_PATH_PYTHON([3.3],, [:])
      AX_PYTHON_MODULE(yaml)
      AC_MSG_CHECKING([whether to enable yaml-based test])
      AS_IF([test "$PYTHON" = ":"],
            [enable_yamltests=no
-            python_31_or_newer_available=no
+            new_enough_python_available=no
             AC_MSG_RESULT([no, python is missing or old])
             ],
            [AS_IF([test "x$HAVE_PYMOD_YAML" != "xyes"],
                   [enable_yamltests=no
-                   python_31_or_newer_available=yes
+                   new_enough_python_available=yes
                    AC_MSG_RESULT([no, yaml is missing])
                    ],
                   [enable_yamltests=yes
-                   python_31_or_newer_available=yes
+                   new_enough_python_available=yes
                    AC_MSG_RESULT([yes])])])])
 
 AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
@@ -448,9 +448,9 @@ AC_ARG_ENABLE([apertium],
                               [enable apertium transducers @<:@default=no@:>@])],
               [enable_apertium=$enableval],
               [enable_apertium=no])
-AS_IF([test "x$enable_apertium" = "xyes" -a "x$python_31_or_newer_available" = "xno"], 
+AS_IF([test "x$enable_apertium" = "xyes" -a "x$new_enough_python_available" = "xno"], 
       [enable_apertium=no
-       AC_MSG_ERROR([Python3 missing or too old, Python 3.1 or newer required])])
+       AC_MSG_ERROR([Python3 missing or too old, Python 3.3 or newer required])])
 AM_CONDITIONAL([WANT_APERTIUM], [test "x$enable_apertium" != xno])
 
 ]) # gt_ENABLE_TARGETS
@@ -518,10 +518,10 @@ dnl YAML test warning:
 AS_IF([test "x$enable_yamltests" == "xno"],
       [AC_MSG_WARN([YAML testing could not be automatically enabled. To enable it, on MacOSX please do:
 
-sudo port install python32
-sudo port install py-yaml subport=py32-yaml
+sudo port install python33
+sudo port install py-yaml subport=py33-yaml
 
-On other systems, install python 3.1+ and the corresponding py-yaml using suitable tools for those systems.])])
+On other systems, install python 3.3+ and the corresponding py-yaml using suitable tools for those systems.])])
 
 ]) # gt_PRINT_FOOTER
 # vim: set ft=config: 

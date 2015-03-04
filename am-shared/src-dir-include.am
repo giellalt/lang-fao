@@ -69,17 +69,21 @@ endif # CAN_XFST
 ##### END Xerox target list #####
 
 hfstdatadir=$(datadir)/giella/$(GTLANG)
-hfstdata_DATA=$(GT_ANALYSERS_HFST)     \
-			  $(GT_GENERATORS_HFST)    \
-			  $(ALT_WS_ANALYSERS_HFST) \
-			  $(ALT_WS_GENERATORS_HFST)
+hfstdata_DATA=$(GT_ANALYSERS_HFST)       \
+			  $(GT_GENERATORS_HFST)      \
+			  $(ALT_WS_ANALYSERS_HFST)   \
+			  $(ALT_WS_GENERATORS_HFST)  \
+			  $(ALT_ORTH_ANALYSERS_HFST) \
+			  $(ALT_ORTH_GENERATORS_HFST)
 
-noinst_DATA=$(GT_ANALYSERS_XFST)      \
-			$(GT_GENERATORS_XFST)     \
-			$(ALT_WS_ANALYSERS_XFST)  \
-			$(ALT_WS_GENERATORS_XFST) \
-			$(GT_RAW_HFST)            \
-			$(GT_RAW_XFST)            \
+noinst_DATA=$(GT_ANALYSERS_XFST)        \
+			$(GT_GENERATORS_XFST)       \
+			$(ALT_WS_ANALYSERS_XFST)    \
+			$(ALT_WS_GENERATORS_XFST)   \
+			$(ALT_ORTH_ANALYSERS_XFST)  \
+			$(ALT_ORTH_GENERATORS_XFST) \
+			$(GT_RAW_HFST)              \
+			$(GT_RAW_XFST)              \
 			$(GT_ANALYSERS_HFST_NO_INSTALL)
 
 ##################################################
@@ -665,6 +669,7 @@ include $(top_srcdir)/am-shared/src_oahpa-include.am
 include $(top_srcdir)/am-shared/src_dictionary-include.am
 include $(top_srcdir)/am-shared/src_disamb-include.am
 include $(top_srcdir)/am-shared/src_alt_ws-include.am
+include $(top_srcdir)/am-shared/src_alt_orth-include.am
 include $(top_srcdir)/am-shared/lookup-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 

@@ -1,4 +1,8 @@
-$Rev: 108646 $
+$Rev: 108675 $
+Fixed a bug that caused the wrong fst to be picked in certain cases, which
+caused the test script to fail.
+
+r108646:
 A couple of changes related to testing:
 * require Python 3.3+
 * require new gtcore

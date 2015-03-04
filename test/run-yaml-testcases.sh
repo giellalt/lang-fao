@@ -77,7 +77,8 @@ fi
 testfiles=$(find $srcdir/$yaml_file_subdir -name "*_$transducer.$suffix")
 if test "$testfiles" == ""; then
     echo
-    echo "** No YAML files matching: $srcdir/$yaml_file_subdir/*_$transducer.$suffix"
+    echo \
+    "** No YAML files matching: $srcdir/$yaml_file_subdir/*_$transducer.$suffix"
     exit 77
 fi
 
@@ -86,7 +87,8 @@ i=0
 for file in ${srcdir}/$yaml_file_subdir/*_$transducer.$suffix; do
     (( i += 1 ))
     leadtext=$(echo "YAML test $i: ")
-	source ./$relpath/run-morph-tester.sh $transducer $file $relpath $halftest $leadtext
+    source ./$relpath/run-morph-tester.sh \
+        $transducer $file $relpath $halftest $leadtext
 done
 
 totalpasses=$(cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f1 | tr '\n' ' ' \

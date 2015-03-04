@@ -72,7 +72,7 @@ fsttype=
 @CAN_XFST_TRUE@fsttype="$fsttype xfst"
 
 # Exit if both hfst and xerox have been shut off:
-if [[ "$fsttype" == "" ]]; then
+if [[ "x$fsttype" == "x" ]]; then
     echo "All transducer types have been shut off at configure time."
     echo "Nothing to test. SKIPPED."
     exit 77
@@ -155,6 +155,7 @@ for f in $fsttype; do
 				let "transducer_found += 1"
 				if test "$suff" == "hfstol" ; then
 					lookuptool=$fastlookup
+					break
 				fi
 			fi
 		done
@@ -174,6 +175,7 @@ for f in $fsttype; do
 				let "transducer_found += 1"
 				if test "$suff" == "hfstol" ; then
 					lookuptool=$fastlookup
+					break
 				fi
 			fi
 		done
@@ -190,6 +192,7 @@ for f in $fsttype; do
 				let "transducer_found += 1"
 				if test "$suff" == "hfstol" ; then
 					lookuptool=$fastlookup
+					break
 				fi
 			fi
 		done

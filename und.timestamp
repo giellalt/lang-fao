@@ -1,4 +1,12 @@
-$Rev: 108749 $
+$Rev: 108755 $
+Several changes to properly support all position-based +CmpN/XX tags:
+* moved tag path splitting and tag-to-flag conversion into separate regex
+  files in the core.
+* added support for compiling and using the new regexes
+* added support for a new type +CmpN/Suff
+* added the required multichar symbols to the root.lexc files
+* increased required core version number
+
 Fixed a bug in the yaml test bench when both hfst and xfst was enabled, but
 where only one type is built, e.g. for Apertium.
 

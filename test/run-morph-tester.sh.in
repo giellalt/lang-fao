@@ -132,6 +132,9 @@ transducer_found=0
 
 # Loop over the transducer types first - we test both hfst and xfst if found:
 for f in $fsttype; do
+	# Remember to empty the variables between each for loop:
+	analyser=""
+	generator=""
 	if test $f == "xfst"; then
 		lookuptool="@LOOKUP@ -flags mbTT"
 		section="xerox"
@@ -155,13 +158,16 @@ for f in $fsttype; do
 				let "transducer_found += 1"
 				if test "$suff" == "hfstol" ; then
 					lookuptool=$fastlookup
-					break
 				fi
+				break
 			fi
 		done
-		printf "$leadtext $(basename $analyser) + $testfileshort - "
-		fstoptions="--morph $analyser"
-		run_tests
+		# Only start a test run if an analyser was found:
+		if test "x$analyser" != "x" ; then
+			printf "$leadtext $(basename $analyser) + $testfileshort - "
+			fstoptions="--morph $analyser"
+			run_tests
+		fi
 	# Then check for generation tests only:
 	elif test "$halftest" == "gen" ; then
 		for suff in $suffix; do
@@ -175,13 +181,16 @@ for f in $fsttype; do
 				let "transducer_found += 1"
 				if test "$suff" == "hfstol" ; then
 					lookuptool=$fastlookup
-					break
 				fi
+				break
 			fi
 		done
-		printf "$leadtext $(basename $generator) + $testfileshort - "
-		fstoptions="--gen $generator"
-		run_tests
+		# Only start a test run if a generator was found:
+		if test "x$generator" != "x" ; then
+			printf "$leadtext $(basename $generator) + $testfileshort - "
+			fstoptions="--gen $generator"
+			run_tests
+		fi
 	# Finally check the full analysis + generation tests:
 	elif test "$halftest" == "full" ; then
 		for suff in $suffix; do
@@ -192,13 +201,16 @@ for f in $fsttype; do
 				let "transducer_found += 1"
 				if test "$suff" == "hfstol" ; then
 					lookuptool=$fastlookup
-					break
 				fi
+				break
 			fi
 		done
-		printf "$leadtext $(basename $analyser) + $testfileshort - "
-		fstoptions="--morph $analyser --gen $generator"
-		run_tests
+		# Only start a test run if an analyser and a generator was found:
+		if test "x$analyser" != "x" -a "x$generator" != "x" ; then
+			printf "$leadtext $(basename $analyser) + $testfileshort - "
+			fstoptions="--morph $analyser --gen $generator"
+			run_tests
+		fi
 	# FAIL - no fst found:
 	else
 		let "Fail += 1"

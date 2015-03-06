@@ -1,4 +1,7 @@
-$Rev: 108818 $
+$Rev: 108840 $
+Moved MWE tag processing into the core - we want this for many languages.
+
+r108818:
 Added support for a new type of yaml tests: speller acceptance testing. The
 basic idea is to just give a list of words and word constructions (compounds,
 derivations, etc) the speller should accept or reject, and let the yaml test

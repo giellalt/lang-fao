@@ -124,10 +124,12 @@ analyser-raw-gt-desc.tmp1.xfst: morphology/lexicon.xfst \
 # get local processing to produce the final raw file:
 generator-raw-gt-desc.tmp.hfst: generator-raw-gt-desc.tmp1.hfst \
 					filters/reorder-semantic-tags.hfst          \
-					filters/reorder-subpos-tags.hfst
+					filters/reorder-subpos-tags.hfst            \
+					filters/remove-mwe-tags.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
 				@\"filters/reorder-subpos-tags.hfst\"   \
 			.o. @\"filters/reorder-semantic-tags.hfst\" \
+			.o. @\"filters/remove-mwe-tags.hfst\"       \
 			.o. @\"$<\" \
 			;" \
 		| $(HFST_REGEXP2FST) $(MORE_VERBOSITY) $(HFST_FLAGS) \
@@ -137,10 +139,12 @@ generator-raw-gt-desc.tmp.hfst: generator-raw-gt-desc.tmp1.hfst \
 
 analyser-raw-gt-desc.tmp.xfst: analyser-raw-gt-desc.tmp1.xfst \
 					filters/reorder-semantic-tags.xfst        \
-					filters/reorder-subpos-tags.xfst
+					filters/reorder-subpos-tags.xfst          \
+					filters/remove-mwe-tags.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/reorder-subpos-tags.xfst\"   \
 			.o. @\"filters/reorder-semantic-tags.xfst\" \
+			.o. @\"filters/remove-mwe-tags.xfst\"       \
 			.o. @\"$<\" \
 			;\n\
 		 save stack $@\n\

@@ -1,0 +1,7 @@
+Config:
+  hfst:
+    Morph: ../../../../tools/spellcheckers/fstbased/hfst/acceptor.default.hfst
+
+Tests:
+  testwords: # The following words should be accepted, unless prefixed with ~
+    UN-abc: UN-abc  # Acro + noun compound

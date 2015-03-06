@@ -80,7 +80,8 @@ fi
 
 # Construct the correct argument for running either analysis, generation or
 # both tests
-if test "$halftest" == "ana"; then
+if test "$halftest" == "ana" \
+     -o "$halftest" == "speller"; then
     halftestoption="--surface"
 elif test "$halftest" == "gen"; then
     halftestoption="--lexical"
@@ -135,6 +136,8 @@ for f in $fsttype; do
 	# Remember to empty the variables between each for loop:
 	analyser=""
 	generator=""
+	echo "1: $fsttype"
+	echo "2: $halftest"
 	if test $f == "xfst"; then
 		lookuptool="@LOOKUP@ -flags mbTT"
 		section="xerox"
@@ -189,6 +192,26 @@ for f in $fsttype; do
 		if test "x$generator" != "x" ; then
 			printf "$leadtext $(basename $generator) + $testfileshort - "
 			fstoptions="--gen $generator"
+			run_tests
+		fi
+	# Then check for speller acceptor tests:
+    elif test "$halftest" == "speller" ; then
+    	echo "4: $suffix"
+		for suff in $suffix; do
+        	echo "5: $suff"
+        	echo "6: $bare_fst_file.$suff"
+			if test -f "$bare_fst_file.$suff"; then
+				analyser=$bare_fst_file.$suff
+				let "transducer_found += 1"
+				lookuptool=$fastlookup
+				break
+			fi
+		done
+    	echo "3: $analyser"
+		# Only start a test run if an analyser was found:
+		if test "x$analyser" != "x" ; then
+			printf "$leadtext $(basename $analyser) + $testfileshort - "
+			fstoptions="--morph $analyser"
 			run_tests
 		fi
 	# Finally check the full analysis + generation tests:

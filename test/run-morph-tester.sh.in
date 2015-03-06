@@ -136,8 +136,6 @@ for f in $fsttype; do
 	# Remember to empty the variables between each for loop:
 	analyser=""
 	generator=""
-	echo "1: $fsttype"
-	echo "2: $halftest"
 	if test $f == "xfst"; then
 		lookuptool="@LOOKUP@ -flags mbTT"
 		section="xerox"
@@ -196,10 +194,7 @@ for f in $fsttype; do
 		fi
 	# Then check for speller acceptor tests:
     elif test "$halftest" == "speller" ; then
-    	echo "4: $suffix"
 		for suff in $suffix; do
-        	echo "5: $suff"
-        	echo "6: $bare_fst_file.$suff"
 			if test -f "$bare_fst_file.$suff"; then
 				analyser=$bare_fst_file.$suff
 				let "transducer_found += 1"
@@ -207,7 +202,6 @@ for f in $fsttype; do
 				break
 			fi
 		done
-    	echo "3: $analyser"
 		# Only start a test run if an analyser was found:
 		if test "x$analyser" != "x" ; then
 			printf "$leadtext $(basename $analyser) + $testfileshort - "

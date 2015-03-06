@@ -65,6 +65,9 @@ if test "$halftest" == "" \
     suffix="yaml"
     halftest="full"
     summaryhalftext=""
+elif test "$halftest" == "speller" ; then
+    suffix="$halftest.yaml"
+    summaryhalftext=""
 else
     suffix="$halftest.yaml"
     if test "$halftest" == "ana"; then

@@ -1,0 +1,94 @@
+## Process this file with automake to produce Makefile.in
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Commands needed to build:
+# For Xerox: abbr.txt to be used with preprocess
+# For Hfst:  a pmatch fst to do tokenisation+lookup in one go
+#
+# The two tool sets (preprocess + fst & pmatch fst) should ideally give the same
+# output. More importantly, when combined with either lookup2cg or cg-cont the
+# output should be the same.
+
+if CAN_XFST
+GENERATOR=generator-gt-desc.xfst
+else
+if CAN_HFST
+GENERATOR=generator-gt-desc.hfstol
+
+# Only build the pmatch/hfst-proc2 fst if analysers are enabled.
+if WANT_MORPHOLOGY
+ANALYSER=analyser-disamb-gt-desc.hfst
+PMHFST=tokeniser-disamb-gt-desc.pmhfst
+endif # WANT_MORPHOLOGY
+
+ABBR=abbr.txt
+
+hfstdatadir=$(datadir)/giella/$(GTLANG)
+hfstdata_DATA=$(PMHFST) $(ABBR)
+
+else
+GENERATOR=false
+endif # CAN_HFST
+endif # CAN_XFST
+
+###########################################################################
+### Build the abbr.txt file used with preprocess:
+# Source files for abbr extraction:
+STEMSRCS:=$(filter-out \
+    %propernouns.lexc,$(wildcard $(top_srcdir)/src/morphology/stems/*.lexc))
+OTHRSRCS:=$(filter-out \
+    %lexicon.lexc,$(wildcard $(top_srcdir)/src/morphology/*.lexc))
+
+# Convert source files to comma-separated list:
+empty:=
+comma:=,
+space:=$(empty) $(empty)
+ABBRSRCS:=$(subst \
+    $(space),$(comma),$(strip $(STEMSRCS) $(GENRSRCS) $(OTHRSRCS)))
+
+SCRIPTDIR=$(GTCORE)/scripts
+
+# Build the abbr.txt file:
+abbr: $(ABBR)
+$(ABBR): \
+		$(top_srcdir)/src/morphology/stems/abbreviations.lexc \
+		$(top_srcdir)/tools/data/paradigm.abbr.txt            \
+		$(top_srcdir)/tools/data/corpustags.txt               \
+		$(STEMSRCS) $(GENRSRCS) $(OTHRSRCS)                   \
+		../../src/$(GENERATOR)
+	$(AM_V_GEN)perl -I $(SCRIPTDIR) $(SCRIPTDIR)/extract-abbr.pl  \
+		--paradigm=$(top_srcdir)/tools/data/paradigm.abbr.txt \
+		--tags=$(top_srcdir)/tools/data/corpustags.txt   \
+		--fst=../../src/$(GENERATOR) \
+		--output=$@.tmp \
+		--abbr_lex=$< \
+		--lex=$(ABBRSRCS)
+	$(AM_V_at)sed -e 's/\+MWE//' < $@.tmp | uniq > $@
+	$(AM_V_at)rm -f $@.tmp
+
+###########################################################################
+### Build a tokenising analyser based on a pmatch script and the
+### regular disamb-analyser:
+
+$(ANALYSER): $(top_builddir)/src/$(ANALYSER)ol
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< > $@
+
+tokeniser-%.pmhfst: tokeniser-%.pmscript analyser-%.hfst
+	$(AM_V_GEN)hfst-pmatch2fst < $< > $@
+
+####### Includes: ###########
+include $(top_srcdir)/am-shared/silent_build-include.am

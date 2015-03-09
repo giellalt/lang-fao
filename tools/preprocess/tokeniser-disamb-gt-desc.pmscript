@@ -1,0 +1,27 @@
+
+! First go at fst-based preprocessor
+
+! original documentation
+! https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch
+! Define CapWord UppercaseAlpha Alpha* ;
+! Define StreetWordFr [{avenue} | {boulevard} | {rue}] ;
+! Define DeFr [ [{de} | {du} | {des} | {de la}] Whitespace ] | [{d'} | {l'}] ;
+! Define StreetFr StreetWordFr (Whitespace DeFr) CapWord+ ;
+! Define TOP StreetFr EndTag(FrenchStreetName) ;
+
+! First experimental code (note path to hfst file)
+! Define word @bin"analyser-gt-desc.hfst";
+! Define TOP Ins(word) EndTag(w) ;
+
+Define TOP @bin"analyser-disamb-gt-desc.hfst" EndTag(token);
+
+!Compile, usage:
+
+! Kitwiki example:
+! hfst-pmatch2fst < streets.txt > streets.hfst
+! echo "Je marche seul dans l'avenue des Ternes" | hfst-pmatch -v streets.hfst 
+! Je marche seul dans l'<FrenchStreetName>avenue des Ternes</FrenchStreetName>
+
+! The code above:
+! $ hfst-pmatch2fst < test.pregex > test.hfst
+! $ echo "Mun ja son." | hfst-pmatch test.hfst 

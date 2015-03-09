@@ -1,0 +1,536 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%                                                                              %
+%    List of morphological and syntactic tags used in the North Sámi corpus    %
+%                                                                              %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+%     Table of contents
+%  1. Structure of the different POS
+%  2. List of the tags, and their internal distribution
+
+% The Document has two parts. 
+% The first part outlines the internal structure of
+% the complex POS, these should be built as boxes or panes.
+% The last part is a list over the different morphosyntactic categories.
+
+% The tags are in complementary distribution within each tag column.
+
+% (incomplete) morphotactic survey
+% ROOT + DER + POS + SUBPOS + ATTR + GRADE + NUM + CASE + PX + CLT  % noun
+% ROOT + DER + POL + VN + MOOD + TNS + PN + CLT               % finite verb
+% ROOT + DER + POL + VN + CASE + PX + CLT                     % infinite verb
+
+% In case of homonymy, tags are unified. N=V means "can be N or V", and it
+% should be found both by N and V search. Thus, N=V should be a covert member
+% of a set N = {N, N=V, ...} and V = {V, N=V, ...}, respectively.
+
+% 1. Structure of the different POS
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Tag syntax for the larger POS
+% (this is an attempt at clarification, the list themselves come under 2.):
+% Not all combinations within each box are possibe.
+
+% "-" indicates optionality. It is perhaps not needed. "|" means "OR".
+% The Function: list is listed below, and not indicated here.
+
+% The name of these boxes are now legible, rather than the tags (tags in parentheses?)
+% Stemtype: -|G3
+% Noun: N
+% Subclass: -|Prop|Prop Attr|Actio|NomAg|ACR|ABBR
+% Derivation: -|Der/Dimin|Der/amoš|Der/eaddji|Der/eamoš|Der/eapmi|Der/easti|Der/muš|Der/n|Der/supmi|Der/upmi|Der/vuohta
+% Number: Sg|Pl
+% Case: Nom|Gen|Acc|Ill|Loc|Com|Ess
+% Possessive: -|PxSg1|PxSg2|PxSg3|PxDu1|PxDu2|PxDu3|PxPl1|PxPl2|PxPl3
+% Semantic: Ani|Fem|Mal|Obj|Org|Plc|Sur|Tit
+% Clitic: -|Qst|Foc/han|Foc/ge|Foc/gen|Foc/ges|Foc/gis|Foc/ba|Foc/hal|Foc/bat
+% Function:
+
+% Adjective: A
+% Subtype: -|Attr
+% Derivation: -|Der/geahtes|Der/gielat|Der/heapmi|Der/jagáš|Der/las|Der/laš|Der/lágan|Der/lágaš|Der/lágán|Der/lágáš|Der/meahttun|Der/veara|Der/viđi|Der/viđá
+% Number: Sg|Pl
+% Case: Nom|Gen|Acc|Ill|Loc|Com|Ess
+% Possessive: -|PxSg1|PxSg2|PxSg3|PxDu1|PxDu2|PxDu3|PxPl1|PxPl2|PxPl3
+% Clitic: -|Qst|Foc/han|Foc/ge|Foc/gen|Foc/ges|Foc/gis|Foc/ba|Foc/hal|Foc/bat
+% Function:
+
+% Verb: V
+% Transitivity: TV|IV
+% Type: -|ConNeg|Neg
+% Derivation: -|Actio|Der/Pass|Der/adda|Der/ahtti|Der/alla|Der/asti|Der/d|Der/goahti|Der/h|Der/halla|Der/huhtti|Der/huvva|Der/j|Der/l|Der/st|Der/stuvva
+% Case: -|Nom|Gen|Acc|Ill|Loc|Com|Ess
+% Infinite: Inf|PrfPrc|PrsPrc|Ger|Sup|VGen|VAbess|Actio
+% Finite mood: Ind|Pot|Cond|Imprt|ImprtII
+% PersonNumber: Sg1|Sg2|Sg3|Du1|Du2|Du3|Pl1|Pl2|Pl3
+% Clitic: -|Qst|Foc/han|Foc/ge|Foc/gen|Foc/ges|Foc/gis|Foc/ba|Foc/hal|Foc/bat
+% Function:
+
+% Adverb: Adv
+% Number: Sg|Pl
+% Case: Nom|Gen|Acc|Ill|Loc|Com|Ess
+% Clitic: -|Qst|Foc/han|Foc/ge|Foc/gen|Foc/ges|Foc/gis|Foc/ba|Foc/hal|Foc/bat
+% Function:
+
+% Pronoun: Pron
+% Subtype: Pers|Dem|Interr|Refl|Recipr|Rel|Indef
+% Subtype: -|Attr
+% Number: Sg|Du|Pl
+% PersonNumber: Sg1|Sg2|Sg3|Du1|Du2|Du3|Pl1|Pl2|Pl3
+% Case: Nom|Gen|Acc|Ill|Loc|Com|Ess
+% PX: -|PxSg1|PxSg2|PxSg3|PxDu1|PxDu2|PxDu3|PxPl1|PxPl2|PxPl3
+% Clitic: -|Qst|Foc/han|Foc/ge|Foc/gen|Foc/ges|Foc/gis|Foc/ba|Foc/hal|Foc/bat
+% Function:
+
+% Postposition: Po
+% Possessive: -|PxSg1|PxSg2|PxSg3|PxDu1|PxDu2|PxDu3|PxPl1|PxPl2|PxPl3
+% Clitic: -|Qst|Foc/han|Foc/ge|Foc/gen|Foc/ges|Foc/gis|Foc/ba|Foc/hal|Foc/bat
+% Function:
+
+% Preposition: Pr
+% Clitic: -|Qst|Foc/han|Foc/ge|Foc/gen|Foc/ges|Foc/gis|Foc/ba|Foc/hal|Foc/bat
+% Function:
+
+% Numeral: Num
+% Subtype: -|Attr|Cmpnd
+% Ordinality: -|Card|Ord
+% NUM: -|Sg|Pl
+% Case: -|Nom|Gen|Acc|Ill|Loc|Com|Ess
+% Clitic: -|Qst|Foc/han|Foc/ge|Foc/gen|Foc/ges|Foc/gis|Foc/ba|Foc/hal|Foc/bat
+% Semantic: -|Date
+% Semantic: -|Range
+% Function:
+
+% DerivedRoot
+% Comment: These are tags for what the words have been at an earlier stage
+% in the derivation. They are syntactically irrelevant.
+
+
+% 2.  List of the tags, and their internal distribution
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+G7	G7
+G3	G3
+#Stemtype
+
+A=CS
+A=N
+A=Num
+A=Adv
+A=Pron
+A=V
+ABBR=N
+Adv=CS
+Adv=Interj
+Adv=N
+Adv=Pr
+Adv=Pron
+Adv=V
+N=Num
+N=Pron
+N=V
+Pcle=Pron
+Pr=Po
+N	Noun
+A	Adjective
+V	Verb
+Adv	Adverb
+Pron	Pronoun
+CS	Subjunction
+CC	Conjunction
+Po	Postposition
+Pr	Preposition
+Interj	Interjection
+Pcle	Particle
+Num	Numeral
+#Wordclass
+
+Dem=Pers
+Prop	Propernoun
+Actio	Actio
+NomAg	NomAg
+Pers	Personal
+Dem	Demonstrative
+Interr	Interrogative
+Refl	Reflexive
+Recipr	Reciprocal
+Rel	Relative
+Indef	Indefinite
+Card	Cardinal
+Ord	Ordinal
+#Subclass
+
+Pl=Sg
+Sg	Singular
+Pl	Plural
+Du	Dual
+#Number
+
+Acc=Gen
+Acc=Nom
+Acc=Loc
+Acc=Ess
+Com=Loc
+Loc=Nom
+Ess=Gen
+Gen=Nom
+Gen=Loc
+Ill=Nom
+Nom	Nominative
+Gen	Genitive
+Acc	Accusative
+Ill	Illative
+Loc	Locative
+Com	Comitative
+Ess	Essive
+#Case
+
+Attr	Attribute
+#Attributive
+
+Comp	Comparative
+Superl	Superlative
+#Grade
+
+PxSg1	Possessive Singular 1st Person
+PxSg2	Possessive Singular 2nd Person
+PxSg3	Possessive Singular 3rd Person
+PxDu1	Possessive Dual 1st Person
+PxDu2	Possessive Dual 2nd Person
+PxDu3	Possessive Dual 3rd Person
+PxPl1	Possessive Plural 1st Person
+PxPl2	Possessive Plural 2nd Person
+PxPl3	Possessive Plural 3rd Person
+#Possessive
+
+SgCmp
+SgNomCmp
+SgGenCmp
+PlGenCmp
+#Compound
+
+Prs=Prt
+Prs	Present Tense
+Prt	Preterite Tense
+#Tense
+
+Ind	Indicative
+Cond	Conditional
+Imprt	Imperative
+ImprtII	Imperative II
+Pot	Potential
+#Mood
+
+Du1=Pl3
+Du3=Sg3
+Pl1=Sg2
+Pl2=Pl3
+Pl3=Sg2
+Sg2=Sg3
+Sg1	1. Person Singular
+Sg2	2. Person Singular
+Sg3	3. Person Singular
+Du1	1. Person Dual
+Du2	2. Person Dual
+Du3	3. Person Dual
+Pl1	1. Person Plural
+Pl2	2. Person Plural
+Pl3	3. Person Plural
+ConNeg	Negative form of the verb
+#Person-Number
+
+IV=TV
+TV	Transitive verb
+IV	Intransitive verb
+#Transitivity
+
+Neg	Negative verb
+#Polarity
+
+Inf	Infinitive
+PrfPrc	Perfect Participle
+PrsPrc	Present Participle
+Sup	Supine
+VGen	Verb Genitive
+VAbess	Verb Abessive
+Ger	Gerund
+#Infinite
+
+Qst	Question Particle
+Foc/han Focus/han Particle
+Foc/ge Focus/ge Particle
+Foc/gen Focus/gen Particle
+Foc/ges Focus/ges Particle
+Foc/gis Focus/gis Particle
+Foc/naj Focus/naj Particle
+Foc/ba Focus/ba Particle
+Foc/ban Focus/ban Particle
+Foc/be Focus/be Particle
+Foc/hal Focus/hal Particle
+Foc/han Focus/han Particle
+Foc/bat Focus/bat Particle
+Foc/son Focus/son Particle
+#Clitic
+
+ABBR	Abbreviation
+ACR	Acronym
+CLB	Clause boundary
+PUNCT	Punctuation mark
+LEFT	Left 
+RIGHT	Right
+#Punctuation
+
+Obj=Org
+Fem=Mal
+Fem=Sur
+Fem=Org
+Fem=Plc
+Mal=Obj
+Mal=Org
+Mal=Plc
+Mal=Sur
+Plc=Sur
+Ani	Animal
+Fem	Female
+Mal	Male
+Obj	Object
+Org	Organisation
+Plc	Place
+Sur	Surname
+Tit	Title
+#Nametype
+
+Date  Date
+Range Range
+#Numeraltype
+
+@+FMAINV=@-FAUXV
+@+FMAINV=@-FMAINV
+@+FMAINV=@-FSUBJ
+@+FMAINV=@ADVL
+@+FMAINV=@ActioN>
+@+FMAINV=@GN>
+@+FMAINV=@NQ<
+@+FMAINV=@OBJ
+@+FMAINV=@PrcN>
+@+FMAINV=@SUBJ
+@+FMAINV=@VOC
+@-FAUXV=@GN>
+@-FAUXV=@PrcN>
+@-FMAINV=@-FSUBJ
+@-FMAINV=@ADVL
+@-FMAINV=@AN>
+@-FMAINV=@ActioN>
+@-FMAINV=@GA>
+@-FMAINV=@GN>
+@-FMAINV=@GP>
+@-FMAINV=@NQ<
+@-FMAINV=@OBJ
+@-FMAINV=@SUBJ
+@-FSUBJ=@ADVL
+@-FSUBJ=@CMPND
+@-FSUBJ=@DN>
+@-FSUBJ=@NumN<
+@-FSUBJ=@OBJ
+@-FSUBJ=@SUBJ
+@ADV-A=@AN>
+@ADV-A=@OBJ
+@ADV-A=@PronN>
+@ADV-A=@SUBJ
+@ADVL=@AN>
+@ADVL=@CMPND
+@ADVL=@CS
+@ADVL=@DN>
+@ADVL=@GA>
+@ADVL=@GN>
+@ADVL=@GP>
+@ADVL=@HNOUN
+@ADVL=@INTERJ
+@ADVL=@NQ<
+@ADVL=@NumN<
+@ADVL=@OBJ
+@ADVL=@PCLE
+@ADVL=@CS-COMPL
+@ADVL=@PrcN>
+@ADVL=@PronN>
+@ADVL=@SUBJ
+@ADVL=@TITLE
+@ADVL=@VOC
+@AN>=@CMPND
+@AN>=@CS
+@AN>=@GN>
+@AN>=@GP>
+@AN>=@NumN<
+@AN>=@OBJ
+@AN>=@PronN>
+@AN>=@SUBJ
+@AN>=@SUBJ-QH
+@ActioN>=@GN>
+@ActioN>=@NQ<
+@ActioN>=@OBJ
+@ActioN>=@PrcN>
+@CMPND=@HNOUN
+@CMPND=@OBJ
+@CMPND=@SUBJ
+@CMPND=@SUBJ-QH
+@CS=@SUBJ
+@DN>=@GN>
+@DN>=@GP>
+@DN>=@NQ<
+@DN>=@OBJ
+@DN>=@PCLE
+@DN>=@PronN>
+@DN>=@PronN>@DN>@GN>
+@DN>=@SUBJ
+@GA>=@OBJ
+@GA>=@CS-COMPL
+@GA>=@SUBJ
+@GN>=@HNOUN
+@GN>=@NQ<
+@GN>=@NumN<
+@GN>=@OBJ
+@GN>=@CS-COMPL
+@GN>=@PROP>
+@GN>=@PrcN>
+@GN>=@PronN>
+@GN>=@QN>
+@GN>=@S
+@GN>=@SUBJ
+@GP<=@OBJ
+@GP<=@PronN>
+@GP<=@SUBJ
+@GP>=@OBJ
+@GP>=@PronN>
+@GP>=@SUBJ
+@Gen=@OBJ
+@Gen=@SUBJ
+@HNOUN=@NQ<
+@HNOUN=@OBJ
+@HNOUN=@SUBJ
+@NPron<=@OBJ
+@NQ<=@+FMAINV
+@NQ<=@OBJ
+@NQ<=@PrcN>
+@NQ<=@SUBJ
+@NQ<=@TITLE
+@NumN<=@OBJ
+@NumN<=@QN>
+@NumN<=@SUBJ
+@NumN<=@SUBJ-QH
+@OBJ=@CS-COMPL
+@OBJ=@PronN>
+@OBJ=@QN>
+@OBJ=@SUBJ
+@OBJ=@TITLE
+@OBJ=@VOC
+@CS-COMPL=@SUBJ
+@PCLE=@SUBJ
+@PROP>=@SUBJ
+@PrcN>=@SUBJ
+@PronN<=@SUBJ
+@PronN>=@PronN>
+@PronN>=@SUBJ
+@QN>=@SUBJ-QH
+@SUBJ=@PrcN>
+@SUBJ=@SUBJ-QH
+@SUBJ=@TITLE
+@+FAUXV	Finite auxiliary verb
+@+FMAINV	Finite main verb
+@-FAUXV	Infinite auxiliary verb
+@-FMAINV	Infinite main verb
+@-FSUBJ	Subject of finite verb
+@ADV-A	Adverb modifying an adjective
+@ADV-ADV	Adverb modifying an adverb
+@ADVL	Adverbial
+@AN>	Prenominal adjective modifier
+@APP	Postnominal apposition
+@ActioN>	Actio Nominative
+@CC-NP	Phrase conjuction
+@CC-VP	Sentential conjuction
+@CMPND	Syntactic parallel of morfoloCompound
+@CS-COMPL	Complement of subjunction
+@CS-NP	Phrase subjuction
+@CS-VP	Sentential subjunction
+@DN>	Prenominal determiner
+@GA>	Preadijectival genitive modifier
+@GN>	Prenominal genitive modifier
+@GP<	Genitive complement of postposition
+@GP>	Genitive complement of preposition
+@HNOUN	Stray noun in sentence fragments
+@INTERJ	Interjection
+@MEASURE	Measure Phrase
+@NNum>	Nominal attributes of numerals
+@NPron<	Noun modifying pronouns to the left
+@NQ<	Noun modifying quantifier to the left
+@NUM-PRON	Numerals modifying pronouns to the left
+@NumN<	Nominal attributes of numerals
+@NumQ<	Nominal attributes of quantifiers
+@OBJ	Direct object
+@OPRED	Object predicative
+@PCLE	Particle
+@PROP>	Proper noun attributes
+@PrcN>	Present participle modifying noun to the right
+@PronN<	Pronoun modifying a noun to the left
+@PronN>Pronoun modifying a noun to the right
+@QN<	Postnominal quantifier
+@QN>	Quantifier modifying noun to the right
+@SPRED	Subject predicative
+@SUBJ	Subject
+@SUBJ-QH	Subject with a quantifier head
+@TITLE	Title in front of surname or proper name
+@VOC	Vocative
+@X	No tag
+#Syntax
+
+Der/Dimin	Der/Dimin
+Der/NuA	Der/NuA
+Der/adda	Der/adda
+Der/ahtti	Der/ahtti
+Der/alla	Der/alla
+Der/amoš	Der/amoš
+Der/asti	Der/asti
+Der/d	Der/d
+Der/duohkai	Der/duohkai
+Der/duohke	Der/duohke
+Der/eaddji	Der/eaddji
+Der/eamoš	Der/eamoš
+Der/eapmi	Der/eapmi
+Der/easti	Der/easti
+Der/geahtes	Der/geahtes
+Der/gielat	Der/gielat
+Der/goahti	Der/goahti
+Der/h	Der/h
+Der/halla	Der/halla
+Der/hat	Der/hat
+Der/heapmi	Der/heapmi
+Der/hudda	Der/hudda
+Der/huhtti	Der/huhtti
+Der/huvva	Der/huvva
+Der/j	Der/j
+Der/jagáš	Der/jagáš
+Der/l	Der/l
+Der/las	Der/las
+Der/laš	Der/laš
+Der/lágan	Der/lágan
+Der/lágaš	Der/lágaš
+Der/lágán	Der/lágán
+Der/meahttun	Der/meahttun
+Der/muš	Der/muš
+Der/st	Der/st
+Der/stuvva	Der/stuvva
+Der/supmi	Der/supmi
+Der/upmi	Der/upmi
+Der/veara	Der/veara
+Der/viđi	Der/viđi
+Der/viđá	Der/viđá
+Der/vuohta	Der/vuohta
+Der/vuolde	Der/vuolde
+Der/vuollai	Der/vuollai
+Der/vuolle	Der/vuolle
+#Derivation
+
+
+V*	Verb stem
+N*	Noun stem
+A*	Adjective stem
+#DerivedRoot

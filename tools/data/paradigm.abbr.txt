@@ -1,0 +1,52 @@
+# Paradigm grammar
+#
+# Used in paradigm generator for speller generation. 
+# Note that paradigm generation for the giellatekno public pages
+# is NOT done by this file, but by the files gt/sme/src/paradigm_min.txt etc.
+   
+# List the tag groups in the order they are given to generator.
+# The names of the tag groups are listed in korpustags.txt
+# "?" marks the optionality of the tag.
+# It is not possible to mark alternation of the different tags.
+#
+# $Id: paradigm.sme.txt 106315 2015-01-28 12:42:55Z lene $
+#
+	
+N+Sg+Case+Clitic?
+N+Ess+Clitic?
+N+Prop+Sg+Case
+N+Prop+Pl+Case
+A+Grade?+Sg+Case
+A+Grade?+Pl+Case
+A+Grade?+Ess
+A+Grade?+Attr
+A+Ord+Number+Case
+A+Ord+Ess
+A+Ord+Attr
+V+Inf
+V+Sup
+V+VGen
+V+VAbess
+V+Ger
+V+Ind+Prs+Person-Number
+V+Ind+Prt+Person-Number
+V+Cond+Prs+Person-Number
+V+Imprt+Prs+Person-Number
+V+Imprt+Prs+ConNegII
+V+Pot+Prs+Person-Number
+V+Pot+Prt+Person-Number
+V+Neg+Ind+Person-Number
+V+Neg+Imprt+Person-Number
+V+Neg+Sup+Person-Number
+Num+Sg+Case
+Num+Pl+Case
+Num+RCmpnd
+Num+LCmpnd+
+Num+Ess
+Num+Attr
+Num+Sg+Attr+Cmpnd?
+Num+Sg+Attr+LCmpnd+?
+Pron+Indef+Sg+Case
+Pron+Indef+Pl+Case
+Adv+Clitic?
+Interj+Clitic?

@@ -15,6 +15,9 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Process the data subdir first, to prepare the speller frequency corpus:
+SUBDIRS=data .
+
 # Local modifications of the speller transducer:
 #   - replace the copy command with a sequence of whatever is desired
 # Regular processing of the speller transducer will proceed after the

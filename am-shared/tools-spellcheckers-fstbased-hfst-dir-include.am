@@ -124,7 +124,7 @@ errmodel.%.hfst: errmodel.%.regex easteregg.suggs.hfst
 ####### Add corpus-based weights: #######
 # copy cleaned corpus into the local dir:
 $(CORPUSNAME).clean.txt: \
-	$(top_srcdir)/tools/spellcheckers/fstbased/data/$(CORPUSNAME).clean.txt
+	data/$(CORPUSNAME).clean.txt
 	$(AM_V_GEN)cp -f $< $@
 
 # sort the clean corpus:

@@ -1,4 +1,8 @@
-$Rev: 109098 $
+$Rev: 109112 $
+Removed corpus names from tools/spellcheckers/fstbased/hfst/data/Makefile.am. It
+caused the build to stop with an error for all languages except FIN.
+
+r109098:
 Make building the abbr.txt configurable (default=no), check for the existence of
 src/morphology/stems/abbreviations.lexc, and error out if not found.
 

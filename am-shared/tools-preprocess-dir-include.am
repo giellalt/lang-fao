@@ -35,7 +35,9 @@ ANALYSER=analyser-disamb-gt-desc.hfst
 PMHFST=tokeniser-disamb-gt-desc.pmhfst
 endif # WANT_MORPHOLOGY
 
+if WANT_ABBR
 ABBR=abbr.txt
+endif # WANT_ABBR
 
 hfstdatadir=$(datadir)/giella/$(GTLANG)
 hfstdata_DATA=$(PMHFST) $(ABBR)

@@ -3,7 +3,7 @@
 ## Licence: GPL v3+
 
 
-GT_RAW_SPELLER_CORPUS=spellercorpus.raw.txt
-GT_CLEAN_SPELLER_CORPUS=spellercorpus.clean.txt
+GT_RAW_SPELLER_CORPUS=
+GT_CLEAN_SPELLER_CORPUS=
 
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst-data-dir-include.am

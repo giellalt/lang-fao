@@ -415,6 +415,7 @@ AC_ARG_ENABLE([oahpa],
               [enable_oahpa=no])
 AM_CONDITIONAL([WANT_OAHPA], [test "x$enable_oahpa" != xno])
 
+# Enable L2 fst's for Oahpa:
 AC_ARG_ENABLE([L2],
               [AS_HELP_STRING([--enable-L2],
                               [enable L2 analyser for Oahpa @<:@default=no@:>@])],
@@ -426,6 +427,7 @@ AS_IF([test x$enable_oahpa = xno], [enable_L2=no],
       [AC_MSG_ERROR([You asked for the L2 analyser, but no L2 files were found])])])
 AM_CONDITIONAL([WANT_L2], [test "x$enable_L2" != xno])
 
+# Enable downcasing error fst's for Oahpa:
 AC_ARG_ENABLE([downcaseerror],
               [AS_HELP_STRING([--enable-downcaseerror],
                               [enable downcaseerror analyser for Oahpa @<:@default=no@:>@])],
@@ -452,6 +454,18 @@ AS_IF([test "x$enable_apertium" = "xyes" -a "x$new_enough_python_available" = "x
       [enable_apertium=no
        AC_MSG_ERROR([Python3 missing or too old, Python 3.3 or newer required])])
 AM_CONDITIONAL([WANT_APERTIUM], [test "x$enable_apertium" != xno])
+
+# Enable building of abbr.txt:
+AC_ARG_ENABLE([abbr],
+              [AS_HELP_STRING([--enable-abbr],
+                              [enable generation of abbr.txt @<:@default=no@:>@])],
+              [enable_abbr=$enableval],
+              [enable_abbr=no])
+AS_IF([test x$enable_abbr != xno -a \
+    "$(find ${srcdir}/src/morphology/stems/ -name "abbreviations.lexc" | head -n 1)" = "" ],
+    [AC_MSG_ERROR([You asked for abbr.txt generation, but have no file \
+src/morphology/stems/abbreviations.lexc])])
+AM_CONDITIONAL([WANT_ABBR], [test "x$enable_abbr" != xno])
 
 ]) # gt_ENABLE_TARGETS
 
@@ -495,6 +509,7 @@ cat<<EOF
     * L2 analyser: $enable_L2
     * downcase error analyser: $enable_downcaseerror
   * Apertium transducers enabled: $enable_apertium
+  * Generate abbr.txt: $enable_abbr
 
 For more ./configure options, run ./configure --help
 

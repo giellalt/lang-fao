@@ -1,4 +1,10 @@
-$Rev: 109112 $
+$Rev: 109225 $
+Added a new directory named devtools/ to each language, with the idea that it
+should contain tools useful for development, but not necessarily suitable for
+automake testing. Initially it contains shell scripts to generate a table of
+generated word forms for each continuation lexicon.
+
+r109112:
 Removed corpus names from tools/spellcheckers/fstbased/hfst/data/Makefile.am. It
 caused the build to stop with an error for all languages except FIN.
 

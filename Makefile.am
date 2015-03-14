@@ -32,3 +32,6 @@ und.timestamp: ${GTCORE}/langs-templates/und/und.timestamp
 	@exit 1
 endif
 
+# Remove html tables created by some of the developer tools:
+clean-local:
+	rm -f *.html

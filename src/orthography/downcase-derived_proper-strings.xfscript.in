@@ -5,9 +5,8 @@
 # ---- starts here: ------
 
 define compoundtag  [ %+SgCmp      | %+SgNomCmp      | %+SgGenCmp      | %+PlGenCmp
-					| %+CmpN/First | %+CmpN/Last     | %+CmpN/None     | %+CmpN/Only
 					| %+CmpN/SgLeft| %+CmpN/SgNomLeft| %+CmpN/SgGenLeft| %+CmpN/PlGenLeft
-					| %+CmpN/All   | %+CmpN/Def      | %+CmpN/DefSgGen | %+CmpN/DefPlGen
+					| %+CmpN/Def   | %+CmpN/DefSgGen | %+CmpN/DefPlGen
 					] ;
 
 # The value of HypMinFlag depends on the configuration: if hyperminimisation is

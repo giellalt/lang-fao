@@ -4,8 +4,8 @@
 
 # First attempt at building disambiguation fst's. The analyser differs from the
 # regular analyser by NEITHER removing variant and homonym tags, NOR removing
-# semantic tags or Err/Sub. The variant and homonym tags are there to help
-# choosing forms, as are Err/Sub and Sem-tags.
+# semantic tags or Err/Orth. The variant and homonym tags are there to help
+# choosing forms, as are Err/Orth and Sem-tags.
 analyser-disamb-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst     \
 					filters/remove-Orth_IPA-strings.hfst         \
 					filters/remove-hyphenation-marks.hfst        \

@@ -9,7 +9,10 @@ TESTS=
 
 # Only test spellers if we build spellers:
 if WANT_SPELLERS
+# Only run yaml tests if we are able to:
+if CAN_YAML_TEST
 TESTS+=run-fstspeller-gt-norm-yaml-testcases.sh
+endif # CAN_YAML_TEST
 endif # WANT_SPELLERS
 
 # List tests that are presently (expected) failures here (in addition to above),

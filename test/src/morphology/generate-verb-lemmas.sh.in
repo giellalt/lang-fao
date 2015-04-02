@@ -20,7 +20,7 @@
 # 3. adapt the tag addition and lemma generation instructions (lines 79 ff)
 
 ###### Variables: #######
-POS=nouns
+POS=verbs
 ### in ###
 source_file=${srcdir}/../../../src/morphology/stems/${POS}.lexc
 generator_file=./../../../src/generator-gt-norm
@@ -84,17 +84,11 @@ for f in $fsttype; do
         let "transducer_found += 1"
 
 ###### Test non-comopunds: #######
-        # generate nouns in Singular, extract the resulting generated lemma,
+        # generate verbs in infitive, extract the resulting generated lemma,
         # store it:
-        sed 's/$/+N+Sg+Nom/' $lemmas | $lookup_tool $generator_file.$suffix \
-            | cut -f2 | fgrep -v "+N+Sg" | grep -v "^$" | sort -u \
+        sed 's/$/+V+Inf/' $lemmas | $lookup_tool $generator_file.$suffix \
+            | fgrep -v "+?" | grep -v "^$" | cut -f2 | sort -u \
             > $generated_lemmas.$f.txt 
-        # Generate nouns, extract those that do not generate in singular,
-        # generate the rest in plural:
-        sed 's/$/+N+Sg+Nom/' $lemmas | $lookup_tool $generator_file.$suffix \
-            | cut -f2 | grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Pl+Nom/' \
-            | $lookup_tool $generator_file.$suffix | cut -f2 \
-            | grep -v "^$" >> $generated_lemmas.$f.txt 
 
 ###### Collect results, and generate debug info if FAIL: #######
         # Sort and compare original input with resulting output - the diff is
@@ -105,7 +99,7 @@ for f in $fsttype; do
         # Open the diff file in SubEthaEdit (if there is a diff):
         if [ -s $result_file.$f.txt ]; then
             grep -v '^$' $result_file.$f.txt \
-              | sed 's/$/+N+Sg+Nom/' \
+              | sed 's/$/+V+Inf/' \
               | $lookup_tool $generator_file.$suffix \
               > $gen_result_file.$f.txt
             # If we have an analyser, analyse the missing lemmas as well:

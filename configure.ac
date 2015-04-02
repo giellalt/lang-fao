@@ -200,8 +200,14 @@ AC_CONFIG_FILES([test/src/phonology/pair-test-positive.sh], \
 AC_CONFIG_FILES([test/src/phonology/pair-test-negative.sh], \
       [chmod a+x test/src/phonology/pair-test-negative.sh])
 # Lemma generation tests, all languages:
+AC_CONFIG_FILES([test/src/morphology/generate-adjective-lemmas.sh], \
+      [chmod a+x test/src/morphology/generate-adjective-lemmas.sh])
 AC_CONFIG_FILES([test/src/morphology/generate-noun-lemmas.sh], \
       [chmod a+x test/src/morphology/generate-noun-lemmas.sh])
+AC_CONFIG_FILES([test/src/morphology/generate-propernoun-lemmas.sh], \
+      [chmod a+x test/src/morphology/generate-propernoun-lemmas.sh])
+AC_CONFIG_FILES([test/src/morphology/generate-verb-lemmas.sh], \
+      [chmod a+x test/src/morphology/generate-verb-lemmas.sh])
 # Shorthand shell scripts instead of the old-type aliases - all languages:
 AC_CONFIG_FILES([tools/shellscripts/ufao-gt.sh], \
       [chmod a+x tools/shellscripts/ufao-gt.sh])

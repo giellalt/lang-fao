@@ -20,7 +20,7 @@
 # 3. adapt the tag addition and lemma generation instructions (lines 79 ff)
 
 ###### Variables: #######
-POS=nouns
+POS=adjectives
 ### in ###
 source_file=${srcdir}/../../../src/morphology/stems/${POS}.lexc
 generator_file=./../../../src/generator-gt-norm
@@ -83,18 +83,14 @@ for f in $fsttype; do
     if [ -f "$generator_file.$suffix" ]; then
         let "transducer_found += 1"
 
-###### Test non-comopunds: #######
-        # generate nouns in Singular, extract the resulting generated lemma,
+###### Test lemma generation: #######
+        # generate lemmas in singular, extract the resulting generated lemma,
         # store it:
-        sed 's/$/+N+Sg+Nom/' $lemmas | $lookup_tool $generator_file.$suffix \
-            | cut -f2 | fgrep -v "+N+Sg" | grep -v "^$" | sort -u \
+        sed 's/$/+A+Sg+Nom/' $lemmas | $lookup_tool $generator_file.$suffix \
+            | fgrep -v "+?" | grep -v "^$" | cut -f2 | sort -u \
             > $generated_lemmas.$f.txt 
-        # Generate nouns, extract those that do not generate in singular,
-        # generate the rest in plural:
-        sed 's/$/+N+Sg+Nom/' $lemmas | $lookup_tool $generator_file.$suffix \
-            | cut -f2 | grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Pl+Nom/' \
-            | $lookup_tool $generator_file.$suffix | cut -f2 \
-            | grep -v "^$" >> $generated_lemmas.$f.txt 
+
+        # Add more variants as needed, e.g. comparative, superlative only adjs.
 
 ###### Collect results, and generate debug info if FAIL: #######
         # Sort and compare original input with resulting output - the diff is

@@ -96,7 +96,7 @@ for f in $fsttype; do
         sed 's/$/+N+Prop+Sg+Nom/' $lemmas \
             | $lookup_tool $generator_file.$suffix \
             | fgrep "+?" | cut -d "+" -f1 \
-            | sed 's/$/+N+Pl+Nom/' \
+            | sed 's/$/+N+Prop+Pl+Nom/' \
             | $lookup_tool $generator_file.$suffix | cut -f2 \
             | grep -v "^$" >> $generated_lemmas.$f.txt 
 
@@ -109,7 +109,7 @@ for f in $fsttype; do
         # Open the diff file in SubEthaEdit (if there is a diff):
         if [ -s $result_file.$f.txt ]; then
             grep -v '^$' $result_file.$f.txt \
-              | sed 's/$/+N+Sg+Nom/' \
+              | sed 's/$/+N+Prop+Sg+Nom/' \
               | $lookup_tool $generator_file.$suffix \
               > $gen_result_file.$f.txt
             # If we have an analyser, analyse the missing lemmas as well:

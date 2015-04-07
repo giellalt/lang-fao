@@ -87,18 +87,19 @@ for f in $fsttype; do
         # generate propers in singular, extract the resulting generated lemma,
         # store it:
         sed 's/$/+N+Prop+Sg+Nom/' $lemmas \
-            | $lookup_tool $generator_file.$suffix \
-            | fgrep -v "+?" | grep -v "^$" | cut -f2 | sort -u \
-            > $generated_lemmas.$f.txt 
+			| $lookup_tool $generator_file.$suffix \
+			| fgrep -v "+?" | grep -v "^$" | cut -f2 \
+            > $generated_lemmas.$f.txt
 
         # Generate nouns, extract those that do not generate in singular,
         # and try to generate them in plural:
         sed 's/$/+N+Prop+Sg+Nom/' $lemmas \
-            | $lookup_tool $generator_file.$suffix \
-            | fgrep "+?" | cut -d "+" -f1 \
-            | sed 's/$/+N+Prop+Pl+Nom/' \
-            | $lookup_tool $generator_file.$suffix | cut -f2 \
-            | grep -v "^$" >> $generated_lemmas.$f.txt 
+			| $lookup_tool $generator_file.$suffix \
+			| fgrep "+?" | cut -d "+" -f1 \
+			| sed 's/$/+N+Prop+Pl+Nom/' \
+			| $lookup_tool $generator_file.$suffix \
+			| fgrep -v "+?" | grep -v "^$" | cut -f2 \
+			>> $generated_lemmas.$f.txt
 
 ###### Collect results, and generate debug info if FAIL: #######
         # Sort and compare original input with resulting output - the diff is

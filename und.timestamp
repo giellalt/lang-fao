@@ -1,4 +1,11 @@
-$Rev: 110513 $
+$Rev: 110646 $
+Added support for corpus-based (frequency) weighting of the speller fst's. Also
+reorganised where to specify the tag-based weights (and this is subject to
+change pending a bug fix in hfst-reweight). All languages are given a toy
+corpus, which can be replaced with a real one. This is finally the core of
+Tommi's dissertation applied to all languages.
+
+r110513:
 More robust testing for Xerox fst's - will properly report all generation fails.
 
 r110464:

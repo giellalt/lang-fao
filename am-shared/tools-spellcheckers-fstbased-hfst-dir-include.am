@@ -15,7 +15,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-GT_SPELLER_HFST=generator-fstspeller-gt-norm.hfst
+GT_SPELLER_HFST=../generator-fstspeller-gt-norm.hfst
 GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 
 # This is how we zip files to work with hfst-ospell and libvoikko
@@ -120,53 +120,6 @@ errmodel.%.hfst: errmodel.%.regex easteregg.suggs.hfst
 	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
 		| $(HFST_DISJUNCT) - easteregg.hfst \
 		-o $@
-
-####### Add corpus-based weights: #######
-# copy cleaned corpus into the local dir:
-$(CORPUSNAME).clean.txt: \
-	data/$(CORPUSNAME).clean.txt
-	$(AM_V_GEN)cp -f $< $@
-
-# sort the clean corpus:
-%.sort.txt: %.clean.txt
-	$(AM_V_GEN)sort < $< > $@
-
-# token count:
-%.wordcount.txt: %.sort.txt
-	$(AM_V_GEN)wc -l < $< > $@
-
-%.uniq.txt: %.sort.txt
-	$(AM_V_at)uniq -c < $< > $@
-
-# type count:
-%.typecount.txt: %.uniq.txt
-	$(AM_V_GEN)wc -l < $< > $@
-
-# calculate unit weight, smoothed using ALPHA:
-%.unitweight.txt: %.wordcount.txt %.typecount.txt
-	$(AM_V_GEN)paste $^ |\
-		sed -e "s/^/scale=5; -l($(ALPHA)\/(/" \
-		-e "s/	/ + ($(ALPHA) */" -e "s/$$/)))/" |\
-		bc -l > $@
-
-# add tropical weights to the corpus:
-%.tropical.txt: %.uniq.txt %.wordcount.txt %.typecount.txt
-	$(AM_V_GEN)cat $< |\
-		$(GAWK) -v CS="$$(cat $*.wordcount.txt)" -v ALPHA=$(ALPHA) \
-		-v DS="$$(cat $*.typecount.txt)" -f $(srcdir)/uniqc2tropical.awk > $@
-
-# build an fst of surface forms with tropical weights for each word form:
-%.surfs.hfst: %.tropical.txt
-	$(AM_V_GEN)cat $< |\
-		$(HFST_STRINGS2FST) -j $(HFST_FLAGS) -f openfst-tropical -o $@
-
-# Keep these intermediate targets when building using --debug:
-.SECONDARY: spellercorpus.sort.txt \
-            spellercorpus.surfs.hfst \
-            spellercorpus.tropical.txt \
-            spellercorpus.typecount.txt \
-            spellercorpus.wordcount.txt \
-            word-boundary.hfst
 
 ####### Speller acceptor: #######
 # Build the automaton used for the speller

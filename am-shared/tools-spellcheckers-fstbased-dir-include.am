@@ -47,7 +47,7 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
-#### 2. Add corpus-based weights:
+#### 2. Add corpus-based weights + add huge weight to nosugg-tagged strings:
 %-weighted.hfst: %-comp_restricted.hfst  \
 				 $(SURFWEIGHTS)          \
 				 $(srcdir)/weighting/$(TAGWEIGHTS) \
@@ -57,6 +57,7 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
 		| $(HFST_DISJUNCT) $(HFST_FLAGS) - unitweighted.hfst \
 		| $(HFST_SUBSTITUTE) $(HFST_FLAGS) \
 			-F $(srcdir)/weighting/word-boundary.relabel \
+		| $(HFST_REWEIGHT) -a 50000.0 -S +Use/SpellNoSugg \
 		| $(HFST_REMOVE_EPSILONS)     $(HFST_FLAGS) \
 		| $(HFST_PUSH_WEIGHTS) -p end $(HFST_FLAGS) \
 		| $(HFST_DETERMINIZE)  -E     $(HFST_FLAGS) \

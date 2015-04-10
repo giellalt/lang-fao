@@ -56,8 +56,8 @@ $(CORPUSNAME).clean.txt: \
 %.unitweight.txt: %.wordcount.txt %.typecount.txt
 	$(AM_V_GEN)paste $^ |\
 		sed -e "s/^/scale=5; -l($(ALPHA)\/(/" \
-		-e "s/	/ + ($(ALPHA) */" -e "s/$$/)))/" |\
-		bc -l > $@
+		    -e "s/	/ + ($(ALPHA) */" -e "s/$$/)))/" \
+		| $(BC) -l > $@
 
 # add tropical weights to the corpus:
 %.tropical.txt: %.uniq.txt %.wordcount.txt %.typecount.txt

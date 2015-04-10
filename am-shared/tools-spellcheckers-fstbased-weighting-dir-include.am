@@ -23,16 +23,9 @@ endif # WANT_SPELLERS
 
 # Clean the corpus data if only raw data is found:
 %.clean.txt: %.raw.txt
-	$(AM_V_GEN)cat $< \
-		| sed -e 's/\( [].:;,(){}!?[]\)\([[:alpha:]]\)/\1 \2/g'            \
-			  -e 's/\([[:alpha:]]\)\([],:;(){}[] \)/\1 \2/g'               \
-			  -e 's/\([[:alpha:]]\)\([.!?]\ \+\)\([[:upper:]]\)/\1 \2\3/g' \
-			  -e 's/[].:;,(){}!?[]$$/ \0/g' -e 's/^[].:;,(){}!?[]/\0 /g'   \
-		| tr -s ' ' '\n' \
-		| egrep -v '^[[:punct:][:digit:]]*$$' \
-		> $@
+	$(AM_V_GEN)$(GTCORE)/scripts/clean_weight_corpus.sh $< $@
 
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst
+	-rm -f *.clean.txt

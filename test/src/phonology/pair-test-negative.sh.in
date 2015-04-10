@@ -22,12 +22,20 @@ EXTEDITOR=@SEE@
 if test -x ${TWOLC} ; then
   if test -f ${SOURCEFILE} ; then
     grep '^!\$' ${SOURCEFILE} | cut -d' ' -f2- > ${TESTDATA}
+    # If we found no test data, skip the testing:
+    if ! test -s ${TESTDATA} ; then
+        rm -f ${TESTDATA}
+        exit 77
+    fi
+    # Print the testing script to a script file:
     ${PRINTF} "\
 install-binary ${FSTFILE}\n\
 pair-test-file ${TESTDATA} ${TESTRESULT}\n\
 quit\n" \
     	> ${TWOLCSCRIPT}
+    # Run the script file:
     ${TWOLC} -q < ${TWOLCSCRIPT}
+    # If there are errors and fails, open the output file in SEE and exit w fail
     if grep 'ACCEPTED' ${TESTRESULT} > /dev/null ; then
         if test x$EXTEDITOR != "x"; then
             $EXTEDITOR ${TESTRESULT}
@@ -36,10 +44,10 @@ quit\n" \
     fi
     rm -f ${TWOLCSCRIPT} ${TESTDATA} ${TESTRESULT}
   else
-      echo ${SOURCEFILE} not found
+      echo "*** ${SOURCEFILE} not found ***"
       exit 77
   fi
 else
-    echo ${TWOLC} not found
+    echo "*** ${TWOLC} not found ***"
     exit 77
 fi

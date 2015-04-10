@@ -105,6 +105,9 @@ AS_IF([test "x${gtd_version_ok}" != xno], [AC_MSG_RESULT([$gtd_version_ok])],
 ### Some software that we either depend on or we need for certain functionality: 
 ################
 
+################ Weighted fst's ################
+AC_PATH_PROG([BC], [bc], [no], [$PATH$PATH_SEPARATOR$with_bc])
+
 ################ YAML-based testing ################
 AC_ARG_ENABLE([yamltests],
               [AS_HELP_STRING([--enable-yamltests],
@@ -139,7 +142,7 @@ AC_CACHE_CHECK([for awk that supports gensub], [ac_cv_path_GAWK],
     [[awkout=`$ac_path_GAWK 'BEGIN{gensub(/a/,"b","g");}'; exvalue=$?; echo $exvalue`
       test "x$awkout" = x0 \
       && ac_cv_path_GAWK=$ac_path_GAWK ac_path_GAWK_found=:]],
-    [AC_MSG_WARN([could not find awk that supports gensub])])])
+    [AC_MSG_ERROR([could not find awk that supports gensub - please install GNU awk])])])
 AC_SUBST([GAWK], [$ac_cv_path_GAWK])
 
 # Check for Forrest:

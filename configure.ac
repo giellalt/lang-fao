@@ -199,6 +199,8 @@ AC_CONFIG_FILES([test/src/phonology/pair-test-positive.sh], \
       [chmod a+x test/src/phonology/pair-test-positive.sh])
 AC_CONFIG_FILES([test/src/phonology/pair-test-negative.sh], \
       [chmod a+x test/src/phonology/pair-test-negative.sh])
+AC_CONFIG_FILES([test/src/phonology/pair-test-hfst.sh], \
+      [chmod a+x test/src/phonology/pair-test-hfst.sh])
 # Lemma generation tests, all languages:
 AC_CONFIG_FILES([test/src/morphology/generate-adjective-lemmas.sh], \
       [chmod a+x test/src/morphology/generate-adjective-lemmas.sh])

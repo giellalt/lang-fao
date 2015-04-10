@@ -1,0 +1,44 @@
+#!/bin/bash
+
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+# Shell script to run test pairs from the twolc source file through the
+# hfst-pair-test tool against the compiled twolc file. It will test both
+# negative and positive test pairs. If the test fails, the output will be
+# opened in SubEthaEdit (MacOSX only) if installed.
+
+HTWOLC=@HFST_PAIR_TEST@
+GTLANG=@GTLANG@
+SOURCEFILE=${srcdir}/../../../src/phonology/${GTLANG}-phon.twolc
+HFSTFILE=../../../src/phonology/${GTLANG}-phon.compose.hfst
+TESTRESULT=pair-test-out.hfst.txt
+EXTEDITOR=@SEE@
+
+if test -f ${SOURCEFILE} ; then
+    if test -f ${HFSTFILE}; then
+        if test -x ${HTWOLC}; then
+            ${HTWOLC} --xerox-mode \
+                -I ${SOURCEFILE} \
+                -i ${HFSTFILE}   \
+                -o ${TESTRESULT}
+            hfst_exit=$?
+            if test $hfst_exit != 0; then
+                if test x$EXTEDITOR != "x"; then
+                    $EXTEDITOR ${TESTRESULT}
+                fi
+                exit 1
+            fi
+            rm -f ${TWOLCSCRIPT} ${TESTDATA} ${TESTRESULT}.*
+        else
+            echo ${HTWOLC} was not found
+            exit 77
+        fi
+    else
+        echo The compiled rule file ${XFSTFILE} was not found
+        exit 77
+    fi
+else
+    echo ${SOURCEFILE} not found
+    exit 77
+fi

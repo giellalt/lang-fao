@@ -1,5 +1,14 @@
 #!/bin/bash
 
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+# Shell script to extract positive test pairs from the twolc source file and
+# run them against the compiled twolc file using the pair-test command. All
+# pair strings should be accepted. For the Xerox twolc tool.
+# If the test fails, the output will be
+# opened in SubEthaEdit (MacOSX only) if installed.
+
 PRINTF=@PRINTF@
 TWOLC=@TWOLC@
 GTLANG=@GTLANG@
@@ -8,6 +17,7 @@ FSTFILE=../../../src/phonology/${GTLANG}-phon.compose.xfst
 TWOLCSCRIPT=twolcscript.sh
 TESTDATA=positive-pairs.txt
 TESTRESULT=positive-pairs-out.txt
+EXTEDITOR=@SEE@
 
 if test -x ${TWOLC} ; then
   if test -f ${SOURCEFILE} ; then
@@ -18,10 +28,13 @@ pair-test-file ${TESTDATA} ${TESTRESULT}\n\
 quit\n" \
     	> ${TWOLCSCRIPT}
     ${TWOLC} -q < ${TWOLCSCRIPT}
-    if ! grep -E '(REJECTED|Error)' ${TESTDATA} ; then
+    if grep -E '(REJECTED|Error)' ${TESTRESULT} > /dev/null ; then
+        if test x$EXTEDITOR != "x"; then
+            $EXTEDITOR ${TESTRESULT}
+        fi
         exit 1
     fi
-    rm -f ${TWOLCSCRIPT} ${TESTDATA} ${TESTRESULT}
+#    rm -f ${TWOLCSCRIPT} ${TESTDATA} ${TESTRESULT}
   else
       echo ${SOURCEFILE} not found
       exit 77

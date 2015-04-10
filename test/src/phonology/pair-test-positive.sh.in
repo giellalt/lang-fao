@@ -3,9 +3,9 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-# Shell script to extract negative test pairs from the twolc source file and
+# Shell script to extract positive test pairs from the twolc source file and
 # run them against the compiled twolc file using the pair-test command. All
-# pair strings should be rejected. For the Xerox twolc tool.
+# pair strings should be accepted. For the Xerox twolc tool.
 # If the test fails, the output will be
 # opened in SubEthaEdit (MacOSX only) if installed.
 
@@ -15,13 +15,13 @@ GTLANG=@GTLANG@
 SOURCEFILE=${srcdir}/../../../src/phonology/${GTLANG}-phon.twolc
 FSTFILE=../../../src/phonology/${GTLANG}-phon.compose.xfst
 TWOLCSCRIPT=twolcscript.sh
-TESTDATA=negative-pairs.txt
-TESTRESULT=negative-pairs-out.txt
+TESTDATA=positive-pairs.txt
+TESTRESULT=positive-pairs-out.txt
 EXTEDITOR=@SEE@
 
 if test -x ${TWOLC} ; then
   if test -f ${SOURCEFILE} ; then
-    grep '^!\$' ${SOURCEFILE} | cut -d' ' -f2- > ${TESTDATA}
+    grep '^!€' ${SOURCEFILE} | cut -d' ' -f2- > ${TESTDATA}
     # If we found no test data, skip the testing:
     if ! test -s ${TESTDATA} ; then
         rm -f ${TESTDATA}
@@ -36,7 +36,7 @@ quit\n" \
     # Run the script file:
     ${TWOLC} -q < ${TWOLCSCRIPT}
     # If there are errors and fails, open the output file in SEE and exit w fail
-    if grep 'ACCEPTED' ${TESTRESULT} > /dev/null ; then
+    if grep -E '(REJECTED|Error)' ${TESTRESULT} > /dev/null ; then
         if test x$EXTEDITOR != "x"; then
             $EXTEDITOR ${TESTRESULT}
         fi

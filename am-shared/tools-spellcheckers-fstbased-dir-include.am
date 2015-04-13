@@ -52,8 +52,9 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
 				 $(SURFWEIGHTS)          \
 				 $(srcdir)/weighting/$(TAGWEIGHTS) \
 				 $(srcdir)/weighting/word-boundary.relabel \
-                 unitweighted.hfst
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) $< $(SURFWEIGHTS) \
+				unitweighted.hfst
+	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) --xerox-composition=ON \
+			$< $(SURFWEIGHTS) \
 		| $(HFST_DISJUNCT) $(HFST_FLAGS) - unitweighted.hfst \
 		| $(HFST_SUBSTITUTE) $(HFST_FLAGS) \
 			-F $(srcdir)/weighting/word-boundary.relabel \

@@ -48,22 +48,42 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
 		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 #### 2. Add corpus-based weights + add huge weight to nosugg-tagged strings:
-%-weighted.hfst: %-comp_restricted.hfst  \
-				 $(SURFWEIGHTS)          \
-				 $(srcdir)/weighting/$(TAGWEIGHTS) \
-				 $(srcdir)/weighting/word-boundary.relabel \
-				unitweighted.hfst
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) --xerox-composition=ON \
+%-freq_weighted.hfst: %-comp_restricted.hfst \
+				 $(SURFWEIGHTS)
+	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			$< $(SURFWEIGHTS) \
-		| $(HFST_DISJUNCT) $(HFST_FLAGS) - unitweighted.hfst \
-		| $(HFST_SUBSTITUTE) $(HFST_FLAGS) \
-			-F $(srcdir)/weighting/word-boundary.relabel \
-		| $(HFST_REWEIGHT) -a 50000.0 -S +Use/SpellNoSugg \
 		| $(HFST_REMOVE_EPSILONS)     $(HFST_FLAGS) \
 		| $(HFST_PUSH_WEIGHTS) -p end $(HFST_FLAGS) \
 		| $(HFST_DETERMINIZE)  -E     $(HFST_FLAGS) \
 		| $(HFST_MINIMIZE)     -E     $(HFST_FLAGS) \
 		-o $@
+
+%-unit_weighted.hfst: %-freq_weighted.hfst  \
+				 unitweighted.hfst
+	$(AM_V_GEN)$(HFST_DISJUNCT) $(HFST_FLAGS) $< unitweighted.hfst \
+		| $(HFST_REMOVE_EPSILONS)     $(HFST_FLAGS) \
+		| $(HFST_PUSH_WEIGHTS) -p end $(HFST_FLAGS) \
+		| $(HFST_DETERMINIZE)  -E     $(HFST_FLAGS) \
+		| $(HFST_MINIMIZE)     -E     $(HFST_FLAGS) \
+		-o $@
+
+%-norm_weighted.hfst: %-unit_weighted.hfst  \
+				 $(srcdir)/weighting/word-boundary.relabel \
+				 $(CORPUSNAME).weight_scaling.txt
+	$(AM_V_GEN)$(HFST_SUBSTITUTE) $(HFST_FLAGS) -i $< \
+			-F $(srcdir)/weighting/word-boundary.relabel \
+		| $(HFST_REWEIGHT) -l "10000" \
+			--multiplier="$$(cat $(CORPUSNAME).weight_scaling.txt)" \
+		| $(HFST_REWEIGHT) -u "10" \
+			--multiplier="10" \
+		| $(HFST_REMOVE_EPSILONS)     $(HFST_FLAGS) \
+		| $(HFST_PUSH_WEIGHTS) -p end $(HFST_FLAGS) \
+		| $(HFST_DETERMINIZE)  -E     $(HFST_FLAGS) \
+		| $(HFST_MINIMIZE)     -E     $(HFST_FLAGS) \
+		-o $@
+
+# Another bug: hfst-disjunct replaces the surface weights with the unit weight
+# when the unit weight is given by the end state.
 
 # There is a bug in hfst-reweight blocking us from using a TSV reweight file.
 # When it is fixed, add the following to the block above, between compose and
@@ -76,7 +96,7 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
 
 # Copy the weighted fst to the tmp fst:
 # (replace with further processing in the future, if needed)
-%.tmp.hfst: %-weighted.hfst
+%.tmp.hfst: %-norm_weighted.hfst
 	$(AM_V_CP)cp -f $< $@
 
 # Copy the tmp transducer to the final one. This allows local overrides.
@@ -89,7 +109,7 @@ analyser-%.hfst: generator-%.hfst
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst
+	-rm -f *.hfst *.txt
 
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased_weights-dir-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am

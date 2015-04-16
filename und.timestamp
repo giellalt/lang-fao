@@ -1,4 +1,11 @@
-$Rev: 110944 $
+$Rev: 111179 $
+Added an attempt at normalising the corpus-based weights towards a standard max
+upper weight, to allow a much higher weight for strings not to be suggested.
+Also split the processing of adding corpus-based weights and morphology weights
+into more steps - retaining each intermediate fst - to allow easier debugging
+of the weight assignments.
+
+r110944:
 Xerox composition of weights and lexical fst.
 
 r110791:

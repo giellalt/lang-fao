@@ -27,6 +27,7 @@ UW_SPELLER_SRC=generator-fstspeller-gt-norm-comp_restricted.hfst
 TAGWEIGHTS=tags.reweight
 # ALPHA for additive smoothing, [0, 1.0] seems good
 ALPHA=1.0
+NORMALISED_MAXWEIGHT=1000
 
 %.hfst: weighting/%.att
 	$(AM_V_GEN)$(HFST_TXT2FST) $(HFST_FLAGS) -f openfst-tropical $< -o $@
@@ -58,6 +59,9 @@ $(CORPUSNAME).clean.txt: \
 		sed -e "s/^/scale=5; -l($(ALPHA)\/(/" \
 		    -e "s/	/ + ($(ALPHA) */" -e "s/$$/)))/" \
 		| $(BC) -l > $@
+
+%.weight_scaling.txt: %.unitweight.txt
+	$(AM_V_GEN)echo "1 / ( $$(cat $<) / $(NORMALISED_MAXWEIGHT) )" | bc -l > $@
 
 # add tropical weights to the corpus:
 %.tropical.txt: %.uniq.txt %.wordcount.txt %.typecount.txt
@@ -97,4 +101,7 @@ unitweighted.hfst: $(UW_SPELLER_SRC) \
             spellercorpus.typecount.txt \
             spellercorpus.wordcount.txt \
             word-boundary.hfst \
+            generator-fstspeller-gt-norm-freq_weighted.hfst \
+            generator-fstspeller-gt-norm-unit_weighted.hfst \
+            $(SURFWEIGHTS) \
             $(UNITWEIGHT)

@@ -1,4 +1,7 @@
-$Rev: 111179 $
+$Rev: 111192 $
+Do not remove usage tags when building spellers, speller tags were throwned out.
+
+r111179:
 Added an attempt at normalising the corpus-based weights towards a standard max
 upper weight, to allow a much higher weight for strings not to be suggested.
 Also split the processing of adding corpus-based weights and morphology weights

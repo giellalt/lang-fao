@@ -49,7 +49,6 @@ generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: \
 			$(top_builddir)/src/filters/remove-dialect-tags.hfst       \
 			$(top_builddir)/src/filters/remove-semantic-tags.hfst      \
 			$(top_builddir)/src/filters/remove-transitivity-tags.hfst  \
-			$(top_builddir)/src/filters/remove-usage-tags.hfst         \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst       \
 			$(top_builddir)/src/filters/remove-CLB-strings.hfst        \
 			$(top_builddir)/src/filters/remove-error-strings.hfst      \
@@ -62,7 +61,6 @@ generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: \
 		    @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"       \
 		.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.hfst\"      \
 		.o. @\"$(top_builddir)/src/filters/remove-transitivity-tags.hfst\"  \
-		.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"         \
 		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"       \
 		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.hfst\"        \
 		.o. @\"$(top_builddir)/src/filters/remove-error-strings.hfst\"      \
@@ -80,7 +78,6 @@ analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: \
 			$(top_builddir)/src/filters/remove-dialect-tags.xfst       \
 			$(top_builddir)/src/filters/remove-semantic-tags.xfst      \
 			$(top_builddir)/src/filters/remove-transitivity-tags.xfst  \
-			$(top_builddir)/src/filters/remove-usage-tags.xfst         \
 			$(top_builddir)/src/filters/remove-variant-tags.xfst       \
 			$(top_builddir)/src/filters/remove-CLB-strings.xfst        \
 			$(top_builddir)/src/filters/remove-error-strings.xfst      \
@@ -92,7 +89,6 @@ analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: \
 		    @\"$(top_builddir)/src/filters/remove-dialect-tags.xfst\"       \
 		.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.xfst\"      \
 		.o. @\"$(top_builddir)/src/filters/remove-transitivity-tags.xfst\"  \
-		.o. @\"$(top_builddir)/src/filters/remove-usage-tags.xfst\"         \
 		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.xfst\"       \
 		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.xfst\"        \
 		.o. @\"$(top_builddir)/src/filters/remove-error-strings.xfst\"      \

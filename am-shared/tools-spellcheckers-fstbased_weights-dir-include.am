@@ -27,7 +27,7 @@ UW_SPELLER_SRC=generator-fstspeller-gt-norm-comp_restricted.hfst
 TAGWEIGHTS=tags.reweight
 # ALPHA for additive smoothing, [0, 1.0] seems good
 ALPHA=1.0
-NORMALISED_MAXWEIGHT=1000
+NORMALISED_MAXWEIGHT=500
 
 %.hfst: weighting/%.att
 	$(AM_V_GEN)$(HFST_TXT2FST) $(HFST_FLAGS) -f openfst-tropical $< -o $@
@@ -74,13 +74,13 @@ $(CORPUSNAME).clean.txt: \
 
 # build an fst of surface forms with tropical weights for each word form:
 %.surfs.hfst: %.tropical.txt
-	$(AM_V_GEN)cat $< |\
+	$(AM_V_STR2FST)cat $< |\
 		$(HFST_STRINGS2FST) -j $(HFST_FLAGS) -f openfst-tropical -o $@
 
 # Build an fst with surface form weights that also handles compounds:
 %.surfweights.hfst: %.surfs.hfst \
                     word-boundary.hfst
-	$(AM_V_GEN)$(HFST_CONCATENATE) $(HFST_FLAGS) word-boundary.hfst $< \
+	$(AM_V_HCONCAT)$(HFST_CONCATENATE) $(HFST_FLAGS) word-boundary.hfst $< \
 		| $(HFST_REPEAT) $(HFST_FLAGS) -f 0 -t inf \
 		| $(HFST_CONCATENATE) $< - \
 		| $(HFST_MINIMIZE) -o $@
@@ -89,7 +89,8 @@ $(CORPUSNAME).clean.txt: \
 unitweighted.hfst: $(UW_SPELLER_SRC) \
                    $(UNITWEIGHT)         \
                    $(srcdir)/weighting/word-boundary.txt
-	$(AM_V_GEN)$(HFST_REWEIGHT) $(HFST_FLAGS) -e -a $$(cat $(UNITWEIGHT)) $< \
+	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(HFST_FLAGS) \
+			-e -a $$(cat $(UNITWEIGHT)) $< \
 		| $(HFST_REWEIGHT) $(HFST_FLAGS) \
 			-S $$(cat $(srcdir)/weighting/word-boundary.txt) \
 			-a $$(cat $(UNITWEIGHT)) -o $@
@@ -103,5 +104,7 @@ unitweighted.hfst: $(UW_SPELLER_SRC) \
             word-boundary.hfst \
             generator-fstspeller-gt-norm-freq_weighted.hfst \
             generator-fstspeller-gt-norm-unit_weighted.hfst \
+            generator-fstspeller-gt-norm-norm_weighted.hfst \
+            generator-fstspeller-gt-norm-tag_weighted.hfst  \
             $(SURFWEIGHTS) \
             $(UNITWEIGHT)

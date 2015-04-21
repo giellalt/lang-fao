@@ -25,107 +25,123 @@
 #### Tailored silent output text: ####
 
 #### HFST tools
-AM_V_COMPOSE   = $(AM_V_COMPOSE_@AM_V@)
-AM_V_COMPOSE_  = $(AM_V_COMPOSE_@AM_DEFAULT_V@)
-AM_V_COMPOSE_0 = @echo "  COMPOSE  $@";
+AM_V_COMPOSE    = $(AM_V_COMPOSE_@AM_V@)
+AM_V_COMPOSE_   = $(AM_V_COMPOSE_@AM_DEFAULT_V@)
+AM_V_COMPOSE_0  = @echo "  COMPOSE  $@";
 
-AM_V_HLEXC     = $(AM_V_HLEXC_@AM_V@)
-AM_V_HLEXC_    = $(AM_V_HLEXC_@AM_DEFAULT_V@)
-AM_V_HLEXC_0   = @echo "  HLEXC    $@";
+AM_V_HLEXC      = $(AM_V_HLEXC_@AM_V@)
+AM_V_HLEXC_     = $(AM_V_HLEXC_@AM_DEFAULT_V@)
+AM_V_HLEXC_0    = @echo "  HLEXC    $@";
 
-AM_V_INTRSCT   = $(AM_V_INTRSCT_@AM_V@)
-AM_V_INTRSCT_  = $(AM_V_INTRSCT_@AM_DEFAULT_V@)
-AM_V_INTRSCT_0 = @echo "  INTRSCT  $@";
+AM_V_INTRSCT    = $(AM_V_INTRSCT_@AM_V@)
+AM_V_INTRSCT_   = $(AM_V_INTRSCT_@AM_DEFAULT_V@)
+AM_V_INTRSCT_0  = @echo "  INTRSCT  $@";
 
-AM_V_INVERT    = $(AM_V_INVERT_@AM_V@)
-AM_V_INVERT_   = $(AM_V_INVERT_@AM_DEFAULT_V@)
-AM_V_INVERT_0  = @echo "  INVERT   $@";
+AM_V_INVERT     = $(AM_V_INVERT_@AM_V@)
+AM_V_INVERT_    = $(AM_V_INVERT_@AM_DEFAULT_V@)
+AM_V_INVERT_0   = @echo "  INVERT   $@";
 
-AM_V_RGX2FST   = $(AM_V_RGX2FST_@AM_V@)
-AM_V_RGX2FST_  = $(AM_V_RGX2FST_@AM_DEFAULT_V@)
-AM_V_RGX2FST_0 = @echo "  RGX2FST  $@";
+AM_V_RGX2FST    = $(AM_V_RGX2FST_@AM_V@)
+AM_V_RGX2FST_   = $(AM_V_RGX2FST_@AM_DEFAULT_V@)
+AM_V_RGX2FST_0  = @echo "  RGX2FST  $@";
 
-AM_V_FST2TXT   = $(AM_V_FST2TXT_@AM_V@)
-AM_V_FST2TXT_  = $(AM_V_FST2TXT_@AM_DEFAULT_V@)
-AM_V_FST2TXT_0 = @echo "  FST2TXT  $@";
+AM_V_FST2TXT    = $(AM_V_FST2TXT_@AM_V@)
+AM_V_FST2TXT_   = $(AM_V_FST2TXT_@AM_DEFAULT_V@)
+AM_V_FST2TXT_0  = @echo "  FST2TXT  $@";
 
-AM_V_FST2FST   = $(AM_V_FST2FST_@AM_V@)
-AM_V_FST2FST_  = $(AM_V_FST2FST_@AM_DEFAULT_V@)
-AM_V_FST2FST_0 = @echo "  FST2FST  $@";
+AM_V_FST2FST    = $(AM_V_FST2FST_@AM_V@)
+AM_V_FST2FST_   = $(AM_V_FST2FST_@AM_DEFAULT_V@)
+AM_V_FST2FST_0  = @echo "  FST2FST  $@";
 
-AM_V_PROJECT   = $(AM_V_PROJECT_@AM_V@)
-AM_V_PROJECT_  = $(AM_V_PROJECT_@AM_DEFAULT_V@)
-AM_V_PROJECT_0 = @echo "  PROJECT  $@";
+AM_V_STR2FST    = $(AM_V_STR2FST_@AM_V@)
+AM_V_STR2FST_   = $(AM_V_STR2FST_@AM_DEFAULT_V@)
+AM_V_STR2FST_0  = @echo "  STR2FST  $@";
 
-AM_V_HSUBST    = $(AM_V_HSUBST_@AM_V@)
-AM_V_HSUBST_   = $(AM_V_HSUBST_@AM_DEFAULT_V@)
-AM_V_HSUBST_0  = @echo "  HSUBST   $@";
+AM_V_PROJECT    = $(AM_V_PROJECT_@AM_V@)
+AM_V_PROJECT_   = $(AM_V_PROJECT_@AM_DEFAULT_V@)
+AM_V_PROJECT_0  = @echo "  PROJECT  $@";
 
-AM_V_HXFST     = $(AM_V_HXFST_@AM_V@)
-AM_V_HXFST_    = $(AM_V_HXFST_@AM_DEFAULT_V@)
-AM_V_HXFST_0   = @echo "  HXFST    $@";
+AM_V_HSUBST     = $(AM_V_HSUBST_@AM_V@)
+AM_V_HSUBST_    = $(AM_V_HSUBST_@AM_DEFAULT_V@)
+AM_V_HSUBST_0   = @echo "  HSUBST   $@";
 
-AM_V_HFOMA     = $(AM_V_HFOMA_@AM_V@)
-AM_V_HFOMA_    = $(AM_V_HFOMA_@AM_DEFAULT_V@)
-AM_V_HFOMA_0   = @echo "  HFOMA    $@";
+AM_V_REWEIGHT   = $(AM_V_REWEIGHT_@AM_V@)
+AM_V_REWEIGHT_  = $(AM_V_REWEIGHT_@AM_DEFAULT_V@)
+AM_V_REWEIGHT_0 = @echo "  REWEIGHT $@";
 
-AM_V_HTWOLC    = $(AM_V_HTWOLC_@AM_V@)
-AM_V_HTWOLC_   = $(AM_V_HTWOLC_@AM_DEFAULT_V@)
-AM_V_HTWOLC_0  = @echo "  HTWOLC   $@";
+AM_V_HXFST      = $(AM_V_HXFST_@AM_V@)
+AM_V_HXFST_     = $(AM_V_HXFST_@AM_DEFAULT_V@)
+AM_V_HXFST_0    = @echo "  HXFST    $@";
 
-AM_V_HFSTOL    = $(AM_V_HFSTOL_@AM_V@)
-AM_V_HFSTOL_   = $(AM_V_HFSTOL_@AM_DEFAULT_V@)
-AM_V_HFSTOL_0  = @echo "  HFSTOL   $@";
+AM_V_HFOMA      = $(AM_V_HFOMA_@AM_V@)
+AM_V_HFOMA_     = $(AM_V_HFOMA_@AM_DEFAULT_V@)
+AM_V_HFOMA_0    = @echo "  HFOMA    $@";
+
+AM_V_HTWOLC     = $(AM_V_HTWOLC_@AM_V@)
+AM_V_HTWOLC_    = $(AM_V_HTWOLC_@AM_DEFAULT_V@)
+AM_V_HTWOLC_0   = @echo "  HTWOLC   $@";
+
+AM_V_HFSTOL     = $(AM_V_HFSTOL_@AM_V@)
+AM_V_HFSTOL_    = $(AM_V_HFSTOL_@AM_DEFAULT_V@)
+AM_V_HFSTOL_0   = @echo "  HFSTOL   $@";
+
+AM_V_UNION      = $(AM_V_UNION_@AM_V@)
+AM_V_UNION_     = $(AM_V_UNION_@AM_DEFAULT_V@)
+AM_V_UNION_0    = @echo "  UNION    $@";
+
+AM_V_HCONCAT    = $(AM_V_HCONCAT_@AM_V@)
+AM_V_HCONCAT_   = $(AM_V_HCONCAT_@AM_DEFAULT_V@)
+AM_V_HCONCAT_0  = @echo "  HCONCAT  $@";
 
 #### Xerox tools
-AM_V_TWOLC     = $(AM_V_TWOLC_@AM_V@)
-AM_V_TWOLC_    = $(AM_V_TWOLC_@AM_DEFAULT_V@)
-AM_V_TWOLC_0   = @echo "  TWOLC    $@";
+AM_V_TWOLC      = $(AM_V_TWOLC_@AM_V@)
+AM_V_TWOLC_     = $(AM_V_TWOLC_@AM_DEFAULT_V@)
+AM_V_TWOLC_0    = @echo "  TWOLC    $@";
 
-AM_V_LEXC      = $(AM_V_LEXC_@AM_V@)
-AM_V_LEXC_     = $(AM_V_LEXC_@AM_DEFAULT_V@)
-AM_V_LEXC_0    = @echo "  LEXC     $@";
+AM_V_LEXC       = $(AM_V_LEXC_@AM_V@)
+AM_V_LEXC_      = $(AM_V_LEXC_@AM_DEFAULT_V@)
+AM_V_LEXC_0     = @echo "  LEXC     $@";
 
-AM_V_XFST      = $(AM_V_XFST_@AM_V@)
-AM_V_XFST_     = $(AM_V_XFST_@AM_DEFAULT_V@)
-AM_V_XFST_0    = @echo "  XFST     $@";
+AM_V_XFST       = $(AM_V_XFST_@AM_V@)
+AM_V_XFST_      = $(AM_V_XFST_@AM_DEFAULT_V@)
+AM_V_XFST_0     = @echo "  XFST     $@";
 
 #### VislCG3
-AM_V_CGCOMP    = $(AM_V_CGCOMP_@AM_V@)
-AM_V_CGCOMP_   = $(AM_V_CGCOMP_@AM_DEFAULT_V@)
-AM_V_CGCOMP_0  = @echo "  CG3COMP  $@";
+AM_V_CGCOMP     = $(AM_V_CGCOMP_@AM_V@)
+AM_V_CGCOMP_    = $(AM_V_CGCOMP_@AM_DEFAULT_V@)
+AM_V_CGCOMP_0   = @echo "  CG3COMP  $@";
 
 #### Other tools
-AM_V_CP        = $(AM_V_CP_@AM_V@)
-AM_V_CP_       = $(AM_V_CP_@AM_DEFAULT_V@)
-AM_V_CP_0      = @echo "  CP       $@";
+AM_V_CP         = $(AM_V_CP_@AM_V@)
+AM_V_CP_        = $(AM_V_CP_@AM_DEFAULT_V@)
+AM_V_CP_0       = @echo "  CP       $@";
 
-AM_V_GZIP      = $(AM_V_GZIP_@AM_V@)
-AM_V_GZIP_     = $(AM_V_GZIP_@AM_DEFAULT_V@)
-AM_V_GZIP_0    = @echo "  GZIP     $@";
+AM_V_GZIP       = $(AM_V_GZIP_@AM_V@)
+AM_V_GZIP_      = $(AM_V_GZIP_@AM_DEFAULT_V@)
+AM_V_GZIP_0     = @echo "  GZIP     $@";
 
-AM_V_SAXON     = $(AM_V_SAXON_@AM_V@)
-AM_V_SAXON_    = $(AM_V_SAXON_@AM_DEFAULT_V@)
-AM_V_SAXON_0   = @echo "  SAXON    $@";
+AM_V_SAXON      = $(AM_V_SAXON_@AM_V@)
+AM_V_SAXON_     = $(AM_V_SAXON_@AM_DEFAULT_V@)
+AM_V_SAXON_0    = @echo "  SAXON    $@";
 
-AM_V_XSLPROC   = $(AM_V_XSLPROC_@AM_V@)
-AM_V_XSLPROC_  = $(AM_V_XSLPROC_@AM_DEFAULT_V@)
-AM_V_XSLPROC_0 = @echo "  XSLPROC  $@";
+AM_V_XSLPROC    = $(AM_V_XSLPROC_@AM_V@)
+AM_V_XSLPROC_   = $(AM_V_XSLPROC_@AM_DEFAULT_V@)
+AM_V_XSLPROC_0  = @echo "  XSLPROC  $@";
 
-AM_V_AWK       = $(AM_V_AWK_@AM_V@)
-AM_V_AWK_      = $(AM_V_AWK_@AM_DEFAULT_V@)
-AM_V_AWK_0     = @echo "  AWK      $@";
+AM_V_AWK        = $(AM_V_AWK_@AM_V@)
+AM_V_AWK_       = $(AM_V_AWK_@AM_DEFAULT_V@)
+AM_V_AWK_0      = @echo "  AWK      $@";
 
-AM_V_SED       = $(AM_V_SED_@AM_V@)
-AM_V_SED_      = $(AM_V_SED_@AM_DEFAULT_V@)
-AM_V_SED_0     = @echo "  SED      $@";
+AM_V_SED        = $(AM_V_SED_@AM_V@)
+AM_V_SED_       = $(AM_V_SED_@AM_DEFAULT_V@)
+AM_V_SED_0      = @echo "  SED      $@";
 
-AM_V_FORREST   = $(AM_V_FORREST_@AM_V@)
-AM_V_FORREST_  = $(AM_V_FORREST_@AM_DEFAULT_V@)
-AM_V_FORREST_0 = @echo "  FORREST  $@";
+AM_V_FORREST    = $(AM_V_FORREST_@AM_V@)
+AM_V_FORREST_   = $(AM_V_FORREST_@AM_DEFAULT_V@)
+AM_V_FORREST_0  = @echo "  FORREST  $@";
 
 # Let the verbosity of some command line tools follow the automake verbosity.
-# VERBOSITY      = be quiet if V=0, unspecified otherwise
-# MORE_VERBOSITY = be quiet if V=0, be verbose otherwise
+# VERBOSITY       = be quiet if V=0, unspecified otherwise
+# MORE_VERBOSITY  = be quiet if V=0, be verbose otherwise
 VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
 MORE_VERBOSITY=$(if $(strip $(filter-out false,$(AM_V_P))),-v,-q)

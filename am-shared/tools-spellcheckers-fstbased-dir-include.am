@@ -76,10 +76,10 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
 				 $(srcdir)/weighting/word-boundary.relabel \
 				 $(CORPUSNAME).weight_scaling.txt
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) \
-			-i $< -l "10000" \
+			-i $< -l "$(NORMALISED_MAXWEIGHT)" \
 			--multiplier="$$(cat $(CORPUSNAME).weight_scaling.txt)" \
 		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) \
-			-u "10" --multiplier="10" \
+			-u "$(NORMALISED_MAXWEIGHT)" --multiplier="10" \
 		| $(HFST_REMOVE_EPSILONS)     $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_PUSH_WEIGHTS) -p end $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_DETERMINIZE)  -E     $(MORE_VERBOSITY) $(HFST_FLAGS) \
@@ -91,7 +91,7 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
 %-tag_weighted.hfst: %-norm_weighted.hfst  \
 				 	 $(srcdir)/weighting/$(TAGWEIGHTS)
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-T $(srcdir)/weighting/$(TAGWEIGHTS) --end-states-only -i $< \
+			-T $(srcdir)/weighting/$(TAGWEIGHTS) --arcs-only -i $< \
 		| $(HFST_REMOVE_EPSILONS)     $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_PUSH_WEIGHTS) -p end $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_DETERMINIZE)  -E     $(MORE_VERBOSITY) $(HFST_FLAGS) \

@@ -27,7 +27,7 @@ UW_SPELLER_SRC=generator-fstspeller-gt-norm-comp_restricted.hfst
 TAGWEIGHTS=tags.reweight
 # ALPHA for additive smoothing, [0, 1.0] seems good
 ALPHA=1.0
-NORMALISED_MAXWEIGHT=500
+NORMALISED_MAXWEIGHT=1000
 
 %.hfst: weighting/%.att
 	$(AM_V_GEN)$(HFST_TXT2FST) $(HFST_FLAGS) -f openfst-tropical $< -o $@

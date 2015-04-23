@@ -1399,8 +1399,9 @@ MAP:spred<obj (@SPRED<OBJ) TARGET Acc (*-1 Nom BARRIER NOT-NPMODADV LINK *-1 COP
 	#$ Dain lea fáktemuš juohke balvva.
 	#% Divššohasas lea vuoigatvuohta iežas journála geahččat
 
-SET NOT-EXT = TIME-N OR A OR Pers OR Dem OR Rel OR ("dálki") OR OKTA ; 
+SET NOT-EXT = TIME-N OR A OR Pers OR Dem OR Rel OR ("dálki") OR OKTA OR Actio ; 
 LIST A-EXT = "riekta" "vejolaš" ;
+
  
 #!! * __Hab<subj__ (<ext> @<SUBJ) for Nom; if copulas, goallut or jápmit is FMAINV and habitive or human Loc is found to the left. OR: if Ill or @Pron< followed by HAB are found to the left.
 MAP:Hab<subj (<ext> @<SUBJ) TARGET Nom - NOT-EXT OR A-EXT + Nom ((*-1 ("leat") + FMAINV + HAB-V-TAGS BARRIER NOT-NPMODADV LINK *-1 <hab> OR HUMAN + HAB-CASE BARRIER SV-BOUNDARY) OR (*-1 Ill OR @Pron< OR Po BARRIER NOT-NPMOD OR COMMA LINK *-1 ("leat") + FMAINV + HAB-V-TAGS BARRIER NOT-NPMODADV LINK *-1 <hab> BARRIER SV-BOUNDARY)) ;

@@ -47,12 +47,16 @@ if WANT_VOIKKO
 voikkosharedir=$(libdir)/voikko/3/
 #! @param GT_VOIKKO optional, set to spell checker automata names if
 #!					installable
-voikkoshare_DATA=$(GT_SPELLING_HFST)
+voikkoshare_DATA=$(GT_SPELLING_HFST) $(ALT_WS_ZHFST_FILES)
 endif # WANT_VOIKKO
 endif # CAN_HFST
 endif # WANT_SPELLERS
 
-noinst_DATA=$(GT_ERRMODELS) $(OXT_FILES) $(MACVOIKKOFILE) $(MACVKOFST)
+noinst_DATA=$(GT_ERRMODELS) \
+			$(OXT_FILES) \
+			$(ALT_WS_OXT_FILES) \
+			$(MACVOIKKOFILE) \
+			$(MACVKOFST)
 
 ###################################
 ####### HFST build rules: #########
@@ -79,8 +83,8 @@ easteregg.hfst: easteregg.txt
 
 ####### Error model: #######
 # Error model building - edit distance based on transducer alphabet:
-editdist.%.hfst: editdist.%.txt $(GT_SPELLER_ACCEPTOR)
-	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py -v -s -d 1 -e '@0@' -i $<   \
+editdist.default.hfst: editdist.default.txt $(GT_SPELLER_ACCEPTOR)
+	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py -v -s -d 1 -e '@0@' -i $< \
 		-a $(GT_SPELLER_ACCEPTOR) \
 		| $(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' -o $@
 
@@ -90,7 +94,7 @@ anystar.hfst:
 
 # Error model building - list of strings known to be misspelled:
 strings.%.hfst: strings.%.txt anystar.hfst
-	$(AM_V_GEN)grep -v '^#' $< | grep -v '^$$'   \
+	$(AM_V_GEN)grep -v '^#' $< | grep -v '^$$' \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
 		| $(HFST_CONCATENATE)   anystar.hfst - \
 		| $(HFST_CONCATENATE) - anystar.hfst   \
@@ -123,11 +127,8 @@ errmodel.%.hfst: errmodel.%.regex easteregg.suggs.hfst
 
 ####### Speller acceptor: #######
 # Build the automaton used for the speller
-$(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST) easteregg.hfst \
-						$(top_builddir)/src/filters/remove-word-boundary.hfst
+$(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST) easteregg.hfst
 	$(AM_V_GEN)cat $< \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 $(top_builddir)/src/filters/remove-word-boundary.hfst \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
 		| $(HFST_MINIMIZE_SPELLER) $(HFST_FLAGS)        \
 		| $(HFST_DISJUNCT) - easteregg.hfst             \
@@ -140,119 +141,20 @@ $(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST) easteregg.hfst \
 $(GT_SPELLING_HFST): index.xml \
 					 $(GT_ERRMODELS) \
 					 $(GT_SPELLER_ACCEPTOR)
-	$(AM_V_GEN)rm -f $@ && $(ZIP) $(ZIPFLAGS) -j $@ $^ && \
-		$(MKDIR_P) 3 && \
-		cp -f $@ 3/
-
-####### Distribution files, *.oxt and MacVoikko : #######
-
-OXT_FILES=
-MACVOIKKOFILE=
-
-if WANT_SPELLERS
-if CAN_HFST
-if CAN_LOCALSYNC
-
-# Generate target file names dynamically based on the variables VK_VERSIONS
-# and VK_PLATFORMS, whose cross product is available in VOIKKO_VERS_PLATFORMS.
-# The resulting file names follow this pattern:
-#
-#$(GTLANG2)_LO-voikko-3.4.1-win.oxt
-OXT_FILES+=$(addsuffix .oxt, \
-              $(addprefix $(GTLANG2)_LO-voikko-,$(VOIKKO_VERS_PLATFORMS)))
-
-# Generate target filename as follows:
-#
-# MacVoikko-North_Sami.service
-LANGSTRING=$(shell echo "${GTLANGUAGE}" | sed -e 's/ /_/g')
-MACVOIKKOFILE+=$(addsuffix .service,$(addsuffix $(LANGSTRING),MacVoikko-))
-MACVKOFST=$(MACVOIKKOFILE)/Contents/Resources/Dictionaries/3/$(GT_SPELLING_HFST)
-
-endif # CAN_LOCALSYNC
-endif # CAN_HFST
-endif # WANT_SPELLERS
-
-#### Voikko versions: ####
-# 3.4.1
-# 4.0
-#
-# These values corresponds to the version ID in the dir name of
-# the oxt template
-VK_VERSIONS=4.0
-
-# LO-Voikko platforms:
-VK_PLATFORMS=mac win
-
-VOIKKO_VERS_PLATFORMS=$(foreach version,$(VK_VERSIONS), \
-                    $(addprefix $(version)-,$(VK_PLATFORMS)))
-
-OXT_ROOT_DIR=$(GTHOME)/prooftools/toollibs/LibreOffice-voikko
-MACVKO_ROOT_DIR=$(GTHOME)/prooftools/toollibs/mac/MacVoikko
-
-#### OXT file: ####
-# Build receipt for OXT:
-# mkdir build dir
-# rsync into build/subdir
-# cp zhfst
-# modify oxt index file
-# zip build/subdir
-# copy to ./
-$(GTLANG2)_LO-voikko-%.oxt: $(GT_SPELLING_HFST)
-	$(AM_V_GEN)rm -f $@ && \
-		if [ -d "$(OXT_ROOT_DIR)/$*" ]; then \
-			$(MKDIR_P) build/$*/ && \
-			cd build/$* && \
-			$(RSYNC) -av $(VERBOSITY) $(OXT_ROOT_DIR)/$*/ ./ && \
-			cp ../../$< 3/ && \
-			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
-		else \
-			echo "  SKIP     $@: Not yet supported." ; \
-		fi
-
-#### MacVoikko: ####
-# create package dir
-# rsynk package content from template
-# cp zhfst file
-# replace und language code with correct language code
-$(MACVOIKKOFILE)/Contents/Resources/Dictionaries/3/$(GT_SPELLING_HFST): \
-		$(GT_SPELLING_HFST) | $(MACVOIKKOFILE)
-	$(AM_V_CP)cp $< $@
-
-$(MACVOIKKOFILE):
-	$(AM_V_GEN)rm -rf $@ && \
-		if [ -d "$(MACVKO_ROOT_DIR)/MacVoikko.service" ]; then \
-			$(MKDIR_P) $@ && \
-			$(RSYNC) -av $(VERBOSITY) \
-				$(MACVKO_ROOT_DIR)/MacVoikko.service/ ./$@/ ; \
-		fi
-	$(AM_V_GEN)sed "s/<string>und<\/string>/<string>$(GTLANG2)<\/string>/" \
-		< ./$@/Contents/Info.plist > ./$@/Contents/Info.plist.tmp && \
-		mv -f ./$@/Contents/Info.plist.tmp ./$@/Contents/Info.plist
-
-#### Upload for distro: ####
-DATE=$(shell date +%Y%m%d)
-UPLOADSITE=sd@divvun.no:static_files/oxts
-
-upload: uploadoxt
-uploadoxt: $(OXT_FILES)
-	$(AM_V_GEN)for file in $^ ; do \
-		if [ -e $$file ]; then \
-			stem=$$(basename $$file .oxt) ; \
-			scp $$file $(UPLOADSITE)/$$stem-$(DATE).oxt ; \
-			ssh sd@divvun.no "cd staticfiles/oxts/ && \
-			ln -sf $$stem-$(DATE).oxt $$file" ; \
-			echo "  SYMLINK  $$file" ; \
-		fi \
-	done
+	$(AM_V_GEN)rm -f $@ && $(ZIP) $(ZIPFLAGS) -j $@ $^
+	$(AM_V_at)$(MKDIR_P) 3
+	$(AM_V_at)cp -f $@ 3/
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f  *.hfst *.xfst *.zhfst easteregg.*
-	-rm -rf 3 *.service
+	-rm -f  *.hfst *.xfst *.zhfst easteregg.* *.oxt
+	-rm -rf 3 *.service build
 	if ! [ "x$(CORPUSNAME)" = "x" ] ; then \
 		rm -f $(CORPUSNAME).* ; \
 	fi
 
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst_prods_n_upload-dir-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst_alt_ws-dir-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

@@ -73,14 +73,17 @@ AM_CONDITIONAL([HAVE_ALT_WSS], [test "x$ALT_WSS" != "x"])
 AC_SUBST([COUNTRIES], [""])
 AM_CONDITIONAL([HAVE_COUNTRIES], [test "x$COUNTRIES" != "x"])
 
-# Names for default and alternate orthographies. The names are free form, but
-# should be kept short. If only one orthography is used, leave the variables
-# empty. If there are alternate orthographies, also the default must have a name.
+# Names for default and alternate orthographies. The names must follow the BCP
+# 47 rules for private use subtags, which requires that the names must be at
+# most eight - 8 - characters long, and only contain ascii letters and digits.
+# If only one orthography is used, leave both variables empty. If there are
+# alternate orthographies, also the default must have a name.
 # It is assumed that conversion from the default orthography to the alternate
 # orthographies can be done programmatically with a regex or xfscript.
 AC_SUBST([DEFAULT_ORTH], [""])
 AC_SUBST([ALT_ORTHS], [""])
-AM_CONDITIONAL([HAVE_ALT_ORTHS], [test "x$ALT_ORTHS" != "x"] -a "x$DEFAULT_ORTH" != "x"])
+AM_CONDITIONAL([HAVE_ALT_ORTHS], [test "x$ALT_ORTHS" != "x" \
+                                    -a "x$DEFAULT_ORTH" != "x"])
 
 # Specify the tags for all dialects in this variable, leave it empty if you do
 # NOT support dialectal variant fst's. Use upper case, separate with space.

@@ -1,0 +1,119 @@
+## Process this file with automake to produce Makefile.in
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#### Define variables: ####
+if HAVE_ALT_WSS
+if CAN_HFST
+if WANT_SPELLERS
+
+# Define variables for targets to build the prerequisites for zhfst files:
+if WANT_SPELLERAUTOMAT
+GT_ALT_WS_ERRMODELS=$(shell for ld in $(ALT_WSS); do\
+    echo "errmodel.$$ld.hfst" ; \
+done)
+
+GT_ALT_WS_SPELLER_ACCEPTORS=$(shell for ld in $(ALT_WSS); do\
+    echo "acceptor.$$ld.hfst" ; \
+done)
+endif # WANT_SPELLERAUTOMAT
+
+# The zhfst file requires zip, which is checked when WANT_VOIKKO is true:
+if WANT_VOIKKO
+ALT_WS_ZHFST_FILES=$(shell for ld in $(ALT_WSS); do\
+    echo "$(GTLANG2)-$$ld.zhfst" ; \
+done)
+endif # WANT_VOIKKO
+
+# Variables for the final installable packages:
+if CAN_LOCALSYNC
+# Generate target file names dynamically based on VOIKKO_VERS_PLATFORMS.
+# The resulting file names follow this pattern:
+#
+#$(GTLANG2)-Cans_LO-voikko-3.4.1-win.oxt
+ALT_WS_OXT_FILES_TMP=$(foreach \
+						version,$(VOIKKO_VERS_PLATFORMS), \
+							$(addsuffix $(version), \
+								$(addsuffix _LO-voikko-, \
+			                      $(basename $(ALT_WS_ZHFST_FILES)))))
+ALT_WS_OXT_FILES=$(addsuffix .oxt, $(ALT_WS_OXT_FILES_TMP))
+
+# Generate target filename as follows:
+#
+# MacVoikko-Plains_Cree-crk-Cans.service
+ALT_WS_MACVOIKKO_STEM=$(shell for ld in $(ALT_WSS); do\
+    echo "$(MACVOIKKO_STEM)-$(GTLANG2)-$$ld.service" ; \
+done)
+MACVOIKKOFILE+=$(ALT_WS_MACVOIKKO_STEM)
+
+endif # CAN_LOCALSYNC
+
+endif # WANT_SPELLERS
+endif # CAN_HFST
+endif # HAVE_ALT_WSS
+
+#### Build rules: ####
+
+# Error model building - edit distance based on transducer alphabet:
+editdist.%.hfst: editdist.%.txt acceptor.%.hfst
+	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py -v -s -d 1 -e '@0@' -i $< \
+		-a acceptor.$*.hfst \
+		| $(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' -o $@
+
+# Build rule for acceptors for alternate writing systems:
+$(GT_ALT_WS_SPELLER_ACCEPTORS): \
+	acceptor.%.hfst: \
+		$(GT_SPELLER_HFST) easteregg.hfst \
+		$(top_builddir)/src/orthography/$(DEFAULT_WS)-to-%.compose.hfst
+	$(AM_V_GEN)cat $< \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+		  -2 $(top_builddir)/src/orthography/$(DEFAULT_WS)-to-$*.compose.hfst \
+		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
+		| $(HFST_MINIMIZE_SPELLER) $(HFST_FLAGS)        \
+		| $(HFST_DISJUNCT) - easteregg.hfst             \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw          \
+		-o $@
+
+# Build rule for zhfst files for alternate writing systems:
+$(ALT_WS_ZHFST_FILES): \
+	$(GTLANG2)-%.zhfst: \
+		$(srcdir)/index.%.xml \
+		acceptor.%.hfst \
+		errmodel.%.hfst
+	$(AM_V_at)rm -f $@
+	$(AM_V_at)$(MKDIR_P) build/$@
+	$(AM_V_at)rm -f build/$@/*
+	$(AM_V_at)cp $(srcdir)/index.$*.xml build/$@/index.xml
+	$(AM_V_at)cp acceptor.$*.hfst build/$@/acceptor.default.hfst
+	$(AM_V_at)cp errmodel.$*.hfst build/$@/errmodel.default.hfst
+	$(AM_V_GEN)cd build/$@/ && $(ZIP) $(ZIPFLAGS) ../../$@ *
+	$(AM_V_at)$(MKDIR_P) 3
+	$(AM_V_at)cp -f $@ 3/
+
+# Build rule for oxt files for alternate writing systems:
+$(GTLANG2)-%.oxt: $(ALT_WS_ZHFST_FILES)
+	$(AM_V_GEN)rm -f $@; \
+		ws="$$(echo $* | cut -d'_' -f1)"; \
+		version="$$(echo $* | cut -d'_' -f2 | sed 's/LO-voikko-//')"; \
+		if [ -d "$(OXT_ROOT_DIR)/$$version" ]; then \
+			$(MKDIR_P) build/$$version/ && \
+			cd build/$$version && \
+			$(RSYNC) -av $(VERBOSITY) $(OXT_ROOT_DIR)/$$version/ ./ && \
+			cp ../../$(GTLANG2)-$$ws.zhfst 3/ && \
+			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
+		else \
+			echo "  SKIP     $@: Not yet supported." ; \
+		fi

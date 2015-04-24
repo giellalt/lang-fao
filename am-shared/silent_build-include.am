@@ -116,6 +116,10 @@ AM_V_CP         = $(AM_V_CP_@AM_V@)
 AM_V_CP_        = $(AM_V_CP_@AM_DEFAULT_V@)
 AM_V_CP_0       = @echo "  CP       $@";
 
+AM_V_MV         = $(AM_V_MV_@AM_V@)
+AM_V_MV_        = $(AM_V_MV_@AM_DEFAULT_V@)
+AM_V_MV_0       = @echo "  MV       $@";
+
 AM_V_GZIP       = $(AM_V_GZIP_@AM_V@)
 AM_V_GZIP_      = $(AM_V_GZIP_@AM_DEFAULT_V@)
 AM_V_GZIP_0     = @echo "  GZIP     $@";

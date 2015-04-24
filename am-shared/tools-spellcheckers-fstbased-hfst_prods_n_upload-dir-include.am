@@ -1,0 +1,119 @@
+## Process this file with automake to produce Makefile.in
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+####### Distribution files, *.oxt and MacVoikko : #######
+
+OXT_FILES=
+MACVOIKKOFILE=
+
+if WANT_SPELLERS
+if CAN_HFST
+if CAN_LOCALSYNC
+
+# Generate target file names dynamically based on the variables VK_VERSIONS
+# and VK_PLATFORMS, whose cross product is available in VOIKKO_VERS_PLATFORMS.
+# The resulting file names follow this pattern:
+#
+#$(GTLANG2)_LO-voikko-3.4.1-win.oxt
+OXT_FILES+=$(addsuffix .oxt, \
+              $(addprefix $(GTLANG2)_LO-voikko-,$(VOIKKO_VERS_PLATFORMS)))
+
+# Generate target filename as follows:
+#
+# MacVoikko-North_Sami-se.service
+LANGSTRING=$(shell echo "${GTLANGUAGE}" | sed -e 's/ /_/g')
+MACVOIKKO_STEM=$(addsuffix $(LANGSTRING),MacVoikko-)
+MACVOIKKOFILE+=$(addsuffix .service,$(addsuffix -$(GTLANG2),$(MACVOIKKO_STEM)))
+#MACVKOFST=$(MACVOIKKOFILE)/Contents/Resources/Dictionaries/3/$(GT_SPELLING_HFST)
+
+endif # CAN_LOCALSYNC
+endif # CAN_HFST
+endif # WANT_SPELLERS
+
+#### Voikko versions: ####
+# 3.4.1
+# 4.0
+#
+# These values corresponds to the version ID in the dir name of
+# the oxt template
+VK_VERSIONS=4.0
+
+# LO-Voikko platforms:
+VK_PLATFORMS=mac win
+
+VOIKKO_VERS_PLATFORMS=$(foreach version,$(VK_VERSIONS), \
+                    $(addprefix $(version)-,$(VK_PLATFORMS)))
+
+OXT_ROOT_DIR=$(GTHOME)/prooftools/toollibs/LibreOffice-voikko
+MACVKO_ROOT_DIR=$(GTHOME)/prooftools/toollibs/mac/MacVoikko
+
+#### OXT file: ####
+# Build receipt for OXT:
+# mkdir build dir
+# rsync into build/subdir
+# cp zhfst
+# modify oxt index file
+# zip build/subdir
+# copy to ./
+$(GTLANG2)_LO-voikko-%.oxt: $(GT_SPELLING_HFST)
+	$(AM_V_GEN)rm -f $@ && \
+		if [ -d "$(OXT_ROOT_DIR)/$*" ]; then \
+			$(MKDIR_P) build/$*/ && \
+			cd build/$* && \
+			$(RSYNC) -av $(VERBOSITY) $(OXT_ROOT_DIR)/$*/ ./ && \
+			cp ../../$< 3/ && \
+			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
+		else \
+			echo "  SKIP     $@: Not yet supported." ; \
+		fi
+
+#### MacVoikko: ####
+# create package dir
+# rsynk package content from template
+# cp zhfst file
+# replace und language code with correct language code
+$(MACVOIKKO_STEM)-%.service: %.service
+	$(AM_V_MV)mv $< $@
+
+%.service: %.zhfst
+	$(AM_V_GEN)rm -rf $@ && \
+		if [ -d "$(MACVKO_ROOT_DIR)/MacVoikko.service" ]; then \
+			$(MKDIR_P) $@ && \
+			$(RSYNC) -av $(VERBOSITY) \
+				$(MACVKO_ROOT_DIR)/MacVoikko.service/ ./$@/ ; \
+		fi
+	$(AM_V_at)sed "s/<string>und<\/string>/<string>$*<\/string>/" \
+		< ./$@/Contents/Info.plist > ./$@/Contents/Info.plist.tmp
+	$(AM_V_at)mv -f ./$@/Contents/Info.plist.tmp ./$@/Contents/Info.plist
+	$(AM_V_at)cp $< $@/Contents/Resources/Dictionaries/3/$<
+
+#### Upload for distro: ####
+DATE=$(shell date +%Y%m%d)
+UPLOADSITE=sd@divvun.no:static_files/oxts
+
+upload: uploadoxt
+uploadoxt: $(OXT_FILES) $(ALT_WS_OXT_FILES)
+	$(AM_V_GEN)for file in $^ ; do \
+		if [ -e $$file ]; then \
+			stem=$$(basename $$file .oxt) ; \
+			scp $$file $(UPLOADSITE)/$$stem-$(DATE).oxt ; \
+			ssh sd@divvun.no "cd staticfiles/oxts/ && \
+			ln -sf $$stem-$(DATE).oxt $$file" ; \
+			echo "  SYMLINK  $$file" ; \
+		fi \
+	done
+

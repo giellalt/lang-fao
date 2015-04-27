@@ -111,7 +111,8 @@ $(GTLANG2)-%.oxt: $(ALT_WS_ZHFST_FILES)
 		if [ -d "$(OXT_ROOT_DIR)/$$version" ]; then \
 			$(MKDIR_P) build/$$version/ && \
 			cd build/$$version && \
-			$(RSYNC) -av $(VERBOSITY) $(OXT_ROOT_DIR)/$$version/ ./ && \
+			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) \
+					 $(OXT_ROOT_DIR)/$$version/ ./ && \
 			cp ../../$(GTLANG2)-$$ws.zhfst 3/ && \
 			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
 		else \

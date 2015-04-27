@@ -1,4 +1,10 @@
-$Rev: 111786 $
+$Rev: 111883 $
+Fixed a build bug for MacVoikko, causing the final target to always be out of
+date. Regulated verbosity for zhfst targets. The twolc testing scripts now
+print a message when there is no test data. The Hfst twolc testing script
+properly detects when there is no test data, and exits with the SKIP (77) value.
+
+r111786:
 Added support for alternate writing systems for spellers.
 
 r111627:

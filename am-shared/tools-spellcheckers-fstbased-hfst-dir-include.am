@@ -20,7 +20,7 @@ GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 
 # This is how we zip files to work with hfst-ospell and libvoikko
 # (=max compression, working from 28.1.2014 for all platforms):
-ZIPFLAGS=-9
+ZIPFLAGS=-9 $(VERBOSITY)
 
 ####### Automake targets: ########
 

@@ -18,18 +18,24 @@ EXTEDITOR=@SEE@
 if test -f ${SOURCEFILE} ; then
     if test -f ${HFSTFILE}; then
         if test -x ${HTWOLC}; then
-            ${HTWOLC} --xerox-mode \
-                -I ${SOURCEFILE} \
-                -i ${HFSTFILE}   \
-                -o ${TESTRESULT}
-            hfst_exit=$?
-            if test $hfst_exit != 0; then
-                if test x$EXTEDITOR != "x"; then
-                    $EXTEDITOR ${TESTRESULT}
+            if $(egrep "(^!€|^!$)" ${SOURCEFILE}); then
+                ${HTWOLC} --xerox-mode \
+                    -I ${SOURCEFILE} \
+                    -i ${HFSTFILE}   \
+                    -o ${TESTRESULT}
+                hfst_exit=$?
+                if test $hfst_exit != 0; then
+                    if test x$EXTEDITOR != "x"; then
+                        $EXTEDITOR ${TESTRESULT}
+                    fi
+                    exit 1
                 fi
-                exit 1
+                rm -f ${TWOLCSCRIPT} ${TESTDATA} ${TESTRESULT}.*
+            else
+                echo "    No test pairs in ${SOURCEFILE}"
+                exit 77
             fi
-            rm -f ${TWOLCSCRIPT} ${TESTDATA} ${TESTRESULT}.*
+            rm -f ${TESTRESULT}.*
         else
             echo ${HTWOLC} was not found
             exit 77

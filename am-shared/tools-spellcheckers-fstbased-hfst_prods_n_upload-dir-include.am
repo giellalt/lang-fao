@@ -17,6 +17,14 @@
 
 ####### Distribution files, *.oxt and MacVoikko : #######
 
+# rsync options: do not use -av - -v is for verbosity, and that is now
+# controlled by $(VERBOSITY). -a implies -t, which keeps the timestamp from the
+# source location. This makes the rsynced files look older than the source for
+# 'make', causing the targets built using rsync to be constantly out-of-date,
+# and thus constantly being rebuilt. The option list given corresponds to
+# -a without the -t option.
+RSYNC_OPTIONS=-rlpgoD
+
 OXT_FILES=
 MACVOIKKOFILE=
 
@@ -62,19 +70,17 @@ OXT_ROOT_DIR=$(GTHOME)/prooftools/toollibs/LibreOffice-voikko
 MACVKO_ROOT_DIR=$(GTHOME)/prooftools/toollibs/mac/MacVoikko
 
 #### OXT file: ####
-# Build receipt for OXT:
-# mkdir build dir
-# rsync into build/subdir
-# cp zhfst
-# modify oxt index file
-# zip build/subdir
-# copy to ./
+# - mkdir build dir
+# - rsync into build/subdir
+# - cp zhfst
+# - modify oxt index file - (?) - looks like this is not done anymore.
+# - zip build/subdir to ./
 $(GTLANG2)_LO-voikko-%.oxt: $(GT_SPELLING_HFST)
 	$(AM_V_GEN)rm -f $@ && \
 		if [ -d "$(OXT_ROOT_DIR)/$*" ]; then \
 			$(MKDIR_P) build/$*/ && \
 			cd build/$* && \
-			$(RSYNC) -av $(VERBOSITY) $(OXT_ROOT_DIR)/$*/ ./ && \
+			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) $(OXT_ROOT_DIR)/$*/ ./ && \
 			cp ../../$< 3/ && \
 			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
 		else \
@@ -82,18 +88,19 @@ $(GTLANG2)_LO-voikko-%.oxt: $(GT_SPELLING_HFST)
 		fi
 
 #### MacVoikko: ####
-# create package dir
-# rsynk package content from template
-# cp zhfst file
-# replace und language code with correct language code
+# - create package dir
+# - rsynk package content from template
+# - cp zhfst file
+# - replace und language code with correct language code
 $(MACVOIKKO_STEM)-%.service: %.service
+	$(AM_V_at)rm -rf $@/
 	$(AM_V_MV)mv $< $@
 
 %.service: %.zhfst
 	$(AM_V_GEN)rm -rf $@ && \
 		if [ -d "$(MACVKO_ROOT_DIR)/MacVoikko.service" ]; then \
 			$(MKDIR_P) $@ && \
-			$(RSYNC) -av $(VERBOSITY) \
+			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) \
 				$(MACVKO_ROOT_DIR)/MacVoikko.service/ ./$@/ ; \
 		fi
 	$(AM_V_at)sed "s/<string>und<\/string>/<string>$*<\/string>/" \
@@ -116,4 +123,3 @@ uploadoxt: $(OXT_FILES) $(ALT_WS_OXT_FILES)
 			echo "  SYMLINK  $$file" ; \
 		fi \
 	done
-

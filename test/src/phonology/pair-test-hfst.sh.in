@@ -18,7 +18,7 @@ EXTEDITOR=@SEE@
 if test -f ${SOURCEFILE} ; then
     if test -f ${HFSTFILE}; then
         if test -x ${HTWOLC}; then
-            if $(egrep "(^!€|^!$)" ${SOURCEFILE}); then
+            if $(egrep -q "(^!€|^!$)" ${SOURCEFILE}); then
                 ${HTWOLC} --xerox-mode \
                     -I ${SOURCEFILE} \
                     -i ${HFSTFILE}   \

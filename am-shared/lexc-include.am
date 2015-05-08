@@ -31,4 +31,11 @@
 			-e "save stack $@ " \
 			-stop
 
+####### Foma build rules: #######
+%.foma: %.lexc
+	$(AM_V_FOMA)$(FOMA) $(VERBOSITY) \
+			-e "read lexc $^" \
+			-e "save stack $@ " \
+			-s
+
 # vim: set ft=automake:

@@ -93,6 +93,11 @@ AM_V_HCONCAT    = $(AM_V_HCONCAT_@AM_V@)
 AM_V_HCONCAT_   = $(AM_V_HCONCAT_@AM_DEFAULT_V@)
 AM_V_HCONCAT_0  = @echo "  HCONCAT  $@";
 
+#### Foma
+AM_V_FOMA      = $(AM_V_FOMA_@AM_V@)
+AM_V_FOMA_     = $(AM_V_FOMA_@AM_DEFAULT_V@)
+AM_V_FOMA_0    = @echo "  FOMA     $@";
+
 #### Xerox tools
 AM_V_TWOLC      = $(AM_V_TWOLC_@AM_V@)
 AM_V_TWOLC_     = $(AM_V_TWOLC_@AM_DEFAULT_V@)

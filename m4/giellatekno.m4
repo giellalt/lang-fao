@@ -197,6 +197,34 @@ AM_CONDITIONAL([CAN_XFST], [test "x$gt_prog_xfst" != xno])
 ]) # gt_PROG_XFST
 
 ################################################################################
+# Define functions for checking the availability of the Foma tools:
+################################################################################
+AC_DEFUN([gt_PROG_FOMA],
+[AC_ARG_WITH([foma],
+            [AS_HELP_STRING([--with-foma=DIRECTORY],
+                            [search foma in DIRECTORY @<:@default=PATH@:>@])],
+            [with_foma=$withval],
+            [with_foma=no])
+
+# If Xerox tools and Hfst are not found, assume we want Foma:
+AS_IF([test x$gt_prog_xfst = xno -a x$gt_prog_hfst = xno], [with_foma=yes])
+
+AC_PATH_PROG([PRINTF], [printf], [echo -n])
+AC_PATH_PROG([FOMA], [foma], [false], [$PATH$PATH_SEPARATOR$with_foma])
+AC_PATH_PROG([FLOOKUP], [flookup], [false], [$PATH$PATH_SEPARATOR$with_foma])
+AC_PATH_PROG([CGFLOOKUP], [cgflookup], [false], [$PATH$PATH_SEPARATOR$with_foma])
+AC_MSG_CHECKING([whether to enable foma building])
+AS_IF([test x$with_foma != xno], [
+    AS_IF([test "x$FOMA"      != xfalse -a \
+                "x$FLOOKUP"   != xfalse -a \
+                "x$CGFLOOKUP" != xfalse  ], [gt_prog_foma=yes],
+          [gt_prog_foma=no])
+], [gt_prog_foma=no])
+AC_MSG_RESULT([$gt_prog_foma])
+AM_CONDITIONAL([CAN_FOMA], [test "x$gt_prog_foma" != xno])
+]) # gt_PROG_FOMA
+
+################################################################################
 # Define functions for checking the availability of the VISLCG3 tools:
 ################################################################################
 AC_DEFUN([gt_PROG_VISLCG3],
@@ -481,12 +509,15 @@ cat<<EOF
 
 -- Building $PACKAGE_STRING:
 
-  -- basic packages (on by default except hfst and hyperminimisation): --
-  -- (either Xerox or Hfst is required; w/o Xerox, Hfst is automatically on) --
+  -- Fst build tools: Xerox, Hfst or Foma - at least one must be installed
+  -- Xerox is default on, the others off unless they are the only one present --
   * build Xerox fst's: $gt_prog_xfst
   * build HFST fst's: $gt_prog_hfst
     * hyperminimisation of lexical fst: $enable_hyperminimisation
     * slow but correct compose-intersect: $enable_twostep_intersect
+  * build Foma fst's: $gt_prog_foma
+
+  -- basic packages (on by default): --
   * analysers enabled: $enable_analysers
   * generators enabled: $enable_generators
   * transcriptors enabled: $enable_transcriptors

@@ -8,10 +8,8 @@ SUBDIRS = phonology morphology filters phonetics hyphenation orthography syntax 
 ####### Automake targets: ########
 
 # Define target variables first, before assigning to them:
-GT_ANALYSERS_HFST=
-GT_GENERATORS_HFST=
-GT_ANALYSERS_XFST=
-GT_GENERATORS_XFST=
+GT_ANALYSERS=
+GT_GENERATORS=
 
 #### Local modifications in *fst processing: ####
 ####
@@ -26,7 +24,7 @@ GT_GENERATORS_XFST=
 #### relevant variable, e.g.:
 ####
 #### if CAN_HFST
-#### GT_GENERATORS_HFST+=generator-oahpa-gt-norm.hfst
+#### GT_GENERATORS+=generator-oahpa-gt-norm.hfst
 #### endif
 ####
 #### NB!!!! The HFST targets should get a hyphen after 'analyser'/'generator'
@@ -46,16 +44,21 @@ GT_GENERATORS_XFST=
 
 #### Xerox transducers:
 if CAN_XFST
-GT_ANALYSERS_XFST+=
-GT_GENERATORS_XFST+=
+GT_ANALYSERS+=
+GT_GENERATORS+=
 endif # CAN_XFST
 
 #### HFST transducers
 if CAN_HFST
-GT_ANALYSERS_HFST+=
-GT_GENERATORS_HFST+=
+GT_ANALYSERS+=
+GT_GENERATORS+=
 endif # CAN_HFST
 
+#### FOMA transducers
+if CAN_FOMA
+GT_ANALYSERS+=
+GT_GENERATORS+=
+endif # CAN_FOMA
 
 #################################################
 #### Add language-specific build rules here: ####
@@ -63,26 +66,5 @@ endif # CAN_HFST
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
-
-#### HFST transducer fallback target:
-#### - inversion is needed FOR THE ANALYSER because the hfst model is upside
-#### down compared to Xerox AT APPLICATION TIME.
-analyser%.hfst: analyser%.tmp.hfst
-	$(AM_V_INVERT)$(HFST_INVERT) -i $< -o $@
-
-generator%.hfst: generator%.tmp.hfst
-	$(AM_V_CP)cp -f $< $@
-
-#### Xerox transducer fallback target:
-#### - inversion is needed in the final step for the GENERATOR.
-analyser%.xfst: analyser%.tmp.xfst
-	$(AM_V_CP)cp -f $< $@
-
-generator%.xfst: generator%.tmp.xfst
-	$(AM_V_XFST)$(PRINTF) "\
-		 load stack $<\n\
-		 invert net\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
 
 include $(top_srcdir)/am-shared/src-dir-include.am

@@ -122,11 +122,11 @@ gt_PROG_SCRIPTS_PATHS
 # Tests and sets up XFST
 gt_PROG_XFST
 
-# Tests and sets up HFST
-gt_PROG_HFST
-
 # Tests and sets up FOMA
 gt_PROG_FOMA
+
+# Tests and sets up HFST
+gt_PROG_HFST
 
 # Tests and sets up vislcg3
 gt_PROG_VISLCG3

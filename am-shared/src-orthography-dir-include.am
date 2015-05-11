@@ -43,6 +43,13 @@ GIELLA_ORTH_TARGETS+=$(patsubst %.regex,%.lookup.xfst,$(GT_ORTHOGRAPHIC_REGEX_SR
 GIELLA_ORTH_TARGETS+=$(patsubst %.regex,%.compose.xfst,$(GT_ORTHOGRAPHIC_REGEX_SRCS))
 endif
 
+if CAN_FOMA
+GIELLA_ORTH_TARGETS+=$(patsubst %.xfscript,%.lookup.foma,$(GT_ORTHOGRAPHIC_XFSCRIPT_SRCS))
+GIELLA_ORTH_TARGETS+=$(patsubst %.xfscript,%.compose.foma,$(GT_ORTHOGRAPHIC_XFSCRIPT_SRCS))
+GIELLA_ORTH_TARGETS+=$(patsubst %.regex,%.lookup.foma,$(GT_ORTHOGRAPHIC_REGEX_SRCS))
+GIELLA_ORTH_TARGETS+=$(patsubst %.regex,%.compose.foma,$(GT_ORTHOGRAPHIC_REGEX_SRCS))
+endif
+
 noinst_DATA=$(GIELLA_ORTH_TARGETS)
 
 ################################################################################
@@ -51,6 +58,10 @@ noinst_DATA=$(GIELLA_ORTH_TARGETS)
 ########## and Hfst. The following targets work around that.          ##########
 ################################################################################
 downcase-derived_proper-strings.xeroxscript: \
+		downcase-derived_proper-strings.xfscript
+	$(AM_V_SED)sed 's/@IF_HFST@/#/g; s/HYPMINFLAG//g' $^ > $@
+
+downcase-derived_proper-strings.fomascript: \
 		downcase-derived_proper-strings.xfscript
 	$(AM_V_SED)sed 's/@IF_HFST@/#/g; s/HYPMINFLAG//g' $^ > $@
 
@@ -68,6 +79,11 @@ downcase-derived_proper-strings.hfst: \
 downcase-derived_proper-strings.xfst: \
 		downcase-derived_proper-strings.xeroxscript
 	$(AM_V_XFST)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
+
+####### Foma build rules: #######
+downcase-derived_proper-strings.foma: \
+		downcase-derived_proper-strings.fomascript
+	$(AM_V_FOMA)$(FOMA) $(VERBOSITY) -l $< -e "save stack $@" -s
 ################################################################################
 ########## End of special build rules.                                ##########
 ################################################################################
@@ -82,7 +98,7 @@ downcase-derived_proper-strings.xfst: \
 ####### Other targets: ###########
 # The "clean" target:
 clean-local:
-	-rm -f *.hfst *.xfst
+	-rm -f *.hfst *.xfst *.foma
 
 ##########################################
 # General build rules included from here:#

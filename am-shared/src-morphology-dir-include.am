@@ -115,7 +115,7 @@ lexicon-L2.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_L2_SRCS) $(GENERATED_LEXC_SRCS)
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.all.* *fst *.script generated_files/*.lexc
+	-rm -f *.all.* *fst *.script generated_files/*.lexc lexicon.*
 
 maintainer-clean-local:
 	-rm -f $(GENERATED_LEXC_SRCS)

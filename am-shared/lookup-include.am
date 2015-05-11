@@ -52,4 +52,19 @@
 			-e "save stack $@ " \
 			-stop
 
+####### Foma build rules: #######
+
+# The fst used for composition should be taken as is, just copy:
+%.compose.foma: %.foma
+	$(AM_V_CP)cp $< $@
+
+# The lookup variant of the Xerox fst needs to be inverted, since Xerox turns
+# the fst upside down / backwards when doing lookup:
+%.lookup.foma: %.foma
+	$(AM_V_FOMA)$(FOMA) $(VERBOSITY) \
+			-e "load stack $<" \
+			-e "invert net" \
+			-e "save stack $@ " \
+			-s
+
 # vim: set ft=automake:

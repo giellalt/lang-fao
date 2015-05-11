@@ -10,13 +10,13 @@
 ####### Automake targets: ########
 if WANT_OAHPA
 if CAN_HFST
-GT_ANALYSERS_HFST+=analyser-oahpa-gt-norm.hfstol
-GT_GENERATORS_HFST+=generator-oahpa-gt-norm.hfstol \
+GT_ANALYSERS+=analyser-oahpa-gt-norm.hfstol
+GT_GENERATORS+=generator-oahpa-gt-norm.hfstol \
 					$(DIALECT_TARGETS_HFST)
 endif # CAN_HFST
 if CAN_XFST
-GT_ANALYSERS_XFST+=analyser-oahpa-gt-norm.xfst
-GT_GENERATORS_XFST+=generator-oahpa-gt-norm.xfst \
+GT_ANALYSERS+=analyser-oahpa-gt-norm.xfst
+GT_GENERATORS+=generator-oahpa-gt-norm.xfst \
 					$(DIALECT_TARGETS_XFST)
 endif # CAN_XFST
 endif # WANT_OAHPA
@@ -30,19 +30,19 @@ endif # HAVE_DIALECTS
 
 if WANT_L2
 if CAN_HFST
-GT_ANALYSERS_HFST+=analyser-oahpa-gt-error.hfstol
+GT_ANALYSERS+=analyser-oahpa-gt-error.hfstol
 endif # CAN_HFST
 if CAN_XFST
-GT_ANALYSERS_XFST+=analyser-oahpa-gt-error.xfst
+GT_ANALYSERS+=analyser-oahpa-gt-error.xfst
 endif # CAN_XFST
 endif # WANT_L2
 
 if WANT_DOWNCASEERROR
 if CAN_HFST
-GT_ANALYSERS_HFST+=analyser-oahpa-gt-downcaseerror.hfstol
+GT_ANALYSERS+=analyser-oahpa-gt-downcaseerror.hfstol
 endif # CAN_HFST
 if CAN_XFST
-GT_ANALYSERS_XFST+=analyser-oahpa-gt-downcaseerror.xfst
+GT_ANALYSERS+=analyser-oahpa-gt-downcaseerror.xfst
 endif # CAN_XFST
 endif # WANT_DOWNCASEERROR
 

@@ -28,4 +28,8 @@
 %.xfst: %.xfscript
 	$(AM_V_XFST)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
 
+####### Foma build rules: #######
+%.foma: %.xfscript
+	$(AM_V_FOMA)$(FOMA) $(VERBOSITY) -l $< -e "save stack $@" -s
+
 # vim: set ft=automake:

@@ -139,13 +139,19 @@ if CAN_HFST
 GIELLA_FILTER_TARGETS+=$(patsubst %.regex,%.hfst,$(REGEX_SRCS))
 GIELLA_FILTER_TARGETS+=$(patsubst %.xfscript,%.hfst,$(XFSCRIPT_SRCS))
 GIELLA_FILTER_TARGETS+=$(patsubst %.lexc,%.hfst,$(LEXC_SRCS))
-endif
+endif # CAN_HFST
 
 if CAN_XFST
 GIELLA_FILTER_TARGETS+=$(patsubst %.regex,%.xfst,$(REGEX_SRCS))
 GIELLA_FILTER_TARGETS+=$(patsubst %.xfscript,%.xfst,$(XFSCRIPT_SRCS))
 GIELLA_FILTER_TARGETS+=$(patsubst %.lexc,%.xfst,$(LEXC_SRCS))
-endif
+endif # CAN_XFST
+
+if CAN_FOMA
+GIELLA_FILTER_TARGETS+=$(patsubst %.regex,%.foma,$(REGEX_SRCS))
+GIELLA_FILTER_TARGETS+=$(patsubst %.xfscript,%.foma,$(XFSCRIPT_SRCS))
+GIELLA_FILTER_TARGETS+=$(patsubst %.lexc,%.foma,$(LEXC_SRCS))
+endif # CAN_FOMA
 
 # need to check way to list build targets like automake
 #! @param GIELLA_FILTER_LOCAL_SRCS required, contains all local additions
@@ -232,6 +238,7 @@ DIALECT_SUFFIXES=$(addsuffix -strings,$(DIALECT_PREFIXES))
 DIALECT_REGEXES=$(addsuffix .regex,$(DIALECT_SUFFIXES))
 DIALECT_TARGETS_XFST=$(addsuffix .xfst,$(DIALECT_SUFFIXES))
 DIALECT_TARGETS_HFST=$(addsuffix .hfst,$(DIALECT_SUFFIXES))
+DIALECT_TARGETS_FOMA=$(addsuffix .foma,$(DIALECT_SUFFIXES))
 
 endif # HAVE_DIALECTS
 
@@ -321,7 +328,7 @@ reorder-%-tags.regex: %-tags.txt
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.xfst *.txt $(GIELLA_FILTER_CORE_REGEX_SRCS)
+	-rm -f *.hfst *.xfst *.foma *.txt $(GIELLA_FILTER_CORE_REGEX_SRCS)
 
 # Include files for the actual build instructions and for verbosity control:
 include $(top_srcdir)/am-shared/regex-include.am

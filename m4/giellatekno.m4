@@ -513,8 +513,6 @@ cat<<EOF
   -- Xerox is default on, the others off unless they are the only one present --
   * build Xerox fst's: $gt_prog_xfst
   * build HFST fst's: $gt_prog_hfst
-    * hyperminimisation of lexical fst: $enable_hyperminimisation
-    * slow but correct compose-intersect: $enable_twostep_intersect
   * build Foma fst's: $gt_prog_foma
 
   -- basic packages (on by default): --
@@ -528,12 +526,9 @@ cat<<EOF
   -- proofing tools (off by default): --
   * spellers enabled: $enable_spellers
     * hfst speller fst's enabled: $enable_hfstspeller
-      * enable minimised speller: $enable_minimised_spellers
-    * voikko speller enabled: $enable_voikko
     * foma speller enabled: $enable_fomaspeller
     * hunspell generation enabled: $enable_hunspell
-  * hyphenators:
-    * fst hyphenator enabled: $enable_fst_hyphenator
+  * fst hyphenator enabled: $enable_fst_hyphenator
   * grammar checker enabled: $enable_grammarchecker
 
   -- specialised fst's (off by default): --
@@ -552,8 +547,6 @@ To build, test and install:
     make check
     make install
 EOF
-AS_IF([test x$gt_prog_xfst = xno -a x$gt_prog_hfst = xno],
-      [AC_MSG_WARN([Both XFST and HFST are disabled: no automata will be built])])
 AS_IF([test x$gt_prog_xslt = xno -a \
       "$(find ${srcdir}/src/morphology/stems -name "*.xml" | head -n 1)" != "" ],
       [AC_MSG_WARN([You have XML source files, but XML transformation to LexC is

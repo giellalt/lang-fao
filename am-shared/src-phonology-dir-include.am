@@ -35,11 +35,15 @@ GT_PHONOLOGY=
 if CAN_HFST
 GT_PHONOLOGY+=$(addsuffix .compose.hfst, $(basename $(GT_PHONOLOGY_SRCS)))
 GT_PHONOLOGY+=$(addsuffix .lookup.hfst,  $(basename $(GT_PHONOLOGY_SRCS)))
-endif
+endif # CAN_HFST
 if CAN_XFST
 GT_PHONOLOGY+=$(addsuffix .compose.xfst, $(basename $(GT_PHONOLOGY_SRCS)))
 GT_PHONOLOGY+=$(addsuffix .lookup.xfst,  $(basename $(GT_PHONOLOGY_SRCS)))
-endif
+endif # CAN_XFST
+if CAN_FOMA
+GT_PHONOLOGY+=$(addsuffix .compose.foma, $(basename $(GT_PHONOLOGY_SRCS)))
+GT_PHONOLOGY+=$(addsuffix .lookup.foma,  $(basename $(GT_PHONOLOGY_SRCS)))
+endif # CAN_FOMA
 
 if WANT_L2
 if CAN_HFST
@@ -50,13 +54,17 @@ if CAN_XFST
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.xfst
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.xfst
 endif # CAN_XFST
+if CAN_XFST
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.foma
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.foma
+endif # CAN_XFST
 endif # WANT_L2
 
 noinst_DATA=$(GT_PHONOLOGY)
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.xfst
+	-rm -f *.hfst *.xfst *.foma
 
 ##########################################
 # General build rules included from here:#

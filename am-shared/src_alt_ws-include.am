@@ -8,55 +8,44 @@
 # IFF alternative writing systems are defined:
 if HAVE_ALT_WSS
 
+# Define temporary variables to build final target filenames from:
+BASENAME_ANALYSERS_WS=$(sort $(basename $(GT_ANALYSERS)))
+ALT_WS_ANALYSERS_TMP=$(shell for ll in $(BASENAME_ANALYSERS_WS); do\
+    for ld in $(ALT_WSS); do\
+        echo "$$ll.$$ld" ;\
+    done ;\
+done)
+
+BASENAME_GENERATORS_WS=$(sort $(basename $(GT_GENERATORS)))
+ALT_WS_GENERATORS_TMP=$(shell for ll in $(BASENAME_GENERATORS_WS); do\
+    for ld in $(ALT_WSS); do\
+        echo "$$ll.$$ld" ;\
+    done ;\
+done)
+
+# Define variables before adding value:
+ALT_WS_ANALYSERS=
+ALT_WS_GENERATORS=
+
 ##### BEGIN Hfst target list #####
 if CAN_HFST
-
 if WANT_MORPHOLOGY
-BASENAME_ANALYSERS_HFST_WS=$(basename $(GT_ANALYSERS_HFST))
-ALT_WS_ANALYSERS_HFST_TMP=$(shell for ll in $(BASENAME_ANALYSERS_HFST_WS); do\
-    for ld in $(ALT_WSS); do\
-        echo "$$ll.$$ld" ;\
-    done ;\
-done)
-ALT_WS_ANALYSERS_HFST=$(addsuffix .hfstol,$(ALT_WS_ANALYSERS_HFST_TMP))
+ALT_WS_ANALYSERS+=$(addsuffix .hfstol,$(ALT_WS_ANALYSERS_TMP))
 endif # WANT_MORPHOLOGY
-
 if WANT_GENERATION
-BASENAME_GENERATORS_HFST_WS=$(basename $(GT_GENERATORS_HFST))
-ALT_WS_GENERATORS_HFST_TMP=$(shell for ll in $(BASENAME_GENERATORS_HFST_WS); do\
-    for ld in $(ALT_WSS); do\
-        echo "$$ll.$$ld" ;\
-    done ;\
-done)
-ALT_WS_GENERATORS_HFST=$(addsuffix .hfstol,$(ALT_WS_GENERATORS_HFST_TMP))
+ALT_WS_GENERATORS+=$(addsuffix .hfstol,$(ALT_WS_GENERATORS_TMP))
 endif # WANT_GENERATION
-
 endif # CAN_HFST
 ##### END Hfst target list #####
 
 ##### BEGIN Xerox target list #####
 if CAN_XFST
-
 if WANT_MORPHOLOGY
-BASENAME_ANALYSERS_XFST_WS=$(basename $(GT_ANALYSERS_XFST))
-ALT_WS_ANALYSERS_XFST_TMP=$(shell for ll in $(BASENAME_ANALYSERS_XFST_WS); do\
-    for ld in $(ALT_WSS); do\
-        echo "$$ll.$$ld" ;\
-    done ;\
-done)
-ALT_WS_ANALYSERS_XFST=$(addsuffix .xfst,$(ALT_WS_ANALYSERS_XFST_TMP))
+ALT_WS_ANALYSERS+=$(addsuffix .xfst,$(ALT_WS_ANALYSERS_TMP))
 endif # WANT_MORPHOLOGY
-
 if WANT_GENERATION
-BASENAME_GENERATORS_XFST_WS=$(basename $(GT_GENERATORS_XFST))
-ALT_WS_GENERATORS_XFST_TMP=$(shell for ll in $(BASENAME_GENERATORS_XFST_WS); do\
-    for ld in $(ALT_WSS); do\
-        echo "$$ll.$$ld" ;\
-    done ;\
-done)
-ALT_WS_GENERATORS_XFST=$(addsuffix .xfst,$(ALT_WS_GENERATORS_XFST_TMP))
+ALT_WS_GENERATORS+=$(addsuffix .xfst,$(ALT_WS_GENERATORS_TMP))
 endif # WANT_GENERATION
-
 endif # CAN_XFST
 ##### END Xerox target list #####
 

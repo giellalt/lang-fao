@@ -29,4 +29,11 @@
 	$(AM_V_XFST)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" \
 		| $(XFST) $(XFSTFLAGS) $(VERBOSITY)
 
+####### Foma build rules: #######
+
+# foma needs a script to read regex file
+.regex.foma:
+	$(AM_V_FOMA)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" \
+		| $(FOMA) $(FOMAFLAGS) $(VERBOSITY)
+
 # vim: set ft=automake:

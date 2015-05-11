@@ -6,15 +6,15 @@
 
 if WANT_DICTIONARIES
 if CAN_HFST
-GT_ANALYSERS_HFST+=analyser-dict-gt-desc.hfstol \
+GT_ANALYSERS+=analyser-dict-gt-desc.hfstol \
 				   analyser-dict-gt-desc-mobile.hfstol
-GT_GENERATORS_HFST+=generator-dict-gt-norm.hfstol
+GT_GENERATORS+=generator-dict-gt-norm.hfstol
 endif # CAN_HFST
 
 if CAN_XFST
-GT_ANALYSERS_XFST+=analyser-dict-gt-desc.xfst \
+GT_ANALYSERS+=analyser-dict-gt-desc.xfst \
 				   analyser-dict-gt-desc-mobile.xfst
-GT_GENERATORS_XFST+=generator-dict-gt-norm.xfst
+GT_GENERATORS+=generator-dict-gt-norm.xfst
 endif # CAN_XFST
 endif # WANT_DICTIONARIES
 

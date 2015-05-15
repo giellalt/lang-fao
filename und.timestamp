@@ -1,4 +1,11 @@
-$Rev: 113520 $
+$Rev: 113770 $
+Extended Foma support to alternate writing systems and orthographies. At the
+same time put to use a new idiom to handle multiple independent target
+variables / patterns, which will be useful in other contexts as well. The code
+was generalised using this new idiom, and effectively reduced to half the
+original code size, with much less duplicate code.
+
+r113520:
 First working version of foma builds. The basic set of analysers and generators
 are built, but nothing else. A lot of changes to variables and build rules,
 including generalisations that save quite a few lines of code.

@@ -54,334 +54,180 @@ endif # HAVE_ALT_ORTHS
 
 ####### Build rules for the default set of fst's for ########
 ####### alternate writing systems:                   ########
-analyser-gt-desc.%.tmp.hfst: generator-raw-gt-desc.hfst          \
-					filters/remove-adv_comp-tags.hfst            \
-					filters/remove-derivation-position-tags.hfst \
-					filters/remove-dialect-tags.hfst             \
-					filters/remove-norm-comp-tags.hfst           \
-					filters/remove-number-string-tags.hfst       \
-					filters/remove-usage-tags.hfst               \
-					filters/remove-semantic-tags.hfst            \
-					filters/remove-hyphenation-marks.hfst        \
-					filters/remove-infl_deriv-borders.hfst       \
-					filters/remove-word-boundary.hfst            \
-					filters/remove-orthography-tags.hfst         \
-					filters/remove-Orth_IPA-strings.hfst         \
-					filters/remove-orig_lang-tags.hfst           \
-					orthography/spellrelax.%.compose.hfst        \
-					orthography/$(DEFAULT_ORTH)-to-%.compose.hfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/remove-derivation-position-tags.hfst\" \
-			.o. @\"filters/remove-adv_comp-tags.hfst\"            \
-			.o. @\"filters/remove-dialect-tags.hfst\"             \
-			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
-			.o. @\"filters/remove-number-string-tags.hfst\"       \
-			.o. @\"filters/remove-usage-tags.hfst\"               \
-			.o. @\"filters/remove-semantic-tags.hfst\"            \
-			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
-			.o. @\"filters/remove-orthography-tags.hfst\"         \
-			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
-			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
-			.o. @\"filters/remove-word-boundary.hfst\"            \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$*.compose.hfst\" \
-			.o. @\"orthography/spellrelax.$*.compose.hfst\"       \
+define alt_orth_desc_analysers
+analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
+					filters/remove-adv_comp-tags.%             \
+					filters/remove-derivation-position-tags.%  \
+					filters/remove-dialect-tags.%              \
+					filters/remove-norm-comp-tags.%            \
+					filters/remove-number-string-tags.%        \
+					filters/remove-usage-tags.%                \
+					filters/remove-semantic-tags.%             \
+					filters/remove-hyphenation-marks.%         \
+					filters/remove-infl_deriv-borders.%        \
+					filters/remove-word-boundary.%             \
+					filters/remove-orthography-tags.%          \
+					filters/remove-Orth_IPA-strings.%          \
+					filters/remove-orig_lang-tags.%            \
+					orthography/spellrelax.$(1).compose.%      \
+					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
+	$$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-derivation-position-tags.$$*\"   \
+			.o. @\"filters/remove-adv_comp-tags.$$*\"              \
+			.o. @\"filters/remove-dialect-tags.$$*\"               \
+			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
+			.o. @\"filters/remove-number-string-tags.$$*\"         \
+			.o. @\"filters/remove-usage-tags.$$*\"                 \
+			.o. @\"filters/remove-semantic-tags.$$*\"              \
+			.o. @\"filters/remove-orig_lang-tags.$$*\"             \
+			.o. @\"filters/remove-orthography-tags.$$*\"           \
+			.o. @\"filters/remove-Orth_IPA-strings.$$*\"           \
+			.o. @\"$$<\"                                           \
+			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
+			.o. @\"filters/remove-word-boundary.$$*\"              \
+			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
+			.o. @\"orthography/spellrelax.$(1).compose.$$*\"       \
 			;\n\
-		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_desc_analysers,$(alt_orth))))
 
-analyser-gt-desc.%.tmp.xfst: analyser-raw-gt-desc.xfst           \
-					filters/remove-adv_comp-tags.xfst            \
-					filters/remove-derivation-position-tags.xfst \
-					filters/remove-dialect-tags.xfst             \
-					filters/remove-norm-comp-tags.xfst           \
-					filters/remove-number-string-tags.xfst       \
-					filters/remove-usage-tags.xfst               \
-					filters/remove-semantic-tags.xfst            \
-					filters/remove-hyphenation-marks.xfst        \
-					filters/remove-infl_deriv-borders.xfst       \
-					filters/remove-word-boundary.xfst            \
-					filters/remove-orthography-tags.xfst         \
-					filters/remove-Orth_IPA-strings.xfst         \
-					filters/remove-orig_lang-tags.xfst           \
-					orthography/spellrelax.%.compose.xfst        \
-					orthography/$(DEFAULT_ORTH)-to-%.compose.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/remove-derivation-position-tags.xfst\" \
-			.o. @\"filters/remove-adv_comp-tags.xfst\"            \
-			.o. @\"filters/remove-dialect-tags.xfst\"             \
-			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
-			.o. @\"filters/remove-number-string-tags.xfst\"       \
-			.o. @\"filters/remove-usage-tags.xfst\"               \
-			.o. @\"filters/remove-semantic-tags.xfst\"            \
-			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
-			.o. @\"filters/remove-orthography-tags.xfst\"         \
-			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
-			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
-			.o. @\"filters/remove-word-boundary.xfst\"            \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$*.compose.xfst\" \
-			.o. @\"orthography/spellrelax.$*.compose.xfst\"       \
+define alt_orth_norm_analysers
+analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
+					filters/remove-adv_comp-tags.%             \
+					filters/remove-derivation-position-tags.%  \
+					filters/remove-dialect-tags.%              \
+					filters/remove-variant-tags.%              \
+					filters/remove-norm-comp-tags.%            \
+					filters/remove-number-string-tags.%        \
+					filters/remove-usage-tags.%                \
+					filters/remove-error-strings.%             \
+					filters/remove-semantic-tags.%             \
+					filters/remove-hyphenation-marks.%         \
+					filters/remove-infl_deriv-borders.%        \
+					filters/remove-word-boundary.%             \
+					filters/remove-orthography-tags.%          \
+					filters/remove-Orth_IPA-strings.%          \
+					filters/remove-orig_lang-tags.%            \
+					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
+	$$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-derivation-position-tags.$$*\"   \
+			.o. @\"filters/remove-adv_comp-tags.$$*\"              \
+			.o. @\"filters/remove-dialect-tags.$$*\"               \
+			.o. @\"filters/remove-variant-tags.$$*\"               \
+			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
+			.o. @\"filters/remove-number-string-tags.$$*\"         \
+			.o. @\"filters/remove-usage-tags.$$*\"                 \
+			.o. @\"filters/remove-semantic-tags.$$*\"              \
+			.o. @\"filters/remove-error-strings.$$*\"              \
+			.o. @\"filters/remove-orig_lang-tags.$$*\"             \
+			.o. @\"filters/remove-orthography-tags.$$*\"           \
+			.o. @\"filters/remove-Orth_IPA-strings.$$*\"           \
+			.o. @\"$$<\"                                           \
+			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
+			.o. @\"filters/remove-word-boundary.$$*\"              \
+			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_norm_analysers,$(alt_orth))))
 
-analyser-gt-norm.%.tmp.hfst: generator-raw-gt-desc.hfst          \
-					filters/remove-adv_comp-tags.hfst            \
-					filters/remove-derivation-position-tags.hfst \
-					filters/remove-dialect-tags.hfst             \
-					filters/remove-variant-tags.hfst             \
-					filters/remove-norm-comp-tags.hfst           \
-					filters/remove-number-string-tags.hfst       \
-					filters/remove-usage-tags.hfst               \
-					filters/remove-error-strings.hfst            \
-					filters/remove-semantic-tags.hfst            \
-					filters/remove-hyphenation-marks.hfst        \
-					filters/remove-infl_deriv-borders.hfst       \
-					filters/remove-word-boundary.hfst            \
-					filters/remove-orthography-tags.hfst         \
-					filters/remove-Orth_IPA-strings.hfst         \
-					filters/remove-orig_lang-tags.hfst           \
-					orthography/$(DEFAULT_ORTH)-to-%.compose.hfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/remove-derivation-position-tags.hfst\" \
-			.o. @\"filters/remove-adv_comp-tags.hfst\"            \
-			.o. @\"filters/remove-dialect-tags.hfst\"             \
-			.o. @\"filters/remove-variant-tags.hfst\"             \
-			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
-			.o. @\"filters/remove-number-string-tags.hfst\"       \
-			.o. @\"filters/remove-usage-tags.hfst\"               \
-			.o. @\"filters/remove-semantic-tags.hfst\"            \
-			.o. @\"filters/remove-error-strings.hfst\"            \
-			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
-			.o. @\"filters/remove-orthography-tags.hfst\"         \
-			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
-			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
-			.o. @\"filters/remove-word-boundary.hfst\"            \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$*.compose.hfst\" \
+define alt_orth_desc_generators
+generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
+					filters/make-optional-transitivity-tags.%  \
+					filters/make-optional-homonymy-tags.%      \
+					filters/make-optional-hyph-tags.%          \
+					filters/make-optional-variant-tags.%       \
+					filters/make-optional-semantic-tags.%      \
+					filters/make-optional-error-tags.%         \
+					filters/make-optional-adv_comp-tags.%      \
+					filters/remove-derivation-position-tags.%  \
+					filters/remove-dialect-tags.%              \
+					filters/remove-hyphenation-marks.%         \
+					filters/remove-infl_deriv-borders.%        \
+					filters/remove-word-boundary.%             \
+					filters/remove-norm-comp-tags.%            \
+					filters/remove-number-string-tags.%        \
+					filters/remove-orthography-tags.%          \
+					filters/remove-Orth_IPA-strings.%          \
+					filters/remove-orig_lang-tags.%            \
+					filters/remove-usage-tags.%                \
+					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
+	$$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/make-optional-transitivity-tags.$$*\"   \
+			.o. @\"filters/make-optional-homonymy-tags.$$*\"       \
+			.o. @\"filters/make-optional-hyph-tags.$$*\"           \
+			.o. @\"filters/make-optional-variant-tags.$$*\"        \
+			.o. @\"filters/make-optional-semantic-tags.$$*\"       \
+			.o. @\"filters/make-optional-error-tags.$$*\"          \
+			.o. @\"filters/make-optional-adv_comp-tags.$$*\"       \
+			.o. @\"filters/remove-derivation-position-tags.$$*\"   \
+			.o. @\"filters/remove-dialect-tags.$$*\"               \
+			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
+			.o. @\"filters/remove-number-string-tags.$$*\"         \
+			.o. @\"filters/remove-usage-tags.$$*\"                 \
+			.o. @\"filters/remove-orig_lang-tags.$$*\"             \
+			.o. @\"filters/remove-orthography-tags.$$*\"           \
+			.o. @\"filters/remove-Orth_IPA-strings.$$*\"           \
+			.o. @\"$$<\"                                           \
+			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
+			.o. @\"filters/remove-word-boundary.$$*\"              \
+			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			;\n\
-		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_desc_generators,$(alt_orth))))
 
-analyser-gt-norm.%.tmp.xfst: analyser-raw-gt-desc.xfst           \
-					filters/remove-adv_comp-tags.xfst            \
-					filters/remove-derivation-position-tags.xfst \
-					filters/remove-dialect-tags.xfst             \
-					filters/remove-variant-tags.xfst             \
-					filters/remove-norm-comp-tags.xfst           \
-					filters/remove-number-string-tags.xfst       \
-					filters/remove-usage-tags.xfst               \
-					filters/remove-error-strings.xfst            \
-					filters/remove-semantic-tags.xfst            \
-					filters/remove-hyphenation-marks.xfst        \
-					filters/remove-infl_deriv-borders.xfst       \
-					filters/remove-word-boundary.xfst            \
-					filters/remove-orthography-tags.xfst         \
-					filters/remove-Orth_IPA-strings.xfst         \
-					filters/remove-orig_lang-tags.xfst           \
-					orthography/$(DEFAULT_ORTH)-to-%.compose.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/remove-derivation-position-tags.xfst\" \
-			.o. @\"filters/remove-adv_comp-tags.xfst\"            \
-			.o. @\"filters/remove-dialect-tags.xfst\"             \
-			.o. @\"filters/remove-variant-tags.xfst\"             \
-			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
-			.o. @\"filters/remove-number-string-tags.xfst\"       \
-			.o. @\"filters/remove-usage-tags.xfst\"               \
-			.o. @\"filters/remove-semantic-tags.xfst\"            \
-			.o. @\"filters/remove-error-strings.xfst\"            \
-			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
-			.o. @\"filters/remove-orthography-tags.xfst\"         \
-			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
-			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
-			.o. @\"filters/remove-word-boundary.xfst\"            \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$*.compose.xfst\" \
+define alt_orth_norm_generators
+generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
+					filters/make-optional-transitivity-tags.%  \
+					filters/make-optional-homonymy-tags.%      \
+					filters/make-optional-hyph-tags.%          \
+					filters/make-optional-variant-tags.%       \
+					filters/make-optional-semantic-tags.%      \
+					filters/make-optional-adv_comp-tags.%      \
+					filters/remove-derivation-position-tags.%  \
+					filters/remove-dialect-tags.%              \
+					filters/remove-hyphenation-marks.%         \
+					filters/remove-infl_deriv-borders.%        \
+					filters/remove-word-boundary.%             \
+					filters/remove-norm-comp-tags.%            \
+					filters/remove-number-string-tags.%        \
+					filters/remove-usage-tags.%                \
+					filters/remove-orthography-tags.%          \
+					filters/remove-Orth_IPA-strings.%          \
+					filters/remove-orig_lang-tags.%            \
+					filters/remove-error-strings.%             \
+					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
+	$$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/make-optional-transitivity-tags.$$*\"   \
+			.o. @\"filters/make-optional-homonymy-tags.$$*\"       \
+			.o. @\"filters/make-optional-hyph-tags.$$*\"           \
+			.o. @\"filters/make-optional-variant-tags.$$*\"        \
+			.o. @\"filters/make-optional-semantic-tags.$$*\"       \
+			.o. @\"filters/make-optional-adv_comp-tags.$$*\"       \
+			.o. @\"filters/remove-derivation-position-tags.$$*\"   \
+			.o. @\"filters/remove-dialect-tags.$$*\"               \
+			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
+			.o. @\"filters/remove-number-string-tags.$$*\"         \
+			.o. @\"filters/remove-usage-tags.$$*\"                 \
+			.o. @\"filters/remove-error-strings.$$*\"              \
+			.o. @\"filters/remove-orig_lang-tags.$$*\"             \
+			.o. @\"filters/remove-orthography-tags.$$*\"           \
+			.o. @\"filters/remove-Orth_IPA-strings.$$*\"           \
+			.o. @\"$$<\"                                           \
+			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
+			.o. @\"filters/remove-word-boundary.$$*\"              \
+			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
-generator-gt-desc.%.tmp.hfst: generator-raw-gt-desc.hfst         \
-					filters/make-optional-transitivity-tags.hfst \
-					filters/make-optional-homonymy-tags.hfst     \
-					filters/make-optional-hyph-tags.hfst         \
-					filters/make-optional-variant-tags.hfst      \
-					filters/make-optional-semantic-tags.hfst     \
-					filters/make-optional-error-tags.hfst        \
-					filters/make-optional-adv_comp-tags.hfst     \
-					filters/remove-derivation-position-tags.hfst \
-					filters/remove-dialect-tags.hfst             \
-					filters/remove-hyphenation-marks.hfst        \
-					filters/remove-infl_deriv-borders.hfst       \
-					filters/remove-word-boundary.hfst            \
-					filters/remove-norm-comp-tags.hfst           \
-					filters/remove-number-string-tags.hfst       \
-					filters/remove-orthography-tags.hfst         \
-					filters/remove-Orth_IPA-strings.hfst         \
-					filters/remove-orig_lang-tags.hfst           \
-					filters/remove-usage-tags.hfst               \
-					orthography/$(DEFAULT_ORTH)-to-%.compose.hfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/make-optional-transitivity-tags.hfst\" \
-			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
-			.o. @\"filters/make-optional-hyph-tags.hfst\"         \
-			.o. @\"filters/make-optional-variant-tags.hfst\"      \
-			.o. @\"filters/make-optional-semantic-tags.hfst\"     \
-			.o. @\"filters/make-optional-error-tags.hfst\"        \
-			.o. @\"filters/make-optional-adv_comp-tags.hfst\"     \
-			.o. @\"filters/remove-derivation-position-tags.hfst\" \
-			.o. @\"filters/remove-dialect-tags.hfst\"             \
-			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
-			.o. @\"filters/remove-number-string-tags.hfst\"       \
-			.o. @\"filters/remove-usage-tags.hfst\"               \
-			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
-			.o. @\"filters/remove-orthography-tags.hfst\"         \
-			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
-			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
-			.o. @\"filters/remove-word-boundary.hfst\"            \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$*.compose.hfst\" \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
-
-generator-gt-desc.%.tmp.xfst: analyser-raw-gt-desc.xfst          \
-					filters/make-optional-transitivity-tags.xfst \
-					filters/make-optional-homonymy-tags.xfst     \
-					filters/make-optional-hyph-tags.xfst         \
-					filters/make-optional-variant-tags.xfst      \
-					filters/make-optional-semantic-tags.xfst     \
-					filters/make-optional-error-tags.xfst        \
-					filters/make-optional-adv_comp-tags.xfst     \
-					filters/remove-derivation-position-tags.xfst \
-					filters/remove-dialect-tags.xfst             \
-					filters/remove-hyphenation-marks.xfst        \
-					filters/remove-infl_deriv-borders.xfst       \
-					filters/remove-word-boundary.xfst            \
-					filters/remove-norm-comp-tags.xfst           \
-					filters/remove-number-string-tags.xfst       \
-					filters/remove-orthography-tags.xfst         \
-					filters/remove-Orth_IPA-strings.xfst         \
-					filters/remove-orig_lang-tags.xfst           \
-					filters/remove-usage-tags.xfst               \
-					orthography/$(DEFAULT_ORTH)-to-%.compose.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/make-optional-transitivity-tags.xfst\" \
-			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
-			.o. @\"filters/make-optional-hyph-tags.xfst\"         \
-			.o. @\"filters/make-optional-variant-tags.xfst\"      \
-			.o. @\"filters/make-optional-semantic-tags.xfst\"     \
-			.o. @\"filters/make-optional-error-tags.xfst\"        \
-			.o. @\"filters/make-optional-adv_comp-tags.xfst\"     \
-			.o. @\"filters/remove-derivation-position-tags.xfst\" \
-			.o. @\"filters/remove-dialect-tags.xfst\"             \
-			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
-			.o. @\"filters/remove-number-string-tags.xfst\"       \
-			.o. @\"filters/remove-usage-tags.xfst\"               \
-			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
-			.o. @\"filters/remove-orthography-tags.xfst\"         \
-			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
-			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
-			.o. @\"filters/remove-word-boundary.xfst\"            \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$*.compose.xfst\" \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
-generator-gt-norm.%.tmp.hfst: generator-raw-gt-desc.hfst         \
-					filters/make-optional-transitivity-tags.hfst \
-					filters/make-optional-homonymy-tags.hfst     \
-					filters/make-optional-hyph-tags.hfst         \
-					filters/make-optional-variant-tags.hfst      \
-					filters/make-optional-semantic-tags.hfst     \
-					filters/make-optional-adv_comp-tags.hfst     \
-					filters/remove-derivation-position-tags.hfst \
-					filters/remove-dialect-tags.hfst             \
-					filters/remove-hyphenation-marks.hfst        \
-					filters/remove-infl_deriv-borders.hfst       \
-					filters/remove-word-boundary.hfst            \
-					filters/remove-norm-comp-tags.hfst           \
-					filters/remove-number-string-tags.hfst       \
-					filters/remove-usage-tags.hfst               \
-					filters/remove-orthography-tags.hfst         \
-					filters/remove-Orth_IPA-strings.hfst         \
-					filters/remove-orig_lang-tags.hfst           \
-					filters/remove-error-strings.hfst            \
-					orthography/$(DEFAULT_ORTH)-to-%.compose.hfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/make-optional-transitivity-tags.hfst\" \
-			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
-			.o. @\"filters/make-optional-hyph-tags.hfst\"         \
-			.o. @\"filters/make-optional-variant-tags.hfst\"      \
-			.o. @\"filters/make-optional-semantic-tags.hfst\"     \
-			.o. @\"filters/make-optional-adv_comp-tags.hfst\"     \
-			.o. @\"filters/remove-derivation-position-tags.hfst\" \
-			.o. @\"filters/remove-dialect-tags.hfst\"             \
-			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
-			.o. @\"filters/remove-number-string-tags.hfst\"       \
-			.o. @\"filters/remove-usage-tags.hfst\"               \
-			.o. @\"filters/remove-error-strings.hfst\"            \
-			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
-			.o. @\"filters/remove-orthography-tags.hfst\"         \
-			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
-			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
-			.o. @\"filters/remove-word-boundary.hfst\"            \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$*.compose.hfst\" \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
-
-generator-gt-norm.%.tmp.xfst: analyser-raw-gt-desc.xfst          \
-					filters/make-optional-transitivity-tags.xfst \
-					filters/make-optional-homonymy-tags.xfst     \
-					filters/make-optional-hyph-tags.xfst         \
-					filters/make-optional-variant-tags.xfst      \
-					filters/make-optional-semantic-tags.xfst     \
-					filters/make-optional-adv_comp-tags.xfst     \
-					filters/remove-derivation-position-tags.xfst \
-					filters/remove-dialect-tags.xfst             \
-					filters/remove-hyphenation-marks.xfst        \
-					filters/remove-infl_deriv-borders.xfst       \
-					filters/remove-word-boundary.xfst            \
-					filters/remove-norm-comp-tags.xfst           \
-					filters/remove-number-string-tags.xfst       \
-					filters/remove-usage-tags.xfst               \
-					filters/remove-orthography-tags.xfst         \
-					filters/remove-Orth_IPA-strings.xfst         \
-					filters/remove-orig_lang-tags.xfst           \
-					filters/remove-error-strings.xfst            \
-					orthography/$(DEFAULT_ORTH)-to-%.compose.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/make-optional-transitivity-tags.xfst\" \
-			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
-			.o. @\"filters/make-optional-hyph-tags.xfst\"         \
-			.o. @\"filters/make-optional-variant-tags.xfst\"      \
-			.o. @\"filters/make-optional-semantic-tags.xfst\"     \
-			.o. @\"filters/make-optional-adv_comp-tags.xfst\"     \
-			.o. @\"filters/remove-derivation-position-tags.xfst\" \
-			.o. @\"filters/remove-dialect-tags.xfst\"             \
-			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
-			.o. @\"filters/remove-number-string-tags.xfst\"       \
-			.o. @\"filters/remove-usage-tags.xfst\"               \
-			.o. @\"filters/remove-error-strings.xfst\"            \
-			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
-			.o. @\"filters/remove-orthography-tags.xfst\"         \
-			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
-			.o. @\"$<\" \
-			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
-			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
-			.o. @\"filters/remove-word-boundary.xfst\"            \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$*.compose.xfst\" \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_norm_generators,$(alt_orth))))

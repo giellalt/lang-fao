@@ -560,7 +560,7 @@ generator%.foma: generator%.tmp.foma
 
 # cleaning
 clean-local:
-	-rm -f *.hfst *.xfst *.foma
+	-rm -f *.hfst *.xfst *.foma *.hfstol
 
 include $(top_srcdir)/am-shared/src_oahpa-include.am
 include $(top_srcdir)/am-shared/src_dictionary-include.am

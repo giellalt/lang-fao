@@ -4,11 +4,6 @@
 
 # ---- starts here: ------
 
-define compoundtag  [ %+SgCmp      | %+SgNomCmp      | %+SgGenCmp      | %+PlGenCmp
-					| %+CmpN/SgLeft| %+CmpN/SgNomLeft| %+CmpN/SgGenLeft| %+CmpN/PlGenLeft
-					| %+CmpN/Def   | %+CmpN/DefSgGen | %+CmpN/DefPlGen
-					] ;
-
 # The value of HypMinFlag depends on the configuration: if hyperminimisation is
 # enabled, it will expand to a flag diacritic, if not it will be the empty string.
 # This will ensure that lowercasing will work correctly for all proper strings
@@ -16,7 +11,8 @@ define compoundtag  [ %+SgCmp      | %+SgNomCmp      | %+SgGenCmp      | %+PlGen
 # optional, but then a hyperminimised generator will overgenerate, producing
 # an initial capital variant in addition to the lowercase string intended.
 # Don't be mislead by the notation: Autoconf also uses @STRING@ notation!
-define Flag       "@U.Cap.Opt@"    ;
+define Flag       "@U.Cap.Opt@"      ;
+define CmpHyph    "@U.CmpHyph.TRUE@" ;
 @WANT_HYPERMINIMISATION_TRUE@@IF_HFST@define HypMinFlag "@P.LEXNAME.Root@" ;
 
 read regex [ 
@@ -53,9 +49,9 @@ Z -> z,
 Š -> š,
 Ŧ -> ŧ,
 Ž -> ž
-@WANT_HYPERMINIMISATION_TRUE@ || .#. HYPMINFLAG FLAG (compoundtag)*       _ ,
-@WANT_HYPERMINIMISATION_FALSE@|| .#. FLAG (compoundtag)*       _ ,
-                  FLAG (compoundtag)* ?* %- _
+@WANT_HYPERMINIMISATION_TRUE@ || .#. HYPMINFLAG FLAG ( HYPHFLAG ) _ ,
+@WANT_HYPERMINIMISATION_FALSE@|| .#. FLAG ( HYPHFLAG ) _ ,
+                  FLAG ( HYPHFLAG ) ?* %- _
 
 # ---- ends here: ------
 
@@ -88,4 +84,5 @@ Z -> z,
 ] ;
 
 substitute defined Flag       for FLAG
+substitute defined CmpHyph    for HYPHFLAG
 @WANT_HYPERMINIMISATION_TRUE@@IF_HFST@substitute defined HypMinFlag for HYPMINFLAG

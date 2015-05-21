@@ -85,6 +85,8 @@ if test "$testfiles" == ""; then
     exit 77
 fi
 
+# One empty line in the beginning:
+echo ""
 i=0
 # Loop over the available yaml files, and run the tests:
 for file in ${srcdir}/$yaml_file_subdir/*_$transducer.$suffix; do
@@ -102,16 +104,22 @@ totaltotals=$(cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f3 | tr '\n' ' ' \
 			 | sed 's/ / + /g' | sed 's/ + $//' | bc )
 rm -f $testtotalsfile
 
-# red=\033[1;31m
-# green=\033[0;32m
-# orange=\033[0;33m
-# yellow=\033[1;33m
-# blue=\033[0;34m
-# light_blue=\033[0;36m
-# reset=\033[m
-printf "SUMMARY for the \033[0;33m$summaryhalftext$transducer\033[m fst(s): "
-printf "\033[0;32mPASSES: $totalpasses\033[m / "
-printf "\033[1;31mFAILS: $totalfails\033[m / "
-printf "\033[0;34mTOTAL: $totaltotals\033[m\n\n"
+red="\033[1;31m"
+green="\033[0;32m"
+orange="\033[0;33m"
+yellow="\033[1;33m"
+blue="\033[0;34m"
+light_blue="\033[0;36m"
+reset="\033[m"
+bold=$(tput smso)
+offbold=$(tput sgr0)
+#bold=$(tput bold)
+#normal=$(tput sgr0)
+
+printf "${bold}SUMMARY${offbold} for the "
+printf "${orange}$summaryhalftext$transducer${reset} fst(s): "
+printf "${green}PASSES: ${totalpasses}${reset} / "
+printf "${red}FAILS: ${totalfails}${reset} / "
+printf "${blue}TOTAL: ${totaltotals}${reset}\n"
 
 source $srcdir/$relpath/error-handling-stubs.sh

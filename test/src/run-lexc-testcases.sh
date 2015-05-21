@@ -23,6 +23,8 @@ while test ! -x $relpath/$testrunner ; do
     fi
 done
 
+# One empty line in the beginning:
+echo ""
 # Loop over all lexc source files:
 for file in ${srcdir}/$relpath/../src/morphology/*.lexc \
 			${srcdir}/$relpath/../src/morphology/*/*.lexc; do

@@ -70,6 +70,7 @@ runtests="$pythonbin @GTCORE@/scripts/morph-test.py"
 fsttype=
 @CAN_HFST_TRUE@fsttype="$fsttype hfst"
 @CAN_XFST_TRUE@fsttype="$fsttype xfst"
+@CAN_FOMA_TRUE@fsttype="$fsttype foma"
 
 # Exit if both hfst and xerox have been shut off:
 if [[ "x$fsttype" == "x" ]]; then
@@ -140,6 +141,10 @@ for f in $fsttype; do
 		lookuptool="@LOOKUP@ -flags mbTT"
 		section="xerox"
 		suffix="xfst"
+	elif test $f == "foma"; then
+		lookuptool="@FLOOKUP@"
+		section="xfst"
+		suffix="foma"
 	elif test $f == "hfst"; then
 		lookuptool="@HFST_LOOKUP@"
 		fastlookup="@HFST_OPTIMIZED_LOOKUP@"

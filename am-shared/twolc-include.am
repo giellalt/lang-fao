@@ -32,4 +32,14 @@ HFSTTWOLFLAGS=--resolve
 	$(AM_V_TWOLC)$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" \
 		| $(TWOLC) $(VERBOSITY)
 
+####### Foma build rules (based on Hfst): #######
+%-phon.foma: %-phon.hfst
+	$(AM_V_HSPLIT)$(HFST_SPLIT) -p RULE_PARTS $<
+	$(AM_V_at)cp RULE_PARTS1.hfst $@.hfst
+	$(AM_V_INTRSCT)for f in $$(ls RULE_PARTS*); do \
+		  $(HFST_INTERSECT) -1 $$f -2 $@.hfst \
+		| $(HFST_MINIMIZE) > $@.tmp.hfst && cp $@.tmp.hfst $@.hfst; done
+	$(AM_V_FST2FST)$(HFST_FST2FST) -b -F -i $@.hfst -o $@
+	$(AM_V_at)rm -f RULE_PARTS*.hfst $@.hfst
+
 # vim: set ft=automake:

@@ -52,6 +52,7 @@ AC_PATH_PROG(HFST_FST2FST,           hfst-fst2fst,           false, $PATH$PATH_S
 AC_PATH_PROG(HFST_FST2STRINGS,       hfst-fst2strings,       false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_FST2TXT,           hfst-fst2txt,           false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_INFO,              hfst-info, 	         false, $PATH$PATH_SEPARATOR$with_hfst)
+AC_PATH_PROG(HFST_INTERSECT,         hfst-intersect,         false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_INVERT,            hfst-invert,            false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_LEXC,              hfst-lexc,              false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_LOOKUP,            hfst-lookup,            false, $PATH$PATH_SEPARATOR$with_hfst)

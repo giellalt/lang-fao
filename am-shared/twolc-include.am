@@ -39,7 +39,12 @@ HFSTTWOLFLAGS=--resolve
 	$(AM_V_INTRSCT)for f in $$(ls RULE_PARTS*); do \
 		  $(HFST_INTERSECT) -1 $$f -2 $@.hfst \
 		| $(HFST_MINIMIZE) > $@.tmp.hfst && cp $@.tmp.hfst $@.hfst; done
-	$(AM_V_FST2FST)$(HFST_FST2FST) -b -F -i $@.hfst -o $@
-	$(AM_V_at)rm -f RULE_PARTS*.hfst $@.hfst
+	$(AM_V_FST2TXT)$(HFST_FST2TXT) --do-not-print-weights -i $@.hfst > @.att
+	$(AM_V_FOMA)$(PRINTF) "\
+		read att $@.att\n\
+		save stack $@\n\
+		quit\n" \
+		| $(FOMA) $(VERBOSITY)
+	$(AM_V_at)rm -f RULE_PARTS*.hfst $@.tmp.hfst @.att
 
 # vim: set ft=automake:

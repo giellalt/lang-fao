@@ -60,8 +60,8 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
 		-o $@
 
 #### 3. Add a default unit weight to anything not covered by the corpus
-####    (it is added to the unweighted speller fst, thus restoring full
-####    lexical coverage):
+####    by combining (unioning) the unitweighted.hfst (which is the full
+####    lexical fst) with the frequency/corpus-based fst:
 %-unit_weighted.hfst: %-freq_weighted.hfst  \
 				 unitweighted.hfst
 	$(AM_V_UNION)$(HFST_DISJUNCT) $(HFST_FLAGS) $< unitweighted.hfst \

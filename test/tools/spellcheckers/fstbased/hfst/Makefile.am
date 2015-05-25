@@ -9,7 +9,8 @@ TESTS=
 YAML_TEST_RUNNERS=run-hfstspeller-acceptor-yaml-testcases.sh
 # Specify other shell scripts here to make sure they are included in the distro
 # even though spellers are disabled:
-OTHER_TEST_RUNNERS=
+OTHER_TEST_RUNNERS_IN=test-zhfst-basic-sugg-speed.sh.in
+OTHER_TEST_RUNNERS=$(basename $(OTHER_TEST_RUNNERS_IN))
 
 # Only test spellers if we build spellers:
 if WANT_SPELLERS
@@ -29,7 +30,7 @@ XFAIL_TESTS=run-hfstspeller-acceptor-yaml-testcases.sh
 YAML_FILES=$(wildcard *.yaml)
 YAML_DIRS=
 
-EXTRA_DIST=$(OTHER_TEST_RUNNERS) \
+EXTRA_DIST=$(OTHER_TEST_RUNNERS_IN) \
            $(YAML_TEST_RUNNERS) \
            $(YAML_FILES) \
            $(YAML_DIRS)

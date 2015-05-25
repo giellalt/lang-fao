@@ -190,6 +190,8 @@ AC_CONFIG_FILES([Makefile \
 # Spell checker tests, all languages:
 AC_CONFIG_FILES([test/tools/spellcheckers/test-zhfst-file.sh], \
       [chmod a+x test/tools/spellcheckers/test-zhfst-file.sh])
+AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/hfst/test-zhfst-basic-sugg-speed.sh], \
+      [chmod a+x test/tools/spellcheckers/fstbased/hfst/test-zhfst-basic-sugg-speed.sh])
 AC_CONFIG_FILES([test/tools/spellcheckers/run-spellers-gt-norm-yaml-testcases.sh], \
       [chmod a+x test/tools/spellcheckers/run-spellers-gt-norm-yaml-testcases.sh])
 AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/hfst/run-hfstspeller-acceptor-yaml-testcases.sh], \

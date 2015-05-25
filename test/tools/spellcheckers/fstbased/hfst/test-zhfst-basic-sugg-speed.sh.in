@@ -1,0 +1,24 @@
+#!/bin/bash
+
+MAXTIME="0.8"
+HFST_OSPELL=@HFST_OSPELL@
+LANG=@GTLANG2@
+ZHFSTFILE=../../../tools/spellcheckers/fstbased/hfst/${LANG}.zhfst
+
+if test -x ${HFST_OSPELL} ; then
+  if test -f ${ZHFSTFILE} ; then
+    mytime="$(time -p ( echo nuvviDspeller \
+            | ${HFST_OSPELL} -S ${ZHFSTFILE} ) 2>&1 1>/dev/null )"
+    suggtime="$(printf "$mytime" | fgrep 'real' | cut -d' ' -f2 )"
+    if test $suggtime > "$MAXTIME" ; then
+        exit 1
+    fi
+  else
+      echo ${ZHFSTFILE} not found
+      exit 77
+  fi
+else
+    echo ${HFST_OSPELL} not found
+    exit 77
+fi
+

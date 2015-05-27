@@ -27,7 +27,7 @@ UW_SPELLER_SRC=generator-fstspeller-gt-norm-comp_restricted.hfst
 TAGWEIGHTS=tags.reweight
 # ALPHA for additive smoothing, [0, 1.0] seems good
 ALPHA=1.0
-NORMALISED_MAXWEIGHT=1000
+#NORMALISED_MAXWEIGHT=1000
 
 %.hfst: weighting/%.att
 	$(AM_V_GEN)$(HFST_TXT2FST) $(HFST_FLAGS) -f openfst-tropical $< -o $@
@@ -54,14 +54,16 @@ $(CORPUSNAME).clean.txt: \
 	$(AM_V_GEN)wc -l < $< > $@
 
 # calculate unit weight, smoothed using ALPHA:
-%.unitweight.txt: %.wordcount.txt %.typecount.txt
-	$(AM_V_GEN)paste $^ |\
-		sed -e "s/^/scale=5; -l($(ALPHA)\/(/" \
-		    -e "s/	/ + ($(ALPHA) */" -e "s/$$/)))/" \
-		| $(BC) -l > $@
+#%.unitweight.txt: %.wordcount.txt %.typecount.txt
+#	$(AM_V_GEN)paste $^ |\
+#		sed -e "s/^/scale=5; -l($(ALPHA)\/(/" \
+#		    -e "s/	/ + ($(ALPHA) */" -e "s/$$/)))/" \
+#		| $(BC) -l > $@
 
-%.weight_scaling.txt: %.unitweight.txt
-	$(AM_V_GEN)echo "1 / ( $$(cat $<) / $(NORMALISED_MAXWEIGHT) )" | bc -l > $@
+# Alternative unit weight: highest tropical weight + ALPHA:
+%.unitweight.txt: %.tropical.txt
+	$(AM_V_GEN)echo "$$(cut -f2 < $^ | sort -nru | head -n1) + $(ALPHA)" \
+		| $(BC) -l > $@
 
 # add tropical weights to the corpus:
 %.tropical.txt: %.uniq.txt %.wordcount.txt %.typecount.txt
@@ -90,10 +92,8 @@ unitweighted.hfst: $(UW_SPELLER_SRC) \
                    $(UNITWEIGHT)         \
                    $(srcdir)/weighting/word-boundary.txt
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(HFST_FLAGS) \
-			-e -a $$(cat $(UNITWEIGHT)) $< \
-		| $(HFST_REWEIGHT) $(HFST_FLAGS) \
-			-S $$(cat $(srcdir)/weighting/word-boundary.txt) \
-			-a $$(cat $(UNITWEIGHT)) -o $@
+		-e -a $$(cat $(UNITWEIGHT)) $< \
+		-o $@
 
 # Keep these intermediate targets when building using --debug:
 .SECONDARY: spellercorpus.sort.txt \

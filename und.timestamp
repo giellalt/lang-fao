@@ -1,4 +1,8 @@
-$Rev: 114468 $
+$Rev: 114860 $
+Prefixed all silent build strings for Hfst tools with H, for easier
+identification.
+
+r114468:
 Commented out the old target for calculating unit weights (default weight for
 out-of-corpus word forms), and added a new which is basically the highest
 tropical weight + the ALPHA smoothing value. This is just the first step in

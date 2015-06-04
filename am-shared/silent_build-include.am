@@ -27,7 +27,7 @@
 #### HFST tools
 AM_V_COMPOSE    = $(AM_V_COMPOSE_@AM_V@)
 AM_V_COMPOSE_   = $(AM_V_COMPOSE_@AM_DEFAULT_V@)
-AM_V_COMPOSE_0  = @echo "  COMPOSE  $@";
+AM_V_COMPOSE_0  = @echo "  hCOMPOSE $@";
 
 AM_V_HLEXC      = $(AM_V_HLEXC_@AM_V@)
 AM_V_HLEXC_     = $(AM_V_HLEXC_@AM_DEFAULT_V@)
@@ -35,31 +35,31 @@ AM_V_HLEXC_0    = @echo "  HLEXC    $@";
 
 AM_V_INTRSCT    = $(AM_V_INTRSCT_@AM_V@)
 AM_V_INTRSCT_   = $(AM_V_INTRSCT_@AM_DEFAULT_V@)
-AM_V_INTRSCT_0  = @echo "  INTRSCT  $@";
+AM_V_INTRSCT_0  = @echo "  HINTRSCT $@";
 
 AM_V_INVERT     = $(AM_V_INVERT_@AM_V@)
 AM_V_INVERT_    = $(AM_V_INVERT_@AM_DEFAULT_V@)
-AM_V_INVERT_0   = @echo "  INVERT   $@";
+AM_V_INVERT_0   = @echo "  HINVERT  $@";
 
 AM_V_RGX2FST    = $(AM_V_RGX2FST_@AM_V@)
 AM_V_RGX2FST_   = $(AM_V_RGX2FST_@AM_DEFAULT_V@)
-AM_V_RGX2FST_0  = @echo "  RGX2FST  $@";
+AM_V_RGX2FST_0  = @echo "  HRGX2FST $@";
 
 AM_V_FST2TXT    = $(AM_V_FST2TXT_@AM_V@)
 AM_V_FST2TXT_   = $(AM_V_FST2TXT_@AM_DEFAULT_V@)
-AM_V_FST2TXT_0  = @echo "  FST2TXT  $@";
+AM_V_FST2TXT_0  = @echo "  HFST2TXT $@";
 
 AM_V_FST2FST    = $(AM_V_FST2FST_@AM_V@)
 AM_V_FST2FST_   = $(AM_V_FST2FST_@AM_DEFAULT_V@)
-AM_V_FST2FST_0  = @echo "  FST2FST  $@";
+AM_V_FST2FST_0  = @echo "  HFST2FST $@";
 
 AM_V_STR2FST    = $(AM_V_STR2FST_@AM_V@)
 AM_V_STR2FST_   = $(AM_V_STR2FST_@AM_DEFAULT_V@)
-AM_V_STR2FST_0  = @echo "  STR2FST  $@";
+AM_V_STR2FST_0  = @echo "  HSTR2FST $@";
 
 AM_V_PROJECT    = $(AM_V_PROJECT_@AM_V@)
 AM_V_PROJECT_   = $(AM_V_PROJECT_@AM_DEFAULT_V@)
-AM_V_PROJECT_0  = @echo "  PROJECT  $@";
+AM_V_PROJECT_0  = @echo "  HPROJECT $@";
 
 AM_V_HSUBST     = $(AM_V_HSUBST_@AM_V@)
 AM_V_HSUBST_    = $(AM_V_HSUBST_@AM_DEFAULT_V@)
@@ -71,7 +71,7 @@ AM_V_HSPLIT_0   = @echo "  HSPLIT   $@";
 
 AM_V_REWEIGHT   = $(AM_V_REWEIGHT_@AM_V@)
 AM_V_REWEIGHT_  = $(AM_V_REWEIGHT_@AM_DEFAULT_V@)
-AM_V_REWEIGHT_0 = @echo "  REWEIGHT $@";
+AM_V_REWEIGHT_0 = @echo "  HREWGHT  $@";
 
 AM_V_HXFST      = $(AM_V_HXFST_@AM_V@)
 AM_V_HXFST_     = $(AM_V_HXFST_@AM_DEFAULT_V@)
@@ -91,7 +91,7 @@ AM_V_HFSTOL_0   = @echo "  HFSTOL   $@";
 
 AM_V_UNION      = $(AM_V_UNION_@AM_V@)
 AM_V_UNION_     = $(AM_V_UNION_@AM_DEFAULT_V@)
-AM_V_UNION_0    = @echo "  UNION    $@";
+AM_V_UNION_0    = @echo "  HUNION   $@";
 
 AM_V_HCONCAT    = $(AM_V_HCONCAT_@AM_V@)
 AM_V_HCONCAT_   = $(AM_V_HCONCAT_@AM_DEFAULT_V@)

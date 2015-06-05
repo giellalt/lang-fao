@@ -1,4 +1,11 @@
-$Rev: 114860 $
+$Rev: 114904 $
+After a lot of experimenting, a moderate set of changes to the speller error
+models. The biggest change is that the alphabet for the edit distance error
+model is not taken from the acceptor anymore, but must be explicitly listed in
+the editdist.*.txt file. The suggestion speed is back to normal, but more work
+is needed re the interaction of the error model and corpus weights.
+
+r114860:
 Prefixed all silent build strings for Hfst tools with H, for easier
 identification.
 

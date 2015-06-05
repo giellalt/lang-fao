@@ -15,6 +15,11 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# This is the default weight for all editing operations in the error model:
+DEFAULT_WEIGHT=1
+# Default edit distanse for the generated, alphabet-based error model:
+DEFAULT_EDIT_DIST=2
+
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst-dir-include.am
 
 # vim: set ft=automake:

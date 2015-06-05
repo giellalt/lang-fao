@@ -67,12 +67,6 @@ endif # HAVE_ALT_WSS
 
 #### Build rules: ####
 
-# Error model building - edit distance based on transducer alphabet:
-editdist.%.hfst: editdist.%.txt acceptor.%.hfst
-	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py -v -s -d 1 -e '@0@' -i $< \
-		-a acceptor.$*.hfst \
-		| $(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' -o $@
-
 # Build rule for acceptors for alternate writing systems:
 $(GT_ALT_WS_SPELLER_ACCEPTORS): \
 	acceptor.%.hfst: \

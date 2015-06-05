@@ -22,6 +22,11 @@ GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 # (=max compression, working from 28.1.2014 for all platforms):
 ZIPFLAGS=-9 $(VERBOSITY)
 
+# This is the default weight for all editing operations in the error model:
+DEFAULT_WEIGHT=1
+# Default edit distanse for the generated, alphabet-based error model:
+DEFAULT_EDIT_DIST=1
+
 ####### Automake targets: ########
 
 GT_ERRMODELS=
@@ -83,18 +88,24 @@ easteregg.hfst: easteregg.txt
 
 ####### Error model: #######
 # Error model building - edit distance based on transducer alphabet:
-editdist.default.hfst: editdist.default.txt $(GT_SPELLER_ACCEPTOR)
-	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py -v -s -d 1 -e '@0@' -i $< \
-		-a $(GT_SPELLER_ACCEPTOR) \
-		| $(HFST_TXT2FST) $(HFST_FLAGS) -e '@0@' -o $@
+editdist.%.regex: editdist.%.txt
+	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py \
+		--verbose \
+		--swap \
+		--epsilon='@0@' \
+		--distance=$(DEFAULT_EDIT_DIST) \
+		--default-weight=$(DEFAULT_WEIGHT) \
+		--no-string-initial-correction \
+		--regex -i $< \
+		--output-file=$@
 
 # Helper fst:
 anystar.hfst:
-	$(AM_V_GEN)echo "?*;" | $(HFST_REGEXP2FST) -S -o $@
+	$(AM_V_RGX2FST)echo "?*;" | $(HFST_REGEXP2FST) -S -o $@
 
 # Error model building - list of strings known to be misspelled:
 strings.%.hfst: strings.%.txt anystar.hfst
-	$(AM_V_GEN)grep -v '^#' $< | grep -v '^$$' \
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
 		| $(HFST_CONCATENATE)   anystar.hfst - \
 		| $(HFST_CONCATENATE) - anystar.hfst   \
@@ -109,12 +120,18 @@ editStrings.%.hfst: strings.%.hfst editdist.%.hfst
 
 # Error model building - list of words known to be misspelled:
 words.%.hfst: words.%.txt easteregg.suggs.txt
-	$(AM_V_GEN)grep -h -v '^#' $^ | grep -v '^$$'   \
+	$(AM_V_STR2FST)grep -h -v '^#' $^ | grep -v '^$$'   \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -o $@
 
 # The final error model is assembled here:
-errmodel.%.hfst: words.%.hfst editStrings.%.hfst
-	$(AM_V_GEN)$(HFST_DISJUNCT) $^ \
+errmodel.%.hfst: words.%.hfst \
+				 strings.%.hfst \
+				 editdist.%.hfst
+	$(AM_V_RGX2FST)printf "\
+		[ @\"words.$*.hfst\"    \
+		| @\"editdist.$*.hfst\" \
+		| @\"strings.$*.hfst\"  ];" \
+		| $(HFST_REGEXP2FST) -S $(HFST_FLAGS) \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 ####### Alternate error model: #######
@@ -155,6 +172,7 @@ clean-local:
 
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst_prods_n_upload-dir-include.am
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst_alt_ws-dir-include.am
+include $(top_srcdir)/am-shared/regex-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

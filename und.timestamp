@@ -1,4 +1,8 @@
-$Rev: 114904 $
+$Rev: 114915 $
+Moved specification of default weight and editing distance to the language
+specific Makefile.
+
+r114904:
 After a lot of experimenting, a moderate set of changes to the speller error
 models. The biggest change is that the alphabet for the edit distance error
 model is not taken from the acceptor anymore, but must be explicitly listed in

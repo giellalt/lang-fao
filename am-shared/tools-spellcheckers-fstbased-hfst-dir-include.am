@@ -64,12 +64,12 @@ noinst_DATA=$(GT_ERRMODELS) \
 ####### Esater egg version info: #######
 # Easter egg content - depends also on the fst, to
 # make sure the easter egg is rebuilt every time the fst is rebuilt:
-easteregg.txt: $(srcdir)/version.txt $(GT_SPELLER_HFST)
+easteregg.%.txt: $(srcdir)/version.txt $(GT_SPELLER_HFST)
 	$(AM_V_GEN)$(GTCORE)/scripts/make-hfstspeller-version-easter-egg.sh \
-		$(GTLANG2) $(top_srcdir) $< > $@
+		$(GTLANG2) $(top_srcdir) $< $* > $@
 
 # Easter egg suggestions:
-easteregg.suggs.txt: easteregg.txt
+easteregg.%.suggtxt: easteregg.%.txt
 	$(AM_V_GEN)sed -e 's/^/nuvviDspeller:/' < $< \
 		| sed = \
 		| sed 'N;s/\n/	/' \
@@ -77,7 +77,7 @@ easteregg.suggs.txt: easteregg.txt
 		> $@
 
 # Easter egg string acceptor:
-easteregg.hfst: easteregg.txt
+easteregg.%.hfst: easteregg.%.txt
 	$(AM_V_GEN)$(HFST_STRINGS2FST) $(HFST_FLAGS) -j < $< \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower > $@
 
@@ -114,7 +114,7 @@ editStrings.%.hfst: strings.%.hfst editdist.%.hfst
 		-o $@
 
 # Error model building - list of words known to be misspelled:
-words.%.hfst: words.%.txt easteregg.suggs.txt
+words.%.hfst: words.%.txt easteregg.%.suggtxt
 	$(AM_V_STR2FST)grep -h -v '^#' $^ | grep -v '^$$'   \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -o $@
 
@@ -132,18 +132,19 @@ errmodel.%.hfst: words.%.hfst \
 ####### Alternate error model: #######
 # Alternatively, the error model can be constructed as a long list of regular
 # expressions, semicolon separated:
-errmodel.%.hfst: errmodel.%.regex easteregg.suggs.hfst
+errmodel.%.hfst: errmodel.%.regex easteregg.%.hfst
 	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
-		| $(HFST_DISJUNCT) - easteregg.hfst \
+		| $(HFST_DISJUNCT) - easteregg.$*.hfst \
 		-o $@
 
 ####### Speller acceptor: #######
 # Build the automaton used for the speller
-$(GT_SPELLER_ACCEPTOR): $(GT_SPELLER_HFST) easteregg.hfst
+$(GT_SPELLER_ACCEPTOR): \
+acceptor.%.hfst: $(GT_SPELLER_HFST) easteregg.%.hfst
 	$(AM_V_GEN)cat $< \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
 		| $(HFST_MINIMIZE_SPELLER) $(HFST_FLAGS)        \
-		| $(HFST_DISJUNCT) - easteregg.hfst             \
+		| $(HFST_DISJUNCT) - easteregg.$*.hfst             \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw          \
 		-o $@
 

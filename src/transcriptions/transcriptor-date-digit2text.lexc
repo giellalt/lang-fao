@@ -1,5 +1,5 @@
 ! Divvun & Giellatekno - open source grammars for Sámi and other languages
-! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! Copyright © 2000-2015 The University of Tromsø & the Norwegian Sámi Parliament
 ! http://giellatekno.uit.no & http://divvun.no
 !
 ! This program is free software; you can redistribute and/or modify
@@ -10,202 +10,146 @@
 ! also available in the file $GTHOME/LICENSE.txt.
 !
 ! Other licensing options are available upon request, please contact
-! giellatekno@hum.uit.no or feedback@divvun.no
+! giellatekno@uit.no or feedback@divvun.no
 
-! ==================== !
-! The South Sámi dates !
-! ==================== !
+! ================= !
+! The Finnish dates !
+! ================= !
 
 
 ! 12.8.
-! Borgemánu 12. b.
-! Borgemánu guoktenuppelot beaivi
+! Borgekuun guoktelot beaivi
 
 Multichar_Symbols
 
-@U.MONTH.1@ 
-@U.MONTH.2@ 
-@U.MONTH.3@ 
-@U.MONTH.4@ 
-@U.MONTH.5@ 
-@U.MONTH.6@ 
-@U.MONTH.7@ 
-@U.MONTH.8@ 
-@U.MONTH.9@ 
-@U.MONTH.10@ 
-@U.MONTH.11@ 
-@U.MONTH.12@ 
 
-+Use/NG
-
-
++Use/NG ! For substandard month names used in Oahpa
++Use/NA ! For substandard month names used in Oahpa
+! They will be accepted but not generated.
+ 
 LEXICON Root
+ DAYS ;
+! ZERODAY ; !If we want digits, this path adds 0
 
-! For each month: First the normative, then the non-normatives, then initial capital
+!LEXICON ZERODAY !If we want digits, this lexicon adds 0
+! :%0 SINGLEDAYS ; 
+ 
+LEXICON DAYS !This lexicon makes it possible to add 0
+1:1%  EHAKIMIHT-1 ;
+1st:1%  EHAKIMIHT-ST ;
+2:2%  EHAKIMIHT-1 ;
+2nd:2%  EHAKIMIHT-ST ;
+3:3%  EHAKIMIHT-1 ;
+3rd:3%  EHAKIMIHT-ST ;
+4:4%  EHAKIMIHT ;
+5:5%  EHAKIMIHT ;
+6:6%  EHAKIMIHT ;
+7:7%  EHAKIMIHT ;
+8:8%  EHAKIMIHT ;
+9:9%  EHAKIMIHT ;
+1%0:1%0%  EHAKIMIHT ;
+11:11%  EHAKIMIHT ;
+12:12%  EHAKIMIHT ;
+13:13%  EHAKIMIHT ;
+14:14%  EHAKIMIHT ;
+15:15%  EHAKIMIHT ;
+16:16%  EHAKIMIHT ;
+17:17%  EHAKIMIHT ;
+18:18%  EHAKIMIHT ;
+19:19%  EHAKIMIHT ;
+2%0:2%0%  EHAKIMIHT ;
+21:21%  EHAKIMIHT-1 ;
+21st:21%  EHAKIMIHT-ST ;
+22:22%  EHAKIMIHT-1 ;
+22nd:22%  EHAKIMIHT-ST ;
+23:23%  EHAKIMIHT-1 ;
+23rd:23%  EHAKIMIHT-ST ;
+24:24%  EHAKIMIHT ;
+25:25%  EHAKIMIHT ;
+26:26%  EHAKIMIHT ;
+27:27%  EHAKIMIHT ;
+28:28%  EHAKIMIHT ;
+29:29%  EHAKIMIHT ;
+3%0:3%0%  EHAKIMIHT30 ;
+3%0th:3%0%  EHAKIMIHT30-ST ;
+3%1:3%1%  EHAKIMIHT31 ;
+3%1st:3%1%  EHAKIMIHT31-ST ;
 
-@U.MONTH.1@:tsïengelen%_@U.MONTH.1@ 31DAYS ;
-@U.MONTH.1@+Use/NG:garretsïengelen%_@U.MONTH.1@ 31DAYS ;
-@U.MONTH.1@+Use/NG:garre-tsïengelen%_@U.MONTH.1@ 31DAYS ;
-@U.MONTH.1@+Use/NG:orrejaepienasken%_@U.MONTH.1@ 31DAYS ;
-@U.MONTH.1@+Use/NG:orrejaepien-asken%_@U.MONTH.1@ 31DAYS ;
+LEXICON EHAKIMIHT
+  EHAKIMIHT-1 ;
+th:  EHAKIMIHT-ST ;
 
-@U.MONTH.1@+Use/NG:Tsïengelen%_@U.MONTH.1@ 31DAYS ;
-@U.MONTH.1@+Use/NG:Garretsïengelen%_@U.MONTH.1@ 31DAYS ;
-@U.MONTH.1@+Use/NG:Garre-tsïengelen%_@U.MONTH.1@ 31DAYS ;
-@U.MONTH.1@+Use/NG:Orrejaepienasken%_@U.MONTH.1@ 31DAYS ;
-@U.MONTH.1@+Use/NG:Orrejaepien-asken%_@U.MONTH.1@ 31DAYS ;
+LEXICON EHAKIMIHT-1
+%.% :ehakimiht%  29MONTHS ; !5. September
+%.:ehakimiht%  29MONTHS ; !5.September
+% :ehakimiht%  29MONTHS ; !5 September
 
-
-@U.MONTH.2@:goevten%_@U.MONTH.2@ 29DAYS ;
-@U.MONTH.2@+Use/NG:gierhkiengarresen%_@U.MONTH.2@ 29DAYS ;
-@U.MONTH.2@+Use/NG:gierhkien-garresen%_@U.MONTH.2@ 29DAYS ;
-
-@U.MONTH.2@+Use/NG:Goevten%_@U.MONTH.2@ 29DAYS ;
-@U.MONTH.2@+Use/NG:Gierhkiengarresen%_@U.MONTH.2@ 29DAYS ;
-@U.MONTH.2@+Use/NG:Gierhkien-garresen%_@U.MONTH.2@ 29DAYS ;
-
-
-@U.MONTH.3@:njoktjen%_@U.MONTH.3@ 31DAYS ;
-@U.MONTH.3@+Use/NG:voerhtjenasken%_@U.MONTH.3@ 31DAYS ;
-@U.MONTH.3@+Use/NG:voerhtjen-asken%_@U.MONTH.3@ 31DAYS ;
-
-@U.MONTH.3@+Use/NG:Njoktjen%_@U.MONTH.3@ 31DAYS ;
-@U.MONTH.3@+Use/NG:Voerhtjenasken%_@U.MONTH.3@ 31DAYS ;
-@U.MONTH.3@+Use/NG:Voerhtjen-asken%_@U.MONTH.3@ 31DAYS ;
-
-
-@U.MONTH.4@:voerhtjen%_@U.MONTH.4@ 30DAYS ;
-@U.MONTH.4@+Use/NG:voerhtjenasken%_@U.MONTH.4@ 31DAYS ;
-@U.MONTH.4@+Use/NG:voerhtjen-asken%_@U.MONTH.4@ 31DAYS ;
-
-@U.MONTH.4@+Use/NG:Voerhtjen%_@U.MONTH.4@ 30DAYS ;
-@U.MONTH.4@+Use/NG:Voerhtjenasken%_@U.MONTH.4@ 31DAYS ;
-@U.MONTH.4@+Use/NG:Voerhtjen-asken%_@U.MONTH.4@ 31DAYS ;
-
-
-@U.MONTH.5@:suehpeden%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:maavnesen%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:majjen%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:gïjreasken%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:gïjremaanoen%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:gïjre-asken%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:gïjre-maanoen%_@U.MONTH.5@ 31DAYS ;
-
-@U.MONTH.5@+Use/NG:Suehpeden%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:Maavnesen%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:Majjen%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:Gïjreasken%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:Gïjremaanoen%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:Gïjre-asken%_@U.MONTH.5@ 31DAYS ;
-@U.MONTH.5@+Use/NG:Gïjre-maanoen%_@U.MONTH.5@ 31DAYS ;
-
-
-@U.MONTH.6@:ruffien%_@U.MONTH.6@ 30DAYS ;
-
-@U.MONTH.6@+Use/NG:Ruffien%_@U.MONTH.6@ 30DAYS ;
+LEXICON EHAKIMIHT-ST
+% of% :ehakimiht%  29MONTHS ; !5 September
 
 
-@U.MONTH.7@:snjaltjen%_@U.MONTH.7@ 31DAYS ;
+LEXICON 29MONTHS
+February:mikisowipîsimohk ENDLEX ; 
+April:ayikipîsimohk ENDLEX ;
+June:opâskâwewowipîsimohk ENDLEX ; 
+September:onôcihitowipîsimohk ENDLEX ; 
+January:kisepîsimohk ENDLEX ; 
+March:niskipîsimohk ENDLEX ; 
+May:opiniyâwewowipîsimohk ENDLEX ;
+July:opaskowipîsimohk ENDLEX ;
+August:ohpahowipîsimohk ENDLEX ; 
+October:kaskatinowipîsimohk ENDLEX ;
+December:manitow% kîsikan% pîsimohk ENDLEX ; 
+December:pawahcakinasîs ENDLEX ; 
+November:iyikopîwipîsimohk ENDLEX ; 
 
-@U.MONTH.7@+Use/NG:Snjaltjen%_@U.MONTH.7@ 31DAYS ;
+LEXICON EHAKIMIHT30
+%.%  :ehakimiht%  30MONTHS ; !5. September
+%.:ehakimiht%  30MONTHS ;!5.September
+% :ehakimiht%  30MONTHS ; !5 September
 
-
-@U.MONTH.8@:mïetsken%_@U.MONTH.8@ 31DAYS ;
-
-@U.MONTH.8@+Use/NG:Mïetsken%_@U.MONTH.8@ 31DAYS ;
-
-
-@U.MONTH.9@:skïereden%_@U.MONTH.9@ 30DAYS ;
-
-@U.MONTH.9@+Use/NG:Skïereden%_@U.MONTH.9@ 30DAYS ;
-
-
-@U.MONTH.10@:golken%_@U.MONTH.10@ 31DAYS ;
-@U.MONTH.10@+Use/NG:rïhkeden%_@U.MONTH.10@ 31DAYS ;
-
-@U.MONTH.10@+Use/NG:Golken%_@U.MONTH.10@ 31DAYS ;
-@U.MONTH.10@+Use/NG:Rïhkeden%_@U.MONTH.10@ 31DAYS ;
-
-@U.MONTH.11@:rahkan%_@U.MONTH.11@ 30DAYS ; ! bytt NG?
-@U.MONTH.11@+Use/NG:gålkoen%_@U.MONTH.11@ 30DAYS ; ! bytt NG?
-
-@U.MONTH.11@+Use/NG:Rahkan%_@U.MONTH.11@ 30DAYS ; ! bytt NG?
-@U.MONTH.11@+Use/NG:Gålkoen%_@U.MONTH.11@ 30DAYS ; ! bytt NG?
+LEXICON EHAKIMIHT30-ST
+% of% :ehakimiht%  30MONTHS ; !5 September
 
 
-@U.MONTH.12@:goeven%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:jåvleasken%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:jåvle-asken%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:javleasken%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:jåvlemaanoen%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:javle-asken%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:jåvle-maanoen%_@U.MONTH.12@ 31DAYS ;
+LEXICON 30MONTHS
+April:ayikipîsimohk ENDLEX ;
+June:opâskâwewowipîsimohk ENDLEX ; 
+September:onôcihitowipîsimohk ENDLEX ;
+November:iyikopîwipîsimohk ENDLEX ; 
+January:kisepîsimohk ENDLEX ; 
+March:niskipîsimohk ENDLEX ; 
+May:opiniyâwewowipîsimohk ENDLEX ;
+July:opaskowipîsimohk ENDLEX ;
+August:ohpahowipîsimohk ENDLEX ; 
+October:kaskatinowipîsimohk ENDLEX ; 
+December:manitow% kîsikan% pîsimohk ENDLEX ;
+December:pawahcakinasîs ENDLEX ;
+October:kaskatinowipîsimohk ENDLEX ; 
+December:manitow% kîsikan% pîsimohk ENDLEX ;
+December:pawahcakinasîs ENDLEX ;
 
-@U.MONTH.12@+Use/NG:Goeven%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:Jåvleasken%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:Jåvle-asken%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:Javleasken%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:Jåvlemaanoen%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:Javle-asken%_@U.MONTH.12@ 31DAYS ;
-@U.MONTH.12@+Use/NG:Jåvle-maanoen%_@U.MONTH.12@ 31DAYS ;
+
+LEXICON EHAKIMIHT31
+%.% :ehakimiht%   31MONTHS ; !5. January
+%.:ehakimiht%   31MONTHS ; !5.January
+% :ehakimiht%  31MONTHS ; !5 January
+
+LEXICON EHAKIMIHT31-ST
+% of% :ehakimiht%  31MONTHS ; !5 September
 
 
-LEXICON 29DAYS
-1:voestes B ;
-2:mubpie B ;
-3:gåalmede B ;
-4:njealjede B ;
-5:vïjhtede B ;
-6:govhtede B ;
-7:tjïjhtjede B ;
-8:gaaktsede B ;
-9:åktsede B ;
-1%0:låhkede B ;
-11:luhkievoestes B ;
-12:luhkiemubpie B ;
-13:luhkiegåalmede B ;
-14:luhkienjealjede B ;
-15:luhkievïjhtede B ;
-16:luhkiegovhtede B ;
-17:luhkietjïjhtjede B ;
-18:luhkiegaaktsede B ;
-19:luhkieåktsede B ;
-2%0:gööktelåhkede B ;
-21:göökteluhkievoestes B ;
-22:göökteluhkiemubpie B ;
-23:göökteluhkiegåalmede B ;
-24:göökteluhkienjealjede B ;
-25:göökteluhkievïjhtede B ;
-26:göökteluhkiegovhtede B ;
-27:göökteluhkietjïjhtjede B ;
-28:göökteluhkiegaaktsede B ;
-29:göökteluhkieåktsede B ;
+LEXICON 31MONTHS
+January:kisepîsimohk ENDLEX ;
+March:niskipîsimohk ENDLEX ;
+May:opiniyâwewowipîsimohk ENDLEX ;
+July:opaskowipîsimohk ENDLEX ;
+August:ohpahowipîsimohk ENDLEX ;
+October:kaskatinowipîsimohk ENDLEX ;
+December:manitow% kîsikan% pîsimohk ENDLEX ;
+December:pawahcakinasîs ENDLEX ;
 
-LEXICON 30DAYS
-3%0:golmelåhkede B ;
-29DAYS ;
-
-LEXICON 31DAYS
-31:golmeluhkievoestes B ;
-30DAYS ;
-
-LEXICON B
-%.:%_biejjie MONTH ;
-
-LEXICON MONTH
-1@U.MONTH.1@:@U.MONTH.1@ X ;
-2@U.MONTH.2@:@U.MONTH.2@ X ;
-3@U.MONTH.3@:@U.MONTH.3@ X ;
-4@U.MONTH.4@:@U.MONTH.4@ X ;
-5@U.MONTH.5@:@U.MONTH.5@ X ;
-6@U.MONTH.6@:@U.MONTH.6@ X ;
-7@U.MONTH.7@:@U.MONTH.7@ X ;
-8@U.MONTH.8@:@U.MONTH.8@ X ;
-9@U.MONTH.9@:@U.MONTH.9@ X ;
-1%0@U.MONTH.10@:@U.MONTH.10@ X ;
-11@U.MONTH.11@:@U.MONTH.11@ X ;
-12@U.MONTH.12@:@U.MONTH.12@ X ;
-
-LEXICON X
-%.: # ;
+  
+LEXICON ENDLEX
+ # ;
 ! # ; ! sloppy punctuation

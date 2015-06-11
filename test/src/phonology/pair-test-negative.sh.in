@@ -14,6 +14,7 @@ TWOLC=@TWOLC@
 GTLANG=@GTLANG@
 SOURCEFILE=${srcdir}/../../../src/phonology/${GTLANG}-phon.twolc
 FSTFILE=../../../src/phonology/${GTLANG}-phon.compose.xfst
+LEXICON=../../../src/morphology/lexicon.xfst
 TWOLCSCRIPT=twolcscript.sh
 TESTDATA=negative-pairs.txt
 TESTRESULT=negative-pairs-out.txt
@@ -31,6 +32,7 @@ if test -x ${TWOLC} ; then
     # Print the testing script to a script file:
     ${PRINTF} "\
 install-binary ${FSTFILE}\n\
+install-lexicon ${LEXICON}\n\
 pair-test-file ${TESTDATA} ${TESTRESULT}\n\
 quit\n" \
     	> ${TWOLCSCRIPT}

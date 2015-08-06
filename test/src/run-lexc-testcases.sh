@@ -10,6 +10,7 @@ Fail=0
 Tests_found=no
 Skipped=no
 testtype=full
+concat_lexc_file="lexicon.lexc"
 
 relpath=.
 testrunner=run-morph-tester.sh
@@ -23,19 +24,20 @@ while test ! -x $relpath/$testrunner ; do
     fi
 done
 
+# Get list of source files:
+source_files="$(find ${srcdir}/$relpath/../src/morphology -name '*.lexc' \
+				-not -name '$concat_lexc_file')"
+
 # One empty line in the beginning:
 echo ""
+
 # Loop over all lexc source files:
-for file in ${srcdir}/$relpath/../src/morphology/*.lexc \
-			${srcdir}/$relpath/../src/morphology/*/*.lexc; do
+for file in ${source_files}; do
 	fileshort=$(echo "$(basename \
 		$(dirname $file))/$(basename $file)")
-	# Skip the GTLANG-all.lexc file - it will cause the tests to be run twice:
-	allfile=$(echo "$( echo $fileshort | grep 'all.lexc' )")
-	[ ! -z "$allfile" ] && continue
 
 	# For each lexc file, extract all fst's specified in it:
-	fsts=$(grep '^\!\!€[^ :]' $file | sed 's/.*€\([a-z-]*\)\:.*/\1/' | sort -u)
+	fsts=$(grep '^\!\!€[^ :]' $file | sed 's/.*€\([a-z.-]*\)\:.*/\1/' | sort -u)
 
 	# Check whether there are test cases in the file:
 	tests=$(grep '^\!\!€ ' $file)
@@ -56,14 +58,34 @@ for file in ${srcdir}/$relpath/../src/morphology/*.lexc \
 
 	# For each specified fst in the lexc file, run those tests:
 	else
+#		echo "TESTING: found tests in $fileshort" # debug
+
 		Tests_found=yes
 		Skipped=no
+
 		for fst in $fsts; do
 		    (( i += 1 ))
-#		    echo $fst    # debug
+#		    echo "The fst is: $fst"    # debug
+			# Empty line before each new fst:
+			echo
 		    leadtext=$(echo "LEXC test $i: ")
+		    
+		    # Check for possible one-sided tests (default is two-sided/full):
+		    if [[ "$fst" == *.gen ]]; then
+		      testtype="gen"
+		      fst=$(basename $fst .gen)
+		    elif [[ "$fst" == *.ana ]] ; then
+		      testtype="ana"
+		      fst=$(basename $fst .ana)
+		    fi
+		    
+		    # Run the actual tests for the given fst:
 			source $relpath/run-morph-tester.sh \
 				$fst $file $relpath $testtype $leadtext
+#		    echo "The $fst testing is done using $testtype testing."    # debug
+
+		    # Reset testtype to default:
+		    testtype=full
 		done
 	fi
 done

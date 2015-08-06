@@ -109,12 +109,11 @@ hfstdata_DATA=$(APERTIUM_MORPH_PAIRS) \
 			  $(APERTIUM_CG_BIN)
 endif # CAN_HFST
 
-# Apertium generator - GTD tags. All filtering happens here:
+# Apertium generator - GTD tags. All filtering happens here except dialect tags happens here:
 generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/make-optional-semantic-tags.hfst      \
 			$(top_builddir)/src/filters/make-optional-v1-tags.hfst            \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst  \
-			$(top_builddir)/src/filters/remove-dialect-tags.hfst              \
 			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst            \
 			$(top_builddir)/src/filters/remove-number-string-tags.hfst        \
 			$(top_builddir)/src/filters/remove-NG-strings.hfst                \
@@ -132,7 +131,6 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 		@\"$(top_builddir)/src/filters/make-optional-semantic-tags.hfst\"     \
 	.o. @\"$(top_builddir)/src/filters/make-optional-v1-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
-	.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
 	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
@@ -394,8 +392,16 @@ $(GTLANG).syn.rlx.bin: functions-mt-apertium.bin
 analyser%.hfst: analyser%.tmp.hfst
 	$(AM_V_INVERT)$(HFST_INVERT) $< -o $@
 
-generator%.hfst: generator%.tmp.hfst
-	$(AM_V_CP)cp -f $< $@
+# If you override this goal, you have to remove dialect tags in the overriding goal!
+generator%.hfst: generator%.tmp.hfst \
+			$(top_builddir)/src/filters/remove-dialect-tags.hfst
+	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
+			read regex \
+	    @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
+	.o. @\"$<\" \
+	;\n\
+        save stack $@\n\
+        quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 #### Xerox transducer fallback target:
 %.xfst: %.tmp.xfst

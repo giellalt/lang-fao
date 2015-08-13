@@ -47,6 +47,7 @@ LANGSTRING=$(shell echo "${GTLANGUAGE}" | sed -e 's/ /_/g')
 MACVOIKKO_STEM=$(addsuffix $(LANGSTRING),MacVoikko-)
 MACVOIKKOFILE+=$(addsuffix .service,$(addsuffix -$(GTLANG2),$(MACVOIKKO_STEM)))
 #MACVKOFST=$(MACVOIKKOFILE)/Contents/Resources/Dictionaries/3/$(GT_SPELLING_HFST)
+MOZVOIKKO_FILE=Mozvoikko2-$(GTLANG2).xpi
 
 endif # CAN_LOCALSYNC
 endif # CAN_HFST
@@ -66,8 +67,10 @@ VK_PLATFORMS=mac win
 VOIKKO_VERS_PLATFORMS=$(foreach version,$(VK_VERSIONS), \
                     $(addprefix $(version)-,$(VK_PLATFORMS)))
 
-OXT_ROOT_DIR=$(GTHOME)/prooftools/toollibs/LibreOffice-voikko
-MACVKO_ROOT_DIR=$(GTHOME)/prooftools/toollibs/mac/MacVoikko
+TOOLLIBS_DIR=$(GTHOME)/prooftools/toollibs
+OXT_ROOT_DIR=$(TOOLLIBS_DIR)/LibreOffice-voikko
+MACVKO_ROOT_DIR=$(TOOLLIBS_DIR)/mac/MacVoikko
+MOZVOIKKO_DIR=$(TOOLLIBS_DIR)/Mozvoikko
 
 #### OXT file: ####
 # - mkdir build dir
@@ -107,6 +110,18 @@ $(MACVOIKKO_STEM)-%.service: %.service
 		< ./$@/Contents/Info.plist > ./$@/Contents/Info.plist.tmp
 	$(AM_V_at)mv -f ./$@/Contents/Info.plist.tmp ./$@/Contents/Info.plist
 	$(AM_V_at)cp $< $@/Contents/Resources/Dictionaries/3/$<
+
+#### Mozvoikko: ####
+# - create package build dir
+# - rsynk package content from template
+# - cp zhfst file
+# - zip to target file
+Mozvoikko2-%.xpi: %.zhfst
+	$(AM_V_at)$(MKDIR_P) build/$@
+	$(AM_V_GEN)cd build/$@ && \
+		$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) $(MOZVOIKKO_DIR)/ ./ && \
+		cp ../../$< voikko/3/ && \
+		$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ *
 
 #### Upload for distro: ####
 DATE=$(shell date +%Y%m%d)

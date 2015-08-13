@@ -56,7 +56,8 @@ noinst_DATA=$(GT_ERRMODELS) \
 			$(OXT_FILES) \
 			$(ALT_WS_OXT_FILES) \
 			$(MACVOIKKOFILE) \
-			$(MACVKOFST)
+			$(MACVKOFST) \
+			$(MOZVOIKKO_FILE)
 
 ###################################
 ####### HFST build rules: #########
@@ -160,7 +161,7 @@ $(GT_SPELLING_HFST): index.xml \
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f  *.hfst *.xfst *.zhfst easteregg.* *.oxt
+	-rm -f  *.hfst *.xfst *.zhfst easteregg.* *.oxt *.xpi
 	-rm -rf 3 *.service build
 	if ! [ "x$(CORPUSNAME)" = "x" ] ; then \
 		rm -f $(CORPUSNAME).* ; \

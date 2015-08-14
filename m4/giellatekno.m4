@@ -267,12 +267,14 @@ AC_PATH_PROG([SAXON], [saxonb-xslt saxon9 saxon8 saxon], [false], [$PATH$PATH_SE
 AC_PATH_PROG([JV], [java], [false])
 AC_CHECK_FILE([/opt/local/share/java/saxon9he.jar],
     AC_SUBST(SAXONJAR, [/opt/local/share/java/saxon9he.jar]),
-        [AC_CHECK_FILE([$HOME/lib/saxon9he.jar],
-            AC_SUBST(SAXONJAR, [$HOME/lib/saxon9he.jar]),
-                [AC_CHECK_FILE([$HOME/lib/saxon9.jar],
-                    AC_SUBST(SAXONJAR, [$HOME/lib/saxon9.jar]),
-                [saxonjar=no])
-                ])]
+        [AC_CHECK_FILE([/usr/share/java/saxon.jar],
+            AC_SUBST(SAXONJAR, [/usr/share/java/saxon.jar]),
+            [AC_CHECK_FILE([$HOME/lib/saxon9he.jar],
+                AC_SUBST(SAXONJAR, [$HOME/lib/saxon9he.jar]),
+                    [AC_CHECK_FILE([$HOME/lib/saxon9.jar],
+                        AC_SUBST(SAXONJAR, [$HOME/lib/saxon9.jar]),
+                    [saxonjar=no])
+                    ])])]
 )
 AC_MSG_CHECKING([whether we can enable xslt2 transformations])
 AS_IF([test x$with_saxon != xno], [

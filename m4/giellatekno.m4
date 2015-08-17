@@ -273,20 +273,32 @@ AC_CHECK_FILE([/opt/local/share/java/saxon9he.jar],
                 AC_SUBST(SAXONJAR, [$HOME/lib/saxon9he.jar]),
                     [AC_CHECK_FILE([$HOME/lib/saxon9.jar],
                         AC_SUBST(SAXONJAR, [$HOME/lib/saxon9.jar]),
-                    [saxonjar=no])
+                    [_saxonjar=no])
                     ])])]
 )
+AS_IF([test "x$_saxonjar" != xno], [
+_saxon_min_version="8.0"
+_saxon_version=$( java -jar $SAXONJAR -? 2>&1 | fgrep -i 'saxon' | grep -Eo '@<:@0-9@:>@+\.@<:@0-9.@:>@+' )
+AC_MSG_CHECKING([whether the Saxon JAR is at least $_saxon_min_version])
+AX_COMPARE_VERSION([$_saxon_version], [ge], [$_saxon_min_version],
+                   [_saxonjar=yes
+                    AC_MSG_RESULT([yes - $_saxon_version])
+                   ], [_saxonjar=no
+                    AC_MSG_RESULT([no - $_saxon_version])
+                   ])
+],
+[_saxonjar=no])
 AC_MSG_CHECKING([whether we can enable xslt2 transformations])
 AS_IF([test x$with_saxon != xno], [
     AS_IF([test "x$SAXON" != xfalse], [gt_prog_saxon=yes],
           [gt_prog_saxon=no])
     AS_IF([test x$JV != xfalse], [gt_prog_java=yes], [gt_prog_java=no])
-    AS_IF([test x$gt_prog_java != xno -a x$saxonjar != xno],
+    AS_IF([test x$gt_prog_java != xno -a x$_saxonjar != xno],
           [gt_prog_xslt=yes], [gt_prog_xslt=no])
 ], [gt_prog_xslt=no])
 AC_MSG_RESULT([$gt_prog_xslt])
 AM_CONDITIONAL([CAN_SAXON], [test "x$gt_prog_saxon" != xno])
-AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$saxonjar" != xno]) 
+AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$_saxonjar" != xno]) 
 ]) # gt_PROG_SAXON
 
 ################################################################################

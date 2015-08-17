@@ -1,4 +1,8 @@
-$Rev: 118809 $
+$Rev: 118834 $
+Replaced sed expression with double cut - the sed did not work on the xserve for
+whatever reason, and caused the testing to hang.
+
+r118809:
 More robust checking of Saxon, now requires that any jar found is at least v8.0.
 
 r118657:

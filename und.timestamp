@@ -1,4 +1,11 @@
-$Rev: 118834 $
+$Rev: 119950 $
+Added a variable to pass a compilation option to hfst-regexp2fst. Used this
+variable to compile all filter regexes with the option --xerox-composition=ON.
+This will ensure that all filters where flag diacritics are used as symbols will
+be compiled correctly for proper used in later compositions. A.o. this fixes a
+bug where tags converted to flags to restrict compounding did not work at all.
+
+r118834:
 Replaced sed expression with double cut - the sed did not work on the xserve for
 whatever reason, and caused the testing to hang.
 

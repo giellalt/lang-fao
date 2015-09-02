@@ -1,4 +1,7 @@
-$Rev: 120005 $
+$Rev: 120030 $
+Fixed an error in distcheck - one test shell script was not included.
+
+r120005:
 Made one step in the speller build behave properly wrt silent builds. Removed
 grammar checker targets, we are far from ready for this, and it breaks
 'make distcheck'.

@@ -6,7 +6,8 @@
 TESTS=
 
 # Yaml tests are run from shell scripts - specify them here:
-YAML_TEST_RUNNERS=run-hfstspeller-acceptor-yaml-testcases.sh
+YAML_TEST_RUNNERS_IN=run-hfstspeller-acceptor-yaml-testcases.sh.in
+YAML_TEST_RUNNERS=$(basename $(YAML_TEST_RUNNERS_IN))
 # Specify other shell scripts here to make sure they are included in the distro
 # even though spellers are disabled:
 OTHER_TEST_RUNNERS_IN=test-zhfst-basic-sugg-speed.sh.in
@@ -31,7 +32,7 @@ YAML_FILES=$(wildcard *.yaml)
 YAML_DIRS=
 
 EXTRA_DIST=$(OTHER_TEST_RUNNERS_IN) \
-           $(YAML_TEST_RUNNERS) \
+           $(YAML_TEST_RUNNERS_IN) \
            $(YAML_FILES) \
            $(YAML_DIRS)
 

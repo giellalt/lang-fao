@@ -194,8 +194,8 @@ AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/hfst/test-zhfst-basic-sugg-sp
       [chmod a+x test/tools/spellcheckers/fstbased/hfst/test-zhfst-basic-sugg-speed.sh])
 AC_CONFIG_FILES([test/tools/spellcheckers/run-spellers-gt-norm-yaml-testcases.sh], \
       [chmod a+x test/tools/spellcheckers/run-spellers-gt-norm-yaml-testcases.sh])
-AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/hfst/run-hfstspeller-acceptor-yaml-testcases.sh], \
-      [chmod a+x test/tools/spellcheckers/fstbased/hfst/run-hfstspeller-acceptor-yaml-testcases.sh])
+AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/hfst/run-acceptor-yaml-testcases.sh], \
+      [chmod a+x test/tools/spellcheckers/fstbased/hfst/run-acceptor-yaml-testcases.sh])
 AC_CONFIG_FILES([test/src/run-gt-desc-genyaml-testcases.sh], \
       [chmod a+x test/src/run-gt-desc-genyaml-testcases.sh])
 AC_CONFIG_FILES([test/src/run-gt-desc-anayaml-testcases.sh], \

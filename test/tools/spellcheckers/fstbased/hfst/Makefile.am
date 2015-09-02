@@ -6,7 +6,7 @@
 TESTS=
 
 # Yaml tests are run from shell scripts - specify them here:
-YAML_TEST_RUNNERS_IN=run-hfstspeller-acceptor-yaml-testcases.sh.in
+YAML_TEST_RUNNERS_IN=run-acceptor-yaml-testcases.sh.in
 YAML_TEST_RUNNERS=$(basename $(YAML_TEST_RUNNERS_IN))
 # Specify other shell scripts here to make sure they are included in the distro
 # even though spellers are disabled:
@@ -25,7 +25,7 @@ endif # WANT_SPELLERS
 
 # List tests that are presently (expected) failures here (in addition to above),
 # ie things that should be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=run-hfstspeller-acceptor-yaml-testcases.sh
+XFAIL_TESTS=run-acceptor-yaml-testcases.sh
 
 # Make sure all required files are included in the distribution:
 YAML_FILES=$(wildcard *.yaml)

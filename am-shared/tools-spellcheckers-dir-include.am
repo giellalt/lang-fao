@@ -29,13 +29,13 @@ GT_COMMON_SPELLER_NAME=speller-gt-norm
 if WANT_SPELLERS
 
 if CAN_HFST
-GT_COMMON_SPELLER_XFST+=analyser-$(GT_COMMON_SPELLER_NAME).hfst
+GT_COMMON_SPELLER_HFST+=analyser-$(GT_COMMON_SPELLER_NAME).hfst
 GT_COMMON_SPELLER_HFST+=generator-$(GT_COMMON_SPELLER_NAME).hfst
 endif # CAN_HFST
 
 if CAN_XFST
 GT_COMMON_SPELLER_XFST+=analyser-$(GT_COMMON_SPELLER_NAME).xfst
-GT_COMMON_SPELLER_HFST+=generator-$(GT_COMMON_SPELLER_NAME).xfst
+GT_COMMON_SPELLER_XFST+=generator-$(GT_COMMON_SPELLER_NAME).xfst
 endif # CAN_XFST
 
 endif # WANT_SPELLERS
@@ -71,7 +71,7 @@ generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: \
 		.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
 		;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
 analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: \
 			$(top_builddir)/src/$(GT_SPELLER_SRC_XFST)  \

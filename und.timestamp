@@ -1,4 +1,9 @@
-$Rev: 119950 $
+$Rev: 120005 $
+Made one step in the speller build behave properly wrt silent builds. Removed
+grammar checker targets, we are far from ready for this, and it breaks
+'make distcheck'.
+
+r119950:
 Added a variable to pass a compilation option to hfst-regexp2fst. Used this
 variable to compile all filter regexes with the option --xerox-composition=ON.
 This will ensure that all filters where flag diacritics are used as symbols will

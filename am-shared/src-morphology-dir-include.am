@@ -31,8 +31,9 @@ endif # WANT_HYPERMINIMISATION
 #! @param GENERATED_LEXC_SRCS optional, space separated list of file names
 #!        holding supplementary lexicon data generated from xml files.
 #! @param GT_XML_SRCS optional, space separated list of xml source file names
-GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GT_LEXC_L2_SRCS) \
-				$(GENERATED_LEXC_SRCS) $(GT_XML_SRCS) $(GT_LOCAL_SRCS)
+GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS_L1_L2) $(L1) $(L2) \
+				$(GENERATED_LEXC_SRCS) $(GT_XML_SRCS) $(GT_LOCAL_SRCS) \
+				$(GT_DISTRO_SRCS)
 
 # All sources need to be included in the tarball
 EXTRA_DIST=$(GT_LEXC_ALLSRC)

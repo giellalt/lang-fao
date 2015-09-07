@@ -1,4 +1,11 @@
-$Rev: 120182 $
+$Rev: 120420 $
+Made new of a new option for the speller suggestion testing: output an attribute
+on each test word element containing essential info about the correct
+suggestion. This will support better styling of the xml file with the test data.
+Also changed the path to the css from the local filesystem (which will vary from
+machine to machine) to the svn repository web url.
+
+r120182:
 Added a variable to hold source files to be included in the distro but not
 compiled as such.
 

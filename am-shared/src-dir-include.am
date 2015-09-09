@@ -157,25 +157,22 @@ analyser-raw-gt-desc.tmp1.foma: morphology/lexicon.foma \
 # ... then apply tag reordering to tmp1 to ensure the same tag order in all
 # subsequent processing; this creates the regular tmp file, which can further
 # get local processing to produce the final raw file:
-generator-raw-gt-desc.tmp.hfst: generator-raw-gt-desc.tmp1.hfst \
-					filters/reorder-semantic-tags.hfst          \
-					filters/reorder-subpos-tags.hfst            \
-					filters/remove-mwe-tags.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
-				@\"filters/reorder-subpos-tags.hfst\"   \
-			.o. @\"filters/reorder-semantic-tags.hfst\" \
-			.o. @\"filters/remove-mwe-tags.hfst\"       \
+### HFST - the raw files are generators, thus we need a special target (but
+###        we try to keep the code as identical as possible, thus pattern rule):
+generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.% \
+					filters/reorder-semantic-tags.%       \
+					filters/reorder-subpos-tags.%         \
+					filters/remove-mwe-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/reorder-subpos-tags.$*\"   \
+			.o. @\"filters/reorder-semantic-tags.$*\" \
+			.o. @\"filters/remove-mwe-tags.$*\"       \
 			.o. @\"$<\" \
-			;" \
-		| $(HFST_REGEXP2FST) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-S --xerox-composition=ON \
-			-X flag-is-epsilon \
-		> $@
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
-# Target required for the pattern rules below to work:
-analyser-raw-gt-desc.hfst: generator-raw-gt-desc.hfst
-	$(AM_V_at)cp $< $@
-
+#### Xerox & FOMA - no special treatment:
 analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.% \
 					filters/reorder-semantic-tags.%     \
 					filters/reorder-subpos-tags.%       \
@@ -187,7 +184,11 @@ analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.% \
 			.o. @\"$<\" \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL) $(VERBOSITY)
+		 quit\n" | $(XFST_TOOL)
+
+# Target required for the pattern rules below to work for HFST builds:
+analyser-raw-gt-desc.hfst: generator-raw-gt-desc.hfst
+	$(AM_V_at)cp $< $@
 
 # To get a transducer usable for a certain application, the raw transducer needs
 # to be filtered and manipulated to get the target tag set and surface symbols.
@@ -527,7 +528,7 @@ morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
 
 #### HFST transducer fallback target:
 #### - inversion is needed FOR THE ANALYSER because the hfst model is upside
-#### down compared to Xerox AT APPLICATION TIME.
+#### down compared to Xerox AT LOOKUP TIME.
 analyser%.hfst: analyser%.tmp.hfst
 	$(AM_V_INVERT)$(HFST_INVERT) -i $< -o $@
 

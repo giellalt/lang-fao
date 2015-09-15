@@ -1,4 +1,9 @@
-$Rev: 120628 $
+$Rev: 120994 $
+Added support for specifying regexes or list of string pairs for initial and
+final symbols in the error model. Also added a Makefile variable to control
+whether to allow edits of the initial letter(s), default is ‘no’.
+
+r120628:
 Guard against -q for lookups that don't support it in test scripts.
 
 r120599:

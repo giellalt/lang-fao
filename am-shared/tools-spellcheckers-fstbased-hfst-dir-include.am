@@ -22,6 +22,25 @@ GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 # (=max compression, working from 28.1.2014 for all platforms):
 ZIPFLAGS=-9 $(VERBOSITY)
 
+## Conditional string variables;
+# Set file name to the empty string or initial_letters_all depending on variable:
+initial_letter_deps=$(shell \
+	if [[ $(ALLOW_INITIAL_EDITS) == 'yes' ]] ; \
+	then \
+		echo "initial_letters.%.hfst"; \
+	else \
+		echo ""; \
+	fi)
+
+# Set file name to the empty string or initial_letters_all depending on variable:
+initial_letter_fst_include=$(shell \
+	if [[ $(ALLOW_INITIAL_EDITS) == 'yes' ]] ; \
+	then \
+		echo "| @\\\"initial_letters.$*.hfst\\\" "; \
+	else \
+		echo ""; \
+	fi)
+
 ####### Automake targets: ########
 
 GT_ERRMODELS=
@@ -74,7 +93,7 @@ easteregg.%.suggtxt: easteregg.%.txt
 	$(AM_V_GEN)sed -e 's/^/nuvviDspeller:/' < $< \
 		| sed = \
 		| sed 'N;s/\n/	/' \
-		| perl -pe 's/(.)\t(.+)/\2\t0.0\1/' \
+		| perl -pe 's/(.)\t(.+)/\2\t\1/' \
 		> $@
 
 # Easter egg string acceptor:
@@ -89,15 +108,48 @@ editdist.%.regex: editdist.%.txt
 		--verbose \
 		--swap \
 		--epsilon='@0@' \
-		--distance=$(DEFAULT_EDIT_DIST) \
 		--default-weight=$(DEFAULT_WEIGHT) \
-		--no-string-initial-correction \
 		--regex -i $< \
 		--output-file=$@
 
+#		--distance=$(DEFAULT_EDIT_DIST) 
+
+initial_letters.list.%.hfst: initial_letters.%.txt
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -p \
+		-o $@
+
+initial_letters.regex.%.hfst: initial_letters.%.regex
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
+		-o $@
+
+initial_letters.%.hfst: \
+			initial_letters.regex.%.hfst \
+			initial_letters.list.%.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		-o $@
+
+final_strings.list.%.hfst: final_strings.%.txt
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		-o $@
+
+final_strings.regex.%.hfst: final_strings.%.regex
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
+		-o $@
+
+final_strings.%.hfst: \
+		final_strings.regex.%.hfst \
+		final_strings.list.%.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
+		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
+		-o $@
+
 # Helper fst:
 anystar.hfst:
-	$(AM_V_RGX2FST)echo "?*;" | $(HFST_REGEXP2FST) -S -o $@
+	$(AM_V_RGX2FST)echo "?*" | $(HFST_REGEXP2FST) -o $@
 
 # Error model building - list of strings known to be misspelled:
 strings.%.hfst: strings.%.txt anystar.hfst
@@ -109,9 +161,9 @@ strings.%.hfst: strings.%.txt anystar.hfst
 
 # Combine edit distance with string pattern edits:
 editStrings.%.hfst: strings.%.hfst editdist.%.hfst
-	$(AM_V_GEN)$(HFST_DISJUNCT) $^       \
+	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
+		| $(HFST_REPEAT) -f 1 -t $(DEFAULT_EDIT_DIST) \
 		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_REPEAT) -f 1 -t 2       \
 		-o $@
 
 # Error model building - list of words known to be misspelled:
@@ -121,12 +173,20 @@ words.%.hfst: words.%.txt easteregg.%.suggtxt
 
 # The final error model is assembled here:
 errmodel.%.hfst: words.%.hfst \
-				 strings.%.hfst \
-				 editdist.%.hfst
+				 $(initial_letter_deps) \
+				 editStrings.%.hfst \
+				 final_strings.%.hfst
 	$(AM_V_RGX2FST)printf "\
 		[ @\"words.$*.hfst\"    \
-		| @\"editdist.$*.hfst\" \
-		| @\"strings.$*.hfst\"  ];" \
+		| \
+		  [ \
+		    [ ? \
+			$(initial_letter_fst_include) \
+		    ] \
+		      @\"editStrings.$*.hfst\"   \
+		    ( @\"final_strings.$*.hfst\" ) \
+		  ] \
+		];" \
 		| $(HFST_REGEXP2FST) -S $(HFST_FLAGS) \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
@@ -166,6 +226,17 @@ clean-local:
 	if ! [ "x$(CORPUSNAME)" = "x" ] ; then \
 		rm -f $(CORPUSNAME).* ; \
 	fi
+
+# Keep these intermediate targets when building using --debug:
+.SECONDARY: editStrings.default.hfst \
+            strings.default.hfst     \
+            editdist.default.hfst    \
+            editdist.default.regex    \
+            words.default.hfst \
+            initial_letters.list.default.hfst \
+            initial_letters.regex.default.hfst \
+            initial_letters_all.default.hfst \
+            final_strings.default.hfst
 
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst_prods_n_upload-dir-include.am
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst_alt_ws-dir-include.am

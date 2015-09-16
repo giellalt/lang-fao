@@ -20,7 +20,7 @@
 ##################################################################
 
 # List any local additions here:
-GT_FILTER_SRCS=
+GT_MT_FILTER_SRCS=
 
 # Only build these things if apertium fst's are enabled:
 if WANT_APERTIUM

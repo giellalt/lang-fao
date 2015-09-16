@@ -7,7 +7,7 @@ SUBDIRS = . src tools doc test
 
 EXTRA_DIST = und.timestamp
 
-pkgconfigdir = $(libdir)/pkgconfig
+pkgconfigdir = $(prefix)/share/pkgconfig
 pkgconfig_DATA = giella-$(GTLANG).pc
 
 

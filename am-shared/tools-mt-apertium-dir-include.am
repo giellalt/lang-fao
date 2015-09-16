@@ -366,10 +366,7 @@ disambiguation-mt-gt.cg3: \
 
 # Change the tags from GTDivvun format to Apertium format:
 %-apertium.cg3: %-gt.cg3
-	$(AM_V_GEN)$(PYTHON) \
-		$(GTCORE)/scripts/cg-tag-convertor-for-apertium.py < $< \
-		| grep -v '#RemoveFromApertium' \
-		> $@
+	<$< grep -v '#RemoveFromApertium' >$@
 
 #### Copy to Apertium filenames
 $(APERTIUM_MORPH_PAIRS_V): \

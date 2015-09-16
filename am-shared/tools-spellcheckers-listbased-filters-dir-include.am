@@ -33,7 +33,7 @@ CLEANFILES=$(GENERATED_REGEXES)
 .regex.hfst:
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S -i $< -o $@
 
-%.hfst: $(GTCORE)/gtdshared/common/tools/spellcheckers/listbased/filters/%.regex
+%.hfst: $(GTCORE)/giella-shared/common/tools/spellcheckers/listbased/filters/%.regex
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(VERBOSITY) $(HFST_FLAGS) -S -i $< -o $@
 
 ####### Xerox build rules: #######
@@ -41,7 +41,7 @@ CLEANFILES=$(GENERATED_REGEXES)
 	$(AM_V_XFST)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
 		$(XFST) $(VERBOSITY) $(XFSTFLAGS)
 
-%.xfst: $(GTCORE)/gtdshared/common/tools/spellcheckers/listbased/filters/%.regex
+%.xfst: $(GTCORE)/giella-shared/common/tools/spellcheckers/listbased/filters/%.regex
 	$(AM_V_XFST)$(PRINTF) "read regex @re\"$<\";\nsave stack $@\nquit\n" |\
 		$(XFST) $(VERBOSITY) $(XFSTFLAGS)
 

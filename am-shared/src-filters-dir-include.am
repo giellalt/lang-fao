@@ -326,7 +326,7 @@ reorder-%-tags.regex: %-tags.txt
 		$@ $^
 
 ####### Copy regex files from the GTD core if not found locally: ########
-%.regex: $(GTCORE)/gtdshared/common/src/filters/%.regex
+%.regex: $(GTCORE)/giella-shared/common/src/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 
 ####### Other targets: ###########

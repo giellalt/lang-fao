@@ -19,6 +19,16 @@
 GT_SPELLER_SRC_HFST=generator-speller-gt-norm.hfst
 GT_COMMON_SPELLER_HFST=
 
+## Conditional string variables;
+# Set file name to the empty string or initial_letters_all depending on variable:
+tag_weighted_dep=$(shell \
+	if [[ $(ENABLE_CORPUS_WEIGHTS) == 'yes' ]] ; \
+	then \
+		echo "%-unit_weighted.hfst"; \
+	else \
+		echo "%-comp_restricted.hfst"; \
+	fi)
+
 ####### Automake targets: ########
 
 if WANT_SPELLERS
@@ -88,7 +98,7 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
 
 #### 5. Add tag-based weights, for adjusting weights according to morphology
 ####    and other tag-based penalties like words that should not be suggested:
-%-tag_weighted.hfst: %-unit_weighted.hfst  \
+%-tag_weighted.hfst: $(tag_weighted_dep)  \
 				 	 $(srcdir)/weighting/$(TAGWEIGHTS)
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 			-T $(srcdir)/weighting/$(TAGWEIGHTS) --arcs-only -i $< \

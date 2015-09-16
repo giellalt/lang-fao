@@ -140,7 +140,7 @@ final_strings.regex.%.hfst: final_strings.%.regex
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
 		-o $@
 
-final_strings.%.hfst: \
+final_strings_all.%.hfst: \
 		final_strings.regex.%.hfst \
 		final_strings.list.%.hfst
 	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
@@ -175,7 +175,7 @@ words.%.hfst: words.%.txt easteregg.%.suggtxt
 errmodel.%.hfst: words.%.hfst \
 				 $(initial_letter_deps) \
 				 editStrings.%.hfst \
-				 final_strings.%.hfst
+				 final_strings_all.%.hfst
 	$(AM_V_RGX2FST)printf "\
 		[ @\"words.$*.hfst\"    \
 		| \
@@ -184,7 +184,7 @@ errmodel.%.hfst: words.%.hfst \
 			$(initial_letter_fst_include) \
 		    ] \
 		      @\"editStrings.$*.hfst\"   \
-		    ( @\"final_strings.$*.hfst\" ) \
+		    ( @\"final_strings_all.$*.hfst\" ) \
 		  ] \
 		];" \
 		| $(HFST_REGEXP2FST) -S $(HFST_FLAGS) \

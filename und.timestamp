@@ -1,4 +1,10 @@
-$Rev: 120994 $
+$Rev: 121050 $
+Added a Makefile.am variable to turn on or off corpus-based (frequency)
+weighting of suggestions. Default for the time being is off while we work out
+the best interactions between the different parts of the spellers. Changed one
+intermediary filename to ensure proper dependency checks and thus rebuilds.
+
+r120994:
 Added support for specifying regexes or list of string pairs for initial and
 final symbols in the error model. Also added a Makefile variable to control
 whether to allow edits of the initial letter(s), default is ‘no’.

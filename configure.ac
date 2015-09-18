@@ -116,7 +116,7 @@ case "${host}" in
 esac
 AC_SUBST(CYGWINJAVAPATH)
 
-# Tests and sets up giellatekno directories and scripts
+# Tests and sets up giella-core directories and scripts
 gt_PROG_SCRIPTS_PATHS
 
 # Tests and sets up XFST

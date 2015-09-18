@@ -1,4 +1,5 @@
-# gt.m4 - Macros to locate and utilise giellatekno scripts -*- Autoconf -*-
+# gt.m4 - Macros to locate and utilise giella-core scripts and required tools
+# for the Divvun and Giellatekno infrastructure. -*- Autoconf -*-
 # serial 1 (gtsvn-1)
 # 
 # Copyright © 2011 Divvun/Samediggi/UiT <bugs@divvun.no>.

@@ -1,4 +1,11 @@
-$Rev: 121218 $
+$Rev: 121418 $
+Added an option to specify how many lines of the frequency corpus to be used in
+the frequency weighting, to trim the acceptor fst at a point where the weights
+don't really matter. Removed all occurrences of remove-epsilon, determinisation
+and minimisation of intermediate speller fst's - this cut the size of the final
+acceptor in two!
+
+r121218:
 Replaced 'giellatekno' with 'giella' or added Divvun, depending on context.
 
 r121210:

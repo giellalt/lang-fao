@@ -63,10 +63,6 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
 				 $(SURFWEIGHTS)
 	$(AM_V_COMPOSE)$(HFST_COMPOSE) $(HFST_FLAGS) -F \
 			$< $(SURFWEIGHTS) \
-		| $(HFST_REMOVE_EPSILONS)     $(HFST_FLAGS) \
-		| $(HFST_PUSH_WEIGHTS) -p end $(HFST_FLAGS) \
-		| $(HFST_DETERMINIZE)  -E     $(HFST_FLAGS) \
-		| $(HFST_MINIMIZE)     -E     $(HFST_FLAGS) \
 		-o $@
 
 #### 3. Add a default unit weight to anything not covered by the corpus
@@ -75,40 +71,17 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
 %-unit_weighted.hfst: %-freq_weighted.hfst  \
 				 unitweighted.hfst
 	$(AM_V_UNION)$(HFST_DISJUNCT) $(HFST_FLAGS) $< unitweighted.hfst \
-		| $(HFST_REMOVE_EPSILONS)     $(HFST_FLAGS) \
-		| $(HFST_PUSH_WEIGHTS) -p end $(HFST_FLAGS) \
-		| $(HFST_DETERMINIZE)  -E     $(HFST_FLAGS) \
-		| $(HFST_MINIMIZE)     -E     $(HFST_FLAGS) \
 		-o $@
 
-#### 4. Normalise the frequency weights towards a fixed maximum/scale:
-#%-norm_weighted.hfst: %-unit_weighted.hfst  \
-#				 $(srcdir)/weighting/word-boundary.relabel \
-#				 $(CORPUSNAME).weight_scaling.txt
-#	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) \
-#			-i $< -l "$(NORMALISED_MAXWEIGHT)" \
-#			--multiplier="$$(cat $(CORPUSNAME).weight_scaling.txt)" \
-#		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) \
-#			-u "$(NORMALISED_MAXWEIGHT)" --multiplier="1" \
-#		| $(HFST_REMOVE_EPSILONS)     $(MORE_VERBOSITY) $(HFST_FLAGS) \
-#		| $(HFST_PUSH_WEIGHTS) -p end $(MORE_VERBOSITY) $(HFST_FLAGS) \
-#		| $(HFST_DETERMINIZE)  -E     $(MORE_VERBOSITY) $(HFST_FLAGS) \
-#		| $(HFST_MINIMIZE)     -E     $(MORE_VERBOSITY) $(HFST_FLAGS) \
-#		-o $@
-
-#### 5. Add tag-based weights, for adjusting weights according to morphology
+#### 4. Add tag-based weights, for adjusting weights according to morphology
 ####    and other tag-based penalties like words that should not be suggested:
 %-tag_weighted.hfst: $(tag_weighted_dep)  \
 				 	 $(srcdir)/weighting/$(TAGWEIGHTS)
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 			-T $(srcdir)/weighting/$(TAGWEIGHTS) --arcs-only -i $< \
-		| $(HFST_REMOVE_EPSILONS)     $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		| $(HFST_PUSH_WEIGHTS) -p end $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		| $(HFST_DETERMINIZE)  -E     $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		| $(HFST_MINIMIZE)     -E     $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 
-#### 6. Finally, remove the surface word boundary symbol:
+#### 5. Finally, remove the surface word boundary symbol:
 %.tmp.hfst: %-tag_weighted.hfst
 	$(AM_V_HXFST)$(PRINTF) "\
 		set encode-weights ON \n\

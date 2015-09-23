@@ -29,6 +29,14 @@ TAGWEIGHTS=tags.reweight
 ALPHA=1.0
 #NORMALISED_MAXWEIGHT=1000
 
+corpus_size_limit_command=$(shell \
+	if [[ x$(CORPUS_SIZE) != x ]] ; \
+	then \
+		echo "| head -n $(CORPUS_SIZE)"; \
+	else \
+		echo ""; \
+	fi)
+
 %.hfst: weighting/%.att
 	$(AM_V_GEN)$(HFST_TXT2FST) $(HFST_FLAGS) -f openfst-tropical $< -o $@
 
@@ -47,7 +55,7 @@ $(CORPUSNAME).clean.txt: \
 
 # Unique the sorted, clean corpus:
 %.uniq.txt: %.sort.txt
-	$(AM_V_at)uniq -c < $< > $@
+	$(AM_V_GEN)uniq -c < $< | sort -nr $(corpus_size_limit_command) > $@
 
 # type count:
 %.typecount.txt: %.uniq.txt
@@ -97,6 +105,7 @@ unitweighted.hfst: $(UW_SPELLER_SRC) \
 
 # Keep these intermediate targets when building using --debug:
 .SECONDARY: spellercorpus.sort.txt \
+            spellercorpus.uniq.txt \
             spellercorpus.surfs.hfst \
             spellercorpus.tropical.txt \
             spellercorpus.typecount.txt \

@@ -24,7 +24,7 @@ endif # WANT_SYNTAX
 
 #################################################
 #### Add language-specific build rules here: ####
-%.cg3: $(GTCORE)/gtdshared/smi/src/syntax/%.cg3
+%.cg3: $(GTCORE)/giella-shared/smi/src/syntax/%.cg3
 	$(AM_V_GEN)cp -f $< $@
 
 ##################################################################

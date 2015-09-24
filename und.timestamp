@@ -1,4 +1,8 @@
-$Rev: 121418 $
+$Rev: 121514 $
+Fixed a problem running bc on the linux servers, which caused the yaml test
+summaries to be blank.
+
+r121418:
 Added an option to specify how many lines of the frequency corpus to be used in
 the frequency weighting, to trim the acceptor fst at a point where the weights
 don't really matter. Removed all occurrences of remove-epsilon, determinisation

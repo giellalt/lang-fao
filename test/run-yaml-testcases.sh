@@ -96,12 +96,12 @@ for file in ${srcdir}/$yaml_file_subdir/*_$transducer.$suffix; do
         $transducer $file $relpath $halftest $leadtext
 done
 
-totalpasses=$(cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f1 | tr '\n' ' ' \
-			 | sed 's/ / + /g' | sed 's/ + $//' | bc )
-totalfails=$( cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f2 | tr '\n' ' ' \
-			 | sed 's/ / + /g' | sed 's/ + $//' | bc )
-totaltotals=$(cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f3 | tr '\n' ' ' \
-			 | sed 's/ / + /g' | sed 's/ + $//' | bc )
+totalpasses=$( echo $( cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f1 \
+			 | tr '\n' ' ' | sed 's/ / + /g' | sed 's/ + $//' ) | bc )
+totalfails=$(  echo $( cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f2 \
+			 | tr '\n' ' ' | sed 's/ / + /g' | sed 's/ + $//' ) | bc )
+totaltotals=$( echo $( cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f3 \
+			 | tr '\n' ' ' | sed 's/ / + /g' | sed 's/ + $//' ) | bc )
 rm -f $testtotalsfile
 
 red="\033[1;31m"

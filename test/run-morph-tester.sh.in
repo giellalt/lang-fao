@@ -65,6 +65,7 @@ generatorfile=./$relpath/../$fstdir/generator-$transducer
 bare_fst_file=./$relpath/../$fstdir/$transducer
 pythonbin=@PYTHON@
 runtests="$pythonbin @GTCORE@/scripts/morph-test.py"
+testtotalsfile=testtotals.tmp.txt
 
 # Use autotools mechanisms to only run the configured fst types in the tests:
 fsttype=
@@ -107,7 +108,7 @@ outputformat="--output final"
 	    --app "$lookuptool" \
 	    $fstoptions \
 	    $halftestoption \
-	    $testfile | tee -a testtotals.tmp.txt
+	    $testfile | tee -a $testtotalsfile
 	exitv=$( echo ${PIPESTATUS[0]} )
 
 	# If the test failed, print instructions to rerun and get more details:

@@ -27,7 +27,7 @@ ZIPFLAGS=-9 $(VERBOSITY)
 initial_letter_deps=$(shell \
 	if [[ $(ALLOW_INITIAL_EDITS) == 'yes' ]] ; \
 	then \
-		echo "initial_letters.%.hfst"; \
+		echo "initial_letters_all.%.hfst"; \
 	else \
 		echo ""; \
 	fi)
@@ -36,7 +36,7 @@ initial_letter_deps=$(shell \
 initial_letter_fst_include=$(shell \
 	if [[ $(ALLOW_INITIAL_EDITS) == 'yes' ]] ; \
 	then \
-		echo "| @\\\"initial_letters.$*.hfst\\\" "; \
+		echo "| @\\\"initial_letters_all.$*.hfst\\\" "; \
 	else \
 		echo ""; \
 	fi)
@@ -123,17 +123,15 @@ initial_letters.regex.%.hfst: initial_letters.%.regex
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
 		-o $@
 
-initial_letters.%.hfst: \
+initial_letters_all.%.hfst: \
 			initial_letters.regex.%.hfst \
 			initial_letters.list.%.hfst
 	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		-o $@
 
 final_strings.list.%.hfst: final_strings.%.txt
 	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		-o $@
 
 final_strings.regex.%.hfst: final_strings.%.regex
@@ -144,7 +142,6 @@ final_strings_all.%.hfst: \
 		final_strings.regex.%.hfst \
 		final_strings.list.%.hfst
 	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		-o $@
 
 # Helper fst:
@@ -163,7 +160,6 @@ strings.%.hfst: strings.%.txt anystar.hfst
 editStrings.%.hfst: strings.%.hfst editdist.%.hfst
 	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
 		| $(HFST_REPEAT) -f 1 -t $(DEFAULT_EDIT_DIST) \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
 		-o $@
 
 # Error model building - list of words known to be misspelled:
@@ -180,14 +176,11 @@ errmodel.%.hfst: words.%.hfst \
 		[ @\"words.$*.hfst\"    \
 		| \
 		  [ \
-		    [ ? \
-			$(initial_letter_fst_include) \
-		    ] \
-		      @\"editStrings.$*.hfst\"   \
+		      @\"editStrings.$*.hfst\"  \
 		    ( @\"final_strings_all.$*.hfst\" ) \
 		  ] \
 		];" \
-		| $(HFST_REGEXP2FST) -S $(HFST_FLAGS) \
+		| $(HFST_REGEXP2FST) -S -E $(HFST_FLAGS) \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 ####### Alternate error model: #######

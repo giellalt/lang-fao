@@ -41,7 +41,8 @@ endif # WANT_SPELLERS
 noinst_DATA=$(GT_COMMON_SPELLER_HFST) $(GT_COMMON_SPELLER_XFST)
 
 #### 1. Build the speller transducer with compound filtering:
-generator-fstspeller-gt-norm-comp_restricted.hfst: ../$(GT_SPELLER_SRC_HFST) \
+generator-fstspeller-gt-norm-comp_restricted.tmp.hfst: \
+			../$(GT_SPELLER_SRC_HFST) \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst    \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst   \
 			$(top_builddir)/src/filters/convert_to_flags-CmpNP-tags.hfst \

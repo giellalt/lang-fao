@@ -27,6 +27,9 @@ DEFAULT_EDIT_DIST=2
 # the error model, and thus make it much, much slower. Makre sure you TEST the
 # resulting error model properly and thoroughly, both for speeds and suggestion
 # quality.
+####### NB! This variable has no effect for the time being!!! First letters are
+####### modified as part of the regular error model until we are able to formu-
+####### late a better way of handling edits to the initial letter(s).
 ALLOW_INITIAL_EDITS=no
 
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst-dir-include.am

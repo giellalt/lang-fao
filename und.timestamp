@@ -1,4 +1,8 @@
-$Rev: 121729 $
+$Rev: 121755 $
+Added a comment about the non-functioning of the initial edit setting. Made the
+compound-restricted fst a tmp file, to allow for additional local processing.
+
+r121729:
 Removed all minimization of the error model except for the final build step.
 Removed also the initial letter handling for now, it blows up the error model,
 and slows it down correspondingly, making spellers that has turned this on

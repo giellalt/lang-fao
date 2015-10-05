@@ -1,4 +1,9 @@
-$Rev: 122053 $
+$Rev: 122125 $
+Changed the response to missing transducers from FAIL to SKIP to avoid problems
+with lexc tests for fst's not enabled and thus not available. Instead report the
+missing fst to the user.
+
+r122053:
 Streamlined descriptive compounding tags to follow a shared tag structure.
 
 r121755:

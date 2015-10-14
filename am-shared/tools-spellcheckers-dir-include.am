@@ -15,12 +15,19 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Pattern variables to choose tools depending on which toolset we build for:
+%.hfst : XFST_TOOL      = $(HFST_XFST) -p $(VERBOSITY)
+%.xfst : XFST_TOOL      = $(XFST) $(VERBOSITY)
+%.foma : XFST_TOOL      = $(FOMA) $(VERBOSITY)
+
+%.hfst : AM_V_XFST_TOOL = $(AM_V_HXFST)
+%.xfst : AM_V_XFST_TOOL = $(AM_V_XFST)
+%.foma : AM_V_XFST_TOOL = $(AM_V_FOMA)
+
 # Hfst fst variables:
-GT_SPELLER_SRC_HFST=generator-raw-gt-desc.hfst
 GT_COMMON_SPELLER_HFST=
 
 # Xerox fst variables - Xerox can be used for building the list-based spellers:
-GT_SPELLER_SRC_XFST=analyser-raw-gt-desc.xfst
 GT_COMMON_SPELLER_XFST=
 
 GT_COMMON_SPELLER_NAME=speller-gt-norm
@@ -44,80 +51,93 @@ noinst_DATA=$(GT_COMMON_SPELLER_HFST) $(GT_COMMON_SPELLER_XFST)
 
 # Build the common speller transducer by removing everything we don't want in
 # any of the spellers:
-generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: \
-			$(top_builddir)/src/$(GT_SPELLER_SRC_HFST)  \
-			$(top_builddir)/src/filters/remove-dialect-tags.hfst       \
-			$(top_builddir)/src/filters/remove-semantic-tags.hfst      \
-			$(top_builddir)/src/filters/remove-transitivity-tags.hfst  \
-			$(top_builddir)/src/filters/remove-variant-tags.hfst       \
-			$(top_builddir)/src/filters/remove-CLB-strings.hfst        \
-			$(top_builddir)/src/filters/remove-error-strings.hfst      \
-			$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst \
-			$(top_builddir)/src/filters/remove-PUNCT-strings.hfst      \
-			$(top_builddir)/src/filters/remove-use_marg-strings.hfst   \
-			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
-	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
-			read regex \
-		    @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"       \
-		.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.hfst\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-transitivity-tags.hfst\"  \
-		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"       \
-		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.hfst\"        \
-		.o. @\"$(top_builddir)/src/filters/remove-error-strings.hfst\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst\" \
-		.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.hfst\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.hfst\"   \
+analyser-$(GT_COMMON_SPELLER_NAME).tmp.%: \
+			$(top_builddir)/src/analyser-raw-gt-desc.%              \
+			$(top_builddir)/src/filters/remove-dialect-tags.%       \
+			$(top_builddir)/src/filters/remove-semantic-tags.%      \
+			$(top_builddir)/src/filters/remove-transitivity-tags.%  \
+			$(top_builddir)/src/filters/remove-variant-tags.%       \
+			$(top_builddir)/src/filters/remove-CLB-strings.%        \
+			$(top_builddir)/src/filters/remove-error-strings.%      \
+			$(top_builddir)/src/filters/remove-MinusSpell-strings.% \
+			$(top_builddir)/src/filters/remove-PUNCT-strings.%      \
+			$(top_builddir)/src/filters/remove-use_marg-strings.%   \
+			$(top_builddir)/src/filters/remove-orig_lang-tags.%   \
+			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+		    @\"$(top_builddir)/src/filters/remove-dialect-tags.$*\"       \
+		.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.$*\"     \
+		.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.$*\"      \
+		.o. @\"$(top_builddir)/src/filters/remove-transitivity-tags.$*\"  \
+		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.$*\"       \
+		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.$*\"        \
+		.o. @\"$(top_builddir)/src/filters/remove-error-strings.$*\"      \
+		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.$*\" \
+		.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.$*\"      \
+		.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.$*\"   \
 		.o. @\"$<\" \
-		.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
+		.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.$*\" \
 		;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+		 quit\n" | $(XFST_TOOL)
 
-analyser-$(GT_COMMON_SPELLER_NAME).tmp.xfst: \
-			$(top_builddir)/src/$(GT_SPELLER_SRC_XFST)  \
-			$(top_builddir)/src/filters/remove-dialect-tags.xfst       \
-			$(top_builddir)/src/filters/remove-semantic-tags.xfst      \
-			$(top_builddir)/src/filters/remove-transitivity-tags.xfst  \
-			$(top_builddir)/src/filters/remove-variant-tags.xfst       \
-			$(top_builddir)/src/filters/remove-CLB-strings.xfst        \
-			$(top_builddir)/src/filters/remove-error-strings.xfst      \
-			$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst \
-			$(top_builddir)/src/filters/remove-PUNCT-strings.xfst      \
-			$(top_builddir)/src/filters/remove-use_marg-strings.xfst   \
-			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-		    @\"$(top_builddir)/src/filters/remove-dialect-tags.xfst\"       \
-		.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.xfst\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-transitivity-tags.xfst\"  \
-		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.xfst\"       \
-		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.xfst\"        \
-		.o. @\"$(top_builddir)/src/filters/remove-error-strings.xfst\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.xfst\" \
-		.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.xfst\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.xfst\"   \
-		.o. @\"$<\" \
-		.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.xfst\" \
-		;\n\
+#### HFST transducer fallback target:
+#### - inversion is needed FOR THE ANALYSER because the hfst model is upside
+#### down compared to Xerox AT LOOKUP TIME.
+analyser%.hfst: analyser%.tmp.hfst \
+			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst    \
+			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex                                        \
+			@\"$<\"                                                           \
+		.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"    \
+		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"   \
+		; \n\
+		invert \n\
+		save stack $@\n\
+		quit\n" | $(HFST_XFST) -p $(VERBOSITY)
+
+generator%.hfst: analyser%.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
+
+#### Xerox transducer fallback target:
+#### - inversion is needed in the final step for the GENERATOR.
+analyser%.xfst: analyser%.tmp.xfst \
+			$(top_builddir)/src/filters/remove-hyphenation-marks.xfst    \
+			$(top_builddir)/src/filters/remove-infl_deriv-borders.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex                                         \
+			@\"$<\"                                                           \
+		.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.xfst\"    \
+		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.xfst\"   \
+		; \n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
 
-# Copy the tmp transducer to the final one. This allows local overrides.
-%.xfst: %.tmp.xfst
-	$(AM_V_CP)cp -f $< $@
-
-%.hfst: %.tmp.hfst
-	$(AM_V_CP)cp -f $< $@
-
-# Invert the basic fst's, to enable symmetric yaml tests:
-generator-%.xfst: analyser-%.xfst
-	$(AM_V_XFST)$(PRINTF) \
-		"load stack $< \n\
+generator%.xfst: analyser%.tmp.xfst
+	$(AM_V_XFST)$(PRINTF) "\
+		 load stack $<\n\
 		 invert net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
 
-analyser-%.hfst: generator-%.hfst
-	$(AM_V_INVERT)$(HFST_INVERT) $(VERBOSITY) $(HFST_FLAGS) -i $< -o $@
+#### Foma transducer fallback target:
+#### - inversion is needed in the final step for the GENERATOR.
+analyser%.foma: analyser%.tmp.foma
+			$(top_builddir)/src/filters/remove-hyphenation-marks.foma    \
+			$(top_builddir)/src/filters/remove-infl_deriv-borders.foma
+	$(AM_V_XFST)$(PRINTF) "read regex                                         \
+			@\"$<\"                                                           \
+		.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.foma\"    \
+		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.foma\"   \
+		; \n\
+		 save stack $@\n\
+		 quit\n" | $(FOMA) $(VERBOSITY)
+
+generator%.foma: analyser%.tmp.foma 
+	$(AM_V_FOMA)$(PRINTF) "\
+		 load stack $<\n\
+		 invert net\n\
+		 save stack $@\n\
+		 quit\n" | $(FOMA) $(VERBOSITY)
 
 ####### Other targets: ###########
 clean-local:

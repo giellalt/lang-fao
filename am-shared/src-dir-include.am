@@ -29,7 +29,7 @@ GT_RAW=
 if CAN_HFST
 
 # Always build the raw generator if hfst is enabled:
-GT_RAW+=generator-raw-gt-desc.hfst
+GT_RAW+=generator-raw-gt-desc.hfst analyser-raw-gt-desc.hfst
 
 if WANT_TWOSTEP_INTERSECT
 COMPOSE_INTERSECT_FLAG=--fast
@@ -188,7 +188,7 @@ analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.% \
 
 # Target required for the pattern rules below to work for HFST builds:
 analyser-raw-gt-desc.hfst: generator-raw-gt-desc.hfst
-	$(AM_V_at)cp $< $@
+	$(AM_V_CP)cp $< $@
 
 # To get a transducer usable for a certain application, the raw transducer needs
 # to be filtered and manipulated to get the target tag set and surface symbols.

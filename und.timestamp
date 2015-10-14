@@ -1,7 +1,13 @@
-$Rev: 122125 $
+$Rev: 122724 $
+Make sure analyser-raw-gt-desc.hfst is always built, to ensure we have the
+necessary prerequisites for all targets. Refactored the initial speller fst
+build to use common build code for all fst technologies. Makes it possible to
+easier test and compare test results when debugging.
+
+r122125:
 Changed the response to missing transducers from FAIL to SKIP to avoid problems
-with lexc tests for fst's not enabled and thus not available. Instead report the
-missing fst to the user.
+with lexc tests for fst's not enabled and thus not available. Instead report
+the missing fst to the user.
 
 r122053:
 Streamlined descriptive compounding tags to follow a shared tag structure.
@@ -2512,8 +2518,8 @@ Test commit
 
 r59643:
 Added uppercasing compilation including proper processing for HFST. Uppercasing
-is not yet applied to the output transducers. That is coming in a second commit.
-Added a variable for hfst-xfst (and tested for its existence).
+is not yet applied to the output transducers. That is coming in a second
+commit. Added a variable for hfst-xfst (and tested for its existence).
 
 r59115:
 Corrected dependency for speller transducer. Corrected filter path.

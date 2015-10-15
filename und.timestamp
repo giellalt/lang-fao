@@ -1,4 +1,8 @@
-$Rev: 122724 $
+$Rev: 122780 $
+Corrected a bug with filter compilations for speller filters involving tag
+conversion to flag diacritics.
+
+r122724:
 Make sure analyser-raw-gt-desc.hfst is always built, to ensure we have the
 necessary prerequisites for all targets. Refactored the initial speller fst
 build to use common build code for all fst technologies. Makes it possible to

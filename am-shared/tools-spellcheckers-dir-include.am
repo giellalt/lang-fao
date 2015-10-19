@@ -62,10 +62,12 @@ analyser-$(GT_COMMON_SPELLER_NAME).tmp.%: \
 			$(top_builddir)/src/filters/remove-MinusSpell-strings.% \
 			$(top_builddir)/src/filters/remove-PUNCT-strings.%      \
 			$(top_builddir)/src/filters/remove-use_marg-strings.%   \
-			$(top_builddir)/src/filters/remove-orig_lang-tags.%   \
+			$(top_builddir)/src/filters/remove-orig_lang-tags.%     \
+			$(top_builddir)/src/filters/remove-usage_except_speller-tags.% \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-		    @\"$(top_builddir)/src/filters/remove-dialect-tags.$*\"       \
+		    @\"$(top_builddir)/src/filters/remove-usage_except_speller-tags.$*\" \
+		.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.$*\"       \
 		.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.$*\"     \
 		.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.$*\"      \
 		.o. @\"$(top_builddir)/src/filters/remove-transitivity-tags.$*\"  \

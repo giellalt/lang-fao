@@ -1,4 +1,9 @@
-$Rev: 123037 $
+$Rev: 123664 $
+Added some general tag cleanup before making the speller fst used as input for
+the analyser and generator that is the last step before building the acceptor,
+Makes it easier to write yaml tests for the speller fst's.
+
+r123037:
 Added filter to remove tags irrelevant to speller builds. Adjusted required
 version of GTCORE accordingly.
 

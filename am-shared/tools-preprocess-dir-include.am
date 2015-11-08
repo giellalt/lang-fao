@@ -35,10 +35,6 @@ ANALYSER=analyser-disamb-gt-desc.hfst
 PMHFST=tokeniser-disamb-gt-desc.pmhfst
 endif # WANT_MORPHOLOGY
 
-if WANT_ABBR
-ABBR=abbr.txt
-endif # WANT_ABBR
-
 hfstdatadir=$(datadir)/giella/$(GTLANG)
 hfstdata_DATA=$(PMHFST) $(ABBR)
 
@@ -50,6 +46,10 @@ endif # CAN_XFST
 ###########################################################################
 ### Build the abbr.txt file used with preprocess:
 # Source files for abbr extraction:
+if WANT_ABBR
+ABBR=abbr.txt
+endif # WANT_ABBR
+
 STEMSRCS:=$(filter-out \
     %propernouns.lexc,$(wildcard $(top_srcdir)/src/morphology/stems/*.lexc))
 OTHRSRCS:=$(filter-out \

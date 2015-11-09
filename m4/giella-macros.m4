@@ -361,7 +361,7 @@ AC_ARG_ENABLE([syntax],
               [enable_syntax=yes])
 AS_IF([test "x$enable_syntax" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
              [enable_syntax=no
-              AC_MSG_WARN([vislcg3 tools missing or too old, syntax tools disabled!])])
+              AC_MSG_ERROR([vislcg3 tools missing or too old, syntax tools disabled!])])
 AM_CONDITIONAL([WANT_SYNTAX], [test "x$enable_syntax" != xno])
 # $gt_prog_vislcg3
 

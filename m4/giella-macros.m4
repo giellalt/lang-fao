@@ -513,6 +513,8 @@ AS_IF([test x$enable_abbr != xno -a \
     "$(find ${srcdir}/src/morphology/stems/ -name "abbreviations.lexc" | head -n 1)" = "" ],
     [AC_MSG_ERROR([You asked for abbr.txt generation, but have no file \
 src/morphology/stems/abbreviations.lexc])])
+AS_IF([test x$enable_abbr == xyes -a x$enable_generators == xno],
+    [AC_MSG_ERROR([You need to enable generators to build the abbr file])])
 AM_CONDITIONAL([WANT_ABBR], [test "x$enable_abbr" != xno])
 
 ]) # gt_ENABLE_TARGETS

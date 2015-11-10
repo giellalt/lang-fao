@@ -223,6 +223,7 @@ AS_IF([test x$with_foma != xno], [
 ], [gt_prog_foma=no])
 AC_MSG_RESULT([$gt_prog_foma])
 AM_CONDITIONAL([CAN_FOMA], [test "x$gt_prog_foma" != xno])
+AM_CONDITIONAL([HAS_FOMA], [test "x$FOMA" != xfalse ])
 ]) # gt_PROG_FOMA
 
 ################################################################################

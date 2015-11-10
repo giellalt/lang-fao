@@ -1,4 +1,7 @@
-$Rev: 124883 $
+$Rev: 124920 $
+Add lexicon version to the speller testing output.
+
+r124883:
 Added a new variable HAS_FOMA, which will be set independently of the
 configuration if foma is available. This can be used to circumvent bugs in
 Hfst if weights are not needed: if foma is available, print as ATT, read in

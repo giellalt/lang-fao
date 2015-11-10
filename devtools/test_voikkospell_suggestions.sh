@@ -61,10 +61,11 @@ done
 # Set the top build dir after parameter parsing:
 top_builddir="$top_srcdir/$builddir"
 
+echo "nuvviDspeller	Divvun" > $SCRIPT_DIR/speller_test_data.txt
 # Extract the typos, skipping input strings with space(s) in them:
 grep -v '^[!#]' "$typos_file" | grep -v '^$' \
 	| egrep -v '^[[:graph:]]+ [[:graph:]]' \
-	> $SCRIPT_DIR/speller_test_data.txt
+	>> $SCRIPT_DIR/speller_test_data.txt
 
 cut -f1 $SCRIPT_DIR/speller_test_data.txt > $SCRIPT_DIR/speller_input.txt
 

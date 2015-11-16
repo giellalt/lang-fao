@@ -27,6 +27,7 @@ RSYNC_OPTIONS=-rlpgoD
 
 OXT_FILES=
 MACVOIKKOFILE=
+MACVOIKKOZIPFILE=
 
 if WANT_SPELLERS
 if CAN_HFST
@@ -46,6 +47,7 @@ OXT_FILES+=$(addsuffix .oxt, \
 LANGSTRING=$(shell echo "${GTLANGUAGE}" | sed -e 's/ /_/g')
 MACVOIKKO_STEM=$(addsuffix $(LANGSTRING),MacVoikko-)
 MACVOIKKOFILE+=$(addsuffix .service,$(addsuffix -$(GTLANG2),$(MACVOIKKO_STEM)))
+MACVOIKKOZIPFILE+=$(addsuffix .zip,$(MACVOIKKOFILE))
 #MACVKOFST=$(MACVOIKKOFILE)/Contents/Resources/Dictionaries/3/$(GT_SPELLING_HFST)
 MOZVOIKKO_FILE=Mozvoikko2-$(GTLANG2).xpi
 
@@ -95,10 +97,6 @@ $(GTLANG2)_LO-voikko-%.oxt: $(GT_SPELLING_HFST)
 # - rsynk package content from template
 # - cp zhfst file
 # - replace und language code with correct language code
-$(MACVOIKKO_STEM)-%.service: %.service
-	$(AM_V_at)rm -rf $@/
-	$(AM_V_MV)mv $< $@
-
 %.service: %.zhfst
 	$(AM_V_GEN)rm -rf $@ && \
 		if [ -d "$(MACVKO_ROOT_DIR)/MacVoikko.service" ]; then \
@@ -110,6 +108,15 @@ $(MACVOIKKO_STEM)-%.service: %.service
 		< ./$@/Contents/Info.plist > ./$@/Contents/Info.plist.tmp
 	$(AM_V_at)mv -f ./$@/Contents/Info.plist.tmp ./$@/Contents/Info.plist
 	$(AM_V_at)cp $< $@/Contents/Resources/Dictionaries/3/$<
+
+# Rename service dir:
+$(MACVOIKKO_STEM)-%.service: %.service
+	$(AM_V_at)rm -rf $@/
+	$(AM_V_MV)mv $< $@
+
+# Zip service dir for distro (for now):
+%.service.zip: %.service
+	$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) $@ $<
 
 #### Mozvoikko: ####
 # - create package build dir
@@ -125,16 +132,38 @@ Mozvoikko2-%.xpi: %.zhfst
 
 #### Upload for distro: ####
 DATE=$(shell date +%Y%m%d)
-UPLOADSITE=sd@divvun.no:static_files/oxts
+UPLOADSITE=sd@divvun.no:static_files
 
-upload: uploadoxt
+upload: uploadoxt uploadxpi uploadzip
 uploadoxt: $(OXT_FILES) $(ALT_WS_OXT_FILES)
 	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
 			stem=$$(basename $$file .oxt) ; \
-			scp $$file $(UPLOADSITE)/$$stem-$(DATE).oxt ; \
+			scp $$file $(UPLOADSITE)/oxts/$$stem-$(DATE).oxt ; \
 			ssh sd@divvun.no "cd staticfiles/oxts/ && \
 			ln -sf $$stem-$(DATE).oxt $$file" ; \
+			echo "  SYMLINK  $$file" ; \
+		fi \
+	done
+
+uploadxpi: $(MOZVOIKKO_FILE)
+	$(AM_V_GEN)for file in $^ ; do \
+		if [ -e $$file ]; then \
+			stem=$$(basename $$file .xpi) ; \
+			scp $$file $(UPLOADSITE)/xpis/$$stem-$(DATE).xpi ; \
+			ssh sd@divvun.no "cd staticfiles/xpis/ && \
+			ln -sf $$stem-$(DATE).xpi $$file" ; \
+			echo "  SYMLINK  $$file" ; \
+		fi \
+	done
+
+uploadzip: %$(MACVOIKKOZIPFILE)
+	$(AM_V_GEN)for file in $^ ; do \
+		if [ -e $$file ]; then \
+			stem=$$(basename $$file .zip) ; \
+			scp $$file $(UPLOADSITE)/zips/$$stem-$(DATE).zip ; \
+			ssh sd@divvun.no "cd staticfiles/zips/ && \
+			ln -sf $$stem-$(DATE).zip $$file" ; \
 			echo "  SYMLINK  $$file" ; \
 		fi \
 	done

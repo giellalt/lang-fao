@@ -157,7 +157,7 @@ uploadxpi: $(MOZVOIKKO_FILE)
 		fi \
 	done
 
-uploadzip: %$(MACVOIKKOZIPFILE)
+uploadzip: $(MACVOIKKOZIPFILE)
 	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
 			stem=$$(basename $$file .zip) ; \

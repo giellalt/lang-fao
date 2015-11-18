@@ -103,7 +103,8 @@ hfstdatadir=$(datadir)/giella/$(GTLANG)
 noinst_DATA=$(APERTIUM_ANALYSER_HFST) \
 			$(APERTIUM_ANALYSERS_GT_HFST) \
 			$(APERTIUM_ANALYSERS_AP_HFST) \
-			$(APERTIUM_GENERATORS_HFST)
+			$(APERTIUM_GENERATORS_HFST) \
+			$(APERTIUM_CG_SRC)
 hfstdata_DATA=$(APERTIUM_MORPH_PAIRS) \
 			  $(APERTIUM_GENERATOR_ATTGZ) \
 			  $(APERTIUM_CG_BIN)
@@ -360,9 +361,14 @@ functions-mt-gt.cg3: \
 				$(GTCORE)/giella-shared/smi/src/syntax/functions.cg3
 	$(AM_V_CP)cp -f $< $@
 
-disambiguation-mt-gt.cg3: \
-				$(top_srcdir)/src/syntax/disambiguation.cg3
+%-mt-gt.cg3: $(top_srcdir)/src/syntax/%.cg3
 	$(AM_V_CP)cp -f $< $@
+
+%.cg3: $(top_srcdir)/src/syntax/%.cg3
+	$(AM_V_CP)cp -f $< $@
+
+# Make sure included files are copied in before starting to compile:
+$(APERTIUM_CG_SRC): $(APERTIUM_CG_INCLUDE_SRC)
 
 # Change the tags from GTDivvun format to Apertium format:
 %-apertium.cg3: %-gt.cg3

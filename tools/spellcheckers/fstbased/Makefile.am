@@ -3,7 +3,7 @@
 ## Licence: GPL v3+
 
 # The current dir must be built after the filters, but before the rest.
-SUBDIRS = weighting filters . hfst foma
+SUBDIRS = weighting filters . hfst foma vfst
 
 # Name of speller corpus sans suffix:
 CORPUSNAME=spellercorpus

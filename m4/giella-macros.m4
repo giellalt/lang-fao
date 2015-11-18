@@ -198,6 +198,35 @@ AM_CONDITIONAL([CAN_XFST], [test "x$gt_prog_xfst" != xno])
 ]) # gt_PROG_XFST
 
 ################################################################################
+# Define functions for checking the availability of Voikko tools:
+################################################################################
+AC_DEFUN([gt_PROG_VFST],
+[AC_ARG_WITH([voikko],
+            [AS_HELP_STRING([--with-voikko=DIRECTORY],
+                            [search voikko in DIRECTORY @<:@default=PATH@:>@])],
+            [with_voikko=$withval],
+            [with_voikko=yes])
+AC_PATH_PROG([VOIKKOSPELL],     [voikkospell],     [false],
+                                            [$PATH$PATH_SEPARATOR$with_voikko])
+AC_PATH_PROG([VOIKKOHYPHENATE], [voikkohyphenate], [false],
+                                            [$PATH$PATH_SEPARATOR$with_voikko])
+AC_PATH_PROG([VOIKKOGC],        [voikkogc],        [false],
+                                            [$PATH$PATH_SEPARATOR$with_voikko])
+AC_PATH_PROG([VOIKKOVFSTC],     [voikkovfstc],     [false],
+                                            [$PATH$PATH_SEPARATOR$with_voikko])
+AC_MSG_CHECKING([whether to enable voikko building])
+AS_IF([test x$with_voikko != xno], [
+    AS_IF([test "x$VOIKKOSPELL"      != xfalse -a \
+                "x$VOIKKOHYPHENATE"  != xfalse -a \
+                "x$VOIKKOGC"         != xfalse -a \
+                "x$VOIKKOVFSTC"      != xfalse  ], [gt_prog_voikko=yes],
+          [gt_prog_voikko=no])
+], [gt_prog_voikko=no])
+AC_MSG_RESULT([$gt_prog_voikko])
+AM_CONDITIONAL([CAN_VFST], [test "x$gt_prog_voikko" != xno])
+]) # gt_PROG_VFST
+
+################################################################################
 # Define functions for checking the availability of the Foma tools:
 ################################################################################
 AC_DEFUN([gt_PROG_FOMA],
@@ -420,6 +449,16 @@ AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno],
               AC_MSG_WARN([gzip missing, foma spellers disabled])])])
 AM_CONDITIONAL([CAN_FOMA_SPELLER], [test "x$enable_fomaspeller" != xno])
 
+# Enable Vfst-based spellers - default is no
+AC_ARG_ENABLE([vfstspeller],
+              [AS_HELP_STRING([--enable-vfstspeller],
+                              [build vfst speller (dependent on --enable-spellers) @<:@default=no@:>@])],
+              [enable_vfstspeller=$enableval],
+              [enable_vfstspeller=no])
+AS_IF([test "x$enable_vfstspeller" = "xyes" -a "x$gt_prog_hfst" = xno],
+              [enable_vfstspeller=no])
+AM_CONDITIONAL([WANT_VFST_SPELLER], [test "x$enable_vfstspeller" != xno])
+
 # Disable Hunspell production by default:
 AC_ARG_ENABLE([hunspell],
               [AS_HELP_STRING([--enable-hunspell],
@@ -547,7 +586,7 @@ cat<<EOF
   * spellers enabled: $enable_spellers
     * hfst speller fst's enabled: $enable_hfstspeller
     * foma speller enabled: $enable_fomaspeller
-    * hunspell generation enabled: $enable_hunspell
+    * vfst speller enabled: $enable_vfstspeller
   * fst hyphenator enabled: $enable_fst_hyphenator
   * grammar checker enabled: $enable_grammarchecker
 

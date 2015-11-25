@@ -134,7 +134,7 @@ Mozvoikko2-%.xpi: %.zhfst
 DATE=$(shell date +%Y%m%d)
 UPLOADSITE=sd@divvun.no:static_files
 
-upload: uploadoxt uploadxpi uploadzip
+upload: uploadoxt uploadxpi uploadzip uploadzhfst
 uploadoxt: $(OXT_FILES) $(ALT_WS_OXT_FILES)
 	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
@@ -164,6 +164,17 @@ uploadzip: $(MACVOIKKOZIPFILE)
 			scp $$file $(UPLOADSITE)/zips/$$stem-$(DATE).zip ; \
 			ssh sd@divvun.no "cd staticfiles/zips/ && \
 			ln -sf $$stem-$(DATE).zip $$file" ; \
+			echo "  SYMLINK  $$file" ; \
+		fi \
+	done
+
+uploadzhfst: $(GT_SPELLING_HFST) $(ALT_WS_ZHFST_FILES)
+	$(AM_V_GEN)for file in $^ ; do \
+		if [ -e $$file ]; then \
+			stem=$$(basename $$file .zhfst) ; \
+			scp $$file $(UPLOADSITE)/zhfsts/$$stem-$(DATE).zhfst ; \
+			ssh sd@divvun.no "cd staticfiles/zhfsts/ && \
+			ln -sf $$stem-$(DATE).zhfst $$file" ; \
 			echo "  SYMLINK  $$file" ; \
 		fi \
 	done

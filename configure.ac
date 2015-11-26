@@ -33,7 +33,7 @@ AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 # AM_INIT_AUTOMAKE sets up make conventions
 AM_INIT_AUTOMAKE(
-  1.11.6 -Wall -Werror
+  1.11.6 tar-pax -Wall -Werror
   foreign -Wno-portability
   dnl Automake versions before 1.13 (when the serial-tests option was
   dnl still the default) still defined the badly obsolete macro

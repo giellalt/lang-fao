@@ -354,6 +354,14 @@ AC_ARG_ENABLE([hyperminimisation],
               [enable_hyperminimisation=no])
 AM_CONDITIONAL([WANT_HYPERMINIMISATION], [test "x$enable_hyperminimisation" != xno])
 
+# Enable symbol alignment of the lexical transducer - default is 'no'
+AC_ARG_ENABLE([alignment],
+              [AS_HELP_STRING([--enable-alignment],
+                              [enable symbol alignment when parsing lexc @<:@default=no@:>@])],
+              [enable_alignment=$enableval],
+              [enable_alignment=no])
+AM_CONDITIONAL([WANT_LEXC_ALIGNMENT], [test "x$enable_alignment" != xno])
+
 #enable_twostep_intersect
 AC_ARG_ENABLE([twostep-intersect],
               [AS_HELP_STRING([--enable-twostep-intersect],

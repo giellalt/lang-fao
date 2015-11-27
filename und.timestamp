@@ -1,4 +1,10 @@
-$Rev: 125889 $
+$Rev: 125918 $
+Added configure option to enable symbol alignment during lexc compilation for
+the lexical transducer. Defaults to off for now, we need to test the effect on
+various languages before making it default to on. Also added --Werror to lexc
+to make it break on all warnings when compiling the lexical fst.
+
+r125889:
 Use tar + xz for a 40-50 % reduction in file size for zhfst files.
 
 r125801:

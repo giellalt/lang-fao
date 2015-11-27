@@ -1,4 +1,8 @@
-$Rev: 125918 $
+$Rev: 125928 $
+Removed --Werror from the language-independent automake file. Added a variable
+to make it possible to add it to the language-specific automake file.
+
+r125918:
 Added configure option to enable symbol alignment during lexc compilation for
 the lexical transducer. Defaults to off for now, we need to test the effect on
 various languages before making it default to on. Also added --Werror to lexc

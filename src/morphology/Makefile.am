@@ -15,6 +15,10 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Add language-specific flags for hfst-lexc compilation here:
+HFST_LEXC_LOCAL_FLAGS=
+
+# Set this to name of lexc file containing Multichar_Symbols and LEXICON Root
 GT_LEXC_ROOT=root.lexc
 
 # Set this to the names of all regular lexc source files:

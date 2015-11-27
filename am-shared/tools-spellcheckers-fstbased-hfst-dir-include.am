@@ -18,9 +18,15 @@
 GT_SPELLER_HFST=../generator-fstspeller-gt-norm.hfst
 GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 
-# This is how we zip files to work with hfst-ospell and libvoikko
-# (=max compression, working from 28.1.2014 for all platforms):
+# Max compression for zipped files:
 ZIPFLAGS=-9 $(VERBOSITY)
+
+# Use xz for zhfst compression if possible, otherwise fall back to zip:
+if CAN_XZ
+ZHFST_COMPRESSION=$(TAR) -c * | $(XZ) > ../../$@
+else
+ZHFST_COMPRESSION=$(ZIP) $(ZIPFLAGS) ../../$@ *
+endif # CAN_XZ
 
 ## Conditional string variables;
 # Set file name to the empty string or initial_letters_all depending on variable:
@@ -206,10 +212,16 @@ acceptor.%.hfst: $(GT_SPELLER_HFST) easteregg.%.hfst
 ####### *.zhfst file: #######
 # Finally build the zhfst file, and make a copy in a subdir named '3', so that
 # we can test it without installing it (the '3' dir is a voikko requirement):
-$(GT_SPELLING_HFST): index.xml \
+$(GT_SPELLING_HFST): $(srcdir)/index.xml \
 					 $(GT_ERRMODELS) \
 					 $(GT_SPELLER_ACCEPTOR)
-	$(AM_V_GEN)rm -f $@ && $(ZIP) $(ZIPFLAGS) -j $@ $^
+	$(AM_V_at)rm -f $@
+	$(AM_V_at)$(MKDIR_P) build/$@
+	$(AM_V_at)rm -f build/$@/*
+	$(AM_V_at)cp $(srcdir)/index.xml build/$@/index.xml
+	$(AM_V_at)cp $(GT_SPELLER_ACCEPTOR) build/$@/$(GT_SPELLER_ACCEPTOR)
+	$(AM_V_at)cp $(GT_ERRMODELS) build/$@/$(GT_ERRMODELS)
+	$(AM_V_GEN)cd build/$@/ && $(ZHFST_COMPRESSION)
 	$(AM_V_at)$(MKDIR_P) 3
 	$(AM_V_at)cp -f $@ 3/
 

@@ -340,8 +340,11 @@ AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$_saxonjar" != xno
 AC_DEFUN([gt_ENABLE_TARGETS],
 [
 # Foma-speller requires gzip, Voikko requires zip:
-AC_PATH_PROG([ZIP],  [zip],  [false], [$PATH$PATH_SEPARATOR$with_zip])
-AC_PATH_PROG([GZIP], [gzip], [false], [$PATH$PATH_SEPARATOR$with_gzip])
+AC_PATH_PROG([ZIP],  [zip],      [false], [$PATH$PATH_SEPARATOR$with_zip])
+AC_PATH_PROG([GZIP], [gzip],     [false], [$PATH$PATH_SEPARATOR$with_gzip])
+AC_PATH_PROGS([TAR], [tar gtar], [false], [$PATH$PATH_SEPARATOR$with_tar])
+AC_PATH_PROG([XZ],   [xz],       [false], [$PATH$PATH_SEPARATOR$with_xz])
+AM_CONDITIONAL([CAN_XZ], [test "x$ac_cv_prog_XZ" != xfalse])
 
 # Enable hyperminimisation of the lexical transducer - default is 'no'
 AC_ARG_ENABLE([hyperminimisation],

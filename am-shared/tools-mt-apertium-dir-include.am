@@ -112,6 +112,7 @@ endif # CAN_HFST
 
 # Apertium generator - GTD tags. All filtering happens here except dialect tags happens here:
 generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
+			$(top_builddir)/src/filters/make-optional-transitivity-tags.hfst  \
 			$(top_builddir)/src/filters/make-optional-semantic-tags.hfst      \
 			$(top_builddir)/src/filters/make-optional-v1-tags.hfst            \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst  \
@@ -130,6 +131,7 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
 		@\"$(top_builddir)/src/filters/make-optional-semantic-tags.hfst\"     \
+	.o. @\"$(top_builddir)/src/filters/make-optional-transitivity-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/make-optional-v1-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \

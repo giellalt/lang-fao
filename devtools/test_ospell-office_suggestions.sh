@@ -8,7 +8,7 @@
 # set -x
 
 # Language being tested, ISO 639-1 code if available:
-GTLANG2=__UND2__
+GTLANG2=se
 
 # Directory variables:
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -17,7 +17,7 @@ builddir="."
 spellerdir=tools/spellcheckers/fstbased/hfst
 
 # File variables:
-engine=vk
+engine=to
 typos_file="$top_srcdir/test/data/typos.txt"
 file_spesifier="$(basename ${typos_file} .txt)"
 speller_test_data=speller_test_data.txt
@@ -74,10 +74,11 @@ grep -v '^[!#]' "$typos_file" | grep -v '^$' \
 	>> $SCRIPT_DIR/$speller_test_data
 
 # Extract the actual test data:
-cut -f1 $SCRIPT_DIR/$speller_test_data > $SCRIPT_DIR/$speller_input
+cut -f1 $SCRIPT_DIR/$speller_test_data | sed 's/^/5 /' \
+	> $SCRIPT_DIR/$speller_input
 
 # Run the speller;
-$GTCORE/scripts/run_voikko_speller.sh $SCRIPT_DIR/$speller_input \
+$GTCORE/scripts/run_ospell-office_speller.sh $SCRIPT_DIR/$speller_input \
                                       $SCRIPT_DIR/$speller_output \
                                       $SCRIPT_DIR/$speller_timeusage \
                                       $GTLANG2 \

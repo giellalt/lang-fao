@@ -1,4 +1,9 @@
-$Rev: 126340 $
+$Rev: 126367 $
+Readded the initial-letter edits in the regex - everything else is there for
+the initial letter machinery, so leaving it out made the build inconsistent.
+The default is off, with a large warning for those turning it on.
+
+r126340:
 Added script to run suggestion testing for the hfst-ospell-service (MS Office)
 speller. Rewrote the speller testing scripts to allow parallel execution.
 

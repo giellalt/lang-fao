@@ -1,4 +1,9 @@
-$Rev: 126367 $
+$Rev: 128072 $
+Changed test pair conventions for twolc from !€/!$ to !!€/!!$ to make it follow
+the conventions in the rest of the infrastructure, and make it possible to
+include test data in the documentation.
+
+r126367:
 Readded the initial-letter edits in the regex - everything else is there for
 the initial letter machinery, so leaving it out made the build inconsistent.
 The default is off, with a large warning for those turning it on.

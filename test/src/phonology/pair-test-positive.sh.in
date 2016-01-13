@@ -22,7 +22,7 @@ EXTEDITOR=@SEE@
 
 if test -x ${TWOLC} ; then
   if test -f ${SOURCEFILE} ; then
-    grep '^!€' ${SOURCEFILE} | cut -d' ' -f2- > ${TESTDATA}
+    grep '^!!€' ${SOURCEFILE} | cut -d' ' -f2- > ${TESTDATA}
     # If we found no test data, skip the testing:
     if ! test -s ${TESTDATA} ; then
         echo "    No positive test pairs in ${SOURCEFILE}"

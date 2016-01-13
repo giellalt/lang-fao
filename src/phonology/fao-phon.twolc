@@ -62,39 +62,39 @@ Rules
  v:0 <=> Vow g: _ [ %^GVDEL: | [(%^AB1:)| (%^AB5:)|(%^VSH:) | (%^IUML:)] %^VDEL: | %^IUML: %>: i ] ;
 
 
-!€ bógv%^IUML%>i
-!€ bøg000i
+!!€ bógv%^IUML%>i
+!!€ bøg000i
 
-!€ flúgv%^IUML%^VDEL
-!€ flýg000
+!!€ flúgv%^IUML%^VDEL
+!!€ flýg000
 
-!€ flúgv%VHS%VDEL%>u
-!€ flug0000u
+!!€ flúgv%VHS%VDEL%>u
+!!€ flug0000u
 
-!€ búgv%^GVDEL%>s
-!€ bú0000s
+!!€ búgv%^GVDEL%>s
+!!€ bú0000s
 
-!€ bógv%^VDEL%>s
-!€ bóg000s
+!!€ bógv%^VDEL%>s
+!!€ bóg000s
 
-!€ skógv%^GVDEL%>m
-!€ skó0000m
+!!€ skógv%^GVDEL%>m
+!!€ skó0000m
 
-!€ skýggj%^GGDEL%>s
-!€ ský00000s
+!!€ skýggj%^GGDEL%>s
+!!€ ský00000s
 
-!€ kríggj%^GDEL%>s
-!€ kríg0000s
+!!€ kríggj%^GDEL%>s
+!!€ kríg0000s
 
-!€ sjógv%>ar
-!€ sjó0v0ar
+!!€ sjógv%>ar
+!!€ sjó0v0ar
 
 "Deleting r in Genitive of ur stems"
 !! __@RULENAME@__ 
  r:0 <=> u: _ %^EPH: %^RDEL: %>: a r ;
 
-!€ brúður%^EPH%^%RDEL%>ar
-!€ brúð00000ar
+!!€ brúður%^EPH%^%RDEL%>ar
+!!€ brúð00000ar
 
 
 "Deleting m in um%>num "
@@ -125,8 +125,8 @@ Rules
 !Cx:0 <=> Vow Cx _ %>: t ;
 !     where Cx in ( b g l m n p r k ) ;
 
-!€ all%>t
-!€ al00t
+!!€ all%>t
+!!€ al00t
 
 
 !"Deleting Double Consonant in Front of t + vow"
@@ -134,14 +134,14 @@ Rules
 !      where Cx in ( b d f g k l m n p r s t v ) ;
 ! added t to right context, check this!!
 
-!€ hjall%>s
-!€ hjal00s
+!!€ hjall%>s
+!!€ hjal00s
 
-!€ rygg%>s
-!€ ryg00s
+!!€ rygg%>s
+!!€ ryg00s
 
-!€ hjall%>ar
-!€ hjall0ar
+!!€ hjall%>ar
+!!€ hjall0ar
 
 ! Verbal Sandhi rules
 
@@ -161,36 +161,36 @@ Rules
  	      Cy in ( n r ) ! l   in front of all consonants
  	      matched ; 
 
-!€ send%>di
-!€ sen00di
+!!€ send%>di
+!!€ sen00di
 
-!€ hirð%>di
-!€ hir00di
+!!€ hirð%>di
+!!€ hir00di
 
 !"Geminate Assimilation After t Final Stem Cluster"
 ! t:0 <=> Vow Cns _ %>: t ;
  	      
-!€ sett%>ti
-!€ set00ti 	      
+!!€ sett%>ti
+!!€ set00ti 	      
 
 
 "ð Assimilation in Front of Dental Past Suffix -d(i)"
 !! __@RULENAME@__ 
  ð:d <=> Vow _ %>: d (%>:) [ #: | Vow ] ;
  
-!€ leið%>di
-!€ leid0di 
+!!€ leið%>di
+!!€ leid0di 
 
 "Deleting Double Consonant in Front of Epenthesis mark"
 !! __@RULENAME@__ 
  Cx:0 <=> Cx _ [ i:0 | a:0 | u:0 ] [ l | r ] ( %^EPH: ) %>: Vow ;
       where Cx in ( b d f g k l m n p r s t v ) ;
 
-!€ summar%^EPH%>i
-!€ sum00r00i
+!!€ summar%^EPH%>i
+!!€ sum00r00i
 
-!€ himmal%^EPH%^UUML%>um
-!€ him00l000um
+!!€ himmal%^EPH%^UUML%>um
+!!€ him00l000um
 
 !tunnil%>i
 !tun00l%>i
@@ -202,8 +202,8 @@ Rules
 !! __@RULENAME@__ 
  s:0 <=> Vow s %>: _ #:0 ; ! added #:0
 
-!€ primus%>s
-!€ primus000
+!!€ primus%>s
+!!€ primus000
 
 !grís%>s
 !grís000
@@ -218,15 +218,15 @@ Rules
 !! __@RULENAME@__ 
  ð:t <=> Vow _ %>: t #: ;
 
-!€ leið%>t
-!€ leit0t
+!!€ leið%>t
+!!€ leit0t
 
 "Adjusting Dental Past Suffix -d(i)"
 !! __@RULENAME@__ 
  d:t <=> Vow [ p | t | k | s ] %>: _ (%>:) [ #: | Vow ] ;
 
-!€ keyp%>di
-!€ keyp0ti
+!!€ keyp%>di
+!!€ keyp0ti
 
 "Adjective neuter after nlr 1"
 !! __@RULENAME@__ 
@@ -237,11 +237,11 @@ t:ð <=> Vow Cns+ i [ r: | l: | n: ] ( %^EPH: ) %>: _ #:  ;
 Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
      where Cx in ( l n r ) ; 	      
 
-!€ mikil%^EPH%>t
-!€ miki000ð
+!!€ mikil%^EPH%>t
+!!€ miki000ð
 
-!€ gamal%^EPH%>t
-!€ gamal00t
+!!€ gamal%^EPH%>t
+!!€ gamal00t
 
 "t Deletion in Neuter"
 !! __@RULENAME@__ 
@@ -266,22 +266,22 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
          Vow g: g: _     [ %^GDEL: | %^GGDEL: ] %>: s ; ! j in ggj genitive
              Cns   _     [ :i | :ý | :e :y ] Cns:* %^IUML: ;
          
-!€ beiggj%^JI%>i
-!€ beigg000i
+!!€ beiggj%^JI%>i
+!!€ beigg000i
 
-!€ verkj%^JDEL%>ur
-!€ verk000ur
+!!€ verkj%^JDEL%>ur
+!!€ verk000ur
 
-!€ heyggj%>i
-!€ heygg00i
+!!€ heyggj%>i
+!!€ heygg00i
 
 
 "Realising j in front of vowels"
 !! __@RULENAME@__ 
  j2:j => _ %>: [ a | u ] ;
 
-!€ hylj2%>ar
-!€ hylj0ar
+!!€ hylj2%>ar
+!!€ hylj0ar
 
 
 
@@ -306,15 +306,15 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
       where Vx in (a i u) ;
  !Vow was commented out?
 
-!€ ak0r00
-!€ økur%^EPH%^UUML%>um
-!€ øk0r000um
+!!€ ak0r00
+!!€ økur%^EPH%^UUML%>um
+!!€ øk0r000um
 
-!€ lykil%^EPH%>an
-!€ lyk0l00an
+!!€ lykil%^EPH%>an
+!!€ lyk0l00an
 
-!€ aftan%^EPH%>
-!€ aft0n00
+!!€ aftan%^EPH%>
+!!€ aft0n00
 
 
 "U-umlaut of Epenthetic vowel"
@@ -323,11 +323,11 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 ! check the double umlaut marking...
 ! question is whether Fem umlaut is always there.
 
-!€ gamal%^EPH%^UUML
-!€ gomul00
+!!€ gamal%^EPH%^UUML
+!!€ gomul00
 
-!€ gamal%^EPH%^UUML%>u
-!€ goml000u
+!!€ gamal%^EPH%^UUML%>u
+!!€ goml000u
 
 
 "U-umlaut in Front of Nasal"
@@ -339,36 +339,36 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 		  Vy in ( o ø  )
 		  matched ;
 	
-!€ tank%^UUML
-!€ tonk0
+!!€ tank%^UUML
+!!€ tonk0
 !den skal heller ikke klare det. den skal klare tonkum, og det gjør den.
 
-!€ band^UUML
-!€ bond00
+!!€ band^UUML
+!!€ bond00
 
-!€ hamar%^EPH%^UUML%>um
-!€ hom0r000um
+!!€ hamar%^EPH%^UUML%>um
+!!€ hom0r000um
 
 "General U-umlaut"
 !! __@RULENAME@__ 
   a:ø <=> _ NonNas: NonNas:* (Nas) (Vow:) %^UUML: ;
   
-!€ dag%>%^UUMLum
-!€ døg00um
+!!€ dag%>%^UUMLum
+!!€ døg00um
 
-!€ sag%>%^UUMLa
-!€ søg00a
+!!€ sag%>%^UUMLa
+!!€ søg00a
 
-!€ all%>%^UUML
-!€ øll00
+!!€ all%>%^UUML
+!!€ øll00
 
 
 "U-umlaut for akur"
 !! __@RULENAME@__ 
   a:ø <=> _ k u:0 r (%^EPH:) %^UUML: %>: u ;
 
-!€ akur%^EPH%^UUML%>um
-!€ øk0r000um
+!!€ akur%^EPH%^UUML%>um
+!!€ øk0r000um
 
 "I-umlaut"
 !! __@RULENAME@__ 
@@ -377,14 +377,14 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 	   Vy in ( e y i æ ø ý )
 	   matched ;
 
-!€ dag%^IUML%>i
-!€ deg00i
+!!€ dag%^IUML%>i
+!!€ deg00i
 
-!€ son%^IUML%>i
-!€ syn00i
+!!€ son%^IUML%>i
+!!€ syn00i
 
-!€ bógv%^IUML%>i
-!€ bøg000i
+!!€ bógv%^IUML%>i
+!!€ bøg000i
 
 "eI-umlaut"
 !! __@RULENAME@__ 
@@ -397,25 +397,25 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !! __@RULENAME@__ 
  ó:ø <=> _ Cns:* u: r ( %^EPH: ) %^IUML: ;
 
-!€ fjørð%^IUML%>i
-!€ f0irð00i
+!!€ fjørð%^IUML%>i
+!!€ f0irð00i
 
-!€ bjóð%^IUML
-!€ b0ýð0
+!!€ bjóð%^IUML
+!!€ b0ýð0
 
 "Inverted U-umlaut from ø"
 !! __@RULENAME@__ 
  ø:a <=> _ Cns* (Vow: Cns) ( %^EPH: ) %^OEA: ;
 
-!€ fløtt%^ØAa
-!€ flatt0a
+!!€ fløtt%^ØAa
+!!€ flatt0a
 
 "Inverted U-umlaut from o"
 !! __@RULENAME@__ 
  o:a <=> _ Cns* (Vow: Cns) ( %^EPH: ) %^OA: ;
 
-!€ fonn%^OA%>ar
-!€ fann00ar
+!!€ fonn%^OA%>ar
+!!€ fann00ar
 
 
 "o/ei-Umlaut I"
@@ -426,8 +426,8 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !! __@RULENAME@__ 
  i:0 <=> e: _ Cns:+ %^EIO: ;
 
-!€ dreing%^EIO%>i
-!€ dro0ng00i
+!!€ dreing%^EIO%>i
+!!€ dro0ng00i
 
 
 
@@ -442,8 +442,8 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !"Plural i Deletion in faðir"
 ! i:0 <=> :e ð _ r %^IUML: %>: ;
 
-!€ faðir%^IUML%>ar
-!€ feð0r00ar
+!!€ faðir%^IUML%>ar
+!!€ feð0r00ar
 
 
 "u Deletion in unum after Stressed Vowel"
@@ -451,8 +451,8 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
  u:0 <=> Vx %>: _ n u m ;
  	where Vx in (á é í ó ú ý æ) ;
 
-!€ bý%>unum
-!€ by00num 	
+!!€ bý%>unum
+!!€ by00num 	
 
 
 ! Verbal vowel alternations
@@ -464,14 +464,14 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
  		  Vy in (a u)
  		  matched ;
  		  
-!€ flek%^WVV%>t
-!€ flak00t 
+!!€ flek%^WVV%>t
+!!€ flak00t 
 
-!€ flek%^WVV%>t
-!€ flak00t 
+!!€ flek%^WVV%>t
+!!€ flak00t 
 
-!€ vel%^WVV%>di
-!€ val00di 
+!!€ vel%^WVV%>di
+!!€ val00di 
 
 
 "Stem Vowel Shortening in Supine and Participle"
@@ -489,11 +489,11 @@ Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
 ó:o <=> _ ð: %>: t ;
 !ó:o <= _ :t %>: t ; ! check this one.
 
-!€ góð%>t
-!€ got0t
+!!€ góð%>t
+!!€ got0t
 
-!€ skjót%>t
-!€ skjót0t
+!!€ skjót%>t
+!!€ skjót0t
 
 
 
@@ -524,8 +524,8 @@ Vx:Vy <=> _  (Cns:+) %^AB3: ;
 	      Vy in ( a a ó a æ a )
 	matched ;
 
-!€ gev%^AB3
-!€ gav0
+!!€ gev%^AB3
+!!€ gav0
 
 "Past tense plural monophthongs"
 !! __@RULENAME@__ 
@@ -587,8 +587,8 @@ Vx:ý <=> _ Cns:+ %^AB7: ;
 !"Adjective neuter after ð"
 !t:0 <=> Vow Cns+ Vow ð %^EDH: %>: _ #: ;
 
-!€ brekað%>t
-!€ brekað00
+!!€ brekað%>t
+!!€ brekað00
 
 
 

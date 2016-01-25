@@ -21,12 +21,13 @@ GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 # Max compression for zipped files:
 ZIPFLAGS=-9 $(VERBOSITY)
 
-# Use xz for zhfst compression if possible, otherwise fall back to zip:
-if CAN_XZ
-ZHFST_COMPRESSION=$(TAR) -c * | $(XZ) > ../../$@
-else
+### SNM 25.1.2015: Commented out xz compression, it isn't supported by libvoikko
+## Use xz for zhfst compression if possible, otherwise fall back to zip:
+#if CAN_XZ
+#ZHFST_COMPRESSION=$(TAR) -c * | $(XZ) > ../../$@
+#else
 ZHFST_COMPRESSION=$(ZIP) $(ZIPFLAGS) ../../$@ *
-endif # CAN_XZ
+#endif # CAN_XZ
 
 ## Conditional string variables;
 # Set file name to the empty string or initial_letters_all depending on variable:

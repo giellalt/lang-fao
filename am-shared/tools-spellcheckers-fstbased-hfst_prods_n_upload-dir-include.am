@@ -25,6 +25,11 @@
 # -a without the -t option.
 RSYNC_OPTIONS=-rlpgoD
 
+#### LibreOffice-Voikko version: ####
+# This value corresponds to the version in the dir name of
+# the oxt template in prooftools/toollibs/LbreOffice-voikko/:
+LOVOIKKO_VERSION=5.0
+
 OXT_FILES=
 MACVOIKKOFILE=
 MACVOIKKOZIPFILE=
@@ -33,11 +38,15 @@ if WANT_SPELLERS
 if CAN_HFST
 if CAN_LOCALSYNC
 
+# Generate target file name dynamically based on the variables LOVOIKKO_VERSION
+# and GTLANG2. LO-voikko 5.0+
+OXT_FILES+=$(GTLANG2)_LO-voikko-$(LOVOIKKO_VERSION).oxt
+
 # Generate target file names dynamically based on the variables VK_VERSIONS
 # and VK_PLATFORMS, whose cross product is available in VOIKKO_VERS_PLATFORMS.
 # The resulting file names follow this pattern:
 #
-#$(GTLANG2)_LO-voikko-3.4.1-win.oxt
+#$(GTLANG2)_LO-voikko-4.0-win.oxt
 OXT_FILES+=$(addsuffix .oxt, \
               $(addprefix $(GTLANG2)_LO-voikko-,$(VOIKKO_VERS_PLATFORMS)))
 
@@ -80,13 +89,25 @@ MOZVOIKKO_DIR=$(TOOLLIBS_DIR)/Mozvoikko
 # - cp zhfst
 # - modify oxt index file - (?) - looks like this is not done anymore.
 # - zip build/subdir to ./
-$(GTLANG2)_LO-voikko-%.oxt: $(GT_SPELLING_HFST)
+$(GTLANG2)_LO-voikko-4%.oxt: $(GT_SPELLING_HFST)
 	$(AM_V_GEN)rm -f $@ && \
-		if [ -d "$(OXT_ROOT_DIR)/$*" ]; then \
-			$(MKDIR_P) build/$*/ && \
-			cd build/$* && \
-			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) $(OXT_ROOT_DIR)/$*/ ./ && \
+		if [ -d "$(OXT_ROOT_DIR)/4$*" ]; then \
+			$(MKDIR_P) build/4$*/ && \
+			cd build/4$* && \
+			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) $(OXT_ROOT_DIR)/4$*/ ./ && \
 			cp ../../$< 3/ && \
+			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
+		else \
+			echo "  SKIP     $@: Not yet supported." ; \
+		fi
+
+$(GTLANG2)_LO-voikko-5%.oxt: $(GT_SPELLING_HFST)
+	$(AM_V_GEN)rm -f $@ && \
+		if [ -d "$(OXT_ROOT_DIR)/5$*" ]; then \
+			$(MKDIR_P) build/5$*/ && \
+			cd build/5$* && \
+			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) $(OXT_ROOT_DIR)/5$*/ ./ && \
+			cp ../../$< voikko/3/ && \
 			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
 		else \
 			echo "  SKIP     $@: Not yet supported." ; \

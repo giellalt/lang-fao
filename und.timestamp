@@ -1,4 +1,13 @@
-$Rev: 128901 $
+$Rev: 128934 $
+Corrected a few misses in the previous commit.
+
+r128931:
+Major reorganisation to support building zhfst files for mobile systems (aka
+keyboard + speller). These need very different weighting priorities, another
+error model, and are thus placed in a separate subdirectory from desktop
+spellers.
+
+r128901:
 First step in adding support for mobile phone spellers.
 
 r128872:

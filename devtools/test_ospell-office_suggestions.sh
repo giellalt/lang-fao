@@ -14,7 +14,7 @@ GTLANG2=se
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 top_srcdir="$SCRIPT_DIR/.."
 builddir="."
-spellerdir=tools/spellcheckers/fstbased/hfst
+spellerdir=tools/spellcheckers/fstbased/desktop/hfst
 
 # File variables:
 engine=to

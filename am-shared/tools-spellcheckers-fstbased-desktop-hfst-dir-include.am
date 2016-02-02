@@ -15,7 +15,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-GT_SPELLER_HFST=../generator-fstspeller-gt-norm.hfst
+GT_SPELLER_HFST=../generator-desktopspeller-gt-norm.hfst
 GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 
 # Max compression for zipped files:
@@ -246,8 +246,8 @@ clean-local:
             initial_letters_all.default.hfst \
             final_strings.default.hfst
 
-include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst_prods_n_upload-dir-include.am
-include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-hfst_alt_ws-dir-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop-hfst_prods_n_upload-dir-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop-hfst_alt_ws-dir-include.am
 include $(top_srcdir)/am-shared/regex-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 

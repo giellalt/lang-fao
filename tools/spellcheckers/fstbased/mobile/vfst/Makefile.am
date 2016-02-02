@@ -6,4 +6,4 @@
 
 #### END: Local build rules: *.hfst: *.tmp.hfst ####
 
-include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-vfst-dir-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-mobile-vfst-dir-include.am

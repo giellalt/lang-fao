@@ -15,6 +15,6 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-foma-dir-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop-foma-dir-include.am
 
 # vim: set ft=automake:

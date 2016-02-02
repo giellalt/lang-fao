@@ -183,10 +183,14 @@ AC_CONFIG_FILES([Makefile \
                  tools/spellcheckers/Makefile \
                  tools/spellcheckers/fstbased/Makefile \
                  tools/spellcheckers/fstbased/filters/Makefile \
-                 tools/spellcheckers/fstbased/foma/Makefile \
-                 tools/spellcheckers/fstbased/hfst/Makefile \
-                 tools/spellcheckers/fstbased/vfst/Makefile \
-                 tools/spellcheckers/fstbased/weighting/Makefile \
+                 tools/spellcheckers/fstbased/desktop/Makefile \
+                 tools/spellcheckers/fstbased/desktop/weighting/Makefile \
+                 tools/spellcheckers/fstbased/desktop/foma/Makefile \
+                 tools/spellcheckers/fstbased/desktop/hfst/Makefile \
+                 tools/spellcheckers/fstbased/mobile/Makefile \
+                 tools/spellcheckers/fstbased/mobile/weighting/Makefile \
+                 tools/spellcheckers/fstbased/mobile/hfst/Makefile \
+                 tools/spellcheckers/fstbased/mobile/vfst/Makefile \
                  tools/spellcheckers/listbased/Makefile \
                  tools/spellcheckers/listbased/filters/Makefile])
 # Add one AC_CONFIG_FILES for each script file that needs processing. This gives

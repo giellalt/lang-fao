@@ -167,6 +167,8 @@ AC_CONFIG_FILES([Makefile \
                  test/tools/spellcheckers/Makefile \
                  test/tools/spellcheckers/fstbased/Makefile \
                  test/tools/spellcheckers/fstbased/hfst/Makefile \
+                 test/tools/spellcheckers/fstbased/desktop/Makefile \
+                 test/tools/spellcheckers/fstbased/mobile/Makefile \
                  test/src/Makefile \
                  test/src/morphology/Makefile \
                  test/src/orthography/Makefile \

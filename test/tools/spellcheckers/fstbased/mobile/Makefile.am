@@ -2,7 +2,7 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = hfst desktop mobile
+SUBDIRS = 
 
 # Uncomment and list here (space separated) all test scripts that should be run:
 TESTS=
@@ -11,7 +11,7 @@ TESTS=
 if WANT_SPELLERS
 # Only run yaml tests if we are able to:
 if CAN_YAML_TEST
-TESTS+=run-fstspeller-gt-norm-yaml-testcases.sh
+TESTS+=
 endif # CAN_YAML_TEST
 endif # WANT_SPELLERS
 

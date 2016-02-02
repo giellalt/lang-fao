@@ -2,7 +2,7 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = hfst desktop mobile
+SUBDIRS = desktop mobile
 
 # Uncomment and list here (space separated) all test scripts that should be run:
 TESTS=

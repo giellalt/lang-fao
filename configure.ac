@@ -166,8 +166,8 @@ AC_CONFIG_FILES([Makefile \
                  test/tools/mt/apertium/Makefile \
                  test/tools/spellcheckers/Makefile \
                  test/tools/spellcheckers/fstbased/Makefile \
-                 test/tools/spellcheckers/fstbased/hfst/Makefile \
                  test/tools/spellcheckers/fstbased/desktop/Makefile \
+                 test/tools/spellcheckers/fstbased/desktop/hfst/Makefile \
                  test/tools/spellcheckers/fstbased/mobile/Makefile \
                  test/src/Makefile \
                  test/src/morphology/Makefile \
@@ -200,12 +200,12 @@ AC_CONFIG_FILES([Makefile \
 # Spell checker tests, all languages:
 AC_CONFIG_FILES([test/tools/spellcheckers/test-zhfst-file.sh], \
       [chmod a+x test/tools/spellcheckers/test-zhfst-file.sh])
-AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/hfst/test-zhfst-basic-sugg-speed.sh], \
-      [chmod a+x test/tools/spellcheckers/fstbased/hfst/test-zhfst-basic-sugg-speed.sh])
 AC_CONFIG_FILES([test/tools/spellcheckers/run-spellers-gt-norm-yaml-testcases.sh], \
       [chmod a+x test/tools/spellcheckers/run-spellers-gt-norm-yaml-testcases.sh])
-AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/hfst/run-acceptor-yaml-testcases.sh], \
-      [chmod a+x test/tools/spellcheckers/fstbased/hfst/run-acceptor-yaml-testcases.sh])
+AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh], \
+      [chmod a+x test/tools/spellcheckers/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh])
+AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/desktop/hfst/run-acceptor-yaml-testcases.sh], \
+      [chmod a+x test/tools/spellcheckers/fstbased/desktop/hfst/run-acceptor-yaml-testcases.sh])
 AC_CONFIG_FILES([test/src/run-gt-desc-genyaml-testcases.sh], \
       [chmod a+x test/src/run-gt-desc-genyaml-testcases.sh])
 AC_CONFIG_FILES([test/src/run-gt-desc-anayaml-testcases.sh], \

@@ -21,7 +21,7 @@ if CAN_HFST
 if WANT_SPELLERS
 
 # Define variables for targets to build the prerequisites for zhfst files:
-if WANT_SPELLERAUTOMAT
+if WANT_HFST_DESKTOP_SPELLER
 GT_ALT_WS_ERRMODELS=$(shell for ld in $(ALT_WSS); do\
     echo "errmodel.$$ld.hfst" ; \
 done)
@@ -29,14 +29,11 @@ done)
 GT_ALT_WS_SPELLER_ACCEPTORS=$(shell for ld in $(ALT_WSS); do\
     echo "acceptor.$$ld.hfst" ; \
 done)
-endif # WANT_SPELLERAUTOMAT
 
-# The zhfst file requires zip, which is checked when WANT_VOIKKO is true:
-if WANT_VOIKKO
 ALT_WS_ZHFST_FILES=$(shell for ld in $(ALT_WSS); do\
     echo "$(GTLANG2)-$$ld.zhfst" ; \
 done)
-endif # WANT_VOIKKO
+endif # WANT_HFST_DESKTOP_SPELLER
 
 # Variables for the final installable packages:
 if CAN_LOCALSYNC

@@ -2,7 +2,7 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = 
+SUBDIRS = hfst
 
 # Uncomment and list here (space separated) all test scripts that should be run:
 TESTS=

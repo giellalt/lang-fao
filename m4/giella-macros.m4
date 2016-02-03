@@ -414,14 +414,17 @@ AC_ARG_ENABLE([spellers],
               [enable_spellers=no])
 AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
 
-# Enable hfst speller transducers - default is 'yes'
-AC_ARG_ENABLE([hfstspeller],
-              [AS_HELP_STRING([--enable-hfstspeller],
-                              [build speller hfst (dependent on --enable-spellers) @<:@default=yes@:>@])],
-              [enable_hfstspeller=$enableval],
-              [enable_hfstspeller=yes])
-AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_hfstspeller=no])
-AM_CONDITIONAL([WANT_SPELLERAUTOMAT], [test "x$enable_hfstspeller" != xno])
+# Enable hfst desktop spellers - default is 'yes'
+AC_ARG_ENABLE([hfst-dekstop-speller],
+              [AS_HELP_STRING([--enable-hfst-dekstop-speller],
+                              [build hfst desktop spellers (dependent on --enable-spellers) @<:@default=yes@:>@])],
+              [enable_desktop_hfstspeller=$enableval],
+              [enable_desktop_hfstspeller=yes])
+AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_desktop_hfstspeller=no],
+      [AS_IF([test "x$ZIP" = "xfalse"],
+             [enable_desktop_hfstspeller=no
+              AC_MSG_WARN([zip missing, hfst desktop spellers disabled])])])
+AM_CONDITIONAL([WANT_HFST_DESKTOP_SPELLER], [test "x$enable_desktop_hfstspeller" != xno])
 
 # Enable minimised fst-spellers by default:
 AC_ARG_ENABLE([minimised-spellers],
@@ -436,18 +439,6 @@ AS_IF([test "x$enable_minimised_spellers" != "xyes"],
                                          | $ac_cv_path_HFST_PUSH_WEIGHTS -p initial \$(HFST_FLAGS) \
                                          | $ac_cv_path_HFST_DETERMINIZE --encode-weights \$(HFST_FLAGS) \
                                          | $ac_cv_path_HFST_MINIMIZE    --encode-weights "])])
-
-# Enable voikko - default is 'yes', but only if the speller automate is enabled
-AC_ARG_ENABLE([voikko],
-              [AS_HELP_STRING([--enable-voikko],
-                              [build voikko speller (dependent on --enable-hfstspeller) @<:@default=yes@:>@])],
-              [enable_voikko=$enableval],
-              [enable_voikko=yes])
-AS_IF([test "x$enable_hfstspeller" = xno], [enable_voikko=no], 
-      [AS_IF([test "x$enable_hfstspeller" = xyes -a "x$ZIP" = "xfalse"],
-             [enable_voikko=no
-              AC_MSG_WARN([zip missing, voikko spellers disabled])])])
-AM_CONDITIONAL([WANT_VOIKKO], [test "x$enable_voikko" != xno ])
 
 # Enable Foma-based spellers, requires gzip - default is no
 AC_ARG_ENABLE([fomaspeller],
@@ -596,10 +587,12 @@ cat<<EOF
 
   -- proofing tools (off by default): --
   * spellers enabled: $enable_spellers
-    * hfst speller fst's enabled: $enable_hfstspeller
-    * foma speller enabled: $enable_fomaspeller
-    * vfst speller enabled: $enable_vfstspeller
-  * fst hyphenator enabled: $enable_fst_hyphenator
+    * desktop spellers:
+      * hfst speller enabled: $enable_desktop_hfstspeller
+      * foma speller enabled: $enable_fomaspeller
+    * mobile spellers:
+      * hfst speller enabled: $enable_mobile_hfstspeller
+      * vfst speller enabled: $enable_vfstspeller
   * grammar checker enabled: $enable_grammarchecker
 
   -- specialised fst's (off by default): --

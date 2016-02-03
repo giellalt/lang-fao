@@ -26,7 +26,7 @@ if WANT_GRAMCHECK
 if CAN_VISLCG
 noinst_DATA=$(GT_GC_TARGETS)
 
-if WANT_VOIKKO
+if WANT_HFST_DESKTOP_SPELLER
 GT_SPELLING_HFST=$(top_srcdir)/tools/spellcheckers/fstbased/hfst/$(GTLANG2).zhfst
 GT_ANALYSER_HFST=$(top_srcdir)/src/analyser-gt-desc.hfst
 
@@ -38,7 +38,7 @@ voikkoshare_DATA=$(GT_SPELLING_HFST) \
 				 $(GT_ANALYSER_HFST) \
 				 $(GT_GC_DISTRO) \
 				 $(GT_GC_ZDISTRO)
-endif # WANT_VOIKKO
+endif # WANT_HFST_DESKTOP_SPELLER
 
 endif # CAN_VISLCG
 endif # WANT_GRAMCHECK

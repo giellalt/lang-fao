@@ -56,25 +56,19 @@ if CAN_HFST
 #GT_ERRMODELS+=errmodel.edit-distance-1.hfst
 
 # Only build speller if it is enabled (default=yes)
-if WANT_SPELLERAUTOMAT
+if WANT_HFST_DESKTOP_SPELLER
 GT_ERRMODELS+=errmodel.default.hfst
 # libvoikko can't yet handle multiple error models - do NOT include this line:
 # errmodel.ocr.hfst
 
-# Require zip to turn on zhfst target:
-if WANT_VOIKKO
 GT_SPELLING_HFST=$(GTLANG2).zhfst
-endif # WANT_VOIKKO
-endif # WANT_SPELLERAUTOMAT
-endif # CAN_HFST
 
-if CAN_HFST
-if WANT_VOIKKO
 voikkosharedir=$(libdir)/voikko/3/
 #! @param GT_VOIKKO optional, set to spell checker automata names if
 #!					installable
 voikkoshare_DATA=$(GT_SPELLING_HFST) $(ALT_WS_ZHFST_FILES)
-endif # WANT_VOIKKO
+
+endif # WANT_HFST_DESKTOP_SPELLER
 endif # CAN_HFST
 endif # WANT_SPELLERS
 
@@ -252,4 +246,3 @@ include $(top_srcdir)/am-shared/regex-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:
-

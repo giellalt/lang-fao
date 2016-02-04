@@ -1,4 +1,13 @@
-$Rev: 129031 $
+$Rev: 129044 $
+Initial support for building zhfst files for mobile phone keyboards. This
+version is essentially the same as the desktop one, we'll start from here and
+adapt as we find better solutions. The zhfst file is compressed using xz for
+optimal file size (this is presently in violation of the zhfst specification,
+it must be updated soon). Also changed some of the configure options to error
+out when requested but without the required software installed - this is better
+than silently turning the requested feature off.
+
+r129031:
 Cleaned the speller build and configuration code in preparation for adding
 support for building mobile spellers.
 

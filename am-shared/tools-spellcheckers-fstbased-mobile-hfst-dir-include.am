@@ -15,40 +15,215 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Source fst dir:
-SOURCE_DIR=../hfst
+GT_SPELLER_HFST=../generator-mobilespeller-gt-norm.hfst
+GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 
-# Hfst source variables:
-GT_ACCEPTOR_SRC_HFST=acceptor.default.hfst
-GT_ERRMODEL_SRC_HFST=errmodel.default.hfst
+# Max compression for zipped files:
+ZIPFLAGS=-9 $(VERBOSITY)
 
-# Vfst target variables
-GT_ACCEPTOR_VFST=
-GT_ERRMODEL_VFST=
+# Use xz for zhfst compression for mobile zhfst files, for better compression:
+ZHFST_COMPRESSION=$(TAR) -c * | $(XZ) > ../../$@
+
+## Conditional string variables;
+# Set file name to the empty string or initial_letters_all depending on variable:
+initial_letter_deps=$(shell \
+	if [[ $(ALLOW_INITIAL_EDITS) == 'yes' ]] ; \
+	then \
+		echo "initial_letters_all.%.hfst"; \
+	else \
+		echo ""; \
+	fi)
+
+# Set file name to the empty string or initial_letters_all depending on variable:
+initial_letter_fst_include=$(shell \
+	if [[ $(ALLOW_INITIAL_EDITS) == 'yes' ]] ; \
+	then \
+		echo "( @\\\"initial_letters_all.$*.hfst\\\" )"; \
+	else \
+		echo ""; \
+	fi)
 
 ####### Automake targets: ########
 
+GT_ERRMODELS=
 if WANT_SPELLERS
 if CAN_HFST
-if WANT_VFST_SPELLER
-GT_ACCEPTOR_VFST+=spl.vfst
-GT_ERRMODEL_VFST+=err.vfst
-endif # WANT_VFST_SPELLER
+#GT_ERRMODELS+=errmodel.edit-distance-1.hfst
+
+# Only build speller if it is enabled (default=yes)
+if WANT_HFST_MOBILE_SPELLER
+GT_ERRMODELS+=errmodel.default.hfst
+
+GT_SPELLING_HFST=$(GTLANG2)-mobile.zhfst
+
+endif # WANT_HFST_MOBILE_SPELLER
 endif # CAN_HFST
 endif # WANT_SPELLERS
 
-noinst_DATA=$(GT_ACCEPTOR_VFST) $(GT_ERRMODEL_VFST)
+noinst_DATA=$(GT_ERRMODELS) \
+			$(GT_SPELLING_HFST)
 
-####### Build rules: ########
+###################################
+####### HFST build rules: #########
 
-$(GT_ACCEPTOR_VFST): $(SOURCE_DIR)/$(GT_ACCEPTOR_SRC_HFST)
-	$(AM_V_FST2TXT)$(HFST_FST2TXT) $< | sort -n | $(VOIKKOVFSTC) -w log -o $@
+####### Esater egg version info: #######
+# Easter egg content - depends also on the fst, to
+# make sure the easter egg is rebuilt every time the fst is rebuilt:
+easteregg.%.txt: $(srcdir)/version.txt $(GT_SPELLER_HFST)
+	$(AM_V_GEN)$(GTCORE)/scripts/make-hfstspeller-version-easter-egg.sh \
+		$(GTLANG2) $(top_srcdir) $< $* > $@
 
-$(GT_ERRMODEL_VFST): $(SOURCE_DIR)/$(GT_ERRMODEL_SRC_HFST)
-	$(AM_V_FST2TXT)$(HFST_FST2TXT) $< | sort -n | $(VOIKKOVFSTC) -w log -o $@
+# Easter egg suggestions:
+easteregg.%.suggtxt: easteregg.%.txt
+	$(AM_V_GEN)sed -e 's/^/nuvviDspeller:/' < $< \
+		| sed = \
+		| sed 'N;s/\n/	/' \
+		| perl -pe 's/(.)\t(.+)/\2\t\1/' \
+		> $@
+
+# Easter egg string acceptor:
+easteregg.%.hfst: easteregg.%.txt
+	$(AM_V_GEN)$(HFST_STRINGS2FST) $(HFST_FLAGS) -j < $< \
+		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower > $@
+
+####### Error model: #######
+# Error model building - edit distance based on transducer alphabet:
+editdist.%.regex: editdist.%.txt
+	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py \
+		--verbose \
+		--swap \
+		--epsilon='@0@' \
+		--default-weight=$(DEFAULT_WEIGHT) \
+		--regex -i $< \
+		--output-file=$@
+
+#		--distance=$(DEFAULT_EDIT_DIST) 
+
+initial_letters.list.%.hfst: initial_letters.%.txt
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -p \
+		-o $@
+
+initial_letters.regex.%.hfst: initial_letters.%.regex
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
+		-o $@
+
+initial_letters_all.%.hfst: \
+			initial_letters.regex.%.hfst \
+			initial_letters.list.%.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
+		-o $@
+
+final_strings.list.%.hfst: final_strings.%.txt
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
+		-o $@
+
+final_strings.regex.%.hfst: final_strings.%.regex
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
+		-o $@
+
+final_strings_all.%.hfst: \
+		final_strings.regex.%.hfst \
+		final_strings.list.%.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
+		-o $@
+
+# Helper fst:
+anystar.hfst:
+	$(AM_V_RGX2FST)echo "?*" | $(HFST_REGEXP2FST) -o $@
+
+# Error model building - list of strings known to be misspelled:
+strings.%.hfst: strings.%.txt anystar.hfst
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
+		| $(HFST_CONCATENATE)   anystar.hfst - \
+		| $(HFST_CONCATENATE) - anystar.hfst   \
+		-o $@
+
+# Combine edit distance with string pattern edits:
+editStrings.%.hfst: strings.%.hfst editdist.%.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
+		| $(HFST_REPEAT) -f 1 -t $(DEFAULT_EDIT_DIST) \
+		-o $@
+
+# Error model building - list of words known to be misspelled:
+words.%.hfst: words.%.txt easteregg.%.suggtxt
+	$(AM_V_STR2FST)grep -h -v '^#' $^ | grep -v '^$$'   \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -o $@
+
+# The final error model is assembled here:
+errmodel.%.hfst: words.%.hfst \
+				 $(initial_letter_deps) \
+				 editStrings.%.hfst \
+				 final_strings_all.%.hfst
+	$(AM_V_RGX2FST)printf "\
+		[ @\"words.$*.hfst\"    \
+		| \
+		  [ \
+		      $(initial_letter_fst_include) \
+		      @\"editStrings.$*.hfst\"  \
+		    ( @\"final_strings_all.$*.hfst\" ) \
+		  ] \
+		];" \
+		| $(HFST_REGEXP2FST) -S -E $(HFST_FLAGS) \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+
+####### Alternate error model: #######
+# Alternatively, the error model can be constructed as a long list of regular
+# expressions, semicolon separated:
+errmodel.%.hfst: errmodel.%.regex easteregg.%.hfst
+	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
+		| $(HFST_DISJUNCT) - easteregg.$*.hfst \
+		-o $@
+
+####### Speller acceptor: #######
+# Build the automaton used for the speller
+$(GT_SPELLER_ACCEPTOR): \
+acceptor.%.hfst: $(GT_SPELLER_HFST) easteregg.%.hfst
+	$(AM_V_GEN)cat $< \
+		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
+		| $(HFST_MINIMIZE_SPELLER) $(HFST_FLAGS)        \
+		| $(HFST_DISJUNCT) - easteregg.$*.hfst             \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw          \
+		-o $@
+
+####### *.zhfst file: #######
+# Finally build the zhfst file, and make a copy in a subdir named '3', so that
+# we can test it without installing it (the '3' dir is a voikko requirement):
+$(GT_SPELLING_HFST): $(srcdir)/index.xml \
+					 $(GT_ERRMODELS) \
+					 $(GT_SPELLER_ACCEPTOR)
+	$(AM_V_at)rm -f $@
+	$(AM_V_at)$(MKDIR_P) build/$@
+	$(AM_V_at)rm -f build/$@/*
+	$(AM_V_at)cp $(srcdir)/index.xml build/$@/index.xml
+	$(AM_V_at)cp $(GT_SPELLER_ACCEPTOR) build/$@/$(GT_SPELLER_ACCEPTOR)
+	$(AM_V_at)cp $(GT_ERRMODELS) build/$@/$(GT_ERRMODELS)
+	$(AM_V_GEN)cd build/$@/ && $(ZHFST_COMPRESSION)
+	$(AM_V_at)$(MKDIR_P) 3
+	$(AM_V_at)cp -f $@ 3/
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.vfst
+	-rm -f  *.hfst *.xfst *.zhfst easteregg.* *.oxt *.xpi
+	-rm -rf 3 *.service build
+	if ! [ "x$(CORPUSNAME)" = "x" ] ; then \
+		rm -f $(CORPUSNAME).* ; \
+	fi
 
+# Keep these intermediate targets when building using --debug:
+.SECONDARY: editStrings.default.hfst \
+            strings.default.hfst     \
+            editdist.default.hfst    \
+            editdist.default.regex    \
+            words.default.hfst \
+            initial_letters.list.default.hfst \
+            initial_letters.regex.default.hfst \
+            initial_letters_all.default.hfst \
+            final_strings.default.hfst
+
+include $(top_srcdir)/am-shared/regex-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
+
+# vim: set ft=automake:

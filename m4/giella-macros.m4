@@ -402,7 +402,7 @@ AC_ARG_ENABLE([syntax],
               [enable_syntax=yes])
 AS_IF([test "x$enable_syntax" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
              [enable_syntax=no
-              AC_MSG_ERROR([vislcg3 tools missing or too old, syntax tools disabled!])])
+              AC_MSG_ERROR([vislcg3 tools missing or too old, please install or disable syntax tools!])])
 AM_CONDITIONAL([WANT_SYNTAX], [test "x$enable_syntax" != xno])
 # $gt_prog_vislcg3
 
@@ -414,7 +414,7 @@ AC_ARG_ENABLE([spellers],
               [enable_spellers=no])
 AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
 
-# Enable hfst desktop spellers - default is 'yes'
+# Enable hfst desktop spellers - default is 'yes' (but dependent on --enable-spellers)
 AC_ARG_ENABLE([hfst-dekstop-speller],
               [AS_HELP_STRING([--enable-hfst-dekstop-speller],
                               [build hfst desktop spellers (dependent on --enable-spellers) @<:@default=yes@:>@])],
@@ -423,7 +423,7 @@ AC_ARG_ENABLE([hfst-dekstop-speller],
 AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_desktop_hfstspeller=no],
       [AS_IF([test "x$ZIP" = "xfalse"],
              [enable_desktop_hfstspeller=no
-              AC_MSG_WARN([zip missing, hfst desktop spellers disabled])])])
+              AC_MSG_ERROR([zip missing - required for desktop zhfst spellers])])])
 AM_CONDITIONAL([WANT_HFST_DESKTOP_SPELLER], [test "x$enable_desktop_hfstspeller" != xno])
 
 # Enable minimised fst-spellers by default:
@@ -449,16 +449,28 @@ AC_ARG_ENABLE([fomaspeller],
 AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno], 
       [AS_IF([test "x$GZIP" = "xfalse"],
              [enable_fomaspeller=no
-              AC_MSG_WARN([gzip missing, foma spellers disabled])])])
+              AC_MSG_ERROR([gzip missing - required for foma spellers])])])
 AM_CONDITIONAL([CAN_FOMA_SPELLER], [test "x$enable_fomaspeller" != xno])
+
+# Enable hfst mobile spellers - default is 'yes' (but dependent on --enable-spellers)
+AC_ARG_ENABLE([hfst-mobile-speller],
+              [AS_HELP_STRING([--enable-hfst-mobile-speller],
+                              [build hfst mobile spellers (dependent on --enable-spellers) @<:@default=yes@:>@])],
+              [enable_mobile_hfstspeller=$enableval],
+              [enable_mobile_hfstspeller=yes])
+AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_mobile_hfstspeller=no],
+      [AS_IF([test "x$XZ" = "xfalse"],
+             [enable_mobile_hfstspeller=no
+              AC_MSG_ERROR([xz is missing - required for mobile zhfst spellers])])])
+AM_CONDITIONAL([WANT_HFST_MOBILE_SPELLER], [test "x$enable_mobile_hfstspeller" != xno])
 
 # Enable Vfst-based spellers - default is no
 AC_ARG_ENABLE([vfstspeller],
               [AS_HELP_STRING([--enable-vfstspeller],
-                              [build vfst speller (dependent on --enable-spellers) @<:@default=no@:>@])],
+                              [build vfst speller (dependent on --enable-hfst-mobile-speller) @<:@default=no@:>@])],
               [enable_vfstspeller=$enableval],
               [enable_vfstspeller=no])
-AS_IF([test "x$enable_vfstspeller" = "xyes" -a "x$gt_prog_hfst" = xno],
+AS_IF([test "x$enable_vfstspeller" = "xyes" -a "x$enable_mobile_hfstspeller" = xno],
               [enable_vfstspeller=no])
 AM_CONDITIONAL([WANT_VFST_SPELLER], [test "x$enable_vfstspeller" != xno])
 
@@ -487,7 +499,7 @@ AC_ARG_ENABLE([grammarchecker],
               [enable_grammarchecker=no])
 AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" = "xno"], 
       [enable_grammarchecker=no
-       AC_MSG_WARN([vislcg3 missing or too old, grammar checker disabled])])
+       AC_MSG_ERROR([vislcg3 missing or too old - required for the grammar checker])])
 AM_CONDITIONAL([WANT_GRAMCHECK], [test "x$enable_grammarchecker" != xno])
 
 # Enable dictionary transducers - default is 'no'

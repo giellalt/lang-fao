@@ -33,6 +33,7 @@ done)
 ALT_WS_ZHFST_FILES=$(shell for ld in $(ALT_WSS); do\
     echo "$(GTLANG2)-$$ld.zhfst" ; \
 done)
+ALT_WS_ZHFST_BASENAMES=$(basename $(ALT_WS_ZHFST_FILES))
 endif # WANT_HFST_DESKTOP_SPELLER
 
 # Variables for the final installable packages:
@@ -45,8 +46,11 @@ ALT_WS_OXT_FILES_TMP=$(foreach \
 						version,$(VOIKKO_VERS_PLATFORMS), \
 							$(addsuffix $(version), \
 								$(addsuffix _LO-voikko-, \
-			                      $(basename $(ALT_WS_ZHFST_FILES)))))
+			                      $(ALT_WS_ZHFST_BASENAMES))))
 ALT_WS_OXT_FILES=$(addsuffix .oxt, $(ALT_WS_OXT_FILES_TMP))
+# LO 5.x oxt's:
+ALT_WS_OXT_FILES+=$(addsuffix _LO-voikko-$(LOVOIKKO_VERSION).oxt, \
+			$(ALT_WS_ZHFST_BASENAMES))
 
 # Generate target filename as follows:
 #
@@ -94,7 +98,22 @@ $(ALT_WS_ZHFST_FILES): \
 	$(AM_V_at)$(MKDIR_P) 3
 	$(AM_V_at)cp -f $@ 3/
 
-# Build rule for oxt files for alternate writing systems:
+# Build rule for 5.0 oxt files for alternate writing systems:
+# The more specific pattern match first.
+$(GTLANG2)-%_LO-voikko-5.0.oxt: $(ALT_WS_ZHFST_FILES)
+	$(AM_V_GEN)rm -f $@; \
+		if [ -d "$(OXT_ROOT_DIR)/$(LOVOIKKO_VERSION)" ]; then \
+			$(MKDIR_P) build/$(LOVOIKKO_VERSION)/ && \
+			cd build/$(LOVOIKKO_VERSION) && \
+			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) \
+					 $(OXT_ROOT_DIR)/$(LOVOIKKO_VERSION)/ ./ && \
+			cp ../../$(GTLANG2)-$*.zhfst voikko/3/ && \
+			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
+		else \
+			echo "  SKIP     $@: Not yet supported." ; \
+		fi
+
+# Build rule for 4.x oxt files for alternate writing systems:
 $(GTLANG2)-%.oxt: $(ALT_WS_ZHFST_FILES)
 	$(AM_V_GEN)rm -f $@; \
 		ws="$$(echo $* | cut -d'_' -f1)"; \

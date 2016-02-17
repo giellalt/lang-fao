@@ -113,8 +113,10 @@ if test x$HFST_INFO != xfalse; then
     fi
 else
     AC_MSG_RESULT([no])
-    AC_MSG_WARN([Unable to determine hfst version, might be too old and break])
     gt_prog_hfst=no
+    if test $with_hfst != "no"; then
+        AC_MSG_ERROR([You requested --with-hfst, but hfst is too old or not installed])
+    fi
 fi
 ], [gt_prog_hfst=no])
 AM_CONDITIONAL([CAN_HFST],      [test "x$gt_prog_hfst" = "xyes"])

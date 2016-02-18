@@ -121,6 +121,10 @@ noinst_DATA=$(GT_RAW)              \
 %.xfst : AM_V_XFST_TOOL = $(AM_V_XFST)
 %.foma : AM_V_XFST_TOOL = $(AM_V_FOMA)
 
+%.hfst : INVERT_HFST = invert net\n
+%.xfst : INVERT_XFST = invert net\n
+%.foma : INVERT_FOMA = invert net\n
+
 # The "raw" transducer contains all tags and symbols available on the analysis
 # side. Some of them are optional for generation, some are only needed for
 # special tools. On the lower side, the raw transducer contains all

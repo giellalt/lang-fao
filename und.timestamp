@@ -1,4 +1,11 @@
-$Rev: 129657 $
+$Rev: 129689 $
+Added INVERT_<FSTTECH> variables to help in improving compilation of analysers
+and generators for different fst technologies (Xerox, Hfst, Foma). Hfst has the
+inversed convention for lookup compared to the other two, and by using a
+variable we can now actually share the same build code irrespective of which
+one we need to inverse for the final analyser or generator.
+
+r129657:
 Removed the remove-derivation-position-tags filter from language-independent
 processing, it is language-specific, and will be added to the languages needing
 it. This also makes it possible to do further local processing dependent on

@@ -1,4 +1,10 @@
-$Rev: 129627 $
+$Rev: 129657 $
+Removed the remove-derivation-position-tags filter from language-independent
+processing, it is language-specific, and will be added to the languages needing
+it. This also makes it possible to do further local processing dependent on
+these tags.
+
+r129627:
 Error out if Hfst is requested but not found or too old.
 
 r129095:

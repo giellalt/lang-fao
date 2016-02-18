@@ -204,7 +204,6 @@ analyser-raw-gt-desc.hfst: generator-raw-gt-desc.hfst
 #   - homonymy tags
 analyser-gt-desc.tmp.%: analyser-raw-gt-desc.%                \
 					filters/remove-adv_comp-tags.%            \
-					filters/remove-derivation-position-tags.% \
 					filters/remove-dialect-tags.%             \
 					filters/remove-norm-comp-tags.%           \
 					filters/remove-number-string-tags.%       \
@@ -220,8 +219,7 @@ analyser-gt-desc.tmp.%: analyser-raw-gt-desc.%                \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/remove-derivation-position-tags.$*\" \
-			.o. @\"filters/remove-adv_comp-tags.$*\"            \
+			    @\"filters/remove-adv_comp-tags.$*\"            \
 			.o. @\"filters/remove-dialect-tags.$*\"             \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-number-string-tags.$*\"       \

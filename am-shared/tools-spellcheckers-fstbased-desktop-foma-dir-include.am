@@ -34,7 +34,6 @@ endif # WANT_SPELLERS
 # Build the automaton used for the speller
 generator-fomaspeller-gt-norm.hfst: \
 		$(top_builddir)/tools/spellcheckers/fstbased/$(GT_SPELLER_HFST)  \
-		$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
 		$(top_builddir)/src/filters/remove-dialect-tags.hfst             \
 		$(top_builddir)/src/filters/remove-homonymy-tags.hfst            \
 		$(top_builddir)/src/filters/remove-variant-tags.hfst             \
@@ -43,16 +42,15 @@ generator-fomaspeller-gt-norm.hfst: \
 		$(top_builddir)/src/filters/remove-usage-tags.hfst               \
 		$(top_builddir)/src/filters/remove-word-boundary.hfst
 	$(AM_V_GEN)$(PRINTF) "\
-			@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
-    	.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
-    	.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"            \
-    	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
-    	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
-    	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
-    	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
-    	.o. @\"$<\" \
-    	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
-    	;" \
+		    @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"       \
+		.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"      \
+		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"       \
+		.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"     \
+		.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\" \
+		.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"         \
+		.o. @\"$<\" \
+		.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"      \
+		;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
 

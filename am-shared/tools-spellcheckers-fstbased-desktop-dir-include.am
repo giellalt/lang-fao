@@ -73,13 +73,11 @@ generator-desktopspeller-gt-norm-base.hfst: ../generator-fstspeller-gt-norm.hfst
 ####    general cleanup:
 %.tmp.hfst: %-tag_weighted.hfst \
 			$(top_builddir)/src/filters/remove-word-boundary.hfst \
-			$(top_builddir)/src/filters/remove-usage-tags.hfst    \
-			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst
+			$(top_builddir)/src/filters/remove-usage-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "\
 	set encode-weights ON \n\
 	read regex \
 	    @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\" \
-	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$<\" \
 	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"  \
 	; \n\

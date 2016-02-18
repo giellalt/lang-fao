@@ -115,7 +115,6 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/make-optional-transitivity-tags.hfst  \
 			$(top_builddir)/src/filters/make-optional-semantic-tags.hfst      \
 			$(top_builddir)/src/filters/make-optional-v1-tags.hfst            \
-			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst  \
 			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst            \
 			$(top_builddir)/src/filters/remove-number-string-tags.hfst        \
 			$(top_builddir)/src/filters/remove-NG-strings.hfst                \
@@ -133,7 +132,6 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 		@\"$(top_builddir)/src/filters/make-optional-semantic-tags.hfst\"     \
 	.o. @\"$(top_builddir)/src/filters/make-optional-transitivity-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/make-optional-v1-tags.hfst\"           \
-	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
 	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
@@ -154,7 +152,6 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 # Apertium analyser - GTD tags. Target language independent filtering
 # happens here:
 analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
-			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
 			$(top_builddir)/src/filters/remove-dialect-tags.hfst             \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst             \
 			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
@@ -169,8 +166,7 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
-		@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
-	.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
+	    @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \

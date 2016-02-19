@@ -1,4 +1,8 @@
-$Rev: 129722 $
+$Rev: 129752 $
+Removed some references to remove-derivation-position-tags.regex that were
+forgotten in commit r129657.
+
+r129722:
 Added analyser-disamb-gt-desc.hfst as a noinst_DATA target, to force make to
 build it instead of going directly to the *.hfstol file, and thus breaking
 compilation when local modifications are needed.

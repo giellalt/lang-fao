@@ -257,7 +257,6 @@ generator-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 					filters/make-optional-semantic-tags.%     \
 					filters/make-optional-error-tags.%        \
 					filters/make-optional-adv_comp-tags.%     \
-					filters/remove-derivation-position-tags.% \
 					filters/remove-dialect-tags.%             \
 					filters/remove-hyphenation-marks.%        \
 					filters/remove-infl_deriv-borders.%       \
@@ -277,7 +276,6 @@ generator-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/make-optional-semantic-tags.$*\"     \
 			.o. @\"filters/make-optional-error-tags.$*\"        \
 			.o. @\"filters/make-optional-adv_comp-tags.$*\"     \
-			.o. @\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-dialect-tags.$*\"             \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-number-string-tags.$*\"       \
@@ -298,7 +296,6 @@ generator-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 # Remove sub-standard/error forms to get a normative transducer
 analyser-gt-norm.tmp.%: analyser-raw-gt-desc.%                \
 					filters/remove-adv_comp-tags.%            \
-					filters/remove-derivation-position-tags.% \
 					filters/remove-dialect-tags.%             \
 					filters/remove-variant-tags.%             \
 					filters/remove-norm-comp-tags.%           \
@@ -315,8 +312,7 @@ analyser-gt-norm.tmp.%: analyser-raw-gt-desc.%                \
 					orthography/inituppercase.compose.%       \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/remove-derivation-position-tags.$*\" \
-			.o. @\"filters/remove-adv_comp-tags.$*\"            \
+			    @\"filters/remove-adv_comp-tags.$*\"            \
 			.o. @\"filters/remove-dialect-tags.$*\"             \
 			.o. @\"filters/remove-variant-tags.$*\"             \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
@@ -349,7 +345,6 @@ generator-gt-norm.tmp.%: analyser-raw-gt-desc.%            \
 					filters/make-optional-variant-tags.%      \
 					filters/make-optional-semantic-tags.%     \
 					filters/make-optional-adv_comp-tags.%     \
-					filters/remove-derivation-position-tags.% \
 					filters/remove-dialect-tags.%             \
 					filters/remove-hyphenation-marks.%        \
 					filters/remove-infl_deriv-borders.%       \
@@ -369,7 +364,6 @@ generator-gt-norm.tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/make-optional-variant-tags.$*\"      \
 			.o. @\"filters/make-optional-semantic-tags.$*\"     \
 			.o. @\"filters/make-optional-adv_comp-tags.$*\"     \
-			.o. @\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-dialect-tags.$*\"             \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-number-string-tags.$*\"       \

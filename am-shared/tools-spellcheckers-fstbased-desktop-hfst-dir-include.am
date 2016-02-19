@@ -63,7 +63,7 @@ GT_ERRMODELS+=errmodel.default.hfst
 
 GT_SPELLING_HFST=$(GTLANG2).zhfst
 
-voikkosharedir=$(libdir)/voikko/3/
+voikkosharedir=$(datadir)/voikko/3/
 #! @param GT_VOIKKO optional, set to spell checker automata names if
 #!					installable
 voikkoshare_DATA=$(GT_SPELLING_HFST) $(ALT_WS_ZHFST_FILES)

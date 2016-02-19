@@ -39,7 +39,8 @@ if WANT_MORPHOLOGY
 GT_ANALYSERS+=analyser-gt-desc.hfstol \
 			  analyser-gt-norm.hfstol \
 			  analyser-disamb-gt-desc.hfstol
-GT_ANALYSERS_NO_INSTALL=analyser-gt-desc.hfst
+GT_ANALYSERS_NO_INSTALL=analyser-gt-desc.hfst \
+                        analyser-disamb-gt-desc.hfst
 endif # WANT_MORPHOLOGY
 
 if WANT_GENERATION

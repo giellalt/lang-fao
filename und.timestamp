@@ -1,4 +1,9 @@
-$Rev: 129689 $
+$Rev: 129722 $
+Added analyser-disamb-gt-desc.hfst as a noinst_DATA target, to force make to
+build it instead of going directly to the *.hfstol file, and thus breaking
+compilation when local modifications are needed.
+
+r129689:
 Added INVERT_<FSTTECH> variables to help in improving compilation of analysers
 and generators for different fst technologies (Xerox, Hfst, Foma). Hfst has the
 inversed convention for lookup compared to the other two, and by using a

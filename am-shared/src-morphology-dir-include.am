@@ -128,6 +128,7 @@ maintainer-clean-local:
 	-rm -f $(GENERATED_LEXC_SRCS)
 
 include $(top_srcdir)/am-shared/lexc-include.am
+include $(top_srcdir)/am-shared/xfscript-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake: 

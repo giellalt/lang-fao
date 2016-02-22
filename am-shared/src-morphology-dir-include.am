@@ -59,7 +59,11 @@ EXTRA_DIST=$(GT_LEXC_ALLSRC)
 GT_LEXICAL=
 if CAN_HFST
 GT_LEXICAL+=lexicon.hfst
+if WANT_REVERSED_INTERSECT
+GT_LEXICAL+=lexicon.rev.hfst
+endif # WANT_REVERSED_INTERSECT
 endif # CAN_HFST
+
 if CAN_XFST
 GT_LEXICAL+=lexicon.xfst
 endif # CAN_XFST
@@ -86,6 +90,10 @@ if WANT_L2
 if CAN_HFST
 GT_LEXICAL+=lexicon-L2.hfst
 endif # CAN_HFST
+if WANT_REVERSED_INTERSECT
+GT_LEXICAL+=lexicon-L2.rev.hfst
+endif # WANT_REVERSED_INTERSECT
+
 if CAN_XFST
 GT_LEXICAL+=lexicon-L2.xfst
 endif # CAN_XFST
@@ -128,6 +136,10 @@ lexicon.tmp.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 
 lexicon-L2.tmp.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_L2_SRCS) $(GENERATED_LEXC_SRCS)
 	$(AM_V_GEN)cat $^ > $@
+
+####### If reversed compose-intersect is enabled, reverse it here: #######
+%.rev.hfst: %.hfst
+	$(AM_V_REVERSE)$(HFST_REVERSE) $< > $@
 
 ####### TMP files to allow local overrides - copy by default: #######
 DEPGEN=$(AM_V_CP)cp -f $< $@

@@ -1,4 +1,10 @@
-$Rev: 129841 $
+$Rev: 129867 $
+Added configure option to reverse the lexicon and the morph-phon rules during
+composition and intersection. Reduced the time needed for that operation to
+≈1/3 of what it used to be in SMS, and RAM consumption went down from 11Gb
+to max 400Mb! Speed and RAM gains will vary from language to language.
+
+r129841:
 Now the lexical fst is first compiled into a .tmp file, to allow
 language-specific changes to be applied from .tmp to final file. More
 support for xfscript compilation.

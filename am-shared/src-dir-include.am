@@ -133,6 +133,21 @@ noinst_DATA=$(GT_RAW)              \
 # can NOT be used for morphological analysis, and hardly for generation.
 
 # First build a tmp1 raw file as the intersection between lexicon and rules:
+# HFST
+if WANT_REVERSED_INTERSECT
+# Do this is reversed intersect is enabled:
+generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.rev.hfst \
+					 phonology/$(GTLANG)-phon.rev.hfst
+	$(AM_V_INTRSCT)$(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
+			$(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-2 phonology/$(GTLANG)-phon.compose.hfst \
+		| hfst-reverse \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) -o $@
+
+else
+# Otherwise do this:
 generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.hfst \
 					 phonology/$(GTLANG)-phon.compose.hfst
 	$(AM_V_INTRSCT)$(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
@@ -141,13 +156,16 @@ generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.hfst \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
 			-2 phonology/$(GTLANG)-phon.compose.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) -o $@
+endif # WANT_REVERSED_INTERSECT
 
+# XEROX
 analyser-raw-gt-desc.tmp1.xfst: morphology/lexicon.xfst \
 			 phonology/$(GTLANG)-phon.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
 		"read-source morphology/lexicon.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		| $(LEXC) $(VERBOSITY)
 
+# FOMA
 analyser-raw-gt-desc.tmp1.foma: morphology/lexicon.foma \
 			 phonology/$(GTLANG)-phon.compose.foma
 	$(AM_V_FOMA)$(PRINTF) \

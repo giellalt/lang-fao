@@ -370,6 +370,14 @@ AC_ARG_ENABLE([twostep-intersect],
               [enable_twostep_intersect=no])
 AM_CONDITIONAL([WANT_TWOSTEP_INTERSECT], [test "x$enable_twostep_intersect" != xno])
 
+#enable_reversed_intersect
+AC_ARG_ENABLE([reversed-intersect],
+              [AS_HELP_STRING([--enable-reversed-intersect],
+                              [enable reversed compose-intersect (faster and takes less RAM in some cases) @<:@default=no@:>@])],
+              [enable_reversed_intersect=$enableval],
+              [enable_reversed_intersect=no])
+AM_CONDITIONAL([WANT_REVERSED_INTERSECT], [test "x$enable_reversed_intersect" != xno])
+
 # Enable morphological analysers - default is 'yes'
 AC_ARG_ENABLE([analysers],
               [AS_HELP_STRING([--enable-analysers],

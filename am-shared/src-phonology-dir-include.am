@@ -35,7 +35,11 @@ GT_PHONOLOGY=
 if CAN_HFST
 GT_PHONOLOGY+=$(addsuffix .compose.hfst, $(basename $(GT_PHONOLOGY_SRCS)))
 GT_PHONOLOGY+=$(addsuffix .lookup.hfst,  $(basename $(GT_PHONOLOGY_SRCS)))
+if WANT_REVERSED_INTERSECT
+GT_PHONOLOGY+=$(addsuffix .rev.hfst, $(basename $(GT_PHONOLOGY_SRCS)))
+endif # WANT_REVERSED_INTERSECT
 endif # CAN_HFST
+
 if CAN_XFST
 GT_PHONOLOGY+=$(addsuffix .compose.xfst, $(basename $(GT_PHONOLOGY_SRCS)))
 GT_PHONOLOGY+=$(addsuffix .lookup.xfst,  $(basename $(GT_PHONOLOGY_SRCS)))
@@ -49,7 +53,11 @@ if WANT_L2
 if CAN_HFST
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.hfst
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.hfst
+if WANT_REVERSED_INTERSECT
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.rev.hfst
+endif # WANT_REVERSED_INTERSECT
 endif # CAN_HFST
+
 if CAN_XFST
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.xfst
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.xfst
@@ -61,6 +69,14 @@ endif # CAN_XFST
 endif # WANT_L2
 
 noinst_DATA=$(GT_PHONOLOGY)
+
+# Build instructions for the reversed rule file:
+%.rev.hfst: %.compose.hfst
+	$(AM_V_at)rm -f $@
+	$(AM_V_HSPLIT)$(HFST_SPLIT) -p split $<
+	$(AM_V_REVERSE)for i in split*.hfst; do $(HFST_REVERSE) $$i >> $@ ; done
+	$(AM_V_at)rm -f split*.hfst
+
 
 ####### Other targets: ###########
 clean-local:

@@ -41,7 +41,6 @@
 # hfst-push-weights
 # hfst-remove-epsilons
 # hfst-repeat
-# hfst-reverse
 # hfst-shuffle
 # hfst-subtract
 # hfst-summarize
@@ -121,6 +120,11 @@ AM_V_INVERT_0   = @echo "  HINVERT  $@";
 AM_V_PROJECT    = $(AM_V_PROJECT_@AM_V@)
 AM_V_PROJECT_   = $(AM_V_PROJECT_@AM_DEFAULT_V@)
 AM_V_PROJECT_0  = @echo "  HPROJECT $@";
+
+# hfst-reverse
+AM_V_REVERSE   = $(AM_V_REVERSE_@AM_V@)
+AM_V_REVERSE_  = $(AM_V_REVERSE_@AM_DEFAULT_V@)
+AM_V_REVERSE_0 = @echo "  HREVERSE  $@";
 
 # hfst-reweight:
 AM_V_REWEIGHT   = $(AM_V_REWEIGHT_@AM_V@)

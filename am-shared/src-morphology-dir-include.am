@@ -15,6 +15,15 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Pattern variables to choose tools depending on which toolset we build for:
+%.hfst : XFST_TOOL      = $(HFST_XFST) -p $(VERBOSITY)
+%.xfst : XFST_TOOL      = $(XFST) $(VERBOSITY)
+%.foma : XFST_TOOL      = $(FOMA) $(VERBOSITY)
+
+%.hfst : AM_V_XFST_TOOL = $(AM_V_HXFST)
+%.xfst : AM_V_XFST_TOOL = $(AM_V_XFST)
+%.foma : AM_V_XFST_TOOL = $(AM_V_FOMA)
+
 ########### Variables: ###########
 
 HFST_LEXC_FLAGS=$(HFST_LEXC_LOCAL_FLAGS)
@@ -114,11 +123,17 @@ endif
 ####### when something doesn't work); hfst does the concatenation automatically
 ####### but by doing it explicitly we have a source file to relate line numbers
 ####### in error messages to. Foma can only read a single lexc file.
-lexicon.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
+lexicon.tmp.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 	$(AM_V_GEN)cat $^ > $@
 
-lexicon-L2.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_L2_SRCS) $(GENERATED_LEXC_SRCS)
+lexicon-L2.tmp.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_L2_SRCS) $(GENERATED_LEXC_SRCS)
 	$(AM_V_GEN)cat $^ > $@
+
+####### TMP files to allow local overrides - copy by default: #######
+DEPGEN=$(AM_V_CP)cp -f $< $@
+%.foma: %.tmp.foma ; $(DEPGEN)
+%.hfst: %.tmp.hfst ; $(DEPGEN)
+%.xfst: %.tmp.xfst ; $(DEPGEN)
 
 ####### Other targets: ###########
 clean-local:

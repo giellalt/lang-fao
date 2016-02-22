@@ -1,4 +1,9 @@
-$Rev: 129823 $
+$Rev: 129841 $
+Now the lexical fst is first compiled into a .tmp file, to allow
+language-specific changes to be applied from .tmp to final file. More
+support for xfscript compilation.
+
+r129823:
 Added include to xfscfript-include.am, to let xfscripts be used in lexc
 compilation.
 

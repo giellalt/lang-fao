@@ -74,7 +74,8 @@ noinst_DATA=$(GT_PHONOLOGY)
 %.rev.hfst: %.compose.hfst
 	$(AM_V_at)rm -f $@
 	$(AM_V_HSPLIT)$(HFST_SPLIT) -p split $<
-	$(AM_V_REVERSE)for i in split*.hfst; do $(HFST_REVERSE) $$i >> $@ ; done
+	$(AM_V_REVERSE)for i in split*.hfst; do $(HFST_REVERSE) $$i \
+		| $(HFST_MINIMIZE) >> $@ ; done
 	$(AM_V_at)rm -f split*.hfst
 
 

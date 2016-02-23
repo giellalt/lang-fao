@@ -142,7 +142,7 @@ generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.rev.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 phonology/$(GTLANG)-phon.compose.hfst \
+			-2 phonology/$(GTLANG)-phon.rev.hfst \
 		| $(HFST_REVERSE) \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) -o $@
 

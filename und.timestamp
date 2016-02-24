@@ -1,6 +1,10 @@
-$Rev: 129968 $
+$Rev: 129977 $
+Better handling of hfst/xfst/foma for the top-level speller dir - invert when
+needed.
+
+r129968:
 There was still one more automake file with references to the
-remove-derivation-position-tags.regex filter. Now it is gone.
+remove-derivation-position-tags.regex filter. Now they are gone.
 
 r129939:
 A typo made reversed compose&intersect seem buggy, whereas in fact it was not.

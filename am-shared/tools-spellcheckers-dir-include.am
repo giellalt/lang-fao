@@ -24,6 +24,10 @@
 %.xfst : AM_V_XFST_TOOL = $(AM_V_XFST)
 %.foma : AM_V_XFST_TOOL = $(AM_V_FOMA)
 
+%.hfst : INVERT_HFST = invert net\n
+%.xfst : INVERT_XFST = invert net\n
+%.foma : INVERT_FOMA = invert net\n
+
 # Hfst fst variables:
 GT_COMMON_SPELLER_HFST=
 

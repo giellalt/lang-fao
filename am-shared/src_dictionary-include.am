@@ -141,7 +141,6 @@ generator-dict-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst       \
 					filters/make-optional-semantic-tags.hfst      \
 					filters/make-optional-v1-tags.hfst            \
 					filters/make-optional-adv_comp-tags.hfst      \
-					filters/remove-derivation-position-tags.hfst  \
 					filters/remove-dialect-tags.hfst              \
 					filters/remove-norm-comp-tags.hfst            \
 					filters/remove-orig_lang-tags.hfst            \
@@ -160,7 +159,6 @@ generator-dict-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst       \
 			.o. @\"filters/make-optional-semantic-tags.hfst\"      \
 			.o. @\"filters/make-optional-v1-tags.hfst\"            \
 			.o. @\"filters/make-optional-adv_comp-tags.hfst\"      \
-			.o. @\"filters/remove-derivation-position-tags.hfst\"  \
 			.o. @\"filters/remove-dialect-tags.hfst\"              \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"            \
@@ -183,7 +181,6 @@ generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst        \
 					filters/make-optional-semantic-tags.xfst      \
 					filters/make-optional-v1-tags.xfst            \
 					filters/make-optional-adv_comp-tags.xfst      \
-					filters/remove-derivation-position-tags.xfst  \
 					filters/remove-dialect-tags.xfst              \
 					filters/remove-norm-comp-tags.xfst            \
 					filters/remove-orig_lang-tags.xfst            \
@@ -201,7 +198,6 @@ generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst        \
 			.o. @\"filters/make-optional-semantic-tags.xfst\"      \
 			.o. @\"filters/make-optional-v1-tags.xfst\"            \
 			.o. @\"filters/make-optional-adv_comp-tags.xfst\"      \
-			.o. @\"filters/remove-derivation-position-tags.xfst\"  \
 			.o. @\"filters/remove-dialect-tags.xfst\"              \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"            \
@@ -224,7 +220,6 @@ generator-dict-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst        \
 
 analyser-dict-gt-desc.%.tmp.hfst: generator-raw-gt-desc.hfst      \
 					filters/remove-adv_comp-tags.hfst             \
-					filters/remove-derivation-position-tags.hfst  \
 					filters/remove-dialect-tags.hfst              \
 					filters/remove-norm-comp-tags.hfst            \
 					filters/remove-orig_lang-tags.hfst            \
@@ -238,8 +233,7 @@ analyser-dict-gt-desc.%.tmp.hfst: generator-raw-gt-desc.hfst      \
 					orthography/spellrelax.%.compose.hfst         \
 					orthography/$(DEFAULT_WS)-to-%.compose.hfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/remove-derivation-position-tags.hfst\"  \
-			.o. @\"filters/remove-adv_comp-tags.hfst\"             \
+				@\"filters/remove-adv_comp-tags.hfst\"             \
 			.o. @\"filters/remove-dialect-tags.hfst\"              \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"            \
@@ -259,7 +253,6 @@ analyser-dict-gt-desc.%.tmp.hfst: generator-raw-gt-desc.hfst      \
 
 analyser-dict-gt-desc.%.tmp.xfst: analyser-raw-gt-desc.xfst       \
 					filters/remove-adv_comp-tags.xfst             \
-					filters/remove-derivation-position-tags.xfst  \
 					filters/remove-dialect-tags.xfst              \
 					filters/remove-norm-comp-tags.xfst            \
 					filters/remove-orig_lang-tags.xfst            \
@@ -273,8 +266,7 @@ analyser-dict-gt-desc.%.tmp.xfst: analyser-raw-gt-desc.xfst       \
 					orthography/spellrelax.%.compose.xfst         \
 					orthography/$(DEFAULT_WS)-to-%.compose.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/remove-derivation-position-tags.xfst\"  \
-			.o. @\"filters/remove-adv_comp-tags.xfst\"             \
+				@\"filters/remove-adv_comp-tags.xfst\"             \
 			.o. @\"filters/remove-dialect-tags.xfst\"              \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"            \
@@ -304,7 +296,6 @@ generator-dict-gt-norm.%.tmp.hfst: generator-raw-gt-desc.hfst     \
 					filters/make-optional-semantic-tags.hfst      \
 					filters/make-optional-v1-tags.hfst            \
 					filters/make-optional-adv_comp-tags.hfst      \
-					filters/remove-derivation-position-tags.hfst  \
 					filters/remove-dialect-tags.hfst              \
 					filters/remove-norm-comp-tags.hfst            \
 					filters/remove-orig_lang-tags.hfst            \
@@ -322,7 +313,6 @@ generator-dict-gt-norm.%.tmp.hfst: generator-raw-gt-desc.hfst     \
 			.o. @\"filters/make-optional-semantic-tags.hfst\"      \
 			.o. @\"filters/make-optional-v1-tags.hfst\"            \
 			.o. @\"filters/make-optional-adv_comp-tags.hfst\"      \
-			.o. @\"filters/remove-derivation-position-tags.hfst\"  \
 			.o. @\"filters/remove-dialect-tags.hfst\"              \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"            \
@@ -345,7 +335,6 @@ generator-dict-gt-norm.%.tmp.xfst: analyser-raw-gt-desc.xfst      \
 					filters/make-optional-semantic-tags.xfst      \
 					filters/make-optional-v1-tags.xfst            \
 					filters/make-optional-adv_comp-tags.xfst      \
-					filters/remove-derivation-position-tags.xfst  \
 					filters/remove-dialect-tags.xfst              \
 					filters/remove-norm-comp-tags.xfst            \
 					filters/remove-orig_lang-tags.xfst            \
@@ -363,7 +352,6 @@ generator-dict-gt-norm.%.tmp.xfst: analyser-raw-gt-desc.xfst      \
 			.o. @\"filters/make-optional-semantic-tags.xfst\"      \
 			.o. @\"filters/make-optional-v1-tags.xfst\"            \
 			.o. @\"filters/make-optional-adv_comp-tags.xfst\"      \
-			.o. @\"filters/remove-derivation-position-tags.xfst\"  \
 			.o. @\"filters/remove-dialect-tags.xfst\"              \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"            \
@@ -385,7 +373,6 @@ generator-dict-gt-norm.%.tmp.xfst: analyser-raw-gt-desc.xfst      \
 
 analyser-dict-gt-desc.%.tmp.hfst: generator-raw-gt-desc.hfst      \
 					filters/remove-adv_comp-tags.hfst             \
-					filters/remove-derivation-position-tags.hfst  \
 					filters/remove-dialect-tags.hfst              \
 					filters/remove-norm-comp-tags.hfst            \
 					filters/remove-orig_lang-tags.hfst            \
@@ -421,7 +408,6 @@ analyser-dict-gt-desc.%.tmp.hfst: generator-raw-gt-desc.hfst      \
 
 analyser-dict-gt-desc.%.tmp.xfst: analyser-raw-gt-desc.xfst       \
 					filters/remove-adv_comp-tags.xfst             \
-					filters/remove-derivation-position-tags.xfst  \
 					filters/remove-dialect-tags.xfst              \
 					filters/remove-norm-comp-tags.xfst            \
 					filters/remove-orig_lang-tags.xfst            \
@@ -467,7 +453,6 @@ generator-dict-gt-norm.%.tmp.hfst: generator-raw-gt-desc.hfst     \
 					filters/make-optional-semantic-tags.hfst      \
 					filters/make-optional-v1-tags.hfst            \
 					filters/make-optional-adv_comp-tags.hfst      \
-					filters/remove-derivation-position-tags.hfst  \
 					filters/remove-dialect-tags.hfst              \
 					filters/remove-norm-comp-tags.hfst            \
 					filters/remove-orig_lang-tags.hfst            \
@@ -485,7 +470,6 @@ generator-dict-gt-norm.%.tmp.hfst: generator-raw-gt-desc.hfst     \
 			.o. @\"filters/make-optional-semantic-tags.hfst\"      \
 			.o. @\"filters/make-optional-v1-tags.hfst\"            \
 			.o. @\"filters/make-optional-adv_comp-tags.hfst\"      \
-			.o. @\"filters/remove-derivation-position-tags.hfst\"  \
 			.o. @\"filters/remove-dialect-tags.hfst\"              \
 			.o. @\"filters/remove-norm-comp-tags.hfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.hfst\"            \
@@ -508,7 +492,6 @@ generator-dict-gt-norm.%.tmp.xfst: analyser-raw-gt-desc.xfst      \
 					filters/make-optional-semantic-tags.xfst      \
 					filters/make-optional-v1-tags.xfst            \
 					filters/make-optional-adv_comp-tags.xfst      \
-					filters/remove-derivation-position-tags.xfst  \
 					filters/remove-dialect-tags.xfst              \
 					filters/remove-norm-comp-tags.xfst            \
 					filters/remove-orig_lang-tags.xfst            \
@@ -527,7 +510,6 @@ generator-dict-gt-norm.%.tmp.xfst: analyser-raw-gt-desc.xfst      \
 			.o. @\"filters/make-optional-semantic-tags.xfst\"      \
 			.o. @\"filters/make-optional-v1-tags.xfst\"            \
 			.o. @\"filters/make-optional-adv_comp-tags.xfst\"      \
-			.o. @\"filters/remove-derivation-position-tags.xfst\"  \
 			.o. @\"filters/remove-dialect-tags.xfst\"              \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"            \
 			.o. @\"filters/remove-orig_lang-tags.xfst\"            \

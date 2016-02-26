@@ -92,7 +92,9 @@ GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS=\
                   remove-error-tags.regex           \
                   remove-error-strings.regex        \
                   remove-dialect-tags.regex         \
-                  $(DIALECT_REGEXES)
+                  remove-area-tags.regex         \
+                  $(DIALECT_REGEXES) \
+                  $(AREA_REGEXES)
 
 # 3) GTD Core xfscript filter files:
 GIELLA_FILTER_CORE_XFSCRIPT_SRCS=
@@ -245,6 +247,21 @@ DIALECT_TARGETS_FOMA=$(addsuffix .foma,$(DIALECT_SUFFIXES))
 
 endif # HAVE_DIALECTS
 
+####### Build rules for area / country filters: #######
+# AREA_TARGETS_?FST is constructed dynamically based on the ISO 3166
+# codes specified in configure.ac.
+
+if HAVE_AREAS
+
+AREA_PREFIXES=$(addprefix remove-all_areas_but_,$(AREAS))
+AREA_SUFFIXES=$(addsuffix  -strings,$(AREA_PREFIXES))
+AREA_REGEXES=$(addsuffix     .regex,$(AREA_SUFFIXES))
+AREA_TARGETS_XFST=$(addsuffix .xfst,$(AREA_SUFFIXES))
+AREA_TARGETS_HFST=$(addsuffix .hfst,$(AREA_SUFFIXES))
+AREA_TARGETS_FOMA=$(addsuffix .foma,$(AREA_SUFFIXES))
+
+endif # HAVE_AREAS
+
 ######## Build rules for extracting tags: ########
 ##
 ## Add  one  target  for each  type of  tags to be
@@ -255,6 +272,9 @@ endif # HAVE_DIALECTS
 ## instead,  and  the  resulting  filter  will  be 
 ## harmless   (unless  a  language  uses  the  tag
 ## +Sem/DummyTag, +Dial/DummyTag, etc.).
+
+area-tags.txt: $(GT_TAGS)
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Area/
 
 dialect-tags.txt: $(GT_TAGS)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Dial/
@@ -299,6 +319,11 @@ remove-%-tags.regex: %-tags.txt
 remove-all_dialects_but_%-strings.regex:
 	$(AM_V_GEN)$(GTCORE)/scripts/generate-dialect-filter-regex.sh \
 		$@ $* "$(DIALECTS)"
+
+# Remove strings specific to other areas than the requested one:
+remove-all_areas_but_%-strings.regex:
+	$(AM_V_GEN)$(GTCORE)/scripts/generate-area-filter-regex.sh \
+		$@ $* "$(AREAS)"
 
 ### Remove strings with tags as specified:
 # Specific variant - take into account an exception file:

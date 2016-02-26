@@ -70,8 +70,8 @@ AM_CONDITIONAL([HAVE_ALT_WSS], [test "x$ALT_WSS" != "x"])
 # for country-specific normative tools. E.g. in SMJ, people write æ or ä
 # depending on whether they are in Norway or Sweden, and restricting a speller
 # to only the relevant variant will improve the overall quality of the speller.
-AC_SUBST([COUNTRIES], [""])
-AM_CONDITIONAL([HAVE_COUNTRIES], [test "x$COUNTRIES" != "x"])
+AC_SUBST([AREAS], [""])
+AM_CONDITIONAL([HAVE_AREAS], [test "x$AREAS" != "x"])
 
 # Names for default and alternate orthographies. The names must follow the BCP
 # 47 rules for private use subtags, which requires that the names must be at

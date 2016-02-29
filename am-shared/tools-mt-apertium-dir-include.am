@@ -360,17 +360,17 @@ functions-mt-gt.cg3: \
 	$(AM_V_CP)cp -f $< $@
 
 %-mt-gt.cg3: $(top_srcdir)/src/syntax/%.cg3
-	$(AM_V_CP)cp -f $< $@
+	$(AM_V_GEN)grep -v '#RemoveFromApertium' < $< > $@
 
 %.cg3: $(top_srcdir)/src/syntax/%.cg3
-	$(AM_V_CP)cp -f $< $@
+	$(AM_V_GEN)grep -v '#RemoveFromApertium' < $< > $@
 
 # Make sure included files are copied in before starting to compile:
 $(APERTIUM_CG_SRC): $(APERTIUM_CG_INCLUDE_SRC)
 
 # Change the tags from GTDivvun format to Apertium format:
-%-apertium.cg3: %-gt.cg3
-	$(AM_V_GEN)grep -v '#RemoveFromApertium' < $< > $@
+%-apertium.bin: %-gt.bin $(srcdir)/tagsets/gt2apertium.cg3relabel
+	$(AM_V_GEN)cg-relabel $< $(srcdir)/tagsets/gt2apertium.cg3relabel $@
 
 #### Copy to Apertium filenames
 $(APERTIUM_MORPH_PAIRS_V): \

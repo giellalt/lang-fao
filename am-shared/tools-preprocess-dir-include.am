@@ -31,8 +31,10 @@ GENERATOR=generator-gt-desc.hfstol
 
 # Only build the pmatch/hfst-proc2 fst if analysers are enabled.
 if WANT_MORPHOLOGY
+if WANT_TOKENISERS
 ANALYSER=analyser-disamb-gt-desc.hfst
 PMHFST=tokeniser-disamb-gt-desc.pmhfst
+endif # WANT_TOKENISERS
 endif # WANT_MORPHOLOGY
 
 hfstdatadir=$(datadir)/giella/$(GTLANG)

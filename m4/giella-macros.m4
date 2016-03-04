@@ -580,6 +580,16 @@ AS_IF([test x$enable_abbr == xyes -a x$enable_generators == xno],
     [AC_MSG_ERROR([You need to enable generators to build the abbr file])])
 AM_CONDITIONAL([WANT_ABBR], [test "x$enable_abbr" != xno])
 
+# Enable building tokenisers - default is 'no'
+AC_ARG_ENABLE([tokenisers],
+              [AS_HELP_STRING([--enable-tokenisers],
+                              [enable tokenisers @<:@default=no@:>@])],
+              [enable_tokenisers=$enableval],
+              [enable_tokenisers=no])
+AS_IF([test x$enable_tokenisers == xyes -a x$enable_analysers == xno],
+    [AC_MSG_ERROR([You need to enable analysers to build tokenisers])])
+AM_CONDITIONAL([WANT_TOKENISERS], [test "x$enable_tokenisers" != xno])
+
 ]) # gt_ENABLE_TARGETS
 
 ################################################################################
@@ -622,7 +632,8 @@ cat<<EOF
     * L2 analyser: $enable_L2
     * downcase error analyser: $enable_downcaseerror
   * Apertium transducers enabled: $enable_apertium
-  * Generate abbr.txt: $enable_abbr
+  * generate abbr.txt: $enable_abbr
+  * build tokenisers: $enable_tokenisers
 
 For more ./configure options, run ./configure --help
 

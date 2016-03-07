@@ -32,4 +32,17 @@
 %.foma: %.xfscript
 	$(AM_V_FOMA)$(FOMA) $(VERBOSITY) -l $< -e "save stack $@" -s
 
+# Pattern variables to choose tools depending on which toolset we build for:
+%.hfst : XFST_TOOL      = $(HFST_XFST) -p $(VERBOSITY)
+%.xfst : XFST_TOOL      = $(XFST) $(VERBOSITY)
+%.foma : XFST_TOOL      = $(FOMA) $(VERBOSITY)
+
+%.hfst : AM_V_XFST_TOOL = $(AM_V_HXFST)
+%.xfst : AM_V_XFST_TOOL = $(AM_V_XFST)
+%.foma : AM_V_XFST_TOOL = $(AM_V_FOMA)
+
+%.hfst : INVERT_HFST = invert net\n
+%.xfst : INVERT_XFST = invert net\n
+%.foma : INVERT_FOMA = invert net\n
+
 # vim: set ft=automake:

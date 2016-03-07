@@ -15,19 +15,6 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Pattern variables to choose tools depending on which toolset we build for:
-%.hfst : XFST_TOOL      = $(HFST_XFST) -p $(VERBOSITY)
-%.xfst : XFST_TOOL      = $(XFST) $(VERBOSITY)
-%.foma : XFST_TOOL      = $(FOMA) $(VERBOSITY)
-
-%.hfst : AM_V_XFST_TOOL = $(AM_V_HXFST)
-%.xfst : AM_V_XFST_TOOL = $(AM_V_XFST)
-%.foma : AM_V_XFST_TOOL = $(AM_V_FOMA)
-
-%.hfst : INVERT_HFST = invert net\n
-%.xfst : INVERT_XFST = invert net\n
-%.foma : INVERT_FOMA = invert net\n
-
 # Hfst fst variables:
 GT_COMMON_SPELLER_HFST=
 
@@ -154,4 +141,5 @@ generator%.foma: analyser%.tmp.foma
 clean-local:
 	-rm -f *.hfst *.xfst
 
+include $(top_srcdir)/am-shared/xfscript-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am

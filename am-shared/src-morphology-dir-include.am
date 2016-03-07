@@ -15,15 +15,6 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Pattern variables to choose tools depending on which toolset we build for:
-%.hfst : XFST_TOOL      = $(HFST_XFST) -p $(VERBOSITY)
-%.xfst : XFST_TOOL      = $(XFST) $(VERBOSITY)
-%.foma : XFST_TOOL      = $(FOMA) $(VERBOSITY)
-
-%.hfst : AM_V_XFST_TOOL = $(AM_V_HXFST)
-%.xfst : AM_V_XFST_TOOL = $(AM_V_XFST)
-%.foma : AM_V_XFST_TOOL = $(AM_V_FOMA)
-
 ########### Variables: ###########
 
 HFST_LEXC_FLAGS=$(HFST_LEXC_LOCAL_FLAGS)

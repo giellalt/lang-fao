@@ -61,4 +61,5 @@ analyser-%.hfst: generator-%.hfst
 clean-local:
 	-rm -f *.hfst *.txt *.att
 
+include $(top_srcdir)/am-shared/xfscript-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am

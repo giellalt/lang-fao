@@ -113,19 +113,6 @@ noinst_DATA=$(GT_RAW)              \
 #       types.
 ##################################################
 
-# Pattern variables to choose tools depending on which toolset we build for:
-%.hfst : XFST_TOOL      = $(HFST_XFST) -p $(VERBOSITY)
-%.xfst : XFST_TOOL      = $(XFST) $(VERBOSITY)
-%.foma : XFST_TOOL      = $(FOMA) $(VERBOSITY)
-
-%.hfst : AM_V_XFST_TOOL = $(AM_V_HXFST)
-%.xfst : AM_V_XFST_TOOL = $(AM_V_XFST)
-%.foma : AM_V_XFST_TOOL = $(AM_V_FOMA)
-
-%.hfst : INVERT_HFST = invert net\n
-%.xfst : INVERT_XFST = invert net\n
-%.foma : INVERT_FOMA = invert net\n
-
 # The "raw" transducer contains all tags and symbols available on the analysis
 # side. Some of them are optional for generation, some are only needed for
 # special tools. On the lower side, the raw transducer contains all
@@ -592,6 +579,7 @@ include $(top_srcdir)/am-shared/src_disamb-include.am
 include $(top_srcdir)/am-shared/src_alt_ws-include.am
 include $(top_srcdir)/am-shared/src_alt_orth-include.am
 include $(top_srcdir)/am-shared/lookup-include.am
+include $(top_srcdir)/am-shared/xfscript-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

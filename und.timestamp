@@ -1,4 +1,7 @@
-$Rev: 130586 $
+$Rev: 130730 $
+cut on linux does not like unicode chars as delimiters, use awk instead.
+
+r130586:
 Code cleanup - moved target variables related to running xfst tools to the
 xfscript include file, and thereby removing duplicate code.
 

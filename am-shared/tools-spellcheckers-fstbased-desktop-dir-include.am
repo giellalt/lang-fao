@@ -71,7 +71,8 @@ generator-desktopspeller-gt-norm-base.hfst: ../generator-fstspeller-gt-norm.hfst
 
 #### 5. Finally, remove the surface word boundary symbol and do other
 ####    general cleanup:
-%.tmp.hfst: %-tag_weighted.hfst \
+generator-desktopspeller-gt-norm.tmp.hfst: \
+			generator-desktopspeller-gt-norm-tag_weighted.hfst \
 			$(top_builddir)/src/filters/remove-word-boundary.hfst \
 			$(top_builddir)/src/filters/remove-usage-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "\

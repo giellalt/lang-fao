@@ -1,4 +1,8 @@
-$Rev: 130730 $
+$Rev: 130847 $
+One pattern rule had for some reason become ambiguous, and caused strange build
+behavior. Replaced with full filename in one stable case solved the issue.
+
+r130730:
 cut on linux does not like unicode chars as delimiters, use awk instead.
 
 r130586:

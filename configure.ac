@@ -51,7 +51,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 _gtd_core_min_version=0.2.36
 
 ### Required version of the Hfst tools:
-_required_hfst_version=3.8.2
+_required_hfst_version=3.9.2
 
 # Alternate writing system(s) should be listed here using the ISO 15924 code.
 # Multiple alternate WS's should be space separated. For a list of such codes

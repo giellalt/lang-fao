@@ -268,7 +268,7 @@ AC_PATH_PROG([VISLCG3], [vislcg3], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 AC_PATH_PROG([VISLCG3_COMP], [cg-comp], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 
 AS_IF([test "x$VISLCG3" != xno], [
-_gtd_vislcg3_min_version=m4_default([$1], [0.9.8.009406])
+_gtd_vislcg3_min_version=m4_default([$1], [0.9.9.011351])
 AC_MSG_CHECKING([whether vislcg3 is at least $_gtd_vislcg3_min_version])
 _vislcg3_version=$( ${VISLCG3} --version 2>&1 | grep -Eo '@<:@0-9@:>@+\.@<:@0-9.@:>@+' )
 AX_COMPARE_VERSION([$_vislcg3_version], [ge], [$_gtd_vislcg3_min_version],

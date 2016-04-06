@@ -527,47 +527,34 @@ morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
 
 # Copy the raw transducer. This enables language-specific processing of the raw
 # transducer, if required.
-%-raw-gt-desc.xfst: %-raw-gt-desc.tmp.xfst
-	$(AM_V_CP)cp -f $< $@
+define giella_raw_fsts
+%raw-gt-desc.$(1): %raw-gt-desc.tmp.$(1)
+	$$(AM_V_CP)cp -f $$< $$@
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_raw_fsts,$(fst))))
 
-%-raw-gt-desc.foma: %-raw-gt-desc.tmp.foma
-	$(AM_V_CP)cp -f $< $@
+# Default fallback processing for the analysers:
+define giella_default_analysers
+analyser%.$(1): analyser%.tmp.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "\
+		 load stack $$<\n\
+		 $$(INVERT_HFST)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_default_analysers,$(fst))))
 
-%-raw-gt-desc.hfst: %-raw-gt-desc.tmp.hfst
-	$(AM_V_CP)cp -f $< $@
+# Default fallback processing for the generators:
+define giella_default_generators
+generator%.$(1): generator%.tmp.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "\
+		 load stack $$<\n\
+		 $$(INVERT_XFST)$$(INVERT_FOMA)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_default_generators,$(fst))))
 
-#### HFST transducer fallback target:
-#### - inversion is needed FOR THE ANALYSER because the hfst model is upside
-#### down compared to Xerox AT LOOKUP TIME.
-analyser%.hfst: analyser%.tmp.hfst
-	$(AM_V_INVERT)$(HFST_INVERT) -i $< -o $@
-
-generator%.hfst: generator%.tmp.hfst
-	$(AM_V_CP)cp -f $< $@
-
-#### Xerox transducer fallback target:
-#### - inversion is needed in the final step for the GENERATOR.
-analyser%.xfst: analyser%.tmp.xfst
-	$(AM_V_CP)cp -f $< $@
-
-generator%.xfst: generator%.tmp.xfst
-	$(AM_V_XFST)$(PRINTF) "\
-		 load stack $<\n\
-		 invert net\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
-#### Foma transducer fallback target:
-#### - inversion is needed in the final step for the GENERATOR.
-analyser%.foma: analyser%.tmp.foma
-	$(AM_V_CP)cp -f $< $@
-
-generator%.foma: generator%.tmp.foma 
-	$(AM_V_FOMA)$(PRINTF) "\
-		 load stack $<\n\
-		 invert net\n\
-		 save stack $@\n\
-		 quit\n" | $(FOMA) $(VERBOSITY)
 
 # cleaning
 clean-local:

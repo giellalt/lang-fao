@@ -120,8 +120,19 @@ else
 fi
 ], [gt_prog_hfst=no])
 AM_CONDITIONAL([CAN_HFST],      [test "x$gt_prog_hfst" = "xyes"])
-AM_CONDITIONAL([CAN_HFST_FOMA], [test "x$HFST_FOMA" != "xfalse"])
-AM_CONDITIONAL([CAN_HFST_XFST], [test "x$HFST_XFST" != "xfalse"])
+
+# You can specify the fst transducer format (=backend) for hfst
+# - default is 'openfst-tropical'
+AC_ARG_WITH([backend-format],
+              [AS_HELP_STRING([--with-backend-format],
+                              [enable the hfst backend format specified (one of: sfst, foma, openfst-tropical, openfst-log) @<:@default=sfst@:>@])],
+              [enable_backend=$enableval],
+              [enable_backend=sfst])
+AM_CONDITIONAL([WITH_OFST_TROPICAL], [test "x$enable_backend" == "xopenfst-tropical"])
+AM_CONDITIONAL([WITH_OFST_LOG],      [test "x$enable_backend" == "xopenfst-log"])
+AM_CONDITIONAL([WITH_SFST],          [test "x$enable_backend" == "xsfst"])
+AM_CONDITIONAL([WITH_FOMA],          [test "x$enable_backend" == "xfoma"])
+
 ]) # gt_PROG_HFST
 
 # vim: set ft=config:

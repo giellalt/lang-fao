@@ -1,0 +1,23 @@
+## Include this file in top-level srcdir to compile FSTs
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+if WITH_OFST_TROPICAL
+HFST_FORMAT= --format=openfst-tropical
+HFST_OLFORMAT= --format=optimized-lookup-weighted
+endif # WITH_OFST_TROPICAL
+
+if WITH_OFST_LOG
+HFST_FORMAT= --format=openfst-log
+HFST_OLFORMAT= --format=optimized-lookup-weighted
+endif # WITH_OFST_LOG
+
+if WITH_SFST
+HFST_FORMAT= --format=sfst
+HFST_OLFORMAT= --format=optimized-lookup-unweighted
+endif # WITH_SFST
+
+if WITH_FOMA
+HFST_FORMAT= --format=foma
+HFST_OLFORMAT= --format=optimized-lookup-unweighted
+endif # WITH_FOMA

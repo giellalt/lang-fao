@@ -20,8 +20,8 @@
 # By default, and for Xerox compatibility, all regexes are semicolon separated
 # (that is the '-S' flag):
 .regex.hfst:
-	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(HFSTFLAGS) $(HFST_REGEXP2FST_FLAGS) \
-		$(VERBOSITY) -S $< -o $@
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
+		$(HFST_REGEXP2FST_FLAGS) $(MORE_VERBOSITY) -S $< -o $@
 
 ####### Xerox build rules: #######
 

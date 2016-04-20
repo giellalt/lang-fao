@@ -21,8 +21,8 @@
 
 ####### HFST build rules: ########
 %.hfst: %.lexc
-	$(AM_V_HLEXC)$(HFST_LEXC) $(VERBOSITY) $(HFST_LEXC_FLAGS) \
-		-f openfst-tropical -o $@ $^
+	$(AM_V_HLEXC)$(HFST_LEXC) \
+		$(MORE_VERBOSITY) $(HFST_FORMAT) $(HFST_LEXC_FLAGS) -o $@ $^
 
 ####### Xerox build rules: #######
 %.xfst: %.lexc

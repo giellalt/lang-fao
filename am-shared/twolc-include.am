@@ -24,8 +24,8 @@
 HFSTTWOLFLAGS=--resolve
 
 .twolc.hfst:
-	$(AM_V_HTWOLC)$(HFST_TWOLC) $(VERBOSITY) \
-			$(HFSTFLAGS) $(HFSTTWOLCFLAGS) -i $< -o $@
+	$(AM_V_HTWOLC)$(HFST_TWOLC) $(MORE_VERBOSITY) \
+			$(HFSTFLAGS) $(HFSTTWOLCFLAGS) $(HFST_FORMAT) -i $< -o $@
 
 ####### Xerox build rules: #######
 .twolc.xfst:

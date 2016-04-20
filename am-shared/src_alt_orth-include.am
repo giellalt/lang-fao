@@ -70,7 +70,7 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-orig_lang-tags.%            \
 					orthography/spellrelax.$(1).compose.%      \
 					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
-	$$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-adv_comp-tags.$$*\"              \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
@@ -109,7 +109,7 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-Orth_IPA-strings.%          \
 					filters/remove-orig_lang-tags.%            \
 					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
-	$$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-adv_comp-tags.$$*\"              \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-variant-tags.$$*\"               \
@@ -152,7 +152,7 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/remove-orig_lang-tags.%            \
 					filters/remove-usage-tags.%                \
 					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
-	$$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.$$*\"   \
 			.o. @\"filters/make-optional-homonymy-tags.$$*\"       \
 			.o. @\"filters/make-optional-hyph-tags.$$*\"           \
@@ -198,7 +198,7 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/remove-orig_lang-tags.%            \
 					filters/remove-error-strings.%             \
 					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
-	$$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.$$*\"   \
 			.o. @\"filters/make-optional-homonymy-tags.$$*\"       \
 			.o. @\"filters/make-optional-hyph-tags.$$*\"           \

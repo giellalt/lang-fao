@@ -73,7 +73,7 @@ downcase-derived_proper-strings.hfstscript: \
 downcase-derived_proper-strings.hfst: \
 		downcase-derived_proper-strings.hfstscript
 	$(AM_V_HXFST)printf "save stack $@\nquit\n" | cat $< - \
-		| $(HFST_XFST) -p $(VERBOSITY)
+		| $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
 
 ####### Xerox build rules: #######
 downcase-derived_proper-strings.xfst: \

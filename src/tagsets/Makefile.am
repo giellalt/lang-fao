@@ -23,6 +23,11 @@
 GT_TAGSET_RGX_SRCS=
 GT_TAGSET_RELABEL_SRCS=
 
+####### Other targets: ###########
+# The "clean" target:
+clean-local:
+	-rm -f *.hfst *.xfst *.foma
+
 ####### Includes: ########
 
 include $(top_srcdir)/am-shared/src-tagsets-dir-include.am

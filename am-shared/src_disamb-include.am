@@ -20,7 +20,7 @@ analyser-disamb-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
-	$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-dialect-tags.$*\"             \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-orig_lang-tags.$*\"           \

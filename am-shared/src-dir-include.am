@@ -24,7 +24,13 @@
 
 ####### Automake targets: ########
 
+# The following two variables are used to force Make to choose one of two
+# alternative paths to reach the same end target for pattern rules, where the
+# wrong path builds on hfstol files all the way. This is overridden by
+# specifying the non-hfstol intermediate files as non-intalling targets.
 GT_RAW=
+GT_ANALYSERS_NO_INSTALL=
+
 ##### BEGIN Hfst target list #####
 if CAN_HFST
 
@@ -39,8 +45,8 @@ if WANT_MORPHOLOGY
 GT_ANALYSERS+=analyser-gt-desc.hfstol \
 			  analyser-gt-norm.hfstol \
 			  analyser-disamb-gt-desc.hfstol
-GT_ANALYSERS_NO_INSTALL=analyser-gt-desc.hfst \
-                        analyser-disamb-gt-desc.hfst
+GT_ANALYSERS_NO_INSTALL+=analyser-gt-desc.hfst \
+                         analyser-disamb-gt-desc.hfst
 endif # WANT_MORPHOLOGY
 
 if WANT_GENERATION
@@ -540,6 +546,12 @@ define giella_raw_fsts
 	$$(AM_V_CP)cp -f $$< $$@
 endef
 $(foreach fst,hfst xfst foma,$(eval $(call giella_raw_fsts,$(fst))))
+
+define giella_raw_error_fsts
+%raw-gt-error.$(1): %raw-gt-error.tmp.$(1)
+	$$(AM_V_CP)cp -f $$< $$@
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_raw_error_fsts,$(fst))))
 
 # Default fallback processing for the analysers:
 define giella_default_analysers

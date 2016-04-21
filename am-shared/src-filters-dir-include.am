@@ -16,7 +16,7 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ####### Compilation variables: #######
-HFST_REGEXP2FST_FLAGS="--xerox-composition=ON"
+HFST_REGEXP2FST_FLAGS= --xerox-composition=ON
 
 ####### Source file defs: ########
 # 1) GTD Core regex files:
@@ -354,14 +354,22 @@ reorder-%-tags.regex: %-tags.txt
 %.regex: $(GTCORE)/giella-shared/common/src/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 
+# Workaround hack for bug in the Sfst and Foma backends:
+reorder-semantic-tags.hfst: reorder-semantic-tags.regex
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(HFST_FLAGS) --format=openfst-tropical \
+		$(HFST_REGEXP2FST_FLAGS) $(MORE_VERBOSITY) -S $< \
+		| $(HFST_FST2FST) $(MORE_VERBOSITY) $(HFST_FORMAT) \
+		-o $@
+
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.hfst *.xfst *.foma *.txt $(GIELLA_FILTER_CORE_REGEX_SRCS)
 
 # Include files for the actual build instructions and for verbosity control:
+include $(top_srcdir)/am-shared/lexc-include.am
 include $(top_srcdir)/am-shared/regex-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
-include $(top_srcdir)/am-shared/lexc-include.am
+include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

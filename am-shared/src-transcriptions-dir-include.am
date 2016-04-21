@@ -43,71 +43,54 @@ if CAN_XFST
 GT_TRANSCRIPTORS+=$(addsuffix .xfst,$(DIGIT2TXT))
 GT_TRANSCRIPTORS+=$(addsuffix .xfst,$(TXT2DIGIT))
 endif # CAN_XFST
+
+if CAN_FOMA
+GT_TRANSCRIPTORS+=$(addsuffix .foma,$(DIGIT2TXT))
+GT_TRANSCRIPTORS+=$(addsuffix .foma,$(TXT2DIGIT))
+endif # CAN_FOMA
 endif # WANT_TRANSCRIPTORS
 
 noinst_DATA=$(GT_TRANSCRIPTORS)
 
 # The number-clock-date2text & inverse conversion transducers:
-transcriptor-%-digit2text.filtered.hfst: \
-					transcriptor-%-digit2text.hfst \
-					../filters/remove-NA-strings.hfst \
-					../filters/remove-NG-strings.hfst \
-					../filters/remove-usage-tags.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
-			    @\"../filters/remove-usage-tags.hfst\" \
-			.o. @\"../filters/remove-NA-strings.hfst\" \
-			.o. @\"../filters/remove-NG-strings.hfst\" \
-			.o. @\"$<\" \
-			.o. @\"../filters/remove-NG-strings.hfst\" \
-			.o. @\"../filters/remove-usage-tags.hfst\".i \
-			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
 
-transcriptor-%-digit2text.filtered.xfst: \
-					transcriptor-%-digit2text.xfst \
-					../filters/remove-NA-strings.xfst \
-					../filters/remove-NG-strings.xfst \
-					../filters/remove-usage-tags.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-			    @\"../filters/remove-usage-tags.xfst\" \
-			.o. @\"../filters/remove-NA-strings.xfst\" \
-			.o. @\"../filters/remove-NG-strings.xfst\" \
-			.o. @\"$<\" \
-			.o. @\"../filters/remove-NG-strings.xfst\" \
-			.o. @\"../filters/remove-usage-tags.xfst\".i \
+# The digit-to-text transducers are built here:
+define digit2txt_transcriptors
+transcriptor-%-digit2text.filtered.$(1): \
+					transcriptor-%-digit2text.$(1) \
+					../filters/remove-NA-strings.$(1) \
+					../filters/remove-NG-strings.$(1) \
+					../filters/remove-usage-tags.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+			    @\"../filters/remove-usage-tags.$(1)\" \
+			.o. @\"../filters/remove-NA-strings.$(1)\" \
+			.o. @\"../filters/remove-NG-strings.$(1)\" \
+			.o. @\"$$<\" \
+			.o. @\"../filters/remove-NG-strings.$(1)\" \
+			.o. @\"../filters/remove-usage-tags.$(1)\".i \
 			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call digit2txt_transcriptors,$(fst))))
 
 # The text-to-digit transducers are built here:
-transcriptor-%-text2digit.filtered.hfst: \
-					transcriptor-%-digit2text.hfst \
-					../filters/remove-usage-tags.hfst \
-					../orthography/spellrelax.compose.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
-			    @\"../filters/remove-usage-tags.hfst\" \
-			.o. @\"$<\" \
-			.o. @\"../filters/remove-usage-tags.hfst\".i \
-			.o. @\"../orthography/spellrelax.compose.hfst\" \
-			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
-		| $(HFST_INVERT) $(HFST_FLAGS) \
-		> $@
-
-transcriptor-%-text2digit.filtered.xfst: \
-					transcriptor-%-digit2text.xfst \
-					../filters/remove-usage-tags.xfst \
-					../orthography/spellrelax.compose.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-			    @\"../filters/remove-usage-tags.xfst\" \
-			.o. @\"$<\" \
-			.o. @\"../filters/remove-usage-tags.xfst\".i \
-			.o. @\"../orthography/spellrelax.compose.xfst\" \
+define txt2digit_transcriptors
+transcriptor-%-text2digit.filtered.$(1): \
+					transcriptor-%-digit2text.$(1) \
+					../filters/remove-usage-tags.$(1) \
+					../orthography/spellrelax.compose.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+			    @\"../filters/remove-usage-tags.$(1)\" \
+			.o. @\"$$<\" \
+			.o. @\"../filters/remove-usage-tags.$(1)\".i \
+			.o. @\"../orthography/spellrelax.compose.$(1)\" \
 			;\n\
 		 invert net\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call txt2digit_transcriptors,$(fst))))
 
 ####### Other targets: ###########
 clean-local:
@@ -115,6 +98,8 @@ clean-local:
 
 include $(top_srcdir)/am-shared/lexc-include.am
 include $(top_srcdir)/am-shared/lookup-include.am
+include $(top_srcdir)/am-shared/xfscript-include.am
+include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

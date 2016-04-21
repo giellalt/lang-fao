@@ -125,24 +125,28 @@ if WANT_REVERSED_INTERSECT
 # Do this is reversed intersect is enabled:
 generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.rev.hfst \
 					 phonology/$(GTLANG)-phon.rev.hfst
-	$(AM_V_INTRSCT)$(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
+	$(AM_V_INTRSCT)\
+		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
 			-2 phonology/$(GTLANG)-phon.rev.hfst \
 		| $(HFST_REVERSE) \
-		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) -o $@
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-o $@
 
 else
 # Otherwise do this:
 generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.hfst \
 					 phonology/$(GTLANG)-phon.compose.hfst
-	$(AM_V_INTRSCT)$(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
+	$(AM_V_INTRSCT)\
+		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
 			-2 phonology/$(GTLANG)-phon.compose.hfst \
-		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) -o $@
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-o $@
 endif # WANT_REVERSED_INTERSECT
 
 # XEROX
@@ -398,9 +402,9 @@ generator-gt-norm.tmp.%: analyser-raw-gt-desc.%            \
 # HFST:
 # Standard descriptive
 analyser-%-desc.hfst: analyser-gt-desc.hfst tagsets/%.relabel
-	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
-		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
-		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) $(HFST_FORMAT) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFST_FLAGS) $(HFST_FORMAT) \
+		  -F $(srcdir)/tagsets/$*.relabel \
 		-o $@
 
 # Relabeling using compiled regex:
@@ -409,14 +413,15 @@ analyser-%-desc.hfst: analyser-gt-desc.hfst tagsets/%.hfst
 			    @\"$<\" \
 			.o. @\"tagsets/$*.hfst\".i \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
+			-S --xerox-composition=ON \
+		-o $@
 
 # Standard normative
 analyser-%-norm.hfst: analyser-gt-norm.hfst tagsets/%.relabel
-	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
-		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
-		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) $(HFST_FORMAT) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFST_FLAGS) $(HFST_FORMAT) \
+			-F $(srcdir)/tagsets/$*.relabel \
 		-o $@
 
 # Relabeling using compiled regex:
@@ -425,15 +430,16 @@ analyser-%-norm.hfst: analyser-gt-norm.hfst tagsets/%.hfst
 			    @\"$<\" \
 			.o. @\"tagsets/$*.hfst\".i \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
+			-S --xerox-composition=ON \
+		-o $@
 
 # Create tagset variants of *generators*
 # Standard descriptive
 generator-%-desc.hfst: generator-gt-desc.hfst tagsets/%.relabel
-	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
-		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
-		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) $(HFST_FORMAT) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFST_FLAGS) $(HFST_FORMAT) \
+			-F $(srcdir)/tagsets/$*.relabel \
 		-o $@
 
 # Relabeling using compiled regex:
@@ -442,14 +448,15 @@ generator-%-desc.hfst: generator-gt-desc.hfst tagsets/%.hfst
 			    @\"tagsets/$*.hfst\" \
 			.o. @\"$<\" \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
+			-S --xerox-composition=ON \
+		-o $@
 
 # Standard normative
 generator-%-norm.hfst: generator-gt-norm.hfst tagsets/%.relabel
-	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
-		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
-		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) $(HFST_FORMAT) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFST_FLAGS) $(HFST_FORMAT) \
+			-F $(srcdir)/tagsets/$*.relabel \
 		-o $@
 
 # Relabeling using compiled regex:
@@ -458,8 +465,9 @@ generator-%-norm.hfst: generator-gt-norm.hfst tagsets/%.hfst
 			    @\"tagsets/$*.hfst\" \
 			.o. @\"$<\" \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
-		> $@
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
+			-S --xerox-composition=ON \
+		-o $@
 
 # XEROX/XFST:
 # Standard descriptive
@@ -502,7 +510,7 @@ generator-%-norm.xfst: generator-gt-norm.xfst tagsets/%.xfst
 
 # lemmatization is a special case of tagset variant
 lemmatize.default.hfst: analyser-gt-desc.hfst tagsets/lemmatize.relabel
-	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) \
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFST_FLAGS) $(HFST_FORMAT) \
 		-F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
 
 # morpher is a morph segmenting variant: taloautoissani -> talo#auto>i>ssa>ni
@@ -520,7 +528,7 @@ morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
 			.o. @\"filters/remove-infl_deriv-borders.hfst\" \
 			.o. @\"filters/remove-word-boundary.hfst\"  ].i \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) -S --xerox-composition=ON \
 		> $@
 
 ####### Other targets: ###########
@@ -567,6 +575,7 @@ include $(top_srcdir)/am-shared/src_alt_ws-include.am
 include $(top_srcdir)/am-shared/src_alt_orth-include.am
 include $(top_srcdir)/am-shared/lookup-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
+include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

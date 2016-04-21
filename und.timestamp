@@ -1,4 +1,9 @@
-$Rev: 132700 $
+$Rev: 132713 $
+Enabled the new option to specify transducer format when compiling with Hfst,
+to speed up compilation time by using an unweighted format (ie sfst or foma).
+Default is still openfst-tropical, until further testing is done.
+
+r132700:
 Further preparations for enabling the new option to choose the backend format
 for fst's, for compilation speed improvements in cases where weight is not used:
 generalisations and corrections of build instructions.

@@ -61,6 +61,7 @@ endif # CAN_XFST
 # General build rules included from here:#
 
 include $(top_srcdir)/am-shared/regex-include.am
+include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

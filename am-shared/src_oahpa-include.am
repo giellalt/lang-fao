@@ -13,28 +13,42 @@ if CAN_HFST
 GT_ANALYSERS+=analyser-oahpa-gt-norm.hfstol
 GT_GENERATORS+=generator-oahpa-gt-norm.hfstol \
 					$(DIALECT_TARGETS_HFST)
+GT_ANALYSERS_NO_INSTALL+=analyser-oahpa-gt-norm.hfst \
+						 generator-oahpa-gt-norm.hfst
 endif # CAN_HFST
+
 if CAN_XFST
 GT_ANALYSERS+=analyser-oahpa-gt-norm.xfst
 GT_GENERATORS+=generator-oahpa-gt-norm.xfst \
 					$(DIALECT_TARGETS_XFST)
 endif # CAN_XFST
+
+if CAN_FOMA
+GT_ANALYSERS+=analyser-oahpa-gt-norm.foma
+GT_GENERATORS+=generator-oahpa-gt-norm.foma \
+					$(DIALECT_TARGETS_FOMA)
+endif # CAN_FOMA
 endif # WANT_OAHPA
 
 # Define the dialect targets using list of dialects defined in configure.ac:
 if HAVE_DIALECTS
 DIALECT_TARGETS=$(addprefix generator-oahpa-gt-norm-dial_,$(DIALECTS))
-DIALECT_TARGETS_XFST=$(addsuffix .xfst,$(DIALECT_TARGETS))
 DIALECT_TARGETS_HFST=$(addsuffix .hfstol,$(DIALECT_TARGETS))
+DIALECT_TARGETS_XFST=$(addsuffix .xfst,$(DIALECT_TARGETS))
+DIALECT_TARGETS_FOMA=$(addsuffix .foma,$(DIALECT_TARGETS))
 endif # HAVE_DIALECTS
 
 if WANT_L2
 if CAN_HFST
 GT_ANALYSERS+=analyser-oahpa-gt-error.hfstol
+GT_RAW+=analyser-raw-gt-error.hfst
 endif # CAN_HFST
 if CAN_XFST
 GT_ANALYSERS+=analyser-oahpa-gt-error.xfst
 endif # CAN_XFST
+if CAN_FOMA
+GT_ANALYSERS+=analyser-oahpa-gt-error.foma
+endif # CAN_FOMA
 endif # WANT_L2
 
 if WANT_DOWNCASEERROR
@@ -44,6 +58,9 @@ endif # CAN_HFST
 if CAN_XFST
 GT_ANALYSERS+=analyser-oahpa-gt-downcaseerror.xfst
 endif # CAN_XFST
+if CAN_FOMA
+GT_ANALYSERS+=analyser-oahpa-gt-downcaseerror.foma
+endif # CAN_FOMA
 endif # WANT_DOWNCASEERROR
 
 ##################################################
@@ -214,7 +231,7 @@ $(foreach fst,hfst xfst foma,$(eval $(call dial_oahpa_generators,$(fst))))
 generator-raw-gt-%.tmp1.hfst: morphology/lexicon-%.hfst \
 					 phonology/$(GTLANG)-phon-%.compose.hfst
 	$(AM_V_INTRSCT)$(HFST_COMPOSE_INTERSECT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		-1 morphology/lexicon-error.hfst \
+		-1 morphology/lexicon-$*.hfst \
 		-2 phonology/$(GTLANG)-phon-$*.compose.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
@@ -223,7 +240,7 @@ generator-raw-gt-%.tmp1.hfst: morphology/lexicon-%.hfst \
 generator-raw-gt-%.tmp1.hfst: morphology/lexicon-%.hfst \
 					 phonology/$(GTLANG)-phon.compose.hfst
 	$(AM_V_INTRSCT)$(HFST_COMPOSE_INTERSECT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		-1 morphology/lexicon-error.hfst \
+		-1 morphology/lexicon-$*.hfst \
 		-2 phonology/$(GTLANG)-phon.compose.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
@@ -231,13 +248,13 @@ generator-raw-gt-%.tmp1.hfst: morphology/lexicon-%.hfst \
 analyser-raw-gt-%.tmp1.xfst: morphology/lexicon-%.xfst \
 			 phonology/$(GTLANG)-phon-%.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/lexicon-error.xfst\nread-rules phonology/$(GTLANG)-phon-$*.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/lexicon-$*.xfst\nread-rules phonology/$(GTLANG)-phon-$*.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		| $(LEXC) $(VERBOSITY)
 
 analyser-raw-gt-%.tmp1.xfst: morphology/lexicon-%.xfst \
 			 phonology/$(GTLANG)-phon.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/lexicon-error.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/lexicon-$*.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		| $(LEXC) $(VERBOSITY)
 
 # FOMA
@@ -279,6 +296,11 @@ generator-raw-gt-error.tmp.%: generator-raw-gt-L2.tmp1.%  \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
+
+# Just cp the generator-*.hfst to the corresponding analyser, to make it
+# possible to share build code between Hfst and Xerox/Foma:
+analyser-raw-gt-error.hfst: generator-raw-gt-error.hfst
+	$(AM_V_CP)cp $< $@
 
 # Xerox & Foma make analysers (wrt lookup):
 analyser-raw-gt-error.tmp.%: analyser-raw-gt-L2.tmp1.%  \

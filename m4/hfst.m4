@@ -126,12 +126,12 @@ AM_CONDITIONAL([CAN_HFST],      [test "x$gt_prog_hfst" = "xyes"])
 AC_ARG_WITH([backend-format],
               [AS_HELP_STRING([--with-backend-format],
                               [enable the hfst backend format specified (one of: sfst, foma, openfst-tropical, openfst-log) @<:@default=openfst-tropical@:>@])],
-              [enable_backend=$enableval],
-              [enable_backend=openfst-tropical])
-AM_CONDITIONAL([WITH_OFST_TROPICAL], [test "x$enable_backend" == "xopenfst-tropical"])
-AM_CONDITIONAL([WITH_OFST_LOG],      [test "x$enable_backend" == "xopenfst-log"])
-AM_CONDITIONAL([WITH_SFST],          [test "x$enable_backend" == "xsfst"])
-AM_CONDITIONAL([WITH_FOMA],          [test "x$enable_backend" == "xfoma"])
+              [with_backend=$withval],
+              [with_backend=openfst-tropical])
+AM_CONDITIONAL([WITH_OFST_TROPICAL], [test "$with_backend" == openfst-tropical])
+AM_CONDITIONAL([WITH_OFST_LOG],      [test "$with_backend" == openfst-log])
+AM_CONDITIONAL([WITH_SFST],          [test "$with_backend" == sfst])
+AM_CONDITIONAL([WITH_FOMA],          [test "$with_backend" == foma])
 
 ]) # gt_PROG_HFST
 

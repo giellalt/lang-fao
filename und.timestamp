@@ -1,4 +1,9 @@
-$Rev: 132747 $
+$Rev: 132760 $
+Now also Oahpa transducers are ready to be built with a specified backend format
+when building using hfst. Also cleaned up the code, removed 300+ lines of code,
+and added support for builds using Foma.
+
+r132747:
 A number of corrections to the previous commit for issues missed during first
 round of testing. Now specifying an alternative backend format works correctly
 for all standard analysers and generators except for Oahpa-fst's.

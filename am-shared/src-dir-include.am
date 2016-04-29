@@ -179,6 +179,23 @@ analyser-raw-gt-desc.tmp1.foma: morphology/lexicon.foma \
 # get local processing to produce the final raw file:
 ### HFST - the raw files are generators, thus we need a special target (but
 ###        we try to keep the code as identical as possible, thus pattern rule):
+# Variant a) - with a language-specific tag reordering script applied:
+generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.% \
+					filters/reorder-tags.$(GTLANG).% \
+					filters/reorder-semantic-tags.%       \
+					filters/reorder-subpos-tags.%         \
+					filters/remove-mwe-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/reorder-tags.$(GTLANG).$*  \
+			.o. @\"filters/reorder-subpos-tags.$*\"   \
+			.o. @\"filters/reorder-semantic-tags.$*\" \
+			.o. @\"filters/remove-mwe-tags.$*\"       \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# Variant b) - without a language-specific tag reordering script:
 generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.% \
 					filters/reorder-semantic-tags.%       \
 					filters/reorder-subpos-tags.%         \
@@ -193,6 +210,23 @@ generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.% \
 		 quit\n" | $(XFST_TOOL)
 
 #### Xerox & FOMA - no special treatment:
+# Variant a) - with a language-specific tag reordering script applied:
+analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.% \
+					filters/reorder-tags.$(GTLANG).% \
+					filters/reorder-semantic-tags.%       \
+					filters/reorder-subpos-tags.%         \
+					filters/remove-mwe-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/reorder-tags.$(GTLANG).$*  \
+			.o. @\"filters/reorder-subpos-tags.$*\"   \
+			.o. @\"filters/reorder-semantic-tags.$*\" \
+			.o. @\"filters/remove-mwe-tags.$*\"       \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# Variant b) - without a language-specific tag reordering script:
 analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.% \
 					filters/reorder-semantic-tags.%     \
 					filters/reorder-subpos-tags.%       \
@@ -206,8 +240,18 @@ analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+# Target to build glossing raw analysers, ie one where all tags are in the
+# position specified in lexc:
+# Hfst:
+generator-raw-gt-glossing.tmp.%: generator-raw-gt-desc.tmp1.%
+	$(AM_V_CP)cp $< $@
+
+# Xerox/Foma:
+analyser-raw-gt-glossing.tmp.%: analyser-raw-gt-desc.tmp1.%
+	$(AM_V_CP)cp $< $@
+
 # Target required for the pattern rules below to work for HFST builds:
-analyser-raw-gt-desc.hfst: generator-raw-gt-desc.hfst
+analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 	$(AM_V_CP)cp $< $@
 
 # To get a transducer usable for a certain application, the raw transducer needs
@@ -267,6 +311,95 @@ analyser-gt-desc.tmp.%: analyser-raw-gt-desc.%                \
 
 # This is the default, descriptive generating transducer.
 generator-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
+					filters/make-optional-transitivity-tags.% \
+					filters/make-optional-homonymy-tags.%     \
+					filters/make-optional-hyph-tags.%         \
+					filters/make-optional-variant-tags.%      \
+					filters/make-optional-semantic-tags.%     \
+					filters/make-optional-error-tags.%        \
+					filters/make-optional-adv_comp-tags.%     \
+					filters/remove-area-tags.%                \
+					filters/remove-dialect-tags.%             \
+					filters/remove-hyphenation-marks.%        \
+					filters/remove-infl_deriv-borders.%       \
+					filters/remove-word-boundary.%            \
+					filters/remove-norm-comp-tags.%           \
+					filters/remove-number-string-tags.%       \
+					filters/remove-orthography-tags.%         \
+					filters/remove-Orth_IPA-strings.%         \
+					filters/remove-orig_lang-tags.%           \
+					filters/remove-usage-tags.%               \
+					orthography/downcase-derived_proper-strings.compose.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/make-optional-transitivity-tags.$*\" \
+			.o. @\"filters/make-optional-homonymy-tags.$*\"     \
+			.o. @\"filters/make-optional-hyph-tags.$*\"         \
+			.o. @\"filters/make-optional-variant-tags.$*\"      \
+			.o. @\"filters/make-optional-semantic-tags.$*\"     \
+			.o. @\"filters/make-optional-error-tags.$*\"        \
+			.o. @\"filters/make-optional-adv_comp-tags.$*\"     \
+			.o. @\"filters/remove-area-tags.$*\"                \
+			.o. @\"filters/remove-dialect-tags.$*\"             \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-number-string-tags.$*\"       \
+			.o. @\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/remove-orig_lang-tags.$*\"           \
+			.o. @\"filters/remove-orthography-tags.$*\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
+			.o. @\"$<\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
+			.o. @\"filters/remove-hyphenation-marks.$*\"        \
+			.o. @\"filters/remove-infl_deriv-borders.$*\"       \
+			.o. @\"filters/remove-word-boundary.$*\"            \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+analyser-gt-glossing.tmp.%: analyser-raw-gt-glossing.%        \
+					filters/remove-adv_comp-tags.%            \
+					filters/remove-area-tags.%                \
+					filters/remove-dialect-tags.%             \
+					filters/remove-norm-comp-tags.%           \
+					filters/remove-number-string-tags.%       \
+					filters/remove-usage-tags.%               \
+					filters/remove-semantic-tags.%            \
+					filters/remove-hyphenation-marks.%        \
+					filters/remove-infl_deriv-borders.%       \
+					filters/remove-word-boundary.%            \
+					filters/remove-orthography-tags.%         \
+					filters/remove-Orth_IPA-strings.%         \
+					filters/remove-orig_lang-tags.%           \
+					orthography/inituppercase.compose.%       \
+					orthography/spellrelax.compose.%          \
+					orthography/downcase-derived_proper-strings.compose.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			    @\"filters/remove-adv_comp-tags.$*\"            \
+			.o. @\"filters/remove-area-tags.$*\"                \
+			.o. @\"filters/remove-dialect-tags.$*\"             \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-number-string-tags.$*\"       \
+			.o. @\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/remove-semantic-tags.$*\"            \
+			.o. @\"filters/remove-orig_lang-tags.$*\"           \
+			.o. @\"filters/remove-orthography-tags.$*\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
+			.o. @\"$<\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
+			.o. @\"filters/remove-hyphenation-marks.$*\"        \
+			.o. @\"filters/remove-infl_deriv-borders.$*\"       \
+			.o. @\"filters/remove-word-boundary.$*\"            \
+			; \n\
+			define fst \n\
+			set flag-is-epsilon ON\n\
+			read regex fst \
+			.o. @\"orthography/inituppercase.compose.$*\"       \
+			.o. @\"orthography/spellrelax.compose.$*\"          \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# This is the default, descriptive generating transducer.
+generator-gt-glossing.tmp.%: analyser-raw-gt-glossing.%       \
 					filters/make-optional-transitivity-tags.% \
 					filters/make-optional-homonymy-tags.%     \
 					filters/make-optional-hyph-tags.%         \

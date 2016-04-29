@@ -1,4 +1,11 @@
-$Rev: 132774 $
+$Rev: 133243 $
+Added support for building glossing analysers, where the analysis tags are NOT
+shifted around to canonical positions. The idea is that one keeps tags and
+morphs together in the lexc code, and that the analyser output thus will
+reflect the order of the surface morphs. If one wants to build such analysers,
+one has to specify the final analyser filename in src/Makefile.am.
+
+r132774:
 Corrections to make the Oahpa builds work, and also to properly build with foma.
 
 r132767:

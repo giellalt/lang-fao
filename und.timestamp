@@ -1,4 +1,9 @@
-$Rev: 133243 $
+$Rev: 133254 $
+Added support for specifying backend fst format also for (parts of the) apertium
+fst's. One step further to speed up compilation by specifying e.g. sfst as the
+backend format. The implementation is a bit hacky, but will have to do for now.
+
+r133243:
 Added support for building glossing analysers, where the analysis tags are NOT
 shifted around to canonical positions. The idea is that one keeps tags and
 morphs together in the lexc code, and that the analyser output thus will

@@ -1,4 +1,7 @@
-$Rev: 133254 $
+$Rev: 133325 $
+Generalised hack to force make to go via hfst instead of directly to hfstol.
+
+r133254:
 Added support for specifying backend fst format also for (parts of the) apertium
 fst's. One step further to speed up compilation by specifying e.g. sfst as the
 backend format. The implementation is a bit hacky, but will have to do for now.

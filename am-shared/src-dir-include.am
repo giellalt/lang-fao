@@ -29,7 +29,11 @@
 # wrong path builds on hfstol files all the way. This is overridden by
 # specifying the non-hfstol intermediate files as non-intalling targets.
 GT_RAW=
-GT_ANALYSERS_NO_INSTALL=
+
+# Variable to hold intermediate *.hfst targets to force make to go via them
+# before building *.hfstol target:
+GT_FSTs_NO_INSTALL=$(subst hfstol,hfst,$(filter %.hfstol, \
+		$(GT_ANALYSERS) $(GT_GENERATORS)))
 
 ##### BEGIN Hfst target list #####
 if CAN_HFST
@@ -45,8 +49,6 @@ if WANT_MORPHOLOGY
 GT_ANALYSERS+=analyser-gt-desc.hfstol \
 			  analyser-gt-norm.hfstol \
 			  analyser-disamb-gt-desc.hfstol
-GT_ANALYSERS_NO_INSTALL+=analyser-gt-desc.hfst \
-                         analyser-disamb-gt-desc.hfst
 endif # WANT_MORPHOLOGY
 
 if WANT_GENERATION
@@ -106,7 +108,7 @@ hfstdata_DATA=$(GT_ANALYSERS)       \
 			  $(ALT_ORTH_GENERATORS)
 
 noinst_DATA=$(GT_RAW)              \
-			$(GT_ANALYSERS_NO_INSTALL)
+			$(GT_FSTs_NO_INSTALL)
 
 ##################################################
 ######## Build rules for Xerox and HFST: #########

@@ -13,8 +13,6 @@ if CAN_HFST
 GT_ANALYSERS+=analyser-oahpa-gt-norm.hfstol
 GT_GENERATORS+=generator-oahpa-gt-norm.hfstol \
 					$(DIALECT_TARGETS_HFST)
-GT_ANALYSERS_NO_INSTALL+=analyser-oahpa-gt-norm.hfst \
-						 generator-oahpa-gt-norm.hfst
 endif # CAN_HFST
 
 if CAN_XFST

@@ -49,6 +49,10 @@ if WANT_MORPHOLOGY
 GT_ANALYSERS+=analyser-gt-desc.hfstol \
 			  analyser-gt-norm.hfstol \
 			  analyser-disamb-gt-desc.hfstol
+
+if WANT_GRAMCHECK
+GT_ANALYSERS += analyser-gramcheck-gt-desc.hfstol
+endif # WANT_GRAMCHECK
 endif # WANT_MORPHOLOGY
 
 if WANT_GENERATION

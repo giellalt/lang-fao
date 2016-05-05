@@ -1,4 +1,10 @@
-$Rev: 133451 $
+$Rev: 133537 $
+Added initial support for hfst-based tokenisers, built on generalisations of
+Kevin's work. They are built using the hfst-tool hfst-pmatch2fst, which is the
+Hfst implementation of the pmatch tool from Xerox. Supports a regular
+tokeniser, and one targeted at grammar checking.
+
+r133451:
 Corrected errors in the makefile that stopped dictionary fst builds for
 languages with alternative orthographies.
 

@@ -28,22 +28,28 @@ GENERATOR=generator-gt-desc.xfst
 else
 if CAN_HFST
 GENERATOR=generator-gt-desc.hfstol
-
-# Only build the pmatch/hfst-proc2 fst if analysers are enabled.
-if WANT_MORPHOLOGY
-if WANT_TOKENISERS
-ANALYSER=analyser-disamb-gt-desc.hfst
-PMHFST=tokeniser-disamb-gt-desc.pmhfst
-endif # WANT_TOKENISERS
-endif # WANT_MORPHOLOGY
-
-hfstdatadir=$(datadir)/giella/$(GTLANG)
-hfstdata_DATA=$(PMHFST) $(ABBR)
-
 else
 GENERATOR=false
 endif # CAN_HFST
 endif # CAN_XFST
+
+GIELLA_PMHFSTS=
+
+if CAN_HFST
+# Only build the pmatch/hfst-proc2 fst if analysers are enabled.
+if WANT_MORPHOLOGY
+if WANT_TOKENISERS
+GIELLA_PMHFSTS+=tokeniser-disamb-gt-desc.pmhfst
+endif # WANT_TOKENISERS
+
+if WANT_GRAMCHECK
+GIELLA_PMHFSTS+=tokeniser-gramcheck-gt-desc.pmhfst
+endif # WANT_GRAMCHECK
+endif # WANT_MORPHOLOGY
+
+hfstdatadir=$(datadir)/giella/$(GTLANG)
+hfstdata_DATA=$(GIELLA_PMHFSTS) $(ABBR)
+endif # CAN_HFST
 
 ###########################################################################
 ### Build the abbr.txt file used with preprocess:
@@ -86,13 +92,19 @@ $(ABBR): \
 
 ###########################################################################
 ### Build a tokenising analyser based on a pmatch script and the
-### regular disamb-analyser:
+### regular disamb-analyser - and the same applies to the grammar checker:
 
-$(ANALYSER): $(top_builddir)/src/$(ANALYSER)ol
-	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< > $@
+analyser-%-gt-desc.hfst: $(top_builddir)/src/analyser-%-gt-desc.hfst \
+						 relabeller.hfst
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) -f '@P.Pmatch.Loc@' -T relabeller.hfst $< \
+		-o $@
 
 tokeniser-%.pmhfst: tokeniser-%.pmscript analyser-%.hfst
-	$(AM_V_GEN)hfst-pmatch2fst < $< > $@
+	$(AM_V_PM2FST)$(HFST_PMATCH2FST) < $< > $@
+
+relabeller.hfst:
+	$(AM_V_TXT2FST)$(PRINTF) '0\t1\t@0@\t@PMATCH_INPUT_MARK@\n1\n' \
+		| $(HFST_TXT2FST) -e '@0@' -o $@
 
 ####### Includes: ###########
 include $(top_srcdir)/am-shared/silent_build-include.am

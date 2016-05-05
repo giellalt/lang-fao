@@ -60,6 +60,12 @@ GT_GENERATORS+=generator-gt-desc.hfstol \
 			   generator-gt-norm.hfstol 
 endif # WANT_GENERATION
 
+if WANT_GLOSSERS
+GT_RAW+=analyser-raw-gt-glossing.hfst
+GT_ANALYSERS+=analyser-gt-glossing.hfstol
+GT_GENERATORS+=generator-gt-glossing.hfstol
+endif # WANT_GLOSSERS
+
 endif # CAN_HFST
 ##### END Hfst target list #####
 
@@ -80,6 +86,12 @@ GT_GENERATORS+=generator-gt-desc.xfst \
 			   generator-gt-norm.xfst
 endif # WANT_GENERATION
 
+if WANT_GLOSSERS
+GT_RAW+=analyser-raw-gt-glossing.xfst
+GT_ANALYSERS+=analyser-gt-glossing.xfst
+GT_GENERATORS+=generator-gt-glossing.xfst
+endif # WANT_GLOSSERS
+
 endif # CAN_XFST
 ##### END Xerox target list #####
 
@@ -99,6 +111,12 @@ if WANT_GENERATION
 GT_GENERATORS+=generator-gt-desc.foma \
 			   generator-gt-norm.foma
 endif # WANT_GENERATION
+
+if WANT_GLOSSERS
+GT_RAW+=analyser-raw-gt-glossing.foma
+GT_ANALYSERS+=analyser-gt-glossing.foma
+GT_GENERATORS+=generator-gt-glossing.foma
+endif # WANT_GLOSSERS
 
 endif # CAN_FOMA
 ##### END Foma target list #####
@@ -223,7 +241,7 @@ analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.% \
 					filters/reorder-subpos-tags.%         \
 					filters/remove-mwe-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/reorder-tags.$(GTLANG).$*  \
+				@\"filters/reorder-tags.$(GTLANG).$*\"\
 			.o. @\"filters/reorder-subpos-tags.$*\"   \
 			.o. @\"filters/reorder-semantic-tags.$*\" \
 			.o. @\"filters/remove-mwe-tags.$*\"       \

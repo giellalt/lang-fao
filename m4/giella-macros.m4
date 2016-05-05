@@ -394,6 +394,14 @@ AC_ARG_ENABLE([generators],
               [enable_generators=yes])
 AM_CONDITIONAL([WANT_GENERATION], [test "x$enable_generators" != xno])
 
+# Enable glossing morphological analysers - default is 'no'
+AC_ARG_ENABLE([glossers],
+              [AS_HELP_STRING([--enable-glossers],
+                              [build glossing morphological analysers @<:@default=no@:>@])],
+              [enable_glossers=$enableval],
+              [enable_glossers=no])
+AM_CONDITIONAL([WANT_GLOSSERS], [test "x$enable_glossers" != xno])
+
 # Enable text transcriptors - default is 'yes'
 AC_ARG_ENABLE([transcriptors],
               [AS_HELP_STRING([--enable-transcriptors],
@@ -634,6 +642,7 @@ cat<<EOF
   * Apertium transducers enabled: $enable_apertium
   * generate abbr.txt: $enable_abbr
   * build tokenisers: $enable_tokenisers
+  * build glossing fst's: $enable_glossers
 
 For more ./configure options, run ./configure --help
 

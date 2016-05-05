@@ -112,3 +112,12 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 		 quit\n" | $$(XFST_TOOL)
 endef
 $(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_disamb_analysers,$(alt_orth))))
+
+# The grammar checker analyser is the same as the disambiguator analyser, but
+# potentially/most likely with language-specific adaptations:
+analyser-gramcheck-gt-desc.tmp.hfst: analyser-disamb-gt-desc.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
+
+# And the same for alternate writing systems etc:
+analyser-gramcheck-gt-desc.%.tmp.hfst: analyser-disamb-gt-desc.%.tmp.hfst
+	$(AM_V_CP)cp -f $< $@

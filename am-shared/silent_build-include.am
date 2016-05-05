@@ -36,7 +36,6 @@
 # hfst-multiply
 # hfst-pair-test
 # hfst-pmatch
-# hfst-pmatch2fst
 # hfst-prune-alphabet
 # hfst-push-weights
 # hfst-remove-epsilons
@@ -44,6 +43,7 @@
 # hfst-shuffle
 # hfst-subtract
 # hfst-summarize
+# hfst-tokenize
 
 # hfst-compose:
 AM_V_COMPOSE    = $(AM_V_COMPOSE_@AM_V@)
@@ -115,6 +115,11 @@ AM_V_INTRSCT_0  = @echo "  HINTRSCT $@";
 AM_V_INVERT     = $(AM_V_INVERT_@AM_V@)
 AM_V_INVERT_    = $(AM_V_INVERT_@AM_DEFAULT_V@)
 AM_V_INVERT_0   = @echo "  HINVERT  $@";
+
+# hfst-pmatch2fst
+AM_V_PM2FST     = $(AM_V_PM2FST_@AM_V@)
+AM_V_PM2FST_    = $(AM_V_PM2FST_@AM_DEFAULT_V@)
+AM_V_PM2FST_0   = @echo "  HPM2FST  $@";
 
 # hfst-project:
 AM_V_PROJECT    = $(AM_V_PROJECT_@AM_V@)

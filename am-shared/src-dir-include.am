@@ -210,7 +210,7 @@ generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.% \
 					filters/reorder-subpos-tags.%         \
 					filters/remove-mwe-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/reorder-tags.$(GTLANG).$*  \
+				@\"filters/reorder-tags.$(GTLANG).$*\"\
 			.o. @\"filters/reorder-subpos-tags.$*\"   \
 			.o. @\"filters/reorder-semantic-tags.$*\" \
 			.o. @\"filters/remove-mwe-tags.$*\"       \

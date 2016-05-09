@@ -183,6 +183,7 @@ AC_CONFIG_FILES([Makefile \
                  tools/preprocess/Makefile \
                  tools/shellscripts/Makefile \
                  tools/spellcheckers/Makefile \
+                 tools/spellcheckers/filters/Makefile \
                  tools/spellcheckers/fstbased/Makefile \
                  tools/spellcheckers/fstbased/filters/Makefile \
                  tools/spellcheckers/fstbased/desktop/Makefile \

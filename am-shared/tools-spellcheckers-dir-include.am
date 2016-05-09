@@ -83,59 +83,43 @@ analyser-$(GT_COMMON_SPELLER_NAME).tmp.%: \
 #### - inversion is needed FOR THE ANALYSER because the hfst model is upside
 #### down compared to Xerox AT LOOKUP TIME.
 analyser%.hfst: analyser%.tmp.hfst \
-			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst    \
+			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst  \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst
-	$(AM_V_HXFST)$(PRINTF) "read regex                                        \
-			@\"$<\"                                                           \
-		.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"    \
-		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"   \
+	$(AM_V_HXFST)$(PRINTF) "read regex                                      \
+			@\"$<\"                                                         \
+		.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"  \
+		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" \
 		; \n\
 		invert \n\
 		save stack $@\n\
 		quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
-generator%.hfst: analyser%.tmp.hfst
-	$(AM_V_CP)cp -f $< $@
-
-#### Xerox transducer fallback target:
+#### Xerox & Foma analyser fallback target:
 #### - inversion is needed in the final step for the GENERATOR.
-analyser%.xfst: analyser%.tmp.xfst \
-			$(top_builddir)/src/filters/remove-hyphenation-marks.xfst    \
-			$(top_builddir)/src/filters/remove-infl_deriv-borders.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex                                         \
-			@\"$<\"                                                           \
-		.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.xfst\"    \
-		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.xfst\"   \
+define giella_speller_analysers
+analyser%.$(1): analyser%.tmp.$(1)
+			$$(top_builddir)/src/filters/remove-hyphenation-marks.$(1) \
+			$$(top_builddir)/src/filters/remove-infl_deriv-borders.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex                                 \
+			@\"$$<\"                                                         \
+		.o. @\"$$(top_builddir)/src/filters/remove-hyphenation-marks.$(1)\"  \
+		.o. @\"$$(top_builddir)/src/filters/remove-infl_deriv-borders.$(1)\" \
 		; \n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,xfst foma,$(eval $(call giella_speller_analysers,$(fst))))
 
-generator%.xfst: analyser%.tmp.xfst
-	$(AM_V_XFST)$(PRINTF) "\
-		 load stack $<\n\
-		 invert net\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
-#### Foma transducer fallback target:
-#### - inversion is needed in the final step for the GENERATOR.
-analyser%.foma: analyser%.tmp.foma
-			$(top_builddir)/src/filters/remove-hyphenation-marks.foma    \
-			$(top_builddir)/src/filters/remove-infl_deriv-borders.foma
-	$(AM_V_XFST)$(PRINTF) "read regex                                         \
-			@\"$<\"                                                           \
-		.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.foma\"    \
-		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.foma\"   \
-		; \n\
-		 save stack $@\n\
-		 quit\n" | $(FOMA) $(VERBOSITY)
-
-generator%.foma: analyser%.tmp.foma 
-	$(AM_V_FOMA)$(PRINTF) "\
-		 load stack $<\n\
-		 invert net\n\
-		 save stack $@\n\
-		 quit\n" | $(FOMA) $(VERBOSITY)
+# Default fallback processing for the generators:
+define giella_speller_generators
+generator%.$(1): analyser%.tmp.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "\
+		 load stack $$<\n\
+		 $$(INVERT_XFST)$$(INVERT_FOMA)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_speller_generators,$(fst))))
 
 ####### Other targets: ###########
 clean-local:

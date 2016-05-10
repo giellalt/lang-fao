@@ -66,7 +66,7 @@ transcriptor-%-digit2text.filtered.$(1): \
 			.o. @\"../filters/remove-NA-strings.$(1)\" \
 			.o. @\"../filters/remove-NG-strings.$(1)\" \
 			.o. @\"$$<\" \
-			.o. @\"../filters/remove-NG-strings.$(1)\" \
+			.o. @\"../filters/remove-NG-strings.$(1)\".i \
 			.o. @\"../filters/remove-usage-tags.$(1)\".i \
 			;\n\
 		 save stack $$@\n\

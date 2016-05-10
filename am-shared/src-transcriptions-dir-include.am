@@ -35,8 +35,8 @@ TXT2DIGIT=$(subst digit2text,text2digit,$(DIGIT2TXT))
 
 # Add the proper suffix for each compiler:
 if CAN_HFST
-GT_TRANSCRIPTORS+=$(addsuffix .hfst,$(DIGIT2TXT))
-GT_TRANSCRIPTORS+=$(addsuffix .hfst,$(TXT2DIGIT))
+GT_TRANSCRIPTORS+=$(addsuffix .hfstol,$(DIGIT2TXT))
+GT_TRANSCRIPTORS+=$(addsuffix .hfstol,$(TXT2DIGIT))
 endif # CAN_HFST
 
 if CAN_XFST

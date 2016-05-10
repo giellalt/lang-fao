@@ -97,7 +97,7 @@ analyser%.hfst: analyser%.tmp.hfst \
 #### Xerox & Foma analyser fallback target:
 #### - inversion is needed in the final step for the GENERATOR.
 define giella_speller_analysers
-analyser%.$(1): analyser%.tmp.$(1)
+analyser%.$(1): analyser%.tmp.$(1) \
 			$$(top_builddir)/src/filters/remove-hyphenation-marks.$(1) \
 			$$(top_builddir)/src/filters/remove-infl_deriv-borders.$(1)
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex                                 \

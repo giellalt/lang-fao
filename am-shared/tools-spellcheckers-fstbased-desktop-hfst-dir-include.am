@@ -66,7 +66,7 @@ GT_SPELLING_HFST=$(GTLANG2).zhfst
 voikkosharedir=$(datadir)/voikko/3/
 #! @param GT_VOIKKO optional, set to spell checker automata names if
 #!					installable
-voikkoshare_DATA=$(GT_SPELLING_HFST) $(ALT_WS_ZHFST_FILES)
+voikkoshare_DATA=$(GT_SPELLING_HFST) $(ALT_WS_ZHFST_FILES) $(ALT_ORTH_ZHFST_FILES)
 
 endif # WANT_HFST_DESKTOP_SPELLER
 endif # CAN_HFST
@@ -75,6 +75,7 @@ endif # WANT_SPELLERS
 noinst_DATA=$(GT_ERRMODELS) \
 			$(OXT_FILES) \
 			$(ALT_WS_OXT_FILES) \
+			$(ALT_ORTH_OXT_FILES) \
 			$(MACVOIKKOFILE) \
 			$(MACVOIKKOZIPFILE) \
 			$(MACVKOFST) \
@@ -223,8 +224,9 @@ $(GT_SPELLING_HFST): $(srcdir)/index.xml \
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f  *.hfst *.xfst *.zhfst easteregg.* *.oxt *.xpi
+	-rm -f  *.hfst *.xfst *.zhfst easteregg.* *.oxt *.xpi *.zip
 	-rm -rf 3 *.service build
+	-rm -f editdist.*.regex
 	if ! [ "x$(CORPUSNAME)" = "x" ] ; then \
 		rm -f $(CORPUSNAME).* ; \
 	fi
@@ -241,6 +243,7 @@ clean-local:
             final_strings.default.hfst
 
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop-hfst_prods_n_upload-dir-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop-hfst_alt_orth-dir-include.am
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop-hfst_alt_ws-dir-include.am
 include $(top_srcdir)/am-shared/regex-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am

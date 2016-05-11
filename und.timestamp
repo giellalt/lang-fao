@@ -1,4 +1,8 @@
-$Rev: 134145 $
+$Rev: 134222 $
+Added support for alternative orthographies in spellers. Works nicely in LO, but
+needs more testing. Also updated the clean target.
+
+r134145:
 Added a new spellrelax system that will add an +Err/ tag (or more) to the
 analysis of words misspelled according to the new spellrelax rules. Can be
 very costly in terms of size if applied to large lexical fst's, and if many

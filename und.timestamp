@@ -1,4 +1,11 @@
-$Rev: 134126 $
+$Rev: 134145 $
+Added a new spellrelax system that will add an +Err/ tag (or more) to the
+analysis of words misspelled according to the new spellrelax rules. Can be
+very costly in terms of size if applied to large lexical fst's, and if many
+error types are tagged, so initially it is only applied to the transcriptor
+fst (which are used in Oahpa). Template data is from Plains Cree (crk).
+
+r134126:
 Fixed compilation error: added missing inversion (.i).
 
 r133943:

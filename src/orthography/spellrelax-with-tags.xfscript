@@ -1,0 +1,43 @@
+! Tags to be appended to an fst to get spell-relax tags:
+define spellrelax [
+ â (->) a "aaX" || _ ?* "^a2aa" ,,
+ ê (->) e "eeX" || _ ?* "^e2ee" ,,
+ î (->) i "iiX" || _ ?* "^i2ii" ,,
+ ô (->) o "ooX" || _ ?* "^o2oo" ,,
+ a (->) â  "aX" || _ ?* "^aa2a" ,,
+ i (->) î  "iX" || _ ?* "^ii2i" ,,
+ o (->) ô  "oX" || _ ?* "^oo2o" ];
+
+define Restr1 "^a2aa" => "aaX" ?* _ ;
+define Restr2 "^e2ee" => "eeX" ?* _ ;
+define Restr3 "^i2ii" => "iiX" ?* _ ;
+define Restr4 "^o2oo" => "ooX" ?* _ ;
+define Restr5 "^aa2a" =>  "aX" ?* _ ;
+define Restr6 "^ii2i" =>  "iX" ?* _ ;
+define Restr7 "^oo2o" =>  "oX" ?* _ ;
+
+define Clean "aaX" -> 0,
+             "eeX" -> 0,
+             "iiX" -> 0,
+             "ooX" -> 0,
+              "aX" -> 0,
+              "iX" -> 0,
+              "oX" -> 0,
+           "^a2aa" -> 0,
+           "^e2ee" -> 0,
+           "^i2ii" -> 0,
+           "^o2oo" -> 0,
+           "^aa2a" -> 0,
+           "^ii2i" -> 0,
+           "^oo2o" -> 0,
+           "^oo2o" -> 0;
+
+read regex spellrelax .o.
+           Restr1     .o.
+           Restr2     .o.
+           Restr3     .o.
+           Restr4     .o.
+           Restr5     .o.
+           Restr6     .o.
+           Restr7     .o.
+           Clean ;

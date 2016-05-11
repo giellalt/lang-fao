@@ -79,22 +79,24 @@ define txt2digit_transcriptors
 transcriptor-%-text2digit.filtered.$(1): \
 					transcriptor-%-digit2text.$(1) \
 					../filters/remove-usage-tags.$(1) \
-					../orthography/spellrelax.compose.$(1)
-	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-			    @\"../filters/remove-usage-tags.$(1)\" \
+					../orthography/spellrelax-tags.compose.$(1) \
+					../orthography/spellrelax-with-tags.compose.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "define Lex \
+			[   @\"../filters/remove-usage-tags.$(1)\" \
 			.o. @\"$$<\" \
 			.o. @\"../filters/remove-usage-tags.$(1)\".i \
-			.o. @\"../orthography/spellrelax.compose.$(1)\" \
-			;\n\
-		 invert net\n\
-		 save stack $$@\n\
-		 quit\n" | $$(XFST_TOOL)
+			] @\"../orthography/spellrelax-tags.compose.$(1)\" ;\n\
+		define spellrelax @\"../orthography/spellrelax-with-tags.compose.$(1)\" ;\n\
+		read regex Lex .o. spellrelax ;\n\
+		invert net\n\
+		save stack $$@\n\
+		quit\n" | $$(XFST_TOOL)
 endef
 $(foreach fst,hfst xfst foma,$(eval $(call txt2digit_transcriptors,$(fst))))
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.xfst
+	-rm -f *.hfstol *.xfst *.foma
 
 include $(top_srcdir)/am-shared/lexc-include.am
 include $(top_srcdir)/am-shared/lookup-include.am

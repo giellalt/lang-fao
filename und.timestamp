@@ -1,4 +1,8 @@
-$Rev: 134222 $
+$Rev: 134357 $
+Restricted the new spellrelax to only give one tag. The previous version caused
+out-of-memory issues on a lot of systems.
+
+r134222:
 Added support for alternative orthographies in spellers. Works nicely in LO, but
 needs more testing. Also updated the clean target.
 

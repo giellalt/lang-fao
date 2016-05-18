@@ -39,7 +39,6 @@
 # hfst-prune-alphabet
 # hfst-push-weights
 # hfst-remove-epsilons
-# hfst-repeat
 # hfst-shuffle
 # hfst-subtract
 # hfst-summarize
@@ -140,6 +139,11 @@ AM_V_REWEIGHT_0 = @echo "  HREWGHT  $@";
 AM_V_RGX2FST    = $(AM_V_RGX2FST_@AM_V@)
 AM_V_RGX2FST_   = $(AM_V_RGX2FST_@AM_DEFAULT_V@)
 AM_V_RGX2FST_0  = @echo "  HRGX2FST $@";
+
+# hfst-repeat
+AM_V_REPEAT     = $(AM_V_REPEAT_@AM_V@)
+AM_V_REPEAT_    = $(AM_V_REPEAT_@AM_DEFAULT_V@)
+AM_V_REPEAT_0   = @echo "  HREPEAT  $@";
 
 # hfst-strings2fst:
 AM_V_STR2FST    = $(AM_V_STR2FST_@AM_V@)

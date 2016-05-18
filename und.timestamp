@@ -1,4 +1,10 @@
-$Rev: 134357 $
+$Rev: 134733 $
+Added initial support for doing more targeted regex replacements on multichar
+sequences in parallel to the regular editdist operations. The idea is that these
+replacements can be applied more times (since they are few), and thus allow for
+more corrections of frequent spelling errors.
+
+r134357:
 Restricted the new spellrelax to only give one tag. The previous version caused
 out-of-memory issues on a lot of systems.
 

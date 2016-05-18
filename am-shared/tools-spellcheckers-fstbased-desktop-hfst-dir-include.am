@@ -159,8 +159,28 @@ strings.%.hfst: strings.%.txt anystar.hfst
 		| $(HFST_CONCATENATE) - anystar.hfst   \
 		-o $@
 
+# strings regex file:
+strings-regex.%.hfst: strings-regex.%.regex anystar.hfst
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
+		| $(HFST_CONCATENATE)   anystar.hfst - \
+		| $(HFST_CONCATENATE) - anystar.hfst   \
+		-o $@
+
+# Multiply the strings-regex file with the edit distance value.
+# This makes the total edit distance for the content of the regxex file twice
+# as large as the edit distance, since the file is multiplied again as part of
+# the editStrings build target. The idea is that the regex should contain a
+# highly targeted set of frequent spelling errors.
+strings-regex-multiplied.%.hfst: strings-regex.%.hfst
+	$(AM_V_REPEAT)$(HFST_REPEAT) -f 1 -t $(DEFAULT_EDIT_DIST) -i $^ \
+		-o $@
+
+all-strings.%.hfst: strings-regex-multiplied.%.hfst strings.%.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
+		-o $@
+
 # Combine edit distance with string pattern edits:
-editStrings.%.hfst: strings.%.hfst editdist.%.hfst
+editStrings.%.hfst: all-strings.%.hfst editdist.%.hfst
 	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
 		| $(HFST_REPEAT) -f 1 -t $(DEFAULT_EDIT_DIST) \
 		-o $@
@@ -199,7 +219,7 @@ errmodel.%.hfst: errmodel.%.regex easteregg.%.hfst
 # Build the automaton used for the speller
 $(GT_SPELLER_ACCEPTOR): \
 acceptor.%.hfst: $(GT_SPELLER_HFST) easteregg.%.hfst
-	$(AM_V_GEN)cat $< \
+	$(AM_V_PROJECT)cat $< \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
 		| $(HFST_MINIMIZE_SPELLER) $(HFST_FLAGS)        \
 		| $(HFST_DISJUNCT) - easteregg.$*.hfst             \

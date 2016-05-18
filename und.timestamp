@@ -1,4 +1,8 @@
-$Rev: 134733 $
+$Rev: 134762 $
+Removed unneeded subtraction that just increased the size of the resulting fst
+a lot (how much of course depends on the grammar in question).
+
+r134733:
 Added initial support for doing more targeted regex replacements on multichar
 sequences in parallel to the regular editdist operations. The idea is that these
 replacements can be applied more times (since they are few), and thus allow for

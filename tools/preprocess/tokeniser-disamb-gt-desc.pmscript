@@ -53,7 +53,7 @@ Define alphaword alphabet+;
 
 
 !!! Unknown handling:
-Define unknownform [ [alphaword].u - [morphology].u];
+Define unknownform [alphaword].u ;
 !! Simply give an empty reading when something is unknown:
 Define unknownwordEmpty unknownform:0 LC([blank | #]) RC([[blank ] | # ]);
 !! hfst-tokenise --gtd will treat such empty analyses as unknowns, and

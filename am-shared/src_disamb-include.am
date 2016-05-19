@@ -115,9 +115,54 @@ $(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_disamb_analysers,$(alt_or
 
 # The grammar checker analyser is the same as the disambiguator analyser, but
 # potentially/most likely with language-specific adaptations:
-analyser-gramcheck-gt-desc.tmp.hfst: analyser-disamb-gt-desc.tmp.hfst
-	$(AM_V_CP)cp -f $< $@
+analyser-gramcheck-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
+					filters/remove-Orth_IPA-strings.%         \
+					filters/remove-hyphenation-marks.%        \
+					filters/remove-infl_deriv-borders.%       \
+					filters/remove-word-boundary.%            \
+					filters/remove-dialect-tags.%             \
+					filters/remove-norm-comp-tags.%           \
+					filters/remove-orig_lang-tags.%           \
+					filters/remove-orthography-tags.%         \
+					filters/remove-usage-tags.%               \
+					filters/remove-variant-tags.%             \
+					orthography/inituppercase.compose.%       \
+					orthography/spellrelax.compose.%          \
+					orthography/downcase-derived_proper-strings.compose.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			    @\"filters/remove-dialect-tags.$*\"             \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-orig_lang-tags.$*\"           \
+			.o. @\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/remove-variant-tags.$*\"             \
+			.o. @\"filters/remove-orthography-tags.$*\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
+			.o. @\"$<\"                                         \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
+			.o. @\"filters/remove-hyphenation-marks.$*\"        \
+			.o. @\"filters/remove-infl_deriv-borders.$*\"       \
+			; \n\
+			define fst \n\
+			set flag-is-epsilon ON\n\
+			read regex fst \
+			.o. @\"orthography/inituppercase.compose.$*\"       \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
 # And the same for alternate writing systems etc:
 analyser-gramcheck-gt-desc.%.tmp.hfst: analyser-disamb-gt-desc.%.tmp.hfst
 	$(AM_V_CP)cp -f $< $@
+
+# Default fallback processing for the grammarchecker analysers:
+define giella_gramcheck_analysers
+analyser-gramcheck%.$(1): analyser-gramcheck%.tmp.$(1) \
+						  filters/remove-word-boundary.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+				@\"$$<\"                                             \
+			.o. @\"filters/remove-word-boundary.$(1)\"               \
+		 $$(INVERT_HFST)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_gramcheck_analysers,$(fst))))

@@ -1,4 +1,8 @@
-$Rev: 134870 $
+$Rev: 135102 $
+Fixed a bug in the default build of grammar checker analysers. Blocked all
+languages without local overrides.
+
+r134870:
 Moved removal of word boundaries out of the default, language-independent
 processing of the grammar checker analyser - we want to be able to do
 language-depending things with word boundaries, e.g. in freely compounding

@@ -412,6 +412,7 @@ analyser-oahpa-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)     \
 endef
 $(foreach fst,hfst xfst foma,$(eval $(call oahpa_alt_ws_analysers,$(fst))))
 
+define oahpa_alt_ws_generators
 generator-oahpa-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)    \
 					filters/make-optional-hyph-tags.$(1)         \
 					filters/make-optional-transitivity-tags.$(1) \
@@ -454,11 +455,13 @@ generator-oahpa-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)    \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
-
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call oahpa_alt_ws_generators,$(fst))))
 
 ###############################################################
 # Additional targets to support alternative orthographies:
 
+define oahpa_alt_orth_analysers
 analyser-oahpa-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)     \
 					filters/remove-adv_comp-tags.$(1)            \
 					filters/remove-dialect-tags.$(1)             \
@@ -493,7 +496,10 @@ analyser-oahpa-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)     \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call oahpa_alt_orth_analysers,$(fst))))
 
+define oahpa_alt_orth_generators
 generator-oahpa-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)    \
 					filters/make-optional-hyph-tags.$(1)         \
 					filters/make-optional-transitivity-tags.$(1) \
@@ -536,3 +542,5 @@ generator-oahpa-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)    \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call oahpa_alt_orth_generators,$(fst))))

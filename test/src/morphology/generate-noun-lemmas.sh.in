@@ -90,15 +90,21 @@ for f in $fsttype; do
         let "transducer_found += 1"
 
 ###### Test non-comopunds: #######
-        # generate nouns in Singular, extract the resulting generated lemma,
+        # generate nouns in Singular Masculine, extract the resulting generated lemma,
         # store it:
-        sed 's/$/+N+Sg+Nom/' $lemmas | $lookup_tool $generator_file.$suffix \
+        sed 's/$/+N+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
             | fgrep -v "+?" | grep -v "^$" | cut -f2 | sort -u \
             > $generated_lemmas.$f.txt 
+        # Generate nouns, extract those that do not generate in singular masculine,
+        # generate the rest in plural:
+        sed 's/$/+N+Fem+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Fem+Sg+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix | cut -f2 \
+            | grep -v "^$" >> $generated_lemmas.$f.txt 
         # Generate nouns, extract those that do not generate in singular,
         # generate the rest in plural:
-        sed 's/$/+N+Sg+Nom/' $lemmas | $lookup_tool $generator_file.$suffix \
-            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Pl+Nom/' \
+        sed 's/$/+N+Neu+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Neu+Sg+Nom+Indef/' \
             | $lookup_tool $generator_file.$suffix | cut -f2 \
             | grep -v "^$" >> $generated_lemmas.$f.txt 
 
@@ -111,7 +117,7 @@ for f in $fsttype; do
         # Open the diff file in SubEthaEdit (if there is a diff):
         if [ -s $result_file.$f.txt ]; then
             grep -v '^$' $result_file.$f.txt \
-              | sed 's/$/+N+Sg+Nom/' \
+              | sed 's/$/+N+Msc+Sg+Nom+Indef/' \
               | $lookup_tool $generator_file.$suffix \
               > $gen_result_file.$f.txt
             # If we have an analyser, analyse the missing lemmas as well:

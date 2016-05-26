@@ -96,16 +96,54 @@ for f in $fsttype; do
             | fgrep -v "+?" | grep -v "^$" | cut -f2 | sort -u \
             > $generated_lemmas.$f.txt 
         # Generate nouns, extract those that do not generate in singular masculine,
-        # generate the rest in plural:
+        # generate the rest in singular feminine:
         sed 's/$/+N+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
             | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Fem+Sg+Nom+Indef/' \
-            | $lookup_tool $generator_file.$suffix | cut -f2 \
+            | $lookup_tool $generator_file.$suffix | fgrep -v "+?" | cut -f2 \
+            | grep -v "^$" >> $generated_lemmas.$f.txt 
+        # Generate nouns, extract those that do not generate in singular
+        # masculine and feminine, generate the rest in singular neuter:
+        sed 's/$/+N+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Fem+Sg+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Neu+Sg+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix | fgrep -v "+?" | cut -f2 \
             | grep -v "^$" >> $generated_lemmas.$f.txt 
         # Generate nouns, extract those that do not generate in singular,
-        # generate the rest in plural:
-        sed 's/$/+N+Fem+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+        # generate the rest in plural masculine:
+        sed 's/$/+N+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Fem+Sg+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
             | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Neu+Sg+Nom+Indef/' \
-            | $lookup_tool $generator_file.$suffix | cut -f2 \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Msc+Pl+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix | fgrep -v "+?" | cut -f2 \
+            | grep -v "^$" >> $generated_lemmas.$f.txt 
+        # Generate nouns, extract those that do not generate in singular,
+        # generate the rest in plural feminine:
+        sed 's/$/+N+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Fem+Sg+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Neu+Sg+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Msc+Pl+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Fem+Pl+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix | fgrep -v "+?" | cut -f2 \
+            | grep -v "^$" >> $generated_lemmas.$f.txt 
+        # Generate nouns, extract those that do not generate in singular,
+        # generate the rest in plural neuter:
+        sed 's/$/+N+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Fem+Sg+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Neu+Sg+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Msc+Pl+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Fem+Pl+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Neu+Pl+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix | fgrep -v "+?" | cut -f2 \
             | grep -v "^$" >> $generated_lemmas.$f.txt 
 
 ###### Collect results, and generate debug info if FAIL: #######
@@ -116,10 +154,10 @@ for f in $fsttype; do
 
         # Open the diff file in SubEthaEdit (if there is a diff):
         if [ -s $result_file.$f.txt ]; then
-            grep -v '^$' $result_file.$f.txt \
-              | sed 's/$/+N+Msc+Sg+Nom+Indef/' \
-              | $lookup_tool $generator_file.$suffix \
-              > $gen_result_file.$f.txt
+#            grep -v '^$' $result_file.$f.txt \
+#              | sed 's/$/+N+Msc+Sg+Nom+Indef/' \
+#              | $lookup_tool $generator_file.$suffix \
+#              > $gen_result_file.$f.txt
             # If we have an analyser, analyse the missing lemmas as well:
             if test -e $analyser_file.$suffix ; then
                 grep -v '^$' $result_file.$f.txt \
@@ -129,12 +167,12 @@ for f in $fsttype; do
             # Only open the failed lemmas in see if @SEE@ is defined:
             if [ "$EXTEDITOR" ]; then
                 $EXTEDITOR $result_file.$f.txt
-                $EXTEDITOR $gen_result_file.$f.txt
+#                $EXTEDITOR $gen_result_file.$f.txt
                 $EXTEDITOR $ana_result_file.$f.txt
             else
                 echo "There where problem lemmas. Details in:"
                 echo "* $result_file.$f.txt    "
-                echo "* $gen_result_file.$f.txt"
+#                echo "* $gen_result_file.$f.txt"
                 echo "* $ana_result_file.$f.txt"
             fi
             Fail=1

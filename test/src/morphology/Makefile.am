@@ -24,8 +24,7 @@ endif # WANT_GENERATION
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=generate-adjective-lemmas.sh  \
             generate-noun-lemmas.sh       \
-            generate-propernoun-lemmas.sh \
-            generate-verb-lemmas.sh
+            generate-propernoun-lemmas.sh
 
 # Make sure all tests scripts are included in the distributed tarballs:
 EXTRA_DIST=$(TESTS) $(GENERATION_TESTS_IN)

@@ -181,13 +181,15 @@ LEXICON l30 ! tepur
 +A: adjcmp1 ;
 
 LEXICON l31 ! trupul
-+A:%^EPH       a_non_umlaut ;
++A:%^EPH a_m_sg_n_null ;
++A:%^EPH a_non_umlaut_obl ;
 +A:%^EPH%^UUML a_umlaut ;
 +A:%^EPH adj_def ;
 +A:%^EPH adj_def ;
 
 LEXICON l32 ! búgvin
-+A:%^EPH       a_non_umlaut ;
++A:            a_m_sg_n_null ; ! gamal
++A:%^EPH       a_non_umlaut_obl ;
 +A:%^EPH%^UUML a_umlaut ;
 +A:%^EPH adj_def ;
 +A:%^EPH adj_def ;
@@ -200,21 +202,21 @@ LEXICON l33 ! gamal
 
 
 LEXICON GAMAL
-amal+A:amal            a_m_sg_n_null ; ! gamal
-amal+A:amal%^EPH       a_non_umlaut_obl ;
-amal+A:omul%^EPH a_umlaut ;
-amal+A:amal%^EPH adj_def ;
++A:amal            a_m_sg_n_null ; ! gamal
++A:amal%^EPH       a_non_umlaut_obl ;
++A:omul%^EPH a_umlaut ;
++A:amal%^EPH adj_def ;
 
 LEXICON l34 ! dottin
 +A:%^EPH a_m_sg_n_null ;
 +A:%^EPH a_non_umlaut_obl ;
-
 +A:%^EPH%^UUML a_umlaut ;
 +A:%^EPH adj_def ;
 +A:%^EPH adj_def ;
 
 LEXICON l35 ! feingin ! not complete, needs umlaut
-+A:%^EPH       a_non_umlaut ;
++A:%^EPH a_m_sg_n_null ;
++A:%^EPH a_non_umlaut_obl ;
 +A:%^EPH%^UUML a_umlaut ;
 +A:%^EPH adj_def ;
 +A:%^EPH adj_def ;
@@ -510,9 +512,9 @@ LEXICON adjcmp1
 +Cmp:ar indef_cmp_adj_decl ;
 +Superl:ast indef_superl_adj_decl ;
 
-LEXICON adjcmp2
-+Cmp:r indef_cmp_adj_decl ;
-+Superl:st indef_superl_adj_decl ;
+!LEXICON adjcmp2
+!+Cmp:r indef_cmp_adj_decl ;
+!+Superl:st indef_superl_adj_decl ;
 
 ! Gender
 
@@ -542,11 +544,11 @@ LEXICON indef_case
 +Gen: indeftag ;
 +Dat: indeftag ;
 
-LEXICON def_case
-+Nom: deftag ;
-+Acc: deftag ;
-+Gen: deftag ;
-+Dat: deftag ;
+!LEXICON def_case
+!+Nom: deftag ;
+!+Acc: deftag ;
+!+Gen: deftag ;
+!+Dat: deftag ;
 
 
 ! Definiteness

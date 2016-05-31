@@ -1,4 +1,8 @@
-$Rev: 135221 $
+$Rev: 135584 $
+Use priority union to avoid duplication of paths and thus make a mutch smaller
+(and hence faster) speller fst.
+
+r135221:
 Fixed bug in building Oahpa fst's for alternate orthographies and writing
 systems.
 

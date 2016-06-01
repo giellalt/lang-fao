@@ -29,21 +29,143 @@ ZIPFLAGS=-9 $(VERBOSITY)
 ZHFST_COMPRESSION=$(ZIP) $(ZIPFLAGS) ../../$@ *
 #endif # CAN_XZ
 
-## Conditional string variables;
-# Set file name to the empty string or initial_letters_all depending on variable:
+###### Conditional string variables ######
+#### Initial letters:
+# Set file name to the empty string or initial_letters.all depending on variable:
 initial_letter_deps=$(shell \
-	if [[ $(ALLOW_INITIAL_EDITS) == 'yes' ]] ; \
-	then \
-		echo "initial_letters_all.%.hfst"; \
+	if [[ $(INITIAL_EDITS) != 'no' ]] ; then \
+		echo "initial_letters.all.%.hfst"; \
 	else \
 		echo ""; \
 	fi)
 
-# Set file name to the empty string or initial_letters_all depending on variable:
+# Set file name to the empty string or initial_letters.all depending on variable:
 initial_letter_fst_include=$(shell \
-	if [[ $(ALLOW_INITIAL_EDITS) == 'yes' ]] ; \
-	then \
-		echo "( @\\\"initial_letters_all.$*.hfst\\\" )"; \
+	if [[ $(INITIAL_EDITS) != 'no' ]] ; then \
+		echo "( @\\\"initial_letters.all.$*.hfst\\\" )"; \
+	else \
+		echo ""; \
+	fi)
+
+# Set python script option depending on variable:
+initial_letter_error_model_option=$(shell \
+	if [[ $(INITIAL_EDITS) != 'no' ]] ; then \
+		echo "--no-string-initial-correction"; \
+	else \
+		echo ""; \
+	fi)
+
+# Set dependency file name(s) depending on variable value:
+initial_letter_all_deps=$(shell \
+	if   [[ $(INITIAL_EDITS) == 'regex' ]] ; then \
+		echo "initial_letters.regex.%.hfst"; \
+	elif [[ $(INITIAL_EDITS) == 'txt'   ]] ; then \
+		echo "initial_letters.txt.%.hfst"; \
+	elif [[ $(INITIAL_EDITS) == 'both'  ]] ; then \
+		echo "initial_letters.regex.%.hfst initial_letters.txt.%.hfst"; \
+	else \
+		echo ""; \
+	fi)
+
+# Set file name to the empty string or initial_letters.all depending on variable:
+initial_letter_all_build=$(shell \
+	if   [[ $(INITIAL_EDITS) == 'regex' ]] ; then \
+		echo "$(AM_V_CP)cp -f $< $@"; \
+	elif [[ $(INITIAL_EDITS) == 'txt'   ]] ; then \
+		echo "$(AM_V_CP)cp -f $< $@"; \
+	elif [[ $(INITIAL_EDITS) == 'both'  ]] ; then \
+		echo "$(AM_V_UNION)$(HFST_DISJUNCT) $^ -o $@"; \
+	else \
+		echo ""; \
+	fi)
+
+#### Strings:
+# Set file name to the empty string or strings.all depending on variable:
+strings_deps=$(shell \
+	if [[ $(STRING_EDITS) != 'no' ]] ; then \
+		echo "strings.all.%.hfst"; \
+	else \
+		echo ""; \
+	fi)
+
+# Set build command for strings.all depending on variable value:
+strings_fst_include=$(shell \
+	if [[ $(STRING_EDITS) != 'no' ]] ; then \
+		echo "$(AM_V_UNION)$(HFST_DISJUNCT) $^"; \
+	else \
+		echo "$(AM_V_GEN)cat $^"; \
+	fi)
+
+# Set dependency file name(s) depending on variable value:
+strings_all_deps=$(shell \
+	if   [[ $(STRING_EDITS) == 'regex' ]] ; then \
+		echo "strings.regex.%.hfst"; \
+	elif [[ $(STRING_EDITS) == 'txt'   ]] ; then \
+		echo "strings.txt.%.hfst"; \
+	elif [[ $(STRING_EDITS) == 'both'  ]] ; then \
+		echo "strings.regex.%.hfst strings.txt.%.hfst"; \
+	else \
+		echo ""; \
+	fi)
+
+# Set build command depending on variable:
+strings_all_build=$(shell \
+	if   [[ $(STRING_EDITS) == 'regex' ]] ; then \
+		echo "$(AM_V_CP)cp -f $< $@"; \
+	elif [[ $(STRING_EDITS) == 'txt'   ]] ; then \
+		echo "$(AM_V_CP)cp -f $< $@"; \
+	elif [[ $(STRING_EDITS) == 'both'  ]] ; then \
+		echo "$(AM_V_UNION)$(HFST_DISJUNCT) $^ -o $@"; \
+	else \
+		echo ""; \
+	fi)
+
+#### Final strings:
+# Set file name to the empty string or final_strings.all depending on variable:
+final_strings_deps=$(shell \
+	if [[ $(FINAL_STRING_EDITS) != 'no' ]] ; then \
+		echo "final_strings.all.%.hfst"; \
+	else \
+		echo ""; \
+	fi)
+
+# Set build command for strings.all depending on variable value:
+final_strings_fst_include=$(shell \
+	if [[ $(FINAL_STRING_EDITS) != 'no' ]] ; then \
+		echo "( @\\\"final_strings.all.$*.hfst\\\" )"; \
+	else \
+		echo ""; \
+	fi)
+
+# Set dependency file name(s) depending on variable value:
+final_strings_all_deps=$(shell \
+	if   [[ $(FINAL_STRING_EDITS) == 'regex' ]] ; then \
+		echo "final_strings.regex.%.hfst"; \
+	elif [[ $(FINAL_STRING_EDITS) == 'txt'   ]] ; then \
+		echo "final_strings.txt.%.hfst"; \
+	elif [[ $(FINAL_STRING_EDITS) == 'both'  ]] ; then \
+		echo "final_strings.regex.%.hfst final_strings.txt.%.hfst"; \
+	else \
+		echo ""; \
+	fi)
+
+# Set build command depending on variable:
+final_strings_all_build=$(shell \
+	if   [[ $(FINAL_STRING_EDITS) == 'regex' ]] ; then \
+		echo "$(AM_V_CP)cp -f $< $@"; \
+	elif [[ $(FINAL_STRING_EDITS) == 'txt'   ]] ; then \
+		echo "$(AM_V_CP)cp -f $< $@"; \
+	elif [[ $(FINAL_STRING_EDITS) == 'both'  ]] ; then \
+		echo "$(AM_V_UNION)$(HFST_DISJUNCT) $^ -o $@"; \
+	else \
+		echo ""; \
+	fi)
+
+#### Whole words:
+# Set file name to the empty string or words.%.txt depending on variable:
+words_deps=$(shell \
+	if [[ $(WORD_REPLACEMENTS) != 'no' ]] ; then \
+		echo "words.%.txt"; \
 	else \
 		echo ""; \
 	fi)
@@ -106,18 +228,18 @@ easteregg.%.hfst: easteregg.%.txt
 
 ####### Error model: #######
 # Error model building - edit distance based on transducer alphabet:
-editdist.%.regex: editdist.%.txt
+editdist.%.regex: editdist.%.txt $(initial_letter_deps)
 	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py \
 		--verbose \
 		--swap \
 		--epsilon='@0@' \
 		--default-weight=$(DEFAULT_WEIGHT) \
-		--regex -i $< \
-		--output-file=$@
+		--regex \
+		--input=$< \
+		--output-file=$@ \
+		$(initial_letter_error_model_option)
 
-#		--distance=$(DEFAULT_EDIT_DIST) 
-
-initial_letters.list.%.hfst: initial_letters.%.txt
+initial_letters.txt.%.hfst: initial_letters.%.txt
 	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -p \
 		-o $@
@@ -126,13 +248,10 @@ initial_letters.regex.%.hfst: initial_letters.%.regex
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
 		-o $@
 
-initial_letters_all.%.hfst: \
-			initial_letters.regex.%.hfst \
-			initial_letters.list.%.hfst
-	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
-		-o $@
+initial_letters.all.%.hfst: $(initial_letter_all_deps)
+	$(initial_letter_all_build)
 
-final_strings.list.%.hfst: final_strings.%.txt
+final_strings.txt.%.hfst: final_strings.%.txt
 	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
 		-o $@
@@ -141,18 +260,15 @@ final_strings.regex.%.hfst: final_strings.%.regex
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
 		-o $@
 
-final_strings_all.%.hfst: \
-		final_strings.regex.%.hfst \
-		final_strings.list.%.hfst
-	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
-		-o $@
+final_strings.all.%.hfst: $(final_strings_all_deps)
+	$(final_strings_all_build)
 
 # Helper fst:
 anystar.hfst:
 	$(AM_V_RGX2FST)echo "?*" | $(HFST_REGEXP2FST) -o $@
 
 # Error model building - list of strings known to be misspelled:
-strings.%.hfst: strings.%.txt anystar.hfst
+strings.txt.%.hfst: strings.%.txt anystar.hfst
 	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
 		| $(HFST_CONCATENATE)   anystar.hfst - \
@@ -160,48 +276,46 @@ strings.%.hfst: strings.%.txt anystar.hfst
 		-o $@
 
 # strings regex file:
-strings-regex.%.hfst: strings-regex.%.regex anystar.hfst
+# Multiply the strings-regex file with the specified value.
+# This makes the total edit distance for the content of the regex file N times
+# larger as the edit distance, since the file is multiplied again as part of
+# the editStrings build target. The idea is that the regex should contain a
+# highly targeted set of frequent spelling errors.
+strings.regex.%.hfst: strings.%.regex anystar.hfst
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
 		| $(HFST_CONCATENATE)   anystar.hfst - \
 		| $(HFST_CONCATENATE) - anystar.hfst   \
+		| $(HFST_REPEAT) -f 1 -t $(STRING_REGEX_EDIT_DISTANCE) \
 		-o $@
 
-# Multiply the strings-regex file with the edit distance value.
-# This makes the total edit distance for the content of the regxex file twice
-# as large as the edit distance, since the file is multiplied again as part of
-# the editStrings build target. The idea is that the regex should contain a
-# highly targeted set of frequent spelling errors.
-strings-regex-multiplied.%.hfst: strings-regex.%.hfst
-	$(AM_V_REPEAT)$(HFST_REPEAT) -f 1 -t $(DEFAULT_EDIT_DIST) -i $^ \
-		-o $@
+strings.all.%.hfst: $(strings_all_deps)
+	$(strings_all_build)
 
-all-strings.%.hfst: strings-regex-multiplied.%.hfst strings.%.hfst
-	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
-		-o $@
-
-# Combine edit distance with string pattern edits:
-editStrings.%.hfst: all-strings.%.hfst editdist.%.hfst
-	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
+# Combine edit distance with string pattern edits, then multiply according to
+# the specified editing distance. The strings part is included depending on
+# variable setting in Makefile.am.
+editdist.all.%.hfst: $(strings_deps) editdist.%.hfst
+	$(strings_fst_include) \
 		| $(HFST_REPEAT) -f 1 -t $(DEFAULT_EDIT_DIST) \
 		-o $@
 
 # Error model building - list of words known to be misspelled:
-words.%.hfst: words.%.txt easteregg.%.suggtxt
+words.%.hfst: $(words_deps) easteregg.%.suggtxt
 	$(AM_V_STR2FST)grep -h -v '^#' $^ | grep -v '^$$'   \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -o $@
 
 # The final error model is assembled here:
 errmodel.%.hfst: words.%.hfst \
 				 $(initial_letter_deps) \
-				 editStrings.%.hfst \
-				 final_strings_all.%.hfst
+				 editdist.all.%.hfst \
+				 $(final_strings_deps)
 	$(AM_V_RGX2FST)printf "\
 		[ @\"words.$*.hfst\"    \
 		| \
 		  [ \
 		      $(initial_letter_fst_include) \
-		      @\"editStrings.$*.hfst\"  \
-		    ( @\"final_strings_all.$*.hfst\" ) \
+		      @\"editdist.all.$*.hfst\"  \
+		      $(final_strings_fst_include) \
 		  ] \
 		];" \
 		| $(HFST_REGEXP2FST) -S -E $(HFST_FLAGS) \
@@ -211,6 +325,12 @@ errmodel.%.hfst: words.%.hfst \
 # Alternatively, the error model can be constructed as a long list of regular
 # expressions, semicolon separated:
 errmodel.%.hfst: errmodel.%.regex easteregg.%.hfst
+	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
+		| $(HFST_DISJUNCT) - easteregg.$*.hfst \
+		-o $@
+
+# ... or as an xfscript file:
+errmodel.%.hfst: errmodel.%.xfscript easteregg.%.hfst
 	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
 		| $(HFST_DISJUNCT) - easteregg.$*.hfst \
 		-o $@
@@ -252,14 +372,14 @@ clean-local:
 	fi
 
 # Keep these intermediate targets when building using --debug:
-.SECONDARY: editStrings.default.hfst \
+.SECONDARY: editdist.all.default.hfst \
             strings.default.hfst     \
             editdist.default.hfst    \
             editdist.default.regex    \
             words.default.hfst \
             initial_letters.list.default.hfst \
             initial_letters.regex.default.hfst \
-            initial_letters_all.default.hfst \
+            initial_letters.all.default.hfst \
             final_strings.default.hfst
 
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop-hfst_prods_n_upload-dir-include.am

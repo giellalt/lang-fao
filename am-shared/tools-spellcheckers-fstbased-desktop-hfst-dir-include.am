@@ -296,7 +296,7 @@ strings.all.%.hfst: $(strings_all_deps)
 # variable setting in Makefile.am.
 editdist.all.%.hfst: $(strings_deps) editdist.%.hfst
 	$(strings_fst_include) \
-		| $(HFST_REPEAT) -f 1 -t $(DEFAULT_EDIT_DIST) \
+		| $(HFST_REPEAT) -f 1 -t $(EDIT_DISTANCE) \
 		-o $@
 
 # Error model building - list of words known to be misspelled:

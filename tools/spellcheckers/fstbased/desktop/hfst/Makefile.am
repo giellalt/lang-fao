@@ -18,8 +18,8 @@
 # This is the default weight for all editing operations in the error model:
 DEFAULT_WEIGHT=10
 
-# Default edit distanse for the generated, alphabet-based error model:
-DEFAULT_EDIT_DIST=2
+# Edit distanse for the Levenshtein error model:
+EDIT_DISTANCE=2
 
 # Define whether we allow changes to the initial letter(s) in the error model,
 # possible values are:
@@ -42,7 +42,7 @@ INITIAL_EDITS=no
 STRING_EDITS=txt
 # Variable to specify the edit distance for the regex
 # version of the strings file. The total edit distance for those operations is
-# this value multiplied with the value of the DEFAULT_EDIT_DIST variable.
+# this value multiplied with the value of the EDIT_DISTANCE variable.
 STRING_REGEX_EDIT_DISTANCE=2
 
 # Variable to define whether to enable edits of word-final strings (as opposed

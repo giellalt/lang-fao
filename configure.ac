@@ -187,6 +187,7 @@ AC_CONFIG_FILES([Makefile \
                  tools/spellcheckers/fstbased/Makefile \
                  tools/spellcheckers/fstbased/filters/Makefile \
                  tools/spellcheckers/fstbased/desktop/Makefile \
+                 tools/spellcheckers/fstbased/desktop/filters/Makefile \
                  tools/spellcheckers/fstbased/desktop/weighting/Makefile \
                  tools/spellcheckers/fstbased/desktop/foma/Makefile \
                  tools/spellcheckers/fstbased/desktop/hfst/Makefile \

@@ -1,4 +1,12 @@
-$Rev: 135695 $
+$Rev: 136015 $
+The next batch of changes to support building hfst fst's with a specified
+backend fst format: desktop spellers are now supported. The speller fst's will
+be built using the specified backend format up to the point where corpus and tag
+weights are added, when the fst format will be changed to the default
+(openfst-tropical) format. That is, even if you specify (the unweighted) sfst as
+the backend format, the final speller will still be weighted.
+
+r135695:
 Better variable name and clearer comment about editing distance in spellers.
 
 r135618:

@@ -99,8 +99,9 @@ $(CORPUSNAME).clean.txt: \
 unitweighted.hfst: $(UW_SPELLER_SRC) \
                    $(UNITWEIGHT)         \
                    $(srcdir)/weighting/word-boundary.txt
-	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(HFST_FLAGS) \
-		-e -a $$(cat $(UNITWEIGHT)) $< \
+	$(AM_V_REWEIGHT)$(HFST_FST2FST) --format=openfst-tropical -i $< \
+		| $(HFST_REWEIGHT) $(HFST_FLAGS) \
+		-e -a $$(cat $(UNITWEIGHT)) \
 		-o $@
 
 # Keep these intermediate targets when building using --debug:

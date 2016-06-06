@@ -79,23 +79,9 @@ analyser-$(GT_COMMON_SPELLER_NAME).tmp.%: \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-#### HFST transducer fallback target:
-#### - inversion is needed FOR THE ANALYSER because the hfst model is upside
-#### down compared to Xerox AT LOOKUP TIME.
-analyser%.hfst: analyser%.tmp.hfst \
-			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst  \
-			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst
-	$(AM_V_HXFST)$(PRINTF) "read regex                                      \
-			@\"$<\"                                                         \
-		.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"  \
-		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" \
-		; \n\
-		invert \n\
-		save stack $@\n\
-		quit\n" | $(HFST_XFST) -p $(VERBOSITY)
-
-#### Xerox & Foma analyser fallback target:
-#### - inversion is needed in the final step for the GENERATOR.
+#### Transducer fallback targets:
+#### - inversion is needed FOR THE HFST ANALYSER because the hfst model is upside
+#### down compared to Xerox/Foma AT LOOKUP TIME.
 define giella_speller_analysers
 analyser%.$(1): analyser%.tmp.$(1) \
 			$$(top_builddir)/src/filters/remove-hyphenation-marks.$(1) \
@@ -105,12 +91,14 @@ analyser%.$(1): analyser%.tmp.$(1) \
 		.o. @\"$$(top_builddir)/src/filters/remove-hyphenation-marks.$(1)\"  \
 		.o. @\"$$(top_builddir)/src/filters/remove-infl_deriv-borders.$(1)\" \
 		; \n\
-		 save stack $$@\n\
-		 quit\n" | $$(XFST_TOOL)
+		$$(INVERT_HFST)\
+		save stack $$@\n\
+		quit\n" | $$(XFST_TOOL)
 endef
 $(foreach fst,xfst foma,$(eval $(call giella_speller_analysers,$(fst))))
 
 # Default fallback processing for the generators:
+#### - inversion is needed in the final step for the Xerox/Foma GENERATOR.
 define giella_speller_generators
 generator%.$(1): analyser%.tmp.$(1)
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "\
@@ -126,4 +114,5 @@ clean-local:
 	-rm -f *.hfst *.xfst
 
 include $(top_srcdir)/am-shared/xfscript-include.am
+include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am

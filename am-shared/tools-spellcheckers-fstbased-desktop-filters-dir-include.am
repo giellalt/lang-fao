@@ -19,36 +19,48 @@
 HFST_REGEXP2FST_FLAGS="--xerox-composition=ON"
 
 ####### Source file and target defs: ########
-GT_FSTSPELLER_FILTER_SRCS=
+GIELLA_DESKTOPSPELLER_FILTER_SRCS=
+
+# Filters from src/filters/ that needs to be converted to another fst format to
+# ensure proper speller builds when using fst formats other than the default:
+GIELLA_SRC_FILTERS=remove-word-boundary.hfst \
+                   remove-usage-tags.hfst
 
 # These will be included in the distribution:
-EXTRA_DIST=$(GT_FSTSPELLER_FILTER_SRCS)
+EXTRA_DIST=$(GIELLA_DESKTOPSPELLER_FILTER_SRCS)
 
-GT_FSTSPELLER_FILTER_ALL_SRCS=\
-        $(GT_FSTSPELLER_FILTER_SRCS) \
-        $(GT_LOCAL_FSTSPELLER_FILTER_SRCS) \
+GIELLA_DESKTOPSPELLER_FILTER_ALL_SRCS=\
+        $(GIELLA_DESKTOPSPELLER_FILTER_SRCS) \
+        $(GIELLA_LOCAL_DESKTOPSPELLER_FILTER_SRCS) \
         $(GENERATED_REGEXES)
 
 # This is what we build:
-noinst_DATA=$(GT_FSTSPELLER_FILTER_TARGETS)
+noinst_DATA=$(GIELLA_DESKTOPSPELLER_FILTER_TARGETS) $(GIELLA_FILTERS_TO_CONVERT)
 
 # Automatically detect the targets to be built:
-GT_FSTSPELLER_FILTER_TARGETS=
+GIELLA_DESKTOPSPELLER_FILTER_TARGETS=
 
 if WANT_SPELLERS
 if CAN_HFST
-GT_FSTSPELLER_FILTER_TARGETS+=\
-        $(patsubst %.regex,%.hfst,$(GT_FSTSPELLER_FILTER_ALL_SRCS))
+GIELLA_DESKTOPSPELLER_FILTER_TARGETS+=\
+        $(patsubst %.regex,%.hfst,$(GIELLA_DESKTOPSPELLER_FILTER_ALL_SRCS))
 endif # CAN_HFST
 
 if CAN_XFST
-GT_FSTSPELLER_FILTER_TARGETS+=\
-        $(patsubst %.regex,%.xfst,$(GT_FSTSPELLER_FILTER_ALL_SRCS))
+GIELLA_DESKTOPSPELLER_FILTER_TARGETS+=\
+        $(patsubst %.regex,%.xfst,$(GIELLA_DESKTOPSPELLER_FILTER_ALL_SRCS))
 endif # CAN_XFST
+
+GIELLA_FILTERS_TO_CONVERT=$(GIELLA_LOCAL_SRC_FILTERS) $(GIELLA_SRC_FILTERS)
+
+$(GIELLA_FILTERS_TO_CONVERT): \
+%.hfst: $(top_builddir)/src/filters/%.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) --format=openfst-tropical -i $< -o $@
+
 endif # WANT_SPELLERS
 
 ####### Copy regex files from the GTD core if not found locally: ########
-%.regex: $(GTCORE)/giella-shared/common/tools/spellcheckers/fstbased/filters/%.regex
+%.regex: $(GTCORE)/giella-shared/common/tools/spellcheckers/fstbased/desktop/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 
 ##########################################

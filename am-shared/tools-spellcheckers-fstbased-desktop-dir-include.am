@@ -42,7 +42,7 @@ noinst_DATA=$(GT_COMMON_SPELLER_HFST)
 
 #### 1. Copy base fst from parent dir:
 generator-desktopspeller-gt-norm-base.hfst: ../generator-fstspeller-gt-norm.hfst
-	$(AM_V_CP)cp -f $< $@
+	$(AM_V_FST2FST)$(HFST_FST2FST) --format=openfst-tropical -i $< -o $@
 
 #### 2. Add corpus-based frequency weights (all non-hits will disappear from
 ####    the fst):
@@ -81,14 +81,14 @@ generator-desktopspeller-gt-norm-base.hfst: ../generator-fstspeller-gt-norm.hfst
 ####    general cleanup:
 generator-desktopspeller-gt-norm.tmp.hfst: \
 			generator-desktopspeller-gt-norm-tag_weighted.hfst \
-			$(top_builddir)/src/filters/remove-word-boundary.hfst \
-			$(top_builddir)/src/filters/remove-usage-tags.hfst
+			filters/remove-word-boundary.hfst \
+			filters/remove-usage-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "\
 	set encode-weights ON \n\
 	read regex \
-	    @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\" \
+	    @\"filters/remove-usage-tags.hfst\" \
 	.o. @\"$<\" \
-	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"  \
+	.o. @\"filters/remove-word-boundary.hfst\"  \
 	; \n\
 	save stack $@\n\
 	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)

@@ -46,7 +46,7 @@ generator-fstspeller-gt-norm.tmp.hfst: \
 		; \n\
 		 twosided flag-diacritics\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
 
 
 # Copy the tmp transducer to the final one. This allows local overrides.
@@ -62,4 +62,5 @@ clean-local:
 	-rm -f *.hfst *.txt *.att
 
 include $(top_srcdir)/am-shared/xfscript-include.am
+include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am

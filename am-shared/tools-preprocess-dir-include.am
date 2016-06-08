@@ -94,22 +94,40 @@ $(ABBR): \
 ### Build a tokenising analyser based on a pmatch script and the
 ### regular disamb-analyser - and the same applies to the grammar checker:
 
-analyser-%-gt-desc.hfst: $(top_builddir)/src/analyser-%-gt-desc.hfst \
+# Copy the analyser file from src/*.tmp.hfst:
+analyser-%-gt-desc.tmp.hfst: $(top_builddir)/src/analyser-%-gt-desc.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
+
+# Prepare analysers used for building the tokenisers:
+analyser_relabelled-%-gt-desc.hfst: analyser-%-gt-desc.hfst \
 						 btrelabeller.hfst \
 						 relabeller.hfst
-	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) -f '@P.Pmatch.Backtrack@' -T btrelabeller.hfst $< -o $@.tmp
-	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) -f '@P.Pmatch.Loc@'       -T   relabeller.hfst $@.tmp -o $@
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) \
+		-f '@P.Pmatch.Backtrack@' -T btrelabeller.hfst $< \
+		| $(HFST_SUBSTITUTE) \
+		-f '@P.Pmatch.Loc@'       -T   relabeller.hfst \
+		-o $@
 
-tokeniser-%.pmhfst: tokeniser-%.pmscript analyser-%.hfst
+# This is the real tokeniser build target:
+tokeniser-%.pmhfst: tokeniser-%.pmscript analyser_relabelled-%.hfst
 	$(AM_V_PM2FST)$(HFST_PMATCH2FST) < $< > $@
 
+# Helper fst one:
 btrelabeller.hfst:
-	$(AM_V_TXT2FST)$(PRINTF) '0\t1\t@0@\t@PMATCH_BACKTRACK@\n1\t2\t@0@\t@PMATCH_INPUT_MARK@\n2\n' \
-		| $(HFST_TXT2FST) -e '@0@' -o $@
+	$(AM_V_TXT2FST)$(PRINTF) \
+		'0\t1\t@0@\t@PMATCH_BACKTRACK@\n1\t2\t@0@\t@PMATCH_INPUT_MARK@\n2\n' \
+		| $(HFST_TXT2FST) -e '@0@' \
+		-o $@
 
+# Helper fst two:
 relabeller.hfst:
 	$(AM_V_TXT2FST)$(PRINTF) '0\t1\t@0@\t@PMATCH_INPUT_MARK@\n1\n' \
-		| $(HFST_TXT2FST) -e '@0@' -o $@
+		| $(HFST_TXT2FST) -e '@0@' \
+		-o $@
+
+# Fallback pattern target for no local processing cases:
+%.hfst: %.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
 
 ####### Includes: ###########
 include $(top_srcdir)/am-shared/silent_build-include.am

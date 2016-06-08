@@ -95,12 +95,17 @@ $(ABBR): \
 ### regular disamb-analyser - and the same applies to the grammar checker:
 
 analyser-%-gt-desc.hfst: $(top_builddir)/src/analyser-%-gt-desc.hfst \
+						 btrelabeller.hfst \
 						 relabeller.hfst
-	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) -f '@P.Pmatch.Loc@' -T relabeller.hfst $< \
-		-o $@
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) -f '@P.Pmatch.Backtrack@' -T btrelabeller.hfst $< -o $@.tmp
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) -f '@P.Pmatch.Loc@'       -T   relabeller.hfst $@.tmp -o $@
 
 tokeniser-%.pmhfst: tokeniser-%.pmscript analyser-%.hfst
 	$(AM_V_PM2FST)$(HFST_PMATCH2FST) < $< > $@
+
+btrelabeller.hfst:
+	$(AM_V_TXT2FST)$(PRINTF) '0\t1\t@0@\t@PMATCH_BACKTRACK@\n1\t2\t@0@\t@PMATCH_INPUT_MARK@\n2\n' \
+		| $(HFST_TXT2FST) -e '@0@' -o $@
 
 relabeller.hfst:
 	$(AM_V_TXT2FST)$(PRINTF) '0\t1\t@0@\t@PMATCH_INPUT_MARK@\n1\n' \

@@ -1,4 +1,9 @@
-$Rev: 136363 $
+$Rev: 136374 $
+Removed '+' in front of tag patterns to be extracted from the tag list and used
+as input to regex generation scripts. This was done to accomodate the use of
+prefix tags, where the '+' is at the end of the tag, not in the beginning.
+
+r136363:
 Added new test to check that the speller accepts all lemmas in the lexicon.
 
 r136280:

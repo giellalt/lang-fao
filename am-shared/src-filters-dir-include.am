@@ -274,19 +274,19 @@ endif # HAVE_AREAS
 ## +Sem/DummyTag, +Dial/DummyTag, etc.).
 
 area-tags.txt: $(GT_TAGS)
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Area/
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Area/
 
 dialect-tags.txt: $(GT_TAGS)
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Dial/
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Dial/
 
 derivation-tags.txt: $(GT_TAGS)
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Der/
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Der/
 
 error-tags.txt: $(GT_TAGS)
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Err/
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Err/
 
 semantic-tags.txt: $(GT_TAGS)
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ +Sem/
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Sem/
 
 ####### Build rules for creating regexes from tag list: #######
 

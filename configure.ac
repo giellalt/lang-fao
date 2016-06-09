@@ -230,6 +230,9 @@ AC_CONFIG_FILES([test/src/morphology/generate-propernoun-lemmas.sh], \
       [chmod a+x test/src/morphology/generate-propernoun-lemmas.sh])
 AC_CONFIG_FILES([test/src/morphology/generate-verb-lemmas.sh], \
       [chmod a+x test/src/morphology/generate-verb-lemmas.sh])
+# Lemma acceptance test for spellers, all languages:
+AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/desktop/hfst/accept-all-lemmas.sh], \
+      [chmod a+x test/tools/spellcheckers/fstbased/desktop/hfst/accept-all-lemmas.sh])
 # Shorthand shell scripts instead of the old-type aliases - all languages:
 AC_CONFIG_FILES([tools/shellscripts/ufao-gt.sh], \
       [chmod a+x tools/shellscripts/ufao-gt.sh])

@@ -1,4 +1,9 @@
-$Rev: 136374 $
+$Rev: 136431 $
+Updated filename reference, and added a pmatch setting fixes that the issue
+where words next to punctuation like "ja." don't get analysed.
+
+
+r136374:
 Removed '+' in front of tag patterns to be extracted from the tag list and used
 as input to regex generation scripts. This was done to accomodate the use of
 prefix tags, where the '+' is at the end of the tag, not in the beginning.

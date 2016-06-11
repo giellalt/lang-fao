@@ -32,7 +32,9 @@
 !! Pmatch documentation:
 !! https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch
 
-Define morphology @bin"analyser-disamb-gt-desc.hfst" ;
+set need-separators off
+
+Define morphology @bin"analyser_relabelled-disamb-gt-desc.hfst" ;
 
 Define incondform      Punct | {…} ;
 
@@ -45,7 +47,8 @@ Define morphoword       morphology                   LC([blank | #]) RC([blank |
 !! 1) unknown word-like forms, and
 !! 2) unmatched strings
 !! We want to give 1) a match, but let 2) be treated specially by hfst-tokenise -a
-Define alphabet "a-z" | {á}|{š}|{ž}|{č}|{đ}|{ŋ}|{ŧ}|{æ}|{ä}|{ø}|{ö}|{å} | "A-Z" | {Á}|{Š}|{Ž}|{Č}|{Đ}|{Ŋ}|{Ŧ}|{Æ}|{Ä}|{Ø}|{Ö}|{Å} ;
+Define alphabet "a-z" | {á}|{š}|{ž}|{č}|{đ}|{ŋ}|{ŧ}|{æ}|{ä}|{ø}|{ö}|{å}
+              | "A-Z" | {Á}|{Š}|{Ž}|{Č}|{Đ}|{Ŋ}|{Ŧ}|{Æ}|{Ä}|{Ø}|{Ö}|{Å} ;
 Define alphaword alphabet+;
 !! TODO: Could use something like this, but built-in's don't include šžđčŋ:
 ! Define MixCase(X) [OptCap(X) | UpCase(X)];

@@ -95,7 +95,7 @@ analyser%.$(1): analyser%.tmp.$(1) \
 		save stack $$@\n\
 		quit\n" | $$(XFST_TOOL)
 endef
-$(foreach fst,xfst foma,$(eval $(call giella_speller_analysers,$(fst))))
+$(foreach fst,hfst xfst foma,$(eval $(call giella_speller_analysers,$(fst))))
 
 # Default fallback processing for the generators:
 #### - inversion is needed in the final step for the Xerox/Foma GENERATOR.

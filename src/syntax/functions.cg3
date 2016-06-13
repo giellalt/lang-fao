@@ -95,8 +95,7 @@ LIST Sem/Act = Sem/Act Sem/Act_Group Sem/Act_Plc Sem/Act_Route; #Activity #Ollet
 LIST Sem/Adr = Sem/Adr ;
 LIST Sem/Amount = Sem/Amount Sem/Amount_Build Sem/Amount_Semcon;
 LIST Sem/Ani = Sem/Ani Sem/Ani_Body-abstr_Hum Sem/Body Sem/Body-abstr Sem/Body-abstr_Prod-audio_Semcon Sem/Body_Body-abstr Sem/Body_Clth Sem/Body_Food Sem/Body_Group_Hum Sem/Body_Hum Sem/Body_Mat Sem/Body_Measr Sem/Body_Obj_Tool-catch Sem/Body_Plc Sem/Body_Time ; #Animal #bivdit X-Loc veahki.
-LIST Sem/Aniprod = Sem/Aniprod Sem/Aniprod_Hum
-Sem/Aniprod_Obj-clo Sem/Aniprod_Perc-phys Sem/Aniprod_Plc ;
+LIST Sem/Aniprod = Sem/Aniprod Sem/Aniprod_Hum Sem/Aniprod_Obj-clo Sem/Aniprod_Perc-phys Sem/Aniprod_Plc ;
 LIST Sem/Body = Sem/Body Sem/Body_Body-abstr Sem/Body_Clth Sem/Body_Food Sem/Body_Group_Hum Sem/Body_Hum Sem/Body_Mat Sem/Body_Measr Sem/Body_Obj_Tool-catch Sem/Body_Plc Sem/Body_Time ; #Body #Buohkat ceggejedje gieđa. Mon gal attán dutnje bealji vuollái. Go duos dás speččohallá bahtii de gal buollá bargomokta! Čuolda basttii sus alemii.
 LIST Sem/Body-abstr = Sem/Ani_Body-abstr_Hum Sem/Body-abstr Sem/Body-abstr_Prod-audio_Semcon Sem/Body_Body-abstr ; # jierbmi, siellu, ...
 LIST Sem/Build = Sem/Amount_Build Sem/Ani_Build Sem/Ani_Build_Hum_Txt Sem/Build Sem/Build_Build-part Sem/Build_Clth-part Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Org Sem/Build_Route ; #Build #Sem #Syn: hukset X deike
@@ -109,7 +108,6 @@ LIST Sem/Ctain = Sem/Ctain Sem/Ctain_Feat-phys Sem/Ctain_Furn Sem/Ctain_Tool Sem
 LIST Sem/Ctain-abstr = Sem/Ctain-abstr Sem/Ctain-abstr_Org ;
 LIST Sem/Ctain-clth = Sem/Ctain-clth Sem/Ctain-clth_Plant Sem/Ctain-clth_Veh ;
 LIST Sem/Curr = Sem/Clth-jewl_Curr Sem/Curr Sem/Curr_Org; #Syn: Mun mávssan dasa 100 X. Dat máksá 100 X.
-LIST Sem/Date = Sem/Date ;
 LIST Sem/Dance = Sem/Dance Sem/Dance_Org Sem/Dance_Prod-audio ; #Ollugat dánso swinga lávddi ovddabeale.
 LIST Sem/Dir = Sem/Dir ;
 LIST Sem/Domain = Sem/Domain Sem/Domain_Food-med Sem/Domain_Prod-audio;
@@ -191,6 +189,7 @@ LIST Sem/Veh = Sem/Ani_Veh Sem/Ctain-clth_Veh Sem/Feat-phys_Veh Sem/Hum_Veh Sem/
 #LIST Sem/Veh-cntain = Sem/Veh-cntain ; #Manan X sisa. #vuolggán X:Com.
 LIST Sem/Wthr = Sem/Feat-phys_Wthr Sem/Hum_Wthr Sem/Perc-emo_Wthr Sem/Plc_Substnc_Wthr Sem/Plc_Wthr Sem/Substnc_Wthr Sem/Time_Wthr Sem/Wthr ; #Sem: Birget X:Ess. jietna gullui X-Loc (balvvas). Olgun/Odne lea + Wthr-Nom. ?Man ollu lea Wthr-Nom? Wthr-Gen maŋŋel boahtá X. Makkár lea dálki/siivu? #Ex: árvi, borga, muohtá, čoaskadálki, baján, bievla, bodnejiekŋa, bivdodálki, gasis, guoldu
 LIST Sem/Wpn = Sem/Wpn ; #oaggut oaggunstákkuin, goddit X+Com
+LIST Year_Date = Sem/Date Sem/Year ;
 
 LIST Sem/Date = Sem/Date ;
 LIST Sem/Year = Sem/Year ;
@@ -391,8 +390,13 @@ LIST @ADVL = @ADVL @ADVL> @ADVL< @<ADVL @>ADVL @-F<ADVL ;
 LIST @>ADVL = @>ADVL ;
 LIST @ADVL< = @ADVL< ;
 LIST @<ADVL = @<ADVL ;
+LIST @<ADVL-ela = @<ADVL-ela ;
+LIST @<ADVL-ine = @<ADVL-ine ;
 LIST @ADVL> = @ADVL> ;
+LIST @ADVL-ela> = @ADVL-ela> ;
+LIST @ADVL-ine> = @ADVL-ine> ;
 LIST @ADVL>CS = @ADVL>CS ;
+
 
 LIST <hab> = <hab> ;
 LIST <ext> = <ext> ;
@@ -731,7 +735,7 @@ LIST ADV-NOT-NAMES = "Ain" "Anne" "Diego" "Dieppe" "Enge" "Galle" "Haga"
 SET ADV-NOT-OTHER-POS = ADV-NOT-VERB OR ADV-NOT-NOUN OR ADV-NOT-NAMES ;
 
 LIST HAB-CASE = Loc (<smj> Ine) (<sma> Gen) ;
-LIST HAB-ACTOR-ALL = Sem/Hum Sem/Mal Sem/Sur Sem/Fem Sem/Ani  Pers ("gii") Indef Coll ;
+SET HAB-ACTOR-ALL = Sem/Hum OR Sem/Mal OR Sem/Sur OR Sem/Fem OR Sem/Org OR Pers OR ("gii") OR Indef OR Coll ;
 SET HAB-ACTOR = HAB-ACTOR-ALL - ("cihca") ;
 SET HAB-ACTOR-NOT-HUMAN = Sem/Org ;
 
@@ -743,7 +747,7 @@ SETS
 #!! * Sets for verbs
 # -----
 
-LIST NOT-REAL-V = (Actio Nom) (Actio Gen) (Actio Loc) (Actio Com) PrsPrc ;
+LIST NOT-REAL-V = (Actio Nom) (Actio Gen) (Actio Loc) (Actio Com) PrsPrc (V @>N) ;
 
 SET REAL-V = V - NOT-REAL-V  ;
   #!! ** V is all readings with a V tag in them, REAL-V should
@@ -1013,7 +1017,7 @@ MAP:hab10 (<hab> @<ADVL) TARGET HAB-ACTOR + HAB-CASE (NEGATE 0 HAB-ACTOR-NOT-HUM
 	#$ Doppe leamaš sámiin stuora deaddu.
 
 #!! * __habDain__ (<hab> @ADVL>) for (Pron Dem Pl Loc) if leat followed by Nom to the right
-MAP:habDain (<hab> @ADVL>) TARGET (Pron Dem Pl Loc)(*1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE - FAUXV LINK 1 Nom) ;
+MAP:habDain (<hab> @ADVL>) TARGET (Pron Dem Pl Loc)(*1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE - FAUXV LINK 1 Nom)(NEGATE -1 Num)(NEGATE -1 (N Gen) LINK -1 Num) ;
 MAP:habDain2 (<hab> @ADVL>) TARGET (Pron Dem Pl Loc)(-1 Nom LINK -1 (Pron Interr))(*1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE - FAUXV LINK *1 Ess) ;
 	#$ Hui dávjá lea nu ahte dain leat olbmot, geat eai doarvái bures dovdda sámi kultuvrra eaige sin jurddašanvuogi.
 	#$ Makkár vuoigatvuođat dain leat Norgga riikavuložin?
@@ -1130,7 +1134,7 @@ MAP:n>Indef (@>Pron) TARGET (Pron Indef Attr) (*1 ("eará") BARRIER NP-BOUNDARY 
 	#Comment: should be expanded
 
 #!! * __>nNum__ (@>N) for numerals if; there is a noun to your right. You are not allowed to be (Sg Nom), (Sg Acc) or (Sem/Date)
-MAP:>nNum (@>N) TARGET Num - (Sg Nom) - (Sg Acc) - Sem/Date (*1 N BARRIER NOT-A OR Num)  ;
+MAP:>nNum (@>N) TARGET Num - (Sg Nom) - (Sg Acc) - Year_Date (*1 N BARRIER NOT-A OR Num)  ;
 	#$ Juos mearriduvvo meahcceeatnamiid nuppástuvvan geavaheapmi golmma ja dušše golmma stivrralahtu doarjagiin ja olles uhcitlohku vuođđudallá oainnus sámi kultuvrra, boazodoalu, meahcásteami, ealáhusdoaimmaheami ja servodateallima destii mii lea árvvoštallojuvvon Sámedikki válddahusaid vuođul, de sáhttá uhcitlohku ovtta oli stivrračoahkkima áigge gáibidit ášši Sámedikki gieđahallamii.
 
 MAP:>n (@>Num) TARGET Gen - JAHKI (1 Num)(NEGATE 0 OKTA + Nom LINK *1 (N Pl Loc) BARRIER NOT-NPMOD)(NEGATE 0 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) ;
@@ -1140,7 +1144,7 @@ MAP:>a (@>A) TARGET Gen - TIME-N (1 A)(NEGATE 1 Attr LINK *1 N BARRIER NOT-A-ADV
 
 
 #!! * __noun>n__ (@>N) for Gen; if there is a noun to your right. Restrictions: Not if you are: a time related word. Not if you are OKTA with Pl Loc to your right. Not if CC is to your right followed by another Gen and then Po. Not if you are HUMAN and to your right is Actio Nom folloed by a noun.
-MAP:>nNoun (@>N) TARGET Gen - TIME-N - Sem/Date (*1 N BARRIER NOT-NPMODADV OR A - Attr)(NEGATE 0 OKTA + Nom LINK *1 (N Pl Loc) BARRIER NOT-NPMOD)(NEGATE 0 Gen LINK 1 CC LINK 1 Gen LINK 1 Po)(NEGATE 0 HUMAN LINK 1 (Actio Nom) LINK 1 N) ;
+MAP:>nNoun (@>N) TARGET Gen - TIME-N - Year_Date (*1 N BARRIER NOT-NPMODADV OR A - Attr)(NEGATE 0 OKTA + Nom LINK *1 (N Pl Loc) BARRIER NOT-NPMOD)(NEGATE 0 Gen LINK 1 CC LINK 1 Gen LINK 1 Po)(NEGATE 0 HUMAN LINK 1 (Actio Nom) LINK 1 N) ;
 	#$ Miehtá čájáhuslanja lea lebbejuvvon plastihkkagovččas ja gávcci máná njuni ovddas lea čáhcemála.
 	#$ Gaskavahku eahkeda lei Kárášjoga kulturvisttis álbmotčoahkkin gosa ledje sullii 50 olbmo boahtán.
 	#$ Dan dihte ohcat guokte lassi stipendiáhttavirggi sámi/eamiálbmotguoskevaš dutkamiidda.
@@ -1243,17 +1247,19 @@ MAP:r289 (@APP-Pron<) TARGET (N Nom) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LI
 MAP:app-pron< (@APP-Pron<) TARGET $$CASE - Gen (0 N LINK -1 $$CASE + Pers)(1 VFIN) ;
 	#$ Ja moai boazodoalloáirasat áigguime vaikko guovttá joatkit barggu.
 
-MAP:r290 (@APP-N<) TARGET (N Acc) - TIME-N IF (*-1 (N Acc) OR (A Acc) BARRIER APP-BOUNDARY OR CC OR (N Nom) LINK NOT *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 EOS) ;
+MAP:r290 (@APP-N<) TARGET (N Acc) - TIME-N IF (*-1 (N Acc) - @>N OR (A Acc) - @>N BARRIER APP-BOUNDARY OR CC OR (N Nom) LINK NEGATE *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 EOS) ;
 	## Dovddatgo Bienne Káre-Ánne, skuvlla bassi?
 	#$ Sámi áššiid stáhtačállin leat nammadan guovdageaidnulačča Anders J. Bals.
-MAP:r291 (@APP-N<) TARGET (N Acc) - TIME-N IF (*-1 (N Acc) BARRIER APP-BOUNDARY OR CC OR (N Nom) LINK NOT *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 COMMA LINK 1 S-BOUNDARY) ;
+	#% Dus lea vuoigatvuohta oažžut buori oahpahusa. # should not his this one
+	
+MAP:r291 (@APP-N<) TARGET (N Acc) - TIME-N IF (*-1 (N Acc) BARRIER APP-BOUNDARY OR CC OR (N Nom) LINK NEGATE *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 COMMA LINK 1 S-BOUNDARY) ;
 
 MAP:nugoAppn< (@APP-N<) TARGET (N Acc) IF (*-1 ("nugo") OR ("sihke") BARRIER APP-BOUNDARY LINK -1 COMMA LINK -1 (N Acc) LINK *-1 BOS BARRIER NOT-NPMOD)(*1 COMMA BARRIER APP-BOUNDARY) ;
 MAP:nugoAppn< (@APP-Pron<) TARGET (N Acc) IF (*-1 ("nugo") OR ("sihke") BARRIER APP-BOUNDARY LINK -1 COMMA LINK -1 (Pron Acc) LINK *-1 BOS BARRIER NOT-NPMOD)(*1 COMMA BARRIER APP-BOUNDARY) ;
 	#$ Muhtun sámi biktasiid, nugo gápmagiid ja vuoddagiid, sii geavahedje guhkit, gitta 1960-logu rádjai.
 
-MAP:r292 (@APP-Pron<) TARGET (N Acc) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR (N Nom) LINK -1 (Pron Acc) LINK NOT *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 EOS) ;
-MAP:r293 (@APP-Pron<) TARGET (N Acc) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR (N Nom) LINK -1 (Pron Acc) LINK NOT *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 COMMA LINK 1 S-BOUNDARY) ;
+MAP:r292 (@APP-Pron<) TARGET (N Acc) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR (N Nom) LINK -1 (Pron Acc) LINK NEGATE *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 EOS) ;
+MAP:r293 (@APP-Pron<) TARGET (N Acc) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR (N Nom) LINK -1 (Pron Acc) LINK NEGATE *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 COMMA LINK 1 S-BOUNDARY) ;
 	#$ Oidnet go Mihkkala, min nuoramus bártni?
 	#$ Mon oainnán fierpmi, su mearkka, ja dieđán ahte Spider-Man lea leamaš das.
 
@@ -1288,7 +1294,7 @@ MAP:voc (@VOC) TARGET Nom IF (*-1 COMMA BARRIER NOT-NP OR CC LINK *-1 (V Sg2) OR
 
 MAP:voc (@VOC) TARGET Nom IF (-1 Attr LINK *-1 COMMA BARRIER NOT-NP OR CC LINK *-1 (V Sg2) OR (V Du2) OR (V Pl2) OR (Pron Sg2) OR (Pron Du2) OR (Pron Pl2) LINK NOT 0 LEAT)(1 EOS)(0 HUMAN)(NEGATE 0 Sg LINK *-1 V-SG3 BARRIER REAL-V);
 
-MAP:voc (@VOC) TARGET HUMAN IF (*-1 BOS BARRIER WORD - Interj)(1 COMMA LINK *1 VFIN)(NEGATE 1 COMMA LINK 1 Rel LINK NOT *1 ("?")) ;
+MAP:voc (@VOC) TARGET HUMAN IF (*-1 BOS BARRIER WORD - Interj)(1 COMMA LINK *1 VFIN)(NEGATE 1 COMMA LINK 1 Rel LINK NEGATE *1 ("?")) ;
 	#$ - Áhčči, mii lea duot čáppa alit násti doppe guhkkelis?
 	#$ Áhččámet, don guhte leat almmis.
 	#% Ealgabivdojoavku, geain lea válla Suonjus, Guovdageainnu suohkanis, leat boazopolitiijat leamaš golbmii dárkkisteame.
@@ -1420,7 +1426,7 @@ MAP:<extSubj (<ext> @<SUBJ) TARGET Nom - NOT-EXT ((*-1 ("leat") + FMAINV + HAB-V
 	#% Buot buoremus lea ieš vuolgit.
 
 #!! * __<extSubjA__ (<ext> @<SUBJ) for A
-MAP:<extSubjA (<ext> @<SUBJ) TARGET A ((*-1 ("leat") + FMAINV + Sg3 BARRIER NOT-NPMODADV OR Pron LINK *-1 DOPPE OR (N Loc) OR (Dem Loc) OR Ill OR (Sem/Time Adv) OR TIME-N + Gen OR TIME-ADVL OR Po OR Adv OR <hab> BARRIER SV-BOUNDARY OR Nom LINK NOT *-1 Nom BARRIER NOT-NPMODADV) OR (*-1 Ill OR @Pron< BARRIER NOT-NPMOD LINK *-1 ("leat") + FMAINV + Sg3 BARRIER NOT-NPMODADV LINK *-1 DOPPE OR (Sem/Plc Loc) OR Ill OR Sem/Time OR TIME-ADVL OR Po OR <hab> BARRIER SV-BOUNDARY OR Nom))(NEGATE *1 Nom OR Ess BARRIER NOT-NPMOD OR CC OR COMMA)(NEGATE *1 ("ahte") OR go OR Inf BARRIER SV-BOUNDARY) ;
+MAP:<extSubjA (<ext> @<SUBJ) TARGET A ((*-1 ("leat") + FMAINV + Sg3 BARRIER NOT-NPMODADV OR Pron LINK *-1 DOPPE OR (N Loc) OR (Dem Loc) OR Ill OR (Sem/Time Adv) OR TIME-N + Gen OR TIME-ADVL OR Po OR Adv OR <hab> BARRIER SV-BOUNDARY OR Nom LINK NEGATE *-1 Nom BARRIER NOT-NPMODADV) OR (*-1 Ill OR @Pron< BARRIER NOT-NPMOD LINK *-1 ("leat") + FMAINV + Sg3 BARRIER NOT-NPMODADV LINK *-1 DOPPE OR (Sem/Plc Loc) OR Ill OR Sem/Time OR TIME-ADVL OR Po OR <hab> BARRIER SV-BOUNDARY OR Nom))(NEGATE *1 Nom OR Ess BARRIER NOT-NPMOD OR CC OR COMMA)(NEGATE *1 ("ahte") OR go OR Inf BARRIER SV-BOUNDARY) ;
 	#$
 
 #!! * __<extSubj?__ (<ext> @<SUBJ) for Nom; if leat to the left and sentenceboundary
@@ -1523,7 +1529,7 @@ MAP:<spredVeara (@<SPRED) TARGET ("veara" Nom) IF (-1 Gen LINK *-1 IV + FMAINV B
 #!! * __leftCop<spred__ (@<SPRED) for Nom; if copulas is the main verb to the left, and there is no Ess found to the left of cop (note that Loc is allowed between target and cop). OR: if you are Coll or Sem/Group with copulas to your left.
 MAP:leftCop<spred (@<SPRED) TARGET Nom - Pers IF ((*-1 COPULAS + FMAINV BARRIER NOT-NPMODADV OR S-BOUNDARY LINK NEGATE -1 Ess LINK NOT -1 Nom) OR
 (0 Coll OR Sem/Group LINK *-1 COPULAS + FMAINV BARRIER NOT-NPMODADV))
-(NEGATE 1 Nom - Rel)(NEGATE *1 Nom - Rel BARRIER NOT-A OR COMMA OR (LEFT PUNCT))(NEGATE 0 Gen OR Attr OR ("buorre") LINK 1 N)(NEGATE 1 Ess LINK NOT *-2 SUBJ BARRIER S-BOUNDARY) (NEGATE 0 HUMAN LINK *-1 ("orrut") BARRIER NOT-NPMODADV OR S-BOUNDARY) (NEGATE 0 Num LINK 1 HUMAN LINK *-1 ("orrut") BARRIER NOT-NPMODADV OR S-BOUNDARY)(NEGATE 0 Nom LINK *1 (A Nom) BARRIER NOT-ADV) ;
+(NEGATE 1 Nom - Rel)(NEGATE *1 Nom - Rel BARRIER NOT-A OR COMMA OR (LEFT PUNCT))(NEGATE 0 Gen OR Attr OR ("buorre") LINK 1 N)(NEGATE 1 Ess LINK NEGATE *-2 SUBJ BARRIER S-BOUNDARY) (NEGATE 0 HUMAN LINK *-1 ("orrut") BARRIER NOT-NPMODADV OR S-BOUNDARY) (NEGATE 0 Num LINK 1 HUMAN LINK *-1 ("orrut") BARRIER NOT-NPMODADV OR S-BOUNDARY)(NEGATE 0 Nom LINK *1 (A Nom) BARRIER NOT-ADV) ;
 	#$ Čállit lea buoret go lohkat.
 	#$ Soai leat goappašagat nu jallat.
 	#% Mánnáguoddi-spagáin leat spahká-oaivvit sakka guhkibut.
@@ -1578,7 +1584,7 @@ MAP:spredSg> (@SPRED>) TARGET (Sg Nom) IF (1 (Sg Nom) OR SGPRON + Nom OR (Indef 
 	#$ Mii mun lean?
 
 #!! * __AdjSpredSg>__ (@SPRED>) for A Sg Nom; if copulas to the right, but not if A or @<SPRED are found to the right of copulas
-MAP:AdjSpredSg> (@SPRED>) TARGET (A Sg Nom) IF (*1 COPULAS + FMAINV BARRIER SV-BOUNDARY OR COMMA OR CC LINK NOT *1 A OR @<SPRED BARRIER NOT-NPMOD);
+MAP:AdjSpredSg> (@SPRED>) TARGET (A Sg Nom) IF (*1 COPULAS + FMAINV BARRIER SV-BOUNDARY OR COMMA OR CC LINK NEGATE *1 A OR @<SPRED BARRIER NOT-NPMOD);
 	#$ Buorre lea oažžut su boahtit deike.
 	#$ Divrras ii leat gal barggu ektui.
 	#% Dási ferte árvvoštallat daláš gáibádusaid ektui, ja internáhtat ledje buorebut go priváhta olbmuid luhtte orrut.
@@ -1667,8 +1673,8 @@ MAP:subj>Num (@SUBJ>) TARGET (Num Nom) (*1 (N Sg Gen) BARRIER NOT-A LINK *1 VFIN
 MAP:<subjNum (@<SUBJ) TARGET (Num Nom) (*1 (N Sg Gen) BARRIER NOT-A)(*-1 VFIN + Pl3 BARRIER Nom OR S-BOUNDARY) ;
 
 #MAP:subj>Coor2 (@SUBJ>) TARGET Nom (*-1 CC BARRIER NOT-NPMOD LINK -1 @SUBJ>)(*1 VFIN + Pl3 OR VFIN + Du3 BARRIER NOT-ADV-PCLE) ;
-#MAP:<subjCoor1 (@<SUBJ) TARGET Nom IF (1 CC LINK *1 Nom BARRIER NOT-NPMOD)(*-1 VFIN + Pl3 OR VFIN + Du3 BARRIER NOT-ADV-PCLE LINK NOT *-1 Nom BARRIER NOT-ADV-PCLE) ;
-#MAP:<subjCoor2 (@<SUBJ) TARGET Nom (*-1 CC BARRIER NOT-NPMOD LINK -1 @<SUBJ LINK *-1 VFIN + Pl3 OR VFIN + Du3 BARRIER NOT-ADV-PCLE LINK NOT *-1 Nom BARRIER NOT-ADV-PCLE) ;
+#MAP:<subjCoor1 (@<SUBJ) TARGET Nom IF (1 CC LINK *1 Nom BARRIER NOT-NPMOD)(*-1 VFIN + Pl3 OR VFIN + Du3 BARRIER NOT-ADV-PCLE LINK NEGATE *-1 Nom BARRIER NOT-ADV-PCLE) ;
+#MAP:<subjCoor2 (@<SUBJ) TARGET Nom (*-1 CC BARRIER NOT-NPMOD LINK -1 @<SUBJ LINK *-1 VFIN + Pl3 OR VFIN + Du3 BARRIER NOT-ADV-PCLE LINK NEGATE *-1 Nom BARRIER NOT-ADV-PCLE) ;
 #MAP:subj>Coor3 (@SUBJ>) TARGET Nom IF (1 CC OR COMMA LINK *1 @SUBJ> - Rel BARRIER NOT-NPMOD) ;
 #MAP:subj>Coor4 (@SUBJ>) TARGET Nom IF (1 CC OR COMMA LINK *1 @SUBJ> - Rel BARRIER NOT-NPMOD) ;
 #MAP:subj>Coor5 (@SUBJ>) TARGET Nom IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK *-1 @SUBJ> - Rel BARRIER NOT-NPMOD) ;
@@ -1730,9 +1736,19 @@ MAP:f<advl (@-F<ADVL) TARGET ADVL - MO - S-BOUNDARY OR TIME-N + Gen OR (Sem/Rout
 MAP:fadvl> (@-FADVL>) TARGET ADVL - MO - S-BOUNDARY OR TIME-N + Gen OR (Sem/Route Gen)(NEGATE *-1 FMAINV BARRIER S-BOUNDARY OR CS)(*1 SYN-V - VGen - VAbess BARRIER SV-BOUNDARY OR CS OR FMAINV) ;
 	#$ Anán buorebun odne vuolgit go ihttážii vuordit.
 
+LIST ELA-VERBS-sme = "boahtit" "fárret" "beassat" "čuoigat" "jearrat" "vuodjit" "girdit" "johtit" "sirdit" "sihkkelastit" "viehkat" "vuolgit" "váldit" "oažžut"  ;
+
+LIST INE-VERBS-sme =  "čálašit"  "čállit" "geahččat" "goddot" "leat" "lahkonit" "oađđit" "oidnot" "veallát" "čohkkát"  ;
+
+
+MAP:ext (@<ADVL-ine) TARGET ADVL + Loc (*1 (<ext>) BARRIER SV-BOUNDARY) ;
+MAP:ext (@ADVL-ine>) TARGET ADVL + Loc (*-1 (<ext>) BARRIER SV-BOUNDARY) ;
 
 
 #!! * __s-boundary=advl>__ (@ADVL>) for ADVL that resemble s-booundaries. Mainverb to the right.
+MAP:s-boundary=advl> (@ADVL-ine>) TARGET ADVL + Rel (*1 FMAINV + INE-VERBS-sme) ;
+MAP:s-boundary=advl> (@ADVL-ela>) TARGET ADVL + Rel (*1 FMAINV - INE-VERBS-sme) ;
+
 MAP:s-boundary=advl> (@ADVL>) TARGET ADVL + S-BOUNDARY (*1 FMAINV) ;
 	#$ Dál de viimmat asttan lohkat reivve.
 
@@ -1756,13 +1772,33 @@ MAP:-fobj> (@-FOBJ>) TARGET Acc (-1 ADVL + Sem/Hum)(1 (TV Inf @<OBJ) LINK NOT 1 
 
 
 #!! * __advl>mainV__ (@ADVL>) if; finite mainverb not found to the left, but the finite mainverb is found to the right.
-MAP:advl>mainV (@ADVL>) TARGET ADVL (NOT *-1 FMAINV BARRIER S-BOUNDARY)(*1 FMAINV BARRIER SV-BOUNDARY) ;
+
+
+
+MAP (@ADVL-ine>) TARGET N + Loc OR Pron + Loc (NEGATE *-1 FMAINV BARRIER S-BOUNDARY)(*1 FMAINV + INE-VERBS-sme BARRIER SV-BOUNDARY) ;
+
+MAP (@ADVL-ela>) TARGET N + Loc  (NEGATE *-1 FMAINV BARRIER S-BOUNDARY)(*1 FMAINV - INE-VERBS-sme BARRIER SV-BOUNDARY) ;
+
+
+MAP:advl>mainV (@ADVL>) TARGET ADVL (NEGATE *-1 FMAINV BARRIER S-BOUNDARY)(*1 FMAINV BARRIER SV-BOUNDARY) ;
 	#$ Dál de viimmat asttan lohkat reivve.
 	#$ Jos ja go suodjalus ii šat dárbbaš guovllu, dat galgá máhcahuvvot sámi geavahussii, Skum cealká.
 
 
 
 #!! * __V<advl__ (@<ADVL) if; finite mainverb found to the left. Not if a comma is found immediately to the left and a finite mainverb is located somewhere to the right of this comma.
+MAP:V<advl (@<ADVL-ine) TARGET ADVL + N + Loc (*-1 FMAINV + INE-VERBS-sme BARRIER SV-BOUNDARY - (":"))(NEGATE -1 COMMA LINK *1 FMAINV BARRIER S-BOUNDARY) ;
+MAP:V<advl (@<ADVL-ine) TARGET ADVL + Loc + Sem/Time (*-1 FMAINV BARRIER SV-BOUNDARY - (":"))(NEGATE -1 COMMA LINK *1 FMAINV BARRIER S-BOUNDARY) ;
+
+
+MAP:V<advl (@<ADVL-ela) TARGET ADVL + N + Loc (*-1 FMAINV - INE-VERBS-sme BARRIER SV-BOUNDARY - (":"))(NEGATE -1 COMMA LINK *1 FMAINV BARRIER S-BOUNDARY) ;
+
+
+MAP:V<advl (@<ADVL-ine) TARGET N + Loc (*-1 FMAINV + INE-VERBS-sme BARRIER SV-BOUNDARY - (":"))(NEGATE -1 COMMA LINK *1 FMAINV BARRIER S-BOUNDARY) ;
+
+MAP:V<advl (@<ADVL-ela) TARGET N + Loc (*-1 FMAINV - INE-VERBS-sme BARRIER SV-BOUNDARY - (":"))(NEGATE -1 COMMA LINK *1 FMAINV BARRIER S-BOUNDARY) ;
+
+
 MAP:V<advl (@<ADVL) TARGET ADVL - MO - Rel - MOD-ADV - Attr OR TIME-N + Gen OR (Sem/Route Gen) OR Sem/Date OR Sem/Year (*-1 FMAINV BARRIER SV-BOUNDARY - (":"))(NEGATE -1 COMMA LINK *1 FMAINV BARRIER S-BOUNDARY) ;
 	#$ Giellatekno álggahuvvui 1.8.2001 prošeaktan ráhkadit sámegiela grammatihkalaš analysa.
 	#$ Dán filmma leat Kárášjoga nuorat oaidnán, eaige šat vuolgge sirkusii.
@@ -1810,11 +1846,11 @@ MAP:<advlEOS (@<ADVL) TARGET Po OR Pr OR Loc (*-1 FMAINV)(*1 EOS BARRIER FMAINV)
 
 
 #!! * __<advlGen__ (@<ADVL) for (N Gen) if mainverb to the left and no noun to the right
-MAP:<advlGen (@<ADVL) TARGET (N Gen) (*-1 FMAINV BARRIER SV-BOUNDARY)(NOT *1 N BARRIER NOT-A)(NOT 1 Po) ;
+MAP:<advlGen (@<ADVL) TARGET (N Gen) (*-1 FMAINV BARRIER SV-BOUNDARY)(NEGATE *1 N BARRIER NOT-A)(NOT 1 Po) ;
 	#$ Ja dat rievvun lea dáhpáhuvván ollu gerddiid.
 	#$ Nubbi ja goalmmát lađas gustojit seamma láhkai virgehasaid ja earrásiid fápmudeapmái dahkat mearrádusa meahcceeatnamiid nuppástuvvan geavaheamis.
-MAP:advl> (@ADVL>) TARGET (N Gen) (*1 FMAINV BARRIER SV-BOUNDARY OR Po)(NOT *1 N BARRIER NOT-A) ;
-MAP:advl> (@ADVL>) TARGET Ess (*1 FMAINV BARRIER SV-BOUNDARY LINK NOT *1 Nom BARRIER NOT-NPMOD)(NEGATE *-1 REAL-V BARRIER S-BOUNDARY) ;
+MAP:advl> (@ADVL>) TARGET (N Gen) (*1 FMAINV BARRIER SV-BOUNDARY OR Po)(NEGATE *1 N BARRIER NOT-A) ;
+MAP:advl> (@ADVL>) TARGET Ess (*1 FMAINV BARRIER SV-BOUNDARY LINK NEGATE *1 Nom BARRIER NOT-NPMOD)(NEGATE *-1 REAL-V BARRIER S-BOUNDARY) ;
 	#$ Čuoikan ...
 
 #!! * __advlEss>__ (@<ADVL) for weather and time Ess, if FMAINV to the left.
@@ -1825,7 +1861,7 @@ MAP:Acc<advl (@<ADVL) TARGET TIME-N + Acc OR ("gaska" Acc) (*-1 FMAINV BARRIER S
 MAP:Accadvl> (@ADVL>) TARGET TIME-N + Acc OR ("gaska" Acc) (*1 FMAINV BARRIER SV-BOUNDARY) ;
 
 
-MAP:gitta>adv (@>ADVL) TARGET ("gitta" Adv)(NOT *-1 ("váldit") OR ("doallat") OR ("čatnat") OR ("bidjat") OR LEAT OR ("mannat") BARRIER SV-BOUNDARY)(*1 DOHKO OR DOPPE OR Loc OR Ill OR Sem/Time OR Po BARRIER NOT-NPMOD) ;
+MAP:gitta>adv (@>ADVL) TARGET ("gitta" Adv)(NEGATE *-1 ("váldit") OR ("doallat") OR ("čatnat") OR ("bidjat") OR LEAT OR ("mannat") BARRIER SV-BOUNDARY)(*1 DOHKO OR DOPPE OR Loc OR Ill OR Sem/Time OR Po BARRIER NOT-NPMOD) ;
 MAP:>advl (@>ADVL) TARGET Adv IF (0 MOD-ADV)(*1 @ADVL BARRIER NOT-NPMOD);
 
 #!! * __comma<advlEOS__ (@<ADVL) for Adv if; mainverb is to the left. Comma to the left and mainverb to the right in the same clause is not allowed
@@ -1895,6 +1931,7 @@ MAP:-fsubj> (@-FSUBJ>) TARGET HUMAN + Acc (*1 (V @<OBJ) BARRIER NOT-ADV-PCLE) ;
 MAP:-f<obj (@-F<OBJ) TARGET Acc (*-1 (V TV) + SYN-V BARRIER REAL-V OR S-BOUNDARY) ;
 	#$ Máret muitalii Máhte oaidnán guovžža.
 	#$ Gurssa ulbmil lea oahppat goarrut Ivgu gávtti.
+	#$ Dus lea vuoigatvuohta oažžut heivehuvvon oahpahusa.
 
 #!! * __-fsubj>IV__ (@-FSUBJ>) for Acc; if there is an IV-verb acting as a @<OBJ to your right
 MAP:-fsubj> (@-FSUBJ>) TARGET Acc (*1 (IV @<OBJ) BARRIER NOT-ADV-PCLE) ;
@@ -2043,7 +2080,7 @@ MAP:>advl (@>ADVL) TARGET Adv IF (0 DUSSE  OR EASKKA)(*1 @ADVL BARRIER NOT-NPMOD
 MAP:<subj (@<SUBJ) TARGET NP-HEAD-NOM - A OR DUPRON + Nom OR (Num Nom) (*-1 FMAINV BARRIER (":") OR S-BOUNDARY) ;
 
 #!! * __subj>ifV__ (@SUBJ>) for NP-HEAD-NOM, DUPRON or (Num Nom) if; a finite mainverb is found to the right. This is a cleanup rule for subjects
-MAP:subj>ifV (@SUBJ>) TARGET NP-HEAD-NOM - A OR DUPRON + Nom OR (Num Nom) (*1 FMAINV BARRIER (":"))(NEGATE *1 @SUBJ> + (Pron Rel) BARRIER FMAINV OR FAUXV LINK NOT *2 FMAINV BARRIER EOS) ;
+MAP:subj>ifV (@SUBJ>) TARGET NP-HEAD-NOM - A OR DUPRON + Nom OR (Num Nom) (*1 FMAINV BARRIER (":"))(NEGATE *1 @SUBJ> + (Pron Rel) BARRIER FMAINV OR FAUXV LINK NEGATE *2 FMAINV BARRIER EOS) ;
 	#$ Lean ieš oaidnán dange.
 	#$ Mii Sámedikki nuoraidpolitihkalaš lávdegottis (SNPL) áigut čalmmustahttit árbevirolaš ja ođđaáigásaš sámi ealáhusaid.
 	#% Ávdugasat sii geat moraštit.
@@ -2061,7 +2098,7 @@ MAP:hnoun>ifV (@HNOUN) TARGET NP-HEAD-NOM - A OR DUPRON + Nom (*1 FMAINV BARRIER
 
 #!! !!OBJ MAPPING - leftovers
 MAP:<obj (@<OBJ) TARGET NP-HEAD-ACC OR DUPRON + Acc (*-1 FMAINV BARRIER (":") OR S-BOUNDARY) ;
-MAP:obj> (@OBJ>) TARGET NP-HEAD-ACC OR DUPRON + Acc (*1 FMAINV BARRIER (":"))(NOT *-1 Interj BARRIER NOT-NPMOD) ;
+MAP:obj> (@OBJ>) TARGET NP-HEAD-ACC OR DUPRON + Acc (*1 FMAINV BARRIER (":"))(NEGATE *-1 Interj BARRIER NOT-NPMOD) ;
 
 
 #!! !!HNOUN MAPPING
@@ -2129,11 +2166,26 @@ SUBSTITUTE:smaRemove (<sma>) (*) TARGET (<sma>) ;
 #!! !!For Apertium:
 #!! The analysis give double analysis because of optional semtags. We go for the one with semtag.
 
-LIST SEMTAGS = sem_act sem_ani sem_body sem_build sem_build-part sem_clth sem_curr sem_edu sem_hum sem_lang sem_measr sem_org sem_plc sem_time sem_tool sem_txt sem_group sem_semcon sem_veh ;
+LIST SEMTAGS =  Sem/Act Sem/Adr Sem/Amount Sem/Ani Sem/Aniprod Sem/Body Sem/Body-abstr Sem/Build Sem/Build-part Sem/Cat Sem/Clth Sem/Clth-jewl Sem/Clth-part Sem/Ctain Sem/Ctain-abstr Sem/Ctain-clth Sem/Curr Sem/Dance Sem/Dir Sem/Domain Sem/Drink Sem/Dummytag Sem/Edu Sem/Event Sem/Feat Sem/Feat-phys Sem/Feat-psych Sem/Feat-measr Sem/Fem Sem/Food Sem/Food-med Sem/Furn Sem/Game Sem/Geom Sem/Group Sem/Hum Sem/Hum-abstr Sem/Ideol Sem/Lang Sem/Mal Sem/Mat Sem/Measr Sem/Money Sem/Obj Sem/Obj-clo Sem/Obj-cogn Sem/Obj-el Sem/Obj-ling Sem/Obj-rope Sem/Obj-surfc Sem/Org Sem/Part Sem/Perc-cogn Sem/Perc-emo Sem/Perc-phys Sem/Perc-psych Sem/Plant Sem/Plant-part Sem/Plc Sem/Plc-abstr Sem/Plc-elevate Sem/Plc-line Sem/Plc-water Sem/Pos Sem/Process Sem/Prod Sem/Prod-audio Sem/Prod-cogn Sem/Prod-ling Sem/Prod-vis Sem/Rel Sem/Route Sem/Rule Sem/Semcon Sem/Sign Sem/Sport Sem/State Sem/State-sick Sem/Substnc Sem/Sur Sem/Symbol Sem/Time Sem/Tool Sem/Tool-catch Sem/Tool-clean Sem/Tool-it Sem/Tool-measr Sem/Tool-music Sem/Tool-write Sem/Txt Sem/Veh Sem/Wpn Sem/Wthr Sem/Year Sem/Act_Group Sem/Act_Plc Sem/Act_Route Sem/Amount_Build Sem/Amount_Semcon Sem/Ani_Body-abstr_Hum Sem/Ani_Build Sem/Ani_Build-part Sem/Ani_Build_Hum_Txt Sem/Ani_Group Sem/Ani_Group_Hum Sem/Ani_Hum Sem/Ani_Hum_Plc Sem/Ani_Hum_Time Sem/Ani_Plc Sem/Ani_Plc_Txt Sem/Ani_Time Sem/Ani_Veh Sem/Aniprod_Hum Sem/Aniprod_Obj-clo Sem/Aniprod_Perc-phys Sem/Aniprod_Plc Sem/Body-abstr_Prod-audio_Semcon Sem/Body_Body-abstr Sem/Body_Clth Sem/Body_Food Sem/Body_Group_Hum Sem/Body_Group_Hum_Time Sem/Body_Hum Sem/Body_Mat Sem/Body_Measr Sem/Body_Obj_Tool-catch Sem/Body_Plc Sem/Body_Time Sem/Build-part_Plc Sem/Build_Build-part Sem/Build_Clth-part Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Obj Sem/Build_Org Sem/Build_Route Sem/Clth-jewl_Curr Sem/Clth-jewl_Money Sem/Clth-jewl_Plant Sem/Clth_Hum Sem/Ctain-abstr_Org Sem/Ctain-clth_Plant Sem/Ctain-clth_Veh Sem/Ctain_Feat-phys Sem/Ctain_Furn Sem/Ctain_Plc Sem/Ctain_Tool Sem/Ctain_Tool-measr Sem/Curr_Org Sem/Dance_Org Sem/Dance_Prod-audio Sem/Domain_Food-med Sem/Domain_Prod-audio Sem/Edu_Event Sem/Edu_Group_Hum Sem/Edu_Mat Sem/Edu_Org Sem/Event_Food Sem/Event_Hum Sem/Event_Plc Sem/Event_Plc-elevate Sem/Event_Time Sem/Feat-measr_Plc Sem/Feat-phys_Tool-write Sem/Feat-phys_Veh Sem/Feat-phys_Wthr Sem/Feat-psych_Hum Sem/Feat_Plant Sem/Food_Perc-phys Sem/Food_Plant Sem/Game_Obj-play Sem/Geom_Obj Sem/Group_Hum Sem/Group_Hum_Org Sem/Group_Hum_Plc Sem/Group_Hum_Prod-vis Sem/Group_Org Sem/Group_Sign Sem/Group_Txt Sem/Hum_Lang Sem/Hum_Lang_Plc Sem/Hum_Lang_Time Sem/Hum_Obj Sem/Hum_Org Sem/Hum_Plant Sem/Hum_Plc Sem/Hum_Tool Sem/Hum_Veh Sem/Hum_Wthr Sem/Lang_Tool Sem/Mat_Plant Sem/Mat_Txt Sem/Measr_Sign Sem/Measr_Time Sem/Money_Obj Sem/Money_Txt Sem/Obj-play Sem/Obj-play_Sport Sem/Obj_Semcon Sem/Clth-jewl_Org Sem/Org_Rule Sem/Org_Txt Sem/Org_Veh Sem/Part_Prod-cogn Sem/Part_Substnc Sem/Perc-emo_Wthr Sem/Plant_Plant-part Sem/Plant_Tool Sem/Plant_Tool-measr Sem/Plc-abstr_Rel_State Sem/Plc-abstr_Route Sem/Plc_Pos Sem/Plc_Route Sem/Plc_Substnc Sem/Plc_Substnc_Wthr Sem/Plc_Time Sem/Plc_Tool-catch Sem/Plc_Wthr Sem/Prod-audio_Txt Sem/Prod-cogn_Txt Sem/Semcon_Txt Sem/Obj_State Sem/Substnc_Wthr Sem/Time_Wthr Sem/State-sick_Substnc Sem/Org_Prod-cogn  ;
 
 SELECT SEMTAGS ;
-
+SELECT SUB:1 SEMTAGS ; #For Apertium
+SELECT SUB:2 SEMTAGS ; #For Apertium
+#SUBSTITUTE (sem_year num) (num sem_year) ;
 SUBSTITUTE:apertium-unsubstitute (←vdic→) (*) TARGET (←vdic→) ;
+
+SUBSTITUTE:apertium-unhide-derivtags (ex_vblex) (vblex) TARGET (ex_vblex) ;
+SUBSTITUTE:apertium-unhide-derivtags SUB:1 (ex_vblex) (vblex) TARGET (ex_vblex) ;
+SUBSTITUTE:apertium-unhide-derivtags (ex_adj) (adj) TARGET (ex_adj) ;
+SUBSTITUTE:apertium-unhide-derivtags SUB:1 (ex_adj) (adj) TARGET (ex_adj) ;
+SUBSTITUTE:apertium-unhide-derivtags (ex_n) (n) TARGET (ex_n) ;
+SUBSTITUTE:apertium-unhide-derivtags SUB:1  (ex_n) (n) TARGET (ex_n) ;
+SUBSTITUTE:apertium-unhide-derivtags (ex_tv) (tv) TARGET (ex_tv) ;
+SUBSTITUTE:apertium-unhide-derivtags SUB:1  (ex_tv) (tv) TARGET (ex_tv) ;
+SUBSTITUTE:apertium-unhide-derivtags (ex_iv) (iv) TARGET (ex_iv) ;
+SUBSTITUTE:apertium-unhide-derivtags SUB:1  (ex_iv) (iv) TARGET (ex_iv) ;
+#SUBSTITUTE:apertium-change-order (Num Sem/Year Sg) (Num Sg) TARGET (Num Sem/Year Sg) ;
+#SUBSTITUTE:apertium-change-order (Sem/Year Num Sg) (num sg) TARGET (Sem/Year Num Sg) ;
 
 	#=====#
       END #

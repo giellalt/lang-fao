@@ -32,7 +32,10 @@ LEXICON FINAL
 ! Irregular
 
 LEXICON k0
-+N+Msc+Sg: FINAL ; ! januar
++N+Msc+Sg+Nom+Indef: FINAL ; ! januar
++N+Msc+Sg+Acc+Indef: FINAL ; ! januar
++N+Msc+Sg+Dat+Indef: FINAL ; ! januar
++N+Msc+Sg+Gen+Indef: FINAL ; ! januar
 
 ! Weak masculines.
 
@@ -162,6 +165,16 @@ k17 ;
 !LEXICON k9/16
 !k9 ;
 !k16 ;
+
+LEXICON k6_null ! antikrist
+k6e_null ;
+k_flt6 ;
+
+LEXICON k6e_null
++N+Msc: S_M_SGNOM_NULL ;
++N+Msc: S_M_SGACC ;
++N+Msc: S_M_SGDAT ;
++N+Msc: S_M_SGGEN ;
 
 LEXICON k6 ! úlvur
 k6e ;
@@ -1418,9 +1431,9 @@ kv_flt28 ;
 !# ;
 
 LEXICON kv_flt28
-+N+Fem+Pl:%^IUML F_PLNA_NULL ;
-+N+Fem+Pl: F_PLDAT ;
-+N+Fem+Pl: F_PLGEN ;
++N+Fem:%^IUML F_PLNA_NULL ;
++N+Fem: F_PLDAT ;
++N+Fem: F_PLGEN ;
 
 LEXICON kv29 ! móðir
 +N+Fem+Sg:móð kv29e ;
@@ -1464,16 +1477,16 @@ kv32e ;
 kv_flt32 ;
 
 LEXICON kv32e
-+N+Fem+Sg+Nom:%>i FINAL ;
-+N+Fem+Sg+Acc:%>i FINAL ;
-+N+Fem+Sg+Dat:%>i FINAL ;
-+N+Fem+Sg+Gen:%>ar FINAL ;
++N+Fem+Sg+Nom+Indef:%>i FINAL ;
++N+Fem+Sg+Acc+Indef:%>i FINAL ;
++N+Fem+Sg+Dat+Indef:%>i FINAL ;
++N+Fem+Sg+Gen+Indef:%>ar FINAL ;
 
 LEXICON kv_flt32
-+N+Fem+Pl+Nom:%>ar FINAL ;
-+N+Fem+Pl+Acc:%>ar FINAL ;
-+N+Fem+Pl+Dat:%>um FINAL ;
-+N+Fem+Pl+Gen:%>a FINAL ;
++N+Fem+Pl+Nom+Indef:%>ar FINAL ;
++N+Fem+Pl+Acc+Indef:%>ar FINAL ;
++N+Fem+Pl+Dat+Indef:%>um FINAL ;
++N+Fem+Pl+Gen+Indef:%>a FINAL ;
 
 
 LEXICON kv33 ! gleði
@@ -1481,14 +1494,14 @@ kv33e ;
 kv_flt33 ;
 
 LEXICON kv33e 
-+N+Fem+Sg+Nom: FINAL ;
-+N+Fem+Sg+Acc: FINAL ;
-+N+Fem+Sg+Dat: FINAL ;
-+N+Fem+Sg+Gen: FINAL ;
++N+Fem+Sg+Nom+Indef: FINAL ;
++N+Fem+Sg+Acc+Indef: FINAL ;
++N+Fem+Sg+Dat+Indef: FINAL ;
++N+Fem+Sg+Gen+Indef: FINAL ;
 
 LEXICON kv_flt33 
-+N+Fem+Sg+Nom:%>r FINAL ;
-+N+Fem+Sg+Acc:%>r FINAL ;
++N+Fem+Sg+Nom+Indef:%>r FINAL ;
++N+Fem+Sg+Acc+Indef:%>r FINAL ;
 
 LEXICON kv34 ! kraft
 kv34e;
@@ -1888,7 +1901,7 @@ h25e ;
 h_flt25 ;
 
 LEXICON h25e
-+N+Neu: S_N_SGNA ;
++N+Neu:i S_N_SGNA ;
 +N+Neu: S_N_SGDG_is ;
 
 LEXICON h_flt25
@@ -1988,7 +2001,7 @@ LEXICON h34 ! fæ
 +N+Neu: N_PLG ;
 
 LEXICON h42
-+N+Neu: FINAL ; !check.
++N+Neu+Sg+Indef: FINAL ; !check.
 
 
 ! =============== !
@@ -2445,13 +2458,13 @@ LEXICON DF_NA_PLf
 
 LEXICON DF_NA_SGn
    DF_NA_SGn_indef ;
-:i DF_NA_SGn_def ;
+:%>i DF_NA_SGn_def ;
 
 LEXICON DF_NA_SGn_indef
 +Indef: FINAL ;
 
 LEXICON DF_NA_SGn_def
-+Def:%>ð FINAL ;
++Def:ð FINAL ;
 
 LEXICON DF_D_SGn
 +Indef: FINAL ;

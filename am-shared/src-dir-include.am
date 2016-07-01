@@ -66,6 +66,10 @@ GT_ANALYSERS+=analyser-gt-glossing.hfstol
 GT_GENERATORS+=generator-gt-glossing.hfstol
 endif # WANT_GLOSSERS
 
+if WANT_MORPHER
+GT_ANALYSERS+=morpher-gt-desc.hfstol
+endif # WANT_MORPHER
+
 endif # CAN_HFST
 ##### END Hfst target list #####
 
@@ -92,6 +96,10 @@ GT_ANALYSERS+=analyser-gt-glossing.xfst
 GT_GENERATORS+=generator-gt-glossing.xfst
 endif # WANT_GLOSSERS
 
+if WANT_MORPHER
+GT_ANALYSERS+=morpher-gt-desc.xfst
+endif # WANT_MORPHER
+
 endif # CAN_XFST
 ##### END Xerox target list #####
 
@@ -117,6 +125,10 @@ GT_RAW+=analyser-raw-gt-glossing.foma
 GT_ANALYSERS+=analyser-gt-glossing.foma
 GT_GENERATORS+=generator-gt-glossing.foma
 endif # WANT_GLOSSERS
+
+if WANT_MORPHER
+GT_ANALYSERS+=morpher-gt-desc.foma
+endif # WANT_MORPHER
 
 endif # CAN_FOMA
 ##### END Foma target list #####
@@ -677,22 +689,22 @@ lemmatize.default.hfst: analyser-gt-desc.hfst tagsets/lemmatize.relabel
 		-F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
 
 # morpher is a morph segmenting variant: taloautoissani -> talo#auto>i>ssa>ni
-morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
-					 orthography/inituppercase.compose.hfst \
-					 orthography/spellrelax.compose.hfst \
-					filters/remove-hyphenation-marks.hfst        \
-					filters/remove-infl_deriv-borders.hfst       \
-					filters/remove-word-boundary.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
+morpher-gt-desc.tmp.%: analyser-raw-gt-desc.% \
+					 orthography/inituppercase.compose.% \
+					 orthography/spellrelax.compose.% \
+					filters/remove-hyphenation-marks.%        \
+					filters/remove-infl_deriv-borders.%       \
+					filters/remove-word-boundary.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			 [ [@\"$<\" \
-				.o. @\"orthography/inituppercase.compose.hfst\"         \
-				.o. @\"orthography/spellrelax.compose.hfst\"  ].l       \
-			.o. @\"filters/remove-hyphenation-marks.hfst\"  \
-			.o. @\"filters/remove-infl_deriv-borders.hfst\" \
-			.o. @\"filters/remove-word-boundary.hfst\"  ].i \
-			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) -S --xerox-composition=ON \
-		> $@
+				.o. @\"orthography/inituppercase.compose.$*\"         \
+				.o. @\"orthography/spellrelax.compose.$*\"  ].l       \
+			.o. @\"filters/remove-hyphenation-marks.$*\"  \
+			.o. @\"filters/remove-infl_deriv-borders.$*\" \
+			.o. @\"filters/remove-word-boundary.$*\"  ] \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
 ####### Other targets: ###########
 
@@ -732,6 +744,16 @@ generator%.$(1): generator%.tmp.$(1)
 endef
 $(foreach fst,hfst xfst foma,$(eval $(call giella_default_generators,$(fst))))
 
+# Default fallback processing for the morpher:
+define giella_default_morphers
+morpher%.$(1): morpher%.tmp.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "\
+		 load stack $$<\n\
+		 $$(INVERT_HFST)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_default_morphers,$(fst))))
 
 # cleaning
 clean-local:

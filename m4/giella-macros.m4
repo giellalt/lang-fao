@@ -598,6 +598,14 @@ AS_IF([test x$enable_tokenisers == xyes -a x$enable_analysers == xno],
     [AC_MSG_ERROR([You need to enable analysers to build tokenisers])])
 AM_CONDITIONAL([WANT_TOKENISERS], [test "x$enable_tokenisers" != xno])
 
+# Enable building morphers - default is 'no'
+AC_ARG_ENABLE([morpher],
+              [AS_HELP_STRING([--enable-morpher],
+                              [enable morphological segmenter @<:@default=no@:>@])],
+              [enable_morpher=$enableval],
+              [enable_morpher=no])
+AM_CONDITIONAL([WANT_MORPHER], [test "x$enable_morpher" != xno])
+
 ]) # gt_ENABLE_TARGETS
 
 ################################################################################
@@ -643,6 +651,7 @@ cat<<EOF
   * generate abbr.txt: $enable_abbr
   * build tokenisers: $enable_tokenisers
   * build glossing fst's: $enable_glossers
+  * build morphololgical segmenter: $enable_morpher
 
 For more ./configure options, run ./configure --help
 

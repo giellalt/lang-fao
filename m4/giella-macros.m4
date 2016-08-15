@@ -104,6 +104,11 @@ AS_IF([test "x${giella_core_version_ok}" != xno], [AC_MSG_RESULT([$giella_core_v
 [AC_MSG_ERROR([$giella_core_too_old_message])])
 
 ################################
+### Giella-shared dir:
+################
+AC_SUBST([GIELLA_SHARED], [$GTCORE/giella-shared])
+
+################################
 ### Some software that we either depend on or we need for certain functionality: 
 ################
 

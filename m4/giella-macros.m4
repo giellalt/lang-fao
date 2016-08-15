@@ -27,12 +27,13 @@
 # collisions really.
 
 ################################################################################
-# Define functions for setting up paths and checking the GTD core environment:
+# Define functions for checking paths and the GIELLA core environment:
 ################################################################################
 AC_DEFUN([gt_PROG_SCRIPTS_PATHS],
          [
 AC_ARG_VAR([GTMAINTAINER], [define if you are maintaining the infra to get additional complaining about infra integrity])
 AM_CONDITIONAL([WANT_MAINTAIN], [test x"$GTMAINTAINER" != x])
+
 AC_PATH_PROG([GTCORESH], [gt-core.sh], [false],
              [$GTCORE/scripts$PATH_SEPARATOR$GTHOME/gtcore/scripts$PATH_SEPARATOR$PATH])
 
@@ -68,11 +69,11 @@ Could not set GTCORE and thus not find required scripts in:
 EOT
        AC_MSG_ERROR([GTCORE could not be set])])
 
-##### Check the version of the gtd-core, and stop with error message if too old:
+##### Check the version of the giella-core, and stop with error message if too old:
 # This is the error message:
-gtd_core_too_old_message="
+giella_core_too_old_message="
 
-The gtd-core is too old, we require at least $_gtd_core_min_version.
+The giella-core is too old, we require at least $_giella_core_min_version.
 
 *** ==> PLEASE ENTER THE FOLLOWING COMMANDS: <== ***
 
@@ -85,22 +86,22 @@ sudo make install # optional, only needed if installed
                   # earlier or installed on a server.
 "
 
-# Identify the version of gtd-core:
-AC_MSG_CHECKING([the version of the GTD Core])
-AC_PATH_PROG([GTD_VERSION], [gt-version.sh], [no],
+# Identify the version of giella-core:
+AC_MSG_CHECKING([the version of the Giella Core])
+AC_PATH_PROG([GIELLA_CORE_VERSION], [gt-version.sh], [no],
     [$GTCORE/scripts$PATH_SEPARATOR$GTHOME/gtcore/scripts$PATH_SEPARATOR$PATH])
-AS_IF([test "x${GTD_VERSION}" != xno],
-        [_gtd_version=$( ${GTD_VERSION} )],
-        [AC_MSG_ERROR([$gtd_core_too_old_message])
+AS_IF([test "x${GIELLA_CORE_VERSION}" != xno],
+        [_giella_core_version=$( ${GIELLA_CORE_VERSION} )],
+        [AC_MSG_ERROR([$giella_core_too_old_message])
     ])
-AC_MSG_RESULT([$_gtd_version])
+AC_MSG_RESULT([$_giella_core_version])
 
-AC_MSG_CHECKING([whether the GTD Core version is at least $_gtd_core_min_version])
+AC_MSG_CHECKING([whether the Giella Core version is at least $_giella_core_min_version])
 # Compare it to the required version, and error out if too old:
-AX_COMPARE_VERSION([$_gtd_version], [ge], [$_gtd_core_min_version],
-                   [gtd_version_ok=yes], [gtd_version_ok=no])
-AS_IF([test "x${gtd_version_ok}" != xno], [AC_MSG_RESULT([$gtd_version_ok])],
-[AC_MSG_ERROR([$gtd_core_too_old_message])])
+AX_COMPARE_VERSION([$_giella_core_version], [ge], [$_giella_core_min_version],
+                   [giella_core_version_ok=yes], [giella_core_version_ok=no])
+AS_IF([test "x${giella_core_version_ok}" != xno], [AC_MSG_RESULT([$giella_core_version_ok])],
+[AC_MSG_ERROR([$giella_core_too_old_message])])
 
 ################################
 ### Some software that we either depend on or we need for certain functionality: 
@@ -268,10 +269,10 @@ AC_PATH_PROG([VISLCG3], [vislcg3], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 AC_PATH_PROG([VISLCG3_COMP], [cg-comp], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 
 AS_IF([test "x$VISLCG3" != xno], [
-_gtd_vislcg3_min_version=m4_default([$1], [0.9.9.011351])
-AC_MSG_CHECKING([whether vislcg3 is at least $_gtd_vislcg3_min_version])
+_giella_core_vislcg3_min_version=m4_default([$1], [0.9.9.011351])
+AC_MSG_CHECKING([whether vislcg3 is at least $_giella_core_vislcg3_min_version])
 _vislcg3_version=$( ${VISLCG3} --version 2>&1 | grep -Eo '@<:@0-9@:>@+\.@<:@0-9.@:>@+' )
-AX_COMPARE_VERSION([$_vislcg3_version], [ge], [$_gtd_vislcg3_min_version],
+AX_COMPARE_VERSION([$_vislcg3_version], [ge], [$_giella_core_vislcg3_min_version],
                    [gt_prog_vislcg3=yes
                     AC_MSG_RESULT([yes - $_vislcg3_version])
                    ], [gt_prog_vislcg3=no

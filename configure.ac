@@ -46,9 +46,9 @@ AM_INIT_AUTOMAKE(
 )
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
-### This is the version of the GTD core that we require. Update as needed.
+### This is the version of the Giella Core that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
-_gtd_core_min_version=0.2.36
+_giella_core_min_version=0.2.36
 
 ### Required version of the Hfst tools:
 _required_hfst_version=3.9.2

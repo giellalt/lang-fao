@@ -89,10 +89,10 @@ downcase-derived_proper-strings.foma: \
 ################################################################################
 
 ####### Copy source files from common location if not found locally: #######
-%.regex: @GIELLA_SHARED@/common/src/orthography/%.regex
+%.regex: $(GIELLA_SHARED)/common/src/orthography/%.regex
 	$(AM_V_CP)cp $< $@
 
-%.xfscript: @GIELLA_SHARED@/common/src/orthography/%.xfscript
+%.xfscript: $(GIELLA_SHARED)/common/src/orthography/%.xfscript
 	$(AM_V_CP)cp $< $@
 
 ####### Other targets: ###########

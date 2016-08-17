@@ -1,4 +1,18 @@
-$Rev: 138673 $
+$Rev: 138781 $
+The giella-shared data dir is now found using several techniques in the
+following order:
+* evn. variable GIELLA_SHARED
+* evn. variable GIELLA_HOME
+* evn. variable GTHOME
+* evn. variable GTCORE
+* using --with-giella-shared=/dir/to/giella-shared
+* using pkg-config
+If all these fail, configure errors out. Since it a.o. uses GTHOME, the change
+should be of no concern to existing users having checked out everything. And
+since the svn location is still within GTCORE, it will also work for those
+checking out only the core and a single or a couple of languages.
+
+r138673:
 Second steps in renaming and splitting the gtcore into giella-core,
 giella-shared and giella-templates: replaced $(GTCORE)/giella-shared with the
 Automake variable @GIELLA_SHARED@.

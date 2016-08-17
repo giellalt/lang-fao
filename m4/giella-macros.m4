@@ -45,7 +45,7 @@ AS_IF([test "x$GTCORE"    = x -a \
       [AC_MSG_RESULT([no])])
 
 # GTCORE env. variable is required by the infrastructure to find scripts:
-AC_ARG_VAR([GTCORE], [directory for giellatekno/divvun core data; gtcore path should always be declared by gtsetup.sh])
+AC_ARG_VAR([GTCORE], [directory for giella core scripts; giella-core path should always be declared by gtsetup.sh])
 
 AS_IF([test "x$GTCORE" = x], 
       [cat<<EOT
@@ -62,7 +62,7 @@ Could not set GTCORE and thus not find required scripts in:
           or:
          b: add the following to your ~/.bash_profile or ~/.profile:
 
-       export \$GTCORE=/path/to/gtcore/checkout/dir/
+       export \$GTCORE=/path/to/gtcore/checkout/dir
 
        (replace the path with the real path from 1. above)
 
@@ -87,12 +87,12 @@ sudo make install # optional, only needed if installed
 "
 
 # Identify the version of giella-core:
-AC_MSG_CHECKING([the version of the Giella Core])
 AC_PATH_PROG([GIELLA_CORE_VERSION], [gt-version.sh], [no],
     [$GTCORE/scripts$PATH_SEPARATOR$GTHOME/gtcore/scripts$PATH_SEPARATOR$PATH])
+AC_MSG_CHECKING([the version of the Giella Core])
 AS_IF([test "x${GIELLA_CORE_VERSION}" != xno],
         [_giella_core_version=$( ${GIELLA_CORE_VERSION} )],
-        [AC_MSG_ERROR([$giella_core_too_old_message])
+        [AC_MSG_ERROR([gt-version.sh could not be found, installation is incomplete!])
     ])
 AC_MSG_RESULT([$_giella_core_version])
 
@@ -106,7 +106,45 @@ AS_IF([test "x${giella_core_version_ok}" != xno], [AC_MSG_RESULT([$giella_core_v
 ################################
 ### Giella-shared dir:
 ################
-AC_SUBST([GIELLA_SHARED], [$GTCORE/giella-shared])
+# 1. check env GIELLA_SHARED, then GIELLA_HOME, then GTHOME, then GTCORE
+# 2. check --with-giella-shared option
+# 3. check uing pkg-config
+# 4. error if not found
+
+AC_MSG_CHECKING([whether we can find giella-shared data])
+
+AC_ARG_WITH([giella-shared],
+            [AS_HELP_STRING([--with-giella-shared=DIRECTORY],
+                            [search giella-shared data in DIRECTORY @<:@default=PATH@:>@])],
+            [with_giella_shared=$withval],
+            [with_giella_shared=false])
+
+AS_IF([test "x$GIELLA_SHARED" = "x"], [
+    AS_IF([test "x$GIELLA_HOME" != "x"], [
+        GIELLA_SHARED=$GIELLA_HOME/giella-shared
+    ], [
+        # GTHOME for backwards compatibility - it is deprecated:
+        AS_IF([test "x$GTHOME" != "x"], [
+            GIELLA_SHARED=$GTHOME/giella-shared
+        ], [
+            # GTCORE for backwards compatibility - it is deprecated:
+            AS_IF([test "x$GTCORE" != "x"], [
+                GIELLA_SHARED=$GTCORE/giella-shared
+            ], [
+                AS_IF([test "x$with_giella_shared" != "xfalse"], [
+                    GIELLA_SHARED=$with_giella_shared
+                ],[
+                   PKG_CHECK_MODULES([GIELLA], [giella-common], [],
+                   [AC_MSG_ERROR([Could not find giella-common data dir])])
+                ])
+            ])
+        ])
+    ])
+])
+AC_MSG_RESULT([$GIELLA_SHARED])
+
+# GIELLA_SHARED is required by the infrastructure to find shared data:
+AC_ARG_VAR([GIELLA_SHARED], [directory for giella shared data, like shared proper noun lists and shared regexes])
 
 ################################
 ### Some software that we either depend on or we need for certain functionality: 

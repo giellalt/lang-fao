@@ -120,21 +120,26 @@ AC_ARG_WITH([giella-shared],
             [with_giella_shared=false])
 
 # --with-giella-shared overrides everything:
-AS_IF([test "x$with_giella_shared" != "xfalse"], [
+AS_IF([test "x$with_giella_shared" != "xfalse" -a \
+    -f $with_giella_shared/common/src/filters/make-optional-transitivity-tags.regex], [
     GIELLA_SHARED=$with_giella_shared
     ],[
-    # if GiELLA_SHARED is NOT set, continue with other tests:
-    AS_IF([test "x$GIELLA_SHARED" = "x"], [
-        # GiELLA_HOME is the new GTHOME:
-        AS_IF([test "x$GIELLA_HOME" != "x"], [
+    # GiELLA_SHARED is the default env. variable for this dir:
+    AS_IF([test "x$GIELLA_SHARED" != "x" -a \
+    -f $GIELLA_SHARED/common/src/filters/make-optional-transitivity-tags.regex], [], [
+        # GIELLA_HOME is the new GTHOME:
+        AS_IF([test "x$GIELLA_HOME" != "x" -a \
+    -f $GIELLA_HOME/giella-shared/common/src/filters/make-optional-transitivity-tags.regex], [
             GIELLA_SHARED=$GIELLA_HOME/giella-shared
         ], [
             # GTHOME for backwards compatibility - it is deprecated:
-            AS_IF([test "x$GTHOME" != "x"], [
+            AS_IF([test "x$GTHOME" != "x" -a \
+    -f $GTHOME/giella-shared/common/src/filters/make-optional-transitivity-tags.regex], [
                 GIELLA_SHARED=$GTHOME/giella-shared
             ], [
                 # GTCORE for backwards compatibility - it is deprecated:
-                AS_IF([test "x$GTCORE" != "x"], [
+                AS_IF([test "x$GTCORE" != "x" -a \
+    -f $GTCORE/giella-shared/common/src/filters/make-optional-transitivity-tags.regex], [
                     GIELLA_SHARED=$GTCORE/giella-shared
                 ], [
                    PKG_CHECK_MODULES([GIELLA], [giella-common], [],
@@ -145,15 +150,6 @@ AS_IF([test "x$with_giella_shared" != "xfalse"], [
     ])
 ])
 AC_MSG_RESULT([$GIELLA_SHARED])
-
-AC_MSG_CHECKING([whether GIELLA_SHARED contains data])
-# Check for the existence of a regex that should always be there:
-AS_IF([test -f \
-	$GIELLA_SHARED/common/src/filters/make-optional-transitivity-tags.regex], [
-      AC_MSG_RESULT([yes])
-    ], [
-      AC_MSG_ERROR([Could not find required data in the giella-common data dir])
-])
 
 # GIELLA_SHARED is required by the infrastructure to find shared data:
 AC_ARG_VAR([GIELLA_SHARED], [directory for giella shared data, like proper nouns and regexes])

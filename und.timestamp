@@ -1,4 +1,8 @@
-$Rev: 138827 $
+$Rev: 138835 $
+Removed the separate test for content, instead adding the test to each possible
+location, moving to the next location if no data is found.
+
+r138827:
 Changed the search order for GIELLA_SHARED data:
 * using --with-giella-shared=/path/to/giella-shared/data/root/dir
 * env. variable GIELLA_SHARED

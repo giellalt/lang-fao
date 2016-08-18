@@ -1,10 +1,13 @@
-$Rev: 138781 $
+$Rev: 138817 $
+Added a configure test to check that there is actually data in GIELLA_SHARED.
+
+r138781:
 The giella-shared data dir is now found using several techniques in the
 following order:
-* evn. variable GIELLA_SHARED
-* evn. variable GIELLA_HOME
-* evn. variable GTHOME
-* evn. variable GTCORE
+* env. variable GIELLA_SHARED
+* env. variable GIELLA_HOME
+* env. variable GTHOME
+* env. variable GTCORE
 * using --with-giella-shared=/dir/to/giella-shared
 * using pkg-config
 If all these fail, configure errors out. Since it a.o. uses GTHOME, the change
@@ -15,7 +18,7 @@ checking out only the core and a single or a couple of languages.
 r138673:
 Second steps in renaming and splitting the gtcore into giella-core,
 giella-shared and giella-templates: replaced $(GTCORE)/giella-shared with the
-Automake variable @GIELLA_SHARED@.
+Automake variable GIELLA_SHARED.
 
 r138663:
 First steps in renaming and splitting the gtcore into giella-core, giella-shared

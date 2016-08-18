@@ -111,14 +111,13 @@ AS_IF([test "x${giella_core_version_ok}" != xno], [AC_MSG_RESULT([$giella_core_v
 # 3. check uing pkg-config
 # 4. error if not found
 
-AC_MSG_CHECKING([whether we can set GIELLA_SHARED])
-
 AC_ARG_WITH([giella-shared],
             [AS_HELP_STRING([--with-giella-shared=DIRECTORY],
                             [search giella-shared data in DIRECTORY @<:@default=PATH@:>@])],
             [with_giella_shared=$withval],
             [with_giella_shared=false])
 
+AC_MSG_CHECKING([whether we can set GIELLA_SHARED])
 # --with-giella-shared overrides everything:
 AS_IF([test "x$with_giella_shared" != "xfalse" -a \
     -f $with_giella_shared/common/src/filters/make-optional-transitivity-tags.regex], [
@@ -142,7 +141,9 @@ AS_IF([test "x$with_giella_shared" != "xfalse" -a \
     -f $GTCORE/giella-shared/common/src/filters/make-optional-transitivity-tags.regex], [
                     GIELLA_SHARED=$GTCORE/giella-shared
                 ], [
-                   PKG_CHECK_MODULES([GIELLA], [giella-common], [],
+                   PKG_CHECK_MODULES([GIELLA_SHARED], [giella-common], [
+                       GIELLA_SHARED=$(pkg-config --variable=dir giella-common)
+                   ],
                    [AC_MSG_ERROR([Could not find giella-common data dir to set GIELLA_SHARED])])
                 ])
             ])

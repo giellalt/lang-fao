@@ -1,4 +1,15 @@
-$Rev: 138817 $
+$Rev: 138827 $
+Changed the search order for GIELLA_SHARED data:
+* using --with-giella-shared=/path/to/giella-shared/data/root/dir
+* env. variable GIELLA_SHARED
+* env. variable GIELLA_HOME
+* env. variable GTHOME
+* env. variable GTCORE
+* using pkg-config
+This way it is always possible to overtide everything else using the --with
+option. Added comments.
+
+r138817:
 Added a configure test to check that there is actually data in GIELLA_SHARED.
 
 r138781:

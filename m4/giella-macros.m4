@@ -119,21 +119,24 @@ AC_ARG_WITH([giella-shared],
             [with_giella_shared=$withval],
             [with_giella_shared=false])
 
-AS_IF([test "x$GIELLA_SHARED" = "x"], [
-    AS_IF([test "x$GIELLA_HOME" != "x"], [
-        GIELLA_SHARED=$GIELLA_HOME/giella-shared
-    ], [
-        # GTHOME for backwards compatibility - it is deprecated:
-        AS_IF([test "x$GTHOME" != "x"], [
-            GIELLA_SHARED=$GTHOME/giella-shared
+# --with-giella-shared overrides everything:
+AS_IF([test "x$with_giella_shared" != "xfalse"], [
+    GIELLA_SHARED=$with_giella_shared
+    ],[
+    # if GiELLA_SHARED is NOT set, continue with other tests:
+    AS_IF([test "x$GIELLA_SHARED" = "x"], [
+        # GiELLA_HOME is the new GTHOME:
+        AS_IF([test "x$GIELLA_HOME" != "x"], [
+            GIELLA_SHARED=$GIELLA_HOME/giella-shared
         ], [
-            # GTCORE for backwards compatibility - it is deprecated:
-            AS_IF([test "x$GTCORE" != "x"], [
-                GIELLA_SHARED=$GTCORE/giella-shared
+            # GTHOME for backwards compatibility - it is deprecated:
+            AS_IF([test "x$GTHOME" != "x"], [
+                GIELLA_SHARED=$GTHOME/giella-shared
             ], [
-                AS_IF([test "x$with_giella_shared" != "xfalse"], [
-                    GIELLA_SHARED=$with_giella_shared
-                ],[
+                # GTCORE for backwards compatibility - it is deprecated:
+                AS_IF([test "x$GTCORE" != "x"], [
+                    GIELLA_SHARED=$GTCORE/giella-shared
+                ], [
                    PKG_CHECK_MODULES([GIELLA], [giella-common], [],
                    [AC_MSG_ERROR([Could not find giella-common data dir to set GIELLA_SHARED])])
                 ])

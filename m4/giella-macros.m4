@@ -111,7 +111,7 @@ AS_IF([test "x${giella_core_version_ok}" != xno], [AC_MSG_RESULT([$giella_core_v
 # 3. check uing pkg-config
 # 4. error if not found
 
-AC_MSG_CHECKING([whether we can find giella-shared data])
+AC_MSG_CHECKING([whether we can set GIELLA_SHARED])
 
 AC_ARG_WITH([giella-shared],
             [AS_HELP_STRING([--with-giella-shared=DIRECTORY],
@@ -135,7 +135,7 @@ AS_IF([test "x$GIELLA_SHARED" = "x"], [
                     GIELLA_SHARED=$with_giella_shared
                 ],[
                    PKG_CHECK_MODULES([GIELLA], [giella-common], [],
-                   [AC_MSG_ERROR([Could not find giella-common data dir])])
+                   [AC_MSG_ERROR([Could not find giella-common data dir to set GIELLA_SHARED])])
                 ])
             ])
         ])
@@ -143,8 +143,17 @@ AS_IF([test "x$GIELLA_SHARED" = "x"], [
 ])
 AC_MSG_RESULT([$GIELLA_SHARED])
 
+AC_MSG_CHECKING([whether GIELLA_SHARED contains data])
+# Check for the existence of a regex that should always be there:
+AS_IF([test -f \
+	$GIELLA_SHARED/common/src/filters/make-optional-transitivity-tags.regex], [
+      AC_MSG_RESULT([yes])
+    ], [
+      AC_MSG_ERROR([Could not find required data in the giella-common data dir])
+])
+
 # GIELLA_SHARED is required by the infrastructure to find shared data:
-AC_ARG_VAR([GIELLA_SHARED], [directory for giella shared data, like shared proper noun lists and shared regexes])
+AC_ARG_VAR([GIELLA_SHARED], [directory for giella shared data, like proper nouns and regexes])
 
 ################################
 ### Some software that we either depend on or we need for certain functionality: 

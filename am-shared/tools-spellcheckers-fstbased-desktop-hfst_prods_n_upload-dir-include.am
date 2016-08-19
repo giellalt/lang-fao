@@ -25,6 +25,8 @@
 # -a without the -t option.
 RSYNC_OPTIONS=-rlpgoD
 
+SCP=scp -q
+
 #### LibreOffice-Voikko version: ####
 # This value corresponds to the version in the dir name of
 # the oxt template in prooftools/toollibs/LbreOffice-voikko/:
@@ -160,10 +162,12 @@ uploadoxt: $(OXT_FILES) $(ALT_WS_OXT_FILES)
 	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
 			stem=$$(basename $$file .oxt) ; \
-			scp $$file $(UPLOADSITE)/oxts/$$stem-$(DATE).oxt ; \
+			$(SCP) $$file $(UPLOADSITE)/oxts/$$stem-$(DATE).oxt ; \
 			ssh sd@divvun.no "cd staticfiles/oxts/ && \
 			ln -sf $$stem-$(DATE).oxt $$file" ; \
 			echo "  SYMLINK  $$file" ; \
+			echo "  DWNLOAD LINK this version:   http://divvun.no/static_files/oxts/$$stem-$(DATE).oxt" ; \
+			echo "  DWNLOAD LINK newest version: http://divvun.no/static_files/oxts/$$file" ; \
 		fi \
 	done
 
@@ -171,10 +175,12 @@ uploadxpi: $(MOZVOIKKO_FILE)
 	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
 			stem=$$(basename $$file .xpi) ; \
-			scp $$file $(UPLOADSITE)/xpis/$$stem-$(DATE).xpi ; \
+			$(SCP) $$file $(UPLOADSITE)/xpis/$$stem-$(DATE).xpi ; \
 			ssh sd@divvun.no "cd staticfiles/xpis/ && \
 			ln -sf $$stem-$(DATE).xpi $$file" ; \
 			echo "  SYMLINK  $$file" ; \
+			echo "  DWNLOAD LINK this version:   http://divvun.no/static_files/xpis/$$stem-$(DATE).xpi" ; \
+			echo "  DWNLOAD LINK newest version: http://divvun.no/static_files/xpis/$$file" ; \
 		fi \
 	done
 
@@ -182,10 +188,12 @@ uploadzip: $(MACVOIKKOZIPFILE)
 	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
 			stem=$$(basename $$file .zip) ; \
-			scp $$file $(UPLOADSITE)/zips/$$stem-$(DATE).zip ; \
+			$(SCP) $$file $(UPLOADSITE)/zips/$$stem-$(DATE).zip ; \
 			ssh sd@divvun.no "cd staticfiles/zips/ && \
 			ln -sf $$stem-$(DATE).zip $$file" ; \
 			echo "  SYMLINK  $$file" ; \
+			echo "  DWNLOAD LINK this version:   http://divvun.no/static_files/zips/$$stem-$(DATE).zip" ; \
+			echo "  DWNLOAD LINK newest version: http://divvun.no/static_files/zips/$$file" ; \
 		fi \
 	done
 
@@ -193,9 +201,11 @@ uploadzhfst: $(GT_SPELLING_HFST) $(ALT_WS_ZHFST_FILES)
 	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
 			stem=$$(basename $$file .zhfst) ; \
-			scp $$file $(UPLOADSITE)/zhfsts/$$stem-$(DATE).zhfst ; \
+			$(SCP) $$file $(UPLOADSITE)/zhfsts/$$stem-$(DATE).zhfst ; \
 			ssh sd@divvun.no "cd staticfiles/zhfsts/ && \
 			ln -sf $$stem-$(DATE).zhfst $$file" ; \
 			echo "  SYMLINK  $$file" ; \
+			echo "  DWNLOAD LINK this version:   http://divvun.no/static_files/zhfsts/$$stem-$(DATE).zhfst" ; \
+			echo "  DWNLOAD LINK newest version: http://divvun.no/static_files/zhfsts/$$file" ; \
 		fi \
 	done

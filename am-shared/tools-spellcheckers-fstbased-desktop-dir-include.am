@@ -64,7 +64,7 @@ generator-desktopspeller-gt-norm-base.hfst: ../generator-fstspeller-gt-norm.hfst
 	set encode-weights ON \n\
 	read regex \
 		@\"$<\" \
-	.P. @\"unitweighted.hfst\"  \
+	|   @\"unitweighted.hfst\"  \
 	; \n\
 	save stack $@\n\
 	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)

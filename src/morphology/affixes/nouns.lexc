@@ -876,20 +876,16 @@ LEXICON k_flt43
 
 LEXICON k44 ! bróðir, stem is bróð
 +N+Msc+Sg+Nom:ir DF_N_SGm ;
-            :ur k44_obl ;
-
-LEXICON k44_obl
-+N+Msc: S_M_SGACC ;
-+N+Msc: S_M_SGDAT_NULL ;
-+N+Msc: S_M_SGGEN_NULL ;
-k_flt44 ;
-
-!LEXICON k_flt44f
-!k_flt44 ;
++N+Msc:ur S_M_SGACC ;
++N+Msc+Sg+Dat+Indef:ur FINAL  ;
++N+Msc+Sg+Dat+Def:urinum FINAL  ;
++N+Msc+Sg+Dat+Def:rinum FINAL  ;
++N+Msc:ur S_M_SGGEN_NULL ;
+:ur k_flt44 ;
 
 LEXICON k_flt44
-+N+Msc:%^IUML S_M_PLNOM_NULL ;
-+N+Msc:%^IUML S_M_PLACC_NULL ;
++N+Msc:%^IUML S_M_PLNOM_NULL_NULL ;
++N+Msc:%^IUML S_M_PLACC_NULL_NULL ;
 +N+Msc:%^EPH%^IUML S_M_PLDAT ;
 +N+Msc:%^EPH%^IUML S_M_PLGEN ;
 
@@ -2140,6 +2136,10 @@ LEXICON S_M_PLNOM_NULL
 +Pl+Nom:    DF_N_PLm_indef ;
 +Pl+Nom:%>i DF_N_PLm_def ;
 
+LEXICON S_M_PLNOM_NULL_NULL
++Pl+Nom:  DF_N_PLm_indef ;
++Pl+Nom:  DF_N_PLm_def ;
+
 !LEXICON S_M_PLNOM_NULL_IR
 !+Pl+Nom:     DF_N_PLm_indef ;
 !+Pl+Nom:%>ir DF_N_PLm_def ;
@@ -2164,6 +2164,10 @@ LEXICON S_M_PLACC_UR
 LEXICON S_M_PLACC_NULL
 +Pl+Acc:    DF_A_PLm_indef ;
 +Pl+Acc:%>i DF_A_PLm_def ;
+
+LEXICON S_M_PLACC_NULL_NULL
++Pl+Acc: DF_A_PLm_indef ;
++Pl+Acc: DF_A_PLm_def ;
 
 !LEXICON S_M_PLACC_NULL_IR
 !+Pl+Acc:     DF_A_PLm_indef ;

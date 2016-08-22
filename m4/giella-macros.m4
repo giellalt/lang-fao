@@ -31,8 +31,8 @@
 ################################################################################
 AC_DEFUN([gt_PROG_SCRIPTS_PATHS],
          [
-AC_ARG_VAR([GTMAINTAINER], [define if you are maintaining the infra to get additional complaining about infra integrity])
-AM_CONDITIONAL([WANT_MAINTAIN], [test x"$GTMAINTAINER" != x])
+AC_ARG_VAR([GIELLA_MAINTAINER], [define if you are maintaining the Giella infra to get additional complaining about infra integrity])
+AM_CONDITIONAL([WANT_MAINTAIN], [test x"$GIELLA_MAINTAINER" != x])
 
 AC_PATH_PROG([GTCORESH], [gt-core.sh], [false],
              [$GTCORE/scripts$PATH_SEPARATOR$GTHOME/gtcore/scripts$PATH_SEPARATOR$PATH])
@@ -106,9 +106,9 @@ AS_IF([test "x${giella_core_version_ok}" != xno], [AC_MSG_RESULT([$giella_core_v
 ################################
 ### Giella-shared dir:
 ################
-# 1. check env GIELLA_SHARED, then GIELLA_HOME, then GTHOME, then GTCORE
-# 2. check --with-giella-shared option
-# 3. check uing pkg-config
+# 1. check --with-giella-shared option
+# 2. check env GIELLA_SHARED, then GIELLA_HOME, then GTHOME, then GTCORE
+# 3. check using pkg-config
 # 4. error if not found
 
 AC_ARG_WITH([giella-shared],
@@ -154,6 +154,51 @@ AC_MSG_RESULT([$GIELLA_SHARED])
 
 # GIELLA_SHARED is required by the infrastructure to find shared data:
 AC_ARG_VAR([GIELLA_SHARED], [directory for giella shared data, like proper nouns and regexes])
+
+################################
+### Giella-templates dir:
+################
+# 1. check --with-giella-templates option
+# 2. check env GIELLA_TEMPLATES, then GIELLA_HOME, then GTHOME
+# 3. error if not found
+
+# GIELLA_TEMPLATES is required if you do infrastructure maintenance, otherwise it is ignored:
+AS_IF([test "x$WANT_MAINTAIN" != "x"], [
+
+AC_ARG_WITH([giella-templates],
+            [AS_HELP_STRING([--with-giella-templates=DIRECTORY],
+                            [search giella-templates data in DIRECTORY @<:@default=PATH@:>@])],
+            [with_giella_templates=$withval],
+            [with_giella_templates=false])
+
+AC_MSG_CHECKING([whether we can set GIELLA_TEMPLATES])
+# --with-giella-templates overrides everything:
+AS_IF([test "x$with_giella_templates" != "xfalse" -a \
+           -d $with_giella_templates/langs-templates ], [
+    GIELLA_TEMPLATES=$with_giella_templates
+    ],[
+    # GIELLA_TEMPLATES is the env. variable for this dir:
+    AS_IF([test "x$GIELLA_TEMPLATES" != "x" -a \
+               -d $GIELLA_TEMPLATES/langs-templates], [], [
+        # GIELLA_HOME is the new GTHOME:
+        AS_IF([test "x$GIELLA_HOME" != "x" -a \
+                   -d $GIELLA_HOME/giella-templates/langs-templates], [
+            GIELLA_TEMPLATES=$GIELLA_HOME/giella-templates
+        ], [
+            # GTHOME for backwards compatibility - it is deprecated:
+            AS_IF([test "x$GTHOME" != "x" -a \
+                       -d $GTHOME/giella-templates/langs-templates], [
+                GIELLA_TEMPLATES=$GTHOME/giella-templates
+            ], [AC_MSG_ERROR([Could not find giella-templates data dir to set GIELLA_TEMPLATES])])
+        ])
+    ])
+])
+AC_MSG_RESULT([$GIELLA_TEMPLATES])
+
+# GIELLA_TEMPLATES is required if you do infrastructure maintenance (otherwise it is ignored):
+AC_ARG_VAR([GIELLA_TEMPLATES], [directory for infrastructure templates, required for maintainers])
+
+])
 
 ################################
 ### Some software that we either depend on or we need for certain functionality: 

@@ -1,4 +1,8 @@
-$Rev: 138923 $
+$Rev: 139018 $
+Added checking for and setting of GIELLA_TEMPLATES, but only if you have defined
+GIELLA_MAINTAINER (renamed from GTMAINTAINER). Otherwise it is ignored.
+
+r138923:
 Revert experiment with priority union - it doesn't work as expected when weights
 are involved. Corrected filenames in the .SECONDARY target.
 

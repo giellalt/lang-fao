@@ -1,4 +1,11 @@
-$Rev: 139018 $
+$Rev: 139045 $
+Rewrote the code for identifying the location of GIELLA_CORE (former GTCORE).
+The code should be more robust, and is prepared to check against a pkg-config
+pc file as well. GTCORE is still used throughout the code, but in parallel to
+GIELLA_CORE, so that one can easily replace the former with the latter without
+causing bugs or other problems.
+
+r139018:
 Added checking for and setting of GIELLA_TEMPLATES, but only if you have defined
 GIELLA_MAINTAINER (renamed from GTMAINTAINER). Otherwise it is ignored.
 

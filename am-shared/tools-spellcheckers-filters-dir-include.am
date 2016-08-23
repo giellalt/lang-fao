@@ -53,7 +53,7 @@ endif # CAN_FOMA
 endif # WANT_SPELLERS
 
 ####### Copy regex files from the GTD core if not found locally: ########
-%.regex: $(GIELLA_SHARED)/common/tools/spellcheckers/filters/%.regex
+%.regex: $(GIELLA_SHARED)/all_langs/tools/spellcheckers/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 
 ##########################################

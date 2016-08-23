@@ -48,7 +48,7 @@ endif # CAN_XFST
 endif # WANT_SPELLERS
 
 ####### Copy regex files from the GTD core if not found locally: ########
-%.regex: $(GIELLA_SHARED)/common/tools/spellcheckers/fstbased/filters/%.regex
+%.regex: $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 
 ##########################################

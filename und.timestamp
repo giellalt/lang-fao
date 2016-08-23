@@ -1,4 +1,8 @@
-$Rev: 139045 $
+$Rev: 139057 $
+Changed all references to $(GIELLA_SHARED)/common into
+$(GIELLA_SHARED)/all_langs.
+
+r139045:
 Rewrote the code for identifying the location of GIELLA_CORE (former GTCORE).
 The code should be more robust, and is prepared to check against a pkg-config
 pc file as well. GTCORE is still used throughout the code, but in parallel to

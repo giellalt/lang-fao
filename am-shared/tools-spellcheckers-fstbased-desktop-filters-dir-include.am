@@ -60,7 +60,7 @@ $(GIELLA_FILTERS_TO_CONVERT): \
 endif # WANT_SPELLERS
 
 ####### Copy regex files from the GTD core if not found locally: ########
-%.regex: $(GIELLA_SHARED)/common/tools/spellcheckers/fstbased/desktop/filters/%.regex
+%.regex: $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/desktop/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 
 ##########################################

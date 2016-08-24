@@ -224,6 +224,41 @@ analyser-dict-gt-desc.%.tmp.$(1): analyser-raw-gt-desc.$(1)       \
 					filters/remove-orthography-tags.$(1)          \
 					filters/remove-Orth_IPA-strings.$(1)          \
 					orthography/spellrelax.%.compose.$(1)         \
+					orthography/raw-to-%.compose.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+				@\"orthography/raw-to-$$*.compose.$(1)\".i \
+			.o. @\"filters/make-optional-transitivity-tags.$(1)\"  \
+			.o. @\"filters/remove-adv_comp-tags.$(1)\"             \
+			.o. @\"filters/remove-dialect-tags.$(1)\"              \
+			.o. @\"filters/remove-norm-comp-tags.$(1)\"            \
+			.o. @\"filters/remove-orig_lang-tags.$(1)\"            \
+			.o. @\"filters/remove-usage_except_NGminip-tags.$(1)\" \
+			.o. @\"filters/remove-semantic-tags.$(1)\"             \
+			.o. @\"filters/remove-orthography-tags.$(1)\"          \
+			.o. @\"filters/remove-Orth_IPA-strings.$(1)\"          \
+			.o. @\"$$<\"                                           \
+			.o. @\"filters/remove-hyphenation-marks.$(1)\"         \
+			.o. @\"filters/remove-infl_deriv-borders.$(1)\"        \
+			.o. @\"filters/remove-word-boundary.$(1)\"             \
+			.o. @\"orthography/raw-to-$$*.compose.$(1)\"\
+			.o. @\"orthography/spellrelax.$$*.compose.$(1)\"        \
+			;\n\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+
+analyser-dict-gt-desc.%.tmp.$(1): analyser-raw-gt-desc.$(1)       \
+					filters/remove-adv_comp-tags.$(1)             \
+					filters/remove-dialect-tags.$(1)              \
+					filters/remove-norm-comp-tags.$(1)            \
+					filters/remove-orig_lang-tags.$(1)            \
+					filters/remove-usage_except_NGminip-tags.$(1) \
+					filters/remove-semantic-tags.$(1)             \
+					filters/remove-hyphenation-marks.$(1)         \
+					filters/remove-infl_deriv-borders.$(1)        \
+					filters/remove-word-boundary.$(1)             \
+					filters/remove-orthography-tags.$(1)          \
+					filters/remove-Orth_IPA-strings.$(1)          \
+					orthography/spellrelax.%.compose.$(1)         \
 					orthography/$(DEFAULT_ORTH)-to-%.compose.$(1)
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"orthography/$$(DEFAULT_ORTH)-to-$$*.compose.$(1)\".i \
@@ -285,6 +320,46 @@ generator-dict-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)      \
 			.o. @\"filters/remove-infl_deriv-borders.$(1)\"        \
 			.o. @\"filters/remove-word-boundary.$(1)\"             \
 			.o. @\"orthography/$$(DEFAULT_ORTH)-to-$$*.compose.$(1)\"\
+			;\n\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+
+generator-dict-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)      \
+					filters/make-optional-hyph-tags.$(1)          \
+					filters/make-optional-transitivity-tags.$(1)  \
+					filters/make-optional-semantic-tags.$(1)      \
+					filters/make-optional-v1-tags.$(1)            \
+					filters/make-optional-adv_comp-tags.$(1)      \
+					filters/remove-dialect-tags.$(1)              \
+					filters/remove-norm-comp-tags.$(1)            \
+					filters/remove-orig_lang-tags.$(1)            \
+					filters/remove-usage_except_NGminip-tags.$(1) \
+					filters/remove-orthography-tags.$(1)          \
+					filters/remove-Orth_IPA-strings.$(1)          \
+					filters/remove-error-strings.$(1)             \
+					filters/remove-hyphenation-marks.$(1)         \
+					filters/remove-infl_deriv-borders.$(1)        \
+					filters/remove-word-boundary.$(1)             \
+					orthography/raw-to-%.compose.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+				@\"orthography/raw-to-$$*.compose.$(1)\".i \
+			.o. @\"filters/make-optional-transitivity-tags.$(1)\"  \
+			.o. @\"filters/make-optional-hyph-tags.$(1)\"          \
+			.o. @\"filters/make-optional-semantic-tags.$(1)\"      \
+			.o. @\"filters/make-optional-v1-tags.$(1)\"            \
+			.o. @\"filters/make-optional-adv_comp-tags.$(1)\"      \
+			.o. @\"filters/remove-dialect-tags.$(1)\"              \
+			.o. @\"filters/remove-norm-comp-tags.$(1)\"            \
+			.o. @\"filters/remove-orig_lang-tags.$(1)\"            \
+			.o. @\"filters/remove-usage_except_NGminip-tags.$(1)\" \
+			.o. @\"filters/remove-error-strings.$(1)\"             \
+			.o. @\"filters/remove-orthography-tags.$(1)\"          \
+			.o. @\"filters/remove-Orth_IPA-strings.$(1)\"          \
+			.o. @\"$$<\"                                           \
+			.o. @\"filters/remove-hyphenation-marks.$(1)\"         \
+			.o. @\"filters/remove-infl_deriv-borders.$(1)\"        \
+			.o. @\"filters/remove-word-boundary.$(1)\"             \
+			.o. @\"orthography/raw-to-$$*.compose.$(1)\"\
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)

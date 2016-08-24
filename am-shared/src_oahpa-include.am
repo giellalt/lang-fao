@@ -496,6 +496,41 @@ analyser-oahpa-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)     \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
+
+analyser-oahpa-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)     \
+					filters/remove-adv_comp-tags.$(1)            \
+					filters/remove-dialect-tags.$(1)             \
+					filters/remove-norm-comp-tags.$(1)           \
+					filters/remove-orig_lang-tags.$(1)           \
+					filters/remove-usage-tags.$(1)               \
+					filters/remove-semantic-tags.$(1)            \
+					filters/remove-hyphenation-marks.$(1)        \
+					filters/remove-error-strings.$(1)            \
+					filters/remove-infl_deriv-borders.$(1)       \
+					filters/remove-word-boundary.$(1)            \
+					filters/remove-orthography-tags.$(1)         \
+					filters/remove-Orth_IPA-strings.$(1)         \
+					orthography/spellrelax.%.compose.$(1)        \
+					orthography/raw-to-%.compose.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+			    @\"filters/remove-adv_comp-tags.$(1)\"            \
+			.o. @\"filters/remove-dialect-tags.$(1)\"             \
+			.o. @\"filters/remove-norm-comp-tags.$(1)\"           \
+			.o. @\"filters/remove-orig_lang-tags.$(1)\"           \
+			.o. @\"filters/remove-usage-tags.$(1)\"               \
+			.o. @\"filters/remove-error-strings.$(1)\"            \
+			.o. @\"filters/remove-semantic-tags.$(1)\"            \
+			.o. @\"filters/remove-orthography-tags.$(1)\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.$(1)\"         \
+			.o. @\"$$<\"                                          \
+			.o. @\"filters/remove-hyphenation-marks.$(1)\"        \
+			.o. @\"filters/remove-infl_deriv-borders.$(1)\"       \
+			.o. @\"filters/remove-word-boundary.$(1)\"            \
+			.o. @\"orthography/raw-to-$$*.compose.$(1)\"          \
+			.o. @\"orthography/spellrelax.$$*.compose.$(1)\"      \
+			;\n\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
 endef
 $(foreach fst,hfst xfst foma,$(eval $(call oahpa_alt_orth_analysers,$(fst))))
 
@@ -539,6 +574,49 @@ generator-oahpa-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)    \
 			.o. @\"filters/remove-infl_deriv-borders.$(1)\"       \
 			.o. @\"filters/remove-word-boundary.$(1)\"            \
 			.o. @\"orthography/$$(DEFAULT_ORTH)-to-$$*.compose.$(1)\"\
+			;\n\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+
+generator-oahpa-gt-norm.%.tmp.$(1): analyser-raw-gt-desc.$(1)    \
+					filters/make-optional-hyph-tags.$(1)         \
+					filters/make-optional-transitivity-tags.$(1) \
+					filters/make-optional-variant-tags.$(1)      \
+					filters/make-optional-semantic-tags.$(1)     \
+					filters/make-optional-NGminip-tags.$(1)      \
+					filters/make-optional-adv_comp-tags.$(1)     \
+					filters/remove-dialect-tags.$(1)             \
+					filters/remove-hyphenation-marks.$(1)        \
+					filters/remove-infl_deriv-borders.$(1)       \
+					filters/remove-word-boundary.$(1)            \
+					filters/remove-norm-comp-tags.$(1)           \
+					filters/remove-number-string-tags.$(1)       \
+					filters/remove-usage-tags.$(1)               \
+					filters/remove-orthography-tags.$(1)         \
+					filters/remove-Orth_IPA-strings.$(1)         \
+					filters/remove-orig_lang-tags.$(1)           \
+					filters/remove-error-strings.$(1)            \
+					orthography/raw-to-%.compose.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+				@\"filters/make-optional-transitivity-tags.$(1)\" \
+			.o. @\"filters/make-optional-hyph-tags.$(1)\"         \
+			.o. @\"filters/make-optional-variant-tags.$(1)\"      \
+			.o. @\"filters/make-optional-semantic-tags.$(1)\"     \
+			.o. @\"filters/make-optional-NGminip-tags.$(1)\"      \
+			.o. @\"filters/make-optional-adv_comp-tags.$(1)\"     \
+			.o. @\"filters/remove-dialect-tags.$(1)\"             \
+			.o. @\"filters/remove-norm-comp-tags.$(1)\"           \
+			.o. @\"filters/remove-number-string-tags.$(1)\"       \
+			.o. @\"filters/remove-usage-tags.$(1)\"               \
+			.o. @\"filters/remove-error-strings.$(1)\"            \
+			.o. @\"filters/remove-orig_lang-tags.$(1)\"           \
+			.o. @\"filters/remove-orthography-tags.$(1)\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.$(1)\"         \
+			.o. @\"$$<\"                                          \
+			.o. @\"filters/remove-hyphenation-marks.$(1)\"        \
+			.o. @\"filters/remove-infl_deriv-borders.$(1)\"       \
+			.o. @\"filters/remove-word-boundary.$(1)\"            \
+			.o. @\"orthography/raw-to-$$*.compose.$(1)\"          \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)

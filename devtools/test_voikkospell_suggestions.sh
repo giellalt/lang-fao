@@ -105,7 +105,7 @@ $GTCORE/scripts/speller-testres.pl \
 fgrep -v '<?xml version' "$speller_results" > "$speller_results.tmp"
 echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>" > "$speller_results"
 echo "<?xml-stylesheet \
-href=\"https://gtsvn.uit.no/langtech/trunk/gtcore/scripts/style/speller_xml.css\" \
+href=\"https://gtsvn.uit.no/langtech/trunk/giella-core/scripts/style/speller_xml.css\" \
 type=\"text/css\"?>"   >> "$speller_results"
 cat "$speller_results.tmp" >> "$speller_results"
 rm -f "$speller_results.tmp"

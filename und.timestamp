@@ -1,4 +1,8 @@
-$Rev: 139241 $
+$Rev: 139442 $
+Do not use PKG_CHECK_MODULES if you don't really have to - it clutters your code
+and creates unneeded variables = noise.
+
+r139241:
 Corrected placeholder string for two-letter ISO language code.
 
 r139232:

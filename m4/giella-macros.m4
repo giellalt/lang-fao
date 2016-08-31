@@ -94,7 +94,7 @@ AS_IF([test "x$with_giella_core" != "xfalse" -a \
                         GIELLA_CORE=$(${GTCORESH})
                     ], [
                        # If nothing else works, try pkg-config:
-                       PKG_CHECK_MODULES([GIELLA_CORE], [giella-core], [
+                       AS_IF([pkg-config --exists giella-core], [
                            GIELLA_CORE=$(pkg-config --variable=dir giella-core)
                        ], [
                        AC_MSG_ERROR([${_giella_core_not_found_message}])
@@ -185,7 +185,7 @@ AS_IF([test "x$with_giella_shared" != "xfalse" -a \
     -f $GTCORE/giella-shared/common/src/filters/make-optional-transitivity-tags.regex], [
                     GIELLA_SHARED=$GTCORE/giella-shared
                 ], [
-                   PKG_CHECK_MODULES([GIELLA_SHARED], [giella-common], [
+                   AS_IF([pkg-config --exists giella-common], [
                        GIELLA_SHARED=$(pkg-config --variable=dir giella-common)
                    ],
                    [AC_MSG_ERROR([Could not find giella-common data dir to set GIELLA_SHARED])])

@@ -96,7 +96,7 @@ $(foreach fst,hfst xfst foma,$(eval $(call txt2digit_transcriptors,$(fst))))
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfstol *.xfst *.foma
+	-rm -f *.hfstol *.xfst *.foma *.hfst
 
 include $(top_srcdir)/am-shared/lexc-include.am
 include $(top_srcdir)/am-shared/lookup-include.am

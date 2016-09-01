@@ -34,6 +34,10 @@ GT_FILTER_TARGETS+=$(patsubst %.regex,%.hfst,$(MT_FILTER_ALL_SRCS))
 endif # CAN_HFST
 endif # WANT_APERTIUM
 
+####### Other targets: ###########
+clean-local:
+	-rm -f *.hfstol *.xfst *.foma *.hfst
+
 ##########################################
 # General build rules included from here:#
 

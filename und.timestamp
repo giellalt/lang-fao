@@ -1,4 +1,13 @@
-$Rev: 139499 $
+$Rev: 139526 $
+Applied backend format rules to the tools/mt/ap/filters dir. This is not future
+proof, but does not create problems for sme, and solves a bug in smj. The
+future problem is that we mix both a specified backend format (for compilation
+efficiency) with the default/unspecified format fst (for weighting) in the
+same dir, and we can't automatically say which filters need to be in the
+specified backend format and which should be in the default format. This
+needs further consideration.
+
+r139499:
 Completely clean src/transcriptions/, and also clean tools/mt/apertium/filters/.
 
 r139442:

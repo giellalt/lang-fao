@@ -67,30 +67,30 @@ AC_MSG_CHECKING([whether we can set GIELLA_CORE])
 
 # --with-giella-core overrides everything:
 AS_IF([test "x$with_giella_core" != "xfalse" -a \
-           -d $with_giella_core/scripts ], [
+          -d "$with_giella_core/scripts" ], [
     GIELLA_CORE=$with_giella_core
     ],[
     # GIELLA_CORE is the env. variable for this dir:
     AS_IF([test "x$GIELLA_CORE" != "x" -a \
-               -d $GIELLA_CORE/scripts], [], [
+              -d "$GIELLA_CORE/scripts"], [], [
         # GIELLA_HOME is the new GTHOME:
         AS_IF([test "x$GIELLA_HOME" != "x" -a \
-                   -d $GIELLA_HOME/giella-core/scripts], [
+                  -d "$GIELLA_HOME/giella-core/scripts"], [
             GIELLA_CORE=$GIELLA_HOME/giella-core
         ], [
             # GTHOME for backwards compatibility - it is deprecated:
             AS_IF([test "x$GTHOME" != "x" -a \
-                       -d $GTHOME/giella-core/scripts], [
+                      -d "$GTHOME/giella-core/scripts"], [
                 GIELLA_CORE=$GTHOME/giella-core
             ], [
                 # GTCORE for backwards compatibility - it is deprecated:
                 AS_IF([test "x$GTCORE" != "x" -a \
-                           -d $GTCORE/scripts], [
+                          -d "$GTCORE/scripts"], [
                     GIELLA_CORE=$GTCORE
                 ], [
                     # Try the gt-core.sh script. NB! It is deprecated:
                     AS_IF([test "x$GTCORESH" != xfalse -a \
-                       -d $(${GTCORESH})/scripts], [
+                           -d "$(${GTCORESH})/scripts"], [
                         GIELLA_CORE=$(${GTCORESH})
                     ], [
                        # If nothing else works, try pkg-config:
@@ -207,7 +207,7 @@ AC_ARG_VAR([GIELLA_SHARED], [directory for giella shared data, like proper nouns
 # 3. error if not found
 
 # GIELLA_TEMPLATES is required if you do infrastructure maintenance, otherwise it is ignored:
-AS_IF([test "x$WANT_MAINTAIN" != "x"], [
+AM_COND_IF([WANT_MAINTAIN], [
 
 AC_ARG_WITH([giella-templates],
             [AS_HELP_STRING([--with-giella-templates=DIRECTORY],
@@ -218,20 +218,20 @@ AC_ARG_WITH([giella-templates],
 AC_MSG_CHECKING([whether we can set GIELLA_TEMPLATES])
 # --with-giella-templates overrides everything:
 AS_IF([test "x$with_giella_templates" != "xfalse" -a \
-           -d $with_giella_templates/langs-templates ], [
+          -d "$with_giella_templates/langs-templates" ], [
     GIELLA_TEMPLATES=$with_giella_templates
     ],[
     # GIELLA_TEMPLATES is the env. variable for this dir:
     AS_IF([test "x$GIELLA_TEMPLATES" != "x" -a \
-               -d $GIELLA_TEMPLATES/langs-templates], [], [
+              -d "$GIELLA_TEMPLATES/langs-templates"], [], [
         # GIELLA_HOME is the new GTHOME:
         AS_IF([test "x$GIELLA_HOME" != "x" -a \
-                   -d $GIELLA_HOME/giella-templates/langs-templates], [
+                  -d "$GIELLA_HOME/giella-templates/langs-templates"], [
             GIELLA_TEMPLATES=$GIELLA_HOME/giella-templates
         ], [
             # GTHOME for backwards compatibility - it is deprecated:
             AS_IF([test "x$GTHOME" != "x" -a \
-                       -d $GTHOME/giella-templates/langs-templates], [
+                      -d "$GTHOME/giella-templates/langs-templates"], [
                 GIELLA_TEMPLATES=$GTHOME/giella-templates
             ], [AC_MSG_ERROR([Could not find giella-templates data dir to set GIELLA_TEMPLATES])])
         ])
@@ -242,7 +242,49 @@ AC_MSG_RESULT([$GIELLA_TEMPLATES])
 # GIELLA_TEMPLATES is required if you do infrastructure maintenance (otherwise it is ignored):
 AC_ARG_VAR([GIELLA_TEMPLATES], [directory for infrastructure templates, required for maintainers])
 
+],[])
+
+################################
+### Giella-libs dir:
+################
+# 1. check --with-giella-libs option
+# 2. check env GIELLA_LIBS, then GIELLA_HOME, then GTHOME
+# 3. empty if not found
+
+AC_ARG_WITH([giella-libs],
+            [AS_HELP_STRING([--with-giella-libs=DIRECTORY],
+                            [search giella-libs data in DIRECTORY @<:@default=PATH@:>@])],
+            [with_giella_libs=$withval],
+            [with_giella_libs=false])
+
+AC_MSG_CHECKING([whether we can set GIELLA_LIBS])
+# --with-giella-libs overrides everything:
+AS_IF([test "x$with_giella_libs" != "xfalse" -a \
+          -d "$with_giella_libs" ], [
+    GIELLA_LIBS=$with_giella_libs
+    ],[
+    # GIELLA_LIBS is the env. variable for this dir:
+    AS_IF([test "x$GIELLA_LIBS" != "x" -a \
+              -d "$GIELLA_LIBS"], [], [
+        # GIELLA_HOME is the new GTHOME:
+        AS_IF([test "x$GIELLA_HOME" != "x" -a \
+                  -d "$GIELLA_HOME/giella-libs" ], [
+            GIELLA_LIBS=$GIELLA_HOME/giella-libs
+        ], [
+            # GTHOME for backwards compatibility - it is deprecated:
+            AS_IF([test "x$GTHOME" != "x" -a \
+                      -d "$GTHOME/giella-libs" ], [
+                GIELLA_LIBS=$GTHOME/giella-libs
+            ], [
+                GIELLA_LIBS=no
+            ])
+        ])
+    ])
 ])
+AC_MSG_RESULT([$GIELLA_LIBS])
+
+# GIELLA_LIBS is needed for speller builds, but if not found, we'll try to fetch over the net:
+AC_ARG_VAR([GIELLA_LIBS], [directory containing precompiled libraries for proofing tools])
 
 ################################
 ### Some software that we either depend on or we need for certain functionality: 
@@ -301,15 +343,18 @@ AM_CONDITIONAL([CAN_DOCC], [test "x$gt_prog_docc" != xno])
 
 ################ can rsync oxt template? ################
 AC_PATH_PROG([RSYNC], [rsync], [no], [$PATH$PATH_SEPARATOR$with_rsync])
-AC_MSG_CHECKING([whether we can rsync LO-voikko oxt template locally])
-AS_IF([test "x$GTHOME" != "x" -a \
-            "x$RSYNC"  != "x" -a \
-          -d "${GTHOME}/prooftools/toollibs/LibreOffice-voikko" ],
-      [can_local_sync=yes], [can_local_sync=no])
-AC_MSG_RESULT([$can_local_sync])
-AM_CONDITIONAL([CAN_LOCALSYNC], [test "x$can_local_sync" != xno ])
-
 AC_PATH_PROG([WGET],  [wget],  [no], [$PATH$PATH_SEPARATOR$with_wget])
+
+AS_IF([test "x$GIELLA_LIBS" != "xno" -a \
+            "x$RSYNC"       != "xno" ],
+      [can_local_sync=yes], [
+       can_local_sync=no
+       AS_IF([test "x$WGET" != "xno" ],
+          [can_wget_giella_libs=yes],
+          [can_wget_giella_libs=no])
+      ])
+AM_CONDITIONAL([CAN_LOCALSYNC], [test "x$can_local_sync" != xno ])
+AM_CONDITIONAL([CAN_REMOTE_SYNC], [test "x$can_wget_giella_libs" != xno ])
 
 ]) # gt_PROG_SCRIPTS_PATHS
 
@@ -807,8 +852,15 @@ AS_IF([test x$gt_prog_xslt = xno -a \
       [AC_MSG_WARN([You have XML source files, but XML transformation to LexC is
 disabled. Please check the output of configure to locate any problems.
 ])])
+
 AS_IF([test x$gt_prog_docc = xno],
       [AC_MSG_WARN([Could not find gawk, java or forrest. In-source documentation will not be extracted and validated. Please install the required tools.])])
+
+AS_IF([test x$can_local_sync = xno -a x$can_wget_giella_libs = xno],
+      [AC_MSG_WARN([Could not find GIELLA_LIBS, rsync or wget - speller installers will not be built, only zhfst files.])])
+
+AS_IF([test x$can_wget_giella_libs = xyes],
+      [AC_MSG_NOTICE([Could not find GIELLA_LIBS, but found wget - speller installers will be built, but requires a live Internet connection.])])
 
 dnl stick important warnings to bottom
 dnl YAML test warning:

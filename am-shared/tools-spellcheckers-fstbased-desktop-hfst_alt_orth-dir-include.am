@@ -117,8 +117,8 @@ $(GTLANG2)-x-%_LO-voikko-5.0.oxt: $(ALT_ORTH_ZHFST_FILES)
 		if [ -d "$(OXT_ROOT_DIR)/$(LOVOIKKO_VERSION)" ]; then \
 			$(MKDIR_P) build/$(LOVOIKKO_VERSION)/ && \
 			cd build/$(LOVOIKKO_VERSION) && \
-			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) \
-					 $(OXT_ROOT_DIR)/$(LOVOIKKO_VERSION)/ ./ && \
+			$(GET_LIBS_COMMAND) \
+					 $(OXT_ROOT_DIR)/$(LOVOIKKO_VERSION)/ $(TARGET_DIR)/ && \
 			cp ../../$(GTLANG2)-x-$*.zhfst voikko/3/ && \
 			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
 		else \
@@ -133,8 +133,8 @@ $(GTLANG2)-x-%.oxt: $(ALT_ORTH_ZHFST_FILES)
 		if [ -d "$(OXT_ROOT_DIR)/$$version" ]; then \
 			$(MKDIR_P) build/$$version/ && \
 			cd build/$$version && \
-			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) \
-					 $(OXT_ROOT_DIR)/$$version/ ./ && \
+			$(GET_LIBS_COMMAND) \
+					 $(OXT_ROOT_DIR)/$$version/ $(TARGET_DIR)/ && \
 			cp ../../$(GTLANG2)-x-$$orth.zhfst 3/ && \
 			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
 		else \

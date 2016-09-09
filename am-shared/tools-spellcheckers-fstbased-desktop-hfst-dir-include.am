@@ -195,18 +195,12 @@ endif # CAN_HFST
 endif # WANT_SPELLERS
 
 noinst_DATA=$(GT_ERRMODELS) \
-			$(OXT_FILES) \
-			$(ALT_WS_OXT_FILES) \
-			$(ALT_ORTH_OXT_FILES) \
-			$(MACVOIKKOFILE) \
-			$(MACVOIKKOZIPFILE) \
-			$(MACVKOFST) \
-			$(MOZVOIKKO_FILE)
+			$(INST_FILES)
 
 ###################################
 ####### HFST build rules: #########
 
-####### Esater egg version info: #######
+####### Easter egg version info: #######
 # Easter egg content - depends also on the fst, to
 # make sure the easter egg is rebuilt every time the fst is rebuilt:
 easteregg.%.txt: $(srcdir)/version.txt $(GT_SPELLER_HFST)

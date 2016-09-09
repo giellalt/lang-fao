@@ -1,4 +1,10 @@
-$Rev: 139526 $
+$Rev: 139822 $
+Added support for getting precompiled proofing tools libraries across the net if
+not found locally. Makes it actually possible to build spellers without checking
+out the whole of $GIELLA_HOME. Now it is also possible to just check out
+$GIELLA_LIBS if one still wants to build everything locally.
+
+r139526:
 Applied backend format rules to the tools/mt/ap/filters dir. This is not future
 proof, but does not create problems for sme, and solves a bug in smj. The
 future problem is that we mix both a specified backend format (for compilation

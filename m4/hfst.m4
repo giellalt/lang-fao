@@ -124,7 +124,7 @@ AM_CONDITIONAL([CAN_HFST],      [test "x$gt_prog_hfst" = "xyes"])
 # You can specify the fst transducer format (=backend) for hfst
 # - default is 'openfst-tropical'
 AC_ARG_WITH([backend-format],
-              [AS_HELP_STRING([--with-backend-format],
+              [AS_HELP_STRING([--with-backend-format=FORMAT],
                               [enable the hfst backend format specified (one of: sfst, foma, openfst-tropical, openfst-log) @<:@default=openfst-tropical@:>@])],
               [with_backend=$withval],
               [with_backend=openfst-tropical])

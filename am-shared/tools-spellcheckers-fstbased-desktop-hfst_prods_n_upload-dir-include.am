@@ -25,6 +25,12 @@
 # -a without the -t option.
 RSYNC_OPTIONS=-rlpgoD
 
+# wget options: -r for recursive, -nH to skip the host name as the first local
+# dir, --cut-dirs=2 to ???, --no-parent to avoid wget going upwards in the dir
+# hierarchy, and finally -e robots=off to actually traverse the dir tree (we
+# have a robot.txt file to avoid Google etc to constantly index our svn tree).
+WGET_OPTIONS=-r -nH --cut-dirs=2 --no-parent -e robots=off
+
 SCP=scp -q
 
 #### LibreOffice-Voikko version: ####
@@ -35,10 +41,14 @@ LOVOIKKO_VERSION=5.0
 OXT_FILES=
 MACVOIKKOFILE=
 MACVOIKKOZIPFILE=
+MOZVOIKKO_FILE=
+
+# Variable to collect all final targets - needs to be conditional on whether
+# we are able to actually build the targets
+INST_FILES=
 
 if WANT_SPELLERS
 if CAN_HFST
-if CAN_LOCALSYNC
 
 # Generate target file name dynamically based on the variables LOVOIKKO_VERSION
 # and GTLANG2. LO-voikko 5.0+
@@ -59,8 +69,37 @@ LANGSTRING=$(shell echo "${GTLANGUAGE}" | sed -e 's/ /_/g')
 MACVOIKKO_STEM=$(addsuffix $(LANGSTRING),MacVoikko-)
 MACVOIKKOFILE+=$(addsuffix .service,$(addsuffix -$(GTLANG2),$(MACVOIKKO_STEM)))
 MACVOIKKOZIPFILE+=$(addsuffix .zip,$(MACVOIKKOFILE))
-#MACVKOFST=$(MACVOIKKOFILE)/Contents/Resources/Dictionaries/3/$(GT_SPELLING_HFST)
-MOZVOIKKO_FILE=Mozvoikko2-$(GTLANG2).xpi
+MOZVOIKKO_FILE+=Mozvoikko2-$(GTLANG2).xpi
+
+if CAN_LOCALSYNC
+
+TOOLLIBS_DIR=$(GIELLA_LIBS)
+GET_LIBS_COMMAND=$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY)
+TARGET_DIR=.
+
+INST_FILES+=$(OXT_FILES) \
+            $(MOZVOIKKO_FILE) \
+            $(MACVOIKKOFILE) \
+            $(MACVOIKKOZIPFILE) \
+			$(ALT_WS_OXT_FILES) \
+			$(ALT_ORTH_OXT_FILES)
+
+else
+
+if CAN_REMOTE_SYNC
+
+TOOLLIBS_DIR=https://gtsvn.uit.no/langtech/trunk/giella-libs
+GET_LIBS_COMMAND=$(WGET) $(WGET_OPTIONS) $(VERBOSITY)
+TARGET_DIR=--directory-prefix=.
+
+INST_FILES+=$(OXT_FILES) \
+            $(MOZVOIKKO_FILE) \
+            $(MACVOIKKOFILE) \
+            $(MACVOIKKOZIPFILE) \
+			$(ALT_WS_OXT_FILES) \
+			$(ALT_ORTH_OXT_FILES)
+
+endif # CAN_REMOTE_SYNC
 
 endif # CAN_LOCALSYNC
 endif # CAN_HFST
@@ -80,7 +119,6 @@ VK_PLATFORMS=mac win
 VOIKKO_VERS_PLATFORMS=$(foreach version,$(VK_VERSIONS), \
                     $(addprefix $(version)-,$(VK_PLATFORMS)))
 
-TOOLLIBS_DIR=$(GTHOME)/prooftools/toollibs
 OXT_ROOT_DIR=$(TOOLLIBS_DIR)/LibreOffice-voikko
 MACVKO_ROOT_DIR=$(TOOLLIBS_DIR)/mac/MacVoikko
 MOZVOIKKO_DIR=$(TOOLLIBS_DIR)/Mozvoikko
@@ -96,7 +134,7 @@ $(GTLANG2)_LO-voikko-4%.oxt: $(GT_SPELLING_HFST)
 		if [ -d "$(OXT_ROOT_DIR)/4$*" ]; then \
 			$(MKDIR_P) build/4$*/ && \
 			cd build/4$* && \
-			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) $(OXT_ROOT_DIR)/4$*/ ./ && \
+			$(GET_LIBS_COMMAND) $(OXT_ROOT_DIR)/4$*/ $(TARGET_DIR)/ && \
 			cp ../../$< 3/ && \
 			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
 		else \
@@ -108,7 +146,7 @@ $(GTLANG2)_LO-voikko-5%.oxt: $(GT_SPELLING_HFST)
 		if [ -d "$(OXT_ROOT_DIR)/5$*" ]; then \
 			$(MKDIR_P) build/5$*/ && \
 			cd build/5$* && \
-			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) $(OXT_ROOT_DIR)/5$*/ ./ && \
+			$(GET_LIBS_COMMAND) $(OXT_ROOT_DIR)/5$*/ $(TARGET_DIR)/ && \
 			cp ../../$< voikko/3/ && \
 			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
 		else \
@@ -124,8 +162,8 @@ $(GTLANG2)_LO-voikko-5%.oxt: $(GT_SPELLING_HFST)
 	$(AM_V_GEN)rm -rf $@ && \
 		if [ -d "$(MACVKO_ROOT_DIR)/MacVoikko.service" ]; then \
 			$(MKDIR_P) $@ && \
-			$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) \
-				$(MACVKO_ROOT_DIR)/MacVoikko.service/ ./$@/ ; \
+			$(GET_LIBS_COMMAND) \
+				$(MACVKO_ROOT_DIR)/MacVoikko.service/ $(TARGET_DIR)/$@/ ; \
 		fi
 	$(AM_V_at)sed "s/<string>und<\/string>/<string>$*<\/string>/" \
 		< ./$@/Contents/Info.plist > ./$@/Contents/Info.plist.tmp
@@ -149,7 +187,7 @@ $(MACVOIKKO_STEM)-%.service: %.service
 Mozvoikko2-%.xpi: %.zhfst
 	$(AM_V_at)$(MKDIR_P) build/$@
 	$(AM_V_GEN)cd build/$@ && \
-		$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY) $(MOZVOIKKO_DIR)/ ./ && \
+		$(GET_LIBS_COMMAND) $(MOZVOIKKO_DIR)/ $(TARGET_DIR)/ && \
 		cp ../../$< voikko/3/ && \
 		$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ *
 

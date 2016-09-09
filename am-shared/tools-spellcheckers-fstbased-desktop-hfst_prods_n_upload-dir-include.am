@@ -29,7 +29,7 @@ RSYNC_OPTIONS=-rlpgoD
 # dir, --cut-dirs=2 to ???, --no-parent to avoid wget going upwards in the dir
 # hierarchy, and finally -e robots=off to actually traverse the dir tree (we
 # have a robot.txt file to avoid Google etc to constantly index our svn tree).
-WGET_OPTIONS=-r -nH --cut-dirs=2 --no-parent -e robots=off
+WGET_OPTIONS=-r -nH --no-parent -e robots=off --reject "index.html*"
 
 SCP=scp -q
 
@@ -76,6 +76,8 @@ if CAN_LOCALSYNC
 TOOLLIBS_DIR=$(GIELLA_LIBS)
 GET_LIBS_COMMAND=$(RSYNC) $(RSYNC_OPTIONS) $(VERBOSITY)
 TARGET_DIR=.
+# The following variable only makes sense for wget:
+SKIP_DIR_NUM=
 
 INST_FILES+=$(OXT_FILES) \
             $(MOZVOIKKO_FILE) \
@@ -91,6 +93,9 @@ if CAN_REMOTE_SYNC
 TOOLLIBS_DIR=https://gtsvn.uit.no/langtech/trunk/giella-libs
 GET_LIBS_COMMAND=$(WGET) $(WGET_OPTIONS) $(VERBOSITY)
 TARGET_DIR=--directory-prefix=.
+# The following variable is required to remove intermediate dirs that clutter
+# the dir structure when building the final speller packages:
+SKIP_DIR_NUM= --cut-dirs=
 
 INST_FILES+=$(OXT_FILES) \
             $(MOZVOIKKO_FILE) \
@@ -131,27 +136,31 @@ MOZVOIKKO_DIR=$(TOOLLIBS_DIR)/Mozvoikko
 # - zip build/subdir to ./
 $(GTLANG2)_LO-voikko-4%.oxt: $(GT_SPELLING_HFST)
 	$(AM_V_GEN)rm -f $@ && \
-		if [ -d "$(OXT_ROOT_DIR)/4$*" ]; then \
-			$(MKDIR_P) build/4$*/ && \
-			cd build/4$* && \
-			$(GET_LIBS_COMMAND) $(OXT_ROOT_DIR)/4$*/ $(TARGET_DIR)/ && \
-			cp ../../$< 3/ && \
-			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
-		else \
-			echo "  SKIP     $@: Not yet supported." ; \
-		fi
+		$(MKDIR_P) build/4$*/ ; \
+		if test "x$(SKIP_DIR_NUM)" != "x" ; then \
+			remdirnum=$$(echo $(OXT_ROOT_DIR)/4$*/ \
+			| sed 's|https://gtsvn.uit.no/langtech/||' | tr '/' '\n' \
+			| wc -l) ; \
+		fi ; \
+		cd build/4$* && \
+		$(GET_LIBS_COMMAND) $(OXT_ROOT_DIR)/4$*/ $(TARGET_DIR)/ \
+			$(SKIP_DIR_NUM)$$remdirnum && \
+		cp ../../$< 3/ && \
+		$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ *
 
 $(GTLANG2)_LO-voikko-5%.oxt: $(GT_SPELLING_HFST)
 	$(AM_V_GEN)rm -f $@ && \
-		if [ -d "$(OXT_ROOT_DIR)/5$*" ]; then \
-			$(MKDIR_P) build/5$*/ && \
-			cd build/5$* && \
-			$(GET_LIBS_COMMAND) $(OXT_ROOT_DIR)/5$*/ $(TARGET_DIR)/ && \
-			cp ../../$< voikko/3/ && \
-			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
-		else \
-			echo "  SKIP     $@: Not yet supported." ; \
-		fi
+		$(MKDIR_P) build/5$*/ ; \
+		if test "x$(SKIP_DIR_NUM)" != "x" ; then \
+			remdirnum=$$(echo $(OXT_ROOT_DIR)/5$*/ \
+			| sed 's|https://gtsvn.uit.no/langtech/||' | tr '/' '\n' \
+			| wc -l) ; \
+		fi ; \
+		cd build/5$* && \
+		$(GET_LIBS_COMMAND) $(OXT_ROOT_DIR)/5$*/ $(TARGET_DIR)/ \
+			$(SKIP_DIR_NUM)$$remdirnum && \
+		cp ../../$< voikko/3/ && \
+		$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ *
 
 #### MacVoikko: ####
 # - create package dir
@@ -160,11 +169,14 @@ $(GTLANG2)_LO-voikko-5%.oxt: $(GT_SPELLING_HFST)
 # - replace und language code with correct language code
 %.service: %.zhfst
 	$(AM_V_GEN)rm -rf $@ && \
-		if [ -d "$(MACVKO_ROOT_DIR)/MacVoikko.service" ]; then \
-			$(MKDIR_P) $@ && \
-			$(GET_LIBS_COMMAND) \
-				$(MACVKO_ROOT_DIR)/MacVoikko.service/ $(TARGET_DIR)/$@/ ; \
-		fi
+		$(MKDIR_P) $@
+	$(AM_V_GEN)if test "x$(SKIP_DIR_NUM)" != "x" ; then \
+			remdirnum=$$(echo $(MACVKO_ROOT_DIR)/MacVoikko.service/ \
+			| sed 's|https://gtsvn.uit.no/langtech/||' | tr '/' '\n' \
+			| wc -l) ; \
+		fi ; \
+    	$(GET_LIBS_COMMAND) $(SKIP_DIR_NUM)$$remdirnum \
+    		$(MACVKO_ROOT_DIR)/MacVoikko.service/ $(TARGET_DIR)/$@/
 	$(AM_V_at)sed "s/<string>und<\/string>/<string>$*<\/string>/" \
 		< ./$@/Contents/Info.plist > ./$@/Contents/Info.plist.tmp
 	$(AM_V_at)mv -f ./$@/Contents/Info.plist.tmp ./$@/Contents/Info.plist
@@ -177,7 +189,7 @@ $(MACVOIKKO_STEM)-%.service: %.service
 
 # Zip service dir for distro (for now):
 %.service.zip: %.service
-	$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) $@ $<
+	$(AM_V_GEN)$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) $@ $<
 
 #### Mozvoikko: ####
 # - create package build dir
@@ -186,8 +198,14 @@ $(MACVOIKKO_STEM)-%.service: %.service
 # - zip to target file
 Mozvoikko2-%.xpi: %.zhfst
 	$(AM_V_at)$(MKDIR_P) build/$@
-	$(AM_V_GEN)cd build/$@ && \
-		$(GET_LIBS_COMMAND) $(MOZVOIKKO_DIR)/ $(TARGET_DIR)/ && \
+	$(AM_V_GEN)cd build/$@ ; \
+		if test "x$(SKIP_DIR_NUM)" != "x" ; then \
+			remdirnum=$$(echo $(MOZVOIKKO_DIR)/ \
+			| sed 's|https://gtsvn.uit.no/langtech/||' | tr '/' '\n' \
+			| wc -l) ; \
+		fi ; \
+		$(GET_LIBS_COMMAND) $(SKIP_DIR_NUM)$$remdirnum \
+			$(MOZVOIKKO_DIR)/ $(TARGET_DIR)/ && \
 		cp ../../$< voikko/3/ && \
 		$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ *
 

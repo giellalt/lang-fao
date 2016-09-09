@@ -164,25 +164,25 @@ AC_ARG_WITH([giella-shared],
 AC_MSG_CHECKING([whether we can set GIELLA_SHARED])
 # --with-giella-shared overrides everything:
 AS_IF([test "x$with_giella_shared" != "xfalse" -a \
-    -f $with_giella_shared/common/src/filters/make-optional-transitivity-tags.regex], [
+    -f $with_giella_shared/all_langs/src/filters/make-optional-transitivity-tags.regex], [
     GIELLA_SHARED=$with_giella_shared
     ],[
     # GiELLA_SHARED is the default env. variable for this dir:
     AS_IF([test "x$GIELLA_SHARED" != "x" -a \
-    -f $GIELLA_SHARED/common/src/filters/make-optional-transitivity-tags.regex], [], [
+    -f $GIELLA_SHARED/all_langs/src/filters/make-optional-transitivity-tags.regex], [], [
         # GIELLA_HOME is the new GTHOME:
         AS_IF([test "x$GIELLA_HOME" != "x" -a \
-    -f $GIELLA_HOME/giella-shared/common/src/filters/make-optional-transitivity-tags.regex], [
+    -f $GIELLA_HOME/giella-shared/all_langs/src/filters/make-optional-transitivity-tags.regex], [
             GIELLA_SHARED=$GIELLA_HOME/giella-shared
         ], [
             # GTHOME for backwards compatibility - it is deprecated:
             AS_IF([test "x$GTHOME" != "x" -a \
-    -f $GTHOME/giella-shared/common/src/filters/make-optional-transitivity-tags.regex], [
+    -f $GTHOME/giella-shared/all_langs/src/filters/make-optional-transitivity-tags.regex], [
                 GIELLA_SHARED=$GTHOME/giella-shared
             ], [
                 # GTCORE for backwards compatibility - it is deprecated:
                 AS_IF([test "x$GTCORE" != "x" -a \
-    -f $GTCORE/giella-shared/common/src/filters/make-optional-transitivity-tags.regex], [
+    -f $GTCORE/giella-shared/all_langs/src/filters/make-optional-transitivity-tags.regex], [
                     GIELLA_SHARED=$GTCORE/giella-shared
                 ], [
                    AS_IF([pkg-config --exists giella-common], [

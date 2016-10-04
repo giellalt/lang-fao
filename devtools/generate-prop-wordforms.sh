@@ -25,11 +25,11 @@ generator_file=src/generator-gt-norm
 # How many lemmas maximally for each lexicon:
 lemmacount=10
 
-################## DO NOT CHANGE BELOW HERE!!! ##################
-# Specify path to $GTCORE - we don't use Autotools for these scripts:
-giella_core=$GTCORE
+# Specify path to the dir containing the script used for generation:
+script_dir=$GTCORE/scripts
 
-source $giella_core/scripts/generate-wordforms-for-cont_lexes.sh \
+################## DO NOT CHANGE BELOW HERE!!! ##################
+source $script_dir/generate-wordforms-for-cont_lexes.sh \
         "$giella_core" \
         "$morf_codes" \
         "$source_file" \

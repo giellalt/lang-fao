@@ -1,4 +1,9 @@
-$Rev: 140928 $
+$Rev: 141056 $
+More robustness added to the test scripts: checking several variables, testing
+whether the found variables are pointing to existing directories, and giving an
+error message if no directory is found.
+
+r140928:
 Changed variable name and definition to allow overriding the path to the called
 script, to make it easy to use a locally modified script instead.
 

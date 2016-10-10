@@ -20,7 +20,7 @@ banner:
 	@echo
 
 if WANT_MAINTAIN
-$(top_srcdir)/und.timestamp: ${GIELLA_SHARED}/langs-templates/und/und.timestamp
+$(top_srcdir)/und.timestamp: ${GIELLA_TEMPLATES}/langs-templates/und/und.timestamp
 	@echo
 	@echo "	The build templates are newer than this language directory"
 	@echo "	To get new build rules and conventions, run: "

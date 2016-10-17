@@ -116,13 +116,13 @@ tokeniser-%.pmhfst: tokeniser-%.pmscript analyser_relabelled-%.hfst
 btrelabeller.hfst:
 	$(AM_V_TXT2FST)$(PRINTF) \
 		'0\t1\t@0@\t@PMATCH_BACKTRACK@\n1\t2\t@0@\t@PMATCH_INPUT_MARK@\n2\n' \
-		| $(HFST_TXT2FST) -e '@0@' \
+		| $(HFST_TXT2FST) -e '@0@' $(HFST_FORMAT) \
 		-o $@
 
 # Helper fst two:
 relabeller.hfst:
 	$(AM_V_TXT2FST)$(PRINTF) '0\t1\t@0@\t@PMATCH_INPUT_MARK@\n1\n' \
-		| $(HFST_TXT2FST) -e '@0@' \
+		| $(HFST_TXT2FST) -e '@0@' $(HFST_FORMAT) \
 		-o $@
 
 # Fallback pattern target for no local processing cases:
@@ -131,3 +131,4 @@ relabeller.hfst:
 
 ####### Includes: ###########
 include $(top_srcdir)/am-shared/silent_build-include.am
+include $(top_srcdir)/am-shared/hfst-format-include.am

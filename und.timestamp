@@ -1,4 +1,10 @@
-$Rev: 141525 $
+$Rev: 141536 $
+We build the tokeising analysers directly off the disamb and grammar checker
+analysers in src/, assuming that they are identical. This is a reasonable
+assumption now that the hfst tool kit contains all necessary machinery, and we
+don't need to pay special attention to the requirements of the tokenisation.
+
+r141525:
 Make --with-backend-format work also for the tokenising analysers.
 
 r141189:

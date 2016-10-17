@@ -95,7 +95,7 @@ $(ABBR): \
 ### regular disamb-analyser - and the same applies to the grammar checker:
 
 # Copy the analyser file from src/*.tmp.hfst:
-analyser-%-gt-desc.tmp.hfst: $(top_builddir)/src/analyser-%-gt-desc.tmp.hfst
+analyser-%-gt-desc.hfst: $(top_builddir)/src/analyser-%-gt-desc.hfst
 	$(AM_V_CP)cp -f $< $@
 
 # Prepare analysers used for building the tokenisers:

@@ -1,4 +1,8 @@
-$Rev: 141536 $
+$Rev: 141652 $
+Added mwe-dis.cg3, to allow disambiguation of multiword expressions and other
+tokenisation ambiguity.
+
+r141536:
 We build the tokeising analysers directly off the disamb and grammar checker
 analysers in src/, assuming that they are identical. This is a reasonable
 assumption now that the hfst tool kit contains all necessary machinery, and we

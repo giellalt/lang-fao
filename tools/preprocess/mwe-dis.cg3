@@ -1,0 +1,2004 @@
+# -*- cg-pre-pipe: "hfst-tokenise --gtd tokeniser-gramcheck-gt-desc.pmhfst | vislcg3 -g ../../src/syntax/valency.cg3" -*-
+
+SOFT-DELIMITERS = "<,>" ;
+DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
+
+# ============= #
+# Tags and sets #
+# ============= #
+
+SETS
+
+# I define end of clause and beginning of clause in a way so that the file
+# may be read both by the CG-2 and the vislcg formalisms.
+
+LIST BOS = (>>>) (<s>);
+LIST EOS = (<<<) (</s>);
+
+# CG3 doesn´t function without >>> and <<< !
+
+# Tags declared as single-membered LISTs 
+# ======================================
+
+# Parts of speech
+# ---------------
+
+LIST N = N ;
+LIST A = A ;
+LIST Adv = Adv ;
+LIST V = V ;
+LIST Pron = Pron ;
+
+LIST CS = CS ;
+LIST CCC = CC ;
+SET CC = CCC - ("sihke") ;
+SET CC-CS = CC OR CS ;
+LIST Po = Po ;
+LIST Pr = Pr ;
+
+LIST Pcle = Pcle ;
+LIST Num = Num ;
+LIST Coll = Coll ;
+LIST Known = Known ;
+LIST NomAg = NomAg ;
+LIST Der/NomAg = Der/NomAg ;
+SET NOMAG = NomAg OR Der/NomAg ;
+LIST G3 = G3 ;
+LIST Prop = Prop ;
+
+LIST LEFT = LEFT ;
+LIST RIGHT = RIGHT ;
+LIST WEB = WEB ;
+
+
+LIST VV = VV ;
+LIST AA = AA ;
+LIST NN = NN ;
+
+LIST V* = V* ;
+LIST A* = A* ;
+
+# POS sub-categories
+# ------------------
+
+LIST Pers = Pers ;
+LIST Dem = Dem ;
+LIST Interr = Interr ;
+
+LIST Indef = Indef ;
+
+LIST Recipr = Recipr ;
+LIST Refl = Refl ;
+LIST Rel = Rel ;
+ 
+LIST Interj = Interj ;
+LIST Adp = Adp ;
+ 
+
+# Morphosyntactic properties
+# --------------------------
+
+LIST Nom = Nom ;
+LIST Acc = Acc ;
+
+LIST Gen = Gen ;
+LIST Allegro = Allegro ;
+LIST Ill = Ill ;
+
+LIST Loc = Loc ;
+LIST Com = Com ;
+
+LIST Ess = Ess ;
+
+LIST Sg = Sg ;
+LIST Pl = Pl ;
+LIST Du = Du ;
+
+
+LIST CmpN/SgNomLeft  = CmpN/SgNomLeft ;
+LIST CmpN/SgGenLeft  = CmpN/SgGenLeft ;
+LIST CmpN/PlGenLeft  = CmpN/PlGenLeft ;
+
+LIST Cmp         =  Cmp ;
+LIST Cmp/Attr    =  Cmp/Attr ;
+LIST Cmp/SgNom   =  Cmp/SgNom ;
+LIST Cmp/SgGen   =  Cmp/SgGen ;
+LIST Cmp/PlGen   =  Cmp/PlGen ;
+
+LIST Cmp/SplitR = Cmp/SplitR ;
+LIST Cmp/SplitL = Cmp/SplitL ;
+LIST Cmp/SgNom = Cmp/SgNom ;
+LIST Cmp/SgGen = Cmp/SgGen ;
+         
+LIST Cmp/Sh       = Cmp/Sh ;
+LIST Cmp/Hyph     = Cmp/Hyph ;
+LIST Cmp/NoHyph   = Cmp/NoHyph ;
+LIST Cmp/SoftHyph = Cmp/SoftHyph ;
+
+ 
+LIST SgNomCmp = SgNomCmp ;
+ 
+LIST SgGenCmp = SgGenCmp ;
+
+LIST ShCmp = ShCmp ;
+
+LIST Tok/EndOfWord = Tok/EndOfWord ;
+
+
+LIST PxSg1 = PxSg1 ;
+LIST PxSg2 = PxSg2 ;
+LIST PxSg3 = PxSg3 ;
+ 
+LIST PxDu1 = PxDu1 ;
+LIST PxDu2 = PxDu2 ;
+LIST PxDu3 = PxDu3 ;
+ 
+LIST PxPl1 = PxPl1 ;
+LIST PxPl2 = PxPl2 ;
+LIST PxPl3 = PxPl3 ;
+
+LIST Comp = Comp ;
+LIST Superl = Superl ;
+
+LIST Attr = Attr ;
+LIST Ord = Ord ;
+ 
+LIST Qst = Qst ;
+
+LIST Foc/Neg-ge = Foc/Neg-ge ; 
+LIST Foc/Pos-ge = Foc/Pos-ge ;
+LIST Foc/ge = Foc/Neg-ge Foc/Pos-ge ;
+LIST Foc/gen = Foc/gen ;
+LIST Foc/ges = Foc/ges ;
+LIST Foc/gis = Foc/gis ;
+LIST Foc/naj = Foc/naj ;
+LIST Foc/ba = Foc/ba ;
+LIST Foc/be = Foc/be ;
+LIST Foc/hal = Foc/hal ;
+LIST Foc/han = Foc/han ;
+LIST Foc/bat = Foc/bat ;
+LIST Foc/son = Foc/son ;
+
+LIST IV = IV ;
+LIST TV = TV ;
+
+LIST Der/Pass = Der/PassL Der/PassS ;
+
+LIST Prt = Prt;
+LIST Prs = Prs ;
+ 
+
+LIST Ind = Ind ;
+LIST Pot = Pot ;
+LIST Cond = Cond ;
+
+LIST Imprt = Imprt ;
+LIST ImprtII = ImprtII ;
+
+LIST Sg1 = Sg1 ;
+LIST Sg2 = Sg2 ;
+LIST Sg3 = Sg3 ;
+
+LIST Du1 = Du1 ;
+LIST Du2 = Du2 ;
+LIST Du3 = Du3 ;
+
+LIST Pl1 = Pl1 ;
+LIST Pl2 = Pl2 ;
+LIST Pl3 = Pl3 ;
+
+LIST Inf = Inf ;
+LIST ConNeg = ConNeg ;
+LIST ConNegII = ConNegII ;
+LIST Neg = Neg ;
+
+LIST PrfPrc = PrfPrc ;
+LIST VGen = VGen ;
+
+LIST PrsPrc = PrsPrc ;
+ 
+
+LIST Ger = Ger ;
+LIST Sup = Sup ;
+LIST Actio = Actio ;
+
+#LIST VActor = (Der2 Actor) ;
+LIST VAbess = VAbess ;
+
+# Derivation
+# ----------
+
+LIST Der/adda = Der/adda ;
+LIST Der/ahtti = Der/ahtti ;
+LIST Der/alla = Der/alla ;
+LIST Der/asti = Der/asti ;
+LIST Der/easti = Der/easti ;
+LIST Der/d = Der/d ;
+LIST Der/eaddji = Der/eaddji ;
+LIST Der/eamoš = Der/eamoš ;
+LIST Der/amoš = Der/amoš ;
+LIST Der/NomAct = Der/NomAct ;
+LIST Der/geahtes = Der/geahtes ;
+LIST Der/gielat = Der/gielat ;
+LIST !better: = !better: ;
+LIST Der/NuA = Der/NuA ;
+
+LIST Der/h = Der/h ;
+LIST Der/heapmi = Der/heapmi ;
+LIST Der/hudda = Der/hudda ;
+LIST Der/huhtti = Der/huhtti ;
+LIST Der/huvva = Der/huvva ;
+LIST Der/halla = Der/halla ;
+LIST Der/j = Der/j ;
+LIST Der/l = Der/l ;
+LIST Der/laš = Der/laš ;
+LIST Der/las = Der/las ;
+LIST Der/hat = Der/hat ;
+
+LIST Der/meahttun = Der/meahttun ;
+LIST Der/muš = Der/muš ;
+LIST Der/NomAct = Der/NomAct ;
+LIST Der/st = Der/st ;
+LIST Der/stuvva = Der/stuvva ;
+LIST Der/upmi = Der/upmi ;
+LIST Der/supmi = Der/supmi ;
+LIST Der/vuota = Der/vuota ;
+LIST Der/goahti = Der/goahti ;
+LIST Der/InchL = Der/InchL ;
+LIST Der/Caus = Der/Caus ;
+
+LIST Der/lágan = Der/lágan ;
+LIST Der/lágán = Der/lágán ;
+LIST Der/lágaš = Der/lágaš ;
+LIST Der/jagáš = Der/jagáš ;
+LIST Der/jahkásaš = Der/jahkásaš ;
+LIST Der/diibmosaš = Der/diibmosaš ;
+LIST Der/at = Der/at ;
+LIST Der/AAdv = Der/AAdv ;
+
+
+LIST Der/Dimin = Der/Dimin ;
+LIST Der/viđá = Der/viđá ;
+LIST Der/viđi = Der/viđi ;
+LIST Der/veara = Der/veara ;
+LIST Der/duohke = Der/duohke ;
+LIST Der/duohkai = Der/duohkai ;
+LIST Der/vuolle = Der/vuolle ;
+LIST Der/vuollai = Der/vuollai ;
+LIST Der/vuolde = Der/vuolde ;
+
+# Syntactic tags
+# --------------
+
+LIST @+FAUXV = @+FAUXV ;
+LIST @+FMAINV = @+FMAINV ;
+LIST @-FAUXV = @-FAUXV ;
+ 
+LIST @-FMAINV = @-FMAINV ;
+LIST @-FSUBJ> = @-FSUBJ> ;
+LIST @-F<OBJ = @-F<OBJ ;
+LIST @-FOBJ> = @-FOBJ> ;
+LIST @SPRED<OBJ = @SPRED<OBJ ;
+LIST @-F<ADVL = @-F<ADVL ;
+LIST @-FADVL> = @-FADVL> ;
+LIST @-F<SPRED = @-F<SPRED ;
+LIST @-F<OPRED = @-F<OPRED ;
+LIST @-FSPRED> = @-FSPRED> ;
+LIST @-FOPRED> = @-FOPRED> ;
+
+SET FOBJ = @-F<OBJ OR @-FOBJ> ; 
+SET FMAINV = @-FMAINV OR @+FMAINV ;
+SET FAUXV = @-FAUXV OR @+FAUXV ;
+
+LIST @ADVL = @ADVL @ADVL> @ADVL< @<ADVL @>ADVL @-F<ADVL @-FADVL> ;
+LIST @>ADVL = @>ADVL ;
+LIST @ADVL< = @ADVL< ;
+LIST @<ADVL = @<ADVL ;
+LIST @ADVL> = @ADVL> ;
+
+LIST @HAB = @HAB ;
+ 
+LIST @>N = @>N ;
+
+LIST @N< = @N< ;
+ 
+
+LIST @>A = @>A ;
+
+LIST @P< = @P< ;
+
+LIST @>P = @>P ;
+
+LIST @HNOUN = @HNOUN ;
+LIST @INTERJ = @INTERJ ;
+ 
+LIST @>Num = @>Num;
+
+LIST @Pron< = @Pron< ;
+LIST @>Pron = @>Pron ;
+
+LIST @Num< = @Num< ;
+
+LIST @OBJ = @OBJ ;
+LIST @<OBJ = @<OBJ ;
+LIST @OBJ> = @OBJ> ;
+LIST @OPRED = @OPRED ;
+LIST @<OPRED = @<OPRED ;
+LIST @OPRED> = @OPRED> ;
+LIST @PCLE = @PCLE ;
+LIST @COMP-CS< = @COMP-CS< ;
+ 
+LIST @SPRED = @SPRED ;
+LIST @<SPRED = @<SPRED ;
+LIST @SPRED> = @SPRED> ;
+LIST @<PPRED = @<PPRED ;
+LIST @SUBJ = @SUBJ ;
+LIST @<SUBJ = @<SUBJ ;
+LIST @SUBJ> = @SUBJ> ;
+SET SUBJ = @<SUBJ OR @SUBJ> OR @SUBJ ;
+SET SPRED = @<SPRED OR @SPRED> OR @SPRED ;
+SET OPRED = @<OPRED OR @OPRED> OR @OPRED ;
+
+LIST @PPRED = @PPRED ;
+ 
+LIST @APP = @APP ;
+LIST @APP-N< = @APP-N< ;
+LIST @APP-Pron< = @APP-Pron< ;
+LIST @APP>Pron = @APP>Pron ;
+LIST @APP-Num< = @APP-Num< ;
+LIST @APP-ADVL< = @APP-ADVL< ;
+LIST @VOC = @VOC ;
+
+LIST @CVP = @CVP ;
+LIST @CNP = @CNP ;
+
+SET OBJ = (@<OBJ) OR (@OBJ>) OR (@OBJ) OR (@-F<OBJ) OR (@-FOBJ>) ;
+LIST <OBJ = @IOBJ @<OBJ ;
+LIST OBJ> = @OBJ> @IOBJ> ;
+
+SET <OBJ-OTHERS = <OBJ OR (Gen) OR (Nom) OR (Ess) OR (Loc) OR (Adv) ;
+SET OBJ>-OTHERS = OBJ> OR (Gen) OR (Nom) OR (Ess) OR (Loc) OR (Adv) ;
+
+
+LIST @X = @X ;
+
+LIST Err/Orth 		= Err/Orth ;
+LIST Err/Lex        = Err/Lex ; 
+LIST Err/DerSub		= Err/DerSub ;
+LIST Err/CmpSub		= Err/CmpSub ;
+LIST Err/HyphSub	= Err/HyphSub ;
+LIST Err/SpaceCmp	= Err/SpaceCmp ;
+LIST Err/Spellrelax = Err/Spellrelax ;
+
+# Dialect tags
+# -------------
+
+LIST Dial/-KJ  = Dial/-KJ ; # forms not in use in KJ (Kárásjohka)
+LIST Dial/-GG  = Dial/-GG ; # forms not in use in GG (Guovdageaidnu)
+LIST Dial/-GS  = Dial/-GS ; # forms not in use in GS (Gárasavvon)
+LIST South     = South ; # foreløpig lagt til Sg Loc -n, som er en sub-form
+
+# Semantic tags
+# -------------
+
+LIST Sem/Act = Sem/Act Sem/Act_Group Sem/Act_Plc Sem/Act_Route; #Activity #Ollet guhká dainna X-Com (Veaigin bisánasttii Ristenge geahččat, man guhkás Lemet-gázzi juo ledje ollen dainna divvunbargguin.) # bargu
+LIST Sem/Amount = Sem/Amount Sem/Amount_Build Sem/Amount_Semcon;
+LIST Sem/Ani = Sem/Ani Sem/Ani_Build_Hum_Txt Sem/Ani_Build-part Sem/Ani_Group Sem/Ani_Group_Hum Sem/Ani_Hum Sem/Ani_Hum_Plc Sem/Ani_Hum_Time Sem/Ani_Body-abstr_Hum Sem/Ani_Plc Sem/Ani_Plc_Txt Sem/Ani_Time Sem/Ani_Veh ; #Animal #bivdit X-Loc veahki.
+LIST Sem/Aniprod = Sem/Aniprod Sem/Aniprod_Hum
+Sem/Aniprod_Obj-clo Sem/Aniprod_Perc-phys Sem/Aniprod_Plc ;
+LIST Sem/Body = Sem/Body Sem/Body_Body-abstr Sem/Body_Clth Sem/Body_Food Sem/Body_Group_Hum Sem/Body_Hum Sem/Body_Mat Sem/Body_Measr Sem/Body_Obj_Tool-catch Sem/Body_Plc Sem/Body_Time ; #Body #Buohkat ceggejedje gieđa. Mon gal attán dutnje bealji vuollái. Go duos dás speččohallá bahtii de gal buollá bargomokta! Čuolda basttii sus alemii.
+LIST Sem/Body-abstr = Sem/Ani_Body-abstr_Hum Sem/Body-abstr Sem/Body-abstr_Prod-audio_Semcon Sem/Body_Body-abstr ; # jierbmi, siellu, ...
+LIST Sem/Build = Sem/Amount_Build Sem/Ani_Build Sem/Ani_Build_Hum_Txt Sem/Build Sem/Build_Build-part Sem/Build_Clth-part Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Org Sem/Build_Route ; #Build #Sem #Syn: hukset X deike
+LIST Sem/Build-part = Sem/Ani_Build-part Sem/Build-part Sem/Build-part_Plc Sem/Build_Build-part ; #Building part, e.g. room #Sem:+con,+count,-mova #Syn: mannat X sisa
+LIST Sem/Cat = Sem/Cat ;
+LIST Sem/Clth = Sem/Body_Clth Sem/Clth Sem/Clth_Hum ; #Clothes #Sem #bidjat X ala/badjelii.
+LIST Sem/Clth-jewl = Sem/Clth-jewl Sem/Clth-jewl_Curr Sem/Clth-jewl_Money Sem/Clth-jewl_Plant Sem/Org_Clth-jewl ; #Clothes jewelry #Synt: bidjat X ala. *bidjat X badjelii.
+LIST Sem/Clth-part  = Sem/Build_Clth-part Sem/Clth-part  ;
+LIST Sem/Ctain = Sem/Ctain Sem/Ctain_Feat-phys Sem/Ctain_Furn Sem/Ctain_Plc Sem/Ctain_Tool Sem/Ctain_Tool-measr ; #Container #Sem:+mova #Syn: bidjat juoidá X sisa
+LIST Sem/Ctain-abstr = Sem/Ctain-abstr Sem/Ctain-abstr_Org ;
+LIST Sem/Curr = Sem/Clth-jewl_Curr Sem/Curr Sem/Curr_Org; #Syn: Mun mávssan dasa 100 X. Dat máksá 100 X.
+LIST Sem/Date = Sem/Date ;
+LIST Sem/Dance = Sem/Dance Sem/Dance_Org Sem/Dance_Prod-audio ; #Ollugat dánso swinga lávddi ovddabeale.
+LIST Sem/Dir = Sem/Dir ;
+LIST Sem/Domain = Sem/Domain Sem/Domain_Food-med Sem/Domain_Prod-audio;
+LIST Sem/Drink = Sem/Drink ;
+LIST Sem/Edu = Sem/Build_Edu_Org Sem/Edu Sem/Edu_Event Sem/Edu_Group_Hum Sem/Edu_Mat Sem/Edu_Org ; # vázzit X-Acc. addit X-Acc. X:s lea beroštupmi.
+LIST Sem/Event = Sem/Build_Event_Org Sem/Edu_Event Sem/Event Sem/Event_Food Sem/Event_Hum Sem/Event_Plc Sem/Event_Plc-elevate Sem/Event_Time ; # X maŋŋel mun ferten vuolgit. X:s leat ollu olbmot. *Lean leamaš doppe X:Gen.
+#LIST Sem/Feat-cogn = Sem/Feat-cogn ; # oaidnu, oamedovdu, viissisvuohta
+#LIST Sem/Feat-phys = Sem/Feat-phys ; # oaidnu
+LIST Sem/Feat = Sem/Feat Sem/Feat_Plant ; #many -vuohta and -dat nouns
+LIST Sem/Feat-measr = Sem/Feat-measr ;
+LIST Sem/Feat-phys = Sem/Ctain_Feat-phys Sem/Feat-phys Sem/Feat-phys_Tool-write Sem/Feat-phys_Veh Sem/Feat-phys_Wthr ;
+LIST Sem/Feat-psych = Sem/Feat-psych Sem/Feat-psych_Hum ; #not touchable, not countable ("beroštupmi" "gáđašvuohta" "mokta" "sáhkkiivuohta") - Mus lea X,  Son lea X-adj persovdna # muitu
+LIST Sem/Fem = Sem/Fem ;
+LIST Sem/Food = Sem/Body_Food Sem/Event_Food Sem/Food Sem/Food_Perc-phys Sem/Food_Plant ; #Syn: bassit/borrat/sohpat X-Acc. mon im læk borram dam guolest. mun boran iđitbiepmu. mus lea iđitbiebmu fárus. birgui borastuvvat
+LIST Sem/Food-med = Sem/Domain_Food-med Sem/Food-med ;
+LIST Sem/Furn = Sem/Ctain_Furn Sem/Furn ; #Syn: bidjat X vissui: čohkkedit X ala
+LIST Sem/Game = Sem/Game Sem/Game_Obj-play ;
+LIST Sem/Geom = Sem/Geom Sem/Geom_Obj ;
+LIST Sem/Group = Sem/Act_Group Sem/Ani_Group Sem/Ani_Group_Hum Sem/Body_Group_Hum Sem/Edu_Group_Hum Sem/Group Sem/Group_Hum Sem/Group_Hum_Org Sem/Group_Hum_Plc Sem/Group_Hum_Prod-vis Sem/Group_Org Sem/Group_Sign Sem/Group_Txt ; #Bárdni lea riggámus sogas. -Plc
+LIST Sem/Hum = Sem/Ani_Body-abstr_Hum Sem/Ani_Build_Hum_Txt Sem/Ani_Group_Hum Sem/Ani_Hum Sem/Ani_Hum_Plc Sem/Ani_Hum_Time Sem/Aniprod_Hum Sem/Body_Group_Hum Sem/Body_Hum Sem/Clth_Hum Sem/Edu_Group_Hum Sem/Event_Hum Sem/Feat-psych_Hum Sem/Group_Hum Sem/Group_Hum_Org Sem/Group_Hum_Plc Sem/Group_Hum_Prod-vis Sem/Hum Sem/Hum_Lang Sem/Hum_Lang_Plc Sem/Hum_Lang_Time Sem/Hum_Obj Sem/Hum_Org Sem/Hum_Plant Sem/Hum_Plc Sem/Hum_Tool Sem/Hum_Veh Sem/Hum_Wthr ; #Human
+#LIST Sem/Hum-kin = Sem/Hum-kin ; #Human kinship
+LIST Sem/Hum-abstr = Sem/Hum-abstr ;
+LIST Sem/Ideol = Sem/Ideol ;
+LIST Sem/Lang = Sem/Hum_Lang Sem/Lang Sem/Lang_Tool ; #Syn: hállat X:illatiiva. Son hállá X:Acc. Jorgalan dán X:lokatiiva Y:illatiiva.
+LIST Sem/Mal = Sem/Mal ;
+LIST Sem/Mat = Sem/Body_Mat Sem/Edu_Mat Sem/Mat Sem/Mat_Plant Sem/Mat_Txt ; # Material #Sem: cannot pass through it without destroying it, ráhkadit juoidá X:s. Niibi lea X-Loc-Sg. #Dán báhkis šaddá čáppa gohppu.
+LIST Sem/Measr = Sem/Body_Measr Sem/Measr Sem/Measr_Sign Sem/Measr_Time ; # Lea lassánan 100 X-Loc.
+LIST Sem/Money = Sem/Clth-jewl_Money Sem/Money Sem/Money_Obj Sem/Money_Txt ; #Mun mávssán X. Mii ávžžuhit vuovdit alimus X-Ill (haddái). ruhtadit doaibmabušeahtain. vuovdit/bidjat ruđast - selge for penger
+LIST Sem/Obj = Sem/Body_Obj_Tool-catch Sem/Geom_Obj Sem/Hum_Obj Sem/Money_Obj Sem/Obj Sem/Obj_Semcon Sem/State_Obj ; # concrete object, movable #Syn: Mun guoskkán X-Acc. Dá livčče dutnje X-Nom (sabehat). čievččastit geađggi johkii
+#LIST Sem/Obj-com = Sem/Obj-com ; #communication object #hálan telefuvnnas/e-poasttas #sádden X bokte
+LIST Sem/Obj-clo = Sem/Aniprod_Obj-clo Sem/Obj-clo ; #bidjat juoidá Obj-clo sisa
+LIST Sem/Obj-el = Sem/Obj-el ; # moveable, countable, touchable, electrical objects that can be turned on and of,  mus lea X alde, mun bijan X ala
+LIST Sem/Obj-ling = Sem/Obj-ling ;
+LIST Sem/Obj-play = Sem/Game_Obj-play Sem/Obj-play_Sport ;
+LIST Sem/Obj-rope = Sem/Obj-rope ;
+LIST Sem/Obj-surfc = Sem/Obj-surfc ;
+LIST Sem/Org = Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Org Sem/Ctain-abstr_Org Sem/Curr_Org Sem/Dance_Org Sem/Edu_Org Sem/Group_Hum_Org Sem/Group_Org Sem/Hum_Org Sem/Org Sem/Org_Clth-jewl Sem/Org_Prod-cogn Sem/Org_Rule Sem/Org_Txt Sem/Org_Veh ;
+LIST Sem/Part = Sem/Part Sem/Part_Prod-cogn ; # bealli, oassi
+LIST Sem/Perc-emo = Sem/Perc-emo Sem/Perc-emo_Wthr ; #Sem not touchable, not countable ("ballu" "suhttu" "vaši") -  Mun dovddan garra X. Mun lean X+Loc # moraš
+LIST Sem/Perc-phys = Sem/Aniprod_Perc-phys Sem/Food_Perc-phys Sem/Perc-phys Sem/Perc-emo_Wthr ; # anistupmi, oaidnu
+LIST Sem/Plant = Sem/Clth-jewl_Plant Sem/Ctain-clth_Plant Sem/Feat_Plant Sem/Food_Plant Sem/Hum_Plant Sem/Mat_Plant Sem/Plant Sem/Plant_Plant-part Sem/Plant_Tool Sem/Plant_Tool-measr ; #čáhccet X-Acc #X-Nom šaddet
+LIST Sem/Plant-part = Sem/Plant_Plant-part Sem/Plant-part ; #čáhccet X-Acc #X-Nom šaddet
+LIST Sem/Plc = Sem/Act_Plc Sem/Ani_Hum_Plc Sem/Ani_Plc Sem/Ani_Plc_Txt Sem/Aniprod_Plc Sem/Body_Plc Sem/Build-part_Plc Sem/Ctain_Plc Sem/Event_Plc Sem/Event_Plc-elevate Sem/Group_Hum_Plc Sem/Hum_Lang_Plc Sem/Hum_Plc Sem/Plc Sem/Plc_Pos Sem/Plc_Route Sem/Plc_Substnc Sem/Plc_Substnc_Wthr Sem/Plc_Time Sem/Plc_Tool-catch Sem/Plc_Wthr;
+LIST Sem/Plc-abstr = Sem/Plc-abstr Sem/Plc-abstr_Rel_State Sem/Plc-abstr_Route ;
+LIST Sem/Plc-elevate = Sem/Plc-elevate ;
+LIST Sem/Plc-line = Sem/Plc-line ;
+LIST Sem/Plc-water = Sem/Plc-water ;
+LIST Sem/Pos = Sem/Plc_Pos Sem/Pos ; #Social position (job etc.)
+LIST Sem/Prod = Sem/Prod ; #jáhkku
+LIST Sem/Prod-audio = Sem/Body-abstr_Prod-audio_Semcon Sem/Dance_Prod-audio Sem/Domain_Prod-audio Sem/Prod-audio Sem/Prod-audio_Txt ; #attáldat
+LIST Sem/Prod-cogn = Sem/Org_Prod-cogn Sem/Part_Prod-cogn Sem/Prod-cogn Sem/Prod-cogn_Txt ; # muittuhus, ipmárdus, jáhkku, osku, vuordámuš, viisodat? diehtu?
+LIST Sem/Prod-ling = Sem/Prod-ling ;
+LIST Sem/Prod-vis = Sem/Group_Hum_Prod-vis Sem/Prod-vis ;
+LIST Sem/Rel = Sem/Plc-abstr_Rel_State Sem/Rel ;
+LIST Sem/Route = Sem/Act_Route Sem/Build_Route Sem/Plc-abstr_Route Sem/Plc_Route Sem/Route ;
+LIST Sem/Rule = Sem/Org_Rule Sem/Rule ; 
+LIST Sem/Semcon = Sem/Amount_Semcon Sem/Body-abstr_Prod-audio_Semcon Sem/Obj_Semcon Sem/Semcon Sem/Semcon_Txt ; # semantic concept
+LIST Sem/Sign = Sem/Group_Sign Sem/Measr_Sign Sem/Sign ;
+LIST Sem/Sport = Sem/Obj-play_Sport Sem/Sport ;
+LIST Sem/State = Sem/Plc-abstr_Rel_State Sem/State Sem/State_Obj ; # lihkku, ipmilbalolašvuohta, mokta, váivi, váttisvuohta
+LIST Sem/State-sick = Sem/State-sick Sem/State-sick_Substnc ;
+LIST Sem/Substnc = Sem/Plc_Substnc Sem/Plc_Substnc_Wthr Sem/State-sick_Substnc Sem/Substnc Sem/Substnc_Wthr ; #Sem: can pass through it without destroying it
+LIST Sem/Time = Sem/Ani_Hum_Time Sem/Ani_Time Sem/Body_Time Sem/Event_Time Sem/Hum_Lang_Time Sem/Measr_Time Sem/Plc_Time Sem/Time Sem/Time_Wthr ;
+LIST Sem/Tool = Sem/Ctain_Tool Sem/Hum_Tool Sem/Lang_Tool Sem/Plant_Tool Sem/Tool ;
+LIST Sem/Tool-catch = Sem/Body_Obj_Tool-catch Sem/Plc_Tool-catch Sem/Tool-catch ;
+LIST Sem/Tool-clean = Sem/Tool-clean ;
+LIST Sem/Tool-it = Sem/Tool-it ;
+LIST Sem/Tool-measr = Sem/Ctain_Tool-measr Sem/Plant_Tool-measr Sem/Tool-measr ;
+LIST Sem/Tool-music = Sem/Tool-music ;
+LIST Sem/Tool-write = Sem/Feat-phys_Tool-write Sem/Tool-write ;
+LIST Sem/Txt = Sem/Ani_Build_Hum_Txt Sem/Ani_Plc_Txt Sem/Group_Txt Sem/Mat_Txt Sem/Money_Txt Sem/Org_Txt Sem/Prod-audio_Txt Sem/Prod-cogn_Txt Sem/Semcon_Txt Sem/Txt ; #Syn: Čále dearvvuođaidat guossegirjámet! # das čuožžu
+LIST Sem/Veh = Sem/Ani_Veh Sem/Ctain-clth_Veh Sem/Feat-phys_Veh Sem/Hum_Veh Sem/Org_Veh Sem/Veh ;	#Syn: Vuolggán X:Com
+#LIST Sem/Veh-cntain = Sem/Veh-cntain ; #Manan X sisa. #vuolggán X:Com.
+LIST Sem/Wthr = Sem/Feat-phys_Wthr Sem/Hum_Wthr Sem/Perc-emo_Wthr Sem/Plc_Substnc_Wthr Sem/Plc_Wthr Sem/Substnc_Wthr Sem/Time_Wthr Sem/Wthr ; #Sem: Birget X:Ess. jietna gullui X-Loc (balvvas). Olgun/Odne lea + Wthr-Nom. ?Man ollu lea Wthr-Nom? Wthr-Gen maŋŋel boahtá X. Makkár lea dálki/siivu? #Ex: árvi, borga, muohtá, čoaskadálki, baján, bievla, bodnejiekŋa, bivdodálki, gasis, guoldu
+LIST Sem/Wpn = Sem/Wpn ; #oaggut oaggunstákkuin, goddit X+Com
+LIST Sem/Year = Sem/Year ;
+
+
+
+
+
+LIST Sem/Sur = Sem/Sur ;
+#LIST Tit = Tit ;
+
+SET Sem/Human = Sem/Hum OR Sem/Sur OR Sem/Mal OR Sem/Fem OR Sem/Org ;
+SET Sem/Animate = Sem/Hum OR Sem/Ani OR Sem/Sur OR Sem/Mal OR Sem/Fem OR Sem/Org ;
+	# Has to be a set so that multiple tags are included
+LIST Sem/Concrete-NotAnimate-NotPlace = Sem/Clth Sem/Clth-jewl Sem/Clth-part Sem/Ctain Sem/Drink Sem/Food Sem/Food-med Sem/Mat Sem/Money Sem/Obj Sem/Obj-clo Sem/Obj-el Sem/Substnc Sem/Tool Sem/Tool-catch Sem/Tool-measr Sem/Tool-music  Sem/Tool-write  Sem/Txt  Sem/Veh Sem/Wpn ; 
+SET Sem/Place = Sem/Plc OR Sem/Plc-water OR Sem/Plc-elevate OR Sem/Plc-line OR Sem/Build OR Sem/Build-part OR Sem/Org ;
+
+#Sem/Plc-hole = ráigi, tunnela, ....
+
+# secondary tags
+# --------------
+
+LIST <vdic> = <vdic> ;
+LIST <mv> = <mv> ;
+LIST <aux> = <aux> ;
+LIST <copula> = <copula> ;
+
+LIST <LO-adjunct> = <LO-adjunct> ;
+SET POTENTIAL-ADJUNCT = <LO-adjunct> ;
+
+LIST <0> = <0> ;
+LIST <AG-Ill-Ani><PR-Acc-Any> = <AG-Ill-Ani><PR-Acc-Any> ;
+LIST <AG-Ill-Any> = <AG-Ill-Any> ;
+LIST <AG-Loc-Any> = <AG-Loc-Any> ;
+LIST <AG-Nom-Abs><TH-Ill-Abs> = <AG-Nom-Abs><TH-Ill-Abs> ;
+LIST <AG-Nom-Abs><TH-Ill-Plc> = <AG-Nom-Abs><TH-Ill-Plc> ;
+LIST <AG-Nom-Ani> = <AG-Nom-Ani> ;
+LIST <AG-Nom-Any> = <AG-Nom-Any> ;
+LIST <AT-Abe-Any> = <AT-Abe-Any> ;
+LIST <AT-Ess-Any> = <AT-Ess-Any> ;
+LIST <AT-Nom-Any> = <AT-Nom-Any> ;
+LIST <AT-Nom-Adj><EX-Ill-Ani> = <AT-Nom-Adj><EX-Ill-Ani> ;
+LIST <TH-Nom-Obj><RE-Ill-Ani> = <TH-Nom-Obj><RE-Ill-Ani> ;
+LIST <AktioEss> = <AktioEss> ;
+LIST <BE-Acc-Ani> = <BE-Acc-Ani> ;
+LIST <BE-Acc-Hum><LO-Loc-Pos> = <BE-Acc-Hum><LO-Loc-Pos> ;
+LIST <BE-Acc-Ani><RO-Ess-Any> = <BE-Acc-Ani><RO-Ess-Any> ;
+LIST <BE-Acc-Ani><TH-Com-*Ani> = <BE-Acc-Ani><TH-Com-*Ani> ;
+LIST <BE-Acc-Ani><TH-Ill-*Ani> = <BE-Acc-Ani><TH-Ill-*Ani> ;
+LIST <BE-Acc-Ani><TH-Loc-Any> = <BE-Acc-Ani><TH-Loc-Any> ;
+LIST <BE-Acc-Ani><PU-Ill-*Ani> = <BE-Acc-Ani><PU-Ill-*Ani> ;
+LIST <BE-Acc-Any><PU-Inf> = <BE-Acc-Any><PU-Inf> ;
+LIST <BE-Acc-Any><vuostá> = <BE-Acc-Any><vuostá> ;
+LIST <BE-Acc-Any> = <BE-Acc-Any> ;
+LIST <BE-Ill-Ani> = <BE-Ill-Ani> ;
+LIST <BE-Ill-Any> = <BE-Ill-Any> ;
+LIST <BE-ovddas-Ani> = <BE-ovddas-Ani> ;
+LIST <BE-ovdii-Ani> = <BE-ovdii-Ani> ;
+LIST <CO-0> = <CO-0> ;
+LIST <CO-Acc-Ani> = <CO-Acc-Ani> ;
+LIST <CO-Com-Ani> = <CO-Com-Ani> ;
+LIST <CO-Com-Hum> = <CO-Com-Hum> ;
+LIST <CO-mielde-Ani> = <CO-mielde-Ani> ;
+LIST <CO-Com-Ani><TH-Loc-Any> = <CO-Com-Ani><TH-Loc-Any> ;
+LIST <CO-haga-Any> = <CO-haga-Any> ;
+LIST <CO-Ill-Any> = <CO-Ill-Any> ;
+LIST <CO-vuostá-Any> = <CO-vuostá-Any> ;
+LIST <DE-0> = <DE-0> ;
+LIST <DE-Ill-Any> = <DE-Ill-Any> ;
+LIST <DE-Ill-*Ani> = <DE-Ill-*Ani> ;
+LIST <DE-Ill-Plc> = <DE-Ill-Plc> ;
+LIST <DE-Ill-Plc><PU-Inf> = <DE-Ill-Plc><PU-Inf> ;
+LIST <DE-Ill-Time> = <DE-Ill-Time> ;
+LIST <DE-lusa-Ani> = <DE-lusa-Ani> ;
+LIST <DE-sisa-Build> = <DE-sisa-Build> ;
+LIST <EX-Acc-Any> = <EX-Acc-Any> ;
+LIST <EX-Com-Any> = <EX-Com-Any> ;
+LIST <EX-Ill-Ani> = <EX-Ill-Ani> ;
+LIST <EX-Ill-Ani><TH-Nom-Adj> = <EX-Ill-Ani><TH-Nom-Adj> ;
+LIST <EX-Loc-Any> = <EX-Loc-Any> ;
+LIST <EX-Nom-Ani> = <EX-Nom-Ani> ;
+LIST <EX-Nom-Time> = <EX-Nom-Time> ;
+LIST <ID-Nom-Any> = <ID-Nom-Any> ;
+LIST <IN-0> = <IN-0> ;
+LIST <IN-Acc-Any> = <IN-Acc-Any> ;
+LIST <IN-Acc-Any><MA-Ess-Any> = <IN-Acc-Any><MA-Ess-Any> ;
+LIST <IN-Acc-Any><PU-Ill-Any> = <IN-Acc-Any><PU-Ill-Any> ;
+LIST <IN-Acc-Lang> = <IN-Acc-Lang> ;
+LIST <IN-Acc-Veh> = <IN-Acc-Veh> ;
+LIST <IN-Acc-Veh><DE-Ill-Any> = <IN-Acc-Veh><DE-Ill-Any> ;
+LIST <IN-Acc-Veh><SO-Loc-Any><DE-Ill-Any> = <IN-Acc-Veh><SO-Loc-Any><DE-Ill-Any> ;
+LIST <IN-Com-Any> = <IN-Com-Any> ;
+LIST <IN-Com-Veh> = <IN-Com-Veh> ;
+LIST <IN-Ill-Lang> = <IN-Ill-Lang> ;
+LIST <Inf> = <Inf> ;
+LIST <LO-0> = <LO-0> ;
+LIST <LO-Acc-Plc> = <LO-Acc-Plc> ;
+LIST <LO-Acc-Time> = <LO-Acc-Time> ;
+LIST <LO-Com-Ani> = <LO-Com-Ani> ;
+LIST <LO-Ill-Any> = <LO-Ill-Any> ;
+LIST <LO-Ill-Body> = <LO-Ill-Body> ;
+LIST <LO-Ill-Plc> = <LO-Ill-Plc> ;
+LIST <LO-Ill-Time> = <LO-Ill-Time> ;
+LIST <LO-Nom-Any><TH-Acc-Any> = <LO-Nom-Any><TH-Acc-Any> ;
+LIST <LO-Loc-Any><gitta> = <LO-Loc-Any><gitta> ;
+LIST <LO-Loc-Any><guossis> = <LO-Loc-Any><guossis> ;
+LIST <guossái> = <guossái> ;
+LIST <LO-Loc-Any> = <LO-Loc-Any> ;
+LIST <LO-Loc-Plc> = <LO-Loc-Plc> ;
+LIST <LO-Loc-Time> = <LO-Loc-Time> ;
+LIST <LO-ala-Plc> = <LO-ala-Plc> ;
+LIST <LO-luhtte-Any> = <LO-luhtte-Any> ;
+LIST <LO-maŋŋil-Time> = <LO-maŋŋil-Time> ;
+LIST <MA-Adv-Manner> = <MA-Adv-Manner> ;
+LIST <TH-Nom-*Ani><MA-Adv-Manner> = <TH-Nom-*Ani><MA-Adv-Manner> ;
+LIST <MA-Com-*Plc> = <MA-Com-*Plc> ;
+LIST <MA-Com-Any> = <MA-Com-Any> ;
+LIST <OR-Loc-Any> = <OR-Loc-Any> ;
+LIST <OR-Loc-Mat><PR-Nom-Any> = <OR-Loc-Mat><PR-Nom-Any> ;
+LIST <PR-Nom-Any> = <PR-Nom-Any> ;
+LIST <PA-0> = <PA-0> ;
+LIST <PA-Acc-*Ani><BE-Ill-Ani> = <PA-Acc-*Ani><BE-Ill-Ani> ;
+LIST <PA-Acc-Ani> = <PA-Acc-Ani> ;
+LIST <PA-Acc-Ani><LO-Ill-Body> = <PA-Acc-Ani><LO-Ill-Body> ;
+LIST <PA-Acc-Ani><LO-Loc-Body> = <PA-Acc-Ani><LO-Loc-Body> ;
+LIST <PA-Acc-Any> = <PA-Acc-Any> ;
+LIST <PA-Acc-Any><CO-gaskka-Any> = <PA-Acc-Any><CO-gaskka-Any> ;
+LIST <PA-Acc-Any><DE-Ill-Any> = <PA-Acc-Any><DE-Ill-Any> ;
+LIST <PA-Acc-Any><IN-Com-*Ani> = <PA-Acc-Any><IN-Com-*Ani> ;
+LIST <PA-Acc-Any><LO-Ill-Any> = <PA-Acc-Any><LO-Ill-Any> ;
+LIST <PA-Acc-Any><LO-Loc-Any> = <PA-Acc-Any><LO-Loc-Any> ;
+LIST <PA-Acc-Any><LO-birra-Any> = <PA-Acc-Any><LO-birra-Any> ;
+LIST <PA-Acc-Any><PA-Com-Any> = <PA-Acc-Any><PA-Com-Any> ;
+LIST <PA-Acc-Any><PR-Ess-Any> = <PA-Acc-Any><PR-Ess-Any> ;
+LIST <PA-Acc-Any><PR-Ill-*Ani> = <PA-Acc-Any><PR-Ill-*Ani> ;
+LIST <PA-Acc-Any><PU-Ill-Any> = <PA-Acc-Any><PU-Ill-Any> ;
+LIST <PA-Acc-Any><PU-Inf> = <PA-Acc-Any><PU-Inf> ;
+LIST <PA-Acc-Any><RE-Loc-Ani> = <PA-Acc-Any><RE-Loc-Ani> ;
+LIST <PA-Acc-Any><RF-Ill-Any> = <PA-Acc-Any><RF-Ill-Any> ;
+LIST <PA-Acc-Any><RF-Loc-Any> = <PA-Acc-Any><RF-Loc-Any> ;
+LIST <PA-Acc-Any><RF-ektui-Any> = <PA-Acc-Any><RF-ektui-Any> ;
+LIST <PA-Acc-Any><RF-mielde-Any> = <PA-Acc-Any><RF-mielde-Any> ;
+LIST <PA-Acc-Any><RF-vuostá-Any> = <PA-Acc-Any><RF-vuostá-Any> ;
+LIST <PA-Acc-Any><RF-vuođul-Any> = <PA-Acc-Any><RF-vuođul-Any> ;
+LIST <PA-Acc-Any><RF-váste-Any> = <PA-Acc-Any><RF-váste-Any> ;
+LIST <PA-Acc-Any><RO-Ess-Any> = <PA-Acc-Any><RO-Ess-Any> ;
+LIST <PA-Acc-Any><SO-Loc-Any> = <PA-Acc-Any><SO-Loc-Any> ;
+LIST <PA-Acc-Any><SO-Loc-Any><DE-Ill-Any> = <PA-Acc-Any><SO-Loc-Any><DE-Ill-Any> ;
+LIST <BE-Acc-Any><TH-AktioLoc> = <BE-Acc-Any><TH-AktioLoc> ;
+LIST <PA-Acc-Any><TH-Com-Any> = <PA-Acc-Any><TH-Com-Any> ;
+LIST <PA-Acc-Ani><TH-Ill-Any> = <PA-Acc-Ani><TH-Ill-Any> ;
+LIST <PA-Acc-Ani><TH-Inf> = <PA-Acc-Ani><TH-Inf> ;
+LIST <PA-Acc-Any><XT-Com-Measure> = <PA-Acc-Any><XT-Com-Measure> ;
+LIST <TH-Nom-Any><RO-Ess-Any><EX-Ill-Any> = <TH-Nom-Any><RO-Ess-Any><EX-Ill-Any> ;
+LIST <TH-Acc-Any><XT-Ill-Money> = <TH-Acc-Any><XT-Ill-Money> ;
+LIST <TH-Acc-Any><XT-Loc-Money> = <TH-Acc-Any><XT-Loc-Money> ;
+LIST <TH-Acc-Any><EX-Loc-Ani> = <TH-Acc-Any><EX-Loc-Ani> ;
+LIST <TH-Acc-Any><IN-Com-Veh> = <TH-Acc-Any><IN-Com-Veh> ;
+LIST <TH-Acc-vuođđu><LO-Loc-Any> = <TH-Acc-vuođđu><LO-Loc-Any> ;
+LIST <TH-Acc-Any><ala> = <TH-Acc-Any><ala> ;
+LIST <TH-Nom-Any> = <TH-Nom-Any> ;
+LIST <TH-Nom-Time> = <TH-Nom-Time> ;
+LIST <PA-Acc-Any><atnui> = <PA-Acc-Any><atnui> ;
+LIST <PA-Acc-Any><eret> = <PA-Acc-Any><eret> ;
+LIST <TH-Acc-Any><fárrui> = <TH-Acc-Any><fárrui> ;
+LIST <TH-Acc-Any><gitta> = <TH-Acc-Any><gitta> ;
+LIST <PA-Acc-Any><gitta> = <PA-Acc-Any><gitta> ;
+LIST <PA-Acc-Any><ráiggil> = <PA-Acc-Any><ráiggil> ;
+LIST <PA-Acc-Body> = <PA-Acc-Body> ;
+LIST <PA-Acc-Food> = <PA-Acc-Food> ;
+LIST <PA-Acc-BessetN> = <PA-Acc-BessetN> ;
+LIST <PA-Acc-Hum> = <PA-Acc-Hum> ;
+LIST <PA-Acc-Hum><LO-Ill-Plc> = <PA-Acc-Hum><LO-Ill-Plc> ;
+LIST <PA-Acc-Veh> = <PA-Acc-Veh> ;
+LIST <PA-Acc-boktitN> = <PA-Acc-boktitN> ;
+LIST <PA-Com-Any> = <PA-Com-Any> ;
+LIST <PA-Ill-*Ani> = <PA-Ill-*Ani> ;
+LIST <PA-Ill-Ani> = <PA-Ill-Ani> ;
+LIST <PA-Ill-Ani><LO-Ill-Body> = <PA-Ill-Ani><LO-Ill-Body> ;
+LIST <PA-Ill-Ani><TH-Acc-*Ani> = <PA-Ill-Ani><TH-Acc-*Ani> ;
+LIST <PA-Ill-Ani><TH-Inf> = <PA-Ill-Ani><TH-Inf> ;
+LIST <PA-Ill-Any> = <PA-Ill-Any> ;
+LIST <PA-Loc-Ani><LO-Acc-Body> = <PA-Loc-Ani><LO-Acc-Body> ;
+LIST <PA-Loc-Ani><PU-Inf> = <PA-Loc-Ani><PU-Inf> ;
+LIST <PA-Loc-Food> = <PA-Loc-Food> ;
+LIST <PA-gaskkas-Any> = <PA-gaskkas-Any> ;
+LIST <PA-Nom-Any> = <PA-Nom-Any> ;
+LIST <TH-Nom-Any><PO-Ill-Any> = <TH-Nom-Any><PO-Ill-Any> ;
+LIST <PO-Gen-Hum> = <PO-Gen-Hum> ;
+LIST <PR-0> = <PR-0> ;
+LIST <PR-Acc-Any> = <PR-Acc-Any> ;
+LIST <PR-Acc-Any><bajás> = <PR-Acc-Any><bajás> ;
+LIST <PR-Acc-Any><BE-Ill-Any> = <PR-Acc-Any><BE-Ill-Any> ;
+LIST <PR-Acc-Any><LO-Ill-*Ani> = <PR-Acc-Any><LO-Ill-*Ani> ;
+LIST <PR-Acc-Any><MA-Ess-Any> = <PR-Acc-Any><MA-Ess-Any> ;
+LIST <PR-Acc-Any><MA-Acc-Adj> = <PR-Acc-Any><MA-Acc-Adj> ;
+LIST <PR-Acc-Any><OR-Loc-Mat> = <PR-Acc-Any><OR-Loc-Mat> ;
+LIST <PR-Acc-Any><OR-Loc-Any> = <PR-Acc-Any><OR-Loc-Any> ;
+LIST <PR-Ess-Any> = <PR-Ess-Any> ;
+LIST <PR-Ess-Any><BE-Ill-Ani> = <PR-Ess-Any><BE-Ill-Ani> ;
+LIST <PR-Ill-Any> = <PR-Ill-Any> ;
+LIST <PT-Gen-Plc> = <PT-Gen-Plc> ;
+LIST <PT-Gen-Plc><DE-Ill-Any> = <PT-Gen-Plc><DE-Ill-Any> ;
+LIST <PT-bokte-Plc> = <PT-bokte-Plc> ;
+LIST <PT-meaddel-Plc> = <PT-meaddel-Plc> ;
+LIST <PT-čađa-Plc> = <PT-čađa-Plc> ;
+LIST <PT-rastá-Plc> = <PT-rastá-Plc> ;
+LIST <PU-AktioEss> = <PU-AktioEss> ;
+LIST <PU-Ill-*Ani> = <PU-Ill-*Ani> ;
+LIST <PU-Inf> = <PU-Inf> ;
+LIST <PV-Loc-Any> = <PV-Loc-Any> ;
+LIST <RE-Acc-Ani> = <RE-Acc-Ani> ;
+LIST <RE-Acc-Ani><TH-Loc-Any> = <RE-Acc-Ani><TH-Loc-Any> ;
+LIST <RE-Acc-Ani><TH-ahte> = <RE-Acc-Ani><TH-ahte> ;
+LIST <RE-Acc-Ani><TO-Ill-Any> = <RE-Acc-Ani><TO-Ill-Any> ;
+LIST <RE-Com-Ani> = <RE-Com-Ani> ;
+LIST <RE-Com-ieš> = <RE-Com-ieš> ;
+LIST <RE-Ill-Ani> = <RE-Ill-Ani> ;
+LIST <RE-Ill-Ani><TH-Acc-*Ani> = <RE-Ill-Ani><TH-Acc-*Ani> ;
+LIST <RE-Ill-Ani><TH-FS> = <RE-Ill-Ani><TH-FS> ;
+LIST <RE-Ill-Ani><TH-ahte> = <RE-Ill-Ani><TH-ahte> ;
+LIST <RE-Ill-ieš> = <RE-Ill-ieš> ;
+LIST <RE-Loc-Ani> = <RE-Loc-Ani> ;
+LIST <RE-Loc-Ani><TH-FS-Qst> = <RE-Loc-Ani><TH-FS-Qst> ;
+LIST <RE-Loc-Ani><TH-FS-Qpron> = <RE-Loc-Ani><TH-FS-Qpron> ;
+LIST <RE-Loc-Ani><TH-ahte> = <RE-Loc-Ani><TH-ahte> ;
+LIST <RF-Ill-Any> = <RF-Ill-Any> ;
+LIST <RF-Loc-Any> = <RF-Loc-Any> ;
+LIST <RO-Ess-Any> = <RO-Ess-Any> ;
+LIST <RO-Ess-Any><PU-Ill-Act> = <RO-Ess-Any><PU-Ill-Act> ;
+LIST <RO-Ill-Any> = <RO-Ill-Any> ;
+LIST <RS-Acc-Reason> = <RS-Acc-Reason> ;
+LIST <RS-Com-Any> = <RS-Com-Any> ;
+LIST <RS-Com-Clth> = <RS-Com-Clth> ;
+LIST <RS-Com-Impers> = <RS-Com-Impers> ;
+LIST <RS-Ill-Any> = <RS-Ill-Any> ;
+LIST <RS-Loc-Any> = <RS-Loc-Any> ;
+LIST <RS-alde-Any> = <RS-alde-Any> ;
+LIST <RS-dihte-Any> = <RS-dihte-Any> ;
+LIST <RS-geažil-Any> = <RS-geažil-State> ;
+LIST <RS-go> = <RS-go> ;
+LIST <SO-Loc-Any> = <SO-Loc-Any> ;
+LIST <SO-Loc-*Ani> = <SO-Loc-*Ani> ;
+LIST <SO-Loc-Lang><DE-Ill-Lang> = <SO-Loc-Lang><DE-Ill-Lang> ;
+LIST <SO-Loc-Any><DE-Ill-Any> = <SO-Loc-Any><DE-Ill-Any> ;
+LIST <SO-Loc-*Ani><DE-Ill-*Ani> = <SO-Loc-*Ani><DE-Ill-*Ani> ;
+LIST <SO-Loc-Time><DE-Ill-Time> = <SO-Loc-Time><DE-Ill-Time> ;
+LIST <SO-luhtte-Ani> = <SO-luhtte-Ani> ;
+LIST <TH-0> = <TH-0> ;
+LIST <TH-Acc-*Ani> = <TH-Acc-*Ani> ;
+LIST <TH-Acc-*Ani><BE-Ill-Ani> = <TH-Acc-*Ani><BE-Ill-Ani> ;
+LIST <TH-Acc-*Ani><BE-Loc-Ani> = <TH-Acc-*Ani><BE-Loc-Ani> ;
+LIST <TH-Acc-*Ani><RE-Loc-Ani> = <TH-Acc-*Ani><RE-Loc-Ani> ;
+LIST <TH-Acc-*Plc> = <TH-Acc-*Plc> ;
+LIST <TH-Acc-Any> = <TH-Acc-Any> ;
+LIST <TH-Acc-Any><CO-Com-Ani> = <TH-Acc-Any><CO-Com-Ani> ;
+LIST <TH-Acc-Any><CO-vuostá-Any> = <TH-Acc-Any><CO-vuostá-Any> ;
+LIST <TH-Acc-Any><DE-Ill-Any> = <TH-Acc-Any><DE-Ill-Any> ;
+LIST <TH-Acc-Any><DE-Ill-*Ani> = <TH-Acc-Any><DE-Ill-*Ani> ;
+LIST <TH-Acc-Any><DE-Ill-Lang> = <TH-Acc-Any><DE-Ill-Lang> ;
+LIST <TH-Acc-Any><DE-Ill-Time> = <TH-Acc-Any><DE-Ill-Time> ;
+LIST <TH-Acc-Any><EX-Ill-Any> = <TH-Acc-Any><EX-Ill-Any> ;
+LIST <TH-Acc-Any><IN-Com-*Ani> = <TH-Acc-Any><IN-Com-*Ani> ;
+LIST <TH-Acc-Any><IN-Com-Money> = <TH-Acc-Any><IN-Com-Money> ;
+LIST <TH-Acc-Any><IN-bokte-Money> = <TH-Acc-Any><IN-bokte-Money> ;
+LIST <TH-Acc-Any><LO-Ill-*Ani> = <TH-Acc-Any><LO-Ill-*Ani> ;
+LIST <TH-Acc-Any><LO-Ill-WPlc> = <TH-Acc-Any><LO-Ill-WPlc> ;
+LIST <TH-Acc-Any><LO-Loc-Any> = <TH-Acc-Any><LO-Loc-Any> ;
+LIST <TH-Acc-Any><LO-ala-Any> = <TH-Acc-Any><LO-ala-Any> ;
+LIST <TH-Acc-Any><MA-Ess-Any> = <TH-Acc-Any><MA-Ess-Any> ;
+LIST <TH-Acc-Any><MA-Ill-áigi> = <TH-Acc-Any><MA-Ill-áigi> ;
+LIST <TH-Acc-Any><MA-Ill-háldu> = <TH-Acc-Any><MA-Ill-háldu> ;
+LIST <TH-Acc-Any><OR-Loc-Any> = <TH-Acc-Any><OR-Loc-Any> ;
+LIST <TH-Acc-Any><OR-Loc-Any><RE-Ill-Any> = <TH-Acc-Any><OR-Loc-Any><RE-Ill-Any> ;
+LIST <TH-Acc-Any><PU-Ill-Any> = <TH-Acc-Any><PU-Ill-Any> ;
+LIST <TH-Acc-Any><PU-Inf> = <TH-Acc-Any><PU-Inf> ;
+LIST <TH-Acc-Any><RE-Com-Ani> = <TH-Acc-Any><RE-Com-Ani> ;
+LIST <TH-Acc-Any><RE-Ill-Any> = <TH-Acc-Any><RE-Ill-Any> ;
+LIST <TH-Acc-Any><RE-Loc-Ani> = <TH-Acc-Any><RE-Loc-Ani> ;
+LIST <TH-Acc-Any><RE-Loc-Any> = <TH-Acc-Any><RE-Loc-Any> ;
+LIST <TH-Acc-Any><RF-Com-Any> = <TH-Acc-Any><RF-Com-Any> ;
+LIST <TH-Acc-Any><RF-Loc-*Plc> = <TH-Acc-Any><RF-Loc-*Plc> ;
+LIST <TH-Acc-Any><RF-vuostá-Any> = <TH-Acc-Any><RF-vuostá-Any> ;
+LIST <TH-Acc-Any><RF-vuostái-Any> = <TH-Acc-Any><RF-vuostái-Any> ;
+LIST <TH-Acc-Any><RO-Ess-Any> = <TH-Acc-Any><RO-Ess-Any> ;
+LIST <TH-Inf><RO-Ess-Any> = <TH-Inf><RO-Ess-Any> ;
+LIST <TH-Acc-Any><RO-Ess-Adj> = <TH-Acc-Any><RO-Ess-Adj> ;
+LIST <TH-Acc-Any><RO-Ill-Any> = <TH-Acc-Any><RO-Ill-Any> ;
+LIST <TH-Acc-Any><RS-Loc-Any> = <TH-Acc-Any><RS-Loc-Any> ;
+LIST <TH-Acc-Any><RS-ovddas-Any> = <TH-Acc-Any><RS-ovddas-Any> ;
+LIST <TH-Acc-Any><SO-Loc-Any> = <TH-Acc-Any><SO-Loc-Any> ;
+LIST <TH-Acc-Any><SO-Loc-Any><DE-Ill-Any> = <TH-Acc-Any><SO-Loc-Any><DE-Ill-Any> ;
+LIST <TH-Acc-Any><SO-Loc-Lang> = <TH-Acc-Any><SO-Loc-Lang> ;
+LIST <TH-Acc-Any><SO-Loc-Lang><DE-Ill-Lang> = <TH-Acc-Any><SO-Loc-Lang><DE-Ill-Lang> ;
+LIST <TH-Acc-Any><TH-AktioEss> = <TH-Acc-Any><TH-AktioEss> ;
+LIST <TH-Acc-Any><TH-PrfPrc> = <TH-Acc-Any><TH-PrfPrc> ;
+LIST <TH-Acc-Any><TH-Com-Any> = <TH-Acc-Any><TH-Com-Any> ;
+LIST <TH-Acc-Any><TH-Inf> = <TH-Acc-Any><TH-Inf> ;
+LIST <TH-Acc-Any><TH-Loc-Any> = <TH-Acc-Any><TH-Loc-Any> ;
+LIST <TH-Acc-Any><TO-Ill-Any> = <TH-Acc-Any><TO-Ill-Any> ;
+LIST <TH-Acc-Any><TO-Loc-Any> = <TH-Acc-Any><TO-Loc-Any> ;
+LIST <TH-Acc-Any><XT-Com-Measure> = <TH-Acc-Any><XT-Com-Measure> ;
+LIST <TH-Acc-Any><XT-Ill-Freq> = <TH-Acc-Any><XT-Ill-Freq> ;
+LIST <TH-Acc-Any><badjelii> = <TH-Acc-Any><badjelii> ;
+LIST <TH-Acc-Any><bajás> = <TH-Acc-Any><bajás> ;
+LIST <TH-Acc-Any><doibmii> = <TH-Acc-Any><doibmii> ;
+LIST <TH-Acc-Any><eret> = <TH-Acc-Any><eret> ;
+LIST <TH-Acc-Any><fápmui> = <TH-Acc-Any><fápmui> ;
+LIST <TH-Acc-Any><johtui> = <TH-Acc-Any><johtui> ;
+LIST <TH-Acc-Any><mielde> = <TH-Acc-Any><mielde> ;
+LIST <TH-Acc-Any><oktii> = <TH-Acc-Any><oktii> ;
+LIST <TH-Acc-Any><ovdan> = <TH-Acc-Any><ovdan> ;
+LIST <TH-Acc-Any><sisa> = <TH-Acc-Any><sisa> ;
+LIST <TH-Acc-Any><ruovttoluotta> = <TH-Acc-Any><ruovttoluotta> ;
+LIST <TH-Acc-Body> = <TH-Acc-Body> ;
+LIST <TH-Acc-Obj> = <TH-Acc-Obj> ;
+LIST <TH-Acc-Dance> = <TH-Acc-Dance> ;
+LIST <TH-Acc-Edu> = <TH-Acc-Edu> ;
+LIST <TH-Acc-Hum><eret> = <TH-Acc-Hum><eret> ;
+LIST <TH-Acc-Impers> = <TH-Acc-Impers> ;
+LIST <TH-Acc-Money> = <TH-Acc-Money> ;
+LIST <TH-Acc-Obj><CO-Com-Ani> = <TH-Acc-Obj><CO-Com-Ani> ;
+LIST <TH-Acc-Obj><DE-DePp-Any> = <TH-Acc-Obj><DE-DePp-Any> ;
+LIST <TH-Acc-Obj><XT-Acc-Measure> = <TH-Acc-Obj><XT-Acc-Measure> ;
+LIST <TH-Acc-Txt> = <TH-Acc-Txt> ;
+LIST <TH-Acc-Txt><LO-Ill-Txt> = <TH-Acc-Txt><LO-Ill-Txt> ;
+LIST <TH-AktioEss> = <TH-AktioEss> ;
+LIST <TH-AktioCom> = <TH-AktioCom> ;
+LIST <TH-AktioLoc> = <TH-AktioLoc> ;
+LIST <TH-AktioLoc><RF-Loc-Any> = <TH-AktioLoc><RF-Loc-Any> ;
+LIST <TH-Com-*Ani> = <TH-Com-*Ani> ;
+LIST <TH-Com-Any> = <TH-Com-Any> ;
+LIST <TH-Com-Impers> = <TH-Com-Impers> ;
+LIST <TH-Ess-Ani> = <TH-Ess-Ani> ;
+LIST <TH-Ess-Wthr> = <TH-Ess-Wthr> ;
+LIST <TH-FS> = <TH-FS> ;
+LIST <TH-FS-Qst> = <TH-FS-Qst> ;
+LIST <TH-FS-Qpron> = <TH-FS-Qpron> ;
+LIST <TH-gaskkas-Any> = <TH-gaskkas-Any> ; 
+LIST <TH-haga-Any> = <TH-haga-Any> ;
+LIST <TH-Ill-Any> = <TH-Ill-Any> ;
+LIST <TH-Ill-Obj> = <TH-Ill-Obj> ;
+LIST <TH-Inf> = <TH-Inf> ;
+LIST <TH-Inf><RE-Ill-Any> = <TH-Inf><RE-Ill-Any> ;
+LIST <TH-Loc-Any> = <TH-Loc-Any> ;
+LIST <TH-Loc-Concept> = <TH-Loc-Concept> ;
+LIST <TH-Loc-Event> = <TH-Loc-Event> ;
+LIST <TH-Loc-Plc> = <TH-Loc-Plc> ;
+LIST <LO-Loc-johtu><DE-Ill-Plc> = <LO-Loc-johtu><DE-Ill-Plc> ;
+LIST <TH-Nom-Any> = <TH-Nom-Any> ;
+LIST <TH-Nom-Any><XT-Acc-Measure> = <TH-Nom-Any><XT-Acc-Measure> ;
+LIST <TH-Nom-*Ani><PR-Ess-Any> = <TH-Nom-*Ani><PR-Ess-Any> ;
+LIST <TH-ahte> = <TH-ahte> ;
+LIST <TH-ahte><RE-Ill-Any> = <TH-ahte><RE-Ill-Any> ;
+LIST <TH-ahte><ovdan> = <TH-ahte><ovdan> ;
+LIST <TH-ala-*Plc> = <TH-ala-*Plc> ;
+LIST <TH-alde-Any> = <TH-alde-Any> ;
+LIST <TH-badjel-Ani> = <TH-badjel-Ani> ;
+LIST <TH-badjel-Any> = <TH-badjel-Any> ;
+LIST <TH-beale-Any> = <TH-beale-Any> ;
+LIST <TH-birra-Any> = <TH-birra-Any> ;
+LIST <TH-birra-Any><CO-Com-Ani> = <TH-birra-Any><CO-Com-Ani> ;
+LIST <TH-birra-Any><RE-Com-Ani> = <TH-birra-Any><RE-Com-Ani> ;
+LIST <TH-birra-Any><RE-Acc-Any> = <TH-birra-Any><RE-Acc-Any> ;
+LIST <TH-go> = <TH-go> ;
+LIST <TH-jus> = <TH-jus> ;
+LIST <TH-hárrái-Any> = <TH-hárrái-Any> ;
+LIST <TH-lusa-Any> = <TH-lusa-Any> ;
+LIST <TH-maŋis-Ani> = <TH-maŋis-Ani> ;
+LIST <TH-maŋŋái-*Plc> = <TH-maŋŋái-*Plc> ;
+LIST <TH-maŋŋái-Any> = <TH-maŋŋái-Any> ;
+LIST <TH-ovddas-Any> = <TH-ovddas-Any> ;
+LIST <TH-ovddas-Any><RE-Ill-Any> = <TH-ovddas-Any><RE-Ill-Any> ;
+LIST <TH-Ill-*Plc> = <TH-Ill-*Plc> ;
+LIST <TH-PrfPrc> = <TH-PrfPrc> ;
+LIST <TH-vearu> = <TH-vearu> ;
+LIST <TH-vuostá-Ani> = <TH-vuostá-Ani> ;
+LIST <TO-0> = <TO-0> ;
+LIST <TO-Acc-*Ani> = <TO-Acc-*Ani> ;
+LIST <TO-Acc-*Ani><RE-Ill-Ani> = <TO-Acc-*Ani><RE-Ill-Ani> ;
+LIST <TO-Acc-*Ani><RE-Loc-Ani> = <TO-Acc-*Ani><RE-Loc-Ani> ;
+LIST <TO-Acc-Any> = <TO-Acc-Any> ;
+LIST <TO-Acc-Any><RO-Ess-Any> = <TO-Acc-Any><RO-Ess-Any> ;
+LIST <TO-Inf> = <TO-Inf> ;
+LIST <TO-Loc-Any> = <TO-Loc-Any> ;
+LIST <TO-ahte> = <TO-ahte> ;
+LIST <TO-ahte><RE-Ill-Any> = <TO-ahte><RE-Ill-Any> ;
+LIST <TO-badjel-Any> = <TO-badjel-Any> ;
+LIST <TO-beale-Any> = <TO-beale-Any> ;
+LIST <TO-birra-Any> = <TO-birra-Any> ;
+LIST <TO-go> = <TO-go> ;
+LIST <TO-vuostái-Any> = <TO-vuostái-Any> ;
+LIST <XT-Acc-Measure> = <XT-Acc-Measure> ;
+LIST <TH-Nom-Any><XT-Acc-Money> = <TH-Nom-Any><XT-Acc-Money> ;
+LIST <XT-Acc-Money><RE-Ill-Any> = <XT-Acc-Money><RE-Ill-Any> ;
+LIST <XT-Acc-Money><TH-ovddas-Any> = <XT-Acc-Money><TH-ovddas-Any> ;
+LIST <XT-Acc-Money><TH-ovddas-Any><RE-Ill-Any> = <XT-Acc-Money><TH-ovddas-Any><RE-Ill-Any> ;
+LIST <XT-Acc-Time> = <XT-Acc-Time> ;
+LIST <XT-Gen-Measr> = <XT-Gen-Measr> ;
+LIST <XT-Com-Measure> = <XT-Com-Measure> ;
+LIST <XT-Com-Money> = <XT-Com-Money> ;
+LIST <XT-Com-Time> = <XT-Com-Time> ;
+LIST <XT-Ill-Money> = <XT-Ill-Money> ;
+LIST <XT-Ill-Freq> = <XT-Ill-Freq> ;
+LIST <XT-Loc-Money> = <XT-Loc-Money> ;
+LIST <TH-Acc-Any><árvvus> = <TH-Acc-Any><árvvus> ;
+LIST <ala> = <ala> ;
+LIST <alde> = <alde> ;
+LIST <atnui> = <atnui> ;
+LIST <badjel> = <badjel> ;
+LIST <bajás> = <bajás> ;
+LIST <birra> = <birra> ;
+LIST <eret> = <eret> ;
+LIST <eret><AktioLoc> = <eret><AktioLoc> ;
+LIST <OR-eret-Plc> = <OR-eret-Plc> ;
+LIST <OR-Loc-HumGroup> = <OR-Loc-HumGroup> ;
+LIST <eret><RF-Loc-Any> = <eret><RF-Loc-Any> ;
+LIST <fárrui> = <fárrui> ;
+LIST <gitta> = <gitta> ;
+LIST <guossis> = <guossis> ;
+LIST <heaggabeallái> = <heaggabeallái> ;
+LIST <iežas> = <iežas> ;
+LIST <johtui> = <johtui> ;
+LIST <jámas> = <jámas> ;
+LIST <mielde> = <mielde> ;
+LIST <oktii> = <oktii> ;
+LIST <oktii><RF-Com-Any> = <oktii><RF-Com-Any> ;
+LIST <olggos> = <olggos> ;
+LIST <ovttas> = <ovttas> ;
+LIST <ovttas><CO-Com-Ani> = <ovttas><CO-Com-Ani> ;
+LIST <rabas> = <rabas> ;
+LIST <rasta> = <rasta> ;
+LIST <sisa> = <sisa> ;
+LIST <vuhtii> = <vuhtii> ;
+LIST <vuostá> = <vuostá> ;
+
+LIST <verb-part> = <verb-part> ;
+
+LIST <Com-*Ani> = <BE-Acc-Ani><TH-Com-*Ani> <PA-Acc-Any><IN-Com-*Ani> <TH-Acc-Any><IN-Com-*Ani> <TH-Com-*Ani> ; 
+LIST <Com> = <BE-Acc-Ani><TH-Com-*Ani> <CO-Com-Ani> <CO-Com-Ani><TH-Loc-Any> <EX-Com-Any> <IN-Com-Any> <IN-Com-Veh> <LO-Com-Ani> <MA-Com-*Plc> <MA-Com-Any> <PA-Acc-Any><IN-Com-*Ani> <PA-Acc-Any><PA-Com-Any> <PA-Acc-Any><TH-Com-Any> <PA-Acc-Any><XT-Com-Measure> <PA-Com-Any> <RE-Com-Ani> <RE-Com-ieš> <RS-Com-Any> <RS-Com-Clth> <TH-Acc-Any><CO-Com-Ani> <TH-Acc-Any><IN-Com-*Ani> <TH-Acc-Any><IN-Com-Money> <TH-Acc-Any><RE-Com-Ani> <TH-Acc-Any><RF-Com-Any> <TH-Acc-Any><TH-Com-Any> <TH-Acc-Any><XT-Com-Measure> <TH-Acc-Obj><CO-Com-Ani> <TH-Com-*Ani> <TH-Com-Any> <oktii><RF-Com-Any> <ovttas><CO-Com-Ani> ;
+
+LIST <Acc> = <TH-Acc-Any> <TH-Acc-Any><TH-Com-Any> <TH-Acc-Any><XT-Com-Measure> <TH-Acc-Any><RE-Loc-Ani> ;
+
+
+
+# SEMANTIC ROLES
+# --------------
+
+LIST §AG = §AG ; #agent
+LIST §AT = §AT ; #attribute
+LIST §BE = §BE ; #beneficiary
+LIST §CO = §CO ; #Co-Argument
+LIST §DE = §DE ; #destination
+LIST §EX = §EX ; #experiencer
+LIST §ID = §ID ; #identity
+LIST §IN = §IN ; #instrument
+LIST §LO = §LO ; #location
+LIST §MA = §MA ; #manner
+LIST §OR = §OR ; #origin
+LIST §PA = §PA ; #patient
+LIST §PO = §PO ; #possessor
+LIST §PR = §PR ; #product
+LIST §PU = §PU ; #Purpose
+LIST §PT = §PT ; #path
+LIST §PV = §PV ;
+LIST §RF = §RF ; #referent
+LIST §RE = §RE ; #recipient
+LIST §RO = §RO ; #Role
+LIST §RS = §RS ; #Reason
+LIST §SO = §SO ; #source
+LIST §TH = §TH ; #theme
+LIST §TO = §TO ; #topic
+LIST §XT = §XT ; #extent "beahkit" "beassat" "boahtit" "borjjastit" "ciŋkut" "čáhpihit" "čierastit" "čuoigat" "čuoigalit" "čuovvut" "gakcut" "gállit" "gállilit"  "girdit" "gárrut" "goargŋut" "guokkardit" "goarbmot" "goastat" "hurgalit" "ihtit" "jávkkehit" "jávkkihit" "jorgalit" "jorggihit" "lávket" "lávkestit" "lávkut" "máhccat" "mannat" "mátkkoštit" "murdit" "murdilit" "njoammut" "haskat" "haskadit" "njuiket" "njuikut" "ollet" "ollit" "riidet" "ruohttat" "ruohtastit" "sihkkelastit" "skierbmut" "suhkat" "suobbulit" "soabbut" "šloahtat" "steavžut" "stávžut" "vázzit" "vázzilit" "viehkalit" "viehkat" "viežžat" "vuodjalit" "vuodjat" "vuodjit" "vuojistit" "vuolgit"  "sirdit";
+
+LIST §TIME-ADJUNCT = §TIME-ADJUNCT ;
+LIST §MANNER-ADJUNCT = §MANNER-ADJUNCT ;
+LIST §PART = §PART ;
+
+LIST §ANYROLE = §AG §AT §BE §CO §DE §EX §ID §IN §LO §MA §OR §PA §PO §PR §PU §PT §PV §RF §RE §RO §RS §SO §TH §TO §XT ;
+LIST §ANYADJUNCT = §MANNER-ADJUNCT §TIME-ADJUNCT ;
+ 
+LIST TH-ALL = TH-ALL ; 
+LIST RE-ALL = RE-ALL ; 
+LIST LO-ALL = LO-ALL ; 
+LIST SO-ALL = SO-ALL ; 
+LIST TO-ALL = TO-ALL ; 
+LIST CO-ALL = CO-ALL ; 
+LIST DE-ALL = DE-ALL ; 
+
+
+    # Error tags
+    # ----------
+LIST &compound-illu = &compound-illu ;
+LIST &compound-vallji-or-valljás = &compound-vallji-or-valljás ;
+
+
+LIST &syn-aččat = &syn-aččat ;
+LIST &syn-add-go = &syn-add-go ;
+LIST &syn-case_congruence = &syn-case_congruence ;
+LIST &syn-ccii-not-zzi = &syn-ccii-not-zzi ;
+LIST &syn-case-congruence-ill-part1 = &syn-case-congruence-ill-part1 ;
+LIST &syn-case-congruence-ill-part2 = &syn-case-congruence-ill-part2 ;
+LIST &syn-case-congruence-loc-part1 = &syn-case-congruence-loc-part1 ;
+LIST &syn-case-congruence-loc-part2 = &syn-case-congruence-loc-part2 ;
+LIST &syn-case-congruence-moanat = &syn-case-congruence-moanat ;
+LIST &syn-case-congruence-buorre = &syn-case-congruence-buorre ;
+LIST &syn-comp-part1 = &syn-comp-part1 ;
+LIST &syn-comp-part2 = &syn-comp-part2 ;
+LIST &syn-conneg = &syn-conneg ;
+LIST &syn-conneg-not-3rdsg = &syn-conneg-not-3rdsg ;
+LIST &syn-Der/NomAct-not-Sg1 = &syn-Der/NomAct-not-Sg1 ;
+LIST &syn-ddjo-not-djo = &syn-ddjo-not-djo ; 
+LIST &syn-double-inchoative = &syn-double-inchoative ;
+LIST &syn-double-inchoative-part2 = &syn-double-inchoative-part2 ;
+LIST &syn-double-negation-part1 = &syn-double-negation-part1 ;
+LIST &syn-double-negation-part2 = &syn-double-negation-part2 ;
+LIST &syn-dnot-not-tnot = &syn-dnot-not-tnot ;
+LIST &syn-dnon-not-tnon = &syn-dnon-not-tnon ;   
+LIST &syn-Du3-not-Foc = &syn-Du3-not-Foc ;
+LIST &syn-finitev_missing-start = &syn-finitev_missing-start ;
+LIST &syn-finitev_missing-end = &syn-finitev_missing-end ;
+LIST &syn-ga = &syn-ga ;
+LIST &syn-gen-not-nom = &syn-gen-not-nom ;
+LIST &syn-gen/acc-not-nom-after-num = &syn-gen/acc-not-nom-after-num ;
+LIST &syn-ge_not_ja-part1 = &syn-ge_not_ja-part1 ;
+LIST &syn-ge_not_ja-part2 = &syn-ge_not_ja-part2 ;
+LIST &syn-go-not-ahte = &syn-go-not-ahte ;
+LIST &syn-go-not-ahte = &syn-go-not-ahte ;
+LIST &syn-huvvat = &syn-huvvat ;
+LIST &syn-illative-agent-with-hallat-passive = &syn-illative-agent-with-hallat-passive ;
+LIST &syn-inf-after-soaitit = &syn-inf-after-soaitit ; 
+LIST &syn-inf-not-3sg = &syn-inf-not-3sg ;
+LIST &syn-inf-not-Der/h = &syn-inf-not-Der/h ;
+LIST &syn-kon-not-kkun = &syn-kon-not-kkun ;
+LIST &syn-no-agent-with-ot-passive = &syn-no-agent-with-ot-passive ;
+LIST &syn-nom-not-gen = &syn-nom-not-gen ;
+LIST &syn-not-aidna-part1 = &syn-not-aidna-part1 ;
+LIST &syn-not-aidna-part2 = &syn-not-aidna-part2 ;
+LIST &syn-not-aidna-part3 = &syn-not-aidna-part3 ;
+LIST &syn-not-actio = &syn-not-actio ;
+LIST &syn-not-dego = &syn-not-dego ;
+LIST &syn-not_inf = &syn-not_inf ;
+LIST &syn-not-maŋga = &syn-not-maŋga ;
+LIST &syn-noun-not-nomag = &syn-noun-not-nomag ;
+LIST &syn-number_congruence = &syn-number_congruence ;
+LIST &syn-number_congruenceD = &syn-number_congruenceD ;
+LIST &syn-number_congruence-moanat = &syn-number_congruence-moanat ;
+LIST &syn-number_congruence-subj-verb = &syn-number_congruence-subj-verb ;
+LIST &syn-number_congruence-subj-verb-pl1 = &syn-number_congruence-subj-verb-pl1 ;
+LIST &syn-object_missing = &syn-object_missing ;
+LIST &syn-on-not-un = &syn-on-not-un ;
+LIST &syn-prspl3-not-imprtpl2 = &syn-prspl3-not-imprtpl2 ;
+LIST &syn-prfprc-not-pxsg1 = &syn-prfprc-not-pxsg1 ;
+LIST &syn-prfprc-not-prssg1 = &syn-prfprc-not-prssg1 ;
+LIST &syn-prssg1-not-prfprc = &syn-prssg1-not-prfprc ;
+LIST &syn-passprssg3-not-connegII = &syn-passprssg3-not-connegII ;
+LIST &syn-pred-not-attr = &syn-pred-not-attr ;
+LIST &syn-Pl3-not-Inf = &syn-Pl3-not-Inf ;
+LIST &syn-reflexive-pron = &syn-reflexive-pron ;
+LIST &syn-redundant_ahte = &syn-redundant_ahte ;
+LIST &syn-sgnumeral = &syn-sgnumeral ;
+LIST &syn-sg-not-pl-after-num = &syn-sg-not-pl-after-num ;
+LIST &syn-Sg3-not-VGen = &syn-Sg3-not-VGen ;
+LIST &syn-super-part1 = &syn-super-part1 ;
+LIST &syn-super-part2 = &syn-super-part2 ;
+LIST &syn-conneg = &syn-conneg ;
+LIST &syn-timeadverbial-accusative = &syn-timeadverbial-accusative ;
+LIST &syn-u-not-o = &syn-u-not-o ;
+LIST &syn-uvvat-not-uvvot = &syn-uvvat-not-uvvot ;
+LIST &syn-váccii = &syn-váccii ;
+LIST &syn-vkan-not-vkán = &syn-vkan-not-vkán ;
+LIST &syn-vkan-not-vkán2 = &syn-vkan-not-vkán2 ;
+LIST &syn-wrong-transitivity = &syn-wrong-transitivity ;
+
+
+LIST &msyn-acc-to-comp = &msyn-acc-to-comp ;
+LIST &msyn-acc-to-velggolaš = &msyn-acc-to-velggolaš ;
+LIST &msyn-acc/gen-to-adv = &msyn-acc/gen-to-adv ;
+LIST &msyn-addhyphen = &msyn-addhyphen ;
+LIST &msyn-attr-not-pred = &msyn-attr-not-pred ;
+LIST &msyn-com-not-ess = &msyn-com-not-ess ;
+LIST &msyn-com-pl-not-sg = &msyn-com-pl-not-sg ;
+LIST &msyn-compound = &msyn-compound ;
+LIST &msyn-compound-part1/&msyn-wrong-case = &msyn-compound-part1/&msyn-wrong-case ;
+LIST &msyn-compound-part2 = &msyn-compound-part2 ;
+LIST &msyn-gen-before-postp = &msyn-gen-before-postp ;
+LIST &msyn-gen-after-prep = &msyn-gen-after-prep ;
+LIST &msyn-inf_not-actio = &msyn-inf_not-actio ;
+LIST &msyn-loc-not-guin = &msyn-loc-not-guin ;
+LIST &msyn-missing-argument = &msyn-missing-argument ;
+LIST &msyn-partitive-loc = &msyn-partitive-loc ;
+LIST &msyn-prs_not_prt_subclause = &msyn-prs_not_prt_subclause ;
+LIST &msyn-valency = &msyn-valency ;
+LIST &msyn-valency-acc-not-nom = &msyn-valency-acc-not-nom ;
+LIST &msyn-valency-add-acc-inf = &msyn-valency-add-acc-inf ;
+LIST &msyn-valency-add-acc-prfprc = &msyn-valency-add-acc-prfprc ;
+LIST &msyn-valency-add-acc-to-ess = &msyn-valency-add-acc-to-ess ;
+LIST &msyn-valency-add-leat = &msyn-valency-add-leat ;
+LIST &msyn-valency-acc-inf-not-nom-inf = &msyn-valency-acc-inf-not-nom-inf ;
+LIST &msyn-valency-ahte-not-fs = &msyn-valency-ahte-not-fs ;
+LIST &msyn-valency-ahte-inf = &msyn-valency-ahte-inf ;
+LIST &msyn-valency-aktioloc-inf = &msyn-valency-aktioloc-inf ;
+LIST &msyn-valency-aktioloc-inf-part2 = &msyn-valency-aktioloc-inf-part2 ;
+LIST &msyn-valency-aktioloc-aktioess = &msyn-valency-aktioloc-aktioess ;
+LIST &msyn-valency-das-before-fs = &msyn-valency-das-before-fs ;
+LIST &msyn-valency-dasa-before-fs = &msyn-valency-dasa-before-fs ;
+LIST &msyn-valency-ill-acc = &msyn-valency-ill-acc ;
+LIST &msyn-valency-ill-com = &msyn-valency-ill-com ;
+LIST &msyn-valency-ill-loc = &msyn-valency-ill-loc ;
+LIST &msyn-valency-ill-nom = &msyn-valency-ill-nom ;
+LIST &msyn-valency-ill-ovddas = &msyn-valency-ill-ovddas ;
+LIST &msyn-valency-go-inf = &msyn-valency-go-inf ;
+LIST &msyn-valency-go-not-fs = &msyn-valency-go-not-fs ;
+LIST &msyn-valency-loc = &msyn-valency-loc ;
+LIST &msyn-valency-loc-not-birra = &msyn-valency-loc-not-birra ;
+LIST &msyn-valency-com = &msyn-valency-com ;
+LIST &msyn-valency-loc-acc = &msyn-valency-loc-acc ;
+LIST &msyn-valency-loc-com = &msyn-valency-loc-com ;
+LIST &msyn-valency-loc-ill = &msyn-valency-loc-ill ;
+LIST &msyn-valency-loc-missing = &msyn-valency-loc-missing ;
+LIST &msyn-valency-dasa-before-ahte = &msyn-valency-dasa-before-ahte ;
+LIST &msyn-valency-not-ahte = &msyn-valency-not-ahte ;
+LIST &msyn-valency-not-maŋŋái = &msyn-valency-not-maŋŋái ;
+LIST &msyn-wrong-case = &msyn-wrong-case ;
+LIST &msyn-wrong-case-in-coordination = &msyn-wrong-case-in-coordination ;
+
+LIST &lex-majuscule = &lex-majuscule ;
+LIST &lex-transitive = &lex-transitive ;
+LIST &lex-maŋis-not-maŋŋelis = &lex-maŋis-not-maŋŋelis ;
+LIST &lex-ollugat-not-máŋggas = &lex-ollugat-not-máŋggas ;
+LIST &lex-not-maŋga = &lex-not-maŋga ;
+LIST &lex-acc-not-badjel = &lex-acc-not-badjel ;
+LIST &lex-rastá-not-badjel = &lex-rastá-not-badjel ;
+LIST &lex-bokte-not-badjel = &lex-bokte-not-badjel ;
+LIST &lex-badjelii-not-badjel = &lex-badjelii-not-badjel ;
+LIST &lex-mielde-not-rastá = &lex-mielde-not-rastá ;
+LIST &lex-ollis-not-miehtá = &lex-ollis-not-miehtá ;
+LIST &lex-guorrasit-not-guorralit = &lex-guorrasit-not-guorralit ;
+LIST &lex-valjit-not-valji = &lex-valjit-not-valji ;
+
+LIST &real-ádde = &real-ádde ;
+LIST &real-ádden = &real-ádden ;
+LIST &real-áddet = &real-áddet ;
+LIST &real-ádjáid = &real-ádjáid ;
+LIST &real-áibbas = &real-áibbas ;
+LIST &real-adde = &real-adde ;
+LIST &real-adden = &real-adden ;
+LIST &real-addet = &real-addet ;
+LIST &real-addit = &real-addit ;
+LIST &real-akto = &real-akto ;
+LIST &real-áktit/áktet = &real-áktit/áktet ;
+LIST &real-atte = &real-atte ;
+LIST &real-ale = &real-ale ;
+LIST &real-álo = &real-álo ;
+LIST &real-alu = &real-alu ;
+LIST &real-allet = &real-allet ;
+LIST &real-allut = &real-allut ;
+LIST &real-almmaiduvvat = &real-almmaiduvvat ;
+LIST &real-almmáiduvvat = &real-almmáiduvvat ;
+LIST &real-bahča = &real-bahča ;
+LIST &real-Ballo = &real-Ballo ;
+LIST &real-ballán = &real-ballán ;
+LIST &real-bállen = &real-bállen ;
+LIST &real-bargat = &real-bargat ;
+LIST &real-bággehalai = &real-bággehalai ;
+LIST &real-beassat = &real-beassat ;
+LIST &real-beasadit = &real-beasadit ;
+LIST &real-biddjon = &real-biddjon ;
+LIST &real-biddjui = &real-biddjui ;
+LIST &real-bidjui = &real-bidjui ;
+LIST &real-billahuvvat = &real-billahuvvat ;
+LIST &real-boahtá = &real-boahtá ;
+LIST &real-boahtit = &real-boahtit ; 
+LIST &real-bokte = &real-bokte ;
+LIST &real-buorránastit = &real-buorránastit ;
+LIST &real-buorranastit = &real-buorranastit ;
+LIST &real-buorraneastit = &real-buorraneastit ;
+LIST &real-buorráneastit = &real-buorráneastit ;
+LIST &real-buorranaddat = &real-buorranaddat ;
+LIST &real-buorránaddat = &real-buorránaddat ;
+LIST &real-čohkka = &real-čohkka ;
+LIST &real-čoahkkái = &real-čoahkkái ;
+LIST &real-čohkaide = &real-čohkaide ;
+LIST &real-čohkas = &real-čohkas ;
+LIST &real-čohkat = &real-čohkat ;
+LIST &real-čohkkat = &real-čohkkat ;
+LIST &real-čohkká = &real-čohkká ;
+LIST &real-čohkkába = &real-čohkkába ;
+LIST &real-čohkkáde = &real-čohkkáde ;
+LIST &real-čohkkát = &real-čohkkát ;
+LIST &real-čohkkáme = &real-čohkkáme ;
+LIST &real-čohkkán = &real-čohkkán ;
+LIST &real-čohkka = &real-čohkka ;
+LIST &real-čohka = &real-čohka ;
+LIST &real-čohkke = &real-čohkke ;
+LIST &real-čohkket = &real-čohkket ;
+LIST &real-čohkken = &real-čohkken ;
+LIST &real-čohkkii = &real-čohkkii ;
+LIST &real-dahkkon = &real-dahkkon ;
+LIST &real-dakko = &real-dakko ;
+LIST &real-dassá = &real-dassá ;
+LIST &real-dassái = &real-dassái ;
+LIST &real-dassážii = &real-dassážii ;
+LIST &real-dássái = &real-dássái ;
+LIST &real-dáruiduhttin = &real-dáruiduhttin ;
+LIST &real-diehtit = &real-diehtit ;
+LIST &real-dihtii = &real-dihtii ;
+LIST &real-compound-dihtii-not-dihti = &real-compound-dihtii-not-dihti ;
+LIST &real-dohko = &real-dohko ;
+LIST &real-duolmmastuvvat = &real-duolmmastuvvat ;
+LIST &real-duolmmástuvvat = &real-duolmmástuvvat ;
+LIST &real-eahkes = &real-eahkes ;
+LIST &real-eallit = &real-eallit ;
+LIST &real-eanet = &real-eanet ;
+LIST &real-earret = &real-earret ;
+LIST &real-fáhtet = &real-fáhtet ;
+LIST &real-fidnet = &real-fidnet ;
+LIST &real-galgá = &real-galgá ;
+LIST &real-geažes = &real-geažes ;
+LIST &real-geahpis = &real-geahpis ;
+LIST &real-geatnegahttit = &real-geatnegahttit ;
+LIST &real-geatnegáhttá = &real-geatnegáhttá ;
+LIST &real-geatnegahttán = &real-geatnegahttán ;
+LIST &real-geatnegahtton = &real-geatnegahtton ;
+LIST &real-geatnegahtton2 = &real-geatnegahtton2 ;
+LIST &real-geatnegahtton3 = &real-geatnegahtton3 ;
+LIST &real-givssástuvvat = &real-givssástuvvat ;
+LIST &real-givssastuvvat = &real-givssastuvvat ;
+LIST &real-gierástallat = &real-gierástallat ;
+LIST &real-gierastallat = &real-gierastallat ;
+LIST &real-gierástaddat = &real-gierástaddat ;
+LIST &real-gierastaddat = &real-gierastaddat ;
+LIST &real-girjjiide = &real-girjjiide ;
+LIST &real-girji = &real-girji ;
+LIST &real-girjji = &real-girjji ;
+LIST &real-gohččon = &real-gohččon ;
+LIST &real-guhká = &real-guhká ;
+LIST &real-guhká2 = &real-guhká2 ;
+LIST &real-guhkás = &real-guhkás ;
+LIST &real-guhkit = &real-guhkit ;
+LIST &real-heaŋgát = &real-heaŋgát ;
+LIST &real-iežá = &real-iežá ;
+LIST &real-ihtit = &real-ihtit ;
+LIST &real-jáhkkit = &real-jáhkkit ;
+LIST &real-jámas = &real-jámas ;
+LIST &real-jearrá = &real-jearrá ;
+LIST &real-jearran = &real-jearran ;
+LIST &real-joatkkán = &real-joatkkán ;
+LIST &real-joatkán = &real-joatkán ;
+LIST &real-johtui = &real-johtui ;
+LIST &real-lahkalagaid = &real-lahkalagaid ;
+LIST &real-láse = &real-láse ;
+LIST &real-liikkastuvvat = &real-liikkastuvvat ;
+LIST &real-liikkástuvvat = &real-liikkástuvvat ;
+LIST &real-lánjastuvvat = &real-lánjastuvvat ;
+LIST &real-lohkan = &real-lohkan ;
+LIST &real-lohkat = &real-lohkat ;
+LIST &real-lohká = &real-lohká ;
+LIST &real-luohte-compound = &real-luohte-compound ;
+LIST &real-luohti = &real-luohti ;
+LIST &real-mannan = &real-mannan ;
+LIST &real-mannat = &real-mannat ; 
+LIST &real-mánnán = &real-mánnán ;
+LIST &real-maŋimuš = &real-maŋimuš ; #fix in errors.xml
+LIST &real-maŋŋit = &real-maŋŋit ;
+LIST &real-measta = &real-measta ;
+LIST &real-mobiilatelefovdna = &real-mobiilatelefovdna ;
+LIST &real-muhtumin = &real-muhtumin ; 
+LIST &real-muoŧás = &real-muoŧás ;
+LIST &real-njaŋgát = &real-njaŋgát ;
+LIST &real-nuorain = &real-nuorain ;
+LIST &real-nuorran = &real-nuorran ;
+LIST &real-nuppádassii = &real-nuppádassii ;
+LIST &real-oaččut = &real-oaččut ;
+LIST &real-oažžut = &real-oažžut ;
+LIST &real-oastit = &real-oastit ;
+LIST &real-oktage = &real-oktage ;
+LIST &real-ollesšattot = &real-ollesšattot ;
+LIST &real-orrut = &real-orrut ;
+LIST &real-ožžot = &real-ožžot ; 
+LIST &real-raddi = &real-raddi ;
+LIST &real-ráđđi = &real-ráđđi ;
+LIST &real-rahčá = &real-rahčá ; 
+LIST &real-ráhkadit = &real-ráhkadit ;
+LIST &real-rikkastallat = &real-rikkastallat ;
+LIST &real-rikkástallat = &real-rikkástallat ;
+LIST &real-rikkastaddat = &real-rikkastaddat ;
+LIST &real-rikkástaddat = &real-rikkástaddat ;
+LIST &real-ráđastallat = &real-ráđastallat ;
+LIST &real-rađastallat = &real-rađastallat ;
+LIST &real-ráđástallat = &real-ráđástallat ;
+LIST &real-ráđastaddat = &real-ráđastaddat ;
+LIST &real-rađastaddat = &real-rađastaddat ;
+LIST &real-ruovttoluotta = &real-ruovttoluotta ;
+LIST &real-sakka = &real-sakka ;
+LIST &real-sámediggedievasčoahkkin = &real-sámediggedievasčoahkkin ;
+LIST &real-sáhtáš = &real-sáhtáš ;
+LIST &real-sáhtaš = &real-sáhtaš ;
+LIST &real-sárgon = &real-sárgon ;
+LIST &real-sutnje = &real-sutnje ;
+LIST &real-sádji = &real-sádji ;
+LIST &real-sáhkki = &real-sáhkki ;
+LIST &real-sidjiide = &real-sidjiide ;
+LIST &real-sihkkarastit = &real-sihkkarastit ;
+LIST &real-stánže-compound = &real-stánže-compound ;
+LIST &real-šaddan = &real-šaddan ;
+LIST &real-uhccon = &real-uhccon ;
+LIST &real-vahku = &real-vahku ;
+LIST &real-vahkku = &real-vahkku ;
+LIST &real-varat = &real-varat ;
+LIST &real-veahkki = &real-veahkki ;
+LIST &real-veallát = &real-veallát ;
+LIST &real-valljái = &real-valljái ;
+LIST &real-várra = &real-várra ;
+LIST &real-viđa = &real-viđa ;
+LIST &real-vuodjit = &real-vuodjit ; 
+LIST &real-vuolgit = &real-vuolgit ;
+LIST &real-vuostá = &real-vuostá ;
+LIST &real-vuosttaš = &real-vuosttaš ;
+LIST &real-vuovttat  = &real-vuovttat ;
+LIST &real-vuvdii = &real-vuvdii ;
+
+
+
+	# correct tags
+
+LIST &corr-not-compound = &corr-not-compound ;
+LIST &corr-no-missing-argument = &corr-no-missing-argument ;
+
+	# suggestions of forms to be generated
+	
+LIST &SUGGEST = &SUGGEST ;
+LIST &DELETE = &DELETE ;
+
+# &err-spellingerror    	spellingerror word is not in lexicon
+
+# &grm-NoEret			there should be "eret" 
+# &grm-falAdv           	"fal" can never be initial
+# &grm-naPcle           	"na" can only be initial
+# &grm-notInterj        	Interj can only be initial or final
+
+# &grm-missing-Acc      	there should be an accusative
+# &grm-missing-Com      	there should be a comitative
+# &grm-missing-Ess      	there should be an essive
+# &grm-missing-Gen      	there should be a genetive
+# &grm-missing-Ill      	there should be an illative
+# &grm-missing-Loc      	there should be a locative
+# &grm-missing-Nom      	there should be a nominative
+# &grm-missing-Loc-PP   	there should be a Loc or a PP
+# &grm-missing-Ill-PP   	there should be an Ill or a PP
+
+# &grm-should-LocPP     	you should answer with a LocPo
+# &grm-should-IllPP     	you should answer with an IllPo
+# &grm-missing-Gen-PP   	there should be a Gen in front of the Po
+
+# &grm-wrong-case       	wrong case
+# &grm-incorr-time-expr 	incorrect time expression 
+# &grm-incorr-tense
+# &grm-incorr-tense-future
+# &grm-incorr-tense-past
+# &grm-incorr-pers-nr   	you should answer with another Person-Number
+
+# &grm-missing-NumSg    	You should answer with Num Sg
+# &grm-missing-NumPl    	You should answer with Num Pl
+# &grm-missing-NNum     	You should answer with Coll
+# &grm-missing-Ord      	You should answer with A Ord
+	
+# &grm-non-agreement-Dem    should be agreement
+# &grm-non-agreement-Adj    should be agreement
+# &grm-non-agreement-Num    should be agreement
+# &grm-non-agreement-buorre should be agreement
+# &grm-non-agr-subj-v		should be agreement subj/verbal
+# &grm-shouldAttr       	this adjective should have Attr form
+# &grm-shouldNotAttr    	this adjective should be predicative form
+# &grm-should-be-Vfin   	your answer should always contain a finite verb
+# &grm-should-not-Vfin  	this verb should not be finite
+# &grm-should-negV		wrong verb-form after Neg
+# &grm-should-pers      	you shold answer with a pronoun
+# &grm-habitive			wrong habitiv-construction
+# &sem-answer-with-same-verb 	you should answer with the same verb
+# &grm-Px-shouldbe-Loc
+# &grm-not-verb-after-workverb
+# &grm-should-not-Nom
+# &grm-Vehicle-Com
+# &grm-Loc-leaving
+# &grm-numeral-wrong-case
+# &grm-soaitit
+# &orth-prop                    Proper nouns should begin with capital letter
+
+
+SET &real = &real-ádden OR &real-áddet OR &real-ádde OR &real-addit OR &real-akto OR &real-áktit/áktet OR &real-atte OR &real-ádjáid OR &real-áibbas OR &real-ale OR &real-álo OR &real-alu OR &real-allet OR &real-allut OR &real-almmaiduvvat OR &real-almmáiduvvat OR 
+&real-bahča OR  &real-Ballo OR &real-ballán OR &real-bállen OR &real-bággehalai OR &real-bargat OR &real-beasadit OR &real-beassat OR &real-biddjui OR &real-bidjui OR &real-biddjon OR &real-billahuvvat OR &real-boahtá OR &real-boahtit OR &real-bokte OR &real-buorránastit OR &real-buorranastit OR &real-buorraneastit OR &real-buorráneastit OR &real-buorranaddat OR &real-buorránaddat OR 
+&real-čohkkáde OR &real-čohkaide OR 
+&real-čohkká OR &real-čohkkába OR &real-čohkkát OR &real-čohkkáme OR &real-čohkkán OR &real-čohkka OR &real-čohka OR &real-čohkas OR &real-čohkat OR &real-čohkket  OR &real-čohkke OR &real-čohkken OR &real-čohkkii OR 
+&real-dahkkon OR &real-dakko OR &real-dassá OR &real-dassái OR &real-dássái OR &real-dassážii OR &real-dáruiduhttin OR &real-diehtit OR &real-dihtii OR &real-compound-dihtii-not-dihti OR &real-dohko OR &real-duolmmastuvvat OR &real-duolmmástuvvat OR 
+&real-eahkes OR &real-eallit OR &real-eanet OR &real-earret OR &real-fáhtet OR &real-fidnet OR &real-galgá OR &real-geahpis OR &real-geatnegahttit OR &real-geažes OR &real-geatnegáhttá OR &real-geatnegahtton OR &real-geatnegahtton3 OR &real-geatnegahtton2 OR &real-geatnegahttán OR &real-givssástuvvat OR &real-givssastuvvat OR &real-gierástallat OR &real-gierastallat OR &real-gierástaddat OR &real-gierastaddat OR &real-girjjiide OR &real-gohččon OR &real-guhká OR &real-guhká2 OR &real-guhkás OR &real-guhkit OR 
+&real-heaŋgát OR &real-iežá OR &real-ihtit OR &real-jáhkkit OR &real-jámas OR &real-jearrá OR &real-jearran OR &real-joatkkán OR &real-joatkán OR &real-johtui OR
+&real-lahkalagaid OR &real-láse OR &real-liikkastuvvat OR &real-liikkástuvvat OR &real-lánjastuvvat OR &real-láse OR &real-lohkan OR &real-lohkat OR &real-lohká OR &real-luohte-compound OR &real-luohti OR &real-mannan OR  &real-mannat OR &real-mánnán OR &real-maŋimuš OR &real-maŋŋit OR &real-measta OR &real-mobiilatelefovdna OR &real-muhtumin OR  &real-muoŧás OR 
+&real-njaŋgát OR &real-nuppádassii OR &real-nuorain OR &real-nuorran OR &real-oaččut OR &real-oažžut OR &real-oastit OR &real-oktage OR &real-orrut OR &real-ožžot OR &real-ollesšattot OR 
+&real-raddi OR &real-ráđđi OR &real-rahčá OR &real-ráhkadit OR &real-rikkastallat OR &real-rikkástallat OR &real-rikkastaddat OR &real-rikkástaddat OR &real-ráđastallat OR &real-rađastallat OR &real-ráđástallat OR &real-ráđastaddat OR &real-rađastaddat OR &real-ruovttoluotta OR 
+&real-sárgon OR &real-sutnje OR &real-sádji OR &real-sakka OR &real-sámediggedievasčoahkkin OR &real-sáhkki OR &real-sáhtaš OR &real-sáhtáš OR &real-stánže-compound OR &real-sidjiide OR &real-sihkkarastit OR 
+&real-uhccon OR &real-vahku OR &real-vahkku OR &real-varat OR &real-veahkki OR &real-veallát OR &real-valljái OR &real-várra OR &real-viđa OR &real-vuodjit OR &real-vuolgit OR &real-vuostá OR &real-vuosttaš OR &real-vuovttat OR &real-vuvdii ;
+
+SET &real-ADV = &real-sakka ;
+
+SET &lex = &lex-acc-not-badjel OR &lex-badjelii-not-badjel OR &lex-bokte-not-badjel OR &lex-guorrasit-not-guorralit OR &lex-maŋis-not-maŋŋelis OR &lex-mielde-not-rastá OR &lex-ollis-not-miehtá OR &lex-ollugat-not-máŋggas OR &lex-not-maŋga OR &lex-rastá-not-badjel OR &lex-valjit-not-valji ;
+
+SET &compound = &compound-illu OR &compound-vallji-or-valljás ;
+
+SET SYN-ERROR = &syn-uvvat-not-uvvot ;
+
+# SEMANTIC ROLES
+# --------------
+
+LIST §AG = §AG ; #agent
+LIST §AT = §AT ; #attribute
+LIST §BE = §BE ; #beneficiary
+LIST §CO = §CO ; #Co-Argument
+LIST §DE = §DE ; #destination
+LIST §EX = §EX ; #experiencer
+LIST §ID = §ID ; #identity
+LIST §IN = §IN ; #instrument
+LIST §LO = §LO ; #location
+LIST §MA = §MA ; #manner
+LIST §OR = §OR ; #origin
+LIST §PA = §PA ; #patient
+LIST §PO = §PO ; #possessor
+LIST §PR = §PR ; #product
+LIST §PU = §PU ; #Purpose
+LIST §PT = §PT ; #path
+LIST §PV = §PV ;
+LIST §RF = §RF ; #referent
+LIST §RE = §RE ; #recipient
+LIST §RO = §RO ; #Role
+LIST §RS = §RS ; #Reason
+LIST §SO = §SO ; #source
+LIST §TH = §TH ; #theme
+LIST §TO = §TO ; #topic
+LIST §XT = §XT ; #extent
+
+
+# Other tags
+# ----------
+
+LIST ABBR = ABBR ;
+LIST ACR = ACR ;
+LIST CLB = CLB ;
+
+LIST QMARK = """ ; # ADD " FOR SYNTAX COLOURING.
+LIST PPUNCT = PUNCT ;
+SET PUNCT = PPUNCT - QMARK ;
+
+
+# Single-word sets
+# ----------------
+ 
+LIST COMMA = "," ;
+LIST CITATION = """ ; #"
+LIST HYPHEN = "-" ;
+LIST ¶ = ¶;
+
+LIST OKTA = "akta" "okta";
+LIST go = "go" ;
+ 
+
+# Initials
+# --------
+
+LIST INITIAL = "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m"
+        "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
+        "á" "æ" "ø" "å" "ö" "ä" ;
+
+LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
+        "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"
+        "Á" "Æ" "Ø" "Å" "Ö" "Ä" ;
+
+# Tag sets
+# ========
+  SETS
+# ========
+
+LIST BFORM = ".*"r ;
+
+
+# Word or not
+# -----------
+LIST WORD = N A Adv V Pron CS CC Po Pr Interj Pcle Num ABBR ACR  \? ;
+ # any word
+ 
+LIST ? = ? ;
+
+SET REALWORD = WORD - Num - Ord ;
+
+SET REALWORD-NOTABBR = WORD - Num - Ord - ABBR ;
+
+SET WORD-NOTDE = WORD - ("de") ; 
+
+# Derivational affixes
+# --------------------
+
+LIST V-DER = Der/adda Der/alla Der/asti Der/d Der/g Der/h Der/halla Der/hudda Der/huhtti Der/huvva Der/j Der/l Der/ahtti Der/st Der/stuvva Der/InchL ;
+
+LIST N-DER = Der/eaddji Der/Dimin Der/eamoš Der/NomAct Der/heapmi Der/NomAct Der/š Der/muš Der/upmi Der/us Der/vuota (Der2 Der/NomAg) ;
+ # Actio ;
+
+LIST A-DER = Der/diibmosaš Der/eaddji Der/geahtes Der/keahtes Der/heapmi Der/lágan Der/laš Der/meahttun Der/lágán (VV A);
+
+LIST A-V = (VV A) ;
+
+SET A-NOT-V = A - A-V ;
+
+LIST Der1 = Der1 ;
+LIST Der2 = Der2 ;
+LIST Der3 = Der3 ;
+
+SET V-ACT = V - Der/Pass ;
+
+# Case sets
+# ---------
+
+LIST ADVLCASE = Ill Loc Com Ess ;
+
+# Sg Nom - Sg Nom | Pl Nom - Pl Nom
+# Sg Acc - Sg Acc | Pl Acc - Pl Acc
+# Sg Gen - Sg Gen | Pl Gen - Pl Gen
+# Sg Gen - Sg Ill | Pl Gen/Ill - Pl Ill 
+# Sg Gen - Sg Loc | Pl Loc - Pl Loc
+# Sg Com - Sg Com | Pl Gen/Com - Pl Com
+# Ess - Ess
+
+LIST CASE-HALFAGREEMENT = Ill (Sg Loc) (Pl Com) Ess ;
+LIST CASE-AGREEMENT = Nom Acc Gen (Pl Ill) Loc Com Ess ;
+LIST CASE = Nom Acc Gen Ill Loc Com Ess ;
+
+SET NOT-NOM = CASE - Nom ;
+SET NOT-GEN = CASE - Gen ;
+SET NOT-ACC = CASE - Acc ;
+SET NOT-ACC-GEN = CASE - Acc - Gen ;
+
+# Verb sets
+# ---------
+
+# Verbs and their complements
+# - - - - - - - - - - - - - -
+
+SET NOT-VERB = WORD - V ;
+
+# Finiteness and mood
+# - - - - - - - - - -
+
+SET V-IND-FIN = Prs OR Prt ;
+ # Problem: "In boahtán" is an invisible indicative
+
+SET V-MOOD = Ind OR Pot OR Imprt OR ImprtII OR Cond OR (Neg Sup) ;
+
+LIST GC = ("gč") ;
+
+SET VFIN = GC OR V-MOOD - ConNeg ;
+
+LIST PUNCT-LEFT = (PUNCT LEFT) ;
+LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
+
+SET PUNCT-LEFT-RIGHT = PUNCT-LEFT OR PUNCT-RIGHT ;
+
+
+SET GRAMCHK-VFIN = GC OR V-MOOD - ConNeg - PUNCT-LEFT-RIGHT;
+
+
+SET VFIN-POS = V-MOOD - ConNeg - Neg ;
+
+SET VFIN-NOT-IMP = VFIN - Imprt ;
+
+SET VFIN-NOT-NEG = VFIN - Neg ;
+  # this might be to strict, besides, "iige" can be written "ii ge"
+
+SET NOT-PRFPRC = WORD - PrfPrc ;
+
+# Person
+# - - - - 
+
+LIST V-SG1 = (V Ind Prs Sg1)  (V Ind Prt Sg1) (V Cond Prs Sg1) 
+             (V Cond Prt Sg1) (V Pot Prs Sg1) (V Neg Ind Sg1);
+ 
+LIST V-SG2 = (V Ind Prs Sg2)  (V Ind Prt Sg2) (V Cond Prs Sg2) 
+             (V Cond Prt Sg2) (V Pot Prs Sg2) (V Neg Ind Sg2);
+ 
+LIST V-SG3 = (V Ind Prs Sg3)  (V Ind Prt Sg3) (V Cond Prs Sg3) 
+             (V Cond Prt Sg3) (V Pot Prs Sg3) (V Neg Ind Sg3);
+ 
+LIST V-DU1 = (V Ind Prs Du1)  (V Ind Prt Du1) (V Cond Prs Du1) 
+     	     (V Cond Prt Du1) (V Pot Prs Du1) (V Neg Ind Du1);
+ 
+LIST V-DU2 = (V Ind Prs Du2)  (V Ind Prt Du2) (V Cond Prs Du2) 
+	         (V Cond Prt Du2) (V Pot Prs Du2) (V Neg Ind Du2);
+ 
+LIST V-DU3 = (V Ind Prs Du3)  (V Ind Prt Du3) (V Cond Prs Du3) 
+	         (V Cond Prt Du3) (V Pot Prs Du3) (V Neg Ind Du3);
+ 
+LIST V-PL1 = (V Ind Prs Pl1)  (V Ind Prt Pl1) (V Cond Prs Pl1) 
+             (V Cond Prt Pl1) (V Pot Prs Pl1) (V Neg Ind Pl1);
+ 
+LIST V-PL2 = (V Ind Prs Pl2)  (V Ind Prt Pl2) (V Cond Prs Pl2) 
+             (V Cond Prt Pl2) (V Pot Prs Pl2) (V Neg Ind Pl2);
+ 
+LIST V-PL3 = (V Ind Prs Pl3)  (V Ind Prt Pl3) (V Cond Prs Pl3) 
+             (V Cond Prt Pl3) (V Pot Prs Pl3) (V Neg Ind Pl3);
+ 
+
+ # Note that imperative verbs are not included in these sets!
+
+# Some subsets of the VFIN sets
+# - - - - - - - - - - - - - - -
+SET V-SG = V-SG1 OR V-SG2 OR V-SG3 ;
+SET V-DU = V-DU1 OR V-DU2 OR V-DU3 ;
+SET V-PL = V-PL1 OR V-PL2 OR V-PL3 ;
+
+SET V-DU-PL = V-DU1 OR V-DU2 OR V-DU3 OR V-PL1 OR V-PL2 OR V-PL3 ;
+
+SET V-NOT-SG1 = VFIN-NOT-IMP - V-SG1 ;
+SET V-NOT-SG2 = VFIN-NOT-IMP - V-SG2 ;
+SET V-NOT-SG3 = VFIN-NOT-IMP - V-SG3 ;
+SET V-NOT-DU1 = VFIN-NOT-IMP - V-DU1 ;
+SET V-NOT-DU2 = VFIN-NOT-IMP - V-DU2 ;
+SET V-NOT-DU3 = VFIN-NOT-IMP - V-DU3 ;
+SET V-NOT-PL1 = VFIN-NOT-IMP - V-PL1 ;
+SET V-NOT-PL2 = VFIN-NOT-IMP - V-PL2 ;
+SET V-NOT-PL3 = VFIN-NOT-IMP - V-PL3 ;
+
+
+SET V-1-2 = V-SG1 OR V-SG2 OR V-DU1 OR V-DU2 OR V-PL1 OR V-PL2 ;
+SET V-3  = V-SG3 OR V-DU3 OR V-PL3 ;
+
+# Sets consisting of forms of "leat" (these ones need to be rewritten)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+LIST LEAN = ("leat" V Ind Prs Sg1) ("leat" V PrfPrc);
+LIST LEAT = ("leat" V Ind Prs Pl1) ("leat" V Ind Prs Pl3) 
+      ("leat" V Ind Prs Sg2) ("leat" V Inf) ("leat" V Ind Prs ConNeg);
+
+LIST LEAT-FIN-NOT-IMP = ("leat" V Ind) ("leat" V Cond) ("leat" V Pot);
+ 
+LIST VPRFPRC = (V PrfPrc) ;
+LIST LEATPRFPRC = ("leat" PrfPrc) ;
+SET PRC-NOT-LEAT = VPRFPRC - LEATPRFPRC ;
+    # In order to distinguish between real leat-constructions and participles of other verbs
+LIST HABEO-SG3 = ("leat" Sg3) (V Neg Sg3) ("šaddat" Sg3) ;
+
+LIST HABEO-PL3 = ("leat" Pl3) (V Neg Pl3) ("šaddat" Pl3) ;
+
+SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
+
+# Pronoun sets
+# ------------
+
+LIST MUN = (Pron Pers Sg1 Nom);
+LIST DON = (Pron Pers Sg2 Nom);
+LIST SON = ("son" Pron Pers Sg3 Nom);
+LIST MOAI = (Pron Pers Du1 Nom);
+LIST DOAI = (Pron Pers Du2 Nom);
+LIST SOAI = (Pron Pers Du3 Nom);
+LIST MII-PERS = (Pron Pers Pl1 Nom);
+LIST DII = (Pron Pers Pl2 Nom);
+LIST SII = ("son" Pron Pers Pl3 Nom);
+
+SET PPRON-NOM-NOT-DAT = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
+
+SET PPRON-NOT-DAT = (Pron Pers) - ("dat") ;
+
+SET PPRON-DU-PL = MOAI OR DOAI OR SOAI OR MII-PERS OR DII OR SII ;
+SET PPRON-PL = MII-PERS OR DII OR SII ;
+
+SET PRON-DU = MOAI OR DOAI OR SOAI ;
+
+SET PPRON-NOT-SII = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII ;
+
+LIST PPRON-GEN = (Sg1 Gen) (Sg2 Gen) (Sg3 Gen) (Du1 Gen) (Du2 Gen) (Du3 Gen) 
+	(Pl1 Gen) (Pl2 Gen) (Pl3 Gen);
+
+SET PPRON-NOT-GEN = (Pron Pers) - PPRON-GEN ;
+
+LIST DEM-SG = (Pron Dem Sg Nom);
+LIST DEM-PL = (Pron Dem Pl Nom);
+SET NOT-DEM = WORD - Dem ;
+
+LIST SGPRON = (Pron Sg1) (Pron Sg2) (Pron Sg3) (Pron Sg) (Pron PxSg1) (Pron PxSg2) (Pron PxSg3);
+LIST DUPRON = (Pron Du1) (Pron Du2) (Pron Du3)  (Pron PxDu1) (Pron PxDu2) (Pron PxDu3);
+LIST PLPRON = (Pron Pl1) (Pron Pl2) (Pron Pl3) (Pron Pl) (Pron PxPl1) (Pron PxPl2) (Pron PxPl3);
+LIST DUPRON-NOTPX = (Pron Du1) (Pron Du2) (Pron Du3) ;
+
+SET PRON-NOT-SG = DUPRON OR PLPRON ;
+
+LIST DAT-PRON = ("dat") ("dát") ("diet") ("duot") ("dot") ;
+
+LIST QUANT-PRON = "ollu" "olu" "unnán" "váháš" "veaháš" "veháš" ;
+# This set is for choosing between Adv and Pron Indef.
+
+# Adjectival sets and their complements
+# -------------------------------------
+SET LEX-A = A - A-DER ;
+
+SET A-CASE = A - Attr - Adv ;
+
+LIST A-CC = A CC ;
+
+SET NOT-ADJ = WORD - A ;
+SET NOT-NUM = WORD - Num ;
+SET NOT-ADJ-COMMA = WORD - A - COMMA ;
+SET NOT-Attr = WORD - Attr ;
+SET NOT-ADJ-PCLE = WORD - A - Pcle ;
+SET NOT-ADJ-CC = WORD - A-CC ;
+
+SET NOT-AA = WORD - A - Adv OR ("maid") ;
+
+LIST NOMINAL-ADJ = "guoktilaš" "lámis" "oasálaš" ("suddu" Der/laš) "viissis";
+ 
+ # and many others
+ 
+# Adverbial sets and their complements
+# ------------------------------------
+SET LEX-ADV = Adv - (AA) ;
+
+SET NOT-ADV            = (*) - Adv  ;
+SET NOT-ADV-N          = (*) - Adv - N ;
+SET NOT-ADV-PCLE       = (*) - Adv - Pcle ;
+SET NOT-ADV-INDEF      = WORD - Adv - Indef ;
+SET NOT-ADV-PCLE-ILL   = WORD - Adv - Pcle - Ill ;
+SET NOT-ADV-PCLE-Refl  = WORD - Adv - Pcle - Refl ;
+SET NOT-ADV-PCLE-INDEF = WORD - Adv - Pcle - Indef ;
+SET NOT-ADV-PCLE-NEG   = WORD - Adv - Pcle - Neg ;
+SET NOT-ADVL-PCLE-NEG  = WORD - @ADVL - @P< - Pcle - Neg ;
+SET NOT-ADVL-PCLE      = (*) - @ADVL - @P< - Pcle ;
+
+
+LIST MO-MANge = "goas" "gokko" "gos" "gosa" "govt" ("got" Adv) "makkár" "man" "manne" "mo" "mot" "mov" "movt" ("nugo" @CVP) (V Qst);
+ 
+SET MO = MO-MANge - ("man" Foc/ge) ; 
+ 
+ # Introduce finite clauses.
+ 
+LIST PLACE-ADV =  "davábealde" "máttabealde" "nuorttabealde" "oarjebealde" "olggobeale" ;
+# There will usually be a Gen in front. 
+
+LIST DOPPE = "badjin" "bajil" "dakko" "dá" "dákko" "dáppe" "dás" "diekko" "dieppe" "do" "dokko" "doppe" "duo" "duokko" "duoppe" "olgun" ;
+# Adverbs with a locativic form, but don´t get Loc as a tag. 
+
+LIST DOHKO = "bajás" "davás" "deike" "diehke" "diehko" "dohko" "duohko" "luksa" "lulás" "nuorttas" "oarjjás" "olggos" "ruoktot" "ruovttoluotta" "sisa" "vulos" "vuolás" "vuovdimassii"     ;
+# Adverbs with a illativic form, but they don´t get Ill as a tag.
+
+
+# Coordinators
+# ------------
+SET Foc = Foc/ge  OR Foc/gen  OR Foc/ges  OR Foc/gis  OR Foc/naj OR Foc/ba  OR Foc/be  OR Foc/hal  OR Foc/han  OR Foc/bat OR Foc/son ;
+
+LIST NEGFOC = (Neg Foc/ge) ;
+
+LIST XGO = "dego" "dugo" "nugo" "seammaládjego" "seammaláhkaigo" ;
+  # Compounds
+LIST SEAMMAX = "seammaládje" "seammaláhkai" "seammaláhkái" ;
+  # Those combine with go
+  
+LIST MADE = "mađe" "mađi" ;
+LIST DADE = "dađe" "dađi" ; 
+  
+SET CRD = COMMA OR CC OR NEGFOC OR XGO OR ("/") OR ("-") OR DADE ;
+ 
+	# coordinators
+	
+LIST LCRD = @CNP ;
+    # local coordinator
+LIST GCRD = @CVP ;
+    # global coordinator
+    
+SET CRD2 = (@CNP) OR COMMA OR NEGFOC OR XGO OR ("/") OR ("-") OR DADE ;
+    # AFTER LCRD vs. GCRD disambiguation
+    
+# Sets for adverbs that have lookalikes
+# -------------------------------------
+ # Here come some adverbs that have identical twins in other POS. 
+ # If these are found in Adv contexts, we treat them as adverbs.
+
+LIST ADV-LACCAT = "absoluhtalaš" "agálaččat" "aitosaččat" ("aktiiva" Der/laš) ("aktiivva" Der/laš) "almmolaš" "analogalaš" "automáhtalaš" "álgoálgosaš" "álgovuolggalaš" "árbevirolaš" "beaivválaččat" "biologalaš" ("buhttenriekti" Der/laš) ("bustávva" Der/laš) "čálalaččat" "čearddalaš" "dábálaš"  "duođalaččat" ("dutkanpolitihkka" Der/laš) "eahpedábálaš" "eahpeformálalaš" "eahpekritihkalaš" "eahpevirggálaš" "eaktodáhtolaččat" "ekologalaš" "ekologálaš" "ekonomálaš" "eksplisihtalaš" ("elektrovdna" Der/laš) "eahpitkeahttá" ("etihkka" Der/laš) "etymologalaš" "fágalaš" "fonehtalaš" "fonologalaš" "fonotávttalaš" "formálalaš" ("fysiologa" Der/laš) "gaskamearálaš" "geavatlaččat" ("gealbu" Der/laš) ("geografa" Der/laš) ("geográfa" Der/laš) ("giella" Der/laš) ("girkoriekti" Der/laš) "globálalaččat" ("gorri" Der/laš) "govttolaš" "hálddahuslaš" "historjjálaš" "ideologalaš" "iešheanálaš" "implisihtalaččat" "jahkásaččat" "jeavddalaččat" ("jietnadatoahppa" Der/laš) ("juridihkka" Der/laš) "konkrehtalaš" ("kritihkka" Der/laš) "kronologalaš" ("kulturhistorjá" Der/laš) ("kulturpolitihkka" Der/laš) ("kultuvra" Der/laš) "logihkalaš" ("luohtu" Der/laš) ("máŋggafága" Der/laš) "mekánalaš" ("metoda" Der/laš) "moralalaš" "morálalaš" "morfologalaš" "našuvnnalaš" "negatiivalaš" "negatiivvalaš" "njálmmálaččat" "njuolgguslaččat" ("oaiveášši" Der/laš) "obbalaš" "obbalohkái" "oktasaččat" "oktilaš" "ollislaččat" "oppalaččat" "optimalalaččat" "ovttabealálaš" "ovttajienalaš" "ovttamielalaš" "pedagogalaš" ("politihkka" Der/laš) ("praktihkka" Der/laš) ("prinsihppa" Der/laš) ("priváhtariekti" Der/laš) "profehtalaš" "psykologalaš" "ráfálaččat" ("reálapolitihkka" Der/laš) ("riektehistorjá" Der/laš) ("riekti" Der/laš) "riikkaidgaskasaš" "sámegielalaš" ("riikkagoddi" Der/laš) ("ruhta" Der/laš) "rumašlaš" "sámepolitihkalaš" "sekundáralaččat" "semantihkalaš" ("servodatávki" Der/laš) ("siviilariekti" Der/laš) "sosiálalaš" ("stáhtapolitihkka" Der/laš) "strategalaš" ("suorgepolitihkka" Der/laš) ("teknihkka" Der/laš) "teorehtalaš" ("topografa" Der/laš) ("váldoášši" Der/laš) ("virgi" Der/laš) ("vierru" Der/laš) ;
+
+LIST ADV-AFTER-NUM = "geardde" "hávvi"  ;
+
+LIST DUSSE = "áibbas" "dušše" "erenoamážit" "goitge" "man" "measta" "meastui" "oalle" "oba" "oktiibuot" "oppa" "sullii" ;
+
+LIST EASKKA = "easkka" "easka" ; 
+
+LIST ADV-NOT-ARG = "aiddo" "ain" "aivve" "albma" "aŋkke" "álggos" "báifáhkka" "beanta" "beare" ;
+
+#LIST ADV-NOT-ARG2 = "aiddo" "ain" "aivve" "albma" "aŋkke" "álggos" "álgobáliid" "álo" "báifáhkka" "beanta" "beare" "dakkaviđe" "dal" "dan_dihte" "danne" "dasto" "dattetge" ("dábálaš" Adv) "dávjá" "de" "dieđinge" "dieđusge" "duođaid" "easkka" "fal" "fargga" "fas" "fárrolaga" "gal" "goas" "goasse" "gos" "gosa" "gostege" "govt" "gusto" "hedi" "juo" "justa" "loahpas" "maiddái"  "manin" "manne" "nuppes" "suige" "šat" "vel" "viimmat" "vuos" ;
+
+
+LIST ADV-NOT-VERB = "dušše" "viimmat" ;
+
+LIST ADV-NOT-NOUN = "easka" "várra" ;
+
+LIST ADV-NOT-ADJ = "luovos" ;
+
+
+LIST ADV-NOT-NAMES = "Ain" "Anne" "Diego" "Dieppe" "Enge" "Galle" "Haga"
+           "Joba" "Johan" "Liikka" "Mai" "Mannes" "Mo" "Mot" "Naba"
+           "Nan" "Oktan" "Sierra" "Sokka" "Villa" ;
+
+SET ADV-NOT-OTHER-POS = ADV-NOT-VERB OR ADV-NOT-NOUN OR ADV-NOT-NAMES ;
+
+
+# Sets of elements with common syntactic behaviour
+# ================================================
+
+SETS
+
+# Verbs
+# -----
+# Hmm V*?
+SET VERB = V - (V N);
+  # V is all readings with a V tag in them, VERB should
+            # be the ones without an N tag following the V  
+SET VERB-NOT-ACTIO = V - (V N) - Actio ;
+            
+SET LEX-V = VERB - V-DER;
+       # VERB but not V-DER
+ 
+ # The set REALCOPULAS is smaller than COPULAS, made for verbs with PrfPrc complements: Seammás REALCOPULAS son dovdan iežas...
+LIST REALCOPULAS = "dáidit" "leahkit" "leat" "orrut" "soaitit" "veadjit" ; 
+	#added orrut because of the following example:
+	# Rissiid , dakŋasa ja lasttaid gal orrot eambbo soaitimis 	čohkken, ja dárbu rievddadii jagis jahkái . 
+
+# The set COPULAS is for predicative constructions
+LIST COPULAS = "dáidit" "gártat" "leahkit" "leat" "orrut" "soaitit" "šaddat" "veadjit" ;
+ #  "bissut" ?
+ # 'Dáidit' can appear without 'leat'.
+
+SET V-NOT-COP = V - COPULAS ;
+
+LIST MOD-ASP = "bállet" "berret" "dáidit" "fertet" "galgat" "gillet" "lávet"  "sáhttit" "seahtit" "soaitit" "viggat" ;
+
+ # Verbs that never have arguments of their own - so we leave out "áigut", for ex.
+
+LIST AUX-OR-MAIN = "áigut" "álgit" "beassat" "galgat" "hálidit" "háliidit" "máhttit" "nagodit" "ollit" "orrut" "sihtat" "veadjit";
+
+ # These verbs can take arguments, so they do not belong in the AUX group, 
+ # but they are nevertheless mapped to (@+FAUXV). 
+ # Added "álgit" to the group (Lene) - Made rules for "boahtit" which  sometimes can be AUX
+ # Magga (1982: 120): áigut, dáidit, deaivat, fertet, galgat, lávet, máhttit, oažžut, sáhttit, soaitit, veadjit - in some of the meanings 
+ # Halvhjelpeverb: álgit, berret, dohkket, gártat, heivet, liigut, šaddat - in some of the meanings 
+ 
+SET AUX = COPULAS OR Neg OR MOD-ASP OR AUX-OR-MAIN ;
+ 
+
+SET V-NOT-AUX = V - AUX ;
+ # The set of verbs that cannot be auxiliaries. 
+			  # Does not include AUX-OR-MAIN.
+SET VFIN-NOT-AUX = VFIN - AUX ;
+SET GRAMCHK-VFIN-NOT-AUX = VFIN - <aux> ;
+
+SET V-MAIN = V - COPULAS - Neg - MOD-ASP OR ("orrut") ;
+ 
+# The set of verbs that can be main verbs. Includes AUX-OR-MAIN.
+SET V-DER-PASS = V OR V-DER OR Der/Pass;
+  # OR is union, this should work
+				   # The set is used in one rule with no hits.
+LIST V-TRANS = TV (IV Der/ahtti) (IV Der/h) ;
+# This is only a tool for making the following sets, bacause of that the symbols (|) and (-) in the set don´t function as one had expected.
+SET V-TRANS-ACT = V-TRANS - (TV Der/PassS) - (TV Der/PassL);
+ #XXX Never acc-obj for a.l. or actor?
+ # All active verbs with a TV tag, including AUX-OR-MAIN.
+ 
+SET V-TRANS-ACT-NOT-AUX = V-TRANS - Der/Pass - AUX ;
+
+SET V-TRANS-ACT-NOT-ACT = V-TRANS - Der/Pass - Der/NomAct - Actio - NOMAG - PrsPrc - Attr OR (TV Actio Ess) ;
+
+SET V-TRANS-ACT-NOT-ACT-NOT-AUX = V-TRANS - Der/Pass - Der/NomAct - Actio - NOMAG - AUX OR (Actio Ess) ;
+
+# Semantic tags
+# -------------
+
+LIST Sem/Act = Sem/Act Sem/Act_Group Sem/Act_Plc Sem/Act_Route; #Activity #Ollet guhká dainna X-Com (Veaigin bisánasttii Ristenge geahččat, man guhkás Lemet-gázzi juo ledje ollen dainna divvunbargguin.) # bargu
+LIST Sem/Amount = Sem/Amount Sem/Amount_Build Sem/Amount_Semcon;
+LIST Sem/Ani = Sem/Ani Sem/Ani_Build_Hum_Txt Sem/Ani_Build-part Sem/Ani_Group Sem/Ani_Group_Hum Sem/Ani_Hum Sem/Ani_Hum_Plc Sem/Ani_Hum_Time Sem/Ani_Body-abstr_Hum Sem/Ani_Plc Sem/Ani_Plc_Txt Sem/Ani_Time Sem/Ani_Veh ; #Animal #bivdit X-Loc veahki.
+LIST Sem/Aniprod = Sem/Aniprod Sem/Aniprod_Hum
+Sem/Aniprod_Obj-clo Sem/Aniprod_Perc-phys Sem/Aniprod_Plc ;
+LIST Sem/Body = Sem/Body Sem/Body_Body-abstr Sem/Body_Clth Sem/Body_Food Sem/Body_Group_Hum Sem/Body_Hum Sem/Body_Mat Sem/Body_Measr Sem/Body_Obj_Tool-catch Sem/Body_Plc Sem/Body_Time ; #Body #Buohkat ceggejedje gieđa. Mon gal attán dutnje bealji vuollái. Go duos dás speččohallá bahtii de gal buollá bargomokta! Čuolda basttii sus alemii.
+LIST Sem/Body-abstr = Sem/Ani_Body-abstr_Hum Sem/Body-abstr Sem/Body-abstr_Prod-audio_Semcon Sem/Body_Body-abstr ; # jierbmi, siellu, ...
+LIST Sem/Build = Sem/Amount_Build Sem/Ani_Build Sem/Ani_Build_Hum_Txt Sem/Build Sem/Build_Build-part Sem/Build_Clth-part Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Org Sem/Build_Route ; #Build #Sem #Syn: hukset X deike
+LIST Sem/Build-part = Sem/Ani_Build-part Sem/Build-part Sem/Build-part_Plc Sem/Build_Build-part ; #Building part, e.g. room #Sem:+con,+count,-mova #Syn: mannat X sisa
+LIST Sem/Cat = Sem/Cat ;
+LIST Sem/Clth = Sem/Body_Clth Sem/Clth Sem/Clth_Hum ; #Clothes #Sem #bidjat X ala/badjelii.
+LIST Sem/Clth-jewl = Sem/Clth-jewl Sem/Clth-jewl_Curr Sem/Clth-jewl_Money Sem/Clth-jewl_Plant Sem/Org_Clth-jewl ; #Clothes jewelry #Synt: bidjat X ala. *bidjat X badjelii.
+LIST Sem/Clth-part  = Sem/Build_Clth-part Sem/Clth-part  ;
+LIST Sem/Ctain = Sem/Ctain Sem/Ctain_Feat-phys Sem/Ctain_Furn Sem/Ctain_Plc Sem/Ctain_Tool Sem/Ctain_Tool-measr ; #Container #Sem:+mova #Syn: bidjat juoidá X sisa
+LIST Sem/Ctain-abstr = Sem/Ctain-abstr Sem/Ctain-abstr_Org ;
+LIST Sem/Curr = Sem/Clth-jewl_Curr Sem/Curr Sem/Curr_Org; #Syn: Mun mávssan dasa 100 X. Dat máksá 100 X.
+LIST Sem/Date = Sem/Date ;
+LIST Sem/Dance = Sem/Dance Sem/Dance_Org Sem/Dance_Prod-audio ; #Ollugat dánso swinga lávddi ovddabeale.
+LIST Sem/Dir = Sem/Dir ;
+LIST Sem/Domain = Sem/Domain Sem/Domain_Food-med Sem/Domain_Prod-audio;
+LIST Sem/Drink = Sem/Drink ;
+LIST Sem/Edu = Sem/Build_Edu_Org Sem/Edu Sem/Edu_Event Sem/Edu_Group_Hum Sem/Edu_Mat Sem/Edu_Org ; # vázzit X-Acc. addit X-Acc. X:s lea beroštupmi.
+LIST Sem/Event = Sem/Build_Event_Org Sem/Edu_Event Sem/Event Sem/Event_Food Sem/Event_Hum Sem/Event_Plc Sem/Event_Plc-elevate Sem/Event_Time ; # X maŋŋel mun ferten vuolgit. X:s leat ollu olbmot. *Lean leamaš doppe X:Gen.
+#LIST Sem/Feat-cogn = Sem/Feat-cogn ; # oaidnu, oamedovdu, viissisvuohta
+#LIST Sem/Feat-phys = Sem/Feat-phys ; # oaidnu
+LIST Sem/Feat = Sem/Feat Sem/Feat_Plant ; #many -vuohta and -dat nouns
+LIST Sem/Feat-measr = Sem/Feat-measr ;
+LIST Sem/Feat-phys = Sem/Ctain_Feat-phys Sem/Feat-phys Sem/Feat-phys_Tool-write Sem/Feat-phys_Veh Sem/Feat-phys_Wthr ;
+LIST Sem/Feat-psych = Sem/Feat-psych Sem/Feat-psych_Hum ; #not touchable, not countable ("beroštupmi" "gáđašvuohta" "mokta" "sáhkkiivuohta") - Mus lea X,  Son lea X-adj persovdna # muitu
+LIST Sem/Fem = Sem/Fem ;
+LIST Sem/Food = Sem/Body_Food Sem/Event_Food Sem/Food Sem/Food_Perc-phys Sem/Food_Plant ; #Syn: bassit/borrat/sohpat X-Acc. mon im læk borram dam guolest. mun boran iđitbiepmu. mus lea iđitbiebmu fárus. birgui borastuvvat
+LIST Sem/Food-med = Sem/Domain_Food-med Sem/Food-med ;
+LIST Sem/Furn = Sem/Ctain_Furn Sem/Furn ; #Syn: bidjat X vissui: čohkkedit X ala
+LIST Sem/Game = Sem/Game Sem/Game_Obj-play ;
+LIST Sem/Geom = Sem/Geom Sem/Geom_Obj ;
+LIST Sem/Group = Sem/Act_Group Sem/Ani_Group Sem/Ani_Group_Hum Sem/Body_Group_Hum Sem/Edu_Group_Hum Sem/Group Sem/Group_Hum Sem/Group_Hum_Org Sem/Group_Hum_Plc Sem/Group_Hum_Prod-vis Sem/Group_Org Sem/Group_Sign Sem/Group_Txt ; #Bárdni lea riggámus sogas. -Plc
+LIST Sem/Hum = Sem/Ani_Body-abstr_Hum Sem/Ani_Build_Hum_Txt Sem/Ani_Group_Hum Sem/Ani_Hum Sem/Ani_Hum_Plc Sem/Ani_Hum_Time Sem/Aniprod_Hum Sem/Body_Group_Hum Sem/Body_Hum Sem/Clth_Hum Sem/Edu_Group_Hum Sem/Event_Hum Sem/Feat-psych_Hum Sem/Group_Hum Sem/Group_Hum_Org Sem/Group_Hum_Plc Sem/Group_Hum_Prod-vis Sem/Hum Sem/Hum_Lang Sem/Hum_Lang_Plc Sem/Hum_Lang_Time Sem/Hum_Obj Sem/Hum_Org Sem/Hum_Plant Sem/Hum_Plc Sem/Hum_Tool Sem/Hum_Veh Sem/Hum_Wthr ; #Human
+#LIST Sem/Hum-kin = Sem/Hum-kin ; #Human kinship
+LIST Sem/Hum-abstr = Sem/Hum-abstr ;
+LIST Sem/Ideol = Sem/Ideol ;
+LIST Sem/Lang = Sem/Hum_Lang Sem/Lang Sem/Lang_Tool ; #Syn: hállat X:illatiiva. Son hállá X:Acc. Jorgalan dán X:lokatiiva Y:illatiiva.
+LIST Sem/Mal = Sem/Mal ;
+LIST Sem/Mat = Sem/Body_Mat Sem/Edu_Mat Sem/Mat Sem/Mat_Plant Sem/Mat_Txt ; # Material #Sem: cannot pass through it without destroying it, ráhkadit juoidá X:s. Niibi lea X-Loc-Sg. #Dán báhkis šaddá čáppa gohppu.
+LIST Sem/Measr = Sem/Body_Measr Sem/Measr Sem/Measr_Sign Sem/Measr_Time ; # Lea lassánan 100 X-Loc.
+LIST Sem/Money = Sem/Clth-jewl_Money Sem/Money Sem/Money_Obj Sem/Money_Txt ; #Mun mávssán X. Mii ávžžuhit vuovdit alimus X-Ill (haddái). ruhtadit doaibmabušeahtain. vuovdit/bidjat ruđast - selge for penger
+LIST Sem/Obj = Sem/Body_Obj_Tool-catch Sem/Geom_Obj Sem/Hum_Obj Sem/Money_Obj Sem/Obj Sem/Obj_Semcon Sem/State_Obj ; # concrete object, movable #Syn: Mun guoskkán X-Acc. Dá livčče dutnje X-Nom (sabehat). čievččastit geađggi johkii
+#LIST Sem/Obj-com = Sem/Obj-com ; #communication object #hálan telefuvnnas/e-poasttas #sádden X bokte
+LIST Sem/Obj-clo = Sem/Aniprod_Obj-clo Sem/Obj-clo ; #bidjat juoidá Obj-clo sisa
+LIST Sem/Obj-el = Sem/Obj-el ; # moveable, countable, touchable, electrical objects that can be turned on and of,  mus lea X alde, mun bijan X ala
+LIST Sem/Obj-ling = Sem/Obj-ling ;
+LIST Sem/Obj-play = Sem/Game_Obj-play Sem/Obj-play_Sport ;
+LIST Sem/Obj-rope = Sem/Obj-rope ;
+LIST Sem/Obj-surfc = Sem/Obj-surfc ;
+LIST Sem/Org = Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Org Sem/Ctain-abstr_Org Sem/Curr_Org Sem/Dance_Org Sem/Edu_Org Sem/Group_Hum_Org Sem/Group_Org Sem/Hum_Org Sem/Org Sem/Org_Clth-jewl Sem/Org_Prod-cogn Sem/Org_Rule Sem/Org_Txt Sem/Org_Veh ;
+LIST Sem/Part = Sem/Part Sem/Part_Prod-cogn ; # bealli, oassi
+LIST Sem/Perc-emo = Sem/Perc-emo Sem/Perc-emo_Wthr ; #Sem not touchable, not countable ("ballu" "suhttu" "vaši") -  Mun dovddan garra X. Mun lean X+Loc # moraš
+LIST Sem/Perc-phys = Sem/Aniprod_Perc-phys Sem/Food_Perc-phys Sem/Perc-phys Sem/Perc-emo_Wthr ; # anistupmi, oaidnu
+LIST Sem/Plant = Sem/Clth-jewl_Plant Sem/Ctain-clth_Plant Sem/Feat_Plant Sem/Food_Plant Sem/Hum_Plant Sem/Mat_Plant Sem/Plant Sem/Plant_Plant-part Sem/Plant_Tool Sem/Plant_Tool-measr ; #čáhccet X-Acc #X-Nom šaddet
+LIST Sem/Plant-part = Sem/Plant_Plant-part Sem/Plant-part ; #čáhccet X-Acc #X-Nom šaddet
+LIST Sem/Plc = Sem/Act_Plc Sem/Ani_Hum_Plc Sem/Ani_Plc Sem/Ani_Plc_Txt Sem/Aniprod_Plc Sem/Body_Plc Sem/Build-part_Plc Sem/Ctain_Plc Sem/Event_Plc Sem/Event_Plc-elevate Sem/Group_Hum_Plc Sem/Hum_Lang_Plc Sem/Hum_Plc Sem/Plc Sem/Plc_Pos Sem/Plc_Route Sem/Plc_Substnc Sem/Plc_Substnc_Wthr Sem/Plc_Time Sem/Plc_Tool-catch Sem/Plc_Wthr;
+LIST Sem/Plc-abstr = Sem/Plc-abstr Sem/Plc-abstr_Rel_State Sem/Plc-abstr_Route ;
+LIST Sem/Plc-elevate = Sem/Plc-elevate ;
+LIST Sem/Plc-line = Sem/Plc-line ;
+LIST Sem/Plc-water = Sem/Plc-water ;
+LIST Sem/Pos = Sem/Plc_Pos Sem/Pos ; #Social position (job etc.)
+LIST Sem/Prod = Sem/Prod ; #jáhkku
+LIST Sem/Prod-audio = Sem/Body-abstr_Prod-audio_Semcon Sem/Dance_Prod-audio Sem/Domain_Prod-audio Sem/Prod-audio Sem/Prod-audio_Txt ; #attáldat
+LIST Sem/Prod-cogn = Sem/Org_Prod-cogn Sem/Part_Prod-cogn Sem/Prod-cogn Sem/Prod-cogn_Txt ; # muittuhus, ipmárdus, jáhkku, osku, vuordámuš, viisodat? diehtu?
+LIST Sem/Prod-ling = Sem/Prod-ling ;
+LIST Sem/Prod-vis = Sem/Group_Hum_Prod-vis Sem/Prod-vis ;
+LIST Sem/Rel = Sem/Plc-abstr_Rel_State Sem/Rel ;
+LIST Sem/Route = Sem/Act_Route Sem/Build_Route Sem/Plc-abstr_Route Sem/Plc_Route Sem/Route ;
+LIST Sem/Rule = Sem/Org_Rule Sem/Rule ; 
+LIST Sem/Semcon = Sem/Amount_Semcon Sem/Body-abstr_Prod-audio_Semcon Sem/Obj_Semcon Sem/Semcon Sem/Semcon_Txt ; # semantic concept
+LIST Sem/Sign = Sem/Group_Sign Sem/Measr_Sign Sem/Sign ;
+LIST Sem/Sport = Sem/Obj-play_Sport Sem/Sport ;
+LIST Sem/State = Sem/Plc-abstr_Rel_State Sem/State Sem/State_Obj ; # lihkku, ipmilbalolašvuohta, mokta, váivi, váttisvuohta
+LIST Sem/State-sick = Sem/State-sick Sem/State-sick_Substnc ;
+LIST Sem/Substnc = Sem/Plc_Substnc Sem/Plc_Substnc_Wthr Sem/State-sick_Substnc Sem/Substnc Sem/Substnc_Wthr ; #Sem: can pass through it without destroying it
+LIST Sem/Time = Sem/Ani_Hum_Time Sem/Ani_Time Sem/Body_Time Sem/Event_Time Sem/Hum_Lang_Time Sem/Measr_Time Sem/Plc_Time Sem/Time Sem/Time_Wthr ;
+LIST Sem/Tool = Sem/Ctain_Tool Sem/Hum_Tool Sem/Lang_Tool Sem/Plant_Tool Sem/Tool ;
+LIST Sem/Tool-catch = Sem/Body_Obj_Tool-catch Sem/Plc_Tool-catch Sem/Tool-catch ;
+LIST Sem/Tool-clean = Sem/Tool-clean ;
+LIST Sem/Tool-it = Sem/Tool-it ;
+LIST Sem/Tool-measr = Sem/Ctain_Tool-measr Sem/Plant_Tool-measr Sem/Tool-measr ;
+LIST Sem/Tool-music = Sem/Tool-music ;
+LIST Sem/Tool-write = Sem/Feat-phys_Tool-write Sem/Tool-write ;
+LIST Sem/Txt = Sem/Ani_Build_Hum_Txt Sem/Ani_Plc_Txt Sem/Group_Txt Sem/Mat_Txt Sem/Money_Txt Sem/Org_Txt Sem/Prod-audio_Txt Sem/Prod-cogn_Txt Sem/Semcon_Txt Sem/Txt ; #Syn: Čále dearvvuođaidat guossegirjámet! # das čuožžu
+LIST Sem/Veh = Sem/Ani_Veh Sem/Ctain-clth_Veh Sem/Feat-phys_Veh Sem/Hum_Veh Sem/Org_Veh Sem/Veh ;	#Syn: Vuolggán X:Com
+#LIST Sem/Veh-cntain = Sem/Veh-cntain ; #Manan X sisa. #vuolggán X:Com.
+LIST Sem/Wthr = Sem/Feat-phys_Wthr Sem/Hum_Wthr Sem/Perc-emo_Wthr Sem/Plc_Substnc_Wthr Sem/Plc_Wthr Sem/Substnc_Wthr Sem/Time_Wthr Sem/Wthr ; #Sem: Birget X:Ess. jietna gullui X-Loc (balvvas). Olgun/Odne lea + Wthr-Nom. ?Man ollu lea Wthr-Nom? Wthr-Gen maŋŋel boahtá X. Makkár lea dálki/siivu? #Ex: árvi, borga, muohtá, čoaskadálki, baján, bievla, bodnejiekŋa, bivdodálki, gasis, guoldu
+LIST Sem/Wpn = Sem/Wpn ; #oaggut oaggunstákkuin, goddit X+Com
+LIST Sem/Year = Sem/Year ;
+
+
+
+
+
+LIST Sem/Sur = Sem/Sur ;
+#LIST Tit = Tit ;
+
+SET Sem/Human = Sem/Hum OR Sem/Sur OR Sem/Mal OR Sem/Fem OR Sem/Org ;
+SET Sem/Animate = Sem/Hum OR Sem/Ani OR Sem/Sur OR Sem/Mal OR Sem/Fem OR Sem/Org ;
+	# Has to be a set so that multiple tags are included
+LIST Sem/Concrete-NotAnimate-NotPlace = Sem/Clth Sem/Clth-jewl Sem/Clth-part Sem/Ctain Sem/Drink Sem/Food Sem/Food-med Sem/Mat Sem/Money Sem/Obj Sem/Obj-clo Sem/Obj-el Sem/Substnc Sem/Tool Sem/Tool-catch Sem/Tool-measr Sem/Tool-music  Sem/Tool-write  Sem/Txt  Sem/Veh Sem/Wpn ; 
+SET Sem/Place = Sem/Plc OR Sem/Plc-water OR Sem/Plc-elevate OR Sem/Plc-line OR Sem/Build OR Sem/Build-part OR Sem/Org ;
+
+
+
+SECTION
+
+
+# Example input:
+#
+# $ echo dalle go | hfst-tokenise --gtd tokeniser-disamb-gt-desc.pmhfst
+# "<dalle go>"
+#         "go" Pcle Qst <W:0>
+#                 "dalle" Adv Sem/Time <W:0>
+#         "go" CS <W:0>
+#                 "dalle" Adv Sem/Time <W:0>
+#         "dalle go" CS <W:0>
+# :\n
+
+REMOVE:mielde (Err/SpaceCmp) (0/1 ("mielde"))(0 Allegro) ;
+	## Jus ovtta ja seamma áššis jerrojuvvo máŋgasa bealátvuođas , de ii sáhte oktage sis leat mielde mearrideame iežas dahje eará miellahtu bealátvuođa , eará go jus orgánas muđui ii livčče mearridanváldi gažaldagas .
+	
+	
+	## 08.12.03 beaiváduvvon reivves Sámediggái čujuha stáhtaráđđi čoahkkimii mii dollojuvvui 03.11.03 Sámedikkiin , ja čállá ahte departemeanta áigu bivdit čoahkkima gos guorahallat daid čuolbmačilgehusaid mat Sámedikki mielas leat deaŧalaččat ođđa minerálaláhkaárvalusas .
+
+# TODO: Ask Tino how to constraint that Cmp and Err/SpaceCmp are on the same Reading-group
+# REMOVE SUB:-1 (Cmp) (0/0 Err/SpaceCmp) ;
+
+REMOVE:GenFirst (Err/SpaceCmp) (0/-1 Gen) ;
+	## Stuorradikki Gieldda- ja hálddašanlávdegotti galledeami oktavuođas lágida Sámediggeráđđi beaivelahki seminára , guovvamánu 24. beaivvi diibmu ovccis gitta 12.00 rádjái , {sámi} giellavuoigatvuođaid birra árgabeaivvis .
+	## {Sámi} kulturráđđi lea vuollásaš ráđđi Sámedikkevuogádagas .
+	## Jagi 1994 ásahuvvui Sámi kulturmuitoráđđi Sámedikki vuollásažžan .
+
+REMOVE:TH-val (Err/SpaceCmp) (0/1 (<TH-Ill-Any>)) (0/0 (Ill)) (NEGATE *0 (V <TH-Ill-Any) BARRIER (V));
+	## Buot dáin lei atnu dávviriidda.
+	#$ Buot dát ledje atnu dávvirat, maidda beaivválaččat lei dárbu.
+	#$ Mas gieđahallojuvvui sámegiela sadji ja atnu prográmmat.
+
+REMOVE:illu-beaivvis (Err/SpaceCmp) (0/0 Sem/Time OR Sem/Plc LINK 0 Loc LINK -1 VFIN) (*-1 VFIN BARRIER NOT-ADV-PCLE LINK 0 COPULAS LINK 0 Sg3);
+	## Movttegis eamit lea illu beaivvis.
+	#$ TODO
+
+REMOVE (Err/SpaceCmp) (0/0 (TODO));
+	## Otne lea sihke neahtta-bálvalusain ja mobiillas atnu prográmmain.
+
+
+# If no rule above chose spacecmp, we assume it was *not* a compounding error:
+REMOVE:fallback SUB:* (Err/SpaceCmp) ;
+
+# If we still have reanalyses, choose the longest tokenisation:
+REMOVE:longest-match SUB:1 ("<.*>"r);

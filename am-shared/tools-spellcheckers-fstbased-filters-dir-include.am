@@ -22,11 +22,13 @@ HFST_REGEXP2FST_FLAGS="--xerox-composition=ON"
 GT_FSTSPELLER_FILTER_SRCS=
 
 # These will be included in the distribution:
-EXTRA_DIST=$(GT_FSTSPELLER_FILTER_SRCS)
+EXTRA_DIST=$(GT_FSTSPELLER_FILTER_SRCS) \
+		   $(GT_LOCAL_FSTSPELLER_FILTER_SRCS)
 
 GT_FSTSPELLER_FILTER_ALL_SRCS=\
         $(GT_FSTSPELLER_FILTER_SRCS) \
         $(GT_LOCAL_FSTSPELLER_FILTER_SRCS) \
+        $(GT_LOCAL_COPY_FILTER_SRCS) \
         $(GENERATED_REGEXES)
 
 # This is what we build:
@@ -49,6 +51,10 @@ endif # WANT_SPELLERS
 
 ####### Copy regex files from the GTD core if not found locally: ########
 %.regex: $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters/%.regex
+	$(AM_V_CP)cp -f $< $@
+
+####### ... OR from the src/filters/ dir
+%.regex: $(top_srcdir)/src/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 
 ##########################################

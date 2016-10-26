@@ -30,12 +30,14 @@ speller_results="$SCRIPT_DIR/speller_result_${file_spesifier}.${engine}.xml"
 DATE=$(date +%Y%m%d)
 TESTTIME=$(date +%H%M)
 
+giella_core=$GTHOME/giella-core
+
 function print_usage() {
     echo "Usage: $0 [OPTIONS...]"
-    echo "Extract lemmas from INPUTFILE (lexc)"
+    echo "Test the voikko command line speller voikkospell using typos data"
     echo
     echo "  -h, --help          Print this usage info"
-    echo "  -b, --builddir DIR  Specify top build directory when different from"
+    echo "  -b, --builddir DIR  Specify top build directory relative to"
     echo "                      the directory containing configure.ac"
     echo
 }
@@ -77,7 +79,7 @@ grep -v '^[!#]' "$typos_file" | grep -v '^$' \
 cut -f1 $SCRIPT_DIR/$speller_test_data > $SCRIPT_DIR/$speller_input
 
 # Run the speller;
-$GTCORE/scripts/run_voikko_speller.sh $SCRIPT_DIR/$speller_input \
+$giella_core/scripts/run_voikko_speller.sh $SCRIPT_DIR/$speller_input \
                                       $SCRIPT_DIR/$speller_output \
                                       $SCRIPT_DIR/$speller_timeusage \
                                       $GTLANG2 \
@@ -86,7 +88,7 @@ $GTCORE/scripts/run_voikko_speller.sh $SCRIPT_DIR/$speller_input \
 rm -f "$speller_results"
 
 # Convert speller output to common xml:
-$GTCORE/scripts/speller-testres.pl \
+$giella_core/scripts/speller-testres.pl \
 		--engine=${engine} \
 		--lang=$GTLANG2 \
 		--input="$SCRIPT_DIR/$speller_test_data" \

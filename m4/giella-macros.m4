@@ -356,6 +356,44 @@ AS_IF([test "x$GIELLA_LIBS" != "xno" -a \
 AM_CONDITIONAL([CAN_LOCALSYNC], [test "x$can_local_sync" != xno ])
 AM_CONDITIONAL([CAN_REMOTE_SYNC], [test "x$can_wget_giella_libs" != xno ])
 
+
+
+################ GNU Make at least 3.82 on non-OSX systems: ################
+#
+# Platform specific setup
+#
+#############################
+AC_CANONICAL_HOST
+# Check for which host we are on and setup a few things
+# specifically based on the host
+# This is the minimum GNU Make version required (except on OSX):
+_GNU_make_min_version=m4_default([$1], [3.82])
+
+# Then we check against different hosts:
+case $host_os in
+  darwin* )
+        # Do nothing for mac: the included make is fine
+        true
+        ;;
+    *)
+        # Default Case: in all other cases check that we are using GNU make
+        # and that it is new enough:
+        AX_CHECK_GNU_MAKE()
+        AC_MSG_CHECKING([whether GNU make is at least $_GNU_make_min_version])
+        AX_COMPARE_VERSION([$ax_check_gnu_make_version], [ge],
+                           [$_GNU_make_min_version],
+                   [
+                    AC_MSG_RESULT([yes])
+                    # Reset the MAKE variable, to ensure we're using GNU make:
+                    MAKE=$_cv_gnu_make_command
+                   ],
+                   [AC_MSG_ERROR([GNU Make too old ($ax_check_gnu_make_version), please install at least $_GNU_make_min_version])
+                   ])
+        ;;
+esac
+
+
+
 ]) # gt_PROG_SCRIPTS_PATHS
 
 ################################################################################

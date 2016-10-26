@@ -1,4 +1,9 @@
-$Rev: 141817 $
+$Rev: 142078 $
+Added test for available GNU Make, and at least at version 3.82. Error if not
+found, except on OSX/macOS, where the builtin make is GNU Make 3.81 + patches,
+which corresponds to the required version or newer.
+
+r141817:
 Better support for speller filters using source files from other locations.
 
 r141652:

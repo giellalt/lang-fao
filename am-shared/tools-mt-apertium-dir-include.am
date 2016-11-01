@@ -115,7 +115,6 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/make-optional-transitivity-tags.hfst  \
 			$(top_builddir)/src/filters/make-optional-semantic-tags.hfst      \
 			$(top_builddir)/src/filters/make-optional-v1-tags.hfst            \
-			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst            \
 			$(top_builddir)/src/filters/remove-number-string-tags.hfst        \
 			$(top_builddir)/src/filters/remove-NG-strings.hfst                \
 			$(top_builddir)/src/filters/remove-usage-tags.hfst                \
@@ -132,7 +131,6 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 		@\"$(top_builddir)/src/filters/make-optional-semantic-tags.hfst\"     \
 	.o. @\"$(top_builddir)/src/filters/make-optional-transitivity-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/make-optional-v1-tags.hfst\"           \
-	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
 	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
 	.o. @\"$(top_builddir)/src/filters/remove-error-strings.hfst\"            \
@@ -154,7 +152,6 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-dialect-tags.hfst             \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst             \
-			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
 			$(top_builddir)/src/filters/remove-number-string-tags.hfst       \
 			$(top_builddir)/src/filters/remove-usage-tags.hfst               \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst        \
@@ -168,7 +165,6 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			read regex \
 	    @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
-	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
 	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
 	.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.hfst\"           \

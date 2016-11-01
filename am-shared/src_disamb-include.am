@@ -12,7 +12,6 @@ analyser-disamb-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
 					filters/remove-infl_deriv-borders.%       \
 					filters/remove-word-boundary.%            \
 					filters/remove-dialect-tags.%             \
-					filters/remove-norm-comp-tags.%           \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-orthography-tags.%         \
 					filters/remove-usage-tags.%               \
@@ -22,7 +21,6 @@ analyser-disamb-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-dialect-tags.$*\"             \
-			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-orig_lang-tags.$*\"           \
 			.o. @\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-variant-tags.$*\"             \
@@ -51,7 +49,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%      \
 					filters/remove-infl_deriv-borders.%         \
 					filters/remove-word-boundary.%              \
 					filters/remove-dialect-tags.%               \
-					filters/remove-norm-comp-tags.%             \
 					filters/remove-orig_lang-tags.%             \
 					filters/remove-orthography-tags.%           \
 					filters/remove-usage-tags.%                 \
@@ -60,7 +57,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%      \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-dialect-tags.$$*\"               \
-			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"             \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
 			.o. @\"filters/remove-variant-tags.$$*\"               \
@@ -89,7 +85,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-infl_deriv-borders.%          \
 					filters/remove-word-boundary.%               \
 					filters/remove-dialect-tags.%                \
-					filters/remove-norm-comp-tags.%              \
 					filters/remove-orig_lang-tags.%              \
 					filters/remove-orthography-tags.%            \
 					filters/remove-usage-tags.%                  \
@@ -101,7 +96,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-dialect-tags.$$*\"                 \
-			.o. @\"filters/remove-norm-comp-tags.$$*\"               \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"               \
 			.o. @\"filters/remove-orthography-tags.$$*\"             \
 			.o. @\"filters/remove-usage-tags.$$*\"                   \
@@ -131,7 +125,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-infl_deriv-borders.%          \
 					filters/remove-word-boundary.%               \
 					filters/remove-dialect-tags.%                \
-					filters/remove-norm-comp-tags.%              \
 					filters/remove-orig_lang-tags.%              \
 					filters/remove-orthography-tags.%            \
 					filters/remove-usage-tags.%                  \
@@ -143,7 +136,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					orthography/raw-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-dialect-tags.$$*\"                 \
-			.o. @\"filters/remove-norm-comp-tags.$$*\"               \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"               \
 			.o. @\"filters/remove-orthography-tags.$$*\"             \
 			.o. @\"filters/remove-usage-tags.$$*\"                   \
@@ -174,7 +166,6 @@ analyser-gramcheck-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
 					filters/remove-infl_deriv-borders.%       \
 					filters/remove-word-boundary.%            \
 					filters/remove-dialect-tags.%             \
-					filters/remove-norm-comp-tags.%           \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-orthography-tags.%         \
 					filters/remove-usage-tags.%               \
@@ -184,7 +175,6 @@ analyser-gramcheck-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-dialect-tags.$*\"             \
-			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-orig_lang-tags.$*\"           \
 			.o. @\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-variant-tags.$*\"             \

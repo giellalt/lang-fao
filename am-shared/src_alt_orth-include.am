@@ -69,7 +69,6 @@ define alt_orth_desc_analysers
 analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-adv_comp-tags.%             \
 					filters/remove-dialect-tags.%              \
-					filters/remove-norm-comp-tags.%            \
 					filters/remove-number-string-tags.%        \
 					filters/remove-usage-tags.%                \
 					filters/remove-semantic-tags.%             \
@@ -84,7 +83,6 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-adv_comp-tags.$$*\"              \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
-			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
 			.o. @\"filters/remove-semantic-tags.$$*\"              \
@@ -104,7 +102,6 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-adv_comp-tags.%             \
 					filters/remove-dialect-tags.%              \
-					filters/remove-norm-comp-tags.%            \
 					filters/remove-number-string-tags.%        \
 					filters/remove-usage-tags.%                \
 					filters/remove-semantic-tags.%             \
@@ -119,7 +116,6 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-adv_comp-tags.$$*\"              \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
-			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
 			.o. @\"filters/remove-semantic-tags.$$*\"              \
@@ -143,7 +139,6 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-adv_comp-tags.%             \
 					filters/remove-dialect-tags.%              \
 					filters/remove-variant-tags.%              \
-					filters/remove-norm-comp-tags.%            \
 					filters/remove-number-string-tags.%        \
 					filters/remove-usage-tags.%                \
 					filters/remove-error-strings.%             \
@@ -159,7 +154,6 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 			    @\"filters/remove-adv_comp-tags.$$*\"              \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-variant-tags.$$*\"               \
-			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
 			.o. @\"filters/remove-semantic-tags.$$*\"              \
@@ -180,7 +174,6 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-adv_comp-tags.%             \
 					filters/remove-dialect-tags.%              \
 					filters/remove-variant-tags.%              \
-					filters/remove-norm-comp-tags.%            \
 					filters/remove-number-string-tags.%        \
 					filters/remove-usage-tags.%                \
 					filters/remove-error-strings.%             \
@@ -196,7 +189,6 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 			    @\"filters/remove-adv_comp-tags.$$*\"              \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-variant-tags.$$*\"               \
-			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
 			.o. @\"filters/remove-semantic-tags.$$*\"              \
@@ -228,7 +220,6 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/remove-hyphenation-marks.%         \
 					filters/remove-infl_deriv-borders.%        \
 					filters/remove-word-boundary.%             \
-					filters/remove-norm-comp-tags.%            \
 					filters/remove-number-string-tags.%        \
 					filters/remove-orthography-tags.%          \
 					filters/remove-Orth_IPA-strings.%          \
@@ -244,7 +235,6 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/make-optional-error-tags.$$*\"          \
 			.o. @\"filters/make-optional-adv_comp-tags.$$*\"       \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
-			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"             \
@@ -271,7 +261,6 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/remove-hyphenation-marks.%         \
 					filters/remove-infl_deriv-borders.%        \
 					filters/remove-word-boundary.%             \
-					filters/remove-norm-comp-tags.%            \
 					filters/remove-number-string-tags.%        \
 					filters/remove-orthography-tags.%          \
 					filters/remove-Orth_IPA-strings.%          \
@@ -287,7 +276,6 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/make-optional-error-tags.$$*\"          \
 			.o. @\"filters/make-optional-adv_comp-tags.$$*\"       \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
-			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"             \
@@ -316,7 +304,6 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/remove-hyphenation-marks.%         \
 					filters/remove-infl_deriv-borders.%        \
 					filters/remove-word-boundary.%             \
-					filters/remove-norm-comp-tags.%            \
 					filters/remove-number-string-tags.%        \
 					filters/remove-usage-tags.%                \
 					filters/remove-orthography-tags.%          \
@@ -332,7 +319,6 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/make-optional-semantic-tags.$$*\"       \
 			.o. @\"filters/make-optional-adv_comp-tags.$$*\"       \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
-			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
 			.o. @\"filters/remove-error-strings.$$*\"              \
@@ -359,7 +345,6 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/remove-hyphenation-marks.%         \
 					filters/remove-infl_deriv-borders.%        \
 					filters/remove-word-boundary.%             \
-					filters/remove-norm-comp-tags.%            \
 					filters/remove-number-string-tags.%        \
 					filters/remove-usage-tags.%                \
 					filters/remove-orthography-tags.%          \
@@ -375,7 +360,6 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/make-optional-semantic-tags.$$*\"       \
 			.o. @\"filters/make-optional-adv_comp-tags.$$*\"       \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
-			.o. @\"filters/remove-norm-comp-tags.$$*\"             \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
 			.o. @\"filters/remove-error-strings.$$*\"              \

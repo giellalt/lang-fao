@@ -34,7 +34,6 @@ GIELLA_FILTER_CORE_REGEX_SRCS=\
 				remove-adv_comp-tags.regex                \
 				remove-homonymy-tags.regex                \
 				remove-mwe-tags.regex                     \
-				remove-norm-comp-tags.regex               \
 				remove-number-string-tags.regex           \
 				remove-orig_lang-tags.regex               \
 				remove-orthography-tags.regex             \
@@ -92,8 +91,8 @@ GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS=\
                   remove-error-tags.regex           \
                   remove-error-strings.regex        \
                   remove-dialect-tags.regex         \
-                  remove-area-tags.regex         \
-                  $(DIALECT_REGEXES) \
+                  remove-area-tags.regex            \
+                  $(DIALECT_REGEXES)                \
                   $(AREA_REGEXES)
 
 # 3) GTD Core xfscript filter files:

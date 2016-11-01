@@ -1,4 +1,8 @@
-$Rev: 142532 $
+$Rev: 142542 $
+Forgot one file in the previous commit - now that filter is completely removed
+from the core and template, and all language-independent processing.
+
+r142532:
 Moved the remove-norm-comp-tags.regex file from the giella-shared directory to
 the languages actually using it, and consequently removed it from the
 language-independent build files.

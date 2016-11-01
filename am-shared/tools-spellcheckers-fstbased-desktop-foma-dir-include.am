@@ -37,7 +37,6 @@ generator-fomaspeller-gt-norm.hfst: \
 		$(top_builddir)/src/filters/remove-dialect-tags.hfst             \
 		$(top_builddir)/src/filters/remove-homonymy-tags.hfst            \
 		$(top_builddir)/src/filters/remove-variant-tags.hfst             \
-		$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
 		$(top_builddir)/src/filters/remove-number-string-tags.hfst       \
 		$(top_builddir)/src/filters/remove-usage-tags.hfst               \
 		$(top_builddir)/src/filters/remove-word-boundary.hfst
@@ -45,7 +44,6 @@ generator-fomaspeller-gt-norm.hfst: \
 		    @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"       \
 		.o. @\"$(top_builddir)/src/filters/remove-homonymy-tags.hfst\"      \
 		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"       \
-		.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"     \
 		.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\" \
 		.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"         \
 		.o. @\"$<\" \

@@ -21,21 +21,24 @@ HFST_REGEXP2FST_FLAGS="--xerox-composition=ON"
 ####### Source file and target defs: ########
 GIELLA_DESKTOPSPELLER_FILTER_SRCS=
 
-# Filters from src/filters/ that needs to be converted to another fst format to
-# ensure proper speller builds when using fst formats other than the default:
-GIELLA_SRC_FILTERS=remove-word-boundary.hfst \
-                   remove-usage-tags.hfst
+# Source files copied from src/filters/ OR from
+# $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters:
+GIELLA_SRC_FILTERS=remove-word-boundary.regex \
+                   remove-usage-tags.regex
 
 # These will be included in the distribution:
-EXTRA_DIST=$(GIELLA_DESKTOPSPELLER_FILTER_SRCS)
+EXTRA_DIST=$(GIELLA_DESKTOPSPELLER_FILTER_SRCS) \
+        $(GIELLA_LOCAL_DESKTOPSPELLER_FILTER_SRCS)
 
 GIELLA_DESKTOPSPELLER_FILTER_ALL_SRCS=\
         $(GIELLA_DESKTOPSPELLER_FILTER_SRCS) \
         $(GIELLA_LOCAL_DESKTOPSPELLER_FILTER_SRCS) \
-        $(GENERATED_REGEXES)
+        $(GENERATED_REGEXES) \
+        $(GIELLA_SRC_FILTERS) \
+        $(GT_LOCAL_COPY_FILTER_SRCS)
 
 # This is what we build:
-noinst_DATA=$(GIELLA_DESKTOPSPELLER_FILTER_TARGETS) $(GIELLA_FILTERS_TO_CONVERT)
+noinst_DATA=$(GIELLA_DESKTOPSPELLER_FILTER_TARGETS)
 
 # Automatically detect the targets to be built:
 GIELLA_DESKTOPSPELLER_FILTER_TARGETS=
@@ -51,23 +54,27 @@ GIELLA_DESKTOPSPELLER_FILTER_TARGETS+=\
         $(patsubst %.regex,%.xfst,$(GIELLA_DESKTOPSPELLER_FILTER_ALL_SRCS))
 endif # CAN_XFST
 
-GIELLA_FILTERS_TO_CONVERT=$(GIELLA_LOCAL_SRC_FILTERS) $(GIELLA_SRC_FILTERS)
-
-$(GIELLA_FILTERS_TO_CONVERT): \
-%.hfst: $(top_builddir)/src/filters/%.hfst
-	$(AM_V_FST2FST)$(HFST_FST2FST) --format=openfst-tropical -i $< -o $@
-
+if CAN_FOMA
+GIELLA_DESKTOPSPELLER_FILTER_TARGETS+=\
+        $(patsubst %.regex,%.foma,$(GIELLA_DESKTOPSPELLER_FILTER_ALL_SRCS))
+endif # CAN_FOMA
 endif # WANT_SPELLERS
 
-####### Copy regex files from the GTD core if not found locally: ########
+####### Copy regex files from the Giella core if not found locally: ########
 %.regex: $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/desktop/filters/%.regex
+	$(AM_V_CP)cp -f $< $@
+
+%.regex: $(GIELLA_SHARED)/all_langs/src/filters/%.regex
+	$(AM_V_CP)cp -f $< $@
+
+####### ... OR from the src/filters/ dir
+%.regex: $(top_srcdir)/src/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 
 ##########################################
 # General build rules included from here:#
 
 include $(top_srcdir)/am-shared/regex-include.am
-include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

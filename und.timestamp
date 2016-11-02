@@ -1,4 +1,9 @@
-$Rev: 142638 $
+$Rev: 142732 $
+Cleaner build steps for local speller filters - the regex is now copied in and
+compiled according to the fst-format of the speller as opposed to earlier, where
+the binary fst was compiled and then transformed.
+
+r142638:
 Move CmpNP processing from general speller processing to each language.
 
 r142614:

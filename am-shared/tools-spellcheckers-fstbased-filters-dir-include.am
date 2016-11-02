@@ -47,10 +47,18 @@ if CAN_XFST
 GT_FSTSPELLER_FILTER_TARGETS+=\
         $(patsubst %.regex,%.xfst,$(GT_FSTSPELLER_FILTER_ALL_SRCS))
 endif # CAN_XFST
+
+if CAN_FOMA
+GT_FSTSPELLER_FILTER_TARGETS+=\
+        $(patsubst %.regex,%.foma,$(GT_FSTSPELLER_FILTER_ALL_SRCS))
+endif # CAN_FOMA
 endif # WANT_SPELLERS
 
-####### Copy regex files from the GTD core if not found locally: ########
+####### Copy regex files from the Giella core if not found locally: ########
 %.regex: $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters/%.regex
+	$(AM_V_CP)cp -f $< $@
+
+%.regex: $(GIELLA_SHARED)/all_langs/src/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 
 ####### ... OR from the src/filters/ dir

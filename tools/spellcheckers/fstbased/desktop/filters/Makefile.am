@@ -9,9 +9,9 @@
 # List any local additions here:
 GIELLA_LOCAL_DESKTOPSPELLER_FILTER_SRCS=
 
-# List of language-specific src/filters/ fst's to be converted to the fst
-# format used for spellers when using fst formats other than the default:
-GIELLA_LOCAL_SRC_FILTERS=
+# Source files copied from src/filters/ OR from
+# $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters:
+GT_LOCAL_COPY_FILTER_SRCS=
 
 # Only build these things if speller fst's are enabled:
 if WANT_SPELLERS

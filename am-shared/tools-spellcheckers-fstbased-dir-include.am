@@ -34,13 +34,9 @@ noinst_DATA=$(GT_COMMON_SPELLER_HFST)
 generator-fstspeller-gt-norm.tmp.hfst: \
 			../$(GT_SPELLER_SRC_HFST) \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst    \
-			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst   \
-			$(top_builddir)/src/filters/convert_to_flags-CmpNP-tags.hfst \
-			$(top_builddir)/src/filters/split-CmpNP-tags.hfst
+			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex                                        \
-			@\"$(top_builddir)/src/filters/convert_to_flags-CmpNP-tags.hfst\" \
-		.o. @\"$(top_builddir)/src/filters/split-CmpNP-tags.hfst\"            \
-		.o. @\"$<\"                                                           \
+			@\"$<\"                                                           \
 		.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"    \
 		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"   \
 		; \n\

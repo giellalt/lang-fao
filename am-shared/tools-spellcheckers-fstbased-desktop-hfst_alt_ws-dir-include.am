@@ -20,8 +20,6 @@ if HAVE_ALT_WSS
 if CAN_HFST
 if WANT_SPELLERS
 
-# Define variables for targets to build the prerequisites for zhfst files:
-if WANT_HFST_DESKTOP_SPELLER
 GT_ALT_WS_ERRMODELS=$(shell for ld in $(ALT_WSS); do\
     echo "errmodel.$$ld.hfst" ; \
 done)
@@ -34,7 +32,9 @@ ALT_WS_ZHFST_FILES=$(shell for ld in $(ALT_WSS); do\
     echo "$(GTLANG2)-$$ld.zhfst" ; \
 done)
 ALT_WS_ZHFST_BASENAMES=$(basename $(ALT_WS_ZHFST_FILES))
-endif # WANT_HFST_DESKTOP_SPELLER
+
+# Only build final speller packages if is enabled (default=yes):
+if WANT_HFST_DESKTOP_SPELLER
 
 # Variables for the final installable packages:
 if CAN_LOCALSYNC
@@ -62,6 +62,7 @@ MACVOIKKOFILE+=$(ALT_WS_MACVOIKKO_STEM)
 
 endif # CAN_LOCALSYNC
 
+endif # WANT_HFST_DESKTOP_SPELLER
 endif # WANT_SPELLERS
 endif # CAN_HFST
 endif # HAVE_ALT_WSS

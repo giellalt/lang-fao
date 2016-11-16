@@ -1,4 +1,9 @@
-$Rev: 142732 $
+$Rev: 143635 $
+Renamed the option --enable-hfst-dekstop-spellers (added plural 's'), and
+changed the behavior of it so that when disabled, zhfst files are still built
+(and only those).
+
+r142732:
 Cleaner build steps for local speller filters - the regex is now copied in and
 compiled according to the fst-format of the speller as opposed to earlier, where
 the binary fst was compiled and then transformed.

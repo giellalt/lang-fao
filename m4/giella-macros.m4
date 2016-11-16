@@ -655,17 +655,18 @@ AC_ARG_ENABLE([spellers],
               [enable_spellers=no])
 AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
 
-# Enable hfst desktop spellers - default is 'yes' (but dependent on --enable-spellers)
-AC_ARG_ENABLE([hfst-dekstop-speller],
-              [AS_HELP_STRING([--enable-hfst-dekstop-speller],
+# Enable hfst desktop spellers - default is 'yes' (but dependent on
+# --enable-spellers)
+AC_ARG_ENABLE([hfst-dekstop-spellers],
+              [AS_HELP_STRING([--enable-hfst-dekstop-spellers],
                               [build hfst desktop spellers (dependent on --enable-spellers) @<:@default=yes@:>@])],
-              [enable_desktop_hfstspeller=$enableval],
-              [enable_desktop_hfstspeller=yes])
-AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_desktop_hfstspeller=no],
+              [enable_desktop_hfstspellers=$enableval],
+              [enable_desktop_hfstspellers=yes])
+AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_desktop_hfstspellers=no],
       [AS_IF([test "x$ZIP" = "xfalse"],
-             [enable_desktop_hfstspeller=no
+             [enable_desktop_hfstspellers=no
               AC_MSG_ERROR([zip missing - required for desktop zhfst spellers])])])
-AM_CONDITIONAL([WANT_HFST_DESKTOP_SPELLER], [test "x$enable_desktop_hfstspeller" != xno])
+AM_CONDITIONAL([WANT_HFST_DESKTOP_SPELLER], [test "x$enable_desktop_hfstspellers" != xno])
 
 # Enable minimised fst-spellers by default:
 AC_ARG_ENABLE([minimised-spellers],
@@ -857,9 +858,9 @@ cat<<EOF
   * generated documentation enabled: $gt_prog_docc
 
   -- proofing tools (off by default): --
-  * spellers enabled: $enable_spellers
+  * spellers (zhfst files) enabled: $enable_spellers
     * desktop spellers:
-      * hfst speller enabled: $enable_desktop_hfstspeller
+      * installable packages enabled: $enable_desktop_hfstspellers
       * foma speller enabled: $enable_fomaspeller
     * mobile spellers:
       * hfst speller enabled: $enable_mobile_hfstspeller

@@ -177,8 +177,6 @@ if WANT_SPELLERS
 if CAN_HFST
 #GT_ERRMODELS+=errmodel.edit-distance-1.hfst
 
-# Only build speller if it is enabled (default=yes)
-if WANT_HFST_DESKTOP_SPELLER
 GT_ERRMODELS+=errmodel.default.hfst
 # libvoikko can't yet handle multiple error models - do NOT include this line:
 # errmodel.ocr.hfst
@@ -190,7 +188,6 @@ voikkosharedir=$(datadir)/voikko/3/
 #!					installable
 voikkoshare_DATA=$(GT_SPELLING_HFST) $(ALT_WS_ZHFST_FILES) $(ALT_ORTH_ZHFST_FILES)
 
-endif # WANT_HFST_DESKTOP_SPELLER
 endif # CAN_HFST
 endif # WANT_SPELLERS
 

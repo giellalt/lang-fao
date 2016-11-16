@@ -50,6 +50,9 @@ INST_FILES=
 if WANT_SPELLERS
 if CAN_HFST
 
+# Only build final speller packages if is enabled (default=yes):
+if WANT_HFST_DESKTOP_SPELLER
+
 # Generate target file name dynamically based on the variables LOVOIKKO_VERSION
 # and GTLANG2. LO-voikko 5.0+
 OXT_FILES+=$(GTLANG2)_LO-voikko-$(LOVOIKKO_VERSION).oxt
@@ -107,6 +110,8 @@ INST_FILES+=$(OXT_FILES) \
 endif # CAN_REMOTE_SYNC
 
 endif # CAN_LOCALSYNC
+
+endif # WANT_HFST_DESKTOP_SPELLER
 endif # CAN_HFST
 endif # WANT_SPELLERS
 

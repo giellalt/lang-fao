@@ -18,7 +18,10 @@ ENABLE_CORPUS_WEIGHTS=no
 # big without improving the suggestion quality in a noticable way. A starting
 # point could be to only include word forms occurring at least twice. Try
 # different values to find the best compromise between fst size and suggestion
-# quality.
+# quality. Look at the file:
+# tools/spellcheckers/fstbased/desktop/spellercorpus.uniq.txt
+# and look for a relevant cut-off line, typically somewhere in the two occurence
+# section.
 CORPUS_SIZE=
 
 ### BEGIN: Local build rules: *.hfst: *.tmp.hfst ###

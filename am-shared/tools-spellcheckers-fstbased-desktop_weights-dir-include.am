@@ -90,15 +90,30 @@ $(CORPUSNAME).clean.txt: \
 # Build an fst with surface form weights that also handles compounds:
 %.surfweights.hfst: %.surfs.hfst \
                     word-boundary.hfst
-	$(AM_V_HCONCAT)$(HFST_CONCATENATE) $(HFST_FLAGS) word-boundary.hfst $< \
-		| $(HFST_REPEAT) $(HFST_FLAGS) -f 0 -t inf \
-		| $(HFST_CONCATENATE) $< - \
-		| $(HFST_MINIMIZE) -o $@
+	$(AM_V_HMINIM)$(HFST_MINIMIZE) $(HFST_FLAGS) -i $< -o $@
+# Commented out the repetition build step - we only want to promote the compouns
+# actually found in the corpus.
+#	$(AM_V_HCONCAT)$(HFST_CONCATENATE) $(HFST_FLAGS) word-boundary.hfst $< \
+#		| $(HFST_REPEAT) $(HFST_FLAGS) -f 0 -t inf \
+#		| $(HFST_CONCATENATE) $< - \
+#		| $(HFST_MINIMIZE) -o $@
+
+# Remove word forms covered by the corpus:
+unitweighted_limited.hfst: generator-desktopspeller-gt-norm-freq_weighted.hfst \
+							$(UW_SPELLER_SRC)
+	$(AM_V_FST2FST)$(HFST_FST2FST) --format=foma -i $(UW_SPELLER_SRC) -o $@.tmpfoma.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) --format=foma -i $< -o $<.tmpfoma.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+	~[ @\"$<.tmpfoma.hfst\".u ] \
+	.o. @\"$@.tmpfoma.hfst\" \
+	; \n\
+	save stack $@\n\
+	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY) --format=foma
 
 # Add the unit weight to each unit in compounds, both dynamic and lexical:
+#unitweighted.hfst: unitweighted_limited.hfst
 unitweighted.hfst: $(UW_SPELLER_SRC) \
-                   $(UNITWEIGHT)         \
-                   $(srcdir)/weighting/word-boundary.txt
+                   $(UNITWEIGHT)
 	$(AM_V_REWEIGHT)$(HFST_FST2FST) --format=openfst-tropical -i $< \
 		| $(HFST_REWEIGHT) $(HFST_FLAGS) \
 		-e -a $$(cat $(UNITWEIGHT)) \

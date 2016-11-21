@@ -31,7 +31,6 @@
 # hfst-disjunct
 # hfst-fst2strings
 # hfst-info
-# hfst-minimize
 # hfst-minus
 # hfst-multiply
 # hfst-pair-test
@@ -64,6 +63,11 @@ AM_V_CONJCT_0   = @echo "  HCONJCT  $@";
 AM_V_FST2FST    = $(AM_V_FST2FST_@AM_V@)
 AM_V_FST2FST_   = $(AM_V_FST2FST_@AM_DEFAULT_V@)
 AM_V_FST2FST_0  = @echo "  HFST2FST $@";
+
+# hfst-minimize
+AM_V_HMINIM     = $(AM_V_HMINIM_@AM_V@)
+AM_V_HMINIM_    = $(AM_V_HMINIM_@AM_DEFAULT_V@)
+AM_V_HMINIM_0   = @echo "  HMINIM   $@";
 
 # hfst-fst2txt:
 AM_V_FST2TXT    = $(AM_V_FST2TXT_@AM_V@)

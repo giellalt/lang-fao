@@ -1,4 +1,9 @@
-$Rev: 143980 $
+$Rev: 144287 $
+Removed the removal for dialect and variant tags from the grammar checker
+analyser, the information can be useful when generating suggestions for
+corrections.
+
+r143980:
 Removed repetition of the frequency weighted fst. The goal was to promote
 compounds where each part was already seen in the corpus, but it made the
 speller bigger and slower, and actually decreased suggestion quality slightly.

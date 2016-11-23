@@ -165,19 +165,15 @@ analyser-gramcheck-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
 					filters/remove-hyphenation-marks.%        \
 					filters/remove-infl_deriv-borders.%       \
 					filters/remove-word-boundary.%            \
-					filters/remove-dialect-tags.%             \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-orthography-tags.%         \
 					filters/remove-usage-tags.%               \
-					filters/remove-variant-tags.%             \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			    @\"filters/remove-dialect-tags.$*\"             \
-			.o. @\"filters/remove-orig_lang-tags.$*\"           \
+				@\"filters/remove-orig_lang-tags.$*\"           \
 			.o. @\"filters/remove-usage-tags.$*\"               \
-			.o. @\"filters/remove-variant-tags.$*\"             \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"$<\"                                         \

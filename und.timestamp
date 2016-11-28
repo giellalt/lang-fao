@@ -1,4 +1,8 @@
-$Rev: 144287 $
+$Rev: 144553 $
+Removed the bash hack to add a css processing instruction - it is done by the
+perl script writing the xml file.
+
+r144287:
 Removed the removal for dialect and variant tags from the grammar checker
 analyser, the information can be useful when generating suggestions for
 corrections.

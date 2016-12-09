@@ -182,6 +182,10 @@ for f in $fsttype; do
 			if test -f "$generatorfile.$suff"; then
 				generator=$generatorfile.$suff
 				let "transducer_found += 1"
+				if test "$suff" == "hfstol" ; then
+					lookuptool=$fastlookup
+				fi
+				break
 			# Generation tests for rule fst's:
 			elif test -f "$bare_fst_file.lookup.$suff"; then
 				generator=$bare_fst_file.lookup.$suff

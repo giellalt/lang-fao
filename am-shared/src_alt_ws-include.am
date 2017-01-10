@@ -55,6 +55,7 @@ endif # HAVE_ALT_WSS
 ####### alternate writing systems:                   ########
 define alt_ws_desc_analysers
 analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
+					filters/remove-area-tags.%                 \
 					filters/remove-adv_comp-tags.%             \
 					filters/remove-dialect-tags.%              \
 					filters/remove-number-string-tags.%        \
@@ -70,6 +71,7 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-adv_comp-tags.$$*\"              \
+			.o. @\"filters/remove-area-tags.$$*\"                  \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
@@ -91,6 +93,7 @@ $(foreach alt_ws,$(ALT_WSS),$(eval $(call alt_ws_desc_analysers,$(alt_ws))))
 
 define alt_ws_norm_analysers
 analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
+					filters/remove-area-tags.%                 \
 					filters/remove-adv_comp-tags.%             \
 					filters/remove-dialect-tags.%              \
 					filters/remove-variant-tags.%              \
@@ -107,6 +110,7 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-adv_comp-tags.$$*\"              \
+			.o. @\"filters/remove-area-tags.$$*\"                  \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-variant-tags.$$*\"               \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
@@ -136,6 +140,7 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/make-optional-semantic-tags.%      \
 					filters/make-optional-error-tags.%         \
 					filters/make-optional-adv_comp-tags.%      \
+					filters/remove-area-tags.%                 \
 					filters/remove-dialect-tags.%              \
 					filters/remove-hyphenation-marks.%         \
 					filters/remove-infl_deriv-borders.%        \
@@ -154,6 +159,7 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/make-optional-semantic-tags.$$*\"       \
 			.o. @\"filters/make-optional-error-tags.$$*\"          \
 			.o. @\"filters/make-optional-adv_comp-tags.$$*\"       \
+			.o. @\"filters/remove-area-tags.$$*\"                  \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
@@ -179,6 +185,7 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/make-optional-variant-tags.%       \
 					filters/make-optional-semantic-tags.%      \
 					filters/make-optional-adv_comp-tags.%      \
+					filters/remove-area-tags.%                 \
 					filters/remove-dialect-tags.%              \
 					filters/remove-hyphenation-marks.%         \
 					filters/remove-infl_deriv-borders.%        \
@@ -197,6 +204,7 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/make-optional-variant-tags.$$*\"        \
 			.o. @\"filters/make-optional-semantic-tags.$$*\"       \
 			.o. @\"filters/make-optional-adv_comp-tags.$$*\"       \
+			.o. @\"filters/remove-area-tags.$$*\"                  \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \

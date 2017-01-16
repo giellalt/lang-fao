@@ -53,7 +53,7 @@ while test ! -x $relpath/$testrunner ; do
     relpath="$relpath/.."
 #    echo relpath: $relpath     # debug
     if test "$(cd $relpath && pwd)" = "/" ; then
-        echo "run-yaml-testcases.sh: No test runner found!"
+        echo "$0: No test runner found!"
         exit 77
     fi
 done
@@ -72,8 +72,11 @@ else
     suffix="$halftest.yaml"
     if test "$halftest" == "ana"; then
         summaryhalftext="analysing "
-    else
+    elif test "$halftest" == "gen"; then
         summaryhalftext="generating "
+    else
+        echo "No suitable tests found for $halftest tests."
+        exit 1;
     fi
 fi
 

@@ -80,8 +80,10 @@ else
     fi
 fi
 
-testfiles=$(find $srcdir/$yaml_file_subdir -name "*_$transducer.$suffix")
-if test "$testfiles" == ""; then
+# The "*_$transducer.*.$suffix" pattern is for fst-specific yaml files:
+testfiles=$(find $srcdir/$yaml_file_subdir -name "*_$transducer.$suffix" -or \
+                                           -name "*_$transducer.*.$suffix")
+if test "x$testfiles" == "x"; then
     echo
     echo \
     "** No YAML files matching: $srcdir/$yaml_file_subdir/*_$transducer.$suffix"
@@ -91,12 +93,43 @@ fi
 # One empty line in the beginning:
 echo ""
 i=0
-# Loop over the available yaml files, and run the tests:
+# Loop over the available yaml files (all fst types), and run the tests:
 for file in ${srcdir}/$yaml_file_subdir/*_$transducer.$suffix; do
     (( i += 1 ))
     leadtext=$(echo "YAML test $i: ")
     source ./$relpath/run-morph-tester.sh \
-        $transducer $file $relpath $halftest $leadtext
+        $transducer $file $relpath $halftest all $leadtext
+done
+
+# Machinery to be able to handle yaml tests for specific fst technologies:
+# Online documentation used for help:
+# http://wiki.bash-hackers.org/syntax/pe
+# https://coderwall.com/p/mlyhlg/prefix-all-elements-of-a-bash-variable-with-a-string
+# http://stackoverflow.com/questions/9293887/in-bash-how-do-i-convert-a-space-delimited-string-into-an-array
+# http://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash
+fsttypes="hfst foma xfst"
+# Turn the list into an array:
+arr=($(echo ${fsttypes}))
+# Create an array of negated types, ie types prepended with ~ as in '~xfst':
+nontypes=${arr[@]/#/\~}
+# Make an array of both the positive and negative fst types:
+fsttypes=($(echo "$fsttypes $nontypes"))
+# Prepend each element in the array with the transducer name:
+filepart1=(${fsttypes[@]/#/${transducer}\.})
+# Then add the suffix from the earlier processing:
+filepart2=(${filepart1[@]/%/\.${suffix}})
+# Finally prepend the fileglob including directories:
+filepattern=(${filepart2[@]/#/${srcdir}\/${yaml_file_subdir}\/*_})
+
+# Loop over the available yaml files (specific fst types), and run the tests:
+for file in ${filepattern[@]}; do
+    if ! test -f "$file" ; then
+        continue
+    fi
+    (( i += 1 ))
+    leadtext=$(echo "YAML test $i: ")
+    source ./$relpath/run-morph-tester.sh \
+        $transducer $file $relpath $halftest specified $leadtext
 done
 
 totalpasses=$( echo $( cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f1 \

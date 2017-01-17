@@ -1,4 +1,10 @@
-$Rev: 146706 $
+$Rev: 146741 $
+Added option to specify in a yaml filename that it should only be tested against
+a specific technology or not, by specifying one of .foma, .hfst or .xfst before
+the suffix part (before [.gen].yaml), and prefixed with '~' if negated
+(i.e. .~xfst for NOT running it against Xerox).
+
+r146706:
 Slightly more robust yaml testing code.
 
 r146700:

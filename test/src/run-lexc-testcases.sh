@@ -82,7 +82,7 @@ for file in ${source_files}; do
 		    
 		    # Run the actual tests for the given fst:
 			source $relpath/run-morph-tester.sh \
-				$fst $file $relpath $testtype $leadtext
+				$fst $file $relpath $testtype all $leadtext
 #		    echo "The $fst testing is done using $testtype testing."    # debug
 
 		    # Reset testtype to default:

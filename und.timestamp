@@ -1,4 +1,9 @@
-$Rev: 146741 $
+$Rev: 146786 $
+Fixed regression introduced in the previous commit: one-sided tests where
+included when looking for test data, causing a subsequent python fail when no
+actual test data was found. Fixed by using a stricter file name pattern.
+
+r146741:
 Added option to specify in a yaml filename that it should only be tested against
 a specific technology or not, by specifying one of .foma, .hfst or .xfst before
 the suffix part (before [.gen].yaml), and prefixed with '~' if negated

@@ -16,22 +16,27 @@
 # This file must be processed by ./configure before being used.
 
 # Wrong usage - short instruction:
-if ! test $# -ge 2 ; then
+if ! test $# -ge 5 ; then
     echo
     echo "Usage: $0 TRANSDUCERTYPE TESTFILE RELPATH HALFTEST LEADTEXT"
     echo
-    echo "were TRANSDUCERTYPE is the type of transducer targeted for testing,"
-    echo "gt-norm, gt-desc, etc., and the optional TESTFILE is either a LexC"
-    echo "file or a Yaml test data file, both containing test data."
-    echo "RELPATH gives the relative path between the calling"
-    echo "script and this script, and is used several places to"
-    echo "find the correct location of required files."
-    echo "HALFTEST is a string with one of the values 'ana', 'gen' or 'full',"
-    echo "indicating that only the analyser, only the generator, or both are"
-    echo "tested, respectively."
-    echo "LEADTEXT is typically the number of the test in a test set loop."
+    echo "were:"
+    echo " TRANSDUCERTYPE is the type of transducer targeted for testing,"
+    echo "          gt-norm, gt-desc, etc., and the optional"
+    echo " TESTFILE is either a LexC file or a Yaml test data file, both"
+    echo "          containing test data."
+    echo " RELPATH  gives the relative path between the calling"
+    echo "          script and this script, and is used several places to"
+    echo "          find the correct location of required files."
+    echo " HALFTEST is a string with one of the values 'ana', 'gen' or 'full',"
+    echo "          indicating that only the analyser, only the generator,"
+    echo "          or both are tested, respectively."
+    echo " FSTTEST  specifies whether all or only some fst types should be"
+    echo "          tested. Possible values are 'all' and 'specified'."
+    echo " LEADTEXT is typically the number of the test in a test set loop."
+    echo
     echo "LEADTEXT can contain spaces, it is effectively everything after the"
-    echo "second argument."
+    echo "fourth argument."
     echo
     exit 77
 fi
@@ -41,7 +46,8 @@ transducer=$1
 testfile=$2
 relpath=$3
 halftest=$4
-shift 4
+fsttest=$5
+shift 5
 leadtext="$@"
 
 testfileshort=$(echo "$(basename \
@@ -73,7 +79,7 @@ fsttype=
 @CAN_XFST_TRUE@fsttype="$fsttype xfst"
 @CAN_FOMA_TRUE@fsttype="$fsttype foma"
 
-# Exit if both hfst and xerox have been shut off:
+# Exit if all fst types have been shut off:
 if [[ "x$fsttype" == "x" ]]; then
     echo "All transducer types have been shut off at configure time."
     echo "Nothing to test. SKIPPED."
@@ -90,6 +96,22 @@ elif test "$halftest" == "gen"; then
 else
     halftestoption=""
 fi
+
+if test "x$fsttest" == "xspecified"; then
+    if test "$halftest" == "ana" \
+         -o "$halftest" == "gen"; then
+        filebasename=$(basename -s .yaml $testfile)
+        removed_halftestsuff=${filebasename%*.}
+        testfst=${removed_halftestsuff#*.}
+    else
+        filebasename=$(basename -s .yaml $testfile)
+        testfst=${filebasename#*.}
+    fi
+fi
+
+# Debugging only; the variable contains the string of the fst type to be the
+# only one included (e.g. "hfst") or the one to be excluded (e.g. "~xfst"):
+# echo "testfst: $testfst"
 
 function run_tests() {
 # --output final/terse/compact/normal - OR:
@@ -135,22 +157,35 @@ transducer_found=0
 
 # Loop over the transducer types first - we test both hfst and xfst if found:
 for f in $fsttype; do
+	# Check whether to test only against certain fst types:
+	if test "$fsttest" == "specified"; then
+	   # test if $f is identical to the requested type:
+	   if test "$f" == "$testfst"; then
+	       true
+	   # or different from the negated type:
+	   elif test "~$f" != "$testfst"; then
+	       true
+	   # else go to the next fst type:
+	   else
+	       continue
+	   fi
+	fi
 	# Remember to empty the variables between each for loop:
 	analyser=""
 	generator=""
 	if test $f == "xfst"; then
 		lookuptool="@LOOKUP@ -flags mbTT"
 		section="xerox"
-		suffix="xfst"
+		fstsuffix="xfst"
 	elif test $f == "foma"; then
 		lookuptool="@FLOOKUP@"
 		section="xfst"
-		suffix="foma"
+		fstsuffix="foma"
 	elif test $f == "hfst"; then
 		lookuptool="@HFST_LOOKUP@"
 		fastlookup="@HFST_OPTIMIZED_LOOKUP@"
 		section="hfst"
-		suffix="hfstol hfst"
+		fstsuffix="hfstol hfst"
 	else
 	    let "Fail += 1"
 		echo "FAIL: Unknown fst type! FST=$f"
@@ -159,7 +194,7 @@ for f in $fsttype; do
 	# Check whether the actual fst's exist, run the tests if true, FAIL if not:
 	# First check for analysis tests only:
     if test "$halftest" == "ana" ; then
-		for suff in $suffix; do
+		for suff in $fstsuffix; do
 			if test -f "$analyserfile.$suff"; then
 				analyser=$analyserfile.$suff
 				let "transducer_found += 1"
@@ -177,7 +212,7 @@ for f in $fsttype; do
 		fi
 	# Then check for generation tests only:
 	elif test "$halftest" == "gen" ; then
-		for suff in $suffix; do
+		for suff in $fstsuffix; do
 			# Regular word form generation tests:
 			if test -f "$generatorfile.$suff"; then
 				generator=$generatorfile.$suff
@@ -204,7 +239,7 @@ for f in $fsttype; do
 		fi
 	# Then check for speller acceptor tests:
     elif test "$halftest" == "speller" ; then
-		for suff in $suffix; do
+		for suff in $fstsuffix; do
 			if test -f "$bare_fst_file.$suff"; then
 				analyser=$bare_fst_file.$suff
 				let "transducer_found += 1"
@@ -220,7 +255,7 @@ for f in $fsttype; do
 		fi
 	# Finally check the full analysis + generation tests:
 	elif test "$halftest" == "full" ; then
-		for suff in $suffix; do
+		for suff in $fstsuffix; do
 			if test -f "$analyserfile.$suff"    \
 				 -a -f "$generatorfile.$suff"; then
 				analyser=$analyserfile.$suff

@@ -1,4 +1,9 @@
-$Rev: 146786 $
+$Rev: 146815 $
+Fixed logical error in the handling of negated specified fst handling in yaml
+tests (e.g. ~xfst) - the test didn't work, and the yaml file was run when not
+intended.
+
+r146786:
 Fixed regression introduced in the previous commit: one-sided tests where
 included when looking for test data, causing a subsequent python fail when no
 actual test data was found. Fixed by using a stricter file name pattern.

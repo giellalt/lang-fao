@@ -159,12 +159,16 @@ transducer_found=0
 for f in $fsttype; do
 	# Check whether to test only against certain fst types:
 	if test "$fsttest" == "specified"; then
-	   # test if $f is identical to the requested type:
+	   # run yaml test if $f is identical to the requested type:
 	   if test "$f" == "$testfst"; then
 	       true
 	   # or different from the negated type:
-	   elif test "~$f" != "$testfst"; then
-	       true
+	   elif [[ "$testfst" == ~* ]]; then
+	       # Remove the tilde:
+	       bare_testfst=${testfst#\~}
+	       if test "x$f" != "x$bare_testfst"; then
+	           true
+	       fi
 	   # else go to the next fst type:
 	   else
 	       continue

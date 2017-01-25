@@ -132,7 +132,7 @@ sudo make install # optional, only needed if installed
 
 # Identify the version of giella-core:
 AC_PATH_PROG([GIELLA_CORE_VERSION], [gt-version.sh], [no],
-    [$GTCORE/scripts$PATH_SEPARATOR$GTHOME/gtcore/scripts$PATH_SEPARATOR$PATH])
+    [$GTCORE/scripts$PATH_SEPARATOR$GTHOME/giella-core/scripts$PATH_SEPARATOR$PATH])
 AC_MSG_CHECKING([the version of the Giella Core])
 AS_IF([test "x${GIELLA_CORE_VERSION}" != xno],
         [_giella_core_version=$( ${GIELLA_CORE_VERSION} )],

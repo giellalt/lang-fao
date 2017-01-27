@@ -42,6 +42,11 @@ GIELLA_HYPH_TARGETS+=$(patsubst %.xfscript,%.lookup.xfst,$(GT_HYPHENATION_SRCS))
 GIELLA_HYPH_TARGETS+=$(patsubst %.xfscript,%.compose.xfst,$(GT_HYPHENATION_SRCS))
 endif
 
+if CAN_FOMA
+GIELLA_HYPH_TARGETS+=$(patsubst %.xfscript,%.lookup.foma,$(GT_HYPHENATION_SRCS))
+GIELLA_HYPH_TARGETS+=$(patsubst %.xfscript,%.compose.foma,$(GT_HYPHENATION_SRCS))
+endif
+
 # endif # WANT_FST_HYPHENATOR
 
 noinst_DATA=$(GIELLA_HYPH_TARGETS)

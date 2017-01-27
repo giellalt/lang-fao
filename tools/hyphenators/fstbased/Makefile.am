@@ -2,4 +2,4 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = spellcheckers grammarcheckers shellscripts preprocess mt hyphenators
+include $(top_srcdir)/am-shared/tools-hyphenators-fstbased-dir-include.am

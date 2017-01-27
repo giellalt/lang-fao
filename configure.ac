@@ -176,6 +176,9 @@ AC_CONFIG_FILES([Makefile \
                  test/src/syntax/Makefile \
                  tools/Makefile \
                  tools/grammarcheckers/Makefile \
+                 tools/hyphenators/Makefile \
+                 tools/hyphenators/fstbased/Makefile \
+                 tools/hyphenators/patternbased/Makefile \
                  tools/mt/Makefile \
                  tools/mt/apertium/Makefile \
                  tools/mt/apertium/filters/Makefile \

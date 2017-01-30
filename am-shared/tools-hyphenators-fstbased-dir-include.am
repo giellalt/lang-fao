@@ -39,7 +39,7 @@ HYPH_RULES=$(top_builddir)/src/hyphenation/hyphenation.compose.hfst
 
 TAGWEIGHTS=tags.reweight
 
-GT_HYPHENATOR=hyphenator-gt-desc.hfst
+GT_HYPHENATOR=hyphenator-gt-desc.hfstol
 
 # Only build if enabled at configure time:
 if CAN_HFST
@@ -60,31 +60,41 @@ endif # CAN_HFST
 # only Hfst is supported for now.
 
 # 0. copy lex file, change format to weighted
-# 1. add tag weights
-# 2. project surface side
-# 3. compose-intersect with phon-rules
-# 4. remove hyph-points from 3, invert
-# 5. add hyphpoints from 3 with hyph-rules
-# 6. compose 4. and 5.
+# 1. get all Err-tags, add weight 1000, and cat to tagweight file
+# 2. add tag weights
+# 3. project surface side
+# 4. compose-intersect with phon-rules
+# 5. remove hyph-points from 3, invert
+# 6. add hyphpoints from 3 with hyph-rules
+# 7. copy, change format and reweight hyphrules
+# 8. compose 4. and 5., and cat 6 and 5.a to make final hyphenation fst archive
 
+# Open question:
+# what do we do with capitalisation? For now, only handles lexical case in
+# lexicon, non-lexical case is handled by rules only.
 
 # 0. copy lex file, change format to weighted:
 lexicon-gt-desc.hfst: $(LEX_RAW)
 	$(AM_V_FST2FST)$(HFST_FST2FST) --format=openfst-tropical -i $< -o $@
 
-# 1. add tag weights:
-lexicon-gt-desc-tag_weighted.hfst: lexicon-gt-desc.hfst \
-				 	 $(srcdir)/$(TAGWEIGHTS)
+# 1. get all Err-tags, add weight 1000, and cat to tagweight file
+all_tags.txt: $(TAGWEIGHTS)
+	$(AM_V_CP)cp -f $< $@
+	$(AM_V_GEN)sed $$'s/$$/\t1000/' $(top_builddir)/src/filters/error-tags.txt \
+		>> $@
+
+# 2. add tag weights:
+lexicon-gt-desc-tag_weighted.hfst: lexicon-gt-desc.hfst all_tags.txt
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-T $(srcdir)/$(TAGWEIGHTS) --arcs-only -i $< \
+			-T all_tags.txt --arcs-only -i $< \
 		-o $@
 
-# 2. project surface side:
+# 3. project surface side:
 lexicon-gt-desc-tag_weighted_no_analysis.hfst: lexicon-gt-desc-tag_weighted.hfst
 	$(AM_V_PROJECT)$(HFST_PROJECT) $(HFST_FLAGS) --project=lower -i $< \
 		-o $@
 
-# 3. compose-intersect with phon-rules
+# 4. compose-intersect with phon-rules
 # First build a tmp1 raw file as the intersection between lexicon and rules:
 # HFST
 if WANT_REVERSED_INTERSECT
@@ -115,7 +125,7 @@ hyphenator-raw-gt-desc.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst \
 		-o $@
 endif # WANT_REVERSED_INTERSECT
 
-# 4. remove hyph-points from 3, invert
+# 5. remove hyph-points from 3, invert
 hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \
 	$(top_builddir)/src/filters/remove-hyphenation-marks.hfst  \
 	$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst \
@@ -132,7 +142,7 @@ hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
-# 5. add hyphpoints from 3 with hyph-rules
+# 6. add hyphpoints from 3 with hyph-rules
 hyphenator-gt-desc-output.hfst: hyphenator-raw-gt-desc.hfst \
 				$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst \
 				$(HYPH_RULES)
@@ -144,18 +154,28 @@ hyphenator-gt-desc-output.hfst: hyphenator-raw-gt-desc.hfst \
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
-# 6. compose 4. and 5.
+# 7. copy, change format and reweight hyphrules
+hyphenator-rules-desc-weighted: $(HYPH_RULES)
+	$(AM_V_FST2FST)$(HFST_FST2FST) --format=openfst-tropical -i $< \
+		| $(HFST_REWEIGHT) $(HFST_FLAGS) \
+		-e -a "500" \
+		-o $@
+
+# 8. compose 4. and 5., and cat 6 and 5.a to make final hyphenation fst archive
 $(GT_HYPHENATOR): hyphenator-gt-desc-input.hfst \
-				  hyphenator-gt-desc-output.hfst
+				  hyphenator-gt-desc-output.hfst \
+				  hyphenator-rules-desc-weighted
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 				@\"hyphenator-gt-desc-input.hfst\" \
 			.o. @\"hyphenator-gt-desc-output.hfst\" \
 			; \n\
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+	$(AM_V_GEN)cat hyphenator-rules-desc-weighted >> $@
 
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.hfst *.txt
 
 include $(top_srcdir)/am-shared/silent_build-include.am
+include $(top_srcdir)/am-shared/lookup-include.am

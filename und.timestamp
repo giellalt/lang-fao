@@ -1,4 +1,10 @@
-$Rev: 147509 $
+$Rev: 147517 $
+First version of lexicon-based and fst-based hyphenation done. Works, but misses
+capitalised words, and does not give extra weights to Err-tagged word forms.
+Also no hyphenation of misspelled words yet. Hyphenation builds are off by
+default.
+
+r147509:
 Added template file for weighting tags when the fst is used as a hyphenator.
 
 r147495:

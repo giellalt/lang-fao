@@ -491,6 +491,7 @@ AC_DEFUN([gt_PROG_VISLCG3],
             [with_vislcg3=check])
 AC_PATH_PROG([VISLCG3], [vislcg3], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 AC_PATH_PROG([VISLCG3_COMP], [cg-comp], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
+AC_PATH_PROG([CG_RELABEL], [cg-relabel], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 
 AS_IF([test "x$VISLCG3" != xno], [
 _giella_core_vislcg3_min_version=m4_default([$1], [0.9.9.011351])
@@ -798,6 +799,9 @@ AC_ARG_ENABLE([apertium],
 AS_IF([test "x$enable_apertium" = "xyes" -a "x$new_enough_python_available" = "xno"], 
       [enable_apertium=no
        AC_MSG_ERROR([Python3 missing or too old, Python 3.3 or newer required])])
+AS_IF([test "x$enable_apertium" = "xyes" -a "x$CG_RELABEL" = "xno"], 
+      [enable_apertium=no
+       AC_MSG_ERROR([Apertium enabled but cg-relabel not found. Please install Vislcg3.])])
 AM_CONDITIONAL([WANT_APERTIUM], [test "x$enable_apertium" != xno])
 
 # Enable building of abbr.txt:

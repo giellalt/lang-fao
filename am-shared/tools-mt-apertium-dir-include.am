@@ -371,7 +371,7 @@ $(APERTIUM_CG_SRC): $(APERTIUM_CG_INCLUDE_SRC)
 
 # Change the tags from GTDivvun format to Apertium format:
 %-apertium.bin: %-gt.bin $(srcdir)/tagsets/gt2apertium.cg3relabel
-	$(AM_V_GEN)cg-relabel $< $(srcdir)/tagsets/gt2apertium.cg3relabel $@
+	$(AM_V_GEN)$(CG_RELABEL) $< $(srcdir)/tagsets/gt2apertium.cg3relabel $@
 
 #### Copy to Apertium filenames
 $(APERTIUM_MORPH_PAIRS_V): \

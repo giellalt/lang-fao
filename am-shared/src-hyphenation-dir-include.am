@@ -30,7 +30,7 @@ EXTRA_DIST=$(GT_HYPHENATION_SRCS)
 
 # Define variable before using it:
 GIELLA_HYPH_TARGETS=
-# if WANT_FST_HYPHENATOR
+if WANT_FST_HYPHENATOR
 # Generate the filter targets from the source filenames:
 if CAN_HFST
 GIELLA_HYPH_TARGETS+=$(patsubst %.xfscript,%.lookup.hfst,$(GT_HYPHENATION_SRCS))
@@ -47,7 +47,7 @@ GIELLA_HYPH_TARGETS+=$(patsubst %.xfscript,%.lookup.foma,$(GT_HYPHENATION_SRCS))
 GIELLA_HYPH_TARGETS+=$(patsubst %.xfscript,%.compose.foma,$(GT_HYPHENATION_SRCS))
 endif
 
-# endif # WANT_FST_HYPHENATOR
+endif # WANT_FST_HYPHENATOR
 
 noinst_DATA=$(GIELLA_HYPH_TARGETS)
 

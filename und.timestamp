@@ -1,4 +1,9 @@
-$Rev: 147564 $
+$Rev: 147576 $
+Further work on the pattern based hyphenators: added tra file template, which is
+used to 'translate'  non-ASCII chars to ascii only for the pattern creation
+process. Initial build steps for the pattern build.
+
+r147564:
 Improved the fst-based hyphenator by removing irrelevant paths from the fst.
 Started work on the pattern-based hyphenator, based on code from the old infra.
 

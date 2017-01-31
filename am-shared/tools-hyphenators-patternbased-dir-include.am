@@ -18,7 +18,7 @@
 ####### Source file defs: ########
 
 # The file used by tex installations:
-#GT_TEX_HYPHENATOR=$(GTLANG2)_hyph.tex
+GT_TEX_HYPHENATOR=$(GTLANG2)_hyph.tex
 # The file used by OOo/LO and others:
 #GT_DIC_HYPHENATOR=hyph_$(GTLANG2).dic
 
@@ -27,7 +27,7 @@ if WANT_PATTERN_HYPHENATORS
 
 # Build targets:
 hfstdatadir=$(datadir)/giella/$(GTLANG)
-hfstdata_DATA=$(GT_TEX_HYPHENATOR)
+hfstdata_DATA=$(GT_TEX_HYPHENATOR) $(GT_DIC_HYPHENATOR)
 
 endif # WANT_PATTERN_HYPHENATORS
 
@@ -43,6 +43,10 @@ hyphenated-fst-wordlist.txt: ../fstbased/hyphenator-gt-desc-no_fallback.hfst
 		print random-words $(PATTERN_WORD_LIST) > $@\n\
 		quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
+#$(GTLANG)/bin/hyphenated-wordlist.dic: \
+#		$(GTLANG)/bin/plxnonrec-$(GTLANG).fst \
+#		common/hytex/hyphen-symbol-transform.regex \
+#            common/hytex/extract-hyphenated-words.regex
 #	$(XFST) -utf8 -s $< \
 #			-e "define FullLexicon" \
 #			-e "read regex @re\"common/hytex/extract-hyphenated-words.regex\" ; " \
@@ -58,6 +62,12 @@ hyphenated-fst-wordlist.txt: ../fstbased/hyphenator-gt-desc-no_fallback.hfst
 
 
 # 1. build tex pattern file
+$(GT_TEX_HYPHENATOR): hyphenated-fst-wordlist.txt
+	touch $@
+	cp -f $@ $(GTLANG2).pat
+#   patgen dictionary pattern output translate
+	patgen $< $(GTLANG2).pat $@ $(GTLANG2).tra
+
 # 2. convert tex pattern file to OOo pattern file
 
 ####### Other targets: ###########

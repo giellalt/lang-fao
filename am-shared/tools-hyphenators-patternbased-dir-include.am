@@ -36,37 +36,24 @@ endif # WANT_PATTERN_HYPHENATORS
 # 0. make list of hyphenated words, either from corpus or from fst (fallback)
 
 # From fst:
-hyphenated-fst-wordlist.txt: ../fstbased/hyphenator-gt-desc-no_fallback.hfst
-	$(AM_V_HXFST)$(PRINTF) "\
-		load stack $<\n\
+hyphenated-fst-wordlist.txt: ../fstbased/hyphenator-gt-desc-no_fallback.hfst   \
+				$(top_builddir)/src/filters/remove-non_hyphenated-strings.hfst \
+				$(top_builddir)/src/filters/replace-hyphenation-chars.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+			@\"$<\" \
+		.o. @\"$(top_builddir)/src/filters/remove-non_hyphenated-strings.hfst\"\
+		.o. @\"$(top_builddir)/src/filters/replace-hyphenation-chars.hfst\" \
+			; \n\
 		lower-side net\n\
 		print random-words $(PATTERN_WORD_LIST) > $@\n\
 		quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
-#$(GTLANG)/bin/hyphenated-wordlist.dic: \
-#		$(GTLANG)/bin/plxnonrec-$(GTLANG).fst \
-#		common/hytex/hyphen-symbol-transform.regex \
-#            common/hytex/extract-hyphenated-words.regex
-#	$(XFST) -utf8 -s $< \
-#			-e "define FullLexicon" \
-#			-e "read regex @re\"common/hytex/extract-hyphenated-words.regex\" ; " \
-#			-e "define HyphenFilter" \
-#			-e "read regex FullLexicon .o. HyphenFilter ;" \
-#			-e "define Lexicon" \
-#			-e "read regex @re\"common/hytex/hyphen-symbol-transform.regex\" ; " \
-#			-e "define HyphSymbols" \
-#			-e "read regex Lexicon .o. HyphSymbols ;" \
-#			-e "lower-side net" \
-#			-e "print random-words $(PATTERN_WORD_LIST) > $@" \
-#			-stop
-
-
 # 1. build tex pattern file
 $(GT_TEX_HYPHENATOR): hyphenated-fst-wordlist.txt
-	touch $@
-	cp -f $@ $(GTLANG2).pat
+	$(AM_V_at)touch $@
+	$(AM_V_CP)cp -f $@ $(GTLANG2).pat
 #   patgen dictionary pattern output translate
-	patgen $< $(GTLANG2).pat $@ $(GTLANG2).tra
+	$(AM_V_GEN)$(PATGEN) $< $(GTLANG2).pat $@ $(srcdir)/$(GTLANG2).tra
 
 # 2. convert tex pattern file to OOo pattern file
 

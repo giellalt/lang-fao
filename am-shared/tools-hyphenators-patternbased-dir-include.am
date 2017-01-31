@@ -1,0 +1,68 @@
+## Process this file with automake to produce Makefile.in
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+####### Source file defs: ########
+
+# The file used by tex installations:
+#GT_TEX_HYPHENATOR=$(GTLANG2)_hyph.tex
+# The file used by OOo/LO and others:
+#GT_DIC_HYPHENATOR=hyph_$(GTLANG2).dic
+
+# Only build if enabled at configure time:
+if WANT_PATTERN_HYPHENATORS
+
+# Build targets:
+hfstdatadir=$(datadir)/giella/$(GTLANG)
+hfstdata_DATA=$(GT_TEX_HYPHENATOR)
+
+endif # WANT_PATTERN_HYPHENATORS
+
+####### Build rules: ########
+
+# 0. make list of hyphenated words, either from corpus or from fst (fallback)
+
+# From fst:
+hyphenated-fst-wordlist.txt: ../fstbased/hyphenator-gt-desc-no_fallback.hfst
+	$(AM_V_HXFST)$(PRINTF) "\
+		load stack $<\n\
+		lower-side net\n\
+		print random-words $(PATTERN_WORD_LIST) > $@\n\
+		quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
+#	$(XFST) -utf8 -s $< \
+#			-e "define FullLexicon" \
+#			-e "read regex @re\"common/hytex/extract-hyphenated-words.regex\" ; " \
+#			-e "define HyphenFilter" \
+#			-e "read regex FullLexicon .o. HyphenFilter ;" \
+#			-e "define Lexicon" \
+#			-e "read regex @re\"common/hytex/hyphen-symbol-transform.regex\" ; " \
+#			-e "define HyphSymbols" \
+#			-e "read regex Lexicon .o. HyphSymbols ;" \
+#			-e "lower-side net" \
+#			-e "print random-words $(PATTERN_WORD_LIST) > $@" \
+#			-stop
+
+
+# 1. build tex pattern file
+# 2. convert tex pattern file to OOo pattern file
+
+####### Other targets: ###########
+clean-local:
+	-rm -f *.hfst *.txt
+
+include $(top_srcdir)/am-shared/silent_build-include.am
+include $(top_srcdir)/am-shared/lookup-include.am

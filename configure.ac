@@ -50,8 +50,12 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 ### It is possible to specify also subversion revision: 0.1.2-12345
 _giella_core_min_version=0.2.36
 
+### This is the version of the Giella Shared that we require. Update as needed.
+### It is possible to specify also subversion revision: 0.1.2-12345
+_giella_shared_min_version=0.1.1
+
 ### Required version of the Hfst tools:
-_required_hfst_version=3.9.2
+_required_hfst_version=3.12.0
 
 # Alternate writing system(s) should be listed here using the ISO 15924 code.
 # Multiple alternate WS's should be space separated. For a list of such codes

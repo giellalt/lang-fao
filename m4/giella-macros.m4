@@ -199,6 +199,36 @@ AC_MSG_RESULT([$GIELLA_SHARED])
 # GIELLA_SHARED is required by the infrastructure to find shared data:
 AC_ARG_VAR([GIELLA_SHARED], [directory for giella shared data, like proper nouns and regexes])
 
+##### Check the version of giella-shared, and stop with error message if too old:
+# This is the error message:
+giella_shared_too_old_message="
+
+The giella-shared is too old, we require at least $_giella_shared_min_version.
+
+*** ==> PLEASE ENTER THE FOLLOWING COMMANDS: <== ***
+
+cd $GIELLA_SHARED
+svn up
+./autogen.sh # required only the first time
+./configure  # required only the first time
+make
+sudo make install # optional, only needed if installed
+                  # earlier or installed on a server.
+"
+
+# Identify the version of giella-shared:
+AC_MSG_CHECKING([the version of Giella Shared])
+_giella_shared_version=$( pkg-config --modversion $GIELLA_SHARED/giella-common.pc )
+AC_MSG_RESULT([$_giella_shared_version])
+
+AC_MSG_CHECKING([whether the version of Giella Shared is at least $_giella_shared_min_version])
+# Compare it to the required version, and error out if too old:
+AX_COMPARE_VERSION([$_giella_shared_version], [ge], [$_giella_shared_min_version],
+                   [giella_shared_version_ok=yes], [giella_shared_version_ok=no])
+AS_IF([test "x${giella_shared_version_ok}" != xno], [AC_MSG_RESULT([$giella_shared_version_ok])],
+[AC_MSG_ERROR([$giella_shared_too_old_message])])
+
+
 ################################
 ### Giella-templates dir:
 ################

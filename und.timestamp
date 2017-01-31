@@ -1,4 +1,10 @@
-$Rev: 147592 $
+$Rev: 147603 $
+Tex pattern based hyphenation generation works. The output must be checked and
+tested, and the process may have to be rerun several times to get the desired
+hyphenation behavior. Removed outcommented build code from the old infra - the
+new build code is essentially just a reformulation of the old one.
+
+r147592:
 Added support for checking the version of the giella-common package (aka
 giella-shared/). Added two new regexes to the source file list for shared
 regexes. Updated the required version of Hfst - it has not been updated in ages.

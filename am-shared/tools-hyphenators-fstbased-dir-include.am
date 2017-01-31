@@ -60,6 +60,7 @@ endif # CAN_HFST
 # only Hfst is supported for now.
 
 # 0. copy lex file, change format to weighted
+# 0.a Removed irrelevant stuff from the lexicon
 # 1. get all Err-tags, add weight 1000, and cat to tagweight file
 # 2. add tag weights
 # 3. project surface side
@@ -77,6 +78,20 @@ endif # CAN_HFST
 lexicon-gt-desc.hfst: $(LEX_RAW)
 	$(AM_V_FST2FST)$(HFST_FST2FST) --format=openfst-tropical -i $< -o $@
 
+# 0.a Removed irrelevant stuff from the lexicon
+lexicon-gt-desc-clean.hfst: lexicon-gt-desc.hfst           \
+	$(top_builddir)/src/filters/remove-CLB-strings.hfst    \
+	$(top_builddir)/src/filters/remove-PUNCT-strings.hfst  \
+	$(top_builddir)/src/filters/remove-UseCirc-strings.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+		@\"$(top_builddir)/src/filters/remove-CLB-strings.hfst\"     \
+	.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.hfst\"   \
+	.o. @\"$(top_builddir)/src/filters/remove-UseCirc-strings.hfst\" \
+	.o. @\"$<\" \
+			; \n\
+		 save stack $@\n\
+		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
 # 1. get all Err-tags, add weight 1000, and cat to tagweight file
 all_tags.txt: $(TAGWEIGHTS)
 	$(AM_V_CP)cp -f $< $@
@@ -84,7 +99,7 @@ all_tags.txt: $(TAGWEIGHTS)
 		>> $@
 
 # 2. add tag weights:
-lexicon-gt-desc-tag_weighted.hfst: lexicon-gt-desc.hfst all_tags.txt
+lexicon-gt-desc-tag_weighted.hfst: lexicon-gt-desc-clean.hfst all_tags.txt
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 			-T all_tags.txt --arcs-only -i $< \
 		-o $@
@@ -125,7 +140,7 @@ hyphenator-raw-gt-desc.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst \
 		-o $@
 endif # WANT_REVERSED_INTERSECT
 
-# 5. remove hyph-points from 3, invert
+# 5. remove hyph-points from 4, invert
 hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \
 	$(top_builddir)/src/filters/remove-hyphenation-marks.hfst  \
 	$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst \
@@ -142,7 +157,7 @@ hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
-# 6. add hyphpoints from 3 with hyph-rules
+# 6. add hyphpoints from 4 with hyph-rules
 hyphenator-gt-desc-output.hfst: hyphenator-raw-gt-desc.hfst \
 				$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst \
 				$(HYPH_RULES)
@@ -161,17 +176,20 @@ hyphenator-rules-desc-weighted: $(HYPH_RULES)
 		-e -a "500" \
 		-o $@
 
-# 8. compose 4. and 5., and cat 6 and 5.a to make final hyphenation fst archive
-$(GT_HYPHENATOR): hyphenator-gt-desc-input.hfst \
-				  hyphenator-gt-desc-output.hfst \
-				  hyphenator-rules-desc-weighted
+# 8. compose 5. and 6.:
+hyphenator-gt-desc-no_fallback.hfst: hyphenator-gt-desc-input.hfst \
+				  hyphenator-gt-desc-output.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 				@\"hyphenator-gt-desc-input.hfst\" \
 			.o. @\"hyphenator-gt-desc-output.hfst\" \
 			; \n\
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
-	$(AM_V_GEN)cat hyphenator-rules-desc-weighted >> $@
+
+# 9. cat 7 and 8 to make final hyphenation fst archive
+hyphenator-gt-desc.hfst: hyphenator-gt-desc-no_fallback.hfst \
+				  hyphenator-rules-desc-weighted
+	$(AM_V_GEN)cat $^ > $@
 
 ####### Other targets: ###########
 clean-local:

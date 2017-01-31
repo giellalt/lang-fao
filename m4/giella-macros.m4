@@ -566,10 +566,11 @@ AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$_saxonjar" != xno
 AC_DEFUN([gt_ENABLE_TARGETS],
 [
 # Foma-speller requires gzip, Voikko requires zip:
-AC_PATH_PROG([ZIP],  [zip],      [false], [$PATH$PATH_SEPARATOR$with_zip])
-AC_PATH_PROG([GZIP], [gzip],     [false], [$PATH$PATH_SEPARATOR$with_gzip])
-AC_PATH_PROGS([TAR], [tar gtar], [false], [$PATH$PATH_SEPARATOR$with_tar])
-AC_PATH_PROG([XZ],   [xz],       [false], [$PATH$PATH_SEPARATOR$with_xz])
+AC_PATH_PROG([ZIP],    [zip],      [false], [$PATH$PATH_SEPARATOR$with_zip])
+AC_PATH_PROG([GZIP],   [gzip],     [false], [$PATH$PATH_SEPARATOR$with_gzip])
+AC_PATH_PROGS([TAR],   [tar gtar], [false], [$PATH$PATH_SEPARATOR$with_tar])
+AC_PATH_PROG([PATGEN], [patgen],   [false], [$PATH$PATH_SEPARATOR$with_patgen])
+AC_PATH_PROG([XZ],     [xz],       [false], [$PATH$PATH_SEPARATOR$with_xz])
 AM_CONDITIONAL([CAN_XZ], [test "x$ac_cv_prog_XZ" != xfalse])
 
 # Enable hyperminimisation of the lexical transducer - default is 'no'
@@ -726,13 +727,29 @@ AC_ARG_ENABLE([hunspell],
 AS_IF([test "x$enable_spellers" = xno], [enable_hunspell=no])
 AM_CONDITIONAL([WANT_HUNSPELL], [test "x$enable_hunspell" != xno])
 
+# Enable pattern hyphenator - default is 'no'; requires fst hyphenator
+AC_ARG_ENABLE([pattern-hyphenators],
+              [AS_HELP_STRING([--enable-pattern-hyphenators],
+                              [build pattern-based hyphenators (requires fst hyphenator) @<:@default=no@:>@])],
+              [enable_pattern_hyphenators=$enableval],
+              [enable_pattern_hyphenators=no])
+AS_IF([test "x$enable_pattern_hyphenators" = "xyes" -a "x$PATGEN" = "xfalse"], 
+      [enable_pattern_hyphenators=no
+       AC_MSG_ERROR([patgen required for building pattern hyphenators])])
+
 # Enable fst hyphenator - default is 'no'
 AC_ARG_ENABLE([fst-hyphenator],
               [AS_HELP_STRING([--enable-fst-hyphenator],
                               [build fst-based hyphenator @<:@default=no@:>@])],
               [enable_fst_hyphenator=$enableval],
               [enable_fst_hyphenator=no])
+# Automatically enable the fst hyphenator if pattern hyphenator is enabled:
+AS_IF([test "x$enable_pattern_hyphenators" = "xyes"], 
+      [enable_fst_hyphenator=yes])
 AM_CONDITIONAL([WANT_FST_HYPHENATOR], [test "x$enable_fst_hyphenator" != xno])
+
+# Set up conditional for pattern hyphenators:
+AM_CONDITIONAL([WANT_PATTERN_HYPHENATORS], [test "x$enable_pattern_hyphenators" != xno])
 
 # Enable grammar checkers - default is 'no'
 AC_ARG_ENABLE([grammarchecker],
@@ -870,6 +887,9 @@ cat<<EOF
       * hfst speller enabled: $enable_mobile_hfstspeller
       * vfst speller enabled: $enable_vfstspeller
   * grammar checker enabled: $enable_grammarchecker
+  * hyphenators:
+    * fst hyphenator enabled: $enable_fst_hyphenator
+    * pattern hyphenator enabled (requires fst hyph): $enable_fst_hyphenator
 
   -- specialised fst's (off by default): --
   * phonetic/IPA conversion enabled: $enable_phonetic

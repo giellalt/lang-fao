@@ -19,8 +19,9 @@
 
 # The file used by tex installations:
 GT_TEX_HYPHENATOR=$(GTLANG2)_hyph.tex
+
 # The file used by OOo/LO and others:
-#GT_DIC_HYPHENATOR=hyph_$(GTLANG2).dic
+GT_DIC_HYPHENATOR=hyph_$(GTLANG2).dic
 
 # Only build if enabled at configure time:
 if WANT_PATTERN_HYPHENATORS
@@ -56,10 +57,13 @@ $(GT_TEX_HYPHENATOR): hyphenated-fst-wordlist.txt
 	$(AM_V_GEN)$(PATGEN) $< $(GTLANG2).pat $@ $(srcdir)/$(GTLANG2).tra
 
 # 2. convert tex pattern file to OOo pattern file
+$(GT_DIC_HYPHENATOR): $(GT_TEX_HYPHENATOR)
+	$(AM_V_GEN)$(PERL) $(GIELLA_CORE)/scripts/substrings.pl \
+		$(VERBOSITY) $< $@ UTF-8 2 2
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.txt
+	-rm -f *.hfst *.txt pattmp* *.pat *.tex *.dic
 
 include $(top_srcdir)/am-shared/silent_build-include.am
 include $(top_srcdir)/am-shared/lookup-include.am

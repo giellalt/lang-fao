@@ -1,4 +1,9 @@
-$Rev: 147603 $
+$Rev: 147651 $
+Added final step in building pattern-based hyphenators: now also prepared for
+Hunspell-like OOo hyphenation. Requires new version of the giella-core. Also
+corrected bug in checking the version number of giella-common.
+
+r147603:
 Tex pattern based hyphenation generation works. The output must be checked and
 tested, and the process may have to be rerun several times to get the desired
 hyphenation behavior. Removed outcommented build code from the old infra - the

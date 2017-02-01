@@ -219,6 +219,24 @@ sudo make install # optional, only needed if installed
 # Identify the version of giella-shared:
 AC_MSG_CHECKING([the version of Giella Shared])
 _giella_shared_version=$( pkg-config --modversion $GIELLA_SHARED/giella-common.pc )
+
+# Check whether a version info string was found:
+case $_giella_shared_version in      # branch to the first pattern
+  *[!0-9.]*)                         # pattern = anything containing a non-digit
+    _giella_shared_version_found=no  # do this if the first pattern triggered
+    ;;                               # end of this case branch
+  *)                                 # pattern = anything (else)
+    _giella_shared_version_found=yes # do this when matching a version string
+    ;;                               # end of this case branch
+esac
+
+# If not, recheck using standard pkg-config locations:
+AS_IF([test "x$_giella_shared_version_found" == xno ], [
+    _giella_shared_version=$( pkg-config --modversion giella-common )
+], [test "x$_giella_shared_version_found" == xyes ], [
+    true
+], [AC_MSG_ERROR([Could not identify version of giella-common shared data])])
+
 AC_MSG_RESULT([$_giella_shared_version])
 
 AC_MSG_CHECKING([whether the version of Giella Shared is at least $_giella_shared_min_version])
@@ -600,6 +618,7 @@ AC_PATH_PROG([ZIP],    [zip],      [false], [$PATH$PATH_SEPARATOR$with_zip])
 AC_PATH_PROG([GZIP],   [gzip],     [false], [$PATH$PATH_SEPARATOR$with_gzip])
 AC_PATH_PROGS([TAR],   [tar gtar], [false], [$PATH$PATH_SEPARATOR$with_tar])
 AC_PATH_PROG([PATGEN], [patgen],   [false], [$PATH$PATH_SEPARATOR$with_patgen])
+AC_PATH_PROG([PERL],   [perl],     [false], [$PATH$PATH_SEPARATOR$with_perl])
 AC_PATH_PROG([XZ],     [xz],       [false], [$PATH$PATH_SEPARATOR$with_xz])
 AM_CONDITIONAL([CAN_XZ], [test "x$ac_cv_prog_XZ" != xfalse])
 

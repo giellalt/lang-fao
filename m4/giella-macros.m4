@@ -221,9 +221,12 @@ AC_MSG_CHECKING([the version of Giella Shared])
 _giella_shared_version=$( pkg-config --modversion $GIELLA_SHARED/giella-common.pc )
 
 # Check whether a version info string was found:
-case $_giella_shared_version in      # branch to the first pattern
+case "$_giella_shared_version" in    # branch to the first pattern
+  "")
+    _giella_shared_version_found=no  # do this if empty string
+    ;;                               # end of this case branch
   *[!0-9.]*)                         # pattern = anything containing a non-digit
-    _giella_shared_version_found=no  # do this if the first pattern triggered
+    _giella_shared_version_found=no  # do this if the pattern triggered
     ;;                               # end of this case branch
   *)                                 # pattern = anything (else)
     _giella_shared_version_found=yes # do this when matching a version string

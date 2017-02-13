@@ -25,17 +25,14 @@ LEXICON R-
  +Cmpnd#:%- Nouns ;
 
 
-LEXICON FINAL
- +Cmpnd:%- # ; ! menningar- og granskingarskipan
-           # ;
 
 ! Irregular
 
 LEXICON k0
- +N+Msc+Sg+Nom+Indef: FINAL ; ! januar
- +N+Msc+Sg+Acc+Indef: FINAL ; ! januar
- +N+Msc+Sg+Dat+Indef: FINAL ; ! januar
- +N+Msc+Sg+Gen+Indef: FINAL ; ! januar
+ +N+Msc+Sg+Nom+Indef: ENDLEX ; ! januar
+ +N+Msc+Sg+Acc+Indef: ENDLEX ; ! januar
+ +N+Msc+Sg+Dat+Indef: ENDLEX ; ! januar
+ +N+Msc+Sg+Gen+Indef: ENDLEX ; ! januar
 
 ! Weak masculines.
 
@@ -877,9 +874,9 @@ LEXICON k_flt43
 LEXICON k44 ! bróðir, stem is bróð
        +N+Msc+Sg+Nom:ir     DF_N_SGm       ;
               +N+Msc:ur     S_M_SGACC      ;
- +N+Msc+Sg+Dat+Indef:ur     FINAL          ;
-   +N+Msc+Sg+Dat+Def:urinum FINAL          ;
-   +N+Msc+Sg+Dat+Def:rinum  FINAL          ;
+ +N+Msc+Sg+Dat+Indef:ur     ENDLEX          ;
+   +N+Msc+Sg+Dat+Def:urinum ENDLEX          ;
+   +N+Msc+Sg+Dat+Def:rinum  ENDLEX          ;
               +N+Msc:ur     S_M_SGGEN_NULL ;
                     :ur     k_flt44        ;
 
@@ -1473,16 +1470,16 @@ LEXICON kv32 ! mýri
   kv_flt32 ;
 
 LEXICON kv32e
- +N+Fem+Sg+Nom+Indef:%>i  FINAL ;
- +N+Fem+Sg+Acc+Indef:%>i  FINAL ;
- +N+Fem+Sg+Dat+Indef:%>i  FINAL ;
- +N+Fem+Sg+Gen+Indef:%>ar FINAL ;
+ +N+Fem+Sg+Nom+Indef:%>i  ENDLEX ;
+ +N+Fem+Sg+Acc+Indef:%>i  ENDLEX ;
+ +N+Fem+Sg+Dat+Indef:%>i  ENDLEX ;
+ +N+Fem+Sg+Gen+Indef:%>ar ENDLEX ;
 
 LEXICON kv_flt32
- +N+Fem+Pl+Nom+Indef:%>ar FINAL ;
- +N+Fem+Pl+Acc+Indef:%>ar FINAL ;
- +N+Fem+Pl+Dat+Indef:%>um FINAL ;
- +N+Fem+Pl+Gen+Indef:%>a  FINAL ;
+ +N+Fem+Pl+Nom+Indef:%>ar ENDLEX ;
+ +N+Fem+Pl+Acc+Indef:%>ar ENDLEX ;
+ +N+Fem+Pl+Dat+Indef:%>um ENDLEX ;
+ +N+Fem+Pl+Gen+Indef:%>a  ENDLEX ;
 
 
 LEXICON kv33 ! gleði
@@ -1490,14 +1487,14 @@ LEXICON kv33 ! gleði
   kv_flt33 ;
 
 LEXICON kv33e
- +N+Fem+Sg+Nom+Indef: FINAL ;
- +N+Fem+Sg+Acc+Indef: FINAL ;
- +N+Fem+Sg+Dat+Indef: FINAL ;
- +N+Fem+Sg+Gen+Indef: FINAL ;
+ +N+Fem+Sg+Nom+Indef: ENDLEX ;
+ +N+Fem+Sg+Acc+Indef: ENDLEX ;
+ +N+Fem+Sg+Dat+Indef: ENDLEX ;
+ +N+Fem+Sg+Gen+Indef: ENDLEX ;
 
 LEXICON kv_flt33
- +N+Fem+Sg+Nom+Indef:%>r FINAL ;
- +N+Fem+Sg+Acc+Indef:%>r FINAL ;
+ +N+Fem+Sg+Nom+Indef:%>r ENDLEX ;
+ +N+Fem+Sg+Acc+Indef:%>r ENDLEX ;
 
 LEXICON kv34 ! kraft
   kv34e    ;
@@ -1997,7 +1994,7 @@ LEXICON h34 ! fæ
  +N+Neu: N_PLG       ;
 
 LEXICON h42
- +N+Neu+Sg+Indef: FINAL ; !check.
+ +N+Neu+Sg+Indef: ENDLEX ; !check.
 
 
 ! =============== !
@@ -2023,13 +2020,13 @@ LEXICON W_M_SGDAT
  +Sg+Dat:%>a DF_D_SGm ;
 
 LEXICON W_M_SGDAT_mixed !felagnum
- +Sg+Dat+Indef:%>a   FINAL ;
-   +Sg+Dat+Def:%>num FINAL ;
+ +Sg+Dat+Indef:%>a   ENDLEX ;
+   +Sg+Dat+Def:%>num ENDLEX ;
    +Sg+Dat+Def:%>num R     ;
 
 LEXICON W_M_SGGEN
- +Sg+Gen+Indef:%>a   FINAL ;
-   +Sg+Gen+Def:%>ans FINAL ; !XXX ans?
+ +Sg+Gen+Indef:%>a   ENDLEX ;
+   +Sg+Gen+Def:%>ans ENDLEX ; !XXX ans?
    +Sg+Gen+Def:%>ans R     ;
 
 
@@ -2103,7 +2100,7 @@ LEXICON S_M_SGDAT
 
 LEXICON S_M_SGDAT_2
      +Sg+Dat:%>i          DF_D_SGm ;
- +Sg+Dat+Def:%^GVDEL%>num #        ;
+ +Sg+Dat+Def:%^GVDEL%>num ENDLEX        ;
 
 LEXICON S_M_SGDAT_NULL
  +Sg+Dat: DF_D_SGm ;
@@ -2301,14 +2298,14 @@ LEXICON i_N_SGDG_is
 LEXICON N_PLNA_u_ur
        +Pl+Nom:%>u  DF_NA_PLn_W ;
        +Pl+Acc:%>u  DF_NA_PLn_W ;
- +Pl+Nom+Indef:%>ur FINAL       ;
- +Pl+Acc+Indef:%>ur FINAL       ;
+ +Pl+Nom+Indef:%>ur ENDLEX       ;
+ +Pl+Acc+Indef:%>ur ENDLEX       ;
 
 LEXICON N_PLNA_i_ir
        +Pl+Nom:%>i  DF_NA_PLn_W ;
        +Pl+Acc:%>i  DF_NA_PLn_W ;
- +Pl+Nom+Indef:%>ir FINAL       ;
- +Pl+Acc+Indef:%>ir FINAL       ;
+ +Pl+Nom+Indef:%>ir ENDLEX       ;
+ +Pl+Acc+Indef:%>ir ENDLEX       ;
 
 LEXICON N_PLNA
  +Pl+Nom: DF_NA_PLn ;
@@ -2319,8 +2316,8 @@ LEXICON N_PLD
  +Pl+Dat:%>u DF_D_PL ;
 
 LEXICON N_PLD_0_U
- +Pl+Dat+Indef:%>um  FINAL ;
-   +Pl+Dat+Def:%>num FINAL ;
+ +Pl+Dat+Indef:%>um  ENDLEX ;
+   +Pl+Dat+Def:%>num ENDLEX ;
 
 LEXICON N_PLG
  +Pl+Gen:%>a DF_G_PL ;
@@ -2331,12 +2328,12 @@ LEXICON N_PLG_na
 ! Common cases
 
 LEXICON DF_D_PL
- +Indef:%>m   FINAL ;
-   +Def:%>num FINAL ;
+ +Indef:%>m   ENDLEX ;
+   +Def:%>num ENDLEX ;
 
 LEXICON DF_G_PL
- +Indef:      FINAL ;
-   +Def:%>nna FINAL ;
+ +Indef:      ENDLEX ;
+   +Def:%>nna ENDLEX ;
 
 
 
@@ -2361,28 +2358,28 @@ LEXICON DF_N_SGm
  :%>i DF_N_SGm_def   ;
 
 LEXICON DF_N_SGm_indef
- +Indef: FINAL ; !risi
+ +Indef: ENDLEX ; !risi
 
 LEXICON DF_N_SGm_def
- +Def:%>n FINAL ; ! risin
+ +Def:%>n ENDLEX ; ! risin
 
 LEXICON DF_A_SGm
   DF_A_SGm_indef ;
   DF_A_SGm_def   ;
 
 LEXICON DF_A_SGm_indef
- +Indef: FINAL ;
+ +Indef: ENDLEX ;
 
 LEXICON DF_A_SGm_def
- +Def:%>n FINAL ; ! risan, sandin
+ +Def:%>n ENDLEX ; ! risan, sandin
 
 LEXICON DF_D_SGm
- +Indef:      FINAL ;
-   +Def:%>num FINAL ;
+ +Indef:      ENDLEX ;
+   +Def:%>num ENDLEX ;
 
 LEXICON DF_G_SGm
- +Indef:      FINAL ;
-   +Def:%>ins FINAL ;
+ +Indef:      ENDLEX ;
+   +Def:%>ins ENDLEX ;
               R     ;
 
 
@@ -2394,20 +2391,20 @@ LEXICON DF_N_PLm
 
 
 LEXICON DF_N_PLm_indef
- +Indef: FINAL ;
+ +Indef: ENDLEX ;
 
 LEXICON DF_N_PLm_def
- +Def:%>nir FINAL ; ! no _i_
+ +Def:%>nir ENDLEX ; ! no _i_
 
 LEXICON DF_A_PLm
   DF_A_PLm_indef ;
   DF_A_PLm_def   ;
 
 LEXICON DF_A_PLm_indef
- +Indef: FINAL ;
+ +Indef: ENDLEX ;
 
 LEXICON DF_A_PLm_def
- +Def:%>nar FINAL ; ! no _i
+ +Def:%>nar ENDLEX ; ! no _i
 
 
 
@@ -2415,46 +2412,46 @@ LEXICON DF_A_PLm_def
 ! _______________
 
 LEXICON DF_N_SGf_W
- +Indef:    FINAL ;
-   +Def:%>n FINAL ;
+ +Indef:    ENDLEX ;
+   +Def:%>n ENDLEX ;
 
 LEXICON DF_N_SGf_S
- +Indef:     FINAL ;
-   +Def:%>in FINAL ;
+ +Indef:     ENDLEX ;
+   +Def:%>in ENDLEX ;
 
 
 LEXICON DF_A_SGf_W
- +Indef:     FINAL ;
-   +Def:%>na FINAL ;
+ +Indef:     ENDLEX ;
+   +Def:%>na ENDLEX ;
 
 LEXICON DF_A_SGf_S
- +Indef:      FINAL ;
-   +Def:%>ina FINAL ;
+ +Indef:      ENDLEX ;
+   +Def:%>ina ENDLEX ;
 
 
 LEXICON DF_D_SGf_W
- +Indef:     FINAL ;
-   +Def:%>ni FINAL ;
+ +Indef:     ENDLEX ;
+   +Def:%>ni ENDLEX ;
 
 LEXICON DF_D_SGf_S
- +Indef:      FINAL ;
-   +Def:%>ini FINAL ; ! árini
-   +Def:%>nni FINAL ; ! oynni, consider i:n <=> Vow %>: _ n i
+ +Indef:      ENDLEX ;
+   +Def:%>ini ENDLEX ; ! árini
+   +Def:%>nni ENDLEX ; ! oynni, consider i:n <=> Vow %>: _ n i
 
 
 LEXICON DF_G_SGf_W
- +Indef:       FINAL ;
-   +Def:%>nnar FINAL ;
+ +Indef:       ENDLEX ;
+   +Def:%>nnar ENDLEX ;
                R     ;
 
 LEXICON DF_G_SGf_S
- +Indef:        FINAL ;
-   +Def:%>innar FINAL ;
+ +Indef:        ENDLEX ;
+   +Def:%>innar ENDLEX ;
                 R     ;
 
 LEXICON DF_NA_PLf
- +Indef:      FINAL ;
-   +Def:%>nar FINAL ;
+ +Indef:      ENDLEX ;
+   +Def:%>nar ENDLEX ;
 
 
 ! Neuter forms
@@ -2465,32 +2462,32 @@ LEXICON DF_NA_SGn
  :%>i DF_NA_SGn_def   ;
 
 LEXICON DF_NA_SGn_indef
- +Indef: FINAL ;
+ +Indef: ENDLEX ;
 
 LEXICON DF_NA_SGn_def
- +Def:ð FINAL ;
+ +Def:ð ENDLEX ;
 
 LEXICON DF_D_SGn
- +Indef:      FINAL ;
-   +Def:%>num FINAL ;
+ +Indef:      ENDLEX ;
+   +Def:%>num ENDLEX ;
 
 LEXICON DF_G_SGn
- +Def:%>ins FINAL     ;
+ +Def:%>ins ENDLEX     ;
             g_indef_r ;
 
 LEXICON g_indef_r
- +Indef: FINAL ;
+ +Indef: ENDLEX ;
          R     ;
 
 LEXICON DF_G_SGn_a
- +Def:%>ns FINAL     ;
+ +Def:%>ns ENDLEX     ;
            g_indef_r ;
 
 LEXICON DF_NA_PLn ! orðini
- +Indef:      FINAL ;
-   +Def:%>ini FINAL ;
+ +Indef:      ENDLEX ;
+   +Def:%>ini ENDLEX ;
 
 LEXICON DF_NA_PLn_W ! eyguni, hjørtuni
- +Indef:     FINAL ;
-   +Def:%>ni FINAL ;
+ +Indef:     ENDLEX ;
+   +Def:%>ni ENDLEX ;
 

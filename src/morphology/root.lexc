@@ -49,6 +49,30 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 á é í ó ú ý Á É Í Ó Ý !!≈  @CODE@
 ä ö ü Ä Ö Ö			  !!≈  @CODE@
 
+!! !Compounding tags
+
+!! The tags are of the following form:
+!! * __+CmpNP/xxx__ - Normative (N), Position (P), ie the tag describes what
+!!                    position the tagged word can be in in a compound
+!! * __+CmpN/xxx__  - Normative (N) __form__ ie the tag describes what
+!!                    form the tagged word should use when making compounds
+!! * __+Cmp/xxx__   - Descriptive compounding tags, ie tags that ''describes''
+!!                    what form a word actually is using in a compound
+
+!! This entry / word should be in the following position(s):
+
++CmpNP/All       !!≈ * __@CODE@__ - ... in all positions, __default__, this tag does not have to be written
++CmpNP/First     !!≈ * __@CODE@__ - ... only be first part in a compound or alone
++CmpNP/Pref      !!≈ * __@CODE@__ - ... only __first__ part in a compound, NEVER alone
++CmpNP/Last      !!≈ * __@CODE@__ - ... only be last part in a compound or alone
++CmpNP/Suff      !!≈ * __@CODE@__ - ... only __last__ part in a compound, NEVER alone
++CmpNP/None      !!≈ * __@CODE@__ - ... does not take part in compounds
++CmpNP/Only      !!≈ * __@CODE@__ - ... only be part of a compound, i.e. can never
+                 !!                     be used alone, but can appear in any position
+
+
+
+
 !! !!Flag diacritics
 !! We have manually optimised the structure of our lexicon using following
 !! flag diacritics to restrict morhpological combinatorics - only allow compounds
@@ -77,6 +101,7 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
  @U.Cap.Obl@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
  @U.Cap.Opt@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
 
+
 ! ============ !
 ! Root lexicon !
 ! ============ !
@@ -86,6 +111,7 @@ LEXICON Root
 !! !!!Lexicon @LEXNAME@
 !! This is the beginning of everything. The __@LEXNAME@__ lexicon is reserved in the
 !! LexC language, and must be the first lexicon defined.
+
 
 Nouns ;
 Propernouns ;
@@ -102,5 +128,29 @@ Preposition ;
 Punctuation ;
 Abbreviation ;
 Acronyms ;
+
+
+
+
+
+LEXICON ENDLEX
+!! !!!Lexicon @LEXNAME@
+!! And this is the @LEXNAME@ of everything:
+!! {{{
+   @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ ENDLEX2 ; !!≈ @CODE@
+   ! @D.Need3Part.ON@ # ; !3part
+   !! }}}
+   !! The {{@D.CmpOnly.FALSE@}} flag diacritic is ued to disallow words tagged
+   !! with +CmpNP/Only to end here.
+   !! The {{@D.NeedNoun.ON@}} flag diacritic is used to block illegal compounds.
+
+LEXICON ENDLEX2
+ @R.SpellRlx.ON@+Err/Spellrelax@C.SpellRlx@:@R.SpellRlx.ON@@C.SpellRlx@ ENDLEX3 ;
+  @D.SpellRlx.ON@@C.SpellRlx@                                            ENDLEX3 ;
+
+LEXICON ENDLEX3
+ @R.SpaceCmp.ON@+Err/SpaceCmp@C.SpaceCmp@:@R.SpaceCmp.ON@@C.SpaceCmp@  # ;
+  @D.SpaceCmp.ON@@C.SpaceCmp@                                           # ;
+
 
 ! vim: set ft=xfst-lexc:

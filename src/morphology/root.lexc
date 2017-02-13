@@ -145,12 +145,14 @@ LEXICON ENDLEX
    !! The {{@D.NeedNoun.ON@}} flag diacritic is used to block illegal compounds.
 
 LEXICON ENDLEX2
- @R.SpellRlx.ON@+Err/Spellrelax@C.SpellRlx@:@R.SpellRlx.ON@@C.SpellRlx@ ENDLEX3 ;
-  @D.SpellRlx.ON@@C.SpellRlx@                                            ENDLEX3 ;
+# ;
 
-LEXICON ENDLEX3
- @R.SpaceCmp.ON@+Err/SpaceCmp@C.SpaceCmp@:@R.SpaceCmp.ON@@C.SpaceCmp@  # ;
-  @D.SpaceCmp.ON@@C.SpaceCmp@                                           # ;
+! @R.SpellRlx.ON@+Err/Spellrelax@C.SpellRlx@:@R.SpellRlx.ON@@C.SpellRlx@ ENDLEX3 ;
+!  @D.SpellRlx.ON@@C.SpellRlx@                                            ENDLEX3 ;
+
+! LEXICON ENDLEX3
+! @R.SpaceCmp.ON@+Err/SpaceCmp@C.SpaceCmp@:@R.SpaceCmp.ON@@C.SpaceCmp@  # ;
+!  @D.SpaceCmp.ON@@C.SpaceCmp@                                           # ;
 
 
 ! vim: set ft=xfst-lexc:

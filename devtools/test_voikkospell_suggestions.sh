@@ -24,7 +24,7 @@ speller_test_data=speller_test_data.txt
 speller_input=speller_input.${engine}.txt
 speller_output=speller_output.${engine}.txt
 speller_timeusage=speller_timeusage.${engine}.txt
-speller_results="$SCRIPT_DIR/speller_result_${file_spesifier}.${engine}.xml"
+speller_results="$SCRIPT_DIR/speller_result_${file_spesifier}.${engine}.html"
 
 # Other variables:
 DATE=$(date +%Y%m%d)
@@ -104,4 +104,9 @@ $giella_core/scripts/speller-testres.pl \
 		--corrsugg
 
 # Open the xml file in the default browser
-open "$speller_results"
+if [ `uname` == "Darwin" ]
+then
+    open "$speller_results"
+else
+    xdg-open "$speller_result"
+fi

@@ -98,6 +98,17 @@ analyser-oahpa-gt-norm.%: analyser-oahpa-gt-norm.tmp.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+# ... and also in the general descriptive analysers:
+analyser-gt-desc.%: analyser-gt-desc.tmp.% \
+					filters/remove-norm-comp-tags.%             
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			    @\"filters/remove-norm-comp-tags.$*\"             \
+			.o. @\"$<\"                                       \
+			;\n\
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
 # ... as well as in the HFST disambiguation analyser:
 analyser-disamb-gt-desc.hfst: analyser-disamb-gt-desc.tmp.hfst \
 				filters/remove-norm-comp-tags.hfst             

@@ -43,6 +43,30 @@
   á é í ó ú ý Á É Í Ó Ý
   ä ö ü Ä Ö Ö			
 
+!Compounding tags
+
+The tags are of the following form:
+* __+CmpNP/xxx__ - Normative (N), Position (P), ie the tag describes what
+                   position the tagged word can be in in a compound
+* __+CmpN/xxx__  - Normative (N) __form__ ie the tag describes what
+                   form the tagged word should use when making compounds
+* __+Cmp/xxx__   - Descriptive compounding tags, ie tags that ''describes''
+                   what form a word actually is using in a compound
+
+This entry / word should be in the following position(s):
+
+ * __+CmpNP/All__ - ... in all positions, __default__, this tag does not have to be written
+ * __+CmpNP/First__ - ... only be first part in a compound or alone
+ * __+CmpNP/Pref__ - ... only __first__ part in a compound, NEVER alone
+ * __+CmpNP/Last__ - ... only be last part in a compound or alone
+ * __+CmpNP/Suff__ - ... only __last__ part in a compound, NEVER alone
+ * __+CmpNP/None__ - ... does not take part in compounds
+ * __+CmpNP/Only__ - ... only be part of a compound, i.e. can never
+                    be used alone, but can appear in any position
+
+
+
+
 !!Flag diacritics
 We have manually optimised the structure of our lexicon using following
 flag diacritics to restrict morhpological combinatorics - only allow compounds
@@ -73,8 +97,27 @@ given the proper use of these flags.
 
 
 
+
 !!!Lexicon Root
 This is the beginning of everything. The __Root__ lexicon is reserved in the
 LexC language, and must be the first lexicon defined.
+
+
+
+
+
+
+
+!!!Lexicon ENDLEX
+And this is the ENDLEX of everything:
+{{{
+ @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ ENDLEX2 ;
+}}}
+The {{@D.CmpOnly.FALSE@}} flag diacritic is ued to disallow words tagged
+with +CmpNP/Only to end here.
+The {{@D.NeedNoun.ON@}} flag diacritic is used to block illegal compounds.
+
+
+
 
 

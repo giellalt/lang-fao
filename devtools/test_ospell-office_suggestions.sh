@@ -24,13 +24,17 @@ speller_test_data=speller_test_data.txt
 speller_input=speller_input.${engine}.txt
 speller_output=speller_output.${engine}.txt
 speller_timeusage=speller_timeusage.${engine}.txt
-speller_results="$SCRIPT_DIR/speller_result_${file_spesifier}.${engine}.xml"
+speller_results="$SCRIPT_DIR/speller_result_${file_spesifier}.${engine}.html"
+suggtiming="no"
 
 # Other variables:
 DATE=$(date +%Y%m%d)
 TESTTIME=$(date +%H%M)
 
 giella_core=$GTHOME/giella-core
+
+# Number of suggestions requested:
+suggnumber=10
 
 function print_usage() {
     echo "Usage: $0 [OPTIONS...]"
@@ -39,11 +43,15 @@ function print_usage() {
     echo "  -h, --help          Print this usage info"
     echo "  -b, --builddir DIR  Specify top build directory relative to"
     echo "                      the directory containing configure.ac"
+    echo "  -s, --suggestion-timing"
+    echo "                      Records the time it takes to generate the"
+    echo "                      suggestions for each input word. This causes"
+    echo "                      the testing to run ca 65 % slower."
     echo
 }
 
 # Wrong usage - short instruction:
-if test $# -ge 3 ; then
+if test $# -ge 4 ; then
     print_usage
     exit 1
 fi
@@ -61,6 +69,8 @@ while test $# -ge 1 ; do
             builddir="$2"
             shift
         fi
+    elif test x$1 = x--suggestion-timing -o x$1 = x-s ; then
+        suggtiming="yes"
     fi
     shift
 done
@@ -76,15 +86,25 @@ grep -v '^[!#]' "$typos_file" | grep -v '^$' \
 	>> $SCRIPT_DIR/$speller_test_data
 
 # Extract the actual test data:
-cut -f1 $SCRIPT_DIR/$speller_test_data | sed 's/^/5 /' \
+cut -f1 $SCRIPT_DIR/$speller_test_data | sed "s/^/$suggnumber /" \
 	> $SCRIPT_DIR/$speller_input
 
 # Run the speller;
-$giella_core/scripts/run_ospell-office_speller.sh $SCRIPT_DIR/$speller_input \
+if test "x$suggtiming" == "xyes" ; then
+    $giella_core/scripts/run_ospell-office_speller.py \
+                                      $SCRIPT_DIR/$speller_input \
                                       $SCRIPT_DIR/$speller_output \
                                       $SCRIPT_DIR/$speller_timeusage \
                                       $GTLANG2 \
                                       "$top_builddir/$spellerdir"
+else
+    $giella_core/scripts/run_ospell-office_speller.sh \
+                                      $SCRIPT_DIR/$speller_input \
+                                      $SCRIPT_DIR/$speller_output \
+                                      $SCRIPT_DIR/$speller_timeusage \
+                                      $GTLANG2 \
+                                      "$top_builddir/$spellerdir"
+fi
 
 rm -f "$speller_results"
 
@@ -101,8 +121,14 @@ $giella_core/scripts/speller-testres.pl \
 		--corpusversion="n/a" \
 		--memoryuse="n/a" \
 		--timeuse="$SCRIPT_DIR/$speller_timeusage" \
+		--suggtiming="$suggtiming" \
 		--xml="$speller_results" \
 		--corrsugg
 
 # Open the xml file in the default browser
-open "$speller_results"
+if [ `uname` == "Darwin" ]
+then
+    open "$speller_results"
+else
+    xdg-open "$speller_result"
+fi

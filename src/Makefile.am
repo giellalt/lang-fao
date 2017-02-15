@@ -69,6 +69,7 @@ analyser-gt-norm.%: analyser-gt-norm.tmp.% \
 					filters/convert_to_flags-CmpNP-tags.% 
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/convert_to_flags-CmpNP-tags.$*\"            \
+			.o. @\"filters/split-CmpNP-tags.hfst\"                     \
 			.o. @\"$<\"                                                \
 			;\n\
 		 twosided flag-diacritics\n\

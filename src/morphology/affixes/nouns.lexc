@@ -58,7 +58,7 @@ LEXICON k_flt1
  +N+Msc: W_M_PLGEN ;
 
 
-LEXICON k1_3stem
+LEXICON k1_3stem !! * @CODE* felagi
  +N+Msc:       W_M_SGNOM       ;
  +N+Msc:       W_M_SGACC       ;
  +N+Msc:       W_M_SGDAT_mixed ;
@@ -287,7 +287,6 @@ LEXICON k12e
  +N+Msc: S_M_SGACC    ;
  +N+Msc: S_M_SGDAT    ;
  +N+Msc: S_M_SGGEN_AR ;
- +N+Msc: CMPND_STEM   ;
 
 LEXICON k_flt12
  +N+Msc: S_M_PLNOM_IR ;
@@ -1115,7 +1114,7 @@ LEXICON kv6/2
   kv6 ;
   kv2 ;
 
-LEXICON kv6 ! ár
+LEXICON kv6 ! ár, oy
   kv6e    ;
   kv_flt6 ;
 
@@ -1532,12 +1531,12 @@ LEXICON h3/22
 
 LEXICON h3_s ! universitet
          h3e         ;
- +N+Neu: S_N_S_CMPND ;
+! +N+Neu: S_N_S_CMPND ;
          h_flt3      ;
 
 LEXICON h3 ! orð
          h3e         ;
- +N+Neu: S_N_A_CMPND ;
+! +N+Neu: S_N_A_CMPND ;
          h_flt3      ;
 
 LEXICON h3e
@@ -1640,7 +1639,6 @@ LEXICON h9 ! blikk
 LEXICON h9e
  +N+Neu: S_N_SGNA    ;
  +N+Neu: S_N_SGDG_is ;
- +N+Neu: CMPND_STEM  ;
 
 LEXICON h_flt9
  +N+Neu: N_PLNA ;
@@ -1990,8 +1988,8 @@ LEXICON h42
 ! Case inflection !
 ! =============== !
 
-! This is the second layer. Here we do the indefinite
-! forms.
+! This is the second layer. Here we do indefinite
+! forms and compounds.
 
 ! Masculine forms
 ! _______________
@@ -2011,12 +2009,12 @@ LEXICON W_M_SGDAT
 LEXICON W_M_SGDAT_mixed !felagnum
  +Sg+Dat+Indef:%>a   ENDLEX ;
    +Sg+Dat+Def:%>num ENDLEX ;
-   +Sg+Dat+Def:%>num R     ;
 
 LEXICON W_M_SGGEN
  +Sg+Gen+Indef:%>a   ENDLEX ;
+ +Sg+Gen+Indef:%>a   R ; ! compound
    +Sg+Gen+Def:%>ans ENDLEX ; !XXX ans?
-   +Sg+Gen+Def:%>ans R     ;
+
 
 
 ! Plural
@@ -2041,27 +2039,9 @@ LEXICON W_M_PLGEN
 
 
 
-! Compounding
-! -----------
-
-LEXICON CMPND_STEM
- +Cmpnd: R ;
-
-LEXICON S_N_A_CMPND
- +Sg+Cmpnd:a R ;
-
-LEXICON S_N_S_CMPND
-  +Sg+Cmpnd:s R              ;
 
 ! Strong case suffixes
 ! ____________________
-
-
-
-!LEXICON DF_NA_SGm_S ! luður
-!   +Sg+Nom:  DF_N_SGm       ;
-!   +Sg+Acc:  DF_A_SGm_indef ;
-!   +Sg+Acc:  DF_A_SGm_def   ;
 
 
 ! Nominative Sg
@@ -2080,7 +2060,7 @@ LEXICON S_M_SGNOM_NULL
 LEXICON S_M_SGACC
  +Sg+Acc:    DF_A_SGm_indef ;
  +Sg+Acc:%>i DF_A_SGm_def   ; !sandin
-
+ +Sg+Acc:    R ; ! stem compound
 
 ! Dative Sg
 
@@ -2098,12 +2078,15 @@ LEXICON S_M_SGDAT_NULL
 
 LEXICON S_M_SGGEN
  +Sg+Gen:%>s DF_G_SGm ;
+ +Sg+Gen:%>s R ; ! gen compound
 
 LEXICON S_M_SGGEN_NULL
  +Sg+Gen: DF_G_SGm ;
+ +Sg+Gen: R ; ! gen compound
 
 LEXICON S_M_SGGEN_AR
  +Sg+Gen:%>ar DF_G_SGm ;
+ +Sg+Gen:%>ar R ; ! gen compound
 
 ! Plural forms
 
@@ -2125,16 +2108,7 @@ LEXICON S_M_PLNOM_NULL
 LEXICON S_M_PLNOM_NULL_NULL
   +Pl+Nom:     DF_N_PLm_indef ;
   +Pl+Nom:     DF_N_PLm_def   ;
-
-!LEXICON S_M_PLNOM_NULL_IR
-! +Pl+Nom:     DF_N_PLm_indef ;
-! +Pl+Nom:%>ir DF_N_PLm_def   ;
-
-!LEXICON S_M_PLNOM_NULL_I_IR
-! +Pl+Nom:     DF_N_PLm_indef ;
-! +Pl+Nom:%>i  DF_N_PLm_def   ; !SUB Bible
-! +Pl+Nom:%>ir DF_N_PLm_def   ;
-
+  
 
 ! Accusative
 
@@ -2155,22 +2129,6 @@ LEXICON S_M_PLACC_NULL_NULL
   +Pl+Acc:     DF_A_PLm_indef ;
   +Pl+Acc:     DF_A_PLm_def   ;
 
-!LEXICON S_M_PLACC_NULL_IR
-! +Pl+Acc:     DF_A_PLm_indef ;
-! +Pl+Acc:%>ir DF_A_PLm_def   ;
-
-!LEXICON S_M_PLACC_NULL_I_IR
-! +Pl+Acc:     DF_A_PLm_indef ;
-! +Pl+Acc:%>ir DF_A_PLm_def   ;
-! +Pl+Acc:%>ir DF_A_PLm_def   ;
-
-! +Pl+Acc:%>ir DF_A_PLm_def   ;
-! +Pl+Acc:%>ir DF_A_PLm_def   ;
-
-
-!LEXICON S_M_PLACC_NULL_I
-! +Pl+Acc:     DF_A_PLm_I     ;
-
 
 ! Dative
 
@@ -2184,7 +2142,7 @@ LEXICON S_M_PLDATm ! skóm
 
 LEXICON S_M_PLGEN
  +Pl+Gen:%>a DF_G_PL ;
- +Pl+Gen:%>a R       ; !XXX
+ +Pl+Gen:%>a R       ; ! gen pl compound
 
 
 ! Feminine forms
@@ -2200,8 +2158,9 @@ LEXICON W_F_SGNOM
 LEXICON S_F_SGNAD
  +Sg+Nom: DF_N_SGf_S ;
  +Sg+Acc: DF_A_SGf_S ;
+ +Sg+Acc: R ; ! stem compound
  +Sg+Dat: DF_D_SGf_S ;
-
+ 
 ! Oblique
 
 LEXICON W_F_SGOBL
@@ -2211,6 +2170,7 @@ LEXICON W_F_SGOBL
 
 LEXICON S_F_SGGEN
  +Sg+Gen:%>ar DF_G_SGf_S ;
+ +Sg+Gen:%>ar R ; ! gen compound
 
 LEXICON S_F_SGGEN_NULL
  +Sg+Gen: DF_G_SGf_S ;
@@ -2241,6 +2201,7 @@ LEXICON F_PLDAT
 
 LEXICON F_PLGEN
  +Pl+Gen:%>a DF_G_PL ;
+ +Pl+Gen:%>a R ; ! gen compound
 
 
 ! Neuter forms
@@ -2249,7 +2210,8 @@ LEXICON F_PLGEN
 LEXICON S_N_SGNA
  +Sg+Nom: DF_NA_SGn ;
  +Sg+Acc: DF_NA_SGn ;
-
+ +Sg+Acc: R ; ! stem compound
+ 
 LEXICON S_N_SGDG
  +Sg+Dat: DF_D_SGn ;
  +Sg+Gen: DF_G_SGn ;
@@ -2310,9 +2272,11 @@ LEXICON N_PLD_0_U
 
 LEXICON N_PLG
  +Pl+Gen:%>a DF_G_PL ;
+ +Pl+Gen:%>a R ;
 
 LEXICON N_PLG_na
  +Pl+Gen:%>na DF_G_PL ;
+ +Pl+Gen:%>na R ;
 
 ! Common cases
 

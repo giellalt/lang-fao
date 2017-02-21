@@ -11,7 +11,7 @@
 # ========== #
 
 
-DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
+DELIMITERS = "<.>" "<!>" "<?>" "<¶>" sent ;
 
 
 
@@ -204,7 +204,7 @@ SET SOMEACCDATPREP = ACCDATPREP | ACCDATGENPREP ;
 # Boundary sets
 
 SET S-BOUNDARY = CS | Interr | (";") | (":") | BOS | EOS ;
-SET S-BOUNDARY2 = CS | Interr | (";") | (":") | BOS | EOS | (@CVP) ;
+SET S-BOUNDARY2 = CS | Interr | (";") | (":") | BOS | EOS  ;
 
 # Complementary set
 

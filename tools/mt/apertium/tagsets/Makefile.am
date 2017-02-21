@@ -6,7 +6,7 @@
 TAGSET_SRCS=
 
 # List reorder regex source files here:
-REGEX_SRCS=
+REGEX_SRCS=modify-tags.regex
 
 clean-local:
 	rm -f *.hfst

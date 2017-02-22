@@ -69,7 +69,7 @@ Rules
 !!€ flýg000
 
 !!€ flúgv^VSH^VDEL>u
-!!€ flúg0000u
+!!€ flug0000u
 
 !!€ búgv^GVDEL>s
 !!€ bú0000s
@@ -99,14 +99,14 @@ Rules
 
 "Deleting m in um%>num "
 !! __@RULENAME@__ 
- m:0 <=>     %>: u _ %>: n u m ; 
-         g v %>:   _ %>: n u m ; 
+ m:0 <=> Cns: %>: u _ %>: n u m ; 
+         g v  %>:   _ %>: n u m ; 
 
-!ris>um>num
-!ris00u000num
+!!€ ris>um>num
+!!€ ris00u000num
 
-!skógv>m>num
-!skó0000000num
+!!€ skógv>m>num
+!!€ skó0000000num
 
 
 
@@ -302,7 +302,7 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 
 "Epenthetic deletion"
 !! __@RULENAME@__ 
- Vx:0 <=> Vow: Cns:* (%>:) _ (%>:) [ r | l | n ] %^EPH: ( Special:* ) %>: Vow ; !Vow ;
+ Vx:0 <=> Vow: Cns:* (%>:) _ (%>:) [ r: | l | n ] %^EPH: ( Special:* ) %>: Vow ; !Vow ;
       where Vx in (a i u) ;
  !Vow was commented out?
 
@@ -314,7 +314,11 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !!€ lyk0l00an
 
 !!€ aftan^EPH>
-!!€ aft0n00
+!!€ aftan00
+
+!!€ vakin^EPH>ir
+!!€ vak0n00ir
+
 
 
 "U-umlaut of Epenthetic vowel"
@@ -353,13 +357,13 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !! __@RULENAME@__ 
   a:ø <=> _ NonNas: NonNas:* (Nas) (Vow:) %^UUML: ;
   
-!!€ dag>^UUMLum
+!!€ dag^UUML>um
 !!€ døg00um
 
-!!€ sag>^UUMLa
+!!€ sag^UUML>a
 !!€ søg00a
 
-!!€ all>^UUML
+!!€ all^UUML>
 !!€ øll00
 
 
@@ -386,6 +390,11 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !!€ bógv^IUML>i
 !!€ bøg000i
 
+!!€ fjørð^IUML>i
+!!€ f0irð00i
+
+
+
 "eI-umlaut"
 !! __@RULENAME@__ 
  Vx:Vy <=> _ Cns:* %^eIUML: ;
@@ -397,11 +406,6 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !! __@RULENAME@__ 
  ó:ø <=> _ Cns:* u: r ( %^EPH: ) %^IUML: ;
 
-!!€ fjørð^IUML>i
-!!€ f0irð00i
-
-!!€ bjóð^IUML
-!!€ b0ýð0
 
 "Inverted U-umlaut from ø"
 !! __@RULENAME@__ 
@@ -429,15 +433,9 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !!€ dreing^EIO>i
 !!€ dro0ng00i
 
-"Suffix-initial vowel deletion for vowel-final stems"
-i:0 <=> i %>: _ ;
-          Cns _ n %^EPH: %>: Vow ;
-
-!!€ vakin^EPH>ir
-!!€ vak0n00ir
-
-!!€ alríki>ið
-!!€ alríki00ð
+!"Suffix-initial vowel deletion for vowel-final stems"
+!i:0 <=> i %>: _ ;
+   
 
 
 "Vowel deletion in front of na"
@@ -486,7 +484,7 @@ i:0 <=> i %>: _ ;
 !! __@RULENAME@__ 
 Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
 	where Vx in ( á ó í ú )
-		  Vy in ( a o i u )
+	      Vy in ( a o i u )
 		  matched ;
 
 
@@ -595,8 +593,8 @@ Vx:ý <=> _ Cns:+ %^AB7: ;
 !"Adjective neuter after ð"
 !t:0 <=> Vow Cns+ Vow ð %^EDH: %>: _ #: ;
 
-!!€ brekað>t
-!!€ brekað00
+! brekað>t
+! brekað00
 
 
 

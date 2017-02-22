@@ -92,16 +92,24 @@ Z
 ## Transition pair specifications + weight:
 a	á	8
 a	æ	4
+a	o	6
 b	p	4
 d	t	4
 d	ð	8
+ð	g	5
 e	é	8
-i	u	4
+g	ð	5
+g	k	4
+i	a	6
+i	u	5
 i	y	4
 i	í	8
+n	m	7
 o	ó	8
-u	i	4
+u	i	5
 u	ú	8
+v	ð	7
+v	g	7
 y	i	4
 y	ý	4
 á	a	8
@@ -110,14 +118,18 @@ y	ý	4
 é	e	8
 í	i	8
 í	ý	4
-ð	d	8
+ð	d	9
+ð	v	6
 ó	o	8
 ó	ø	4
+ø	ó	4
 ú	u	8
-ý	í	4
+ý	í	5
+
 
 
 ## Swaps:
 ## Change dh into hd with the weight 2:
 d,h	h,d	2
 g,ð	ð,g	2
+s,i	i,s	2

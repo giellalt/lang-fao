@@ -363,11 +363,17 @@ SET OBJ>-OTHERS = OBJ> OR (Gen) OR (Nom) OR (Ess) OR (Loc) OR (Adv) ;
 LIST @X = @X ;
 
 LIST Err/Orth 		= Err/Orth ;
+LIST Err/Orth-a-á = Err/Orth-a-á ;
+LIST Err/Orth-nom-gen = Err/Orth-nom-gen ;
+LIST Err/Orth-nom-acc = Err/Orth-nom-acc ;
 LIST Err/Lex        = Err/Lex ; 
 LIST Err/DerSub		= Err/DerSub ;
 LIST Err/CmpSub		= Err/CmpSub ;
 LIST Err/HyphSub	= Err/HyphSub ;
+LIST Err/Hyph	= Err/Hyph ;
+LIST Err/NoHyph	= Err/NoHyph ;
 LIST Err/SpaceCmp	= Err/SpaceCmp ;
+LIST Err/UnspaceCmp = Err/UnspaceCmp ;
 LIST Err/Spellrelax = Err/Spellrelax ;
 
 # Dialect tags
@@ -1970,19 +1976,45 @@ SECTION
 #         "dalle go" CS <W:0>
 # :\n
 
+	# SUBREADINGS:
+	# ------------
+#	oste#kake#bil
+#	0 = bil
+#	0/0 = bil
+#	0/1 = kake
+#	0/2 = oste
+#	0/-1 = oste
+#	0/-2 = kake
+#	0/-3 = bil
+
+	# RULES:
+	# ------
+REMOVE:unspacecmp (Err/Orth Adv Err/SpaceCmp) OR (Err/UnspaceCmp Adv Err/SpaceCmp);
+	## Dán illu boddui lei son čiŋadan sámi gávttiin , ja {dasa lassin} lei son ivdnehahttán vuovttaid alit fiskadin , nugo juo Álttá ivnnit leat .
+
 REMOVE:mielde (Err/SpaceCmp) (0/1 ("mielde"))(0 Allegro) ;
 	## Jus ovtta ja seamma áššis jerrojuvvo máŋgasa bealátvuođas , de ii sáhte oktage sis leat mielde mearrideame iežas dahje eará miellahtu bealátvuođa , eará go jus orgánas muđui ii livčče mearridanváldi gažaldagas .
 	
 	
 	## 08.12.03 beaiváduvvon reivves Sámediggái čujuha stáhtaráđđi čoahkkimii mii dollojuvvui 03.11.03 Sámedikkiin , ja čállá ahte departemeanta áigu bivdit čoahkkima gos guorahallat daid čuolbmačilgehusaid mat Sámedikki mielas leat deaŧalaččat ođđa minerálaláhkaárvalusas .
 
-# TODO: Ask Tino how to constraint that Cmp and Err/SpaceCmp are on the same Reading-group
-# REMOVE SUB:-1 (Cmp) (0/0 Err/SpaceCmp) ;
+ # TODO: Ask Tino how to constraint that Cmp and Err/SpaceCmp are on the same Reading-group
+ REMOVE SUB:-1 (Cmp) (0/0 Err/SpaceCmp) ;
 
-REMOVE:GenFirst (Err/SpaceCmp) (0/-1 Gen) ;
+	# Actio Gen is an exception here, the nominative/genitive form can only be used with postpositions
+
+LIST GENFIRST-EXCEPTIONS = "guovddáš" ;
+
+REMOVE:GenFirst (Err/SpaceCmp) (0/1 Gen - Err/Spellrelax - Err/Orth - Err/Orth-nom-gen)(NEGATE O/1 Actio OR GENFIRST-EXCEPTIONS) ;
 	## Stuorradikki Gieldda- ja hálddašanlávdegotti galledeami oktavuođas lágida Sámediggeráđđi beaivelahki seminára , guovvamánu 24. beaivvi diibmu ovccis gitta 12.00 rádjái , {sámi} giellavuoigatvuođaid birra árgabeaivvis .
 	## {Sámi} kulturráđđi lea vuollásaš ráđđi Sámedikkevuogádagas .
 	## Jagi 1994 ásahuvvui Sámi kulturmuitoráđđi Sámedikki vuollásažžan .
+	## Ill + gulli
+	#$ Institušuvnnat leat suohkanat , sámi guovddážat ,valáštallan organisašuvnnatja sullásaččat .
+	#$ Christer Kjønsø Karlsen Finnsnes Karátesearvvis , čuoigi Silje Wilsgård Forsøk valáštallansearvvis ja spábbačiekči Márjá Sofe H. Hætta Álttá valáštallansearvis ožžo {valáštallan stipeandda} 2011 .
+	#$ Mas gieđahallojuvvui sámegiela sadji ja atnu prográmmat.
+	## – Maiddái {guovddáš eiseválddit} fertejit čájehit ovttas vástádusa áššái ja addit gildii vejolašvuođa bisuhit dáid skuvllaid , lohká Skanke .
+	#$ – Sámediggeráđđi luohttá ahte Suodjalusdepartemeanta váldá 	vuhtii 	álgoálbmot vuoigatvuođaid go mearrida gos soahtegirdiid váldošillju galgá leat , lohká sámediggeráđi lahttu Vibeke Larsen maŋŋá go Ofuohta ja Mátta-Romssa guovlluráđit leat bidjan beaivválaš jođiheaddji bargat soahtegirdiid váldošillju ásahemiin Evenáššái . 
 
 REMOVE:TH-val (Err/SpaceCmp) (0/1 (<TH-Ill-Any>)) (0/0 (Ill)) (NEGATE *0 (V <TH-Ill-Any) BARRIER (V));
 	## Buot dáin lei atnu dávviriidda.
@@ -1992,13 +2024,49 @@ REMOVE:TH-val (Err/SpaceCmp) (0/1 (<TH-Ill-Any>)) (0/0 (Ill)) (NEGATE *0 (V <TH-
 REMOVE:illu-beaivvis (Err/SpaceCmp) (0/0 Sem/Time OR Sem/Plc LINK 0 Loc LINK -1 VFIN) (*-1 VFIN BARRIER NOT-ADV-PCLE LINK 0 COPULAS LINK 0 Sg3);
 	## Movttegis eamit lea illu beaivvis.
 	#$ TODO
+	
+	# idiosyncratic rules for expressions that are fine either way
+	
+REMOVE:guhkit-áigi (Err/SpaceCmp) (0/1 ("guhkki" A Pl Nom) OR ("guhkki" A Comp Sg Nom)) (0/0 ("áigi" N));
+	## Movttegis eamit lea illu beaivvis.
+	# other reading "guhkit áiggi"
+	# maybe there are more of those
+
+
+	# some nouns always have an attributive adjective reading 
+REMOVE:adj-noun-amb (Err/SpaceCmp) (0/-1 (".*laš"r));	
+	## mas leat eanemus báikkálaš kantuvrrat
 
 REMOVE (Err/SpaceCmp) (0/0 (TODO));
 	## Otne lea sihke neahtta-bálvalusain ja mobiillas atnu prográmmain.
+	
 
+	# Question particle or subjunction "go"
+	# -------------------------------------
 
-# If no rule above chose spacecmp, we assume it was *not* a compounding error:
-REMOVE:fallback SUB:* (Err/SpaceCmp) ;
+REMOVE (Err/SpaceCmp) (0/0 ("go"))(1 VFIN);
+	## Jiellevári 23-jahkásaš bárdni gii mannan vahkkoloahpa biddjui rájusgiddagassii go navdojuvvui ahte son lea jámas cábmán moarsis lea dál luitojuvvon friddja , eaige politiijat navdde šat su dahkat makkárge vearredagu .
+	# This is an important distinction and needs more attention and testing
+	
+	# Adverb type "bures" or A Attr
+	# -----------------------------
+	
+REMOVE (Err/SpaceCmp) (0/1 Adv)(0/0 V);
+	## Liikká orrot sii bures birgemin stuorát ja olmmošvallji birrasiin ..
+	# definitely needs some more attention and testing
+	
+	# A Attr
+	# ------
+	
+REMOVE (Err/SpaceCmp) (0/1 (A Attr));
+	## 	Dán doaimma , maid sáhtán bealistan dáhkidit , áiggun dárkilit čuovvut sierra čoahkkimiid bokte sihkkarastin dihti ovdáneami . 
+	
 
-# If we still have reanalyses, choose the longest tokenisation:
+	# Default rule
+	# ------------
+
+	# If no rule above chose spacecmp, we assume it was *not* a compounding error unless the noun-compounding reading is based on Spellrelax only:
+SELECT:fallback SUB:* (Err/SpaceCmp)(NEGATE 0/* Err/Spellrelax OR Err/UnspaceCmp) ;
+
+## If we still have reanalyses, choose the longest tokenisation:
 REMOVE:longest-match SUB:1 ("<.*>"r);

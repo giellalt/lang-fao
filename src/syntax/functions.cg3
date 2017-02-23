@@ -790,6 +790,7 @@ REMOVE (@SUBJ>) IF (0 (@<OPRED));
 REMOVE (@<ADVL) IF (0 (@<OPRED));
 # Postsyntactical verbal dis
 
+SELECT:SelOpr (@<OPRED) IF (0 (@<OBJ))(*-1C (@<OBJ) BARRIER S-BOUNDARY OR V);
 #SELECT:r116 Ind IF (NEGATE 0* VFIN);
 
 #SELECT Neu IF (0C (@<OPRED))(*-1 (@<OBJ) + Neu OR (@<OBJ) + ("tað"));

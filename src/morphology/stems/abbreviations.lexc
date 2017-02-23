@@ -32,13 +32,13 @@ LEXICON ab-nodot ! default
 +Abbr: # ;  ! no period, that is.
 
 LEXICON ab-dot ! Default
-+Abbr:%. # ;
++Abbr: DOT ;
 
 LEXICON ab-nodot-noun ! The bulk
 +Abbr+N: # ;  ! no period, that is.
 
 LEXICON ab-dot-noun ! This is the lexicon for abbrs that must have a period.
-+Abbr+N:%. # ;
++Abbr+N: DOT ;
 
 
 
@@ -106,6 +106,14 @@ LEXICON ab-dot-noun ! This is the lexicon for abbrs that must have a period.
 !LEXICON ab-nodot-verb
 ! +Abbr+V+TV+Imprt:    # ; ! No period.
 ! # ;
+
+
+LEXICON DOT   !!= * __@CODE@__ - Adds the dot to dotted abbreviations.
+
+! This one should create a new backtrack-point before the dot, but no sub-reading:
+< "@P.Pmatch.Backtrack@" 0:{.} > # ;
+! This one should create an mwe sub-reading:
+< "@P.Pmatch.Loc@" {.} "+PUNCT":0 "+Use/Disamb":0 > # ;
 
 
 

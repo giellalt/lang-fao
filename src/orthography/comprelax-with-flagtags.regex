@@ -1,0 +1,4 @@
+! Changes to be applied to an fst to get spell-relax with tags (by virtue of
+! flag diacritics):
+
+ %# (->) [ "@P.Pmatch.Backtrack@" " " "@P.SpaceCmp.ON@" ] || \[ "-" | "😱" ] _ ;

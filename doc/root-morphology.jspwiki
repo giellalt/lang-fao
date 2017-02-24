@@ -77,6 +77,10 @@ with verbs if the verb is further derived into a noun again:
  | @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
  | @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
 
+ | @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
+
+
+
 For languages that allow compounding, the following flag diacritics are needed
 to control position-based compounding restrictions for nominals. Their use is
 handled automatically if combined with +CmpN/xxx tags. If not used, they will

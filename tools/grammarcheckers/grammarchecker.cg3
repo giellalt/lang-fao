@@ -1,12 +1,32 @@
-# -*- cg-pre-pipe: "$GTHOME/giella-core/scripts/preprocess --abbr=$GTHOME/langs/fao/tools/preprocess/abbr.txt | hfst-optimised-lookup  $GTHOME/langs/fao/src/analyser-disamb-gt-desc.hfstol | $GTHOME/giella-core/scripts/lookup2cg" -*-
-
-
 # ===================== #
 # Faroese disambiguator #
 # ===================== #
 
-
-# echo "Eg farið heim." | preprocess --abbr=$GTHOME/langs/fao/tools/preprocess/abbr.txt | lookup -flags mbTT -utf8 ~/main/langs/fao/src/analyser-disamb-gt-desc.xfst | lookup2cg | vislcg3 -g ~/main/langs/fao/src/syntax/disambiguation.cg3 -t | vislcg3 -g ~/main/langs/fao/tools/grammarcheckers/grammarchecker.cg3 -t 
+# ---------------------- #
+#   Development setup:   #
+# ---------------------- #
+#
+# cd $GTHOME/langs/fao
+# ./autogen.sh
+# ./configure --enable-apertium --with-hfst --enable-syntax --enable-grammarchecker --enable-tokenisers --enable-alignment --enable-reversed-intersect
+# make
+# cd tools/grammarcheckers
+# make dev
+#
+# ---------------------- #
+#   Then edit/test as:   #
+# ---------------------- #
+#
+# emacs grammarchecker.cg3  # and C-c C-i / C-c C-c if you have cg-mode installed
+# echo "Eg farið avstað." | sh modes/faogram.mode  # from the terminal
+#
+# ---------------------- #
+#   Other debug-pipes:   #
+# ---------------------- #
+#
+# ls modes/
+#
+# ---------------------- #
 
 
 # ========== #

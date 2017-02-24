@@ -1771,8 +1771,8 @@ LEXICON h18 ! týggi
   h_flt18 ;
 
 LEXICON h18e
- +N+Neu: i_N_SGNA    ;
- +N+Neu: i_N_SGDG_is ;
+ +N+Neu: 0_N_SGNA    ;
+ +N+Neu:%>is S_N_SGDG ;
 
 LEXICON h_flt18
  +N+Neu: N_PLNA ;
@@ -2235,6 +2235,12 @@ LEXICON S_N_SGG_s
 
 LEXICON S_N_SGG_is
  +Sg+Gen:%>is DF_G_SGn ;
+
+LEXICON 0_N_SGNA
+ +Sg+Nom: DF_NA_SGn_indef ;
+ +Sg+Nom: DF_NA_SGn_def   ;
+ +Sg+Acc: DF_NA_SGn_indef ;
+ +Sg+Acc: DF_NA_SGn_def   ;
 
 LEXICON i_N_SGNA
  +Sg+Nom:%>i DF_NA_SGn_indef ;

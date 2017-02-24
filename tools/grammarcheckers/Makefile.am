@@ -14,5 +14,7 @@ GT_GC_ZDISTRO=grammarchecker.zhfst
 
 include $(top_srcdir)/am-shared/tools-grammarcheckers-dir-include.am
 
-modes/faogram.mode: modes.xml
+dev: modes/$(GTLANG)gram.mode
+
+modes/%.mode: modes.xml
 	apertium-gen-modes modes.xml

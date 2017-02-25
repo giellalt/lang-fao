@@ -432,6 +432,9 @@ MAP (@-FMAINV) TARGET Inf IF (-1 ("at") LINK -1* VFIN) ;
 	## Tað fær tíðin at vísa<@-FMAINV>
 # BARRIER NOT-ADV-NOUN? or might be a bit strict? -KBU
 
+MAP (@-FMAINV) TARGET Sup  IF (-1 ("at") LINK -1* VFIN) ;
+        ## Kanska skuldi eg fari at fingið mær ein kaffimunn ?
+
 MAP:infsubj (@-FSUBJ>) TARGET (N Pl Acc) IF (1 Inf);
 
 MAP:infsubj (@-FSUBJ>) TARGET NOMINALHEAD + Acc IF (*-1 VFIN BARRIER NPNH)(1 Inf);

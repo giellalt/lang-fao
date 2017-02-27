@@ -867,7 +867,7 @@ AC_ARG_ENABLE([apertium],
               [enable_apertium=no])
 AS_IF([test "x$enable_apertium" = "xyes" -a "x$new_enough_python_available" = "xno"], 
       [enable_apertium=no
-       AC_MSG_ERROR([Python3 missing or too old, Python 3.3 or newer required])])
+       AC_MSG_ERROR([Python3 missing or too old, Python 3.5 or newer required])])
 AS_IF([test "x$enable_apertium" = "xyes" -a "x$CG_RELABEL" = "xno"], 
       [enable_apertium=no
        AC_MSG_ERROR([Apertium enabled but cg-relabel not found. Please install Vislcg3.])])
@@ -982,10 +982,10 @@ dnl YAML test warning:
 AS_IF([test "x$enable_yamltests" == "xno"],
       [AC_MSG_WARN([YAML testing could not be automatically enabled. To enable it, on MacOSX please do:
 
-sudo port install python33
-sudo port install py-yaml subport=py33-yaml
+sudo port install python35 py35-pip
+sudo pip-3.5 install PyYAML
 
-On other systems, install python 3.3+ and the corresponding py-yaml using suitable tools for those systems.])])
+On other systems, install python 3.5+ and the corresponding py-yaml using suitable tools for those systems.])])
 
 ]) # gt_PRINT_FOOTER
 # vim: set ft=config: 

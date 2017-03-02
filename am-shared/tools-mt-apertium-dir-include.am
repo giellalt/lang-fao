@@ -268,9 +268,13 @@ analyser-mt-apertium-desc.%.tmp.hfst: \
 			analyser-mt-apertium-desc.%.tmp1.hfst \
 			tagsets/modify-tags.hfst \
 			$(srcdir)/tagsets/apertium.postproc.relabel
-	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
+	$(AM_V_RGX2FST)$(PRINTF) "\
+	   		@\"$<\" \
+		.o. @\"tagsets/modify-tags.hfst\" \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+		| $(HFST_SUBSTITUTE) $(HFSTFLAGS)  \
 		-F $(srcdir)/tagsets/apertium.postproc.relabel \
-		| $(HFST_COMPOSE) -F -2 tagsets/modify-tags.hfst \
 		-o $@
 
 # Step 1b.b - apertium.tmp1 -> apertium.tmp

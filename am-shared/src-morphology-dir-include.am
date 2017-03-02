@@ -37,9 +37,13 @@ endif # WANT_LEXC_ALIGNMENT
 #! @param GENERATED_LEXC_SRCS optional, space separated list of file names
 #!        holding supplementary lexicon data generated from xml files.
 #! @param GT_XML_SRCS optional, space separated list of xml source file names
+
+# Shared source files
+GT_SHARED_SRCS=url.lexc
+
 GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS_L1_L2) $(L1) $(L2) \
 				$(GENERATED_LEXC_SRCS) $(GT_XML_SRCS) $(GT_LOCAL_SRCS) \
-				$(GT_DISTRO_SRCS)
+				$(GT_SHARED_SRCS) $(GT_DISTRO_SRCS)
 
 # All sources need to be included in the tarball
 EXTRA_DIST=$(GT_LEXC_ALLSRC)
@@ -66,17 +70,20 @@ endif # CAN_FOMA
 GIELLA_LOCALTARGETS=
 # Generate the filter targets from the source filenames:
 if CAN_HFST
-GIELLA_LOCALTARGETS+=$(patsubst %.lexc,%.hfst,$(GT_LOCAL_SRCS))
+GIELLA_LOCALTARGETS+=\
+        $(patsubst %.lexc,%.hfst,$(GT_LOCAL_SRCS) $(GT_SHARED_SRCS))
 GIELLA_LOCALTARGETS+=$(patsubst %.xfscript,%.hfst,$(GT_LOCAL_XFSCRIPT_SRCS))
 endif # CAN_HFST
 
 if CAN_XFST
-GIELLA_LOCALTARGETS+=$(patsubst %.lexc,%.xfst,$(GT_LOCAL_SRCS))
+GIELLA_LOCALTARGETS+=\
+        $(patsubst %.lexc,%.xfst,$(GT_LOCAL_SRCS) $(GT_SHARED_SRCS))
 GIELLA_LOCALTARGETS+=$(patsubst %.xfscript,%.xfst,$(GT_LOCAL_XFSCRIPT_SRCS))
 endif # CAN_XFST
 
 if CAN_FOMA
-GIELLA_LOCALTARGETS+=$(patsubst %.lexc,%.foma,$(GT_LOCAL_SRCS))
+GIELLA_LOCALTARGETS+=\
+        $(patsubst %.lexc,%.foma,$(GT_LOCAL_SRCS) $(GT_SHARED_SRCS))
 GIELLA_LOCALTARGETS+=$(patsubst %.xfscript,%.foma,$(GT_LOCAL_XFSCRIPT_SRCS))
 endif # CAN_FOMA
 
@@ -130,6 +137,10 @@ lexicon.tmp.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 
 lexicon-L2.tmp.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_L2_SRCS) $(GENERATED_LEXC_SRCS)
 	$(AM_V_GEN)cat $^ > $@
+
+# Copy shared files to local dir before building:
+%.lexc: $(GIELLA_SHARED)/all_langs/src/morphology/%.lexc
+	$(AM_V_CP)cp -f $< $@
 
 ####### If reversed compose-intersect is enabled, reverse it here: #######
 %.rev.hfst: %.hfst

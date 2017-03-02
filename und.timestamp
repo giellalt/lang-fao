@@ -1,4 +1,10 @@
-$Rev: 149344 $
+$Rev: 149385 $
+Added support for compiling a lexc file for parsing URL's as such, giving them a
+separate tag. Only added to the descriptive analysers for now. Requires an
+updated version of giella-shared, due to the new file needed for the new
+functionality.
+
+r149344:
 Corrects an inconsistency in the order of tag changing processing, where
 generators and analysers got their tags changed in different order, which caused
 different tags in some cases. Fixes bug #2264. Thanks to Heiki-Jaan Kaalep for

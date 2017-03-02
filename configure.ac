@@ -52,7 +52,7 @@ _giella_core_min_version=0.2.40
 
 ### This is the version of the Giella Shared that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
-_giella_shared_min_version=0.1.1
+_giella_shared_min_version=0.1.2
 
 ### Required version of the Hfst tools:
 _required_hfst_version=3.12.0

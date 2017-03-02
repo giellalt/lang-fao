@@ -315,6 +315,7 @@ analyser-gt-desc.tmp.%: analyser-raw-gt-desc.%                \
 					filters/remove-orthography-tags.%         \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
+					morphology/url.%                          \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
@@ -339,6 +340,10 @@ analyser-gt-desc.tmp.%: analyser-raw-gt-desc.%                \
 			read regex fst \
 			.o. @\"orthography/inituppercase.compose.$*\"       \
 			.o. @\"orthography/spellrelax.compose.$*\"          \
+			;\n\
+			define uppercasedfst \n\
+			read regex [ uppercasedfst \
+			| @\"morphology/url.$*\" ]                          \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)

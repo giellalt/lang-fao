@@ -17,7 +17,6 @@ analyser-disamb-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
 					filters/remove-orthography-tags.%         \
 					filters/remove-usage-tags.%               \
 					filters/remove-variant-tags.%             \
-					morphology/url.%                          \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
@@ -41,10 +40,6 @@ analyser-disamb-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
 			.o. @\"orthography/inituppercase.compose.$*\"       \
 			.o. @\"orthography/spellrelax.compose.$*\"          \
 			;\n\
-			define uppercasedfst \n\
-			read regex [ uppercasedfst \
-			| @\"morphology/url.$*\" ]                          \
-			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
@@ -61,7 +56,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%      \
 					filters/remove-orthography-tags.%           \
 					filters/remove-usage-tags.%                 \
 					filters/remove-variant-tags.%               \
-					morphology/url.%                            \
 					orthography/spellrelax.$(1).compose.%       \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
@@ -83,10 +77,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%      \
 			.o. @\"orthography/$(DEFAULT_WS)-to-$(1).compose.$$*\" \
 			.o. @\"orthography/spellrelax.$(1).compose.$$*\"       \
 			;\n\
-			define uppercasedfst \n\
-			read regex [ uppercasedfst \
-			| @\"morphology/url.$$*\" ]                            \
-			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
 endef
@@ -105,7 +95,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-usage-tags.%                  \
 					filters/remove-variant-tags.%                \
 					filters/remove-Orth_IPA-strings.%            \
-					morphology/url.%                             \
 					orthography/spellrelax.$(1).compose.%        \
 					orthography/inituppercase.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.% \
@@ -129,10 +118,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 			read regex fst \
 			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			.o. @\"orthography/spellrelax.$(1).compose.$$*\"         \
-			;\n\
-			define uppercasedfst \n\
-			read regex [ uppercasedfst \
-			| @\"morphology/url.$$*\" ]                              \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)

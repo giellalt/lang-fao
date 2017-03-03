@@ -1,4 +1,13 @@
-$Rev: 149385 $
+$Rev: 149455 $
+Removed automatic inclusion of the url parsing fst. The union with the regular
+fst blew up the total, in some cases more than 10x! The preferred way of adding
+it is to add it in the last steps of the *.tmp.fst > *.fst processing by loading
+it onto the stack (and inverse it for hfst) before saving the fst stack, and
+thus creating a transducer file with two fst's. Applying the input to them both
+will in effect union them, giving the output we want without blowing up the size
+of the fst file.
+
+r149385:
 Added support for compiling a lexc file for parsing URL's as such, giving them a
 separate tag. Only added to the descriptive analysers for now. Requires an
 updated version of giella-shared, due to the new file needed for the new

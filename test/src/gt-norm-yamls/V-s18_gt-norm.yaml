@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - krevja: # 
+    krevja+V+Inf: krevja
+    krevja+V+Ind+Prs+3Sg: krevur
+    krevja+V+Ind+Prt+Sg: kravdi
+    krevja+V+Ind+Prt+Pl: kravdu
+    krevja+V+Sup: kravt
+    krevja+V+PrfPrc: kravdur

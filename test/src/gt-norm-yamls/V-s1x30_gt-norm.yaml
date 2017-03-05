@@ -1,0 +1,26 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - læga: # 
+    læga+V+Inf: læga
+    læga+V+Ind+Prs+3Sg: [lægir, lægar]
+    læga+V+Ind+Prt+Sg: lægdi, lægaði]
+    læga+V+Ind+Prt+Pl: [lægdu, lægaðu]
+    læga+V+Sup: [lægt, lægað]
+    læga+V+PrfPrc: [lægdur, lægaður]
+
+  Verb - læga: # 
+    skeina+V+Inf: skeina
+    skeina+V+Ind+Prs+3Sg: [skeinir, skeinar]
+    skeina+V+Ind+Prt+Sg: [skeindi, skeinaði]
+    skeina+V+Ind+Prt+Pl: [skeindu, skeinaðu]
+    skeina+V+Sup: [skeint, skeinað]
+    skeina+V+PrfPrc: [skeindur, skeinaður]

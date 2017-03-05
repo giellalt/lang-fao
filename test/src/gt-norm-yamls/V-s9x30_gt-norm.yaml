@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - stilla: # 
+    stilla+V+Inf: stilla
+    stilla+V+Ind+Prs+3Sg: [stillir, stillar]
+    stilla+V+Ind+Prt+Sg: stillaði
+    stilla+V+Ind+Prt+Pl: [stiltu, stillaðu]
+    stilla+V+Sup: [stilt, stillað]
+    stilla+V+PrfPrc: stillaður

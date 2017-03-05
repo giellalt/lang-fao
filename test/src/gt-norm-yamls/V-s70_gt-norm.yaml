@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - æra: # 
+    siga+V+Inf: siga
+    siga+V+Ind+Prs+3Sg: sigur
+    siga+V+Ind+Prt+3Sg: segði
+    siga+V+Ind+Prt+Pl: søgdu
+    siga+V+Sup: sagt
+    siga+V+PrfPrc: sagdur

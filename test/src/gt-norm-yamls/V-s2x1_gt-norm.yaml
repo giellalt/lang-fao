@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - mæla: # 
+    mæla+V+Inf: mæla
+    mæla+V+Ind+Prs+3Sg: mælir
+    mæla+V+Ind+Prt+Sg: mældi
+    mæla+V+Ind+Prt+Pl: [mæltu, mældu]
+    mæla+V+Sup: mælt
+    mæla+V+PrfPrc: mældur

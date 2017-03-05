@@ -1,0 +1,24 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - flúga: # 
+    flúga+V+Inf: flúga
+    flúga+V+Ind+Prs+3Sg: flýgur
+    flúga+V+Ind+Prt+3Sg: fleyg
+    flúga+V+Ind+Prt+Pl: flugu
+    flúga+V+Sup: flogið
+
+  Verb - flúgva: # 
+    flúgva+V+Inf: flúgva
+    flúgva+V+Ind+Prs+3Sg: flýgur
+    flúgva+V+Ind+Prt+3Sg: fleyg
+    flúgva+V+Ind+Prt+Pl: flugu
+    flúgva+V+Sup: flogið

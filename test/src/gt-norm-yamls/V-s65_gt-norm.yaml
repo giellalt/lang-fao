@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - standa: # 
+    standa+V+Inf: standa
+    standa+V+Ind+Prs+3Sg: stendur
+    standa+V+Ind+Prt+3Sg: stóð
+    standa+V+Ind+Prt+Pl: stóðu
+    standa+V+Sup: staðið
+

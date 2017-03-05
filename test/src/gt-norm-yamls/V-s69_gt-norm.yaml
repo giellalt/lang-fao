@@ -1,0 +1,16 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - sláa: # 
+    sláa+V+Inf: sláa
+    sláa+V+Ind+Prs+3Sg: slær
+    sláa+V+Ind+Prt+3Sg: sló
+    sláa+V+Inf: sláa

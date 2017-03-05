@@ -1,0 +1,17 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - klippa: # 
+    klippa+V+Inf: klippa
+    klippa+V+Ind+Prs+3Sg: klippir
+    klippa+V+Ind+Prt+Pl: kliptu
+    klippa+V+Sup: klipt
+

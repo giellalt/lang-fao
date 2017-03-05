@@ -1,0 +1,17 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - æra: # 
+    hvørva+V+Inf: hvørva
+    hvørva+V+Ind+Prs+3Sg: hvørvir
+    hvørva+V+Ind+Prt+Sg: [hvørvdi, hvørvdu]
+    hvørva+V+Sup: hvørvt
+    hvørva+V+PrfPrc: hvørvdur

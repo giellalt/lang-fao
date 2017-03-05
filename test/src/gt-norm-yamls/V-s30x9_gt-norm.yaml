@@ -1,0 +1,16 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - kippa: # 
+    kippa+V+Inf: kippa
+    kippa+V+Ind+Prs+3Sg: kippir
+    kippa+V+Ind+Prt+Pl: kiptu
+    kippa+V+Sup: kipt

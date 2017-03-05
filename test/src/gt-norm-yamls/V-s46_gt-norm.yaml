@@ -1,0 +1,16 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - stinga: # 
+    stinga+V+Inf: stinga
+    stinga+V+Inf: stinga
+    stinga+V+Ind+Prs+3Sg: stingur
+    stinga+V+Ind+Prt+3Sg: stakk

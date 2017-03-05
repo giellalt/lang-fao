@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - biðja: # 
+    biðja+V+Inf: biðja
+    biðja+V+Ind+Prs+3Sg: [biður, bað]
+    biðja+V+Ind+Prt+Pl: bóðu
+    biðja+V+Sup: biðið
+    biðja+V+Inf: biðja
+

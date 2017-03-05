@@ -1,0 +1,17 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - doya: # 
+    doya+V+Inf: doya
+    doya+V+Ind+Prt+Sg: doyddi
+    doya+V+Ind+Prt+Pl: doyddu
+    doya+V+Sup: doytt
+    doya+V+PrfPrc: doyddur

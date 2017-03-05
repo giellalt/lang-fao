@@ -1,0 +1,17 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - láta: # 
+    láta+V+Inf: láta
+    láta+V+Ind+Prs+3Sg: letur
+    láta+V+Ind+Prt+3Sg: læt
+    láta+V+Ind+Prt+Pl: lótu
+    láta+V+Sup: látið

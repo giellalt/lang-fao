@@ -1,0 +1,17 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - fúka: # 
+    fúka+V+Inf: fúka
+    fúka+V+Ind+Prs+3Sg: fýkur
+    fúka+V+Ind+Prt+3Sg: feyk
+    fúka+V+Ind+Prt+Pl: fuku
+    fúka+V+Sup: fokið

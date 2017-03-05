@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - hirða: # 
+    hirða+V+Inf: hirða
+    hirða+V+Ind+Prs+3Sg: hirðir
+    hirða+V+Ind+Prt+Sg: hirdi
+    hirða+V+Ind+Prt+Pl: hirdu
+    hirða+V+Sup: hirt
+    hirða+V+PrfPrc: hirdur

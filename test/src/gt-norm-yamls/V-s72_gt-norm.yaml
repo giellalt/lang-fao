@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - eta: # 
+    eta+V+Inf: eta
+    eta+V+Ind+Prs+3Sg: etur
+    eta+V+Ind+Prt+3Sg: át
+    eta+V+Ind+Prt+Pl: ótu
+    eta+V+Sup: etið
+    eta+V+Inf: eta

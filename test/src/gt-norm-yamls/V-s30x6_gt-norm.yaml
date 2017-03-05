@@ -1,0 +1,17 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - varða: # 
+    varða+V+Inf: varða
+    varða+V+Ind+Prt+Sg: vardi
+    varða+V+Ind+Prt+Pl: vardu
+    varða+V+Sup: vart
+    varða+V+PrfPrc: vardur

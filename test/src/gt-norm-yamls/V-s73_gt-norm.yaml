@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - læa: # 
+    læa+V+Inf: læa
+    læa+V+Ind+Prs+3Sg: læar
+    læa+V+Ind+Prt+Sg: læaði
+    læa+V+Ind+Prt+Pl: læaðu
+    læa+V+Sup: læað
+    læa+V+PrfPrc: læaður

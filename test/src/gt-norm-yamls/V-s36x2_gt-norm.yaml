@@ -1,0 +1,17 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - svíkja: # 
+    svíkja+V+Inf: svíkja
+    svíkja+V+Ind+Prs+3Sg: svíkur
+    svíkja+V+Ind+Prt+3Sg: sveik
+    svíkja+V+Ind+Prt+Pl: sviku
+    svíkja+V+Sup: svikið

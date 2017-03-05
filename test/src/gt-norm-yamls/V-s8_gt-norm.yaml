@@ -1,0 +1,34 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - bekenna: # 
+    bekenna+V+Inf: bekenna
+    bekenna+V+Ind+Prs+3Sg: bekennir
+    bekenna+V+Ind+Prt+Sg: bekendi
+    bekenna+V+Ind+Prt+Pl: bekendu
+    bekenna+V+Sup: bekent
+    bekenna+V+PrfPrc: bekendur
+
+  Verb - brenna: # 
+    brenna+V+Inf: brenna
+    brenna+V+Ind+Prs+3Sg: brennir
+    brenna+V+Ind+Prt+Sg: brendi
+    brenna+V+Ind+Prt+Pl: brendu
+    brenna+V+Sup: brent
+    brenna+V+PrfPrc: brendur
+
+  Verb - brynna: # 
+    brynna+V+Inf: brynna
+    brynna+V+Ind+Prs+3Sg: brynnir
+    brynna+V+Ind+Prt+Sg: bryndi
+    brynna+V+Ind+Prt+Pl: bryndu
+    brynna+V+Sup: brynt
+    brynna+V+PrfPrc: bryndur

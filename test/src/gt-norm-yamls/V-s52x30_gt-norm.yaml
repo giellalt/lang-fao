@@ -1,0 +1,17 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - veva: # 
+    veva+V+Inf: veva
+    veva+V+Ind+Prs+3Sg: vevur
+    veva+V+Ind+Prt+3Sg: vav
+    veva+V+Ind+Prt+Pl: vóvu
+    veva+V+Sup: vovið

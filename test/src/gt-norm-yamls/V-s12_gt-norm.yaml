@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - boyggja: # 
+    boyggja+V+Inf: boyggja
+    boyggja+V+Ind+Prs+3Sg: boyggir
+    boyggja+V+Ind+Prt+Sg: boygdi
+    boyggja+V+Ind+Prt+Pl: boygdu
+    boyggja+V+Sup: boygt
+    boyggja+V+PrfPrc: boygdur

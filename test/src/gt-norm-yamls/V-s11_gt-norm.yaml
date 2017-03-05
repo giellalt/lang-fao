@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - vakja: # 
+    vakja+V+Inf: vakja
+    vakja+V+Ind+Prs+3Sg: vakir
+    vakja+V+Ind+Prt+Sg: vakti
+    vakja+V+Ind+Prt+Pl: vaktu
+    vakja+V+Sup: vakt
+
+  Verb - roykja: # 
+    roykja+V+Inf: roykja
+    roykja+V+Ind+Prs+3Sg: roykir
+    roykja+V+Ind+Prt+Sg: roykti
+    roykja+V+Ind+Prt+Pl: royktu
+    roykja+V+Sup: roykt
+    roykja+V+PrfPrc: royktur

@@ -1,0 +1,20 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - leggja: # 
+    leggja+V+Inf: leggja
+    leggja+V+Inf: leggja
+    leggja+V+Ind+Prs+3Sg: leggur
+    leggja+V+Ind+Prt+Sg: legði
+    leggja+V+Ind+Prt+Pl: løgdu
+    leggja+V+Sup: lagt
+    leggja+V+PrfPrc: lagdur
+    leggja+V+Inf: leggja

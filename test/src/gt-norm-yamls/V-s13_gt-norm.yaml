@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - søkja: # 
+    søkkja+V+Inf: søkkja
+    søkkja+V+Ind+Prs+3Sg: søkkir
+    søkja+V+Ind+Prt+Sg: søkti
+    søkja+V+Ind+Prt+Pl: søktu
+    søkja+V+Sup: søkt
+    søkja+V+PrfPrc: søktur

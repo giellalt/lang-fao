@@ -1,0 +1,21 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - skjóla: # 
+    skjóla+V+Inf: skjóla
+    skjóla+V+Ind+Prs+3Sg: skjólir
+    skjóla+V+Ind+Prs+3Sg: skjólar
+    skjóla+V+Ind+Prt+Sg: skjólaði
+    skjóla+V+Ind+Prt+Pl: skjóltu
+    skjóla+V+Ind+Prt+Pl: skjólaðu
+    skjóla+V+Sup: skjólt
+    skjóla+V+Sup: skjólað
+    skjóla+V+PrfPrc: skjólaður

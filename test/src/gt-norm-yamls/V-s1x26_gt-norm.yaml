@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - mála: # 
+    mála+V+Inf: mála
+    mála+V+Ind+Prs+3Sg: [málir, málar]
+    mála+V+Ind+Prt+Sg: [máldi, málaði]
+    mála+V+Ind+Prt+Pl: [máldu, málaðu]
+    mála+V+Sup: [mált, málað]
+    mála+V+PrfPrc: [máldur, málaður]

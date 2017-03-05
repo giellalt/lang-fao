@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - vanyrða: # 
+    vanyrða+V+Inf: vanyrða
+    vanyrða+V+Ind+Prs+3Sg: [vanyrðir, vanyrðar]
+    vanyrða+V+Ind+Prt+Sg: vanyrdi
+    vanyrða+V+Ind+Prt+Pl: vanyrdu
+    vanyrða+V+Sup: vanyrt
+    vanyrða+V+PrfPrc: vanyrdur

@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - berja: # 
+    berja+V+Inf: berja
+    berja+V+Ind+Prt+Sg: bardi
+    berja+V+Ind+Prt+Pl: bardu
+    berja+V+Sup: bart
+    berja+V+PrfPrc: bardur
+    berja+V+Inf: berja

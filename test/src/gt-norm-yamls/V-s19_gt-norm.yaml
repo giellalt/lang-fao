@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - dylja: # 
+    dylja+V+Inf: dylja
+    dylja+V+Ind+Prs+3Sg: dylur
+    dylja+V+Ind+Prt+Sg: duldi
+    dylja+V+Ind+Prt+Pl: duldu
+    dylja+V+Sup: dult
+    dylja+V+PrfPrc: duldur

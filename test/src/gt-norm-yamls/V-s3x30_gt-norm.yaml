@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - æra: # 
+    skreiða+V+Inf: skreiða
+    skreiða+V+Ind+Prs+3Sg: [skreiðir, skreiðar]
+    skreiða+V+Ind+Prt+Sg: [skreiddi, skreiðaði]
+    skreiða+V+Ind+Prt+Pl: [skreiddu, skreiðaðu]
+    skreiða+V+Sup: [skreitt, skreiðað]
+    skreiða+V+PrfPrc: [skreiddur, skreiðaður]

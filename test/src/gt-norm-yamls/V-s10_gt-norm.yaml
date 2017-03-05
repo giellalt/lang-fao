@@ -1,0 +1,26 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - elgja: # 
+    elgja+V+Inf: elgja
+    elgja+V+Ind+Prs+3Sg: elgir
+    elgja+V+Ind+Prt+Sg: elgdi
+    elgja+V+Ind+Prt+Pl: elgdu
+    elgja+V+Sup: elgt
+    elgja+V+PrfPrc: elgdur
+
+  Verb - belgja: # 
+    belgja+V+Inf: belgja
+    belgja+V+Ind+Prs+3Sg: belgir
+    belgja+V+Ind+Prt+Sg: belgdi
+    belgja+V+Ind+Prt+Pl: belgdu
+    belgja+V+Sup: belgt
+    belgja+V+PrfPrc: belgdur

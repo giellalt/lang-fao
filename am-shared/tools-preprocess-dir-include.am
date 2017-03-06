@@ -109,7 +109,9 @@ analyser_relabelled-%-gt-desc.hfst: analyser-%-gt-desc.hfst \
 		-o $@
 
 # This is the real tokeniser build target:
-tokeniser-%.pmhfst: tokeniser-%.pmscript analyser_relabelled-%.hfst
+tokeniser-%.pmhfst: tokeniser-%.pmscript \
+                    analyser_relabelled-%.hfst \
+                    ../../src/morphology/url.hfst
 	$(AM_V_PM2FST)$(HFST_PMATCH2FST) < $< > $@
 
 # Helper fst one:

@@ -1,4 +1,8 @@
-$Rev: 149455 $
+$Rev: 149543 $
+Make the url.hfst a dependent of the hfst tokenising analyser. Improved the
+tokeniser based on recent changes in sme.
+
+r149455:
 Removed automatic inclusion of the url parsing fst. The union with the regular
 fst blew up the total, in some cases more than 10x! The preferred way of adding
 it is to add it in the last steps of the *.tmp.fst > *.fst processing by loading

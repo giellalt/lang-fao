@@ -63,7 +63,11 @@ $(GT_DIC_HYPHENATOR): $(GT_TEX_HYPHENATOR)
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.txt pattmp* *.pat *.tex *.dic
+	-rm -f *.hfst hyphenated-fst-wordlist.txt pattmp* *.pat
+
+# Only delete generated dic and tex files if you really want to start anew:
+maintainer-clean-local:
+	-rm -f *.tex *.dic
 
 include $(top_srcdir)/am-shared/silent_build-include.am
 include $(top_srcdir)/am-shared/lookup-include.am

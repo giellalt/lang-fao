@@ -36,12 +36,15 @@ set need-separators off
 
 Define morphology @bin"analyser_relabelled-gramcheck-gt-desc.hfst" ;
 
-Define incondform      Punct | {…} ;
+Define url @bin"../../src/morphology/url.hfst".i ;
+
+Define incondform      Punct | {“} | {”} | {…} | {­} ;
 
 Define blank           Whitespace | incondform ;
 
 Define incondword       morphology & [ incondform 0:?* ] ;
 Define morphoword       morphology                   LC([blank | #]) RC([blank | # ]);
+Define urlword          url                          LC([blank | #]) RC([blank | # ]);
 
 !! Apart from what's in our morphology, there are
 !! 1) unknown word-like forms, and
@@ -75,6 +78,6 @@ Define unknownwordEmpty unknownform:0 LC([blank | #]) RC([[blank ] | # ]);
 !! Needs hfst-tokenise to output things differently depending on the tag they get
 
 
-Define token [ morphoword | unknownwordEmpty | incondword ] EndTag(token);
+Define token [ morphoword | unknownwordEmpty | incondword | urlword ] EndTag(token);
 
 regex token ;

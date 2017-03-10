@@ -1,0 +1,18 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+
+  Verb - klippa: # 
+    klippa+v2+V+Inf: klippa
+    klippa+v2+V+Ind+Prs+3Sg: klippiar
+    klippa+v2+V+Ind+Prt+Sg: klippaði
+    klippa+v2+V+Ind+Prt+Pl: klippaðu
+    klippa+v2+V+Sup: klippað
+    klippa+v2+V+PrfPrc: klippaður

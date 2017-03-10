@@ -1,0 +1,55 @@
+
+Her kjem eit oversyn over testresultat
+
+
+!!! 4.3. 2017
+
+
+SUMMARY for the gt-norm fst(s): PASSES: 30428 / FAILS: 1104 / TOTAL: 31532
+
+!V-a_gt-norm.yaml
+
+
+
+{{{
+[ 62/160][PASS] avtapa+V+Ind+Prs+3Sg => avtapar
+[ 62/160][FAIL] avtapa+V+Ind+Prs+3Sg => Unexpected results: avtapir
+[ 63/160][PASS] avtapa+V+Ind+Prt+Sg => avtapaði
+[ 63/160][FAIL] avtapa+V+Ind+Prt+Sg => Unexpected results: avtapti
+[ 64/160][PASS] avtapa+V+Ind+Prt+Pl => avtapaðu
+[ 64/160][FAIL] avtapa+V+Ind+Prt+Pl => Unexpected results: avtaptu
+[ 65/160][PASS] avtapa+V+Sup => avtapað
+[ 65/160][FAIL] avtapa+V+Sup => Unexpected results: avtapt
+[ 66/160][PASS] avtapa+V+PrfPrc => avtapaður
+[ 66/160][FAIL] avtapa+V+PrfPrc => Unexpected results: avtaptur
+[ 80/160][PASS] andstøða+V+Ind+Prs+3Sg => andstøðar
+[ 80/160][FAIL] andstøða+V+Ind+Prs+3Sg => Unexpected results: andstøðir
+[ 81/160][PASS] andstøða+V+Ind+Prt+Sg => andstøðaði
+[ 81/160][FAIL] andstøða+V+Ind+Prt+Sg => Unexpected results: andstøddi
+[ 82/160][PASS] andstøða+V+Ind+Prt+Pl => andstøðaðu
+[ 82/160][FAIL] andstøða+V+Ind+Prt+Pl => Unexpected results: andstøddu
+[ 83/160][PASS] andstøða+V+Sup => andstøðað
+[ 83/160][FAIL] andstøða+V+Sup => Unexpected results: andstøtt
+[ 84/160][PASS] andstøða+V+PrfPrc => andstøðaður
+[ 84/160][FAIL] andstøða+V+PrfPrc => Unexpected results: andstøddur
+
+[124/160][PASS] avhenda+V+Ind+Prs+3Sg => avhendar
+[124/160][FAIL] avhenda+V+Ind+Prs+3Sg => Unexpected results: avhendir
+[125/160][PASS] avhenda+V+Ind+Prt+Sg => avhendaði
+[125/160][FAIL] avhenda+V+Ind+Prt+Sg => Unexpected results: avhendi
+[126/160][PASS] avhenda+V+Ind+Prt+Pl => avhendaðu
+[126/160][FAIL] avhenda+V+Ind+Prt+Pl => Unexpected results: avhendu
+[127/160][PASS] avhenda+V+Sup => avhendað
+[127/160][FAIL] avhenda+V+Sup => Unexpected results: avhent
+[128/160][PASS] avhenda+V+PrfPrc => avhendaður
+[128/160][FAIL] avhenda+V+PrfPrc => Unexpected results: avhendur
+}}}
+
+! V-s9x30_gt-norm.yaml
+{{{
+[3/6][PASS] stilla+V+Ind+Prt+Sg => stillaði
+[3/6][FAIL] stilla+V+Ind+Prt+Sg => Unexpected results: stildi
+
+[6/6][PASS] stilla+V+PrfPrc => stillaður
+[6/6][FAIL] stilla+V+PrfPrc => Unexpected results: stildur
+}}}

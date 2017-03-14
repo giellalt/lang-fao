@@ -135,9 +135,6 @@ for f in $fsttype; do
     fi
 done
 
-# When done, remove the generated data file:
-rm -f $lemmas
-
 # At least one of the Xerox or HFST tests failed:
 if [ "$Fail" = "1" ]; then
     exit 1
@@ -147,3 +144,6 @@ if [ $transducer_found -eq 0 ]; then
     echo ERROR: No transducer found
     exit 77
 fi
+
+# When done, remove the generated data file:
+rm -f $lemmas

@@ -53,6 +53,35 @@ htokenise_true=x
 # move into devtools dir in the build dir:
 cd $abs_top_builddir/devtools
 
+function print_usage() {
+    echo "Usage: $0 [OPTIONS...]"
+    echo "Test the hfst-ospell-office command line speller using typos data"
+    echo
+    echo "  -h, --help          Print this usage info"
+    echo "  -d, --diff-hfsttok  Open a graphical diff view at the end with"
+    echo "                      differences between the old-style preprocess +"
+    echo "                      lookup + lookup2cg vs the new hfst-tokenise"
+    echo "                      tokenise and lookup in one go."
+    echo
+}
+
+# Wrong usage - short instruction:
+if test $# -ge 2 ; then
+    print_usage
+    exit 1
+fi
+
+# manual getopt loop... Mac OS X does not have good getopt
+while test $# -ge 1 ; do
+    if test x$1 = x--help -o x$1 = x-h ; then
+        print_usage
+        exit 0
+    elif test x$1 = x--diff-hfsttok -o x$1 = x-d ; then
+        old_new_diff="yes"
+    fi
+    shift
+done
+
 function open_diffs() {
     if test ! -f $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt; then
         echo "First time run!"
@@ -105,6 +134,9 @@ function run_htokeniser_tests() {
       > $morpha_corpus.htokoldcomp.txt
     run_cg_tests
 	open_diffs
+    if test "x$old_new_diff" == "xyes" ; then
+	   opendiff $morpha_corpus.hfstol.txt $morpha_corpus.htokoldcomp.txt
+	fi
 }
 
 # Loop over the enabled transducer types - we test all that are configured:

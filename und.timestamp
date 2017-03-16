@@ -1,4 +1,9 @@
-$Rev: 150008 $
+$Rev: 150035 $
+Further improvements to the analysis regression check: only do function and
+dependency analysis if the required cg3 files exist. Also clarified the -d
+option and silenced the Xerox lookup tool.
+
+r150021:
 Improved analysis regression check script: added a short help text, and added an
 option to ask for a diff between old-style (preprocess+lookup+lookup2cg) and
 new-style (hfst-tokenise+mwe-disamb+cg-mwesplit) morphological analysis.

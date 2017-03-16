@@ -61,7 +61,9 @@ function print_usage() {
     echo "  -d, --diff-hfsttok  Open a graphical diff view at the end with"
     echo "                      differences between the old-style preprocess +"
     echo "                      lookup + lookup2cg vs the new hfst-tokenise"
-    echo "                      tokenise and lookup in one go."
+    echo "                      tokenise and lookup in one go. This option has"
+    echo "                      an effect only when both hfst and tokenisers"
+    echo "                      are enabled."
     echo
 }
 
@@ -100,12 +102,16 @@ function run_cg_tests() {
     $vislcg3 -g $disambiguator \
       < $morpha_corpus.$fstsuffix.txt \
       > $disamb_corpus.$fstsuffix.txt
-    $vislcg3 -g $functions_cg \
-      < $disamb_corpus.$fstsuffix.txt \
-      > $functn_corpus.$fstsuffix.txt
-    $vislcg3 -g $dependencies \
-      < $functn_corpus.$fstsuffix.txt \
-      > $depend_corpus.$fstsuffix.txt
+    if test -f $functions_cg ; then
+        $vislcg3 -g $functions_cg \
+          < $disamb_corpus.$fstsuffix.txt \
+          > $functn_corpus.$fstsuffix.txt
+        if test -f $dependencies ; then
+            $vislcg3 -g $dependencies \
+              < $functn_corpus.$fstsuffix.txt \
+              > $depend_corpus.$fstsuffix.txt
+        fi
+    fi
 }
 
 function run_tests() {
@@ -143,7 +149,7 @@ function run_htokeniser_tests() {
 for f in $fsttype; do
 	# Determine the fst filename suffix based on fst engine:
 	if test $f == "xfst"; then
-		lookuptool="$xerox_lookup -flags mbTT"
+		lookuptool="$xerox_lookup -q -flags mbTT"
 		fstsuffix="xfst"
 		run_tests
 	elif test $f == "foma"; then

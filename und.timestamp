@@ -1,4 +1,11 @@
 $Rev: 150008 $
+Improved analysis regression check script: added a short help text, and added an
+option to ask for a diff between old-style (preprocess+lookup+lookup2cg) and
+new-style (hfst-tokenise+mwe-disamb+cg-mwesplit) morphological analysis.
+Intended to be used to find weak (and strong!) spots in the new-style
+morphological analysis.
+
+r150008:
 Added the first version of a $LANG/devtools/ script that will process a corpus
 with the available tools, and compare the result against the previous version in
 the svn repository. The idea is to be able to easily spot regressions in

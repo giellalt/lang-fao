@@ -77,6 +77,7 @@ AC_PATH_PROG(HFST_STRINGS2FST,       hfst-strings2fst,       false, $PATH$PATH_S
 AC_PATH_PROG(HFST_SUBSTITUTE,        hfst-substitute,        false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_SUBTRACT,          hfst-subtract,          false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_SUMMARIZE,         hfst-summarize,         false, $PATH$PATH_SEPARATOR$with_hfst)
+AC_PATH_PROG(HFST_TOKENISE,          hfst-tokenize,          false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_TWOLC,             hfst-twolc,             false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_TXT2FST,           hfst-txt2fst,           false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_XFST,              hfst-xfst,              false, $PATH$PATH_SEPARATOR$with_hfst)

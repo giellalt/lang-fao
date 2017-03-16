@@ -1,4 +1,11 @@
-$Rev: 149897 $
+$Rev: 150008 $
+Added the first version of a $LANG/devtools/ script that will process a corpus
+with the available tools, and compare the result against the previous version in
+the svn repository. The idea is to be able to easily spot regressions in
+analyses due to changes in the lexicons or CG rules. There are a number of rough
+edges, but it works.
+
+r149897:
 Only remove generated lemma files if the lemma generation tests succeeds.
 
 r149609:

@@ -1,4 +1,13 @@
-$Rev: 150035 $
+$Rev: 150101 $
+Further development of the analysis regression check: added support for diff
+views of all diff types, and now you can specify which diff view you want to see
+(and you must specify at least one). You can also override the default corpus,
+and specify a corpus of your own with the -c/--corpus option. Also corrected the
+initial description of the script in the help text, and added a diff view
+comparing the old pipeline using Xerox with the new pipeline using
+hfst-tokenise. This will help in finding unwanted differences between the two.
+
+r150035:
 Further improvements to the analysis regression check: only do function and
 dependency analysis if the required cg3 files exist. Also clarified the -d
 option and silenced the Xerox lookup tool.

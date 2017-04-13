@@ -1,6 +1,7 @@
 # Exceptional relabellings (incomplete):
 MAP (Ind) (indic);
 MAP (Pron) (prn);
+MAP (Det) (det);
 MAP (V) (vblex);
 MAP (CC) (cnjcoo);
 MAP (CS) (cnjsub);
@@ -13,18 +14,6 @@ MAP (<hom6>) (⁶);
 MAP (<hom7>) (⁷);
 MAP (<hom8>) (⁸);
 MAP (<hom9>) (⁹);
-MAP (Der/InchL) (der_inchl);
-MAP (Foc/ba) ("ba" pcle);
-MAP (Foc/bat) ("bat" pcle);
-MAP (Foc/be) ("be" pcle);
-MAP (Foc/ge) ("ge" pcle);
-MAP (Foc/gen) ("gen" pcle);
-MAP (Foc/ges) ("ges" pcle);
-MAP (Foc/gis) ("gis" pcle);
-MAP (Foc/hal) ("hal" pcle);
-MAP (Foc/han) ("han" pcle);
-MAP (Foc/naj) ("naj" pcle);
-MAP (Foc/son) ("son" pcle);
 MAP (Superl) (sup);
 MAP (Sup) (supn);
 MAP (Interr) (itg);
@@ -39,15 +28,15 @@ MAP (Comma) (cm);
 MAP (Cmpnd) (cmp);
 MAP (Cmpar) (comp);
 
-MAP (PxSg1) (px1sg);
-MAP (PxSg2) (px2sg);
-MAP (PxSg3) (px3sg);
-MAP (PxDu1) (px1du);
-MAP (PxDu2) (px2du);
-MAP (PxDu3) (px3du);
-MAP (PxPl1) (px1pl);
-MAP (PxPl2) (px2pl);
-MAP (PxPl3) (px3pl);
+MAP (Msc) (m);
+MAP (Fem) (f);
+MAP (Neu) (nt);
+
+MAP (Pass) (pass);
+
+MAP (1Sg) (p1 sg);
+MAP (2Sg) (p2 sg);
+MAP (3Sg) (p3 sg);
 
 MAP (Sg1) (p1 sg);
 MAP (Sg2) (p2 sg);
@@ -75,7 +64,7 @@ MAP (PUNCT) was_punct;
 MAP ("excl") ("!");
 
 MAP (Sem/Plc) (top) OR (sem_plc);
-MAP (Imprt) (imp);
+MAP (Imp) (imp);
 MAP (Po) (post);
 
 MAP (Prop) (np);

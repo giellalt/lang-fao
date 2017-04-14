@@ -765,6 +765,8 @@ REMOVE Indef IF (0 N + Def)  (1 CC)(2C N + Def);
 
 SELECT:UniformCC N + $$NAGD IF (*-1 CC BARRIER NPNH LINK -1 N + $$NAGD);
 
+SELECT $$NAGD IF (1 CC)(2C $$NAGD);
+SELECT $$NAGD IF (-11 CC)(-12C $$NAGD);
 
 # NP head disambiguation
 # ======================

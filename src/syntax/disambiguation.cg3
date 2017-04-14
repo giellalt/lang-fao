@@ -266,6 +266,10 @@ LIST BAREPLURALS = "barn" "fólk" "bygdafólk" "konufólk" ;
 ## Tú sært barn standa.
 
 
+# Word sets
+
+LIST TAD = "tað" ;
+
 
 
 ########################                  #########################
@@ -310,10 +314,18 @@ REMOVE N IF (*-1 SOMEDATPREP CBARRIER NPNH)(0 A + Dat)(1 N + Dat) ;
 REMOVE N IF (*-1 SOMEACCPREP CBARRIER NPNH)(0 A + Acc)(1 N + Acc) ;
 REMOVE N IF (*-1 SOMEACCDATPREP CBARRIER NPNH)(0 A + Dat OR A + Acc)(1 N + Dat OR N + Acc) ;
 
+
+# TAD
+
+REMOVE Det IF (NOT -2 Nom)(-1 V)(0 Pron + Nom)(NOT *1 N + Def BARRIER NPNHA);
+REMOVE Det IF (0 TAD + $$NAGD)(1C $$NAGD);
+
+
 # Adjective disambiguation
 # ------------------------
 
-
+SELECT:copular A + Neu + Sg + Nom + Indef IF (*-1 COPULA BARRIER NPNHA  LINK -1 TAD);
+## Tað er ógvuliga heitt
 
 REMOVE:r18 A + Fem IF (0  $$NAGD) (*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 REMOVE:r19 A + Msc IF (0  $$NAGD) (*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
@@ -331,6 +343,9 @@ REMOVE (V PrfPrc) IF (NOT *-1 AUX BARRIER S-BOUNDARY)(0 PrfPrc + A);
 REMOVE:NotPrtWhenA (V Ind Prt Pl) IF (-1 Det OR A)(0 A + $$NAGD)(*1 N + $$NAGD BARRIER NPNH);
 
 # Case disambiguation
+SELECT:TadNom Nom IF (0 TAD)(1 COPULA + 3Sg);
+
+
 SELECT:r21 $$NAGD IF (0C A)(*1C $$NAGD BARRIER NPNHA)(NOT 0 V); #XXX C?
 SELECT:r21b $$NAGD IF (0C A)(-*1C $$NAGD BARRIER NPNHA)(NOT 0 V); #XXX C?
 REMOVE:r22 $$NAGD IF (0 A)(*1C N BARRIER NPNHA LINK NOT 0 $$NAGD);
@@ -435,6 +450,11 @@ REMOVE:STRONGDATPREPVERB Acc IF (*-1 SOMEACCDATPREP BARRIER NPNH LINK *-1 S-BOUN
 # POS disambiguation
 # ==================
 
+# Adjectives
+
+#kalur
+
+REMOVE ("kala") IF (*-1 TAD + Dem)(0 ("kalur"));
 
 # Verbs
 
@@ -634,6 +654,9 @@ REMOVE Imp IF (NOT -1 BOS)(0 ("væl"))(NOT 1 ("um"));
 # væla 2 -di s 1: ~ um 1 bøta um, hjálpa upp á, umvæla, ~ um húsini 
 #     2 (sj.) hjúkla um, hugsa ikki um at ~ um meg
 
+# inni
+SELECT Adv IF (-1 V)(0 ("inni"))(1 Pr);
+
 # á
 REMOVE Interj IF (1 WORD)(0 ("á" Pr));
 REMOVE Interj IF (-1 V)(0 ("á" Pr));
@@ -653,6 +676,9 @@ REMOVE Adv IF (-1 Det OR Pr)(0 A)(1 N);
 # Lexicalised adverbs.
 REMOVE:r566 (A* Adv) IF (0 LEX-ADV) ;
 	## Serliga er tað ein.
+
+# væl
+SELECT Adv IF (-1 VFIN)(0 ("væl"))(1 IM);
 
 # Adverb verbs
 
@@ -687,6 +713,10 @@ REMOVE:r13 Fem IF (0 A + $$NAGD)(*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0
 REMOVE:Def Def IF (0 A + $$NAGD)(*1 A OR N BARRIER NPNHA LINK 0C $$NAGD + Indef);
 REMOVE:Def Indef IF (0 A + $$NAGD)(*1 A OR N BARRIER NPNHA LINK 0C $$NAGD + Def);
 
+
+REMOVE Det + $$GENDER IF (*1C N LINK NOT 0  $$GENDER );
+
+SELECT Det + $$GENDER IF (1C A OR N + $$GENDER);
 
 # Postnominal determiner disambiguation
 
@@ -939,6 +969,7 @@ SELECT:r62 ("seg" Refl) IF (-1 Inf OR 3Sg OR Pl) ;
 
 REMOVE:NotTopAcc Acc IF (*-1 S-BOUNDARY BARRIER NPNH)(*1 ("vera") BARRIER V)(NEGATE *1 SOMEACCPREP LINK 1 EOS);
 
+REMOVE:NotTopAcc2 Acc  IF (*-1 S-BOUNDARY BARRIER NPNH)(0 Nom + Pl)(1 V + Pl)(NOT 2 Nom + Pl);
 
 # Accusative
 # ==========

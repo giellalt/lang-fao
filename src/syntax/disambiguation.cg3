@@ -129,7 +129,7 @@ SET REALADJ = A OR A* ;
 
 # Nominal sets
 
-LIST NOMINALHEAD = N Num Pers Refl Recipr "Pron Interr" "Pron Indef" ;
+LIST NOMINALHEAD = N Prop Num Pers Refl Recipr "Pron Interr" "Pron Indef" ;
 
 LIST NorA = N A ;
 
@@ -1069,7 +1069,7 @@ SUBSTITUTE:sumPr (CS) (Pr) TARGET ("sum") (NOT -1 BOS OR COMMA);
 
 # CC Coordinate NPs
 
-SELECT (V Pl) IF (-1 N + Nom LINK *-1 CC BARRIER NPNH LINK -1 N + Nom);
+SELECT (V Pl) IF (-1 NOMINALHEAD + Nom LINK *-1 CC BARRIER NPNH LINK -1 NOMINALHEAD + Nom);
 
 REMOVE:Dangerous (V Ind 2Sg) IF (0 (V Ind 3Sg))(NOT 0 Pass); #
 

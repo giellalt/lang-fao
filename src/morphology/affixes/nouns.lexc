@@ -17,11 +17,16 @@
 
 ! Irregular
 
-LEXICON k0
- +N+Msc+Sg+Nom+Indef: ENDLEX ; ! januar
- +N+Msc+Sg+Acc+Indef: ENDLEX ; ! januar
- +N+Msc+Sg+Dat+Indef: ENDLEX ; ! januar
- +N+Msc+Sg+Gen+Indef: ENDLEX ; ! januar
+LEXICON k0 ! januar
+ +N+Msc: irregular_nouns ;
+LEXICON kv0 ! ommudidd
+ +N+Fem: irregular_nouns ;
+
+LEXICON irregular_nouns
+ +Sg+Nom+Indef: ENDLEX ; ! januar
+ +Sg+Acc+Indef: ENDLEX ; ! januar
+ +Sg+Dat+Indef: ENDLEX ; ! januar
+ +Sg+Gen+Indef: ENDLEX ; ! januar
 
 ! Weak masculines.
 

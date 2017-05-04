@@ -55,10 +55,18 @@ Could not set GIELLA_CORE and thus not find required scripts in:
        1. svn co https://gtsvn.uit.no/langtech/trunk/giella-core
        2. then either:
          a: cd giella-core && ./autogen.sh && ./configure && make install
+
           or:
          b: add the following to your ~/.bash_profile or ~/.profile:
 
        export \$GIELLA_CORE=/path/to/giella-core/checkout/dir
+
+       (replace the path with the real path from 1. above)
+
+          or:
+         c: run configure as follows
+
+       ./configure --with-giella-core=/path/to/giella-core/checkout/dir
 
        (replace the path with the real path from 1. above)
 "

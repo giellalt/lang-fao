@@ -78,6 +78,6 @@ Define unknownwordEmpty unknownform:0 LC([blank | #]) RC([[blank ] | # ]);
 !! Needs hfst-tokenise to output things differently depending on the tag they get
 
 
-Define token [ morphoword | unknownwordEmpty | incondword | urlword ] EndTag(token);
+Define token [ morphoword | Ins(unknownwordEmpty) | incondword | Ins(urlword) ] EndTag(token);
 
 regex token ;

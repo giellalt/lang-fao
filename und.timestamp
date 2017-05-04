@@ -1,4 +1,8 @@
-$Rev: 151497 $
+$Rev: 152167 $
+Improved pmatch scripts - unification by reference instead of full fst
+unification. Reduces file size by ≈2/3, and runtime memory consumption by 50%.
+
+r151497:
 Now that there is a new version of Hfst out, require it. Should resolve issues
 with compiling the url.lexc file.
 

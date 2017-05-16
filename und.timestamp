@@ -1,4 +1,9 @@
-$Rev: 152167 $
+$Rev: 152757 $
+Removed Ins() around Unknown. This triggered a bug(?) in hfst-tokenise, that
+caused wordforms not to be output. Speed and memory consumption should not be
+noticably affected.
+
+r152167:
 Improved pmatch scripts - unification by reference instead of full fst
 unification. Reduces file size by ≈2/3, and runtime memory consumption by 50%.
 

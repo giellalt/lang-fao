@@ -31,12 +31,12 @@ tag_weighted_dep=$(shell \
 
 ####### Automake targets: ########
 
-if WANT_SPELLERS
+if WANT_HFST_MOBILE_SPELLER
 if CAN_HFST
 GT_COMMON_SPELLER_HFST+=generator-mobilespeller-gt-norm.hfst
 GT_COMMON_SPELLER_HFST+=analyser-mobilespeller-gt-norm.hfst
 endif # CAN_HFST
-endif # WANT_SPELLERS
+endif # WANT_HFST_MOBILE_SPELLER
 
 noinst_DATA=$(GT_COMMON_SPELLER_HFST)
 

@@ -1,4 +1,8 @@
-$Rev: 152757 $
+$Rev: 153083 $
+Made mobile spellers not build by default, even when enabling spellers. The
+mobile spellers must now be explicitly enabled.
+
+r152757:
 Removed Ins() around Unknown. This triggered a bug(?) in hfst-tokenise, that
 caused wordforms not to be output. Speed and memory consumption should not be
 noticably affected.

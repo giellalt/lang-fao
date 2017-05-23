@@ -759,7 +759,7 @@ AM_CONDITIONAL([CAN_FOMA_SPELLER], [test "x$enable_fomaspeller" != xno])
 # Enable hfst mobile spellers - default is 'yes' (but dependent on --enable-spellers)
 AC_ARG_ENABLE([hfst-mobile-speller],
               [AS_HELP_STRING([--enable-hfst-mobile-speller],
-                              [build hfst mobile spellers (dependent on --enable-spellers) @<:@default=yes@:>@])],
+                              [build hfst mobile spellers (dependent on --enable-spellers) @<:@default=no@:>@])],
               [enable_mobile_hfstspeller=$enableval],
               [enable_mobile_hfstspeller=yes])
 AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_mobile_hfstspeller=no],
@@ -943,7 +943,7 @@ cat<<EOF
     * desktop spellers:
       * installable packages enabled: $enable_desktop_hfstspellers
       * foma speller enabled: $enable_fomaspeller
-    * mobile spellers:
+    * mobile spellers (off by default, even with spellers enabled):
       * hfst speller enabled: $enable_mobile_hfstspeller
       * vfst speller enabled: $enable_vfstspeller
   * grammar checker enabled: $enable_grammarchecker

@@ -756,7 +756,7 @@ AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno],
               AC_MSG_ERROR([gzip missing - required for foma spellers])])])
 AM_CONDITIONAL([CAN_FOMA_SPELLER], [test "x$enable_fomaspeller" != xno])
 
-# Enable hfst mobile spellers - default is 'yes' (but dependent on --enable-spellers)
+# Enable hfst mobile spellers - default is 'no' (and dependent on --enable-spellers)
 AC_ARG_ENABLE([hfst-mobile-speller],
               [AS_HELP_STRING([--enable-hfst-mobile-speller],
                               [build hfst mobile spellers (dependent on --enable-spellers) @<:@default=no@:>@])],

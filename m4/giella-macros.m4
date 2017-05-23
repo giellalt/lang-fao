@@ -761,7 +761,7 @@ AC_ARG_ENABLE([hfst-mobile-speller],
               [AS_HELP_STRING([--enable-hfst-mobile-speller],
                               [build hfst mobile spellers (dependent on --enable-spellers) @<:@default=no@:>@])],
               [enable_mobile_hfstspeller=$enableval],
-              [enable_mobile_hfstspeller=yes])
+              [enable_mobile_hfstspeller=no])
 AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_mobile_hfstspeller=no],
       [AS_IF([test "x$XZ" = "xfalse"],
              [enable_mobile_hfstspeller=no

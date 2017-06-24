@@ -56,6 +56,8 @@
   [ "<foc_naj>"         ->	"+" {naj} "<pcle>" ] .o.
   [ "<foc_naj>" "<qst>"	->	"<qst>" "+" {naj} "<pcle>" ] .o.
   [ "<qst>" "<pcle>"    ->	"<pcle>" "<qst>" ] .o.
+  [ "<prfprc>" "<a>"  ->	"<pp>" ] .o.
+  [ "<prsprc>" "<a>"  ->	"<pprs>" ] .o.
   [ "<hom1>"      ->	"¹" ,
     "<hom2>"      ->	"²" ,
     "<hom3>"      ->	"³" ,
@@ -74,8 +76,8 @@
     "<v>"         ->	"<vblex>" ,
     "<interr>"    ->	"<itg>" ,
     "<prs>"       ->	"<pres>" ,
-    "<prsprc>"       ->	"<pprs>" ,
-    "<prfprc>"       ->	"<pp>" ,
+    "<prfprc>"       ->	"<pp>",
+    "<prsprc>"       ->	"<pprs>",
     "<im>"     ->	"<part>" ,
     "<imprt>"     ->	"<imp>" ,
     "<prt>"       ->	"<pret>" ,

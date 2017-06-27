@@ -1112,4 +1112,5 @@ AFTER-SECTIONS
 ## For Apertium
 REMOVE SUB:1 (cmp) ; 
 
-
+REMOVE (adj cmp) IF (0 (adj)) ;
+#REMOVE A + Cmp IF (0 A + $$NAGD + $$GENDER + $$NUMBER) (0 A + Cmp + $$NAGD + $$GENDER + $$NUMBER) ; 

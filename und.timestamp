@@ -1,4 +1,9 @@
-$Rev: 154655 $
+$Rev: 154751 $
+Fixed a bug that caused the check_analysis_regressions.sh script to fail if you
+hadn't put giella-core/scripts/ in your path - which is not automatically done
+when you just checks out giella-core and your language of interest.
+
+r154655:
 Changed command to extract the specified fst name, the old version was not
 reliable.
 

@@ -222,7 +222,7 @@ function run_cg_tests() {
 }
 
 function run_tests() {
-    preprocess \
+    $giella_core/scripts/preprocess \
       < $corpus_file \
       | $lookuptool $analyser.$fstsuffix \
       | $giella_core/scripts/lookup2cg \

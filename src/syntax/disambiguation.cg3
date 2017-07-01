@@ -639,6 +639,10 @@ SELECT Adv IF (-1 NPNH)(1 Ind OR Sbj);
 REMOVE:r5 Det IF (0 Pers)(NEGATE 0 Gen LINK -1 N)(NOT 1 NPNHA OR N);
 
 
+# frammanfyri
+REMOVE Adv IF (0 ("frammanfyri"))(1 Dat);
+## frammanfyri teimum húsinum
+
 # um
 REMOVE Imp IF (0 ("um")) ;
 # This is against the verb ymja, súsa, brúsa, dynja, (kvæð.) munnur og nasar umdu í blóði 
@@ -682,6 +686,9 @@ REMOVE:r566 (A* Adv) IF (0 LEX-ADV) ;
 
 # væl
 SELECT Adv IF (-1 VFIN)(0 ("væl"))(1 IM);
+
+# saman (not samur)
+REMOVE A if (0 ("saman"))(NOT 1 Msc + Sg + Acc + Indef);
 
 # Adverb verbs
 
@@ -766,6 +773,9 @@ SELECT:r30c $$NAGD IF (-1C (Pron Indef) + $$NAGD)(0 N);
 SELECT:r30 $$NUMBER IF (-1C (A) + $$NUMBER)(0 N);
 SELECT:r30b $$NUMBER IF (-1C (Det) + $$NUMBER)(0 N);
 SELECT:r30c $$NUMBER IF (-1C (Pron Indef) + $$NUMBER)(0 N);
+
+
+REMOVE:Subj3position Acc IF (*-1 VFIN BARRIER NPNHA LINK *-1 BOS BARRIER Nom)(0 Nom);
 
 
 # Poss disambiguation

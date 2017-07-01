@@ -509,10 +509,10 @@ Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
 
 "Past tense singular diphthongs I"
 !! __@RULENAME@__ 
-0:Vx <=> Cns _ Vy:Vz Cns:+ %^AB1: ;
+0:Vx <=> Cns _ Vy: Cns:+ %^AB1: ;
 	where Vx in ( e e e e )
 	      Vy in ( í ó u ú )
-	      Vz in ( i y y y )
+!	      Vz in ( i y y y )
 	matched ;
 
 "Past tense singular diphthongs II"

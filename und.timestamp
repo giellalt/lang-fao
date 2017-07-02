@@ -1,4 +1,8 @@
-$Rev: 154751 $
+$Rev: 154835 $
+Removed from the default build rules the automatic removal of +Comp tags in
+adverbs. That is definitely not a behavior we want universally.
+
+r154751:
 Fixed a bug that caused the check_analysis_regressions.sh script to fail if you
 hadn't put giella-core/scripts/ in your path - which is not automatically done
 when you just checks out giella-core and your language of interest.

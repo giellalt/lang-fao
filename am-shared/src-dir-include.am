@@ -303,7 +303,6 @@ analyser-raw-gt-%.hfst: generator-raw-gt-%.hfst
 #   - semantic tags
 #   - homonymy tags
 analyser-gt-desc.tmp.%: analyser-raw-gt-desc.%                \
-					filters/remove-adv_comp-tags.%            \
 					filters/remove-area-tags.%                \
 					filters/remove-dialect-tags.%             \
 					filters/remove-number-string-tags.%       \
@@ -319,8 +318,7 @@ analyser-gt-desc.tmp.%: analyser-raw-gt-desc.%                \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			    @\"filters/remove-adv_comp-tags.$*\"            \
-			.o. @\"filters/remove-area-tags.$*\"                \
+				@\"filters/remove-area-tags.$*\"                \
 			.o. @\"filters/remove-dialect-tags.$*\"             \
 			.o. @\"filters/remove-number-string-tags.$*\"       \
 			.o. @\"filters/remove-usage-tags.$*\"               \
@@ -388,7 +386,6 @@ generator-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 		 quit\n" | $(XFST_TOOL)
 
 analyser-gt-glossing.tmp.%: analyser-raw-gt-glossing.%        \
-					filters/remove-adv_comp-tags.%            \
 					filters/remove-area-tags.%                \
 					filters/remove-dialect-tags.%             \
 					filters/remove-number-string-tags.%       \
@@ -404,8 +401,7 @@ analyser-gt-glossing.tmp.%: analyser-raw-gt-glossing.%        \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			    @\"filters/remove-adv_comp-tags.$*\"            \
-			.o. @\"filters/remove-area-tags.$*\"                \
+				@\"filters/remove-area-tags.$*\"                \
 			.o. @\"filters/remove-dialect-tags.$*\"             \
 			.o. @\"filters/remove-number-string-tags.$*\"       \
 			.o. @\"filters/remove-usage-tags.$*\"               \
@@ -475,7 +471,6 @@ generator-gt-glossing.tmp.%: analyser-raw-gt-glossing.%       \
 # This is the normative analyser:
 # Remove sub-standard/error forms to get a normative transducer
 analyser-gt-norm.tmp.%: analyser-raw-gt-desc.%                \
-					filters/remove-adv_comp-tags.%            \
 					filters/remove-area-tags.%                \
 					filters/remove-dialect-tags.%             \
 					filters/remove-variant-tags.%             \
@@ -492,8 +487,7 @@ analyser-gt-norm.tmp.%: analyser-raw-gt-desc.%                \
 					orthography/inituppercase.compose.%       \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			    @\"filters/remove-adv_comp-tags.$*\"            \
-			.o. @\"filters/remove-area-tags.$*\"                \
+				@\"filters/remove-area-tags.$*\"                \
 			.o. @\"filters/remove-dialect-tags.$*\"             \
 			.o. @\"filters/remove-variant-tags.$*\"             \
 			.o. @\"filters/remove-number-string-tags.$*\"       \

@@ -284,6 +284,7 @@ SECTION
 LIST MAX2LETTERS = (".."r) ("."r);
 LIST AP_CMP = cmp; # Apertium tag, so should not match outside Apertium
 REMOVE:ApShortCompoundParts SUB:* AP_CMP + MAX2LETTERS ;
+"<7>" REMOVE:ApWeirdLemma ("«" lquot) OR ("»" rquot) ;
 
 
 REMOVE Guess ; # If any other reading is possible.

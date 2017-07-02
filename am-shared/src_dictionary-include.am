@@ -29,8 +29,7 @@ endif # WANT_DICTIONARIES
 #   - OLang/*
 #   - MWE
 analyser-dict-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
-					filters/remove-area-tags.%                \
-					filters/remove-adv_comp-tags.%             \
+					filters/remove-area-tags.%                 \
 					filters/remove-dialect-tags.%              \
 					filters/remove-orig_lang-tags.%            \
 					filters/remove-usage_except_NGminip-tags.% \
@@ -44,8 +43,7 @@ analyser-dict-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 					orthography/spellrelax.compose.%           \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			    @\"filters/remove-adv_comp-tags.$*\"             \
-			.o. @\"filters/remove-area-tags.$*\"                \
+				@\"filters/remove-area-tags.$*\"                 \
 			.o. @\"filters/remove-dialect-tags.$*\"              \
 			.o. @\"filters/remove-orig_lang-tags.$*\"            \
 			.o. @\"filters/remove-usage_except_NGminip-tags.$*\" \
@@ -132,7 +130,6 @@ generator-dict-gt-norm.tmp.%: analyser-raw-gt-desc.%           \
 define giella_dict_alt_ws_analysers
 analyser-dict-gt-desc.%.tmp.$(1): analyser-raw-gt-desc.$(1)       \
 					filters/remove-area-tags.$(1)                 \
-					filters/remove-adv_comp-tags.$(1)             \
 					filters/remove-dialect-tags.$(1)              \
 					filters/remove-orig_lang-tags.$(1)            \
 					filters/remove-usage_except_NGminip-tags.$(1) \
@@ -145,8 +142,7 @@ analyser-dict-gt-desc.%.tmp.$(1): analyser-raw-gt-desc.$(1)       \
 					orthography/spellrelax.%.compose.$(1)         \
 					orthography/$$(DEFAULT_WS)-to-%.compose.$(1)
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-				@\"filters/remove-adv_comp-tags.$(1)\"             \
-			.o. @\"filters/remove-area-tags.$(1)\"                 \
+				@\"filters/remove-area-tags.$(1)\"                 \
 			.o. @\"filters/remove-dialect-tags.$(1)\"              \
 			.o. @\"filters/remove-orig_lang-tags.$(1)\"            \
 			.o. @\"filters/remove-usage_except_NGminip-tags.$(1)\" \
@@ -213,7 +209,6 @@ $(foreach fst,hfst xfst foma,$(eval $(call giella_dict_alt_ws_generators,$(fst))
 define giella_dict_alt_orth_analysers
 analyser-dict-gt-desc.%.tmp.$(1): analyser-raw-gt-desc.$(1)       \
 					filters/remove-area-tags.$(1)                 \
-					filters/remove-adv_comp-tags.$(1)             \
 					filters/remove-dialect-tags.$(1)              \
 					filters/remove-orig_lang-tags.$(1)            \
 					filters/remove-usage_except_NGminip-tags.$(1) \
@@ -229,7 +224,6 @@ analyser-dict-gt-desc.%.tmp.$(1): analyser-raw-gt-desc.$(1)       \
 				@\"orthography/raw-to-$$*.compose.$(1)\".i \
 			.o. @\"filters/make-optional-transitivity-tags.$(1)\"  \
 			.o. @\"filters/remove-area-tags.$(1)\"                 \
-			.o. @\"filters/remove-adv_comp-tags.$(1)\"             \
 			.o. @\"filters/remove-dialect-tags.$(1)\"              \
 			.o. @\"filters/remove-orig_lang-tags.$(1)\"            \
 			.o. @\"filters/remove-usage_except_NGminip-tags.$(1)\" \
@@ -248,7 +242,6 @@ analyser-dict-gt-desc.%.tmp.$(1): analyser-raw-gt-desc.$(1)       \
 
 analyser-dict-gt-desc.%.tmp.$(1): analyser-raw-gt-desc.$(1)       \
 					filters/remove-area-tags.$(1)                 \
-					filters/remove-adv_comp-tags.$(1)             \
 					filters/remove-dialect-tags.$(1)              \
 					filters/remove-orig_lang-tags.$(1)            \
 					filters/remove-usage_except_NGminip-tags.$(1) \
@@ -264,7 +257,6 @@ analyser-dict-gt-desc.%.tmp.$(1): analyser-raw-gt-desc.$(1)       \
 				@\"orthography/$$(DEFAULT_ORTH)-to-$$*.compose.$(1)\".i \
 			.o. @\"filters/make-optional-transitivity-tags.$(1)\"  \
 			.o. @\"filters/remove-area-tags.$(1)\"                 \
-			.o. @\"filters/remove-adv_comp-tags.$(1)\"             \
 			.o. @\"filters/remove-dialect-tags.$(1)\"              \
 			.o. @\"filters/remove-orig_lang-tags.$(1)\"            \
 			.o. @\"filters/remove-usage_except_NGminip-tags.$(1)\" \

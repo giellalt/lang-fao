@@ -68,7 +68,6 @@ endif # HAVE_ALT_ORTHS
 define alt_orth_desc_analysers
 analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-area-tags.%                 \
-					filters/remove-adv_comp-tags.%             \
 					filters/remove-dialect-tags.%              \
 					filters/remove-number-string-tags.%        \
 					filters/remove-usage-tags.%                \
@@ -82,8 +81,7 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					orthography/spellrelax.$(1).compose.%      \
 					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-			    @\"filters/remove-adv_comp-tags.$$*\"              \
-			.o. @\"filters/remove-area-tags.$$*\"                  \
+				@\"filters/remove-area-tags.$$*\"                  \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
@@ -103,7 +101,6 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 
 analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-area-tags.%                 \
-					filters/remove-adv_comp-tags.%             \
 					filters/remove-dialect-tags.%              \
 					filters/remove-number-string-tags.%        \
 					filters/remove-usage-tags.%                \
@@ -117,8 +114,7 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					orthography/spellrelax.$(1).compose.%      \
 					orthography/raw-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-			    @\"filters/remove-adv_comp-tags.$$*\"              \
-			.o. @\"filters/remove-area-tags.$$*\"                  \
+				@\"filters/remove-area-tags.$$*\"                  \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
@@ -141,7 +137,6 @@ $(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_desc_analysers,$(alt_orth
 define alt_orth_norm_analysers
 analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-area-tags.%                 \
-					filters/remove-adv_comp-tags.%             \
 					filters/remove-dialect-tags.%              \
 					filters/remove-variant-tags.%              \
 					filters/remove-number-string-tags.%        \
@@ -156,8 +151,7 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-orig_lang-tags.%            \
 					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-			    @\"filters/remove-adv_comp-tags.$$*\"              \
-			.o. @\"filters/remove-area-tags.$$*\"                  \
+				@\"filters/remove-area-tags.$$*\"                  \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-variant-tags.$$*\"               \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \
@@ -178,7 +172,6 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 
 analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-area-tags.%                 \
-					filters/remove-adv_comp-tags.%             \
 					filters/remove-dialect-tags.%              \
 					filters/remove-variant-tags.%              \
 					filters/remove-number-string-tags.%        \
@@ -193,8 +186,7 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-orig_lang-tags.%            \
 					orthography/raw-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-			    @\"filters/remove-adv_comp-tags.$$*\"              \
-			.o. @\"filters/remove-area-tags.$$*\"                  \
+				@\"filters/remove-area-tags.$$*\"                  \
 			.o. @\"filters/remove-dialect-tags.$$*\"               \
 			.o. @\"filters/remove-variant-tags.$$*\"               \
 			.o. @\"filters/remove-number-string-tags.$$*\"         \

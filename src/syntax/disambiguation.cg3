@@ -1,4 +1,4 @@
-# -*- cg-pre-pipe: "$GTHOME/giella-core/scripts/preprocess --abbr=$GTHOME/langs/fao/tools/preprocess/abbr.txt | hfst-optimised-lookup  $GTHOME/langs/fao/src/analyser-disamb-gt-desc.hfstol | $GTHOME/giella-core/scripts/lookup2cg" -*-
+# -*- cg-pre-pipe: "hfst-tokenise -g ../../tools/preprocess/tokeniser-disamb-gt-desc.pmhfst" -*-
 
 
 # ===================== #

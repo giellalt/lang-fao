@@ -683,7 +683,7 @@ SELECT:r7 Adv IF (-1 VFIN)(1 Inf);
 SELECT:her Adv IF (0 ("herur"))(-1 N OR BOS OR Adv);
 
 
-REMOVE Adv IF (-1 Det OR Pr)(0 A)(1 N);
+REMOVE Adv IF (-1 Det OR Pr)(0 A OR PrfPrc)(1 N);
        ## ið stakk í bleyta jørð,
 
 # Lexicalised adverbs.
@@ -986,7 +986,7 @@ SELECT:r62 ("seg" Refl) IF (-1 Inf OR 3Sg OR Pl) ;
 # hmm
 # Fjallið lá stilt, tað ikki so mikið sum andi.
 
-REMOVE:NotTopAcc Acc IF (*-1 S-BOUNDARY BARRIER NPNH)(*1 ("vera") BARRIER V)(NEGATE *1 SOMEACCPREP LINK 1 EOS);
+REMOVE:NotTopAcc Acc IF (*-1 S-BOUNDARY BARRIER NPNH)(*1 VFIN)(NEGATE *1 SOMEACCPREP LINK 1 EOS);
 
 REMOVE:NotTopAcc2 Acc  IF (*-1 S-BOUNDARY BARRIER NPNH)(0 Nom + Pl)(1 V + Pl)(NOT 2 Nom + Pl);
 

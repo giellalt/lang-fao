@@ -26,16 +26,15 @@ GT_MT_FILTER_SRCS=
 if WANT_APERTIUM
 
 # List generated regexes here:
-GENERATED_REGEXES=
-# E.g.: remove-derivation-strings.nob.regex
+GENERATED_REGEXES=remove-derivation-strings.regex
+# E.g.: remove-derivation-strings.regex
 
 endif # WANT_APERTIUM
 
 # Add the build code of local additions and generated regexes here, e.g.:
-# remove-%-strings.nob.regex: $(top_builddir)/src/filters/%-tags.txt \
-# 						remove-%-strings-modifications.nob.regex
-# 	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh \
-# 		$@ $^
+remove-%-strings.regex: $(top_builddir)/src/filters/%-tags.txt \
+	remove-%-strings-modifications.regex \
+ 	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_$*_strings_regex.sh $@ $^
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######

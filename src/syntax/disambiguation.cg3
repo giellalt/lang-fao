@@ -990,6 +990,8 @@ REMOVE:NotTopAcc Acc IF (*-1 S-BOUNDARY BARRIER NPNH)(*1 VFIN)(NEGATE *1 SOMEACC
 
 REMOVE:NotTopAcc2 Acc  IF (*-1 S-BOUNDARY BARRIER NPNH)(0 Nom + Pl)(1 V + Pl)(NOT 2 Nom + Pl);
 
+REMOVE:NomV3 Acc IF (-3 BOS OR CLB)(-2 Adv)(-1 VFIN)(0 N OR Pron + Pers);
+
 # Accusative
 # ==========
 

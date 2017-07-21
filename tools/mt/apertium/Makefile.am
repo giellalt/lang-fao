@@ -27,11 +27,13 @@ APERTIUM_CG_INCLUDE_SRC=
 
 # We want to rename the POS tags in front of derivations:
 analyser-mt-gt-desc.hfst: analyser-mt-gt-desc.tmp.hfst \
-		$(top_builddir)/src/filters/remove-derivation-strings.hfst
-	$(PRINTF) "\
-		@\"$(top_builddir)/src/filters/remove-derivation-strings.hfst\" .o. @\"$<\" \
-	;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) -S --xerox-composition=ON | $(HFST_INVERT) $(HFSTFLAGS) -o $@
+		filters/remove-derivation-strings.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+		@\"filters/remove-derivation-strings.hfst\" .o. @\"$<\" ;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
+			-S --xerox-composition=ON \
+		| $(HFST_INVERT) $(HFSTFLAGS) \
+		-o $@
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######

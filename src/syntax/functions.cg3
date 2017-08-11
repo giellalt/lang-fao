@@ -62,10 +62,12 @@ LIST Det = Det ;
 LIST Dem = Dem ;
 LIST Refl = Refl ;
 LIST Recipr = Recipr ;
+LIST Poss = Poss ;
 LIST Interr = Interr ;
 LIST IM = IM ;
 LIST ABBR = ABBR ;
-LIST COMMA = "," ;
+LIST Attr = Attr ;
+LIST Ord = Ord ;
 
 LIST Nom = Nom ;
 LIST Acc = Acc ;
@@ -110,7 +112,9 @@ LIST Sem/Veh = Sem/Veh ;
 LIST Sem/Adr = Sem/Adr ;
 
 
-LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Nom Acc Gen
+LIST HUMAN = Sem/Hum Sem/Mal (ant m) Sem/Fem  (ant f) Sem/Sur cog Pers ;
+
+LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
 Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
 PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Sem/Fem Sem/Mal Sem/Plc Sem/Sur Sem/Org Sem/Veh Guess ;
 
@@ -122,75 +126,171 @@ LIST NUMBER = Sg Pl ;
 SET NAGDNUMBERGENDER = (Msc Sg Nom) OR (Msc Sg Acc) OR (Msc Sg Gen) OR (Msc Sg Dat) OR (Msc Pl Nom) OR (Msc Pl Acc) OR (Msc Pl Gen) OR (Msc Pl Dat) OR (Fem Sg Nom) OR (Fem Sg Acc) OR (Fem Sg Gen) OR (Fem Sg Dat) OR (Fem Pl Nom) OR (Fem Pl Acc) OR (Fem Pl Gen) OR (Fem Pl Dat) OR (Neu Sg Nom) OR (Neu Sg Acc) OR (Neu Sg Gen) OR (Neu Sg Dat) OR (Neu Pl Nom) OR (Neu Pl Acc) OR (Neu Pl Gen) OR (Neu Pl Dat) ;
 
 
+# Sets
+# ====
+
+SET WORD = N | V | A | Pr | Pron | Det | Adv | CC | CS | Interj | Num | ("\?") ;
 
 
-#!! * Sets for Semantic tags
-# -------------
+# Noun sets
+
+
+SET NounMscFem = (N Msc) OR (N Fem) ;
+SET NounMscNeu = (N Msc) OR (N Neu) ;
+SET NounFemNeu = (N Fem) OR (N Neu) ;
+
+SET MscFem = Msc OR Fem ;
+SET MscNeu = Msc OR Neu ;
+SET FemNeu = Fem OR Neu ;
+
+LIST 3PERS = "hann" "hon" "tað" ;
+
+# Adjective sets
+
+SET REALADJ = A OR A* ;
+
+
+# Nominal sets
+
+LIST NOMINALHEAD = N Prop Num Pers Refl Recipr (Pron Interr) (Pron Indef) ;
+
+LIST NorA = N A ;
+
+LIST PRENAGR = Det A ;
+
+LIST MIDJA = "miðja" ; # in the middle of - construction. More N in here, also bottle constr.
+
+SET NOT-ACC = TAG - Acc ;
+
+SET CARDINALS = Num - Ord ;
+
+# Verb sets
+
+LIST COPULAS = "vera" "verða" ;
+
+LIST HAVA = "hava" ;
+
+LIST MODV = "kunna" "láta" "skula" "vilja" "munna" "mega" ;
+
+
+LIST AUX-OR-MAIN = HAVA ; # perhaps remove this set
+SET AUX = COPULAS OR HAVA OR MODV ;
+SET MAIN-V = V - COPULAS ;
+
+SET NOT-VERB = WORD - V ;
+
+
+LIST VFIN = Prs Prt Imp Sbj ;
+SET VFIN-NOT-AUX = VFIN - AUX ;
+
+LIST INDSBJ = Ind Sbj ;
+#LIST Ind = Prs Prt ;
+
+LIST NONTHIRDV = 1Sg 2Sg 1Pl Pl ;
+
+LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
+SET NOT-REAL-V = PrsPrc ;
+SET REAL-V = V - NOT-REAL-V ;
 
 
 
-SET FIRSTNAME = Prop + Sem/Fem OR Prop + Sem/Mal ;
+LIST DATV = "bjóða" "hýsa" "sleppa" "smakka" "takka" ; # "undirvísa" 
+ # sleppa3 = sleppa manninum leysum
+ 
+LIST DATPREPV = "liggja" "vera" "standa" "fiska" "vera"; # use only ACCPREPV
+LIST ACCPREPV = "leggja" "fara" "renda" "koma" "liða" "seta" ;
+
+LIST OBJPREDVERB = "kalla" "doypa" "nevna" "taka"  ;
+
+LIST MOVEMENTVERB = "koma" "koyra" ;
+
+SET TV = V - COPULAS - MODV ;
+
+# Noun-Verb sets
+
+
+LIST THIRD = Sg 3Sg Pl  ;
+
+# Number sets
+
+SET NUMBERS = Num - ("eitt") - ("1") ;
+
+# Preposition sets
+
+LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum" "íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin" "hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin" "vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "sum" "vestan" ;
+
+LIST DATPREP = "hjá" "með" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "frá" "mótvegis" "nær" "sambært" "viðvíkjandi" "úr" ; # úr?
+
+LIST ACCDATPREP = "í" "á" "undir" "yvir" "eftir" "fyri" "við" ;
+
+LIST ACCGENPREP = "innan" "uttan" "millum" "til" "vegna" ;
+
+LIST ACCDATGENPREP = "at" "av" "hjá" "móti" "um" "undan" "úr" ;
+
+
+SET SOMEACCPREP = ACCPREP | ACCDATPREP | ACCGENPREP | ACCDATGENPREP ;
+
+SET SOMEDATPREP = DATPREP | ACCDATPREP | ACCDATGENPREP ;
+
+SET SOMEGENPREP = ACCGENPREP | ACCDATGENPREP ;
+
+SET SOMEACCDATPREP = ACCDATPREP | ACCDATGENPREP ;
+
+# Boundary sets
+
+SET S-BOUNDARY = CS | Interr | (";") | (":") | BOS | EOS ;
+SET S-BOUNDARY2 = CS | Interr | (";") | (":") | BOS | EOS  ;
+
+# Complementary set
 
 
 
-LIST Pot_HUMAN = Sem/Hum Sem/Mal (ant m) Sem/Fem  (ant f) Sem/Sur cog Pers NumAg ;
+# Case sets
 
-LIST NOT_HUMAN = "ruovdi" "nolla" "nulla" ; #to prevent habitive for these in locative
+# Some case, but not...
+SET NOTNOM = Dat | Gen | Acc ;
+SET NOTDAT = Nom | Gen | Acc ;
+SET NOTACC = Nom | Gen | Dat ;
+SET NOTACCDAT = Nom | Gen ;
+SET OBL = Acc | Dat | Gen ;
 
-SET HUMAN = Pot_HUMAN - NOT_HUMAN ;
-
-#!! * Sets for Morphosyntactic properties
-# --------------------------
-
-LIST Nom = Nom ;
-LIST Acc = Acc ;
-LIST Gen = Gen ;
-LIST Dat = Dat ;
-
-LIST Sg = Sg ;
-LIST Pl = Pl ;
-
-LIST ShCmp = ShCmp ;
-
-LIST Comp = Comp ;
-LIST Superl = Superl ;
-
-LIST Attr = Attr ;
-LIST Ord = Ord ;
-
-LIST Qst = Qst ;
-
-LIST IV = IV ;
-LIST TV = TV ;
-
-LIST Pass = Pass ;
-
-LIST Prt = Prt;
-LIST Prs = Prs ;
+# Anything but the following case...
+SET NOACC = WORD - Acc ;
+SET NODAT = WORD - Dat ;
+SET NOACCDAT = WORD - Acc - Dat ;
 
 
-LIST Ind = Ind ;
-LIST Pot = Pot ;
-LIST Cond = Cond ;
+#SET NO
 
-LIST Imprt = Imprt ;
-LIST ImprtII = ImprtII ;
+SET PRE-N =  A | Det | (N Gen) | Num | (Pron Gen) | CC ; # Det???
 
-LIST 1Sg = 1Sg ;
-LIST 2Sg = 2Sg ;
-LIST 3Sg = 3Sg ;
 
-LIST 1Pl = 1Pl ;
-LIST 2Pl = 2Pl ;
-LIST 3Pl = 3Pl ;
+LIST COMMA = (",") ;
+SET MARK =  COMMA | ("\\") | ("\;") ; #"
 
-LIST Inf = Inf ;
+LIST PUNCT-LEFT = (PUNCT LEFT) ;
+LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
+SET PRE-APP   = COMMA OR PUNCT-LEFT ;
 
-LIST PrfPrc = PrfPrc ;
 
-LIST PrsPrc = PrsPrc ;
+SET WORDMARK = WORD | MARK ;
 
-LIST ADVL = Adv ;
+SET NPNH = WORDMARK - PRE-N ;
+SET NPNHA = WORDMARK - PRE-N - Adv ;
+SET NOT-ADV = WORDMARK - Adv - CC ; # adding CC
+SET NOT-PROP = WORDMARK - Prop - CC ;
+SET LEX-ADV = Adv - (A*) ;
+SET NOT-A = WORDMARK - A ;
+SET NOT-CC = WORDMARK - CC ;
+SET NOUNADJ = N | A ;
+
+SET NP-MEMBER = PRE-N | N | Pron ;
+
+LIST TIME = "sunnudagur" ;
+
+
+
+
 
 #!! !!Syntactic tags
 # --------------
@@ -301,7 +401,7 @@ SET OPRED = @<OPRED OR @OPRED> OR @OPRED ;
 SET FOBJ = @-F<OBJ OR @-FOBJ> ;
 SET FMAINV = @-FMAINV OR @+FMAINV OR (V @<OBJ) OR (V @N<) OR (V @A<) OR (V @<SUBJ) OR (V @<ADVL) ;
 SET FAUXV = @-FAUXV OR @+FAUXV ;
-LIST HAB-V-TAGS = 3Pl 3Sg PrfPrc Inf ;
+
 
 SET OBJ = (@<OBJ) OR (@OBJ>) OR (@OBJ) OR (@-F<OBJ) OR (@-FOBJ>) ;
 LIST <OBJ = @-F<OBJ @<OBJ ;
@@ -336,22 +436,13 @@ LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
 
 # Word or not
 # -----------
-LIST WORD = N np A Adv V Pron CS CC Pr Interj Num ABBR ACR  \? ;
- # any word
 
-SET REALWORD = WORD - Num - Ord ;
+SET REALWORD = WORD - Num ;
 
-SET REALWORD-NOTABBR = WORD - Num - Ord - ABBR ;
+SET REALWORD-NOTABBR = WORD - Num - ABBR ;
 
 SET WORD-NOTDE = WORD - ("de") ;
 
-# Verb sets
-# ---------
-
-# Verbs and their complements
-# - - - - - - - - - - - - - -
-
-SET NOT-VERB = WORD - V ;
 
 # Finiteness and mood
 # - - - - - - - - - -
@@ -359,15 +450,11 @@ SET NOT-VERB = WORD - V ;
 SET V-IND-FIN = Prs OR Prt ;
  # Problem: "In boahtán" is an invisible indicative
 
-SET V-MOOD = Ind OR Imprt ;
-
-LIST GC = ("gč") ;
-
-SET VFIN = GC OR V-MOOD  ;
+SET V-MOOD = Ind OR Imp ;
 
 SET VFIN-POS = V-MOOD ;
 
-SET VFIN-NOT-IMP = VFIN - Imprt ;
+SET VFIN-NOT-IMP = VFIN - Imp ;
 
 SET VFIN-NOT-NEG = VFIN ;
   # this might be to strict, besides, "iige" can be written "ii ge"
@@ -378,16 +465,9 @@ SET NOT-PRFPRC = WORD - PrfPrc ;
 # - - - -
 
 LIST V-SG1 = (V 1Sg)  ;
-
 LIST V-SG2 = (V 2Sg) ;
-
 LIST V-SG3 = (V 3Sg) ;
-
-LIST V-PL1 = (V 1Pl) ;
-
-LIST V-PL2 = (V 2Pl) ;
-
-LIST V-PL3 = (V 3Pl) ;
+LIST V-PL = (V Pl) ;
 
 
 
@@ -396,18 +476,14 @@ LIST V-PL3 = (V 3Pl) ;
 # Some subsets of the VFIN sets
 # - - - - - - - - - - - - - - -
 SET V-SG = V-SG1 OR V-SG2 OR V-SG3 ;
-SET V-PL = V-PL1 OR V-PL2 OR V-PL3 ;
 
 SET V-NOT-SG1 = VFIN-NOT-IMP - V-SG1 ;
 SET V-NOT-SG2 = VFIN-NOT-IMP - V-SG2 ;
 SET V-NOT-SG3 = VFIN-NOT-IMP - V-SG3 ;
-SET V-NOT-PL1 = VFIN-NOT-IMP - V-PL1 ;
-SET V-NOT-PL2 = VFIN-NOT-IMP - V-PL2 ;
-SET V-NOT-PL3 = VFIN-NOT-IMP - V-PL3 ;
 
 
-SET V-1-2 = V-SG1 OR V-SG2 OR V-PL1 OR V-PL2 ;
-SET V-3  = V-SG3 OR V-PL3 ;
+SET V-1-2 = V-SG1 OR V-SG2 OR V-PL ;
+SET V-3  = V-SG3 OR V-PL ;
 
 # Sets consisting of LEAT
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -421,13 +497,10 @@ LIST VPRFPRC = (V PrfPrc) ;
 LIST MUN = (Pron Pers 1Sg Nom);
 LIST DON = (Pron Pers 2Sg Nom);
 LIST SON = ("son" Pron Pers 3Sg Nom);
-LIST DII = (Pron Pers 2Pl Nom);
-LIST SII = ("son" Pron Pers 3Pl Nom);
 
 
 
-LIST PPRON-GEN = (1Sg Gen) (2Sg Gen) (3Sg Gen) 
-                 (1Pl Gen) (2Pl Gen) (3Pl Gen);
+LIST PPRON-GEN = (Pron Gen);
 
 SET PPRON-NOT-GEN = (Pron Pers) - PPRON-GEN ;
 
@@ -436,7 +509,7 @@ LIST DEM-PL = (Pron Dem Pl Nom);
 SET NOT-DEM = WORD - Dem ;
 
 LIST SGPRON = (Pron 1Sg) (Pron 2Sg) (Pron 3Sg) (Pron Sg) ;
-LIST PLPRON = (Pron 1Pl) (Pron 2Pl) (Pron 3Pl) ;
+LIST PLPRON = (Pron Pl) ;
 
 SET PRON-NOT-SG = PLPRON ;
 
@@ -445,9 +518,7 @@ SET PRON-NOT-SG = PLPRON ;
 # Adjectival sets and their complements
 # -------------------------------------
 
-SET NOT-A = WORD - A ;
 SET NOT-A-COMMA = WORD - A - COMMA ;
-SET NOT-Attr = WORD - Attr ;
 SET NOT-A-PCLE = WORD - A ;
 
 SET NOT-A-ADV = WORD - A - Adv OR ("maid") ;
@@ -460,7 +531,6 @@ SET NOT-A-ADV = WORD - A - Adv OR ("maid") ;
 SET LEX-ADV = Adv - (A*) ;
 
 SET NOT-ADV-DE            = WORD - Adv ;
-SET NOT-ADV            = NOT-ADV-DE OR ("de" Adv) OR CLB ;
 SET NOT-ADV-N          = NOT-ADV - N;
 SET NOT-ADV-PCLE       = NOT-ADV ;
 SET NOT-ADV-INDEF      = NOT-ADV - Indef ;
@@ -514,18 +584,13 @@ SETS
  # The set REAL is smaller than COPULAS, made for verbs with PrfPrc complements: Seammás REAL-COPULAS son dovdan iežas...
 LIST REAL-COPULAS = "dáidit" "leat" "soaitit" "veadjit" "liehket" "lea";
 
-#!! * The set COPULAS is for predicative constructions
-LIST COPULAS = "dáidit" "gártat" "leat" "soaitit" "šaddat" "orrut" "veadjit" "liehket" "sjaddat" "lea" "sjïdtedh" ;
- #  "bissut" ?
- # 'Dáidit' can appear without 'leat'.
 
 SET NOT-COP-V = V - COPULAS ;
 
-SET MAIN-V = V - FAUXV ;
 
 # All active verbs with a TV tag, including AUX-OR-MAIN.
 
-LIST V-TRANS = (V TV) ;
+LIST V-TRANS = V  ; # must be removed, no TV in fao verb.lexc
 
 
 SET TRANS-V = V-TRANS ;
@@ -570,7 +635,6 @@ SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr) OR ("buor
 SET PRE-NP-V = PrfPrc OR PrsPrc OR (V A) OR (Prs 3Sg) + Ind OR (Prs 1Sg) + Ind ;
     # to be used together with PRE-NP-HEAD before @>N is disambiguated
 
-SET NP-MEMBER   = PRE-NP-HEAD OR N ;
 
 SET PRE-A-N     = (Pron Pers Gen) OR (Pron Pers Acc) OR (Pron Indef) OR Num OR (A Ord) OR (Pron Dem) OR Pron + Refl + Gen OR Pron + Refl + Acc ; # Acc pga av manglende disambiguering tidlig i fila
 
@@ -579,7 +643,6 @@ SET NOT-PRE-A-N = WORD - PRE-A-N ;
 LIST PUNCT-LEFT = (PUNCT LEFT) ;
 LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
 
-SET PRE-APP   = COMMA OR PUNCT-LEFT OR PRE-NP-HEAD ;
  # This set ist not only for what can
                             # stand in front of appositions but also
                             # postmodifiers.
@@ -623,9 +686,7 @@ LIST MANGA = "máŋga" "galle" ;
 LIST SOAMES = "soames" "muhtun" ;
 
 
-SET CARDINALS = Num - Ord - MANGA ;
 
-SET NOT-CC = WORD - CC ;
 
 
 LIST COMPAR = ("dávji" A Comp) "eanet" "earalágan" "eará" "earret" "seammás" "seammalágan" "seamma_láhkái" ;
@@ -650,7 +711,6 @@ SET CP = (Pron Interr) ;
 
 LIST BOUNDARYSYMBOLS =  "\;" ":" "-" "–" ;
 
-SET S-BOUNDARY = CP OR BOUNDARYSYMBOLS OR ("men") OR @CVP OR ("vel" Adv Qst) ;
 	# does not include CS, because of "go" in questions, before it is disambugated.
 	# includes CP
 	# this one includes @CVP, the conjunction which actually connects two sentences (each with a finite verb) to each other,
@@ -694,10 +754,93 @@ LIST HEAD = @SUBJ> @<SUBJ @SUBJ @OBJ @OBJ> @<OBJ @ADVL @ADVL> @<ADVL @SPRED> @<S
 
 SET NON-APP = ALLSYNTAG - (@APP);
 
+
+
+
+
 #!! These were the set types.
 
 
          SECTION         #
+
+
+
+#!! !!Adverbials
+
+MAP:advl> (@ADVL>) TARGET Adv (*-1 BOS OR CLB BARRIER VFIN)(*1 VFIN);
+MAP:<advl (@<ADVL) TARGET Adv (*-1 VFIN)(*1 EOS OR CLB BARRIER VFIN);
+
+#!! !(@+FMAINV) and (@+FAUXV) and (@-FAUXV)
+
+
+#!! * __+FAUXVcop__ AUX  COPULAS     
+MAP:+FAUXVcop (@+FAUXV) TARGET COPULAS (*1 Inf BARRIER SV-BOUNDARY OR AUX LINK NOT 0 Adv OR OBJ) ;
+
+
+
+#!! * __+FMAINVcop__ COPULAS verbs     
+MAP:+FMAINVcop (@+FMAINV) TARGET VFIN + COPULAS (*1 Nom LINK 1 Inf) ;
+MAP:+FMAINVcop (@+FMAINV) TARGET PrfPrc + COPULAS (*1 Nom LINK 1 Inf) ;
+
+#!! * __+FMAINVAux1__  
+MAP:+FMAINVAux1 (@+FMAINV) TARGET VFIN + AUX-OR-MAIN (NEGATE *1 Inf BARRIER S-BOUNDARY);
+	#$ Maid Máret áiggui goarrumis?
+
+
+
+
+    
+#!! * __+FMAINV__  to the remaining finite verbs which are not AUX    
+MAP:+FMAINV (@+FMAINV) TARGET VFIN-NOT-AUX (NEGATE *0 VFIN-NOT-AUX OR @+FMAINV BARRIER S-BOUNDARY OR COMMA)(NEGATE 0 Inf LINK -1 CC LINK *-1 Inf BARRIER REAL-V LINK -1 AUX) ;
+	#$ Boađe boahtte vahku.
+	#$ Son lea oappáin náitalan.
+	#$ Mánná čohkána láhttái.
+	#$ Son gii oažžu lobi, galgá vuostáiváldit goartta dahje sullasačča, mii čájeha ahte sus lea lohpi.
+	#% Mun lean ráhkkásisttán ožžon cummá.
+	#$ Ovdal go čielggadan dan lagabui,...
+
+MAP:+FMAINVC (@+FMAINV) TARGET VFIN-NOT-AUX ;
+
+
+# Mapping both verbs in a rel bisetning even if no comma
+MAP:+FMAINVRel1 (@+FMAINV) TARGET VFIN-NOT-AUX (NOT 0 V + OBJ OR V + SUBJ OR V + Adv OR (V @>N) OR (V @N<) OR Adv) (*-1 ("sum") + CS BARRIER SV-BOUNDARY LINK NEGATE *-1 VFIN BARRIER S-BOUNDARY) ;
+MAP:+FMAINVRel2 (@+FMAINV) TARGET VFIN-NOT-AUX (NOT 0 V + OBJ OR V + SUBJ OR V + Adv OR (V @>N) OR (V @N<) OR Adv OR N) (*-1 FMAINV BARRIER REAL-V LINK *-1 ("sum") + CS BARRIER SV-BOUNDARY LINK NEGATE *-1 VFIN) ;
+	#$ Áldu mii dálvvi miehtá njamaha miesi gohčoduvvo čearpmateadni.
+
+MAP:+FMAINV (@+FMAINV) TARGET VFIN-NOT-AUX (NOT 0 SYN-V) (*-1 (N Nom) OR (Pron Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 Inf LINK NEGATE *-1 REAL-V - @>N BARRIER S-BOUNDARY OR COMMA)(NEGATE *1 VFIN OR PrfPrc - @>N BARRIER S-BOUNDARY OR COMMA) ;
+
+MAP:-FMAINV (@-FMAINV) TARGET PrfPrc (NOT 0 SYN-V) (*-1 FAUXV BARRIER REAL-V OR S-BOUNDARY)(NEGATE 0 AUX LINK *1 Inf BARRIER REAL-V OR S-BOUNDARY) ;
+	#$ Čuollun sáhttá leat dušše okta fierbmi gurgaluvvon.
+
+MAP:+FMAINV (@+FMAINV) TARGET AUX + VFIN (NEGATE *1 Inf OR PrfPrc - @>N ) ;
+	#$ Mearrasápmelaččat ledje áŋgiris ja oahppan bivdit.
+	
+
+
+MAP:+FMAINV (@+FMAINV) TARGET VFIN-NOT-AUX + Pl (NOT 0 SYN-V)(*1 NP-HEAD-PL-NOM BARRIER NOT-NPMODADV) ;
+
+
+MAP:-FMAINV (@-FMAINV) TARGET Sup ;
+
+MAP:IM (@IM) TARGET IM ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #!! !!Numeral outside the sentence
@@ -731,9 +874,7 @@ MAP:>nAttr (@>A) TARGET (Indef Attr) (*1 A - Gen OR Ord - Gen BARRIER NOT-NPMOD 
 	#$ Dattetge ii leat muitaluvvon makkárge namahan veara geavahanriiddu birra dálolaččaid ja boazodoalu gaskkas.
 
 #!! * __>nAttr__ (@>N) for Attr; if there is a noun to your right
-MAP:>nAttr (@>N) TARGET Attr (*1 N BARRIER Num OR A - Attr OR Pr OR Ord)  ;
-	#% Ledjego hilbadat mánát?
-	#% Ja dalle livččii Vibeke Larsenii vejolaš sámegillii ovdanbuktit ođđajagisártnis.
+MAP:>nAttr (@>N) TARGET A + $$CASE (*1 N + $$CASE BARRIER NPNH)  ;
 
 #!! * __n>Indef__ (Pron Indef Attr); if eará is to the right
 MAP:n>Indef (@>Pron) TARGET (Pron Indef Attr) (*1 ("eará") BARRIER NP-BOUNDARY OR Num OR A - Attr OR Pr OR Ord) ;
@@ -749,10 +890,6 @@ MAP:>n>sasj (@>A) TARGET Num (1 MEASUREADJS)(2 N);
 
 MAP:>nNoun (@>N) TARGET Gen (*1 N BARRIER NOT-NPMODADV OR A - Attr) ; #(NEGATE 0 OKTA + Nom LINK *1 (N Pl Loc) BARRIER NOT-NPMOD)()(NEGATE 0 HUMAN LINK 1 (Actio Nom) LINK 1 N) ;
 
-MAP:>nNoun (@>N) TARGET Gen (*1 N BARRIER NOT-NPMODADV)(NEGATE 0 HUMAN LINK 1 (Actio Nom) LINK 1 N) ;
-
-MAP:>nNounTEST (@>N) TARGET Gen (*1 N BARRIER NOT-Attr) ;
-	#$ Diehtu čavčča ođđa ohppiide dán skuvllas.
 
 
 MAP:>nplc (@>N) TARGET (Prop Sem/Plc Sg Nom) (1 Sem/Plc) ;
@@ -819,23 +956,23 @@ SET NOT-NP = VFIN-NOT-NEG OR Inf OR Interj OR CS ;
 	# Vocative - VOC
 
 #!! * __voc__ (@VOC) for Nom HUMAN; if comma to the left and an second person verb or pronoun to the left. To the right is the end of the sentence
-MAP:voc (@VOC) TARGET Nom IF (*-1 COMMA BARRIER NOT-NP OR CC LINK *-1 (V 2Sg) OR (V 2Pl) OR (Pron 2Sg) OR (Pron 2Pl))(1 EOS)(0 HUMAN)(NEGATE 0 Sg LINK *-1 V-SG3 BARRIER V);
+MAP:voc (@VOC) TARGET Nom IF (*-1 COMMA BARRIER NOT-NP OR CC LINK *-1 (V 2Sg) OR (V Pl) OR (Pron 2Sg) OR (Pron Pl))(1 EOS)(0 HUMAN)(NEGATE 0 Sg LINK *-1 V-SG3 BARRIER V);
 	#$ Vuoi du, Betsaida!
 
-MAP:voc (@VOC) TARGET Nom IF (-1 Attr LINK *-1 COMMA BARRIER NOT-NP OR CC LINK *-1 (V 2Sg) OR (V 2Pl) OR (Pron 2Sg) OR (Pron 2Pl))(1 EOS)(0 HUMAN)(NEGATE 0 Sg LINK *-1 V-SG3 BARRIER V);
+MAP:voc (@VOC) TARGET Nom IF (-1 Attr LINK *-1 COMMA BARRIER NOT-NP OR CC LINK *-1 (V 2Sg) OR (V Pl) OR (Pron 2Sg) OR (Pron Pl))(1 EOS)(0 HUMAN)(NEGATE 0 Sg LINK *-1 V-SG3 BARRIER V);
 
 
 
 MAP:voc (@VOC) TARGET (N Nom) IF (*-1 COMMA BARRIER NP-BOUNDARY LINK *-1 ("boahtin" Nom) BARRIER V OR S-BOUNDARY LINK -1 ("bures"))(1 EOC);
 	## Bures boahtin Čáhppes Bearralii, Miss Turner!
 
-MAP:voc (@VOC) TARGET Nom IF (-1 COMMA)(0 Pers)(0 2Sg Or 2Pl) (*1 Nom BARRIER NOT-NPMOD LINK 1 EOS);
+MAP:voc (@VOC) TARGET Nom IF (-1 COMMA)(0 Pers)(0 2Sg Or Pl) (*1 Nom BARRIER NOT-NPMOD LINK 1 EOS);
 	## Gáidet eret mu luhtte, dii verrošeaddjit!
 
-MAP:voc (@VOC) TARGET (N Nom) IF (-2 BOS)(-1 (Imprt 2Sg))(NEGATE -1 Adv OR Qst)(1 EOS);
+MAP:voc (@VOC) TARGET (N Nom) IF (-2 BOS)(-1 (Imp 2Sg))(NEGATE -1 Adv )(1 EOS);
 	## Gula eadni!
 
-MAP:voc (@VOC) TARGET (N Nom) IF (-3 BOS)(-2 (Imprt 2Sg) OR (2Sg Qst))(NEGATE -2 Nom) (-1 COMMA)(1 COMMA);
+MAP:voc (@VOC) TARGET (N Nom) IF (-3 BOS)(-2 (Imp 2Sg))(NEGATE -2 Nom) (-1 COMMA)(1 COMMA);
 	## Buvttes, Máhtte, goikemuoraid!
 
 MAP:voc (@VOC) TARGET (N Nom) IF (-4 BOS)(-3 (V 2Sg))(-2 go)(-1 COMMA)(1 COMMA);
@@ -899,30 +1036,9 @@ LIST A-EXT = "riekta" "vejolaš" ;
 
 
 #!! * __<extSubj__ (<ext> @<SUBJ) for Nom; if leat to the left and sentenceboundary
-MAP:<extSubj (<ext> @<SUBJ) TARGET Nom - NOT-EXT (*-1 ("leat") + FMAINV + HAB-V-TAGS BARRIER NOT-NPMODADV OR Ord OR (Ref Gen) LINK *-1 BOC - Nom BARRIER WORD) (NEGATE *1 Nom - Interr BARRIER NOT-NPMOD OR CC)(NEGATE *1 ("ahte") OR go + CS LINK *1 V) ;#(NEGATE *1 FMAINV BARRIER SV-BOUNDARY) ; 
 
 
 
-
-
-#!! * __<extQst2__ (<ext> @<SUBJ) for Nom; in an existential sentence. To your left is leat and it is sentence initial. No attributes or other words are allowed inbetween (because then you are SPRED), except the attribute muhtun, muhtin
-MAP:<extQst2 (<ext> @<SUBJ) TARGET Nom - NOT-EXT (*-1 ("leat") + HAB-V-TAGS BARRIER WORD - (Attr "muhtun") - (Attr "muhtin") LINK -1 BOS)(NEGATE *1 HUMAN OR Sem/Plc BARRIER NOT-NPMOD OR CC OR COMMA)(NEGATE 1 (A Nom)) ;
-	#$ Ledje muhtin čiegusvuođat, nu ahte in dieđe juste mo sii dahke, muhto geavahedje goit gunaid spárttuid vuostá ja bihka eksema vuostá.
-
-#!! * __extQst3>__ (<ext> @SUBJ>) for Nom; if habitive first one to the left, followed by copulas.
-MAP:extQst3> (<ext> @SUBJ>) TARGET Nom IF (1 <hab> LINK 1 COPULAS)(NEGATE 1 <hab> LINK 1 COPULAS LINK 1 FMAINV) ;
-	#$ Mii dus lea?
-	#$ Man uhccán osku dus lea!
-	#$ Sii muitalit oahpaheaddjái makkár barggut sis leat siiddas.
-	#% Sis lei unnán dahje ii makkárge oktavuohta earáiguin earretgo internáhtas orodettiin, vaikko máŋggas sis ledje fulkkežagat.
-
-#!! * __<extsubjcoor__ (<ext> @<SUBJ) for Nom. Coordination
-MAP:<extsubjcoor (<ext> @<SUBJ) TARGET Nom - NOT-EXT - Pron (*-1 (CC @CNP) OR COMMA BARRIER NOT-NPMOD LINK *-1 <ext> BARRIER WORD)(NEGATE 1 V) ;
-	#$ Eai lean boraspiret, eai ealggat, eaige nu ollu bohccot dain duovdagiin go dál.
-
-
-
-LIST MIELLA = "áigumuš" "dárbu" "dilli" "doarjja" "gelbbolašvuohta" "geatnegasvuohta" "lohpi" "miella" "ovddasvástádus" "plána" "resursa" "riekti" "váldi" "vejolaš" "vejolašvuohta" "vuođđu" "vuoigatvuohta" "vuorru" ;
 
 
 
@@ -930,39 +1046,10 @@ LIST MIELLA = "áigumuš" "dárbu" "dilli" "doarjja" "gelbbolašvuohta" "geatneg
 	# Subject predicatives - SPRED
 
 
-#!! * __<spredQst__ (@<SPRED) for Nom; in a typically question sentence; You are not allowed to be Pers or human. The special part is that Nom is not allowed to your right
-MAP:<spredQst (@<SPRED) TARGET Nom - Pers IF ((*-1 Qst BARRIER NOT-NPMODADV LINK -1 COPULAS + FMAINV LINK -1 BOS) OR (*-1 (Qst "leat") + FMAINV BARRIER NOT-NPMODADV LINK -1 BOS))(NEGATE 0 HUMAN)(NEGATE *1 Nom BARRIER NOT-NPMOD) ;
-	#$ Lea go duohtavuohta sukcasiin Jack Sparrow birra?
-	#$ Leat go árgi bajándálkkis?
-
-#!! * __<spredQst2__ (@<SPRED) for (A Nom); in a typically question sentence; You are SPRED if (N Nom) is to your left and leat + qst is to the left
-MAP:<spredQst2 (@<SPRED) TARGET Nom IF ((*-1 (N Nom) BARRIER NOT-NPMODADV LINK *-1 Qst BARRIER NOT-NPMODADV LINK -1 COPULAS + FMAINV LINK -1 BOS) OR (*-1 (N Nom) BARRIER NOT-NPMODADV LINK *-1 (Qst "leat") + FMAINV BARRIER NOT-NPMODADV)) ;
-	#$ Leat go min dihtorat ođđaáigásaččat?
-	#$ Lea go Čáhppes Bearral oahpis dutnje?
-	#$ Leat go álbmotmeahcit veahkaváldi báikkálaš olbmuid vuostá?
-	#$ Lea go dihtor dušše ođđaáigásaš čállinmášiidna?  dát ii leat HUMAN, dárbbaša sierra njuolggadusa
-
-#!! * __<spredQst3__ (@<SPRED) for (A Nom); you are SPRED when you are (A Nom) and to your right is (N Nom). This is a Qst-sentence, so copulas is found to your left
-MAP:<spredQst3 (@<SPRED) TARGET (A Nom) IF (*-1 Qst BARRIER NOT-NPMOD LINK -1 COPULAS + FMAINV LINK -1 BOS)(*1 (N Nom) BARRIER NOT-NPMOD);
-	#$ Ledje go hilbadat mánát?
-	#$ Ledjego hilbadat mánát? #Comment: should work
-
-
-#!! * __<NomBeforeSpred__ (@<SPRED) for (A Nom) if; Nom to the left, and copulas is to the left of Nom. There is no Nom allowed to the right of copulas! To avoid messing with coordination: ja, dahje and comma are not allowed to your left. Comma is not allowed to your right; if so then you are likely to be coordinated
-MAP:<NomBeforeSpred (@<SPRED) TARGET (A Nom) IF (*-1 Nom BARRIER NOT-NPMODADV LINK *-1 COPULAS + FMAINV BARRIER NOT-NPMODADV OR S-BOUNDARY LINK NEGATE -1 Nom)(NEGATE *-1 ("ja") OR ("dahje") BARRIER NOT-NPMODADV)(NEGATE -1 COMMA)(NEGATE 1 ("go") OR V) ;
-	#$ Earát fas orro olbmuid luhtte, ja sin mielas lei dát hui givssálaš.
-	#$ Dábálaččat lea čuollu guhkit, golbma, njeallje fierbmebaji guhku.
-	#$ Suomas maid lea dilli váttis.
-	#$ Dán oktavuođas leat dološ geavahusa njuolggadusat miellagiddevaččat.
-	#$ Márehis lea oaivi bávččas.
-
 #!! * __<spred__ (@<SPRED) for A Nom or N Nom if; the subject Nom is on the same side of copulas as you: on the right side of copulas
 MAP:<spred (@<SPRED) TARGET (A Nom) OR (N Nom) IF (*-1 (N Nom) BARRIER NOT-A LINK -1 COPULAS + FMAINV)(NEGATE -1 @<SPRED) ;
 	#$ Girjji namma čujuha dasa ahte dološ myhtain leat sámit mánát.
 
-#!! * __<spredVeara__ (@<SPRED) for veara + Nom; if genitive immediately to the right, and intransitive mainverb to the right of genitive
-MAP:<spredVeara (@<SPRED) TARGET ("veara" Nom) IF (-1 Gen LINK *-1 IV + FMAINV BARRIER SV-BOUNDARY) ;
-	#$ Son oinnii buot dan mii lea ráhkistan ja gudnejahttin veara.
 
 
 
@@ -1009,7 +1096,7 @@ MAP:spredCoord (@<SPRED) TARGET Nom - OKTA IF (*-1 @CNP BARRIER NOT-NPMODADV )(*
 	# Subjects - SUBJ
 
 
-LIST PERS-TAGS = 1Sg 2Sg 3Sg 1Pl 2Pl 3Pl ;
+LIST PERS-TAGS = 1Sg 2Sg 3Sg Pl ;
 
 MAP:subj>Pers (@SUBJ>) TARGET $$PERS-TAGS + Nom IF ((*1 $$PERS-TAGS + VFIN BARRIER SV-BOUNDARY OR N) OR (1 (Sg Com) LINK *1 $$PERS-TAGS + VFIN BARRIER SV-BOUNDARY OR N) OR (*1 Refl BARRIER NOT-ADV-PCLE LINK *1 $$PERS-TAGS + VFIN BARRIER NOT-ADV-PCLE)) ;
 	#$ Moai Birehiin barggašeimme mánáidgárddis.
@@ -1024,13 +1111,8 @@ MAP:subj>Pers (@SUBJ>) TARGET (1Sg Nom) (1 CC LINK *1 (N Pl) BARRIER NOT-NPMOD L
 
 MAP:<subjPers (@<SUBJ) TARGET $$PERS-TAGS + Nom IF (*-1 $$PERS-TAGS + VFIN BARRIER NOT-ADV-PCLE) ;
 
-#!! * __subj>Sgnr1__ (@SUBJ>) for Nom Sg, including Indef Nom if; VFIN + 3Sg or 3Pl to the right (VFIN not allowed to the left)
-#MAP:subj>cs (<cs> @SUBJ>) TARGET Interr + Nom IF (*1 VFIN + 3Sg OR VFIN + 3Pl BARRIER V OR S-BOUNDARY)(NEGATE *-1 VFIN + 3Sg BARRIER NOT-ADV-PCLE)(*-1 VFIN) ;
 
 
-MAP:subj>Sgnr1 (@SUBJ>) TARGET (Nom Sg) OR (3Sg Nom) OR (Indef Nom) IF (*1 VFIN + 3Sg OR VFIN + 3Pl BARRIER V OR S-BOUNDARY)(NEGATE *-1 VFIN + 3Sg BARRIER NOT-ADV-PCLE);
-	#$ Niibi lea stális.
-	#$ Girji lea Máreha.
 
 
 #!! * __subj>Sg__ (@SUBJ>) for Nom Sg; if VFIN + 3Sg to the right.
@@ -1045,11 +1127,6 @@ MAP:Sg<subj (@<SUBJ) TARGET (Nom Sg) IF (*-1 VFIN + 3Sg  BARRIER S-BOUNDARY)(NEG
 
 
 
-MAP:cop3Pl<subj (@<SUBJ) TARGET (Nom Pl) IF (*-1 COPULAS + 3Pl BARRIER NOT-NPMOD)(*1 @<SPRED BARRIER NOT-ADV) ;
-	#$ Girjji namma čujuha dasa ahte dološ myhtain leat sámit mánát.
-
-
-MAP:subj>Coor1 (@SUBJ>) TARGET Nom IF (1 CC LINK *1 Nom BARRIER NOT-NPMOD LINK *1 VFIN + 3Pl BARRIER NOT-ADV-PCLE) ;
 
 MAP:subjCoorTEST (@SUBJ>) TARGET Nom IF ((1 CC OR COMMA LINK *1 @SUBJ> BARRIER NOT-NPMOD) OR (*-1 CC BARRIER NOT-NPMOD OR CC LINK -1 @SUBJ>)) ;
 
@@ -1059,8 +1136,8 @@ MAP:subjCoorTEST (@SUBJ>) TARGET Nom IF ((1 CC OR COMMA LINK *1 @SUBJ>  BARRIER 
 
 MAP:subjCoorTEST (@<SUBJ) TARGET Nom IF ((1 CC OR COMMA LINK *1 @<SUBJ BARRIER NOT-NPMOD) OR (*-1 CC BARRIER NOT-NPMOD OR CC LINK -1 @<SUBJ)) ;
 
-MAP:subj>Num (@SUBJ>) TARGET (Num Nom) (*1 (N Sg Gen) BARRIER NOT-A LINK *1 VFIN + 3Pl BARRIER NOT-ADV-PCLE) ;
-MAP:<subjNum (@<SUBJ) TARGET (Num Nom) (*1 (N Sg Gen) BARRIER NOT-A)(*-1 VFIN + 3Pl BARRIER Nom OR S-BOUNDARY) ;
+MAP:subj>Num (@SUBJ>) TARGET (Num Nom) (*1 (N Sg Gen) BARRIER NOT-A LINK *1 VFIN + Pl BARRIER NOT-ADV-PCLE) ;
+MAP:<subjNum (@<SUBJ) TARGET (Num Nom) (*1 (N Sg Gen) BARRIER NOT-A)(*-1 VFIN + Pl BARRIER Nom OR S-BOUNDARY) ;
 
 
 
@@ -1078,17 +1155,12 @@ MAP:-fsubj> (@-FSUBJ>) TARGET HUMAN + Gen (1 (Actio Nom) LINK 1 N) ;
 	#$ Máreha čállin teavsttat ledje buoremusat.
 
 
-	# Adverbials - ADVL
-LIST ELA-VERBS-sme = "beassat" "beroštit" "boahtit" "čoaggit" "čuoigat" "čohkket" "fárret" "gahččat" "gáibidit" "geassádit" "girdit" "goaikut" "jearrat" "johtit" "njoammut" "oastit" "oažžut" "sihkkelastit" "sirdit" "váldit" "vázzát" "vázzit" "viehkat" "viežžat" "vuodjit" "vuojehit" "vuolgit"  ;
-
-LIST INE-VERBS-sme =  "ássat" "buolvvastallat" "buolvvastit" "čálašit" "čippostallat"  "čohkahit" "čohkkát" "čuččodit" "čuožžut" "čállit" "eallit" "geahččat" "goddot"  "gohččát" "gullát" "leat" "lahkonit" "morihit" "morránit" "oađđit" "oidnot" "orodit" "orrut" "stuorrut" "veallahit" "veallát"  ;
 
 
 
 
 
-
-MAP:s-boundary=advl> (@ADVL>) TARGET ADVL + S-BOUNDARY (*1 FMAINV) ;
+MAP:s-boundary=advl> (@ADVL>) TARGET Adv + S-BOUNDARY (*1 FMAINV) ;
 	#$ Dál de viimmat asttan lohkat reivve.
 
 
@@ -1139,10 +1211,18 @@ MAP:comma<advlEOS (@<ADVL) TARGET Adv (*-1 COMMA BARRIER V LINK *-1 FMAINV BARRI
 	#$ Guovdageainnu guovllut gal leat vel mu mielas sestojuvvon oalle bures dássážii, movt šat guhká.
 	#$ De eai leat šat dušše tálat, muhto bustávat maid.
 
+#!! * __InitPP__
+MAP:advl>PP (@ADVL>) TARGET Pr (*-1 BOS)(*1 V);
 
 #!! * __cleanupPr__ (@ADVL) for Po: This rule tags all Pr:s as @ADVL if they haven't gotten a tag somewhere along the way.
 MAP:cleanupPr (@ADVL) TARGET Pr (0 Pr);
 
+
+	# PP complements
+
+#!! * __P-NP__ P-compl
+MAP:P-NP (@P<) TARGET N (-1C Pr);
+MAP:P-NP (@P<) TARGET N (*-1C Pr BARRIER NPNH);
 
 	# Infinite subjects - FSUBJ
 
@@ -1210,10 +1290,7 @@ MAP:s-boun<obj (@<OBJ) TARGET Acc - Num (*-1 S-BOUNDARY BARRIER FMAINV + TV LINK
 	#$ Sii bukte skeaŋkkaid mánnái: golliid, suovvasiid ja myrra.
 	#$ Iige láhka lihkahala vuoigatvuođaid mat vuođđuduvvet eará vuđđosii, ovdamearkan dakkáriid mat vuođđuduvvet dahkkojuvvon šiehtadussii.
 
-#!! * __<objIV__ (@<OBJ) for Acc; if there is an intransitive mainverb in the clause. Not for Rel or Num. Not if you are a numeral followed by a measure-noun
-MAP:<objIV (@<OBJ) TARGET Acc - Num (*-1 FMAINV + IV BARRIER SV-BOUNDARY)(NEGATE -1 COMMA LINK *2 TRANS-V + FMAINV BARRIER SV-BOUNDARY) ;
-	#$ 1980:s manai Anny Hámmárfestii vázzit buohccedivššárskuvlla.
-	#$ Ja de sii bidje čázi duoldat ja juopmomielkki dasa, ja de dan juhke.
+
 
 
 
@@ -1270,12 +1347,12 @@ MAP:obj> (@OBJ>) TARGET NP-HEAD-ACC (*1 FMAINV BARRIER (":"))(NEGATE *-1 Interj 
 
 #!! !!<logo> MAPPING for MT - experimental
 
-ADD:logo1 (<logo>) TARGET Pers + 3Pl (0 Gen OR Acc LINK *-1 VFIN + 3Pl) ;
+ADD:logo1 (<logo>) TARGET Pers + Pl (0 Gen OR Acc LINK *-1 VFIN + Pl) ;
 
 #!! !!HNOUN MAPPING
 
 MAP:hnounNom (@HNOUN) TARGET NP-HEAD-NOM - A OR (Num Nom) 
-(NEGATE *0 V BARRIER (":"))(NEGATE *-1 PUNCT BARRIER (":") LINK -1 WORD) 
+(NOT *-1 Pr BARRIER NPNH)(NEGATE *0 V BARRIER (":"))(NEGATE *-1 PUNCT BARRIER (":") LINK -1 WORD) 
 ;
 
 MAP:hnounNom (@HNOUN) TARGET A OR (Num Nom) (*-1 BOS BARRIER WORD)(*1 EOS BARRIER WORD) ;
@@ -1285,16 +1362,16 @@ MAP:HNOUN<advl (@<SPRED) TARGET Sem/Adr (-1 (":") LINK -1 Nom) ;
 	#$ Fiskes, rukses, alit, ruoná ja muđui buotlágaš ivnnit.
 	#$ Bargolávdegotti bargu: Álgobargu lei čielggadit min mandáhta.
 
-MAP:hnounAdvl (@HNOUN) TARGET Acc (NEGATE *0 V OR @HNOUN) ;
+MAP:hnounAdvl (@HNOUN) TARGET Acc (NOT *-1 Pr BARRIER NPNH)(NEGATE *0 V OR @HNOUN) ;
 	#$ Juoba ge dán áigodagas.
 MAP:hnounInterj (@HNOUN) TARGET Acc (*-1 Interj BARRIER NOT-NPMOD) ;
 
 
 
-MAP:HNOUN<advl (@N<) TARGET ADVL (*-1 @HNOUN BARRIER CRD OR (":") LINK NOT 0 Num OR Pron) ;
-MAP:HNOUN<advl (@N<) TARGET ADVL (-1 CRD LINK -1 @N<)(1 EOS) ;
-MAP:HNOUN<advl (@<ADVL) TARGET ADVL (*-1 @HNOUN BARRIER CRD OR (":")) ;
-MAP:advl>HNOUN (@ADVL>) TARGET ADVL (*1 @HNOUN BARRIER CRD OR (":")) ;
+MAP:HNOUN<advl (@N<) TARGET Adv (*-1 @HNOUN BARRIER CRD OR (":") LINK NOT 0 Num OR Pron) ;
+MAP:HNOUN<advl (@N<) TARGET Adv (-1 CRD LINK -1 @N<)(1 EOS) ;
+MAP:HNOUN<advl (@<ADVL) TARGET Adv (*-1 @HNOUN BARRIER CRD OR (":")) ;
+MAP:advl>HNOUN (@ADVL>) TARGET Adv (*1 @HNOUN BARRIER CRD OR (":")) ;
 MAP:HNOUN<obj (@<OBJ) TARGET Acc (*-1 @HNOUN) ;
 	#% Birasgáhttenlihkadus ja álgoálbmogat - ovttasbargit vai vuostálágaid?
 MAP:obj>HNOUN (@OBJ>) TARGET Acc (*1 @HNOUN) ;
@@ -1307,11 +1384,20 @@ MAP:HNOUNcoor (@HNOUN) TARGET N (-1 @CNP LINK -1 @HNOUN) ;
 	#$ Oslos ja Londonis.
 
 MAP (@ADVL) TARGET Adv (-1 BOS) ;
-#!! * __@<ADVLcoor__ (@<ADVL) for ADVL if @CNP to the left and @ADVL to the left of it
-MAP:@<ADVLcoor (@<ADVL) TARGET ADVL (-1 @CNP LINK -1 @ADVL) ;
+#!! * __@<ADVLcoor__ (@<ADVL) for Adv if @CNP to the left and @ADVL to the left of it
+MAP:@<ADVLcoor (@<ADVL) TARGET Adv (-1 @CNP LINK -1 @ADVL) ;
 	#$ Odne vai ihttin?
 
 	#$ Báhpaeamit, Margrethe Wiig, gii lei gasku giellamoivvi, ráhkadii iežas sárgumiiguin sámegiela Áppesa, mii lei stuorra ávkin sámegiela oahpahusas.
+
+#!! !!CS mapping
+
+MAP:CSasCVP (CVP) TARGET CS (NOT -1 VFIN)(1 VFIN);
+
+MAP:CSasCNPCVP (@CNP @CVP) TARGET CS;
+
+
+
 
 #!! ! __missingX__ adds @X to all missings
 MAP:missingX (@X) TARGET (?) ;

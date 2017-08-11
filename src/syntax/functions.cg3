@@ -221,32 +221,12 @@ SET HUMAN = Pot_HUMAN - NOT_HUMAN ;
 LIST Nom = Nom ;
 LIST Acc = Acc ;
 LIST Gen = Gen ;
-LIST Ill = Ill ;
-LIST Loc = Loc ;
-LIST Com = Com ;
-LIST Ess = Ess ;
-LIST Ine = Ine ;
-LIST Ela = Ela ;
-
-LIST LOC = Loc Ine Ela ;
+LIST Dat = Dat ;
 
 LIST Sg = Sg ;
-LIST Du = Du ;
 LIST Pl = Pl ;
 
 LIST ShCmp = ShCmp ;
-
-LIST PxSg1 = PxSg1 ;
-LIST PxSg2 = PxSg2 ;
-LIST PxSg3 = PxSg3 ;
-
-LIST PxDu1 = PxDu1 ;
-LIST PxDu2 = PxDu2 ;
-LIST PxDu3 = PxDu3 ;
-
-LIST PxPl1 = PxPl1 ;
-LIST PxPl2 = PxPl2 ;
-LIST PxPl3 = PxPl3 ;
 
 LIST Comp = Comp ;
 LIST Superl = Superl ;
@@ -255,19 +235,6 @@ LIST Attr = Attr ;
 LIST Ord = Ord ;
 
 LIST Qst = Qst ;
-
-# The ("ge" Pcle) etc. are used in Apertium
-LIST Foc/ge = Foc/ge ("ge" Pcle) ;
-LIST Foc/gen = Foc/gen ("gen" Pcle) ;
-LIST Foc/ges = Foc/ges ("ges" Pcle) ;
-LIST Foc/gis = Foc/gis ("gis" Pcle) ;
-LIST Foc/naj = Foc/naj ("naj" Pcle) ;
-LIST Foc/ba = Foc/ba ("ba" Pcle) ;
-LIST Foc/be = Foc/be ("be" Pcle) ;
-LIST Foc/hal = Foc/hal ("hal" Pcle) ;
-LIST Foc/han = Foc/han ("han" Pcle) ;
-LIST Foc/bat = Foc/bat ("bat" Pcle) ;
-LIST Foc/son = Foc/son ("son" Pcle) ;
 
 LIST IV = IV ;
 LIST TV = TV ;
@@ -285,7 +252,7 @@ LIST Cond = Cond ;
 LIST Imprt = Imprt ;
 LIST ImprtII = ImprtII ;
 
-LIST Sg1 = Sg1 ;
+LIST 1Sg = 1Sg ;
 LIST Sg2 = Sg2 ;
 LIST Sg3 = Sg3 ;
 
@@ -558,7 +525,7 @@ SET NOT-PRFPRC = WORD - PrfPrc ;
 # Person
 # - - - -
 
-LIST V-SG1 = (V Sg1)  ;
+LIST V-SG1 = (V 1Sg)  ;
 
 LIST V-SG2 = (V Sg2) ;
 
@@ -621,7 +588,7 @@ SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
 # Pronoun sets
 # ------------
 
-LIST MUN = (Pron Pers Sg1 Nom);
+LIST MUN = (Pron Pers 1Sg Nom);
 LIST DON = (Pron Pers Sg2 Nom);
 LIST SON = ("son" Pron Pers Sg3 Nom);
 LIST MOAI = (Pron Pers Du1 Nom);
@@ -642,7 +609,7 @@ SET PRON-DU = MOAI OR DOAI OR SOAI ;
 
 SET PPRON-NOT-SII = MUN OR DON OR SON OR MOAI OR DOAI OR SOAI OR MII-PERS OR DII ;
 
-LIST PPRON-GEN = (Sg1 Gen) (Sg2 Gen) (Sg3 Gen) (Du1 Gen) (Du2 Gen) (Du3 Gen)
+LIST PPRON-GEN = (1Sg Gen) (Sg2 Gen) (Sg3 Gen) (Du1 Gen) (Du2 Gen) (Du3 Gen)
 	(Pl1 Gen) (Pl2 Gen) (Pl3 Gen);
 
 SET PPRON-NOT-GEN = (Pron Pers) - PPRON-GEN ;
@@ -651,7 +618,7 @@ LIST DEM-SG = (Pron Dem Sg Nom);
 LIST DEM-PL = (Pron Dem Pl Nom);
 SET NOT-DEM = WORD - Dem ;
 
-LIST SGPRON = (Pron Sg1) (Pron Sg2) (Pron Sg3) (Pron Sg) (Pron PxSg1) (Pron PxSg2) (Pron PxSg3);
+LIST SGPRON = (Pron 1Sg) (Pron Sg2) (Pron Sg3) (Pron Sg) (Pron Px1Sg) (Pron PxSg2) (Pron PxSg3);
 LIST DUPRON = (Pron Du1) (Pron Du2) (Pron Du3)  (Pron PxDu1) (Pron PxDu2) (Pron PxDu3);
 LIST PLPRON = (Pron Pl1) (Pron Pl2) (Pron Pl3) (Pron Pl) (Pron PxPl1) (Pron PxPl2) (Pron PxPl3);
 LIST DUPRON-NOTPX = (Pron Du1) (Pron Du2) (Pron Du3) ;
@@ -839,7 +806,7 @@ SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr) OR ("buor
 
 #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
 
-SET PRE-NP-V = PrfPrc OR PrsPrc OR Der/NomAg OR Actio OR Der/NomAct OR (V A) OR (Prs Sg3) + Ind OR (Prs Sg1) + Ind OR (Imprt Du2) ;
+SET PRE-NP-V = PrfPrc OR PrsPrc OR Der/NomAg OR Actio OR Der/NomAct OR (V A) OR (Prs Sg3) + Ind OR (Prs 1Sg) + Ind OR (Imprt Du2) ;
     # to be used together with PRE-NP-HEAD before @>N is disambiguated
 
 SET NP-MEMBER   = PRE-NP-HEAD OR N ;
@@ -886,7 +853,7 @@ SET NAPP     = WORD - PRE-APP ;
 
 #!! * Miscellaneous sets
 # ------------------
-LIST Px = PxSg1 PxSg2 PxSg3 PxDu1 PxDu2 PxDu3 PxPl1 PxPl2 PxPl3 ;
+LIST Px = Px1Sg PxSg2 PxSg3 PxDu1 PxDu2 PxDu3 PxPl1 PxPl2 PxPl3 ;
 
 LIST GASKAL = "gaskal" "gaskkal" "gaskii" "gaskka" "gaskkas" ;
 
@@ -1775,13 +1742,13 @@ MAP:spredCoord (@<SPRED) TARGET Nom - OKTA IF (*-1 @CNP BARRIER NOT-NPMODADV )(*
 	# Subjects - SUBJ
 
 
-LIST PERS-TAGS = Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 ;
+LIST PERS-TAGS = 1Sg Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 ;
 
 MAP:subj>Pers (@SUBJ>) TARGET $$PERS-TAGS + Nom IF ((*1 $$PERS-TAGS + VFIN BARRIER SV-BOUNDARY OR N - ADVLCASE) OR (1 (Sg Com) LINK *1 $$PERS-TAGS + VFIN BARRIER SV-BOUNDARY OR N - ADVLCASE) OR (*1 Refl BARRIER NOT-ADV-PCLE LINK *1 $$PERS-TAGS + VFIN BARRIER NOT-ADV-PCLE)) ;
 	#$ Moai Birehiin barggašeimme mánáidgárddis.
-MAP:subj>Pers (@SUBJ>) TARGET (Sg1 Nom) (-1 CC LINK *2 (V Pl1) BARRIER NOT-ADV-PCLE) ;
-MAP:subj>Pers (@SUBJ>) TARGET (Sg1 Nom) (1 CC LINK *1 (N Pl) BARRIER NOT-NPMOD LINK *1 (V Pl1) BARRIER NOT-ADV-PCLE) ;
-#MAP:subj>Pers (@SUBJ>) TARGET (Sg1 Nom) (-1 CC LINK *2 (V Pl1) BARRIER NOT-ADV-PCLE) ;
+MAP:subj>Pers (@SUBJ>) TARGET (1Sg Nom) (-1 CC LINK *2 (V Pl1) BARRIER NOT-ADV-PCLE) ;
+MAP:subj>Pers (@SUBJ>) TARGET (1Sg Nom) (1 CC LINK *1 (N Pl) BARRIER NOT-NPMOD LINK *1 (V Pl1) BARRIER NOT-ADV-PCLE) ;
+#MAP:subj>Pers (@SUBJ>) TARGET (1Sg Nom) (-1 CC LINK *2 (V Pl1) BARRIER NOT-ADV-PCLE) ;
 	#$ Mii du namma lea?
 	#$ Gii ..
 	#% Lea go son Máret boahtán?

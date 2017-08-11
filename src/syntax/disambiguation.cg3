@@ -323,8 +323,8 @@ REMOVE N IF (*-1 SOMEACCDATPREP CBARRIER NPNH)(0 A + Dat OR A + Acc)(1 N + Dat O
 
 # TAD
 
-REMOVE Det IF (NOT -2 Nom)(-1 V)(0 Pron + Nom)(NOT *1 N + Def BARRIER NPNHA);
-REMOVE Det IF (0 TAD + $$NAGD)(1C $$NAGD);
+REMOVE Dem IF (NOT -2 Nom)(-1 V)(0 Pron + Nom)(NOT *1 N + Def BARRIER NPNHA);
+REMOVE Dem IF (0 TAD + $$NAGD)(1C $$NAGD);
 
 
 # Adjective disambiguation

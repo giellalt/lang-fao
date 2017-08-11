@@ -385,6 +385,30 @@ SELECT CS IF (-1 BOS)(0 ("tí"));
 # so far. Needed is thus real examples, in order to select them
 # before going for CS.
 
+
+# Verbs
+
+# hava
+REMOVE ("havi") IF (0 ("hava") + V)(0* Pl + Nom BARRIER Det);
+SELECT V + Pl IF (-3 Pl + Nom)(-2 COMMA)(-1 ("sum"));
+       ## tey, sum hava
+
+# bera
+SELECT V IF (-1 Adv)(0 ("bar"))(1 ("til"));
+       ## Soleiðis bar til.
+
+# vera
+SELECT:vera ("vera") IF (0 ("ver"))(*-1 ("hava") BARRIER V);
+
+# verða
+SELECT:verda ("verða") IF (0 ("verður"))(*1 A OR Sup CBARRIER NOT-ADV);
+	     ## ... sum av tær verður gitin.
+
+# kunna
+SELECT:vfinkunna Inf IF (-1 VFIN) (0 ("kunna"));
+SELECT:kunna Inf IF (0 ("kunna"))(*1 Inf BARRIER NOT-ADV);
+
+
 # PP disambiguation
 # =================
 
@@ -465,25 +489,6 @@ REMOVE:STRONGDATPREPVERB Acc IF (*-1 SOMEACCDATPREP BARRIER NPNH LINK *-1 S-BOUN
 
 REMOVE ("kala") IF (*-1 TAD + Dem)(0 ("kalur"));
 
-# Verbs
-
-# hava
-REMOVE ("havi") IF (0 ("hava") + V)(0* Pl + Nom BARRIER Det);
-
-# bera
-SELECT V IF (-1 Adv)(0 ("bar"))(1 ("til"));
-       ## Soleiðis bar til.
-
-# vera
-SELECT:vera ("vera") IF (0 ("ver"))(*-1 ("hava") BARRIER V);
-
-# verða
-SELECT:verda ("verða") IF (0 ("verður"))(*1 A OR Sup CBARRIER NOT-ADV);
-	     ## ... sum av tær verður gitin.
-
-# kunna
-SELECT:vfinkunna Inf IF (-1 VFIN) (0 ("kunna"));
-SELECT:kunna Inf IF (0 ("kunna"))(*1 Inf BARRIER NOT-ADV);
 
 # Pron Pers or Det
 
@@ -493,8 +498,8 @@ REMOVE Pers IF (-1 Pr)(0 (Det Gen))(*1 N OR A BARRIER NPNH);
 REMOVE Det IF (0 Pers)(1 EOS OR VFIN OR Pr OR CC OR S-BOUNDARY);
 REMOVE Dem IF (0 Pers)(1 EOS OR VFIN OR Pr OR CC OR Num OR S-BOUNDARY);
 
-REMOVE:DetNotDem (Pron Pers) IF (0 Dem + $$GENDER + $$NUMBER + $$NAGD)(1 NorA + $$GENDER + $$NUMBER + $$NAGD);
-
+REMOVE:DemNotPron (Pron Pers) IF (0 Dem + $$GENDER + $$NUMBER + $$NAGD)(1 NorA + $$GENDER + $$NUMBER + $$NAGD);
+#REMOVE:DemNotPron (Pron Pers) IF (0 Det + $$GENDER + $$NUMBER + $$NAGD)(1 NorA + $$GENDER + $$NUMBER + $$NAGD);
 
 # Det (no idea why $$ does not work)
 

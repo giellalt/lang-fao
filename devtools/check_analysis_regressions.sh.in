@@ -159,48 +159,48 @@ function open_morpha_diffs() {
 
 function open_disamb_diffs() {
     if test "x$diff_disamb" == "xyes" ; then
-        if test ! -f $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt; then
+        if test ! -f $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt; then
             echo "First time run!"
-            echo "Adding $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt to svn"
-            cp $morpha_corpus.$fstsuffix.txt \
-               $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
+            echo "Adding $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt to svn"
+            cp $disamb_corpus.$fstsuffix.txt \
+               $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt
             svn add $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
         else
-            opendiff $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt \
-              $morpha_corpus.$fstsuffix.txt \
-              -merge $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
+            opendiff $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt \
+              $disamb_corpus.$fstsuffix.txt \
+              -merge $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt
         fi
     fi
 }
 
 function open_functn_diffs() {
     if test "x$diff_functn" == "xyes" ; then
-        if test ! -f $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt; then
+        if test ! -f $corpusdir/$functn_corpus.$fstsuffix.goldst.txt; then
             echo "First time run!"
-            echo "Adding $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt to svn"
-            cp $morpha_corpus.$fstsuffix.txt \
-               $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
-            svn add $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
+            echo "Adding $corpusdir/$functn_corpus.$fstsuffix.goldst.txt to svn"
+            cp $functn_corpus.$fstsuffix.txt \
+               $corpusdir/$functn_corpus.$fstsuffix.goldst.txt
+            svn add $corpusdir/$functn_corpus.$fstsuffix.goldst.txt
         else
-            opendiff $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt \
-              $morpha_corpus.$fstsuffix.txt \
-              -merge $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
+            opendiff $corpusdir/$functn_corpus.$fstsuffix.goldst.txt \
+              $functn_corpus.$fstsuffix.txt \
+              -merge $corpusdir/$functn_corpus.$fstsuffix.goldst.txt
         fi
     fi
 }
 
 function open_depend_diffs() {
     if test "x$diff_depend" == "xyes" ; then
-        if test ! -f $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt; then
+        if test ! -f $corpusdir/$depend_corpus.$fstsuffix.goldst.txt; then
             echo "First time run!"
-            echo "Adding $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt to svn"
-            cp $morpha_corpus.$fstsuffix.txt \
-               $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
-            svn add $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
+            echo "Adding $corpusdir/$depend_corpus.$fstsuffix.goldst.txt to svn"
+            cp $depend_corpus.$fstsuffix.txt \
+               $corpusdir/$depend_corpus.$fstsuffix.goldst.txt
+            svn add $corpusdir/$depend_corpus.$fstsuffix.goldst.txt
         else
-            opendiff $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt \
-              $morpha_corpus.$fstsuffix.txt \
-              -merge $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
+            opendiff $corpusdir/$depend_corpus.$fstsuffix.goldst.txt \
+              $depend_corpus.$fstsuffix.txt \
+              -merge $corpusdir/$depend_corpus.$fstsuffix.goldst.txt
         fi
     fi
 }

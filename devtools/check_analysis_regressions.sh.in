@@ -62,7 +62,9 @@ function print_usage() {
     echo "You need to specify at least one of the diff options."
     echo
     echo "  -h, --help           Print this usage info"
-    echo "  -c, --corpus CORPUS  Specify the corpus to be used as input"
+    echo "  -c, --corpus CORPUS  Specify the corpus to be used as input."
+    echo "                       Optional, defaults to:"
+    echo "                       $giella_lang/test/data/analysis_check_corpus.txt"
     echo "  -dm, --diff-morpha   Open a graphical diff view for the"
     echo "                       morphological analyses"
     echo "  -dd, --diff-disamb   Open a graphical diff view for the"
@@ -88,11 +90,18 @@ function print_usage() {
 
 # Wrong usage - short instruction:
 if test $# -ge 9 -o $# -eq 0 ; then
-    echo "ERROR: no diff display option specified!"
+    echo "ERROR: Too many or no options specified!"
     echo
     print_usage
     exit 1
 fi
+
+diff_morpha="no"
+diff_disamb="no"
+diff_functn="no"
+diff_depend="no"
+old_new_hfst_diff="no"
+old_new_xerox_diff="no"
 
 # manual getopt loop... Mac OS X does not have good getopt
 while test $# -ge 1 ; do
@@ -112,13 +121,21 @@ while test $# -ge 1 ; do
     elif test x$1 = x--diff-hfsttok -o x$1 = x-dx ; then
         old_new_xerox_diff="yes"
     elif test x$1 = x--corpus -o x$1 = x-c ; then
+        # If -c is not followed by anything - fail:
         if test -z "$2" ; then
             echo "ERROR: please specify the corpus path and name"
             echo
             print_usage
             exit 1
+        # If the next argument is a new option (not a corpus path), then fail:
         elif [[ "$2" == \-* ]] ; then
             echo "ERROR: please specify the corpus path and name"
+            echo
+            print_usage
+            exit 1
+        # Check whether the specified corpus file actually exists:
+        elif [[ ! -f "$2" ]] ; then
+            echo "ERROR: The specified corpus file $2 does not exist!"
             echo
             print_usage
             exit 1
@@ -129,6 +146,18 @@ while test $# -ge 1 ; do
     fi
     shift
 done
+
+if test $diff_morpha = "no" -a \
+        $diff_disamb = "no" -a \
+        $diff_functn = "no" -a \
+        $diff_depend = "no" -a \
+        $old_new_hfst_diff = "no"  -a \
+        $old_new_xerox_diff = "no" ; then
+    echo "ERROR: No diff option specified. At least one must be."
+    echo
+    print_usage
+    exit 1
+fi
 
 if test "x$corpus" != "x" ; then
     source_corpus=$(basename $corpus .txt)

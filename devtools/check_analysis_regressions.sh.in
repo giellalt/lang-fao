@@ -35,7 +35,8 @@ foma_lookup=@FLOOKUP@
 hfst_lookup=@HFST_OPTIMIZED_LOOKUP@
 hfst_tokenise=@HFST_TOKENISE@
 vislcg3=@VISLCG3@
-cg_mwesplit=cg-mwesplit
+cg_mwesplit=@CG_MWESPLIT@
+difftool=@DIFFTOOL@
 
 # Use autotools mechanisms to only run the configured fst types in the tests:
 fsttype=
@@ -44,8 +45,12 @@ fsttype=
 @CAN_FOMA_TRUE@fsttype="$fsttype foma"
 
 # Use autotools mechanisms to check for hfst-tokenise:
-htokenise_true=x
-@WANT_TOKENISERS_TRUE@htokenise_true=yes
+want_htokenise=x
+@WANT_TOKENISERS_TRUE@want_htokenise=yes
+
+# Use autotools mechanisms to check for mergeability of diff tool:
+can_merge=x
+@CAN_MERGE_TRUE@can_merge=yes
 
 # move into devtools dir in the build dir:
 cd $abs_top_builddir/devtools
@@ -128,7 +133,7 @@ while test $# -ge 1 ; do
             print_usage
             exit 1
         # If the next argument is a new option (not a corpus path), then fail:
-        elif [[ "$2" == \-* ]] ; then
+        elif [[ "$2" = \-* ]] ; then
             echo "ERROR: please specify the corpus path and name"
             echo
             print_usage
@@ -170,8 +175,18 @@ disamb_corpus=$source_corpus.disamb
 functn_corpus=$source_corpus.functn
 depend_corpus=$source_corpus.depend
 
+# 
+case $difftool in
+  *opendiff )
+        merge_option="-merge"
+        ;;
+  *)
+        merge_option="--output"
+        ;;
+esac
+
 function open_morpha_diffs() {
-    if test "x$diff_morpha" == "xyes" ; then
+    if test "x$diff_morpha" = "xyes" ; then
         if test ! -f $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt; then
             echo "First time run!"
             echo "Adding $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt to svn"
@@ -179,15 +194,20 @@ function open_morpha_diffs() {
                $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
             svn add $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
         else
-            opendiff $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt \
+          if test x$can_merge = xyes; then
+            $difftool $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt \
               $morpha_corpus.$fstsuffix.txt \
-              -merge $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
+              $merge_option $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
+          else
+            $difftool $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt \
+              $morpha_corpus.$fstsuffix.txt
+          fi
         fi
     fi
 }
 
 function open_disamb_diffs() {
-    if test "x$diff_disamb" == "xyes" ; then
+    if test "x$diff_disamb" = "xyes" ; then
         if test ! -f $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt; then
             echo "First time run!"
             echo "Adding $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt to svn"
@@ -195,15 +215,20 @@ function open_disamb_diffs() {
                $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt
             svn add --force $corpusdir/$morpha_corpus.$fstsuffix.goldst.txt
         else
-            opendiff $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt \
+          if test x$can_merge = xyes; then
+            $difftool $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt \
               $disamb_corpus.$fstsuffix.txt \
-              -merge $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt
+              $merge_option $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt
+          else
+            $difftool $corpusdir/$disamb_corpus.$fstsuffix.goldst.txt \
+              $disamb_corpus.$fstsuffix.txt
+          fi
         fi
     fi
 }
 
 function open_functn_diffs() {
-    if test "x$diff_functn" == "xyes" ; then
+    if test "x$diff_functn" = "xyes" ; then
         if test ! -f $corpusdir/$functn_corpus.$fstsuffix.goldst.txt; then
             echo "First time run!"
             echo "Adding $corpusdir/$functn_corpus.$fstsuffix.goldst.txt to svn"
@@ -211,15 +236,20 @@ function open_functn_diffs() {
                $corpusdir/$functn_corpus.$fstsuffix.goldst.txt
             svn add --force $corpusdir/$functn_corpus.$fstsuffix.goldst.txt
         else
-            opendiff $corpusdir/$functn_corpus.$fstsuffix.goldst.txt \
+          if test x$can_merge = xyes; then
+            $difftool $corpusdir/$functn_corpus.$fstsuffix.goldst.txt \
               $functn_corpus.$fstsuffix.txt \
-              -merge $corpusdir/$functn_corpus.$fstsuffix.goldst.txt
+              $merge_option $corpusdir/$functn_corpus.$fstsuffix.goldst.txt
+          else
+            $difftool $corpusdir/$functn_corpus.$fstsuffix.goldst.txt \
+              $functn_corpus.$fstsuffix.txt
+          fi
         fi
     fi
 }
 
 function open_depend_diffs() {
-    if test "x$diff_depend" == "xyes" ; then
+    if test "x$diff_depend" = "xyes" ; then
         if test ! -f $corpusdir/$depend_corpus.$fstsuffix.goldst.txt; then
             echo "First time run!"
             echo "Adding $corpusdir/$depend_corpus.$fstsuffix.goldst.txt to svn"
@@ -227,9 +257,14 @@ function open_depend_diffs() {
                $corpusdir/$depend_corpus.$fstsuffix.goldst.txt
             svn add --force $corpusdir/$depend_corpus.$fstsuffix.goldst.txt
         else
-            opendiff $corpusdir/$depend_corpus.$fstsuffix.goldst.txt \
+          if test x$can_merge = xyes; then
+            $difftool $corpusdir/$depend_corpus.$fstsuffix.goldst.txt \
               $depend_corpus.$fstsuffix.txt \
-              -merge $corpusdir/$depend_corpus.$fstsuffix.goldst.txt
+              $merge_option $corpusdir/$depend_corpus.$fstsuffix.goldst.txt
+          else
+            $difftool $corpusdir/$depend_corpus.$fstsuffix.goldst.txt \
+              $depend_corpus.$fstsuffix.txt
+          fi
         fi
     fi
 }
@@ -279,27 +314,27 @@ function run_htokeniser_tests() {
       > $morpha_corpus.htokoldcomp.txt
     run_cg_tests
 	open_morpha_diffs
-    if test "x$old_new_hfst_diff" == "xyes" ; then
-	   opendiff $morpha_corpus.hfstol.txt $morpha_corpus.htokoldcomp.txt
+    if test "x$old_new_hfst_diff" = "xyes" ; then
+	   $difftool $morpha_corpus.hfstol.txt $morpha_corpus.htokoldcomp.txt
 	fi
 }
 
 # Loop over the enabled transducer types - we test all that are configured:
 for f in $fsttype; do
 	# Determine the fst filename suffix based on fst engine:
-	if test $f == "xfst"; then
+	if test $f = "xfst"; then
 		lookuptool="$xerox_lookup -q -flags mbTT"
 		fstsuffix="xfst"
 		run_tests
-	elif test $f == "foma"; then
+	elif test $f = "foma"; then
 		lookuptool="$foma_lookup"
 		fstsuffix="foma"
 		run_tests
-	elif test $f == "hfst"; then
+	elif test $f = "hfst"; then
 		lookuptool="$hfst_lookup"
 		fstsuffix="hfstol"
 		run_tests
-		if test $htokenise_true == "yes"; then
+		if test $want_htokenise = "yes"; then
 			fstsuffix="hfsttok"
 			run_htokeniser_tests
 		fi
@@ -310,6 +345,6 @@ for f in $fsttype; do
 	fi
 done
 
-if test "x$old_new_xerox_diff" == "xyes" ; then
-   opendiff $morpha_corpus.xfst.txt $morpha_corpus.htokoldcomp.txt
+if test "x$old_new_xerox_diff" = "xyes" ; then
+   $difftool $morpha_corpus.xfst.txt $morpha_corpus.htokoldcomp.txt
 fi

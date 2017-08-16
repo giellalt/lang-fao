@@ -415,7 +415,20 @@ AS_IF([test "x$GIELLA_LIBS" != "xno" -a \
 AM_CONDITIONAL([CAN_LOCALSYNC], [test "x$can_local_sync" != xno ])
 AM_CONDITIONAL([CAN_REMOTE_SYNC], [test "x$can_wget_giella_libs" != xno ])
 
+################ Look for available diff and merge tools: ################
+AC_PATH_PROGS([DIFFTOOL], [opendiff kdiff3 meld diffuse kompare], [no], [$PATH$PATH_SEPARATOR$with_difftool])
 
+case $DIFFTOOL in
+  *kdiff3 |\
+  *meld   |\
+  *opendiff )
+        can_merge=yes
+        ;;
+  *)
+        can_merge=no
+        ;;
+esac
+AM_CONDITIONAL([CAN_MERGE], [test "x$can_merge" != xno ])
 
 ################ GNU Make at least 3.82 on non-OSX systems: ################
 #
@@ -551,9 +564,10 @@ AC_DEFUN([gt_PROG_VISLCG3],
 AC_PATH_PROG([VISLCG3], [vislcg3], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 AC_PATH_PROG([VISLCG3_COMP], [cg-comp], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 AC_PATH_PROG([CG_RELABEL], [cg-relabel], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
+AC_PATH_PROG([CG_MWESPLIT], [cg-mwesplit], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 
 AS_IF([test "x$VISLCG3" != xno], [
-_giella_core_vislcg3_min_version=m4_default([$1], [0.9.9.011351])
+_giella_core_vislcg3_min_version=m4_default([$1], [1.0.0])
 AC_MSG_CHECKING([whether vislcg3 is at least $_giella_core_vislcg3_min_version])
 _vislcg3_version=$( ${VISLCG3} --version 2>&1 | grep -Eo '@<:@0-9@:>@+\.@<:@0-9.@:>@+' )
 AX_COMPARE_VERSION([$_vislcg3_version], [ge], [$_giella_core_vislcg3_min_version],

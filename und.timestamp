@@ -1,4 +1,12 @@
-$Rev: 156180 $
+$Rev: 156188 $
+Initial support for building tokenisers where the morphological analysis tags
+are given in CG format directly instead of having to be postprocess by
+hfst-tokenise before being printed. The idea is to make the hfst-tokenise code
+more general, and move everything that is particular to one language or setup
+go into the fst instead of being hardcoded in the C++ code. There are some
+issues that must be resolved, but fst-wise the code works.
+
+r156180:
 Added support for building a regex that transform all tags from the format
 "+Adv" to " Adv" (including space). The idea is to make the tags readily
 consumable by CG. Both prefix and suffix tags are converted. Newest giella-core

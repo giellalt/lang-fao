@@ -188,6 +188,7 @@ AC_CONFIG_FILES([Makefile \
                  tools/mt/apertium/filters/Makefile \
                  tools/mt/apertium/tagsets/Makefile \
                  tools/tokenisers/Makefile \
+                 tools/tokenisers/filters/Makefile \
                  tools/shellscripts/Makefile \
                  tools/spellcheckers/Makefile \
                  tools/spellcheckers/filters/Makefile \

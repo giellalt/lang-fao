@@ -15,8 +15,24 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+SUBDIRS = filters .
+
+##################################################################
+#### BEGIN: Add local processing instructions BELOW this line ####
+##################################################################
+
 # Set this variable to point to generated lexc source files, if any:
-GENRSRCS=
+GENRSRCS:=
+
+########################################################
+#### Add language-specific transducer targets here: ####
+
+#################################################
+#### Add language-specific build rules here: ####
+
+##################################################################
+#### END: Add local processing instructions ABOVE this line ######
+##################################################################
 
 ####### Other targets: ###########
 clean-local:

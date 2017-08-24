@@ -18,16 +18,16 @@ giella_core=@GIELLA_CORE@
 corpusdir=$top_srcdir/test/data
 
 # File variables:
-abbr_file=$top_srcdir/tools/preprocess/abbr.txt
+abbr_file=$top_srcdir/tools/tokenisers/abbr.txt
 source_corpus=analysis_check_corpus
 corpus_file=$corpusdir/$source_corpus.txt
 
 analyser=$top_builddir/src/analyser-disamb-gt-desc
-tokeniser=$top_builddir/tools/preprocess/tokeniser-disamb-gt-desc.pmhfst
+tokeniser=$top_builddir/tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst
 disambiguator=$top_builddir/src/syntax/disambiguation.bin
 functions_cg=$top_builddir/src/syntax/functions.bin
 dependencies=$top_builddir/src/syntax/dependency.bin
-mwe_dis=$top_srcdir/tools/preprocess/mwe-dis.cg3
+mwe_dis=$top_srcdir/tools/tokenisers/mwe-dis.cg3
 
 # Tools:
 xerox_lookup=@LOOKUP@

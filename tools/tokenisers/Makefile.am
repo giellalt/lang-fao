@@ -22,4 +22,4 @@ GENRSRCS=
 clean-local:
 	-rm -f *.hfst *.xfst abbr.txt *.pmhfst
 
-include $(top_srcdir)/am-shared/tools-preprocess-dir-include.am
+include $(top_srcdir)/am-shared/tools-tokenisers-dir-include.am

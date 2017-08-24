@@ -1,4 +1,10 @@
-$Rev: 156162 $
+$Rev: 156180 $
+Added support for building a regex that transform all tags from the format
+"+Adv" to " Adv" (including space). The idea is to make the tags readily
+consumable by CG. Both prefix and suffix tags are converted. Newest giella-core
+required.
+
+r156162:
 Part two of renaming the preprocess dir to tokenisers. Now all refs to it are
 updated.
 

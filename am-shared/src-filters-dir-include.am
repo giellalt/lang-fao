@@ -84,10 +84,11 @@ GIELLA_FILTER_CORE_REGEX_SRCS=\
 # 2) GTD Core **generated** regex files:
 GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS=\
                   make-optional-semantic-tags.regex \
-                  remove-semantic-tags.regex        \
-                  reorder-semantic-tags.regex       \
-                  remove-derivation-strings.regex   \
                   make-optional-error-tags.regex    \
+                  make-CG-tags.regex                \
+                  reorder-semantic-tags.regex       \
+                  remove-semantic-tags.regex        \
+                  remove-derivation-strings.regex   \
                   remove-error-tags.regex           \
                   remove-error-strings.regex        \
                   remove-dialect-tags.regex         \
@@ -349,7 +350,11 @@ reorder-%-tags.regex: %-tags.txt
 	$(AM_V_GEN)$(GTCORE)/scripts/taglist2reorder_$*_tags_regex.sh \
 		$@ $^
 
-####### Copy regex files from the GTD core if not found locally: ########
+### Reformat tags:
+make-CG-tags.regex: $(GT_TAGS)
+	$(AM_V_GEN)$(GTCORE)/scripts/taglist2make_CG_tags_regex.sh $< > $@
+
+####### Copy regex files from giella-shared if not found locally: ########
 %.regex: $(GIELLA_SHARED)/all_langs/src/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 

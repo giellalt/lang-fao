@@ -48,7 +48,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 ### This is the version of the Giella Core that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
-_giella_core_min_version=0.2.40
+_giella_core_min_version=0.2.41
 
 ### This is the version of the Giella Shared that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345

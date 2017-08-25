@@ -1100,9 +1100,10 @@ LIST PERS-TAGS = 1Sg 2Sg 3Sg Pl ;
 
 MAP:subj>Pers (@SUBJ>) TARGET $$PERS-TAGS + Nom IF ((*1 $$PERS-TAGS + VFIN BARRIER SV-BOUNDARY OR N) OR (1 (Sg Com) LINK *1 $$PERS-TAGS + VFIN BARRIER SV-BOUNDARY OR N) OR (*1 Refl BARRIER NOT-ADV-PCLE LINK *1 $$PERS-TAGS + VFIN BARRIER NOT-ADV-PCLE)) ;
 	#$ Moai Birehiin barggašeimme mánáidgárddis.
+
 MAP:subj>Pers (@SUBJ>) TARGET (1Sg Nom) (-1 CC LINK *2 (V 1Pl) BARRIER NOT-ADV-PCLE) ;
+
 MAP:subj>Pers (@SUBJ>) TARGET (1Sg Nom) (1 CC LINK *1 (N Pl) BARRIER NOT-NPMOD LINK *1 (V 1Pl) BARRIER NOT-ADV-PCLE) ;
-#MAP:subj>Pers (@SUBJ>) TARGET (1Sg Nom) (-1 CC LINK *2 (V 1Pl) BARRIER NOT-ADV-PCLE) ;
 	#$ Mii du namma lea?
 	#$ Gii ..
 	#% Lea go son Máret boahtán?
@@ -1110,8 +1111,6 @@ MAP:subj>Pers (@SUBJ>) TARGET (1Sg Nom) (1 CC LINK *1 (N Pl) BARRIER NOT-NPMOD L
 
 
 MAP:<subjPers (@<SUBJ) TARGET $$PERS-TAGS + Nom IF (*-1 $$PERS-TAGS + VFIN BARRIER NOT-ADV-PCLE) ;
-
-
 
 
 
@@ -1321,14 +1320,13 @@ MAP:NInfheadliner (@HNOUN) TARGET Nom (NEGATE 0 VFIN)(1 Inf LINK NEGATE *1 WORD)
 
 
 
+MAP:<subj (@<SUBJ <ext>) TARGET NP-HEAD-NOM - A OR (Num Nom) (*-1 COPULAS BARRIER (":") OR S-BOUNDARY LINK -1 Adv OR (@P<)) ;
+
 #!! !!SUBJ MAPPING - leftovers
 MAP:<subj (@<SUBJ) TARGET NP-HEAD-NOM - A OR (Num Nom) (*-1 FMAINV BARRIER (":") OR S-BOUNDARY) ;
 
 #!! * __subj>ifV__ (@SUBJ>) for NP-HEAD-NOM, DUPRON or (Num Nom) if; a finite mainverb is found to the right. This is a cleanup rule for subjects
 MAP:subj>ifV (@SUBJ>) TARGET NP-HEAD-NOM - A OR (Num Nom) (*1 FMAINV BARRIER (":"))(NEGATE *1 @SUBJ> BARRIER FMAINV OR FAUXV LINK NEGATE *2 FMAINV BARRIER EOS) ;
-	#$ Lean ieš oaidnán dange.
-	#$ Mii Sámedikki nuoraidpolitihkalaš lávdegottis (SNPL) áigut čalmmustahttit árbevirolaš ja ođđaáigásaš sámi ealáhusaid.
-	#% Ávdugasat sii geat moraštit.
 
 #!! * __hnoun>ifV__ (@SUBJ>) for NP-HEAD-NOM, DUPRON if. The counterpart of subj>ifV. You are HNOUN if there is a finite verb to your right, but NOT if there is a finite verb after a relative clause
 MAP:hnoun>ifV (@HNOUN) TARGET NP-HEAD-NOM - A (*1 FMAINV BARRIER (":"))(NEGATE *1 @SUBJ> BARRIER FMAINV LINK 2* FMAINV BARRIER EOS ) ;

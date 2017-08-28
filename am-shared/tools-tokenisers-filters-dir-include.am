@@ -18,6 +18,14 @@
 ####### Compilation variables: #######
 HFST_REGEXP2FST_FLAGS="--xerox-composition=ON"
 
+# Variable to hold filename for file containing all tags used
+# (all symbols starting or ending with '+')
+TAG_FILE=disamb_tags.txt
+
+# Variable to hold filename for fst used as source for extracting tags,
+# sans extension
+TAG_EXTRACTION_FST=$(top_builddir)/src/analyser-disamb-gt-desc
+
 ####### Source file and target defs: ########
 GT_TOKENISERS_FILTER_SRCS=make-CG-tags.regex
 
@@ -55,6 +63,12 @@ endif # CAN_HFST
 #endif # CAN_FOMA
 endif # WANT_TOKENISERS
 
+####### Build rules for creating regexes from tag list: #######
+
+### Reformat tags:
+make-CG-tags.regex: $(TAG_FILE)
+	$(AM_V_GEN)$(GTCORE)/scripts/taglist2make_CG_tags_regex.sh $< > $@
+
 ####### Copy regex files from the Giella core if not found locally: ########
 %.regex: $(GIELLA_SHARED)/all_langs/src/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
@@ -72,6 +86,7 @@ endif # WANT_TOKENISERS
 
 include $(top_srcdir)/am-shared/regex-include.am
 include $(top_srcdir)/am-shared/hfst-format-include.am
+include $(top_srcdir)/am-shared/tag-extraction-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

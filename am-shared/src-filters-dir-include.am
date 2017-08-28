@@ -85,7 +85,6 @@ GIELLA_FILTER_CORE_REGEX_SRCS=\
 GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS=\
                   make-optional-semantic-tags.regex \
                   make-optional-error-tags.regex    \
-                  make-CG-tags.regex                \
                   reorder-semantic-tags.regex       \
                   remove-semantic-tags.regex        \
                   remove-derivation-strings.regex   \
@@ -172,66 +171,6 @@ noinst_DATA=$(GIELLA_FILTER_TARGETS)
 BUILT_SOURCES=$(GENERATED_FILES)
 CLEANFILES=$(GENERATED_FILES)
 
-# The or construction needs to be put into a variable for the parentheses to
-# survive 'make' and be visible to the shell - this at the same time silences
-# grep.
-GREPTAGSCOMMAND=( grep -E '(^\+.|.\+$$)' || echo '+NoTagsFound' )
-
-# Variable to hold filename for file containing all tags used
-# (all symbols starting or ending with '+')
-GT_TAGS=gttags.txt
-
-# Extract the sigma set using either HFST or Xfst depending on the configuration
-# The sigma extraction is tuned to the peculiarities of both, and does produce
-# the exact same output. The sigma set can be used to extract further symbol
-# sets. The file sigma.txt contains one symbol pr line, and the whole line
-# is the symbol (minus final newline).
-
-if CAN_HFST
-# Hfst: break on comma + space in three steps, to preserve space as a symbol.
-sigma.txt: $(top_builddir)/src/morphology/lexicon.hfst
-	$(AM_V_GEN)$(HFST_SUMMARIZE) -v $^ \
-		| grep -A1 '^sigma set' \
-		| grep -v '^sigma set' \
-		| sed 's/, /\\\\\\/g' \
-		| perl -pe 's/\\\\\\/\n/g' \
-		| grep -v '^$$' \
-		| egrep -v '(@_EPSILON_SYMBOL_@|@_IDENTITY_SYMBOL_@|@_UNKNOWN_SYMBOL_@)' \
-		> $@
-
-else
-
-if CAN_XFST
-# Special treatment of space (" "), break on space, special treatment of
-# reserved symbols ("X") and double quote. The Xfst file needs to be sorted.
-sigma.txt: $(top_builddir)/src/morphology/lexicon.xfst
-	$(AM_V_GEN)$(XFST) -q \
-			-e "load stack $^" \
-			-e "print sigma" \
-			-stop \
-		| grep -v '^Size' \
-		| sed 's/^Sigma: //' \
-		| sed 's/       //' \
-		| sed 's/" "/XXXXX/g' \
-		| tr ' ' '\n' \
-		| sed 's/XXXXX/ /g' \
-		| grep -v '^$$' \
-		| sed 's/^"\(.\)"$$/\1/' \
-		| sed 's/%\"/"/' \
-		| LCALL=C sort \
-		> $@
-
-else
-# If neither Hfst nor Xfst is enabled, create an empty file:
-sigma.txt:
-	touch $@
-
-endif # CAN_XFST
-endif # CAN_HFST
-
-gttags.txt: sigma.txt
-	$(AM_V_GEN)$(GREPTAGSCOMMAND) < $< > $@	
-
 ####### Build rules for building dialect filters: #######
 # DIALECT_TARGETS_?FST is constructed dynamically based on the dialects
 # specified in configure.ac.
@@ -273,19 +212,27 @@ endif # HAVE_AREAS
 ## harmless   (unless  a  language  uses  the  tag
 ## +Sem/DummyTag, +Dial/DummyTag, etc.).
 
-area-tags.txt: $(GT_TAGS)
+# Variable to hold filename for file containing all tags used
+# (all symbols starting or ending with '+')
+TAG_FILE=gttags.txt
+
+# Variable to hold filename for fst used as source for extracting tags,
+# sans extension
+TAG_EXTRACTION_FST=$(top_builddir)/src/morphology/lexicon
+
+area-tags.txt: $(TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Area/
 
-dialect-tags.txt: $(GT_TAGS)
+dialect-tags.txt: $(TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Dial/
 
-derivation-tags.txt: $(GT_TAGS)
+derivation-tags.txt: $(TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Der/
 
-error-tags.txt: $(GT_TAGS)
+error-tags.txt: $(TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Err/
 
-semantic-tags.txt: $(GT_TAGS)
+semantic-tags.txt: $(TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Sem/
 
 ####### Build rules for creating regexes from tag list: #######
@@ -350,10 +297,6 @@ reorder-%-tags.regex: %-tags.txt
 	$(AM_V_GEN)$(GTCORE)/scripts/taglist2reorder_$*_tags_regex.sh \
 		$@ $^
 
-### Reformat tags:
-make-CG-tags.regex: $(GT_TAGS)
-	$(AM_V_GEN)$(GTCORE)/scripts/taglist2make_CG_tags_regex.sh $< > $@
-
 ####### Copy regex files from giella-shared if not found locally: ########
 %.regex: $(GIELLA_SHARED)/all_langs/src/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
@@ -375,5 +318,6 @@ include $(top_srcdir)/am-shared/regex-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
 include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
+include $(top_srcdir)/am-shared/tag-extraction-include.am
 
 # vim: set ft=automake:

@@ -1,4 +1,9 @@
-$Rev: 156233 $
+$Rev: 156319 $
+Moved tag extraction to a separate am-include file, so that it can be shared
+between different dirs. Moved generation of regex for turning tags into CG
+friendly format from src/filters/ to tools/tokenisers/filters/.
+
+r156233:
 After a couple of bug fixes in giella-core, require the new version.
 
 r156188:

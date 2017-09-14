@@ -67,24 +67,24 @@ GT_LEXICAL+=lexicon.foma
 endif # CAN_FOMA
 
 # Define variable before using it:
-GIELLA_LOCALTARGETS=
+GIELLA_LOCAL_SRC_TARGETS=
 # Generate the filter targets from the source filenames:
 if CAN_HFST
-GIELLA_LOCALTARGETS+=\
+GIELLA_LOCAL_SRC_TARGETS+=\
         $(patsubst %.lexc,%.hfst,$(GT_LOCAL_SRCS) $(GT_SHARED_SRCS))
-GIELLA_LOCALTARGETS+=$(patsubst %.xfscript,%.hfst,$(GT_LOCAL_XFSCRIPT_SRCS))
+GIELLA_LOCAL_SRC_TARGETS+=$(patsubst %.xfscript,%.hfst,$(GT_LOCAL_XFSCRIPT_SRCS))
 endif # CAN_HFST
 
 if CAN_XFST
-GIELLA_LOCALTARGETS+=\
+GIELLA_LOCAL_SRC_TARGETS+=\
         $(patsubst %.lexc,%.xfst,$(GT_LOCAL_SRCS) $(GT_SHARED_SRCS))
-GIELLA_LOCALTARGETS+=$(patsubst %.xfscript,%.xfst,$(GT_LOCAL_XFSCRIPT_SRCS))
+GIELLA_LOCAL_SRC_TARGETS+=$(patsubst %.xfscript,%.xfst,$(GT_LOCAL_XFSCRIPT_SRCS))
 endif # CAN_XFST
 
 if CAN_FOMA
-GIELLA_LOCALTARGETS+=\
+GIELLA_LOCAL_SRC_TARGETS+=\
         $(patsubst %.lexc,%.foma,$(GT_LOCAL_SRCS) $(GT_SHARED_SRCS))
-GIELLA_LOCALTARGETS+=$(patsubst %.xfscript,%.foma,$(GT_LOCAL_XFSCRIPT_SRCS))
+GIELLA_LOCAL_SRC_TARGETS+=$(patsubst %.xfscript,%.foma,$(GT_LOCAL_XFSCRIPT_SRCS))
 endif # CAN_FOMA
 
 if WANT_L2
@@ -103,7 +103,7 @@ GT_LEXICAL+=lexicon-L2.foma
 endif # CAN_FOMA
 endif # WANT_L2
 
-noinst_DATA=$(GT_LEXICAL) $(GIELLA_LOCALTARGETS)
+noinst_DATA=$(GT_LEXICAL) $(GIELLA_LOCAL_SRC_TARGETS) $(GIELLA_LOCAL_TARGETS)
 
 ####### XML2LEXC build rules: ####
 XSLDIR = $(GTCORE)/scripts/xsl

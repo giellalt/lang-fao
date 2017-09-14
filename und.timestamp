@@ -1,4 +1,8 @@
-$Rev: 156319 $
+$Rev: 156971 $
+Fixed a shortcoming in the build infra uncovered by gle: no explicit support for
+language-specific build rules that will not end up in lexicon.?fst.
+
+r156319:
 Moved tag extraction to a separate am-include file, so that it can be shared
 between different dirs. Moved generation of regex for turning tags into CG
 friendly format from src/filters/ to tools/tokenisers/filters/.

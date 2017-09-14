@@ -12,7 +12,8 @@
       </program>
       <program name="cg-mwesplit" debug-suff="mwe-split"/>
       <program name="vislcg3" debug-suff="disam">
-        <arg name="-t"/>
+        <!-- <arg name="-t"/> -->
+        <!-- for some reason, trace here makes current vislcg3 segfault :( -->
         <arg name="-g"/>
         <file name="../../src/syntax/disambiguation.cg3"/>
       </program>
@@ -39,13 +40,13 @@
         <file name="../tokenisers/tokeniser-gramcheck-gt-desc.pmhfst"/>
       </program>
       <program name="vislcg3" debug-suff="mwe-dis">
-        <arg name="-t"/>
+        <!-- <arg name="-t"/> -->
         <arg name="-g"/>
         <file name="../tokenisers/mwe-dis.cg3"/>
       </program>
       <program name="cg-mwesplit" debug-suff="mwe-split"/>
       <program name="vislcg3" debug-suff="disam">
-        <arg name="-t"/>
+        <!-- <arg name="-t"/> -->
         <arg name="-g"/>
         <file name="../../src/syntax/disambiguation.cg3"/>
       </program>
@@ -76,7 +77,7 @@
       </program>
       <program name="cg-mwesplit" debug-suff="mwe-split"/>
       <program name="vislcg3" debug-suff="disam">
-        <arg name="-t"/>
+        <!-- <arg name="-t"/> -->
         <arg name="-g"/>
         <file name="../../src/syntax/disambiguation.cg3"/>
       </program>

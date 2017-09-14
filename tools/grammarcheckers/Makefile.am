@@ -5,7 +5,7 @@
 # set this to name of cg3 dependency rules
 GT_GRAMMARCHECKER=grammarchecker.cg3
 
-# set this to names of cg3 binaries 
+# set this to names of cg3 binaries
 GT_GC_TARGETS=grammarchecker.bin
 
 # set this to the filename of the file being used by voikkogc:
@@ -14,7 +14,13 @@ GT_GC_ZDISTRO=grammarchecker.zhfst
 
 include $(top_srcdir)/am-shared/tools-grammarcheckers-dir-include.am
 
-dev: modes/$(GTLANG)gram.mode
+dev: modes/$(GTLANG)gram.mode checkxml schemas.xml
 
 modes/%.mode: modes.xml
 	apertium-gen-modes modes.xml
+
+schemas.xml:
+	divvun-gen-xmlschemas >$@
+
+checkxml:
+	divvun-validate-suggest errors.xml

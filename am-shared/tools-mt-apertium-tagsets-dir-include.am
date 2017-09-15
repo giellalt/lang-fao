@@ -21,33 +21,18 @@
 EXTRA_DIST=$(TAGSET_SRCS) $(REGEX_SRCS) README.txt
 
 # This is what we build:
-noinst_DATA=$(GT_REGEX_TARGETS) $(GT_GENERATED_TAGSET_RELABEL_SRCS)
+noinst_DATA=$(GT_REGEX_TARGETS)
 
 # Automatically detect the targets to be built:
 GT_REGEX_TARGETS=
-GT_GENERATED_TAGSET_RELABEL_SRCS=
 
 if WANT_APERTIUM
-
-GT_GENERATED_TAGSET_RELABEL_SRCS+=apertium.relabel
 
 if CAN_HFST
 GT_REGEX_TARGETS+=$(patsubst %.regex,%.hfst,$(REGEX_SRCS))
 endif # CAN_HFST
 
 endif # WANT_APERTIUM
-
-####### Build rules: ########
-
-# Convert GT-tags to Apertium-tags:
-apertiumtags.txt: $(top_builddir)/src/filters/gttags.txt
-	$(AM_V_GEN)tr -d '+' < $< \
-		| tr '/[:upper:]' '_[:lower:]' \
-		| awk '{print "%<"$$0"%>"}' > $@
-
-# Generate relabel file for replacing Giella tags with Apertium tags:
-apertium.relabel: $(top_builddir)/src/filters/gttags.txt apertiumtags.txt
-	$(AM_V_GEN)paste $^ | tr -d '%' > $@
 
 
 ##########################################

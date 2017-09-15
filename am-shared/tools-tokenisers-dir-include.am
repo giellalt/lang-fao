@@ -119,7 +119,9 @@ analyser_relabelled-%-gt-desc.hfst: analyser-%-gt-desc.hfst \
 tokeniser-%.pmhfst: tokeniser-%.pmscript \
                     analyser_relabelled-%.hfst \
                     ../../src/morphology/url.hfst
-	$(AM_V_PM2FST)$(HFST_PMATCH2FST) < $< > $@
+	$(AM_V_PM2FST)$(HFST_PMATCH2FST) < $< > $@.tmp
+	$(AM_V_at)mv -f $@.tmp $@
+
 
 # Helper fst one:
 btrelabeller.hfst:

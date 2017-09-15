@@ -13,6 +13,8 @@ APERTIUM_GENERATORS_HFST=
 APERTIUM_GENERATOR_ATTGZ=
 APERTIUM_CG_BIN=
 
+APERTIUM_GENERATED_TAGSET_RELABEL_SRCS=
+
 if WANT_APERTIUM
 # The multiple parallel pattern rules further down are fragile (or: make is
 # fragile). We need to specify here as the first target to build the dependency
@@ -83,6 +85,8 @@ APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfstol \
 
 APERTIUM_GENERATOR_ATTGZ+=apertium-$(GTLANG).$(GTLANG).RL.att.gz
 
+APERTIUM_GENERATED_TAGSET_RELABEL_SRCS+=tagsets/apertium.relabel
+
 if WANT_SYNTAX
 APERTIUM_CG_BIN+=$(GTLANG).mor.rlx.bin \
 				 $(GTLANG).syn.rlx.bin
@@ -104,11 +108,35 @@ noinst_DATA=$(APERTIUM_ANALYSER_HFST) \
 			$(APERTIUM_ANALYSERS_GT_HFST) \
 			$(APERTIUM_ANALYSERS_AP_HFST) \
 			$(APERTIUM_GENERATORS_HFST) \
-			$(APERTIUM_CG_SRC)
+			$(APERTIUM_CG_SRC) \
+			$(APERTIUM_GENERATED_TAGSET_RELABEL_SRCS)
 hfstdata_DATA=$(APERTIUM_MORPH_PAIRS) \
 			  $(APERTIUM_GENERATOR_ATTGZ) \
 			  $(APERTIUM_CG_BIN)
 endif # CAN_HFST
+
+####### Build rules: ########
+
+# Variable to hold filename for file containing all tags used
+# (all symbols starting or ending with '+')
+TAG_FILE=tagsets/gttags.txt
+
+# Variable to hold filename for fst used as source for extracting tags,
+# sans extension
+TAG_EXTRACTION_FST=analyser-mt-gt-desc
+
+# Convert GT-tags to Apertium-tags:
+tagsets/apertiumtags.txt: tagsets/gttags.txt
+	$(AM_V_GEN)tr -d '+' < $< \
+		| tr '/[:upper:]' '_[:lower:]' \
+		| awk '{print "%<"$$0"%>"}' > $@
+
+# Generate relabel file for replacing Giella tags with Apertium tags:
+tagsets/apertium.relabel: tagsets/gttags.txt \
+						  tagsets/apertiumtags.txt
+	$(AM_V_GEN)paste $^ | tr -d '%' > $@
+
+
 
 # Apertium generator - GTD tags. All filtering happens here except dialect tags happens here:
 generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
@@ -417,4 +445,5 @@ generator%.hfst: generator%.tmp.hfst
 include $(top_srcdir)/am-shared/lookup-include.am
 include $(top_srcdir)/am-shared/vislcg3-include.am
 include $(top_srcdir)/am-shared/hfst-format-include.am
+include $(top_srcdir)/am-shared/tag-extraction-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am

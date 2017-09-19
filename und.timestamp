@@ -1,4 +1,7 @@
-$Rev: 157096 $
+$Rev: 157204 $
+Made cg3 file compilation more general.
+
+r157096:
 Moved the code to build the apertium relabel script in the apertium directory,
 so that we can use the actual giella-tagged fst for MT as the tag source. This
 should fix all issues of missing tags in the relabel script.

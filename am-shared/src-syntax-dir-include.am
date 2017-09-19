@@ -43,15 +43,15 @@ EXTRA_DIST=$(GT_CG_SRCS) $(GT_CG_LOCAL_SRCS)
 # set this to names of cg3 binaries
 GT_CG_TARGETS=
 if WANT_SYNTAX
-GT_CG_TARGETS+=disambiguation.bin functions.bin dependency.bin
+GT_CG_TARGETS+=$(patsubst %.cg3,%.bin,$(GT_CG_SRCS) $(GT_CG_LOCAL_SRCS))
 endif # WANT_SYNTAX
 
 #! @var GT_CG_TARGETS the files that should be built and installed for cg
 #! @var GT_CG_LOCAL_INST_TARGETS local cg files to build and install
 #! @var GT_CG_LOCAL_NOINST_TARGETS local cg files to build but NOT install
 
-gtddatadir=$(datadir)/giella/$(GTLANG)
-gtddata_DATA=$(GT_CG_TARGETS) $(GT_CG_LOCAL_INST_TARGETS)
+gielladatadir=$(datadir)/giella/$(GTLANG)
+gielladata_DATA=$(GT_CG_TARGETS) $(GT_CG_LOCAL_INST_TARGETS)
 
 noinst_DATA=$(GT_CG_LOCAL_NOINST_TARGETS)
 

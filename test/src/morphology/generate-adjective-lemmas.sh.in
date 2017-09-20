@@ -33,10 +33,11 @@ result_file=missing_${POS}_lemmas
 gen_result_file=generated_missing_${POS}_lemmas
 ana_result_file=analysed_missing_${POS}_lemmas
 
-# SKIP if source file does not exist:
-if [ ! -f $source_file ]; then
+# SKIP if source file does not exist (works with both single and
+# multiple files):
+if [ ! `ls -1 $source_file 2>/dev/null | wc -l ` -gt 0 ]; then
     echo
-    echo "*** Warning: Source file $source_file not found."
+    echo "*** Warning: Source file(s) $source_file not found."
     echo
     exit 77
 fi

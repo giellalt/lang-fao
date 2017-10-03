@@ -2,25 +2,7 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-# set this to name of cg3 dependency rules
-GT_GRAMMARCHECKER=grammarchecker.cg3
-
-# set this to names of cg3 binaries
-GT_GC_TARGETS=grammarchecker.bin
-
-# set this to the filename of the file being used by voikkogc:
-GT_GC_DISTRO=gramchk.bin
-GT_GC_ZDISTRO=grammarchecker.zhfst
+# If valency is used, define it here:
+GIELLA_GC_VALENCY=
 
 include $(top_srcdir)/am-shared/tools-grammarcheckers-dir-include.am
-
-dev: modes/$(GTLANG)gram.mode checkxml schemas.xml
-
-modes/%.mode: modes.xml
-	apertium-gen-modes modes.xml
-
-schemas.xml:
-	divvun-gen-xmlschemas >$@
-
-checkxml:
-	divvun-validate-suggest errors.xml

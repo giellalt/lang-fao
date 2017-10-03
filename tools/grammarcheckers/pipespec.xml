@@ -1,0 +1,20 @@
+<pipespec language="fo"
+          developer="Divvun"
+          version="0.1"
+          contact="Divvun divvun@uit.no">
+
+  <pipeline name="faogram"
+            language="fo"
+            type="Grammar error">
+    <tokenize><arg n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
+    <cg><arg n="mwe-dis.bin"/></cg>
+    <mwesplit/>
+    <cg><arg n="disambiguator.bin"/></cg>
+    <cg><arg n="grammarchecker.bin"/></cg>
+    <suggest>
+      <arg n="generator-gt-norm.hfstol"/>
+      <arg n="errors.xml"/>
+    </suggest>
+  </pipeline>
+
+</pipespec>

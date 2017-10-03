@@ -723,12 +723,24 @@ AS_IF([test "x$enable_syntax" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
 AM_CONDITIONAL([WANT_SYNTAX], [test "x$enable_syntax" != xno])
 # $gt_prog_vislcg3
 
+# Enable grammar checkers - default is 'no'
+AC_ARG_ENABLE([grammarchecker],
+              [AS_HELP_STRING([--enable-grammarchecker],
+                              [enable grammar checker @<:@default=no@:>@])],
+              [enable_grammarchecker=$enableval],
+              [enable_grammarchecker=no])
+AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" = "xno"], 
+      [enable_grammarchecker=no
+       AC_MSG_ERROR([vislcg3 missing or too old - required for the grammar checker])])
+AM_CONDITIONAL([WANT_GRAMCHECK], [test "x$enable_grammarchecker" != xno])
+
 # Enable all spellers - default is 'no'
 AC_ARG_ENABLE([spellers],
               [AS_HELP_STRING([--enable-spellers],
                               [build any/all spellers @<:@default=no@:>@])],
               [enable_spellers=$enableval],
               [enable_spellers=no])
+AS_IF([test "x$enable_grammarchecker" != xno],[enable_spellers=yes])
 AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
 
 # Enable hfst desktop spellers - default is 'yes' (but dependent on
@@ -824,17 +836,6 @@ AM_CONDITIONAL([WANT_FST_HYPHENATOR], [test "x$enable_fst_hyphenator" != xno])
 
 # Set up conditional for pattern hyphenators:
 AM_CONDITIONAL([WANT_PATTERN_HYPHENATORS], [test "x$enable_pattern_hyphenators" != xno])
-
-# Enable grammar checkers - default is 'no'
-AC_ARG_ENABLE([grammarchecker],
-              [AS_HELP_STRING([--enable-grammarchecker],
-                              [enable grammar checker @<:@default=no@:>@])],
-              [enable_grammarchecker=$enableval],
-              [enable_grammarchecker=no])
-AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" = "xno"], 
-      [enable_grammarchecker=no
-       AC_MSG_ERROR([vislcg3 missing or too old - required for the grammar checker])])
-AM_CONDITIONAL([WANT_GRAMCHECK], [test "x$enable_grammarchecker" != xno])
 
 # Enable dictionary transducers - default is 'no'
 AC_ARG_ENABLE([dicts],

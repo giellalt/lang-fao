@@ -1,4 +1,13 @@
-$Rev: 157261 $
+$Rev: 157879 $
+Major update to the grammar checker template. It still does not work completely
+as it should, so hold your horses. Update content: ensured that all files needed
+are copied to the grammar checker build dir, removed option to name files
+(=irrelevant bloat), now builds an almost proper zip file, and ensured that
+tokenisers are built before grammarcheckers. Also made it so that when grammar
+checkers are enabled, spellers are automatically enabled too, as they will be
+included as part of the grammar checker pipeline.
+
+r157261:
 Changed the file exists test for the lemma generation testing so that it will
 work even in cases where multiple source files are used as input.
 

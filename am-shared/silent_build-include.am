@@ -200,6 +200,10 @@ AM_V_GZIP       = $(AM_V_GZIP_@AM_V@)
 AM_V_GZIP_      = $(AM_V_GZIP_@AM_DEFAULT_V@)
 AM_V_GZIP_0     = @echo "  GZIP     $@";
 
+AM_V_ZIP        = $(AM_V_ZIP_@AM_V@)
+AM_V_ZIP_       = $(AM_V_ZIP_@AM_DEFAULT_V@)
+AM_V_ZIP_0      = @echo "  ZIP      $@";
+
 AM_V_SAXON      = $(AM_V_SAXON_@AM_V@)
 AM_V_SAXON_     = $(AM_V_SAXON_@AM_DEFAULT_V@)
 AM_V_SAXON_0    = @echo "  SAXON    $@";

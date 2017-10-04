@@ -349,7 +349,7 @@ $(GT_SPELLING_HFST): $(srcdir)/index.xml \
 	$(AM_V_at)cp $(srcdir)/index.xml build/$@/index.xml
 	$(AM_V_at)cp $(GT_SPELLER_ACCEPTOR) build/$@/$(GT_SPELLER_ACCEPTOR)
 	$(AM_V_at)cp $(GT_ERRMODELS) build/$@/$(GT_ERRMODELS)
-	$(AM_V_GEN)cd build/$@/ && $(ZHFST_COMPRESSION)
+	$(AM_V_ZIP)cd build/$@/ && $(ZHFST_COMPRESSION)
 	$(AM_V_at)$(MKDIR_P) 3
 	$(AM_V_at)cp -f $@ 3/
 

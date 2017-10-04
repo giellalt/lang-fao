@@ -23,13 +23,15 @@ GIELLA_GRAMMARCHECKER=grammarchecker.cg3
 # set this to the filename of the file being used by voikkogc:
 GIELLA_GC_ZDISTRO=$(GTLANG2).zcheck
 
+# set this to the filename of the file being used by voikkogc:
+GIELLA_GC_SPELLER=$(GTLANG2).zhfst
 
 GIELLA_GC_TOKENISER=tokeniser-gramcheck-gt-desc.pmhfst
 GIELLA_GC_MWEDIS=mwe-dis.bin
 GIELLA_GC_DISAMBIGUATOR=disambiguator.bin
 GIELLA_GC_GRAMCHECKER=grammarchecker.bin
-GIELLA_GC_ANAL_SPELLER=analyser-speller.hfst
-GIELLA_GC_SPELLER_ERRMOD=errormodel-speller.hfst
+GIELLA_GC_ANAL_SPELLER=acceptor.default.hfst
+GIELLA_GC_SPELLER_ERRMOD=errmodel.default.hfst
 GIELLA_GC_GENERATOR=generator-gt-norm.hfstol
 GIELLA_GC_ERRORS=errors.xml
 GIELLA_GC_PIPESPEC=pipespec.xml
@@ -38,6 +40,8 @@ GIELLA_GC_PIPESPEC=pipespec.xml
 EXTRA_DIST=$(GIELLA_GRAMMARCHECKER) \
 		   $(GIELLA_GC_ERRORS) \
 		   $(GIELLA_GC_PIPESPEC)
+
+noinst_DATA=$(GIELLA_GC_SPELLER)
 
 ####### Automake targets: ########
 
@@ -63,50 +67,50 @@ endif # WANT_GRAMCHECK
 
 ####### Build rules - locally and via include: ########
 
-ZIPFLAGS="-j"
+ZIPFLAGS=-j
 
 # Copy tokeniser:
-tokeniser-gramcheck-gt-desc.pmhfst: \
-		$(top_builddir)/tools/tokenisers/tokeniser-gramcheck-gt-desc.pmhfst
-	$(AM_V_GEN)cp -f $< $@
+$(GIELLA_GC_TOKENISER): $(top_builddir)/tools/tokenisers/$(GIELLA_GC_TOKENISER)
+	$(AM_V_CP)cp -f $< $@
 
 # Copy valency if available:
-valency.bin: \
-		$(top_builddir)/src/syntax/valency.bin
-	$(AM_V_GEN)cp -f $< $@
+$(GIELLA_GC_VALENCY): $(top_builddir)/src/syntax/$(GIELLA_GC_VALENCY)
+	$(AM_V_CP)cp -f $< $@
 
 # Copy mwe-dis:
 mwe-dis.cg3: \
 		$(top_builddir)/tools/tokenisers/mwe-dis.cg3
-	$(AM_V_GEN)cp -f $< $@
+	$(AM_V_CP)cp -f $< $@
 
-# Copy disambiguator:
-disambiguator.bin: \
-		$(top_builddir)/tools/grammarcheckers/disambiguator.bin
-	$(AM_V_GEN)cp -f $< $@
+# Copy speller-analyser:
+$(GIELLA_GC_ANAL_SPELLER): \
+		../spellcheckers/fstbased/desktop/analyser-desktopspeller-gt-norm.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) -f olw -i $< -o $@
 
+# Copy speller-errormodel:
+$(GIELLA_GC_SPELLER_ERRMOD): \
+		../spellcheckers/fstbased/desktop/hfst/errmodel.default.hfst
+	$(AM_V_CP)cp -f $< $@
+
+# Build analysing speller zhfst file, used for bash pipes (modes):
+$(GIELLA_GC_SPELLER): $(GIELLA_GC_ANAL_SPELLER)   \
+					  $(GIELLA_GC_SPELLER_ERRMOD) \
+					  $(srcdir)/index.xml
+	$(AM_V_at)rm -f $@
+	$(AM_V_ZIP)$(ZIP) $(ZIPFLAGS) $(MORE_VERBOSITY) $@ $^
+
+# Copy disambiguator:  done by other build rules
 # Copy grammarchecker: done by other build rules
 
 # Copy generator:
-generator-gt-norm.hfstol: \
-		$(top_builddir)/src/generator-gt-norm.hfstol
-	$(AM_V_GEN)cp -f $< $@
-
-# Copy speller-analyser:
-analyser-speller.hfst: \
-		../spellcheckers/fstbased/desktop/analyser-desktopspeller-gt-norm.hfst
-	$(AM_V_GEN)cp -f $< $@
-
-# Copy speller-errormodel:
-errormodel-speller.hfst: \
-		../spellcheckers/fstbased/desktop/hfst/errmodel.default.hfst
-	$(AM_V_GEN)cp -f $< $@
+$(GIELLA_GC_GENERATOR): $(top_builddir)/src/$(GIELLA_GC_GENERATOR)
+	$(AM_V_CP)cp -f $< $@
 
 # Finally build the zhfst file, and make a copy in a subdir named '4', so that
 # we can test it without installing it (the '4' dir is a voikko requirement):
 $(GIELLA_GC_ZDISTRO): $(GIELLA_GC_ZIPFILES)
 	$(AM_V_at)rm -f $@
-	$(AM_V_GEN)$(ZIP) $(ZIPFLAGS) $@ $^
+	$(AM_V_ZIP)$(ZIP) $(ZIPFLAGS) $(MORE_VERBOSITY) $@ $^
 
 # Additional developer tools:
 dev: modes/$(GTLANG)gram.mode checkxml schemas.xml
@@ -123,11 +127,13 @@ schemas.xml:
 
 ### Clean target:
 clean-local:
-	-rm -f *.bin schemas.xml *.zcheck
+	-rm -f *.bin schemas.xml *.zcheck *.hfst *.hfstol *.zip *.zhfst *.cg3
+	-rm -f $(GIELLA_GC_ZIPFILES)
 	-rm -rf modes
 
 ### Include the following
 
 include $(top_srcdir)/am-shared/vislcg3-include.am
+include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

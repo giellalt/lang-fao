@@ -1,4 +1,10 @@
-$Rev: 158242 $
+$Rev: 158250 $
+One misplaced variable caused the grammar checker speller to be built
+independent of the configuration. This caused a build fail for everyone. Solves
+bug #2437. Also added $(srcdir) in front of root.lexc, to ensure that the file
+reference resolves correctly in local build targets.
+
+r158242:
 Moved the target clean-local to the local Makefile, to make it possible to
 enhance the clean target with locally generated files.
 

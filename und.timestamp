@@ -1,4 +1,8 @@
-$Rev: 157960 $
+$Rev: 158242 $
+Moved the target clean-local to the local Makefile, to make it possible to
+enhance the clean target with locally generated files.
+
+r157960:
 Correctiona to the grammar checker speller build: we now build a working zhfst
 file that can be used as part of the development cycle. Also additions to silent
 builds.

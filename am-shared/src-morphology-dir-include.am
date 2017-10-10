@@ -153,11 +153,8 @@ DEPGEN=$(AM_V_CP)cp -f $< $@
 %.xfst: %.tmp.xfst ; $(DEPGEN)
 
 ####### Other targets: ###########
-clean-local:
-	-rm -f *.all.* *fst *.script generated_files/*.lexc lexicon.*
-
 maintainer-clean-local:
-	-rm -f $(GENERATED_LEXC_SRCS)
+	-rm -f $(GENERATED_LEXC_SRCS) url.lexc
 
 include $(top_srcdir)/am-shared/lexc-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am

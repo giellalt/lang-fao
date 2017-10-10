@@ -41,8 +41,6 @@ EXTRA_DIST=$(GIELLA_GRAMMARCHECKER) \
 		   $(GIELLA_GC_ERRORS) \
 		   $(GIELLA_GC_PIPESPEC)
 
-noinst_DATA=$(GIELLA_GC_SPELLER)
-
 ####### Automake targets: ########
 
 if WANT_GRAMCHECK
@@ -58,6 +56,8 @@ GIELLA_GC_ZIPFILES=$(GIELLA_GC_TOKENISER) \
 				   $(GIELLA_GC_GENERATOR) \
 				   $(GIELLA_GC_ERRORS) \
 				   $(GIELLA_GC_PIPESPEC)
+
+noinst_DATA=$(GIELLA_GC_SPELLER)
 
 voikkosharedir=$(libdir)/voikko/4/
 voikkoshare_DATA=$(GIELLA_GC_ZDISTRO)

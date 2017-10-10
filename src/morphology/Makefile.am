@@ -86,6 +86,12 @@ GIELLA_LOCAL_TARGETS=
 
 ### END: Local processing: ###
 
+####### Other targets: ###########
+# Clean: add local clean targets on separate lines, so that the first line can
+# easily get updates from the template dir through svn merge.
+clean-local:
+	-rm -f *.all.* *fst *.foma *.script generated_files/*.lexc lexicon.*
+
 include $(top_srcdir)/am-shared/src-morphology-dir-include.am
 
 # vim: set ft=automake:

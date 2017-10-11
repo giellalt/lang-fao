@@ -1,4 +1,8 @@
-$Rev: 158250 $
+$Rev: 158289 $
+Added conversion of the analysis tags from the grammar checker speller into CG
+format.
+
+r158250:
 One misplaced variable caused the grammar checker speller to be built
 independent of the configuration. This caused a build fail for everyone. Solves
 bug #2437. Also added $(srcdir) in front of root.lexc, to ensure that the file

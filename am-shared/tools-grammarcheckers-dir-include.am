@@ -84,8 +84,16 @@ mwe-dis.cg3: \
 
 # Copy speller-analyser:
 $(GIELLA_GC_ANAL_SPELLER): \
-		../spellcheckers/fstbased/desktop/analyser-desktopspeller-gt-norm.hfst
-	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) -f olw -i $< -o $@
+		../spellcheckers/fstbased/desktop/analyser-desktopspeller-gt-norm.hfst \
+		filters/make-CG-tags.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+				@\"$<\" \
+			.o. @\"filters/make-CG-tags.hfst\".i   \
+			;\n\
+		 save stack $@.tmp\n\
+		 quit\n" | $(HFST_XFST)
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) -f olw -i $@.tmp -o $@
+	$(AM_V_at)rm -f $@.tmp
 
 # Copy speller-errormodel:
 $(GIELLA_GC_SPELLER_ERRMOD): \

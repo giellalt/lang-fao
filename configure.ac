@@ -180,6 +180,7 @@ AC_CONFIG_FILES([Makefile \
                  test/src/syntax/Makefile \
                  tools/Makefile \
                  tools/grammarcheckers/Makefile \
+                 tools/grammarcheckers/filters/Makefile \
                  tools/hyphenators/Makefile \
                  tools/hyphenators/fstbased/Makefile \
                  tools/hyphenators/patternbased/Makefile \

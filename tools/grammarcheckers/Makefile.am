@@ -2,6 +2,8 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
+SUBDIRS = filters .
+
 # If valency is used, define it here:
 GIELLA_GC_VALENCY=
 

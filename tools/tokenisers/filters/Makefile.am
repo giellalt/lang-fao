@@ -29,6 +29,6 @@ endif # WANT_TOKENISERS
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.hfst *.xfst $(GT_LOCAL_COPY_FILTER_SRCS)
+	-rm -f *fst *.txt *.regex $(GT_LOCAL_COPY_FILTER_SRCS)
 
 include $(top_srcdir)/am-shared/tools-tokenisers-filters-dir-include.am

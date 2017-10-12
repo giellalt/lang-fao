@@ -61,6 +61,17 @@ endif # CAN_HFST
 #GT_TOKENISERS_FILTER_TARGETS+=\
 #        $(patsubst %.regex,%.foma,$(GT_TOKENISERS_FILTER_ALL_SRCS))
 #endif # CAN_FOMA
+
+# If tokenisers are turned off:
+else !WANT_TOKENISERS
+
+# We still want to build filters for the grammar checker if they are enabled:
+if WANT_GRAMCHECK
+if CAN_HFST
+GT_TOKENISERS_FILTER_TARGETS+=\
+        $(patsubst %.regex,%.hfst,$(GT_TOKENISERS_FILTER_ALL_SRCS))
+endif # CAN_HFST
+endif # WANT_GRAMCHECK
 endif # WANT_TOKENISERS
 
 ####### Build rules for creating regexes from tag list: #######

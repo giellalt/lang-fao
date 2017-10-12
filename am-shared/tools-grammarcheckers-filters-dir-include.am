@@ -45,7 +45,7 @@ noinst_DATA=$(GT_TOKENISERS_FILTER_TARGETS)
 # Automatically detect the targets to be built:
 GT_TOKENISERS_FILTER_TARGETS=
 
-if WANT_TOKENISERS
+if WANT_GRAMCHECK
 if CAN_HFST
 GT_TOKENISERS_FILTER_TARGETS+=\
         $(patsubst %.regex,%.hfst,$(GT_TOKENISERS_FILTER_ALL_SRCS))
@@ -61,7 +61,7 @@ endif # CAN_HFST
 #GT_TOKENISERS_FILTER_TARGETS+=\
 #        $(patsubst %.regex,%.foma,$(GT_TOKENISERS_FILTER_ALL_SRCS))
 #endif # CAN_FOMA
-endif # WANT_TOKENISERS
+endif # WANT_GRAMCHECK
 
 ####### Build rules for creating regexes from tag list: #######
 

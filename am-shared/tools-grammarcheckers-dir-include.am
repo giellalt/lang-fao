@@ -108,6 +108,11 @@ $(GIELLA_GC_SPELLER): $(GIELLA_GC_ANAL_SPELLER)   \
 	$(AM_V_ZIP)$(ZIP) $(ZIPFLAGS) $(MORE_VERBOSITY) $@ $^
 
 # Copy disambiguator:  done by other build rules
+
+# Fallback disambiguator rule:
+%.cg3: $(top_srcdir)/src/syntax/%.cg3
+	$(AM_V_CP)cp -f $< $@
+
 # Copy grammarchecker: done by other build rules
 
 # Copy generator:

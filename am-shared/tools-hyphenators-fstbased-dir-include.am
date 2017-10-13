@@ -170,10 +170,10 @@ hyphenator-gt-desc-output.hfst: hyphenator-raw-gt-desc.hfst \
 		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
 # 7. copy, change format and reweight hyphrules
-hyphenator-rules-desc-weighted: $(HYPH_RULES)
+hyphenator-rules-desc-weighted.hfst: $(HYPH_RULES)
 	$(AM_V_FST2FST)$(HFST_FST2FST) --format=openfst-tropical -i $< \
 		| $(HFST_REWEIGHT) $(HFST_FLAGS) \
-		-e -a "500" \
+		-e -a "5000" \
 		-o $@
 
 # 8. compose 5. and 6.:
@@ -188,7 +188,7 @@ hyphenator-gt-desc-no_fallback.hfst: hyphenator-gt-desc-input.hfst \
 
 # 9. cat 7 and 8 to make final hyphenation fst archive
 hyphenator-gt-desc.hfst: hyphenator-gt-desc-no_fallback.hfst \
-				  hyphenator-rules-desc-weighted
+				  hyphenator-rules-desc-weighted.hfst
 	$(AM_V_GEN)cat $^ > $@
 
 ####### Other targets: ###########

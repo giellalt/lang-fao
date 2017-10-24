@@ -1,4 +1,10 @@
-$Rev: 158455 $
+$Rev: 159036 $
+Added spell checking component to the grammar checker pipeline. Now every
+planned component is working as it should. The spell checking requires first
+that one builds the latest hfst-ospell code, and then the newest grammar checker
+code for this to work.
+
+r158455:
 Increased weights for fall-back rule-based hyphenation. Added .hfst suffix to
 rule fst for consistency.
 

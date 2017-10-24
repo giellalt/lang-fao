@@ -9,6 +9,10 @@
     <tokenize><arg n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
     <cg><arg n="mwe-dis.bin"/></cg>
     <mwesplit/>
+    <cgspell>
+      <arg n="errmodel.default.hfst"/>
+      <arg n="acceptor.default.hfst"/>
+    </cgspell>
     <cg><arg n="disambiguator.bin"/></cg>
     <cg><arg n="grammarchecker.bin"/></cg>
     <suggest>

@@ -301,6 +301,9 @@ LIST &msyn-sg1 = &msyn-sg1 ;
 
 SECTION
 
+# Speller suggestions rule - make sure the suggestions survive the cg mangling:
+ADD (&typo &SUGGESTWF) (<spelled>) ;
+
 # Dømi:
 # - Harumframt kiksaði ein týdningarmikil útgávukonsert, tí eg fingið ikki neyðuga visumið.
 # - Eg farið avstað.

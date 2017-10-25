@@ -1,4 +1,8 @@
-$Rev: 159036 $
+$Rev: 159063 $
+Added default rule for speller suggestions, to make the suggestions survive cg
+treatment.
+
+r159036:
 Added spell checking component to the grammar checker pipeline. Now every
 planned component is working as it should. The spell checking requires first
 that one builds the latest hfst-ospell code, and then the newest grammar checker

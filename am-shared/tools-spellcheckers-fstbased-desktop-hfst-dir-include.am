@@ -310,7 +310,9 @@ errmodel.%.hfst: words.%.hfst \
 		  ] \
 		];" \
 		| $(HFST_REGEXP2FST) -S -E $(HFST_FLAGS) \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+		| $(HFST_PUSH_WEIGHTS) --push=initial    \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw   \
+		  -o $@
 
 ####### Alternate error model: #######
 # Alternatively, the error model can be constructed as a long list of regular
@@ -318,12 +320,16 @@ errmodel.%.hfst: words.%.hfst \
 errmodel.%.hfst: errmodel.%.regex easteregg.%.hfst
 	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
 		| $(HFST_DISJUNCT) - easteregg.$*.hfst \
+		| $(HFST_PUSH_WEIGHTS) --push=initial  \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw \
 		-o $@
 
 # ... or as an xfscript file:
 errmodel.%.hfst: errmodel.%.xfscript easteregg.%.hfst
 	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
 		| $(HFST_DISJUNCT) - easteregg.$*.hfst \
+		| $(HFST_PUSH_WEIGHTS) --push=initial  \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw \
 		-o $@
 
 ####### Speller acceptor: #######
@@ -333,7 +339,8 @@ acceptor.%.hfst: $(GT_SPELLER_HFST) easteregg.%.hfst
 	$(AM_V_PROJECT)cat $< \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
 		| $(HFST_MINIMIZE_SPELLER) $(HFST_FLAGS)        \
-		| $(HFST_DISJUNCT) - easteregg.$*.hfst             \
+		| $(HFST_DISJUNCT) - easteregg.$*.hfst          \
+		| $(HFST_PUSH_WEIGHTS) --push=initial           \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw          \
 		-o $@
 

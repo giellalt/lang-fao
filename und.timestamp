@@ -1,4 +1,10 @@
-$Rev: 159063 $
+$Rev: 159755 $
+Added hfst-push-weights to move transducer weights to the beginning of the
+strings, to enable proper optimisations of speller lookup in hfst-ospell.
+Stripped out most lang-specific stuff from grammar checker cg file, and added
+simple example rules + some explanations. Use gramcheck tokeniser in pre-pipe.
+
+r159063:
 Added default rule for speller suggestions, to make the suggestions survive cg
 treatment.
 

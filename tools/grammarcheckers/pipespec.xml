@@ -1,7 +1,26 @@
 <pipespec language="fo"
           developer="Divvun"
+          copyright=""
           version="0.1"
-          contact="Divvun divvun@uit.no">
+          contact="Divvun divvun@uit.no"
+          depversions="vislcg3 >=1.1.2.12361
+                       hfst >= 3.13.0
+                       hfst-ospell >= 0.5.0
+                       divvun-gramcheck >= 0.2.0">
+
+  <pipeline name="faogram-nospell"
+            language="fo"
+            type="Grammar error">
+    <tokenize><arg n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
+    <cg><arg n="mwe-dis.bin"/></cg>
+    <mwesplit/>
+    <cg><arg n="disambiguator.bin"/></cg>
+    <cg><arg n="grammarchecker.bin"/></cg>
+    <suggest>
+      <arg n="generator-gt-norm.hfstol"/>
+      <arg n="errors.xml"/>
+    </suggest>
+  </pipeline>
 
   <pipeline name="faogram"
             language="fo"

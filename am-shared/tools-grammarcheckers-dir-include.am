@@ -128,9 +128,10 @@ $(GIELLA_GC_ZDISTRO): $(GIELLA_GC_ZIPFILES)
 # Additional developer tools:
 dev: modes/$(GTLANG)gram.mode checkxml schemas.xml
 
-modes/%.mode: $(srcdir)/modes.xml
+modes/%.mode: $(srcdir)/pipespec.xml
 	$(AM_V_at)$(MKDIR_P) modes
-	apertium-gen-modes $<
+	divvun-gen-sh -d modes $<
+
 
 checkxml:
 	divvun-validate-suggest $(srcdir)/errors.xml

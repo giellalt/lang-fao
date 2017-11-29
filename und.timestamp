@@ -1,4 +1,9 @@
-$Rev: 160153 $
+$Rev: 160589 $
+Rewrote the speller test scripts in devtools/ to be VPATH safe and rely on
+autotools for paths etc, so that the scripts will work also when only checking
+out single languages.
+
+r160153:
 Added support for specifying language-specific files to be included in the
 grammar checker archive file.
 

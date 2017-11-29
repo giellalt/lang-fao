@@ -245,8 +245,13 @@ AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/desktop/hfst/accept-all-lemma
 # Shorthand shell scripts instead of the old-type aliases - all languages:
 AC_CONFIG_FILES([tools/shellscripts/ufao-gt.sh], \
       [chmod a+x tools/shellscripts/ufao-gt.sh])
+# Devtools shell scripts should also be handled by autotools:
 AC_CONFIG_FILES([devtools/check_analysis_regressions.sh], \
       [chmod a+x devtools/check_analysis_regressions.sh])
+AC_CONFIG_FILES([devtools/test_ospell-office_suggestions.sh], \
+      [chmod a+x devtools/test_ospell-office_suggestions.sh])
+AC_CONFIG_FILES([devtools/test_voikkospell_suggestions.sh], \
+      [chmod a+x devtools/test_voikkospell_suggestions.sh])
 
 #### BEGIN: Add language-specific scripts below here: ####
 

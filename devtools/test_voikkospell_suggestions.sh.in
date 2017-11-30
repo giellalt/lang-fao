@@ -12,12 +12,12 @@ giella_lang=@GTLANG@
 giella2c_lang=@GTLANG2@
 
 # Directory variables from configure:
-top_srcdir=@top_srcdir@
-top_builddir=@top_builddir@
+top_srcdir=@abs_top_srcdir@
+top_builddir=@abs_top_builddir@
 giella_core=@GIELLA_CORE@
 
 # Other directory variables:
-SCRIPT_DIR=$top_srcdir/devtools/
+SCRIPT_DIR=$top_srcdir/devtools
 spellerdir=tools/spellcheckers/fstbased/desktop/hfst
 
 # File variables:

@@ -1,4 +1,9 @@
-$Rev: 160649 $
+$Rev: 160670 $
+Added support for analysing whitespace and thus make it possible to tag
+whitespace errors (double spaces, extra spaces, etc), and also to more reliably
+detect sentence and paragraph borders by using whitespace as a delimiter.
+
+r160649:
 Using absolute dir refs to make it possible to call the shell scripts from
 everywhere.
 

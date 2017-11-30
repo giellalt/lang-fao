@@ -14,6 +14,9 @@
     <tokenize><arg n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
     <cg><arg n="mwe-dis.bin"/></cg>
     <mwesplit/>
+    <blanktag>
+      <arg n="analyser-gt-whitespace.hfst"/>
+    </blanktag>
     <cg><arg n="disambiguator.bin"/></cg>
     <cg><arg n="grammarchecker.bin"/></cg>
     <suggest>
@@ -28,6 +31,9 @@
     <tokenize><arg n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
     <cg><arg n="mwe-dis.bin"/></cg>
     <mwesplit/>
+    <blanktag>
+      <arg n="analyser-gt-whitespace.hfst"/>
+    </blanktag>
     <cgspell>
       <arg n="errmodel.default.hfst"/>
       <arg n="acceptor.default.hfst"/>

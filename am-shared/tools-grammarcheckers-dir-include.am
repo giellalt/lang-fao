@@ -28,10 +28,11 @@ GIELLA_GC_SPELLER=$(GTLANG2).zhfst
 
 GIELLA_GC_TOKENISER=tokeniser-gramcheck-gt-desc.pmhfst
 GIELLA_GC_MWEDIS=mwe-dis.bin
-GIELLA_GC_DISAMBIGUATOR=disambiguator.bin
-GIELLA_GC_GRAMCHECKER=grammarchecker.bin
+GIELLA_GC_WHSPACE_ANAL=analyser-gt-whitespace.hfst
 GIELLA_GC_ANAL_SPELLER=acceptor.default.hfst
 GIELLA_GC_SPELLER_ERRMOD=errmodel.default.hfst
+GIELLA_GC_DISAMBIGUATOR=disambiguator.bin
+GIELLA_GC_GRAMCHECKER=grammarchecker.bin
 GIELLA_GC_GENERATOR=generator-gt-norm.hfstol
 GIELLA_GC_ERRORS=errors.xml
 GIELLA_GC_PIPESPEC=pipespec.xml
@@ -46,16 +47,17 @@ EXTRA_DIST=$(GIELLA_GRAMMARCHECKER) \
 if WANT_GRAMCHECK
 if CAN_VISLCG
 
-GIELLA_GC_ZIPFILES=$(GIELLA_GC_TOKENISER) \
-				   $(GIELLA_GC_VALENCY) \
-				   $(GIELLA_GC_MWEDIS) \
-				   $(GIELLA_GC_DISAMBIGUATOR) \
-				   $(GIELLA_GC_GRAMCHECKER) \
-				   $(GIELLA_GC_ANAL_SPELLER) \
+GIELLA_GC_ZIPFILES=$(GIELLA_GC_TOKENISER)      \
+				   $(GIELLA_GC_VALENCY)        \
+				   $(GIELLA_GC_MWEDIS)         \
+				   $(GIELLA_GC_DISAMBIGUATOR)  \
+				   $(GIELLA_GC_GRAMCHECKER)    \
+				   $(GIELLA_GC_ANAL_SPELLER)   \
 				   $(GIELLA_GC_SPELLER_ERRMOD) \
-				   $(GIELLA_GC_GENERATOR) \
-				   $(GIELLA_GC_ERRORS) \
-				   $(GIELLA_GC_PIPESPEC) \
+				   $(GIELLA_GC_GENERATOR)      \
+				   $(GIELLA_GC_ERRORS)         \
+				   $(GIELLA_GC_PIPESPEC)       \
+				   $(GIELLA_GC_WHSPACE_ANAL)   \
 				   $(LOCAL_GC_ZIP_FILES)
 
 noinst_DATA=$(GIELLA_GC_SPELLER)
@@ -82,6 +84,11 @@ $(GIELLA_GC_VALENCY): $(top_builddir)/src/syntax/$(GIELLA_GC_VALENCY)
 mwe-dis.cg3: \
 		$(top_builddir)/tools/tokenisers/mwe-dis.cg3
 	$(AM_V_CP)cp -f $< $@
+
+$(GIELLA_GC_WHSPACE_ANAL): analyser-gt-whitespace.regex
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) --disjunct -i $< -o $@.tmp
+	$(AM_V_FST2FST)$(HFST_FST2FST) -O -i $@.tmp -o $@
+	$(AM_V_at)rm $@.tmp
 
 # Copy speller-analyser:
 $(GIELLA_GC_ANAL_SPELLER): \
@@ -131,7 +138,7 @@ dev: modes/$(GTLANG)gram.mode checkxml schemas.xml
 
 modes/%.mode: $(srcdir)/pipespec.xml
 	$(AM_V_at)$(MKDIR_P) modes
-	divvun-gen-sh -d modes $<
+	$(AM_V_GEN)divvun-gen-sh -d modes $<
 
 
 checkxml:

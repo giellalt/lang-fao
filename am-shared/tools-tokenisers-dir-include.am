@@ -103,7 +103,7 @@ analyser-%-gt-desc.hfst: $(top_builddir)/src/analyser-%-gt-desc.hfst \
 			.o. @\"filters/make-CG-tags.hfst\".i   \
 			;\n\
 		 save stack $@\n\
-		 quit\n" | $(HFST_XFST)
+		 quit\n" | $(HFST_XFST) -p
 
 # Prepare analysers used for building the tokenisers:
 analyser_relabelled-%-gt-desc.hfst: analyser-%-gt-desc.hfst \

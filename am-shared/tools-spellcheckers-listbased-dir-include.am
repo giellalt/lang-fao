@@ -73,7 +73,7 @@ generator-listspeller-gt-norm.tmp.hfst: $(GT_SPELLER_SRC_HFST) \
 			read regex fst - cmps ; \n\
 			union net \n\
 		 save stack $@ \n\
-		 quit\n" | $(HFST_XFST) $(VERBOSITY)
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 analyser-listspeller-gt-norm.tmp.xfst: $(GT_SPELLER_SRC_XFST) \
 		$(top_builddir)/src/filters/remove-UseCirc-strings.xfst \

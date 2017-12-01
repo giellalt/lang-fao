@@ -45,6 +45,10 @@ AM_INIT_AUTOMAKE(
 )
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
+### Speller release version (usually different from the package version,
+### typically spellers are released more often than the language package):
+AC_SUBST([SPELLERVERSION], [0.1])
+
 ### This is the version of the Giella Core that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
 _giella_core_min_version=0.2.43

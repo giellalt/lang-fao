@@ -1,4 +1,8 @@
-$Rev: 160742 $
+$Rev: 160750 $
+Proper verbosity specification in a few more instances, and added weight pushing
+for the grammar checker speller now (how could I have missed that?).
+
+r160742:
 Fixed a bug in piped hfst-xfst commands: in three cases the -p option was
 missing, causing strange misbehavior in hfst-xfst on some systems.
 

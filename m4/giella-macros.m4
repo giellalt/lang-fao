@@ -30,7 +30,10 @@
 # Define functions for checking paths and the GIELLA core environment:
 ################################################################################
 AC_DEFUN([gt_PROG_SCRIPTS_PATHS],
-         [
+[
+
+# Look for an environmental variable GIELLA_MAINTAINER; if found, enable
+# additional checks:
 AC_ARG_VAR([GIELLA_MAINTAINER], [define if you are maintaining the Giella infra to get additional complaining about infra integrity])
 AM_CONDITIONAL([WANT_MAINTAIN], [test x"$GIELLA_MAINTAINER" != x])
 
@@ -115,7 +118,11 @@ AS_IF([test "x$with_giella_core" != "xfalse" -a \
 ])
 AC_MSG_RESULT([$GIELLA_CORE])
 
-# GTCORE env. variable is required by the infrastructure to find scripts:
+### This is the version of the Giella Core that we require. Update as needed.
+### It is possible to specify also subversion revision: 0.1.2-12345
+_giella_core_min_version=0.2.43
+
+# GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
 
 GTCORE=${GIELLA_CORE}
@@ -203,6 +210,10 @@ AS_IF([test "x$with_giella_shared" != "xfalse" -a \
     ])
 ])
 AC_MSG_RESULT([$GIELLA_SHARED])
+
+### This is the version of the Giella Shared that we require. Update as needed.
+### It is possible to specify also subversion revision: 0.1.2-12345
+_giella_shared_min_version=0.1.2
 
 # GIELLA_SHARED is required by the infrastructure to find shared data:
 AC_ARG_VAR([GIELLA_SHARED], [directory for giella shared data, like proper nouns and regexes])
@@ -464,6 +475,19 @@ case $host_os in
         ;;
 esac
 ################ END of GNU Make check ################
+
+# We need special treatment of Java paths in Cygwin:
+AC_CANONICAL_HOST
+case "${host}" in
+  *-cygwin* | *-mingw*)
+    CYGWINJAVAPATH='cygpath -m'
+    ;;
+  *)
+    # Assume Unix.
+    CYGWINJAVAPATH=echo
+    ;;
+esac
+AC_SUBST(CYGWINJAVAPATH)
 
 # Check for SubEthaEdit/see
 AC_PATH_PROG([SEE], [see], [], [$PATH$PATH_SEPARATOR$with_see])

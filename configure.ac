@@ -1,6 +1,6 @@
 ## Process this file with autoconf to produce configure script
 
-## Copyright (C) 2011 Samediggi/Divvun/UiT
+## Copyright (C) 2017 Samediggi/Divvun/UiT
 
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Following things just need to be at top of all configure.ac files:
+# The following things need to be at top of all configure.ac files:
 
 # AC_INIT sets up project metadata:
 # first field the name of the "software"
@@ -49,16 +49,23 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 ### typically spellers are released more often than the language package):
 AC_SUBST([SPELLERVERSION], [0.1])
 
-### This is the version of the Giella Core that we require. Update as needed.
-### It is possible to specify also subversion revision: 0.1.2-12345
-_giella_core_min_version=0.2.43
-
-### This is the version of the Giella Shared that we require. Update as needed.
-### It is possible to specify also subversion revision: 0.1.2-12345
-_giella_shared_min_version=0.1.2
-
-### Required version of the Hfst tools:
-_required_hfst_version=3.12.2
+########## LANGUAGE DEFINITIONS ##########
+# GLANG is the language code used to identify this project; it should be the
+# same as the directory name in $GIELLA_HOME/*langs/ and the same as the ISO 639
+# three-letter code for the language.
+# GTLANG is deprecated, defined for backwards compatibility.
+AC_SUBST([GLANG], [fao])
+AC_SUBST([GTLANG], $GLANG)
+# GLANG2 is the shortest unambiguous language code for this project; it
+# should be the ISO 639-1 two-letter code if available, otherwise usually the
+# same as above:
+# GTLANG2 is deprecated, defined for backwards compatibility.
+AC_SUBST([GLANG2], [fo])
+AC_SUBST([GTLANG2], $GLANG2)
+# GLANGUAGE is the full language name as given by the ISO 639-3 file.
+# GTLANGUAGE is deprecated, defined for backwards compatibility.
+AC_SUBST([GLANGUAGE], ["Faroese"])
+AC_SUBST([GTLANGUAGE], $GLANGUAGE)
 
 # Alternate writing system(s) should be listed here using the ISO 15924 code.
 # Multiple alternate WS's should be space separated. For a list of such codes
@@ -98,30 +105,6 @@ AM_CONDITIONAL([HAVE_ALT_ORTHS], [test "x$ALT_ORTHS" != "x" \
 # variation within the -norm- fst's.
 AC_SUBST([DIALECTS], [""])
 AM_CONDITIONAL([HAVE_DIALECTS], [test "x$DIALECTS" != "x"])
-
-# GTLANG is the language code used to identify this project; it should be same
-# as the directory name in gtsvn and same as ISO 639 three-letter code for the
-# language if possible
-AC_SUBST([GTLANG], [fao])
-# GTLANG2 is the shortest unambiguous language code for this project; it
-# should be the ISO 639-1 two-letter code if possible, otherwise usually same
-# as above
-AC_SUBST([GTLANG2], [fo])
-# GTLANGUAGE is the full language name as given by the ISO 639-3 file
-AC_SUBST([GTLANGUAGE], ["Faroese"])
-
-# We need special treatment of Java paths in Cygwin:
-AC_CANONICAL_HOST
-case "${host}" in
-  *-cygwin* | *-mingw*)
-    CYGWINJAVAPATH='cygpath -m'
-    ;;
-  *)
-    # Assume Unix.
-    CYGWINJAVAPATH=echo
-    ;;
-esac
-AC_SUBST(CYGWINJAVAPATH)
 
 # Tests and sets up giella-core directories and scripts
 gt_PROG_SCRIPTS_PATHS

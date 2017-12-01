@@ -1,4 +1,9 @@
-$Rev: 160723 $
+$Rev: 160734 $
+Further configure.ac cleanup: moved some variable definitions to other m4 files,
+moved the language definition on top, deprecated GTLANG* variables for GLANG*
+variants (ie Giella instead of GiellaTechno). Updated copyright year.
+
+r160723:
 Moved all default AC_CONFIG_FILES into a separate function in a separate m4
 file, to clean up configure.ac. Some other cleanup of configure.ac.
 

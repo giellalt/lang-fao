@@ -31,7 +31,12 @@
 #   bug fixes required for the GT infra+HFST compilation to work.
 # ---------------------------
 AC_DEFUN([gt_PROG_HFST],
-[AC_ARG_WITH([hfst], 
+[
+
+### Required version of the Hfst tools:
+_required_hfst_version=3.12.2
+
+AC_ARG_WITH([hfst],
             [AS_HELP_STRING([--with-hfst=DIRECTORY],
             [define HFST binary path if not in PATH @<:@default=no@:>@])],
             [with_hfst=$withval],

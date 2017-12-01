@@ -463,8 +463,10 @@ case $host_os in
                    ])
         ;;
 esac
+################ END of GNU Make check ################
 
-
+# Check for SubEthaEdit/see
+AC_PATH_PROG([SEE], [see], [], [$PATH$PATH_SEPARATOR$with_see])
 
 ]) # gt_PROG_SCRIPTS_PATHS
 

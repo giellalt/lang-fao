@@ -1,4 +1,8 @@
-$Rev: 160734 $
+$Rev: 160742 $
+Fixed a bug in piped hfst-xfst commands: in three cases the -p option was
+missing, causing strange misbehavior in hfst-xfst on some systems.
+
+r160734:
 Further configure.ac cleanup: moved some variable definitions to other m4 files,
 moved the language definition on top, deprecated GTLANG* variables for GLANG*
 variants (ie Giella instead of GiellaTechno). Updated copyright year.

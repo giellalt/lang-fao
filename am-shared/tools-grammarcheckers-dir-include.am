@@ -99,7 +99,7 @@ $(GIELLA_GC_ANAL_SPELLER): \
 			.o. @\"filters/make-CG-tags.hfst\".i   \
 			;\n\
 		 save stack $@.tmp\n\
-		 quit\n" | $(HFST_XFST)
+		 quit\n" | $(HFST_XFST) -p
 	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFST_FLAGS) -f olw -i $@.tmp -o $@
 	$(AM_V_at)rm -f $@.tmp
 

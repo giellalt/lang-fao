@@ -19,8 +19,7 @@
 
 # AC_INIT sets up project metadata:
 # first field the name of the "software"
-# second field is version identifie iso 8901 date is good if you have no other
-#   versioining schemes in mind
+# second field is version identifier
 # third is email address for bug reports
 # fourth is name of packages made by make dist, excluding .tar.gz
 # fifth is the project web address

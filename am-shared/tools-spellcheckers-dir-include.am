@@ -49,10 +49,6 @@ noinst_DATA=$(GT_COMMON_SPELLER_HFST) $(GT_COMMON_SPELLER_XFST)
 # any of the spellers:
 analyser-$(GT_COMMON_SPELLER_NAME).tmp.%: \
 			$(top_builddir)/src/analyser-raw-gt-desc.%              \
-			$(top_builddir)/src/filters/remove-dialect-tags.%       \
-			$(top_builddir)/src/filters/remove-semantic-tags.%      \
-			$(top_builddir)/src/filters/remove-transitivity-tags.%  \
-			$(top_builddir)/src/filters/remove-variant-tags.%       \
 			$(top_builddir)/src/filters/remove-CLB-strings.%        \
 			$(top_builddir)/src/filters/remove-error-strings.%      \
 			$(top_builddir)/src/filters/remove-MinusSpell-strings.% \
@@ -63,11 +59,7 @@ analyser-$(GT_COMMON_SPELLER_NAME).tmp.%: \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 		    @\"$(top_builddir)/src/filters/remove-usage_except_speller-tags.$*\" \
-		.o. @\"$(top_builddir)/src/filters/remove-dialect-tags.$*\"       \
 		.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.$*\"     \
-		.o. @\"$(top_builddir)/src/filters/remove-semantic-tags.$*\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-transitivity-tags.$*\"  \
-		.o. @\"$(top_builddir)/src/filters/remove-variant-tags.$*\"       \
 		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.$*\"        \
 		.o. @\"$(top_builddir)/src/filters/remove-error-strings.$*\"      \
 		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.$*\" \

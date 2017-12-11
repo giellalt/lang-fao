@@ -1,4 +1,9 @@
-$Rev: 160750 $
+$Rev: 161092 $
+Do not remove semantic tags, dialect tags and other tags useful for
+disambiguation or suggestion generation. The grammar checker speller needs
+these, and they will anyway disappear when we project the final fst.
+
+r160750:
 Proper verbosity specification in a few more instances, and added weight pushing
 for the grammar checker speller now (how could I have missed that?).
 

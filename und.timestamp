@@ -1,4 +1,8 @@
-$Rev: 161092 $
+$Rev: 161129 $
+Heavy rewrite of the analysis regression check tool, to support testing the
+grammar checker pipeline.
+
+r161092:
 Do not remove semantic tags, dialect tags and other tags useful for
 disambiguation or suggestion generation. The grammar checker speller needs
 these, and they will anyway disappear when we project the final fst.

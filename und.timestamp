@@ -1,4 +1,10 @@
-$Rev: 161129 $
+$Rev: 161813 $
+Renamed src/syntax/disambiguation.cg3 to src/syntax/disambiguator.cg3, to keep
+the file naming consistent (actor noun if possible), and remove discrepancy
+between the regular disambiguator and the grammar checker disambiguator that
+caused makefile troubles.
+
+r161129:
 Heavy rewrite of the analysis regression check tool, to support testing the
 grammar checker pipeline.
 

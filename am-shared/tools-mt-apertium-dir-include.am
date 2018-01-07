@@ -96,7 +96,7 @@ endif # WANT_SYNTAX
 # Apertium - GTDivvun filename correspondences:
 # apertium-sme-nob.sme-nob.LR.att.gz = analyser-mt-apertium-desc.nob.att.gz
 # apertium-sme.sme.RL.att.gz = generator-mt-apertium-norm.att.gz
-# sme.mor.rlx.bin = disambiguation-mt-apertium.bin
+# sme.mor.rlx.bin = disambiguator-mt-apertium.bin
 # sme.syn.rlx.bin = functions-mt-apertium.bin
 # sme.dep.rlx.bin = dependency-mt-apertium.bin
 
@@ -413,7 +413,7 @@ $(APERTIUM_MORPH_PAIRS_V): \
 apertium-$(GTLANG).$(GTLANG).RL.att.gz: generator-mt-apertium-norm.att.gz
 	$(AM_V_CP)cp -f $< $@
 
-$(GTLANG).mor.rlx.bin: disambiguation-mt-apertium.bin
+$(GTLANG).mor.rlx.bin: disambiguator-mt-apertium.bin
 	$(AM_V_CP)cp -f $< $@
 
 $(GTLANG).syn.rlx.bin: functions-mt-apertium.bin

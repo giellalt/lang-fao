@@ -28,6 +28,8 @@
 #
 # ---------------------- #
 
+echo "Hei." | hfst-tokenise -g ../tokenisers/tokeniser-gramcheck-gt-desc.pmhfst | vislcg3 -g disambiguator.cg3 -t | vislcg3 -g grammarchecker.cg3 -t  
+
 
 # ========== #
 # Delimiters #

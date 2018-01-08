@@ -15,7 +15,7 @@
         <!-- <arg name="-t"/> -->
         <!-- for some reason, trace here makes current vislcg3 segfault :( -->
         <arg name="-g"/>
-        <file name="../../src/syntax/disambiguation.cg3"/>
+        <file name="../../src/syntax/disambiguator.cg3"/>
       </program>
       <program name="vislcg3" debug-suff="gc">
         <arg name="-t"/>
@@ -48,7 +48,7 @@
       <program name="vislcg3" debug-suff="disam">
         <!-- <arg name="-t"/> -->
         <arg name="-g"/>
-        <file name="../../src/syntax/disambiguation.cg3"/>
+        <file name="../../src/syntax/disambiguator.cg3"/>
       </program>
       <program name="vislcg3" debug-suff="gc">
         <arg name="-t"/>
@@ -79,7 +79,7 @@
       <program name="vislcg3" debug-suff="disam">
         <!-- <arg name="-t"/> -->
         <arg name="-g"/>
-        <file name="../../src/syntax/disambiguation.cg3"/>
+        <file name="../../src/syntax/disambiguator.cg3"/>
       </program>
       <program name="vislcg3" debug-suff="gc">
         <arg name="-t"/>

@@ -137,7 +137,7 @@ $(GIELLA_GC_ZDISTRO): $(GIELLA_GC_ZIPFILES)
 # Additional developer tools:
 dev: modes/$(GTLANG)gram.mode checkxml schemas.xml
 
-modes/%.mode: $(srcdir)/pipespec.xml
+modes/%.mode: pipespec.xml
 	$(AM_V_at)$(MKDIR_P) modes
 	$(AM_V_GEN)divvun-gen-sh -d modes $<
 

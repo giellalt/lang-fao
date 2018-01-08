@@ -1,4 +1,8 @@
-$Rev: 161856 $
+$Rev: 161896 $
+Renamed pipespec.xml to *.in, to allow autoconf processing. This makes it
+possible to use modes when building using VPATHS.
+
+r161856:
 Hard-coded filename in fallback target - that was the only way to work around a
 loop in make on some systems.
 

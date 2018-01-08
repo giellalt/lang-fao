@@ -34,6 +34,7 @@ AC_CONFIG_FILES([Makefile \
                  test/src/syntax/Makefile \
                  tools/Makefile \
                  tools/grammarcheckers/Makefile \
+                 tools/grammarcheckers/pipeline.xml \
                  tools/grammarcheckers/filters/Makefile \
                  tools/hyphenators/Makefile \
                  tools/hyphenators/fstbased/Makefile \

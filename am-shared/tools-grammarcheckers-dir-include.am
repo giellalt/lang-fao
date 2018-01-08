@@ -119,7 +119,7 @@ $(GIELLA_GC_SPELLER): $(GIELLA_GC_ANAL_SPELLER)   \
 # Copy disambiguator:  done by other build rules
 
 # Fallback disambiguator rule:
-%.cg3: $(top_srcdir)/src/syntax/%.cg3
+disambiguator.cg3: $(top_srcdir)/src/syntax/disambiguator.cg3
 	$(AM_V_CP)cp -f $< $@
 
 # Copy grammarchecker: done by other build rules

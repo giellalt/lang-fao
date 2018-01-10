@@ -11,38 +11,38 @@
   <pipeline name="faogram-nospell"
             language="fo"
             type="Grammar error">
-    <tokenize><arg n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
-    <cg><arg n="mwe-dis.bin"/></cg>
+    <tokenize><tokenizer n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
+    <cg><grammar n="mwe-dis.bin"/></cg>
     <mwesplit/>
     <blanktag>
-      <arg n="analyser-gt-whitespace.hfst"/>
+      <blanktagger n="analyser-gt-whitespace.hfst"/>
     </blanktag>
-    <cg><arg n="disambiguator.bin"/></cg>
-    <cg><arg n="grammarchecker.bin"/></cg>
+    <cg><grammar n="disambiguator.bin"/></cg>
+    <cg><grammar n="grammarchecker.bin"/></cg>
     <suggest>
-      <arg n="generator-gt-norm.hfstol"/>
-      <arg n="@srcdir@/errors.xml"/>
+      <generator n="generator-gt-norm.hfstol"/>
+      <messages n="@srcdir@/errors.xml"/>
     </suggest>
   </pipeline>
 
   <pipeline name="faogram"
             language="fo"
             type="Grammar error">
-    <tokenize><arg n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
-    <cg><arg n="mwe-dis.bin"/></cg>
+    <tokenize><tokenizer n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
+    <cg><grammar n="mwe-dis.bin"/></cg>
     <mwesplit/>
     <blanktag>
-      <arg n="analyser-gt-whitespace.hfst"/>
+      <blanktagger n="analyser-gt-whitespace.hfst"/>
     </blanktag>
     <cgspell>
-      <arg n="errmodel.default.hfst"/>
-      <arg n="acceptor.default.hfst"/>
+      <lexicon n="acceptor.default.hfst"/>
+      <errmodel n="errmodel.default.hfst"/>
     </cgspell>
-    <cg><arg n="disambiguator.bin"/></cg>
-    <cg><arg n="grammarchecker.bin"/></cg>
+    <cg><grammar n="disambiguator.bin"/></cg>
+    <cg><grammar n="grammarchecker.bin"/></cg>
     <suggest>
-      <arg n="generator-gt-norm.hfstol"/>
-      <arg n="@srcdir@/errors.xml"/>
+      <generator n="generator-gt-norm.hfstol"/>
+      <messages n="@srcdir@/errors.xml"/>
     </suggest>
   </pipeline>
 

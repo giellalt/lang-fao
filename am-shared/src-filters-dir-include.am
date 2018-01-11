@@ -232,8 +232,15 @@ derivation-tags.txt: $(TAG_FILE)
 error-tags.txt: $(TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Err/
 
+# Only save the new tag list if there are real differences, otherwise just skip:
 semantic-tags.txt: $(TAG_FILE)
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Sem/
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Sem/
+	$(AM_V_GEN)if ! diff -q $@ $@.tmp ; then \
+		diff -q $@ $@.tmp ; \
+		cp -f $@.tmp $@; \
+	else \
+		rm -f $@.tmp ; \
+	fi
 
 ####### Build rules for creating regexes from tag list: #######
 

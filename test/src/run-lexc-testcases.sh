@@ -38,7 +38,7 @@ for file in ${source_files}; do
 
 	# For each lexc file, extract all fst's specified in it:
 	fsts=$(grep '^\!\!€[^ :]' $file | cut -d':' -f1 \
-		| cut -d'€' -f2 | sort -u)
+		| sed 's/\(.*\)€\(.*\)/\2/g' | sort -u)
 
 	# Check whether there are test cases in the file:
 	tests=$(grep '^\!\!€ ' $file)

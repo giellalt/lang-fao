@@ -220,26 +220,70 @@ TAG_FILE=gttags.txt
 # sans extension
 TAG_EXTRACTION_FST=$(top_builddir)/src/morphology/lexicon
 
+# Extract tags with specific prefixes, for automatic generation of regexes.
+# Only save the new tag list if there are real differences, otherwise just skip.
+# This will ensure that the regex is only regenerated when there are real
+# changes in the tag list, and thus stop unnecessary recompilation of fst's.
+# Also first checks whether the target tag list file exists - if you try to diff
+# against a non-existing file diff will error out and stop the build.
 area-tags.txt: $(TAG_FILE)
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Area/
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Area/
+	$(AM_V_GEN)if test -f $@ ; then \
+		if ! diff -q $@ $@.tmp ; then \
+			mv -f $@.tmp $@ ; \
+		else \
+			rm -f $@.tmp ; \
+		fi ;\
+	else \
+		mv -f $@.tmp $@ ; \
+	fi
 
 dialect-tags.txt: $(TAG_FILE)
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Dial/
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Dial/
+	$(AM_V_GEN)if test -f $@ ; then \
+		if ! diff -q $@ $@.tmp ; then \
+			mv -f $@.tmp $@ ; \
+		else \
+			rm -f $@.tmp ; \
+		fi ;\
+	else \
+		mv -f $@.tmp $@ ; \
+	fi
 
 derivation-tags.txt: $(TAG_FILE)
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Der/
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Der/
+	$(AM_V_GEN)if test -f $@ ; then \
+		if ! diff -q $@ $@.tmp ; then \
+			mv -f $@.tmp $@ ; \
+		else \
+			rm -f $@.tmp ; \
+		fi ;\
+	else \
+		mv -f $@.tmp $@ ; \
+	fi
 
 error-tags.txt: $(TAG_FILE)
-	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@ Err/
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Err/
+	$(AM_V_GEN)if test -f $@ ; then \
+		if ! diff -q $@ $@.tmp ; then \
+			mv -f $@.tmp $@ ; \
+		else \
+			rm -f $@.tmp ; \
+		fi ;\
+	else \
+		mv -f $@.tmp $@ ; \
+	fi
 
-# Only save the new tag list if there are real differences, otherwise just skip:
 semantic-tags.txt: $(TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Sem/
-	$(AM_V_GEN)if ! diff -q $@ $@.tmp ; then \
-		diff -q $@ $@.tmp ; \
-		cp -f $@.tmp $@; \
+	$(AM_V_GEN)if test -f $@ ; then \
+		if ! diff -q $@ $@.tmp ; then \
+			mv -f $@.tmp $@ ; \
+		else \
+			rm -f $@.tmp ; \
+		fi ;\
 	else \
-		rm -f $@.tmp ; \
+		mv -f $@.tmp $@ ; \
 	fi
 
 ####### Build rules for creating regexes from tag list: #######
@@ -304,16 +348,17 @@ reorder-%-tags.regex: %-tags.txt
 	$(AM_V_GEN)$(GTCORE)/scripts/taglist2reorder_$*_tags_regex.sh \
 		$@ $^
 
-####### Copy regex files from giella-shared if not found locally: ########
-%.regex: $(GIELLA_SHARED)/all_langs/src/filters/%.regex
-	$(AM_V_CP)cp -f $< $@
-
-# Workaround hack for bug in the Sfst and Foma backends:
+# Workaround hack for bug in the Sfst and Foma backends due to the size of this
+# filter for some languages:
 reorder-semantic-tags.hfst: reorder-semantic-tags.regex
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(HFST_FLAGS) --format=openfst-tropical \
 		$(HFST_REGEXP2FST_FLAGS) $(MORE_VERBOSITY) -S $< \
 		| $(HFST_FST2FST) $(MORE_VERBOSITY) $(HFST_FORMAT) \
 		-o $@
+
+####### Copy regex files from giella-shared if not found locally: ########
+%.regex: $(GIELLA_SHARED)/all_langs/src/filters/%.regex
+	$(AM_V_CP)cp -f $< $@
 
 ####### Other targets: ###########
 clean-local:

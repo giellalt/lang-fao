@@ -178,6 +178,7 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 # Apertium analyser - GTD tags. Target language independent filtering
 # happens here:
 analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
+			$(top_builddir)/src/orthography/spellrelax.compose.hfst          \
 			$(top_builddir)/src/filters/remove-dialect-tags.hfst             \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst             \
 			$(top_builddir)/src/filters/remove-number-string-tags.hfst       \
@@ -190,7 +191,7 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-word-boundary.hfst            \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
-			read regex \
+	read regex \
 	    @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
@@ -203,9 +204,10 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"        \
 	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"       \
-   	;\n\
-        save stack $@\n\
-        quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
+	.o. @\"$(top_builddir)/src/orthography/spellrelax.compose.hfst\"          \
+	;\n\
+	save stack $@\n\
+	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
 
 # Target language specific filtering - build depends on the availability
 # of a filter file.
@@ -219,6 +221,8 @@ analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
 			-S --xerox-composition=ON \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-S '+Cmp' -a 10 --arcs-only \
 		-o $@
 
 # With NO filter file available, invert the file to allow the general pattern
@@ -227,6 +231,8 @@ analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst \
 analyser-mt-gt-desc.%.tmp.hfst: analyser-mt-gt-desc.hfst
 	$(AM_V_INVERT)$(HFST_INVERT) -i $< \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-S '+Cmp' -a 10 --arcs-only \
 		-o $@
 
 # Relabel GTDivvun tags to Apertium tags - generator, step 1:

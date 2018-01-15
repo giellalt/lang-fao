@@ -1,4 +1,9 @@
-$Rev: 162142 $
+$Rev: 162184 $
+Fixed a bug in fst format handling for the grammar checker - conflicting formats
+caused a segfault. Now using openfst-tropical for all fst's being processed in
+the grammarcheckers/ dir (presently only the speller acceptor analyser).
+
+r162142:
 Fixed OLang tag extraction and filter generation.
 
 r162130:

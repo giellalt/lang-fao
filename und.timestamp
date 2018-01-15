@@ -1,4 +1,8 @@
-$Rev: 162184 $
+$Rev: 162194 $
+Now using speller version info from configure.ac, not version.txt, which is
+removed. New giella-core required.
+
+r162184:
 Fixed a bug in fst format handling for the grammar checker - conflicting formats
 caused a segfault. Now using openfst-tropical for all fst's being processed in
 the grammarcheckers/ dir (presently only the speller acceptor analyser).

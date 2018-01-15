@@ -81,11 +81,15 @@ make-CG-tags.regex: $(TAG_FILE)
 %.regex: $(top_srcdir)/src/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 
+####### Build rule for compiling regexes - we want to override #######
+####### the fst format:                                        #######
+.regex.hfst:
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(HFST_FLAGS) --format=openfst-tropical \
+		$(HFST_REGEXP2FST_FLAGS) $(MORE_VERBOSITY) -S $< -o $@
+
 ##########################################
 # General build rules included from here:#
 
-include $(top_srcdir)/am-shared/regex-include.am
-include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/tag-extraction-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 

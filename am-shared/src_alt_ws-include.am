@@ -49,11 +49,22 @@ endif # WANT_GENERATION
 endif # CAN_XFST
 ##### END Xerox target list #####
 
+##### BEGIN Foma target list #####
+if CAN_FOMA
+if WANT_MORPHOLOGY
+ALT_WS_ANALYSERS+=$(addsuffix .foma,$(ALT_WS_ANALYSERS_TMP))
+endif # WANT_MORPHOLOGY
+if WANT_GENERATION
+ALT_WS_GENERATORS+=$(addsuffix .foma,$(ALT_WS_GENERATORS_TMP))
+endif # WANT_GENERATION
+endif # CAN_XFST
+##### END Foma target list #####
+
 endif # HAVE_ALT_WSS
 
 ####### Build rules for the default set of fst's for ########
 ####### alternate writing systems:                   ########
-define alt_ws_desc_analysers
+define alt_ws_fsts
 analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-area-tags.%                 \
 					filters/remove-dialect-tags.%              \
@@ -86,10 +97,7 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
-endef
-$(foreach alt_ws,$(ALT_WSS),$(eval $(call alt_ws_desc_analysers,$(alt_ws))))
 
-define alt_ws_norm_analysers
 analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-area-tags.%                 \
 					filters/remove-dialect-tags.%              \
@@ -124,10 +132,7 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
-endef
-$(foreach alt_ws,$(ALT_WSS),$(eval $(call alt_ws_norm_analysers,$(alt_ws))))
 
-define alt_ws_desc_generators
 generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/make-optional-transitivity-tags.%  \
 					filters/make-optional-homonymy-tags.%      \
@@ -170,10 +175,7 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
-endef
-$(foreach alt_ws,$(ALT_WSS),$(eval $(call alt_ws_desc_generators,$(alt_ws))))
 
-define alt_ws_norm_generators
 generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/make-optional-transitivity-tags.%  \
 					filters/make-optional-homonymy-tags.%      \
@@ -217,4 +219,4 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
 endef
-$(foreach alt_ws,$(ALT_WSS),$(eval $(call alt_ws_norm_generators,$(alt_ws))))
+$(foreach alt_ws,$(ALT_WSS),$(eval $(call alt_ws_fsts,$(alt_ws))))

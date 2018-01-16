@@ -136,6 +136,8 @@ endif # CAN_FOMA
 hfstdatadir=$(datadir)/giella/$(GTLANG)
 hfstdata_DATA=$(GT_ANALYSERS)       \
 			  $(GT_GENERATORS)      \
+			  $(AREA_ANALYSERS)     \
+			  $(AREA_GENERATORS)    \
 			  $(ALT_WS_ANALYSERS)   \
 			  $(ALT_WS_GENERATORS)  \
 			  $(ALT_ORTH_ANALYSERS) \
@@ -744,6 +746,7 @@ clean-local:
 include $(top_srcdir)/am-shared/src_oahpa-include.am
 include $(top_srcdir)/am-shared/src_dictionary-include.am
 include $(top_srcdir)/am-shared/src_disamb-include.am
+include $(top_srcdir)/am-shared/src_area-include.am
 include $(top_srcdir)/am-shared/src_alt_ws-include.am
 include $(top_srcdir)/am-shared/src_alt_orth-include.am
 include $(top_srcdir)/am-shared/lookup-include.am

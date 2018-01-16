@@ -1,4 +1,9 @@
-$Rev: 162242 $
+$Rev: 162264 $
+Added support for building dialect fst's. It is disabled by default, but can be
+enabled with a configure option. Also changed the disamb analyser to keep the
+dialect tags. Only normative fst's are filtered against dialect tags.
+
+r162242:
 Added initial support for building Area-specific analysers and generators (norm
 only). Also restored Area tags in the disamb and grammar checker analysers.
 Fixed missing support for Foma transducers in the alternative writing system

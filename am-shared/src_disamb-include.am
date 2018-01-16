@@ -7,7 +7,6 @@
 # semantic tags or Err/Orth. The variant and homonym tags are there to help
 # choosing forms, as are Err/Orth and Sem-tags.
 analyser-disamb-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
-					filters/remove-area-tags.%                \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-hyphenation-marks.%        \
 					filters/remove-infl_deriv-borders.%       \
@@ -22,7 +21,6 @@ analyser-disamb-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-dialect-tags.$*\"             \
-			.o. @\"filters/remove-area-tags.$*\"                \
 			.o. @\"filters/remove-orig_lang-tags.$*\"           \
 			.o. @\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-variant-tags.$*\"             \
@@ -46,7 +44,6 @@ analyser-disamb-gt-desc.tmp.%: analyser-raw-gt-desc.%         \
 # Additional target to support languages with alternative writing systems:
 define alt_ws_disamb_analysers
 analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%      \
-					filters/remove-area-tags.%                  \
 					filters/remove-Orth_IPA-strings.%           \
 					filters/remove-hyphenation-marks.%          \
 					filters/remove-infl_deriv-borders.%         \
@@ -60,7 +57,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%      \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-dialect-tags.$$*\"               \
-			.o. @\"filters/remove-area-tags.$$*\"                  \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"             \
 			.o. @\"filters/remove-usage-tags.$$*\"                 \
 			.o. @\"filters/remove-variant-tags.$$*\"               \
@@ -85,7 +81,6 @@ $(foreach alt_ws,$(ALT_WSS),$(eval $(call alt_ws_disamb_analysers,$(alt_ws))))
 # Additional target to support languages with alternative orthographies:
 define alt_orth_disamb_analysers
 analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
-					filters/remove-area-tags.%                   \
 					filters/remove-hyphenation-marks.%           \
 					filters/remove-infl_deriv-borders.%          \
 					filters/remove-word-boundary.%               \
@@ -101,7 +96,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-dialect-tags.$$*\"                 \
-			.o. @\"filters/remove-area-tags.$$*\"                    \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"               \
 			.o. @\"filters/remove-orthography-tags.$$*\"             \
 			.o. @\"filters/remove-usage-tags.$$*\"                   \
@@ -127,7 +121,6 @@ $(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_disamb_analysers,$(alt_or
 # ... alternatively using a filter from RAW to target:
 define alt_orth_disamb_analysers_from_raw
 analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
-					filters/remove-area-tags.%                   \
 					filters/remove-hyphenation-marks.%           \
 					filters/remove-infl_deriv-borders.%          \
 					filters/remove-word-boundary.%               \
@@ -143,7 +136,6 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					orthography/raw-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-dialect-tags.$$*\"                 \
-			.o. @\"filters/remove-area-tags.$$*\"                    \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"               \
 			.o. @\"filters/remove-orthography-tags.$$*\"             \
 			.o. @\"filters/remove-usage-tags.$$*\"                   \
@@ -169,7 +161,6 @@ $(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_disamb_analysers_from_raw
 # The grammar checker analyser is the same as the disambiguator analyser, but
 # potentially/most likely with language-specific adaptations:
 analyser-gramcheck-gt-desc.tmp.%: analyser-raw-gt-desc.%      \
-					filters/remove-area-tags.%                \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-hyphenation-marks.%        \
 					filters/remove-infl_deriv-borders.%       \
@@ -182,7 +173,6 @@ analyser-gramcheck-gt-desc.tmp.%: analyser-raw-gt-desc.%      \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-orig_lang-tags.$*\"           \
-			.o. @\"filters/remove-area-tags.$*\"                \
 			.o. @\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \

@@ -1,0 +1,151 @@
+## Include this file in top-level srcdir to compile FSTs
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+# Include file for building fst's for alternative writing systems
+
+####### Automake targets: ########
+# IFF different dialects are defined and enabled, compute target file names for
+# dialect variants (normative fst's only):
+if WANT_DIALECTS
+
+# Define temporary variables to build final target filenames from:
+ALL_DIAL_BASENAME_ANALYSERS=$(sort $(basename $(GT_ANALYSERS)))
+NORM_DIAL_BASENAME_ANALYSERS=$(shell echo $(ALL_DIAL_BASENAME_ANALYSERS) \
+							| tr ' ' '\n' | grep 'norm' )
+DIAL_ANALYSERS_TMP=$(shell for ll in $(NORM_DIAL_BASENAME_ANALYSERS); do\
+    for ld in $(DIALECTS); do\
+        echo "$${ll}_$$ld" ;\
+    done ;\
+done)
+
+ALL_DIAL_BASENAME_GENERATORS=$(sort $(basename $(GT_GENERATORS)))
+NORM_DIAL_BASENAME_GENERATORS=$(shell echo $(ALL_DIAL_BASENAME_GENERATORS) \
+							| tr ' ' '\n' | grep 'norm' )
+DIAL_GENERATORS_TMP=$(shell for ll in $(NORM_DIAL_BASENAME_GENERATORS); do\
+    for ld in $(DIALECTS); do\
+        echo "$${ll}_$$ld" ;\
+    done ;\
+done)
+
+# Define variables before adding value:
+DIAL_ANALYSERS=
+DIAL_GENERATORS=
+
+##### BEGIN Hfst target list #####
+if CAN_HFST
+if WANT_MORPHOLOGY
+DIAL_ANALYSERS+=$(addsuffix .hfstol,$(DIAL_ANALYSERS_TMP))
+endif # WANT_MORPHOLOGY
+if WANT_GENERATION
+DIAL_GENERATORS+=$(addsuffix .hfstol,$(DIAL_GENERATORS_TMP))
+endif # WANT_GENERATION
+endif # CAN_HFST
+##### END Hfst target list #####
+
+##### BEGIN Xerox target list #####
+if CAN_XFST
+if WANT_MORPHOLOGY
+DIAL_ANALYSERS+=$(addsuffix .xfst,$(DIAL_ANALYSERS_TMP))
+endif # WANT_MORPHOLOGY
+if WANT_GENERATION
+DIAL_GENERATORS+=$(addsuffix .xfst,$(DIAL_GENERATORS_TMP))
+endif # WANT_GENERATION
+endif # CAN_XFST
+##### END Xerox target list #####
+
+##### BEGIN Foma target list #####
+if CAN_FOMA
+if WANT_MORPHOLOGY
+DIAL_ANALYSERS+=$(addsuffix .foma,$(DIAL_ANALYSERS_TMP))
+endif # WANT_MORPHOLOGY
+if WANT_GENERATION
+DIAL_GENERATORS+=$(addsuffix .foma,$(DIAL_GENERATORS_TMP))
+endif # WANT_GENERATION
+endif # CAN_XFST
+##### END Foma target list #####
+
+endif # WANT_DIALECTS
+
+####### Build rules for the default set of fst's for  ########
+####### areal variation reflected in the orthography: ########
+define dialect_fsts
+analyser-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%            \
+					filters/remove-area-tags.%                 \
+					filters/remove-dialect-tags.%              \
+					filters/remove-variant-tags.%              \
+					filters/remove-number-string-tags.%        \
+					filters/remove-usage-tags.%                \
+					filters/remove-error-strings.%             \
+					filters/remove-semantic-tags.%             \
+					filters/remove-hyphenation-marks.%         \
+					filters/remove-infl_deriv-borders.%        \
+					filters/remove-word-boundary.%             \
+					filters/remove-orthography-tags.%          \
+					filters/remove-Orth_IPA-strings.%          \
+					filters/remove-orig_lang-tags.%            \
+					filters/remove-all_dialects_but_$(1)-strings.%
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+				@\"filters/remove-area-tags.$$*\"                  \
+			.o. @\"filters/remove-dialect-tags.$$*\"               \
+			.o. @\"filters/remove-variant-tags.$$*\"               \
+			.o. @\"filters/remove-number-string-tags.$$*\"         \
+			.o. @\"filters/remove-usage-tags.$$*\"                 \
+			.o. @\"filters/remove-semantic-tags.$$*\"              \
+			.o. @\"filters/remove-error-strings.$$*\"              \
+			.o. @\"filters/remove-orig_lang-tags.$$*\"             \
+			.o. @\"filters/remove-orthography-tags.$$*\"           \
+			.o. @\"filters/remove-Orth_IPA-strings.$$*\"           \
+			.o. @\"filters/remove-all_dialects_but_$(1)-strings.$$*\"\
+			.o. @\"$$<\"                                           \
+			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
+			.o. @\"filters/remove-word-boundary.$$*\"              \
+			;\n\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+
+generator-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%           \
+					filters/make-optional-transitivity-tags.%  \
+					filters/make-optional-homonymy-tags.%      \
+					filters/make-optional-hyph-tags.%          \
+					filters/make-optional-variant-tags.%       \
+					filters/make-optional-semantic-tags.%      \
+					filters/make-optional-adv_comp-tags.%      \
+					filters/remove-area-tags.%                 \
+					filters/remove-dialect-tags.%              \
+					filters/remove-hyphenation-marks.%         \
+					filters/remove-infl_deriv-borders.%        \
+					filters/remove-word-boundary.%             \
+					filters/remove-number-string-tags.%        \
+					filters/remove-usage-tags.%                \
+					filters/remove-orthography-tags.%          \
+					filters/remove-Orth_IPA-strings.%          \
+					filters/remove-orig_lang-tags.%            \
+					filters/remove-error-strings.%             \
+					filters/remove-all_dialects_but_$(1)-strings.%
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+				@\"filters/make-optional-transitivity-tags.$$*\"   \
+			.o. @\"filters/make-optional-homonymy-tags.$$*\"       \
+			.o. @\"filters/make-optional-hyph-tags.$$*\"           \
+			.o. @\"filters/make-optional-variant-tags.$$*\"        \
+			.o. @\"filters/make-optional-semantic-tags.$$*\"       \
+			.o. @\"filters/make-optional-adv_comp-tags.$$*\"       \
+			.o. @\"filters/remove-area-tags.$$*\"                  \
+			.o. @\"filters/remove-dialect-tags.$$*\"               \
+			.o. @\"filters/remove-number-string-tags.$$*\"         \
+			.o. @\"filters/remove-usage-tags.$$*\"                 \
+			.o. @\"filters/remove-error-strings.$$*\"              \
+			.o. @\"filters/remove-orig_lang-tags.$$*\"             \
+			.o. @\"filters/remove-orthography-tags.$$*\"           \
+			.o. @\"filters/remove-Orth_IPA-strings.$$*\"           \
+			.o. @\"filters/remove-all_dialects_but_$(1)-strings.$$*\"\
+			.o. @\"$$<\"                                           \
+			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
+			.o. @\"filters/remove-word-boundary.$$*\"              \
+			;\n\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach dialect,$(DIALECTS),$(eval $(call dialect_fsts,$(dialect))))

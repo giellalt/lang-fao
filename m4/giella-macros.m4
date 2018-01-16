@@ -954,6 +954,17 @@ AC_ARG_ENABLE([morpher],
               [enable_morpher=no])
 AM_CONDITIONAL([WANT_MORPHER], [test "x$enable_morpher" != xno])
 
+# Enable pattern hyphenator - default is 'no'; requires fst hyphenator
+AC_ARG_ENABLE([dialects],
+              [AS_HELP_STRING([--enable-dialects],
+                              [build dialect specific fst's and spellers @<:@default=no@:>@])],
+              [enable_dialects=$enableval],
+              [enable_dialects=no])
+AS_IF([test "x$enable_dialects" = "xyes" -a "x$DIALECTS" = "x"], 
+      [enable_dialects=no
+       AC_MSG_ERROR([You have not defined any dialects. Please see the documentation.])])
+AM_CONDITIONAL([WANT_DIALECTS], [test "x$enable_dialects" != xno])
+
 ]) # gt_ENABLE_TARGETS
 
 ################################################################################
@@ -963,7 +974,33 @@ AC_DEFUN([gt_PRINT_FOOTER],
 [
 cat<<EOF
 
--- Building $PACKAGE_STRING:
+  -- specialised fst's (off by default): --
+  * phonetic/IPA conversion enabled: $enable_phonetic
+  * dictionary fst's enabled: $enable_dicts
+  * Oahpa transducers enabled: $enable_oahpa
+    * L2 analyser: $enable_L2
+    * downcase error analyser: $enable_downcaseerror
+  * Apertium transducers enabled: $enable_apertium
+  * generate abbr.txt: $enable_abbr
+  * build tokenisers: $enable_tokenisers
+  * build glossing fst's: $enable_glossers
+  * build morphololgical segmenter: $enable_morpher
+  * build dialect specific fst's: $enable_dialects
+
+  -- proofing tools (off by default): --
+  * hyphenators:
+    * fst hyphenator enabled: $enable_fst_hyphenator
+    * pattern hyphenator enabled (requires fst hyph): $enable_fst_hyphenator
+  * spellers (zhfst files) enabled: $enable_spellers
+    * desktop spellers:
+      * installable packages enabled: $enable_desktop_hfstspellers
+      * foma speller enabled: $enable_fomaspeller
+    * mobile spellers (off by default, even with spellers enabled):
+      * hfst speller enabled: $enable_mobile_hfstspeller
+      * vfst speller enabled: $enable_vfstspeller
+  * grammar checker enabled: $enable_grammarchecker
+
+-- Building $PACKAGE_STRING (more specialised build targets listed above):
 
   -- Fst build tools: Xerox, Hfst or Foma - at least one must be installed
   -- Xerox is default on, the others off unless they are the only one present --
@@ -978,31 +1015,6 @@ cat<<EOF
   * syntactic tools enabled: $enable_syntax
   * yaml tests enabled: $enable_yamltests
   * generated documentation enabled: $gt_prog_docc
-
-  -- proofing tools (off by default): --
-  * spellers (zhfst files) enabled: $enable_spellers
-    * desktop spellers:
-      * installable packages enabled: $enable_desktop_hfstspellers
-      * foma speller enabled: $enable_fomaspeller
-    * mobile spellers (off by default, even with spellers enabled):
-      * hfst speller enabled: $enable_mobile_hfstspeller
-      * vfst speller enabled: $enable_vfstspeller
-  * grammar checker enabled: $enable_grammarchecker
-  * hyphenators:
-    * fst hyphenator enabled: $enable_fst_hyphenator
-    * pattern hyphenator enabled (requires fst hyph): $enable_fst_hyphenator
-
-  -- specialised fst's (off by default): --
-  * phonetic/IPA conversion enabled: $enable_phonetic
-  * dictionary fst's enabled: $enable_dicts
-  * Oahpa transducers enabled: $enable_oahpa
-    * L2 analyser: $enable_L2
-    * downcase error analyser: $enable_downcaseerror
-  * Apertium transducers enabled: $enable_apertium
-  * generate abbr.txt: $enable_abbr
-  * build tokenisers: $enable_tokenisers
-  * build glossing fst's: $enable_glossers
-  * build morphololgical segmenter: $enable_morpher
 
 For more ./configure options, run ./configure --help
 

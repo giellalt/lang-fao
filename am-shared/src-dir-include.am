@@ -138,6 +138,8 @@ hfstdata_DATA=$(GT_ANALYSERS)       \
 			  $(GT_GENERATORS)      \
 			  $(AREA_ANALYSERS)     \
 			  $(AREA_GENERATORS)    \
+			  $(DIAL_ANALYSERS)     \
+			  $(DIAL_GENERATORS)    \
 			  $(ALT_WS_ANALYSERS)   \
 			  $(ALT_WS_GENERATORS)  \
 			  $(ALT_ORTH_ANALYSERS) \
@@ -743,14 +745,15 @@ $(foreach fst,hfst xfst foma,$(eval $(call giella_default_morphers,$(fst))))
 clean-local:
 	-rm -f *.hfst *.xfst *.foma *.hfstol
 
-include $(top_srcdir)/am-shared/src_oahpa-include.am
 include $(top_srcdir)/am-shared/src_dictionary-include.am
 include $(top_srcdir)/am-shared/src_disamb-include.am
+include $(top_srcdir)/am-shared/src_oahpa-include.am
 include $(top_srcdir)/am-shared/src_area-include.am
 include $(top_srcdir)/am-shared/src_alt_ws-include.am
 include $(top_srcdir)/am-shared/src_alt_orth-include.am
-include $(top_srcdir)/am-shared/lookup-include.am
+include $(top_srcdir)/am-shared/src_dialects-include.am
 include $(top_srcdir)/am-shared/regex-include.am
+include $(top_srcdir)/am-shared/lookup-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
 include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am

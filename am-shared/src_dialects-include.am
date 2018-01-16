@@ -15,7 +15,7 @@ NORM_DIAL_BASENAME_ANALYSERS=$(shell echo $(ALL_DIAL_BASENAME_ANALYSERS) \
 							| tr ' ' '\n' | grep 'norm' )
 DIAL_ANALYSERS_TMP=$(shell for ll in $(NORM_DIAL_BASENAME_ANALYSERS); do\
     for ld in $(DIALECTS); do\
-        echo "$${ll}_$$ld" ;\
+        echo "$${ll}-dial_$$ld" ;\
     done ;\
 done)
 
@@ -24,7 +24,7 @@ NORM_DIAL_BASENAME_GENERATORS=$(shell echo $(ALL_DIAL_BASENAME_GENERATORS) \
 							| tr ' ' '\n' | grep 'norm' )
 DIAL_GENERATORS_TMP=$(shell for ll in $(NORM_DIAL_BASENAME_GENERATORS); do\
     for ld in $(DIALECTS); do\
-        echo "$${ll}_$$ld" ;\
+        echo "$${ll}-dial_$$ld" ;\
     done ;\
 done)
 
@@ -70,7 +70,7 @@ endif # WANT_DIALECTS
 ####### Build rules for the default set of fst's for  ########
 ####### areal variation reflected in the orthography: ########
 define dialect_fsts
-analyser-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%            \
+analyser-gt-norm-dial_$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-area-tags.%                 \
 					filters/remove-dialect-tags.%              \
 					filters/remove-variant-tags.%              \
@@ -105,7 +105,7 @@ analyser-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%            \
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
 
-generator-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%           \
+generator-gt-norm-dial_$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/make-optional-transitivity-tags.%  \
 					filters/make-optional-homonymy-tags.%      \
 					filters/make-optional-hyph-tags.%          \

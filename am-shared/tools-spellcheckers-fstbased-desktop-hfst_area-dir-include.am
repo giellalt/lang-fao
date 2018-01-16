@@ -1,0 +1,130 @@
+## Process this file with automake to produce Makefile.in
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#### Define variables: ####
+if HAVE_AREAS
+if CAN_HFST
+if WANT_SPELLERS
+
+GT_AREA_ERRMODELS=$(shell for ld in $(AREAS); do\
+    echo "errmodel.$$ld.hfst" ; \
+done)
+
+GT_AREA_SPELLER_ACCEPTORS=$(shell for ld in $(AREAS); do\
+    echo "acceptor.$$ld.hfst" ; \
+done)
+
+AREA_ZHFST_FILES=$(shell for ld in $(AREAS); do\
+    echo "$(GTLANG2)_$$ld.zhfst" ; \
+done)
+AREA_ZHFST_BASENAMES=$(basename $(AREA_ZHFST_FILES))
+
+# Only build final speller packages if is enabled (default=yes):
+if WANT_HFST_DESKTOP_SPELLER
+
+# Variables for the final installable packages:
+if CAN_LOCALSYNC
+# Generate target file names dynamically based on VOIKKO_VERS_PLATFORMS.
+# The resulting file names follow this pattern:
+#
+#$(GTLANG2)-NO_LO-voikko-3.4.1-win.oxt
+AREA_OXT_FILES_TMP=$(foreach \
+						version,$(VOIKKO_VERS_PLATFORMS), \
+							$(addsuffix $(version), \
+								$(addsuffix _LO-voikko-, \
+			                      $(AREA_ZHFST_BASENAMES))))
+AREA_OXT_FILES=$(addsuffix .oxt, $(AREA_OXT_FILES_TMP))
+# LO 5.x oxt's:
+AREA_OXT_FILES+=$(addsuffix _LO-voikko-$(LOVOIKKO_VERSION).oxt, \
+			$(AREA_ZHFST_BASENAMES))
+
+# Generate target filename as follows:
+#
+# MacVoikko-Lule_Sami-smj-NO.service
+AREA_MACVOIKKO_STEM=$(shell for ld in $(AREAS); do\
+    echo "$(MACVOIKKO_STEM)-$(GTLANG2)_$$ld.service" ; \
+done)
+MACVOIKKOFILE+=$(AREA_MACVOIKKO_STEM)
+
+endif # CAN_LOCALSYNC
+
+endif # WANT_HFST_DESKTOP_SPELLER
+endif # WANT_SPELLERS
+endif # CAN_HFST
+endif # HAVE_AREAS
+
+#### Build rules: ####
+
+# Build rule for acceptors for specific areas/countries:
+acceptor.%.hfst: \
+		$(GT_SPELLER_HFST) easteregg.%.hfst \
+		$(top_builddir)/src/filters/remove-all_areas_but_%-strings.hfst
+	$(AM_V_GEN)cat $< \
+		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
+		  -1 $(top_builddir)/src/filters/remove-all_areas_but_$*-strings.hfst \
+		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
+		| $(HFST_MINIMIZE_SPELLER) $(HFST_FLAGS)        \
+		| $(HFST_DISJUNCT) - easteregg.$*.hfst             \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw          \
+		-o $@
+
+# Build rule for zhfst files for specific areas/countries:
+$(AREA_ZHFST_FILES): \
+	$(GTLANG2)_%.zhfst: \
+		$(srcdir)/index.%.xml \
+		acceptor.%.hfst \
+		errmodel.%.hfst
+	$(AM_V_at)rm -f $@
+	$(AM_V_at)$(MKDIR_P) build/$@
+	$(AM_V_at)rm -f build/$@/*
+	$(AM_V_at)cp $(srcdir)/index.$*.xml build/$@/index.xml
+	$(AM_V_at)cp acceptor.$*.hfst build/$@/acceptor.default.hfst
+	$(AM_V_at)cp errmodel.$*.hfst build/$@/errmodel.default.hfst
+	$(AM_V_GEN)cd build/$@/ && $(ZHFST_COMPRESSION)
+	$(AM_V_at)$(MKDIR_P) 3
+	$(AM_V_at)cp -f $@ 3/
+
+# Build rule for 5.0 oxt files for specific areas/countries:
+# The more specific pattern match first.
+$(GTLANG2)_%_LO-voikko-5.0.oxt: $(AREA_ZHFST_FILES)
+	$(AM_V_GEN)rm -f $@; \
+		if [ -d "$(OXT_ROOT_DIR)/$(LOVOIKKO_VERSION)" ]; then \
+			$(MKDIR_P) build/$(LOVOIKKO_VERSION)/ && \
+			cd build/$(LOVOIKKO_VERSION) && \
+			$(GET_LIBS_COMMAND) \
+					 $(OXT_ROOT_DIR)/$(LOVOIKKO_VERSION)/ $(TARGET_DIR)/ && \
+			cp ../../$(GTLANG2)_$*.zhfst voikko/3/ && \
+			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
+		else \
+			echo "  SKIP     $@: Not yet supported." ; \
+		fi
+
+# Build rule for 4.x oxt files for specific areas/countries:
+$(GTLANG2)_%.oxt: $(AREA_ZHFST_FILES)
+	$(AM_V_GEN)rm -f $@; \
+		area="$$(echo $* | cut -d'_' -f1)"; \
+		version="$$(echo $* | cut -d'_' -f2 | sed 's/LO-voikko-//')"; \
+		if [ -d "$(OXT_ROOT_DIR)/$$version" ]; then \
+			$(MKDIR_P) build/$$version/ && \
+			cd build/$$version && \
+			$(GET_LIBS_COMMAND) \
+					 $(OXT_ROOT_DIR)/$$version/ $(TARGET_DIR)/ && \
+			cp ../../$(GTLANG2)_$$area.zhfst 3/ && \
+			$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ * ; \
+		else \
+			echo "  SKIP     $@: Not yet supported." ; \
+		fi

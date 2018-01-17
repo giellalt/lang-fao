@@ -1,4 +1,12 @@
-$Rev: 162295 $
+$Rev: 162316 $
+Added support for area / country specific fst's for the specialised dict and
+oahpa build files. At the same time reorganised the build code so that targets
+with two variables now consistently use the fst type / suffix as the pattern,
+and the writing system/alt orth/area/etc as the function parameter. This should
+make the build system more robust by reducing the risk for accidental pattern
+similarity.
+
+r162295:
 Added support for building area/country specific spellers. The target language
 for now is SMJ, but the feature is of course language independent and useful in
 a number of other circumstances.

@@ -218,7 +218,7 @@ analyser-dict-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					orthography/spellrelax.$(1).compose.%      \
 					orthography/raw-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-				@\"orthography/raw-to-$$*.compose.$$*\".i \
+				@\"orthography/raw-to-$(1).compose.$$*\".i \
 			.o. @\"filters/make-optional-transitivity-tags.$$*\"  \
 			.o. @\"filters/remove-area-tags.$$*\"                 \
 			.o. @\"filters/remove-dialect-tags.$$*\"              \
@@ -251,7 +251,7 @@ analyser-dict-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					orthography/spellrelax.$(1).compose.%      \
 					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-				@\"orthography/$$(DEFAULT_ORTH)-to-$$*.compose.$$*\".i \
+				@\"orthography/$$(DEFAULT_ORTH)-to-$(1).compose.$$*\".i \
 			.o. @\"filters/make-optional-transitivity-tags.$$*\"  \
 			.o. @\"filters/remove-area-tags.$$*\"                 \
 			.o. @\"filters/remove-dialect-tags.$$*\"              \
@@ -265,7 +265,7 @@ analyser-dict-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"        \
 			.o. @\"filters/remove-word-boundary.$$*\"             \
 			.o. @\"orthography/$$(DEFAULT_ORTH)-to-$(1).compose.$$*\"\
-			.o. @\"orthography/spellrelax.$$*.compose.$(1)\"         \
+			.o. @\"orthography/spellrelax.$(1).compose.$$*\"         \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
@@ -288,7 +288,7 @@ generator-dict-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%      \
 					filters/remove-word-boundary.%             \
 					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-				@\"orthography/$$(DEFAULT_ORTH)-to-$$*.compose.$$*\".i \
+				@\"orthography/$$(DEFAULT_ORTH)-to-$(1).compose.$$*\".i \
 			.o. @\"filters/make-optional-transitivity-tags.$$*\"  \
 			.o. @\"filters/make-optional-hyph-tags.$$*\"          \
 			.o. @\"filters/make-optional-semantic-tags.$$*\"      \

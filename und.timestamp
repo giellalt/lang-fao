@@ -1,4 +1,8 @@
-$Rev: 162316 $
+$Rev: 162370 $
+Added option to specify language variant, to allow testing spellers for
+alternative writing systems, alternative orthographies, different countries etc.
+
+r162316:
 Added support for area / country specific fst's for the specialised dict and
 oahpa build files. At the same time reorganised the build code so that targets
 with two variables now consistently use the fst type / suffix as the pattern,

@@ -1,4 +1,4 @@
-<pipespec language="fo"
+<pipespec language="@GLANG2@"
           developer="Divvun"
           copyright=""
           version="0.1"
@@ -8,8 +8,8 @@
                        hfst-ospell >= 0.5.0
                        divvun-gramcheck >= 0.2.0">
 
-  <pipeline name="faogram-nospell"
-            language="fo"
+  <pipeline name="@GLANG@gram-nospell"
+            language="@GLANG2@"
             type="Grammar error">
     <tokenize><tokenizer n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
     <cg><grammar n="mwe-dis.bin"/></cg>
@@ -21,12 +21,12 @@
     <cg><grammar n="grammarchecker.bin"/></cg>
     <suggest>
       <generator n="generator-gt-norm.hfstol"/>
-      <messages n="@srcdir@/errors.xml"/>
+      <messages n="errors.xml"/>
     </suggest>
   </pipeline>
 
-  <pipeline name="faogram"
-            language="fo"
+  <pipeline name="@GLANG@gram"
+            language="@GLANG2@"
             type="Grammar error">
     <tokenize><tokenizer n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
     <cg><grammar n="mwe-dis.bin"/></cg>
@@ -42,7 +42,7 @@
     <cg><grammar n="grammarchecker.bin"/></cg>
     <suggest>
       <generator n="generator-gt-norm.hfstol"/>
-      <messages n="@srcdir@/errors.xml"/>
+      <messages n="errors.xml"/>
     </suggest>
   </pipeline>
 

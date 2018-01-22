@@ -1,4 +1,8 @@
-$Rev: 162487 $
+$Rev: 162499 $
+Add note to the errors.xml file that it is generated, and from which file it is
+generated, to avoid people editing the wrong file.
+
+r162487:
 Error messages are now copied from a source file to a build file, after bein
 validated. This allows support for VPATH builds and retains the integrity of the
 zcheck file. At the same time also replaced hard coded language names with

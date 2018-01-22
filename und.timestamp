@@ -1,4 +1,10 @@
-$Rev: 162377 $
+$Rev: 162487 $
+Error messages are now copied from a source file to a build file, after bein
+validated. This allows support for VPATH builds and retains the integrity of the
+zcheck file. At the same time also replaced hard coded language names with
+automake variable expansion in the pipespec.xml.in file.
+
+r162377:
 Fixed bug in building dictionary analysers for alternative orthographies,
 introduced in the changes yesterday.
 

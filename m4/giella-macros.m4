@@ -492,6 +492,9 @@ AC_SUBST(CYGWINJAVAPATH)
 # Check for SubEthaEdit/see
 AC_PATH_PROG([SEE], [see], [], [$PATH$PATH_SEPARATOR$with_see])
 
+# Check for grammar checker validation tool:
+AC_PATH_PROG([DIVVUN_VALIDATE_SUGGEST], [divvun-validate-suggest], [no], [$PATH$PATH_SEPARATOR$with_divvun_validate_suggest])
+
 ]) # gt_PROG_SCRIPTS_PATHS
 
 ################################################################################
@@ -757,7 +760,10 @@ AC_ARG_ENABLE([grammarchecker],
               [enable_grammarchecker=no])
 AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" = "xno"], 
       [enable_grammarchecker=no
-       AC_MSG_ERROR([vislcg3 missing or too old - required for the grammar checker])])
+       AC_MSG_ERROR([vislcg3 missing or too old - required for the grammar checker])],
+      [AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$DIVVUN_VALIDATE_SUGGEST" = "xno"], 
+          [enable_grammarchecker=no
+           AC_MSG_ERROR([divvun-validate-suggest required for building grammar checkers])])])
 AM_CONDITIONAL([WANT_GRAMCHECK], [test "x$enable_grammarchecker" != xno])
 
 # Enable all spellers - default is 'no'

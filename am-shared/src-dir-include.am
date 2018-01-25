@@ -52,6 +52,7 @@ GT_ANALYSERS+=analyser-gt-desc.hfstol \
 
 if WANT_GRAMCHECK
 GT_ANALYSERS += analyser-gramcheck-gt-desc.hfstol
+GT_GENERATORS+=generator-gramcheck-gt-norm.hfstol
 endif # WANT_GRAMCHECK
 endif # WANT_MORPHOLOGY
 

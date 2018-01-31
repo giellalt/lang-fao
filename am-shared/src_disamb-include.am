@@ -2,7 +2,7 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-# First attempt at building disambiguation fst's. The analyser differs from the
+# Disambiguation analysers. They differ from the
 # regular analyser by NEITHER removing variant and homonym tags, NOR removing
 # semantic tags or Err/Orth. The variant and homonym tags are there to help
 # choosing forms, as are Err/Orth and Sem-tags.
@@ -75,7 +75,7 @@ endef
 $(foreach alt_ws,$(ALT_WSS),$(eval $(call alt_ws_disamb_analysers,$(alt_ws))))
 
 # Additional target to support languages with alternative orthographies:
-define alt_orth_disamb_analysers
+define alt_orth_disamb_fst
 analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-hyphenation-marks.%           \
 					filters/remove-infl_deriv-borders.%          \
@@ -109,11 +109,8 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
-endef
-$(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_disamb_analysers,$(alt_orth))))
 
 # ... alternatively using a filter from RAW to target:
-define alt_orth_disamb_analysers_from_raw
 analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-hyphenation-marks.%           \
 					filters/remove-infl_deriv-borders.%          \
@@ -148,106 +145,4 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
 endef
-$(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_disamb_analysers_from_raw,$(alt_orth))))
-
-# The grammar checker analyser is the same as the disambiguator analyser, but
-# potentially/most likely with language-specific adaptations:
-analyser-gramcheck-gt-desc.tmp.%: analyser-raw-gt-desc.%      \
-					filters/remove-Orth_IPA-strings.%         \
-					filters/remove-hyphenation-marks.%        \
-					filters/remove-infl_deriv-borders.%       \
-					filters/remove-word-boundary.%            \
-					filters/remove-orig_lang-tags.%           \
-					filters/remove-orthography-tags.%         \
-					filters/remove-usage-tags.%               \
-					orthography/inituppercase.compose.%       \
-					orthography/spellrelax.compose.%          \
-					orthography/downcase-derived_proper-strings.compose.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/remove-orig_lang-tags.$*\"           \
-			.o. @\"filters/remove-usage-tags.$*\"               \
-			.o. @\"filters/remove-orthography-tags.$*\"         \
-			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
-			.o. @\"$<\"                                         \
-			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
-			.o. @\"filters/remove-hyphenation-marks.$*\"        \
-			.o. @\"filters/remove-infl_deriv-borders.$*\"       \
-			; \n\
-			define fst \n\
-			set flag-is-epsilon ON\n\
-			read regex fst \
-			.o. @\"orthography/inituppercase.compose.$*\"       \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL)
-
-# And the same for alternate writing systems etc:
-analyser-gramcheck-gt-desc.%.tmp.hfst: analyser-disamb-gt-desc.%.tmp.hfst
-	$(AM_V_CP)cp -f $< $@
-
-# The grammar checker analyser is the same as the disambiguator analyser, but
-# potentially/most likely with language-specific adaptations:
-generator-gramcheck-gt-norm.tmp.%: generator-raw-gt-desc.%    \
-					filters/make-optional-transitivity-tags.% \
-					filters/make-optional-homonymy-tags.%     \
-					filters/make-optional-hyph-tags.%         \
-					filters/make-optional-variant-tags.%      \
-					filters/make-optional-semantic-tags.%     \
-					filters/make-optional-adv_comp-tags.%     \
-					filters/make-optional-area-tags.%         \
-					filters/make-optional-dialect-tags.%      \
-					filters/remove-Orth_IPA-strings.%         \
-					filters/remove-hyphenation-marks.%        \
-					filters/remove-infl_deriv-borders.%       \
-					filters/remove-word-boundary.%            \
-					filters/remove-number-string-tags.%       \
-					filters/remove-orig_lang-tags.%           \
-					filters/remove-orthography-tags.%         \
-					filters/remove-usage-tags.%               \
-					filters/remove-error-strings.%            \
-					orthography/downcase-derived_proper-strings.compose.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/make-optional-transitivity-tags.$*\" \
-			.o. @\"filters/make-optional-homonymy-tags.$*\"     \
-			.o. @\"filters/make-optional-hyph-tags.$*\"         \
-			.o. @\"filters/make-optional-variant-tags.$*\"      \
-			.o. @\"filters/make-optional-semantic-tags.$*\"     \
-			.o. @\"filters/make-optional-adv_comp-tags.$*\"     \
-			.o. @\"filters/make-optional-area-tags.$*\"         \
-			.o. @\"filters/make-optional-dialect-tags.$*\"      \
-			.o. @\"filters/remove-orig_lang-tags.$*\"           \
-			.o. @\"filters/remove-number-string-tags.$*\"       \
-			.o. @\"filters/remove-usage-tags.$*\"               \
-			.o. @\"filters/remove-orthography-tags.$*\"         \
-			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
-			.o. @\"filters/remove-error-strings.$*\"            \
-			.o. @\"$<\"                                         \
-			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
-			.o. @\"filters/remove-hyphenation-marks.$*\"        \
-			.o. @\"filters/remove-infl_deriv-borders.$*\"       \
-			.o. @\"filters/remove-word-boundary.$*\"            \
-			; \n\
-		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL)
-
-# Default fallback processing for the grammarchecker fst's:
-define giella_gramcheck_analysers
-analyser-gramcheck%.$(1): analyser-gramcheck%.tmp.$(1) \
-						  filters/remove-word-boundary.$(1)
-	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-				@\"$$<\"                                             \
-			.o. @\"filters/remove-word-boundary.$(1)\"               \
-			;\n\
-		 $$(INVERT_HFST)\
-		 save stack $$@\n\
-		 quit\n" | $$(XFST_TOOL)
-
-generator-gramcheck%.$(1): generator-gramcheck%.tmp.$(1) \
-						  filters/remove-word-boundary.$(1)
-	$$(AM_V_XFST_TOOL)$$(PRINTF) "\
-		 load stack $$<\n\
-		 $$(INVERT_XFST)$$(INVERT_FOMA)\
-		 save stack $$@\n\
-		 quit\n" | $$(XFST_TOOL)
-endef
-$(foreach fst,hfst xfst foma,$(eval $(call giella_gramcheck_analysers,$(fst))))
+$(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_disamb_fst,$(alt_orth))))

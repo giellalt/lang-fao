@@ -49,11 +49,6 @@ if WANT_MORPHOLOGY
 GT_ANALYSERS+=analyser-gt-desc.hfstol \
 			  analyser-gt-norm.hfstol \
 			  analyser-disamb-gt-desc.hfstol
-
-if WANT_GRAMCHECK
-GT_ANALYSERS += analyser-gramcheck-gt-desc.hfstol
-GT_GENERATORS+=generator-gramcheck-gt-norm.hfstol
-endif # WANT_GRAMCHECK
 endif # WANT_MORPHOLOGY
 
 if WANT_GENERATION
@@ -753,6 +748,7 @@ include $(top_srcdir)/am-shared/src_area-include.am
 include $(top_srcdir)/am-shared/src_alt_ws-include.am
 include $(top_srcdir)/am-shared/src_alt_orth-include.am
 include $(top_srcdir)/am-shared/src_dialects-include.am
+include $(top_srcdir)/am-shared/src_gramcheck-include.am
 include $(top_srcdir)/am-shared/regex-include.am
 include $(top_srcdir)/am-shared/lookup-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am

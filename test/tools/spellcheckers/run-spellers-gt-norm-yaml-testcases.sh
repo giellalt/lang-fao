@@ -18,6 +18,7 @@ halftest=
 # same dir as this script:
 yaml_file_subdir=speller-gt-norm-yamls
 
-####### Include helper script from GTCORE: ########
-giella_core=@GTCORE@
-source ${giella_core}/scripts/include-scripts/yaml-runner-include.sh
+####### Include/source helper script from dir above - DO NOT CHANGE: ########
+# Relative path from test script to test runner:
+testrunner="../run-yaml-testcases.sh"
+source $testrunner $transducer $yaml_file_subdir $halftest

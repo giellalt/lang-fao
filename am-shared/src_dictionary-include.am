@@ -16,6 +16,12 @@ GT_ANALYSERS+=analyser-dict-gt-desc.xfst \
 				   analyser-dict-gt-desc-mobile.xfst
 GT_GENERATORS+=generator-dict-gt-norm.xfst
 endif # CAN_XFST
+
+if CAN_FOMA
+GT_ANALYSERS+=analyser-dict-gt-desc.foma \
+				   analyser-dict-gt-desc-mobile.foma
+GT_GENERATORS+=generator-dict-gt-norm.foma
+endif # CAN_FOMA
 endif # WANT_DICTIONARIES
 
 ##### END Xerox target list #####

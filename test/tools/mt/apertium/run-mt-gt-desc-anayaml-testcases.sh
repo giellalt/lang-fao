@@ -12,6 +12,7 @@ transducer=mt-gt-desc
 # gen = generation test
 # ana = analysis test
 # full / both / "" (ie nothing) = test both directions
+# speller = to test one-tape automatons, like a speller acceptor
 halftest=ana
 
 # Specify the name of the subdir where the yaml files are, use '.' if it is the
@@ -20,5 +21,5 @@ yaml_file_subdir=.
 
 ####### Include/source helper script from dir above - DO NOT CHANGE: ########
 # Relative path from test script to test runner:
-testrunner="../run-yaml-testcases.sh"
+testrunner="../../../run-yaml-testcases.sh"
 source $testrunner $transducer $yaml_file_subdir $halftest

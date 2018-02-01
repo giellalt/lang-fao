@@ -349,6 +349,57 @@ generator-gramcheck-gt-norm.$(1).tmp.%: generator-raw-gt-desc.% \
 endef
 $(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_disamb_fst,$(alt_orth))))
 
+# Additional target to support languages with geographically bound orthographic
+# variation (Area tags); only the normative generator is needed, the descriptive
+# analyser will accept (and tag) all areas:
+define area_gramchk_fsts
+generator-gramcheck-gt-norm_$(1).tmp.%: generator-raw-gt-desc.% \
+					filters/make-optional-transitivity-tags.% \
+					filters/make-optional-homonymy-tags.%     \
+					filters/make-optional-hyph-tags.%         \
+					filters/make-optional-variant-tags.%      \
+					filters/make-optional-semantic-tags.%     \
+					filters/make-optional-adv_comp-tags.%     \
+					filters/make-optional-area-tags.%         \
+					filters/make-optional-dialect-tags.%      \
+					filters/remove-Orth_IPA-strings.%         \
+					filters/remove-hyphenation-marks.%        \
+					filters/remove-infl_deriv-borders.%       \
+					filters/remove-word-boundary.%            \
+					filters/remove-number-string-tags.%       \
+					filters/remove-orig_lang-tags.%           \
+					filters/remove-orthography-tags.%         \
+					filters/remove-usage-tags.%               \
+					filters/remove-error-strings.%            \
+					filters/remove-all_areas_but_$(1)-strings.% \
+					orthography/downcase-derived_proper-strings.compose.%
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+				@\"filters/make-optional-transitivity-tags.$$*\" \
+			.o. @\"filters/make-optional-homonymy-tags.$$*\"     \
+			.o. @\"filters/make-optional-hyph-tags.$$*\"         \
+			.o. @\"filters/make-optional-variant-tags.$$*\"      \
+			.o. @\"filters/make-optional-semantic-tags.$$*\"     \
+			.o. @\"filters/make-optional-adv_comp-tags.$$*\"     \
+			.o. @\"filters/make-optional-area-tags.$$*\"         \
+			.o. @\"filters/make-optional-dialect-tags.$$*\"      \
+			.o. @\"filters/remove-orig_lang-tags.$$*\"           \
+			.o. @\"filters/remove-number-string-tags.$$*\"       \
+			.o. @\"filters/remove-usage-tags.$$*\"               \
+			.o. @\"filters/remove-orthography-tags.$$*\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
+			.o. @\"filters/remove-error-strings.$$*\"            \
+			.o. @\"filters/remove-all_areas_but_$(1)-strings.$$*\" \
+			.o. @\"$$<\"                                         \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
+			.o. @\"filters/remove-hyphenation-marks.$$*\"        \
+			.o. @\"filters/remove-infl_deriv-borders.$$*\"       \
+			.o. @\"filters/remove-word-boundary.$$*\"            \
+			; \n\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach area,$(AREAS),$(eval $(call area_gramchk_fsts,$(area))))
+
 # Default fallback processing for the grammarchecker fst's:
 define giella_gramcheck_analysers
 analyser-gramcheck%.$(1): analyser-gramcheck%.tmp.$(1) \

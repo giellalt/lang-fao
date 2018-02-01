@@ -4,28 +4,21 @@
 # specified transducer. This determines also the set of yaml test files looped
 # over by the test runner.
 
-###### Variables: #######
+###### User variables - adjust as needed: #######
+# Specify the invariable part of the transducer name:
 transducer=dict-gt-norm
-halftest=gen # analysis test
+
+# Specify whether the test runner should test only generation, analysis or both:
+# gen = generation test
+# ana = analysis test
+# full / both / "" (ie nothing) = test both directions
+halftest=gen
+
+# Specify the name of the subdir where the yaml files are, use '.' if it is the
+# same dir as this script:
 yaml_file_subdir=dict-gt-yamls
 
-# Find relative path from test script to test runner:
-relpath=.
-maintestrunner=run-morph-tester.sh
-helpertestrunner=run-yaml-testcases.sh
-
-# We use the maintestrunner to find the relative path, because it will be in
-# the path of the build tree - the helpertestrunner will only be in the path
-# of the source tree, and will not be found if using VPATH building.
-while test ! -x $relpath/$maintestrunner ; do
-    relpath="$relpath/.."                        # if not found, go one level up
-#   echo relpath: $relpath                       # debug
-    if test "$(cd $relpath && pwd)" = "/" ; then # have we reached the root?
-        echo "$0: No test runner found!"
-        exit 77
-    fi
-done
-
-testrunner="$srcdir/$relpath/$helpertestrunner"
-
+####### Include/source helper script from dir above - DO NOT CHANGE: ########
+# Relative path from test script to test runner:
+testrunner="../run-yaml-testcases.sh"
 source $testrunner $transducer $yaml_file_subdir $halftest

@@ -76,6 +76,8 @@ AC_CONFIG_FILES([test/src/run-gt-desc-genyaml-testcases.sh], \
       [chmod a+x test/src/run-gt-desc-genyaml-testcases.sh])
 AC_CONFIG_FILES([test/src/run-gt-desc-anayaml-testcases.sh], \
       [chmod a+x test/src/run-gt-desc-anayaml-testcases.sh])
+AC_CONFIG_FILES([test/run-yaml-testcases.sh], \
+      [chmod a+x test/run-yaml-testcases.sh])
 AC_CONFIG_FILES([test/run-morph-tester.sh], \
       [chmod a+x test/run-morph-tester.sh])
 # Phonology tests, all languages:

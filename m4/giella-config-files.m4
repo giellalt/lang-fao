@@ -72,10 +72,6 @@ AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/desktop/hfst/test-zhfst-basic
       [chmod a+x test/tools/spellcheckers/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh])
 AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/desktop/hfst/run-acceptor-yaml-testcases.sh], \
       [chmod a+x test/tools/spellcheckers/fstbased/desktop/hfst/run-acceptor-yaml-testcases.sh])
-AC_CONFIG_FILES([test/src/run-gt-desc-genyaml-testcases.sh], \
-      [chmod a+x test/src/run-gt-desc-genyaml-testcases.sh])
-AC_CONFIG_FILES([test/src/run-gt-desc-anayaml-testcases.sh], \
-      [chmod a+x test/src/run-gt-desc-anayaml-testcases.sh])
 AC_CONFIG_FILES([test/run-yaml-testcases.sh], \
       [chmod a+x test/run-yaml-testcases.sh])
 AC_CONFIG_FILES([test/run-morph-tester.sh], \

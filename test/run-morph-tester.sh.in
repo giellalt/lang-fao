@@ -111,7 +111,7 @@ fi
 
 # Debugging only; the variable contains the string of the fst type to be the
 # only one included (e.g. "hfst") or the one to be excluded (e.g. "~xfst"):
-# echo "testfst: $testfst"
+# echo "testfst 114: $testfst"
 
 function run_tests() {
 # --output final/terse/compact/normal - OR:
@@ -155,25 +155,36 @@ outputformat="--output final"
 ###### Start testing: #######
 transducer_found=0
 
-# Loop over the transducer types first - we test both hfst and xfst if found:
+# Loop over the transducer types first - we test both hfst, xfst and foma
+# according to the configuration:
 for f in $fsttype; do
+    # DEBUG: echo "Fst type 161: $f"
 	# Check whether to test only against certain fst types:
 	if test "$fsttest" == "specified"; then
 	   # run yaml test if $f is identical to the requested type:
 	   if test "$f" == "$testfst"; then
+	       # DEBUG: echo "Match! $f = $testfst"
 	       true
 	   # or different from the negated type:
 	   elif [[ "$testfst" == ~* ]]; then
 	       # Remove the tilde:
 	       bare_testfst=${testfst#\~}
+	       # If we don't have a match, we can run the test:
 	       if test "x$f" != "x$bare_testfst"; then
+	           # DEBUG: echo "Negative match! $f != $bare_testfst"
 	           true
+	       # Otherwise, just continue:
+	       else
+	           # DEBUG: echo "Should we exit here? 178"
+	           continue
 	       fi
 	   # else go to the next fst type:
 	   else
+	       # DEBUG: echo "Continue!"
 	       continue
 	   fi
-	fi
+	fi # test "$fsttest" == "specified"
+    # DEBUG: echo "Fst loop 187: $f"
 	# Remember to empty the variables between each for loop:
 	analyser=""
 	generator=""

@@ -1,4 +1,10 @@
-$Rev: 162892 $
+$Rev: 162937 $
+Major rework of the yaml testing framework, to be able to properly support fst
+type specific yaml testing (ie test only xfst or hfst transducers, or everything
+but xfst transducers (=foma & hfst)). This change triggered a number of other
+changes. The user-facing shell scripts are greatly simplified by this change.
+
+r162892:
 Corrected AM errors in the previous merge. Now the build is working again,
 
 r162885:

@@ -82,18 +82,24 @@ else
     fi
 fi
 
-# The "*_$transducer.*.$suffix" pattern is for fst-specific yaml files:
+# Check that there are test files fitting the required patterns, otherwise
+# FAIL with 77.
+# The "*_$transducer.[~]????.$suffix" pattern is for fst-specific yaml files:
 testfiles=$(find $srcdir/$yaml_file_subdir -name "*_$transducer.$suffix" -or \
-                                           -name "*_$transducer.????.$suffix")
+                                           -name "*_$transducer.????.$suffix" -or \
+                                           -name "*_$transducer.~????.$suffix")
 if test "x$testfiles" == "x"; then
     echo
     echo \
     "** No YAML files matching: $srcdir/$yaml_file_subdir/*_$transducer.$suffix"
     echo \
     "** No YAML files matching: $srcdir/$yaml_file_subdir/*_$transducer.????.$suffix"
+    echo \
+    "** No YAML files matching: $srcdir/$yaml_file_subdir/*_$transducer.~????.$suffix"
     exit 77
 fi
 
+# First collect and run the general (non-fst-specific) test files:
 testfiles=$(find $srcdir/$yaml_file_subdir -name "*_$transducer.$suffix" )
 
 # One empty line in the beginning:
@@ -103,8 +109,8 @@ i=0
 for file in $testfiles; do
     (( i += 1 ))
     leadtext=$(echo "YAML test $i: ")
-    source ./$relpath/run-morph-tester.sh \
-        $transducer $file $relpath $halftest all $leadtext
+#    source ./$relpath/run-morph-tester.sh \
+#        $transducer $file $relpath $halftest all $leadtext
 done
 
 # Machinery to be able to handle yaml tests for specific fst technologies:
@@ -113,19 +119,53 @@ done
 # https://coderwall.com/p/mlyhlg/prefix-all-elements-of-a-bash-variable-with-a-string
 # http://stackoverflow.com/questions/9293887/in-bash-how-do-i-convert-a-space-delimited-string-into-an-array
 # http://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash
-fsttypes="hfst foma xfst"
-# Turn the list into an array:
-arr=($(echo ${fsttypes}))
+
+# Define all possible fst types:
+allfsttypes="hfst foma xfst"
+
+# Define fst types currently being enabled, to be replaced with autoconf stuff:
+current_fsttypes=
+@CAN_HFST_TRUE@current_fsttypes="$current_fsttypes hfst"
+@CAN_XFST_TRUE@current_fsttypes="$current_fsttypes xfst"
+@CAN_FOMA_TRUE@current_fsttypes="$current_fsttypes foma"
+
+# Turn the list into an array, while also removing the current fst type:
+neg_arr=( $(echo ${allfsttypes} \
+		  | tr ' ' '\n' \
+		  | grep -v "$current_fsttypes" \
+		  | tr '\n' ' ' ) )
+
 # Create an array of negated types, ie types prepended with ~ as in '~xfst':
-nontypes=${arr[@]/#/\~}
-# Make an array of both the positive and negative fst types:
-fsttypes=($(echo "$fsttypes $nontypes"))
+nontypes=${neg_arr[@]/#/\~}
+
+# Make a list of both the current and negative fst types:
+posneg_fsttypes=$(echo $current_fsttypes $nontypes)
+
+# Turn the list into an array:
+posneg_fst_arr=( $(echo $posneg_fsttypes ) )
+
 # Prepend each element in the array with the transducer name:
-filepart1=(${fsttypes[@]/#/${transducer}\.})
+filepart1=(${posneg_fst_arr[@]/#/${transducer}\.})
+
 # Then add the suffix from the earlier processing:
 filepart2=(${filepart1[@]/%/\.${suffix}})
+
 # Finally prepend the fileglob including directories:
 filepattern=(${filepart2[@]/#/${srcdir}\/${yaml_file_subdir}\/*_})
+
+### DEBUG PRINTS:
+# echo "allfsttypes 143: $allfsttypes"
+# echo "current_fsttypes: $current_fsttypes"
+# echo "negation fst type array content:"
+# for ii in ${neg_arr[@]}; do echo $ii; done
+# echo "nontypes: $nontypes"
+# echo "posneg_fsttypes 155: $posneg_fsttypes"
+# echo "filepart1:"
+# for ii in ${filepart1[@]}; do echo $ii; done
+# echo "filepart2:"
+# for ii in ${filepart2[@]}; do echo $ii; done
+# echo "filepattern:"
+# for ii in ${filepattern[@]}; do echo $ii; done
 
 # Loop over the available yaml files (specific fst types), and run the tests:
 for file in ${filepattern[@]}; do
@@ -137,6 +177,8 @@ for file in ${filepattern[@]}; do
     source ./$relpath/run-morph-tester.sh \
         $transducer $file $relpath $halftest specified $leadtext
 done
+
+exit 1
 
 totalpasses=$( echo $( cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f1 \
 			 | tr '\n' ' ' | sed 's/ / + /g' | sed 's/ + $//' ) | bc )

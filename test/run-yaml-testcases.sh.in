@@ -109,8 +109,8 @@ i=0
 for file in $testfiles; do
     (( i += 1 ))
     leadtext=$(echo "YAML test $i: ")
-#    source ./$relpath/run-morph-tester.sh \
-#        $transducer $file $relpath $halftest all $leadtext
+    source ./$relpath/run-morph-tester.sh \
+        $transducer $file $relpath $halftest all $leadtext
 done
 
 # Machinery to be able to handle yaml tests for specific fst technologies:
@@ -177,8 +177,6 @@ for file in ${filepattern[@]}; do
     source ./$relpath/run-morph-tester.sh \
         $transducer $file $relpath $halftest specified $leadtext
 done
-
-exit 1
 
 totalpasses=$( echo $( cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f1 \
 			 | tr '\n' ' ' | sed 's/ / + /g' | sed 's/ + $//' ) | bc )

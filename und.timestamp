@@ -1,4 +1,8 @@
-$Rev: 163050 $
+$Rev: 163061 $
+Removed filters for removing morphological borders - they destroy the assymetry
+of the fst's, and make yaml testing more complicated.
+
+r163050:
 Added support for Area variants of the grammar checker generator. Should fix
 nightly build error for SMJ.
 

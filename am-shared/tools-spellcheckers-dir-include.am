@@ -75,13 +75,9 @@ analyser-$(GT_COMMON_SPELLER_NAME).tmp.%: \
 #### - inversion is needed FOR THE HFST ANALYSER because the hfst model is upside
 #### down compared to Xerox/Foma AT LOOKUP TIME.
 define giella_speller_analysers
-analyser%.$(1): analyser%.tmp.$(1) \
-			$$(top_builddir)/src/filters/remove-hyphenation-marks.$(1) \
-			$$(top_builddir)/src/filters/remove-infl_deriv-borders.$(1)
+analyser%.$(1): analyser%.tmp.$(1)
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex                                 \
 			@\"$$<\"                                                         \
-		.o. @\"$$(top_builddir)/src/filters/remove-hyphenation-marks.$(1)\"  \
-		.o. @\"$$(top_builddir)/src/filters/remove-infl_deriv-borders.$(1)\" \
 		; \n\
 		$$(INVERT_HFST)\
 		save stack $$@\n\

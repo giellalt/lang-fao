@@ -1,4 +1,9 @@
-$Rev: 163061 $
+$Rev: 163194 $
+Fixed URL analysis in MT. All URL's and email addresses are now tagged +URL.
+Although the url analyser itself is small, the resulting analyser quadrupled in
+size (in sme).
+
+r163061:
 Removed filters for removing morphological borders - they destroy the assymetry
 of the fst's, and make yaml testing more complicated.
 

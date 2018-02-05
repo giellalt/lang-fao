@@ -179,6 +179,7 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 # happens here:
 analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/orthography/spellrelax.compose.hfst          \
+			$(top_builddir)/src/morphology/url.hfst                          \
 			$(top_builddir)/src/filters/remove-dialect-tags.hfst             \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst             \
 			$(top_builddir)/src/filters/remove-number-string-tags.hfst       \
@@ -192,7 +193,7 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 	read regex \
-	    @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
+	( [ @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
 	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
@@ -204,7 +205,8 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"        \
 	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"       \
-	.o. @\"$(top_builddir)/src/orthography/spellrelax.compose.hfst\"          \
+	.o. @\"$(top_builddir)/src/orthography/spellrelax.compose.hfst\"        ] \
+	|   @\"$(top_builddir)/src/morphology/url.hfst\"                        ) \
 	;\n\
 	save stack $@\n\
 	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)

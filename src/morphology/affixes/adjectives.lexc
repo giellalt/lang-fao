@@ -11,7 +11,8 @@ LEXICON l1	! beinur
 LEXICON l1_umlaut
  +A:       adj_a   ; !XXX check!
  +A:       adj_def ;
- +A:%^IUML adjcmp1 ;
+! +A:%^IUML adjcmp1 ;
+ +A:%^IUML adjcmp2 ;
 
 
 LEXICON l2	! leysur
@@ -513,9 +514,9 @@ LEXICON adjcmp1
      +Cmp:ar  indef_cmp_adj_decl    ;
   +Superl:ast indef_superl_adj_decl ;
 
-!LEXICON adjcmp2
-!    +Cmp:r   indef_cmp_adj_decl    ;
-! +Superl:st  indef_superl_adj_decl ;
+LEXICON adjcmp2
+    +Cmp:r   indef_cmp_adj_decl    ;
+ +Superl:st  indef_superl_adj_decl ;
 
 ! Gender
 

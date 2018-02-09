@@ -1,4 +1,9 @@
-$Rev: 163423 $
+$Rev: 163430 $
+Made symbol alignment default - I can see no cases where we don't want it, but
+it is still possible to disable it if such a need pops up. Also improved the
+error message when trying to build a twolc language using Foma.
+
+r163423
 Added INFO text about switching to Hfst as a fallback when Xerox tools are not
 found. Also added test and error message when using Foma on a language with a
 twolc file.

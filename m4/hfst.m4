@@ -43,8 +43,12 @@ AC_ARG_WITH([hfst],
             [with_hfst=no])
 
 # If Xerox tools are not found, assume we want Hfst:
-AS_IF([test x$gt_prog_xfst = xno \
-         -a x$gt_prog_foma = xno], [with_hfst=yes])
+AS_IF([test "x$gt_prog_xfst" = xno \
+         -a "x$gt_prog_foma" = xno \
+         -a "x$with_xfst"   != xno ], [
+         with_hfst=yes
+         fallback_to_hfst="INFO: Xfst was not found, falling back to using Hfst"
+         ])
 
 AC_PATH_PROG(HFST_COMPOSE,           hfst-compose,           false, $PATH$PATH_SEPARATOR$with_hfst)
 AC_PATH_PROG(HFST_COMPOSE_INTERSECT, hfst-compose-intersect, false, $PATH$PATH_SEPARATOR$with_hfst)

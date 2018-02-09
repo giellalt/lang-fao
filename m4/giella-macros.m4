@@ -590,7 +590,8 @@ AS_IF([test x$gt_prog_foma = xyes \
       	| grep 'twolc')" != "x" ],
       [AC_MSG_ERROR([You only have Foma, or you requested to use Foma, but \
 your main phonology file is a twolc file, which Foma can not compile. You need \
-to use either Hfst or the Xerox FSM tools.
+to use either Hfst or the Xerox FSM tools when compiling transducers for \
+$GLANG ($GLANGUAGE).
 ])])
 
 AM_CONDITIONAL([CAN_FOMA], [test "x$gt_prog_foma" != xno])
@@ -703,9 +704,9 @@ AM_CONDITIONAL([WANT_HYPERMINIMISATION], [test "x$enable_hyperminimisation" != x
 # Enable symbol alignment of the lexical transducer - default is 'no'
 AC_ARG_ENABLE([alignment],
               [AS_HELP_STRING([--enable-alignment],
-                              [enable symbol alignment when parsing lexc @<:@default=no@:>@])],
+                              [enable symbol alignment when parsing lexc @<:@default=yes@:>@])],
               [enable_alignment=$enableval],
-              [enable_alignment=no])
+              [enable_alignment=yes])
 AM_CONDITIONAL([WANT_LEXC_ALIGNMENT], [test "x$enable_alignment" != xno])
 
 #enable_twostep_intersect

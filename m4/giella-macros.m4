@@ -563,7 +563,14 @@ AC_DEFUN([gt_PROG_FOMA],
             [with_foma=no])
 
 # If Xerox tools and Hfst are not found, assume we want Foma:
-AS_IF([test x$gt_prog_xfst = xno -a x$gt_prog_hfst = xno], [with_foma=yes])
+AS_IF([test x$gt_prog_xfst = xno \
+         -a x$gt_prog_hfst = xno \
+         -a "x$with_xfst" != xno \
+         -a "x$with_hfst" != xno ],
+      [
+      with_foma=yes
+      fallback_to_foma="INFO: Neither Xfst nor Hfst were found, falling back to using Foma"
+      ])
 
 AC_PATH_PROG([PRINTF], [printf], [echo -n])
 AC_PATH_PROG([FOMA], [foma], [false], [$PATH$PATH_SEPARATOR$with_foma])
@@ -577,6 +584,15 @@ AS_IF([test x$with_foma != xno], [
           [gt_prog_foma=no])
 ], [gt_prog_foma=no])
 AC_MSG_RESULT([$gt_prog_foma])
+
+AS_IF([test x$gt_prog_foma = xyes \
+      -a "x$(grep 'GT_PHONOLOGY_MAIN' ${srcdir}/src/phonology/Makefile.am \
+      	| grep 'twolc')" != "x" ],
+      [AC_MSG_ERROR([You only have Foma, or you requested to use Foma, but \
+your main phonology file is a twolc file, which Foma can not compile. You need \
+to use either Hfst or the Xerox FSM tools.
+])])
+
 AM_CONDITIONAL([CAN_FOMA], [test "x$gt_prog_foma" != xno])
 AM_CONDITIONAL([HAS_FOMA], [test "x$FOMA" != xfalse ])
 ]) # gt_PROG_FOMA
@@ -1032,7 +1048,8 @@ EOF
 AS_IF([test x$gt_prog_xslt = xno -a \
       "$(find ${srcdir}/src/morphology/stems -name "*.xml" | head -n 1)" != "" ],
       [AC_MSG_WARN([You have XML source files, but XML transformation to LexC is
-disabled. Please check the output of configure to locate any problems.
+disabled. Please check the output of configure to locate any problems. The LexC
+files will still compile though.
 ])])
 
 AS_IF([test x$gt_prog_docc = xno],
@@ -1043,6 +1060,14 @@ AS_IF([test x$can_local_sync = xno -a x$can_wget_giella_libs = xno],
 
 AS_IF([test x$can_wget_giella_libs = xyes],
       [AC_MSG_NOTICE([Could not find GIELLA_LIBS, but found wget - speller installers will be built, but requires a live Internet connection.])])
+
+# Notify of fallback to Hfst
+AS_IF([test "x$fallback_to_hfst" != x ],
+      [AC_MSG_NOTICE([$fallback_to_hfst])])
+
+# Notify of fallback to Foma
+AS_IF([test "x$fallback_to_foma" != x ],
+      [AC_MSG_NOTICE([$fallback_to_foma])])
 
 dnl stick important warnings to bottom
 dnl YAML test warning:

@@ -12,8 +12,23 @@
 
   <body>
     <p><a href="WhatIsThis.html">What is this?</a></p>
+  
+    <section id="General_information_for_new_users">
+      <title>Generell informasjon</title>
+      <ul>
+        <li><a href="/doc/infra/infraremake/index.html">For linguists: How to delvelop grammar models in this infrastructure</a></li>
+	    <li><a href="/doc/lang/common/Tutorials.html">General tutorials</a> on the
+	        <a href="/doc/tools/tools.html">tools for maing the grammatical analysers</a></li>
+        <li><a href="/doc/index.html">Setting up the working environment</a></li>
+        <li><a href="/doc/tools/docu-svn-user-tortoisesvn.html">For Windows
+          users: The working environment for work on the lexicon</a></li>
+      </ul> 
+    </section>      
+
     <section>
-      <title>Dynamic documentation</title>
+    <title>Analyseprogrammet for færøysk</title>
+    <section>
+      <title>Dokumentasjon av kjeldefilene</title>
       <ul>
         <li><a href="Links.html">Links to source code documentation.</a></li>
         <li>Source files: 
@@ -22,96 +37,63 @@
           <a href="https://gtsvn.uit.no/langtech/trunk/langs/fao/src/phonology/fao-phon.twolc">twolc</a> /    
           <a href="https://gtsvn.uit.no/langtech/trunk/langs/fao/test/src/morphology/">yaml</a>
         </li>
-        <li>General usage: 
-          <a href="http://giellatekno.uit.no/cgi/p-fao.nob.html">paradigm
-            generation</a> (temporarily broken!) / 
-          <a href="http://giellatekno.uit.no/cgi/d-fao.nob.html">text</a> /
-          <a href="http://divvun.org/proofing/online-speller.html">online
-            speller demo</a>
-         </li>
        </ul>
     </section>
-  
-    <section id="General_information_for_new_users">
-      <title>General information for new users</title>
-      <ul>
-	    <li><a href="/doc/infra/infraremake/index.html">Links to testing,
-	      debugging, etc</a></li>
-	    <li><a href="/doc/lang/common/Tutorials.html">General tutorials</a> and
-	        <a href="/doc/tools/tools.html">tools</a></li>
-      </ul> 
-    </section>      
-
-    <section>
-      <title>Meetings</title>
-      <p>tbw.</p>
-    </section>
-
-    <section>
-      <title>Technical documentation</title>
-      <ul>
-        <li><a href="/doc/index.html">The general technical documentation</a>
-          (how to set up computers, compile).</li>
-        <li><a href="/doc/tools/docu-svn-user-tortoisesvn.html">For Windows
-          users: How to set up Tortoise svn version control</a> (needed in
-          order to work)</li>
-      </ul>
-    </section>      
-
-    <section>
-    <title>Testing</title>
       <section>
-        <title>Testing av den grammatiske transdusaren</title>
+        <title>Den grammatiske transdusaren</title>
 	<section>
-	  <title>Testfiler og testresultat</title>
+	  <title>Utviklingsarbeid</title>
 	  <ul>
-	    <li>Generering av morfologiske paradigme
-	    <ul>
-    	    <li><a href="word_form_nouns_generator-gt-norm_table_k.html">Hankjønnssubstantiv</a></li>
-    	    <li><a href="word_form_nouns_generator-gt-norm_table_kv.html">Hokjønnssubstantiv</a></li>
-    	    <li><a href="word_form_nouns_generator-gt-norm_table_h.html">Inkjekjønnssubstantiv</a></li>
-    	    <li><a href="word_form_nouns_generator-gt-norm_table_l.html">Adjektiv</a></li>
-    	    <li><a href="word_form_nouns_generator-gt-norm_table_s.html">Verb</a></li>
-	    </ul></li>
-	    <li><a href="YamlResults.html">Testresult frå dei morfologiske testfilene</a></li>
+	    <li><a href="Stavekontroll.html">Arbeidsplan for færøysk stavekontroll</a></li>
 	  </ul>
 	</section>
 	<section>
-	  <title>How to make new tests</title>
-        <ul>
+	  <title>Testing og bruk av analysatoren</title>
+	  <ul>
+	 <li><!-- <a href="http://giellatekno.uit.no/cgi/p-fao.nob.html">paradigmegenerering</a> / 
+         --><a href="http://giellatekno.uit.no/cgi/d-fao.nob.html">Grammatisk analyse av tekst (lim inn)</a> /
+            <a href="http://divvun.org/proofing/online-speller.html">Stavekontroll (online og nedlastbar)</a>
+         </li>
+
+	    <li>Generering av morfologiske paradigme:
+    	        <a href="word_form_nouns_generator-gt-norm_table_k.html">Mask.</a>, 
+    	        <a href="word_form_nouns_generator-gt-norm_table_kv.html">Fem.</a>, 
+    	        <a href="word_form_nouns_generator-gt-norm_table_h.html">Neu.</a>,
+    	        <a href="word_form_nouns_generator-gt-norm_table_l.html">Adj.</a>,
+    	        <a href="word_form_nouns_generator-gt-norm_table_s.html">Verb</a></li>
+	    <li><a href="YamlResults.html">Testresult frå dei morfologiske testfilene</a></li>
           <li><a
-            href="/doc/infra/infraremake/AddingMorphologicalTestData.html">Adding morphological test data</a>
+            href="/doc/infra/infraremake/AddingMorphologicalTestData.html">Making new tests: Adding morphological test data</a>
           </li>
           <li><a
-            href="/doc/infra/infraremake/TestScriptsInTheNewInfra.html">Technical
-            documentation for test scripts</a>
+            href="/doc/infra/infraremake/TestScriptsInTheNewInfra.html">Technical documentation for test scripts</a>
           </li>
         </ul>
 	</section>
       </section>
 
       <section>
-        <title>Testing the spellchekcer</title>
-        <p>There is a setup for testing the behaviour of the speller.</p>
+        <title>Testing av stavekontrollen</title>
         <ul>
           <li><a
-            href="https://gtsvn.uit.no/langtech/trunk/langs/fao/test/data/typos.txt">The
-            list of typos to test</a>
+            href="https://gtsvn.uit.no/langtech/trunk/langs/fao/test/data/typos.txt">Lista over skrivefeil + korrekte ord i testen</a>
           </li>
-          <li><a
-            href="https://gtsvn.uit.no/langtech/trunk/langs/fao/devtools/speller_result_typos.to.html">Test
-            results for the ospell engine</a> (test the date stamp)
-          </li>
-          <li><a
-            href="https://gtsvn.uit.no/langtech/trunk/langs/fao/devtools/speller_result_typos.vk.html">Test
-            results for the voikkospell engine</a>
+          <li>Testresultat for: <a
+            href="https://gtsvn.uit.no/langtech/trunk/langs/fao/devtools/speller_result_typos.to.html">ospell</a> og 
+          <a
+            href="https://gtsvn.uit.no/langtech/trunk/langs/fao/devtools/speller_result_typos.vk.html">voikkospell</a>
           </li>
         </ul>
       </section>
     </section>
+    <section>
+      <title>Møtereferat</title>
+      <p>kjem...</p>
+    </section>
+
 
     <section>
-      <title>Obsolete documentation</title>
+      <title>Utdatert dokumentasjon</title>
       <ul>
         <li><a href="fao-testdiary.html">Test diary</a></li>
       </ul>

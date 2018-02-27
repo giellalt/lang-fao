@@ -82,6 +82,7 @@ LIST PUNCT = PUNCT ;
 LIST LEFT = LEFT ;
 LIST RIGHT = RIGHT ;
 LIST Guess = Guess ;
+LIST Err/Guess = Err/Guess ;
 
 LIST Sem/Fem = Sem/Fem ;
 LIST Sem/Mal = Sem/Mal ;
@@ -169,7 +170,10 @@ LIST OBJPREDVERB = "kalla" "doypa" "nevna" "taka"  ;
 
 LIST MOVEMENTVERB = "koma" "koyra" ;
 
-SET TV = V - COPULA - MODV ;
+SET TV = V - COPULA - MODV - DATV ;
+
+LIST SAFETV = "eiga" ;
+
 
 # Noun-Verb sets
 
@@ -288,7 +292,7 @@ REMOVE:ApShortCompoundParts SUB:* AP_CMP + MAX2LETTERS ;
 
 
 REMOVE Guess ; # If any other reading is possible.
-
+REMOVE Err/Guess ; # If any other reading is possible.
 
 # We need some erur rules to really select the adjective erur. TODO
 REMOVE:NotErur ("erur") ;
@@ -308,6 +312,8 @@ REMOVE:ImForV IM IF (0 ("at"))(NOT 1 Inf); # too strict?
 
 REMOVE:rAtN N IF (0 ("at"))(NOT -1 PRE-N) ;
 	## soleiðis at kvøða einsamallur.
+
+SELECT:CapitalPropInMiddle Prop IF (-1 WORD);
 
 # A or N
 # ======
@@ -399,6 +405,8 @@ SELECT V IF (-1 Adv)(0 ("bar"))(1 ("til"));
 
 # vera
 SELECT:vera ("vera") IF (0 ("ver"))(*-1 ("hava") BARRIER V);
+SELECT:NotVarur Prt IF (0 ("vera"))(1 Sup);
+SELECT:NotVarur Prt IF (0 ("vera"))(-1 Sup);
 
 # verða
 SELECT:verda ("verða") IF (0 ("verður"))(*1 A OR Sup CBARRIER NOT-ADV);
@@ -408,6 +416,8 @@ SELECT:verda ("verða") IF (0 ("verður"))(*1 A OR Sup CBARRIER NOT-ADV);
 SELECT:vfinkunna Inf IF (-1 VFIN) (0 ("kunna"));
 SELECT:kunna Inf IF (0 ("kunna"))(*1 Inf BARRIER NOT-ADV);
 
+# koma
+SELECT Prt  IF (-1 Pl)(0 ("koma"));
 
 # PP disambiguation
 # =================
@@ -997,12 +1007,19 @@ REMOVE:NotTopAcc2 Acc  IF (*-1 S-BOUNDARY BARRIER NPNH)(0 Nom + Pl)(1 V + Pl)(NO
 
 REMOVE:NomV3 Acc IF (-3 BOS OR CLB)(-2 Adv)(-1 VFIN)(0 N OR Pron + Pers);
 
+REMOVE:NomFragment Acc IF (0 Nom)(NOT *0 V);
+REMOVE:NomFragment Dat IF (0 Nom)(NOT *0 V);
+
+REMOVE Dat IF (1 SAFETV)(*2 N + Acc BARRIER NPNH);
+
 # Accusative
 # ==========
 
 REMOVE:r63 Nom IF (*-1 AUX OR MODV BARRIER NPNH LINK -1 CC OR Nom)(1 Inf)(NOT *1 Pr LINK 1 BOS);
 REMOVE:AdInfAcc Nom IF (*-1 Inf BARRIER NPNH LINK -1 IM);
 
+REMOVE Nom IF (*-1 SAFETV LINK -1 Nom)(0 N + Acc);
+REMOVE Dat IF (*-1 SAFETV LINK -1 Nom)(0 N + Acc);
 
 
 # Genitive

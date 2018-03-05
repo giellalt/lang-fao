@@ -1,0 +1,9 @@
+# An alternative to grammarchecker.cg3 that just does spelling.
+
+MAPPING-PREFIX = & ;
+DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>" "<\n\n>" ;
+
+ADD:spelled (&typo &SUGGESTWF) (<spelled>) ;
+
+ADD:Err/Orth (&typo) (Err/Orth) (NOT 0 (*) - (Err/Orth)) ;
+COPY:Err/Orth (&SUGGEST) EXCEPT (Ex/N Ex/V Ex/A Ex/IV Ex/TV Err/Orth) TARGET (Err/Orth &typo) ;

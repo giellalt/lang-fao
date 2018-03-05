@@ -31,6 +31,7 @@ GIELLA_GC_MWEDIS=mwe-dis.bin
 GIELLA_GC_WHSPACE_ANAL=analyser-gt-whitespace.hfst
 GIELLA_GC_ANAL_SPELLER=acceptor.default.hfst
 GIELLA_GC_SPELLER_ERRMOD=errmodel.default.hfst
+GIELLA_GC_SPELLER_CG=spellchecker.bin
 GIELLA_GC_DISAMBIGUATOR=disambiguator.bin
 GIELLA_GC_GRAMCHECKER=grammarchecker.bin
 GIELLA_GC_GENERATOR=generator-gramcheck-gt-norm.hfstol
@@ -54,6 +55,7 @@ GIELLA_GC_ZIPFILES=$(GIELLA_GC_TOKENISER)      \
 				   $(GIELLA_GC_GRAMCHECKER)    \
 				   $(GIELLA_GC_ANAL_SPELLER)   \
 				   $(GIELLA_GC_SPELLER_ERRMOD) \
+				   $(GIELLA_GC_SPELLER_CG)     \
 				   $(GIELLA_GC_GENERATOR)      \
 				   $(GIELLA_GC_ERRORS)         \
 				   $(GIELLA_GC_PIPESPEC)       \

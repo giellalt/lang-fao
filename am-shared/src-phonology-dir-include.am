@@ -62,10 +62,10 @@ if CAN_XFST
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.xfst
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.xfst
 endif # CAN_XFST
-if CAN_XFST
+if CAN_FOMA
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.foma
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.foma
-endif # CAN_XFST
+endif # CAN_FOMA
 endif # WANT_L2
 
 noinst_DATA=$(GT_PHONOLOGY)

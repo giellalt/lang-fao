@@ -39,7 +39,27 @@
       <errmodel n="errmodel.default.hfst"/>
     </cgspell>
     <cg><grammar n="disambiguator.bin"/></cg>
+    <cg><grammar n="spellchecker.bin"/></cg>
     <cg><grammar n="grammarchecker.bin"/></cg>
+    <suggest>
+      <generator n="generator-gramcheck-gt-norm.hfstol"/>
+      <messages n="errors.xml"/>
+    </suggest>
+  </pipeline>
+
+  <!-- This one does only disambiguation and spelling: -->
+  <pipeline name="@GLANG@spell"
+            language="@GLANG2@"
+            type="Spelling error">
+    <tokenize><tokenizer n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
+    <cg><grammar n="mwe-dis.bin"/></cg>
+    <mwesplit/>
+    <cgspell>
+      <lexicon n="acceptor.default.hfst"/>
+      <errmodel n="errmodel.default.hfst"/>
+    </cgspell>
+    <cg><grammar n="disambiguator.bin"/></cg>
+    <cg><grammar n="spellchecker.bin"/></cg>
     <suggest>
       <generator n="generator-gramcheck-gt-norm.hfstol"/>
       <messages n="errors.xml"/>

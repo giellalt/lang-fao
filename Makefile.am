@@ -13,7 +13,7 @@ pkgconfig_DATA = giella-$(GTLANG).pc
 
 configure: banner und.timestamp
 
-.PHONY: banner
+.PHONY: banner test
 banner:
 	@echo
 	@echo "*** Compiling the $(GTLANG) language. ***"
@@ -31,6 +31,10 @@ $(top_srcdir)/und.timestamp: ${GIELLA_TEMPLATES}/langs-templates/und/und.timesta
 	@echo "	templates, touch $@ and run make again."
 	@exit 1
 endif
+
+# On some systems it will try to run 'make test', and claim
+# 'nothing to be done for test'. By forwarding test to check we work around it.
+test: check
 
 # Remove html tables created by some of the developer tools:
 clean-local:

@@ -141,7 +141,7 @@ outputformat="--output final"
 	    printf "To rerun with more details, please triple-click, copy and paste"
 	    echo " the following:"
 	    echo
-	    echo "pushd $(pwd); $runtests -c -i -v -S $section \
+	    echo "pushd $(pwd); $runtests -c -i -v -p -S $section \
 --app \"$lookuptool\" $fstoptions $halftestoption $testfile; popd"
 	    echo
 	else

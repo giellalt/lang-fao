@@ -1,4 +1,8 @@
-$Rev: 164372 $
+$Rev: 164386 $
+Added the -p option to the yaml testing command, to remove all passing test.
+This should make it easier to spot the actual FAILs.
+
+r164372:
 Corrected path to zhfst file. Also changed the return code when the zhfst file
 is not found, so that it will be reported as a FAIL. Since this test is only run
 when configured for building spellers, a missing zhfst file should be fatal.

@@ -1,4 +1,10 @@
-$Rev: 164364 $
+$Rev: 164372 $
+Corrected path to zhfst file. Also changed the return code when the zhfst file
+is not found, so that it will be reported as a FAIL. Since this test is only run
+when configured for building spellers, a missing zhfst file should be fatal.
+Also changed variable name to avoid confusion with the shell variable.
+
+r164364:
 Added phony target forwarding 'make test' to 'make check'. Required to make
 'make check' work on some build systems.
 

@@ -1,4 +1,8 @@
-$Rev: 164245 $
+$Rev: 164364 $
+Added phony target forwarding 'make test' to 'make check'. Required to make
+'make check' work on some build systems.
+
+r164245:
 Added a separate disambiguation file for the spell checker output, and a
 spell-checker-only pipeline (well, still tokenisation and disambigation, but
 no proper grammar checking).

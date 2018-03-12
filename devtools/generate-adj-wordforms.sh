@@ -17,7 +17,7 @@ fi
 
 ######### USER Variables - change these to your liking: #########
 # Codes for the word forms to be generated - list as many or few as needed:
-morf_codes="+A+Msc+Sg+Nom+Indef		   \
+morf_codes="ls+A+Msc+Sg+Nom+Indef		   \
             +A+Msc+Sg+Acc+Indef		   \
             +A+Msc+Sg+Dat+Indef		   \
             +A+Msc+Sg+Gen+Indef		   \

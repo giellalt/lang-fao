@@ -499,6 +499,9 @@ REMOVE:STRONGDATPREPVERB Acc IF (*-1 SOMEACCDATPREP BARRIER NPNH LINK *-1 S-BOUN
 
 REMOVE ("kala") IF (*-1 TAD + Dem)(0 ("kalur"));
 
+# Pronouns
+
+REMOVE Prop IF (0 ("eg"))(1 1Sg);
 
 # Pron Pers or Det
 

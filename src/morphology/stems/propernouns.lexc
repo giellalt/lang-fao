@@ -20,11 +20,17 @@
 
 LEXICON Propernouns
 
+ multipartnames ; ! All types
  names ;
  guess ; ! Testing a guesser component
          ! Works fine, but not for spellchecking and coverage testing. 
          ! Comment this in if you want good coverage.
 
+LEXICON multipartnames
+á% Flat:á% Flat indeclplc ;
+yvir% við% Strond+N+Prop+Sg+Nom:yvir% við% Strond # ;
+yvir% við% Strond+N+Prop+Sg+Acc:yvir% við% Strond # ;
+yvir% við% Strond+N+Prop+Sg+Dat:yviri% við% Strond # ;
 
 LEXICON names
 

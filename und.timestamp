@@ -1,4 +1,10 @@
-$Rev: 164386 $
+$Rev: 165726 $
+Whether to let the orig-lang tags be visible in the disambiguating analyser or
+not is dependent on the language and the needs of each language community.
+Moving the removal of those tags from the general processing to the language
+specific processing. Step 2: removing it from the general processing.
+
+r164386:
 Added the -p option to the yaml testing command, to remove all passing test.
 This should make it easier to spot the actual FAILs.
 

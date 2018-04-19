@@ -2401,28 +2401,28 @@ LEXICON DF_N_SGm
  :%>i DF_N_SGm_def   ;
 
 LEXICON DF_N_SGm_indef
- +Indef: ENDLEX ; !risi
+ +Indef: MscNom_Flag ; !risi @
 
 LEXICON DF_N_SGm_def
- +Def:%>n ENDLEX ; ! risin
+ +Def:%>n MscNom_Flag ; ! risin
 
 LEXICON DF_A_SGm
   DF_A_SGm_indef ;
   DF_A_SGm_def   ;
 
 LEXICON DF_A_SGm_indef
- +Indef: ENDLEX ;
+ +Indef: MscObl_Flag ;
 
 LEXICON DF_A_SGm_def
- +Def:%>n ENDLEX ; ! risan, sandin
+ +Def:%>n MscObl_Flag ; ! risan, sandin
 
 LEXICON DF_D_SGm
- +Indef:      ENDLEX ;
-   +Def:%>num ENDLEX ;
+ +Indef:      MscObl_Flag ;
+   +Def:%>num MscObl_Flag ;
 
 LEXICON DF_G_SGm
- +Indef:      ENDLEX ;
-   +Def:%>ins ENDLEX ;
+ +Indef:      MscObl_Flag ;
+   +Def:%>ins MscObl_Flag ;
               R     ;
 
 
@@ -2434,20 +2434,20 @@ LEXICON DF_N_PLm
 
 
 LEXICON DF_N_PLm_indef
- +Indef: ENDLEX ;
+ +Indef: Pl_Flag ;
 
 LEXICON DF_N_PLm_def
- +Def:%>nir ENDLEX ; ! no _i_
+ +Def:%>nir Pl_Flag ; ! no _i_
 
 LEXICON DF_A_PLm
   DF_A_PLm_indef ;
   DF_A_PLm_def   ;
 
 LEXICON DF_A_PLm_indef
- +Indef: ENDLEX ;
+ +Indef: Pl_Flag ;
 
 LEXICON DF_A_PLm_def
- +Def:%>nar ENDLEX ; ! no _i
+ +Def:%>nar Pl_Flag ; ! no _i
 
 
 
@@ -2455,46 +2455,46 @@ LEXICON DF_A_PLm_def
 ! _______________
 
 LEXICON DF_N_SGf_W
- +Indef:    ENDLEX ;
-   +Def:%>n ENDLEX ;
+ +Indef:    FemNom_Flag ;
+   +Def:%>n FemNom_Flag ;
 
 LEXICON DF_N_SGf_S
- +Indef:     ENDLEX ;
-   +Def:%>in ENDLEX ;
+ +Indef:     FemNom_Flag ;
+   +Def:%>in FemNom_Flag ;
 
 
 LEXICON DF_A_SGf_W
- +Indef:     ENDLEX ;
-   +Def:%>na ENDLEX ;
+ +Indef:     FemObl_Flag ;
+   +Def:%>na FemObl_Flag ;
 
 LEXICON DF_A_SGf_S
- +Indef:      ENDLEX ;
-   +Def:%>ina ENDLEX ;
+ +Indef:      FemObl_Flag ;
+   +Def:%>ina FemObl_Flag ;
 
 
 LEXICON DF_D_SGf_W
- +Indef:     ENDLEX ;
-   +Def:%>ni ENDLEX ;
+ +Indef:     FemObl_Flag ;
+   +Def:%>ni FemObl_Flag ;
 
 LEXICON DF_D_SGf_S
- +Indef:      ENDLEX ;
-   +Def:%>ini ENDLEX ; ! árini
-   +Def:%>nni ENDLEX ; ! oynni, consider i:n <=> Vow %>: _ n i
+ +Indef:      FemObl_Flag ;
+   +Def:%>ini FemObl_Flag ; ! árini
+   +Def:%>nni FemObl_Flag ; ! oynni, consider i:n <=> Vow %>: _ n i
 
 
 LEXICON DF_G_SGf_W
- +Indef:       ENDLEX ;
+ +Indef:       FemObl_Flag ;
    +Def:%>nnar ENDLEX ;
                R     ;
 
 LEXICON DF_G_SGf_S
- +Indef:        ENDLEX ;
-   +Def:%>innar ENDLEX ;
+ +Indef:        FemObl_Flag ;
+   +Def:%>innar FemObl_Flag ;
                 R     ;
 
 LEXICON DF_NA_PLf
- +Indef:      ENDLEX ;
-   +Def:%>nar ENDLEX ;
+ +Indef:      Pl_Flag ;
+   +Def:%>nar Pl_Flag ;
 
 
 ! Neuter forms
@@ -2505,32 +2505,55 @@ LEXICON DF_NA_SGn
  :%>i DF_NA_SGn_def   ;
 
 LEXICON DF_NA_SGn_indef
- +Indef: ENDLEX ;
+ +Indef: Neu_Flag ;
 
 LEXICON DF_NA_SGn_def
- +Def:ð ENDLEX ;
+ +Def:ð Neu_Flag ;
 
 LEXICON DF_D_SGn
- +Indef:      ENDLEX ;
-   +Def:%>num ENDLEX ;
+ +Indef:      Neu_Flag ;
+   +Def:%>num Neu_Flag ;
 
 LEXICON DF_G_SGn
- +Def:%>ins ENDLEX     ;
+ +Def:%>ins Neu_Flag     ;
             g_indef_r ;
 
 LEXICON g_indef_r
- +Indef: ENDLEX ;
+ +Indef: Neu_Flag ;
          R     ;
 
 LEXICON DF_G_SGn_a
- +Def:%>ns ENDLEX     ;
+ +Def:%>ns Neu_Flag     ;
            g_indef_r ;
 
 LEXICON DF_NA_PLn ! orðini
- +Indef:      ENDLEX ;
-   +Def:%>ini ENDLEX ;
+ +Indef:      Pl_Flag ;
+   +Def:%>ini Pl_Flag ;
 
 LEXICON DF_NA_PLn_W ! eyguni, hjørtuni
- +Indef:     ENDLEX ;
-   +Def:%>ni ENDLEX ;
+ +Indef:     Pl_Flag ;
+   +Def:%>ni Pl_Flag ;
+
+
+! Compound flags
+! --------------
+
+
+LEXICON MscNom_Flag
+@U.Case.MscNom@ ENDLEX ;
+
+LEXICON MscObl_Flag
+@U.Case.MscObl@ ENDLEX ;
+
+LEXICON FemNom_Flag
+@U.Case.FemNom@ ENDLEX ;
+
+LEXICON FemObl_Flag
+@U.Case.FemObl@ ENDLEX ;
+
+LEXICON Neu_Flag
+@U.Case.Neu@ ENDLEX ;
+
+LEXICON Pl_Flag
+@U.Case.Pl@ ENDLEX ;
 

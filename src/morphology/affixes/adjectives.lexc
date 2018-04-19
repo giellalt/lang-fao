@@ -489,18 +489,24 @@ LEXICON adj_def_msc_case
  +Acc+Def:%>a # ;
  +Dat+Def:%>a # ;
  +Gen+Def:%>a # ;
-
+ +Cmpnd#:%>i mscnom_cmpnd ;
+ +Cmpnd#:%>a mscobl_cmpnd ;
+ 
 LEXICON adj_def_fem_case
  +Nom+Def:%>a # ;
  +Acc+Def:%>u # ;
  +Dat+Def:%>u # ;
  +Gen+Def:%>u # ;
+ +Cmpnd#:%>a femnom_cmpnd ;
+ +Cmpnd#:%>u femobl_cmpnd ;
 
 LEXICON adj_def_neu_case
  +Nom+Def:%>a # ;
  +Acc+Def:%>a # ;
  +Dat+Def:%>a # ;
  +Gen+Def:%>a # ;
+ +Cmpnd#:%>a neu_cmpnd ;
+
 
 LEXICON adj_def_pl
  +Nom+Def:%^UUML%>u # ;
@@ -508,6 +514,32 @@ LEXICON adj_def_pl
  +Dat+Def:%^UUML%>u # ;
  +Gen+Def:%^UUML%>u # ;
      +Adv:%>a       # ;
+ +Cmpnd#:%>%^UUML%>u pl_cmpnd ;
+
+
+
+! Compound flags
+LEXICON mscnom_cmpnd ! fyrstiflokkur
+@U.Case.MscNom@ Nouns ;
+
+LEXICON mscobl_cmpnd ! fyrstaflokki
+@U.Case.MscObl@ Nouns ;
+
+LEXICON femnom_cmpnd ! lítlasystir
+@U.Case.FemNom@ Nouns ;
+
+LEXICON femobl_cmpnd ! lítlusystir
+@U.Case.FemObl@ Nouns ;
+
+LEXICON neu_cmpnd ! breiðaskarð
+@U.Case.Neu@ Nouns ;
+
+LEXICON pl_cmpnd ! fyrstuflokkarnir
+@U.Case.Pl@ Nouns ;
+
+
+
+
 
 ! Comparative
 ! ===========

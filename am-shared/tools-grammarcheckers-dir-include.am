@@ -155,7 +155,8 @@ schemas.xml:
 
 ### Clean target:
 clean-local:
-	-rm -f *.bin schemas.xml *.zcheck *.hfst *.hfstol *.zip *.zhfst *.cg3
+	-rm -f *.bin schemas.xml *.zcheck *.hfst *.hfstol *.zip *.zhfst
+	-rm -f mwe-dis.cg3 valency.cg3
 	-rm -f $(GIELLA_GC_ZIPFILES)
 	-rm -rf modes
 

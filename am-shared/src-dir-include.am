@@ -350,6 +350,7 @@ generator-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 					filters/make-optional-semantic-tags.%     \
 					filters/make-optional-error-tags.%        \
 					filters/make-optional-adv_comp-tags.%     \
+					filters/make-optional-orig_lang-tags.%    \
 					filters/remove-area-tags.%                \
 					filters/remove-dialect-tags.%             \
 					filters/remove-hyphenation-marks.%        \
@@ -358,7 +359,6 @@ generator-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-number-string-tags.%       \
 					filters/remove-orthography-tags.%         \
 					filters/remove-Orth_IPA-strings.%         \
-					filters/remove-orig_lang-tags.%           \
 					filters/remove-usage-tags.%               \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
@@ -369,11 +369,11 @@ generator-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/make-optional-semantic-tags.$*\"     \
 			.o. @\"filters/make-optional-error-tags.$*\"        \
 			.o. @\"filters/make-optional-adv_comp-tags.$*\"     \
+			.o. @\"filters/make-optional-orig_lang-tags.$*\"    \
 			.o. @\"filters/remove-area-tags.$*\"                \
 			.o. @\"filters/remove-dialect-tags.$*\"             \
 			.o. @\"filters/remove-number-string-tags.$*\"       \
 			.o. @\"filters/remove-usage-tags.$*\"               \
-			.o. @\"filters/remove-orig_lang-tags.$*\"           \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"$<\" \
@@ -433,6 +433,7 @@ generator-gt-glossing.tmp.%: analyser-raw-gt-glossing.%       \
 					filters/make-optional-semantic-tags.%     \
 					filters/make-optional-error-tags.%        \
 					filters/make-optional-adv_comp-tags.%     \
+					filters/make-optional-orig_lang-tags.%    \
 					filters/remove-area-tags.%                \
 					filters/remove-dialect-tags.%             \
 					filters/remove-hyphenation-marks.%        \
@@ -441,7 +442,6 @@ generator-gt-glossing.tmp.%: analyser-raw-gt-glossing.%       \
 					filters/remove-number-string-tags.%       \
 					filters/remove-orthography-tags.%         \
 					filters/remove-Orth_IPA-strings.%         \
-					filters/remove-orig_lang-tags.%           \
 					filters/remove-usage-tags.%               \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
@@ -452,11 +452,11 @@ generator-gt-glossing.tmp.%: analyser-raw-gt-glossing.%       \
 			.o. @\"filters/make-optional-semantic-tags.$*\"     \
 			.o. @\"filters/make-optional-error-tags.$*\"        \
 			.o. @\"filters/make-optional-adv_comp-tags.$*\"     \
+			.o. @\"filters/make-optional-orig_lang-tags.$*\"    \
 			.o. @\"filters/remove-area-tags.$*\"                \
 			.o. @\"filters/remove-dialect-tags.$*\"             \
 			.o. @\"filters/remove-number-string-tags.$*\"       \
 			.o. @\"filters/remove-usage-tags.$*\"               \
-			.o. @\"filters/remove-orig_lang-tags.$*\"           \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"$<\" \
@@ -519,6 +519,7 @@ generator-gt-norm.tmp.%: analyser-raw-gt-desc.%            \
 					filters/make-optional-variant-tags.%      \
 					filters/make-optional-semantic-tags.%     \
 					filters/make-optional-adv_comp-tags.%     \
+					filters/make-optional-orig_lang-tags.%    \
 					filters/remove-area-tags.%                \
 					filters/remove-dialect-tags.%             \
 					filters/remove-hyphenation-marks.%        \
@@ -528,7 +529,6 @@ generator-gt-norm.tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-usage-tags.%               \
 					filters/remove-orthography-tags.%         \
 					filters/remove-Orth_IPA-strings.%         \
-					filters/remove-orig_lang-tags.%           \
 					filters/remove-error-strings.%            \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
@@ -538,12 +538,12 @@ generator-gt-norm.tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/make-optional-variant-tags.$*\"      \
 			.o. @\"filters/make-optional-semantic-tags.$*\"     \
 			.o. @\"filters/make-optional-adv_comp-tags.$*\"     \
+			.o. @\"filters/make-optional-orig_lang-tags.$*\"    \
 			.o. @\"filters/remove-area-tags.$*\"                \
 			.o. @\"filters/remove-dialect-tags.$*\"             \
 			.o. @\"filters/remove-number-string-tags.$*\"       \
 			.o. @\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-error-strings.$*\"            \
-			.o. @\"filters/remove-orig_lang-tags.$*\"           \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"$<\" \

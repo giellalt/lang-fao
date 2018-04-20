@@ -2401,7 +2401,7 @@ LEXICON DF_N_SGm
  :%>i DF_N_SGm_def   ;
 
 LEXICON DF_N_SGm_indef
- +Indef: MscNom_Flag ; !risi @
+ +Indef: MscNom_Flag ; !risi 
 
 LEXICON DF_N_SGm_def
  +Def:%>n MscNom_Flag ; ! risin
@@ -2540,20 +2540,34 @@ LEXICON DF_NA_PLn_W ! eyguni, hjørtuni
 
 
 LEXICON MscNom_Flag
-@U.Case.MscNom@ ENDLEX ;
+@R.Case.MscNom@ ENDLEX ;
 
 LEXICON MscObl_Flag
-@U.Case.MscObl@ ENDLEX ;
+@R.Case.MscObl@ ENDLEX ;
 
 LEXICON FemNom_Flag
-@U.Case.FemNom@ ENDLEX ;
+@R.Case.FemNom@ ENDLEX ;
 
 LEXICON FemObl_Flag
-@U.Case.FemObl@ ENDLEX ;
+@R.Case.FemObl@ ENDLEX ;
 
 LEXICON Neu_Flag
-@U.Case.Neu@ ENDLEX ;
+@R.Case.Neu@ ENDLEX ;
 
 LEXICON Pl_Flag
-@U.Case.Pl@ ENDLEX ;
+@R.Case.Pl@ ENDLEX ;
+
+! Debug
+!LEXICON MscNom_Flag
+!ENDLEX ;
+!LEXICON MscObl_Flag
+!ENDLEX ;
+!LEXICON FemNom_Flag
+!ENDLEX ;
+!LEXICON FemObl_Flag
+!ENDLEX ;
+!LEXICON Neu_Flag
+!ENDLEX ;
+!LEXICON Pl_Flag
+!ENDLEX ;
 

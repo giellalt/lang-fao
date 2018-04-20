@@ -85,12 +85,21 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
  @D.NeedNoun.ON@    !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
  @C.NeedNoun@       !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
 
-@U.Case.MscNom@    !!≈ | @CODE@ | fyrstiflokkur
-@U.Case.MscObl@    !!≈ | @CODE@ | fyrstaflokk
-@U.Case.FemNom@    !!≈ | @CODE@ | lítlasystir
-@U.Case.FemObl@    !!≈ | @CODE@ | lítluusystur
-@U.Case.Neu@    !!≈ | @CODE@ | breiðaskarð
-@U.Case.Pl@    !!≈ | @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+!! Set flag for compounds
+@P.Case.MscNom@    !!≈ | @CODE@ | fyrstiflokkur
+@P.Case.MscObl@    !!≈ | @CODE@ | fyrstaflokk
+@P.Case.FemNom@    !!≈ | @CODE@ | lítlasystir
+@P.Case.FemObl@    !!≈ | @CODE@ | lítluusystur
+@P.Case.Neu@    !!≈ | @CODE@ | breiðaskarð
+@P.Case.Pl@    !!≈ | @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+
+!! Control flag values for compounds
+@R.Case.MscNom@    !!≈ | @CODE@ | fyrstiflokkur
+@R.Case.MscObl@    !!≈ | @CODE@ | fyrstaflokk
+@R.Case.FemNom@    !!≈ | @CODE@ | lítlasystir
+@R.Case.FemObl@    !!≈ | @CODE@ | lítluusystur
+@R.Case.Neu@    !!≈ | @CODE@ | breiðaskarð
+@R.Case.Pl@    !!≈ | @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 
  @P.Pmatch.Loc@     !!≈ | @CODE@ | Location in string used or parsed by hfst-pmatch

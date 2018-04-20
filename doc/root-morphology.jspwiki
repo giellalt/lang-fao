@@ -79,6 +79,31 @@ with verbs if the verb is further derived into a noun again:
  | @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
  | @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
 
+Set flag for compounds
+ | @P.Case.MscNom@ | fyrstiflokkur
+ | @P.Case.MscObl@ | fyrstaflokk
+ | @P.Case.FemNom@ | lítlasystir
+ | @P.Case.FemObl@ | lítluusystur
+ | @P.Case.Neu@ | breiðaskarð
+ | @P.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+
+Control flag values for compounds
+ | @R.Case.MscNom@ | fyrstiflokkur
+ | @R.Case.MscObl@ | fyrstaflokk
+ | @R.Case.FemNom@ | lítlasystir
+ | @R.Case.FemObl@ | lítluusystur
+ | @R.Case.Neu@ | breiðaskarð
+ | @R.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+
+Control flag values for compounds
+ | @U.Case.MscNom@ | fyrstiflokkur
+ | @U.Case.MscObl@ | fyrstaflokk
+ | @U.Case.FemNom@ | lítlasystir
+ | @U.Case.FemObl@ | lítluusystur
+ | @U.Case.Neu@ | breiðaskarð
+ | @U.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+
+
  | @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
 
 

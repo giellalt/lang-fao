@@ -83,20 +83,24 @@ GIELLA_FILTER_CORE_REGEX_SRCS=\
 
 # 2) GTD Core **generated** regex files:
 GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS=\
-                  make-optional-semantic-tags.regex  \
-                  make-optional-error-tags.regex     \
-                  make-optional-orig_lang-tags.regex \
-                  make-optional-area-tags.regex      \
-                  make-optional-dialect-tags.regex   \
-                  reorder-semantic-tags.regex        \
-                  remove-semantic-tags.regex         \
-                  remove-derivation-strings.regex    \
-                  remove-error-tags.regex            \
-                  remove-error-strings.regex         \
-                  remove-dialect-tags.regex          \
-                  remove-area-tags.regex             \
-                  remove-orig_lang-tags.regex        \
-                  $(DIALECT_REGEXES)                 \
+                  make-optional-area-tags.regex        \
+                  make-optional-derivation-tags.regex  \
+                  make-optional-dialect-tags.regex     \
+                  make-optional-error-tags.regex       \
+                  make-optional-grammatical-tags.regex \
+                  make-optional-orig_lang-tags.regex   \
+                  make-optional-semantic-tags.regex    \
+                  reorder-semantic-tags.regex          \
+                  remove-derivation-strings.regex      \
+                  remove-error-strings.regex           \
+                  remove-area-tags.regex               \
+                  remove-derivation-tags.regex         \
+                  remove-dialect-tags.regex            \
+                  remove-error-tags.regex              \
+                  remove-grammatical-tags.regex        \
+                  remove-orig_lang-tags.regex          \
+                  remove-semantic-tags.regex           \
+                  $(DIALECT_REGEXES)                   \
                   $(AREA_REGEXES)
 
 # 3) GTD Core xfscript filter files:
@@ -256,6 +260,18 @@ derivation-tags.txt: $(TAG_FILE)
 
 dialect-tags.txt: $(TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Dial/
+	$(AM_V_GEN)if test -f $@ ; then \
+		if ! diff -q $@ $@.tmp ; then \
+			mv -f $@.tmp $@ ; \
+		else \
+			rm -f $@.tmp ; \
+		fi ;\
+	else \
+		mv -f $@.tmp $@ ; \
+	fi
+
+grammatical-tags.txt: $(TAG_FILE)
+	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Gram/
 	$(AM_V_GEN)if test -f $@ ; then \
 		if ! diff -q $@ $@.tmp ; then \
 			mv -f $@.tmp $@ ; \

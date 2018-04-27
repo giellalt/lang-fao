@@ -700,9 +700,14 @@ SELECT:r7 Adv IF (-1 VFIN)(1 Inf);
 
 SELECT:her Adv IF (0 ("herur"))(-1 N OR BOS OR Adv);
 
+REMOVE A IF (-1 ("vera"))(0 Adv)(1 Sup);
 
 REMOVE Adv IF (-1 Det OR Pr)(0 A OR PrfPrc)(1 N);
        ## ið stakk í bleyta jørð,
+
+SELECT Adv IF (-2 V)(-1 Pron + Refl)(1 EOS);
+SELECT Adv IF (-2 V)(-1 Pron + Refl)(1 CC)(2 Adv)(3 EOS);
+SELECT Adv IF (-4 V)(-3 Pron + Refl)(-2 Adv)(-1 CC)(1 EOS);
 
 # Lexicalised adverbs.
 REMOVE:r566 (A* Adv) IF (0 LEX-ADV) ;
@@ -820,6 +825,7 @@ SELECT:NumNPl (N Pl) IF (-1 NUMBERS);
 
 SELECT:BarePl (N Pl) IF (NOT -1 PRE-N)(0 BAREPLURALS);
 
+SELECT:AdjSg (A Sg Dat) IF (-1 Pr)(0 A + Pl + Dat)(NOT 1 N + Sg);
 
 
 
@@ -991,6 +997,7 @@ SELECT:r60b (V 2Sg) IF (-1 ("og") LINK *-1C (V 2Sg) BARRIER S-BOUNDARY);
 
 SELECT:r61 (V Pl) IF (-1 (N Pl Nom) OR ("eg" Pron Pers Pl Nom))(NOT -1 (Acc) LINK *-1 VFIN BARRIER NPNH);
 
+REMOVE:PrsPl (V Inf) IF (*-1 ("sum") LINK -1 COMMA LINK -1 Pl BARRIER VFIN);
 
 # V + Refl
 

@@ -91,22 +91,62 @@ for f in $fsttype; do
         let "transducer_found += 1"
 
 ###### Test non-comopunds: #######
-        # generate propers in singular, extract the resulting generated lemma,
+        # generate propers in singular masculine, extract the resulting generated lemma,
         # store it:
-        sed 's/$/+N+Prop+Sg+Nom/' $lemmas \
-			| $lookup_tool $generator_file.$suffix \
+        sed 's/$/+N+Prop+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
 			| fgrep -v "+?" | grep -v "^$" | cut -f2 \
             > $generated_lemmas.$f.txt
 
-        # Generate nouns, extract those that do not generate in singular,
-        # and try to generate them in plural:
-        sed 's/$/+N+Prop+Sg+Nom/' $lemmas \
+        # extract propers that do not generate in  in singular masculine, 
+        # try with feminine, store it:
+        sed 's/$/+N+Prop+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+			| fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Prop+Fem+Sg+Nom+Indef/' \
+			| $lookup_tool $generator_file.$suffix | fgrep -v "+?" | cut -f2 \
+            | grep -v "^$" >> $generated_lemmas.$f.txt
+
+        # extract propers that do not generate in  in singular masculine or feminine, 
+        # try with neuter, store it:
+        sed 's/$/+N+Prop+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+			| fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Prop+Fem+Sg+Nom+Indef/' \
 			| $lookup_tool $generator_file.$suffix \
-			| fgrep "+?" | cut -d "+" -f1 \
-			| sed 's/$/+N+Prop+Pl+Nom/' \
+			| fgrep -v "+?" | cut -d "+" -f1 | sed 's/$/+N+Prop+Neu+Sg+Nom+Indef/'  \
+			| $lookup_tool $generator_file.$suffix | fgrep -v "+?" | cut -f2 \
+            | grep -v "^$" >> $generated_lemmas.$f.txt
+
+        # extract propers that do not generate in  in singular masculine, feminine 
+        # or neuter, try with genderless, store it:
+        sed 's/$/+N+Prop+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+			| fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Prop+Fem+Sg+Nom+Indef/' \
 			| $lookup_tool $generator_file.$suffix \
-			| fgrep -v "+?" | grep -v "^$" | cut -f2 \
-			>> $generated_lemmas.$f.txt
+			| fgrep -v "+?" | cut -d "+" -f1 | sed 's/$/+N+Prop+Neu+Sg+Nom+Indef/'  \
+			| $lookup_tool $generator_file.$suffix \
+			| fgrep -v "+?" | cut -d "+" -f1 | sed 's/$/+N+Prop+Sg+Nom/'  \
+			| $lookup_tool $generator_file.$suffix | fgrep -v "+?" | cut -f2 \
+            | grep -v "^$" >> $generated_lemmas.$f.txt
+
+###        # generate propers in singular neuter, extract the resulting generated lemma,
+###        # store it:
+###        sed 's/$/+N+Prop+Neu+Sg+Nom+Indef/' $lemmas \
+###			| $lookup_tool $generator_file.$suffix \
+###			| fgrep -v "+?" | grep -v "^$" | cut -f2 \
+###            >> $generated_lemmas.$f.txt
+###
+###        # generate propers without gender info, extract the resulting generated lemma,
+###        # store it:
+###        sed 's/$/+N+Prop+Sg+Nom/' $lemmas \
+###			| $lookup_tool $generator_file.$suffix \
+###			| fgrep -v "+?" | grep -v "^$" | cut -f2 \
+###            >> $generated_lemmas.$f.txt
+###
+###        # Generate nouns, extract those that do not generate in singular,
+###        # and try to generate them in plural:
+###        sed 's/$/+N+Prop+Sg+Nom+Indef/' $lemmas \
+###			| $lookup_tool $generator_file.$suffix \
+###			| fgrep "+?" | cut -d "+" -f1 \
+###			| sed 's/$/+N+Prop+Pl+Nom+Indef/' \
+###			| $lookup_tool $generator_file.$suffix \
+###			| fgrep -v "+?" | grep -v "^$" | cut -f2 \
+###			>> $generated_lemmas.$f.txt
 
 ###### Collect results, and generate debug info if FAIL: #######
         # Sort and compare original input with resulting output - the diff is

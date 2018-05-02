@@ -11,7 +11,6 @@ AC_CONFIG_FILES([Makefile \
                  src/hyphenation/Makefile \
                  src/morphology/Makefile \
                  src/orthography/Makefile \
-                 src/orthography/downcase-derived_proper-strings.xfscript \
                  src/phonetics/Makefile \
                  src/phonology/Makefile \
                  src/syntax/Makefile \

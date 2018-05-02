@@ -1,4 +1,9 @@
-$Rev: 166165 $
+$Rev: 166172 $
+Now that the downcasing script works in all cases, remove all the special
+processing, and get rid of spurious rebuilds of the dependent fst's. Another
+time-saver:-)
+
+r166165:
 Changed the downcasing script to work also with hyperminimised hfst-fst's. Now
 the downcasing script works both with Xerox, Hfst and Foma, and both with
 standard and hyperminimised hfst-fst's. Finally!

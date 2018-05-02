@@ -4,16 +4,18 @@
 
 # ---- starts here: ------
 
-# The value of HypMinFlag depends on the configuration: if hyperminimisation is
-# enabled, it will expand to a flag diacritic, if not it will be the empty string.
-# This will ensure that lowercasing will work correctly for all proper strings
-# independent of configuration. The alternative is to make the flag diacritic
-# optional, but then a hyperminimised generator will overgenerate, producing
-# an initial capital variant in addition to the lowercase string intended.
-# Don't be mislead by the notation: Autoconf also uses @STRING@ notation!
-define Flag       "@U.Cap.Opt@"      ;
-define CmpHyph    "@U.CmpHyph.TRUE@" ;
-@WANT_HYPERMINIMISATION_TRUE@@IF_HFST@define HypMinFlag "@P.LEXNAME.Root@" ;
+# Various flag definitions to handle both regular downcase and downcase on hfst
+# transducers with hyperminimisation. HypMin converts each lexicon name to a
+# flag diacritic, and the result is that there can be more symbols before the
+# initial letter of a word.
+#
+# NB! Note that the lexicon name of the proper nouns can be different from what
+# is defined here. Change if required!
+
+define DowncaseFlag  "@U.Cap.Opt@"            ;
+define CmpHyph       "@U.CmpHyph.TRUE@"       ;
+define LexRootFlag   "@P.LEXNAME.Root@"       ;
+define LexProperFlag "@P.LEXNAME.ProperNoun@" ;
 
 read regex [ 
 A -> a,
@@ -49,9 +51,8 @@ Z -> z,
 Š -> š,
 Ŧ -> ŧ,
 Ž -> ž
-@WANT_HYPERMINIMISATION_TRUE@ || .#. HYPMINFLAG FLAG ( HYPHFLAG ) _ ,
-@WANT_HYPERMINIMISATION_FALSE@|| .#. FLAG ( HYPHFLAG ) _ ,
-                  FLAG ( HYPHFLAG ) ?* %- _
+ || .#. ( LEXROOTFLAG ) DCASEFLAG ( LEXPROPERFLAG ) ( HYPHFLAG )       ( ? ) _ ,
+                        DCASEFLAG ( LEXPROPERFLAG ) ( HYPHFLAG ) ?* %- ( ? ) _
 
 # ---- ends here: ------
 
@@ -83,6 +84,7 @@ Z -> z,
 
 ] ;
 
-substitute defined Flag       for FLAG
-substitute defined CmpHyph    for HYPHFLAG
-@WANT_HYPERMINIMISATION_TRUE@@IF_HFST@substitute defined HypMinFlag for HYPMINFLAG
+substitute defined DowncaseFlag  for DCASEFLAG
+substitute defined CmpHyph       for HYPHFLAG
+substitute defined LexRootFlag   for LEXROOTFLAG
+substitute defined LexProperFlag for LEXPROPERFLAG

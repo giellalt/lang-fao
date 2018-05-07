@@ -333,26 +333,13 @@ REMOVE Dem IF (NOT -2 Nom)(-1 V)(0 Pron + Nom)(NOT *1 N + Def BARRIER NPNHA);
 REMOVE Dem IF (0 TAD + $$NAGD)(1C $$NAGD);
 
 
-# Adjective disambiguation
-# ------------------------
-
-SELECT:copular A + Neu + Sg + Nom + Indef IF (*-1 COPULA BARRIER NPNHA  LINK -1 TAD);
-## Tað er ógvuliga heitt
+# Adjective disambiguation in NP
+# ------------------------------
 
 REMOVE:r18 A + Fem IF (0  $$NAGD) (*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 REMOVE:r19 A + Msc IF (0  $$NAGD) (*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
 REMOVE:r20 A + Neu IF (0  $$NAGD) (*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
 
-#REMOVE:r18 A + Fem IF (0  $$NAGD) (*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
-#REMOVE:r19 A + Msc IF (0  $$NAGD) (*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
-#REMOVE:r20 A + Neu IF (0  $$NAGD) (*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
-
-SELECT A IF (-3 COPULA)(-2C A)(-1 CC)(1 CLB);
-SELECT A IF (-1 COPULA)(1 CC)(2C A)(1 CLB);
-
-REMOVE (V PrfPrc) IF (NOT *-1 AUX BARRIER S-BOUNDARY)(0 PrfPrc + A);
-
-REMOVE:NotPrtWhenA (V Ind Prt Pl) IF (-1 Det OR A)(0 A + $$NAGD)(*1 N + $$NAGD BARRIER NPNH);
 
 # Case disambiguation
 SELECT:TadNom Nom IF (0 TAD)(1 COPULA + 3Sg);
@@ -419,6 +406,11 @@ SELECT:kunna Inf IF (0 ("kunna"))(*1 Inf BARRIER NOT-ADV);
 # koma
 SELECT Prt  IF (-1 Pl)(0 ("koma"));
 
+# Plural
+
+SELECT V + Pl IF (-1 ("summur") + Pl + Nom);
+
+
 # PP disambiguation
 # =================
 
@@ -441,6 +433,7 @@ REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
 
 # millum
 REMOVE:r38 Adv IF (0 Dat OR Acc)(*-1 ("millum") BARRIER NPNH);
+REMOVE:millum Prop IF (0 ("millum"))(*1 Gen BARRIER NPNH);
 
 # móti
 SELECT:moti Pr if (0 ("móti"))(1 Num)(2 Dat);
@@ -709,9 +702,15 @@ SELECT Adv IF (-2 V)(-1 Pron + Refl)(1 EOS);
 SELECT Adv IF (-2 V)(-1 Pron + Refl)(1 CC)(2 Adv)(3 EOS);
 SELECT Adv IF (-4 V)(-3 Pron + Refl)(-2 Adv)(-1 CC)(1 EOS);
 
+SELECT Adv IF (-1 VFIN - AUX)(1 CLB);
+#$ Skógvarnir gingu sáttiliga.
+
 # Lexicalised adverbs.
 REMOVE:r566 (A* Adv) IF (0 LEX-ADV) ;
 	## Serliga er tað ein.
+
+# bara
+SELECT Adv IF (-1 VFIN)(0 ("bara"));
 
 # væl
 SELECT Adv IF (-1 VFIN)(0 ("væl"))(1 IM);
@@ -753,9 +752,13 @@ REMOVE:Def Def IF (0 A + $$NAGD)(*1 A OR N BARRIER NPNHA LINK 0C $$NAGD + Indef)
 REMOVE:Def Indef IF (0 A + $$NAGD)(*1 A OR N BARRIER NPNHA LINK 0C $$NAGD + Def);
 
 
-REMOVE Det + $$GENDER IF (*1C N LINK NOT 0  $$GENDER );
+REMOVE Det + $$GENDER IF (*1C N BARRIER V LINK NOT 0 $$GENDER);
 
 SELECT Det + $$GENDER IF (1C A OR N + $$GENDER);
+
+# summi
+SELECT Det IF (-1 BOS OR CLB)(0 ("summur"))(1 Pl);
+
 
 # Postnominal determiner disambiguation
 
@@ -786,6 +789,8 @@ REMOVE:r17 $$NAGD IF (0 Det)(NOT 0 Poss LINK -1 N)(*1 N OR A   BARRIER NPNHA LIN
 
 REMOVE:AdvErTad Acc IF (-2 Adv)(-1 VFIN)(0 ("tað"))(1 Adv);
 
+REMOVE V IF (-1 SOMEGENPREP)(0 N + Gen);
+	
 
 
 # Noun disambiguation
@@ -957,6 +962,8 @@ REMOVE Sup IF (*-1 CLB BARRIER WORD)(0 Imp)(*1 CLB  BARRIER Ind);
 
 
 # Supine
+
+SELECT Sup IF (-2 Neu + Nom)(-1 COPULA);
 
 #SELECT:r55 Sup IF (*-1 ("fáa" V) OR ("hava" V Ind) BARRIER NOT-ADV);
 #check 
@@ -1144,6 +1151,24 @@ SELECT A IF (0 (A $$GENDER $$NAGD))(-1 CC)(-2 (A $$GENDER $$NAGD));
   ## Læt ymist mala fram fyri eina løtu , til tað hevði tømt seg , fyri so at fara burtur av sær sjálvum 
 # The first sentence indicates the 0* does not work.
 # The second sentence indicates the rule is too strict.
+
+
+
+# Adjective disambiguation outside NP
+# -----------------------------------
+
+SELECT:copular A + Neu + Sg + Nom + Indef IF (*-1 COPULA BARRIER NPNHA  LINK -1 TAD);
+## Tað er ógvuliga heitt
+
+SELECT A IF (-3 COPULA)(-2C A)(-1 CC)(1 CLB);
+SELECT A IF (-1 COPULA)(1 CC)(2C A)(1 CLB);
+
+SELECT A + $$GENDER + $$NUMBER IF (-2 N + $$GENDER + $$NUMBER)(-1 COPULA OR ("ganga"));
+
+REMOVE (V PrfPrc) IF (NOT *-1 AUX BARRIER S-BOUNDARY)(0 PrfPrc + A);
+
+REMOVE:NotPrtWhenA (V Ind Prt Pl) IF (-1 Det OR A)(0 A + $$NAGD)(*1 N + $$NAGD BARRIER NPNH);
+
 
 
 # Substituting tags

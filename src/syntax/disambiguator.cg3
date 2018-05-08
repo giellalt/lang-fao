@@ -409,7 +409,7 @@ SELECT Prt  IF (-1 Pl)(0 ("koma"));
 # Plural
 
 SELECT V + Pl IF (-1 ("summur") + Pl + Nom);
-
+SELECT V + Ind + Pl IF (-3 ("tað") + Pl + Nom)(-2 COMMA)(-1 ("sum"));
 
 # PP disambiguation
 # =================
@@ -694,6 +694,8 @@ SELECT:r7 Adv IF (-1 VFIN)(1 Inf);
 SELECT:her Adv IF (0 ("herur"))(-1 N OR BOS OR Adv);
 
 REMOVE A IF (-1 ("vera"))(0 Adv)(1 Sup);
+
+REMOVE A IF (-2 ("tað"))(-1 ("vera"))(0 Adv);
 
 REMOVE Adv IF (-1 Det OR Pr)(0 A OR PrfPrc)(1 N);
        ## ið stakk í bleyta jørð,
@@ -1029,6 +1031,11 @@ REMOVE:NomFragment Dat IF (0 Nom)(NOT *0 V);
 
 REMOVE Dat IF (1 SAFETV)(*2 N + Acc BARRIER NPNH);
 
+
+# Not Nominative
+
+REMOVE:NotNom Nom IF (-1C Pr)(0C Det);
+
 # Accusative
 # ==========
 
@@ -1038,6 +1045,8 @@ REMOVE:AdInfAcc Nom IF (*-1 Inf BARRIER NPNH LINK -1 IM);
 REMOVE Nom IF (*-1 SAFETV LINK -1 Nom)(0 N + Acc);
 REMOVE Dat IF (*-1 SAFETV LINK -1 Nom)(0 N + Acc);
 
+SELECT:Aobj Acc IF (-1 TV)(0 A)(1 Pr);
+## sum tey toldu lítið av.
 
 # Genitive
 # ========

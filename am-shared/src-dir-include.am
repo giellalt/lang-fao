@@ -216,30 +216,34 @@ analyser-raw-gt-desc.tmp1.foma: morphology/lexicon.foma \
 ### HFST - the raw files are generators, thus we need a special target (but
 ###        we try to keep the code as identical as possible, thus pattern rule):
 # Variant a) - with a language-specific tag reordering script applied:
-generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.% \
-					filters/reorder-tags.$(GTLANG).% \
-					filters/reorder-semantic-tags.%       \
-					filters/reorder-subpos-tags.%         \
+generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.%     \
+					filters/reorder-tags.$(GTLANG).%          \
+					filters/remove-semantic-tags-before-pos.% \
+					filters/insert-semantic-tags-after-pos.%  \
+					filters/reorder-subpos-tags.%             \
 					filters/remove-mwe-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/reorder-tags.$(GTLANG).$*\"\
-			.o. @\"filters/reorder-subpos-tags.$*\"   \
-			.o. @\"filters/reorder-semantic-tags.$*\" \
-			.o. @\"filters/remove-mwe-tags.$*\"       \
+				@\"filters/reorder-tags.$(GTLANG).$*\"          \
+			.o. @\"filters/reorder-subpos-tags.$*\"             \
+			.o. @\"filters/remove-semantic-tags-before-pos.$*\" \
+			.o. @\"filters/insert-semantic-tags-after-pos.$*\"  \
+			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
 # Variant b) - without a language-specific tag reordering script:
-generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.% \
-					filters/reorder-semantic-tags.%       \
-					filters/reorder-subpos-tags.%         \
+generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.%     \
+					filters/remove-semantic-tags-before-pos.% \
+					filters/insert-semantic-tags-after-pos.%  \
+					filters/reorder-subpos-tags.%             \
 					filters/remove-mwe-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/reorder-subpos-tags.$*\"   \
-			.o. @\"filters/reorder-semantic-tags.$*\" \
-			.o. @\"filters/remove-mwe-tags.$*\"       \
+				@\"filters/reorder-subpos-tags.$*\"             \
+			.o. @\"filters/remove-semantic-tags-before-pos.$*\" \
+			.o. @\"filters/insert-semantic-tags-after-pos.$*\"  \
+			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
 			;\n\
 		 save stack $@\n\
@@ -247,30 +251,34 @@ generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.% \
 
 #### Xerox & FOMA - no special treatment:
 # Variant a) - with a language-specific tag reordering script applied:
-analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.% \
-					filters/reorder-tags.$(GTLANG).% \
-					filters/reorder-semantic-tags.%       \
-					filters/reorder-subpos-tags.%         \
+analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.%       \
+					filters/reorder-tags.$(GTLANG).%          \
+					filters/remove-semantic-tags-before-pos.% \
+					filters/insert-semantic-tags-after-pos.%  \
+					filters/reorder-subpos-tags.%             \
 					filters/remove-mwe-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/reorder-tags.$(GTLANG).$*\"\
-			.o. @\"filters/reorder-subpos-tags.$*\"   \
-			.o. @\"filters/reorder-semantic-tags.$*\" \
-			.o. @\"filters/remove-mwe-tags.$*\"       \
+				@\"filters/reorder-tags.$(GTLANG).$*\"          \
+			.o. @\"filters/reorder-subpos-tags.$*\"             \
+			.o. @\"filters/remove-semantic-tags-before-pos.$*\" \
+			.o. @\"filters/insert-semantic-tags-after-pos.$*\"  \
+			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
 # Variant b) - without a language-specific tag reordering script:
-analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.% \
-					filters/reorder-semantic-tags.%     \
-					filters/reorder-subpos-tags.%       \
+analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.%       \
+					filters/remove-semantic-tags-before-pos.% \
+					filters/insert-semantic-tags-after-pos.%  \
+					filters/reorder-subpos-tags.%             \
 					filters/remove-mwe-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/reorder-subpos-tags.$*\"   \
-			.o. @\"filters/reorder-semantic-tags.$*\" \
-			.o. @\"filters/remove-mwe-tags.$*\"       \
+				@\"filters/reorder-subpos-tags.$*\"             \
+			.o. @\"filters/remove-semantic-tags-before-pos.$*\" \
+			.o. @\"filters/insert-semantic-tags-after-pos.$*\"  \
+			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
 			;\n\
 		 save stack $@\n\

@@ -1,4 +1,11 @@
-$Rev: 166172 $
+$Rev: 166462 $
+Corrected bugs in reordering semantic tags by doing the reordering in two steps:
+1) insert the tag in the new and correct position, and 2) remove the tag in the
+wrong position. There will probably be things to iron out, but initial tests are
+fine. This should also make the whole semantic tag reordering a bit faster to
+compile and apply, as the generated regexes are smaller and simpler.
+
+r166172:
 Now that the downcasing script works in all cases, remove all the special
 processing, and get rid of spurious rebuilds of the dependent fst's. Another
 time-saver:-)

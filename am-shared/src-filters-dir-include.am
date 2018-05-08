@@ -83,24 +83,24 @@ GIELLA_FILTER_CORE_REGEX_SRCS=\
 
 # 2) GTD Core **generated** regex files:
 GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS=\
-                  make-optional-area-tags.regex        \
-                  make-optional-derivation-tags.regex  \
-                  make-optional-dialect-tags.regex     \
-                  make-optional-error-tags.regex       \
-                  make-optional-grammatical-tags.regex \
-                  make-optional-orig_lang-tags.regex   \
-                  make-optional-semantic-tags.regex    \
-                  reorder-semantic-tags.regex          \
-                  remove-derivation-strings.regex      \
-                  remove-error-strings.regex           \
-                  remove-area-tags.regex               \
-                  remove-derivation-tags.regex         \
-                  remove-dialect-tags.regex            \
-                  remove-error-tags.regex              \
-                  remove-grammatical-tags.regex        \
-                  remove-orig_lang-tags.regex          \
-                  remove-semantic-tags.regex           \
-                  $(DIALECT_REGEXES)                   \
+                  make-optional-area-tags.regex         \
+                  make-optional-derivation-tags.regex   \
+                  make-optional-dialect-tags.regex      \
+                  make-optional-error-tags.regex        \
+                  make-optional-grammatical-tags.regex  \
+                  make-optional-orig_lang-tags.regex    \
+                  make-optional-semantic-tags.regex     \
+                  remove-derivation-strings.regex       \
+                  remove-error-strings.regex            \
+                  remove-area-tags.regex                \
+                  remove-derivation-tags.regex          \
+                  remove-dialect-tags.regex             \
+                  remove-error-tags.regex               \
+                  remove-grammatical-tags.regex         \
+                  remove-orig_lang-tags.regex           \
+                  remove-semantic-tags-before-pos.regex \
+                  insert-semantic-tags-after-pos.regex  \
+                  $(DIALECT_REGEXES)                    \
                   $(AREA_REGEXES)
 
 # 3) GTD Core xfscript filter files:
@@ -345,6 +345,15 @@ remove-%-tags.regex: %-tags.txt
 			$(GTCORE)/scripts/taglist2remove_tags_regex.sh $< > $@ ; \
 		fi
 
+remove-%-tags-before-pos.regex: %-tags.txt
+	$(AM_V_GEN)if test -e \
+	$(GTCORE)/scripts/taglist2remove_$*_tags_before_pos_regex.sh ; \
+	then \
+		$(GTCORE)/scripts/taglist2remove_$*_tags_before_pos_regex.sh $< > $@ ; \
+	else \
+		$(GTCORE)/scripts/taglist2remove_tags_before_pos_regex.sh $< > $@ ;\
+	fi
+
 # Remove strings specific to other dialects than the requested one:
 remove-all_dialects_but_%-strings.regex:
 	$(AM_V_GEN)$(GTCORE)/scripts/generate-dialect-filter-regex.sh \
@@ -380,13 +389,10 @@ reorder-%-tags.regex: %-tags.txt
 	$(AM_V_GEN)$(GTCORE)/scripts/taglist2reorder_$*_tags_regex.sh \
 		$@ $^
 
-# Workaround hack for bug in the Sfst and Foma backends due to the size of this
-# filter for some languages:
-reorder-semantic-tags.hfst: reorder-semantic-tags.regex
-	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) $(HFST_FLAGS) --format=openfst-tropical \
-		$(HFST_REGEXP2FST_FLAGS) $(MORE_VERBOSITY) -S $< \
-		| $(HFST_FST2FST) $(MORE_VERBOSITY) $(HFST_FORMAT) \
-		-o $@
+### Insert tags after POS:
+insert-%-tags-after-pos.regex: %-tags.txt
+	$(AM_V_GEN)$(GTCORE)/scripts/taglist2insert_$*_tags_after_pos_regex.sh \
+		$@ $^
 
 ####### Copy regex files from giella-shared if not found locally: ########
 %.regex: $(GIELLA_SHARED)/all_langs/src/filters/%.regex

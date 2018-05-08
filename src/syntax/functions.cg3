@@ -331,11 +331,13 @@ LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hó
 
 LIST DATPREP = "hjá" "með" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "frá" "mótvegis" "nær" "sambært" "viðvíkjandi" "úr" ; # úr?
 
+LIST GENPREP =  "at" "av" "hjá" "móti" "um" "undan" "úr" ;
 LIST ACCDATPREP = "í" "á" "undir" "yvir" "eftir" "fyri" "við" ;
 
 LIST ACCGENPREP = "innan" "uttan" "millum" "til" "vegna" ;
 
 LIST ACCDATGENPREP = "at" "av" "hjá" "móti" "um" "undan" "úr" ;
+
 
 
 SET SOMEACCPREP = ACCPREP | ACCDATPREP | ACCGENPREP | ACCDATGENPREP ;
@@ -636,7 +638,7 @@ MAP:n<titel2 (@N<) TARGET INITIAL ((-1 N) OR (-1 CC LINK -1 INITIAL LINK -1 N))(
 
 
 
-
+MAP:num> (@>N) TARGET Num + $$NAGD (1 N + $$NAGD ) ;
 
 MAP:>a (@>A) TARGET GRADE-ADV (*1 A BARRIER NOT-NPMOD) ;
 

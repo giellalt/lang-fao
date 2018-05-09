@@ -1,4 +1,9 @@
-$Rev: 166462 $
+$Rev: 166504 $
+Too eager in the previous commit to get rid of semantic tag processing: removed
+the filter to zero out semantic tags completely, which broke compilation of a
+number of fst's where semantic tags are not wanted.
+
+r166462:
 Corrected bugs in reordering semantic tags by doing the reordering in two steps:
 1) insert the tag in the new and correct position, and 2) remove the tag in the
 wrong position. There will probably be things to iron out, but initial tests are

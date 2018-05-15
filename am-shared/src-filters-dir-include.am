@@ -346,14 +346,10 @@ remove-%-tags.regex: %-tags.txt
 			$(GTCORE)/scripts/taglist2remove_tags_regex.sh $< > $@ ; \
 		fi
 
-remove-%-tags-before-pos.regex: %-tags.txt
-	$(AM_V_GEN)if test -e \
-	$(GTCORE)/scripts/taglist2remove_$*_tags_before_pos_regex.sh ; \
-	then \
-		$(GTCORE)/scripts/taglist2remove_$*_tags_before_pos_regex.sh $< > $@ ; \
-	else \
-		$(GTCORE)/scripts/taglist2remove_tags_before_pos_regex.sh $< > $@ ;\
-	fi
+remove-semantic-tags-before-pos.regex: semantic-tags.txt
+	$(AM_V_GEN)\
+		$(GTCORE)/scripts/taglist2remove_semantic_tags_before_pos_regex.sh \
+		$< > $@ ; \
 
 # Remove strings specific to other dialects than the requested one:
 remove-all_dialects_but_%-strings.regex:

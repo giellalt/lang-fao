@@ -349,7 +349,7 @@ remove-%-tags.regex: %-tags.txt
 remove-semantic-tags-before-pos.regex: semantic-tags.txt
 	$(AM_V_GEN)\
 		$(GTCORE)/scripts/taglist2remove_semantic_tags_before_pos_regex.sh \
-		$< > $@ ; \
+		$< > $@
 
 # Remove strings specific to other dialects than the requested one:
 remove-all_dialects_but_%-strings.regex:

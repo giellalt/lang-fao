@@ -218,15 +218,13 @@ analyser-raw-gt-desc.tmp1.foma: morphology/lexicon.foma \
 # Variant a) - with a language-specific tag reordering script applied:
 generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.%     \
 					filters/reorder-tags.$(GTLANG).%          \
-					filters/remove-semantic-tags-before-pos.% \
-					filters/insert-semantic-tags-after-pos.%  \
+					filters/reorder-semantic-tags.%           \
 					filters/reorder-subpos-tags.%             \
 					filters/remove-mwe-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/reorder-tags.$(GTLANG).$*\"          \
 			.o. @\"filters/reorder-subpos-tags.$*\"             \
-			.o. @\"filters/remove-semantic-tags-before-pos.$*\" \
-			.o. @\"filters/insert-semantic-tags-after-pos.$*\"  \
+			.o. @\"filters/reorder-semantic-tags.$*\"           \
 			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
 			;\n\
@@ -235,14 +233,12 @@ generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.%     \
 
 # Variant b) - without a language-specific tag reordering script:
 generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.%     \
-					filters/remove-semantic-tags-before-pos.% \
-					filters/insert-semantic-tags-after-pos.%  \
+					filters/reorder-semantic-tags.%           \
 					filters/reorder-subpos-tags.%             \
 					filters/remove-mwe-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/reorder-subpos-tags.$*\"             \
-			.o. @\"filters/remove-semantic-tags-before-pos.$*\" \
-			.o. @\"filters/insert-semantic-tags-after-pos.$*\"  \
+			.o. @\"filters/reorder-semantic-tags.$*\"           \
 			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
 			;\n\
@@ -253,15 +249,13 @@ generator-raw-gt-desc.tmp.%: generator-raw-gt-desc.tmp1.%     \
 # Variant a) - with a language-specific tag reordering script applied:
 analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.%       \
 					filters/reorder-tags.$(GTLANG).%          \
-					filters/remove-semantic-tags-before-pos.% \
-					filters/insert-semantic-tags-after-pos.%  \
+					filters/reorder-semantic-tags.%           \
 					filters/reorder-subpos-tags.%             \
 					filters/remove-mwe-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/reorder-tags.$(GTLANG).$*\"          \
 			.o. @\"filters/reorder-subpos-tags.$*\"             \
-			.o. @\"filters/remove-semantic-tags-before-pos.$*\" \
-			.o. @\"filters/insert-semantic-tags-after-pos.$*\"  \
+			.o. @\"filters/reorder-semantic-tags.$*\"           \
 			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
 			;\n\
@@ -270,14 +264,12 @@ analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.%       \
 
 # Variant b) - without a language-specific tag reordering script:
 analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.%       \
-					filters/remove-semantic-tags-before-pos.% \
-					filters/insert-semantic-tags-after-pos.%  \
+					filters/reorder-semantic-tags.%           \
 					filters/reorder-subpos-tags.%             \
 					filters/remove-mwe-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/reorder-subpos-tags.$*\"             \
-			.o. @\"filters/remove-semantic-tags-before-pos.$*\" \
-			.o. @\"filters/insert-semantic-tags-after-pos.$*\"  \
+			.o. @\"filters/reorder-semantic-tags.$*\"           \
 			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
 			;\n\

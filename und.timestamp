@@ -1,4 +1,11 @@
-$Rev: 166754 $
+$Rev: 166802 $
+Reverted the more robust semantic tag reordering, it was just too slow. Now we
+are back to a less robust and more fragile system (including bugs), but with
+faster compilation. Ultimately we will abandon _semantic_ tag reordering
+altogether, and instead rewrite the lexc code to always place the semantic tags
+where they should be.
+
+r166754:
 Corrected automake (and make?) syntax error that broke compilation.
 
 r166722:

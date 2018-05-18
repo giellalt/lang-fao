@@ -1,7 +1,7 @@
 !! Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
 !! Then just:
 !! $ make
-!! $ echo "ja, ja" | hfst-tokenise --gtd tokeniser-disamb-gt-desc.pmhfst
+!! $ echo "ja, ja" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
 
 !! Issues:
 !! - [X] Ambiguous input
@@ -25,9 +25,9 @@
 !! - [ ] Try set-difference-unknowns method with regular hfst commands?
 
 !! More usage examples:
-!! $ echo "Juos gorreválggain lea (dárbbašlaš) deavdit gáibádusa boasttu olmmoš, man mielde lahtuid." | hfst-tokenise --gtd tokeniser-disamb-gt-desc.pmhfst
-!! $ echo "(gáfe) 'ja' ja 3. ja? ц jaja ukjend \"ukjend\"" | hfst-tokenise --gtd tokeniser-disamb-gt-desc.pmhfst
-!! $ echo "márffibiillagáffe" | hfst-tokenise --gtd tokeniser-disamb-gt-desc.pmhfst
+!! $ echo "Juos gorreválggain lea (dárbbašlaš) deavdit gáibádusa boasttu olmmoš, man mielde lahtuid." | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+!! $ echo "(gáfe) 'ja' ja 3. ja? ц jaja ukjend \"ukjend\"" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+!! $ echo "márffibiillagáffe" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
 
 !! Pmatch documentation:
 !! https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch
@@ -62,7 +62,7 @@ Define alphaword alphabet+;
 Define unknownform [alphaword].u ;
 !! Simply give an empty reading when something is unknown:
 Define unknownwordEmpty unknownform:0 LC([blank | #]) RC([[blank ] | # ]);
-!! hfst-tokenise --gtd will treat such empty analyses as unknowns, and
+!! hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
 !! remove empty analyses from other readings. Empty readings are also
 !! legal in CG, they get a default baseform equal to the wordform, but
 !! no tag to check, so it's safer to let hfst-tokenise handle them.

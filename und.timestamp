@@ -1,4 +1,7 @@
-$Rev: 166802 $
+$Rev: 166895 $
+Updated command in comments to use the correct option.
+
+r166802:
 Reverted the more robust semantic tag reordering, it was just too slow. Now we
 are back to a less robust and more fragile system (including bugs), but with
 faster compilation. Ultimately we will abandon _semantic_ tag reordering

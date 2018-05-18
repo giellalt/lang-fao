@@ -1,4 +1,9 @@
-$Rev: 166895 $
+$Rev: 166912 $
+Added the special target .NOTPARALLEL to the hfst speller make file, to work
+around a make bug that caused a prerequisite to not be built when invoking make
+with the -j option. Also added some comments.
+
+r166895:
 Updated command in comments to use the correct option.
 
 r166802:

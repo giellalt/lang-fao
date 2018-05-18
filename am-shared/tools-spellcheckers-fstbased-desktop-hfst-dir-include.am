@@ -29,6 +29,17 @@ ZIPFLAGS=-9 $(VERBOSITY)
 ZHFST_COMPRESSION=$(ZIP) $(ZIPFLAGS) ../../$@ *
 #endif # CAN_XZ
 
+# Due to a bug in GNU make (it seems), the target
+# 'final_strings.all.%.hfst' will not be built when invoking make
+# with -jN, where N > 1, and this causes the whole build to stop, and then on
+# the next invocation continue with improperly built prerequisites. To void this
+# the following special target will prohibit parallel processes, which ensures
+# everything is working as it should. It will make spellers build slower,
+# though, but robustness must prevail over speed. At least we can restrict the
+# slowdown to this dir only, and the slowdown is only noticable for languages
+# building several speller variants.
+.NOTPARALLEL:
+
 ###### Conditional string variables ######
 #### Initial letters:
 # Set file name to the empty string or initial_letters.all depending on variable:
@@ -230,6 +241,7 @@ editdist.%.regex: editdist.%.txt $(initial_letter_deps)
 		--output-file=$@ \
 		$(initial_letter_error_model_option)
 
+# Initial string edits, if enabled:
 initial_letters.txt.%.hfst: initial_letters.%.txt
 	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -p \
@@ -242,6 +254,7 @@ initial_letters.regex.%.hfst: initial_letters.%.regex
 initial_letters.all.%.hfst: $(initial_letter_all_deps)
 	$(initial_letter_all_build)
 
+# Final string edits, if enabled:
 final_strings.txt.%.hfst: final_strings.%.txt
 	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
@@ -258,7 +271,7 @@ final_strings.all.%.hfst: $(final_strings_all_deps)
 anystar.hfst:
 	$(AM_V_RGX2FST)echo "?*" | $(HFST_REGEXP2FST) -o $@
 
-# Error model building - list of strings known to be misspelled:
+# In-word list of strings known to be misspelled:
 strings.txt.%.hfst: strings.%.txt anystar.hfst
 	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \

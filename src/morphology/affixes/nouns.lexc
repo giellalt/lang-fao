@@ -289,6 +289,12 @@ LEXICON k12 ! vinur
   k12e    ;
   k_flt12 ;
 
+LEXICON k12_boe
++N+Msc+Sg+Nom+Indef:øur MscNom_Flag ;
++N+Msc+Sg+Acc+Indef:ø MscNom_Flag ;
++N+Msc+Sg+Dat+Indef:ø MscNom_Flag ;
++N+Msc+Sg+Gen+Indef:íggjar MscNom_Flag ;
+
 LEXICON k12e
  +N+Msc: S_M_SGNOM    ;
  +N+Msc: S_M_SGACC    ;
@@ -902,10 +908,16 @@ LEXICON k_flt45
  +N+Msc:       S_M_PLGEN    ;
 
 LEXICON k46 ! fjørður ! XXX start her.
+k46e ;
+k_flt46 ;
+
+LEXICON k46e
  +N+Msc:       S_M_SGNOM    ;
  +N+Msc:       S_M_SGACC    ;
  +N+Msc:%^IUML S_M_SGDAT    ;
  +N+Msc:%^OEA  S_M_SGGEN_AR ;
+
+LEXICON k_flt46
  +N+Msc:%^IUML S_M_PLNOM_IR ;
  +N+Msc:%^IUML S_M_PLACC_IR ;
  +N+Msc:       S_M_PLDAT    ;
@@ -1057,6 +1069,29 @@ LEXICON kv2e/17e
 LEXICON kv2 ! bygd
   kv2e    ;
   kv_flt2 ;
+
+LEXICON kv35 ! á
++N+Fem+Sg+Acc+Def:%>nna FemObl_Flag ;
++N+Fem+Sg+Dat+Def:%>nni FemObl_Flag ;
+RESTFORMS_SHORT_kv2 ;
+
+
+LEXICON kv36 ! støð
++N+Fem+Sg+Acc+Def:%>na FemObl_Flag ;
++N+Fem+Sg+Dat+Def:%>ni FemObl_Flag ;
+RESTFORMS_SHORT_kv2 ;
+
+
+LEXICON RESTFORMS_SHORT_kv2
++N+Fem+Sg+Nom: DF_N_SGf_S ;
++N+Fem+Sg+Acc+Indef: FemNom_Flag ;
++N+Fem+Sg+Dat+Indef: FemObl_Flag ;
++N+Fem+Sg+Acc+Def:%>nna FemObl_Flag ;
++N+Fem+Sg+Dat+Def:%>nni FemObl_Flag ;
++N+Fem+Sg+Gen: DF_G_SGf_W ;
+kv_flt2 ;
+
+
 
 LEXICON kv_bd2e
   kv2e ;
@@ -1536,6 +1571,10 @@ LEXICON h2 ! hjarta
  +N+Neu:%^UUML N_PLD       ;
  +N+Neu:%^UUML N_PLG_na    ;
 
+LEXICON h3/41
+ h3 ;
+ h41 ;
+ 
 LEXICON h3/5
   h3 ;
   h5 ;
@@ -1623,6 +1662,9 @@ LEXICON h_flt6
  +N+Neu:%^UUML N_PLD  ;
  +N+Neu:       N_PLG  ;
 
+LEXICON h7/3
+h7 ;
+h3 ;
 
 LEXICON h7 ! bræv
  +N+Neu:       S_N_SGNA    ;
@@ -2023,11 +2065,14 @@ LEXICON h36
  +N+Neu: N_PLG       ;
  
 LEXICON h37
+h37e ;
+ +N+Neu: N_PLD       ;
+ +N+Neu: N_PLG       ;
+
+LEXICON h37e
  +N+Neu: S_N_SGNA    ;
  +N+Neu: S_N_SGD_i ;
  +N+Neu: S_N_SGG_s ;
- +N+Neu: N_PLD       ;
- +N+Neu: N_PLG       ;
 
 LEXICON h38
  +N+Neu: S_N_SGNA    ;
@@ -2051,8 +2096,14 @@ LEXICON h40
  +N+Neu:r N_PLG       ;
 
 LEXICON h41
+h41e ;
+h_flt41 ;
+
+LEXICON h41e 
  +N+Neu: S_N_SGNA    ;
  +N+Neu: S_N_SGDG_is ;
+
+LEXICON h_flt41 
  +N+Neu: N_PLD       ;
  +N+Neu: N_PLG_NULL  ;
 

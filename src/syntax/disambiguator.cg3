@@ -494,7 +494,8 @@ REMOVE ("kala") IF (*-1 TAD + Dem)(0 ("kalur"));
 
 # Pronouns
 
-REMOVE Prop IF (0 ("eg"))(1 1Sg);
+REMOVE:eg Prop IF (0 ("eg"))(1 1Sg);
+REMOVE:Eg Prop IF (-1 BOS)(0 ("Eg"))(1 1Sg);
 
 # Pron Pers or Det
 

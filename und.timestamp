@@ -1,4 +1,12 @@
-$Rev: 166912 $
+$Rev: 167627 $
+Corrected and improved the compilation of the analysers including the URL
+analysis. This should fix the problem with compiling SMA and other languages,
+and should in general reduce both compilation time and analyser size. The basic
+change was to union in the URL analysis as the last step in building the
+analysers, instead of early - the early injection led to fst blowup during
+minimisation. Now no blowup appears to take place.
+
+r166912:
 Added the special target .NOTPARALLEL to the hfst speller make file, to work
 around a make bug that caused a prerequisite to not be built when invoking make
 with the -j option. Also added some comments.

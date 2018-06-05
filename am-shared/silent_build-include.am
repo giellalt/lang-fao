@@ -28,7 +28,6 @@
 # Tools not yet covered by this file:
 #
 # hfst-determinize
-# hfst-disjunct
 # hfst-fst2strings
 # hfst-info
 # hfst-minus
@@ -159,7 +158,7 @@ AM_V_TXT2FST    = $(AM_V_TXT2FST_@AM_V@)
 AM_V_TXT2FST_   = $(AM_V_TXT2FST_@AM_DEFAULT_V@)
 AM_V_TXT2FST_0  = @echo "  HTXT2FST $@";
 
-# hfst-union:
+# hfst-union / hfst-disjunct:
 AM_V_UNION      = $(AM_V_UNION_@AM_V@)
 AM_V_UNION_     = $(AM_V_UNION_@AM_DEFAULT_V@)
 AM_V_UNION_0    = @echo "  HUNION   $@";

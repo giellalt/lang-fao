@@ -193,7 +193,7 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 	read regex \
-	( [ @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
+	    @\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-variant-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-number-string-tags.hfst\"       \
 	.o. @\"$(top_builddir)/src/filters/remove-usage-tags.hfst\"               \
@@ -205,11 +205,22 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
 	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"        \
 	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\"       \
-	.o. @\"$(top_builddir)/src/orthography/spellrelax.compose.hfst\"        ] \
-	|   @\"$(top_builddir)/src/morphology/url.hfst\"                        ) \
+	.o. @\"$(top_builddir)/src/orthography/spellrelax.compose.hfst\"          \
 	;\n\
 	save stack $@\n\
 	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
+
+# Invert the URL analyser and convert it to the target fst format:
+analyser-url-gt-desc.hfst: $(top_builddir)/src/morphology/url.hfst 
+	$(AM_V_INVERT)$(HFST_INVERT) -i $< \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+	> "$@"
+
+# Convert the single tag to Apertium format:
+analyser-url-apertium-desc.hfst: analyser-url-gt-desc.hfst
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
+		-f '+URL' -t '<url>' \
+	> "$@"
 
 # Target language specific filtering - build depends on the availability
 # of a filter file.
@@ -340,7 +351,8 @@ analyser-mt-apertium-desc.%.tmp.hfst: \
 #         - BOTH target language specific modifying AND relabeling
 analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
 								  tagsets/modify-tags.%.hfst \
-								  $(srcdir)/tagsets/apertium.%.relabel
+								  $(srcdir)/tagsets/apertium.%.relabel \
+								  analyser-url-apertium-desc.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
    		@\"$<\" \
 	.o. @\"tagsets/modify-tags.$*.hfst\" \
@@ -349,6 +361,7 @@ analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
 		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) \
 		-F $(srcdir)/tagsets/apertium.$*.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+		| $(HFST_DISJUNCT) -1 - -2 analyser-url-apertium-desc.hfst \
 		-o $@
 
 # Relabel GTD tags to Apertium tags - analyser:
@@ -356,10 +369,12 @@ analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
 # Step 2b - apertium.tmp -> apertium
 #         - ONLY target language specific relabeling
 analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
-								  $(srcdir)/tagsets/apertium.%.relabel
+								  $(srcdir)/tagsets/apertium.%.relabel \
+								  analyser-url-apertium-desc.hfst
 	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
 		-F $(srcdir)/tagsets/apertium.$*.relabel \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+		| $(HFST_DISJUNCT) -1 - -2 analyser-url-apertium-desc.hfst \
 		-o $@
 
 # Relabel GTD tags to Apertium tags - analyser:
@@ -367,21 +382,25 @@ analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
 # Step 2c - apertium.tmp -> apertium
 #         - ONLY target language specific modifying
 analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
-								  tagsets/modify-tags.%.hfst
+								  tagsets/modify-tags.%.hfst \
+								  analyser-url-apertium-desc.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
    		@\"$<\" \
 	.o. @\"tagsets/modify-tags.$*.hfst\" \
     	;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+		| $(HFST_DISJUNCT) -1 - -2 analyser-url-apertium-desc.hfst \
 		-o $@
 
 # Relabel GTD tags to Apertium tags - analyser:
 # % = TARGETLANG
 # Step 2d - apertium.tmp -> apertium
 #         - NO target language specific processing - just copy
-analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst
-	$(AM_V_CP)cp -f $< $@
+analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
+								  analyser-url-apertium-desc.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) -1 $< -2 analyser-url-apertium-desc.hfst \
+		-o $@
 
 %.att: %.hfst
 	$(AM_V_FST2TXT)$(HFST_FST2FST) $(HFSTFLAGS) -w -i $< \

@@ -215,58 +215,74 @@ Mozvoikko2-%.xpi: %.zhfst
 		$(ZIP) -r $(VERBOSITY) $(ZIPFLAGS) ../../$@ *
 
 #### Upload for distro: ####
+####
+#### Variable defs:
+####
 DATE=$(shell date +%Y%m%d)
-UPLOADSITE=sd@divvun.no:static_files
+UPLOADUSR=sd
+UPLOADSRV=divvun.no
+UPLOADDIR=static_files
+UPLOADSITE=$(UPLOADUSR)@$(UPLOADSRV):$(UPLOADDIR)
 
+####
+#### Targets:
+####
+
+# Upload everything:
 upload: uploadoxt uploadxpi uploadzip uploadzhfst
+
+# Upload OXT only:
 uploadoxt: $(OXT_FILES) $(ALT_WS_OXT_FILES)
 	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
 			stem=$$(basename $$file .oxt) ; \
 			$(SCP) $$file $(UPLOADSITE)/oxts/$$stem-$(DATE).oxt ; \
-			ssh sd@divvun.no "cd staticfiles/oxts/ && \
+			ssh $(UPLOADUSR)@$(UPLOADSRV) "cd $(UPLOADDIR)/oxts/ && \
 			ln -sf $$stem-$(DATE).oxt $$file" ; \
 			echo "  SYMLINK  $$file" ; \
-			echo "  DWNLOAD LINK this version:   http://divvun.no/static_files/oxts/$$stem-$(DATE).oxt" ; \
-			echo "  DWNLOAD LINK newest version: http://divvun.no/static_files/oxts/$$file" ; \
+			echo "  DWNLOAD LINK this version:   http://$(UPLOADSRV)/$(UPLOADDIR)/oxts/$$stem-$(DATE).oxt" ; \
+			echo "  DWNLOAD LINK newest version: http://$(UPLOADSRV)/$(UPLOADDIR)/oxts/$$file" ; \
 		fi \
 	done
 
+# Upload XPI only:
 uploadxpi: $(MOZVOIKKO_FILE)
 	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
 			stem=$$(basename $$file .xpi) ; \
 			$(SCP) $$file $(UPLOADSITE)/xpis/$$stem-$(DATE).xpi ; \
-			ssh sd@divvun.no "cd staticfiles/xpis/ && \
+			ssh $(UPLOADUSR)@$(UPLOADSRV) "cd $(UPLOADDIR)/xpis/ && \
 			ln -sf $$stem-$(DATE).xpi $$file" ; \
 			echo "  SYMLINK  $$file" ; \
-			echo "  DWNLOAD LINK this version:   http://divvun.no/static_files/xpis/$$stem-$(DATE).xpi" ; \
-			echo "  DWNLOAD LINK newest version: http://divvun.no/static_files/xpis/$$file" ; \
+			echo "  DWNLOAD LINK this version:   http://$(UPLOADSRV)/$(UPLOADDIR)/xpis/$$stem-$(DATE).xpi" ; \
+			echo "  DWNLOAD LINK newest version: http://$(UPLOADSRV)/$(UPLOADDIR)/xpis/$$file" ; \
 		fi \
 	done
 
+# Upload ZIP only:
 uploadzip: $(MACVOIKKOZIPFILE)
 	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
 			stem=$$(basename $$file .zip) ; \
 			$(SCP) $$file $(UPLOADSITE)/zips/$$stem-$(DATE).zip ; \
-			ssh sd@divvun.no "cd staticfiles/zips/ && \
+			ssh $(UPLOADUSR)@$(UPLOADSRV) "cd $(UPLOADDIR)/zips/ && \
 			ln -sf $$stem-$(DATE).zip $$file" ; \
 			echo "  SYMLINK  $$file" ; \
-			echo "  DWNLOAD LINK this version:   http://divvun.no/static_files/zips/$$stem-$(DATE).zip" ; \
-			echo "  DWNLOAD LINK newest version: http://divvun.no/static_files/zips/$$file" ; \
+			echo "  DWNLOAD LINK this version:   http://$(UPLOADSRV)/$(UPLOADDIR)/zips/$$stem-$(DATE).zip" ; \
+			echo "  DWNLOAD LINK newest version: http://$(UPLOADSRV)/$(UPLOADDIR)/zips/$$file" ; \
 		fi \
 	done
 
+# Upload ZHFST only:
 uploadzhfst: $(GT_SPELLING_HFST) $(ALT_WS_ZHFST_FILES)
 	$(AM_V_GEN)for file in $^ ; do \
 		if [ -e $$file ]; then \
 			stem=$$(basename $$file .zhfst) ; \
 			$(SCP) $$file $(UPLOADSITE)/zhfsts/$$stem-$(DATE).zhfst ; \
-			ssh sd@divvun.no "cd staticfiles/zhfsts/ && \
+			ssh $(UPLOADUSR)@$(UPLOADSRV) "cd $(UPLOADDIR)/zhfsts/ && \
 			ln -sf $$stem-$(DATE).zhfst $$file" ; \
 			echo "  SYMLINK  $$file" ; \
-			echo "  DWNLOAD LINK this version:   http://divvun.no/static_files/zhfsts/$$stem-$(DATE).zhfst" ; \
-			echo "  DWNLOAD LINK newest version: http://divvun.no/static_files/zhfsts/$$file" ; \
+			echo "  DWNLOAD LINK this version:   http://$(UPLOADSRV)/$(UPLOADDIR)/zhfsts/$$stem-$(DATE).zhfst" ; \
+			echo "  DWNLOAD LINK newest version: http://$(UPLOADSRV)/$(UPLOADDIR)/zhfsts/$$file" ; \
 		fi \
 	done

@@ -15,31 +15,36 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-####### Source file defs: ########
+####### Intermediate target file names: ########
 
-# set this to name of cg3 dependency rules
-GIELLA_GRAMMARCHECKER=grammarchecker.cg3
-
-# set this to the filename of the file being used by voikkogc:
+# set this to the filename of the grammar checker archive:
 GIELLA_GC_ZDISTRO=$(GTLANG2).zcheck
 
-# set this to the filename of the file being used by voikkogc:
+# set this to the filename of the speller archive:
 GIELLA_GC_SPELLER=$(GTLANG2).zhfst
 
+GIELLA_GC_MWEDIS=$(GIELLA_GC_MWEDIS_SRC:.cg3=.bin)
+GIELLA_GC_SPELLER_CG=$(GIELLA_GC_SPELLER_CG_SRC:.cg3=.bin)
+GIELLA_GC_GRAMCHECKER=$(GIELLA_GC_GRAMCHECKER_SRC:.cg3=.bin)
+GIELLA_GC_DISAMBIGUATOR=$(GIELLA_GC_DISAMBIGUATOR_SRC:.cg3=.bin)
+GIELLA_GC_WHSPACE_ANAL=$(GIELLA_GC_WHSPACE_ANAL_SRC:.regex=.hfst)
+
 GIELLA_GC_TOKENISER=tokeniser-gramcheck-gt-desc.pmhfst
-GIELLA_GC_MWEDIS=mwe-dis.bin
-GIELLA_GC_WHSPACE_ANAL=analyser-gt-whitespace.hfst
 GIELLA_GC_ANAL_SPELLER=acceptor.default.hfst
 GIELLA_GC_SPELLER_ERRMOD=errmodel.default.hfst
-GIELLA_GC_SPELLER_CG=spellchecker.bin
-GIELLA_GC_DISAMBIGUATOR=disambiguator.bin
-GIELLA_GC_GRAMCHECKER=grammarchecker.bin
 GIELLA_GC_GENERATOR=generator-gramcheck-gt-norm.hfstol
 GIELLA_GC_ERRORS=errors.xml
 GIELLA_GC_PIPESPEC=pipespec.xml
 
-#! @var GIELLA_GRAMMARCHECKER source for rules of vislcg3 grammar checker
-EXTRA_DIST=$(GIELLA_GRAMMARCHECKER) \
+#! @var GIELLA_GC_GRAMCHECKER_SRC source for rules of vislcg3 grammar checker
+GC_SRC_FILES=$(GIELLA_GC_MWEDIS_SRC) \
+			 $(GIELLA_GC_SPELLER_CG_SRC) \
+			 $(GIELLA_GC_DISAMBIGUATOR_SRC) \
+			 $(GIELLA_GC_WHSPACE_ANAL_SRC) \
+			 $(GIELLA_GC_GRAMCHECKER_SRC) \
+			 $(GIELLA_GC_VALENCY)
+
+EXTRA_DIST=$(GC_SRC_FILES) \
 		   $(GIELLA_GC_ERRORS) \
 		   $(GIELLA_GC_PIPESPEC)
 
@@ -87,10 +92,9 @@ mwe-dis.cg3: \
 		$(top_builddir)/tools/tokenisers/mwe-dis.cg3
 	$(AM_V_CP)cp -f $< $@
 
-$(GIELLA_GC_WHSPACE_ANAL): analyser-gt-whitespace.regex
-	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) --disjunct -i $< -o $@.tmp
-	$(AM_V_FST2FST)$(HFST_FST2FST) -O -i $@.tmp -o $@
-	$(AM_V_at)rm $@.tmp
+$(GIELLA_GC_WHSPACE_ANAL): $(GIELLA_GC_WHSPACE_ANAL_SRC)
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) --disjunct -i $< \
+		$(HFST_FST2FST) -O -o $@
 
 # Copy speller-analyser:
 $(GIELLA_GC_ANAL_SPELLER): \

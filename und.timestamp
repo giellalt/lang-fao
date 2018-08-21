@@ -1,4 +1,9 @@
-$Rev: 169780 $
+$Rev: 169798 $
+Reorganised the source filenames to make it easy to override when needed. Should
+make it possible to solve the bug where src/syntax/disambiguator.cg3 overrides
+the same file in tools/grammarcheckers/.
+
+r169780:
 Refactored repeating patterns of code with variables, fixes upload link after
 XServe crash last winter.
 

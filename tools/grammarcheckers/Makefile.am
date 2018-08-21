@@ -4,6 +4,16 @@
 
 SUBDIRS = filters .
 
+####### Source file names: ########
+GIELLA_GC_MWEDIS_SRC=mwe-dis.cg3
+GIELLA_GC_SPELLER_CG_SRC=spellchecker.cg3
+GIELLA_GC_GRAMCHECKER_SRC=grammarchecker.cg3
+GIELLA_GC_WHSPACE_ANAL_SRC=analyser-gt-whitespace.regex
+
+# Will by default use the one in src/syntax/disambiguator.cg3. To use a
+# different file, specify anther filename here:
+GIELLA_GC_DISAMBIGUATOR_SRC=disambiguator.cg3
+
 # If valency is used, define it here:
 GIELLA_GC_VALENCY=
 
@@ -11,5 +21,5 @@ GIELLA_GC_VALENCY=
 # specify here:
 LOCAL_GC_ZIP_FILES=
 
-# Do not edit below here:
+#### Do NOT edit below here: ####
 include $(top_srcdir)/am-shared/tools-grammarcheckers-dir-include.am

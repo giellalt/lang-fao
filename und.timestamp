@@ -1,4 +1,8 @@
-$Rev: 169798 $
+$Rev: 169825 $
+Added comment to guide placement of local build targets (to avoid future merge
+conflicts), and a comment reminder about other places to change filenames.
+
+r169798:
 Reorganised the source filenames to make it easy to override when needed. Should
 make it possible to solve the bug where src/syntax/disambiguator.cg3 overrides
 the same file in tools/grammarcheckers/.

@@ -695,14 +695,11 @@ morpher-gt-desc.tmp.%: analyser-raw-gt-desc.% \
 define giella_raw_fsts
 %raw-gt-desc.$(1): %raw-gt-desc.tmp.$(1)
 	$$(AM_V_CP)cp -f $$< $$@
-endef
-$(foreach fst,hfst xfst foma,$(eval $(call giella_raw_fsts,$(fst))))
 
-define giella_raw_error_fsts
 %raw-gt-error.$(1): %raw-gt-error.tmp.$(1)
 	$$(AM_V_CP)cp -f $$< $$@
 endef
-$(foreach fst,hfst xfst foma,$(eval $(call giella_raw_error_fsts,$(fst))))
+$(foreach fst,hfst xfst foma,$(eval $(call giella_raw_fsts,$(fst))))
 
 # Default fallback processing for the analysers:
 define giella_default_analysers

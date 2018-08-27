@@ -114,7 +114,7 @@ lexicon-gt-desc-tag_weighted_no_analysis.hfst: lexicon-gt-desc-tag_weighted.hfst
 # HFST
 if WANT_REVERSED_INTERSECT
 # Do this if reversed intersect is enabled:
-hyphenator-raw-gt-desc.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst \
+hyphenator-raw-gt-desc.tmp.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst \
 					 $(PHON_RULES)
 	$(AM_V_INTRSCT)\
 		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
@@ -128,7 +128,7 @@ hyphenator-raw-gt-desc.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst \
 
 else
 # Otherwise do this:
-hyphenator-raw-gt-desc.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst \
+hyphenator-raw-gt-desc.tmp.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst \
 					 $(PHON_RULES)
 	$(AM_V_INTRSCT)\
 		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
@@ -196,6 +196,14 @@ hyphenator-gt-desc-no_fallback.hfst: hyphenator-gt-desc-input.hfst \
 hyphenator-gt-desc.hfst: hyphenator-gt-desc-no_fallback.hfst \
 				  hyphenator-rules-desc-weighted.hfst
 	$(AM_V_GEN)cat $^ > $@
+
+# Copy the raw hyphenator. This enables language-specific post-processing of the
+# raw hyphenator, if needed.
+define giella_raw_fsts
+%raw-gt-desc.$(1): %raw-gt-desc.tmp.$(1)
+	$$(AM_V_CP)cp -f $$< $$@
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_raw_fsts,$(fst))))
 
 ####### Other targets: ###########
 clean-local:

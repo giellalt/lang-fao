@@ -1,4 +1,11 @@
-$Rev: 169825 $
+$Rev: 169958 $
+Fixed hyphenation bug where the lexicon-based hyphenator missed hyphenation
+points, mainly in propernouns, due to flag diacritics. Fixed by telling the fst
+compiler to treat flags as epsilons. Now the lexicon-based hyphenator is beating
+the plain rule-based one in most (all?) cases where there are differences. Must
+be tested better, though.
+
+r169825:
 Added comment to guide placement of local build targets (to avoid future merge
 conflicts), and a comment reminder about other places to change filenames.
 

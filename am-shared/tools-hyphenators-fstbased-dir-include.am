@@ -161,9 +161,10 @@ hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \
 hyphenator-gt-desc-output.hfst: hyphenator-raw-gt-desc.hfst \
 				$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst \
 				$(HYPH_RULES)
-	$(AM_V_HXFST)$(PRINTF) "read regex \
-			@\"$<\" \
-		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" \
+	$(AM_V_HXFST)$(PRINTF) "set flag-is-epsilon ON\n\
+		read regex \
+		[   @\"$<\" \
+		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" ] \
 		.o. @\"$(HYPH_RULES)\" \
 		; \n\
 		 save stack $@\n\

@@ -1,4 +1,8 @@
-$Rev: 169972 $
+$Rev: 169989 $
+Added dir structure and Autotools data to prepare for adding hyphenation
+testing.
+
+r169972:
 Downcasing of derived proper nouns was only applied on the input side, not the
 hyphenated side. This caused such words to be case-shifted: arabialaččat ->
 A^ra^bi^a^lač^čat. This is now fixed.

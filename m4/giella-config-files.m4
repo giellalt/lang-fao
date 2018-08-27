@@ -19,6 +19,9 @@ AC_CONFIG_FILES([Makefile \
                  doc/Makefile \
                  test/Makefile \
                  test/tools/Makefile \
+                 test/tools/hyphenators/Makefile \
+                 test/tools/hyphenators/fstbased/Makefile \
+                 test/tools/hyphenators/patternbased/Makefile \
                  test/tools/mt/Makefile \
                  test/tools/mt/apertium/Makefile \
                  test/tools/spellcheckers/Makefile \

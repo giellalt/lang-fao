@@ -1,4 +1,9 @@
-$Rev: 169958 $
+$Rev: 169972 $
+Downcasing of derived proper nouns was only applied on the input side, not the
+hyphenated side. This caused such words to be case-shifted: arabialaččat ->
+A^ra^bi^a^lač^čat. This is now fixed.
+
+r169958:
 Fixed hyphenation bug where the lexicon-based hyphenator missed hyphenation
 points, mainly in propernouns, due to flag diacritics. Fixed by telling the fst
 compiler to treat flags as epsilons. Now the lexicon-based hyphenator is beating

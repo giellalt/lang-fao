@@ -159,14 +159,19 @@ hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \
 
 # 6. add hyphpoints from 4 with hyph-rules
 hyphenator-gt-desc-output.hfst: hyphenator-raw-gt-desc.hfst \
-				$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst \
-				$(HYPH_RULES)
-	$(AM_V_HXFST)$(PRINTF) "set flag-is-epsilon ON\n\
-		read regex \
-		[   @\"$<\" \
-		.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" ] \
-		.o. @\"$(HYPH_RULES)\" \
-		; \n\
+		$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst \
+		$(HYPH_RULES) \
+		$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+		@\"$<\" \
+	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" \
+	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
+	; \n\
+	define cleanlex\n\
+	set flag-is-epsilon ON\n\
+	read regex \
+	cleanlex .o. @\"$(HYPH_RULES)\" \
+	; \n\
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 

@@ -2,4 +2,4 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = spellcheckers mt hyphenators
+SUBDIRS = fstbased patternbased

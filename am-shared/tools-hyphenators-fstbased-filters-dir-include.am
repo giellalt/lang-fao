@@ -1,0 +1,85 @@
+## Process this file with automake to produce Makefile.in
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+####### Compilation variables: #######
+HFST_REGEXP2FST_FLAGS="--xerox-composition=ON"
+HFST_FORMAT=--format=openfst-tropical
+
+####### Source file and target defs: ########
+GIELLA_FSTHYPHENATOR_FILTER_SRCS=
+
+# Source files copied from src/filters/ OR from
+# $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters:
+GIELLA_SRC_FILTERS=remove-word-boundary.regex \
+                   remove-hyphenation-marks.regex \
+                   remove-infl_deriv-borders.regex \
+                   remove-CLB-strings.regex \
+                   remove-PUNCT-strings.regex \
+                   remove-UseCirc-strings.regex
+
+# These will be included in the distribution:
+EXTRA_DIST=$(GIELLA_FSTHYPHENATOR_FILTER_SRCS) \
+        $(GIELLA_LOCAL_FSTHYPHENATOR_FILTER_SRCS)
+
+GIELLA_FSTHYPHENATOR_FILTER_ALL_SRCS=\
+        $(GIELLA_FSTHYPHENATOR_FILTER_SRCS) \
+        $(GIELLA_LOCAL_FSTHYPHENATOR_FILTER_SRCS) \
+        $(GENERATED_REGEXES) \
+        $(GIELLA_SRC_FILTERS) \
+        $(GT_LOCAL_COPY_FILTER_SRCS)
+
+# This is what we build:
+noinst_DATA=$(GIELLA_FSTHYPHENATOR_FILTER_TARGETS)
+
+# Automatically detect the targets to be built:
+GIELLA_FSTHYPHENATOR_FILTER_TARGETS=
+
+if WANT_FST_HYPHENATOR
+if CAN_HFST
+GIELLA_FSTHYPHENATOR_FILTER_TARGETS+=\
+        $(patsubst %.regex,%.hfst,$(GIELLA_FSTHYPHENATOR_FILTER_ALL_SRCS))
+endif # CAN_HFST
+
+if CAN_XFST
+GIELLA_FSTHYPHENATOR_FILTER_TARGETS+=\
+        $(patsubst %.regex,%.xfst,$(GIELLA_FSTHYPHENATOR_FILTER_ALL_SRCS))
+endif # CAN_XFST
+
+if CAN_FOMA
+GIELLA_FSTHYPHENATOR_FILTER_TARGETS+=\
+        $(patsubst %.regex,%.foma,$(GIELLA_FSTHYPHENATOR_FILTER_ALL_SRCS))
+endif # CAN_FOMA
+endif # WANT_FST_HYPHENATOR
+
+####### Copy regex files from the Giella core if not found locally: ########
+%.regex: $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/desktop/filters/%.regex
+	$(AM_V_CP)cp -f $< $@
+
+%.regex: $(GIELLA_SHARED)/all_langs/src/filters/%.regex
+	$(AM_V_CP)cp -f $< $@
+
+####### ... OR from the src/filters/ dir
+%.regex: $(top_srcdir)/src/filters/%.regex
+	$(AM_V_CP)cp -f $< $@
+
+##########################################
+# General build rules included from here:#
+
+include $(top_srcdir)/am-shared/regex-include.am
+include $(top_srcdir)/am-shared/silent_build-include.am
+
+# vim: set ft=automake:

@@ -80,13 +80,13 @@ lexicon-gt-desc.hfst: $(LEX_RAW)
 
 # 0.a Removed irrelevant stuff from the lexicon
 lexicon-gt-desc-clean.hfst: lexicon-gt-desc.hfst           \
-	$(top_builddir)/src/filters/remove-CLB-strings.hfst    \
-	$(top_builddir)/src/filters/remove-PUNCT-strings.hfst  \
-	$(top_builddir)/src/filters/remove-UseCirc-strings.hfst
+	filters/remove-CLB-strings.hfst    \
+	filters/remove-PUNCT-strings.hfst  \
+	filters/remove-UseCirc-strings.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
-		@\"$(top_builddir)/src/filters/remove-CLB-strings.hfst\"     \
-	.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.hfst\"   \
-	.o. @\"$(top_builddir)/src/filters/remove-UseCirc-strings.hfst\" \
+		@\"filters/remove-CLB-strings.hfst\"     \
+	.o. @\"filters/remove-PUNCT-strings.hfst\"   \
+	.o. @\"filters/remove-UseCirc-strings.hfst\" \
 	.o. @\"$<\" \
 			; \n\
 		 save stack $@\n\
@@ -142,16 +142,16 @@ endif # WANT_REVERSED_INTERSECT
 
 # 5. remove hyph-points from 4, invert
 hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \
-	$(top_builddir)/src/filters/remove-hyphenation-marks.hfst  \
-	$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst \
-	$(top_builddir)/src/filters/remove-word-boundary.hfst      \
+	filters/remove-hyphenation-marks.hfst  \
+	filters/remove-infl_deriv-borders.hfst \
+	filters/remove-word-boundary.hfst      \
 	$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 		@\"$<\" \
 	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
-	.o. @\"$(top_builddir)/src/filters/remove-hyphenation-marks.hfst\"  \
-	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" \
-	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"      \
+	.o. @\"filters/remove-hyphenation-marks.hfst\"  \
+	.o. @\"filters/remove-infl_deriv-borders.hfst\" \
+	.o. @\"filters/remove-word-boundary.hfst\"      \
 			; \n\
 		 invert\n\
 		 save stack $@\n\
@@ -159,12 +159,12 @@ hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \
 
 # 6. add hyphpoints from 4 with hyph-rules
 hyphenator-gt-desc-output.hfst: hyphenator-raw-gt-desc.hfst \
-		$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst \
+		filters/remove-infl_deriv-borders.hfst \
 		$(HYPH_RULES) \
 		$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 		@\"$<\" \
-	.o. @\"$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst\" \
+	.o. @\"filters/remove-infl_deriv-borders.hfst\" \
 	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
 	; \n\
 	define cleanlex\n\

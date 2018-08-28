@@ -1,4 +1,10 @@
-$Rev: 170004 $
+$Rev: 170051 $
+Added filter dir and filter compilation to the fst-based hyphenators. Moved
+filter compilation from src/filters/ to the local filter dir (by copying the
+regex files and then compile them), to make the build process mostly fst format
+independent.
+
+r170004:
 Added support for local modifications of the hyphenator build via a tmp file.
 Simplified tmp handling in the src/ dir.
 

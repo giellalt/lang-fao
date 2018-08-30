@@ -222,11 +222,15 @@ endif # HAVE_AREAS
 
 # Variable to hold filename for file containing all tags used
 # (all symbols starting or ending with '+')
-TAG_FILE=gttags.txt
+TAG_FILE=tags.txt
+
+# We need a separate variable for the actual file ref, so that one can use
+# pattern matching for tag file & fst in other contexts:
+LEX_TAG_FILE=lexicon-$(TAG_FILE)
 
 # Variable to hold filename for fst used as source for extracting tags,
 # sans extension
-TAG_EXTRACTION_FST=$(top_builddir)/src/morphology/lexicon
+TAG_EXTRACTION_FST=$(top_builddir)/src/morphology/%
 
 # Extract tags with specific prefixes, for automatic generation of regexes.
 # Only save the new tag list if there are real differences, otherwise just skip.
@@ -234,7 +238,7 @@ TAG_EXTRACTION_FST=$(top_builddir)/src/morphology/lexicon
 # changes in the tag list, and thus stop unnecessary recompilation of fst's.
 # Also first checks whether the target tag list file exists - if you try to diff
 # against a non-existing file diff will error out and stop the build.
-area-tags.txt: $(TAG_FILE)
+area-tags.txt: $(LEX_TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Area/
 	$(AM_V_GEN)if test -f $@ ; then \
 		if ! diff -q $@ $@.tmp ; then \
@@ -246,7 +250,7 @@ area-tags.txt: $(TAG_FILE)
 		mv -f $@.tmp $@ ; \
 	fi
 
-derivation-tags.txt: $(TAG_FILE)
+derivation-tags.txt: $(LEX_TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Der/
 	$(AM_V_GEN)if test -f $@ ; then \
 		if ! diff -q $@ $@.tmp ; then \
@@ -258,7 +262,7 @@ derivation-tags.txt: $(TAG_FILE)
 		mv -f $@.tmp $@ ; \
 	fi
 
-dialect-tags.txt: $(TAG_FILE)
+dialect-tags.txt: $(LEX_TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Dial/
 	$(AM_V_GEN)if test -f $@ ; then \
 		if ! diff -q $@ $@.tmp ; then \
@@ -270,7 +274,7 @@ dialect-tags.txt: $(TAG_FILE)
 		mv -f $@.tmp $@ ; \
 	fi
 
-grammatical-tags.txt: $(TAG_FILE)
+grammatical-tags.txt: $(LEX_TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Gram/
 	$(AM_V_GEN)if test -f $@ ; then \
 		if ! diff -q $@ $@.tmp ; then \
@@ -282,7 +286,7 @@ grammatical-tags.txt: $(TAG_FILE)
 		mv -f $@.tmp $@ ; \
 	fi
 
-error-tags.txt: $(TAG_FILE)
+error-tags.txt: $(LEX_TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Err/
 	$(AM_V_GEN)if test -f $@ ; then \
 		if ! diff -q $@ $@.tmp ; then \
@@ -294,7 +298,7 @@ error-tags.txt: $(TAG_FILE)
 		mv -f $@.tmp $@ ; \
 	fi
 
-orig_lang-tags.txt: $(TAG_FILE)
+orig_lang-tags.txt: $(LEX_TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp OLang/
 	$(AM_V_GEN)if test -f $@ ; then \
 		if ! diff -q $@ $@.tmp ; then \
@@ -306,7 +310,7 @@ orig_lang-tags.txt: $(TAG_FILE)
 		mv -f $@.tmp $@ ; \
 	fi
 
-semantic-tags.txt: $(TAG_FILE)
+semantic-tags.txt: $(LEX_TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/extract-tags.sh $< $@.tmp Sem/
 	$(AM_V_GEN)if test -f $@ ; then \
 		if ! diff -q $@ $@.tmp ; then \

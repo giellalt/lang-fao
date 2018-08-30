@@ -45,10 +45,23 @@ if WANT_TWOSTEP_INTERSECT
 COMPOSE_INTERSECT_FLAG=--fast
 endif # WANT_TWOSTEP_INTERSECT
 
+# We need to ensure that the URL analyser is built for all configurations where
+# it is needed, even when analysers in general are disabled:
+if WANT_TOKENISERS
+GT_ANALYSERS+=analyser-url-gt-desc.hfstol
+endif # WANT_TOKENISERS
+if WANT_APERTIUM
+GT_ANALYSERS+=analyser-url-gt-desc.hfstol
+endif # WANT_APERTIUM
+if WANT_GRAMCHECK
+GT_ANALYSERS+=analyser-url-gt-desc.hfstol
+endif # WANT_GRAMCHECK
+
 if WANT_MORPHOLOGY
 GT_ANALYSERS+=analyser-gt-desc.hfstol \
 			  analyser-gt-norm.hfstol \
-			  analyser-disamb-gt-desc.hfstol
+			  analyser-disamb-gt-desc.hfstol \
+			  analyser-url-gt-desc.hfstol
 endif # WANT_MORPHOLOGY
 
 if WANT_GENERATION
@@ -685,6 +698,15 @@ morpher-gt-desc.tmp.%: analyser-raw-gt-desc.% \
 			.o. @\"filters/remove-infl_deriv-borders.$*\" \
 			.o. @\"filters/remove-word-boundary.$*\"  ] \
 			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# We want the URL analyser be made available as a standard analyser, both in its
+# own right, and for further processing down the stream.
+analyser-url-gt-desc.%: morphology/url.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "\
+		 load stack $<\n\
+		 $(INVERT_HFST)\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 

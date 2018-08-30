@@ -99,10 +99,10 @@ $(GIELLA_GC_WHSPACE_ANAL): $(GIELLA_GC_WHSPACE_ANAL_SRC)
 # Copy speller-analyser:
 $(GIELLA_GC_ANAL_SPELLER): \
 		../spellcheckers/fstbased/desktop/analyser-desktopspeller-gt-norm.hfst \
-		filters/make-CG-tags.hfst
+		filters/make-desktopspeller-CG-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 				@\"$<\" \
-			.o. @\"filters/make-CG-tags.hfst\".i   \
+			.o. @\"filters/make-desktopspeller-CG-tags.hfst\".i   \
 			;\n\
 		 save stack $@.tmp\n\
 		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)

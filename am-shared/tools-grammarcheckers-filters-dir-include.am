@@ -20,14 +20,14 @@ HFST_REGEXP2FST_FLAGS="--xerox-composition=ON"
 
 # Variable to hold filename for file containing all tags used
 # (all symbols starting or ending with '+')
-TAG_FILE=gramcheck_tags.txt
+TAG_FILE=tags.txt
 
 # Variable to hold filename for fst used as source for extracting tags,
 # sans extension
-TAG_EXTRACTION_FST=$(top_builddir)/tools/spellcheckers/fstbased/desktop/analyser-desktopspeller-gt-norm
+TAG_EXTRACTION_FST=$(top_builddir)/tools/spellcheckers/fstbased/desktop/analyser-%-gt-norm
 
 ####### Source file and target defs: ########
-GT_TOKENISERS_FILTER_SRCS=make-CG-tags.regex
+GT_TOKENISERS_FILTER_SRCS=make-desktopspeller-CG-tags.regex
 
 # These will be included in the distribution:
 EXTRA_DIST=$(GT_TOKENISERS_FILTER_SRCS) \
@@ -66,7 +66,7 @@ endif # WANT_GRAMCHECK
 ####### Build rules for creating regexes from tag list: #######
 
 ### Reformat tags:
-make-CG-tags.regex: $(TAG_FILE)
+make-%-CG-tags.regex: %-$(TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/taglist2make_CG_tags_regex.sh $< > $@
 
 ####### Copy regex files from the Giella core if not found locally: ########

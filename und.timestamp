@@ -1,4 +1,9 @@
-$Rev: 170051 $
+$Rev: 170172 $
+Massive rewrite of filter codes and automatically generated tag conversions, all
+done to handle bug #2474 (URL tag not correctly formatted in the tokeniser
+output). The bug should be fixed now.
+
+r170051:
 Added filter dir and filter compilation to the fst-based hyphenators. Moved
 filter compilation from src/filters/ to the local filter dir (by copying the
 regex files and then compile them), to make the build process mostly fst format

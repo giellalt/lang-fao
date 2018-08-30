@@ -36,13 +36,13 @@ set need-separators off
 
 Define morphology @bin"analyser_relabelled-disamb-gt-desc.hfst" ;
 
-Define url @bin"../../src/morphology/url.hfst".i ;
+Define url @bin"analyser-url-gt-desc.hfst" ;
 
-Define incondform      Punct | {“} | {”} | {…} | {­} ;
+Define incondform      Punct|{“}|{”}|{…}|{‚}|{‘}|{’}|{–}|{—}|{­}|{_}|{<}|{>}|{■}|{«}|{»}|{�}|{@}|{'} ;
 
 Define blank           Whitespace | incondform ;
 
-Define incondword       morphology & [ incondform 0:?* ] ;
+Define incondword       morphology & [ incondform:?* 0:?* ] ;
 Define morphoword       morphology                   LC([blank | #]) RC([blank | # ]);
 Define urlword          url                          LC([blank | #]) RC([blank | # ]);
 

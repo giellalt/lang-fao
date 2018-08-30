@@ -1,4 +1,8 @@
-$Rev: 170172 $
+$Rev: 170181 $
+Fixed a bug in the previous commit that surfaced when enabling tokenisers but
+not grammar checkers.
+
+r170172:
 Massive rewrite of filter codes and automatically generated tag conversions, all
 done to handle bug #2474 (URL tag not correctly formatted in the tokeniser
 output). The bug should be fixed now.

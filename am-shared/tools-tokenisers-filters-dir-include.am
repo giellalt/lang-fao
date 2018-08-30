@@ -27,13 +27,20 @@ TAG_FILE=tags.txt
 TAG_EXTRACTION_FST=$(top_builddir)/src/analyser-%-gt-desc
 
 ####### Source file and target defs: ########
-GT_TOKENISERS_FILTER_SRCS=make-disamb-CG-tags.regex \
-						  make-gramcheck-CG-tags.regex \
-						  make-url-CG-tags.regex
+GT_TOKENISERS_FILTER_SRCS=
+
+if WANT_TOKENISERS
+GT_TOKENISERS_FILTER_SRCS+=make-disamb-CG-tags.regex \
+						   make-url-CG-tags.regex
+endif # WANT_TOKENISERS
+
+if WANT_GRAMCHECK
+GT_TOKENISERS_FILTER_SRCS+=make-gramcheck-CG-tags.regex \
+						   make-url-CG-tags.regex
+endif # WANT_GRAMCHECK
 
 # These will be included in the distribution:
-EXTRA_DIST=$(GT_TOKENISERS_FILTER_SRCS) \
-		   $(GT_LOCAL_TOKENISERS_FILTER_SRCS)
+EXTRA_DIST=$(GT_LOCAL_TOKENISERS_FILTER_SRCS)
 
 GT_TOKENISERS_FILTER_ALL_SRCS=\
         $(GT_TOKENISERS_FILTER_SRCS) \

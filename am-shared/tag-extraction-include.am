@@ -35,7 +35,7 @@ GREPTAGSCOMMAND=( grep -E '(^\+.|.\+$$)' || echo '+NoTagsFound' )
 
 if CAN_HFST
 # Hfst: break on comma + space in three steps, to preserve space as a symbol.
-sigma.txt: $(TAG_EXTRACTION_FST).hfst
+%-sigma.txt: $(TAG_EXTRACTION_FST).hfst
 	$(AM_V_GEN)$(HFST_SUMMARIZE) -v 2>/dev/null $^ \
 		| grep -A1 '^sigma set' \
 		| grep -v '^sigma set' \
@@ -50,7 +50,7 @@ else
 if CAN_XFST
 # Special treatment of space (" "), break on space, special treatment of
 # reserved symbols ("X") and double quote. The Xfst file needs to be sorted.
-sigma.txt: $(TAG_EXTRACTION_FST).xfst
+%-sigma.txt: $(TAG_EXTRACTION_FST).xfst
 	$(AM_V_GEN)$(XFST) -q \
 			-e "load stack $^" \
 			-e "print sigma" \
@@ -69,12 +69,12 @@ sigma.txt: $(TAG_EXTRACTION_FST).xfst
 
 else
 # If neither Hfst nor Xfst is enabled, create an empty file:
-sigma.txt:
+%-sigma.txt:
 	touch $@
 
 endif # CAN_XFST
 endif # CAN_HFST
 
-$(TAG_FILE): sigma.txt
+%-$(TAG_FILE): %-sigma.txt
 	$(AM_V_GEN)$(GREPTAGSCOMMAND) < $< > $@	
 

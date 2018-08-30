@@ -18,48 +18,31 @@
 ####### Source file and target defs: ########
 
 # These will be included in the distribution:
-EXTRA_DIST=$(TAGSET_SRCS) $(REGEX_SRCS) README.txt
+EXTRA_DIST=$(GT_MT_FILTER_SRCS)
+
+MT_FILTER_ALL_SRCS=$(GT_MT_FILTER_SRCS) $(GENERATED_REGEXES)
 
 # This is what we build:
-noinst_DATA=$(GT_REGEX_TARGETS) $(RELABEL_TARGETS)
+noinst_DATA=$(GT_FILTER_TARGETS)
 
 # Automatically detect the targets to be built:
-GT_REGEX_TARGETS=
+GT_FILTER_TARGETS=
 
 if WANT_APERTIUM
-RELABEL_TARGETS=apertium.relabel
-
 if CAN_HFST
-GT_REGEX_TARGETS+=$(patsubst %.regex,%.hfst,$(REGEX_SRCS))
+GT_FILTER_TARGETS+=$(patsubst %.regex,%.hfst,$(MT_FILTER_ALL_SRCS))
 endif # CAN_HFST
-
 endif # WANT_APERTIUM
 
-# Variable to hold filename for file containing all tags used
-# (all symbols starting or ending with '+')
-TAG_FILE=tags.txt
-
-# Variable to hold filename for fst used as source for extracting tags,
-# sans extension
-TAG_EXTRACTION_FST=$(top_builddir)/tools/mt/analyser-%-gt-desc
-
-# Convert GT-tags to Apertium-tags:
-apertiumtags.txt: mt-tags.txt
-	$(AM_V_GEN)tr -d '+' < $< \
-		| tr '/[:upper:]' '_[:lower:]' \
-		| awk '{print "%<"$$0"%>"}' > $@
-
-# Generate relabel file for replacing Giella tags with Apertium tags:
-apertium.relabel: mt-tags.txt \
-				  apertiumtags.txt
-	$(AM_V_GEN)paste $^ | tr -d '%' > $@
-
+####### Other targets: ###########
+clean-local:
+	-rm -f *.hfstol *.xfst *.foma *.hfst
 
 ##########################################
 # General build rules included from here:#
 
 include $(top_srcdir)/am-shared/regex-include.am
-include $(top_srcdir)/am-shared/tag-extraction-include.am
+include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

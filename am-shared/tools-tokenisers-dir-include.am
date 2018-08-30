@@ -97,10 +97,10 @@ $(ABBR): \
 # Take the analyser file from src/*.hfst, and replace the Giella tags with
 # CG compatible ones:
 analyser-%-gt-desc.hfst: $(top_builddir)/src/analyser-%-gt-desc.hfst \
-						 filters/make-CG-tags.hfst
+						 filters/make-%-CG-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 				@\"$<\" \
-			.o. @\"filters/make-CG-tags.hfst\".i   \
+			.o. @\"filters/make-$*-CG-tags.hfst\".i   \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
@@ -118,7 +118,7 @@ analyser_relabelled-%-gt-desc.hfst: analyser-%-gt-desc.hfst \
 # This is the real tokeniser build target:
 tokeniser-%.pmhfst: tokeniser-%.pmscript \
                     analyser_relabelled-%.hfst \
-                    ../../src/morphology/url.hfst
+                    analyser-url-gt-desc.hfst
 	$(AM_V_PM2FST)$(HFST_PMATCH2FST) < $< > $@.tmp
 	$(AM_V_at)mv -f $@.tmp $@
 

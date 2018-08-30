@@ -45,4 +45,7 @@ analyser-mt-gt-desc.hfst: analyser-mt-gt-desc.tmp.hfst \
 clean-local:
 	-rm -f *.hfst *.gz *.cg3 *.bin *.hfstol
 
+##########################################
+# General build rules included from here:#
+
 include $(top_srcdir)/am-shared/tools-mt-apertium-dir-include.am

@@ -8,9 +8,13 @@ TAGSET_SRCS=
 # List reorder regex source files here:
 REGEX_SRCS=modify-tags.regex 
 
-clean-local:
-	rm -f *.hfst
-
 ####### Other targets: ###########
+
+# cleaning
+clean-local:
+	-rm -f *.hfst *.relabel *tags.txt
+
+##########################################
+# General build rules included from here:#
 
 include $(top_srcdir)/am-shared/tools-mt-apertium-tagsets-dir-include.am

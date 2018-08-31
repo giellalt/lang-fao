@@ -31,9 +31,21 @@
 GT_RAW=
 
 # Variable to hold intermediate *.hfst targets to force make to go via them
-# before building *.hfstol target:
+# before building *.hfstol target.
 GT_FSTs_NO_INSTALL=$(subst hfstol,hfst,$(filter %.hfstol, \
 		$(GT_ANALYSERS) $(GT_GENERATORS)))
+
+# Add other targets that should be built but not installed,
+# such as the URL analyser, to the GT_FSTs_NO_INSTALL variable:
+if CAN_HFST
+GT_FSTs_NO_INSTALL+=analyser-url-gt-desc.hfst
+endif # CAN_HFST
+if CAN_XFST
+GT_FSTs_NO_INSTALL+=analyser-url-gt-desc.xfst
+endif # CAN_XFST
+if CAN_FOMA
+GT_FSTs_NO_INSTALL+=analyser-url-gt-desc.foma
+endif # CAN_FOMA
 
 ##### BEGIN Hfst target list #####
 if CAN_HFST
@@ -45,23 +57,10 @@ if WANT_TWOSTEP_INTERSECT
 COMPOSE_INTERSECT_FLAG=--fast
 endif # WANT_TWOSTEP_INTERSECT
 
-# We need to ensure that the URL analyser is built for all configurations where
-# it is needed, even when analysers in general are disabled:
-if WANT_TOKENISERS
-GT_ANALYSERS+=analyser-url-gt-desc.hfstol
-endif # WANT_TOKENISERS
-if WANT_APERTIUM
-GT_ANALYSERS+=analyser-url-gt-desc.hfstol
-endif # WANT_APERTIUM
-if WANT_GRAMCHECK
-GT_ANALYSERS+=analyser-url-gt-desc.hfstol
-endif # WANT_GRAMCHECK
-
 if WANT_MORPHOLOGY
 GT_ANALYSERS+=analyser-gt-desc.hfstol \
 			  analyser-gt-norm.hfstol \
-			  analyser-disamb-gt-desc.hfstol \
-			  analyser-url-gt-desc.hfstol
+			  analyser-disamb-gt-desc.hfstol
 endif # WANT_MORPHOLOGY
 
 if WANT_GENERATION

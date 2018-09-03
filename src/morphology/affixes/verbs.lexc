@@ -702,8 +702,9 @@ LEXICON s81 ! kíkjast
 LEXICON s82 ! fýlast
   reflinf ;
 
-LEXICON s82 ! samsinnast
+LEXICON s83 ! samsinnast
   reflinf ;
+
 
 
 
@@ -884,10 +885,10 @@ LEXICON s82 ! samsinnast
 !  s8  ;
 !  s30 ;
 !
-!LEXICON s9/30
-!  s9  ;
-!  s30 ;
-!
+LEXICON s9/30
+  s9  ;
+  s30 ;
+
 
 
 
@@ -1381,6 +1382,60 @@ LEXICON SYNGJA ! XXX check
      +V+PrsPrc:syngjandi VANDI ;
      +V+PrfPrc:sungið PASS  ;
 
+
+
+LEXICON HOGGA ! høgga
+         +V+Inf:høgga    PASS  ;
+ +V+Ind+Prs+1Sg:høggi     PASS  ;
+ +V+Ind+Prs+2Sg:høggur  PASS  ;
+ +V+Ind+Prs+3Sg:høggur  PASS  ;
+  +V+Ind+Prs+Pl:høgga    PASS  ;
+ +V+Ind+Prt+1Sg:høgdi        PASS  ;
+ +V+Ind+Prt+2Sg:høgdi      PASS  ;
+ +V+Ind+Prt+3Sg:hjó        PASS  ;
+ +V+Ind+Prt+3Sg:høgg        PASS  ;
+  +V+Ind+Prt+Pl:høgdu      PASS  ;
+      +V+Imp+Sg:høgg      PASS  ;
+      +V+Imp+Pl:høggið    PASS  ;
+      +V+PrsPrc:høggandi VANDI ;
+      +V+PrfPrc:høggin     PASS  ; ! XXX fix link to adj
+         +V+Sup:høggið     PASS  ;
+
+LEXICON KVODA
+         +V+Inf:kvøða  PASS  ;
+ +V+Ind+Prs+1Sg:kvøði     PASS  ;
+ +V+Ind+Prs+2Sg:kvøður  PASS  ;
+ +V+Ind+Prs+3Sg:kvøður  PASS  ;
+  +V+Ind+Prs+Pl:kvøða    PASS  ;
+ +V+Ind+Prt+1Sg:kvøgdi        PASS  ;
+ +V+Ind+Prt+2Sg:kvøgdi      PASS  ;
+ +V+Ind+Prt+3Sg:kjað        PASS  ;
+ +V+Ind+Prt+3Sg:kvøddi        PASS  ;
+ +V+Ind+Prt+3Sg:kvaddi        PASS  ;
+  +V+Ind+Prt+Pl:kvóðu      PASS  ;
+      +V+Imp+Sg:kvøgg      PASS  ;
+      +V+Imp+Pl:kvøðið    PASS  ;
+      +V+PrsPrc:kvøðandi VANDI ;
+      +V+PrfPrc:kvøddin     PASS  ; ! XXX fix link to adj
+         +V+Sup:kvøddið     PASS  ;
+
+
+             
+LEXICON FLYGGJA
+         +Inf:flýggja    PASS  ;
+ +Ind+Prs+1Sg:flýggi     PASS  ;
+ +Ind+Prs+2Sg:flýggjar  PASS  ;
+ +Ind+Prs+3Sg:flýggjar  PASS  ;
+  +Ind+Prs+Pl:flýggja    PASS  ;
+ +Ind+Prt+1Sg:flýddu        PASS  ;
+ +Ind+Prt+2Sg:flýddu      PASS  ;
+ +Ind+Prt+3Sg:flýddu        PASS  ;
+  +Ind+Prt+Pl:flýddu      PASS  ;
+      +Imp+Sg:flý      PASS  ;
+      +Imp+Pl:flýggið    PASS  ;
+      +PrsPrc:flýggjandi VANDI ;
+      +PrfPrc:flýtt     PASS  ; ! XXX fix link to adj
+         +Sup:flýtt     PASS  ;
 
 
 

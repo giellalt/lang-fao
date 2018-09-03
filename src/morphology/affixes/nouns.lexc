@@ -123,9 +123,9 @@ LEXICON k5 ! bóndi
                !k6          ;
                !k7          ;
 
-!LEXICON k6/8
-               !k6          ;
-               !k8          ;
+LEXICON k6/8
+               k6          ;
+               k8          ;
 
 !LEXICON k6e/12e
                !k6e         ;
@@ -332,9 +332,9 @@ LEXICON k_flt14
  +N+Msc:%^UUML S_M_PLDAT    ;
  +N+Msc:       S_M_PLGEN    ;
 
-!LEXICON k15/6
-               !k15         ;
-               !k6          ;
+LEXICON k15/6
+              k15         ;
+              k6          ;
 
 LEXICON k15 ! gestur
   k15e    ;
@@ -523,9 +523,9 @@ LEXICON k26/12
     !k28    ;
     !k12    ;
 
-!LEXICON k28/23
-    !k28    ;
-    !k23    ;
+LEXICON k28/23
+    k28    ;
+    k23    ;
 
 !LEXICON k28e/12e
     !k28e   ;
@@ -1026,8 +1026,14 @@ LEXICON k53 ! aðal
 !  kv1 ;
 !  kv2 ;
 
-!LEXICON kv_flt ! gætur, paradigm missing in dictionary
-!  +N+Pl+Nom:%>ur # ;
+LEXICON kv_flt0
+  +N+Pl+Nom: # ;
+  +N+Pl+Acc: # ;
+  +N+Pl+Dat: # ;
+  +N+Pl+Gen: # ;
+  
+LEXICON kv_flt ! gætur, paradigm missing in dictionary
+  +N+Pl+Nom:%>ur # ;
 
 LEXICON kv1/6f
   kv1 ;
@@ -1572,6 +1578,9 @@ LEXICON h2 ! hjarta
  +N+Neu:%^UUML N_PLD       ;
  +N+Neu:%^UUML N_PLG_na    ;
 
+LEXICON h2e
+h1e ;
+
 LEXICON h3/41
  h3 ;
  h41 ;
@@ -2076,9 +2085,15 @@ LEXICON h37e
  +N+Neu: S_N_SGG_s ;
 
 LEXICON h38
+h38e ;
+h_flt38 ;
+
+LEXICON h38e 
  +N+Neu: S_N_SGNA    ;
  +N+Neu: S_N_SGD_i ;
  +N+Neu: S_N_SGG_s ;
+
+LEXICON h_flt38 
  +N+Neu: N_PLD       ;
  +N+Neu: N_PLG       ;
 

@@ -39,7 +39,7 @@ endif # WANT_LEXC_ALIGNMENT
 #! @param GT_XML_SRCS optional, space separated list of xml source file names
 
 # Shared source files
-GT_SHARED_SRCS=url.lexc
+GT_SHARED_SRCS=url.tmp.lexc
 
 GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS_L1_L2) $(L1) $(L2) \
 				$(GENERATED_LEXC_SRCS) $(GT_XML_SRCS) $(GT_LOCAL_SRCS) \
@@ -138,8 +138,14 @@ lexicon.tmp.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_SRCS) $(GENERATED_LEXC_SRCS)
 lexicon-L2.tmp.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_L2_SRCS) $(GENERATED_LEXC_SRCS)
 	$(AM_V_GEN)cat $^ > $@
 
-# Copy shared files to local dir before building:
-%.lexc: $(GIELLA_SHARED)/all_langs/src/morphology/%.lexc
+# Copy shared url lexc file to local dir as tmp file before building. The tmp
+# file will cause the fst to also be tmp, and thus allow further local
+# processing if needed.
+%.tmp.lexc: $(GIELLA_SHARED)/all_langs/src/morphology/%.lexc
+	$(AM_V_CP)cp -f $< $@
+
+# Copy shared stems files to local dir before building:
+generated_files/%.lexc: $(GIELLA_SHARED)/all_langs/src/morphology/stems/%.lexc
 	$(AM_V_CP)cp -f $< $@
 
 ####### If reversed compose-intersect is enabled, reverse it here: #######
@@ -147,7 +153,7 @@ lexicon-L2.tmp.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_L2_SRCS) $(GENERATED_LEXC_SRCS)
 	$(AM_V_REVERSE)$(HFST_REVERSE) $< > $@
 
 ####### TMP files to allow local overrides - copy by default: #######
-DEPGEN=$(AM_V_CP)cp -f $< $@
+DEPGEN=$(AM_V_CP)mv -f $< $@
 %.foma: %.tmp.foma ; $(DEPGEN)
 %.hfst: %.tmp.hfst ; $(DEPGEN)
 %.xfst: %.tmp.xfst ; $(DEPGEN)

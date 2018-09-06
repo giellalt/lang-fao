@@ -61,7 +61,6 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 # happens here:
 analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/orthography/spellrelax.compose.hfst          \
-			$(top_builddir)/src/morphology/url.hfst                          \
 			$(top_builddir)/src/filters/remove-dialect-tags.hfst             \
 			$(top_builddir)/src/filters/remove-variant-tags.hfst             \
 			$(top_builddir)/src/filters/remove-number-string-tags.hfst       \

@@ -1,4 +1,8 @@
-$Rev: 170418 $
+$Rev: 170435 $
+Fixed bug: the url analyser is located elsewhere, and should not be processed
+here in any case.
+
+r170418:
 Made url analyser compilation open for local adaptations, by going via a tmp
 file.
 

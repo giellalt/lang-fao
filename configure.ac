@@ -49,7 +49,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 ### typically spellers are released more often than the language package):
 AC_SUBST([SPELLERVERSION], [0.1])
 
-########## LANGUAGE DEFINITIONS ##########
+########## LANGUAGE SPECIFIC SETTINGS ##########
 # GLANG is the language code used to identify this project; it should be the
 # same as the directory name in $GIELLA_HOME/*langs/ and the same as the ISO 639
 # three-letter code for the language.
@@ -105,6 +105,33 @@ AM_CONDITIONAL([HAVE_ALT_ORTHS], [test "x$ALT_ORTHS" != "x" \
 # variation within the -norm- fst's.
 AC_SUBST([DIALECTS], [""])
 AM_CONDITIONAL([HAVE_DIALECTS], [test "x$DIALECTS" != "x"])
+
+########## LANGUAGE SPECIFIC BUILD SETTINGS ##########
+
+# NO_PHONOLOGY = yes
+# ... makes the bulid process skip compilation of anything in the phonology/
+# dir. This is mainly useful when building from external sources such that the
+# lexical fst built in the morphology/ dir is actually the full analyser.
+# The variable can also be set if a language is such that everything is
+# encoded in lexc, and thus does not need any phonology processing.
+# Default: empty, meaning that phonologies will be compiled.
+AC_SUBST([NO_PHONOLOGY], [""])
+AM_CONDITIONAL([SKIP_PHONOLOGY], [test "x$NO_PHONOLOGY" = "x"])
+
+# LEXICON_IN_PHONOLOGY
+# Set this to 'yes' IFF a) your phonology is formulated using rewrite rules,
+# AND b) your phonology file contains a reference to the lexical transducer in
+# the following form:
+#
+# load stack morphology/lexicon.&FST&
+#
+# where @FST@ will be automatically replaced with the relevant fst suffix (xfst,
+# hfst, foma). When done like that, the phonology rules will be composed with
+# the lexicon directly, which should lead to much faster compilaton of xfst
+# rewrite rules.
+AC_SUBST([LEXREF_IN_XFSCRIPT], [""])
+AM_CONDITIONAL([LEXREF_IN_PHONOLOGY], [test "x$LEXREF_IN_XFSCRIPT" != "x"])
+
 
 # Tests and sets up giella-core directories and scripts
 gt_PROG_SCRIPTS_PATHS

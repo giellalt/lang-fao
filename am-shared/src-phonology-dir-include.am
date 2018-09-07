@@ -68,7 +68,13 @@ GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.foma
 endif # CAN_FOMA
 endif # WANT_L2
 
+# If SKIP_PHONOLOGY is defined, noinst_DATA will be outcommented and thus by
+# definition empty. This causes make to skip everything. Cf configure.ac
+if SKIP_PHONOLOGY
+
 noinst_DATA=$(GT_PHONOLOGY)
+
+endif # SKIP_PHONOLOGY
 
 # Build instructions for the reversed rule file:
 %.rev.hfst: %.compose.hfst

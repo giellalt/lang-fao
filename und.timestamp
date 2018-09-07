@@ -1,4 +1,11 @@
-$Rev: 170451 $
+$Rev: 170545 $
+Added a configure.ac setting to skip phonology compilation, typically used when
+compiling external sources, that provides a full analyser in src/morphology.
+Also added a configuration option to compile xfscript files with lexicon
+references in them, so allow for faster and more optimised rule composition.
+This variable has no effect yet, the rest of the machinery is missing.
+
+r170451:
 Remove all tmp files when cleaning.
 
 r170445:

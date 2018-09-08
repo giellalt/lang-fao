@@ -173,6 +173,15 @@ noinst_DATA=$(GT_RAW)              \
 # morphological boundaries and hyphenation symbols. As such, this transducer
 # can NOT be used for morphological analysis, and hardly for generation.
 
+# if SKIP_PHONOLOGY is defined, the following block will be commented out:
+if SKIP_PHONOLOGY
+generator-raw-gt-desc.tmp.hfst: morphology/lexicon.hfst
+	$(AM_V_CP)cp -f $< $@
+
+analyser-raw-gt-desc.tmp.%: morphology/lexicon.%
+	$(AM_V_CP)cp -f $< $@
+else !SKIP_PHONOLOGY
+
 # First build a tmp1 raw file as the intersection between lexicon and rules:
 # HFST
 if WANT_REVERSED_INTERSECT
@@ -287,6 +296,8 @@ analyser-raw-gt-desc.tmp.%: analyser-raw-gt-desc.tmp1.%       \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
+
+endif !SKIP_PHONOLOGY
 
 # Target to build glossing raw analysers, ie one where all tags are in the
 # position specified in lexc:

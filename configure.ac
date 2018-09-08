@@ -116,7 +116,7 @@ AM_CONDITIONAL([HAVE_DIALECTS], [test "x$DIALECTS" != "x"])
 # encoded in lexc, and thus does not need any phonology processing.
 # Default: empty, meaning that phonologies will be compiled.
 AC_SUBST([NO_PHONOLOGY], [""])
-AM_CONDITIONAL([SKIP_PHONOLOGY], [test "x$NO_PHONOLOGY" = "x"])
+AM_CONDITIONAL([SKIP_PHONOLOGY], [test "x$NO_PHONOLOGY" != "x"])
 
 # LEXICON_IN_PHONOLOGY
 # Set this to 'yes' IFF a) your phonology is formulated using rewrite rules,

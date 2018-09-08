@@ -1,4 +1,8 @@
-$Rev: 170545 $
+$Rev: 170561 $
+Improved and completed the code to skip building phonology fst's. Clearer logic
+and comments.
+
+r170545:
 Added a configure.ac setting to skip phonology compilation, typically used when
 compiling external sources, that provides a full analyser in src/morphology.
 Also added a configuration option to compile xfscript files with lexicon

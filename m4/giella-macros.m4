@@ -693,6 +693,7 @@ AC_PATH_PROG([PERL],   [perl],     [false], [$PATH$PATH_SEPARATOR$with_perl])
 AC_PATH_PROG([XZ],     [xz],       [false], [$PATH$PATH_SEPARATOR$with_xz])
 AM_CONDITIONAL([CAN_XZ], [test "x$ac_cv_prog_XZ" != xfalse])
 
+############ (Hfst) compilation optimisation: ############
 # Enable hyperminimisation of the lexical transducer - default is 'no'
 AC_ARG_ENABLE([hyperminimisation],
               [AS_HELP_STRING([--enable-hyperminimisation],
@@ -724,6 +725,14 @@ AC_ARG_ENABLE([reversed-intersect],
               [enable_reversed_intersect=$enableval],
               [enable_reversed_intersect=no])
 AM_CONDITIONAL([WANT_REVERSED_INTERSECT], [test "x$enable_reversed_intersect" != xno])
+
+############ Tool switches: ############
+# Enable all stable tools in one go:
+AC_ARG_ENABLE([all_tools],
+			  [AS_HELP_STRING([--enable-all-tools],
+			  [build all tools (excluding unstable or experimental tools, which must be explicitly enabled with --enable-grammarchecker, --enable-dialects, --enable-glossers, --enable-phonetic, --enable-downcaseerror, --enable-L2, --enable-pattern-hyphenators, --enable-fomaspeller, --enable-hfst-mobile-speller, --enable-vfstspeller) @<:@default=no@:>@])],
+			  [enable_all_tools=$enableval],
+			  [enable_all_tools=no])
 
 # Enable morphological analysers - default is 'yes'
 AC_ARG_ENABLE([analysers],
@@ -788,7 +797,7 @@ AC_ARG_ENABLE([spellers],
               [AS_HELP_STRING([--enable-spellers],
                               [build any/all spellers @<:@default=no@:>@])],
               [enable_spellers=$enableval],
-              [enable_spellers=no])
+              [enable_spellers=$enable_all_tools])
 AS_IF([test "x$enable_grammarchecker" != xno],[enable_spellers=yes])
 AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
 
@@ -853,14 +862,14 @@ AS_IF([test "x$enable_vfstspeller" = "xyes" -a "x$enable_mobile_hfstspeller" = x
               [enable_vfstspeller=no])
 AM_CONDITIONAL([WANT_VFST_SPELLER], [test "x$enable_vfstspeller" != xno])
 
-# Disable Hunspell production by default:
-AC_ARG_ENABLE([hunspell],
-              [AS_HELP_STRING([--enable-hunspell],
-                              [enable hunspell building (dependent on --enable-spellers) @<:@default=no@:>@])],
-              [enable_hunspell=$enableval],
-              [enable_hunspell=no])
-AS_IF([test "x$enable_spellers" = xno], [enable_hunspell=no])
-AM_CONDITIONAL([WANT_HUNSPELL], [test "x$enable_hunspell" != xno])
+## Disable Hunspell production by default:
+#AC_ARG_ENABLE([hunspell],
+#              [AS_HELP_STRING([--enable-hunspell],
+#                              [enable hunspell building (dependent on --enable-spellers) @<:@default=no@:>@])],
+#              [enable_hunspell=$enableval],
+#              [enable_hunspell=no])
+#AS_IF([test "x$enable_spellers" = xno], [enable_hunspell=no])
+#AM_CONDITIONAL([WANT_HUNSPELL], [test "x$enable_hunspell" != xno])
 
 # Enable pattern hyphenator - default is 'no'; requires fst hyphenator
 AC_ARG_ENABLE([pattern-hyphenators],
@@ -877,7 +886,7 @@ AC_ARG_ENABLE([fst-hyphenator],
               [AS_HELP_STRING([--enable-fst-hyphenator],
                               [build fst-based hyphenator @<:@default=no@:>@])],
               [enable_fst_hyphenator=$enableval],
-              [enable_fst_hyphenator=no])
+              [enable_fst_hyphenator=$enable_all_tools])
 # Automatically enable the fst hyphenator if pattern hyphenator is enabled:
 AS_IF([test "x$enable_pattern_hyphenators" = "xyes"], 
       [enable_fst_hyphenator=yes])
@@ -891,7 +900,7 @@ AC_ARG_ENABLE([dicts],
               [AS_HELP_STRING([--enable-dicts],
                               [enable dictionary transducers @<:@default=no@:>@])],
               [enable_dicts=$enableval],
-              [enable_dicts=no])
+              [enable_dicts=$enable_all_tools])
 AM_CONDITIONAL([WANT_DICTIONARIES], [test "x$enable_dicts" != xno])
 
 # Enable Oahpa transducers - default is 'no'
@@ -899,7 +908,7 @@ AC_ARG_ENABLE([oahpa],
               [AS_HELP_STRING([--enable-oahpa],
                               [enable oahpa transducers @<:@default=no@:>@])],
               [enable_oahpa=$enableval],
-              [enable_oahpa=no])
+              [enable_oahpa=$enable_all_tools])
 AM_CONDITIONAL([WANT_OAHPA], [test "x$enable_oahpa" != xno])
 
 # Enable L2 fst's for Oahpa:
@@ -936,7 +945,7 @@ AC_ARG_ENABLE([apertium],
               [AS_HELP_STRING([--enable-apertium],
                               [enable apertium transducers @<:@default=no@:>@])],
               [enable_apertium=$enableval],
-              [enable_apertium=no])
+              [enable_apertium=$enable_all_tools])
 AS_IF([test "x$enable_apertium" = "xyes" -a "x$new_enough_python_available" = "xno"], 
       [enable_apertium=no
        AC_MSG_ERROR([Python3 missing or too old, Python 3.5 or newer required])])
@@ -964,7 +973,7 @@ AC_ARG_ENABLE([tokenisers],
               [AS_HELP_STRING([--enable-tokenisers],
                               [enable tokenisers @<:@default=no@:>@])],
               [enable_tokenisers=$enableval],
-              [enable_tokenisers=no])
+              [enable_tokenisers=$enable_all_tools])
 AS_IF([test x$enable_tokenisers == xyes -a x$enable_analysers == xno],
     [AC_MSG_ERROR([You need to enable analysers to build tokenisers])])
 AM_CONDITIONAL([WANT_TOKENISERS], [test "x$enable_tokenisers" != xno])
@@ -977,7 +986,7 @@ AC_ARG_ENABLE([morpher],
               [enable_morpher=no])
 AM_CONDITIONAL([WANT_MORPHER], [test "x$enable_morpher" != xno])
 
-# Enable pattern hyphenator - default is 'no'; requires fst hyphenator
+# Enable dialect-specific analysers and tools, such as spellers:
 AC_ARG_ENABLE([dialects],
               [AS_HELP_STRING([--enable-dialects],
                               [build dialect specific fst's and spellers @<:@default=no@:>@])],

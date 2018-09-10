@@ -1,4 +1,10 @@
-$Rev: 170561 $
+$Rev: 170632 $
+Added --enable-all-tools option to configure.ac, to allow for easier configura-
+tion and testing of all common tools. Unstable or experimental tools must still
+be explicitly enabled. Commented out the Hunspell speller config completely, it
+is not supported. Corrected a comment.
+
+r170561:
 Improved and completed the code to skip building phonology fst's. Clearer logic
 and comments.
 

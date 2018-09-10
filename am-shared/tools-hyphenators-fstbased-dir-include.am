@@ -110,6 +110,17 @@ lexicon-gt-desc-tag_weighted_no_analysis.hfst: lexicon-gt-desc-tag_weighted.hfst
 		-o $@
 
 # 4. compose-intersect with phon-rules
+
+# Unless there is no phonology component:
+if SKIP_PHONOLOGY
+hyphenator-raw-gt-desc.tmp.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst
+	$(AM_V_HMINIM)\
+		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-o $@
+
+else !SKIP_PHONOLOGY
+
 # First build a tmp1 raw file as the intersection between lexicon and rules:
 # HFST
 if WANT_REVERSED_INTERSECT
@@ -139,6 +150,7 @@ hyphenator-raw-gt-desc.tmp.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 endif # WANT_REVERSED_INTERSECT
+endif !SKIP_PHONOLOGY
 
 # 5. remove hyph-points from 4, invert
 hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \

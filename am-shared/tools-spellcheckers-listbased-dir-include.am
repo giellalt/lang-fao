@@ -30,17 +30,17 @@ GT_SPELLER_SRC_XFST=../analyser-speller-gt-norm.xfst
 GT_COMMON_LISTSPELLER_XFST=
 
 ####### Automake targets: ########
-if WANT_HUNSPELL
-
-if CAN_HFST
-GT_COMMON_LISTSPELLER_HFST+=generator-listspeller-gt-norm.hfst
-endif # CAN_HFST
-
-if CAN_XFST
-GT_COMMON_LISTSPELLER_XFST+=analyser-listspeller-gt-norm.xfst
-endif # CAN_XFST
-
-endif # WANT_HUNSPELL
+#if WANT_HUNSPELL
+#
+#if CAN_HFST
+#GT_COMMON_LISTSPELLER_HFST+=generator-listspeller-gt-norm.hfst
+#endif # CAN_HFST
+#
+#if CAN_XFST
+#GT_COMMON_LISTSPELLER_XFST+=analyser-listspeller-gt-norm.xfst
+#endif # CAN_XFST
+#
+#endif # WANT_HUNSPELL
 
 noinst_DATA=$(GT_COMMON_LISTSPELLER_HFST) $(GT_COMMON_LISTSPELLER_XFST)
 

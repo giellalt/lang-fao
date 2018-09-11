@@ -125,7 +125,7 @@ AM_CONDITIONAL([SKIP_PHONOLOGY], [test "x$NO_PHONOLOGY" != "x"])
 #
 # load stack morphology/lexicon.&FST&
 #
-# where @FST@ will be automatically replaced with the relevant fst suffix (xfst,
+# where &FST& will be automatically replaced with the relevant fst suffix (xfst,
 # hfst, foma). When done like that, the phonology rules will be composed with
 # the lexicon directly, which should lead to much faster compilaton of xfst
 # rewrite rules.

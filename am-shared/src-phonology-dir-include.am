@@ -33,38 +33,64 @@ EXTRA_DIST=$(GT_PHONOLOGY_SRCS)
 # The rule transducer(s) will be built, not installed
 GT_PHONOLOGY=
 if CAN_HFST
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(addsuffix .hfst.xfscript, $(basename $(GT_PHONOLOGY_SRCS)))
+else !LEXREF_IN_PHONOLOGY
 GT_PHONOLOGY+=$(addsuffix .compose.hfst, $(basename $(GT_PHONOLOGY_SRCS)))
 GT_PHONOLOGY+=$(addsuffix .lookup.hfst,  $(basename $(GT_PHONOLOGY_SRCS)))
 if WANT_REVERSED_INTERSECT
 GT_PHONOLOGY+=$(addsuffix .rev.hfst, $(basename $(GT_PHONOLOGY_SRCS)))
 endif # WANT_REVERSED_INTERSECT
+endif !LEXREF_IN_PHONOLOGY
 endif # CAN_HFST
 
 if CAN_XFST
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(addsuffix .xfst.xfscript, $(basename $(GT_PHONOLOGY_SRCS)))
+else !LEXREF_IN_PHONOLOGY
 GT_PHONOLOGY+=$(addsuffix .compose.xfst, $(basename $(GT_PHONOLOGY_SRCS)))
 GT_PHONOLOGY+=$(addsuffix .lookup.xfst,  $(basename $(GT_PHONOLOGY_SRCS)))
+endif !LEXREF_IN_PHONOLOGY
 endif # CAN_XFST
+
 if CAN_FOMA
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(addsuffix .foma.xfscript, $(basename $(GT_PHONOLOGY_SRCS)))
+else !LEXREF_IN_PHONOLOGY
 GT_PHONOLOGY+=$(addsuffix .compose.foma, $(basename $(GT_PHONOLOGY_SRCS)))
 GT_PHONOLOGY+=$(addsuffix .lookup.foma,  $(basename $(GT_PHONOLOGY_SRCS)))
+endif !LEXREF_IN_PHONOLOGY
 endif # CAN_FOMA
 
 if WANT_L2
 if CAN_HFST
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.hfst.xfscript
+else !LEXREF_IN_PHONOLOGY
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.hfst
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.hfst
 if WANT_REVERSED_INTERSECT
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.rev.hfst
 endif # WANT_REVERSED_INTERSECT
+endif !LEXREF_IN_PHONOLOGY
 endif # CAN_HFST
 
 if CAN_XFST
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.xfst.xfscript
+else !LEXREF_IN_PHONOLOGY
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.xfst
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.xfst
+endif !LEXREF_IN_PHONOLOGY
 endif # CAN_XFST
+
 if CAN_FOMA
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.foma.xfscript
+else !LEXREF_IN_PHONOLOGY
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.foma
 GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.foma
+endif !LEXREF_IN_PHONOLOGY
 endif # CAN_FOMA
 endif # WANT_L2
 
@@ -89,6 +115,12 @@ endif !SKIP_PHONOLOGY
 		| $(HFST_MINIMIZE) >> $@ ; done
 	$(AM_V_at)rm -f split*.hfst
 
+# Build instruction for the xfscript with lexicon ref:
+define giella_phon_w_lex_ref
+%.$(1).xfscript: %.xfscript
+	$$(AM_V_GEN)sed 's/&FST&/$(1)/' $$< > $$@
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_phon_w_lex_ref,$(fst))))
 
 ####### Other targets: ###########
 clean-local:

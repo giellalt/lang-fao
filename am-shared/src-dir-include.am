@@ -183,6 +183,30 @@ analyser-raw-gt-desc.tmp.%: morphology/lexicon.%
 else !SKIP_PHONOLOGY
 
 # First build a tmp1 raw file as the intersection between lexicon and rules:
+# 1.a: Xfst-script file with lexicon reference, for faster compilation and rule
+# composition:
+
+if LEXREF_IN_PHONOLOGY
+
+# HFST
+generator-raw-gt-desc.tmp1.hfst: phonology/$(GTLANG)-phon.hfst.xfscript \
+					 morphology/lexicon.hfst
+	$(AM_V_HXFST)printf "save stack $@\nquit\n" | cat $< - \
+		| $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
+
+# XEROX
+analyser-raw-gt-desc.tmp1.xfst: phonology/$(GTLANG)-phon.xfst.xfscript \
+			 morphology/lexicon.xfst
+	$(AM_V_XFST)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
+
+# FOMA
+analyser-raw-gt-desc.tmp1.foma: phonology/$(GTLANG)-phon.foma.xfscript \
+			 morphology/lexicon.foma
+	$(AM_V_FOMA)$(FOMA) $(VERBOSITY) -l $< -e "save stack $@" -s
+
+else !LEXREF_IN_PHONOLOGY
+
+# 1.b: Using either twolc or xfst script files without a lexicon reference:
 # HFST
 if WANT_REVERSED_INTERSECT
 # Do this is reversed intersect is enabled:
@@ -230,6 +254,7 @@ analyser-raw-gt-desc.tmp1.foma: morphology/lexicon.foma \
 		 save stack $@\n\
 		 quit\n" \
 		| $(FOMA) $(VERBOSITY)
+endif !LEXREF_IN_PHONOLOGY
 
 # ... then apply tag reordering to tmp1 to ensure the same tag order in all
 # subsequent processing; this creates the regular tmp file, which can further

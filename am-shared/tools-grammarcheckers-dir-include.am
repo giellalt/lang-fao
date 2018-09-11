@@ -137,9 +137,8 @@ $(GIELLA_GC_GENERATOR): $(top_builddir)/src/$(GIELLA_GC_GENERATOR)
 # Validate and copy the error messages:
 $(GIELLA_GC_ERRORS): $(srcdir)/errors.source.xml
 	$(AM_V_GEN)divvun-validate-suggest $<
-	$(AM_V_GEN)echo "<!-- NB! This file is generated from $<. DO NOT EDIT! -->"\
-		> $@
-	$(AM_V_CP) cat $< >> $@
+	$(AM_V_GEN)awk "{print} NR==1{print \"<!-- NB! This file is generated from $<. DO NOT EDIT! -->\"}" \
+		$< > $@
 
 # Finally build the zhfst file, and make a copy in a subdir named '4', so that
 # we can test it without installing it (the '4' dir is a voikko requirement):

@@ -1,4 +1,9 @@
-$Rev: 170717 $
+$Rev: 170776 $
+Moved punctuation definitions from each language to giella-shared/all_langs/.
+Makes much more sense, and will help in resolving random tokenisation bugs due
+to « and ».
+
+r170717:
 Implemented the option to compile phonology rules directly against the lexicon,
 for better rule compilation optimisations. Kevin: fixed a bug in xml generation
 for the grammar checker.

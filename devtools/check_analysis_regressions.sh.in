@@ -249,11 +249,18 @@ function open_diffs() {
         cp $diff_file.txt $corpusdir/$diff_file.goldst.txt
         svn add --force $corpusdir/$diff_file.goldst.txt
     else
-      if test x$can_merge = xyes; then
-        $difftool $corpusdir/$diff_file.goldst.txt $diff_file.txt \
-          $merge_option $corpusdir/$diff_file.goldst.txt
+      if cmp --silent $corpusdir/$diff_file.goldst.txt $diff_file.txt ; then
+        echo "$diff_file.txt and $corpusdir/$diff_file.goldst.txt are identical"
       else
-        $difftool $corpusdir/$diff_file.goldst.txt $diff_file.txt
+        echo "$diff_file.txt and $corpusdir/$diff_file.goldst.txt are \
+different. They will be opened in the graphical diff tool $difftool for \
+verification."
+        if test x$can_merge = xyes; then
+          $difftool $corpusdir/$diff_file.goldst.txt $diff_file.txt \
+            $merge_option $corpusdir/$diff_file.goldst.txt
+        else
+          $difftool $corpusdir/$diff_file.goldst.txt $diff_file.txt
+        fi
       fi
     fi
 }

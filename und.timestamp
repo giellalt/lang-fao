@@ -1,4 +1,10 @@
-$Rev: 170776 $
+$Rev: 171249 $
+Improved shell script for analysis regression testing, so that in cases of no
+diffs it will only print a short message and continue. The test for no diff is
+also much faster than a real diff. Improves processing time a lot for large test
+corpora.
+
+r170776:
 Moved punctuation definitions from each language to giella-shared/all_langs/.
 Makes much more sense, and will help in resolving random tokenisation bugs due
 to « and ».

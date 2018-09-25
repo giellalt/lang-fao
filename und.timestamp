@@ -1,4 +1,9 @@
-$Rev: 171249 $
+$Rev: 171273 $
+Thanks to Børre, the analysis regression script will now remove diffs due to
+different handling of dynamic compounds when comparing old and new tokenisation.
+This makes it much easier to spot real differences between the two.
+
+r171249:
 Improved shell script for analysis regression testing, so that in cases of no
 diffs it will only print a short message and continue. The test for no diff is
 also much faster than a real diff. Improves processing time a lot for large test

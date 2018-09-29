@@ -294,7 +294,12 @@ function run_cg_tests() {
 
 # Run the basic morphological analysis + pre- and postprocessing
 function run_tests() {
-    $giella_core/scripts/preprocess \
+    if test ! -f $abbr_file; then
+      echo "Abbreviation file for preprocessing - $abbr_file - does not exist."
+      echo "Plese generate before running this script again."
+      exit 1
+    fi
+    $giella_core/scripts/preprocess --abbr=$abbr_file \
       < $corpus_file \
       | $lookuptool $analyser.$fstsuffix \
       | $giella_core/scripts/lookup2cg \
@@ -327,7 +332,7 @@ function run_htokeniser_tests() {
     if test "x$old_new_hfst_diff" = "xyes" ; then
 	   diff $morpha_corpus.htokoldcomp.txt $morpha_corpus.hfstol.txt > diff.txt
 	   $giella_core/devtools/cmp_patch.py < diff.txt > cmp_merge.patch
-	   patch $morpha_corpus.htokoldcomp.txt cmp_merge.patch
+	   patch -s $morpha_corpus.htokoldcomp.txt cmp_merge.patch
 	   $difftool $morpha_corpus.hfstol.txt $morpha_corpus.htokoldcomp.txt
 	fi
     run_cg_tests

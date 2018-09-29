@@ -1,4 +1,9 @@
-$Rev: 171273 $
+$Rev: 171459 $
+Improved regression check script: check that the abbr file is built, for
+improved traditional tokenisation; and make the patch command silent, for less
+noise during testing.
+
+r171273:
 Thanks to Børre, the analysis regression script will now remove diffs due to
 different handling of dynamic compounds when comparing old and new tokenisation.
 This makes it much easier to spot real differences between the two.

@@ -18,7 +18,7 @@ giella_core=@GIELLA_CORE@
 corpusdir=$top_srcdir/test/data
 
 # File variables:
-abbr_file=$top_srcdir/tools/tokenisers/abbr.txt
+abbr_file=$top_builddir/tools/tokenisers/abbr.txt
 source_corpus=analysis_check_corpus
 corpus_file=$corpusdir/$source_corpus.txt
 
@@ -302,7 +302,9 @@ function run_tests() {
     $giella_core/scripts/preprocess --abbr=$abbr_file \
       < $corpus_file \
       | $lookuptool $analyser.$fstsuffix \
+      | perl -pe's/\t[0-9]+$//' \
       | $giella_core/scripts/lookup2cg \
+      | awk -F\" '{OFS=FS}{ gsub(/_/," ",$2); print }' \
       | perl $giella_core/scripts/sort-cg-cohort.pl \
       | grep -v '^$' \
       > $morpha_corpus.$fstsuffix.txt

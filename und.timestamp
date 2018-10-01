@@ -1,4 +1,10 @@
-$Rev: 171459 $
+$Rev: 171508 $
+More improvements to the analysis regression check: undo space->underscore from
+lookup2cg (to avoid meaningless diffs when comparing to the new hfst-tokenise),
+and removed weight info. Also changed the dir ref for abbr.txt to ref the build
+dir, not the source dir, as that is where the file is generated.
+
+r171459:
 Improved regression check script: check that the abbr file is built, for
 improved traditional tokenisation; and make the patch command silent, for less
 noise during testing.

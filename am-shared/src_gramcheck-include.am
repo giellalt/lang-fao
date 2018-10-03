@@ -23,6 +23,9 @@ analyser-gramcheck-gt-desc.tmp.%: analyser-raw-gt-desc.%      \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-orthography-tags.%         \
 					filters/remove-usage-tags.%               \
+					filters/remove-Use_GC-tags.%              \
+					filters/remove-Use_minus_PMatch-strings.% \
+					filters/remove-Use_PMatch-tags.%          \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
@@ -31,6 +34,9 @@ analyser-gramcheck-gt-desc.tmp.%: analyser-raw-gt-desc.%      \
 			.o. @\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
+			.o. @\"filters/remove-Use_minus_PMatch-strings.$*\" \
+			.o. @\"filters/remove-Use_GC-tags.$*\"              \
+			.o. @\"filters/remove-Use_PMatch-tags.$*\"          \
 			.o. @\"$<\"                                         \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$*\"        \
@@ -69,6 +75,9 @@ generator-gramcheck-gt-norm.tmp.%: generator-raw-gt-desc.%    \
 					filters/remove-orthography-tags.%         \
 					filters/remove-usage-tags.%               \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.$*\" \
@@ -85,6 +94,9 @@ generator-gramcheck-gt-norm.tmp.%: generator-raw-gt-desc.%    \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/remove-error-strings.$*\"            \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"$<\"                                         \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$*\"        \
@@ -105,6 +117,9 @@ analyser-gramcheck-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%   \
 					filters/remove-orthography-tags.%           \
 					filters/remove-usage-tags.%                 \
 					filters/remove-variant-tags.%               \
+					filters/remove-Use_GC-tags.%                \
+					filters/remove-Use_minus_PMatch-strings.%   \
+					filters/remove-Use_PMatch-tags.%            \
 					orthography/spellrelax.$(1).compose.%       \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
@@ -113,6 +128,9 @@ analyser-gramcheck-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%   \
 			.o. @\"filters/remove-variant-tags.$$*\"               \
 			.o. @\"filters/remove-orthography-tags.$$*\"           \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"           \
+			.o. @\"filters/remove-Use_minus_PMatch-strings.$$*\"   \
+			.o. @\"filters/remove-Use_GC-tags.$$*\"                \
+			.o. @\"filters/remove-Use_PMatch-tags.$$*\"            \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
@@ -145,6 +163,9 @@ generator-gramcheck-gt-norm.$(1).tmp.%: generator-raw-gt-desc.% \
 					filters/remove-orthography-tags.%         \
 					filters/remove-usage-tags.%               \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.% \
 					orthography/downcase-derived_proper-strings.compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
@@ -162,6 +183,9 @@ generator-gramcheck-gt-norm.$(1).tmp.%: generator-raw-gt-desc.% \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
 			.o. @\"filters/remove-error-strings.$$*\"            \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"        \
@@ -180,7 +204,7 @@ $(foreach alt_ws,$(ALT_WSS),$(eval $(call alt_ws_gramchk_fsts,$(alt_ws))))
 
 # Additional target to support languages with alternative orthographies:
 define alt_orth_disamb_fst
-analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
+analyser-gramcheck-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-hyphenation-marks.%           \
 					filters/remove-infl_deriv-borders.%          \
 					filters/remove-word-boundary.%               \
@@ -189,6 +213,9 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-usage-tags.%                  \
 					filters/remove-variant-tags.%                \
 					filters/remove-Orth_IPA-strings.%            \
+					filters/remove-Use_GC-tags.%                 \
+					filters/remove-Use_minus_PMatch-strings.%    \
+					filters/remove-Use_PMatch-tags.%             \
 					orthography/spellrelax.$(1).compose.%        \
 					orthography/inituppercase.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.% \
@@ -199,6 +226,9 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 			.o. @\"filters/remove-usage-tags.$$*\"                   \
 			.o. @\"filters/remove-variant-tags.$$*\"                 \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"             \
+			.o. @\"filters/remove-Use_minus_PMatch-strings.$$*\"     \
+			.o. @\"filters/remove-Use_GC-tags.$$*\"                  \
+			.o. @\"filters/remove-Use_PMatch-tags.$$*\"              \
 			.o. @\"$$<\"                                             \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"            \
@@ -215,7 +245,7 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 		 quit\n" | $$(XFST_TOOL)
 
 # ... alternatively using a filter from RAW to target:
-analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
+analyser-gramcheck-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-hyphenation-marks.%           \
 					filters/remove-infl_deriv-borders.%          \
 					filters/remove-word-boundary.%               \
@@ -224,6 +254,9 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-usage-tags.%                  \
 					filters/remove-variant-tags.%                \
 					filters/remove-Orth_IPA-strings.%            \
+					filters/remove-Use_GC-tags.%                 \
+					filters/remove-Use_minus_PMatch-strings.%    \
+					filters/remove-Use_PMatch-tags.%             \
 					orthography/spellrelax.$(1).compose.%        \
 					orthography/inituppercase.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.% \
@@ -234,6 +267,9 @@ analyser-disamb-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 			.o. @\"filters/remove-usage-tags.$$*\"                   \
 			.o. @\"filters/remove-variant-tags.$$*\"                 \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"             \
+			.o. @\"filters/remove-Use_minus_PMatch-strings.$$*\"     \
+			.o. @\"filters/remove-Use_GC-tags.$$*\"                  \
+			.o. @\"filters/remove-Use_PMatch-tags.$$*\"              \
 			.o. @\"$$<\"                                             \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"            \
@@ -267,6 +303,9 @@ generator-gramcheck-gt-norm.$(1).tmp.%: generator-raw-gt-desc.% \
 					filters/remove-orthography-tags.%         \
 					filters/remove-usage-tags.%               \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					orthography/$(DEFAULT_ORTH)-to-$(1).compose.% \
 					orthography/downcase-derived_proper-strings.compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
@@ -284,6 +323,9 @@ generator-gramcheck-gt-norm.$(1).tmp.%: generator-raw-gt-desc.% \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
 			.o. @\"filters/remove-error-strings.$$*\"            \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"        \
@@ -316,6 +358,9 @@ generator-gramcheck-gt-norm.$(1).tmp.%: generator-raw-gt-desc.% \
 					filters/remove-orthography-tags.%         \
 					filters/remove-usage-tags.%               \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					orthography/raw-to-$(1).compose.%         \
 					orthography/downcase-derived_proper-strings.compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
@@ -333,6 +378,9 @@ generator-gramcheck-gt-norm.$(1).tmp.%: generator-raw-gt-desc.% \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
 			.o. @\"filters/remove-error-strings.$$*\"            \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"        \
@@ -371,6 +419,9 @@ generator-gramcheck-gt-norm_$(1).tmp.%: generator-raw-gt-desc.% \
 					filters/remove-orthography-tags.%         \
 					filters/remove-usage-tags.%               \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					filters/remove-all_areas_but_$(1)-strings.% \
 					orthography/downcase-derived_proper-strings.compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
@@ -388,6 +439,9 @@ generator-gramcheck-gt-norm_$(1).tmp.%: generator-raw-gt-desc.% \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
 			.o. @\"filters/remove-error-strings.$$*\"            \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"filters/remove-all_areas_but_$(1)-strings.$$*\" \
 			.o. @\"$$<\"                                         \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \

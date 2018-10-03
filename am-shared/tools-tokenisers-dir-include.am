@@ -94,16 +94,25 @@ $(ABBR): \
 ### Build a tokenising analyser based on a pmatch script and the
 ### regular disamb-analyser - and the same applies to the grammar checker:
 
-# Take the analyser file from src/*.hfst, and replace the Giella tags with
-# CG compatible ones:
-analyser-%-gt-desc.hfst: $(top_builddir)/src/analyser-%-gt-desc.hfst \
-						 filters/make-%-CG-tags.hfst
-	$(AM_V_HXFST)$(PRINTF) "read regex \
+# Shared command for the following two targets:
+CMD=$(AM_V_HXFST)$(PRINTF) "read regex \
 				@\"$<\" \
 			.o. @\"filters/make-$*-CG-tags.hfst\".i   \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
+# Take the analyser file from src/*.hfst, and replace the Giella tags with
+# CG compatible ones:
+# a) for pmatchdisamb:
+analyser-%-gt-desc.hfst: $(top_builddir)/src/analyser-pmatch%-gt-desc.hfst \
+						 filters/make-%-CG-tags.hfst
+	$(CMD)
+
+# b. for (regular disamb &) and gramcheck:
+analyser-%-gt-desc.hfst: $(top_builddir)/src/analyser-%-gt-desc.hfst \
+						 filters/make-%-CG-tags.hfst
+	$(CMD)
 
 # Prepare analysers used for building the tokenisers:
 analyser_relabelled-%-gt-desc.hfst: analyser-%-gt-desc.hfst \

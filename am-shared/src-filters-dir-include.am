@@ -61,6 +61,12 @@ GIELLA_FILTER_CORE_REGEX_SRCS=\
 				remove-Prop-strings.regex                 \
 				remove-PUNCT-strings.regex                \
 				remove-RCmpnd-strings.regex               \
+				remove-Use_PMatch-strings.regex           \
+				remove-Use_PMatch-tags.regex              \
+				remove-Use_minus_PMatch-strings.regex     \
+				remove-Use_minus_PMatch-tags.regex        \
+				remove-Use_GC-strings.regex               \
+    			remove-Use_GC-tags.regex                  \
 				remove-UseCirc-strings.regex              \
 				remove-use_marg-strings.regex             \
 				remove-variant-strings.regex              \
@@ -80,6 +86,7 @@ GIELLA_FILTER_CORE_REGEX_SRCS=\
 				remove-OLang_SME-strings.regex            \
 				remove-OLang_SWE-strings.regex            \
 				remove-OLang_UND-strings.regex
+
 
 # 2) GTD Core **generated** regex files:
 GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS=\

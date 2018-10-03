@@ -59,8 +59,8 @@ endif # WANT_TWOSTEP_INTERSECT
 
 if WANT_MORPHOLOGY
 GT_ANALYSERS+=analyser-gt-desc.hfstol \
-			  analyser-gt-norm.hfstol \
-			  analyser-disamb-gt-desc.hfstol
+			  analyser-gt-norm.hfstol
+
 endif # WANT_MORPHOLOGY
 
 if WANT_GENERATION
@@ -89,8 +89,7 @@ GT_RAW+=analyser-raw-gt-desc.xfst
 
 if WANT_MORPHOLOGY
 GT_ANALYSERS+=analyser-gt-desc.xfst \
-			  analyser-gt-norm.xfst \
-			  analyser-disamb-gt-desc.xfst
+			  analyser-gt-norm.xfst
 endif # WANT_MORPHOLOGY
 
 if WANT_GENERATION
@@ -119,8 +118,7 @@ GT_RAW+=analyser-raw-gt-desc.foma
 
 if WANT_MORPHOLOGY
 GT_ANALYSERS+=analyser-gt-desc.foma \
-			  analyser-gt-norm.foma \
-			  analyser-disamb-gt-desc.foma
+			  analyser-gt-norm.foma
 endif # WANT_MORPHOLOGY
 
 if WANT_GENERATION

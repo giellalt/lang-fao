@@ -1,4 +1,14 @@
-$Rev: 171508 $
+$Rev: 171601 $
+Major reorganisation to properly handle pmatch preparations, by splitting the
+disamb-analyser compilation in two: one going to the regular disamb analyser,
+and the other going to the pmatch variant. We use the two tags +Use/PMatch and
++Use/-Pmatch in complementary distribution to specify paths for each, one path
+containing pmatch backtracking poings (used with the --giella format of
+hfst-tokenise), and one without. The backtracking machinery is used to handle
+ambiguous tokenisation. Increased required version of giella-shared due to new
+required filters.
+
+r171508:
 More improvements to the analysis regression check: undo space->underscore from
 lookup2cg (to avoid meaningless diffs when comparing to the new hfst-tokenise),
 and removed weight info. Also changed the dir ref for abbr.txt to ref the build

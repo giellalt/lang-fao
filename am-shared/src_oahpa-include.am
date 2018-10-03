@@ -85,6 +85,9 @@ analyser-oahpa-gt-norm.tmp.%: analyser-raw-gt-desc.%          \
 					filters/remove-word-boundary.%            \
 					filters/remove-orthography-tags.%         \
 					filters/remove-Orth_IPA-strings.%         \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
@@ -97,6 +100,9 @@ analyser-oahpa-gt-norm.tmp.%: analyser-raw-gt-desc.%          \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/remove-area-tags.$*\"                \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"$<\" \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$*\"        \
@@ -140,6 +146,9 @@ generator-oahpa-gt-norm.tmp.%: analyser-raw-gt-desc.%         \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.$*\" \
@@ -156,6 +165,9 @@ generator-oahpa-gt-norm.tmp.%: analyser-raw-gt-desc.%         \
 			.o. @\"filters/remove-orig_lang-tags.$*\"           \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"$<\"                                         \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$*\"        \
@@ -188,6 +200,9 @@ generator-oahpa-gt-norm-dial_$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-orig_lang-tags.%                \
 					filters/remove-NG-strings.%                    \
 					filters/remove-error-strings.%                 \
+					filters/remove-Use_GC-strings.%                \
+					filters/remove-Use_minus_PMatch-tags.%         \
+					filters/remove-Use_PMatch-strings.%            \
 					orthography/downcase-derived_proper-strings.compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.$$*\"     \
@@ -204,6 +219,9 @@ generator-oahpa-gt-norm-dial_$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-orthography-tags.$$*\"             \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"             \
 			.o. @\"filters/remove-NG-strings.$$*\"                   \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"        \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"               \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"           \
 			.o. @\"filters/remove-all_dialects_but_$(1)-strings.$$*\"\
 			.o. @\"$$<\"                                             \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\"\
@@ -324,6 +342,9 @@ analyser-oahpa-gt-error.tmp.%: analyser-raw-gt-error.%     \
 					filters/remove-word-boundary.%            \
 					filters/remove-orthography-tags.%         \
 					filters/remove-Orth_IPA-strings.%         \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
@@ -335,6 +356,9 @@ analyser-oahpa-gt-error.tmp.%: analyser-raw-gt-error.%     \
 			.o. @\"filters/remove-semantic-tags.$*\"            \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"$<\" \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$*\"        \
@@ -371,19 +395,22 @@ analyser-oahpa-gt-downcaseerror.tmp.%: analyser-oahpa-gt-error.tmp.% \
 # Additional targets to support multiple writing systems:
 
 define oahpa_alt_ws_fsts
-analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.% \
-					filters/remove-area-tags.%            \
-					filters/remove-dialect-tags.%         \
-					filters/remove-orig_lang-tags.%       \
-					filters/remove-usage-tags.%           \
-					filters/remove-semantic-tags.%        \
-					filters/remove-hyphenation-marks.%    \
-					filters/remove-error-strings.%        \
-					filters/remove-infl_deriv-borders.%   \
-					filters/remove-word-boundary.%        \
-					filters/remove-orthography-tags.%     \
-					filters/remove-Orth_IPA-strings.%     \
-					orthography/spellrelax.$(1).compose.% \
+analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%  \
+					filters/remove-area-tags.%             \
+					filters/remove-dialect-tags.%          \
+					filters/remove-orig_lang-tags.%        \
+					filters/remove-usage-tags.%            \
+					filters/remove-semantic-tags.%         \
+					filters/remove-hyphenation-marks.%     \
+					filters/remove-error-strings.%         \
+					filters/remove-infl_deriv-borders.%    \
+					filters/remove-word-boundary.%         \
+					filters/remove-orthography-tags.%      \
+					filters/remove-Orth_IPA-strings.%      \
+					filters/remove-Use_GC-strings.%        \
+					filters/remove-Use_minus_PMatch-tags.% \
+					filters/remove-Use_PMatch-strings.%    \
+					orthography/spellrelax.$(1).compose.%  \
 					orthography/$$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/remove-area-tags.$$*\"                \
@@ -394,6 +421,9 @@ analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.% \
 			.o. @\"filters/remove-semantic-tags.$$*\"            \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"        \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"       \
@@ -422,6 +452,9 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					orthography/$$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.$$*\" \
@@ -438,6 +471,9 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"           \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"        \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"       \
@@ -453,19 +489,22 @@ $(foreach altws,$(ALT_WSS),$(eval $(call oahpa_alt_ws_fsts,$(altws))))
 # Additional targets to support alternative orthographies:
 
 define oahpa_alt_orth_fsts
-analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.% \
-					filters/remove-area-tags.%            \
-					filters/remove-dialect-tags.%         \
-					filters/remove-orig_lang-tags.%       \
-					filters/remove-usage-tags.%           \
-					filters/remove-semantic-tags.%        \
-					filters/remove-hyphenation-marks.%    \
-					filters/remove-error-strings.%        \
-					filters/remove-infl_deriv-borders.%   \
-					filters/remove-word-boundary.%        \
-					filters/remove-orthography-tags.%     \
-					filters/remove-Orth_IPA-strings.%     \
-					orthography/spellrelax.$(1).compose.% \
+analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%  \
+					filters/remove-area-tags.%             \
+					filters/remove-dialect-tags.%          \
+					filters/remove-orig_lang-tags.%        \
+					filters/remove-usage-tags.%            \
+					filters/remove-semantic-tags.%         \
+					filters/remove-hyphenation-marks.%     \
+					filters/remove-error-strings.%         \
+					filters/remove-infl_deriv-borders.%    \
+					filters/remove-word-boundary.%         \
+					filters/remove-orthography-tags.%      \
+					filters/remove-Orth_IPA-strings.%      \
+					filters/remove-Use_GC-strings.%        \
+					filters/remove-Use_minus_PMatch-tags.% \
+					filters/remove-Use_PMatch-strings.%    \
+					orthography/spellrelax.$(1).compose.%  \
 					orthography/$$(DEFAULT_ORTH)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/remove-area-tags.$$*\"                \
@@ -476,6 +515,9 @@ analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.% \
 			.o. @\"filters/remove-semantic-tags.$$*\"            \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"        \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"       \
@@ -486,19 +528,22 @@ analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.% \
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
 
-analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.% \
-					filters/remove-area-tags.%            \
-					filters/remove-dialect-tags.%         \
-					filters/remove-orig_lang-tags.%       \
-					filters/remove-usage-tags.%           \
-					filters/remove-semantic-tags.%        \
-					filters/remove-hyphenation-marks.%    \
-					filters/remove-error-strings.%        \
-					filters/remove-infl_deriv-borders.%   \
-					filters/remove-word-boundary.%        \
-					filters/remove-orthography-tags.%     \
-					filters/remove-Orth_IPA-strings.%     \
-					orthography/spellrelax.$(1).compose.% \
+analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%  \
+					filters/remove-area-tags.%             \
+					filters/remove-dialect-tags.%          \
+					filters/remove-orig_lang-tags.%        \
+					filters/remove-usage-tags.%            \
+					filters/remove-semantic-tags.%         \
+					filters/remove-hyphenation-marks.%     \
+					filters/remove-error-strings.%         \
+					filters/remove-infl_deriv-borders.%    \
+					filters/remove-word-boundary.%         \
+					filters/remove-orthography-tags.%      \
+					filters/remove-Orth_IPA-strings.%      \
+					filters/remove-Use_GC-strings.%        \
+					filters/remove-Use_minus_PMatch-tags.% \
+					filters/remove-Use_PMatch-strings.%    \
+					orthography/spellrelax.$(1).compose.%  \
 					orthography/raw-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/remove-area-tags.$$*\"            \
@@ -509,6 +554,9 @@ analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.% \
 			.o. @\"filters/remove-semantic-tags.$$*\"        \
 			.o. @\"filters/remove-orthography-tags.$$*\"     \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"     \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"\
+			.o. @\"filters/remove-Use_GC-strings.$$*\"       \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"   \
 			.o. @\"$$<\"                                     \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"    \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"   \
@@ -537,6 +585,9 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					orthography/$$(DEFAULT_ORTH)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.$$*\" \
@@ -553,6 +604,9 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"           \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"        \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"       \
@@ -580,6 +634,9 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					orthography/raw-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.$$*\" \
@@ -596,6 +653,9 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"           \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"        \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"       \
@@ -611,18 +671,21 @@ $(foreach altorth,$(ALT_ORTHS),$(eval $(call oahpa_alt_orth_fsts,$(altorth))))
 # Additional targets to support area / country specific fst's:
 
 define oahpa_area_fsts
-analyser-oahpa-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.% \
-					filters/remove-area-tags.%            \
-					filters/remove-dialect-tags.%         \
-					filters/remove-orig_lang-tags.%       \
-					filters/remove-usage-tags.%           \
-					filters/remove-semantic-tags.%        \
-					filters/remove-hyphenation-marks.%    \
-					filters/remove-error-strings.%        \
-					filters/remove-infl_deriv-borders.%   \
-					filters/remove-word-boundary.%        \
-					filters/remove-orthography-tags.%     \
-					filters/remove-Orth_IPA-strings.%     \
+analyser-oahpa-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%  \
+					filters/remove-area-tags.%             \
+					filters/remove-dialect-tags.%          \
+					filters/remove-orig_lang-tags.%        \
+					filters/remove-usage-tags.%            \
+					filters/remove-semantic-tags.%         \
+					filters/remove-hyphenation-marks.%     \
+					filters/remove-error-strings.%         \
+					filters/remove-infl_deriv-borders.%    \
+					filters/remove-word-boundary.%         \
+					filters/remove-orthography-tags.%      \
+					filters/remove-Orth_IPA-strings.%      \
+					filters/remove-Use_GC-strings.%        \
+					filters/remove-Use_minus_PMatch-tags.% \
+					filters/remove-Use_PMatch-strings.%    \
 					filters/remove-all_areas_but_$(1)-strings.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/remove-area-tags.$$*\"                \
@@ -633,6 +696,9 @@ analyser-oahpa-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.% \
 			.o. @\"filters/remove-semantic-tags.$$*\"            \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"filters/remove-all_areas_but_$(1)-strings.$$*\"\
 			.o. @\"$$<\"                                         \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"        \
@@ -660,6 +726,9 @@ generator-oahpa-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minus_PMatch-tags.%    \
+					filters/remove-Use_PMatch-strings.%       \
 					filters/remove-all_areas_but_$(1)-strings.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.$$*\" \
@@ -676,6 +745,9 @@ generator-oahpa-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-orig_lang-tags.$$*\"           \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
+			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
+			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"filters/remove-all_areas_but_$(1)-strings.$$*\"\
 			.o. @\"$$<\"                                         \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"        \

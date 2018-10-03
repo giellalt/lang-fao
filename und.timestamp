@@ -1,4 +1,8 @@
-$Rev: 171601 $
+$Rev: 171619 $
+Added pmatch filtering to the rest of the build targets in src/. Also added
+grammar checker filtering.
+
+r171601:
 Major reorganisation to properly handle pmatch preparations, by splitting the
 disamb-analyser compilation in two: one going to the regular disamb analyser,
 and the other going to the pmatch variant. We use the two tags +Use/PMatch and

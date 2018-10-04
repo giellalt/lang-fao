@@ -35,9 +35,9 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst         \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst        \
 			$(top_builddir)/src/filters/remove-word-boundary.hfst             \
-			$(top_builddir)/src/filters/remove-Use_GC-strings.%               \
-			$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.%        \
-			$(top_builddir)/src/filters/remove-Use_PMatch-strings.%           \
+			$(top_builddir)/src/filters/remove-Use_GC-strings.hfst            \
+			$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst     \
+			$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst        \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 			read regex \
@@ -51,9 +51,9 @@ generator-mt-gt-norm.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-orthography-tags.hfst\"         \
 	.o. @\"$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst\"         \
-	.o. @\"$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.$*\"      \
-	.o. @\"$(top_builddir)/src/filters/remove-Use_GC-strings.$*\"             \
-	.o. @\"$(top_builddir)/src/filters/remove-Use_PMatch-strings.$*\"         \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst\"    \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_GC-strings.hfst\"           \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst\"       \
 	.o. @\"$<\" \
 	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \
@@ -77,9 +77,9 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 			$(top_builddir)/src/filters/remove-orig_lang-tags.hfst           \
 			$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst         \
 			$(top_builddir)/src/filters/remove-word-boundary.hfst            \
-			$(top_builddir)/src/filters/remove-Use_GC-strings.%              \
-			$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.%       \
-			$(top_builddir)/src/filters/remove-Use_PMatch-strings.%          \
+			$(top_builddir)/src/filters/remove-Use_GC-strings.hfst           \
+			$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst    \
+			$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst       \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
 	read regex \
@@ -90,9 +90,9 @@ analyser-mt-gt-desc.tmp.hfst: $(top_builddir)/src/generator-raw-gt-desc.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-orthography-tags.hfst\"         \
 	.o. @\"$(top_builddir)/src/filters/remove-Orth_IPA-strings.hfst\"         \
-	.o. @\"$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.$*\"      \
-	.o. @\"$(top_builddir)/src/filters/remove-Use_GC-strings.$*\"             \
-	.o. @\"$(top_builddir)/src/filters/remove-Use_PMatch-strings.$*\"         \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst\"    \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_GC-strings.hfst\"           \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst\"       \
 	.o. @\"$<\" \
 	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-word-boundary.hfst\"            \

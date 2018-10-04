@@ -1,4 +1,8 @@
-$Rev: 171714 $
+$Rev: 171722 $
+Fixed bug in MT compilation - pattern rules are not used, but new filenames
+still had them due to copy-paste error.
+
+r171714:
 Added pmatch filtering also to MT and spellcheckers. Now all tools and fst's
 should be covered.
 

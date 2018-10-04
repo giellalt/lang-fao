@@ -48,23 +48,29 @@ noinst_DATA=$(GT_COMMON_SPELLER_HFST) $(GT_COMMON_SPELLER_XFST)
 # Build the common speller transducer by removing everything we don't want in
 # any of the spellers:
 analyser-$(GT_COMMON_SPELLER_NAME).tmp.%: \
-			$(top_builddir)/src/analyser-raw-gt-desc.%              \
-			$(top_builddir)/src/filters/remove-CLB-strings.%        \
-			$(top_builddir)/src/filters/remove-error-strings.%      \
-			$(top_builddir)/src/filters/remove-MinusSpell-strings.% \
-			$(top_builddir)/src/filters/remove-PUNCT-strings.%      \
-			$(top_builddir)/src/filters/remove-use_marg-strings.%   \
-			$(top_builddir)/src/filters/remove-orig_lang-tags.%     \
+			$(top_builddir)/src/analyser-raw-gt-desc.%                     \
+			$(top_builddir)/src/filters/remove-CLB-strings.%               \
+			$(top_builddir)/src/filters/remove-error-strings.%             \
+			$(top_builddir)/src/filters/remove-MinusSpell-strings.%        \
+			$(top_builddir)/src/filters/remove-PUNCT-strings.%             \
+			$(top_builddir)/src/filters/remove-use_marg-strings.%          \
+			$(top_builddir)/src/filters/remove-orig_lang-tags.%            \
 			$(top_builddir)/src/filters/remove-usage_except_speller-tags.% \
+			$(top_builddir)/src/filters/remove-Use_GC-strings.%            \
+			$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.%     \
+			$(top_builddir)/src/filters/remove-Use_PMatch-strings.%        \
 			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 		    @\"$(top_builddir)/src/filters/remove-usage_except_speller-tags.$*\" \
-		.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.$*\"     \
-		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.$*\"        \
-		.o. @\"$(top_builddir)/src/filters/remove-error-strings.$*\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.$*\" \
-		.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.$*\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.$*\"   \
+		.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.$*\"        \
+		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.$*\"           \
+		.o. @\"$(top_builddir)/src/filters/remove-error-strings.$*\"         \
+		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.$*\"    \
+		.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.$*\"         \
+		.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.$*\"      \
+		.o. @\"$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.$*\" \
+    	.o. @\"$(top_builddir)/src/filters/remove-Use_GC-strings.$*\"        \
+    	.o. @\"$(top_builddir)/src/filters/remove-Use_PMatch-strings.$*\"    \
 		.o. @\"$<\" \
 		.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.$*\" \
 		;\n\

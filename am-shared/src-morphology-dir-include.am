@@ -73,18 +73,27 @@ if CAN_HFST
 GIELLA_LOCAL_SRC_TARGETS+=\
         $(patsubst %.lexc,%.hfst,$(GT_LOCAL_SRCS) $(GT_SHARED_SRCS))
 GIELLA_LOCAL_SRC_TARGETS+=$(patsubst %.xfscript,%.hfst,$(GT_LOCAL_XFSCRIPT_SRCS))
+# We need to explicitly add url.?fst here, as the generated targets only cover
+# url.tmp.?fst
+GIELLA_LOCAL_SRC_TARGETS+=url.hfst
 endif # CAN_HFST
 
 if CAN_XFST
 GIELLA_LOCAL_SRC_TARGETS+=\
         $(patsubst %.lexc,%.xfst,$(GT_LOCAL_SRCS) $(GT_SHARED_SRCS))
 GIELLA_LOCAL_SRC_TARGETS+=$(patsubst %.xfscript,%.xfst,$(GT_LOCAL_XFSCRIPT_SRCS))
+# We need to explicitly add url.?fst here, as the generated targets only cover
+# url.tmp.?fst
+GIELLA_LOCAL_SRC_TARGETS+=url.xfst
 endif # CAN_XFST
 
 if CAN_FOMA
 GIELLA_LOCAL_SRC_TARGETS+=\
         $(patsubst %.lexc,%.foma,$(GT_LOCAL_SRCS) $(GT_SHARED_SRCS))
 GIELLA_LOCAL_SRC_TARGETS+=$(patsubst %.xfscript,%.foma,$(GT_LOCAL_XFSCRIPT_SRCS))
+# We need to explicitly add url.?fst here, as the generated targets only cover
+# url.tmp.?fst
+GIELLA_LOCAL_SRC_TARGETS+=url.foma
 endif # CAN_FOMA
 
 if WANT_L2

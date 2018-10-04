@@ -23,6 +23,9 @@
 # output. More importantly, when combined with either lookup2cg or cg-cont the
 # output should be the same.
 
+hfstdatadir=$(datadir)/giella/$(GTLANG)
+hfstdata_DATA=
+
 if CAN_XFST
 GENERATOR=generator-gt-desc.xfst
 else
@@ -47,8 +50,7 @@ GIELLA_PMHFSTS+=tokeniser-gramcheck-gt-desc.pmhfst
 endif # WANT_GRAMCHECK
 endif # WANT_MORPHOLOGY
 
-hfstdatadir=$(datadir)/giella/$(GTLANG)
-hfstdata_DATA=$(GIELLA_PMHFSTS) $(ABBR)
+hfstdata_DATA+=$(GIELLA_PMHFSTS)
 endif # CAN_HFST
 
 ###########################################################################
@@ -56,6 +58,7 @@ endif # CAN_HFST
 # Source files for abbr extraction:
 if WANT_ABBR
 ABBR=abbr.txt
+hfstdata_DATA+=$(ABBR)
 endif # WANT_ABBR
 
 STEMSRCS:=$(filter-out \

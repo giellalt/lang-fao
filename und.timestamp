@@ -1,4 +1,10 @@
-$Rev: 171935 $
+$Rev: 171951 $
+Moved whitespace chars to the blank regex, thereby reinstating the old
+compilation speed. Thanks to Kevin and Tino for noticing and suggesting the
+improvement. Also added comment to document what incondform is supposed to
+contain, again thanks to Kevin.
+
+r171935:
 Removed hyphen from the regular unknown alphabet, thereby reverting analysis of
 -foo as one (unknown) token, and instead back to two tokens. Added hyphen to
 alphamiddle, so that foo-bar will still be analysed as one big unknown token.

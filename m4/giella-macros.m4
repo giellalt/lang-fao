@@ -213,7 +213,7 @@ AC_MSG_RESULT([$GIELLA_SHARED])
 
 ### This is the version of the Giella Shared that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
-_giella_shared_min_version=0.1.4
+_giella_shared_min_version=0.1.5
 
 # GIELLA_SHARED is required by the infrastructure to find shared data:
 AC_ARG_VAR([GIELLA_SHARED], [directory for giella shared data, like proper nouns and regexes])

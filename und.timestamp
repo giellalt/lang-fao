@@ -1,4 +1,9 @@
-$Rev: 171912 $
+$Rev: 171935 $
+Removed hyphen from the regular unknown alphabet, thereby reverting analysis of
+-foo as one (unknown) token, and instead back to two tokens. Added hyphen to
+alphamiddle, so that foo-bar will still be analysed as one big unknown token.
+
+r171912:
 Added the tokenisation disambigutation file to the compiled and installed
 targets.
 

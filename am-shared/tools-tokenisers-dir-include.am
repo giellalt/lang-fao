@@ -37,12 +37,14 @@ endif # CAN_HFST
 endif # CAN_XFST
 
 GIELLA_PMHFSTS=
+GIELLA_TOKEN_DIS=
 
 if CAN_HFST
 # Only build the pmatch/hfst-proc2 fst if analysers are enabled.
 if WANT_MORPHOLOGY
 if WANT_TOKENISERS
 GIELLA_PMHFSTS+=tokeniser-disamb-gt-desc.pmhfst
+GIELLA_TOKEN_DIS+=mwe-dis.bin
 endif # WANT_TOKENISERS
 
 if WANT_GRAMCHECK
@@ -50,7 +52,7 @@ GIELLA_PMHFSTS+=tokeniser-gramcheck-gt-desc.pmhfst
 endif # WANT_GRAMCHECK
 endif # WANT_MORPHOLOGY
 
-hfstdata_DATA+=$(GIELLA_PMHFSTS)
+hfstdata_DATA+=$(GIELLA_PMHFSTS) $(GIELLA_TOKEN_DIS)
 endif # CAN_HFST
 
 ###########################################################################
@@ -153,5 +155,6 @@ relabeller.hfst:
 	$(AM_V_CP)cp -f $< $@
 
 ####### Includes: ###########
-include $(top_srcdir)/am-shared/silent_build-include.am
+include $(top_srcdir)/am-shared/vislcg3-include.am
 include $(top_srcdir)/am-shared/hfst-format-include.am
+include $(top_srcdir)/am-shared/silent_build-include.am

@@ -85,6 +85,7 @@ analyser-oahpa-gt-norm.tmp.%: analyser-raw-gt-desc.%          \
 					filters/remove-word-boundary.%            \
 					filters/remove-orthography-tags.%         \
 					filters/remove-Orth_IPA-strings.%         \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_GC-strings.%           \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
@@ -101,6 +102,7 @@ analyser-oahpa-gt-norm.tmp.%: analyser-raw-gt-desc.%          \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/remove-area-tags.$*\"                \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
+			.o. @\"filters/remove-Use_minusGC-tags.$*\"         \
 			.o. @\"filters/remove-Use_GC-strings.$*\"           \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"$<\" \
@@ -146,6 +148,7 @@ generator-oahpa-gt-norm.tmp.%: analyser-raw-gt-desc.%         \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_GC-strings.%           \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
@@ -166,6 +169,7 @@ generator-oahpa-gt-norm.tmp.%: analyser-raw-gt-desc.%         \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
+			.o. @\"filters/remove-Use_minusGC-tags.$*\"         \
 			.o. @\"filters/remove-Use_GC-strings.$*\"           \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"$<\"                                         \
@@ -200,6 +204,7 @@ generator-oahpa-gt-norm-dial_$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-orig_lang-tags.%                \
 					filters/remove-NG-strings.%                    \
 					filters/remove-error-strings.%                 \
+					filters/remove-Use_minusGC-tags.%              \
 					filters/remove-Use_GC-strings.%                \
 					filters/remove-Use_minus_PMatch-tags.%         \
 					filters/remove-Use_PMatch-strings.%            \
@@ -220,6 +225,7 @@ generator-oahpa-gt-norm-dial_$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"             \
 			.o. @\"filters/remove-NG-strings.$$*\"                   \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"        \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"             \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"               \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"           \
 			.o. @\"filters/remove-all_dialects_but_$(1)-strings.$$*\"\
@@ -342,6 +348,7 @@ analyser-oahpa-gt-error.tmp.%: analyser-raw-gt-error.%     \
 					filters/remove-word-boundary.%            \
 					filters/remove-orthography-tags.%         \
 					filters/remove-Orth_IPA-strings.%         \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_GC-strings.%           \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
@@ -357,6 +364,7 @@ analyser-oahpa-gt-error.tmp.%: analyser-raw-gt-error.%     \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
+			.o. @\"filters/remove-Use_minusGC-tags.$*\"         \
 			.o. @\"filters/remove-Use_GC-strings.$*\"           \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"$<\" \
@@ -407,6 +415,7 @@ analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%  \
 					filters/remove-word-boundary.%         \
 					filters/remove-orthography-tags.%      \
 					filters/remove-Orth_IPA-strings.%      \
+					filters/remove-Use_minusGC-tags.%      \
 					filters/remove-Use_GC-strings.%        \
 					filters/remove-Use_minus_PMatch-tags.% \
 					filters/remove-Use_PMatch-strings.%    \
@@ -422,6 +431,7 @@ analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%  \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"         \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
@@ -452,6 +462,7 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_GC-strings.%           \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
@@ -472,6 +483,7 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"         \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
@@ -501,6 +513,7 @@ analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%  \
 					filters/remove-word-boundary.%         \
 					filters/remove-orthography-tags.%      \
 					filters/remove-Orth_IPA-strings.%      \
+					filters/remove-Use_minusGC-tags.%      \
 					filters/remove-Use_GC-strings.%        \
 					filters/remove-Use_minus_PMatch-tags.% \
 					filters/remove-Use_PMatch-strings.%    \
@@ -516,6 +529,7 @@ analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%  \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"         \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
@@ -540,6 +554,7 @@ analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%  \
 					filters/remove-word-boundary.%         \
 					filters/remove-orthography-tags.%      \
 					filters/remove-Orth_IPA-strings.%      \
+					filters/remove-Use_minusGC-tags.%      \
 					filters/remove-Use_GC-strings.%        \
 					filters/remove-Use_minus_PMatch-tags.% \
 					filters/remove-Use_PMatch-strings.%    \
@@ -555,6 +570,7 @@ analyser-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%  \
 			.o. @\"filters/remove-orthography-tags.$$*\"     \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"     \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"\
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"     \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"       \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"   \
 			.o. @\"$$<\"                                     \
@@ -585,6 +601,7 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_GC-strings.%           \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
@@ -605,6 +622,7 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"         \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
@@ -634,6 +652,7 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_GC-strings.%           \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
@@ -654,6 +673,7 @@ generator-oahpa-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"         \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"$$<\"                                         \
@@ -683,6 +703,7 @@ analyser-oahpa-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%  \
 					filters/remove-word-boundary.%         \
 					filters/remove-orthography-tags.%      \
 					filters/remove-Orth_IPA-strings.%      \
+					filters/remove-Use_minusGC-tags.%      \
 					filters/remove-Use_GC-strings.%        \
 					filters/remove-Use_minus_PMatch-tags.% \
 					filters/remove-Use_PMatch-strings.%    \
@@ -697,6 +718,7 @@ analyser-oahpa-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%  \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"         \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"filters/remove-all_areas_but_$(1)-strings.$$*\"\
@@ -726,6 +748,7 @@ generator-oahpa-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-error-strings.%            \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_GC-strings.%           \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
@@ -746,6 +769,7 @@ generator-oahpa-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-orthography-tags.$$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"    \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"         \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"           \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"       \
 			.o. @\"filters/remove-all_areas_but_$(1)-strings.$$*\"\

@@ -45,6 +45,7 @@ analyser-dict-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-word-boundary.%             \
 					filters/remove-orthography-tags.%          \
 					filters/remove-Orth_IPA-strings.%          \
+					filters/remove-Use_minusGC-tags.%          \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
@@ -60,6 +61,7 @@ analyser-dict-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/remove-orthography-tags.$*\"          \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"          \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"     \
+			.o. @\"filters/remove-Use_minusGC-tags.$*\"          \
 			.o. @\"filters/remove-Use_GC-strings.$*\"            \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"        \
 			.o. @\"$<\"                                          \
@@ -112,6 +114,7 @@ generator-dict-gt-norm.tmp.%: analyser-raw-gt-desc.%           \
 					filters/remove-hyphenation-marks.%         \
 					filters/remove-infl_deriv-borders.%        \
 					filters/remove-word-boundary.%             \
+					filters/remove-Use_minusGC-tags.%          \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
@@ -130,6 +133,7 @@ generator-dict-gt-norm.tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/remove-orthography-tags.$*\"          \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"          \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"     \
+			.o. @\"filters/remove-Use_minusGC-tags.$*\"          \
 			.o. @\"filters/remove-Use_GC-strings.$*\"            \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"        \
 			.o. @\"$<\"                                          \
@@ -157,6 +161,7 @@ analyser-dict-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-word-boundary.%             \
 					filters/remove-orthography-tags.%          \
 					filters/remove-Orth_IPA-strings.%          \
+					filters/remove-Use_minusGC-tags.%          \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
@@ -171,6 +176,7 @@ analyser-dict-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 			.o. @\"filters/remove-orthography-tags.$$*\"          \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"          \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"     \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"          \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"            \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"        \
 			.o. @\"$$<\"                                          \
@@ -199,6 +205,7 @@ generator-dict-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%      \
 					filters/remove-hyphenation-marks.%         \
 					filters/remove-infl_deriv-borders.%        \
 					filters/remove-word-boundary.%             \
+					filters/remove-Use_minusGC-tags.%          \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
@@ -217,6 +224,7 @@ generator-dict-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%      \
 			.o. @\"filters/remove-orthography-tags.$$*\"          \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"          \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"     \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"          \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"            \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"        \
 			.o. @\"$$<\"                                          \
@@ -245,6 +253,7 @@ analyser-dict-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-word-boundary.%             \
 					filters/remove-orthography-tags.%          \
 					filters/remove-Orth_IPA-strings.%          \
+					filters/remove-Use_minusGC-tags.%          \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
@@ -261,6 +270,7 @@ analyser-dict-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 			.o. @\"filters/remove-orthography-tags.$$*\"          \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"          \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"     \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"          \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"            \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"        \
 			.o. @\"$$<\"                                          \
@@ -284,6 +294,7 @@ analyser-dict-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 					filters/remove-word-boundary.%             \
 					filters/remove-orthography-tags.%          \
 					filters/remove-Orth_IPA-strings.%          \
+					filters/remove-Use_minusGC-tags.%          \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
@@ -300,6 +311,7 @@ analyser-dict-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%       \
 			.o. @\"filters/remove-orthography-tags.$$*\"          \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"          \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"     \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"          \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"            \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"        \
 			.o. @\"$$<\"                                          \
@@ -328,6 +340,7 @@ generator-dict-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%      \
 					filters/remove-hyphenation-marks.%         \
 					filters/remove-infl_deriv-borders.%        \
 					filters/remove-word-boundary.%             \
+					filters/remove-Use_minusGC-tags.%          \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
@@ -347,6 +360,7 @@ generator-dict-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%      \
 			.o. @\"filters/remove-orthography-tags.$$*\"          \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"          \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"     \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"          \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"            \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"        \
 			.o. @\"$$<\"                                          \
@@ -374,6 +388,7 @@ generator-dict-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%      \
 					filters/remove-hyphenation-marks.%         \
 					filters/remove-infl_deriv-borders.%        \
 					filters/remove-word-boundary.%             \
+					filters/remove-Use_minusGC-tags.%          \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
@@ -393,6 +408,7 @@ generator-dict-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%      \
 			.o. @\"filters/remove-orthography-tags.$$*\"          \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"          \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"     \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"          \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"            \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"        \
 			.o. @\"$$<\"                                          \
@@ -434,6 +450,7 @@ generator-dict-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%      \
 					filters/remove-hyphenation-marks.%         \
 					filters/remove-infl_deriv-borders.%        \
 					filters/remove-word-boundary.%             \
+					filters/remove-Use_minusGC-tags.%          \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
@@ -452,6 +469,7 @@ generator-dict-gt-norm_$(1).tmp.%: analyser-raw-gt-desc.%      \
 			.o. @\"filters/remove-orthography-tags.$$*\"          \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"          \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$$*\"     \
+			.o. @\"filters/remove-Use_minusGC-tags.$$*\"          \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"            \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"        \
 			.o. @\"filters/remove-all_areas_but_$(1)-strings.$$*\"\

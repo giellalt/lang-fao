@@ -176,11 +176,13 @@ $(foreach alt_orth,$(ALT_ORTHS),$(eval $(call alt_orth_disamb_fst,$(alt_orth))))
 # building the regular disamb analyser:
 define disambs
 analyser-disamb-gt-desc%tmp.$(1): analyser-disamb-gt-desc%tmp1.$(1) \
+					 filters/remove-Use_minusGC-tags.$(1)      \
 					 filters/remove-Use_GC-strings.$(1)        \
 					 filters/remove-Use_minus_PMatch-tags.$(1) \
 					 filters/remove-Use_PMatch-strings.$(1)
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/remove-Use_minus_PMatch-tags.$(1)\"  \
+			.o. @\"filters/remove-Use_minusGC-tags.$(1)\"       \
 			.o. @\"filters/remove-Use_GC-strings.$(1)\"         \
 			.o. @\"filters/remove-Use_PMatch-strings.$(1)\"     \
 			.o. @\"$$<\"                                        \
@@ -195,11 +197,13 @@ $(foreach fst,hfst xfst foma,$(eval $(call disambs,$(fst))))
 # not relevant to the pmatch version (and kept the pmatch counterpart w/o tags):
 define pmatch_disambs
 analyser-pmatchdisamb-gt-desc%tmp.$(1): analyser-disamb-gt-desc%tmp1.$(1) \
+					 filters/remove-Use_minusGC-tags.$(1)         \
 					 filters/remove-Use_GC-strings.$(1)           \
 					 filters/remove-Use_minus_PMatch-strings.$(1) \
 					 filters/remove-Use_PMatch-tags.$(1)
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/remove-Use_PMatch-tags.$(1)\"          \
+			.o. @\"filters/remove-Use_minusGC-tags.$(1)\"         \
 			.o. @\"filters/remove-Use_GC-strings.$(1)\"           \
 			.o. @\"filters/remove-Use_minus_PMatch-strings.$(1)\" \
 			.o. @\"$$<\"                                          \

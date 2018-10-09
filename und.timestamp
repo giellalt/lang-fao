@@ -1,4 +1,8 @@
-$Rev: 171992 $
+$Rev: 172002 $
+Corrected a misplaced dependency that caused url.hfst to be rebuilt on every
+make, and thus trigger other rebuilds. Not anymore.
+
+r171992:
 Moved whitespace tagging after the speller, to avoid that it creates trouble for
 the speller. That happens when whitespace error tags are applied to the word
 form that should be spell-checked.

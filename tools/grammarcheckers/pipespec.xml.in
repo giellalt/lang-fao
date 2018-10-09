@@ -31,13 +31,13 @@
     <tokenize><tokenizer n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
     <cg><grammar n="mwe-dis.bin"/></cg>
     <mwesplit/>
-    <blanktag>
-      <blanktagger n="analyser-gt-whitespace.hfst"/>
-    </blanktag>
     <cgspell>
       <lexicon n="acceptor.default.hfst"/>
       <errmodel n="errmodel.default.hfst"/>
     </cgspell>
+    <blanktag>
+      <blanktagger n="analyser-gt-whitespace.hfst"/>
+    </blanktag>
     <cg><grammar n="disambiguator.bin"/></cg>
     <cg><grammar n="spellchecker.bin"/></cg>
     <cg><grammar n="grammarchecker.bin"/></cg>

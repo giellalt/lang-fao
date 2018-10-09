@@ -49,7 +49,11 @@ Define flags [          ! explicit list since `?` does not match flags
 ];
 Define inputmark    [ 0:"@PMATCH_INPUT_MARK@" | 0:"@PMATCH_BACKTRACKING@" ];
 
-Define incondform      Punct|{“}|{”}|{…}|{‚}|{‘}|{’}|{–}|{—}|{­}|{_}|{<}|{>}|{■}|{«}|{»}|{�}|{@}|{'}
+! Characters which have analyses in the lexicon, but can appear without spaces
+! before/after, that is, with no context conditions, and adjacent to words:
+Define incondform      Punct|{“}|{”}|{…}|{‚}|{‘}|{’}|{–}|{—}|{­}|{_}|{<}|{>}|{«}|{»}|{@}|{'} ;
+
+Define blank           Whitespace | incondform
                        | { } ! U+2000    En Quad                    &#8192;
                        | { } ! U+2001    Em Quad                    &#8193;
                        | { } ! U+2002    En Space                   &#8194;
@@ -77,8 +81,6 @@ Define incondform      Punct|{“}|{”}|{…}|{‚}|{‘}|{’}|{–}|{—}|{­
                        | { } ! U+205F    Medium Mathematical Space  &#8287;
                        | {⁠}  ! U+2060    Word Joiner                &#8288;
                        ;
-
-Define blank           Whitespace | incondform ;
 
 Define nonprintable [ 0:? | inputmark | flags ];
 Define any          [ ? | nonprintable ];

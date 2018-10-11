@@ -803,8 +803,8 @@ AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
 
 # Enable hfst desktop spellers - default is 'yes' (but dependent on
 # --enable-spellers)
-AC_ARG_ENABLE([hfst-dekstop-spellers],
-              [AS_HELP_STRING([--enable-hfst-dekstop-spellers],
+AC_ARG_ENABLE([hfst-desktop-spellers],
+              [AS_HELP_STRING([--enable-hfst-desktop-spellers],
                               [build hfst desktop spellers (dependent on --enable-spellers) @<:@default=yes@:>@])],
               [enable_desktop_hfstspellers=$enableval],
               [enable_desktop_hfstspellers=yes])

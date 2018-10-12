@@ -1,4 +1,9 @@
-$Rev: 172102 $
+$Rev: 172172 $
+Moved the whitespace analyser almost to the beginning of the pipeline, directly
+after the tokeniser+analyser. This is to be able to support sentence boundary
+detection, as the whitespace analyser will give some valuable tags for that.
+
+r172102:
 Corrected typo in a configuration option - dekstop instead of desktop. Thanks to
 our friends in Nuuk for noticing.
 

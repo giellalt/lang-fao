@@ -155,6 +155,7 @@ lexicon-L2.tmp.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_L2_SRCS) $(GENERATED_LEXC_SRCS)
 
 # Copy shared stems files to local dir before building:
 generated_files/%.lexc: $(GIELLA_SHARED)/all_langs/src/morphology/stems/%.lexc
+	$(AM_V_at)$(MKDIR_P) $(dir $@)
 	$(AM_V_CP)cp -f $< $@
 
 ####### If reversed compose-intersect is enabled, reverse it here: #######

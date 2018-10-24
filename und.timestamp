@@ -1,4 +1,7 @@
-$Rev: 172172 $
+$Rev: 172759 $
+Fixed bug when building the punctuation file - the required subdir was not made.
+
+r172172:
 Moved the whitespace analyser almost to the beginning of the pipeline, directly
 after the tokeniser+analyser. This is to be able to support sentence boundary
 detection, as the whitespace analyser will give some valuable tags for that.

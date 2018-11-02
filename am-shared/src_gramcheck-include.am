@@ -27,6 +27,7 @@ analyser-gramcheck-gt-desc.tmp.%: analyser-raw-gt-desc.%      \
 					filters/remove-Use_minusGC-strings.%      \
 					filters/remove-Use_minus_PMatch-strings.% \
 					filters/remove-Use_PMatch-tags.%          \
+					filters/block-mwe-compounds.%             \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
@@ -39,6 +40,7 @@ analyser-gramcheck-gt-desc.tmp.%: analyser-raw-gt-desc.%      \
 			.o. @\"filters/remove-Use_minusGC-strings.$*\"      \
 			.o. @\"filters/remove-Use_GC-tags.$*\"              \
 			.o. @\"filters/remove-Use_PMatch-tags.$*\"          \
+			.o. @\"filters/block-mwe-compounds.$*\"             \
 			.o. @\"$<\"                                         \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$*\"        \
@@ -125,6 +127,7 @@ analyser-gramcheck-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%   \
 					filters/remove-Use_GC-tags.%                \
 					filters/remove-Use_minus_PMatch-strings.%   \
 					filters/remove-Use_PMatch-tags.%            \
+					filters/block-mwe-compounds.%               \
 					orthography/spellrelax.$(1).compose.%       \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
@@ -137,6 +140,7 @@ analyser-gramcheck-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%   \
 			.o. @\"filters/remove-Use_minusGC-strings.$$*\"        \
 			.o. @\"filters/remove-Use_GC-tags.$$*\"                \
 			.o. @\"filters/remove-Use_PMatch-tags.$$*\"            \
+			.o. @\"filters/block-mwe-compounds.$$*\"               \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
@@ -225,6 +229,7 @@ analyser-gramcheck-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-Use_GC-tags.%                 \
 					filters/remove-Use_minus_PMatch-strings.%    \
 					filters/remove-Use_PMatch-tags.%             \
+					filters/block-mwe-compounds.%                \
 					orthography/spellrelax.$(1).compose.%        \
 					orthography/inituppercase.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.% \
@@ -239,6 +244,7 @@ analyser-gramcheck-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-Use_minusGC-strings.$$*\"          \
 			.o. @\"filters/remove-Use_GC-tags.$$*\"                  \
 			.o. @\"filters/remove-Use_PMatch-tags.$$*\"              \
+			.o. @\"filters/block-mwe-compounds.$$*\"                 \
 			.o. @\"$$<\"                                             \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"            \
@@ -268,6 +274,7 @@ analyser-gramcheck-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%    \
 					filters/remove-Use_GC-tags.%                 \
 					filters/remove-Use_minus_PMatch-strings.%    \
 					filters/remove-Use_PMatch-tags.%             \
+					filters/block-mwe-compounds.%                \
 					orthography/spellrelax.$(1).compose.%        \
 					orthography/inituppercase.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.% \
@@ -282,6 +289,7 @@ analyser-gramcheck-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%    \
 			.o. @\"filters/remove-Use_minusGC-strings.$$*\"          \
 			.o. @\"filters/remove-Use_GC-tags.$$*\"                  \
 			.o. @\"filters/remove-Use_PMatch-tags.$$*\"              \
+			.o. @\"filters/block-mwe-compounds.$$*\"                 \
 			.o. @\"$$<\"                                             \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"            \

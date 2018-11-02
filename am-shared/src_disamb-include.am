@@ -39,7 +39,7 @@ endif # CAN_FOMA
 # regular analyser by NEITHER removing variant and homonym tags, NOR removing
 # semantic tags or Err/Orth. The variant and homonym tags are there to help
 # choosing forms, as are Err/Orth and Sem-tags.
-analyser-disamb-gt-desc.tmp1.%: analyser-raw-gt-desc.%         \
+analyser-disamb-gt-desc.tmp1.%: analyser-raw-gt-desc.%        \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-hyphenation-marks.%        \
 					filters/remove-infl_deriv-borders.%       \
@@ -47,6 +47,7 @@ analyser-disamb-gt-desc.tmp1.%: analyser-raw-gt-desc.%         \
 					filters/remove-orthography-tags.%         \
 					filters/remove-usage-tags.%               \
 					filters/remove-variant-tags.%             \
+					filters/block-mwe-compounds.%             \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.%
@@ -55,6 +56,7 @@ analyser-disamb-gt-desc.tmp1.%: analyser-raw-gt-desc.%         \
 			.o. @\"filters/remove-variant-tags.$*\"             \
 			.o. @\"filters/remove-orthography-tags.$*\"         \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
+			.o. @\"filters/block-mwe-compounds.$*\"             \
 			.o. @\"$<\"                                         \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$*\"        \
@@ -72,7 +74,7 @@ analyser-disamb-gt-desc.tmp1.%: analyser-raw-gt-desc.%         \
 
 # Additional target to support languages with alternative writing systems:
 define alt_ws_disamb_analysers
-analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%      \
+analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%     \
 					filters/remove-Orth_IPA-strings.%           \
 					filters/remove-hyphenation-marks.%          \
 					filters/remove-infl_deriv-borders.%         \
@@ -80,6 +82,7 @@ analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%      \
 					filters/remove-orthography-tags.%           \
 					filters/remove-usage-tags.%                 \
 					filters/remove-variant-tags.%               \
+					filters/block-mwe-compounds.%               \
 					orthography/spellrelax.$(1).compose.%       \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
@@ -87,6 +90,7 @@ analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%      \
 			.o. @\"filters/remove-variant-tags.$$*\"               \
 			.o. @\"filters/remove-orthography-tags.$$*\"           \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"           \
+			.o. @\"filters/block-mwe-compounds.$$*\"               \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
@@ -105,7 +109,7 @@ $(foreach alt_ws,$(ALT_WSS),$(eval $(call alt_ws_disamb_analysers,$(alt_ws))))
 
 # Additional target to support languages with alternative orthographies:
 define alt_orth_disamb_fst
-analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%       \
+analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%      \
 					filters/remove-hyphenation-marks.%           \
 					filters/remove-infl_deriv-borders.%          \
 					filters/remove-word-boundary.%               \
@@ -113,6 +117,7 @@ analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%       \
 					filters/remove-usage-tags.%                  \
 					filters/remove-variant-tags.%                \
 					filters/remove-Orth_IPA-strings.%            \
+					filters/block-mwe-compounds.%                \
 					orthography/spellrelax.$(1).compose.%        \
 					orthography/inituppercase.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.% \
@@ -122,6 +127,7 @@ analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%       \
 			.o. @\"filters/remove-usage-tags.$$*\"                   \
 			.o. @\"filters/remove-variant-tags.$$*\"                 \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"             \
+			.o. @\"filters/block-mwe-compounds.$$*\"                 \
 			.o. @\"$$<\"                                             \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"            \
@@ -138,7 +144,7 @@ analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%       \
 		 quit\n" | $$(XFST_TOOL)
 
 # ... alternatively using a filter from RAW to target:
-analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%       \
+analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%      \
 					filters/remove-hyphenation-marks.%           \
 					filters/remove-infl_deriv-borders.%          \
 					filters/remove-word-boundary.%               \
@@ -146,6 +152,7 @@ analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%       \
 					filters/remove-usage-tags.%                  \
 					filters/remove-variant-tags.%                \
 					filters/remove-Orth_IPA-strings.%            \
+					filters/block-mwe-compounds.%                \
 					orthography/spellrelax.$(1).compose.%        \
 					orthography/inituppercase.compose.%          \
 					orthography/downcase-derived_proper-strings.compose.% \
@@ -155,6 +162,7 @@ analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%       \
 			.o. @\"filters/remove-usage-tags.$$*\"                   \
 			.o. @\"filters/remove-variant-tags.$$*\"                 \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"             \
+			.o. @\"filters/block-mwe-compounds.$$*\"                 \
 			.o. @\"$$<\"                                             \
 			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"            \

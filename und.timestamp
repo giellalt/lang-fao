@@ -1,4 +1,8 @@
-$Rev: 173359 $
+$Rev: 173403 $
+Had forgotten to remove the Use/-GC tag in the core fst's, only from all the
+others. Now fixed.
+
+r173359:
 Step 2 in blocking dynamic compounds of MWE tagged entries: moved all MWE tag
 processing away from the *-raw-* targets to the specific *.tmp targets. This way
 the MWE tags will survive long enough to be available for the blocking done in

@@ -353,6 +353,7 @@ analyser-gt-desc.tmp.%: analyser-raw-gt-desc.%                \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
 					filters/remove-mwe-tags.%                 \
@@ -370,6 +371,7 @@ analyser-gt-desc.tmp.%: analyser-raw-gt-desc.%                \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
 			.o. @\"filters/remove-Use_GC-strings.$*\"           \
+			.o. @\"filters/remove-Use_minusGC-tags.$*\"         \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
@@ -407,6 +409,7 @@ generator-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-usage-tags.%               \
 					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
 					filters/remove-mwe-tags.%                 \
@@ -428,6 +431,7 @@ generator-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
 			.o. @\"filters/remove-Use_GC-strings.$*\"           \
+			.o. @\"filters/remove-Use_minusGC-tags.$*\"         \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
@@ -452,6 +456,7 @@ analyser-gt-glossing.tmp.%: analyser-raw-gt-glossing.%        \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
 					filters/remove-mwe-tags.%                 \
@@ -469,6 +474,7 @@ analyser-gt-glossing.tmp.%: analyser-raw-gt-glossing.%        \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
 			.o. @\"filters/remove-Use_GC-strings.$*\"           \
+			.o. @\"filters/remove-Use_minusGC-tags.$*\"         \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
@@ -506,6 +512,7 @@ generator-gt-glossing.tmp.%: analyser-raw-gt-glossing.%       \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-usage-tags.%               \
 					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
 					filters/remove-mwe-tags.%                 \
@@ -527,6 +534,7 @@ generator-gt-glossing.tmp.%: analyser-raw-gt-glossing.%       \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
 			.o. @\"filters/remove-Use_GC-strings.$*\"           \
+			.o. @\"filters/remove-Use_minusGC-tags.$*\"         \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
@@ -555,6 +563,7 @@ analyser-gt-norm.tmp.%: analyser-raw-gt-desc.%                \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
 					filters/remove-mwe-tags.%                 \
@@ -573,6 +582,7 @@ analyser-gt-norm.tmp.%: analyser-raw-gt-desc.%                \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
 			.o. @\"filters/remove-Use_GC-strings.$*\"           \
+			.o. @\"filters/remove-Use_minusGC-tags.$*\"         \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \
@@ -609,6 +619,7 @@ generator-gt-norm.tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-Orth_IPA-strings.%         \
 					filters/remove-error-strings.%            \
 					filters/remove-Use_GC-strings.%           \
+					filters/remove-Use_minusGC-tags.%         \
 					filters/remove-Use_minus_PMatch-tags.%    \
 					filters/remove-Use_PMatch-strings.%       \
 					filters/remove-mwe-tags.%                 \
@@ -630,6 +641,7 @@ generator-gt-norm.tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/remove-Use_minus_PMatch-tags.$*\"    \
 			.o. @\"filters/remove-Use_GC-strings.$*\"           \
+			.o. @\"filters/remove-Use_minusGC-tags.$*\"         \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"       \
 			.o. @\"filters/remove-mwe-tags.$*\"                 \
 			.o. @\"$<\" \

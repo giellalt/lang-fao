@@ -81,6 +81,7 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
+					filters/remove-mwe-tags.%                  \
 					orthography/spellrelax.$(1).compose.%      \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
@@ -96,6 +97,7 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/remove-Use_minusGC-tags.$$*\"           \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"             \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"         \
+			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
@@ -124,6 +126,7 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
+					filters/remove-mwe-tags.%                  \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/remove-area-tags.$$*\"                  \
@@ -140,6 +143,7 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/remove-Use_minusGC-tags.$$*\"           \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"             \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"         \
+			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
@@ -171,6 +175,7 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
+					filters/remove-mwe-tags.%                  \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.$$*\"   \
@@ -191,6 +196,7 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/remove-Use_minusGC-tags.$$*\"           \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"             \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"         \
+			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
@@ -222,6 +228,7 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 					filters/remove-Use_GC-strings.%            \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
+					filters/remove-mwe-tags.%                  \
 					orthography/$(DEFAULT_WS)-to-$(1).compose.%
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/make-optional-transitivity-tags.$$*\"   \
@@ -242,6 +249,7 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/remove-Use_minusGC-tags.$$*\"           \
 			.o. @\"filters/remove-Use_GC-strings.$$*\"             \
 			.o. @\"filters/remove-Use_PMatch-strings.$$*\"         \
+			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \

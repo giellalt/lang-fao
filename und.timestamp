@@ -1,4 +1,10 @@
-$Rev: 173267 $
+$Rev: 173359 $
+Step 2 in blocking dynamic compounds of MWE tagged entries: moved all MWE tag
+processing away from the *-raw-* targets to the specific *.tmp targets. This way
+the MWE tags will survive long enough to be available for the blocking done in
+the tokeniser fst's. Tested in SME, and seems to work as intended.
+
+r173267:
 Added step 1 in blocking dynamic comounds between an MWE and another noun: added
 new filter that will turn the MWE tag into a flag diacritic. Increased required
 giella-common version number due to the new filter.

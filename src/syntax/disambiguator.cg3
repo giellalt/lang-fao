@@ -349,6 +349,10 @@ SELECT:r21 $$NAGD IF (0C A)(*1C $$NAGD BARRIER NPNHA)(NOT 0 V); #XXX C?
 SELECT:r21b $$NAGD IF (0C A)(-*1C $$NAGD BARRIER NPNHA)(NOT 0 V); #XXX C?
 REMOVE:r22 $$NAGD IF (0 A)(*1C N BARRIER NPNHA LINK NOT 0 $$NAGD);
 
+SELECT:r21rel $$NAGD IF (-1 ("vera"))(0 A)(*1C $$NAGD BARRIER NPNHA)(NOT 0 V); #XXX C?
+SELECT:r21brel $$NAGD IF (-1 ("vera"))(0 A)(-*1C $$NAGD BARRIER NPNHA)(NOT 0 V); #XXX C?
+REMOVE:r22rel $$NAGD IF (-1 ("vera"))(0 A)(*1 N BARRIER NPNHA LINK NOT 0 $$NAGD);
+
 REMOVE:AVS OBL IF (*-1 VFIN BARRIER NPNH LINK *-1 BOS OR CLB BARRIER NOT-ADV)(0 (N Nom));
 REMOVE:AVS2 OBL IF (-2 CLB)(-1 Adv OR CC OR CS)(0 Nom)(1 V + THIRDSG)(NOT *2 Nom BARRIER CLB);
 
@@ -696,7 +700,7 @@ SELECT:her Adv IF (0 ("herur"))(-1 N OR BOS OR Adv);
 
 REMOVE A IF (-1 ("vera"))(0 Adv)(1 Sup);
 
-REMOVE A IF (-2 ("tað"))(-1 ("vera"))(0 Adv);
+REMOVE A IF (-2 ("tað"))(-1 ("vera"))(0 Adv)(NOT *1 N BARRIER NPNH);
 
 REMOVE Adv IF (-1 Det OR Pr)(0 A OR PrfPrc)(1 N);
        ## ið stakk í bleyta jørð,

@@ -30,6 +30,37 @@ LEXICON irregular_nouns
  +Sg+Dat+Indef: ENDLEX ; ! januar
  +Sg+Gen+Indef: ENDLEX ; ! januar
 
+
+LEXICON h11/41 
+  h11 ;
+  h41  ;
+LEXICON h3/h41 
+  h3  ;
+  h41 ; 
+LEXICON h4/41 
+  h4  ;
+  h41  ;
+LEXICON h7/h3 
+  h7  ;
+  h3  ;
+LEXICON k11/kv6 
+  k11 ;
+  kv6 ; 
+LEXICON k19/12 
+  k19 ;
+  k12  ;
+LEXICON k25/17f 
+  k25 ;
+  k17f ; 
+LEXICON k52/kv2 
+  k52 ;
+  kv2 ; 
+LEXICON k9/16 
+  k9  ;
+  k16  ;
+
+
+
 ! Weak masculines.
 
 LEXICON k1/3e
@@ -47,6 +78,10 @@ LEXICON k1/4
 LEXICON k1e/48f !k1e/f84b Heini
   k1e     ;
   k_flt48 ;
+
+LEXICON k1/11
+ k1 ;
+ k11 ;
 
 LEXICON k1 ! risi
   k1e    ;
@@ -356,9 +391,9 @@ LEXICON k_flt15
          !k16         ;
          !k27         ;
 
-!LEXICON k16/9
-         !k16         ;
-         !k9          ;
+LEXICON k16/9
+         k16         ;
+         k9          ;
 
 !LEXICON k16e
          !k15e        ;
@@ -1032,8 +1067,8 @@ LEXICON kv_flt0
   +N+Pl+Dat: # ;
   +N+Pl+Gen: # ;
   
-LEXICON kv_flt ! gætur, paradigm missing in dictionary
-  +N+Pl+Nom:%>ur # ;
+!LEXICON kv_flt ! gætur, paradigm missing in dictionary
+!  +N+Pl+Nom:%>ur # ;
 
 LEXICON kv1/6f
   kv1 ;
@@ -1080,23 +1115,27 @@ LEXICON kv2 ! bygd
 LEXICON kv35 ! á
 +N+Fem+Sg+Acc+Def:%>nna FemObl_Flag ;
 +N+Fem+Sg+Dat+Def:%>nni FemObl_Flag ;
-RESTFORMS_SHORT_kv2 ;
+RESTFORMS_SHORT_kv2e ;
+  kv_flt2 ;
 
 
-LEXICON kv36 ! støð
+LEXICON kv36 
+  kv36e ;
+  kv_flt2 ;
+
+LEXICON kv36e ! støð
 +N+Fem+Sg+Acc+Def:%>na FemObl_Flag ;
 +N+Fem+Sg+Dat+Def:%>ni FemObl_Flag ;
-RESTFORMS_SHORT_kv2 ;
+RESTFORMS_SHORT_kv2e ;
 
 
-LEXICON RESTFORMS_SHORT_kv2
+LEXICON RESTFORMS_SHORT_kv2e
 +N+Fem+Sg+Nom: DF_N_SGf_S ;
 +N+Fem+Sg+Acc+Indef: FemNom_Flag ;
 +N+Fem+Sg+Dat+Indef: FemObl_Flag ;
 +N+Fem+Sg+Acc+Def:%>nna FemObl_Flag ;
 +N+Fem+Sg+Dat+Def:%>nni FemObl_Flag ;
 +N+Fem+Sg+Gen: DF_G_SGf_W ;
-kv_flt2 ;
 
 
 
@@ -1699,6 +1738,10 @@ LEXICON h_flt8 ! land
 LEXICON h9/10
   h9  ;
   h10 ;
+
+LEXICON h9/41
+  h9  ;
+  h41 ;
 
 LEXICON h9 ! blikk
   h9e    ;

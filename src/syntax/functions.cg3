@@ -763,7 +763,7 @@ LIST ADV-NOT-NAMES = "Ain" "Anne" "Diego" "Dieppe" "Enge" "Galle" "Haga"
 SET ADV-NOT-OTHER-POS = ADV-NOT-VERB OR ADV-NOT-NOUN OR ADV-NOT-NAMES ;
 
 LIST HAB-CASE = Loc (<smj> Ine) (<sje> Ine) (<sma> Gen) ;
-SET HAB-ACTOR-ALL = HUMAN OR Sem/Org OR ("gii") OR Indef OR Coll OR ("dat") OR Rel + (<sma>) ;
+SET HAB-ACTOR-ALL = HUMAN OR Sem/Org OR ("gii") OR Indef OR Coll OR ("dat") OR Rel  ;
 SET HAB-ACTOR = HAB-ACTOR-ALL - ("cihca") - ("riika") ; #Bør Sem/Org være med?
 SET HAB-ACTOR-NOT-HUMAN = Sem/Org ;
 
@@ -989,9 +989,17 @@ SET NON-APP = ALLSYNTAG - (@APP);
 #!! These were the set types.
 
 
+         BEFORE-SECTIONS         #
+
+#SUBSTITUTE:subqst (@+FMAINV) (<subqst> @+FMAINV) TARGET (@+FMAINV)(0 Qst LINK *-1 @+FMAINV OR @-FMAINV BARRIER SV-BOUNDARY) ;
+#SUBSTITUTE:subqst (@+FMAINV) (<subqst> @+FMAINV) TARGET (@+FMAINV)(1 go)(*-1 @+FMAINV OR @-FMAINV BARRIER SV-BOUNDARY) ;
+#SUBSTITUTE:subqst (@+FAUXV) (<subqst> @+FMAINV) TARGET (@+FAUXV)(0 Qst LINK *-1 @+FMAINV OR @-FMAINV BARRIER SV-BOUNDARY) ;
+#SUBSTITUTE:subqst (@+FAUXV) (<subqst> @+FMAINV) TARGET (@+FAUXV)(1 go)(*-1 @+FMAINV OR @-FMAINV BARRIER SV-BOUNDARY) ;
+	#$ Sámediggi áigu guorahallat lea go vejolaš rievdadit ohcanalmmuheami.
+	#$ Mii leat maid hutkame mo sáhttit ovdamearkka dihte láidestanheargái bidjat kámera, sáhttitgo juogaládje leaŋggaide bidjat gitta smávva kámeračča
+
+
          SECTION         #
-
-
 #!! !!Numeral outside the sentence
 
 
@@ -1065,13 +1073,13 @@ MAP:hab3 (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE - Attr (0 (<sma>))
 #!! * __hab3__ (<hab> @ADVL>) for asdf hab-actor and hab-case; if leat to the right, and Nom to the right of leat. Lots of restrictions.
 MAP:hab3 (<hab> @ADVL>) TARGET HAB-ACTOR + HAB-CASE - Attr 
 (NEGATE 0 Sem/Group OR Pl - Rel LINK *-1 Indef - BUOT + Nom OR HUMAN + Nom BARRIER NOT-NPMOD-ACC)
-(NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN OR A + Nom BARRIER (N Nom))
+#(NEGATE 0 HAB-ACTOR-NOT-HUMAN LINK *1 HUMAN OR A + Nom BARRIER (N Nom))
 (NEGATE 0 (Sem/Ani_Group) LINK *1 Sem/Ani BARRIER (N Nom))
 (NEGATE 0 (Sem/Group_Hum) LINK *1 Sem/Hum BARRIER (N Nom))
 (NEGATE 0 N OR Pers OR Indef LINK *-1 HAB-ACTOR + HAB-CASE BARRIER NOT-NPMOD-ACC OR CC)(NEGATE -1 Num LINK -1 Num)
 (*1 LEAT + HAB-V-TAGS BARRIER NOT-ADV-PCLE LINK *1 Nom BARRIER S-BOUNDARY)
 (NEGATE -1 Arab LINK 3 Arab)(NEGATE -1 Num OR HEADOFPARTS  LINK 2 VFIN) 
-(NEGATE NOT 0 Prop LINK *-1 (N Nom) BARRIER REAL-V OR S-BOUNDARY)
+(NEGATE NOT 0 Prop OR Rel LINK *-1 (N Nom) BARRIER REAL-V OR S-BOUNDARY)
 ;
 	#$ Máhtes lea beana.
 	#$ Dat islándalaččat, sis lea dakkár boallu man dat deaddilit ja de álgá bávkit dat vulkána.
@@ -1358,7 +1366,7 @@ MAP:>nDate (@ADVL>) TARGET DATE + Gen (-1 (Arab))(1 Gen LINK 1 Po LINK *1 FMAINV
 
 
 #!! * __>nTime__ (@>N) for Gen TIME-N; if timenoun to your right. Restrictions: Not if you are a OKTA Nom with Pl Loc to your right. Not if CC followed by Gen, followed by Po to your right. Not if COMMA to your right
-MAP:>nTime (@>N) TARGET TIME-N + Gen (*1 TIME-N BARRIER NOT-NPMOD OR A)(NEGATE 0 OKTA + Nom LINK *1 (N Pl Loc) BARRIER NOT-NPMOD)(NEGATE 0 Gen LINK 1 CC LINK *1 Gen BARRIER NOT-NPMOD LINK 1 Po OR NP-BOUNDARY)(NEGATE 0 Gen LINK 1 COMMA LINK NEGATE *1 CC LINK 1 Gen)(NEGATE 0 (<sma>) LINK 1 (<sma>)) ;
+MAP:>nTime (@>N) TARGET TIME-N + Gen (*1 TIME-N BARRIER NOT-NPMOD OR A OR CC)(NEGATE 0 OKTA + Nom LINK *1 (N Pl Loc) BARRIER NOT-NPMOD)(NEGATE 0 Gen LINK 1 CC LINK *1 Gen BARRIER NOT-NPMOD LINK 1 Po OR NP-BOUNDARY)(NEGATE 0 Gen LINK 1 COMMA LINK NEGATE *1 CC LINK 1 Gen)(NEGATE 0 (<sma>) LINK 1 (<sma>)) ;
 	#$ Mannan čuohtejagi gaskamuttus lei stuorra gilvu.
 	#$ Dat sáhttet leat ovttasbargošiehtadusat oanahis áigái, dahje oktasašdoallu muhtin áiggiid jagis, dahje vaikko miehtá jagi.
 	#% Juo cuoŋománu 10. beaivvi ija vuostá mátkkoštii Harald badjel ráji.
@@ -2555,14 +2563,6 @@ REMOVE:WORD WORD - ALLSYNTAG ;
 
 MAP:leftoversX (@X) TARGET WORD ;
 
-#!! ! __smeRemove__ removes the language tags <sma>, <sme>,  etc, before proceeding to the dep file.
-
-SUBSTITUTE:sjeRemove (<sje>) (*) TARGET (<sje>) ;
-SUBSTITUTE:smaRemove (<sma>) (*) TARGET (<sma>) ;
-SUBSTITUTE:smeRemove (<sme>) (*) TARGET (<sme>) ;
-SUBSTITUTE:smjRemove (<smj>) (*) TARGET (<smj>) ;
-SUBSTITUTE:smnRemove (<smn>) (*) TARGET (<smn>) ;
-SUBSTITUTE (←sme→) (*) TARGET (←sme→) ;
 
 #MT RULES for sme-sma
 #SUBSTITUTE ("váldit" V) ("váldit2" V) ("váldit" V) (*1 ("vuostá" Adv) BARRIER SV-BOUNDARY OR REAL-V) ;
@@ -2590,6 +2590,13 @@ SUBSTITUTE (adv subqst @ADVL-ine→) (adv @ADVLqst-ine→) TARGET (adv subqst @A
 SUBSTITUTE (←hab→ @←ADVL) (←hab→ @←ADVLhab) TARGET (←hab→ @←ADVL) ; #Apertium
 SUBSTITUTE (←hab→ @ADVL→) (←hab→ @ADVLhab→) TARGET (←hab→ @ADVL→) ; #Apertium
 SUBSTITUTE (←ext→ @←SUBJ) (←ext→ @←SUBJext) TARGET (←ext→ @←SUBJ) ; #Apertium
+SUBSTITUTE:sjeRemove (←sje→) (*) TARGET (←sje→) ; #Apertium
+SUBSTITUTE:smaRemove (←sma→) (*) TARGET (←sma→) ; #Apertium
+SUBSTITUTE:smeRemove (←sme→) (*) TARGET (←sme→) ; #Apertium
+SUBSTITUTE:smjRemove (←smj→) (*) TARGET (←smj→) ; #Apertium
+SUBSTITUTE:smnRemove (←smn→) (*) TARGET (←smn→) ; #Apertium
+SUBSTITUTE:smsRemove (←sms→) (*) TARGET (←sms→) ; #Apertium
+SUBSTITUTE:fkvRemove (←fkv→) (*) TARGET (←fkv→) ; #Apertium
 
 
 #SUBSTITUTE (sem_year num) (num sem_year) ;

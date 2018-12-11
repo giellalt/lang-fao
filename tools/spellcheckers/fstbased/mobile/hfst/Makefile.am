@@ -32,6 +32,11 @@ DEFAULT_EDIT_DIST=2
 ####### late a better way of handling edits to the initial letter(s).
 ALLOW_INITIAL_EDITS=no
 
+# Specify where to find the project.yaml file and the corresponding layout defs:
+KEYBOARD_LAYOUT_DIR=$(GIELLA_CORE)/../keyboards/$GLANG
+# Specify the ID of the layout as found at the top of each layout file
+KEYBOARD_LAYOUT_ID=fao
+
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-mobile-hfst-dir-include.am
 
 # vim: set ft=automake:

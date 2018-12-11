@@ -18,11 +18,15 @@
 GT_SPELLER_HFST=../generator-mobilespeller-gt-norm.hfst
 GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 
-# Max compression for zipped files:
-ZIPFLAGS=-9 $(VERBOSITY)
+# Zero compression for mobile zhfst files:
+ZIPFLAGS=-0 $(VERBOSITY)
 
 # Use xz for zhfst compression for mobile zhfst files, for better compression:
 ZHFST_COMPRESSION=$(TAR) -c * | $(XZ) > ../../$@
+
+# Other external tools and paths needed for mobile spellers:
+KBDGEN=kbdgen
+KBDGENPATH=$(GIELLA_CORE)/$(KBDGEN)
 
 ## Conditional string variables;
 # Set file name to the empty string or initial_letters_all depending on variable:
@@ -142,8 +146,9 @@ strings.%.hfst: strings.%.txt anystar.hfst
 		-o $@
 
 # Combine edit distance with string pattern edits:
-editStrings.%.hfst: strings.%.hfst editdist.%.hfst
-	$(AM_V_UNION)$(HFST_DISJUNCT) $^     \
+editStrings.%.hfst: strings.%.hfst editdist.%.hfst keyboardlayout.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) $< editdist.$*.hfst \
+		| $(HFST_DISJUNCT) - keyboardlayout.hfst \
 		| $(HFST_REPEAT) -f 1 -t $(DEFAULT_EDIT_DIST) \
 		-o $@
 
@@ -151,6 +156,15 @@ editStrings.%.hfst: strings.%.hfst editdist.%.hfst
 words.%.hfst: words.%.txt easteregg.%.suggtxt
 	$(AM_V_STR2FST)grep -h -v '^#' $^ | grep -v '^$$'   \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -o $@
+
+keyboardlayout.att: $(KEYBOARD_LAYOUT_DIR)/*.yaml
+	$(AM_V_GEN)PYTHONPATH=$(KBDGENPATH) \
+	$(PYTHON) -m $(KBDGEN) -t errormodel -l $(KEYBOARD_LAYOUT_ID) \
+		$(KEYBOARD_LAYOUT_DIR)/project.yaml \
+		> $@
+
+keyboardlayout.hfst: keyboardlayout.att
+	$(AM_V_TXT2FST)$(HFST_TXT2FST) $< > $@
 
 # The final error model is assembled here:
 errmodel.%.hfst: words.%.hfst \

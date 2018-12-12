@@ -21,8 +21,8 @@ GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 # Zero compression for mobile zhfst files:
 ZIPFLAGS=-0 $(VERBOSITY)
 
-# Use xz for zhfst compression for mobile zhfst files, for better compression:
-ZHFST_COMPRESSION=$(TAR) -c * | $(XZ) > ../../$@
+# Use zip with zero compression for best performance on mobile phones:
+ZHFST_COMPRESSION=$(ZIP) $(ZIPFLAGS) ../../$@ *
 
 # Other external tools and paths needed for mobile spellers:
 KBDGEN=kbdgen
@@ -157,11 +157,14 @@ words.%.hfst: words.%.txt easteregg.%.suggtxt
 	$(AM_V_STR2FST)grep -h -v '^#' $^ | grep -v '^$$'   \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -o $@
 
-keyboardlayout.att: $(KEYBOARD_LAYOUT_DIR)/*.yaml
+.PHONY: att
+att: $(srcdir)/keyboardlayout.att
+$(srcdir)/keyboardlayout.att:
 	$(AM_V_GEN)PYTHONPATH=$(KBDGENPATH) \
 	$(PYTHON) -m $(KBDGEN) -t errormodel -l $(KEYBOARD_LAYOUT_ID) \
 		$(KEYBOARD_LAYOUT_DIR)/project.yaml \
 		> $@
+	$(AM_V_at)echo "Remember to add $@ to svn!"
 
 keyboardlayout.hfst: keyboardlayout.att
 	$(AM_V_TXT2FST)$(HFST_TXT2FST) $< > $@

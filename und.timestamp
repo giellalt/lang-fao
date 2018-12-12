@@ -1,4 +1,9 @@
-$Rev: 174903 $
+$Rev: 174944 $
+Changed how the att file is produced. From now on it should be built once, and
+then added to svn. The att file will usually not change, and storing it in svn
+will avoid rebuilding it every time. Also changed the compression.
+
+r174903:
 Added support for adapting the error model to the mobile keyboard layout for the
 language in question.
 

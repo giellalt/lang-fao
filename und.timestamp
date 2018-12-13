@@ -1,4 +1,7 @@
-$Rev: 174944 $
+$Rev: 174980 $
+Push weights for all final fst's, + optimise error model.
+
+r174944:
 Changed how the att file is produced. From now on it should be built once, and
 then added to svn. The att file will usually not change, and storing it in svn
 will avoid rebuilding it every time. Also changed the compression.

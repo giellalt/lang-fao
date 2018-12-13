@@ -1,4 +1,8 @@
-$Rev: 174980 $
+$Rev: 174992 $
+Cleaned the HFST_MINIMIZE_SPELLER macro, and also its use. No need to include
+push weights anymore, it is done always, for all speller fst's.
+
+r174980:
 Push weights for all final fst's, + optimise error model.
 
 r174944:

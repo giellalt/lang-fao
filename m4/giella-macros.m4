@@ -821,12 +821,10 @@ AC_ARG_ENABLE([minimised-spellers],
               [enable_minimised_spellers=$enableval],
               [enable_minimised_spellers=yes])
 AS_IF([test "x$enable_minimised_spellers" != "xyes"],
+      [AC_SUBST([HFST_MINIMIZE_SPELLER], ["$ac_cv_path_HFST_REMOVE_EPSILONS \$(HFST_FLAGS)  "])],
       [AC_SUBST([HFST_MINIMIZE_SPELLER], ["$ac_cv_path_HFST_REMOVE_EPSILONS \$(HFST_FLAGS) \
-                                         | $ac_cv_path_HFST_PUSH_WEIGHTS -p initial \$(HFST_FLAGS) "])],
-      [AC_SUBST([HFST_MINIMIZE_SPELLER], ["$ac_cv_path_HFST_REMOVE_EPSILONS \$(HFST_FLAGS) \
-                                         | $ac_cv_path_HFST_PUSH_WEIGHTS -p initial \$(HFST_FLAGS) \
                                          | $ac_cv_path_HFST_DETERMINIZE --encode-weights \$(HFST_FLAGS) \
-                                         | $ac_cv_path_HFST_MINIMIZE    --encode-weights "])])
+                                         | $ac_cv_path_HFST_MINIMIZE    --encode-weights \$(HFST_FLAGS) "])])
 
 # Enable Foma-based spellers, requires gzip - default is no
 AC_ARG_ENABLE([fomaspeller],

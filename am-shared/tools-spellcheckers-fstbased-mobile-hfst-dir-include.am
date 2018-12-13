@@ -211,7 +211,7 @@ $(GT_SPELLER_ACCEPTOR): \
 acceptor.%.hfst: $(GT_SPELLER_HFST) easteregg.%.hfst
 	$(AM_V_GEN)cat $< \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
-		| $(HFST_MINIMIZE_SPELLER) $(HFST_FLAGS)        \
+		| $(HFST_MINIMIZE_SPELLER)                      \
 		| $(HFST_DISJUNCT) - easteregg.$*.hfst          \
 		| $(HFST_PUSH_WEIGHTS) --push=initial           \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw          \

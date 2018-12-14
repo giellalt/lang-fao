@@ -213,7 +213,12 @@ noinst_DATA=$(GT_ERRMODELS) \
 # make sure the easter egg is rebuilt every time the fst is rebuilt:
 easteregg.%.txt: $(GT_SPELLER_HFST)
 	$(AM_V_GEN)$(GTCORE)/scripts/make-hfstspeller-version-easter-egg.sh \
-		$(GTLANG2) $(top_srcdir) $(SPELLERVERSION) $* > $@
+		$(GTLANG2) \
+		$(top_srcdir) \
+		$(SPELLERVERSION) \
+		"$(basename $( dirname $(pwd)))" \
+		$* \
+		> $@
 
 # Easter egg suggestions:
 easteregg.%.suggtxt: easteregg.%.txt

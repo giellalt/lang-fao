@@ -19,18 +19,44 @@
 DEFAULT_WEIGHT=10
 
 # Default edit distanse for the generated, alphabet-based error model:
-DEFAULT_EDIT_DIST=2
+EDIT_DISTANCE=2
 
 # Define whether we allow changes to the initial letter(s) in the error model,
-# possible values are 'yes' or 'no'.
-# NB!!! Setting this to 'yes' will greatly increase the size and search space of
-# the error model, and thus make it much, much slower. Makre sure you TEST the
-# resulting error model properly and thoroughly, both for speeds and suggestion
-# quality.
-####### NB! This variable has no effect for the time being!!! First letters are
-####### modified as part of the regular error model until we are able to formu-
-####### late a better way of handling edits to the initial letter(s).
-ALLOW_INITIAL_EDITS=no
+# possible values are:
+# * no    - no longer string edits = only the default, letter-based error model
+# * txt   - use only the txt file as source
+# * regex - use only the regex file as source
+# * both  - use both the txt and regex files as sources
+# NB!!! Setting this to anything but 'no' will greatly increase the size and
+# search space of the error model, and thus make it much, much slower. Make sure
+# you TEST the resulting error model properly and thoroughly, both for speed
+# and suggestion quality.
+INITIAL_EDITS=no
+
+# Variable to define whether to enable edits of longer strings (as opposed to
+# single letters). Possible values are:
+# * no    - no longer string edits = only the default, letter-based error model
+# * txt   - use only the txt file as source
+# * regex - use only the regex file as source
+# * both  - use both the txt and regex files as sources
+STRING_EDITS=txt
+# Variable to specify the edit distance for the regex
+# version of the strings file. The total edit distance for those operations is
+# this value multiplied with the value of the EDIT_DISTANCE variable.
+STRING_REGEX_EDIT_DISTANCE=2
+
+# Variable to define whether to enable edits of word-final strings (as opposed
+# to single letters). Possible values are:
+# * no    - no longer string edits = only the default, letter-based error model
+# * txt   - use only the txt file as source
+# * regex - use only the regex file as source
+# * both  - use both the txt and regex files as sources
+FINAL_STRING_EDITS=txt
+
+# Variable to define whether to enable whole-word replacements. Possible values:
+# - yes
+# - no
+WORD_REPLACEMENTS=yes
 
 # Specify where to find the project.yaml file and the corresponding layout defs:
 KEYBOARD_LAYOUT_DIR=$(GIELLA_CORE)/../keyboards/$GLANG

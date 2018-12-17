@@ -19,10 +19,7 @@
 # Use: surfweights.CORPUSNAME.hfst and CORPUSNAME.unitweight
 SURFWEIGHTS=$(CORPUSNAME).surfweights.hfst
 UNITWEIGHT=$(CORPUSNAME).unitweight.txt
-# Use this as the source lexical fst for unit weighting, it contains correct
-# surface forms except for the word boundary #, which is still present, and
-# used in the weighting:
-UW_SPELLER_SRC=generator-desktopspeller-gt-norm-base.hfst
+
 # TSV file defining weights per tag
 TAGWEIGHTS=tags.reweight
 # ALPHA for additive smoothing, [0, 1.0] seems good
@@ -99,7 +96,7 @@ $(CORPUSNAME).clean.txt: \
 #		| $(HFST_MINIMIZE) -o $@
 
 # Remove word forms covered by the corpus:
-unitweighted_limited.hfst: generator-desktopspeller-gt-norm-freq_weighted.hfst \
+unitweighted_limited.hfst: generator-%-gt-norm-freq_weighted.hfst \
 							$(UW_SPELLER_SRC)
 	$(AM_V_FST2FST)$(HFST_FST2FST) --format=foma -i $(UW_SPELLER_SRC) -o $@.tmpfoma.hfst
 	$(AM_V_FST2FST)$(HFST_FST2FST) --format=foma -i $< -o $<.tmpfoma.hfst
@@ -127,9 +124,9 @@ unitweighted.hfst: $(UW_SPELLER_SRC) \
             spellercorpus.typecount.txt \
             spellercorpus.wordcount.txt \
             word-boundary.hfst \
-            generator-desktopspeller-gt-norm-freq_weighted.hfst \
-            generator-desktopspeller-gt-norm-unit_weighted.hfst \
-            generator-desktopspeller-gt-norm-norm_weighted.hfst \
-            generator-desktopspeller-gt-norm-tag_weighted.hfst  \
+            generator-*-gt-norm-freq_weighted.hfst \
+            generator-*-gt-norm-unit_weighted.hfst \
+            generator-*-gt-norm-norm_weighted.hfst \
+            generator-*-gt-norm-tag_weighted.hfst  \
             $(SURFWEIGHTS) \
             $(UNITWEIGHT)

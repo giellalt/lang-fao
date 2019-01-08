@@ -1,4 +1,11 @@
-$Rev: 175130 $
+$Rev: 175523 $
+Apply alternate orthography conversion after hyphenation marks have been
+removed, but before the morphology marks are deleted. Especially word boundaries
+are useful for certain types of conversion, but other borders will likely be
+useful as well. The conversion scripts need to take the border marks into
+consideration.
+
+r175130:
 Replicate the desktop error model for the mobile speller, and generalise the
 corpus weighting compilation. Now the build code is ready for mobile speller
 release.

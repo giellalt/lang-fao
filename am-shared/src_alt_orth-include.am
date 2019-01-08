@@ -101,9 +101,9 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
 			.o. @\"filters/remove-word-boundary.$$*\"              \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			.o. @\"orthography/spellrelax.$(1).compose.$$*\"       \
 			;\n\
 		 save stack $$@\n\
@@ -144,9 +144,9 @@ analyser-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"orthography/raw-to-$(1).compose.$$*\"           \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
 			.o. @\"filters/remove-word-boundary.$$*\"              \
-			.o. @\"orthography/raw-to-$(1).compose.$$*\"           \
 			.o. @\"orthography/spellrelax.$(1).compose.$$*\"       \
 			;\n\
 		 save stack $$@\n\
@@ -193,9 +193,9 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
 			.o. @\"filters/remove-word-boundary.$$*\"              \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
@@ -238,9 +238,9 @@ analyser-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"orthography/raw-to-$(1).compose.$$*\"           \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
 			.o. @\"filters/remove-word-boundary.$$*\"              \
-			.o. @\"orthography/raw-to-$(1).compose.$$*\"           \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
@@ -294,9 +294,9 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
 			.o. @\"filters/remove-word-boundary.$$*\"              \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
@@ -347,9 +347,9 @@ generator-gt-desc.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"orthography/raw-to-$(1).compose.$$*\"           \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
 			.o. @\"filters/remove-word-boundary.$$*\"              \
-			.o. @\"orthography/raw-to-$(1).compose.$$*\"           \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
@@ -403,9 +403,9 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
 			.o. @\"filters/remove-word-boundary.$$*\"              \
-			.o. @\"orthography/$(DEFAULT_ORTH)-to-$(1).compose.$$*\" \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)
@@ -456,9 +456,9 @@ generator-gt-norm.$(1).tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/remove-mwe-tags.$$*\"                   \
 			.o. @\"$$<\"                                           \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"          \
+			.o. @\"orthography/raw-to-$(1).compose.$$*\" \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"         \
 			.o. @\"filters/remove-word-boundary.$$*\"              \
-			.o. @\"orthography/raw-to-$(1).compose.$$*\" \
 			;\n\
 		 save stack $$@\n\
 		 quit\n" | $$(XFST_TOOL)

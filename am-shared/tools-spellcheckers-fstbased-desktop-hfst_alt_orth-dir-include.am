@@ -19,6 +19,7 @@
 if HAVE_ALT_ORTHS
 if CAN_HFST
 if WANT_SPELLERS
+if WANT_ALT_ORTH_SPELLERS
 
 GT_ALT_ORTH_ERRMODELS=$(shell for ld in $(ALT_ORTHS); do\
     echo "errmodel.$$ld.hfst" ; \
@@ -63,6 +64,8 @@ MACVOIKKOFILE+=$(ALT_ORTH_MACVOIKKO_STEM)
 endif # CAN_LOCALSYNC
 
 endif # WANT_HFST_DESKTOP_SPELLER
+
+endif # WANT_ALT_ORTH_SPELLERS
 endif # WANT_SPELLERS
 endif # CAN_HFST
 endif # HAVE_ALT_ORTHS

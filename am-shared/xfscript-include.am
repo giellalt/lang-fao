@@ -21,7 +21,7 @@
 
 ####### HFST build rules: ########
 %.hfst: %.xfscript
-	$(AM_V_HXFST)printf "save stack $@\nquit\n" | cat $< - \
+	$(AM_V_HXFST)printf "\n\nsave stack $@\nquit\n" | cat $< - \
 		| $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
 
 ####### Xerox build rules: #######

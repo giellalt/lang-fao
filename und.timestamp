@@ -1,4 +1,10 @@
-$Rev: 175523 $
+$Rev: 175563 $
+Fix broken hfst builds of xfscript files when there is no final newline in the
+source file (caused the save command to be shaddowed by the final line of text,
+usually a comment, so no file was saved, and thus there was nothing to work on
+for the next build step).
+
+r175523:
 Apply alternate orthography conversion after hyphenation marks have been
 removed, but before the morphology marks are deleted. Especially word boundaries
 are useful for certain types of conversion, but other borders will likely be

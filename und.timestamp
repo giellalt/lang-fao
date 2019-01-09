@@ -1,4 +1,9 @@
-$Rev: 175563 $
+$Rev: 175576 $
+Added configure.ac conditional to control whether spellers for alternative
+orthographies are built. The default is 'true'. Set this to 'false' for
+historical or other orthographies for which a speller is not relevant.
+
+r175563:
 Fix broken hfst builds of xfscript files when there is no final newline in the
 source file (caused the save command to be shaddowed by the final line of text,
 usually a comment, so no file was saved, and thus there was nothing to work on

@@ -23,6 +23,8 @@
 # http://divvun.no/doc/infra/infraremake/TransducerNamesInTheNewInfra.html
 
 ####### Automake targets: ########
+# Make sure that targets are deleted when something breaks:
+.DELETE_ON_ERROR:
 
 # The following two variables are used to force Make to choose one of two
 # alternative paths to reach the same end target for pattern rules, where the

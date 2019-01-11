@@ -23,6 +23,8 @@
 EXTRA_DIST=$(GT_TRANSCRIPTIONS_SRCS)
 
 ####### Automake targets: ########
+# Make sure that targets are deleted when something breaks:
+.DELETE_ON_ERROR:
 
 # The transducers we build and don't distribute depend on the configuration:
 GT_TRANSCRIPTORS=

@@ -39,6 +39,8 @@ GT_CG_SRCS=$(GT_DEPENDENCY) $(GT_DISAMBIGUATION) $(GT_FUNCTIONS)
 EXTRA_DIST=$(GT_CG_SRCS) $(GT_CG_LOCAL_SRCS)
 
 ####### Automake targets: ########
+# Make sure that targets are deleted when something breaks:
+.DELETE_ON_ERROR:
 
 # set this to names of cg3 binaries
 GT_CG_TARGETS=

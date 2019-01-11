@@ -1,4 +1,8 @@
-$Rev: 175576 $
+$Rev: 175625 $
+First round of improved handling of compilation errors in shell pipes: instruct
+make to delete targets when some of the intermediate steps fail.
+
+r175576:
 Added configure.ac conditional to control whether spellers for alternative
 orthographies are built. The default is 'true'. Set this to 'false' for
 historical or other orthographies for which a speller is not relevant.

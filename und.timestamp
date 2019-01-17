@@ -1,4 +1,8 @@
-$Rev: 175625 $
+$Rev: 175743 $
+Make the mobile keyboard layout error model work properly (ie on input  longer
+than one char) by circumfixing it with any-stars.
+
+r175625:
 First round of improved handling of compilation errors in shell pipes: instruct
 make to delete targets when some of the intermediate steps fail.
 

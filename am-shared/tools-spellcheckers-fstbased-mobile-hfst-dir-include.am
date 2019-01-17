@@ -328,8 +328,11 @@ $(srcdir)/keyboardlayout.att:
 		> $@
 	$(AM_V_at)echo "Remember to add $@ to svn!"
 
-keyboardlayout.hfst: keyboardlayout.att
-	$(AM_V_TXT2FST)$(HFST_TXT2FST) $< > $@
+keyboardlayout.hfst: keyboardlayout.att anystar.hfst
+	$(AM_V_TXT2FST)$(HFST_TXT2FST) $< \
+		| $(HFST_CONCATENATE)   anystar.hfst - \
+		| $(HFST_CONCATENATE) - anystar.hfst   \
+		> $@
 
 # The final error model is assembled here:
 errmodel.%.hfst: words.%.hfst \

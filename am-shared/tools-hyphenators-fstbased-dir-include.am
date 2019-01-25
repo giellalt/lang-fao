@@ -152,18 +152,23 @@ hyphenator-raw-gt-desc.tmp.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst \
 endif # WANT_REVERSED_INTERSECT
 endif !SKIP_PHONOLOGY
 
+# Convert this file to weighted format before using it in the hyphenators:
+downcase-derived_proper-strings.compose.hfst: \
+	$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) -i $< --format=openfst-tropical -o $@
+
 # 5. remove hyph-points from 4, invert
 hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \
 	filters/remove-hyphenation-marks.hfst  \
 	filters/remove-infl_deriv-borders.hfst \
 	filters/remove-word-boundary.hfst      \
-	$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
+	downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
-		@\"$<\" \
-	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
-	.o. @\"filters/remove-hyphenation-marks.hfst\"  \
-	.o. @\"filters/remove-infl_deriv-borders.hfst\" \
-	.o. @\"filters/remove-word-boundary.hfst\"      \
+			@\"$<\" \
+		.o. @\"downcase-derived_proper-strings.compose.hfst\" \
+		.o. @\"filters/remove-hyphenation-marks.hfst\"  \
+		.o. @\"filters/remove-infl_deriv-borders.hfst\" \
+		.o. @\"filters/remove-word-boundary.hfst\"      \
 			; \n\
 		 invert\n\
 		 save stack $@\n\
@@ -173,11 +178,11 @@ hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \
 hyphenator-gt-desc-output.hfst: hyphenator-raw-gt-desc.hfst \
 		filters/remove-infl_deriv-borders.hfst \
 		$(HYPH_RULES) \
-		$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
+		downcase-derived_proper-strings.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 		@\"$<\" \
 	.o. @\"filters/remove-infl_deriv-borders.hfst\" \
-	.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
+	.o. @\"downcase-derived_proper-strings.compose.hfst\" \
 	; \n\
 	define cleanlex\n\
 	set flag-is-epsilon ON\n\

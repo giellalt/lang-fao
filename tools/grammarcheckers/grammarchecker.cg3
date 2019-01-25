@@ -310,8 +310,7 @@ ADD (&typo &SUGGESTWF) (<spelled>) ;
 # - Harumframt kiksaði ein týdningarmikil útgávukonsert, tí eg fingið ikki neyðuga visumið.
 # - Eg farið avstað.
 ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (-1 ("eg"));
-COPY:msyn-sg1 (Ind Prt 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1) ;
-COPY:msyn-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1) ;
+COPY:msyn-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1) ;
 
 
 # Local Variables:

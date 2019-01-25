@@ -138,6 +138,7 @@ AC_ARG_WITH([backend-format],
                               [enable the hfst backend format specified (one of: sfst, foma, openfst-tropical, openfst-log) @<:@default=openfst-tropical@:>@])],
               [with_backend=$withval],
               [with_backend=openfst-tropical])
+AC_SUBST([HFST_FORMAT_NAME], [$with_backend])
 AM_CONDITIONAL([WITH_OFST_TROPICAL], [test "$with_backend" == openfst-tropical])
 AM_CONDITIONAL([WITH_OFST_LOG],      [test "$with_backend" == openfst-log])
 AM_CONDITIONAL([WITH_SFST],          [test "$with_backend" == sfst])

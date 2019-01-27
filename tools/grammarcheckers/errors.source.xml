@@ -21,5 +21,49 @@
     </body>
   </error>
 
-  
+  <error id="msyn-nomdef">
+    <header>
+      <title xml:lang="en">It seems this noun should be definite, and end in ð.</title>
+      <title xml:lang="fo">Det ser ut til at dette substantivet skal vere i bestemt form, og ende på ð.</title>
+    </header>
+    <body>
+      <description xml:lang="en">If the noun "$1" ends in -i, it is a dative form. In the subject position it should end in ð.</description>
+      <description xml:lang="fo">Viss substantivet "$1" endar på -i står det i dativ. I subjektsposisjon skal det vere ð.</description>
+    </body>
+  </error>
+
+  <error id="msyn-ptc">
+    <header>
+      <title xml:lang="en">Supine verb forms end in ð.</title>
+      <title xml:lang="fo">Supinumsformer skal ende på ð.</title>
+    </header>
+    <body>
+      <description xml:lang="en">If the form "$1" is used after a finite verb, it is a supine and should end in ð.</description>
+      <description xml:lang="fo">Viss forma "$1" blir brukt etter eit finitt verb, er det supinumsform og skal ende på ð.</description>
+    </body>
+  </error>
+
+  <error id="lex-tad">
+    <header>
+      <title xml:lang="en">It seems $1 should be tað in this position.</title>
+      <title xml:lang="fo">Det ser ut til at $1 skal vere  tað her.</title>
+    </header>
+    <body>
+      <description xml:lang="en">When using "$1" as a formal subject, you should write tað and not ta.</description>
+      <description xml:lang="fo">Når du skriv "$1" som eit formelt subjekt skal du skrive tað og ikkje ta</description>
+    </body>
+  </error>
+
+  <error id="lex-litid">
+    <header>
+      <title xml:lang="en">It seems $1 should be lítið in this position.</title>
+      <title xml:lang="fo">Det ser ut til at $1 skal vere  lítið her.</title>
+    </header>
+    <body>
+      <description xml:lang="en">The form "$1" is a verb, here it seems that the adjective lítið is better.</description>
+      <description xml:lang="fo">Forma "$1" er eit verb, her ser det ut til å passe betre med adjektivet lítið.</description>
+    </body>
+  </error>
+
+ 
 </errors>

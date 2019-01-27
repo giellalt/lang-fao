@@ -287,7 +287,7 @@ LIST ABSTRACT = "ráð" "byráð" ;
 
 LIST BAREPLURALS = "barn" "fólk" "bygdafólk" "konufólk" ;
 # these words are usually plurals when used alone. All countable neuters?
-## Tú sært barn standa.
+#$ Tú sært barn standa.
 
 
 
@@ -300,17 +300,52 @@ LIST BAREPLURALS = "barn" "fólk" "bygdafólk" "konufólk" ;
 
 
 LIST &msyn-sg1 = &msyn-sg1 ;
+LIST &msyn-nomdef = &msyn-nomdef ;
+LIST &msyn-ptc = &msyn-ptc ;
+LIST &lex-tad = &lex-tad ;
 
 SECTION
 
 # Speller suggestions rule - make sure the suggestions survive the cg mangling:
 ADD (&typo &SUGGESTWF) (<spelled>) ;
 
-# Dømi:
-# - Harumframt kiksaði ein týdningarmikil útgávukonsert, tí eg fingið ikki neyðuga visumið.
-# - Eg farið avstað.
+## - Harumframt kiksaði ein týdningarmikil útgávukonsert, tí eg fingið ikki neyðuga visumið.
+#$ - Harumframt kiksaði ein týdningarmikil útgávukonsert, tí eg fingi ikki neyðuga visumið.
+## - Eg farið avstað.
+#$ - Eg fari avstað.
+
 ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (-1 ("eg"));
 COPY:msyn-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1) ;
+
+ADD:msyn-nomdef (&msyn-nomdef) TARGET (N Neu Sg Dat Indef) IF (-1 BOS or CS)(0 (N Neu Sg Dat Indef))(1 VFIN OR CS OR Pr) ;
+COPY:msyn-nomdef (&SUGGEST) TARGET (&msyn-nomdef) ;
+## .. fyri at samfelagi skal fylgja altjóða menningini.
+#$ .. fyri at samfelagið skal fylgja altjóða menningini.
+
+#$ at skifti millum útbúgvingarskiparnirnar er væl skipað.
+#$ at skiftið millum útbúgvingarskiparnirnar er væl skipað.
+
+
+ADD:msyn-ptc (&msyn-ptc) TARGET (Inf) IF (-1 ("hava" V Ind)) ;
+COPY:msyn-ptc (&SUGGEST) TARGET (&msyn-ptc) ;
+
+## Tey, ið hava manna arbeiðsbólkin, eru:
+#$ Tey, ið hava mannað arbeiðsbólkin, eru:
+
+ADD:lex-tad (&lex-tad) TARGET ("tann" Pron Dem Fem Sg Acc) IF (-1 (Ind))(1 Det OR Pron)(NOT 0 ("tí" CS)) ;
+COPY:lex-tad (&SUGGEST) TARGET (&lex-tad) ;
+
+## Er ta onkur sum hevur eina troyggju til føroyakan búna til sølu?
+#$ Er tað onkur sum hevur eina troyggju til føroyakan búna til sølu?
+
+ADD:lex-litid (&lex-litid) TARGET ("líta" V Ind Prs 1Sg) IF (-1 Det OR Adv OR Pr)(1 N + Neu + Indef);
+COPY:lex-litid (&SUGGEST) TARGET (&lex-litid) ;
+
+## Er ta onkur sum hevur eina troyggju til føroyakan búna til sølu?
+#$ Er tað onkur sum hevur eina troyggju til føroyakan búna til sølu?
+
+## at ov líti samfesti er í verandi vegleiðingarskipan.
+#$ at ov lítið samfesti er í verandi vegleiðingarskipan.
 
 
 # Local Variables:

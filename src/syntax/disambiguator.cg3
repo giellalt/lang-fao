@@ -531,6 +531,12 @@ REMOVE (Num Neu Dat) IF (0 (Det Neu Dat))(1 (N Neu Dat) OR (A Neu Dat));
 
 	## eina mynd
 
+# Pron not N
+
+REMOVE ("hannur") IF (NOT -1 NPNH) ;
+
+
+
 # Proper nouns
 
 #REMOVE:InternalProp Guess IF (NOT -1 CLB OR PUNCT OR LEFT)(NOT 0 Guess);
@@ -691,7 +697,15 @@ REMOVE Interj IF (1 WORD)(0 ("á" Pr));
 REMOVE Interj IF (-1 V)(0 ("á" Pr));
 
 # Adverbs
+
+LIST COMMONADVERB = "næstan" "lítill" ;
+
+
 # General adverb
+
+SELECT:CommonAdverb  COMMONADVERB IF (-1 VFIN OR N OR Pron OR CS)(1 Adv OR N OR PRE-N) ;
+## ... ið hann næstan ikke mundi funnið.
+
 SELECT:r6 Adv IF (-1 DATPREP)(*1 Dat BARRIER NPNHA);
 
 SELECT:r7 Adv IF (-1 VFIN)(1 Inf);
@@ -1078,7 +1092,8 @@ REMOVE Det IF (0 Pron)(NOT 1 A OR N OR ("báðir"));
 REMOVE ("hon") IF (*-1 (Imp Sg) BARRIER ("tú"));
    ## Tak við tær barnið og flýggja til Egyptalands.      
 
-REMOVE:r66 ("hannur") IF (0 ("hann" Nom))(1 (V 3Sg));
+REMOVE:r66 ("hannur" N Msc Sg Acc Indef) IF (0 ("hann"))(1 (V 3Sg));
+REMOVE:r66 ("hannur" N Msc Sg Acc Indef) IF (-1 V OR Adv)(0 ("hann")) ;
        ## Han var her.
 
 SELECT (Pron Pers Pl Nom) IF (1 ("sum"))(2 Pl);

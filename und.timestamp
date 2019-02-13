@@ -1,4 +1,8 @@
-$Rev: 176032 $
+$Rev: 176732 $
+Added filter to remove the +MWE tag from the grammar checker generator. It
+blocked generation of some word forms (and should not be visible in any case).
+
+r176032:
 Fixed another case of transducer format mismatch for hyphenators, this time
 regarding pattern-based hyph building.
 

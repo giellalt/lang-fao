@@ -10,6 +10,46 @@
 <!-- change equals to hyphens in the above commands -->
 
 <errors>
+
+  <defaults>
+    <!--
+        The defaults provide error messages for where you haven't explicitly
+        provided one, as long as there's a match in "ids" for the error tag
+    -->
+    <default>
+      <ids>
+        <re v="lex-.*"/>       <!-- regex that matches all real-word-errors -->
+<!--        <e id="unreal-girjji"/>  you can list things explicitly if regexes are hard to use -->
+      </ids>
+      <header>
+        <title xml:lang="en">Real-word error</title>
+        <title xml:lang="fo">Skrivefeil</title>
+      </header>
+      <body>
+        <description xml:lang="en">The word "$1" exists in the dictionary, but means something different in this context.</description>
+        <description xml:lang="fo">Ordet "$1" eksisterer, men akkurat her passar det kanskje ikkje så godt.</description>
+        <!-- TODO: fix description lang=fo -->
+      </body>
+    </default>
+<!--
+    <default>
+      <ids>
+        <re v="msyn-wrong-case.*"/>
+        <re v="msyn-wrong_case.*"/>
+      </ids>
+      <header>
+        <title xml:lang="en">Wrong case</title>
+        <title xml:lang="fo">Feil kasus</title>
+      </header>
+      <body>
+        <description xml:lang="en">The word "$1" seems to be in the wrong case.</description>
+        <description xml:lang="fo"> "$1" ser ut til å vere brukt i feil kasus.</description>
+      </body>
+    </default>
+    -->
+  </defaults>
+
+  
   <error id="msyn-sg1">
     <header>
       <title xml:lang="en">It seems your verb should not end in ð.</title>

@@ -315,7 +315,7 @@ ADD (&typo &SUGGESTWF) (<spelled>) ;
 #$ - Eg fari avstað.
 
 ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (-1 ("eg"));
-COPY:msyn-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1) ;
+COPY:msyn-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup) TARGET (V Sup &msyn-sg1) ;
 
 ADD:msyn-nomdef (&msyn-nomdef) TARGET (N Neu Sg Dat Indef) IF (-1 BOS or CS)(0 (N Neu Sg Dat Indef))(1 VFIN OR CS OR Pr) ;
 COPY:msyn-nomdef (&SUGGEST) TARGET (&msyn-nomdef) ;

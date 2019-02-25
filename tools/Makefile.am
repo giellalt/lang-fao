@@ -3,4 +3,4 @@
 ## Licence: GPL v3+
 
 SUBDIRS = tokenisers analysers shellscripts \
-          spellcheckers hyphenatorsc grammarcheckers mt
+          spellcheckers hyphenators grammarcheckers mt

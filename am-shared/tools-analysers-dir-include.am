@@ -1,0 +1,122 @@
+## Process this file with automake to produce Makefile.in
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+####### Intermediate target file names: ########
+
+# set this to the filename of the analyser archive:
+GIELLA_ANL_ZDISTRO=$(GLANG2).zpipe
+
+GIELLA_ANL_VALENCY=$(GIELLA_ANL_VALENCY_SRC:.cg3=.bin)
+GIELLA_ANL_WHSPACE_ANAL=$(GIELLA_ANL_WHSPACE_ANAL_SRC:.regex=.hfst)
+GIELLA_ANL_MWEDIS=$(GIELLA_ANL_MWEDIS_SRC:.cg3=.bin)
+GIELLA_ANL_DISAMBIGUATOR=$(GIELLA_ANL_DISAMBIGUATOR_SRC:.cg3=.bin)
+GIELLA_ANL_FUNCTIONS=$(GIELLA_ANL_FUNCTIONS_SRC:.cg3=.bin)
+GIELLA_ANL_DEPENDENCY=$(GIELLA_ANL_DEPENDENCY_SRC:.cg3=.bin)
+
+GIELLA_ANL_TOKENISER=tokeniser-disamb-gt-desc.pmhfst
+GIELLA_ANL_PIPESPEC=pipespec.xml
+
+#! @var GIELLA_ANL_GRAMCHECKER_SRC source for rules of vislcg3 analyser
+GC_SRC_FILES=$(GIELLA_ANL_MWEDIS_SRC) \
+			 $(GIELLA_ANL_DISAMBIGUATOR_SRC) \
+			 $(GIELLA_ANL_WHSPACE_ANAL_SRC) \
+			 $(GIELLA_ANL_VALENCY)
+
+EXTRA_DIST=$(GC_SRC_FILES) \
+		   $(GIELLA_ANL_ERRORS) \
+		   $(GIELLA_ANL_PIPESPEC)
+
+####### Automake targets: ########
+
+if WANT_ANL_TOOL
+if CAN_VISLCG
+
+GIELLA_ANL_ZIPFILES=$(GIELLA_ANL_TOKENISER)     \
+				   $(GIELLA_ANL_VALENCY)        \
+				   $(GIELLA_ANL_WHSPACE_ANAL)   \
+				   $(GIELLA_ANL_MWEDIS)         \
+				   $(GIELLA_ANL_DISAMBIGUATOR)  \
+				   $(GIELLA_ANL_FUNCTIONS)      \
+				   $(GIELLA_ANL_DEPENDENCY)     \
+				   $(GIELLA_ANL_PIPESPEC)       \
+				   $(LOCAL_ANL_ZIP_FILES)
+
+noinst_DATA=$(GIELLA_ANL_SPELLER)
+
+voikkosharedir=$(datadir)/giella/$(GLANG)/
+voikkoshare_DATA=$(GIELLA_ANL_ZDISTRO)
+
+endif # CAN_VISLCG
+endif # WANT_ANL_TOOL
+
+####### Build rules - locally and via include: ########
+
+ZIPFLAGS=-j
+
+# Copy tokeniser:
+$(GIELLA_ANL_TOKENISER): \
+			$(top_builddir)/tools/tokenisers/$(GIELLA_ANL_TOKENISER)
+	$(AM_V_CP)cp -f $< $@
+
+# Compile the whitespace analyser:
+$(GIELLA_ANL_WHSPACE_ANAL): $(GIELLA_ANL_WHSPACE_ANAL_SRC)
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) --disjunct -i $< \
+		| $(HFST_FST2FST) -O -o $@
+
+# Copy mwe-dis:
+$(GIELLA_ANL_MWEDIS_SRC): \
+		$(top_srcdir)/tools/tokenisers/$(GIELLA_ANL_MWEDIS_SRC)
+	$(AM_V_CP)cp -f $< $@
+
+# cg3 files from common sources:
+$(GIELLA_ANL_FUNCTIONS_SRC) \
+$(GIELLA_ANL_DEPENDENCY_SRC): \
+%.cg3: $(top_builddir)/src/syntax/%.cg3
+	$(AM_V_CP)cp -f $< $@
+
+# Other cg3 files:
+%.cg3: $(top_srcdir)/src/syntax/%.cg3
+	$(AM_V_CP)cp -f $< $@
+
+# Finally build the .zglt file:
+$(GIELLA_ANL_ZDISTRO): $(GIELLA_ANL_ZIPFILES)
+	$(AM_V_at)rm -f $@
+	$(AM_V_ZIP)$(ZIP) $(ZIPFLAGS) $(MORE_VERBOSITY) $@ $^
+
+# Additional developer tools:
+dev: modes/$(GLANG)gram.mode schemas.xml
+
+modes/%.mode: pipespec.xml
+	$(AM_V_at)$(MKDIR_P) modes
+	$(AM_V_GEN)divvun-gen-sh -d modes $<
+
+schemas.xml:
+	divvun-gen-xmlschemas >$@
+
+### Clean target:
+clean-local:
+	-rm -f *.bin schemas.xml *.zcheck *.hfst *.hfstol *.zip *.zhfst
+	-rm -f mwe-dis.cg3 valency.cg3
+	-rm -f $(GIELLA_ANL_ZIPFILES)
+	-rm -rf modes
+
+### Include the following
+
+include $(top_srcdir)/am-shared/vislcg3-include.am
+include $(top_srcdir)/am-shared/silent_build-include.am
+
+# vim: set ft=automake:

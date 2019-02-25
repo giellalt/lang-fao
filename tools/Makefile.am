@@ -2,4 +2,5 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = spellcheckers shellscripts tokenisers grammarcheckers mt hyphenators
+SUBDIRS = tokenisers analysers shellscripts \
+          spellcheckers hyphenatorsc grammarcheckers mt

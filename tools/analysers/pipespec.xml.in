@@ -1,0 +1,24 @@
+<pipespec language="@GLANG2@"
+          developer="Divvun"
+          copyright=""
+          version="0.1"
+          contact="Divvun divvun@uit.no"
+          depversions="vislcg3 >=1.1.2.12361
+                       hfst >= 3.13.0
+                       divvun-gramcheck >= 0.2.0">
+
+  <pipeline name="@GLANG@-analyser"
+            language="@GLANG2@"
+            type="Analyser">
+    <tokenize><tokenizer n="tokeniser-disamb-gt-desc.pmhfst"/></tokenize>
+    <blanktag>
+      <blanktagger n="analyser-gt-whitespace.hfst"/>
+    </blanktag>
+    <cg><grammar n="mwe-dis.bin"/></cg>
+    <mwesplit/>
+    <cg><grammar n="disambiguator.bin"/></cg>
+    <cg><grammar n="functions.bin"/></cg>
+    <cg><grammar n="dependency.bin"/></cg>
+  </pipeline>
+
+</pipespec>

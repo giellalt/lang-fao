@@ -35,6 +35,8 @@ AC_CONFIG_FILES([Makefile \
                  test/src/phonology/Makefile \
                  test/src/syntax/Makefile \
                  tools/Makefile \
+                 tools/analysers/Makefile \
+                 tools/analysers/pipespec.xml \
                  tools/grammarcheckers/Makefile \
                  tools/grammarcheckers/pipespec.xml \
                  tools/grammarcheckers/filters/Makefile \

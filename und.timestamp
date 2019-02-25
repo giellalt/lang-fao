@@ -1,4 +1,14 @@
-$Rev: 176732 $
+$Rev: 177013 $
+Fixed copy-paste error.
+
+r177012:
+Added support for building an analyser tool. This is in practice an
+xml-specified pipeline identical to what is used in the grammar checker, but
+where the pipeline does text analysis instead of grammar checking. Also made
+grammar checkers and mobile spellers part of the --enable-all-tools
+configuration.
+
+r176732:
 Added filter to remove the +MWE tag from the grammar checker generator. It
 blocked generation of some word forms (and should not be visible in any case).
 

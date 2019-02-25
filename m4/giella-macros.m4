@@ -730,7 +730,7 @@ AM_CONDITIONAL([WANT_REVERSED_INTERSECT], [test "x$enable_reversed_intersect" !=
 # Enable all stable tools in one go:
 AC_ARG_ENABLE([all_tools],
 			  [AS_HELP_STRING([--enable-all-tools],
-			  [build all tools (excluding unstable or experimental tools, which must be explicitly enabled with --enable-grammarchecker, --enable-dialects, --enable-glossers, --enable-phonetic, --enable-downcaseerror, --enable-L2, --enable-pattern-hyphenators, --enable-fomaspeller, --enable-hfst-mobile-speller, --enable-vfstspeller) @<:@default=no@:>@])],
+			  [build all tools (excluding unstable or experimental tools, which must be explicitly enabled with --enable-dialects, --enable-glossers, --enable-phonetic, --enable-downcaseerror, --enable-L2, --enable-pattern-hyphenators, --enable-fomaspeller, --enable-vfstspeller) @<:@default=no@:>@])],
 			  [enable_all_tools=$enableval],
 			  [enable_all_tools=no])
 
@@ -778,12 +778,12 @@ AS_IF([test "x$enable_syntax" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
 AM_CONDITIONAL([WANT_SYNTAX], [test "x$enable_syntax" != xno])
 # $gt_prog_vislcg3
 
-# Enable grammar checkers - default is 'no'
+# Enable grammar checkers - default is 'no' (via $enable_all_tools)
 AC_ARG_ENABLE([grammarchecker],
               [AS_HELP_STRING([--enable-grammarchecker],
                               [enable grammar checker @<:@default=no@:>@])],
               [enable_grammarchecker=$enableval],
-              [enable_grammarchecker=no])
+              [enable_grammarchecker=$enable_all_tools])
 AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" = "xno"], 
       [enable_grammarchecker=no
        AC_MSG_ERROR([vislcg3 missing or too old - required for the grammar checker])],
@@ -838,12 +838,12 @@ AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno],
               AC_MSG_ERROR([gzip missing - required for foma spellers])])])
 AM_CONDITIONAL([CAN_FOMA_SPELLER], [test "x$enable_fomaspeller" != xno])
 
-# Enable hfst mobile spellers - default is 'no' (and dependent on --enable-spellers)
+# Enable hfst mobile spellers - default is 'no' (dependent on --enable-spellers)
 AC_ARG_ENABLE([hfst-mobile-speller],
               [AS_HELP_STRING([--enable-hfst-mobile-speller],
                               [build hfst mobile spellers (dependent on --enable-spellers) @<:@default=no@:>@])],
               [enable_mobile_hfstspeller=$enableval],
-              [enable_mobile_hfstspeller=no])
+              [enable_mobile_hfstspeller=$enable_all_tools])
 AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_mobile_hfstspeller=no],
       [AS_IF([test "x$XZ" = "xfalse"],
              [enable_mobile_hfstspeller=no
@@ -976,6 +976,19 @@ AS_IF([test x$enable_tokenisers == xyes -a x$enable_analysers == xno],
     [AC_MSG_ERROR([You need to enable analysers to build tokenisers])])
 AM_CONDITIONAL([WANT_TOKENISERS], [test "x$enable_tokenisers" != xno])
 
+# Enable analyser tool - default is 'no' (via $enable_all_tools)
+AC_ARG_ENABLE([analyser-tool],
+              [AS_HELP_STRING([--enable-analyser-tool],
+                              [enable analyser tool @<:@default=no@:>@])],
+              [enable_analyser_tool=$enableval],
+              [enable_analyser_tool=$enable_all_tools])
+AS_IF([test "x$enable_analyser_tool" = "xyes" -a "x$gt_prog_vislcg3" = "xno"], 
+      [enable_analyser_tool=no
+       AC_MSG_ERROR([vislcg3 missing or too old - required for the analyser tool])])
+AS_IF([test x$enable_tokenisers == xno -a x$enable_analyser_tool == xyes],
+    [AC_MSG_ERROR([You need to enable tokenisers to build the analyser tool])])
+AM_CONDITIONAL([WANT_ANL_TOOL], [test "x$enable_analyser_tool" != xno])
+
 # Enable building morphers - default is 'no'
 AC_ARG_ENABLE([morpher],
               [AS_HELP_STRING([--enable-morpher],
@@ -1005,19 +1018,22 @@ AC_DEFUN([gt_PRINT_FOOTER],
 cat<<EOF
 
   -- specialised fst's (off by default): --
-  * phonetic/IPA conversion enabled: $enable_phonetic
   * dictionary fst's enabled: $enable_dicts
   * Oahpa transducers enabled: $enable_oahpa
     * L2 analyser: $enable_L2
     * downcase error analyser: $enable_downcaseerror
-  * Apertium transducers enabled: $enable_apertium
   * generate abbr.txt: $enable_abbr
-  * build tokenisers: $enable_tokenisers
   * build glossing fst's: $enable_glossers
-  * build morphololgical segmenter: $enable_morpher
   * build dialect specific fst's: $enable_dialects
 
-  -- proofing tools (off by default): --
+  -- Tools (off by default): --
+  * phonetic/IPA conversion enabled: $enable_phonetic
+  * Apertium MT fst's enabled: $enable_apertium
+  * build tokenisers: $enable_tokenisers
+  * build morphololgical segmenter: $enable_morpher
+  * build analyser tool: $enable_analyser_tool
+
+  -- Proofing tools (off by default): --
   * hyphenators:
     * fst hyphenator enabled: $enable_fst_hyphenator
     * pattern hyphenator enabled (requires fst hyph): $enable_fst_hyphenator

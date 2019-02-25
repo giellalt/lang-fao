@@ -340,8 +340,8 @@ COPY:msyn-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup) TARGET (V Sup &msyn-prspl) ;
 
 
 #!! Neu Indef should be Neu Def
-ADD:msyn-nomdef (&msyn-nomdef) TARGET (N Neu Sg Dat Indef) IF (-1 BOS or CS)(0 (N Neu Sg Dat Indef))(1 VFIN OR CS OR Pr) ;
-COPY:msyn-nomdef (&SUGGEST) TARGET (&msyn-nomdef) ;
+ADD:msyn-nomdef (&msyn-nomdef) TARGET (N Neu Sg Dat Indef) IF (-1 BOS or CS)(1 VFIN OR CS OR Pr) ;
+COPY:msyn-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef) TARGET (N Neu &msyn-nomdef) ;
 ## .. fyri at samfelagi skal fylgja altjóða menningini.
 #$ .. fyri at samfelagið skal fylgja altjóða menningini.
 

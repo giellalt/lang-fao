@@ -27,6 +27,7 @@ GT_LEXC_SRCS_L1_L2=\
 			 affixes/adjectives.lexc  \
 			 affixes/nouns.lexc       \
 			 affixes/propernouns.lexc \
+			 affixes/symbols.lexc     \
 			 affixes/verbs.lexc       \
 			 stems/abbreviations.lexc \
 			 stems/acronyms.lexc      \
@@ -59,7 +60,8 @@ GT_LEXC_L2_SRCS=\
 			$(L2)
 
 # Set this to the names of all generated lexc files, if any
-GENERATED_LEXC_SRCS=generated_files/punctuation.lexc
+GENERATED_LEXC_SRCS=generated_files/punctuation.lexc \
+                    generated_files/symbols.lexc
 
 # Set this to the names of all source xml files, if any
 GT_XML_SRCS=

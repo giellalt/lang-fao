@@ -1,4 +1,8 @@
-$Rev: 177031 $
+$Rev: 177265 $
+Changed sub-post tag for symbols from +ABBR to +Symbol. Needs to be declared as
+multichar in each language.
+
+r177031:
 Added support for shared Symbol file: build rules, affix file, modifications to
 root.lexc. Also increased required version of giella-common, to make sure that
 the shared stem file is actually there.

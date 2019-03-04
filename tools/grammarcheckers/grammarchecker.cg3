@@ -289,7 +289,7 @@ LIST BAREPLURALS = "barn" "fólk" "bygdafólk" "konufólk" ;
 # these words are usually plurals when used alone. All countable neuters?
 #$ Tú sært barn standa.
 
-
+SET NOT-1SG = WORD - 1Sg - (Prt Sg) ;
 
 
 ########################                  #########################
@@ -305,13 +305,14 @@ LIST &msyn-nomdef = &msyn-nomdef ;
 LIST &msyn-sup = &msyn-sup ;
 LIST &lex-tad = &lex-tad ;
 
+
 SECTION
 
 # Speller suggestions rule - make sure the suggestions survive the cg mangling:
 ADD (&typo &SUGGESTWF) (<spelled>) ;
 
-#!! Sup should be Sg1
-ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (*-1 ("eg" Pron Pers Sg Nom BARRIER NOT-ADV));
+#!! Sup should be 1Sg
+ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (*-1 ("eg" Pron Pers Sg Nom LINK -1 NOT-1SG BARRIER NOT-ADV));
 COPY:msyn-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1) ;
 
 ## - Harumframt kiksaði ein týdningarmikil útgávukonsert, tí eg fingið ikki neyðuga visumið.
@@ -320,13 +321,13 @@ COPY:msyn-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1)
 #$ - Eg fari avstað.
 
 
-#!! Neu should be Sg1
+#!! Neu should be 1Sg
 ADD:msyn-sg1 (&msyn-sg1) TARGET (N Neu Sg Nom Def) IF (*-1 ("eg" Pron Pers Sg Nom BARRIER NOT-ADV) LINK -1 BOS OR CS OR Adv OR PUNCT);
 COPY:msyn-sg1 (V Ind Prs 1Sg &SUGGEST) EXCEPT (N Neu Sg Nom Def &msyn-sg1) TARGET (N Neu &msyn-sg1) ;
 
 
-#!! Sup  should be Sg1
-ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (-1 ("eg"));
+#!! Sup  should be 1Sg
+ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (-1 ("eg"))(NOT -2 (Prt Sg) OR 1Sg);
 COPY:msyn-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup) TARGET (V Sup &msyn-sg1) ;
 
 

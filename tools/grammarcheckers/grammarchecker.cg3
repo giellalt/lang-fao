@@ -303,13 +303,22 @@ LIST &msyn-sg1 = &msyn-sg1 ;
 LIST &msyn-prspl = &msyn-prspl ;
 LIST &msyn-nomdef = &msyn-nomdef ;
 LIST &msyn-sup = &msyn-sup ;
+LIST &lex-laet = &lex-laet ;
 LIST &lex-tad = &lex-tad ;
 
+
+#!! !!!Rule section
 
 SECTION
 
 # Speller suggestions rule - make sure the suggestions survive the cg mangling:
 ADD (&typo &SUGGESTWF) (<spelled>) ;
+
+
+#!! !!Verbs
+
+
+#!! !Sg1 target forms
 
 #!! Sup should be 1Sg
 ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (*-1 ("eg" Pron Pers Sg Nom LINK -1 NOT-1SG BARRIER NOT-ADV));
@@ -320,24 +329,52 @@ COPY:msyn-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1)
 ## - Eg farið avstað.
 #$ - Eg fari avstað.
 
-
-#!! Neu should be 1Sg
-ADD:msyn-sg1 (&msyn-sg1) TARGET (N Neu Sg Nom Def) IF (*-1 ("eg" Pron Pers Sg Nom BARRIER NOT-ADV) LINK -1 BOS OR CS OR Adv OR PUNCT);
-COPY:msyn-sg1 (V Ind Prs 1Sg &SUGGEST) EXCEPT (N Neu Sg Nom Def &msyn-sg1) TARGET (N Neu &msyn-sg1) ;
-
-
 #!! Sup  should be 1Sg
 ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (-1 ("eg"))(NOT -2 (Prt Sg) OR 1Sg);
 COPY:msyn-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup) TARGET (V Sup &msyn-sg1) ;
 
 
 
+#!! Neu should be 1Sg
+ADD:msyn-sg1 (&msyn-sg1) TARGET (N Neu Sg Nom Def) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
+COPY:msyn-sg1 (V Ind Prs 1Sg &SUGGEST) EXCEPT (N Neu Sg Nom Def &msyn-sg1) TARGET (&msyn-sg1) ;
+## Eg takið tað.
+#$ Eg taki tað.
+
+#!! Imp Pl should be 1Sg
+ADD:msyn-sg1 (&msyn-sg1) TARGET (V Imp Pl) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
+COPY:msyn-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Imp Pl &msyn-sg1) TARGET (V &msyn-sg1) ;
+## Eg lesið tað.
+#$ Eg lesi tað.
+
+
+#!! !Plural forms
 #!! Sup should be Pl
 ADD:msyn-prspl (&msyn-prspl) TARGET (V Sup) IF (*-1 ("eg") + Pron + Pers + Pl + Nom BARRIER NOT-ADV);
 COPY:msyn-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup) TARGET (V Sup &msyn-prspl) ;
 
 ## Vit skrivað til tín í dag um hetta málið.
 #$ Vit skriva til tín í dag um hetta málið.
+
+
+
+#!! !Supine forms
+
+#!! Inf should be Sup
+ADD:msyn-sup (&msyn-sup) TARGET (Inf) IF (-1 ("hava" V Ind)) ;
+COPY:msyn-sup (Sup &SUGGEST) EXCEPT (Inf) TARGET (&msyn-sup) ;
+
+
+#!! !!Specific verbs
+
+#!! Past tens of láta is læt not lat
+ADD:lex-laet (&lex-laet) TARGET ("lata" V Imp Sg) IF (-1 Adv OR Nom) ;
+COPY:lex-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-laet) TARGET ("lata");
+## Tað lat stygt.
+## Tað læt stygt.
+
+#!! !!Nouns
+
 
 
 #!! Neu Indef should be Neu Def
@@ -349,9 +386,10 @@ COPY:msyn-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef) TARGET (N Neu &msyn-nomde
 #$ at skifti millum útbúgvingarskiparnirnar er væl skipað.
 #$ at skiftið millum útbúgvingarskiparnirnar er væl skipað.
 
-#!! Inf should be Sup
-ADD:msyn-sup (&msyn-sup) TARGET (Inf) IF (-1 ("hava" V Ind)) ;
-COPY:msyn-sup (Sup &SUGGEST) EXCEPT (Inf) TARGET (&msyn-sup) ;
+
+
+
+#!! !!Subjunctives
 
 ## Tey, ið hava manna arbeiðsbólkin, eru:
 #$ Tey, ið hava mannað arbeiðsbólkin, eru:
@@ -363,6 +401,8 @@ COPY:lex-tad ("tað" Det Neu Sg Nom &SUGGEST) EXCEPT ("tann" Pron Dem Fem Sg Acc
 ## Er ta onkur sum hevur eina troyggju til føroyskan búna til sølu?
 #$ Er tað onkur sum hevur eina troyggju til føroyskan búna til sølu?
 
+
+#!! !!Adjectives
 
 #!! líti should be lítið
 ADD:lex-litid (&lex-litid) TARGET ("líta" V Ind Prs 1Sg) IF (-1 Det OR Adv OR Pr)(1 N + Neu + Indef);

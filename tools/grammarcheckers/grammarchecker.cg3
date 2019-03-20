@@ -298,11 +298,13 @@ SET NOT-1SG = WORD - 1Sg - (Prt Sg) ;
 ########################                  #########################
 ########################                  #########################
 
+#!! Declaring all the error tags
 
 LIST &msyn-sg1 = &msyn-sg1 ;
 LIST &msyn-prspl = &msyn-prspl ;
 LIST &msyn-nomdef = &msyn-nomdef ;
 LIST &msyn-sup = &msyn-sup ;
+LIST &msyn-npl = &msyn-npl ;
 LIST &lex-laet = &lex-laet ;
 LIST &lex-tad = &lex-tad ;
 
@@ -376,6 +378,7 @@ COPY:lex-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-laet
 #!! !!Nouns
 
 
+#!! !Definiteness
 
 #!! Neu Indef should be Neu Def
 ADD:msyn-nomdef (&msyn-nomdef) TARGET (N Neu Sg Dat Indef) IF (-1 BOS or CS)(1 VFIN OR CS OR Pr) ;
@@ -386,6 +389,20 @@ COPY:msyn-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef) TARGET (N Neu &msyn-nomde
 #$ at skifti millum útbúgvingarskiparnirnar er væl skipað.
 #$ at skiftið millum útbúgvingarskiparnirnar er væl skipað.
 
+
+#!! !Quantor phrases
+
+#!! Num + N Sg should be Num + N Pl
+ADD:msyn-npl (&msyn-npl) TARGET (N Msc Sg Acc Indef) IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1")) ;
+COPY:msyn-npl (Pl Acc Indef  &SUGGEST) EXCEPT (Sg Acc Indef) TARGET (N Msc &msyn-npl) ;
+ADDRELATION:msyn-npl ($2)  (&msyn-npl)  TO (*-1 Num) ; 
+##  6 skipara hljópu fyrir borð með kistur sinar ok våru allir drepnir
+#$  6 skiparar hljópu fyrir borð með kistur sinar ok våru allir drepnir
+
+#!! Num + N Sg should be Num + N Pl (We need arabic tag here)
+ADD:msyn-npl (&msyn-npl) TARGET (N Msc Pl Gen Indef) IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1")); # (NOT *-1 Num LINK -1 SOMEGENPREP);
+COPY:msyn-npl (Nom Indef  &SUGGEST) EXCEPT (Gen Indef) TARGET (N Msc Pl &msyn-npl) ;
+ADDRELATION:msyn-npl ($2)  (&msyn-npl)  TO (*-1 Num) ; 
 
 
 

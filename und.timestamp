@@ -1,4 +1,11 @@
-$Rev: 177633 $
+$Rev: 177971 $
+Added UpCase function to the tokenisers, to handle all-upper variants of the
+input side. It does almost double the size of the fst, but at least it is just
+one additional line of code. Also, it does only work in Linux/using glib (for
+other platforms it is restricted to Latin1 - still, that covers a major portion
+of the Sámi fst's and running text, so much better than nothing).
+
+r177633:
 Ensure that the correct grammar checker pipeline is the default one, so that it
 will be executed when no pipeline is specified.
 

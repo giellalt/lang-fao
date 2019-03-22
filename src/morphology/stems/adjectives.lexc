@@ -18,14 +18,10 @@ gamal+A+Superl:elst ELSTUR ;
 góður+A+Cmp:betri ELDRI ;
 góður+A+Superl:best ELSTUR ;
 høgur+A:høgr adj_def ;
-høgur+A+Cmp:hægri ELDRI ;
-høgur+A+Superl:hægst ELSTUR ; !XXX
-illur+A+Cmp:verri ELDRI ;
-illur+A+Superl:verst ELSTUR ;
-langur+A+Cmp:longri ELDRI ;
-langur+A+Superl:longst ELSTUR ;
-lágur+A+Cmp:lægri ELDRI ;
-lágur+A+Superl:lægst ELSTUR ;
+høgur+A:hæg adjcmp2 ;
+illur+A:ver adjcmp2 ;
+langur+A:long adjcmp2 ;
+lágur+A:læg adjcmp2 ;
 lítil+A+Cmp:minni ELDRI ;
 lítil+A+Superl:minst ELSTUR ;
 mangur+A+Cmp:fleiri ELDRI ;
@@ -34,31 +30,27 @@ mikil+A+Cmp:meiri ELDRI ;
 mikil+A+Superl:mest ELSTUR ;
 nógvur+A+Cmp:meiri ELDRI ;
 nógvur+A+Superl:mest ELSTUR ;
-ringur+A+Cmp:verri ELDRI ;
-ringur+A+Superl:verst ELSTUR ;
+ringur+A:ver adjcmp2 ;
 seinur+A+Cmp:seinn  indef_cmp_adj_decl ; !XXX
-stórur+A+Cmp:størri ELDRI ;
-stórur+A+Superl:størst ELSTUR ;
+stórur+A:stør adjcmp2 ;
 næststørstur+A+Superl:næst#størst ELSTUR ;
 óndur+A+Cmp:verri ELDRI ;
 óndur+A+Superl:verst ELSTUR ;
-fragur+A+Cmp:fragari ELDRI ;
-fragur+A+Superl:fragast ELSTUR ;
+fragur+A:frag adjcmp1 ;
 smáur+A+Cmp:smærri ELDRI ;
 smáur+A+Superl:smæst ELSTUR ;
 stuttur+A+Cmp:styttri ELDRI ;
 stuttur+A+Superl:stytst ELSTUR ;
-norður+A+Superl:norðast ELSTUR ;
 uttar+A+Superl:uttast ELSTUR ;
-vestur+A+Superl:vestast ELSTUR ;
+vestur+A:vest adjcmp1 ;
 kyrrur+A+Superl:kyrrast ELSTUR ;
 næsthøgur+A+Superl:næsthægst ELSTUR ;
 ytri+A+Superl:ytst ELSTUR ;
 nógvir+A+Cmp:fleiri ELDRI ;
-suður+A+Cmp:sunnari ELDRI ;
 nær+A+Cmp:nærmari ELDRI ;
-sunnur+A+Cmp:sunnari ELDRI ;
-norður+A+Cmp:norðari ELDRI ;
+
+suður+A:sunn adjcmp1 ;
+norður+A:norð adjcmp1 ;
 
 
 modernaður:modernað l6 ;

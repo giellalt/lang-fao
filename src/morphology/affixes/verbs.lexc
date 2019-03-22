@@ -237,7 +237,7 @@ LEXICON s32 ! búgva
           :%^IUML pres_strong_s23_t1 ;
           :gv     pres_pl            ;
           :gv     imp_prsptc         ;
-                  prt_a              ;
+	          prt_ð ;
  +V+PrfPrc:gvin   p32                ;
 
 LEXICON s33 ! rógva
@@ -246,7 +246,7 @@ LEXICON s33 ! rógva
           :r%^IUML pres_strong_s23 ;
           :gv      pres_pl         ;
           :gv      imp_prsptc      ;
-                   prt_a           ;
+                  prt_a              ;
  +V+PrfPrc:%>gvin  p32             ;
 
 
@@ -1441,6 +1441,28 @@ LEXICON FLYGGJA
       +PrsPrc:flýggjandi VANDI ;
       +PrfPrc:flýtt     PASS  ; ! XXX fix link to adj
          +Sup:flýtt     PASS  ;
+
+
+LEXICON VAKSA
+         +Inf:vaksa    PASS  ;
+ +Ind+Prs+1Sg:veksi     PASS  ;
+ +Ind+Prs+2Sg:veksur  PASS  ;
+ +Ind+Prs+3Sg:veksur  PASS  ;
+ +Ind+Prs+2Sg+Use/NG:veks PASS  ; ! kvæð.
+ +Ind+Prs+3Sg+Use/NG:veks PASS  ; ! kvæð.
+  +Ind+Prs+Pl:vaksa    PASS  ;
+ +Ind+Prt+1Sg:vaks        PASS  ;
+ +Ind+Prt+1Sg+Use/NGA:vóks  PASS  ; ! kvæð.
+ +Ind+Prt+2Sg:vaks        PASS  ;
+ +Ind+Prt+2Sg+Use/NGA:vóks  PASS  ; ! kvæð.
+ +Ind+Prt+3Sg:vaks        PASS  ;
+ +Ind+Prt+3Sg+Use/NGA:vóks  PASS  ; ! kvæð.
+  +Ind+Prt+Pl:vuksu      PASS  ;
+      +Imp+Sg:vaks      PASS  ;
+      +Imp+Pl:vaksið    PASS  ;
+      +PrsPrc:vaksandi VANDI ;
+      +PrfPrc:vaks     PASS  ; ! XXX fix link to adj
+         +Sup:vaks     PASS  ;
 
 
 

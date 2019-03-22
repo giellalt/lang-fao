@@ -1892,14 +1892,15 @@ LEXICON h_flt16
  +N+Neu: N_PLD  ;
  +N+Neu: N_PLG  ;
 
-LEXICON h17 ! kriggj
+LEXICON h17 ! kríggj
   h17e    ;
   h_flt17 ;
 
-LEXICON h17e
+LEXICON h17e 
  +N+Neu:       S_N_SGNA  ;
  +N+Neu:%^JI   S_N_SGD_i ; !kríggi
- +N+Neu:       S_N_SGD   ; !kríggj
+ +N+Neu+Sg+Dat+Indef:   Neu_Flag ; !kríggj
+ +N+Neu+Sg+Dat+Def:%^GDEL%>num Neu_Flag ; !krígnum
  +N+Neu:%^GDEL S_N_SGG_s ; !krígs
 
 LEXICON h_flt17

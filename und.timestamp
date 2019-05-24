@@ -1,4 +1,8 @@
-$Rev: 177971 $
+$Rev: 179995 $
+Fixed fsttype mismatch error for filters when building mobile spellers, by
+building filters locally of the correct fst type, as we do for desktop spellers.
+
+r177971:
 Added UpCase function to the tokenisers, to handle all-upper variants of the
 input side. It does almost double the size of the fst, but at least it is just
 one additional line of code. Also, it does only work in Linux/using glib (for

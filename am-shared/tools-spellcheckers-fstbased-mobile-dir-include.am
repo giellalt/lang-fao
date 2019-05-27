@@ -41,8 +41,8 @@ endif # WANT_HFST_MOBILE_SPELLER
 noinst_DATA=$(GT_COMMON_SPELLER_HFST)
 
 #### 1. Copy base fst from parent dir:
-generator-mobilespeller-gt-norm-base.hfst: ../generator-fstspeller-gt-norm.hfst
-	$(AM_V_CP)cp -f $< $@
+$(UW_SPELLER_SRC): ../generator-fstspeller-gt-norm.hfst
+	$(AM_V_GEN)$(HFST_TXT2FST) $(HFST_FLAGS) -f openfst-tropical $< -o $@
 
 #### 2. Add corpus-based frequency weights (all non-hits will disappear from
 ####    the fst):

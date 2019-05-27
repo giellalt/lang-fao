@@ -19,14 +19,13 @@
 # Use: surfweights.CORPUSNAME.hfst and CORPUSNAME.unitweight
 SURFWEIGHTS=$(CORPUSNAME).surfweights.hfst
 UNITWEIGHT=$(CORPUSNAME).unitweight.txt
-# Use this as the source lexical fst for unit weighting, it contains correct
-# surface forms except for the word boundary #, which is still present, and
-# used in the weighting:
-UW_SPELLER_SRC=generator-mobilespeller-gt-norm-base.hfst
+
 # TSV file defining weights per tag
 TAGWEIGHTS=tags.reweight
+
 # ALPHA for additive smoothing, [0, 1.0] seems good
 ALPHA=1.0
+
 #NORMALISED_MAXWEIGHT=1000
 
 corpus_size_limit_command=$(shell \

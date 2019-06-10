@@ -1,0 +1,41 @@
+! ========= !
+! Akronymer !
+! ========= !
+
+LEXICON Acronym-fao
+Akronymnumeralier ; ! Nogle tal först, måskje=?
+
+StÍF ACRO ;
+T5PC ACRO ;
+
+
+
+
+
+LEXICON Akronymnumeralier
+%0 anl ; 1 anl ; 2 anl ; 3 anl ; 4 anl ; 5 anl ; 6 anl ; 7 anl ; 8 anl ; 9 anl ; 
+
+LEXICON anl ! akronymloop
+     Akronymnumeralier ; ! loop
+     FIRSTLETTER ;       ! Over til bogstaverne
+ :%- FIRSTLETTER ;       ! ... med stræg først
+
+
+LEXICON ACRO               
+%-      ARABIC ;           ! Here we dive over to the numerals, 
+        ARABIC ;           ! Here we dive over to the numerals
++N+ACR: acroconnector ;    ! Here we add the POS tag and go ACRO
+        R- ;
+
+LEXICON acroconnector  
+:%- acrocase ;             
+:%' acrocase ;             
+:   acrocase ;
+
+LEXICON acrocase
++Nom: # ;
++Acc: # ;
++Dat: # ;
++Gen:%>s # ;
+
+

@@ -21,21 +21,4 @@ LEXICON anl ! akronymloop
  :%- FIRSTLETTER ;       ! ... med stræg først
 
 
-LEXICON ACRO               
-%-      ARABIC ;           ! Here we dive over to the numerals, 
-        ARABIC ;           ! Here we dive over to the numerals
-+N+ACR: acroconnector ;    ! Here we add the POS tag and go ACRO
-        R- ;
-
-LEXICON acroconnector  
-:%- acrocase ;             
-:%' acrocase ;             
-:   acrocase ;
-
-LEXICON acrocase
-+Nom: # ;
-+Acc: # ;
-+Dat: # ;
-+Gen:%>s # ;
-
 

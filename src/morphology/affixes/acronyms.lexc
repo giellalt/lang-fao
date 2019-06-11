@@ -1,0 +1,73 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@uit.no or feedback@divvun.no
+
+
+!! !!!North Saami acronyms - affix part
+
+!! !!The lexica giving tags and suffixes to the acronyms
+
+LEXICON ACRONOUN_cons  
+ ACRONOUN ;
+
+LEXICON ACRONOUN_vow  
+ ACRONOUN ;
+
+
+LEXICON ACRONOUN   !!= * __@CODE@__ is the lexicon for __nouns__ (not +Prop) like ATV
+ +N+ACR: acroconnector ;    
+ 
+LEXICON UNIT   !!= * __@CODE@__  As acro, but without paradigm
++N+ABBR: ENDLEX ;
+
+! These lexica are here because of the common file.
+LEXICON ACRO_ACCRA
++N+Prop+ACR: acroconnector ;
+LEXICON ACRO_BERN
++N+Prop+ACR: acroconnector ;
+LEXICON ACRO_LONDON
++N+Prop+ACR: acroconnector ;
+LEXICON ACRO_NYSTØ
++N+Prop+ACR: acroconnector ;
+
+LEXICON ACRO_cons 
+ ACRO ;    
+
+LEXICON ACRO_vow 
+ ACRO ;    
+
+
+LEXICON ACRO 
+ +N+Prop+ACR: acroconnector ;    
+
+LEXICON DYN_ACRO_cons 
+ DYN_ACRO ;    
+
+LEXICON DYN_ACRO_vow 
+ DYN_ACRO ;    
+
+LEXICON DYN_ACRO
+ +N+Prop+Sem/Org+ACR+Dyn: acroconnector ;
+ 
+LEXICON acroconnector   !!= * __@CODE@__ Here comes a set of possible symbols to
+                        !! put between the abbreviation and its suffix
+   acronull    ;
+   R-          ; ! Here we dive over to the compounds: NRK-2, NRK-bargi
+
+LEXICON acronull   !!= * __@CODE@__  for suffixless forms, redirecting to K_only for clitic forms
+
++Nom: # ;
++Acc: # ;
++Dat: # ;
++Gen:%>s # ;
+

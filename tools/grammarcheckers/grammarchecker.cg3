@@ -98,6 +98,7 @@ LIST PrfPrc = PrfPrc ;
 LIST PrsPrc = PrsPrc ;
 LIST Ind = Ind ;
 LIST Imp = Imp ;
+LIST Pass = Pass ;
 LIST Sbj = Sbj ;
 LIST Sup = Sup ;
 LIST Cmpnd = Cmpnd ;
@@ -113,7 +114,7 @@ LIST Sem/Plc = Sem/Plc ;
 LIST Sem/Sur = Sem/Sur ;
 LIST Sem/Org = Sem/Org ;
 LIST Sem/Veh = Sem/Veh ;
-
+LIST Sem/Year = Sem/Year ;
 
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
 Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
@@ -332,7 +333,7 @@ COPY:msyn-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1)
 #$ - Eg fari avstað.
 
 #!! Sup  should be 1Sg
-ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (-1 ("eg"))(NOT -2 (Prt Sg) OR 1Sg);
+ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (-1 ("eg" Pron Pers Sg Nom))(NOT -2 (Prt Sg) OR 1Sg);
 COPY:msyn-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1) ;
 
 
@@ -352,18 +353,20 @@ COPY:msyn-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Imp Pl &msyn-sg1) TARGET (V &msyn-s
 
 #!! !Plural forms
 #!! Sup should be Pl
-ADD:msyn-prspl (&msyn-prspl) TARGET (V Sup) IF (*-1 ("eg") + Pron + Pers + Pl + Nom BARRIER NOT-ADV);
+ADD:msyn-prspl (&msyn-prspl) TARGET (V Sup) IF (*-1 ("eg") + Pron + Pers + Pl + Nom BARRIER NOT-ADV LINK NOT -1 V + Pl);
 COPY:msyn-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-prspl) TARGET (V Sup &msyn-prspl) ;
 
 ## Vit skrivað til tín í dag um hetta málið.
 #$ Vit skriva til tín í dag um hetta málið.
+
+#$ Hava vit skrivað til tín í dag um hetta málið?
 
 
 
 #!! !Supine forms
 
 #!! Inf should be Sup
-ADD:msyn-sup (&msyn-sup) TARGET (Inf) IF (-1 ("hava" V Ind)) ;
+ADD:msyn-sup (&msyn-sup) TARGET (Inf) IF (-1 ("hava" V Ind))(NOT 0 Pass)(NOT *1 Sup)(NOT 0 A LINK 1 N);
 COPY:msyn-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-sup) TARGET (&msyn-sup) ;
 
 
@@ -381,7 +384,7 @@ COPY:lex-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-laet
 #!! !Definiteness
 
 #!! Neu Indef should be Neu Def
-ADD:msyn-nomdef (&msyn-nomdef) TARGET (N Neu Sg Dat Indef) IF (-1 BOS or CS)(1 VFIN OR CS OR Pr) ;
+ADD:msyn-nomdef (&msyn-nomdef) TARGET (N Neu Sg Dat Indef) IF (NOT 0 Prop)(-1 BOS or CS)(1 VFIN OR CS OR Pr) ;
 COPY:msyn-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef &msyn-nomdef) TARGET (N Neu &msyn-nomdef) ;
 ## .. fyri at samfelagi skal fylgja altjóða menningini.
 #$ .. fyri at samfelagið skal fylgja altjóða menningini.
@@ -393,14 +396,14 @@ COPY:msyn-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef &msyn-nomdef) TARGET (N Ne
 #!! !Quantor phrases
 
 #!! Num + N Sg should be Num + N Pl
-ADD:msyn-npl (&msyn-npl) TARGET (N Msc Sg Acc Indef) IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1")) ;
+ADD:msyn-npl (&msyn-npl) TARGET N  IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year)(0 (N Msc Sg Acc Indef) LINK NOT 0 Pl) ;
 COPY:msyn-npl (Pl Acc Indef  &SUGGEST) EXCEPT (Sg Acc Indef &msyn-npl) TARGET (N Msc &msyn-npl) ;
 ADDRELATION:msyn-npl ($2)  (&msyn-npl)  TO (*-1 Num) ; # this ADDRELATION rule is to be able to refer to two words to the user.
 ##  6 skipara hljópu fyrir borð með kistur sinar ok våru allir drepnir
 #$  6 skiparar hljópu fyrir borð með kistur sinar ok våru allir drepnir
 
 #!! Num + N Sg should be Num + N Pl (We need arabic tag here)
-ADD:msyn-npl (&msyn-npl) TARGET (N Msc Pl Gen Indef) IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1")); # (NOT *-1 Num LINK -1 SOMEGENPREP);
+ADD:msyn-npl (&msyn-npl) TARGET (N Msc Pl Gen Indef) IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year); # (NOT *-1 Num LINK -1 SOMEGENPREP);
 COPY:msyn-npl (Nom Indef  &SUGGEST) EXCEPT (Gen Indef &msyn-npl) TARGET (N Msc Pl &msyn-npl) ;
 ADDRELATION:msyn-npl ($2)  (&msyn-npl)  TO (*-1 Num) ; 
 

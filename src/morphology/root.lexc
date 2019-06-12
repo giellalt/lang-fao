@@ -88,6 +88,16 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 +Use/Disamb  !!≈ * @CODE@ = Use only in disambiguator/tokeniser analyser
 +Use/Circ  !!≈ * @CODE@ = for compound restrictions
 
+
+        !! !!Symbols that need to be escaped on the lower side (towards twolc):
+ »7     !!≈ ; @CODE@ : Literal »
+ «7     !!≈ ; @CODE@ : Literal «
+        !! {{{
+ %[%>%] !!= @CODE@ - Literal >
+ %[%<%] !!= @CODE@ - Literal <
+        !! }}}
+
+
 !! !!Flag diacritics
 !! We have manually optimised the structure of our lexicon using following
 !! flag diacritics to restrict morhpological combinatorics - only allow compounds

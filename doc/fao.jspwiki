@@ -35,6 +35,9 @@ Derivation with -heit
 
  !!Semantic tags
 
+ * +Sem/Year         - year (i.e. 1000 - 2999), used only for numerals 
+
+
  !!Non-changing letters
 
  ; +v1 +v2 : different paradigms   ,
@@ -82,6 +85,16 @@ This entry / word should be in the following position(s):
                     be used alone, but can appear in any position
 
  * +Use/Disamb = Use only in disambiguator/tokeniser analyser
+ * +Use/Circ = for compound restrictions
+
+
+!!Symbols that need to be escaped on the lower side (towards twolc):
+ ; »7 : Literal »
+ ; «7 : Literal «
+{{{
+  %[%>%]  - Literal >
+  %[%<%]  - Literal <
+}}}
 
 
 !!Flag diacritics
@@ -147,8 +160,6 @@ given the proper use of these flags.
 !!!Lexicon Root
 This is the beginning of everything. The __Root__ lexicon is reserved in the
 LexC language, and must be the first lexicon defined.
-
-
 
 
 

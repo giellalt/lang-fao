@@ -27,7 +27,9 @@ generator_file=./../../../src/generator-gt-norm
 analyser_file=./../../../src/analyser-gt-norm
 
 ### out ###
-lemmas=./filtered-${POS}
+# Temporary files:
+lemmas=./filtered-${POS}.txt
+# Result files, will get filename suffix programmatically further down:
 generated_lemmas=./generated-${POS}
 result_file=missing_${POS}_lemmas
 gen_result_file=generated_missing_${POS}_lemmas

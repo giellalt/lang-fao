@@ -23,7 +23,7 @@
 HFST_REGEXP2FST_FLAGS= --xerox-composition=ON
 
 ####### Source file defs: ########
-# 1) GTD Core regex files:
+# 1) GiellaLT Core regex files:
 GIELLA_FILTER_CORE_REGEX_SRCS=\
 				block-mwe-compounds.regex                 \
 				extract-Sem_Plc-strings.regex             \
@@ -95,7 +95,7 @@ GIELLA_FILTER_CORE_REGEX_SRCS=\
 				remove-OLang_UND-strings.regex
 
 
-# 2) GTD Core **generated** regex files:
+# 2) GiellaLT Core **generated** regex files:
 GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS=\
                   make-optional-area-tags.regex         \
                   make-optional-derivation-tags.regex   \
@@ -113,6 +113,7 @@ GIELLA_FILTER_CORE_GENERATED_REGEX_SRCS=\
                   remove-grammatical-tags.regex         \
                   remove-orig_lang-tags.regex           \
                   remove-semantic-tags.regex            \
+                  remove-semantic-tags-before-derivations.regex \
                   reorder-semantic-tags.regex           \
                   $(DIALECT_REGEXES)                    \
                   $(AREA_REGEXES)
@@ -365,6 +366,10 @@ remove-%-tags.regex: %-tags.txt
 
 remove-%-tags-before-pos.regex: %-tags.txt
 	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_$*_tags_before_pos_regex.sh \
+		$< > $@
+
+remove-%-tags-before-derivations.regex: %-tags.txt
+	$(AM_V_GEN)$(GTCORE)/scripts/taglist2remove_$*_tags_before_derivations_regex.sh \
 		$< > $@
 
 # Remove strings specific to other dialects than the requested one:

@@ -60,12 +60,19 @@ LEXICON irregular_nouns
  +Sg+Gen+Indef: ENDLEX ; ! januar
 
 
+LEXICON h11/12 
+  h11 ;
+  h12  ;
+
 LEXICON h11/41 
   h11 ;
   h41  ;
 LEXICON h3/h41 
   h3  ;
-  h41 ; 
+  h41 ;
+LEXICON h3/kv2
+  h3 ;
+  kv2 ;
 LEXICON h4/41 
   h4  ;
   h41  ;
@@ -110,7 +117,9 @@ LEXICON k1/4
 LEXICON k1e/48f !k1e/f84b Heini
   k1e     ;
   k_flt48 ;
-
+LEXICON k1e/h24e
+ k1e ;
+ h24e ;
 LEXICON k1/11
  k1 ;
  k11 ;
@@ -437,10 +446,10 @@ LEXICON k_flt17
                 k_flt15   ;
   +N+Msc:%^UUML S_M_PLDAT ;
 
-!LEXICON k17/8/6
-                !k17      ;
-                !k8       ;
-                !k6       ;
+LEXICON k17/8/6
+ k17      ;
+ k8       ;
+ k6       ;
 
 !LEXICON k17e
 !               k15e      ;
@@ -1630,6 +1639,10 @@ LEXICON kv33e/h24e
  kv33e ;
  h24e ;
 
+LEXICON h24e/kv33e
+ h24e ;
+ kv33e ;
+
 LEXICON kv33 ! gleði
   kv33e    ;
   kv_flt33 ;
@@ -2189,11 +2202,16 @@ LEXICON h_flt34
 
 ! Leksikona h35 til og med h41 er __ikkje__ ferdig.
 
-
+LEXICON h35
+ h35 ;
+ h_flt34 ; !check the pl forms.
 LEXICON h35e
  +N+Neu: S_N_SGNA    ;
  +N+Neu: S_N_SGDG_is ;
 
+LEXICON h3e/kv2
+ h3e ;
+ kv2 ;
 LEXICON h36 
  +N+Neu:%>um S_N_SGNA    ;
  +N+Neu: S_N_SGDG_is ;

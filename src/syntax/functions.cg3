@@ -94,114 +94,119 @@ LIST Cmp/SplitR = Cmp/SplitR ;
 #!! * Sets for Semantic tags
 # -------------
 
-LIST Sem/Act = Sem/Act Sem/Act_Fruit Sem/Act_Group Sem/Act_Plc Sem/Act_Route Sem/Act_Tool-it; #Activity #Ollet guhká dainna X-Com (Veaigin bisánasttii Ristenge geahččat, man guhkás Lemet-gázzi juo ledje ollen dainna divvunbargguin.) # bargu
-LIST Sem/Amount = Sem/Amount Sem/Amount_Build Sem/Amount_Semcon;
-LIST Sem/Ani = Sem/Ani Sem/Ani_Body-abstr_Hum Sem/Ani_Build Sem/Ani_Build-part Sem/Ani_Build_Hum_Txt Sem/Ani-fish Sem/Ani_Group Sem/Ani_Group_Hum Sem/Ani_Group_Prod-vis Sem/Ani_Hum Sem/Ani_Hum_Plc Sem/Ani_Hum_Time Sem/Ani_Plc Sem/Ani_Plc_Txt Sem/Ani_Time Sem/Ani_Veh Sem/Body Sem/Body-abstr Sem/Body-abstr_Feat-cogn Sem/Body-abstr_Prod-audio_Semcon Sem/Body_Body-abstr Sem/Body_Clth Sem/Body_Food Sem/Body_Group_Hum Sem/Body_Hum Sem/Body_Mat Sem/Body_Measr Sem/Body_Obj_Tool-catch Sem/Body_Plc Sem/Body_Plc-elevate Sem/Body_Time Sem/Body_Group_Hum_Time ; #Animal #bivdit X-Loc veahki.
-LIST Sem/Aniprod = Sem/Aniprod Sem/Aniprod_Hum
-Sem/Aniprod_Obj-clo Sem/Aniprod_Perc-phys Sem/Aniprod_Plc Aniprod_Plc_Route ;
-LIST Sem/Body = Sem/Body Sem/Body_Body-abstr Sem/Body_Clth Sem/Body_Food Sem/Body_Group_Hum Sem/Body_Hum Sem/Body_Mat Sem/Body_Measr Sem/Body_Obj_Tool-catch Sem/Body_Plc Sem/Body_Plc-elevate Sem/Body_Time Sem/Body_Group_Hum_Time ; #Body #Buohkat ceggejedje gieđa. Mon gal attán dutnje bealji vuollái. Go duos dás speččohallá bahtii de gal buollá bargomokta! Čuolda basttii sus alemii.
-LIST Sem/Body-abstr = Sem/Ani_Body-abstr_Hum Sem/Body-abstr Sem/Body-abstr_Feat-cogn Sem/Body-abstr_Prod-audio_Semcon Sem/Body_Body-abstr ; # jierbmi, siellu, ...
-LIST Sem/Build = Sem/Amount_Build Sem/Ani_Build Sem/Ani_Build_Hum_Txt Sem/Build Sem/Build_Build-part Sem/Build_Clth-part Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Org Sem/Build_Route Sem/Build_Obj ; #Build #Sem #Syn: hukset X deike
-LIST Sem/Build-part = Sem/Ani_Build-part Sem/Build-part Sem/Build-part_Cat Sem/Build-part_Cat_Ctain Sem/Build-part_Cat_Ctain_Mat Sem/Build-part_Ctain Sem/Build-part_Ctain_Mat Sem/Build-part_Ctain_Obj Sem/Build-part_Plc Sem/Build_Build-part ; #Building part, e.g. room #Sem:+con,+count,-mova #Syn: mannat X sisa
-LIST Sem/Cat = Sem/Cat Sem/Build-part_Cat Sem/Build-part_Cat_Ctain Sem/Build-part_Cat_Ctain_Mat Sem/Cat_Group_Hum Sem/Cat_Group_Hum_Plc ;
-LIST Sem/Clth = Sem/Body_Clth Sem/Clth Sem/Clth_Hum Sem/Clth_Obj-clo ; #Clothes #Sem #bidjat X ala/badjelii.
-LIST Sem/Clth-jewl = Sem/Clth-jewl Sem/Clth-jewl_Curr Sem/Clth-jewl_Curr_Obj Sem/Clth-jewl_Curr_Obj_Org Sem/Clth-jewl_Fruit Sem/Clth-jewl_Money Sem/Clth-jewl_Plant Sem/Org_Clth-jewl  Sem/Clth-jewl_Org ; #Clothes jewelry #Synt: bidjat X ala. *bidjat X badjelii.
-LIST Sem/Clth-part  = Sem/Build_Clth-part Sem/Clth-part  ;
-LIST Sem/Ctain = Sem/Build-part_Ctain Sem/Build-part_Cat_Ctain Sem/Build-part_Cat_Ctain_Mat Sem/Build-part_Ctain_Mat Sem/Build-part_Ctain_Obj Sem/Ctain Sem/Ctain_Feat-phys Sem/Ctain_Furn Sem/Ctain-Obj Sem/Ctain_Plc Sem/Ctain_Tool Sem/Ctain_Tool-measr ; #Container #Sem:+mova #Syn: bidjat juoidá X sisa
+
+LIST Sem/Act = Sem/Act Sem/Act_Clth Sem/Act_Domain Sem/Act_Event Sem/Act_Fruit Sem/Act_Group Sem/Act_Hum_Obj Sem/Act_Obj-play Sem/Act_Plc Sem/Act_Route Sem/Act_Semcon Sem/Act_Tool-it Sem/Act_Txt ;
+LIST Sem/Adr = Sem/Adr ;
+LIST Sem/Amount = Sem/Amount Sem/Amount_Build Sem/Amount_Semcon ;
+LIST Sem/Ani = Sem/Ani Sem/Ani-bird Sem/Ani-fish Sem/Ani_Body Sem/Ani_Body-abstr_Hum Sem/Ani_Build Sem/Ani_Buildpart Sem/Ani_Build_Hum_Txt Sem/Ani_Cat Sem/Ani_Clth Sem/Ani_Feat_Hum Sem/Ani_Group Sem/Ani_Group_Hum Sem/Ani_Group_Prod-vis Sem/Ani_Hum Sem/Ani_Hum_Plc Sem/Ani_Hum_Time Sem/Ani_Obj Sem/Ani_Obj-el Sem/Ani_Plc Sem/Ani_Plc_Txt Sem/Ani_Time Sem/Ani_Tool Sem/Ani_Veh ;
+LIST Sem/Ani-bird = Sem/Ani-bird ; 
+LIST Sem/Ani-fish = Sem/Ani-fish ;
+LIST Sem/Aniprod = Sem/Aniprod Sem/Aniprod_Hum Sem/Aniprod_Mat Sem/Aniprod_Obj Sem/Aniprod_Obj-clo Sem/Aniprod_Perc-phys Sem/Aniprod_Plant Sem/Aniprod_Plc Sem/Aniprod_Plc_Route Sem/Aniprod_Substnc_Wthr ;
+LIST Sem/Atr = Sem/Atr ;
+LIST Sem/Body = Sem/Ani_Body Sem/Body Sem/Body_Body-abstr Sem/Body_Buildpart Sem/Body_Clth Sem/Body_Clthpart Sem/Body_Food Sem/Body_Fruit Sem/Body_Group_Hum Sem/Body_Group_Hum_Time Sem/Body_Hum Sem/Body_Mat Sem/Body_Measr Sem/Body_Obj_Tool-catch Sem/Body_Org Sem/Body_Plc Sem/Body_Plc-elevate Sem/Body_Time ;
+LIST Sem/Body-abstr = Sem/Ani_Body-abstr_Hum Sem/Body-abstr Sem/Body-abstr_Feat-cogn Sem/Body-abstr_Prod-audio_Semcon Sem/Body_Body-abstr  ;
+LIST Sem/Build = Sem/Amount_Build Sem/Ani_Build Sem/Ani_Build_Hum_Txt Sem/Build Sem/Build-room Sem/Build-room_Cat_Ctain_Mat Sem/Build_Clthpart Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Obj Sem/Build_Org Sem/Build_Plc Sem/Build_Route Sem/Build_Tool ;
+LIST Sem/Build-room = Sem/Build-room ;
+LIST Sem/Buildpart = Sem/Ani_Buildpart Sem/Body_Buildpart Sem/Buildpart Sem/Buildpart_Cat Sem/Buildpart_Cat_Ctain Sem/Buildpart_Cat_Ctain_Mat Sem/Buildpart_Ctain Sem/Buildpart_Ctain_Mat Sem/Buildpart_Ctain_Obj Sem/Buildpart_Plc Sem/Buildpart_Prod-audio Sem/Build_Buildpart ; 
+LIST Sem/Cat = Sem/Ani_Cat Sem/Buildpart_Cat Sem/Buildpart_Cat_Ctain Sem/Buildpart_Cat_Ctain_Mat Sem/Cat Sem/Cat_Edu Sem/Cat_Group_Hum Sem/Cat_Group_Hum_Plc Sem/Cat_Obj ;
+LIST Sem/Clth = Sem/Act_Clth Sem/Ani_Clth Sem/Body_Clth Sem/Clth Sem/Clth_Hum Sem/Clth_Obj Sem/Clth_Obj-clo Sem/Clth-jewl Sem/Clth-jewl_Curr Sem/Clth-jewl_Curr_Obj Sem/Clth-jewl_Curr_Obj_Org Sem/Clth-jewl_Fruit Sem/Clth-jewl_Money Sem/Clth-jewl_Org Sem/Clth-jewl_Plant ;
+LIST Sem/Clth-jewl = Sem/Clth-jewl Sem/Clth-jewl_Curr Sem/Clth-jewl_Curr_Obj Sem/Clth-jewl_Curr_Obj_Org Sem/Clth-jewl_Fruit Sem/Clth-jewl_Money Sem/Clth-jewl_Org Sem/Clth-jewl_Plant ;
+LIST Sem/Clthpart = Sem/Body_Clthpart Sem/Build_Clthpart Sem/Clthpart Sem/Clthpart_Plc ;
+LIST Sem/Ctain = Sem/Buildpart_Cat_Ctain Sem/Buildpart_Cat_Ctain_Mat Sem/Buildpart_Ctain Sem/Buildpart_Ctain_Mat Sem/Buildpart_Ctain_Obj Sem/Ctain  Sem/Ctain_Feat-phys Sem/Ctain_Furn Sem/Ctain_Plc Sem/Ctain_Tool Sem/Ctain_Tool-measr Ctain-abstr = Sem/Ctain-abstr Sem/Ctain-abstr_Org Sem/Ctain-abstr Sem/Ctain-abstr_Org ;
 LIST Sem/Ctain-abstr = Sem/Ctain-abstr Sem/Ctain-abstr_Org ;
 LIST Sem/Ctain-clth = Sem/Ctain-clth Sem/Ctain-clth_Plant Sem/Ctain-clth_Veh ;
-LIST Sem/Curr = Sem/Clth-jewl_Curr Sem/Clth-jewl_Curr_Obj Sem/Clth-jewl_Curr_Obj_Org Sem/Curr Sem/Curr_Org; #Syn: Mun mávssan dasa 100 X. Dat máksá 100 X.
+LIST Sem/Curr = Sem/Clth-jewl_Curr Sem/Clth-jewl_Curr_Obj Sem/Clth-jewl_Curr_Obj_Org Sem/Curr Sem/Curr_Obj Sem/Curr_Org ;
+LIST Sem/Dance = Sem/Dance Sem/Dance_Org Sem/Dance_Prod-audio ;
 LIST Sem/Date = Sem/Date ;
-LIST Sem/Dance = Sem/Dance Sem/Dance_Org Sem/Dance_Prod-audio ; #Ollugat dánso swinga lávddi ovddabeale.
 LIST Sem/Dir = Sem/Dir ;
-LIST Sem/Domain = Sem/Domain Sem/Domain_Hum Sem/Domain_Food-med Sem/Domain_Prod-audio;
+LIST Sem/Domain = Sem/Act_Domain Sem/Domain Sem/Domain_Food-med Sem/Domain_Hum Sem/Domain_Ideol Sem/Domain_Money Sem/Domain_Prod-audio Sem/Domain_Txt ;
 LIST Sem/Drink = Sem/Drink Sem/Drink_Plant ;
-LIST Sem/Edu = Sem/Build_Edu_Org Sem/Edu Sem/Edu_Event Sem/Edu_Geom Sem/Edu_Group_Hum Sem/Edu_Hum Sem/Edu_Mat Sem/Edu_Org ; # vázzit X-Acc. addit X-Acc. X:s lea beroštupmi.
-LIST Sem/Event = Sem/Build_Event_Org Sem/Edu_Event Sem/Event Sem/Event_Food Sem/Event_Hum Sem/Event_Plc Sem/Event_Plc-elevate Sem/Event_Time ; # X maŋŋel mun ferten vuolgit. X:s leat ollu olbmot. *Lean leamaš doppe X:Gen.
-LIST Sem/Feat-cogn = Sem/Body-abstr_Feat-cogn ; #Sem/Feat-cogn ; # oaidnu, oamedovdu, viissisvuohta
-#LIST Sem/Feat-phys = Sem/Feat-phys ; # oaidnu
-LIST Sem/Feat = Sem/Feat Sem/Feat_Plant ; #many -vuohta and -dat nouns
-LIST Sem/Feat-measr = Sem/Feat-measr Sem/Feat-measr_Plc ;
-LIST Sem/Feat-phys = Sem/Ctain_Feat-phys Sem/Feat-phys Sem/Feat-phys_Tool-write Sem/Feat-phys_Veh Sem/Feat-phys_Wthr ;
-LIST Sem/Feat-psych = Sem/Feat-psych Sem/Feat-psych_Hum Sem/Feat-psych_Plc ; #not touchable, not countable ("beroštupmi" "gáđašvuohta" "mokta" "sáhkkiivuohta") - Mus lea X,  Son lea X-adj persovdna # muitu
-LIST Sem/Fem = Sem/Fem  (ant f) ;
-LIST Sem/Food = Sem/Body_Food Sem/Event_Food Sem/Food Sem/Food_Obj-surfc Sem/Food_Perc-phys Sem/Food_Plant Sem/Food_Sign ; #Syn: bassit/borrat/sohpat X-Acc. mon im læk borram dam guolest. mun boran iđitbiepmu. mus lea iđitbiebmu fárus. birgui borastuvvat
-LIST Sem/Food-med = Sem/Domain_Food-med Sem/Food-med ;
-LIST Sem/Fruit = Sem/Act_Fruit Sem/Clth-jewl_Fruit Sem/Fruit Sem/Fruit_Hum ;
-LIST Sem/Furn = Sem/Ctain_Furn Sem/Furn ; #Syn: bidjat X vissui: čohkkedit X ala
+LIST Sem/Dummytag = Sem/Dummytag ;
+LIST Sem/Edu = Sem/Build_Edu_Org Sem/Cat_Edu Sem/Edu Sem/Edu_Event Sem/Edu_Geom Sem/Edu_Group_Hum Sem/Edu_Hum Sem/Edu_Mat Sem/Edu_Org Sem/Edu_Txt  ;
+LIST Sem/Event = Sem/Act_Event Sem/Build_Event_Org Sem/Edu_Event Sem/Event Sem/Event_Food Sem/Event_Hum Sem/Event_Plc Sem/Event_Plc-elevate Sem/Event_Time ;
+LIST Sem/Feat = Sem/Ani_Feat_Hum Sem/Feat_Hum Sem/Feat_Plant ;
+LIST Sem/Feat-measr =  Sem/Feat-measr Sem/Feat-measr_Plc ;
+LIST Sem/Feat-phys =  Sem/Ctain_Feat-phys Sem/Feat-phys Sem/Feat-phys_Hum Sem/Feat-phys_Obj Sem/Feat-phys_Tool-write Sem/Feat-phys_Veh Sem/Feat-phys_Wthr ;
+LIST Sem/Feat-psych = Sem/Body-abstr_Feat-cogn  Sem/FeatSem/Feat-psych Sem/Feat-psych_Hum Sem/Feat-psych_Plc ;
+LIST Sem/Fem = Sem/Fem ;
+LIST Sem/Food = Sem/Body_Food Sem/Event_Food Sem/Food Sem/Food_Obj-surfc Sem/Food_Perc-phys Sem/Food_Plant Sem/Food_Sign Sem/Food_Substnc Sem/Food_Time ;
+LIST Sem/Food-med =  Sem/Domain_Food-med  Sem/Food-med ;
+LIST Sem/Fruit = Sem/Act_Fruit Sem/Body_Fruit Sem/Clth-jewl_Fruit Sem/Fruit Sem/Fruit_Hum ;
+LIST Sem/Furn = Sem/Ctain_Furn Sem/Furn Sem/Furn_Time ;
 LIST Sem/Game = Sem/Game Sem/Game_Obj-play ;
-LIST Sem/Geom = Sem/Edu_Geom Sem/Geom Sem/Geom_Obj Sem/Geom_Hum_Plc ;
-LIST Sem/Group = Sem/Group Sem/Act_Group Sem/Ani_Group Sem/Ani_Group_Hum Sem/Ani_Group_Prod-vis Sem/Body_Group_Hum Sem/Body_Group_Hum_Time Sem/Cat_Group_Hum Sem/Cat_Group_Hum_Plc Sem/Edu_Group_Hum Sem/Group_Hum Sem/Group_Hum_Org Sem/Group_Hum_Plc Sem/Group_Hum_Prod-vis Sem/Group_Hum_Time Sem/Group_Org Sem/Group_Prod-vis Sem/Group_Sign Sem/Group_Txt ; #Bárdni lea riggámus sogas. -Plc
-LIST Sem/Hum = Sem/Hum Sem/Hum-abstr Sem/Hum-prof Sem/Ani_Body-abstr_Hum Sem/Ani_Build_Hum_Txt Sem/Ani_Group_Hum Sem/Ani_Hum Sem/Ani_Hum_Plc Sem/Ani_Hum_Time Sem/Aniprod_Hum Sem/Body_Group_Hum Sem/Body_Group_Hum_Time Sem/Body_Hum Sem/Cat_Group_Hum Sem/Cat_Group_Hum_Plc Sem/Clth_Hum Sem/Domain_Hum Sem/Edu_Group_Hum Sem/Edu_Hum Sem/Event_Hum Sem/Feat-psych_Hum Sem/Fruit_Hum Sem/Geom_Hum_Plc Sem/Group_Hum Sem/Group_Hum_Org Sem/Group_Hum_Plc Sem/Group_Hum_Prod-vis Sem/Group_Hum_Time Sem/Hum_Lang Sem/Hum_Lang_Plc Sem/Hum_Lang_Time Sem/Hum_Mat_Tool Sem/Hum_Obj Sem/Hum_Org Sem/Hum_Sign Sem/Hum_Plant Sem/Hum_Plc Sem/Hum_Tool Sem/Hum_Tool-it Sem/Hum_Veh Sem/Hum_Wthr  ; #Human
-LIST Sem/Hum-kin = Sem/Hum-kin ; #Human kinship
+LIST Sem/Geom = Sem/Edu_Geom Sem/Geom Sem/Geom_Hum_Plc Sem/Geom_Obj ;
+LIST Sem/Group = Sem/Act_Group Sem/Ani_Group Sem/Ani_Group_Hum Sem/Ani_Group_Prod-vis Sem/Body_Group_Hum Sem/Body_Group_Hum_Time Sem/Cat_Group_Hum Sem/Cat_Group_Hum_Plc Sem/Edu_Group_Hum Sem/Group Sem/Group_Hum Sem/Group_Hum_Org Sem/Group_Hum_Plc Sem/Group_Hum_Plc-abstr Sem/Group_Hum_Prod-vis Sem/Group_Hum_Time Sem/Group_Org Sem/Group_Prod-vis Sem/Group_Prod-vis_Txt_Veh Sem/Group_Sign Sem/Group_Txt ;
+LIST Sem/Hum = Sem/Act_Hum_Obj Sem/Ani_Body-abstr_Hum Sem/Ani_Build_Hum_Txt Sem/Ani_Feat_Hum Sem/Ani_Group_Hum Sem/Ani_Hum Sem/Ani_Hum_Plc Sem/Ani_Hum_Time Sem/Aniprod_Hum Sem/Body_Group_Hum Sem/Body_Group_Hum_Time Sem/Body_Hum Sem/Cat_Group_Hum Sem/Cat_Group_Hum_Plc Sem/Clth_Hum Sem/Domain_Hum Sem/Edu_Group_Hum Sem/Edu_Hum Sem/Event_Hum Sem/Feat-phys_Hum Sem/Feat-psych_Hum Sem/Feat_Hum Sem/Fruit_Hum Sem/Geom_Hum_Plc Sem/Group_Hum Sem/Group_Hum_Org Sem/Group_Hum_Plc Sem/Group_Hum_Plc-abstr Sem/Group_Hum_Prod-vis Sem/Group_Hum_Time Sem/Hum Sem/Hum-abstr Sem/Hum-prof Sem/Hum_Lang Sem/Hum_Lang_Plc Sem/Hum_Lang_Time Sem/Hum_Mat_Tool Sem/Hum_Obj Sem/Hum_Obj_Plc Sem/Hum_Org Sem/Hum_Part Sem/Hum_Plant Sem/Hum_Plc Sem/Hum_Sign Sem/Hum_Tool Sem/Hum_Tool-catch Sem/Hum_Tool-it Sem/Hum_Veh Sem/Hum_Wthr Sem/Hum-abstr ;
 LIST Sem/Hum-abstr = Sem/Hum-abstr ;
 LIST Sem/Hum-prof = Sem/Hum-prof ;
-LIST Sem/Ideol = Sem/Ideol ;
-LIST Sem/Lang = Sem/Lang ; #Syn: hállat X:illatiiva. Son hállá X:Acc. Jorgalan dán X:lokatiiva Y:illatiiva.
-LIST Sem/Mal = Sem/Mal (ant m) ;
-LIST Sem/Mat = Sem/Body_Mat Sem/Build-part_Cat_Ctain_Mat Sem/Build-part_Ctain_Mat Sem/Edu_Mat Sem/Mat Sem/Mat_Plant Sem/Mat_Txt ; # Material #Sem: cannot pass through it without destroying it, ráhkadit juoidá X:s. Niibi lea X-Loc-Sg. #Dán báhkis šaddá čáppa gohppu.
-LIST Sem/Measr = Sem/Body_Measr Sem/Measr Sem/Measr_Obj_Time Sem/Measr_Sign Sem/Measr_Time ; # Lea lassánan 100 X-Loc.
-LIST Sem/Money = Sem/Clth-jewl_Money Sem/Money Sem/Money_Obj Sem/Money_Org Sem/Money_Part Sem/Money_Txt ; #Mun mávssán X. Mii ávžžuhit vuovdit alimus X-Ill (haddái). ruhtadit doaibmabušeahtain. vuovdit/bidjat ruđast - selge for penger
-LIST Sem/Obj = Sem/Body_Obj_Tool-catch Sem/Build-part_Ctain_Obj Sem/Clth-jewl_Curr_Obj Sem/Clth-jewl_Curr_Obj_Org Sem/Ctain-Obj Sem/Geom_Obj Sem/Hum_Obj Sem/Measr_Obj_Time Sem/Money_Obj Sem/Obj Sem/Obj_Semcon Sem/Obj_Sign Sem/Obj_State Sem/Obj_Veh Sem/Build_Obj Sem/Obj_Symbol Sem/Obj-com ; # concrete object, movable #Syn: Mun guoskkán X-Acc. Dá livčče dutnje X-Nom (sabehat). čievččastit geađggi johkii
-#LIST Sem/Obj-com = Sem/Obj-com ; #communication object #hálan telefuvnnas/e-poasttas #sádden X bokte
-LIST Sem/Obj-clo = Sem/Aniprod_Obj-clo Sem/Clth_Obj-clo Sem/Obj-clo ; #bidjat juoidá Obj-clo sisa
-LIST Sem/Obj-cogn = Sem/Obj-cogn ;
-LIST Sem/Obj-el = Sem/Obj-el ; # moveable, countable, touchable, electrical objects that can be turned on and of,  mus lea X alde, mun bijan X ala
-LIST Sem/Obj-ling = Sem/Obj-ling Sem/Obj-ling_Obj-surfc ;
-LIST Sem/Obj-play = Sem/Obj-play Sem/Game_Obj-play Sem/Obj-play_Sport ;
-LIST Sem/Obj-rope = Sem/Obj-rope ;
-LIST Sem/Obj-surfc = Sem/Food_Obj-surfc Sem/Obj-ling_Obj-surfc Sem/Obj-surfc ;
-LIST Sem/Org = Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Org Sem/Clth-jewl_Curr_Obj_Org Sem/Ctain-abstr_Org Sem/Curr_Org Sem/Dance_Org Sem/Edu_Org Sem/Group_Hum_Org Sem/Group_Org Sem/Hum_Org Sem/Money_Org Sem/Org Sem/Org_Clth-jewl Sem/Org_Prod-audio Sem/Org_Prod-cogn Sem/Org_Prod-vis Sem/Org_Rule Sem/Org_Txt Sem/Org_Veh Sem/Clth-jewl_Org org ;
-LIST Sem/Part = Sem/Money_Part Sem/Part Sem/Part_Prod-cogn Sem/Part_Substnc ; # bealli, oassi
+LIST Sem/Ideol = Sem/Domain_Ideol Sem/Ideol ;
+LIST Sem/Lang = Sem/Hum_Lang Sem/Hum_Lang_Plc Sem/Hum_Lang_Time Sem/Lang Sem/Lang_Tool Sem/Lang_Tool-catch ;
+LIST Sem/Mal = Sem/Mal ;
+LIST Sem/Mat = Sem/Aniprod_Mat Sem/Body_Mat Sem/Buildpart_Cat_Ctain_Mat Sem/Buildpart_Ctain_Mat Sem/Edu_Mat Sem/Hum_Mat_Tool Sem/Mat Sem/Mat_Obj Sem/Mat_Obj-clo Sem/Mat_Plant Sem/Mat_Plc Sem/Mat_Tool Sem/Mat_Tool-catch Sem/Mat_Txt ;
+LIST Sem/Measr = Sem/Body_Measr Sem/Measr Sem/Measr_Obj_Time Sem/Measr_Plc_Time Sem/Measr_Sign Sem/Measr_Time ;
+LIST Sem/Money = Sem/Clth-jewl_Money Sem/Domain_Money Sem/Money Sem/Money_Obj Sem/Money_Org Sem/Money_Part Sem/Money_Plc Sem/Money_Txt ;
+LIST Sem/Obj = Sem/Act_Hum_Obj Sem/Act_Obj-play Sem/Ani_Obj Sem/Ani_Obj-el Sem/Aniprod_Obj Sem/Aniprod_Obj-clo Sem/Body_Obj_Tool-catch Sem/Buildpart_Ctain_Obj Sem/Build_Obj Sem/Cat_Obj Sem/Clth-jewl_Curr_Obj Sem/Clth-jewl_Curr_Obj_Org Sem/Clth_Obj Sem/Clth_Obj-clo Sem/Ctain-Obj Sem/Curr_Obj Sem/Feat-phys_Obj Sem/Food_Obj-surfc Sem/Game_Obj-play Sem/Geom_Obj Sem/Hum_Obj Sem/Hum_Obj_Plc Sem/Mat_Obj Sem/Mat_Obj-clo Sem/Measr_Obj_Time Sem/Money_Obj Sem/Obj Sem/Obj-catch Sem/Obj-clo Sem/Obj-cogn Sem/Obj-el Sem/Obj-ling Sem/Obj-ling_Obj-surfc Sem/Obj-play Sem/Obj-play_Sport Sem/Obj-rope Sem/Obj-surfc Sem/Obj_Part_Sign Sem/Obj_Semcon Sem/Obj_Sign Sem/Obj_State Sem/Obj_Symbol Sem/Obj_Tool-write Sem/Obj_Txt Sem/Obj_Veh ;
+LIST Sem/Obj-catch =  Sem/Obj-catch ;
+LIST Sem/Obj-clo =  Sem/Aniprod_Obj-clo  Sem/Clth_Obj-clo  Sem/Mat_Obj-clo Sem/Obj-clo ;
+LIST Sem/Obj-cogn =  Sem/Obj-cogn ;
+LIST Sem/Obj-el = Sem/Ani_Obj-el Sem/Obj-el ;
+LIST Sem/Obj-ling =  Sem/Obj-ling  Sem/Obj-ling_Obj-surfc ;
+LIST Sem/Obj-play =  Sem/Act_Obj-play  Sem/Game_Obj-play  Sem/Obj-play Sem/Obj-play_Sport ;
+LIST Sem/Obj-rope =  Sem/Obj-rope ;
+LIST Sem/Obj-surfc =  Sem/Food_Obj-surfc  Sem/Obj-ling_Obj-surfc Sem/Obj-surfc ;
+LIST Sem/Org = Sem/Body_Org Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Org Sem/Clth-jewl_Curr_Obj_Org Sem/Clth-jewl_Org Sem/Ctain-abstr_Org Sem/Curr_Org Sem/Dance_Org Sem/Edu_Org Sem/Group_Hum_Org Sem/Group_Org Sem/Hum_Org Sem/Money_Org Sem/Org Sem/Org_Plc Sem/Org_Prod-audio Sem/Org_Prod-cogn Sem/Org_Prod-vis Sem/Org_Rule Sem/Org_Txt Sem/Org_Veh ;
+LIST Sem/Part = Sem/Hum_Part Sem/Money_Part Sem/Obj_Part_Sign Sem/Part Sem/Part_Prod-cogn Sem/Part_Substnc ;
 LIST Sem/Perc-cogn = Sem/Perc-cogn ;
-LIST Sem/Perc-emo = Sem/Perc-emo ; #Sem not touchable, not countable ("ballu" "suhttu" "vaši") -  Mun dovddan garra X. Mun lean X+Loc # moraš
-LIST Sem/Perc-phys = Sem/Aniprod_Perc-phys Sem/Food_Perc-phys Sem/Perc-phys Sem/Perc-emo_Wthr ; # anistupmi, oaidnu
-LIST Sem/Perc-psych = Sem/Perc-psych ;
+LIST Sem/Perc-emo = Sem/Perc-emo Sem/Perc-emo_Plc Sem/Perc-emo_Wthr ;
+LIST Sem/Perc-phys = Sem/Aniprod_Perc-phys Sem/Food_Perc-phys Sem/Perc-phys ;
+LIST Sem/Perc-psych =  Sem/Perc-psych ;
 LIST Sem/Phonenr = Sem/Phonenr ;
-LIST Sem/Plant = Sem/Clth-jewl_Plant Sem/Ctain-clth_Plant Sem/Drink_Plant Sem/Feat_Plant Sem/Food_Plant Sem/Hum_Plant Sem/Mat_Plant Sem/Plant Sem/Plant_Tool Sem/Plant_Tool-measr ; #čáhccet X-Acc #X-Nom šaddet
-LIST Sem/Plant-part = Sem/Plant_Plant-part Sem/Plant-part ; #čáhccet X-Acc #X-Nom šaddet
-LIST Sem/Plc = Sem/Act_Plc Sem/Ani_Hum_Plc Sem/Ani_Plc Sem/Ani_Plc_Txt Sem/Aniprod_Plc Sem/Aniprod_Plc_Route Sem/Body_Plc Sem/Build-part_Plc Sem/Cat_Group_Hum_Plc Sem/Ctain_Plc Sem/Event_Plc Sem/Event_Plc-elevate Sem/Feat-measr_Plc Sem/Feat-psych_Plc Sem/Geom_Hum_Plc Sem/Group_Hum_Plc Sem/Hum_Lang_Plc Sem/Hum_Plc Sem/Plc Sem/Plc_Pos Sem/Plc_Route Sem/Plc_Semcon Sem/Plc_State Sem/Plc_Substnc Sem/Plc_Substnc_Wthr Sem/Plc_Time Sem/Plc_Time_Wthr Sem/Plc_Tool-catch Sem/Plc_Txt Sem/Plc_Wthr ;
-LIST Sem/Plc-abstr = Sem/Plc-abstr Sem/Plc-abstr_Rel_State Sem/Plc-abstr_Route ;
-LIST Sem/Plc-elevate = Sem/Plc-elevate ;
+LIST Sem/Plant = Sem/Aniprod_Plant Sem/Clth-jewl_Plant Sem/Ctain-clth_Plant Sem/Drink_Plant Sem/Feat_Plant Sem/Food_Plant Sem/Hum_Plant Sem/Mat_Plant Sem/Plant  Sem/Plant_Plantpart Sem/Plant_Time_Wthr Sem/Plant_Tool Sem/Plant_Tool-measr ;
+LIST Sem/Plantpart = Sem/Plantpart Sem/Plant_Plantpart ;
+LIST Sem/Plc = Sem/Act_Plc Sem/Ani_Hum_Plc Sem/Ani_Plc Sem/Ani_Plc_Txt Sem/Aniprod_Plc Sem/Aniprod_Plc_Route Sem/Body_Plc Sem/Body_Plc-elevate Sem/Buildpart_Plc Sem/Build_Plc Sem/Cat_Group_Hum_Plc Sem/Clthpart_Plc Sem/Ctain_Plc Sem/Event_Plc Sem/Event_Plc-elevate Sem/Feat-measr_Plc Sem/Feat-psych_Plc Sem/Geom_Hum_Plc Sem/Group_Hum_Plc Sem/Group_Hum_Plc-abstr Sem/Hum_Lang_Plc Sem/Hum_Obj_Plc Sem/Hum_Plc Sem/Mat_Plc Sem/Measr_Plc_Time Sem/Money_Plc Sem/Org_Plc Sem/Perc-emo_Plc Sem/Plc Sem/Plc-abstr Sem/Plc-abstr_Rel_State Sem/Plc-abstr_Route Sem/Plc-abstr_Txt Sem/Plc-elevate Sem/Plc-line Sem/Plc-water Sem/Plc_Pos Sem/Plc_Prod-audio Sem/Plc_Route Sem/Plc_Semcon Sem/Plc_State Sem/Plc_Substnc Sem/Plc_Substnc_Wthr Sem/Plc_Time Sem/Plc_Time_Wthr Sem/Plc_Tool-catch Sem/Plc_Txt Sem/Plc_Wthr Sem/Plant-fungus ;
+LIST Sem/Plant-fungus =  Sem/Plant-fungus ;
+LIST Sem/Plc-abstr = Sem/Group_Hum_Plc-abstr  Sem/Plc-abstr Sem/Plc-abstr_Rel_State Sem/Plc-abstr_Route Sem/Plc-abstr_Txt ;
+LIST Sem/Plc-elevate = Sem/Body_Plc-elevate Sem/Event_Plc-elevate Sem/Plc-elevate ;
 LIST Sem/Plc-line = Sem/Plc-line ;
 LIST Sem/Plc-water = Sem/Plc-water ;
-LIST Sem/Pos = Sem/Plc_Pos Sem/Pos ; #Social position (job etc.)
+LIST Sem/Pos = Sem/Plc_Pos Sem/Pos ;
 LIST Sem/Process = Sem/Process ;
-LIST Sem/Prod = Sem/Prod ; #jáhkku
-LIST Sem/Prod-audio = Sem/Body-abstr_Prod-audio_Semcon Sem/Dance_Prod-audio Sem/Domain_Prod-audio Sem/Org_Prod-audio Sem/Prod-audio Sem/Prod-audio_Txt ; #attáldat
-LIST Sem/Prod-cogn = Sem/Org_Prod-cogn Sem/Part_Prod-cogn Sem/Prod-cogn Sem/Prod-cogn_Txt ; # muittuhus, ipmárdus, jáhkku, osku, vuordámuš, viisodat? diehtu?
+LIST Sem/Prod = Sem/Ani_Group_Prod-vis Sem/Body-abstr_Prod-audio_Semcon Sem/Buildpart_Prod-audio Sem/Dance_Prod-audio Sem/Domain_Prod-audio Sem/Group_Hum_Prod-vis Sem/Group_Prod-vis Sem/Group_Prod-vis_Txt_Veh Sem/Org_Prod-audio Sem/Org_Prod-cogn Sem/Org_Prod-vis Sem/Part_Prod-cogn Sem/Plc_Prod-audio Sem/Prod Sem/Prod-audio Sem/Prod-audio_Txt Sem/Prod-cogn Sem/Prod-cogn_Txt Sem/Prod-ling Sem/Prod-vis  ;
+LIST Sem/Prod-audio =  Sem/Prod-audio Sem/Prod-audio_Txt Sem/Body-abstr_Prod-audio_Semcon Sem/Buildpart_Prod-audio Sem/Dance_Prod-audio Sem/Domain_Prod-audio Sem/Org_Prod-audio Sem/Plc_Prod-audio ;
+LIST Sem/Prod-cogn =  Sem/Prod-cogn Sem/Prod-cogn_Txt Sem/Org_Prod-cogn Sem/Part_Prod-cogn ;
 LIST Sem/Prod-ling = Sem/Prod-ling ;
-LIST Sem/Prod-vis = Sem/Ani_Group_Prod-vis Sem/Group_Hum_Prod-vis Sem/Group_Prod-vis Sem/Org_Prod-vis Sem/Prod-vis ;
+LIST Sem/Prod-vis = Sem/Prod-vis Sem/Group_Hum_Prod-vis Sem/Group_Prod-vis_Txt_Veh Sem/Org_Prod-vis ;
 LIST Sem/Rel = Sem/Plc-abstr_Rel_State Sem/Rel ;
-LIST Sem/Route = Sem/Act_Route Aniprod_Plc_Route Sem/Build_Route Sem/Plc-abstr_Route Sem/Plc_Route Sem/Route ;
-LIST Sem/Rule = Sem/Org_Rule Sem/Rule ; 
-LIST Sem/Semcon = Sem/Amount_Semcon Sem/Body-abstr_Prod-audio_Semcon Sem/Obj_Semcon Sem/Plc_Semcon Sem/Semcon Sem/Semcon_Txt ; # semantic concept
-LIST Sem/Sign = Sem/Group_Sign  Sem/Food_Sign Sem/Hum_Sign Sem/Obj_Sign Sem/Sign Sem/Measr_Sign ;
+LIST Sem/Route = Sem/Act_Route Sem/Aniprod_Plc_Route Sem/Build_Route Sem/Plc-abstr_Route Sem/Plc_Route Sem/Route Sem/Route_Txt ;
+LIST Sem/Rule = Sem/Org_Rule Sem/Rule ;
+LIST Sem/Semcon = Sem/Act_Semcon Sem/Amount_Semcon Sem/Body-abstr_Prod-audio_Semcon Sem/Obj_Semcon Sem/Plc_Semcon Sem/Semcon Sem/Semcon_Txt Sem/Semcon_Wthr ;
+LIST Sem/Sign = Sem/Food_Sign Sem/Group_Sign Sem/Hum_Sign Sem/Measr_Sign Sem/Obj_Part_Sign Sem/Obj_Sign Sem/Sign ;
 LIST Sem/Sport = Sem/Obj-play_Sport Sem/Sport ;
-LIST Sem/State = Sem/Plc-abstr_Rel_State Sem/State Sem/Obj_State ; # lihkku, ipmilbalolašvuohta, mokta, váivi, váttisvuohta
+LIST Sem/State = Sem/Obj_State Sem/Plc-abstr_Rel_State Sem/Plc_State Sem/State Sem/State-sick Sem/State-sick_Substnc ;
 LIST Sem/State-sick = Sem/State-sick Sem/State-sick_Substnc ;
-LIST Sem/Substnc = Sem/Plc_Substnc Sem/Plc_Substnc_Wthr  Sem/State-sick_Substnc Sem/Substnc Sem/Substnc_Wthr Sem/Part_Substnc ; #Sem: can pass through it without destroying it
-LIST Sem/Sur = Sem/Sur cog ;
+LIST Sem/Substnc = Sem/Aniprod_Substnc_Wthr Sem/Food_Substnc Sem/Part_Substnc Sem/Plc_Substnc Sem/Plc_Substnc_Wthr Sem/State-sick_Substnc Sem/Substnc Sem/Substnc_Wthr ;
+LIST Sem/Sur = Sem/Sur ;
 LIST Sem/Symbol = Sem/Obj_Symbol Sem/Symbol ;
-LIST Sem/Time-clock = Sem/Time-clock ;
-LIST Sem/Time =  Sem/Time Sem/Time-clock Sem/Ani_Hum_Time Sem/Ani_Time Sem/Body_Group_Hum_Time Sem/Body_Time Sem/Event_Time Sem/Group_Hum_Time Sem/Hum_Lang_Time Sem/Measr_Obj_Time Sem/Measr_Time Sem/Plc_Time Sem/Plc_Time_Wthr Sem/Time_Wthr ;
-LIST Sem/Tool = Sem/Act_Tool-it Sem/Ctain_Tool Sem/Hum_Mat_Tool Sem/Hum_Tool Sem/Hum_Tool-it Sem/Lang_Tool Sem/Plant_Tool Sem/Tool Sem/Tool-clean Sem/Ctain_Tool-measr Sem/Plant_Tool-measr Sem/Tool-measr Sem/Ctain_Tool-measr Sem/Plant_Tool-measr Sem/Tool-measr Sem/Tool-music Sem/Feat-phys_Tool-write Sem/Tool-write ;
-LIST Sem/Tool-catch = Sem/Body_Obj_Tool-catch Sem/Plc_Tool-catch Sem/Tool-catch ;
+LIST Sem/Time = Sem/Ani_Hum_Time Sem/Ani_Time Sem/Body_Group_Hum_Time Sem/Body_Time Sem/Event_Time Sem/Food_Time Sem/Furn_Time Sem/Group_Hum_Time Sem/Hum_Lang_Time Sem/Measr_Obj_Time Sem/Measr_Plc_Time Sem/Measr_Time Sem/Plant_Time_Wthr Sem/Plc_Time Sem/Plc_Time_Wthr Sem/Time Sem/Time_Wthr ;
+LIST Sem/Time-clock =  Sem/Time-clock ;
+LIST Sem/Tool = Sem/Act_Tool-it Sem/Ani_Tool Sem/Body_Obj_Tool-catch Sem/Build_Tool Sem/Ctain_Tool Sem/Ctain_Tool-measr Sem/Feat-phys_Tool-write Sem/Hum_Mat_Tool Sem/Hum_Tool Sem/Hum_Tool-catch Sem/Hum_Tool-it Sem/Lang_Tool Sem/Lang_Tool-catch Sem/Mat_Tool Sem/Mat_Tool-catch Sem/Obj_Tool-write Sem/Plant_Tool Sem/Plant_Tool-measr Sem/Plc_Tool-catch Sem/Tool Sem/Tool-catch Sem/Tool-clean Sem/Tool-it Sem/Tool-measr Sem/Tool-music Sem/Tool-write Sem/Tool_Tool-music ;
+LIST Sem/Tool-catch = Sem/Body_Obj_Tool-catch Sem/Hum_Tool-catch Sem/Lang_Tool-catch Sem/Mat_Tool Sem/Mat_Tool-catch Sem/Plc_Tool-catch Sem/Tool-catch ;
 LIST Sem/Tool-clean = Sem/Tool-clean ;
 LIST Sem/Tool-it = Sem/Act_Tool-it Sem/Hum_Tool-it Sem/Tool-it ;
 LIST Sem/Tool-measr = Sem/Ctain_Tool-measr Sem/Plant_Tool-measr Sem/Tool-measr ;
-LIST Sem/Tool-music = Sem/Tool-music ;
-LIST Sem/Tool-write = Sem/Feat-phys_Tool-write Sem/Tool-write ;
-LIST Sem/Txt = Sem/Ani_Build_Hum_Txt Sem/Ani_Plc_Txt Sem/Group_Txt Sem/Mat_Txt Sem/Money_Txt Sem/Org_Txt Sem/Plc_Txt Sem/Prod-audio_Txt Sem/Prod-cogn_Txt Sem/Semcon_Txt Sem/Txt ; #Syn: Čále dearvvuođaidat guossegirjámet! # das čuožžu
-LIST Sem/Veh = Sem/Ani_Veh Sem/Ctain-clth_Veh Sem/Feat-phys_Veh Sem/Hum_Veh Sem/Obj_Veh Sem/Org_Veh Sem/Veh Sem/Veh-cntain ;	#Syn: Vuolggán X:Com
-LIST Sem/Veh-cntain = Sem/Veh-cntain ; #Manan X sisa. #vuolggán X:Com.
-LIST Sem/Wthr = Sem/Feat-phys_Wthr Sem/Hum_Wthr Sem/Perc-emo_Wthr Sem/Plc_Substnc_Wthr Sem/Plc_Time_Wthr Sem/Plc_Wthr Sem/Substnc_Wthr Sem/Time_Wthr Sem/Wthr ; #Sem: Birget X:Ess. jietna gullui X-Loc (balvvas). Olgun/Odne lea + Wthr-Nom. ?Man ollu lea Wthr-Nom? Wthr-Gen maŋŋel boahtá X. Makkár lea dálki/siivu? #Ex: árvi, borga, muohtá, čoaskadálki, baján, bievla, bodnejiekŋa, bivdodálki, gasis, guoldu
-LIST Sem/Wpn = Sem/Wpn ; #oaggut oaggunstákkuin, goddit X+Com
-
-LIST Sem/Adr = Sem/Adr ;
-LIST Year_Date = Sem/Date Sem/Year ;
-LIST Sem/Date = Sem/Date ;
+LIST Sem/Tool-music = Sem/Tool-music Sem/Tool_Tool-music ;
+LIST Sem/Tool-write = Sem/Feat-phys_Tool-write Sem/Obj_Tool-write Sem/Tool-write ;
+LIST Sem/Txt = Sem/Act_Txt Sem/Ani_Build_Hum_Txt Sem/Ani_Plc_Txt Sem/Domain_Txt Sem/Edu_Txt Sem/Group_Prod-vis_Txt_Veh Sem/Group_Txt Sem/Mat_Txt Sem/Money_Txt Sem/Obj_Txt Sem/Org_Txt Sem/Plc-abstr_Txt Sem/Plc_Txt Sem/Prod-audio_Txt Sem/Prod-cogn_Txt Sem/Route_Txt Sem/Semcon_Txt Sem/Txt ;
+LIST Sem/Veh = Sem/Ani_Veh Sem/Ctain-clth_Veh Sem/Feat-phys_Veh Sem/Group_Prod-vis_Txt_Veh Sem/Hum_Veh Sem/Obj_Veh Sem/Org_Veh Sem/Veh ;
+LIST Sem/Wpn = Sem/Wpn ;
+LIST Sem/Wthr = Sem/Aniprod_Substnc_Wthr Sem/Feat-phys_Wthr Sem/Hum_Wthr Sem/Perc-emo_Wthr Sem/Plant_Time_Wthr Sem/Plc_Substnc_Wthr Sem/Plc_Time_Wthr Sem/Plc_Wthr Sem/Semcon_Wthr Sem/Substnc_Wthr Sem/Time_Wthr Sem/Wthr ;
 LIST Sem/Year = Sem/Year ;
+
+LIST SEMTAGS = Sem/Act Sem/Act_Clth Sem/Act_Domain Sem/Act_Event Sem/Act_Feat-psych Sem/Act_Fruit Sem/Act_Group Sem/Act_Hum_Obj Sem/Act_Obj-play Sem/Act_Plc Sem/Act_Route Sem/Act_Semcon Sem/Act_Time Sem/Act_Tool-it Sem/Act_Txt Sem/Adr Sem/Amount Sem/Amount_Build Sem/Amount_Semcon Sem/Ani Sem/Ani-bird Sem/Ani-fish Sem/Ani_Body Sem/Ani_Body-abstr_Hum Sem/Ani_Build Sem/Ani_Build_Hum_Txt Sem/Ani_Buildpart Sem/Ani_Cat Sem/Ani_Clth Sem/Ani_Feat_Hum Sem/Ani_Group Sem/Ani_Group_Hum Sem/Ani_Group_Prod-vis Sem/Ani_Hum Sem/Ani_Hum_Plc Sem/Ani_Hum_Time Sem/Ani_Obj Sem/Ani_Obj-el Sem/Ani_Plc Sem/Ani_Plc_Txt Sem/Ani_Time Sem/Ani_Tool Sem/Ani_Veh Sem/Aniprod Sem/Aniprod_Hum Sem/Aniprod_Mat Sem/Aniprod_Obj Sem/Aniprod_Obj-clo Sem/Aniprod_Perc-phys Sem/Aniprod_Plant Sem/Aniprod_Plc Sem/Aniprod_Plc_Route Sem/Aniprod_Substnc_Wthr Sem/Atr Sem/Body Sem/Body-abstr Sem/Body-abstr_Feat-psych Sem/Body-abstr_Prod-audio_Semcon Sem/Body_Body-abstr Sem/Body_Buildpart Sem/Body_Clth Sem/Body_Clthpart Sem/Body_Food Sem/Body_Fruit Sem/Body_Group_Hum Sem/Body_Group_Hum_Time Sem/Body_Hum Sem/Body_Mat Sem/Body_Measr Sem/Body_Obj_Tool-catch Sem/Body_Org Sem/Body_Plc Sem/Body_Plc-elevate Sem/Body_Time Sem/Build Sem/Build-room Sem/Build-room_Cat_Ctain_Mat Sem/Build_Buildpart Sem/Build_Clthpart Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Obj Sem/Build_Org Sem/Build_Plc Sem/Build_Route Sem/Build_Tool Sem/Buildpart Sem/Buildpart_Cat Sem/Buildpart_Cat_Ctain Sem/Buildpart_Cat_Ctain_Mat Sem/Buildpart_Ctain Sem/Buildpart_Ctain_Mat Sem/Buildpart_Ctain_Obj Sem/Buildpart_Plc Sem/Buildpart_Prod-audio Sem/Cat Sem/Cat_Edu Sem/Cat_Group_Hum Sem/Cat_Group_Hum_Plc Sem/Cat_Obj Sem/Clth Sem/Clth-jewl Sem/Clth-jewl_Curr Sem/Clth-jewl_Curr_Obj Sem/Clth-jewl_Curr_Obj_Org Sem/Clth-jewl_Fruit Sem/Clth-jewl_Money Sem/Clth-jewl_Org Sem/Clth-jewl_Plant Sem/Clth_Hum Sem/Clth_Obj Sem/Clth_Obj-clo Sem/Clthpart Sem/Clthpart_Plc Sem/Ctain Sem/Ctain-Obj Sem/Ctain-abstr Sem/Ctain-abstr_Org Sem/Ctain-clth Sem/Ctain-clth_Plant Sem/Ctain-clth_Veh Sem/Ctain_Feat-phys Sem/Ctain_Furn Sem/Ctain_Plc Sem/Ctain_Tool Sem/Ctain_Tool-measr Sem/Curr Sem/Curr_Obj Sem/Curr_Org Sem/Dance Sem/Dance_Org Sem/Dance_Prod-audio Sem/Date Sem/Dir Sem/Domain Sem/Domain_Food-med Sem/Domain_Hum Sem/Domain_Ideol Sem/Domain_Money Sem/Domain_Org_Plc-abstr Sem/Domain_Prod-audio Sem/Domain_Txt Sem/Drink Sem/Drink_Plant Sem/Dummytag Sem/Edu Sem/Edu_Event Sem/Edu_Geom Sem/Edu_Group_Hum Sem/Edu_Hum Sem/Edu_Mat Sem/Edu_Org Sem/Edu_Txt Sem/Event Sem/Event_Food Sem/Event_Hum Sem/Event_Plc Sem/Event_Plc-elevate Sem/Event_Time Sem/Feat Sem/Feat-measr Sem/Feat-measr_Plc Sem/Feat-phys Sem/Feat-phys_Hum Sem/Feat-phys_Obj Sem/Feat-phys_Tool-write Sem/Feat-phys_Veh Sem/Feat-phys_Wthr Sem/Feat-psych Sem/Feat-psych_Hum Sem/Feat-psych_Plc Sem/Feat_Hum Sem/Feat_Plant Sem/Fem Sem/Food Sem/Food-med Sem/Food_Obj-surfc Sem/Food_Perc-phys Sem/Food_Plant Sem/Food_Sign Sem/Food_Substnc Sem/Food_Time Sem/Fruit Sem/Fruit_Hum Sem/Furn Sem/Furn_Time Sem/Game Sem/Game_Obj-play Sem/Geom Sem/Geom_Hum_Plc Sem/Geom_Obj Sem/Group Sem/Group_Hum Sem/Group_Hum_Org Sem/Group_Hum_Plc Sem/Group_Hum_Plc-abstr Sem/Group_Hum_Prod-vis Sem/Group_Hum_Time Sem/Group_Org Sem/Group_Prod-vis Sem/Group_Prod-vis_Txt_Veh Sem/Group_Sign Sem/Group_Txt Sem/Hum Sem/Hum-abstr Sem/Hum-prof Sem/Hum_Lang Sem/Hum_Lang_Plc Sem/Hum_Lang_Time Sem/Hum_Mat_Tool Sem/Hum_Obj Sem/Hum_Obj_Plc Sem/Hum_Org Sem/Hum_Part Sem/Hum_Plant Sem/Hum_Plc Sem/Hum_Sign Sem/Hum_Tool Sem/Hum_Tool-catch Sem/Hum_Tool-it Sem/Hum_Veh Sem/Hum_Wthr Sem/Ideol Sem/Lang Sem/Lang_Tool Sem/Lang_Tool-catch Sem/Mal Sem/Mat Sem/Mat_Obj Sem/Mat_Obj-clo Sem/Mat_Plant Sem/Mat_Plc Sem/Mat_Tool Sem/Mat_Tool-catch Sem/Mat_Txt Sem/Measr Sem/Measr_Obj_Time Sem/Measr_Plc_Time Sem/Measr_Sign Sem/Measr_Time Sem/Money Sem/Money_Obj Sem/Money_Org Sem/Money_Part Sem/Money_Plc Sem/Money_Txt Sem/Obj Sem/Obj-catch Sem/Obj-clo Sem/Obj-cogn Sem/Obj-el Sem/Obj-ling Sem/Obj-ling_Obj-surfc Sem/Obj-play Sem/Obj-play_Sport Sem/Obj-rope Sem/Obj-surfc Sem/Obj_Part_Sign Sem/Obj_Semcon Sem/Obj_Sign Sem/Obj_State Sem/Obj_Symbol Sem/Obj_Tool-write Sem/Obj_Txt Sem/Obj_Veh Sem/Org Sem/Org_Plc Sem/Org_Prod-audio Sem/Org_Prod-cogn Sem/Org_Prod-vis Sem/Org_Rule Sem/Org_Txt Sem/Org_Veh Sem/Part Sem/Part_Prod-cogn Sem/Part_Substnc Sem/Perc-cogn Sem/Perc-emo Sem/Perc-emo_Plc Sem/Perc-emo_Wthr Sem/Perc-phys Sem/Perc-psych Sem/Phonenr Sem/Plant Sem/Plant-fungus Sem/Plant_Plantpart Sem/Plant_Time_Wthr Sem/Plant_Tool Sem/Plant_Tool-measr Sem/Plantpart Sem/Play Sem/Plc Sem/Plc-abstr Sem/Plc-abstr_Rel_State Sem/Plc-abstr_Route Sem/Plc-abstr_Txt Sem/Plc-elevate Sem/Plc-line Sem/Plc-water Sem/Plc_Pos Sem/Plc_Prod-audio Sem/Plc_Route Sem/Plc_Semcon Sem/Plc_State Sem/Plc_Substnc Sem/Plc_Substnc_Wthr Sem/Plc_Time Sem/Plc_Time_Wthr Sem/Plc_Tool-catch Sem/Plc_Txt Sem/Plc_Wthr Sem/Pos Sem/Process Sem/Prod Sem/Prod-audio Sem/Prod-audio_Txt Sem/Prod-cogn Sem/Prod-cogn_Txt Sem/Prod-ling Sem/Prod-vis Sem/Rel Sem/Route Sem/Route_Txt Sem/Rule Sem/Semcon Sem/Semcon_Txt Sem/Semcon_Wthr Sem/Sign Sem/Sport Sem/State Sem/State-sick Sem/State-sick_Substnc Sem/Substnc Sem/Substnc_Wthr Sem/Sur Sem/Symbol Sem/Time Sem/Time-clock Sem/Time_Wthr Sem/Tool Sem/Tool-catch Sem/Tool-clean Sem/Tool-it Sem/Tool-measr Sem/Tool-music Sem/Tool-write Sem/Txt Sem/Veh Sem/Wpn Sem/Wthr Sem/Year  org ;
+
+
+LIST Year_Date = Sem/Date Sem/Year ;
+
 
 SET FIRSTNAME = Prop + Sem/Fem OR Prop + Sem/Mal ;
 
@@ -397,6 +402,8 @@ LIST @SPRED<OBJ = @SPRED<OBJ ;	#!! * @SPRED<OBJ : Object of an subsject predicat
 							  	#!! ** guliid: Mánát leat oažžulat guliid.
 LIST @-FADVL = @-FADVL ; 	#!! * @-FADVL : Adverbial complement of infinite verb outside the verbal.
 							#!! ** várrogasat: Dihkkadeaddji rávve skohtervuddjiid várrogasat mátkkoštit. - The roadman warns snowscooter drivers to drive carefully.
+LIST @-F<SPRED = @-F<SPRED ; 	#!! * @-F<PRED : Predicative complement of infinite verb outside the verbal.
+							#!! ** ággan: Jáhkken kulturmáhtu leat oktan ággan.
 LIST @>ADVL = @>ADVL ; 	#!! * @>ADVL : Modifier of an adverbial to the right.
 						#!! ** vaikko: doppe leat vaikko man ollu studeanttat.
 LIST @ADVL< = @ADVL< ; 	#!! * @ADVL< : Komplement for adverbial.
@@ -738,7 +745,7 @@ SET CRD = @CNP OR COMMA OR NEGFOC OR XGO OR ("/") OR ("-") OR DADE ;
 
 LIST ADV-AFTER-NUM = "geardde" ;
 
-LIST DUSSE = "áibbas" "badjel" "badjelaš" "dušše" "erenoamážit" "gitta" "goitge" "man" "measta" "meastui" "oalle" "oba" "oktiibuot" "oppa" "sullii" "unnimusat" "vuollel" ;
+LIST DUSSE = "áibbas" "badjel" "badjelaš" "dušše" "erenoamážit" "gitta" "goitge" "man" "measta" "meastui" "oalle" "oba" "oktiibuot" "oppa" "ovdalaš" "sullii" "unnimusat" "vuollel" ;
 
 LIST GRADE-ADV =  "áibbas" "badjelmeare" "beare" ("eanet" Adv) "erenoamán" "erenoamáš" "hirbmat" "hui" "ila" "issoras" ("man" Adv) ("mealgat" Adv) "measta" "menddo" "muđui" "muhtun_muddui" "nu" "oalle" "oba" ("oppa" Adv) "sakka" "seammá" ("veaháš" Adv) ("uhccán" Adv) ("unnán" Adv) "vehá" "veháš" "veahá" "veaháš" "viehka" "dan" ;
 
@@ -908,7 +915,7 @@ SET NOT-NUM = WORD - Num ;
 LIST MANGA = "máŋga" "galle" ;
  # Not referred to by any rule.
 
-LIST SOAMES = "soames" "muhtun" ;
+LIST SOAMES = "soames" "muhtun" "ollugat" ;
 
 
 SET CARDINALS = Num - Ord - MANGA ;
@@ -929,6 +936,7 @@ LIST PROSEANTA = "proseanta" "%" ;
 
 SET REAL-CLB = CLB - COMMA ;
 
+LIST GOVUS = "govus" "tabealla" ;
 
 SET NOT-INITIAL-CC = WORD - INITIAL - CC ;
 
@@ -979,7 +987,7 @@ LIST MEASUREADJS = "ruvdnosaš" "kruvdnosaš" ;
 #!! * Syntactic sets
 # --------------
 
-LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ>)(@-FOBJ)(@-F<ADVL)(@-FADVL>)(@>A) (@>ADVL) (@ADVL<) (@<ADVL) (@ADVL>) (@ADVL) (@>N) (@APP) (@APP-N<) (@APP-Pron<) (@APP>Pron) (@APP-Num<) (@APP-ADVL<) (@VOC)(@CNP) (@CVP) (@P<) (@>P) (@HNOUN) (@INTERJ) (@Pron<) (@OBJ) (@OBJ>) (@<OBJ) (@OPRED) (@<OPRED) (@OPRED>) (@SPRED<OBJ) (@PCLE) (@COMP-CS<) (@N<) (@SPRED) (@<SPRED) (@SPRED>) (@PPRED) (@Num<) (@SUBJ) (@<SUBJ) (@SUBJ>) (@X);
+LIST ALLSYNTAG = @+FAUXV @+FMAINV @-FAUXV @-FMAINV @-FSUBJ> @-FOBJ @-F<ADVL @-FADVL> @-F<SPRED @>A @>ADVL @ADVL< @<ADVL @ADVL> @ADVL @>N @APP @APP-N< @APP-Pron< @APP>Pron @APP-Num< @APP-ADVL< @VOC@CNP @CVP @P< @>P @HNOUN @INTERJ @Pron< @OBJ @OBJ> @<OBJ @OPRED @<OPRED @OPRED> @SPRED<OBJ @PCLE @COMP-CS< @N< @SPRED @<SPRED @SPRED> @PPRED @Num< @SUBJ @<SUBJ @SUBJ> @X ;
 
 LIST HEAD = @SUBJ> @<SUBJ @SUBJ @OBJ @OBJ> @<OBJ @ADVL @ADVL> @<ADVL @SPRED> @<SPRED @SPRED @OPRED> @<OPRED @OPRED @-FSUBJ> @-FOBJ> @-FADVL> @-FSPRED> @-F<SUBJ @-F<OBJ @-F<ADVL @-F<SPRED ;
 
@@ -1268,6 +1276,7 @@ MAP:num< (@Num<) TARGET ("miljovdna")(-1 NUM + Sg + Nom LINK NOT -1 JAHKI)(1 ("s
 MAP:n<titel1 (@N<) TARGET ("jr") OR ("sr") (-1 Prop) ;
 	#$ Loahpas jearai Johttisámelisttu Anders Somby jr. sudnos njuolga háliida go čearru gulahallat, juo dahje ii.
 
+MAP:n< (@N<) TARGET ("OS") OR ("AS") IF (-1 N) ;
 
 
 #!! * __n<titel2__ (@N<) for INITIAL; if first one to the left is a noun, or if to the left of you is a single letter which is part of a noun conjunction ''bustávas e ja f gáibiduvvo''
@@ -1281,6 +1290,8 @@ MAP:n<:com (@N<) TARGET (Sg Com)(-1 Coll) ;
 
 MAP:n< (@N<) TARGET (Num Nom) ((-1 JAHKI OR ("diibmu") OR ("dii" Adv) OR ("árvosátni") OR Sem/Route OR (".*geaidnu"r)) OR (-1 Sem/Sur LINK 2 (":"))) ;
 MAP:>nSplitR (@>N) TARGET Cmp/SplitR ;
+MAP:govus< (@N<) TARGET Arab (0 Nom OR Gen LINK -1 GOVUS) ;
+	#$ Dát sulastahttá govvosis 3 govviduvvon gurut beali dili.
 
 MAP:>num (@>Num) TARGET DUSSE (1 Num) ;
 MAP:>n (@>N) TARGET DUSSE (1 N) ;
@@ -1325,7 +1336,7 @@ MAP:n>Indef (@>N) TARGET Indef + Nom  (1 N + Nom) (0 (<sma>)) ;
 
 #!! * __>nNum__ (@>N) for numerals if; there is a noun to your right. You are not allowed to be (Sg Nom), (Sg Acc) or (Sem/Date)
 MAP:>nNum (@>N) TARGET Num + (Sg Nom) - Year_Date (0 (<sma>) LINK *1 N BARRIER NOT-A OR MEASUREADJS OR Num)  ;
-MAP:>nNum (@>N) TARGET Num - (Sg Nom) - Year_Date (*1 N BARRIER NOT-A OR MEASUREADJS OR Num)(NOT 0 Loc OR Ill)   ;
+MAP:>nNum (@>N) TARGET Num - (Sg Nom) - Year_Date OR ("moanat") (*1 N BARRIER NOT-A OR MEASUREADJS OR Num)(NOT 0 Loc OR Ill)   ;
 	#$ Juos mearriduvvo meahcceeatnamiid nuppástuvvan geavaheapmi golmma ja dušše golmma stivrralahtu doarjagiin ja olles uhcitlohku vuođđudallá oainnus sámi kultuvrra, boazodoalu, meahcásteami, ealáhusdoaimmaheami ja servodateallima destii mii lea árvvoštallojuvvon Sámedikki válddahusaid vuođul, de sáhttá uhcitlohku ovtta oli stivrračoahkkima áigge gáibidit ášši Sámedikki gieđahallamii.
 
 MAP:>n>sasj (@>A) TARGET Num (1 MEASUREADJS)(2 N);
@@ -1408,7 +1419,7 @@ MAP:>NTime (@>N) TARGET Gen IF (*-1 BOC BARRIER Pr)(NEGATE -1 Num)(0 TIME-N)(1 P
 LIST MII = "mii" "mij" ;
 LIST GII = "guhti" "gii" ;
 
-MAP:pron< (@Pron<) TARGET (Pl Acc) (-1 MII + Pron OR GII + Pron)(*1 ("?")) ;
+MAP:pron< (@Pron<) TARGET (Pl Acc) (-1 MII + Pron OR GII + Pron)((*1 ("?")) OR (1 VFIN)) ;
 MAP:pron< (@Pron<) TARGET (Pl Acc) (-1 ("mihkkege" Pron) OR ("miige" Pron)) ;
 MAP:pron< (@Pron<) TARGET (Sg Com) (0 HUMAN LINK -1 (Pers Du1) OR (Pers Du2) OR (Pers Du3)) ;
 	#$ Moai Birehiin barggašeimme mánáidgárddis.
@@ -1451,6 +1462,11 @@ MAP:dasmaŋŋel (@>ADVL) TARGET Dem + Loc + Sg (1 ("maŋŋel" Adv)) ;
 #!! * __adv>advl__ (@>ADVL) 
 MAP:adv>advl (@>ADVL) TARGET Adv (1 Ill OR Loc OR Com) ;
 	#$ Mii leat giellaprošeavttaide bidjan vuoruhemiid njuolga dáidda guovlluide ja gielaide.
+
+#!! * __adv>advl__ (@>ADVL) 
+MAP:adv>advl (@>ADVL) TARGET (Sem/Measr_Time) (1 Adv + Sem/Time) ;
+	#$ Dievasčoahkkin galgá dán háve meannudit ášši mii šaddá láidestit min doaimmaid máŋga jagi ovddasguvlui.
+
 
 MAP:>a (@>A) TARGET GRADE-ADV (*1 A BARRIER NOT-NPMOD) ;
 MAP:>aSup (@>A) TARGET ("buot") (*1 Superl BARRIER NOT-NPMOD) ;
@@ -1985,7 +2001,8 @@ MAP:subj>App (@SUBJ>) TARGET (N Nom) OR (Pron Nom) (1 COMMA LINK *1 @APP-N< OR @
 
 
 # Rules for complements
-MAP:n< (@N<) TARGET N + Loc OR Pron + Loc (-1 (N @SUBJ>))(1 VFIN)(0 HUMAN) ; #OBS, for generell, la foreløpig til 0 HUMAN 
+MAP:n< (@N<) TARGET N + Loc OR Pron + Loc (*-1 (N @SUBJ>) BARRIER NOT-NPMODADV)(1 VFIN)(0 HUMAN) ; #OBS, for generell, la foreløpig til 0 HUMAN 
+MAP:n< (@N<) TARGET N + Loc OR Pron + Loc (-1 @>N LINK -1 ADVLCASE LINK -1 N + @SUBJ>)(1 VFIN)(0 HUMAN) ; #OBS, for generell, la foreløpig til 0 HUMAN 
 MAP:n< (@N<) TARGET N + Loc OR Pron + Loc (-1 N + Gen LINK -1 NUM - Sem/Year)(1 VFIN) ;
 MAP:n< (@Pron<) TARGET N + Loc OR Pron + Loc (-1 Pron + @SUBJ>)(1 VFIN) ;
 MAP:Pron< (@Pron<) TARGET (N Loc) - TIME-N (*-1 (Pron @SUBJ>) BARRIER NOT-ADV - COMMA LINK NOT 0 Rel) (*1 VFIN BARRIER NOT-ADV-PCLE - COMMA) ;
@@ -1993,6 +2010,7 @@ MAP:Pron< (@Pron<) TARGET Pers + Loc (*-1 Pron + Nom BARRIER NOT-ADV - COMMA LIN
 	#$ Nu guhká go mii, opposišuvnnas, eat čohkká beaivválaččat daiguin dokumeanttaiguin, de lea bahá vajáldahttit.
 	#$ Bealli oahpahalliin leat nieiddat.
 	#$ Almmuhusat neahtas eai leat doarvái.
+	#$ Sullii okta goalmmátoassi dutkamuššii searvan ohppiin bohtet Norggas.
 
 	#$ Ollugat sis dorjot sosialdemokráhtalaš bellodaga ásaheami.
 #MAP:n< (@N<) TARGET (N Loc)(-1 (N Nom) LINK *-1 FMAINV BARRIER SV-BOUNDARY) ;
@@ -2000,8 +2018,8 @@ MAP:Pron< (@Pron<) TARGET Pers + Loc (*-1 Pron + Nom BARRIER NOT-ADV - COMMA LIN
 MAP:n< (@N<) TARGET N + Sg + Loc (-1 Num LINK -1 (Coll @SUBJ>))(1 VFIN) ;
 	#$ Gávccis logi politiijas háliidit guoddit vearjju bissovaččat.
 
-MAP:num< (@Num<) TARGET (Pl Loc) OR Pers + Pl3 (**-1 Pron + Gen OR Pron + Loc OR A + Attr BARRIER NOT-Attr LINK -1 OKTA) ;
-MAP:num< (@Num<) TARGET (Pl Loc) OR Pers + Pl3 (-1 SOAMES + Pl) ;
+MAP:num< (@Num<) TARGET (Pl Loc) OR Sem/Group + Loc OR Pers + Pl3 (**-1 Pron + Gen OR Pron + Loc OR A + Attr BARRIER NOT-Attr LINK -1 OKTA) ;
+MAP:num< (@Pron<) TARGET (Pl Loc) OR Sem/Group + Loc OR Pers + Pl3 (*-1 SOAMES + Pl BARRIER NOT-NPMOD) ;
 	#$ Dat lea okta min buoremus girjjiin.
 	#$ Sámegiella lea okta dain dehálaš vuođđogeđggiin.
 	#$ Soapmásat sis soitet guođđit Bargiidbellodaga go leat suhttan.
@@ -2015,10 +2033,19 @@ MAP:num< (@Num<) TARGET (Sg Loc)  (*-1 Num BARRIER NOT-A OR RIGHT LINK *-1 OKTA 
 MAP:r253 (@Num<) TARGET (Sg Gen) IF (*-1 NUM BARRIER N OR MEASUREADJS OR REAL-CLB OR PUNCT LINK 0 Nom OR Acc LINK NOT 0 Ord)(NEGATE 0 Num)(NEGATE 1 A OR N)(NEGATE -1 COMMA);
 	#$ Mun vuiten 50 ru.
 
+
+
 LIST COUNTABLE = "oassi" "kapihtal" "paragráfa" ;
 
-MAP:n< (@N<) TARGET Loc - Rel (*-1 COUNTABLE BARRIER NOT-A OR LEFT) ;
+MAP:n< (@N<) TARGET Loc - Rel (*-1 COUNTABLE BARRIER NOT-NPMOD OR LEFT) ;
 	#$ Dat lea oassin giellaprográmmas.
+	#$ Go guorahallat guovttegielat olbmuid giellageavaheami, de okta dehálaš oassi olbmo gielalaš resurssain lea čálamáhttu
+
+LIST VEL = ("vel" <sme>) ;
+
+MAP:HNOUNn< (@Num<) TARGET VEL (-1 Num) ;
+	#$ Mun áiggun ovtta vel
+
 
 #!! * __-fsubj>__ (@-FSUBJ>) for HUMAN Gen; in a NP-clause. To your right is Actio Nom followed by a noun
 MAP:-fsubj> (@-FSUBJ>) TARGET HUMAN + Gen (1 (Actio Nom) LINK 1 N) ;
@@ -2026,9 +2053,9 @@ MAP:-fsubj> (@-FSUBJ>) TARGET HUMAN + Gen (1 (Actio Nom) LINK 1 N) ;
 
 
 	# Adverbials - ADVL
-LIST MOVE-VERBS-sme = "beassat" "boahtit" "čuoigat" "fárret" "fierrat" "gahččat" "girdit" "johtit" "sihkkelastit" "sirdit" "vázzát" "vázzit" "viehkat" "vuodjit" "vuojehit" "vuolgit"  ;
+LIST MOVE-VERBS-sme = "báhcit" "beassat" "boahtit" "čuoigat" "fárret" "fierrat" "gahččat" "girdit" "johtit" "sihkkelastit" "sirdit" "vázzát" "vázzit" "viehkat" "vuodjit" "vuojehit" "vuolgit"  ;
 
-LIST OTH-ELA-VERBS-sme = "árbet" "bálkestit" "báidnit" "beroštit" "čoaggit" "čohkket" "diŋgot" "duvdit" "gáibidit" "geassádit" "goaikut" "jearrat" "muitalit" "nákkáhallat" "njoammut" "oastit" "oažžut" "váldit" "viežžat" "vuovdit"  ;
+LIST OTH-ELA-VERBS-sme = "árbet" "bálkestit" "báidnit" "beroštit" "čoaggit" "čohkket" "diŋgot" "duvdit" "gáibidit" "geassádit" "goaikut" "jearrat" "muitalit" "nákkáhallat" "njoammut" "oastit" "oažžut" "sierranit" "váldit" "viežžat" "vuovdit"  ;
 
 SET ELA-VERBS-sme = MOVE-VERBS-sme OR OTH-ELA-VERBS-sme ;
 
@@ -2065,6 +2092,8 @@ MAP:Vf<advl-ela (@-F<ADVL-ela) TARGET Loc  (-1 Sem/Part LINK *-1 SYN-V - VGen - 
 MAP:f<advl (@-F<ADVL) TARGET NOT-ELA-INE-PO-sme (-1 Gen) ;
 	#$ de dusten sávvat beassat 20 buoremusa searvái.
 
+MAP:f<pred (@-F<SPRED) TARGET Ess (*-1 COPULAS + @-F<OBJ BARRIER NOT-NPMOD ) ;
+
 
 MAP:f<advl (@-F<ADVL-ine) TARGET ADVL-INE-ELA - MO - S-BOUNDARY OR TIME-N + Gen OR Gen-Sem/Route (*-1 SYN-V - VGen - VAbess BARRIER SV-BOUNDARY OR CS LINK NOT 0 ELA-VERBS-sme)(NEGATE 0 DUSSE OR EASKKA)(0 (<sme>)) ;
 MAP:f<advl (@-F<ADVL-ine) TARGET Loc + Sem/Lang (*0 ("oahpahus") OR ("oahpahit") BARRIER SV-BOUNDARY)(0 (<sme>)) ;
@@ -2081,8 +2110,8 @@ MAP:fadvl> (@-FADVL>) TARGET ADVLCASEAdv - MO - S-BOUNDARY OR TIME-N + Gen OR Ge
 MAP:s-boundary=advl> (@<ADVL-ine) TARGET ADVLCASEAdv + Sem/Plc (0 Loc OR Adv)(*0 Sem/Edu + Acc)((*1 FMAINV + ("vázzit")) OR (*-1 FMAINV + ("vázzit")))(0 (<sme>)) ;
 	#$ Mánáidskuvlla son váccii Praahkes, reálaskuvlla Rørosas, landsgymnása Orkdaeles ja šibitdoavtterallaskuvlla Oslos.
 
-MAP:s-substance=advl> (@ADVL-ela>) TARGET ADVLCASEAdv + Loc  ( 0 Sem/Mat OR Sem/Substnc OR ("ruovdi"))(*1 FMAINV + ("ráhkadit") OR FMAINV + ("duddjot") BARRIER SV-BOUNDARY)(0 (<sme>)) ;
-MAP:s-substance=<advl (@<ADVL-ela) TARGET ADVLCASEAdv + Loc  ( 0 Sem/Mat OR Sem/Substnc OR ("ruovdi"))(*-1 FMAINV + ("ráhkadit") OR FMAINV + ("duddjot") BARRIER SV-BOUNDARY)(0 (<sme>)) ;
+MAP:s-substance=advl> (@ADVL-ela>) TARGET ADVLCASEAdv + Loc  ( 0 Sem/Mat OR Sem/Clth OR Sem/Substnc OR ("ruovdi"))(*1 FMAINV + ("ráhkadit") OR FMAINV + ("duddjot") OR FMAINV + ("goarrut") BARRIER SV-BOUNDARY)(0 (<sme>)) ;
+MAP:s-substance=<advl (@<ADVL-ela) TARGET ADVLCASEAdv + Loc  ( 0 Sem/Mat OR Sem/Clth OR Sem/Substnc OR ("ruovdi"))(*-1 FMAINV + ("ráhkadit") OR FMAINV + ("duddjot") OR FMAINV + ("goarrut") BARRIER SV-BOUNDARY)(0 (<sme>)) ;
 MAP:s-substance=<advl (@<ADVL-ela) TARGET ADVLCASEAdv + Loc  ( 0 Sem/Ctain-abstr)(*-1 FMAINV + ("ohcat") BARRIER SV-BOUNDARY)(0 (<sme>)) ;
 	#$ Ain vejolaš ohcat suohkana ealáhusfoanddas.
 
@@ -2154,11 +2183,12 @@ MAP:gaskkamuttus-ine (@ADVL-ine>) TARGET PREGEN + Loc IF (-1 Sem/Time)(NEGATE *-
 MAP:gaskkamuttus-ine (@<ADVL-ine) TARGET PREGEN + Loc IF (-1 Sem/Time)(NEGATE *1 FMAINV BARRIER S-BOUNDARY)(0 (<sme>)) ;
 
 MAP (@ADVL-ine>) TARGET ADVLCASEAdv (0 Loc OR Adv OR Po)(NEGATE *-1 FMAINV BARRIER S-BOUNDARY)(*1 FMAINV BARRIER SV-BOUNDARY LINK NOT 0 ELA-VERBS-sme)(0 (<sme>)) ;
+MAP (@ADVL-ine>) TARGET Num + Gen (-1 DUSSE) ;
 MAP (@ADVL-ine>) TARGET ADVLCASEAdv + Sem/Year (0 Loc)(NEGATE 1 Sem/Year OR Ill)(0 (<sme>)) ;
 	#$ 1964:s bođii Ráisii dálueamitskuvla.
 MAP:coahkkimis (@ADVL-ine>) TARGET Loc (0 ("čoahkkin"))(NEGATE *-1 FMAINV BARRIER S-BOUNDARY)(*1 FMAINV BARRIER SV-BOUNDARY LINK NOT 0 MOVE-VERBS-sme)(0 (<sme>)) ;
-MAP:coahkkimis (@<ADVL-ine>) TARGET Loc (0 ("čoahkkin"))(*-1 FMAINV BARRIER SV-BOUNDARY LINK NOT 0 MOVE-VERBS-sme)(0 (<sme>)) ;
-MAP (@ADVL-ela>) TARGET ADVLCASEAdv - INE-NOUNS-sme (0 Loc OR Adv OR Po)(NEGATE *-1 FMAINV BARRIER S-BOUNDARY)(*1 FMAINV + ELA-VERBS-sme BARRIER SV-BOUNDARY)(0 (<sme>)) ;
+MAP:coahkkimis (@<ADVL-ine) TARGET Loc (0 ("čoahkkin"))(*-1 FMAINV BARRIER SV-BOUNDARY LINK NOT 0 MOVE-VERBS-sme)(0 (<sme>)) ;
+MAP (@ADVL-ela>) TARGET ADVLCASEAdv - INE-NOUNS-sme (0 Loc OR Adv OR Po)(NEGATE *-1 FMAINV BARRIER S-BOUNDARY)(*1 FMAINV + ELA-VERBS-sme BARRIER SV-BOUNDARY LINK NEGATE 0 OTH-ELA-VERBS-sme)(0 (<sme>)) ;
 
 
 #!! * __advl>mainV__ (@ADVL>) if; finite mainverb not found to the left, but the finite mainverb is found to the right.
@@ -2607,8 +2637,6 @@ MAP:leftoversX (@X) TARGET WORD ;
 
 #!! !!For Apertium:
 #!! The analysis give double analysis because of optional semtags. We go for the one with semtag.
-
-LIST SEMTAGS =  Sem/Act Sem/Adr Sem/Amount Sem/Ani Sem/Aniprod Sem/Body Sem/Body-abstr Sem/Build Sem/Build-part Sem/Cat Sem/Clth Sem/Clth-jewl Sem/Clth-part Sem/Ctain Sem/Ctain-abstr Sem/Ctain-clth Sem/Ctain-Obj Sem/Curr Sem/Date Sem/Dance Sem/Dir Sem/Domain Sem/Drink Sem/Dummytag Sem/Edu Sem/Event Sem/Feat Sem/Feat-phys Sem/Feat-psych Sem/Feat-measr Sem/Fem Sem/Food Sem/Food-med Sem/Fruit Sem/Furn Sem/Game Sem/Geom Sem/Group Sem/Hum Sem/Hum-abstr Sem/Hum-prof Sem/Ideol Sem/Lang Sem/Mal Sem/Mat Sem/Measr Sem/Money Sem/Obj Sem/Obj-clo Sem/Obj-cogn Sem/Obj-el Sem/Obj-ling Sem/Obj-rope Sem/Obj-surfc Sem/Org Sem/Part Sem/Perc-cogn Sem/Perc-emo Sem/Perc-phys Sem/Perc-psych Sem/Phonenr Sem/Plant Sem/Plant-part Sem/Plc Sem/Plc-abstr Sem/Plc-elevate Sem/Plc-line Sem/Plc-water Sem/Pos Sem/Process Sem/Prod Sem/Prod-audio Sem/Prod-cogn Sem/Prod-ling Sem/Prod-vis Sem/Rel Sem/Route Sem/Rule Sem/Semcon Sem/Sign Sem/Sport Sem/State Sem/State-sick Sem/Substnc Sem/Sur Sem/Symbol Sem/Time Sem/Time-clock Sem/Tool Sem/Tool-catch Sem/Tool-clean Sem/Tool-it Sem/Tool-measr Sem/Tool-music Sem/Tool-write Sem/Txt Sem/Veh Sem/Wpn Sem/Wthr Sem/Year Sem/Act_Fruit Sem/Act_Group Sem/Act_Plc Sem/Act_Route Sem/Act_Tool-it Sem/Amount_Build Sem/Amount_Semcon Sem/Ani_Body-abstr_Hum Sem/Ani_Build Sem/Ani_Build-part Sem/Ani_Build_Hum_Txt Sem/Ani-fish Sem/Ani_Group Sem/Ani_Group_Hum Sem/Ani_Group_Prod-vis Sem/Ani_Hum Sem/Ani_Hum_Plc Sem/Ani_Hum_Time Sem/Ani_Plc Sem/Ani_Plc_Txt Sem/Ani_Time Sem/Ani_Veh Sem/Aniprod_Hum Sem/Aniprod_Obj-clo Sem/Aniprod_Perc-phys Sem/Aniprod_Plc Sem/Aniprod_Plc_Route Sem/Body-abstr_Feat-cogn Sem/Body-abstr_Prod-audio_Semcon Sem/Body_Body-abstr Sem/Body_Clth Sem/Body_Food Sem/Body_Group_Hum Sem/Body_Group_Hum_Time Sem/Body_Hum Sem/Body_Mat Sem/Body_Measr Sem/Body_Obj_Tool-catch Sem/Body_Plc Sem/Body_Plc-elevate Sem/Body_Time Sem/Build-part_Plc Sem/Build_Build-part Sem/Build_Clth-part Sem/Build_Edu_Org Sem/Build_Event_Org Sem/Build_Obj Sem/Build_Org Sem/Build_Route Sem/Build-part_Cat Sem/Build-part_Cat_Ctain Sem/Build-part_Cat_Ctain_Mat Sem/Build-part_Ctain Sem/Build-part_Ctain_Mat Sem/Build-part_Ctain_Obj Sem/Cat_Group_Hum Sem/Cat_Group_Hum_Plc Sem/Clth-jewl_Curr Sem/Clth-jewl_Curr_Obj Sem/Clth-jewl_Curr_Obj_Org Sem/Clth-jewl_Fruit Sem/Clth-jewl_Money Sem/Clth-jewl_Plant Sem/Clth_Hum Sem/Clth_Obj-clo Sem/Ctain-abstr_Org Sem/Ctain-clth_Plant Sem/Ctain-clth_Veh Sem/Ctain_Feat-phys Sem/Ctain_Furn Sem/Ctain_Plc Sem/Ctain_Tool Sem/Ctain_Tool-measr Sem/Curr_Org Sem/Dance_Org Sem/Dance_Prod-audio Sem/Domain_Food-med Sem/Domain_Hum Sem/Domain_Prod-audio Sem/Drink_Plant Sem/Edu_Event Sem/Edu_Geom Sem/Edu_Group_Hum Sem/Edu_Hum Sem/Edu_Mat Sem/Edu_Org Sem/Event_Food Sem/Event_Hum Sem/Event_Plc Sem/Event_Plc-elevate Sem/Event_Time Sem/Feat-measr_Plc Sem/Feat-phys_Tool-write Sem/Feat-phys_Veh Sem/Feat-phys_Wthr Sem/Feat-psych_Hum Sem/Feat-psych_Plc Sem/Food_Obj-surfc Sem/Feat_Plant Sem/Food_Perc-phys Sem/Food_Plant Sem/Food_Sign Sem/Fruit_Hum Sem/Game_Obj-play Sem/Geom_Hum_Plc Sem/Geom_Obj Sem/Group_Hum Sem/Group_Hum_Org Sem/Group_Hum_Plc Sem/Group_Hum_Prod-vis Sem/Group_Hum_Time Sem/Group_Org Sem/Group_Prod-vis Sem/Group_Sign Sem/Group_Txt Sem/Hum_Lang Sem/Hum_Lang_Plc Sem/Hum_Lang_Time Sem/Hum_Mat_Tool Sem/Hum_Obj Sem/Hum_Org Sem/Hum_Sign Sem/Hum_Plant Sem/Hum_Plc Sem/Hum_Tool Sem/Hum_Tool-it Sem/Hum_Veh Sem/Hum_Wthr Sem/Lang_Tool Sem/Mat_Plant Sem/Mat_Txt Sem/Measr_Obj_Time Sem/Measr_Sign Sem/Measr_Time Sem/Money_Obj Sem/Money_Org Sem/Money_Part Sem/Money_Txt Sem/Obj-play Sem/Obj-play_Sport Sem/Obj_Semcon Sem/Obj_Sign Sem/Obj_Veh Sem/Clth-jewl_Org Sem/Obj_Symbol Sem/Org_Rule Sem/Org_Txt Sem/Org_Veh Sem/Part_Prod-cogn Sem/Part_Substnc Sem/Perc-emo_Wthr Sem/Plant_Plant-part Sem/Plant_Tool Sem/Plant_Tool-measr Sem/Plc-abstr_Rel_State Sem/Plc-abstr_Route Sem/Plc_Pos Sem/Plc_Route Sem/Plc_Semcon Sem/Plc_State Sem/Plc_Substnc Sem/Plc_Substnc_Wthr Sem/Plc_Time Sem/Plc_Tool-catch Sem/Plc_Txt Sem/Plc_Wthr Sem/Prod-audio_Txt Sem/Prod-cogn_Txt Sem/Semcon_Txt Sem/Obj_State Sem/Substnc_Wthr Sem/Plc_Time_Wthr Sem/Time_Wthr Sem/State-sick_Substnc Sem/Obj-ling_Obj-surfc Sem/Org_Prod-audio Sem/Org_Prod-cogn Sem/Org_Prod-vis   ;
 
 SELECT SEMTAGS + N ;
 SELECT SUB:1 SEMTAGS + N ; #For Apertium

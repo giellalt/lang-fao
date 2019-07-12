@@ -335,6 +335,10 @@ REMOVE Dem IF (0 TAD + $$NAGD)(1C $$NAGD);
 
 # Adjective disambiguation in NP
 # ------------------------------
+REMOVE:ANotInf Inf IF (-1 HAVA + V + Ind)(0 A + Neu + Sg + Nom + Def)(1 N + Neu + Sg + Nom + Def);
+REMOVE:ANotVPl Ind + Prs + Pl IF (-1 HAVA + V + Ind)(0 A + Neu + Sg + Nom + Def)(1 N + Neu + Sg + Nom + Def);
+
+
 
 REMOVE:r18 A + Fem IF (0  $$NAGD) (*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 REMOVE:r19 A + Msc IF (0  $$NAGD) (*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);

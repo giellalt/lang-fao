@@ -304,6 +304,7 @@ SET NOT-1SG = WORD - 1Sg - (Prt Sg) ;
 LIST &msyn-sg1 = &msyn-sg1 ;
 LIST &msyn-prspl = &msyn-prspl ;
 LIST &msyn-nomdef = &msyn-nomdef ;
+LIST &msyn-inf = &msyn-inf ;
 LIST &msyn-sup = &msyn-sup ;
 LIST &msyn-npl = &msyn-npl ;
 LIST &lex-laet = &lex-laet ;
@@ -336,6 +337,12 @@ COPY:msyn-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1)
 ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (-1 ("eg" Pron Pers Sg Nom))(NOT -2 (Prt Sg) OR 1Sg);
 COPY:msyn-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1) ;
 
+
+#!! Sup  should be Inf
+ADD:msyn-inf (&msyn-inf) TARGET (V Sup) IF (-1 MODV);
+COPY:msyn-inf (Inf &SUGGEST) EXCEPT (Sup &msyn-inf) TARGET (V Sup &msyn-inf) ;
+## - Eg vil komað.
+#$ - Eg vil koma.
 
 
 #!! Neu should be 1Sg

@@ -108,5 +108,7 @@ AC_CONFIG_FILES([devtools/test_ospell-office_suggestions.sh], \
       [chmod a+x devtools/test_ospell-office_suggestions.sh])
 AC_CONFIG_FILES([devtools/test_voikkospell_suggestions.sh], \
       [chmod a+x devtools/test_voikkospell_suggestions.sh])
+AC_CONFIG_FILES([devtools/test_grammar_checker.sh], \
+      [chmod a+x devtools/test_grammar_checker.sh])
 
 ]) # gt_CONFIG_FILES

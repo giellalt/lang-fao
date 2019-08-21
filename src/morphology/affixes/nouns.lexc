@@ -189,7 +189,8 @@ LEXICON k5 ! bóndi
  +N+Msc:       W_M_SGGEN    ;
  +N+Msc:%^IUML W_M_PLNOM_UR ;
  +N+Msc:%^IUML W_M_PLACC_UR ;
- +N+Msc:       W_M_PLDAT    ;
+ +N+Msc:       W_M_PLDAT    ; ! bóndum
+ +N+Msc:r      W_M_PLDAT    ; ! bóndrum
  +N+Msc:       W_M_PLGEN    ;
 
 
@@ -801,17 +802,17 @@ LEXICON k_flt34
  +N+Msc:%>j S_M_PLGEN    ;
 
 
-LEXICON k35 ! bonkur
- +N+Msc:%^EIO S_M_SGNOM    ;
- +N+Msc:%^EIO S_M_SGACC    ;
- +N+Msc:%^EIO S_M_SGDAT    ;
- +N+Msc:      S_M_SGDAT    ;
- +N+Msc:%>j   S_M_SGGEN_AR ;
- +N+Msc:%^EIO S_M_SGGEN_AR ;
- +N+Msc:      S_M_PLNOM_IR ;
- +N+Msc:      S_M_PLACC_IR ;
- +N+Msc:%>j   S_M_PLDAT    ;
- +N+Msc:%>j   S_M_PLGEN    ;
+!LEXICON k35 ! bonkur (now k11)
+! +N+Msc:%^EIO S_M_SGNOM    ;
+! +N+Msc:%^EIO S_M_SGACC    ;
+! +N+Msc:%^EIO S_M_SGDAT    ;
+! +N+Msc:      S_M_SGDAT    ;
+! +N+Msc:%>j   S_M_SGGEN_AR ;
+! +N+Msc:%^EIO S_M_SGGEN_AR ;
+! +N+Msc:      S_M_PLNOM_IR ;
+! +N+Msc:      S_M_PLACC_IR ;
+! +N+Msc:%>j   S_M_PLDAT    ;
+! +N+Msc:%>j   S_M_PLGEN    ;
 
 LEXICON k36 ! heyggjur
  +N+Msc:       S_M_SGNOM ;
@@ -1483,11 +1484,11 @@ LEXICON kv22 ! klógv
 
 LEXICON kv22e
  +N+Fem: S_F_SGNAD ;
- +N+Fem: S_F_SGGEN ;
+ +N+Fem:^GVDEL S_F_SGGEN ;
 
 LEXICON kv_flt22
- +N+Fem: F_PLNA_IR ;
- +N+Fem: F_PLDAT   ;
+ +N+Fem:^GVDEL^IUML F_PLNA_UR ;
+ +N+Fem:^GVDEL F_PLDAT   ;
  +N+Fem: F_PLGEN   ;
 
 

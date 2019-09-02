@@ -544,15 +544,19 @@ LEXICON s60 ! taka, aka
           :%^AB6   sup_null        ;
  +V+PrfPrc:%^AB6in p26             ;
 
+          :hild   prt_u_p          ; ! hóld ??
+          :hild   sup_null         ;
+ +V+PrfPrc:hildin p26              ;
+
 LEXICON s61 ! halda
-                   inf             ;
-                   pres_strong_s1  ;
-          :%^IUML  pres_strong_s23 ;
-          :%^IUML  prt_null_s      ; ! hald / held%>st, should be helt / helt%>st
-          :%^AB6   prt_u_p         ;
-          :%^AB6   sup_null        ;
-                   imp_prsptc      ;
- +V+PrfPrc:%^AB6in p26             ;
+          :hald        inf             ;
+          :hald        pres_strong_s1  ;
+          :held  pres_strong_s23 ;
+          :helt  prt_null      ; ! hald / held%>st, should be helt / helt%>st
+          :hild   prt_u_p         ;
+          :hild   sup_null        ;
+          :hald        imp_prsptc      ;
+ +V+PrfPrc:hildin p26             ;
 
 LEXICON s62 ! sova
           :sov  inf             ;
@@ -892,6 +896,9 @@ LEXICON s83 ! samsinnast
 !  s8  ;
 !  s30 ;
 !
+LEXICON s8/48
+  s8  ;
+  s48 ;
 LEXICON s9/30
   s9  ;
   s30 ;
@@ -1069,6 +1076,11 @@ LEXICON prt_dd
 LEXICON prt_a
  +V+Ind+Prt+Sg:%>aði PASS ;
  +V+Ind+Prt+Pl:%>aðu PASS ;
+
+LEXICON prt_null
+ +V+Ind+Prt+1Sg:     PASS ;
+ +V+Ind+Prt+2Sg:     PASS ;
+ +V+Ind+Prt+3Sg:     PASS ;
 
 LEXICON prt_null_s
  +V+Ind+Prt+1Sg:     PASS ;

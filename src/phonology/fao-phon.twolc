@@ -1,4 +1,3 @@
-
 !! !!!The Faroese morphophonological file 
 
 
@@ -12,7 +11,8 @@ Alphabet
  a2:a ! for da2n -> dønum
  g2:g 
  i2:i 
- j2:j 
+ j2:j
+ t2:t ! For non-deleted t, dráttri pro *drátri
  v2:v 
  %^UUML:0 %^IUML:0 %^eIUML:0
  %^W:0 %^JI:0
@@ -202,7 +202,10 @@ Rules
 
 "Deleting stem-final s in s genitive"
 !! __@RULENAME@__ 
- s:0 <=> Vow s %>: _ #:0 ; ! added #:0
+ s:0 <=> Vow s %>: _ [#:0|%>:] ; ! added #:0
+
+!!€ primus>s
+!!€ primus00
 
 !!€ primus>s
 !!€ primus00

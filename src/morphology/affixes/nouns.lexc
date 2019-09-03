@@ -1334,16 +1334,22 @@ LEXICON kv11 ! song
   kv_flt11 ;
 
 LEXICON kv11e
- +N+Fem:^JDEL S_F_SGNAD ;
- +N+Fem:^JDEL S_F_SGGEN ;
- +N+Fem:^EIO  S_F_SGGEN ;
+ +N+Fem+Sg+Nom:song DF_A_SGf_W ; ! song, songin
+ +N+Fem+Sg+Acc:song DF_A_SGf_S ; ! song, songina
+ +N+Fem+Sg+Dat:song DF_D_SGf_S_1 ; ! song, songini
+ +N+Fem+Sg+Gen:songar DF_G_SGf_S ; ! songar, songarinnar
+
++N+Fem+Sg+Gen:seingjar DF_G_SGf_S ; ! seingjar, seingjarinnar
 
 
 LEXICON kv_flt11
- +N+Fem:^EIO  F_PLNA_IR ;
- +N+Fem:^IUML F_PLNA_UR ;
- +N+Fem:^EIO  F_PLDAT   ;
- +N+Fem:^EIO  F_PLGEN   ;
+ +N+Fem+Pl+Nom:seingir DF_NA_PLf ;
+ +N+Fem+Pl+Nom:sengur  DF_NA_PLf ;
+ +N+Fem+Pl+Acc:seingir DF_NA_PLf ;
+ +N+Fem+Pl+Acc:sengur  DF_NA_PLf ;
+ +N+Fem+Dat:seingju    DF_D_PL ;
+ +N+Fem+Gen:seingja    DF_G_PL ;
+
 
 LEXICON kv12 ! bók
   kv12e    ;
@@ -1366,48 +1372,63 @@ LEXICON kv13 ! mørk
   kv_flt13 ;
 
 LEXICON kv13e
- +N+Fem:      S_F_SGNAD ;
- +N+Fem:^OEA S_F_SGGEN ;
+ +N+Fem+Sg+Nom:mørk DF_A_SGf_W ;
+ +N+Fem+Sg+Acc:mørk DF_A_SGf_S ;
+ +N+Fem+Sg+Dat:mørk DF_D_SGf_S_1 ;
+ +N+Fem+Sg+Gen:markar DF_G_SGf_S ;
 
-LEXICON kv_flt13
- +N+Fem:^IUML F_PLNA_UR ;
- +N+Fem:       F_PLDAT   ;
- +N+Fem:^OEA  F_PLGEN   ;
+LEXICON kv_flt13 ! Alternative way
+ +N+Fem+Pl+Nom:merkur DF_NA_PLf ;
+ +N+Fem+Pl+Acc:merkur DF_NA_PLf ;
+ +N+Fem+Pl+Dat:mørku DF_D_PL ;
+ +N+Fem+Pl+Gen:marka DF_G_PL ;
+ 
 
 LEXICON kv14 ! nátt
   kv14e    ;
   kv_flt14 ;
 
 LEXICON kv14e
- +N+Fem: S_F_SGNAD ;
- +N+Fem: S_F_SGGEN ;
+ +N+Fem+Sg+Nom:nátt DF_A_SGf_W ;
+ +N+Fem+Sg+Acc:nátt DF_A_SGf_S ;
+ +N+Fem+Sg+Dat:nátt DF_D_SGf_S_1 ;
+ +N+Fem+Sg+Gen:náttar DF_G_SGf_S ;
+
 
 LEXICON kv_flt14
- +N+Fem:^IUML F_PLNA_UR ; ! XXX one t, nætur
- +N+Fem:       F_PLDAT   ;
- +N+Fem:       F_PLGEN   ;
+ +N+Fem+Pl+Nom:nætur DF_NA_PLf ;
+ +N+Fem+Pl+Acc:nætur DF_NA_PLf ;
+ +N+Fem+Pl+Dat:náttu DF_D_PL ;
+ +N+Fem+Pl+Gen:nátta DF_G_PL ;
+
 
 LEXICON kv15 ! tonn
   kv15e    ;
   kv_flt15 ;
 
 LEXICON kv15e
- +N+Fem:     S_F_SGNAD ;
- +N+Fem:^OA S_F_SGGEN ;
+ +N+Fem+Sg+Nom:tonn DF_A_SGf_W ;
+ +N+Fem+Sg+Acc:tonn DF_A_SGf_S ;
+ +N+Fem+Sg+Dat:tonn DF_D_SGf_S_1 ;
+ +N+Fem+Sg+Gen:tannar DF_G_SGf_S ;
+
 
 LEXICON kv_flt15f
   kv_flt15 ;
 
 LEXICON kv_flt15
- +N+Fem:^IUML F_PLNA_NULL ;
- +N+Fem:       F_PLDAT     ;
- +N+Fem:^OEA  F_PLGEN     ;
+ +N+Fem+Pl+Nom:tenn DF_NA_PLf ;
+ +N+Fem+Pl+Acc:tenn DF_NA_PLf ;
+ +N+Fem+Pl+Dat:tonnu DF_D_PL ;
+ +N+Fem+Pl+Gen:tanna DF_G_PL ;
 
-LEXICON kv16 ! mús
+
+LEXICON kv16 ! mús, lús
  +N+Fem:       S_F_SGNAD   ;
  +N+Fem:       S_F_SGGEN   ;
  +N+Fem:^IUML F_PLNA_NULL ;
- +N+Fem:       F_PLDAT     ;
+ +N+Fem:       F_PLDAT     ; ! músunum
+ +N+Fem+Pl+Dat+Def:^IUMLnum  ENDLEX ; ! mýsnum
  +N+Fem:       F_PLGEN     ;
 
 LEXICON kv17 ! mastur
@@ -1458,32 +1479,38 @@ LEXICON kv20 ! ær (only)
  +N+Fem:ær S_F_SGGEN_NULL ;
  +N+Fem:ær F_PLNA_NULL    ;
  +N+Fem:ó  F_PLDAT        ;
+ +N+Fem+Pl+Dat+Def:ærnum  ENDLEX ;
  +N+Fem:á  F_PLGEN        ;
 
 
 LEXICON kv21 ! gjógv
- +N+Fem: S_F_SGNAD ;
- +N+Fem: S_F_SGGEN ;
- +N+Fem: F_PLNA_IR ;
- +N+Fem: F_PLDAT   ;
- +N+Fem: F_PLGEN   ;
+ +N+Fem+Sg+Nom: DF_N_SGf_S ;
+ +N+Fem+Sg+Acc+Indef:      FemObl_Flag ;
+ +N+Fem+Sg+Acc+Def:^GVDEL%>nna FemObl_Flag ;
+ +N+Fem+Sg+Acc: R ; ! stem compound
+ +N+Fem+Sg+Dat: DF_D_SGf_S ;
+ +N+Fem:       S_F_SGGEN ;
+ +N+Fem:^GVDEL F_PLNA_IR ;
+ +N+Fem:^GVDEL F_PLDAT   ;
+ +N+Fem:^GVDEL F_PLGEN   ;
 
 LEXICON kv22/24
   kv22 ;
   kv24 ;
   
-LEXICON kv22 ! klógv
+LEXICON kv22 ! klógv, rógv  stem: kl-, r-
   kv22e    ;
   kv_flt22 ;
 
 LEXICON kv22e
- +N+Fem: S_F_SGNAD ;
- +N+Fem:^GVDEL S_F_SGGEN ;
+ +N+Fem:ógv S_F_SGNAD ;
+ +N+Fem:óar S_F_SGGEN ;
 
 LEXICON kv_flt22
- +N+Fem:^GVDEL^IUML F_PLNA_UR ;
- +N+Fem:^GVDEL F_PLDAT   ;
- +N+Fem: F_PLGEN   ;
+ +N+Fem:øur F_PLNA_UR ;
+ +N+Fem:ó F_PLDAT   ; !klóm, klónum
+ +N+Fem+Pl+Dat+Def:ørnum ENDLEX ; ! klørnum
+ +N+Fem:ógva F_PLGEN   ;
 
 
 LEXICON kv23 ! trúgv
@@ -1491,8 +1518,12 @@ LEXICON kv23 ! trúgv
   kv_flt23 ;
 
 LEXICON kv23e
- +N+Fem: S_F_SGNAD ;
- +N+Fem: S_F_SGGEN ;
+ +N+Fem+Sg+Nom: DF_N_SGf_S ;
+ +N+Fem+Sg+Acc+Indef:      FemObl_Flag ;
+ +N+Fem+Sg+Acc+Def:^GVDEL%>na FemObl_Flag ;
+ +N+Fem+Sg+Acc: R ; ! stem compound
+ +N+Fem+Sg+Dat: DF_D_SGf_S ;
+ +N+Fem:^GVDEL S_F_SGGEN ;
 
 LEXICON kv_flt23
  +N+Fem: F_PLNA_IR ;
@@ -1520,10 +1551,16 @@ LEXICON kv24 ! kúgv
   kv_flt24 ;
 
 LEXICON kv24e
- +N+Fem: S_F_SGNAD ;
- +N+Fem: S_F_SGGEN ;
+ +N+Fem+Sg+Nom: DF_N_SGf_S ;
+ +N+Fem+Sg+Acc+Indef:      FemObl_Flag ;
+ +N+Fem+Sg+Acc+Def:^GVDEL%>na FemObl_Flag ;
+ +N+Fem+Sg+Acc: R ; ! stem compound
+ +N+Fem+Sg+Dat+Indef:      FemObl_Flag ;
+ +N+Fem+Sg+Dat+Def:^GVDEL%>nni FemObl_Flag ; ! oynni, consider i:n <=> 
++N+Fem:^GVDEL S_F_SGGEN ;
 
-LEXICON kv_flt24f
+
+LEXICON kv_flt24f ! XXX Trond hit 2.9
   kv_flt24 ;
 
 LEXICON kv_flt24
@@ -1643,14 +1680,14 @@ LEXICON kv33 ! gleði
   kv_flt33 ;
 
 LEXICON kv33e
- +N+Fem+Sg+Nom+Indef: ENDLEX ;
- +N+Fem+Sg+Acc+Indef: ENDLEX ;
- +N+Fem+Sg+Dat+Indef: ENDLEX ;
- +N+Fem+Sg+Gen+Indef: ENDLEX ;
+ +N+Fem+Sg+Nom: DF_N_SGf_W ;
+ +N+Fem+Sg+Acc: DF_A_SGf_W ;
+ +N+Fem+Sg+Dat: DF_D_SGf_S_1 ;
+ +N+Fem+Sg+Gen: DF_G_SGf_W ;
 
 LEXICON kv_flt33
- +N+Fem+Sg+Nom+Indef:%>r ENDLEX ;
- +N+Fem+Sg+Acc+Indef:%>r ENDLEX ;
+ +N+Fem+Sg+Nom: DF_NA_PLf ;
+ +N+Fem+Sg+Acc: DF_NA_PLf ;
 
 LEXICON kv34 ! kraft
   kv34e    ;
@@ -2697,6 +2734,10 @@ LEXICON DF_D_SGf_S
    +Def:%>ini FemObl_Flag ; ! árini
    +Def:%>nni FemObl_Flag ; ! oynni, consider i:n <=> Vow %>: _ n i
 
+LEXICON DF_D_SGf_S_1 ! for one Dat
+ +Indef:      FemObl_Flag ; ! mørk
+   +Def:%>ini FemObl_Flag ; ! mørkini
+
 
 LEXICON DF_G_SGf_W
  +Indef:       FemObl_Flag ;
@@ -2708,9 +2749,15 @@ LEXICON DF_G_SGf_S
    +Def:%>innar FemObl_Flag ;
                 R     ;
 
+! Feminine plural forms
+
 LEXICON DF_NA_PLf
  +Indef:      Pl_Flag ;
    +Def:%>nar Pl_Flag ;
+
+LEXICON DF_NA_PLfi
+ +Indef:      Pl_Flag ;
+   +Def:%>inar Pl_Flag ;
 
 
 ! Neuter forms

@@ -941,29 +941,32 @@ LEXICON k43e
   +N+Msc:faðir S_M_SGNOM_NULL ;
   +N+Msc:faðir S_M_SGACC      ;
   +N+Msc:faðir S_M_SGDAT_NULL ;
+  +N+Msc+Sg+Dat+Def:faðirinum MscObl_Flag ;
   +N+Msc:faðir S_M_SGGEN      ;
 
 LEXICON k_flt43
-  +N+Msc:feðr   S_M_PLNOM ;
-  +N+Msc:feðr   S_M_PLACC ;
-  +N+Msc:feðr   S_M_PLDAT ;
-  +N+Msc:feðr   S_M_PLGEN ;
+  +N+Msc:fedr   S_M_PLNOM ;
+  +N+Msc:fedr   S_M_PLACC ;
+  +N+Msc:fedr   S_M_PLDAT ;
+  +N+Msc:fedr   S_M_PLGEN ;
 
 
 LEXICON k44 ! bróðir, stem is bróð
-       +N+Msc+Sg+Nom:ir     DF_N_SGm       ;
-              +N+Msc:ur     S_M_SGACC      ;
- +N+Msc+Sg+Dat+Indef:ur     ENDLEX          ;
-   +N+Msc+Sg+Dat+Def:urinum ENDLEX          ;
-   +N+Msc+Sg+Dat+Def:rinum  ENDLEX          ;
-              +N+Msc:ur     S_M_SGGEN_NULL ;
+       +N+Msc+Sg+Nom+Indef:bróðir MscNom_Flag  ;
+       +N+Msc+Sg+Nom+Def:bróðirin   MscNom_Flag ;
+              +N+Msc+Sg+Acc+Indef:bróður     MscObl_Flag      ;
+              +N+Msc+Sg+Acc+Def:bróðurin     MscObl_Flag      ;
+ +N+Msc+Sg+Dat+Indef+Sg+Dat+Indef:bróður     MscObl_Flag          ;
+   +N+Msc+Sg+Dat+Def+Sg+Dat+Def:bróðurinum MscObl_Flag          ;
+   +N+Msc+Sg+Dat+Def+Sg+Dat+Def:bróðrinum  MscObl_Flag          ;
+                         +N+Msc:bróður     S_M_SGGEN_NULL ;
                             k_flt44        ;
 
 LEXICON k_flt44
- +N+Msc:u2r^IUML%>  S_M_PLNOM_NULL_NULL ; ! brøður
- +N+Msc:u2r^IUML%>  S_M_PLACC_NULL_NULL ;
- +N+Msc:ur^EPH^IUML S_M_PLDAT           ;
- +N+Msc:ur^EPH^IUML S_M_PLGEN           ;
+ +N+Msc:brøður  S_M_PLNOM_NULL_NULL ; ! brøður
+ +N+Msc:brøður  S_M_PLACC_NULL_NULL ;
+ +N+Msc:brøðr S_M_PLDAT           ;
+ +N+Msc:brøðra S_M_PLGEN           ;
 
 LEXICON k45 ! spónur
   k45e    ;

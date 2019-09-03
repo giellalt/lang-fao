@@ -1277,6 +1277,18 @@ LEXICON kv_flt6
  +N+Fem: F_PLDAT   ;
  +N+Fem: F_PLGEN   ;
 
+ 
+LEXICON kv_OY
+ +N+Fem+Sg+Nom: DF_N_SGf_S ; !oy, oyggin
+ +N+Fem+Sg+Acc+Indef:    FemObl_Flag ;
+ +N+Fem+Sg+Acc+Def:nna   FemObl_Flag ;
+ +N+Fem+Sg+Dat+Indef:    FemObl_Flag ;
+ +N+Fem+Sg+Dat+Def:%>nni FemObl_Flag ; ! oynni
+ +N+Fem+Sg+Acc: R ; ! stem compound
+ +N+Fem: S_F_SGGEN ;
+ kv_flt6 ;
+
+
 LEXICON kv7/3
   kv7 ;
   kv3 ;
@@ -1497,17 +1509,13 @@ LEXICON kv21 ! gjógv
  +N+Fem:^GVDEL F_PLDAT   ;
  +N+Fem:^GVDEL F_PLGEN   ;
 
-LEXICON kv22/24
-  kv22 ;
-  kv24 ;
-  
 LEXICON kv22 ! klógv, rógv  stem: kl-, r-
   kv22e    ;
   kv_flt22 ;
 
 LEXICON kv22e
  +N+Fem:ógv S_F_SGNAD ;
- +N+Fem:óar S_F_SGGEN ;
+ +N+Fem:ó S_F_SGGEN ;
 
 LEXICON kv_flt22
  +N+Fem:øur F_PLNA_UR ;
@@ -2733,7 +2741,7 @@ LEXICON DF_D_SGf_W
 LEXICON DF_D_SGf_S
  +Indef:      FemObl_Flag ;
    +Def:%>ini FemObl_Flag ; ! árini
-   +Def:%>nni FemObl_Flag ; ! oynni, consider i:n <=> Vow %>: _ n i
+!   +Def:%>nni FemObl_Flag ; ! oynni, consider i:n <=> Vow %>: _ n i
 
 LEXICON DF_D_SGf_S_1 ! for one Dat
  +Indef:      FemObl_Flag ; ! mørk

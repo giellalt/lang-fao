@@ -2,58 +2,69 @@
 
  !!!Definitions for Multichar_Symbols
 
- !!Tags for POS			,
- ; +N +V +A +Adv +Prop +Num : Open POS's	,
- ; +CC +CS +Interj +Pr +Pron +IM		 : Closed POS's	,
- ; +Pers +Det +Refl +Recipr +Poss +Dem		 : Pron types	,
- ; +Nom +Acc +Gen +Dat					 : Case			,
- ; +Msc +Fem +Neu						 : Gender		,
- ; +Sg +Pl								 : Number		,
- ; +Def +Indef 						 : Definiteness	,
- ; +Cmp +Superl						 : Comparison	,
- ; +Prs +Prt							 : Tense		,
- ; +1Sg +2Sg +3Sg						 : Person-Number,
- ; +Inf +PrfPrc +PrsPrc +Sup +Imp +Sbj	 : Verb forms	,
- ; +Cmpnd								 : Compound		,
- ; +Abbr +ACR							 : Abbreviations, acronyms ,
- ; +CLB +PUNCT +LEFT +RIGHT			 : Punctuation, parentheses
- ; +Symbol : independent symbols in the text stream, like £, €, ©
- ; +Err/Guess								 : Tag for Name Guesser component
+ !!Tags for POS	
+ * +N +V +A +Adv +Prop +Num                 : Open POS's	
+ * +CC +CS +Interj +Pr +Pron +IM		     : Closed POS's	
+ * +Pers +Det +Refl +Recipr +Poss +Dem		 : Pron types	
+ * +Nom +Acc +Gen +Dat					     : Case			
+ * +Msc +Fem +Neu						     : Gender		
+ * +Sg +Pl								     : Number		
+ * +Def +Indef 						     : Definiteness	
+ * +Cmp +Superl						     : Comparison	
+ * +Prs +Prt							     : Tense		
+ * +1Sg +2Sg +3Sg						     : Person-Number
+ * +Inf +PrfPrc +PrsPrc +Sup +Imp +Sbj	     : Verb forms	
+ * +Cmpnd								     : Compound		
+ * +Abbr +ACR							     : Abbreviations, acronyms ,
+ * +CLB +PUNCT +LEFT +RIGHT			     : Punctuation, parentheses
+ * +Symbol  : independent symbols in the text stream, like £, €, ©
+ * +Err/Guess								 : Tag for Name Guesser component
 
-Derivation with -heit
+ * +Der/heit   Derivation with -heit
+
+ * +Ind +Pass +Interr +Ord  
 
  !!Semantic tags
+ * +Sem/Sur   
+ * +Sem/Mal   
+ * +Sem/Fem   
+ * +Sem/Plc   
+ * +Sem/Org   
+ * +Sem/Veh   
+ * +Sem/Fem   
 
  * +Sem/Year         - year (i.e. 1000 - 2999), used only for numerals 
 
 
  !!Non-changing letters
- *  a2 g2 i2 j2 t2 v2   
+ *  a2  This is for a special a Umlaut case
+ *  g2 i2 j2 t2 v2   
 
- ; +v1 +v2 : different paradigms   ,
+ * +v1 +v2     : different paradigms   ,
 
  !!Triggers for Morphophonology
- ; %^UUML %^IUML %^eIUML				 : Umlaut types ,
- ; %^W %^JI 					 : Cns changes ,
- ; %^EPH %^OEA 					 : Epenthesis,  ,
- ; %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL	 : Cns deletion triggers,
- ; %^EIO %^OA %^WVV %^EDH %^VSH			 : TODO ,
- ; %^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7	 : Ablaut series ,
- ; %^aAB %^uAB 					 : More Ablaut ,
- ; %^NGKK						 : NG to KK	,
- ; %^PASS						 : todo ,
- ; %>						 : Suffix boundary ,
+ * %^UUML %^IUML %^eIUML				 : Umlaut types ,
+ * %^W %^JI 					                  : Cns changes ,
+ * %^EPH %^OEA 					 : Epenthesis,  ,
+ * %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL	 : Cns deletion triggers,
+ * %^EIO %^OA %^WVV %^EDH %^VSH			 : TODO ,
+ * %^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7	 : Ablaut series ,
+ * %^aAB %^uAB 					 : More Ablaut ,
+ * %^NGKK						 : NG to KK	,
+ * %^PASS						 : todo ,
+
+ * %>						 : Suffix boundary ,
 
  * __+v1__ - Paradigm identifier (e.g. gera+v1 = ger)
  * __+v2__ - Paradigm identifier (e.g. gera+v2 = gerar)
 
 
  !!Non-ascii letters, perhaps needed as multichar symbols
-  æ ø å 				
-  á é í ó ú ý Á É Í Ó Ý
-  ä ö ü Ä Ö Ö			
+ * æ ø å 				
+ * á é í ó ú ý Á É Í Ó Ý
+ * ä ö ü Ä Ö Ö			
 
-!Compounding tags
+!!Compounding tags
 
 The tags are of the following form:
 * __+CmpNP/xxx__ - Normative (N), Position (P), ie the tag describes what
@@ -79,8 +90,10 @@ This entry / word should be in the following position(s):
 
 
 !!Symbols that need to be escaped on the lower side (towards twolc):
- ; »7 : Literal »
- ; «7 : Literal «
+Todo: Check whether these can be removed. They are probably obsolete.
+
+ *  »7      : Literal » 
+ *  «7      : Literal «
 {{{
   %[%>%]  - Literal >
   %[%<%]  - Literal <
@@ -88,12 +101,17 @@ This entry / word should be in the following position(s):
 
 
 !!Flag diacritics
+
 We have manually optimised the structure of our lexicon using following
 flag diacritics to restrict morhpological combinatorics - only allow compounds
 with verbs if the verb is further derived into a noun again:
+
  | @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
  | @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
  | @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
+
+
+!Flag for case harmony in compounds
 
 Set flag for compounds
  | @P.Case.MscNom@ | fyrstiflokkur
@@ -117,17 +135,19 @@ Control flag values for compounds
  | @U.Case.FemNom@ | lítlasystir
  | @U.Case.FemObl@ | lítluusystur
  | @U.Case.Neu@ | breiðaskarð
- | @U.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 
  | @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
+ | @P.Pmatch.Backtrack@ | Also for hfst-pmatch 
 
 
+!Flags for compound restriction
 
 For languages that allow compounding, the following flag diacritics are needed
 to control position-based compounding restrictions for nominals. Their use is
 handled automatically if combined with +CmpN/xxx tags. If not used, they will
 do no harm.
+
  | @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
  | @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
  | @P.CmpPref.FALSE@ | Block these words from making further compounds
@@ -152,7 +172,27 @@ This is the beginning of everything. The __Root__ lexicon is reserved in the
 LexC language, and must be the first lexicon defined.
 
 
+ * Nouns ;          
+ * Shortnouns ;      1- and 2-letter nouns excluded from compounding
+ * Propernouns ;    
+ * Adjectives ;     
+ * Verbs ;		     
+ * Adverb ;	     
+ * Conjunction ;    
+ * Subjunction ;    
+ * Interjection ;   
+ * Numeral ;	     
+ * Determiner ;     
+ * Pronoun ;	     
+ * Preposition ;    
+ * Punctuation ;    
+ * Symbols     ;    
+ * Abbreviation ;   
+ * Acronyms ;       
 
+Lexicon Acronyms is split in two:
+ * Acronym-fao ;  for fao acronyms
+ * Acronym-smi ;  for language independent acronums
 
 
 !!!Lexicon ENDLEX

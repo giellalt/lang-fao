@@ -90,7 +90,7 @@ LIST Sem/Plc = Sem/Plc ;
 LIST Sem/Sur = Sem/Sur ;
 LIST Sem/Org = Sem/Org ;
 LIST Sem/Veh = Sem/Veh ;
-
+LIST Sem/Year = Sem/Year ;
 
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
 Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
@@ -183,7 +183,7 @@ LIST THIRD = Sg 3Sg Pl 3Pl ;
 
 # Number sets
 
-SET NUMBERS = Num - ("eitt") - ("1") ;
+SET NUMBERS = Num - ("eitt") - ("1") - Sem/Year ;
 
 # Preposition sets
 
@@ -461,6 +461,9 @@ SELECT:um1 CS IF (-1 ("sjálvur"))(0 ("um"));
 SELECT:umCS CS IF (*-1 BOS OR COMMA BARRIER NOT-CC)(0 ("um"))(*1 Nom BARRIER NPNH LINK 1 VFIN);
 	## Vita, um tú fært talt stjørnumar har!
 REMOVE:um2 CS IF (0 ("um"));
+
+# við
+REMOVE:vid ("viður") IF (0 ("við") + Pr) (1 Acc OR Dat);
 
 # Case within PP phrases
 
@@ -785,6 +788,7 @@ REMOVE Det + $$GENDER IF (*1C N BARRIER V LINK NOT 0 $$GENDER);
 
 SELECT Det + $$GENDER IF (1C A OR N + $$GENDER);
 
+
 # summi
 SELECT Det IF (-1 BOS OR CLB)(0 ("summur"))(1 Pl);
 
@@ -811,10 +815,13 @@ REMOVE Indef IF (0 A + Def + $$NAGD)(1C N + Def + $$NAGD);
 
 # Case disambiguation
 
+
 SELECT:r14 $$NAGD IF (0 Det)(NOT 0 Poss LINK -1 N)(*1C $$NAGD BARRIER NPNHA);
 REMOVE:r15 $$NAGD IF (0 Det)(NOT 0 Poss LINK -1 N)(*1 N  OR A  BARRIER NPNHA LINK NOT 0 $$NAGD);						  
 SELECT:r16 $$NAGD IF (0 Det)(NOT 0 Poss LINK -1 N)(*1C $$NAGD BARRIER NPNHA);
 REMOVE:r17 $$NAGD IF (0 Det)(NOT 0 Poss LINK -1 N)(*1 N OR A   BARRIER NPNHA LINK NOT 0 $$NAGD);						  
+
+SELECT Det + $$NAGD IF (1C A OR N + $$NAGD);
 
 REMOVE:AdvErTad Acc IF (-2 Adv)(-1 VFIN)(0 ("tað"))(1 Adv);
 
@@ -825,7 +832,7 @@ REMOVE V IF (-1 SOMEGENPREP)(0 N + Gen);
 # Noun disambiguation
 # -------------------
 
-SELECT:r28 $$GENDER IF (-1C (A) + $$GENDER)(0 N);
+SELECT:r28 $$GENDER IF (-1C (A) + $$GENDER)(0 N)(NOT 0 V + 1Sg LINK *1 Pron + Nom + 1Sg);
 SELECT:r30b $$GENDER IF (-1C (Det) + $$GENDER)(0 N);
 SELECT:r30c $$GENDER IF (-1C (Pron Indef) + $$GENDER)(0 N);
 
@@ -833,7 +840,7 @@ SELECT:r29 $$NAGD IF (-1C (A) + $$NAGD)(0 N);
 SELECT:r30b $$NAGD IF (-1C (Det) + $$NAGD)(0 N);
 SELECT:r30c $$NAGD IF (-1C (Pron Indef) + $$NAGD)(0 N);
 
-SELECT:r30 $$NUMBER IF (-1C (A) + $$NUMBER)(0 N);
+SELECT:r30 $$NUMBER IF (-1C (A) + $$NUMBER)(0 N)(NOT 0 V + 1Sg LINK *1 Pron + Nom + 1Sg);
 SELECT:r30b $$NUMBER IF (-1C (Det) + $$NUMBER)(0 N);
 SELECT:r30c $$NUMBER IF (-1C (Pron Indef) + $$NUMBER)(0 N);
 
@@ -855,7 +862,7 @@ REMOVE:r33 Pl IF (*-1 ("eitt" Num Sg) OR (Det Sg) BARRIER NOT-A)(0 (N Sg));
 
 REMOVE:PlPl (N Sg) IF (0 (N Pl))(-1 Pl)(NOT -1 Sg);
 
-SELECT:NumNPl (N Pl) IF (-1 NUMBERS);
+SELECT:NumNPl (N Pl) IF (-1 NUMBERS)(NOT -1 Sem/Year);
 
 SELECT:BarePl (N Pl) IF (NOT -1 PRE-N)(0 BAREPLURALS);
 
@@ -870,7 +877,7 @@ SELECT:AdjSg (A Sg Dat) IF (-1 Pr)(0 A + Pl + Dat)(NOT 1 N + Sg);
 REMOVE Def   IF (0 N + Indef)(1 CC)(2C N + Indef);
 REMOVE Indef IF (0 N + Def)  (1 CC)(2C N + Def);
 
-SELECT:UniformCC N + $$NAGD IF (*-1 CC BARRIER NPNH LINK -1 N + $$NAGD);
+SELECT:UniformCC N + $$NAGD IF (*-1 CC BARRIER NPNH LINK -1C N + $$NAGD);
 
 SELECT $$NAGD IF (1 CC)(2C $$NAGD);
 SELECT $$NAGD IF (-11 CC)(-12C $$NAGD);

@@ -1,10 +1,10 @@
 ! =============== !
-! Noun morphology !
+!! Faroese Noun morphology !
 ! =============== !
 
 
 ! ----------------- !
-! Basic noun lexica !
+!! Basic noun lexica !
 ! ----------------- !
 
 ! Taken from the dictionary
@@ -1260,7 +1260,7 @@ LEXICON kv6/h16
  h16 ;
  
 
-LEXICON kv6 ! ár, oy
+LEXICON kv6 ! ár
   kv6e    ;
   kv_flt6 ;
   
@@ -1287,6 +1287,17 @@ LEXICON kv_OY
  +N+Fem+Sg+Acc: R ; ! stem compound
  +N+Fem: S_F_SGGEN ;
  kv_flt6 ;
+ 
+LEXICON kv_OYGGJ
+ +N+Fem+Sg+Nom:oyggj DF_N_SGf_S ; !oyggj, oyggin
+ +N+Fem+Sg+Acc+Indef:oyggj    FemObl_Flag ;
+ +N+Fem+Sg+Acc+Def:oynna   FemObl_Flag ;
+ +N+Fem+Sg+Dat+Indef:oyggj    FemObl_Flag ;
+ +N+Fem+Sg+Dat+Def:%>oynni FemObl_Flag ; ! oynni
+ +N+Fem:oyggj S_F_SGGEN ;
+ :oyggj kv_flt6 ;
+ +N+Fem+Sg+Gen:oyggjar R ; ! stem compound
+ +N+Fem+Pl+Gen:oyggja R ; ! stem compound
 
 
 LEXICON kv7/3

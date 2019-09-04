@@ -1,52 +1,61 @@
 !! !!!The Faroese morphophonological file 
 
+!! !!Alphabet
+!! Here we declare all symbols.
 
 Alphabet
- a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å
- á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý þ ñ ð ß ç
+ a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å   !!= * @CODE@ 
+ á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý þ ñ ð ß ç       !!= * @CODE@ 
 
- A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å
- Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð
+ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å   !!= * @CODE@ 
+ Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð           !!= * @CODE@ 
 
- a2:a ! for da2n -> dønum
- g2:g 
- i2:i 
- j2:j
- t2:t ! For non-deleted t, dráttri pro *drátri
- v2:v 
- %^UUML:0 %^IUML:0 %^eIUML:0
- %^W:0 %^JI:0
- %^EPH:0 %^OEA:0 
- %^EDH:0 %^VSH:0
 
- %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0
+ a2:a  !!= * @CODE@  for da2n -> dønum
+ g2:g  !!= * @CODE@ for invariant g
+ i2:i  !!= * @CODE@ for invariant i
+ j2:j  !!= * @CODE@ for invariant j
+ t2:t  !!= * @CODE@ for invariant, non-deleted t, dráttri pro *drátri
+ v2:v  !!= * @CODE@ for invariant v
+ 
+ %^UUML:0 %^IUML:0 %^eIUML:0   !!= * @CODE@ : Umlaut types ,
+ %^W:0 %^JI:0                  !!= * @CODE@ : Cns changes ,
+ %^EPH:0                       !!= * @CODE@ : Epenthesis,  ,
+ %^OEA:0                       !!= * @CODE@ : 
+ %^EDH:0 
+ %^VSH:0  
+
+ %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0 	!!= * @CODE@ : Cns deletion triggers,
  %^EIO:0 %^OA:0 %^WVV:0 %^NGKK:0 %^PASS:0
 
- %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0
- %^aAB:0 %^uAB:0
- %>:0 
+ %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0	!!= * @CODE@ : Ablaut series ,
+ %^aAB:0 %^uAB:0	!!= * @CODE@ : Ablaut series subcases
+ %>:0 	!!= * @CODE@ : Suffix border
  
- « »
+ « » 	!!= * @CODE@ : hmm, in use?
  ;
 
+!! !!Sets
+!! Here we define some convenient sets.
 Sets
 
- Vow = a e i o u y æ ø å 
-       á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;
- Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;
- 
- Nas = m n ;
- NonNas = b c d f g h j k l p q r s t v w x z ð þ ;
- 
- Dummy = %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^OEA
- %^EDH %^VSH %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL
- %^RDEL %^EIO %^OA %^WVV %^NGKK %^AB1 %^AB2 %^AB3
- %^AB4 %^AB5 %^AB6 %^AB7 %^aAB %^uAB %^PASS %> ; 
+ Vow = a e i o u y æ ø å                                !!= * @CODE@ 
+       á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;    !!=  @CODE@ 
+ Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;    !!= * @CODE@ 
+ Nas = m n ;                                            !!= * @CODE@ 
+ NonNas = b c d f g h j k l p q r s t v w x z ð þ ;     !!= * @CODE@ 
+ Dummy = %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^OEA     !!= * @CODE@ 
+ %^EDH %^VSH %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL       !!= * @CODE@ 
+ %^RDEL %^EIO %^OA %^WVV %^NGKK %^AB1 %^AB2 %^AB3       !!=  @CODE@ 
+ %^AB4 %^AB5 %^AB6 %^AB7 %^aAB %^uAB %^PASS %> ;        !!=  @CODE@ 
 
- Special =  %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL 
- %^GVDEL %^VDEL  %^JDEL %^RDEL;
+ Special =  %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL    !!= * @CODE@ 
+            %^GVDEL %^VDEL  %^JDEL %^RDEL ;                      !!=  @CODE@ 
+                                          !! Forgot why these are special...
+
 
 !! !!!Rules
+These are the rules. After each rule (or rather: after many of the rules) there are test cases that are there to test whether the rules work.
 
 Rules
 
@@ -55,14 +64,15 @@ Rules
 
 "Deleting g"
 !! __@RULENAME@__ 
- g:0 <=> Vow     _     v:  [ %^GVDEL: | %^GDEL: %>: ] ;   ! Deleting the gv Verschärfung 1
-         Vow     _ g:0 j:0  %^GGDEL: %>: [s|n] ;              ! Deleting gg in ggj Genitive I
-         Vow g:  _     j:0 [ %^GDEL: | %^GGDEL: ] %>: [s|n] ; ! Deleting gg in ggj Genitive II
+ g:0 <=> Vow     _     v:  [ %^GVDEL: | %^GDEL: %>: ] ;       !! * Deleting the gv Verschärfung 1
+         Vow     _ g:0 j:0  %^GGDEL: %>: [s|n] ;              !! * Deleting gg in ggj Genitive I
+         Vow g:  _     j:0 [ %^GDEL: | %^GGDEL: ] %>: [s|n] ; !! * Deleting gg in ggj Genitive II
 
 "Deleting v in gv sequences"
 !! __@RULENAME@__ 
  v:0 <=> Vow g: _ [ %^GVDEL: | [(%^AB1:)| (%^AB5:)|(%^VSH:) | (%^IUML:)] %^VDEL: | %^IUML: %>: i ] ;
 
+!! Verschärfung tests
 
 !!€ bógv^IUML>i
 !!€ bøg000i
@@ -112,16 +122,18 @@ Rules
 
 
 
-!! The following rule is fishy - the test cases below don't fit the context
-!! requirements, and the >s# in the right context seems to indicate passive.
-!! The rule conflicts with the "Cns Deletion in front of Pass" rule at the
-!! end of the file - but only when using the Xerox tools! XXX - please have a look!
 "Deleting Double Consonant in Front of Consonant"
 !! __@RULENAME@__ 
  Cx:0 <=> Vow Cx _ (%>:)  (u: r:) ([Dummy: - %^EPH:]) %>: [d|ð|s|t] ([a|i|u]) ; 
 ! Cx:0 <=> Vow Cx _ (%>:) (u: r:) (Dummy:) %>: [d|ð|s|(s) t] ([a|i|u]) #:0 ; 
 ! Cx:0 <=> Vow Cx _ ( %>: u: r: ) ([Dummy: - %^PASS:]) %>: [s|t] #:0 ; 
       where Cx in ( b d f g k l m n p r s t v ) ;
+
+!! The preceeding rule is fishy - the test cases below don't fit the context
+!! requirements, and the >s# in the right context seems to indicate passive.
+!! The rule conflicts with the "Cns Deletion in front of Pass" rule at the
+!! end of the file - but only when using the Xerox tools! XXX - please have a look!
+
 
 !"Double consonant simplification in front of t"
 !Cx:0 <=> Vow Cx _ >: t ;
@@ -145,7 +157,8 @@ Rules
 !!€ hjall>ar
 !!€ hjall0ar
 
-! Verbal Sandhi rules
+
+!! !!Verbal Sandhi rules
 
 "Geminate Assimilation in Past Tense d"
 !! __@RULENAME@__ 
@@ -233,6 +246,9 @@ Rules
 !!€ keyp>di
 !!€ keyp0ti
 
+
+!! !!Adjectival sandhi rules
+
 "Adjective neuter after nlr 1"
 !! __@RULENAME@__ 
 t:ð <=> Vow Cns+ i [ r: | l: | n: ] ( %^EPH: ) %>: _ #:  ;
@@ -253,6 +269,8 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
  t:0 <=> [ Cns t | Vow Cns+ Vow ð %^EDH: ] %>: _ #: ;
 !t:0 <=> [ r t | Vow Cns+ Vow ð %^EDH: ] %>: _ ;
 
+
+
  
 "ng to kk Part 1"
 !! __@RULENAME@__ 
@@ -263,6 +281,7 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
  g:k <=> Vow n: _ %^NGKK: ;
 
 
+!! !! j rules
 
 "Deleting j"
 !! __@RULENAME@__ 
@@ -294,9 +313,9 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 
 
 
-!   ===========  !
-!   Vowel rules  !
-!   ===========  !
+!      ===========  !
+!!  !! Vowel rules  
+!      ===========  !
 
 
 "Realising i2 as i"
@@ -306,7 +325,7 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !svii2>
 !svii>
 
-
+!! ! Epenthetic vowel rules
 
 "Epenthetic deletion"
 !! __@RULENAME@__ 
@@ -341,6 +360,8 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !!€ gamal^EPH^UUML>u
 !!€ goml000u
 
+
+!! !Umlaut rules
 
 "U-umlaut in Front of Nasal"
 !! __@RULENAME@__ 
@@ -386,7 +407,7 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !! __@RULENAME@__ 
  Vx:Vy <=> _ Cns:* %^IUML: ; !(Dummy:) [ %>: i | %>: u r | (%>: Cns:*) #: | %>: g ] ;
      where Vx in ( a o u ø á ó ú )
-	   Vy in ( e y y i æ ø ý )
+	       Vy in ( e y y i æ ø ý )
 	   matched ;
 
 !!€ dag^IUML>i
@@ -407,13 +428,13 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 
 
 "eI-umlaut"
-!! __@RULENAME@__ 
+!! __@RULENAME@__ for o:e, á:e, i:e
  Vx:Vy <=> _ Cns:* %^eIUML: ;
     where Vx in ( o á i )
           Vy in ( e e e )
    matched;
 
-"I-umlaut for bróðir"
+"I-umlaut for bróðir" ! also for other words?
 !! __@RULENAME@__ 
  ó:ø <=> _ Cns:* u: r ( %^EPH: ) %^IUML: ;
 
@@ -448,6 +469,7 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !i:0 <=> i %>: _ ;
    
 
+!! !Vowel deletion rules
 
 "Vowel deletion in front of na"
 !! __@RULENAME@__ 
@@ -472,7 +494,7 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !!€ by00num 	
 
 
-! Verbal vowel alternations
+!! !Verbal vowel alternation rules
 
 "Stem vowel change in Weak Verbs"
 !! __@RULENAME@__ 
@@ -498,19 +520,6 @@ Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
 	      Vy in ( a o i u )
 		  matched ;
 
-
-! Adjectival Sandhi rule
-
-"Vowel shortening in Neuter"
-!! __@RULENAME@__ 
-ó:o <=> _ ð: %>: t ;
-!ó:o <= _ :t %>: t ; ! check this one.
-
-!!€ góð>t
-!!€ got0t
-
-!!€ skjót>t
-!!€ skjót0t
 
 
 
@@ -608,9 +617,23 @@ Vx:ý <=> _ Cns:+ %^AB7: ;
 ! brekað00
 
 
+!! !Adjectival Sandhi rule
+
+"Vowel shortening in Neuter"
+!! __@RULENAME@__ 
+ó:o <=> _ ð: %>: t ;
+!ó:o <= _ :t %>: t ; ! check this one.
+
+!!€ góð>t
+!!€ got0t
+
+!!€ skjót>t
+!!€ skjót0t
 
 
-! Morphological passive rules
+!! !!Other rules
+
+!! !Morphological passive rules
 
 "u in ur Deletion in front of Pass"
 !! __@RULENAME@__ 

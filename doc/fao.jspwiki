@@ -13,58 +13,69 @@ This is free and open source Faroese morphology.
 
  !!!Definitions for Multichar_Symbols
 
- !!Tags for POS			,
- ; +N +V +A +Adv +Prop +Num : Open POS's	,
- ; +CC +CS +Interj +Pr +Pron +IM		 : Closed POS's	,
- ; +Pers +Det +Refl +Recipr +Poss +Dem		 : Pron types	,
- ; +Nom +Acc +Gen +Dat					 : Case			,
- ; +Msc +Fem +Neu						 : Gender		,
- ; +Sg +Pl								 : Number		,
- ; +Def +Indef 						 : Definiteness	,
- ; +Cmp +Superl						 : Comparison	,
- ; +Prs +Prt							 : Tense		,
- ; +1Sg +2Sg +3Sg						 : Person-Number,
- ; +Inf +PrfPrc +PrsPrc +Sup +Imp +Sbj	 : Verb forms	,
- ; +Cmpnd								 : Compound		,
- ; +Abbr +ACR							 : Abbreviations, acronyms ,
- ; +CLB +PUNCT +LEFT +RIGHT			 : Punctuation, parentheses
- ; +Symbol : independent symbols in the text stream, like £, €, ©
- ; +Err/Guess								 : Tag for Name Guesser component
+ !!Tags for POS	
+ * +N +V +A +Adv +Prop +Num                 : Open POS's	
+ * +CC +CS +Interj +Pr +Pron +IM		     : Closed POS's	
+ * +Pers +Det +Refl +Recipr +Poss +Dem		 : Pron types	
+ * +Nom +Acc +Gen +Dat					     : Case			
+ * +Msc +Fem +Neu						     : Gender		
+ * +Sg +Pl								     : Number		
+ * +Def +Indef 						     : Definiteness	
+ * +Cmp +Superl						     : Comparison	
+ * +Prs +Prt							     : Tense		
+ * +1Sg +2Sg +3Sg						     : Person-Number
+ * +Inf +PrfPrc +PrsPrc +Sup +Imp +Sbj	     : Verb forms	
+ * +Cmpnd								     : Compound		
+ * +Abbr +ACR							     : Abbreviations, acronyms ,
+ * +CLB +PUNCT +LEFT +RIGHT			     : Punctuation, parentheses
+ * +Symbol  : independent symbols in the text stream, like £, €, ©
+ * +Err/Guess								 : Tag for Name Guesser component
 
-Derivation with -heit
+ * +Der/heit   Derivation with -heit
+
+ * +Ind +Pass +Interr +Ord  
 
  !!Semantic tags
+ * +Sem/Sur   
+ * +Sem/Mal   
+ * +Sem/Fem   
+ * +Sem/Plc   
+ * +Sem/Org   
+ * +Sem/Veh   
+ * +Sem/Fem   
 
  * +Sem/Year         - year (i.e. 1000 - 2999), used only for numerals 
 
 
  !!Non-changing letters
- *  a2 g2 i2 j2 t2 v2   
+ *  a2  This is for a special a Umlaut case
+ *  g2 i2 j2 t2 v2   
 
- ; +v1 +v2 : different paradigms   ,
+ * +v1 +v2     : different paradigms   ,
 
  !!Triggers for Morphophonology
- ; %^UUML %^IUML %^eIUML				 : Umlaut types ,
- ; %^W %^JI 					 : Cns changes ,
- ; %^EPH %^OEA 					 : Epenthesis,  ,
- ; %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL	 : Cns deletion triggers,
- ; %^EIO %^OA %^WVV %^EDH %^VSH			 : TODO ,
- ; %^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7	 : Ablaut series ,
- ; %^aAB %^uAB 					 : More Ablaut ,
- ; %^NGKK						 : NG to KK	,
- ; %^PASS						 : todo ,
- ; %>						 : Suffix boundary ,
+ * %^UUML %^IUML %^eIUML				 : Umlaut types ,
+ * %^W %^JI 					                  : Cns changes ,
+ * %^EPH %^OEA 					 : Epenthesis,  ,
+ * %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL	 : Cns deletion triggers,
+ * %^EIO %^OA %^WVV %^EDH %^VSH			 : TODO ,
+ * %^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7	 : Ablaut series ,
+ * %^aAB %^uAB 					 : More Ablaut ,
+ * %^NGKK						 : NG to KK	,
+ * %^PASS						 : todo ,
+
+ * %>						 : Suffix boundary ,
 
  * __+v1__ - Paradigm identifier (e.g. gera+v1 = ger)
  * __+v2__ - Paradigm identifier (e.g. gera+v2 = gerar)
 
 
  !!Non-ascii letters, perhaps needed as multichar symbols
-  æ ø å 				
-  á é í ó ú ý Á É Í Ó Ý
-  ä ö ü Ä Ö Ö			
+ * æ ø å 				
+ * á é í ó ú ý Á É Í Ó Ý
+ * ä ö ü Ä Ö Ö			
 
-!Compounding tags
+!!Compounding tags
 
 The tags are of the following form:
 * __+CmpNP/xxx__ - Normative (N), Position (P), ie the tag describes what
@@ -90,8 +101,10 @@ This entry / word should be in the following position(s):
 
 
 !!Symbols that need to be escaped on the lower side (towards twolc):
- ; »7 : Literal »
- ; «7 : Literal «
+Todo: Check whether these can be removed. They are probably obsolete.
+
+ *  »7      : Literal » 
+ *  «7      : Literal «
 {{{
   %[%>%]  - Literal >
   %[%<%]  - Literal <
@@ -99,12 +112,17 @@ This entry / word should be in the following position(s):
 
 
 !!Flag diacritics
+
 We have manually optimised the structure of our lexicon using following
 flag diacritics to restrict morhpological combinatorics - only allow compounds
 with verbs if the verb is further derived into a noun again:
+
  | @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
  | @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
  | @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
+
+
+!Flag for case harmony in compounds
 
 Set flag for compounds
  | @P.Case.MscNom@ | fyrstiflokkur
@@ -128,17 +146,19 @@ Control flag values for compounds
  | @U.Case.FemNom@ | lítlasystir
  | @U.Case.FemObl@ | lítluusystur
  | @U.Case.Neu@ | breiðaskarð
- | @U.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 
  | @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
+ | @P.Pmatch.Backtrack@ | Also for hfst-pmatch 
 
 
+!Flags for compound restriction
 
 For languages that allow compounding, the following flag diacritics are needed
 to control position-based compounding restrictions for nominals. Their use is
 handled automatically if combined with +CmpN/xxx tags. If not used, they will
 do no harm.
+
  | @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
  | @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
  | @P.CmpPref.FALSE@ | Block these words from making further compounds
@@ -163,7 +183,27 @@ This is the beginning of everything. The __Root__ lexicon is reserved in the
 LexC language, and must be the first lexicon defined.
 
 
+ * Nouns ;          
+ * Shortnouns ;      1- and 2-letter nouns excluded from compounding
+ * Propernouns ;    
+ * Adjectives ;     
+ * Verbs ;		     
+ * Adverb ;	     
+ * Conjunction ;    
+ * Subjunction ;    
+ * Interjection ;   
+ * Numeral ;	     
+ * Determiner ;     
+ * Pronoun ;	     
+ * Preposition ;    
+ * Punctuation ;    
+ * Symbols     ;    
+ * Abbreviation ;   
+ * Acronyms ;       
 
+Lexicon Acronyms is split in two:
+ * Acronym-fao ;  for fao acronyms
+ * Acronym-smi ;  for language independent acronums
 
 
 !!!Lexicon ENDLEX
@@ -182,24 +222,51 @@ The {{@D.NeedNoun.ON@}} flag diacritic is used to block illegal compounds.
 !!!The Faroese morphophonological file 
 
 !!Alphabet
- * a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å 
- * á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý þ ñ ð ß ç 
+Here we declare all symbols.
 
- * A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å 
- * Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð 
+ *  a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å    
+ *  á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý þ ñ ð ß ç        
 
- ; %^UUML:0 %^IUML:0 %^eIUML:0 : Umlaut types ,
- ; %^W:0 %^JI:0 : Cns changes ,
- ; %^EPH:0 %^OEA:0 	 : Epenthesis,  ,
-
- ; %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0 	 : Cns deletion triggers,
-
- ; %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0	 : Ablaut series ,
+ *  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å    
+ *  Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð            
 
 
+ *  a2:a    for da2n -> dønum
+ *  g2:g   for invariant g
+ *  i2:i   for invariant i
+ *  j2:j   for invariant j
+ *  t2:t   for invariant, non-deleted t, dráttri pro *drátri
+ *  v2:v   for invariant v
 
+ *  %^UUML:0 %^IUML:0 %^eIUML:0    : Umlaut types ,
+ *  %^W:0 %^JI:0                   : Cns changes ,
+ *  %^EPH:0                        : Epenthesis,  ,
+ *  %^OEA:0                        : 
 
+ *  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0 	 : Cns deletion triggers,
 
+ *  %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0	 : Ablaut series ,
+ *  %^aAB:0 %^uAB:0	 : Ablaut series subcases
+ *  %>:0 	 : Suffix border
+
+ *  « » 	 : hmm, in use?
+
+!!Sets
+Here we define some convenient sets.
+
+ *  Vow = a e i o u y æ ø å                                 
+         á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;     
+ *  Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;     
+ *  Nas = m n ;                                             
+ *  NonNas = b c d f g h j k l p q r s t v w x z ð þ ;      
+ *  Dummy = %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^OEA      
+ *  %^EDH %^VSH %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL        
+   %^RDEL %^EIO %^OA %^WVV %^NGKK %^AB1 %^AB2 %^AB3        
+   %^AB4 %^AB5 %^AB6 %^AB7 %^aAB %^uAB %^PASS %> ;         
+
+ *  Special =  %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL     
+              %^GVDEL %^VDEL  %^JDEL %^RDEL ;                       
+Forgot why these are special...
 
 
 !!!Rules
@@ -209,9 +276,13 @@ The {{@D.NeedNoun.ON@}} flag diacritic is used to block illegal compounds.
 !!Verschärfung
 
 __Deleting g__ 
+* Deleting the gv Verschärfung 1
+* Deleting gg in ggj Genitive I
+* Deleting gg in ggj Genitive II
 
 __Deleting v in gv sequences__ 
 
+Verschärfung tests
 
 * __bógv^IUML>i __
 * __bøg000i __
@@ -256,11 +327,13 @@ __Deleting m in um%>num __
 
 
 
-The following rule is fishy - the test cases below don't fit the context
+__Deleting Double Consonant in Front of Consonant__ 
+
+The preceeding rule is fishy - the test cases below don't fit the context
 requirements, and the >s# in the right context seems to indicate passive.
 The rule conflicts with the "Cns Deletion in front of Pass" rule at the
 end of the file - but only when using the Xerox tools! XXX - please have a look!
-__Deleting Double Consonant in Front of Consonant__ 
+
 
 
 * __all>t __
@@ -277,6 +350,8 @@ __Deleting Double Consonant in Front of Consonant__
 * __hjall>ar __
 * __hjall0ar __
 
+
+!!Verbal Sandhi rules
 
 __Geminate Assimilation in Past Tense d__ 
 
@@ -333,6 +408,9 @@ __Adjusting Dental Past Suffix -d(i)__
 * __keyp>di __
 * __keyp0ti __
 
+
+!!Adjectival sandhi rules
+
 __Adjective neuter after nlr 1__ 
 
 __Adjective neuter after nlr 2__ 
@@ -346,11 +424,14 @@ __Adjective neuter after nlr 2__
 __t Deletion in Neuter__ 
 
 
+
+
 __ng to kk Part 1__ 
 
 __ng to kk Part 2__ 
 
 
+j rules
 
 __Deleting j__ 
 
@@ -375,12 +456,13 @@ __Realising j in front of vowels__
 
 
 
+Vowel rules  
 
 
 __Realising i2 as i__ 
 
 
-
+! Epenthetic vowel rules
 
 __Epenthetic deletion__ 
 
@@ -407,6 +489,8 @@ __U-umlaut of Epenthetic vowel__
 * __gamal^EPH^UUML>u __
 * __goml000u __
 
+
+!Umlaut rules
 
 __U-umlaut in Front of Nasal__ 
 
@@ -455,7 +539,7 @@ __I-umlaut__
 
 
 
-__eI-umlaut__ 
+__eI-umlaut__ for o:e, á:e, i:e
 
 __I-umlaut for bróðir __ 
 
@@ -480,6 +564,7 @@ __o/ei-Umlaut II__
 
 
 
+!Vowel deletion rules
 
 __Vowel deletion in front of na__ 
 
@@ -493,6 +578,7 @@ __u Deletion in unum after Stressed Vowel__
 * __by00num __
 
 
+!Verbal vowel alternation rules
 
 __Stem vowel change in Weak Verbs__ 
 
@@ -508,15 +594,6 @@ __Stem vowel change in Weak Verbs__
 
 __Stem Vowel Shortening in Supine and Participle__ 
 
-
-
-__Vowel shortening in Neuter__ 
-
-* __góð>t __
-* __got0t __
-
-* __skjót>t __
-* __skjót0t __
 
 
 
@@ -552,14 +629,989 @@ __Present tense ý__
 
 
 
+!Adjectival Sandhi rule
+
+__Vowel shortening in Neuter__ 
+
+* __góð>t __
+* __got0t __
+
+* __skjót>t __
+* __skjót0t __
 
 
+!!Other rules
+
+!Morphological passive rules
 
 __u in ur Deletion in front of Pass__ 
 
 __r Deletion in front of Pass__ 
 
 __ð Deletion in front of Pass__ 
+
+
+
+!!!Faroese Noun morphology !
+
+
+!!!Basic noun lexica 
+
+Taken from the dictionary
+
+The nominal morphology is added in three layers.
+In this __first layer__ we add gender tags and morphophonological
+diacritics.
+The next two layers are for indefinite and definite
+suffixes, respectively.
+
+
+!!Lexicons still to be allocated
+
+
+
+
+
+
+
+!!Irregular nouns
+
+k0 for januar etc.
+
+kv0 for ommudidd
+h0 for indeclinable neuters
+
+irregular_nouns just gives the tags for the indeclinables
+
+
+!!Lexica for words belonging to two paradigms.
+These are simply split (h11/12 to h11 and h12, etc).
+
+
+
+
+
+
+
+
+
+
+
+
+!!The ordinary lexica
+These lexica split into sg and pl lexica, and add +N and gender tags.
+Thereafter it points to Layer 2, the case suffixes
+
+
+!Weak masculines.
+
+
+__k1__ , risi, is the basic Msc lexicon, split in sg and pl
+
+__k1e__ for sg
+
+__k_flt1__ for pl
+
+
+* @NO CODE@ felagi
+__k1_3stem__ for 3-syllabic stams, mixed dative forms + UUML
+
+
+__k2__ beiggi
+
+__k3__ for  hagi
+
+__k3e__ for sg
+
+__k_flt3__ for pl
+
+__k4__ for  tanki, just pointing to k3 (identical)
+
+__k5__ for bóndi
+
+
+!Strong masculines
+
+__k6_null__ for  antikrist
+
+__k6e_null__ for sg
+
+__k6__ for  úlvur
+
+__k6e__ for sg
+
+__k_flt6__ for pl
+
+
+__k7__ for  sandur
+
+__k7e__ for sg
+
+
+__k_flt7__ for pl
+
+__k_flt8__ for pl, pointing to k_flt7
+
+__k8e__ for sg, pointing to k7e
+
+__k8__ for  garður, pointing to k7, but has a different u-umlaut
+
+__k_flt9__ for pl
+
+__k9e__ for sg, pointing to k6e
+
+__k9__ with double consonant deletion in front of s, but pointing to k6
+
+
+__k10__ splitting in sg/pl
+
+__k10e__ for sg
+
+__k_flt10__ for pl
+
+
+__k11__ for ísur
+
+
+__k11e__ for sg
+
+__k_flt11__ for pl
+
+
+
+
+__k12__ for  vinur
+
+__k12_boe__ 
+
+__k12e__ for sg
+
+__k_flt12__ for pl
+
+__k13e__ for sg, giving extra NULL dative then pointing to k12e
+
+__k13__ for  vegur
+As k12, plus a zero dative
+
+__k14__ for  staður
+
+__k14e__ for sg
+
+__k_flt14__ for pl
+
+
+__k15__ for  gestur
+
+__k15e__ for sg
+
+__k_flt15__ for pl
+
+
+
+__k16__ having double Cns but pointing to k15
+
+__k_flt17__ giving UUML PLDAT and pointing to k_flt15
+
+
+__k17__ giving UUML Dat and pointing to k15
+
+
+__k18__ for  dansur
+
+__k18e__ for sg
+
+__k_flt18__ for pl
+
+__k19__ for  meldur
+
+
+
+__k19e__ for sg
+
+__k_flt19__ for pl
+
+
+__k20__ for  akur
+
+__k20e__ for sg
+
+__k_flt20__ for pl
+
+__k_flt21__ pointing to k_flt19
+
+
+
+__k21__ for  stuðul
+
+
+__k22__ for  himmal
+
+
+
+__k23__ for  róður
+
+__k23e__ for sg
+
+__k_flt23__ for pl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+__k24__ for  fløttur
+
+__k25__ for  vøllur
+
+__k25e__ for sg
+
+__k_flt25__ for pl
+
+__k26__ for  táttur
+
+__k26e__ for sg
+
+__k_flt26__ for pl
+
+__k27__ for  vøkstur
+
+__k28__ for  dráttur
+
+__k28e__ for sg
+
+__k_flt28__ for pl
+
+__k29__ for  tráður
+
+__k30__ for  fótur
+
+__k30e__ for sg
+
+__k_flt30__ for pl
+
+__k31__ for  veggur
+
+__k31e__ for sg
+
+__k_flt31__ for pl
+
+__k32__ for  ryggur, using k31e
+
+
+__k33__ for  hylur
+
+__k34__ for  drongur
+
+__k34e__ for sg
+
+__k_flt34__ for pl
+
+
+
+__k36__ for  heyggjur
+
+__k37__ for  skógvur
+
+__k37e__ for sg
+
+
+__k_flt37__ for pl
+
+__k38__ for  bógvur
+
+__k38e__ for sg
+
+__k_flt38__ for pl
+
+__k39__ for  sjógvur
+
+__k39e__ for sg
+
+__k_flt39__ for pl
+
+__k40__ for  hógvur
+
+__k40e__ for sg
+
+__k_flt40__ for pl
+
+__k41__ for  maður
+
+__k41e__ for sg
+
+__k41_obl__ for oblique, hmm, needed?
+
+__k_flt41__ for pl
+
+__k42__ for  dagur
+
+__k42e__ for sg
+
+__k_flt42__ for pl
+
+__k43__ for  faðir
+
+__k43e__ for sg
+
+__k_flt43__ for pl
+
+
+__k44__ for  bróðir, stem is ZERO
+
+__k_flt44__ for pl
+
+__k45__ for  spónur
+
+__k45e__ for sg
+
+__k_flt45__ for pl
+
+__k46__ for  fjørðu
+
+__k46e__ for sg
+
+__k_flt46__ for pl
+
+__k47__ for  sonur
+
+__k47e__ for sg
+
+__k_flt47__ for pl
+
+__k48__ for  hamar
+
+__k48e__ for sg
+
+__k_flt48__ for pl
+
+__k49__ for  verkur
+
+__k49e__ for sg
+
+__k_flt49__ for pl
+
+__k50__ for  skjøldur (non_poetic)
+
+__k51__ for  luður
+
+__k52__ for  primus
+
+__k52e__ for sg
+
+__k_flt52__ for pl
+
+__k53__ for  aðal
+
+
+
+!Feminines
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+!!!Case inflection !
+
+This is the second layer. Here we do indefinite
+forms and compounds.
+
+!!Masculine forms
+
+!Weak case suffixes.
+
+Singular
+
+__W_M_SGNOM__ for weak masculines, pointing to definites
+
+__W_M_SGACC__ etc for risan
+
+__W_M_SGDAT__ for 
+
+__W_M_SGDAT_mixed__ for felagnum
+
+__W_M_SGGEN__ for 
+
+
+
+Plural
+
+__W_M_PLNOM__ for -ar-
+
+__W_M_PLNOM_UR__ for -ur-
+
+__W_M_PLACC__ for -ar-
+
+__W_M_PLACC_UR__ for -ur-
+
+__W_M_PLDAT__ for -u-
+
+__W_M_PLGEN__ for -a-
+
+
+
+
+!Strong case suffixes
+
+
+Nominative Sg
+
+
+
+
+Accusative Sg
+
+
+Dative Sg
+
+
+
+
+
+
+
+
+Plural forms
+
+Nominative
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+!!!Definite inflection !
+
+This is the __third layer__. Here we do the indefinite and definite forms.
+These are common to (almost) all different paradigms, hence they are 
+gathered here.
+
+!!Masculine forms
+
+!Masc def sg
+
+__DF_N_SGm__ for 
+
+__DF_N_SGm_indef__ for 
+
+__DF_N_SGm_def__ for 
+
+__DF_A_SGm__ for 
+
+__DF_A_SGm_indef__ for 
+
+__DF_A_SGm_def__ for 
+
+__DF_D_SGm__ for 
+
+__DF_G_SGm__ for 
+
+
+!Masc def pl
+
+__DF_N_PLm__ for 
+
+
+__DF_N_PLm_indef__ for 
+
+__DF_N_PLm_def__ for 
+
+__DF_A_PLm__ for 
+
+__DF_A_PLm_indef__ for 
+
+__DF_A_PLm_def__ for 
+
+
+
+!!Feminine forms
+
+! Fem Sg
+__DF_N_SGf_W__ for 
+
+__DF_N_SGf_S__ for 
+
+
+__DF_A_SGf_W__ for 
+
+__DF_A_SGf_S__ for 
+
+
+__DF_D_SGf_W__ for 
+
+__DF_D_SGf_S__ for 
+
+__DF_D_SGf_S_1__ for 
+
+
+__DF_G_SGf_W__ for 
+
+__DF_G_SGf_S__ for 
+
+!Feminine plural forms
+
+__DF_NA_PLf__ for 
+
+
+
+!!Neuter forms
+
+!Neuter sg
+
+
+
+
+
+
+
+
+
+
+
+This concludes the nominal morphology.
+
+The rest of the file contains __flags__, that govern
+the ways stems may be combined.
+
+!!!Compound flags
+
+
+__MscNom_Flag__ for 
+
+__MscObl_Flag__ for 
+
+__FemNom_Flag__ for 
+
+__FemObl_Flag__ for 
+
+__Neu_Flag__ for 
+
+__Pl_Flag__ for 
+
+
+!!!Faroese noun stem file 
+
+The lexicon names are taken from
+Føroysk orðabók I-II (FO). Reference is
+made to Thráinsson & al ("fg"). 
+
+Note that in some cases, the lexicon names and stems here
+deviate from FO. In that case the lexica have names ending
+in wordforms, written in capital lettes.
+
+!!Short lexica
+
+__Shortnouns__ for  1- and 2-letter nouns excluded from compounding
+
+These are now always excluded from lastpart compound 
+and in norm from first-part compounding as well
+
+
+
+
+
+
+
+
+
+
+!!The main list of nouns
+
+Her kjem alle substantiva. Dei er baklengssortert.
+leksikon som byrjar med x er ikkje manuelt sjekka.
+
+__Nouns__ 
+
+Fila inneheld i underkant av 50000 lemma.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

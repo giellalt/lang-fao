@@ -32,6 +32,8 @@ AREA_ZHFST_FILES=$(shell for ld in $(AREAS); do\
     echo "$(GTLANG2)_$$ld.zhfst" ; \
 done)
 AREA_ZHFST_BASENAMES=$(basename $(AREA_ZHFST_FILES))
+AREA_NOCOMP_ZHFST_FILES=$(addsuffix -nocomp.zhfst, \
+							$(AREA_ZHFST_BASENAMES))
 
 # Only build final speller packages if is enabled (default=yes):
 if WANT_HFST_DESKTOP_SPELLER
@@ -94,7 +96,9 @@ $(AREA_ZHFST_FILES): \
 	$(AM_V_at)cp $(srcdir)/index.$*.xml build/$@/index.xml
 	$(AM_V_at)cp acceptor.$*.hfst build/$@/acceptor.default.hfst
 	$(AM_V_at)cp errmodel.$*.hfst build/$@/errmodel.default.hfst
-	$(AM_V_GEN)cd build/$@/ && $(ZHFST_COMPRESSION)
+	$(AM_V_ZIP)cd build/$@/ && $(ZIP) $(ZIPFLAGS) ../../$@ *
+	$(AM_V_ZIP)cd build/$@/ && $(ZIP) -0 $(VERBOSITY) \
+				../../$(basename $@)-nocomp.zhfst *
 	$(AM_V_at)$(MKDIR_P) 3
 	$(AM_V_at)cp -f $@ 3/
 

@@ -1,11 +1,11 @@
 ! ============ !
-! Proper nouns !
+!! !!!Proper nouns 
 ! ============ !
 
 ! Table of content
 ! ================
-! - Splitting into name types
-! - The name lexica
+! Splitting into name types
+! The name lexica
 !   - mal
 !   - fem
 !   - plc
@@ -19,7 +19,8 @@
 ! to make uniform treatment of each type easier.
 
 LEXICON Propernouns
-
+ !!= __@LEXNAME@__ splitting in 3 lexica: __multipartnames, names, guess__
+ 
  multipartnames ; ! All types
  names ;
  guess ; ! Testing a guesser component
@@ -27,13 +28,15 @@ LEXICON Propernouns
          ! Comment this in if you want good coverage.
 
 LEXICON multipartnames
-á% Flat:á% Flat indeclplc ;
+ !!= __@LEXNAME@__ contains only 3 names for now
+ á% Flat:á% Flat indeclplc ;
 yvir% við% Strond+N+Prop+Sg+Nom:yvir% við% Strond # ;
 yvir% við% Strond+N+Prop+Sg+Acc:yvir% við% Strond # ;
 yvir% við% Strond+N+Prop+Sg+Dat:yviri% við% Strond # ;
 
 LEXICON names
-
+ !!= __@LEXNAME@__ gives the list of names.
+ 
 Hvalba:Hvalb propnoun_k55 ;
 Froðba:Froðb propnoun_k55 ;
 Sumba:Sumb propnoun_k55 ;

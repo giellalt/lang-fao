@@ -2173,7 +2173,8 @@ MAP:mielas-ela (@<ADVL-ela) TARGET ("miella") + Loc OR ("mielas") IF (-1 Gen)(NE
 
 
 MAP:ela-ill (@ADVL-ela>) TARGET N + Loc IF (1 N + Ill)(NEGATE *-1 FMAINV BARRIER S-BOUNDARY)(0 (<sme>)) ;
-MAP:ela-ill (@<ADVL-ela) TARGET N + Loc IF (1 N + Ill OR DOHKO)(NEGATE *1 FMAINV BARRIER S-BOUNDARY)(0 (<sme>)) ;
+MAP:ela-ill (@<ADVL-ela) TARGET N + Loc OR Pron + Loc IF (1 N + Ill OR DOHKO)(NEGATE *1 FMAINV BARRIER S-BOUNDARY)(0 (<sme>)) ;
+MAP:ela-ill (@<ADVL-ela) TARGET Dem + Loc IF (1 ("duohko"))(0 (<sme>)) ;
 
 
 MAP:eret-ela (@ADVL-ela>) TARGET Loc ((-1 ("eret")) OR (1 ("eret") ))(NEGATE *-1 FMAINV BARRIER S-BOUNDARY)(0 (<sme>)) ;

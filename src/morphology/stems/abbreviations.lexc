@@ -1,24 +1,27 @@
 ! ============================= !
-! File containing abbreviations !
+!! !!!File containing Faroese abbreviations 
 ! ============================= !
 
-! Lexica for adding tags and periods
+!! Lexica for adding tags and periods
 ! ----------------------------------
 
-! Splitting in 3 groups, because of the preprocessor
+!! The idea is (or may be) to use both common and language-speicfic abbreviations.
+
+!! Splitting in 3 groups, because of the preprocessor
 ! - - - - - - - - - - - - - - - - - - - - - - - - -
 
 LEXICON Abbreviation
+!! __@LEXNAME@__
 ITRAB ;
 TRNUMAB ;
 TRAB ;
 
-! Now splitting according to POS, and according to dot or not
+!! Now splitting according to POS, and according to dot or not
 ! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-! First collecting POS info, *-noun, *-adv, etc.
-! Also splitting when in doubt: -noun-adj => -noun and -adj
-! Then pointing to two contlexes, a dot-one and a non-dot-one.
+!! First collecting POS info, *-noun, *-adv, etc.
+!! Also splitting when in doubt: -noun-adj => -noun and -adj
+!! Then pointing to two contlexes, a dot-one and a non-dot-one.
 
 LEXICON ab ! No POS, don't know what pos
 ab-nodot ;

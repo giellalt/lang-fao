@@ -21,14 +21,6 @@ GT_SPELLER_ACCEPTOR=acceptor.default.hfst
 # Max compression for zipped files:
 ZIPFLAGS=-9 $(VERBOSITY)
 
-### SNM 25.1.2015: Commented out xz compression, it isn't supported by libvoikko
-## Use xz for zhfst compression if possible, otherwise fall back to zip:
-#if CAN_XZ
-#ZHFST_COMPRESSION=$(TAR) -c * | $(XZ) > ../../$@
-#else
-ZHFST_COMPRESSION=$(ZIP) $(ZIPFLAGS) ../../$@ *
-#endif # CAN_XZ
-
 # Due to a bug in GNU make (it seems), the target
 # 'final_strings.all.%.hfst' will not be built when invoking make
 # with -jN, where N > 1, and this causes the whole build to stop, and then on
@@ -193,11 +185,19 @@ GT_ERRMODELS+=errmodel.default.hfst
 # errmodel.ocr.hfst
 
 GT_SPELLING_HFST=$(GTLANG2).zhfst
+GT_SPELLING_NOCOMP_HFST=$(GTLANG2)-nocomp.zhfst
 
 voikkosharedir=$(datadir)/voikko/3/
 #! @param GT_VOIKKO optional, set to spell checker automata names if
 #!					installable
-voikkoshare_DATA=$(GT_SPELLING_HFST) $(ALT_WS_ZHFST_FILES) $(ALT_ORTH_ZHFST_FILES)
+voikkoshare_DATA=$(GT_SPELLING_HFST) \
+				 $(GT_SPELLING_NOCOMP_HFST) \
+				 $(ALT_WS_ZHFST_FILES) \
+				 $(ALT_WS_NOCOMP_ZHFST_FILES) \
+				 $(ALT_ORTH_ZHFST_FILES) \
+				 $(ALT_ORTH_NOCOMP_ZHFST_FILES) \
+				 $(AREA_ZHFST_FILES) \
+				 $(AREA_NOCOMP_ZHFST_FILES)
 
 endif # CAN_HFST
 endif # WANT_SPELLERS
@@ -248,7 +248,7 @@ editdist.%.regex: editdist.%.txt $(initial_letter_deps)
 
 # Initial string edits, if enabled:
 initial_letters.txt.%.hfst: initial_letters.%.txt
-	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' | cut -f1-2 \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -p \
 		-o $@
 
@@ -261,7 +261,7 @@ initial_letters.all.%.hfst: $(initial_letter_all_deps)
 
 # Final string edits, if enabled:
 final_strings.txt.%.hfst: final_strings.%.txt
-	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' | cut -f1-2 \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
 		-o $@
 
@@ -278,7 +278,7 @@ anystar.hfst:
 
 # In-word list of strings known to be misspelled:
 strings.txt.%.hfst: strings.%.txt anystar.hfst
-	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' | cut -f1-2 \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
 		| $(HFST_CONCATENATE)   anystar.hfst - \
 		| $(HFST_CONCATENATE) - anystar.hfst   \
@@ -374,7 +374,9 @@ $(GT_SPELLING_HFST): $(srcdir)/index.xml \
 	$(AM_V_at)cp $(srcdir)/index.xml build/$@/index.xml
 	$(AM_V_at)cp $(GT_SPELLER_ACCEPTOR) build/$@/$(GT_SPELLER_ACCEPTOR)
 	$(AM_V_at)cp $(GT_ERRMODELS) build/$@/$(GT_ERRMODELS)
-	$(AM_V_ZIP)cd build/$@/ && $(ZHFST_COMPRESSION)
+	$(AM_V_ZIP)cd build/$@/ && $(ZIP) $(ZIPFLAGS) ../../$@ *
+	$(AM_V_ZIP)cd build/$@/ && $(ZIP) -0 $(VERBOSITY) \
+				../../$(basename $@)-nocomp.zhfst *
 	$(AM_V_at)$(MKDIR_P) 3
 	$(AM_V_at)cp -f $@ 3/
 

@@ -36,6 +36,8 @@ h25 ;
 
 !! !!Irregular nouns
 
+!! These are lexica with number 0, they have no inflectional morphology.
+
 LEXICON k0 
 !! @LEXNAME@ for januar etc.
  +N+Msc: irregular_nouns ;
@@ -43,6 +45,7 @@ LEXICON k0
 LEXICON kv0 
 !! @LEXNAME@ for ommudidd
  +N+Fem: irregular_nouns ;
+ 
 LEXICON h0 ! A-fýra
 !! @LEXNAME@ for indeclinable neuters
  +N+Neu: irregular_nouns ;
@@ -169,8 +172,8 @@ LEXICON k_flt1
  +N+Msc: W_M_PLGEN ;
 
 
-LEXICON k1_3stem !! * @CODE@ felagi
-!! __@LEXNAME@__ for 3-syllabic stams, mixed dative forms + UUML
+LEXICON k1_3stem  
+!! __@LEXNAME@__ for 3-syllabic stams like ''felagi'', mixed dative forms + UUML
  +N+Msc:       W_M_SGNOM       ;
  +N+Msc:       W_M_SGACC       ;
  +N+Msc:       W_M_SGDAT_mixed ;

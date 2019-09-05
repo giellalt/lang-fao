@@ -92,7 +92,8 @@ mwe-dis.cg3: \
 		$(top_builddir)/tools/tokenisers/mwe-dis.cg3
 	$(AM_V_CP)cp -f $< $@
 
-$(GIELLA_GC_WHSPACE_ANAL): $(GIELLA_GC_WHSPACE_ANAL_SRC)
+# Whitespace analysers:
+%.hfst: %.regex
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) --disjunct -i $< \
 		| $(HFST_FST2FST) -O -o $@
 

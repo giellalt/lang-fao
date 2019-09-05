@@ -134,6 +134,15 @@ Rules
 !! The rule conflicts with the "Cns Deletion in front of Pass" rule at the
 !! end of the file - but only when using the Xerox tools! XXX - please have a look!
 
+!!€ hjall>s
+!!€ hjal00s
+
+!!€ rygg>s
+!!€ ryg00s
+
+!!€ hjall>ar
+!!€ hjall0ar
+
 
 !"Double consonant simplification in front of t"
 !Cx:0 <=> Vow Cx _ >: t ;
@@ -148,14 +157,6 @@ Rules
 !      where Cx in ( b d f g k l m n p r s t v ) ;
 ! added t to right context, check this!!
 
-!!€ hjall>s
-!!€ hjal00s
-
-!!€ rygg>s
-!!€ ryg00s
-
-!!€ hjall>ar
-!!€ hjall0ar
 
 
 !! !!Verbal Sandhi rules
@@ -204,8 +205,8 @@ Rules
 !!€ summar^EPH>i
 !!€ sum00r00i
 
-!!€ himmal^EPH^UUML>um#
-!!€ him00l000um0
+!!€ himmal^EPH^UUML>um
+!!€ him00l000um
 
 !tunnil>i
 !tun00l>i
@@ -241,11 +242,13 @@ Rules
 
 "Adjusting Dental Past Suffix -d(i)"
 !! __@RULENAME@__ 
- d:t <=> Vow [ p | t | k | s ] (Dummy:) %>: _ (%>:) [ #: | Vow ] ;
+ d:t <=> Vow ([r|l|n]) [ p | t | k | s ] (Dummy:) %>: _ (%>:) [ #: | Vow ] ;
 
 !!€ keyp>di
 !!€ keyp0ti
 
+!!€ merk>di
+!!€ merk0ti
 
 !! !!Adjectival sandhi rules
 
@@ -465,9 +468,19 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !!€ dreing^EIO>i
 !!€ dro0ng00i
 
+! XXX Test i dag
 !"Suffix-initial vowel deletion for vowel-final stems"
-!i:0 <=> i %>: _ ;
-   
+!i:0 <=> _ %>: i ;
+
+! merki>ið
+! merk00ið
+
+! XXX Test i dag
+"stem-final i to j in front of back vowel suffix"
+i:j <=> :Cns _ %>: [a|u];
+
+!!€ merki>ar
+!!€ merkj0ar
 
 !! !Vowel deletion rules
 
@@ -489,9 +502,6 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !! __@RULENAME@__ 
  u:0 <=> Vx %>: _ %>: n u m ;
  	where Vx in (á é í ó ú ý æ) ;
-
-!!€ bý>unum
-!!€ by00num 	
 
 
 !! !Verbal vowel alternation rules

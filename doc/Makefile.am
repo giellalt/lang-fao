@@ -16,7 +16,11 @@ if CAN_DOCC
 JSP_PAGES=root-morphology.jspwiki  \
 		  fao-phon-phonology.jspwiki \
 		  nouns-affixes.jspwiki  \
-		  nouns-stems.jspwiki
+		  nouns-stems.jspwiki \
+		  verbs-affixes.jspwiki \
+          adjectives-affixes.jspwiki \
+          acronyms-affixes.jspwiki \
+          symbols-affixes.jspwiki
 # clitics-morphology.jspwiki       \
 # compounding-morphology.jspwiki   \
 # abbreviations-stems.jspwiki      \
@@ -36,8 +40,6 @@ JSP_PAGES=root-morphology.jspwiki  \
 # verbs-stems.jspwiki              \
 # adjectives-affixes.jspwiki       \
 # propernouns-affixes.jspwiki      \
-# verbs-affixes.jspwiki
-
 ALLINONE_JSP_PAGE=$(srcdir)/$(GTLANG).jspwiki
 
 LINKS=$(srcdir)/Links.jspwiki

@@ -18,9 +18,10 @@ JSP_PAGES=root-morphology.jspwiki  \
 		  nouns-affixes.jspwiki  \
 		  nouns-stems.jspwiki \
 		  verbs-affixes.jspwiki \
-          adjectives-affixes.jspwiki \
-          acronyms-affixes.jspwiki \
-          symbols-affixes.jspwiki
+		  verbs-stems.jspwiki              \
+		  adjectives-affixes.jspwiki \
+		  acronyms-affixes.jspwiki \
+		  symbols-affixes.jspwiki
 # clitics-morphology.jspwiki       \
 # compounding-morphology.jspwiki   \
 # abbreviations-stems.jspwiki      \
@@ -37,7 +38,6 @@ JSP_PAGES=root-morphology.jspwiki  \
 # punctuation-stems.jspwiki        \
 # smi-propernouns-stems.jspwiki    \
 # subjunctions-stems.jspwiki       \
-# verbs-stems.jspwiki              \
 # adjectives-affixes.jspwiki       \
 # propernouns-affixes.jspwiki      \
 ALLINONE_JSP_PAGE=$(srcdir)/$(GTLANG).jspwiki

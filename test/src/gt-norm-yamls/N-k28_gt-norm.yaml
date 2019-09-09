@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    dráttur+N+Msc+Sg+Nom+Indef: dráttur
+    dráttur+N+Msc+Sg+Acc+Indef: dráttur
+    dráttur+N+Msc+Sg+Dat+Indef: dráttri
+    dráttur+N+Msc+Sg+Gen+Indef: dráttrar
+    dráttur+N+Msc+Pl+Nom+Indef: dráttrir
+    dráttur+N+Msc+Pl+Acc+Indef: dráttrir
+    dráttur+N+Msc+Pl+Dat+Indef: dráttrum
+    dráttur+N+Msc+Pl+Gen+Indef: dráttra
+    dráttur+N+Msc+Sg+Nom+Def: drátturin
+    dráttur+N+Msc+Sg+Acc+Def: drátturin
+    dráttur+N+Msc+Sg+Dat+Def: dráttrinum
+    dráttur+N+Msc+Sg+Gen+Def: dráttrarins
+    dráttur+N+Msc+Pl+Nom+Def: dráttrirnir
+    dráttur+N+Msc+Pl+Acc+Def: dráttrirnar
+    dráttur+N+Msc+Pl+Dat+Def: dráttrunum
+    dráttur+N+Msc+Pl+Gen+Def: dráttranna

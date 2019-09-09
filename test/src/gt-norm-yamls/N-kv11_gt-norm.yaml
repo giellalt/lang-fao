@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    song+N+Fem+Sg+Nom+Indef: song
+    song+N+Fem+Sg+Acc+Indef: song
+    song+N+Fem+Sg+Dat+Indef: song
+    song+N+Fem+Sg+Gen+Indef: [seingjar, songar]
+    song+N+Fem+Pl+Nom+Indef: [seingir, sengur]
+    song+N+Fem+Pl+Dat+Indef: seingjum
+    song+N+Fem+Pl+Gen+Indef: seingja
+    song+N+Fem+Sg+Nom+Def: [seingin, songin]
+    song+N+Fem+Sg+Acc+Def: [seingina, songina]
+    song+N+Fem+Sg+Dat+Def: [seingini, songini]
+    song+N+Fem+Sg+Gen+Def: [seingjarinnar, songarinnar]
+    song+N+Fem+Pl+Nom+Def: [seingirnar, sengurnar]
+    song+N+Fem+Pl+Dat+Def: seingjunum
+    song+N+Fem+Pl+Gen+Def: seingjanna

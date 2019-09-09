@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    tá+N+Fem+Sg+Nom+Indef: tá
+    tá+N+Fem+Sg+Acc+Indef: tá
+    tá+N+Fem+Sg+Dat+Indef: tá
+    tá+N+Fem+Sg+Gen+Indef: táar
+    tá+N+Fem+Pl+Nom+Indef: tær
+    tá+N+Fem+Pl+Dat+Indef: tóm
+    tá+N+Fem+Pl+Gen+Indef: táa
+    tá+N+Fem+Sg+Nom+Def: táin
+    tá+N+Fem+Sg+Acc+Def: tánna
+    tá+N+Fem+Sg+Dat+Def: tánni
+    tá+N+Fem+Sg+Gen+Def: táarinnar
+    tá+N+Fem+Pl+Nom+Def: tærnar
+    tá+N+Fem+Pl+Dat+Def: [tónum, tærnum]
+    tá+N+Fem+Pl+Gen+Def: táanna

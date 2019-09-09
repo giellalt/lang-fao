@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    sandur+N+Msc+Sg+Nom+Indef: sandur
+    sandur+N+Msc+Sg+Acc+Indef: sand
+    sandur+N+Msc+Sg+Dat+Indef: sandi
+    sandur+N+Msc+Sg+Gen+Indef: sands
+    sandur+N+Msc+Pl+Nom+Indef: sandar
+    sandur+N+Msc+Pl+Acc+Indef: sandar
+    sandur+N+Msc+Pl+Dat+Indef: sondum
+    sandur+N+Msc+Pl+Gen+Indef: sanda
+    sandur+N+Msc+Sg+Nom+Def: sandurin
+    sandur+N+Msc+Sg+Acc+Def: sandin
+    sandur+N+Msc+Sg+Dat+Def: sandinum
+    sandur+N+Msc+Sg+Gen+Def: sandsins
+    sandur+N+Msc+Pl+Nom+Def: sandarnir
+    sandur+N+Msc+Pl+Acc+Def: sandarnar
+    sandur+N+Msc+Pl+Dat+Def: sondunum
+    sandur+N+Msc+Pl+Gen+Def: sandanna

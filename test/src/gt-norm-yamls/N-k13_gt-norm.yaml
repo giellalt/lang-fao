@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    vegur+N+Msc+Sg+Nom+Indef: vegur
+    vegur+N+Msc+Sg+Acc+Indef: veg
+    vegur+N+Msc+Sg+Dat+Indef: [veg, vegi]
+    vegur+N+Msc+Sg+Gen+Indef: vegar
+    vegur+N+Msc+Pl+Nom+Indef: vegir
+    vegur+N+Msc+Pl+Acc+Indef: vegir
+    vegur+N+Msc+Pl+Dat+Indef: vegum
+    vegur+N+Msc+Pl+Gen+Indef: vega
+    vegur+N+Msc+Sg+Nom+Def: vegurin
+    vegur+N+Msc+Sg+Acc+Def: vegin
+    vegur+N+Msc+Sg+Dat+Def: [vegnum, veginum]
+    vegur+N+Msc+Sg+Gen+Def: vegarins
+    vegur+N+Msc+Pl+Nom+Def: vegirnir
+    vegur+N+Msc+Pl+Acc+Def: vegirnar
+    vegur+N+Msc+Pl+Dat+Def: vegunum
+    vegur+N+Msc+Pl+Gen+Def: veganna

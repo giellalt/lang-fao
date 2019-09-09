@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    tráður+N+Msc+Sg+Nom+Indef: tráður
+    tráður+N+Msc+Sg+Acc+Indef: tráð
+    tráður+N+Msc+Sg+Dat+Indef: [tráð, tráði, træðri]
+    tráður+N+Msc+Sg+Gen+Indef: tráðar
+    tráður+N+Msc+Pl+Nom+Indef: træðrir
+    tráður+N+Msc+Pl+Acc+Indef: træðrir
+    tráður+N+Msc+Pl+Dat+Indef: [tráðum, træðrum]
+    tráður+N+Msc+Pl+Gen+Indef: tráða
+    tráður+N+Msc+Sg+Nom+Def: tráðurin
+    tráður+N+Msc+Sg+Acc+Def: tráðin
+    tráður+N+Msc+Sg+Dat+Def: [tráðnum, tráðinum, træðrinum]
+    tráður+N+Msc+Sg+Gen+Def: tráðarins
+    tráður+N+Msc+Pl+Nom+Def: træðrirnir
+    tráður+N+Msc+Pl+Acc+Def: træðrirnar
+    tráður+N+Msc+Pl+Dat+Def: [tráðunum, træðrunum]
+    tráður+N+Msc+Pl+Gen+Def: tráðanna

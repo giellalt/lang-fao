@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    heyggjur+N+Msc+Sg+Nom+Indef: heyggjur
+    heyggjur+N+Msc+Sg+Acc+Indef: heyggj
+    heyggjur+N+Msc+Sg+Dat+Indef: heyggi
+    heyggjur+N+Msc+Sg+Gen+Indef: heygs
+    heyggjur+N+Msc+Pl+Nom+Indef: heyggjar
+    heyggjur+N+Msc+Pl+Acc+Indef: heyggjar
+    heyggjur+N+Msc+Pl+Dat+Indef: heyggjum
+    heyggjur+N+Msc+Pl+Gen+Indef: heyggja
+    heyggjur+N+Msc+Sg+Nom+Def: heyggjurin
+    heyggjur+N+Msc+Sg+Acc+Def: heyggin
+    heyggjur+N+Msc+Sg+Dat+Def: heygginum
+    heyggjur+N+Msc+Sg+Gen+Def: heygsins
+    heyggjur+N+Msc+Pl+Nom+Def: heyggjarnir
+    heyggjur+N+Msc+Pl+Acc+Def: heyggjarnar
+    heyggjur+N+Msc+Pl+Dat+Def: heyggjunum
+    heyggjur+N+Msc+Pl+Gen+Def: heyggjanna

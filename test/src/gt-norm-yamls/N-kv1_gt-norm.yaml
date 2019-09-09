@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    genta+N+Fem+Sg+Nom+Indef: genta
+    genta+N+Fem+Sg+Acc+Indef: gentu
+    genta+N+Fem+Sg+Dat+Indef: gentu
+    genta+N+Fem+Sg+Gen+Indef: gentu
+    genta+N+Fem+Pl+Nom+Indef: gentur
+    genta+N+Fem+Pl+Dat+Indef: gentum
+    genta+N+Fem+Pl+Gen+Indef: genta
+    genta+N+Fem+Sg+Nom+Def: gentan
+    genta+N+Fem+Sg+Acc+Def: gentuna
+    genta+N+Fem+Sg+Dat+Def: gentuni
+    genta+N+Fem+Sg+Gen+Def: gentunnar
+    genta+N+Fem+Pl+Nom+Def: genturnar
+    genta+N+Fem+Pl+Dat+Def: gentunum
+    genta+N+Fem+Pl+Gen+Def: gentanna

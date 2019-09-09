@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    hjarta+N+Neu+Sg+Nom+Indef: hjarta
+    hjarta+N+Neu+Sg+Acc+Indef: hjarta
+    hjarta+N+Neu+Sg+Dat+Indef: hjarta
+    hjarta+N+Neu+Sg+Gen+Indef: hjarta
+    hjarta+N+Neu+Pl+Nom+Indef: [hjørtu, hjørtur]
+    hjarta+N+Neu+Pl+Acc+Indef: [hjørtu, hjørtur]
+    hjarta+N+Neu+Pl+Dat+Indef: hjørtum
+    hjarta+N+Neu+Pl+Gen+Indef: hjartna
+    hjarta+N+Neu+Sg+Nom+Def: hjartað
+    hjarta+N+Neu+Sg+Acc+Def: hjartað
+    hjarta+N+Neu+Sg+Dat+Def: hjartanum
+    hjarta+N+Neu+Sg+Gen+Def: hjartans
+    hjarta+N+Neu+Pl+Nom+Def: hjørtuni
+    hjarta+N+Neu+Pl+Acc+Def: hjørtuni
+    hjarta+N+Neu+Pl+Dat+Def: hjørtunum
+    hjarta+N+Neu+Pl+Gen+Def: hjartnanna

@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    tanki+N+Msc+Sg+Nom+Indef: tanki
+    tanki+N+Msc+Sg+Acc+Indef: tanka
+    tanki+N+Msc+Sg+Dat+Indef: tanka
+    tanki+N+Msc+Sg+Gen+Indef: tanka
+    tanki+N+Msc+Pl+Nom+Indef: tankar
+    tanki+N+Msc+Pl+Acc+Indef: tankar
+    tanki+N+Msc+Pl+Dat+Indef: tonkum
+    tanki+N+Msc+Pl+Gen+Indef: tanka
+    tanki+N+Msc+Sg+Nom+Def: tankin
+    tanki+N+Msc+Sg+Acc+Def: tankan
+    tanki+N+Msc+Sg+Dat+Def: tankanum
+    tanki+N+Msc+Sg+Gen+Def: tankans
+    tanki+N+Msc+Pl+Nom+Def: tankarnir
+    tanki+N+Msc+Pl+Acc+Def: tankarnar
+    tanki+N+Msc+Pl+Dat+Def: tonkunum
+    tanki+N+Msc+Pl+Gen+Def: tankanna

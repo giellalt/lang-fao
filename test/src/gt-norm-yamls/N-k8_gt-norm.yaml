@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    garður+N+Msc+Sg+Nom+Indef: garður
+    garður+N+Msc+Sg+Acc+Indef: garð
+    garður+N+Msc+Sg+Dat+Indef: garði
+    garður+N+Msc+Sg+Gen+Indef: garðs
+    garður+N+Msc+Pl+Nom+Indef: garðar
+    garður+N+Msc+Pl+Acc+Indef: garðar
+    garður+N+Msc+Pl+Dat+Indef: gørðum
+    garður+N+Msc+Pl+Gen+Indef: garða
+    garður+N+Msc+Sg+Nom+Def: garðurin
+    garður+N+Msc+Sg+Acc+Def: garðin
+    garður+N+Msc+Sg+Dat+Def: garðinum
+    garður+N+Msc+Sg+Gen+Def: garðsins
+    garður+N+Msc+Pl+Nom+Def: garðarnir
+    garður+N+Msc+Pl+Acc+Def: garðarnar
+    garður+N+Msc+Pl+Dat+Def: gørðunum
+    garður+N+Msc+Pl+Gen+Def: garðanna

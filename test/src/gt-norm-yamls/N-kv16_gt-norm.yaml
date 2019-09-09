@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    mús+N+Fem+Sg+Nom+Indef: mús
+    mús+N+Fem+Sg+Acc+Indef: mús
+    mús+N+Fem+Sg+Dat+Indef: mús
+    mús+N+Fem+Sg+Gen+Indef: músar
+    mús+N+Fem+Pl+Nom+Indef: mýs
+    mús+N+Fem+Pl+Dat+Indef: músum
+    mús+N+Fem+Pl+Gen+Indef: músa
+    mús+N+Fem+Sg+Nom+Def: músin
+    mús+N+Fem+Sg+Acc+Def: músina
+    mús+N+Fem+Sg+Dat+Def: músini
+    mús+N+Fem+Sg+Gen+Def: músarinnar
+    mús+N+Fem+Pl+Nom+Def: mýsnar
+    mús+N+Fem+Pl+Dat+Def: [músunum, mýsnum]
+    mús+N+Fem+Pl+Gen+Def: músanna

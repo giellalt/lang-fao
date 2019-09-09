@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    kraft+N+Fem+Sg+Nom+Indef: kraft
+    kraft+N+Fem+Sg+Acc+Indef: kraft
+    kraft+N+Fem+Sg+Dat+Indef: kraft
+    kraft+N+Fem+Sg+Gen+Indef: kraftar
+    kraft+N+Fem+Pl+Nom+Indef: kreftir
+    kraft+N+Fem+Pl+Dat+Indef: kreftum
+    kraft+N+Fem+Pl+Gen+Indef: krefta
+    kraft+N+Fem+Sg+Nom+Def: kraftin
+    kraft+N+Fem+Sg+Acc+Def: kraftina
+    kraft+N+Fem+Sg+Dat+Def: kraftini
+    kraft+N+Fem+Sg+Gen+Def: kraftarinnar
+    kraft+N+Fem+Pl+Nom+Def: kreftirnar
+    kraft+N+Fem+Pl+Dat+Def: kreftunum
+    kraft+N+Fem+Pl+Gen+Def: kreftanna

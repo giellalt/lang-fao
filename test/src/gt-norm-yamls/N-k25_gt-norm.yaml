@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    vøllur+N+Msc+Sg+Nom+Indef: vøllur
+    vøllur+N+Msc+Sg+Acc+Indef: vøll
+    vøllur+N+Msc+Sg+Dat+Indef: vølli
+    vøllur+N+Msc+Sg+Gen+Indef: vallar
+    vøllur+N+Msc+Pl+Nom+Indef: vøllir
+    vøllur+N+Msc+Pl+Acc+Indef: vøllir
+    vøllur+N+Msc+Pl+Dat+Indef: vøllum
+    vøllur+N+Msc+Pl+Gen+Indef: valla
+    vøllur+N+Msc+Sg+Nom+Def: vøllurin
+    vøllur+N+Msc+Sg+Acc+Def: vøllin
+    vøllur+N+Msc+Sg+Dat+Def: vøllinum
+    vøllur+N+Msc+Sg+Gen+Def: vallarins
+    vøllur+N+Msc+Pl+Nom+Def: vøllirnir
+    vøllur+N+Msc+Pl+Acc+Def: vøllirnar
+    vøllur+N+Msc+Pl+Dat+Def: vøllunum
+    vøllur+N+Msc+Pl+Gen+Def: vallanna

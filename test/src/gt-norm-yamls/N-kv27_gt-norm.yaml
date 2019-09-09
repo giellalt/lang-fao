@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    rás+N+Fem+Sg+Nom+Indef: rás
+    rás+N+Fem+Sg+Acc+Indef: rás
+    rás+N+Fem+Sg+Dat+Indef: rás
+    rás+N+Fem+Sg+Gen+Indef: rásar
+    rás+N+Fem+Pl+Nom+Indef: ræsur
+    rás+N+Fem+Pl+Dat+Indef: rásum
+    rás+N+Fem+Pl+Gen+Indef: rása
+    rás+N+Fem+Sg+Nom+Def: rásin
+    rás+N+Fem+Sg+Acc+Def: rásina
+    rás+N+Fem+Sg+Dat+Def: rásini
+    rás+N+Fem+Sg+Gen+Def: rásarinnar
+    rás+N+Fem+Pl+Nom+Def: ræsurnar
+    rás+N+Fem+Pl+Dat+Def: rásunum
+    rás+N+Fem+Pl+Gen+Def: rásanna

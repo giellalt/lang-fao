@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    fjørður+N+Msc+Sg+Nom+Indef: fjørður
+    fjørður+N+Msc+Sg+Acc+Indef: fjørð
+    fjørður+N+Msc+Sg+Dat+Indef: [firði, fjørði]
+    fjørður+N+Msc+Sg+Gen+Indef: fjarðar
+    fjørður+N+Msc+Pl+Nom+Indef: firðir
+    fjørður+N+Msc+Pl+Acc+Indef: firðir
+    fjørður+N+Msc+Pl+Dat+Indef: [fjørðum, firðum]
+    fjørður+N+Msc+Pl+Gen+Indef: fjarða
+    fjørður+N+Msc+Sg+Nom+Def: fjørðurin
+    fjørður+N+Msc+Sg+Acc+Def: fjørðin
+    fjørður+N+Msc+Sg+Dat+Def: [firðinum, fjørðinum]
+    fjørður+N+Msc+Sg+Gen+Def: fjarðarins
+    fjørður+N+Msc+Pl+Nom+Def: firðirnir
+    fjørður+N+Msc+Pl+Acc+Def: firðirnar
+    fjørður+N+Msc+Pl+Dat+Def: [fjørðunum, firðunum]
+    fjørður+N+Msc+Pl+Gen+Def: fjarðanna

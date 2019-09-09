@@ -1,0 +1,21 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    gleði+N+Fem+Sg+Nom+Indef: gleði
+    gleði+N+Fem+Sg+Acc+Indef: gleði
+    gleði+N+Fem+Sg+Dat+Indef: gleði
+    gleði+N+Fem+Sg+Gen+Indef: gleði
+    gleði+N+Fem+Pl+Nom+Indef: gleðir
+    gleði+N+Fem+Sg+Nom+Def: gleðin
+    gleði+N+Fem+Sg+Acc+Def: gleðina
+    gleði+N+Fem+Sg+Dat+Def: gleðini
+    gleði+N+Fem+Sg+Gen+Def: gleðinnar
+    gleði+N+Fem+Pl+Nom+Def: gleðirnar

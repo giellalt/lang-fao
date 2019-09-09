@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    verkur+N+Msc+Sg+Nom+Indef: verkur
+    verkur+N+Msc+Sg+Acc+Indef: verk
+    verkur+N+Msc+Sg+Dat+Indef: verki
+    verkur+N+Msc+Sg+Gen+Indef: verks
+    verkur+N+Msc+Pl+Nom+Indef: verkir
+    verkur+N+Msc+Pl+Acc+Indef: verkir
+    verkur+N+Msc+Pl+Dat+Indef: verkjum
+    verkur+N+Msc+Pl+Gen+Indef: verkja
+    verkur+N+Msc+Sg+Nom+Def: verkurin
+    verkur+N+Msc+Sg+Acc+Def: verkin
+    verkur+N+Msc+Sg+Dat+Def: verkinum
+    verkur+N+Msc+Sg+Gen+Def: verksins
+    verkur+N+Msc+Pl+Nom+Def: verkirnir
+    verkur+N+Msc+Pl+Acc+Def: verkirnar
+    verkur+N+Msc+Pl+Dat+Def: verkjunum
+    verkur+N+Msc+Pl+Gen+Def: verkjanna

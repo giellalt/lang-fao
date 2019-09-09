@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    dóttir+N+Fem+Sg+Nom+Indef: dóttir
+    dóttir+N+Fem+Sg+Acc+Indef: dóttur
+    dóttir+N+Fem+Sg+Dat+Indef: dóttur
+    dóttir+N+Fem+Sg+Gen+Indef: dóttur
+    dóttir+N+Fem+Pl+Nom+Indef: døtur
+    dóttir+N+Fem+Pl+Dat+Indef: døtrum
+    dóttir+N+Fem+Pl+Gen+Indef: døtra
+    dóttir+N+Fem+Sg+Nom+Def: dóttirin
+    dóttir+N+Fem+Sg+Acc+Def: dóttrina
+    dóttir+N+Fem+Sg+Dat+Def: [dótturini, dóttrini]
+    dóttir+N+Fem+Sg+Gen+Def: dótturinnar
+    dóttir+N+Fem+Pl+Nom+Def: døturnar
+    dóttir+N+Fem+Pl+Dat+Def: døtrunum
+    dóttir+N+Fem+Pl+Gen+Def: døtranna

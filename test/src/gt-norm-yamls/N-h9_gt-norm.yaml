@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    blikk+N+Neu+Sg+Nom+Indef: blikk
+    blikk+N+Neu+Sg+Acc+Indef: blikk
+    blikk+N+Neu+Sg+Dat+Indef: blikki
+    blikk+N+Neu+Sg+Gen+Indef: bliks
+    blikk+N+Neu+Pl+Nom+Indef: blikk
+    blikk+N+Neu+Pl+Acc+Indef: blikk
+    blikk+N+Neu+Pl+Dat+Indef: blikkum
+    blikk+N+Neu+Pl+Gen+Indef: blikka
+    blikk+N+Neu+Sg+Nom+Def: blikkið
+    blikk+N+Neu+Sg+Acc+Def: blikkið
+    blikk+N+Neu+Sg+Dat+Def: blikkinum
+    blikk+N+Neu+Sg+Gen+Def: bliksins
+    blikk+N+Neu+Pl+Nom+Def: blikkini
+    blikk+N+Neu+Pl+Acc+Def: blikkini
+    blikk+N+Neu+Pl+Dat+Def: blikkunum
+    blikk+N+Neu+Pl+Gen+Def: blikkanna

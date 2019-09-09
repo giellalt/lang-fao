@@ -1,0 +1,19 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    tíðindi+N+Neu+Pl+Nom+Indef: [tíðindi, tíðindir]
+    tíðindi+N+Neu+Pl+Acc+Indef: [tíðindi, tíðindir]
+    tíðindi+N+Neu+Pl+Dat+Indef: tíðindum
+    tíðindi+N+Neu+Pl+Gen+Indef: tíðinda
+    tíðindi+N+Neu+Pl+Nom+Def: tíðindini
+    tíðindi+N+Neu+Pl+Acc+Def: tíðindini
+    tíðindi+N+Neu+Pl+Dat+Def: tíðindunum
+    tíðindi+N+Neu+Pl+Gen+Def: tíðindanna

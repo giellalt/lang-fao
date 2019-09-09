@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    skúgvur+N+Msc+Sg+Nom+Indef: skúgvur
+    skúgvur+N+Msc+Sg+Acc+Indef: skúgv
+    skúgvur+N+Msc+Sg+Dat+Indef: skúgvi
+    skúgvur+N+Msc+Sg+Gen+Indef: skúvs
+    skúgvur+N+Msc+Pl+Nom+Indef: skúgvar
+    skúgvur+N+Msc+Pl+Acc+Indef: skúgvar
+    skúgvur+N+Msc+Pl+Dat+Indef: skúgvum
+    skúgvur+N+Msc+Pl+Gen+Indef: skúgva
+    skúgvur+N+Msc+Sg+Nom+Def: skúgvurin
+    skúgvur+N+Msc+Sg+Acc+Def: skúgvin
+    skúgvur+N+Msc+Sg+Dat+Def: skúgvinum
+    skúgvur+N+Msc+Sg+Gen+Def: skúvsins
+    skúgvur+N+Msc+Pl+Nom+Def: skúgvarnir
+    skúgvur+N+Msc+Pl+Acc+Def: skúgvarnar
+    skúgvur+N+Msc+Pl+Dat+Def: skúgvunum
+    skúgvur+N+Msc+Pl+Gen+Def: skúgvanna

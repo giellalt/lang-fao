@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    offur+N+Neu+Sg+Nom+Indef: offur
+    offur+N+Neu+Sg+Acc+Indef: offur
+    offur+N+Neu+Sg+Dat+Indef: ofri
+    offur+N+Neu+Sg+Gen+Indef: offurs
+    offur+N+Neu+Pl+Nom+Indef: offur
+    offur+N+Neu+Pl+Acc+Indef: offur
+    offur+N+Neu+Pl+Dat+Indef: ofrum
+    offur+N+Neu+Pl+Gen+Indef: ofra
+    offur+N+Neu+Sg+Nom+Def: ofrið
+    offur+N+Neu+Sg+Acc+Def: ofrið
+    offur+N+Neu+Sg+Dat+Def: ofrinum
+    offur+N+Neu+Sg+Gen+Def: offursins
+    offur+N+Neu+Pl+Nom+Def: ofrini
+    offur+N+Neu+Pl+Acc+Def: ofrini
+    offur+N+Neu+Pl+Dat+Def: ofrunum
+    offur+N+Neu+Pl+Gen+Def: ofranna

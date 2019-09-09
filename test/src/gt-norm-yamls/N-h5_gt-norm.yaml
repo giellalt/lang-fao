@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    barn+N+Neu+Sg+Nom+Indef: barn
+    barn+N+Neu+Sg+Acc+Indef: barn
+    barn+N+Neu+Sg+Dat+Indef: barni
+    barn+N+Neu+Sg+Gen+Indef: barns
+    barn+N+Neu+Pl+Nom+Indef: børn
+    barn+N+Neu+Pl+Acc+Indef: børn
+    barn+N+Neu+Pl+Dat+Indef: børnum
+    barn+N+Neu+Pl+Gen+Indef: barna
+    barn+N+Neu+Sg+Nom+Def: barnið
+    barn+N+Neu+Sg+Acc+Def: barnið
+    barn+N+Neu+Sg+Dat+Def: barninum
+    barn+N+Neu+Sg+Gen+Def: barnsins
+    barn+N+Neu+Pl+Nom+Def: børnini
+    barn+N+Neu+Pl+Acc+Def: børnini
+    barn+N+Neu+Pl+Dat+Def: børnunum
+    barn+N+Neu+Pl+Gen+Def: barnanna

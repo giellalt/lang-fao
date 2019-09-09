@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    tonn+N+Fem+Sg+Nom+Indef: tonn
+    tonn+N+Fem+Sg+Acc+Indef: tonn
+    tonn+N+Fem+Sg+Dat+Indef: tonn
+    tonn+N+Fem+Sg+Gen+Indef: tannar
+    tonn+N+Fem+Pl+Nom+Indef: tenn
+    tonn+N+Fem+Pl+Dat+Indef: tonnum
+    tonn+N+Fem+Pl+Gen+Indef: tanna
+    tonn+N+Fem+Sg+Nom+Def: tonnin
+    tonn+N+Fem+Sg+Acc+Def: tonnina
+    tonn+N+Fem+Sg+Dat+Def: tonnini
+    tonn+N+Fem+Sg+Gen+Def: tannarinnar
+    tonn+N+Fem+Pl+Nom+Def: tenninar
+    tonn+N+Fem+Pl+Dat+Def: tonnunum
+    tonn+N+Fem+Pl+Gen+Def: tannanna

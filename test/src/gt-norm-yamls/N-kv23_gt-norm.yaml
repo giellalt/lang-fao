@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    trúgv+N+Fem+Sg+Nom+Indef: trúgv
+    trúgv+N+Fem+Sg+Acc+Indef: trúgv
+    trúgv+N+Fem+Sg+Dat+Indef: trúgv
+    trúgv+N+Fem+Sg+Gen+Indef: trúar
+    trúgv+N+Fem+Pl+Nom+Indef: trúgvir
+    trúgv+N+Fem+Pl+Dat+Indef: trúgvum
+    trúgv+N+Fem+Pl+Gen+Indef: trúgva
+    trúgv+N+Fem+Sg+Nom+Def: trúgvin
+    trúgv+N+Fem+Sg+Acc+Def: trúnna
+    trúgv+N+Fem+Sg+Dat+Def: trúnni
+    trúgv+N+Fem+Sg+Gen+Def: trúarinnar
+    trúgv+N+Fem+Pl+Nom+Def: trúgvirnar
+    trúgv+N+Fem+Pl+Dat+Def: trúgvunum
+    trúgv+N+Fem+Pl+Gen+Def: trúgvanna

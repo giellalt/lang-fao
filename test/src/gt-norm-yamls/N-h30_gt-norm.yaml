@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    summar+N+Neu+Sg+Nom+Indef: summar
+    summar+N+Neu+Sg+Acc+Indef: summar
+    summar+N+Neu+Sg+Dat+Indef: sumri
+    summar+N+Neu+Sg+Gen+Indef: summars
+    summar+N+Neu+Pl+Nom+Indef: [summur, summør]
+    summar+N+Neu+Pl+Acc+Indef: [summur, summør]
+    summar+N+Neu+Pl+Dat+Indef: sumrum
+    summar+N+Neu+Pl+Gen+Indef: sumra
+    summar+N+Neu+Sg+Nom+Def: summarið
+    summar+N+Neu+Sg+Acc+Def: summarið
+    summar+N+Neu+Sg+Dat+Def: [summarinum, sumrinum]
+    summar+N+Neu+Sg+Gen+Def: summarsins
+    summar+N+Neu+Pl+Nom+Def: [summurini, summørini, sumrini]
+    summar+N+Neu+Pl+Acc+Def: [summurini, summørini, sumrini]
+    summar+N+Neu+Pl+Dat+Def: sumrunum
+    summar+N+Neu+Pl+Gen+Def: sumranna

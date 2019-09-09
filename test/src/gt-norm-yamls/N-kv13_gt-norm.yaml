@@ -1,0 +1,26 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    mørk+N+Fem+Sg+Nom+Indef: mørk
+    mørk+N+Fem+Sg+Acc+Indef: mørk
+    mørk+N+Fem+Sg+Dat+Indef: mørk
+    mørk+N+Fem+Sg+Gen+Indef: markar
+    mørk+N+Fem+Pl+Nom+Indef: merkur
+    mørk+N+Fem+Pl+Dat+Indef: mørkum
+    mørk+N+Fem+Pl+Gen+Indef: marka
+    mørk+N+Fem+Sg+Nom+Def: mørkin
+    mørk+N+Fem+Sg+Acc+Def: mørkina
+    mørk+N+Fem+Sg+Dat+Def: mørkini
+    mørk+N+Fem+Sg+Gen+Def: markarinnar
+    mørk+N+Fem+Pl+Nom+Def: merkurnar
+    mørk+N+Fem+Pl+Dat+Def: mørkunum
+    mørk+N+Fem+Pl+Gen+Def: markanna
+      

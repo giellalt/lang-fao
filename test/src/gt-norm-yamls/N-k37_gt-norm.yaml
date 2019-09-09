@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    skógvur+N+Msc+Sg+Nom+Indef: skógvur
+    skógvur+N+Msc+Sg+Acc+Indef: skógv
+    skógvur+N+Msc+Sg+Dat+Indef: skógvi
+    skógvur+N+Msc+Sg+Gen+Indef: skós
+    skógvur+N+Msc+Pl+Nom+Indef: skógvar
+    skógvur+N+Msc+Pl+Acc+Indef: skógvar
+    skógvur+N+Msc+Pl+Dat+Indef: [skóm, skógvum]
+    skógvur+N+Msc+Pl+Gen+Indef: skógva
+    skógvur+N+Msc+Sg+Nom+Def: skógvurin
+    skógvur+N+Msc+Sg+Acc+Def: skógvin
+    skógvur+N+Msc+Sg+Dat+Def: [skónum, skógvinum]
+    skógvur+N+Msc+Sg+Gen+Def: skósins
+    skógvur+N+Msc+Pl+Nom+Def: skógvarnir
+    skógvur+N+Msc+Pl+Acc+Def: skógvarnar
+    skógvur+N+Msc+Pl+Dat+Def: [skónum, skógvunum]
+    skógvur+N+Msc+Pl+Gen+Def: skógvanna

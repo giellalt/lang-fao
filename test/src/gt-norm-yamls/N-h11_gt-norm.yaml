@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    hús+N+Neu+Sg+Nom+Indef: hús
+    hús+N+Neu+Sg+Acc+Indef: hús
+    hús+N+Neu+Sg+Dat+Indef: húsi
+    hús+N+Neu+Sg+Gen+Indef: hús
+    hús+N+Neu+Pl+Nom+Indef: hús
+    hús+N+Neu+Pl+Acc+Indef: hús
+    hús+N+Neu+Pl+Dat+Indef: húsum
+    hús+N+Neu+Pl+Gen+Indef: húsa
+    hús+N+Neu+Sg+Nom+Def: húsið
+    hús+N+Neu+Sg+Acc+Def: húsið
+    hús+N+Neu+Sg+Dat+Def: húsinum
+    hús+N+Neu+Sg+Gen+Def: húsins
+    hús+N+Neu+Pl+Nom+Def: húsini
+    hús+N+Neu+Pl+Acc+Def: húsini
+    hús+N+Neu+Pl+Dat+Def: húsunum
+    hús+N+Neu+Pl+Gen+Def: húsanna

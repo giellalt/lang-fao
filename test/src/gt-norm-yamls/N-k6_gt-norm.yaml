@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    úlvur+N+Msc+Sg+Nom+Indef: úlvur
+    úlvur+N+Msc+Sg+Acc+Indef: úlv
+    úlvur+N+Msc+Sg+Dat+Indef: úlvi
+    úlvur+N+Msc+Sg+Gen+Indef: úlvs
+    úlvur+N+Msc+Pl+Nom+Indef: úlvar
+    úlvur+N+Msc+Pl+Acc+Indef: úlvar
+    úlvur+N+Msc+Pl+Dat+Indef: úlvum
+    úlvur+N+Msc+Pl+Gen+Indef: úlva
+    úlvur+N+Msc+Sg+Nom+Def: úlvurin
+    úlvur+N+Msc+Sg+Acc+Def: úlvin
+    úlvur+N+Msc+Sg+Dat+Def: úlvinum
+    úlvur+N+Msc+Sg+Gen+Def: úlvsins
+    úlvur+N+Msc+Pl+Nom+Def: úlvarnir
+    úlvur+N+Msc+Pl+Acc+Def: úlvarnar
+    úlvur+N+Msc+Pl+Dat+Def: úlvunum
+    úlvur+N+Msc+Pl+Gen+Def: úlvanna

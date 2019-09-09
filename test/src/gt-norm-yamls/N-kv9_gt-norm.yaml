@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    stong+N+Fem+Sg+Nom+Indef: stong
+    stong+N+Fem+Sg+Acc+Indef: stong
+    stong+N+Fem+Sg+Dat+Indef: stong
+    stong+N+Fem+Sg+Gen+Indef: stangar
+    stong+N+Fem+Pl+Nom+Indef: stengur
+    stong+N+Fem+Pl+Dat+Indef: stongum
+    stong+N+Fem+Pl+Gen+Indef: stanga
+    stong+N+Fem+Sg+Nom+Def: stongin
+    stong+N+Fem+Sg+Acc+Def: stongina
+    stong+N+Fem+Sg+Dat+Def: stongini
+    stong+N+Fem+Sg+Gen+Def: stangarinnar
+    stong+N+Fem+Pl+Nom+Def: stengurnar
+    stong+N+Fem+Pl+Dat+Def: stongunum
+    stong+N+Fem+Pl+Gen+Def: stanganna

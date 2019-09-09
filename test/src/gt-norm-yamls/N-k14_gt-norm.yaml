@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    staður+N+Msc+Sg+Nom+Indef: staður
+    staður+N+Msc+Sg+Acc+Indef: stað
+    staður+N+Msc+Sg+Dat+Indef: [stað, staði]
+    staður+N+Msc+Sg+Gen+Indef: staðar
+    staður+N+Msc+Pl+Nom+Indef: staðir
+    staður+N+Msc+Pl+Acc+Indef: staðir
+    staður+N+Msc+Pl+Dat+Indef: støðum
+    staður+N+Msc+Pl+Gen+Indef: staða
+    staður+N+Msc+Sg+Nom+Def: staðurin
+    staður+N+Msc+Sg+Acc+Def: staðin
+    staður+N+Msc+Sg+Dat+Def: [staðnum, staðinum]
+    staður+N+Msc+Sg+Gen+Def: staðarins
+    staður+N+Msc+Pl+Nom+Def: staðirnir
+    staður+N+Msc+Pl+Acc+Def: staðirnar
+    staður+N+Msc+Pl+Dat+Def: støðunum
+    staður+N+Msc+Pl+Gen+Def: staðanna

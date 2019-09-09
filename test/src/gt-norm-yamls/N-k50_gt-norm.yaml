@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    skjøldur+N+Msc+Sg+Nom+Indef: skjøldur
+    skjøldur+N+Msc+Sg+Acc+Indef: [skjøldur, skjøld]
+    skjøldur+N+Msc+Sg+Dat+Indef: [skjøldri, skildri, skildi]
+    skjøldur+N+Msc+Sg+Gen+Indef: [skjaldrar, skjaldar]
+    skjøldur+N+Msc+Pl+Nom+Indef: [skjøldrar, skjøldir, skildir]
+    skjøldur+N+Msc+Pl+Acc+Indef: [skjøldrar, skjøldir, skildir]
+    skjøldur+N+Msc+Pl+Dat+Indef: [skjøldrum, skjøldum]
+    skjøldur+N+Msc+Pl+Gen+Indef: [skjaldra, skjaldar]
+    skjøldur+N+Msc+Sg+Nom+Def: skjøldurin
+    skjøldur+N+Msc+Sg+Acc+Def: [skjøldurin, skjøldin]
+    skjøldur+N+Msc+Sg+Dat+Def: [skjøldrinum, skildrinum, skildinum]
+    skjøldur+N+Msc+Sg+Gen+Def: [skjaldrarinnar, skjaldarinnar]
+    skjøldur+N+Msc+Pl+Nom+Def: [skjøldrarnir, skjøldirnir, skildirnir]
+    skjøldur+N+Msc+Pl+Acc+Def: [skjøldrarnar, skjøldirnar, skildirnar]
+    skjøldur+N+Msc+Pl+Dat+Def: [skjøldrunum, skjøldunum]
+    skjøldur+N+Msc+Pl+Gen+Def: [skjaldranna, skjaldaranna]

@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    lag+N+Neu+Sg+Nom+Indef: lag
+    lag+N+Neu+Sg+Acc+Indef: lag
+    lag+N+Neu+Sg+Dat+Indef: [lagi, lag]
+    lag+N+Neu+Sg+Gen+Indef: lags
+    lag+N+Neu+Pl+Nom+Indef: løg
+    lag+N+Neu+Pl+Acc+Indef: løg
+    lag+N+Neu+Pl+Dat+Indef: løgum
+    lag+N+Neu+Pl+Gen+Indef: laga
+    lag+N+Neu+Sg+Nom+Def: lagið
+    lag+N+Neu+Sg+Acc+Def: lagið
+    lag+N+Neu+Sg+Dat+Def: lagnum
+    lag+N+Neu+Sg+Gen+Def: lagsins
+    lag+N+Neu+Pl+Nom+Def: løgini
+    lag+N+Neu+Pl+Acc+Def: løgini
+    lag+N+Neu+Pl+Dat+Def: løgunum
+    lag+N+Neu+Pl+Gen+Def: laganna

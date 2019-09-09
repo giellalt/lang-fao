@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    kilo+N+Neu+Sg+Nom+Indef: kilo
+    kilo+N+Neu+Sg+Acc+Indef: kilo
+    kilo+N+Neu+Sg+Dat+Indef: [kilo, kiloi]
+    kilo+N+Neu+Sg+Gen+Indef: kilos
+    kilo+N+Neu+Pl+Nom+Indef: kilo
+    kilo+N+Neu+Pl+Acc+Indef: kilo
+    kilo+N+Neu+Pl+Dat+Indef: kiloum
+    kilo+N+Neu+Pl+Gen+Indef: kiloa
+    kilo+N+Neu+Sg+Nom+Def: kiloið
+    kilo+N+Neu+Sg+Acc+Def: kiloið
+    kilo+N+Neu+Sg+Dat+Def: kilonum
+    kilo+N+Neu+Sg+Gen+Def: kilosins
+    kilo+N+Neu+Pl+Nom+Def: kiloini
+    kilo+N+Neu+Pl+Acc+Def: kiloini
+    kilo+N+Neu+Pl+Dat+Def: kilounum
+    kilo+N+Neu+Pl+Gen+Def: kiloanna

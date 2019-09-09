@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    setur+N+Neu+Sg+Nom+Indef: setur
+    setur+N+Neu+Sg+Acc+Indef: setur
+    setur+N+Neu+Sg+Dat+Indef: setri
+    setur+N+Neu+Sg+Gen+Indef: seturs
+    setur+N+Neu+Pl+Nom+Indef: setur
+    setur+N+Neu+Pl+Acc+Indef: setur
+    setur+N+Neu+Pl+Dat+Indef: setrum
+    setur+N+Neu+Pl+Gen+Indef: setra
+    setur+N+Neu+Sg+Nom+Def: setrið
+    setur+N+Neu+Sg+Acc+Def: setrið
+    setur+N+Neu+Sg+Dat+Def: setrinum
+    setur+N+Neu+Sg+Gen+Def: setursins
+    setur+N+Neu+Pl+Nom+Def: setrini
+    setur+N+Neu+Pl+Acc+Def: setrini
+    setur+N+Neu+Pl+Dat+Def: setrunum
+    setur+N+Neu+Pl+Gen+Def: setranna

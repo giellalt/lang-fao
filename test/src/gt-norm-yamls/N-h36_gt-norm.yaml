@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    evangelium+N+Neu+Sg+Nom+Indef: evangelium
+    evangelium+N+Neu+Sg+Acc+Indef: evangelium
+    evangelium+N+Neu+Sg+Dat+Indef: evangelii
+    evangelium+N+Neu+Sg+Gen+Indef: evangeliis
+    evangelium+N+Neu+Pl+Nom+Indef: [evangelii, evangeliir]
+    evangelium+N+Neu+Pl+Acc+Indef: [evangelii, evangeliir]
+    evangelium+N+Neu+Pl+Dat+Indef: evangelium
+    evangelium+N+Neu+Pl+Gen+Indef: evangelia
+    evangelium+N+Neu+Sg+Nom+Def: evangeliið
+    evangelium+N+Neu+Sg+Acc+Def: evangeliið
+    evangelium+N+Neu+Sg+Dat+Def: evangeliinum
+    evangelium+N+Neu+Sg+Gen+Def: evangeliisins
+    evangelium+N+Neu+Pl+Nom+Def: evangeliini
+    evangelium+N+Neu+Pl+Acc+Def: evangeliini
+    evangelium+N+Neu+Pl+Dat+Def: evangeliunum
+    evangelium+N+Neu+Pl+Gen+Def: evangelianna

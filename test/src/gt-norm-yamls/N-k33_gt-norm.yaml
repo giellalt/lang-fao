@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    hylur+N+Msc+Sg+Nom+Indef: hylur
+    hylur+N+Msc+Sg+Acc+Indef: hyl
+    hylur+N+Msc+Sg+Dat+Indef: hyli
+    hylur+N+Msc+Sg+Gen+Indef: [hyljar, hyls]
+    hylur+N+Msc+Pl+Nom+Indef: hyljar
+    hylur+N+Msc+Pl+Acc+Indef: hyljar
+    hylur+N+Msc+Pl+Dat+Indef: hyljum
+    hylur+N+Msc+Pl+Gen+Indef: hylja
+    hylur+N+Msc+Sg+Nom+Def: hylurin
+    hylur+N+Msc+Sg+Acc+Def: hylin
+    hylur+N+Msc+Sg+Dat+Def: hylinum
+    hylur+N+Msc+Sg+Gen+Def: [hyljarins, hylsins]
+    hylur+N+Msc+Pl+Nom+Def: hyljarnir
+    hylur+N+Msc+Pl+Acc+Def: hyljarnar
+    hylur+N+Msc+Pl+Dat+Def: hyljunum
+    hylur+N+Msc+Pl+Gen+Def: hyljanna

@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    stuðul+N+Msc+Sg+Nom+Indef: stuðul
+    stuðul+N+Msc+Sg+Acc+Indef: stuðul
+    stuðul+N+Msc+Sg+Dat+Indef: stuðli
+    stuðul+N+Msc+Sg+Gen+Indef: stuðuls
+    stuðul+N+Msc+Pl+Nom+Indef: stuðlar
+    stuðul+N+Msc+Pl+Acc+Indef: stuðlar
+    stuðul+N+Msc+Pl+Dat+Indef: stuðlum
+    stuðul+N+Msc+Pl+Gen+Indef: stuðla
+    stuðul+N+Msc+Sg+Nom+Def: stuðulin
+    stuðul+N+Msc+Sg+Acc+Def: stuðulin
+    stuðul+N+Msc+Sg+Dat+Def: stuðlinum
+    stuðul+N+Msc+Sg+Gen+Def: stuðulsins
+    stuðul+N+Msc+Pl+Nom+Def: stuðlarnir
+    stuðul+N+Msc+Pl+Acc+Def: stuðlarnar
+    stuðul+N+Msc+Pl+Dat+Def: stuðlunum
+    stuðul+N+Msc+Pl+Gen+Def: stuðlanna

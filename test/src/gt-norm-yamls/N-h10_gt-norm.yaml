@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    fall+N+Neu+Sg+Nom+Indef: fall
+    fall+N+Neu+Sg+Acc+Indef: fall
+    fall+N+Neu+Sg+Dat+Indef: falli
+    fall+N+Neu+Sg+Gen+Indef: fals
+    fall+N+Neu+Pl+Nom+Indef: føll
+    fall+N+Neu+Pl+Acc+Indef: føll
+    fall+N+Neu+Pl+Dat+Indef: føllum
+    fall+N+Neu+Pl+Gen+Indef: falla
+    fall+N+Neu+Sg+Nom+Def: fallið
+    fall+N+Neu+Sg+Acc+Def: fallið
+    fall+N+Neu+Sg+Dat+Def: fallinum
+    fall+N+Neu+Sg+Gen+Def: falsins
+    fall+N+Neu+Pl+Nom+Def: føllini
+    fall+N+Neu+Pl+Acc+Def: føllini
+    fall+N+Neu+Pl+Dat+Def: føllunum
+    fall+N+Neu+Pl+Gen+Def: fallanna

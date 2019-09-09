@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    primus+N+Msc+Sg+Nom+Indef: primus
+    primus+N+Msc+Sg+Acc+Indef: primus
+    primus+N+Msc+Sg+Dat+Indef: primusi
+    primus+N+Msc+Sg+Gen+Indef: primus
+    primus+N+Msc+Pl+Nom+Indef: primusar
+    primus+N+Msc+Pl+Acc+Indef: primusar
+    primus+N+Msc+Pl+Dat+Indef: primusum
+    primus+N+Msc+Pl+Gen+Indef: primusa
+    primus+N+Msc+Sg+Nom+Def: primusin
+    primus+N+Msc+Sg+Acc+Def: primusin
+    primus+N+Msc+Sg+Dat+Def: primusinum
+    primus+N+Msc+Sg+Gen+Def: primusins
+    primus+N+Msc+Pl+Nom+Def: primusarnir
+    primus+N+Msc+Pl+Acc+Def: primusarnar
+    primus+N+Msc+Pl+Dat+Def: primusunum
+    primus+N+Msc+Pl+Gen+Def: primusanna

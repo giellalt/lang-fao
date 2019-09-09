@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    bróðir+N+Msc+Sg+Nom+Indef: bróðir
+    bróðir+N+Msc+Sg+Acc+Indef: bróður
+    bróðir+N+Msc+Sg+Dat+Indef: bróður
+    bróðir+N+Msc+Sg+Gen+Indef: bróður
+    bróðir+N+Msc+Pl+Nom+Indef: brøður
+    bróðir+N+Msc+Pl+Acc+Indef: brøður
+    bróðir+N+Msc+Pl+Dat+Indef: brøðrum
+    bróðir+N+Msc+Pl+Gen+Indef: brøðra
+    bróðir+N+Msc+Sg+Nom+Def: bróðirin
+    bróðir+N+Msc+Sg+Acc+Def: bróðurin
+    bróðir+N+Msc+Sg+Dat+Def: [bróðurinum, bróðrinum]
+    bróðir+N+Msc+Sg+Gen+Def: bróðursins
+    bróðir+N+Msc+Pl+Nom+Def: brøðurnir
+    bróðir+N+Msc+Pl+Acc+Def: brøðurnar
+    bróðir+N+Msc+Pl+Dat+Def: brøðrunum
+    bróðir+N+Msc+Pl+Gen+Def: brøðranna

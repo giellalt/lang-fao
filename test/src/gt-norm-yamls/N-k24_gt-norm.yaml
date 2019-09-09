@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    fløttur+N+Msc+Sg+Nom+Indef: fløttur
+    fløttur+N+Msc+Sg+Acc+Indef: fløtt
+    fløttur+N+Msc+Sg+Dat+Indef: fløtti
+    fløttur+N+Msc+Sg+Gen+Indef: flattar
+    fløttur+N+Msc+Pl+Nom+Indef: fløttar
+    fløttur+N+Msc+Pl+Acc+Indef: fløttar
+    fløttur+N+Msc+Pl+Dat+Indef: fløttum
+    fløttur+N+Msc+Pl+Gen+Indef: flatta
+    fløttur+N+Msc+Sg+Nom+Def: fløtturin
+    fløttur+N+Msc+Sg+Acc+Def: fløttin
+    fløttur+N+Msc+Sg+Dat+Def: fløttinum
+    fløttur+N+Msc+Sg+Gen+Def: flattarins
+    fløttur+N+Msc+Pl+Nom+Def: fløttarnir
+    fløttur+N+Msc+Pl+Acc+Def: fløttarnar
+    fløttur+N+Msc+Pl+Dat+Def: fløttunum
+    fløttur+N+Msc+Pl+Gen+Def: flattanna

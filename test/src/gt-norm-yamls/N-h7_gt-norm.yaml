@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    bræv+N+Neu+Sg+Nom+Indef: bræv
+    bræv+N+Neu+Sg+Acc+Indef: bræv
+    bræv+N+Neu+Sg+Dat+Indef: brævi
+    bræv+N+Neu+Sg+Gen+Indef: brævs
+    bræv+N+Neu+Pl+Nom+Indef: brøv
+    bræv+N+Neu+Pl+Acc+Indef: brøv
+    bræv+N+Neu+Pl+Dat+Indef: brøvum
+    bræv+N+Neu+Pl+Gen+Indef: bræva
+    bræv+N+Neu+Sg+Nom+Def: brævið
+    bræv+N+Neu+Sg+Acc+Def: brævið
+    bræv+N+Neu+Sg+Dat+Def: brævinum
+    bræv+N+Neu+Sg+Gen+Def: brævsins
+    bræv+N+Neu+Pl+Nom+Def: brøvini
+    bræv+N+Neu+Pl+Acc+Def: brøvini
+    bræv+N+Neu+Pl+Dat+Def: brøvunum
+    bræv+N+Neu+Pl+Gen+Def: brævanna

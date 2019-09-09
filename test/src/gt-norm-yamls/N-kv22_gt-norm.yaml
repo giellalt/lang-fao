@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    klógv+N+Fem+Sg+Nom+Indef: klógv
+    klógv+N+Fem+Sg+Acc+Indef: klógv
+    klógv+N+Fem+Sg+Dat+Indef: klógv
+    klógv+N+Fem+Sg+Gen+Indef: klóar
+    klógv+N+Fem+Pl+Nom+Indef: kløur
+    klógv+N+Fem+Pl+Dat+Indef: klóm
+    klógv+N+Fem+Pl+Gen+Indef: klógva
+    klógv+N+Fem+Sg+Nom+Def: klógvin
+    klógv+N+Fem+Sg+Acc+Def: klónna
+    klógv+N+Fem+Sg+Dat+Def: klónni
+    klógv+N+Fem+Sg+Gen+Def: klóarinnar
+    klógv+N+Fem+Pl+Nom+Def: klørnar
+    klógv+N+Fem+Pl+Dat+Def: [klónum, klørnum]
+    klógv+N+Fem+Pl+Gen+Def: klógvanna

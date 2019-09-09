@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    bógvur+N+Msc+Sg+Nom+Indef: bógvur
+    bógvur+N+Msc+Sg+Acc+Indef: bógv
+    bógvur+N+Msc+Sg+Dat+Indef: [bøgi, bógvi]
+    bógvur+N+Msc+Sg+Gen+Indef: bógs
+    bógvur+N+Msc+Pl+Nom+Indef: [bøgir, bógvar]
+    bógvur+N+Msc+Pl+Acc+Indef: [bøgir, bógvar]
+    bógvur+N+Msc+Pl+Dat+Indef: bógvum
+    bógvur+N+Msc+Pl+Gen+Indef: bógva
+    bógvur+N+Msc+Sg+Nom+Def: bógvurin
+    bógvur+N+Msc+Sg+Acc+Def: bógvin
+    bógvur+N+Msc+Sg+Dat+Def: [bógnum, bógvinum]
+    bógvur+N+Msc+Sg+Gen+Def: bógsins
+    bógvur+N+Msc+Pl+Nom+Def: [bøgirnir, bógvarnir]
+    bógvur+N+Msc+Pl+Acc+Def: [bøgirnar, bógvarnar]
+    bógvur+N+Msc+Pl+Dat+Def: bógvunum
+    bógvur+N+Msc+Pl+Gen+Def: bógvanna

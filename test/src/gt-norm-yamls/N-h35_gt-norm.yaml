@@ -1,0 +1,19 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    kalsium+N+Neu+Sg+Nom+Indef: kalsium
+    kalsium+N+Neu+Sg+Acc+Indef: kalsium
+    kalsium+N+Neu+Sg+Dat+Indef: kalsiumi
+    kalsium+N+Neu+Sg+Gen+Indef: kalsiums
+    kalsium+N+Neu+Sg+Nom+Def: kalsiumið
+    kalsium+N+Neu+Sg+Acc+Def: kalsiumið
+    kalsium+N+Neu+Sg+Dat+Def: kalsiuminum
+    kalsium+N+Neu+Sg+Gen+Def: kalsiumsins

@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    mýri+N+Fem+Sg+Nom+Indef: mýri
+    mýri+N+Fem+Sg+Acc+Indef: mýri
+    mýri+N+Fem+Sg+Dat+Indef: mýri
+    mýri+N+Fem+Sg+Gen+Indef: mýrar
+    mýri+N+Fem+Pl+Nom+Indef: mýrar
+    mýri+N+Fem+Pl+Dat+Indef: mýrum
+    mýri+N+Fem+Pl+Gen+Indef: mýra
+    mýri+N+Fem+Sg+Nom+Def: mýrin
+    mýri+N+Fem+Sg+Acc+Def: mýrina
+    mýri+N+Fem+Sg+Dat+Def: mýrini
+    mýri+N+Fem+Sg+Gen+Def: mýrarinnar
+    mýri+N+Fem+Pl+Nom+Def: mýrarnar
+    mýri+N+Fem+Pl+Dat+Def: mýrunum
+    mýri+N+Fem+Pl+Gen+Def: mýranna

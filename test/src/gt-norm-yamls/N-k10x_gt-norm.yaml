@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    hemar+N+Msc+Sg+Nom+Indef: hemar
+    hemar+N+Msc+Sg+Acc+Indef: hemar
+    hemar+N+Msc+Sg+Dat+Indef: hemri
+    hemar+N+Msc+Sg+Gen+Indef: hemars
+    hemar+N+Msc+Pl+Nom+Indef: hemrar
+    hemar+N+Msc+Pl+Acc+Indef: hemrar
+    hemar+N+Msc+Pl+Dat+Indef: hemrum
+    hemar+N+Msc+Pl+Gen+Indef: hemra
+    hemar+N+Msc+Sg+Nom+Def: hemarin
+    hemar+N+Msc+Sg+Acc+Def: hemarin
+    hemar+N+Msc+Sg+Dat+Def: hemrinum
+    hemar+N+Msc+Sg+Gen+Def: hemarsins
+    hemar+N+Msc+Pl+Nom+Def: hemrarnir
+    hemar+N+Msc+Pl+Acc+Def: hemrarnar
+    hemar+N+Msc+Pl+Dat+Def: hemrunum
+    hemar+N+Msc+Pl+Gen+Def: hemranna

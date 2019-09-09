@@ -1,0 +1,19 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    mógvur+N+Msc+Sg+Nom+Indef: mógvur
+    mógvur+N+Msc+Sg+Acc+Indef: mógv
+    mógvur+N+Msc+Sg+Dat+Indef: mógvi
+    mógvur+N+Msc+Sg+Gen+Indef: mós
+    mógvur+N+Msc+Sg+Nom+Def: mógvurin
+    mógvur+N+Msc+Sg+Acc+Def: mógvin
+    mógvur+N+Msc+Sg+Dat+Def: mónum
+    mógvur+N+Msc+Sg+Gen+Def: mósins

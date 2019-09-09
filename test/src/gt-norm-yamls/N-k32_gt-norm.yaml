@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    ryggur+N+Msc+Sg+Nom+Indef: ryggur
+    ryggur+N+Msc+Sg+Acc+Indef: rygg
+    ryggur+N+Msc+Sg+Dat+Indef: ryggi
+    ryggur+N+Msc+Sg+Gen+Indef: [ryggjar, rygs]
+    ryggur+N+Msc+Pl+Nom+Indef: ryggir
+    ryggur+N+Msc+Pl+Acc+Indef: ryggir
+    ryggur+N+Msc+Pl+Dat+Indef: ryggjum
+    ryggur+N+Msc+Pl+Gen+Indef: ryggja
+    ryggur+N+Msc+Sg+Nom+Def: ryggurin
+    ryggur+N+Msc+Sg+Acc+Def: ryggin
+    ryggur+N+Msc+Sg+Dat+Def: rygginum
+    ryggur+N+Msc+Sg+Gen+Def: [ryggjarins, rygsins]
+    ryggur+N+Msc+Pl+Nom+Def: ryggirnir
+    ryggur+N+Msc+Pl+Acc+Def: ryggirnar
+    ryggur+N+Msc+Pl+Dat+Def: ryggjunum
+    ryggur+N+Msc+Pl+Gen+Def: ryggjanna

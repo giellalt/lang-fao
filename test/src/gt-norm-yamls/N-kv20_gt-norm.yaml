@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    ær+N+Fem+Sg+Nom+Indef: ær
+    ær+N+Fem+Sg+Acc+Indef: ær
+    ær+N+Fem+Sg+Dat+Indef: ær
+    ær+N+Fem+Sg+Gen+Indef: ær
+    ær+N+Fem+Pl+Nom+Indef: ær
+    ær+N+Fem+Pl+Dat+Indef: óm
+    ær+N+Fem+Pl+Gen+Indef: áa
+    ær+N+Fem+Sg+Nom+Def: ærin
+    ær+N+Fem+Sg+Acc+Def: ærina
+    ær+N+Fem+Sg+Dat+Def: ærini
+    ær+N+Fem+Sg+Gen+Def: ærinnar
+    ær+N+Fem+Pl+Nom+Def: ærnar
+    ær+N+Fem+Pl+Dat+Def: [ónum, ærnum]
+    ær+N+Fem+Pl+Gen+Def: áanna

@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    kvæði+N+Neu+Sg+Nom+Indef: kvæði
+    kvæði+N+Neu+Sg+Acc+Indef: kvæði
+    kvæði+N+Neu+Sg+Dat+Indef: kvæði
+    kvæði+N+Neu+Sg+Gen+Indef: kvæðis
+    kvæði+N+Neu+Pl+Nom+Indef: [kvæði, kvæðir]
+    kvæði+N+Neu+Pl+Acc+Indef: [kvæði, kvæðir]
+    kvæði+N+Neu+Pl+Dat+Indef: kvæðum
+    kvæði+N+Neu+Pl+Gen+Indef: kvæða
+    kvæði+N+Neu+Sg+Nom+Def: kvæðið
+    kvæði+N+Neu+Sg+Acc+Def: kvæðið
+    kvæði+N+Neu+Sg+Dat+Def: kvæðinum
+    kvæði+N+Neu+Sg+Gen+Def: kvæðisins
+    kvæði+N+Neu+Pl+Nom+Def: kvæðini
+    kvæði+N+Neu+Pl+Acc+Def: kvæðini
+    kvæði+N+Neu+Pl+Dat+Def: kvæðunum
+    kvæði+N+Neu+Pl+Gen+Def: kvæðanna

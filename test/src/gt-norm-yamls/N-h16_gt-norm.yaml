@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    skýggj+N+Neu+Sg+Nom+Indef: skýggj
+    skýggj+N+Neu+Sg+Acc+Indef: skýggj
+    skýggj+N+Neu+Sg+Dat+Indef: [skýggi, skýggj]
+    skýggj+N+Neu+Sg+Gen+Indef: skýs
+    skýggj+N+Neu+Pl+Nom+Indef: skýggj
+    skýggj+N+Neu+Pl+Acc+Indef: skýggj
+    skýggj+N+Neu+Pl+Dat+Indef: skýggjum
+    skýggj+N+Neu+Pl+Gen+Indef: skýggja
+    skýggj+N+Neu+Sg+Nom+Def: skýggið
+    skýggj+N+Neu+Sg+Acc+Def: skýggið
+    skýggj+N+Neu+Sg+Dat+Def: [skýgginum, skýnum]
+    skýggj+N+Neu+Sg+Gen+Def: skýsins
+    skýggj+N+Neu+Pl+Nom+Def: skýggini
+    skýggj+N+Neu+Pl+Acc+Def: skýggini
+    skýggj+N+Neu+Pl+Dat+Def: skýggjunum
+    skýggj+N+Neu+Pl+Gen+Def: skýggjanna

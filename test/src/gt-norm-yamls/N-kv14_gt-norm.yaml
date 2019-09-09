@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    nátt+N+Fem+Sg+Nom+Indef: nátt
+    nátt+N+Fem+Sg+Acc+Indef: nátt
+    nátt+N+Fem+Sg+Dat+Indef: nátt
+    nátt+N+Fem+Sg+Gen+Indef: náttar
+    nátt+N+Fem+Pl+Nom+Indef: nætur
+    nátt+N+Fem+Pl+Dat+Indef: náttum
+    nátt+N+Fem+Pl+Gen+Indef: nátta
+    nátt+N+Fem+Sg+Nom+Def: náttin
+    nátt+N+Fem+Sg+Acc+Def: náttina
+    nátt+N+Fem+Sg+Dat+Def: náttini
+    nátt+N+Fem+Sg+Gen+Def: náttarinnar
+    nátt+N+Fem+Pl+Nom+Def: næturnar
+    nátt+N+Fem+Pl+Dat+Def: náttunum
+    nátt+N+Fem+Pl+Gen+Def: náttanna

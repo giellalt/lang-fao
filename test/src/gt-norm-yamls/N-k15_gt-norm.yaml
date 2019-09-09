@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    gestur+N+Msc+Sg+Nom+Indef: gestur
+    gestur+N+Msc+Sg+Acc+Indef: gest
+    gestur+N+Msc+Sg+Dat+Indef: gesti
+    gestur+N+Msc+Sg+Gen+Indef: gests
+    gestur+N+Msc+Pl+Nom+Indef: gestir
+    gestur+N+Msc+Pl+Acc+Indef: gestir
+    gestur+N+Msc+Pl+Dat+Indef: gestum
+    gestur+N+Msc+Pl+Gen+Indef: gesta
+    gestur+N+Msc+Sg+Nom+Def: gesturin
+    gestur+N+Msc+Sg+Acc+Def: gestin
+    gestur+N+Msc+Sg+Dat+Def: gestinum
+    gestur+N+Msc+Sg+Gen+Def: gestsins
+    gestur+N+Msc+Pl+Nom+Def: gestirnir
+    gestur+N+Msc+Pl+Acc+Def: gestirnar
+    gestur+N+Msc+Pl+Dat+Def: gestunum
+    gestur+N+Msc+Pl+Gen+Def: gestanna

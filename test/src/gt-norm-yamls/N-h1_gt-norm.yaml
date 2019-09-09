@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    eyga+N+Neu+Sg+Nom+Indef: eyga
+    eyga+N+Neu+Sg+Acc+Indef: eyga
+    eyga+N+Neu+Sg+Dat+Indef: eyga
+    eyga+N+Neu+Sg+Gen+Indef: eyga
+    eyga+N+Neu+Pl+Nom+Indef: [eygu, eygur]
+    eyga+N+Neu+Pl+Acc+Indef: [eygu, eygur]
+    eyga+N+Neu+Pl+Dat+Indef: eygum
+    eyga+N+Neu+Pl+Gen+Indef: eygna
+    eyga+N+Neu+Sg+Nom+Def: eygað
+    eyga+N+Neu+Sg+Acc+Def: eygað
+    eyga+N+Neu+Sg+Dat+Def: eyganum
+    eyga+N+Neu+Sg+Gen+Def: eygans
+    eyga+N+Neu+Pl+Nom+Def: eyguni
+    eyga+N+Neu+Pl+Acc+Def: eyguni
+    eyga+N+Neu+Pl+Dat+Def: eygunum
+    eyga+N+Neu+Pl+Gen+Def: eygnanna

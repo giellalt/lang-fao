@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    veggur+N+Msc+Sg+Nom+Indef: veggur
+    veggur+N+Msc+Sg+Acc+Indef: vegg
+    veggur+N+Msc+Sg+Dat+Indef: veggi
+    veggur+N+Msc+Sg+Gen+Indef: veggjar
+    veggur+N+Msc+Pl+Nom+Indef: veggir
+    veggur+N+Msc+Pl+Acc+Indef: veggir
+    veggur+N+Msc+Pl+Dat+Indef: veggjum
+    veggur+N+Msc+Pl+Gen+Indef: veggja
+    veggur+N+Msc+Sg+Nom+Def: veggurin
+    veggur+N+Msc+Sg+Acc+Def: veggin
+    veggur+N+Msc+Sg+Dat+Def: vegginum
+    veggur+N+Msc+Sg+Gen+Def: veggjarins
+    veggur+N+Msc+Pl+Nom+Def: veggirnir
+    veggur+N+Msc+Pl+Acc+Def: veggirnar
+    veggur+N+Msc+Pl+Dat+Def: veggjunum
+    veggur+N+Msc+Pl+Gen+Def: veggjanna

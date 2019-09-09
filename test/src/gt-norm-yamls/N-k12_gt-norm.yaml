@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    vinur+N+Msc+Sg+Nom+Indef: vinur
+    vinur+N+Msc+Sg+Acc+Indef: vin
+    vinur+N+Msc+Sg+Dat+Indef: vini
+    vinur+N+Msc+Sg+Gen+Indef: vinar
+    vinur+N+Msc+Pl+Nom+Indef: vinir
+    vinur+N+Msc+Pl+Acc+Indef: vinir
+    vinur+N+Msc+Pl+Dat+Indef: vinum
+    vinur+N+Msc+Pl+Gen+Indef: vina
+    vinur+N+Msc+Sg+Nom+Def: vinurin
+    vinur+N+Msc+Sg+Acc+Def: vinin
+    vinur+N+Msc+Sg+Dat+Def: vininum
+    vinur+N+Msc+Sg+Gen+Def: vinarins
+    vinur+N+Msc+Pl+Nom+Def: vinirnir
+    vinur+N+Msc+Pl+Acc+Def: vinirnar
+    vinur+N+Msc+Pl+Dat+Def: vinunum
+    vinur+N+Msc+Pl+Gen+Def: vinanna

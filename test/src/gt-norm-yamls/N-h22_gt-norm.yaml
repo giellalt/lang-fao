@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    ber+N+Neu+Sg+Nom+Indef: ber
+    ber+N+Neu+Sg+Acc+Indef: ber
+    ber+N+Neu+Sg+Dat+Indef: beri
+    ber+N+Neu+Sg+Gen+Indef: bers
+    ber+N+Neu+Pl+Nom+Indef: ber
+    ber+N+Neu+Pl+Acc+Indef: ber
+    ber+N+Neu+Pl+Dat+Indef: [berum, berjum]
+    ber+N+Neu+Pl+Gen+Indef: berja
+    ber+N+Neu+Sg+Nom+Def: berið
+    ber+N+Neu+Sg+Acc+Def: berið
+    ber+N+Neu+Sg+Dat+Def: berinum
+    ber+N+Neu+Sg+Gen+Def: bersins
+    ber+N+Neu+Pl+Nom+Def: berini
+    ber+N+Neu+Pl+Acc+Def: berini
+    ber+N+Neu+Pl+Dat+Def: [berunum, berjunum]
+    ber+N+Neu+Pl+Gen+Def: berjanna

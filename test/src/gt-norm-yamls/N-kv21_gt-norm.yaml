@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    gjógv+N+Fem+Sg+Nom+Indef: gjógv
+    gjógv+N+Fem+Sg+Acc+Indef: gjógv
+    gjógv+N+Fem+Sg+Dat+Indef: gjógv
+    gjógv+N+Fem+Sg+Gen+Indef: gjáar
+    gjógv+N+Fem+Pl+Nom+Indef: gjáir
+    gjógv+N+Fem+Pl+Dat+Indef: gjáum
+    gjógv+N+Fem+Pl+Gen+Indef: gjáa
+    gjógv+N+Fem+Sg+Nom+Def: gjógvin
+    gjógv+N+Fem+Sg+Acc+Def: gjónna
+    gjógv+N+Fem+Sg+Dat+Def: gjónni
+    gjógv+N+Fem+Sg+Gen+Def: gjáarinnar
+    gjógv+N+Fem+Pl+Nom+Def: gjáirnar
+    gjógv+N+Fem+Pl+Dat+Def: gjáunum
+    gjógv+N+Fem+Pl+Gen+Def: gjáanna

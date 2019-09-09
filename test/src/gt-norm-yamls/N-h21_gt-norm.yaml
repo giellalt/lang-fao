@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    plógv+N+Neu+Sg+Nom+Indef: plógv
+    plógv+N+Neu+Sg+Acc+Indef: plógv
+    plógv+N+Neu+Sg+Dat+Indef: plógvi
+    plógv+N+Neu+Sg+Gen+Indef: plógs
+    plógv+N+Neu+Pl+Nom+Indef: plógv
+    plógv+N+Neu+Pl+Acc+Indef: plógv
+    plógv+N+Neu+Pl+Dat+Indef: plógvum
+    plógv+N+Neu+Pl+Gen+Indef: plógva
+    plógv+N+Neu+Sg+Nom+Def: plógvið
+    plógv+N+Neu+Sg+Acc+Def: plógvið
+    plógv+N+Neu+Sg+Dat+Def: plógnum
+    plógv+N+Neu+Sg+Gen+Def: plógsins
+    plógv+N+Neu+Pl+Nom+Def: plógvini
+    plógv+N+Neu+Pl+Acc+Def: plógvini
+    plógv+N+Neu+Pl+Dat+Def: plógvunum
+    plógv+N+Neu+Pl+Gen+Def: plógvanna

@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    pístr+N+Neu+Sg+Nom+Indef: pístr
+    pístr+N+Neu+Sg+Acc+Indef: pístr
+    pístr+N+Neu+Sg+Dat+Indef: pístri
+    pístr+N+Neu+Sg+Gen+Indef: písturs
+    pístr+N+Neu+Pl+Nom+Indef: pístr
+    pístr+N+Neu+Pl+Acc+Indef: pístr
+    pístr+N+Neu+Pl+Dat+Indef: pístrum
+    pístr+N+Neu+Pl+Gen+Indef: pístra
+    pístr+N+Neu+Sg+Nom+Def: pístrið
+    pístr+N+Neu+Sg+Acc+Def: pístrið
+    pístr+N+Neu+Sg+Dat+Def: pístrinum
+    pístr+N+Neu+Sg+Gen+Def: pístursins
+    pístr+N+Neu+Pl+Nom+Def: pístrini
+    pístr+N+Neu+Pl+Acc+Def: pístrini
+    pístr+N+Neu+Pl+Dat+Def: pístrunum
+    pístr+N+Neu+Pl+Gen+Def: pístranna

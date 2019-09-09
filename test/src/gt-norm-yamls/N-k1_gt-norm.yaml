@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    risi+N+Msc+Sg+Nom+Indef: risi
+    risi+N+Msc+Sg+Acc+Indef: risa
+    risi+N+Msc+Sg+Dat+Indef: risa
+    risi+N+Msc+Sg+Gen+Indef: risa
+    risi+N+Msc+Pl+Nom+Indef: risar
+    risi+N+Msc+Pl+Acc+Indef: risar
+    risi+N+Msc+Pl+Dat+Indef: risum
+    risi+N+Msc+Pl+Gen+Indef: risa
+    risi+N+Msc+Sg+Nom+Def: risin
+    risi+N+Msc+Sg+Acc+Def: risan
+    risi+N+Msc+Sg+Dat+Def: risanum
+    risi+N+Msc+Sg+Gen+Def: risans
+    risi+N+Msc+Pl+Nom+Def: risarnir
+    risi+N+Msc+Pl+Acc+Def: risarnar
+    risi+N+Msc+Pl+Dat+Def: risunum
+    risi+N+Msc+Pl+Gen+Def: risanna

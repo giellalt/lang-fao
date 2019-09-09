@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    sjógvur+N+Msc+Sg+Nom+Indef: sjógvur
+    sjógvur+N+Msc+Sg+Acc+Indef: sjógv
+    sjógvur+N+Msc+Sg+Dat+Indef: sjógvi
+    sjógvur+N+Msc+Sg+Gen+Indef: sjóvar
+    sjógvur+N+Msc+Pl+Nom+Indef: sjógvar
+    sjógvur+N+Msc+Pl+Acc+Indef: sjógvar
+    sjógvur+N+Msc+Pl+Dat+Indef: sjógvum
+    sjógvur+N+Msc+Pl+Gen+Indef: sjógva
+    sjógvur+N+Msc+Sg+Nom+Def: sjógvurin
+    sjógvur+N+Msc+Sg+Acc+Def: sjógvin
+    sjógvur+N+Msc+Sg+Dat+Def: [sjónum, sjógvinum]
+    sjógvur+N+Msc+Sg+Gen+Def: sjóvarins
+    sjógvur+N+Msc+Pl+Nom+Def: sjógvarnir
+    sjógvur+N+Msc+Pl+Acc+Def: sjógvarnar
+    sjógvur+N+Msc+Pl+Dat+Def: sjógvunum
+    sjógvur+N+Msc+Pl+Gen+Def: sjógvanna

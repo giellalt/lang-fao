@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    kúgv+N+Fem+Sg+Nom+Indef: kúgv
+    kúgv+N+Fem+Sg+Acc+Indef: kúgv
+    kúgv+N+Fem+Sg+Dat+Indef: kúgv
+    kúgv+N+Fem+Sg+Gen+Indef: kúgvar
+    kúgv+N+Fem+Pl+Nom+Indef: kýr
+    kúgv+N+Fem+Pl+Dat+Indef: kúm
+    kúgv+N+Fem+Pl+Gen+Indef: kúgva
+    kúgv+N+Fem+Sg+Nom+Def: kúgvin
+    kúgv+N+Fem+Sg+Acc+Def: kúnna
+    kúgv+N+Fem+Sg+Dat+Def: kúnni
+    kúgv+N+Fem+Sg+Gen+Def: kúgvarinnar
+    kúgv+N+Fem+Pl+Nom+Def: kýrnar
+    kúgv+N+Fem+Pl+Dat+Def: [kúnum, kýrnum]
+    kúgv+N+Fem+Pl+Gen+Def: kúgvanna

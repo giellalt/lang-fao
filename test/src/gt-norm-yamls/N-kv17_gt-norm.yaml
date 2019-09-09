@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    mastur+N+Fem+Sg+Nom+Indef: mastur
+    mastur+N+Fem+Sg+Acc+Indef: mastur
+    mastur+N+Fem+Sg+Dat+Indef: mastur
+    mastur+N+Fem+Sg+Gen+Indef: mastrar
+    mastur+N+Fem+Pl+Nom+Indef: mastrar
+    mastur+N+Fem+Pl+Dat+Indef: mastrum
+    mastur+N+Fem+Pl+Gen+Indef: mastra
+    mastur+N+Fem+Sg+Nom+Def: masturin
+    mastur+N+Fem+Sg+Acc+Def: mastrina
+    mastur+N+Fem+Sg+Dat+Def: mastrini
+    mastur+N+Fem+Sg+Gen+Def: mastrarinnar
+    mastur+N+Fem+Pl+Nom+Def: mastrarnar
+    mastur+N+Fem+Pl+Dat+Def: mastrunum
+    mastur+N+Fem+Pl+Gen+Def: mastranna

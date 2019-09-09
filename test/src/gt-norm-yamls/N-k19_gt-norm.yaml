@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    meldur+N+Msc+Sg+Nom+Indef: meldur
+    meldur+N+Msc+Sg+Acc+Indef: meldur
+    meldur+N+Msc+Sg+Dat+Indef: meldri
+    meldur+N+Msc+Sg+Gen+Indef: meldurs
+    meldur+N+Msc+Pl+Nom+Indef: meldrar
+    meldur+N+Msc+Pl+Acc+Indef: meldrar
+    meldur+N+Msc+Pl+Dat+Indef: meldrum
+    meldur+N+Msc+Pl+Gen+Indef: meldra
+    meldur+N+Msc+Sg+Nom+Def: meldurin
+    meldur+N+Msc+Sg+Acc+Def: meldurin
+    meldur+N+Msc+Sg+Dat+Def: meldrinum
+    meldur+N+Msc+Sg+Gen+Def: meldursins
+    meldur+N+Msc+Pl+Nom+Def: meldrarnir
+    meldur+N+Msc+Pl+Acc+Def: meldrarnar
+    meldur+N+Msc+Pl+Dat+Def: meldrunum
+    meldur+N+Msc+Pl+Gen+Def: meldranna

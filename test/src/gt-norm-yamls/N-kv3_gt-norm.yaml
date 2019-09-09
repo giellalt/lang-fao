@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    søgn+N+Fem+Sg+Nom+Indef: søgn
+    søgn+N+Fem+Sg+Acc+Indef: søgn
+    søgn+N+Fem+Sg+Dat+Indef: søgn
+    søgn+N+Fem+Sg+Gen+Indef: sagnar
+    søgn+N+Fem+Pl+Nom+Indef: sagnir
+    søgn+N+Fem+Pl+Dat+Indef: [søgnum, sagnum]
+    søgn+N+Fem+Pl+Gen+Indef: sagna
+    søgn+N+Fem+Sg+Nom+Def: søgnin
+    søgn+N+Fem+Sg+Acc+Def: søgnina
+    søgn+N+Fem+Sg+Dat+Def: søgnini
+    søgn+N+Fem+Sg+Gen+Def: sagnarinnar
+    søgn+N+Fem+Pl+Nom+Def: sagnirnar
+    søgn+N+Fem+Pl+Dat+Def: [søgnunum, sagnunum]
+    søgn+N+Fem+Pl+Gen+Def: sagnanna

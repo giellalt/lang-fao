@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    búgv+N+Neu+Sg+Nom+Indef: búgv
+    búgv+N+Neu+Sg+Acc+Indef: búgv
+    búgv+N+Neu+Sg+Dat+Indef: búgvi
+    búgv+N+Neu+Sg+Gen+Indef: bús
+    búgv+N+Neu+Pl+Nom+Indef: búgv
+    búgv+N+Neu+Pl+Acc+Indef: búgv
+    búgv+N+Neu+Pl+Dat+Indef: búgvum
+    búgv+N+Neu+Pl+Gen+Indef: búgva
+    búgv+N+Neu+Sg+Nom+Def: búgvið
+    búgv+N+Neu+Sg+Acc+Def: búgvið
+    búgv+N+Neu+Sg+Dat+Def: búnum
+    búgv+N+Neu+Sg+Gen+Def: búsins
+    búgv+N+Neu+Pl+Nom+Def: búgvini
+    búgv+N+Neu+Pl+Acc+Def: búgvini
+    búgv+N+Neu+Pl+Dat+Def: búgvunum
+    búgv+N+Neu+Pl+Gen+Def: búgvanna

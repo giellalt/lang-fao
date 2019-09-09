@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    vøkstur+N+Msc+Sg+Nom+Indef: vøkstur
+    vøkstur+N+Msc+Sg+Acc+Indef: vøkstur
+    vøkstur+N+Msc+Sg+Dat+Indef: vøkstri
+    vøkstur+N+Msc+Sg+Gen+Indef: vakstrar
+    vøkstur+N+Msc+Pl+Nom+Indef: vøkstrir
+    vøkstur+N+Msc+Pl+Acc+Indef: vøkstrir
+    vøkstur+N+Msc+Pl+Dat+Indef: vøkstrum
+    vøkstur+N+Msc+Pl+Gen+Indef: vakstra
+    vøkstur+N+Msc+Sg+Nom+Def: vøksturin
+    vøkstur+N+Msc+Sg+Acc+Def: vøksturin
+    vøkstur+N+Msc+Sg+Dat+Def: vøkstrinum
+    vøkstur+N+Msc+Sg+Gen+Def: vakstrarins
+    vøkstur+N+Msc+Pl+Nom+Def: vøkstrirnir
+    vøkstur+N+Msc+Pl+Acc+Def: vøkstrirnar
+    vøkstur+N+Msc+Pl+Dat+Def: vøkstrunum
+    vøkstur+N+Msc+Pl+Gen+Def: vakstranna

@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    nummar+N+Neu+Sg+Nom+Indef: nummar
+    nummar+N+Neu+Sg+Acc+Indef: nummar
+    nummar+N+Neu+Sg+Dat+Indef: nummari
+    nummar+N+Neu+Sg+Gen+Indef: nummars
+    nummar+N+Neu+Pl+Nom+Indef: [nummur, nummar]
+    nummar+N+Neu+Pl+Acc+Indef: [nummur, nummar]
+    nummar+N+Neu+Pl+Dat+Indef: numrum
+    nummar+N+Neu+Pl+Gen+Indef: numra
+    nummar+N+Neu+Sg+Nom+Def: nummarið
+    nummar+N+Neu+Sg+Acc+Def: nummarið
+    nummar+N+Neu+Sg+Dat+Def: [nummarinum, numrinum]
+    nummar+N+Neu+Sg+Gen+Def: nummarsins
+    nummar+N+Neu+Pl+Nom+Def: [nummurini, nummarini, numrini]
+    nummar+N+Neu+Pl+Acc+Def: [nummurini, nummarini, numrini]
+    nummar+N+Neu+Pl+Dat+Def: numrunum
+    nummar+N+Neu+Pl+Gen+Def: numranna

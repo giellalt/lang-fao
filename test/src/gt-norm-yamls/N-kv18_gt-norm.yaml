@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    brúður+N+Fem+Sg+Nom+Indef: brúður
+    brúður+N+Fem+Sg+Acc+Indef: brúður
+    brúður+N+Fem+Sg+Dat+Indef: brúður
+    brúður+N+Fem+Sg+Gen+Indef: brúðar
+    brúður+N+Fem+Pl+Nom+Indef: brúðrar
+    brúður+N+Fem+Pl+Dat+Indef: brúðrum
+    brúður+N+Fem+Pl+Gen+Indef: brúðra
+    brúður+N+Fem+Sg+Nom+Def: brúðurin
+    brúður+N+Fem+Sg+Acc+Def: brúðrina
+    brúður+N+Fem+Sg+Dat+Def: brúðrini
+    brúður+N+Fem+Sg+Gen+Def: [brúðarinnar, brúðrarinnar]
+    brúður+N+Fem+Pl+Nom+Def: brúðrarnar
+    brúður+N+Fem+Pl+Dat+Def: brúðrunum
+    brúður+N+Fem+Pl+Gen+Def: brúðranna

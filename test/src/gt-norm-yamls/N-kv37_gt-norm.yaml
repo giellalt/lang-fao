@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    negl+N+Fem+Sg+Nom+Indef: negl
+    negl+N+Fem+Sg+Acc+Indef: negl
+    negl+N+Fem+Sg+Dat+Indef: negl
+    negl+N+Fem+Sg+Gen+Indef: neglar
+    negl+N+Fem+Pl+Nom+Indef: [negl, neglir]
+    negl+N+Fem+Pl+Dat+Indef: neglum
+    negl+N+Fem+Pl+Gen+Indef: negla
+    negl+N+Fem+Sg+Nom+Def: neglin
+    negl+N+Fem+Sg+Acc+Def: neglina
+    negl+N+Fem+Sg+Dat+Def: neglini
+    negl+N+Fem+Sg+Gen+Def: neglarinnar
+    negl+N+Fem+Pl+Nom+Def: [neglinar, neglirnar]
+    negl+N+Fem+Pl+Dat+Def: neglunum
+    negl+N+Fem+Pl+Gen+Def: neglanna

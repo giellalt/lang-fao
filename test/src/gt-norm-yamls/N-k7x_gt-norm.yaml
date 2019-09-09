@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    brýskur+N+Msc+Sg+Nom+Indef: brýskur
+    brýskur+N+Msc+Sg+Acc+Indef: brýsk
+    brýskur+N+Msc+Sg+Dat+Indef: brýski
+    brýskur+N+Msc+Sg+Gen+Indef: brýskar
+    brýskur+N+Msc+Pl+Nom+Indef: brýskar
+    brýskur+N+Msc+Pl+Acc+Indef: brýskar
+    brýskur+N+Msc+Pl+Dat+Indef: brýskum
+    brýskur+N+Msc+Pl+Gen+Indef: brýska
+    brýskur+N+Msc+Sg+Nom+Def: brýskurin
+    brýskur+N+Msc+Sg+Acc+Def: brýskin
+    brýskur+N+Msc+Sg+Dat+Def: brýskinum
+    brýskur+N+Msc+Sg+Gen+Def: brýskarins
+    brýskur+N+Msc+Pl+Nom+Def: brýskarnir
+    brýskur+N+Msc+Pl+Acc+Def: brýskarnar
+    brýskur+N+Msc+Pl+Dat+Def: brýskunum
+    brýskur+N+Msc+Pl+Gen+Def: brýskanna

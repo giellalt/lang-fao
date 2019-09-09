@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - hógvur : # k_40
+    hógvur+N+Msc+Sg+Nom+Indef: hógvur
+    hógvur+N+Msc+Sg+Acc+Indef: hógv
+    hógvur+N+Msc+Sg+Dat+Indef: hógvi
+    hógvur+N+Msc+Sg+Gen+Indef: hóvs
+    hógvur+N+Msc+Pl+Nom+Indef: hógvar
+    hógvur+N+Msc+Pl+Acc+Indef: hógvar
+    hógvur+N+Msc+Pl+Dat+Indef: hógvum
+    hógvur+N+Msc+Pl+Gen+Indef: hógva
+    hógvur+N+Msc+Sg+Nom+Def: hógvurin
+    hógvur+N+Msc+Sg+Acc+Def: hógvin
+    hógvur+N+Msc+Sg+Dat+Def: [hónum, hógvinum]
+    hógvur+N+Msc+Sg+Gen+Def: hóvsins
+    hógvur+N+Msc+Pl+Nom+Def: hógvarnir
+    hógvur+N+Msc+Pl+Acc+Def: hógvarnar
+    hógvur+N+Msc+Pl+Dat+Def: hógvunum
+    hógvur+N+Msc+Pl+Gen+Def: hógvanna

@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    hvalur+N+Msc+Sg+Nom+Indef: hvalur
+    hvalur+N+Msc+Sg+Acc+Indef: hval
+    hvalur+N+Msc+Sg+Dat+Indef: hvali
+    hvalur+N+Msc+Sg+Gen+Indef: hvals
+    hvalur+N+Msc+Pl+Nom+Indef: hvalir
+    hvalur+N+Msc+Pl+Acc+Indef: hvalir
+    hvalur+N+Msc+Pl+Dat+Indef: [hvølum, hvalum]
+    hvalur+N+Msc+Pl+Gen+Indef: hvala
+    hvalur+N+Msc+Sg+Nom+Def: hvalurin
+    hvalur+N+Msc+Sg+Acc+Def: hvalin
+    hvalur+N+Msc+Sg+Dat+Def: hvalinum
+    hvalur+N+Msc+Sg+Gen+Def: hvalsins
+    hvalur+N+Msc+Pl+Nom+Def: hvalirnir
+    hvalur+N+Msc+Pl+Acc+Def: hvalirnar
+    hvalur+N+Msc+Pl+Dat+Def: [hvølunum, hvalunum]
+    hvalur+N+Msc+Pl+Gen+Def: hvalanna

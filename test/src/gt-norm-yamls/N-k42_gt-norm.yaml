@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    dagur+N+Msc+Sg+Nom+Indef: dagur
+    dagur+N+Msc+Sg+Acc+Indef: dag
+    dagur+N+Msc+Sg+Dat+Indef: degi
+    dagur+N+Msc+Sg+Gen+Indef: dags
+    dagur+N+Msc+Pl+Nom+Indef: dagar
+    dagur+N+Msc+Pl+Acc+Indef: dagar
+    dagur+N+Msc+Pl+Dat+Indef: døgum
+    dagur+N+Msc+Pl+Gen+Indef: daga
+    dagur+N+Msc+Sg+Nom+Def: dagurin
+    dagur+N+Msc+Sg+Acc+Def: dagin
+    dagur+N+Msc+Sg+Dat+Def: degnum
+    dagur+N+Msc+Sg+Gen+Def: dagsins
+    dagur+N+Msc+Pl+Nom+Def: dagarnir
+    dagur+N+Msc+Pl+Acc+Def: dagarnar
+    dagur+N+Msc+Pl+Dat+Def: døgunum
+    dagur+N+Msc+Pl+Gen+Def: daganna

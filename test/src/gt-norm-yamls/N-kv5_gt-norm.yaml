@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    øld+N+Fem+Sg+Nom+Indef: øld
+    øld+N+Fem+Sg+Acc+Indef: øld
+    øld+N+Fem+Sg+Dat+Indef: øld
+    øld+N+Fem+Sg+Gen+Indef: aldar
+    øld+N+Fem+Pl+Nom+Indef: øldir
+    øld+N+Fem+Pl+Dat+Indef: øldum
+    øld+N+Fem+Pl+Gen+Indef: alda
+    øld+N+Fem+Sg+Nom+Def: øldin
+    øld+N+Fem+Sg+Acc+Def: øldina
+    øld+N+Fem+Sg+Dat+Def: øldini
+    øld+N+Fem+Sg+Gen+Def: aldarinnar
+    øld+N+Fem+Pl+Nom+Def: øldirnar
+    øld+N+Fem+Pl+Dat+Def: øldunum
+    øld+N+Fem+Pl+Gen+Def: aldanna

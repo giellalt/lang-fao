@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    prógv+N+Neu+Sg+Nom+Indef: prógv
+    prógv+N+Neu+Sg+Acc+Indef: prógv
+    prógv+N+Neu+Sg+Dat+Indef: prógvi
+    prógv+N+Neu+Sg+Gen+Indef: próvs
+    prógv+N+Neu+Pl+Nom+Indef: prógv
+    prógv+N+Neu+Pl+Acc+Indef: prógv
+    prógv+N+Neu+Pl+Dat+Indef: prógvum
+    prógv+N+Neu+Pl+Gen+Indef: prógva
+    prógv+N+Neu+Sg+Nom+Def: prógvið
+    prógv+N+Neu+Sg+Acc+Def: prógvið
+    prógv+N+Neu+Sg+Dat+Def: próvnum
+    prógv+N+Neu+Sg+Gen+Def: próvsins
+    prógv+N+Neu+Pl+Nom+Def: prógvini
+    prógv+N+Neu+Pl+Acc+Def: prógvini
+    prógv+N+Neu+Pl+Dat+Def: prógvunum
+    prógv+N+Neu+Pl+Gen+Def: prógvanna

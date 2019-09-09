@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    bygd+N+Fem+Sg+Nom+Indef: bygd
+    bygd+N+Fem+Sg+Acc+Indef: bygd
+    bygd+N+Fem+Sg+Dat+Indef: bygd
+    bygd+N+Fem+Sg+Gen+Indef: bygdar
+    bygd+N+Fem+Pl+Nom+Indef: bygdir
+    bygd+N+Fem+Pl+Dat+Indef: bygdum
+    bygd+N+Fem+Pl+Gen+Indef: bygda
+    bygd+N+Fem+Sg+Nom+Def: bygdin
+    bygd+N+Fem+Sg+Acc+Def: bygdina
+    bygd+N+Fem+Sg+Dat+Def: bygdini
+    bygd+N+Fem+Sg+Gen+Def: bygdarinnar
+    bygd+N+Fem+Pl+Nom+Def: bygdirnar
+    bygd+N+Fem+Pl+Dat+Def: bygdunum
+    bygd+N+Fem+Pl+Gen+Def: bygdanna

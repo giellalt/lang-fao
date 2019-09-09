@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    hamar+N+Msc+Sg+Nom+Indef: hamar
+    hamar+N+Msc+Sg+Acc+Indef: hamar
+    hamar+N+Msc+Sg+Dat+Indef: hamri
+    hamar+N+Msc+Sg+Gen+Indef: hamars
+    hamar+N+Msc+Pl+Nom+Indef: hamrar
+    hamar+N+Msc+Pl+Acc+Indef: hamrar
+    hamar+N+Msc+Pl+Dat+Indef: [homrum, hamrum]
+    hamar+N+Msc+Pl+Gen+Indef: hamra
+    hamar+N+Msc+Sg+Nom+Def: hamarin
+    hamar+N+Msc+Sg+Acc+Def: hamarin
+    hamar+N+Msc+Sg+Dat+Def: hamrinum
+    hamar+N+Msc+Sg+Gen+Def: hamarsins
+    hamar+N+Msc+Pl+Nom+Def: hamrarnir
+    hamar+N+Msc+Pl+Acc+Def: hamrarnar
+    hamar+N+Msc+Pl+Dat+Def: [homrunum, hamrunum]
+    hamar+N+Msc+Pl+Gen+Def: hamranna

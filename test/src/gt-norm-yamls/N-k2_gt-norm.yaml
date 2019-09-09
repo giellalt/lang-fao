@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    beiggi+N+Msc+Sg+Nom+Indef: beiggi
+    beiggi+N+Msc+Sg+Acc+Indef: beiggja
+    beiggi+N+Msc+Sg+Dat+Indef: beiggja
+    beiggi+N+Msc+Sg+Gen+Indef: beiggja
+    beiggi+N+Msc+Pl+Nom+Indef: beiggjar
+    beiggi+N+Msc+Pl+Acc+Indef: beiggjar
+    beiggi+N+Msc+Pl+Dat+Indef: beiggjum
+    beiggi+N+Msc+Pl+Gen+Indef: beiggja
+    beiggi+N+Msc+Sg+Nom+Def: beiggin
+    beiggi+N+Msc+Sg+Acc+Def: beiggjan
+    beiggi+N+Msc+Sg+Dat+Def: beiggjanum
+    beiggi+N+Msc+Sg+Gen+Def: beiggjans
+    beiggi+N+Msc+Pl+Nom+Def: beiggjarnir
+    beiggi+N+Msc+Pl+Acc+Def: beiggjarnar
+    beiggi+N+Msc+Pl+Dat+Def: beiggjunum
+    beiggi+N+Msc+Pl+Gen+Def: beiggjanna

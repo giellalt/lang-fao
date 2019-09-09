@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    róður+N+Msc+Sg+Nom+Indef: róður
+    róður+N+Msc+Sg+Acc+Indef: róður
+    róður+N+Msc+Sg+Dat+Indef: róðri
+    róður+N+Msc+Sg+Gen+Indef: róðrar
+    róður+N+Msc+Pl+Nom+Indef: róðrar
+    róður+N+Msc+Pl+Acc+Indef: róðrar
+    róður+N+Msc+Pl+Dat+Indef: róðrum
+    róður+N+Msc+Pl+Gen+Indef: róðra
+    róður+N+Msc+Sg+Nom+Def: róðurin
+    róður+N+Msc+Sg+Acc+Def: róðurin
+    róður+N+Msc+Sg+Dat+Def: róðrinum
+    róður+N+Msc+Sg+Gen+Def: róðrarins
+    róður+N+Msc+Pl+Nom+Def: róðrarnir
+    róður+N+Msc+Pl+Acc+Def: róðrarnar
+    róður+N+Msc+Pl+Dat+Def: róðrunum
+    róður+N+Msc+Pl+Gen+Def: róðranna

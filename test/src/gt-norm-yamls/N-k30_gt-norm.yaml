@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    fótur+N+Msc+Sg+Nom+Indef: fótur
+    fótur+N+Msc+Sg+Acc+Indef: fót
+    fótur+N+Msc+Sg+Dat+Indef: fóti
+    fótur+N+Msc+Sg+Gen+Indef: fótar
+    fótur+N+Msc+Pl+Nom+Indef: føtur
+    fótur+N+Msc+Pl+Acc+Indef: føtur
+    fótur+N+Msc+Pl+Dat+Indef: fótum
+    fótur+N+Msc+Pl+Gen+Indef: fóta
+    fótur+N+Msc+Sg+Nom+Def: fóturin
+    fótur+N+Msc+Sg+Acc+Def: fótin
+    fótur+N+Msc+Sg+Dat+Def: fótinum
+    fótur+N+Msc+Sg+Gen+Def: fótarins
+    fótur+N+Msc+Pl+Nom+Def: føturnir
+    fótur+N+Msc+Pl+Acc+Def: føturnar
+    fótur+N+Msc+Pl+Dat+Def: fótunum
+    fótur+N+Msc+Pl+Gen+Def: fótanna

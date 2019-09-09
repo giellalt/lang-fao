@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    skríggj+N+Neu+Sg+Nom+Indef: skríggj
+    skríggj+N+Neu+Sg+Acc+Indef: skríggj
+    skríggj+N+Neu+Sg+Dat+Indef: [skríggi, skríggj]
+    skríggj+N+Neu+Sg+Gen+Indef: skrígs
+    skríggj+N+Neu+Pl+Nom+Indef: skríggj
+    skríggj+N+Neu+Pl+Acc+Indef: skríggj
+    skríggj+N+Neu+Pl+Dat+Indef: skríggjum
+    skríggj+N+Neu+Pl+Gen+Indef: skríggja
+    skríggj+N+Neu+Sg+Nom+Def: skríggið
+    skríggj+N+Neu+Sg+Acc+Def: skríggið
+    skríggj+N+Neu+Sg+Dat+Def: skrígginum
+    skríggj+N+Neu+Sg+Gen+Def: skrígsins
+    skríggj+N+Neu+Pl+Nom+Def: skríggini
+    skríggj+N+Neu+Pl+Acc+Def: skríggini
+    skríggj+N+Neu+Pl+Dat+Def: skríggjunum
+    skríggj+N+Neu+Pl+Gen+Def: skríggjanna

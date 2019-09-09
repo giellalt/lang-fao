@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    vørr+N+Fem+Sg+Nom+Indef: vørr
+    vørr+N+Fem+Sg+Acc+Indef: vørr
+    vørr+N+Fem+Sg+Dat+Indef: vørr
+    vørr+N+Fem+Sg+Gen+Indef: varrar
+    vørr+N+Fem+Pl+Nom+Indef: varrar
+    vørr+N+Fem+Pl+Dat+Indef: [vørrum, varrum]
+    vørr+N+Fem+Pl+Gen+Indef: varra
+    vørr+N+Fem+Sg+Nom+Def: vørrin
+    vørr+N+Fem+Sg+Acc+Def: vørrina
+    vørr+N+Fem+Sg+Dat+Def: vørrini
+    vørr+N+Fem+Sg+Gen+Def: varrarinnar
+    vørr+N+Fem+Pl+Nom+Def: varrarnar
+    vørr+N+Fem+Pl+Dat+Def: [vørrunum, varrunum]
+    vørr+N+Fem+Pl+Gen+Def: varranna

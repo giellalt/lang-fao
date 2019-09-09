@@ -1,0 +1,19 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    systkin+N+Neu+Pl+Nom+Indef: systkin
+    systkin+N+Neu+Pl+Acc+Indef: systkin
+    systkin+N+Neu+Pl+Dat+Indef: systkjum
+    systkin+N+Neu+Pl+Gen+Indef: systkina
+    systkin+N+Neu+Pl+Nom+Def: systkini
+    systkin+N+Neu+Pl+Acc+Def: systkini
+    systkin+N+Neu+Pl+Dat+Def: systkjunum
+    systkin+N+Neu+Pl+Gen+Def: systkinanna

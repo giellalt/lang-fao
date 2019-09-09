@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    faðir+N+Msc+Sg+Nom+Indef: faðir
+    faðir+N+Msc+Sg+Acc+Indef: faðir
+    faðir+N+Msc+Sg+Dat+Indef: faðir
+    faðir+N+Msc+Sg+Gen+Indef: faðirs
+    faðir+N+Msc+Pl+Nom+Indef: fedrar
+    faðir+N+Msc+Pl+Acc+Indef: fedrar
+    faðir+N+Msc+Pl+Dat+Indef: fedrum
+    faðir+N+Msc+Pl+Gen+Indef: fedra
+    faðir+N+Msc+Sg+Nom+Def: faðirin
+    faðir+N+Msc+Sg+Acc+Def: faðirin
+    faðir+N+Msc+Sg+Dat+Def: [faðirinum, faðirnum]
+    faðir+N+Msc+Sg+Gen+Def: faðirsins
+    faðir+N+Msc+Pl+Nom+Def: fedrarnir
+    faðir+N+Msc+Pl+Acc+Def: fedrarnar
+    faðir+N+Msc+Pl+Dat+Def: fedrunum
+    faðir+N+Msc+Pl+Gen+Def: fedranna

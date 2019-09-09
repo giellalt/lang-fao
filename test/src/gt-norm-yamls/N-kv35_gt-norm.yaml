@@ -1,0 +1,43 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    á+N+Fem+Sg+Nom+Indef: á
+    á+N+Fem+Sg+Acc+Indef: á
+    á+N+Fem+Sg+Dat+Indef: á
+    á+N+Fem+Sg+Gen+Indef: áar
+    á+N+Fem+Pl+Nom+Indef: áir
+    á+N+Fem+Pl+Dat+Indef: áum
+    á+N+Fem+Pl+Gen+Indef: áa
+    á+N+Fem+Sg+Nom+Def: áin
+    á+N+Fem+Sg+Acc+Def: ánna
+    á+N+Fem+Sg+Dat+Def: ánni
+    á+N+Fem+Sg+Gen+Def: áarinnar
+    á+N+Fem+Pl+Nom+Def: áirnar
+    á+N+Fem+Pl+Dat+Def: áunum
+    á+N+Fem+Pl+Gen+Def: áanna
+    
+    
+      Noun - : kraft #
+    ong+N+Fem+Sg+Nom+Indef: ong
+    ong+N+Fem+Sg+Acc+Indef: ong
+    ong+N+Fem+Sg+Dat+Indef: ong
+    ong+N+Fem+Sg+Gen+Indef: eingjar
+    ong+N+Fem+Pl+Nom+Indef: eingir
+    ong+N+Fem+Pl+Dat+Indef: eingjum
+    ong+N+Fem+Pl+Gen+Indef: eingja
+    ong+N+Fem+Sg+Nom+Def: [eingin, ongin]
+    ong+N+Fem+Sg+Acc+Def: [eingina, ongina]
+    ong+N+Fem+Sg+Dat+Def: [eingini, ongini]
+    ong+N+Fem+Sg+Gen+Def: eingjarinnar
+    ong+N+Fem+Pl+Nom+Def: eingirnar
+    ong+N+Fem+Pl+Dat+Def: eingjunum
+    ong+N+Fem+Pl+Gen+Def: eingjanna
+       

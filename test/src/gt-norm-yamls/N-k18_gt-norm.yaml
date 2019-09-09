@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    dansur+N+Msc+Sg+Nom+Indef: dansur
+    dansur+N+Msc+Sg+Acc+Indef: dans
+    dansur+N+Msc+Sg+Dat+Indef: dansi
+    dansur+N+Msc+Sg+Gen+Indef: dans
+    dansur+N+Msc+Pl+Nom+Indef: dansir
+    dansur+N+Msc+Pl+Acc+Indef: dansir
+    dansur+N+Msc+Pl+Dat+Indef: dansum
+    dansur+N+Msc+Pl+Gen+Indef: dansa
+    dansur+N+Msc+Sg+Nom+Def: dansurin
+    dansur+N+Msc+Sg+Acc+Def: dansin
+    dansur+N+Msc+Sg+Dat+Def: dansinum
+    dansur+N+Msc+Sg+Gen+Def: dansins
+    dansur+N+Msc+Pl+Nom+Def: dansirnir
+    dansur+N+Msc+Pl+Acc+Def: dansirnar
+    dansur+N+Msc+Pl+Dat+Def: dansunum
+    dansur+N+Msc+Pl+Gen+Def: dansanna

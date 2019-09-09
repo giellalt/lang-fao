@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    politi+N+Neu+Sg+Nom+Indef: politi
+    politi+N+Neu+Sg+Acc+Indef: politi
+    politi+N+Neu+Sg+Dat+Indef: politii
+    politi+N+Neu+Sg+Gen+Indef: politis
+    politi+N+Neu+Pl+Nom+Indef: politi
+    politi+N+Neu+Pl+Acc+Indef: politi
+    politi+N+Neu+Pl+Dat+Indef: politium
+    politi+N+Neu+Pl+Gen+Indef: politia
+    politi+N+Neu+Sg+Nom+Def: politiið
+    politi+N+Neu+Sg+Acc+Def: politiið
+    politi+N+Neu+Sg+Dat+Def: politinum
+    politi+N+Neu+Sg+Gen+Def: politisins
+    politi+N+Neu+Pl+Nom+Def: politiini
+    politi+N+Neu+Pl+Acc+Def: politiini
+    politi+N+Neu+Pl+Dat+Def: politiunum
+    politi+N+Neu+Pl+Gen+Def: politianna

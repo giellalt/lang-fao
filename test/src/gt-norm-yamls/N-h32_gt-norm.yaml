@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    høvd+N+Neu+Sg+Nom+Indef: høvd
+    høvd+N+Neu+Sg+Acc+Indef: høvd
+    høvd+N+Neu+Sg+Dat+Indef: høvdi
+    høvd+N+Neu+Sg+Gen+Indef: høvuðs
+    høvd+N+Neu+Pl+Nom+Indef: høvd
+    høvd+N+Neu+Pl+Acc+Indef: høvd
+    høvd+N+Neu+Pl+Dat+Indef: høvdum
+    høvd+N+Neu+Pl+Gen+Indef: høvda
+    høvd+N+Neu+Sg+Nom+Def: høvdið
+    høvd+N+Neu+Sg+Acc+Def: høvdið
+    høvd+N+Neu+Sg+Dat+Def: høvdinum
+    høvd+N+Neu+Sg+Gen+Def: høvuðsins
+    høvd+N+Neu+Pl+Nom+Def: høvdini
+    høvd+N+Neu+Pl+Acc+Def: høvdini
+    høvd+N+Neu+Pl+Dat+Def: høvdunum
+    høvd+N+Neu+Pl+Gen+Def: høvdanna

@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    egg+N+Neu+Sg+Nom+Indef: egg
+    egg+N+Neu+Sg+Acc+Indef: egg
+    egg+N+Neu+Sg+Dat+Indef: eggi
+    egg+N+Neu+Sg+Gen+Indef: egs
+    egg+N+Neu+Pl+Nom+Indef: egg
+    egg+N+Neu+Pl+Acc+Indef: egg
+    egg+N+Neu+Pl+Dat+Indef: [eggum, eggjum]
+    egg+N+Neu+Pl+Gen+Indef: eggja
+    egg+N+Neu+Sg+Nom+Def: eggið
+    egg+N+Neu+Sg+Acc+Def: eggið
+    egg+N+Neu+Sg+Dat+Def: egginum
+    egg+N+Neu+Sg+Gen+Def: egsins
+    egg+N+Neu+Pl+Nom+Def: eggini
+    egg+N+Neu+Pl+Acc+Def: eggini
+    egg+N+Neu+Pl+Dat+Def: [eggunum, eggjunum]
+    egg+N+Neu+Pl+Gen+Def: eggjanna

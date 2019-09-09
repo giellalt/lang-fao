@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    táttur+N+Msc+Sg+Nom+Indef: táttur
+    táttur+N+Msc+Sg+Acc+Indef: tátt
+    táttur+N+Msc+Sg+Dat+Indef: tátti
+    táttur+N+Msc+Sg+Gen+Indef: táttar
+    táttur+N+Msc+Pl+Nom+Indef: tættir
+    táttur+N+Msc+Pl+Acc+Indef: tættir
+    táttur+N+Msc+Pl+Dat+Indef: táttum
+    táttur+N+Msc+Pl+Gen+Indef: tátta
+    táttur+N+Msc+Sg+Nom+Def: tátturin
+    táttur+N+Msc+Sg+Acc+Def: táttin
+    táttur+N+Msc+Sg+Dat+Def: táttinum
+    táttur+N+Msc+Sg+Gen+Def: táttarins
+    táttur+N+Msc+Pl+Nom+Def: tættirnir
+    táttur+N+Msc+Pl+Acc+Def: tættirnar
+    táttur+N+Msc+Pl+Dat+Def: táttunum
+    táttur+N+Msc+Pl+Gen+Def: táttanna

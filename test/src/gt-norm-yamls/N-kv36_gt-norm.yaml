@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    støð+N+Fem+Sg+Nom+Indef: støð
+    støð+N+Fem+Sg+Acc+Indef: støð
+    støð+N+Fem+Sg+Dat+Indef: støð
+    støð+N+Fem+Sg+Gen+Indef: støðar
+    støð+N+Fem+Pl+Nom+Indef: støðir
+    støð+N+Fem+Pl+Dat+Indef: støðum
+    støð+N+Fem+Pl+Gen+Indef: støða
+    støð+N+Fem+Sg+Nom+Def: støðin
+    støð+N+Fem+Sg+Acc+Def: støðna
+    støð+N+Fem+Sg+Dat+Def: støðni
+    støð+N+Fem+Sg+Gen+Def: støðarinnar
+    støð+N+Fem+Pl+Nom+Def: støðirnar
+    støð+N+Fem+Pl+Dat+Def: støðunum
+    støð+N+Fem+Pl+Gen+Def: støðanna

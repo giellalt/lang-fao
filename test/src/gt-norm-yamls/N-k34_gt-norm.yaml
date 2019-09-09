@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    drongur+N+Msc+Sg+Nom+Indef: drongur
+    drongur+N+Msc+Sg+Acc+Indef: drong
+    drongur+N+Msc+Sg+Dat+Indef: [dreingi, drongi]
+    drongur+N+Msc+Sg+Gen+Indef: [dreingjar, drongs]
+    drongur+N+Msc+Pl+Nom+Indef: dreingir
+    drongur+N+Msc+Pl+Acc+Indef: dreingir
+    drongur+N+Msc+Pl+Dat+Indef: dreingjum
+    drongur+N+Msc+Pl+Gen+Indef: dreingja
+    drongur+N+Msc+Sg+Nom+Def: drongurin
+    drongur+N+Msc+Sg+Acc+Def: [dreingin, drongin]
+    drongur+N+Msc+Sg+Dat+Def: [dreinginum, dronginum]
+    drongur+N+Msc+Sg+Gen+Def: [dreingjarins, drongsins]
+    drongur+N+Msc+Pl+Nom+Def: dreingirnir
+    drongur+N+Msc+Pl+Acc+Def: dreingirnar
+    drongur+N+Msc+Pl+Dat+Def: dreingjunum
+    drongur+N+Msc+Pl+Gen+Def: dreingjanna

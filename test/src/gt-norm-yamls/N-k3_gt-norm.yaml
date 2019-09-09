@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    hagi+N+Msc+Sg+Nom+Indef: hagi
+    hagi+N+Msc+Sg+Acc+Indef: haga
+    hagi+N+Msc+Sg+Dat+Indef: haga
+    hagi+N+Msc+Sg+Gen+Indef: haga
+    hagi+N+Msc+Pl+Nom+Indef: hagar
+    hagi+N+Msc+Pl+Acc+Indef: hagar
+    hagi+N+Msc+Pl+Dat+Indef: høgum
+    hagi+N+Msc+Pl+Gen+Indef: haga
+    hagi+N+Msc+Sg+Nom+Def: hagin
+    hagi+N+Msc+Sg+Acc+Def: hagan
+    hagi+N+Msc+Sg+Dat+Def: haganum
+    hagi+N+Msc+Sg+Gen+Def: hagans
+    hagi+N+Msc+Pl+Nom+Def: hagarnir
+    hagi+N+Msc+Pl+Acc+Def: hagarnar
+    hagi+N+Msc+Pl+Dat+Def: høgunum
+    hagi+N+Msc+Pl+Gen+Def: haganna

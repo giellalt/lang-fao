@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    bakarí+N+Neu+Sg+Nom+Indef: bakarí
+    bakarí+N+Neu+Sg+Acc+Indef: bakarí
+    bakarí+N+Neu+Sg+Dat+Indef: [bakaríi, bakarí]
+    bakarí+N+Neu+Sg+Gen+Indef: bakarís
+    bakarí+N+Neu+Pl+Nom+Indef: bakarí
+    bakarí+N+Neu+Pl+Acc+Indef: bakarí
+    bakarí+N+Neu+Pl+Dat+Indef: bakaríum
+    bakarí+N+Neu+Pl+Gen+Indef: bakaría
+    bakarí+N+Neu+Sg+Nom+Def: bakaríið
+    bakarí+N+Neu+Sg+Acc+Def: bakaríið
+    bakarí+N+Neu+Sg+Dat+Def: bakarínum
+    bakarí+N+Neu+Sg+Gen+Def: bakarísins
+    bakarí+N+Neu+Pl+Nom+Def: bakaríini
+    bakarí+N+Neu+Pl+Acc+Def: bakaríini
+    bakarí+N+Neu+Pl+Dat+Def: bakaríunum
+    bakarí+N+Neu+Pl+Gen+Def: bakaríanna

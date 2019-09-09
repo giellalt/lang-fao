@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    himmal+N+Msc+Sg+Nom+Indef: himmal
+    himmal+N+Msc+Sg+Acc+Indef: himmal
+    himmal+N+Msc+Sg+Dat+Indef: himli
+    himmal+N+Msc+Sg+Gen+Indef: himmals
+    himmal+N+Msc+Pl+Nom+Indef: himlar
+    himmal+N+Msc+Pl+Acc+Indef: himlar
+    himmal+N+Msc+Pl+Dat+Indef: himlum
+    himmal+N+Msc+Pl+Gen+Indef: himla
+    himmal+N+Msc+Sg+Nom+Def: himmalin
+    himmal+N+Msc+Sg+Acc+Def: himmalin
+    himmal+N+Msc+Sg+Dat+Def: [himlinum, himmalinum]
+    himmal+N+Msc+Sg+Gen+Def: himmalsins
+    himmal+N+Msc+Pl+Nom+Def: himlarnir
+    himmal+N+Msc+Pl+Acc+Def: himlarnar
+    himmal+N+Msc+Pl+Dat+Def: himlunum
+    himmal+N+Msc+Pl+Gen+Def: himlanna

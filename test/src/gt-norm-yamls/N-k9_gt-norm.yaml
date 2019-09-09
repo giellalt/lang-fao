@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    flokkur+N+Msc+Sg+Nom+Indef: flokkur
+    flokkur+N+Msc+Sg+Acc+Indef: flokk
+    flokkur+N+Msc+Sg+Dat+Indef: flokki
+    flokkur+N+Msc+Sg+Gen+Indef: floks
+    flokkur+N+Msc+Pl+Nom+Indef: flokkar
+    flokkur+N+Msc+Pl+Acc+Indef: flokkar
+    flokkur+N+Msc+Pl+Dat+Indef: flokkum
+    flokkur+N+Msc+Pl+Gen+Indef: flokka
+    flokkur+N+Msc+Sg+Nom+Def: flokkurin
+    flokkur+N+Msc+Sg+Acc+Def: flokkin
+    flokkur+N+Msc+Sg+Dat+Def: flokkinum
+    flokkur+N+Msc+Sg+Gen+Def: floksins
+    flokkur+N+Msc+Pl+Nom+Def: flokkarnir
+    flokkur+N+Msc+Pl+Acc+Def: flokkarnar
+    flokkur+N+Msc+Pl+Dat+Def: flokkunum
+    flokkur+N+Msc+Pl+Gen+Def: flokkanna

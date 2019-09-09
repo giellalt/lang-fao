@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    egg+N+Fem+Sg+Nom+Indef: egg
+    egg+N+Fem+Sg+Acc+Indef: egg
+    egg+N+Fem+Sg+Dat+Indef: egg
+    egg+N+Fem+Sg+Gen+Indef: eggjar
+    egg+N+Fem+Pl+Nom+Indef: eggjar
+    egg+N+Fem+Pl+Dat+Indef: eggjum
+    egg+N+Fem+Pl+Gen+Indef: eggja
+    egg+N+Fem+Sg+Nom+Def: eggin
+    egg+N+Fem+Sg+Acc+Def: eggina
+    egg+N+Fem+Sg+Dat+Def: eggini
+    egg+N+Fem+Sg+Gen+Def: eggjarinnar
+    egg+N+Fem+Pl+Nom+Def: eggjarnar
+    egg+N+Fem+Pl+Dat+Def: eggjunum
+    egg+N+Fem+Pl+Gen+Def: eggjanna

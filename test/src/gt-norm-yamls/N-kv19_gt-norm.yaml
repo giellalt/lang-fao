@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    fjøður+N+Fem+Sg+Nom+Indef: fjøður
+    fjøður+N+Fem+Sg+Acc+Indef: fjøður
+    fjøður+N+Fem+Sg+Dat+Indef: fjøður
+    fjøður+N+Fem+Sg+Gen+Indef: fjaðrar
+    fjøður+N+Fem+Pl+Nom+Indef: fjaðrar
+    fjøður+N+Fem+Pl+Dat+Indef: [fjøðrum, fjaðrum]
+    fjøður+N+Fem+Pl+Gen+Indef: fjaðra
+    fjøður+N+Fem+Sg+Nom+Def: fjøðurin
+    fjøður+N+Fem+Sg+Acc+Def: fjøðurina
+    fjøður+N+Fem+Sg+Dat+Def: fjøðurini
+    fjøður+N+Fem+Sg+Gen+Def: fjaðrarinnar
+    fjøður+N+Fem+Pl+Nom+Def: fjaðrarnar
+    fjøður+N+Fem+Pl+Dat+Def: [fjøðrunum, fjaðrunum]
+    fjøður+N+Fem+Pl+Gen+Def: fjaðranna

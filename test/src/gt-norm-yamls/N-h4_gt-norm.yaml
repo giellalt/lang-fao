@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    boð+N+Neu+Sg+Nom+Indef: boð
+    boð+N+Neu+Sg+Acc+Indef: boð
+    boð+N+Neu+Sg+Dat+Indef: [boði, boð]
+    boð+N+Neu+Sg+Gen+Indef: boðs
+    boð+N+Neu+Pl+Nom+Indef: boð
+    boð+N+Neu+Pl+Acc+Indef: boð
+    boð+N+Neu+Pl+Dat+Indef: boðum
+    boð+N+Neu+Pl+Gen+Indef: boða
+    boð+N+Neu+Sg+Nom+Def: boðið
+    boð+N+Neu+Sg+Acc+Def: boðið
+    boð+N+Neu+Sg+Dat+Def: boðnum
+    boð+N+Neu+Sg+Gen+Def: boðsins
+    boð+N+Neu+Pl+Nom+Def: boðini
+    boð+N+Neu+Pl+Acc+Def: boðini
+    boð+N+Neu+Pl+Dat+Def: boðunum
+    boð+N+Neu+Pl+Gen+Def: boðanna

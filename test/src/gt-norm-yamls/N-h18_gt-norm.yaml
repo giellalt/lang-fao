@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    týggi+N+Neu+Sg+Nom+Indef: týggi
+    týggi+N+Neu+Sg+Acc+Indef: týggi
+    týggi+N+Neu+Sg+Dat+Indef: [týggi, týggj]
+    týggi+N+Neu+Sg+Gen+Indef: týggis
+    týggi+N+Neu+Pl+Nom+Indef: [týggi, týggir]
+    týggi+N+Neu+Pl+Acc+Indef: [týggi, týggir]
+    týggi+N+Neu+Pl+Dat+Indef: týggjum
+    týggi+N+Neu+Pl+Gen+Indef: týggja
+    týggi+N+Neu+Sg+Nom+Def: týggið
+    týggi+N+Neu+Sg+Acc+Def: týggið
+    týggi+N+Neu+Sg+Dat+Def: týgginum
+    týggi+N+Neu+Sg+Gen+Def: týggisins
+    týggi+N+Neu+Pl+Nom+Def: týggini
+    týggi+N+Neu+Pl+Acc+Def: týggini
+    týggi+N+Neu+Pl+Dat+Def: týggjunum
+    týggi+N+Neu+Pl+Gen+Def: týggjanna

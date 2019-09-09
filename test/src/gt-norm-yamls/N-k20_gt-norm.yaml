@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    akur+N+Msc+Sg+Nom+Indef: akur
+    akur+N+Msc+Sg+Acc+Indef: akur
+    akur+N+Msc+Sg+Dat+Indef: akri
+    akur+N+Msc+Sg+Gen+Indef: akurs
+    akur+N+Msc+Pl+Nom+Indef: akrar
+    akur+N+Msc+Pl+Acc+Indef: akrar
+    akur+N+Msc+Pl+Dat+Indef: økrum
+    akur+N+Msc+Pl+Gen+Indef: akra
+    akur+N+Msc+Sg+Nom+Def: akurin
+    akur+N+Msc+Sg+Acc+Def: akurin
+    akur+N+Msc+Sg+Dat+Def: akrinum
+    akur+N+Msc+Sg+Gen+Def: akursins
+    akur+N+Msc+Pl+Nom+Def: akrarnir
+    akur+N+Msc+Pl+Acc+Def: akrarnar
+    akur+N+Msc+Pl+Dat+Def: økrunum
+    akur+N+Msc+Pl+Gen+Def: akranna

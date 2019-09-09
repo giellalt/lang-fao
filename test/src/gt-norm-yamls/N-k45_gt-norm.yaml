@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    spónur+N+Msc+Sg+Nom+Indef: spónur
+    spónur+N+Msc+Sg+Acc+Indef: spón
+    spónur+N+Msc+Sg+Dat+Indef: spóni
+    spónur+N+Msc+Sg+Gen+Indef: spónar
+    spónur+N+Msc+Pl+Nom+Indef: spønir
+    spónur+N+Msc+Pl+Acc+Indef: spønir
+    spónur+N+Msc+Pl+Dat+Indef: [spønum, spónum]
+    spónur+N+Msc+Pl+Gen+Indef: spóna
+    spónur+N+Msc+Sg+Nom+Def: spónurin
+    spónur+N+Msc+Sg+Acc+Def: spónin
+    spónur+N+Msc+Sg+Dat+Def: spóninum
+    spónur+N+Msc+Sg+Gen+Def: spónarins
+    spónur+N+Msc+Pl+Nom+Def: spønirnir
+    spónur+N+Msc+Pl+Acc+Def: spønirnar
+    spónur+N+Msc+Pl+Dat+Def: [spønunum, spónunum]
+    spónur+N+Msc+Pl+Gen+Def: spónanna

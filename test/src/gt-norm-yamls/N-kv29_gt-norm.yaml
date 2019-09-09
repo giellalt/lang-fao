@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    móðir+N+Fem+Sg+Nom+Indef: móðir
+    móðir+N+Fem+Sg+Acc+Indef: móður
+    móðir+N+Fem+Sg+Dat+Indef: móður
+    móðir+N+Fem+Sg+Gen+Indef: móður
+    móðir+N+Fem+Pl+Nom+Indef: møður
+    móðir+N+Fem+Pl+Dat+Indef: møðrum
+    móðir+N+Fem+Pl+Gen+Indef: møðra
+    móðir+N+Fem+Sg+Nom+Def: móðirin
+    móðir+N+Fem+Sg+Acc+Def: [móðurina, móðrina]
+    móðir+N+Fem+Sg+Dat+Def: [móðurini, móðrini]
+    móðir+N+Fem+Sg+Gen+Def: móðurinnar
+    móðir+N+Fem+Pl+Nom+Def: møðurnar
+    móðir+N+Fem+Pl+Dat+Def: møðrunum
+    móðir+N+Fem+Pl+Gen+Def: møðranna

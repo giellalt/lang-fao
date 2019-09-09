@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    merki+N+Neu+Sg+Nom+Indef: merki
+    merki+N+Neu+Sg+Acc+Indef: merki
+    merki+N+Neu+Sg+Dat+Indef: merki
+    merki+N+Neu+Sg+Gen+Indef: merkis
+    merki+N+Neu+Pl+Nom+Indef: [merki, merkir]
+    merki+N+Neu+Pl+Acc+Indef: [merki, merkir]
+    merki+N+Neu+Pl+Dat+Indef: merkjum
+    merki+N+Neu+Pl+Gen+Indef: merkja
+    merki+N+Neu+Sg+Nom+Def: merkið
+    merki+N+Neu+Sg+Acc+Def: merkið
+    merki+N+Neu+Sg+Dat+Def: merkinum
+    merki+N+Neu+Sg+Gen+Def: merkisins
+    merki+N+Neu+Pl+Nom+Def: merkini
+    merki+N+Neu+Pl+Acc+Def: merkini
+    merki+N+Neu+Pl+Dat+Def: merkjunum
+    merki+N+Neu+Pl+Gen+Def: merkjanna

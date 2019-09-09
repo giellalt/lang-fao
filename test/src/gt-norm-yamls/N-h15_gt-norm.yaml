@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    tjaldur+N+Neu+Sg+Nom+Indef: tjaldur
+    tjaldur+N+Neu+Sg+Acc+Indef: tjaldur
+    tjaldur+N+Neu+Sg+Dat+Indef: tjaldri
+    tjaldur+N+Neu+Sg+Gen+Indef: tjaldurs
+    tjaldur+N+Neu+Pl+Nom+Indef: tjøldur
+    tjaldur+N+Neu+Pl+Acc+Indef: tjøldur
+    tjaldur+N+Neu+Pl+Dat+Indef: tjøldrum
+    tjaldur+N+Neu+Pl+Gen+Indef: tjaldra
+    tjaldur+N+Neu+Sg+Nom+Def: tjaldrið
+    tjaldur+N+Neu+Sg+Acc+Def: tjaldrið
+    tjaldur+N+Neu+Sg+Dat+Def: tjaldrinum
+    tjaldur+N+Neu+Sg+Gen+Def: tjaldursins
+    tjaldur+N+Neu+Pl+Nom+Def: tjøldrini
+    tjaldur+N+Neu+Pl+Acc+Def: tjøldrini
+    tjaldur+N+Neu+Pl+Dat+Def: tjøldrunum
+    tjaldur+N+Neu+Pl+Gen+Def: tjaldranna

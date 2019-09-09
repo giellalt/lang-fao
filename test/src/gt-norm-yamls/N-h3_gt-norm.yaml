@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    orð+N+Neu+Sg+Nom+Indef: orð
+    orð+N+Neu+Sg+Acc+Indef: orð
+    orð+N+Neu+Sg+Dat+Indef: orði
+    orð+N+Neu+Sg+Gen+Indef: orðs
+    orð+N+Neu+Pl+Nom+Indef: orð
+    orð+N+Neu+Pl+Acc+Indef: orð
+    orð+N+Neu+Pl+Dat+Indef: orðum
+    orð+N+Neu+Pl+Gen+Indef: orða
+    orð+N+Neu+Sg+Nom+Def: orðið
+    orð+N+Neu+Sg+Acc+Def: orðið
+    orð+N+Neu+Sg+Dat+Def: orðinum
+    orð+N+Neu+Sg+Gen+Def: orðsins
+    orð+N+Neu+Pl+Nom+Def: orðini
+    orð+N+Neu+Pl+Acc+Def: orðini
+    orð+N+Neu+Pl+Dat+Def: orðunum
+    orð+N+Neu+Pl+Gen+Def: orðanna

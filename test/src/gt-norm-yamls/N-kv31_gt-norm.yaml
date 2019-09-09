@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    systir+N+Fem+Sg+Nom+Indef: systir
+    systir+N+Fem+Sg+Acc+Indef: systur
+    systir+N+Fem+Sg+Dat+Indef: systur
+    systir+N+Fem+Sg+Gen+Indef: systur
+    systir+N+Fem+Pl+Nom+Indef: systrar
+    systir+N+Fem+Pl+Dat+Indef: systrum
+    systir+N+Fem+Pl+Gen+Indef: systra
+    systir+N+Fem+Sg+Nom+Def: systirin
+    systir+N+Fem+Sg+Acc+Def: systrina
+    systir+N+Fem+Sg+Dat+Def: systrini
+    systir+N+Fem+Sg+Gen+Def: systurinnar
+    systir+N+Fem+Pl+Nom+Def: systrarnar
+    systir+N+Fem+Pl+Dat+Def: systrunum
+    systir+N+Fem+Pl+Gen+Def: systranna

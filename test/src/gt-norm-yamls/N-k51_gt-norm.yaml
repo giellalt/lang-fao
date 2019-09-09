@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    luður+N+Msc+Sg+Nom+Indef: luður
+    luður+N+Msc+Sg+Acc+Indef: lunn
+    luður+N+Msc+Sg+Dat+Indef: lunni
+    luður+N+Msc+Sg+Gen+Indef: luns
+    luður+N+Msc+Pl+Nom+Indef: lunnar
+    luður+N+Msc+Pl+Acc+Indef: lunnar
+    luður+N+Msc+Pl+Dat+Indef: lunnum
+    luður+N+Msc+Pl+Gen+Indef: lunna
+    luður+N+Msc+Sg+Nom+Def: luðurin
+    luður+N+Msc+Sg+Acc+Def: lunnin
+    luður+N+Msc+Sg+Dat+Def: lunninum
+    luður+N+Msc+Sg+Gen+Def: lunsins
+    luður+N+Msc+Pl+Nom+Def: lunnarnir
+    luður+N+Msc+Pl+Acc+Def: lunnarnar
+    luður+N+Msc+Pl+Dat+Def: lunnunum
+    luður+N+Msc+Pl+Gen+Def: lunnanna

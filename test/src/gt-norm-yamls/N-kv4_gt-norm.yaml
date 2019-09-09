@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    fonn+N+Fem+Sg+Nom+Indef: fonn
+    fonn+N+Fem+Sg+Acc+Indef: fonn
+    fonn+N+Fem+Sg+Dat+Indef: fonn
+    fonn+N+Fem+Sg+Gen+Indef: fannar
+    fonn+N+Fem+Pl+Nom+Indef: fannir
+    fonn+N+Fem+Pl+Dat+Indef: fonnum
+    fonn+N+Fem+Pl+Gen+Indef: fanna
+    fonn+N+Fem+Sg+Nom+Def: fonnin
+    fonn+N+Fem+Sg+Acc+Def: fonnina
+    fonn+N+Fem+Sg+Dat+Def: fonnini
+    fonn+N+Fem+Sg+Gen+Def: fannarinnar
+    fonn+N+Fem+Pl+Nom+Def: fannirnar
+    fonn+N+Fem+Pl+Dat+Def: fonnunum
+    fonn+N+Fem+Pl+Gen+Def: fannanna

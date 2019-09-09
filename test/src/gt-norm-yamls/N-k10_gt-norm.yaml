@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    stakkur+N+Msc+Sg+Nom+Indef: stakkur
+    stakkur+N+Msc+Sg+Acc+Indef: stakk
+    stakkur+N+Msc+Sg+Dat+Indef: stakki
+    stakkur+N+Msc+Sg+Gen+Indef: staks
+    stakkur+N+Msc+Pl+Nom+Indef: stakkar
+    stakkur+N+Msc+Pl+Acc+Indef: stakkar
+    stakkur+N+Msc+Pl+Dat+Indef: [støkkum, stakkum]
+    stakkur+N+Msc+Pl+Gen+Indef: stakka
+    stakkur+N+Msc+Sg+Nom+Def: stakkurin
+    stakkur+N+Msc+Sg+Acc+Def: stakkin
+    stakkur+N+Msc+Sg+Dat+Def: stakkinum
+    stakkur+N+Msc+Sg+Gen+Def: staksins
+    stakkur+N+Msc+Pl+Nom+Def: stakkarnir
+    stakkur+N+Msc+Pl+Acc+Def: stakkarnar
+    stakkur+N+Msc+Pl+Dat+Def: [støkkunum, stakkunum]
+    stakkur+N+Msc+Pl+Gen+Def: stakkanna

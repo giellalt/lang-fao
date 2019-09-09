@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    bonkur+N+Msc+Sg+Nom+Indef: bonkur
+    bonkur+N+Msc+Sg+Acc+Indef: bonk
+    bonkur+N+Msc+Sg+Dat+Indef: [beinki, bonki]
+    bonkur+N+Msc+Sg+Gen+Indef: [beinkjar, bonkar]
+    bonkur+N+Msc+Pl+Nom+Indef: beinkir
+    bonkur+N+Msc+Pl+Acc+Indef: beinkir
+    bonkur+N+Msc+Pl+Dat+Indef: beinkjum
+    bonkur+N+Msc+Pl+Gen+Indef: beinkja
+    bonkur+N+Msc+Sg+Nom+Def: bonkurin
+    bonkur+N+Msc+Sg+Acc+Def: [beinkin, bonkin]
+    bonkur+N+Msc+Sg+Dat+Def: [beinkinum, bonkinum]
+    bonkur+N+Msc+Sg+Gen+Def: [beinkjarins, bonkarins]
+    bonkur+N+Msc+Pl+Nom+Def: beinkirnir
+    bonkur+N+Msc+Pl+Acc+Def: beinkirnar
+    bonkur+N+Msc+Pl+Dat+Def: beinkjunum
+    bonkur+N+Msc+Pl+Gen+Def: beinkjanna

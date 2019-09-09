@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    kamar+N+Neu+Sg+Nom+Indef: kamar
+    kamar+N+Neu+Sg+Acc+Indef: kamar
+    kamar+N+Neu+Sg+Dat+Indef: kamari
+    kamar+N+Neu+Sg+Gen+Indef: kamars
+    kamar+N+Neu+Pl+Nom+Indef: kømur
+    kamar+N+Neu+Pl+Acc+Indef: kømur
+    kamar+N+Neu+Pl+Dat+Indef: [kømurum, kømrum]
+    kamar+N+Neu+Pl+Gen+Indef: kamara
+    kamar+N+Neu+Sg+Nom+Def: kamarið
+    kamar+N+Neu+Sg+Acc+Def: kamarið
+    kamar+N+Neu+Sg+Dat+Def: kamarinum
+    kamar+N+Neu+Sg+Gen+Def: kamarsins
+    kamar+N+Neu+Pl+Nom+Def: kømrini
+    kamar+N+Neu+Pl+Acc+Def: kømrini
+    kamar+N+Neu+Pl+Dat+Def: kømrunum
+    kamar+N+Neu+Pl+Gen+Def: kamaranna

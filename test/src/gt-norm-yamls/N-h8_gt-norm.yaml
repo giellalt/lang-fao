@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    land+N+Neu+Sg+Nom+Indef: land
+    land+N+Neu+Sg+Acc+Indef: land
+    land+N+Neu+Sg+Dat+Indef: landi
+    land+N+Neu+Sg+Gen+Indef: lands
+    land+N+Neu+Pl+Nom+Indef: lond
+    land+N+Neu+Pl+Acc+Indef: lond
+    land+N+Neu+Pl+Dat+Indef: londum
+    land+N+Neu+Pl+Gen+Indef: landa
+    land+N+Neu+Sg+Nom+Def: landið
+    land+N+Neu+Sg+Acc+Def: landið
+    land+N+Neu+Sg+Dat+Def: landinum
+    land+N+Neu+Sg+Gen+Def: landsins
+    land+N+Neu+Pl+Nom+Def: londini
+    land+N+Neu+Pl+Acc+Def: londini
+    land+N+Neu+Pl+Dat+Def: londunum
+    land+N+Neu+Pl+Gen+Def: landanna

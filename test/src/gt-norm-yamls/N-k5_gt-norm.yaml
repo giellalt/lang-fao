@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # k_
+    bóndi+N+Msc+Sg+Nom+Indef: bóndi
+    bóndi+N+Msc+Sg+Acc+Indef: bónda
+    bóndi+N+Msc+Sg+Dat+Indef: bónda
+    bóndi+N+Msc+Sg+Gen+Indef: bónda
+    bóndi+N+Msc+Pl+Nom+Indef: bøndur
+    bóndi+N+Msc+Pl+Acc+Indef: bøndur
+    bóndi+N+Msc+Pl+Dat+Indef: [bóndum, bóndrum]
+    bóndi+N+Msc+Pl+Gen+Indef: bónda
+    bóndi+N+Msc+Sg+Nom+Def: bóndin
+    bóndi+N+Msc+Sg+Acc+Def: bóndan
+    bóndi+N+Msc+Sg+Dat+Def: bóndanum
+    bóndi+N+Msc+Sg+Gen+Def: bóndans
+    bóndi+N+Msc+Pl+Nom+Def: bøndurnir
+    bóndi+N+Msc+Pl+Acc+Def: bøndurnar
+    bóndi+N+Msc+Pl+Dat+Def: [bóndunum, bóndrunum]
+    bóndi+N+Msc+Pl+Gen+Def: bóndanna

@@ -1,0 +1,27 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # h_
+    glas+N+Neu+Sg+Nom+Indef: glas
+    glas+N+Neu+Sg+Acc+Indef: glas
+    glas+N+Neu+Sg+Dat+Indef: glasi
+    glas+N+Neu+Sg+Gen+Indef: glas
+    glas+N+Neu+Pl+Nom+Indef: gløs
+    glas+N+Neu+Pl+Acc+Indef: gløs
+    glas+N+Neu+Pl+Dat+Indef: gløsum
+    glas+N+Neu+Pl+Gen+Indef: glasa
+    glas+N+Neu+Sg+Nom+Def: glasið
+    glas+N+Neu+Sg+Acc+Def: glasið
+    glas+N+Neu+Sg+Dat+Def: glasinum
+    glas+N+Neu+Sg+Gen+Def: glasins
+    glas+N+Neu+Pl+Nom+Def: gløsini
+    glas+N+Neu+Pl+Acc+Def: gløsini
+    glas+N+Neu+Pl+Dat+Def: gløsunum
+    glas+N+Neu+Pl+Gen+Def: glasanna

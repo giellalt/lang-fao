@@ -1,0 +1,25 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Noun - : # kv_
+    gás+N+Fem+Sg+Nom+Indef: gás
+    gás+N+Fem+Sg+Acc+Indef: gás
+    gás+N+Fem+Sg+Dat+Indef: gás
+    gás+N+Fem+Sg+Gen+Indef: gásar
+    gás+N+Fem+Pl+Nom+Indef: gæs
+    gás+N+Fem+Pl+Dat+Indef: gásum
+    gás+N+Fem+Pl+Gen+Indef: gása
+    gás+N+Fem+Sg+Nom+Def: gásin
+    gás+N+Fem+Sg+Acc+Def: gásina
+    gás+N+Fem+Sg+Dat+Def: gásini
+    gás+N+Fem+Sg+Gen+Def: gásarinnar
+    gás+N+Fem+Pl+Nom+Def: gæsnar
+    gás+N+Fem+Pl+Dat+Def: [gásunum, gæsnum]
+    gás+N+Fem+Pl+Gen+Def: gásanna

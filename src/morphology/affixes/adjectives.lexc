@@ -28,8 +28,8 @@ LEXICON l1	! beinur
 LEXICON l1_umlaut
  +A:       adj_a   ; !XXX check!
  +A:       adj_def ;
-! +A:%^IUML adjcmp1 ;
- +A:%^IUML adjcmp2 ;
+! +A:^IUML adjcmp1 ;
+ +A:^IUML adjcmp2 ;
 
 
 LEXICON l2	! leysur
@@ -63,7 +63,7 @@ LEXICON l5	! spiltur
  +A: adjcmp1   ;
 
 LEXICON l6	! brekaður
- +A:%^EDH adj_a   ; ! no ð deletion
+ +A:^EDH adj_a   ; ! no ð deletion
  +A:      adj_def ;
  +A:      adjcmp1 ;
 
@@ -75,14 +75,14 @@ LEXICON l7	! blindur
 
 LEXICON l8	! kaldur
  +A:       a_non_umlaut ;
- +A:%^UUML a_umlaut     ;
+ +A:^UUML a_umlaut     ;
  +A:       adj_r_gen    ;
  +A:       adj_def      ;
  +A:       adjcmp1      ;
 
 LEXICON l9	! spakur
  +A:       a_non_umlaut ;
- +A:%^UUML a_umlaut     ;
+ +A:^UUML a_umlaut     ;
  +A:       adj_r_gen    ;
  +A:       adj_def      ;
  +A:       adjcmp1      ;
@@ -99,7 +99,7 @@ LEXICON l11 ! flógvur
 
 LEXICON l12 ! snjallur
  +A:       a_non_umlaut ;
- +A:%^UUML a_umlaut     ;
+ +A:^UUML a_umlaut     ;
  +A:       adj_def      ;
  +A:       adjcmp1      ;
 
@@ -109,12 +109,12 @@ LEXICON l13/1
  
 LEXICON l13 ! langur
  +A:       a_non_umlaut ;
- +A:%^UUML a_umlaut     ;
+ +A:^UUML a_umlaut     ;
  +A:       adj_def      ;
 
 LEXICON l14 ! harður
  +A:       a_non_umlaut ;
- +A:%^UUML a_umlaut     ;
+ +A:^UUML a_umlaut     ;
  +A:       adj_def      ;
  +A:       adjcmp1      ;
 
@@ -154,20 +154,20 @@ LEXICON l20 ! stillur
 
 LEXICON l21 ! fastur
  +A:       a_non_umlaut ;
- +A:%^UUML a_umlaut     ;
+ +A:^UUML a_umlaut     ;
  +A:       adj_def      ;
  +A:       adjcmp1      ;
 
 LEXICON l22 ! klæddur
  +A:       a_non_umlaut ; ! a_m_sg_n, a_non_umlaut_obl
- +A:%^UUML a_umlaut     ;
+ +A:^UUML a_umlaut     ;
  +A:       a_umlaut     ;
  +A:       adj_def      ;
  +A:       adjcmp1      ;
 
 LEXICON l23 ! rættur
  +A:       a_non_umlaut ;
- +A:%^UUML a_umlaut     ;
+ +A:^UUML a_umlaut     ;
  +A:       a_umlaut     ;
  +A:       adj_def      ;
  +A:       adjcmp1      ;
@@ -184,82 +184,82 @@ LEXICON l24 ! frískur
 
 LEXICON l25 ! danskur
  +A:       a_non_umlaut ;
- +A:%^UUML a_umlaut     ;
+ +A:^UUML a_umlaut     ;
  +A:       adj_r_gen    ;
  +A:       adj_def      ;
  +A:       adjcmp1      ;
 
 LEXICON l26 ! vakin
- +A:%^EPH a_m_sg_n_null    ;
- +A:%^EPH a_non_umlaut_obl ;
- +A:%^EPH a_umlaut         ;
- +A:%^EPH adj_def          ;
+ +A:^EPH a_m_sg_n_null    ;
+ +A:^EPH a_non_umlaut_obl ;
+ +A:^EPH a_umlaut         ;
+ +A:^EPH adj_def          ;
 
 LEXICON l27 ! heiðin
- +A:%^EPH a_m_sg_n_null    ;
- +A:%^EPH a_non_umlaut_obl ;
- +A:%^EPH a_umlaut         ;
- +A:%^EPH adj_def          ;
+ +A:^EPH a_m_sg_n_null    ;
+ +A:^EPH a_non_umlaut_obl ;
+ +A:^EPH a_umlaut         ;
+ +A:^EPH adj_def          ;
 
 LEXICON l28 ! lítil
- +A:%^EPH a_m_sg_n_null    ;
- +A:%^EPH a_non_umlaut_obl ;
- +A:%^EPH a_umlaut         ;
- +A:%^EPH adj_def          ;
+ +A:^EPH a_m_sg_n_null    ;
+ +A:^EPH a_non_umlaut_obl ;
+ +A:^EPH a_umlaut         ;
+ +A:^EPH adj_def          ;
 
 LEXICON l29 ! fakur
-+A:%^EPH   a_m_sg_n_null         ;
-+A:%^EPH   a_non_umlaut_obl ;
-!+A:%^EPH       a_non_umlaut ;
- +A:%^EPH%^UUML a_umlaut     ;
- +A:%^EPH       adj_def      ;
++A:^EPH   a_m_sg_n_null         ;
++A:^EPH   a_non_umlaut_obl ;
+!+A:^EPH       a_non_umlaut ;
+ +A:^EPH^UUML a_umlaut     ;
+ +A:^EPH       adj_def      ;
  +A:            adjcmp1      ;
 
 LEXICON l30 ! tepur
- +A:%^EPH adj_a   ;
- +A:%^EPH adj_def ;
+ +A:^EPH adj_a   ;
+ +A:^EPH adj_def ;
  +A:      adjcmp1 ;
 
 LEXICON l31 ! trupul
- +A:%^EPH       a_m_sg_n_null    ;
- +A:%^EPH       a_non_umlaut_obl ;
- +A:%^EPH%^UUML a_umlaut         ;
- +A:%^EPH       adj_def          ;
- +A:%^EPH       adj_def          ;
+ +A:^EPH       a_m_sg_n_null    ;
+ +A:^EPH       a_non_umlaut_obl ;
+ +A:^EPH^UUML a_umlaut         ;
+ +A:^EPH       adj_def          ;
+ +A:^EPH       adj_def          ;
 
 LEXICON l32 ! búgvin
  +A:            a_m_sg_n_null    ; ! gamal
- +A:%^EPH       a_non_umlaut_obl ;
- +A:%^EPH%^UUML a_umlaut         ;
- +A:%^EPH       adj_def          ;
- +A:%^EPH       adj_def          ;
+ +A:^EPH       a_non_umlaut_obl ;
+ +A:^EPH^UUML a_umlaut         ;
+ +A:^EPH       adj_def          ;
+ +A:^EPH       adj_def          ;
 
 LEXICON l33 ! gamal
  +A:            a_m_sg_n_null    ; ! gamal
- +A:%^EPH       a_non_umlaut_obl ;
- +A:%^EPH%^UUML a_umlaut         ;
- +A:%^EPH       adj_def          ;
+ +A:^EPH       a_non_umlaut_obl ;
+ +A:^EPH^UUML a_umlaut         ;
+ +A:^EPH       adj_def          ;
 
 
 LEXICON GAMAL
  +A:amal      a_m_sg_n_null    ; ! gamal
- +A:amal%^EPH a_non_umlaut_obl ;
- +A:omul%^EPH a_umlaut         ;
- +A:amal%^EPH adj_def          ;
+ +A:amal^EPH a_non_umlaut_obl ;
+ +A:omul^EPH a_umlaut         ;
+ +A:amal^EPH adj_def          ;
 
 LEXICON l34 ! dottin
- +A:%^EPH       a_m_sg_n_null    ;
- +A:%^EPH       a_non_umlaut_obl ;
- +A:%^EPH%^UUML a_umlaut         ;
- +A:%^EPH       adj_def          ;
- +A:%^EPH       adj_def          ;
+ +A:^EPH       a_m_sg_n_null    ;
+ +A:^EPH       a_non_umlaut_obl ;
+ +A:^EPH^UUML a_umlaut         ;
+ +A:^EPH       adj_def          ;
+ +A:^EPH       adj_def          ;
 
 LEXICON l35 ! feingin ! not complete, needs umlaut
- +A:%^EPH       a_m_sg_n_null    ;
- +A:%^EPH       a_non_umlaut_obl ;
- +A:%^EPH%^UUML a_umlaut         ;
- +A:%^EPH       adj_def          ;
- +A:%^EPH       adj_def          ;
+ +A:^EPH       a_m_sg_n_null    ;
+ +A:^EPH       a_non_umlaut_obl ;
+ +A:^EPH^UUML a_umlaut         ;
+ +A:^EPH       adj_def          ;
+ +A:^EPH       adj_def          ;
 
 LEXICON l36 ! liðugur
  +A: adj_a   ; !XXX check!
@@ -438,7 +438,7 @@ LEXICON a_m_pl_g_ra
 ! Fem
 
 LEXICON a_f_sg_n
- +Fem+Sg+Nom+Indef:%>%^UUML # ;
+ +Fem+Sg+Nom+Indef:^UUML # ;
 
 LEXICON a_f_sg_a
  +Fem+Sg+Acc+Indef:%>a # ;

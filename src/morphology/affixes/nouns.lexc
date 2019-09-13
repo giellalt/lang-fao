@@ -483,6 +483,8 @@ LEXICON k18e
  +N+Msc: S_M_SGNOM      ;
  +N+Msc: S_M_SGACC      ;
  +N+Msc: S_M_SGDAT      ;
+ +N+Msc+Sg+Dat+Indef:      MscObl_Flag ; ! dans
+
  +N+Msc: S_M_SGGEN_NULL ; ! s_final
 
 LEXICON k_flt18
@@ -1046,9 +1048,10 @@ LEXICON k46
 
 LEXICON k46e
 !! ''@LEXNAME@'' for sg
- +N+Msc:       S_M_SGNOM    ;
- +N+Msc:       S_M_SGACC    ;
+ +N+Msc:      S_M_SGNOM    ;
+ +N+Msc:      S_M_SGACC    ;
  +N+Msc:^IUML S_M_SGDAT    ;
+ +N+Msc:      S_M_SGDAT    ;
  +N+Msc:^OEA  S_M_SGGEN_AR ;
 
 LEXICON k_flt46

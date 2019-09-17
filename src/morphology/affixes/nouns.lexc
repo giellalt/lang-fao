@@ -882,6 +882,14 @@ LEXICON k_flt37
  +N+Msc:        S_M_PLDAT  ;
  +N+Msc:        S_M_PLGEN  ;
 
+LEXICON k38e_2
+!! __@LEXNAME@__ for  súgvur
+ +N+Msc:       S_M_SGNOM ;
+ +N+Msc:       S_M_SGACC ;
+ +N+Msc:^VDEL  S_M_SGDAT ;
+ +N+Msc:^VDEL  S_M_SGGEN ;
+
+
 LEXICON k38 
 !! __@LEXNAME@__ for  bógvur
   k38e    ;
@@ -926,6 +934,22 @@ LEXICON k_flt39
  +N+Msc: S_M_PLDAT ;
  +N+Msc: S_M_PLDAT ;
  +N+Msc: S_M_PLGEN ;
+ 
+LEXICON k40e_2
+!! __@LEXNAME@__ for  hógvur2
+ +N+Msc:       S_M_SGNOM ;
+ +N+Msc:       S_M_SGACC ;
+ +N+Msc:       S_M_SGDAT ; ! hógvinum
+ +N+Msc+Sg+Dat+Def:^GVDEL%>num MscObl_Flag ; ! hónum
+ +N+Msc:^GVDEL S_M_SGGEN ; ! hós
+
+LEXICON k40_3
+!! __@LEXNAME@__ for  skúgvur
+ +N+Msc:       S_M_SGNOM ;
+ +N+Msc:       S_M_SGACC ;
+ +N+Msc:       S_M_SGDAT ;
+ +N+Msc:^GDEL  S_M_SGGEN ;
+  k_flt40 ;
 
 LEXICON k40 
 !! __@LEXNAME@__ for  hógvur
@@ -938,7 +962,7 @@ LEXICON k40e
  +N+Msc:       S_M_SGACC ;
  +N+Msc:       S_M_SGDAT ; ! hógvinum
  +N+Msc+Sg+Dat+Def:^GVDEL%>num MscObl_Flag ; ! hónum
- +N+Msc:^GDEL S_M_SGGEN ;
+ +N+Msc:^GDEL S_M_SGGEN ; ! hóvs
 
 LEXICON k_flt40
 !! ''@LEXNAME@'' for pl

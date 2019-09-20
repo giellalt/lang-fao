@@ -1550,7 +1550,7 @@ LEXICON kv14 ! nátt
   kv_flt14 ;
 
 LEXICON kv14e
- +N+Fem+Sg+Nom:nátt DF_N_SGf_W ;
+ +N+Fem+Sg+Nom:nátt DF_N_SGf_S ;
  +N+Fem+Sg+Acc:nátt DF_A_SGf_S ;
  +N+Fem+Sg+Dat:nátt DF_D_SGf_S ;
  +N+Fem+Sg+Gen:náttar DF_G_SGf_S ;
@@ -1560,6 +1560,7 @@ LEXICON kv_flt14
  +N+Fem+Pl+Nom:nætur DF_NA_PLf ;
  +N+Fem+Pl+Acc:nætur DF_NA_PLf ;
  +N+Fem+Pl+Dat:náttu DF_D_PL ;
+ +N+Fem+Pl+Dat:nætru DF_D_PL ;
  +N+Fem+Pl+Gen:nátta DF_G_PL ;
 
 
@@ -1568,18 +1569,15 @@ LEXICON kv15 ! tonn
   kv_flt15 ;
 
 LEXICON kv15e
- +N+Fem+Sg+Nom:tonn DF_A_SGf_W ;
+ +N+Fem+Sg+Nom:tonn DF_N_SGf_S ;
  +N+Fem+Sg+Acc:tonn DF_A_SGf_S ;
  +N+Fem+Sg+Dat:tonn DF_D_SGf_S ;
  +N+Fem+Sg+Gen:tannar DF_G_SGf_S ;
 
 
-LEXICON kv_flt15f
-  kv_flt15 ;
-
 LEXICON kv_flt15
- +N+Fem+Pl+Nom:tenn DF_NA_PLf ;
- +N+Fem+Pl+Acc:tenn DF_NA_PLf ;
+ +N+Fem+Pl+Nom:tenn DF_NA_PLf_inar ;
+ +N+Fem+Pl+Acc:tenn DF_NA_PLf_inar ;
  +N+Fem+Pl+Dat:tonnu DF_D_PL ;
  +N+Fem+Pl+Gen:tanna DF_G_PL ;
 
@@ -1715,10 +1713,6 @@ LEXICON kv24e
  +N+Fem+Sg+Dat+Indef:      FemObl_Flag ;
  +N+Fem+Sg+Dat+Def:^GVDEL%>nni FemObl_Flag ; ! oynni, consider i:n <=> 
  +N+Fem:^GVDEL S_F_SGGEN ;
-
-
-LEXICON kv_flt24f ! XXX Trond hit 2.9
-  kv_flt24 ;
 
 LEXICON kv_flt24
  +N+Fem: F_PLNA_IR ;
@@ -2939,10 +2933,14 @@ LEXICON DF_G_SGf_S
 !! !Feminine plural forms
 
 LEXICON DF_NA_PLf
-!! __@LEXNAME@__ for 
+!! __@LEXNAME@__ for *nar
  +Indef:      Pl_Flag ;
    +Def:%>nar Pl_Flag ;
-
+   
+LEXICON DF_NA_PLf_inar   
+!! __@LEXNAME@__ for *inar
+ +Indef:       Pl_Flag ;
+   +Def:%>inar Pl_Flag ;
 
 
 !! !!Neuter forms

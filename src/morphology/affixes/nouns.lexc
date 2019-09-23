@@ -1595,24 +1595,36 @@ LEXICON kv17 ! mastur
   kv_flt17 ;
 
 LEXICON kv17e
- +N+Fem:      S_F_SGNAD ;
- +N+Fem:^EPH S_F_SGGEN ;
+ +N+Fem+Sg+Nom+Indef:ur   FemObl_Flag ;
+   +N+Fem+Sg+Nom+Def:urin FemObl_Flag ; ! masturin
+ +N+Fem+Sg+Acc+Indef:ur   FemObl_Flag ;
+   +N+Fem+Sg+Acc+Def:rina FemObl_Flag ; ! mastrina
+ +N+Fem+Sg+Dat+Indef:ur   FemObl_Flag ;
+   +N+Fem+Sg+Dat+Def:rini FemObl_Flag ; ! mastrini
+              +N+Fem:r    S_F_SGGEN ;
 
 LEXICON kv_flt17
- +N+Fem:^EPH F_PLNA_AR ;
- +N+Fem:^EPH F_PLDAT   ;
- +N+Fem:^EPH F_PLGEN   ;
+ +N+Fem:r F_PLNA_AR ;
+ +N+Fem:r F_PLDAT   ;
+ +N+Fem:r F_PLGEN   ;
 
 LEXICON kv18/17
   kv18 ;
   kv17 ;
 
 LEXICON kv18 ! brúður
- +N+Fem:            S_F_SGNAD ;
- +N+Fem:^EPH^RDEL S_F_SGGEN ;
- +N+Fem:^EPH       F_PLNA_AR ;
- +N+Fem:^EPH       F_PLDAT   ;
- +N+Fem:^EPH       F_PLGEN   ;
+ +N+Fem+Sg+Nom+Indef:ur   FemObl_Flag ;
+   +N+Fem+Sg+Nom+Def:urin FemObl_Flag ; ! brúðurin
+ +N+Fem+Sg+Acc+Indef:ur   FemObl_Flag ;
+   +N+Fem+Sg+Acc+Def:rina FemObl_Flag ; ! brúðrina
+ +N+Fem+Sg+Dat+Indef:ur   FemObl_Flag ;
+   +N+Fem+Sg+Dat+Def:rini FemObl_Flag ; ! brúðrini
+ +N+Fem+Sg+Gen+Indef:ar   FemObl_Flag ;
+   +N+Fem+Sg+Gen+Def:arinnar FemObl_Flag ; ! brúðarinnar
+   +N+Fem+Sg+Gen+Def:rarinnar FemObl_Flag ; ! brúðrarinnar
+ +N+Fem:r       F_PLNA_AR ;
+ +N+Fem:r       F_PLDAT   ;
+ +N+Fem:r       F_PLGEN   ;
 
 
 LEXICON kv19 ! fjøður
@@ -1621,7 +1633,7 @@ LEXICON kv19 ! fjøður
 
 LEXICON kv19e
  +N+Fem:      S_F_SGNAD ;
- +N+Fem:^EPH S_F_SGGEN ;
+ +N+Fem:^EPH^OEA S_F_SGGEN ;
 
 LEXICON kv_flt19f
   kv_flt19f ;

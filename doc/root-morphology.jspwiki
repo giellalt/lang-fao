@@ -2,6 +2,9 @@
 
  !!!Definitions for Multichar_Symbols
 
+
+
+
  !!Tags for POS	
  * +N +V +A +Adv +Prop +Num                 : Open POS's	
  * +CC +CS +Interj +Pr +Pron +IM		     : Closed POS's	
@@ -12,14 +15,20 @@
  * +Def +Indef 						     : Definiteness	
  * +Cmp +Superl						     : Comparison	
  * +Prs +Prt							     : Tense		
- * +1Sg +2Sg +3Sg						     : Person-Number
+ * +1Sg 					     : Person-Number
+ * +2Sg 					     : Person-Number
+ * +3Sg						     : Person-Number
  * +Inf +PrfPrc +PrsPrc +Sup +Imp +Sbj	     : Verb forms	
  * +Cmpnd								     : Compound		
  * +Abbr +ACR							     : Abbreviations, acronyms ,
  * +CLB +PUNCT +LEFT +RIGHT			     : Punctuation, parentheses
  * +Symbol  : independent symbols in the text stream, like £, €, ©
- * +Err/Guess								 : Tag for Name Guesser component
- * +Err/Orth								 : Marking forms that are orthographical errors
+
+
+ * +Sg3 					     : This is inherited from common files, should be changed to +3Sg.
+
+
+
 
  * +Der/heit   Derivation with -heit
 
@@ -35,6 +44,46 @@
  * +Sem/Fem   
 
  * +Sem/Year         - year (i.e. 1000 - 2999), used only for numerals 
+
+
+ * +Sem/Amount		       
+ * +Sem/Build		       
+ * +Sem/Build-room	       
+ * +Sem/Cat		       
+ * +Sem/Curr		       
+ * +Sem/Date		       
+ * +Sem/Domain		       
+ * +Sem/Domain_Hum	       
+ * +Sem/Dummytag	       
+ * +Sem/Edu_Hum	       
+ * +Sem/Event		       
+ * +Sem/Food-med	       
+ * +Sem/Group_Hum	       
+ * +Sem/Hum		       
+ * +Sem/ID			       
+ * +Sem/Lang		       
+ * +Sem/Mat		       
+ * +Sem/Measr		       
+ * +Sem/Money		       
+ * +Sem/Obj		       
+ * +Sem/Obj-el		       
+ * +Sem/Obj-ling	       
+ * +Sem/Org_Prod-audio    
+ * +Sem/Org_Prod-vis      
+ * +Sem/Part		       
+ * +Sem/Prod-vis	       
+ * +Sem/Route		       
+ * +Sem/Rule		       
+ * +Sem/Sign		       
+ * +Sem/State		       
+ * +Sem/State-sick	       
+ * +Sem/Substnc	       
+ * +Sem/Time		       
+ * +Sem/Time-clock	       
+ * +Sem/Tool-it	       
+ * +Sem/Txt		       
+
+
 
 
  !!Non-changing letters
@@ -58,6 +107,20 @@
 
  * __+v1__ - Paradigm identifier (e.g. gera+v1 = ger)
  * __+v2__ - Paradigm identifier (e.g. gera+v2 = gerar)
+
+
+
+Language tags
+
+ * +OLang/ENG   
+ * +OLang/FIN   
+ * +OLang/NNO   
+ * +OLang/NOB   
+ * +OLang/RUS   
+ * +OLang/SMA   
+ * +OLang/SME   
+ * +OLang/SWE   
+ * +OLang/UND   
 
 
  !!Non-ascii letters, perhaps needed as multichar symbols
@@ -86,8 +149,20 @@ This entry / word should be in the following position(s):
  * __+CmpNP/Only__ - ... only be part of a compound, i.e. can never
                     be used alone, but can appear in any position
 
+
+!!Usage tags
+
  * +Use/Disamb = Use only in disambiguator/tokeniser analyser
  * +Use/Circ = for compound restrictions
+
+ * +Use/-PMatch	       
+ * +Use/-Spell		       
+ * +Use/NG			       
+ * +Use/NGA		       
+ * +Use/SpellNoSugg       
+
+ * +Err/Guess								 : Tag for Name Guesser component
+ * +Err/Orth								 : Marking forms that are orthographical errors
 
 
 !!Symbols that need to be escaped on the lower side (towards twolc):
@@ -110,6 +185,12 @@ with verbs if the verb is further derived into a noun again:
  | @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
  | @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
  | @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
+
+!Flags for speller suggestions
+
+ | @D.ErrOrth.ON@ 
+ | @C.ErrOrth@	 
+ | @P.ErrOrth.ON@ 
 
 
 !Flag for case harmony in compounds

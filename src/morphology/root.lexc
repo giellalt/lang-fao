@@ -4,6 +4,11 @@
 
 Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 
+
+! to be fixed
+! +st.prop
+
+
 !!  !!Tags for POS	
                                        		,
 +N +V +A +Adv +Prop +Num                !!= * @CODE@ : Open POS's	
@@ -15,14 +20,37 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 +Def +Indef 						    !!= * @CODE@ : Definiteness	
 +Cmp +Superl						    !!= * @CODE@ : Comparison	
 +Prs +Prt							    !!= * @CODE@ : Tense		
-+1Sg +2Sg +3Sg						    !!= * @CODE@ : Person-Number
++1Sg 					    !!= * @CODE@ : Person-Number
++2Sg 					    !!= * @CODE@ : Person-Number
++3Sg						    !!= * @CODE@ : Person-Number
 +Inf +PrfPrc +PrsPrc +Sup +Imp +Sbj	    !!= * @CODE@ : Verb forms	
 +Cmpnd								    !!= * @CODE@ : Compound		
 +Abbr +ACR							    !!= * @CODE@ : Abbreviations, acronyms ,
 +CLB +PUNCT +LEFT +RIGHT			    !!= * @CODE@ : Punctuation, parentheses
 +Symbol !!= * @CODE@ : independent symbols in the text stream, like £, €, ©
-+Err/Guess								!!= * @CODE@ : Tag for Name Guesser component
-+Err/Orth								!!= * @CODE@ : Marking forms that are orthographical errors
+
+
++Sg3 					    !!= * @CODE@ : This is inherited from common files, should be changed to +3Sg.
+
++ABBR   !!= * @CODE@ sub-pos
++Arab   !!= * @CODE@ sub-pos
+
++Attr   !!= * @CODE@ sub-pos
++Coll   !!= * @CODE@ sub-pos
+
++Com    !!= * @CODE@ samiske kasus, skal bort
++Dyn    !!= * @CODE@ samiske kasus, skal bort
++Ela    !!= * @CODE@ samiske kasus, skal bort
++Ess    !!= * @CODE@ samiske kasus, skal bort
++Ill    !!= * @CODE@ samiske kasus, skal bort
++Ine    !!= * @CODE@ samiske kasus, skal bort
+
++MWE    !!= * @CODE@ multiword expression
+
++Pos    !!= * @CODE@ sjekk desse XXX
++Rom    !!= * @CODE@ sjekk desse XXX
+
+
 
 +Der/heit  !!= * @CODE@ Derivation with -heit
 
@@ -38,6 +66,46 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 +Sem/Fem   !!= * @CODE@
 
 +Sem/Year        !!= * @CODE@ - year (i.e. 1000 - 2999), used only for numerals 
+
+
++Sem/Amount		       !!= * @CODE@
++Sem/Build		       !!= * @CODE@
++Sem/Build-room	       !!= * @CODE@
++Sem/Cat		       !!= * @CODE@
++Sem/Curr		       !!= * @CODE@
++Sem/Date		       !!= * @CODE@
++Sem/Domain		       !!= * @CODE@
++Sem/Domain_Hum	       !!= * @CODE@
++Sem/Dummytag	       !!= * @CODE@
++Sem/Edu_Hum	       !!= * @CODE@
++Sem/Event		       !!= * @CODE@
++Sem/Food-med	       !!= * @CODE@
++Sem/Group_Hum	       !!= * @CODE@
++Sem/Hum		       !!= * @CODE@
++Sem/ID			       !!= * @CODE@
++Sem/Lang		       !!= * @CODE@
++Sem/Mat		       !!= * @CODE@
++Sem/Measr		       !!= * @CODE@
++Sem/Money		       !!= * @CODE@
++Sem/Obj		       !!= * @CODE@
++Sem/Obj-el		       !!= * @CODE@
++Sem/Obj-ling	       !!= * @CODE@
++Sem/Org_Prod-audio    !!= * @CODE@
++Sem/Org_Prod-vis      !!= * @CODE@
++Sem/Part		       !!= * @CODE@
++Sem/Prod-vis	       !!= * @CODE@
++Sem/Route		       !!= * @CODE@
++Sem/Rule		       !!= * @CODE@
++Sem/Sign		       !!= * @CODE@
++Sem/State		       !!= * @CODE@
++Sem/State-sick	       !!= * @CODE@
++Sem/Substnc	       !!= * @CODE@
++Sem/Time		       !!= * @CODE@
++Sem/Time-clock	       !!= * @CODE@
++Sem/Tool-it	       !!= * @CODE@
++Sem/Txt		       !!= * @CODE@
+
+
 
 
  !!  !!Non-changing letters
@@ -61,6 +129,20 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 
 +v1       !!≈ * __@CODE@__ - Paradigm identifier (e.g. gera+v1 = ger)
 +v2       !!≈ * __@CODE@__ - Paradigm identifier (e.g. gera+v2 = gerar)
+
+
+
+!! !! Language tags
+
++OLang/ENG   !!= * @CODE@
++OLang/FIN   !!= * @CODE@
++OLang/NNO   !!= * @CODE@
++OLang/NOB   !!= * @CODE@
++OLang/RUS   !!= * @CODE@
++OLang/SMA   !!= * @CODE@
++OLang/SME   !!= * @CODE@
++OLang/SWE   !!= * @CODE@
++OLang/UND   !!= * @CODE@
 
 
 !!  !!Non-ascii letters, perhaps needed as multichar symbols
@@ -88,9 +170,25 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 +CmpNP/None      !!≈ * __@CODE@__ - ... does not take part in compounds
 +CmpNP/Only      !!≈ * __@CODE@__ - ... only be part of a compound, i.e. can never
                  !!                     be used alone, but can appear in any position
++Cmp/Hyph
+
+
+!! !!Usage tags
 
 +Use/Disamb  !!≈ * @CODE@ = Use only in disambiguator/tokeniser analyser
 +Use/Circ    !!≈ * @CODE@ = for compound restrictions
+
++Use/-PMatch	       !!= * @CODE@
++Use/-Spell		       !!= * @CODE@
++Use/NG			       !!= * @CODE@
++Use/NGA		       !!= * @CODE@
++Use/SpellNoSugg       !!= * @CODE@
+
++Err/Guess								!!= * @CODE@ : Tag for Name Guesser component
++Err/Orth								!!= * @CODE@ : Marking forms that are orthographical errors
++Err/Hyph
++Err/Lex
++Err/SpaceCmp
 
 
 !! !!Symbols that need to be escaped on the lower side (towards twolc):
@@ -114,6 +212,12 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
  @D.NeedNoun.ON@    !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
  @C.NeedNoun@       !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
 
+!! !Flags for speller suggestions
+
+ @D.ErrOrth.ON@      !!≈ | @CODE@ 
+ @C.ErrOrth@	        !!≈ | @CODE@ 
+ @P.ErrOrth.ON@      !!≈ | @CODE@ 
+ 
 
 !! !Flag for case harmony in compounds
 

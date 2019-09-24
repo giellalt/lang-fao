@@ -1719,7 +1719,6 @@ LEXICON kv24/2
   :ú kv2  ;
  +N+Fem+Sg+Acc+Def:únna FemObl_Flag ;
  +N+Fem+Sg+Dat+Def:únni FemObl_Flag ;
- +N+Fem+Sg+Acc+Def:únna FemObl_Flag ;
  +N+Fem+Pl+Nom+Indef:ýr FemObl_Flag ;
  +N+Fem+Pl+Nom+Def:ýrnar FemObl_Flag ;
  +N+Fem+Pl+Acc+Indef:ýr FemObl_Flag ;
@@ -1767,8 +1766,9 @@ LEXICON kv_flt24
 LEXICON kv25 ! gás
  +N+Fem: S_F_SGNAD ;
  +N+Fem: S_F_SGGEN ;
- +N+Fem: F_PLNA_IR ;
+ +N+Fem:^IUML F_PLNA_NULL ;
  +N+Fem: F_PLDAT   ;
+ +N+Fem+Pl+Dat+def: FemObl_Flag ;
  +N+Fem: F_PLGEN   ;
 
 
@@ -1777,11 +1777,15 @@ LEXICON kv26 ! tá
   kv_flt26 ;
 
 LEXICON kv26e
- +N+Fem: S_F_SGNAD ;
+ +N+Fem: DF_N_SGf_S ;
+ +N+Fem+Sg+Acc+Indef: FemObl_Flag ;
+ +N+Fem+Sg+Acc+Def:nna FemObl_Flag ;
+ +N+Fem+Sg+Dat+Indef: FemObl_Flag ;
+ +N+Fem+Sg+Dat+Def:nni FemObl_Flag ;
  +N+Fem: S_F_SGGEN ;
 
 LEXICON kv_flt26
- +N+Fem: F_PLNA_IR ;
+ +N+Fem:^IUML F_PLNA_NULL ;
  +N+Fem: F_PLDAT   ;
  +N+Fem: F_PLGEN   ;
 
@@ -1789,7 +1793,7 @@ LEXICON kv_flt26
 LEXICON kv27 ! rás
  +N+Fem: S_F_SGNAD ;
  +N+Fem: S_F_SGGEN ;
- +N+Fem: F_PLNA_IR ;
+ +N+Fem:^IUML F_PLNA_UR ;
  +N+Fem: F_PLDAT   ;
  +N+Fem: F_PLGEN   ;
 

@@ -1844,7 +1844,9 @@ LEXICON kv29 ! móðir
 LEXICON kv29e
  +Nom:ir DF_N_SGf_S ;
  +Acc:ur DF_A_SGf_S ;
+ +Acc+Def:rina FemObl_Flag ;
  +Dat:ur DF_D_SGf_S ;
+ +Dat+Def:rini FemObl_Flag ;
  +Gen:ur DF_G_SGf_S ;
 
 LEXICON kv_flt29
@@ -1857,21 +1859,29 @@ LEXICON kv30 ! dóttir
  +N+Fem+Sg:dótt kv30e    ;
  +N+Fem+Pl:døt  kv_flt30 ;
 
-LEXICON kv30e ! Remove for kv29e?
-  kv29e ;
+LEXICON kv30e
+ +Nom:ir DF_N_SGf_S ;
+ +Acc+Indef:ur FemObl_Flag ;
+ +Acc+Def:rina FemObl_Flag ;
+ +Dat:ur DF_D_SGf_S ;
+ +Dat+Def:rini FemObl_Flag ;
+ +Gen:ur DF_G_SGf_S ;
+
 
 LEXICON kv_flt30
   kv_flt29 ;
 
 LEXICON kv31 ! systir
- +N+Fem+Sg+Nom:%>ir  DF_N_SGf_S ;
- +N+Fem+Sg+Acc:%>ur  DF_A_SGf_S ;
- +N+Fem+Sg+Dat:%>ur  DF_D_SGf_S ;
- +N+Fem+Sg+Gen:%>ur  DF_G_SGf_S ;
- +N+Fem+Sg+Nom:%>rar DF_NA_PLf  ;
- +N+Fem+Sg+Acc:%>rar DF_NA_PLf  ;
- +N+Fem+Sg+Dat:%>rum DF_D_PL    ;
- +N+Fem+Sg+Gen:%>ra  DF_G_PL    ;
+       +N+Fem+Sg+Nom:%>ir  DF_N_SGf_S  ;
+ +N+Fem+Sg+Acc+Indef:ur    FemObl_Flag ;
+   +N+Fem+Sg+Acc+Def:rina  FemObl_Flag ;
+ +N+Fem+Sg+Dat+Indef:ur    FemObl_Flag ;
+   +N+Fem+Sg+Dat+Def:rini  FemObl_Flag ;
+       +N+Fem+Sg+Gen:%>ur  DF_G_SGf_S  ;
+       +N+Fem+Pl+Nom:%>rar DF_NA_PLf   ;
+       +N+Fem+Pl+Acc:%>rar DF_NA_PLf   ;
+       +N+Fem+Pl+Dat:%>ru  DF_D_PL     ;
+       +N+Fem+Pl+Gen:%>ra  DF_G_PL     ;
 
 LEXICON kv32 ! mýri
   kv32e    ;

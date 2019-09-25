@@ -1764,30 +1764,46 @@ LEXICON kv_flt24
 
 
 LEXICON kv25 ! gás
- +N+Fem: S_F_SGNAD ;
- +N+Fem: S_F_SGGEN ;
- +N+Fem:^IUML F_PLNA_NULL ;
- +N+Fem: F_PLDAT   ;
- +N+Fem+Pl+Dat+def: FemObl_Flag ;
- +N+Fem: F_PLGEN   ;
+ +N+Fem+Sg+Nom+Indef:gás 	    FemObl_Flag ;
+   +N+Fem+Sg+Nom+Def:gásin 	    FemObl_Flag ;
+ +N+Fem+Sg+Acc+Indef:gás 	    FemObl_Flag ;
+   +N+Fem+Sg+Acc+Def:gásina     FemObl_Flag ;
+ +N+Fem+Sg+Dat+Indef:gás 	    FemObl_Flag ;
+   +N+Fem+Sg+Dat+Def:gásini     FemObl_Flag ;
+ +N+Fem+Sg+Gen+Indef:gásar 	    FemObl_Flag ;
+   +N+Fem+Sg+Gen+Def:gásarinnar FemObl_Flag ;
+
+ +N+Fem+Pl+Nom+Indef:gæs 		FemObl_Flag ;
+   +N+Fem+Pl+Nom+Def:gæsnar 	FemObl_Flag ;
+ +N+Fem+Pl+Acc+Indef:gæs 		FemObl_Flag ;
+   +N+Fem+Pl+Acc+Def:gæsnar 	FemObl_Flag ;
+ +N+Fem+Pl+Dat+Indef:gásum 		FemObl_Flag ;
+   +N+Fem+Pl+Dat+Def:gásunum 	FemObl_Flag ;
+   +N+Fem+Pl+Dat+Def:gæsnum 	FemObl_Flag ;
+ +N+Fem+Pl+Gen+Indef:gása 		FemObl_Flag ;
+   +N+Fem+Pl+Gen+Def:gásanna 	FemObl_Flag ;
 
 
 LEXICON kv26 ! tá
-  kv26e    ;
-  kv_flt26 ;
+ +N+Fem+Sg+Nom+Indef:tá 	    FemObl_Flag ;
+   +N+Fem+Sg+Nom+Def:táin 	    FemObl_Flag ;
+ +N+Fem+Sg+Acc+Indef:tá 	    FemObl_Flag ;
+   +N+Fem+Sg+Acc+Def:tánna      FemObl_Flag ;
+ +N+Fem+Sg+Dat+Indef:tá 	    FemObl_Flag ;
+   +N+Fem+Sg+Dat+Def:tánni      FemObl_Flag ;
+ +N+Fem+Sg+Gen+Indef:táar 	    FemObl_Flag ;
+   +N+Fem+Sg+Gen+Def:táarinnar  FemObl_Flag ;
 
-LEXICON kv26e
- +N+Fem: DF_N_SGf_S ;
- +N+Fem+Sg+Acc+Indef: FemObl_Flag ;
- +N+Fem+Sg+Acc+Def:nna FemObl_Flag ;
- +N+Fem+Sg+Dat+Indef: FemObl_Flag ;
- +N+Fem+Sg+Dat+Def:nni FemObl_Flag ;
- +N+Fem: S_F_SGGEN ;
+ +N+Fem+Pl+Nom+Indef:tær 		FemObl_Flag ;
+   +N+Fem+Pl+Nom+Def:tærnar 	FemObl_Flag ;
+ +N+Fem+Pl+Acc+Indef:tær 		FemObl_Flag ;
+   +N+Fem+Pl+Acc+Def:tærnar 	FemObl_Flag ;
+ +N+Fem+Pl+Dat+Indef:tóm 		FemObl_Flag ;
+   +N+Fem+Pl+Dat+Def:tónum	 	FemObl_Flag ;
+   +N+Fem+Pl+Dat+Def:tærnum 	FemObl_Flag ;
+ +N+Fem+Pl+Gen+Indef:táa 		FemObl_Flag ;
+   +N+Fem+Pl+Gen+Def:táanna 	FemObl_Flag ;
 
-LEXICON kv_flt26
- +N+Fem:^IUML F_PLNA_NULL ;
- +N+Fem: F_PLDAT   ;
- +N+Fem: F_PLGEN   ;
 
 
 LEXICON kv27 ! rás
@@ -1809,9 +1825,16 @@ LEXICON kv28 ! dyr
    !#       ;
 
 LEXICON kv_flt28
- +N+Fem:^IUML F_PLNA_NULL ;
- +N+Fem:       F_PLDAT     ;
- +N+Fem:       F_PLGEN     ;
+ +N+Fem+Pl+Nom+Indef:dyr		FemObl_Flag ;
+   +N+Fem+Pl+Nom+Def:dyrnar 	FemObl_Flag ;
+ +N+Fem+Pl+Acc+Indef:dyr 		FemObl_Flag ;
+   +N+Fem+Pl+Acc+Def:dyrnar 	FemObl_Flag ;
+ +N+Fem+Pl+Dat+Indef:durum 		FemObl_Flag ;
+   +N+Fem+Pl+Dat+Def:durunum	 	FemObl_Flag ;
+   +N+Fem+Pl+Dat+Def:dyrnum 	FemObl_Flag ;
+ +N+Fem+Pl+Gen+Indef:dura 		FemObl_Flag ;
+   +N+Fem+Pl+Gen+Def:duranna 	FemObl_Flag ;
+
 
 LEXICON kv29 ! móðir
  +N+Fem+Sg:móð kv29e    ;

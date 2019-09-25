@@ -1888,16 +1888,25 @@ LEXICON kv32 ! mýri
   kv_flt32 ;
 
 LEXICON kv32e
- +N+Fem+Sg+Nom+Indef:%>i  ENDLEX ;
- +N+Fem+Sg+Acc+Indef:%>i  ENDLEX ;
- +N+Fem+Sg+Dat+Indef:%>i  ENDLEX ;
- +N+Fem+Sg+Gen+Indef:%>ar ENDLEX ;
+ +N+Fem+Sg+Nom+Indef:%>i       ENDLEX ;
+ +N+Fem+Sg+Acc+Indef:%>i       ENDLEX ;
+ +N+Fem+Sg+Dat+Indef:%>i       ENDLEX ;
+ +N+Fem+Sg+Gen+Indef:%>ar      ENDLEX ;
+   +N+Fem+Sg+Nom+Def:%>in      ENDLEX ;
+   +N+Fem+Sg+Acc+Def:%>ina     ENDLEX ;
+   +N+Fem+Sg+Dat+Def:%>ini     ENDLEX ;
+   +N+Fem+Sg+Gen+Def:%>arinnar ENDLEX ;
+
 
 LEXICON kv_flt32
- +N+Fem+Pl+Nom+Indef:%>ar ENDLEX ;
- +N+Fem+Pl+Acc+Indef:%>ar ENDLEX ;
- +N+Fem+Pl+Dat+Indef:%>um ENDLEX ;
- +N+Fem+Pl+Gen+Indef:%>a  ENDLEX ;
+ +N+Fem+Pl+Nom+Indef:%>ar    ENDLEX ;
+ +N+Fem+Pl+Acc+Indef:%>ar    ENDLEX ;
+ +N+Fem+Pl+Dat+Indef:%>um    ENDLEX ;
+ +N+Fem+Pl+Gen+Indef:%>a     ENDLEX ;
+   +N+Fem+Pl+Nom+Def:%>arnar ENDLEX ;
+   +N+Fem+Pl+Acc+Def:%>arnar ENDLEX ;
+   +N+Fem+Pl+Dat+Def:%>unum  ENDLEX ;
+   +N+Fem+Pl+Gen+Def:%>anna  ENDLEX ;
 
 LEXICON kv33e/h24e
  kv33e ;
@@ -1912,14 +1921,20 @@ LEXICON kv33 ! gleði
   kv_flt33 ;
 
 LEXICON kv33e
- +N+Fem+Sg+Nom: DF_N_SGf_W ;
- +N+Fem+Sg+Acc: DF_A_SGf_W ;
- +N+Fem+Sg+Dat: DF_D_SGf_S ;
- +N+Fem+Sg+Gen: DF_G_SGf_W ;
+ +N+Fem+Sg+Nom+Indef:       ENDLEX ;
+ +N+Fem+Sg+Acc+Indef:       ENDLEX ;
+ +N+Fem+Sg+Dat+Indef:       ENDLEX ;
+ +N+Fem+Sg+Gen+Indef:       ENDLEX ;
+   +N+Fem+Sg+Nom+Def:%>n    ENDLEX ;
+   +N+Fem+Sg+Acc+Def:%>na   ENDLEX ;
+   +N+Fem+Sg+Dat+Def:%>ni   ENDLEX ;
+   +N+Fem+Sg+Gen+Def:%>nnar ENDLEX ;
 
 LEXICON kv_flt33
- +N+Fem+Sg+Nom: DF_NA_PLf ;
- +N+Fem+Sg+Acc: DF_NA_PLf ;
+ +N+Fem+Pl+Nom+Indef:%>r    ENDLEX ;
+ +N+Fem+Pl+Acc+Indef:%>r    ENDLEX ;
+   +N+Fem+Pl+Nom+Def:%>rnar ENDLEX ;
+   +N+Fem+Pl+Acc+Def:%>rnar ENDLEX ;
 
 LEXICON kv34 ! kraft
   kv34e    ;
@@ -1933,6 +1948,27 @@ LEXICON kv_flt34
  +N+Fem:^IUML F_PLNA_IR ;
  +N+Fem:^IUML F_PLDAT   ;
  +N+Fem:^IUML F_PLGEN   ;
+
+LEXICON kv35
+ +N+Fem+Sg+Nom+Indef:ong      		ENDLEX ;
+ +N+Fem+Sg+Acc+Indef:ong       		ENDLEX ;
+ +N+Fem+Sg+Dat+Indef:ong       		ENDLEX ;
+ +N+Fem+Sg+Gen+Indef:eingjar      	ENDLEX ;
+   +N+Fem+Sg+Nom+Def:eingin      	ENDLEX ;
+   +N+Fem+Sg+Acc+Def:eingina     	ENDLEX ;
+   +N+Fem+Sg+Dat+Def:eingini     	ENDLEX ;
+   +N+Fem+Sg+Nom+Def:ongin      	ENDLEX ;
+   +N+Fem+Sg+Acc+Def:ongina     	ENDLEX ;
+   +N+Fem+Sg+Dat+Def:ongini     	ENDLEX ;
+   +N+Fem+Sg+Gen+Def:eingjarinnar 	ENDLEX ;
+ +N+Fem+Pl+Nom+Indef:eingir     	ENDLEX ;
+ +N+Fem+Pl+Acc+Indef:eingir    		ENDLEX ;
+ +N+Fem+Pl+Dat+Indef:eingjum    	ENDLEX ;
+ +N+Fem+Pl+Gen+Indef:eingja     	ENDLEX ;
+   +N+Fem+Pl+Nom+Def:eingirnar 		ENDLEX ;
+   +N+Fem+Pl+Acc+Def:eingirnar 		ENDLEX ;
+   +N+Fem+Pl+Dat+Def:eingjunum  	ENDLEX ;
+   +N+Fem+Pl+Gen+Def:eingjanna  	ENDLEX ;
 
 LEXICON h1 ! eyga
   h1e    ; !eyga

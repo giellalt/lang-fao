@@ -1267,26 +1267,6 @@ LEXICON kv2 ! bygd
   kv2e    ;
   kv_flt2 ;
 
-LEXICON kv36 
-  kv36e ;
-  kv_flt2 ;
-
-LEXICON kv36e ! støð
-+N+Fem+Sg+Acc+Def:%>na FemObl_Flag ;
-+N+Fem+Sg+Dat+Def:%>ni FemObl_Flag ;
-RESTFORMS_SHORT_kv2e ;
-
-
-LEXICON RESTFORMS_SHORT_kv2e
-+N+Fem+Sg+Nom: DF_N_SGf_S ;
-+N+Fem+Sg+Acc+Indef: FemNom_Flag ;
-+N+Fem+Sg+Dat+Indef: FemObl_Flag ;
-+N+Fem+Sg+Acc+Def:%>nna FemObl_Flag ;
-+N+Fem+Sg+Dat+Def:%>nni FemObl_Flag ;
-+N+Fem+Sg+Gen: DF_G_SGf_W ;
-
-
-
 LEXICON kv_bd2e
   kv2e ;
 
@@ -1963,16 +1943,33 @@ LEXICON kv35
    +N+Fem+Pl+Dat+Def:eingjunum  	ENDLEX ;
    +N+Fem+Pl+Gen+Def:eingjanna  	ENDLEX ;
    
-LEXICON kv2/37
+LEXICON kv36/2
+  kv36 ;
   kv2  ;
-  kv37 ;   
+  
+LEXICON kv36 
+  kv36e ;
+  kv_flt2 ;
+
+LEXICON kv36e ! støð
+  +N+Fem+Sg+Nom: DF_N_SGf_S ;
+  +N+Fem+Sg+Acc+Indef: FemNom_Flag ;
+  +N+Fem+Sg+Acc+Def:%>na FemObl_Flag ;
+  +N+Fem+Sg+Dat+Indef: FemObl_Flag ;
+  +N+Fem+Sg+Dat+Def:%>ni FemObl_Flag ;
+  +N+Fem+Sg+Gen+Indef:%>ar FemObl_Flag ;
+  +N+Fem+Sg+Gen+Def:%>arinnar FemObl_Flag ;
+
+LEXICON kv37/2
+  kv37  ;
+  kv2   ;   
    
 LEXICON kv37
   kv37e		;
   kv_flt37	;
   
 LEXICON kv37e
-+N+Fem+Sg+Nom+Indef:     	   ENDLEX ;
+ +N+Fem+Sg+Nom+Indef:     	   ENDLEX ;
  +N+Fem+Sg+Acc+Indef:          ENDLEX ;
  +N+Fem+Sg+Dat+Indef:          ENDLEX ;
  +N+Fem+Sg+Gen+Indef:%>ar      ENDLEX ;

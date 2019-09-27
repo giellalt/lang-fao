@@ -1238,11 +1238,6 @@ LEXICON kv_flt1
  +N+Fem: F_PLDAT   ;
  +N+Fem: F_PLGEN   ;
 
-LEXICON kv2/22
-  kv2  ;
-  kv22 ;
-
-
 LEXICON kv2/6
   kv2 ;
   kv6 ;
@@ -1360,7 +1355,8 @@ LEXICON kv_flt6
 
  
 LEXICON kv_OY
-       +N+Fem+Sg+Nom:      DF_N_SGf_S  ; !oy, oyggin
+ +N+Fem+Sg+Nom+Indef:      FemObl_Flag ; !oy, oyggin
+   +N+Fem+Sg+Nom+Def:ggin  FemObl_Flag ;
  +N+Fem+Sg+Acc+Indef:      FemObl_Flag ;
    +N+Fem+Sg+Acc+Def:nna   FemObl_Flag ;
  +N+Fem+Sg+Dat+Indef:      FemObl_Flag ;
@@ -1629,6 +1625,10 @@ LEXICON kv20 ! ær (only)
 
 
 LEXICON kv21 ! gjógv
+ kv21e    ;
+ kv_flt21 ;
+ 
+LEXICON kv21e 
  +N+Fem+Sg+Nom+Indef:ógv      ENDLEX ;
    +N+Fem+Sg+Nom+Def:ógvin    ENDLEX ;
  +N+Fem+Sg+Acc+Indef:ógv      ENDLEX ;
@@ -1637,6 +1637,8 @@ LEXICON kv21 ! gjógv
    +N+Fem+Sg+Dat+Def:ónni     ENDLEX ;
  +N+Fem+Sg+Gen+Indef:áar      ENDLEX ;
    +N+Fem+Sg+Gen+Def:áarinnar ENDLEX ;
+
+LEXICON kv_flt21
  +N+Fem+Pl+Nom+Indef:áir      ENDLEX ;
    +N+Fem+Pl+Nom+Def:áirnar   ENDLEX ;
  +N+Fem+Pl+Acc+Indef:áir      ENDLEX ;
@@ -1645,6 +1647,19 @@ LEXICON kv21 ! gjógv
    +N+Fem+Pl+Dat+Def:áunum    ENDLEX ;
  +N+Fem+Pl+Gen+Indef:áa       ENDLEX ;
    +N+Fem+Pl+Gen+Def:áanna    ENDLEX ;
+   
+LEXICON kv21_b
+ +N+Fem+Sg+Nom+Indef:ó      ENDLEX ;
+   +N+Fem+Sg+Nom+Def:óin    ENDLEX ;
+ +N+Fem+Sg+Acc+Indef:ó      ENDLEX ;
+   +N+Fem+Sg+Acc+Def:ónna     ENDLEX ;
+ +N+Fem+Sg+Dat+Indef:ó      ENDLEX ;
+   +N+Fem+Sg+Dat+Def:ónni     ENDLEX ;
+ +N+Fem+Sg+Gen+Indef:áar      ENDLEX ;
+   +N+Fem+Sg+Gen+Def:áarinnar ENDLEX ;
+ kv_flt21 ;
+
+
 
 LEXICON kv22 ! klógv, rógv  stem: kl-, r-
   kv22e    ;
@@ -1987,6 +2002,48 @@ LEXICON kv_flt37
    +N+Fem+Pl+Acc+Def:%>irnar ENDLEX ;
    +N+Fem+Pl+Dat+Def:%>unum  ENDLEX ;
    +N+Fem+Pl+Gen+Def:%>anna  ENDLEX ;
+
+LEXICON kv38 ! negl
+  kv2 ;
+  +N+Fem+Pl+Nom: DF_NA_PLf_inar ;
+  +N+Fem+Pl+Acc: DF_NA_PLf_inar ;
+  
+LEXICON kv39/22
+  kv39  ;
+  kv22 ;
+
+LEXICON kv39 ! slógv
+  kv39e    ;
+  kv_flt39 ;
+  
+LEXICON kv39e  
+ +N+Fem+Sg+Nom:ógv DF_N_SGf_S ;
+ +N+Fem+Sg+Acc+Indef:ógv FemNom_Flag ;
+ +N+Fem+Sg+Acc+Def:ónna FemNom_Flag ;
+ +N+Fem+Sg+Dat+Indef:ógv FemNom_Flag ;
+ +N+Fem+Sg+Dat+Def:ónni FemNom_Flag ;
+ +N+Fem:ógv S_F_SGGEN ;
+
+LEXICON kv_flt39
+ +N+Fem:ógv F_PLNA_IR ;
+ +N+Fem:ógv F_PLDAT   ;
+ +N+Fem:ógv F_PLGEN   ;
+
+LEXICON kv40 ! trøð
+ kv40e    ;
+ kv_flt40 ;
+
+LEXICON kv40e
+ +N+Fem+Sg+Nom:     DF_N_SGf_S ;
+ +N+Fem+Sg+Acc:     DF_A_SGf_W ;
+ +N+Fem+Sg+Dat:     DF_D_SGf_W ;
+ +N+Fem:^OEA S_F_SGGEN ;
+ 
+LEXICON kv_flt40 
+ +N+Fem:^OEA F_PLNA_IR ;
+ +N+Fem:^OEA F_PLDAT   ;
+ +N+Fem:     F_PLDAT   ;
+ +N+Fem:^OEA F_PLGEN   ;
 
 LEXICON h1 ! eyga
   h1e    ; ! eyga

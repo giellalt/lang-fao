@@ -25,9 +25,6 @@ k1 ;
 LEXICON xkv2 ! TOOD: classify xkv1. They are all f and end in a
 kv2 ;
 
-LEXICON xh1 ! TOOD: classify xkv2. They are all f and end in a consonant
-h1 ;
-
 LEXICON xh3 ! TOOD: classify xkv2. They are all f and end in a consonant
 h3 ;
 
@@ -2044,6 +2041,12 @@ LEXICON kv_flt40
  +N+Fem:^OEA F_PLDAT   ;
  +N+Fem:     F_PLDAT   ;
  +N+Fem:^OEA F_PLGEN   ;
+ 
+ 
+ !! ! Neuter forms
+! __________
+
+
 
 LEXICON h1 ! eyga
   h1e    ; ! eyga
@@ -2063,10 +2066,10 @@ LEXICON h_flt1
  +N+Neu: N_PLG_na    ;
 
 LEXICON h2 ! hjarta
-               h1e         ;
+               h1e        ;
  +N+Neu:^UUML N_PLNA_u_ur ;
  +N+Neu:^UUML N_PLD       ;
- +N+Neu:^UUML N_PLG_na    ;
+ +N+Neu:	  N_PLG_na    ;
 
 LEXICON h2e
 h1e ;
@@ -2116,14 +2119,14 @@ LEXICON h4 ! boð
   h_flt4 ;
 
 LEXICON h4e
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGG     ;
- +N+Neu: S_N_SGDG_is ;
-
+ 			  +N+Neu:  S_N_SGNA ;
+ +N+Neu+Sg+Dat+Indef:i Neu_Flag ; ! liði
+ 			  +N+Neu:  S_N_SGD  ; ! lið, liðnum
+ 			  +N+Neu:s S_N_SGG  ;
+ 
 LEXICON h_flt4
   +N+Neu: N_PLNA    ;
-  +N+Neu: N_PLD_0_U ; ! liðnum
-! +N+Neu: N_PLD     ; ! liðunum, comment in if OK
+  +N+Neu: N_PLD     ; ! liðunum
   +N+Neu: N_PLG     ;
 
 LEXICON h5/3
@@ -2157,9 +2160,9 @@ LEXICON h6 ! lag
 
 LEXICON h6e
  +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGG     ;
- +N+Neu: S_N_SGDG_is ; ! blaðinum
- +N+Neu: S_N_SGD     ; ! blaðnum XXX check
+ +N+Neu+Sg+Dat+Indef:i Neu_Flag ; ! blaði
+ 			  +N+Neu:  S_N_SGD  ; ! blað, blaðnum
+ 			  +N+Neu:s S_N_SGG  ; 
 
 LEXICON h_flt6
  +N+Neu:^UUML N_PLNA ;

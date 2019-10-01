@@ -2294,27 +2294,36 @@ LEXICON h14 ! pistr
   h_flt14 ;
 
 LEXICON h14e
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
+ +N+Neu:r  S_N_SGNA  ;
+ +N+Neu:r  S_N_SGD_i ;
+ +N+Neu:ur S_N_SGG_s ;
+
 
 LEXICON h_flt14
- +N+Neu: N_PLNA ;
- +N+Neu: N_PLD  ;
- +N+Neu: N_PLG  ;
+ +N+Neu:r N_PLNA ;
+ +N+Neu:r N_PLD  ;
+ +N+Neu:r N_PLG  ;
 
 
 LEXICON h15 ! tjaldur
   h15e ;
-  h15f ;
+  h_flt15 ;
 
 LEXICON h15e
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
++N+Neu+Sg+Nom+Indef:ur  Neu_Flag  ;
+  +N+Neu+Sg+Nom+Def:rið Neu_Flag  ;
++N+Neu+Sg+Acc+Indef:ur  Neu_Flag  ;
+  +N+Neu+Sg+Acc+Def:rið Neu_Flag  ;
+             +N+Neu:r   S_N_SGD_i ;
+             +N+Neu:ur  S_N_SGG_s ;
 
-LEXICON h15f
- +N+Neu:^UUML N_PLNA ;
- +N+Neu:^UUML N_PLD  ;
- +N+Neu:       N_PLG  ;
+LEXICON h_flt15
++N+Neu+Pl+Nom+Indef:^UUML%>ur   Neu_Flag  ;
+  +N+Neu+Pl+Nom+Def:^UUML%>rini Neu_Flag  ;
++N+Neu+Pl+Acc+Indef:^UUML%>ur   Neu_Flag  ;
+  +N+Neu+Pl+Acc+Def:^UUML%>rini Neu_Flag  ;
+			 +N+Neu:^UUML%>r    N_PLD     ;
+			 +N+Neu:r           N_PLG     ;
 
 ! Start here.
 LEXICON h16 ! skýggj
@@ -2322,10 +2331,11 @@ LEXICON h16 ! skýggj
   h_flt16 ;
 
 LEXICON h16e
- +N+Neu:        S_N_SGNA  ;
- +N+Neu:^JI    S_N_SGD_i ; !skýggi
- +N+Neu:        S_N_SGD   ; !skýggj
- +N+Neu:^GGDEL S_N_SGG_s ; !krýs
+ 			  +N+Neu:        	 S_N_SGNA  ;
+			  +N+Neu:^JI    	 S_N_SGD_i ; ! skýggi
+ +N+Neu+Sg+Dat+Indef: 			 Neu_Flag  ; ! skýggj
+   +N+Neu+Sg+Dat+Def:^GGDEL%>num Neu_Flag  ; ! skýnum
+			  +N+Neu:^GGDEL		 S_N_SGG_s ; ! skýs
 
 !LEXICON h_flt16f
 !  h_flt16 ;
@@ -2895,6 +2905,7 @@ LEXICON F_PLGEN
 
 ! Neuter forms
 ! ____________
+! singular
 
 LEXICON S_N_SGNA
  +Sg+Nom: DF_NA_SGn ;
@@ -2940,6 +2951,8 @@ LEXICON i_N_SGNA
 !LEXICON i_N_SGDG_is
 ! +Sg+Gen:%>is DF_G_SGn ;
 ! +Sg+Dat:%>is DF_D_SGn ;
+
+! plural
 
 LEXICON N_PLNA_u_ur
        +Pl+Nom:%>u  DF_NA_PLn_W ;

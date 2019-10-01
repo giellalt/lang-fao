@@ -2385,7 +2385,7 @@ LEXICON h18e
  +N+Neu:%>is S_N_SGG ;
 
 LEXICON h_flt18
- +N+Neu: N_PLNA_i_ir ;
+ +N+Neu:  N_PLNA_i_ir ;
  +N+Neu:j N_PLD  ;
  +N+Neu:j N_PLG  ;
 
@@ -2395,8 +2395,10 @@ LEXICON h19 ! prógv
   h_flt19 ;
 
 LEXICON h19e
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
+ 			  +N+Neu: 			S_N_SGNA ;
+ +N+Neu+Sg+Dat+Indef:i   		Neu_Flag ;
+   +N+Neu+Sg+Dat+Def:^GDEL%>num Neu_Flag ;
+ 			  +N+Neu:^GDEL%>s 	S_N_SGG  ;
 
 LEXICON h_flt19
  +N+Neu: N_PLNA ;
@@ -2409,9 +2411,10 @@ LEXICON h20 ! búgv
   h_flt20 ;
 
 LEXICON h20e
- +N+Neu:        S_N_SGNA  ;
- +N+Neu:        S_N_SGD_i ;
- +N+Neu:^GVDEL S_N_SGG_s ;
+ 			 +N+Neu:        	S_N_SGNA  ;
++N+Neu+Sg+Dat+Indef:i   		Neu_Flag  ;
+  +N+Neu+Sg+Dat+Def:^GVDEL%>num Neu_Flag  ;
+ 			 +N+Neu:^GVDEL 		S_N_SGG_s ;
 
 LEXICON h_flt20
  +N+Neu: N_PLNA ;
@@ -2424,8 +2427,10 @@ LEXICON h21 ! plógv
   h_flt21 ;
 
 LEXICON h21e
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
+ 			  +N+Neu: 			S_N_SGNA  ;
+ +N+Neu+Sg+Dat+Indef:i   		Neu_Flag  ;
+   +N+Neu+Sg+Dat+Def:^VDEL%>num Neu_Flag  ;
+			  +N+Neu:^VDEL 		S_N_SGG_s ;
 
 LEXICON h_flt21
  +N+Neu: N_PLNA ;
@@ -2442,9 +2447,10 @@ LEXICON h22e
  +N+Neu: S_N_SGDG_is ;
 
 LEXICON h_flt22
- +N+Neu: N_PLNA ;
- +N+Neu: N_PLD  ;
- +N+Neu: N_PLG  ;
+ +N+Neu:  N_PLNA ;
+ +N+Neu:  N_PLD  ;
+ +N+Neu:j N_PLD  ;
+ +N+Neu:j N_PLG  ;
 
 
 LEXICON h23 ! egg
@@ -2456,10 +2462,10 @@ LEXICON h23e
  +N+Neu: S_N_SGDG_is ;
 
 LEXICON h_flt23
- +N+Neu: N_PLNA ;
- +N+Neu: N_PLD  ;
- +N+Neu: N_PLG  ;
-
+ +N+Neu:  N_PLNA ;
+ +N+Neu:  N_PLD  ;
+ +N+Neu:j N_PLD  ;
+ +N+Neu:j N_PLG  ;
 
 LEXICON h24 ! kvæði
   h24e     ;

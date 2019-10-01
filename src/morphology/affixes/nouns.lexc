@@ -2350,16 +2350,27 @@ LEXICON h17 ! kríggj
   h_flt17 ;
 
 LEXICON h17e 
- +N+Neu:       S_N_SGNA  ;
- +N+Neu:^JI   S_N_SGD_i ; !kríggi
- +N+Neu+Sg+Dat+Indef:   Neu_Flag ; !kríggj
- +N+Neu+Sg+Dat+Def:^GDEL%>num Neu_Flag ; !krígnum
- +N+Neu:^GDEL S_N_SGG_s ; !krígs
+ 			  +N+Neu:       S_N_SGNA  ;
+			  +N+Neu:^JI    S_N_SGD_i ; ! skríggi, skrígginum
+ +N+Neu+Sg+Dat+Indef:   	Neu_Flag  ; ! skríggj
+			  +N+Neu:^GDEL  S_N_SGG_s ; ! skrígs
 
 LEXICON h_flt17
  +N+Neu: N_PLNA ;
  +N+Neu: N_PLD  ;
  +N+Neu: N_PLG  ;
+
+LEXICON h17_2
+ h17_2e ;
+ h_flt17 ;
+
+LEXICON h17_2e
+ 			  +N+Neu:       	S_N_SGNA  ;
+ +N+Neu+Sg+Dat+Indef:^JI%>i  	Neu_Flag  ; ! kríggi
+ +N+Neu+Sg+Dat+Indef:   		Neu_Flag  ; ! kríggj
+   +N+Neu+Sg+Dat+Def:^GDEL%>num Neu_Flag  ; ! krígnum
+			  +N+Neu:^GDEL 		S_N_SGG_s ; ! krígs
+
 
 
 LEXICON h18 ! týggi
@@ -2367,13 +2378,16 @@ LEXICON h18 ! týggi
   h_flt18 ;
 
 LEXICON h18e
- +N+Neu: 0_N_SGNA    ;
- +N+Neu:%>is S_N_SGDG ;
+ +N+Neu:i 0_N_SGNA    ;
+ +N+Neu+Sg+Dat+Indef:i   		Neu_Flag  ;
+ +N+Neu+Sg+Dat+Indef:j   		Neu_Flag  ;
+ +N+Neu+Sg+Dat+Def:inum   		Neu_Flag  ;
+ +N+Neu:%>is S_N_SGG ;
 
 LEXICON h_flt18
- +N+Neu: N_PLNA ;
- +N+Neu: N_PLD  ;
- +N+Neu: N_PLG  ;
+ +N+Neu: N_PLNA_i_ir ;
+ +N+Neu:j N_PLD  ;
+ +N+Neu:j N_PLG  ;
 
 
 LEXICON h19 ! prógv

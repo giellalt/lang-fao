@@ -2605,17 +2605,41 @@ LEXICON h3e/kv2
  h3e ;
  kv2 ;
 
-LEXICON h36 
- +N+Neu:%>um S_N_SGNA    ;
- +N+Neu+Sg+Nom+Indef:i Neu_Flag 	; ! fíggjar
-  +N+Neu+Sg+Nom+Def:ið Neu_Flag ; ! fíggjarsins
-+N+Neu+Sg+Acc+Indef:i Neu_Flag 	; ! fíggjar
-  +N+Neu+Sg+Acc+Def:ið Neu_Flag ; ! fíggjarsins
+LEXICON h36
+ h36e ;
+ h_flt36 ;
+
+LEXICON h36e
+ +N+Neu+Sg+Nom+Indef:um Neu_Flag 	;   +N+Neu+Sg+Nom+Def:ið Neu_Flag ; 
++N+Neu+Sg+Acc+Indef:um Neu_Flag 	;   +N+Neu+Sg+Acc+Def:ið Neu_Flag ; 
  +N+Neu:  S_N_SGD_i ;
  +N+Neu:i S_N_SGG_s ;
  
+LEXICON h_flt36 
+ +N+Neu+Pl+Nom+Indef:i   Neu_Flag 	;
+ +N+Neu+Pl+Nom+Indef:ir  Neu_Flag 	;
+   +N+Neu+Pl+Nom+Def:ini Neu_Flag ;
+ +N+Neu+Pl+Acc+Indef:i   Neu_Flag 	; 
+ +N+Neu+Pl+Acc+Indef:ir  Neu_Flag 	; 
+   +N+Neu+Pl+Acc+Def:ini Neu_Flag ;
+ 			  +N+Neu:  	 N_PLD     ;
+ 			  +N+Neu:    N_PLG     ;
+
+ 
 LEXICON h37
-h38 ;
+ h37e ;
+ h_flt37 ;
+ 
+LEXICON h37e 
+ +N+Neu+Sg+Nom+Indef:i Neu_Flag 	; 
+  +N+Neu+Sg+Nom+Def:ið Neu_Flag ; +N+Neu+Sg+Acc+Indef:i Neu_Flag 	;   +N+Neu+Sg+Acc+Def:ið Neu_Flag ; 
+   +N+Neu:  S_N_SGD_i ;
+ +N+Neu:i S_N_SGG_s ;
+
+
+LEXICON h_flt37
+ h_flt36 ;
+
  
 LEXICON h38
 h38e ;

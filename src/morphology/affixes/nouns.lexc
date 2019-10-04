@@ -1798,17 +1798,6 @@ LEXICON kv27 ! rás
  +N+Fem: F_PLDAT   ;
  +N+Fem: F_PLGEN   ;
 
-LEXICON kv28/12
-kv28 ;
-kv12 ;
-
-LEXICON kv28 ! dyr
-!  kv28e    ;
-   kv_flt28 ;
-
-!LEXICON kv28e ! no ex
-   !#       ;
-
 LEXICON kv_flt28
  +N+Fem+Pl+Nom+Indef:dyr		FemObl_Flag ;
    +N+Fem+Pl+Nom+Def:dyrnar 	FemObl_Flag ;
@@ -2471,25 +2460,15 @@ LEXICON h24 ! kvæði
   h24e     ;
   h_flt24 ;
 
-LEXICON h_flt24 ! XXX two different?
-  h_flt24r ;
-
 LEXICON h24e
  +N+Neu: i_N_SGNA   ;
  +N+Neu: S_N_SGD_i  ;
  +N+Neu: S_N_SGG_is ;
 
-LEXICON h_flt24r
+LEXICON h_flt24
   +N+Neu:  N_PLNA_i_ir ;
-!          h_flt24     ; ! Ordinary pl
-! +N+Neu:r N_PLNA      ; ! "Danish" r pl.
   +N+Neu:  N_PLD       ;
   +N+Neu:  N_PLG       ;
-
-!LEXICON h_flt24
-! +N+Neu:  N_PLNA      ;
-! +N+Neu:  N_PLD       ;
-! +N+Neu:  N_PLG       ;
 
 
 LEXICON h25 ! merki
@@ -2497,44 +2476,28 @@ LEXICON h25 ! merki
   h_flt25 ;
 
 LEXICON h25e
- +N+Neu:i S_N_SGNA    ;
- +N+Neu:  S_N_SGDG_is ;
+ +N+Neu: i_N_SGNA   ;
+ +N+Neu: S_N_SGD_i  ;
+ +N+Neu: S_N_SGG_is ;
 
 LEXICON h_flt25
- +N+Neu: N_PLNA ;
- +N+Neu:j N_PLD  ;
- +N+Neu:j N_PLG  ;
+ +N+Neu:  N_PLNA_i_ir ;
+ +N+Neu:j N_PLD  	  ;
+ +N+Neu:j N_PLG  	  ;
+
+LEXICON h_flt26 ! tiðindi
+  h_flt24 ;
+
+LEXICON h_flt27 ! systkin
++N+Neu+Pl+Nom+Indef:in  Neu_Flag  ;
+  +N+Neu+Pl+Nom+Def:ini Neu_Flag  ;
++N+Neu+Pl+Acc+Indef:in  Neu_Flag  ;
+  +N+Neu+Pl+Acc+Def:ini Neu_Flag  ;
+   			 +N+Neu:j 	N_PLD  	  ;
+ 			 +N+Neu:in 	N_PLG     ;
 
 
-LEXICON h26 ! tiðindi
- h26e ;
- h_flt26 ;
-
-LEXICON h26e 
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
-
-LEXICON h_flt26 
- +N+Neu: N_PLNA      ;
- +N+Neu: N_PLD       ;
- +N+Neu: N_PLG       ;
-
-
-LEXICON h27 ! systkin
-  h27e    ;
-  h_flt27 ;
-
-LEXICON h27e
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
-
-LEXICON h_flt27
- +N+Neu: N_PLNA ;
- +N+Neu: N_PLD  ;
- +N+Neu: N_PLG  ;
-
-
-LEXICON h28 ! bakari
+LEXICON h28 ! bakarí
   h28e    ;
   h_flt28 ;
 
@@ -2555,44 +2518,66 @@ LEXICON h29 ! kamar
   h_flt29 ;
 
 LEXICON h29e
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
+ +N+Neu:ar S_N_SGNA    ;
+ +N+Neu:ar S_N_SGDG_is ;
 
 LEXICON h_flt29
- +N+Neu: N_PLNA ;
- +N+Neu: N_PLD  ;
- +N+Neu: N_PLG  ;
++N+Neu+Pl+Nom+Indef:^UUML%>ur   Neu_Flag  ;
+  +N+Neu+Pl+Nom+Def:^UUML%>rini Neu_Flag  ;
++N+Neu+Pl+Acc+Indef:^UUML%>ur   Neu_Flag  ;
+  +N+Neu+Pl+Acc+Def:^UUML%>rini Neu_Flag  ;
+			 +N+Neu:^UUML%>r    N_PLD     ;
++N+Neu+Pl+Dat+Indef:^UUML%>urum Neu_Flag  ;
+ 			 +N+Neu:ar 			N_PLG     ;
 
 LEXICON h30 ! summar
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
- +N+Neu: N_PLNA      ;
- +N+Neu: N_PLD       ;
- +N+Neu: N_PLG       ;
+			  +N+Neu:mar 	 S_N_SGNA  ;
+ +N+Neu+Sg+Dat+Indef:ri   	 Neu_Flag  ;
+   +N+Neu+Sg+Dat+Def:rinum 	 Neu_Flag  ;
+   +N+Neu+Sg+Dat+Def:marinum Neu_Flag  ;
+ 			  +N+Neu:mar 	 S_N_SGG_s ;
+ 			  +N+Neu:mur 	 N_PLNA    ;
+ 			  +N+Neu:mør 	 N_PLNA    ;
+   +N+Neu+Pl+Nom+Def:rini 	 Neu_Flag  ;
+   +N+Neu+Pl+Acc+Def:rini 	 Neu_Flag  ;
+ 			  +N+Neu:r 		 N_PLD     ;
+ 			  +N+Neu:r 		 N_PLG     ;
 
 
 LEXICON h31 ! nummar
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
- +N+Neu: N_PLNA      ;
- +N+Neu: N_PLD       ;
- +N+Neu: N_PLG       ;
+ 			+N+Neu:mar 	 S_N_SGNA    ;
+ +N+Neu+Sg+Dat+Def:rinum Neu_Flag    ;
+ 			+N+Neu:mar   S_N_SGDG_is ;
+ 			+N+Neu:mar   N_PLNA      ;
+ 			+N+Neu:mur   N_PLNA      ;
+ +N+Neu+Pl+Nom+Def:rini  Neu_Flag    ;
+ +N+Neu+Pl+Acc+Def:rini  Neu_Flag    ;
+		    +N+Neu:r 	 N_PLD       ;
+ 		    +N+Neu:r 	 N_PLG       ;
 
 
 LEXICON h32 ! høvd
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
- +N+Neu: N_PLNA      ;
- +N+Neu: N_PLD       ;
- +N+Neu: N_PLG       ;
+ +N+Neu:d  S_N_SGNA  ;
+ +N+Neu:d  S_N_SGD_i ;
+ +N+Neu:uð S_N_SGG_s ;
+ +N+Neu:d  N_PLNA    ;
+ +N+Neu:d  N_PLD     ;
+ +N+Neu:d  N_PLG     ;
 
 
 LEXICON h33 ! høvur
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
- +N+Neu: N_PLNA      ;
- +N+Neu: N_PLD       ;
- +N+Neu: N_PLG       ;
+ +N+Neu+Sg+Nom+Indef:ur Neu_Flag   ;
+ +N+Neu+Sg+Nom+Def:dið Neu_Flag    ;
+ +N+Neu+Sg+Acc+Indef:ur Neu_Flag   ;
+ +N+Neu+Sg+Acc+Def:dið Neu_Flag    ;
+ +N+Neu:d  S_N_SGD_i ;
+ +N+Neu:uð S_N_SGG_s ;
+ +N+Neu+Pl+Nom+Indef:ur Neu_Flag   ;
+ +N+Neu+Pl+Nom+Def:dini Neu_Flag    ;
+ +N+Neu+Pl+Acc+Indef:ur Neu_Flag   ;
+ +N+Neu+Pl+Acc+Def:dini Neu_Flag    ;
+ +N+Neu:d  N_PLD     ;
+ +N+Neu:d  N_PLG     ;
 
 
 LEXICON h34 ! fæ
@@ -2600,48 +2585,38 @@ h34e ;
 h_flt34 ;
 
 LEXICON h34e
-+N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
++N+Neu:æ S_N_SGNA    ;
++N+Neu+Sg+Dat+Indef:æi Neu_Flag 		; ! fæi
+ 			 +N+Neu:æ  S_N_SGD  		; ! fæ, fænum
++N+Neu+Sg+Gen+Indef:íggjar Neu_Flag 	; ! fíggjar
+  +N+Neu+Sg+Gen+Def:íggjarsins Neu_Flag ; ! fíggjarsins
 
+ ! møguliga skal h_flt34 strikast  
 LEXICON h_flt34
-+N+Neu: N_PLNA      ;
- +N+Neu: N_PLD       ;
- +N+Neu: N_PLG       ;
++N+Neu:æ N_PLNA      ;
++N+Neu:æ N_PLD       ;
++N+Neu:æ N_PLG       ;
+
 
 ! Leksikona h35 til og med h41 er __ikkje__ ferdig.
 
-LEXICON h35
- h35 ;
- h_flt34 ; !check the pl forms.
-LEXICON h35e
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
 
 LEXICON h3e/kv2
  h3e ;
  kv2 ;
 
-LEXICON h36/37
- h36 ;
- h37 ;
- 
 LEXICON h36 
  +N+Neu:%>um S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
- +N+Neu: F_PLNA_IR ;
- +N+Neu: N_PLD       ;
- +N+Neu: N_PLG       ;
+ +N+Neu+Sg+Nom+Indef:i Neu_Flag 	; ! fíggjar
+  +N+Neu+Sg+Nom+Def:ið Neu_Flag ; ! fíggjarsins
++N+Neu+Sg+Acc+Indef:i Neu_Flag 	; ! fíggjar
+  +N+Neu+Sg+Acc+Def:ið Neu_Flag ; ! fíggjarsins
+ +N+Neu:  S_N_SGD_i ;
+ +N+Neu:i S_N_SGG_s ;
  
 LEXICON h37
-h37e ;
- +N+Neu: N_PLD       ;
- +N+Neu: N_PLG       ;
-
-LEXICON h37e
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGD_i ;
- +N+Neu: S_N_SGG_s ;
-
+h38 ;
+ 
 LEXICON h38
 h38e ;
 h_flt38 ;

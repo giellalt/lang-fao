@@ -63,6 +63,7 @@ EXTEDITOR=@SEE@
 ##### --include "(pattern1|pattern2|...)"                          #####
 ##### --exclude "(pattern1|pattern2|...)"                          #####
 @GTCORE@/scripts/extract-lemmas.sh \
+    --exclude "(adjcmp1|ELDRI|ELSTUR|adj_def)" \
     $source_file > $lemmas
 
 ###### Start testing: #######

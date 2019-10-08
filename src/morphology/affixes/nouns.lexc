@@ -2098,12 +2098,26 @@ LEXICON h_flt3
  +N+Neu: N_PLNA ;
  +N+Neu: N_PLD  ;
  +N+Neu: N_PLG  ;
+ 
+LEXICON h3_2 ! politi
+  h3_2e   ;
+  h_flt3_2 ;
+
+LEXICON h3_2e
+ 			+N+Neu:  	S_N_SGNA ;
+ +N+Neu+Sg+Dat+Def:num  Neu_Flag ; ! politinum
+ 		    +N+Neu:i 	S_N_SGD  ; ! politii, politiinum
+ 		    +N+Neu:s 	S_N_SGG  ;
+
+
+LEXICON h_flt3_2
+ h_flt3 ;
 
 !LEXICON h4/5
 !  h4 ;
 !  h5 ;
 
-LEXICON h4 ! boð
+LEXICON h4 ! lið
   h4e    ;
   h_flt4 ;
 
@@ -2117,6 +2131,46 @@ LEXICON h_flt4
   +N+Neu: N_PLNA    ;
   +N+Neu: N_PLD     ; ! liðunum
   +N+Neu: N_PLG     ;
+
+LEXICON h4_2 ! guv
+  h4_2e  ;
+  h_flt4_2 ;
+  
+LEXICON h4_2e
+ 			  +N+Neu:  S_N_SGNA ;
+ +N+Neu+Sg+Dat+Indef:  Neu_Flag ; ! guv
+ 			  +N+Neu:i S_N_SGD  ; ! guvi, guvinum
+ 			  +N+Neu:s S_N_SGG  ;
+
+LEXICON h_flt4_2  
+  h_flt4 ;
+
+LEXICON h4_3 ! bað
+  h4_3e  ;
+  h_flt4_3 ;
+
+LEXICON h4_3e
+ 			  +N+Neu:  S_N_SGNA ;
+ 			  +N+Neu:  S_N_SGD  ; ! bað, baðnum
+ 			  +N+Neu:i S_N_SGD  ; ! baði, baðinum
+ 			  +N+Neu:s S_N_SGG  ;
+
+LEXICON h_flt4_3
+  h_flt4 ;
+
+LEXICON h4_4 ! læ
+  h4_4e  ;
+  h_flt4_4 ;
+
+LEXICON h4_4e
+ 			  +N+Neu:  S_N_SGNA ;
+ +N+Neu+Sg+Dat+Def:inum Neu_Flag ; ! læinum
+ 			  +N+Neu:  S_N_SGD  ; ! læ, lænum
+ 			  +N+Neu:s S_N_SGG  ;
+
+LEXICON h_flt4_4
+  h_flt4 ;
+
 
 LEXICON h5/3
   h5 ;
@@ -2639,27 +2693,6 @@ LEXICON h37e
 
 LEXICON h_flt37
  h_flt36 ;
-
- 
-LEXICON h38
-h38e ;
-h_flt38 ;
-
-LEXICON h38e 
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGD_i ;
- +N+Neu: S_N_SGG_s ;
-
-LEXICON h_flt38 
- +N+Neu: N_PLD       ;
- +N+Neu: N_PLG       ;
-
-LEXICON h39
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
- +N+Neu: N_PLD       ;
- +N+Neu: N_PLG       ;
-
 
 LEXICON h40
  +N+Neu: S_N_SGNA    ;

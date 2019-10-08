@@ -2380,13 +2380,38 @@ LEXICON h16e
    +N+Neu+Sg+Dat+Def:^GGDEL%>num Neu_Flag  ; ! skýnum
 			  +N+Neu:^GGDEL		 S_N_SGG_s ; ! skýs
 
-!LEXICON h_flt16f
-!  h_flt16 ;
-
 LEXICON h_flt16
  +N+Neu: N_PLNA ;
  +N+Neu: N_PLD  ;
  +N+Neu: N_PLG  ;
+
+LEXICON h16_2 ! hoyggj
+  h16_2e ;
+  h_flt16_2 ;
+  
+LEXICON h16_2e
+			  +N+Neu:        	 S_N_SGNA  ;
+ +N+Neu+Sg+Dat+Indef:^JI%>i	 	 Neu_Flag  ; ! hoyggi
+ +N+Neu+Sg+Dat+Indef: 			 Neu_Flag  ; ! hoyggj
+   +N+Neu+Sg+Dat+Def:^GGDEL%>num Neu_Flag  ; ! hoynum
+			  +N+Neu:^GGDEL		 S_N_SGG_s ; ! hoys
+
+LEXICON h_flt16_2
+  h_flt16 ;
+  
+LEXICON h16_3 ! fríggj
+  h16_3e ;
+  h_flt16_3 ;
+  
+LEXICON h16_3e
++N+Neu:        	 S_N_SGNA  ;
+			  +N+Neu:^JI    	 S_N_SGD_i ; ! fríggi, frígginum
+ +N+Neu+Sg+Dat+Indef: 			 Neu_Flag  ; ! fríggj
+			  +N+Neu:^GGDEL		 S_N_SGG_s ; ! frís
+			  
+LEXICON h_flt16_3
+  h_flt16 ;
+  
 
 LEXICON h17 ! kríggj
   h17e    ;
@@ -2686,7 +2711,9 @@ LEXICON h37
  
 LEXICON h37e 
  +N+Neu+Sg+Nom+Indef:i Neu_Flag 	; 
-  +N+Neu+Sg+Nom+Def:ið Neu_Flag ; +N+Neu+Sg+Acc+Indef:i Neu_Flag 	;   +N+Neu+Sg+Acc+Def:ið Neu_Flag ; 
+  +N+Neu+Sg+Nom+Def:ið Neu_Flag ; 
+  +N+Neu+Sg+Acc+Indef:i Neu_Flag 	;   
+  +N+Neu+Sg+Acc+Def:ið Neu_Flag ; 
    +N+Neu:  S_N_SGD_i ;
  +N+Neu:i S_N_SGG_s ;
 
@@ -2695,11 +2722,41 @@ LEXICON h_flt37
  h_flt36 ;
 
 LEXICON h40
- +N+Neu: S_N_SGNA    ;
- +N+Neu:^EPH S_N_SGD_i ;
- +N+Neu: S_N_SGG_s ;
- +N+Neu:^EPH N_PLD       ;
- +N+Neu:^EPH N_PLG       ;
++N+Neu+Sg+Nom+Indef:fur  	 Neu_Flag  ; 
+  +N+Neu+Sg+Nom+Def:rið  	 Neu_Flag  ; 
++N+Neu+Sg+Acc+Indef:fur  	 Neu_Flag  ;   
+  +N+Neu+Sg+Acc+Def:rið  	 Neu_Flag  ; 
++N+Neu+Sg+Dat+Indef:ri   	 Neu_Flag  ;   
+  +N+Neu+Sg+Dat+Def:rinum  	 Neu_Flag  ; 
++N+Neu+Sg+Gen+Indef:furs  	 Neu_Flag  ;   
+  +N+Neu+Sg+Gen+Def:fursins  Neu_Flag  ; 
++N+Neu+Pl+Nom+Indef:fur  	 Neu_Flag  ; 
+  +N+Neu+Pl+Nom+Def:rini 	 Neu_Flag  ; 
++N+Neu+Pl+Acc+Indef:fur  	 Neu_Flag  ;   
+  +N+Neu+Pl+Acc+Def:rini 	 Neu_Flag  ; 
++N+Neu+Pl+Dat+Indef:rum  	 Neu_Flag  ; 
+  +N+Neu+Pl+Dat+Def:runum 	 Neu_Flag  ; 
++N+Neu+Pl+Gen+Indef:ra  	 Neu_Flag  ;   
+  +N+Neu+Pl+Gen+Def:ranna 	 Neu_Flag  ; 
+
+LEXICON h40_2
++N+Neu+Sg+Nom+Indef:tul 	 Neu_Flag  ; 
+  +N+Neu+Sg+Nom+Def:lið 	 Neu_Flag  ; 
++N+Neu+Sg+Acc+Indef:tul 	 Neu_Flag  ;   
+  +N+Neu+Sg+Acc+Def:lið 	 Neu_Flag  ; 
++N+Neu+Sg+Dat+Indef:li   	 Neu_Flag  ;   
+  +N+Neu+Sg+Dat+Def:linum  	 Neu_Flag  ; 
++N+Neu+Sg+Gen+Indef:tuls  	 Neu_Flag  ;   
+  +N+Neu+Sg+Gen+Def:tulsins  Neu_Flag  ; 
++N+Neu+Pl+Nom+Indef:tul  	 Neu_Flag  ; 
+  +N+Neu+Pl+Nom+Def:lini  	 Neu_Flag  ; 
++N+Neu+Pl+Acc+Indef:tul 	 Neu_Flag  ;   
+  +N+Neu+Pl+Acc+Def:lini	 Neu_Flag  ; 
++N+Neu+Pl+Dat+Indef:lum  	 Neu_Flag  ; 
+  +N+Neu+Pl+Dat+Def:lunum 	 Neu_Flag  ; 
++N+Neu+Pl+Gen+Indef:la  	 Neu_Flag  ;   
+  +N+Neu+Pl+Gen+Def:lanna 	 Neu_Flag  ; 
+
 
 LEXICON h41/h9
  h41 ;

@@ -23,10 +23,28 @@
  * +Abbr +ACR							     : Abbreviations, acronyms ,
  * +CLB +PUNCT +LEFT +RIGHT			     : Punctuation, parentheses
  * +Symbol  : independent symbols in the text stream, like £, €, ©
+ * __+CLBfinal__  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 
 
  * +Sg3 					     : This is inherited from common files, should be changed to +3Sg.
 
+ * +ABBR    sub-pos
+ * +Arab    sub-pos
+
+ * +Attr    sub-pos
+ * +Coll    sub-pos
+
+ * +Com     samiske kasus, skal bort
+ * +Dyn     samiske kasus, skal bort
+ * +Ela     samiske kasus, skal bort
+ * +Ess     samiske kasus, skal bort
+ * +Ill     samiske kasus, skal bort
+ * +Ine     samiske kasus, skal bort
+
+ * +MWE     multiword expression
+
+ * +Pos     sjekk desse XXX
+ * +Rom     sjekk desse XXX
 
 
 
@@ -93,7 +111,7 @@
  * +v1 +v2     : different paradigms   ,
 
  !!Triggers for Morphophonology
- * %^UUML %^IUML %^eIUML				 : Umlaut types ,
+ * %^UUML %^IUML %^eIUML %^ØUML				 : Umlaut types ,
  * %^W %^JI 					                  : Cns changes ,
  * %^EPH %^OEA 					 : Epenthesis,  ,
  * %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL	 : Cns deletion triggers,

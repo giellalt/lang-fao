@@ -2054,6 +2054,48 @@ LEXICON h_flt1
  +N+Neu: N_PLD       ;
  +N+Neu: N_PLG_na    ;
 
+LEXICON h1_2 ! setta
+  h1_2e    ;
+  h_flt1_2 ;
+
+LEXICON h1_2e
+ h1e ;
+
+
+LEXICON h_flt1_2
+ +N+Neu: N_PLNA_u_ur ;
+ +N+Neu: N_PLD       ;
+ +N+Neu: N_PLG	     ;
+ 
+LEXICON h1_2/1_3
+ h1_2 ;
+ h1_3 ;
+ 
+LEXICON h1_3 ! drama
+  h1_3e    ;
+  h_flt1_3 ;
+
+LEXICON h1_3e
+ +N+Neu+Sg+Nom:%>a DF_NA_SGn_indef ;
+ +N+Neu+Sg+Nom:%>ai DF_NA_SGn_def   ;
+ +N+Neu+Sg+Acc:%>a DF_NA_SGn_indef ;
+ +N+Neu+Sg+Acc:%>ai DF_NA_SGn_def   ;
+ +N+Neu+Sg+Dat:%>a DF_D_SGn        ;
+ +N+Neu+Sg+Dat:%>ai DF_D_SGn        ;
+ +N+Neu+Sg+Gen+Indef:%>a Neu_Flag      ;
+ +N+Neu+Sg+Gen+Def:%>as Neu_Flag      ;
+
+
+LEXICON h_flt1_3
+ +N+Neu+Pl+Nom+Indef:%>a Neu_Flag      ;
+ +N+Neu+Pl+Acc+Indef:%>a Neu_Flag      ;
+ +N+Neu+Pl+Nom+Def:%>aini Neu_Flag      ;
+ +N+Neu+Pl+Acc+Def:%>aini Neu_Flag      ;
+ +N+Neu+Pl+Nom+Indef:%>air Neu_Flag      ;
+ +N+Neu+Pl+Acc+Indef:%>air Neu_Flag      ;
+ +N+Neu:a N_PLD       ;
+ +N+Neu: N_PLG	     ;
+
 LEXICON h2 ! hjarta
                h1e        ;
  +N+Neu:^UUML N_PLNA_u_ur ;
@@ -2328,6 +2370,19 @@ LEXICON h13e
 
 LEXICON h_flt13
  +N+Neu:^EPH N_PLNA ;
+ +N+Neu:^EPH N_PLD  ;
+ +N+Neu:^EPH N_PLG  ;
+
+LEXICON h13_2 ! ásin
+  h13_2e    ;
+  h_flt13_2 ;
+
+LEXICON h13_2e
+ +N+Neu: S_N_SGNA    ;
+ +N+Neu:^EPH S_N_SGDG_is ;
+
+LEXICON h_flt13_2
+ +N+Neu: N_PLNA ;
  +N+Neu:^EPH N_PLD  ;
  +N+Neu:^EPH N_PLG  ;
 

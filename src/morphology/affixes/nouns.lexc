@@ -2822,13 +2822,17 @@ h41e ;
 h_flt41 ;
 
 LEXICON h41e 
- +N+Neu: S_N_SGNA    ;
- +N+Neu: S_N_SGDG_is ;
-
+ h3e ;
+ 
 LEXICON h_flt41 
+ +N+Neu+Pl+Nom+Indef: Neu_Flag      ;
+ +N+Neu+Pl+Acc+Indef: Neu_Flag      ;
+ +N+Neu+Pl+Nom+Def:%>ini Neu_Flag      ;
+ +N+Neu+Pl+Acc+Def:%>ini Neu_Flag      ;
+ +N+Neu+Pl+Nom+Indef:%>ir Neu_Flag      ;
+ +N+Neu+Pl+Acc+Indef:%>ir Neu_Flag      ;
  +N+Neu: N_PLD       ;
- +N+Neu: N_PLG_NULL  ;
-
+ +N+Neu: N_PLG	     ;
 
 
 

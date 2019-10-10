@@ -24,13 +24,13 @@
 HFSTTWOLFLAGS=--resolve
 
 .twolc.hfst:
-	$(AM_V_HTWOLC)$(HFST_TWOLC) $(MORE_VERBOSITY) \
+	$(AM_V_HTWOLC)"$(HFST_TWOLC)" $(MORE_VERBOSITY) \
 			$(HFSTFLAGS) $(HFSTTWOLCFLAGS) $(HFST_FORMAT) -i $< -o $@
 
 ####### Xerox build rules: #######
 .twolc.xfst:
 	$(AM_V_TWOLC)$(PRINTF) "read-grammar $<\ncompile\nsave-binary $@\nquit\n" \
-		| $(TWOLC) $(VERBOSITY)
+		| "$(TWOLC)" $(VERBOSITY)
 
 ######## Foma build rules (based on Hfst): #######
 ### Commented out for now, they interfere with proper Foma builds, and do not

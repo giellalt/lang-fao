@@ -17,6 +17,6 @@
 
 ####### Build rules: ########
 %.bin: %.cg3
-	$(AM_V_CGCOMP)$(VISLCG3_COMP) $< $@
+	$(AM_V_CGCOMP)"$(VISLCG3_COMP)" $< $@
 
 # vim: set ft=automake:

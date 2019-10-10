@@ -1,4 +1,10 @@
-$Rev: 183714 $
+$Rev: 183967 $
+Wrapped command line tools in double quotes, to protect against spaces in
+pathnames. Spaces will occur when building on Windows using Windows Subsystem
+for Linux, as locations such as 'Program Files' are included in the default
+search path.
+
+r183714:
 Improved build process for pattern hyphenators - now patgen config is done
 programmatically instead of interactively. The values are configured in the
 Makefile.am.

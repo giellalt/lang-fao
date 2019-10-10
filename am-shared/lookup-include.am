@@ -35,7 +35,7 @@
 
 # We also want a generic build rule for making optimised lookup hfst's:
 %.hfstol: %.hfst
-	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -w -i $< -o $@
+	$(AM_V_FST2FST)"$(HFST_FST2FST)" $(HFSTFLAGS) -w -i $< -o $@
 
 ####### Xerox build rules: #######
 
@@ -46,7 +46,7 @@
 # The lookup variant of the Xerox fst needs to be inverted, since Xerox turns
 # the fst upside down / backwards when doing lookup:
 %.lookup.xfst: %.xfst
-	$(AM_V_XFST)$(XFST) $(VERBOSITY) \
+	$(AM_V_XFST)"$(XFST)" $(VERBOSITY) \
 			-e "load stack < $<" \
 			-e "invert net" \
 			-e "save stack $@ " \
@@ -61,7 +61,7 @@
 # The lookup variant of the Xerox fst needs to be inverted, since Xerox turns
 # the fst upside down / backwards when doing lookup:
 %.lookup.foma: %.foma
-	$(AM_V_FOMA)$(FOMA) $(VERBOSITY) \
+	$(AM_V_FOMA)"$(FOMA)" $(VERBOSITY) \
 			-e "load stack $<" \
 			-e "invert net" \
 			-e "save stack $@ " \

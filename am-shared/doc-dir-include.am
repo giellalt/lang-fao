@@ -4,8 +4,10 @@
 
 # Variables:
 VPATH_JSP_PAGES=$(addprefix $(srcdir)/,$(JSP_PAGES))
+ALLINONE_JSP_PAGE=$(srcdir)/$(GTLANG).jspwiki
+LINKS=$(srcdir)/Links.jspwiki
 
-doc_DATA=$(VPATH_JSP_PAGES) $(ALLINONE_JSP_PAGE) $(LINKS)
+doc_DATA=$(LINKS) $(VPATH_JSP_PAGES) $(ALLINONE_JSP_PAGE)
 
 DOCC2RST=$(GTCORE)/scripts/doccomments2rst.awk
 DOCC2TEX=$(GTCORE)/scripts/doccomments2tex.awk
@@ -17,36 +19,39 @@ LATEX=xelatex
 FORRESTARGS=-Dforrest.jvmargs="-Dfile.encoding=utf-8 -Djava.awt.headless=true"
 
 $(srcdir)/%-syntax.jspwiki: $(top_srcdir)/src/syntax/%.cg3
-	$(AM_V_AWK)$(GAWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-phonology.jspwiki: $(top_srcdir)/src/phonology/%.twolc
-	$(AM_V_AWK)$(GAWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-phonology.jspwiki: $(top_srcdir)/src/phonology/%.xfscript
-	$(AM_V_AWK)$(GAWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/morphology/%.lexc
-	$(AM_V_AWK)$(GAWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-stems.jspwiki: $(top_srcdir)/src/morphology/stems/%.lexc
-	$(AM_V_AWK)$(GAWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-affixes.jspwiki: $(top_srcdir)/src/morphology/affixes/%.lexc
-	$(AM_V_AWK)$(GAWK) -f $(DOCC2JSPWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
-$(srcdir)/$(GTLANG).jspwiki: $(srcdir)/preamble.jspwiki $(VPATH_JSP_PAGES)
+$(ALLINONE_JSP_PAGE): $(srcdir)/preamble.jspwiki $(VPATH_JSP_PAGES)
+	$(AM_V_at)-rm -rf build
+	$(AM_V_at)-rm -rf $(srcdir)/build
 	$(AM_V_at)-rm -f $@
 	$(AM_V_GEN)cat $^ > $@
+if CAN_FORREST_VALIDATE
+	$(AM_V_FORREST)cd $(srcdir) && \
+			"$(FORREST)" $(VERBOSITY) site $(FORRESTARGS)
+endif # CAN_FORREST_VALIDATE
 
 $(LINKS): $(VPATH_JSP_PAGES)
-	$(AM_V_at)-rm -f $@
 	$(AM_V_GEN)echo $$(for file in $^; do basename $$file; done) \
 			| sed 's/\.jspwiki/\.html/g' \
 			| LC_COLLATE=C sed 's/[a-z0-9.-]*/*[&]/g' \
 			| tr ' ' '\n'  \
 			| cat $(srcdir)/link-header.jspwiki - > $@
-	$(AM_V_FORREST)cd $(srcdir) && \
-			$(FORREST) $(VERBOSITY) site $(FORRESTARGS)
 
 #$(GTLANG).tex: $(srcdir)/preamble.tex $(srcdir)/doc-comments.conf
 #	-rm -f $@

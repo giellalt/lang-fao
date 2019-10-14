@@ -401,15 +401,24 @@ AC_CACHE_CHECK([for awk that supports gensub], [ac_cv_path_GAWK],
 AC_SUBST([GAWK], [$ac_cv_path_GAWK])
 
 # Check for Forrest:
+AC_ARG_WITH([forrest],
+            [AS_HELP_STRING([--with-forrest=DIRECTORY],
+                            [search forrest in DIRECTORY @<:@default=PATH@:>@])],
+            [with_forrest=$withval],
+            [with_forrest=yes])
 AC_PATH_PROG([FORREST], [forrest], [], [$PATH$PATH_SEPARATOR$with_forrest])
-AC_MSG_CHECKING([whether we can enable in-source documentation building])
+AC_MSG_CHECKING([whether to do forrest validation of in-source documentation])
 AS_IF([test "x$GAWK" != x], [
     AS_IF([test "x$JV" != xfalse], [
-    	AS_IF([test "x$FORREST" != x], [gt_prog_docc=yes], [gt_prog_docc=no])
-    ],[gt_prog_docc=no])
-],[gt_prog_docc=no])
-AC_MSG_RESULT([$gt_prog_docc])
-AM_CONDITIONAL([CAN_DOCC], [test "x$gt_prog_docc" != xno])
+    	AS_IF([test "x$with_forrest" == xyes], [
+        	AS_IF([test "x$FORREST" != x],
+        	   [giellalt_forrest_validation=yes],
+        	   [giellalt_forrest_validation=no])
+        ],[giellalt_forrest_validation=no])
+    ],[giellalt_forrest_validation=no])
+],[giellalt_forrest_validation=no])
+AC_MSG_RESULT([$giellalt_forrest_validation])
+AM_CONDITIONAL([CAN_FORREST_VALIDATE], [test "x$giellalt_forrest_validation" != xno])
 
 ################ can rsync oxt template? ################
 AC_PATH_PROG([RSYNC], [rsync], [no], [$PATH$PATH_SEPARATOR$with_rsync])
@@ -1060,7 +1069,7 @@ cat<<EOF
   * transcriptors enabled: $enable_transcriptors
   * syntactic tools enabled: $enable_syntax
   * yaml tests enabled: $enable_yamltests
-  * generated documentation enabled: $gt_prog_docc
+  * generated documentation enabled: $giellalt_forrest_validation
 
 For more ./configure options, run ./configure --help
 
@@ -1076,8 +1085,8 @@ disabled. Please check the output of configure to locate any problems. The LexC
 files will still compile though.
 ])])
 
-AS_IF([test x$gt_prog_docc = xno],
-      [AC_MSG_WARN([Could not find gawk, java or forrest. In-source documentation will not be extracted and validated. Please install the required tools.])])
+AS_IF([test "x$giellalt_forrest_validation" == "xno" -a "x$with_forrest" == "xyes"],
+      [AC_MSG_WARN([Could not find gawk, java or forrest. In-source documentation will not be extracted and validated. Please install the required tools. Alternatively, silence this message by disabling forrest validation: --without-forrest])])
 
 AS_IF([test x$can_local_sync = xno -a x$can_wget_giella_libs = xno],
       [AC_MSG_WARN([Could not find GIELLA_LIBS, rsync or wget - speller installers will not be built, only zhfst files.])])

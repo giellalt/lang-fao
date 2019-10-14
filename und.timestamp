@@ -1,4 +1,9 @@
-$Rev: 183967 $
+$Rev: 184080 $
+Made it possible to disable Forrest validation when Forrest is installed. This
+reduces build time and annoying warnings for people not working on the
+documentation. Default is still to do Forrest validation.
+
+r183967:
 Wrapped command line tools in double quotes, to protect against spaces in
 pathnames. Spaces will occur when building on Windows using Windows Subsystem
 for Linux, as locations such as 'Program Files' are included in the default

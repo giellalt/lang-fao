@@ -9,6 +9,8 @@ LINKS=$(srcdir)/Links.jspwiki
 
 doc_DATA=$(LINKS) $(VPATH_JSP_PAGES) $(ALLINONE_JSP_PAGE)
 
+EXTRA_DIST=preamble.jspwiki link-header.jspwiki
+
 DOCC2RST=$(GTCORE)/scripts/doccomments2rst.awk
 DOCC2TEX=$(GTCORE)/scripts/doccomments2tex.awk
 DOCC2JSPWIKI=$(GTCORE)/scripts/doccomments2jspwiki.awk

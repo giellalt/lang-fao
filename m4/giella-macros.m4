@@ -253,9 +253,9 @@ case "$_giella_shared_version" in    # branch to the first pattern
 esac
 
 # If not, recheck using standard pkg-config locations:
-AS_IF([test "x$_giella_shared_version_found" == xno ], [
+AS_IF([test "x$_giella_shared_version_found" = xno ], [
     _giella_shared_version=$( pkg-config --modversion giella-common )
-], [test "x$_giella_shared_version_found" == xyes ], [
+], [test "x$_giella_shared_version_found" = xyes ], [
     true
 ], [AC_MSG_ERROR([Could not identify version of giella-common shared data])])
 
@@ -410,7 +410,7 @@ AC_PATH_PROG([FORREST], [forrest], [], [$PATH$PATH_SEPARATOR$with_forrest])
 AC_MSG_CHECKING([whether to do forrest validation of in-source documentation])
 AS_IF([test "x$GAWK" != x], [
     AS_IF([test "x$JV" != xfalse], [
-    	AS_IF([test "x$with_forrest" == xyes], [
+    	AS_IF([test "x$with_forrest" = xyes], [
         	AS_IF([test "x$FORREST" != x],
         	   [giellalt_forrest_validation=yes],
         	   [giellalt_forrest_validation=no])
@@ -961,6 +961,18 @@ AS_IF([test "x$enable_apertium" = "xyes" -a "x$CG_RELABEL" = "xno"],
        AC_MSG_ERROR([Apertium enabled but cg-relabel not found. Please install Vislcg3.])])
 AM_CONDITIONAL([WANT_APERTIUM], [test "x$enable_apertium" != xno])
 
+# Enable CG-based MT - default is 'no'
+AC_ARG_ENABLE([cgmt],
+              [AS_HELP_STRING([--enable-cgmt],
+                              [enable cg-based machine translation @<:@default=no@:>@])],
+              [enable_cgmt=$enableval],
+              [enable_cgmt=no])
+AS_IF([test "x$enable_cgmt" = "xyes" -a "x$GTPRIV" = "x"], 
+      [AC_MSG_ERROR([\$\$GTPRIV not set! CG-based MT requires access to closed-source tools in GTPRIV])])
+AS_IF([test x$enable_tokenisers = xno -a x$enable_cgmt = xyes],
+    [AC_MSG_ERROR([You need to enable tokenisers to build CG-based MT])])
+AM_CONDITIONAL([CAN_CGMT], [test "x$enable_cgmt" != xno])
+
 # Enable building of abbr.txt:
 AC_ARG_ENABLE([abbr],
               [AS_HELP_STRING([--enable-abbr],
@@ -971,7 +983,7 @@ AS_IF([test x$enable_abbr != xno -a \
     "$(find ${srcdir}/src/morphology/stems/ -name "abbreviations.lexc" | head -n 1)" = "" ],
     [AC_MSG_ERROR([You asked for abbr.txt generation, but have no file \
 src/morphology/stems/abbreviations.lexc])])
-AS_IF([test x$enable_abbr == xyes -a x$enable_generators == xno],
+AS_IF([test x$enable_abbr = xyes -a x$enable_generators = xno],
     [AC_MSG_ERROR([You need to enable generators to build the abbr file])])
 AM_CONDITIONAL([WANT_ABBR], [test "x$enable_abbr" != xno])
 
@@ -981,7 +993,7 @@ AC_ARG_ENABLE([tokenisers],
                               [enable tokenisers @<:@default=no@:>@])],
               [enable_tokenisers=$enableval],
               [enable_tokenisers=$enable_all_tools])
-AS_IF([test x$enable_tokenisers == xyes -a x$enable_analysers == xno],
+AS_IF([test x$enable_tokenisers = xyes -a x$enable_analysers = xno],
     [AC_MSG_ERROR([You need to enable analysers to build tokenisers])])
 AM_CONDITIONAL([WANT_TOKENISERS], [test "x$enable_tokenisers" != xno])
 
@@ -994,7 +1006,7 @@ AC_ARG_ENABLE([analyser-tool],
 AS_IF([test "x$enable_analyser_tool" = "xyes" -a "x$gt_prog_vislcg3" = "xno"], 
       [enable_analyser_tool=no
        AC_MSG_ERROR([vislcg3 missing or too old - required for the analyser tool])])
-AS_IF([test x$enable_tokenisers == xno -a x$enable_analyser_tool == xyes],
+AS_IF([test x$enable_tokenisers = xno -a x$enable_analyser_tool = xyes],
     [AC_MSG_ERROR([You need to enable tokenisers to build the analyser tool])])
 AM_CONDITIONAL([WANT_ANL_TOOL], [test "x$enable_analyser_tool" != xno])
 
@@ -1037,6 +1049,7 @@ cat<<EOF
 
   -- Tools (off by default): --
   * phonetic/IPA conversion enabled: $enable_phonetic
+  * CG-based MT enabled: $enable_cgmt
   * Apertium MT fst's enabled: $enable_apertium
   * build tokenisers: $enable_tokenisers
   * build morphololgical segmenter: $enable_morpher
@@ -1085,7 +1098,7 @@ disabled. Please check the output of configure to locate any problems. The LexC
 files will still compile though.
 ])])
 
-AS_IF([test "x$giellalt_forrest_validation" == "xno" -a "x$with_forrest" == "xyes"],
+AS_IF([test "x$giellalt_forrest_validation" = "xno" -a "x$with_forrest" = "xyes"],
       [AC_MSG_WARN([Could not find gawk, java or forrest. In-source documentation will not be extracted and validated. Please install the required tools. Alternatively, silence this message by disabling forrest validation: --without-forrest])])
 
 AS_IF([test x$can_local_sync = xno -a x$can_wget_giella_libs = xno],
@@ -1104,7 +1117,7 @@ AS_IF([test "x$fallback_to_foma" != x ],
 
 dnl stick important warnings to bottom
 dnl YAML test warning:
-AS_IF([test "x$enable_yamltests" == "xno"],
+AS_IF([test "x$enable_yamltests" = "xno"],
       [AC_MSG_WARN([YAML testing could not be automatically enabled. To enable it, on MacOSX please do:
 
 sudo port install python35 py35-pip

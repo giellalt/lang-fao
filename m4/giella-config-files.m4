@@ -49,6 +49,7 @@ AC_CONFIG_FILES([Makefile \
                  tools/mt/apertium/Makefile \
                  tools/mt/apertium/filters/Makefile \
                  tools/mt/apertium/tagsets/Makefile \
+                 tools/mt/cgbased/Makefile \
                  tools/tokenisers/Makefile \
                  tools/tokenisers/filters/Makefile \
                  tools/shellscripts/Makefile \

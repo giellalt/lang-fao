@@ -1,0 +1,65 @@
+## Include this file in top-level srcdir to compile FSTs
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+####### Automake targets: ########
+
+CG_MT_ANALYSER_HFST=
+CG_MT_TOKENISER_HFST=
+CG_MT_GENERATORS_HFST=
+
+if CAN_CGMT
+
+# Build list of target language transducers from the list of target languages:
+# => analyser-mt-gt-desc.nob.hfst etc.
+CG_MT_ANALYSER_HFST+=analyser-mt-gt-desc.hfstol \
+					 analyser-url-cg_gt-desc.hfst
+CG_MT_GENERATORS_HFST+=generator-mt-gt-norm.hfstol
+CG_MT_TOKENISER_HFST+=tokeniser-gt-desc.pmhfst
+
+endif # CAN_CGMT
+
+if CAN_HFST
+hfstdatadir=$(datadir)/giella/$(GTLANG)
+noinst_DATA=$(CG_MT_ANALYSER_HFST) \
+			$(CG_MT_GENERATORS_HFST)
+hfstdata_DATA=
+endif # CAN_HFST
+
+####### Build rules: ########
+
+# Convert the single tag of the URL analyser to Apertium format, and convert
+# it to the target fst format:
+analyser-url-cg_gt-desc.hfst: $(top_builddir)/src/analyser-url-gt-desc.hfst
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) -i $< \
+		-f '+URL' -t ' URL' \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
+	> "$@"
+
+# Copy analyser from the above dir:
+analyser-mt-gt-desc.hfst: ../analyser-mt-gt-desc.hfst
+	$(AM_V_CP)cp -f $< $@
+
+# Copy generator from the above dir to tmp file to allow local modifications:
+generator-mt-gt-norm.tmp.hfst: \
+			../generator-mt-gt-norm.hfst
+	$(AM_V_CP)cp -f $< $@
+
+##### Disambiguation and syntactic parsing targets
+# Copy files from the src dirs:
+dependency-mt-gt.cg3: \
+				$(GIELLA_SHARED)/smi/src/syntax/dependency.cg3
+	$(AM_V_CP)cp -f $< $@
+
+functions-mt-gt.cg3: \
+				$(GIELLA_SHARED)/smi/src/syntax/functions.cg3
+	$(AM_V_CP)cp -f $< $@
+
+# General fallback target for generators:
+generator%.hfst: generator%.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
+
+#### Include files:
+include $(top_srcdir)/am-shared/vislcg3-include.am
+include $(top_srcdir)/am-shared/hfst-format-include.am
+include $(top_srcdir)/am-shared/silent_build-include.am

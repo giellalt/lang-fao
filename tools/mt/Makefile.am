@@ -2,7 +2,7 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = filters . apertium
+SUBDIRS = filters . apertium cgbased
 
 ##################################################################
 #### BEGIN: Add local processing instructions BELOW this line ####

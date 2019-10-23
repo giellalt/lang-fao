@@ -1,0 +1,177 @@
+Config: 
+  hfst: 
+    Gen:  ../../../src/generator-gt-norm.hfst
+    Morph:  ../../../src/analyser-gt-norm.hfst
+  xerox: 
+    Gen:  ../../../src/generator-gt-norm.xfst
+    Morph:  ../../../src/analyser-gt-norm.xfst
+    App:  lookup
+
+Tests: 
+
+  Adjective - beinur:  # 
+    beinur+A+Msc+Sg+Nom+Indef: beinur
+    beinur+A+Msc+Sg+Acc+Indef: beinan
+    beinur+A+Msc+Sg+Dat+Indef: beinum
+    beinur+A+Msc+Sg+Gen+Indef: beins
+    beinur+A+Msc+Pl+Nom+Indef: beinir
+    beinur+A+Msc+Pl+Acc+Indef: beinar
+    beinur+A+Msc+Pl+Dat+Indef: beinum
+    beinur+A+Msc+Pl+Gen+Indef: beina
+
+    beinur+A+Fem+Sg+Nom+Indef: bein
+    beinur+A+Fem+Sg+Acc+Indef: beina
+    beinur+A+Fem+Sg+Dat+Indef: beinari
+    beinur+A+Fem+Sg+Gen+Indef: beinar
+    beinur+A+Fem+Pl+Nom+Indef: beinar
+    beinur+A+Fem+Pl+Acc+Indef: beinar
+    beinur+A+Fem+Pl+Dat+Indef: beinum
+    beinur+A+Fem+Pl+Gen+Indef: beina
+
+    beinur+A+Neu+Sg+Nom+Indef: beint
+    beinur+A+Neu+Sg+Acc+Indef: beint
+    beinur+A+Neu+Sg+Dat+Indef: beinum
+    beinur+A+Neu+Sg+Gen+Indef: beins
+    beinur+A+Neu+Pl+Nom+Indef: bein
+    beinur+A+Neu+Pl+Acc+Indef: bein
+    beinur+A+Neu+Pl+Dat+Indef: beinum
+    beinur+A+Neu+Pl+Gen+Indef: beina
+
+    beinur+A+Cmp+Msc+Sg+Nom+Indef: beinari
+    beinur+A+Cmp+Msc+Sg+Acc+Indef: beinari
+    beinur+A+Cmp+Msc+Sg+Dat+Indef: beinari
+    beinur+A+Cmp+Msc+Sg+Gen+Indef: beinari
+    beinur+A+Cmp+Msc+Pl+Nom+Indef: beinari
+    beinur+A+Cmp+Msc+Pl+Acc+Indef: beinari
+    beinur+A+Cmp+Msc+Pl+Dat+Indef: beinari
+    beinur+A+Cmp+Msc+Pl+Gen+Indef: beinari
+
+    beinur+A+Cmp+Fem+Sg+Nom+Indef: beinari
+    beinur+A+Cmp+Fem+Sg+Acc+Indef: beinari
+    beinur+A+Cmp+Fem+Sg+Dat+Indef: beinari
+    beinur+A+Cmp+Fem+Sg+Gen+Indef: beinari
+    beinur+A+Cmp+Fem+Pl+Nom+Indef: beinari
+    beinur+A+Cmp+Fem+Pl+Acc+Indef: beinari
+    beinur+A+Cmp+Fem+Pl+Dat+Indef: beinari
+    beinur+A+Cmp+Fem+Pl+Gen+Indef: beinari
+
+    beinur+A+Cmp+Neu+Sg+Nom+Indef: beinari
+    beinur+A+Cmp+Neu+Sg+Acc+Indef: beinari
+    beinur+A+Cmp+Neu+Sg+Dat+Indef: beinari
+    beinur+A+Cmp+Neu+Sg+Gen+Indef: beinari
+    beinur+A+Cmp+Neu+Pl+Nom+Indef: beinari
+    beinur+A+Cmp+Neu+Pl+Acc+Indef: beinari
+    beinur+A+Cmp+Neu+Pl+Dat+Indef: beinari
+    beinur+A+Cmp+Neu+Pl+Gen+Indef: beinari
+
+    beinur+A+Superl+Msc+Sg+Nom+Indef: beinastur
+    beinur+A+Superl+Msc+Sg+Acc+Indef: beinastan
+    beinur+A+Superl+Msc+Sg+Dat+Indef: beinastum
+    beinur+A+Superl+Msc+Sg+Gen+Indef: beinasts
+    beinur+A+Superl+Msc+Pl+Nom+Indef: beinastir
+    beinur+A+Superl+Msc+Pl+Acc+Indef: beinastar
+    beinur+A+Superl+Msc+Pl+Dat+Indef: beinastum
+    beinur+A+Superl+Msc+Pl+Gen+Indef: beinasta/ra
+
+    beinur+A+Superl+Fem+Sg+Nom+Indef: beinast
+    beinur+A+Superl+Fem+Sg+Acc+Indef: beinasta
+    beinur+A+Superl+Fem+Sg+Dat+Indef: beinastari
+    beinur+A+Superl+Fem+Sg+Gen+Indef: beinastar/rar
+    beinur+A+Superl+Fem+Pl+Nom+Indef: beinastar
+    beinur+A+Superl+Fem+Pl+Acc+Indef: beinastar
+    beinur+A+Superl+Fem+Pl+Dat+Indef: beinastum
+    beinur+A+Superl+Fem+Pl+Gen+Indef: beinasta/ra
+
+    beinur+A+Superl+Neu+Sg+Nom+Indef: beinast
+    beinur+A+Superl+Neu+Sg+Acc+Indef: beinast
+    beinur+A+Superl+Neu+Sg+Dat+Indef: beinastum
+    beinur+A+Superl+Neu+Sg+Gen+Indef: beinasts
+    beinur+A+Superl+Neu+Pl+Nom+Indef: beinast
+    beinur+A+Superl+Neu+Pl+Acc+Indef: beinast
+    beinur+A+Superl+Neu+Pl+Dat+Indef: beinastum
+    beinur+A+Superl+Neu+Pl+Gen+Indef: beinasta/ra
+
+    beinur+A+Msc+Sg+Nom+Def: beini
+    beinur+A+Msc+Sg+Acc+Def: beina
+    beinur+A+Msc+Sg+Dat+Def: beina
+    beinur+A+Msc+Sg+Gen+Def: beina
+    beinur+A+Msc+Pl+Nom+Def: beinu
+    beinur+A+Msc+Pl+Acc+Def: beinu
+    beinur+A+Msc+Pl+Dat+Def: beinu
+    beinur+A+Msc+Pl+Gen+Def: beinu
+
+    beinur+A+Fem+Sg+Nom+Def: beina
+    beinur+A+Fem+Sg+Acc+Def: beinu
+    beinur+A+Fem+Sg+Dat+Def: beinu
+    beinur+A+Fem+Sg+Gen+Def: beinu
+    beinur+A+Fem+Pl+Nom+Def: beinu
+    beinur+A+Fem+Pl+Acc+Def: beinu
+    beinur+A+Fem+Pl+Dat+Def: beinu
+    beinur+A+Fem+Pl+Gen+Def: beinu
+
+    beinur+A+Neu+Sg+Nom+Def: beina
+    beinur+A+Neu+Sg+Acc+Def: beina
+    beinur+A+Neu+Sg+Dat+Def: beina
+    beinur+A+Neu+Sg+Gen+Def: beina
+    beinur+A+Neu+Pl+Nom+Def: beinu
+    beinur+A+Neu+Pl+Acc+Def: beinu
+    beinur+A+Neu+Pl+Dat+Def: beinu
+    beinur+A+Neu+Pl+Gen+Def: beinu
+
+    beinur+A+Cmp+Msc+Sg+Nom+Def: beinari
+    beinur+A+Cmp+Msc+Sg+Acc+Def: beinara
+    beinur+A+Cmp+Msc+Sg+Dat+Def: beinara
+    beinur+A+Cmp+Msc+Sg+Gen+Def: beinara
+    beinur+A+Cmp+Msc+Pl+Nom+Def: beinaru
+    beinur+A+Cmp+Msc+Pl+Acc+Def: beinaru
+    beinur+A+Cmp+Msc+Pl+Dat+Def: beinaru
+    beinur+A+Cmp+Msc+Pl+Gen+Def: beinaru
+
+    beinur+A+Cmp+Fem+Sg+Nom+Def: beinara
+    beinur+A+Cmp+Fem+Sg+Acc+Def: beinaru
+    beinur+A+Cmp+Fem+Sg+Dat+Def: beinaru
+    beinur+A+Cmp+Fem+Sg+Gen+Def: beinaru
+    beinur+A+Cmp+Fem+Pl+Nom+Def: beinaru
+    beinur+A+Cmp+Fem+Pl+Acc+Def: beinaru
+    beinur+A+Cmp+Fem+Pl+Dat+Def: beinaru
+    beinur+A+Cmp+Fem+Pl+Gen+Def: beinaru
+
+    beinur+A+Cmp+Neu+Sg+Nom+Def: beinara
+    beinur+A+Cmp+Neu+Sg+Acc+Def: beinara
+    beinur+A+Cmp+Neu+Sg+Dat+Def: beinara
+    beinur+A+Cmp+Neu+Sg+Gen+Def: beinara
+    beinur+A+Cmp+Neu+Pl+Nom+Def: beinaru
+    beinur+A+Cmp+Neu+Pl+Acc+Def: beinaru
+    beinur+A+Cmp+Neu+Pl+Dat+Def: beinaru
+    beinur+A+Cmp+Neu+Pl+Gen+Def: beinaru
+
+    beinur+A+Superl+Msc+Sg+Nom+Def: beinasti
+    beinur+A+Superl+Msc+Sg+Acc+Def: beinasta
+    beinur+A+Superl+Msc+Sg+Dat+Def: beinasta
+    beinur+A+Superl+Msc+Sg+Gen+Def: beinasta
+    beinur+A+Superl+Msc+Pl+Nom+Def: beinastu
+    beinur+A+Superl+Msc+Pl+Acc+Def: beinastu
+    beinur+A+Superl+Msc+Pl+Dat+Def: beinastu
+    beinur+A+Superl+Msc+Pl+Gen+Def: beinastu
+
+    beinur+A+Superl+Fem+Sg+Nom+Def: beinasta
+    beinur+A+Superl+Fem+Sg+Acc+Def: beinastu
+    beinur+A+Superl+Fem+Sg+Dat+Def: beinastu
+    beinur+A+Superl+Fem+Sg+Gen+Def: beinastu
+    beinur+A+Superl+Fem+Pl+Nom+Def: beinastu
+    beinur+A+Superl+Fem+Pl+Acc+Def: beinastu
+    beinur+A+Superl+Fem+Pl+Dat+Def: beinastu
+    beinur+A+Superl+Fem+Pl+Gen+Def: beinastu
+
+    beinur+A+Superl+Neu+Sg+Nom+Def: beinasta
+    beinur+A+Superl+Neu+Sg+Acc+Def: beinasta
+    beinur+A+Superl+Neu+Sg+Dat+Def: beinasta
+    beinur+A+Superl+Neu+Sg+Gen+Def: beinasta
+    beinur+A+Superl+Neu+Pl+Nom+Def: beinastu
+    beinur+A+Superl+Neu+Pl+Acc+Def: beinastu
+    beinur+A+Superl+Neu+Pl+Dat+Def: beinastu
+    beinur+A+Superl+Neu+Pl+Gen+Def: beinastu
+
+
+
+

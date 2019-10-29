@@ -33,9 +33,9 @@ LEXICON l1_umlaut ! tungur
  +A: Pos_Def ;
  +A:^IUML Comp_Ri ;
 
-LEXICON l1/12
+LEXICON l1/12_ll
  l1 ;
- l12 ;
+ l12_ll ;
  
 LEXICON l1/24
  l1 ;
@@ -58,7 +58,7 @@ LEXICON l1/9
  
 LEXICON l5/21
  l5 ;
- l12 ;
+ l21 ;
  
 LEXICON l5	! spiltur
  +A: Sg_Msc1    ;
@@ -79,6 +79,16 @@ LEXICON l6	! brekaður
  +A: Pl_Neu1	;
  +A: Pos_Def	;
  +A: Comp_Ari	;
+
+LEXICON l6_umlaut ! skaftur
+ +A: Sg_Msc1_Uuml ;
+ +A: Pl_Msc1_Uuml ;
+ +A: Sg_Fem1_Uuml ;
+ +A: Pl_Fem1_Uuml ;
+ +A: Sg_Neu3_Uuml ;
+ +A: Pl_Neu1_Uuml ;
+ +A: Pos_Def2	  ;
+ +A: Comp_Ari	  ;
 
 LEXICON l7	! blindur
  +A:d Sg_Msc1   ;
@@ -117,14 +127,17 @@ LEXICON l9	! spakur
  +A: Comp_Ari	  ;
 
 LEXICON l10 ! drúgvur
- +A:v Sg_Msc1   ;
+ +A+Msc+Sg+Nom+Indef:vur	 # ;
+ +A+Msc+Sg+Acc+Indef:van	 # ;
+ +A+Msc+Sg+Dat+Indef:vum	 # ;
+ +A+Msc+Sg+Gen+Indef:s	 	 # ;
  +A:v Pl_Msc1	;
  +A:v Sg_Fem1   ;
  +A:v Pl_Fem1   ;
  +A+Neu+Sg+Nom+Indef:%>t 	 # ;
  +A+Neu+Sg+Acc+Indef:%>t	 # ;
  +A+Neu+Sg+Dat+Indef:%>vum	 # ;
- +A+Neu+Sg+Gen+Indef:%>vs	 # ;
+ +A+Neu+Sg+Gen+Indef:%>s	 # ;
  +A:v Pl_Neu1	;
  +A:v Pos_Def	;
  +A:v Comp_Ari	;
@@ -137,21 +150,92 @@ LEXICON l10_m ! grúsommur
  +A+Neu+Sg+Nom+Indef:%>t 	 # ;
  +A+Neu+Sg+Acc+Indef:%>t	 # ;
  +A+Neu+Sg+Dat+Indef:%>mum	 # ;
- +A+Neu+Sg+Gen+Indef:%>ms	 # ;
+ +A+Neu+Sg+Gen+Indef:%>s	 # ;
  +A:m Pl_Neu1	;
  +A:m Pos_Def	;
  +A:m Comp_Ari	;
 
 LEXICON l11 ! flógvur
- +A: adj_a   ; ! _gv_
- +A: adj_def ; ! _gv_
- +A: adjcmp1 ;
+ +A+Msc+Sg+Nom+Indef:gvur	 # ;
+ +A+Msc+Sg+Acc+Indef:gvan	 # ;
+ +A+Msc+Sg+Dat+Indef:gvum	 # ;
+ +A+Msc+Sg+Gen+Indef:s	 	 # ;
+ +A:gv Pl_Msc1	 ;
+ +A:gv Sg_Fem1   ;
+ +A:gv Pl_Fem1   ;
+ +A+Neu+Sg+Nom+Indef:%>tt 	 # ;
+ +A+Neu+Sg+Acc+Indef:%>tt	 # ;
+ +A+Neu+Sg+Dat+Indef:%>gvum	 # ;
+ +A+Neu+Sg+Gen+Indef:%>s	 # ;
+ +A:gv Pl_Neu1	;
+ +A:gv Pos_Def	;
+ +A:gv Comp_Ari	;
 
-LEXICON l12 ! snjallur
- +A:       a_non_umlaut ;
- +A:^UUML a_umlaut     ;
- +A:       adj_def      ;
- +A:       adjcmp1      ;
+LEXICON l12_ll ! snjallur
+ +A+Msc+Sg+Nom+Indef:%>lur	 		 # ;
+ +A+Msc+Sg+Acc+Indef:%>lan 		 	 # ;
+ +A+Msc+Sg+Dat+Indef:^UUML%>lum	 	 # ;
+ +A+Msc+Sg+Gen+Indef:%>s	 	 	 # ;
+ +A:l Pl_Msc1_Uuml ;
+ +A:l Sg_Fem1_Uuml ;
+ +A:l Pl_Fem1_Uuml ;
+ +A+Neu+Sg+Nom+Indef:%>t	     	 # ;
+ +A+Neu+Sg+Acc+Indef:%>t	    	 # ;
+ +A+Neu+Sg+Dat+Indef:^UUML%>lum	 	 # ;
+ +A+Neu+Sg+Gen+Indef:%>s	 		 # ;
+ +A:l Pl_Neu1_Uuml ;
+ +A:l Pos_Def2	   ;
+ +A:l Comp_Ari	   ;
+
+LEXICON l12_ss ! hvassur
+ +A+Msc+Sg+Nom+Indef:%>sur			 # ;
+ +A+Msc+Sg+Acc+Indef:%>san			 # ;
+ +A+Msc+Sg+Dat+Indef:^UUML%>sum		 # ;
+ +A+Msc+Sg+Gen+Indef:%>s			 # ;
+ +A:s Pl_Msc1_Uuml ;
+ +A:s Sg_Fem1_Uuml ;
+ +A:s Pl_Fem1_Uuml ;
+ +A+Neu+Sg+Nom+Indef:%>t			 # ;
+ +A+Neu+Sg+Acc+Indef:%>t			 # ;
+ +A+Neu+Sg+Dat+Indef:^UUML%>sum		 # ;
+ +A+Neu+Sg+Gen+Indef:%>s			 # ;
+ +A:s Pl_Neu1_Uuml ;
+ +A:s Pos_Def2	  ;
+ +A:s Comp_Ari	  ;
+
+LEXICON l12_pp ! knappur
+ +A+Msc+Sg+Nom+Indef:%>pur	 		 # ;
+ +A+Msc+Sg+Acc+Indef:%>pan	 		 # ;
+ +A+Msc+Sg+Dat+Indef:^UUML%>pum		 # ;
+ +A+Msc+Sg+Gen+Indef:%>s	 		 # ;
+ +A:p Pl_Msc1_Uuml ;
+ +A:p Sg_Fem1_Uuml ;
+ +A:p Pl_Fem1_Uuml ;
+ +A+Neu+Sg+Nom+Indef:%>t	    	 # ;
+ +A+Neu+Sg+Acc+Indef:%>t	    	 # ;
+ +A+Neu+Sg+Dat+Indef:^UUML%>pum	 	 # ;
+ +A+Neu+Sg+Gen+Indef:%>s	 		 # ;
+ +A:p Pl_Neu1_Uuml ;
+ +A:p Pos_Def2	   ;
+ +A:p Comp_Ari	   ;
+
+LEXICON l12_kk ! skakkur
+ +A+Msc+Sg+Nom+Indef:%>kur	 		 # ;
+ +A+Msc+Sg+Acc+Indef:%>kan	 		 # ;
+ +A+Msc+Sg+Dat+Indef:^UUML%>kum		 # ;
+ +A+Msc+Sg+Gen+Indef:%>s	 		 # ;
+ +A:k Pl_Msc1_Uuml ;
+ +A:k Sg_Fem1_Uuml ;
+ +A:k Pl_Fem1_Uuml ;
+ +A+Neu+Sg+Nom+Indef:%>t	    	 # ;
+ +A+Neu+Sg+Acc+Indef:%>t	    	 # ;
+ +A+Neu+Sg+Dat+Indef:^UUML%>kum	 	 # ;
+ +A+Neu+Sg+Gen+Indef:%>s	 		 # ;
+ +A:k Pl_Neu1_Uuml ;
+ +A:k Pos_Def2	   ;
+ +A:k Comp_Ari	   ;
+
+
 
 LEXICON l13/1
  l13 ;
@@ -470,6 +554,12 @@ LEXICON Pl_Msc1
  +Msc+Pl+Dat+Indef:%>um  # ;
  +Msc+Pl+Gen+Indef:%>a 	 # ;
 
+LEXICON Pl_Msc1_Uuml 
+ +Msc+Pl+Nom+Indef:%>ir  # ;
+ +Msc+Pl+Acc+Indef:%>ar  # ;
+ +Msc+Pl+Dat+Indef:^UUML%>um  # ;
+ +Msc+Pl+Gen+Indef:%>a 	 # ;
+
 LEXICON Pl_Msc2 
  +Msc+Pl+Nom+Indef:%>ir  # ;
  +Msc+Pl+Acc+Indef:%>ar  # ;
@@ -486,6 +576,12 @@ LEXICON Pl_Msc2_Uuml
 
 LEXICON Sg_Fem1
  +Fem+Sg+Nom+Indef:%> 	 # ;
+ +Fem+Sg+Acc+Indef:%>a 	 # ;
+ +Fem+Sg+Dat+Indef:%>ari # ;
+ +Fem+Sg+Gen+Indef:%>ar  # ;
+
+LEXICON Sg_Fem1_Uuml
+ +Fem+Sg+Nom+Indef:^UUML%> 	 # ;
  +Fem+Sg+Acc+Indef:%>a 	 # ;
  +Fem+Sg+Dat+Indef:%>ari # ;
  +Fem+Sg+Gen+Indef:%>ar  # ;
@@ -508,6 +604,12 @@ LEXICON Pl_Fem1
  +Fem+Pl+Nom+Indef:%>ar  # ;
  +Fem+Pl+Acc+Indef:%>ar  # ;
  +Fem+Pl+Dat+Indef:%>um	 # ;
+ +Fem+Pl+Gen+Indef:%>a	 # ;
+
+LEXICON Pl_Fem1_Uuml 
+ +Fem+Pl+Nom+Indef:%>ar  # ;
+ +Fem+Pl+Acc+Indef:%>ar  # ;
+ +Fem+Pl+Dat+Indef:^UUML%>um	 # ;
  +Fem+Pl+Gen+Indef:%>a	 # ;
 
 LEXICON Pl_Fem2 
@@ -548,10 +650,22 @@ LEXICON Sg_Neu3
  +Neu+Sg+Dat+Indef:%>um	 # ;
  +Neu+Sg+Gen+Indef:%>s	 # ;
 
+LEXICON Sg_Neu3_Uuml 
+ +Neu+Sg+Nom+Indef:%>	 # ;
+ +Neu+Sg+Acc+Indef:%>	 # ;
+ +Neu+Sg+Dat+Indef:^UUML%>um	 # ;
+ +Neu+Sg+Gen+Indef:%>s	 # ;
+
 LEXICON Pl_Neu1
  +Neu+Pl+Nom+Indef:%>	 # ;
  +Neu+Pl+Acc+Indef:%> 	 # ;
  +Neu+Pl+Dat+Indef:%>um	 # ;
+ +Neu+Pl+Gen+Indef:%>a	 # ;
+
+LEXICON Pl_Neu1_Uuml
+ +Neu+Pl+Nom+Indef:^UUML%>	 	# ;
+ +Neu+Pl+Acc+Indef:^UUML%> 	 	# ;
+ +Neu+Pl+Dat+Indef:^UUML%>um 	# ;
  +Neu+Pl+Gen+Indef:%>a	 # ;
 
 LEXICON Pl_Neu2
@@ -855,7 +969,7 @@ LEXICON Comp_Ari
  +Cmp+Fem+Pl+Acc+Indef:%>ari # ;
  +Cmp+Fem+Pl+Dat+Indef:%>ari # ;
  +Cmp+Fem+Pl+Gen+Indef:%>ari # ;
- +Cmp+Fem+Sg+Nom+Def:%>aru # ;
+ +Cmp+Fem+Sg+Nom+Def:%>ara # ;
  +Cmp+Fem+Sg+Acc+Def:%>aru # ;
  +Cmp+Fem+Sg+Dat+Def:%>aru # ;
  +Cmp+Fem+Sg+Gen+Def:%>aru # ;

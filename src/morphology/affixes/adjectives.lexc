@@ -32,7 +32,7 @@ LEXICON l1_umlaut ! tungur
  +A: Pl_Neu1  ;
  +A: Pos_Def ;
  +A:^IUML Comp_Ri ;
-
+ 
 LEXICON l1/12_ll
  l1 ;
  l12_ll ;
@@ -105,16 +105,22 @@ LEXICON l7	! blindur
 
 LEXICON l8	! kaldur
  +A:d Sg_Msc1_Uuml ;
- +A:d Pl_Msc2_Uuml ;
- +A:d Sg_Fem2_Uuml ;
- +A:d Pl_Fem2_Uuml ;
- +A+Neu+Sg+Nom+Indef:%>t 	 	# ;
- +A+Neu+Sg+Acc+Indef:%>t	 	# ;
- +A+Neu+Sg+Dat+Indef:^UUML%>dum	# ;
- +A+Neu+Sg+Gen+Indef:%>ds	 	# ;
- +A:d Pl_Neu2_Uuml ;
- +A:d Pos_Def2	  ;
- +A:d Comp_Ari	  ;
+ +A+Msc+Sg+Dat+Indef:%>dum	# ;
+ +A:d Pl_Msc1_Uuml ;
+ +A+Msc+Pl+Dat+Indef:%>dum 	# ;
+ +A:d Sg_Fem1_Uuml ;
+ +A+Fem+Sg+Nom+Indef:%>d		# ;
+ +A:d Pl_Fem1_Uuml ;
+ +A+Fem+Pl+Dat+Indef:%>dum	# ;
+ +A+Neu+Sg+Nom+Indef:%>t	 # ;
+ +A+Neu+Sg+Acc+Indef:%>t	 # ;
+ +A+Neu+Sg+Dat+Indef:^UUML%>dum	 # ;
+ +A+Neu+Sg+Dat+Indef:%>dum	# ;
+ +A+Neu+Sg+Gen+Indef:%>ds	 # ;
+ +A:d Pl_Neu1_Uuml ;
+ +A+Neu+Pl+Dat+Indef:%>dum	# ;
+ +A:d Pos_Def2	   ;
+ +A: Comp_Ari ;
 
 LEXICON l9	! spakur
  +A: Sg_Msc1_Uuml ;
@@ -235,56 +241,138 @@ LEXICON l12_kk ! skakkur
  +A:k Pos_Def2	   ;
  +A:k Comp_Ari	   ;
 
-
-
 LEXICON l13/1
  l13 ;
  l1 ;
  
 LEXICON l13 ! langur
- +A:       a_non_umlaut ;
- +A:^UUML a_umlaut     ;
- +A:       adj_def      ;
-
+ +A: Sg_Msc1_Uuml ;
+ +A+Msc+Sg+Dat+Indef:%>um	# ;
+ +A: Pl_Msc2_Uuml ;
+ +A+Msc+Pl+Dat+Indef:%>um 	# ;
+ +A: Sg_Fem2_Uuml ;
+ +A+Fem+Sg+Nom+Indef:%>		# ;
+ +A: Pl_Fem2_Uuml ;
+ +A+Fem+Pl+Dat+Indef:%>um	# ;
+ +A: Sg_Neu1_Uuml ;
+ +A+Neu+Sg+Dat+Indef:%>um	# ;
+ +A: Pl_Neu2_Uuml ;
+ +A+Neu+Pl+Dat+Indef:%>um	# ;
+ +A: Pos_Def2	   ;
+ +A:^UUML Comp_Ri  ;
+ 
 LEXICON l14 ! harður
- +A:       a_non_umlaut ;
- +A:^UUML a_umlaut     ;
- +A:       adj_def      ;
- +A:       adjcmp1      ;
+ +A:ð Sg_Msc1_Uuml ;
+ +A:ð Pl_Msc1_Uuml ;
+ +A:ð Sg_Fem1_Uuml ;
+ +A:ð Pl_Fem1_Uuml ;
+ +A+Neu+Sg+Nom+Indef:%>t	     # ;
+ +A+Neu+Sg+Acc+Indef:%>t	     # ;
+ +A+Neu+Sg+Dat+Indef:^UUML%>ðum	 # ;
+ +A+Neu+Sg+Gen+Indef:%>ðs	 	 # ;
+ +A:ð Pl_Neu1_Uuml ;
+ +A:ð Pos_Def2	  ;
+ +A:ð Comp_Ari	  ;
 
 LEXICON l15 ! blíður
- +A: adj_a   ;
- +A: adj_def ;
- +A: adjcmp1 ;
-
-! Check these
+ +A:ð Sg_Msc1  ;
+ +A:ð Pl_Msc1  ;
+ +A:ð Sg_Fem1  ;
+ +A:ð Pl_Fem1  ;
+ +A+Neu+Sg+Nom+Indef:%>tt	   	 # ;
+ +A+Neu+Sg+Acc+Indef:%>tt	     # ;
+ +A+Neu+Sg+Dat+Indef:%>ðum	 	 # ;
+ +A+Neu+Sg+Gen+Indef:%>ðs	 	 # ;
+ +A:ð Pl_Neu1  ;
+ +A:ð Pos_Def  ;
+ +A:ð Comp_Ari ;
 
 LEXICON l16 ! góður
- +A: adj_a   ;
- +A: adj_def ;
+ +A:góð Sg_Msc1  ;
+ +A:góð Pl_Msc1  ;
+ +A:góð Sg_Fem1  ;
+ +A:góð Pl_Fem1  ;
+ +A+Neu+Sg+Nom+Indef:%>gott	 # ;
+ +A+Neu+Sg+Acc+Indef:%>gott	 # ;
+ +A+Neu+Sg+Dat+Indef:%>góðum	 # ;
+ +A+Neu+Sg+Gen+Indef:%>góðs	 # ; 
+ +A:góð Pl_Neu1  ;
+ +A:góð Pos_Def  ;
+ +A:bet CRi   ;
+ +A:be  SRi   ;
 
 LEXICON l17 ! bláur
- +A: adj_a   ;
- +A: adj_def ;
- +A: adjcmp1 ;
+ +A: Sg_Msc1  ;
+ +A: Pl_Msc1  ;
+ +A: Sg_Fem1  ;
+ +A: Pl_Fem1  ;
+ +A+Neu+Sg+Nom+Indef:%>tt	   	 # ;
+ +A+Neu+Sg+Acc+Indef:%>tt	     # ;
+ +A+Neu+Sg+Dat+Indef:%>um	 	 # ;
+ +A+Neu+Sg+Gen+Indef:%>s	 	 # ;
+ +A: Pl_Neu1  ;
+ +A: Pos_Def  ;
+ +A: Comp_Ari ;
 
 LEXICON l18/22
  l18 ;
  l22 ;
  
 LEXICON l18 ! keddur
- +A: adj_a   ;
- +A: adj_def ;
- +A: adjcmp1 ;
+ +A+Msc+Sg+Nom+Indef:ddur	 # ;
+ +A+Msc+Sg+Acc+Indef:ddan	 # ;
+ +A+Msc+Sg+Dat+Indef:ddum	 # ;
+ +A+Msc+Sg+Gen+Indef:ds	 	 # ;
+ +A:dd Pl_Msc1	 ;
+ +A:dd Sg_Fem1   ;
+ +A:dd Pl_Fem1   ;
+ +A+Neu+Sg+Nom+Indef:%>tt 	 # ;
+ +A+Neu+Sg+Acc+Indef:%>tt	 # ;
+ +A+Neu+Sg+Dat+Indef:%>ddum	 # ;
+ +A+Neu+Sg+Gen+Indef:%>ds	 # ;
+ +A:dd Pl_Neu1	;
+ +A:dd Pos_Def	;
+ +A:dd Comp_Ari	;
 
 LEXICON l19 ! nýggjur
- +A: adj_a   ;
- +A: adj_def ;
- +A: adjcmp1 ;
+ +A+Msc+Sg+Nom+Indef:ggjur	 # ;
+ +A+Msc+Sg+Acc+Indef:ggjan	 # ;
+ +A+Msc+Sg+Dat+Indef:ggjum	 # ;
+ +A+Msc+Sg+Gen+Indef:s	 	 # ;
+ +A:ggj Pl_Msc1	 ;
+ +A:ggj Sg_Fem1   ;
+ +A:ggj Pl_Fem1   ;
+ +A+Neu+Sg+Nom+Indef:%>tt 	 # ;
+ +A+Neu+Sg+Acc+Indef:%>tt	 # ;
+ +A+Neu+Sg+Dat+Indef:%>ggjum	 # ;
+ +A+Neu+Sg+Gen+Indef:%>s	 # ;
+ +A:ggj Pl_Neu1	;
+ +A:ggj Pos_Def	;
+ +A:ggj Comp_Ari	;
 
 LEXICON l20 ! stillur
- +A: adj_a   ;
- +A: adj_def ;
+ +A+Msc+Sg+Nom+Indef:lur	 # ;
+ +A+Msc+Sg+Acc+Indef:lan	 # ;
+ +A+Msc+Sg+Dat+Indef:lum	 # ;
+ +A+Msc+Sg+Gen+Indef:s	 	 # ;
+ +A:l Pl_Msc1 ;
+ +A+Msc+Pl+Gen+Indef:ra	 	 # ;
+ +A:l Sg_Fem1   ;
+ +A+Fem+Sg+Gen+Indef:rar	 	 # ;
+ +A:l Pl_Fem1   ;
+ +A+Fem+Pl+Gen+Indef:ra	 	 # ;
+ +A+Neu+Sg+Nom+Indef:%>t 	 # ;
+ +A+Neu+Sg+Acc+Indef:%>t	 # ;
+ +A+Neu+Sg+Dat+Indef:%>lum	 # ;
+ +A+Neu+Sg+Gen+Indef:%>s	 # ;
+ +A:l Pl_Neu1	;
+ +A+Neu+Pl+Gen+Indef:ra	 	 # ;
+ +A:l Pos_Def	;
+ +A:l Comp_Ari	;
+ 
+ 
+ 
+ 
 
 LEXICON l21 ! fastur
  +A:       a_non_umlaut ;
@@ -656,6 +744,12 @@ LEXICON Sg_Neu3_Uuml
  +Neu+Sg+Dat+Indef:^UUML%>um	 # ;
  +Neu+Sg+Gen+Indef:%>s	 # ;
 
+LEXICON Sg_Neu4 
+ +Neu+Sg+Nom+Indef:%>tt	 # ;
+ +Neu+Sg+Acc+Indef:%>tt	 # ;
+ +Neu+Sg+Dat+Indef:%>um	 # ;
+ +Neu+Sg+Gen+Indef:%>s	 # ;
+
 LEXICON Pl_Neu1
  +Neu+Pl+Nom+Indef:%>	 # ;
  +Neu+Pl+Acc+Indef:%> 	 # ;
@@ -942,8 +1036,10 @@ LEXICON pl_cmpnd ! fyrstuflokkarnir
 ! ===========
 
 LEXICON Comp_Ari
-! Compartativ, ari
-! Msc
+ CAri ;
+ SAri ;
+ 
+LEXICON CAri
  +Cmp+Msc+Sg+Nom+Indef:%>ari # ;
  +Cmp+Msc+Sg+Acc+Indef:%>ari # ;
  +Cmp+Msc+Sg+Dat+Indef:%>ari # ;
@@ -995,8 +1091,7 @@ LEXICON Comp_Ari
  +Cmp+Neu+Pl+Dat+Def:%>aru # ;
  +Cmp+Neu+Pl+Gen+Def:%>aru # ;
 
-! Superlativ, astur
-! Msc
+LEXICON SAri
  +Superl+Msc+Sg+Nom+Indef:%>astur # ;
  +Superl+Msc+Sg+Acc+Indef:%>astan # ;
  +Superl+Msc+Sg+Dat+Indef:%>astum # ;
@@ -1054,8 +1149,10 @@ LEXICON Comp_Ari
 
 
 LEXICON Comp_Ri
-! Compartativ, ri
-! Msc
+ CRi ;
+ SRi ;
+ 
+LEXICON CRi 
  +Cmp+Msc+Sg+Nom+Indef:%>ri # ;
  +Cmp+Msc+Sg+Acc+Indef:%>ri # ;
  +Cmp+Msc+Sg+Dat+Indef:%>ri # ;
@@ -1107,8 +1204,7 @@ LEXICON Comp_Ri
  +Cmp+Neu+Pl+Dat+Def:%>ru # ;
  +Cmp+Neu+Pl+Gen+Def:%>ru # ;
 
-! Superlativ, stur
-! Msc
+LEXICON SRi
  +Superl+Msc+Sg+Nom+Indef:%>stur # ;
  +Superl+Msc+Sg+Acc+Indef:%>stan # ;
  +Superl+Msc+Sg+Dat+Indef:%>stum # ;
@@ -1164,7 +1260,9 @@ LEXICON Comp_Ri
  +Superl+Neu+Pl+Dat+Def:%>stu # ;
  +Superl+Neu+Pl+Gen+Def:%>stu # ;
 
-
+LEXICON CS_Ri
+ +A+Cmp:t CRi ;
+ SRi ;
 
 LEXICON adjcmp1
      +Cmp:ar  indef_cmp_adj_decl    ;

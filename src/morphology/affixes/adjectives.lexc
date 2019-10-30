@@ -369,53 +369,93 @@ LEXICON l20 ! stillur
  +A+Neu+Pl+Gen+Indef:ra	 	 # ;
  +A:l Pos_Def	;
  +A:l Comp_Ari	;
- 
- 
- 
- 
 
 LEXICON l21 ! fastur
- +A:       a_non_umlaut ;
- +A:^UUML a_umlaut     ;
- +A:       adj_def      ;
- +A:       adjcmp1      ;
+ +A: Sg_Msc1_Uuml ;
+ +A: Pl_Msc2_Uuml ;
+ +A: Sg_Fem2_Uuml ;
+ +A: Pl_Fem2_Uuml ;
+ +A: Sg_Neu3_Uuml ;
+ +A: Pl_Neu2_Uuml ;
+ +A: Pos_Def2	  ;
+ +A: Comp_Ari	  ;
 
 LEXICON l22 ! klæddur
- +A:       a_non_umlaut ; ! a_m_sg_n, a_non_umlaut_obl
- +A:^UUML a_umlaut     ;
- +A:       a_umlaut     ;
- +A:       adj_def      ;
- +A:       adjcmp1      ;
-
+ +A+Msc+Sg+Nom+Indef:%>ddur	 # ;
+ +A+Msc+Sg+Acc+Indef:%>ddan	 # ;
+ +A+Msc+Sg+Dat+Indef:^ØUML%>ddum	 # ;
+ +A+Msc+Sg+Dat+Indef:%>ddum	 # ;
+ +A+Msc+Sg+Gen+Indef:%>ds	 # ; 
+ +A:dd Pl_Msc1 ;
+ +A+Msc+Pl+Dat+Indef:^ØUML%>ddum  # ;
+ +A:dd Sg_Fem1 ;
+ +A+Fem+Sg+Nom+Indef:^ØUML%>dd 	 # ;
+ +A:dd Pl_Fem1 ;
+ +A+Fem+Pl+Dat+Indef:^ØUML%>ddum	 # ;
+ +A+Neu+Sg+Nom+Indef:%>tt	 # ;
+ +A+Neu+Sg+Acc+Indef:%>tt	 # ;
+ +A+Neu+Sg+Dat+Indef:^ØUML%>ddum	 # ;
+ +A+Neu+Sg+Dat+Indef:%>ddum	 # ;
+ +A+Neu+Sg+Gen+Indef:%>ds	 # ;
+ +A:dd Pl_Neu1 ;
+ +A+Neu+Pl+Dat+Indef:^ØUML%>ddum	 # ;
+ +A:dd Pos_Def3	  ;
+ +A:dd Pos_Def	  ;
+ +A:dd Comp_Ari	  ;
+ 
 LEXICON l23 ! rættur
- +A:       a_non_umlaut ;
- +A:^UUML a_umlaut     ;
- +A:       a_umlaut     ;
- +A:       adj_def      ;
- +A:       adjcmp1      ;
+ +A+Msc+Sg+Nom+Indef:%>ttur	 # ;
+ +A+Msc+Sg+Acc+Indef:%>ttan	 # ;
+ +A+Msc+Sg+Dat+Indef:^ØUML%>ttum	 # ;
+ +A+Msc+Sg+Dat+Indef:%>ttum	 # ;
+ +A+Msc+Sg+Gen+Indef:%>ts	 # ; 
+ +A:tt Pl_Msc1 ;
+ +A+Msc+Pl+Dat+Indef:^ØUML%>ttum  # ;
+ +A:tt Sg_Fem1 ;
+ +A+Fem+Sg+Nom+Indef:^ØUML%>tt 	 # ;
+ +A:tt Pl_Fem1 ;
+ +A+Fem+Pl+Dat+Indef:^ØUML%>ttum	 # ;
+ +A+Neu+Sg+Nom+Indef:%>tt	 # ;
+ +A+Neu+Sg+Acc+Indef:%>tt	 # ;
+ +A+Neu+Sg+Dat+Indef:^ØUML%>ttum	 # ;
+ +A+Neu+Sg+Dat+Indef:%>ttum	 # ;
+ +A+Neu+Sg+Gen+Indef:%>ts	 # ;
+ +A:tt Pl_Neu1 ;
+ +A+Neu+Pl+Dat+Indef:^ØUML%>ttum	 # ;
+ +A:tt Pos_Def3	  ;
+ +A:tt Pos_Def 	  ;
+ +A:tt Comp_Ari	  ;
 
 LEXICON l24/25
 l24 ;
 l25 ;
 
 LEXICON l24 ! frískur
- +A: adj_a     ;
- +A: adj_r_gen ;
- +A: adj_def   ;
- +A: adjcmp1   ;
+ +A: Sg_Msc1  ;
+ +A: Pl_Msc2  ;
+ +A: Sg_Fem2  ;
+ +A: Pl_Fem2  ;
+ +A: Sg_Neu1  ;
+ +A: Pl_Neu2  ;
+ +A: Pos_Def  ;
+ +A: Comp_Ari ;
 
 LEXICON l25 ! danskur
- +A:       a_non_umlaut ;
- +A:^UUML a_umlaut     ;
- +A:       adj_r_gen    ;
- +A:       adj_def      ;
- +A:       adjcmp1      ;
+ +A: Sg_Msc1_Uuml ;
+ +A: Pl_Msc2_Uuml ;
+ +A: Sg_Fem2_Uuml ;
+ +A: Pl_Fem2_Uuml ;
+ +A: Sg_Neu1_Uuml ;
+ +A: Pl_Neu2_Uuml ;
+ +A: Pos_Def2 	  ;
+ +A: Comp_Ari	  ;
 
 LEXICON l26 ! vakin
  +A:^EPH a_m_sg_n_null    ;
  +A:^EPH a_non_umlaut_obl ;
  +A:^EPH a_umlaut         ;
  +A:^EPH adj_def          ;
+ +A:^EPH Comp_Ari 		  ;
 
 LEXICON l27 ! heiðin
  +A:^EPH a_m_sg_n_null    ;
@@ -909,7 +949,7 @@ LEXICON Pos_Def
  +Neu+Pl+Gen+Def:%>u # ;
 
 LEXICON Pos_Def2
-! Positiv, def, umlj
+! Positiv, def, u-umlj
 ! Msc
  +Msc+Sg+Nom+Def:%>i # ;
  +Msc+Sg+Acc+Def:%>a # ;
@@ -937,6 +977,36 @@ LEXICON Pos_Def2
  +Neu+Pl+Acc+Def:^UUML%>u # ;
  +Neu+Pl+Dat+Def:^UUML%>u # ;
  +Neu+Pl+Gen+Def:^UUML%>u # ;
+
+LEXICON Pos_Def3
+! Positiv, def, ø-umlj
+! Msc
+ +Msc+Sg+Nom+Def:%>i # ;
+ +Msc+Sg+Acc+Def:%>a # ;
+ +Msc+Sg+Dat+Def:%>a # ;
+ +Msc+Sg+Gen+Def:%>a # ;
+ +Msc+Pl+Nom+Def:^ØUML%>u # ;
+ +Msc+Pl+Acc+Def:^ØUML%>u # ;
+ +Msc+Pl+Dat+Def:^ØUML%>u # ;
+ +Msc+Pl+Gen+Def:^ØUML%>u # ;
+! Fem
+ +Fem+Sg+Nom+Def:%>a # ;
+ +Fem+Sg+Acc+Def:^ØUML%>u # ;
+ +Fem+Sg+Dat+Def:^ØUML%>u # ;
+ +Fem+Sg+Gen+Def:^ØUML%>u # ;
+ +Fem+Pl+Nom+Def:^ØUML%>u # ;
+ +Fem+Pl+Acc+Def:^ØUML%>u # ;
+ +Fem+Pl+Dat+Def:^ØUML%>u # ;
+ +Fem+Pl+Gen+Def:^ØUML%>u # ;
+! Neu
+ +Neu+Sg+Nom+Def:%>a # ;
+ +Neu+Sg+Acc+Def:%>a # ;
+ +Neu+Sg+Dat+Def:%>a # ;
+ +Neu+Sg+Gen+Def:%>a # ;
+ +Neu+Pl+Nom+Def:^ØUML%>u # ;
+ +Neu+Pl+Acc+Def:^ØUML%>u # ;
+ +Neu+Pl+Dat+Def:^ØUML%>u # ;
+ +Neu+Pl+Gen+Def:^ØUML%>u # ;
 
 LEXICON adj_def
  +Msc: adj_def_msc ;
@@ -1100,7 +1170,7 @@ LEXICON SAri
  +Superl+Msc+Pl+Acc+Indef:%>astar # ;
  +Superl+Msc+Pl+Dat+Indef:%>astum # ;
  +Superl+Msc+Pl+Gen+Indef:%>asta # ;
- +Superl+Msc+Pl+Gen+Indef:%>ara # ;
+ +Superl+Msc+Pl+Gen+Indef:%>astra # ;
  +Superl+Msc+Sg+Nom+Def:%>asti # ;
  +Superl+Msc+Sg+Acc+Def:%>asta # ;
  +Superl+Msc+Sg+Dat+Def:%>asta # ;
@@ -1114,12 +1184,12 @@ LEXICON SAri
  +Superl+Fem+Sg+Acc+Indef:%>asta # ;
  +Superl+Fem+Sg+Dat+Indef:%>astari # ;
  +Superl+Fem+Sg+Gen+Indef:%>astar # ;
- +Superl+Fem+Sg+Gen+Indef:%>arar # ;
+ +Superl+Fem+Sg+Gen+Indef:%>astrar # ;
  +Superl+Fem+Pl+Nom+Indef:%>astar # ;
  +Superl+Fem+Pl+Acc+Indef:%>astar # ;
  +Superl+Fem+Pl+Dat+Indef:%>astum # ;
  +Superl+Fem+Pl+Gen+Indef:%>asta # ;
- +Superl+Fem+Pl+Gen+Indef:%>ara # ;
+ +Superl+Fem+Pl+Gen+Indef:%>astra # ;
  +Superl+Fem+Sg+Nom+Def:%>asta # ;
  +Superl+Fem+Sg+Acc+Def:%>astu # ;
  +Superl+Fem+Sg+Dat+Def:%>astu # ;
@@ -1137,7 +1207,7 @@ LEXICON SAri
  +Superl+Neu+Pl+Acc+Indef:%>ast # ;
  +Superl+Neu+Pl+Dat+Indef:%>astum # ;
  +Superl+Neu+Pl+Gen+Indef:%>asta # ;
- +Superl+Neu+Pl+Gen+Indef:%>ara # ;
+ +Superl+Neu+Pl+Gen+Indef:%>astra # ;
  +Superl+Neu+Sg+Nom+Def:%>asta # ;
  +Superl+Neu+Sg+Acc+Def:%>asta # ;
  +Superl+Neu+Sg+Dat+Def:%>asta # ;
@@ -1213,7 +1283,7 @@ LEXICON SRi
  +Superl+Msc+Pl+Acc+Indef:%>star # ;
  +Superl+Msc+Pl+Dat+Indef:%>stum # ;
  +Superl+Msc+Pl+Gen+Indef:%>sta # ;
- +Superl+Msc+Pl+Gen+Indef:%>ra # ;
+ +Superl+Msc+Pl+Gen+Indef:%>stra # ;
  +Superl+Msc+Sg+Nom+Def:%>sti # ;
  +Superl+Msc+Sg+Acc+Def:%>sta # ;
  +Superl+Msc+Sg+Dat+Def:%>sta # ;
@@ -1227,12 +1297,12 @@ LEXICON SRi
  +Superl+Fem+Sg+Acc+Indef:%>sta # ;
  +Superl+Fem+Sg+Dat+Indef:%>stari # ;
  +Superl+Fem+Sg+Gen+Indef:%>star # ;
- +Superl+Fem+Sg+Gen+Indef:%>rar # ;
+ +Superl+Fem+Sg+Gen+Indef:%>strar # ;
  +Superl+Fem+Pl+Nom+Indef:%>star # ;
  +Superl+Fem+Pl+Acc+Indef:%>star # ;
  +Superl+Fem+Pl+Dat+Indef:%>stum # ;
  +Superl+Fem+Pl+Gen+Indef:%>sta # ;
- +Superl+Fem+Pl+Gen+Indef:%>ra # ;
+ +Superl+Fem+Pl+Gen+Indef:%>stra # ;
  +Superl+Fem+Sg+Nom+Def:%>sta # ;
  +Superl+Fem+Sg+Acc+Def:%>stu # ;
  +Superl+Fem+Sg+Dat+Def:%>stu # ;
@@ -1250,7 +1320,7 @@ LEXICON SRi
  +Superl+Neu+Pl+Acc+Indef:%>st # ;
  +Superl+Neu+Pl+Dat+Indef:%>stum # ;
  +Superl+Neu+Pl+Gen+Indef:%>sta # ;
- +Superl+Neu+Pl+Gen+Indef:%>ra # ;
+ +Superl+Neu+Pl+Gen+Indef:%>stra # ;
  +Superl+Neu+Sg+Nom+Def:%>sta # ;
  +Superl+Neu+Sg+Acc+Def:%>sta # ;
  +Superl+Neu+Sg+Dat+Def:%>sta # ;

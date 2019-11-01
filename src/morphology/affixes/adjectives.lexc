@@ -552,9 +552,9 @@ LEXICON l31 ! trupul
  +A+Msc+Sg+Gen+Indef:%>uls # ;
  +A:l Pl_Msc1 ;
  +A+Fem+Sg+Nom+Indef:%>ul  # ;
- +A+Fem+Sg+Acc+Indef:%>la	   # ;
- +A+Fem+Sg+Dat+Indef:%>lari  # ;
- +A+Fem+Sg+Gen+Indef:%>lar   # ;
+ +A+Fem+Sg+Acc+Indef:%>la  # ;
+ +A+Fem+Sg+Dat+Indef:%>lari # ;
+ +A+Fem+Sg+Gen+Indef:%>lar # ;
  +A:l Pl_Fem1 ;
  +A+Neu+Sg+Nom+Indef:%>ult # ;
  +A+Neu+Sg+Acc+Indef:%>ult # ;
@@ -574,9 +574,9 @@ LEXICON l31_2 ! simpil
  +A+Msc+Sg+Gen+Indef:%>ils # ;
  +A:l Pl_Msc1 ;
  +A+Fem+Sg+Nom+Indef:%>il  # ;
- +A+Fem+Sg+Acc+Indef:%>la	   # ;
- +A+Fem+Sg+Dat+Indef:%>lari  # ;
- +A+Fem+Sg+Gen+Indef:%>lar   # ;
+ +A+Fem+Sg+Acc+Indef:%>la  # ;
+ +A+Fem+Sg+Dat+Indef:%>lari # ;
+ +A+Fem+Sg+Gen+Indef:%>lar # ;
  +A:l Pl_Fem1 ;
  +A+Neu+Sg+Nom+Indef:%>ilt # ;
  +A+Neu+Sg+Acc+Indef:%>ilt # ;
@@ -590,11 +590,26 @@ LEXICON l31_2 ! simpil
  +A:l Comp_Ari ;
 
 LEXICON l32 ! búgvin
- +A:            a_m_sg_n_null    ; ! 
- +A:^EPH       a_non_umlaut_obl ;
- +A:^EPH^UUML a_umlaut         ;
- +A:^EPH       adj_def          ;
- +A:^EPH       adj_def          ;
+ +A+Msc+Sg+Nom+Indef:%>gvin  # ;
+ +A+Msc+Sg+Acc+Indef:%>nan   # ;
+ +A+Msc+Sg+Dat+Indef:%>num   # ;
+ +A+Msc+Sg+Gen+Indef:%>gvins # ;
+ +A: Pl_Msc3 ;
+ +A+Fem+Sg+Nom+Indef:%>gvin	 # ;
+ +A+Fem+Sg+Acc+Indef:%>na    # ;
+ +A+Fem+Sg+Dat+Indef:%>nari  # ;
+ +A+Fem+Sg+Gen+Indef:%>nar   # ;
+ +A: Pl_Fem3 ; 
+ +A+Neu+Sg+Nom+Indef:%>gvið	 # ;
+ +A+Neu+Sg+Acc+Indef:%>gvið	 # ;
+ +A+Neu+Sg+Dat+Indef:%>num   # ;
+ +A+Neu+Sg+Gen+Indef:%>gvins # ;
+ +A+Neu+Pl+Nom+Indef:%>gvin	 # ;
+ +A+Neu+Pl+Acc+Indef:%>gvin  # ;
+ +A+Neu+Pl+Dat+Indef:%>num   # ;
+ +A+Neu+Pl+Gen+Indef:%>na	 # ;
+ +A:n Pos_Def  ;
+ +A:n Comp_Ari ;
 
 LEXICON GAMAL
  +A:amal      a_m_sg_n_null    ; ! gamal

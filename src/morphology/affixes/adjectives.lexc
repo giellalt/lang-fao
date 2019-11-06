@@ -480,24 +480,24 @@ LEXICON l27 ! heiðin
  +A:dn Comp_Ari ;
 
 
-LEXICON l28 ! mikil
- +A: Sg_Msc4	;
- +A: Pl_Msc4	;
- +A: Sg_Fem4	;
- +A: Pl_Fem4 	;
- +A: Sg_Neu6 	;
- +A: Pl_Neu4 	;
- +A:l Pos_Def 	;
- +A:l Comp_Ari 	;
- 
- LEXICON l28_2 ! lítil
- +A:lít Sg_Msc4  ;
- +A:lít Pl_Msc4  ;
- +A:lít Sg_Fem4  ;
- +A:lít Pl_Fem4  ;
- +A:lít Sg_Neu6  ;
- +A:lít Pl_Neu4  ;
- +A:lítl Pos_Def ;
+LEXICON l28 ! mikil 
+ +A: a_m_sg_n_null ;
+ +A: TEST_msgpl ;
+ +A: a_f_sg_n_null ;
+ +A: TEST_fsgpl ;
+ +A: TEST_nsgpl ;
+ +A:^EPH Pos_Def 	;
+ +A:^EPH Comp_Ari 	;
+  
+LEXICON l28_2 ! lítil
+ +A: a_m_sg_n_null ;
+ +A: TEST_msgpl ;
+ +A: a_f_sg_n_null ;
+ +A: TEST_fsgpl ;
+ +A: TEST_nsgpl ;
+ +A:^EPH Pos_Def 	;
+
+LEXICON MINNI
  +A:minn CI 	 ;
  +A:min SRi 	 ;
 
@@ -522,51 +522,25 @@ LEXICON l29 ! vakur
  +A+Neu+Pl+Gen+Indef:%>ra	 	# ;
  +A:r Pos_Def2 ;
  +A:r Comp_Ari ; 
-
+ 
 LEXICON l30 ! tepur
- +A+Msc+Sg+Nom+Indef:%>ur  # ;
- +A+Msc+Sg+Acc+Indef:%>ran # ;
- +A+Msc+Sg+Dat+Indef:%>rum # ;
- +A+Msc+Sg+Gen+Indef:%>urs # ;
- +A:r Pl_Msc1 ;
- +A+Fem+Sg+Nom+Indef:%>ur  # ;
- +A+Fem+Sg+Acc+Indef:%>ra	   # ;
- +A+Fem+Sg+Dat+Indef:%>rari  # ;
- +A+Fem+Sg+Gen+Indef:%>rar   # ;
- +A:r Pl_Fem1 ;
- +A+Neu+Sg+Nom+Indef:%>urt # ;
- +A+Neu+Sg+Acc+Indef:%>urt # ;
- +A+Neu+Sg+Dat+Indef:%>rum # ;
- +A+Neu+Sg+Gen+Indef:%>urs # ;
- +A+Neu+Pl+Nom+Indef:%>ur  # ;
- +A+Neu+Pl+Acc+Indef:%>ur  # ;
- +A+Neu+Pl+Dat+Indef:%>rum # ;
- +A+Neu+Pl+Gen+Indef:%>ra  # ;
- +A:r Pos_Def ;
- +A:r Comp_Ari ; 
+ +A: a_m_sg_n_null ;
+ +A: TEST_msgpl ;
+ +A: a_f_sg_n_null ;
+ +A: TEST_fsgpl ;
+ +A: TEST_nsgpl ;
+ +A:^EPH Pos_Def ;
+ +A:^EPH Comp_Ari ;
 
 LEXICON l31 ! trupul
- +A+Msc+Sg+Nom+Indef:%>ul  # ;
- +A+Msc+Sg+Acc+Indef:%>lan # ;
- +A+Msc+Sg+Dat+Indef:%>lum # ;
- +A+Msc+Sg+Gen+Indef:%>uls # ;
- +A:l Pl_Msc1 ;
- +A+Fem+Sg+Nom+Indef:%>ul  # ;
- +A+Fem+Sg+Acc+Indef:%>la  # ;
- +A+Fem+Sg+Dat+Indef:%>lari # ;
- +A+Fem+Sg+Gen+Indef:%>lar # ;
- +A:l Pl_Fem1 ;
- +A+Neu+Sg+Nom+Indef:%>ult # ;
- +A+Neu+Sg+Acc+Indef:%>ult # ;
- +A+Neu+Sg+Dat+Indef:%>lum # ;
- +A+Neu+Sg+Gen+Indef:%>uls # ;
- +A+Neu+Pl+Nom+Indef:%>ul  # ;
- +A+Neu+Pl+Acc+Indef:%>ul  # ;
- +A+Neu+Pl+Dat+Indef:%>lum # ;
- +A+Neu+Pl+Gen+Indef:%>la  # ;
- +A:l Pos_Def ;
- +A:l Comp_Ari ;
- 
+ +A: a_m_sg_n_null ;
+ +A: TEST_msgpl ;
+ +A: a_f_sg_n_null ;
+ +A: TEST_fsgpl ;
+ +A: TEST_nsgpl ;
+ +A:^EPH Pos_Def ;
+ +A:^EPH Comp_Ari ;
+
 LEXICON l31_2 ! simpil
  +A+Msc+Sg+Nom+Indef:%>il  # ;
  +A+Msc+Sg+Acc+Indef:%>lan # ;
@@ -578,8 +552,8 @@ LEXICON l31_2 ! simpil
  +A+Fem+Sg+Dat+Indef:%>lari # ;
  +A+Fem+Sg+Gen+Indef:%>lar # ;
  +A:l Pl_Fem1 ;
- +A+Neu+Sg+Nom+Indef:%>ilt # ;
- +A+Neu+Sg+Acc+Indef:%>ilt # ;
+ +A+Neu+Sg+Nom+Indef:%>t # ;
+ +A+Neu+Sg+Acc+Indef:%>t # ;
  +A+Neu+Sg+Dat+Indef:%>lum # ;
  +A+Neu+Sg+Gen+Indef:%>ils # ;
  +A+Neu+Pl+Nom+Indef:%>il  # ;
@@ -588,7 +562,7 @@ LEXICON l31_2 ! simpil
  +A+Neu+Pl+Gen+Indef:%>la  # ;
  +A:l Pos_Def ;
  +A:l Comp_Ari ;
-
+ 
 LEXICON l32 ! búgvin
  +A+Msc+Sg+Nom+Indef:%>gvin  # ;
  +A+Msc+Sg+Acc+Indef:%>nan   # ;
@@ -618,11 +592,247 @@ LEXICON GAMAL
  +A:amal^EPH adj_def          ;
 
 LEXICON l34 ! dottin
- +A:^EPH       a_m_sg_n_null    ;
- +A:^EPH       a_non_umlaut_obl ;
- +A:^EPH^UUML a_umlaut         ;
- +A:^EPH       adj_def          ;
- +A:^EPH       adj_def          ;
+ +A+Msc+Sg+Nom+Indef:tin  # ;
+ +A+Msc+Sg+Acc+Indef:nan  # ;
+ +A+Msc+Sg+Dat+Indef:num  # ;
+ +A+Msc+Sg+Gen+Indef:tins # ;
+ +A+Msc+Pl+Nom+Indef:nir  # ;
+ +A+Msc+Pl+Acc+Indef:nar  # ;
+ +A+Msc+Pl+Dat+Indef:num  # ;
+ +A+Msc+Pl+Gen+Indef:na   # ;
+ +A+Fem+Sg+Nom+Indef:tin  # ;
+ +A+Fem+Sg+Acc+Indef:na   # ;
+ +A+Fem+Sg+Dat+Indef:nari # ;
+ +A+Fem+Sg+Gen+Indef:nar  # ;
+ +A+Fem+Pl+Nom+Indef:nar  # ;
+ +A+Fem+Pl+Acc+Indef:nar  # ;
+ +A+Fem+Pl+Dat+Indef:num  # ;
+ +A+Fem+Pl+Gen+Indef:na	  # ;
+ +A+Neu+Sg+Nom+Indef:tið  # ;
+ +A+Neu+Sg+Acc+Indef:tið  # ;
+ +A+Neu+Sg+Dat+Indef:num  # ;
+ +A+Neu+Sg+Gen+Indef:tins # ;
+ +A+Neu+Pl+Nom+Indef:tin  # ;
+ +A+Neu+Pl+Acc+Indef:tin  # ;
+ +A+Neu+Pl+Dat+Indef:num  # ;
+ +A+Neu+Pl+Gen+Indef:na	  # ;
+ +A:%>n Pos_Def  			;
+
+LEXICON l34_2 ! dossin
+ +A+Msc+Sg+Nom+Indef:sin  # ;
+ +A+Msc+Sg+Acc+Indef:nan  # ;
+ +A+Msc+Sg+Dat+Indef:num  # ;
+ +A+Msc+Sg+Gen+Indef:sins # ;
+ +A+Msc+Pl+Nom+Indef:nir  # ;
+ +A+Msc+Pl+Acc+Indef:nar  # ;
+ +A+Msc+Pl+Dat+Indef:num  # ;
+ +A+Msc+Pl+Gen+Indef:na   # ;
+ +A+Fem+Sg+Nom+Indef:sin  # ;
+ +A+Fem+Sg+Acc+Indef:na   # ;
+ +A+Fem+Sg+Dat+Indef:nari # ;
+ +A+Fem+Sg+Gen+Indef:nar  # ;
+ +A+Fem+Pl+Nom+Indef:nar  # ;
+ +A+Fem+Pl+Acc+Indef:nar  # ;
+ +A+Fem+Pl+Dat+Indef:num  # ;
+ +A+Fem+Pl+Gen+Indef:na	  # ;
+ +A+Neu+Sg+Nom+Indef:sið  # ;
+ +A+Neu+Sg+Acc+Indef:sið  # ;
+ +A+Neu+Sg+Dat+Indef:num  # ;
+ +A+Neu+Sg+Gen+Indef:sins # ;
+ +A+Neu+Pl+Nom+Indef:sin  # ;
+ +A+Neu+Pl+Acc+Indef:sin  # ;
+ +A+Neu+Pl+Dat+Indef:num  # ;
+ +A+Neu+Pl+Gen+Indef:na	  # ;
+ +A:%>n Pos_Def  			;
+
+LEXICON l34_3 ! errin
+ +A+Msc+Sg+Nom+Indef:rin  # ;
+ +A+Msc+Sg+Acc+Indef:nan  # ;
+ +A+Msc+Sg+Dat+Indef:num  # ;
+ +A+Msc+Sg+Gen+Indef:rins # ;
+ +A+Msc+Pl+Nom+Indef:nir  # ;
+ +A+Msc+Pl+Acc+Indef:nar  # ;
+ +A+Msc+Pl+Dat+Indef:num  # ;
+ +A+Msc+Pl+Gen+Indef:na   # ;
+ +A+Fem+Sg+Nom+Indef:rin  # ;
+ +A+Fem+Sg+Acc+Indef:na   # ;
+ +A+Fem+Sg+Dat+Indef:nari # ;
+ +A+Fem+Sg+Gen+Indef:nar  # ;
+ +A+Fem+Pl+Nom+Indef:nar  # ;
+ +A+Fem+Pl+Acc+Indef:nar  # ;
+ +A+Fem+Pl+Dat+Indef:num  # ;
+ +A+Fem+Pl+Gen+Indef:na	  # ;
+ +A+Neu+Sg+Nom+Indef:rið  # ;
+ +A+Neu+Sg+Acc+Indef:rið  # ;
+ +A+Neu+Sg+Dat+Indef:num  # ;
+ +A+Neu+Sg+Gen+Indef:rins # ;
+ +A+Neu+Pl+Nom+Indef:rin  # ;
+ +A+Neu+Pl+Acc+Indef:rin  # ;
+ +A+Neu+Pl+Dat+Indef:num  # ;
+ +A+Neu+Pl+Gen+Indef:na	  # ;
+ +A:%>n Pos_Def  			;
+
+LEXICON l34_4 ! hyggin
+ +A+Msc+Sg+Nom+Indef:gin  # ;
+ +A+Msc+Sg+Acc+Indef:nan  # ;
+ +A+Msc+Sg+Dat+Indef:num  # ;
+ +A+Msc+Sg+Gen+Indef:gins # ;
+ +A+Msc+Pl+Nom+Indef:nir  # ;
+ +A+Msc+Pl+Acc+Indef:nar  # ;
+ +A+Msc+Pl+Dat+Indef:num  # ;
+ +A+Msc+Pl+Gen+Indef:na   # ;
+ +A+Fem+Sg+Nom+Indef:gin  # ;
+ +A+Fem+Sg+Acc+Indef:na   # ;
+ +A+Fem+Sg+Dat+Indef:nari # ;
+ +A+Fem+Sg+Gen+Indef:nar  # ;
+ +A+Fem+Pl+Nom+Indef:nar  # ;
+ +A+Fem+Pl+Acc+Indef:nar  # ;
+ +A+Fem+Pl+Dat+Indef:num  # ;
+ +A+Fem+Pl+Gen+Indef:na	  # ;
+ +A+Neu+Sg+Nom+Indef:gið  # ;
+ +A+Neu+Sg+Acc+Indef:gið  # ;
+ +A+Neu+Sg+Dat+Indef:num  # ;
+ +A+Neu+Sg+Gen+Indef:gins # ;
+ +A+Neu+Pl+Nom+Indef:gin  # ;
+ +A+Neu+Pl+Acc+Indef:gin  # ;
+ +A+Neu+Pl+Dat+Indef:num  # ;
+ +A+Neu+Pl+Gen+Indef:na	  # ;
+ +A:%>n Pos_Def  			;
+
+LEXICON l34_5 ! sloppin
+ +A+Msc+Sg+Nom+Indef:pin  # ;
+ +A+Msc+Sg+Acc+Indef:nan  # ;
+ +A+Msc+Sg+Dat+Indef:num  # ;
+ +A+Msc+Sg+Gen+Indef:pins # ;
+ +A+Msc+Pl+Nom+Indef:nir  # ;
+ +A+Msc+Pl+Acc+Indef:nar  # ;
+ +A+Msc+Pl+Dat+Indef:num  # ;
+ +A+Msc+Pl+Gen+Indef:na   # ;
+ +A+Fem+Sg+Nom+Indef:pin  # ;
+ +A+Fem+Sg+Acc+Indef:na   # ;
+ +A+Fem+Sg+Dat+Indef:nari # ;
+ +A+Fem+Sg+Gen+Indef:nar  # ;
+ +A+Fem+Pl+Nom+Indef:nar  # ;
+ +A+Fem+Pl+Acc+Indef:nar  # ;
+ +A+Fem+Pl+Dat+Indef:num  # ;
+ +A+Fem+Pl+Gen+Indef:na	  # ;
+ +A+Neu+Sg+Nom+Indef:pið  # ;
+ +A+Neu+Sg+Acc+Indef:pið  # ;
+ +A+Neu+Sg+Dat+Indef:num  # ;
+ +A+Neu+Sg+Gen+Indef:pins # ;
+ +A+Neu+Pl+Nom+Indef:pin  # ;
+ +A+Neu+Pl+Acc+Indef:pin  # ;
+ +A+Neu+Pl+Dat+Indef:num  # ;
+ +A+Neu+Pl+Gen+Indef:na	  # ;
+ +A:%>n Pos_Def  			;
+
+LEXICON l34_6 ! funnin
+ +A+Msc+Sg+Nom+Indef:nin  # ;
+ +A+Msc+Sg+Acc+Indef:nan  # ;
+ +A+Msc+Sg+Dat+Indef:num  # ;
+ +A+Msc+Sg+Gen+Indef:nins # ;
+ +A+Msc+Pl+Nom+Indef:nir  # ;
+ +A+Msc+Pl+Acc+Indef:nar  # ;
+ +A+Msc+Pl+Dat+Indef:num  # ;
+ +A+Msc+Pl+Gen+Indef:na   # ;
+ +A+Fem+Sg+Nom+Indef:nin  # ;
+ +A+Fem+Sg+Acc+Indef:na   # ;
+ +A+Fem+Sg+Dat+Indef:nari # ;
+ +A+Fem+Sg+Gen+Indef:nar  # ;
+ +A+Fem+Pl+Nom+Indef:nar  # ;
+ +A+Fem+Pl+Acc+Indef:nar  # ;
+ +A+Fem+Pl+Dat+Indef:num  # ;
+ +A+Fem+Pl+Gen+Indef:na	  # ;
+ +A+Neu+Sg+Nom+Indef:nið  # ;
+ +A+Neu+Sg+Acc+Indef:nið  # ;
+ +A+Neu+Sg+Dat+Indef:num  # ;
+ +A+Neu+Sg+Gen+Indef:nins # ;
+ +A+Neu+Pl+Nom+Indef:nin  # ;
+ +A+Neu+Pl+Acc+Indef:nin  # ;
+ +A+Neu+Pl+Dat+Indef:num  # ;
+ +A+Neu+Pl+Gen+Indef:na	  # ;
+ +A:%>n Pos_Def  			;
+
+LEXICON l34_7 ! fallin
+ +A+Msc+Sg+Nom+Indef:lin  # ;
+ +A+Msc+Sg+Acc+Indef:nan  # ;
+ +A+Msc+Sg+Dat+Indef:num  # ;
+ +A+Msc+Sg+Gen+Indef:lins # ;
+ +A+Msc+Pl+Nom+Indef:nir  # ;
+ +A+Msc+Pl+Acc+Indef:nar  # ;
+ +A+Msc+Pl+Dat+Indef:num  # ;
+ +A+Msc+Pl+Gen+Indef:na   # ;
+ +A+Fem+Sg+Nom+Indef:lin  # ;
+ +A+Fem+Sg+Acc+Indef:na   # ;
+ +A+Fem+Sg+Dat+Indef:nari # ;
+ +A+Fem+Sg+Gen+Indef:nar  # ;
+ +A+Fem+Pl+Nom+Indef:nar  # ;
+ +A+Fem+Pl+Acc+Indef:nar  # ;
+ +A+Fem+Pl+Dat+Indef:num  # ;
+ +A+Fem+Pl+Gen+Indef:na	  # ;
+ +A+Neu+Sg+Nom+Indef:lið  # ;
+ +A+Neu+Sg+Acc+Indef:lið  # ;
+ +A+Neu+Sg+Dat+Indef:num  # ;
+ +A+Neu+Sg+Gen+Indef:lins # ;
+ +A+Neu+Pl+Nom+Indef:lin  # ;
+ +A+Neu+Pl+Acc+Indef:lin  # ;
+ +A+Neu+Pl+Dat+Indef:num  # ;
+ +A+Neu+Pl+Gen+Indef:na	  # ;
+ +A:%>n Pos_Def  			;
+
+LEXICON l34_8 ! drukkin
+ +A+Msc+Sg+Nom+Indef:kin  # ;
+ +A+Msc+Sg+Acc+Indef:nan  # ;
+ +A+Msc+Sg+Dat+Indef:num  # ;
+ +A+Msc+Sg+Gen+Indef:kins # ;
+ +A+Msc+Pl+Nom+Indef:nir  # ;
+ +A+Msc+Pl+Acc+Indef:nar  # ;
+ +A+Msc+Pl+Dat+Indef:num  # ;
+ +A+Msc+Pl+Gen+Indef:na   # ;
+ +A+Fem+Sg+Nom+Indef:kin  # ;
+ +A+Fem+Sg+Acc+Indef:na   # ;
+ +A+Fem+Sg+Dat+Indef:nari # ;
+ +A+Fem+Sg+Gen+Indef:nar  # ;
+ +A+Fem+Pl+Nom+Indef:nar  # ;
+ +A+Fem+Pl+Acc+Indef:nar  # ;
+ +A+Fem+Pl+Dat+Indef:num  # ;
+ +A+Fem+Pl+Gen+Indef:na	  # ;
+ +A+Neu+Sg+Nom+Indef:kið  # ;
+ +A+Neu+Sg+Acc+Indef:kið  # ;
+ +A+Neu+Sg+Dat+Indef:num  # ;
+ +A+Neu+Sg+Gen+Indef:kins # ;
+ +A+Neu+Pl+Nom+Indef:kin  # ;
+ +A+Neu+Pl+Acc+Indef:kin  # ;
+ +A+Neu+Pl+Dat+Indef:num  # ;
+ +A+Neu+Pl+Gen+Indef:na	  # ;
+ +A:%>n Pos_Def  			;
+
+LEXICON l34_9 ! treffin
+ +A+Msc+Sg+Nom+Indef:fin  # ;
+ +A+Msc+Sg+Acc+Indef:nan  # ;
+ +A+Msc+Sg+Dat+Indef:num  # ;
+ +A+Msc+Sg+Gen+Indef:fins # ;
+ +A+Msc+Pl+Nom+Indef:nir  # ;
+ +A+Msc+Pl+Acc+Indef:nar  # ;
+ +A+Msc+Pl+Dat+Indef:num  # ;
+ +A+Msc+Pl+Gen+Indef:na   # ;
+ +A+Fem+Sg+Nom+Indef:fin  # ;
+ +A+Fem+Sg+Acc+Indef:na   # ;
+ +A+Fem+Sg+Dat+Indef:nari # ;
+ +A+Fem+Sg+Gen+Indef:nar  # ;
+ +A+Fem+Pl+Nom+Indef:nar  # ;
+ +A+Fem+Pl+Acc+Indef:nar  # ;
+ +A+Fem+Pl+Dat+Indef:num  # ;
+ +A+Fem+Pl+Gen+Indef:na	  # ;
+ +A+Neu+Sg+Nom+Indef:fið  # ;
+ +A+Neu+Sg+Acc+Indef:fið  # ;
+ +A+Neu+Sg+Dat+Indef:num  # ;
+ +A+Neu+Sg+Gen+Indef:fins # ;
+ +A+Neu+Pl+Nom+Indef:fin  # ;
+ +A+Neu+Pl+Acc+Indef:fin  # ;
+ +A+Neu+Pl+Dat+Indef:num  # ;
+ +A+Neu+Pl+Gen+Indef:na	  # ;
+ +A:%>n Pos_Def  			;
 
 LEXICON l35 ! feingin ! not complete, needs umlaut
  +A:^EPH       a_m_sg_n_null    ;
@@ -828,6 +1038,24 @@ LEXICON Sg_Msc4
  +Msc+Sg+Acc+Indef:%>lan # ;
  +Msc+Sg+Dat+Indef:%>lum # ;
  +Msc+Sg+Gen+Indef:%>ils # ;
+ 
+LEXICON TEST_msgpl
+ +Msc+Sg+Acc+Indef:^EPH%>an # ;
+ +Msc+Sg+Dat+Indef:^EPH%>um # ;
+ +Msc+Sg+Gen+Indef:%>s # ;
+ +Msc+Pl+Nom+Indef:^EPH%>ir # ;
+ +Msc+Pl+Acc+Indef:^EPH%>ar # ;
+ +Msc+Pl+Dat+Indef:^EPH%>um # ;
+ +Msc+Pl+Gen+Indef:^EPH%>a  # ;
+
+LEXICON TEST_msgpl_UUML
+ +Msc+Sg+Acc+Indef:^EPH%>an # ;
+ +Msc+Sg+Dat+Indef:^EPH^UUML%>um # ;
+ +Msc+Sg+Gen+Indef:%>s # ;
+ +Msc+Pl+Nom+Indef:^EPH%>ir # ;
+ +Msc+Pl+Acc+Indef:^EPH%>ar # ;
+ +Msc+Pl+Dat+Indef:^EPH^UUML%>um # ;
+ +Msc+Pl+Gen+Indef:^EPH%>a  # ;
 
 LEXICON Pl_Msc3 
  +Msc+Pl+Nom+Indef:%>nir # ;
@@ -905,6 +1133,24 @@ LEXICON Sg_Fem4
  +Fem+Sg+Dat+Indef:%>lari # ;
  +Fem+Sg+Gen+Indef:%>lar  # ;
 
+LEXICON TEST_fsgpl
+ +Fem+Sg+Acc+Indef:^EPH%>a   # ;
+ +Fem+Sg+Dat+Indef:^EPH%>ari # ;
+ +Fem+Sg+Gen+Indef:^EPH%>ar  # ;
+ +Fem+Pl+Nom+Indef:^EPH%>ar # ;
+ +Fem+Pl+Acc+Indef:^EPH%>ar # ;
+ +Fem+Pl+Dat+Indef:^EPH%>um # ;
+ +Fem+Pl+Gen+Indef:^EPH%>a	 # ;
+
+LEXICON TEST_fsgpl_UUML
+ +Fem+Sg+Acc+Indef:^EPH%>a   # ;
+ +Fem+Sg+Dat+Indef:^EPH%>ari # ;
+ +Fem+Sg+Gen+Indef:^EPH%>ar  # ;
+ +Fem+Pl+Nom+Indef:^EPH%>ar # ;
+ +Fem+Pl+Acc+Indef:^EPH%>ar # ;
+ +Fem+Pl+Dat+Indef:^EPH^UUML%>um # ;
+ +Fem+Pl+Gen+Indef:^EPH%>a	 # ;
+
 LEXICON Pl_Fem3 
  +Fem+Pl+Nom+Indef:%>nar # ;
  +Fem+Pl+Acc+Indef:%>nar # ;
@@ -979,6 +1225,26 @@ LEXICON Pl_Neu2_Uuml
  +Neu+Pl+Gen+Indef:%>a	 # ;
  +Neu+Pl+Gen+Indef:%>ra	 # ;
  
+LEXICON TEST_nsgpl
+ +Neu+Sg+Nom+Indef:%>t	 # ;
+ +Neu+Sg+Acc+Indef:%>t	 # ;
+ +Neu+Sg+Dat+Indef:^EPH%>um	 # ;
+ +Neu+Sg+Gen+Indef:%>s	 # ;
+ +Neu+Pl+Nom+Indef:%>	 # ;
+ +Neu+Pl+Acc+Indef:%> 	 # ;
+ +Neu+Pl+Dat+Indef:^EPH%>um	 # ;
+ +Neu+Pl+Gen+Indef:^EPH%>a	 # ;
+ 
+LEXICON TEST_nsgpl_UUML
+ +Neu+Sg+Nom+Indef:%>t	 # ;
+ +Neu+Sg+Acc+Indef:%>t	 # ;
+ +Neu+Sg+Dat+Indef:^EPH^UUML%>um	 # ;
+ +Neu+Sg+Gen+Indef:%>s	 # ;
+ +Neu+Pl+Nom+Indef:^UUML%>	 # ;
+ +Neu+Pl+Acc+Indef:^UUML%> 	 # ;
+ +Neu+Pl+Dat+Indef:^EPH^UUML%>um	 # ;
+ +Neu+Pl+Gen+Indef:^EPH%>a	 # ;
+ 
 LEXICON Sg_Neu5 
  +Neu+Sg+Nom+Indef:%>ið	 # ;
  +Neu+Sg+Acc+Indef:%>ið	 # ;
@@ -1041,6 +1307,9 @@ LEXICON a_m_pl_g_ra
 
 LEXICON a_f_sg_n
  +Fem+Sg+Nom+Indef:^UUML # ;
+ 
+LEXICON a_f_sg_n_null
+ +Fem+Sg+Nom+Indef: # ;
 
 LEXICON a_f_sg_a
  +Fem+Sg+Acc+Indef:%>a # ;

@@ -40,6 +40,16 @@ KBDGEN=kbdgen
 KBDGENPATH=$(GIELLA_CORE)/$(KBDGEN)
 
 ###### Conditional string variables ######
+
+#### Swaps:
+# Enable swaps depending on variable setting:
+swaps=$(shell \
+	if [[ $(USE_SWAPS) != 'no' ]] ; then \
+		echo "--swap"; \
+	else \
+		echo ""; \
+	fi)
+
 #### Initial letters:
 # Set file name to the empty string or initial_letters.all depending on variable:
 initial_letter_deps=$(shell \
@@ -238,7 +248,7 @@ easteregg.%.hfst: easteregg.%.txt
 editdist.%.regex: editdist.%.txt $(initial_letter_deps)
 	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py \
 		--verbose \
-		--swap \
+		$(swaps) \
 		--epsilon='@0@' \
 		--default-weight=$(DEFAULT_WEIGHT) \
 		--regex \

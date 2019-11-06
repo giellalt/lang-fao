@@ -1,4 +1,9 @@
-$Rev: 184493 $
+$Rev: 184977 $
+Added Makefile setting for enabling swaps in error models (ie ab -> ba). Default
+is no (as this used not to work, and the existing error models are based on this
+fact).
+
+r184493:
 Replace UNDEFINED with __UNDEFINED__, so that text replacement can take place.
 
 r184388:

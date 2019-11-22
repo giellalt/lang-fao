@@ -585,11 +585,36 @@ LEXICON l32 ! búgvin
  +A:n Pos_Def  ;
  +A:n Comp_Ari ;
 
-LEXICON GAMAL
- +A:amal      a_m_sg_n_null    ; ! gamal
- +A:amal^EPH a_non_umlaut_obl ;
- +A:omul^EPH a_umlaut         ;
- +A:amal^EPH adj_def          ;
+LEXICON l33
+ +A+Msc+Sg+Nom+Indef:amal	 # ;
+ +A+Msc+Sg+Acc+Indef:amlan	 # ;
+ +A+Msc+Sg+Dat+Indef:omlum   # ;
+ +A+Msc+Sg+Gen+Indef:amals	 # ;
+ +A+Msc+Pl+Nom+Indef:amlir   # ;
+ +A+Msc+Pl+Acc+Indef:amlar   # ;
+ +A+Msc+Pl+Dat+Indef:omlum   # ;
+ +A+Msc+Pl+Gen+Indef:amla 	 # ;
+ +A+Fem+Sg+Nom+Indef:omul    # ;
+ +A+Fem+Sg+Acc+Indef:amla 	 # ;
+ +A+Fem+Sg+Dat+Indef:amlari  # ;
+ +A+Fem+Sg+Gen+Indef:amlar 	 # ;
+ +A+Fem+Pl+Nom+Indef:amlar   # ;
+ +A+Fem+Pl+Acc+Indef:amlar   # ;
+ +A+Fem+Pl+Dat+Indef:omlum	 # ;
+ +A+Fem+Pl+Gen+Indef:amla	 # ;
+ +A+Neu+Sg+Nom+Indef:amalt	 # ;
+ +A+Neu+Sg+Acc+Indef:amalt	 # ;
+ +A+Neu+Sg+Dat+Indef:omlum   # ;
+ +A+Neu+Sg+Gen+Indef:amals	 # ;
+ +A+Neu+Pl+Nom+Indef:omul	 # ;
+ +A+Neu+Pl+Acc+Indef:omul 	 # ;
+ +A+Neu+Pl+Dat+Indef:omlum   # ;
+ +A+Neu+Pl+Gen+Indef:amla	 # ;
+ +A:aml Pos_Def2 ;
+ 
+LEXICON ELDRI
+ +A:d CRi ;
+ +A:  SRi ;
 
 LEXICON l34 ! dottin
  +A+Msc+Sg+Nom+Indef:tin  # ;
@@ -898,27 +923,6 @@ LEXICON HOMONYM_ADJ_DEF
 
 ! Irregular comaratives
 ! =====================
-
-LEXICON ELDRI
-  eldri_m ;
-  eldri_f ;
-  eldri_n ;
-
-LEXICON ELSTUR
- :%>ur eldri_m ;
-       eldri_f ;
-       eldri_n ;
-       adj_def ;
-
-LEXICON eldri_m
- +Msc: HOMONYM_ADJ_NUM ;
-
-LEXICON eldri_f
- +Fem: HOMONYM_ADJ_NUM ;
-
-LEXICON eldri_n
- +Neu: HOMONYM_ADJ_NUM ;
- +Adv: #               ;
 
 LEXICON indecladj
  +A: HOMONYM_ADJ_FORMS ;

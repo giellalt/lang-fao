@@ -1218,10 +1218,6 @@ LEXICON kv_flt0
 !LEXICON kv_flt ! gætur, paradigm missing in dictionary
 !  +N+Pl+Nom:%>ur # ;
 
-LEXICON kv1/6f
-  kv1 ;
-  kv_flt6 ;
-
 LEXICON kv1 ! genta
   kv1e    ;
   kv_flt1 ;
@@ -1428,6 +1424,8 @@ LEXICON kv_flt9
 
 LEXICON kv_flt9_1
  +N+Fem:^eIUML  F_PLNA_UR ;
+ +N+Fem+Pl+Nom+Def:^eIUMLrinar FemObl_Flag ;
+ +N+Fem+Pl+Acc+Def:^eIUMLrinar FemObl_Flag ;
  +N+Fem:        F_PLDAT   ; ! stongum
  +N+Fem:^eIUMLr F_PLDAT   ; ! stengrum, stengrunum
  +N+Fem:^OA     F_PLGEN   ;
@@ -1436,6 +1434,8 @@ LEXICON kv10 ! dorg
  +N+Fem:        S_F_SGNAD ;
  +N+Fem:        S_F_SGGEN ;
  +N+Fem:^eIUML  F_PLNA_UR ;
+ +N+Fem+Pl+Nom+Def:^eIUMLrinar FemObl_Flag ;
+ +N+Fem+Pl+Acc+Def:^eIUMLrinar FemObl_Flag ;
  +N+Fem:        F_PLDAT   ; ! dorgum
  +N+Fem:^eIUMLr F_PLDAT   ; ! dergrum, dergrunum
  +N+Fem:        F_PLGEN   ;
@@ -1459,6 +1459,8 @@ LEXICON kv11e
 LEXICON kv_flt11
  +N+Fem+Pl+Nom:seingir    DF_NA_PLf ;
  +N+Fem+Pl+Nom:sengur     DF_NA_PLf ;
+ +N+Fem+Pl+Nom+Def:sengrinar FemObl_Flag ;
+ +N+Fem+Pl+Acc+Def:sengrinar FemObl_Flag ;
  +N+Fem+Pl+Acc:seingir    DF_NA_PLf ;
  +N+Fem+Pl+Acc:sengur     DF_NA_PLf ;
  +N+Fem+Pl+Dat:seingju    DF_D_PL ;
@@ -1488,6 +1490,8 @@ LEXICON kv_flt12
 
 LEXICON kv_flt12_1
  +N+Fem:^IUML F_PLNA_UR ;
+ +N+Fem+Pl+Nom+Def:^IUMLrinar FemObl_Flag ;
+ +N+Fem+Pl+Acc+Def:^IUMLrinar FemObl_Flag ;
  +N+Fem:       F_PLDAT   ; ! bókum
  +N+Fem:^IUMLr F_PLDAT   ; ! bøkrum, bøkrunum
  +N+Fem:       F_PLGEN   ;
@@ -1505,6 +1509,8 @@ LEXICON kv13e
 
 LEXICON kv_flt13 ! Alternative way
  +N+Fem+Pl+Nom:merkur DF_NA_PLf ;
+ +N+Fem+Pl+Nom+Def:merkrinar FemObl_Flag ;
+ +N+Fem+Pl+Acc+Def:merkrinar FemObl_Flag ;
  +N+Fem+Pl+Acc:merkur DF_NA_PLf ;
  +N+Fem+Pl+Dat:mørku DF_D_PL ;
  +N+Fem+Pl+Dat:merkru DF_D_PL ;
@@ -1524,6 +1530,8 @@ LEXICON kv14e
 
 LEXICON kv_flt14
  +N+Fem+Pl+Nom:nætur DF_NA_PLf ;
+ +N+Fem+Pl+Nom+Def:nætrinar FemObl_Flag ;
+ +N+Fem+Pl+Acc+Def:nætrinar FemObl_Flag ;
  +N+Fem+Pl+Acc:nætur DF_NA_PLf ;
  +N+Fem+Pl+Dat:náttu DF_D_PL ;
  +N+Fem+Pl+Dat:nætru DF_D_PL ;
@@ -1856,6 +1864,11 @@ LEXICON kv31 ! systir
        +N+Fem+Pl+Acc:%>rar DF_NA_PLf   ;
        +N+Fem+Pl+Dat:%>ru  DF_D_PL     ;
        +N+Fem+Pl+Gen:%>ra  DF_G_PL     ;
+       
+LEXICON kv32_1 ! byrða
+ kv1e	  ;
+ kv_flt32 ;      
+       
 
 LEXICON kv32 ! mýri
   kv32e    ;
@@ -1899,6 +1912,7 @@ LEXICON kv33e
  +N+Fem+Sg+Acc+Indef:       ENDLEX ;
  +N+Fem+Sg+Dat+Indef:       ENDLEX ;
  +N+Fem+Sg+Gen+Indef:       ENDLEX ;
+ +N+Fem+Sg+Gen+Indef:s      ENDLEX ;
    +N+Fem+Sg+Nom+Def:%>n    ENDLEX ;
    +N+Fem+Sg+Acc+Def:%>na   ENDLEX ;
    +N+Fem+Sg+Dat+Def:%>ni   ENDLEX ;

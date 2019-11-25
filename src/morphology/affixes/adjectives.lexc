@@ -30,8 +30,18 @@ LEXICON l1_umlaut ! tungur
  +A: Pl_Fem1  ;
  +A: Sg_Neu1  ;
  +A: Pl_Neu1  ;
- +A: Pos_Def ;
+ +A: Pos_Def  ;
  +A:^IUML Comp_Ri ;
+
+LEXICON l1_ØÆumlaut ! høgur
+ +A:øg Sg_Msc1  ;
+ +A:øg Pl_Msc1  ;
+ +A:øg Sg_Fem1  ;
+ +A:øg Pl_Fem1  ;
+ +A:øg Sg_Neu1  ;
+ +A:øg Pl_Neu1  ;
+ +A:øg Pos_Def  ;
+ +A:æg Comp_Ri  ;
  
 LEXICON l1/12_ll
  l1 ;
@@ -552,8 +562,8 @@ LEXICON l31_2 ! simpil
  +A+Fem+Sg+Dat+Indef:%>lari # ;
  +A+Fem+Sg+Gen+Indef:%>lar # ;
  +A:l Pl_Fem1 ;
- +A+Neu+Sg+Nom+Indef:%>t # ;
- +A+Neu+Sg+Acc+Indef:%>t # ;
+ +A+Neu+Sg+Nom+Indef:%>ilt # ;
+ +A+Neu+Sg+Acc+Indef:%>ilt # ;
  +A+Neu+Sg+Dat+Indef:%>lum # ;
  +A+Neu+Sg+Gen+Indef:%>ils # ;
  +A+Neu+Pl+Nom+Indef:%>il  # ;

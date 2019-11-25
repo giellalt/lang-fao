@@ -1031,18 +1031,6 @@ LEXICON Pl_Msc2_Uuml
  +Msc+Pl+Gen+Indef:%>a 	 # ;
  +Msc+Pl+Gen+Indef:%>ra	 # ;
 
-LEXICON Sg_Msc3
- +Msc+Sg+Nom+Indef:%>in	 # ;
- +Msc+Sg+Acc+Indef:%>nan # ;
- +Msc+Sg+Dat+Indef:%>num # ;
- +Msc+Sg+Gen+Indef:%>ins # ;
-
-LEXICON Sg_Msc4
- +Msc+Sg+Nom+Indef:%>il	 # ;
- +Msc+Sg+Acc+Indef:%>lan # ;
- +Msc+Sg+Dat+Indef:%>lum # ;
- +Msc+Sg+Gen+Indef:%>ils # ;
- 
 LEXICON TEST_msgpl
  +Msc+Sg+Acc+Indef:^EPH%>an # ;
  +Msc+Sg+Dat+Indef:^EPH%>um # ;
@@ -1052,26 +1040,11 @@ LEXICON TEST_msgpl
  +Msc+Pl+Dat+Indef:^EPH%>um # ;
  +Msc+Pl+Gen+Indef:^EPH%>a  # ;
 
-LEXICON TEST_msgpl_UUML
- +Msc+Sg+Acc+Indef:^EPH%>an # ;
- +Msc+Sg+Dat+Indef:^EPH^UUML%>um # ;
- +Msc+Sg+Gen+Indef:%>s # ;
- +Msc+Pl+Nom+Indef:^EPH%>ir # ;
- +Msc+Pl+Acc+Indef:^EPH%>ar # ;
- +Msc+Pl+Dat+Indef:^EPH^UUML%>um # ;
- +Msc+Pl+Gen+Indef:^EPH%>a  # ;
-
 LEXICON Pl_Msc3 
  +Msc+Pl+Nom+Indef:%>nir # ;
  +Msc+Pl+Acc+Indef:%>nar # ;
  +Msc+Pl+Dat+Indef:%>num # ;
  +Msc+Pl+Gen+Indef:%>na  # ;
-
-LEXICON Pl_Msc4 
- +Msc+Pl+Nom+Indef:%>lir # ;
- +Msc+Pl+Acc+Indef:%>lar # ;
- +Msc+Pl+Dat+Indef:%>lum # ;
- +Msc+Pl+Gen+Indef:%>la  # ;
 
 LEXICON Sg_Fem1
  +Fem+Sg+Nom+Indef:%> 	 # ;
@@ -1125,18 +1098,6 @@ LEXICON Pl_Fem2_Uuml
  +Fem+Pl+Gen+Indef:%>a	 # ;
  +Fem+Pl+Gen+Indef:%>ra	 # ;
  
-LEXICON Sg_Fem3
- +Fem+Sg+Nom+Indef:%>in	  # ;
- +Fem+Sg+Acc+Indef:%>na   # ;
- +Fem+Sg+Dat+Indef:%>nari # ;
- +Fem+Sg+Gen+Indef:%>nar  # ;
-
-LEXICON Sg_Fem4
- +Fem+Sg+Nom+Indef:%>il	  # ;
- +Fem+Sg+Acc+Indef:%>la   # ;
- +Fem+Sg+Dat+Indef:%>lari # ;
- +Fem+Sg+Gen+Indef:%>lar  # ;
-
 LEXICON TEST_fsgpl
  +Fem+Sg+Acc+Indef:^EPH%>a   # ;
  +Fem+Sg+Dat+Indef:^EPH%>ari # ;
@@ -1146,26 +1107,11 @@ LEXICON TEST_fsgpl
  +Fem+Pl+Dat+Indef:^EPH%>um # ;
  +Fem+Pl+Gen+Indef:^EPH%>a	 # ;
 
-LEXICON TEST_fsgpl_UUML
- +Fem+Sg+Acc+Indef:^EPH%>a   # ;
- +Fem+Sg+Dat+Indef:^EPH%>ari # ;
- +Fem+Sg+Gen+Indef:^EPH%>ar  # ;
- +Fem+Pl+Nom+Indef:^EPH%>ar # ;
- +Fem+Pl+Acc+Indef:^EPH%>ar # ;
- +Fem+Pl+Dat+Indef:^EPH^UUML%>um # ;
- +Fem+Pl+Gen+Indef:^EPH%>a	 # ;
-
 LEXICON Pl_Fem3 
  +Fem+Pl+Nom+Indef:%>nar # ;
  +Fem+Pl+Acc+Indef:%>nar # ;
  +Fem+Pl+Dat+Indef:%>num # ;
  +Fem+Pl+Gen+Indef:%>na	 # ;
-
-LEXICON Pl_Fem4 
- +Fem+Pl+Nom+Indef:%>lar # ;
- +Fem+Pl+Acc+Indef:%>lar # ;
- +Fem+Pl+Dat+Indef:%>lum # ;
- +Fem+Pl+Gen+Indef:%>la	 # ;
 
 LEXICON Sg_Neu1 
  +Neu+Sg+Nom+Indef:%>t	 # ;
@@ -1195,12 +1141,6 @@ LEXICON Sg_Neu3_Uuml
  +Neu+Sg+Nom+Indef:%>	 # ;
  +Neu+Sg+Acc+Indef:%>	 # ;
  +Neu+Sg+Dat+Indef:^UUML%>um	 # ;
- +Neu+Sg+Gen+Indef:%>s	 # ;
-
-LEXICON Sg_Neu4 
- +Neu+Sg+Nom+Indef:%>tt	 # ;
- +Neu+Sg+Acc+Indef:%>tt	 # ;
- +Neu+Sg+Dat+Indef:%>um	 # ;
  +Neu+Sg+Gen+Indef:%>s	 # ;
 
 LEXICON Pl_Neu1
@@ -1239,41 +1179,6 @@ LEXICON TEST_nsgpl
  +Neu+Pl+Dat+Indef:^EPH%>um	 # ;
  +Neu+Pl+Gen+Indef:^EPH%>a	 # ;
  
-LEXICON TEST_nsgpl_UUML
- +Neu+Sg+Nom+Indef:%>t	 # ;
- +Neu+Sg+Acc+Indef:%>t	 # ;
- +Neu+Sg+Dat+Indef:^EPH^UUML%>um	 # ;
- +Neu+Sg+Gen+Indef:%>s	 # ;
- +Neu+Pl+Nom+Indef:^UUML%>	 # ;
- +Neu+Pl+Acc+Indef:^UUML%> 	 # ;
- +Neu+Pl+Dat+Indef:^EPH^UUML%>um	 # ;
- +Neu+Pl+Gen+Indef:^EPH%>a	 # ;
- 
-LEXICON Sg_Neu5 
- +Neu+Sg+Nom+Indef:%>ið	 # ;
- +Neu+Sg+Acc+Indef:%>ið	 # ;
- +Neu+Sg+Dat+Indef:%>num # ;
- +Neu+Sg+Gen+Indef:%>ins # ;
-
-LEXICON Sg_Neu6 
- +Neu+Sg+Nom+Indef:%>ið	 # ;
- +Neu+Sg+Acc+Indef:%>ið	 # ;
- +Neu+Sg+Dat+Indef:%>lum # ;
- +Neu+Sg+Gen+Indef:%>ils # ;
-
-LEXICON Pl_Neu3
- +Neu+Pl+Nom+Indef:%>in	 # ;
- +Neu+Pl+Acc+Indef:%>in  # ;
- +Neu+Pl+Dat+Indef:%>num # ;
- +Neu+Pl+Gen+Indef:%>na	 # ;
-
-LEXICON Pl_Neu4
- +Neu+Pl+Nom+Indef:%>il	 # ;
- +Neu+Pl+Acc+Indef:%>il  # ;
- +Neu+Pl+Dat+Indef:%>lum # ;
- +Neu+Pl+Gen+Indef:%>la	 # ;
-
-
 
 ! Msc
 LEXICON a_m_sg_n
@@ -1840,17 +1745,9 @@ LEXICON SRi
  +Superl+Neu+Pl+Dat+Def:%>stu # ;
  +Superl+Neu+Pl+Gen+Def:%>stu # ;
 
-LEXICON CS_Ri
- +A+Cmp:t CRi ;
- SRi ;
-
 LEXICON adjcmp1
      +Cmp:ar  indef_cmp_adj_decl    ;
   +Superl:ast indef_superl_adj_decl ;
-
-LEXICON adjcmp2
-    +Cmp:r   indef_cmp_adj_decl    ;
- +Superl:st  indef_superl_adj_decl ;
 
 ! Gender
 

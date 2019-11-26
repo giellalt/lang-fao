@@ -492,19 +492,19 @@ LEXICON l27 ! heiðin
 
 LEXICON l28 ! mikil 
  +A: a_m_sg_n_null ;
- +A: TEST_msgpl ;
+ +A: msgpl ;
  +A: a_f_sg_n_null ;
- +A: TEST_fsgpl ;
- +A: TEST_nsgpl ;
+ +A: fsgpl ;
+ +A: nsgpl ;
  +A:^EPH Pos_Def 	;
  +A:^EPH Comp_Ari 	;
   
 LEXICON l28_2 ! lítil
  +A: a_m_sg_n_null ;
- +A: TEST_msgpl ;
+ +A: msgpl ;
  +A: a_f_sg_n_null ;
- +A: TEST_fsgpl ;
- +A: TEST_nsgpl ;
+ +A: fsgpl ;
+ +A: nsgpl ;
  +A:^EPH Pos_Def 	;
 
 LEXICON MINNI
@@ -535,19 +535,19 @@ LEXICON l29 ! vakur
  
 LEXICON l30 ! tepur
  +A: a_m_sg_n_null ;
- +A: TEST_msgpl ;
+ +A: msgpl ;
  +A: a_f_sg_n_null ;
- +A: TEST_fsgpl ;
- +A: TEST_nsgpl ;
+ +A: fsgpl ;
+ +A: nsgpl ;
  +A:^EPH Pos_Def ;
  +A:^EPH Comp_Ari ;
 
 LEXICON l31 ! trupul
  +A: a_m_sg_n_null ;
- +A: TEST_msgpl ;
+ +A: msgpl ;
  +A: a_f_sg_n_null ;
- +A: TEST_fsgpl ;
- +A: TEST_nsgpl ;
+ +A: fsgpl ;
+ +A: nsgpl ;
  +A:^EPH Pos_Def ;
  +A:^EPH Comp_Ari ;
 
@@ -868,36 +868,146 @@ LEXICON l34_9 ! treffin
  +A+Neu+Pl+Dat+Indef:num  # ;
  +A+Neu+Pl+Gen+Indef:na	  # ;
  +A:%>n Pos_Def  			;
+ 
+LEXICON l35 ! feingin
+ +A+Msc+Sg+Nom+Indef:eingin  # ;
+ +A+Msc+Sg+Acc+Indef:ongnan  # ;
+ +A+Msc+Sg+Dat+Indef:ongnum  # ;
+ +A+Msc+Sg+Gen+Indef:eingins # ;
+ +A+Msc+Pl+Nom+Indef:ongnir  # ;
+ +A+Msc+Pl+Acc+Indef:ongnar  # ;
+ +A+Msc+Pl+Dat+Indef:ongnum  # ;
+ +A+Msc+Pl+Gen+Indef:ongna   # ;
+ +A+Fem+Sg+Nom+Indef:eingin  # ;
+ +A+Fem+Sg+Acc+Indef:ongna   # ;
+ +A+Fem+Sg+Dat+Indef:ongnari # ;
+ +A+Fem+Sg+Gen+Indef:ongnar  # ;
+ +A+Fem+Pl+Nom+Indef:ongnar  # ;
+ +A+Fem+Pl+Acc+Indef:ongnar  # ;
+ +A+Fem+Pl+Dat+Indef:ongnum  # ;
+ +A+Fem+Pl+Gen+Indef:ongna	  # ;
+ +A+Neu+Sg+Nom+Indef:eingið  # ;
+ +A+Neu+Sg+Acc+Indef:eingið  # ;
+ +A+Neu+Sg+Dat+Indef:ongnum  # ;
+ +A+Neu+Sg+Gen+Indef:eingins # ;
+ +A+Neu+Pl+Nom+Indef:eingin  # ;
+ +A+Neu+Pl+Acc+Indef:eingin  # ;
+ +A+Neu+Pl+Dat+Indef:ongnum  # ;
+ +A+Neu+Pl+Gen+Indef:ongna	  # ;
+ +A:ongn 	Pos_Def  			;
+ +A:ongn 	Comp_Ari 		;
 
-LEXICON l35 ! feingin ! not complete, needs umlaut
- +A:^EPH       a_m_sg_n_null    ;
- +A:^EPH       a_non_umlaut_obl ;
- +A:^EPH^UUML a_umlaut         ;
- +A:^EPH       adj_def          ;
- +A:^EPH       adj_def          ;
+LEXICON l35_1 ! teinkin
+ +A+Msc+Sg+Nom+Indef:einkin  # ;
+ +A+Msc+Sg+Acc+Indef:onknan  # ;
+ +A+Msc+Sg+Dat+Indef:onknum  # ;
+ +A+Msc+Sg+Gen+Indef:einkins # ;
+ +A+Msc+Pl+Nom+Indef:onknir  # ;
+ +A+Msc+Pl+Acc+Indef:onknar  # ;
+ +A+Msc+Pl+Dat+Indef:onknum  # ;
+ +A+Msc+Pl+Gen+Indef:onkna   # ;
+ +A+Fem+Sg+Nom+Indef:einkin  # ;
+ +A+Fem+Sg+Acc+Indef:onkna   # ;
+ +A+Fem+Sg+Dat+Indef:onknari # ;
+ +A+Fem+Sg+Gen+Indef:onknar  # ;
+ +A+Fem+Pl+Nom+Indef:onknar  # ;
+ +A+Fem+Pl+Acc+Indef:onknar  # ;
+ +A+Fem+Pl+Dat+Indef:onknum  # ;
+ +A+Fem+Pl+Gen+Indef:onkna	  # ;
+ +A+Neu+Sg+Nom+Indef:einkið  # ;
+ +A+Neu+Sg+Acc+Indef:einkið  # ;
+ +A+Neu+Sg+Dat+Indef:onknum  # ;
+ +A+Neu+Sg+Gen+Indef:einkins # ;
+ +A+Neu+Pl+Nom+Indef:einkin  # ;
+ +A+Neu+Pl+Acc+Indef:einkin  # ;
+ +A+Neu+Pl+Dat+Indef:onknum  # ;
+ +A+Neu+Pl+Gen+Indef:onkna	  # ;
+ +A:onkn 	Pos_Def  			;
+ +A:onkn 	Comp_Ari 		;
+
+LEXICON l35_2 ! sleikin
+ +A+Msc+Sg+Nom+Indef:eikin  # ;
+ +A+Msc+Sg+Acc+Indef:oknan  # ;
+ +A+Msc+Sg+Dat+Indef:oknum  # ;
+ +A+Msc+Sg+Gen+Indef:eikins # ;
+ +A+Msc+Pl+Nom+Indef:oknir  # ;
+ +A+Msc+Pl+Acc+Indef:oknar  # ;
+ +A+Msc+Pl+Dat+Indef:oknum  # ;
+ +A+Msc+Pl+Gen+Indef:okna   # ;
+ +A+Fem+Sg+Nom+Indef:eikin  # ;
+ +A+Fem+Sg+Acc+Indef:okna   # ;
+ +A+Fem+Sg+Dat+Indef:oknari # ;
+ +A+Fem+Sg+Gen+Indef:oknar  # ;
+ +A+Fem+Pl+Nom+Indef:oknar  # ;
+ +A+Fem+Pl+Acc+Indef:oknar  # ;
+ +A+Fem+Pl+Dat+Indef:oknum  # ;
+ +A+Fem+Pl+Gen+Indef:okna	# ;
+ +A+Neu+Sg+Nom+Indef:eikið  # ;
+ +A+Neu+Sg+Acc+Indef:eikið  # ;
+ +A+Neu+Sg+Dat+Indef:oknum  # ;
+ +A+Neu+Sg+Gen+Indef:eikins # ;
+ +A+Neu+Pl+Nom+Indef:eikin  # ;
+ +A+Neu+Pl+Acc+Indef:eikin  # ;
+ +A+Neu+Pl+Dat+Indef:oknum  # ;
+ +A+Neu+Pl+Gen+Indef:okna   # ;
+ +A:okn 	Pos_Def  			;
+ +A:okn 	Comp_Ari 		;
 
 LEXICON l36 ! liðugur
- +A: adj_a   ; !XXX check!
- +A: adj_def ;
- +A: adjcmp1 ;
+ +A+Msc+Sg+Nom+Indef:ðugur # ;
+ +A+Msc+Sg+Acc+Indef:dnan  # ;
+ +A+Msc+Sg+Dat+Indef:dnum  # ;
+ +A+Msc+Sg+Gen+Indef:ðins  # ;
+ +A+Msc+Pl+Nom+Indef:dnir  # ;
+ +A+Msc+Pl+Acc+Indef:dnar  # ;
+ +A+Msc+Pl+Dat+Indef:dnum  # ;
+ +A+Msc+Pl+Gen+Indef:dna   # ;
+ +A+Fem+Sg+Nom+Indef:ðug   # ;
+ +A+Fem+Sg+Acc+Indef:dna   # ;
+ +A+Fem+Sg+Dat+Indef:dnari # ;
+ +A+Fem+Sg+Gen+Indef:dnar  # ;
+ +A+Fem+Pl+Nom+Indef:dnar  # ;
+ +A+Fem+Pl+Acc+Indef:dnar  # ;
+ +A+Fem+Pl+Dat+Indef:dnum  # ;
+ +A+Fem+Pl+Gen+Indef:dna   # ;
+ +A+Neu+Sg+Nom+Indef:ðugt  # ;
+ +A+Neu+Sg+Acc+Indef:ðugt  # ;
+ +A+Neu+Sg+Dat+Indef:dnum  # ;
+ +A+Neu+Sg+Gen+Indef:ðin   # ;
+ +A+Neu+Pl+Nom+Indef:ðug   # ;
+ +A+Neu+Pl+Acc+Indef:ðug   # ;
+ +A+Neu+Pl+Dat+Indef:dnum  # ;
+ +A+Neu+Pl+Gen+Indef:dna   # ;
+ +A:dn 	Pos_Def  		;
+ +A:dn 	Comp_Ari 		;
 
 LEXICON l37 ! grammur
- +A: adj_a   ; !XXX check!
- +A: adj_def ;
- +A: adjcmp1 ;
-
-LEXICON l38 ! kollutur
- +A: adj_a   ; !XXX check!
- +A: adj_def ;
+ +A: Sg_Msc1 ;
+ +A+Msc+Sg+Dat+Indef:^UUML%>um # ;
+ +A: Pl_Msc1 ;
+ +A+Msc+Pl+Dat+Indef:^UUML%>um # ;
+ +A: Sg_Fem1 ;
+ +A+Fem+Sg+Nom+Indef:^UUML%>   # ;
+ +A: Pl_Fem1 ;
+ +A+Fem+Pl+Dat+Indef:^UUML%>um # ;
+ +A: Sg_Neu1 ;
+ +A+Neu+Sg+Dat+Indef:^UUML%>um # ;
+ +A: Pl_Neu1 ;
+ +A+Neu+Pl+Nom+Indef:^UUML%>.  # ;
+ +A+Neu+Pl+Acc+Indef:^UUML%>   # ;
+ +A+Neu+Pl+Dat+Indef:^UUML%>um # ;
+ +A: Pos_Def ;
+ +A: Comp_Ari ;
 
 LEXICON l39/23
  l39 ;
  l23 ;
  
 LEXICON l39 ! settur
- +A: adj_a   ; !XXX check!
+ +A: adj_a   ; 
  +A: adj_def ;
- +A: adjcmp1 ;
+ +A: Comp_Ari ;
+
 
 ! Irregular adjectives
 
@@ -1041,7 +1151,7 @@ LEXICON Pl_Msc2_Uuml
  +Msc+Pl+Gen+Indef:%>a 	 # ;
  +Msc+Pl+Gen+Indef:%>ra	 # ;
 
-LEXICON TEST_msgpl
+LEXICON msgpl
  +Msc+Sg+Acc+Indef:^EPH%>an # ;
  +Msc+Sg+Dat+Indef:^EPH%>um # ;
  +Msc+Sg+Gen+Indef:%>s # ;
@@ -1108,7 +1218,7 @@ LEXICON Pl_Fem2_Uuml
  +Fem+Pl+Gen+Indef:%>a	 # ;
  +Fem+Pl+Gen+Indef:%>ra	 # ;
  
-LEXICON TEST_fsgpl
+LEXICON fsgpl
  +Fem+Sg+Acc+Indef:^EPH%>a   # ;
  +Fem+Sg+Dat+Indef:^EPH%>ari # ;
  +Fem+Sg+Gen+Indef:^EPH%>ar  # ;
@@ -1179,7 +1289,7 @@ LEXICON Pl_Neu2_Uuml
  +Neu+Pl+Gen+Indef:%>a	 # ;
  +Neu+Pl+Gen+Indef:%>ra	 # ;
  
-LEXICON TEST_nsgpl
+LEXICON nsgpl
  +Neu+Sg+Nom+Indef:%>t	 # ;
  +Neu+Sg+Acc+Indef:%>t	 # ;
  +Neu+Sg+Dat+Indef:^EPH%>um	 # ;

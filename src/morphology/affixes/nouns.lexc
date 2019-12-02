@@ -222,8 +222,10 @@ LEXICON k5
  +N+Msc:       W_M_SGACC    ;
  +N+Msc:       W_M_SGDAT    ;
  +N+Msc:       W_M_SGGEN    ;
- +N+Msc:^IUML W_M_PLNOM_UR ;
- +N+Msc:^IUML W_M_PLACC_UR ;
+ +N+Msc:^IUML W_M_PLNOM_UR  ;
+ +N+Msc+Pl+Nom+Def:^IUML%>rinir MscObl_Flag ;
+ +N+Msc:^IUML W_M_PLACC_UR  ;
+ +N+Msc+Pl+Acc+Def:^IUML%>rinar MscObl_Flag ;
  +N+Msc:       W_M_PLDAT    ; ! bóndum
  +N+Msc:r      W_M_PLDAT    ; ! bóndrum
  +N+Msc:       W_M_PLGEN    ;
@@ -1452,20 +1454,23 @@ LEXICON kv11e
  +N+Fem+Sg+Dat:song DF_D_SGf_S ; ! song, songini
  +N+Fem+Sg+Dat+Def:seingini FemObl_Flag ; ! seingini
  +N+Fem+Sg+Gen:songar DF_G_SGf_S ; ! songar, songarinnar
-
-+N+Fem+Sg+Gen:seingjar DF_G_SGf_S ; ! seingjar, seingjarinnar
+ +N+Fem+Sg+Gen:seingjar DF_G_SGf_S ; ! seingjar, seingjarinnar
 
 
 LEXICON kv_flt11
+ +N+Fem+Pl+Nom:songir     DF_NA_PLf ;
  +N+Fem+Pl+Nom:seingir    DF_NA_PLf ;
  +N+Fem+Pl+Nom:sengur     DF_NA_PLf ;
  +N+Fem+Pl+Nom+Def:sengrinar FemObl_Flag ;
  +N+Fem+Pl+Acc+Def:sengrinar FemObl_Flag ;
+ +N+Fem+Pl+Acc:songir     DF_NA_PLf ;
  +N+Fem+Pl+Acc:seingir    DF_NA_PLf ;
  +N+Fem+Pl+Acc:sengur     DF_NA_PLf ;
  +N+Fem+Pl+Dat:seingju    DF_D_PL ;
+ +N+Fem+Pl+Dat:songju     DF_D_PL ;
  +N+Fem+Pl+Dat:sengru     DF_D_PL ; ! sengrum, sengrunum
  +N+Fem+Pl+Gen:seingja    DF_G_PL ;
+ +N+Fem+Pl+Gen:songja    DF_G_PL ;
 
 
 LEXICON kv12 ! glóð
@@ -1875,25 +1880,25 @@ LEXICON kv32 ! mýri
   kv_flt32 ;
 
 LEXICON kv32e
- +N+Fem+Sg+Nom+Indef:%>i       ENDLEX ;
- +N+Fem+Sg+Acc+Indef:%>i       ENDLEX ;
- +N+Fem+Sg+Dat+Indef:%>i       ENDLEX ;
- +N+Fem+Sg+Gen+Indef:%>ar      ENDLEX ;
-   +N+Fem+Sg+Nom+Def:%>in      ENDLEX ;
-   +N+Fem+Sg+Acc+Def:%>ina     ENDLEX ;
-   +N+Fem+Sg+Dat+Def:%>ini     ENDLEX ;
-   +N+Fem+Sg+Gen+Def:%>arinnar ENDLEX ;
+ +N+Fem+Sg+Nom+Indef:%>i       FemObl_Flag ;
+ +N+Fem+Sg+Acc+Indef:%>i       FemObl_Flag ;
+ +N+Fem+Sg+Dat+Indef:%>i       FemObl_Flag ;
+ +N+Fem+Sg+Gen+Indef:%>ar      FemObl_Flag ;
+   +N+Fem+Sg+Nom+Def:%>in      FemObl_Flag ;
+   +N+Fem+Sg+Acc+Def:%>ina     FemObl_Flag ;
+   +N+Fem+Sg+Dat+Def:%>ini     FemObl_Flag ;
+   +N+Fem+Sg+Gen+Def:%>arinnar FemObl_Flag ;
 
 
 LEXICON kv_flt32
- +N+Fem+Pl+Nom+Indef:%>ar    ENDLEX ;
- +N+Fem+Pl+Acc+Indef:%>ar    ENDLEX ;
- +N+Fem+Pl+Dat+Indef:%>um    ENDLEX ;
- +N+Fem+Pl+Gen+Indef:%>a     ENDLEX ;
-   +N+Fem+Pl+Nom+Def:%>arnar ENDLEX ;
-   +N+Fem+Pl+Acc+Def:%>arnar ENDLEX ;
-   +N+Fem+Pl+Dat+Def:%>unum  ENDLEX ;
-   +N+Fem+Pl+Gen+Def:%>anna  ENDLEX ;
+ +N+Fem+Pl+Nom+Indef:%>ar    FemObl_Flag ;
+ +N+Fem+Pl+Acc+Indef:%>ar    FemObl_Flag ;
+ +N+Fem+Pl+Dat+Indef:%>um    FemObl_Flag ;
+ +N+Fem+Pl+Gen+Indef:%>a     FemObl_Flag ;
+   +N+Fem+Pl+Nom+Def:%>arnar FemObl_Flag ;
+   +N+Fem+Pl+Acc+Def:%>arnar FemObl_Flag ;
+   +N+Fem+Pl+Dat+Def:%>unum  FemObl_Flag ;
+   +N+Fem+Pl+Gen+Def:%>anna  FemObl_Flag ;
 
 LEXICON kv33e/h24e
  kv33e ;
@@ -1908,21 +1913,21 @@ LEXICON kv33 ! gleði
   kv_flt33 ;
 
 LEXICON kv33e
- +N+Fem+Sg+Nom+Indef:       ENDLEX ;
- +N+Fem+Sg+Acc+Indef:       ENDLEX ;
- +N+Fem+Sg+Dat+Indef:       ENDLEX ;
- +N+Fem+Sg+Gen+Indef:       ENDLEX ;
- +N+Fem+Sg+Gen+Indef:s      ENDLEX ;
-   +N+Fem+Sg+Nom+Def:%>n    ENDLEX ;
-   +N+Fem+Sg+Acc+Def:%>na   ENDLEX ;
-   +N+Fem+Sg+Dat+Def:%>ni   ENDLEX ;
-   +N+Fem+Sg+Gen+Def:%>nnar ENDLEX ;
+ +N+Fem+Sg+Nom+Indef:       FemObl_Flag ;
+ +N+Fem+Sg+Acc+Indef:       FemObl_Flag ;
+ +N+Fem+Sg+Dat+Indef:       FemObl_Flag ;
+ +N+Fem+Sg+Gen+Indef:       FemObl_Flag ;
+ +N+Fem+Sg+Gen+Indef:s      FemObl_Flag ;
+   +N+Fem+Sg+Nom+Def:%>n    FemObl_Flag ;
+   +N+Fem+Sg+Acc+Def:%>na   FemObl_Flag ;
+   +N+Fem+Sg+Dat+Def:%>ni   FemObl_Flag ;
+   +N+Fem+Sg+Gen+Def:%>nnar FemObl_Flag ;
 
 LEXICON kv_flt33
- +N+Fem+Pl+Nom+Indef:%>r    ENDLEX ;
- +N+Fem+Pl+Acc+Indef:%>r    ENDLEX ;
-   +N+Fem+Pl+Nom+Def:%>rnar ENDLEX ;
-   +N+Fem+Pl+Acc+Def:%>rnar ENDLEX ;
+ +N+Fem+Pl+Nom+Indef:%>r    FemObl_Flag ;
+ +N+Fem+Pl+Acc+Indef:%>r    FemObl_Flag ;
+   +N+Fem+Pl+Nom+Def:%>rnar FemObl_Flag ;
+   +N+Fem+Pl+Acc+Def:%>rnar FemObl_Flag ;
 
 LEXICON kv34 ! kraft
   kv34e    ;
@@ -1938,25 +1943,35 @@ LEXICON kv_flt34
  +N+Fem:^IUML F_PLGEN   ;
 
 LEXICON kv35
- +N+Fem+Sg+Nom+Indef:ong      		ENDLEX ;
- +N+Fem+Sg+Acc+Indef:ong       		ENDLEX ;
- +N+Fem+Sg+Dat+Indef:ong       		ENDLEX ;
- +N+Fem+Sg+Gen+Indef:eingjar      	ENDLEX ;
-   +N+Fem+Sg+Nom+Def:eingin      	ENDLEX ;
-   +N+Fem+Sg+Acc+Def:eingina     	ENDLEX ;
-   +N+Fem+Sg+Dat+Def:eingini     	ENDLEX ;
-   +N+Fem+Sg+Nom+Def:ongin      	ENDLEX ;
-   +N+Fem+Sg+Acc+Def:ongina     	ENDLEX ;
-   +N+Fem+Sg+Dat+Def:ongini     	ENDLEX ;
-   +N+Fem+Sg+Gen+Def:eingjarinnar 	ENDLEX ;
- +N+Fem+Pl+Nom+Indef:eingir     	ENDLEX ;
- +N+Fem+Pl+Acc+Indef:eingir    		ENDLEX ;
- +N+Fem+Pl+Dat+Indef:eingjum    	ENDLEX ;
- +N+Fem+Pl+Gen+Indef:eingja     	ENDLEX ;
-   +N+Fem+Pl+Nom+Def:eingirnar 		ENDLEX ;
-   +N+Fem+Pl+Acc+Def:eingirnar 		ENDLEX ;
-   +N+Fem+Pl+Dat+Def:eingjunum  	ENDLEX ;
-   +N+Fem+Pl+Gen+Def:eingjanna  	ENDLEX ;
+ +N+Fem+Sg+Nom+Indef:ong      		FemObl_Flag ;
+ +N+Fem+Sg+Acc+Indef:ong       		FemObl_Flag ;
+ +N+Fem+Sg+Dat+Indef:ong       		FemObl_Flag ;
+ +N+Fem+Sg+Gen+Indef:eingjar      	FemObl_Flag ;
+ +N+Fem+Sg+Gen+Indef:ongjar      	FemObl_Flag ; 
+   +N+Fem+Sg+Nom+Def:eingin      	FemObl_Flag ;
+   +N+Fem+Sg+Acc+Def:eingina     	FemObl_Flag ;
+   +N+Fem+Sg+Dat+Def:eingini     	FemObl_Flag ;
+   +N+Fem+Sg+Nom+Def:ongin      	FemObl_Flag ;
+   +N+Fem+Sg+Acc+Def:ongina     	FemObl_Flag ;
+   +N+Fem+Sg+Dat+Def:ongini     	FemObl_Flag ;
+   +N+Fem+Sg+Gen+Def:eingjarinnar 	FemObl_Flag ;
+   +N+Fem+Sg+Gen+Def:ongjarinnar 	FemObl_Flag ;
+ +N+Fem+Pl+Nom+Indef:eingir     	FemObl_Flag ;
+ +N+Fem+Pl+Acc+Indef:eingir    		FemObl_Flag ;
+ +N+Fem+Pl+Dat+Indef:eingjum    	FemObl_Flag ;
+ +N+Fem+Pl+Gen+Indef:eingja     	FemObl_Flag ;
+   +N+Fem+Pl+Nom+Def:eingirnar 		FemObl_Flag ;
+   +N+Fem+Pl+Acc+Def:eingirnar 		FemObl_Flag ;
+   +N+Fem+Pl+Dat+Def:eingjunum  	FemObl_Flag ;
+   +N+Fem+Pl+Gen+Def:eingjanna  	FemObl_Flag ;
+ +N+Fem+Pl+Nom+Indef:ongir     		FemObl_Flag ;
+ +N+Fem+Pl+Acc+Indef:ongir    		FemObl_Flag ;
+ +N+Fem+Pl+Dat+Indef:ongjum    		FemObl_Flag ;
+ +N+Fem+Pl+Gen+Indef:ongja     		FemObl_Flag ;
+   +N+Fem+Pl+Nom+Def:ongirnar 		FemObl_Flag ;
+   +N+Fem+Pl+Acc+Def:ongirnar 		FemObl_Flag ;
+   +N+Fem+Pl+Dat+Def:ongjunum  		FemObl_Flag ;
+   +N+Fem+Pl+Gen+Def:ongjanna  		FemObl_Flag ;
    
 LEXICON kv36/2
   kv36 ;
@@ -1984,24 +1999,24 @@ LEXICON kv37
   kv_flt37	;
   
 LEXICON kv37e
- +N+Fem+Sg+Nom+Indef:     	   ENDLEX ;
- +N+Fem+Sg+Acc+Indef:          ENDLEX ;
- +N+Fem+Sg+Dat+Indef:          ENDLEX ;
- +N+Fem+Sg+Gen+Indef:%>ar      ENDLEX ;
-   +N+Fem+Sg+Nom+Def:%>in      ENDLEX ;
-   +N+Fem+Sg+Acc+Def:%>nna     ENDLEX ;
-   +N+Fem+Sg+Dat+Def:%>nni     ENDLEX ;
-   +N+Fem+Sg+Gen+Def:%>arinnar ENDLEX ;
+ +N+Fem+Sg+Nom+Indef:     	   FemObl_Flag ;
+ +N+Fem+Sg+Acc+Indef:          FemObl_Flag ;
+ +N+Fem+Sg+Dat+Indef:          FemObl_Flag ;
+ +N+Fem+Sg+Gen+Indef:%>ar      FemObl_Flag ;
+   +N+Fem+Sg+Nom+Def:%>in      FemObl_Flag ;
+   +N+Fem+Sg+Acc+Def:%>nna     FemObl_Flag ;
+   +N+Fem+Sg+Dat+Def:%>nni     FemObl_Flag ;
+   +N+Fem+Sg+Gen+Def:%>arinnar FemObl_Flag ;
 
 LEXICON kv_flt37
- +N+Fem+Pl+Nom+Indef:%>ir    ENDLEX ;
- +N+Fem+Pl+Acc+Indef:%>ir    ENDLEX ;
- +N+Fem+Pl+Dat+Indef:%>um    ENDLEX ;
- +N+Fem+Pl+Gen+Indef:%>a     ENDLEX ;
-   +N+Fem+Pl+Nom+Def:%>irnar ENDLEX ;
-   +N+Fem+Pl+Acc+Def:%>irnar ENDLEX ;
-   +N+Fem+Pl+Dat+Def:%>unum  ENDLEX ;
-   +N+Fem+Pl+Gen+Def:%>anna  ENDLEX ;
+ +N+Fem+Pl+Nom+Indef:%>ir    FemObl_Flag ;
+ +N+Fem+Pl+Acc+Indef:%>ir    FemObl_Flag ;
+ +N+Fem+Pl+Dat+Indef:%>um    FemObl_Flag ;
+ +N+Fem+Pl+Gen+Indef:%>a     FemObl_Flag ;
+   +N+Fem+Pl+Nom+Def:%>irnar FemObl_Flag ;
+   +N+Fem+Pl+Acc+Def:%>irnar FemObl_Flag ;
+   +N+Fem+Pl+Dat+Def:%>unum  FemObl_Flag ;
+   +N+Fem+Pl+Gen+Def:%>anna  FemObl_Flag ;
 
 LEXICON kv38 ! negl
   kv2 ;

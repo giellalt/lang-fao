@@ -1175,6 +1175,10 @@ LEXICON k51
  +N+Msc:nn S_M_PLACC ;
  +N+Msc:nn S_M_PLDAT ;
  +N+Msc:nn S_M_PLGEN ;
+ 
+LEXICON k52/kv2_1
+ k52   ;
+ kv2_1 ; 
 
 LEXICON k52 
 !! __@LEXNAME@__ for  primus
@@ -1253,10 +1257,18 @@ LEXICON kv2e/17e
   kv2e  ;
   kv17e ;
 
+LEXICON kv2_1 ! aktión
+  kv2_1e  ;
+  kv_flt2 ;  
+
+LEXICON kv2_1e
+  +N+Fem: S_F_SGNAD ;
+  +N+Fem: S_N_SGG_s ;
+
 LEXICON kv2 ! bygd
   kv2e    ;
   kv_flt2 ;
-
+  
 LEXICON kv_bd2e
   kv2e ;
 
@@ -1455,6 +1467,7 @@ LEXICON kv11e
  +N+Fem+Sg+Dat+Def:seingini FemObl_Flag ; ! seingini
  +N+Fem+Sg+Gen:songar DF_G_SGf_S ; ! songar, songarinnar
  +N+Fem+Sg+Gen:seingjar DF_G_SGf_S ; ! seingjar, seingjarinnar
+ +N+Fem+Sg+Gen:songjar DF_G_SGf_S ; ! songjar, songjarinnar
 
 
 LEXICON kv_flt11

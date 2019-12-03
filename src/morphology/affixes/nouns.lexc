@@ -754,7 +754,7 @@ LEXICON k30
   k30e    ;
   k_flt30 ;
 
-LEXICON  k30e
+LEXICON k30e
 !! ''@LEXNAME@'' for sg
  +N+Msc: S_M_SGNOM    ;
  +N+Msc: S_M_SGACC    ;
@@ -764,8 +764,11 @@ LEXICON  k30e
 LEXICON k_flt30
 !! ''@LEXNAME@'' for pl
  +N+Msc:^IUML S_M_PLNOM_UR ;
+ +N+Msc+Pl+Nom+Def:^IUML%>rinar MscObl_Flag ; ! føtrinar
  +N+Msc:^IUML S_M_PLACC_UR ;
+ +N+Msc+Pl+Acc+Def:^IUML%>rinar MscObl_Flag ;
  +N+Msc:       S_M_PLDAT    ;
+ +N+Msc+Pl+Dat+Def:^IUML%>runum MscObl_Flag ;
  +N+Msc:       S_M_PLGEN    ;
 
 LEXICON k31 
@@ -835,6 +838,10 @@ LEXICON k_flt34
  +N+Msc:    S_M_PLACC_IR ;
  +N+Msc:%>j S_M_PLDAT    ;
  +N+Msc:%>j S_M_PLGEN    ;
+ +N+Msc:^EIO    S_M_PLNOM_IR ;
+ +N+Msc:^EIO    S_M_PLACC_IR ;
+ +N+Msc:^EIO%>j S_M_PLDAT    ;
+ +N+Msc:^EIO%>j S_M_PLGEN    ;
 
 
 !LEXICON k35 ! bonkur (now k34)
@@ -1333,7 +1340,7 @@ LEXICON kv_flt5
  +N+Fem:      F_PLNA_IR ;
  +N+Fem:      F_PLDAT   ;
  +N+Fem:^OEA F_PLGEN   ;
-
+ 
 LEXICON kv6/2
   kv6 ;
   kv2 ;
@@ -1351,6 +1358,10 @@ LEXICON kv6e/h16e
  kv6e ;
  h16e ;
  
+LEXICON kv6_1
+  kv6_1e  ;
+  kv_flt6 ;
+
 LEXICON kv6e
  +N+Fem: S_F_SGNAD ;
  +N+Fem: S_F_SGGEN ;
@@ -1360,7 +1371,10 @@ LEXICON kv_flt6
  +N+Fem: F_PLDAT   ;
  +N+Fem: F_PLGEN   ;
 
- 
+LEXICON kv6_1e
+ +N+Fem: S_F_SGNAD ;
+ +N+Fem: S_N_SGG_s ;
+
 LEXICON kv_OY
  +N+Fem+Sg+Nom+Indef:      FemObl_Flag ; !oy, oyggin
    +N+Fem+Sg+Nom+Def:ggin  FemObl_Flag ;

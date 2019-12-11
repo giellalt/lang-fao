@@ -14,6 +14,7 @@ LEXICON s1
                standard_ir ; ! Verbal forms
  +V+PrfPrc:%>d p7          ; ! Adjectival forms
 
+
 LEXICON s2
 !! __@LEXNAME@__ keypa
                standard_ir_t ;
@@ -55,8 +56,21 @@ LEXICON s6
 
 LEXICON s7
 !! __@LEXNAME@__ rista
-               standard_ir ;
- +V+PrfPrc:%>d p5          ;
+         +V+Inf:a    PASS  ;
+ +V+Ind+Prs+1Sg:i    PASS  ;
+ +V+Ind+Prs+2Sg:ir   PASS  ;
+ +V+Ind+Prs+3Sg:ir   PASS  ;
+  +V+Ind+Prs+Pl:a    PASS  ;
+ +V+Ind+Prt+1Sg:i    PASS  ;
+ +V+Ind+Prt+2Sg:i    PASS  ;
+ +V+Ind+Prt+3Sg:i    PASS  ;
+  +V+Ind+Prt+Pl:u    PASS  ;
+      +V+Imp+Sg:     PASS  ;
+      +V+Imp+Pl:ið   PASS  ;
+      +V+PrsPrc:andi VANDI ;
+      +V+PrfPrc:ur   p5	 ;
+         +V+Sup:     PASS  ;
+        +V+Subj:i	   #	 ;
 
 LEXICON s8
 !! __@LEXNAME@__ kenna
@@ -74,9 +88,16 @@ LEXICON s9
 
 LEXICON s10
 !! __@LEXNAME@__ fylgja
-               standard_j_ir ;
+    jinf       ;
+    pres_ir_sg ;
+ :j pres_pl    ;
+    sup        ;
+                 prt_d		 ;
  +V+PrfPrc:%>d p7            ;
-
+			   imp			 ;
+ +V+PrsPrc:%>jandi VANDI             ;
+        +A:%>jandi HOMONYM_ADJ_FORMS ;
+			   
 LEXICON s11 !
 !! __@LEXNAME@__  roykja
                standard_j_ir ;
@@ -84,9 +105,16 @@ LEXICON s11 !
 
 LEXICON s12 !
 !! __@LEXNAME@__ boyggja
-               standard_j_ir ;
+    jinf       ;
+    pres_ir_sg ;
+ :j pres_pl    ;
+    sup        ;
+                 prt_d		 ;
  +V+PrfPrc:%>d p7            ;
-
+			   imp			 ;
+ +V+PrsPrc:%>jandi VANDI             ;
+        +A:%>jandi HOMONYM_ADJ_FORMS ;
+			   
 LEXICON s13 !
 !! __@LEXNAME@__ søkkja
                standard_j_ir ;
@@ -174,11 +202,17 @@ LEXICON s22 !
 LEXICON s23 !
 !! __@LEXNAME@__ smyrja
  :yr    jinf       ;
- :yr    pres_null  ;
- :ur    prt_d      ;
- :yr    imp_prsptc ;
- :yr    sup        ;
- :ur%>d p7         ;
+ +V+Ind+Prs+1Sg:%>yrji PASS    ;
+ +V+Ind+Prs+2Sg:%>yr PASS    ;
+ +V+Ind+Prs+2Sg:%>yrt PASS    ;
+ +V+Ind+Prs+3Sg:%>yr PASS    ;
+ +V+Ind+Prs+Pl:%>ja PASS ;
+ :ur    prt_d      	;
+ :yr    impsg		;
+ :yrj	imppl		;
+ :yrj	prsptc		;
+ :ur    sup			;
+ :ur%>d p7          ;
 
 LEXICON s24 !
 !! __@LEXNAME@__ flysa
@@ -1079,6 +1113,7 @@ LEXICON pres_ir_sg
  +V+Ind+Prs+1Sg:%>i  PASS ;
  +V+Ind+Prs+2Sg:%>ir PASS ;
  +V+Ind+Prs+3Sg:%>ir PASS ;
+ +V+Subj+Prs+3Sg:%>i PASS ;
 
 LEXICON pres_ar
 !! __@LEXNAME@__ 
@@ -1716,6 +1751,11 @@ LEXICON p5
   adj_a     ;
   adj_r_gen ;
   l5        ;
+
+LEXICON p5x
+!! __@LEXNAME@__ 
+  l5        ;
+
 
 LEXICON p6
 !! __@LEXNAME@__ 

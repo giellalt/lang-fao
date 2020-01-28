@@ -17,8 +17,8 @@ LEXICON s1
 
 LEXICON s2
 !! __@LEXNAME@__ keypa
-               standard_ir_t ;
- +V+PrfPrc:%>t p39           ;
+               	standard_ir_t ;
+ 				p39           ;
 
 LEXICON SETA
 !! __@LEXNAME@__ 
@@ -50,22 +50,9 @@ LEXICON s6
  +V+PrfPrc:%>d p7          ;
 
 LEXICON s7
-!! __@LEXNAME@__ rista
-         +V+Inf:a    PASS  ;
- +V+Ind+Prs+1Sg:i    PASS  ;
- +V+Ind+Prs+2Sg:ir   PASS  ;
- +V+Ind+Prs+3Sg:ir   PASS  ;
-  +V+Ind+Prs+Pl:a    PASS  ;
- +V+Ind+Prt+1Sg:i    PASS  ;
- +V+Ind+Prt+2Sg:i    PASS  ;
- +V+Ind+Prt+3Sg:i    PASS  ;
-  +V+Ind+Prt+Pl:u    PASS  ;
-      +V+Imp+Sg:     PASS  ;
-      +V+Imp+Pl:ið   PASS  ;
-      +V+PrsPrc:andi VANDI ;
-      +V+PrfPrc:ur   p5	 ;
-         +V+Sup:     PASS  ;
-        +V+Subj:i	   #	 ;
+!! __@LEXNAME@__ gista
+				standard_ir_t ;
+				p5			  ;
 
 LEXICON s8
 !! __@LEXNAME@__ kenna
@@ -74,14 +61,10 @@ LEXICON s8
 
 LEXICON s9
 !! __@LEXNAME@__ klippa
-               inf        ;
-               pres_ir    ;
-               prt_t      ;
-               imp_prsptc ;
-               sup        ;
- +V+PrfPrc:%>t p5         ;
+				standard_ir_t ;
+				p5			  ;
 
-LEXICON s10
+ LEXICON s10
 !! __@LEXNAME@__ fylgja
     jinf       ;
     pres_ir_sg ;
@@ -95,8 +78,15 @@ LEXICON s10
 			   
 LEXICON s11 !
 !! __@LEXNAME@__  roykja
-               standard_j_ir ;
+    jinf       ;
+    pres_ir_sg ;
+ :j pres_pl    ;
+    sup        ;
+                 prt_t		 ;
  +V+PrfPrc:%>t p5            ;
+			   imp			 ;
+ +V+PrsPrc:%>jandi VANDI             ;
+        +A:%>jandi HOMONYM_ADJ_FORMS ;
 
 LEXICON s12 !
 !! __@LEXNAME@__ boyggja
@@ -112,8 +102,15 @@ LEXICON s12 !
 			   
 LEXICON s13 !
 !! __@LEXNAME@__ søkkja
-               standard_j_ir ;
- +V+PrfPrc:%>d p5            ;
+					    jinf       	 ;
+    					pres_ir_sg 	 ;
+					 :j pres_pl    	 ;
+    				  sup_t        	 ;
+                 	  prt_t	   	   	 ;
+ 					 p5            	 ;
+			   		 imp		  	 ;
+ +V+PrsPrc:%>jandi VANDI             ;
+        +A:%>jandi HOMONYM_ADJ_FORMS ;
 
 LEXICON s14 !
 !! __@LEXNAME@__ heingja
@@ -122,8 +119,7 @@ LEXICON s14 !
            :%^EIO    prt_d      ;
            :%^EIO    imp_prsptc ;
            :%^EIO    sup        ;
-! +V+PrfPrc:%>d      p7         ;
-  +V+PrfPrc:%^EIO%>d p7         ; !XXX check steingdir/stongdir
+  +V+PrfPrc:%^EIO%>d p7         ; 
 
 LEXICON s15 !
 !! __@LEXNAME@__ skeinkja
@@ -1041,7 +1037,7 @@ LEXICON standard_ir_t
 !! __@LEXNAME@__ 
    inf                  ;
    prt_t                ; !XXX skilti
-   ir_verb              ;
+   ir_verb_t              ;
 
 !LEXICON standard_j_ir_t
 !  prt_t                ; !XXX skilti
@@ -1073,6 +1069,11 @@ LEXICON ir_verb
   imp_prsptc ;
   sup        ;
 
+LEXICON ir_verb_t
+!! __@LEXNAME@__ 
+  pres_ir    ;
+  imp_prsptc ;
+  sup_t        ;
 
 !! !!Suffix lexica
 ! =============
@@ -1285,6 +1286,11 @@ LEXICON sup
 !! __@LEXNAME@__ 
     +V+Sup:%>t     PASS ;
  +V+PrfPrc:%>d%>ur PASS ;
+
+LEXICON sup_t
+!! __@LEXNAME@__ 
+    +V+Sup:%>t     PASS ;
+ +V+PrfPrc:%>t%>ur PASS ;
 
 LEXICON sup_tt
 !! __@LEXNAME@__ 

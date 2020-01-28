@@ -73,8 +73,7 @@ LEXICON s9
                  prt_d		 ;
  +V+PrfPrc:%>d p7            ;
 			   imp			 ;
- +V+PrsPrc:%>jandi VANDI             ;
-        +A:%>jandi HOMONYM_ADJ_FORMS ;
+		   :j 		prsptc		 ;
 			   
 LEXICON s11 !
 !! __@LEXNAME@__  roykja
@@ -85,8 +84,7 @@ LEXICON s11 !
                  prt_t		 ;
  +V+PrfPrc:%>t p5            ;
 			   imp			 ;
- +V+PrsPrc:%>jandi VANDI             ;
-        +A:%>jandi HOMONYM_ADJ_FORMS ;
+		   :j 		prsptc		 ;
 
 LEXICON s12 !
 !! __@LEXNAME@__ boyggja
@@ -97,65 +95,94 @@ LEXICON s12 !
                  prt_d		 ;
  +V+PrfPrc:%>d p7            ;
 			   imp			 ;
- +V+PrsPrc:%>jandi VANDI             ;
-        +A:%>jandi HOMONYM_ADJ_FORMS ;
+		   :j 		prsptc		 ;
 			   
 LEXICON s13 !
 !! __@LEXNAME@__ søkkja
-					    jinf       	 ;
-    					pres_ir_sg 	 ;
-					 :j pres_pl    	 ;
-    				  sup_t        	 ;
-                 	  prt_t	   	   	 ;
- 					 p5            	 ;
-			   		 imp		  	 ;
- +V+PrsPrc:%>jandi VANDI             ;
-        +A:%>jandi HOMONYM_ADJ_FORMS ;
+					jinf       	 ;
+    				pres_ir_sg 	 ;
+  		   :j 		pres_pl   	 ;
+    				sup_t        ;
+              		prt_t	   	 ;
+ 					p5           ;
+			   		imp		  	 ;
+		   :j 		prsptc		 ;
 
 LEXICON s14 !
 !! __@LEXNAME@__ heingja
                      jinf       ;
-                     pres_ir    ;
+           :%^EIO    jinf       ;
+                     pres_ir_sg ;
+           :%^EIO	 pres_ir_sg ;
+           :j 		 pres_pl	;
+           :%^EIO%>j pres_pl	;
            :%^EIO    prt_d      ;
-           :%^EIO    imp_prsptc ;
+           :%^EIO    imp 		;
+           			 imppl 		;
            :%^EIO    sup        ;
   +V+PrfPrc:%^EIO%>d p7         ; 
-
+		   :j 		 prsptc		;
+		   :%^EIO%>j prsptc		;
+ 
 LEXICON s15 !
 !! __@LEXNAME@__ skeinkja
-                 jinf       ;
-                 pres_ir    ;
-          :%^EIO prt_d      ;
-          :%^EIO imp_prsptc ;
-          :%^EIO sup        ;
- +V+PrfPrc:%>d   p5         ;
+                     jinf       ;
+           :%^EIO    jinf       ;
+                     pres_ir_sg ;
+           :%^EIO	 pres_ir_sg ;
+           :j 		 pres_pl	;
+           :%^EIO%>j pres_pl	;
+           :%^EIO    prt_t      ;
+           :%^EIO    imp 		;
+           			 imppl 		;
+           :%^EIO    sup_t      ;
+  					 p5         ; 
+		   :j 		 prsptc		;
+		   :%^EIO%>j prsptc		;
+
+LEXICON s15_2 !
+!! __@LEXNAME@__ steikja
+                     jinf       ;
+                     pres_ir_sg ;
+           :j 		 pres_pl	;
+           :%^EIO    prt_t      ;
+           		     imp 		;
+           :%^EIO    sup_t      ;
+  					 p5         ; 
+		   :j 		 prsptc		;
 
 LEXICON s16 !
 !! __@LEXNAME@__ flekja
-                 jinf       ;
-                 pres_ir    ;
-          :%^WVV prt_d      ;
-          :%^WVV imp_prsptc ;
-          :%^WVV sup        ;
- +V+PrfPrc:%>d   p5         ;
+                 	jinf       ;
+                 	pres_ir_sg ;
+          :j 		pres_pl	   ;
+          :%^WVV 	prt_d      ;
+           			imp		   ;
+          :j 		prsptc 	   ;
+          :%^WVV 	sup        ;
+    				p5         ;
 
 LEXICON s17 !
 !! __@LEXNAME@__ berja
-                 jinf       ;
-                 pres_ir    ;
-          :%^WVV prt_d      ;
-          :%^WVV imp_prsptc ;
-          :%^WVV sup        ;
- +V+PrfPrc:%>d   p7         ;
+                 	jinf       ;
+                 	pres_jir   ;
+          :%^WVV 	prt_d      ;
+          :j 		impsg	   ;
+ +V+Imp+Pl:jið		PASS       ;
+          :j		prsptc	   ;
+          :%^WVV 	sup        ;
+ 			     	p7         ;
 
 LEXICON s18 !
 !! __@LEXNAME@__ krevja
                  jinf       ;
-                 pres_ur    ;
+                 pres_ur_j  ;
           :%^WVV prt_d      ;
-          :%^WVV imp_prsptc ;
+          	 	 impsg		;
+ +V+Imp+Pl:jið	 PASS       ;
+          :j	 prsptc 	;
           :%^WVV sup        ;
- +V+PrfPrc:%>d   p7         ;
+ 			     p7         ;
 
 LEXICON s19 !
 !! __@LEXNAME@__ dylja
@@ -1104,6 +1131,13 @@ LEXICON pres_ir
   pres_ir_sg ;
   pres_pl    ;
 
+LEXICON pres_jir
+!! __@LEXNAME@__ 
+ +V+Ind+Prs+1Sg:%>ji  PASS ;
+ +V+Ind+Prs+2Sg:%>jir PASS ;
+ +V+Ind+Prs+3Sg:%>jir PASS ;
+  +V+Ind+Prs+Pl:%>ja  PASS ;
+
 LEXICON pres_ir_sg
 !! __@LEXNAME@__ 
  +V+Ind+Prs+1Sg:%>i  PASS ;
@@ -1130,7 +1164,7 @@ LEXICON pres_ur_j
  +V+Ind+Prs+1Sg:%>ji PASS    ;
  +V+Ind+Prs+2Sg:%>ur PASS    ;
  +V+Ind+Prs+3Sg:%>ur PASS    ;
-                     pres_pl ;
+               :j    pres_pl ;
 
 LEXICON pres_null
 !! __@LEXNAME@__ 

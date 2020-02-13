@@ -231,10 +231,13 @@ LEXICON s22_1 !
 !! __@LEXNAME@__ ýðja
           :ýð   jinf       ;
           :ýð   pres_ur_j2 ;
+          :ýð	pres_ir    ;
           :u 	prt_dd     ;
+          :ý 	prt_dd     ;
           :ýð 	imp		   ;
           :ýðj	prsptc 	   ;
           :u 	sup_tt     ;
+          :ý 	sup_tt     ;
  				p18        ;
 
 LEXICON s23 !
@@ -386,24 +389,27 @@ LEXICON s34 !
 
 LEXICON s35 !
 !! __@LEXNAME@__ bíta
-                     inf        ;
-                     pres_ur    ;
-          :%^AB1     prt_null_s ;
-          :%^AB2   	 prt_u_p    ;
-                   	 imp_prsptc ;
-          :%^VSH  	 sup_null   ;
- +V+PrfPrc:%^VSH%>in PASS		;
- 					 p26        ;
+                     	 inf        ;
+                     	 pres_ur    ;
+          	  :%^AB1     prt_null_s ;
++V+Ind+Prt+2Sg:%^AB1     PASS 		;
+          	  :%^AB2   	 prt_u_p    ;
+          	         	 imp_prsptc ;
+          	  :%^VSH  	 sup_null   ;
+ 	 +V+PrfPrc:%^VSH%>in PASS		;
+ 						 p26        ;
 
 LEXICON s36 !
 !! __@LEXNAME@__ svíkja
-          :j       inf        ;
-                   pres_ur    ;
-          :%^AB1   prt_null_s ;
-          :%^AB2   prt_u_p    ;
-          :j       imp_prsptc ;
-          :%^VSH   sup_null   ;
- +V+PrfPrc:%^VSHin p26        ;
+          	  :         jinf        ;
+               	   	    pres_ur_j2  ;
+          	  :%^AB1    prt_null_s  ;
++V+Ind+Prt+2Sg:%^AB1    PASS 		;
+          	  :%^AB2    prt_u_p     ;
+          	  :         imp 		;
+          	  :j		prsptc  	;
+          	  :%^VSH    sup_null    ;
+ 	 +V+PrfPrc:%^VSHin  p26         ;
 
 
 LEXICON s37 !

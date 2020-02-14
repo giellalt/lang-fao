@@ -231,7 +231,7 @@ LEXICON s22_1 !
 !! __@LEXNAME@__ ýðja
           :ýð   jinf       ;
           :ýð   pres_ur_j2 ;
-          :ýð	pres_ir    ;
+          :ýð	pres_ir_j2 ;
           :u 	prt_dd     ;
           :ý 	prt_dd     ;
           :ýð 	imp		   ;
@@ -392,7 +392,6 @@ LEXICON s35 !
                      	 inf        ;
                      	 pres_ur    ;
           	  :%^AB1     prt_null_s ;
-+V+Ind+Prt+2Sg:%^AB1     PASS 		;
           	  :%^AB2   	 prt_u_p    ;
           	         	 imp_prsptc ;
           	  :%^VSH  	 sup_null   ;
@@ -404,7 +403,6 @@ LEXICON s36 !
           	  :         jinf        ;
                	   	    pres_ur_j2  ;
           	  :%^AB1    prt_null_s  ;
-+V+Ind+Prt+2Sg:%^AB1    PASS 		;
           	  :%^AB2    prt_u_p     ;
           	  :         imp 		;
           	  :j		prsptc  	;
@@ -420,19 +418,19 @@ LEXICON s37 !
           :%^AB1   prt_null_s      ;
           :%^AB4   prt_u_p         ;
                    imp_prsptc      ;
-          :%^AB5   sup_null        ;
- +V+PrfPrc:%^VSHin p26             ;
-
+          :%^AB5   sup_ið_in       ;
+          		   p26			   ;
 
 LEXICON s38 !
 !! __@LEXNAME@__ skjóta present tense
-          :jót  inf             ;
-          :ýt   pres_strong_s1  ;
-          :ýt   pres_strong_s23 ;
-          :ýt   imp_prsptc      ; !XXX
-          :ut   prt_u_p         ;
-          :ot   sup_null        ;
- +V+PrfPrc:otin p26             ;
+          :jót  inf              ;
+          :jót   pres_strong_s1  ;
+          :jýt   pres_strong_s23 ;
+          :eyt	 prt_null_s		 ;
+          :ut    prt_u_p         ;
+          :jót   imp_prsptc      ;
+          :ot    sup_ið_in       ;
+          		 p26		     ;
 
 !LEXICON s39/30
 ! :jóð s30 ; ! weak infl + common forms
@@ -440,28 +438,45 @@ LEXICON s38 !
 
 LEXICON s39d
 !! __@LEXNAME@__ 
- :jóð inf      ;
-      s39_rest ;
+          :jóð   inf             ;
+          :jóð   pres_strong_s1  ;
+          :ýð    pres_strong_s23 ;
+          :eyð	 prt_null_s		 ;
+          :uð    prt_u_p         ;
+          :jóða  impsg			 ;
+ +V+Imp+Pl:jóðið PASS			 ;
+ +V+Imp+Pl:jóða  PASS			 ;
+          :jóð	 prsptc 	     ;
+          :oð    sup_ið_in       ;
+          		 p26		     ;
 
 LEXICON s39s
 !! __@LEXNAME@__ 
- :jós inf      ;
-      s39_rest ;
+          :jós   inf             ;
+          :jós   pres_strong_s1  ;
+          :ýs    pres_strong_s23 ;
+          :eys	 prt_null_s2	 ;
+          :us    prt_u_p         ;
+          :jósa  impsg			 ;
+ +V+Imp+Pl:jósið PASS			 ;
+ +V+Imp+Pl:jósa  PASS			 ;
+          :jós	 prsptc 	     ;
+          :os    sup_ið_in       ;
+          		 p26		     ;
 
 LEXICON s39 !
 !! __@LEXNAME@__ bjóða umlaut forms
- :jót inf      ;
-      s39_rest ;
-
-LEXICON s39_rest
-!! __@LEXNAME@__ 
-          :ýð   pres_strong_s1  ;
-          :ýð   pres_strong_s23 ;
-          :eyð  prt_null_s      ; ! Gunnar
-          :úði  prt_null_s      ; ! 1Mos
-          :uð   prt_u_p         ;
-          :óð   sup_null        ;
- +V+PrfPrc:oðin p26             ;
+          :jót   inf             ;
+          :jót   pres_strong_s1  ;
+          :ýt    pres_strong_s23 ;
+          :eyt	 prt_null_s		 ;
+          :ut    prt_u_p         ;
+          :jóta  impsg			 ;
+ +V+Imp+Pl:jótið PASS			 ;
+ +V+Imp+Pl:jóta  PASS			 ;
+          :jót	 prsptc 	     ;
+          :ot    sup_ið_in       ;
+          		 p26		     ;
 
 LEXICON s40 !
 !! __@LEXNAME@__ fúka
@@ -1167,6 +1182,14 @@ LEXICON pres_ir
   pres_ir_sg ;
   pres_pl    ;
 
+LEXICON pres_ir_j2
+!! __@LEXNAME@__ 
+ +V+Ind+Prs+1Sg:%>i  PASS ;
+ +V+Ind+Prs+2Sg:%>ir PASS ;
+ +V+Ind+Prs+3Sg:%>ir PASS ;
++V+Subj+Prs+3Sg:%>i  PASS ;
+  +V+Ind+Prs+Pl:%>ja PASS ;
+
 LEXICON pres_jir
 !! __@LEXNAME@__ 
  +V+Ind+Prs+1Sg:%>ji  PASS ;
@@ -1328,12 +1351,14 @@ LEXICON prt_null_s
 !! __@LEXNAME@__ 
  +V+Ind+Prt+1Sg:     PASS ;
  +V+Ind+Prt+2Sg:%>st PASS ;
+ +V+Ind+Prt+2Sg:     PASS ;
  +V+Ind+Prt+3Sg:     PASS ;
 
 LEXICON prt_null_s2
 !! __@LEXNAME@__ 
  +V+Ind+Prt+1Sg:    PASS ;
  +V+Ind+Prt+2Sg:%>t PASS ;
+ +V+Ind+Prt+2Sg:    PASS ;
  +V+Ind+Prt+3Sg:    PASS ;
 
 LEXICON prt_u_p
@@ -1401,6 +1426,12 @@ LEXICON sup_in !
 !! __@LEXNAME@__ kalla
     +V+Sup:%>ð     	PASS ;
  +V+PrfPrc:%>gvin 	PASS ;
+
+LEXICON sup_ið_in !
+!! __@LEXNAME@__  stungið
+    +V+Sup:%>ið 	PASS ;
+ +V+PrfPrc:%>in 	PASS ;
+
 
 !! !!Ad hoc, irregular
 ! =================

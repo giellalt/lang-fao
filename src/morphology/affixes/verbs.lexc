@@ -436,7 +436,7 @@ LEXICON s38 !
 ! :jóð s30 ; ! weak infl + common forms
 !      s39 ; ! umlauted forms, XXX check.
 
-LEXICON s39d
+LEXICON s39d ! bjóða
 !! __@LEXNAME@__ 
           :jóð   inf             ;
           :jóð   pres_strong_s1  ;
@@ -450,7 +450,7 @@ LEXICON s39d
           :oð    sup_ið_in       ;
           		 p26		     ;
 
-LEXICON s39s
+LEXICON s39s ! gjósa
 !! __@LEXNAME@__ 
           :jós   inf             ;
           :jós   pres_strong_s1  ;
@@ -464,7 +464,7 @@ LEXICON s39s
           :os    sup_ið_in       ;
           		 p26		     ;
 
-LEXICON s39 !
+LEXICON s39 ! fljóta
 !! __@LEXNAME@__ bjóða umlaut forms
           :jót   inf             ;
           :jót   pres_strong_s1  ;
@@ -487,73 +487,60 @@ LEXICON s40 !
            :%^AB1   prt_null_s      ;
            :%^AB4   prt_u_p         ;
                     imp_prsptc      ;
-           :%^AB5   sup_null        ;
-  +V+PrfPrc:%^AB5in p26             ;
+           :%^AB5   sup_ið_in       ;
+ 					p26             ;
 
 LEXICON s41 !
 !! __@LEXNAME@__ flúgva
                          inf             ;
                          pres_strong_s1  ;
-          :%^IUML%^VDEL  pres_strong_s23 ; !flýgv, should be flýg
+          :%^IUML%^VDEL  pres_strong_s23 ;
           :%^AB1%^VDEL   prt_null_s      ;
           :%^VSH%^VDEL   prt_u_p         ;
                          imp_prsptc      ;
-          :%^AB5%^VDEL   sup_null        ;
- +V+PrfPrc:%^AB5%^VDELin p26             ;
+          :%^AB5%^VDEL   sup_ið_in       ;
+ 						 p26             ;
 
 LEXICON s42 !
 !! __@LEXNAME@__ klúgva
-                    inf             ;
-                    pres_strong_s1  ;
-           :%^IUML  pres_strong_s23 ; ! klýgv, should be klýv
-!          :%^IUML  pres_ur         ;
-           :%^AB1   prt_null_s      ; !kleygv, should be kleyv
-           :%^VSH   prt_u_p         ; !klugv, should be kluv
-                    imp_prsptc      ;
-           :%^AB5   sup_null        ; !klogv, should be klov
-  +V+PrfPrc:%^AB5in p26             ; !klogvin, should be klovin
-
-LEXICON s43 !
-!! __@LEXNAME@__ njóta
-                    inf             ;
-                    pres_strong_s1  ;
-           :%^IUML  pres_strong_s23 ; !njót, should be nýt
-!                   pres_ur         ;
-           :%^AB1   prt_null_s      ; !njeyt, should be neyt
-           :%^AB4   prt_u_p         ; !njut, should be nut
-                    imp_prsptc      ;
-           :%^AB5   sup_null        ; !njot, should be not
-  +V+PrfPrc:%^AB5in p26             ; !njotin, should be notin
+                    		inf             ;
+                    		pres_strong_s1  ;
+           :%^IUML%^GDEL	pres_strong_s23 ;           
+           :%^AB1%^GDEL   	prt_null_s      ;
+           :%^VSH%^GDEL   	prt_u_p         ;
+                    		imp_prsptc      ;
+           :%^AB5%^GDEL   	sup_ið_in       ;
+   							p26             ;
 
 LEXICON s44 !
 !! __@LEXNAME@__ finna
                    inf        ;
                    pres_ur    ;
           :%^AB3   prt_null_s ;
-          :%^AB4   prt_du     ; !funndu, should be fundu
+          :%^AB4   prt_u_p    ;
                    imp_prsptc ;
-          :%^AB4   sup_null   ;
- +V+PrfPrc:%^AB4in p26        ;
+          :%^AB4   sup_ið_in  ;
+				   p26        ;
 
 LEXICON s45 !
 !! __@LEXNAME@__ binda
-                   inf        ;
-                   pres_ur    ;
-          :%^aAB   prt_null_s ; !band, should be bant
-          :%^AB4   prt_u_p    ;
-                   imp_prsptc ;
-          :%^AB4   sup_null   ;
- +V+PrfPrc:%^AB4in p26        ;
+          :d        	inf        ;
+          :d         	pres_ur    ;
+          :t%^aAB   	prt_null_s ;
+          :%^AB4%>d   	prt_u_p    ;
+          :d         	imp_prsptc ;
+          :%^AB4%>d   	sup_ið_in  ;
+		  :d		   	p26        ;
 
 LEXICON s46 !
 !! __@LEXNAME@__ stinga
-                       inf        ;
-                       pres_ur    ;
-          :%^NGKK%^aAB prt_null_s ; !stikk, should be stakk
-          :%^AB4       prt_u_p    ;
-                       imp_prsptc ;
-          :%^AB4       sup_null   ;
- +V+PrfPrc:%^AB4in     p26        ;
+    	 	                	inf        ;
+    	                    	pres_ur    ;
+	           :%^NGKK%^aAB 	prt_null_s ;
+          	   :%^AB4       	prt_u_p    ;
+                       			imp_prsptc ;
+          	   :%^AB4       	sup_ið_in  ;
+								p26        ;
 
 LEXICON s47 !
 !! __@LEXNAME@__ svimja

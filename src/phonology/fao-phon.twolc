@@ -21,7 +21,7 @@ Alphabet
  %^UUML:0 %^IUML:0 %^eIUML:0 %^ØUML:0   !!= * @CODE@ : Umlaut types ,
  %^W:0 %^JI:0                  !!= * @CODE@ : Cns changes ,
  %^EPH:0                       !!= * @CODE@ : Epenthesis,  ,
- %^OEA:0                       !!= * @CODE@ : 
+ %^OEA:0                       !!= * @CODE@ : ø to a
  %^EDH:0 
  %^VSH:0  
 
@@ -112,13 +112,13 @@ Rules
 "Deleting m in um%>num "
 !! __@RULENAME@__ 
  m:0 <=> Cns: Dummy:* %>: u _ %>: n u m ; 
-         g v  Dummy:* %>:   _ %>: n u m ; 
+         g: v:  Dummy:* %>:   _ %>: n u m ; 
 
 !!€ ris>um>num
-!!€ ris00u000num
+!!€ ris0u00num
 
-!!€ skógv>m>num
-!!€ skó0000000num
+!!€ skógv^GVDEL>m>num
+!!€ skó000000num
 
 
 
@@ -142,6 +142,13 @@ Rules
 
 !!€ hjall>ar
 !!€ hjall0ar
+
+"Deleting Double Consonant kk etc. in Front of Consonant"
+!! __@RULENAME@__
+ g:0 <=> Vow :k _ (%>:)  (u: r:) ([Dummy: - %^EPH:]) %>: [d|ð|s|t] ([a|i|u]) ;
+
+!!€ sting^NGKK^aAB>st
+!!€ stakk000st
 
 
 !"Double consonant simplification in front of t"
@@ -199,7 +206,7 @@ Rules
 
 "Deleting Double Consonant in Front of Epenthesis mark"
 !! __@RULENAME@__ 
- Cx:0 <=> Cx _ [ i:0 | a:0 | u:0 ] [ l | r ] ( %^EPH: ) %>: Vow ;
+ Cx:0 <=> Cx _ [i:0|a:0|u:0] [l|r] (%^EPH:) (%^UUML:) %>: Vow ;
       where Cx in ( b d f g k l m n p r s t v ) ;
 
 !!€ summar^EPH>i
@@ -446,7 +453,7 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 !! __@RULENAME@__ 
  ø:a <=> _ Cns* (Vow: Cns) ( %^EPH: ) %^OEA: ;
 
-!!€ fløtt^ØAa
+!!€ fløtt^OEAa
 !!€ flatt0a
 
 "Inverted U-umlaut from o"

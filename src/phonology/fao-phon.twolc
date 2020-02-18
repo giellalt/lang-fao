@@ -206,13 +206,20 @@ Rules
 
 "ð Assimilation in Front of Dental Past Suffix -d(i)"
 !! __@RULENAME@__ 
- ð:d <=> Vow _ (%^WVV:) %>: d (%>:) [ #: | Vow ] ;
+ ð:d <=> Vow  _        %>:0 d  [ #: | Vow ] ;
+         Vow: _ %^WVV: %>:0 d  [ #: | Vow ] ;
+         Vow: _        %>:0 d (%>:) [ #: | Vow ] ;
  
 !!€ leið>di
 !!€ leid0di
 
-!!€ greið^WVV>di
-!!€ greid00di
+!!€ greið>di
+!!€ greid0di
+
+# This does not work. TODO: fix
+
+!!€ ryð^WVV>di
+!!€ rud00di
 
 
 "Deleting Double Consonant in Front of Epenthesis mark"

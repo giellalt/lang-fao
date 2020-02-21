@@ -451,7 +451,6 @@ LEXICON s39d ! bjóða
           :uð    prt_u_p         ;
           :jóða  impsg           ;
  +V+Imp+Pl:jóðið PASS            ;
- +V+Imp+Pl:jóða  PASS            ;
           :jóð   prsptc          ;
           :oð    sup_ið_in       ;
                  p26             ;
@@ -465,7 +464,6 @@ LEXICON s39s ! gjósa
           :us    prt_u_p         ;
           :jósa  impsg           ;
  +V+Imp+Pl:jósið PASS            ;
- +V+Imp+Pl:jósa  PASS            ;
           :jós   prsptc          ;
           :os    sup_ið_in       ;
                  p26             ;
@@ -479,7 +477,6 @@ LEXICON s39 ! fljóta
           :ut    prt_u_p         ;
           :jóta  impsg           ;
  +V+Imp+Pl:jótið PASS            ;
- +V+Imp+Pl:jóta  PASS            ;
           :jót   prsptc          ;
           :ot    sup_ið_in       ;
                  p26             ;
@@ -545,6 +542,7 @@ LEXICON s46 !
  :%^NGKK%^aAB prt_null_s ;
  :%^AB4       prt_u_p    ;
               imp_prsptc ;
+ :%^NGKK      imp	     ;
  :%^AB4       sup_ið_in  ;
               p26        ;
 
@@ -747,13 +745,24 @@ LEXICON s63 !
  +V+PrfPrc:%>in    p26             ;
 
 LEXICON s64 !
+!! __@LEXNAME@__ lata
+                   inf             ;
+                   pres_strong_s1  ;
+          :%^IUML  pres_strong_s23 ;
+          :%^AB3   prt_null_s      ;
+          :%^AB2   prt_u_p         ;
+                   sup_ið_in       ;
+                   imp_prsptc      ;
+ +V+PrfPrc:%>in    p26             ;
+
+LEXICON s64_1 !
 !! __@LEXNAME@__ láta
                    inf             ;
                    pres_strong_s1  ;
           :%^eIUML pres_strong_s23 ;
           :%^AB3   prt_null_s      ;
           :%^AB2   prt_u_p         ;
-                   sup_null        ;
+                   sup_ið_in       ;
                    imp_prsptc      ;
  +V+PrfPrc:%>in    p26             ;
 
@@ -764,9 +773,9 @@ LEXICON s65 !
  :end pres_strong_s23 ;
  :óð  prt_null_s      ;
  :óð  prt_u_p         ;
- :að  sup_null        ;
- :att imp             ;
- :and prsptc          ;
+ :að  sup_ið_in       ;
+ :and imp_prsptc      ;
+ :att impsg           ;
 
 LEXICON s66 !
 !! __@LEXNAME@__ biðja

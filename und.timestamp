@@ -1,4 +1,8 @@
-$Rev: 188957 $
+$Rev: 188999 $
+Fixed bug in phonology compilation when there are multiple phonology files:
+temporary files were deleted before being used due to name overlap.
+
+r188957:
 Added Automake variables to handle demanding or non-default uppercasing, or
 writing systems with no case distinction at all.
 

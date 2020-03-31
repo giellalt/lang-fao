@@ -114,10 +114,10 @@ endif !SKIP_PHONOLOGY
 # Build instructions for the reversed rule file:
 %.rev.hfst: %.compose.hfst
 	$(AM_V_at)rm -f $@
-	$(AM_V_HSPLIT)$(HFST_SPLIT) -p split $<
-	$(AM_V_REVERSE)for i in split*.hfst; do $(HFST_REVERSE) $$i \
+	$(AM_V_HSPLIT)$(HFST_SPLIT) -p split -e $*.hfst -i $<
+	$(AM_V_REVERSE)for i in split*$*.hfst; do $(HFST_REVERSE) $$i \
 		| $(HFST_MINIMIZE) >> $@ ; done
-	$(AM_V_at)rm -f split*.hfst
+	$(AM_V_at)rm -f split*$*.hfst
 
 # Build instruction for the xfscript with lexicon ref:
 define giella_phon_w_lex_ref

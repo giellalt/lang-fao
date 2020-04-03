@@ -1,4 +1,8 @@
-$Rev: 188999 $
+$Rev: 189193 $
+First step in fixing default case handling: downcasing of derived proper nouns
+can now be turned off for the standard fst's by changing a test in configure.ac.
+
+r188999:
 Fixed bug in phonology compilation when there are multiple phonology files:
 temporary files were deleted before being used due to name overlap.
 

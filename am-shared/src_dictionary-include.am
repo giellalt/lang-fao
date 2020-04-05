@@ -52,7 +52,7 @@ analyser-dict-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 					filters/remove-mwe-tags.%                  \
 					orthography/inituppercase.compose.%        \
 					orthography/spellrelax.compose.%           \
-					orthography/downcase-derived_proper-strings.compose.%
+					$(GLT_DOWNCASE_FILTER)
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-area-tags.$*\"                 \
 			.o. @\"filters/remove-dialect-tags.$*\"              \
@@ -67,7 +67,7 @@ analyser-dict-gt-desc.tmp.%: analyser-raw-gt-desc.%            \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"        \
 			.o. @\"filters/remove-mwe-tags.$*\"                  \
 			.o. @\"$<\"                                          \
-			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
+			    $(GLT_DOWNCASE_COMPOSE) \
 			.o. @\"filters/remove-hyphenation-marks.$*\"         \
 			.o. @\"filters/remove-infl_deriv-borders.$*\"        \
 			.o. @\"filters/remove-word-boundary.$*\"             \
@@ -121,7 +121,7 @@ generator-dict-gt-norm.tmp.%: analyser-raw-gt-desc.%           \
 					filters/remove-Use_minus_PMatch-tags.%     \
 					filters/remove-Use_PMatch-strings.%        \
 					filters/remove-mwe-tags.%                  \
-					orthography/downcase-derived_proper-strings.compose.%
+					$(GLT_DOWNCASE_FILTER)
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex  \
 				@\"filters/make-optional-transitivity-tags.$*\"  \
 			.o. @\"filters/make-optional-hyph-tags.$*\"          \
@@ -141,7 +141,7 @@ generator-dict-gt-norm.tmp.%: analyser-raw-gt-desc.%           \
 			.o. @\"filters/remove-Use_PMatch-strings.$*\"        \
 			.o. @\"filters/remove-mwe-tags.$*\"                  \
 			.o. @\"$<\"                                          \
-			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
+			    $(GLT_DOWNCASE_COMPOSE) \
 			.o. @\"filters/remove-hyphenation-marks.$*\"         \
 			.o. @\"filters/remove-infl_deriv-borders.$*\"        \
 			.o. @\"filters/remove-word-boundary.$*\"             \

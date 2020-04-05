@@ -145,9 +145,11 @@ endif # CAN_FOMA
 if DEFAULT_CASE_HANDLING
 GLT_DOWNCASE_FILTER=orthography/downcase-derived_proper-strings.compose.%
 GLT_DOWNCASE_COMPOSE=.o. @\"orthography/downcase-derived_proper-strings.compose.$*\"
+GLT_DOWNCASE_COMPOSE_DEF=.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\"
 else
 GLT_DOWNCASE_FILTER=
 GLT_DOWNCASE_COMPOSE=
+GLT_DOWNCASE_COMPOSE_DEF=
 endif # " DEFAULT_CASE_HANDLING
 ### END: Case handlign conditional:
 

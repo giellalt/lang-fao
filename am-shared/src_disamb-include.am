@@ -50,7 +50,7 @@ analyser-disamb-gt-desc.tmp1.%: analyser-raw-gt-desc.%        \
 					filters/block-mwe-compounds.%             \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
-					orthography/downcase-derived_proper-strings.compose.%
+					$(GLT_DOWNCASE_FILTER)
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-variant-tags.$*\"             \
@@ -58,7 +58,7 @@ analyser-disamb-gt-desc.tmp1.%: analyser-raw-gt-desc.%        \
 			.o. @\"filters/remove-Orth_IPA-strings.$*\"         \
 			.o. @\"filters/block-mwe-compounds.$*\"             \
 			.o. @\"$<\"                                         \
-			.o. @\"orthography/downcase-derived_proper-strings.compose.$*\" \
+			    $(GLT_DOWNCASE_COMPOSE) \
 			.o. @\"filters/remove-hyphenation-marks.$*\"        \
 			.o. @\"filters/remove-infl_deriv-borders.$*\"       \
 			.o. @\"filters/remove-word-boundary.$*\"            \
@@ -120,8 +120,8 @@ analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%      \
 					filters/block-mwe-compounds.%                \
 					orthography/spellrelax.$(1).compose.%        \
 					orthography/inituppercase.compose.%          \
-					orthography/downcase-derived_proper-strings.compose.% \
-					orthography/$(DEFAULT_ORTH)-to-$(1).compose.%
+					orthography/$(DEFAULT_ORTH)-to-$(1).compose.% \
+					$(GLT_DOWNCASE_FILTER)
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/remove-orthography-tags.$$*\"             \
 			.o. @\"filters/remove-usage-tags.$$*\"                   \
@@ -129,7 +129,7 @@ analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%      \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"             \
 			.o. @\"filters/block-mwe-compounds.$$*\"                 \
 			.o. @\"$$<\"                                             \
-			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
+			    $(GLT_DOWNCASE_COMPOSE_DEF) \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"            \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"           \
 			.o. @\"filters/remove-word-boundary.$$*\"                \
@@ -155,8 +155,8 @@ analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%      \
 					filters/block-mwe-compounds.%                \
 					orthography/spellrelax.$(1).compose.%        \
 					orthography/inituppercase.compose.%          \
-					orthography/downcase-derived_proper-strings.compose.% \
-					orthography/raw-to-$(1).compose.%
+					orthography/raw-to-$(1).compose.%            \
+					$(GLT_DOWNCASE_FILTER)
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/remove-orthography-tags.$$*\"             \
 			.o. @\"filters/remove-usage-tags.$$*\"                   \
@@ -164,7 +164,7 @@ analyser-disamb-gt-desc.$(1).tmp1.%: analyser-raw-gt-desc.%      \
 			.o. @\"filters/remove-Orth_IPA-strings.$$*\"             \
 			.o. @\"filters/block-mwe-compounds.$$*\"                 \
 			.o. @\"$$<\"                                             \
-			.o. @\"orthography/downcase-derived_proper-strings.compose.$$*\" \
+			    $(GLT_DOWNCASE_COMPOSE_DEF) \
 			.o. @\"filters/remove-hyphenation-marks.$$*\"            \
 			.o. @\"filters/remove-infl_deriv-borders.$$*\"           \
 			.o. @\"filters/remove-word-boundary.$$*\"                \

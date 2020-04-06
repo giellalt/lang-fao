@@ -1,4 +1,9 @@
-$Rev: 189249 $
+$Rev: 189294 $
+Started splitting the local Makefile.am in two, by moving it to a new filename,
+and then create a new Makefile.am that just includes the moved one. In later
+commmits, some of the content can be moved from one file to the other.
+
+r189249:
 Fixed the remaining cases of improved upper-lower case configurable processing.
 Removed a variable from configure.ac with comments, turned out it wasn't needed.
 

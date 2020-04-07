@@ -2,17 +2,6 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-####### Automake targets: ########
-APERTIUM_ANALYSER_HFST=
-APERTIUM_GENERATORS_HFST=
-
-if WANT_APERTIUM
-
-APERTIUM_ANALYSER_HFST+=analyser-mt-gt-desc.hfst
-APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfst
-
-endif # WANT_APERTIUM
-
 if CAN_HFST
 noinst_DATA=$(APERTIUM_ANALYSER_HFST) \
 			$(APERTIUM_GENERATORS_HFST)
@@ -121,6 +110,10 @@ analyser%.hfst: analyser%.tmp.hfst
 # General fallback target for generators:
 generator%.hfst: generator%.tmp.hfst
 	$(AM_V_CP)cp -f $< $@
+
+# cleaning
+clean-local:
+	-rm -f *.hfst *.hfstol *.xfst *.foma $(CLEAN_FILES)
 
 #### Include files:
 include $(top_srcdir)/am-shared/hfst-format-include.am

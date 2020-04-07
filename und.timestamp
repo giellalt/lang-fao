@@ -1,4 +1,8 @@
-$Rev: 189294 $
+$Rev: 189372 $
+Reorganised mt/apertium make files so that fixed content is in Makefile.am, and
+userj-editable content is in Makefile.modifications.am.
+
+r189294:
 Started splitting the local Makefile.am in two, by moving it to a new filename,
 and then create a new Makefile.am that just includes the moved one. In later
 commmits, some of the content can be moved from one file to the other.

@@ -2,20 +2,6 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-####### Automake targets: ########
-
-APERTIUM_ANALYSER_HFST=
-APERTIUM_ANALYSERS_GT_HFST=
-APERTIUM_ANALYSERS_TMP_HFST=
-APERTIUM_ANALYSERS_AP_HFST=
-APERTIUM_ANALYSERS_ATTGZ=
-
-APERTIUM_GENERATORS_HFST=
-APERTIUM_GENERATOR_ATTGZ=
-APERTIUM_CG_BIN=
-
-APERTIUM_GENERATED_TAGSET_RELABEL_SRCS=
-
 if WANT_APERTIUM
 
 # Build list of target language transducers from the list of target languages:
@@ -373,6 +359,10 @@ generator-mt-gt%.hfst: generator-mt-gt%.tmp.hfst \
 # General fallback target for generators:
 generator%.hfst: generator%.tmp.hfst
 	$(AM_V_CP)cp -f $< $@
+
+# cleaning
+clean-local:
+	-rm -f *.hfst *.gz *.cg3 *.bin *.hfstol *.att $(CLEAN_FILES)
 
 #### Include files:
 include $(top_srcdir)/am-shared/lookup-include.am

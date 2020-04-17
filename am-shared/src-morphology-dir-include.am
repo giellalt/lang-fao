@@ -44,13 +44,14 @@ endif # WANT_LEXC_ALIGNMENT
 
 # Shared source files
 GT_SHARED_SRCS=
+EXTRA_DIST=
 
 GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS_L1_L2) $(L1) $(L2) \
 				$(GENERATED_LEXC_SRCS) $(GT_XML_SRCS) $(GT_LOCAL_SRCS) \
 				$(GT_SHARED_SRCS) $(GT_DISTRO_SRCS)
 
 # All sources need to be included in the tarball
-EXTRA_DIST=$(GT_LEXC_ALLSRC)
+EXTRA_DIST+=$(GT_LEXC_ALLSRC)
 
 ####### Morphology Automake targets: ########
 
@@ -183,7 +184,7 @@ DEPGEN=$(AM_V_CP)mv -f $< $@
 GT_PHONOLOGY_SRCS=$(GT_PHONOLOGY_MAIN) $(GT_PHONOLOGY_SUPPLEMENTS)
 
 # All sources need to be included in the tarball
-EXTRA_DIST=$(GT_PHONOLOGY_SRCS)
+EXTRA_DIST+=$(GT_PHONOLOGY_SRCS)
 
 ####### Phonology automake targets: ########
 
@@ -255,12 +256,12 @@ endif # WANT_L2
 # everything. Cf configure.ac
 if SKIP_PHONOLOGY
 
-noinst_DATA=
+noinst_DATA+=
 
 # Othersiwe: build as normal:
 else !SKIP_PHONOLOGY
 
-noinst_DATA=
+noinst_DATA+=
 
 endif !SKIP_PHONOLOGY
 

@@ -52,7 +52,7 @@ GT_LEXC_ALLSRC=$(GT_LEXC_ROOT) $(GT_LEXC_SRCS_L1_L2) $(L1) $(L2) \
 # All sources need to be included in the tarball
 EXTRA_DIST=$(GT_LEXC_ALLSRC)
 
-####### Automake targets: ########
+####### Morphology Automake targets: ########
 
 # The transducers we build and don't distribute depend on the configuration:
 GT_LEXICAL=
@@ -172,12 +172,121 @@ DEPGEN=$(AM_V_CP)mv -f $< $@
 %.hfst: %.tmp.hfst ; $(DEPGEN)
 %.xfst: %.tmp.xfst ; $(DEPGEN)
 
+####### Phonology source file defs: ########
+
+#! @param GT_PHONOLOGY_MAIN required, the source of phonology
+#! @param GT_PHONOLOGY_SUPPLEMENTS optional, other sources to distribute and
+#! 		  compile for other things
+#! Both @params are specified in $(GTLANG)/src/phonology/Makefile.am.
+
+# The source files are the sum of GT_PHONOLOGY_MAIN and GT_PHONOLOGY_SUPPLEMENTS
+GT_PHONOLOGY_SRCS=$(GT_PHONOLOGY_MAIN) $(GT_PHONOLOGY_SUPPLEMENTS)
+
+# All sources need to be included in the tarball
+EXTRA_DIST=$(GT_PHONOLOGY_SRCS)
+
+####### Phonology automake targets: ########
+
+# The rule transducer(s) will be built, not installed
+GT_PHONOLOGY=
+if CAN_HFST
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(addsuffix .hfst.xfscript, $(basename $(GT_PHONOLOGY_SRCS)))
+else !LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(addsuffix .compose.hfst, $(basename $(GT_PHONOLOGY_SRCS)))
+GT_PHONOLOGY+=$(addsuffix .lookup.hfst,  $(basename $(GT_PHONOLOGY_SRCS)))
+if WANT_REVERSED_INTERSECT
+GT_PHONOLOGY+=$(addsuffix .rev.hfst, $(basename $(GT_PHONOLOGY_SRCS)))
+endif # WANT_REVERSED_INTERSECT
+endif !LEXREF_IN_PHONOLOGY
+endif # CAN_HFST
+
+if CAN_XFST
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(addsuffix .xfst.xfscript, $(basename $(GT_PHONOLOGY_SRCS)))
+else !LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(addsuffix .compose.xfst, $(basename $(GT_PHONOLOGY_SRCS)))
+GT_PHONOLOGY+=$(addsuffix .lookup.xfst,  $(basename $(GT_PHONOLOGY_SRCS)))
+endif !LEXREF_IN_PHONOLOGY
+endif # CAN_XFST
+
+if CAN_FOMA
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(addsuffix .foma.xfscript, $(basename $(GT_PHONOLOGY_SRCS)))
+else !LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(addsuffix .compose.foma, $(basename $(GT_PHONOLOGY_SRCS)))
+GT_PHONOLOGY+=$(addsuffix .lookup.foma,  $(basename $(GT_PHONOLOGY_SRCS)))
+endif !LEXREF_IN_PHONOLOGY
+endif # CAN_FOMA
+
+if WANT_L2
+if CAN_HFST
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.hfst.xfscript
+else !LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.hfst
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.hfst
+if WANT_REVERSED_INTERSECT
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.rev.hfst
+endif # WANT_REVERSED_INTERSECT
+endif !LEXREF_IN_PHONOLOGY
+endif # CAN_HFST
+
+if CAN_XFST
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.xfst.xfscript
+else !LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.xfst
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.xfst
+endif !LEXREF_IN_PHONOLOGY
+endif # CAN_XFST
+
+if CAN_FOMA
+if LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.foma.xfscript
+else !LEXREF_IN_PHONOLOGY
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.compose.foma
+GT_PHONOLOGY+=$(GTLANG)-phon-L2.lookup.foma
+endif !LEXREF_IN_PHONOLOGY
+endif # CAN_FOMA
+endif # WANT_L2
+
+# If SKIP_PHONOLOGY is defined, noinst_DATA is empty. This causes make to skip
+# everything. Cf configure.ac
+if SKIP_PHONOLOGY
+
+noinst_DATA=
+
+# Othersiwe: build as normal:
+else !SKIP_PHONOLOGY
+
+noinst_DATA=
+
+endif !SKIP_PHONOLOGY
+
+# Build instructions for the reversed rule file:
+%.rev.hfst: %.compose.hfst
+	$(AM_V_at)rm -f $@
+	$(AM_V_HSPLIT)$(HFST_SPLIT) -p split -e $*.hfst -i $<
+	$(AM_V_REVERSE)for i in split*$*.hfst; do $(HFST_REVERSE) $$i \
+		| $(HFST_MINIMIZE) >> $@ ; done
+	$(AM_V_at)rm -f split*$*.hfst
+
+# Build instruction for the xfscript with lexicon ref:
+define giella_phon_w_lex_ref
+%.$(1).xfscript: %.xfscript
+	$$(AM_V_GEN)sed 's/&FST&/$(1)/' $$< > $$@
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_phon_w_lex_ref,$(fst))))
+
 ####### Other targets: ###########
 maintainer-clean-local:
 	-rm -f $(GENERATED_LEXC_SRCS) url.lexc
 
 include $(top_srcdir)/am-shared/lexc-include.am
+include $(top_srcdir)/am-shared/twolc-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
+include $(top_srcdir)/am-shared/lookup-include.am
 include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 

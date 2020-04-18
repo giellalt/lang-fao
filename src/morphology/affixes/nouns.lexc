@@ -68,9 +68,9 @@ LEXICON h11/41
 LEXICON h3/h41 
   h3  ;
   h41 ;
-LEXICON h3/kv2
-  h3 ;
-  kv2 ;
+!LEXICON h3/kv2
+!  h3 ;
+!  kv2 ;
 LEXICON h4/41 
   h4  ;
   h41  ;
@@ -86,9 +86,9 @@ LEXICON k19/12
 LEXICON k25/17f 
   k25 ;
   k_flt17 ; 
-LEXICON k52/kv2 
-  k52 ;
-  kv2 ; 
+!LEXICON k52/kv2 
+!  k52 ;
+!  kv2 ; 
 LEXICON k9/10 
   k9  ;
   k10  ;
@@ -1932,12 +1932,11 @@ LEXICON kv_flt32
    +N+Fem+Pl+Gen+Def:%>anna  FemObl_Flag ;
 
 LEXICON kv33e/h24e
- kv33e ;
- h24e ;
+h24e/kv33e ;
 
 LEXICON h24e/kv33e
- h24e ;
- kv33e ;
+   h24e ;
+:i kv33e ;
 
 LEXICON kv33 ! gleði
   kv33e    ;
@@ -3205,17 +3204,17 @@ LEXICON N_PLNA
 LEXICON N_PLD
  +Pl+Dat:%>u DF_D_PL ;
 
-LEXICON N_PLD_0_U
- +Pl+Dat+Indef:%>um  ENDLEX ;
-   +Pl+Dat+Def:%>num ENDLEX ;
+!LEXICON N_PLD_0_U
+! +Pl+Dat+Indef:%>um  ENDLEX ;
+!   +Pl+Dat+Def:%>num ENDLEX ;
 
 LEXICON N_PLG
  +Pl+Gen:%>a DF_G_PL ;
  +Pl+Gen:%>a R ;
 
-LEXICON N_PLG_NULL
- +Pl+Gen+Indef: ENDLEX ;
-   +Pl+Gen+Def: ENDLEX ;
+!LEXICON N_PLG_NULL
+! +Pl+Gen+Indef: ENDLEX ;
+!   +Pl+Gen+Def: ENDLEX ;
 
 
 LEXICON N_PLG_na

@@ -1,4 +1,10 @@
-$Rev: 189750 $
+$Rev: 189805 $
+Copy src/phonology/Makefile.am to src/morphology/Makefile.modifications-phon.am
+and src/phonology/xxx-phon.twolc to src/morphology/phonology.twolc as step one
+in moving the file. Then the build can switch, and finally, the old files can be
+deleted.
+
+r189750:
 Corrected copy-paste bug in the build steps for areal grammar checker analysers.
 The bug caused SMJ to fail.
 

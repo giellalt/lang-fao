@@ -284,6 +284,8 @@ $(foreach fst,hfst xfst foma,$(eval $(call giella_phon_w_lex_ref,$(fst))))
 maintainer-clean-local:
 	-rm -f $(GENERATED_LEXC_SRCS) url.lexc
 
+##########################################
+# General build rules included from here:#
 include $(top_srcdir)/am-shared/lexc-include.am
 include $(top_srcdir)/am-shared/twolc-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am

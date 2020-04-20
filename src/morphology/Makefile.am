@@ -18,14 +18,6 @@
 # Add language-specific flags for hfst-lexc compilation here:
 HFST_LEXC_LOCAL_FLAGS=
 
-####### Phonology source file defs: ########
-
-#! @param GT_TWOLC_MAIN required, the source of phonology
-#! @param GT_TWOLC_SUPPLEMENTS optional, other sources to distribute and
-#! 		  compile for other things
-GT_PHONOLOGY_MAIN=phonology.twolc
-GT_PHONOLOGY_SUPPLEMENTS=
-
 ####### Morphology source file defs: ########
 
 # Set this to name of lexc file containing Multichar_Symbols and LEXICON Root
@@ -122,6 +114,7 @@ clean-local:
 	-rm -f *.all.* *fst *.foma *.script generated_files/*.lexc lexicon.*
 	-rm -f url.lexc *.tmp.*
 
+include $(srcdir)/Makefile.modifications-phon.am
 include $(top_srcdir)/am-shared/src-morphology-dir-include.am
 
 # vim: set ft=automake:

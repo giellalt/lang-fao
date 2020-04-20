@@ -3,7 +3,7 @@
 ## Licence: GPL v3+
 
 # always build . last here, and tagsets have to be built after morphology
-SUBDIRS = morphology phonology filters phonetics hyphenation orthography syntax transcriptions tagsets .
+SUBDIRS = morphology filters phonetics hyphenation orthography syntax transcriptions tagsets .
 
 ####### Automake targets: ########
 

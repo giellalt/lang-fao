@@ -201,18 +201,18 @@ else !SKIP_PHONOLOGY
 if LEXREF_IN_PHONOLOGY
 
 # HFST
-generator-raw-gt-desc.tmp1.hfst: phonology/$(GTLANG)-phon.hfst.xfscript \
+generator-raw-gt-desc.tmp1.hfst: morphology/phonology.hfst.xfscript \
 					 morphology/lexicon.hfst
 	$(AM_V_HXFST)printf "save stack $@\nquit\n" | cat $< - \
 		| $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
 
 # XEROX
-analyser-raw-gt-desc.tmp1.xfst: phonology/$(GTLANG)-phon.xfst.xfscript \
+analyser-raw-gt-desc.tmp1.xfst: morphology/phonology.xfst.xfscript \
 			 morphology/lexicon.xfst
 	$(AM_V_XFST)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
 
 # FOMA
-analyser-raw-gt-desc.tmp1.foma: phonology/$(GTLANG)-phon.foma.xfscript \
+analyser-raw-gt-desc.tmp1.foma: morphology/phonology.foma.xfscript \
 			 morphology/lexicon.foma
 	$(AM_V_FOMA)$(FOMA) $(VERBOSITY) -l $< -e "save stack $@" -s
 
@@ -223,13 +223,13 @@ else !LEXREF_IN_PHONOLOGY
 if WANT_REVERSED_INTERSECT
 # Do this is reversed intersect is enabled:
 generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.rev.hfst \
-					 phonology/$(GTLANG)-phon.rev.hfst
+					 morphology/phonology.rev.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 phonology/$(GTLANG)-phon.rev.hfst \
+			-2 morphology/phonology.rev.hfst \
 		| $(HFST_REVERSE) \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
@@ -237,31 +237,31 @@ generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.rev.hfst \
 else
 # Otherwise do this:
 generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.hfst \
-					 phonology/$(GTLANG)-phon.compose.hfst
+					 morphology/phonology.compose.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 phonology/$(GTLANG)-phon.compose.hfst \
+			-2 morphology/phonology.compose.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 endif # WANT_REVERSED_INTERSECT
 
 # XEROX
 analyser-raw-gt-desc.tmp1.xfst: morphology/lexicon.xfst \
-			 phonology/$(GTLANG)-phon.compose.xfst
+			 morphology/phonology.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/lexicon.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/lexicon.xfst\nread-rules morphology/phonology.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		| $(LEXC) $(VERBOSITY)
 
 # FOMA
 analyser-raw-gt-desc.tmp1.foma: morphology/lexicon.foma \
-			 phonology/$(GTLANG)-phon.compose.foma
+			 morphology/phonology.compose.foma
 	$(AM_V_FOMA)$(PRINTF) \
 		"read regex \
 				@\"$<\" \
-			.o. @\"phonology/$(GTLANG)-phon.compose.foma\" \
+			.o. @\"morphology/phonology.compose.foma\" \
 			; \n\
 		 save stack $@\n\
 		 quit\n" \

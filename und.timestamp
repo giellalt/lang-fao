@@ -1,4 +1,7 @@
-$Rev: 189805 $
+$Rev: 189865 $
+Update phonology filename in src/morphology/Makefile.modifications-phon.am.
+
+r189805:
 Copy src/phonology/Makefile.am to src/morphology/Makefile.modifications-phon.am
 and src/phonology/xxx-phon.twolc to src/morphology/phonology.twolc as step one
 in moving the file. Then the build can switch, and finally, the old files can be

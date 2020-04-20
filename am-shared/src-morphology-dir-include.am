@@ -261,7 +261,7 @@ noinst_DATA+=
 # Othersiwe: build as normal:
 else !SKIP_PHONOLOGY
 
-noinst_DATA+=
+noinst_DATA+=$(GT_PHONOLOGY)
 
 endif !SKIP_PHONOLOGY
 

@@ -12,7 +12,7 @@
 # dir/filename.lexc => filename-dir.jspwiki
 
 JSP_PAGES=root-morphology.jspwiki  \
-		  fao-phon-phonology.jspwiki \
+		  phonology-morphology.jspwiki \
 		  nouns-affixes.jspwiki  \
 		  nouns-stems.jspwiki \
 		  verbs-affixes.jspwiki \

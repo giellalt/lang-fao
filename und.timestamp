@@ -1,4 +1,8 @@
-$Rev: 189902 $
+$Rev: 189913 $
+Changed documentation extraction & building to get the source doc in
+src/morphology/.
+
+r189902:
 The big switch: building phonology files are now changed from src/phonology/ to
 src/morphology. Documentation is still built in the old location, but will be
 moved separately due to higher conflict risk.

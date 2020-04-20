@@ -23,13 +23,13 @@ FORRESTARGS=-Dforrest.jvmargs="-Dfile.encoding=utf-8 -Djava.awt.headless=true"
 $(srcdir)/%-syntax.jspwiki: $(top_srcdir)/src/syntax/%.cg3
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
-$(srcdir)/%-phonology.jspwiki: $(top_srcdir)/src/phonology/%.twolc
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
-
-$(srcdir)/%-phonology.jspwiki: $(top_srcdir)/src/phonology/%.xfscript
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
-
 $(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/morphology/%.lexc
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
+
+$(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/morphology/%.twolc
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
+
+$(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/morphology/%.xfscript
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-stems.jspwiki: $(top_srcdir)/src/morphology/stems/%.lexc

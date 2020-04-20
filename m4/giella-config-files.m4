@@ -12,7 +12,6 @@ AC_CONFIG_FILES([Makefile \
                  src/morphology/Makefile \
                  src/orthography/Makefile \
                  src/phonetics/Makefile \
-                 src/phonology/Makefile \
                  src/syntax/Makefile \
                  src/tagsets/Makefile \
                  src/transcriptions/Makefile \

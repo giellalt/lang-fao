@@ -12,8 +12,8 @@
 PRINTF=@PRINTF@
 TWOLC=@TWOLC@
 GTLANG=@GTLANG@
-SOURCEFILE=${srcdir}/../../../src/phonology/${GTLANG}-phon.twolc
-FSTFILE=../../../src/phonology/${GTLANG}-phon.compose.xfst
+SOURCEFILE=${srcdir}/../../../src/morphology/phonology.twolc
+FSTFILE=../../../src/morphology/phonology.compose.xfst
 LEXICON=../../../src/morphology/lexicon.xfst
 TWOLCSCRIPT=twolcscript.sh
 TESTDATA=negative-pairs.txt

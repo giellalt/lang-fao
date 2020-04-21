@@ -119,7 +119,7 @@ AM_CONDITIONAL([HAVE_DIALECTS], [test "x$DIALECTS" != "x"])
 ########## LANGUAGE SPECIFIC BUILD SETTINGS ##########
 
 # NO_PHONOLOGY = yes
-# ... makes the bulid process skip compilation of anything in the phonology/
+# ... makes the bulid process skip compilation of anything in the morphology/
 # dir. This is mainly useful when building from external sources such that the
 # lexical fst built in the morphology/ dir is actually the full analyser.
 # The variable can also be set if a language is such that everything is

@@ -595,7 +595,7 @@ AS_IF([test x$with_foma != xno], [
 AC_MSG_RESULT([$gt_prog_foma])
 
 AS_IF([test x$gt_prog_foma = xyes \
-      -a "x$(grep 'GT_PHONOLOGY_MAIN' ${srcdir}/src/phonology/Makefile.am \
+      -a "x$(grep 'GT_PHONOLOGY_MAIN' ${srcdir}/src/morphology/Makefile*.am \
       	| grep 'twolc')" != "x" ],
       [AC_MSG_ERROR([You only have Foma, or you requested to use Foma, but \
 your main phonology file is a twolc file, which Foma can not compile. You need \

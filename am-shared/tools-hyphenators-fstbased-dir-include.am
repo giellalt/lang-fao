@@ -29,10 +29,10 @@ endif # WANT_REVERSED_INTERSECT
 PHON_RULES=
 if WANT_REVERSED_INTERSECT
 # Do this if reversed intersect is enabled:
-PHON_RULES+=$(top_builddir)/src/phonology/$(GTLANG)-phon.rev.hfst
+PHON_RULES+=$(top_builddir)/src/morphology/phonology.rev.hfst
 else
 # Otherwise do this:
-PHON_RULES+=$(top_builddir)/src/phonology/$(GTLANG)-phon.compose.hfst
+PHON_RULES+=$(top_builddir)/src/morphology/phonology.compose.hfst
 endif # WANT_REVERSED_INTERSECT
 
 HYPH_RULES=$(top_builddir)/src/hyphenation/hyphenation.compose.hfst

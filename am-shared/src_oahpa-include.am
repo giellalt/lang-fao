@@ -255,52 +255,52 @@ $(foreach dialect,$(DIALECTS),$(eval $(call dial_oahpa_generators,$(dialect))))
 # First build a tmp1 raw file as the intersection between lexicon and rules:
 # This raw error/L2 lexical transducer uses both L2 lexicon and L2 twolc:
 generator-raw-gt-%.tmp1.hfst: morphology/lexicon-%.hfst \
-					 phonology/$(GTLANG)-phon-%.compose.hfst
+					 morphology/phonology-%.compose.hfst
 	$(AM_V_INTRSCT)$(HFST_COMPOSE_INTERSECT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-1 morphology/lexicon-$*.hfst \
-		-2 phonology/$(GTLANG)-phon-$*.compose.hfst |\
+		-2 morphology/phonology-$*.compose.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
 # This is an alternative error fst for cases where the L2 phonology file is not
 # available (because of configuration or no source file):
 generator-raw-gt-%.tmp1.hfst: morphology/lexicon-%.hfst \
-					 phonology/$(GTLANG)-phon.compose.hfst
+					 morphology/phonology.compose.hfst
 	$(AM_V_INTRSCT)$(HFST_COMPOSE_INTERSECT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-1 morphology/lexicon-$*.hfst \
-		-2 phonology/$(GTLANG)-phon.compose.hfst |\
+		-2 morphology/phonology.compose.hfst |\
 		$(HFST_MINIMIZE) $(HFST_FLAGS) -o $@
 
 # The same for Xerox:
 analyser-raw-gt-%.tmp1.xfst: morphology/lexicon-%.xfst \
-			 phonology/$(GTLANG)-phon-%.compose.xfst
+			 morphology/phonology-%.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/lexicon-$*.xfst\nread-rules phonology/$(GTLANG)-phon-$*.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/lexicon-$*.xfst\nread-rules morphology/phonology-$*.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		| $(LEXC) $(VERBOSITY)
 
 analyser-raw-gt-%.tmp1.xfst: morphology/lexicon-%.xfst \
-			 phonology/$(GTLANG)-phon.compose.xfst
+			 morphology/phonology.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/lexicon-$*.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source morphology/lexicon-$*.xfst\nread-rules morphology/phonology.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		| $(LEXC) $(VERBOSITY)
 
 # FOMA
 analyser-raw-gt-%.tmp1.foma: morphology/lexicon-%.foma \
-			 phonology/$(GTLANG)-phon-%.compose.foma
+			 morphology/phonology-%.compose.foma
 	$(AM_V_FOMA)$(PRINTF) \
 		"read regex \
 				@\"$<\" \
-			.o. @\"phonology/$(GTLANG)-phon-$*.compose.foma\" \
+			.o. @\"morphology/phonology-$*.compose.foma\" \
 			; \n\
 		 save stack $@\n\
 		 quit\n" \
 		| $(FOMA) $(VERBOSITY)
 
 analyser-raw-gt-%.tmp1.foma: morphology/lexicon-%.foma \
-			 phonology/$(GTLANG)-phon.compose.foma
+			 morphology/phonology.compose.foma
 	$(AM_V_FOMA)$(PRINTF) \
 		"read regex \
 				@\"$<\" \
-			.o. @\"phonology/$(GTLANG)-phon.compose.foma\" \
+			.o. @\"morphology/phonology.compose.foma\" \
 			; \n\
 		 save stack $@\n\
 		 quit\n" \

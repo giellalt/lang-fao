@@ -20,7 +20,7 @@ LATEX=xelatex
 
 FORRESTARGS=-Dforrest.jvmargs="-Dfile.encoding=utf-8 -Djava.awt.headless=true"
 
-$(srcdir)/%-syntax.jspwiki: $(top_srcdir)/src/syntax/%.cg3
+$(srcdir)/%-syntax.jspwiki: $(top_srcdir)/src/cg3/%.cg3
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
 $(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/morphology/%.lexc

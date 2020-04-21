@@ -25,9 +25,9 @@ corpus_file=$corpusdir/$source_corpus.txt
 analyser=$top_builddir/src/analyser-disamb-gt-desc
 tokeniser=$top_builddir/tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst
 mwe_dis=$top_srcdir/tools/tokenisers/mwe-dis.cg3
-disambiguator=$top_builddir/src/syntax/disambiguator.bin
-functions_cg=$top_builddir/src/syntax/functions.bin
-dependencies=$top_builddir/src/syntax/dependency.bin
+disambiguator=$top_builddir/src/cg3/disambiguator.bin
+functions_cg=$top_builddir/src/cg3/functions.bin
+dependencies=$top_builddir/src/cg3/dependency.bin
 
 # Grammar checker variants:
 grc_tknsr=$top_builddir/tools/grammarcheckers/tokeniser-gramcheck-gt-desc.pmhfst

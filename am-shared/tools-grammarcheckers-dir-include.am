@@ -84,7 +84,7 @@ $(GIELLA_GC_TOKENISER): $(top_builddir)/tools/tokenisers/$(GIELLA_GC_TOKENISER)
 	$(AM_V_CP)cp -f $< $@
 
 # Copy valency if available:
-$(GIELLA_GC_VALENCY): $(top_builddir)/src/syntax/$(GIELLA_GC_VALENCY)
+$(GIELLA_GC_VALENCY): $(top_builddir)/src/cg3/$(GIELLA_GC_VALENCY)
 	$(AM_V_CP)cp -f $< $@
 
 # Copy mwe-dis:
@@ -126,7 +126,7 @@ $(GIELLA_GC_SPELLER): $(GIELLA_GC_ANAL_SPELLER)   \
 # Copy disambiguator:  done by other build rules
 
 # Fallback disambiguator rule:
-disambiguator.cg3: $(top_srcdir)/src/syntax/disambiguator.cg3
+disambiguator.cg3: $(top_srcdir)/src/cg3/disambiguator.cg3
 	$(AM_V_CP)cp -f $< $@
 
 # Copy grammarchecker: done by other build rules

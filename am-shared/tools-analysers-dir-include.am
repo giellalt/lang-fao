@@ -85,11 +85,11 @@ $(GIELLA_ANL_MWEDIS_SRC): \
 # cg3 files from common sources:
 $(GIELLA_ANL_FUNCTIONS_SRC) \
 $(GIELLA_ANL_DEPENDENCY_SRC): \
-%.cg3: $(top_builddir)/src/syntax/%.cg3
+%.cg3: $(top_builddir)/src/cg3/%.cg3
 	$(AM_V_CP)cp -f $< $@
 
 # Other cg3 files:
-%.cg3: $(top_srcdir)/src/syntax/%.cg3
+%.cg3: $(top_srcdir)/src/cg3/%.cg3
 	$(AM_V_CP)cp -f $< $@
 
 # Finally build the .zglt file:

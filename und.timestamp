@@ -1,4 +1,8 @@
-$Rev: 190043 $
+$Rev: 190068 $
+The second big renaming: src/morphology/ -> src/fst/. All build, test and config
+files are updated. `make` and `make check` works for sma.
+
+r190043:
 Added dynamic construction of a regex of flag diacritics found in tokeniser
 fst's. The regex is used to ensure that flag diacritics are considered epsilons
 at token boundaries. Fixes a number of tokenisation bugs.

@@ -64,9 +64,9 @@ hfstdata_DATA+=$(ABBR)
 endif # WANT_ABBR
 
 STEMSRCS:=$(filter-out \
-    %propernouns.lexc,$(wildcard $(top_srcdir)/src/morphology/stems/*.lexc))
+    %propernouns.lexc,$(wildcard $(top_srcdir)/src/fst/stems/*.lexc))
 OTHRSRCS:=$(filter-out \
-    %lexicon.lexc,$(wildcard $(top_srcdir)/src/morphology/*.lexc))
+    %lexicon.lexc,$(wildcard $(top_srcdir)/src/fst/*.lexc))
 
 # Convert source files to comma-separated list:
 empty:=
@@ -80,7 +80,7 @@ SCRIPTDIR=$(GTCORE)/scripts
 # Build the abbr.txt file:
 abbr: $(ABBR)
 $(ABBR): \
-		$(top_srcdir)/src/morphology/stems/abbreviations.lexc \
+		$(top_srcdir)/src/fst/stems/abbreviations.lexc \
 		$(top_srcdir)/tools/data/paradigm.abbr.txt            \
 		$(top_srcdir)/tools/data/corpustags.txt               \
 		$(STEMSRCS) $(GENRSRCS) $(OTHRSRCS)                   \

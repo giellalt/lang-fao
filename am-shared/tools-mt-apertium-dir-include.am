@@ -304,11 +304,11 @@ analyser-mt-apertium-desc.%.hfst: analyser-mt-apertium-desc.%.tmp.hfst \
 ##### Disambiguation and syntactic parsing targets
 # Copy files from the src dirs:
 dependency-mt-gt.cg3: \
-				$(GIELLA_SHARED)/smi/src/cg3/dependency.cg3
+				$(GIELLA_SHARED)/smi/src/syntax/dependency.cg3
 	$(AM_V_CP)cp -f $< $@
 
 functions-mt-gt.cg3: \
-				$(GIELLA_SHARED)/smi/src/cg3/functions.cg3
+				$(GIELLA_SHARED)/smi/src/syntax/functions.cg3
 	$(AM_V_CP)cp -f $< $@
 
 %-mt-gt.cg3: $(top_srcdir)/src/cg3/%.cg3

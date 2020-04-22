@@ -595,7 +595,7 @@ AS_IF([test x$with_foma != xno], [
 AC_MSG_RESULT([$gt_prog_foma])
 
 AS_IF([test x$gt_prog_foma = xyes \
-      -a "x$(grep 'GT_PHONOLOGY_MAIN' ${srcdir}/src/morphology/Makefile*.am \
+      -a "x$(grep 'GT_PHONOLOGY_MAIN' ${srcdir}/src/fst/Makefile*.am \
       	| grep 'twolc')" != "x" ],
       [AC_MSG_ERROR([You only have Foma, or you requested to use Foma, but \
 your main phonology file is a twolc file, which Foma can not compile. You need \
@@ -980,9 +980,9 @@ AC_ARG_ENABLE([abbr],
               [enable_abbr=$enableval],
               [enable_abbr=no])
 AS_IF([test x$enable_abbr != xno -a \
-    "$(find ${srcdir}/src/morphology/stems/ -name "abbreviations.lexc" | head -n 1)" = "" ],
+    "$(find ${srcdir}/src/fst/stems/ -name "abbreviations.lexc" | head -n 1)" = "" ],
     [AC_MSG_ERROR([You asked for abbr.txt generation, but have no file \
-src/morphology/stems/abbreviations.lexc])])
+src/fst/stems/abbreviations.lexc])])
 AS_IF([test x$enable_abbr = xyes -a x$enable_generators = xno],
     [AC_MSG_ERROR([You need to enable generators to build the abbr file])])
 AM_CONDITIONAL([WANT_ABBR], [test "x$enable_abbr" != xno])
@@ -1092,7 +1092,7 @@ To build, test and install:
     make install
 EOF
 AS_IF([test x$gt_prog_xslt = xno -a \
-      "$(find ${srcdir}/src/morphology/stems -name "*.xml" | head -n 1)" != "" ],
+      "$(find ${srcdir}/src/fst/stems -name "*.xml" | head -n 1)" != "" ],
       [AC_MSG_WARN([You have XML source files, but XML transformation to LexC is
 disabled. Please check the output of configure to locate any problems. The LexC
 files will still compile though.

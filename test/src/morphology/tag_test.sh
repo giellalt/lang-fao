@@ -18,7 +18,7 @@ if [[ $1 == "-v" ]]; then
     echo "$0: Are there tags not declared in root.lexc or misspelled?"
 fi
 
-sed -e '1,/LEXICON Root/ d' < ../../../src/morphology/lexicon.tmp.lexc \
+sed -e '1,/LEXICON Root/ d' < ../../../src/fst/lexicon.tmp.lexc \
     | cut -d '!' -f1   \
     | grep ' ;'        \
     | cut -d ':' -f1   \
@@ -34,7 +34,7 @@ sed -e '1,/LEXICON Root/ d' < ../../../src/morphology/lexicon.tmp.lexc \
     | grep -E -v '^(\+|\+%|\+\/\-|\+Cmp\-|\+Cmp%\-|\@0|\@%)$' \
     > "${lexctags}"
 
-cut -d '!' -f1 $srcdir/../../../src/morphology/root.lexc \
+cut -d '!' -f1 $srcdir/../../../src/fst/root.lexc \
     | cut -d ':' -f1                    \
     | sed 's/+/¢+/g'                    \
     | sed 's/@/¢@/g'                    \
@@ -53,5 +53,5 @@ elif [[ $1 == "-v" ]]; then
     echo "$0: No errors found."
 fi
 
-#cat src/morphology/clitics.lexc src/morphology/compounding.lexc src/morphology/affixes/*lexc |cut -d '!' -f1 | grep ';' |tr -s ' ' | sed 's/^ //' |grep ':' |cut -d ':' -f1 | sed 's/\+/¢+/g' | tr '¢' '\n' |sort | uniq -c |sort -n |less
-# visuell test: cat src/morphology/clitics.lexc src/morphology/compounding.lexc src/morphology/affixes/*lexc |cut -d '!' -f1 | grep ';' |tr -s ' ' | sed 's/^ //' |grep ':' |cut -d ':' -f1 | tr -d '0' | sed 's/\+/¢+/g' | tr '¢' '\n' |egrep -v '^(\+|\@|<)' |grep -v '^$' |less
+#cat src/fst/clitics.lexc src/fst/compounding.lexc src/fst/affixes/*lexc |cut -d '!' -f1 | grep ';' |tr -s ' ' | sed 's/^ //' |grep ':' |cut -d ':' -f1 | sed 's/\+/¢+/g' | tr '¢' '\n' |sort | uniq -c |sort -n |less
+# visuell test: cat src/fst/clitics.lexc src/fst/compounding.lexc src/fst/affixes/*lexc |cut -d '!' -f1 | grep ';' |tr -s ' ' | sed 's/^ //' |grep ':' |cut -d ':' -f1 | tr -d '0' | sed 's/\+/¢+/g' | tr '¢' '\n' |egrep -v '^(\+|\@|<)' |grep -v '^$' |less

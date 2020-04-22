@@ -25,7 +25,10 @@
 # The OR construction needs to be put into a variable for the parentheses to
 # survive 'make' and be visible to the shell - this at the same time silences
 # grep.
-GREPTAGSCOMMAND=( grep -E '(^\+.|.\+$$)' || echo '+NoTagsFound' )
+GREP_TAGS_COMMAND=( grep -E '(^\+.|.\+$$)' || echo '+NoTagsFound' )
+
+# An alternative grep to extract all flags in an fst:
+GREP_FLAGS_COMMAND=( grep -E '(^@.+@$$)' || echo '@C.NOFLAG@' )
 
 # Extract the sigma set using either HFST or Xfst depending on the configuration
 # The sigma extraction is tuned to the peculiarities of both, and does produce
@@ -76,5 +79,8 @@ endif # CAN_XFST
 endif # CAN_HFST
 
 %-$(TAG_FILE): %-sigma.txt
-	$(AM_V_GEN)$(GREPTAGSCOMMAND) < $< > $@	
+	$(AM_V_GEN)$(GREP_TAGS_COMMAND) < $< > $@	
+
+%-$(FLAG_FILE): %-sigma.txt
+	$(AM_V_GEN)$(GREP_FLAGS_COMMAND) < $< > $@	
 

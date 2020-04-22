@@ -21,6 +21,7 @@ HFST_REGEXP2FST_FLAGS="--xerox-composition=ON"
 # Variable to hold filename for file containing all tags used
 # (all symbols starting or ending with '+')
 TAG_FILE=tags.txt
+FLAG_FILE=flags.txt
 
 # Variable to hold filename for fst used as source for extracting tags,
 # sans extension
@@ -31,11 +32,13 @@ GT_TOKENISERS_FILTER_SRCS=
 
 if WANT_TOKENISERS
 GT_TOKENISERS_FILTER_SRCS+=make-disamb-CG-tags.regex \
+						   disamb-tokeniser-flags.regex \
 						   make-url-CG-tags.regex
 endif # WANT_TOKENISERS
 
 if WANT_GRAMCHECK
 GT_TOKENISERS_FILTER_SRCS+=make-gramcheck-CG-tags.regex \
+						   gramcheck-tokeniser-flags.regex \
 						   make-url-CG-tags.regex
 endif # WANT_GRAMCHECK
 
@@ -88,6 +91,9 @@ endif # WANT_TOKENISERS
 ### Reformat tags:
 make-%-CG-tags.regex: %-$(TAG_FILE)
 	$(AM_V_GEN)$(GTCORE)/scripts/taglist2make_CG_tags_regex.sh $< > $@
+
+%-tokeniser-flags.regex: %-$(FLAG_FILE)
+	$(AM_V_GEN)$(GTCORE)/scripts/flaglist2make_flag_regex.sh $< > $@
 
 ####### Copy regex files from the Giella core if not found locally: ########
 %.regex: $(GIELLA_SHARED)/all_langs/src/filters/%.regex

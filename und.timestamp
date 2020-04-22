@@ -1,4 +1,9 @@
-$Rev: 190025 $
+$Rev: 190043 $
+Added dynamic construction of a regex of flag diacritics found in tokeniser
+fst's. The regex is used to ensure that flag diacritics are considered epsilons
+at token boundaries. Fixes a number of tokenisation bugs.
+
+r190025:
 A glaring miss stopped all nightly builds. Thanks to Tino for pointing out.
 
 r189997:

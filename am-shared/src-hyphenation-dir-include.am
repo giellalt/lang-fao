@@ -24,7 +24,7 @@
 #! @param GT_HYPHENATION_MAIN required, the source of phonology
 #! @param GT_HYPHENATION_SUPPLEMENTS optional, other sources to distribute and
 #! 		  compile for other things
-#! Both @params are specified in $(GTLANG)/src/morphology/Makefile.modifications-phon.am.
+#! Both @params are specified in $(GTLANG)/src/fst/Makefile.modifications-phon.am.
 GT_HYPHENATION_SRCS=$(GT_HYPHENATION_MAIN) $(GT_HYPHENATION_SUPPLEMENTS)
 
 # All sources need to be included in the tarball

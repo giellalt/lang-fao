@@ -178,7 +178,7 @@ DEPGEN=$(AM_V_CP)mv -f $< $@
 #! @param GT_PHONOLOGY_MAIN required, the source of phonology
 #! @param GT_PHONOLOGY_SUPPLEMENTS optional, other sources to distribute and
 #! 		  compile for other things
-#! Both @params are specified in $(GTLANG)/src/morphology/Makefile.modifications-phon.am
+#! Both @params are specified in $(GTLANG)/src/fst/Makefile.modifications-phon.am
 
 # The source files are the sum of GT_PHONOLOGY_MAIN and GT_PHONOLOGY_SUPPLEMENTS
 GT_PHONOLOGY_SRCS=$(GT_PHONOLOGY_MAIN) $(GT_PHONOLOGY_SUPPLEMENTS)

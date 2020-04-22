@@ -23,19 +23,19 @@ FORRESTARGS=-Dforrest.jvmargs="-Dfile.encoding=utf-8 -Djava.awt.headless=true"
 $(srcdir)/%-syntax.jspwiki: $(top_srcdir)/src/cg3/%.cg3
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
-$(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/morphology/%.lexc
+$(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/fst/%.lexc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
-$(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/morphology/%.twolc
+$(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/fst/%.twolc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
-$(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/morphology/%.xfscript
+$(srcdir)/%-morphology.jspwiki: $(top_srcdir)/src/fst/%.xfscript
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
-$(srcdir)/%-stems.jspwiki: $(top_srcdir)/src/morphology/stems/%.lexc
+$(srcdir)/%-stems.jspwiki: $(top_srcdir)/src/fst/stems/%.lexc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
-$(srcdir)/%-affixes.jspwiki: $(top_srcdir)/src/morphology/affixes/%.lexc
+$(srcdir)/%-affixes.jspwiki: $(top_srcdir)/src/fst/affixes/%.lexc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2JSPWIKI) < $< > $@
 
 $(ALLINONE_JSP_PAGE): $(srcdir)/preamble.jspwiki $(VPATH_JSP_PAGES)

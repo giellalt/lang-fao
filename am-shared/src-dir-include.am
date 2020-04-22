@@ -187,10 +187,10 @@ noinst_DATA=$(GT_RAW)              \
 
 # if SKIP_PHONOLOGY is defined, the following block will be commented out:
 if SKIP_PHONOLOGY
-generator-raw-gt-desc.tmp.hfst: morphology/lexicon.hfst
+generator-raw-gt-desc.tmp.hfst: fst/lexicon.hfst
 	$(AM_V_CP)cp -f $< $@
 
-analyser-raw-gt-desc.tmp.%: morphology/lexicon.%
+analyser-raw-gt-desc.tmp.%: fst/lexicon.%
 	$(AM_V_CP)cp -f $< $@
 else !SKIP_PHONOLOGY
 
@@ -201,19 +201,19 @@ else !SKIP_PHONOLOGY
 if LEXREF_IN_PHONOLOGY
 
 # HFST
-generator-raw-gt-desc.tmp1.hfst: morphology/phonology.hfst.xfscript \
-					 morphology/lexicon.hfst
+generator-raw-gt-desc.tmp1.hfst: fst/phonology.hfst.xfscript \
+					 fst/lexicon.hfst
 	$(AM_V_HXFST)printf "save stack $@\nquit\n" | cat $< - \
 		| $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
 
 # XEROX
-analyser-raw-gt-desc.tmp1.xfst: morphology/phonology.xfst.xfscript \
-			 morphology/lexicon.xfst
+analyser-raw-gt-desc.tmp1.xfst: fst/phonology.xfst.xfscript \
+			 fst/lexicon.xfst
 	$(AM_V_XFST)$(XFST) $(VERBOSITY) -l $< -e "save stack $@" -stop
 
 # FOMA
-analyser-raw-gt-desc.tmp1.foma: morphology/phonology.foma.xfscript \
-			 morphology/lexicon.foma
+analyser-raw-gt-desc.tmp1.foma: fst/phonology.foma.xfscript \
+			 fst/lexicon.foma
 	$(AM_V_FOMA)$(FOMA) $(VERBOSITY) -l $< -e "save stack $@" -s
 
 else !LEXREF_IN_PHONOLOGY
@@ -222,46 +222,46 @@ else !LEXREF_IN_PHONOLOGY
 # HFST
 if WANT_REVERSED_INTERSECT
 # Do this is reversed intersect is enabled:
-generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.rev.hfst \
-					 morphology/phonology.rev.hfst
+generator-raw-gt-desc.tmp1.hfst: fst/lexicon.rev.hfst \
+					 fst/phonology.rev.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 morphology/phonology.rev.hfst \
+			-2 fst/phonology.rev.hfst \
 		| $(HFST_REVERSE) \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 
 else
 # Otherwise do this:
-generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.hfst \
-					 morphology/phonology.compose.hfst
+generator-raw-gt-desc.tmp1.hfst: fst/lexicon.hfst \
+					 fst/phonology.compose.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 			$(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 morphology/phonology.compose.hfst \
+			-2 fst/phonology.compose.hfst \
 		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 endif # WANT_REVERSED_INTERSECT
 
 # XEROX
-analyser-raw-gt-desc.tmp1.xfst: morphology/lexicon.xfst \
-			 morphology/phonology.compose.xfst
+analyser-raw-gt-desc.tmp1.xfst: fst/lexicon.xfst \
+			 fst/phonology.compose.xfst
 	$(AM_V_LEXC)$(PRINTF) \
-		"read-source morphology/lexicon.xfst\nread-rules morphology/phonology.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		"read-source fst/lexicon.xfst\nread-rules fst/phonology.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
 		| $(LEXC) $(VERBOSITY)
 
 # FOMA
-analyser-raw-gt-desc.tmp1.foma: morphology/lexicon.foma \
-			 morphology/phonology.compose.foma
+analyser-raw-gt-desc.tmp1.foma: fst/lexicon.foma \
+			 fst/phonology.compose.foma
 	$(AM_V_FOMA)$(PRINTF) \
 		"read regex \
 				@\"$<\" \
-			.o. @\"morphology/phonology.compose.foma\" \
+			.o. @\"fst/phonology.compose.foma\" \
 			; \n\
 		 save stack $@\n\
 		 quit\n" \
@@ -802,7 +802,7 @@ morpher-gt-desc.tmp.%: analyser-raw-gt-desc.% \
 
 # We want the URL analyser be made available as a standard analyser, both in its
 # own right, and for further processing down the stream.
-analyser-url-gt-desc.%: morphology/url.%
+analyser-url-gt-desc.%: fst/url.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "\
 		 load stack $<\n\
 		 $(INVERT_HFST)\

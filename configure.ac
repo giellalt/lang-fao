@@ -119,9 +119,9 @@ AM_CONDITIONAL([HAVE_DIALECTS], [test "x$DIALECTS" != "x"])
 ########## LANGUAGE SPECIFIC BUILD SETTINGS ##########
 
 # NO_PHONOLOGY = yes
-# ... makes the bulid process skip compilation of anything in the morphology/
+# ... makes the bulid process skip compilation of anything in the fst/
 # dir. This is mainly useful when building from external sources such that the
-# lexical fst built in the morphology/ dir is actually the full analyser.
+# lexical fst built in the fst/ dir is actually the full analyser.
 # The variable can also be set if a language is such that everything is
 # encoded in lexc, and thus does not need any phonology processing.
 # Default: empty, meaning that phonologies will be compiled.
@@ -133,7 +133,7 @@ AM_CONDITIONAL([SKIP_PHONOLOGY], [test "x$NO_PHONOLOGY" != "x"])
 # AND b) your phonology file contains a reference to the lexical transducer in
 # the following form:
 #
-# load stack morphology/lexicon.&FST&
+# load stack fst/lexicon.&FST&
 #
 # where &FST& will be automatically replaced with the relevant fst suffix (xfst,
 # hfst, foma). When done like that, the phonology rules will be composed with

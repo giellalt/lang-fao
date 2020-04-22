@@ -9,7 +9,7 @@ AC_CONFIG_FILES([Makefile \
                  src/Makefile \
                  src/filters/Makefile \
                  src/hyphenation/Makefile \
-                 src/morphology/Makefile \
+                 src/fst/Makefile \
                  src/orthography/Makefile \
                  src/phonetics/Makefile \
                  src/cg3/Makefile \

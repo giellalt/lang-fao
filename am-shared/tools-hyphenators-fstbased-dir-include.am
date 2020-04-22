@@ -20,19 +20,19 @@
 LEX_RAW=
 if WANT_REVERSED_INTERSECT
 # Do this if reversed intersect is enabled:
-LEX_RAW+=$(top_builddir)/src/morphology/lexicon.rev.hfst
+LEX_RAW+=$(top_builddir)/src/fst/lexicon.rev.hfst
 else
 # Otherwise do this:
-LEX_RAW+=$(top_builddir)/src/morphology/lexicon.hfst
+LEX_RAW+=$(top_builddir)/src/fst/lexicon.hfst
 endif # WANT_REVERSED_INTERSECT
 
 PHON_RULES=
 if WANT_REVERSED_INTERSECT
 # Do this if reversed intersect is enabled:
-PHON_RULES+=$(top_builddir)/src/morphology/phonology.rev.hfst
+PHON_RULES+=$(top_builddir)/src/fst/phonology.rev.hfst
 else
 # Otherwise do this:
-PHON_RULES+=$(top_builddir)/src/morphology/phonology.compose.hfst
+PHON_RULES+=$(top_builddir)/src/fst/phonology.compose.hfst
 endif # WANT_REVERSED_INTERSECT
 
 HYPH_RULES=$(top_builddir)/src/hyphenation/hyphenation.compose.hfst

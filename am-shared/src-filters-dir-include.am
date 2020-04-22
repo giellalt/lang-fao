@@ -245,7 +245,7 @@ LEX_TAG_FILE=lexicon-$(TAG_FILE)
 
 # Variable to hold filename for fst used as source for extracting tags,
 # sans extension
-TAG_EXTRACTION_FST=$(top_builddir)/src/morphology/%
+TAG_EXTRACTION_FST=$(top_builddir)/src/fst/%
 
 # Extract tags with specific prefixes, for automatic generation of regexes.
 # Only save the new tag list if there are real differences, otherwise just skip.

@@ -155,11 +155,11 @@ lexicon-L2.tmp.lexc: $(GT_LEXC_ROOT) $(GT_LEXC_L2_SRCS) $(GENERATED_LEXC_SRCS)
 # Copy shared url lexc file to local dir as tmp file before building. The tmp
 # file will cause the fst to also be tmp, and thus allow further local
 # processing if needed.
-%.tmp.lexc: $(GIELLA_SHARED)/all_langs/src/morphology/%.lexc
+%.tmp.lexc: $(GIELLA_SHARED)/all_langs/src/fst/%.lexc
 	$(AM_V_CP)cp -f $< $@
 
 # Copy shared stems files to local dir before building:
-generated_files/%.lexc: $(GIELLA_SHARED)/all_langs/src/morphology/stems/%.lexc
+generated_files/%.lexc: $(GIELLA_SHARED)/all_langs/src/fst/stems/%.lexc
 	$(AM_V_at)$(MKDIR_P) $(dir $@)
 	$(AM_V_CP)cp -f $< $@
 

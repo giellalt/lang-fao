@@ -1,0 +1,25 @@
+# Tag reweighting file. It should contain lines with two TAB separated values:
+# 1. tag
+# 2. weight
+#
+# Each tag gets the weight specified as either an addition or a multiplication
+# of any existing weight. Which of addition or multiplication is chosen as thus:
+# If the weight has a leading +, the weight will be added to the existing weight
+# If there is no leading +, the weight will be multiplied with the existing w.
+# If there are multiple instances of the same tag for a word form, each instance
+# will get the specified weight.
+
++Cmp	+20
++Der	+10
++Der1	+10
++Der2	+10
++Der3	+10
++Der4	+10
++Der5	+10
++PxSg1	+30
++PxSg2	+30
++PxSg3	+30
++PxPl1	+30
++PxPl2	+30
++PxPl3	+30
++Use/SpellNoSugg	+10000

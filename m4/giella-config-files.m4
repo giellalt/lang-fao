@@ -40,9 +40,7 @@ AC_CONFIG_FILES([Makefile \
                  tools/grammarcheckers/pipespec.xml \
                  tools/grammarcheckers/filters/Makefile \
                  tools/hyphenators/Makefile \
-                 tools/hyphenators/fstbased/Makefile \
-                 tools/hyphenators/fstbased/filters/Makefile \
-                 tools/hyphenators/patternbased/Makefile \
+                 tools/hyphenators/filters/Makefile \
                  tools/mt/Makefile \
                  tools/mt/filters/Makefile \
                  tools/mt/apertium/Makefile \

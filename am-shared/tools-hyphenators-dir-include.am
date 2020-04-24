@@ -1,0 +1,289 @@
+## Process this file with automake to produce Makefile.in
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+####### Pattern-based source file defs: ########
+
+# The file used by tex installations:
+GT_TEX_HYPHENATOR=$(GTLANG2)_hyph.tex
+
+# The file used by OOo/LO and others:
+GT_DIC_HYPHENATOR=hyph_$(GTLANG2).dic
+
+# Only build if enabled at configure time:
+if WANT_PATTERN_HYPHENATORS
+
+# Build targets:
+hfstdatadir=$(datadir)/giella/$(GTLANG)
+hfstdata_DATA=$(GT_TEX_HYPHENATOR) $(GT_DIC_HYPHENATOR)
+
+endif # WANT_PATTERN_HYPHENATORS
+
+####### Pattern build rules: ########
+
+# 0. make list of hyphenated words, either from corpus or from fst (fallback)
+
+# 0.a: convert lexical fst to configured format, no need for weights here:
+hyphenator-gt-desc-no_fallback.hfst: \
+			../fstbased/hyphenator-gt-desc-no_fallback.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) -i $< --format=$(HFST_FORMAT_NAME) -o $@
+
+# From fst:
+hyphenated-fst-wordlist.txt: hyphenator-gt-desc-no_fallback.hfst   \
+				$(top_builddir)/src/filters/remove-non_hyphenated-strings.hfst \
+				$(top_builddir)/src/filters/replace-hyphenation-chars.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+			@\"$<\" \
+		.o. @\"$(top_builddir)/src/filters/remove-non_hyphenated-strings.hfst\"\
+		.o. @\"$(top_builddir)/src/filters/replace-hyphenation-chars.hfst\" \
+			; \n\
+		print random-lower $(PATTERN_WORD_LIST) > $@\n\
+		quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
+# 1. build tex pattern file
+$(GT_TEX_HYPHENATOR): hyphenated-fst-wordlist.txt
+	$(AM_V_at)touch $@
+	$(AM_V_CP)cp -f $@ $(GTLANG2).pat
+	$(AM_V_GEN)$(GIELLA_CORE)/scripts/patgen.exp \
+			$(PATGEN) $(GTLANG2) $(srcdir) \
+			$(HYPH_START_FINISH) \
+			$(PATR_START_FINISH) \
+			$(GOOD_BAD_THRESHLD) \
+			$< $@
+
+# 2. convert tex pattern file to OOo pattern file
+$(GT_DIC_HYPHENATOR): $(GT_TEX_HYPHENATOR)
+	$(AM_V_GEN)$(PERL) $(GIELLA_CORE)/scripts/substrings.pl \
+		$(VERBOSITY) $< $@ UTF-8 2 2
+
+####### FST-based source file defs: ########
+
+LEX_RAW=
+if WANT_REVERSED_INTERSECT
+# Do this if reversed intersect is enabled:
+LEX_RAW+=$(top_builddir)/src/fst/lexicon.rev.hfst
+else
+# Otherwise do this:
+LEX_RAW+=$(top_builddir)/src/fst/lexicon.hfst
+endif # WANT_REVERSED_INTERSECT
+
+PHON_RULES=
+if WANT_REVERSED_INTERSECT
+# Do this if reversed intersect is enabled:
+PHON_RULES+=$(top_builddir)/src/fst/phonology.rev.hfst
+else
+# Otherwise do this:
+PHON_RULES+=$(top_builddir)/src/fst/phonology.compose.hfst
+endif # WANT_REVERSED_INTERSECT
+
+HYPH_RULES=$(top_builddir)/src/hyphenation/hyphenation.compose.hfst
+
+TAGWEIGHTS=tags.reweight
+
+GT_HYPHENATOR=hyphenator-gt-desc.hfstol
+
+# Only build if enabled at configure time:
+if CAN_HFST
+if WANT_FST_HYPHENATOR
+
+# Build targets:
+hfstdatadir=$(datadir)/giella/$(GTLANG)
+hfstdata_DATA=$(GT_HYPHENATOR)
+
+endif # WANT_FST_HYPHENATOR
+endif # CAN_HFST
+
+
+
+####### FST build rules: ########
+
+# NB! Since we use weights to prioritise among multiple hyphenation patterns,
+# only Hfst is supported for now.
+
+# 0. copy lex file, change format to weighted
+# 0.a Removed irrelevant stuff from the lexicon
+# 1. get all Err-tags, add weight 1000, and cat to tagweight file
+# 2. add tag weights
+# 3. project surface side
+# 4. compose-intersect with phon-rules
+# 5. remove hyph-points from 3, invert
+# 6. add hyphpoints from 3 with hyph-rules
+# 7. copy, change format and reweight hyphrules
+# 8. compose 4. and 5., and cat 6 and 5.a to make final hyphenation fst archive
+
+# Open question:
+# what do we do with capitalisation? For now, only handles lexical case in
+# lexicon, non-lexical case is handled by rules only.
+
+# 0. copy lex file, change format to weighted:
+lexicon-gt-desc.hfst: $(LEX_RAW)
+	$(AM_V_FST2FST)$(HFST_FST2FST) --format=openfst-tropical -i $< -o $@
+
+# 0.a Removed irrelevant stuff from the lexicon
+lexicon-gt-desc-clean.hfst: lexicon-gt-desc.hfst           \
+	filters/remove-CLB-strings.hfst    \
+	filters/remove-PUNCT-strings.hfst  \
+	filters/remove-UseCirc-strings.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+		@\"filters/remove-CLB-strings.hfst\"     \
+	.o. @\"filters/remove-PUNCT-strings.hfst\"   \
+	.o. @\"filters/remove-UseCirc-strings.hfst\" \
+	.o. @\"$<\" \
+			; \n\
+		 save stack $@\n\
+		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
+# 1. get all Err-tags, add weight 1000, and cat to tagweight file
+all_tags.txt: $(TAGWEIGHTS)
+	$(AM_V_CP)cp -f $< $@
+	$(AM_V_GEN)sed $$'s/$$/\t1000/' $(top_builddir)/src/filters/error-tags.txt \
+		>> $@
+
+# 2. add tag weights:
+lexicon-gt-desc-tag_weighted.hfst: lexicon-gt-desc-clean.hfst all_tags.txt
+	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-T all_tags.txt --arcs-only -i $< \
+		-o $@
+
+# 3. project surface side:
+lexicon-gt-desc-tag_weighted_no_analysis.hfst: lexicon-gt-desc-tag_weighted.hfst
+	$(AM_V_PROJECT)$(HFST_PROJECT) $(HFST_FLAGS) --project=lower -i $< \
+		-o $@
+
+# 4. compose-intersect with phon-rules
+
+# Unless there is no phonology component:
+if SKIP_PHONOLOGY
+hyphenator-raw-gt-desc.tmp.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst
+	$(AM_V_HMINIM)\
+		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-o $@
+
+else !SKIP_PHONOLOGY
+
+# First build a tmp1 raw file as the intersection between lexicon and rules:
+# HFST
+if WANT_REVERSED_INTERSECT
+# Do this if reversed intersect is enabled:
+hyphenator-raw-gt-desc.tmp.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst \
+					 $(PHON_RULES)
+	$(AM_V_INTRSCT)\
+		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
+			$(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-2 $(PHON_RULES) \
+		| $(HFST_REVERSE) \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-o $@
+
+else
+# Otherwise do this:
+hyphenator-raw-gt-desc.tmp.hfst: lexicon-gt-desc-tag_weighted_no_analysis.hfst \
+					 $(PHON_RULES)
+	$(AM_V_INTRSCT)\
+		  $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $<\
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
+			$(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-2 $(PHON_RULES) \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-o $@
+endif # WANT_REVERSED_INTERSECT
+endif !SKIP_PHONOLOGY
+
+# Convert this file to weighted format before using it in the hyphenators:
+downcase-derived_proper-strings.compose.hfst: \
+	$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) -i $< --format=openfst-tropical -o $@
+
+# 5. remove hyph-points from 4, invert
+hyphenator-gt-desc-input.hfst: hyphenator-raw-gt-desc.hfst     \
+	filters/remove-hyphenation-marks.hfst  \
+	filters/remove-infl_deriv-borders.hfst \
+	filters/remove-word-boundary.hfst      \
+	downcase-derived_proper-strings.compose.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+			@\"$<\" \
+		.o. @\"downcase-derived_proper-strings.compose.hfst\" \
+		.o. @\"filters/remove-hyphenation-marks.hfst\"  \
+		.o. @\"filters/remove-infl_deriv-borders.hfst\" \
+		.o. @\"filters/remove-word-boundary.hfst\"      \
+			; \n\
+		 invert\n\
+		 save stack $@\n\
+		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
+# 6. add hyphpoints from 4 with hyph-rules
+hyphenator-gt-desc-output.hfst: hyphenator-raw-gt-desc.hfst \
+		filters/remove-infl_deriv-borders.hfst \
+		$(HYPH_RULES) \
+		downcase-derived_proper-strings.compose.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+		@\"$<\" \
+	.o. @\"filters/remove-infl_deriv-borders.hfst\" \
+	.o. @\"downcase-derived_proper-strings.compose.hfst\" \
+	; \n\
+	define cleanlex\n\
+	set flag-is-epsilon ON\n\
+	read regex \
+	cleanlex .o. @\"$(HYPH_RULES)\" \
+	; \n\
+		 save stack $@\n\
+		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
+# 7. copy, change format and reweight hyphrules
+hyphenator-rules-desc-weighted.hfst: $(HYPH_RULES)
+	$(AM_V_FST2FST)$(HFST_FST2FST) --format=openfst-tropical -i $< \
+		| $(HFST_REWEIGHT) $(HFST_FLAGS) \
+		-e -a "5000" \
+		-o $@
+
+# 8. compose 5. and 6.:
+hyphenator-gt-desc-no_fallback.hfst: hyphenator-gt-desc-input.hfst \
+				  hyphenator-gt-desc-output.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+				@\"hyphenator-gt-desc-input.hfst\" \
+			.o. @\"hyphenator-gt-desc-output.hfst\" \
+			; \n\
+		 save stack $@\n\
+		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
+# 9. cat 7 and 8 to make final hyphenation fst archive
+hyphenator-gt-desc.hfst: hyphenator-gt-desc-no_fallback.hfst \
+				  hyphenator-rules-desc-weighted.hfst
+	$(AM_V_GEN)cat $^ > $@
+
+# Copy the raw hyphenator. This enables language-specific post-processing of the
+# raw hyphenator, if needed.
+define giella_raw_fsts
+%raw-gt-desc.$(1): %raw-gt-desc.tmp.$(1)
+	$$(AM_V_CP)cp -f $$< $$@
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_raw_fsts,$(fst))))
+
+####### Other targets: ###########
+clean-local:
+	-rm -f *.hfst *.txt
+	-rm -f *.hfst hyphenated-fst-wordlist.txt pattmp* *.pat
+
+# Only delete generated dic and tex files if you really want to start anew:
+maintainer-clean-local:
+	-rm -f *.tex *.dic
+
+include $(top_srcdir)/am-shared/silent_build-include.am
+include $(top_srcdir)/am-shared/lookup-include.am

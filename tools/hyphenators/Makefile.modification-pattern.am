@@ -1,0 +1,13 @@
+## Process this file with automake to produce Makefile.in
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+# Number of words to generate from fst as input to pattern generator:
+PATTERN_WORD_LIST=15000
+
+# Settings for the patgen tool - see the patgen documentation:
+HYPH_START_FINISH="1 2"
+PATR_START_FINISH="2 4"
+GOOD_BAD_THRESHLD="1 1 1"
+
+include $(top_srcdir)/am-shared/tools-hyphenators-patternbased-dir-include.am

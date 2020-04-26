@@ -31,4 +31,4 @@ endif # WANT_FST_HYPHENATOR
 clean-local:
 	-rm -f *.hfst *.xfst *.foma
 
-include $(top_srcdir)/am-shared/tools-hyphenators-fstbased-filters-dir-include.am
+include $(top_srcdir)/am-shared/tools-hyphenators-filters-dir-include.am

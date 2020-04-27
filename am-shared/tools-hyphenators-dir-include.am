@@ -38,12 +38,12 @@ endif # WANT_PATTERN_HYPHENATORS
 
 # From fst:
 hyphenated-fst-wordlist.txt: hyphenator-gt-desc-no_fallback.hfst   \
-				$(top_builddir)/src/filters/remove-non_hyphenated-strings.hfst \
-				$(top_builddir)/src/filters/replace-hyphenation-chars.hfst
+				filters/remove-non_hyphenated-strings.hfst \
+				filters/replace-hyphenation-chars.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 			@\"$<\" \
-		.o. @\"$(top_builddir)/src/filters/remove-non_hyphenated-strings.hfst\"\
-		.o. @\"$(top_builddir)/src/filters/replace-hyphenation-chars.hfst\" \
+		.o. @\"filters/remove-non_hyphenated-strings.hfst\"\
+		.o. @\"filters/replace-hyphenation-chars.hfst\" \
 			; \n\
 		print random-lower $(PATTERN_WORD_LIST) > $@\n\
 		quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)

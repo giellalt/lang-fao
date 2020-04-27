@@ -36,11 +36,6 @@ endif # WANT_PATTERN_HYPHENATORS
 
 # 0. make list of hyphenated words, either from corpus or from fst (fallback)
 
-# 0.a: convert lexical fst to configured format, no need for weights here:
-hyphenator-gt-desc-no_fallback.hfst: \
-			../fstbased/hyphenator-gt-desc-no_fallback.hfst
-	$(AM_V_FST2FST)$(HFST_FST2FST) -i $< --format=$(HFST_FORMAT_NAME) -o $@
-
 # From fst:
 hyphenated-fst-wordlist.txt: hyphenator-gt-desc-no_fallback.hfst   \
 				$(top_builddir)/src/filters/remove-non_hyphenated-strings.hfst \

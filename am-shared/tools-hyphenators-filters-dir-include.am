@@ -29,7 +29,9 @@ GIELLA_SRC_FILTERS=remove-word-boundary.regex \
                    remove-infl_deriv-borders.regex \
                    remove-CLB-strings.regex \
                    remove-PUNCT-strings.regex \
-                   remove-UseCirc-strings.regex
+                   remove-UseCirc-strings.regex \
+                   remove-non_hyphenated-strings.regex \
+                   replace-hyphenation-chars.regex
 
 # These will be included in the distribution:
 EXTRA_DIST=$(GIELLA_FSTHYPHENATOR_FILTER_SRCS) \

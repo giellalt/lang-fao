@@ -1,4 +1,8 @@
-$Rev: 190310 $
+$Rev: 190317 $
+The last hyphenation build fix: now also works with other than the default fst
+backend, e.g. with the foma backend.
+
+r190310:
 Removed a double target declaration, one from the old pattern-based build, and
 one from the fst build. It was a simple copy from fst to pattern, and is not
 needed anymore.

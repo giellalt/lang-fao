@@ -26,7 +26,7 @@ morf_codes="+N+Prop+Sg+Nom \
             +N+Prop+Ess"
 
 # Lexicon source file for lexicons and lemmas:
-source_file=src/morphology/generated_files/smi-sma-propernouns.lexc
+source_file=src/fst/generated_files/smi-sma-propernouns.lexc
 
 # Lexicons that should NOT be used to extract lemmas (egrep expression):
 exception_lexicons="(flagK)"

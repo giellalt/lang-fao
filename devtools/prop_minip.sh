@@ -10,7 +10,7 @@
 
 PATTERN=$1
 L_FILE="in.txt"
-cut -d '!' -f1 src/morphology/stems/propernouns.lexc | grep $PATTERN | cut -d ':' -f1 | tr -d '%'>$L_FILE
+cut -d '!' -f1 src/fst/stems/propernouns.lexc | grep $PATTERN | cut -d ':' -f1 | tr -d '%'>$L_FILE
 
 P_FILE="test/data/testpropparadigm.txt"
 

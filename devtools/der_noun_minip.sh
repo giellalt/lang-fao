@@ -16,7 +16,7 @@ GTHOME=$(echo $GTHOME)
 
 PATTERN=$1
 L_FILE="in.txt"
-cut -d '!' -f1 src/morphology/stems/nouns.lexc | egrep $PATTERN | cut -d ':' -f1>$L_FILE
+cut -d '!' -f1 src/fst/stems/nouns.lexc | egrep $PATTERN | cut -d ':' -f1>$L_FILE
 
 P_FILE="test/data/der_nouns.txt"
 

@@ -35,7 +35,7 @@ morf_codes="+N+Msc+Sg+Nom+Indef \
             +N+Msc+Pl+Dat+Def"
 
 # Lexicon source file for lexicons and lemmas:
-source_file=src/morphology/stems/nouns.lexc
+source_file=src/fst/stems/nouns.lexc
 
 # Lexicons that should NOT be used to extract lemmas (egrep expression):
 exception_lexicons="(h[_0-9]|kv[_0-9])"

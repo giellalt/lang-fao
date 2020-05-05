@@ -190,25 +190,25 @@ fi
 ### Commented out the check for now, as there is no practical use of this variable.
 ### It is ok to set the variable if one wants to, but we'll return to these things
 ### at a later point.
-
-# Check whether the variable is defined, warn the user if not or different from
-# the current dir:
-if   test x${!GTLANG_langenv} = x ; then
-    echo "WARNING: The variable ${GTLANG_langenv} has not been defined. You"
-    echo "will not be able to use your own fst's with the analyser and"
-    echo "generator scripts if not defined. Please consider rerunning this"
-    echo "script with option -l:"
-    echo
-    echo "$0 -l"
-    echo
-elif test x${!GTLANG_langenv} != x${LANGDIR} ; then
-    echo "WARNING: The variable ${GTLANG_langenv} has the value:"
-    echo "  ${!GTLANG_langenvs}"
-    echo "instead of the expected:"
-    echo "  ${LANGDIR}"
-    echo "Please consider rerunning this script with option -l to update the"
-    echo "variable:"
-    echo
-    echo "$0 -l"
-    echo
-fi
+###
+### # Check whether the variable is defined, warn the user if not or different from
+### # the current dir:
+### if   test x${!GTLANG_langenv} = x ; then
+###     echo "WARNING: The variable ${GTLANG_langenv} has not been defined. You"
+###     echo "will not be able to use your own fst's with the analyser and"
+###     echo "generator scripts if not defined. Please consider rerunning this"
+###     echo "script with option -l:"
+###     echo
+###     echo "$0 -l"
+###     echo
+### elif test x${!GTLANG_langenv} != x${LANGDIR} ; then
+###     echo "WARNING: The variable ${GTLANG_langenv} has the value:"
+###     echo "  ${!GTLANG_langenvs}"
+###     echo "instead of the expected:"
+###     echo "  ${LANGDIR}"
+###     echo "Please consider rerunning this script with option -l to update the"
+###     echo "variable:"
+###     echo
+###     echo "$0 -l"
+###     echo
+### fi

@@ -1,14 +1,100 @@
 #!/bin/bash
 
+# set -x
+
+# Variable setup for adding env. variable:
+LANGDIR=$(pwd)
+GTLANG=$(basename $LANGDIR | cut -d'-' -f2- )
+GTLANG_langenv=GTLANG_$GTLANG
+TIME=$(date +%H%M)
+DATE=$(date +%Y%m%d)
+LOGINFILE=
+
 function print_usage() {
     echo "Usage: $0 [OPTIONS...]"
-    echo "Prepare Autotools build infrastructure"
+    echo "Prepare Autotools build infrastructure, ensure that giella-shared and"
+    echo "giella-core is available before setting up Autotools."
     echo
     echo "  -h, --help          print this usage info"
-    echo "  -l, --add-langvar   Add env. variable \$GTLANG_fao to login script."
+    echo "  -l, --add-langvar   Add env. variable \$GTLANG_$GTLANG to login script."
     echo "                      This makes it possible to use the built fst's"
     echo "                      with the analyser and generator scripts."
     echo
+}
+
+function svn_check_out() {
+    reponame=$1
+    svn checkout $HTTPS_REPO_HOST/$reponame.git/trunk $reponame
+}
+
+function git_clone() {
+    reponame=$1
+    gitprotocoll=$(git remote get-url origin $LANGDIR )
+    if [[ $gitprotocoll == *"https"* ]] ; then
+        git clone $HTTPS_REPO_HOST/$reponame.git
+    else # ssh:
+        git clone $SSH_REPO_HOST/$reponame.git
+    fi
+}
+
+function make_symlink() {
+    origdir=$1
+    envvar=$2
+    reponame=$3
+    packagename=$4
+    # Check that the dir contains the packagename.pc.in file, if yes, create symlink:
+    if test -f $origdir/$packagename.pc.in ; then
+        echo "Found $envvar => $origdir, creating symbolic link to $reponame in $LANGDIR/../"
+        ln -s $origdir ../$reponame
+    else # If not, error out with a message that the repo is broken:
+        echo "ERROR: Found $origdir, but it seems to be broken:"
+        echo "It does not contain $packagename.pc.in"
+        exit 1
+    fi
+}
+
+function get_dep_repo() {
+    reponame=$1 # no spaces around '='! Or it will fail!
+    packagename=$2
+    repoformat=$3
+    reponamevar=$(echo $reponame | tr '[a-z]' '[A-Z]' | tr '-' '_' )
+    repooldnamevar=$(echo $reponamevar | sed 's/GIELLA_/GT/' )
+    echo
+    echo "Looking for $reponame ..."
+    # 1. check if the dir is there:
+    if test -d $LANGDIR/../$reponame ; then
+        # basic test that the dir is actually the one we want/not empty or bad:
+        if test -f "$LANGDIR/../$reponame/$packagename.pc.in" ; then
+            echo "$reponame found in ../"
+        else
+            echo "ERROR: Found $LANGDIR/../$reponame, but it seems to be broken:"
+            echo "It does not contain $packagename.pc.in"
+            exit 1
+        fi
+    else
+        # if no, check env variables for other locations
+        #    - GTHOME, GIELLA_HOME, GIELLA_SHARED/_CORE, GTCORE
+        if test "x$GTHOME" != x ; then # If GTHOME is defined, use that:
+            make_symlink "$GTHOME/$reponame" "GTHOME" "$reponame" "$packagename"
+        elif test "x$GIELLA_HOME" != x ; then # If GIELLA_HOME is defined, use that:
+            make_symlink "$GIELLA_HOME/$reponame" "GIELLA_HOME" "$reponame" "$packagename"
+        elif test "x${!reponamevar}" != x ; then # If GIELLA_SHARED/GIELLA_CORE is defined, use that:
+            make_symlink "${!reponamevar}" "$reponamevar" "$reponame" "$packagename"
+        elif test "x${!repooldnamevar}" != x ; then # If GTCORE is defined, use that:
+            if [[ "${!repooldnamevar}" == *"core"* ]] ; then # ... but only for GTCORE
+                make_symlink "${!repooldnamevar}" "$repooldnamevar" "$reponame" "$packagename"
+            fi
+        else # If nothing is found, checkout from svn/clone from git:
+            # echo "Nothing found, cloning/checking out $reponame"
+            if test "$repoformat" == "git" ; then
+                echo "Nothing found, cloning $reponame in ../"
+                cd "$LANGDIR/../" && git_clone $reponame
+            else
+                echo "Nothing found, checking out $reponame in ../"
+                cd "$LANGDIR/../" && svn_check_out $reponame
+            fi
+        fi
+    fi
 }
 
 # option variables
@@ -30,20 +116,31 @@ while test $# -ge 1 ; do
     shift
 done
 
-# Variable setup for adding env. variable:
-GTLANG=fao
-LANGDIR=$(pwd)
-TIME=$(date +%H%M)
-DATE=$(date +%Y%m%d)
-LOGINFILE=
+if test -d "$LANGDIR/.git" ; then
+    repoformat=git
+elif test -d "$LANGDIR/.svn" ; then
+    repoformat=svn
+elif test -d "$LANGDIR/../.svn" ; then # old langs dir etc
+    repoformat=svn
+elif test -d "$LANGDIR/../../.svn" ; then # old $GTHOME dir
+    repoformat=svn
+else
+    repoformat=unknown
+fi
+
+HTTPS_REPO_HOST=https://github.com/giellalttmp
+SSH_REPO_HOST=git@github.com:giellalttmp
+
+get_dep_repo "giella-core" "giella-core" "$repoformat"
+get_dep_repo "giella-shared" "giella-common" "$repoformat"
 
 # Find the login file:
 if [[ -r ~/.bash_profile ]]; then
-	LOGINFILE=~/.bash_profile
+    LOGINFILE=~/.bash_profile
 elif [[ -r ~/.profile ]]; then
-	LOGINFILE=~/.profile
+    LOGINFILE=~/.profile
 elif [[ -r ~/.bashrc ]]; then
-	LOGINFILE=~/.bashrc
+    LOGINFILE=~/.bashrc
 fi
 
 echo
@@ -54,60 +151,64 @@ autoreconf -i
 
 # If option -l / --add-langvar was used:
 if test x$langvar = xlangvar ; then
-	if test x$LOGINFILE = x ; then
-		echo
-		echo "ERROR: could not find a login script to add the variable to!"
-		echo
-		exit 1
-	else
-		if test x${GTLANG_fao} = x${LANGDIR} ; then
-			echo "\${GTLANG_fao} already defined."
-		else
-			# Already defined with a different value:
-			if test x${GTLANG_fao} != x ; then
-				renew=renew
-				OLDLANGDIR=${GTLANG_fao}
-			fi
+    if test x$LOGINFILE = x ; then
+        echo
+        echo "ERROR: could not find a login script to add the variable to!"
+        echo
+        exit 1
+    else
+        if test x${GTLANG_langenv} = x${LANGDIR} ; then
+            echo "${!GTLANG_langenv} already defined."
+        else
+            # Already defined with a different value:
+            if test x${GTLANG_langenv} != x ; then
+                renew=renew
+                OLDLANGDIR=${!GTLANG_langenv}
+            fi
 
-			# Add the variable to the login script:
-			cp $LOGINFILE $LOGINFILE.gtbackup.${DATE}-${TIME}
-			echo "export GTLANG_fao=$LANGDIR" >> $LOGINFILE
-			source $LOGINFILE
+            # Add the variable to the login script:
+            cp $LOGINFILE $LOGINFILE.gtbackup.${DATE}-${TIME}
+            echo "export $GTLANG_langenv=$LANGDIR" >> $LOGINFILE
+            source $LOGINFILE
 
-			# Feedback depending on whether it was added or redefined:
-			if test x$renew = xrenew ; then
-			 echo "The env. variable \${GTLANG_fao} has been redefined in"
-			 echo "$LOGINFILE. The old value ${OLDLANGDIR} is no longer in use."
-			else
-			 echo "The env. variable \${GTLANG_fao} has been added"
-			 echo "to $LOGINFILE. Your built fst's (those you get after"
-			 echo "'make') will be used with the analyser and generator"
-			 echo "scripts. There's a backup of your old $LOGINFILE in"
-			 echo " $LOGINFILE.gtbackup.${DATE}-${TIME}."
-    		 echo "Please log out and in again for the variable to take effect."
-			fi
-		fi
-	fi
+            # Feedback depending on whether it was added or redefined:
+            if test x$renew = xrenew ; then
+                echo "The env. variable ${GTLANG_langenv} has been redefined in"
+                echo "$LOGINFILE. The old value ${OLDLANGDIR} is no longer in use."
+            else
+                echo "The env. variable ${GTLANG_langenv} has been added"
+                echo "to $LOGINFILE. Your built fst's (those you get after"
+                echo "'make') will be used with the analyser and generator"
+                echo "scripts. There's a backup of your old $LOGINFILE in"
+                echo " $LOGINFILE.gtbackup.${DATE}-${TIME}."
+                echo "Please log out and in again for the variable to take effect."
+            fi
+        fi
+    fi
 fi
+
+### Commented out the check for now, as there is no practical use of this variable.
+### It is ok to set the variable if one wants to, but we'll return to these things
+### at a later point.
 
 # Check whether the variable is defined, warn the user if not or different from
 # the current dir:
-if   test x${GTLANG_fao} = x ; then
-	echo "WARNING: The variable \${GTLANG_fao} has not been defined. You"
-	echo "will not be able to use your own fst's with the analyser and"
-	echo "generator scripts if not defined. Please consider rerunning this"
-	echo "script with option -l:"
-	echo
-	echo "$0 -l"
-	echo
-elif test x${GTLANG_fao} != x${LANGDIR} ; then
-	echo "WARNING: The variable \${GTLANG_fao} has the value:"
-	echo "  ${GTLANG_fao}"
-	echo "instead of the expected:"
-	echo "  ${LANGDIR}"
-	echo "Please consider rerunning this script with option -l to update the"
-	echo "variable:"
-	echo
-	echo "$0 -l"
-	echo
+if   test x${!GTLANG_langenv} = x ; then
+    echo "WARNING: The variable ${GTLANG_langenv} has not been defined. You"
+    echo "will not be able to use your own fst's with the analyser and"
+    echo "generator scripts if not defined. Please consider rerunning this"
+    echo "script with option -l:"
+    echo
+    echo "$0 -l"
+    echo
+elif test x${!GTLANG_langenv} != x${LANGDIR} ; then
+    echo "WARNING: The variable ${GTLANG_langenv} has the value:"
+    echo "  ${!GTLANG_langenvs}"
+    echo "instead of the expected:"
+    echo "  ${LANGDIR}"
+    echo "Please consider rerunning this script with option -l to update the"
+    echo "variable:"
+    echo
+    echo "$0 -l"
+    echo
 fi

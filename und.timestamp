@@ -1,4 +1,9 @@
-$Rev: 190317 $
+$Rev: 190568 $
+Added checks for giella-core and giella-shared, symlinking to them if found,
+checking out (svn) or cloning (git) if not. Also removed every single reference
+to __UND__, it is not needed, and will cause merge conflicts.
+
+r190317:
 The last hyphenation build fix: now also works with other than the default fst
 backend, e.g. with the foma backend.
 

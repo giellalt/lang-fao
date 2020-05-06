@@ -81,10 +81,10 @@ SCRIPTDIR=$(GTCORE)/scripts
 abbr: $(ABBR)
 $(ABBR): \
 		$(top_srcdir)/src/fst/stems/abbreviations.lexc \
-		$(top_srcdir)/tools/data/paradigm.abbr.txt            \
-		$(top_srcdir)/tools/data/corpustags.txt               \
-		$(STEMSRCS) $(GENRSRCS) $(OTHRSRCS)                   \
-		../../src/$(GENERATOR)
+		$(STEMSRCS) $(GENRSRCS) $(OTHRSRCS)            \
+		../../src/$(GENERATOR)                         \
+		paradigm.abbr.txt                              \
+		corpustags.txt
 	$(AM_V_GEN)perl -I $(SCRIPTDIR) $(SCRIPTDIR)/extract-abbr.pl  \
 		--paradigm=$(top_srcdir)/tools/data/paradigm.abbr.txt \
 		--tags=$(top_srcdir)/tools/data/corpustags.txt   \

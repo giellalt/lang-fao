@@ -3,7 +3,7 @@
 ## Licence: GPL v3+
 
 # The current dir must be built first.
-SUBDIRS = filters . fstbased listbased
+SUBDIRS = filters . fstbased
 
 #########################################
 # BEGIN: Local processing

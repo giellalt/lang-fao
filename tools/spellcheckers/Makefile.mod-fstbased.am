@@ -1,0 +1,34 @@
+## Process this file with automake to produce Makefile.in
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+# The current dir must be built after the filters, but before the rest.
+SUBDIRS = filters . desktop mobile
+
+### BEGIN: Local build rules: *.hfst: *.tmp.hfst ###
+
+# Remove improper derivations by turning the DerN tags into flag
+# diacritics blocking wrong order derivations.
+#
+# Remove ungrammatical compounds by turning tags into flags:
+# 1. Insert tags for default compounding
+# 2. Split multiple tags into separate paths
+# 3. Convert tags to flags
+# 4. Make flags two-sided
+generator-fstspeller-gt-norm.hfst: \
+		generator-fstspeller-gt-norm.tmp.hfst \
+		filters/convert_to_flags-CmpNP-tags.hfst \
+		filters/split-CmpNP-tags.hfst
+	$(AM_V_HXFST)$(PRINTF) "\
+		read regex                                                 \
+			@\"filters/convert_to_flags-CmpNP-tags.hfst\"          \
+		.o. @\"filters/split-CmpNP-tags.hfst\"                     \
+		.o. @\"$<\"                                                \
+		; \n\
+		twosided flag-diacritics\n\
+		save stack $@\n\
+		quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
+
+#### END: Local build rules: *.hfst: *.tmp.hfst ####
+
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-dir-include.am

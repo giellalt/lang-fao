@@ -1,4 +1,9 @@
-$Rev: 190663 $
+$Rev: 190714 $
+Step two in flattening the tools/spellcheckers/ dir tree: copying the
+desktop/weighting/ dir as the default one - for most languages the
+mobile/weighting/ dir is just a copy of the desktop one.
+
+r190663:
 Step one in flattening the tools/spellcheckers/ dir tree: copying all subdir
 Makefile.am files to *.mod-* files in the top spellcheckers dir, except from the
 weigthing dirs.

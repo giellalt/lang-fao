@@ -2,9 +2,6 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-# The current dir must be built after weighting, but before the rest.
-SUBDIRS = filters weighting . hfst foma
-
 # Name of speller corpus sans suffix:
 CORPUSNAME=spellercorpus
 
@@ -30,7 +27,3 @@ UW_SPELLER_SRC=generator-desktopspeller-gt-norm-base.hfst
 CORPUS_SIZE=
 
 ### BEGIN: Local build rules: *.hfst: *.tmp.hfst ###
-
-#### END: Local build rules: *.hfst: *.tmp.hfst ####
-
-include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop-dir-include.am

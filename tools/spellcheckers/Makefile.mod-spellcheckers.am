@@ -2,9 +2,6 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-# The current dir must be built first.
-SUBDIRS = filters . fstbased
-
 #########################################
 # BEGIN: Local processing
 #
@@ -16,5 +13,3 @@ SUBDIRS = filters . fstbased
 
 # END: Local processing
 #########################################
-
-include $(top_srcdir)/am-shared/tools-spellcheckers-dir-include.am

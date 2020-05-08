@@ -15,14 +15,14 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-GT_SPELLER_HFST=../generator-mobilespeller-gt-norm.hfst
-GT_SPELLER_ACCEPTOR=acceptor.default.hfst
+MOB_GT_SPELLER_HFST=generator-mobilespeller-gt-norm.hfst
+MOB_GT_SPELLER_ACCEPTOR=acceptor.default.mobile.hfst
 
 # Zero compression for mobile zhfst files:
-ZIPFLAGS=-0 $(VERBOSITY)
+MOB_ZIPFLAGS=-0 $(VERBOSITY)
 
 # Use zip with zero compression for best performance on mobile phones:
-ZHFST_COMPRESSION=$(ZIP) $(ZIPFLAGS) ../../$@ *
+ZHFST_COMPRESSION=$(ZIP) $(MOB_ZIPFLAGS) ../../$@ *
 
 # Due to a bug in GNU make (it seems), the target
 # 'final_strings.all.%.hfst' will not be built when invoking make
@@ -37,14 +37,13 @@ ZHFST_COMPRESSION=$(ZIP) $(ZIPFLAGS) ../../$@ *
 
 # Other external tools and paths needed for mobile spellers:
 KBDGEN=kbdgen
-KBDGENPATH=$(GIELLA_CORE)/$(KBDGEN)
 
 ###### Conditional string variables ######
 
 #### Swaps:
 # Enable swaps depending on variable setting:
-swaps=$(shell \
-	if [[ $(USE_SWAPS) != 'no' ]] ; then \
+mob_swaps=$(shell \
+	if [[ $(MOB_USE_SWAPS) != 'no' ]] ; then \
 		echo "--swap"; \
 	else \
 		echo ""; \
@@ -52,89 +51,89 @@ swaps=$(shell \
 
 #### Initial letters:
 # Set file name to the empty string or initial_letters.all depending on variable:
-initial_letter_deps=$(shell \
-	if [[ $(INITIAL_EDITS) != 'no' ]] ; then \
+mob_initial_letter_deps=$(shell \
+	if [[ $(MOB_INITIAL_EDITS) != 'no' ]] ; then \
 		echo "initial_letters.all.%.hfst"; \
 	else \
 		echo ""; \
 	fi)
 
 # Set file name to the empty string or initial_letters.all depending on variable:
-initial_letter_fst_include=$(shell \
-	if [[ $(INITIAL_EDITS) != 'no' ]] ; then \
+mob_initial_letter_fst_include=$(shell \
+	if [[ $(MOB_INITIAL_EDITS) != 'no' ]] ; then \
 		echo "( @\\\"initial_letters.all.$*.hfst\\\" )"; \
 	else \
 		echo ""; \
 	fi)
 
 # Set python script option depending on variable:
-initial_letter_error_model_option=$(shell \
-	if [[ $(INITIAL_EDITS) != 'no' ]] ; then \
+mob_initial_letter_error_model_option=$(shell \
+	if [[ $(MOB_INITIAL_EDITS) != 'no' ]] ; then \
 		echo "--no-string-initial-correction"; \
 	else \
 		echo ""; \
 	fi)
 
-# Set dependency file name(s) depending on variable value:
-initial_letter_all_deps=$(shell \
-	if   [[ $(INITIAL_EDITS) == 'regex' ]] ; then \
-		echo "initial_letters.regex.%.hfst"; \
-	elif [[ $(INITIAL_EDITS) == 'txt'   ]] ; then \
-		echo "initial_letters.txt.%.hfst"; \
-	elif [[ $(INITIAL_EDITS) == 'both'  ]] ; then \
-		echo "initial_letters.regex.%.hfst initial_letters.txt.%.hfst"; \
-	else \
-		echo ""; \
-	fi)
+## Set dependency file name(s) depending on variable value:
+#mob_initial_letter_all_deps=$(shell \
+#	if   [[ $(MOB_INITIAL_EDITS) == 'regex' ]] ; then \
+#		echo "initial_letters.regex.%.hfst"; \
+#	elif [[ $(MOB_INITIAL_EDITS) == 'txt'   ]] ; then \
+#		echo "initial_letters.txt.%.hfst"; \
+#	elif [[ $(MOB_INITIAL_EDITS) == 'both'  ]] ; then \
+#		echo "initial_letters.regex.%.hfst initial_letters.txt.%.hfst"; \
+#	else \
+#		echo ""; \
+#	fi)
 
-# Set file name to the empty string or initial_letters.all depending on variable:
-initial_letter_all_build=$(shell \
-	if   [[ $(INITIAL_EDITS) == 'regex' ]] ; then \
-		echo "$(AM_V_CP)cp -f $< $@"; \
-	elif [[ $(INITIAL_EDITS) == 'txt'   ]] ; then \
-		echo "$(AM_V_CP)cp -f $< $@"; \
-	elif [[ $(INITIAL_EDITS) == 'both'  ]] ; then \
-		echo "$(AM_V_UNION)$(HFST_DISJUNCT) $^ -o $@"; \
-	else \
-		echo ""; \
-	fi)
+## Set file name to the empty string or initial_letters.all depending on variable:
+#mob_initial_letter_all_build=$(shell \
+#	if   [[ $(MOB_INITIAL_EDITS) == 'regex' ]] ; then \
+#		echo "$(AM_V_CP)cp -f $< $@"; \
+#	elif [[ $(MOB_INITIAL_EDITS) == 'txt'   ]] ; then \
+#		echo "$(AM_V_CP)cp -f $< $@"; \
+#	elif [[ $(MOB_INITIAL_EDITS) == 'both'  ]] ; then \
+#		echo "$(AM_V_UNION)$(HFST_DISJUNCT) $^ -o $@"; \
+#	else \
+#		echo ""; \
+#	fi)
 
 #### Strings:
-# Set file name to the empty string or strings.all depending on variable:
-strings_deps=$(shell \
-	if [[ $(STRING_EDITS) != 'no' ]] ; then \
-		echo "strings.all.%.hfst"; \
-	else \
-		echo ""; \
-	fi)
+# Set file name to the empty string or strings.all.%.mobile.hfst depending on variable:
+#mob_strings_deps=$(shell \
+#	if [[ $(MOB_STRING_EDITS) != 'no' ]] ; then \
+#		echo "strings.all.%.mobile.hfst"; \
+#	else \
+#		echo ""; \
+#	fi)
 
-# Set build command for strings.all depending on variable value:
-strings_fst_include=$(shell \
-	if [[ $(STRING_EDITS) != 'no' ]] ; then \
-		echo "$(AM_V_UNION)$(HFST_DISJUNCT) $^"; \
-	else \
-		echo "$(AM_V_GEN)cat $^"; \
-	fi)
+## Set build command for mob_strings.all depending on variable value:
+#mob_strings_fst_include=$(shell \
+#	if [[ $(MOB_STRING_EDITS) != 'no' ]] ; then \
+#		echo "$(AM_V_UNION)$(HFST_DISJUNCT) $^"; \
+#	else \
+#		echo "$(AM_V_GEN)cat $^"; \
+#	fi)
 
 # Set dependency file name(s) depending on variable value:
-strings_all_deps=$(shell \
-	if   [[ $(STRING_EDITS) == 'regex' ]] ; then \
-		echo "strings.regex.%.hfst"; \
-	elif [[ $(STRING_EDITS) == 'txt'   ]] ; then \
-		echo "strings.txt.%.hfst"; \
-	elif [[ $(STRING_EDITS) == 'both'  ]] ; then \
-		echo "strings.regex.%.hfst strings.txt.%.hfst"; \
+mob_strings_all_deps=$(shell \
+	if   [[ $(MOB_STRING_EDITS) == 'regex' ]] ; then \
+		echo "strings.regex.%.mobile.hfst"; \
+	elif [[ $(MOB_STRING_EDITS) == 'txt'   ]] ; then \
+		echo "strings.txt.%.mobile.hfst"; \
+	elif [[ $(MOB_STRING_EDITS) == 'both'  ]] ; then \
+		echo "strings.regex.%.mobile.hfst strings.txt.%.mobile.hfst"; \
 	else \
 		echo ""; \
 	fi)
 
 # Set build command depending on variable:
-strings_all_build=$(shell \
-	if   [[ $(STRING_EDITS) == 'regex' ]] ; then \
+mob_strings_all_build=$(shell \
+	if   [[ $(MOB_STRING_EDITS) == 'regex' ]] ; then \
 		echo "$(AM_V_CP)cp -f $< $@"; \
-	elif [[ $(STRING_EDITS) == 'txt'   ]] ; then \
+	elif [[ $(MOB_STRING_EDITS) == 'txt'   ]] ; then \
 		echo "$(AM_V_CP)cp -f $< $@"; \
-	elif [[ $(STRING_EDITS) == 'both'  ]] ; then \
+	elif [[ $(MOB_STRING_EDITS) == 'both'  ]] ; then \
 		echo "$(AM_V_UNION)$(HFST_DISJUNCT) $^ -o $@"; \
 	else \
 		echo ""; \
@@ -142,40 +141,40 @@ strings_all_build=$(shell \
 
 #### Final strings:
 # Set file name to the empty string or final_strings.all depending on variable:
-final_strings_deps=$(shell \
-	if [[ $(FINAL_STRING_EDITS) != 'no' ]] ; then \
+mob_final_strings_deps=$(shell \
+	if [[ $(MOB_FINAL_STRING_EDITS) != 'no' ]] ; then \
 		echo "final_strings.all.%.hfst"; \
 	else \
 		echo ""; \
 	fi)
 
 # Set build command for strings.all depending on variable value:
-final_strings_fst_include=$(shell \
-	if [[ $(FINAL_STRING_EDITS) != 'no' ]] ; then \
+mob_final_strings_fst_include=$(shell \
+	if [[ $(MOB_FINAL_STRING_EDITS) != 'no' ]] ; then \
 		echo "( @\\\"final_strings.all.$*.hfst\\\" )"; \
 	else \
 		echo ""; \
 	fi)
 
 # Set dependency file name(s) depending on variable value:
-final_strings_all_deps=$(shell \
-	if   [[ $(FINAL_STRING_EDITS) == 'regex' ]] ; then \
+mob_final_strings_all_deps=$(shell \
+	if   [[ $(MOB_FINAL_STRING_EDITS) == 'regex' ]] ; then \
 		echo "final_strings.regex.%.hfst"; \
-	elif [[ $(FINAL_STRING_EDITS) == 'txt'   ]] ; then \
+	elif [[ $(MOB_FINAL_STRING_EDITS) == 'txt'   ]] ; then \
 		echo "final_strings.txt.%.hfst"; \
-	elif [[ $(FINAL_STRING_EDITS) == 'both'  ]] ; then \
+	elif [[ $(MOB_FINAL_STRING_EDITS) == 'both'  ]] ; then \
 		echo "final_strings.regex.%.hfst final_strings.txt.%.hfst"; \
 	else \
 		echo ""; \
 	fi)
 
 # Set build command depending on variable:
-final_strings_all_build=$(shell \
-	if   [[ $(FINAL_STRING_EDITS) == 'regex' ]] ; then \
+mob_final_strings_all_build=$(shell \
+	if   [[ $(MOB_FINAL_STRING_EDITS) == 'regex' ]] ; then \
 		echo "$(AM_V_CP)cp -f $< $@"; \
-	elif [[ $(FINAL_STRING_EDITS) == 'txt'   ]] ; then \
+	elif [[ $(MOB_FINAL_STRING_EDITS) == 'txt'   ]] ; then \
 		echo "$(AM_V_CP)cp -f $< $@"; \
-	elif [[ $(FINAL_STRING_EDITS) == 'both'  ]] ; then \
+	elif [[ $(MOB_FINAL_STRING_EDITS) == 'both'  ]] ; then \
 		echo "$(AM_V_UNION)$(HFST_DISJUNCT) $^ -o $@"; \
 	else \
 		echo ""; \
@@ -183,36 +182,36 @@ final_strings_all_build=$(shell \
 
 #### Whole words:
 # Set file name to the empty string or words.%.txt depending on variable:
-words_deps=$(shell \
-	if [[ $(WORD_REPLACEMENTS) != 'no' ]] ; then \
-		echo "words.%.txt"; \
+mob_words_deps=$(shell \
+	if [[ $(MOB_WORD_REPLACEMENTS) != 'no' ]] ; then \
+		echo "words.%.mobile.txt"; \
 	else \
 		echo ""; \
 	fi)
 
 ####### Automake targets: ########
 
-GT_ERRMODELS=
+MOB_GIELLA_ERRMODELS=
 if WANT_SPELLERS
 if CAN_HFST
-#GT_ERRMODELS+=errmodel.edit-distance-1.hfst
+#MOB_GIELLA_ERRMODELS+=errmodel.edit-distance-1.hfst
 
 # Only build speller if it is enabled (default=yes)
 if WANT_HFST_MOBILE_SPELLER
-GT_ERRMODELS+=errmodel.default.hfst
+MOB_GIELLA_ERRMODELS+=errmodel.default.mobile.hfst
 
-GT_SPELLING_HFST=$(GTLANG2)-mobile.zhfst
+MOB_GIELLA_SPELLING_HFST=$(GTLANG2)-mobile.zhfst
 
 mobilespellerdir=$(datadir)/giella/mobilespellers/
 #! @param GT_VOIKKO optional, set to spell checker automata names if
 #!					installable
-mobilespeller_DATA=$(GT_SPELLING_HFST) $(ALT_WS_ZHFST_FILES) $(ALT_ORTH_ZHFST_FILES)
+mobilespeller_DATA=$(MOB_GIELLA_SPELLING_HFST) $(ALT_WS_ZHFST_FILES) $(ALT_ORTH_ZHFST_FILES)
 
 endif # WANT_HFST_MOBILE_SPELLER
 endif # CAN_HFST
 endif # WANT_SPELLERS
 
-noinst_DATA=$(GT_ERRMODELS) \
+noinst_DATA+=$(MOB_GIELLA_ERRMODELS) \
 			$(INST_FILES)
 
 ###################################
@@ -221,7 +220,7 @@ noinst_DATA=$(GT_ERRMODELS) \
 ####### Easter egg version info: #######
 # Easter egg content - depends also on the fst, to
 # make sure the easter egg is rebuilt every time the fst is rebuilt:
-easteregg.%.txt: $(GT_SPELLER_HFST)
+easteregg.%.mobile.txt: $(MOB_GT_SPELLER_HFST)
 	$(AM_V_GEN)$(GTCORE)/scripts/make-hfstspeller-version-easter-egg.sh \
 		$(GTLANG2) \
 		$(top_srcdir) \
@@ -231,7 +230,7 @@ easteregg.%.txt: $(GT_SPELLER_HFST)
 		> $@
 
 # Easter egg suggestions:
-easteregg.%.suggtxt: easteregg.%.txt
+easteregg.%.mobile.suggtxt: easteregg.%.mobile.txt
 	$(AM_V_GEN)sed -e 's/^/nuvviDspeller:/' < $< \
 		| sed = \
 		| sed 'N;s/\n/	/' \
@@ -239,56 +238,55 @@ easteregg.%.suggtxt: easteregg.%.txt
 		> $@
 
 # Easter egg string acceptor:
-easteregg.%.hfst: easteregg.%.txt
+easteregg.%.mobile.hfst: easteregg.%.mobile.txt
 	$(AM_V_GEN)$(HFST_STRINGS2FST) $(HFST_FLAGS) -j < $< \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower > $@
 
 ####### Error model: #######
 # Error model building - edit distance based on transducer alphabet:
-editdist.%.regex: editdist.%.txt $(initial_letter_deps)
+editdist.%.mobile.regex: editdist.%.txt $(mob_initial_letter_deps)
 	$(AM_V_GEN)$(GTCORE)/scripts/editdist.py \
 		--verbose \
-		$(swaps) \
+		$(mob_swaps) \
 		--epsilon='@0@' \
 		--default-weight=$(DEFAULT_WEIGHT) \
 		--regex \
 		--input=$< \
 		--output-file=$@ \
-		$(initial_letter_error_model_option)
+		$(mob_initial_letter_error_model_option)
 
 # Initial string edits, if enabled:
-initial_letters.txt.%.hfst: initial_letters.%.txt
-	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
+initial_letters.txt.%.mobile.hfst: initial_letters.%.txt
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' | cut -f1-2 \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j -p \
 		-o $@
 
-initial_letters.regex.%.hfst: initial_letters.%.regex
+initial_letters.regex.%.mobile.hfst: initial_letters.%.regex
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
 		-o $@
 
-initial_letters.all.%.hfst: $(initial_letter_all_deps)
-	$(initial_letter_all_build)
+#initial_letters.all.%.hfst: $(mob_initial_letter_all_deps)
+#	$(mob_initial_letter_all_build)
 
 # Final string edits, if enabled:
-final_strings.txt.%.hfst: final_strings.%.txt
-	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
+final_strings.txt.%.mobile.hfst: final_strings.%.txt
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' | cut -f1-2 \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
 		-o $@
 
-final_strings.regex.%.hfst: final_strings.%.regex
+final_strings.regex.%.mobile.hfst: final_strings.%.regex
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
 		-o $@
 
-final_strings.all.%.hfst: $(final_strings_all_deps)
-	$(final_strings_all_build)
+final_strings.all.%.hfst: $(mob_final_strings_all_deps)
+	$(mob_final_strings_all_build)
 
-# Helper fst:
-anystar.hfst:
-	$(AM_V_RGX2FST)echo "?*" | $(HFST_REGEXP2FST) -o $@
-
-# In-word list of strings known to be misspelled:
-strings.txt.%.hfst: strings.%.txt anystar.hfst
-	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' \
+# In-word list of strings known to be misspelled, fall back for mobile fst's:
+# if there is no mobile-specific txt file, it will fall back to the default error
+# model file. If there IS a mobile specific txt file, the default rule will apply
+# due to pattern matching rules.
+strings.txt.%.mobile.hfst: strings.%.txt anystar.hfst
+	$(AM_V_STR2FST)grep -v '^#' $< | grep -v '^$$' | cut -f1-2 \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
 		| $(HFST_CONCATENATE)   anystar.hfst - \
 		| $(HFST_CONCATENATE) - anystar.hfst   \
@@ -300,15 +298,15 @@ strings.txt.%.hfst: strings.%.txt anystar.hfst
 # larger as the edit distance, since the file is multiplied again as part of
 # the editStrings build target. The idea is that the regex should contain a
 # highly targeted set of frequent spelling errors.
-strings.regex.%.hfst: strings.%.regex anystar.hfst
+strings.regex.%.mobile.hfst: strings.%.regex anystar.hfst
 	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $<\
 		| $(HFST_CONCATENATE)   anystar.hfst - \
 		| $(HFST_CONCATENATE) - anystar.hfst   \
 		| $(HFST_REPEAT) -f 1 -t $(STRING_REGEX_EDIT_DISTANCE) \
 		-o $@
 
-strings.all.%.hfst: $(strings_all_deps)
-	$(strings_all_build)
+strings.all.%.mobile.hfst: $(mob_strings_all_deps)
+	$(mob_strings_all_build)
 
 # Combine edit distance with string pattern edits, then multiply according to
 # the specified editing distance. The strings part is included depending on
@@ -323,8 +321,15 @@ editdist.all.%.hfst: editdist.all.%.hfst.tmp keyboardlayout.hfst
 		-o $@
 
  
-# Error model building - list of words known to be misspelled:
-words.%.hfst: $(words_deps) easteregg.%.suggtxt
+# Error model building - list of words known to be misspelled, mobile version:
+words.%.mobile.hfst: $(mob_words_deps) easteregg.%.mobile.suggtxt
+	$(AM_V_STR2FST)grep -h -v '^#' $^ | grep -v '^$$'   \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
+		-o $@
+
+# Error model building - list of words known to be misspelled, mobile
+# fallback version, using the default words.txt file as input instead:
+words.%.mobile.hfst: $(words_deps) easteregg.%.mobile.suggtxt
 	$(AM_V_STR2FST)grep -h -v '^#' $^ | grep -v '^$$'   \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
 		-o $@
@@ -332,10 +337,10 @@ words.%.hfst: $(words_deps) easteregg.%.suggtxt
 .PHONY: att
 att: $(srcdir)/keyboardlayout.att
 $(srcdir)/keyboardlayout.att:
-	$(AM_V_GEN)PYTHONPATH=$(KBDGENPATH) \
-	$(PYTHON) -m $(KBDGEN) -t errormodel -l $(KEYBOARD_LAYOUT_ID) \
+	$(AM_V_GEN)$(KBDGEN) -t errormodel -l $(KEYBOARD_LAYOUT_ID) \
 		$(KEYBOARD_LAYOUT_DIR)/project.yaml \
 		> $@
+	$(AM_V_at)echo "ATT error model for keyboard layout has been made!"
 	$(AM_V_at)echo "Remember to add $@ to svn!"
 
 keyboardlayout.hfst: keyboardlayout.att anystar.hfst
@@ -346,16 +351,16 @@ keyboardlayout.hfst: keyboardlayout.att anystar.hfst
 
 # The final error model is assembled here:
 errmodel.%.hfst: words.%.hfst \
-				 $(initial_letter_deps) \
+				 $(mob_initial_letter_deps) \
 				 editdist.all.%.hfst \
-				 $(final_strings_deps)
+				 $(mob_final_strings_deps)
 	$(AM_V_RGX2FST)printf "\
 		[ @\"words.$*.hfst\"    \
 		| \
 		  [ \
-		      $(initial_letter_fst_include) \
+		      $(mob_initial_letter_fst_include) \
 		      @\"editdist.all.$*.hfst\"  \
-		      $(final_strings_fst_include) \
+		      $(mob_final_strings_fst_include) \
 		  ] \
 		];" \
 		| $(HFST_REGEXP2FST) -S -E $(HFST_FLAGS) \
@@ -363,28 +368,28 @@ errmodel.%.hfst: words.%.hfst \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw   \
 		  -o $@
 
-####### Alternate error model: #######
-# Alternatively, the error model can be constructed as a long list of regular
-# expressions, semicolon separated:
-errmodel.%.hfst: errmodel.%.regex easteregg.%.hfst
-	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
-		| $(HFST_DISJUNCT) - easteregg.$*.hfst \
-		| $(HFST_PUSH_WEIGHTS) --push=initial  \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw \
-		-o $@
-
-# ... or as an xfscript file:
-errmodel.%.hfst: errmodel.%.xfscript easteregg.%.hfst
-	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
-		| $(HFST_DISJUNCT) - easteregg.$*.hfst \
-		| $(HFST_PUSH_WEIGHTS) --push=initial  \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw \
-		-o $@
-
+######## Alternate error model: #######
+## Alternatively, the error model can be constructed as a long list of regular
+## expressions, semicolon separated:
+#errmodel.%.hfst: errmodel.%.regex easteregg.%.hfst
+#	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
+#		| $(HFST_DISJUNCT) - easteregg.$*.hfst \
+#		| $(HFST_PUSH_WEIGHTS) --push=initial  \
+#		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw \
+#		-o $@
+#
+## ... or as an xfscript file:
+#errmodel.%.hfst: errmodel.%.xfscript easteregg.%.hfst
+#	$(AM_V_GEN)$(HFST_REGEXP2FST) $(HFSTFLAGS) -S -i $< \
+#		| $(HFST_DISJUNCT) - easteregg.$*.hfst \
+#		| $(HFST_PUSH_WEIGHTS) --push=initial  \
+#		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw \
+#		-o $@
+#
 ####### Speller acceptor: #######
 # Build the automaton used for the speller
-$(GT_SPELLER_ACCEPTOR): \
-acceptor.%.hfst: $(GT_SPELLER_HFST) easteregg.%.hfst
+$(MOB_GT_SPELLER_ACCEPTOR): \
+acceptor.%.hfst: $(MOB_GT_SPELLER_HFST) easteregg.%.hfst
 	$(AM_V_PROJECT)cat $< \
 		| $(HFST_PROJECT) $(HFST_FLAGS) --project=lower \
 		| $(HFST_MINIMIZE_SPELLER)                      \
@@ -396,27 +401,20 @@ acceptor.%.hfst: $(GT_SPELLER_HFST) easteregg.%.hfst
 ####### *.zhfst file: #######
 # Finally build the zhfst file, and make a copy in a subdir named '3', so that
 # we can test it without installing it (the '3' dir is a voikko requirement):
-$(GT_SPELLING_HFST): $(srcdir)/index.xml \
-					 $(GT_ERRMODELS) \
-					 $(GT_SPELLER_ACCEPTOR)
+$(MOB_GIELLA_SPELLING_HFST): $(srcdir)/index.mobile.xml \
+					 $(MOB_GIELLA_ERRMODELS) \
+					 $(MOB_GT_SPELLER_ACCEPTOR)
 	$(AM_V_at)rm -f $@
 	$(AM_V_at)$(MKDIR_P) build/$@
 	$(AM_V_at)rm -f build/$@/*
-	$(AM_V_at)cp $(srcdir)/index.xml build/$@/index.xml
-	$(AM_V_at)cp $(GT_SPELLER_ACCEPTOR) build/$@/$(GT_SPELLER_ACCEPTOR)
-	$(AM_V_at)cp $(GT_ERRMODELS) build/$@/$(GT_ERRMODELS)
+	$(AM_V_at)cp $(srcdir)/index.mobile.xml build/$@/index.xml
+	$(AM_V_at)cp $(MOB_GT_SPELLER_ACCEPTOR) build/$@/$(MOB_GT_SPELLER_ACCEPTOR)
+	$(AM_V_at)cp $(MOB_GIELLA_ERRMODELS) build/$@/$(MOB_GIELLA_ERRMODELS)
 	$(AM_V_ZIP)cd build/$@/ && $(ZHFST_COMPRESSION)
 	$(AM_V_at)$(MKDIR_P) 3
 	$(AM_V_at)cp -f $@ 3/
 
 ####### Other targets: ###########
-clean-local:
-	-rm -f  *.hfst *.xfst *.zhfst easteregg.* *.oxt *.xpi *.zip
-	-rm -rf 3 *.service build
-	-rm -f editdist.*.regex
-	if ! [ "x$(CORPUSNAME)" = "x" ] ; then \
-		rm -f $(CORPUSNAME).* ; \
-	fi
 
 # Keep these intermediate targets when building using --debug:
 .SECONDARY: editdist.all.default.hfst \
@@ -428,8 +426,5 @@ clean-local:
             initial_letters.regex.default.hfst \
             initial_letters.all.default.hfst \
             final_strings.default.hfst
-
-include $(top_srcdir)/am-shared/regex-include.am
-include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

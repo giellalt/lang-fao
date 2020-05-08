@@ -16,36 +16,29 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ####### Add corpus-based weights: #######
-# Use: surfweights.CORPUSNAME.hfst and CORPUSNAME.unitweight
-SURFWEIGHTS=$(CORPUSNAME).surfweights.hfst
-UNITWEIGHT=$(CORPUSNAME).unitweight.txt
+# Use: surfweights.MOBILE_CORPUSNAME.hfst and MOBILE_CORPUSNAME.unitweight
+MOB_SURFWEIGHTS=mob_$(MOBILE_CORPUSNAME).surfweights.hfst
+MOB_UNITWEIGHT=mob_$(MOBILE_CORPUSNAME).unitweight.txt
 
-# TSV file defining weights per tag
-TAGWEIGHTS=tags.reweight
-
-# ALPHA for additive smoothing, [0, 1.0] seems good
-ALPHA=1.0
+# We use same ALPHA for both mobile and desktop spellers, simplifies fst builds
+# # ALPHA for additive smoothing, [0, 1.0] seems good
+# ALPHA=1.0
 
 #NORMALISED_MAXWEIGHT=1000
 
-corpus_size_limit_command=$(shell \
-	if [[ x$(CORPUS_SIZE) != x ]] ; \
+mob_corpus_size_limit_command=$(shell \
+	if [[ x$(MOB_CORPUS_SIZE) != x ]] ; \
 	then \
-		echo "| head -n $(CORPUS_SIZE)"; \
+		echo "| head -n $(MOB_CORPUS_SIZE)"; \
 	else \
 		echo ""; \
 	fi)
 
-%.hfst: weighting/%.att
+    %.hfst: weights/%.att
 	$(AM_V_GEN)$(HFST_TXT2FST) $(HFST_FLAGS) -f openfst-tropical $< -o $@
 
-# copy cleaned corpus into the local dir:
-$(CORPUSNAME).clean.txt: \
-	weighting/$(CORPUSNAME).clean.txt
-	$(AM_V_CP)cp -f $< $@
-
 # sort the clean corpus:
-%.sort.txt: %.clean.txt
+%.sort.txt: weights/%.clean.txt
 	$(AM_V_GEN)sort < $< > $@
 
 # token count:
@@ -53,11 +46,11 @@ $(CORPUSNAME).clean.txt: \
 	$(AM_V_GEN)wc -l < $< > $@
 
 # Unique the sorted, clean corpus:
-%.uniq.txt: %.sort.txt
-	$(AM_V_GEN)uniq -c < $< | sort -nr $(corpus_size_limit_command) > $@
+mob_%.uniq.txt: %.sort.txt
+	$(AM_V_GEN)uniq -c < $< | sort -nr $(mob_corpus_size_limit_command) > $@
 
 # type count:
-%.typecount.txt: %.uniq.txt
+mob_%.typecount.txt: mob_%.uniq.txt
 	$(AM_V_GEN)wc -l < $< > $@
 
 # calculate unit weight, smoothed using ALPHA:
@@ -67,24 +60,24 @@ $(CORPUSNAME).clean.txt: \
 #		    -e "s/	/ + ($(ALPHA) */" -e "s/$$/)))/" \
 #		| $(BC) -l > $@
 
-# Alternative unit weight: highest tropical weight + ALPHA:
-%.unitweight.txt: %.tropical.txt
-	$(AM_V_GEN)echo "$$(cut -f2 < $^ | sort -nru | head -n1) + $(ALPHA)" \
-		| $(BC) -l > $@
+## Alternative unit weight: highest tropical weight + ALPHA:
+#%.unitweight.txt: %.tropical.txt
+#	$(AM_V_GEN)echo "$$(cut -f2 < $^ | sort -nru | head -n1) + $(ALPHA)" \
+#		| $(BC) -l > $@
+#
+## add tropical weights to the corpus:
+#%.tropical.txt: %.uniq.txt %.wordcount.txt %.typecount.txt
+#	$(AM_V_GEN)cat $< |\
+#		$(GAWK) -v CS="$$(cat $*.wordcount.txt)" \
+#				-v DS="$$(cat $*.typecount.txt)" \
+#				-v ALPHA=$(ALPHA)                \
+#				-f $(GTCORE)/scripts/uniq_count2tropical_weight.awk \
+#				> $@
 
-# add tropical weights to the corpus:
-%.tropical.txt: %.uniq.txt %.wordcount.txt %.typecount.txt
-	$(AM_V_GEN)cat $< |\
-		$(GAWK) -v CS="$$(cat $*.wordcount.txt)" \
-				-v DS="$$(cat $*.typecount.txt)" \
-				-v ALPHA=$(ALPHA)                \
-				-f $(GTCORE)/scripts/uniq_count2tropical_weight.awk \
-				> $@
-
-# build an fst of surface forms with tropical weights for each word form:
-%.surfs.hfst: %.tropical.txt
-	$(AM_V_STR2FST)cat $< |\
-		$(HFST_STRINGS2FST) -j $(HFST_FLAGS) -f openfst-tropical -o $@
+## build an fst of surface forms with tropical weights for each word form:
+#%.surfs.hfst: %.tropical.txt
+#	$(AM_V_STR2FST)cat $< |\
+#		$(HFST_STRINGS2FST) -j $(HFST_FLAGS) -f openfst-tropical -o $@
 
 # Build an fst with surface form weights that also handles compounds:
 %.surfweights.hfst: %.surfs.hfst \
@@ -95,11 +88,11 @@ $(CORPUSNAME).clean.txt: \
 		| $(HFST_MINIMIZE) -o $@
 
 # Add the unit weight to each unit in compounds, both dynamic and lexical:
-unitweighted.hfst: $(UW_SPELLER_SRC) \
-                   $(UNITWEIGHT)         \
-                   $(srcdir)/weighting/word-boundary.txt
+mob_unitweighted.hfst: $(UW_SPELLER_SRC) \
+                   $(MOB_UNITWEIGHT)         \
+                   $(srcdir)/weights/word-boundary.txt
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(HFST_FLAGS) \
-		-e -a $$(cat $(UNITWEIGHT)) $< \
+		-e -a $$(cat $(MOB_UNITWEIGHT)) $< \
 		-o $@
 
 # Keep these intermediate targets when building using --debug:
@@ -114,5 +107,5 @@ unitweighted.hfst: $(UW_SPELLER_SRC) \
             generator-fstspeller-gt-norm-unit_weighted.hfst \
             generator-fstspeller-gt-norm-norm_weighted.hfst \
             generator-fstspeller-gt-norm-tag_weighted.hfst  \
-            $(SURFWEIGHTS) \
-            $(UNITWEIGHT)
+            $(MOB_SURFWEIGHTS) \
+            $(MOB_UNITWEIGHT)

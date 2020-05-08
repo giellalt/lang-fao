@@ -18,99 +18,89 @@
 # Hfst fst variables:
 GT_COMMON_SPELLER_HFST=
 
-# Xerox fst variables - Xerox can be used for building the list-based spellers:
-GT_COMMON_SPELLER_XFST=
-
 GT_COMMON_SPELLER_NAME=speller-gt-norm
 
 ####### Automake targets: ########
 if WANT_SPELLERS
-
 if CAN_HFST
 GT_COMMON_SPELLER_HFST+=analyser-$(GT_COMMON_SPELLER_NAME).hfst
 GT_COMMON_SPELLER_HFST+=generator-$(GT_COMMON_SPELLER_NAME).hfst
 endif # CAN_HFST
-
-if CAN_XFST
-GT_COMMON_SPELLER_XFST+=analyser-$(GT_COMMON_SPELLER_NAME).xfst
-GT_COMMON_SPELLER_XFST+=generator-$(GT_COMMON_SPELLER_NAME).xfst
-endif # CAN_XFST
-
-#if CAN_FOMA
-#GT_COMMON_SPELLER_XFST+=analyser-$(GT_COMMON_SPELLER_NAME).foma
-#GT_COMMON_SPELLER_XFST+=generator-$(GT_COMMON_SPELLER_NAME).foma
-#endif # CAN_FOMA
-
 endif # WANT_SPELLERS
 
-noinst_DATA=$(GT_COMMON_SPELLER_HFST) $(GT_COMMON_SPELLER_XFST)
+noinst_DATA=$(GT_COMMON_SPELLER_HFST)
 
 # Build the common speller transducer by removing everything we don't want in
 # any of the spellers:
-analyser-$(GT_COMMON_SPELLER_NAME).tmp.%: \
-			$(top_builddir)/src/analyser-raw-gt-desc.%                     \
-			$(top_builddir)/src/filters/remove-CLB-strings.%               \
-			$(top_builddir)/src/filters/remove-error-strings.%             \
-			$(top_builddir)/src/filters/remove-MinusSpell-strings.%        \
-			$(top_builddir)/src/filters/remove-PUNCT-strings.%             \
-			$(top_builddir)/src/filters/remove-use_marg-strings.%          \
-			$(top_builddir)/src/filters/remove-orig_lang-tags.%            \
-			$(top_builddir)/src/filters/remove-usage_except_speller-tags.% \
-			$(top_builddir)/src/filters/remove-Use_GC-strings.%            \
-			$(top_builddir)/src/filters/remove-Use_minusGC-tags.%          \
-			$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.%     \
-			$(top_builddir)/src/filters/remove-Use_PMatch-strings.%        \
-			$(top_builddir)/src/filters/remove-mwe-tags.%                  \
-			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.%
+analyser-$(GT_COMMON_SPELLER_NAME).tmp.hfst: \
+			$(top_builddir)/src/analyser-raw-gt-desc.hfst                     \
+			$(top_builddir)/src/filters/remove-CLB-strings.hfst               \
+			$(top_builddir)/src/filters/remove-error-strings.hfst             \
+			$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst        \
+			$(top_builddir)/src/filters/remove-PUNCT-strings.hfst             \
+			$(top_builddir)/src/filters/remove-use_marg-strings.hfst          \
+			$(top_builddir)/src/filters/remove-orig_lang-tags.hfst            \
+			$(top_builddir)/src/filters/remove-usage_except_speller-tags.hfst \
+			$(top_builddir)/src/filters/remove-Use_GC-strings.hfst            \
+			$(top_builddir)/src/filters/remove-Use_minusGC-tags.hfst          \
+			$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst     \
+			$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst        \
+			$(top_builddir)/src/filters/remove-mwe-tags.hfst                  \
+			$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-		    @\"$(top_builddir)/src/filters/remove-usage_except_speller-tags.$*\" \
-		.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.$*\"        \
-		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.$*\"           \
-		.o. @\"$(top_builddir)/src/filters/remove-error-strings.$*\"         \
-		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.$*\"    \
-		.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.$*\"         \
-		.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.$*\"      \
-		.o. @\"$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.$*\" \
-		.o. @\"$(top_builddir)/src/filters/remove-Use_minusGC-tags.$*\"      \
-    	.o. @\"$(top_builddir)/src/filters/remove-Use_GC-strings.$*\"        \
-    	.o. @\"$(top_builddir)/src/filters/remove-Use_PMatch-strings.$*\"    \
-		.o. @\"$(top_builddir)/src/filters/remove-mwe-tags.$*\"              \
+		    @\"$(top_builddir)/src/filters/remove-usage_except_speller-tags.hfst\" \
+		.o. @\"$(top_builddir)/src/filters/remove-orig_lang-tags.hfst\"        \
+		.o. @\"$(top_builddir)/src/filters/remove-CLB-strings.hfst\"           \
+		.o. @\"$(top_builddir)/src/filters/remove-error-strings.hfst\"         \
+		.o. @\"$(top_builddir)/src/filters/remove-MinusSpell-strings.hfst\"    \
+		.o. @\"$(top_builddir)/src/filters/remove-PUNCT-strings.hfst\"         \
+		.o. @\"$(top_builddir)/src/filters/remove-use_marg-strings.hfst\"      \
+		.o. @\"$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst\" \
+		.o. @\"$(top_builddir)/src/filters/remove-Use_minusGC-tags.hfst\"      \
+		.o. @\"$(top_builddir)/src/filters/remove-Use_GC-strings.hfst\"        \
+		.o. @\"$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst\"    \
+		.o. @\"$(top_builddir)/src/filters/remove-mwe-tags.hfst\"              \
 		.o. @\"$<\" \
-		.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.$*\" \
+		.o. @\"$(top_builddir)/src/orthography/downcase-derived_proper-strings.compose.hfst\" \
 		;\n\
 		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL)
+		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
 
-#### Transducer fallback targets:
-#### - inversion is needed FOR THE HFST ANALYSER because the hfst model is upside
-#### down compared to Xerox/Foma AT LOOKUP TIME.
-define giella_speller_analysers
-analyser%.$(1): analyser%.tmp.$(1)
-	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex                                 \
-			@\"$$<\"                                                         \
-		; \n\
-		$$(INVERT_HFST)\
-		save stack $$@\n\
-		quit\n" | $$(XFST_TOOL)
-endef
-$(foreach fst,hfst xfst foma,$(eval $(call giella_speller_analysers,$(fst))))
+# Copy the tmp transducer to the final one. This allows local overrides.
+%.hfst: %.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
 
-# Default fallback processing for the generators:
-#### - inversion is needed in the final step for the Xerox/Foma GENERATOR.
-define giella_speller_generators
-generator%.$(1): analyser%.tmp.$(1)
-	$$(AM_V_XFST_TOOL)$$(PRINTF) "\
-		 load stack $$<\n\
-		 $$(INVERT_XFST)$$(INVERT_FOMA)\
-		 save stack $$@\n\
-		 quit\n" | $$(XFST_TOOL)
-endef
-$(foreach fst,hfst xfst foma,$(eval $(call giella_speller_generators,$(fst))))
+# Invert the final fst, to enable symmetric yaml tests and easy manual testing:
+analyser-%.hfst: generator-%.hfst
+	$(AM_V_INVERT)$(HFST_INVERT) $(MORE_VERBOSITY) $(HFST_FLAGS) -i $< -o $@
 
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.hfst *.xfst
+	-rm -f  *.hfst *.xfst *.zhfst easteregg.* *.oxt *.xpi *.zip
+	-rm -rf 3 *.service build
+	-rm -f editdist.*.regex
+	if ! [ "x$(CORPUSNAME)" = "x" ] ; then \
+		rm -f $(CORPUSNAME).* ; \
+	fi
 
+# Keep these intermediate targets when building using --debug:
+.SECONDARY: editdist.all.default.hfst \
+            strings.default.hfst     \
+            editdist.default.hfst    \
+            editdist.default.regex    \
+            words.default.hfst \
+            initial_letters.list.default.hfst \
+            initial_letters.regex.default.hfst \
+            initial_letters.all.default.hfst \
+            final_strings.default.hfst
+
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-dir-include.am 
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop-dir-include.am 
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop-hfst-dir-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-mobile-dir-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-mobile-hfst-dir-include.am
+include $(top_srcdir)/am-shared/regex-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
 include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am

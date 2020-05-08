@@ -15,53 +15,47 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-####### Compilation variables: #######
-HFST_REGEXP2FST_FLAGS="--xerox-composition=ON"
-
 ####### Source file and target defs: ########
-GIELLA_DESKTOPSPELLER_FILTER_SRCS=
+GIELLA_MOBILESPELLER_FILTER_SRCS=
 
 # Source files copied from src/filters/ OR from
 # $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters:
-GIELLA_SRC_FILTERS=remove-word-boundary.regex \
+GIELLA_SRC_FILTERS+=remove-word-boundary.regex \
                    remove-usage-tags.regex
 
 # These will be included in the distribution:
-EXTRA_DIST=$(GIELLA_DESKTOPSPELLER_FILTER_SRCS) \
-        $(GIELLA_LOCAL_DESKTOPSPELLER_FILTER_SRCS)
+EXTRA_DIST+=$(GIELLA_MOBILESPELLER_FILTER_SRCS) \
+        $(GIELLA_LOCAL_MOBILESPELLER_FILTER_SRCS)
 
-GIELLA_DESKTOPSPELLER_FILTER_ALL_SRCS=\
-        $(GIELLA_DESKTOPSPELLER_FILTER_SRCS) \
-        $(GIELLA_LOCAL_DESKTOPSPELLER_FILTER_SRCS) \
+GIELLA_MOBILESPELLER_FILTER_ALL_SRCS=\
+        $(GIELLA_MOBILESPELLER_FILTER_SRCS) \
+        $(GIELLA_LOCAL_MOBILESPELLER_FILTER_SRCS) \
         $(GENERATED_REGEXES) \
         $(GIELLA_SRC_FILTERS) \
-        $(GT_LOCAL_COPY_FILTER_SRCS)
+        $(GIELLA_LOCAL_COPY_FILTER_SRCS)
 
 # This is what we build:
-noinst_DATA=$(GIELLA_DESKTOPSPELLER_FILTER_TARGETS)
-
-# Automatically detect the targets to be built:
-GIELLA_DESKTOPSPELLER_FILTER_TARGETS=
+noinst_DATA+=$(GIELLA_MOBILESPELLER_FILTER_TARGETS)
 
 if WANT_SPELLERS
 if CAN_HFST
-GIELLA_DESKTOPSPELLER_FILTER_TARGETS+=\
-        $(patsubst %.regex,%.hfst,$(GIELLA_DESKTOPSPELLER_FILTER_ALL_SRCS))
+GIELLA_MOBILESPELLER_FILTER_TARGETS+=\
+        $(patsubst %.regex,%.hfst,$(GIELLA_MOBILESPELLER_FILTER_ALL_SRCS))
 endif # CAN_HFST
 
 if CAN_XFST
-GIELLA_DESKTOPSPELLER_FILTER_TARGETS+=\
-        $(patsubst %.regex,%.xfst,$(GIELLA_DESKTOPSPELLER_FILTER_ALL_SRCS))
+GIELLA_MOBILESPELLER_FILTER_TARGETS+=\
+        $(patsubst %.regex,%.xfst,$(GIELLA_MOBILESPELLER_FILTER_ALL_SRCS))
 endif # CAN_XFST
 
 if CAN_FOMA
-GIELLA_DESKTOPSPELLER_FILTER_TARGETS+=\
-        $(patsubst %.regex,%.foma,$(GIELLA_DESKTOPSPELLER_FILTER_ALL_SRCS))
+GIELLA_MOBILESPELLER_FILTER_TARGETS+=\
+        $(patsubst %.regex,%.foma,$(GIELLA_MOBILESPELLER_FILTER_ALL_SRCS))
 endif # CAN_FOMA
 endif # WANT_SPELLERS
 
 ####### Copy regex files from the Giella core if not found locally: ########
-%.regex: $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/desktop/filters/%.regex
+%.regex: $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/mobile/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
 
 %.regex: $(GIELLA_SHARED)/all_langs/src/filters/%.regex
@@ -70,11 +64,3 @@ endif # WANT_SPELLERS
 ####### ... OR from the src/filters/ dir
 %.regex: $(top_srcdir)/src/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
-
-##########################################
-# General build rules included from here:#
-
-include $(top_srcdir)/am-shared/regex-include.am
-include $(top_srcdir)/am-shared/silent_build-include.am
-
-# vim: set ft=automake:

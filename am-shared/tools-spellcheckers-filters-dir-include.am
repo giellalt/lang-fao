@@ -20,9 +20,16 @@ HFST_REGEXP2FST_FLAGS="--xerox-composition=ON"
 
 ####### Source file and target defs: ########
 GIELLA_SPELLER_FILTER_SRCS=
+# Automatically detect the targets to be built:
+GIELLA_DESKTOPSPELLER_FILTER_TARGETS=
+GIELLA_MOBILESPELLER_FILTER_TARGETS=
+GIELLA_SRC_FILTERS=
+# Automake variables:
+EXTRA_DIST=
+noinst_DATA=
 
 # These will be included in the distribution:
-EXTRA_DIST=$(GIELLA_SPELLER_FILTER_SRCS)
+EXTRA_DIST+=$(GIELLA_SPELLER_FILTER_SRCS)
 
 GIELLA_SPELLER_FILTER_ALL_SRCS=\
         $(GIELLA_SPELLER_FILTER_SRCS) \
@@ -30,7 +37,7 @@ GIELLA_SPELLER_FILTER_ALL_SRCS=\
         $(GENERATED_REGEXES)
 
 # This is what we build:
-noinst_DATA=$(GIELLA_SPELLER_FILTER_TARGETS)
+noinst_DATA+=$(GIELLA_SPELLER_FILTER_TARGETS)
 
 # Automatically detect the targets to be built:
 GIELLA_SPELLER_FILTER_TARGETS=
@@ -59,8 +66,13 @@ endif # WANT_SPELLERS
 ##########################################
 # General build rules included from here:#
 
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-filters-dir-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop-filters-dir-include.am
+include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-mobile-filters-dir-include.am
+
 include $(top_srcdir)/am-shared/regex-include.am
 include $(top_srcdir)/am-shared/xfscript-include.am
+include $(top_srcdir)/am-shared/hfst-format-include.am
 include $(top_srcdir)/am-shared/silent_build-include.am
 
 # vim: set ft=automake:

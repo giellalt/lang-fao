@@ -52,18 +52,7 @@ AC_CONFIG_FILES([Makefile \
                  tools/shellscripts/Makefile \
                  tools/spellcheckers/Makefile \
                  tools/spellcheckers/filters/Makefile \
-                 tools/spellcheckers/fstbased/Makefile \
-                 tools/spellcheckers/fstbased/filters/Makefile \
-                 tools/spellcheckers/fstbased/desktop/Makefile \
-                 tools/spellcheckers/fstbased/desktop/filters/Makefile \
-                 tools/spellcheckers/fstbased/desktop/weighting/Makefile \
-                 tools/spellcheckers/fstbased/desktop/foma/Makefile \
-                 tools/spellcheckers/fstbased/desktop/hfst/Makefile \
-                 tools/spellcheckers/fstbased/mobile/Makefile \
-                 tools/spellcheckers/fstbased/mobile/filters/Makefile \
-                 tools/spellcheckers/fstbased/mobile/weighting/Makefile \
-                 tools/spellcheckers/fstbased/mobile/hfst/Makefile \
-                 tools/spellcheckers/fstbased/mobile/vfst/Makefile])
+                 tools/spellcheckers/weights/Makefile])
 # Add one AC_CONFIG_FILES for each script file that needs processing. This gives
 # the most pleasant user experience and most readable autoconf code to maintain.
 # Spell checker tests, all languages:

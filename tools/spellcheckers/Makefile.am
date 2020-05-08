@@ -2,19 +2,13 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-# The current dir must be built first.
-SUBDIRS = filters . fstbased
+# Subdirs in build order:
+SUBDIRS = filters weights .
 
-#########################################
-# BEGIN: Local processing
-#
-# Target template:
-#
-# analyser-speller-gt-norm.%: analyser-speller-gt-norm.tmp.%
-#	build rules
-
-
-# END: Local processing
-#########################################
-
+include $(srcdir)/Makefile.mod-spellcheckers.am
+include $(srcdir)/Makefile.mod-fstbased.am
+include $(srcdir)/Makefile.mod-desktop.am
+include $(srcdir)/Makefile.mod-desktop-hfst.am
+include $(srcdir)/Makefile.mod-mobile.am
+include $(srcdir)/Makefile.mod-mobile-hfst.am
 include $(top_srcdir)/am-shared/tools-spellcheckers-dir-include.am

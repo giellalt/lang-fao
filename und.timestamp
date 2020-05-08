@@ -1,5 +1,13 @@
-$Rev: 190855 $
-Step six in flattening the tools/spellcheckers/ dir tree: copying
+$Rev: 190866 $
+Step eight in flattening the tools/spellcheckers/ dir tree: flipping the switch.
+All pieces are in place for building everything in tools/spellcheckers/ only, 
+nd everything has been tested with one language, including make check (a few 
+ests are skipped because the fst is not found, but no tests break). The old
+files are kept for the moment, in case unseen issues and missing data is popping
+up after the switch, but will be deleted after verification.
+
+r190855:
+Step seven in flattening the tools/spellcheckers/ dir tree: copying
 fstbased/mobile/hfst/index.xml to the new location.
 
 r190836:

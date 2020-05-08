@@ -16,7 +16,7 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # This is the default weight for all editing operations in the error model:
-DEFAULT_WEIGHT=10
+MOB_DEFAULT_WEIGHT=10
 
 # Whether to use swaps - ..ab.. -> ..ba.. in one single operation.
 # NB! Beware that this increases the size of the errormodel by ~ 3 * S^2, where
@@ -25,10 +25,10 @@ DEFAULT_WEIGHT=10
 # better yet, dot NOT include UPPERCASE LETTERS in the error model alphabet.
 #
 # Possible values are 'yes' or 'no'
-USE_SWAPS=no
+MOB_USE_SWAPS=no
 
 # Default edit distanse for the generated, alphabet-based error model:
-EDIT_DISTANCE=2
+MOB_EDIT_DISTANCE=2
 
 # Define whether we allow changes to the initial letter(s) in the error model,
 # possible values are:
@@ -40,7 +40,7 @@ EDIT_DISTANCE=2
 # search space of the error model, and thus make it much, much slower. Make sure
 # you TEST the resulting error model properly and thoroughly, both for speed
 # and suggestion quality.
-INITIAL_EDITS=no
+MOB_INITIAL_EDITS=no
 
 # Variable to define whether to enable edits of longer strings (as opposed to
 # single letters). Possible values are:
@@ -48,11 +48,11 @@ INITIAL_EDITS=no
 # * txt   - use only the txt file as source
 # * regex - use only the regex file as source
 # * both  - use both the txt and regex files as sources
-STRING_EDITS=txt
+MOB_STRING_EDITS=txt
 # Variable to specify the edit distance for the regex
 # version of the strings file. The total edit distance for those operations is
 # this value multiplied with the value of the EDIT_DISTANCE variable.
-STRING_REGEX_EDIT_DISTANCE=2
+MOB_STRING_REGEX_EDIT_DISTANCE=2
 
 # Variable to define whether to enable edits of word-final strings (as opposed
 # to single letters). Possible values are:
@@ -60,18 +60,16 @@ STRING_REGEX_EDIT_DISTANCE=2
 # * txt   - use only the txt file as source
 # * regex - use only the regex file as source
 # * both  - use both the txt and regex files as sources
-FINAL_STRING_EDITS=txt
+MOB_FINAL_STRING_EDITS=txt
 
 # Variable to define whether to enable whole-word replacements. Possible values:
 # - yes
 # - no
-WORD_REPLACEMENTS=yes
+MOB_WORD_REPLACEMENTS=yes
 
 # Specify where to find the project.yaml file and the corresponding layout defs:
 KEYBOARD_LAYOUT_DIR=$(GIELLA_CORE)/../keyboards/$GLANG
 # Specify the ID of the layout as found at the top of each layout file
 KEYBOARD_LAYOUT_ID=fao
-
-include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-mobile-hfst-dir-include.am
 
 # vim: set ft=automake:

@@ -15,24 +15,21 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-####### Compilation variables: #######
-HFST_REGEXP2FST_FLAGS="--xerox-composition=ON"
-
 ####### Source file and target defs: ########
 GT_FSTSPELLER_FILTER_SRCS=
 
 # These will be included in the distribution:
-EXTRA_DIST=$(GT_FSTSPELLER_FILTER_SRCS) \
+EXTRA_DIST+=$(GT_FSTSPELLER_FILTER_SRCS) \
 		   $(GT_LOCAL_FSTSPELLER_FILTER_SRCS)
 
 GT_FSTSPELLER_FILTER_ALL_SRCS=\
         $(GT_FSTSPELLER_FILTER_SRCS) \
         $(GT_LOCAL_FSTSPELLER_FILTER_SRCS) \
-        $(GT_LOCAL_COPY_FILTER_SRCS) \
+        $(GIELLA_LOCAL_COPY_FILTER_SRCS) \
         $(GENERATED_REGEXES)
 
 # This is what we build:
-noinst_DATA=$(GT_FSTSPELLER_FILTER_TARGETS)
+noinst_DATA+=$(GT_FSTSPELLER_FILTER_TARGETS)
 
 # Automatically detect the targets to be built:
 GT_FSTSPELLER_FILTER_TARGETS=
@@ -64,12 +61,3 @@ endif # WANT_SPELLERS
 ####### ... OR from the src/filters/ dir
 %.regex: $(top_srcdir)/src/filters/%.regex
 	$(AM_V_CP)cp -f $< $@
-
-##########################################
-# General build rules included from here:#
-
-include $(top_srcdir)/am-shared/regex-include.am
-include $(top_srcdir)/am-shared/hfst-format-include.am
-include $(top_srcdir)/am-shared/silent_build-include.am
-
-# vim: set ft=automake:

@@ -15,10 +15,6 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Hfst fst variables:
-GT_SPELLER_SRC_HFST=generator-speller-gt-norm.hfst
-GT_COMMON_SPELLER_HFST=
-
 ####### Automake targets: ########
 
 if WANT_SPELLERS
@@ -28,11 +24,9 @@ GT_COMMON_SPELLER_HFST+=analyser-fstspeller-gt-norm.hfst
 endif # CAN_HFST
 endif # WANT_SPELLERS
 
-noinst_DATA=$(GT_COMMON_SPELLER_HFST)
-
 #### Build the speller transducer with compound filtering:
 generator-fstspeller-gt-norm.tmp.hfst: \
-			../$(GT_SPELLER_SRC_HFST) \
+			generator-speller-gt-norm.hfst \
 			$(top_builddir)/src/filters/remove-hyphenation-marks.hfst    \
 			$(top_builddir)/src/filters/remove-infl_deriv-borders.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex                                        \
@@ -43,20 +37,3 @@ generator-fstspeller-gt-norm.tmp.hfst: \
 		 twosided flag-diacritics\n\
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY) $(HFST_FORMAT)
-
-
-# Copy the tmp transducer to the final one. This allows local overrides.
-%.hfst: %.tmp.hfst
-	$(AM_V_CP)cp -f $< $@
-
-# Invert the final fst, to enable symmetric yaml tests and easy manual testing:
-analyser-%.hfst: generator-%.hfst
-	$(AM_V_INVERT)$(HFST_INVERT) $(MORE_VERBOSITY) $(HFST_FLAGS) -i $< -o $@
-
-####### Other targets: ###########
-clean-local:
-	-rm -f *.hfst *.txt *.att
-
-include $(top_srcdir)/am-shared/xfscript-include.am
-include $(top_srcdir)/am-shared/hfst-format-include.am
-include $(top_srcdir)/am-shared/silent_build-include.am

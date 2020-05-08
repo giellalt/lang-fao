@@ -15,9 +15,10 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Hfst fst variables:
-GT_SPELLER_SRC_HFST=generator-fstspeller-gt-norm.hfst
-GT_COMMON_SPELLER_HFST=
+# Use this as the source lexical fst for unit weighting, it contains correct
+# surface forms except for the word boundary #, which is still present, and
+# used in the weighting:
+UW_SPELLER_SRC=generator-desktopspeller-gt-norm-base.hfst
 
 ## Conditional string variables;
 # Set file name to the empty string or initial_letters_all depending on variable:
@@ -38,10 +39,8 @@ GT_COMMON_SPELLER_HFST+=analyser-desktopspeller-gt-norm.hfst
 endif # CAN_HFST
 endif # WANT_SPELLERS
 
-noinst_DATA=$(GT_COMMON_SPELLER_HFST)
-
 #### 1. Copy base fst from parent dir:
-generator-desktopspeller-gt-norm-base.hfst: ../generator-fstspeller-gt-norm.hfst
+generator-desktopspeller-gt-norm-base.hfst: generator-fstspeller-gt-norm.hfst
 	$(AM_V_FST2FST)$(HFST_FST2FST) --format=openfst-tropical -i $< -o $@
 
 #### 2. Add corpus-based frequency weights (all non-hits will disappear from
@@ -72,9 +71,9 @@ generator-desktopspeller-gt-norm-base.hfst: ../generator-fstspeller-gt-norm.hfst
 #### 4. Add tag-based weights, for adjusting weights according to morphology
 ####    and other tag-based penalties like words that should not be suggested:
 %-tag_weighted.hfst: $(tag_weighted_dep)  \
-				 	 $(srcdir)/weighting/$(TAGWEIGHTS)
+				 	 $(srcdir)/weights/$(TAGWEIGHTS)
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-T $(srcdir)/weighting/$(TAGWEIGHTS) --arcs-only -i $< \
+			-T $(srcdir)/weights/$(TAGWEIGHTS) --arcs-only -i $< \
 		-o $@
 
 #### 5. Finally, remove the surface word boundary symbol and do other
@@ -102,8 +101,4 @@ analyser-%.hfst: generator-%.hfst
 	$(AM_V_INVERT)$(HFST_INVERT) $(MORE_VERBOSITY) $(HFST_FLAGS) -i $< -o $@
 
 ####### Other targets: ###########
-clean-local:
-	-rm -f *.hfst *.txt
-
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-desktop_weights-dir-include.am
-include $(top_srcdir)/am-shared/silent_build-include.am

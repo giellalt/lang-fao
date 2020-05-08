@@ -20,8 +20,6 @@
 SURFWEIGHTS=$(CORPUSNAME).surfweights.hfst
 UNITWEIGHT=$(CORPUSNAME).unitweight.txt
 
-# TSV file defining weights per tag
-TAGWEIGHTS=tags.reweight
 # ALPHA for additive smoothing, [0, 1.0] seems good
 ALPHA=1.0
 #NORMALISED_MAXWEIGHT=1000
@@ -34,16 +32,11 @@ corpus_size_limit_command=$(shell \
 		echo ""; \
 	fi)
 
-%.hfst: weighting/%.att
+%.hfst: weights/%.att
 	$(AM_V_GEN)$(HFST_TXT2FST) $(HFST_FLAGS) -f openfst-tropical $< -o $@
 
-# copy cleaned corpus into the local dir:
-$(CORPUSNAME).clean.txt: \
-	weighting/$(CORPUSNAME).clean.txt
-	$(AM_V_CP)cp -f $< $@
-
 # sort the clean corpus:
-%.sort.txt: %.clean.txt
+%.sort.txt: weights/%.clean.txt
 	$(AM_V_GEN)sort < $< > $@
 
 # token count:

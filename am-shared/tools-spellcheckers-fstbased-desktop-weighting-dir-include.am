@@ -18,7 +18,8 @@
 ####### Automake targets: ########
 
 if WANT_SPELLERS
-noinst_DATA=$(GT_CLEAN_SPELLER_CORPUS)
+noinst_DATA=$(GIELLA_CLEAN_MOBILE_SPELLER_CORPUS) \
+            $(GIELLA_CLEAN_DESKTOP_SPELLER_CORPUS)
 endif # WANT_SPELLERS
 
 # Clean the corpus data if only raw data is found:

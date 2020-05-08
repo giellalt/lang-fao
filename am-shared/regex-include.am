@@ -17,6 +17,15 @@
 
 ####### HFST build rules: ########
 
+# We need a special target for regexes that must be compiled in the openfst
+# format while in the same dir as regexes that can be compiled using the chosen
+# format. These are typically for spellers and other weighted utilities:
+$(OFST_REGEX_TARGETS): \
+%.hfst: %.regex
+	$(AM_V_RGX2FST)"$(HFST_REGEXP2FST)" $(HFST_FLAGS) \
+	   --format=openfst-tropical \
+		$(HFST_REGEXP2FST_FLAGS) $(MORE_VERBOSITY) -S -i $< -o $@
+
 # By default, and for Xerox compatibility, all regexes are semicolon separated
 # (that is the '-S' flag):
 .regex.hfst:

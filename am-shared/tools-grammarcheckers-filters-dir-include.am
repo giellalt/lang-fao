@@ -24,7 +24,7 @@ TAG_FILE=tags.txt
 
 # Variable to hold filename for fst used as source for extracting tags,
 # sans extension
-TAG_EXTRACTION_FST=$(top_builddir)/tools/spellcheckers/fstbased/desktop/analyser-%-gt-norm
+TAG_EXTRACTION_FST=$(top_builddir)/tools/spellcheckers/analyser-%-gt-norm
 
 ####### Source file and target defs: ########
 GT_TOKENISERS_FILTER_SRCS=make-desktopspeller-CG-tags.regex

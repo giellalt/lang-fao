@@ -99,7 +99,7 @@ mwe-dis.cg3: \
 
 # Copy speller-analyser:
 $(GIELLA_GC_ANAL_SPELLER): \
-		../spellcheckers/fstbased/desktop/analyser-desktopspeller-gt-norm.hfst \
+		../spellcheckers/analyser-desktopspeller-gt-norm.hfst \
 		filters/make-desktopspeller-CG-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 				@\"$<\" \
@@ -113,7 +113,7 @@ $(GIELLA_GC_ANAL_SPELLER): \
 
 # Copy speller-errormodel:
 $(GIELLA_GC_SPELLER_ERRMOD): \
-		../spellcheckers/fstbased/desktop/hfst/errmodel.default.hfst
+		../spellcheckers/errmodel.default.hfst
 	$(AM_V_CP)cp -f $< $@
 
 # Build analysing speller zhfst file, used for bash pipes (modes):

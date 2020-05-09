@@ -32,7 +32,7 @@ noinst_DATA=$(GT_COMMON_SPELLER_HFST)
 
 # Build the common speller transducer by removing everything we don't want in
 # any of the spellers:
-analyser-$(GT_COMMON_SPELLER_NAME).tmp.hfst: \
+generator-$(GT_COMMON_SPELLER_NAME).tmp.hfst: \
 			$(top_builddir)/src/analyser-raw-gt-desc.hfst                     \
 			$(top_builddir)/src/filters/remove-CLB-strings.hfst               \
 			$(top_builddir)/src/filters/remove-error-strings.hfst             \

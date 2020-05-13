@@ -1,0 +1,35 @@
+[package]
+name = "fao"
+human_name = "Faroese"
+version = "0.1.0"
+
+# Table of speller tag -> filename to include in the bundle
+# filenames depends on specific project
+[spellers.fao]
+filename = "fo-mobile.zhfst"
+
+# Table of bundles to generated
+# key is the type of bundle
+# Windows speller bundle require a uuid for the installer
+[bundles.speller_win]
+package = "speller-fao"
+platform = "windows"
+uuid = "1A1794E3-5B2F-487E-AA1C-34FF191F6BEB"
+repo = "https://pahkat.uit.no/main/"
+
+[bundles.speller_macos]
+pkg_id = "no.divvun.MacDivvun.fo"
+package = "speller-fao"
+platform = "macos"
+repo = "https://pahkat.uit.no/main/"
+
+[bundles.speller_win_mso]
+package = "speller-fao-mso"
+platform = "windows"
+uuid = "9392946B-9D11-4383-8705-6CCD61C1CEE7"
+repo = "https://pahkat.uit.no/main/"
+
+[bundles.speller_mobile]
+package = "speller-fao"
+platform = "mobile"
+repo = "https://pahkat.uit.no/main/"

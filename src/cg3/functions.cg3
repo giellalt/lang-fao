@@ -1472,7 +1472,7 @@ MAP:>a (@>A) TARGET GRADE-ADV (*1 A BARRIER NOT-NPMOD) ;
 MAP:>aSup (@>A) TARGET ("buot") (*1 Superl BARRIER NOT-NPMOD) ;
 	#$ Mun ja mu ustibat manaimet kinoi geahččat buot ođđaseamos Harry Potter-filmma.
 MAP:>adv (@>ADVL) TARGET GRADE-ADV OR Attr (1 Adv) ;
-MAP:>adv (@>ADVL) TARGET Loc (1 ("eret" Adv)) ;
+#MAP:>adv (@>ADVL) TARGET Loc (1 ("eret" Adv)) ;
 MAP:>adv (@>ADVL) TARGET Sem/Plc + Loc (1 CC LINK 1 Loc LINK 1 ("eret" Adv)) ;
 MAP:>adv (@>ADVL) TARGET ("ovttas") OR ("ovttasráđiid") (1 Com) ;
 
@@ -1659,7 +1659,7 @@ MAP:spred<obj (@SPRED<OBJ) TARGET Acc (*-1 Nom BARRIER NOT-NPMODADV LINK *-1 COP
 	#$ Dain lea fáktemuš juohke balvva.
 	#% Divššohasas lea vuoigatvuohta iežas journála geahččat
 
-SET NOT-EXT = TIME-N OR A OR Pers OR Dem OR Rel OR ("dálki") OR OKTA OR Actio OR Sem/Year OR Prop OR Sem/Time-clock ;
+SET NOT-EXT = TIME-N OR A OR Pers OR Dem OR Rel OR ("dálki") OR OKTA OR Actio OR Sem/Year OR Prop OR Sem/Time-clock OR Refl ;
 LIST A-EXT = "riekta" "vejolaš" ;
 
 
@@ -1697,7 +1697,7 @@ MAP:<extSubj (<ext> @<SUBJ) TARGET Nom - NOT-EXT ((*-1 LEAT + FMAINV + HAB-V-TAG
 	#% Buot buoremus lea ieš vuolgit.
 
 #!! * __<extSubj__ (<ext> @<SUBJ) for sma Nom; if some kind of adverb to the left, N Loc, time related word or Po to the left of it. 
-MAP:<extSubj (<ext> @<SUBJ) TARGET Nom - NOT-EXT (-1 DOPPE OR (N Loc) OR (Dem Loc) OR (Sem/Time Adv) OR TIME-N + Gen OR TIME-ADVL OR Po)(NEGATE 0 Sg LINK *1 V + Sg3 BARRIER S-BOUNDARY)(NEGATE 0 Pl LINK *1 V + Pl3 BARRIER S-BOUNDARY) ;
+MAP:<extSubj (<ext> @<SUBJ) TARGET Nom - NOT-EXT (-1 DOPPE OR (N Loc) OR (Dem Loc) OR (Sem/Time Adv) OR TIME-N + Gen OR TIME-ADVL OR Po)(NEGATE 0 Sg LINK *1 V + Sg3 BARRIER S-BOUNDARY)(NEGATE 0 Pl LINK *1 V + Pl3 BARRIER S-BOUNDARY)(0 (<sma>)) ;
 	#$ Dah vååjnien öövre goh stoerre gåetieh, gusnie oksh jïh klaash.
 
 

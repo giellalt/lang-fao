@@ -35,4 +35,4 @@ clean-local:
 include $(srcdir)/Makefile.mod-desktop-filters.am
 include $(srcdir)/Makefile.mod-fstbased-filters.am
 include $(srcdir)/Makefile.mod-mobile-filters.am
-include $(top_srcdir)/am-shared/tools-spellcheckers-filters-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/tools-spellcheckers-filters-dir-include.am

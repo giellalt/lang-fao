@@ -25,6 +25,6 @@ GT_TRANSCRIPTIONS_SRCS=\
 		transcriptor-date-digit2text.lexc \
 		transcriptor-numbers-digit2text.lexc
 
-include $(top_srcdir)/am-shared/src-transcriptions-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/src-transcriptions-dir-include.am
 
 # vim: set ft=automake:

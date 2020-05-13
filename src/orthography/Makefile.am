@@ -19,4 +19,4 @@ GT_ORTHOGRAPHIC_XFSCRIPT_SRCS=\
 		spellrelax-with-tags.xfscript
 
 # General build rules included from here:
-include $(top_srcdir)/am-shared/src-orthography-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/src-orthography-dir-include.am

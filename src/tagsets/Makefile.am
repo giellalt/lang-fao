@@ -30,6 +30,6 @@ clean-local:
 
 ####### Includes: ########
 
-include $(top_srcdir)/am-shared/src-tagsets-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/src-tagsets-dir-include.am
 
 # vim: set ft=automake:

@@ -23,6 +23,6 @@
 GT_HYPHENATION_MAIN=hyphenation.xfscript
 GT_HYPHENATION_SUPPLEMENTS=
 
-include $(top_srcdir)/am-shared/src-hyphenation-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/src-hyphenation-dir-include.am
 
 # vim: set ft=automake:

@@ -115,6 +115,6 @@ clean-local:
 	-rm -f url.lexc *.tmp.*
 
 include $(srcdir)/Makefile.modifications-phon.am
-include $(top_srcdir)/am-shared/src-morphology-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/src-morphology-dir-include.am
 
 # vim: set ft=automake:

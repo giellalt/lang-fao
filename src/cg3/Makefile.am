@@ -37,4 +37,4 @@ clean-local:
 
 ####### Build rules via include: ########
 
-include $(top_srcdir)/am-shared/src-syntax-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/src-syntax-dir-include.am

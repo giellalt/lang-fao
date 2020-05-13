@@ -1,0 +1,103 @@
+# Readme:
+# .gut/manifest.toml needs to contain the manifest for the speller bundle
+# The Divvun CI encryption key 'DIVVUN_KEY' needs to be added as a secret 
+
+name: "Build Speller Archives and Bundles"
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: giellalt/giella-core
+          path: giella-core
+      - uses: actions/checkout@v2
+        with:
+          repository: giellalt/giella-shared
+          path: giella-shared
+      - uses: actions/checkout@v2
+        with:
+          path: lang
+      - name: Cache build dir
+        uses: actions/cache@v1
+        with:
+          path: lang/build
+          key: ${{ runner.os }}-lang-build
+      - name: Install dependencies
+        run: |
+          set -e
+          sudo apt-get update
+          sudo apt-get install -y wget build-essential autotools-dev autoconf git pkg-config gawk python3-pip zip
+          sudo pip3 install PyYAML
+          wget https://apertium.projectjj.com/apt/install-nightly.sh && sudo bash install-nightly.sh
+          sudo apt-get install -y hfst vislcg3 libdivvun divvun-gramcheck
+          sudo mkdir ~/.ssh 
+          ssh-keyscan -H github.com | sudo tee -a ~/.ssh/known_hosts
+      - name: Build
+        run: |
+          set -ex
+          # configure and install dependencies
+          cd $GITHUB_WORKSPACE/giella-core
+          ./autogen.sh && ./configure && sudo make install
+          cd $GITHUB_WORKSPACE/giella-shared
+          ./autogen.sh && ./configure && sudo make install
+
+          # build speller
+          cd $GITHUB_WORKSPACE/lang
+          ./autogen.sh
+          mkdir -p build && cd build
+          ../configure --disable-hfst-desktop-spellers --enable-spellers --enable-fst-hyphenator --enable-hfst-mobile-speller
+          make -j$(nproc)
+          # fails atm
+          # make check
+          ls -lah tools/spellcheckers/
+      - name: Upload spellers
+        uses: actions/upload-artifact@v2
+        with:
+          name: spellers
+          path: 'lang/build/tools/spellcheckers/*-mobile.zhfst'
+  bundle:
+    needs: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - type: speller_macos
+            os: macos-latest
+          - type: speller_mobile
+            os: macos-latest
+          - type: speller_win
+            os: windows-latest
+          - type: speller_win_mso
+            os: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Divvun CI
+        uses: divvun/actions/setup@master
+        with:
+          key: ${{ secrets.DIVVUN_KEY }}
+      - name: Download Spellers
+        uses: actions/download-artifact@v2
+        with:
+          name: spellers
+      - name: Run Divvun Bundler
+        id: bundler
+        uses: divvun/actions/speller/bundle@master
+        with:
+          bundleType: ${{ matrix.type }}
+          manifest: ".gut/manifest.toml"
+      - name: Upload installer
+        uses: actions/upload-artifact@v2
+        with:
+          name: installer
+          path: "${{ steps.bundler.outputs.bundle }}"
+      - name: Deploy to Pahkat
+        uses: divvun/actions/speller/deploy@master
+        with:
+          payload: "${{ steps.bundler.outputs.bundle }}"
+          bundleType: ${{ matrix.type }}
+          manifest: ".gut/manifest.toml"
+

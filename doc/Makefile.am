@@ -38,4 +38,4 @@ JSP_PAGES=root-morphology.jspwiki  \
 # subjunctions-stems.jspwiki       \
 # adjectives-affixes.jspwiki       \
 # propernouns-affixes.jspwiki      \
-include $(top_srcdir)/am-shared/doc-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/doc-dir-include.am

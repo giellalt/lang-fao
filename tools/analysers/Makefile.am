@@ -24,4 +24,4 @@ LOCAL_ANL_ZIP_FILES=
 #### END: Local build targets:   ####
 
 #### Do NOT edit below here: ####
-include $(top_srcdir)/am-shared/tools-analysers-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/tools-analysers-dir-include.am

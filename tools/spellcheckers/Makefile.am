@@ -11,4 +11,4 @@ include $(srcdir)/Makefile.mod-desktop.am
 include $(srcdir)/Makefile.mod-desktop-hfst.am
 include $(srcdir)/Makefile.mod-mobile.am
 include $(srcdir)/Makefile.mod-mobile-hfst.am
-include $(top_srcdir)/am-shared/tools-spellcheckers-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/tools-spellcheckers-dir-include.am

@@ -36,6 +36,6 @@ endif # WANT_APERTIUM
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
 
-include $(top_srcdir)/am-shared/tools-mt-filters-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/tools-mt-filters-dir-include.am
 
 # vim: set ft=automake:

@@ -3,7 +3,7 @@
 # set -x
 
 # Variable setup for adding env. variable:
-LANGDIR=$(pwd)
+LANGDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 GTLANG=$(basename $LANGDIR | cut -d'-' -f2- )
 GTLANG_langenv=GTLANG_$GTLANG
 TIME=$(date +%H%M)
@@ -57,8 +57,6 @@ function get_dep_repo() {
     reponame=$1 # no spaces around '='! Or it will fail!
     packagename=$2
     repoformat=$3
-    reponamevar=$(echo $reponame | tr '[a-z]' '[A-Z]' | tr '-' '_' )
-    repooldnamevar=$(echo $reponamevar | sed 's/GIELLA_/GT/' )
     echo
     echo "Looking for $reponame ..."
     # 1. check if the dir is there:
@@ -68,31 +66,22 @@ function get_dep_repo() {
             echo "$reponame found in ../"
         else
             echo "ERROR: Found $LANGDIR/../$reponame, but it seems to be broken:"
-            echo "It does not contain $packagename.pc.in"
+            echo "Run the command:"
+            echo "rm -f $LANGDIR/../$reponame"
+            echo "and try again."
             exit 1
         fi
     else
-        # if no, check env variables for other locations
-        #    - GTHOME, GIELLA_HOME, GIELLA_SHARED/_CORE, GTCORE
-        if test "x$GTHOME" != x ; then # If GTHOME is defined, use that:
-            make_symlink "$GTHOME/$reponame" "GTHOME" "$reponame" "$packagename"
-        elif test "x$GIELLA_HOME" != x ; then # If GIELLA_HOME is defined, use that:
-            make_symlink "$GIELLA_HOME/$reponame" "GIELLA_HOME" "$reponame" "$packagename"
-        elif test "x${!reponamevar}" != x ; then # If GIELLA_SHARED/GIELLA_CORE is defined, use that:
-            make_symlink "${!reponamevar}" "$reponamevar" "$reponame" "$packagename"
-        elif test "x${!repooldnamevar}" != x ; then # If GTCORE is defined, use that:
-            if [[ "${!repooldnamevar}" == *"core"* ]] ; then # ... but only for GTCORE
-                make_symlink "${!repooldnamevar}" "$repooldnamevar" "$reponame" "$packagename"
-            fi
-        else # If nothing is found, checkout from svn/clone from git:
-            # echo "Nothing found, cloning/checking out $reponame"
-            if test "$repoformat" == "git" ; then
-                echo "Nothing found, cloning $reponame in ../"
-                cd "$LANGDIR/../" && git_clone $reponame
-            else
-                echo "Nothing found, checking out $reponame in ../"
-                cd "$LANGDIR/../" && svn_check_out $reponame
-            fi
+        # echo "Nothing found, cloning/checking out $reponame"
+        if test "$repoformat" == "git" ; then
+            echo "Nothing found, cloning $reponame in ../"
+            cd "$LANGDIR/../" && git_clone $reponame
+        elif test "$repoformat" == "svn" ; then
+            echo "Nothing found, checking out $reponame in ../"
+            cd "$LANGDIR/../" && svn_check_out $reponame
+        else
+            echo "ERROR: Not possible to find or get $reponame. Giving up."
+            exit 1
         fi
     fi
 }
@@ -119,10 +108,6 @@ done
 if test -d "$LANGDIR/.git" ; then
     repoformat=git
 elif test -d "$LANGDIR/.svn" ; then
-    repoformat=svn
-elif test -d "$LANGDIR/../.svn" ; then # old langs dir etc
-    repoformat=svn
-elif test -d "$LANGDIR/../../.svn" ; then # old $GTHOME dir
     repoformat=svn
 else
     repoformat=unknown

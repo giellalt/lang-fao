@@ -41,9 +41,12 @@ AC_ARG_WITH([giella-core],
             [with_giella_core=$withval],
             [with_giella_core=false])
 
-# CONFIGUREDIR=$( cd $( dirname "${BASH_SOURCE[0]}" ) >/dev/null 2>&1 && pwd )
-
-# echo "CONFIGUREDIR: $CONFIGUREDIR"
+# Get the relative path from pwd to where src dir is:
+MYSRCDIR=$srcdir
+# Get the absolute path to the present dir:
+BUILD_DIR_PATH=$(pwd)
+# Combine to get the full path to the scrdir:
+THIS_TOP_SRC_DIR=$BUILD_DIR_PATH/$MYSRCDIR
 
 _giella_core_not_found_message="
 GIELLA_CORE could not be set:
@@ -80,37 +83,15 @@ AS_IF([test "x$with_giella_core" != "xfalse" -a \
           -d "$with_giella_core/scripts" ], [
     GIELLA_CORE=$with_giella_core
     ],[
-    # GIELLA_CORE is the env. variable for this dir:
-    AS_IF([test "x$GIELLA_CORE" != "x" -a \
-              -d "$GIELLA_CORE/scripts"], [], [
-        # Look in the parent dir:
-        AS_IF([test -d "../giella-core/scripts"], [
-            GIELLA_CORE=../giella-core
+    # If not, Look in the parent dir:
+    AS_IF([test -d "$THIS_TOP_SRC_DIR/../giella-core/scripts"], [
+        GIELLA_CORE=$THIS_TOP_SRC_DIR/../giella-core
+    ], [
+        # If nothing else works, try pkg-config:
+        AS_IF([pkg-config --exists giella-core], [
+            GIELLA_CORE=$(pkg-config --variable=dir giella-core)
         ], [
-            # GTHOME for backwards compatibility - it is deprecated:
-            AS_IF([test "x$GTHOME" != "x" -a \
-                      -d "$GTHOME/giella-core/scripts"], [
-                GIELLA_CORE=$GTHOME/giella-core
-            ], [
-                # GTCORE for backwards compatibility - it is deprecated:
-                AS_IF([test "x$GTCORE" != "x" -a \
-                          -d "$GTCORE/scripts"], [
-                    GIELLA_CORE=$GTCORE
-                ], [
-                    # Try the gt-core.sh script. NB! It is deprecated:
-                    AS_IF([test "x$GTCORESH" != xfalse -a \
-                           -d "$(${GTCORESH})/scripts"], [
-                        GIELLA_CORE=$(${GTCORESH})
-                    ], [
-                       # If nothing else works, try pkg-config:
-                       AS_IF([pkg-config --exists giella-core], [
-                           GIELLA_CORE=$(pkg-config --variable=dir giella-core)
-                       ], [
-                       AC_MSG_ERROR([${_giella_core_not_found_message}])
-                       ])
-                   ])
-                ])
-            ])
+            AC_MSG_ERROR([${_giella_core_not_found_message}])
         ])
     ])
 ])
@@ -179,30 +160,16 @@ AC_MSG_CHECKING([whether we can set GIELLA_SHARED])
 AS_IF([test "x$with_giella_shared" != "xfalse" -a \
     -d $with_giella_shared/all_langs ], [
     GIELLA_SHARED=$with_giella_shared
-    ],[
-    # GiELLA_SHARED is the default env. variable for this dir:
-    AS_IF([test "x$GIELLA_SHARED" != "x" -a \
-               -d $GIELLA_SHARED/all_langs ], [], [
-        # Check in the parent directory:
-        AS_IF([test -d ../giella-shared/all_langs ], [
-            GIELLA_SHARED=../giella-shared
-        ], [
-            # GTHOME for backwards compatibility - it is deprecated:
-            AS_IF([test "x$GTHOME" != "x" -a \
-                       -d $GTHOME/giella-shared/all_langs ], [
-                GIELLA_SHARED=$GTHOME/giella-shared
-            ], [
-                # GTCORE for backwards compatibility - it is deprecated:
-                AS_IF([test "x$GTCORE" != "x" -a \
-                           -d $GTCORE/giella-shared/all_langs ], [
-                    GIELLA_SHARED=$GTCORE/giella-shared
-                ], [
-                   AS_IF([pkg-config --exists giella-common], [
-                       GIELLA_SHARED=$(pkg-config --variable=dir giella-common)
-                   ],
-                   [AC_MSG_ERROR([Could not find giella-common data dir to set GIELLA_SHARED])])
-                ])
-            ])
+    ], [
+    # Check in the parent directory:
+    AS_IF([test -d $THIS_TOP_SRC_DIR/../giella-shared/all_langs ], [
+        GIELLA_SHARED=$THIS_TOP_SRC_DIR/../giella-shared
+    ], [
+        AS_IF([pkg-config --exists giella-common], [
+            GIELLA_SHARED=$(pkg-config --variable=dir giella-common)
+        ],
+        [
+     AC_MSG_ERROR([Could not find giella-common data dir to set GIELLA_SHARED])
         ])
     ])
 ])
@@ -210,7 +177,7 @@ AC_MSG_RESULT([$GIELLA_SHARED])
 
 ### This is the version of the Giella Shared that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
-_giella_shared_min_version=0.1.8
+_giella_shared_min_version=0.2.0
 
 # GIELLA_SHARED is required by the infrastructure to find shared data:
 AC_ARG_VAR([GIELLA_SHARED], [directory for giella shared data, like proper nouns and regexes])
@@ -228,8 +195,6 @@ svn up
 ./autogen.sh # required only the first time
 ./configure  # required only the first time
 make
-sudo make install # optional, only needed if installed
-                  # earlier or installed on a server.
 "
 
 # Identify the version of giella-shared:

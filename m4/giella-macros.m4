@@ -32,11 +32,6 @@
 AC_DEFUN([gt_PROG_SCRIPTS_PATHS],
 [
 
-# Look for an environmental variable GIELLA_MAINTAINER; if found, enable
-# additional checks:
-AC_ARG_VAR([GIELLA_MAINTAINER], [define if you are maintaining the Giella infra to get additional complaining about infra integrity])
-AM_CONDITIONAL([WANT_MAINTAIN], [test x"$GIELLA_MAINTAINER" != x])
-
 AC_PATH_PROG([GTCORESH], [gt-core.sh], [false],
              [$GIELLA_CORE/scripts$PATH_SEPARATOR$GTHOME/giella-core/scripts$PATH_SEPARATOR$PATH])
 
@@ -45,6 +40,10 @@ AC_ARG_WITH([giella-core],
                                [set giella-core to DIRECTORY @<:@default=PATH@:>@])],
             [with_giella_core=$withval],
             [with_giella_core=false])
+
+# CONFIGUREDIR=$( cd $( dirname "${BASH_SOURCE[0]}" ) >/dev/null 2>&1 && pwd )
+
+# echo "CONFIGUREDIR: $CONFIGUREDIR"
 
 _giella_core_not_found_message="
 GIELLA_CORE could not be set:
@@ -55,7 +54,7 @@ Could not set GIELLA_CORE and thus not find required scripts in:
        $PATH 
 
        Please do the following: 
-       1. svn co https://gtsvn.uit.no/langtech/trunk/giella-core
+       1. svn co https://github.com/giellalt/giella-core.git/trunk
        2. then either:
          a: cd giella-core && ./autogen.sh && ./configure && make install
 
@@ -84,10 +83,9 @@ AS_IF([test "x$with_giella_core" != "xfalse" -a \
     # GIELLA_CORE is the env. variable for this dir:
     AS_IF([test "x$GIELLA_CORE" != "x" -a \
               -d "$GIELLA_CORE/scripts"], [], [
-        # GIELLA_HOME is the new GTHOME:
-        AS_IF([test "x$GIELLA_HOME" != "x" -a \
-                  -d "$GIELLA_HOME/giella-core/scripts"], [
-            GIELLA_CORE=$GIELLA_HOME/giella-core
+        # Look in the parent dir:
+        AS_IF([test -d "../giella-core/scripts"], [
+            GIELLA_CORE=../giella-core
         ], [
             # GTHOME for backwards compatibility - it is deprecated:
             AS_IF([test "x$GTHOME" != "x" -a \
@@ -179,25 +177,24 @@ AC_ARG_WITH([giella-shared],
 AC_MSG_CHECKING([whether we can set GIELLA_SHARED])
 # --with-giella-shared overrides everything:
 AS_IF([test "x$with_giella_shared" != "xfalse" -a \
-    -f $with_giella_shared/all_langs/src/filters/make-optional-transitivity-tags.regex], [
+    -d $with_giella_shared/all_langs ], [
     GIELLA_SHARED=$with_giella_shared
     ],[
     # GiELLA_SHARED is the default env. variable for this dir:
     AS_IF([test "x$GIELLA_SHARED" != "x" -a \
-    -f $GIELLA_SHARED/all_langs/src/filters/make-optional-transitivity-tags.regex], [], [
-        # GIELLA_HOME is the new GTHOME:
-        AS_IF([test "x$GIELLA_HOME" != "x" -a \
-    -f $GIELLA_HOME/giella-shared/all_langs/src/filters/make-optional-transitivity-tags.regex], [
-            GIELLA_SHARED=$GIELLA_HOME/giella-shared
+               -d $GIELLA_SHARED/all_langs ], [], [
+        # Check in the parent directory:
+        AS_IF([test -d ../giella-shared/all_langs ], [
+            GIELLA_SHARED=../giella-shared
         ], [
             # GTHOME for backwards compatibility - it is deprecated:
             AS_IF([test "x$GTHOME" != "x" -a \
-    -f $GTHOME/giella-shared/all_langs/src/filters/make-optional-transitivity-tags.regex], [
+                       -d $GTHOME/giella-shared/all_langs ], [
                 GIELLA_SHARED=$GTHOME/giella-shared
             ], [
                 # GTCORE for backwards compatibility - it is deprecated:
                 AS_IF([test "x$GTCORE" != "x" -a \
-    -f $GTCORE/giella-shared/all_langs/src/filters/make-optional-transitivity-tags.regex], [
+                           -d $GTCORE/giella-shared/all_langs ], [
                     GIELLA_SHARED=$GTCORE/giella-shared
                 ], [
                    AS_IF([pkg-config --exists giella-common], [
@@ -268,51 +265,6 @@ AX_COMPARE_VERSION([$_giella_shared_version], [ge], [$_giella_shared_min_version
 AS_IF([test "x${giella_shared_version_ok}" != xno], [AC_MSG_RESULT([$giella_shared_version_ok])],
 [AC_MSG_ERROR([$giella_shared_too_old_message])])
 
-
-################################
-### Giella-templates dir:
-################
-# 1. check --with-giella-templates option
-# 2. check env GIELLA_TEMPLATES, then GIELLA_HOME, then GTHOME
-# 3. error if not found
-
-# GIELLA_TEMPLATES is required if you do infrastructure maintenance, otherwise it is ignored:
-AM_COND_IF([WANT_MAINTAIN], [
-
-AC_ARG_WITH([giella-templates],
-            [AS_HELP_STRING([--with-giella-templates=DIRECTORY],
-                            [search giella-templates data in DIRECTORY @<:@default=PATH@:>@])],
-            [with_giella_templates=$withval],
-            [with_giella_templates=false])
-
-AC_MSG_CHECKING([whether we can set GIELLA_TEMPLATES])
-# --with-giella-templates overrides everything:
-AS_IF([test "x$with_giella_templates" != "xfalse" -a \
-          -d "$with_giella_templates/langs-templates" ], [
-    GIELLA_TEMPLATES=$with_giella_templates
-    ],[
-    # GIELLA_TEMPLATES is the env. variable for this dir:
-    AS_IF([test "x$GIELLA_TEMPLATES" != "x" -a \
-              -d "$GIELLA_TEMPLATES/langs-templates"], [], [
-        # GIELLA_HOME is the new GTHOME:
-        AS_IF([test "x$GIELLA_HOME" != "x" -a \
-                  -d "$GIELLA_HOME/giella-templates/langs-templates"], [
-            GIELLA_TEMPLATES=$GIELLA_HOME/giella-templates
-        ], [
-            # GTHOME for backwards compatibility - it is deprecated:
-            AS_IF([test "x$GTHOME" != "x" -a \
-                      -d "$GTHOME/giella-templates/langs-templates"], [
-                GIELLA_TEMPLATES=$GTHOME/giella-templates
-            ], [AC_MSG_ERROR([Could not find giella-templates data dir to set GIELLA_TEMPLATES])])
-        ])
-    ])
-])
-AC_MSG_RESULT([$GIELLA_TEMPLATES])
-
-# GIELLA_TEMPLATES is required if you do infrastructure maintenance (otherwise it is ignored):
-AC_ARG_VAR([GIELLA_TEMPLATES], [directory for infrastructure templates, required for maintainers])
-
-],[])
 
 ################################
 ### Giella-libs dir:

@@ -1,0 +1,428 @@
+#!/bin/bash
+
+# Take tab-separated input in 2+ colums (like a typos file), extract the first
+# column, send it through a spell checker, and convert the result to xml.
+# Finally open the xml in the default browser.
+
+# For debugging, uncomment this command:
+# set -x
+
+# Language being tested, ISO 639-1 code if available:
+giella_lang=fo
+
+# Directory variables:
+top_srcdir=..
+top_builddir=..
+abs_top_builddir=/Users/ttr000/git/giellalt/lang-fao
+giella_core=/Users/ttr000/git/giellalt/giella-core
+corpusdir=$top_srcdir/test/data
+
+# File variables:
+abbr_file=$top_builddir/tools/tokenisers/abbr.txt
+source_corpus=analysis_check_corpus
+corpus_file=$corpusdir/$source_corpus.txt
+
+analyser=$top_builddir/src/analyser-disamb-gt-desc
+tokeniser=$top_builddir/tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst
+mwe_dis=$top_srcdir/tools/tokenisers/mwe-dis.cg3
+disambiguator=$top_builddir/src/cg3/disambiguator.bin
+functions_cg=$top_builddir/src/cg3/functions.bin
+dependencies=$top_builddir/src/cg3/dependency.bin
+
+# Grammar checker variants:
+grc_tknsr=$top_builddir/tools/grammarcheckers/tokeniser-gramcheck-gt-desc.pmhfst
+valency=$top_builddir/tools/grammarcheckers/valency.bin
+grc_mwe_dis=$top_builddir/tools/grammarcheckers/mwe-dis.bin
+whitespace=$top_builddir/tools/grammarcheckers/analyser-gt-whitespace.hfst
+speller=$top_builddir/tools/grammarcheckers/$giella_lang.zhfst
+grc_disamb=$top_builddir/tools/grammarcheckers/disambiguator.bin
+gramchecker=$top_builddir/tools/grammarcheckers/disambiguator.bin
+grmchk_generator=$top_builddir/tools/grammarcheckers/generator-gt-norm.hfstol
+grmchk_errmessages=$top_srcdir/tools/grammarcheckers/errors.xml
+
+# Tools:
+xerox_lookup=/usr/local/bin/lookup
+foma_lookup=/usr/local/bin/flookup
+hfst_lookup=/usr/local/bin/hfst-optimized-lookup
+hfst_tokenise=/usr/local/bin/hfst-tokenize
+vislcg3=/usr/local/bin/vislcg3
+cg_mwesplit=/usr/local/bin/cg-mwesplit
+difftool=/usr/bin/opendiff
+
+# Use autotools mechanisms to only run the configured fst types in the tests:
+fsttype=
+fsttype="$fsttype hfst"
+fsttype="$fsttype xfst"
+#fsttype="$fsttype foma"
+
+# Use autotools mechanisms to check for hfst-tokenise:
+want_htokenise=x
+want_htokenise=yes
+
+# Use autotools mechanisms to check for mergeability of diff tool:
+can_merge=x
+can_merge=yes
+
+# Use autotools mechanisms to check for grammar checker testability:
+can_gramcheck=x
+can_gramcheck=yes
+
+scriptname=$0
+
+# move into devtools dir in the build dir:
+cd $abs_top_builddir/devtools
+
+function print_usage() {
+    echo "Usage: $0 OPTION [MORE OPTIONS...]"
+    echo
+    echo "Check whether there are regressions in the analysis output by"
+    echo "analysing a corpus in several ways and comparing to the previous"
+    echo "version. The input corpus used is found in"
+    echo "\$GIELLA_LANG/test/data/analysis_check_corpus.txt. The previous"
+    echo "analyses under version controll are stored in the same directory."
+    echo
+    echo "You need to specify at least one of the diff options."
+    echo
+    echo "  -h, --help           Print this usage info"
+    echo "  -c, --corpus CORPUS  Specify the corpus to be used as input."
+    echo "                       Optional, default: see above."
+    echo "  -da, --diff-all      Run all diffs in one go, given that the"
+    echo "                       required analysis files are available."
+    echo "                       Shorthand for:"
+    echo "                       $scriptname -dm -dd -df -de"
+    echo "  -dm, --diff-morpha   Open a graphical diff view for the"
+    echo "                       morphological analyses."
+    echo "  -dd, --diff-disamb   Open a graphical diff view for the"
+    echo "                       disambiguated analyses. When used together"
+    echo "                       with '-gr', this includes whitespace tagging"
+    echo "                       and spell checking of unrecognised words."
+    echo "  -df, --diff-functn   Open a graphical diff view for the syntactic"
+    echo "                       function analyses. When used together with"
+    echo "                       '-gr', it gives error detection instead of"
+    echo "                       function analysis."
+    echo "  -de, --diff-depend   Open a graphical diff view for the dependency"
+    echo "                       analyses. When used together with '-gr', it"
+    echo "                       gives correction suggestions instead of"
+    echo "                       dependence analysis."
+    echo "  -gr, --gram-check    Run the specified diffs using the grammar"
+    echo "                       checker pipeline instead of the regular one."
+    echo "                       Requires hfst."
+    echo "  -dh, --diff-hfsttok  Open a graphical diff view with"
+    echo "                       differences between the old-style preprocess +"
+    echo "                       lookup + lookup2cg using an HFST analyser vs"
+    echo "                       the new hfst-tokenise tokenise-and-lookup in"
+    echo "                       one go. This option has an effect only when"
+    echo "                       both hfst and tokenisers are enabled."
+    echo "  -dx, --diff-xeroxtok Open a graphical diff view with"
+    echo "                       differences between the old-style preprocess +"
+    echo "                       lookup + lookup2cg using a XEROX analyser vs"
+    echo "                       the new hfst-tokenise tokenise-and-lookup in"
+    echo "                       one go. This option has an effect only when"
+    echo "                       both Xerox, hfst and tokenisers are enabled."
+    echo
+}
+
+# Wrong usage - short instruction:
+if test $# -ge 9 -o $# -eq 0 ; then
+    echo "ERROR: Too many or no options specified!"
+    echo
+    print_usage
+    exit 1
+fi
+
+diff_morpha="no"
+diff_disamb="no"
+diff_functn="no"
+diff_depend="no"
+gramcheck_diff="no"
+old_new_hfst_diff="no"
+old_new_xerox_diff="no"
+
+# manual getopt loop... Mac OS X does not have good getopt
+while test $# -ge 1 ; do
+    if test x$1 = x--help -o x$1 = x-h ; then
+        print_usage
+        exit 0
+    elif test x$1 = x-diff-all     \
+           -o x$1 = x-da           ; then
+        diff_morpha="yes"
+        diff_disamb="yes"
+        diff_functn="yes"
+        diff_depend="yes"
+    elif test x$1 = x--diff-morpha \
+           -o x$1 = x-dm           ; then
+        diff_morpha="yes"
+    elif test x$1 = x--diff-disamb \
+           -o x$1 = x-dd           ; then
+        diff_disamb="yes"
+    elif test x$1 = x--diff-functn \
+           -o x$1 = x-df           ; then
+        diff_functn="yes"
+    elif test x$1 = x--diff-depend \
+           -o x$1 = x-de           ; then
+        diff_depend="yes"
+    elif test x$1 = x--gram-check   -o x$1 = x-gr ; then
+        gramcheck_diff="yes"
+        # Check that the grammar checker build is enabled, error out if not:
+        if test x$can_gramcheck = xx ; then
+            echo "ERROR: You can't use the grammar checker option when the"
+            echo "       grammar checker is not enabled. Please reconfigure,"
+            echo "       make, and run this script again."
+            echo
+            exit 1
+        fi
+        if ! grep -q "hfst" <<<$fsttype; then
+            echo "ERROR: You need to build with hfst to enable grammar checker"
+            echo "       testing."
+            echo
+            exit 1
+        fi
+    elif test x$1 = x--diff-hfsttok -o x$1 = x-dh ; then
+        old_new_hfst_diff="yes"
+    elif test x$1 = x--diff-hfsttok -o x$1 = x-dx ; then
+        old_new_xerox_diff="yes"
+    elif test x$1 = x--corpus -o x$1 = x-c ; then
+        # If -c is not followed by anything - fail:
+        if test -z "$2" ; then
+            echo "ERROR: please specify the corpus path and name"
+            echo
+            print_usage
+            exit 1
+        # If the next argument is a new option (not a corpus path), then fail:
+        elif [[ "$2" = \-* ]] ; then
+            echo "ERROR: please specify the corpus path and name"
+            echo
+            print_usage
+            exit 1
+        # Check whether the specified corpus file actually exists:
+        elif [[ ! -f "$2" ]] ; then
+            echo "ERROR: The specified corpus file $2 does not exist!"
+            echo
+            print_usage
+            exit 1
+        else
+            corpus="$2"
+            shift
+        fi
+    fi
+    shift
+done
+
+if test $diff_morpha = "no" -a \
+        $diff_disamb = "no" -a \
+        $diff_functn = "no" -a \
+        $diff_depend = "no" -a \
+        $old_new_hfst_diff = "no"  -a \
+        $old_new_xerox_diff = "no" ; then
+    echo "ERROR: No diff option specified. At least one must be."
+    echo
+    print_usage
+    exit 1
+fi
+
+if test "x$corpus" != "x" ; then
+    source_corpus=$(basename $corpus .txt)
+    corpus_file=$corpus
+fi
+
+# Overridable file variables:
+morpha_corpus=$source_corpus.morpha
+disamb_corpus=$source_corpus.disamb
+functn_corpus=$source_corpus.functn
+depend_corpus=$source_corpus.depend
+
+# 
+case $difftool in
+  *opendiff )
+        merge_option="-merge"
+        ;;
+  *)
+        merge_option="--output"
+        ;;
+esac
+
+function open_diffs() {
+    diff_file=$1
+    if test ! -f $corpusdir/$diff_file.goldst.txt; then
+        echo "First time run!"
+        echo "Adding $corpusdir/$diff_file.goldst.txt to svn"
+        cp $diff_file.txt $corpusdir/$diff_file.goldst.txt
+        svn add --force $corpusdir/$diff_file.goldst.txt
+    else
+      if cmp --silent $corpusdir/$diff_file.goldst.txt $diff_file.txt ; then
+        echo "$diff_file.txt and $corpusdir/$diff_file.goldst.txt are identical"
+      else
+        echo "$diff_file.txt and $corpusdir/$diff_file.goldst.txt are \
+different. They will be opened in the graphical diff tool $difftool for \
+verification."
+        if test x$can_merge = xyes; then
+          $difftool $corpusdir/$diff_file.goldst.txt $diff_file.txt \
+            $merge_option $corpusdir/$diff_file.goldst.txt
+        else
+          $difftool $corpusdir/$diff_file.goldst.txt $diff_file.txt
+        fi
+      fi
+    fi
+}
+
+
+# Run cg-based tests on top of the morphological analysis
+function run_cg_tests() {
+    $vislcg3 -g $disambiguator \
+      < $morpha_corpus.$fstsuffix.txt \
+      > $disamb_corpus.$fstsuffix.txt
+    if test "x$diff_disamb" = "xyes" ; then
+        open_diffs $disamb_corpus.$fstsuffix
+    fi
+    if test -f $functions_cg ; then
+        $vislcg3 -g $functions_cg \
+          < $disamb_corpus.$fstsuffix.txt \
+          > $functn_corpus.$fstsuffix.txt
+        if test "x$diff_functn" = "xyes" ; then
+            open_diffs $functn_corpus.$fstsuffix
+        fi
+        if test -f $dependencies ; then
+            $vislcg3 -g $dependencies \
+              < $functn_corpus.$fstsuffix.txt \
+              > $depend_corpus.$fstsuffix.txt
+            if test "x$diff_depend" = "xyes" ; then
+                open_diffs $depend_corpus.$fstsuffix
+            fi
+        fi
+    fi
+}
+
+# Run the basic morphological analysis + pre- and postprocessing
+function run_tests() {
+    if test ! -f $abbr_file; then
+      echo "Abbreviation file for preprocessing - $abbr_file - does not exist."
+      echo "Plese generate before running this script again."
+      exit 1
+    fi
+    $giella_core/scripts/preprocess --abbr=$abbr_file \
+      < $corpus_file \
+      | $lookuptool $analyser.$fstsuffix \
+      | perl -pe's/\t[0-9]+$//' \
+      | $giella_core/scripts/lookup2cg \
+      | awk -F\" '{OFS=FS}{ gsub(/_/," ",$2); print }' \
+      | perl $giella_core/scripts/sort-cg-cohort.pl \
+      | grep -v '^$' \
+      > $morpha_corpus.$fstsuffix.txt
+    if test "x$diff_morpha" = "xyes" ; then
+	   open_diffs $morpha_corpus.$fstsuffix
+	fi
+    run_cg_tests
+}
+
+# Start the analysis pipeline with different morphological processing when
+# tokenisers are enabled:
+function run_htokeniser_tests() {
+    $hfst_tokenise --giella-cg --weight-classes=1 $tokeniser \
+      < $corpus_file \
+      | $vislcg3 -g $mwe_dis \
+      | $cg_mwesplit \
+      > $morpha_corpus.$fstsuffix.txt
+    grep -v '^:' \
+      < $morpha_corpus.$fstsuffix.txt \
+      | perl -pe 's/ <W[^>]+>//g' \
+      | perl $giella_core/scripts/sort-cg-cohort.pl \
+      | grep -v '^$' \
+      > $morpha_corpus.htokoldcomp.txt
+    if test "x$diff_morpha" = "xyes" ; then
+	   open_diffs $morpha_corpus.$fstsuffix
+	fi
+    if test "x$old_new_hfst_diff" = "xyes" ; then
+	   diff $morpha_corpus.htokoldcomp.txt $morpha_corpus.hfstol.txt > diff.txt
+	   $giella_core/devtools/cmp_patch.py < diff.txt > cmp_merge.patch
+	   patch -s $morpha_corpus.htokoldcomp.txt cmp_merge.patch
+	   $difftool $morpha_corpus.hfstol.txt $morpha_corpus.htokoldcomp.txt
+	fi
+    run_cg_tests
+}
+
+# Run separate cg-based tests for the grammar checker
+function run_gc_cg_tests() {
+    if test -f "$valency" ; then
+        val_pipe="$vislcg3 -g $valency"
+    else
+        val_pipe="cat"
+    fi
+    cat \
+      < $morpha_corpus.grchk.$fstsuffix.txt \
+      | $val_pipe    \
+      | $vislcg3 -g $grc_mwe_dis \
+      | $cg_mwesplit \
+      | divvun-blanktag $whitespace \
+      | divvun-cgspell $speller \
+      | $vislcg3 -g $grc_disamb \
+      > $disamb_corpus.grchk.$fstsuffix.txt
+    if test "x$diff_disamb" = "xyes" ; then
+        open_diffs $disamb_corpus.grchk.$fstsuffix
+    fi
+    if test -f $functions_cg ; then
+        $vislcg3 -g $gramchecker \
+          < $disamb_corpus.grchk.$fstsuffix.txt \
+          > $functn_corpus.grchk.$fstsuffix.txt
+        if test "x$diff_functn" = "xyes" ; then
+            open_diffs $functn_corpus.grchk.$fstsuffix
+        fi
+        if test -f $dependencies ; then
+            divvun-suggest -g $grmchk_generator -m $grmchk_errmessages \
+              < $functn_corpus.grchk.$fstsuffix.txt \
+              > $depend_corpus.grchk.$fstsuffix.txt
+            if test "x$diff_depend" = "xyes" ; then
+                open_diffs $depend_corpus.grchk.$fstsuffix
+            fi
+        fi
+    fi
+}
+
+# Separate test run for grammar checkers:
+function run_gramcheck_tests() {
+    $hfst_tokenise --giella-cg --weight-classes=2 $grc_tknsr \
+      < $corpus_file \
+      > $morpha_corpus.grchk.$fstsuffix.txt
+    if test "x$diff_morpha" = "xyes" ; then
+	   open_diffs $morpha_corpus.grchk.$fstsuffix
+	fi
+    run_gc_cg_tests
+}
+
+# Loop over the enabled transducer types - we test all that are configured:
+for f in $fsttype; do
+	# Determine the fst filename suffix based on fst engine:
+	if test $f = "xfst"; then
+		lookuptool="$xerox_lookup -q -flags mbTT"
+		fstsuffix="xfst"
+		if ! test x$gramcheck_diff == "xyes"; then
+		  run_tests
+		fi
+	elif test $f = "foma"; then
+		lookuptool="$foma_lookup"
+		fstsuffix="foma"
+		if ! test x$gramcheck_diff == "xyes"; then
+		  run_tests
+		fi
+	elif test $f = "hfst"; then
+		lookuptool="$hfst_lookup"
+		fstsuffix="hfstol"
+		if ! test x$gramcheck_diff == "xyes"; then
+			run_tests
+			if test x$want_htokenise == "xyes"; then
+				fstsuffix="hfsttok"
+				run_htokeniser_tests
+			fi
+		else
+			fstsuffix="hfsttok"
+			run_gramcheck_tests
+		fi
+	else
+	    let "Fail += 1"
+		echo "FAIL: Unknown fst type! FST=$f"
+	    continue
+	fi
+done
+
+if test "x$old_new_xerox_diff" = "xyes" ; then
+   $difftool $morpha_corpus.xfst.txt $morpha_corpus.htokoldcomp.txt
+fi

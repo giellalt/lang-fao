@@ -1,0 +1,144 @@
+#!/bin/bash
+
+# Take tab-separated input in 2+ colums (like a typos file), extract the first
+# column, send it through a spell checker, and convert the result to xml.
+# Finally open the xml in the default browser.
+
+# For debugging, uncomment this command:
+# set -x
+
+# Language being tested, ISO 639-1 code if available:
+giella_lang=fao
+giella2c_lang=fo
+
+# Directory variables from configure:
+top_srcdir=/Users/ttr000/git/giellalt/lang-fao
+top_builddir=/Users/ttr000/git/giellalt/lang-fao
+giella_core=/Users/ttr000/git/giellalt/giella-core
+
+# Other directory variables:
+SCRIPT_DIR=$top_srcdir/devtools
+spellerdir=tools/spellcheckers/fstbased/desktop/hfst
+
+# File variables:
+engine=vk
+typos_file="$top_srcdir/test/data/typos.txt"
+file_spesifier="$(basename ${typos_file} .txt)"
+speller_test_data=speller_test_data.txt
+speller_input=speller_input.${engine}.txt
+speller_output=speller_output.${engine}.txt
+speller_timeusage=speller_timeusage.${engine}.txt
+speller_results="$SCRIPT_DIR/speller_result_${file_spesifier}.${engine}.html"
+variant=""
+
+# Other variables:
+DATE=$(date +%Y%m%d)
+TESTTIME=$(date +%H%M)
+
+function print_usage() {
+    echo "Usage: $0 [OPTIONS...]"
+    echo "Test the $giella_lang speller using voikkospell and typos data"
+    echo
+    echo "  -h, --help          Print this usage info"
+    echo "  -v, --variant       Select locale variant to test, like dialect,"
+    echo "                      country, alternative writing system etc."
+    echo "                      Specify the whole filename, except the suffix"
+    echo "                      .zhfst, e.g.:"
+    echo "                      -v ${giella2c_lang}_NO"
+    echo "                      or e.g.:"
+    echo "                      --variant ${giella2c_lang}_Cyrl"
+    echo
+}
+
+# Wrong usage - short instruction:
+if test $# -ge 3 ; then
+    print_usage
+    exit 1
+fi
+
+# manual getopt loop... Mac OS X does not have good getopt
+while test $# -ge 1 ; do
+    if test x$1 = x--help -o x$1 = x-h ; then
+        print_usage
+        exit 0
+    elif test x$1 = x--variant -o x$1 = x-v ; then
+        # If -v is not followed by anything - fail:
+        if test -z "$2" ; then
+            echo "ERROR: please specify the variant you want to use"
+            echo
+            print_usage
+            exit 1
+        # If the next argument is a new option (not a variant), then fail:
+        elif [[ "$2" = \-* ]] ; then
+            echo "ERROR: please specify the variant you want to use"
+            echo
+            print_usage
+            exit 1
+        else
+            variant="$2"
+            shift
+        fi
+    fi
+    shift
+done
+
+# if a variant was specified, use that as the speller file:
+if test "x$variant" != x ; then
+    giella2c_lang=$variant
+fi
+
+# Check that the speller file does exist:
+spellerfile="$top_builddir/$spellerdir/${giella2c_lang}.zhfst"
+if test ! -f $spellerfile ; then
+    echo "ERROR: Speller file not found:" 1>&2
+    echo "$spellerfile" 1>&2
+    echo  1>&2
+    exit 1
+fi
+
+# Include language (variant) as part of the filename, so that one can keep
+# track of and compare different variants:
+speller_results=$speller_results.${giella2c_lang}.html
+
+# Add easter egg version info trigger:
+echo "nuvviDspeller	Divvun" > $SCRIPT_DIR/$speller_test_data
+# Extract the typos, skipping input strings with space(s) in them:
+grep -v '^[!#]' "$typos_file" | grep -v '^$' \
+	| egrep -v '^[[:graph:]]+ [[:graph:]]' \
+	>> $SCRIPT_DIR/$speller_test_data
+
+# Extract the actual test data:
+cut -f1 $SCRIPT_DIR/$speller_test_data > $SCRIPT_DIR/$speller_input
+
+# Run the speller;
+$giella_core/scripts/run_voikko_speller.sh $SCRIPT_DIR/$speller_input \
+                                      $SCRIPT_DIR/$speller_output \
+                                      $SCRIPT_DIR/$speller_timeusage \
+                                      $giella2c_lang \
+                                      "$top_builddir/$spellerdir"
+
+rm -f "$speller_results"
+
+# Convert speller output to common xml:
+$giella_core/scripts/speller-testres.pl \
+		--engine=${engine} \
+		--lang=$giella2c_lang \
+		--input="$SCRIPT_DIR/$speller_test_data" \
+		--output="$SCRIPT_DIR/$speller_output" \
+		--document=$(basename "$typos_file") \
+		--date=$DATE-$TESTTIME \
+		--version="n/a" \
+		--toolversion="n/a" \
+		--corpusversion="n/a" \
+		--memoryuse="n/a" \
+		--timeuse="$SCRIPT_DIR/$speller_timeusage" \
+		--xml="$speller_results" \
+		--corrsugg
+
+# Open the xml file in the default browser
+if [ `uname` == "Darwin" ]
+then
+    open "$speller_results"
+else
+    xdg-open "$speller_result"
+fi

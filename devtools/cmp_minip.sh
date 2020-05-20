@@ -22,7 +22,7 @@ for lemma in $(cat $L_FILE);
 do
  for form in $(cat $P_FILE);
  do
-   echo "${lemma}${form}" | $LOOKUP $GTHOME/langs/fao/src/generator-gt-norm.xfst
+   echo "${lemma}${form}" | $LOOKUP $GTLANGS/lang-fao/src/generator-gt-norm.xfst
  done
 done
 

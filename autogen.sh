@@ -113,8 +113,8 @@ else
     repoformat=unknown
 fi
 
-HTTPS_REPO_HOST=https://github.com/giellalttmp
-SSH_REPO_HOST=git@github.com:giellalttmp
+HTTPS_REPO_HOST=https://github.com/giellalt
+SSH_REPO_HOST=git@github.com:giellalt
 
 get_dep_repo "giella-core" "giella-core" "$repoformat"
 get_dep_repo "giella-shared" "giella-common" "$repoformat"

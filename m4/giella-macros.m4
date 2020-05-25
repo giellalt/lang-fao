@@ -649,7 +649,7 @@ AC_ARG_ENABLE([reversed-intersect],
               [AS_HELP_STRING([--enable-reversed-intersect],
                               [enable reversed compose-intersect (faster and takes less RAM in some cases) @<:@default=no@:>@])],
               [enable_reversed_intersect=$enableval],
-              [enable_reversed_intersect=no])
+              [enable_reversed_intersect=yes])
 AM_CONDITIONAL([WANT_REVERSED_INTERSECT], [test "x$enable_reversed_intersect" != xno])
 
 ############ Tool switches: ############

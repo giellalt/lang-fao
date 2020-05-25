@@ -13,7 +13,7 @@ giella2c_lang=fo
 # Directory variables from configure:
 top_srcdir=/Users/ttr000/git/giellalt/lang-fao
 top_builddir=/Users/ttr000/git/giellalt/lang-fao
-giella_core=/Users/ttr000/git/giellalt/giella-core
+giella_core=/Users/ttr000/git/giellalt/lang-fao/./../giella-core
 
 # Other directory variables:
 SCRIPT_DIR=$top_srcdir/devtools

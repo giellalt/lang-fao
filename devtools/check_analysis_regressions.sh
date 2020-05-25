@@ -14,7 +14,7 @@ giella_lang=fo
 top_srcdir=..
 top_builddir=..
 abs_top_builddir=/Users/ttr000/git/giellalt/lang-fao
-giella_core=/Users/ttr000/git/giellalt/giella-core
+giella_core=/Users/ttr000/git/giellalt/lang-fao/./../giella-core
 corpusdir=$top_srcdir/test/data
 
 # File variables:
@@ -41,7 +41,7 @@ grmchk_generator=$top_builddir/tools/grammarcheckers/generator-gt-norm.hfstol
 grmchk_errmessages=$top_srcdir/tools/grammarcheckers/errors.xml
 
 # Tools:
-xerox_lookup=/usr/local/bin/lookup
+xerox_lookup=/Users/ttr000/bin/lookup
 foma_lookup=/usr/local/bin/flookup
 hfst_lookup=/usr/local/bin/hfst-optimized-lookup
 hfst_tokenise=/usr/local/bin/hfst-tokenize
@@ -52,7 +52,7 @@ difftool=/usr/bin/opendiff
 # Use autotools mechanisms to only run the configured fst types in the tests:
 fsttype=
 fsttype="$fsttype hfst"
-fsttype="$fsttype xfst"
+#fsttype="$fsttype xfst"
 #fsttype="$fsttype foma"
 
 # Use autotools mechanisms to check for hfst-tokenise:
@@ -65,7 +65,7 @@ can_merge=yes
 
 # Use autotools mechanisms to check for grammar checker testability:
 can_gramcheck=x
-can_gramcheck=yes
+#can_gramcheck=yes
 
 scriptname=$0
 

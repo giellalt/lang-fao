@@ -11,7 +11,7 @@ GT_LOCAL_FSTSPELLER_FILTER_SRCS=
 
 # Source files copied from src/filters/ OR from
 # $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters:
-GIELLA_LOCAL_COPY_FILTER_SRCS+=\
+GIELLA_LOCAL_COPY_FSTBASED_FILTER_SRCS=\
 	convert_to_flags-CmpNP-tags.regex \
 	split-CmpNP-tags.regex
 
@@ -19,7 +19,7 @@ GIELLA_LOCAL_COPY_FILTER_SRCS+=\
 if WANT_SPELLERS
 
 # List generated regexes here:
-GENERATED_REGEXES+=
+GENERATED_FSTBASED_REGEXES=
 
 endif # WANT_SPELLERS
 

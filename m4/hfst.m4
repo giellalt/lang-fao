@@ -44,8 +44,7 @@ AC_ARG_WITH([hfst],
 
 # If Xerox tools are not found, assume we want Hfst:
 AS_IF([test "x$gt_prog_xfst" = xno \
-         -a "x$gt_prog_foma" = xno \
-         -a "x$with_xfst"   != xno ], [
+         -a "x$gt_prog_foma" = xno ], [
          with_hfst=yes
          fallback_to_hfst="INFO: Xfst was not found, falling back to using Hfst"
          ])

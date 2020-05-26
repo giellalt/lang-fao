@@ -99,7 +99,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 
 ### This is the version of the Giella Core that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
-_giella_core_min_version=0.4.3
+_giella_core_min_version=0.4.5
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])

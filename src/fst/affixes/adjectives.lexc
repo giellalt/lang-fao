@@ -893,25 +893,6 @@ LEXICON l33
  +A+Neu+Pl+Gen+Indef:amla	 # ;
  +A:aml Pos_Def2 ;
  
-!LEXICON ELDRI
-! :d CRi ;
-! :  SRi ;
-
-!LEXICON FAERRI
-! :r CRi ;
-! :g SRi ;
-
-!LEXICON FLEIRI
-! :i CRi ;
-! :  SRi ;
-
-!LEXICON STYTTRI
-! :t CRi ;
-! :  SRi ;
-
-!LEXICON NAERRI
-! :r CRi ;
-! :  SRi ;
 
 
 LEXICON l34 ! dottin
@@ -1302,7 +1283,7 @@ LEXICON l39 ! settur
 LEXICON STOR
         +A:stór   adj_a                 ;
         +A:stór   adj_def               ;
-    +A+Cmp:størr  indef_cmp_adj_decl    ;
+    +A+Comp:størr  indef_cmp_adj_decl    ;
  +A+Superl:størst indef_superl_adj_decl ;
 
 LEXICON andi
@@ -1329,11 +1310,33 @@ LEXICON HOMONYM_ADJ_DEF
    +Def: # ;
 
 
-! Irregular comaratives
+! Irregular comparatives
 ! =====================
 
 LEXICON indecladj
  +A: HOMONYM_ADJ_FORMS ;
+
+
+LEXICON ELDRI
+ +A:d CRi ;
+ +A:  SRi ;
+
+LEXICON FAERRI
+ +A:r CRi ;
+ +A:g SRi ;
+
+LEXICON FLEIRI
+ +A:i CRi ;
+ +A:  SRi ;
+
+LEXICON STYTTRI
+ +A:t CRi ;
+ +A:  SRi ;
+
+LEXICON NAERRI
+ +A:r CRi ;
+ +A:  SRi ;
+
 
 ! Intermediate adjectival lexica
 ! ==============================
@@ -1882,56 +1885,56 @@ LEXICON Comp_Ari
  SAri ;
  
 LEXICON CAri
- +Cmp+Msc+Sg+Nom+Indef:%>ari # ;
- +Cmp+Msc+Sg+Acc+Indef:%>ari # ;
- +Cmp+Msc+Sg+Dat+Indef:%>ari # ;
- +Cmp+Msc+Sg+Gen+Indef:%>ari # ;
- +Cmp+Msc+Pl+Nom+Indef:%>ari # ;
- +Cmp+Msc+Pl+Acc+Indef:%>ari # ;
- +Cmp+Msc+Pl+Dat+Indef:%>ari # ;
- +Cmp+Msc+Pl+Gen+Indef:%>ari # ;
- +Cmp+Msc+Sg+Nom+Def:%>ari # ;
- +Cmp+Msc+Sg+Acc+Def:%>ara # ;
- +Cmp+Msc+Sg+Dat+Def:%>ara # ;
- +Cmp+Msc+Sg+Gen+Def:%>ara # ;
- +Cmp+Msc+Pl+Nom+Def:%>aru # ;
- +Cmp+Msc+Pl+Acc+Def:%>aru # ;
- +Cmp+Msc+Pl+Dat+Def:%>aru # ;
- +Cmp+Msc+Pl+Gen+Def:%>aru # ;
+ +Comp+Msc+Sg+Nom+Indef:%>ari # ;
+ +Comp+Msc+Sg+Acc+Indef:%>ari # ;
+ +Comp+Msc+Sg+Dat+Indef:%>ari # ;
+ +Comp+Msc+Sg+Gen+Indef:%>ari # ;
+ +Comp+Msc+Pl+Nom+Indef:%>ari # ;
+ +Comp+Msc+Pl+Acc+Indef:%>ari # ;
+ +Comp+Msc+Pl+Dat+Indef:%>ari # ;
+ +Comp+Msc+Pl+Gen+Indef:%>ari # ;
+ +Comp+Msc+Sg+Nom+Def:%>ari # ;
+ +Comp+Msc+Sg+Acc+Def:%>ara # ;
+ +Comp+Msc+Sg+Dat+Def:%>ara # ;
+ +Comp+Msc+Sg+Gen+Def:%>ara # ;
+ +Comp+Msc+Pl+Nom+Def:%>aru # ;
+ +Comp+Msc+Pl+Acc+Def:%>aru # ;
+ +Comp+Msc+Pl+Dat+Def:%>aru # ;
+ +Comp+Msc+Pl+Gen+Def:%>aru # ;
 ! Fem
- +Cmp+Fem+Sg+Nom+Indef:%>ari # ;
- +Cmp+Fem+Sg+Acc+Indef:%>ari # ;
- +Cmp+Fem+Sg+Dat+Indef:%>ari # ;
- +Cmp+Fem+Sg+Gen+Indef:%>ari # ;
- +Cmp+Fem+Pl+Nom+Indef:%>ari # ;
- +Cmp+Fem+Pl+Acc+Indef:%>ari # ;
- +Cmp+Fem+Pl+Dat+Indef:%>ari # ;
- +Cmp+Fem+Pl+Gen+Indef:%>ari # ;
- +Cmp+Fem+Sg+Nom+Def:%>ara # ;
- +Cmp+Fem+Sg+Acc+Def:%>aru # ;
- +Cmp+Fem+Sg+Dat+Def:%>aru # ;
- +Cmp+Fem+Sg+Gen+Def:%>aru # ;
- +Cmp+Fem+Pl+Nom+Def:%>aru # ;
- +Cmp+Fem+Pl+Acc+Def:%>aru # ;
- +Cmp+Fem+Pl+Dat+Def:%>aru # ;
- +Cmp+Fem+Pl+Gen+Def:%>aru # ;
+ +Comp+Fem+Sg+Nom+Indef:%>ari # ;
+ +Comp+Fem+Sg+Acc+Indef:%>ari # ;
+ +Comp+Fem+Sg+Dat+Indef:%>ari # ;
+ +Comp+Fem+Sg+Gen+Indef:%>ari # ;
+ +Comp+Fem+Pl+Nom+Indef:%>ari # ;
+ +Comp+Fem+Pl+Acc+Indef:%>ari # ;
+ +Comp+Fem+Pl+Dat+Indef:%>ari # ;
+ +Comp+Fem+Pl+Gen+Indef:%>ari # ;
+ +Comp+Fem+Sg+Nom+Def:%>ara # ;
+ +Comp+Fem+Sg+Acc+Def:%>aru # ;
+ +Comp+Fem+Sg+Dat+Def:%>aru # ;
+ +Comp+Fem+Sg+Gen+Def:%>aru # ;
+ +Comp+Fem+Pl+Nom+Def:%>aru # ;
+ +Comp+Fem+Pl+Acc+Def:%>aru # ;
+ +Comp+Fem+Pl+Dat+Def:%>aru # ;
+ +Comp+Fem+Pl+Gen+Def:%>aru # ;
 ! Neu
- +Cmp+Neu+Sg+Nom+Indef:%>ari # ;
- +Cmp+Neu+Sg+Acc+Indef:%>ari # ;
- +Cmp+Neu+Sg+Dat+Indef:%>ari # ;
- +Cmp+Neu+Sg+Gen+Indef:%>ari # ;
- +Cmp+Neu+Pl+Nom+Indef:%>ari # ;
- +Cmp+Neu+Pl+Acc+Indef:%>ari # ;
- +Cmp+Neu+Pl+Dat+Indef:%>ari # ;
- +Cmp+Neu+Pl+Gen+Indef:%>ari # ;
- +Cmp+Neu+Sg+Nom+Def:%>ara # ;
- +Cmp+Neu+Sg+Acc+Def:%>ara # ;
- +Cmp+Neu+Sg+Dat+Def:%>ara # ;
- +Cmp+Neu+Sg+Gen+Def:%>ara # ;
- +Cmp+Neu+Pl+Nom+Def:%>aru # ;
- +Cmp+Neu+Pl+Acc+Def:%>aru # ;
- +Cmp+Neu+Pl+Dat+Def:%>aru # ;
- +Cmp+Neu+Pl+Gen+Def:%>aru # ;
+ +Comp+Neu+Sg+Nom+Indef:%>ari # ;
+ +Comp+Neu+Sg+Acc+Indef:%>ari # ;
+ +Comp+Neu+Sg+Dat+Indef:%>ari # ;
+ +Comp+Neu+Sg+Gen+Indef:%>ari # ;
+ +Comp+Neu+Pl+Nom+Indef:%>ari # ;
+ +Comp+Neu+Pl+Acc+Indef:%>ari # ;
+ +Comp+Neu+Pl+Dat+Indef:%>ari # ;
+ +Comp+Neu+Pl+Gen+Indef:%>ari # ;
+ +Comp+Neu+Sg+Nom+Def:%>ara # ;
+ +Comp+Neu+Sg+Acc+Def:%>ara # ;
+ +Comp+Neu+Sg+Dat+Def:%>ara # ;
+ +Comp+Neu+Sg+Gen+Def:%>ara # ;
+ +Comp+Neu+Pl+Nom+Def:%>aru # ;
+ +Comp+Neu+Pl+Acc+Def:%>aru # ;
+ +Comp+Neu+Pl+Dat+Def:%>aru # ;
+ +Comp+Neu+Pl+Gen+Def:%>aru # ;
 
 LEXICON SAri
  +Superl+Msc+Sg+Nom+Indef:%>astur # ;
@@ -1990,112 +1993,112 @@ LEXICON SAri
  +Superl+Neu+Pl+Gen+Def:%>astu # ;
 
 LEXICON CI 
- +Cmp+Msc+Sg+Nom+Indef:%>i # ;
- +Cmp+Msc+Sg+Acc+Indef:%>i # ;
- +Cmp+Msc+Sg+Dat+Indef:%>i # ;
- +Cmp+Msc+Sg+Gen+Indef:%>i # ;
- +Cmp+Msc+Pl+Nom+Indef:%>i # ;
- +Cmp+Msc+Pl+Acc+Indef:%>i # ;
- +Cmp+Msc+Pl+Dat+Indef:%>i # ;
- +Cmp+Msc+Pl+Gen+Indef:%>i # ;
- +Cmp+Msc+Sg+Nom+Def:%>i # ;
- +Cmp+Msc+Sg+Acc+Def:%>a # ;
- +Cmp+Msc+Sg+Dat+Def:%>a # ;
- +Cmp+Msc+Sg+Gen+Def:%>a # ;
- +Cmp+Msc+Pl+Nom+Def:%>u # ;
- +Cmp+Msc+Pl+Acc+Def:%>u # ;
- +Cmp+Msc+Pl+Dat+Def:%>u # ;
- +Cmp+Msc+Pl+Gen+Def:%>u # ;
+ +Comp+Msc+Sg+Nom+Indef:%>i # ;
+ +Comp+Msc+Sg+Acc+Indef:%>i # ;
+ +Comp+Msc+Sg+Dat+Indef:%>i # ;
+ +Comp+Msc+Sg+Gen+Indef:%>i # ;
+ +Comp+Msc+Pl+Nom+Indef:%>i # ;
+ +Comp+Msc+Pl+Acc+Indef:%>i # ;
+ +Comp+Msc+Pl+Dat+Indef:%>i # ;
+ +Comp+Msc+Pl+Gen+Indef:%>i # ;
+ +Comp+Msc+Sg+Nom+Def:%>i # ;
+ +Comp+Msc+Sg+Acc+Def:%>a # ;
+ +Comp+Msc+Sg+Dat+Def:%>a # ;
+ +Comp+Msc+Sg+Gen+Def:%>a # ;
+ +Comp+Msc+Pl+Nom+Def:%>u # ;
+ +Comp+Msc+Pl+Acc+Def:%>u # ;
+ +Comp+Msc+Pl+Dat+Def:%>u # ;
+ +Comp+Msc+Pl+Gen+Def:%>u # ;
 ! Fem
- +Cmp+Fem+Sg+Nom+Indef:%>i # ;
- +Cmp+Fem+Sg+Acc+Indef:%>i # ;
- +Cmp+Fem+Sg+Dat+Indef:%>i # ;
- +Cmp+Fem+Sg+Gen+Indef:%>i # ;
- +Cmp+Fem+Pl+Nom+Indef:%>i # ;
- +Cmp+Fem+Pl+Acc+Indef:%>i # ;
- +Cmp+Fem+Pl+Dat+Indef:%>i # ;
- +Cmp+Fem+Pl+Gen+Indef:%>i # ;
- +Cmp+Fem+Sg+Nom+Def:%>u # ;
- +Cmp+Fem+Sg+Acc+Def:%>u # ;
- +Cmp+Fem+Sg+Dat+Def:%>u # ;
- +Cmp+Fem+Sg+Gen+Def:%>u # ;
- +Cmp+Fem+Pl+Nom+Def:%>u # ;
- +Cmp+Fem+Pl+Acc+Def:%>u # ;
- +Cmp+Fem+Pl+Dat+Def:%>u # ;
- +Cmp+Fem+Pl+Gen+Def:%>u # ;
+ +Comp+Fem+Sg+Nom+Indef:%>i # ;
+ +Comp+Fem+Sg+Acc+Indef:%>i # ;
+ +Comp+Fem+Sg+Dat+Indef:%>i # ;
+ +Comp+Fem+Sg+Gen+Indef:%>i # ;
+ +Comp+Fem+Pl+Nom+Indef:%>i # ;
+ +Comp+Fem+Pl+Acc+Indef:%>i # ;
+ +Comp+Fem+Pl+Dat+Indef:%>i # ;
+ +Comp+Fem+Pl+Gen+Indef:%>i # ;
+ +Comp+Fem+Sg+Nom+Def:%>u # ;
+ +Comp+Fem+Sg+Acc+Def:%>u # ;
+ +Comp+Fem+Sg+Dat+Def:%>u # ;
+ +Comp+Fem+Sg+Gen+Def:%>u # ;
+ +Comp+Fem+Pl+Nom+Def:%>u # ;
+ +Comp+Fem+Pl+Acc+Def:%>u # ;
+ +Comp+Fem+Pl+Dat+Def:%>u # ;
+ +Comp+Fem+Pl+Gen+Def:%>u # ;
 ! Neu
- +Cmp+Neu+Sg+Nom+Indef:%>i # ;
- +Cmp+Neu+Sg+Acc+Indef:%>i # ;
- +Cmp+Neu+Sg+Dat+Indef:%>i # ;
- +Cmp+Neu+Sg+Gen+Indef:%>i # ;
- +Cmp+Neu+Pl+Nom+Indef:%>i # ;
- +Cmp+Neu+Pl+Acc+Indef:%>i # ;
- +Cmp+Neu+Pl+Dat+Indef:%>i # ;
- +Cmp+Neu+Pl+Gen+Indef:%>i # ;
- +Cmp+Neu+Sg+Nom+Def:%>a # ;
- +Cmp+Neu+Sg+Acc+Def:%>a # ;
- +Cmp+Neu+Sg+Dat+Def:%>a # ;
- +Cmp+Neu+Sg+Gen+Def:%>a # ;
- +Cmp+Neu+Pl+Nom+Def:%>u # ;
- +Cmp+Neu+Pl+Acc+Def:%>u # ;
- +Cmp+Neu+Pl+Dat+Def:%>u # ;
- +Cmp+Neu+Pl+Gen+Def:%>u # ;
+ +Comp+Neu+Sg+Nom+Indef:%>i # ;
+ +Comp+Neu+Sg+Acc+Indef:%>i # ;
+ +Comp+Neu+Sg+Dat+Indef:%>i # ;
+ +Comp+Neu+Sg+Gen+Indef:%>i # ;
+ +Comp+Neu+Pl+Nom+Indef:%>i # ;
+ +Comp+Neu+Pl+Acc+Indef:%>i # ;
+ +Comp+Neu+Pl+Dat+Indef:%>i # ;
+ +Comp+Neu+Pl+Gen+Indef:%>i # ;
+ +Comp+Neu+Sg+Nom+Def:%>a # ;
+ +Comp+Neu+Sg+Acc+Def:%>a # ;
+ +Comp+Neu+Sg+Dat+Def:%>a # ;
+ +Comp+Neu+Sg+Gen+Def:%>a # ;
+ +Comp+Neu+Pl+Nom+Def:%>u # ;
+ +Comp+Neu+Pl+Acc+Def:%>u # ;
+ +Comp+Neu+Pl+Dat+Def:%>u # ;
+ +Comp+Neu+Pl+Gen+Def:%>u # ;
 
 LEXICON Comp_Ri
  CRi ;
  SRi ;
  
 LEXICON CRi 
- +Cmp+Msc+Sg+Nom+Indef:%>ri # ;
- +Cmp+Msc+Sg+Acc+Indef:%>ri # ;
- +Cmp+Msc+Sg+Dat+Indef:%>ri # ;
- +Cmp+Msc+Sg+Gen+Indef:%>ri # ;
- +Cmp+Msc+Pl+Nom+Indef:%>ri # ;
- +Cmp+Msc+Pl+Acc+Indef:%>ri # ;
- +Cmp+Msc+Pl+Dat+Indef:%>ri # ;
- +Cmp+Msc+Pl+Gen+Indef:%>ri # ;
- +Cmp+Msc+Sg+Nom+Def:%>ri # ;
- +Cmp+Msc+Sg+Acc+Def:%>ra # ;
- +Cmp+Msc+Sg+Dat+Def:%>ra # ;
- +Cmp+Msc+Sg+Gen+Def:%>ra # ;
- +Cmp+Msc+Pl+Nom+Def:%>ru # ;
- +Cmp+Msc+Pl+Acc+Def:%>ru # ;
- +Cmp+Msc+Pl+Dat+Def:%>ru # ;
- +Cmp+Msc+Pl+Gen+Def:%>ru # ;
+ +Comp+Msc+Sg+Nom+Indef:%>ri # ;
+ +Comp+Msc+Sg+Acc+Indef:%>ri # ;
+ +Comp+Msc+Sg+Dat+Indef:%>ri # ;
+ +Comp+Msc+Sg+Gen+Indef:%>ri # ;
+ +Comp+Msc+Pl+Nom+Indef:%>ri # ;
+ +Comp+Msc+Pl+Acc+Indef:%>ri # ;
+ +Comp+Msc+Pl+Dat+Indef:%>ri # ;
+ +Comp+Msc+Pl+Gen+Indef:%>ri # ;
+ +Comp+Msc+Sg+Nom+Def:%>ri # ;
+ +Comp+Msc+Sg+Acc+Def:%>ra # ;
+ +Comp+Msc+Sg+Dat+Def:%>ra # ;
+ +Comp+Msc+Sg+Gen+Def:%>ra # ;
+ +Comp+Msc+Pl+Nom+Def:%>ru # ;
+ +Comp+Msc+Pl+Acc+Def:%>ru # ;
+ +Comp+Msc+Pl+Dat+Def:%>ru # ;
+ +Comp+Msc+Pl+Gen+Def:%>ru # ;
 ! Fem
- +Cmp+Fem+Sg+Nom+Indef:%>ri # ;
- +Cmp+Fem+Sg+Acc+Indef:%>ri # ;
- +Cmp+Fem+Sg+Dat+Indef:%>ri # ;
- +Cmp+Fem+Sg+Gen+Indef:%>ri # ;
- +Cmp+Fem+Pl+Nom+Indef:%>ri # ;
- +Cmp+Fem+Pl+Acc+Indef:%>ri # ;
- +Cmp+Fem+Pl+Dat+Indef:%>ri # ;
- +Cmp+Fem+Pl+Gen+Indef:%>ri # ;
- +Cmp+Fem+Sg+Nom+Def:%>ru # ;
- +Cmp+Fem+Sg+Acc+Def:%>ru # ;
- +Cmp+Fem+Sg+Dat+Def:%>ru # ;
- +Cmp+Fem+Sg+Gen+Def:%>ru # ;
- +Cmp+Fem+Pl+Nom+Def:%>ru # ;
- +Cmp+Fem+Pl+Acc+Def:%>ru # ;
- +Cmp+Fem+Pl+Dat+Def:%>ru # ;
- +Cmp+Fem+Pl+Gen+Def:%>ru # ;
+ +Comp+Fem+Sg+Nom+Indef:%>ri # ;
+ +Comp+Fem+Sg+Acc+Indef:%>ri # ;
+ +Comp+Fem+Sg+Dat+Indef:%>ri # ;
+ +Comp+Fem+Sg+Gen+Indef:%>ri # ;
+ +Comp+Fem+Pl+Nom+Indef:%>ri # ;
+ +Comp+Fem+Pl+Acc+Indef:%>ri # ;
+ +Comp+Fem+Pl+Dat+Indef:%>ri # ;
+ +Comp+Fem+Pl+Gen+Indef:%>ri # ;
+ +Comp+Fem+Sg+Nom+Def:%>ru # ;
+ +Comp+Fem+Sg+Acc+Def:%>ru # ;
+ +Comp+Fem+Sg+Dat+Def:%>ru # ;
+ +Comp+Fem+Sg+Gen+Def:%>ru # ;
+ +Comp+Fem+Pl+Nom+Def:%>ru # ;
+ +Comp+Fem+Pl+Acc+Def:%>ru # ;
+ +Comp+Fem+Pl+Dat+Def:%>ru # ;
+ +Comp+Fem+Pl+Gen+Def:%>ru # ;
 ! Neu
- +Cmp+Neu+Sg+Nom+Indef:%>ri # ;
- +Cmp+Neu+Sg+Acc+Indef:%>ri # ;
- +Cmp+Neu+Sg+Dat+Indef:%>ri # ;
- +Cmp+Neu+Sg+Gen+Indef:%>ri # ;
- +Cmp+Neu+Pl+Nom+Indef:%>ri # ;
- +Cmp+Neu+Pl+Acc+Indef:%>ri # ;
- +Cmp+Neu+Pl+Dat+Indef:%>ri # ;
- +Cmp+Neu+Pl+Gen+Indef:%>ri # ;
- +Cmp+Neu+Sg+Nom+Def:%>ra # ;
- +Cmp+Neu+Sg+Acc+Def:%>ra # ;
- +Cmp+Neu+Sg+Dat+Def:%>ra # ;
- +Cmp+Neu+Sg+Gen+Def:%>ra # ;
- +Cmp+Neu+Pl+Nom+Def:%>ru # ;
- +Cmp+Neu+Pl+Acc+Def:%>ru # ;
- +Cmp+Neu+Pl+Dat+Def:%>ru # ;
- +Cmp+Neu+Pl+Gen+Def:%>ru # ;
+ +Comp+Neu+Sg+Nom+Indef:%>ri # ;
+ +Comp+Neu+Sg+Acc+Indef:%>ri # ;
+ +Comp+Neu+Sg+Dat+Indef:%>ri # ;
+ +Comp+Neu+Sg+Gen+Indef:%>ri # ;
+ +Comp+Neu+Pl+Nom+Indef:%>ri # ;
+ +Comp+Neu+Pl+Acc+Indef:%>ri # ;
+ +Comp+Neu+Pl+Dat+Indef:%>ri # ;
+ +Comp+Neu+Pl+Gen+Indef:%>ri # ;
+ +Comp+Neu+Sg+Nom+Def:%>ra # ;
+ +Comp+Neu+Sg+Acc+Def:%>ra # ;
+ +Comp+Neu+Sg+Dat+Def:%>ra # ;
+ +Comp+Neu+Sg+Gen+Def:%>ra # ;
+ +Comp+Neu+Pl+Nom+Def:%>ru # ;
+ +Comp+Neu+Pl+Acc+Def:%>ru # ;
+ +Comp+Neu+Pl+Dat+Def:%>ru # ;
+ +Comp+Neu+Pl+Gen+Def:%>ru # ;
 
 LEXICON SRi
  +Superl+Msc+Sg+Nom+Indef:%>stur # ;
@@ -2154,7 +2157,7 @@ LEXICON SRi
  +Superl+Neu+Pl+Gen+Def:%>stu # ;
 
 !LEXICON adjcmp1
-!     +Cmp:ar  indef_cmp_adj_decl    ;
+!     +Comp:ar  indef_cmp_adj_decl    ;
 !  +Superl:ast indef_superl_adj_decl ;
 
 ! Gender

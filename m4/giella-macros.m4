@@ -1,7 +1,7 @@
 # gt.m4 - Macros to locate and utilise giella-core scripts and required tools
 # for the Divvun and Giellatekno infrastructure. -*- Autoconf -*-
 # serial 1 (gtsvn-1)
-# 
+#
 # Copyright © 2011 Divvun/Samediggi/UiT <bugs@divvun.no>.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -52,11 +52,11 @@ _giella_core_not_found_message="
 GIELLA_CORE could not be set:
 
 Could not set GIELLA_CORE and thus not find required scripts in:
-       \$GIELLA_CORE/scripts 
-       \$GTHOME/giella-core/scripts 
-       $PATH 
+       \$GIELLA_CORE/scripts
+       \$GTHOME/giella-core/scripts
+       $PATH
 
-       Please do the following: 
+       Please do the following:
        1. svn co https://github.com/giellalt/giella-core.git/trunk
        2. then either:
          a: cd giella-core && ./autogen.sh && ./configure && make install
@@ -274,7 +274,7 @@ AC_MSG_RESULT([$GIELLA_LIBS])
 AC_ARG_VAR([GIELLA_LIBS], [directory containing precompiled libraries for proofing tools])
 
 ################################
-### Some software that we either depend on or we need for certain functionality: 
+### Some software that we either depend on or we need for certain functionality:
 ################
 
 ################ Weighted fst's ################
@@ -287,7 +287,7 @@ AC_ARG_ENABLE([yamltests],
               [enable_yamltests=$enableval],
               [enable_yamltests=check])
 
-AS_IF([test "x$enable_yamltests" = "xcheck"], 
+AS_IF([test "x$enable_yamltests" = "xcheck"],
      [AM_PATH_PYTHON([3.5],, [:])
      AX_PYTHON_MODULE(yaml)
      AC_MSG_CHECKING([whether to enable yaml-based test])
@@ -322,7 +322,7 @@ AC_ARG_WITH([forrest],
             [AS_HELP_STRING([--with-forrest=DIRECTORY],
                             [search forrest in DIRECTORY @<:@default=PATH@:>@])],
             [with_forrest=$withval],
-            [with_forrest=yes])
+            [with_forrest=no])
 AC_PATH_PROG([FORREST], [forrest], [], [$PATH$PATH_SEPARATOR$with_forrest])
 AC_MSG_CHECKING([whether to do forrest validation of in-source documentation])
 AS_IF([test "x$GAWK" != x], [
@@ -602,7 +602,7 @@ AS_IF([test x$with_saxon != xno], [
 ], [gt_prog_xslt=no])
 AC_MSG_RESULT([$gt_prog_xslt])
 AM_CONDITIONAL([CAN_SAXON], [test "x$gt_prog_saxon" != xno])
-AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$_saxonjar" != xno]) 
+AM_CONDITIONAL([CAN_JAVA], [test "x$gt_prog_java" != xno -a "x$_saxonjar" != xno])
 ]) # gt_PROG_SAXON
 
 ################################################################################
@@ -710,10 +710,10 @@ AC_ARG_ENABLE([grammarchecker],
                               [enable grammar checker @<:@default=no@:>@])],
               [enable_grammarchecker=$enableval],
               [enable_grammarchecker=$enable_all_tools])
-AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" = "xno"], 
+AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
       [enable_grammarchecker=no
        AC_MSG_ERROR([vislcg3 missing or too old - required for the grammar checker])],
-      [AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$DIVVUN_VALIDATE_SUGGEST" = "xno"], 
+      [AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$DIVVUN_VALIDATE_SUGGEST" = "xno"],
           [enable_grammarchecker=no
            AC_MSG_ERROR([divvun-validate-suggest required for building grammar checkers])])])
 AM_CONDITIONAL([WANT_GRAMCHECK], [test "x$enable_grammarchecker" != xno])
@@ -758,7 +758,7 @@ AC_ARG_ENABLE([fomaspeller],
                               [build foma speller (dependent on --enable-spellers) @<:@default=no@:>@])],
               [enable_fomaspeller=$enableval],
               [enable_fomaspeller=no])
-AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno], 
+AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno],
       [AS_IF([test "x$GZIP" = "xfalse"],
              [enable_fomaspeller=no
               AC_MSG_ERROR([gzip missing - required for foma spellers])])])
@@ -801,7 +801,7 @@ AC_ARG_ENABLE([pattern-hyphenators],
                               [build pattern-based hyphenators (requires fst hyphenator) @<:@default=no@:>@])],
               [enable_pattern_hyphenators=$enableval],
               [enable_pattern_hyphenators=no])
-AS_IF([test "x$enable_pattern_hyphenators" = "xyes" -a "x$PATGEN" = "xfalse"], 
+AS_IF([test "x$enable_pattern_hyphenators" = "xyes" -a "x$PATGEN" = "xfalse"],
       [enable_pattern_hyphenators=no
        AC_MSG_ERROR([patgen required for building pattern hyphenators])])
 
@@ -812,7 +812,7 @@ AC_ARG_ENABLE([fst-hyphenator],
               [enable_fst_hyphenator=$enableval],
               [enable_fst_hyphenator=$enable_all_tools])
 # Automatically enable the fst hyphenator if pattern hyphenator is enabled:
-AS_IF([test "x$enable_pattern_hyphenators" = "xyes"], 
+AS_IF([test "x$enable_pattern_hyphenators" = "xyes"],
       [enable_fst_hyphenator=yes])
 AM_CONDITIONAL([WANT_FST_HYPHENATOR], [test "x$enable_fst_hyphenator" != xno])
 
@@ -870,10 +870,10 @@ AC_ARG_ENABLE([apertium],
                               [enable apertium transducers @<:@default=no@:>@])],
               [enable_apertium=$enableval],
               [enable_apertium=$enable_all_tools])
-AS_IF([test "x$enable_apertium" = "xyes" -a "x$new_enough_python_available" = "xno"], 
+AS_IF([test "x$enable_apertium" = "xyes" -a "x$new_enough_python_available" = "xno"],
       [enable_apertium=no
        AC_MSG_ERROR([Python3 missing or too old, Python 3.5 or newer required])])
-AS_IF([test "x$enable_apertium" = "xyes" -a "x$CG_RELABEL" = "xno"], 
+AS_IF([test "x$enable_apertium" = "xyes" -a "x$CG_RELABEL" = "xno"],
       [enable_apertium=no
        AC_MSG_ERROR([Apertium enabled but cg-relabel not found. Please install Vislcg3.])])
 AM_CONDITIONAL([WANT_APERTIUM], [test "x$enable_apertium" != xno])
@@ -884,7 +884,7 @@ AC_ARG_ENABLE([cgmt],
                               [enable cg-based machine translation @<:@default=no@:>@])],
               [enable_cgmt=$enableval],
               [enable_cgmt=no])
-AS_IF([test "x$enable_cgmt" = "xyes" -a "x$GTPRIV" = "x"], 
+AS_IF([test "x$enable_cgmt" = "xyes" -a "x$GTPRIV" = "x"],
       [AC_MSG_ERROR([\$\$GTPRIV not set! CG-based MT requires access to closed-source tools in GTPRIV])])
 AS_IF([test x$enable_tokenisers = xno -a x$enable_cgmt = xyes],
     [AC_MSG_ERROR([You need to enable tokenisers to build CG-based MT])])
@@ -920,7 +920,7 @@ AC_ARG_ENABLE([analyser-tool],
                               [enable analyser tool @<:@default=no@:>@])],
               [enable_analyser_tool=$enableval],
               [enable_analyser_tool=$enable_all_tools])
-AS_IF([test "x$enable_analyser_tool" = "xyes" -a "x$gt_prog_vislcg3" = "xno"], 
+AS_IF([test "x$enable_analyser_tool" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
       [enable_analyser_tool=no
        AC_MSG_ERROR([vislcg3 missing or too old - required for the analyser tool])])
 AS_IF([test x$enable_tokenisers = xno -a x$enable_analyser_tool = xyes],
@@ -941,7 +941,7 @@ AC_ARG_ENABLE([dialects],
                               [build dialect specific fst's and spellers @<:@default=no@:>@])],
               [enable_dialects=$enableval],
               [enable_dialects=no])
-AS_IF([test "x$enable_dialects" = "xyes" -a "x$DIALECTS" = "x"], 
+AS_IF([test "x$enable_dialects" = "xyes" -a "x$DIALECTS" = "x"],
       [enable_dialects=no
        AC_MSG_ERROR([You have not defined any dialects. Please see the documentation.])])
 AM_CONDITIONAL([WANT_DIALECTS], [test "x$enable_dialects" != xno])
@@ -1043,4 +1043,4 @@ sudo pip-3.5 install PyYAML
 On other systems, install python 3.5+ and the corresponding py-yaml using suitable tools for those systems.])])
 
 ]) # gt_PRINT_FOOTER
-# vim: set ft=config: 
+# vim: set ft=config:

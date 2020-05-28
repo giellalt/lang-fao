@@ -1839,7 +1839,7 @@ LEXICON pres_ur
 LEXICON pres_ur_j
 !! __@LEXNAME@__
  +V+Ind+Prs+1Sg:%>ji Pass    ;
- +V+Ind+Prs+2Sg:     urPass    ;
+ +V+Ind+Prs+2Sg:     iurPass    ;
  +V+Ind+Prs+3Sg:     prPass    ;
                :j    pres_pl ;
 
@@ -2045,9 +2045,13 @@ LEXICON prt_u_p
 !! !!Passive lexica
 !  ================
 
-LEXICON urPass
+LEXICON iurPass
      :%>ur # ;
 +Pass:%>ist # ;
+
+LEXICON urPass
+     :%>ur # ;
++Pass:%>st # ;
 
 LEXICON rPass
      :%>r # ;

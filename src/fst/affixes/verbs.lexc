@@ -22,9 +22,10 @@ LEXICON s2
 
 LEXICON SETA
 !! __@LEXNAME@__
- +V+Ind+Prs+2Sg:%>ur #  ;
- +V+Ind+Prs+3Sg:%>ur #  ;
+ +V+Ind+Prs+2Sg: urPass  ;
+ +V+Ind+Prs+3Sg: urPass  ;
                      s2 ;
+
 
 LEXICON s3
 !! __@LEXNAME@__ leiða
@@ -250,11 +251,11 @@ LEXICON s22 !
 LEXICON s23 !
 !! __@LEXNAME@__ smyrja
                :yr     jinf    ;
- +V+Ind+Prs+1Sg:%>yrji #    ;
- +V+Ind+Prs+2Sg:%>yr   #    ;
- +V+Ind+Prs+2Sg:%>yrt  #    ;
- +V+Ind+Prs+3Sg:%>yr   #    ;
-  +V+Ind+Prs+Pl:%>yrja #    ;
+ +V+Ind+Prs+1Sg:%>yrji Pass    ;
+ +V+Ind+Prs+2Sg:%>yr   Pass    ;
+ +V+Ind+Prs+2Sg:%>yrt  Pass    ;
+ +V+Ind+Prs+3Sg:%>yr   Pass    ;
+  +V+Ind+Prs+Pl:%>yrja Pass    ;
                :ur     prt_d   ;
                :yr     impsg   ;
                :yrj    imppl_j ;
@@ -341,10 +342,10 @@ LEXICON s30 !
 LEXICON s31 !
 !! __@LEXNAME@__ only gera and *gera
                :er    inf        ;
- +V+Ind+Prs+1Sg:%>eri #       ;
- +V+Ind+Prs+2Sg:%>ert #       ;
- +V+Ind+Prs+2Sg:%>er  #       ;
- +V+Ind+Prs+3Sg:%>er  #       ;
+ +V+Ind+Prs+1Sg:%>eri Pass       ;
+ +V+Ind+Prs+2Sg:%>ert Pass       ;
+ +V+Ind+Prs+2Sg:%>er  Pass       ;
+ +V+Ind+Prs+3Sg:%>er  Pass       ;
                :er    pres_pl    ;
                :er    imp_prsptc ;
                :jør   prt_d      ;
@@ -377,10 +378,10 @@ LEXICON s33 !
 LEXICON s34 !
 !! __@LEXNAME@__ goyggja
                :ggj inf        ;
- +V+Ind+Prs+1Sg:ggi #       ;
- +V+Ind+Prs+2Sg:rt  #       ;
- +V+Ind+Prs+2Sg:r   #       ;
- +V+Ind+Prs+3Sg:r   #       ;
+ +V+Ind+Prs+1Sg:ggi Pass       ;
+ +V+Ind+Prs+2Sg:    rtPass       ;
+ +V+Ind+Prs+2Sg:    rPass       ;
+ +V+Ind+Prs+3Sg:    rPass       ;
                :ggj pres_pl    ;
                     prt_ð      ;
                :ggj imp_prsptc ;
@@ -636,19 +637,19 @@ LEXICON s54 !
                    		 inf                ;
                    		 pres_strong_s1     ;
                    		 pres_strong_s23_t0 ;
-  +V+Ind+Prs+2Sg:%> 	 #			    ;
+  +V+Ind+Prs+2Sg:   	 Pass			    ;
           		:%^AB3   prt_null_s2        ;
          		:%^AB2   prt_u_p            ;
                 	     imp_prsptc         ;
           		:%^AB5   sup_ið_in          ;
-	 			:%^AB5in p26                ;
+	 			:%^AB5in p26        ;
 
 LEXICON s55 !
 !! __@LEXNAME@__ fara
                   		inf                ;
                   		pres_strong_s1     ;
           		:%^IUML pres_strong_s23_t0 ;
-  +V+Ind+Prs+2Sg:%^IUML #   			   ;
+  +V+Ind+Prs+2Sg:%^IUML Pass   			   ;
           		:%^AB3  prt_null_s2        ;
   		        :%^AB3  prt_u_p            ;
                   		sup_ið_in          ;
@@ -873,15 +874,15 @@ LEXICON s73 !
 
 LEXICON BLÍVA
 !! __@LEXNAME@__
-         +V+Inf:blíva    #  ;
- +V+Ind+Prs+1Sg:blívi    #  ;
- +V+Ind+Prs+2Sg:blív%>ur #  ;
- +V+Ind+Prs+3Sg:blív%>ur #  ;
-  +V+Ind+Prs+Pl:blíva    #  ;
- +V+Ind+Prt+1Sg:bleiv    #  ;
+         +V+Inf:blíva    Pass  ;
+ +V+Ind+Prs+1Sg:blívi    Pass  ;
+ +V+Ind+Prs+2Sg:blív     urPass  ;
+ +V+Ind+Prs+3Sg:blív     urPass  ;
+  +V+Ind+Prs+Pl:blíva    Pass  ;
+ +V+Ind+Prt+1Sg:bleiv    Pass  ;
  +V+Ind+Prt+2Sg:bleivst  #  ;
- +V+Ind+Prt+3Sg:bleiv    #  ;
-  +V+Ind+Prt+Pl:blivu    #  ;
+ +V+Ind+Prt+3Sg:bleiv    Pass  ;
+  +V+Ind+Prt+Pl:blivu    Pass  ;
       +V+Imp+Sg:blív     #  ;
       +V+Imp+Pl:blívið   #  ;
       +V+PrsPrc:blívandi VANDI ;
@@ -891,14 +892,14 @@ LEXICON BLÍVA
 LEXICON EIGA
 !! __@LEXNAME@__
          +V+Inf:eiga    #  ;
- +V+Ind+Prs+1Sg:eigi    #  ;
- +V+Ind+Prs+2Sg:eig%>ur #  ;
- +V+Ind+Prs+3Sg:eig%>ur #  ;
-  +V+Ind+Prs+Pl:eiga    #  ;
- +V+Ind+Prt+1Sg:átti    #  ;
- +V+Ind+Prt+2Sg:átti    #  ;
- +V+Ind+Prt+3Sg:átti    #  ;
-  +V+Ind+Prt+Pl:áttu    #  ;
+ +V+Ind+Prs+1Sg:eigi    Pass  ;
+ +V+Ind+Prs+2Sg:eig     urPass ;
+ +V+Ind+Prs+3Sg:eig     urPass ;
+  +V+Ind+Prs+Pl:eiga    Pass  ;
+ +V+Ind+Prt+1Sg:átti    Pass  ;
+ +V+Ind+Prt+2Sg:átti    Pass  ;
+ +V+Ind+Prt+3Sg:átti    Pass  ;
+  +V+Ind+Prt+Pl:áttu    Pass  ;
       +V+PrsPrc:eigandi VANDI ;
       +V+PrfPrc:áttur   #  ;
          +V+Sup:átt     #  ;
@@ -906,14 +907,14 @@ LEXICON EIGA
 LEXICON EITA
 !! __@LEXNAME@__
          +V+Inf:eita    #  ;
- +V+Ind+Prs+1Sg:eiti    #  ;
- +V+Ind+Prs+2Sg:eit%>ur #  ;
- +V+Ind+Prs+2Sg:eit%>ur #  ;
-  +V+Ind+Prs+Pl:eita    #  ;
- +V+Ind+Prt+1Sg:æt      #  ;
- +V+Ind+Prt+2Sg:æt      #  ;
- +V+Ind+Prt+3Sg:æt      #  ;
-  +V+Ind+Prt+Pl:itu     #  ;
+ +V+Ind+Prs+1Sg:eiti    Pass  ;
+ +V+Ind+Prs+2Sg:eit     urPass ;
+ +V+Ind+Prs+2Sg:eit     urPass ;
+  +V+Ind+Prs+Pl:eita    Pass  ;
+ +V+Ind+Prt+1Sg:æt      Pass  ;
+ +V+Ind+Prt+2Sg:æt      Pass  ;
+ +V+Ind+Prt+3Sg:æt      Pass  ;
+  +V+Ind+Prt+Pl:itu     Pass  ;
       +V+PrsPrc:itandi  VANDI ; ! XXX check
       +V+PrfPrc:itin    #  ;
          +V+Sup:itið    #  ;
@@ -921,15 +922,15 @@ LEXICON EITA
 LEXICON GRÁTA
 !! __@LEXNAME@__
          +V+Inf:áta    #  ;
- +V+Ind+Prs+1Sg:áti    #  ;
- +V+Ind+Prs+2Sg:æt%>ur #  ;
- +V+Ind+Prs+3Sg:æt%>ur #  ;
-  +V+Ind+Prs+Pl:áta    #  ;
- +V+Ind+Prt+1Sg:æt     #  ;
- +V+Ind+Prt+2Sg:æt     #  ;
+ +V+Ind+Prs+1Sg:áti    Pass  ;
+ +V+Ind+Prs+2Sg:æt     urPass ;
+ +V+Ind+Prs+3Sg:æt     urPass ;
+  +V+Ind+Prs+Pl:áta    Pass  ;
+ +V+Ind+Prt+1Sg:æt     Pass  ;
+ +V+Ind+Prt+2Sg:æt     Pass  ;
  +V+Ind+Prt+2Sg:ætst   #  ;
- +V+Ind+Prt+3Sg:æt     #  ;
-  +V+Ind+Prt+Pl:ótu    #  ;
+ +V+Ind+Prt+3Sg:æt     Pass  ;
+  +V+Ind+Prt+Pl:ótu    Pass  ;
       +V+Imp+Sg:át     #  ;
       +V+Imp+Pl:átið   #  ;
       +V+PrsPrc:átandi VANDI ;
@@ -939,18 +940,18 @@ LEXICON GRÁTA
 LEXICON HAVA
 !! __@LEXNAME@__
          +V+Inf:hava     #  ;
- +V+Ind+Prs+1Sg:havi     #  ;
- +V+Ind+Prs+2Sg:hev%>ur  #  ;
- +V+Ind+Prs+3Sg:hev%>ur  #  ;
-  +V+Ind+Prs+Pl:hava     #  ;
- +V+Ind+Prt+1Sg:hevði    #  ;
- +V+Ind+Prt+2Sg:hevði    #  ;
- +V+Ind+Prt+3Sg:hevði    #  ;
+ +V+Ind+Prs+1Sg:havi     Pass  ;
+ +V+Ind+Prs+2Sg:hev      urPass ;
+ +V+Ind+Prs+3Sg:hev      urPass ;
+  +V+Ind+Prs+Pl:hava     Pass  ;
+ +V+Ind+Prt+1Sg:hevði    Pass  ;
+ +V+Ind+Prt+2Sg:hevði    Pass  ;
+ +V+Ind+Prt+3Sg:hevði    Pass  ;
   +V+Ind+Prt+Pl:høvdu    #  ;
       +V+Imp+Sg:hav      #  ;
       +V+Imp+Pl:havið    #  ;
       +V+PrsPrc:havandi  VANDI ;
-      +V+PrfPrc:havd%>ur #  ;
+      +V+PrfPrc:havd     urPass ;
          +V+Sup:havt     #  ;
 
 LEXICON KUNNA
@@ -1011,10 +1012,10 @@ LEXICON SKULA
 LEXICON TYKJA
 !! __@LEXNAME@__
          +V+Inf:tykja   # ;
- +V+Ind+Prs+1Sg:tykir   # ;
- +V+Ind+Prs+2Sg:tykir   # ;
- +V+Ind+Prs+3Sg:tykir   # ;
-  +V+Ind+Prs+Pl:tykir   # ;
+ +V+Ind+Prs+1Sg:tyki   rPass ;
+ +V+Ind+Prs+2Sg:tyki   rPass ;
+ +V+Ind+Prs+3Sg:tyki   rPass ;
+  +V+Ind+Prs+Pl:tyki   rPass ;
  +V+Ind+Prt+1Sg:tókti   # ;
  +V+Ind+Prt+1Sg:tykti   # ;
  +V+Ind+Prt+2Sg:tókti   # ;
@@ -1074,28 +1075,28 @@ LEXICON VILJA
 LEXICON VITA
 !! __@LEXNAME@__
          +V+Inf:vita   # ;
- +V+Ind+Prs+1Sg:veit   # ;
+ +V+Ind+Prs+1Sg:veit   Pass ;
  +V+Ind+Prs+2Sg:veitst # ;
- +V+Ind+Prs+3Sg:veit   # ;
-  +V+Ind+Prs+Pl:vita   # ;
- +V+Ind+Prt+1Sg:visti  # ;
- +V+Ind+Prt+2Sg:visti  # ;
- +V+Ind+Prt+3Sg:visti  # ;
-  +V+Ind+Prt+Pl:vistu  # ;
+ +V+Ind+Prs+3Sg:veit   Pass ;
+  +V+Ind+Prs+Pl:vita   Pass ;
+ +V+Ind+Prt+1Sg:visti  Pass ;
+ +V+Ind+Prt+2Sg:visti  Pass ;
+ +V+Ind+Prt+3Sg:visti  Pass ;
+  +V+Ind+Prt+Pl:vistu  Pass ;
          +V+Sup:vitað  # ;
 
 
 LEXICON SÍGGJA
 !! __@LEXNAME@__
          +V+Inf:síggja    #  ;
- +V+Ind+Prs+1Sg:síggi     #  ;
+ +V+Ind+Prs+1Sg:síggi     Pass  ;
  +V+Ind+Prs+2Sg:sært      #  ;
- +V+Ind+Prs+3Sg:sær       #  ;
-  +V+Ind+Prs+Pl:síggja    #  ;
- +V+Ind+Prt+1Sg:sá        #  ;
+ +V+Ind+Prs+3Sg:sær       Pass  ;
+  +V+Ind+Prs+Pl:síggja    Pass  ;
+ +V+Ind+Prt+1Sg:sá        Pass  ;
  +V+Ind+Prt+2Sg:sást      #  ;
- +V+Ind+Prt+3Sg:sá        #  ;
-  +V+Ind+Prt+Pl:sóu       #  ;
+ +V+Ind+Prt+3Sg:sá        Pass  ;
+  +V+Ind+Prt+Pl:sóu       Pass  ;
       +V+Imp+Sg:síggj     #  ;
       +V+Imp+Sg:sí        #  ;
       +V+Imp+Pl:síggið    #  ;
@@ -1107,15 +1108,15 @@ LEXICON SÍGGJA
 LEXICON FÁA
 !! __@LEXNAME@__
               +V+Inf:fáa    # ;
-      +V+Ind+Prs+1Sg:fái    # ;
+      +V+Ind+Prs+1Sg:fái    Pass ;
       +V+Ind+Prs+2Sg:fært   # ;
-      +V+Ind+Prs+2Sg:fær    # ;
-      +V+Ind+Prs+3Sg:fær    #    ;
-       +V+Ind+Prs+Pl:fáa    # ;
-      +V+Ind+Prt+1Sg:fekk   # ;
+      +V+Ind+Prs+2Sg:fær    Pass ;
+      +V+Ind+Prs+3Sg:fær    Pass    ;
+       +V+Ind+Prs+Pl:fáa    Pass ;
+      +V+Ind+Prt+1Sg:fekk   Pass ;
       +V+Ind+Prt+2Sg:fekst  # ;
-      +V+Ind+Prt+3Sg:fekk   # ;
-       +V+Ind+Prt+Pl:fingu  # ;
+      +V+Ind+Prt+3Sg:fekk   Pass ;
+       +V+Ind+Prt+Pl:fingu  Pass ;
            +V+Imp+Sg:fá     # ;
            +V+Imp+Pl:fáið   # ;
            +V+PrfPrc:fingin # ;
@@ -1124,11 +1125,11 @@ LEXICON FÁA
 LEXICON NÁA !
 !! __@LEXNAME@__ XXX check
               +V+Inf:náa  # ;
-      +V+Ind+Prs+1Sg:nær  # ;
+      +V+Ind+Prs+1Sg:nær  Pass ;
       +V+Ind+Prs+2Sg:nært # ;
-      +V+Ind+Prs+2Sg:nær  # ;
-      +V+Ind+Prs+3Sg:nær  # ;
-       +V+Ind+Prs+Pl:náa  # ;
+      +V+Ind+Prs+2Sg:nær  Pass ;
+      +V+Ind+Prs+3Sg:nær  Pass ;
+       +V+Ind+Prs+Pl:náa  Pass ;
       +V+Ind+Prt+1Sg:nátt # ;
       +V+Ind+Prt+2Sg:nátt # ;
       +V+Ind+Prt+3Sg:nátt # ;
@@ -1141,14 +1142,14 @@ LEXICON NÁA !
 LEXICON LIGGJA
 !! __@LEXNAME@__
          +V+Inf:iggja    #  ;
- +V+Ind+Prs+1Sg:iggi     #  ;
- +V+Ind+Prs+2Sg:igg%>ur  #  ;
- +V+Ind+Prs+3Sg:igg%>ur  #  ;
-  +V+Ind+Prs+Pl:iggja    #  ;
- +V+Ind+Prt+1Sg:á        #  ;
+ +V+Ind+Prs+1Sg:iggi     Pass  ;
+ +V+Ind+Prs+2Sg:igg      urPass ;
+ +V+Ind+Prs+3Sg:igg      urPass ;
+  +V+Ind+Prs+Pl:iggja    Pass  ;
+ +V+Ind+Prt+1Sg:á        Pass  ;
  +V+Ind+Prt+2Sg:ást      #  ;
- +V+Ind+Prt+3Sg:á        #  ;
-  +V+Ind+Prt+Pl:ógu      #  ;
+ +V+Ind+Prt+3Sg:á        Pass  ;
+  +V+Ind+Prt+Pl:ógu      Pass  ;
       +V+Imp+Sg:igg      #  ;
       +V+Imp+Pl:iggið    #  ;
       +V+PrsPrc:iggjandi VANDI ;
@@ -1159,14 +1160,14 @@ LEXICON LIGGJA
 LEXICON RADA
 !! __@LEXNAME@__
           +V+Inf:ráða    #   ;
-  +V+Ind+Prs+1Sg:ráði    #   ;
-  +V+Ind+Prs+2Sg:ræður   #   ;
-  +V+Ind+Prs+3Sg:ræður   #   ;
-   +V+Ind+Prs+Pl:ráða    #   ;
-  +V+Ind+Prt+1Sg:ráddi   #   ;
-  +V+Ind+Prt+2Sg:ráddi   #   ;
-  +V+Ind+Prt+3Sg:ráddi   #   ;
-   +V+Ind+Prt+Pl:ráddu   #   ;
+  +V+Ind+Prs+1Sg:ráði    Pass   ;
+  +V+Ind+Prs+2Sg:ræð     urPass   ;
+  +V+Ind+Prs+3Sg:ræð     urPass   ;
+   +V+Ind+Prs+Pl:ráða    Pass   ;
+  +V+Ind+Prt+1Sg:ráddi   Pass   ;
+  +V+Ind+Prt+2Sg:ráddi   Pass   ;
+  +V+Ind+Prt+3Sg:ráddi   Pass   ;
+   +V+Ind+Prt+Pl:ráddu   Pass   ;
        +V+Imp+Sg:ráð     #   ;
        +V+Imp+Pl:ráðið   #   ;
        +V+PrsPrc:ráðandi VANDI  ;
@@ -1174,16 +1175,16 @@ LEXICON RADA
 
 LEXICON SYNGJA !
 !! __@LEXNAME@__ XXX check
-         +V+Inf:syngja    #  ;
- +V+Ind+Prs+1Sg:syngi     #  ;
- +V+Ind+Prs+2Sg:syngur    #  ;
- +V+Ind+Prs+3Sg:syngur    #  ;
-  +V+Ind+Prs+Pl:syngja    #  ;
- +V+Ind+Prt+1Sg:sang      #  ;
- +V+Ind+Prt+2Sg:sangst    #  ;
- +V+Ind+Prt+2Sg:sang      #  ;
- +V+Ind+Prt+3Sg:sang      #  ;
-  +V+Ind+Prt+Pl:sungu     #  ;
+         +V+Inf:syngja    Pass  ;
+ +V+Ind+Prs+1Sg:syngi     Pass  ;
+ +V+Ind+Prs+2Sg:syng      urPass  ;
+ +V+Ind+Prs+3Sg:syng      urPass  ;
+  +V+Ind+Prs+Pl:syngja    Pass  ;
+ +V+Ind+Prt+1Sg:sang      Pass  ;
+ +V+Ind+Prt+2Sg:sang      stPass  ;
+ +V+Ind+Prt+2Sg:sang      Pass  ;
+ +V+Ind+Prt+3Sg:sang      Pass  ;
+  +V+Ind+Prt+Pl:sungu     Pass  ;
       +V+Imp+Sg:syng      #  ;
       +V+Imp+Pl:syngið    #  ;
       +V+PrsPrc:syngjandi VANDI ;
@@ -1195,14 +1196,14 @@ LEXICON SYNGJA !
 LEXICON HOGGA !
 !! __@LEXNAME@__ høgga
          +V+Inf:høgga    #  ;
- +V+Ind+Prs+1Sg:høggi    #  ;
- +V+Ind+Prs+2Sg:høggur   #  ;
- +V+Ind+Prs+3Sg:høggur   #  ;
-  +V+Ind+Prs+Pl:høgga    #  ;
- +V+Ind+Prt+1Sg:høgdi    #  ;
- +V+Ind+Prt+2Sg:høgdi    #  ;
- +V+Ind+Prt+3Sg:høgdi    #  ;
-  +V+Ind+Prt+Pl:høgdu    #  ;
+ +V+Ind+Prs+1Sg:høggi    Pass  ;
+ +V+Ind+Prs+2Sg:høgg     urPass  ;
+ +V+Ind+Prs+3Sg:høgg     urPass  ;
+  +V+Ind+Prs+Pl:høgga    Pass  ;
+ +V+Ind+Prt+1Sg:høgdi    Pass  ;
+ +V+Ind+Prt+2Sg:høgdi    Pass  ;
+ +V+Ind+Prt+3Sg:høgdi    Pass  ;
+  +V+Ind+Prt+Pl:høgdu    Pass  ;
       +V+Imp+Sg:høgg     #  ;
       +V+Imp+Pl:høggið   #  ;
       +V+PrsPrc:høggandi VANDI ;
@@ -1212,15 +1213,15 @@ LEXICON HOGGA !
 LEXICON KVODA
 !! __@LEXNAME@__
          +V+Inf:kvøða    	#  ;
- +V+Ind+Prs+1Sg:kvøði    	#  ;
- +V+Ind+Prs+2Sg:kvøður   	#  ;
- +V+Ind+Prs+3Sg:kvøður   	#  ;
-  +V+Ind+Prs+Pl:kvøða    	#  ;
- +V+Ind+Prt+1Sg:kvað   		#  ;
- +V+Ind+Prt+2Sg:kvað   		#  ;
- +V+Ind+Prt+2Sg:kvaðst   	#  ;
- +V+Ind+Prt+3Sg:kvað     	#  ;
-  +V+Ind+Prt+Pl:kvóðu    	#  ;
+ +V+Ind+Prs+1Sg:kvøði    	Pass  ;
+ +V+Ind+Prs+2Sg:kvøð     	urPass  ;
+ +V+Ind+Prs+3Sg:kvøð     	urPass  ;
+  +V+Ind+Prs+Pl:kvøða    	Pass  ;
+ +V+Ind+Prt+1Sg:kvað   		Pass  ;
+ +V+Ind+Prt+2Sg:kvað   		Pass  ;
+ +V+Ind+Prt+2Sg:kvað     	stPass  ;
+ +V+Ind+Prt+3Sg:kvað     	Pass  ;
+  +V+Ind+Prt+Pl:kvóðu    	Pass  ;
       +V+Imp+Sg:kvøð    	#  ;
       +V+Imp+Pl:kvøðið   	#  ;
       +V+PrsPrc:kvøðandi 	VANDI ;
@@ -1232,14 +1233,14 @@ LEXICON KVODA
 LEXICON FLYGGJA
 !! __@LEXNAME@__
          +V+Inf:flýggja    #  ;
- +V+Ind+Prs+1Sg:flýggi     #  ;
- +V+Ind+Prs+2Sg:flýggjar   #  ;
- +V+Ind+Prs+3Sg:flýggjar   #  ;
-  +V+Ind+Prs+Pl:flýggja    #  ;
- +V+Ind+Prt+1Sg:flýddi     #  ;
- +V+Ind+Prt+2Sg:flýddi     #  ;
- +V+Ind+Prt+3Sg:flýddi     #  ;
-  +V+Ind+Prt+Pl:flýddu     #  ;
+ +V+Ind+Prs+1Sg:flýggi     Pass  ;
+ +V+Ind+Prs+2Sg:flýggja   rPass  ;
+ +V+Ind+Prs+3Sg:flýggja   rPass  ;
+  +V+Ind+Prs+Pl:flýggja    Pass  ;
+ +V+Ind+Prt+1Sg:flýddi     Pass  ;
+ +V+Ind+Prt+2Sg:flýddi     Pass  ;
+ +V+Ind+Prt+3Sg:flýddi     Pass  ;
+  +V+Ind+Prt+Pl:flýddu     Pass  ;
       +V+Imp+Sg:flýggja    #  ;
       +V+Imp+Pl:flýggið    #  ;
       +V+PrsPrc:flýggjandi VANDI ;
@@ -1250,14 +1251,14 @@ LEXICON FLYGGJA
 LEXICON VAKSA
 !! __@LEXNAME@__
                  +V+Inf:vaksa    #  ;
-         +V+Ind+Prs+1Sg:vaksi    #  ;
-         +V+Ind+Prs+2Sg:veksur   #  ;
-         +V+Ind+Prs+3Sg:veksur   #  ;
-          +V+Ind+Prs+Pl:vaksa    #  ;
+         +V+Ind+Prs+1Sg:vaksi    Pass  ;
+         +V+Ind+Prs+2Sg:veks     urPass  ;
+         +V+Ind+Prs+3Sg:veks     urPass  ;
+          +V+Ind+Prs+Pl:vaksa    Pass  ;
          +V+Ind+Prt+1Sg:vaks     #  ;
          +V+Ind+Prt+2Sg:vaks     #  ;
          +V+Ind+Prt+3Sg:vaks     #  ;
-          +V+Ind+Prt+Pl:vuksu    #  ;
+          +V+Ind+Prt+Pl:vuksu    Pass  ;
               +V+Imp+Sg:vaks     #  ;
               +V+Imp+Pl:vaksið   #  ;
               +V+PrsPrc:vaksandi VANDI ;
@@ -1267,14 +1268,14 @@ LEXICON VAKSA
 LEXICON VEKSA
 !! __@LEXNAME@__
                  +V+Inf:eksa    #  ;
-         +V+Ind+Prs+1Sg:eksi    #  ;
+         +V+Ind+Prs+1Sg:eksi    Pass  ;
          +V+Ind+Prs+2Sg:eksur   #  ;
          +V+Ind+Prs+3Sg:eksur   #  ;
-          +V+Ind+Prs+Pl:eksa    #  ;
+          +V+Ind+Prs+Pl:eksa    Pass  ;
          +V+Ind+Prt+1Sg:aks     #  ;
          +V+Ind+Prt+2Sg:aks     #  ;
          +V+Ind+Prt+3Sg:aks     #  ;
-          +V+Ind+Prt+Pl:uksu    #  ;
+          +V+Ind+Prt+Pl:uksu    Pass  ;
               +V+Imp+Sg:eks     #  ;
               +V+Imp+Pl:eksið   #  ;
               +V+PrsPrc:eksandi VANDI ;
@@ -1291,14 +1292,14 @@ LEXICON s30/26_1
 LEXICON HYGGJA
 !! __@LEXNAME@__
          +V+Inf:hyggja   	#       ;
- +V+Ind+Prs+1Sg:hyggi   	#       ;
- +V+Ind+Prs+2Sg:hyggur   	#       ;
- +V+Ind+Prs+3Sg:hyggur   	#       ;
-  +V+Ind+Prs+Pl:hyggja   	#       ;
- +V+Ind+Prt+1Sg:hugdi   	#       ;
- +V+Ind+Prt+2Sg:hugdi   	#       ;
- +V+Ind+Prt+3Sg:hugdi   	#       ;
-  +V+Ind+Prt+Pl:hugdu   	#       ;
+ +V+Ind+Prs+1Sg:hyggi   	Pass       ;
+ +V+Ind+Prs+2Sg:hygg     	urPass       ;
+ +V+Ind+Prs+3Sg:hygg     	urPass       ;
+  +V+Ind+Prs+Pl:hyggja   	Pass       ;
+ +V+Ind+Prt+1Sg:hugdi   	Pass       ;
+ +V+Ind+Prt+2Sg:hugdi   	Pass       ;
+ +V+Ind+Prt+3Sg:hugdi   	Pass       ;
+  +V+Ind+Prt+Pl:hugdu   	Pass       ;
       +V+Imp+Sg:hygg   		#       ;
       +V+Imp+Pl:hyggið   	#       ;
       +V+PrsPrc:hyggjandi   VANDI   ;
@@ -1308,14 +1309,14 @@ LEXICON HYGGJA
 LEXICON MYLA
 !! __@LEXNAME@__
          +V+Inf:myla    #       ;
- +V+Ind+Prs+1Sg:myli     #       ;
+ +V+Ind+Prs+1Sg:myli     Pass       ;
  +V+Ind+Prs+2Sg:mylur   #       ;
  +V+Ind+Prs+3Sg:mylur   #       ;
-  +V+Ind+Prs+Pl:myla    #       ;
-  +V+Ind+Prt+1Sg:myldi  #       ;
-  +V+Ind+Prt+2Sg:myldi  #       ;
-  +V+Ind+Prt+3Sg:myldi  #       ;
-  +V+Ind+Prt+Pl:myldu   #       ;
+  +V+Ind+Prs+Pl:myla    Pass       ;
+  +V+Ind+Prt+1Sg:myldi  Pass       ;
+  +V+Ind+Prt+2Sg:myldi  Pass       ;
+  +V+Ind+Prt+3Sg:myldi  Pass       ;
+  +V+Ind+Prt+Pl:myldu   Pass       ;
       +V+Imp+Sg:myl     #       ;
       +V+Imp+Pl:mylið   #       ;
       +V+PrsPrc:mylandi	VANDI   ;
@@ -1325,14 +1326,14 @@ LEXICON MYLA
 LEXICON TYSJA
 !! __@LEXNAME@__
          +V+Inf:ysja   	#       ;
- +V+Ind+Prs+1Sg:ysi   	#       ;
+ +V+Ind+Prs+1Sg:ysi   	Pass       ;
  +V+Ind+Prs+2Sg:ysur   	#       ;
  +V+Ind+Prs+3Sg:ysur   	#       ;
-  +V+Ind+Prs+Pl:ysja   	#       ;
-  +V+Ind+Prt+1Sg:usti   #       ;
-  +V+Ind+Prt+2Sg:usti   #       ;
-  +V+Ind+Prt+3Sg:usti  	#       ;
-  +V+Ind+Prt+Pl:ustu   	#       ;
+  +V+Ind+Prs+Pl:ysja   	Pass       ;
+  +V+Ind+Prt+1Sg:usti   Pass       ;
+  +V+Ind+Prt+2Sg:usti   Pass       ;
+  +V+Ind+Prt+3Sg:usti  	Pass       ;
+  +V+Ind+Prt+Pl:ustu   	Pass       ;
       +V+Imp+Sg:ys   	#       ;
       +V+Imp+Pl:ysið   	#       ;
       +V+PrsPrc:ysjandi VANDI   ;
@@ -1342,15 +1343,15 @@ LEXICON TYSJA
 LEXICON GROA
 !! __@LEXNAME@__
          +V+Inf:gróa   	#       ;
- +V+Ind+Prs+1Sg:grói   	#       ;
- +V+Ind+Prs+2Sg:grór   	#       ;
- +V+Ind+Prs+2Sg:grórt   #       ;
- +V+Ind+Prs+3Sg:grór   	#       ;
-  +V+Ind+Prs+Pl:gróa   	#       ;
-  +V+Ind+Prt+1Sg:gróði  #       ;
-  +V+Ind+Prt+2Sg:gróði  #       ;
-  +V+Ind+Prt+3Sg:gróði  #       ;
-  +V+Ind+Prt+Pl:gróðu   #       ;
+ +V+Ind+Prs+1Sg:grói   	Pass       ;
+ +V+Ind+Prs+2Sg:gró   	rPass       ;
+ +V+Ind+Prs+2Sg:gró     rtPass       ;
+ +V+Ind+Prs+3Sg:gró    	rPass       ;
+  +V+Ind+Prs+Pl:gróa   	Pass       ;
+  +V+Ind+Prt+1Sg:gróði  Pass       ;
+  +V+Ind+Prt+2Sg:gróði  Pass       ;
+  +V+Ind+Prt+3Sg:gróði  Pass       ;
+  +V+Ind+Prt+Pl:gróðu   Pass       ;
       +V+Imp+Sg:gró   	#       ;
       +V+Imp+Pl:gróið   #       ;
       +V+PrsPrc:gróandi VANDI   ;
@@ -1361,19 +1362,19 @@ LEXICON GROA
 LEXICON KVOTTA
 !! __@LEXNAME@__
          +V+Inf:kvøtta   	#       ;
- +V+Ind+Prs+1Sg:kvøtti   	#       ;
- +V+Ind+Prs+2Sg:kvøttur   	#       ;
- +V+Ind+Prs+2Sg:kvøttir   	#       ;
- +V+Ind+Prs+3Sg:kvøttur   	#       ;
- +V+Ind+Prs+3Sg:kvøttir   	#       ;
-  +V+Ind+Prs+Pl:kvøtta   	#       ;
-  +V+Ind+Prt+1Sg:kvøtti   	#       ;
-  +V+Ind+Prt+1Sg:kvatt   	#       ;
-  +V+Ind+Prt+2Sg:kvøtti   	#       ;
-  +V+Ind+Prt+2Sg:kvatt   	#       ;
-  +V+Ind+Prt+3Sg:kvøtti  	#       ;
-  +V+Ind+Prt+3Sg:kvatt  	#       ;
-  +V+Ind+Prt+Pl:kvøttu   	#       ;
+ +V+Ind+Prs+1Sg:kvøtti   	Pass       ;
+ +V+Ind+Prs+2Sg:kvøtt   	urPass       ;
+ +V+Ind+Prs+2Sg:kvøtti   	rPass       ;
+ +V+Ind+Prs+3Sg:kvøtt   	urPass       ;
+ +V+Ind+Prs+3Sg:kvøtti   	rPass       ;
+  +V+Ind+Prs+Pl:kvøtta   	Pass       ;
+  +V+Ind+Prt+1Sg:kvøtti   	Pass       ;
+  +V+Ind+Prt+1Sg:kvatt   	Pass       ;
+  +V+Ind+Prt+2Sg:kvøtti   	Pass       ;
+  +V+Ind+Prt+2Sg:kvatt   	Pass       ;
+  +V+Ind+Prt+3Sg:kvøtti  	Pass       ;
+  +V+Ind+Prt+3Sg:kvatt  	Pass       ;
+  +V+Ind+Prt+Pl:kvøttu   	Pass       ;
       +V+Imp+Sg:kvøtt   	#       ;
       +V+Imp+Sg:kvøtta   	#       ;
       +V+Imp+Pl:kvøttið   	#       ;
@@ -1809,44 +1810,44 @@ LEXICON pres_ir
 
 LEXICON pres_jir
 !! __@LEXNAME@__
- +V+Ind+Prs+1Sg:%>ji  # ;
- +V+Ind+Prs+2Sg:%>jir # ;
- +V+Ind+Prs+3Sg:%>jir # ;
-  +V+Ind+Prs+Pl:%>ja  # ;
+ +V+Ind+Prs+1Sg:%>ji  Pass ;
+ +V+Ind+Prs+2Sg:%>ji  rPass ;
+ +V+Ind+Prs+3Sg:%>ji  rPass ;
+  +V+Ind+Prs+Pl:%>ja  Pass ;
 
 LEXICON pres_ir_sg
 !! __@LEXNAME@__
-  +V+Ind+Prs+1Sg:%>i  # ;
-  +V+Ind+Prs+2Sg:%>ir # ;
-  +V+Ind+Prs+3Sg:%>ir # ;
- +V+Subj+Prs+3Sg:%>i  # ;
+  +V+Ind+Prs+1Sg:%>i  Pass ;
+  +V+Ind+Prs+2Sg:%>i  rPass ;
+  +V+Ind+Prs+3Sg:%>i  rPass ;
+ +V+Subj+Prs+3Sg:%>i  Pass ;
 
 LEXICON pres_ar
 !! __@LEXNAME@__
- +V+Ind+Prs+1Sg:%>i  #    ; ! XXX sjekk
- +V+Ind+Prs+2Sg:%>ar #    ;
- +V+Ind+Prs+3Sg:%>ar #    ;
+ +V+Ind+Prs+1Sg:%>i  Pass    ; ! XXX sjekk
+ +V+Ind+Prs+2Sg:%>a  rPass    ;
+ +V+Ind+Prs+3Sg:%>a  rPass    ;
                      pres_pl ;
 
 LEXICON pres_ur
 !! __@LEXNAME@__
- +V+Ind+Prs+1Sg:%>i  #    ;
- +V+Ind+Prs+2Sg:%>ur #    ;
- +V+Ind+Prs+3Sg:%>ur #    ;
+ +V+Ind+Prs+1Sg:%>i  Pass    ;
+ +V+Ind+Prs+2Sg:     urPass    ;
+ +V+Ind+Prs+3Sg:     urPass    ;
                      pres_pl ;
 
 LEXICON pres_ur_j
 !! __@LEXNAME@__
- +V+Ind+Prs+1Sg:%>ji #    ;
- +V+Ind+Prs+2Sg:%>ur #    ;
- +V+Ind+Prs+3Sg:%>ur #    ;
+ +V+Ind+Prs+1Sg:%>ji Pass    ;
+ +V+Ind+Prs+2Sg:     urPass    ;
+ +V+Ind+Prs+3Sg:     prPass    ;
                :j    pres_pl ;
 
 LEXICON pres_ur_j2
 !! __@LEXNAME@__
- +V+Ind+Prs+1Sg:%>i  #    ;
- +V+Ind+Prs+2Sg:%>ur #    ;
- +V+Ind+Prs+3Sg:%>ur #    ;
+ +V+Ind+Prs+1Sg:%>i  Pass    ;
+ +V+Ind+Prs+2Sg:     urPass    ;
+ +V+Ind+Prs+3Sg:     urPass    ;
                :j    pres_pl ;
 
 !LEXICON pres_null
@@ -1858,38 +1859,38 @@ LEXICON pres_ur_j2
 
 LEXICON pres_strong_s1
 !! __@LEXNAME@__
- +V+Ind+Prs+1Sg:%>i #    ;
+ +V+Ind+Prs+1Sg:%>i Pass    ;
                     pres_pl ; !XXX
 
 LEXICON pres_strong_s23
 !! __@LEXNAME@__
- +V+Ind+Prs+2Sg:%>ur #     ;
- +V+Ind+Prs+3Sg:%>ur #     ;
+ +V+Ind+Prs+2Sg:     urPass     ;
+ +V+Ind+Prs+3Sg:     urPass     ;
                      !pres_pl ;
 
 LEXICON pres_strong_s23_t0
 !! __@LEXNAME@__
- +V+Ind+Prs+2Sg:%>t #     ;
- +V+Ind+Prs+3Sg:%>  #     ;
+ +V+Ind+Prs+2Sg:    tPass     ;
+ +V+Ind+Prs+3Sg:    Pass     ;
                     !pres_pl ;
 
 LEXICON pres_strong_s23_t1
 !! __@LEXNAME@__
- +V+Ind+Prs+2Sg:%>r  #     ;
- +V+Ind+Prs+2Sg:%>rt #     ;
- +V+Ind+Prs+3Sg:%>r  #     ;
+ +V+Ind+Prs+2Sg:     rPass     ;
+ +V+Ind+Prs+2Sg:     rtPass     ;
+ +V+Ind+Prs+3Sg:     rPass    ;
                      !pres_pl ;
 
 LEXICON pres_pl
 !! __@LEXNAME@__
- +V+Ind+Prs+Pl:%>a # ;
+ +V+Ind+Prs+Pl:%>a Pass ;
  
  
  
  
  
 
-LEXICON pres_ast
+LEXICON pres_ast ! Desse kunne ha gått til Pass.
 !! __@LEXNAME@__
  +V+Ind+Prs+1Sg+Pass:%>ist # ;
  +V+Ind+Prs+2Sg+Pass:%>ast # ;
@@ -1973,75 +1974,103 @@ LEXICON prt_t
   prt_tu ;
 
 LEXICON prt_di
- +V+Ind+Prt+1Sg:%>di # ;
- +V+Ind+Prt+2Sg:%>di # ;
- +V+Ind+Prt+3Sg:%>di # ;
+ +V+Ind+Prt+1Sg:%>di Pass ;
+ +V+Ind+Prt+2Sg:%>di Pass ;
+ +V+Ind+Prt+3Sg:%>di Pass ;
 
 LEXICON prt_ði
 !! __@LEXNAME@__
- +V+Ind+Prt+1Sg:%>ði # ;
- +V+Ind+Prt+2Sg:%>ði # ;
- +V+Ind+Prt+3Sg:%>ði # ;
+ +V+Ind+Prt+1Sg:%>ði Pass ;
+ +V+Ind+Prt+2Sg:%>ði Pass ;
+ +V+Ind+Prt+3Sg:%>ði Pass ;
 
 LEXICON prt_ti
 !! __@LEXNAME@__
- +V+Ind+Prt+1Sg:%>ti # ;
- +V+Ind+Prt+2Sg:%>ti # ;
- +V+Ind+Prt+3Sg:%>ti # ;
+ +V+Ind+Prt+1Sg:%>ti Pass ;
+ +V+Ind+Prt+2Sg:%>ti Pass ;
+ +V+Ind+Prt+3Sg:%>ti Pass ;
 
 LEXICON prt_du
 !! __@LEXNAME@__
- +V+Ind+Prt+Pl:%>du # ;
+ +V+Ind+Prt+Pl:%>du Pass ;
 
 LEXICON prt_tu
 !! __@LEXNAME@__
- +V+Ind+Prt+Pl:%>tu # ;
+ +V+Ind+Prt+Pl:%>tu Pass ;
 
 LEXICON prt_ðu
 !! __@LEXNAME@__
- +V+Ind+Prt+Pl:%>ðu # ;
+ +V+Ind+Prt+Pl:%>ðu Pass ;
 
 LEXICON prt_dd
 !! __@LEXNAME@__
- +V+Ind+Prt+1Sg:%>ddi # ;
- +V+Ind+Prt+2Sg:%>ddi # ;
- +V+Ind+Prt+3Sg:%>ddi # ;
-  +V+Ind+Prt+Pl:%>ddu # ;
+ +V+Ind+Prt+1Sg:%>ddi Pass ;
+ +V+Ind+Prt+2Sg:%>ddi Pass ;
+ +V+Ind+Prt+3Sg:%>ddi Pass ;
+  +V+Ind+Prt+Pl:%>ddu Pass ;
 
 LEXICON prt_a
 !! __@LEXNAME@__
- +V+Ind+Prt+1Sg:%>aði # ;
- +V+Ind+Prt+2Sg:%>aði # ;
- +V+Ind+Prt+3Sg:%>aði # ;
-  +V+Ind+Prt+Pl:%>aðu # ;
+ +V+Ind+Prt+1Sg:%>aði Pass ;
+ +V+Ind+Prt+2Sg:%>aði Pass ;
+ +V+Ind+Prt+3Sg:%>aði Pass ;
+  +V+Ind+Prt+Pl:%>aðu Pass ;
 
 LEXICON prt_null
 !! __@LEXNAME@__
- +V+Ind+Prt+1Sg: # ;
- +V+Ind+Prt+2Sg: # ;
- +V+Ind+Prt+3Sg: # ;
+ +V+Ind+Prt+1Sg: Pass ;
+ +V+Ind+Prt+2Sg: Pass ;
+ +V+Ind+Prt+3Sg: Pass ;
 
 LEXICON prt_null_s
 !! __@LEXNAME@__
- +V+Ind+Prt+1Sg:     # ;
- +V+Ind+Prt+2Sg:%>st # ;
- +V+Ind+Prt+2Sg:     # ;
- +V+Ind+Prt+3Sg:     # ;
+ +V+Ind+Prt+1Sg:     Pass ;
+ +V+Ind+Prt+2Sg:     stPass ; ! NB ist ?!
+ +V+Ind+Prt+2Sg:     Pass ;
+ +V+Ind+Prt+3Sg:     Pass ;
 
 LEXICON prt_null_s2
 !! __@LEXNAME@__
- +V+Ind+Prt+1Sg:    # ;
- +V+Ind+Prt+2Sg:%>t # ;
- +V+Ind+Prt+2Sg:    # ;
- +V+Ind+Prt+3Sg:    # ;
+ +V+Ind+Prt+1Sg:    Pass ;
+ +V+Ind+Prt+2Sg:    tPass ;
+ +V+Ind+Prt+2Sg:    Pass ;
+ +V+Ind+Prt+3Sg:    Pass ;
 
 LEXICON prt_u_p
 !! __@LEXNAME@__
- +V+Ind+Prt+Pl:%>u # ;
+ +V+Ind+Prt+Pl:%>u Pass ;
 
 
+! =================
+!! !!Passive lexica
+!  ================
+
+LEXICON urPass
+     :%>ur # ;
++Pass:%>ist # ;
+
+LEXICON rPass
+     :%>r # ;
++Pass:%>st # ;
+
+LEXICON tPass
+     :%>t # ;
++Pass:%>st # ;
+
+LEXICON rtPass
+     :%>rt # ;
++Pass:%>st # ;
+
+LEXICON stPass
+     :%>st # ;
++Pass:%>st # ;
+
+LEXICON Pass
+ # ;
+ +Pass:%>st # ;
 
 !! !Imperative and present participle
+!  ==================================
 
 LEXICON imp_prsptc
 !! __@LEXNAME@__
@@ -2126,7 +2155,6 @@ LEXICON VANDI
 !! __@LEXNAME@__
   #    ; ! Verbs as usual
   andi ; ! participles
-
 
 
 

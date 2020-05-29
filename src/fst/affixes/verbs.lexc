@@ -253,7 +253,7 @@ LEXICON s23 !
                :yr     jinf    ;
  +V+Ind+Prs+1Sg:%>yrji Pass    ;
  +V+Ind+Prs+2Sg:%>yr   Pass    ;
- +V+Ind+Prs+2Sg:%>yrt  Pass    ;
+ +V+Ind+Prs+2Sg:%>yr   tPass   ;
  +V+Ind+Prs+3Sg:%>yr   Pass    ;
   +V+Ind+Prs+Pl:%>yrja Pass    ;
                :ur     prt_d   ;
@@ -829,13 +829,24 @@ LEXICON s69 !
 
 LEXICON s70 !
 !! __@LEXNAME@__ siga
-           :sig    inf        ;
-           :sig    pres_ur    ;
-           :segði  prt_null   ;
-           :søgd   prt_u_p    ;
-           :sig    imp_prsptc ;
-           :sag    sup        ;
-  +V+PrfPrc:sagd%> p8         ;
+           		:sig    	inf        	;
+           		:sigast		#	 		;
+  +V+Ind+Prs+1Sg:%>sigist 	#    		;
+  +V+Ind+Prs+2Sg:%>sigist   #    		;
+  +V+Ind+Prs+2Sg:%>sigst  	#    		;
+  +V+Ind+Prs+3Sg:%>sigist   #    		;
+  +V+Ind+Prs+3Sg:%>sigst  	#    		;
+   +V+Ind+Prs+Pl:%>sigast 	#    		;
+	            :sig    	pres_ur    	;
+	            :segði  	prt_null   	;
+  +V+Ind+Prt+1Sg:segðist    #  			;
+  +V+Ind+Prt+2Sg:segðist    #  			;
+  +V+Ind+Prt+3Sg:segðist    #  			;
+   +V+Ind+Prt+Pl:søgdust    #  			;
+	            :søgd   	prt_u_p    	;
+ 	            :sig    	imp_prsptc 	;
+	            :sag    	sup        	;
+	   +V+PrfPrc:sagd%> 	p8         	;
 
 LEXICON s71 !
 !! __@LEXNAME@__ skerja
@@ -1089,22 +1100,24 @@ LEXICON VITA
 
 LEXICON SÍGGJA
 !! __@LEXNAME@__
-         +V+Inf:síggja    #  ;
- +V+Ind+Prs+1Sg:síggi     Pass  ;
- +V+Ind+Prs+2Sg:sært      #  ;
- +V+Ind+Prs+3Sg:sær       Pass  ;
-  +V+Ind+Prs+Pl:síggja    Pass  ;
- +V+Ind+Prt+1Sg:sá        Pass  ;
- +V+Ind+Prt+2Sg:sást      #  ;
- +V+Ind+Prt+3Sg:sá        Pass  ;
-  +V+Ind+Prt+Pl:sóu       Pass  ;
-      +V+Imp+Sg:síggj     #  ;
-      +V+Imp+Sg:sí        #  ;
-      +V+Imp+Pl:síggið    #  ;
-      +V+PrsPrc:síggjandi VANDI ;
-      +V+PrfPrc:sædd%>ur  #  ;
-         +V+Sup:sæð       #  ;
-         +V+Sup:sætt      #  ;
+         +V+Inf:síggja    Pass  	;
+ +V+Ind+Prs+1Sg:síggi     Pass  	;
+ +V+Ind+Prs+2Sg:sæ        rtPass  	;
+ +V+Ind+Prs+2Sg:sær       #		  	;
+ +V+Ind+Prs+3Sg:sæ        rPass  	;
+  +V+Ind+Prs+Pl:síggja    Pass  	;
+ +V+Ind+Prt+1Sg:sá        Pass  	;
+ +V+Ind+Prt+2Sg:sást      #  		;
+ +V+Ind+Prt+2Sg:sá        Pass  	; 
+ +V+Ind+Prt+3Sg:sá        Pass  	;
+  +V+Ind+Prt+Pl:sóu       Pass  	;
+      +V+Imp+Sg:síggj     #  		;
+      +V+Imp+Sg:sí        #  		;
+      +V+Imp+Pl:síggið    #  		;
+      +V+PrsPrc:síggjandi VANDI 	;
+      +V+PrfPrc:sædd%>ur  #  		;
+         +V+Sup:sæð       #  		;
+         +V+Sup:sætt      #  		;
 
 LEXICON FÁA
 !! __@LEXNAME@__

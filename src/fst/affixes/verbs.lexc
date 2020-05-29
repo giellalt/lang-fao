@@ -1841,7 +1841,7 @@ LEXICON pres_ur_j
 !! __@LEXNAME@__
  +V+Ind+Prs+1Sg:%>ji Pass    ;
  +V+Ind+Prs+2Sg:     iurPass    ;
- +V+Ind+Prs+3Sg:     prPass    ;
+ +V+Ind+Prs+3Sg:     urPass    ; ! XXX sjekk
                :j    pres_pl ;
 
 LEXICON pres_ur_j2
@@ -2159,7 +2159,7 @@ LEXICON sup_ið_in !
 LEXICON VANDI
 !! __@LEXNAME@__
   #    ; ! Verbs as usual
-  andi ; ! participles
+  HOMONYM_ADJ_FORMS ; ! participles
 
 
 
@@ -2172,54 +2172,54 @@ LEXICON VANDI
 
 LEXICON p18
 !! __@LEXNAME@__
-  adj_a ;
-  :ð l18   ;
+  +V+PrfPtc:  adj_a ;
+  +V+PrfPtc:ð zl18  ;
 
 LEXICON p26
 !! __@LEXNAME@__
- :%^EPH a_m_sg_n_null    ;
- :%^EPH a_non_umlaut_obl ;
- :%^EPH a_umlaut         ;
- :ð       l26              ;
+ +V+PrfPtc:%^EPH a_m_sg_n_null    ;
+ +V+PrfPtc:%^EPH a_non_umlaut_obl ;
+ +V+PrfPtc:%^EPH a_umlaut         ;
+ +V+PrfPtc:ð     zl26             ;
 
 LEXICON p32
 !! __@LEXNAME@__
- :%^EPH adj_a ;
- :ð       l32   ;
+ +V+PrfPtc:%^EPH adj_a ;
+ +V+PrfPtc:ð     zl32  ;
 
 LEXICON p39
 !! __@LEXNAME@__
-  adj_a ; !XXX check!
-  :ð l39   ;
+  +V+PrfPtc:  adj_a ; !XXX check!
+  +V+PrfPtc:ð zl39  ;
 
 LEXICON p5
 !! __@LEXNAME@__
-  adj_a     ;
-  adj_r_gen ;
-  :ð l5        ;
+  +V+PrfPtc:  adj_a     ;
+  +V+PrfPtc:  adj_r_gen ;
+  +V+PrfPtc: zl5 ;
 
 !LEXICON p5x
 !!! __@LEXNAME@__
-!  l5 ;
+!  zl5 ;
 
 
 LEXICON p6
 !! __@LEXNAME@__
- :ð%^EDH adj_a ; ! no ð deletion
- :ð       l6    ;
+ +V+PrfPtc:ð%^EDH adj_a ; ! no ð deletion
+ +V+PrfPtc:ð      zl6   ;
 
 LEXICON p7
 !! __@LEXNAME@__
-  +V+PrfPtc+Der/A+A: adj_a     ;
-  +V+PrfPtc+Der/A+A:  adj_r_gen ;
-  +V+PrfPtc+Der/A:  l7        ;
+  +V+PrfPtc: adj_a     ;
+  +V+PrfPtc: adj_r_gen ;
+  +V+PrfPtc: zl7       ;
 
 LEXICON p8
 !! __@LEXNAME@__
-         a_non_umlaut ;
- :%^UUML a_umlaut     ;
-         adj_r_gen    ;
-  :ð       l8           ;
+  +V+PrfPtc:      a_non_umlaut ;
+ +V+PrfPtc:%^UUML a_umlaut     ;
+   +V+PrfPtc:     adj_r_gen    ;
+  +V+PrfPtc:ð     zl8          ;
 
 
 

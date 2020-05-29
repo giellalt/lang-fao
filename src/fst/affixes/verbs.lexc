@@ -12,7 +12,7 @@
 LEXICON s1
 !! __@LEXNAME@__ nevna
                standard_ir ; ! Verbal forms
- +V+PrfPrc:%>d p7          ; ! Adjectival forms
+         :%>d p7          ; ! Adjectival forms
 
 
 LEXICON s2
@@ -875,12 +875,13 @@ LEXICON s73 !
 LEXICON BLÍVA
 !! __@LEXNAME@__
          +V+Inf:blíva    Pass  ;
- +V+Ind+Prs+1Sg:blívi    Pass  ;
+ +V+Ind+Prs+1Sg:blívi    #  ;
  +V+Ind+Prs+2Sg:blív     urPass  ;
  +V+Ind+Prs+3Sg:blív     urPass  ;
   +V+Ind+Prs+Pl:blíva    Pass  ;
  +V+Ind+Prt+1Sg:bleiv    Pass  ;
- +V+Ind+Prt+2Sg:bleivst  #  ;
+ +V+Ind+Prt+2Sg:bleiv    #  ;
+ +V+Ind+Prt+2Sg:bleiv    stPass  ;
  +V+Ind+Prt+3Sg:bleiv    Pass  ;
   +V+Ind+Prt+Pl:blivu    Pass  ;
       +V+Imp+Sg:blív     #  ;
@@ -2172,30 +2173,30 @@ LEXICON VANDI
 LEXICON p18
 !! __@LEXNAME@__
   adj_a ;
-  l18   ;
+  :ð l18   ;
 
 LEXICON p26
 !! __@LEXNAME@__
  :%^EPH a_m_sg_n_null    ;
  :%^EPH a_non_umlaut_obl ;
  :%^EPH a_umlaut         ;
-        l26              ;
+ :ð       l26              ;
 
 LEXICON p32
 !! __@LEXNAME@__
  :%^EPH adj_a ;
-        l32   ;
+ :ð       l32   ;
 
 LEXICON p39
 !! __@LEXNAME@__
   adj_a ; !XXX check!
-  l39   ;
+  :ð l39   ;
 
 LEXICON p5
 !! __@LEXNAME@__
   adj_a     ;
   adj_r_gen ;
-  l5        ;
+  :ð l5        ;
 
 !LEXICON p5x
 !!! __@LEXNAME@__
@@ -2204,21 +2205,21 @@ LEXICON p5
 
 LEXICON p6
 !! __@LEXNAME@__
- :%^EDH adj_a ; ! no ð deletion
-        l6    ;
+ :ð%^EDH adj_a ; ! no ð deletion
+ :ð       l6    ;
 
 LEXICON p7
 !! __@LEXNAME@__
-  adj_a     ;
-  adj_r_gen ;
-  l7        ;
+  +V+PrfPtc+Der/A+A: adj_a     ;
+  +V+PrfPtc+Der/A+A:  adj_r_gen ;
+  +V+PrfPtc+Der/A:  l7        ;
 
 LEXICON p8
 !! __@LEXNAME@__
          a_non_umlaut ;
  :%^UUML a_umlaut     ;
          adj_r_gen    ;
-         l8           ;
+  :ð       l8           ;
 
 
 

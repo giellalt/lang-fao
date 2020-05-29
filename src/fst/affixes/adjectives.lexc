@@ -84,44 +84,52 @@
 !  +A: Pos_Def ;
 
 LEXICON l1 ! ríkur
- l1pos ;
- l1comsup ;
+ +A: xl1pos ;
+ +A: xl1comsup ;
  
-LEXICON l1pos
- +A: Sg_Msc1  ;
- +A: Pl_Msc1  ;
- +A: Sg_Fem1  ;
- +A: Pl_Fem1  ;
- +A: Sg_Neu1  ;
- +A: Pl_Neu1  ;
- +A: Pos_Def  ;
+LEXICON xl1pos
+  Sg_Msc1  ;
+  Pl_Msc1  ;
+  Sg_Fem1  ;
+  Pl_Fem1  ;
+  Sg_Neu1  ;
+  Pl_Neu1  ;
+  Pos_Def  ;
 
 LEXICON l1comsup
- +A: Comp_Ari ;
+  Comp_Ari ;
 
 LEXICON l1_umlaut ! tungur
- l1pos ;
- +A:^IUML Comp_Ri ;
++A: xl1_umlaut ;
+
+LEXICON l1_umlaut
+  l1pos ;
+  :^IUML Comp_Ri ;
 
 LEXICON l1_ØÆumlaut ! høgur
- +A:øg Sg_Msc1  ;
- +A:øg Pl_Msc1  ;
- +A:øg Sg_Fem1  ;
- +A:øg Pl_Fem1  ;
- +A:øg Sg_Neu1  ;
- +A:øg Pl_Neu1  ;
- +A:øg Pos_Def  ;
- +A:æg Comp_Ri  ;
++A: xl1_ØÆumlaut ;
+LEXICON xl1_ØÆumlaut ! høgur
+ :øg Sg_Msc1  ;
+ :øg Pl_Msc1  ;
+ :øg Sg_Fem1  ;
+ :øg Pl_Fem1  ;
+ :øg Sg_Neu1  ;
+ :øg Pl_Neu1  ;
+ :øg Pos_Def  ;
+ :æg Comp_Ri  ;
 
 LEXICON l1_1
- +A:ring Sg_Msc1  ;
- +A:ring Pl_Msc1  ;
- +A:ring Sg_Fem1  ;
- +A:ring Pl_Fem1  ;
- +A:ring Sg_Neu1  ;
- +A:ring Pl_Neu1  ;
- +A:ring Pos_Def  ;
- +A:ver Comp_Ri  ;
+xl1_1 ;
+
+LEXICON xl1_1
+ :ring Sg_Msc1  ;
+ :ring Pl_Msc1  ;
+ :ring Sg_Fem1  ;
+ :ring Pl_Fem1  ;
+ :ring Sg_Neu1  ;
+ :ring Pl_Neu1  ;
+ :ring Pos_Def  ;
+ :ver Comp_Ri  ;
 
 LEXICON l1/12_ll
  l1 ;

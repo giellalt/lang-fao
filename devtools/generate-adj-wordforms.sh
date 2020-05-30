@@ -19,7 +19,7 @@ fi
 
 ######### USER Variables - change these to your liking: #########
 # Codes for the word forms to be generated - list as many or few as needed:
-morf_codes="ls+A+Msc+Sg+Nom+Indef		   \
+morf_codes="+A+Msc+Sg+Nom+Indef		   \
             +A+Msc+Sg+Acc+Indef		   \
             +A+Msc+Sg+Dat+Indef		   \
             +A+Msc+Sg+Gen+Indef		   \
@@ -55,22 +55,22 @@ morf_codes="ls+A+Msc+Sg+Nom+Indef		   \
             +A+Neu+Sg+Acc+Def		   \
             +A+Neu+Pl+Nom+Def		   \
             +A+Neu+Pl+Acc+Def		   \
-            +A+Cmp+Msc+Sg+Nom+Indef	   \
-            +A+Cmp+Msc+Pl+Nom+Indef	   \
-            +A+Cmp+Msc+Sg+Nom+Def	   \
-            +A+Cmp+Msc+Pl+Nom+Def	   \
-            +A+Cmp+Fem+Sg+Nom+Indef	   \
-            +A+Cmp+Fem+Pl+Nom+Indef	   \
-            +A+Cmp+Fem+Sg+Nom+Def	   \
-            +A+Cmp+Fem+Pl+Nom+Def	   \
-            +A+Cmp+Neu+Sg+Nom+Indef	   \
-            +A+Cmp+Neu+Sg+Acc+Indef	   \
-            +A+Cmp+Neu+Pl+Nom+Indef	   \
-            +A+Cmp+Neu+Pl+Acc+Indef	   \
-            +A+Cmp+Neu+Sg+Nom+Def	   \
-            +A+Cmp+Neu+Sg+Acc+Def	   \
-            +A+Cmp+Neu+Pl+Nom+Def	   \
-            +A+Cmp+Neu+Pl+Acc+Def	   \
+            +A+Comp+Msc+Sg+Nom+Indef	   \
+            +A+Comp+Msc+Pl+Nom+Indef	   \
+            +A+Comp+Msc+Sg+Nom+Def	   \
+            +A+Comp+Msc+Pl+Nom+Def	   \
+            +A+Comp+Fem+Sg+Nom+Indef	   \
+            +A+Comp+Fem+Pl+Nom+Indef	   \
+            +A+Comp+Fem+Sg+Nom+Def	   \
+            +A+Comp+Fem+Pl+Nom+Def	   \
+            +A+Comp+Neu+Sg+Nom+Indef	   \
+            +A+Comp+Neu+Sg+Acc+Indef	   \
+            +A+Comp+Neu+Pl+Nom+Indef	   \
+            +A+Comp+Neu+Pl+Acc+Indef	   \
+            +A+Comp+Neu+Sg+Nom+Def	   \
+            +A+Comp+Neu+Sg+Acc+Def	   \
+            +A+Comp+Neu+Pl+Nom+Def	   \
+            +A+Comp+Neu+Pl+Acc+Def	   \
             +A+Superl+Msc+Sg+Nom+Indef \
             +A+Superl+Msc+Pl+Nom+Indef \
             +A+Superl+Msc+Sg+Nom+Def   \

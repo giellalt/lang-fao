@@ -25,7 +25,22 @@ morf_codes="+V+Inf \
             +V+Ind+Prt+Sg  \
             +V+Ind+Prt+Pl  \
             +V+Sup \
-            +V+PrfPrc"
+            +V+PrfPtc+Msc+Sg+Nom+Indef \
+            +V+PrfPtc+Msc+Sg+Acc+Indef \
+            +V+PrfPtc+Msc+Sg+Gen+Indef \
+            +V+PrfPtc+Msc+Sg+Dat+Indef \
+            +V+PrfPtc+Fem+Sg+Nom+Indef \
+            +V+PrfPtc+Fem+Sg+Acc+Indef \
+            +V+PrfPtc+Fem+Sg+Gen+Indef \
+            +V+PrfPtc+Fem+Sg+Dat+Indef \
+            +V+PrfPtc+Msc+Sg+Nom+Def \
+            +V+PrfPtc+Msc+Sg+Acc+Def \
+            +V+PrfPtc+Msc+Sg+Gen+Def \
+            +V+PrfPtc+Msc+Sg+Dat+Def \
+            +V+PrfPtc+Fem+Sg+Nom+Def \
+            +V+PrfPtc+Fem+Sg+Acc+Def \
+            +V+PrfPtc+Fem+Sg+Gen+Def \
+            +V+PrfPtc+Fem+Sg+Dat+Def"
 
 # Lexicon source file for lexicons and lemmas:
 source_file=src/fst/stems/verbs.lexc

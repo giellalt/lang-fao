@@ -84,11 +84,8 @@ echo "så nøytrums substantiv\n"
  
  cat src/fst/stems/verbs.lexc |grep ";"|tr '\!' '£'| cut -d"£" -f1|tr '[+ ]' ':' |grep -v '_pl'|cut -d":" -f1| sort|uniq |sed 's/$/+V+PrfPtc+Msc+Sg+Nom+Indef/'|hfst-lookup -q src/generator-gt-norm.hfstol| grep '\t'|rev|sort|rev|perl src/scripts/all_fst_output_as_table.pl > doc/testir/VerbTestActPrfPtc.xml
  
- cat src/fst/stems/verbs.lexc |grep ";"|tr '\!' '£'| cut -d"£" -f1|tr '[+ ]' ':' |grep -v '_pl'|cut -d":" -f1| sort|uniq |sed 's/$/+V+Pass+PrfPtc+Msc+Sg+Nom+Indef/'|hfst-lookup -q src/generator-gt-norm.hfstol| grep '\t'|rev|sort|rev|perl src/scripts/all_fst_output_as_table.pl > doc/testir/VerbTestPassPrfPtc.xml
- 
  cat src/fst/stems/verbs.lexc |grep ";"|tr '\!' '£'| cut -d"£" -f1|tr '[+ ]' ':' |grep -v '_pl'|cut -d":" -f1| sort|uniq |sed 's/$/+V+PrsPtc+Msc+Sg+Nom+Indef/'|hfst-lookup -q src/generator-gt-norm.hfstol| grep '\t'|rev|sort|rev|perl src/scripts/all_fst_output_as_table.pl > doc/testir/VerbTestActPrsPtc.xml
  
- cat src/fst/stems/verbs.lexc |grep ";"|tr '\!' '£'| cut -d"£" -f1|tr '[+ ]' ':' |grep -v '_pl'|cut -d":" -f1| sort|uniq |sed 's/$/+V+Pass+PrsPtc+Msc+Sg+Nom+Indef/'|hfst-lookup -q src/generator-gt-norm.hfstol| grep '\t'|rev|sort|rev|perl src/scripts/all_fst_output_as_table.pl > doc/testir/VerbTestPassPrsPtc.xml
  
 
  echo "så adjektiv i maskulin\n"

@@ -11,17 +11,26 @@
 
 LEXICON s1
 !! __@LEXNAME@__ nevna
-               standard_ir ; ! Verbal forms
-         :%>d p7          ; ! Adjectival forms
+               	standard_ir ; ! Verbal forms
+  				reflinf		;
+  				pres_ist	;
+  				pret_tist	;
+  		  :d	pret_plust	;               
+ +V+PrfPtc:%>d 	p7          ; ! Adjectival forms
 
 
 LEXICON s2
 !! __@LEXNAME@__ keypa
   standard_ir_t ;
+  reflinf		;
+  pres_ist		;
+  pret_tist		;
+  pret_pltust	;
   p39           ;
 
 LEXICON SETA
 !! __@LEXNAME@__
+
  +V+Ind+Prs+2Sg: urPass  ;
  +V+Ind+Prs+3Sg: urPass  ;
                      s2 ;
@@ -518,7 +527,16 @@ LEXICON s42 !
 LEXICON s44 !
 !! __@LEXNAME@__ finna
         inf        ;
+         +V+Inf+Pass:%>ast  #	;
+ +V+Ind+Prs+1Sg:%>ist  #    ;
+ +V+Ind+Prs+2Sg:%>ist  #    ;
+ +V+Ind+Prs+3Sg:%>ist  #    ;
+  +V+Ind+Prs+Pl:%>ast  #    ;
         pres_ur    ;
+ +V+Ind+Prt+1Sg:%^AB3%>st  #    ;
+ +V+Ind+Prt+2Sg:%^AB3%>st  #    ;
+ +V+Ind+Prt+3Sg:%^AB3%>st  #    ;
+  +V+Ind+Prt+Pl:%^AB4%>ust #    ;
  :%^AB3 prt_null_s ;
  :%^AB4 prt_u_p    ;
         imp_prsptc ;
@@ -691,7 +709,7 @@ LEXICON s59 !
 !! __@LEXNAME@__ stjala
           :jal   inf             ;
           :jal   pres_strong_s1  ;
-          :jel    pres_strong_s23 ;
+          :jel   pres_strong_s23 ;
           :jól   prt_null_s      ;
           :jól   prt_u_p         ;
           :jal   imp_prsptc      ;
@@ -735,14 +753,23 @@ LEXICON s62 !
 
 LEXICON s63 !
 !! __@LEXNAME@__ koma
-                   inf             ;
-                   pres_strong_s1  ;
-          :%^eIUML pres_strong_s23 ;
-                   prt_null_s      ;
-                   prt_u_p         ;
-                   sup_ið_in       ;
-                   imp_prsptc      ;
- +V+PrfPrc:%>in    p26             ;
+                   			inf             ;
+         +V+Inf:%>ast  		#				;
+ +V+Ind+Prs+1Sg:%>ist  		#    			;
+ +V+Ind+Prs+2Sg:eIUML%>st  	#    			;
+ +V+Ind+Prs+3Sg:eIUML%>st  	#    			;
+  +V+Ind+Prs+Pl:%>ast  		#    			;
+                   			pres_strong_s1  ;
+ +V+Ind+Prt+1Sg:%>st  		#    			;
+ +V+Ind+Prt+2Sg:%>st  		#    			;
+ +V+Ind+Prt+3Sg:%>st  		#    			;
+  +V+Ind+Prt+Pl:%>ust 		#    			;
+          	   :%^eIUML 	pres_strong_s23 ;
+                   			prt_null_s      ;
+                   			prt_u_p         ;
+                   			sup_ið_in       ;
+                   			imp_prsptc      ;
+ +V+PrfPrc:%>in    			p26             ;
 
 LEXICON s64 !
 !! __@LEXNAME@__ lata
@@ -1144,10 +1171,10 @@ LEXICON NÁA !
       +V+Ind+Prs+2Sg:nær  Pass ;
       +V+Ind+Prs+3Sg:nær  Pass ;
        +V+Ind+Prs+Pl:náa  Pass ;
-      +V+Ind+Prt+1Sg:nátt # ;
-      +V+Ind+Prt+2Sg:nátt # ;
-      +V+Ind+Prt+3Sg:nátt # ;
-       +V+Ind+Prt+Pl:nátt # ;
+      +V+Ind+Prt+1Sg:náddi # ;
+      +V+Ind+Prt+2Sg:náddi # ;
+      +V+Ind+Prt+3Sg:náddi # ;
+       +V+Ind+Prt+Pl:náddu # ;
            +V+Imp+Sg:ná   # ;
            +V+Imp+Pl:náið # ;
            +V+PrfPrc:nátt # ;
@@ -2193,7 +2220,7 @@ LEXICON p26
 ! +V+PrfPtc:%^EPH a_m_sg_n_null    ;
 ! +V+PrfPtc:%^EPH a_non_umlaut_obl ;
 ! +V+PrfPtc:%^EPH a_umlaut         ;
- +V+PrfPtc:ð     zl26             ;
+ +V+PrfPtc:     zl26             ;
 
 LEXICON p32
 !! __@LEXNAME@__
@@ -2203,7 +2230,7 @@ LEXICON p32
 LEXICON p39
 !! __@LEXNAME@__
 !  +V+PrfPtc:  adj_a ; !XXX check!
-  +V+PrfPtc:ð zl39  ;
+  +V+PrfPtc: zl39  ;
 
 LEXICON p5
 !! __@LEXNAME@__

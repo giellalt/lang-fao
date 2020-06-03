@@ -802,7 +802,7 @@ LEXICON zl26 ! vakin
  :^EPH a_non_umlaut_obl ;
  :^EPH a_umlaut         ;
  :^EPH adj_def          ;
- :^EPH Comp_Ari 		  ;
+ :^EPH Comp_Ari 		;
 
 LEXICON l27 ! heiðin
 +A: zl27 ;
@@ -1350,16 +1350,30 @@ LEXICON zl37 ! grammur
  Pos_Def ;
  Comp_Ari ;
 
-LEXICON l39/23
- l39 ;
- l23 ;
+LEXICON l39_2/23 ! hættur
+ l39_2 	;
+ l23 	;
  
+LEXICON l39_2 ! finittur
++A: zl39_2 		;
+LEXICON zl39_2 ! finittur
+  	l39			;
+  	Comp_Ari 	;
+
 LEXICON l39 ! settur
-+A: zl39 ;
++A: zl39 	;
 LEXICON zl39 ! settur
-  adj_a   ; 
-  adj_def ;
-  Comp_Ari ;
+  adj_a   	; 
+  adj_def 	;
+  Comp_Ari 	;
+
+LEXICON l39_3 ! stuttur
++A: zl39_3 		;
+LEXICON zl39_3 ! stuttur
+  	l39			;
+  	l1_umlaut 	;
+
+
 
 
 ! Irregular adjectives

@@ -177,10 +177,10 @@ LEXICON zl5
 
 
 LEXICON zl5pos
-  Sg_Msc1    ;
+  Sg_Msc1   ;
   Pl_Msc2	;
-  Sg_Fem2    ;
-  Pl_Fem2    ;
+  Sg_Fem2   ;
+  Pl_Fem2   ;
   Sg_Neu3	;
   Pl_Neu2	;
   Pos_Def	;
@@ -220,7 +220,7 @@ LEXICON zl7	! blindur
  :d Sg_Fem2   ;
  :d Pl_Fem2   ;
  +Neu+Sg+Nom+Indef:%>t 	 # ;
- +Neu+Sgcc+Indef:%>t	 # ;
+ +Neu+Sg+Acc+Indef:%>t	 # ;
  +Neu+Sg+Dat+Indef:%>dum	 # ;
  +Neu+Sg+Gen+Indef:%>ds	 # ;
  :d Pl_Neu2	;
@@ -239,7 +239,7 @@ LEXICON zl8	! kaldur
  :d Pl_Fem1_Uuml ;
  +Fem+Pl+Dat+Indef:%>dum	# ;
  +Neu+Sg+Nom+Indef:%>t	 # ;
- +Neu+Sgcc+Indef:%>t	 # ;
+ +Neu+Sg+Acc+Indef:%>t	 # ;
  +Neu+Sg+Dat+Indef:^UUML%>dum	 # ;
  +Neu+Sg+Dat+Indef:%>dum	# ;
  +Neu+Sg+Gen+Indef:%>ds	 # ;
@@ -264,7 +264,7 @@ LEXICON l10 ! drúgvur
 +A: zl10 ;
 LEXICON zl10 ! drúgvur
  +Msc+Sg+Nom+Indef:vur	 # ;
- +Msc+Sgcc+Indef:van	 # ;
+ +Msc+Sg+Acc+Indef:van	 # ;
  +Msc+Sg+Dat+Indef:vum	 # ;
  +Msc+Sg+Gen+Indef:s	 	 # ;
  :v Pl_Msc1	;
@@ -1368,10 +1368,10 @@ LEXICON zl39 ! settur
   Comp_Ari 	;
 
 LEXICON l39_3 ! stuttur
-+A: zl39_3 		;
++A: 		zl39_3 		;
 LEXICON zl39_3 ! stuttur
-  	l39			;
-  	l1_umlaut 	;
+  			l39			;
+  :^IUML 	Comp_Ri 	;
 
 
 

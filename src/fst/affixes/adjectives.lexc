@@ -106,7 +106,7 @@ LEXICON l1_umlaut ! tungur
 +A: zl1_umlaut ;
 
 LEXICON zl1_umlaut
-  l1pos ;
+  zl1pos ;
   :^IUML Comp_Ri ;
 
 LEXICON l1_ØÆumlaut ! høgur
@@ -875,22 +875,22 @@ LEXICON l29 ! vakur
  :r Comp_Ari ; 
  
 LEXICON l30 ! tepur
- a_m_sg_n_null ;
- msgpl ;
- a_f_sg_n_null ;
- fsgpl ;
- nsgpl ;
- :^EPH Pos_Def ;
- :^EPH Comp_Ari ;
+ +A: a_m_sg_n_null ;
+ +A:  msgpl ;
+ +A:  a_f_sg_n_null ;
+ +A:  fsgpl ;
+ +A:  nsgpl ;
+ +A:^EPH Pos_Def ;
+ +A:^EPH Comp_Ari ;
 
 LEXICON l31 ! trupul
- a_m_sg_n_null ;
- msgpl ;
- a_f_sg_n_null ;
- fsgpl ;
- nsgpl ;
- :^EPH Pos_Def ;
- :^EPH Comp_Ari ;
+ +A:a_m_sg_n_null ;
+ +A:msgpl ;
+ +A:a_f_sg_n_null ;
+ +A:fsgpl ;
+ +A:nsgpl ;
+ +A:^EPH Pos_Def ;
+ +A:^EPH Comp_Ari ;
 
 LEXICON l31_2 ! simpil
  +A+Msc+Sg+Nom+Indef:%>il  # ;

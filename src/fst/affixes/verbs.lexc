@@ -926,8 +926,8 @@ LEXICON BLÍVA
       +V+Imp+Sg:blív     #  ;
       +V+Imp+Pl:blívið   #  ;
       +V+PrsPrc:blívandi VANDI ;
-      +V+PrfPrc:blivin   #  ;
          +V+Sup:blívið   #  ;
+               :bliv     p26  ;
 
 LEXICON EIGA
 !! __@LEXNAME@__
@@ -956,7 +956,7 @@ LEXICON EITA
  +V+Ind+Prt+3Sg:æt      Pass  ;
   +V+Ind+Prt+Pl:itu     Pass  ;
       +V+PrsPrc:itandi  VANDI ; ! XXX check
-      +V+PrfPrc:itin    #  ;
+               :it      p26  ;
          +V+Sup:itið    #  ;
 
 LEXICON GRÁTA
@@ -974,7 +974,7 @@ LEXICON GRÁTA
       +V+Imp+Sg:át     #  ;
       +V+Imp+Pl:átið   #  ;
       +V+PrsPrc:átandi VANDI ;
-      +V+PrfPrc:átin   #  ;
+               :át     p26  ;
          +V+Sup:átið   #  ;
 
 LEXICON HAVA
@@ -1096,7 +1096,7 @@ LEXICON VERÐA
      +V+Sbj+3Sg:verði    #   ; !XXX verði ljós
       +V+Imp+Pl:verðið   #   ;
       +V+PrsPrc:verðandi #   ;
-      +V+PrfPrc:vorðin   p26 ;
+               :vorð   p26 ;
 
 
 LEXICON VILJA
@@ -1143,7 +1143,7 @@ LEXICON SÍGGJA
       +V+Imp+Sg:sí        #  		;
       +V+Imp+Pl:síggið    #  		;
       +V+PrsPrc:síggjandi VANDI 	;
-      +V+PrfPrc:sædd%>ur  #  		;
+               :sæ        p18  		;
          +V+Sup:sæð       #  		;
          +V+Sup:sætt      #  		;
 
@@ -1161,7 +1161,7 @@ LEXICON FÁA
        +V+Ind+Prt+Pl:fingu  Pass ;
            +V+Imp+Sg:fá     # ;
            +V+Imp+Pl:fáið   # ;
-           +V+PrfPrc:fingin # ;
+                    :fing   p26 ;
               +V+Sup:fingið # ;
 
 LEXICON NÁA !
@@ -1178,7 +1178,7 @@ LEXICON NÁA !
        +V+Ind+Prt+Pl:náddu # ;
            +V+Imp+Sg:ná   # ;
            +V+Imp+Pl:náið # ;
-           +V+PrfPrc:nátt # ;
+                    :ná   p26 ;
               +V+Sup:nátt # ;
 
 LEXICON LIGGJA
@@ -1195,7 +1195,7 @@ LEXICON LIGGJA
       +V+Imp+Sg:igg      #  ;
       +V+Imp+Pl:iggið    #  ;
       +V+PrsPrc:iggjandi VANDI ;
-      +V+PrfPrc:igin     #  ;
+               :ig       p26  ;
          +V+Sup:igið     #  ;
 
 
@@ -1230,7 +1230,7 @@ LEXICON SYNGJA !
       +V+Imp+Sg:syng      #  ;
       +V+Imp+Pl:syngið    #  ;
       +V+PrsPrc:syngjandi VANDI ;
-      +V+PrfPrc:sungið    #  ;
+               :sung      p26  ;
          +V+Sup:sungin    #  ;
 
 
@@ -1249,7 +1249,7 @@ LEXICON HOGGA !
       +V+Imp+Sg:høgg     #  ;
       +V+Imp+Pl:høggið   #  ;
       +V+PrsPrc:høggandi VANDI ;
-      +V+PrfPrc:høgdur   #  ;
+               :høg      p7  ;
          +V+Sup:høgt     #  ;
 
 LEXICON KVODA
@@ -1267,7 +1267,7 @@ LEXICON KVODA
       +V+Imp+Sg:kvøð    	#  ;
       +V+Imp+Pl:kvøðið   	#  ;
       +V+PrsPrc:kvøðandi 	VANDI ;
-      +V+PrfPrc:kvøðin  	#  ;
+               :kvøð            p26  ;
          +V+Sup:kvøðið  	#  ;
 
 
@@ -1286,7 +1286,7 @@ LEXICON FLYGGJA
       +V+Imp+Sg:flýggja    #  ;
       +V+Imp+Pl:flýggið    #  ;
       +V+PrsPrc:flýggjandi VANDI ;
-      +V+PrfPrc:flýddur    #  ;
+               :flý        p18  ;
          +V+Sup:flýtt      #  ;
 
 
@@ -1304,7 +1304,7 @@ LEXICON VAKSA
               +V+Imp+Sg:vaks     #  ;
               +V+Imp+Pl:vaksið   #  ;
               +V+PrsPrc:vaksandi VANDI ;
-              +V+PrfPrc:vaksin   #  ;
+                       :vaks     p18  ;
                  +V+Sup:vaksið   #  ;
 
 LEXICON VEKSA
@@ -1321,7 +1321,7 @@ LEXICON VEKSA
               +V+Imp+Sg:eks     #  ;
               +V+Imp+Pl:eksið   #  ;
               +V+PrsPrc:eksandi VANDI ;
-              +V+PrfPrc:aksin   #  ;
+                       :aks     p18  ;
                  +V+Sup:aksið   #  ;
 
 
@@ -1345,7 +1345,7 @@ LEXICON HYGGJA
       +V+Imp+Sg:hygg   		#       ;
       +V+Imp+Pl:hyggið   	#       ;
       +V+PrsPrc:hyggjandi   VANDI   ;
-      +V+PrfPrc:hugdur   	#       ;
+               :hug      	p8       ;
          +V+Sup:hugt   		#       ;
 
 LEXICON MYLA
@@ -1362,7 +1362,7 @@ LEXICON MYLA
       +V+Imp+Sg:myl     #       ;
       +V+Imp+Pl:mylið   #       ;
       +V+PrsPrc:mylandi	VANDI   ;
-      +V+PrfPrc:myldur  #       ;
+               :myl     p7       ;
          +V+Sup:mylt   	#       ;
 
 LEXICON TYSJA
@@ -1379,7 +1379,7 @@ LEXICON TYSJA
       +V+Imp+Sg:ys   	#       ;
       +V+Imp+Pl:ysið   	#       ;
       +V+PrsPrc:ysjandi VANDI   ;
-      +V+PrfPrc:ustur   #       ;
+               :us      p5       ;
          +V+Sup:ust   	#       ;
 
 LEXICON GROA
@@ -1397,7 +1397,7 @@ LEXICON GROA
       +V+Imp+Sg:gró   	#       ;
       +V+Imp+Pl:gróið   #       ;
       +V+PrsPrc:gróandi VANDI   ;
-      +V+PrfPrc:gróin   #       ;
+               :gró   p26       ;
          +V+Sup:gróð   	#       ;
          +V+Sup:gróðið  #       ;
 
@@ -1422,7 +1422,7 @@ LEXICON KVOTTA
       +V+Imp+Pl:kvøttið   	#       ;
       +V+PrsPrc:kvøttandi 	VANDI   ;
       +V+PrfPrc:kvøttur   	#       ;
-      +V+PrfPrc:kvøttin   	#       ;
+               :kvøtt   	p26       ;
          +V+Sup:kvøtt   	#       ;
          +V+Sup:kvøttið   	#       ;
 
@@ -2215,53 +2215,48 @@ LEXICON p1
 LEXICON p18
 !! __@LEXNAME@__
 !  +V+PrfPtc:  adj_a ;
-  +V+PrfPtc:  zl18  ;
+  +V+PrfPtc:  zl18  ; ! > keddur
 
 LEXICON p26
 !! __@LEXNAME@__
 ! +V+PrfPtc:%^EPH a_m_sg_n_null    ;
 ! +V+PrfPtc:%^EPH a_non_umlaut_obl ;
 ! +V+PrfPtc:%^EPH a_umlaut         ;
- +V+PrfPtc:in     zl26             ;
+ +V+PrfPtc:in     zl26  ; ! > vakin
 
 LEXICON p32
 !! __@LEXNAME@__
 ! +V+PrfPtc:%^EPH adj_a ;
- +V+PrfPtc:     zl32  ;
+ +V+PrfPtc:     zl32  ; ! > búgvin
 
 LEXICON p39
 !! __@LEXNAME@__
 !  +V+PrfPtc:  adj_a ; !XXX check!
-  +V+PrfPtc: zl39  ;
+  +V+PrfPtc: zl39  ; ! > settur
 
 LEXICON p5
 !! __@LEXNAME@__
 !  +V+PrfPtc:  adj_a     ;
 !  +V+PrfPtc:  adj_r_gen ;
-  +V+PrfPtc: zl5pos ;
-
-!LEXICON p5x
-!!! __@LEXNAME@__
-!  zl5 ;
-
+  +V+PrfPtc: zl5pos ; ! > spiltur
 
 LEXICON p6
 !! __@LEXNAME@__
 ! +V+PrfPtc:ð%^EDH adj_a ; ! no ð deletion
- +V+PrfPtc:      zl6   ;
+ +V+PrfPtc:      zl6   ; ! > skaftur
 
 LEXICON p7
 !! __@LEXNAME@__
 !  +V+PrfPtc: adj_a     ;
 !  +V+PrfPtc: adj_r_gen ;
-  +V+PrfPtc: zl7       ;
+  +V+PrfPtc: zl7   ; ! > blindur
 
 LEXICON p8
 !! __@LEXNAME@__
 !  +V+PrfPtc:      a_non_umlaut ;
 ! +V+PrfPtc:%^UUML a_umlaut     ;
 !   +V+PrfPtc:     adj_r_gen    ;
-  +V+PrfPtc:     zl8          ;
+  +V+PrfPtc:     zl8  ; ! > kaldur
 
 
 

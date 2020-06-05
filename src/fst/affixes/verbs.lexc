@@ -360,7 +360,7 @@ LEXICON s31 !
                :jør   p7         ;
 
 LEXICON s32 !
-!! __@LEXNAME@__ búgva
+!! __@LEXNAME@__ búgva = riggar!
                :gv        inf                ;
                :gv        pres_strong_s1     ;
                :%^IUML    pres_strong_s23_t1 ;
@@ -372,23 +372,27 @@ LEXICON s32 !
 
 LEXICON s33 !
 !! __@LEXNAME@__ rógva
-               :gv        inf                ;
-               :gv        pres_strong_s1     ;
-               :%^IUML    pres_strong_s23_t1 ;
-               :gv        pres_pl            ;
-                          prt_ð              ;
-               :gv        imp_prsptc         ;
-                          sup_in             ;
-                          p32                ;
+               		:gv 			inf             ;
+               		:gv     		pres_strong_s1  ;
+	  +V+Ind+Prs+2Sg:%^IUML%>r     	#     			;
+ 	  +V+Ind+Prs+2Sg:%^IUML%>rt     #     			;
+ +V+Ind+Prs+2Sg+Pass:%^IUML%>rst    #     			;
+ 	  +V+Ind+Prs+3Sg:%^IUML%>r     	#    			;
+ +V+Ind+Prs+3Sg+Pass:%^IUML%>rst    #    			;
+               		:gv     		pres_pl         ;
+                          			prt_ð           ;
+               		:gv     		imp_prsptc      ;
+                          			sup_in          ;
+                          			p32             ;
 
 
 LEXICON s34 !
-!! __@LEXNAME@__ goyggja
+!! __@LEXNAME@__ goyggja = riggar!
                :ggj inf        ;
  +V+Ind+Prs+1Sg:ggi Pass       ;
- +V+Ind+Prs+2Sg:    rtPass       ;
- +V+Ind+Prs+2Sg:    rPass       ;
- +V+Ind+Prs+3Sg:    rPass       ;
+ +V+Ind+Prs+2Sg:    rtPass     ;
+ +V+Ind+Prs+2Sg:    rPass      ;
+ +V+Ind+Prs+3Sg:    rPass      ;
                :ggj pres_pl    ;
                     prt_ð      ;
                :ggj imp_prsptc ;
@@ -401,49 +405,48 @@ LEXICON s34 !
 ! ==========================
 
 LEXICON s35 !
-!! __@LEXNAME@__ bíta
+!! __@LEXNAME@__ bíta riggar ikki!
                      inf        ;
                      pres_ur    ;
           :%^AB1     prt_null_s ;
           :%^AB2     prt_u_p    ;
                      imp_prsptc ;
           :%^VSH     sup_null   ;
- +V+PrfPrc:%^VSH%>in #       ;
-                     p26        ;
-
+ 		  :%^VSH     p26        ;
+                    
 LEXICON s36 !
-!! __@LEXNAME@__ svíkja
-          :        jinf       ;
-                   pres_ur_j2 ;
-          :%^AB1   prt_null_s ;
-          :%^AB2   prt_u_p    ;
-          :        imp        ;
-          :j       prsptc     ;
-          :%^VSH   sup_null   ;
- +V+PrfPrc:%^VSHin p26        ;
+!! __@LEXNAME@__ svíkja riggar ikki!
+          :        	 jinf       ;
+                     pres_ur_j2 ;
+          :%^AB1     prt_null_s ;
+          :%^AB2     prt_u_p    ;
+          :          imp        ;
+          :j         prsptc     ;
+          :%^VSH     sup_null   ;
+ 		  :%^VSH     p26        ;
 
 
 LEXICON s37 !
-!! __@LEXNAME@__ bróta
-        inf             ;
-        pres_strong_s1  ;
- :%^AB7 pres_strong_s23 ;
- :%^AB1 prt_null_s      ;
- :%^AB4 prt_u_p         ;
-        imp_prsptc      ;
- :%^AB5 sup_ið_in       ;
-        p26             ;
+!! __@LEXNAME@__ bróta riggar ikki!
+        	inf             ;
+        	pres_strong_s1  ;
+ :%^AB7 	pres_strong_s23 ;
+ :%^AB1 	prt_null_s      ;
+ :%^AB4 	prt_u_p         ;
+        	imp_prsptc      ;
+ :%^AB5 	sup_ið_in       ;
+ :%^AB5     p26             ;
 
 LEXICON s38 !
 !! __@LEXNAME@__ skjóta present tense
-  :jót inf             ;
-  :jót pres_strong_s1  ;
-  :jýt pres_strong_s23 ;
-  :eyt prt_null_s      ;
-  :ut  prt_u_p         ;
-  :jót imp_prsptc      ;
-  :ot  sup_ið_in       ;
-       p26             ;
+  :jót  inf             ;
+  :jót  pres_strong_s1  ;
+  :jýt  pres_strong_s23 ;
+  :eyt  prt_null_s      ;
+  :ut   prt_u_p         ;
+  :jót  imp_prsptc      ;
+  :ot   sup_ið_in       ;
+  :ot   p26             ;
 
 !LEXICON s39/30
 ! :jóð s30             ; ! weak infl + common forms
@@ -457,10 +460,10 @@ LEXICON s39d ! bjóða
           :eyð   prt_null_s      ;
           :uð    prt_u_p         ;
           :jóða  impsg           ;
- +V+Imp+Pl:jóðið #            ;
+ +V+Imp+Pl:jóðið # 	             ;
           :jóð   prsptc          ;
           :oð    sup_ið_in       ;
-                 p26             ;
+          :oð    p26             ;
 
 LEXICON s39s ! gjósa
 !! __@LEXNAME@__
@@ -470,10 +473,10 @@ LEXICON s39s ! gjósa
           :eys   prt_null_s2     ;
           :us    prt_u_p         ;
           :jósa  impsg           ;
- +V+Imp+Pl:jósið #            ;
+ +V+Imp+Pl:jósið #               ;
           :jós   prsptc          ;
           :os    sup_ið_in       ;
-                 p26             ;
+          :os    p26             ;
 
 LEXICON s39 ! fljóta
 !! __@LEXNAME@__ bjóða umlaut forms
@@ -483,22 +486,22 @@ LEXICON s39 ! fljóta
           :eyt   prt_null_s      ;
           :ut    prt_u_p         ;
           :jóta  impsg           ;
- +V+Imp+Pl:jótið #            ;
+ +V+Imp+Pl:jótið #               ;
           :jót   prsptc          ;
           :ot    sup_ið_in       ;
-                 p26             ;
+          :ot    p26             ;
 
 LEXICON s40 !
 !! __@LEXNAME@__ fúka
-          inf             ;
-          pres_strong_s1  ;
-  :%^IUML pres_strong_s23 ;
-! :%^IUML pres_ur         ;
-  :%^AB1  prt_null_s      ;
-  :%^AB4  prt_u_p         ;
-          imp_prsptc      ;
-  :%^AB5  sup_ið_in       ;
-          p26             ;
+          		inf             ;
+          		pres_strong_s1  ;
+  :%^IUML 		pres_strong_s23 ;
+! :%^IUML 		pres_ur         ;
+  :%^AB1  		prt_null_s      ;
+  :%^AB4  		prt_u_p         ;
+          		imp_prsptc      ;
+  :%^AB5  		sup_ið_in       ;
+  :%^AB5        p26             ;
 
 LEXICON s41 !
 !! __@LEXNAME@__ flúgva
@@ -509,7 +512,7 @@ LEXICON s41 !
  :%^VSH%^VDEL  prt_u_p         ;
                imp_prsptc      ;
  :%^AB5%^VDEL  sup_ið_in       ;
-               p26             ;
+ :%^AB5%^VDEL  p26             ;
 
 LEXICON s42 !
 !! __@LEXNAME@__ klúgva
@@ -520,26 +523,26 @@ LEXICON s42 !
  :%^VSH%^GDEL  prt_u_p         ;
                imp_prsptc      ;
  :%^AB5%^GDEL  sup_ið_in       ;
-               p26             ;
+ :%^AB5%^GDEL  p26             ;
 
 LEXICON s44 !
 !! __@LEXNAME@__ finna
-        inf        ;
-         +V+Inf+Pass:%>ast  #	;
- +V+Ind+Prs+1Sg:%>ist  #    ;
- +V+Ind+Prs+2Sg:%>ist  #    ;
- +V+Ind+Prs+3Sg:%>ist  #    ;
-  +V+Ind+Prs+Pl:%>ast  #    ;
-        pres_ur    ;
- +V+Ind+Prt+1Sg:%^AB3%>st  #    ;
- +V+Ind+Prt+2Sg:%^AB3%>st  #    ;
- +V+Ind+Prt+3Sg:%^AB3%>st  #    ;
-  +V+Ind+Prt+Pl:%^AB4%>ust #    ;
- :%^AB3 prt_null_s ;
- :%^AB4 prt_u_p    ;
-        imp_prsptc ;
- :%^AB4 sup_ið_in  ;
-        p26        ;
+        					inf        	;
+    +V+Inf+Pass:%>ast  		#			;
+ +V+Ind+Prs+1Sg:%>ist  		#    		;
+ +V+Ind+Prs+2Sg:%>ist  		#    		;
+ +V+Ind+Prs+3Sg:%>ist  		#    		;
+  +V+Ind+Prs+Pl:%>ast  		#    		;
+        					pres_ur    	;
+ +V+Ind+Prt+1Sg:%^AB3%>st  	#    		;
+ +V+Ind+Prt+2Sg:%^AB3%>st  	#    		;
+ +V+Ind+Prt+3Sg:%^AB3%>st  	#    		;
+  +V+Ind+Prt+Pl:%^AB4%>ust 	#    		;
+ 			   :%^AB3 		prt_null_s 	;
+ 			   :%^AB4 		prt_u_p    	;
+        					imp_prsptc 	;
+ 			   :%^AB4 		sup_ið_in  	;
+ 			   :%^AB4 		p26        	;
 
 LEXICON s45 !
 !! __@LEXNAME@__ binda
@@ -560,7 +563,7 @@ LEXICON s46 !
               imp_prsptc ;
  :%^NGKK      imp	     ;
  :%^AB4       sup_ið_in  ;
-              p26        ;
+ :%^AB4       p26        ;
 
 LEXICON s47 !
 !! __@LEXNAME@__ svimja
@@ -572,7 +575,7 @@ LEXICON s47 !
            :imj		imppl_j	   ;
            :imj		prsptc	   ;
            :om      sup_ið_in  ;
-  		   :omin  	p26        ;
+  		   :om  	p26        ;
 
 !LEXICON s47 ! svimja
 !                   inf        ;
@@ -591,7 +594,7 @@ LEXICON s48 !
           :%^AB4 prt_u_p    ;
                  imp_prsptc ;
           :%^AB4 sup_ið_in  ;
- +V+PrfPrc:%>in  p26        ;
+ 		  :%^AB4 p26        ;
 
 LEXICON s49 !
 !! __@LEXNAME@__ detta
@@ -601,7 +604,7 @@ LEXICON s49 !
           :%^AB4   prt_u_p    ;
                    imp_prsptc ;
           :%^AB5   sup_ið_in  ;
- +V+PrfPrc:%^AB5in p26        ;
+ 		  :%^AB5   p26        ;
 
 LEXICON s50 !
 !! __@LEXNAME@__ røkka
@@ -612,19 +615,19 @@ LEXICON s50 !
           :%^AB4   prt_u_p    ;
                    imp_prsptc ;
           :%^AB5   sup_ið_in  ;
- +V+PrfPrc:%^AB5in p26        ;
+ 		  :%^AB5   p26        ;
 
 LEXICON s51 !
 !! __@LEXNAME@__ ganga
           :ang     inf             ;
           :ang     pres_strong_s1  ;
-          :ong     pres_strong_s23 ; !2?
+          :ong     pres_strong_s23 ;
           :ekk     prt_null_s      ;
           :ing     prt_u_p         ;
           :akk	   impsg		   ;
           :ang     imp_prsptc      ;
           :ing     sup_ið_in       ;
- +V+PrfPrc:ing%>in p26             ;
+ 		  :ing 	   p26             ;
 
 
 LEXICON s52 !
@@ -635,7 +638,7 @@ LEXICON s52 !
           :%^AB2   prt_u_p    ;
                    imp_prsptc ;
           :%^AB5   sup_ið_in  ;
- +V+PrfPrc:%^AB5in p26        ;
+		  :%^AB5   p26        ;
 
 LEXICON s53 !
 !! __@LEXNAME@__ leypa
@@ -646,7 +649,7 @@ LEXICON s53 !
           :leyp  imp_prsptc      ;
           :lup   prt_u_p         ;
           :lop   sup_ið_in       ;
- +V+PrfPrc:lopin p26             ;
+ 		  :lop   p26             ;
 
 LEXICON s54 !
 !! __@LEXNAME@__ bera
@@ -658,7 +661,7 @@ LEXICON s54 !
          		:%^AB2   prt_u_p            ;
                 	     imp_prsptc         ;
           		:%^AB5   sup_ið_in          ;
-	 			:%^AB5in p26        ;
+	 			:%^AB5   p26        		;
 
 LEXICON s55 !
 !! __@LEXNAME@__ fara
@@ -670,7 +673,7 @@ LEXICON s55 !
   		        :%^AB3  prt_u_p            ;
                   		sup_ið_in          ;
                   		imp_prsptc         ;
- 				:%>in   p26                ;
+ 					    p26                ;
 
 LEXICON s56 !
 !! __@LEXNAME@__ geva
@@ -680,7 +683,7 @@ LEXICON s56 !
           :%^AB2     prt_u_p    ;
           :%^AB6     sup_ið_in  ;
                      imp_prsptc ;
- +V+PrfPrc:%^AB6%>in p26        ;
+ 		  :%^AB6%>   p26        ;
 
 LEXICON s57 !
 !! __@LEXNAME@__ sita
@@ -2219,7 +2222,7 @@ LEXICON p26
 ! +V+PrfPtc:%^EPH a_m_sg_n_null    ;
 ! +V+PrfPtc:%^EPH a_non_umlaut_obl ;
 ! +V+PrfPtc:%^EPH a_umlaut         ;
- +V+PrfPtc:     zl26             ;
+ +V+PrfPtc:in     zl26             ;
 
 LEXICON p32
 !! __@LEXNAME@__

@@ -10,113 +10,114 @@
 !s1 ;
 
 LEXICON s1
-!! __@LEXNAME@__ nevna
-               standard_ir ; ! Verbal forms
-         :%>d p7          ; ! Adjectival forms
+!! __@LEXNAME@__ nevna = riggar!
+               	standard_ir ; ! Verbal forms
+			 	p7          ; ! Adjectival forms
 
 
 LEXICON s2
-!! __@LEXNAME@__ keypa
-  standard_ir_t ;
-  p39           ;
+!! __@LEXNAME@__ keypa = riggar!
+  				standard_ir_t 	;
+ 			:t  p39           	;
 
 LEXICON SETA
-!! __@LEXNAME@__
+!! __@LEXNAME@__ = riggar!
+
  +V+Ind+Prs+2Sg: urPass  ;
  +V+Ind+Prs+3Sg: urPass  ;
-                     s2 ;
+                 s2 	 ;
 
 
 LEXICON s3
-!! __@LEXNAME@__ leiða
-               standard_ir ;
- +V+PrfPrc:%>d p18         ;
+!! __@LEXNAME@__ leiða = riggar ikki!
+               	standard_ir ;
+			 	p7         ;
 
 LEXICON s4
-!! __@LEXNAME@__ frøa
+!! __@LEXNAME@__ frøa = riggar!
                inf        ;
                pres_ir    ;
                prt_dd     ;
                imp_prsptc ;
                sup_tt     ;
- +V+PrfPrc:%>d p7         ;
+ 			   p18        ;
 
 LEXICON s5
-!! __@LEXNAME@__ senda
+!! __@LEXNAME@__ senda = riggar!
                standard_ir ;
- +V+PrfPrc:%>d p7          ;
+ 			   p1          ;
 
 LEXICON s6
-!! __@LEXNAME@__ hirða
+!! __@LEXNAME@__ hirða = riggar ikki!
                standard_ir ;
- +V+PrfPrc:%>d p7          ;
+			   p7          ;
 
 LEXICON s7
-!! __@LEXNAME@__ gista
-  standard_ir_t ;
-  p5            ;
+!! __@LEXNAME@__ gista = riggar!
+  				standard_ir_t ;
+  				p5            ;
 
 
 LEXICON s8
-!! __@LEXNAME@__ kenna
+!! __@LEXNAME@__ kenna = riggar ikki!
                standard_ir ;
- +V+PrfPrc:%>d p7          ;
+			   p7          ;
 
 LEXICON s9
-!! __@LEXNAME@__ klippa
-  standard_ir_t ;
-  p5            ;
+!! __@LEXNAME@__ klippa = riggar ikki!
+			  	standard_ir_t ;
+  			:t	p5            ;
 
 
 LEXICON s10
-!! __@LEXNAME@__ fylgja
+!! __@LEXNAME@__ fylgja = riggar!
                jinf       ;
                pres_ir_sg ;
           :j   pres_pl    ;
                sup        ;
                prt_d      ;
- +V+PrfPrc:%>d p7         ;
+			   p7         ;
                imp        ;
           :j   prsptc     ;
 
 LEXICON s11 !
-!! __@LEXNAME@__  roykja
+!! __@LEXNAME@__  roykja = riggar!
                jinf       ;
                pres_ir_sg ;
           :j   pres_pl    ;
                sup        ;
                prt_t      ;
- +V+PrfPrc:%>t p5         ;
+ 		  :t   p5         ;
                imp        ;
           :j   prsptc     ;
 
 
 LEXICON s12 !
-!! __@LEXNAME@__ boyggja
+!! __@LEXNAME@__ boyggja = riggar ikki!
                jinf       ;
                pres_ir_sg ;
           :j   pres_pl    ;
                sup        ;
                prt_d      ;
- +V+PrfPrc:%>d p7         ;
+			   p7         ;
                imp        ;
           :j   prsptc     ;
 
 
 LEXICON s13 !
-!! __@LEXNAME@__ søkkja
+!! __@LEXNAME@__ søkkja = riggar ikki!
     jinf       ;
     pres_ir_sg ;
  :j pres_pl    ;
     sup_t      ;
     prt_t      ;
-    p5         ;
+ :t p5         ;
     imp        ;
  :j prsptc     ;
 
 
 LEXICON s14 !
-!! __@LEXNAME@__ heingja
+!! __@LEXNAME@__ heingja = riggar!
                     jinf       ;
           :%^EIO    jinf       ;
                     pres_ir_sg ;
@@ -127,13 +128,13 @@ LEXICON s14 !
           :%^EIO    imp        ;
                     imppl      ;
           :%^EIO    sup        ;
- +V+PrfPrc:%^EIO%>d p7         ;
+		  :%^EIO 	p7         ;
           :j        prsptc     ;
           :%^EIO%>j prsptc     ;
 
 
 LEXICON s15 !
-!! __@LEXNAME@__ skeinkja
+!! __@LEXNAME@__ skeinkja = riggar!
            jinf       ;
  :%^EIO    jinf       ;
            pres_ir_sg ;
@@ -144,23 +145,23 @@ LEXICON s15 !
  :%^EIO    imp        ;
            imppl      ;
  :%^EIO    sup_t      ;
-           p5         ;
+ :%^EIO%>t p5         ;
  :j        prsptc     ;
  :%^EIO%>j prsptc     ;
 
 LEXICON s15_2 !
-!! __@LEXNAME@__ steikja
-        jinf       ;
-        pres_ir_sg ;
- :j     pres_pl    ;
- :%^EIO prt_t      ;
-        imp        ;
- :%^EIO sup_t      ;
-        p5         ;
- :j     prsptc     ;
+!! __@LEXNAME@__ steikja = riggar!
+        	jinf       ;
+        	pres_ir_sg ;
+ :j     	pres_pl    ;
+ :%^EIO 	prt_t      ;
+        	imp        ;
+ :%^EIO 	sup_t      ;
+ :%^EIO%>t 	p5         ;
+ :j     	prsptc     ;
 
 LEXICON s16 !
-!! __@LEXNAME@__ flekja
+!! __@LEXNAME@__ flekja = riggar!
         jinf       ;
         pres_ir_sg ;
  :j     pres_pl    ;
@@ -168,10 +169,10 @@ LEXICON s16 !
         imp        ;
  :j     prsptc     ;
  :%^WVV sup        ;
-        p5         ;
+ :%^WVV%>t p5      ;
 
 LEXICON s17 !
-!! __@LEXNAME@__ berja
+!! __@LEXNAME@__ berja = riggar!
                  jinf     ;
                  pres_jir ;
           :%^WVV prt_d    ;
@@ -179,10 +180,10 @@ LEXICON s17 !
  +V+Imp+Pl:jið   #     ;
           :j     prsptc   ;
           :%^WVV sup      ;
-                 p7       ;
+          :%^WVV p7       ;
 
 LEXICON s18 !
-!! __@LEXNAME@__ krevja
+!! __@LEXNAME@__ krevja = riggar!
                  jinf      ;
                  pres_ur_j ;
           :%^WVV prt_d     ;
@@ -190,10 +191,10 @@ LEXICON s18 !
  +V+Imp+Pl:jið   #      ;
           :j     prsptc    ;
           :%^WVV sup       ;
-                 p7        ;
+          :%^WVV p7        ;
 
 LEXICON s19 !
-!! __@LEXNAME@__ dylja
+!! __@LEXNAME@__ dylja = riggar!
                  jinf      ;
                  pres_ur_j ;
           :%^WVV prt_d     ;
@@ -201,10 +202,10 @@ LEXICON s19 !
  +V+Imp+Pl:jið   #      ;
           :j     prsptc    ;
           :%^WVV sup       ;
-                 p7        ;
+          :%^WVV p7        ;
 
-LEXICON s20 !
-!! __@LEXNAME@__ leggja
+LEXICON s20 
+!! __@LEXNAME@__ leggja = riggar!
  :egg  jinf       ;
  :egg  pres_ur_j2 ;
  :eg   prt_ði     ;
@@ -212,10 +213,10 @@ LEXICON s20 !
  :egg  imp        ;
  :eggj prsptc     ;
  :ag   sup        ;
-       p8         ;
+ :ag   p8         ;
 
 LEXICON s21 !
-!! __@LEXNAME@__ selja
+!! __@LEXNAME@__ selja = riggar!
                jinf      ;
                pres_ur_j ;
           :    prt_d     ;
@@ -226,30 +227,31 @@ LEXICON s21 !
                p7        ;
 
 LEXICON s22 !
-!! __@LEXNAME@__ ryðja
+!! __@LEXNAME@__ ryðja = riggar ikki!
  :      jinf       ;
  :      pres_ur_j2 ;
  :%^WVV prt_d      ;
  :      imp        ;
  :j     prsptc     ;
  :%^WVV sup_tt     ;
- :      p18        ;
+ :%^WVV p18        ;
 
-!LEXICON s22_1 !
-!! __@LEXNAME@__ ýðja
-! :ýð  jinf       ;
-! :ýð  pres_ur_j2 ;
-! :ýð  pres_ir_j2 ;
-! :u   prt_dd     ;
-! :ý   prt_dd     ;
-! :ýð  imp        ;
-! :ýðj prsptc     ;
-! :u   sup_tt     ;
-! :ý   sup_tt     ;
- !	p18        ; " Needs stem to go to p18
-
+LEXICON s22_1 !
+!! __@LEXNAME@__ ýðja = riggar!
+ :ýð  jinf       ;
+ :ýð  pres_ur_j2 ;
+ :ýð  pres_ir_j2 ;
+ :u   prt_dd     ;
+ :ý   prt_dd     ;
+ :ýð  imp        ;
+ :ýðj prsptc     ;
+ :u   sup_tt     ;
+ :ý   sup_tt     ;
+ :u	  p18        ;
+ :ý	  p18		 ;
+ 
 LEXICON s23 !
-!! __@LEXNAME@__ smyrja
+!! __@LEXNAME@__ smyrja = riggar!
                :yr     jinf    ;
  +V+Ind+Prs+1Sg:%>yrji Pass    ;
  +V+Ind+Prs+2Sg:%>yr   Pass    ;
@@ -261,33 +263,36 @@ LEXICON s23 !
                :yrj    imppl_j ;
                :yrj    prsptc  ;
                :ur     sup     ;
-                       p7      ;
+               :ur     p7      ;
 
 LEXICON s24 !
-!! __@LEXNAME@__ flysa
-        inf        ;
-        pres_ur    ; ! XXX not pres_null
- :%^WVV prt_d      ;
-        imp_prsptc ;
- :%^WVV sup        ;
-        p5         ;
+!! __@LEXNAME@__ flysa = riggar!
+        	inf        ;
+        	pres_ur    ;
+ :%^WVV 	prt_d      ;
+        	imp_prsptc ;
+ :%^WVV 	sup        ;
+ :%^WVV%>t  p5         ;
 
-LEXICON s25 !l
-!! __@LEXNAME@__ iva
+LEXICON s25 !
+!! __@LEXNAME@__ liva
                inf        ;
                pres_ir    ;
                prt_d      ;
                imp_prsptc ;
                sup_a      ;
- +V+PrfPrc:%>d p6         ;
+ 		   :að p6         ;
+ 		   :d  p6         ;
+
 
 LEXICON s26 !
-!! __@LEXNAME@__ plaga
+!! __@LEXNAME@__ plaga = riggar!
              inf     ;
              pres_ar ;
              prt_d   ;
              sup     ;
- +V+Sup:%>að #    ;
+ +V+Sup:%>að #       ;
+
 
 
 LEXICON s26_1 !
@@ -297,10 +302,12 @@ LEXICON s26_1 !
              prt_d      ;
              imp_prsptc ;
              sup        ;
- +V+Sup:%>að #       ;
+ +V+Sup:%>að #          ;
+ 	   :að   p6         ;
+	    	 p6         ;
 
-LEXICON s27 !s
-!! __@LEXNAME@__ páa
+LEXICON s27
+!! __@LEXNAME@__ spáa = riggar!
              inf        ;
              pres_ar    ;
              prt_dd     ;
@@ -310,7 +317,7 @@ LEXICON s27 !s
              p18        ;
 
 LEXICON s28 !
-!! __@LEXNAME@__ skaða
+!! __@LEXNAME@__ skaða = riggar ikki!
   inf        ;
   pres_ar    ;
   prt_d      ;
@@ -319,28 +326,28 @@ LEXICON s28 !
   p18        ;
 
 LEXICON s29 !
-!! __@LEXNAME@__ brúka
+!! __@LEXNAME@__ brúka = riggar!
              inf        ;
              pres_ar    ;
              prt_d      ;
              imp_prsptc ;
- +V+Imp+Sg:a #       ;
+ +V+Imp+Sg:a #          ;
              sup        ;
-             p5         ;
+          :t p5         ;
 
 LEXICON s30 !
-!! __@LEXNAME@__ kalla
-    inf     ;
-    pres_ar ;
-    prt_a   ;
- :a impsg   ; !deviant kalla
-    imppl   ;
-    prsptc  ;
-    sup_a   ;
-    p6      ;
+!! __@LEXNAME@__ kalla = riggar!
+     inf     ;
+     pres_ar ;
+     prt_a   ;
+ :a  impsg   ; !deviant kalla
+     imppl   ;
+     prsptc  ;
+     sup_a   ;
+ :að p6      ;
 
 LEXICON s31 !
-!! __@LEXNAME@__ only gera and *gera
+!! __@LEXNAME@__ only gera and *gera = riggar!
                :er    inf        ;
  +V+Ind+Prs+1Sg:%>eri Pass       ;
  +V+Ind+Prs+2Sg:%>ert Pass       ;
@@ -350,7 +357,7 @@ LEXICON s31 !
                :er    imp_prsptc ;
                :jør   prt_d      ;
                :jør   sup        ;
-                      p7         ;
+               :jør   p7         ;
 
 LEXICON s32 !
 !! __@LEXNAME@__ búgva
@@ -518,7 +525,16 @@ LEXICON s42 !
 LEXICON s44 !
 !! __@LEXNAME@__ finna
         inf        ;
+         +V+Inf+Pass:%>ast  #	;
+ +V+Ind+Prs+1Sg:%>ist  #    ;
+ +V+Ind+Prs+2Sg:%>ist  #    ;
+ +V+Ind+Prs+3Sg:%>ist  #    ;
+  +V+Ind+Prs+Pl:%>ast  #    ;
         pres_ur    ;
+ +V+Ind+Prt+1Sg:%^AB3%>st  #    ;
+ +V+Ind+Prt+2Sg:%^AB3%>st  #    ;
+ +V+Ind+Prt+3Sg:%^AB3%>st  #    ;
+  +V+Ind+Prt+Pl:%^AB4%>ust #    ;
  :%^AB3 prt_null_s ;
  :%^AB4 prt_u_p    ;
         imp_prsptc ;
@@ -691,7 +707,7 @@ LEXICON s59 !
 !! __@LEXNAME@__ stjala
           :jal   inf             ;
           :jal   pres_strong_s1  ;
-          :jel    pres_strong_s23 ;
+          :jel   pres_strong_s23 ;
           :jól   prt_null_s      ;
           :jól   prt_u_p         ;
           :jal   imp_prsptc      ;
@@ -735,14 +751,23 @@ LEXICON s62 !
 
 LEXICON s63 !
 !! __@LEXNAME@__ koma
-                   inf             ;
-                   pres_strong_s1  ;
-          :%^eIUML pres_strong_s23 ;
-                   prt_null_s      ;
-                   prt_u_p         ;
-                   sup_ið_in       ;
-                   imp_prsptc      ;
- +V+PrfPrc:%>in    p26             ;
+                   			inf             ;
+         +V+Inf:%>ast  		#				;
+ +V+Ind+Prs+1Sg:%>ist  		#    			;
+ +V+Ind+Prs+2Sg:eIUML%>st  	#    			;
+ +V+Ind+Prs+3Sg:eIUML%>st  	#    			;
+  +V+Ind+Prs+Pl:%>ast  		#    			;
+                   			pres_strong_s1  ;
+ +V+Ind+Prt+1Sg:%>st  		#    			;
+ +V+Ind+Prt+2Sg:%>st  		#    			;
+ +V+Ind+Prt+3Sg:%>st  		#    			;
+  +V+Ind+Prt+Pl:%>ust 		#    			;
+          	   :%^eIUML 	pres_strong_s23 ;
+                   			prt_null_s      ;
+                   			prt_u_p         ;
+                   			sup_ið_in       ;
+                   			imp_prsptc      ;
+ +V+PrfPrc:%>in    			p26             ;
 
 LEXICON s64 !
 !! __@LEXNAME@__ lata
@@ -1144,10 +1169,10 @@ LEXICON NÁA !
       +V+Ind+Prs+2Sg:nær  Pass ;
       +V+Ind+Prs+3Sg:nær  Pass ;
        +V+Ind+Prs+Pl:náa  Pass ;
-      +V+Ind+Prt+1Sg:nátt # ;
-      +V+Ind+Prt+2Sg:nátt # ;
-      +V+Ind+Prt+3Sg:nátt # ;
-       +V+Ind+Prt+Pl:nátt # ;
+      +V+Ind+Prt+1Sg:náddi # ;
+      +V+Ind+Prt+2Sg:náddi # ;
+      +V+Ind+Prt+3Sg:náddi # ;
+       +V+Ind+Prt+Pl:náddu # ;
            +V+Imp+Sg:ná   # ;
            +V+Imp+Pl:náið # ;
            +V+PrfPrc:nátt # ;
@@ -2181,35 +2206,36 @@ LEXICON VANDI
 ! =================== !
 
 
-
+LEXICON p1
+  +V+PrfPtc:  zl1pos  ;
 
 LEXICON p18
 !! __@LEXNAME@__
 !  +V+PrfPtc:  adj_a ;
-  +V+PrfPtc:ð zl18  ;
+  +V+PrfPtc:  zl18  ;
 
 LEXICON p26
 !! __@LEXNAME@__
 ! +V+PrfPtc:%^EPH a_m_sg_n_null    ;
 ! +V+PrfPtc:%^EPH a_non_umlaut_obl ;
 ! +V+PrfPtc:%^EPH a_umlaut         ;
- +V+PrfPtc:ð     zl26             ;
+ +V+PrfPtc:     zl26             ;
 
 LEXICON p32
 !! __@LEXNAME@__
 ! +V+PrfPtc:%^EPH adj_a ;
- +V+PrfPtc:ð     zl32  ;
+ +V+PrfPtc:     zl32  ;
 
 LEXICON p39
 !! __@LEXNAME@__
 !  +V+PrfPtc:  adj_a ; !XXX check!
-  +V+PrfPtc:ð zl39  ;
+  +V+PrfPtc: zl39  ;
 
 LEXICON p5
 !! __@LEXNAME@__
 !  +V+PrfPtc:  adj_a     ;
 !  +V+PrfPtc:  adj_r_gen ;
-  +V+PrfPtc: zl5 ;
+  +V+PrfPtc: zl5pos ;
 
 !LEXICON p5x
 !!! __@LEXNAME@__
@@ -2219,7 +2245,7 @@ LEXICON p5
 LEXICON p6
 !! __@LEXNAME@__
 ! +V+PrfPtc:ð%^EDH adj_a ; ! no ð deletion
- +V+PrfPtc:ð      zl6   ;
+ +V+PrfPtc:      zl6   ;
 
 LEXICON p7
 !! __@LEXNAME@__
@@ -2232,7 +2258,7 @@ LEXICON p8
 !  +V+PrfPtc:      a_non_umlaut ;
 ! +V+PrfPtc:%^UUML a_umlaut     ;
 !   +V+PrfPtc:     adj_r_gen    ;
-  +V+PrfPtc:ð     zl8          ;
+  +V+PrfPtc:     zl8          ;
 
 
 

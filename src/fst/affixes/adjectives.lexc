@@ -177,10 +177,10 @@ LEXICON zl5
 
 
 LEXICON zl5pos
-  Sg_Msc1    ;
+  Sg_Msc1   ;
   Pl_Msc2	;
-  Sg_Fem2    ;
-  Pl_Fem2    ;
+  Sg_Fem2   ;
+  Pl_Fem2   ;
   Sg_Neu3	;
   Pl_Neu2	;
   Pos_Def	;
@@ -220,7 +220,7 @@ LEXICON zl7	! blindur
  :d Sg_Fem2   ;
  :d Pl_Fem2   ;
  +Neu+Sg+Nom+Indef:%>t 	 # ;
- +Neu+Sgcc+Indef:%>t	 # ;
+ +Neu+Sg+Acc+Indef:%>t	 # ;
  +Neu+Sg+Dat+Indef:%>dum	 # ;
  +Neu+Sg+Gen+Indef:%>ds	 # ;
  :d Pl_Neu2	;
@@ -239,7 +239,7 @@ LEXICON zl8	! kaldur
  :d Pl_Fem1_Uuml ;
  +Fem+Pl+Dat+Indef:%>dum	# ;
  +Neu+Sg+Nom+Indef:%>t	 # ;
- +Neu+Sgcc+Indef:%>t	 # ;
+ +Neu+Sg+Acc+Indef:%>t	 # ;
  +Neu+Sg+Dat+Indef:^UUML%>dum	 # ;
  +Neu+Sg+Dat+Indef:%>dum	# ;
  +Neu+Sg+Gen+Indef:%>ds	 # ;
@@ -264,7 +264,7 @@ LEXICON l10 ! drúgvur
 +A: zl10 ;
 LEXICON zl10 ! drúgvur
  +Msc+Sg+Nom+Indef:vur	 # ;
- +Msc+Sgcc+Indef:van	 # ;
+ +Msc+Sg+Acc+Indef:van	 # ;
  +Msc+Sg+Dat+Indef:vum	 # ;
  +Msc+Sg+Gen+Indef:s	 	 # ;
  :v Pl_Msc1	;
@@ -802,7 +802,7 @@ LEXICON zl26 ! vakin
  :^EPH a_non_umlaut_obl ;
  :^EPH a_umlaut         ;
  :^EPH adj_def          ;
- :^EPH Comp_Ari 		  ;
+ :^EPH Comp_Ari 		;
 
 LEXICON l27 ! heiðin
 +A: zl27 ;
@@ -938,7 +938,7 @@ LEXICON zl32 ! búgvin
  :n Pos_Def  ;
  :n Comp_Ari ;
 
-LEXICON l33
+LEXICON l33 ! gamal
 +A: zl33 ;
 LEXICON zl33
  +Msc+Sg+Nom+Indef:amal	 # ;
@@ -1350,16 +1350,29 @@ LEXICON zl37 ! grammur
  Pos_Def ;
  Comp_Ari ;
 
-LEXICON l39/23
- l39 ;
- l23 ;
+LEXICON l39_2/23 ! hættur
+ l39_2 	;
+ l23 	;
  
+LEXICON l39_2 ! finittur ! XXX Med andre ord: vi treng ikkje _2 (?)
++A: zl39_2 		;
+LEXICON zl39_2 ! finittur
+  zl39 ;
+
 LEXICON l39 ! settur
-+A: zl39 ;
++A: zl39 	;
 LEXICON zl39 ! settur
-  adj_a   ; 
-  adj_def ;
-  Comp_Ari ;
+  adj_a   	; 
+  adj_def 	;
+  Comp_Ari 	;
+
+LEXICON l39_3 ! stuttur
++A: 		zl39_3 		;
+LEXICON zl39_3 ! stuttur
+  			l39			;
+  :^IUML 	Comp_Ri 	;
+
+
 
 
 ! Irregular adjectives

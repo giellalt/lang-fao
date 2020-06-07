@@ -1,0 +1,27 @@
+# Divvun & Giellatekno - open source grammars for Sámi and other languages
+# Copyright © 2000-2015 The University of Tromsø & the Norwegian Sámi Parliament
+# http://giellatekno.uit.no & http://divvun.no
+#
+# This program is free software; you can redistribute and/or modify
+# this file under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version. The GNU General Public License
+# is found at http://www.gnu.org/licenses/gpl.html. It is
+# also available in the file $GTHOME/LICENSE.txt.
+#
+# Other licensing options are available upon request, please contact
+# giellatekno@uit.no or divvun@uit.no
+
+# This filter convert single CmpN tags into corresponding flag diacritics.
+# This is the second step of two in converting CmpN tags into flag diacritics
+# that will regulate compounding behaviour in fst-based spellers.
+
+[
+  "@U.CmpFrst.TRUE@" <- "+CmpNP/First",
+  "@U.CmpPref.TRUE@" <- "+CmpNP/Pref" ,
+  "@P.CmpLast.TRUE@" <- "+CmpNP/Last" ,
+  [ "@P.CmpOnly.FALSE@" "@P.CmpLast.TRUE@" 
+  | "@R.CmpOnly.TRUE@"  "@P.CmpLast.TRUE@"   ] <- "+CmpNP/Suff" ,
+  [ "@P.CmpOnly.FALSE@" | "@R.CmpOnly.TRUE@" ] <- "+CmpNP/Only" ,
+  "@U.CmpNone.TRUE@" <- "+CmpNP/None"
+];

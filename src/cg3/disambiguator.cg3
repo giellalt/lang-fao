@@ -69,7 +69,7 @@ LIST 1Sg = 1Sg ;
 LIST 2Sg = 2Sg ;
 LIST 3Sg = 3Sg ;
 LIST Inf = Inf ;
-LIST PrfPrc = PrfPrc ;
+LIST PrfPtc = PrfPtc ;
 LIST PrsPrc = PrsPrc ;
 LIST Ind = Ind ;
 LIST Imp = Imp ;
@@ -93,7 +93,7 @@ LIST Sem/Veh = Sem/Veh ;
 LIST Sem/Year = Sem/Year ;
 
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
-Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
+Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPtc
 PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Sem/Fem Sem/Mal Sem/Plc Sem/Sur Sem/Org Sem/Veh Guess ;
 
 
@@ -723,7 +723,7 @@ REMOVE A IF (-1 ("vera"))(0 Adv)(1 Sup);
 
 REMOVE A IF (-2 ("tað"))(-1 ("vera"))(0 Adv)(NOT *1 N BARRIER NPNH);
 
-REMOVE Adv IF (-1 Det OR Pr)(0 A OR PrfPrc)(1 N);
+REMOVE Adv IF (-1 Det OR Pr)(0 A OR PrfPtc)(1 N);
        ## ið stakk í bleyta jørð,
 
 SELECT Adv IF (-2 V)(-1 Pron + Refl)(1 EOS);
@@ -759,8 +759,8 @@ SELECT:umleid Adv IF (0 ("umleið"))(1 Num);
 SELECT ("stórur" A Neu Sg Dat) IF (-2 ("í"))(-1 ("tað"))(1 ("og"))(2 ("heilur"));
 SELECT ("heilur" A Neu Sg Dat) IF (-4 ("í"))(-3 ("tað"))(-2 ("stórur"))(-1 ("og"));
 
-SELECT ("væl" Adv) IF (1 ("skera" PrfPrc));
-SELECT ("skera" PrfPrc) IF (-1 ("væl" Adv));
+SELECT ("væl" Adv) IF (1 ("skera" PrfPtc));
+SELECT ("skera" PrfPtc) IF (-1 ("væl" Adv));
 	## vel skorin
 
 SELECT ("innast" Adv) IF (1 ("inni"));
@@ -961,9 +961,9 @@ REMOVE Inf IF (-1 (Pl Nom))(0 (V Pl))(NOT -1 Acc)(NOT -2 VFIN);
 
 # REMOVE:ImpFirst N IF (-1 BOS OR PUNCT)(0 Imp)(*1 ("tín" Poss) BARRIER VFIN);
 # 
-# REMOVE Imp IF (-1C Ind OR PrfPrc OR Inf OR PrsPrc OR Sup OR Refl);
+# REMOVE Imp IF (-1C Ind OR PrfPtc OR Inf OR PrsPrc OR Sup OR Refl);
 # 	## Gu∂ gjør∂i hvalvi∂.
-# REMOVE Imp IF (-1 COMMA)(-2C Ind OR PrfPrc OR Inf OR PrsPrc OR Sup OR Refl);
+# REMOVE Imp IF (-1 COMMA)(-2C Ind OR PrfPtc OR Inf OR PrsPrc OR Sup OR Refl);
 # 
 # REMOVE Imp IF (-1 CS)(0 Ind OR Sbj);
 # 
@@ -1127,12 +1127,19 @@ SELECT:2Sg 2Sg IF (-1C ("tú" Pron Nom));
 SELECT:1Sg 1Sg IF (-1C Adv)(0C V)(1 ("eg" Pron Nom))(NOT 2 CC);
 	## Fyrst vil eg, ...
 	
-REMOVE N IF (-1 ("sum" CS))(0 INDSBJ)(NOT 1 INDSBJ);
+REMOVE:sumAndFIN N IF (-1 ("sum" CS))(0 INDSBJ)(NOT 1 INDSBJ);
 
+REMOVE:IdV N IF (-1 ("ið" CS))(0 VFIN)(NOT 1 VFIN);
+	## Viðhvørt kom eitt suff frá stavinum, ið stakk i bleyta jørð.
+
+	
 # VP disambiguation
 REMOVE:r113 V IF (-1 (Det Nom))(0 (N Nom));
 
 
+REMOVE:PrtAndPrc PrfPtc IF (0 Prt)(-1 CLB LINK *-1 Prt BARRIER VFIN);
+	## Skógvarnir gingu sáttliga, skróvaðu eitt sindur.
+	
 
 # Number disambiguation
 
@@ -1209,11 +1216,12 @@ SELECT A IF (-1 COPULA)(1 CC)(2C A)(1 CLB);
 
 SELECT A + $$GENDER + $$NUMBER IF (-2 N + $$GENDER + $$NUMBER)(-1 COPULA OR ("ganga"));
 
-REMOVE (V PrfPrc) IF (NOT *-1 AUX BARRIER S-BOUNDARY)(0 PrfPrc + A);
+REMOVE (V PrfPtc) IF (NOT *-1 AUX BARRIER S-BOUNDARY)(0 PrfPtc + A);
 
 REMOVE:NotPrtWhenA (V Ind Prt Pl) IF (-1 Det OR A)(0 A + $$NAGD)(*1 N + $$NAGD BARRIER NPNH);
 
-
+REMOVE (A Sg) IF (*-1 ("vera" Pl) BARRIER NOT-ADV)(1 CLB OR EOS OR Pr);
+	## Tey vóru so hugnalig,
 
 # Substituting tags
 

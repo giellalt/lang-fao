@@ -246,7 +246,7 @@ LEXICON zl8	! kaldur
  :d Pl_Neu1_Uuml ;
  +Neu+Pl+Dat+Indef:%>dum	# ;
  :d Pos_Def2	   ;
-  Comp_Ari ;
+ :d Comp_Ari ;
 
 LEXICON l9	! spakur
 +A: zl9 ;
@@ -500,8 +500,8 @@ LEXICON l17_1 ! smáur->smærri->smæstur
   +A: zl17_1comsup ;
 
 LEXICON zl17_1comsup
- :IUML%>r CRi ;
- :IUML SRi	;
+ :^IUML%>r CRi ;
+ :^IUML SRi	;
 
 LEXICON l18/22
  l18 ;
@@ -1377,7 +1377,7 @@ LEXICON zl39_3 ! stuttur
 
 LEXICON l40 ! sannur
 +A: zl40 ;
-LEXICON z40 ! sannur
+LEXICON zl40 ! sannur
  +Msc+Sg+Nom+Indef:%>annur	 # ;
  +Msc+Sg+Acc+Indef:%>annan	 # ;
  +Msc+Sg+Dat+Indef:%>onnum	 # ;
@@ -1402,7 +1402,7 @@ LEXICON z40 ! sannur
  +Neu+Pl+Acc+Indef:%>onn     # ;
  +Neu+Pl+Dat+Indef:%>onnum   # ;
  +Neu+Pl+Gen+Indef:%>anna    # ;
- :ann 	Pos_Def  		;
+ :ann 	Pos_Def2  		;
  :ann 	Comp_Ari 		;
 
 

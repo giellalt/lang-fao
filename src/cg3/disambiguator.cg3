@@ -84,6 +84,8 @@ LIST RIGHT = RIGHT ;
 LIST Guess = Guess ;
 LIST Err/Guess = Err/Guess ;
 
+LIST Der/A = Der/A ;
+	
 LIST Sem/Fem = Sem/Fem ;
 LIST Sem/Mal = Sem/Mal ;
 LIST Sem/Plc = Sem/Plc ;
@@ -269,7 +271,8 @@ LIST BAREPLURALS = "barn" "fólk" "bygdafólk" "konufólk" ;
 # these words are usually plurals when used alone. All countable neuters?
 ## Tú sært barn standa.
 
-
+LIST PLACEADVERB = "ímillum" ;
+	
 # Word sets
 
 LIST TAD = "tað" ;
@@ -300,6 +303,8 @@ REMOVE:NotErur ("erur") ;
 
 # Early and popular rules
 
+REMOVE:Lexicalised N IF (0/1 Cmpnd) ;
+	
 
 SELECT:r50 Inf IF (-1 ("at"));
 SELECT:r4 IM IF (0 ("at"))(1C Inf);# TODO: was SELECT CS... should it be? -KBU
@@ -338,7 +343,7 @@ REMOVE Dem IF (0 TAD + $$NAGD)(1C $$NAGD);
 REMOVE:ANotInf Inf IF (-1 HAVA + V + Ind)(0 A + Neu + Sg + Nom + Def)(1 N + Neu + Sg + Nom + Def);
 REMOVE:ANotVPl Ind + Prs + Pl IF (-1 HAVA + V + Ind)(0 A + Neu + Sg + Nom + Def)(1 N + Neu + Sg + Nom + Def);
 
-
+REMOVE:ANotPrfPtc PrfPtc IF (0 A + $$NUMBER + $$NAGD)(1 N + $$NUMBER + $$NAGD);
 
 REMOVE:r18 A + Fem IF (0  $$NAGD) (*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 REMOVE:r19 A + Msc IF (0  $$NAGD) (*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
@@ -390,7 +395,7 @@ SELECT CS IF (-1 BOS)(0 ("tí"));
 # Verbs
 
 # hava
-REMOVE ("havi") IF (0 ("hava") + V)(0* Pl + Nom BARRIER Det);
+REMOVE ("havi") IF (0 HAVA + V)(0* Pl + Nom BARRIER Det);
 SELECT V + Pl IF (-3 Pl + Nom)(-2 COMMA)(-1 ("sum"));
        ## tey, sum hava
 
@@ -399,7 +404,7 @@ SELECT V IF (-1 Adv)(0 ("bar"))(1 ("til"));
        ## Soleiðis bar til.
 
 # vera
-SELECT:vera ("vera") IF (0 ("ver"))(*-1 ("hava") BARRIER V);
+SELECT:vera ("vera") IF (0 ("ver"))(*-1 HAVA BARRIER V);
 SELECT:NotVarur Prt IF (0 ("vera"))(1 Sup);
 SELECT:NotVarur Prt IF (0 ("vera"))(-1 Sup);
 
@@ -513,8 +518,8 @@ REMOVE:Eg Prop IF (-1 BOS)(0 ("Eg"))(1 1Sg);
 REMOVE Pers IF (-1 Pr)(0 (Det Gen))(*1 N OR A BARRIER NPNH);
        ## vendu móti hansara bygd.
 
-REMOVE Det IF (0 Pers)(1 EOS OR VFIN OR Pr OR CC OR S-BOUNDARY);
-REMOVE Dem IF (0 Pers)(1 EOS OR VFIN OR Pr OR CC OR Num OR S-BOUNDARY);
+REMOVE Det IF (0 Pers)(1C EOS OR VFIN OR Pr OR CC OR S-BOUNDARY);
+REMOVE Dem IF (0 Pers)(1C EOS OR VFIN OR Pr OR CC OR Num OR S-BOUNDARY);
 
 REMOVE:DemNotPron (Pron Pers) IF (0 Dem + $$GENDER + $$NUMBER + $$NAGD)(1 NorA + $$GENDER + $$NUMBER + $$NAGD);
 #REMOVE:DemNotPron (Pron Pers) IF (0 Det + $$GENDER + $$NUMBER + $$NAGD)(1 NorA + $$GENDER + $$NUMBER + $$NAGD);
@@ -593,9 +598,9 @@ REMOVE ("eini") IF (0 Dat + Dat )(1 A + Dat OR N + Dat) ;
 SELECT:eingin ("eingin") IF (-1 ("til"))(0 Gen);
 	      ## til einkis.
 
-# hafa
-SELECT ("hava") IF (0 ("høva"))(*1 Sup BARRIER NOT-ADV);
-SELECT ("hava") IF (0 ("høva"))(-1 Sup);
+# hava
+SELECT HAVA IF (0 ("høva"))(*1 Sup BARRIER NOT-ADV);
+SELECT HAVA IF (0 ("høva"))(-1 Sup);
        ## Teir høvdu lýtt á kongin.
 
 # hann
@@ -710,12 +715,22 @@ LIST COMMONADVERB = "næstan" "lítill" ;
 
 # General adverb
 
+REMOVE:AdvNotA (A Sg) IF (-1 V + Pl)(0 Adv)(NOT 1 N + Pl);
+
+REMOVE:AdvPlaceNotA A IF (-1 V)(0 PLACEADVERB)(NOT 1 N);	
+	
 SELECT:CommonAdverb  COMMONADVERB IF (-1 VFIN OR N OR Pron OR CS)(1 Adv OR N OR PRE-N) ;
 ## ... ið hann næstan ikke mundi funnið.
 
 SELECT:r6 Adv IF (-1 DATPREP)(*1 Dat BARRIER NPNHA);
 
 SELECT:r7 Adv IF (-1 VFIN)(1 Inf);
+
+
+# Specific adverbs
+
+SELECT:næstan Adv IF (0 ("næstan"))(NOT 1 Fem + Nom + Def);
+	## Hann hevði næstan kvalt ...
 
 SELECT:her Adv IF (0 ("herur"))(-1 N OR BOS OR Adv);
 
@@ -974,7 +989,6 @@ REMOVE Inf IF (-1 (Pl Nom))(0 (V Pl))(NOT -1 Acc)(NOT -2 VFIN);
 
 SELECT:CoordImp Imp IF (*-1 CC OR COMMA BARRIER VFIN LINK *-1C Imp BARRIER VFIN);
 
-
 # Then we remove the remaining ones.
 REMOVE Imp ;
 
@@ -983,7 +997,7 @@ REMOVE Imp ;
 REMOVE Sup IF (*-1 CLB BARRIER WORD)(0 Imp)(*1 CLB  BARRIER Ind);
 
 
-
+REMOVE:PrsPtcNotA Der/A IF (0 PrsPrc)(NOT 1 A OR N);
 
 #REMOVE:r53 Imp IF (0 N)(1 CC)(*2 N BARRIER NPNHA);
 	## Stýrið og stjórnin hjá...
@@ -999,7 +1013,9 @@ REMOVE Sup IF (*-1 CLB BARRIER WORD)(0 Imp)(*1 CLB  BARRIER Ind);
 
 # Supine
 
-SELECT Sup IF (-2 Neu + Nom)(-1 COPULA);
+REMOVE:NoSupIfNoHava Sup IF (NOT *0 HAVA);	
+	
+SELECT Sup IF (*-1 HAVA BARRIER NOT-ADV LINK *-1 Nom);
 
 #SELECT:r55 Sup IF (*-1 ("fáa" V) OR ("hava" V Ind) BARRIER NOT-ADV);
 #check 
@@ -1047,6 +1063,10 @@ REMOVE:PrsPl (V Inf) IF (*-1 ("sum") LINK -1 COMMA LINK *-1 Pl BARRIER VFIN);
 SELECT:r62 ("seg" Refl) IF (-1 Inf OR 3Sg OR Pl) ;
 
 
+	# Past indicative or perfect participle
+	
+REMOVE:PrtNotPfPtc PrfPtc IF (-1 Nom)(0 Prt)(1 IM OR CS);
+	
 # Nominative
 # ==========
 

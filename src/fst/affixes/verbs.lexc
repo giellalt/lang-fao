@@ -584,7 +584,7 @@ LEXICON s47 !
 !          :%^AB4   prt_u_p    ;
 !                   imp_prsptc ;
 !          :%^oAB   sup_null   ;
-! +V+PrfPrc:%^oABin p26        ;
+! +V+PrfPtc:%^oABin p26        ;
 
 LEXICON s48 !
 !! __@LEXNAME@__ drekka
@@ -693,7 +693,7 @@ LEXICON s57 !
           :%^AB2 prt_u_p    ;
                  sup_ið_in  ;
                  imp_prsptc ;
- +V+PrfPrc:%>in  p26        ;
+ +V+PrfPtc:%>in  p26        ;
 
 LEXICON s58 !
 !! __@LEXNAME@__ mala
@@ -704,7 +704,7 @@ LEXICON s58 !
           :%^AB3  prt_u_p         ;
                   imp_prsptc      ;
                   sup_ið_in       ;
- +V+PrfPrc:%>in   p26             ;
+ +V+PrfPtc:%>in   p26             ;
 
 LEXICON s59 !
 !! __@LEXNAME@__ stjala
@@ -727,7 +727,7 @@ LEXICON s60 !
           :%^AB3   prt_u_p         ;
                    imp_prsptc      ;
           :%^AB6   sup_ið_in       ;
- +V+PrfPrc:%^AB6in p26             ;
+ +V+PrfPtc:%^AB6in p26             ;
 
 LEXICON s61 !
 !! __@LEXNAME@__ halda
@@ -750,7 +750,7 @@ LEXICON s62 !
           :svóv prt_u_p         ;
           :sov  sup_ið_in       ;
           :sov  imp_prsptc      ;
- +V+PrfPrc:%>in p26             ;
+ +V+PrfPtc:%>in p26             ;
 
 LEXICON s63 !
 !! __@LEXNAME@__ koma
@@ -770,7 +770,7 @@ LEXICON s63 !
                    			prt_u_p         ;
                    			sup_ið_in       ;
                    			imp_prsptc      ;
- +V+PrfPrc:%>in    			p26             ;
+ +V+PrfPtc:%>in    			p26             ;
 
 LEXICON s64 !
 !! __@LEXNAME@__ lata
@@ -781,7 +781,7 @@ LEXICON s64 !
           :%^AB2   prt_u_p         ;
                    sup_ið_in       ;
                    imp_prsptc      ;
- +V+PrfPrc:%>in    p26             ;
+ +V+PrfPtc:%>in    p26             ;
 
 LEXICON s64_1 !
 !! __@LEXNAME@__ láta
@@ -792,7 +792,7 @@ LEXICON s64_1 !
           :%^AB2   prt_u_p         ;
                    sup_ið_in       ;
                    imp_prsptc      ;
- +V+PrfPrc:%>in    p26             ;
+ +V+PrfPtc:%>in    p26             ;
 
 LEXICON s65 !
 !! __@LEXNAME@__ standa
@@ -874,7 +874,7 @@ LEXICON s70 !
 	            :søgd   	prt_u_p    	;
  	            :sig    	imp_prsptc 	;
 	            :sag    	sup        	;
-	   +V+PrfPrc:sagd%> 	p8         	;
+	   +V+PrfPtc:sagd%> 	p8         	;
 
 LEXICON s71 !
 !! __@LEXNAME@__ skerja
@@ -941,7 +941,7 @@ LEXICON EIGA
  +V+Ind+Prt+3Sg:átti    Pass  ;
   +V+Ind+Prt+Pl:áttu    Pass  ;
       +V+PrsPrc:eigandi VANDI ;
-      +V+PrfPrc:áttur   #  ;
+      +V+PrfPtc:áttur   #  ;
          +V+Sup:átt     #  ;
 
 LEXICON EITA
@@ -991,7 +991,7 @@ LEXICON HAVA
       +V+Imp+Sg:hav      #  ;
       +V+Imp+Pl:havið    #  ;
       +V+PrsPrc:havandi  VANDI ;
-      +V+PrfPrc:havd     urPass ;
+      +V+PrfPtc:havd     urPass ;
          +V+Sup:havt     #  ;
 
 LEXICON KUNNA
@@ -1421,7 +1421,7 @@ LEXICON KVOTTA
       +V+Imp+Sg:kvøtta   	#       ;
       +V+Imp+Pl:kvøttið   	#       ;
       +V+PrsPrc:kvøttandi 	VANDI   ;
-      +V+PrfPrc:kvøttur   	#       ;
+      +V+PrfPtc:kvøttur   	#       ;
                :kvøtt   	p26       ;
          +V+Sup:kvøtt   	#       ;
          +V+Sup:kvøttið   	#       ;
@@ -1440,7 +1440,7 @@ LEXICON KVOTTA
 !      +V+Imp+Sg:   	#       ;
 !      +V+Imp+Pl:   	#       ;
 !      +V+PrsPrc:   	VANDI   ;
-!      +V+PrfPrc:   	#       ;
+!      +V+PrfPtc:   	#       ;
 !         +V+Sup:   	#       ;
 
 !         +V+Inf+Pass:   #       ;
@@ -1455,7 +1455,7 @@ LEXICON KVOTTA
 !      +V+Imp+Sg+Pass:   #       ;
 !      +V+Imp+Pl+Pass:   #       ;
 !      +V+PrsPrc+Pass:   #       ;
-!      +V+PrfPrc+Pass:   #       ;
+!      +V+PrfPtc+Pass:   #       ;
 !         +V+Sup+Pass:   #       ;
 
 
@@ -2160,22 +2160,22 @@ LEXICON prsptc
 LEXICON sup
 !! __@LEXNAME@__
     +V+Sup:%>t     # ;
- +V+PrfPrc:%>d%>ur # ;
+ +V+PrfPtc:%>d%>ur # ;
 
 LEXICON sup_t
 !! __@LEXNAME@__
     +V+Sup:%>t     # ;
- +V+PrfPrc:%>t%>ur # ;
+ +V+PrfPtc:%>t%>ur # ;
 
 LEXICON sup_tt
 !! __@LEXNAME@__
     +V+Sup:%>tt     # ;
- +V+PrfPrc:%>dd%>ur # ;
+ +V+PrfPtc:%>dd%>ur # ;
 
 LEXICON sup_a !
 !! __@LEXNAME@__ kalla
     +V+Sup:%>að     # ;
- +V+PrfPrc:%>að%>ur # ;
+ +V+PrfPtc:%>að%>ur # ;
 
 LEXICON sup_null !
 !! __@LEXNAME@__  stungið
@@ -2184,12 +2184,12 @@ LEXICON sup_null !
 LEXICON sup_in !
 !! __@LEXNAME@__ kalla
     +V+Sup:%>ð    # ;
- +V+PrfPrc:%>gvin # ;
+ +V+PrfPtc:%>gvin # ;
 
 LEXICON sup_ið_in !
 !! __@LEXNAME@__  stungið
     +V+Sup:%>ið # ;
- +V+PrfPrc:%>in # ;
+ +V+PrfPtc:%>in # ;
 
 
 

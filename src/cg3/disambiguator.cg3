@@ -86,6 +86,14 @@ LIST Guess = Guess ;
 LIST Err/Guess = Err/Guess ;
 
 LIST Der/A = Der/A ;
+
+LIST Sem/ID = Sem/ID ;
+LIST Arab = Arab ;
+LIST Ord = Ord ;
+LIST Err/Orth = Err/Orth ;
+
+LIST CURRENCY = "dinar" "dollar" "euro" "krona" "kr" "rubel" "¢" "€" "$";
+	
 	
 LIST Sem/Fem = Sem/Fem ;
 LIST Sem/Mal = Sem/Mal ;
@@ -294,7 +302,6 @@ REMOVE:Sem/ID Sem/ID IF (1 CURRENCY) ;
 
 SELECT:Arab Arab IF (NOT 0 Ord OR Prop OR Arab + Err/Orth) ; # In Apertium we get analysis both with and without the tag.
 
-REMOVE:diNom Coll (-1 ("dii") OR ("diibmu")) ;
 
 
 REMOVE:dyn  Arab (0 Prop) ; # foreløpig løsning, til vi har ny løsning for numerals.lexc

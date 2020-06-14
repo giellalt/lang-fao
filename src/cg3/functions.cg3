@@ -309,7 +309,7 @@ LIST Inf = Inf ;
 LIST ConNeg = ConNeg ;
 LIST Neg = Neg ;
 
-LIST PrfPrc = PrfPrc ;
+LIST PrfPtc = PrfPtc ;
 LIST VGen = VGen ;
 
 LIST PrsPrc = PrsPrc ;
@@ -492,7 +492,7 @@ SET OPRED = @<OPRED OR @OPRED> OR @OPRED ;
 SET FOBJ = @-F<OBJ OR @-FOBJ> ;
 SET FMAINV = @-FMAINV OR @+FMAINV OR (V @<OBJ) OR (V @N<) OR (V @A<) OR (V @<SUBJ) OR (V @<ADVL) ;
 SET FAUXV = @-FAUXV OR @+FAUXV ;
-LIST HAB-V-TAGS = Pl3 Sg3 ConNeg PrfPrc Inf ;
+LIST HAB-V-TAGS = Pl3 Sg3 ConNeg PrfPtc Inf ;
 
 SET OBJ = (@<OBJ) OR (@OBJ>) OR (@OBJ) OR (@-F<OBJ) OR (@-FOBJ>) ;
 LIST <OBJ = @-F<OBJ @<OBJ ;
@@ -563,7 +563,7 @@ SET VFIN-NOT-IMP = VFIN - Imprt ;
 SET VFIN-NOT-NEG = VFIN - Neg ;
   # this might be to strict, besides, "iige" can be written "ii ge"
 
-SET NOT-PRFPRC = WORD - PrfPrc ;
+SET NOT-PRFPRC = WORD - PrfPtc ;
 
 # Person
 # - - - -
@@ -618,8 +618,8 @@ LIST LEAT = "leat" "liehket" "lea" ;
 
 SET LEAT-FIN-NOT-IMP = LEAT - Imprt;
 
-LIST VPRFPRC = (V PrfPrc) ;
-SET LEATPRFPRC = LEAT + PrfPrc ;
+LIST VPRFPRC = (V PrfPtc) ;
+SET LEATPRFPRC = LEAT + PrfPtc ;
 SET PRC-NOT-LEAT = VPRFPRC - LEATPRFPRC ;
     # In order to distinguish between real leat-constructions and participles of other verbs
 LIST HABEO-SG3 = ("leat" Sg3) (V Neg Sg3) ("šaddat" Sg3) ("sjaddat" Sg3) ("liehket" Sg3) ("lea" Sg3) ;
@@ -794,7 +794,7 @@ SET REAL-V = V - NOT-REAL-V  ;
   #!! The REAL-V set thus awaits a fix to the preprocess V ... N bug.
 
 
- # The set REAL is smaller than COPULAS, made for verbs with PrfPrc complements: Seammás REAL-COPULAS son dovdan iežas...
+ # The set REAL is smaller than COPULAS, made for verbs with PrfPtc complements: Seammás REAL-COPULAS son dovdan iežas...
 LIST REAL-COPULAS = "dáidit" "leat" "soaitit" "veadjit" "liehket" "lea";
 
 #!! * The set COPULAS is for predicative constructions
@@ -845,12 +845,12 @@ SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) OR (A Gen) - Der/NomAct - Cmp/SplitR 
 SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr) OR ("buorre")
          OR (Pron Pers Gen) OR (N Gen) OR (A Gen) OR ("buot") OR
          Num OR Cmp/SplitR OR CC OR (Pron Dem) OR Pron + Refl + Gen OR (Indef Attr) OR
-         (PrfPrc @>N) OR PrsPrc OR (A Ord) OR (Num @>N) OR (A @>N) OR @>N OR @>A OR @>Pron OR @Num< OR (CC @CNP) OR (@>CC) OR (Action Gen) OR (@Pron<) ;
+         (PrfPtc @>N) OR PrsPrc OR (A Ord) OR (Num @>N) OR (A @>N) OR @>N OR @>A OR @>Pron OR @Num< OR (CC @CNP) OR (@>CC) OR (Action Gen) OR (@Pron<) ;
          # The strict version of items that can only be premodifiers, not parts of the predicate
 
 #LIST PRE-NP-HEAD = @>N @>A @>Pron @Num< @CNP ;
 
-SET PRE-NP-V = PrfPrc OR PrsPrc OR Der/NomAg OR Actio OR Der/NomAct OR (V A) OR (Prs Sg3) + Ind OR (Prs Sg1) + Ind OR (Imprt Du2) ;
+SET PRE-NP-V = PrfPtc OR PrsPrc OR Der/NomAg OR Actio OR Der/NomAct OR (V A) OR (Prs Sg3) + Ind OR (Prs Sg1) + Ind OR (Imprt Du2) ;
     # to be used together with PRE-NP-HEAD before @>N is disambiguated
 
 SET NP-MEMBER   = PRE-NP-HEAD OR N ;
@@ -963,7 +963,7 @@ SET EOC = S-BOUNDARY OR EOS ;
 
 SET NP-BOUNDARY = BOS OR EOS OR REAL-CLB OR VFIN OR Inf OR (Actio Ess) OR ConNeg OR VGen OR Sup OR PPRON-NOT-GEN OR Recipr OR Po OR Pr OR Pcle OR ("jed") OR Interj OR CS OR CP OR @CVP ;
 
-SET APP-BOUNDARY = REAL-CLB OR VFIN OR Inf OR (Actio Ess) OR ConNeg OR VGen OR Sup OR Recipr OR Po OR Pr OR Pcle OR Interj OR CS OR CP OR PrfPrc - @>N ;
+SET APP-BOUNDARY = REAL-CLB OR VFIN OR Inf OR (Actio Ess) OR ConNeg OR VGen OR Sup OR Recipr OR Po OR Pr OR Pcle OR Interj OR CS OR CP OR PrfPtc - @>N ;
 # A special barrier used with mapping of appositions.
 
 # This set contains FMAINV with @, which means that it functions for all kind of mainverbs after the verb-mapping rules
@@ -2117,7 +2117,7 @@ MAP:s-substance=<advl (@<ADVL-ela) TARGET ADVLCASEAdv + Loc  ( 0 Sem/Ctain-abstr
 
 MAP:s-substance=advl> (@ADVL-ela>) TARGET ADVLCASEAdv + Loc  ( 0 Sem/Mat OR Sem/Substnc OR ("ruovdi"))(*1  @>N + ("ráhkadit") OR FMAINV + ("duddjot") BARRIER SV-BOUNDARY)(0 (<sme>)) ;
 #$ Dat lea muoras ráhkaduvvon mieseoaivi.
-# Todo: Look at and recognize NPs of the type Loc + PrfPrc + N 
+# Todo: Look at and recognize NPs of the type Loc + PrfPtc + N 
 
 
 MAP:s-báidnit=advl> (@ADVL-ela>) TARGET N + Loc  ( 0 Sem/Lang)(1 ("báidnit"))(0 (<sme>)) ;
@@ -2143,7 +2143,7 @@ MAP:diibmuadvl> (@ADVL>) TARGET ("diibmu") OR ("dii" Adv) (1 Num LINK *1 FMAINV 
 	#$ Diibmu golbma manan ruoktot.
 
 LIST DADJAT = "čuoččuhit" "dadjat" "jáhkkit" "láhttestit" "lohkat" "muitalit" ;
-# This set is for  cealkkavástta: DADJAT + Acc + Inf or PrfPrc
+# This set is for  cealkkavástta: DADJAT + Acc + Inf or PrfPtc
 
 #!! * __-fsubj__ (@-FSUBJ>) for HUMAN Acc after DADJAT verbs
 MAP:-fsubj> (@-FSUBJ>) TARGET HUMAN + Acc (*1 V + Inf BARRIER NOT-ADV-PCLE)(*-1 DADJAT BARRIER NOT-NPMODADV) ;
@@ -2153,7 +2153,7 @@ MAP:-fsubj> (@-FSUBJ>) TARGET HUMAN + Acc (*1 V + Inf BARRIER NOT-ADV-PCLE)(*-1 
 	# Infinite object - FOBJ
 
 #!! * __-fobj>__ (@-FOBJ>) for Acc if front of abessive, gerundium, actio locative, perfectum participle or infinitive. First one to the right not allowed to be Acc though
-MAP:-fobj> (@-FOBJ>) TARGET Acc (1 (TV VAbess) OR (TV Ger) OR (TV Actio Loc) OR (TV PrfPrc) OR (TV Inf) LINK 0 SYN-V LINK NOT 1 Acc) (NEGATE *-1 TRANS-V BARRIER NOT-ADV-PCLE LINK NOT -1 Acc) ;
+MAP:-fobj> (@-FOBJ>) TARGET Acc (1 (TV VAbess) OR (TV Ger) OR (TV Actio Loc) OR (TV PrfPtc) OR (TV Inf) LINK 0 SYN-V LINK NOT 1 Acc) (NEGATE *-1 TRANS-V BARRIER NOT-ADV-PCLE LINK NOT -1 Acc) ;
 	#$ Konvenšuvdnaevttohusa ráhkadettiin delegašuvnnat leat váldán vuhtii Ruoŧa ođđa boazodoallolága, ja boazodoallolágaid maiguin barget dál Norggas.
 	#$ Duosttažan go dan dahkat?
 

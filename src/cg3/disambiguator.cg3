@@ -78,6 +78,7 @@ LIST Pass = Pass ;
 LIST Sup = Sup ;
 LIST Cmpnd = Cmpnd ;
 LIST CLB = CLB ;
+LIST CLBfinal = CLBfinal ; # because common num
 LIST PUNCT = PUNCT ;
 LIST LEFT = LEFT ;
 LIST RIGHT = RIGHT ;
@@ -285,6 +286,19 @@ LIST TAD = "tað" ;
 ########################                  #########################
 ########################                  #########################
 
+BEFORE-SECTIONS
+REMOVE CLBfinal ;
+
+SELECT:Sem/ID Sem/ID IF (-1 ("§")) ; 
+REMOVE:Sem/ID Sem/ID IF (1 CURRENCY) ; 
+
+SELECT:Arab Arab IF (NOT 0 Ord OR Prop OR Arab + Err/Orth) ; # In Apertium we get analysis both with and without the tag.
+
+REMOVE:diNom Coll (-1 ("dii") OR ("diibmu")) ;
+
+
+REMOVE:dyn  Arab (0 Prop) ; # foreløpig løsning, til vi har ny løsning for numerals.lexc
+	
 SECTION
 
 ## For Apertium

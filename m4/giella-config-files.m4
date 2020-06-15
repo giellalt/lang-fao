@@ -6,6 +6,7 @@ AC_DEFUN([gt_CONFIG_FILES],
 # List all non-script files processed by Autoconf.
 AC_CONFIG_FILES([Makefile \
                  giella-fao.pc \
+                 manifest.toml \
                  src/Makefile \
                  src/filters/Makefile \
                  src/hyphenation/Makefile \

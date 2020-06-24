@@ -66,7 +66,7 @@ LEXICON s8
 LEXICON s9
 !! __@LEXNAME@__ klippa = riggar ikki!
 			  	standard_ir_t ;
-  			:t	p5            ;
+  			:%>t	p5            ;
 
 
 LEXICON s10
@@ -111,7 +111,7 @@ LEXICON s13 !
  :j pres_pl    ;
     sup_t      ;
     prt_t      ;
- :t p5         ;
+ :%>t p5         ;
     imp        ;
  :j prsptc     ;
 
@@ -233,7 +233,7 @@ LEXICON s22 !
  :%^WVV prt_d      ;
  :      imp        ;
  :j     prsptc     ;
- :%^WVV sup_tt     ;
+ :%^WVV sup_t     ;
  :%^WVV p18        ;
 
 LEXICON s22_1 !
@@ -2160,22 +2160,18 @@ LEXICON prsptc
 LEXICON sup
 !! __@LEXNAME@__
     +V+Sup:%>t     # ;
- +V+PrfPtc:%>d%>ur # ;
 
 LEXICON sup_t
 !! __@LEXNAME@__
     +V+Sup:%>t     # ;
- +V+PrfPtc:%>t%>ur # ;
 
 LEXICON sup_tt
 !! __@LEXNAME@__
     +V+Sup:%>tt     # ;
- +V+PrfPtc:%>dd%>ur # ;
 
 LEXICON sup_a !
 !! __@LEXNAME@__ kalla
     +V+Sup:%>að     # ;
- +V+PrfPtc:%>að%>ur # ;
 
 LEXICON sup_null !
 !! __@LEXNAME@__  stungið
@@ -2184,12 +2180,10 @@ LEXICON sup_null !
 LEXICON sup_in !
 !! __@LEXNAME@__ kalla
     +V+Sup:%>ð    # ;
- +V+PrfPtc:%>gvin # ;
 
 LEXICON sup_ið_in !
 !! __@LEXNAME@__  stungið
     +V+Sup:%>ið # ;
- +V+PrfPtc:%>in # ;
 
 
 

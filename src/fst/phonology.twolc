@@ -213,7 +213,7 @@ Rules
 
 "ð Assimilation in Front of Dental Past Suffix -d(i)"
 !! __@RULENAME@__ 
- ð:d <=> Vow _(%^WVV:) %>: d (%>:) [ #: | Vow ] ;
+ ð:d <=> Vow _(%^WVV:) %>: d ; ! fjern dette: (%>:) [ #: | Vow ] ;
  
 !!€ leið>di
 !!€ leid0di 
@@ -360,7 +360,7 @@ Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 
 "Epenthetic deletion"
 !! __@RULENAME@__ 
- Vx:0 <=> Vow: Cns:* (%>:) _ (%>:) [ r: | l | n ] %^EPH: ( Special:* ) %>: Vow ; !Vow ;
+ Vx:0 <=> Vow: Cns:* (%^VSH:|%^AB5:) (%>:) _ (%>:) [ r: | l | n ] %^EPH: ( Special:* ) %>: Vow ; !Vow ;
       where Vx in (a i u) ;
  !Vow was commented out?
 
@@ -554,6 +554,8 @@ Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
 	      Vy in ( a o i u )
 		  matched ;
 
+!!€ bít^VSHin>a
+!!€ bit00n>a
 
 
 ! Verbal ablaut rules

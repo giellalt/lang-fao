@@ -13,29 +13,32 @@ LEXICON Adjectives
 
 !! !Irregular comparatives and superlatives
 
-vinstri+A:vinstr Pos_Def ;
-høgri+A:høgr Pos_Def ;
-fáur+A:fæ FAERRI ;
-gamal+A:el ELDRI ;
-illur+A:ver Comp_Ri ;
-lágur+A:læg Comp_Ri ;
-mangur+A:fle FLEIRI ;
-seinur+A:seinn CI ;
-
-nógvur+A:mei FLEIRI ;
-stórur+A:stør Comp_Ri ;
-stuttur+A:styt STYTTRI ;
-út+A:yt Comp_Ri ;
-úttari+A:utt Comp_Ari ;
-eystari+A:eyst Comp_Ari ;
-næsthægstur+A:næst#hæg SRi ;
-næststørstur+A:næst#stør SRi ;
-triðstørstur+A:trið#stør SRi ;
-norðari+A:norð Comp_Ari ;
-vestari+A:vest Comp_Ari ;
-suðri+A:syð Comp_Ri ;
-nær+A:nær NAERRI ;
-nærmur+A:nærm Comp_Ari ;
+vinstri+A:vinstr Pos_Def ; ! riggar
+høgri+A:høgr Pos_Def ; ! riggar
+fáur+A:fæ FAERRI ; ! riggar
+gamal+A:el ELDRI ; ! riggar
+illur+A:ver Comp_Ri ; ! riggar
+lágur+A:læg Comp_Ri ; ! riggar
+mangur+A:fle FLEIRI ; ! riggar
+seinur+A:seinn CI ; ! riggar
+niður+A:nið CAri ;  ! riggar ikki
+fyrr+A:fyr Cri ; ! riggar ikki
+evri+A:ov CAri ; ! riggar ikki
+nógvur+A:me FLEIRI ; ! riggar ikki
+stórur+A:stør Comp_Ri ; ! riggar
+stuttur+A:styt STYTTRI ; ! riggar
+út+A:yt Comp_Ri ; ! riggar
+úttari+A:utt Comp_Ari ; ! riggar
+eystari+A:eyst Comp_Ari ; ! riggar
+næsthægstur+A:næst#hæg SRi ; ! riggar
+næststørstur+A:næst#stør SRi ; ! riggar
+triðstørstur+A:trið#stør SRi ; ! riggar ikki
+fjórðstørstur+A:fjórð#stør SRi ; ! riggar ikki
+norðari+A:norð Comp_Ari ; ! riggar
+vestari+A:vest Comp_Ari ; ! riggar
+suðri+A:syð Comp_Ri ; ! riggar
+nær+A:nær NAERRI ; ! riggar ikki
+nærmur+A:nærm Comp_Ari ; ! riggar
 
 
 !! !Prefixed present participles
@@ -397,7 +400,6 @@ seksuellur:seksuel l20 ;
 uppskrýddur:uppskrý l18 ;
 
 stórur: STOR ;
-fyrstur:fyrst l1 ; ! check
 beinur:bein l1 ;
 leysur:leys l2	 ;
 bíligur:bílig l1	 ;
@@ -2012,6 +2014,7 @@ yvirmáttugur:yvirmáttug l1 ;
 øvugur:øvug l1 ;
 tvævetugur:tvævetug l1 ;
 afturøvutur:afturøvut l5 ;
+vístur:víst l5 ;
 akkurátur:akkurát l5 ;
 aldursmerktur:aldursmerkt l5 ;
 aldutur:aldut l5 ;
@@ -3888,7 +3891,9 @@ ovvekraður:ovvekrað l6 ;
 óeldaður:óeldað l6 ;
 ófjaðraður:ófjaðrað l6 ;
 óflýggjaður:óflýggjað l6 ;
-óframkallaður:óframkallað l6 ;
+kallaður:kallað l6 ;
+óframkallaður:ó#fram#kallað l6 ;
+framkallaður:fram#kallað l6 ;
 ófullfíggjaður:ófullfíggjað l6 ;
 ófyrireikaður:ófyrireikað l6 ;
 óglaraður:óglarað l6 ;
@@ -3953,12 +3958,17 @@ skrivaður:skrivað l6 ;
 ótvinnaður:ótvinnað l6 ;
 óundirskrivaður:óundirskrivað l6 ;
 óvandaður:óvandað l6 ;
+vaskaður:vaskað l6 ;
 óvaskaður:óvaskað l6 ;
+vápnaður:vápnað l6 ;
 óvápnaður:óvápnað l6 ;
+váttaður:váttað l6 ;
 óváttaður:óváttað l6 ;
 óviljaður:óviljað l6 ;
 óvirkaður:óvirkað l6 ;
+vitjaður:vitjað l6 ;
 óvitjaður:óvitjað l6 ;
+væntaður:væntað l6 ;
 óvæntaður:óvæntað l6 ;
 innlæntur:innlænt l6 ;
 frammæltur:frammælt l6 ;
@@ -4314,7 +4324,8 @@ aldukendur:alduken l7 ;
 skitsukendur:skitsuken l7 ;
 alfevndur:alfevn l7 ;
 algildur:algil l7 ;
-algjørdur:algjør l7 ;
+algjørdur:al#gjør l7 ;
+kunngjørdur:kunn#gjør l7 ;
 algongdur:algong l7 ;
 alkendur:alken l7 ;
 almannakendur:almannaken l7 ;
@@ -6039,6 +6050,7 @@ ekkamøddur:ekkamø l18 ;
 eyðgreiddur:eyðgrei l18 ;
 eyðsæddur:eyðsæ l18 ;
 eyðtýddur:eyðtý l18 ;
+flýddur:flý l18 ;
 fjallskøddur:fjallskø l18 ;
 fjøltýddur:fjøltý l18 ;
 flaggskrýddur:flaggskrý l18 ;
@@ -6572,17 +6584,17 @@ alslættur:alslæ l23 ;
 andlættur:andlæ l23 ;
 álvalættur:álvalæ l23 ;
 barðrættur:barðræ l23 ;
-bergbrattur:bergbra l23 ;
-brattur:bra l23 ;
-bringubrattur:bringubra l23 ;
+bergbrattur:bergbra l23_2 ;
+brattur:bra l23_2 ;
+bringubrattur:bringubra l23_2 ;
 brúnslættur:brúnslæ l23 ;
 deyðaslættur:deyðaslæ l23 ;
 deyðslættur:deyðslæ l23 ;
 dúnlættur:dúnlæ l23 ;
 dýrdarslættur:dýrdarslæ l23 ;
-ennisbrattur:ennisbra l23 ;
-ennisfattur:ennisfa l23 ;
-fattur:fa l23 ;
+ennisbrattur:ennisbra l23_2 ;
+ennisfattur:ennisfa l23_2 ;
+fattur:fa l23_2 ;
 fjøðurtættur:fjøðurtæ l23 ;
 flugutættur:flugutæ l23 ;
 fløskutættur:fløskutæ l23 ;
@@ -6598,16 +6610,16 @@ hjartalættur:hjartalæ l23 ;
 hornrættur:hornræ l23 ;
 hugalættur:hugalæ l23 ;
 huglættur:huglæ l23 ;
-høvuðfattur:høvuðfa l23 ;
+høvuðfattur:høvuðfa l23_2 ;
 høvuðlættur:høvuðlæ l23 ;
 iljaslættur:iljaslæ l23 ;
 jarðslættur:jarðslæ l23 ;
-javnbrattur:javnbra l23 ;
+javnbrattur:javnbra l23_2 ;
 javnslættur:javnslæ l23 ;
 kannutættur:kannutæ l23 ;
 kirnuslættur:kirnuslæ l23 ;
 kjaftlættur:kjaftlæ l23 ;
-lendafattur:lendafa l23 ;
+lendafattur:lendafa l23_2 ;
 linjurættur:linjuræ l23 ;
 ljóðrættur:ljóðræ l23 ;
 loddrættur:loddræ l23 ;
@@ -6618,7 +6630,7 @@ lættur:læ l23 ;
 morgunlættur:morgunlæ l23 ;
 munnlættur:munnlæ l23 ;
 músatættur:músatæ l23 ;
-nakkafattur:nakkafa l23 ;
+nakkafattur:nakkafa l23_2 ;
 orðarættur:orðaræ l23 ;
 orðrættur:orðræ l23 ;
 ovurlættur:ovurlæ l23 ;
@@ -6627,9 +6639,9 @@ ovurlættur:ovurlæ l23 ;
 óslættur:óslæ l23 ;
 ótættur:ótæ l23 ;
 reglurættur:regluræ l23 ;
-ryggjarfattur:ryggjarfa l23 ;
+ryggjarfattur:ryggjarfa l23_2 ;
 sinnislættur:sinnislæ l23 ;
-sjóbrattur:sjóbra l23 ;
+sjóbrattur:sjóbra l23_2 ;
 slættur:slæ l23 ;
 spegilsslættur:spegilsslæ l23 ;
 sporlættur:sporlæ l23 ;
@@ -6638,22 +6650,22 @@ stavnrættur:stavnræ l23 ;
 stavrættur:stavræ l23 ;
 steyrrættur:steyrræ l23 ;
 søgulættur:søgulæ l23 ;
-tumlafattur:tumlafa l23 ;
+tumlafattur:tumlafa l23_2 ;
 tungulættur:tungulæ l23 ;
 tvítættur:tvítæ l23 ;
 tættur:tæ l23 ;
-uppfattur:uppfa l23 ;
+uppfattur:uppfa l23_2 ;
 upprættur:uppræ l23 ;
 útrættur:útræ l23 ;
 vatnrættur:vatnræ l23 ;
 vatnsrættur:vatnsræ l23 ;
 vatntættur:vatntæ l23 ;
-veggbrattur:veggbra l23 ;
+veggbrattur:veggbra l23_2 ;
 vindtættur:vindtæ l23 ;
 vinkulrættur:vinkulræ l23 ;
-ørbrattur:ørbra l23 ;
+ørbrattur:ørbra l23_2 ;
 ørlættur:ørlæ l23 ;
-kokbrattur:kokbra l23 ;
+kokbrattur:kokbra l23_2 ;
 akademiskur:akademisk l24 ;
 dynamiskur:dynamisk l24 ;
 kaliforniskur:kalifornisk l24 ;
@@ -6665,6 +6677,7 @@ motoriskur:motorisk l24 ;
 obligatoriskur:obligatorisk l24 ;
 mytiskur:mytisk l24 ;
 tjekkiskur:tjekkisk l24 ;
+slovakiskur:slovakisk l24 ;
 almenskur:almensk l24 ;
 ameriskur:amerisk l24 ;
 apokrýfiskur:apokrýfisk l24 ;
@@ -6931,6 +6944,8 @@ agnvandur:agnvand l25 ;
 aldanskur:aldansk l25 ;
 amerikanskur:amerikansk l25 ;
 meksikanskur:meksikansk l25 ;
+vulkanskur:vulkansk l25 ;
+vietnamesiskur:vietnamesisk l25 ;
 afrikanskur:afrikansk l25 ;
 franskur:fransk l25 ;
 hálvdanskur:hálvdansk l25 ;
@@ -10260,6 +10275,7 @@ talvutur:talvut l5 ;
 ønutur:ønut l5 ;
 flusutur:flusut l5 ;
 aftursettur:aftur#sett l39 ;
+hersettur:her#sett l39 ;
 agnsettur:agn#sett l39 ;
 akkunettur:akkunett l39_2 ;
 albeittur:al#beitt l39_2 ;
@@ -10743,6 +10759,7 @@ mittastur:mittast l5 ;
 nýklaktur:nýklakt l5 ;
 ovastur:ovast l5 ;
 betraktaður:betraktað l6 ;
+handaður:handað l6 ;
 farvaður:farvað l6 ;
 fornoyaður:fornoyað l6 ;
 grótlagaður:grótlagað l6 ;
@@ -11366,26 +11383,26 @@ modifiseraður:modifiserað l6 ;
 !-vankaður:-vankað l6 ;
 !-veiggjaður:-veiggjað l6 ;
 !-veltaður:-veltað l6 ;
-!-viðraður:-viðrað l6 ;
-!-vikaður:-vikað l6 ;
-!-viljaður:-viljað l6 ;
+viðraður:viðrað l6 ;
+vikaður:vikað l6 ;
+viljaður:viljað l6 ;
 !-vindaður:-vindað l6 ;
 !-vitaður:-vitað l6 ;
 !-æðraður:-æðrað l6 ;
-!-ætlaður:-ætlað l6 ;
+ætlaður:ætlað l6 ;
 !-blømdur:-bløm l7 ;
-!-boygdur:-boyg l7 ;
+boygdur:boyg l7 ;
 !-ermdur:-erm l7 ;
-!-fevndur:-fevn l7 ;
-!-gyrdur:-gyr l7 ;
-!-herdur:-her l7 ;
-!-hvølvdur:-hvølv l7 ;
+fevndur:fevn l7 ;
+gyrdur:gyr l7 ;
+herdur:her l7 ;
+hvølvdur:hvølv l7 ;
 !-hærdur:-hær l7 ;
-!-kendur:-ken l7 ;
-!-kyndur:-kyn l7 ;
-!-mígdur:-míg l7 ;
-!-rendur:-ren l7 ;
-!-skýrdur:-skýr l7 ;
+kendur:ken l7 ;
+kyndur:kyn l7 ;
+mígdur:míg l7 ;
+rendur:ren l7 ;
+skýrdur:skýr l7 ;
 !-tyngdur:-tyng l7 ;
 !-faldur:-fal l8 ;
 !-samur:-sam l13 ;
@@ -11839,6 +11856,7 @@ spunnin:spun l34_6 ;
 runnin:run l34_6 ;
 vunnin:vun l34_6 ;
 lopin:lopin l26 ;
+álopin:á#lopin l26 ;
 sloppin:slop l34_5 ;
 farin:farin l26 ;
 borin:borin l26 ;

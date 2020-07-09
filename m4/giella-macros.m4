@@ -431,7 +431,7 @@ AC_DEFUN([gt_PROG_XFST],
             [AS_HELP_STRING([--with-xfst=DIRECTORY],
                             [search xfst in DIRECTORY @<:@default=PATH@:>@])],
             [with_xfst=$withval],
-            [with_xfst=yes])
+            [with_xfst=$DEFAULT_XFST])
 AC_PATH_PROG([PRINTF], [printf], [echo -n])
 AC_PATH_PROG([XFST], [xfst], [false], [$PATH$PATH_SEPARATOR$with_xfst])
 AC_PATH_PROG([TWOLC], [twolc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
@@ -486,7 +486,7 @@ AC_DEFUN([gt_PROG_FOMA],
             [AS_HELP_STRING([--with-foma=DIRECTORY],
                             [search foma in DIRECTORY @<:@default=PATH@:>@])],
             [with_foma=$withval],
-            [with_foma=no])
+            [with_foma=$DEFAULT_FOMA])
 
 # If Xerox tools and Hfst are not found, assume we want Foma:
 AS_IF([test x$gt_prog_xfst = xno \
@@ -625,7 +625,7 @@ AC_ARG_ENABLE([hyperminimisation],
               [AS_HELP_STRING([--enable-hyperminimisation],
                               [enable hyperminimisation of lexical fst @<:@default=no@:>@])],
               [enable_hyperminimisation=$enableval],
-              [enable_hyperminimisation=no])
+              [enable_hyperminimisation=$DEFAULT_HYPERMIN])
 AM_CONDITIONAL([WANT_HYPERMINIMISATION], [test "x$enable_hyperminimisation" != xno])
 
 # Enable symbol alignment of the lexical transducer - default is 'no'
@@ -649,7 +649,7 @@ AC_ARG_ENABLE([reversed-intersect],
               [AS_HELP_STRING([--enable-reversed-intersect],
                               [enable reversed compose-intersect (faster and takes less RAM in some cases) @<:@default=no@:>@])],
               [enable_reversed_intersect=$enableval],
-              [enable_reversed_intersect=yes])
+              [enable_reversed_intersect=$DEFAULT_REVERCI])
 AM_CONDITIONAL([WANT_REVERSED_INTERSECT], [test "x$enable_reversed_intersect" != xno])
 
 ############ Tool switches: ############
@@ -988,10 +988,9 @@ cat<<EOF
 -- Building $PACKAGE_STRING (more specialised build targets listed above):
 
   -- Fst build tools: Xerox, Hfst or Foma - at least one must be installed
-  -- Xerox is default on, the others off unless they are the only one present --
-  * build Xerox fst's: $gt_prog_xfst
-  * build HFST fst's: $gt_prog_hfst
-  * build Foma fst's: $gt_prog_foma
+  * build Xerox fst’s: $gt_prog_xfst (default: $DEFAULT_XFST)
+  * build HFST fst’s: $gt_prog_hfst (default: $DEFAULT_HFST)
+  * build Foma fst’s: $gt_prog_foma (default: $DEFAULT_FOMA)
 
   -- basic packages (on by default): --
   * analysers enabled: $enable_analysers

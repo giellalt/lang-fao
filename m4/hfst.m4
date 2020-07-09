@@ -40,10 +40,11 @@ AC_ARG_WITH([hfst],
             [AS_HELP_STRING([--with-hfst=DIRECTORY],
             [define HFST binary path if not in PATH @<:@default=no@:>@])],
             [with_hfst=$withval],
-            [with_hfst=no])
+            [with_hfst=$DEFAULT_HFST])
 
 # If Xerox tools are not found, assume we want Hfst:
-AS_IF([test "x$gt_prog_xfst" = xno \
+AS_IF([test "x$DEFAULT_HFST" = xno \
+         -a "x$gt_prog_xfst" = xno \
          -a "x$gt_prog_foma" = xno ], [
          with_hfst=yes
          fallback_to_hfst="INFO: Xfst was not found, falling back to using Hfst"
@@ -134,9 +135,9 @@ AM_CONDITIONAL([CAN_HFST],      [test "x$gt_prog_hfst" = "xyes"])
 # - default is 'openfst-tropical'
 AC_ARG_WITH([backend-format],
               [AS_HELP_STRING([--with-backend-format=FORMAT],
-                              [enable the hfst backend format specified (one of: sfst, foma, openfst-tropical, openfst-log) @<:@default=openfst-tropical@:>@])],
+                              [enable the hfst backend format specified (one of: sfst, foma, openfst-tropical, openfst-log) @<:@default=$DEFAULT_HFST_BACKEND@:>@])],
               [with_backend=$withval],
-              [with_backend=openfst-tropical])
+              [with_backend=$DEFAULT_HFST_BACKEND])
 AC_SUBST([HFST_FORMAT_NAME], [$with_backend])
 AM_CONDITIONAL([WITH_OFST_TROPICAL], [test "$with_backend" == openfst-tropical])
 AM_CONDITIONAL([WITH_OFST_LOG],      [test "$with_backend" == openfst-log])

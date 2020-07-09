@@ -142,6 +142,15 @@ AM_CONDITIONAL([SKIP_PHONOLOGY], [test "x$NO_PHONOLOGY" != "x"])
 AC_SUBST([LEXREF_IN_XFSCRIPT], [""])
 AM_CONDITIONAL([LEXREF_IN_PHONOLOGY], [test "x$LEXREF_IN_XFSCRIPT" != "x"])
 
+# Variables for language specific settings
+# TODO: maybe some could be env.vars AC_ARG_VAR so power users know what
+# they want to compile theirs stuff with
+AC_SUBST([DEFAULT_FOMA], [no])
+AC_SUBST([DEFAULT_HFST], [yes])
+AC_SUBST([DEFAULT_XFST], [no])
+#AC_SUBST([DEFAULT_HYPERMIN], [no])
+#AC_SUBST([DEFAULT_REVERCI], [yes])
+AC_SUBST([DEFAULT_HFST_BACKEND], [foma])
 
 # Tests and sets up giella-core directories and scripts
 gt_PROG_SCRIPTS_PATHS

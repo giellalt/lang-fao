@@ -21,7 +21,7 @@ LEXICON s2
  			:t  p39           	;
 
 LEXICON SETA
-!! __@LEXNAME@__ = riggar!
+!! __@LEXNAME@__ seta = riggar!
 
  +V+Ind+Prs+2Sg: urPass  ;
  +V+Ind+Prs+3Sg: urPass  ;
@@ -29,7 +29,7 @@ LEXICON SETA
 
 
 LEXICON s3
-!! __@LEXNAME@__ leiða = riggar ikki!
+!! __@LEXNAME@__ leiða = riggar!
                	standard_ir ;
 			 	p7         ;
 
@@ -48,7 +48,7 @@ LEXICON s5
  			   p1          ;
 
 LEXICON s6
-!! __@LEXNAME@__ hirða = riggar ikki!
+!! __@LEXNAME@__ hirða = riggar!
                standard_ir ;
 			   p7          ;
 
@@ -59,12 +59,12 @@ LEXICON s7
 
 
 LEXICON s8
-!! __@LEXNAME@__ kenna = riggar ikki!
+!! __@LEXNAME@__ kenna = riggar!
                standard_ir ;
 			   p7          ;
 
 LEXICON s9
-!! __@LEXNAME@__ klippa = riggar ikki!
+!! __@LEXNAME@__ klippa = riggar!
 			  	standard_ir_t ;
   			:%>t	p5            ;
 
@@ -93,7 +93,7 @@ LEXICON s11 !
 
 
 LEXICON s12 !
-!! __@LEXNAME@__ boyggja = riggar ikki!
+!! __@LEXNAME@__ boyggja = riggar!
                jinf       ;
                pres_ir_sg ;
           :j   pres_pl    ;
@@ -105,7 +105,7 @@ LEXICON s12 !
 
 
 LEXICON s13 !
-!! __@LEXNAME@__ søkkja = riggar ikki!
+!! __@LEXNAME@__ søkkja = riggar!
     jinf       ;
     pres_ir_sg ;
  :j pres_pl    ;
@@ -227,7 +227,7 @@ LEXICON s21 !
                p7        ;
 
 LEXICON s22 !
-!! __@LEXNAME@__ ryðja = riggar ikki!
+!! __@LEXNAME@__ ryðja = riggar ikki í sup og prfptc!
  :      jinf       ;
  :      pres_ur_j2 ;
  :%^WVV prt_d      ;
@@ -266,7 +266,7 @@ LEXICON s23 !
                :ur     p7      ;
 
 LEXICON s24 !
-!! __@LEXNAME@__ flysa = riggar!
+!! __@LEXNAME@__ flysa = riggar ikki í pass!
         	inf        ;
         	pres_ur    ;
  :%^WVV 	prt_d      ;
@@ -275,7 +275,7 @@ LEXICON s24 !
  :%^WVV%>t  p5         ;
 
 LEXICON s25 !
-!! __@LEXNAME@__ liva
+!! __@LEXNAME@__ liva = riggar!
                inf        ;
                pres_ir    ;
                prt_d      ;
@@ -286,7 +286,7 @@ LEXICON s25 !
 
 
 LEXICON s26 !
-!! __@LEXNAME@__ plaga = riggar!
+!! __@LEXNAME@__ plaga = riggar (formurin plagdur manglar)!
              inf     ;
              pres_ar ;
              prt_d   ;
@@ -304,7 +304,6 @@ LEXICON s26_1 !
              sup        ;
  +V+Sup:%>að #          ;
  	   :að   p6         ;
-	    	 p6         ;
 
 LEXICON s27
 !! __@LEXNAME@__ spáa = riggar!
@@ -317,7 +316,7 @@ LEXICON s27
              p18        ;
 
 LEXICON s28 !
-!! __@LEXNAME@__ skaða = riggar ikki!
+!! __@LEXNAME@__ skaða = riggar ikki í prfptc!
   inf        ;
   pres_ar    ;
   prt_d      ;
@@ -358,6 +357,11 @@ LEXICON s31 !
                :jør   prt_d      ;
                :jør   sup        ;
                :jør   p7         ;
+               
+LEXICON s32/30 !
+!! __@LEXNAME@__ útbúgva = riggar!
+		s32 ;
+	:gv	s30 ;               
 
 LEXICON s32 !
 !! __@LEXNAME@__ búgva = riggar!
@@ -1915,7 +1919,7 @@ LEXICON pres_ur_j2
 ! +V+Ind+Prs+1Sg:%> #    ;
 ! +V+Ind+Prs+2Sg:%> #    ;
 ! +V+Ind+Prs+3Sg:%> #    ;
-                   pres_pl ;
+!                  pres_pl ;
 
 LEXICON pres_strong_s1
 !! __@LEXNAME@__

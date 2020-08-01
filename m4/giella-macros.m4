@@ -623,7 +623,7 @@ AM_CONDITIONAL([CAN_XZ], [test "x$ac_cv_prog_XZ" != xfalse])
 # Enable hyperminimisation of the lexical transducer - default is 'no'
 AC_ARG_ENABLE([hyperminimisation],
               [AS_HELP_STRING([--enable-hyperminimisation],
-                              [enable hyperminimisation of lexical fst @<:@default=no@:>@])],
+                              [enable hyperminimisation of lexical fst @<:@default=$DEFAULT_HYPERMIN@:>@])],
               [enable_hyperminimisation=$enableval],
               [enable_hyperminimisation=$DEFAULT_HYPERMIN])
 AM_CONDITIONAL([WANT_HYPERMINIMISATION], [test "x$enable_hyperminimisation" != xno])
@@ -647,7 +647,7 @@ AM_CONDITIONAL([WANT_TWOSTEP_INTERSECT], [test "x$enable_twostep_intersect" != x
 #enable_reversed_intersect
 AC_ARG_ENABLE([reversed-intersect],
               [AS_HELP_STRING([--enable-reversed-intersect],
-                              [enable reversed compose-intersect (faster and takes less RAM in some cases) @<:@default=no@:>@])],
+                              [enable reversed compose-intersect (faster and takes less RAM in some cases) @<:@default=$DEFAULT_REVERCI@:>@])],
               [enable_reversed_intersect=$enableval],
               [enable_reversed_intersect=$DEFAULT_REVERCI])
 AM_CONDITIONAL([WANT_REVERSED_INTERSECT], [test "x$enable_reversed_intersect" != xno])

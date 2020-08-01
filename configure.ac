@@ -148,8 +148,8 @@ AM_CONDITIONAL([LEXREF_IN_PHONOLOGY], [test "x$LEXREF_IN_XFSCRIPT" != "x"])
 AC_SUBST([DEFAULT_FOMA], [no])
 AC_SUBST([DEFAULT_HFST], [yes])
 AC_SUBST([DEFAULT_XFST], [no])
-#AC_SUBST([DEFAULT_HYPERMIN], [no])
-#AC_SUBST([DEFAULT_REVERCI], [yes])
+AC_SUBST([DEFAULT_HYPERMIN], [no])
+AC_SUBST([DEFAULT_REVERCI], [yes])
 AC_SUBST([DEFAULT_HFST_BACKEND], [foma])
 
 # Tests and sets up giella-core directories and scripts

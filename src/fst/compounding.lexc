@@ -9,13 +9,13 @@ LEXICON R
 @P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ; ! Flags to control compounding
 
 LEXICON RReal
- +Cmpnd#: Nouns ;
- +Cmpnd#: Adjectives ;
+ +Cmp#: Nouns ;
+ +Cmp#: Adjectives ;
           R-    ;
 
 LEXICON R-
- +Cmpnd#:%- Nouns ;
- +Cmpnd#:%- Adjectives ;
+ +Cmp#:%- Nouns ;
+ +Cmp#:%- Adjectives ;
 
 LEXICON RNum
-      +Cmp/Hyph+Cmpnd#:-# Nouns ; ! For Num Cmp Noun, vi vil ikke ha Num Cmp Num
+      +Cmp/Hyph+Cmp#:-# Nouns ; ! For Num Cmp Noun, vi vil ikke ha Num Cmp Num

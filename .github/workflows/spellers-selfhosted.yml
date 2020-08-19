@@ -7,7 +7,8 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    container: ubuntu:18.04
     outputs:
       speller-paths: ${{ steps.build.outputs['speller-paths'] }}
     steps:
@@ -24,6 +25,8 @@ jobs:
           path: lang
       - name: Install dev dependencies
         uses: divvun/actions/lang/install-deps@master
+        with:
+          sudo: false
       - name: Build
         id: build
         uses: divvun/actions/lang/build@master
@@ -47,25 +50,30 @@ jobs:
             os: macos-latest
           - type: speller-windows
             os: windows-latest
-          - type: speller-windows-msoffice
-            os: windows-latest
     steps:
       - uses: actions/checkout@v2
       - name: Setup Divvun CI
         uses: divvun/actions/setup@master
         with:
           key: ${{ secrets.DIVVUN_KEY }}
+      - name: Get version
+        id: version
+        uses: divvun/actions/version@develop
+        with:
+          speller-manifest: true
+          nightly: develop, test-ci
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Download Spellers
         uses: actions/download-artifact@v2
         with:
           name: spellers
       - name: Install build tools from Pahkat for Windows
-        if: ${{ matrix.type == 'speller-windows' || matrix.type == 'speller-windows-msoffice' }}
+        if: ${{ matrix.type == 'speller-windows' }}
         uses: divvun/actions/pahkat/init@master
         with:
           repo: https://pahkat.uit.no/devtools/
           channel: nightly
-          packages: divvun-bundler, pahkat-uploader, win-reg-tool
+          packages: pahkat-uploader
       - name: Install build tools from Pahkat for macOS
         if: ${{ matrix.type == 'speller-macos' || matrix.type == 'speller-mobile' }}
         uses: divvun/actions/pahkat/init@master
@@ -75,18 +83,18 @@ jobs:
           packages: divvun-bundler, pahkat-uploader, thfst-tools, xcnotary
       - name: Run Divvun Bundler
         id: bundler
-        uses: divvun/actions/speller/bundle@master
+        uses: divvun/actions/speller/bundle@develop
         with:
           speller-type: ${{ matrix.type }}
           speller-manifest-path: "manifest.toml"
           speller-paths: ${{ needs.build.outputs['speller-paths'] }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          version: ${{ steps.version.outputs.version }}
       - name: Deploy to Pahkat
-        uses: divvun/actions/speller/deploy@master
+        uses: divvun/actions/speller/deploy@develop
         with:
           speller-type: ${{ matrix.type }}
           speller-manifest-path: "manifest.toml"
           payload-path: "${{ steps.bundler.outputs['payload-path'] }}"
-          version: "${{ steps.bundler.outputs.version }}"
-          channel: nightly
-          force-deploy: true
+          version: "${{ steps.version.outputs.version }}"
+          repo: https://pahkat.thetc.se/main/
+          channel: "${{ steps.version.outputs.channel }}"

@@ -25,6 +25,8 @@ jobs:
           path: lang
       - name: Install dev dependencies
         uses: divvun/actions/lang/install-deps@master
+        with:
+          sudo: false
       - name: Build
         id: build
         uses: divvun/actions/lang/build@master

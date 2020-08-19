@@ -144,7 +144,8 @@ Rules
 
 "Deleting Double Consonant in Front of Consonant"
 !! __@RULENAME@__ 
- Cx:0 <=> Vow Cx _ (%>:)  (u: r:) ([Dummy: - %^EPH:]) %>: [d|ð|s|t] ([a|i|u]) ; 
+ Cx:0 <=> Vow Cx _ (%>:)  (u: r:) ([Dummy: - %^EPH:]) %>: [d|ð|s|t] ([a|i|u]) ;
+          Vow Cx _ Dummy:* %>: n (%>:) [a|i|u] ; ! drukk>num
 ! Cx:0 <=> Vow Cx _ (%>:) (u: r:) (Dummy:) %>: [d|ð|s|(s) t] ([a|i|u]) #:0 ; 
 ! Cx:0 <=> Vow Cx _ ( %>: u: r: ) ([Dummy: - %^PASS:]) %>: [s|t] #:0 ; 
       where Cx in ( b d f g k l m n p r s t v ) ;

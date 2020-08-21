@@ -67,10 +67,8 @@ LEXICON ab-dot-noun ! This is the lexicon for abbrs that must have a period.
 
 ! The idea is that the nominal ones may have case, like e.g. P.E.N.
 
-!LEXICON ab-dot-adj ! This is the lexicon for abbrs that must have a period.
-! +Abbr:%. # ;
-! +Abbr+A+Attr:%. # ;
-! +Abbr+A:%. # ;
+LEXICON ab-dot-adj ! This is the lexicon for abbrs that must have a period.
+ +Abbr+A:%. # ;
 
 !LEXICON ab-dot-adv ! This is the lexicon for abbrs that must have a period.
 !  +Abbr+Adv:%. # ;        ! Adv without case.

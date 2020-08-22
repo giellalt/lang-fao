@@ -5,184 +5,74 @@
 !! Also splitting when in doubt: -noun-adj => -noun and -adj
 !! Then pointing to two contlexes, a dot-one and a non-dot-one.
 
-! LEXICON ab ! No POS, don't know what pos
-! ab-nodot ;
-! ab-dot ;
-! 
-! LEXICON ab-noun
-! ab-nodot-noun ;
-! ab-dot-noun ;
-! 
-! LEXICON ab-nodot ! default
-! +Abbr: # ;  ! no period, that is.
-! 
-! LEXICON ab-dot ! Default
-! +Abbr: DOT ;
-! 
-! LEXICON ab-nodot-noun ! The bulk
-! +Abbr+N: # ;  ! no period, that is.
-! 
-! LEXICON ab-dot-noun ! This is the lexicon for abbrs that must have a period.
-! +Abbr+N: DOT ;
+! Noun or not
+LEXICON ab-dot-trab ab-dot-noun-trab ; ! assuming noun
+LEXICON ab-dot-trnumab  ab-dot-noun-trnumab ; ! assuming noun
+LEXICON ab-trab ab-noun-trab ; ! assuming noun 
+LEXICON ab-trnumab ab-noun-trnumab ; ! assuming noun
 
-
-LEXICON ab-dot-trab
-ab-dot-noun-trab ; ! assuming noun
-
-LEXICON ab-dot-trnumab 
-ab-dot-noun-trnumab ; ! assuming noun
-
-LEXICON ab-trab
-ab-noun-trab ; ! assuming noun 
-
-LEXICON ab-trnumab
-ab-noun-trnumab ; ! assuming noun
-
-LEXICON ab-noun-itrab   +ABBR+Gram/IAbbr:    ab-noun ;
+! The nouns
 LEXICON ab-noun-trab    +ABBR+Gram/TAbbr:    ab-noun ;
 LEXICON ab-noun-trnumab +ABBR+Gram/TNumAbbr: ab-noun ;
-LEXICON ab-noun   !!= * __@CODE@__
+LEXICON ab-noun
          ab-nodot-noun ;
 +Use/NG: ab-dot-noun   ;
 
-LEXICON ab-adj-itrab +ABBR+Gram/IAbbr: ab-adj ;
-LEXICON ab-adj-trab  +ABBR+Gram/TAbbr: ab-adj ;
-LEXICON ab-adj   !!= * __@CODE@__
-         ab-nodot-adj ;
-+Use/NG: ab-dot-adj   ;
+! The adjectives
+!LEXICON ab-adj-itrab +ABBR+Gram/IAbbr: ab-adj ;
+!LEXICON ab-adj-trab  +ABBR+Gram/TAbbr: ab-adj ;
+!LEXICON ab-adj 
+!         ab-nodot-adj ;
+!+Use/NG: ab-dot-adj   ;
 
-LEXICON ab-adv-itrab   +ABBR+Gram/IAbbr:    ab-adv ;
-!LEXICON ab-adv-numnoab +ABBR+Gram/NoAbbr:   ab-adv ;
-LEXICON ab-adv-trab    +ABBR+Gram/TAbbr:    ab-adv ;
-!LEXICON ab-adv-trnumab +ABBR+Gram/TNumAbbr: ab-adv ;
-LEXICON ab-adv   !!= * __@CODE@__
-         ab-nodot-adv ;
-+Use/NG: ab-dot-adv   ;
+! The adverbs
+!LEXICON ab-adv-itrab   +ABBR+Gram/IAbbr:    ab-adv ;
+!LEXICON ab-adv-trab    +ABBR+Gram/TAbbr:    ab-adv ;
+!LEXICON ab-adv-numnoab  +ABBR+Gram/NoAbbr:   ab-adv ;
+!LEXICON ab-adv
+!         ab-nodot-adv ;
+!+Use/NG: ab-dot-adv   ;
 
-LEXICON ab-num-itrab +ABBR+Gram/IAbbr: ab-num ;
-LEXICON ab-num   !!= * __@CODE@__
-         ab-nodot-num ;
-+Use/NG: ab-dot-num   ;
+! The numerals
 
 !! !Lexicons without final period
-
 LEXICON ab-nodot-noun-itrab   +ABBR+Gram/IAbbr:    ab-nodot-noun ;
-LEXICON ab-nodot-noun-trab    +ABBR+Gram/TAbbr:    ab-nodot-noun ;
-LEXICON ab-nodot-noun-trnumab +ABBR+Gram/TNumAbbr: ab-nodot-noun ;
-LEXICON ab-nodot-noun   !!= * __@CODE@__  The bulk
- nodot-attrnomaccgen-infl ;
- nodot-oblique-infl       ;
+LEXICON ab-nodot-noun 
++N+Abbr:  nodot-infl ;
 
-LEXICON ab-nodot-adj-itrab +ABBR+Gram/IAbbr: ab-nodot-adj ;
 LEXICON ab-nodot-adj   !!= * __@CODE@__
- nodot-attrnomaccgen-infl ;
++Adj+Abbr:  nodot-infl ;
 
-LEXICON ab-nodot-adv-itrab   +ABBR+Gram/IAbbr:    ab-nodot-adv ;
-LEXICON ab-nodot-adv-trnumab +ABBR+Gram/TNumAbbr: ab-nodot-adv ;
-LEXICON ab-nodot-adv   !!= * __@CODE@__
-           #     ;
-    +Attr: #     ;
-           RHyph ;
-! +Sg+Nom: #     ;
-! +Sg+Acc: #     ;
-! +Sg+Gen: #     ;
 
 LEXICON ab-nodot-num   !!= * __@CODE@__
- nodot-nomaccgen-infl ;
++Num+Abbr:  nodot-infl ;
 
 !! !Lexicons with final period
 
 LEXICON ab-dot-noun-itrab   +ABBR+Gram/IAbbr:    ab-dot-noun ;
-LEXICON ab-dot-noun-noab    +ABBR+Gram/NoAbbr:   ab-dot-noun ;
 LEXICON ab-dot-noun-trab    +ABBR+Gram/TAbbr:    ab-dot-noun ;
 LEXICON ab-dot-noun-trnumab +ABBR+Gram/TNumAbbr: ab-dot-noun ;
 LEXICON ab-dot-noun   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
- dot-attrnomaccgen-infl ;
++N+Abbr:  dot-infl ;
 
-LEXICON ab-dot-adj-itrab   +ABBR+Gram/IAbbr:    ab-dot-adj ;
-!LEXICON ab-dot-adj-noab    +ABBR+Gram/NoAbbr:   ab-dot-adj ;
 LEXICON ab-dot-adj-trab    +ABBR+Gram/TAbbr:    ab-dot-adj ;
-!LEXICON ab-dot-adj-trnumab +ABBR+Gram/TNumAbbr: ab-dot-adj ;
 LEXICON ab-dot-adj   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
- dot-attrnomaccgen-infl ;
-
-LEXICON ab-dot-adv-itrab   +ABBR+Gram/IAbbr:     ab-dot-adv ;
-LEXICON ab-dot-adv-numnoab +ABBR+Gram/NumNoAbbr: ab-dot-adv ;
-LEXICON ab-dot-adv-trab    +ABBR+Gram/TAbbr:     ab-dot-adv ;
-LEXICON ab-dot-adv-trnumab +ABBR+Gram/TNumAbbr:  ab-dot-adv ;
-LEXICON ab-dot-adv   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
- DOT ; ! Adv without case.
-
-!LEXICON ab-dot-num-itrab +Num+ABBR+Gram/IAbbr: ab-dot-num ;
-LEXICON ab-dot-num-trab  +Num+ABBR+Gram/TAbbr: ab-dot-num ;
-LEXICON ab-dot-num   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
- dot-nomaccgen-infl ;
-
-!LEXICON ab-dot-cc-itrab +CC+ABBR+Gram/IAbbr: ab-dot-cc ;
-LEXICON ab-dot-cc-trab  +CC+ABBR+Gram/TAbbr: ab-dot-cc ;
-LEXICON ab-dot-cc   !!= * __@CODE@__
- DOT ;
++Adj+Abbr:   dot-infl ;
 
 
-! Then, as an afterthought, come our two verbs, gč. and vrd.
-
-!LEXICON ab-verb-itrab ABBR+Gram/IAbbr: ab-verb ;
-LEXICON ab-verb-trab  +ABBR+Gram/TAbbr: ab-verb ;
-LEXICON ab-verb   !!= * __@CODE@__  A lexicon for "gč." and perhaps also other abbreviated verbs.
-+Use/NG: ab-dot-verb   ;
-         ab-nodot-verb ;
-
-
-LEXICON ab-dot-verb-itrab   +ABBR+Gram/IAbbr:    ab-dot-verb ;
-LEXICON ab-dot-verb-trab    +ABBR+Gram/TAbbr:    ab-dot-verb ;
-!LEXICON ab-dot-verb-trnumab +ABBR+Gram/TNumAbbr: ab-dot-verb ;
 LEXICON ab-dot-verb   !!= * __@CODE@__
- +Imp: DOT ; ! Period.
++V+Abbr:  DOT ; ! Period.
 
 LEXICON ab-nodot-verb   !!= * __@CODE@__
- +Imp: # ; ! No period.
++V+Abbr:  # ; ! No period.
+R- ;
 
+LEXICON nodot-infl   !!= * __@CODE@__
+# ;
+R- ;
 
-
-LEXICON nodot-attrnomaccgen-infl   !!= * __@CODE@__
- nodot-attr-infl      ;
- nodot-nomaccgen-infl ;
-
-LEXICON nodot-attr-infl   !!= * __@CODE@__
-   +Attr: #     ;
-
-LEXICON nodot-nomaccgen-infl   !!= * __@CODE@__
- +Sg+Nom: #     ;
- +Sg+Acc+Err/Orth:%>%:a #     ; !km:a
- +Sg+Gen: #     ;
-          RHyph ;
-
-LEXICON nodot-oblique-infl
-          +Sg+Acc:%>%:v     # ;
-          +Sg+Ill:%>%:j     # ;
-          +Sg+Ela:%>%:s     # ;
-          +Sg+Ine:%>%:n     # ;
-          +Sg+Com:%>%:jn    # ;
-          +Sg+Ess:%>%:n     # ;
-          +Pl+Nom:     # ;
-          +Pl+Gen:%>%:j    # ;
-          +Pl+Acc:%>%:jt    # ;
-          +Pl+Ill:%>%:jda   # ;
-          +Pl+Ela:%>%:jst    # ;
-          +Pl+Ine:%>%:jn    # ;
-          +Pl+Com:%>%:j # ;
-
-LEXICON dot-attrnomaccgen-infl   !!= * __@CODE@__
-   dot-nomaccgen-infl ;
-   dot-attr           ;
-
-LEXICON dot-attr   !!= * __@CODE@__
-   +Attr: DOT ;
-
-LEXICON dot-nomaccgen-infl   !!= * __@CODE@__
- +Sg+Acc: DOT ;
- +Sg+Gen: DOT ;
-
+LEXICON dot-infl   !!= * __@CODE@__
+DOT ;
 
 LEXICON DOT   !!= * __@CODE@__ - Adds the dot to dotted abbreviations.
 
@@ -191,4 +81,23 @@ LEXICON DOT   !!= * __@CODE@__ - Adds the dot to dotted abbreviations.
 < "@P.Pmatch.Loc@" {.} "+CLB":0 "+Use/PMatch":0 > # ;
 ! Make a regular ABBR analysis AND backtrack to find alternative analyses:
 < "+Use/PMatch":0 "@P.Pmatch.Backtrack@" 0:%. > # ;
+
+! =================
+
+!LEXICON ab-dot-adv-itrab   +ABBR+Gram/IAbbr:     ab-dot-adv ;
+!LEXICON ab-dot-adv-trab    +ABBR+Gram/TAbbr:     ab-dot-adv ;
+!LEXICON ab-dot-adv-trnumab +ABBR+Gram/TNumAbbr:  ab-dot-adv ;
+!LEXICON ab-dot-adv   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
+!+Adv+Abbr:  DOT ; ! Adv without case.
+
+!LEXICON ab-dot-num-itrab +Num+ABBR+Gram/IAbbr: ab-dot-num ;
+!LEXICON ab-dot-num-trab  +Num+ABBR+Gram/TAbbr: ab-dot-num ;
+!LEXICON ab-dot-num   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
+!+Num+Abbr:  dot-infl ;
+
+!LEXICON ab-dot-cc-itrab +CC+ABBR+Gram/IAbbr: ab-dot-cc ;
+!LEXICON ab-dot-cc-trab  +CC+ABBR+Gram/TAbbr: ab-dot-cc ;
+!LEXICON ab-dot-cc   !!= * __@CODE@__
+!+CC+Abbr:  DOT ;
+
 

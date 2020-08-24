@@ -293,11 +293,13 @@ Rules
 
 "Adjective neuter after nlr 1"
 !! __@RULENAME@__ 
-t:ð <=> Vow Cns+ i [ r: | l: | n: ] ( %^EPH: ) %>: _ #:  ;
+!t:ð <=> Vow Cns+ i [ r: | l: | n: ] ( %^EPH: ) %>: _ #:  ;
+t:ð <=> Vow Cns+ i [ r: | l: | n: ]  %^EPH:  %>: _ #:  ;
 
 "Adjective neuter after nlr 2"
 !! __@RULENAME@__ 
-Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
+!Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
+Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
      where Cx in ( l n r ) ; 	      
 
 !!€ mikil^EPH>t

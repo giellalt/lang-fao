@@ -24,12 +24,12 @@ jobs:
         with:
           path: lang
       - name: Install dev dependencies
-        uses: divvun/actions/lang/install-deps@develop
+        uses: divvun/actions/lang/install-deps@master
         with:
           sudo: false
       - name: Build
         id: build
-        uses: divvun/actions/lang/build@develop
+        uses: divvun/actions/lang/build@master
         with:
           fst: hfst
       - name: Upload spellers
@@ -53,15 +53,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Divvun CI
-        uses: divvun/actions/setup@develop
+        uses: divvun/actions/setup@master
         with:
           key: ${{ secrets.DIVVUN_KEY }}
       - name: Get version
         id: version
-        uses: divvun/actions/version@develop
+        uses: divvun/actions/version@master
         with:
           speller-manifest: true
-          nightly: develop, test-ci
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Download Spellers
         uses: actions/download-artifact@v2
@@ -69,28 +68,28 @@ jobs:
           name: spellers
       - name: Install build tools from Pahkat for Windows
         if: ${{ matrix.type == 'speller-windows' }}
-        uses: divvun/actions/pahkat/init@develop
+        uses: divvun/actions/pahkat/init@master
         with:
           repo: https://pahkat.uit.no/devtools/
           channel: nightly
           packages: pahkat-uploader
       - name: Install build tools from Pahkat for macOS
         if: ${{ matrix.type == 'speller-macos' || matrix.type == 'speller-mobile' }}
-        uses: divvun/actions/pahkat/init@develop
+        uses: divvun/actions/pahkat/init@master
         with:
           repo: https://pahkat.uit.no/devtools/
           channel: nightly
           packages: divvun-bundler, pahkat-uploader, thfst-tools, xcnotary
       - name: Run Divvun Bundler
         id: bundler
-        uses: divvun/actions/speller/bundle@develop
+        uses: divvun/actions/speller/bundle@master
         with:
           speller-type: ${{ matrix.type }}
           speller-manifest-path: "manifest.toml"
           speller-paths: ${{ needs.build.outputs['speller-paths'] }}
           version: ${{ steps.version.outputs.version }}
       - name: Deploy to Pahkat
-        uses: divvun/actions/speller/deploy@develop
+        uses: divvun/actions/speller/deploy@master
         with:
           speller-type: ${{ matrix.type }}
           speller-manifest-path: "manifest.toml"

@@ -5,97 +5,99 @@
 !! Also splitting when in doubt: -noun-adj => -noun and -adj
 !! Then pointing to two contlexes, a dot-one and a non-dot-one.
 
-LEXICON ab ! No POS, don't know what pos
-ab-nodot ;
-ab-dot ;
+! Noun or not
+LEXICON ab-dot-trab ab-dot-noun-trab ; ! assuming noun
+LEXICON ab-dot-trnumab  ab-dot-noun-trnumab ; ! assuming noun
+LEXICON ab-trab ab-noun-trab ; ! assuming noun 
+LEXICON ab-trnumab ab-noun-trnumab ; ! assuming noun
 
+! The nouns
+LEXICON ab-noun-trab    +ABBR+Gram/TAbbr:    ab-noun ;
+LEXICON ab-noun-trnumab +ABBR+Gram/TNumAbbr: ab-noun ;
 LEXICON ab-noun
-ab-nodot-noun ;
-ab-dot-noun ;
+         ab-nodot-noun ;
++Use/NG: ab-dot-noun   ;
 
-LEXICON ab-nodot ! default
-+Abbr: # ;  ! no period, that is.
+! The adjectives
+!LEXICON ab-adj-itrab +ABBR+Gram/IAbbr: ab-adj ;
+!LEXICON ab-adj-trab  +ABBR+Gram/TAbbr: ab-adj ;
+!LEXICON ab-adj 
+!         ab-nodot-adj ;
+!+Use/NG: ab-dot-adj   ;
 
-LEXICON ab-dot ! Default
-+Abbr: DOT ;
-
-LEXICON ab-nodot-noun ! The bulk
-+Abbr+N: # ;  ! no period, that is.
-
-LEXICON ab-dot-noun ! This is the lexicon for abbrs that must have a period.
-+Abbr+N: DOT ;
-
-!LEXICON ab-nodot-noun-itrab
-!+Abbr+N: # ;
-
-!LEXICON ab-adj
-!ab-nodot-adj ;
-!ab-dot-adj ;
-
+! The adverbs
+!LEXICON ab-adv-itrab   +ABBR+Gram/IAbbr:    ab-adv ;
+!LEXICON ab-adv-trab    +ABBR+Gram/TAbbr:    ab-adv ;
+!LEXICON ab-adv-numnoab  +ABBR+Gram/NoAbbr:   ab-adv ;
 !LEXICON ab-adv
-!ab-nodot-adv ;
-!ab-dot-adv ;
+!         ab-nodot-adv ;
+!+Use/NG: ab-dot-adv   ;
 
-!LEXICON ab-num
-!ab-nodot-num ;
-!ab-dot-num;
+! The numerals
 
-! Here come POS and Case tags, and no period.
+!! !Lexicons without final period
+LEXICON ab-nodot-noun-itrab   +ABBR+Gram/IAbbr:    ab-nodot-noun ;
+LEXICON ab-nodot-noun 
++N+Abbr:  nodot-infl ;
 
-
-!LEXICON ab-nodot-adj
-!+Abbr: # ;  ! no period, that is.
-! +Abbr+A+Attr: # ;  ! no period, that is.
-! +Abbr+A: # ;  ! no period, that is.
-! +Abbr+A:%- R ; !^C^ TRY OUT THIS ONE
-
-!LEXICON ab-nodot-adv
-! +Abbr: # ;  ! no period, that is.
-!  +Abbr+Adv: # ;      ! Adv without case, consider this.
-! +Abbr+Adv+Attr: # ; ! no period, that is.
-! +Abbr+Adv: # ;  ! no period, that is.
-! +Abbr+Adv:%- R ; !^C^ TRY OUT THIS ONE
-
-!  LEXICON ab-nodot-num
-!+Abbr: # ;  ! no period, that is.
-! +Abbr+Num: # ;  ! no period, that is.
-! +Abbr+Num:%- R ; !^C^ TRY OUT THIS ONE
+LEXICON ab-nodot-adj   !!= * __@CODE@__
++Adj+Abbr:  nodot-infl ;
 
 
-! Here come POS and Case tags, with the period added.
+LEXICON ab-nodot-num   !!= * __@CODE@__
++Num+Abbr:  nodot-infl ;
+
+!! !Lexicons with final period
+
+LEXICON ab-dot-noun-itrab   +ABBR+Gram/IAbbr:    ab-dot-noun ;
+LEXICON ab-dot-noun-trab    +ABBR+Gram/TAbbr:    ab-dot-noun ;
+LEXICON ab-dot-noun-trnumab +ABBR+Gram/TNumAbbr: ab-dot-noun ;
+LEXICON ab-dot-noun   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
++N+Abbr:  dot-infl ;
+
+LEXICON ab-dot-adj-trab    +ABBR+Gram/TAbbr:    ab-dot-adj ;
+LEXICON ab-dot-adj   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
++Adj+Abbr:   dot-infl ;
 
 
-! The idea is that the nominal ones may have case, like e.g. P.E.N.
+LEXICON ab-dot-verb   !!= * __@CODE@__
++V+Abbr:  DOT ; ! Period.
 
-LEXICON ab-dot-adj ! This is the lexicon for abbrs that must have a period.
- +Abbr+A:%. # ;
+LEXICON ab-nodot-verb   !!= * __@CODE@__
++V+Abbr:  # ; ! No period.
+R- ;
 
-!LEXICON ab-dot-adv ! This is the lexicon for abbrs that must have a period.
-!  +Abbr+Adv:%. # ;        ! Adv without case.
+LEXICON nodot-infl   !!= * __@CODE@__
+# ;
+R- ;
 
-!LEXICON ab-dot-num ! This is the lexicon for abbrs that must have a period.
-! +Abbr:%. # ;
-! +Abbr+Num:%. # ;
-
-!LEXICON ab-dot-cc
-! +Abbr+CC:%. # ;
-
-!LEXICON ab-verb
-! ab-dot-verb ;
-! ab-nodot-verb ;
-
-!LEXICON ab-dot-verb
-! +Abbr+V+TV+Imprt:%.   # ; ! Period.
-
-!LEXICON ab-nodot-verb
-! +Abbr+V+TV+Imprt:    # ; ! No period.
-! # ;
-
+LEXICON dot-infl   !!= * __@CODE@__
+DOT ;
 
 LEXICON DOT   !!= * __@CODE@__ - Adds the dot to dotted abbreviations.
 
-! This one should create a new backtrack-point before the dot, but no sub-reading:
-< "@P.Pmatch.Backtrack@" 0:{.} > # ;
-! This one should create an mwe sub-reading:
-< "@P.Pmatch.Loc@" {.} "+PUNCT":0 "+Use/Disamb":0 > # ;
+ +Use/-PMatch:%. # ; ! We need the dot here for regular fsts
+! Split the abbr + full stop in two segments, but only when using pmatch:
+< "@P.Pmatch.Loc@" {.} "+CLB":0 "+Use/PMatch":0 > # ;
+! Make a regular ABBR analysis AND backtrack to find alternative analyses:
+< "+Use/PMatch":0 "@P.Pmatch.Backtrack@" 0:%. > # ;
+
+! =================
+
+!LEXICON ab-dot-adv-itrab   +ABBR+Gram/IAbbr:     ab-dot-adv ;
+!LEXICON ab-dot-adv-trab    +ABBR+Gram/TAbbr:     ab-dot-adv ;
+!LEXICON ab-dot-adv-trnumab +ABBR+Gram/TNumAbbr:  ab-dot-adv ;
+!LEXICON ab-dot-adv   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
+!+Adv+Abbr:  DOT ; ! Adv without case.
+
+!LEXICON ab-dot-num-itrab +Num+ABBR+Gram/IAbbr: ab-dot-num ;
+!LEXICON ab-dot-num-trab  +Num+ABBR+Gram/TAbbr: ab-dot-num ;
+!LEXICON ab-dot-num   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
+!+Num+Abbr:  dot-infl ;
+
+!LEXICON ab-dot-cc-itrab +CC+ABBR+Gram/IAbbr: ab-dot-cc ;
+!LEXICON ab-dot-cc-trab  +CC+ABBR+Gram/TAbbr: ab-dot-cc ;
+!LEXICON ab-dot-cc   !!= * __@CODE@__
+!+CC+Abbr:  DOT ;
+
 

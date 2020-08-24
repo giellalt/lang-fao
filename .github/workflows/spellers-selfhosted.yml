@@ -29,7 +29,7 @@ jobs:
           sudo: false
       - name: Build
         id: build
-        uses: divvun/actions/lang/build@master
+        uses: divvun/actions/lang/build@develop
         with:
           fst: hfst
       - name: Upload spellers
@@ -53,7 +53,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Divvun CI
-        uses: divvun/actions/setup@master
+        uses: divvun/actions/setup@develop
         with:
           key: ${{ secrets.DIVVUN_KEY }}
       - name: Get version
@@ -69,14 +69,14 @@ jobs:
           name: spellers
       - name: Install build tools from Pahkat for Windows
         if: ${{ matrix.type == 'speller-windows' }}
-        uses: divvun/actions/pahkat/init@master
+        uses: divvun/actions/pahkat/init@develop
         with:
           repo: https://pahkat.uit.no/devtools/
           channel: nightly
           packages: pahkat-uploader
       - name: Install build tools from Pahkat for macOS
         if: ${{ matrix.type == 'speller-macos' || matrix.type == 'speller-mobile' }}
-        uses: divvun/actions/pahkat/init@master
+        uses: divvun/actions/pahkat/init@develop
         with:
           repo: https://pahkat.uit.no/devtools/
           channel: nightly

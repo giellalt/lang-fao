@@ -493,8 +493,8 @@ REMOVE:vid ("viður") IF (0 ("við") + Pr) (1 Acc OR Dat);
 
 # Case within PP phrases
 
-SELECT:r40 Acc IF (*-1 ACCPREP BARRIER NOTACC OR V OR Pr OR Adv);
-SELECT:r41 Dat IF (*-1 DATPREP BARRIER NOTDAT OR V OR Pr OR Adv);
+SELECT:r40 Acc IF (*-1 ACCPREP BARRIER NOTACC OR V OR Pr OR Adv)(NOT 0 VFIN);
+SELECT:r41 Dat IF (*-1 DATPREP BARRIER NOTDAT OR V OR Pr OR Adv)(NOT 0 VFIN);
 
 REMOVE:r42 NOTDAT IF (*-1 DATPREP BARRIER NOTDAT OR S-BOUNDARY OR V OR Pr OR Adv OR CLB);
 #REMOVE Acc IF (*-1 DATPREP BARRIER NOTDAT);
@@ -982,6 +982,8 @@ REMOVE:ErtTu ("erur") + Adv IF (*0 ("tú"));
  
 # Infinitive
 
+SELECT:AdInf Inf IF (-1 ("so at") OR ("at"));
+
 SELECT:r51 Inf IF (*-1 MODV BARRIER V);
 
 REMOVE (V Pl) IF (-2 VFIN + Sg)(-1 (Pron Sg))(0 Inf);
@@ -989,6 +991,10 @@ REMOVE (V Pl) IF (-1 N + Sg LINK *-1 VFIN + Sg BARRIER NPNH)(0 Inf);
 
 #REMOVE Inf IF (-1 (Pl Nom))(0 (V Pl))(NOT -1 Acc LINK *-2 VFIN BARRIER NPNHA OR CLB);
 REMOVE Inf IF (-1 (Pl Nom))(0 (V Pl))(NOT -1 Acc)(NOT -2 VFIN);
+
+REMOVE Inf IF (-1 Adv OR RIGHT OR Acc)(0 V + Pl)(1 Pl + Nom) ;
+
+REMOVE:PlandPPandV Inf IF (*-1 Pl + Nom BARRIER VFIN) ;
 
 # Imperative
 
@@ -1040,6 +1046,9 @@ SELECT Sup IF (*-1 HAVA BARRIER NOT-ADV LINK *-1 Nom);
 
 #SELECT:r55 Sup IF (*-1 ("fáa" V) OR ("hava" V Ind) BARRIER NOT-ADV);
 #check 
+
+SELECT:SupSup Sup IF (-2 Sup)(-1 3Sg);
+SELECT:AdvSupSup Sup IF (-3 3Sg)(-2 Adv)(-1 Sup);
 
 REMOVE:r56 Sup IF (0 Ind)(NOT *-1C VFIN BARRIER S-BOUNDARY)(NOT *1C VFIN BARRIER S-BOUNDARY);
 

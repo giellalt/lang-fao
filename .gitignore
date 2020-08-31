@@ -16,6 +16,7 @@ Makefile
 *.xpi
 *.zip
 *.service
+/src/filters/remove-all*.regex
 /src/fst/generated_files/*
 /src/fst/url.lexc
 /src/fst/*.tmp.*
@@ -32,6 +33,7 @@ Makefile
 /tools/grammarcheckers/errors.xml
 /tools/grammarcheckers/schemas.xml
 /tools/grammarcheckers/pipespec.xml
+/tools/grammarcheckers/filters/make-desktopspeller-CG-tags.regex
 /tools/analysers/*.pmhfst
 /tools/analysers/*.cg3
 /tools/analysers/*.zcheck

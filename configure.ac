@@ -101,7 +101,7 @@ AM_CONDITIONAL([HAVE_ALT_ORTHS], [test "x$ALT_ORTHS" != "x" \
 # Specify whether spellers for alternative orthographies should be built, the
 # default is to build them. Change the value below from 'true' to 'false' if
 # such spellers are NOT wanted.
-AM_CONDITIONAL([WANT_ALT_ORTH_SPELLERS], [ true ])
+AM_CONDITIONAL([WANT_ALT_ORTH_PROOFTOOLS], [ true ])
 
 # Case handling: the default is to assume an orthography with case distinctions:
 # upper vs lower case. That is not always true, or the case handling is such

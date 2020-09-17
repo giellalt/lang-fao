@@ -11,22 +11,22 @@
 ! _ _ Surnames
 ! _ _ Place names and other names
 
-!LEXICON guess
-! < [A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Æ|Ø|Å
-!   |Á|É|Í|Ó|Ú|Ý|Ä|Ö|Ü]
-!   [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å
-!   |á|ð|é|í|ó|ú|ý|ä|ö|ü]*
-!   [a|e|i|o|u|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü]
-!   [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å]*
-!   [b|c|d|e|f|g|h|j|k|l|o|q|v|w|x|y|z|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü]
-!   %+N:0 %+Prop:0 %+Sg:0 %+Err%/Orth:0
-! > guesstag ;
+LEXICON guess
+ < [A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Æ|Ø|Å
+   |Á|É|Í|Ó|Ú|Ý|Ä|Ö|Ü]
+   [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å
+   |á|ð|é|í|ó|ú|ý|ä|ö|ü]*
+   [a|e|i|o|u|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü]
+   [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å]*
+   [b|c|d|e|f|g|h|j|k|l|o|q|v|w|x|y|z|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü]
+   "+N":0 "+Prop":0 "+Sg":0 "+Err/Orth":0
+ > guesstag ;
 
-!LEXICON guesstag
-! +Nom+Err/Guess:  # ;
-! +Acc+Err/Guess:  # ;
-! +Dat+Err/Guess:  # ; !+i ?
-! +Gen+Err/Guess:s # ;
+LEXICON guesstag
+ +Nom:  # ;
+ +Acc:  # ;
+ +Dat:  # ; !+i ?
+ +Gen:s # ;
 
 
 

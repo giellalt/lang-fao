@@ -1,49 +1,59 @@
 ! ======== !
-!! !!! Faroese Numerals 
+!! !!! Faroese Numerals
 ! ======== !
 
 
 
 LEXICON Numeral
 !! __@LEXNAME@__ splitting in types
-Textual ;  !!= * @CODE@ 
-ARABICS ;  !!= * @CODE@ 
-ARABICORD ;  !!= * @CODE@ 
-ROMAN ;  !!= * @CODE@ 
-ISOLATED-NUMEXP ;  !!= * @CODE@ 
-NUM-PREFIXES ;  !!= * @CODE@ 
+Textual ;  !!= * @CODE@
+ARABICS ;  !!= * @CODE@
+ARABICORD ;  !!= * @CODE@
+ROMAN ;  !!= * @CODE@
+ISOLATED-NUMEXP ;  !!= * @CODE@
+NUM-PREFIXES ;  !!= * @CODE@
 
 
 LEXICON Textual
+1-9 ;
+TEXTTENS ;
+TEXTTEENS ;
 basic ;
 ordinals ;
 
-LEXICON basic
-eitt+Num:ei EITT ;
-eini n ;
-tvey+Num:tv TVEY ;
-trý+Num:tr TRÝ ;
+
+LEXICON 1-9
+eitt:ei EITTsplit ;
+tvey:tv TVEYsplit ;
+trý:tr TRÝsplit ;
 einir+Num:ein PAIRNUM ;
 tvinnir+Num:tvinn PAIRNUM ;
 trinnir+Num:trinn PAIRNUM ;
-fýra n ;
-fimm n ;
-seks n ;
-sjey n ;
-átta n ;
-áttir n ;
-níggju n ;
-tíggju n ;
-ellivu n ;
-tólv n ;
-trettan n ;
-fjúrtan n ;
-fimtan n ;
-sekstan n ;
-seytan n ; ! XXX check
-seytjan n ;
-átjan n ;
-nítjan n ;
+fýra nsplit ;
+fimm nsplit ;
+seks nsplit ;
+sjey nsplit ;
+átta nsplit ;
+áttir nsplit ;
+níggju nsplit ;
+
+LEXICON EITTsplit
++Num: EITT ;
+nog:nog TEXTTENS ;
+
+LEXICON TVEYsplit
++Num: TVEY ;
+og:og TEXTTENS ;
+
+LEXICON TRÝsplit
++Num: TRÝ ;
+ýog:ýog TEXTTENS ;
+
+LEXICON nsplit
+n ;
+og:og TEXTTENS ;
+
+LEXICON TEXTTENS
 tjúgu n ;
 tretivu n ;
 tríati n ;     ! 1Mos
@@ -58,6 +68,24 @@ fýrs n ;
 áttati n ;     ! 1Mos
 hálvfems n ;
 níti n ;       ! 1Mos
+
+
+LEXICON TEXTTEENS
+ellivu n ;
+tólv n ;
+trettan n ;
+fjúrtan n ;
+fimtan n ;
+sekstan n ;
+seytan n ; ! XXX check
+seytjan n ;
+átjan n ;
+nítjan n ;
+
+LEXICON basic
+
+eini n ;
+tíggju n ;
 hundrað n ;
 túsund n ;
 millión n ;

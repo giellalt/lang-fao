@@ -102,6 +102,7 @@ LIST Pass = Pass ;
 LIST Sbj = Sbj ;
 LIST Sup = Sup ;
 LIST Cmpnd = Cmpnd ;
+LIST Rom = Rom ;
 LIST CLB = CLB ;
 LIST PUNCT = PUNCT ;
 LIST LEFT = LEFT ;
@@ -115,6 +116,7 @@ LIST Sem/Sur = Sem/Sur ;
 LIST Sem/Org = Sem/Org ;
 LIST Sem/Veh = Sem/Veh ;
 LIST Sem/Year = Sem/Year ;
+LIST Sem/ID = Sem/ID ;
 
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
 Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
@@ -286,6 +288,8 @@ LIST TIME = "sunnudagur" ;
 
 LIST ABSTRACT = "ráð" "byráð" ;
 
+LIST SGMEASURE = "fótur"
+
 LIST BAREPLURALS = "barn" "fólk" "bygdafólk" "konufólk" ;
 # these words are usually plurals when used alone. All countable neuters?
 #$ Tú sært barn standa.
@@ -346,8 +350,8 @@ COPY:msyn-inf (Inf &SUGGEST) EXCEPT (Sup &msyn-inf) TARGET (V Sup &msyn-inf) ;
 
 
 #!! Neu should be 1Sg
-ADD:msyn-sg1 (&msyn-sg1) TARGET (N Neu Sg Nom Def) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
-COPY:msyn-sg1 (V Ind Prs 1Sg &SUGGEST) EXCEPT (N Neu Sg Nom Def &msyn-sg1) TARGET (&msyn-sg1) ;
+ADD:msyn-prfptc-sg1 (&msyn-prfptc-sg1) TARGET (V PrfPtc Neu Sg Nom Indef) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
+COPY:msyn-prfptc-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (PrfPtc Neu Sg Nom Indef &msyn-prfptc-sg1) TARGET (&msyn-prfptc-sg1) ;
 ## Eg takið tað.
 #$ Eg taki tað.
 
@@ -391,29 +395,29 @@ COPY:lex-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-laet
 #!! !Definiteness
 
 #!! Neu Indef should be Neu Def
-ADD:msyn-nomdef (&msyn-nomdef) TARGET (N Neu Sg Dat Indef) IF (NOT 0 Prop)(-1 BOS or CS)(1 VFIN OR CS OR Pr) ;
+ADD:msyn-nomdef (&msyn-nomdef) TARGET (N Neu Sg Dat Indef) IF (NOT 0 Prop)(-1 ("at"))(1 VFIN OR CS OR Pr) ;
 COPY:msyn-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef &msyn-nomdef) TARGET (N Neu &msyn-nomdef) ;
 ## .. fyri at samfelagi skal fylgja altjóða menningini.
 #$ .. fyri at samfelagið skal fylgja altjóða menningini.
 
-#$ at skifti millum útbúgvingarskiparnirnar er væl skipað.
+## at skifti millum útbúgvingarskiparnirnar er væl skipað.
 #$ at skiftið millum útbúgvingarskiparnirnar er væl skipað.
 
 
 #!! !Quantor phrases
 
 #!! Num + N Sg should be Num + N Pl
-ADD:msyn-npl (&msyn-npl) TARGET N  IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year)(0 (N Msc Sg Acc Indef) LINK NOT 0 Pl) ;
+ADD:msyn-npl (&msyn-npl) TARGET N  IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year OR Sem/ID OR Rom)(0 (N Msc Sg Acc Indef) LINK NOT 0 Pl OR SGMEASURE) ;
 COPY:msyn-npl (Pl Acc Indef  &SUGGEST) EXCEPT (Sg Acc Indef &msyn-npl) TARGET (N Msc &msyn-npl) ;
 ADDRELATION:msyn-npl ($2)  (&msyn-npl)  TO (*-1 Num) ; # this ADDRELATION rule is to be able to refer to two words to the user.
 ##  6 skipara hljópu fyrir borð með kistur sinar ok våru allir drepnir
 #$  6 skiparar hljópu fyrir borð með kistur sinar ok våru allir drepnir
 
 #!! Num + N Sg should be Num + N Pl (We need arabic tag here)
-ADD:msyn-npl (&msyn-npl) TARGET (N Msc Pl Gen Indef) IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year); # (NOT *-1 Num LINK -1 SOMEGENPREP);
-COPY:msyn-npl (Nom Indef  &SUGGEST) EXCEPT (Gen Indef &msyn-npl) TARGET (N Msc Pl &msyn-npl) ;
-ADDRELATION:msyn-npl ($2)  (&msyn-npl)  TO (*-1 Num) ; 
-
+#ADD:msyn-npl (&msyn-npl) TARGET (N Msc Pl Gen Indef) IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year); # (NOT *-1 Num LINK -1 SOMEGENPREP);
+#COPY:msyn-npl (Nom Indef  &SUGGEST) EXCEPT (Gen Indef &msyn-npl) TARGET (N Msc Pl &msyn-npl) ;
+#ADDRELATION:msyn-npl ($2)  (&msyn-npl)  TO (*-1 Num) ; 
+# Gen Pl?? Denne forstår eg ikkje logikken attom.
 
 
 #!! !!Subjunctives

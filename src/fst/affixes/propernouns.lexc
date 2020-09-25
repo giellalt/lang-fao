@@ -19,14 +19,14 @@ LEXICON guess
    [a|e|i|o|u|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü]
    [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å]*
    [b|c|d|e|f|g|h|j|k|l|o|q|v|w|x|y|z|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü]
-   %+N:0 %+Prop:0 %+Sg:0 %+Err%/Orth:0
+   "+N":0 "+Prop":0 "+Sg":0 "+Err/Orth":0
  > guesstag ;
 
 LEXICON guesstag
- +Nom+Err/Guess:  # ;
- +Acc+Err/Guess:  # ;
- +Dat+Err/Guess:  # ; !+i ?
- +Gen+Err/Guess:s # ;
+ +Nom:  # ;
+ +Acc:  # ;
+ +Dat:  # ; !+i ?
+ +Gen:s # ;
 
 
 
@@ -459,7 +459,7 @@ LEXICON propnoun_k55
  +N+Prop+Msc+Sg+Acc:a # ;
  +N+Prop+Msc+Sg+Dat:a # ;
  +N+Prop+Msc+Sg+Gen:iar # ;
- +N+Prop+Msc+Sg+Acc:a R ; ! compound
+ +N+Prop+Msc+Sg+Acc:a R- ; ! compound
 
 LEXICON propnoun_k6e
  +Prop: k6e ;

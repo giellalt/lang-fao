@@ -305,14 +305,15 @@ SET NOT-1SG = WORD - 1Sg - (Prt Sg) ;
 
 #!! Declaring all the error tags
 
-LIST &msyn-sg1 = &msyn-sg1 ;
-LIST &msyn-prspl = &msyn-prspl ;
-LIST &msyn-nomdef = &msyn-nomdef ;
-LIST &msyn-inf = &msyn-inf ;
-LIST &msyn-sup = &msyn-sup ;
-LIST &msyn-npl = &msyn-npl ;
-LIST &lex-laet = &lex-laet ;
-LIST &lex-tad = &lex-tad ;
+LIST &msyn-sup-sg1 = &msyn-sup-sg1 ;
+LIST &msyn-sup-prspl = &msyn-sup-prspl ;
+LIST &msyn-nomindef-nomdef = &msyn-nomindef-nomdef ;
+LIST &msyn-sup-inf = &msyn-sup-inf ;
+LIST &msyn-inf-sup = &msyn-inf-sup ;
+LIST &msyn-nsg-npl = &msyn-nsg-npl ;
+LIST &lex-lat-laet = &lex-lat-laet ;
+LIST &lex-ta-tad = &lex-ta-tad ;
+LIST &lex-liti-litid = &lex-liti-litid ;
 
 
 #!! !!!Rule section
@@ -329,8 +330,8 @@ ADD (&typo &SUGGESTWF) (<spelled>) ;
 #!! !Sg1 target forms
 
 #!! Sup should be 1Sg
-ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (*-1 ("eg" Pron Pers Sg Nom BARRIER NOT-ADV LINK -1 NOT-1SG));
-COPY:msyn-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1) ;
+ADD:msyn-sup-sg1 (&msyn-sup-sg1) TARGET (V Sup) IF (*-1 ("eg" Pron Pers Sg Nom BARRIER NOT-ADV LINK -1 NOT-1SG));
+COPY:msyn-sup-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sup-sg1) TARGET (V Sup &msyn-sup-sg1) ;
 
 ## - Harumframt kiksaði ein týdningarmikil útgávukonsert, tí eg fingið ikki neyðuga visumið.
 #$ - Harumframt kiksaði ein týdningarmikil útgávukonsert, tí eg fingi ikki neyðuga visumið.
@@ -338,13 +339,13 @@ COPY:msyn-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1)
 #$ - Eg fari avstað.
 
 #!! Sup  should be 1Sg
-ADD:msyn-sg1 (&msyn-sg1) TARGET (V Sup) IF (-1 ("eg" Pron Pers Sg Nom))(NOT -2 (Prt Sg) OR 1Sg);
-COPY:msyn-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sg1) TARGET (V Sup &msyn-sg1) ;
+ADD:msyn-sup-sg1 (&msyn-sup-sg1) TARGET (V Sup) IF (-1 ("eg" Pron Pers Sg Nom))(NOT -2 (Prt Sg) OR 1Sg);
+COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sup-sg1) TARGET (V Sup &msyn-sup-sg1) ;
 
 
 #!! Sup  should be Inf
-ADD:msyn-inf (&msyn-inf) TARGET (V Sup) IF (-1 MODV);
-COPY:msyn-inf (Inf &SUGGEST) EXCEPT (Sup &msyn-inf) TARGET (V Sup &msyn-inf) ;
+ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V Sup) IF (-1 MODV);
+COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (Sup &msyn-sup-inf) TARGET (V Sup &msyn-sup-inf) ;
 ## - Eg vil komað.
 #$ - Eg vil koma.
 
@@ -356,16 +357,16 @@ COPY:msyn-prfptc-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (PrfPtc Neu Sg Nom Indef &msy
 #$ Eg taki tað.
 
 #!! Imp Pl should be 1Sg
-ADD:msyn-sg1 (&msyn-sg1) TARGET (V Imp Pl) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
-COPY:msyn-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Imp Pl &msyn-sg1) TARGET (V &msyn-sg1) ;
+ADD:msyn-sup-sg1 (&msyn-sup-sg1) TARGET (V Imp Pl) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
+COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Imp Pl &msyn-sup-sg1) TARGET (V &msyn-sup-sg1) ;
 ## Eg lesið tað.
 #$ Eg lesi tað.
 
 
 #!! !Plural forms
 #!! Sup should be Pl
-ADD:msyn-prspl (&msyn-prspl) TARGET (V Sup) IF (*-1 ("eg") + Pron + Pers + Pl + Nom BARRIER NOT-ADV LINK NOT -1 V + Pl);
-COPY:msyn-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-prspl) TARGET (V Sup &msyn-prspl) ;
+ADD:msyn-sup-prspl (&msyn-sup-prspl) TARGET (V Sup) IF (*-1 ("eg") + Pron + Pers + Pl + Nom BARRIER NOT-ADV LINK NOT -1 V + Pl);
+COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V Sup &msyn-sup-prspl) ;
 
 ## Vit skrivað til tín í dag um hetta málið.
 #$ Vit skriva til tín í dag um hetta málið.
@@ -377,15 +378,15 @@ COPY:msyn-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-prspl) TARGET (V Sup &ms
 #!! !Supine forms
 
 #!! Inf should be Sup
-ADD:msyn-sup (&msyn-sup) TARGET (Inf) IF (-1 ("hava" V Ind))(NOT 0 Pass)(NOT *1 Sup)(NOT 0 A LINK 1 N);
-COPY:msyn-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-sup) TARGET (&msyn-sup) ;
+ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (Inf) IF (-1 ("hava" V Ind))(NOT 0 Pass)(NOT *1 Sup)(NOT 0 A LINK 1 N);
+COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (&msyn-inf-sup) ;
 
 
 #!! !!Specific verbs
 
 #!! Past tens of láta is læt not lat
-ADD:lex-laet (&lex-laet) TARGET ("lata" V Imp Sg) IF (-1 Adv OR Nom) ;
-COPY:lex-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-laet) TARGET ("lata");
+ADD:lex-lat-laet (&lex-lat-laet) TARGET ("lata" V Imp Sg) IF (-1 Adv OR Nom) ;
+COPY:lex-lat-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-lat-laet) TARGET ("lata");
 ## Tað lat stygt.
 ## Tað læt stygt.
 
@@ -395,8 +396,8 @@ COPY:lex-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-laet
 #!! !Definiteness
 
 #!! Neu Indef should be Neu Def
-ADD:msyn-nomdef (&msyn-nomdef) TARGET (N Neu Sg Dat Indef) IF (NOT 0 Prop)(-1 ("at"))(1 VFIN OR CS OR Pr) ;
-COPY:msyn-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef &msyn-nomdef) TARGET (N Neu &msyn-nomdef) ;
+ADD:msyn-nomindef-nomdef (&msyn-nomindef-nomdef) TARGET (N Neu Sg Dat Indef) IF (NOT 0 Prop)(-1 ("at"))(1 VFIN OR CS OR Pr) ;
+COPY:msyn-nomindef-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef &msyn-nomindef-nomdef) TARGET (N Neu &msyn-nomindef-nomdef) ;
 ## .. fyri at samfelagi skal fylgja altjóða menningini.
 #$ .. fyri at samfelagið skal fylgja altjóða menningini.
 
@@ -407,16 +408,16 @@ COPY:msyn-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef &msyn-nomdef) TARGET (N Ne
 #!! !Quantor phrases
 
 #!! Num + N Sg should be Num + N Pl
-ADD:msyn-npl (&msyn-npl) TARGET N  IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year OR Sem/ID OR Rom)(0 (N Msc Sg Acc Indef) LINK NOT 0 Pl OR SGMEASURE) ;
-COPY:msyn-npl (Pl Acc Indef  &SUGGEST) EXCEPT (Sg Acc Indef &msyn-npl) TARGET (N Msc &msyn-npl) ;
-ADDRELATION:msyn-npl ($2)  (&msyn-npl)  TO (*-1 Num) ; # this ADDRELATION rule is to be able to refer to two words to the user.
+ADD:msyn-nsg-npl (&msyn-nsg-npl) TARGET N  IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year OR Sem/ID OR Rom)(0 (N Msc Sg Acc Indef) LINK NOT 0 Pl OR SGMEASURE) ;
+COPY:msyn-nsg-npl (Pl Acc Indef  &SUGGEST) EXCEPT (Sg Acc Indef &msyn-nsg-npl) TARGET (N Msc &msyn-nsg-npl) ;
+ADDRELATION:msyn-nsg-npl ($2)  (&msyn-nsg-npl)  TO (*-1 Num) ; # this ADDRELATION rule is to be able to refer to two words to the user.
 ##  6 skipara hljópu fyrir borð með kistur sinar ok våru allir drepnir
 #$  6 skiparar hljópu fyrir borð með kistur sinar ok våru allir drepnir
 
 #!! Num + N Sg should be Num + N Pl (We need arabic tag here)
-#ADD:msyn-npl (&msyn-npl) TARGET (N Msc Pl Gen Indef) IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year); # (NOT *-1 Num LINK -1 SOMEGENPREP);
-#COPY:msyn-npl (Nom Indef  &SUGGEST) EXCEPT (Gen Indef &msyn-npl) TARGET (N Msc Pl &msyn-npl) ;
-#ADDRELATION:msyn-npl ($2)  (&msyn-npl)  TO (*-1 Num) ; 
+#ADD:msyn-nsg-npl (&msyn-nsg-npl) TARGET (N Msc Pl Gen Indef) IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year); # (NOT *-1 Num LINK -1 SOMEGENPREP);
+#COPY:msyn-nsg-npl (Nom Indef  &SUGGEST) EXCEPT (Gen Indef &msyn-nsg-npl) TARGET (N Msc Pl &msyn-nsg-npl) ;
+#ADDRELATION:msyn-nsg-npl ($2)  (&msyn-nsg-npl)  TO (*-1 Num) ; 
 # Gen Pl?? Denne forstår eg ikkje logikken attom.
 
 
@@ -426,8 +427,8 @@ ADDRELATION:msyn-npl ($2)  (&msyn-npl)  TO (*-1 Num) ; # this ADDRELATION rule i
 #$ Tey, ið hava mannað arbeiðsbólkin, eru:
 
 #!! ta should be tað
-ADD:lex-tad (&lex-tad) TARGET ("tann" Pron Dem Fem Sg Acc) IF (-1 (Ind))(1 Det OR Pron)(NOT 0 ("tí" CS)) ;
-COPY:lex-tad ("tað" Det Neu Sg Nom &SUGGEST) EXCEPT ("tann" Pron Dem Fem Sg Acc &lex-tad) TARGET (&lex-tad) ;
+ADD:lex-ta-tad (&lex-ta-tad) TARGET ("tann" Pron Dem Fem Sg Acc) IF (-1 (Ind))(1 Det OR Pron)(NOT 0 ("tí" CS)) ;
+COPY:lex-ta-tad ("tað" Det Neu Sg Nom &SUGGEST) EXCEPT ("tann" Pron Dem Fem Sg Acc &lex-ta-tad) TARGET (&lex-ta-tad) ;
 
 ## Er ta onkur sum hevur eina troyggju til føroyskan búna til sølu?
 #$ Er tað onkur sum hevur eina troyggju til føroyskan búna til sølu?
@@ -436,8 +437,8 @@ COPY:lex-tad ("tað" Det Neu Sg Nom &SUGGEST) EXCEPT ("tann" Pron Dem Fem Sg Acc
 #!! !!Adjectives
 
 #!! líti should be lítið
-ADD:lex-litid (&lex-litid) TARGET ("líta" V Ind Prs 1Sg) IF (-1 Det OR Adv OR Pr)(1 N + Neu + Indef);
-COPY:lex-litid ("lítil" A Neu Sg Nom Indef &SUGGEST) EXCEPT ("líta" V Ind Prs 1Sg &lex-litid) TARGET (&lex-litid) ;
+ADD:lex-liti-litid (&lex-liti-litid) TARGET ("líta" V Ind Prs 1Sg) IF (-1 Det OR Adv OR Pr)(1 N + Neu + Indef);
+COPY:lex-liti-litid ("lítil" A Neu Sg Nom Indef &SUGGEST) EXCEPT ("líta" V Ind Prs 1Sg &lex-litid) TARGET (&lex-liti-litid) ;
 
 ## at ov líti samfesti er í verandi vegleiðingarskipan.
 #$ at ov lítið samfesti er í verandi vegleiðingarskipan.

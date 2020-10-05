@@ -9,7 +9,7 @@
 
 
 HLOOKUP=$(echo $HLOOKUP)
-GTHOME=$(echo $GTHOME)
+GTLANGS=$(echo $GTLANGS)
 
 
 PATTERN=$1

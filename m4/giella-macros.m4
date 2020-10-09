@@ -656,11 +656,21 @@ AM_CONDITIONAL([WANT_REVERSED_INTERSECT], [test "x$enable_reversed_intersect" !=
 
 ############ Tool switches: ############
 # Enable all stable tools in one go:
+AC_ARG_ENABLE([ci],
+			  [AS_HELP_STRING([--enable-ci],
+			  [build nothing unless explicitly enabled @<:@default=no@:>@])],
+			  [enable_ci=$enableval],
+			  [enable_ci=no])
+# Must zero out enableval, otherwise it will carry its value to the next use,
+# so you can't test whether something was enabled due to defaults or to active enabling:
+enableval=''
+
 AC_ARG_ENABLE([all_tools],
 			  [AS_HELP_STRING([--enable-all-tools],
 			  [build all tools (excluding unstable or experimental tools, which must be explicitly enabled with --enable-dialects, --enable-glossers, --enable-phonetic, --enable-downcaseerror, --enable-L2, --enable-pattern-hyphenators, --enable-fomaspeller, --enable-vfstspeller) @<:@default=no@:>@])],
 			  [enable_all_tools=$enableval],
 			  [enable_all_tools=no])
+enableval=''
 
 # Enable morphological analysers - default is 'yes'
 AC_ARG_ENABLE([analysers],
@@ -668,7 +678,9 @@ AC_ARG_ENABLE([analysers],
                               [build morphological analysers @<:@default=yes@:>@])],
               [enable_analysers=$enableval],
               [enable_analysers=yes])
+AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_analysers=no])
 AM_CONDITIONAL([WANT_MORPHOLOGY], [test "x$enable_analysers" != xno])
+enableval=''
 
 # Enable morphological generators - default is 'yes'
 AC_ARG_ENABLE([generators],
@@ -676,7 +688,9 @@ AC_ARG_ENABLE([generators],
                               [build morphological generators @<:@default=yes@:>@])],
               [enable_generators=$enableval],
               [enable_generators=yes])
+AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_generators=no])
 AM_CONDITIONAL([WANT_GENERATION], [test "x$enable_generators" != xno])
+enableval=''
 
 # Enable glossing morphological analysers - default is 'no'
 AC_ARG_ENABLE([glossers],
@@ -684,7 +698,9 @@ AC_ARG_ENABLE([glossers],
                               [build glossing morphological analysers @<:@default=no@:>@])],
               [enable_glossers=$enableval],
               [enable_glossers=no])
+AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_glossers=no])
 AM_CONDITIONAL([WANT_GLOSSERS], [test "x$enable_glossers" != xno])
+enableval=''
 
 # Enable text transcriptors - default is 'yes'
 AC_ARG_ENABLE([transcriptors],
@@ -692,7 +708,9 @@ AC_ARG_ENABLE([transcriptors],
                               [build text transcriptors @<:@default=yes@:>@])],
               [enable_transcriptors=$enableval],
               [enable_transcriptors=yes])
+AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_transcriptors=no])
 AM_CONDITIONAL([WANT_TRANSCRIPTORS], [test "x$enable_transcriptors" != xno])
+enableval=''
 
 # Enable syntactic parsing - default is 'yes'
 AC_ARG_ENABLE([syntax],
@@ -703,7 +721,9 @@ AC_ARG_ENABLE([syntax],
 AS_IF([test "x$enable_syntax" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
              [enable_syntax=no
               AC_MSG_ERROR([vislcg3 tools missing or too old, please install or disable syntax tools!])])
+AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_syntax=no])
 AM_CONDITIONAL([WANT_SYNTAX], [test "x$enable_syntax" != xno])
+enableval=''
 # $gt_prog_vislcg3
 
 # Enable grammar checkers - default is 'no' (via $enable_all_tools)
@@ -721,7 +741,9 @@ AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
       [AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$DIVVUN_CHECKER" = "xno"],
           [enable_grammarchecker=no
            AC_MSG_ERROR([divvun-checker required for testing grammar checkers])])])
+AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_grammarchecker=no])
 AM_CONDITIONAL([WANT_GRAMCHECK], [test "x$enable_grammarchecker" != xno])
+enableval=''
 
 # Enable all spellers - default is 'no'
 AC_ARG_ENABLE([spellers],
@@ -945,7 +967,7 @@ AM_CONDITIONAL([WANT_MORPHER], [test "x$enable_morpher" != xno])
 # Enable dialect-specific analysers and tools, such as spellers:
 AC_ARG_ENABLE([dialects],
               [AS_HELP_STRING([--enable-dialects],
-                              [build dialect specific fst's and spellers @<:@default=no@:>@])],
+                              [build dialect specific fst’s and spellers @<:@default=no@:>@])],
               [enable_dialects=$enableval],
               [enable_dialects=no])
 AS_IF([test "x$enable_dialects" = "xyes" -a "x$DIALECTS" = "x"],
@@ -953,7 +975,7 @@ AS_IF([test "x$enable_dialects" = "xyes" -a "x$DIALECTS" = "x"],
        AC_MSG_ERROR([You have not defined any dialects. Please see the documentation.])])
 AM_CONDITIONAL([WANT_DIALECTS], [test "x$enable_dialects" != xno])
 
-]) # ' # gt_ENABLE_TARGETS
+]) # gt_ENABLE_TARGETS
 
 ################################################################################
 # Define function to print the configure footer
@@ -962,19 +984,19 @@ AC_DEFUN([gt_PRINT_FOOTER],
 [
 cat<<EOF
 
-  -- specialised fst's (off by default): --
-  * dictionary fst's enabled: $enable_dicts
+  -- specialised fst’s (off by default): --
+  * dictionary fst’s enabled: $enable_dicts
   * Oahpa transducers enabled: $enable_oahpa
     * L2 analyser: $enable_L2
     * downcase error analyser: $enable_downcaseerror
   * generate abbr.txt: $enable_abbr
-  * build glossing fst's: $enable_glossers
-  * build dialect specific fst's: $enable_dialects
+  * build glossing fst’s: $enable_glossers
+  * build dialect specific fst’s: $enable_dialects
 
   -- Tools (off by default): --
   * phonetic/IPA conversion enabled: $enable_phonetic
   * CG-based MT enabled: $enable_cgmt
-  * Apertium MT fst's enabled: $enable_apertium
+  * Apertium MT fst’s enabled: $enable_apertium
   * build tokenisers: $enable_tokenisers
   * build morphololgical segmenter: $enable_morpher
   * build analyser tool: $enable_analyser_tool

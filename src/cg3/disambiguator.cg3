@@ -1110,8 +1110,8 @@ REMOVE:NotTopAcc2 Acc  IF (*-1 S-BOUNDARY BARRIER NPNH)(0 Nom + Pl)(1 V + Pl)(NO
 
 REMOVE:NomV3 Acc IF (-3 BOS OR CLB)(-2 Adv)(-1 VFIN)(0 N OR Pron + Pers);
 
-REMOVE:NomFragment Acc IF (0 Nom)(NOT *0 V);
-REMOVE:NomFragment Dat IF (0 Nom)(NOT *0 V);
+REMOVE:NomFragment Acc IF (0 Nom)(NOT *0 V)(NOT *-1 SOMEACCPREP);
+REMOVE:NomFragment Dat IF (0 Nom)(NOT *0 V)(NOT *-1 SOMEDATPREP);
 
 REMOVE Dat IF (1 SAFETV)(*2 N + Acc BARRIER NPNH);
 

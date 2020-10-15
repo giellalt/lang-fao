@@ -114,6 +114,22 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 
 
 
+  +Gram/TAbbr    !!≈ ; @CODE@ : Transitive abbreviation (it needs an argument)
+  +Gram/NoAbbr   !!≈ ; @CODE@ : Intransitive abbreviations that are homonymous
+                 !!    with more frequent words. They should only be considered
+                 !!    abbreviations in the middle of a sentence.
+  +Gram/TNumAbbr !!≈ ; @CODE@ : Transitive abbreviation if the following
+                 !!             constituent is numeric
+ +Gram/NumNoAbbr !!≈ ; @CODE@ : Transitive abbreviations for which numerals
+                 !! are complements and normal words. The abbreviation usage
+                 !! is less common and thus only the occurences in the middle of
+                 !! the sentence can be considered as true cases.
+  +Gram/TIAbbr   !!≈ ; @CODE@ : Both transitive and intransitive abbreviation
+  +Gram/IAbbr    !!≈ ; @CODE@ : Intransitive abbreviation (it takes no argument)
+  
+
+
+
 
  !!  !!Non-changing letters
  a2 !!= * @CODE@ This is for a special a Umlaut case
@@ -198,7 +214,7 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 +Err/Hyph
 +Err/Lex
 +Err/SpaceCmp
-
++Err/MissingSpace
 
 !! !!Symbols that need to be escaped on the lower side (towards twolc):
 !! Todo: Check whether these can be removed. They are probably obsolete.

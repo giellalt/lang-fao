@@ -2,7 +2,7 @@
 # or any later version.
 
 # ==================================================================== #
-#!!  S Y N T A C T I C   F U N C T I O N S   F O R   F A R O E S E
+#!!  S Y N T A C T I C   F U N C T I O N S   F O R   F A R O E S E
 # ==================================================================== #
 # ==================================================================== 
 
@@ -37,6 +37,7 @@ LIST A* = A* ;
 LIST Prop = Prop ;
 LIST Adv = Adv ;
 LIST Num = Num ;
+LIST Arab = Arab ;
 LIST CC = CC ;
 LIST CS = CS ;
 LIST Interj = Interj ;
@@ -95,6 +96,7 @@ LIST Sem/Sur = Sem/Sur ;
 LIST Sem/Org = Sem/Org ;
 LIST Sem/Veh = Sem/Veh ;
 LIST Sem/Adr = Sem/Adr ;
+LIST Sem/Year = Sem/Year ;
 
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
 Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
@@ -468,11 +470,17 @@ MAP:spred (@<SPRED) TARGET N + Nom IF (*-1 ("vera") + VFIN BARRIER NOT-NPMOD);
 #MAP:npmod (@>N) TARGET Det IF (0 (Det $$GENDER $$NUMBER $$NAGD $$DEFNESS)(1 (N $$GENDER $$NUMBER $$NAGD $$DEFNESS));
 MAP:npmod (@>N) TARGET Det IF (0 Det)(1 N);
 MAP:interj (@INTERJ) TARGET Interj ;
-MAP:advl (@<ADVL) TARGET Pr ;
+MAP:advl (@<ADVL) TARGET Pr IF (0 Pr LINK -1 VFIN);
+MAP:advl (@ADVL) TARGET Pr ;
+
+MAP:advl (@<ADVL) TARGET Adv IF (0 Adv LINK *-1 VFIN) ;
+MAP:advl (@ADVL>) TARGET Adv IF (0 Adv LINK *1 VFIN) ;
 
 MAP:p< (@P<) Gen (*-1 Pr BARRIER NOT-NPMOD)(NEGATE 1 Gen) ;
 MAP:p< (@P<) Acc (*-1 Pr BARRIER NOT-NPMOD)(NEGATE 1 Acc) ;
 MAP:p< (@P<) Dat (*-1 Pr BARRIER NOT-NPMOD)(NEGATE 1 Dat) ;
+
+MAP:nump< (@P<) Num (-1 Pr)(0 Arab or Sem/Year);
 
 MAP:p<coor (@P<) Gen (-1 CRD OR CC LINK -1 @P<) ;
 MAP:p<coor (@P<) Acc (-1 CRD OR CC LINK -1 @P<) ;
@@ -488,12 +496,16 @@ MAP:hnounNom (@HNOUN) TARGET (N Nom) OR (Pron N) OR (Num Nom)
 
 MAP:hnounNom (@HNOUN) TARGET A OR (Num Nom) (*-1 BOS BARRIER WORD)(*1 EOS BARRIER WORD) ;
 
+MAP:sur (@>N) TARGET Sem/Mal OR Sem/Fem IF (1 Sem/Sur);
 
 MAP:HNOUN<advl (@<SPRED) TARGET Sem/Adr (-1 (":") LINK -1 Nom) ;
 	#$ Fiskes, rukses, alit, ruoná ja muđui buotlágaš ivnnit.
 	#$ Bargolávdegotti bargu: Álgobargu lei čielggadit min mandáhta.
 
-MAP:hnounInterj (@HNOUN) TARGET Acc (*-1 Interj BARRIER NOT-NPMOD) ;
+MAP:year (@<ADVL) TARGET Sem/Year IF (*-1 VFIN) ;
+MAP:year (@ADVL>) TARGET Sem/Year IF (*1 VFIN) ;
+
+MAP:hnounInterj (@HNOUN) TARGET Acc IF (*-1 Interj BARRIER NOT-NPMOD) ;
 
 
 #!!	* __NInfheadliner__	
@@ -504,11 +516,15 @@ MAP:NInfheadliner (@HNOUN) TARGET Nom (NEGATE 0 VFIN)(1 Inf LINK NEGATE *1 WORD)
 MAP:Superlheadliner (@HNOUN) TARGET Superl (NEGATE 0 VFIN)(*-1 BOS BARRIER WORD)(1 CS LINK 1 VFIN LINK NEGATE *1 VFIN) ;	
 	#$ Stuorimus maid sáhttá oažžut.
 
+MAP:fo (@>Num) TARGET ("FO") IF (1 Num);
+MAP:hnum (@HNOUN) TARGET Num ;
+
 
 #!! !! The leftovers are tagged @X
 
 #!! ! __missingX__ adds @X to all missings
 MAP:missingX (@X) TARGET (?) ;
+
 
 AFTER-SECTIONS
 

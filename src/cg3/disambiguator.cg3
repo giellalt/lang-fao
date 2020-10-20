@@ -134,6 +134,9 @@ SET FemNeu = Fem OR Neu ;
 
 LIST 3PERS = "hann" "hon" "tað" ;
 
+LIST MONTH = "januar" "februar" "desember" "september" "november" "oktober" "desembur" "septembur" "novembur" "oktobur" "mars" "august" "april" "mai" "juni" "juli" ;
+
+
 # Adjective sets
 
 SET REALADJ = A OR A* ;
@@ -1228,6 +1231,8 @@ SELECT:r27 $$NAGD IF (0 Num)(*1C N + $$NAGD BARRIER NOT-A);
 REMOVE:r114 (A Sg) IF (1 (Num Sg));
 	## fyrstu tríggjar mánðirnar.
 
+SELECT:Dato Ord IF (0/1 A + Arab + Ord)(1 MONTH);
+	    ## 28. april.
 
 
 # Coordination
@@ -1291,3 +1296,42 @@ REMOVE SUB:1 (cmp) ;
 
 REMOVE (adj cmp) IF (0 (adj)) ;
 #REMOVE A + Cmp IF (0 A + $$NAGD + $$GENDER + $$NUMBER) (0 A + Cmp + $$NAGD + $$GENDER + $$NUMBER) ; 
+
+
+
+
+SECTION
+
+LIST @CNP = @CNP ;
+LIST @CVP = @CVP ;
+
+#!! !!!MAPPING OF CC AND CS
+
+#!! Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them so @CVP remains
+
+
+#!! * __CCasCNPCVP__ Map (@CNP @CVP) to CC
+MAP:CCasCNPCVP (@CNP @CVP) TARGET CC ;
+	
+#!! * __killAllahtenotCS__ All occurrences of "at" are CSs.
+SELECT:killAllahtenotCS ("at" CS) ; 
+
+
+
+REMOVE:CS (@CVP)  IF (-1 CS)(1 CS) ;
+	#$ Jos ja go suodjalus ii šat dárbbaš guovllu, dat galgá máhcahuvvot sámi geavahussii, Skum cealká.
+
+
+
+REMOVE:ja (@CVP)  IF (-1 Num LINK -1 Pr)(1 Num) ;
+	#$ Sihke ovdal ja maŋŋil dan leat gaskkal vihtta ja logi olbmo ožžon dávdda jagis.
+
+
+
+#!! * __killAllCNP__ removes all remaining @CNP
+REMOVE:killAllCNP @CNP IF (0 @CVP) ;
+
+#!! * __XCC-CS__ removes CC and CS with no synttag
+MAP:CC-CS (@X) TARGET CC OR CS ;
+REMOVE (@X) ;    
+

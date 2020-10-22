@@ -87,8 +87,8 @@ LEXICON l1 ! ríkur
  +A: zl1pos ;
  +A: zl1comsup ;
 
-LEXICON l1pos
- +A: zl1pos ;
+!LEXICON l1pos
+! +A: zl1pos ;
 
 LEXICON zl1pos
   Sg_Msc1  ;
@@ -174,8 +174,8 @@ LEXICON l5	! spiltur
 +A: zl5pos ;
 +A: zl5comsup ;
 
-LEXICON l5pos
-+A: zl5pos ;
+!LEXICON l5pos
+!+A: zl5pos ;
 
 LEXICON zl5 
  zl5pos ;
@@ -865,8 +865,8 @@ LEXICON zl26 ! vakin
  :^EPH adj_def          ;
  :^EPH Comp_Ari 		;
 
-LEXICON l26_2 ! flogin
-+A: zl26_2 ;
+!LEXICON l26_2 ! flogin
+!+A: zl26_2 ;
 LEXICON zl26_2 ! flogin
  +Msc+Sg+Nom+Indef:%>in  # ;
  +Msc+Sg+Acc+Indef:%>nan  # ;
@@ -1244,30 +1244,33 @@ LEXICON zl34_6 ! funnin
  :%>n Pos_Def  			;
 
 LEXICON l34_7 ! fallin
- +A+Msc+Sg+Nom+Indef:lin  # ;
- +A+Msc+Sg+Acc+Indef:nan  # ;
- +A+Msc+Sg+Dat+Indef:num  # ;
- +A+Msc+Sg+Gen+Indef:lins # ;
- +A+Msc+Pl+Nom+Indef:nir  # ;
- +A+Msc+Pl+Acc+Indef:nar  # ;
- +A+Msc+Pl+Dat+Indef:num  # ;
- +A+Msc+Pl+Gen+Indef:na   # ;
- +A+Fem+Sg+Nom+Indef:lin  # ;
- +A+Fem+Sg+Acc+Indef:na   # ;
- +A+Fem+Sg+Dat+Indef:nari # ;
- +A+Fem+Sg+Gen+Indef:nar  # ;
- +A+Fem+Pl+Nom+Indef:nar  # ;
- +A+Fem+Pl+Acc+Indef:nar  # ;
- +A+Fem+Pl+Dat+Indef:num  # ;
- +A+Fem+Pl+Gen+Indef:na	  # ;
- +A+Neu+Sg+Nom+Indef:lið  # ;
- +A+Neu+Sg+Acc+Indef:lið  # ;
- +A+Neu+Sg+Dat+Indef:num  # ;
- +A+Neu+Sg+Gen+Indef:lins # ;
- +A+Neu+Pl+Nom+Indef:lin  # ;
- +A+Neu+Pl+Acc+Indef:lin  # ;
- +A+Neu+Pl+Dat+Indef:num  # ;
- +A+Neu+Pl+Gen+Indef:na	  # ;
++A: zl34_7 ;
+
+LEXICON zl34_7
+ +Msc+Sg+Nom+Indef:lin  # ;
+ +Msc+Sg+Acc+Indef:nan  # ;
+ +Msc+Sg+Dat+Indef:num  # ;
+ +Msc+Sg+Gen+Indef:lins # ;
+ +Msc+Pl+Nom+Indef:nir  # ;
+ +Msc+Pl+Acc+Indef:nar  # ;
+ +Msc+Pl+Dat+Indef:num  # ;
+ +Msc+Pl+Gen+Indef:na   # ;
+ +Fem+Sg+Nom+Indef:lin  # ;
+ +Fem+Sg+Acc+Indef:na   # ;
+ +Fem+Sg+Dat+Indef:nari # ;
+ +Fem+Sg+Gen+Indef:nar  # ;
+ +Fem+Pl+Nom+Indef:nar  # ;
+ +Fem+Pl+Acc+Indef:nar  # ;
+ +Fem+Pl+Dat+Indef:num  # ;
+ +Fem+Pl+Gen+Indef:na	  # ;
+ +Neu+Sg+Nom+Indef:lið  # ;
+ +Neu+Sg+Acc+Indef:lið  # ;
+ +Neu+Sg+Dat+Indef:num  # ;
+ +Neu+Sg+Gen+Indef:lins # ;
+ +Neu+Pl+Nom+Indef:lin  # ;
+ +Neu+Pl+Acc+Indef:lin  # ;
+ +Neu+Pl+Dat+Indef:num  # ;
+ +Neu+Pl+Gen+Indef:na	  # ;
  +A:%>n Pos_Def  			;
 
 LEXICON l34_8 ! drukkin
@@ -1623,11 +1626,11 @@ LEXICON a_umlaut
   a_n_pl_d ;
 
 
-LEXICON adj_r_gen
-  a_m_pl_g_ra  ;
-  a_f_sg_g_rar ;
-  a_f_pl_g_ra  ;
-  a_n_pl_g_ra  ;
+!LEXICON adj_r_gen
+!  a_m_pl_g_ra  ;
+!  a_f_sg_g_rar ;
+!  a_f_pl_g_ra  ;
+!  a_n_pl_g_ra  ;
 
 ! Adjectival case lexica
 ! ======================
@@ -1828,15 +1831,15 @@ LEXICON nsgpl
  +Neu+Pl+Dat+Indef:^EPH%>um	 # ;
  +Neu+Pl+Gen+Indef:^EPH%>a	 # ;
  
-LEXICON nsgpld
- +Neu+Sg+Nom+Indef:%>ð	 # ;
- +Neu+Sg+Acc+Indef:%>ð	 # ;
- +Neu+Sg+Dat+Indef:^EPH%>um	 # ;
- +Neu+Sg+Gen+Indef:%>s	 # ;
- +Neu+Pl+Nom+Indef:%>	 # ;
- +Neu+Pl+Acc+Indef:%> 	 # ;
- +Neu+Pl+Dat+Indef:^EPH%>um	 # ;
- +Neu+Pl+Gen+Indef:^EPH%>a	 # ;
+!LEXICON nsgpld
+! +Neu+Sg+Nom+Indef:%>ð	 # ;
+! +Neu+Sg+Acc+Indef:%>ð	 # ;
+! +Neu+Sg+Dat+Indef:^EPH%>um	 # ;
+! +Neu+Sg+Gen+Indef:%>s	 # ;
+! +Neu+Pl+Nom+Indef:%>	 # ;
+! +Neu+Pl+Acc+Indef:%> 	 # ;
+! +Neu+Pl+Dat+Indef:^EPH%>um	 # ;
+! +Neu+Pl+Gen+Indef:^EPH%>a	 # ;
  
 
 ! Msc
@@ -1867,8 +1870,8 @@ LEXICON a_m_pl_d
 LEXICON a_m_pl_g
  +Msc+Pl+Gen+Indef:%>a # ;
 
-LEXICON a_m_pl_g_ra
- +Msc+Pl+Gen+Indef:%>ra # ;
+!LEXICON a_m_pl_g_ra
+! +Msc+Pl+Gen+Indef:%>ra # ;
 
 
 ! Fem
@@ -1888,8 +1891,8 @@ LEXICON a_f_sg_d
 LEXICON a_f_sg_g
  +Fem+Sg+Gen+Indef:%>ar # ;
 
-LEXICON a_f_sg_g_rar
- +Fem+Sg+Gen+Indef:%>rar # ;
+!LEXICON a_f_sg_g_rar
+! +Fem+Sg+Gen+Indef:%>rar # ;
 
 LEXICON a_f_pl_n
  +Fem+Pl+Nom+Indef:%>ar # ;
@@ -1903,8 +1906,8 @@ LEXICON a_f_pl_d
 LEXICON a_f_pl_g
  +Fem+Pl+Gen+Indef:%>a # ;
 
-LEXICON a_f_pl_g_ra
- +Fem+Pl+Gen+Indef:%>ra # ;
+!LEXICON a_f_pl_g_ra
+! +Fem+Pl+Gen+Indef:%>ra # ;
 
 
 ! Neu
@@ -1934,8 +1937,8 @@ LEXICON a_n_pl_d
 LEXICON a_n_pl_g
  +Neu+Pl+Gen+Indef:%>a # ;
 
-LEXICON a_n_pl_g_ra
- +Neu+Pl+Gen+Indef:%>ra # ;
+!LEXICON a_n_pl_g_ra
+! +Neu+Pl+Gen+Indef:%>ra # ;
 
 
 ! Definite declension

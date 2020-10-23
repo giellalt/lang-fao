@@ -32,6 +32,7 @@ sed -e '1,/LEXICON Root/ d' < ../../../src/fst/lexicon.tmp.lexc \
     | grep -E '(\+|@)' \
     | sort -u          \
     | grep -E -v '^(\+|\+%|\+\/\-|\+Cmp\-|\+Cmp%\-|\@0|\@%)$' \
+    | grep -v '\+konto' \
     > "${lexctags}"
 
 cut -d '!' -f1 $srcdir/../../../src/fst/root.lexc \

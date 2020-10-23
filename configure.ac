@@ -47,7 +47,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 ### Speller release version (usually different from the package version,
 ### typically spellers are released more often than the language package):
-AC_SUBST([SPELLERVERSION], [1.0.4])
+AC_SUBST([SPELLERVERSION], [1.0.5])
 
 ########## LANGUAGE SPECIFIC SETTINGS ##########
 # GLANG is the language code used to identify this project; it should be the

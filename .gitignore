@@ -7,10 +7,12 @@
 *.oxt
 *.pmhfst
 *.service
+*.tmp
 *.xpi
 *.zcheck
 *.zhfst
 *.zip
+*.zpipe
 .DS_Store
 /aclocal.m4
 /autom4te.cache
@@ -34,10 +36,10 @@
 /src/fst/url.lexc
 /test/run-morph-tester.sh
 /test/run-yaml-testcases.sh
-/test/src/morphology/analysed-*.txt
-/test/src/morphology/filtered_*
+/test/src/morphology/analysed*.txt
+/test/src/morphology/filtered*
 /test/src/morphology/generate-*-lemmas.sh
-/test/src/morphology/generated-*.txt
+/test/src/morphology/generated*.txt
 /test/src/morphology/missing_*.txt
 /test/src/phonology/negative-*.txt
 /test/src/phonology/pair-*.txt
@@ -59,6 +61,7 @@
 /tools/grammarcheckers/modes
 /tools/grammarcheckers/pipespec.xml
 /tools/grammarcheckers/schemas.xml
+/tools/hyphenators/all_tags.txt
 /tools/mt/apertium/*.cg3
 /tools/mt/apertium/tagsets/apertium.relabel
 /tools/mt/apertium/tagsets/apertiumtags.txt
@@ -77,7 +80,7 @@
 /tools/spellcheckers/filters/remove-word-boundary.regex
 /tools/spellcheckers/filters/split-CmpN-tags.regex
 /tools/spellcheckers/filters/split-CmpNP-tags.regex
-/tools/spellcheckers/spellercorpus.*.txt
+/tools/spellcheckers/*spellercorpus.*.txt
 /tools/spellcheckers/weights/*.clean.txt
 Makefile
 Makefile.in

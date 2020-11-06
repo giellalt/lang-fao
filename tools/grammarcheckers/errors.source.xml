@@ -62,6 +62,7 @@
   </error>
 
   <error id="msyn-prfptc-sg1">
+
     <header>
       <title xml:lang="en">It seems your verb should not end in ð.</title>
       <title xml:lang="fo">Det ser ut til at verbet ditt ikkje skulle ende på ð.</title>
@@ -95,7 +96,7 @@
     </body>
   </error>
 
-  <error id="msyn-sup">
+  <error id="msyn-inf-sup">
     <header>
       <title xml:lang="en">Supine and not plural form</title>
       <title xml:lang="fo">Supinum og ikkje fleirtalsform</title>
@@ -118,7 +119,7 @@
     </body>
   </error>
 
-  <error id="msyn-npl">
+  <error id="msyn-nsg-npl">
     <header>
       <title xml:lang="en">Nouns are plural after numerals</title>
       <title xml:lang="fo">Substantiv står i fleirtal etter talord</title>
@@ -126,17 +127,6 @@
     <body>
       <description xml:lang="en">If a noun, such as "$1", stands after a numeral, such as "$2", it should be in the plural.</description>
       <description xml:lang="fo">Viss substantivet "$1" står etter eit talord, som "$2", skal det stå i fleirtal</description>
-    </body>
-  </error>
-
-  <error id="msyn-ptc">
-    <header>
-      <title xml:lang="en">Supine verb forms end in ð.</title>
-      <title xml:lang="fo">Supinumsformer skal ende på ð.</title>
-    </header>
-    <body>
-      <description xml:lang="en">If the form "$1" is used after a finite verb, it is a supine and should end in ð.</description>
-      <description xml:lang="fo">Viss forma "$1" blir brukt etter eit finitt verb, er det supinumsform og skal ende på ð.</description>
     </body>
   </error>
 
@@ -186,3 +176,18 @@
 
  
 </errors>
+
+
+<!--
+
+  <error id="msyn-ptc">
+    <header>
+      <title xml:lang="en">Supine verb forms end in ð.</title>
+      <title xml:lang="fo">Supinumsformer skal ende på ð.</title>
+    </header>
+    <body>
+      <description xml:lang="en">If the form "$1" is used after a finite verb, it is a supine and should end in ð.</description>
+      <description xml:lang="fo">Viss forma "$1" blir brukt etter eit finitt verb, er det supinumsform og skal ende på ð.</description>
+    </body>
+  </error>
+-->

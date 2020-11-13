@@ -69,6 +69,8 @@ LIST Cmp = Cmp ;
 LIST Cmp/SplitR = Cmp/SplitR ;
 LIST ABBR = ABBR ;
 
+LIST Attr = Attr ;
+LIST Ord = Ord ;
 LIST Superl = Superl ;
 LIST Prs = Prs ;
 LIST Prt = Prt ;
@@ -107,6 +109,8 @@ LIST NAGD = Nom Acc Gen Dat ;
 LIST AGD = Acc Gen Dat ;
 LIST GENDER = Msc Fem Neu ;
 LIST NUMBER = Sg Pl ;
+LIST DEFNESS = Def Indef ;
+
 SET NAGDNUMBERGENDER = (Msc Sg Nom) OR (Msc Sg Acc) OR (Msc Sg Gen) OR (Msc Sg Dat) OR (Msc Pl Nom) OR (Msc Pl Acc) OR (Msc Pl Gen) OR (Msc Pl Dat) OR (Fem Sg Nom) OR (Fem Sg Acc) OR (Fem Sg Gen) OR (Fem Sg Dat) OR (Fem Pl Nom) OR (Fem Pl Acc) OR (Fem Pl Gen) OR (Fem Pl Dat) OR (Neu Sg Nom) OR (Neu Sg Acc) OR (Neu Sg Gen) OR (Neu Sg Dat) OR (Neu Pl Nom) OR (Neu Pl Acc) OR (Neu Pl Gen) OR (Neu Pl Dat) ;
 
 LIST COMMA = "," ;
@@ -420,10 +424,6 @@ SET NAPP     = WORD - PRE-APP ;
 
 LIST TIME = "sunnudagur" ;
 
-LIST GENDER = Msc Fem Neu ;
-LIST NAGD = Nom Acc Gen Dat ;
-LIST NUMBER = Sg Pl ;
-LIST DEFNESS = Def Indef ;
 
 # Semantic sets
 
@@ -467,8 +467,12 @@ MAP:NumHNOUN (@HNOUN) TARGET (ord) (-1 BOS) ;
 MAP:fmv (@FMV) TARGET VFIN ;
 MAP:subj (@SUBJ>) TARGET Nom IF (*1 VFIN);
 MAP:spred (@<SPRED) TARGET N + Nom IF (*-1 ("vera") + VFIN BARRIER NOT-NPMOD);
-#MAP:npmod (@>N) TARGET Det IF (0 (Det $$GENDER $$NUMBER $$NAGD $$DEFNESS)(1 (N $$GENDER $$NUMBER $$NAGD $$DEFNESS));
-MAP:npmod (@>N) TARGET Det IF (0 Det)(1 N);
+MAP:npmod (@>N) TARGET Det OR A IF (0 (Det $$GENDER $$NUMBER $$NAGD $$DEFNESS))(1 (N $$GENDER $$NUMBER $$NAGD $$DEFNESS));
+
+#MAP:npmod (@>N) TARGET Det IF (0 Det)(1 N);
+MAP:qnpmod (@>N) TARGET Ord IF (0 Arab + Ord + Attr)(1 N);
+## 29. mars
+
 MAP:interj (@INTERJ) TARGET Interj ;
 MAP:advl (@<ADVL) TARGET Pr IF (0 Pr LINK -1 VFIN);
 MAP:advl (@ADVL) TARGET Pr ;
@@ -524,15 +528,14 @@ MAP:hnum (@HNOUN) TARGET Num ;
 
 #!! ! __missingX__ adds @X to all missings
 MAP:missingX (@X) TARGET (?) ;
+MAP:leftoversX (@X) TARGET WORD ;
 
+REMOVE:nox (@X) ;
 
 AFTER-SECTIONS
 
 REMOVE:WORD WORD - ALLSYNTAG ;
 
-
-
 #!! ! __therestX__ adds @X to all what is left, often errouneus disambiguated forms
 
-MAP:leftoversX (@X) TARGET WORD ;
 

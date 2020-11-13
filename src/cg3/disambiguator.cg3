@@ -1333,5 +1333,10 @@ REMOVE:killAllCNP @CNP IF (0 @CVP) ;
 
 #!! * __XCC-CS__ removes CC and CS with no synttag
 MAP:CC-CS (@X) TARGET CC OR CS ;
-REMOVE (@X) ;    
+
+#!! * __ErrOrth__ goes for correct forms
+REMOVE:ErrOrth (Err/Orth) ;
+
+#!! * __X__ removes readings with no syntax
+REMOVE:X (@X) ;    
 

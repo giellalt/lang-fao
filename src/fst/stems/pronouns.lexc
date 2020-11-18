@@ -14,11 +14,17 @@ LEXICON Personal
 eg+Pron+Pers+Sg+Nom:eg # ;
 eg+Pron+Pers+Sg:m egtu-obl ;
 eg+Pron+Pers+Pl+Nom:vit # ;
+eg+Pron+Pers+Pl+Nom:okur # ;
+eg+Pron+Pers+Pl+Gen:vár # ;
+eg+Pron+Pers+Pl+Gen:várt # ;
 eg+Pron+Pers+Pl:okk okkumtykkum ;
+eg+Pron+Pers+Pl:ok okkumtykkum ;
 tú+Pron+Pers+Sg+Nom:tú # ;
 tú+Pron+Pers+Sg:t egtu-obl  ;
 tú+Pron+Pers+Pl+Nom:tit # ;
+tú+Pron+Pers+Pl+Nom:tykur # ;
 tú+Pron+Pers+Pl:tykk okkumtykkum ;
+tú+Pron+Pers+Pl:tyk S_okkumtykkum ;
 tygum+Pron+Pers+Sg+Nom:tygum # ;
 tygum+Pron+Pers+Sg:tyg okkumtykkum ;
 
@@ -58,11 +64,17 @@ LEXICON okkumtykkum
 +Dat:um # ;
 +Gen:ara # ;
 
+LEXICON S_okkumtykkum
++Acc:um # ;
++Dat:um # ;
++Gen:ara # ;
++Gen:ra # ;
+
 
 LEXICON 3obl
 +Dat:teimum # ;
 +Gen:teirra # ;
-+Gen+Err/Orth:teirrara # ;
++Gen:teirrara # ;
 
 LEXICON Reflexive
 seg+Pron+Refl+Acc:seg # ;
@@ -112,85 +124,85 @@ LEXICON HVOR
 +Neu+Pl+Dat:hvørjum # ;
 +Neu+Pl+Gen:hvørja # ;
 
-!LEXICON EIN
-!+Msc+Sg+Nom:ein # ;
-!+Msc+Sg+Acc:ein # ;
-!+Msc+Sg+Dat:einum # ;
-!+Msc+Sg+Gen:eins # ;
-!+Fem+Sg+Nom:ein # ;
-!+Fem+Sg+Acc:eina # ;
-!+Fem+Sg+Dat:eini # ;
-!+Fem+Sg+Dat:einari # ;
-!+Fem+Sg+Gen:einar # ;
-!+Neu+Sg+Nom:eitt # ;
-!+Neu+Sg+Acc:eitt # ;
-!+Neu+Sg+Dat:einum # ;
-!+Neu+Sg+Gen:eins # ;
-!+Msc+Pl+Nom:einir # ;
-!+Msc+Pl+Acc:einar # ;
-!+Msc+Pl+Dat:einum # ;
-!+Msc+Pl+Gen:eina # ;
-!+Fem+Pl+Nom:einar # ;
-!+Fem+Pl+Acc:einar # ;
-!+Fem+Pl+Dat:einum # ;
-!+Fem+Pl+Gen:eina # ;
-!+Neu+Pl+Nom:eini # ;
-!+Neu+Pl+Acc:eini # ;
-!+Neu+Pl+Dat:einum # ;
-!+Neu+Pl+Gen:eina # ;
+LEXICON EIN
++Msc+Sg+Nom:ein # ;
++Msc+Sg+Acc:ein # ;
++Msc+Sg+Dat:einum # ;
++Msc+Sg+Gen:eins # ;
++Fem+Sg+Nom:ein # ;
++Fem+Sg+Acc:eina # ;
++Fem+Sg+Dat:eini # ;
++Fem+Sg+Dat:einari # ;
++Fem+Sg+Gen:einar # ;
++Neu+Sg+Nom:eitt # ;
++Neu+Sg+Acc:eitt # ;
++Neu+Sg+Dat:einum # ;
++Neu+Sg+Gen:eins # ;
++Msc+Pl+Nom:einir # ;
++Msc+Pl+Acc:einar # ;
++Msc+Pl+Dat:einum # ;
++Msc+Pl+Gen:eina # ;
++Fem+Pl+Nom:einar # ;
++Fem+Pl+Acc:einar # ;
++Fem+Pl+Dat:einum # ;
++Fem+Pl+Gen:eina # ;
++Neu+Pl+Nom:eini # ;
++Neu+Pl+Acc:eini # ;
++Neu+Pl+Dat:einum # ;
++Neu+Pl+Gen:eina # ;
 
-!LEXICON ANNAR_P
-!+Msc+Sg+Nom:annar # ;
-!+Msc+Sg+Acc:annan # ;
-!+Msc+Sg+Dat:øðrum # ;
-!+Msc+Sg+Gen:annars # ;
-!+Fem+Sg+Nom:onnur # ;
-!+Fem+Sg+Acc:aðra # ;
-!+Fem+Sg+Dat:aðrari # ;
-!+Fem+Sg+Gen:annarar # ;
-!+Neu+Sg+Nom:annað # ;
-!+Neu+Sg+Acc:annað # ;
-!+Neu+Sg+Dat:øðrum # ;
-!+Neu+Sg+Gen:annars # ;
-!+Msc+Pl+Nom:aðrir # ;
-!+Msc+Pl+Acc:aðrar # ;
-!+Msc+Pl+Dat:øðrum # ;
-!+Msc+Pl+Gen:annara # ;
-!+Fem+Pl+Nom:aðrar # ;
-!+Fem+Pl+Acc:aðrar # ;
-!+Fem+Pl+Dat:øðrum # ;
-!+Fem+Pl+Gen:annara # ;
-!+Neu+Pl+Nom:onnur # ;
-!+Neu+Pl+Acc:onnur # ;
-!+Neu+Pl+Dat:øðrum # ;
-!+Neu+Pl+Gen:annara # ;
+LEXICON ANNAR_P
++Msc+Sg+Nom:annar # ;
++Msc+Sg+Acc:annan # ;
++Msc+Sg+Dat:øðrum # ;
++Msc+Sg+Gen:annars # ;
++Fem+Sg+Nom:onnur # ;
++Fem+Sg+Acc:aðra # ;
++Fem+Sg+Dat:aðrari # ;
++Fem+Sg+Gen:annarar # ;
++Neu+Sg+Nom:annað # ;
++Neu+Sg+Acc:annað # ;
++Neu+Sg+Dat:øðrum # ;
++Neu+Sg+Gen:annars # ;
++Msc+Pl+Nom:aðrir # ;
++Msc+Pl+Acc:aðrar # ;
++Msc+Pl+Dat:øðrum # ;
++Msc+Pl+Gen:annara # ;
++Fem+Pl+Nom:aðrar # ;
++Fem+Pl+Acc:aðrar # ;
++Fem+Pl+Dat:øðrum # ;
++Fem+Pl+Gen:annara # ;
++Neu+Pl+Nom:onnur # ;
++Neu+Pl+Acc:onnur # ;
++Neu+Pl+Dat:øðrum # ;
++Neu+Pl+Gen:annara # ;
 
-!LEXICON EINHVOR
-!+Msc+Sg+Nom:einhvør # ;
-!+Msc+Sg+Acc:einhvønn # ;
-!+Msc+Sg+Dat:einumhvørjum # ;
-!+Msc+Sg+Gen:einshvørs # ;
-!+Fem+Sg+Nom:einhvør # ;
-!+Fem+Sg+Acc:einahvørja # ;
-!+Fem+Sg+Dat:einihvørji # ;
-!+Fem+Sg+Dat:einarihvørjari # ;
-!+Fem+Sg+Gen:einarhvørjar # ;
-!+Neu+Sg+Nom:eitthvørt # ;
-!+Neu+Sg+Acc:eitthvørt # ;
-!+Neu+Sg+Dat:einumhvørjum # ;
-!+Neu+Sg+Gen:einshvørs # ;
-!+Msc+Pl+Nom:einirhvørjir # ;
-!+Msc+Pl+Acc:einarhvørjar # ;
-!+Msc+Pl+Dat:einumhvørjum # ;
-!+Msc+Pl+Gen:einahvørja # ;
-!+Fem+Pl+Nom:einarhvørjar # ;
-!+Fem+Pl+Acc:einarhvørjar # ;
-!+Fem+Pl+Dat:einumhvørjum # ;
-!+Fem+Pl+Gen:einahvørja # ;
-!+Neu+Pl+Nom:einihvørji # ;
-!+Neu+Pl+Acc:einihvørji # ;
-!+Neu+Pl+Dat:einumhvørjum # ;
-!+Neu+Pl+Gen:einahvørja # ;
+LEXICON EINHVOR
++Msc+Sg+Nom:einhvør # ;
++Msc+Sg+Acc:einhvønn # ;
++Msc+Sg+Dat:einumhvørjum # ;
++Msc+Sg+Gen:einshvørs # ;
++Fem+Sg+Nom:einhvør # ;
++Fem+Sg+Acc:einahvørja # ;
++Fem+Sg+Dat:einihvørji # ;
++Fem+Sg+Dat:einarihvørjari # ;
++Fem+Sg+Gen:einarhvørjar # ;
++Neu+Sg+Nom:eitthvørt # ;
++Neu+Sg+Acc:eitthvørt # ;
++Neu+Sg+Dat:einumhvørjum # ;
++Neu+Sg+Gen:einshvørs # ;
++Msc+Pl+Nom:einirhvørjir # ;
++Msc+Pl+Acc:einarhvørjar # ;
++Msc+Pl+Dat:einumhvørjum # ;
++Msc+Pl+Gen:einahvørja # ;
++Fem+Pl+Nom:einarhvørjar # ;
++Fem+Pl+Acc:einarhvørjar # ;
++Fem+Pl+Dat:einumhvørjum # ;
++Fem+Pl+Gen:einahvørja # ;
++Neu+Pl+Nom:einihvørji # ;
++Neu+Pl+Acc:einihvørji # ;
++Neu+Pl+Dat:einumhvørjum # ;
++Neu+Pl+Gen:einahvørja # ;
 
 LEXICON ANNARHVOR
  !!= __@LEXNAME@__ 
@@ -219,15 +231,15 @@ LEXICON ANNARHVOR
 +Neu+Pl+Dat:øðrumhvørjum # ;
 +Neu+Pl+Gen:annarahvørja # ;
 
-!LEXICON HANNSJALVUR
-!+Msc+Sg+Nom:hannsjálvur # ;
-!+Msc+Sg+Acc:hannsjálvan # ;
-!+Msc+Sg+Dat:honumsjálvum # ;
-!+Msc+Sg+Gen:hanssjálvs # ;
-!+Fem+Sg+Nom:honsjálv # ;
-!+Fem+Sg+Acc:hanasjálva # ;
-!+Fem+Sg+Dat:hennisjálvari # ;
-!+Fem+Sg+Gen:hennarasjálvar # ;
+LEXICON HANNSJALVUR
++Msc+Sg+Nom:hannsjálvur # ;
++Msc+Sg+Acc:hannsjálvan # ;
++Msc+Sg+Dat:honumsjálvum # ;
++Msc+Sg+Gen:hanssjálvs # ;
++Fem+Sg+Nom:honsjálv # ;
++Fem+Sg+Acc:hanasjálva # ;
++Fem+Sg+Dat:hennisjálvari # ;
++Fem+Sg+Gen:hennarasjálvar # ;
 
 
 LEXICON Indefinite

@@ -1121,7 +1121,7 @@ REMOVE Dat IF (1 SAFETV)(*2 N + Acc BARRIER NPNH);
 
 # Not Nominative
 
-REMOVE:NotNom Nom IF (-1C Pr)(0C Det);
+REMOVE:NotNom Nom IF (-1C Pr)(0C Det OR A OR N);
 
 # Accusative
 # ==========

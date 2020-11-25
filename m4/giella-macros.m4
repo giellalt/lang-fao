@@ -337,6 +337,23 @@ AS_IF([test "x$GAWK" != x], [
 AC_MSG_RESULT([$giellalt_forrest_validation])
 AM_CONDITIONAL([CAN_FORREST_VALIDATE], [test "x$giellalt_forrest_validation" != xno])
 
+# Check for npm etc. stuff for divvunspell stats
+AC_ARG_WITH([npm],
+            [AS_HELP_STRING([--with-npm=DIRECTORY],
+                            [search npm in DIRECTORY @<:@default=PATH@:>@])],
+            [with_npm=$withval],
+            [with_npm=no])
+AC_PATH_PROG([NPM], [npm], [], [$PATH$PATH_SEPARATOR$with_npm])
+AC_PATH_PROG([R], [R], [], [$PATH$PATH_SEPARATOR$with_R])
+AC_ARG_WITH([divvunspell],
+            [AS_HELP_STRING([--with-divvunspell=DIRECTORY],
+                            [search divvunspell in DIRECTORY @<:@default=PATH@:>@])],
+            [with_divvunspell=$withval],
+            [with_divvunspell=no])
+AC_PATH_PROG([DIVVUN_ACCURACY], [accuracy], [], [$PATH$PATH_SEPARATOR$with_divvunspell])
+
+
+
 ################ can rsync oxt template? ################
 AC_PATH_PROG([RSYNC], [rsync], [no], [$PATH$PATH_SEPARATOR$with_rsync])
 AC_PATH_PROG([WGET],  [wget],  [no], [$PATH$PATH_SEPARATOR$with_wget])

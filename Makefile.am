@@ -3,7 +3,7 @@
 ## Licence: GPL v3+
 
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = . src tools doc test
+SUBDIRS = . src tools docs test
 
 EXTRA_DIST = und.timestamp
 

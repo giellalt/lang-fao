@@ -16,7 +16,7 @@ AC_CONFIG_FILES([Makefile \
                  src/cg3/Makefile \
                  src/tagsets/Makefile \
                  src/transcriptions/Makefile \
-                 doc/Makefile \
+                 docs/Makefile \
                  test/Makefile \
                  test/tools/Makefile \
                  test/tools/hyphenators/Makefile \

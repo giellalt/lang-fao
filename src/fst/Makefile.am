@@ -112,7 +112,8 @@ generated_files/%.lexc: \
 # easily get updates from the template dir through svn merge.
 clean-local:
 	-rm -f *.all.* *fst *.foma *.script generated_files/*.lexc lexicon.*
-	-rm -f url.lexc *.tmp.*
+	-rm -f url.lexc *.tmp*
+	-rm -f *.relabel lexicon-tags.* lexicon-sigma.*
 
 include $(srcdir)/Makefile.modifications-phon.am
 include $(top_srcdir)/../giella-core/am-shared/src-morphology-dir-include.am

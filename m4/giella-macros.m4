@@ -789,14 +789,14 @@ AM_CONDITIONAL([WANT_HFST_DESKTOP_SPELLER], [test "x$enable_desktop_hfstspellers
 # Enable minimised fst-spellers by default:
 AC_ARG_ENABLE([minimised-spellers],
               [AS_HELP_STRING([--enable-minimised-spellers],
-                              [minimise hfst spellers @<:@default=yes@:>@])],
+                              [minimise hfst spellers @<:@default=$DEFAULT_SPELLER_MINIMISATION@:>@])],
               [enable_minimised_spellers=$enableval],
-              [enable_minimised_spellers=yes])
+              [enable_minimised_spellers=$DEFAULT_SPELLER_MINIMISATION])
 AS_IF([test "x$enable_minimised_spellers" != "xyes"],
-      [AC_SUBST([HFST_MINIMIZE_SPELLER], ["$ac_cv_path_HFST_REMOVE_EPSILONS \$(HFST_FLAGS)  "])],
-      [AC_SUBST([HFST_MINIMIZE_SPELLER], ["$ac_cv_path_HFST_REMOVE_EPSILONS \$(HFST_FLAGS) \
-                                         | $ac_cv_path_HFST_DETERMINIZE --encode-weights \$(HFST_FLAGS) \
-                                         | $ac_cv_path_HFST_MINIMIZE    --encode-weights \$(HFST_FLAGS) "])])
+      [AC_SUBST([HFST_MINIMIZE_SPELLER], ["$ac_cv_path_HFST_REMOVE_EPSILONS \$(HFST_FLAGS) \$(MORE_VERBOSITY) "])],
+      [AC_SUBST([HFST_MINIMIZE_SPELLER], ["$ac_cv_path_HFST_REMOVE_EPSILONS \$(HFST_FLAGS) \$(MORE_VERBOSITY) \
+                                         | $ac_cv_path_HFST_DETERMINIZE --encode-weights \$(HFST_FLAGS) \$(MORE_VERBOSITY) \
+                                         | $ac_cv_path_HFST_MINIMIZE    --encode-weights \$(HFST_FLAGS) \$(MORE_VERBOSITY) "])])
 
 # Enable Foma-based spellers, requires gzip - default is no
 AC_ARG_ENABLE([fomaspeller],

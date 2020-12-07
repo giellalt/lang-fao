@@ -30,10 +30,8 @@ endif # WANT_SPELLERS
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
 
-####### Other targets: ###########
-clean-local:
-	-rm -f *.hfst *.xfst *.foma
-
+##########################################
+# Included Makefile fragments - DO NOT EDIT:
 include $(srcdir)/Makefile.mod-desktop-filters.am
 include $(srcdir)/Makefile.mod-fstbased-filters.am
 include $(srcdir)/Makefile.mod-mobile-filters.am

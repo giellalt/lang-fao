@@ -2,7 +2,7 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = filters .
+SUBDIRS = filters . tests
 
 ####### Source file names: ########
 # NB! If any of the filenames below are changed, then remember to also update

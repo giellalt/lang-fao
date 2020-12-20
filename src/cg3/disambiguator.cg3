@@ -305,7 +305,7 @@ REMOVE:Sem/ID Sem/ID IF (1 CURRENCY) ;
 
 SELECT:Arab Arab IF (NOT 0 Ord OR Prop OR Arab + Err/Orth) ; # In Apertium we get analysis both with and without the tag.
 
-
+SELECT:NumOrd CLB IF (0/1 (Num Ord));
 
 REMOVE:dyn  Arab (0 Prop) ; # foreløpig løsning, til vi har ny løsning for numerals.lexc
 	

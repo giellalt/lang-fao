@@ -120,7 +120,7 @@ SET CRD =  COMMA  OR ("/") OR ("-")  ; # TODO fix Trond sept 2019
 # Sets
 # ====
 
-SET WORD = N | V | A | Pr | Pron | Det | Adv | CC | CS | Interj | Num | ("\?") ;
+SET WORD = N | V | A | Pr | Pron | Det | Adv | CC | CS | Interj | Num | ("\?") | CLB ;
 
 
 # Noun sets
@@ -461,17 +461,21 @@ LIST HEAD = @SUBJ> @<SUBJ @SUBJ @OBJ @OBJ> @<OBJ @ADVL @ADVL> @<ADVL @SPRED> @<S
          SECTION         #
 
 #!!	* __ordHNOUN__	
-MAP:NumHNOUN (@HNOUN) TARGET (ord) (-1 BOS) ;	
+#MAP:NumHNOUN (@HNOUN) TARGET A IF (-1 BOS)(0 Ord) ;	
 	#$ 4. Álbmotskuvlla ja oahpaheaddjiseminára gaskasaš áigi.
+
+MAP:ord2 (@>N) TARGET Ord IF (*1 N BARRIER NOT-NPMOD);
+MAP:ord1 (@>N) TARGET A IF (0 Ord)(1 N);
+#MAP:npmod (@>N) TARGET Det IF (0 Det)(1 N);
+MAP:qnpmod (@>N) TARGET CLB IF (0/1 Ord);
+## 29. mars
+#MAP:tulltest (@ADVL) TARGET N IF (0/1 Cmp);
 
 MAP:fmv (@FMV) TARGET VFIN ;
 MAP:subj (@SUBJ>) TARGET Nom IF (*1 VFIN);
 MAP:spred (@<SPRED) TARGET N + Nom IF (*-1 ("vera") + VFIN BARRIER NOT-NPMOD);
 MAP:npmod (@>N) TARGET Det OR A IF (0 (Det $$GENDER $$NUMBER $$NAGD $$DEFNESS))(1 (N $$GENDER $$NUMBER $$NAGD $$DEFNESS));
 
-#MAP:npmod (@>N) TARGET Det IF (0 Det)(1 N);
-MAP:qnpmod (@>N) TARGET Ord IF (0 Arab + Ord + Attr)(1 N);
-## 29. mars
 
 MAP:interj (@INTERJ) TARGET Interj ;
 MAP:advl (@<ADVL) TARGET Pr IF (0 Pr LINK -1 VFIN);
@@ -491,6 +495,14 @@ MAP:p<coor (@P<) Acc (-1 CRD OR CC LINK -1 @P<) ;
 MAP:p<coor (@P<) Dat (-1 CRD OR CC LINK -1 @P<) ;
 
 MAP:n<titel1 (@N<) TARGET ("jr") OR ("sr") (-1 Prop) ;
+
+MAP:ngen (@N<) TARGET Gen IF (-1 N);
+
+
+MAP:ngen (@N<) TARGET Gen IF (-1 N);
+
+
+
 
 #!! !!HNOUN MAPPING
 
@@ -534,7 +546,7 @@ REMOVE:nox (@X) ;
 
 AFTER-SECTIONS
 
-REMOVE:WORD WORD - ALLSYNTAG ;
+#REMOVE:WORD WORD - ALLSYNTAG ;
 
 #!! ! __therestX__ adds @X to all what is left, often errouneus disambiguated forms
 

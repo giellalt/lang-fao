@@ -433,7 +433,9 @@ SELECT:NotVarur Prt IF (0 ("vera"))(1 Sup);
 SELECT:NotVarur Prt IF (0 ("vera"))(-1 Sup);
 
 # verða
-SELECT:verda ("verða") IF (0 ("verður"))(*1 A OR Sup CBARRIER NOT-ADV);
+# TODO: 
+# find sentences with verður N = portion mad, eta tveir verðir spise to portioner
+SELECT:verda ("verða") IF (0 ("verður"));
 	     ## ... sum av tær verður gitin.
 
 # kunna
@@ -454,7 +456,7 @@ SELECT V + Ind + Pl IF (-3 ("tað") + Pl + Nom)(-2 COMMA)(-1 ("sum"));
 # Preposition or not?
 
 #REMOVE Pr IF (NOT *-1 S-BOUNDARY LINK *1 OBL BARRIER NPNH)(0 Adv)(NOT *1 OBL BARRIER NPNH);
-REMOVE Pr IF (0 Adv)(NOT *1 OBL BARRIER NPNH);
+REMOVE Pr IF (0 Adv)(NOT *1 OBL OR Num BARRIER NPNH);
 # This rule does not handle stranded prepositions, it must be relaxed.
 
 REMOVE:PrAdv Adv IF (*-1 N BARRIER V)(0 Pr + SOMEACCPREP)(*1 Acc BARRIER NPNH);
@@ -467,6 +469,9 @@ REMOVE:PrCS Pr IF (0 CS)(1C Nom OR VFIN);
 # á
 REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
 REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
+
+# av
+REMOVE:av Interj IF (0 ("av")); # TODO: Find genuine examples with Interj av.
 
 # millum
 REMOVE:r38 Adv IF (0 Dat OR Acc)(*-1 ("millum") BARRIER NPNH);
@@ -491,8 +496,12 @@ SELECT:umCS CS IF (*-1 BOS OR COMMA BARRIER NOT-CC)(0 ("um"))(*1 Nom BARRIER NPN
 	## Vita, um tú fært talt stjørnumar har!
 REMOVE:um2 CS IF (0 ("um"));
 
+# undir 
+REMOVE:undirprep Adv IF (0 ("undir"))(1 Acc OR Dat OR Num);
+ 
 # við
-REMOVE:vid ("viður") IF (0 ("við") + Pr) (1 Acc OR Dat);
+SELECT:vidur  ("viður") IF (-1 ("høgga") OR ("brenna"))(0 ("við") + Acc);
+REMOVE:vid ("viður") IF (0 ("við") + Pr);
 
 # Case within PP phrases
 

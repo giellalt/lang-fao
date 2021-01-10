@@ -34,6 +34,7 @@ LIST A* = A* ;
 LIST Prop = Prop ;
 LIST Adv = Adv ;
 LIST Num = Num ;
+LIST Rom = Rom ;
 LIST CC = CC ;
 LIST CS = CS ;
 LIST Interj = Interj ;
@@ -429,6 +430,8 @@ SELECT V IF (-1 Adv)(0 ("bar"))(1 ("til"));
 
 # vera
 SELECT:vera ("vera") IF (0 ("ver"))(*-1 HAVA BARRIER V);
+SELECT:RealVarur A IF (-1 Det + Acc)(0 ("varur") + Acc + Sg)(1 N + Acc); # awaiting a real example
+SELECT:NeverVarur Prt IF (0 ("varur")); # todo: find examples of the adjective form "var"
 SELECT:NotVarur Prt IF (0 ("vera"))(1 Sup);
 SELECT:NotVarur Prt IF (0 ("vera"))(-1 Sup);
 
@@ -813,6 +816,45 @@ SELECT ("skera" PrfPtc) IF (-1 ("væl" Adv));
 
 SELECT ("innast" Adv) IF (1 ("inni"));
 	## innast inni
+
+
+
+# Numerals and number symbols
+# ===========================
+
+SELECT:ArabNom (Arab Nom) (-1 BOS)(NOT 0 Prop OR Sem/ID) ;
+
+SELECT:Sem/ID Sem/ID IF (-1 ("§")) ; 
+
+SELECT:Arab Arab IF (NOT 0 Ord OR Prop OR Arab + Err/Orth) ; # In Apertium we get analysis both with and without the tag.
+
+SET NOT-ERR-NUM = Num - (Num Err/Orth) ;
+
+REMOVE:numerrorth (Num Err/Orth) IF (0 NOT-ERR-NUM) ;
+
+#!! * __NumRom__ in beginning of sentence
+SELECT:NumRom (Num Rom) (0 ACR OR Abbr LINK -1 BOS);
+	#$ I Áššebáhpirat
+	#% CD máksá 160 ruvnnu.
+
+SELECT:Nom Nom (0 Arab LINK -1 (":")) ; #probl. apertium
+SELECT:Nom Nom (0 Arab LINK 1 RIGHT) ;
+
+LIST KLASS = "lutur" "punkt" nummar" "sak" "søk" "evni" "revsimál" "mál" ;
+
+SELECT:NomKlass Nom IF (0 ACR OR Num)((-1 ACR OR Num LINK -1 KLASS + Nom LINK -1 BOS) OR  (-1 KLASS));
+	#% Dearvvašvuođaásahusas mearriduvvo divvun dahje sihkkun dearvvašvuođabargiidlága § 44 mielde.
+SELECT:NomKlass Nom IF (0 ACR OR Abbr)(-1 Num LINK -1 KLASS) ;
+	#$ Ášši DC 002/12.
+REMOVE:NomACR Acc IF (0 ACR OR Abbr)(*-1 BOS BARRIER WORD) ;
+SELECT:NomACR Nom IF (0 ACR OR Abbr)(*-1 BOS BARRIER WORD)(1 PUNCT) ;
+	#$ Ovttas.no - Sámi oahpponeavvut neahtas
+
+
+SELECT:ein ("ein") IF (1 Adv);
+	   ## so kann ein ekki ...
+
+
 	
 # NP internal constraints
 # =======================

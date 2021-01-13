@@ -822,6 +822,8 @@ SELECT ("innast" Adv) IF (1 ("inni"));
 # Numerals and number symbols
 # ===========================
 
+SELECT:year Sem/Year IF (-1 MONTH);
+
 SELECT:ArabNom (Arab Nom) (-1 BOS)(NOT 0 Prop OR Sem/ID) ;
 
 SELECT:Sem/ID Sem/ID IF (-1 ("§")) ; 
@@ -1138,7 +1140,8 @@ SELECT:r60b (V 2Sg) IF (-1 ("og") LINK *-1C (V 2Sg) BARRIER S-BOUNDARY);
 
 # Present plural
 
-SELECT:r61 (V Pl) IF (-1 (N Pl Nom) OR ("eg" Pron Pers Pl Nom))(NOT -1 (Acc) LINK *-1 VFIN BARRIER NPNH);
+SELECT:r61a (V Pl) IF (-1 (N Pl Nom))(NOT -1 (Acc) LINK *-1 VFIN BARRIER NPNH);
+SELECT:r61b (V Pl) IF (-1 ("eg" Pron Pers Pl Nom));
 
 REMOVE:PrsPl (V Inf) IF (*-1 ("sum") LINK -1 COMMA LINK *-1 Pl BARRIER VFIN);
 
@@ -1377,7 +1380,8 @@ REMOVE:CS (@CVP)  IF (-1 CS)(1 CS) ;
 REMOVE:ja (@CVP)  IF (-1 Num LINK -1 Pr)(1 Num) ;
 	#$ Sihke ovdal ja maŋŋil dan leat gaskkal vihtta ja logi olbmo ožžon dávdda jagis.
 
-
+#!! * Kill Sem/ID
+REMOVE Num + Sem/ID ;
 
 #!! * __killAllCNP__ removes all remaining @CNP
 REMOVE:killAllCNP @CNP IF (0 @CVP) ;

@@ -59,7 +59,7 @@ Could not set GIELLA_CORE and thus not find required scripts in:
        Please do the following:
        1. svn co https://github.com/giellalt/giella-core.git/trunk
        2. then either:
-         a: cd giella-core && ./autogen.sh && ./configure && make install
+         a: cd giella-core && ./autogen.sh && ./configure && make
 
           or:
          b: add the following to your ~/.bash_profile or ~/.profile:
@@ -99,7 +99,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 
 ### This is the version of the Giella Core that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
-_giella_core_min_version=0.10.0
+_giella_core_min_version=0.11.0
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -120,8 +120,6 @@ svn up
 ./autogen.sh # required only the first time
 ./configure  # required only the first time
 make
-sudo make install # optional, only needed if installed
-                  # earlier or installed on a server.
 "
 
 # Identify the version of giella-core:
@@ -694,7 +692,10 @@ AC_ARG_ENABLE([analysers],
               [AS_HELP_STRING([--enable-analysers],
                               [build morphological analysers @<:@default=yes@:>@])],
               [enable_analysers=$enableval],
-              [enable_analysers=yes])
+              [AS_IF([test "x$enable_all_tools" != xno],
+                     [enable_analysers=$enable_all_tools],
+                     [enable_analysers=$DEFAULT_ANALYSERS])
+              ])
 AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_analysers=no])
 AM_CONDITIONAL([WANT_MORPHOLOGY], [test "x$enable_analysers" != xno])
 enableval=''
@@ -704,7 +705,10 @@ AC_ARG_ENABLE([generators],
               [AS_HELP_STRING([--enable-generators],
                               [build morphological generators @<:@default=yes@:>@])],
               [enable_generators=$enableval],
-              [enable_generators=yes])
+              [AS_IF([test "x$enable_all_tools" != xno],
+                     [enable_generators=$enable_all_tools],
+                     [enable_generators=$DEFAULT_GENERATORS])
+              ])
 AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_generators=no])
 AM_CONDITIONAL([WANT_GENERATION], [test "x$enable_generators" != xno])
 enableval=''
@@ -992,6 +996,14 @@ AS_IF([test "x$enable_dialects" = "xyes" -a "x$DIALECTS" = "x"],
        AC_MSG_ERROR([You have not defined any dialects. Please see the documentation.])])
 AM_CONDITIONAL([WANT_DIALECTS], [test "x$enable_dialects" != xno])
 
+# Enable dialect-specific analysers and tools, such as spellers:
+AC_ARG_ENABLE([custom-fsts],
+              [AS_HELP_STRING([--enable-custom-fsts],
+                              [build custom fst’s @<:@default=no@:>@])],
+              [enable_custom_fsts=$enableval],
+              [enable_custom_fsts=$DEFAULT_CUSTOM_FSTS])
+AM_CONDITIONAL([WANT_CUSTOM_FSTS], [test "x$enable_custom_fsts" != xno])
+
 ]) # gt_ENABLE_TARGETS
 
 ################################################################################
@@ -1009,6 +1021,7 @@ cat<<EOF
   * generate abbr.txt: $enable_abbr
   * build glossing fst’s: $enable_glossers
   * build dialect specific fst’s: $enable_dialects
+  * custom fst's: $enable_custom_fsts
 
   -- Tools (off by default): --
   * phonetic/IPA conversion enabled: $enable_phonetic

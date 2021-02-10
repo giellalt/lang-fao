@@ -88,7 +88,7 @@ if test "x$variant" != x ; then
 fi
 
 # Check that the speller file does exist:
-spellerfile="$top_builddir/$spellerdir/${giella2c_lang}.zhfst"
+spellerfile="$top_builddir/$spellerdir/${giella2c_lang}-desktop.zhfst"
 if test ! -f $spellerfile ; then
     echo "ERROR: Speller file not found:" 1>&2
     echo "$spellerfile" 1>&2

@@ -29,8 +29,7 @@ function svn_check_out() {
 
 function git_clone() {
     reponame=$1
-    gitprotocoll=$(git remote get-url origin $LANGDIR )
-    if [[ $gitprotocoll == *"https"* ]] ; then
+    if [[ $gitprotocol == *"https"* ]] ; then
         git clone $HTTPS_REPO_HOST/$reponame.git
     else # ssh:
         git clone $SSH_REPO_HOST/$reponame.git
@@ -75,7 +74,10 @@ function get_dep_repo() {
         # echo "Nothing found, cloning/checking out $reponame"
         if test "$repoformat" == "git" ; then
             echo "Nothing found, cloning $reponame in ../"
-            cd "$LANGDIR/../" && git_clone $reponame
+            gitprotocol=$(git remote get-url origin )
+            cd "$LANGDIR/../"
+            git_clone $reponame
+            cd "$LANGDIR"
         elif test "$repoformat" == "svn" ; then
             echo "Nothing found, checking out $reponame in ../"
             cd "$LANGDIR/../" && svn_check_out $reponame

@@ -197,7 +197,7 @@ make
 
 # Identify the version of giella-shared:
 AC_MSG_CHECKING([the version of Giella Shared])
-_giella_shared_version=$( pkg-config --modversion --with-path="$GIELLA_SHARED" giella-common )
+_giella_shared_version=$( pkg-config --modversion "$GIELLA_SHARED"/giella-common.pc )
 
 # Check whether a version info string was found:
 case "$_giella_shared_version" in    # branch to the first pattern

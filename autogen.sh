@@ -4,7 +4,7 @@
 
 # Variable setup for adding env. variable:
 LANGDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-GTLANG=$(basename $LANGDIR | cut -d'-' -f2- )
+GTLANG=$(basename "$LANGDIR" | cut -d'-' -f2- )
 GTLANG_langenv=GTLANG_$GTLANG
 TIME=$(date +%H%M)
 DATE=$(date +%Y%m%d)
@@ -24,15 +24,15 @@ function print_usage() {
 
 function svn_check_out() {
     reponame=$1
-    svn checkout $HTTPS_REPO_HOST/$reponame.git/trunk $reponame
+    svn checkout "$HTTPS_REPO_HOST/$reponame.git/trunk" "$reponame"
 }
 
 function git_clone() {
     reponame=$1
     if [[ $gitprotocol == *"https"* ]] ; then
-        git clone $HTTPS_REPO_HOST/$reponame.git
+        git clone "$HTTPS_REPO_HOST/$reponame.git"
     else # ssh:
-        git clone $SSH_REPO_HOST/$reponame.git
+        git clone "$SSH_REPO_HOST/$reponame.git"
     fi
 }
 
@@ -42,9 +42,9 @@ function make_symlink() {
     reponame=$3
     packagename=$4
     # Check that the dir contains the packagename.pc.in file, if yes, create symlink:
-    if test -f $origdir/$packagename.pc.in ; then
+    if test -f "$origdir/$packagename.pc.in" ; then
         echo "Found $envvar => $origdir, creating symbolic link to $reponame in $LANGDIR/../"
-        ln -s $origdir ../$reponame
+        ln -s "$origdir" ../"$reponame"
     else # If not, error out with a message that the repo is broken:
         echo "ERROR: Found $origdir, but it seems to be broken:"
         echo "It does not contain $packagename.pc.in"
@@ -59,7 +59,7 @@ function get_dep_repo() {
     echo
     echo "Looking for $reponame ..."
     # 1. check if the dir is there:
-    if test -d $LANGDIR/../$reponame ; then
+    if test -d "$LANGDIR"/../"$reponame" ; then
         # basic test that the dir is actually the one we want/not empty or bad:
         if test -f "$LANGDIR/../$reponame/$packagename.pc.in" ; then
             echo "$reponame found in ../"
@@ -75,12 +75,12 @@ function get_dep_repo() {
         if test "$repoformat" == "git" ; then
             echo "Nothing found, cloning $reponame in ../"
             gitprotocol=$(git remote get-url origin )
-            cd "$LANGDIR/../"
-            git_clone $reponame
-            cd "$LANGDIR"
+            cd "$LANGDIR/../" || exit 2
+            git_clone "$reponame"
+            cd "$LANGDIR" || exit 2
         elif test "$repoformat" == "svn" ; then
             echo "Nothing found, checking out $reponame in ../"
-            cd "$LANGDIR/../" && svn_check_out $reponame
+            cd "$LANGDIR/../" && svn_check_out "$reponame"
         else
             echo "ERROR: Not possible to find or get $reponame. Giving up."
             exit 1
@@ -93,9 +93,9 @@ langvar=""
 
 # manual getopt loop... Mac OS X does not have good getopt
 while test $# -ge 1 ; do
-    if test x$1 = x--add-langvar -o x$1 = x-l ; then
+    if test "x$1" = "x--add-langvar" -o "x$1" = "x-l" ; then
         langvar=langvar
-    elif test x$1 = x--help -o x$1 = x-h ; then
+    elif test "x$1" = "x--help" -o "x$1" = "x-h" ; then
         print_usage
         exit 0
     else
@@ -131,7 +131,7 @@ elif [[ -r ~/.bashrc ]]; then
 fi
 
 echo
-echo "Initial automake setup of $(basename $(pwd))"
+echo "Initial automake setup of $(basename "$(pwd)")"
 
 # autoreconf should work for most platforms
 autoreconf -i
@@ -144,18 +144,20 @@ if test x$langvar = xlangvar ; then
         echo
         exit 1
     else
-        if test x${GTLANG_langenv} = x${LANGDIR} ; then
+        if test "x${GTLANG_langenv}" = "x${LANGDIR}" ; then
             echo "${!GTLANG_langenv} already defined."
         else
             # Already defined with a different value:
-            if test x${GTLANG_langenv} != x ; then
+            if test "x${GTLANG_langenv}" != x ; then
                 renew=renew
                 OLDLANGDIR=${!GTLANG_langenv}
             fi
 
             # Add the variable to the login script:
-            cp $LOGINFILE $LOGINFILE.gtbackup.${DATE}-${TIME}
+            cp "$LOGINFILE" "$LOGINFILE.gtbackup.${DATE}-${TIME}"
             echo "export $GTLANG_langenv=$LANGDIR" >> $LOGINFILE
+            # shell check should not in fact source bash profile or such:
+            # shellcheck source=/dev/null
             source $LOGINFILE
 
             # Feedback depending on whether it was added or redefined:

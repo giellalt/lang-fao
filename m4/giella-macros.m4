@@ -127,7 +127,7 @@ AC_PATH_PROG([GIELLA_CORE_VERSION], [gt-version.sh], [no],
     [$GTCORE/scripts$PATH_SEPARATOR$GTHOME/giella-core/scripts$PATH_SEPARATOR$PATH])
 AC_MSG_CHECKING([the version of the Giella Core])
 AS_IF([test "x${GIELLA_CORE_VERSION}" != xno],
-        [_giella_core_version=$( ${GIELLA_CORE_VERSION} )],
+        [_giella_core_version=$( "${GIELLA_CORE_VERSION}" )],
         [AC_MSG_ERROR([gt-version.sh could not be found, installation is incomplete!])
     ])
 AC_MSG_RESULT([$_giella_core_version])
@@ -156,15 +156,15 @@ AC_ARG_WITH([giella-shared],
 AC_MSG_CHECKING([whether we can set GIELLA_SHARED])
 # --with-giella-shared overrides everything:
 AS_IF([test "x$with_giella_shared" != "xfalse" -a \
-    -d $with_giella_shared/all_langs ], [
-    GIELLA_SHARED=$with_giella_shared
+    -d "$with_giella_shared"/all_langs ], [
+    GIELLA_SHARED="$with_giella_shared"
     ], [
     # Check in the parent directory:
-    AS_IF([test -d $THIS_TOP_SRC_DIR/../giella-shared/all_langs ], [
-        GIELLA_SHARED=$THIS_TOP_SRC_DIR/../giella-shared
+    AS_IF([test -d "$THIS_TOP_SRC_DIR"/../giella-shared/all_langs ], [
+        GIELLA_SHARED="$THIS_TOP_SRC_DIR"/../giella-shared
     ], [
         AS_IF([pkg-config --exists giella-common], [
-            GIELLA_SHARED=$(pkg-config --variable=dir giella-common)
+            GIELLA_SHARED="$(pkg-config --variable=dir giella-common)"
         ],
         [
      AC_MSG_ERROR([Could not find giella-common data dir to set GIELLA_SHARED])
@@ -197,7 +197,7 @@ make
 
 # Identify the version of giella-shared:
 AC_MSG_CHECKING([the version of Giella Shared])
-_giella_shared_version=$( pkg-config --modversion $GIELLA_SHARED/giella-common.pc )
+_giella_shared_version=$( pkg-config --modversion --with-path="$GIELLA_SHARED" giella-common )
 
 # Check whether a version info string was found:
 case "$_giella_shared_version" in    # branch to the first pattern
@@ -1003,6 +1003,16 @@ AC_ARG_ENABLE([custom-fsts],
               [enable_custom_fsts=$enableval],
               [enable_custom_fsts=$DEFAULT_CUSTOM_FSTS])
 AM_CONDITIONAL([WANT_CUSTOM_FSTS], [test "x$enable_custom_fsts" != xno])
+
+# Enable TTS transcriptors - default is 'no' (via $enable_all_tools)
+AC_ARG_ENABLE([tts],
+              [AS_HELP_STRING([--enable-tts],
+                              [enable tts transcriptors @<:@default=no@:>@])],
+              [enable_tts=$enableval],
+              [enable_tts=$enable_all_tools])
+AM_CONDITIONAL([WANT_TTS], [test "x$enable_tts" != xno])
+enableval=''
+
 
 ]) # gt_ENABLE_TARGETS
 

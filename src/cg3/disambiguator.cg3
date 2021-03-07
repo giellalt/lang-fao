@@ -115,6 +115,7 @@ LIST GENDER = Msc Fem Neu ;
 LIST NUMBER = Sg Pl ;
 SET NAGDNUMBERGENDER = (Msc Sg Nom) OR (Msc Sg Acc) OR (Msc Sg Gen) OR (Msc Sg Dat) OR (Msc Pl Nom) OR (Msc Pl Acc) OR (Msc Pl Gen) OR (Msc Pl Dat) OR (Fem Sg Nom) OR (Fem Sg Acc) OR (Fem Sg Gen) OR (Fem Sg Dat) OR (Fem Pl Nom) OR (Fem Pl Acc) OR (Fem Pl Gen) OR (Fem Pl Dat) OR (Neu Sg Nom) OR (Neu Sg Acc) OR (Neu Sg Gen) OR (Neu Sg Dat) OR (Neu Pl Nom) OR (Neu Pl Acc) OR (Neu Pl Gen) OR (Neu Pl Dat) ;
 
+LIST CmpNP/None = CmpNP/None ;
 
 # Sets
 # ====
@@ -311,6 +312,9 @@ SELECT:NumOrd CLB IF (0/1 (Num Ord));
 REMOVE:dyn  Arab (0 Prop) ; # foreløpig løsning, til vi har ny løsning for numerals.lexc
 	
 SECTION
+
+REMOVE:CmpNone N IF (0/1 CmpNP/None);
+REMOVE:CmpNone N IF (0 CmpNP/None);
 
 ## For Apertium
 LIST MAX2LETTERS = (".."r) ("."r);
@@ -743,6 +747,16 @@ SELECT Adv IF (-1 V)(0 ("inni"))(1 Pr);
 # á
 REMOVE Interj IF (1 WORD)(0 ("á" Pr));
 REMOVE Interj IF (-1 V)(0 ("á" Pr));
+
+# ver "ver" CmpNP/None N Neu Sg Acc Def = verið
+REMOVE:verid ("ver") IF (-1 A + Indef)(0 Sup);
+
+
+
+
+
+
+
 
 # Adverbs
 

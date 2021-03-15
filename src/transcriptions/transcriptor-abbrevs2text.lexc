@@ -1,0 +1,37 @@
+! Divvun & Giellatekno - open source grammars for Faroese language
+! Copyright © 2021 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@uit.no or feedback@divvun.no
+
+! This file contains mapping from abbreviations and some acronyms to full
+! forms for e.g. text-to-speech purposes. This is a supplement to the analyser;
+! the analyser must tag the strings as +ABBR or similar for the transcriptions
+! to work.
+
+! ========================================================================== !
+! !!            !!!Faroese abbreviations                               !
+! ========================================================================== !
+
+!! We describe here how abbreviations are in Faroese are read out, e.g.
+!! for text-to-speech systems.
+
+LEXICON Root
+!! For example:
+
+s.:syntynyt # ;  !!= * @CODE@
+os.:omaa% sukua # ;  !!= * @CODE@
+v.:vuosi # ;  !!= * @CODE@
+v.:vuonna # ;  !!= * @CODE@
+esim.:esimerkki # ; !!= * @CODE@
+esim.:esimerkiksi # ; !!= * @CODE@
+
+

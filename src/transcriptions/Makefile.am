@@ -24,6 +24,8 @@ GT_TRANSCRIPTIONS_SRCS=\
 		transcriptor-clock-digit2text.lexc \
 		transcriptor-date-digit2text.lexc \
 		transcriptor-numbers-digit2text.lexc
+#! @param GT_ABBREV_SRCS required, for abbreviation expansions
+GT_ABBREV_SRCS=transcriptor-abbrevs2text.lexc
 
 include $(top_srcdir)/../giella-core/am-shared/src-transcriptions-dir-include.am
 

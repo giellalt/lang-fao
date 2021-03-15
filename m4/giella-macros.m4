@@ -99,7 +99,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 
 ### This is the version of the Giella Core that we require. Update as needed.
 ### It is possible to specify also subversion revision: 0.1.2-12345
-_giella_core_min_version=0.11.0
+_giella_core_min_version=0.11.1
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -1010,6 +1010,10 @@ AC_ARG_ENABLE([tts],
                               [enable tts transcriptors @<:@default=no@:>@])],
               [enable_tts=$enableval],
               [enable_tts=$enable_all_tools])
+AS_IF([test x$enable_tts = xyes -a x$enable_transcriptors = xno],
+    [AC_MSG_ERROR([You need to enable transcriptors to build tts])])
+AS_IF([test x$enable_tts = xyes -a x$enable_phonetic = xno],
+    [AC_MSG_ERROR([You need to enable phonetic to build tts])])
 AM_CONDITIONAL([WANT_TTS], [test "x$enable_tts" != xno])
 enableval=''
 
@@ -1031,7 +1035,7 @@ cat<<EOF
   * generate abbr.txt: $enable_abbr
   * build glossing fst’s: $enable_glossers
   * build dialect specific fst’s: $enable_dialects
-  * custom fst's: $enable_custom_fsts
+  * custom fst’s: $enable_custom_fsts
 
   -- Tools (off by default): --
   * phonetic/IPA conversion enabled: $enable_phonetic
@@ -1040,6 +1044,7 @@ cat<<EOF
   * build tokenisers: $enable_tokenisers
   * build morphololgical segmenter: $enable_morpher
   * build analyser tool: $enable_analyser_tool
+  * build text-to-speech support: $enable_tts
 
   -- Proofing tools (off by default): --
   * hyphenators:

@@ -2063,7 +2063,7 @@ MAP:-fsubj> (@-FSUBJ>) TARGET HUMAN + Gen (1 (Actio Nom) LINK 1 N) ;
 	# Adverbials - ADVL
 LIST MOVE-VERBS-sme = "báhcit" "beassat" "boahtit" "čuoigat" "fárret" "fierrat" "gahččat" "girdit" "johtit" "sihkkelastit" "sirdit" "vázzát" "vázzit" "viehkat" "viehkalit" "vuodjit" "vuojehit" "vuolgit"  ;
 
-LIST OTH-ELA-VERBS-sme = "árbet" "ballat" "bálkestit" "báidnit" "beroštit" "čoaggit" "čohkket" "diŋgot" "duvdit" "gáibidit" "geassádit" "goaikut" "jearrat" "muitalit" "nákkáhallat" "njammat" "njoammut" "oastit" "oažžut" "sierranit" "váldit" "viežžat" "vuovdit"  ;
+LIST OTH-ELA-VERBS-sme = "árbet" "ballat" "bálkestit" "báidnit" "beroštit" "čoaggit" "čohkket" "diŋgot" "duvdit" "gáibidit" "geassádit" "goaikut" "jearrat" "jorgalit" "muitalit" "nákkáhallat" "njammat" "njoammut" "oastit" "oažžut" "sierranit" "váldit" "viežžat" "vuovdit"  ;
 
 SET ELA-VERBS-sme = MOVE-VERBS-sme OR OTH-ELA-VERBS-sme ;
 
@@ -2180,6 +2180,7 @@ MAP:ine-timeill (@ADVL-ine>) TARGET N + Loc IF (NOT 0 Sem/Time)(1 N + Ill + Sem/
 
 MAP:mielas-ela (@ADVL-ela>) TARGET ("miella") + Loc OR ("mielas") IF (-1 Gen)(NEGATE *-1 VFIN BARRIER S-BOUNDARY)(0 (<sme>)) ; #ine for sma, ela for smj
 MAP:mielas-ela (@<ADVL-ela) TARGET ("miella") + Loc OR ("mielas") IF (-1 Gen)(NEGATE *1 VFIN BARRIER S-BOUNDARY)(0 (<sme>)) ; #ine for sma, ela for smj
+MAP:oahppat (@ADVL-ela>) TARGET HUMAN - INE-NOUNS-sme (0 Loc)(NEGATE *-1 FMAINV BARRIER S-BOUNDARY)(*1 FMAINV + ("oahppat") BARRIER SV-BOUNDARY LINK NEGATE 0 OTH-ELA-VERBS-sme)(0 (<sme>)) ;
 
 
 MAP:ela-ill (@ADVL-ela>) TARGET N + Loc IF (1 N + Ill)(NEGATE *-1 FMAINV BARRIER S-BOUNDARY)(0 (<sme>)) ;
@@ -2671,7 +2672,7 @@ SUBSTITUTE:smjRemove (←smj→) (*) TARGET (←smj→) ; #Apertium
 SUBSTITUTE:smnRemove (←smn→) (*) TARGET (←smn→) ; #Apertium
 SUBSTITUTE:smsRemove (←sms→) (*) TARGET (←sms→) ; #Apertium
 SUBSTITUTE:fkvRemove (←fkv→) (*) TARGET (←fkv→) ; #Apertium
-SUBSTITUTE:fkvRemove (←fin→) (*) TARGET (←fin→) ; #Apertium
+SUBSTITUTE:finRemove (←fin→) (*) TARGET (←fin→) ; #Apertium
 
 
 #SUBSTITUTE (sem_year num) (num sem_year) ;

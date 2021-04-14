@@ -32,6 +32,7 @@ LIST V = V ;
 LIST A = A ;
 LIST A* = A* ;
 LIST Prop = Prop ;
+LIST Attr = Attr ;
 LIST Adv = Adv ;
 LIST Num = Num ;
 LIST Rom = Rom ;
@@ -85,6 +86,7 @@ LIST LEFT = LEFT ;
 LIST RIGHT = RIGHT ;
 LIST Guess = Guess ;
 LIST Err/Guess = Err/Guess ;
+LIST Dyn = Dyn ;
 
 LIST Der/A = Der/A ;
 
@@ -103,6 +105,7 @@ LIST Sem/Sur = Sem/Sur ;
 LIST Sem/Org = Sem/Org ;
 LIST Sem/Veh = Sem/Veh ;
 LIST Sem/Year = Sem/Year ;
+LIST Sem/Time-clock =  Sem/Time-clock ;
 
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
 Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPtc
@@ -136,7 +139,7 @@ SET FemNeu = Fem OR Neu ;
 
 LIST 3PERS = "hann" "hon" "tað" ;
 
-LIST MONTH = "januar" "februar" "desember" "september" "november" "oktober" "desembur" "septembur" "novembur" "oktobur" "mars" "august" "april" "mai" "juni" "juli" ;
+LIST MONTH = "januar" "februar" "desember" "september" "november" "oktober" "desembur" "septembur" "novembur" "oktobur" "mars" "august" "apríl" "mai" "juni" "juli" ;
 
 
 # Adjective sets
@@ -162,6 +165,7 @@ SET NOT-ACC = TAG - Acc ;
 LIST COPULA = "vera" "verða" ;
 
 LIST HAVA = "hava" ;
+LIST VERDA = "verða" ;
 
 LIST MODV = "kunna" "láta" "skula" "vilja" "munna" "mega" ;
 
@@ -302,8 +306,11 @@ LIST TAD = "tað" ;
 BEFORE-SECTIONS
 REMOVE CLBfinal ;
 
-SELECT:Sem/ID Sem/ID IF (-1 ("§")) ; 
+SELECT:Sem/ID Sem/ID IF (-1 ("§") OR ("FO")) ; 
 REMOVE:Sem/ID Sem/ID IF (1 CURRENCY) ; 
+
+SELECT:Sem/Time Sem/Time-clock IF (-1 ("kl"));
+SELECT:dato Ord IF (0 A + Arab + Ord + Attr) (1 MONTH);
 
 SELECT:Arab Arab IF (NOT 0 Ord OR Prop OR Arab + Err/Orth) ; # In Apertium we get analysis both with and without the tag.
 
@@ -1110,7 +1117,7 @@ REMOVE:PrsPtcNotA Der/A IF (0 PrsPrc)(NOT 1 A OR N);
 
 # Supine
 
-REMOVE:NoSupIfNoHava Sup IF (NOT *0 HAVA);	
+REMOVE:NoSupIfNoHava Sup IF (NOT *0 HAVA OR VERDA);
 	
 SELECT Sup IF (*-1 HAVA BARRIER NOT-ADV LINK *-1 Nom);
 
@@ -1357,7 +1364,7 @@ SELECT (V Pl) IF (-1 NOMINALHEAD + Nom LINK *-1 CC BARRIER NPNH LINK -1 NOMINALH
 
 REMOVE:Dangerous (V Ind 2Sg) IF (0 (V Ind 3Sg))(NOT 0 Pass); #
 
-AFTER-SECTIONS
+#AFTER-SECTIONS
 
 ## For Apertium
 REMOVE SUB:1 (cmp) ; 
@@ -1368,7 +1375,7 @@ REMOVE (adj cmp) IF (0 (adj)) ;
 
 
 
-SECTION
+#SECTION
 
 LIST @CNP = @CNP ;
 LIST @CVP = @CVP ;
@@ -1395,7 +1402,7 @@ REMOVE:ja (@CVP)  IF (-1 Num LINK -1 Pr)(1 Num) ;
 	#$ Sihke ovdal ja maŋŋil dan leat gaskkal vihtta ja logi olbmo ožžon dávdda jagis.
 
 #!! * Kill Sem/ID
-REMOVE Num + Sem/ID ;
+REMOVE Sem/ID IF (0 Num) ;
 
 #!! * __killAllCNP__ removes all remaining @CNP
 REMOVE:killAllCNP @CNP IF (0 @CVP) ;
@@ -1404,7 +1411,13 @@ REMOVE:killAllCNP @CNP IF (0 @CVP) ;
 MAP:CC-CS (@X) TARGET CC OR CS ;
 
 #!! * __ErrOrth__ goes for correct forms
-REMOVE:ErrOrth (Err/Orth) ;
+REMOVE:ErrOrth Err/Orth ;
+REMOVE:ErrOrth (CLB) IF (0/1 Err/Orth) ;
+
+REMOVE:NoCmp SUB:1 (0/1 Cmp);
+#REMOVE:NoCmp SUB:1 (0 N)(0/1 CmpNP/None);
+
+REMOVE:LeksNotDyn Dyn ;
 
 #!! * __X__ removes readings with no syntax
 REMOVE:X (@X) ;    

@@ -15,6 +15,7 @@ NUM-PREFIXES ;  !!= * @CODE@
 
 
 LEXICON Textual
+ !!= __@LEXNAME@__ for the numerals with letters
 1-9 ;
 TEXTTENS ;
 TEXTTEENS ;
@@ -23,6 +24,7 @@ ordinals ;
 
 
 LEXICON 1-9
+ !!= __@LEXNAME@__ 
 eitt:ei EITTsplit ;
 tvey:tv TVEYsplit ;
 trý:tr TRÝsplit ;
@@ -38,22 +40,27 @@ sjey nsplit ;
 níggju nsplit ;
 
 LEXICON EITTsplit
+ !!= __@LEXNAME@__ 
 +Num: EITT ;
 nog:nog TEXTTENS ;
 
 LEXICON TVEYsplit
+ !!= __@LEXNAME@__ 
 +Num: TVEY ;
 og:og TEXTTENS ;
 
 LEXICON TRÝsplit
+ !!= __@LEXNAME@__ 
 +Num: TRÝ ;
 ýog:ýog TEXTTENS ;
 
 LEXICON nsplit
+ !!= __@LEXNAME@__ 
 n ;
 og:og TEXTTENS ;
 
 LEXICON TEXTTENS
+ !!= __@LEXNAME@__ 
 tjúgu n ;
 tretivu n ;
 tríati n ;     ! 1Mos
@@ -71,6 +78,7 @@ níti n ;       ! 1Mos
 
 
 LEXICON TEXTTEENS
+ !!= __@LEXNAME@__ 
 ellivu n ;
 tólv n ;
 trettan n ;
@@ -83,7 +91,7 @@ seytjan n ;
 nítjan n ;
 
 LEXICON basic
-
+ !!= __@LEXNAME@__ 
 eini n ;
 tíggju n ;
 hundrað n ;
@@ -100,6 +108,7 @@ fýrsur n ;
 
 
 LEXICON EITT
+ !!= __@LEXNAME@__ 
 +Msc+Sg+Nom:n # ;
 +Msc+Sg+Acc:n # ;
 +Msc+Sg+Dat:num # ;
@@ -115,6 +124,7 @@ LEXICON EITT
 +Neu+Sg+Gen:ns # ;
 
 LEXICON TVEY
+ !!= __@LEXNAME@__ 
 +Msc+Sg+Nom:eir # ;
 +Msc+Sg+Acc:eir # ;
 +Msc+Sg+Dat:eimum # ;
@@ -129,6 +139,7 @@ LEXICON TVEY
 +Neu+Sg+Gen:ggja # ;
 
 LEXICON TRÝ
+ !!= __@LEXNAME@__ 
 +Msc+Sg+Nom:íggir # ;
 +Msc+Sg+Acc:íggjar # ;
 +Msc+Sg+Dat:imum # ;
@@ -143,6 +154,7 @@ LEXICON TRÝ
 +Neu+Sg+Gen:íggja # ;
 
 LEXICON PAIRNUM
+ !!= __@LEXNAME@__ 
 +Msc+Sg+Pl+Nom:ir # ;
 +Msc+Sg+Pl+Acc:ar # ;
 +Msc+Sg+Pl+Dat:um # ;
@@ -157,13 +169,15 @@ LEXICON PAIRNUM
 +Neu+Sg+Pl+Gen:a # ;
 
 LEXICON n
+ !!= __@LEXNAME@__ 
 +Num: # ;
 
 
-! Ordinals
+!! !!Ordinals
 ! ========
 
 LEXICON ordinals
+ !!= __@LEXNAME@__ 
 fyrsti:fyrst ord_decl ;
 annar: ANNAR ;
 triði:trið ord_decl ;
@@ -203,13 +217,16 @@ hundraðndi:hundraðnd ord_decl ;
 túsundi:túsund ord_decl ;
 
 LEXICON ord_decl
+ !!= __@LEXNAME@__ 
 +A: adj_def ;
 
 LEXICON ANNAR
+ !!= __@LEXNAME@__ 
 +A: ANNARMORPH ;
 +Pron+Indef: ANNARMORPH ;
 
 LEXICON ANNARMORPH
+ !!= __@LEXNAME@__ 
 +Msc+Nom:annar # ;
 +Msc+Acc:annan # ;
 +Msc+Dat:øðrum # ;

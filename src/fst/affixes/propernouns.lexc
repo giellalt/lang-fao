@@ -1,17 +1,18 @@
 ! ============ !
-! Proper nouns !
+!!! !!!Proper nouns !
 ! ============ !
 
-! Table of content
+!!! !!Table of content
 ! ================
-! _ The guessed ones
-! _ The morphological tags
-! _ _ Male first names
-! _ _ Female first names
-! _ _ Surnames
-! _ _ Place names and other names
+!! * _ The guessed ones
+!! * _ The morphological tags
+!! ** _ _ Male first names
+!! ** _ _ Female first names
+!! ** _ _ Surnames
+!! ** _ _ Place names and other names
 
 LEXICON guess
+!!= __@LEXNAME@__ lists all letters in a CVCV pattern
  < [A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Æ|Ø|Å
    |Á|É|Í|Ó|Ú|Ý|Ä|Ö|Ü]
    [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å
@@ -23,6 +24,7 @@ LEXICON guess
  > guesstag ;
 
 LEXICON guesstag
+!!= __@LEXNAME@__ 
  +Nom:  # ;
  +Acc:  # ;
  +Dat:  # ; !+i ?
@@ -31,40 +33,47 @@ LEXICON guesstag
 
 
 
-! The morphological tags
+!! !! The morphological tags
 ! ======================
 
-! For each group, the maltag etc. lexicon functions as a default
-! lexicon. The other lexica are there for specific subgroups of the names.
+!! For each group, the maltag etc. lexicon functions as a default
+!! lexicon. The other lexica are there for specific subgroups of the names.
 
-! Indeclineables
+!! !Indeclineables
 ! ______________
 
 LEXICON indeclattr
+!!= __@LEXNAME@__ 
  +Det+Prop+Attr: # ; ! "The" i "The full Monty"
 
 LEXICON indeclorg ! Den Danske Bank
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Org: indeclcase ;
 
 LEXICON indeclplc ! Færøerne
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Plc: indeclcase ;
 
 LEXICON indeclmal ! Várharra
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Mal: indeclcase ;
 
 LEXICON indeclcase
+!!= __@LEXNAME@__ 
  +Sg+Nom: # ;
  +Sg+Acc: # ;
  +Sg+Dat: # ;
  +Sg+Gen: # ;
 
 
-! Male first names
+!! ! Male first names
 ! ________________
 
-!this is like BOAS
-!It means just "not checked"
+!!this is like BOAS
+!!It means just "not checked"
+
 LEXICON maltag
+!!= __@LEXNAME@__ 
     +N+Prop+Sem/Mal+Sg+Nom:      #     ;
     +N+Prop+Sem/Mal+Sg+Acc:      #     ;
     +N+Prop+Sem/Mal+Sg+Dat:%>i   #     ;
@@ -75,6 +84,7 @@ LEXICON maltag
 +N+Prop+Sem/Mal: R- ;
 
 LEXICON MUSTAFA
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Mal+Sg+Nom:     #     ;
  +N+Prop+Sem/Mal+Sg+Acc:     #     ;
  +N+Prop+Sem/Mal+Sg+Dat:     #     ;
@@ -85,6 +95,7 @@ LEXICON MUSTAFA
 +N+Prop+Sem/Mal: R- ;
 
 LEXICON ARI
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Mal+Sg+Nom:%>i   #     ;
  +N+Prop+Sem/Mal+Sg+Acc:%>a   #     ;
  +N+Prop+Sem/Mal+Sg+Dat:%>a   #     ;
@@ -95,6 +106,7 @@ LEXICON ARI
 +N+Prop+Sem/Mal:i R- ;
 
 LEXICON HARRIGUD
+!!= __@LEXNAME@__ 
  +N+Prop+Sg+Nom+Indef:%>i    # ;
  +N+Prop+Sg+Acc+Indef:%>a    # ;
  +N+Prop+Sg+Dat+Indef:%>a    # ;
@@ -107,6 +119,7 @@ LEXICON HARRIGUD
 +N+Prop+Sem/Mal:i R- ;
 
 LEXICON WILLY
+!!= __@LEXNAME@__ 
     +N+Prop+Sg+Nom:      #     ;
     +N+Prop+Sg+Acc:      #     ;
     +N+Prop+Sg+Dat:      #     ;
@@ -117,6 +130,7 @@ LEXICON WILLY
 +N+Prop+Sem/Mal: R- ;
 
 LEXICON DAGUR
+!!= __@LEXNAME@__ 
     +N+Prop+Sem/Mal+Sg+Nom:ur    #     ;
     +N+Prop+Sem/Mal+Sg+Acc:      #     ;
     +N+Prop+Sem/Mal+Sg+Dat:%>i   #     ;
@@ -126,6 +140,7 @@ LEXICON DAGUR
    +N+Prop+Sem/Sur+Sg+Poss:%>asa #     ; !SAFORM
 
 LEXICON TRÓNDUR
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Mal+Sg+Nom:ur     #     ;
  +N+Prop+Sem/Mal+Sg+Acc:       #     ;
  +N+Prop+Sem/Mal+Sg+Dat:%>i    #     ;
@@ -138,6 +153,7 @@ LEXICON TRÓNDUR
         +N+Prop+Sg+Poss:%>asa  #     ; !SAFORM
 
 LEXICON HÁVARÐUR
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Mal+Sg+Nom:ur     #     ;
  +N+Prop+Sem/Mal+Sg+Acc:       #     ;
  +N+Prop+Sem/Mal+Sg+Dat:%>i    #     ;
@@ -150,6 +166,7 @@ LEXICON HÁVARÐUR
         +N+Prop+Sg+Poss:%>asa  #     ; !SAFORM
 
 LEXICON DÁVUR
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Mal+Sg+Nom:ur    #     ;
  +N+Prop+Sem/Mal+Sg+Acc:%>a   #     ;
  +N+Prop+Sem/Mal+Sg+Dat:%>a   #     ;
@@ -159,6 +176,7 @@ LEXICON DÁVUR
         +N+Prop+Sg+Poss:%>asa #     ; !SAFORM
 
 LEXICON BOAS
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Mal+Sg+Nom:       #     ;
  +N+Prop+Sem/Mal+Sg+Acc:       #     ;
  +N+Prop+Sem/Mal+Sg+Dat:%>i    #     ;
@@ -169,6 +187,7 @@ LEXICON BOAS
 +N+Prop+Sem/Mal: R- ;
 
 LEXICON BJØRN
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Mal+Sg+Nom:       #     ;
  +N+Prop+Sem/Mal+Sg+Acc:       #     ;
  +N+Prop+Sem/Mal+Sg+Dat:       #     ;
@@ -180,9 +199,10 @@ LEXICON BJØRN
 +N+Prop+Sem/Mal: R- ;
 
 
-! Female first names
+!! !Female first names
 ! __________________
 LEXICON RUT
+!!= __@LEXNAME@__ 
   +N+Prop+Sem/Fem+Sg+Nom:      # ;
   +N+Prop+Sem/Fem+Sg+Acc:      # ;
   +N+Prop+Sem/Fem+Sg+Dat:      # ;
@@ -190,6 +210,7 @@ LEXICON RUT
  +N+Prop+Sem/Fem+Sg+Poss:%>asa # ; !SAFORM
 
 LEXICON SARA
+!!= __@LEXNAME@__ 
   +N+Prop+Sem/Fem+Sg+Nom:     # ;
   +N+Prop+Sem/Fem+Sg+Acc:     # ;
   +N+Prop+Sem/Fem+Sg+Dat:%>i  # ;
@@ -197,6 +218,7 @@ LEXICON SARA
  +N+Prop+Sem/Fem+Sg+Poss:%>sa # ; !SAFORM
 
 LEXICON ASTA
+!!= __@LEXNAME@__ 
   +N+Prop+Sem/Fem+Sg+Nom:%>a   # ;
   +N+Prop+Sem/Fem+Sg+Acc:%>u   # ;
   +N+Prop+Sem/Fem+Sg+Dat:%>u   # ;
@@ -207,11 +229,12 @@ LEXICON ASTA
 ! LEXICON ø>a
 
 
-! Surnames
+!! ! Surnames
 ! ________
 
 
 LEXICON surtag
+!!= __@LEXNAME@__ 
   +N+Prop+Sem/Sur+Sg+Nom:          # ;
   +N+Prop+Sem/Sur+Sg+Acc:          # ;
   +N+Prop+Sem/Sur+Sg+Dat:%>i       # ; ! ..ssoni
@@ -219,9 +242,10 @@ LEXICON surtag
   +N+Prop+Sem/Sur+Sg+Gen:%>s       # ;
  +N+Prop+Sem/Sur+Sg+Poss:%>asa     # ; !SAFORM
 
-! Place names and other names
+!! ! Place names and other names
 ! ___________________________
 LEXICON plctag
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Plc+Sg+Nom:    # ;
  +N+Prop+Sem/Plc+Sg+Acc:    # ;
  +N+Prop+Sem/Plc+Sg+Dat:%>i # ;
@@ -229,6 +253,7 @@ LEXICON plctag
 +N+Prop+Sem/Plc: R- ;
 
 LEXICON fplctag !fem
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Plc+Sg+Nom:     # ;
  +N+Prop+Sem/Plc+Sg+Acc:     # ;
  +N+Prop+Sem/Plc+Sg+Dat:     # ;
@@ -236,6 +261,7 @@ LEXICON fplctag !fem
 +N+Prop+Sem/Plc: R- ;
 
 LEXICON orgtag ! XXXcheck
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Org+Sg+Nom:    # ;
  +N+Prop+Sem/Org+Sg+Acc:    # ;
  +N+Prop+Sem/Org+Sg+Dat:%>i # ;
@@ -243,6 +269,7 @@ LEXICON orgtag ! XXXcheck
 +N+Prop+Sem/Org: R- ;
 
 LEXICON vehtag ! XXXcheck
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Veh+Sg+Nom:    # ;
  +N+Prop+Sem/Veh+Sg+Acc:    # ;
  +N+Prop+Sem/Veh+Sg+Dat:%>i # ;
@@ -257,17 +284,20 @@ LEXICON vehtag ! XXXcheck
 
 
 LEXICON SOSIALURIN
+!!= __@LEXNAME@__ 
 +N+Prop+Msc+Sg+Nom+Def:%>urin # ;
 +N+Prop+Msc+Sg+Acc+Def:%>in # ;
 +N+Prop+Msc+Sg+Dat+Def:%>inum # ;
 
 LEXICON neuorgtag ! XXXcheck
+!!= __@LEXNAME@__ 
  +N+Prop+Neu: S_N_SGNA ;
  +N+Prop+Neu: S_N_SGDG ;
 ! eimskip
 
 
 LEXICON ROMA
+!!= __@LEXNAME@__ 
      +N+Prop+Sg+Nom:%>a  # ;
      +N+Prop+Sg+Acc:%>u  # ;
      +N+Prop+Sg+Dat:%>u  # ;
@@ -281,7 +311,7 @@ LEXICON ROMA
 
 
 LEXICON SUDUROY
-
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Plc+Sg+Nom+Indef:          # ;
  +N+Prop+Sem/Plc+Sg+Acc+Indef:          # ;
  +N+Prop+Sem/Plc+Sg+Dat+Indef:          # ;
@@ -292,172 +322,226 @@ LEXICON SUDUROY
    +N+Prop+Sem/Plc+Sg+Gen+Def:%>arinnar # ;
 
 LEXICON FLOKKUR
+!!= __@LEXNAME@__ 
  flokkur:flokk propnoun_org_k9 ;
 
 ! These are the lexica taken from the noun_fao_lex.txt file.
 
 LEXICON propnoun_h_flt10
+!!= __@LEXNAME@__ 
  +Prop: h_flt10 ;
 
 LEXICON propnoun_h_flt25 
+!!= __@LEXNAME@__ 
  +Prop: h_flt25 ;
 
 LEXICON propnoun_h_flt3 
+!!= __@LEXNAME@__ 
  +Prop: h_flt3 ;
 
 LEXICON propnoun_h_flt8
+!!= __@LEXNAME@__ 
  +Prop: h_flt8 ;
 
 LEXICON propnoun_plc_h11
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: h11 ;
 
 LEXICON propnoun_plc_h11e
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: h11e ;
 
 LEXICON propnoun_plc_h22e
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: h2e ;
 
 LEXICON propnoun_h11
+!!= __@LEXNAME@__ 
  +Prop: h11 ;
 
 LEXICON propnoun_h11e
+!!= __@LEXNAME@__ 
  +Prop: h11e ;
 
 LEXICON propnoun_k13e
+!!= __@LEXNAME@__ 
  +Prop: k13e ;
 
 LEXICON propnoun_k11
+!!= __@LEXNAME@__ 
  +Prop: k11 ;
 
 
 LEXICON propnoun_h13
+!!= __@LEXNAME@__ 
  +Prop: h13 ;
 
 LEXICON propnoun_h13e
+!!= __@LEXNAME@__ 
  +Prop: h13e ;
 
 LEXICON propnoun_h1e
+!!= __@LEXNAME@__ 
  +Prop: h1e ;
 
 LEXICON propnoun_h24
+!!= __@LEXNAME@__ 
  +Prop: h24 ;
 
 LEXICON propnoun_h24e
+!!= __@LEXNAME@__ 
  +Prop: h24e ;
 
 LEXICON propnoun_plc_h24e
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: h24e ;
 
 LEXICON propnoun_plc_h24
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: h24 ;
 
 
 LEXICON propnoun_h25
+!!= __@LEXNAME@__ 
  +Prop: h25 ;
 
 LEXICON propnoun_h25e
+!!= __@LEXNAME@__ 
  +Prop: h25e ;
 
 !LEXICON propnoun_plc_h3
 ! +Prop+Sem/Plc: h3 ;
 
 LEXICON propnoun_h3
+!!= __@LEXNAME@__ 
  +Prop: h3 ;
 
 LEXICON propnoun_h3e
+!!= __@LEXNAME@__ 
  +Prop: h3e ;
 
 LEXICON propnoun_h4
+!!= __@LEXNAME@__ 
  +Prop: h4 ;
 
 LEXICON propnoun_h4e
+!!= __@LEXNAME@__ 
  +Prop: h4e ;
 
 LEXICON propnoun_h5
+!!= __@LEXNAME@__ 
  +Prop: h5 ;
 
 LEXICON propnoun_h5e
+!!= __@LEXNAME@__ 
  +Prop: h5e ;
 
 LEXICON propnoun_h6e
+!!= __@LEXNAME@__ 
  +Prop: h6e ;
 
 LEXICON propnoun_h9e
+!!= __@LEXNAME@__ 
  +Prop: h9e ;
 
 LEXICON propnoun_h8
+!!= __@LEXNAME@__ 
  +Prop: h8 ;
 
 LEXICON propnoun_h8e
+!!= __@LEXNAME@__ 
  +Prop: h8e ;
 
 LEXICON propnoun_k_flt17
+!!= __@LEXNAME@__ 
  +Prop: k_flt17 ;
 
 LEXICON propnoun_plc_k_flt1
+!!= __@LEXNAME@__ 
  +Prop: k_flt1 ;
 
 LEXICON propnoun_plc_k13e
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: k13e ;
 
 LEXICON propnoun_k_flt20
+!!= __@LEXNAME@__ 
  +Prop: k_flt20 ;
 
 LEXICON propnoun_k1
+!!= __@LEXNAME@__ 
  +Prop: k1 ;
 
 LEXICON propnoun_k12
+!!= __@LEXNAME@__ 
  +Prop: k12 ;
 
 LEXICON propnoun_k14
+!!= __@LEXNAME@__ 
  +Prop: k14 ;
 
 LEXICON propnoun_k17
+!!= __@LEXNAME@__ 
  +Prop: k17 ;
 
 LEXICON propnoun_plc_k17
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: k17 ;
 
 LEXICON propnoun_k1e
+!!= __@LEXNAME@__ 
  +Prop: k1e ;
 
 LEXICON propnoun_k21
+!!= __@LEXNAME@__ 
  +Prop: k21 ;
 
 LEXICON propnoun_k3
+!!= __@LEXNAME@__ 
  +Prop: k3 ;
 
 LEXICON propnoun_k39e
+!!= __@LEXNAME@__ 
  +Prop: k39e ;
 
 LEXICON propnoun_k3e
+!!= __@LEXNAME@__ 
  +Prop: k3e ;
 
 LEXICON propnoun_k43e
+!!= __@LEXNAME@__ 
  +Prop: k43e ;
 
 LEXICON propnoun_k46
+!!= __@LEXNAME@__ 
  +Prop: k46 ;
 
 LEXICON propnoun_k46e
+!!= __@LEXNAME@__ 
  +Prop: k46e ;
 
 LEXICON propnoun_k12_boe
+!!= __@LEXNAME@__ 
  +Prop: k12_boe ;
 
 LEXICON propnoun_plc_k6
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: k6 ;
 
 LEXICON propnoun_plc_k6e
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: k6e ;
 
 LEXICON propnoun_k6
+!!= __@LEXNAME@__ 
  +Prop: k6 ;
 
 LEXICON propnoun_k52
+!!= __@LEXNAME@__ 
  +Prop: k52 ;
 
 LEXICON propnoun_k55
+!!= __@LEXNAME@__ 
  +N+Prop+Msc+Sg+Nom:a # ;
  +N+Prop+Msc+Sg+Acc:a # ;
  +N+Prop+Msc+Sg+Dat:a # ;
@@ -465,123 +549,164 @@ LEXICON propnoun_k55
  +N+Prop+Msc+Sg+Acc:a R- ; ! compound
 
 LEXICON propnoun_k6e
+!!= __@LEXNAME@__ 
  +Prop: k6e ;
  
 LEXICON propnoun_k7
+!!= __@LEXNAME@__ 
  +Prop: k7 ;
 
 LEXICON propnoun_k8e
+!!= __@LEXNAME@__ 
  +Prop: k8e ;
 
 LEXICON propnoun_k8
+!!= __@LEXNAME@__ 
  +Prop: k8 ;
  
 LEXICON propnoun_plc_k8e
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: k8e ;
  
 LEXICON propnoun_k9
+!!= __@LEXNAME@__ 
  +Prop: k9 ;
 
 LEXICON propnoun_plc_k9
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: k9 ;
  
 LEXICON propnoun_k9e
+!!= __@LEXNAME@__ 
  +Prop: k9e ;
 
 LEXICON propnoun_org_k9
+!!= __@LEXNAME@__ 
  +Prop+Sem/Org: k9 ;
 
 LEXICON propnoun_kv_flt1
+!!= __@LEXNAME@__ 
  +Prop: kv_flt1 ;
 
 LEXICON propnoun_kv_flt17
+!!= __@LEXNAME@__ 
  +Prop: kv_flt17 ;
 
 LEXICON propnoun_kv_flt2
+!!= __@LEXNAME@__ 
  +Prop: kv_flt2 ;
 
 LEXICON propnoun_kv_flt32
+!!= __@LEXNAME@__ 
  +Prop: kv_flt32 ;
 
 LEXICON propnoun_kv_flt6
+!!= __@LEXNAME@__ 
  +Prop: kv_flt6 ;
 
 LEXICON propnoun_kv_flt9
+!!= __@LEXNAME@__ 
  +Prop: kv_flt9 ;
 
 LEXICON propnoun_org_kv1
+!!= __@LEXNAME@__ 
  +Prop+Sem/Org: kv1 ;
 
 LEXICON propnoun_plc_kv1
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: kv1 ;
 
 LEXICON propnoun_plc_kv1e
+!!= __@LEXNAME@__ 
  +Prop+Sem/Plc: kv1e ;
 
 LEXICON propnoun_kv1
+!!= __@LEXNAME@__ 
  +Prop: kv1 ;
 
 LEXICON propnoun_kv12e
+!!= __@LEXNAME@__ 
  +Prop: kv12e ;
 
 LEXICON propnoun_kv13e
+!!= __@LEXNAME@__ 
  +Prop: kv13e ;
 
 LEXICON propnoun_kv1e
+!!= __@LEXNAME@__ 
  +Prop: kv1e ;
 
 LEXICON propnoun_fem_kv2
+!!= __@LEXNAME@__ 
  +Prop+Sem/Fem: kv2 ;
 
 LEXICON propnoun_kv2
+!!= __@LEXNAME@__ 
  +Prop: kv2 ;
 
 LEXICON propnoun_kv21
+!!= __@LEXNAME@__ 
  +Prop: kv21 ;
 
 !LEXICON propnoun_plc_kv24e
 ! +Prop+Sem/Plc: kv24e ;
 
 LEXICON propnoun_kv2e
+!!= __@LEXNAME@__ 
  +Prop: kv2e ;
 
 LEXICON propnoun_kv3
+!!= __@LEXNAME@__ 
  +Prop: kv3 ;
 
 LEXICON propnoun_kv32e
+!!= __@LEXNAME@__ 
  +Prop: kv32e ;
 
 LEXICON propnoun_kv3e
+!!= __@LEXNAME@__ 
  +Prop: kv3e ;
 
 LEXICON propnoun_kv6
+!!= __@LEXNAME@__ 
  +Prop: kv6 ;
 
 LEXICON propnoun_kv6e
+!!= __@LEXNAME@__ 
  +Prop: kv6e ;
 
 !LEXICON propnoun_plc_kv6e
 ! +Prop+Sem/Plc: kv6e ;
 
 LEXICON propnoun_kv9
+!!= __@LEXNAME@__ 
  +Prop: kv9 ;
 LEXICON propnoun_kv24e
+!!= __@LEXNAME@__ 
  +Prop: kv24e ;
 LEXICON propnoun_h15e 
+!!= __@LEXNAME@__ 
  +Prop: h15e ;
 LEXICON propnoun_h37 
+!!= __@LEXNAME@__ 
  +Prop: h37 ;
 LEXICON propnoun_k10e 
+!!= __@LEXNAME@__ 
  +Prop: k10e ;
 LEXICON propnoun_k15e 
+!!= __@LEXNAME@__ 
  +Prop: k15e ;
 LEXICON propnoun_k21e 
+!!= __@LEXNAME@__ 
  +Prop: k21e ;
 LEXICON propnoun_k36 
+!!= __@LEXNAME@__ 
  +Prop: k36 ;
 LEXICON propnoun_k48 
+!!= __@LEXNAME@__ 
  +Prop: k48 ;
 LEXICON propnoun_k52e 
+!!= __@LEXNAME@__ 
  +Prop: k52e ;
 !LEXICON propnoun_plc_h3e 
 ! +Prop: h3e ;

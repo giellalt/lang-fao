@@ -1,20 +1,27 @@
+!! !!!numerals
 
-LEXICON DIGITCASE 				 # ;
-LEXICON ARABICCASE 				 # ;
-LEXICON ARABICCASE0 				 # ;
-LEXICON ARABICCASECOLL 				 # ;
-LEXICON ARABICCASEORD 				 # ;
-LEXICON ARABICCASEORD-ERR 				 # ;
-LEXICON ARABICCASES 				 # ;
-LEXICON ARABICCOMPOUNDS 			 # ;
-LEXICON ROMNUMTAGOBL 				 # ;
-LEXICON dateyearcase 				 # ;
-LEXICON dateyearcase_fullsuff 		 # ;
-LEXICON dateyearcase_nullsuff_w_dot  # ;
+!! This lexicon just goes to #, this in order to coexist with number files in giella-shared.
+!! They are relevant for S+ami, not for faroese.
+
+!! Lexica: 
+
+LEXICON DIGITCASE 				 # ;		 !!= * @CODE@
+LEXICON ARABICCASE 				 # ;		 !!= * @CODE@
+LEXICON ARABICCASE0 				 # ;	 !!= * @CODE@
+LEXICON ARABICCASECOLL 				 # ;	 !!= * @CODE@
+LEXICON ARABICCASEORD 				 # ;	 !!= * @CODE@
+LEXICON ARABICCASEORD-ERR 				 # ; !!= * @CODE@
+LEXICON ARABICCASES 				 # ;	 !!= * @CODE@
+LEXICON ARABICCOMPOUNDS 			 # ;	 !!= * @CODE@
+LEXICON ROMNUMTAGOBL 				 # ;	 !!= * @CODE@
+LEXICON dateyearcase 				 # ;	 !!= * @CODE@
+LEXICON dateyearcase_fullsuff 		 # ;	 !!= * @CODE@
+LEXICON dateyearcase_nullsuff_w_dot  # ;	 !!= * @CODE@
 
 
 
 LEXICON yeartagpl
+!!= __@LEXNAME@__ 
           +Num+Sem/Year+Pl+Nom:    # ;
           +Num+Sem/Year+Pl+Gen:    # ;
           +Num+Sem/Year+Pl+Acc:    # ;

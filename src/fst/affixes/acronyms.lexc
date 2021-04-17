@@ -18,9 +18,11 @@
 !! !!The lexica giving tags and suffixes to the acronyms
 
 LEXICON ACRONOUN_cons  
+!!= __@LEXNAME@__ 
  ACRONOUN ;
 
 LEXICON ACRONOUN_vow  
+!!= __@LEXNAME@__ 
  ACRONOUN ;
 
 
@@ -32,31 +34,41 @@ LEXICON UNIT   !!= * __@CODE@__  As acro, but without paradigm
 
 ! These lexica are here because of the common file.
 LEXICON ACRO_ACCRA
+!!= __@LEXNAME@__ 
 +N+Prop+ACR: acroconnector ;
 LEXICON ACRO_BERN
+!!= __@LEXNAME@__ 
 +N+Prop+ACR: acroconnector ;
 LEXICON ACRO_LONDON
+!!= __@LEXNAME@__ 
 +N+Prop+ACR: acroconnector ;
 LEXICON ACRO_NYSTØ
+!!= __@LEXNAME@__ 
 +N+Prop+ACR: acroconnector ;
 
 LEXICON ACRO_cons 
+!!= __@LEXNAME@__ 
  ACRO ;    
 
 LEXICON ACRO_vow 
+!!= __@LEXNAME@__ 
  ACRO ;    
 
 
 LEXICON ACRO 
+!!= __@LEXNAME@__ 
  +N+Prop+ACR: acroconnector ;    
 
 LEXICON DYN_ACRO_cons 
+!!= __@LEXNAME@__ 
  DYN_ACRO ;    
 
 LEXICON DYN_ACRO_vow 
+!!= __@LEXNAME@__ 
  DYN_ACRO ;    
 
 LEXICON DYN_ACRO
+!!= __@LEXNAME@__ 
  +N+Prop+Sem/Org+ACR+Dyn: acroconnector ;
  
 LEXICON acroconnector   !!= * __@CODE@__ Here comes a set of possible symbols to

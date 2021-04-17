@@ -6,16 +6,20 @@
 ! Compounds
 
 LEXICON R
-@P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ; ! Flags to control compounding
+!! !!!Lexicon @LEXNAME@ gets flags and sends compounds over to RReal
+@P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ; !!= @CODE@ are Flags to control compounding
 
 LEXICON RReal
- +Cmp#: Nouns ;
- +Cmp#: Adjectives ;
-          R-    ;
+!! !!!Lexicon @LEXNAME@ is the lexicon for the Cmp tag and resending to N, A
+ +Cmp#: Nouns ;         !!= * @CODE@ 
+ +Cmp#: Adjectives ;   !!= * @CODE@ 
+          R-    ;       !!= @CODE@ 
 
 LEXICON R-
- +Cmp#:%- Nouns ;
- +Cmp#:%- Adjectives ;
+!! !!!Lexicon @LEXNAME@ for compounds with hyphen
+ +Cmp#:%- Nouns ;   !!= @CODE@ 
+ +Cmp#:%- Adjectives ;   !!= @CODE@ 
 
-LEXICON RNum
-      +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ; ! For Num Cmp Noun, vi vil ikke ha Num Cmp Num
+LEXICON RNum 
+!! !!!Lexicon @LEXNAME@ for compounds numeral + noun
+      +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ;  !!= @CODE@  For Num Cmp Noun, vi vil ikke ha Num Cmp Num

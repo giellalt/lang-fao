@@ -1,8 +1,9 @@
 ! ========= !
-! Akronymer !
+!! !!!Akronymer !
 ! ========= !
 
 LEXICON Acronym-fao
+ !!= __@LEXNAME@__ 
 Akronymnumeralier ; ! Nogle tal först, måskje=?
 
 StÍF ACRO ;
@@ -13,9 +14,11 @@ T5PC ACRO ;
 
 
 LEXICON Akronymnumeralier
+ !!= __@LEXNAME@__  for 0-9
 %0 anl ; 1 anl ; 2 anl ; 3 anl ; 4 anl ; 5 anl ; 6 anl ; 7 anl ; 8 anl ; 9 anl ; 
 
 LEXICON anl ! akronymloop
+ !!= __@LEXNAME@__  send numvers too letterloops
      Akronymnumeralier ; ! loop
      FIRSTLETTER ;       ! Over til bogstaverne
  :%- FIRSTLETTER ;       ! ... med stræg først

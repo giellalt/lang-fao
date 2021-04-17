@@ -1,15 +1,15 @@
 ! ========================================================================== !
-!!               !!!Faroese morphological analyser
+!! # Faroese morphological analyser
 ! ========================================================================== !
 
-Multichar_Symbols  !!≈ !!!Definitions for @CODE@
+Multichar_Symbols  !!≈ # Definitions for @CODE@
 
 
 ! to be fixed
 ! +st.prop
 
 
-!!  !!Tags for POS	
+!! ## Tags for POS	
                                        		,
 +N +V +A +Adv +Prop +Num                !!= * @CODE@ : Open POS's	
 +CC +CS +Interj +Pr +Pron +IM		    !!= * @CODE@ : Closed POS's	
@@ -28,7 +28,7 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 +Abbr +ABBR +ACR							    !!= * @CODE@ : Abbreviations, acronyms ,
 +CLB +PUNCT +LEFT +RIGHT			    !!= * @CODE@ : Punctuation, parentheses
 +Symbol !!= * @CODE@ : independent symbols in the text stream, like £, €, ©
-+CLBfinal       !!≈ * __@CODE@__  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
++CLBfinal       !!≈ * **@CODE@**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 
 
 +Sg3 					    !!= * @CODE@ : This is inherited from common files, should be changed to +3Sg.
@@ -63,7 +63,7 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 +Interr  !!= * @CODE@
 +Ord  !!= * @CODE@
 
-   !!  !!Semantic tags
+   !! ## Semantic tags
 +Sem/Sur   !!= * @CODE@
 +Sem/Mal   !!= * @CODE@
 +Sem/Fem   !!= * @CODE@
@@ -114,30 +114,30 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 
 
 
-  +Gram/TAbbr    !!≈ ; @CODE@ : Transitive abbreviation (it needs an argument)
-  +Gram/NoAbbr   !!≈ ; @CODE@ : Intransitive abbreviations that are homonymous
+  +Gram/TAbbr    !!≈ * **@CODE@**:  Transitive abbreviation (it needs an argument)
+  +Gram/NoAbbr   !!≈ * **@CODE@**:  Intransitive abbreviations that are homonymous
                  !!    with more frequent words. They should only be considered
                  !!    abbreviations in the middle of a sentence.
-  +Gram/TNumAbbr !!≈ ; @CODE@ : Transitive abbreviation if the following
+  +Gram/TNumAbbr !!≈ * **@CODE@**:  Transitive abbreviation if the following
                  !!             constituent is numeric
- +Gram/NumNoAbbr !!≈ ; @CODE@ : Transitive abbreviations for which numerals
+ +Gram/NumNoAbbr !!≈ * **@CODE@**:  Transitive abbreviations for which numerals
                  !! are complements and normal words. The abbreviation usage
                  !! is less common and thus only the occurences in the middle of
                  !! the sentence can be considered as true cases.
-  +Gram/TIAbbr   !!≈ ; @CODE@ : Both transitive and intransitive abbreviation
-  +Gram/IAbbr    !!≈ ; @CODE@ : Intransitive abbreviation (it takes no argument)
+  +Gram/TIAbbr   !!≈ * **@CODE@**:  Both transitive and intransitive abbreviation
+  +Gram/IAbbr    !!≈ * **@CODE@**:  Intransitive abbreviation (it takes no argument)
   
 
 
 
 
- !!  !!Non-changing letters
+ !! ## Non-changing letters
  a2 !!= * @CODE@ This is for a special a Umlaut case
  g2 i2 j2 t2 v2  !!= * @CODE@ 
 
 +v1 +v2    !!= * @CODE@ : different paradigms   ,
 
-                                           !!  !!Triggers for Morphophonology
+                                           !! ## Triggers for Morphophonology
 %^UUML %^IUML %^eIUML %^ØUML				!!= * @CODE@ : Umlaut types ,
 %^W %^JI 					                 !!= * @CODE@ : Cns changes ,
 %^EPH %^OEA 					!!= * @CODE@ : Epenthesis,  ,
@@ -150,12 +150,12 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 
 %>						!!= * @CODE@ : Suffix boundary ,
 
-+v1       !!≈ * __@CODE@__ - Paradigm identifier (e.g. gera+v1 = ger)
-+v2       !!≈ * __@CODE@__ - Paradigm identifier (e.g. gera+v2 = gerar)
++v1       !!≈ * **@CODE@** - Paradigm identifier (e.g. gera+v1 = ger)
++v2       !!≈ * **@CODE@** - Paradigm identifier (e.g. gera+v2 = gerar)
 
 
 
-!! !! Language tags
+!! Language tags
 
 +OLang/ENG   !!= * @CODE@
 +OLang/FIN   !!= * @CODE@
@@ -168,47 +168,47 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 +OLang/UND   !!= * @CODE@
 
 
-!!  !!Non-ascii letters, perhaps needed as multichar symbols
+!! ## Non-ascii letters, perhaps needed as multichar symbols
 æ ø å 				  !!≈ * @CODE@
 á é í ó ú ý Á É Í Ó Ý !!≈ * @CODE@
 ä ö ü Ä Ö Ö			  !!≈ * @CODE@
 
-!! !!Compounding tags
+!! ## Compounding tags
 
 !! The tags are of the following form:
-!! * __+CmpNP/xxx__ - Normative (N), Position (P), ie the tag describes what
+!! * **+CmpNP/xxx** - Normative (N), Position (P), ie the tag describes what
 !!                    position the tagged word can be in in a compound
-!! * __+CmpN/xxx__  - Normative (N) __form__ ie the tag describes what
+!! * **+CmpN/xxx**  - Normative (N) **form** ie the tag describes what
 !!                    form the tagged word should use when making compounds
-!! * __+Cmp/xxx__   - Descriptive compounding tags, ie tags that ''describes''
+!! * **+Cmp/xxx**   - Descriptive compounding tags, ie tags that *describes*
 !!                    what form a word actually is using in a compound
 
 !! This entry / word should be in the following position(s):
 
-+CmpNP/All       !!≈ * __@CODE@__ - ... in all positions, __default__, this tag does not have to be written
-+CmpNP/First     !!≈ * __@CODE@__ - ... only be first part in a compound or alone
-+CmpNP/Pref      !!≈ * __@CODE@__ - ... only __first__ part in a compound, NEVER alone
-+CmpNP/Last      !!≈ * __@CODE@__ - ... only be last part in a compound or alone
-+CmpNP/Suff      !!≈ * __@CODE@__ - ... only __last__ part in a compound, NEVER alone
-+CmpNP/None      !!≈ * __@CODE@__ - ... does not take part in compounds
-+CmpNP/Only      !!≈ * __@CODE@__ - ... only be part of a compound, i.e. can never
++CmpNP/All       !!≈ * **@CODE@** - ... in all positions, **default**, this tag does not have to be written
++CmpNP/First     !!≈ * **@CODE@** - ... only be first part in a compound or alone
++CmpNP/Pref      !!≈ * **@CODE@** - ... only **first** part in a compound, NEVER alone
++CmpNP/Last      !!≈ * **@CODE@** - ... only be last part in a compound or alone
++CmpNP/Suff      !!≈ * **@CODE@** - ... only **last** part in a compound, NEVER alone
++CmpNP/None      !!≈ * **@CODE@** - ... does not take part in compounds
++CmpNP/Only      !!≈ * **@CODE@** - ... only be part of a compound, i.e. can never
                  !!                     be used alone, but can appear in any position
 +Cmp/Hyph
 
 
-!! !!Usage tags
+!! ## Usage tags
 
 +Use/Disamb  !!≈ * @CODE@ = Use only in disambiguator/tokeniser analyser
 +Use/Circ    !!≈ * @CODE@ = for compound restrictions
 
- +Use/PMatch       !!≈ * __@CODE@__ means that the following is only used in the analyser feeding the disambiguator. This is missing.
+ +Use/PMatch       !!≈ * **@CODE@** means that the following is only used in the analyser feeding the disambiguator. This is missing.
 
 +Use/-PMatch	       !!= * @CODE@
 +Use/-Spell		       !!= * @CODE@
 +Use/NG			       !!= * @CODE@
 +Use/NGA		       !!= * @CODE@
 +Use/SpellNoSugg       !!= * @CODE@
-+Use/GC           !!≈ * __@CODE@__ only retained in the HFST Grammar Checker disambiguation analyser
++Use/GC           !!≈ * **@CODE@** only retained in the HFST Grammar Checker disambiguation analyser
 
 +Err/Guess								!!= * @CODE@ : Tag for Name Guesser component
 +Err/Orth								!!= * @CODE@ : Marking forms that are orthographical errors
@@ -217,87 +217,87 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 +Err/SpaceCmp	   	!!= * @CODE@
 +Err/MissingSpace  	!!= * @CODE@
 
-!! !!Symbols that need to be escaped on the lower side (towards twolc):
+!! ## Symbols that need to be escaped on the lower side (towards twolc):
 !! Todo: Check whether these can be removed. They are probably obsolete.
 
  »7     !!= * @CODE@ : Literal » 
  «7     !!= * @CODE@ : Literal «
-        !! {{{
+        !! ```
  %[%>%] !!= @CODE@ - Literal >
  %[%<%] !!= @CODE@ - Literal <
-        !! }}}
+        !! ```
 
 
-!! !!Flag diacritics
+!! ## Flag diacritics
 
 !! We have manually optimised the structure of our lexicon using following
 !! flag diacritics to restrict morhpological combinatorics - only allow compounds
 !! with verbs if the verb is further derived into a noun again:
 
- @P.NeedNoun.ON@    !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
- @D.NeedNoun.ON@    !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
- @C.NeedNoun@       !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
+ @P.NeedNoun.ON@    !!≈ |  @CODE@ | (Dis)allow compounds with verbs unless nominalised
+ @D.NeedNoun.ON@    !!≈ |  @CODE@ | (Dis)allow compounds with verbs unless nominalised
+ @C.NeedNoun@       !!≈ |  @CODE@ | (Dis)allow compounds with verbs unless nominalised
 
-!! !Flags for speller suggestions
+!! ### Flags for speller suggestions
 
- @D.ErrOrth.ON@      !!≈ | @CODE@ 
- @C.ErrOrth@	     !!≈ | @CODE@ 
- @P.ErrOrth.ON@      !!≈ | @CODE@ 
- @R.ErrOrth.ON@      !!≈ | @CODE@ 
+ @D.ErrOrth.ON@      !!≈ |  @CODE@ 
+ @C.ErrOrth@	     !!≈ |  @CODE@ 
+ @P.ErrOrth.ON@      !!≈ |  @CODE@ 
+ @R.ErrOrth.ON@      !!≈ |  @CODE@ 
 
-!! !Flag for case harmony in compounds
+!! ### Flag for case harmony in compounds
 
 !! Set flag for compounds
-@P.Case.MscNom@    !!≈ | @CODE@ | fyrstiflokkur
-@P.Case.MscObl@    !!≈ | @CODE@ | fyrstaflokk
-@P.Case.FemNom@    !!≈ | @CODE@ | lítlasystir
-@P.Case.FemObl@    !!≈ | @CODE@ | lítluusystur
-@P.Case.Neu@       !!≈ | @CODE@ | breiðaskarð
-@P.Case.Pl@        !!≈ | @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+@P.Case.MscNom@    !!≈ |  @CODE@ | fyrstiflokkur
+@P.Case.MscObl@    !!≈ |  @CODE@ | fyrstaflokk
+@P.Case.FemNom@    !!≈ |  @CODE@ | lítlasystir
+@P.Case.FemObl@    !!≈ |  @CODE@ | lítluusystur
+@P.Case.Neu@       !!≈ |  @CODE@ | breiðaskarð
+@P.Case.Pl@        !!≈ |  @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 !! Control flag values for compounds
-@R.Case.MscNom@    !!≈ | @CODE@ | fyrstiflokkur
-@R.Case.MscObl@    !!≈ | @CODE@ | fyrstaflokk
-@R.Case.FemNom@    !!≈ | @CODE@ | lítlasystir
-@R.Case.FemObl@    !!≈ | @CODE@ | lítluusystur
-@R.Case.Neu@       !!≈ | @CODE@ | breiðaskarð
-@R.Case.Pl@        !!≈ | @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+@R.Case.MscNom@    !!≈ |  @CODE@ | fyrstiflokkur
+@R.Case.MscObl@    !!≈ |  @CODE@ | fyrstaflokk
+@R.Case.FemNom@    !!≈ |  @CODE@ | lítlasystir
+@R.Case.FemObl@    !!≈ |  @CODE@ | lítluusystur
+@R.Case.Neu@       !!≈ |  @CODE@ | breiðaskarð
+@R.Case.Pl@        !!≈ |  @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 !! Control flag values for compounds
-@U.Case.MscNom@    !!≈ | @CODE@ | fyrstiflokkur
-@U.Case.MscObl@    !!≈ | @CODE@ | fyrstaflokk
-@U.Case.FemNom@    !!≈ | @CODE@ | lítlasystir
-@U.Case.FemObl@    !!≈ | @CODE@ | lítluusystur
-@U.Case.Neu@       !!≈ | @CODE@ | breiðaskarð
+@U.Case.MscNom@    !!≈ |  @CODE@ | fyrstiflokkur
+@U.Case.MscObl@    !!≈ |  @CODE@ | fyrstaflokk
+@U.Case.FemNom@    !!≈ |  @CODE@ | lítlasystir
+@U.Case.FemObl@    !!≈ |  @CODE@ | lítluusystur
+@U.Case.Neu@       !!≈ |  @CODE@ | breiðaskarð
 @U.Case.Pl@    !   !≈ | @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 
-@P.Pmatch.Loc@        !!≈ | @CODE@ | Location in string used or parsed by hfst-pmatch
-@P.Pmatch.Backtrack@  !!≈ | @CODE@ | Also for hfst-pmatch 
+@P.Pmatch.Loc@        !!≈ |  @CODE@ | Location in string used or parsed by hfst-pmatch
+@P.Pmatch.Backtrack@  !!≈ |  @CODE@ | Also for hfst-pmatch 
 
 
-!! !Flags for compound restriction
+!! ### Flags for compound restriction
 
 !! For languages that allow compounding, the following flag diacritics are needed
 !! to control position-based compounding restrictions for nominals. Their use is
 !! handled automatically if combined with +CmpN/xxx tags. If not used, they will
 !! do no harm.
 
- @P.CmpFrst.FALSE@ !!≈ | @CODE@ | Require that words tagged as such only appear first
- @D.CmpPref.TRUE@  !!≈ | @CODE@ | Block such words from entering ENDLEX
- @P.CmpPref.FALSE@ !!≈ | @CODE@ | Block these words from making further compounds
- @D.CmpLast.TRUE@  !!≈ | @CODE@ | Block such words from entering R
- @D.CmpNone.TRUE@  !!≈ | @CODE@ | Combines with the next tag to prohibit compounding
- @U.CmpNone.FALSE@ !!≈ | @CODE@ | Combines with the prev tag to prohibit compounding
- @P.CmpOnly.TRUE@  !!≈ | @CODE@ | Sets a flag to indicate that the word has passed R
- @D.CmpOnly.FALSE@ !!≈ | @CODE@ | Disallow words coming directly from root.
+ @P.CmpFrst.FALSE@ !!≈ |  @CODE@ | Require that words tagged as such only appear first
+ @D.CmpPref.TRUE@  !!≈ |  @CODE@ | Block such words from entering ENDLEX
+ @P.CmpPref.FALSE@ !!≈ |  @CODE@ | Block these words from making further compounds
+ @D.CmpLast.TRUE@  !!≈ |  @CODE@ | Block such words from entering R
+ @D.CmpNone.TRUE@  !!≈ |  @CODE@ | Combines with the next tag to prohibit compounding
+ @U.CmpNone.FALSE@ !!≈ |  @CODE@ | Combines with the prev tag to prohibit compounding
+ @P.CmpOnly.TRUE@  !!≈ |  @CODE@ | Sets a flag to indicate that the word has passed R
+ @D.CmpOnly.FALSE@ !!≈ |  @CODE@ | Disallow words coming directly from root.
 !! 
 !! Use the following flag diacritics to control downcasing of derived proper
 !! nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
 !! these flags. There exists a ready-made regex that will do the actual down-casing
 !! given the proper use of these flags.
- @U.Cap.Obl@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
- @U.Cap.Opt@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
+ @U.Cap.Obl@        !!≈ |  @CODE@ | Allowing downcasing of derived names: deatnulasj.
+ @U.Cap.Opt@        !!≈ |  @CODE@ | Allowing downcasing of derived names: deatnulasj.
 
 
 !  ============ !
@@ -306,8 +306,8 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 
 
 LEXICON Root
-!! !!!Lexicon @LEXNAME@
-!! This is the beginning of everything. The __@LEXNAME@__ lexicon is reserved in the
+!! # Lexicon @LEXNAME@
+!! This is the beginning of everything. The **@LEXNAME@** lexicon is reserved in the
 !! LexC language, and must be the first lexicon defined.
 
 
@@ -337,15 +337,15 @@ Acronym-smi ; !!= * @CODE@ for language independent acronums
 
 
 LEXICON ENDLEX
-!! !!!Lexicon @LEXNAME@
+!! # Lexicon @LEXNAME@
 !! And this is the @LEXNAME@ of everything:
-!! {{{
+!! ```
    @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ ENDLEX2 ; !!≈ @CODE@
    ! @D.Need3Part.ON@ # ; !3part
-   !! }}}
-   !! The {{@D.CmpOnly.FALSE@}} flag diacritic is ued to disallow words tagged
+   !! ```
+   !! The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
    !! with +CmpNP/Only to end here.
-   !! The {{@D.NeedNoun.ON@}} flag diacritic is used to block illegal compounds.
+   !! The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 LEXICON ENDLEX2
 # ;

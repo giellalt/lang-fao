@@ -316,7 +316,7 @@ LIST &msyn-sup-inf = &msyn-sup-inf ;
 LIST &msyn-sup-prspl = &msyn-sup-prspl ;
 LIST &msyn-sup-sg1 = &msyn-sup-sg1 ;
 
-#!! !!!Rule section
+#!! # Rule section
 
 SECTION
 
@@ -324,10 +324,10 @@ SECTION
 ADD (&typo &SUGGESTWF) (<spelled>) ;
 
 
-#!! !!Verbs
+#!! ## Verbs
 
 
-#!! !Sg1 target forms
+#!! ### Sg1 target forms
 
 #!! Sup should be 1Sg
 ADD:msyn-sup-sg1 (&msyn-sup-sg1) TARGET (V Sup) IF (*-1 ("eg" Pron Pers Sg Nom BARRIER NOT-ADV LINK -1 NOT-1SG));
@@ -363,7 +363,7 @@ COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Imp Pl &msyn-sup-sg1) TARGET (V
 #$ Eg lesi tað.
 
 
-#!! !Plural forms
+#!! ### Plural forms
 #!! Sup should be Pl
 ADD:msyn-sup-prspl (&msyn-sup-prspl) TARGET (V Sup) IF (*-1 ("eg") + Pron + Pers + Pl + Nom BARRIER NOT-ADV LINK NOT -1 V + Pl);
 COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V Sup &msyn-sup-prspl) ;
@@ -375,14 +375,14 @@ COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V
 
 
 
-#!! !Supine forms
+#!! ### Supine forms
 
 #!! Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (Inf) IF (-1 ("hava" V Ind))(NOT 0 Pass)(NOT *1 Sup)(NOT 0 A LINK 1 N);
 COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (&msyn-inf-sup) ;
 
 
-#!! !!Specific verbs
+#!! ## Specific verbs
 
 #!! Past tens of láta is læt not lat
 ADD:lex-lat-laet (&lex-lat-laet) TARGET ("lata" V Imp Sg) IF (-1 Adv OR Nom) ;
@@ -390,10 +390,10 @@ COPY:lex-lat-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-
 ## Tað lat stygt.
 ## Tað læt stygt.
 
-#!! !!Nouns
+#!! ## Nouns
 
 
-#!! !Definiteness
+#!! ### Definiteness
 
 #!! Neu Indef should be Neu Def
 ADD:msyn-nomindef-nomdef (&msyn-nomindef-nomdef) TARGET (N Neu Sg Dat Indef) IF (NOT 0 Prop)(-1 ("at"))(1 VFIN OR CS OR Pr) ;
@@ -405,7 +405,7 @@ COPY:msyn-nomindef-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef &msyn-nomindef-no
 #$ at skiftið millum útbúgvingarskiparnirnar er væl skipað.
 
 
-#!! !Quantor phrases
+#!! ### Quantor phrases
 
 #!! Num + N Sg should be Num + N Pl
 ADD:msyn-nsg-npl (&msyn-nsg-npl) TARGET N  IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year OR Sem/ID OR Rom)(0 (N Msc Sg Acc Indef) LINK NOT 0 Pl OR SGMEASURE) ;
@@ -421,7 +421,7 @@ ADDRELATION:msyn-nsg-npl ($2)  (&msyn-nsg-npl)  TO (*-1 Num) ; # this ADDRELATIO
 # Gen Pl?? Denne forstår eg ikkje logikken attom.
 
 
-#!! !!Subjunctives
+#!! ## Subjunctives
 
 ## Tey, ið hava manna arbeiðsbólkin, eru:
 #$ Tey, ið hava mannað arbeiðsbólkin, eru:
@@ -434,7 +434,7 @@ COPY:lex-ta-tad ("tað" Det Neu Sg Nom &SUGGEST) EXCEPT ("tann" Pron Dem Fem Sg 
 #$ Er tað onkur sum hevur eina troyggju til føroyskan búna til sølu?
 
 
-#!! !!Adjectives
+#!! ## Adjectives
 
 #!! líti should be lítið
 ADD:lex-liti-litid (&lex-liti-litid) TARGET ("líta" V Ind Prs 1Sg) IF (-1 Det OR Adv OR Pr)(1 N + Neu + Indef);

@@ -1,6 +1,6 @@
-!! !!!The Faroese morphophonological file 
+!! # The Faroese morphophonological file 
 
-!! !!Alphabet
+!! ## Alphabet
 !! Here we declare all symbols.
 
 Alphabet
@@ -34,7 +34,7 @@ Alphabet
  « » 	!!= * @CODE@ : hmm, in use?
  ;
 
-!! !!Sets
+!! ## Sets
 !! Here we define some convenient sets.
 Sets
 
@@ -54,16 +54,16 @@ Sets
                                           !! Forgot why these are special...
 
 
-!! !!!Rules
+!! # Rules
 !! These are the rules. After each rule (or rather: after many of the rules) there are test cases that are there to test whether the rules work.
 
 Rules
 
 
-!! !!Verschärfung
+!! ## Verschärfung
 
 "Deleting g"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  g:0 <=> Vow     _     v:  [ %^GVDEL: | %^GDEL: %>: ] ;       !! * Deleting the gv Verschärfung 1
          Vow     _ g:0 j:0  %^GGDEL: %>: [s|n] ;              !! * Deleting gg in ggj Genitive I
          Vow g:  _     j:0 [ %^GDEL: | %^GGDEL: ] %>: [s|n] ; !! * Deleting gg in ggj Genitive II
@@ -79,17 +79,17 @@ Rules
 
  
 "ng to kk Part 1"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  n:k <=> Vow _ g: %^NGKK: ;
 
 "ng to kk Part 2"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  g:k <=> Vow n: _ %^NGKK: (Dummy:) [#:|%>: Vow:] ;
 
 
 
 "Deleting v in gv sequences"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  v:0 <=> Vow g: _ [ %^GVDEL: | [(%^AB1:)| (%^AB5:)|(%^VSH:) | (%^IUML:)] %^VDEL: | %^IUML: %>: i ] ;
 
 !! Verschärfung tests
@@ -122,7 +122,7 @@ Rules
 !!€ sjó0v00ar
 
 "Deleting r in Genitive of ur stems"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  r:0 <=> u: _ %^EPH: %^RDEL: %>: a r ;
 
 !!€ brúður^EPH^RDEL>ar
@@ -130,7 +130,7 @@ Rules
 
 
 "Deleting m in um%>num "
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  m:0 <=> Cns: Dummy:* %>: u _ %>: n u m ; 
          g: v:  Dummy:* %>:   _ %>: n u m ; 
 
@@ -143,7 +143,7 @@ Rules
 
 
 "Deleting Double Consonant in Front of Consonant"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  Cx:0 <=> Vow Cx _ (%>:)  (u: r:) ([Dummy: - %^EPH:]) %>: [d|ð|s|t] ([a|i|u]) ;
           Vow Cx _ Dummy:* %>: n (%>:) [a|i|u] ; ! drukk>num
 ! Cx:0 <=> Vow Cx _ (%>:) (u: r:) (Dummy:) %>: [d|ð|s|(s) t] ([a|i|u]) #:0 ; 
@@ -181,10 +181,10 @@ Rules
 
 
 
-!! !!Verbal Sandhi rules
+!! ## Verbal Sandhi rules
 
 "Geminate Assimilation in Past Tense d"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  Cx:0 <=> Vow Cy _ %>: d ;
  	where Cx in ( d ð t )
  	      Cy in ( n r l )
@@ -193,7 +193,7 @@ Rules
  	      matched ;
 
 "Geminate Assimilation in Past Tense t"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  Cx:0 <=> Vow Cy _ %>: t ;
  	where Cx in ( d ð t ) ! t:0 is covered by the next rule
  	      Cy in ( n r s ) ! l   in front of all consonants
@@ -213,7 +213,7 @@ Rules
 
 
 "ð Assimilation in Front of Dental Past Suffix -d(i)"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  ð:d <=> Vow _(%^WVV:) %>: d ; ! fjern dette: (%>:) [ #: | Vow ] ;
  
 !!€ leið>di
@@ -237,7 +237,7 @@ Rules
 
 
 "Deleting Double Consonant in Front of Epenthesis mark"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  Cx:0 <=> Cx _ [i:0|a:0|u:0] [l|r] (%^EPH:) (%^UUML:) %>: Vow ;
       where Cx in ( b d f g k l m n p r s t v ) ;
 
@@ -254,7 +254,7 @@ Rules
 !him00l0i
 
 "Deleting stem-final s in s genitive"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  s:0 <=> Vow s %>: _ [#:0|%>:] ; ! added #:0
 
 !!€ primus>s
@@ -268,19 +268,19 @@ Rules
 
 
 "Double ð Deletion"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 ð:0 <=> _ %>:0 ð ;
 
 
 "ð Assimilation in Front of Supine Suffix -t"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  ð:t <=> Vow _ %>: t #: ;
 
 !!€ leið>t
 !!€ leit0t
 
 "Adjusting Dental Past Suffix -d(i)"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  d:t <=> Vow ([r|l|n]) [ p | t | k | s ] (Dummy:) %>: _ (%>:) [ #: | Vow ] ;
 
 !!€ keyp>di
@@ -289,15 +289,15 @@ Rules
 !!€ merk>di
 !!€ merk0ti
 
-!! !!Adjectival sandhi rules
+!! ## Adjectival sandhi rules
 
 "Adjective neuter after nlr 1"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 !t:ð <=> Vow Cns+ i [ r: | l: | n: ] ( %^EPH: ) %>: _ #:  ;
 t:ð <=> Vow Cns+ i [ r: | l: | n: ]  %^EPH:  %>: _ #:  ;
 
 "Adjective neuter after nlr 2"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 !Cx:0 <=> Vow Cns+ i _ ( %^EPH: ) %>: :ð ;
 Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
      where Cx in ( l n r ) ; 	      
@@ -309,16 +309,16 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 !!€ gamal00t
 
 "t Deletion in Neuter"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  t:0 <=> [ Cns t | Vow Cns+ Vow ð %^EDH: ] %>: _ #: ;
 !t:0 <=> [ r t | Vow Cns+ Vow ð %^EDH: ] %>: _ ;
 
 
 
-!! !! j rules
+!! j rules
 
 "Deleting j"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  j:0 <=>           _     [ %^JI: | %^JDEL: ] ;          ! j for j-deletion dummies
          Vow g g:  _ %>: [ Cns | i ] ;                  ! j in j-stems
          Vow g: g: _     [ %^GDEL: | %^GGDEL: ] %>: [s|n] ; ! j in ggj genitive
@@ -338,7 +338,7 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 
 
 "Realising j in front of vowels"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  j2:j => _ %>: [ a | u ] ;
 
 !!€ hylj2>ar
@@ -348,21 +348,21 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 
 
 !      ===========  !
-!!  !! Vowel rules  
+!! Vowel rules  
 !      ===========  !
 
 
 "Realising i2 as i"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  i2:i => _ %>: ;
 
 !svii2>
 !svii>
 
-!! ! Epenthetic vowel rules
+!! ###  Epenthetic vowel rules
 
 "Epenthetic deletion"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  Vx:0 <=> Vow: Cns:* (%^VSH:|%^AB5:) (%>:) _ (%>:) [ r: | l | n ] %^EPH: ( Special:* ) %>: Vow ; !Vow ;
       where Vx in (a i u) ;
  !Vow was commented out?
@@ -383,7 +383,7 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 
 
 "U-umlaut of Epenthetic vowel"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  a:u <=> a: m _ Cns: %^EPH: %^UUML: (%^UUML:) #:0 ;
 ! check the double umlaut marking...
 ! question is whether Fem umlaut is always there.
@@ -395,10 +395,10 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 !!€ goml000u
 
 
-!! !Umlaut rules
+!! ### Umlaut rules
 
 "U-umlaut in Front of Nasal"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  Vx:Vy <=> _ Nas (Cns:)  Vow: (Cns:)  %^EPH: %^UUML: ;
          _ Nas (Cns:)       (Cns:)         %^UUML: ;
 !        _ Nas (Cns:)  Vow: (Cns:)         %^UUML: ; !Needed???
@@ -417,7 +417,7 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 !!€ hom0r000um
 
 "General U-umlaut"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
   a:ø <=> _ NonNas: NonNas:* (Nas) (Vow:) %^UUML: ;
   
 !!€ dag^UUML>um
@@ -431,14 +431,14 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 
 
 "U-umlaut for akur"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
   a:ø <=> _ k u:0 r (%^EPH:) %^UUML: %>: u ;
 
 !!€ akur^EPH^UUML>um
 !!€ øk0r000um
 
 "I-umlaut"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  Vx:Vy <=> _ Cns:* %^IUML: ; !(Dummy:) [ %>: i | %>: u r | (%>: Cns:*) #: | %>: g ] ;
      where Vx in ( a o u ø á ó ú )
 	       Vy in ( e y y i æ ø ý )
@@ -462,26 +462,26 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 
 
 "eI-umlaut"
-!! __@RULENAME@__ for o:e, á:e, i:e
+!! **@RULENAME@** for o:e, á:e, i:e
  Vx:Vy <=> _ Cns:* %^eIUML: ;
     where Vx in ( o á i )
           Vy in ( e e e )
    matched;
 
 "I-umlaut for bróðir" ! also for other words?
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  ó:ø <=> _ Cns:* u: r ( %^EPH: ) %^IUML: ;
 
 
 "Inverted U-umlaut from ø"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  ø:a <=> _ Cns* (Vow: Cns) ( %^EPH: ) %^OEA: ;
 
 !!€ fløtt^OEAa
 !!€ flatt0a
 
 "Inverted U-umlaut from o"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  o:a <=> _ Cns* (Vow: Cns) ( %^EPH: ) %^OA: ;
 
 !!€ fonn^OA>ar
@@ -489,11 +489,11 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 
 
 "o/ei-Umlaut I"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  e:o <=> _ i: Cns:+ %^EIO: ;
 
 "o/ei-Umlaut II"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  i:0 <=> e: _ Cns:+ %^EIO: ;
 
 !!€ dreing^EIO>i
@@ -512,10 +512,10 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 
 
 
-!! !Vowel deletion rules
+!! ### Vowel deletion rules
 
 "Vowel deletion in front of na"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  a:0 <=> _ %^W: n ;
 
 !"Special Dative v Deletion"
@@ -531,10 +531,10 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 
 
 
-!! !Verbal vowel alternation rules
+!! ### Verbal vowel alternation rules
 
 "Stem vowel change in Weak Verbs"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  Vx:Vy <=> _ Cns:+ %^WVV: ; ! WVV = Verb
  	where Vx in (e y)
  		  Vy in (a u)
@@ -551,7 +551,7 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %>: :ð ;
 
 
 "Stem Vowel Shortening in Supine and Participle"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
 	where Vx in ( á ó í ú )
 	      Vy in ( a o i u )
@@ -566,7 +566,7 @@ Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
 ! Past singular
 
 "Past tense singular diphthongs I"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 0:Vx <=> Cns _ Vy: Cns:+ %^AB1: ;
 	where Vx in ( e e e e )
 	      Vy in ( í ó u ú )
@@ -574,7 +574,7 @@ Vx:Vy <=> _ Cns:+ %^VSH:  ; !ok, men flúgv > flýg funker fremdeles ikke ...
 	matched ;
 
 "Past tense singular diphthongs II"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 Vy:Vz <=> Cns :Vx _  Cns:+ %^AB1: ;
 	where Vx in ( e e e e )
 	      Vy in ( í ó u ú )
@@ -586,7 +586,7 @@ Vy:Vz <=> Cns :Vx _  Cns:+ %^AB1: ;
 
 
 "Past tense singular monophthongs"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 Vx:Vy <=> _  (Cns:+) %^AB3: ;
 	where Vx in ( e ø a o á i )
 	      Vy in ( a a ó a æ a )
@@ -596,7 +596,7 @@ Vx:Vy <=> _  (Cns:+) %^AB3: ;
 !!€ gav0
 
 "Past tense plural monophthongs"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 Vx:Vy <=> _ Cns:+ %^AB2: %>: u ;
           _ %^AB2: ;	
         where Vx in ( á í ó ú i e a ø )
@@ -608,7 +608,7 @@ Vx:Vy <=> _ Cns:+ %^AB2: %>: u ;
 !	where Vx in ( i e a o á ) ;
 
 "Past tense plural monophthongs to a"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 Vx:a <=> _ Cns:+ (%^NGKK:) %^aAB: ;
 	where Vx in ( i e ø ) ;
 
@@ -621,7 +621,7 @@ Vx:a <=> _ Cns:+ (%^NGKK:) %^aAB: ;
 !	where Vx in ( i e ø ) ;
 
 "Supine u"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 Vx:u <=> _ Cns:+ %^AB4: ;
 	where Vx in ( i e ø ó ú ) ;
 
@@ -630,7 +630,7 @@ Vx:u <=> _ Cns:+ %^AB4: ;
 !	where Vx in ( i e ) ;
 
 "Supine o"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 Vx:o <=> _ Cns:+ %^AB5: ;
 	where Vx in ( a i e ø ó ú ) ;
 
@@ -639,7 +639,7 @@ Vx:o <=> _ Cns:+ %^AB5: ;
 !	where Vx in ( í ó ú ø i e a ) ;
 
 "Supine i"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 Vx:i <=> _ Cns:+ %^AB6: ;
 	where Vx in ( í a e á ) ;
 
@@ -648,7 +648,7 @@ Vx:i <=> _ Cns:+ %^AB6: ;
 !	where Vx in ( í a e ) ;
 
 "Present tense ý"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 Vx:ý <=> _ Cns:+ %^AB7: ;
 	where Vx in ( ó ) ;
 
@@ -659,10 +659,10 @@ Vx:ý <=> _ Cns:+ %^AB7: ;
 ! brekað00
 
 
-!! !Adjectival Sandhi rule
+!! ### Adjectival Sandhi rule
 
 "Vowel shortening in Neuter"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
 ó:o <=> _ ð: %>: t ;
 !ó:o <= _ :t %>: t ; ! check this one.
 
@@ -673,20 +673,20 @@ Vx:ý <=> _ Cns:+ %^AB7: ;
 !!€ skjót0t
 
 
-!! !!Other rules
+!! ## Other rules
 
-!! !Morphological passive rules
+!! ### Morphological passive rules
 
 "u in ur Deletion in front of Pass"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  u:0 <=> %>: _ r: %^PASS:0 %>: s t #: ;
 
 "r Deletion in front of Pass"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  r:0 <=> [i:|u:] _ %^PASS:0 %>: s t #: ;
 
 "ð Deletion in front of Pass"
-!! __@RULENAME@__ 
+!! **@RULENAME@** 
  ð:0 <=> _ %^PASS:0 %>: s t #: ;
 
 

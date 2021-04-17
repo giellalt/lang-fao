@@ -7,21 +7,21 @@
 
 ! Noun or not
 LEXICON ab-dot-trab ab-dot-noun-trab ; ! assuming noun
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 LEXICON ab-dot-trnumab  ab-dot-noun-trnumab ; ! assuming noun
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 LEXICON ab-trab ab-noun-trab ; ! assuming noun 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 LEXICON ab-trnumab ab-noun-trnumab ; ! assuming noun
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 
 ! The nouns
 LEXICON ab-noun-trab    +ABBR+Gram/TAbbr:    ab-noun ;
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 LEXICON ab-noun-trnumab +ABBR+Gram/TNumAbbr: ab-noun ;
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 LEXICON ab-noun
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
          ab-nodot-noun ;
 +Use/NG: ab-dot-noun   ;
 
@@ -42,11 +42,11 @@ LEXICON ab-noun
 
 ! The numerals
 
-!! !Lexicons without final period
+!! ### Lexicons without final period
 LEXICON ab-nodot-noun-itrab   +ABBR+Gram/IAbbr:    ab-nodot-noun ;
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 LEXICON ab-nodot-noun 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +N+Abbr:  nodot-infl ;
 
 !LEXICON ab-nodot-adj   !!= * __@CODE@__
@@ -56,20 +56,20 @@ LEXICON ab-nodot-noun
 !LEXICON ab-nodot-num   !!= * __@CODE@__
 !+Num+Abbr:  nodot-infl ;
 
-!! !Lexicons with final period
+!! ### Lexicons with final period
 
 LEXICON ab-dot-noun-itrab   +ABBR+Gram/IAbbr:    ab-dot-noun ;
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 LEXICON ab-dot-noun-trab    +ABBR+Gram/TAbbr:    ab-dot-noun ;
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 LEXICON ab-dot-noun-trnumab +ABBR+Gram/TNumAbbr: ab-dot-noun ;
-!!= __@LEXNAME@__ 
-LEXICON ab-dot-noun   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
+!!= **@LEXNAME@** 
+LEXICON ab-dot-noun   !!= * **@CODE@**  This is the lexicon for abbrs that must have a period.
 +N+Abbr:  dot-infl ;
 
 LEXICON ab-dot-adj-trab    +ABBR+Gram/TAbbr:    ab-dot-adj ;
-!!= __@LEXNAME@__ 
-LEXICON ab-dot-adj   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
+!!= **@LEXNAME@** 
+LEXICON ab-dot-adj   !!= * **@CODE@**  This is the lexicon for abbrs that must have a period.
 +A+Abbr:   dot-infl ;
 
 
@@ -80,17 +80,17 @@ LEXICON ab-dot-adj   !!= * __@CODE@__  This is the lexicon for abbrs that must h
 !+V+Abbr:  # ; ! No period.
 !R- ;
 
-LEXICON nodot-infl   !!= * __@CODE@__
-!!= __@LEXNAME@__ 
+LEXICON nodot-infl   !!= * **@CODE@**
+!!= **@LEXNAME@** 
 # ;
 R- ;
 
-LEXICON dot-infl   !!= * __@CODE@__
-!!= __@LEXNAME@__ 
+LEXICON dot-infl   !!= * **@CODE@**
+!!= **@LEXNAME@** 
 DOT ;
 
-LEXICON DOT   !!= * __@CODE@__ - Adds the dot to dotted abbreviations.
-!!= __@LEXNAME@__ 
+LEXICON DOT   !!= * **@CODE@** - Adds the dot to dotted abbreviations.
+!!= **@LEXNAME@** 
 
  +Use/-PMatch:%. # ; ! We need the dot here for regular fsts
 ! Split the abbr + full stop in two segments, but only when using pmatch:

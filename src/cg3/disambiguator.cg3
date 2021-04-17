@@ -855,7 +855,7 @@ SET NOT-ERR-NUM = Num - (Num Err/Orth) ;
 
 REMOVE:numerrorth (Num Err/Orth) IF (0 NOT-ERR-NUM) ;
 
-#!! * __NumRom__ in beginning of sentence
+#!! * **NumRom** in beginning of sentence
 SELECT:NumRom (Num Rom) (0 ACR OR Abbr LINK -1 BOS);
 	#$ I Áššebáhpirat
 	#% CD máksá 160 ruvnnu.
@@ -1380,15 +1380,15 @@ REMOVE (adj cmp) IF (0 (adj)) ;
 LIST @CNP = @CNP ;
 LIST @CVP = @CVP ;
 
-#!! !!!MAPPING OF CC AND CS
+#!! # MAPPING OF CC AND CS
 
 #!! Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them so @CVP remains
 
 
-#!! * __CCasCNPCVP__ Map (@CNP @CVP) to CC
+#!! * **CCasCNPCVP** Map (@CNP @CVP) to CC
 MAP:CCasCNPCVP (@CNP @CVP) TARGET CC ;
 	
-#!! * __killAllahtenotCS__ All occurrences of "at" are CSs.
+#!! * **killAllahtenotCS** All occurrences of "at" are CSs.
 SELECT:killAllahtenotCS ("at" CS) ; 
 
 
@@ -1404,13 +1404,13 @@ REMOVE:ja (@CVP)  IF (-1 Num LINK -1 Pr)(1 Num) ;
 #!! * Kill Sem/ID
 REMOVE Sem/ID IF (0 Num) ;
 
-#!! * __killAllCNP__ removes all remaining @CNP
+#!! * **killAllCNP** removes all remaining @CNP
 REMOVE:killAllCNP @CNP IF (0 @CVP) ;
 
-#!! * __XCC-CS__ removes CC and CS with no synttag
+#!! * **XCC-CS** removes CC and CS with no synttag
 MAP:CC-CS (@X) TARGET CC OR CS ;
 
-#!! * __ErrOrth__ goes for correct forms
+#!! * **ErrOrth** goes for correct forms
 REMOVE:ErrOrth Err/Orth ;
 REMOVE:ErrOrth (CLB) IF (0/1 Err/Orth) ;
 
@@ -1419,6 +1419,6 @@ REMOVE:NoCmp SUB:1 (0/1 Cmp);
 
 REMOVE:LeksNotDyn Dyn ;
 
-#!! * __X__ removes readings with no syntax
+#!! * **X** removes readings with no syntax
 REMOVE:X (@X) ;    
 

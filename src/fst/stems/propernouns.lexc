@@ -1,17 +1,17 @@
 ! ============ !
-!! !!!Proper nouns 
+!! # Proper nouns 
 ! ============ !
 
-!! !! Table of content
+!! Table of content
 !     ================
 !    Splitting into name types
 !! * The name lexica
-!! **   - mal
-!! **   - fem
-!! **   - plc
-!! **   - sur       
+!!     -   - mal
+!!     -   - fem
+!!     -   - plc
+!!     -   - sur       
 
-!! !!Splitting into name types
+!! ## Splitting into name types
 ! =========================
 
 ! When the dust has settled, these 5 types will be joined into one 
@@ -19,7 +19,7 @@
 ! to make uniform treatment of each type easier.
 
 LEXICON Propernouns
- !!= __@LEXNAME@__ splitting in 3 lexica: __multipartnames, names, guess__
+ !!= **@LEXNAME@** splitting in 3 lexica: **multipartnames, names, guess**
  
  multipartnames ; ! All types
  names ;
@@ -28,14 +28,14 @@ LEXICON Propernouns
          ! for coverage testing. 
 
 LEXICON multipartnames
- !!= __@LEXNAME@__ contains only 3 names for now
+ !!= **@LEXNAME@** contains only 3 names for now
  á% Flat:á% Flat indeclplc ;
 yvir% við% Strond+N+Prop+Sg+Nom:yvir% við% Strond # ;
 yvir% við% Strond+N+Prop+Sg+Acc:yvir% við% Strond # ;
 yvir% við% Strond+N+Prop+Sg+Dat:yviri% við% Strond # ;
 
 LEXICON names
- !!= __@LEXNAME@__ gives the list of names.
+ !!= **@LEXNAME@** gives the list of names.
 Várharra indeclmal ;
 Sernám propnoun_h3 ;
 Gøtugjógv:Gøtu#gj propnoun_kv21 ;

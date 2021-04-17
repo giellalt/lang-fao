@@ -13,70 +13,70 @@
 ! giellatekno@uit.no or feedback@divvun.no
 
 
-!! !!!North Saami acronyms - affix part
+!! # North Saami acronyms - affix part
 
-!! !!The lexica giving tags and suffixes to the acronyms
+!! ## The lexica giving tags and suffixes to the acronyms
 
 LEXICON ACRONOUN_cons  
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  ACRONOUN ;
 
 LEXICON ACRONOUN_vow  
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  ACRONOUN ;
 
 
-LEXICON ACRONOUN   !!= * __@CODE@__ is the lexicon for __nouns__ (not +Prop) like ATV
+LEXICON ACRONOUN   !!= * **@CODE@** is the lexicon for **nouns** (not +Prop) like ATV
  +N+ACR: acroconnector ;    
  
-LEXICON UNIT   !!= * __@CODE@__  As acro, but without paradigm
+LEXICON UNIT   !!= * **@CODE@**  As acro, but without paradigm
 +N+ABBR: ENDLEX ;
 
 ! These lexica are here because of the common file.
 LEXICON ACRO_ACCRA
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +N+Prop+ACR: acroconnector ;
 LEXICON ACRO_BERN
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +N+Prop+ACR: acroconnector ;
 LEXICON ACRO_LONDON
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +N+Prop+ACR: acroconnector ;
 LEXICON ACRO_NYSTØ
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +N+Prop+ACR: acroconnector ;
 
 LEXICON ACRO_cons 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  ACRO ;    
 
 LEXICON ACRO_vow 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  ACRO ;    
 
 
 LEXICON ACRO 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +N+Prop+ACR: acroconnector ;    
 
 LEXICON DYN_ACRO_cons 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  DYN_ACRO ;    
 
 LEXICON DYN_ACRO_vow 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  DYN_ACRO ;    
 
 LEXICON DYN_ACRO
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +N+Prop+Sem/Org+ACR+Dyn: acroconnector ;
  
-LEXICON acroconnector   !!= * __@CODE@__ Here comes a set of possible symbols to
+LEXICON acroconnector   !!= * **@CODE@** Here comes a set of possible symbols to
                         !! put between the abbreviation and its suffix
    acronull    ;
    R-          ; ! Here we dive over to the compounds: NRK-2, NRK-bargi
 
-LEXICON acronull   !!= * __@CODE@__  for suffixless forms, redirecting to K_only for clitic forms
+LEXICON acronull   !!= * **@CODE@**  for suffixless forms, redirecting to K_only for clitic forms
 
 +Nom: # ;
 +Acc: # ;

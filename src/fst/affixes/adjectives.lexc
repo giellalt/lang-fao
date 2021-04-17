@@ -1,8 +1,8 @@
 ! ==================== !
-!! !!!Adjective morphology !
+!! # Adjective morphology !
 ! ==================== !
 
-!! !!Ad hoc lexica
+!! ## Ad hoc lexica
 
 !LEXICON zl1 ! TODO check -- done
 !l1 ;
@@ -10,7 +10,7 @@
 !LEXICON zl26 ! TODO check
 !l26 ;
 
-!! !!The lexicons
+!! ## The lexicons
 
 ! LEXICON l0 ! stigbend hjáorð, t.d. norður
 !   l0pos  ;
@@ -84,7 +84,7 @@
 !  +A: Pos_Def ;
 
 LEXICON l1 
-!!= __@LEXNAME@__  ríkur
+!!= **@LEXNAME@**  ríkur
  +A: zl1pos ;
  +A: zl1comsup ;
 
@@ -92,7 +92,7 @@ LEXICON l1
 ! +A: zl1pos ;
 
 LEXICON zl1pos
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   Sg_Msc1  ;
   Pl_Msc1  ;
   Sg_Fem1  ;
@@ -102,32 +102,32 @@ LEXICON zl1pos
   Pos_Def  ;
 
 LEXICON zl1comsup
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   Comp_Ari ;
 
 LEXICON l1_umlaut 
-!!= __@LEXNAME@__  tungur
+!!= **@LEXNAME@**  tungur
 +A: zl1_umlaut ;
 
 LEXICON zl1_umlaut
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   zl1pos ;
   :^IUML Comp_Ri ;
 
 LEXICON l1_2 ! djúpur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
    zl1_2 ;
 
 LEXICON zl1_2
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   :úp l1 ;
 +A:yp Comp_Ri ;
   
 LEXICON l1_ØÆumlaut ! høgur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl1_ØÆumlaut ;
 LEXICON zl1_ØÆumlaut ! høgur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  :øg Sg_Msc1  ;
  :øg Pl_Msc1  ;
  :øg Sg_Fem1  ;
@@ -138,11 +138,11 @@ LEXICON zl1_ØÆumlaut ! høgur
  :æg Comp_Ri  ;
 
 LEXICON l1_1
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl1_1 ;
 
 LEXICON zl1_1
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  :ring Sg_Msc1  ;
  :ring Pl_Msc1  ;
  :ring Sg_Fem1  ;
@@ -154,20 +154,20 @@ LEXICON zl1_1
  :ring SAri ;
  
 LEXICON l1/12_ll
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  l1 ;
  l12_ll ;
  
 LEXICON l1/24
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  l1 ;
  l24 ;
 
 LEXICON l2 ! leysur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl2 ;
 LEXICON zl2 ! leysur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   Sg_Msc2   ;
   Pl_Msc2   ;
   Sg_Fem2   ;
@@ -179,24 +179,24 @@ LEXICON zl2 ! leysur
 
 
 LEXICON l1/9
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  l1 ;
  l9 ;
 
 LEXICON l3 ! ...ligur:...lig
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A+Der/Adv+Adv:%>a # ;
 l1 ; ! XXX Det brukte å vere l1 i basen
 
 
 LEXICON l5/21
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  l5 ;
  l21 ;
 
 
 LEXICON l5	
-!!= __@LEXNAME@__  spiltur
+!!= **@LEXNAME@**  spiltur
 +A: zl5pos ;
 +A: zl5comsup ;
 
@@ -204,13 +204,13 @@ LEXICON l5
 !+A: zl5pos ;
 
 LEXICON zl5 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  zl5pos ;
  zl5comsup ;
 
 
 LEXICON zl5pos
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   Sg_Msc1   ;
   Pl_Msc2	;
   Sg_Fem2   ;
@@ -220,14 +220,14 @@ LEXICON zl5pos
   Pos_Def	;
  
 LEXICON zl5comsup 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   Comp_Ari	;
  
 LEXICON l6	! brekaður
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl6 ;
 LEXICON zl6	! brekaður
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   Sg_Msc1    ;
   Pl_Msc1	;
   Sg_Fem1    ;
@@ -238,10 +238,10 @@ LEXICON zl6	! brekaður
   Comp_Ari	;
 
 LEXICON l6_umlaut ! skaftur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl6_umlaut ;
 LEXICON zl6_umlaut ! skaftur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   Sg_Msc1_Uuml ;
   Pl_Msc1_Uuml ;
   Sg_Fem1_Uuml ;
@@ -252,10 +252,10 @@ LEXICON zl6_umlaut ! skaftur
   Comp_Ari	  ;
 
 LEXICON l7	! blindur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl7 ;
 LEXICON zl7	! blindur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  :%>d Sg_Msc1   ;
  :%>d Pl_Msc2	;
  :%>d Sg_Fem2   ;
@@ -269,10 +269,10 @@ LEXICON zl7	! blindur
  :%>d Comp_Ari	;
 
 LEXICON l8	! kaldur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl8 ;
 LEXICON zl8	! kaldur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  :d Sg_Msc1_Uuml ;
  +Msc+Sg+Dat+Indef:%>dum	# ;
  :d Pl_Msc1_Uuml ;
@@ -292,10 +292,10 @@ LEXICON zl8	! kaldur
  :d Comp_Ari ;
 
 LEXICON l9	! spakur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl9 ;
 LEXICON zl9	! spakur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   Sg_Msc1_Uuml ;
   Pl_Msc2_Uuml ;
   Sg_Fem2_Uuml ;
@@ -306,10 +306,10 @@ LEXICON zl9	! spakur
   Comp_Ari	  ;
 
 LEXICON l10 
-!!= __@LEXNAME@__  drúgvur
+!!= **@LEXNAME@**  drúgvur
 +A: zl10 ;
 LEXICON zl10 ! drúgvur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:vur	 # ;
  +Msc+Sg+Acc+Indef:van	 # ;
  +Msc+Sg+Dat+Indef:vum	 # ;
@@ -326,10 +326,10 @@ LEXICON zl10 ! drúgvur
  :v Comp_Ari	;
 
 LEXICON l10_m ! grúsommur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl10_m ;
 LEXICON zl10_m ! grúsommur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  :m Sg_Msc1   ;
  :m Pl_Msc1	;
  :m Sg_Fem1   ;
@@ -343,10 +343,10 @@ LEXICON zl10_m ! grúsommur
  :m Comp_Ari	;
 
 LEXICON l11 ! flógvur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl11 ;
 LEXICON zl11 ! flógvur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:gvur	 # ;
  +Msc+Sg+Acc+Indef:gvan	 # ;
  +Msc+Sg+Dat+Indef:gvum	 # ;
@@ -363,10 +363,10 @@ LEXICON zl11 ! flógvur
  :gv Comp_Ari	;
 
 LEXICON l12_ll ! snjallur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl12_ll ;
 LEXICON zl12_ll ! snjallur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>lur	 		 # ;
  +Msc+Sg+Acc+Indef:%>lan 		 	 # ;
  +Msc+Sg+Dat+Indef:^UUML%>lum	 	 # ;
@@ -383,7 +383,7 @@ LEXICON zl12_ll ! snjallur
  :l Comp_Ari	   ;
 
 LEXICON l12_ss ! hvassur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:%>sur			 # ;
  +A+Msc+Sg+Acc+Indef:%>san			 # ;
  +A+Msc+Sg+Dat+Indef:^UUML%>sum		 # ;
@@ -400,7 +400,7 @@ LEXICON l12_ss ! hvassur
  +A:s Comp_Ari	  ;
 
 LEXICON l12_pp ! knappur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:%>pur	 		 # ;
  +A+Msc+Sg+Acc+Indef:%>pan	 		 # ;
  +A+Msc+Sg+Dat+Indef:^UUML%>pum		 # ;
@@ -417,7 +417,7 @@ LEXICON l12_pp ! knappur
  +A:p Comp_Ari	   ;
 
 LEXICON l12_kk ! skakkur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:%>kur	 		 # ;
  +A+Msc+Sg+Acc+Indef:%>kan	 		 # ;
  +A+Msc+Sg+Dat+Indef:^UUML%>kum		 # ;
@@ -434,15 +434,15 @@ LEXICON l12_kk ! skakkur
  +A:k Comp_Ari	   ;
 
 LEXICON l13/1
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  l13 ;
  l1 ;
  
 LEXICON l13 ! blankur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl13 ;
 LEXICON zl13 ! blankur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  Sg_Msc1_Uuml ;
  +Msc+Sg+Dat+Indef:%>um	# ;
  Pl_Msc2_Uuml ;
@@ -459,7 +459,7 @@ LEXICON zl13 ! blankur
  Comp_Ari  ;
  
 LEXICON l13_1 ! langur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A: Sg_Msc1_Uuml ;
  +A+Msc+Sg+Dat+Indef:%>um	# ;
  +A: Pl_Msc2_Uuml ;
@@ -476,7 +476,7 @@ LEXICON l13_1 ! langur
  +A:^UUML Comp_Ri  ;
  
 LEXICON l13_2 ! mangur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A: Sg_Msc1_Uuml ;
  +A+Msc+Sg+Dat+Indef:%>um	# ;
  +A: Pl_Msc2_Uuml ;
@@ -492,10 +492,10 @@ LEXICON l13_2 ! mangur
  +A: Pos_Def2	   ;
  
 LEXICON l14 ! harður
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl14 ;
 LEXICON zl14 ! harður
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  :ð Sg_Msc1_Uuml ;
  :ð Pl_Msc1_Uuml ;
  :ð Sg_Fem1_Uuml ;
@@ -509,10 +509,10 @@ LEXICON zl14 ! harður
  :ð Comp_Ari	  ;
 
 LEXICON l15 ! blíður
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl15 ;
 LEXICON zl15 ! blíður
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  :ð Sg_Msc1  ;
  :ð Pl_Msc1  ;
  :ð Sg_Fem1  ;
@@ -526,10 +526,10 @@ LEXICON zl15 ! blíður
  :ð Comp_Ari ;
 
 LEXICON l16 ! góður
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl16 ;
 LEXICON zl16 ! góður
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  :góð Sg_Msc1  ;
  :góð Pl_Msc1  ;
  :góð Sg_Fem1  ;
@@ -544,12 +544,12 @@ LEXICON zl16 ! góður
  :be  SRi   ;
 
 LEXICON l17 ! bláur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   +A: zl17pos ;
   +A: zl17comsup ;
 
 LEXICON zl17pos  
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  Sg_Msc1  ;
  Pl_Msc1  ;
  Sg_Fem1  ;
@@ -562,29 +562,29 @@ LEXICON zl17pos
  Pos_Def  ;
 
 LEXICON zl17comsup
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  Comp_Ari ;
 
 LEXICON l17_1 ! smáur->smærri->smæstur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   +A: zl17pos ;
   +A: zl17_1comsup ;
 
 LEXICON zl17_1comsup ! riggar ikki!!!
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  :^IUML%>r CRi ;
  :^IUML SRi	;
 
 LEXICON l18/22
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  l18 ;
  l22 ;
  
 LEXICON l18 ! keddur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl18 ;
 LEXICON zl18 ! keddur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>ddur	 # ;
  +Msc+Sg+Acc+Indef:%>ddan	 # ;
  +Msc+Sg+Dat+Indef:%>ddum	 # ;
@@ -601,10 +601,10 @@ LEXICON zl18 ! keddur
  :%>dd Comp_Ari	;
 
 LEXICON l19 ! nýggjur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl19 ;
 LEXICON zl19 ! nýggjur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:ggjur	 # ;
  +Msc+Sg+Acc+Indef:ggjan	 # ;
  +Msc+Sg+Dat+Indef:ggjum	 # ;
@@ -621,10 +621,10 @@ LEXICON zl19 ! nýggjur
  :ggj Comp_Ari	;
 
 LEXICON l20 ! stillur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl20 ;
 LEXICON zl20 ! stillur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:lur	 # ;
  +Msc+Sg+Acc+Indef:lan	 # ;
  +Msc+Sg+Dat+Indef:lum	 # ;
@@ -645,7 +645,7 @@ LEXICON zl20 ! stillur
  :l Comp_Ari	;
 
 LEXICON l20_1 ! lekkur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:%>kur	 # ;
  +A+Msc+Sg+Acc+Indef:%>kran	 # ;
  +A+Msc+Sg+Dat+Indef:%>krum	 # ;
@@ -671,7 +671,7 @@ LEXICON l20_1 ! lekkur
  +A:%>kr Comp_Ari	;
 
 LEXICON l20_2 ! dyggur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:gur	 # ;
  +A+Msc+Sg+Acc+Indef:gan	 # ;
  +A+Msc+Sg+Dat+Indef:gum	 # ;
@@ -693,7 +693,7 @@ LEXICON l20_2 ! dyggur
  +A:  SRi ;
 
 LEXICON l20_3 ! turrur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:rur	 # ;
  +A+Msc+Sg+Acc+Indef:ran	 # ;
  +A+Msc+Sg+Dat+Indef:rum	 # ;
@@ -714,7 +714,7 @@ LEXICON l20_3 ! turrur
  +A:r Comp_Ari	;
 
 LEXICON l20_4 ! sunnur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:nur	 # ;
  +A+Msc+Sg+Acc+Indef:nan	 # ;
  +A+Msc+Sg+Dat+Indef:num	 # ;
@@ -735,7 +735,7 @@ LEXICON l20_4 ! sunnur
  +A:n Comp_Ari	;
 
 LEXICON l20_5 ! fornemmur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:mur	 # ;
  +A+Msc+Sg+Acc+Indef:man	 # ;
  +A+Msc+Sg+Dat+Indef:mum	 # ;
@@ -756,7 +756,7 @@ LEXICON l20_5 ! fornemmur
  +A:m Comp_Ari	;
 
 LEXICON l20_6 ! vissur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:sur	 # ;
  +A+Msc+Sg+Acc+Indef:san	 # ;
  +A+Msc+Sg+Dat+Indef:sum	 # ;
@@ -777,7 +777,7 @@ LEXICON l20_6 ! vissur
  +A:s Comp_Ari	;
 
 LEXICON l20_7 ! dólgabýttur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:tur	 # ;
  +A+Msc+Sg+Acc+Indef:tan	 # ;
  +A+Msc+Sg+Dat+Indef:tum	 # ;
@@ -798,10 +798,10 @@ LEXICON l20_7 ! dólgabýttur
  +A:t Comp_Ari	;
 
 LEXICON l21 ! fastur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl21 ;
 LEXICON zl21 ! fastur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  Sg_Msc1_Uuml ;
  Pl_Msc2_Uuml ;
  Sg_Fem2_Uuml ;
@@ -812,10 +812,10 @@ LEXICON zl21 ! fastur
  Comp_Ari	  ;
 
 LEXICON l22 ! klæddur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl22 ;
 LEXICON zl22 ! klæddur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>ddur	 # ;
  +Msc+Sg+Acc+Indef:%>ddan	 # ;
  +Msc+Sg+Dat+Indef:^ØUML%>ddum	 # ;
@@ -839,10 +839,10 @@ LEXICON zl22 ! klæddur
  :dd Comp_Ari	  ;
  
 LEXICON l22_2 ! staddur = Riggar!
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl22_2 ;
 LEXICON zl22_2 ! staddur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>addur	 # ;
  +Msc+Sg+Acc+Indef:%>addan	 # ;
  +Msc+Sg+Dat+Indef:%>øddum	 # ;
@@ -866,10 +866,10 @@ LEXICON zl22_2 ! staddur
  :add Comp_Ari	  ;
  
 LEXICON l23 ! rættur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl23 ;
 LEXICON zl23 ! rættur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>ttur	 # ;
  +Msc+Sg+Acc+Indef:%>ttan	 # ;
  +Msc+Sg+Dat+Indef:^ØUML%>ttum	 # ;
@@ -893,10 +893,10 @@ LEXICON zl23 ! rættur
  :tt Comp_Ari	  ;
 
 LEXICON l23_2 ! brattur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl23_2 ;
 LEXICON zl23_2 ! brattur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>ttur	 # ;
  +Msc+Sg+Acc+Indef:%>ttan	 # ;
  +Msc+Sg+Dat+Indef:^UUML%>ttum	 # ;
@@ -920,15 +920,15 @@ LEXICON zl23_2 ! brattur
  :tt Comp_Ari	  ;
 
 LEXICON l24/25
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 l24 ;
 l25 ;
 
 LEXICON l24 ! frískur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl24 ;
 LEXICON zl24 ! frískur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  Sg_Msc1  ;
  Pl_Msc2  ;
  Sg_Fem2  ;
@@ -939,10 +939,10 @@ LEXICON zl24 ! frískur
  Comp_Ari ;
 
 LEXICON l25 ! danskur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl25 ;
 LEXICON zl25 ! danskur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  Sg_Msc1_Uuml ;
  Pl_Msc2_Uuml ;
  Sg_Fem2_Uuml ;
@@ -953,10 +953,10 @@ LEXICON zl25 ! danskur
  Comp_Ari	  ;
 
 LEXICON l26 ! vakin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl26 ;
 LEXICON zl26 ! vakin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  :^EPH a_m_sg_n_null    ;
  :^EPH a_non_umlaut_obl ;
  :^EPH a_umlaut         ;
@@ -966,7 +966,7 @@ LEXICON zl26 ! vakin
 !LEXICON l26_2 ! flogin
 !+A: zl26_2 ;
 LEXICON zl26_2 ! flogin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>in  # ;
  +Msc+Sg+Acc+Indef:%>nan  # ;
  +Msc+Sg+Dat+Indef:%>num  # ;
@@ -995,10 +995,10 @@ LEXICON zl26_2 ! flogin
  :%>n 	Comp_Ari 		;
 
 LEXICON l27 ! heiðin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl27 ;
 LEXICON zl27 ! heiðin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>ðin   # ;
  +Msc+Sg+Acc+Indef:%>dnan  # ;
  +Msc+Sg+Dat+Indef:%>dnum  # ;
@@ -1022,10 +1022,10 @@ LEXICON zl27 ! heiðin
 
 
 LEXICON l28 ! mikil 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl28 ;
 LEXICON zl28 ! mikil 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  :il a_m_sg_n_null ;
  :il msgpl ;
  :il a_f_sg_n_null ;
@@ -1042,7 +1042,7 @@ LEXICON zl28 ! mikil
  :l Comp_Ari 	;
   
 LEXICON l28_2 ! lítil
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A:il a_m_sg_n_null ;
  +A:il msgpl ;
  +A:il a_f_sg_n_null ;
@@ -1058,16 +1058,16 @@ LEXICON l28_2 ! lítil
  +A:l Pos_Def 	;
 
 LEXICON MINNI
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A:minn CI 	 ;
  +A:min SRi 	 ;
 
 LEXICON l29 ! vakur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl29 ;
 
 LEXICON zl29
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>ur	 	# ;
  +Msc+Sg+Acc+Indef:%>ran	 	# ;
  +Msc+Sg+Dat+Indef:^UUML%>rum # ;
@@ -1090,7 +1090,7 @@ LEXICON zl29
  :r Comp_Ari ; 
  
 LEXICON l30 ! tepur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A: a_m_sg_n_null ;
  +A:  msgpl ;
  +A:  a_f_sg_n_null ;
@@ -1100,7 +1100,7 @@ LEXICON l30 ! tepur
  +A:^EPH Comp_Ari ;
 
 LEXICON l31 ! trupul
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A:a_m_sg_n_null ;
  +A:msgpl ;
  +A:a_f_sg_n_null ;
@@ -1110,7 +1110,7 @@ LEXICON l31 ! trupul
  +A:^EPH Comp_Ari ;
 
 LEXICON l31_2 ! simpil
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:%>il  # ;
  +A+Msc+Sg+Acc+Indef:%>lan # ;
  +A+Msc+Sg+Dat+Indef:%>lum # ;
@@ -1133,10 +1133,10 @@ LEXICON l31_2 ! simpil
  +A:l Comp_Ari ;
  
 LEXICON l32 ! búgvin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl32 ;
 LEXICON zl32 ! búgvin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>gvin  # ;
  +Msc+Sg+Acc+Indef:%>nan   # ;
  +Msc+Sg+Dat+Indef:%>num   # ;
@@ -1159,10 +1159,10 @@ LEXICON zl32 ! búgvin
  :n Comp_Ari ;
 
 LEXICON l33 ! gamal
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl33 ;
 LEXICON zl33
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:amal	 # ;
  +Msc+Sg+Acc+Indef:amlan	 # ;
  +Msc+Sg+Dat+Indef:omlum   # ;
@@ -1192,10 +1192,10 @@ LEXICON zl33
 
 
 LEXICON l34 ! dottin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl34 ;
 LEXICON zl34 ! dottin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:tin  # ;
  +Msc+Sg+Acc+Indef:nan  # ;
  +Msc+Sg+Dat+Indef:num  # ;
@@ -1223,7 +1223,7 @@ LEXICON zl34 ! dottin
  :%>n Pos_Def  			;
 
 LEXICON l34_2 ! dossin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:sin  # ;
  +A+Msc+Sg+Acc+Indef:nan  # ;
  +A+Msc+Sg+Dat+Indef:num  # ;
@@ -1251,7 +1251,7 @@ LEXICON l34_2 ! dossin
  +A:%>n Pos_Def  			;
 
 LEXICON l34_3 ! errin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:rin  # ;
  +A+Msc+Sg+Acc+Indef:nan  # ;
  +A+Msc+Sg+Dat+Indef:num  # ;
@@ -1279,7 +1279,7 @@ LEXICON l34_3 ! errin
  +A:%>n Pos_Def  			;
 
 LEXICON l34_4 ! hyggin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:gin  # ;
  +A+Msc+Sg+Acc+Indef:nan  # ;
  +A+Msc+Sg+Dat+Indef:num  # ;
@@ -1307,7 +1307,7 @@ LEXICON l34_4 ! hyggin
  +A:%>n Pos_Def  			;
 
 LEXICON l34_5 ! sloppin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:pin  # ;
  +A+Msc+Sg+Acc+Indef:nan  # ;
  +A+Msc+Sg+Dat+Indef:num  # ;
@@ -1335,10 +1335,10 @@ LEXICON l34_5 ! sloppin
  +A:%>n Pos_Def  			;
 
 LEXICON l34_6 ! funnin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl34_6 ;
 LEXICON zl34_6 ! funnin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:nin  # ;
  +Msc+Sg+Acc+Indef:nan  # ;
  +Msc+Sg+Dat+Indef:num  # ;
@@ -1366,11 +1366,11 @@ LEXICON zl34_6 ! funnin
  :%>n Pos_Def  			;
 
 LEXICON l34_7 ! fallin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl34_7 ;
 
 LEXICON zl34_7
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:lin  # ;
  +Msc+Sg+Acc+Indef:nan  # ;
  +Msc+Sg+Dat+Indef:num  # ;
@@ -1398,10 +1398,10 @@ LEXICON zl34_7
  +A:%>n Pos_Def  			;
 
 LEXICON l34_8 ! drukkin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl34_8 ;
 LEXICON zl34_8 ! drukkin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:kin  # ;
  +Msc+Sg+Acc+Indef:nan  # ;
  +Msc+Sg+Dat+Indef:num  # ;
@@ -1429,7 +1429,7 @@ LEXICON zl34_8 ! drukkin
  :%>n Pos_Def  			;
 
 LEXICON l34_9 ! treffin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:fin  # ;
  +A+Msc+Sg+Acc+Indef:nan  # ;
  +A+Msc+Sg+Dat+Indef:num  # ;
@@ -1457,10 +1457,10 @@ LEXICON l34_9 ! treffin
  +A:%>n Pos_Def  			;
  
 LEXICON l35 ! feingin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl35 ;
 LEXICON zl35 ! feingin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:eingin  # ;
  +Msc+Sg+Acc+Indef:ongnan  # ;
  +Msc+Sg+Dat+Indef:ongnum  # ;
@@ -1489,7 +1489,7 @@ LEXICON zl35 ! feingin
  :ongn 	Comp_Ari 		;
 
 LEXICON l35_1 ! teinkin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:einkin  # ;
  +A+Msc+Sg+Acc+Indef:onknan  # ;
  +A+Msc+Sg+Dat+Indef:onknum  # ;
@@ -1518,7 +1518,7 @@ LEXICON l35_1 ! teinkin
  +A:onkn 	Comp_Ari 		;
 
 LEXICON l35_2 ! sleikin
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A+Msc+Sg+Nom+Indef:eikin  # ;
  +A+Msc+Sg+Acc+Indef:oknan  # ;
  +A+Msc+Sg+Dat+Indef:oknum  # ;
@@ -1547,10 +1547,10 @@ LEXICON l35_2 ! sleikin
  +A:okn 	Comp_Ari 		;
 
 LEXICON l36 ! liðugur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl36 ;
 LEXICON zl36 ! liðugur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:ðugur # ;
  +Msc+Sg+Acc+Indef:dnan  # ;
  +Msc+Sg+Dat+Indef:dnum  # ;
@@ -1579,10 +1579,10 @@ LEXICON zl36 ! liðugur
  :dn 	Comp_Ari 		;
 
 LEXICON l37 ! grammur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl37 ;
 LEXICON zl37 ! grammur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  Sg_Msc1 ;
  +Msc+Sg+Dat+Indef:^UUML%>um # ;
  Pl_Msc1 ;
@@ -1601,39 +1601,39 @@ LEXICON zl37 ! grammur
  Comp_Ari ;
 
 LEXICON l39_2/23 ! hættur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  l39_2 	;
  l23 	;
  
 LEXICON l39_2 ! finittur = l39, men við stigbending!
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl39_2 		;
 LEXICON zl39_2 ! finittur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   zl39 ;
   Comp_Ari 	;
 
 LEXICON l39 ! settur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl39 	;
 LEXICON zl39 ! settur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   adj_a   	; 
   adj_def 	;
 
 LEXICON l39_3 ! stuttur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: 		zl39_3 		;
 LEXICON zl39_3 ! stuttur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   			zl39			;
   :^IUML 	Comp_Ri 	;
 
 LEXICON l40 ! sannur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 +A: zl40 ;
 LEXICON zl40 ! sannur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>annur	 # ;
  +Msc+Sg+Acc+Indef:%>annan	 # ;
  +Msc+Sg+Dat+Indef:%>onnum	 # ;
@@ -1663,94 +1663,94 @@ LEXICON zl40 ! sannur
 
 
 
-!! !!Irregular adjectives
+!! ## Irregular adjectives
 
 LEXICON STOR
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
         +A:stór   adj_a                 ;
         +A:stór   adj_def               ;
     +A+Comp:størr  indef_cmp_adj_decl    ;
  +A+Superl:størst indef_superl_adj_decl ;
 
 LEXICON andi
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
    +A: HOMONYM_ADJ_FORMS ;
  +Adv: #                 ;
 
 LEXICON HOMONYM_ADJ_FORMS
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc: HOMONYM_ADJ_NUM ;
  +Fem: HOMONYM_ADJ_NUM ;
  +Neu: HOMONYM_ADJ_NUM ;
 
 LEXICON HOMONYM_ADJ_NUM
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Sg: HOMONYM_ADJ_CASE ;
  +Pl: HOMONYM_ADJ_CASE ;
 
 LEXICON HOMONYM_ADJ_CASE
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Nom: HOMONYM_ADJ_DEF ;
  +Acc: HOMONYM_ADJ_DEF ;
  +Gen: HOMONYM_ADJ_DEF ;
  +Dat: HOMONYM_ADJ_DEF ;
 
 LEXICON HOMONYM_ADJ_DEF
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Indef: # ;
    +Def: # ;
 
 
-!! ! Irregular comparatives
+!! ###  Irregular comparatives
 ! =====================
 
 LEXICON indecladj
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A: HOMONYM_ADJ_FORMS ;
 
 
 LEXICON ELDRI
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A:d CRi ;
  +A:  SRi ;
 
 LEXICON FAERRI
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A:r CRi ;
  +A:g SRi ;
 
 LEXICON FLEIRI
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A:i CRi ;
  +A:  SRi ;
 
 LEXICON STYTTRI
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A:t CRi ;
  +A:  SRi ;
 
 LEXICON NAERRI
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +A:r CRi ;
  +A:  SRi ;
 
 
-!! !!!Intermediate adjectival lexica
+!! # Intermediate adjectival lexica
 ! ==============================
 
 LEXICON adj_a
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Der/heit:heit kv2 ;
   a_non_umlaut ; ! For the non-umlauted forms
   a_umlaut     ; ! for the umlauted forms
 
 LEXICON a_non_umlaut
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   a_m_sg_n         ;
   a_non_umlaut_obl ;
 
 LEXICON a_non_umlaut_obl
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   a_m_sg_a ;
   a_m_sg_g ;
 
@@ -1774,7 +1774,7 @@ LEXICON a_non_umlaut_obl
   a_n_pl_g ;
 
 LEXICON a_umlaut
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   a_m_sg_d ;
   a_m_pl_d ;
 
@@ -1792,7 +1792,7 @@ LEXICON a_umlaut
 !  a_f_pl_g_ra  ;
 !  a_n_pl_g_ra  ;
 
-!! !!!! Adjectival case lexica
+!! Adjectival case lexica
 ! ======================
 
 
@@ -1800,42 +1800,42 @@ LEXICON a_umlaut
 ! _____________________
 
 LEXICON Sg_Msc1
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>ur	 # ;
  +Msc+Sg+Acc+Indef:%>an	 # ;
  +Msc+Sg+Dat+Indef:%>um	 # ;
  +Msc+Sg+Gen+Indef:%>s	 # ;
 
 LEXICON Sg_Msc1_Uuml
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>ur	 # ;
  +Msc+Sg+Acc+Indef:%>an	 # ;
  +Msc+Sg+Dat+Indef:^UUML%>um	 # ;
  +Msc+Sg+Gen+Indef:%>s	 # ;
 
 LEXICON Sg_Msc2
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>ur	 # ;
  +Msc+Sg+Acc+Indef:%>an	 # ;
  +Msc+Sg+Dat+Indef:%>um	 # ;
  +Msc+Sg+Gen+Indef:%>	 # ;
 
 LEXICON Pl_Msc1 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Pl+Nom+Indef:%>ir  # ;
  +Msc+Pl+Acc+Indef:%>ar  # ;
  +Msc+Pl+Dat+Indef:%>um  # ;
  +Msc+Pl+Gen+Indef:%>a 	 # ;
 
 LEXICON Pl_Msc1_Uuml 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Pl+Nom+Indef:%>ir  # ;
  +Msc+Pl+Acc+Indef:%>ar  # ;
  +Msc+Pl+Dat+Indef:^UUML%>um  # ;
  +Msc+Pl+Gen+Indef:%>a 	 # ;
 
 LEXICON Pl_Msc2 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Pl+Nom+Indef:%>ir  # ;
  +Msc+Pl+Acc+Indef:%>ar  # ;
  +Msc+Pl+Dat+Indef:%>um  # ;
@@ -1843,7 +1843,7 @@ LEXICON Pl_Msc2
  +Msc+Pl+Gen+Indef:%>ra	 # ;
 
 LEXICON Pl_Msc2_Uuml 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Pl+Nom+Indef:%>ir  # ;
  +Msc+Pl+Acc+Indef:%>ar  # ;
  +Msc+Pl+Dat+Indef:^UUML%>um  # ;
@@ -1851,7 +1851,7 @@ LEXICON Pl_Msc2_Uuml
  +Msc+Pl+Gen+Indef:%>ra	 # ;
 
 LEXICON msgpl
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Acc+Indef:^EPH%>an # ;
  +Msc+Sg+Dat+Indef:^EPH%>um # ;
  +Msc+Sg+Gen+Indef:%>s # ;
@@ -1861,28 +1861,28 @@ LEXICON msgpl
  +Msc+Pl+Gen+Indef:^EPH%>a  # ;
 
 LEXICON Pl_Msc3 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Pl+Nom+Indef:%>nir # ;
  +Msc+Pl+Acc+Indef:%>nar # ;
  +Msc+Pl+Dat+Indef:%>num # ;
  +Msc+Pl+Gen+Indef:%>na  # ;
 
 LEXICON Sg_Fem1
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Sg+Nom+Indef:%> 	 # ;
  +Fem+Sg+Acc+Indef:%>a 	 # ;
  +Fem+Sg+Dat+Indef:%>ari # ;
  +Fem+Sg+Gen+Indef:%>ar  # ;
 
 LEXICON Sg_Fem1_Uuml
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Sg+Nom+Indef:^UUML%> 	 # ;
  +Fem+Sg+Acc+Indef:%>a 	 # ;
  +Fem+Sg+Dat+Indef:%>ari # ;
  +Fem+Sg+Gen+Indef:%>ar  # ;
 
 LEXICON Sg_Fem2
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Sg+Nom+Indef:%> 	 # ;
  +Fem+Sg+Acc+Indef:%>a 	 # ;
  +Fem+Sg+Dat+Indef:%>ari # ;
@@ -1890,7 +1890,7 @@ LEXICON Sg_Fem2
  +Fem+Sg+Gen+Indef:%>rar # ;
 
 LEXICON Sg_Fem2_Uuml
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Sg+Nom+Indef:^UUML%> 	 # ;
  +Fem+Sg+Acc+Indef:%>a 	 # ;
  +Fem+Sg+Dat+Indef:%>ari # ;
@@ -1898,21 +1898,21 @@ LEXICON Sg_Fem2_Uuml
  +Fem+Sg+Gen+Indef:%>rar # ;
 
 LEXICON Pl_Fem1 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Pl+Nom+Indef:%>ar  # ;
  +Fem+Pl+Acc+Indef:%>ar  # ;
  +Fem+Pl+Dat+Indef:%>um	 # ;
  +Fem+Pl+Gen+Indef:%>a	 # ;
 
 LEXICON Pl_Fem1_Uuml 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Pl+Nom+Indef:%>ar  # ;
  +Fem+Pl+Acc+Indef:%>ar  # ;
  +Fem+Pl+Dat+Indef:^UUML%>um	 # ;
  +Fem+Pl+Gen+Indef:%>a	 # ;
 
 LEXICON Pl_Fem2 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Pl+Nom+Indef:%>ar  # ;
  +Fem+Pl+Acc+Indef:%>ar  # ;
  +Fem+Pl+Dat+Indef:%>um	 # ;
@@ -1920,7 +1920,7 @@ LEXICON Pl_Fem2
  +Fem+Pl+Gen+Indef:%>ra	 # ;
  
 LEXICON Pl_Fem2_Uuml 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Pl+Nom+Indef:%>ar  # ;
  +Fem+Pl+Acc+Indef:%>ar  # ;
  +Fem+Pl+Dat+Indef:^UUML%>um	 # ;
@@ -1928,7 +1928,7 @@ LEXICON Pl_Fem2_Uuml
  +Fem+Pl+Gen+Indef:%>ra	 # ;
  
 LEXICON fsgpl
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Sg+Acc+Indef:^EPH%>a   # ;
  +Fem+Sg+Dat+Indef:^EPH%>ari # ;
  +Fem+Sg+Gen+Indef:^EPH%>ar  # ;
@@ -1938,63 +1938,63 @@ LEXICON fsgpl
  +Fem+Pl+Gen+Indef:^EPH%>a	 # ;
 
 LEXICON Pl_Fem3 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Pl+Nom+Indef:%>nar # ;
  +Fem+Pl+Acc+Indef:%>nar # ;
  +Fem+Pl+Dat+Indef:%>num # ;
  +Fem+Pl+Gen+Indef:%>na	 # ;
 
 LEXICON Sg_Neu1 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Sg+Nom+Indef:%>t	 # ;
  +Neu+Sg+Acc+Indef:%>t	 # ;
  +Neu+Sg+Dat+Indef:%>um	 # ;
  +Neu+Sg+Gen+Indef:%>s	 # ;
 
 LEXICON Sg_Neu1_Uuml 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Sg+Nom+Indef:%>t	 # ;
  +Neu+Sg+Acc+Indef:%>t	 # ;
  +Neu+Sg+Dat+Indef:^UUML%>um	 # ;
  +Neu+Sg+Gen+Indef:%>s	 # ;
 
 LEXICON Sg_Neu2 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Sg+Nom+Indef:%>t	 # ;
  +Neu+Sg+Acc+Indef:%>t	 # ;
  +Neu+Sg+Dat+Indef:%>um	 # ;
  +Neu+Sg+Gen+Indef:%>	 # ;
 
 LEXICON Sg_Neu3 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Sg+Nom+Indef:%>	 # ;
  +Neu+Sg+Acc+Indef:%>	 # ;
  +Neu+Sg+Dat+Indef:%>um	 # ;
  +Neu+Sg+Gen+Indef:%>s	 # ;
 
 LEXICON Sg_Neu3_Uuml 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Sg+Nom+Indef:%>	 # ;
  +Neu+Sg+Acc+Indef:%>	 # ;
  +Neu+Sg+Dat+Indef:^UUML%>um	 # ;
  +Neu+Sg+Gen+Indef:%>s	 # ;
 
 LEXICON Pl_Neu1
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Pl+Nom+Indef:%>	 # ;
  +Neu+Pl+Acc+Indef:%> 	 # ;
  +Neu+Pl+Dat+Indef:%>um	 # ;
  +Neu+Pl+Gen+Indef:%>a	 # ;
 
 LEXICON Pl_Neu1_Uuml
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Pl+Nom+Indef:^UUML%>	 	# ;
  +Neu+Pl+Acc+Indef:^UUML%> 	 	# ;
  +Neu+Pl+Dat+Indef:^UUML%>um 	# ;
  +Neu+Pl+Gen+Indef:%>a	 # ;
 
 LEXICON Pl_Neu2
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Pl+Nom+Indef:%>	 # ;
  +Neu+Pl+Acc+Indef:%> 	 # ;
  +Neu+Pl+Dat+Indef:%>um	 # ;
@@ -2002,7 +2002,7 @@ LEXICON Pl_Neu2
  +Neu+Pl+Gen+Indef:%>ara	 # ;
  
 LEXICON Pl_Neu2_Uuml
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Pl+Nom+Indef:^UUML%>	 	# ;
  +Neu+Pl+Acc+Indef:^UUML%> 	 	# ;
  +Neu+Pl+Dat+Indef:^UUML%>um 	# ;
@@ -2010,7 +2010,7 @@ LEXICON Pl_Neu2_Uuml
  +Neu+Pl+Gen+Indef:%>ara	 # ;
  
 LEXICON nsgpl
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Sg+Nom+Indef:%>t	 # ;
  +Neu+Sg+Acc+Indef:%>t	 # ;
  +Neu+Sg+Dat+Indef:^EPH%>um	 # ;
@@ -2034,39 +2034,39 @@ LEXICON nsgpl
 !! Msc
 
 LEXICON a_m_sg_n
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef:%>ur # ;
 
 LEXICON a_m_sg_n_null
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Nom+Indef: # ;
 
 LEXICON a_m_sg_a
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Acc+Indef:%>an # ;
 
 LEXICON a_m_sg_d
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Dat+Indef:%>um # ;
 
 LEXICON a_m_sg_g
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg+Gen+Indef:%>s # ;
 
 LEXICON a_m_pl_n
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Pl+Nom+Indef:%>ir # ;
 
 LEXICON a_m_pl_a
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Pl+Acc+Indef:%>ar # ;
 
 LEXICON a_m_pl_d
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Pl+Dat+Indef:%>um # ;
 
 LEXICON a_m_pl_g
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Pl+Gen+Indef:%>a # ;
 
 !LEXICON a_m_pl_g_ra
@@ -2076,42 +2076,42 @@ LEXICON a_m_pl_g
 ! Fem
 
 LEXICON a_f_sg_n
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Sg+Nom+Indef:^UUML # ;
  
 LEXICON a_f_sg_n_null
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Sg+Nom+Indef: # ;
 
 LEXICON a_f_sg_a
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Sg+Acc+Indef:%>a # ;
 
 LEXICON a_f_sg_d
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Sg+Dat+Indef:%>ari # ;
 
 LEXICON a_f_sg_g
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Sg+Gen+Indef:%>ar # ;
 
 !LEXICON a_f_sg_g_rar
 ! +Fem+Sg+Gen+Indef:%>rar # ;
 
 LEXICON a_f_pl_n
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Pl+Nom+Indef:%>ar # ;
 
 LEXICON a_f_pl_a
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Pl+Acc+Indef:%>ar # ;
 
 LEXICON a_f_pl_d
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Pl+Dat+Indef:%>um # ;
 
 LEXICON a_f_pl_g
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Fem+Pl+Gen+Indef:%>a # ;
 
 !LEXICON a_f_pl_g_ra
@@ -2121,47 +2121,47 @@ LEXICON a_f_pl_g
 !! Neu
 
 LEXICON a_n_sg_n
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Sg+Nom+Indef:%>t # ;
               +Adv:%>t # ;
 
 LEXICON a_n_sg_a
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Sg+Acc+Indef:%>t # ;
 
 LEXICON a_n_sg_d
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Sg+Dat+Indef:%>um # ;
 
 LEXICON a_n_sg_g
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Sg+Gen+Indef:%>s # ;
 
 LEXICON a_n_pl_n
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Pl+Nom+Indef:%> # ;
 
 LEXICON a_n_pl_a
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Pl+Acc+Indef:%> # ;
 
 LEXICON a_n_pl_d
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Pl+Dat+Indef:%>um # ;
 
 LEXICON a_n_pl_g
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Neu+Pl+Gen+Indef:%>a # ;
 
 !LEXICON a_n_pl_g_ra
 ! +Neu+Pl+Gen+Indef:%>ra # ;
 
 
-!! ! Definite declension
+!! ###  Definite declension
 ! ___________________
 
 LEXICON Pos_Def
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 ! Positiv, def
 ! Msc
  +Msc+Sg+Nom+Def:%>i # ;
@@ -2192,7 +2192,7 @@ LEXICON Pos_Def
  +Neu+Pl+Gen+Def:%>u # ;
 
 LEXICON Pos_Def2
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 
 !! Positiv, def, u-umlj
 !! Msc
@@ -2229,7 +2229,7 @@ LEXICON Pos_Def2
  +Neu+Pl+Gen+Def:^UUML%>u # ;
 
 LEXICON Pos_Def3
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 !! Positiv, def, ø-umlj
 !! Msc
 
@@ -2261,7 +2261,7 @@ LEXICON Pos_Def3
  +Neu+Pl+Gen+Def:^ØUML%>u # ;
 
 LEXICON adj_def
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc: adj_def_msc ;
  +Fem: adj_def_fem ;
  +Neu: adj_def_neu ;
@@ -2270,17 +2270,17 @@ LEXICON adj_def
 !! Gender tags
 
 LEXICON adj_def_msc
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Sg: adj_def_msc_case ;
  +Pl: adj_def_pl       ;
 
 LEXICON adj_def_fem
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Sg: adj_def_fem_case ;
  +Pl: adj_def_pl       ;
 
 LEXICON adj_def_neu
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Sg: adj_def_neu_case ;
  +Pl: adj_def_pl       ;
 
@@ -2288,7 +2288,7 @@ LEXICON adj_def_neu
 !! Case tags
 
 LEXICON adj_def_msc_case
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Nom+Def:%>i # ;
  +Acc+Def:%>a # ;
  +Dat+Def:%>a # ;
@@ -2297,7 +2297,7 @@ LEXICON adj_def_msc_case
  +Cmp#:%>a mscobl_cmpnd ;
  
 LEXICON adj_def_fem_case
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Nom+Def:%>a # ;
  +Acc+Def:%>u # ;
  +Dat+Def:%>u # ;
@@ -2306,7 +2306,7 @@ LEXICON adj_def_fem_case
  +Cmp#:%>u femobl_cmpnd ;
 
 LEXICON adj_def_neu_case
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Nom+Def:%>a # ;
  +Acc+Def:%>a # ;
  +Dat+Def:%>a # ;
@@ -2315,7 +2315,7 @@ LEXICON adj_def_neu_case
 
 
 LEXICON adj_def_pl
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Nom+Def:^UUML%>u # ;
  +Acc+Def:^UUML%>u # ;
  +Dat+Def:^UUML%>u # ;
@@ -2328,27 +2328,27 @@ LEXICON adj_def_pl
 !! Compound flags
 
 LEXICON mscnom_cmpnd ! fyrstiflokkur
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 @U.Case.MscNom@ Nouns ;
 
 LEXICON mscobl_cmpnd ! fyrstaflokki
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 @U.Case.MscObl@ Nouns ;
 
 LEXICON femnom_cmpnd ! lítlasystir
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 @U.Case.FemNom@ Nouns ;
 
 LEXICON femobl_cmpnd ! lítlusystir
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 @U.Case.FemObl@ Nouns ;
 
 LEXICON neu_cmpnd ! breiðaskarð
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 @U.Case.Neu@ Nouns ;
 
 LEXICON pl_cmpnd ! fyrstuflokkarnir
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
 @U.Case.Pl@ Nouns ;
 
 ! Debug
@@ -2369,16 +2369,16 @@ LEXICON pl_cmpnd ! fyrstuflokkarnir
 
 
 
-!! !!!Comparative
+!! # Comparative
 ! ===========
 
 LEXICON Comp_Ari
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  CAri ;
  SAri ;
  
 LEXICON CAri
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Comp+Msc+Sg+Nom+Indef:%>ari # ;
  +Comp+Msc+Sg+Acc+Indef:%>ari # ;
  +Comp+Msc+Sg+Dat+Indef:%>ari # ;
@@ -2431,7 +2431,7 @@ LEXICON CAri
  +Comp+Neu+Pl+Gen+Def:%>aru # ;
 
 LEXICON SAri
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Superl+Msc+Sg+Nom+Indef:%>astur # ;
  +Superl+Msc+Sg+Acc+Indef:%>astan # ;
  +Superl+Msc+Sg+Dat+Indef:%>astum # ;
@@ -2488,7 +2488,7 @@ LEXICON SAri
  +Superl+Neu+Pl+Gen+Def:%>astu # ;
 
 LEXICON CI 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Comp+Msc+Sg+Nom+Indef:%>i # ;
  +Comp+Msc+Sg+Acc+Indef:%>i # ;
  +Comp+Msc+Sg+Dat+Indef:%>i # ;
@@ -2541,12 +2541,12 @@ LEXICON CI
  +Comp+Neu+Pl+Gen+Def:%>u # ;
 
 LEXICON Comp_Ri
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  CRi ;
  SRi ;
  
 LEXICON CRi 
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Comp+Msc+Sg+Nom+Indef:%>ri # ;
  +Comp+Msc+Sg+Acc+Indef:%>ri # ;
  +Comp+Msc+Sg+Dat+Indef:%>ri # ;
@@ -2599,7 +2599,7 @@ LEXICON CRi
  +Comp+Neu+Pl+Gen+Def:%>ru # ;
 
 LEXICON SRi
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Superl+Msc+Sg+Nom+Indef:%>stur # ;
  +Superl+Msc+Sg+Acc+Indef:%>stan # ;
  +Superl+Msc+Sg+Dat+Indef:%>stum # ;
@@ -2662,7 +2662,7 @@ LEXICON SRi
 ! Gender
 
 LEXICON indef_cmp_adj_decl
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
      +Msc+Sg:    indef_case ;
      +Fem+Sg:    indef_case ;
      +Neu+Sg:    indef_case ;
@@ -2683,7 +2683,7 @@ LEXICON indef_cmp_adj_decl
         +Adv:%>i #          ;
 
 LEXICON indef_case
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
   +Nom: indeftag ;
   +Acc: indeftag ;
   +Gen: indeftag ;
@@ -2699,20 +2699,20 @@ LEXICON indef_case
 ! Definiteness
 
 LEXICON indeftag
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Indef:%>i # ;
 
 LEXICON deftag
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Def: # ;
 
 
 
-!! !!!Superlative
+!! # Superlative
 ! ===========
 
 LEXICON indef_superl_adj_decl
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Msc+Sg: indef_superl_msc_case    ;
  +Fem+Sg: indef_superl_femneu_case ;
  +Neu+Sg: indef_superl_femneu_case ;
@@ -2728,14 +2728,14 @@ LEXICON indef_superl_adj_decl
 
 
 LEXICON indef_superl_msc_case
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Nom: indef_superl_msc ;
  +Acc: indef_superl_msc ;
  +Gen: indef_superl_msc ;
  +Dat: indef_superl_msc ;
 
 LEXICON indef_superl_femneu_case
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Nom: indef_superl_femneu ;
  +Acc: indef_superl_femneu ;
  +Gen: indef_superl_femneu ;
@@ -2744,11 +2744,11 @@ LEXICON indef_superl_femneu_case
 
 
 LEXICON indef_superl_msc
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Indef:%>ur # ;
 
 LEXICON indef_superl_femneu
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
        +Indef:    # ;
 
 ! fjerna 17.5.

@@ -12,18 +12,18 @@
 ! Other licensing options are available upon request, please contact
 ! giellatekno@hum.uit.no or feedback@divvun.no
 
-!! !!!Symbol affixes
+!! # Symbol affixes
 
 LEXICON Noun_symbols_possibly_inflected
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +N+Symbol: SYMBOL_connector ;
 
 LEXICON Noun_symbols_never_inflected
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +N+Symbol: # ;
 
 LEXICON SYMBOL_connector
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
                SYMBOL_NO_suff ; ! §
           :%:  SYMBOL_suff    ; ! §:sne
  +Err/Orth:    SYMBOL_suff    ; ! §esne
@@ -31,11 +31,11 @@ LEXICON SYMBOL_connector
  +Err/Orth:%'e SYMBOL_suff    ; ! §'esne
 
 LEXICON SYMBOL_NO_suff
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Sg+Nom: # ;
 
 LEXICON SYMBOL_suff
-!!= __@LEXNAME@__ 
+!!= **@LEXNAME@** 
  +Sg+Gen:n       # ;
  +Sg+Acc:m       # ;
  +Sg+Ill:se      # ;

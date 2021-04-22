@@ -1,96 +1,121 @@
+
+
+
+
 # Verb morphology !
 
-**s1** nevna
 
-**s2** keypa
+**s1** nevna = riggar!
 
-**SETA** 
 
-**s3** leiða
+**s2** keypa = riggar!
 
-**s3b** oeyða
+**SETA** seta = riggar!
 
-**s4** frøa
 
-**s5** senda
 
-**s6** hirða
+**s3** leiða = riggar!
 
-**s7** rista
+**s4** frøa = riggar!
 
-**s8** kenna
+**s5** senda = riggar!
 
-**s9** klippa
+**s6** hirða = riggar!
 
-**s10** fylgja
+**s7** gista = riggar!
 
-**s11**  roykja
 
-**s12** boyggja
+**s8** kenna = riggar!
 
-**s13** søkkja
+**s9** klippa = riggar!
 
-**s14** heingja
 
-**s15** skeinkja
+**s10** fylgja = riggar!
 
-**s16** flekja
+**s11**  roykja = riggar!
 
-**s17** berja
 
-**s18** krevja
+**s12** boyggja = riggar!
 
-**s19** dylja
 
-**s20** leggja
+**s13** søkkja = riggar!
 
-**s21** selja
 
-**s22** ryðja
+**s14** heingja = riggar!
 
-**s23** smyrja
 
-**s24** flysa
+**s15** skeinkja = riggar!
 
-**s25** iva
+**s15_2** steikja = riggar!
 
-**s26** plaga
+**s16** flekja = riggar!
 
-**s27** páa
+**s17** berja = riggar!
 
-**s28** skaða
+**s18** krevja = riggar!
 
-**s29** brúka
+**s19** dylja = riggar!
 
-**s30** kalla
+**s20** leggja = riggar!
 
-**s30b** trúa _ trúði
+**s21** selja = riggar!
 
-**s31** only the verb gera and Xgera
+**s22** ryðja = riggar ikki í sup og prfptc!
 
-**s32** búgva
+**s22_1** ýðja = riggar!
+
+**s23** smyrja = riggar!
+
+**s24** flysa = riggar ikki í pass!
+
+**s25** liva = riggar!
+
+
+**s26** plaga = riggar (formurin plagdur manglar)!
+
+
+
+**s26_1** mála->máldi
+
+**s27** spáa = riggar!
+
+**s28** skaða = riggar ikki í prfptc!
+
+**s29** brúka = riggar!
+
+**s30** kalla = riggar!
+
+**s31** only gera and *gera = riggar!
+
+**s32/30** útbúgva = riggar!
+
+**s32** búgva = riggar!
 
 **s33** rógva
 
-**s34** goyggja
+
+**s34** goyggja = riggar!
+
+
+
 
 ## Strong verbs starting here
 
-**s35** bíta
+**s35** bíta riggar!
 
-**s36** svíkja
+**s36** svíkja riggar!
 
-**s37** bróta
 
-**s38** skjóta present tense
+**s37** bróta riggar!
 
-**s39d** 
+**s38** skjóta riggar!
 
-**s39s** 
 
-**s39** bjóða umlaut forms
+**s39d**
 
-__s39_rest__ 
+**s39s**
+
+**s39** 
 
 **s40** fúka
 
@@ -98,35 +123,43 @@ __s39_rest__
 
 **s42** klúgva
 
-**s43** njóta
-
 **s44** finna
 
-**s45** binda
+**s45** binda = riggar!
 
-**s46** stinga
+**s46** stinga = riggar!
 
-**s47** svimja
+**s47** svimja = riggar ... men kanska skal tað ikki hava passiv
 
-**s48** drekka
 
-**s49** detta
+**s48** drekka = riggar ikki í adj pga dpkons
 
-**s50** røkka
+**s48_2** renna = riggar ikki í adj pga dpkons
 
-**s51** ganga
+**s49** detta = riggar ikki í adj pga dpkons
 
-**s52** veva
+**s49_2** treffa = riggar ikki í adj pga dpkons
 
-**s53** leypa
+**s49_3** sleppa = riggar ikki í adj pga dpkons
 
-**s54** bera
+**s49_4** verpa = riggar!
 
-**s55** fara
+**s50** røkka = riggar ikki í adj pga dpkons
 
-**s56** geva
+**s51** ganga = riggar!
 
-**s57** sita
+
+**s52** veva = riggar!
+
+**s53** leypa = riggar!
+
+**s54** bera = riggar!
+
+**s55** fara = riggar!
+
+**s56** geva = riggar!
+
+**s57** sita = riggar ikki + skal nokk ikki hava passiv
 
 **s58** mala
 
@@ -140,7 +173,9 @@ __s39_rest__
 
 **s63** koma
 
-**s64** láta
+**s64** lata
+
+**s64_1** láta
 
 **s65** standa
 
@@ -152,6 +187,7 @@ __s39_rest__
 
 **s69** sláa
 
+
 **s70** siga
 
 **s71** skerja
@@ -159,6 +195,107 @@ __s39_rest__
 **s72** eta
 
 **s73** læa
+
+
+## Ad hoc, irregular
+
+**BLÍVA**
+
+**EIGA**
+
+**EITA**
+
+**GRÁTA**
+
+**HAVA**
+
+**KUNNA**
+
+**MEGA**
+
+**MUNNA**
+
+**SKULA**
+
+**TYKJA**
+
+**VERA**
+
+**VERÐA**
+
+
+**VILJA**
+
+**VITA**
+
+
+**SÍGGJA**
+
+**FÁA**
+
+**NÁA** XXX check
+
+**LIGGJA**
+
+
+**RADA**
+
+**BURDA**
+
+**GJALDA**
+
+**VALDA**
+
+**FALLA**
+
+**GJALLA**
+
+**BREGDA**
+
+**SYNGJA** XXX check
+
+
+
+**HOGGA** høgga
+
+**KVODA**
+
+
+
+**FLYGGJA**
+
+
+**VAKSA**
+
+**VEKSA**
+
+
+**s30/26_1** dáma
+
+**HYGGJA**
+
+**TYGGJA**
+
+**MYLA**
+
+**BLASA**
+
+**TYSJA**
+
+**GROA**
+
+**KVOTTA**
+
+**GALDA**
+
+
+
+
+
+
+**TAKAST** 
+
+**LOYPAST** loypast
 
 **sxrefl** This is an ad hoc lexicon
 
@@ -168,7 +305,7 @@ __s39_rest__
 
 **s76** ræðast
 
-**s77** minnast
+**s77** skiftast
 
 **s78** farast
 
@@ -182,185 +319,246 @@ __s39_rest__
 
 **s83** samsinnast
 
+**FYRIB** kopi, s83
+
+
+
 ## Split lexica
 
-**s8/48** 
-**s9/30** 
+
+
+
+
+
+
+
+
+
+
+
+**s8/48_2**
+**s9/30**
+
+
+
+
 
 ## Intermediate lexicon groups
 
-__standard_ir__ 
+**standard_ir**
 
-__standard_ir_t__ 
+**standard_ir_t**
 
-__standard_j_ir__ the prt_d
 
-__standard_j_ir_nopret__ 
 
-__ir_verb__ 
+
+
+
+**ir_verb**
+
+**ir_verb_t**
 
 ## Suffix lexica
 
 ### Infinitive
 
-**jinf** 
+**jinf**
 
-**inf** 
+**inf**
 
-**reflinf** 
+**reflinf**
+
 
 ### Present
 
-__pres_ir__ 
+**pres_ir**
 
-__pres_ir_sg__ 
+**pres_ir_j2**
 
-__pres_ar__ 
+**pres_jir**
 
-__pres_ur__ 
+**pres_ir_sg**
 
-__pres_ur_j__ 
+**pres_ar**
 
-__pres_null__ 
+**pres_ur**
 
-__pres_strong_s1__ 
+**pres_iur**
 
-__pres_strong_s23__ 
+**pres_ur_j**
 
-__pres_strong_s23_t0__ 
+**pres_ur_j2**
 
-__pres_strong_s23_t1__ 
 
-__pres_pl__ 
+**pres_strong_s1**
 
-__pres_ast__ 
+**pres_strong_s23**
 
-__pret_st__ 
+**pres_strong_s23_t**
+
+**pres_strong_s23_t0**
+
+**pres_strong_s23_t1**
+
+**pres_pl**
+
+
+
+
+
+
+**pres_ast**
+
+**pres_ist**
+
+**pres_1ist**
+
+**pres_23st**
+
+**pres_plast**
+
+
+
+
+**pret_adist**
+
+**pret_dist**
+
+**pret_tist**
+
+**pret_ist**
+
+**pret_st**
+
+**pret_plust**
+
+**pret_pltust**
 
 ### Preterite
 
-__prt_d__ 
+**prt_d**
 
-__prt_ð__ 
+**prt_ð**
 
-__prt_t__ 
+**prt_t**
 
-__prt_ði__ 
 
-__prt_ti__ 
+**prt_ði**
 
-__prt_du__ 
+**prt_ti**
 
-__prt_tu__ 
+**prt_du**
 
-__prt_ðu__ 
+**prt_tu**
 
-__prt_dd__ 
+**prt_ðu**
 
-__prt_a__ 
+**prt_dd**
 
-__prt_null__ 
+**prt_a**
 
-__prt_null_s__ 
+**prt_null**
 
-__prt_null_s2__ 
+**prt_null_s**
 
-__prt_u_p__ 
+**prt_null_s2**
+
+**prt_null_s2_t**
+
+**prt_u_p**
+
+
+## Passive lexica
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Imperative and present participle
 
-__imp_prsptc__ 
+**imp_prsptc**
 
-**imp** 
+**imp_prsptc_j**
 
-**impsg** 
+**imp**
 
-**imppl** 
+**imp_j**
 
-**prsptc** 
+**impsg**
+
+**imppl**
+
+**imppl_j**
+
+**prsptc**
 
 ### Supine and preterite participle
 
-**sup** 
+**sup**
 
-__sup_tt__ 
+**sup_t**
 
-__sup_a__ kalla
+**sup_tt**
 
-__sup_null__  stungið
+**sup_a** kalla
 
-## Ad hoc, irregular
+**sup_null**  stungið
 
-**BLÍVA** 
+**sup_in** kalla
 
-**EIGA** 
+**sup_ið_in**  stungið
 
-**EITA** 
 
-**GRÁTA** 
 
-**HAVA** 
 
-**KUNNA** 
-
-**MEGA** 
-
-**MUNNA** 
-
-**SKULA** 
-
-**TYKJA** 
-
-**VERA** 
-
-**VERÐA** 
-
-**VILJA** 
-
-**VITA** 
-
-**SÍGGJA** 
-
-**FÁA** 
-
-**NÁA** XXX check
-
-**LIGGJA** 
-
-**RADA** 
-
-**SYNGJA** XXX check
-
-**HOGGA** høgga
-
-**KVODA** 
-
-**FLYGGJA** 
-
-**VAKSA** 
-
-**DAMA** 
 
 ### Middle lexicon
 
-**PASS** 
+**VANDI**
 
-**VANDI** 
+
 
 ## Perfect Participles !
 
+
+
 **p18**
 
-**p26** 
+**p26**
 
-**p32** 
+**p26_2**
 
-**p39** 
 
-**p5** 
+**p34_6**
 
-**p6** 
+**p34_7**
 
-**p7** 
 
-**p8** 
+**p32**
+
+**p39**
+
+**p5pos**
+
+**p5**
+
+**p6**
+
+**p7**
+
+**p8**
+
+
+
+
+

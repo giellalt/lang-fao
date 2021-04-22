@@ -1,11 +1,9 @@
-Here's a list of links to the page for each file of source code. All pages are concatenated and can be found as [fao.html].
-
-*[root-morphology.html]
-*[fao-phon-phonology.html]
-*[nouns-affixes.html]
-*[nouns-stems.html]
-*[verbs-affixes.html]
-*[verbs-stems.html]
-*[adjectives-affixes.html]
-*[acronyms-affixes.html]
-*[symbols-affixes.html]
+* [root-morphology.md](root-morphology.md)
+* [phonology-morphology.md](phonology-morphology.md)
+* [nouns-affixes.md](nouns-affixes.md)
+* [nouns-stems.md](nouns-stems.md)
+* [verbs-affixes.md](verbs-affixes.md)
+* [verbs-stems.md](verbs-stems.md)
+* [adjectives-affixes.md](adjectives-affixes.md)
+* [acronyms-affixes.md](acronyms-affixes.md)
+* [symbols-affixes.md](symbols-affixes.md)

@@ -22,6 +22,47 @@
 # MD_PAGES variable. The filename pattern is as follows:
 #
 # dir/filename.lexc => filename-dir.md
+
+# *.gt.* designates the tagset being used.
+# At the end of the makefile, there is support for automatic compilation of
+# other tagsets, given that the proper tagset relabeling files are defined,
+# and that the target files are defined as part of the 'all' target.
+#
+# Filenames are built as follows:
+# basictype-application-tagset-normativity[-dialect].fsttype
+#
+# 'application' is not specified for the regular/default morphological
+# analysis/generation.
+#
+# Examples:
+# analyser-oahpa-gt-desc.hfst
+# generator-apertium-apertium-norm_single.hfst
+# analyser-gt-desc.xfst
+#
+# Full details regarding transducer filenames can be found at:
+#
+# https://giellalt.uit.no/infra/infraremake/TransducerNamesInTheNewInfra.html
+
+#### Tailored silent output text: ####
+
+#### HFST tools
+# Tools not yet covered by this file:
+#
+# hfst-determinize
+# hfst-fst2strings
+# hfst-info
+# hfst-minus
+# hfst-multiply
+# hfst-pair-test
+# hfst-pmatch
+# hfst-prune-alphabet
+# hfst-push-weights
+# hfst-remove-epsilons
+# hfst-shuffle
+# hfst-subtract
+# hfst-summarize
+# hfst-tokenize
+
 VPATH = @srcdir@
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \
@@ -129,8 +170,39 @@ am__can_run_installinfo = \
     n|no|NO) false;; \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
+am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
+am__vpath_adj = case $$p in \
+    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+    *) f=$$p;; \
+  esac;
+am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
+am__install_max = 40
+am__nobase_strip_setup = \
+  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
+am__nobase_strip = \
+  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
+am__nobase_list = $(am__nobase_strip_setup); \
+  for p in $$list; do echo "$$p $$p"; done | \
+  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
+  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
+    if (++n[$$2] == $(am__install_max)) \
+      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
+    END { for (dir in files) print dir, files[dir] }'
+am__base_list = \
+  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
+  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
+am__uninstall_files_from_dir = { \
+  test -z "$$files" \
+    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
+    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
+         $(am__cd) "$$dir" && rm -f $$files; }; \
+  }
+am__installdirs = "$(DESTDIR)$(docdir)"
+DATA = $(doc_DATA)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
-am__DIST_COMMON = $(srcdir)/Makefile.in
+am__DIST_COMMON = $(srcdir)/Makefile.in \
+	$(top_srcdir)/../giella-core/am-shared/docs-dir-include.am \
+	$(top_srcdir)/../giella-core/am-shared/silent_build-include.am
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 ALT_ORTHS = @ALT_ORTHS@
@@ -346,10 +418,200 @@ MD_PAGES = root-morphology.md  \
 		  acronyms-affixes.md \
 		  symbols-affixes.md
 
+
+# Variables:
+VPATH_MD_PAGES = $(addprefix $(srcdir)/,$(MD_PAGES))
+ALLINONE_MD_PAGE = $(srcdir)/$(GTLANG).md
+LINKS = $(srcdir)/Links.md
+HEADER = $(srcdir)/index-header.md
+INDEX = $(srcdir)/index.md
+
+# no regenerations while debugging
+doc_DATA = $(INDEX) $(LINKS) $(VPATH_MD_PAGES) $(ALLINONE_MD_PAGE)
+DOCC2MDWIKI = $(GTCORE)/scripts/doccomments2ghpages.awk
+JSPWIKI2MD = $(GTCORE)/scripts/jspwiki2md.awk
+GRAPHPLOTTER = $(GTCORE)/scripts/plot-speller-progress.R
+
+# hfst-compose:
+AM_V_COMPOSE = $(AM_V_COMPOSE_@AM_V@)
+AM_V_COMPOSE_ = $(AM_V_COMPOSE_@AM_DEFAULT_V@)
+AM_V_COMPOSE_0 = @echo "  HCOMPOSE $@";
+
+# hfst-concatenate:
+AM_V_HCONCAT = $(AM_V_HCONCAT_@AM_V@)
+AM_V_HCONCAT_ = $(AM_V_HCONCAT_@AM_DEFAULT_V@)
+AM_V_HCONCAT_0 = @echo "  HCONCAT  $@";
+
+# hfst-conjunct /
+# hfst-intersect:
+AM_V_CONJCT = $(AM_V_CONJCT_@AM_V@)
+AM_V_CONJCT_ = $(AM_V_CONJCT_@AM_DEFAULT_V@)
+AM_V_CONJCT_0 = @echo "  HCONJCT  $@";
+
+# hfst-fst2fst:
+AM_V_FST2FST = $(AM_V_FST2FST_@AM_V@)
+AM_V_FST2FST_ = $(AM_V_FST2FST_@AM_DEFAULT_V@)
+AM_V_FST2FST_0 = @echo "  HFST2FST $@";
+
+# hfst-minimize
+AM_V_HMINIM = $(AM_V_HMINIM_@AM_V@)
+AM_V_HMINIM_ = $(AM_V_HMINIM_@AM_DEFAULT_V@)
+AM_V_HMINIM_0 = @echo "  HMINIM   $@";
+
+# hfst-fst2txt:
+AM_V_FST2TXT = $(AM_V_FST2TXT_@AM_V@)
+AM_V_FST2TXT_ = $(AM_V_FST2TXT_@AM_DEFAULT_V@)
+AM_V_FST2TXT_0 = @echo "  HFST2TXT $@";
+
+# hfst-foma:
+AM_V_HFOMA = $(AM_V_HFOMA_@AM_V@)
+AM_V_HFOMA_ = $(AM_V_HFOMA_@AM_DEFAULT_V@)
+AM_V_HFOMA_0 = @echo "  HFOMA    $@";
+
+# hfst-optimized-lookup:
+AM_V_HFSTOL = $(AM_V_HFSTOL_@AM_V@)
+AM_V_HFSTOL_ = $(AM_V_HFSTOL_@AM_DEFAULT_V@)
+AM_V_HFSTOL_0 = @echo "  HFSTOL   $@";
+
+# hfst-lexc:
+AM_V_HLEXC = $(AM_V_HLEXC_@AM_V@)
+AM_V_HLEXC_ = $(AM_V_HLEXC_@AM_DEFAULT_V@)
+AM_V_HLEXC_0 = @echo "  HLEXC    $@";
+
+# hfst-split:
+AM_V_HSPLIT = $(AM_V_HSPLIT_@AM_V@)
+AM_V_HSPLIT_ = $(AM_V_HSPLIT_@AM_DEFAULT_V@)
+AM_V_HSPLIT_0 = @echo "  HSPLIT   $@";
+
+# hfst-substitute:
+AM_V_HSUBST = $(AM_V_HSUBST_@AM_V@)
+AM_V_HSUBST_ = $(AM_V_HSUBST_@AM_DEFAULT_V@)
+AM_V_HSUBST_0 = @echo "  HSUBST   $@";
+
+# hfst-twolc:
+AM_V_HTWOLC = $(AM_V_HTWOLC_@AM_V@)
+AM_V_HTWOLC_ = $(AM_V_HTWOLC_@AM_DEFAULT_V@)
+AM_V_HTWOLC_0 = @echo "  HTWOLC   $@";
+
+# hfst-xfst:
+AM_V_HXFST = $(AM_V_HXFST_@AM_V@)
+AM_V_HXFST_ = $(AM_V_HXFST_@AM_DEFAULT_V@)
+AM_V_HXFST_0 = @echo "  HXFST    $@";
+
+# hfst-compose-intersect:
+AM_V_INTRSCT = $(AM_V_INTRSCT_@AM_V@)
+AM_V_INTRSCT_ = $(AM_V_INTRSCT_@AM_DEFAULT_V@)
+AM_V_INTRSCT_0 = @echo "  HINTRSCT $@";
+
+# hfst-invert:
+AM_V_INVERT = $(AM_V_INVERT_@AM_V@)
+AM_V_INVERT_ = $(AM_V_INVERT_@AM_DEFAULT_V@)
+AM_V_INVERT_0 = @echo "  HINVERT  $@";
+
+# hfst-pmatch2fst
+AM_V_PM2FST = $(AM_V_PM2FST_@AM_V@)
+AM_V_PM2FST_ = $(AM_V_PM2FST_@AM_DEFAULT_V@)
+AM_V_PM2FST_0 = @echo "  HPM2FST  $@";
+
+# hfst-project:
+AM_V_PROJECT = $(AM_V_PROJECT_@AM_V@)
+AM_V_PROJECT_ = $(AM_V_PROJECT_@AM_DEFAULT_V@)
+AM_V_PROJECT_0 = @echo "  HPROJECT $@";
+
+# hfst-reverse
+AM_V_REVERSE = $(AM_V_REVERSE_@AM_V@)
+AM_V_REVERSE_ = $(AM_V_REVERSE_@AM_DEFAULT_V@)
+AM_V_REVERSE_0 = @echo "  HREVERSE $@";
+
+# hfst-reweight:
+AM_V_REWEIGHT = $(AM_V_REWEIGHT_@AM_V@)
+AM_V_REWEIGHT_ = $(AM_V_REWEIGHT_@AM_DEFAULT_V@)
+AM_V_REWEIGHT_0 = @echo "  HREWGHT  $@";
+
+# hfst-regexp2fst:
+AM_V_RGX2FST = $(AM_V_RGX2FST_@AM_V@)
+AM_V_RGX2FST_ = $(AM_V_RGX2FST_@AM_DEFAULT_V@)
+AM_V_RGX2FST_0 = @echo "  HRGX2FST $@";
+
+# hfst-repeat
+AM_V_REPEAT = $(AM_V_REPEAT_@AM_V@)
+AM_V_REPEAT_ = $(AM_V_REPEAT_@AM_DEFAULT_V@)
+AM_V_REPEAT_0 = @echo "  HREPEAT  $@";
+
+# hfst-strings2fst:
+AM_V_STR2FST = $(AM_V_STR2FST_@AM_V@)
+AM_V_STR2FST_ = $(AM_V_STR2FST_@AM_DEFAULT_V@)
+AM_V_STR2FST_0 = @echo "  HSTR2FST $@";
+
+# hfst-txt2fst:
+AM_V_TXT2FST = $(AM_V_TXT2FST_@AM_V@)
+AM_V_TXT2FST_ = $(AM_V_TXT2FST_@AM_DEFAULT_V@)
+AM_V_TXT2FST_0 = @echo "  HTXT2FST $@";
+
+# hfst-union / hfst-disjunct:
+AM_V_UNION = $(AM_V_UNION_@AM_V@)
+AM_V_UNION_ = $(AM_V_UNION_@AM_DEFAULT_V@)
+AM_V_UNION_0 = @echo "  HUNION   $@";
+
+#### Foma
+AM_V_FOMA = $(AM_V_FOMA_@AM_V@)
+AM_V_FOMA_ = $(AM_V_FOMA_@AM_DEFAULT_V@)
+AM_V_FOMA_0 = @echo "  FOMA     $@";
+
+#### Xerox tools
+AM_V_TWOLC = $(AM_V_TWOLC_@AM_V@)
+AM_V_TWOLC_ = $(AM_V_TWOLC_@AM_DEFAULT_V@)
+AM_V_TWOLC_0 = @echo "  TWOLC    $@";
+AM_V_LEXC = $(AM_V_LEXC_@AM_V@)
+AM_V_LEXC_ = $(AM_V_LEXC_@AM_DEFAULT_V@)
+AM_V_LEXC_0 = @echo "  LEXC     $@";
+AM_V_XFST = $(AM_V_XFST_@AM_V@)
+AM_V_XFST_ = $(AM_V_XFST_@AM_DEFAULT_V@)
+AM_V_XFST_0 = @echo "  XFST     $@";
+
+#### VislCG3
+AM_V_CGCOMP = $(AM_V_CGCOMP_@AM_V@)
+AM_V_CGCOMP_ = $(AM_V_CGCOMP_@AM_DEFAULT_V@)
+AM_V_CGCOMP_0 = @echo "  CG3COMP  $@";
+
+#### Other tools
+AM_V_CP = $(AM_V_CP_@AM_V@)
+AM_V_CP_ = $(AM_V_CP_@AM_DEFAULT_V@)
+AM_V_CP_0 = @echo "  CP       $@";
+AM_V_MV = $(AM_V_MV_@AM_V@)
+AM_V_MV_ = $(AM_V_MV_@AM_DEFAULT_V@)
+AM_V_MV_0 = @echo "  MV       $@";
+AM_V_GZIP = $(AM_V_GZIP_@AM_V@)
+AM_V_GZIP_ = $(AM_V_GZIP_@AM_DEFAULT_V@)
+AM_V_GZIP_0 = @echo "  GZIP     $@";
+AM_V_ZIP = $(AM_V_ZIP_@AM_V@)
+AM_V_ZIP_ = $(AM_V_ZIP_@AM_DEFAULT_V@)
+AM_V_ZIP_0 = @echo "  ZIP      $@";
+AM_V_SAXON = $(AM_V_SAXON_@AM_V@)
+AM_V_SAXON_ = $(AM_V_SAXON_@AM_DEFAULT_V@)
+AM_V_SAXON_0 = @echo "  SAXON    $@";
+AM_V_XSLPROC = $(AM_V_XSLPROC_@AM_V@)
+AM_V_XSLPROC_ = $(AM_V_XSLPROC_@AM_DEFAULT_V@)
+AM_V_XSLPROC_0 = @echo "  XSLPROC  $@";
+AM_V_AWK = $(AM_V_AWK_@AM_V@)
+AM_V_AWK_ = $(AM_V_AWK_@AM_DEFAULT_V@)
+AM_V_AWK_0 = @echo "  AWK      $@";
+AM_V_SED = $(AM_V_SED_@AM_V@)
+AM_V_SED_ = $(AM_V_SED_@AM_DEFAULT_V@)
+AM_V_SED_0 = @echo "  SED      $@";
+AM_V_FORREST = $(AM_V_FORREST_@AM_V@)
+AM_V_FORREST_ = $(AM_V_FORREST_@AM_DEFAULT_V@)
+AM_V_FORREST_0 = @echo "  FORREST  $@";
+
+# Let the verbosity of some command line tools follow the automake verbosity.
+# VERBOSITY       = be quiet if V=0, unspecified otherwise
+# MORE_VERBOSITY  = be quiet if V=0, be verbose otherwise
+VERBOSITY = $(if $(strip $(filter-out false,$(AM_V_P))), ,-q)
+MORE_VERBOSITY = $(if $(strip $(filter-out false,$(AM_V_P))),-v,-q)
 all: all-am
 
 .SUFFIXES:
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/../giella-core/am-shared/docs-dir-include.am $(top_srcdir)/../giella-core/am-shared/silent_build-include.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -369,6 +631,7 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__maybe_remake_depfiles)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__maybe_remake_depfiles);; \
 	esac;
+$(top_srcdir)/../giella-core/am-shared/docs-dir-include.am $(top_srcdir)/../giella-core/am-shared/silent_build-include.am $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
@@ -378,6 +641,27 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
+install-docDATA: $(doc_DATA)
+	@$(NORMAL_INSTALL)
+	@list='$(doc_DATA)'; test -n "$(docdir)" || list=; \
+	if test -n "$$list"; then \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(docdir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(docdir)" || exit 1; \
+	fi; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(docdir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(docdir)" || exit $$?; \
+	done
+
+uninstall-docDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(doc_DATA)'; test -n "$(docdir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	dir='$(DESTDIR)$(docdir)'; $(am__uninstall_files_from_dir)
 tags TAGS:
 
 ctags CTAGS:
@@ -420,8 +704,11 @@ distdir-am: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile
+all-am: Makefile $(DATA)
 installdirs:
+	for dir in "$(DESTDIR)$(docdir)"; do \
+	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
+	done
 install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
@@ -472,7 +759,7 @@ info: info-am
 
 info-am:
 
-install-data-am:
+install-data-am: install-docDATA
 
 install-dvi: install-dvi-am
 
@@ -516,23 +803,91 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am:
+uninstall-am: uninstall-docDATA
 
 .MAKE: install-am install-strip
 
 .PHONY: all all-am check check-am clean clean-generic cscopelist-am \
 	ctags-am distclean distclean-generic distdir dvi dvi-am html \
 	html-am info info-am install install-am install-data \
-	install-data-am install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am install-info \
-	install-info-am install-man install-pdf install-pdf-am \
-	install-ps install-ps-am install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
+	install-data-am install-docDATA install-dvi install-dvi-am \
+	install-exec install-exec-am install-html install-html-am \
+	install-info install-info-am install-man install-pdf \
+	install-pdf-am install-ps install-ps-am install-strip \
+	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
-	pdf-am ps ps-am tags-am uninstall uninstall-am
+	pdf-am ps ps-am tags-am uninstall uninstall-am \
+	uninstall-docDATA
 
 .PRECIOUS: Makefile
 
+
+.PHONY: gh-pages
+
+gh-pages: $(INDEX) $(LINKS) $(VPATH_MD_PAGES) $(ALLINONE_MD_PAGE)
+
+@WANT_SPELLERS_TRUE@speller-report.svg: speller-report.tsv $(GRAPHPLOTTER)
+@WANT_SPELLERS_TRUE@	$(AM_V_GEN)"$(R)" --no-save < $(GRAPHPLOTTER)
+
+@WANT_SPELLERS_TRUE@speller-report.tsv: spell-tests.tsv $(top_builddir)/tools/spellcheckers/$(GTLANG2).zhfst
+@WANT_SPELLERS_TRUE@	$(AM_V_GEN)$(DIVVUN_ACCURACY) $< $(top_builddir)/tools/spellcheckers/$(GTLANG2).zhfst -t $@
+
+@WANT_SPELLERS_TRUE@report.json: spell-tests.tsv $(top_builddir)/tools/spellcheckers/$(GTLANG2).zhfst
+@WANT_SPELLERS_TRUE@	$(AM_V_GEN)$(DIVVUN_ACCURACY) $< $(top_builddir)/tools/spellcheckers/$(GTLANG2).zhfst -o $@
+
+@WANT_SPELLERS_TRUE@spell-tests.tsv:
+@WANT_SPELLERS_TRUE@	$(AM_V_GEN)cut -f 1,2 `find $(top_srcdir) -name typos.txt` |\
+@WANT_SPELLERS_TRUE@		egrep -v '^#' > $@
+
+@WANT_SPELLERS_FALSE@speller-report.svg: 
+@WANT_SPELLERS_FALSE@	@echo need to configure --enable-spellers to generate statistics
+@WANT_SPELLERS_FALSE@	touch $@
+
+@WANT_SPELLERS_FALSE@report.json: 
+@WANT_SPELLERS_FALSE@	@echo need to configure --enable-spellers to generate statistics
+@WANT_SPELLERS_FALSE@	touch $@
+
+$(srcdir)/%-syntax.md: $(top_srcdir)/src/cg3/%.cg3
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+
+$(srcdir)/%-morphology.md: $(top_srcdir)/src/fst/%.lexc
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+
+$(srcdir)/%-morphology.md: $(top_srcdir)/src/fst/%.twolc
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+
+$(srcdir)/%-morphology.md: $(top_srcdir)/src/fst/%.xfscript
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+
+$(srcdir)/%-stems.md: $(top_srcdir)/src/fst/stems/%.lexc
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+
+$(srcdir)/%-affixes.md: $(top_srcdir)/src/fst/affixes/%.lexc
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+
+$(srcdir)/%.md: $(top_srcdir)/src/transcriptions/%.lexc
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+
+$(ALLINONE_MD_PAGE): $(VPATH_MD_PAGES)
+	$(AM_V_at)-rm -rf build
+	$(AM_V_at)-rm -rf $(srcdir)/build
+	$(AM_V_at)-rm -f $@
+	$(AM_V_GEN)cat $^ > $@
+
+$(LINKS): $(VPATH_MD_PAGES)
+	$(AM_V_GEN)echo $$(for file in $^; do basename $$file; done) \
+			| tr ' ' '\n' \
+			| LC_COLLATE=C sed 's/[a-z0-9._-]*/* [&]\(&\)/g' \
+			> $@
+
+# FIXME: some temporary stuff to have index page
+$(INDEX): $(HEADER) $(LINKS)
+	$(AM_V_GEN)cat $^ > $@
+
+%.md: %.jspwiki
+	$(AM_V_AWK)"$(GAWK)" -f $(JSPWIKI2MD) < $< > $@
+
+# vim: set ft=automake:
 # clitics-morphology.md       \
 # compounding-morphology.md   \
 # abbreviations-stems.md      \
@@ -550,8 +905,7 @@ uninstall-am:
 # smi-propernouns-stems.md    \
 # subjunctions-stems.md       \
 # adjectives-affixes.md       \
-# propernouns-affixes.md      \
-#include $(top_srcdir)/../giella-core/am-shared/docs-dir-include.am
+# propernouns-affixes.md
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

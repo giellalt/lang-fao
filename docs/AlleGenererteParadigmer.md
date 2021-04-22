@@ -81,7 +81,7 @@ Feil kan oppstå t.d. ved at
 * orda kan peike til feil kontinuasjonsleksikon (bøyingsmønster)
 * bøyingsleksikonet kan innehalde feil suffiks
 * det kan vere feil i dei morfofonologiske reglane
-* det kan hende at styringssymbol (^EDH, ..) ikkje er deklarert i root.lexc
+* det kan hende at styringssymbol (`^EDH`, ..) ikkje er deklarert i `src/fst/root.lexc`
 
 Ver serleg merksam på
 * komparativ og superlativ

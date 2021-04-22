@@ -1,0 +1,32 @@
+name: Build in-code documentation
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: giellalt/giella-core
+          path: giella-core
+      - uses: actions/checkout@v2
+        with:
+          repository: giellalt/giella-shared
+          path: giella-shared
+      - uses: actions/checkout@v2
+        with:
+          path: lang
+      - name: Install dev dependencies
+        uses: divvun/actions/lang/install-deps@master
+        with:
+          sudo: true
+      - name: Build giella-core/giella-shared
+        uses: divvun/actions/lang/build@master
+        with:
+          spellers: false
+          fst: hfst
+      - name: deploy gh pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: lang/docs/
+          enable_jekyll: true

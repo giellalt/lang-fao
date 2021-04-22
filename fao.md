@@ -6,106 +6,106 @@
 
 
 ## Tags for POS	
- * +N +V +A +Adv +Prop +Num                 : Open POS's	
- * +CC +CS +Interj +Pr +Pron +IM		     : Closed POS's	
+ * +N +V +A +Adv +Prop +Num : Open POS's	
+ * +CC +CS +Interj +Pr +Pron +IM		 : Closed POS's	
  * +Pers +Det +Refl +Recipr +Poss +Dem		 : Pron types	
- * +Nom +Acc +Gen +Dat					     : Case			
- * +Msc +Fem +Neu						     : Gender		
- * +Sg +Pl								     : Number		
- * +Def +Indef 						     : Definiteness	
- * +Comp +Superl						     : Comparison	
- * +Prs +Prt							     : Tense		
- * +1Sg 					     : Person-Number
- * +2Sg 					     : Person-Number
+ * +Nom +Acc +Gen +Dat					 : Case			
+ * +Msc +Fem +Neu						 : Gender		
+ * +Sg +Pl								 : Number		
+ * +Def +Indef 						 : Definiteness	
+ * +Comp +Superl						 : Comparison	
+ * +Prs +Prt							 : Tense		
+ * +1Sg 					 : Person-Number
+ * +2Sg 					 : Person-Number
  * +3Sg							 : Person-Number
- * +Inf +PrfPtc +PrsPrc +Sup +Imp +Sbj	+Subj     : Verb forms	
- * +Cmp								     : Compound		
- * +Abbr +ABBR +ACR							     : Abbreviations, acronyms ,
- * +CLB +PUNCT +LEFT +RIGHT			     : Punctuation, parentheses
- * +Symbol  : independent symbols in the text stream, like £, €, ©
+ * +Inf +PrfPtc +PrsPrc +Sup +Imp +Sbj	+Subj : Verb forms	
+ * +Cmp								 : Compound		
+ * +Abbr +ABBR +ACR							 : Abbreviations, acronyms ,
+ * +CLB +PUNCT +LEFT +RIGHT			 : Punctuation, parentheses
+ * +Symbol : independent symbols in the text stream, like £, €, ©
  * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 
 
- * +Sg3 					     : This is inherited from common files, should be changed to +3Sg.
+ * +Sg3 : This is inherited from common files, should be changed to +3Sg.
 
- * +ABBR    sub-pos
- * +Arab    sub-pos
+ * +ABBR sub-pos
+ * +Arab sub-pos
 
- * +Attr    sub-pos
- * +Coll    sub-pos
+ * +Attr sub-pos
+ * +Coll sub-pos
 
- * +Com     samiske kasus, skal bort
- * +Dyn     samiske kasus, skal bort
- * +Ela     samiske kasus, skal bort
- * +Ess     samiske kasus, skal bort
- * +Ill     samiske kasus, skal bort
- * +Ine     samiske kasus, skal bort
+ * +Com samiske kasus, skal bort
+ * +Dyn samiske kasus, skal bort
+ * +Ela samiske kasus, skal bort
+ * +Ess samiske kasus, skal bort
+ * +Ill samiske kasus, skal bort
+ * +Ine samiske kasus, skal bort
 
- * +MWE     multiword expression
+ * +MWE multiword expression
 
- * +Pos     sjekk desse XXX
- * +Rom     sjekk desse XXX
+ * +Pos sjekk desse XXX
+ * +Rom sjekk desse XXX
 
 
 
- * +Der/heit   Derivation with -heit
+ * +Der/heit Derivation with -heit
 
  * +Der/A derivation to Adjective
  * +Der/Adv derivation to Adverb
 
- * +Ind  
- * +Pass  
- * +Interr  
- * +Ord  
+ * +Ind
+ * +Pass
+ * +Interr
+ * +Ord
 
 ## Semantic tags
- * +Sem/Sur   
- * +Sem/Mal   
- * +Sem/Fem   
- * +Sem/Plc   
- * +Sem/Org   
- * +Sem/Veh   
- * +Sem/Fem   
+ * +Sem/Sur
+ * +Sem/Mal
+ * +Sem/Fem
+ * +Sem/Plc
+ * +Sem/Org
+ * +Sem/Veh
+ * +Sem/Fem
 
- * +Sem/Year         - year (i.e. 1000 - 2999), used only for numerals 
+ * +Sem/Year - year (i.e. 1000 - 2999), used only for numerals 
 
 
- * +Sem/Amount		       
- * +Sem/Build		       
- * +Sem/Build-room	       
- * +Sem/Cat		       
- * +Sem/Curr		       
- * +Sem/Date		       
- * +Sem/Domain		       
- * +Sem/Domain_Hum	       
- * +Sem/Dummytag	       
- * +Sem/Edu_Hum	       
- * +Sem/Event		       
- * +Sem/Food-med	       
- * +Sem/Group_Hum	       
- * +Sem/Hum		       
- * +Sem/ID			       
- * +Sem/Lang		       
- * +Sem/Mat		       
- * +Sem/Measr		       
- * +Sem/Money		       
- * +Sem/Obj		       
- * +Sem/Obj-el		       
- * +Sem/Obj-ling	       
- * +Sem/Org_Prod-audio    
- * +Sem/Org_Prod-vis      
- * +Sem/Part		       
- * +Sem/Prod-vis	       
- * +Sem/Route		       
- * +Sem/Rule		       
- * +Sem/Sign		       
- * +Sem/State		       
- * +Sem/State-sick	       
- * +Sem/Substnc	       
- * +Sem/Time		       
- * +Sem/Time-clock	       
- * +Sem/Tool-it	       
- * +Sem/Txt		       
+ * +Sem/Amount		
+ * +Sem/Build		
+ * +Sem/Build-room	
+ * +Sem/Cat		
+ * +Sem/Curr		
+ * +Sem/Date		
+ * +Sem/Domain		
+ * +Sem/Domain_Hum	
+ * +Sem/Dummytag	
+ * +Sem/Edu_Hum	
+ * +Sem/Event		
+ * +Sem/Food-med	
+ * +Sem/Group_Hum	
+ * +Sem/Hum		
+ * +Sem/ID			
+ * +Sem/Lang		
+ * +Sem/Mat		
+ * +Sem/Measr		
+ * +Sem/Money		
+ * +Sem/Obj		
+ * +Sem/Obj-el		
+ * +Sem/Obj-ling	
+ * +Sem/Org_Prod-audio
+ * +Sem/Org_Prod-vis
+ * +Sem/Part		
+ * +Sem/Prod-vis	
+ * +Sem/Route		
+ * +Sem/Rule		
+ * +Sem/Sign		
+ * +Sem/State		
+ * +Sem/State-sick	
+ * +Sem/Substnc	
+ * +Sem/Time		
+ * +Sem/Time-clock	
+ * +Sem/Tool-it	
+ * +Sem/Txt		
 
 
 
@@ -127,14 +127,14 @@ the sentence can be considered as true cases.
 
 
 ## Non-changing letters
- *  a2  This is for a special a Umlaut case
- *  g2 i2 j2 t2 v2   
+ * a2 This is for a special a Umlaut case
+ * g2 i2 j2 t2 v2 
 
- * +v1 +v2     : different paradigms   ,
+ * +v1 +v2 : different paradigms   ,
 
 ## Triggers for Morphophonology
  * %^UUML %^IUML %^eIUML %^ØUML				 : Umlaut types ,
- * %^W %^JI 					                  : Cns changes ,
+ * %^W %^JI 					 : Cns changes ,
  * %^EPH %^OEA 					 : Epenthesis,  ,
  * %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL	 : Cns deletion triggers,
  * %^EIO %^OA %^WVV %^EDH %^VSH			 : TODO ,
@@ -152,15 +152,15 @@ the sentence can be considered as true cases.
 
 Language tags
 
- * +OLang/ENG   
- * +OLang/FIN   
- * +OLang/NNO   
- * +OLang/NOB   
- * +OLang/RUS   
- * +OLang/SMA   
- * +OLang/SME   
- * +OLang/SWE   
- * +OLang/UND   
+ * +OLang/ENG
+ * +OLang/FIN
+ * +OLang/NNO
+ * +OLang/NOB
+ * +OLang/RUS
+ * +OLang/SMA
+ * +OLang/SME
+ * +OLang/SWE
+ * +OLang/UND
 
 
 ## Non-ascii letters, perhaps needed as multichar symbols
@@ -197,28 +197,28 @@ This entry / word should be in the following position(s):
 
  * **+Use/PMatch** means that the following is only used in the analyser feeding the disambiguator. This is missing.
 
- * +Use/-PMatch	       
- * +Use/-Spell		       
- * +Use/NG			       
- * +Use/NGA		       
- * +Use/SpellNoSugg       
+ * +Use/-PMatch	
+ * +Use/-Spell		
+ * +Use/NG			
+ * +Use/NGA		
+ * +Use/SpellNoSugg
  * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
 
  * +Err/Guess								 : Tag for Name Guesser component
  * +Err/Orth								 : Marking forms that are orthographical errors
- * +Err/Hyph		   	
- * +Err/Lex		   	
- * +Err/SpaceCmp	   	
- * +Err/MissingSpace  	
+ * +Err/Hyph		 	
+ * +Err/Lex		 	
+ * +Err/SpaceCmp	 	
+ * +Err/MissingSpace 	
 
 ## Symbols that need to be escaped on the lower side (towards twolc):
 Todo: Check whether these can be removed. They are probably obsolete.
 
- *  »7      : Literal » 
- *  «7      : Literal «
+ * »7 : Literal » 
+ * «7 : Literal «
 ```
-  %[%>%]  - Literal >
-  %[%<%]  - Literal <
+ %[%>%] - Literal >
+ %[%<%] - Literal <
 ```
 
 
@@ -300,28 +300,28 @@ This is the beginning of everything. The **Root** lexicon is reserved in the
 LexC language, and must be the first lexicon defined.
 
 
- * Nouns ;          
- * Shortnouns ;      1- and 2-letter nouns excluded from compounding
- * Propernouns ;    
- * Adjectives ;     
- * Shortadjectives ;     
- * Verbs ;		     
- * Adverb ;	     
- * Conjunction ;    
- * Subjunction ;    
- * Interjection ;   
- * Numeral ;	     
- * Determiner ;     
- * Pronoun ;	     
- * Preposition ;    
- * Punctuation ;    
- * Symbols     ;    
- * Abbreviation ;   
- * Acronyms ;       
+ * Nouns ; 
+ * Shortnouns ;  1- and 2-letter nouns excluded from compounding
+ * Propernouns ; 
+ * Adjectives ; 
+ * Shortadjectives ; 
+ * Verbs ;		 
+ * Adverb ;	 
+ * Conjunction ; 
+ * Subjunction ; 
+ * Interjection ; 
+ * Numeral ;	 
+ * Determiner ; 
+ * Pronoun ;	 
+ * Preposition ; 
+ * Punctuation ; 
+ * Symbols ; 
+ * Abbreviation ; 
+ * Acronyms ; 
 
 Lexicon Acronyms is split in two:
- * Acronym-fao ;  for fao acronyms
- * Acronym-smi ;  for language independent acronums
+ * Acronym-fao ; for fao acronyms
+ * Acronym-smi ; for language independent acronums
 
 
 # Lexicon ENDLEX

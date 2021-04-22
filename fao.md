@@ -242,6 +242,7 @@ with verbs if the verb is further derived into a noun again:
 ### Flag for case harmony in compounds
 
 Set flag for compounds
+
 |                        Flag | Example word
 |                        ---- | ----
  |  @P.Case.MscNom@ | fyrstiflokkur
@@ -252,6 +253,7 @@ Set flag for compounds
  |  @P.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 Control flag values for compounds
+
 |                        Flag | Example word
 |                        ---- | ----
  |  @R.Case.MscNom@ | fyrstiflokkur
@@ -262,6 +264,7 @@ Control flag values for compounds
  |  @R.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 Control flag values for compounds
+
 |                        Flag | Example word
 |                        ---- | ----
  |  @U.Case.MscNom@ | fyrstiflokkur
@@ -272,6 +275,7 @@ Control flag values for compounds
  |  @U.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 Flag diacritic look-alikes for grammar checker & tokenisation purposes
+
 |                        Flag | Explanation
 |                        ---- | ----
  |  @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch

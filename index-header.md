@@ -25,7 +25,7 @@ For a presentation, see
 
 # Project documentation
 
-Generell informasjon finst på [hovudnettsida for GiellaLT-infrastrukturen](/)
+Generell informasjon finst på [hovudnettsida for GiellaLT-infrastrukturen](/).
 
 Analyseprogrammet for færøysk
 =============================
@@ -39,7 +39,7 @@ Source files:
 - [stems](https://github.com/giellalt/lang-fao/tree/develop/src/fst/stems/)
 - [affixes](https://github.com/giellalt/lang-fao/tree/develop/src/fst/affixes)
 - [twolc](https://github.com/giellalt/lang-fao/tree/develop/src/fst/phonology.twolc)
-- [yaml](https://github.com/giellalt/lang-fao/tree/develop/test/src/)
+- [yaml](https://github.com/giellalt/lang-fao/tree/develop/test/src/gt-norm-yamls/)
 
 Den grammatiske transdusaren
 ----------------------------

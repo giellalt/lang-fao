@@ -14,7 +14,6 @@ DEtte dokumnetet inneheld alle genererte former, deretter kommentarar.
  [Pl Acc](testir/TestMscPlAcc.html)  //  
  [Pl Dat](testir/TestMscPlDat.html)  //  
  [Pl Gen](testir/TestMscPlGen.html)
-
 * Fem
  [Sg Nom](testir/TestFemSgNom.html)  //  
  [Sg Acc](testir/TestFemSgAcc.html)  //  
@@ -24,7 +23,6 @@ DEtte dokumnetet inneheld alle genererte former, deretter kommentarar.
  [Pl Acc](testir/TestFemPlAcc.html)  //  
  [Pl Dat](testir/TestFemPlDat.html)  //  
  [Pl Gen](testir/TestFemPlGen.html)
-
 * Neu
  [Sg Nom](testir/TestNeuSgNom.html)  //  
  [Sg Acc](testir/TestNeuSgAcc.html)  //  
@@ -43,7 +41,6 @@ DEtte dokumnetet inneheld alle genererte former, deretter kommentarar.
  //  [Adj Msc PlGen](testir/AdjTestMscPlGen.html)
  //  [Adj Msc CompSgNom](testir/AdjTestMscCompSgNom.html)
  //  [Adj Msc SuperlSgNom](testir/AdjTestMscSuperlSgNom.html)
-
 * Fem
  [Adj Fem SgAcc](testir/AdjTestFemSgAcc.html)  //  
  [Adj Fem SgGen](testir/AdjTestFemSgGen.html)  //  
@@ -51,7 +48,6 @@ DEtte dokumnetet inneheld alle genererte former, deretter kommentarar.
  [Adj Fem PlGen](testir/AdjTestFemPlGen.html)  //  
  [Adj Fem CompSgNom](testir/AdjTestFemCompSgNom.html)  //  
  [Adj Fem SuperlSgNom](testir/AdjTestFemSuperlSgNom.html)
-
 * Neu
  [Adj Neu CompSgNom](testir/AdjTestNeuCompSgNom.html)
  //  [Adj Neu PlAcc](testir/AdjTestNeuPlAcc.html)
@@ -70,7 +66,6 @@ DEtte dokumnetet inneheld alle genererte former, deretter kommentarar.
  //  [Ind Prt3Sg](testir/VerbTestIndPrt3Sg.html)
  //  [Ind PrtPl1](testir/VerbTestIndPrtPl1.html)
  //  [Ind PrtPl3](testir/VerbTestIndPrtPl3.html)
-
 * Infinitte [Act PrfPtc](testir/VerbTestActPrfPtc.html)
  //  [Act PrsPtc](testir/VerbTestActPrsPtc.html)
 

@@ -1,8 +1,6 @@
-
 Her kjem eit oversyn over testresultat
 
-
-!!! Utvikling 
+#  Utvikling 
 * 4.3. 2017: SUMMARY for the gt-norm fst(s): PASSES: 30428 / FAILS: 1104 / TOTAL: 31532
 * 11.3. 2017: SUMMARY for the gt-norm fst(s): PASSES: 10695 / FAILS: 211 / TOTAL: 10906
 
@@ -12,12 +10,10 @@ verb som berre hadde infinitiv, og verb som representerte bøyingspardigme
 som allereie hadde ein representativ test, vart fjerna frå testmaterialet.
 Filnamna viser til bøyingskoder i Føroysk orðabók.
 
-
-
-!!! Oversyn over feil, 11.3.
+#  Oversyn over feil, 11.3.
 
 Kvar fil __V-s2x1_gt-norm.yaml__ osb. viser til ei fil i katalogen
-{{fao/test/src/gt-norm-yamls/}} (for dei som har sjekka ut filene), evt.
+`fao/test/src/gt-norm-yamls/` (for dei som har sjekka ut filene), evt.
 [https://gtsvn.uit.no/langtech/trunk/langs/fao/test/src/gt-norm-yamls/]
 (på nett). Den siste fila skil seg frå dei andre ved at ho inneheld 
 verb frå alle moglege bøyingsklasser, ho er med andre ord ikkje
@@ -30,42 +26,40 @@ Feila er av to typar, genereringsfeil og analysefeil, genereringsfeila
 har grammatiske taggar til vesntre for pilsymbolet. Det kan vere fleire
 grunnar til at testen gjev FAIL:
 
-# Testfila kan innehalde feil paradigme. __Slike feil må rettast__
-# Ei ordform kan mangle (eller vere for mykje) i {{src/fst/affixes/verbs.lexc}}
-# Det kan vere ein feil i ein fonologisk regel i {{src/phonology/fao-phon.twolc}}
+1. Testfila kan innehalde feil paradigme. **Slike feil må rettast**
+1. Ei ordform kan mangle (eller vere for mykje) i `src/fst/affixes/verbs.lexc`
+1. Det kan vere ein feil i ein fonologisk regel i `src/phonology/fao-phon.twolc`
 
 Første steg i arbeidsprosessen er å sikre seg at det målet vi arbeider
 mot er det målet vi vil ha, dvs. at testfilene er korrekte.
 
-!!V-s2x1_gt-norm.yaml
+## V-s2x1_gt-norm.yaml
 
-!Genereringsfeil
+### Genereringsfeil
 
-{{{
+```
 [3/6][PASS] mæla+V+Ind+Prt+Sg => mældi
 [3/6][FAIL] mæla+V+Ind+Prt+Sg => Unexpected results: mælti
-}}}
+```
 
+## V-s2x30_gt-norm.yaml
 
-!!V-s2x30_gt-norm.yaml
-
-!Genereringsfeil
-{{{
+### Genereringsfeil
+```
 [6/6][PASS] skjóla+V+PrfPrc => skjólaður
 [6/6][FAIL] skjóla+V+PrfPrc => Missing results: skjóltur
 [6/6][FAIL] skjóla+V+PrfPrc => Unexpected results: skjóldur
-}}}
+```
 
-!Analysefeil
-{{{
+### Analysefeil
+```
 [10/11][FAIL] skjóltur => Missing results: skjóla+V+PrfPrc
-}}}
+```
 
+## V-s30x6_gt-norm.yaml
 
-!!V-s30x6_gt-norm.yaml
-
-!Genereringsfeil
-{{{
+### Genereringsfeil
+```
 [1/6][PASS] varða+V+Inf => varða
 [2/6][FAIL] varða+V+Ind+Prs+Sg => Missing results: varðar, varðir
 [2/6][FAIL] varða+V+Ind+Prs+Sg => Unexpected results: varða+V+Ind+Prs+Sg+?
@@ -81,10 +75,10 @@ mot er det målet vi vil ha, dvs. at testfilene er korrekte.
 [6/6][PASS] varða+V+PrfPrc => vardur
 [6/6][FAIL] varða+V+PrfPrc => Missing results: vardaður
 [6/6][FAIL] varða+V+PrfPrc => Unexpected results: varðaður
-}}}
+```
 
-!Analysefeil
-{{{
+### Analysefeil
+```
 [ 1/11][PASS] varða => varða+V+Inf
 [ 2/11][FAIL] varðar => Missing results: varða+V+Ind+Prs+Sg
 [ 3/11][FAIL] varðir => Missing results: varða+V+Ind+Prs+Sg
@@ -96,34 +90,34 @@ mot er det målet vi vil ha, dvs. at testfilene er korrekte.
 [ 9/11][PASS] vart => varða+V+Sup
 [10/11][FAIL] vardaður => Missing results: varða+V+PrfPrc
 [11/11][PASS] vardur => varða+V+PrfPrc
-}}}
+```
 
-!!V-s30x9_gt-norm.yaml
+## V-s30x9_gt-norm.yaml
 
 Sjå på denne: Det finst to verb kippa: s30/9 og s9.
 
-!Genereringsfeil
-{{{
+### Genereringsfeil
+```
 [6/6][FAIL] kippa+V+PrsPrf => Missing results: kiptur, kippaður
 [6/6][FAIL] kippa+V+PrsPrf => Unexpected results: kippa+V+PrsPrf+?
-}}}
+```
 
-!Analysefeil
-{{{
+### Analysefeil
+```
 [10/11][FAIL] kippaður => Missing results: kippa+V+PrsPrf
 [11/11][FAIL] kiptur => Missing results: kippa+V+PrsPrf
-}}}
+```
 
-!!V-s35_gt-norm.yaml
+## V-s35_gt-norm.yaml
 
-{{{
+```
 [3/5][PASS] bíta+V+Ind+Prt+3Sg => beit
 [3/5][FAIL] bíta+V+Ind+Prt+3Sg => Unexpected results: bít
-}}}
+```
 
-!!V-s36x2_gt-norm.yaml
+## V-s36x2_gt-norm.yaml
 
-{{{
+```
 [1/5][PASS] svíkja+V+Inf => svíkja
 [1/5][FAIL] svíkja+V+Inf => Unexpected results: svíkjja
 [2/5][PASS] svíkja+V+Ind+Prs+3Sg => svíkur
@@ -134,35 +128,35 @@ Sjå på denne: Det finst to verb kippa: s30/9 og s9.
 [4/5][FAIL] svíkja+V+Ind+Prt+Pl => Unexpected results: svikju, svíkjtu
 [5/5][PASS] svíkja+V+Sup => svikið
 [5/5][FAIL] svíkja+V+Sup => Unexpected results: svíkjt, svikjið
-}}}
+```
 
-!!V-s37_gt-norm.yaml
+## V-s37_gt-norm.yaml
 
-{{{
+```
 [3/4][PASS] bróta+V+Ind+Prt+3Sg => breyt
 [3/4][FAIL] bróta+V+Ind+Prt+3Sg => Unexpected results: brót
-}}}
+```
 
-!!V-s40_gt-norm.yaml
+## V-s40_gt-norm.yaml
 
-{{{
+```
 [3/5][PASS] fúka+V+Ind+Prt+3Sg => feyk
 [3/5][FAIL] fúka+V+Ind+Prt+3Sg => Unexpected results: fúk
-}}}
+```
 
-!!V-s41_gt-norm.yaml
+## V-s41_gt-norm.yaml
 
-{{{
+```
 [3/5][PASS] flúga+V+Ind+Prt+3Sg => fleyg
 [3/5][FAIL] flúga+V+Ind+Prt+3Sg => Unexpected results: flúg
 
 [3/5][PASS] flúgva+V+Ind+Prt+3Sg => fleyg
 [3/5][FAIL] flúgva+V+Ind+Prt+3Sg => Unexpected results: flúg
-}}}
+```
 
-!!V-s47x19_gt-norm.yaml
+## V-s47x19_gt-norm.yaml
 
-{{{
+```
 [1/4][PASS] svimja+V+Inf => svimja
 [1/4][FAIL] svimja+V+Inf => Unexpected results: svimjja, svimjimja
 [2/4][PASS] svimja+V+Ind+Prs+3Sg => svimur
@@ -171,63 +165,63 @@ Sjå på denne: Det finst to verb kippa: s30/9 og s9.
 [3/4][FAIL] svimja+V+Ind+Prt+3Sg => Unexpected results: svimjam
 [4/4][PASS] svimja+V+Ind+Prt+Pl => svumu
 [4/4][FAIL] svimja+V+Ind+Prt+Pl => Unexpected results: svimjdu, svimjumu
-}}}
+```
 
-!!V-s52x30_gt-norm.yaml
+## V-s52x30_gt-norm.yaml
 
-{{{
+```
 [2/5][PASS] veva+V+Ind+Prs+3Sg => vevur
 [2/5][FAIL] veva+V+Ind+Prs+3Sg => Unexpected results: vevar
 [4/5][PASS] veva+V+Ind+Prt+Pl => vóvu
 [4/5][FAIL] veva+V+Ind+Prt+Pl => Unexpected results: vevaðu
 [5/5][PASS] veva+V+Sup => vovið
 [5/5][FAIL] veva+V+Sup => Unexpected results: vevað
-}}}
+```
 
-!!V-s58_gt-norm.yaml
+## V-s58_gt-norm.yaml
 
-{{{
+```
 [2/5][PASS] mala+V+Ind+Prs+3Sg => melur
 [2/5][FAIL] mala+V+Ind+Prs+3Sg => Unexpected results: malir
 [4/5][PASS] mala+V+Ind+Prt+Pl => mólu
 [4/5][FAIL] mala+V+Ind+Prt+Pl => Unexpected results: maldu
 [5/5][PASS] mala+V+Sup => malið
 [5/5][FAIL] mala+V+Sup => Unexpected results: malt
-}}}
+```
 
-!!V-s66_gt-norm.yaml
+## V-s66_gt-norm.yaml
 
-!Genereringsfeil
-{{{
+### Genereringsfeil
+```
 [2/4][PASS] biðja+V+Ind+Prs+3Sg => biður
 [2/4][FAIL] biðja+V+Ind+Prs+3Sg => Missing results: bað
-}}}
+```
 
-!Analysefeil
-{{{
+### Analysefeil
+```
 [3/5][FAIL] bað => Missing results: biðja+V+Ind+Prs+3Sg
-}}}
+```
 
-!!V-s68_gt-norm.yaml
+## V-s68_gt-norm.yaml
 
-!Genereringsfeil
-{{{
+### Genereringsfeil
+```
 [2/5][PASS] hvørva+V+Ind+Prs+3Sg => hvørvir
 [2/5][FAIL] hvørva+V+Ind+Prs+3Sg => Unexpected results: hvørvur
 [3/5][PASS] hvørva+V+Ind+Prt+Sg => hvørvdi
 [3/5][FAIL] hvørva+V+Ind+Prt+Sg => Missing results: hvørvdu
 [4/5][PASS] hvørva+V+Sup => hvørvt
 [4/5][FAIL] hvørva+V+Sup => Unexpected results: horvið, hvorvið
-}}}
+```
 
-!Analysefeil
-{{{
+### Analysefeil
+```
 [4/6][FAIL] hvørvdu => Missing results: hvørva+V+Ind+Prt+Sg
-}}}
+```
 
-!!V-s6x30_gt-norm.yaml; popd
+## V-s6x30_gt-norm.yaml; popd
 
-{{{
+```
 [3/6][PASS] vanyrða+V+Ind+Prt+Sg => vanyrdi
 [3/6][FAIL] vanyrða+V+Ind+Prt+Sg => Unexpected results: vanyrðaði
 [4/6][PASS] vanyrða+V+Ind+Prt+Pl => vanyrdu
@@ -236,25 +230,25 @@ Sjå på denne: Det finst to verb kippa: s30/9 og s9.
 [5/6][FAIL] vanyrða+V+Sup => Unexpected results: vanyrðað
 [6/6][PASS] vanyrða+V+PrfPrc => vanyrdur
 [6/6][FAIL] vanyrða+V+PrfPrc => Unexpected results: vanyrðaður
-}}}
+```
 
-!!V-s70_gt-norm.yaml
+## V-s70_gt-norm.yaml
 
-{{{
+```
 [4/6][PASS] siga+V+Ind+Prt+Pl => søgdu
 [4/6][FAIL] siga+V+Ind+Prt+Pl => Unexpected results: søgðu
-}}}
+```
 
-!!V-s70_gt-norm.yaml; popd
+## V-s70_gt-norm.yaml; popd
 
-{{{
+```
 [4/6][PASS] siga+V+Ind+Prt+Pl => søgdu
 [4/6][FAIL] siga+V+Ind+Prt+Pl => Unexpected results: søgðu
-}}}
+```
 
-!!V-s73_gt-norm.yaml; popd
+## V-s73_gt-norm.yaml; popd
 
-{{{
+```
 [1/6][PASS] læa+V+Inf => læa
 [1/6][FAIL] læa+V+Inf => Unexpected results: lælæa
 [2/6][PASS] læa+V+Ind+Prs+3Sg => læar
@@ -267,20 +261,20 @@ Sjå på denne: Det finst to verb kippa: s30/9 og s9.
 [5/6][FAIL] læa+V+Sup => Unexpected results: lælæðað, lælæiðað
 [6/6][PASS] læa+V+PrfPrc => læaður
 [6/6][FAIL] læa+V+PrfPrc => Unexpected results: lælæðaður, lælæiðaður
-}}}
+```
 
-!!V-s7_gt-norm.yaml
+## V-s7_gt-norm.yaml
 
-{{{
+```
 [2/3][PASS] rista+V+Ind+Prs+3Sg => ristir
 [2/3][FAIL] rista+V+Ind+Prs+3Sg => Unexpected results: ristar
 [3/3][PASS] rista+V+Sup => rist
 [3/3][FAIL] rista+V+Sup => Unexpected results: ristað
-}}}
+```
 
-!!V-s8x30_gt-norm.yaml
+## V-s8x30_gt-norm.yaml
 
-{{{
+```
 [1/4][PASS] glimma+V+Ind+Prt+Sg => glimdi
 [1/4][FAIL] glimma+V+Ind+Prt+Sg => Unexpected results: glimmaði
 [2/4][PASS] glimma+V+Ind+Prt+Pl => glimdu
@@ -289,34 +283,34 @@ Sjå på denne: Det finst to verb kippa: s30/9 og s9.
 [3/4][FAIL] glimma+V+Sup => Unexpected results: glimmað
 [4/4][PASS] glimma+V+PrfPrc => glimdur
 [4/4][FAIL] glimma+V+PrfPrc => Unexpected results: glimmaður
-}}}
+```
 
-!!V-s9_gt-norm.yaml
+## V-s9_gt-norm.yaml
 
-{{{
+```
 [6/6][FAIL] klippa+v1+V+PrfPrc => Missing results: kliptur
 [6/6][FAIL] klippa+v1+V+PrfPrc => Unexpected results: klipdur
-}}}
+```
 
-!!V-s9x30_gt-norm.yaml
+## V-s9x30_gt-norm.yaml
 
-!Genereringsfeil
-{{{
+### Genereringsfeil
+```
 [6/6][PASS] stilla+V+PrfPrc => stillaður
 [6/6][FAIL] stilla+V+PrfPrc => Missing results: stiltur
 [6/6][FAIL] stilla+V+PrfPrc => Unexpected results: stildur
-}}}
+```
 
-!Analysefeil
-{{{
+### Analysefeil
+```
 [10/11][FAIL] stiltur => Missing results: stilla+V+PrfPrc
-}}}
+```
 
-!!V-verbs_gt-norm.yaml
+## V-verbs_gt-norm.yaml
 
-!Genereringsfeil:
+### Genereringsfeil:
 
-{{{
+```
 [ 219/4484][PASS] bjóða+V+Ind+Prt+3Sg => beyð
 [ 219/4484][FAIL] bjóða+V+Ind+Prt+3Sg => Missing results: bjóðaði
 [ 219/4484][FAIL] bjóða+V+Ind+Prt+3Sg => Unexpected results: búði
@@ -562,7 +556,6 @@ Sjå på denne: Det finst to verb kippa: s30/9 og s9.
 [3142/4484][PASS] skreppa+V+PrfPrc => skreppaður
 [3142/4484][FAIL] skreppa+V+PrfPrc => Unexpected results: skrepdur
 
-
 [3317/4484][PASS] smíla+V+Ind+Prt+Sg => smílaði
 [3317/4484][FAIL] smíla+V+Ind+Prt+Sg => Unexpected results: smílti
 
@@ -703,10 +696,10 @@ Sjå på denne: Det finst to verb kippa: s30/9 og s9.
 
 [4407/4484][PASS] øna+V+PrfPrc => ønaður
 [4407/4484][FAIL] øna+V+PrfPrc => Unexpected results: øndur
-}}}
+```
 
-!Analysefeil:
-{{{
+### Analysefeil:
+```
 [ 245/4824][FAIL] bjóðaði => Missing results: bjóða+V+Ind+Prt+3Sg
 
 [ 248/4824][FAIL] boðin => Missing results: bjóða+V+PrfPrc
@@ -729,5 +722,4 @@ Sjå på denne: Det finst to verb kippa: s30/9 og s9.
 
 [4491/4824][PASS] veldi => vella+V+Ind+Prt+Sg
 [4491/4824][FAIL] veldi => Missing results: velta+V+Ind+Prt+Sg
-}}}
-
+```

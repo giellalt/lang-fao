@@ -1,11 +1,8 @@
-              !!!Faroese morphological analyser
+# Faroese morphological analyser
 
- !!!Definitions for Multichar_Symbols
+# Definitions for Multichar_Symbols
 
-
-
-
- !!Tags for POS	
+## Tags for POS	
  * +N +V +A +Adv +Prop +Num                 : Open POS's	
  * +CC +CS +Interj +Pr +Pron +IM		     : Closed POS's	
  * +Pers +Det +Refl +Recipr +Poss +Dem		 : Pron types	
@@ -23,8 +20,7 @@
  * +Abbr +ACR							     : Abbreviations, acronyms ,
  * +CLB +PUNCT +LEFT +RIGHT			     : Punctuation, parentheses
  * +Symbol  : independent symbols in the text stream, like £, €, ©
- * __+CLBfinal__  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
-
+ * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 
  * +Sg3 					     : This is inherited from common files, should be changed to +3Sg.
 
@@ -46,13 +42,11 @@
  * +Pos     sjekk desse XXX
  * +Rom     sjekk desse XXX
 
-
-
  * +Der/heit   Derivation with -heit
 
  * +Ind +Pass +Interr +Ord  
 
- !!Semantic tags
+## Semantic tags
  * +Sem/Sur   
  * +Sem/Mal   
  * +Sem/Fem   
@@ -62,7 +56,6 @@
  * +Sem/Fem   
 
  * +Sem/Year         - year (i.e. 1000 - 2999), used only for numerals 
-
 
  * +Sem/Amount		       
  * +Sem/Build		       
@@ -101,16 +94,13 @@
  * +Sem/Tool-it	       
  * +Sem/Txt		       
 
-
-
-
- !!Non-changing letters
+## Non-changing letters
  *  a2  This is for a special a Umlaut case
  *  g2 i2 j2 t2 v2   
 
  * +v1 +v2     : different paradigms   ,
 
- !!Triggers for Morphophonology
+## Triggers for Morphophonology
  * %^UUML %^IUML %^eIUML %^ØUML				 : Umlaut types ,
  * %^W %^JI 					                  : Cns changes ,
  * %^EPH %^OEA 					 : Epenthesis,  ,
@@ -123,10 +113,8 @@
 
  * %>						 : Suffix boundary ,
 
- * __+v1__ - Paradigm identifier (e.g. gera+v1 = ger)
- * __+v2__ - Paradigm identifier (e.g. gera+v2 = gerar)
-
-
+ * **+v1** - Paradigm identifier (e.g. gera+v1 = ger)
+ * **+v2** - Paradigm identifier (e.g. gera+v2 = gerar)
 
 Language tags
 
@@ -140,35 +128,33 @@ Language tags
  * +OLang/SWE   
  * +OLang/UND   
 
-
- !!Non-ascii letters, perhaps needed as multichar symbols
+## Non-ascii letters, perhaps needed as multichar symbols
  * æ ø å 				
  * á é í ó ú ý Á É Í Ó Ý
  * ä ö ü Ä Ö Ö			
 
-!!Compounding tags
+## Compounding tags
 
 The tags are of the following form:
-* __+CmpNP/xxx__ - Normative (N), Position (P), ie the tag describes what
+* **+CmpNP/xxx** - Normative (N), Position (P), ie the tag describes what
                    position the tagged word can be in in a compound
-* __+CmpN/xxx__  - Normative (N) __form__ ie the tag describes what
+* **+CmpN/xxx**  - Normative (N) **form** ie the tag describes what
                    form the tagged word should use when making compounds
-* __+Cmp/xxx__   - Descriptive compounding tags, ie tags that ''describes''
+* **+Cmp/xxx**   - Descriptive compounding tags, ie tags that *describes*
                    what form a word actually is using in a compound
 
 This entry / word should be in the following position(s):
 
- * __+CmpNP/All__ - ... in all positions, __default__, this tag does not have to be written
- * __+CmpNP/First__ - ... only be first part in a compound or alone
- * __+CmpNP/Pref__ - ... only __first__ part in a compound, NEVER alone
- * __+CmpNP/Last__ - ... only be last part in a compound or alone
- * __+CmpNP/Suff__ - ... only __last__ part in a compound, NEVER alone
- * __+CmpNP/None__ - ... does not take part in compounds
- * __+CmpNP/Only__ - ... only be part of a compound, i.e. can never
+ * **+CmpNP/All** - ... in all positions, **default**, this tag does not have to be written
+ * **+CmpNP/First** - ... only be first part in a compound or alone
+ * **+CmpNP/Pref** - ... only **first** part in a compound, NEVER alone
+ * **+CmpNP/Last** - ... only be last part in a compound or alone
+ * **+CmpNP/Suff** - ... only **last** part in a compound, NEVER alone
+ * **+CmpNP/None** - ... does not take part in compounds
+ * **+CmpNP/Only** - ... only be part of a compound, i.e. can never
                     be used alone, but can appear in any position
 
-
-!!Usage tags
+## Usage tags
 
  * +Use/Disamb = Use only in disambiguator/tokeniser analyser
  * +Use/Circ = for compound restrictions
@@ -182,95 +168,86 @@ This entry / word should be in the following position(s):
  * +Err/Guess								 : Tag for Name Guesser component
  * +Err/Orth								 : Marking forms that are orthographical errors
 
-
-!!Symbols that need to be escaped on the lower side (towards twolc):
+## Symbols that need to be escaped on the lower side (towards twolc):
 Todo: Check whether these can be removed. They are probably obsolete.
 
  *  »7      : Literal » 
  *  «7      : Literal «
-{{{
+```
   %[%>%]  - Literal >
   %[%<%]  - Literal <
-}}}
+```
 
-
-!!Flag diacritics
+## Flag diacritics
 
 We have manually optimised the structure of our lexicon using following
 flag diacritics to restrict morhpological combinatorics - only allow compounds
 with verbs if the verb is further derived into a noun again:
 
- | @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
- | @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
- | @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
+|  @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
+|  @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
+|  @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
 
-!Flags for speller suggestions
+### Flags for speller suggestions
 
- | @D.ErrOrth.ON@ 
- | @C.ErrOrth@	 
- | @P.ErrOrth.ON@ 
+|  @D.ErrOrth.ON@ 
+|  @C.ErrOrth@	 
+|  @P.ErrOrth.ON@ 
 
-
-!Flag for case harmony in compounds
+### Flag for case harmony in compounds
 
 Set flag for compounds
- | @P.Case.MscNom@ | fyrstiflokkur
- | @P.Case.MscObl@ | fyrstaflokk
- | @P.Case.FemNom@ | lítlasystir
- | @P.Case.FemObl@ | lítluusystur
- | @P.Case.Neu@ | breiðaskarð
- | @P.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+|  @P.Case.MscNom@ | fyrstiflokkur
+|  @P.Case.MscObl@ | fyrstaflokk
+|  @P.Case.FemNom@ | lítlasystir
+|  @P.Case.FemObl@ | lítluusystur
+|  @P.Case.Neu@ | breiðaskarð
+|  @P.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 Control flag values for compounds
- | @R.Case.MscNom@ | fyrstiflokkur
- | @R.Case.MscObl@ | fyrstaflokk
- | @R.Case.FemNom@ | lítlasystir
- | @R.Case.FemObl@ | lítluusystur
- | @R.Case.Neu@ | breiðaskarð
- | @R.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+|  @R.Case.MscNom@ | fyrstiflokkur
+|  @R.Case.MscObl@ | fyrstaflokk
+|  @R.Case.FemNom@ | lítlasystir
+|  @R.Case.FemObl@ | lítluusystur
+|  @R.Case.Neu@ | breiðaskarð
+|  @R.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 Control flag values for compounds
- | @U.Case.MscNom@ | fyrstiflokkur
- | @U.Case.MscObl@ | fyrstaflokk
- | @U.Case.FemNom@ | lítlasystir
- | @U.Case.FemObl@ | lítluusystur
- | @U.Case.Neu@ | breiðaskarð
+|  @U.Case.MscNom@ | fyrstiflokkur
+|  @U.Case.MscObl@ | fyrstaflokk
+|  @U.Case.FemNom@ | lítlasystir
+|  @U.Case.FemObl@ | lítluusystur
+|  @U.Case.Neu@ | breiðaskarð
 
+|  @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
+|  @P.Pmatch.Backtrack@ | Also for hfst-pmatch 
 
- | @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
- | @P.Pmatch.Backtrack@ | Also for hfst-pmatch 
-
-
-!Flags for compound restriction
+### Flags for compound restriction
 
 For languages that allow compounding, the following flag diacritics are needed
 to control position-based compounding restrictions for nominals. Their use is
 handled automatically if combined with +CmpN/xxx tags. If not used, they will
 do no harm.
 
- | @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
- | @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
- | @P.CmpPref.FALSE@ | Block these words from making further compounds
- | @D.CmpLast.TRUE@ | Block such words from entering R
- | @D.CmpNone.TRUE@ | Combines with the next tag to prohibit compounding
- | @U.CmpNone.FALSE@ | Combines with the prev tag to prohibit compounding
- | @P.CmpOnly.TRUE@ | Sets a flag to indicate that the word has passed R
- | @D.CmpOnly.FALSE@ | Disallow words coming directly from root.
+|  @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
+|  @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
+|  @P.CmpPref.FALSE@ | Block these words from making further compounds
+|  @D.CmpLast.TRUE@ | Block such words from entering R
+|  @D.CmpNone.TRUE@ | Combines with the next tag to prohibit compounding
+|  @U.CmpNone.FALSE@ | Combines with the prev tag to prohibit compounding
+|  @P.CmpOnly.TRUE@ | Sets a flag to indicate that the word has passed R
+|  @D.CmpOnly.FALSE@ | Disallow words coming directly from root.
 
 Use the following flag diacritics to control downcasing of derived proper
 nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
 these flags. There exists a ready-made regex that will do the actual down-casing
 given the proper use of these flags.
- | @U.Cap.Obl@ | Allowing downcasing of derived names: deatnulasj.
- | @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
+|  @U.Cap.Obl@ | Allowing downcasing of derived names: deatnulasj.
+|  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
 
-
-
-
-!!!Lexicon Root
-This is the beginning of everything. The __Root__ lexicon is reserved in the
+# Lexicon Root
+This is the beginning of everything. The **Root** lexicon is reserved in the
 LexC language, and must be the first lexicon defined.
-
 
  * Nouns ;          
  * Shortnouns ;      1- and 2-letter nouns excluded from compounding
@@ -294,17 +271,11 @@ Lexicon Acronyms is split in two:
  * Acronym-fao ;  for fao acronyms
  * Acronym-smi ;  for language independent acronums
 
-
-!!!Lexicon ENDLEX
+# Lexicon ENDLEX
 And this is the ENDLEX of everything:
-{{{
+```
  @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ ENDLEX2 ;
-}}}
-The {{@D.CmpOnly.FALSE@}} flag diacritic is ued to disallow words tagged
+```
+The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
 with +CmpNP/Only to end here.
-The {{@D.NeedNoun.ON@}} flag diacritic is used to block illegal compounds.
-
-
-
-
-
+The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.

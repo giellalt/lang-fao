@@ -242,6 +242,8 @@ with verbs if the verb is further derived into a noun again:
 ### Flag for case harmony in compounds
 
 Set flag for compounds
+|                        Flag | Example word
+|                        ---- | ----
  |  @P.Case.MscNom@ | fyrstiflokkur
  |  @P.Case.MscObl@ | fyrstaflokk
  |  @P.Case.FemNom@ | lítlasystir
@@ -250,6 +252,8 @@ Set flag for compounds
  |  @P.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 Control flag values for compounds
+|                        Flag | Example word
+|                        ---- | ----
  |  @R.Case.MscNom@ | fyrstiflokkur
  |  @R.Case.MscObl@ | fyrstaflokk
  |  @R.Case.FemNom@ | lítlasystir
@@ -258,13 +262,18 @@ Control flag values for compounds
  |  @R.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 Control flag values for compounds
+|                        Flag | Example word
+|                        ---- | ----
  |  @U.Case.MscNom@ | fyrstiflokkur
  |  @U.Case.MscObl@ | fyrstaflokk
  |  @U.Case.FemNom@ | lítlasystir
  |  @U.Case.FemObl@ | lítluusystur
  |  @U.Case.Neu@ | breiðaskarð
+ |  @U.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
-
+Flag diacritic look-alikes for grammar checker & tokenisation purposes
+|                        Flag | Explanation
+|                        ---- | ----
  |  @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
  |  @P.Pmatch.Backtrack@ | Also for hfst-pmatch 
 
@@ -276,6 +285,8 @@ to control position-based compounding restrictions for nominals. Their use is
 handled automatically if combined with +CmpN/xxx tags. If not used, they will
 do no harm.
 
+|                        Flag | Explanation
+|                        ---- | ----
  |  @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
  |  @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
  |  @P.CmpPref.FALSE@ | Block these words from making further compounds

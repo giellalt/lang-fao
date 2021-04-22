@@ -25,7 +25,64 @@ For a presentation, see
 
 # Project documentation
 
-* Add links to project specific documentation here as needed. Keep the documentation in the `docs/` directory.
+Generell informasjon finst på [hovudnettsida for GiellaLT-infrastrukturen](/)
+
+Analyseprogrammet for færøysk
+=============================
+
+Dokumentasjon av kjeldefilene
+-----------------------------
+
+Sjå lengst ned på sida.
+
+Source files:
+- [stems](https://github.com/giellalt/lang-fao/tree/develop/src/fst/stems/)
+- [affixes](https://github.com/giellalt/lang-fao/tree/develop/src/fst/affixes)
+- [twolc](https://github.com/giellalt/lang-fao/tree/develop/src/fst/phonology.twolc)
+- [yaml](https://github.com/giellalt/lang-fao/tree/develop/test/src/)
+
+Den grammatiske transdusaren
+----------------------------
+
+### Utviklingsarbeid
+
+-   [Arbeidsplan for færøysk stavekontroll](Stavekontroll.md)
+
+### Testing og bruk av analysatoren
+
+-   [Alle genererte paradigmer](AlleGenererteParadigmer.md)
+-   [Víllur i rættstavaranum](vill.html)
+-   [Grammatisk analyse av tekst (lim inn)](http://giellatekno.uit.no/cgi/d-fao.nob.html)
+-   [Stavekontroll (online og nedlastbar)](http://divvun.org/proofing/online-speller.html)
+-   Generering av morfologiske paradigme:
+    [Mask.](word_form_nouns_generator-gt-norm_table_k.html),
+    [Fem.](word_form_nouns_generator-gt-norm_table_kv.html),
+    [Neu.](word_form_nouns_generator-gt-norm_table_h.html),
+    [Adj.](word_form_nouns_generator-gt-norm_table_l.html),
+    [Verb](word_form_nouns_generator-gt-norm_table_s.html)
+-   [Testresult frå dei morfologiske testfilene](YamlResults.md)
+-   [Making new tests: Adding morphological test data](/infra/infraremake/AddingMorphologicalTestData.html)
+-   [Technical documentation for test scripts](/infra/infraremake/TestScriptsInTheNewInfra.html)
+
+Testing av stavekontrollen
+--------------------------
+
+-   [Lista over skrivefeil + korrekte ord i testen](https://github.com/giellalt/lang-fao/tree/develop/test/data/typos.txt)
+-   Testresultat for:
+    [ospell](https://github.com/giellalt/lang-fao/tree/develop/devtools/speller_result_typos.to.html)
+    og
+    [voikkospell](https://github.com/giellalt/lang-fao/tree/develop/devtools/speller_result_typos.vk.html)
+
+Møtereferat
+===========
+
+- [200818](200818.md)
+
+Diverse
+=======
+
+-   [Hugseliste](TekniskHugseliste.md)
+-   [Gammal testdagbok](fao-testdiary.md)
 
 # In-source documentation
 

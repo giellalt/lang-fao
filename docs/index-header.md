@@ -5,7 +5,23 @@
 [![Issues](https://img.shields.io/github/issues/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/issues)
 [![Build status](https://github.com/giellalt/lang-fao/workflows/Speller%20CI+CD/badge.svg)](https://github.com/giellalt/lang-fao/actions)
 
-This page documents the work on the **Faroese language model**. 
+This page documents the work on the **Faroese language model**. It is based upon, and contains the
+lemmas from Føroysk orðabók. The analyser is still a bit rough-edged, but it is
+good enough to be useful.
+
+The parser is a finite state transducer, capable of analysing and generating any
+Faroese wordform. The parser is still under development. In november 2006, it
+recognised 85 % of the wordforms in a corpus containing appr. 2.35 million
+words. The grammatical part of the parser is written at the University of
+Tromsø, and the lexicon is the set of lexemes found in the two-volume
+*Føroysk orðabók* (Føroya Fróðskaparfelag 1998).
+
+The project also contains a morphological disambiguator, built upon constraint
+grammar technology. The Faroese disambiguator is still in an embryonic state
+(as you can verify by testing it out).
+
+For a presentation, see
+[Trond Trosterud: A Constraint Grammar for Faroese](http://dspace.ut.ee/bitstream/handle/10062/14289/proceedings.pdf?sequence=1").
 
 # Project documentation
 

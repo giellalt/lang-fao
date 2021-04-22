@@ -11,14 +11,14 @@
 #
 # dir/filename.lexc => filename-dir.md
 
-MD_PAGES=root-morphology.md  \
+MD_PAGES=root-morphology.md       \
 		  phonology-morphology.md \
-		  nouns-affixes.md  \
-		  nouns-stems.md \
-		  verbs-affixes.md \
-		  verbs-stems.md              \
-		  adjectives-affixes.md \
-		  acronyms-affixes.md \
+		  nouns-affixes.md        \
+		  nouns-stems.md          \
+		  verbs-affixes.md        \
+		  verbs-stems.md          \
+		  adjectives-affixes.md   \
+		  acronyms-affixes.md     \
 		  symbols-affixes.md
 # clitics-morphology.md       \
 # compounding-morphology.md   \
@@ -38,4 +38,5 @@ MD_PAGES=root-morphology.md  \
 # subjunctions-stems.md       \
 # adjectives-affixes.md       \
 # propernouns-affixes.md
+
 include $(top_srcdir)/../giella-core/am-shared/docs-dir-include.am

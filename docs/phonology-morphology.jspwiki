@@ -1,6 +1,6 @@
-!!!The Faroese morphophonological file 
+# The Faroese morphophonological file 
 
-!!Alphabet
+## Alphabet
 Here we declare all symbols.
 
  *  a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å    
@@ -8,7 +8,6 @@ Here we declare all symbols.
 
  *  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å    
  *  Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð            
-
 
  *  a2:a    for da2n -> dønum
  *  g2:g   for invariant g
@@ -29,9 +28,8 @@ Here we declare all symbols.
 
  *  « » 	 : hmm, in use?
 
-!!Sets
+## Sets
 Here we define some convenient sets.
-
 
  *  Vow = a e i o u y æ ø å                                 
          á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;     
@@ -47,391 +45,323 @@ Here we define some convenient sets.
               %^GVDEL %^VDEL  %^JDEL %^RDEL ;                       
 Forgot why these are special...
 
-
-!!!Rules
+# Rules
 These are the rules. After each rule (or rather: after many of the rules) there are test cases that are there to test whether the rules work.
 
+## Verschärfung
 
-
-!!Verschärfung
-
-__Deleting g__ 
+**Deleting g** 
 * Deleting the gv Verschärfung 1
 * Deleting gg in ggj Genitive I
 * Deleting gg in ggj Genitive II
 
-__Deleting v in gv sequences__ 
+**Deleting v in gv sequences** 
 
 Verschärfung tests
 
-* __bógv^IUML>i __
-* __bøg000i __
+* **bógv^IUML>i**
+* **bøg000i**
 
-* __flúgv^IUML^VDEL __
-* __flýg000 __
+* **flúgv^IUML^VDEL**
+* **flýg000**
 
-* __flúgv^VSH^VDEL>u __
-* __flug0000u __
+* **flúgv^VSH^VDEL>u**
+* **flug0000u**
 
-* __búgv^GVDEL>s __
-* __bú0000s __
+* **búgv^GVDEL>s**
+* **bú0000s**
 
-* __bógv^VDEL>s __
-* __bóg000s __
+* **bógv^VDEL>s**
+* **bóg000s**
 
-* __skógv^GVDEL>m __
-* __skó0000m __
+* **skógv^GVDEL>m**
+* **skó0000m**
 
-* __skýggj^GGDEL>s __
-* __ský00000s __
+* **skýggj^GGDEL>s**
+* **ský00000s**
 
-* __kríggj^GDEL>s __
-* __kríg0000s __
+* **kríggj^GDEL>s**
+* **kríg0000s**
 
-* __sjógv^GDEL>ar __
-* __sjó0v00ar __
+* **sjógv^GDEL>ar**
+* **sjó0v00ar**
 
-__Deleting r in Genitive of ur stems__ 
+**Deleting r in Genitive of ur stems** 
 
-* __brúður^EPH^RDEL>ar __
-* __brúð00000ar __
+* **brúður^EPH^RDEL>ar**
+* **brúð00000ar**
 
+**Deleting m in um%>num** 
 
-__Deleting m in um%>num __ 
+* **ris>um>num**
+* **ris00u000num**
 
-* __ris>um>num __
-* __ris00u000num __
+* **skógv>m>num**
+* **skó0000000num**
 
-* __skógv>m>num __
-* __skó0000000num __
-
-
-
-__Deleting Double Consonant in Front of Consonant__ 
+**Deleting Double Consonant in Front of Consonant** 
 
 The preceeding rule is fishy - the test cases below don't fit the context
 requirements, and the >s# in the right context seems to indicate passive.
 The rule conflicts with the "Cns Deletion in front of Pass" rule at the
 end of the file - but only when using the Xerox tools! XXX - please have a look!
 
-* __hjall>s __
-* __hjal00s __
+* **hjall>s**
+* **hjal00s**
 
-* __rygg>s __
-* __ryg00s __
+* **rygg>s**
+* **ryg00s**
 
-* __hjall>ar __
-* __hjall0ar __
+* **hjall>ar**
+* **hjall0ar**
 
+* **all>t**
+* **al00t**
 
+## Verbal Sandhi rules
 
-* __all>t __
-* __al00t __
+**Geminate Assimilation in Past Tense d** 
 
+**Geminate Assimilation in Past Tense t** 
 
+* **send>di**
+* **sen00di**
 
+* **hirð>di**
+* **hir00di**
 
+* **sett>ti**
+* **set00ti**
 
-!!Verbal Sandhi rules
+**ð Assimilation in Front of Dental Past Suffix -d(i)** 
 
-__Geminate Assimilation in Past Tense d__ 
+* **leið>di**
+* **leid0di**
 
-__Geminate Assimilation in Past Tense t__ 
+**Deleting Double Consonant in Front of Epenthesis mark** 
 
-* __send>di __
-* __sen00di __
+* **summar^EPH>i**
+* **sum00r00i**
 
-* __hirð>di __
-* __hir00di __
+* **himmal^EPH^UUML>um**
+* **him00l000um**
 
+**Deleting stem-final s in s genitive** 
 
-* __sett>ti __
-* __set00ti __
+* **primus>s**
+* **primus00**
 
+* **primus>s**
+* **primus00**
 
-__ð Assimilation in Front of Dental Past Suffix -d(i)__ 
+* **grís>s**
+* **grís00**
 
-* __leið>di __
-* __leid0di __
+**Double ð Deletion** 
 
-__Deleting Double Consonant in Front of Epenthesis mark__ 
+**ð Assimilation in Front of Supine Suffix -t** 
 
-* __summar^EPH>i __
-* __sum00r00i __
+* **leið>t**
+* **leit0t**
 
-* __himmal^EPH^UUML>um __
-* __him00l000um __
+**Adjusting Dental Past Suffix -d(i)** 
 
+* **keyp>di**
+* **keyp0ti**
 
+* **merk>di**
+* **merk0ti**
 
-__Deleting stem-final s in s genitive__ 
+## Adjectival sandhi rules
 
-* __primus>s __
-* __primus00 __
+**Adjective neuter after nlr 1** 
 
-* __primus>s __
-* __primus00 __
+**Adjective neuter after nlr 2** 
 
-* __grís>s __
-* __grís00 __
+* **mikil^EPH>t**
+* **miki000ð**
 
+* **gamal^EPH>t**
+* **gamal00t**
 
-__Double ð Deletion__ 
+**t Deletion in Neuter** 
 
+**ng to kk Part 1** 
 
-__ð Assimilation in Front of Supine Suffix -t__ 
-
-* __leið>t __
-* __leit0t __
-
-__Adjusting Dental Past Suffix -d(i)__ 
-
-* __keyp>di __
-* __keyp0ti __
-
-* __merk>di __
-* __merk0ti __
-
-!!Adjectival sandhi rules
-
-__Adjective neuter after nlr 1__ 
-
-__Adjective neuter after nlr 2__ 
-
-* __mikil^EPH>t __
-* __miki000ð __
-
-* __gamal^EPH>t __
-* __gamal00t __
-
-__t Deletion in Neuter__ 
-
-
-
-
-__ng to kk Part 1__ 
-
-__ng to kk Part 2__ 
-
+**ng to kk Part 2** 
 
 j rules
 
-__Deleting j__ 
+**Deleting j** 
 
-* __kríggj^GDEL>num __
-* __kríg0000num __
+* **kríggj^GDEL>num**
+* **kríg0000num**
 
-* __beiggj^JI>i __
-* __beigg000i __
+* **beiggj^JI>i**
+* **beigg000i**
 
-* __verkj^JDEL>ur __
-* __verk000ur __
+* **verkj^JDEL>ur**
+* **verk000ur**
 
-* __heyggj>i __
-* __heygg00i __
+* **heyggj>i**
+* **heygg00i**
 
+**Realising j in front of vowels** 
 
-__Realising j in front of vowels__ 
-
-* __hylj2>ar __
-* __hylj0ar __
-
-
-
+* **hylj2>ar**
+* **hylj0ar**
 
 Vowel rules  
 
+**Realising i2 as i** 
 
-__Realising i2 as i__ 
+###  Epenthetic vowel rules
 
+**Epenthetic deletion** 
 
-! Epenthetic vowel rules
+* **økur^EPH^UUML>um**
+* **øk0r000um**
 
-__Epenthetic deletion__ 
+* **lykil^EPH>an**
+* **lyk0l00an**
 
+* **aftan^EPH>**
+* **aftan00**
 
-* __økur^EPH^UUML>um __
-* __øk0r000um __
+* **vakin^EPH>ir**
+* **vak0n00ir**
 
-* __lykil^EPH>an __
-* __lyk0l00an __
+**U-umlaut of Epenthetic vowel** 
 
-* __aftan^EPH> __
-* __aftan00 __
+* **gamal^EPH^UUML**
+* **gomul00**
 
-* __vakin^EPH>ir __
-* __vak0n00ir __
+* **gamal^EPH^UUML>u**
+* **goml000u**
 
+### Umlaut rules
 
+**U-umlaut in Front of Nasal** 
 
-__U-umlaut of Epenthetic vowel__ 
+* **tank^UUML**
+* **tonk0**
 
-* __gamal^EPH^UUML __
-* __gomul00 __
+* **band^UUML**
+* **bond00**
 
-* __gamal^EPH^UUML>u __
-* __goml000u __
+* **hamar^EPH^UUML>um**
+* **hom0r000um**
 
+**General U-umlaut** 
 
-!Umlaut rules
+* **dag^UUML>um**
+* **døg00um**
 
-__U-umlaut in Front of Nasal__ 
+* **sag^UUML>a**
+* **søg00a**
 
-* __tank^UUML __
-* __tonk0 __
+* **all^UUML>**
+* **øll00**
 
-* __band^UUML __
-* __bond00 __
+**U-umlaut for akur** 
 
-* __hamar^EPH^UUML>um __
-* __hom0r000um __
+* **akur^EPH^UUML>um**
+* **øk0r000um**
 
-__General U-umlaut__ 
+**I-umlaut** 
 
-* __dag^UUML>um __
-* __døg00um __
+* **dag^IUML>i**
+* **deg00i**
 
-* __sag^UUML>a __
-* __søg00a __
+* **son^IUML>i**
+* **syn00i**
 
-* __all^UUML> __
-* __øll00 __
+* **bógv^IUML>i**
+* **bøg000i**
 
+* **ung^IUMLr>i**
+* **yng0r0i**
 
-__U-umlaut for akur__ 
+* **fjørð^IUML>i**
+* **f0irð00i**
 
-* __akur^EPH^UUML>um __
-* __øk0r000um __
+**eI-umlaut** for o:e, á:e, i:e
 
-__I-umlaut__ 
+**I-umlaut for bróðir** 
 
-* __dag^IUML>i __
-* __deg00i __
+**Inverted U-umlaut from ø** 
 
-* __son^IUML>i __
-* __syn00i __
+* **fløtt^ØAa**
+* **flatt0a**
 
-* __bógv^IUML>i __
-* __bøg000i __
+**Inverted U-umlaut from o** 
 
-* __ung^IUMLr>i __
-* __yng0r0i __
+* **fonn^OA>ar**
+* **fann00ar**
 
-* __fjørð^IUML>i __
-* __f0irð00i __
+**o/ei-Umlaut I** 
 
+**o/ei-Umlaut II** 
 
+* **dreing^EIO>i**
+* **dro0ng00i**
 
-__eI-umlaut__ for o:e, á:e, i:e
+### Vowel deletion rules
 
-__I-umlaut for bróðir __ 
+**Vowel deletion in front of na** 
 
+### Verbal vowel alternation rules
 
-__Inverted U-umlaut from ø__ 
+**Stem vowel change in Weak Verbs** 
 
-* __fløtt^ØAa __
-* __flatt0a __
+* **flek^WVV>t**
+* **flak00t**
 
-__Inverted U-umlaut from o__ 
+* **flek^WVV>t**
+* **flak00t**
 
-* __fonn^OA>ar __
-* __fann00ar __
+* **vel^WVV>di**
+* **val00di**
 
+**Stem Vowel Shortening in Supine and Participle** 
 
-__o/ei-Umlaut I__ 
+**Past tense singular diphthongs I** 
 
-__o/ei-Umlaut II__ 
+**Past tense singular diphthongs II** 
 
-* __dreing^EIO>i __
-* __dro0ng00i __
+**Past tense singular monophthongs** 
 
+* **gev^AB3**
+* **gav0**
 
+**Past tense plural monophthongs** 
 
+**Past tense plural monophthongs to a** 
 
+**Supine u** 
 
+**Supine o** 
 
+**Supine i** 
 
-!Vowel deletion rules
+**Present tense ý** 
 
-__Vowel deletion in front of na__ 
+### Adjectival Sandhi rule
 
+**Vowel shortening in Neuter** 
 
+* **góð>t**
+* **got0t**
 
+* **skjót>t**
+* **skjót0t**
 
+## Other rules
 
+### Morphological passive rules
 
+**u in ur Deletion in front of Pass** 
 
+**r Deletion in front of Pass** 
 
-!Verbal vowel alternation rules
-
-__Stem vowel change in Weak Verbs__ 
-
-* __flek^WVV>t __
-* __flak00t __
-
-* __flek^WVV>t __
-* __flak00t __
-
-* __vel^WVV>di __
-* __val00di __
-
-
-__Stem Vowel Shortening in Supine and Participle__ 
-
-
-
-
-
-__Past tense singular diphthongs I__ 
-
-__Past tense singular diphthongs II__ 
-
-__Past tense singular monophthongs__ 
-
-* __gev^AB3 __
-* __gav0 __
-
-__Past tense plural monophthongs__ 
-
-
-__Past tense plural monophthongs to a__ 
-
-
-
-__Supine u__ 
-
-
-__Supine o__ 
-
-
-__Supine i__ 
-
-
-__Present tense ý__ 
-
-
-
-
-!Adjectival Sandhi rule
-
-__Vowel shortening in Neuter__ 
-
-* __góð>t __
-* __got0t __
-
-* __skjót>t __
-* __skjót0t __
-
-
-!!Other rules
-
-!Morphological passive rules
-
-__u in ur Deletion in front of Pass__ 
-
-__r Deletion in front of Pass__ 
-
-__ð Deletion in front of Pass__ 
-
-
-
+**ð Deletion in front of Pass** 

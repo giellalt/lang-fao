@@ -76,7 +76,7 @@ Testing av stavekontrollen
 Møtereferat
 ===========
 
-- [200818](200818.md)
+- [200818](meetings/200818.md)
 
 Diverse
 =======

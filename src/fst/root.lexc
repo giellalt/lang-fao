@@ -247,6 +247,8 @@ Multichar_Symbols  !!≈ # Definitions for @CODE@
 !! ### Flag for case harmony in compounds
 
 !! Set flag for compounds
+!! |                        Flag | Example word
+!! |                        ---- | ----
 @P.Case.MscNom@    !!≈ |  @CODE@ | fyrstiflokkur
 @P.Case.MscObl@    !!≈ |  @CODE@ | fyrstaflokk
 @P.Case.FemNom@    !!≈ |  @CODE@ | lítlasystir
@@ -255,6 +257,8 @@ Multichar_Symbols  !!≈ # Definitions for @CODE@
 @P.Case.Pl@        !!≈ |  @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 !! Control flag values for compounds
+!! |                        Flag | Example word
+!! |                        ---- | ----
 @R.Case.MscNom@    !!≈ |  @CODE@ | fyrstiflokkur
 @R.Case.MscObl@    !!≈ |  @CODE@ | fyrstaflokk
 @R.Case.FemNom@    !!≈ |  @CODE@ | lítlasystir
@@ -263,14 +267,18 @@ Multichar_Symbols  !!≈ # Definitions for @CODE@
 @R.Case.Pl@        !!≈ |  @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
 !! Control flag values for compounds
+!! |                        Flag | Example word
+!! |                        ---- | ----
 @U.Case.MscNom@    !!≈ |  @CODE@ | fyrstiflokkur
 @U.Case.MscObl@    !!≈ |  @CODE@ | fyrstaflokk
 @U.Case.FemNom@    !!≈ |  @CODE@ | lítlasystir
 @U.Case.FemObl@    !!≈ |  @CODE@ | lítluusystur
 @U.Case.Neu@       !!≈ |  @CODE@ | breiðaskarð
-@U.Case.Pl@    !   !≈ | @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+@U.Case.Pl@        !!≈ |  @CODE@ | fyrstuflokkar, lítlusystrar, breiðuskørð
 
-
+!! Flag diacritic look-alikes for grammar checker & tokenisation purposes
+!! |                        Flag | Explanation
+!! |                        ---- | ----
 @P.Pmatch.Loc@        !!≈ |  @CODE@ | Location in string used or parsed by hfst-pmatch
 @P.Pmatch.Backtrack@  !!≈ |  @CODE@ | Also for hfst-pmatch 
 
@@ -282,6 +290,8 @@ Multichar_Symbols  !!≈ # Definitions for @CODE@
 !! handled automatically if combined with +CmpN/xxx tags. If not used, they will
 !! do no harm.
 
+!! |                        Flag | Explanation
+!! |                        ---- | ----
  @P.CmpFrst.FALSE@ !!≈ |  @CODE@ | Require that words tagged as such only appear first
  @D.CmpPref.TRUE@  !!≈ |  @CODE@ | Block such words from entering ENDLEX
  @P.CmpPref.FALSE@ !!≈ |  @CODE@ | Block these words from making further compounds
@@ -290,7 +300,7 @@ Multichar_Symbols  !!≈ # Definitions for @CODE@
  @U.CmpNone.FALSE@ !!≈ |  @CODE@ | Combines with the prev tag to prohibit compounding
  @P.CmpOnly.TRUE@  !!≈ |  @CODE@ | Sets a flag to indicate that the word has passed R
  @D.CmpOnly.FALSE@ !!≈ |  @CODE@ | Disallow words coming directly from root.
-!! 
+
 !! Use the following flag diacritics to control downcasing of derived proper
 !! nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
 !! these flags. There exists a ready-made regex that will do the actual down-casing

@@ -1,51 +1,37 @@
-Prosjekt for å lansere ny færøysk stavekontroll til Hammershaimb-jubileet 2019.
+# Prioriteringar for arbeid med stavekontroll
 
-Teknisk sett er stavekontrollen ferdig, godt utprøvd og ferdig til
-bruk. Det som står att er gjennomgang og forbetring av lingvistisk
-innhald og framleggsmekanisme.
+## Status
+Stavekontrollen har god dekningsgrad (98.5%). Den største svakheita er handsaminga av namn.
 
 ## Arbeidsoppgåver
 
-* Testmateriale
-    - Skaffe så stort tekstkorpus som mogleg
+* Test- og grunnlagsmateriale
     - Skaffe lister over færøyske namn (stadnamn, personnamn, namn på firma, organisasjonar...)
+    - Skaffe så stort tekstkorpus som mogleg (sjå separat dokument om korpus)
     - Skaffe korpus over ordpar *autentisk skrivefeil : korrigert form*
     - Komplettere bøyingsparadigmene i `fao/test/src/gt-norm-yamls/`
 * Analysatoren:
     - Teste analysatoren for leksikalsk dekning mot korpus, og legge til manglande ord.
+    - Legge til manglande færøyske namn frå namnelister
+	- Gjennomgå og forbetre morfologien for namn
     - Vurdere og gjennomføre ein strategi for danske lånord
-    - Kontrollere og forbetre samansetjing
-    - Legge til manglande færøyske namn
+    - Kontrollere og forbetre mekanismane for dynamisk samansetjing
     - Teste analysatoren for morfologi, morfofonologi og forbetre han.
-* Stavekontrollen
+* Stavekontrollen:
     - Teste presisjon og recall for tekst merka for korrekturlesing
     - Teste framleggsmekanismen (kor stor del av rettingane til autentiske skrivefeil får korrekt rettingsframlegg)
 
-## Tidsplan
-
-* Folk
-    - Heðin 4 mnd frå medio mars: Arbeide med analysatoren
-    - Trond i løpet av året: Oppdatere, kommentere analysator + forslagsmekanisme
-    - Andre ...
-* Milepælar 2018-2019 (tentativt framlegg til 25. mars)
-    - Medio mars: Ferdig innsamla stort korpus og namnelister
-    - 1. august: Dekningsgrad for stort korpus over 95%, morfologi stort sett ok
-    - 1. januar: Dekningsgrad for stort korpus over 97%, morfologi heilt ok,
-   normativitet avklart, samansetjing og framleggsmekanisme optimal for stavekontroll
-    - 25. mars: Lansering?
-
-Måla som er sett opp her krev meir enn 4 månadsverk.
+## Ressursar
+Arbeidsoppgåvene ovafor krev minst ei stilling i samisk språkteknologi.
 
 ## Testing
 
 ### Status
-
-Analysatoren har 97,2% dekning på eit kjent korpus på 132000 ord,
-95,9% dekning av 1. Mosebok, og 91,4% dekning av Wikipedia (som
-inneheld mykje namnemateriale og sitat frå framande språk).
-
-Dekningsgraden bør vere minst 97% på ukjent korpus, gjerne høgare.
+...
 
 ### Testresultat
 
-(kjem)
+#### Testdagbok
+* 2006: 85% dekningsgrad (132000 ord)
+* 2018: 95% (132000 ord)
+* 2021: 98% (10 mill korpus)

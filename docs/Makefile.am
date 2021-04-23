@@ -15,16 +15,23 @@ MD_PAGES=root-morphology.md       \
 		  phonology-morphology.md \
 		  nouns-affixes.md        \
 		  nouns-stems.md          \
+		  numerals-affixes.md          \
 		  verbs-affixes.md        \
 		  verbs-stems.md          \
 		  adjectives-affixes.md   \
+		  adjectives-stems.md     \
 		  acronyms-affixes.md     \
-		  symbols-affixes.md
+		  abbreviations-affixes.md     \
+		  symbols-affixes.md      \
+		  propernouns-affixes.md
+
+include $(top_srcdir)/../giella-core/am-shared/docs-dir-include.am
+
+
 # clitics-morphology.md       \
 # compounding-morphology.md   \
 # abbreviations-stems.md      \
 # acronyms-stems.md           \
-# adjectives-stems.md         \
 # adpositions-stems.md        \
 # adverbs-stems.md            \
 # conjunctions-stems.md       \
@@ -37,6 +44,3 @@ MD_PAGES=root-morphology.md       \
 # smi-propernouns-stems.md    \
 # subjunctions-stems.md       \
 # adjectives-affixes.md       \
-# propernouns-affixes.md
-
-include $(top_srcdir)/../giella-core/am-shared/docs-dir-include.am

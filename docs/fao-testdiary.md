@@ -22,6 +22,8 @@ are not recognised.
     fao/corp/1Mos.txt
     Test 1   Wftot   Wf-tkn %-recall  Tytot  Wf-typ %-recall
     090301   18911   18221    96.3 %   2690    2240   83.3 %
+    210423   18172   17260    95.0 %   2690    2240   90.7 %
+
 
 #### Explaining the table
 
@@ -44,6 +46,17 @@ columns does the same for wordform types (cf. below for the commands
 used to calculate the numbers).
 
     -------------------------------------------------------------------------
+    commands 2021:
+    WFtot:
+    cat ~/biggies/langs/fao/corp/1Mos.txt |sed 's/^v[0-9]+ //'|hfst-tokenise tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst |wc -l
+    Non_recognised_wf:
+    cat filename |hfst-tokenise -cg tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst |grep ' ?'|wc -l
+    
+    Tytot:
+    cat 1Mos.txt |sed 's/^v[0-9]+ //'|hfst-tokenise tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst |sort|uniq|wc -l
+    cat filename |sed 's/^v[0-9]+ //'|hfst-tokenise tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst |sort|uniq|wc -l
+
+    commands 2009:
     Wftot:
     cat filename | preprocess --abbr=bin/abbr.txt | wc -l
 

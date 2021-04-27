@@ -320,8 +320,12 @@ REMOVE:dyn  Arab (0 Prop) ; # foreløpig løsning, til vi har ny løsning for nu
 	
 SECTION
 
-REMOVE:CmpNone N IF (0/1 CmpNP/None);
-REMOVE:CmpNone N IF (0 CmpNP/None);
+# Bruk MIN i staden
+#REMOVE:CmpNone N IF (0/1 CmpNP/None);
+#REMOVE:CmpNone N IF (0 CmpNP/None);
+
+#!! Test: Go for minimal weight. This rules gives priority to lexicalised forms.
+SELECT:minweight (<W=MIN>);
 
 ## For Apertium
 LIST MAX2LETTERS = (".."r) ("."r);
@@ -1419,6 +1423,9 @@ REMOVE:NoCmp SUB:1 (0/1 Cmp);
 
 REMOVE:LeksNotDyn Dyn ;
 
+
+
+
 #!! * **X** removes readings with no syntax
-REMOVE:X (@X) ;    
+#REMOVE:X (@X) ;    
 

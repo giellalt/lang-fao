@@ -7,21 +7,21 @@
 
 ## Tags for POS	
  * +N +V +A +Adv +Prop +Num : Open POS's	
- * +CC +CS +Interj +Pr +Pron +IM		 : Closed POS's	
- * +Pers +Det +Refl +Recipr +Poss +Dem		 : Pron types	
- * +Nom +Acc +Gen +Dat					 : Case			
- * +Msc +Fem +Neu						 : Gender		
- * +Sg +Pl								 : Number		
- * +Def +Indef 						 : Definiteness	
- * +Comp +Superl						 : Comparison	
- * +Prs +Prt							 : Tense		
- * +1Sg 					 : Person-Number
- * +2Sg 					 : Person-Number
- * +3Sg							 : Person-Number
- * +Inf +PrfPtc +PrsPrc +Sup +Imp +Sbj	+Subj : Verb forms	
- * +Cmp								 : Compound		
- * +Abbr +ABBR +ACR							 : Abbreviations, acronyms ,
- * +CLB +PUNCT +LEFT +RIGHT			 : Punctuation, parentheses
+ * +CC +CS +Interj +Pr +Pron +IM : Closed POS's	
+ * +Pers +Det +Refl +Recipr +Poss +Dem : Pron types	
+ * +Nom +Acc +Gen +Dat : Case			
+ * +Msc +Fem +Neu : Gender		
+ * +Sg +Pl : Number		
+ * +Def +Indef : Definiteness	
+ * +Comp +Superl : Comparison	
+ * +Prs +Prt : Tense		
+ * +1Sg : Person-Number
+ * +2Sg : Person-Number
+ * +3Sg : Person-Number
+ * +Inf +PrfPtc +PrsPrc +Sup +Imp +Sbj +Subj : Verb forms	
+ * +Cmp : Compound		
+ * +Abbr +ABBR +ACR : Abbreviations, acronyms ,
+ * +CLB +PUNCT +LEFT +RIGHT : Punctuation, parentheses
  * +Symbol : independent symbols in the text stream, like £, €, ©
  * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 
@@ -70,42 +70,42 @@
  * +Sem/Year - year (i.e. 1000 - 2999), used only for numerals 
 
 
- * +Sem/Amount		
- * +Sem/Build		
- * +Sem/Build-room	
- * +Sem/Cat		
- * +Sem/Curr		
- * +Sem/Date		
- * +Sem/Domain		
- * +Sem/Domain_Hum	
- * +Sem/Dummytag	
- * +Sem/Edu_Hum	
- * +Sem/Event		
- * +Sem/Food-med	
- * +Sem/Group_Hum	
- * +Sem/Hum		
- * +Sem/ID			
- * +Sem/Lang		
- * +Sem/Mat		
- * +Sem/Measr		
- * +Sem/Money		
- * +Sem/Obj		
- * +Sem/Obj-el		
- * +Sem/Obj-ling	
+ * +Sem/Amount
+ * +Sem/Build
+ * +Sem/Build-room
+ * +Sem/Cat
+ * +Sem/Curr
+ * +Sem/Date
+ * +Sem/Domain
+ * +Sem/Domain_Hum
+ * +Sem/Dummytag
+ * +Sem/Edu_Hum
+ * +Sem/Event
+ * +Sem/Food-med
+ * +Sem/Group_Hum
+ * +Sem/Hum
+ * +Sem/ID
+ * +Sem/Lang
+ * +Sem/Mat
+ * +Sem/Measr
+ * +Sem/Money
+ * +Sem/Obj
+ * +Sem/Obj-el
+ * +Sem/Obj-ling
  * +Sem/Org_Prod-audio
  * +Sem/Org_Prod-vis
- * +Sem/Part		
- * +Sem/Prod-vis	
- * +Sem/Route		
- * +Sem/Rule		
- * +Sem/Sign		
- * +Sem/State		
- * +Sem/State-sick	
- * +Sem/Substnc	
- * +Sem/Time		
- * +Sem/Time-clock	
- * +Sem/Tool-it	
- * +Sem/Txt		
+ * +Sem/Part
+ * +Sem/Prod-vis
+ * +Sem/Route
+ * +Sem/Rule
+ * +Sem/Sign
+ * +Sem/State
+ * +Sem/State-sick
+ * +Sem/Substnc
+ * +Sem/Time
+ * +Sem/Time-clock
+ * +Sem/Tool-it
+ * +Sem/Txt
 
 
 
@@ -133,17 +133,17 @@ the sentence can be considered as true cases.
  * +v1 +v2 : different paradigms   ,
 
 ## Triggers for Morphophonology
- * %^UUML %^IUML %^eIUML %^ØUML				 : Umlaut types ,
- * %^W %^JI 					 : Cns changes ,
- * %^EPH %^OEA 					 : Epenthesis,  ,
- * %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL	 : Cns deletion triggers,
- * %^EIO %^OA %^WVV %^EDH %^VSH			 : TODO ,
- * %^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7	 : Ablaut series ,
- * %^aAB %^uAB 					 : More Ablaut ,
- * %^NGKK						 : NG to KK	,
- * %^PASS						 : todo ,
+ * %^UUML %^IUML %^eIUML %^ØUML : Umlaut types ,
+ * %^W %^JI : Cns changes ,
+ * %^EPH %^OEA : Epenthesis,  ,
+ * %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL : Cns deletion triggers,
+ * %^EIO %^OA %^WVV %^EDH %^VSH : TODO ,
+ * %^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7 : Ablaut series ,
+ * %^aAB %^uAB : More Ablaut ,
+ * %^NGKK : NG to KK	,
+ * %^PASS : todo ,
 
- * %>						 : Suffix boundary ,
+ * %> : Suffix boundary ,
 
  * **+v1** - Paradigm identifier (e.g. gera+v1 = ger)
  * **+v2** - Paradigm identifier (e.g. gera+v2 = gerar)
@@ -164,9 +164,9 @@ Language tags
 
 
 ## Non-ascii letters, perhaps needed as multichar symbols
- * æ ø å 				
+ * æ ø å
  * á é í ó ú ý Á É Í Ó Ý
- * ä ö ü Ä Ö Ö			
+ * ä ö ü Ä Ö Ö
 
 ## Compounding tags
 
@@ -197,19 +197,19 @@ This entry / word should be in the following position(s):
 
  * **+Use/PMatch** means that the following is only used in the analyser feeding the disambiguator. This is missing.
 
- * +Use/-PMatch	
- * +Use/-Spell		
- * +Use/NG			
- * +Use/NGA		
+ * +Use/-PMatch
+ * +Use/-Spell
+ * +Use/NG
+ * +Use/NGA
  * +Use/SpellNoSugg
  * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
 
- * +Err/Guess								 : Tag for Name Guesser component
- * +Err/Orth								 : Marking forms that are orthographical errors
- * +Err/Hyph		 	
- * +Err/Lex		 	
- * +Err/SpaceCmp	 	
- * +Err/MissingSpace 	
+ * +Err/Guess : Tag for Name Guesser component
+ * +Err/Orth : Marking forms that are orthographical errors
+ * +Err/Hyph
+ * +Err/Lex
+ * +Err/SpaceCmp
+ * +Err/MissingSpace
 
 ## Symbols that need to be escaped on the lower side (towards twolc):
 Todo: Check whether these can be removed. They are probably obsolete.
@@ -235,7 +235,7 @@ with verbs if the verb is further derived into a noun again:
 ### Flags for speller suggestions
 
  |  @D.ErrOrth.ON@ 
- |  @C.ErrOrth@	 
+ |  @C.ErrOrth@ 
  |  @P.ErrOrth.ON@ 
  |  @R.ErrOrth.ON@ 
 
@@ -320,14 +320,14 @@ LexC language, and must be the first lexicon defined.
  * Propernouns ; 
  * Adjectives ; 
  * Shortadjectives ; 
- * Verbs ;		 
- * Adverb ;	 
+ * Verbs ; 
+ * Adverb ; 
  * Conjunction ; 
  * Subjunction ; 
  * Interjection ; 
- * Numeral ;	 
+ * Numeral ; 
  * Determiner ; 
- * Pronoun ;	 
+ * Pronoun ; 
  * Preposition ; 
  * Punctuation ; 
  * Symbols ; 

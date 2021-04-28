@@ -23,16 +23,15 @@ Generell informasjon finst på [hovudnettsida for GiellaLT-infrastrukturen](/).
 Analyseprogrammet for færøysk
 =============================
 
-Dokumentasjon av kjeldefilene
+Kjeldefilene 
 -----------------------------
 
-Sjå lengst ned på sida.
+[stems](https://github.com/giellalt/lang-fao/tree/develop/src/fst/stems/)
+ ◊ [affixes](https://github.com/giellalt/lang-fao/tree/develop/src/fst/affixes)
+ ◊ [twolc](https://github.com/giellalt/lang-fao/tree/develop/src/fst/phonology.twolc)
+ ◊ [yaml](https://github.com/giellalt/lang-fao/tree/develop/test/src/gt-norm-yamls/)
 
-Source files:
-- [stems](https://github.com/giellalt/lang-fao/tree/develop/src/fst/stems/)
-- [affixes](https://github.com/giellalt/lang-fao/tree/develop/src/fst/affixes)
-- [twolc](https://github.com/giellalt/lang-fao/tree/develop/src/fst/phonology.twolc)
-- [yaml](https://github.com/giellalt/lang-fao/tree/develop/test/src/gt-norm-yamls/)
+(Dokumentasjon lengst ned på sida)
 
 Den grammatiske transdusaren
 ----------------------------

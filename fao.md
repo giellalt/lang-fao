@@ -7,21 +7,21 @@
 
 ## Tags for POS	
  * +N +V +A +Adv +Prop +Num : Open POS's	
- * +CC +CS +Interj +Pr +Pron +IM		 : Closed POS's	
- * +Pers +Det +Refl +Recipr +Poss +Dem		 : Pron types	
- * +Nom +Acc +Gen +Dat					 : Case			
- * +Msc +Fem +Neu						 : Gender		
- * +Sg +Pl								 : Number		
- * +Def +Indef 						 : Definiteness	
- * +Comp +Superl						 : Comparison	
- * +Prs +Prt							 : Tense		
- * +1Sg 					 : Person-Number
- * +2Sg 					 : Person-Number
- * +3Sg							 : Person-Number
- * +Inf +PrfPtc +PrsPrc +Sup +Imp +Sbj	+Subj : Verb forms	
- * +Cmp								 : Compound		
- * +Abbr +ABBR +ACR							 : Abbreviations, acronyms ,
- * +CLB +PUNCT +LEFT +RIGHT			 : Punctuation, parentheses
+ * +CC +CS +Interj +Pr +Pron +IM : Closed POS's	
+ * +Pers +Det +Refl +Recipr +Poss +Dem : Pron types	
+ * +Nom +Acc +Gen +Dat : Case			
+ * +Msc +Fem +Neu : Gender		
+ * +Sg +Pl : Number		
+ * +Def +Indef : Definiteness	
+ * +Comp +Superl : Comparison	
+ * +Prs +Prt : Tense		
+ * +1Sg : Person-Number
+ * +2Sg : Person-Number
+ * +3Sg : Person-Number
+ * +Inf +PrfPtc +PrsPrc +Sup +Imp +Sbj +Subj : Verb forms	
+ * +Cmp : Compound		
+ * +Abbr +ABBR +ACR : Abbreviations, acronyms ,
+ * +CLB +PUNCT +LEFT +RIGHT : Punctuation, parentheses
  * +Symbol : independent symbols in the text stream, like £, €, ©
  * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 
@@ -70,42 +70,42 @@
  * +Sem/Year - year (i.e. 1000 - 2999), used only for numerals 
 
 
- * +Sem/Amount		
- * +Sem/Build		
- * +Sem/Build-room	
- * +Sem/Cat		
- * +Sem/Curr		
- * +Sem/Date		
- * +Sem/Domain		
- * +Sem/Domain_Hum	
- * +Sem/Dummytag	
- * +Sem/Edu_Hum	
- * +Sem/Event		
- * +Sem/Food-med	
- * +Sem/Group_Hum	
- * +Sem/Hum		
- * +Sem/ID			
- * +Sem/Lang		
- * +Sem/Mat		
- * +Sem/Measr		
- * +Sem/Money		
- * +Sem/Obj		
- * +Sem/Obj-el		
- * +Sem/Obj-ling	
+ * +Sem/Amount
+ * +Sem/Build
+ * +Sem/Build-room
+ * +Sem/Cat
+ * +Sem/Curr
+ * +Sem/Date
+ * +Sem/Domain
+ * +Sem/Domain_Hum
+ * +Sem/Dummytag
+ * +Sem/Edu_Hum
+ * +Sem/Event
+ * +Sem/Food-med
+ * +Sem/Group_Hum
+ * +Sem/Hum
+ * +Sem/ID
+ * +Sem/Lang
+ * +Sem/Mat
+ * +Sem/Measr
+ * +Sem/Money
+ * +Sem/Obj
+ * +Sem/Obj-el
+ * +Sem/Obj-ling
  * +Sem/Org_Prod-audio
  * +Sem/Org_Prod-vis
- * +Sem/Part		
- * +Sem/Prod-vis	
- * +Sem/Route		
- * +Sem/Rule		
- * +Sem/Sign		
- * +Sem/State		
- * +Sem/State-sick	
- * +Sem/Substnc	
- * +Sem/Time		
- * +Sem/Time-clock	
- * +Sem/Tool-it	
- * +Sem/Txt		
+ * +Sem/Part
+ * +Sem/Prod-vis
+ * +Sem/Route
+ * +Sem/Rule
+ * +Sem/Sign
+ * +Sem/State
+ * +Sem/State-sick
+ * +Sem/Substnc
+ * +Sem/Time
+ * +Sem/Time-clock
+ * +Sem/Tool-it
+ * +Sem/Txt
 
 
 
@@ -133,17 +133,17 @@ the sentence can be considered as true cases.
  * +v1 +v2 : different paradigms   ,
 
 ## Triggers for Morphophonology
- * %^UUML %^IUML %^eIUML %^ØUML				 : Umlaut types ,
- * %^W %^JI 					 : Cns changes ,
- * %^EPH %^OEA 					 : Epenthesis,  ,
- * %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL	 : Cns deletion triggers,
- * %^EIO %^OA %^WVV %^EDH %^VSH			 : TODO ,
- * %^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7	 : Ablaut series ,
- * %^aAB %^uAB 					 : More Ablaut ,
- * %^NGKK						 : NG to KK	,
- * %^PASS						 : todo ,
+ * %^UUML %^IUML %^eIUML %^ØUML : Umlaut types ,
+ * %^W %^JI : Cns changes ,
+ * %^EPH %^OEA : Epenthesis,  ,
+ * %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL : Cns deletion triggers,
+ * %^EIO %^OA %^WVV %^EDH %^VSH : TODO ,
+ * %^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7 : Ablaut series ,
+ * %^aAB %^uAB : More Ablaut ,
+ * %^NGKK : NG to KK	,
+ * %^PASS : todo ,
 
- * %>						 : Suffix boundary ,
+ * %> : Suffix boundary ,
 
  * **+v1** - Paradigm identifier (e.g. gera+v1 = ger)
  * **+v2** - Paradigm identifier (e.g. gera+v2 = gerar)
@@ -164,9 +164,9 @@ Language tags
 
 
 ## Non-ascii letters, perhaps needed as multichar symbols
- * æ ø å 				
+ * æ ø å
  * á é í ó ú ý Á É Í Ó Ý
- * ä ö ü Ä Ö Ö			
+ * ä ö ü Ä Ö Ö
 
 ## Compounding tags
 
@@ -197,19 +197,19 @@ This entry / word should be in the following position(s):
 
  * **+Use/PMatch** means that the following is only used in the analyser feeding the disambiguator. This is missing.
 
- * +Use/-PMatch	
- * +Use/-Spell		
- * +Use/NG			
- * +Use/NGA		
+ * +Use/-PMatch
+ * +Use/-Spell
+ * +Use/NG
+ * +Use/NGA
  * +Use/SpellNoSugg
  * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
 
- * +Err/Guess								 : Tag for Name Guesser component
- * +Err/Orth								 : Marking forms that are orthographical errors
- * +Err/Hyph		 	
- * +Err/Lex		 	
- * +Err/SpaceCmp	 	
- * +Err/MissingSpace 	
+ * +Err/Guess : Tag for Name Guesser component
+ * +Err/Orth : Marking forms that are orthographical errors
+ * +Err/Hyph
+ * +Err/Lex
+ * +Err/SpaceCmp
+ * +Err/MissingSpace
 
 ## Symbols that need to be escaped on the lower side (towards twolc):
 Todo: Check whether these can be removed. They are probably obsolete.
@@ -235,7 +235,7 @@ with verbs if the verb is further derived into a noun again:
 ### Flags for speller suggestions
 
  |  @D.ErrOrth.ON@ 
- |  @C.ErrOrth@	 
+ |  @C.ErrOrth@ 
  |  @P.ErrOrth.ON@ 
  |  @R.ErrOrth.ON@ 
 
@@ -320,14 +320,14 @@ LexC language, and must be the first lexicon defined.
  * Propernouns ; 
  * Adjectives ; 
  * Shortadjectives ; 
- * Verbs ;		 
- * Adverb ;	 
+ * Verbs ; 
+ * Adverb ; 
  * Conjunction ; 
  * Subjunction ; 
  * Interjection ; 
- * Numeral ;	 
+ * Numeral ; 
  * Determiner ; 
- * Pronoun ;	 
+ * Pronoun ; 
  * Preposition ; 
  * Punctuation ; 
  * Symbols ; 
@@ -1860,6 +1860,31 @@ Fila inneheld i underkant av 50000 lemma.
 
 
 
+# Numeral affixess
+
+This lexicon just goes to #, this in order to coexist with number files in giella-shared.
+They are relevant for Sámi, not for faroese.
+
+Lexica: 
+
+ * LEXICON DIGITCASE 				 # ;		 
+ * LEXICON ARABICCASE 				 # ;		 
+ * LEXICON ARABICCASE0 				 # ;	 
+ * LEXICON ARABICCASECOLL 				 # ;	 
+ * LEXICON ARABICCASEORD 				 # ;	 
+ * LEXICON ARABICCASEORD-ERR 				 # ; 
+ * LEXICON ARABICCASES 				 # ;	 
+ * LEXICON ARABICCOMPOUNDS 			 # ;	 
+ * LEXICON ROMNUMTAGOBL 				 # ;	 
+ * LEXICON dateyearcase 				 # ;	 
+ * LEXICON dateyearcase_fullsuff 		 # ;	 
+ * LEXICON dateyearcase_nullsuff_w_dot  # ;	 
+
+
+
+
+
+
 
 
 
@@ -2807,6 +2832,45 @@ Compound flags
 
 
 
+# Faroese adjectives 
+
+
+The adjectives and their inflectional codes 
+are taken from "Føroysk orðabók".
+
+## The list of ajectives
+
+
+
+
+
+**Adjectives** for the list of adjectives
+
+### Irregular comparatives and superlatives
+
+
+
+### Prefixed present participles
+
+
+### Regular adjectives, systematic list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # North Saami acronyms - affix part
@@ -2834,8 +2898,205 @@ put between the abbreviation and its suffix
  * **LEXICON acronull   **  for suffixless forms, redirecting to K_only for clitic forms
 
 
+# Abbreviation affixes
+
+Now splitting according to POS, and according to dot or not
+
+First collecting POS info, *-noun, *-adv, etc.
+Also splitting when in doubt: -noun-adj => -noun and -adj
+Then pointing to two contlexes, a dot-one and a non-dot-one.
+
+
+
+
+
+
+### Lexicons without final period
+
+
+
+
+### Lexicons with final period
+
+ * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
+
+
+
+
+ * **LEXICON nodot-infl   **
+
+ * **LEXICON dot-infl   **
+
+ * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+
+
+
+
+
+
+
 
 # Symbol affixes
+
+
+
+
+
+# Proper nouns 
+
+## Table of content
+* _ The guessed ones
+* _ The morphological tags
+    - _ _ Male first names
+    - _ _ Female first names
+    - _ _ Surnames
+    - _ _ Place names and other names
+
+
+
+
+
+
+## The morphological tags
+
+For each group, the maltag etc. lexicon functions as a default
+lexicon. The other lexica are there for specific subgroups of the names.
+
+### Indeclineables
+
+
+
+
+
+
+
+###  Male first names
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Female first names
+
+
+
+
+
+###  Surnames
+
+
+
+###  Place names and other names
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -44,3 +44,4 @@ include $(top_srcdir)/../giella-core/am-shared/docs-dir-include.am
 # smi-propernouns-stems.md    \
 # subjunctions-stems.md       \
 # adjectives-affixes.md       \
+#

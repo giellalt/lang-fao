@@ -409,18 +409,19 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 MD_PAGES = root-morphology.md       \
-		  phonology-morphology.md \
-		  nouns-affixes.md        \
-		  nouns-stems.md          \
-		  numerals-affixes.md          \
-		  verbs-affixes.md        \
-		  verbs-stems.md          \
+		  abbreviations-affixes.md     \
+		  acronyms-affixes.md     \
 		  adjectives-affixes.md   \
 		  adjectives-stems.md     \
-		  acronyms-affixes.md     \
-		  abbreviations-affixes.md     \
+		  nouns-affixes.md        \
+		  nouns-stems.md          \
+		  numerals-stems.md          \
+		  numerals-affixes.md          \
+		  propernouns-affixes.md  \
 		  symbols-affixes.md      \
-		  propernouns-affixes.md
+		  verbs-affixes.md        \
+		  verbs-stems.md          \
+		  phonology-morphology.md
 
 
 # Variables:
@@ -886,7 +887,7 @@ $(LINKS): $(VPATH_MD_PAGES)
 		then \
 			echo "* No in-source documentation" > $@ ;\
 		else \
-			echo $$(for file in "$^" ; do basename $$file; done) \
+			echo $$(for file in $^ ; do basename $$file; done) \
 				| tr ' ' '\n' \
 				| LC_COLLATE=C sed 's/[a-z0-9._-]*/* [&]\(&\)/g' \
 				> $@; \

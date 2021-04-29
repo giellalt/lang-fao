@@ -12,18 +12,19 @@
 # dir/filename.lexc => filename-dir.md
 
 MD_PAGES=root-morphology.md       \
-		  phonology-morphology.md \
-		  nouns-affixes.md        \
-		  nouns-stems.md          \
-		  numerals-affixes.md          \
-		  verbs-affixes.md        \
-		  verbs-stems.md          \
+		  abbreviations-affixes.md     \
+		  acronyms-affixes.md     \
 		  adjectives-affixes.md   \
 		  adjectives-stems.md     \
-		  acronyms-affixes.md     \
-		  abbreviations-affixes.md     \
+		  nouns-affixes.md        \
+		  nouns-stems.md          \
+		  numerals-stems.md          \
+		  numerals-affixes.md          \
+		  propernouns-affixes.md  \
 		  symbols-affixes.md      \
-		  propernouns-affixes.md
+		  verbs-affixes.md        \
+		  verbs-stems.md          \
+		  phonology-morphology.md
 
 include $(top_srcdir)/../giella-core/am-shared/docs-dir-include.am
 

@@ -1,5 +1,6 @@
 # Faroese Noun morphology 
 
+
 # Basic noun lexica 
 
 Taken from the dictionary
@@ -10,7 +11,13 @@ diacritics.
 The next two layers are for indefinite and definite
 suffixes, respectively.
 
+
 ## Lexicons still to be allocated
+
+
+
+
+
 
 ## Irregular nouns
 
@@ -24,14 +31,28 @@ h0 for indeclinable neuters
 
 irregular_nouns just gives the tags for the indeclinables
 
+
 ## Lexica for words belonging to two paradigms.
 These are simply split (h11/12 to h11 and h12, etc).
+
+
+
+
+
+
+
+
+
+
+
 
 ## The ordinary lexica
 These lexica split into sg and pl lexica, and add +N and gender tags.
 Thereafter it points to Layer 2, the case suffixes
 
+
 ### Weak masculines.
+
 
 **k1** , risi, is the basic Msc lexicon, split in sg and pl
 
@@ -39,7 +60,9 @@ Thereafter it points to Layer 2, the case suffixes
 
 *k_flt1* for pl
 
-__k1_3stem__ for 3-syllabic stams like *felagi*, mixed dative forms + UUML
+
+**k1_3stem** for 3-syllabic stams like *felagi*, mixed dative forms + UUML
+
 
 **k2** beiggi
 
@@ -53,9 +76,10 @@ __k1_3stem__ for 3-syllabic stams like *felagi*, mixed dative forms + UUML
 
 **k5** for bóndi
 
+
 ### Strong masculines
 
-__k6_null__ for  antikrist
+**k6_null** for  antikrist
 
 *k6e_null* for sg
 
@@ -65,9 +89,11 @@ __k6_null__ for  antikrist
 
 *k_flt6* for pl
 
+
 **k7** for  sandur
 
 *k7e* for sg
+
 
 *k_flt7* for pl
 
@@ -83,23 +109,34 @@ __k6_null__ for  antikrist
 
 **k9** with double consonant deletion in front of s, but pointing to k6
 
+*k9e_2* for sg, pointing to k6e, and pointing to l24 *iskur
+
+**k9_2** with double consonant deletion in front of s, but pointing to k6, and pointing to l24 *iskur
+
+
+
 **k10** splitting in sg/pl
 
 *k10e* for sg
 
 *k_flt10* for pl
 
+
 **k11** for ísur
+
 
 *k11e* for sg
 
 *k_flt11* for pl
 
+
+
+
 **k12** for  vinur
 
-__k12_bui__ 
+**k12_bui** 
 
-__k12_boe__ 
+**k12_boe** 
 
 *k12e* for sg
 
@@ -116,29 +153,38 @@ As k12, plus a zero dative
 
 *k_flt14* for pl
 
+
 **k15** for  gestur
 
 *k15e* for sg
 
 *k_flt15* for pl
 
+
+
 **k16** having double Cns but pointing to k15
 
-__k_flt17__ giving UUML PLDAT and pointing to k_flt15
+**k_flt17** giving UUML PLDAT and pointing to k_flt15
+
 
 **k17** giving UUML Dat and pointing to k15
+
 
 **k18** for  dansur
 
 *k18e* for sg
 
+
 *k_flt18* for pl
 
 **k19** for  meldur
 
+
+
 *k19e* for sg
 
 *k_flt19* for pl
+
 
 **k20** for  akur
 
@@ -146,17 +192,36 @@ __k_flt17__ giving UUML PLDAT and pointing to k_flt15
 
 *k_flt20* for pl
 
-__k_flt21__ pointing to k_flt19
+**k_flt21** pointing to k_flt19
+
+
 
 **k21** for  stuðul
 
+
 **k22** for  himmal
+
+
 
 **k23** for  róður
 
 *k23e* for sg
 
 *k_flt23* for pl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 **k24** for  fløttur
 
@@ -196,6 +261,7 @@ __k_flt21__ pointing to k_flt19
 
 **k32** for  ryggur, using k31e
 
+
 **k33** for  hylur
 
 **k34** for  drongur
@@ -204,15 +270,22 @@ __k_flt21__ pointing to k_flt19
 
 *k_flt34* for pl
 
+**k34_2** for  bonkur  - formar skulu gerast fyri benk* og veng* í flt.
+
+**k34_3** for  vongur  - formar skulu gerast fyri benk* og veng* í flt.
+
+
 **k36** for  heyggjur
 
 **k37** for  skógvur
 
 *k37e* for sg
 
+
 *k_flt37* for pl
 
-__k38e_2__ for  súgvur
+**k38e_2** for  súgvur
+
 
 **k38** for  bógvur
 
@@ -226,9 +299,9 @@ __k38e_2__ for  súgvur
 
 *k_flt39* for pl
 
-__k40e_2__ for  hógvur2
+**k40e_2** for  hógvur2
 
-__k40_3__ for  skúgvur
+**k40_3** for  skúgvur
 
 **k40** for  hógvur
 
@@ -240,7 +313,7 @@ __k40_3__ for  skúgvur
 
 *k41e* for sg
 
-__k41_obl__ for oblique, hmm, needed?
+**k41_obl** for oblique, hmm, needed?
 
 *k_flt41* for pl
 
@@ -255,6 +328,7 @@ __k41_obl__ for oblique, hmm, needed?
 *k43e* for sg
 
 *k_flt43* for pl
+
 
 **k44** for  bróðir, stem is ZERO
 
@@ -294,6 +368,7 @@ __k41_obl__ for oblique, hmm, needed?
 
 **k51** for  luður
 
+
 **k52** for  primus
 
 *k52e* for sg
@@ -302,9 +377,368 @@ __k41_obl__ for oblique, hmm, needed?
 
 **k53** for  aðal
 
+
+
 ### Feminines
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###  Neuter forms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Case inflection 
 
@@ -317,41 +751,140 @@ forms and compounds.
 
 Singular
 
-__W_M_SGNOM__ for weak masculines, pointing to definites
+**W_M_SGNOM** for weak masculines, pointing to definites
 
-__W_M_SGACC__ etc for risan
+**W_M_SGACC** etc for risan
 
-__W_M_SGDAT__ for 
+**W_M_SGDAT** for 
 
-__W_M_SGDAT_mixed__ for felagnum
+**W_M_SGDAT_mixed** for felagnum
 
-__W_M_SGGEN__ for 
+**W_M_SGGEN** for 
+
+
 
 Plural
 
-__W_M_PLNOM__ for -ar-
+**W_M_PLNOM** for -ar-
 
-__W_M_PLNOM_UR__ for -ur-
+**W_M_PLNOM_UR** for -ur-
 
-__W_M_PLACC__ for -ar-
+**W_M_PLACC** for -ar-
 
-__W_M_PLACC_UR__ for -ur-
+**W_M_PLACC_UR** for -ur-
 
-__W_M_PLDAT__ for -u-
+**W_M_PLDAT** for -u-
 
-__W_M_PLGEN__ for -a-
+**W_M_PLGEN** for -a-
+
+
+
 
 ### Strong case suffixes
 
+
 Nominative Sg
+
+
+
 
 Accusative Sg
 
+
 Dative Sg
+
+
+
+
+
+
+
 
 Plural forms
 
 Nominative
+
+
+
+
+
+
+
+Accusative
+
+
+
+
+
+
+
+Dative
+
+
+
+
+
+
+Feminine forms
+
+Singular case suffixes.
+
+Nominative
+
+
+
+Oblique
+
+
+
+
+
+
+
+Plural case suffixes
+
+
+
+
+
+
+
+
+Neuter forms
+singular
+
+
+
+
+
+
+
+
+
+
+
+
+
+plural
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Definite inflection 
 
@@ -363,64 +896,82 @@ gathered here.
 
 ### Masc def sg
 
-__DF_N_SGm__ for 
+**DF_N_SGm** for 
 
-__DF_N_SGm_indef__ for 
+**DF_N_SGm_indef** for 
 
-__DF_N_SGm_def__ for 
+**DF_N_SGm_def** for 
 
-__DF_A_SGm__ for 
+**DF_A_SGm** for 
 
-__DF_A_SGm_indef__ for 
+**DF_A_SGm_indef** for 
 
-__DF_A_SGm_def__ for 
+**DF_A_SGm_def** for 
 
-__DF_D_SGm__ for 
+**DF_D_SGm** for 
 
-__DF_G_SGm__ for 
+**DF_G_SGm** for 
+
 
 ### Masc def pl
 
-__DF_N_PLm__ for 
+**DF_N_PLm** for 
 
-__DF_N_PLm_indef__ for 
 
-__DF_N_PLm_def__ for 
+**DF_N_PLm_indef** for 
 
-__DF_A_PLm__ for 
+**DF_N_PLm_def** for 
 
-__DF_A_PLm_indef__ for 
+**DF_A_PLm** for 
 
-__DF_A_PLm_def__ for 
+**DF_A_PLm_indef** for 
+
+**DF_A_PLm_def** for 
+
+
 
 ## Feminine forms
 
 ###  Fem Sg
-__DF_N_SGf_W__ for 
+**DF_N_SGf_W** for 
 
-__DF_N_SGf_S__ for 
+**DF_N_SGf_S** for 
 
-__DF_A_SGf_W__ for 
 
-__DF_A_SGf_S__ for 
+**DF_A_SGf_W** for 
 
-__DF_D_SGf_W__ for 
+**DF_A_SGf_S** for 
 
-__DF_D_SGf_S__ for 
 
-__DF_G_SGf_W__ for 
+**DF_D_SGf_W** for 
 
-__DF_G_SGf_S__ for 
+**DF_D_SGf_S** for 
+
+
+**DF_G_SGf_W** for 
+
+**DF_G_SGf_S** for 
 
 ### Feminine plural forms
 
-__DF_NA_PLf__ for *nar
+**DF_NA_PLf** for *nar
 
-__DF_NA_PLf_inar__ for *inar
+**DF_NA_PLf_inar** for *inar
+
 
 ## Neuter forms
 
 ### Neuter sg
+
+
+
+
+
+
+
+
+
+
 
 This concludes the nominal morphology.
 
@@ -429,14 +980,17 @@ the ways stems may be combined.
 
 # Compound flags
 
-__MscNom_Flag__ for 
 
-__MscObl_Flag__ for 
+**MscNom_Flag** for 
 
-__FemNom_Flag__ for 
+**MscObl_Flag** for 
 
-__FemObl_Flag__ for 
+**FemNom_Flag** for 
 
-__Neu_Flag__ for 
+**FemObl_Flag** for 
 
-__Pl_Flag__ for 
+**Neu_Flag** for 
+
+**Pl_Flag** for 
+
+

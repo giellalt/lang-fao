@@ -1,3 +1,470 @@
+# Faroese adverbs
+
+
+   **adv** for the tag +Adv
+
+   **advcomp** for the tag +Adv+Cmp
+
+   **advsuperl** for the tag +Adv+Superl
+
+   **Adverb** for the list of appr 1000 adverbs
+
+
+ * í% gjár adv ; 
+ * í% fjør adv ; 
+ * ókynjað adv ; 
+ * suðuri adv ; 
+ * eystarlaga adv ; 
+ * útúr adv ; 
+ * hvaðani adv ; 
+ * síðla adv ; 
+ * allastaðnar adv ; 
+ * forskelligastaðnar adv ; 
+ * nógvastaðnar adv ; 
+ * onkrastaðnar adv ; 
+ * ymsastaðnis adv ; 
+ * líkafram adv ; 
+ * aftanáaftur adv ; 
+...
+
+
+# Interjections
+
+The tag +Interj
+
+   **Interj** 
+
+The words
+
+   **Interjection** okey, ááá, aj, huff, ...
+
+# The Faroese conjunctions
+
+   **CCtag** for the +CC tag.
+
+   **Conjunction** for the list of 10 or so conjunctions.
+# Faroese noun stem file
+
+The lexicon names are taken from
+Føroysk orðabók I-II (FO). Reference is
+made to Thráinsson & al ("fg").
+
+Note that in some cases, the lexicon names and stems here
+deviate from FO. In that case the lexica have names ending
+in wordforms, written in capital lettes.
+
+## Short lexica
+
+**Shortnouns** for  1, 2 and 3 letter nouns excluded from compounding
+
+These are now always excluded from lastpart compound
+and in norm from first-part compounding as well
+
+
+
+
+
+
+
+
+
+## The main list of nouns
+
+Her kjem alle substantiva. Dei er baklengssortert.
+leksikon som byrjar med x er ikkje manuelt sjekka.
+
+**Nouns**
+
+Fila inneheld i underkant av 50000 lemma.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Faroese adjectives 
+
+
+The adjectives and their inflectional codes 
+are taken from "Føroysk orðabók".
+
+## The list of ajectives
+
+
+
+
+
+**Adjectives** for the list of adjectives
+
+### Irregular comparatives and superlatives
+
+
+
+### Prefixed present participles
+
+
+### Regular adjectives, systematic list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Faroese verbs 
+
+**Verbs**
+
+## Some irregular verbs
+*mega, eiga, eita, gráta, ...* and 15 more
+
+
+some irregular passive verbs: høggast, loypast
+
+
+
+
+
+
+
+
+
+## The long verb list
+
+The lexica listed here represent the declension patterns
+presented in Føroysk orðabók. The lexicon names correspond to the
+declension codes in the dictionary.
+
+
+ * fakturera:fakturer s30 ;   
+ * formturka:form#turk s30 ;   
+ * svørja:svør s10 ;   
+ * almannakunngera:al#manna#kunng s31 ;    
+ * gjøgnumføra:gjøgnum#før s1 ;   
+ * innføra:inn#før s1 ;   
+ * útføra:út#før s1 ;   
+ * innvíga:inn#víg s1 ;   
+ * annleggja:ann#l s20 ;   ... and more than 6000 more.
+
+
+
+
+
+
+
+
+
+
+Simple declension class verbs
+
+
+
+
+
+
+
+
+Still to be classified
+
+
+
+
+Double declension class verbs
+
+
+
+
+
+Finally some candidates to be considered for verb compounding.
+
+# Akronymer !
+
+   **Acronym-fao** 
+
+
+
+
+
+
+   **Akronymnumeralier**  for 0-9
+
+   **anl**  send numvers too letterloops
+
+
+
+
+# Faroese subjunctions
+
+   **CStag** FOR THE +CS TAG
+
+   **IMtag** FOR THE +MM tag of the infinitive marker
+
+   **Subjunction** the list, some 10-20 CSs.
+ * tí CStag ;    
+ * tá% ið CStag ;    
+# Faroese pronouns
+
+
+   **Pronoun** splitting into 3 sublexica:
+ 1. Personal ;        
+ 1. Reflexive ;        
+ 1. Interrogative ;    
+ 1. Indefinite ;       
+
+   **Personal** for the personal pronouns
+
+
+
+
+
+   **egtu-obl** 
+
+   **okkumtykkum** 
+
+   **S_okkumtykkum** 
+
+
+   **3obl** 
+
+   **Reflexive** 
+
+
+
+   **Interrogative** 
+
+
+   **EIN** 
+
+   **ANNAR_P** 
+
+   **EINHVOR** 
+
+   **ANNARHVOR** 
+
+   **HANNSJALVUR** 
+
+
+   **Indefinite** 
+
+
+
+
+
+
+   **ONKUR** 
+
+   **NAKAR** 
+
+   **BADIR** 
+
+   **HVORGIN** 
+
+   **EINGIN** 
+
+
+
+
+
+
+# File containing Faroese abbreviations 
+
+Lexica for adding tags and periods
+
+The idea is (or may be) to use both common and language-speicfic abbreviations.
+
+Splitting in 3 groups, because of the preprocessor
+
+**Abbreviation**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dot% noStb.db
+Abbreviations that never induce sentence boundaries
+The file is too large and should be shrinked
+
+
+
+# Faroese Numerals
+
+
+
+**Numeral** splitting in types
+ * Textual ;  
+ * ARABICS ;  
+ * ARABICORD ;  
+ * ROMAN ;  
+ * ISOLATED-NUMEXP ;  
+ * NUM-PREFIXES ;  
+
+
+
+
+   **1-9** 
+
+
+
+   **TRÝsplit** 
+
+   **nsplit** 
+
+   **TEXTTENS** 
+
+
+   **TEXTTEENS** 
+
+   **basic** 
+
+
+
+   **EITT** 
+
+   **TVEY** 
+
+   **TRÝ** 
+
+   **PAIRNUM** 
+
+   **n** 
+
+
+## Ordinals
+
+   **ordinals** 
+
+   **ord_decl** 
+
+   **ANNAR** 
+
+   **ANNARMORPH** 
+
+
+
+# Proper nouns 
+
+Table of content
+* The name lexica
+    -   - mal
+    -   - fem
+    -   - plc
+    -   - sur       
+
+## Splitting into name types
+
+
+   **Propernouns** splitting in 3 lexica: **multipartnames, names, guess**
+
+
+   **multipartnames** contains only 3 names for now
+
+   **names** gives the list of names.
+
+
+
+
+
+
+
+
+# Faroese deternminers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Faroese prepositions
+
+We should eventually have syntactic tags here...
+
+## Tags
+**p** for the tag +Pr
+
+## The list of prepositions
+
+**Preposition** for the list of prepositions, ordered according to case they select for.
+
+
+
+### Several cases
+
+
+### Accusative or dative
+| --- 
+
+### Accusative or genitive
+
+
+### Accusative
+
+###  Dative
+
+
 # Faroese morphological analyser
 
  # Definitions for Multichar_Symbols
@@ -352,40 +819,1283 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 
 
-# Abbreviation affixes
 
-Now splitting according to POS, and according to dot or not
-
-First collecting POS info, *-noun, *-adv, etc.
-Also splitting when in doubt: -noun-adj => -noun and -adj
-Then pointing to two contlexes, a dot-one and a non-dot-one.
+# Symbol affixes
 
 
 
 
 
+# Faroese Noun morphology 
 
-### Lexicons without final period
+This file contains the inflection suffixes for the Faroese nowns
+The infection classes are identical to the ones in *Føroysk orðabók*.
 
+The morphology is ordered in three layers.
 
+# Layer 1: Basic noun lexica 
 
-
-### Lexicons with final period
-
- * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
-
- * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
-
-
-
-
- * **LEXICON nodot-infl   **
-
- * **LEXICON dot-infl   **
-
- * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+The nominal morphology is added in three layers.
+In this **first layer** we add gender tags and morphophonological
+diacritics.
+The next two layers are for indefinite and definite
+suffixes, respectively.
 
 
+## Lexicons still to be allocated
+
+We first list 4 lexica for words waiting to be checked.
+
+* **LEXICON xi** . TOOD: classify words in **xi**. They are all m
+* **LEXICON xkv2** . TOOD: classify xkv1. They are all f and end in a
+* **LEXICON xh3**. TOOD: classify xkv2. They are all f and end in a consonant
+* **LEXICON xh25**. TOOD: classify xkv2. They are all f and end in a consonant
+
+## Irregular nouns
+
+These are lexica with number 0, they have no inflectional morphology.
+
+* **@LEXICON LEXNAME@** for januar etc.
+
+* **@LEXICON LEXNAME@** for ommudidd
+
+* **@LEXICON LEXNAME@** for indeclinable neuters
+
+* **@LEXICON LEXNAME@** just gives the tags for the indeclinables
+
+
+## Lexica for words belonging to two paradigms.
+These are simply split (h11/12 to h11 and h12, etc).
+
+* **LEXICON h11/12** 
+
+* **LEXICON h11/41** 
+* **LEXICON h3/h41** 
+* **LEXICON h4/41** 
+* **LEXICON h7/h3** 
+* **LEXICON k11/kv6** 
+* **LEXICON k19/12** 
+* **LEXICON k25/17f** 
+* **LEXICON k9/10** 
+* **LEXICON k9/16** 
+* **LEXICON k1/3e** 
+
+* **LEXICON k1/3** 
+
+* **LEXICON k1/4** 
+* **LEXICON k1e/48f** 
+* **LEXICON k1e/h24e** 
+* **LEXICON k1/11** 
+* **LEXICON k6/7** 
+
+* **LEXICON k6/8** 
+
+* **LEXICON k6e/19e** 
+
+* **LEXICON k7/6** 
+
+* **LEXICON k8/17** 
+
+* **LEXICON k8/6** 
+
+
+
+## The ordinary lexica
+These lexica split into sg and pl lexica, and add +N and gender tags.
+Thereafter it points to Layer 2, the case suffixes
+
+
+### Weak masculines.
+
+
+* **LEXICON k1** , risi, is the basic Msc lexicon, split in sg and pl
+
+*k1e* for sg
+
+*k_flt1* for pl
+
+
+* **LEXICON k1_3stem** for 3-syllabic stams like *felagi*, mixed dative forms + UUML
+
+
+* **LEXICON k2** beiggi
+
+* **LEXICON k3** for  hagi
+
+*k3e* for sg
+
+*k_flt3* for pl
+
+* **LEXICON k4** for  tanki, just pointing to k3 (identical)
+
+* **LEXICON k5** for bóndi
+
+
+### Strong masculines
+
+* **LEXICON k6_null** for  antikrist
+
+*k6e_null* for sg
+
+* **LEXICON k6** for  úlvur
+
+*k6e* for sg
+
+*k_flt6* for pl
+
+
+* **LEXICON k7** for  sandur
+
+*k7e* for sg
+
+
+*k_flt7* for pl
+
+*k_flt8* for pl, pointing to k_flt7
+
+*k8e* for sg, pointing to k7e
+
+* **LEXICON k8** for  garður, pointing to k7, but has a different u-umlaut
+
+*k_flt9* for pl
+
+*k9e* for sg, pointing to k6e
+
+* **LEXICON k9** with double consonant deletion in front of s, but pointing to k6
+
+*k9e_2* for sg, pointing to k6e, and pointing to l24 *iskur
+
+* **LEXICON k9_2** with double consonant deletion in front of s, but pointing to k6, and pointing to l24 *iskur
+
+
+* **LEXICON k10/11** 
+
+* **LEXICON k10** splitting in sg/pl
+
+*k10e* for sg
+
+*k_flt10* for pl
+
+* **LEXICON k11/18** 
+
+* **LEXICON k11** for ísur
+
+
+*k11e* for sg
+
+*k_flt11* for pl
+
+
+
+* **LEXICON k12/6f** 
+
+* **LEXICON k12** for  vinur
+
+* **LEXICON k12_bui** 
+
+* **LEXICON k12_boe** 
+
+*k12e* for sg
+
+*k_flt12* for pl
+
+*k13e* for sg, giving extra NULL dative then pointing to k12e
+
+* **LEXICON k13** for  vegur
+As k12, plus a zero dative
+
+* **LEXICON k14** for  staður
+
+*k14e* for sg
+
+*k_flt14* for pl
+
+* **LEXICON k15/6** 
+
+* **LEXICON k15** for  gestur
+
+*k15e* for sg
+
+*k_flt15* for pl
+
+* **LEXICON k16/9** 
+
+* **LEXICON k16e** 
+
+* **LEXICON k16** having double Cns but pointing to k15
+
+* **LEXICON k_flt17** giving UUML PLDAT and pointing to k_flt15
+
+* **LEXICON k17/8/6** 
+
+* **LEXICON k17** giving UUML Dat and pointing to k15
+
+* **LEXICON k18/11** 
+
+* **LEXICON k18** for  dansur
+
+*k18e* for sg
+
+
+*k_flt18* for pl
+
+* **LEXICON k19** for  meldur
+
+* **LEXICON k19e/15e** 
+
+* **LEXICON k19e/15** 
+
+*k19e* for sg
+
+*k_flt19* for pl
+
+
+* **LEXICON k20** for  akur
+
+*k20e* for sg
+
+*k_flt20* for pl
+
+* **LEXICON k_flt21** pointing to k_flt19
+
+* **LEXICON k21/20** 
+
+* **LEXICON k21e** 
+
+* **LEXICON k21** for  stuðul
+
+* **LEXICON k22e** 
+
+* **LEXICON k22** for  himmal
+
+* **LEXICON k23/19** 
+
+* **LEXICON k23e/19e** 
+
+* **LEXICON k23** for  róður
+
+*k23e* for sg
+
+*k_flt23* for pl
+
+* **LEXICON k24/25** 
+
+* **LEXICON k25/24** 
+
+* **LEXICON k26/12** 
+
+* **LEXICON k26/6f** 
+
+* **LEXICON k27/25** 
+
+* **LEXICON k28/12** 
+
+* **LEXICON k28/23** 
+
+* **LEXICON k28e/12e** 
+
+* **LEXICON k3/1** 
+
+* **LEXICON k4/1** 
+
+* **LEXICON k45/6f** 
+
+* **LEXICON k6/12e** 
+
+* **LEXICON k6/15** 
+
+* **LEXICON k3e/14f** 
+
+* **LEXICON k24** for  fløttur
+
+* **LEXICON k25** for  vøllur
+
+*k25e* for sg
+
+*k_flt25* for pl
+
+* **LEXICON k26** for  táttur
+
+*k26e* for sg
+
+*k_flt26* for pl
+
+* **LEXICON k27** for  vøkstur
+
+* **LEXICON k28** for  dráttur
+
+*k28e* for sg
+
+*k_flt28* for pl
+
+* **LEXICON k29** for  tráður
+
+* **LEXICON k30** for  fótur
+
+*k30e* for sg
+
+*k_flt30* for pl
+
+* **LEXICON k31** for  veggur
+
+*k31e* for sg
+
+*k_flt31* for pl
+
+* **LEXICON k32** for  ryggur, using k31e
+
+
+* **LEXICON k33** for  hylur
+
+* **LEXICON k34** for  drongur
+
+*k34e* for sg
+
+*k_flt34* for pl
+
+* **LEXICON k34_2** for  bonkur  - formar skulu gerast fyri benk* og veng* í flt.
+
+* **LEXICON k34_3** for  vongur  - formar skulu gerast fyri benk* og veng* í flt.
+
+
+* **LEXICON k36** for  heyggjur
+
+* **LEXICON k37** for  skógvur
+
+*k37e* for sg
+
+
+*k_flt37* for pl
+
+* **LEXICON k38e_2** for  súgvur
+
+
+* **LEXICON k38** for  bógvur
+
+*k38e* for sg
+
+*k_flt38* for pl
+
+* **LEXICON k39** for  sjógvur
+
+*k39e* for sg
+
+*k_flt39* for pl
+
+* **LEXICON k40e_2** for  hógvur2
+
+* **LEXICON k40_3** for  skúgvur
+
+* **LEXICON k40** for  hógvur
+
+*k40e* for sg
+
+*k_flt40* for pl
+
+* **LEXICON k41** for  maður
+
+*k41e* for sg
+
+* **LEXICON k41_obl** for oblique, hmm, needed?
+
+*k_flt41* for pl
+
+* **LEXICON k42** for  dagur
+
+*k42e* for sg
+
+*k_flt42* for pl
+
+* **LEXICON k43** for  faðir
+
+*k43e* for sg
+
+*k_flt43* for pl
+
+
+* **LEXICON k44** for  bróðir, stem is ZERO
+
+*k_flt44* for pl
+
+* **LEXICON k45** for  spónur
+
+*k45e* for sg
+
+*k_flt45* for pl
+
+* **LEXICON k46** for  fjørðu
+
+*k46e* for sg
+
+*k_flt46* for pl
+
+* **LEXICON k47** for  sonur
+
+*k47e* for sg
+
+*k_flt47* for pl
+
+* **LEXICON k48** for  hamar
+
+*k48e* for sg
+
+*k_flt48* for pl
+
+* **LEXICON k49** for  verkur
+
+*k49e* for sg
+
+*k_flt49* for pl
+
+* **LEXICON k50** for  skjøldur (non_poetic)
+
+* **LEXICON k51** for  luður
+
+
+* **LEXICON k52** for  primus
+
+*k52e* for sg
+
+*k_flt52* for pl
+
+* **LEXICON k53** for  aðal
+
+
+
+### Feminines
+
+* **LEXICON kv1/2** 
+
+
+
+* **LEXICON kv1** 
+
+* **LEXICON kv1e** 
+
+* **LEXICON kv_flt1** 
+
+* **LEXICON kv2/6** 
+
+* **LEXICON kv2/27** 
+
+* **LEXICON kv2/3** 
+
+* **LEXICON kv2e/h3e** 
+
+* **LEXICON kv2e/17e** 
+
+* **LEXICON kv1/2_1** 
+
+* **LEXICON kv2_1/h5e** 
+
+* **LEXICON kv2_1** 
+
+* **LEXICON kv2_1e** 
+
+* **LEXICON kv2** 
+
+* **LEXICON kv_bd2e** 
+
+* **LEXICON kv2e** 
+
+* **LEXICON kv_flt2** 
+
+* **LEXICON kv3/2** 
+
+* **LEXICON kv3/5** 
+
+* **LEXICON kv3/7** 
+
+* **LEXICON kv3** 
+
+* **LEXICON kv3e** 
+
+* **LEXICON kv_flt3** 
+
+
+* **LEXICON kv4** 
+
+* **LEXICON kv4e** 
+
+* **LEXICON kv_flt4** 
+
+* **LEXICON kv5** 
+
+* **LEXICON kv5e** 
+
+* **LEXICON kv_flt5** 
+
+* **LEXICON kv6/2** 
+
+* **LEXICON kv6/h16** 
+
+* **LEXICON kv6/h16e** 
+
+
+* **LEXICON kv6** 
+
+
+* **LEXICON kv6_1** 
+
+* **LEXICON kv6e** 
+
+* **LEXICON kv_flt6** 
+
+* **LEXICON kv6_1e** 
+
+* **LEXICON kv_OY** 
+
+* **LEXICON kv_OYGGJ** 
+
+
+* **LEXICON kv7/3** 
+
+* **LEXICON kv7** 
+
+* **LEXICON kv7e** 
+
+* **LEXICON kv_flt7** 
+
+* **LEXICON kv8** 
+
+* **LEXICON kv8e** 
+
+* **LEXICON kv_flt8** 
+
+* **LEXICON kv9/2** 
+
+* **LEXICON kv9** 
+
+* **LEXICON kv9_1** 
+
+* **LEXICON kv9e** 
+
+* **LEXICON kv_flt9** 
+
+* **LEXICON kv_flt9_1** 
+
+* **LEXICON kv10** 
+
+* **LEXICON kv11** 
+
+* **LEXICON kv11e** 
+
+
+* **LEXICON kv_flt11** 
+
+
+* **LEXICON kv12** 
+
+* **LEXICON kv12_1** 
+
+* **LEXICON kv12e** 
+
+
+* **LEXICON kv_flt12** 
+
+* **LEXICON kv_flt12_1** 
+
+
+* **LEXICON kv13** 
+
+* **LEXICON kv13e** 
+
+* **LEXICON kv_flt13** 
+
+
+* **LEXICON kv14** 
+
+* **LEXICON kv14e** 
+
+
+* **LEXICON kv_flt14** 
+
+
+* **LEXICON kv15** 
+
+* **LEXICON kv15e** 
+
+
+* **LEXICON kv_flt15** 
+
+
+* **LEXICON kv16** 
+
+* **LEXICON kv17** 
+
+* **LEXICON kv17e** 
+
+* **LEXICON kv_flt17** 
+
+* **LEXICON kv18/17** 
+
+* **LEXICON kv18** 
+
+
+* **LEXICON kv19** 
+
+* **LEXICON kv19e** 
+
+* **LEXICON kv_flt19f** 
+
+* **LEXICON kv_flt19** 
+
+
+* **LEXICON kv20** 
+
+
+* **LEXICON kv21** 
+
+* **LEXICON kv21e** 
+
+* **LEXICON kv_flt21** 
+
+* **LEXICON kv21_b** 
+
+
+
+* **LEXICON kv22** 
+
+* **LEXICON kv22e** 
+
+* **LEXICON kv_flt22** 
+
+
+* **LEXICON kv23** 
+
+* **LEXICON kv23e** 
+
+* **LEXICON kv_flt23** 
+
+* **LEXICON kv24/2** 
+
+* **LEXICON kv24/6** 
+
+
+
+* **LEXICON kv24** 
+
+* **LEXICON kv24e** 
+
+* **LEXICON kv_flt24** 
+
+
+* **LEXICON kv25** 
+
+
+
+* **LEXICON kv26** 
+
+
+
+
+* **LEXICON kv27** 
+
+* **LEXICON kv_flt28** 
+
+
+* **LEXICON kv29** 
+
+
+* **LEXICON kv29e** 
+
+* **LEXICON kv_flt29** 
+
+* **LEXICON kv30** 
+
+* **LEXICON kv30e** 
+
+
+* **LEXICON kv_flt30** 
+
+* **LEXICON kv31** 
+
+* **LEXICON kv32_1** 
+
+
+* **LEXICON kv32** 
+
+* **LEXICON kv32e** 
+
+
+* **LEXICON kv_flt32** 
+
+* **LEXICON kv33e/h24e** 
+
+* **LEXICON h24e/kv33e** 
+
+* **LEXICON kv33** 
+
+* **LEXICON kv33e** 
+
+* **LEXICON kv_flt33** 
+
+* **LEXICON kv34** 
+
+* **LEXICON kv34e** 
+
+* **LEXICON kv_flt34** 
+
+* **LEXICON kv35** 
+
+* **LEXICON kv36/2** 
+
+* **LEXICON kv36** 
+
+* **LEXICON kv36e** 
+
+* **LEXICON kv37/2** 
+
+* **LEXICON kv37** 
+
+* **LEXICON kv37e** 
+
+* **LEXICON kv_flt37** 
+
+* **LEXICON kv38** 
+
+* **LEXICON kv39/22** 
+
+* **LEXICON kv39** 
+
+* **LEXICON kv39e** 
+
+* **LEXICON kv_flt39** 
+
+* **LEXICON kv40** 
+
+* **LEXICON kv40e** 
+
+* **LEXICON kv_flt40** 
+
+
+###  Neuter forms
+
+
+
+* **LEXICON h1** 
+
+* **LEXICON h1e** 
+
+* **LEXICON h_flt1** 
+
+* **LEXICON h1_2** 
+
+* **LEXICON h1_2e** 
+
+* **LEXICON h_flt1_2** 
+
+* **LEXICON h1_2/1_3** 
+
+* **LEXICON h1_3** 
+
+* **LEXICON h1_3e** 
+
+
+* **LEXICON h_flt1_3** 
+
+* **LEXICON h2** 
+
+* **LEXICON h2e** 
+
+* **LEXICON h3/41** 
+
+* **LEXICON h3/5** 
+
+* **LEXICON h3/22** 
+
+
+* **LEXICON h3_s** 
+
+* **LEXICON h3** 
+
+* **LEXICON h3e** 
+
+
+* **LEXICON h_flt3f** 
+
+* **LEXICON h_flt3** 
+
+* **LEXICON h3_2** 
+
+* **LEXICON h3_2e** 
+
+
+* **LEXICON h_flt3_2** 
+
+
+* **LEXICON h4** 
+
+* **LEXICON h4e** 
+
+* **LEXICON h_flt4** 
+
+* **LEXICON h4_2** 
+
+* **LEXICON h4_2e** 
+
+* **LEXICON h_flt4_2** 
+
+* **LEXICON h4_3/41** 
+
+* **LEXICON h4_3** 
+
+* **LEXICON h4_3e** 
+
+* **LEXICON h_flt4_3** 
+
+* **LEXICON h4_4** 
+
+* **LEXICON h4_4e** 
+
+* **LEXICON h_flt4_4** 
+
+
+* **LEXICON h5/3** 
+
+* **LEXICON h5/6** 
+
+* **LEXICON h5** 
+
+* **LEXICON h5e** 
+
+* **LEXICON h_flt5** 
+
+* **LEXICON h6/4** 
+
+* **LEXICON h6** 
+
+* **LEXICON h6e** 
+
+* **LEXICON h_flt6** 
+
+* **LEXICON h7/3** 
+
+* **LEXICON h7/3e** 
+
+* **LEXICON h7/4** 
+
+* **LEXICON h7** 
+
+* **LEXICON h8** 
+
+* **LEXICON h8e** 
+
+* **LEXICON h_flt8** 
+
+* **LEXICON h9/10** 
+
+* **LEXICON h9/kv2** 
+
+* **LEXICON h9/41** 
+
+* **LEXICON h9** 
+
+* **LEXICON h9e** 
+
+* **LEXICON h_flt9** 
+
+* **LEXICON h10** 
+
+* **LEXICON h10e** 
+
+* **LEXICON h_flt10** 
+
+
+* **LEXICON h11e/22f** 
+
+* **LEXICON h_flt22/11e** 
+
+* **LEXICON h11** 
+
+* **LEXICON h11e** 
+
+* **LEXICON h_flt11** 
+
+* **LEXICON h12** 
+
+* **LEXICON h12e** 
+
+* **LEXICON h_flt12** 
+
+
+* **LEXICON h13** 
+
+* **LEXICON h13e** 
+
+* **LEXICON h_flt13** 
+
+* **LEXICON h13_2** 
+
+* **LEXICON h13_2e** 
+
+* **LEXICON h_flt13_2** 
+
+
+* **LEXICON h14** 
+
+* **LEXICON h14e** 
+
+
+* **LEXICON h_flt14** 
+
+
+* **LEXICON h15** 
+
+* **LEXICON h15e** 
+
+* **LEXICON h_flt15** 
+
+* **LEXICON h16** 
+
+* **LEXICON h16e** 
+
+* **LEXICON h_flt16** 
+
+* **LEXICON h16_2** 
+
+* **LEXICON h16_2e** 
+
+* **LEXICON h_flt16_2** 
+
+* **LEXICON h16_3** 
+
+* **LEXICON h16_3e** 
+
+* **LEXICON h_flt16_3** 
+
+
+* **LEXICON h17** 
+
+* **LEXICON h17e** 
+
+* **LEXICON h_flt17** 
+
+* **LEXICON h17_2** 
+
+* **LEXICON h17_2e** 
+
+
+
+* **LEXICON h18** 
+
+* **LEXICON h18e** 
+
+* **LEXICON h_flt18** 
+
+
+* **LEXICON h19** 
+
+* **LEXICON h19e** 
+
+* **LEXICON h_flt19** 
+
+
+* **LEXICON h20** 
+
+* **LEXICON h20e** 
+
+* **LEXICON h_flt20** 
+
+
+* **LEXICON h21** 
+
+* **LEXICON h21e** 
+
+* **LEXICON h_flt21** 
+
+
+* **LEXICON h22** 
+
+* **LEXICON h22e** 
+
+* **LEXICON h_flt22** 
+
+
+* **LEXICON h23** 
+
+* **LEXICON h23e** 
+
+* **LEXICON h_flt23** 
+
+* **LEXICON h24** 
+
+* **LEXICON h24e** 
+
+* **LEXICON h_flt24** 
+
+
+* **LEXICON h25** 
+
+* **LEXICON h25e** 
+
+* **LEXICON h_flt25** 
+
+* **LEXICON h_flt26** 
+
+* **LEXICON h_flt27** 
+
+
+* **LEXICON h28** 
+
+* **LEXICON h28e** 
+
+* **LEXICON h_flt28** 
+
+
+* **LEXICON h29** 
+
+* **LEXICON h29e** 
+
+* **LEXICON h_flt29** 
+
+* **LEXICON h30** 
+
+
+* **LEXICON h31** 
+
+
+* **LEXICON h32** 
+
+
+* **LEXICON h33** 
+
+
+* **LEXICON h34** 
+
+* **LEXICON h34e** 
+
+* **LEXICON h_flt34** 
+
+
+
+
+* **LEXICON h3e/kv2** 
+
+* **LEXICON h36** 
+
+* **LEXICON h36e** 
+
+* **LEXICON h_flt36** 
+
+
+* **LEXICON h37** 
+
+* **LEXICON h37e** 
+
+
+* **LEXICON h_flt37** 
+
+* **LEXICON h38** 
+
+
+* **LEXICON h40** 
+
+* **LEXICON h40_2** 
+
+
+* **LEXICON h41/9** 
+
+* **LEXICON h41** 
+
+* **LEXICON h41e** 
+
+* **LEXICON h_flt41** 
+
+
+
+
+
+# Case inflection 
+
+This is the second layer. Here we do indefinite
+forms and compounds.
+
+## Masculine forms
+
+### Weak case suffixes.
+
+Singular
+
+* **LEXICON W_M_SGNOM** for weak masculines, pointing to definites
+
+* **LEXICON W_M_SGACC** etc for risan
+
+* **LEXICON W_M_SGDAT** for 
+
+* **LEXICON W_M_SGDAT_mixed** for felagnum
+
+* **LEXICON W_M_SGGEN** for 
+
+
+
+Plural
+
+* **LEXICON W_M_PLNOM** for -ar-
+
+* **LEXICON W_M_PLNOM_UR** for -ur-
+
+* **LEXICON W_M_PLACC** for -ar-
+
+* **LEXICON W_M_PLACC_UR** for -ur-
+
+* **LEXICON W_M_PLDAT** for -u-
+
+* **LEXICON W_M_PLGEN** for -a-
+
+
+
+
+### Strong case suffixes
+
+
+Nominative Sg
+
+* **LEXICON S_M_SGNOM** 
+
+* **LEXICON S_M_SGNOM_NULL** 
+
+
+Accusative Sg
+
+* **LEXICON S_M_SGACC** 
+
+Dative Sg
+
+* **LEXICON S_M_SGDAT** 
+
+* **LEXICON S_M_SGDAT_2** 
+
+* **LEXICON S_M_SGDAT_NULL** 
+
+
+* **LEXICON S_M_SGGEN** 
+
+* **LEXICON S_M_SGGEN_NULL** 
+
+* **LEXICON S_M_SGGEN_AR** 
+
+Plural forms
+
+Nominative
+
+* **LEXICON S_M_PLNOM** 
+
+* **LEXICON S_M_PLNOM_IR** 
+
+* **LEXICON S_M_PLNOM_UR** 
+
+* **LEXICON S_M_PLNOM_NULL** 
+
+* **LEXICON S_M_PLNOM_NULL_NULL** 
+
+
+Accusative
+
+* **LEXICON S_M_PLACC** 
+
+* **LEXICON S_M_PLACC_IR** 
+
+* **LEXICON S_M_PLACC_UR** 
+
+* **LEXICON S_M_PLACC_NULL** 
+
+* **LEXICON S_M_PLACC_NULL_NULL** 
+
+
+Dative
+
+* **LEXICON S_M_PLDAT** 
+
+* **LEXICON S_M_PLDATm** 
+
+
+* **LEXICON S_M_PLGEN** 
+
+
+Feminine forms
+
+Singular case suffixes.
+
+Nominative
+
+* **LEXICON W_F_SGNOM** 
+
+* **LEXICON S_F_SGNAD** 
+
+Oblique
+
+* **LEXICON W_F_SGOBL** 
+
+* **LEXICON S_F_SGGEN** 
+
+* **LEXICON S_F_SGGEN_NULL** 
+
+
+
+
+Plural case suffixes
+
+* **LEXICON F_PLNA_UR** 
+
+* **LEXICON F_PLNA_IR** 
+
+* **LEXICON F_PLNA_AR** 
+
+* **LEXICON F_PLNA_NULL** 
+
+* **LEXICON F_PLDAT** 
+
+* **LEXICON F_PLGEN** 
+
+
+Neuter forms
+singular
+
+* **LEXICON S_N_SGNA** 
+
+* **LEXICON S_N_SGDG** 
+
+* **LEXICON S_N_SGD** 
+
+* **LEXICON S_N_SGG** 
+
+* **LEXICON S_N_SGDG_is** 
+
+* **LEXICON S_N_SGD_i** 
+
+* **LEXICON S_N_SGG_s** 
+
+
+* **LEXICON S_N_SGG_is** 
+
+* **LEXICON 0_N_SGNA** 
+
+* **LEXICON i_N_SGNA** 
+
+
+plural
+
+* **LEXICON N_PLNA_u_ur** 
+
+* **LEXICON N_PLNA_i_ir** 
+
+* **LEXICON N_PLNA** 
+
+
+* **LEXICON N_PLD** 
+
+
+* **LEXICON N_PLG** 
+
+
+
+* **LEXICON N_PLG_na** 
+
+
+* **LEXICON DF_D_PL** 
+
+* **LEXICON DF_G_PL** 
 
 
 
@@ -393,31 +2103,124 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
 
 
 
-# North Saami acronyms - affix part
+Definite inflection 
 
-## The lexica giving tags and suffixes to the acronyms
+This is the **third layer**. Here we do the indefinite and definite forms.
+These are common to (almost) all different paradigms, hence they are 
+gathered here.
+
+## Masculine forms
+
+### Masc def sg
+
+* **LEXICON DF_N_SGm** for 
+
+* **LEXICON DF_N_SGm_indef** for 
+
+* **LEXICON DF_N_SGm_def** for 
+
+* **LEXICON DF_A_SGm** for 
+
+* **LEXICON DF_A_SGm_indef** for 
+
+* **LEXICON DF_A_SGm_def** for 
+
+* **LEXICON DF_D_SGm** for 
+
+* **LEXICON DF_G_SGm** for 
+
+
+### Masc def pl
+
+* **LEXICON DF_N_PLm** for 
+
+
+* **LEXICON DF_N_PLm_indef** for 
+
+* **LEXICON DF_N_PLm_def** for 
+
+* **LEXICON DF_A_PLm** for 
+
+* **LEXICON DF_A_PLm_indef** for 
+
+* **LEXICON DF_A_PLm_def** for 
 
 
 
+## Feminine forms
 
- * **LEXICON ACRONOUN   ** is the lexicon for **nouns** (not +Prop) like ATV
+###  Fem Sg
+* **LEXICON DF_N_SGf_W** for 
 
- * **LEXICON UNIT   **  As acro, but without paradigm
-
-
-
-
+* **LEXICON DF_N_SGf_S** for 
 
 
+* **LEXICON DF_A_SGf_W** for 
+
+* **LEXICON DF_A_SGf_S** for 
 
 
+* **LEXICON DF_D_SGf_W** for 
 
- * **LEXICON acroconnector   ** Here comes a set of possible symbols to
-put between the abbreviation and its suffix
-
- * **LEXICON acronull   **  for suffixless forms, redirecting to K_only for clitic forms
+* **LEXICON DF_D_SGf_S** for 
 
 
+* **LEXICON DF_G_SGf_W** for 
+
+* **LEXICON DF_G_SGf_S** for 
+
+### Feminine plural forms
+
+* **LEXICON DF_NA_PLf** for *nar
+
+* **LEXICON DF_NA_PLf_inar** for *inar
+
+
+## Neuter forms
+
+### Neuter sg
+
+* **LEXICON DF_NA_SGn** 
+
+* **LEXICON DF_NA_SGn_indef** 
+
+* **LEXICON DF_NA_SGn_def** 
+
+* **LEXICON DF_D_SGn** 
+
+* **LEXICON DF_G_SGn** 
+
+* **LEXICON g_indef_r** 
+
+* **LEXICON DF_G_SGn_a** 
+
+* **LEXICON DF_NA_PLn** 
+
+* **LEXICON DF_NA_PLn_W** 
+
+
+This concludes the nominal morphology.
+
+The rest of the file contains **flags**, that govern
+the ways stems may be combined.
+
+# Compound flags
+
+
+* **LEXICON MscNom_Flag** for 
+
+* **LEXICON MscObl_Flag** for 
+
+* **LEXICON FemNom_Flag** for 
+
+* **LEXICON FemObl_Flag** for 
+
+* **LEXICON Neu_Flag** for 
+
+* **LEXICON Pl_Flag** for 
+
+
+* **LEXICON p24** 
 # Adjective morphology !
 
 ## Ad hoc lexica
@@ -729,1336 +2532,6 @@ Compound flags
 
 
 
-
-
-
-
-
-# Faroese adjectives 
-
-
-The adjectives and their inflectional codes 
-are taken from "Føroysk orðabók".
-
-## The list of ajectives
-
-
-
-
-
-**Adjectives** for the list of adjectives
-
-### Irregular comparatives and superlatives
-
-
-
-### Prefixed present participles
-
-
-### Regular adjectives, systematic list
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Faroese Noun morphology 
-
-
-# Basic noun lexica 
-
-Taken from the dictionary
-
-The nominal morphology is added in three layers.
-In this **first layer** we add gender tags and morphophonological
-diacritics.
-The next two layers are for indefinite and definite
-suffixes, respectively.
-
-
-## Lexicons still to be allocated
-
-
-
-
-
-
-## Irregular nouns
-
-These are lexica with number 0, they have no inflectional morphology.
-
-k0 for januar etc.
-
-kv0 for ommudidd
-
-h0 for indeclinable neuters
-
-irregular_nouns just gives the tags for the indeclinables
-
-
-## Lexica for words belonging to two paradigms.
-These are simply split (h11/12 to h11 and h12, etc).
-
-
-
-
-
-
-
-
-
-
-
-
-## The ordinary lexica
-These lexica split into sg and pl lexica, and add +N and gender tags.
-Thereafter it points to Layer 2, the case suffixes
-
-
-### Weak masculines.
-
-
-**k1** , risi, is the basic Msc lexicon, split in sg and pl
-
-*k1e* for sg
-
-*k_flt1* for pl
-
-
-**k1_3stem** for 3-syllabic stams like *felagi*, mixed dative forms + UUML
-
-
-**k2** beiggi
-
-**k3** for  hagi
-
-*k3e* for sg
-
-*k_flt3* for pl
-
-**k4** for  tanki, just pointing to k3 (identical)
-
-**k5** for bóndi
-
-
-### Strong masculines
-
-**k6_null** for  antikrist
-
-*k6e_null* for sg
-
-**k6** for  úlvur
-
-*k6e* for sg
-
-*k_flt6* for pl
-
-
-**k7** for  sandur
-
-*k7e* for sg
-
-
-*k_flt7* for pl
-
-*k_flt8* for pl, pointing to k_flt7
-
-*k8e* for sg, pointing to k7e
-
-**k8** for  garður, pointing to k7, but has a different u-umlaut
-
-*k_flt9* for pl
-
-*k9e* for sg, pointing to k6e
-
-**k9** with double consonant deletion in front of s, but pointing to k6
-
-*k9e_2* for sg, pointing to k6e, and pointing to l24 *iskur
-
-**k9_2** with double consonant deletion in front of s, but pointing to k6, and pointing to l24 *iskur
-
-
-
-**k10** splitting in sg/pl
-
-*k10e* for sg
-
-*k_flt10* for pl
-
-
-**k11** for ísur
-
-
-*k11e* for sg
-
-*k_flt11* for pl
-
-
-
-
-**k12** for  vinur
-
-**k12_bui** 
-
-**k12_boe** 
-
-*k12e* for sg
-
-*k_flt12* for pl
-
-*k13e* for sg, giving extra NULL dative then pointing to k12e
-
-**k13** for  vegur
-As k12, plus a zero dative
-
-**k14** for  staður
-
-*k14e* for sg
-
-*k_flt14* for pl
-
-
-**k15** for  gestur
-
-*k15e* for sg
-
-*k_flt15* for pl
-
-
-
-**k16** having double Cns but pointing to k15
-
-**k_flt17** giving UUML PLDAT and pointing to k_flt15
-
-
-**k17** giving UUML Dat and pointing to k15
-
-
-**k18** for  dansur
-
-*k18e* for sg
-
-
-*k_flt18* for pl
-
-**k19** for  meldur
-
-
-
-*k19e* for sg
-
-*k_flt19* for pl
-
-
-**k20** for  akur
-
-*k20e* for sg
-
-*k_flt20* for pl
-
-**k_flt21** pointing to k_flt19
-
-
-
-**k21** for  stuðul
-
-
-**k22** for  himmal
-
-
-
-**k23** for  róður
-
-*k23e* for sg
-
-*k_flt23* for pl
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-**k24** for  fløttur
-
-**k25** for  vøllur
-
-*k25e* for sg
-
-*k_flt25* for pl
-
-**k26** for  táttur
-
-*k26e* for sg
-
-*k_flt26* for pl
-
-**k27** for  vøkstur
-
-**k28** for  dráttur
-
-*k28e* for sg
-
-*k_flt28* for pl
-
-**k29** for  tráður
-
-**k30** for  fótur
-
-*k30e* for sg
-
-*k_flt30* for pl
-
-**k31** for  veggur
-
-*k31e* for sg
-
-*k_flt31* for pl
-
-**k32** for  ryggur, using k31e
-
-
-**k33** for  hylur
-
-**k34** for  drongur
-
-*k34e* for sg
-
-*k_flt34* for pl
-
-**k34_2** for  bonkur  - formar skulu gerast fyri benk* og veng* í flt.
-
-**k34_3** for  vongur  - formar skulu gerast fyri benk* og veng* í flt.
-
-
-**k36** for  heyggjur
-
-**k37** for  skógvur
-
-*k37e* for sg
-
-
-*k_flt37* for pl
-
-**k38e_2** for  súgvur
-
-
-**k38** for  bógvur
-
-*k38e* for sg
-
-*k_flt38* for pl
-
-**k39** for  sjógvur
-
-*k39e* for sg
-
-*k_flt39* for pl
-
-**k40e_2** for  hógvur2
-
-**k40_3** for  skúgvur
-
-**k40** for  hógvur
-
-*k40e* for sg
-
-*k_flt40* for pl
-
-**k41** for  maður
-
-*k41e* for sg
-
-**k41_obl** for oblique, hmm, needed?
-
-*k_flt41* for pl
-
-**k42** for  dagur
-
-*k42e* for sg
-
-*k_flt42* for pl
-
-**k43** for  faðir
-
-*k43e* for sg
-
-*k_flt43* for pl
-
-
-**k44** for  bróðir, stem is ZERO
-
-*k_flt44* for pl
-
-**k45** for  spónur
-
-*k45e* for sg
-
-*k_flt45* for pl
-
-**k46** for  fjørðu
-
-*k46e* for sg
-
-*k_flt46* for pl
-
-**k47** for  sonur
-
-*k47e* for sg
-
-*k_flt47* for pl
-
-**k48** for  hamar
-
-*k48e* for sg
-
-*k_flt48* for pl
-
-**k49** for  verkur
-
-*k49e* for sg
-
-*k_flt49* for pl
-
-**k50** for  skjøldur (non_poetic)
-
-**k51** for  luður
-
-
-**k52** for  primus
-
-*k52e* for sg
-
-*k_flt52* for pl
-
-**k53** for  aðal
-
-
-
-### Feminines
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###  Neuter forms
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Case inflection 
-
-This is the second layer. Here we do indefinite
-forms and compounds.
-
-## Masculine forms
-
-### Weak case suffixes.
-
-Singular
-
-**W_M_SGNOM** for weak masculines, pointing to definites
-
-**W_M_SGACC** etc for risan
-
-**W_M_SGDAT** for 
-
-**W_M_SGDAT_mixed** for felagnum
-
-**W_M_SGGEN** for 
-
-
-
-Plural
-
-**W_M_PLNOM** for -ar-
-
-**W_M_PLNOM_UR** for -ur-
-
-**W_M_PLACC** for -ar-
-
-**W_M_PLACC_UR** for -ur-
-
-**W_M_PLDAT** for -u-
-
-**W_M_PLGEN** for -a-
-
-
-
-
-### Strong case suffixes
-
-
-Nominative Sg
-
-
-
-
-Accusative Sg
-
-
-Dative Sg
-
-
-
-
-
-
-
-
-Plural forms
-
-Nominative
-
-
-
-
-
-
-
-Accusative
-
-
-
-
-
-
-
-Dative
-
-
-
-
-
-
-Feminine forms
-
-Singular case suffixes.
-
-Nominative
-
-
-
-Oblique
-
-
-
-
-
-
-
-Plural case suffixes
-
-
-
-
-
-
-
-
-Neuter forms
-singular
-
-
-
-
-
-
-
-
-
-
-
-
-
-plural
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Definite inflection 
-
-This is the **third layer**. Here we do the indefinite and definite forms.
-These are common to (almost) all different paradigms, hence they are 
-gathered here.
-
-## Masculine forms
-
-### Masc def sg
-
-**DF_N_SGm** for 
-
-**DF_N_SGm_indef** for 
-
-**DF_N_SGm_def** for 
-
-**DF_A_SGm** for 
-
-**DF_A_SGm_indef** for 
-
-**DF_A_SGm_def** for 
-
-**DF_D_SGm** for 
-
-**DF_G_SGm** for 
-
-
-### Masc def pl
-
-**DF_N_PLm** for 
-
-
-**DF_N_PLm_indef** for 
-
-**DF_N_PLm_def** for 
-
-**DF_A_PLm** for 
-
-**DF_A_PLm_indef** for 
-
-**DF_A_PLm_def** for 
-
-
-
-## Feminine forms
-
-###  Fem Sg
-**DF_N_SGf_W** for 
-
-**DF_N_SGf_S** for 
-
-
-**DF_A_SGf_W** for 
-
-**DF_A_SGf_S** for 
-
-
-**DF_D_SGf_W** for 
-
-**DF_D_SGf_S** for 
-
-
-**DF_G_SGf_W** for 
-
-**DF_G_SGf_S** for 
-
-### Feminine plural forms
-
-**DF_NA_PLf** for *nar
-
-**DF_NA_PLf_inar** for *inar
-
-
-## Neuter forms
-
-### Neuter sg
-
-
-
-
-
-
-
-
-
-
-
-This concludes the nominal morphology.
-
-The rest of the file contains **flags**, that govern
-the ways stems may be combined.
-
-# Compound flags
-
-
-**MscNom_Flag** for 
-
-**MscObl_Flag** for 
-
-**FemNom_Flag** for 
-
-**FemObl_Flag** for 
-
-**Neu_Flag** for 
-
-**Pl_Flag** for 
-
-
-# Faroese noun stem file
-
-The lexicon names are taken from
-Føroysk orðabók I-II (FO). Reference is
-made to Thráinsson & al ("fg").
-
-Note that in some cases, the lexicon names and stems here
-deviate from FO. In that case the lexica have names ending
-in wordforms, written in capital lettes.
-
-## Short lexica
-
-**Shortnouns** for  1, 2 and 3 letter nouns excluded from compounding
-
-These are now always excluded from lastpart compound
-and in norm from first-part compounding as well
-
-
-
-
-
-
-
-
-
-## The main list of nouns
-
-Her kjem alle substantiva. Dei er baklengssortert.
-leksikon som byrjar med x er ikkje manuelt sjekka.
-
-**Nouns**
-
-Fila inneheld i underkant av 50000 lemma.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Faroese Numerals
-
-
-
-**Numeral** splitting in types
- * Textual ;  
- * ARABICS ;  
- * ARABICORD ;  
- * ROMAN ;  
- * ISOLATED-NUMEXP ;  
- * NUM-PREFIXES ;  
-
-
-
-
-   **1-9** 
-
-
-
-   **TRÝsplit** 
-
-   **nsplit** 
-
-   **TEXTTENS** 
-
-
-   **TEXTTEENS** 
-
-   **basic** 
-
-
-
-   **EITT** 
-
-   **TVEY** 
-
-   **TRÝ** 
-
-   **PAIRNUM** 
-
-   **n** 
-
-
-## Ordinals
-
-   **ordinals** 
-
-   **ord_decl** 
-
-   **ANNAR** 
-
-   **ANNARMORPH** 
-
-
-
-# Numeral affixess
-
-This lexicon just goes to #, this in order to coexist with number files in giella-shared.
-They are relevant for Sámi, not for faroese.
-
-Lexica: 
-
- * LEXICON DIGITCASE 				 # ;		 
- * LEXICON ARABICCASE 				 # ;		 
- * LEXICON ARABICCASE0 				 # ;	 
- * LEXICON ARABICCASECOLL 				 # ;	 
- * LEXICON ARABICCASEORD 				 # ;	 
- * LEXICON ARABICCASEORD-ERR 				 # ; 
- * LEXICON ARABICCASES 				 # ;	 
- * LEXICON ARABICCOMPOUNDS 			 # ;	 
- * LEXICON ROMNUMTAGOBL 				 # ;	 
- * LEXICON dateyearcase 				 # ;	 
- * LEXICON dateyearcase_fullsuff 		 # ;	 
- * LEXICON dateyearcase_nullsuff_w_dot  # ;	 
-
-
-
-
-
-
-# Proper nouns 
-
-## Table of content
-* _ The guessed ones
-* _ The morphological tags
-    - _ _ Male first names
-    - _ _ Female first names
-    - _ _ Surnames
-    - _ _ Place names and other names
-
-
-
-
-
-
-## The morphological tags
-
-For each group, the maltag etc. lexicon functions as a default
-lexicon. The other lexica are there for specific subgroups of the names.
-
-### Indeclineables
-
-
-
-
-
-
-
-###  Male first names
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Female first names
-
-
-
-
-
-###  Surnames
-
-
-
-###  Place names and other names
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Symbol affixes
 
 
 
@@ -2629,40 +3102,17 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 
 
-# Faroese verbs 
 
-**Verbs**
+# North Saami acronyms - affix part
 
-## Some irregular verbs
-*mega, eiga, eita, gráta, ...* and 15 more
-
-
-some irregular passive verbs: høggast, loypast
+## The lexica giving tags and suffixes to the acronyms
 
 
 
 
+ * **LEXICON ACRONOUN   ** is the lexicon for **nouns** (not +Prop) like ATV
 
-
-
-
-
-## The long verb list
-
-The lexica listed here represent the declension patterns
-presented in Føroysk orðabók. The lexicon names correspond to the
-declension codes in the dictionary.
-
-
- * fakturera:fakturer s30 ;   
- * formturka:form#turk s30 ;   
- * svørja:svør s10 ;   
- * almannakunngera:al#manna#kunng s31 ;    
- * gjøgnumføra:gjøgnum#før s1 ;   
- * innføra:inn#før s1 ;   
- * útføra:út#før s1 ;   
- * innvíga:inn#víg s1 ;   
- * annleggja:ann#l s20 ;   ... and more than 6000 more.
+ * **LEXICON UNIT   **  As acro, but without paradigm
 
 
 
@@ -2672,28 +3122,233 @@ declension codes in the dictionary.
 
 
 
+ * **LEXICON acroconnector   ** Here comes a set of possible symbols to
+put between the abbreviation and its suffix
 
-Simple declension class verbs
-
-
-
-
+ * **LEXICON acronull   **  for suffixless forms, redirecting to K_only for clitic forms
 
 
+# Abbreviation affixes
 
+Now splitting according to POS, and according to dot or not
 
-Still to be classified
-
-
-
-
-Double declension class verbs
+First collecting POS info, *-noun, *-adv, etc.
+Also splitting when in doubt: -noun-adj => -noun and -adj
+Then pointing to two contlexes, a dot-one and a non-dot-one.
 
 
 
 
 
-Finally some candidates to be considered for verb compounding.
+
+### Lexicons without final period
+
+
+
+
+### Lexicons with final period
+
+ * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
+
+
+
+
+ * **LEXICON nodot-infl   **
+
+ * **LEXICON dot-infl   **
+
+ * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+
+
+
+
+
+
+
+# Numeral affixess
+
+This lexicon just goes to #, this in order to coexist with number files in giella-shared.
+They are relevant for Sámi, not for faroese.
+
+Lexica: 
+
+ * LEXICON DIGITCASE 				 # ;		 
+ * LEXICON ARABICCASE 				 # ;		 
+ * LEXICON ARABICCASE0 				 # ;	 
+ * LEXICON ARABICCASECOLL 				 # ;	 
+ * LEXICON ARABICCASEORD 				 # ;	 
+ * LEXICON ARABICCASEORD-ERR 				 # ; 
+ * LEXICON ARABICCASES 				 # ;	 
+ * LEXICON ARABICCOMPOUNDS 			 # ;	 
+ * LEXICON ROMNUMTAGOBL 				 # ;	 
+ * LEXICON dateyearcase 				 # ;	 
+ * LEXICON dateyearcase_fullsuff 		 # ;	 
+ * LEXICON dateyearcase_nullsuff_w_dot  # ;	 
+
+
+
+
+
+
+# Proper nouns 
+
+## Table of content
+* _ The guessed ones
+* _ The morphological tags
+    - _ _ Male first names
+    - _ _ Female first names
+    - _ _ Surnames
+    - _ _ Place names and other names
+
+
+
+
+
+
+## The morphological tags
+
+For each group, the maltag etc. lexicon functions as a default
+lexicon. The other lexica are there for specific subgroups of the names.
+
+### Indeclineables
+
+
+
+
+
+
+
+###  Male first names
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Female first names
+
+
+
+
+
+###  Surnames
+
+
+
+###  Place names and other names
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # The Faroese morphophonological file 
 
@@ -3062,3 +3717,457 @@ Vowel rules
 **r Deletion in front of Pass** 
 
 **ð Deletion in front of Pass** 
+# Compounding morphology
+
+
+
+# Lexicon R gets flags and sends compounds over to RReal
+ @P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ;  are Flags to control compounding
+
+# Lexicon RReal is the lexicon for the Cmp tag and resending to N, A
+ *  +Cmp#: Nouns ;          
+ *  +Cmp#: Adjectives ;    
+           R-    ;        
+
+# Lexicon R- for compounds with hyphen
+  +Cmp#:%- Nouns ;    
+  +Cmp#:%- Adjectives ;    
+
+# Lexicon RNum for compounds numeral + noun
+       +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ;    For Num Cmp Noun, vi vil ikke ha Num Cmp Num
+
+
+!!!North Saami acronyms - stems
+
+This file contains a loop for random capital-letter acronyms, 
+as well as two lists of common acronyms: letter-number acronyms and 
+small-capital letter combinations.
+
+!!The main part
+
+ * __LEXICON Acronym-smi   __ divides the acros in the 3 types just mentioned.
+
+
+!!The acro generator
+
+ * __LEXICON FIRSTLETTER	   __  instead of regex, a 4-letter loop for random acronyms
+
+
+
+ * __LEXICON SCND													   __ second part of loop
+
+ * __LEXICON THRD													   __ third part of loop
+
+ * __LEXICON FRTH													   __ fourth part of loop
+
+
+
+
+Here is the list of acronym nouns (not propernouns)
+
+
+
+
+
+
+
+Here is the list of lexicalised Sem/Org acronym proper nouns 
+These are also generated by the Acrogenerator
+
+
+
+
+
+The Acronym lexicon contains common acronyms with other sem-roles than Sem/Plc.
+
+
+
+
+
+Here is a list of lexicalised acronyms without semtags. 
+They got the semtag +Sem/Org, and might get another one.
+
+
+
+
+
+
+
+
+
+
+
+!!The other acro lexica
+
+ * __LEXICON LETTERNUMBER   __ contains a list of letters and numbers
+
+
+
+
+
+
+
+
+
+ * __LEXICON smallacro-smi   __ contains acros with small letters
+
+
+
+
+
+
+
+
+!!!Punctuation symbols
+
+ * __LEXICON Punctuation   __ contains the list
+of punctuation symbols:
+* Symbols like .,: are tagged with __+CLB__
+* other symbols like +.& are tagged with __+PUNCT__, and
+* paired symbols like ()«» are tagged with __+PUNCT+LEFT__
+  and __+PUNCT+RIGHT__, respectively.
+
+* Clause boundary symbols:
+
+* Single punctuation marks
+
+
+* Paired punctuation marks
+
+
+
+
+
+ * __LEXICON PunctEnd   __ leads to # only.
+
+!!!Symbols
+Symbols are single character special signs typically denoting whole nouns. They are different from
+abbreviations and acronyms by not consisting of regular, alphabetic letters.
+
+Symbols are syntactic constituents, and thus part of the sentence analysis. That is, they are
+different from punctuation: punctuation express syntactic boundaries of various kinds, symbols
+are syntactic constituents.
+
+ __LEXICON Symbols__ contains symbols of two types: those that inflect, and those that don't.
+
+Miscellaneous symbols
+
+
+Symbols from Mari OCR reading
+
+
+
+
+
+Smileys
+
+Emojies
+
+!!!Arabic numerals
+
+Arabic numeral expressions can be classified in at least the following categories:
+; general numeric expressions: 123 456,789 - note: space as thousand separator, groups of three digits
+; accounting numeric expressions: 123.456,789 - note: full stop as thousands separator, groups of three digits
+; numeric range expressions: 12-14 - can be dates, times, lengths, masses and other sorts of measurements
+; measurements: 123 kg
+; dates: 2.4.1999, 4.5., 7.8.02, 04.10.2016
+; times: 12:34
+; money amounts: kr 1234,56; 6.990,-
+; temperature: –8°C, 256°K, 100°F
+
+The categories we have are:
+* arabic
+* roman
+
+Each of these can be subdivided:
+
+!!Roman
+* dates
+* general (covers years, pagination, lists, and most other uses) - should
+  yeares get a category of its own? so that roman numbers below 100 are
+  anything, whereas above we consider them years?
+
+!!Arabic
+
+* years (four digits in the range 1000-2500?)
+** [[Fransa riegádii] 1182:s [[Umbrias Italias.]
+** [[almmuhii čakčat] 2009 [[iežas dutkosa]
+* dates in various formats (we should recognise them all, and tag them):
+** borgemánu 31. beaivvi.
+** 31.1.
+** 31.1.2018
+* time (in all different formats, tagged)
+** 11.00
+* phone numbers (ideally all international formats, but at least all the nordic ones)
+** 018-16 96 00 (Swedish)
+** 23081200 (Norwegian)
+* general, in three different versions: space separated with comma decimal,
+  punct separated wwith comma decimal, and punct separated with full stop decimal
+* temperatures - subtype  of general?
+* fractions (nordic style): **0,99**
+* plain digits, possibly with thousand separators:
+** 7 (miljovnna)
+** 16 (jagi)
+** (leat sullii) 25 000 (bargi,)
+* listings:
+** 1) some text, 2) another text, etc
+** 1. some text, 1.0 some text, 1.1 some text, etc
+* postal codes, format varies by country - should they be kept in language-specific lexicons?
+** 751 70 (Uppsala)
+** 0002 [[Oslo]
+** 00100 [[Helsingfors]
+** N-0106 [[Oslo] - should country codes be encoded, or handled via compounding?
+* biblical verses, sometimes mistyped using space or comma (or both) instead of colon
+  between book and verse (do we want to detect and correct these?); NB! - note similarity with times!:
+** [[Kor] 5:17
+** [[Gal.] 3:27–28
+** [[Lukas] 1, 26-38.
+** [[Joh.] 13:34
+** [[Matt] 28: 18–20
+** [[Apg] 2:38
+** [[Mos] 1:27–28a
+** [[Sál] 103, 13–17
+** [[Sál] 139, 1–12.23–24
+** [[Joh] 10,14:28–29
+** [[Kor] 15,53–57
+* text section references:
+** [[SvPS] 697:2,
+
+All of the above can be both simple values or ranges:@
+* 2007-2008 (year)
+* [[Gal.] 3:27–28; [[Lukas] 1, 26-38. (biblical verse)
+* 0-18 [[jagi.] (age, but really a plain integer range in front of a qualifying noun)
+
+Some but not all of the above can make compounds in compounding languages
+(obviously compounding and other morphology has to be covered in the
+language specific continuation lexicons):
+* 1800-logu (year)
+
+Some but not all of the above can inflect for case in such languages
+(obviously case inflection and other morphology has to be covered in the
+language specific continuation lexicons):
+* 1978:s (year)
+(Hornberger 1989: 289) - should be analysed as a regular year, not including the colon; this works fine using hfst-tokenise.
+
+We do NOT include measurements, instead  we analyse the measurement abbreviation separately after a general num analysis.
+
+Currency prefixes should be treated as a segment of its own, and not as part of the number. We still to consider prefixes written together with the following number, ie without space.
+
+We do not tag anything in this file, instead we just give continuation lexicons for all different types, so that both tags and possible inflections can be handled on a per language basis. The template file will give suggested tags acccording to the GiellaLT style.
+
+And for sure more than these. Previously everything has been more or less
+lumped together, but to avoid noise and to get better input for grammar
+checking the ARABICS section should be rewritten such that each category
+gets its own lexicon. That way it is easier to restrict the syntax of
+numerical expressions in each category.
+
+
+ !! __LEXICON NUM-PREFIXES__
+ This lexicon contains a number of letters and other
+ symbols found in front of digits. Their continuation
+ lexicons should probably be changed as we restructure
+ the arabic numerals.
+
+
+ * __LEXICON REALARABICfirst__ to avoid 0 as first arabic, except from only 0, or in front of comma
+
+ * __LEXICON REALARABICpunct__ to get number after
+
+ * __LEXICON REALARABIC__ 1-4 arabics
+
+ * __LEXICON REALARABICfirstpart__ numbers like 199 878, 199.878, 199,878, 12000-13000
+
+
+
+ * __LEXICON REALDECARABICsecond__ 19912,878 and 12000-13000
+
+
+ * __LEXICON REALDECARABICdec__ hyph and comma
+
+ * __LEXICON REALARABICsecondpart__ numbers like 199 878 and 199.878 
+
+ * __LEXICON REALARABICsecondpart_cont__ loop, to case suffix, to , or -, 
+
+
+ * __LEXICON REALARABICDECIM__ loop and to % and case suffix
+
+
+ * __LEXICON ARABIC__ +Sem/ID, +Ord
+
+
+ * __LEXICON ARABICLOOPS__
+
+
+ * __LEXICON ARABICSabcdef__
+
+
+ * __LEXICON ARABICDATE__
+
+ * __LEXICON ARABICDATEHYPH__
+
+ * __LEXICON ARABICDATENUM__
+
+ * __LEXICON ARABICDATENUM2__
+
+ * __LEXICON datetag_w_dot_cont__
+
+ * __LEXICON ARABICCLOCK__ is a regex for clock time.
+
+ * __LEXICON CLOCK-sep__ different separators for intervals, or one clock time only
+
+ * __LEXICON ARABICCLOCK2__ is the second component of intervals, idntical to ARABICCLOCK
+
+
+ * __LEXICON ARABICCLOCKDECIMALS__ is fractional seconds
+
+ * __LEXICON ARABICYEAR__
+
+ * __LEXICON numyear__
+
+ * __LEXICON moreyear__
+
+
+ * __LEXICON ARABICORD__
+
+
+
+
+
+ * __LEXICON REALARABICDELIMITER__
+
+
+ * __LEXICON ARABICLOOP__
+
+
+
+
+ * __LEXICON MARKDOT__
+
+
+
+
+ * __LEXICON ROMAN__  roman numerals
+
+
+ * __LEXICON ROM-SINGEL__
+
+
+ * __LEXICON ROM-THOUSAND__
+
+ * __LEXICON ROM-THOUSAND-TAG__
+
+ * __LEXICON ROM-HUNDRED__
+
+ * __LEXICON ROM-HUNDRED-TAG__
+
+ * __LEXICON ROM-TEN__
+
+ * __LEXICON ROM-TEN-TAG__
+
+ * __LEXICON ROM-ONE__
+
+ * __LEXICON ROM-ONE-TAG__
+
+
+ * __LEXICON ROM-SPLIT__
+
+
+
+ * __LEXICON 2ROMAN__
+
+ * __LEXICON 2ROM-THOUSAND__
+
+ * __LEXICON 2ROM-THOUSAND-TAG__
+
+ * __LEXICON 2ROM-HUNDRED__
+
+ * __LEXICON 2ROM-HUNDRED-TAG__
+
+ * __LEXICON 2ROM-TEN__
+
+ * __LEXICON 2ROM-TEN-TAG__
+
+ * __LEXICON 2ROM-ONE__
+
+ * __LEXICON 2ROM-ONE-TAG__
+
+
+
+
+
+ * __LEXICON ISOLATED-NUMEXP__ some isolated numeral expressions
+
+
+
+
+
+
+
+
+We describe here how abbreviations are in Faroese are read out, e.g.
+for text-to-speech systems.
+
+For example:
+
+ * s.:syntynyt # ;  
+ * os.:omaa% sukua # ;  
+ * v.:vuosi # ;  
+ * v.:vuonna # ;  
+ * esim.:esimerkki # ; 
+ * esim.:esimerkiksi # ; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% komma% :,      Root ;
+% tjuohkkis% :%. Root ;
+% kolon% :%:     Root ;
+% sárggis% :%-   Root ; 
+% násti% :%*     Root ; 
+

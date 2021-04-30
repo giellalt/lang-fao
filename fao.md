@@ -1,778 +1,3 @@
-# Faroese morphological analyser
-
- # Definitions for Multichar_Symbols
-
-
-
-
-## Tags for POS	
- * +N +V +A +Adv +Prop +Num : Open POS's	
- * +CC +CS +Interj +Pr +Pron +IM : Closed POS's	
- * +Pers +Det +Refl +Recipr +Poss +Dem : Pron types	
- * +Nom +Acc +Gen +Dat : Case			
- * +Msc +Fem +Neu : Gender		
- * +Sg +Pl : Number		
- * +Def +Indef : Definiteness	
- * +Comp +Superl : Comparison	
- * +Prs +Prt : Tense		
- * +1Sg : Person-Number
- * +2Sg : Person-Number
- * +3Sg : Person-Number
- * +Inf +PrfPtc +PrsPrc +Sup +Imp +Sbj +Subj : Verb forms	
- * +Cmp : Compound		
- * +Abbr +ABBR +ACR : Abbreviations, acronyms ,
- * +CLB +PUNCT +LEFT +RIGHT : Punctuation, parentheses
- * +Symbol : independent symbols in the text stream, like £, €, ©
- * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
-
-
- * +Sg3 : This is inherited from common files, should be changed to +3Sg.
-
- * +ABBR sub-pos
- * +Arab sub-pos
-
- * +Attr sub-pos
- * +Coll sub-pos
-
- * +Com samiske kasus, skal bort
- * +Dyn samiske kasus, skal bort
- * +Ela samiske kasus, skal bort
- * +Ess samiske kasus, skal bort
- * +Ill samiske kasus, skal bort
- * +Ine samiske kasus, skal bort
-
- * +MWE multiword expression
-
- * +Pos sjekk desse XXX
- * +Rom sjekk desse XXX
-
-
-
- * +Der/heit Derivation with -heit
-
- * +Der/A derivation to Adjective
- * +Der/Adv derivation to Adverb
-
- * +Ind
- * +Pass
- * +Interr
- * +Ord
-
-## Semantic tags
- * +Sem/Sur
- * +Sem/Mal
- * +Sem/Fem
- * +Sem/Plc
- * +Sem/Org
- * +Sem/Veh
- * +Sem/Fem
-
- * +Sem/Year - year (i.e. 1000 - 2999), used only for numerals 
-
-
- * +Sem/Amount
- * +Sem/Build
- * +Sem/Build-room
- * +Sem/Cat
- * +Sem/Curr
- * +Sem/Date
- * +Sem/Domain
- * +Sem/Domain_Hum
- * +Sem/Dummytag
- * +Sem/Edu_Hum
- * +Sem/Event
- * +Sem/Food-med
- * +Sem/Group_Hum
- * +Sem/Hum
- * +Sem/ID
- * +Sem/Lang
- * +Sem/Mat
- * +Sem/Measr
- * +Sem/Money
- * +Sem/Obj
- * +Sem/Obj-el
- * +Sem/Obj-ling
- * +Sem/Org_Prod-audio
- * +Sem/Org_Prod-vis
- * +Sem/Part
- * +Sem/Prod-vis
- * +Sem/Route
- * +Sem/Rule
- * +Sem/Sign
- * +Sem/State
- * +Sem/State-sick
- * +Sem/Substnc
- * +Sem/Time
- * +Sem/Time-clock
- * +Sem/Tool-it
- * +Sem/Txt
-
-
-
- * **+Gram/TAbbr**:  Transitive abbreviation (it needs an argument)
- * **+Gram/NoAbbr**:  Intransitive abbreviations that are homonymous
-   with more frequent words. They should only be considered
-   abbreviations in the middle of a sentence.
- * **+Gram/TNumAbbr**:  Transitive abbreviation if the following
-            constituent is numeric
- * **+Gram/NumNoAbbr**:  Transitive abbreviations for which numerals
-are complements and normal words. The abbreviation usage
-is less common and thus only the occurences in the middle of
-the sentence can be considered as true cases.
- * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
- * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
-
-
-
-
-
-## Non-changing letters
- * a2 This is for a special a Umlaut case
- * g2 i2 j2 t2 v2 
-
- * +v1 +v2 : different paradigms   ,
-
-## Triggers for Morphophonology
- * %^UUML %^IUML %^eIUML %^ØUML : Umlaut types ,
- * %^W %^JI : Cns changes ,
- * %^EPH %^OEA : Epenthesis,  ,
- * %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL : Cns deletion triggers,
- * %^EIO %^OA %^WVV %^EDH %^VSH : TODO ,
- * %^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7 : Ablaut series ,
- * %^aAB %^uAB : More Ablaut ,
- * %^NGKK : NG to KK	,
- * %^PASS : todo ,
-
- * %> : Suffix boundary ,
-
- * **+v1** - Paradigm identifier (e.g. gera+v1 = ger)
- * **+v2** - Paradigm identifier (e.g. gera+v2 = gerar)
-
-
-
-Language tags
-
- * +OLang/ENG
- * +OLang/FIN
- * +OLang/NNO
- * +OLang/NOB
- * +OLang/RUS
- * +OLang/SMA
- * +OLang/SME
- * +OLang/SWE
- * +OLang/UND
-
-
-## Non-ascii letters, perhaps needed as multichar symbols
- * æ ø å
- * á é í ó ú ý Á É Í Ó Ý
- * ä ö ü Ä Ö Ö
-
-## Compounding tags
-
-The tags are of the following form:
-* **+CmpNP/xxx** - Normative (N), Position (P), ie the tag describes what
-                   position the tagged word can be in in a compound
-* **+CmpN/xxx**  - Normative (N) **form** ie the tag describes what
-                   form the tagged word should use when making compounds
-* **+Cmp/xxx**   - Descriptive compounding tags, ie tags that *describes*
-                   what form a word actually is using in a compound
-
-This entry / word should be in the following position(s):
-
- * **+CmpNP/All** - ... in all positions, **default**, this tag does not have to be written
- * **+CmpNP/First** - ... only be first part in a compound or alone
- * **+CmpNP/Pref** - ... only **first** part in a compound, NEVER alone
- * **+CmpNP/Last** - ... only be last part in a compound or alone
- * **+CmpNP/Suff** - ... only **last** part in a compound, NEVER alone
- * **+CmpNP/None** - ... does not take part in compounds
- * **+CmpNP/Only** - ... only be part of a compound, i.e. can never
-                    be used alone, but can appear in any position
-
-
-## Usage tags
-
- * +Use/Disamb = Use only in disambiguator/tokeniser analyser
- * +Use/Circ = for compound restrictions
-
- * **+Use/PMatch** means that the following is only used in the analyser feeding the disambiguator. This is missing.
-
- * +Use/-PMatch
- * +Use/-Spell
- * +Use/NG
- * +Use/NGA
- * +Use/SpellNoSugg
- * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
-
- * +Err/Guess : Tag for Name Guesser component
- * +Err/Orth : Marking forms that are orthographical errors
- * +Err/Hyph
- * +Err/Lex
- * +Err/SpaceCmp
- * +Err/MissingSpace
-
-## Symbols that need to be escaped on the lower side (towards twolc):
-Todo: Check whether these can be removed. They are probably obsolete.
-
- * »7 : Literal » 
- * «7 : Literal «
-```
- %[%>%] - Literal >
- %[%<%] - Literal <
-```
-
-
-## Flag diacritics
-
-We have manually optimised the structure of our lexicon using following
-flag diacritics to restrict morhpological combinatorics - only allow compounds
-with verbs if the verb is further derived into a noun again:
-
- |  @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
- |  @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
- |  @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
-
-### Flags for speller suggestions
-
- |  @D.ErrOrth.ON@ 
- |  @C.ErrOrth@ 
- |  @P.ErrOrth.ON@ 
- |  @R.ErrOrth.ON@ 
-
-### Flag for case harmony in compounds
-
-Set flag for compounds
-
-|                        Flag | Example word
-|                        ---- | ----
- |  @P.Case.MscNom@ | fyrstiflokkur
- |  @P.Case.MscObl@ | fyrstaflokk
- |  @P.Case.FemNom@ | lítlasystir
- |  @P.Case.FemObl@ | lítluusystur
- |  @P.Case.Neu@ | breiðaskarð
- |  @P.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
-
-Control flag values for compounds
-
-|                        Flag | Example word
-|                        ---- | ----
- |  @R.Case.MscNom@ | fyrstiflokkur
- |  @R.Case.MscObl@ | fyrstaflokk
- |  @R.Case.FemNom@ | lítlasystir
- |  @R.Case.FemObl@ | lítluusystur
- |  @R.Case.Neu@ | breiðaskarð
- |  @R.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
-
-Control flag values for compounds
-
-|                        Flag | Example word
-|                        ---- | ----
- |  @U.Case.MscNom@ | fyrstiflokkur
- |  @U.Case.MscObl@ | fyrstaflokk
- |  @U.Case.FemNom@ | lítlasystir
- |  @U.Case.FemObl@ | lítluusystur
- |  @U.Case.Neu@ | breiðaskarð
- |  @U.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
-
-Flag diacritic look-alikes for grammar checker & tokenisation purposes
-
-|                        Flag | Explanation
-|                        ---- | ----
- |  @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
- |  @P.Pmatch.Backtrack@ | Also for hfst-pmatch 
-
-
-### Flags for compound restriction
-
-For languages that allow compounding, the following flag diacritics are needed
-to control position-based compounding restrictions for nominals. Their use is
-handled automatically if combined with +CmpN/xxx tags. If not used, they will
-do no harm.
-
-|                        Flag | Explanation
-|                        ---- | ----
- |  @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
- |  @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
- |  @P.CmpPref.FALSE@ | Block these words from making further compounds
- |  @D.CmpLast.TRUE@ | Block such words from entering R
- |  @D.CmpNone.TRUE@ | Combines with the next tag to prohibit compounding
- |  @U.CmpNone.FALSE@ | Combines with the prev tag to prohibit compounding
- |  @P.CmpOnly.TRUE@ | Sets a flag to indicate that the word has passed R
- |  @D.CmpOnly.FALSE@ | Disallow words coming directly from root.
-
-Use the following flag diacritics to control downcasing of derived proper
-nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
-these flags. There exists a ready-made regex that will do the actual down-casing
-given the proper use of these flags.
- |  @U.Cap.Obl@ | Allowing downcasing of derived names: deatnulasj.
- |  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
-
-
-
-
-# Lexicon Root
-This is the beginning of everything. The **Root** lexicon is reserved in the
-LexC language, and must be the first lexicon defined.
-
-
- * Nouns ; 
- * Shortnouns ;  1- and 2-letter nouns excluded from compounding
- * Propernouns ; 
- * Adjectives ; 
- * Shortadjectives ; 
- * Verbs ; 
- * Adverb ; 
- * Conjunction ; 
- * Subjunction ; 
- * Interjection ; 
- * Numeral ; 
- * Determiner ; 
- * Pronoun ; 
- * Preposition ; 
- * Punctuation ; 
- * Symbols ; 
- * Abbreviation ; 
- * Acronyms ; 
-
-Lexicon Acronyms is split in two:
- * Acronym-fao ; for fao acronyms
- * Acronym-smi ; for language independent acronums
-
-
-# Lexicon ENDLEX
-And this is the ENDLEX of everything:
-```
- @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ ENDLEX2 ;
-```
-The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
-with +CmpNP/Only to end here.
-The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
-
-
-
-
-
-# Abbreviation affixes
-
-Now splitting according to POS, and according to dot or not
-
-First collecting POS info, *-noun, *-adv, etc.
-Also splitting when in doubt: -noun-adj => -noun and -adj
-Then pointing to two contlexes, a dot-one and a non-dot-one.
-
-
-
-
-
-
-### Lexicons without final period
-
-
-
-
-### Lexicons with final period
-
- * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
-
- * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
-
-
-
-
- * **LEXICON nodot-infl   **
-
- * **LEXICON dot-infl   **
-
- * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
-
-
-
-
-
-
-
-
-
-# North Saami acronyms - affix part
-
-## The lexica giving tags and suffixes to the acronyms
-
-
-
-
- * **LEXICON ACRONOUN   ** is the lexicon for **nouns** (not +Prop) like ATV
-
- * **LEXICON UNIT   **  As acro, but without paradigm
-
-
-
-
-
-
-
-
-
- * **LEXICON acroconnector   ** Here comes a set of possible symbols to
-put between the abbreviation and its suffix
-
- * **LEXICON acronull   **  for suffixless forms, redirecting to K_only for clitic forms
-
-
-# Adjective morphology !
-
-## Ad hoc lexica
-
-
-
-## The lexicons
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Irregular adjectives
-
-
-
-
-
-
-
-
-###  Irregular comparatives
-
-
-
-
-
-
-
-
-
-# Intermediate adjectival lexica
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Adjectival case lexica
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Msc
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Neu
-
-
-
-
-
-
-
-
-
-
-
-###  Definite declension
-
-
-
-Positiv, def, u-umlj
-Msc
-
-Fem
-
-
-
-Neu
-
-
-Positiv, def, ø-umlj
-Msc
-
-Fem
-Neu
-
-
-
-Gender tags
-
-
-
-
-
-Case tags
-
-
-
-
-
-
-
-
-Compound flags
-
-
-
-
-
-
-
-
-
-
-
-
-# Comparative
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Superlative
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Faroese adjectives 
-
-
-The adjectives and their inflectional codes 
-are taken from "Føroysk orðabók".
-
-## The list of ajectives
-
-
-
-
-
-**Adjectives** for the list of adjectives
-
-### Irregular comparatives and superlatives
-
-
-
-### Prefixed present participles
-
-
-### Regular adjectives, systematic list
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Faroese Noun morphology 
 
 
@@ -1769,136 +994,6 @@ the ways stems may be combined.
 **Pl_Flag** for 
 
 
-# Faroese noun stem file
-
-The lexicon names are taken from
-Føroysk orðabók I-II (FO). Reference is
-made to Thráinsson & al ("fg").
-
-Note that in some cases, the lexicon names and stems here
-deviate from FO. In that case the lexica have names ending
-in wordforms, written in capital lettes.
-
-## Short lexica
-
-**Shortnouns** for  1, 2 and 3 letter nouns excluded from compounding
-
-These are now always excluded from lastpart compound
-and in norm from first-part compounding as well
-
-
-
-
-
-
-
-
-
-## The main list of nouns
-
-Her kjem alle substantiva. Dei er baklengssortert.
-leksikon som byrjar med x er ikkje manuelt sjekka.
-
-**Nouns**
-
-Fila inneheld i underkant av 50000 lemma.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Faroese Numerals
-
-
-
-**Numeral** splitting in types
- * Textual ;  
- * ARABICS ;  
- * ARABICORD ;  
- * ROMAN ;  
- * ISOLATED-NUMEXP ;  
- * NUM-PREFIXES ;  
-
-
-
-
-   **1-9** 
-
-
-
-   **TRÝsplit** 
-
-   **nsplit** 
-
-   **TEXTTENS** 
-
-
-   **TEXTTEENS** 
-
-   **basic** 
-
-
-
-   **EITT** 
-
-   **TVEY** 
-
-   **TRÝ** 
-
-   **PAIRNUM** 
-
-   **n** 
-
-
-## Ordinals
-
-   **ordinals** 
-
-   **ord_decl** 
-
-   **ANNAR** 
-
-   **ANNARMORPH** 
-
-
-
-# Numeral affixess
-
-This lexicon just goes to #, this in order to coexist with number files in giella-shared.
-They are relevant for Sámi, not for faroese.
-
-Lexica: 
-
- * LEXICON DIGITCASE 				 # ;		 
- * LEXICON ARABICCASE 				 # ;		 
- * LEXICON ARABICCASE0 				 # ;	 
- * LEXICON ARABICCASECOLL 				 # ;	 
- * LEXICON ARABICCASEORD 				 # ;	 
- * LEXICON ARABICCASEORD-ERR 				 # ; 
- * LEXICON ARABICCASES 				 # ;	 
- * LEXICON ARABICCOMPOUNDS 			 # ;	 
- * LEXICON ROMNUMTAGOBL 				 # ;	 
- * LEXICON dateyearcase 				 # ;	 
- * LEXICON dateyearcase_fullsuff 		 # ;	 
- * LEXICON dateyearcase_nullsuff_w_dot  # ;	 
-
-
-
-
-
-
 # Proper nouns 
 
 ## Table of content
@@ -2058,7 +1153,389 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 
 
+
+# North Saami acronyms - affix part
+
+## The lexica giving tags and suffixes to the acronyms
+
+
+
+
+ * **LEXICON ACRONOUN   ** is the lexicon for **nouns** (not +Prop) like ATV
+
+ * **LEXICON UNIT   **  As acro, but without paradigm
+
+
+
+
+
+
+
+
+
+ * **LEXICON acroconnector   ** Here comes a set of possible symbols to
+put between the abbreviation and its suffix
+
+ * **LEXICON acronull   **  for suffixless forms, redirecting to K_only for clitic forms
+
+
+
 # Symbol affixes
+
+
+
+
+
+# Abbreviation affixes
+
+Now splitting according to POS, and according to dot or not
+
+First collecting POS info, *-noun, *-adv, etc.
+Also splitting when in doubt: -noun-adj => -noun and -adj
+Then pointing to two contlexes, a dot-one and a non-dot-one.
+
+
+
+
+
+
+### Lexicons without final period
+
+
+
+
+### Lexicons with final period
+
+ * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
+
+
+
+
+ * **LEXICON nodot-infl   **
+
+ * **LEXICON dot-infl   **
+
+ * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+
+
+
+
+
+
+
+# Adjective morphology !
+
+## Ad hoc lexica
+
+
+
+## The lexicons
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Irregular adjectives
+
+
+
+
+
+
+
+
+###  Irregular comparatives
+
+
+
+
+
+
+
+
+
+# Intermediate adjectival lexica
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Adjectival case lexica
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Msc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Neu
+
+
+
+
+
+
+
+
+
+
+
+###  Definite declension
+
+
+
+Positiv, def, u-umlj
+Msc
+
+Fem
+
+
+
+Neu
+
+
+Positiv, def, ø-umlj
+Msc
+
+Fem
+Neu
+
+
+
+Gender tags
+
+
+
+
+
+Case tags
+
+
+
+
+
+
+
+
+Compound flags
+
+
+
+
+
+
+
+
+
+
+
+
+# Comparative
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Superlative
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2628,73 +2105,49 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 
 
+# Numeral affixess
 
-# Faroese verbs 
+This lexicon just goes to #, this in order to coexist with number files in giella-shared.
+They are relevant for Sámi, not for faroese.
 
-**Verbs**
+Lexica: 
 
-## Some irregular verbs
-*mega, eiga, eita, gráta, ...* and 15 more
-
-
-some irregular passive verbs: høggast, loypast
-
-
-
-
-
-
-
-
-
-## The long verb list
-
-The lexica listed here represent the declension patterns
-presented in Føroysk orðabók. The lexicon names correspond to the
-declension codes in the dictionary.
-
-
- * fakturera:fakturer s30 ;   
- * formturka:form#turk s30 ;   
- * svørja:svør s10 ;   
- * almannakunngera:al#manna#kunng s31 ;    
- * gjøgnumføra:gjøgnum#før s1 ;   
- * innføra:inn#før s1 ;   
- * útføra:út#før s1 ;   
- * innvíga:inn#víg s1 ;   
- * annleggja:ann#l s20 ;   ... and more than 6000 more.
+ * LEXICON DIGITCASE 				 # ;		 
+ * LEXICON ARABICCASE 				 # ;		 
+ * LEXICON ARABICCASE0 				 # ;	 
+ * LEXICON ARABICCASECOLL 				 # ;	 
+ * LEXICON ARABICCASEORD 				 # ;	 
+ * LEXICON ARABICCASEORD-ERR 				 # ; 
+ * LEXICON ARABICCASES 				 # ;	 
+ * LEXICON ARABICCOMPOUNDS 			 # ;	 
+ * LEXICON ROMNUMTAGOBL 				 # ;	 
+ * LEXICON dateyearcase 				 # ;	 
+ * LEXICON dateyearcase_fullsuff 		 # ;	 
+ * LEXICON dateyearcase_nullsuff_w_dot  # ;	 
 
 
 
 
 
 
+# Compounding morphology
 
 
 
+# Lexicon R gets flags and sends compounds over to RReal
+ @P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ;  are Flags to control compounding
 
-Simple declension class verbs
+# Lexicon RReal is the lexicon for the Cmp tag and resending to N, A
+ *  +Cmp#: Nouns ;          
+ *  +Cmp#: Adjectives ;    
+           R-    ;        
 
+# Lexicon R- for compounds with hyphen
+  +Cmp#:%- Nouns ;    
+  +Cmp#:%- Adjectives ;    
 
-
-
-
-
-
-
-Still to be classified
-
-
-
-
-Double declension class verbs
-
-
-
-
-
-Finally some candidates to be considered for verb compounding.
-
+# Lexicon RNum for compounds numeral + noun
+       +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ;    For Num Cmp Noun, vi vil ikke ha Num Cmp Num
 # The Faroese morphophonological file 
 
 ## Alphabet
@@ -3155,5 +2608,896 @@ Vowel rules
 
 **ð Deletion in front of Pass** 
 
+
+
+# Faroese morphological analyser
+
+ # Definitions for Multichar_Symbols
+
+
+
+
+## Tags for POS	
+ * +N +V +A +Adv +Prop +Num : Open POS's	
+ * +CC +CS +Interj +Pr +Pron +IM : Closed POS's	
+ * +Pers +Det +Refl +Recipr +Poss +Dem : Pron types	
+ * +Nom +Acc +Gen +Dat : Case			
+ * +Msc +Fem +Neu : Gender		
+ * +Sg +Pl : Number		
+ * +Def +Indef : Definiteness	
+ * +Comp +Superl : Comparison	
+ * +Prs +Prt : Tense		
+ * +1Sg : Person-Number
+ * +2Sg : Person-Number
+ * +3Sg : Person-Number
+ * +Inf +PrfPtc +PrsPrc +Sup +Imp +Sbj +Subj : Verb forms	
+ * +Cmp : Compound		
+ * +Abbr +ABBR +ACR : Abbreviations, acronyms ,
+ * +CLB +PUNCT +LEFT +RIGHT : Punctuation, parentheses
+ * +Symbol : independent symbols in the text stream, like £, €, ©
+ * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
+
+
+ * +Sg3 : This is inherited from common files, should be changed to +3Sg.
+
+ * +ABBR sub-pos
+ * +Arab sub-pos
+
+ * +Attr sub-pos
+ * +Coll sub-pos
+
+ * +Com samiske kasus, skal bort
+ * +Dyn samiske kasus, skal bort
+ * +Ela samiske kasus, skal bort
+ * +Ess samiske kasus, skal bort
+ * +Ill samiske kasus, skal bort
+ * +Ine samiske kasus, skal bort
+
+ * +MWE multiword expression
+
+ * +Pos sjekk desse XXX
+ * +Rom sjekk desse XXX
+
+
+
+ * +Der/heit Derivation with -heit
+
+ * +Der/A derivation to Adjective
+ * +Der/Adv derivation to Adverb
+
+ * +Ind
+ * +Pass
+ * +Interr
+ * +Ord
+
+## Semantic tags
+ * +Sem/Sur
+ * +Sem/Mal
+ * +Sem/Fem
+ * +Sem/Plc
+ * +Sem/Org
+ * +Sem/Veh
+ * +Sem/Fem
+
+ * +Sem/Year - year (i.e. 1000 - 2999), used only for numerals 
+
+
+ * +Sem/Amount
+ * +Sem/Build
+ * +Sem/Build-room
+ * +Sem/Cat
+ * +Sem/Curr
+ * +Sem/Date
+ * +Sem/Domain
+ * +Sem/Domain_Hum
+ * +Sem/Dummytag
+ * +Sem/Edu_Hum
+ * +Sem/Event
+ * +Sem/Food-med
+ * +Sem/Group_Hum
+ * +Sem/Hum
+ * +Sem/ID
+ * +Sem/Lang
+ * +Sem/Mat
+ * +Sem/Measr
+ * +Sem/Money
+ * +Sem/Obj
+ * +Sem/Obj-el
+ * +Sem/Obj-ling
+ * +Sem/Org_Prod-audio
+ * +Sem/Org_Prod-vis
+ * +Sem/Part
+ * +Sem/Prod-vis
+ * +Sem/Route
+ * +Sem/Rule
+ * +Sem/Sign
+ * +Sem/State
+ * +Sem/State-sick
+ * +Sem/Substnc
+ * +Sem/Time
+ * +Sem/Time-clock
+ * +Sem/Tool-it
+ * +Sem/Txt
+
+
+
+ * **+Gram/TAbbr**:  Transitive abbreviation (it needs an argument)
+ * **+Gram/NoAbbr**:  Intransitive abbreviations that are homonymous
+   with more frequent words. They should only be considered
+   abbreviations in the middle of a sentence.
+ * **+Gram/TNumAbbr**:  Transitive abbreviation if the following
+            constituent is numeric
+ * **+Gram/NumNoAbbr**:  Transitive abbreviations for which numerals
+are complements and normal words. The abbreviation usage
+is less common and thus only the occurences in the middle of
+the sentence can be considered as true cases.
+ * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
+ * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
+
+
+
+
+
+## Non-changing letters
+ * a2 This is for a special a Umlaut case
+ * g2 i2 j2 t2 v2 
+
+ * +v1 +v2 : different paradigms   ,
+
+## Triggers for Morphophonology
+ * %^UUML %^IUML %^eIUML %^ØUML : Umlaut types ,
+ * %^W %^JI : Cns changes ,
+ * %^EPH %^OEA : Epenthesis,  ,
+ * %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL %^RDEL : Cns deletion triggers,
+ * %^EIO %^OA %^WVV %^EDH %^VSH : TODO ,
+ * %^AB1 %^AB2 %^AB3 %^AB4 %^AB5 %^AB6 %^AB7 : Ablaut series ,
+ * %^aAB %^uAB : More Ablaut ,
+ * %^NGKK : NG to KK	,
+ * %^PASS : todo ,
+
+ * %> : Suffix boundary ,
+
+ * **+v1** - Paradigm identifier (e.g. gera+v1 = ger)
+ * **+v2** - Paradigm identifier (e.g. gera+v2 = gerar)
+
+
+
+Language tags
+
+ * +OLang/ENG
+ * +OLang/FIN
+ * +OLang/NNO
+ * +OLang/NOB
+ * +OLang/RUS
+ * +OLang/SMA
+ * +OLang/SME
+ * +OLang/SWE
+ * +OLang/UND
+
+
+## Non-ascii letters, perhaps needed as multichar symbols
+ * æ ø å
+ * á é í ó ú ý Á É Í Ó Ý
+ * ä ö ü Ä Ö Ö
+
+## Compounding tags
+
+The tags are of the following form:
+* **+CmpNP/xxx** - Normative (N), Position (P), ie the tag describes what
+                   position the tagged word can be in in a compound
+* **+CmpN/xxx**  - Normative (N) **form** ie the tag describes what
+                   form the tagged word should use when making compounds
+* **+Cmp/xxx**   - Descriptive compounding tags, ie tags that *describes*
+                   what form a word actually is using in a compound
+
+This entry / word should be in the following position(s):
+
+ * **+CmpNP/All** - ... in all positions, **default**, this tag does not have to be written
+ * **+CmpNP/First** - ... only be first part in a compound or alone
+ * **+CmpNP/Pref** - ... only **first** part in a compound, NEVER alone
+ * **+CmpNP/Last** - ... only be last part in a compound or alone
+ * **+CmpNP/Suff** - ... only **last** part in a compound, NEVER alone
+ * **+CmpNP/None** - ... does not take part in compounds
+ * **+CmpNP/Only** - ... only be part of a compound, i.e. can never
+                    be used alone, but can appear in any position
+
+
+## Usage tags
+
+ * +Use/Disamb = Use only in disambiguator/tokeniser analyser
+ * +Use/Circ = for compound restrictions
+
+ * **+Use/PMatch** means that the following is only used in the analyser feeding the disambiguator. This is missing.
+
+ * +Use/-PMatch
+ * +Use/-Spell
+ * +Use/NG
+ * +Use/NGA
+ * +Use/SpellNoSugg
+ * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
+
+ * +Err/Guess : Tag for Name Guesser component
+ * +Err/Orth : Marking forms that are orthographical errors
+ * +Err/Hyph
+ * +Err/Lex
+ * +Err/SpaceCmp
+ * +Err/MissingSpace
+
+## Symbols that need to be escaped on the lower side (towards twolc):
+Todo: Check whether these can be removed. They are probably obsolete.
+
+ * »7 : Literal » 
+ * «7 : Literal «
+```
+ %[%>%] - Literal >
+ %[%<%] - Literal <
+```
+
+
+## Flag diacritics
+
+We have manually optimised the structure of our lexicon using following
+flag diacritics to restrict morhpological combinatorics - only allow compounds
+with verbs if the verb is further derived into a noun again:
+
+ |  @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
+ |  @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
+ |  @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
+
+### Flags for speller suggestions
+
+ |  @D.ErrOrth.ON@ 
+ |  @C.ErrOrth@ 
+ |  @P.ErrOrth.ON@ 
+ |  @R.ErrOrth.ON@ 
+
+### Flag for case harmony in compounds
+
+Set flag for compounds
+
+|                        Flag | Example word
+|                        ---- | ----
+ |  @P.Case.MscNom@ | fyrstiflokkur
+ |  @P.Case.MscObl@ | fyrstaflokk
+ |  @P.Case.FemNom@ | lítlasystir
+ |  @P.Case.FemObl@ | lítluusystur
+ |  @P.Case.Neu@ | breiðaskarð
+ |  @P.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+
+Control flag values for compounds
+
+|                        Flag | Example word
+|                        ---- | ----
+ |  @R.Case.MscNom@ | fyrstiflokkur
+ |  @R.Case.MscObl@ | fyrstaflokk
+ |  @R.Case.FemNom@ | lítlasystir
+ |  @R.Case.FemObl@ | lítluusystur
+ |  @R.Case.Neu@ | breiðaskarð
+ |  @R.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+
+Control flag values for compounds
+
+|                        Flag | Example word
+|                        ---- | ----
+ |  @U.Case.MscNom@ | fyrstiflokkur
+ |  @U.Case.MscObl@ | fyrstaflokk
+ |  @U.Case.FemNom@ | lítlasystir
+ |  @U.Case.FemObl@ | lítluusystur
+ |  @U.Case.Neu@ | breiðaskarð
+ |  @U.Case.Pl@ | fyrstuflokkar, lítlusystrar, breiðuskørð
+
+Flag diacritic look-alikes for grammar checker & tokenisation purposes
+
+|                        Flag | Explanation
+|                        ---- | ----
+ |  @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
+ |  @P.Pmatch.Backtrack@ | Also for hfst-pmatch 
+
+
+### Flags for compound restriction
+
+For languages that allow compounding, the following flag diacritics are needed
+to control position-based compounding restrictions for nominals. Their use is
+handled automatically if combined with +CmpN/xxx tags. If not used, they will
+do no harm.
+
+|                        Flag | Explanation
+|                        ---- | ----
+ |  @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
+ |  @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
+ |  @P.CmpPref.FALSE@ | Block these words from making further compounds
+ |  @D.CmpLast.TRUE@ | Block such words from entering R
+ |  @D.CmpNone.TRUE@ | Combines with the next tag to prohibit compounding
+ |  @U.CmpNone.FALSE@ | Combines with the prev tag to prohibit compounding
+ |  @P.CmpOnly.TRUE@ | Sets a flag to indicate that the word has passed R
+ |  @D.CmpOnly.FALSE@ | Disallow words coming directly from root.
+
+Use the following flag diacritics to control downcasing of derived proper
+nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
+these flags. There exists a ready-made regex that will do the actual down-casing
+given the proper use of these flags.
+ |  @U.Cap.Obl@ | Allowing downcasing of derived names: deatnulasj.
+ |  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
+
+
+
+
+# Lexicon Root
+This is the beginning of everything. The **Root** lexicon is reserved in the
+LexC language, and must be the first lexicon defined.
+
+
+ * Nouns ; 
+ * Shortnouns ;  1- and 2-letter nouns excluded from compounding
+ * Propernouns ; 
+ * Adjectives ; 
+ * Shortadjectives ; 
+ * Verbs ; 
+ * Adverb ; 
+ * Conjunction ; 
+ * Subjunction ; 
+ * Interjection ; 
+ * Numeral ; 
+ * Determiner ; 
+ * Pronoun ; 
+ * Preposition ; 
+ * Punctuation ; 
+ * Symbols ; 
+ * Abbreviation ; 
+ * Acronyms ; 
+
+Lexicon Acronyms is split in two:
+ * Acronym-fao ; for fao acronyms
+ * Acronym-smi ; for language independent acronums
+
+
+# Lexicon ENDLEX
+And this is the ENDLEX of everything:
+```
+ @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ ENDLEX2 ;
+```
+The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
+with +CmpNP/Only to end here.
+The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
+
+
+
+
+
+# Faroese noun stem file
+
+The lexicon names are taken from
+Føroysk orðabók I-II (FO). Reference is
+made to Thráinsson & al ("fg").
+
+Note that in some cases, the lexicon names and stems here
+deviate from FO. In that case the lexica have names ending
+in wordforms, written in capital lettes.
+
+## Short lexica
+
+**Shortnouns** for  1, 2 and 3 letter nouns excluded from compounding
+
+These are now always excluded from lastpart compound
+and in norm from first-part compounding as well
+
+
+
+
+
+
+
+
+
+## The main list of nouns
+
+Her kjem alle substantiva. Dei er baklengssortert.
+leksikon som byrjar med x er ikkje manuelt sjekka.
+
+**Nouns**
+
+Fila inneheld i underkant av 50000 lemma.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Proper nouns 
+
+Table of content
+* The name lexica
+    -   - mal
+    -   - fem
+    -   - plc
+    -   - sur       
+
+## Splitting into name types
+
+
+   **Propernouns** splitting in 3 lexica: **multipartnames, names, guess**
+
+
+   **multipartnames** contains only 3 names for now
+
+   **names** gives the list of names.
+
+
+
+
+
+
+
+
+# Akronymer !
+
+   **Acronym-fao** 
+
+
+
+
+
+
+   **Akronymnumeralier**  for 0-9
+
+   **anl**  send numvers too letterloops
+
+
+
+# Faroese pronouns
+
+
+   **Pronoun** splitting into 3 sublexica:
+ 1. Personal ;        
+ 1. Reflexive ;        
+ 1. Interrogative ;    
+ 1. Indefinite ;       
+
+   **Personal** for the personal pronouns
+
+
+
+
+
+   **egtu-obl** 
+
+   **okkumtykkum** 
+
+   **S_okkumtykkum** 
+
+
+   **3obl** 
+
+   **Reflexive** 
+
+
+
+   **Interrogative** 
+
+
+   **EIN** 
+
+   **ANNAR_P** 
+
+   **EINHVOR** 
+
+   **ANNARHVOR** 
+
+   **HANNSJALVUR** 
+
+
+   **Indefinite** 
+
+
+
+
+
+
+   **ONKUR** 
+
+   **NAKAR** 
+
+   **BADIR** 
+
+   **HVORGIN** 
+
+   **EINGIN** 
+
+
+
+
+
+
+
+# Interjections
+
+The tag +Interj
+
+   **Interj** 
+
+The words
+
+   **Interjection** okey, ááá, aj, huff, ...
+
+# Faroese deternminers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# File containing Faroese abbreviations 
+
+Lexica for adding tags and periods
+
+The idea is (or may be) to use both common and language-speicfic abbreviations.
+
+Splitting in 3 groups, because of the preprocessor
+
+**Abbreviation**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dot% noStb.db
+Abbreviations that never induce sentence boundaries
+The file is too large and should be shrinked
+
+
+
+# Faroese adverbs
+
+
+   **adv** for the tag +Adv
+
+   **advcomp** for the tag +Adv+Cmp
+
+   **advsuperl** for the tag +Adv+Superl
+
+   **Adverb** for the list of appr 1000 adverbs
+
+
+ * í% gjár adv ; 
+ * í% fjør adv ; 
+ * ókynjað adv ; 
+ * suðuri adv ; 
+ * eystarlaga adv ; 
+ * útúr adv ; 
+ * hvaðani adv ; 
+ * síðla adv ; 
+ * allastaðnar adv ; 
+ * forskelligastaðnar adv ; 
+ * nógvastaðnar adv ; 
+ * onkrastaðnar adv ; 
+ * ymsastaðnis adv ; 
+ * líkafram adv ; 
+ * aftanáaftur adv ; 
+...
+
+# Faroese adjectives 
+
+
+The adjectives and their inflectional codes 
+are taken from "Føroysk orðabók".
+
+## The list of ajectives
+
+
+
+
+
+**Adjectives** for the list of adjectives
+
+### Irregular comparatives and superlatives
+
+
+
+### Prefixed present participles
+
+
+### Regular adjectives, systematic list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Faroese subjunctions
+
+   **CStag** FOR THE +CS TAG
+
+   **IMtag** FOR THE +MM tag of the infinitive marker
+
+   **Subjunction** the list, some 10-20 CSs.
+ * tí CStag ;    
+ * tá% ið CStag ;    
+
+# Faroese verbs 
+
+**Verbs**
+
+## Some irregular verbs
+*mega, eiga, eita, gráta, ...* and 15 more
+
+
+some irregular passive verbs: høggast, loypast
+
+
+
+
+
+
+
+
+
+## The long verb list
+
+The lexica listed here represent the declension patterns
+presented in Føroysk orðabók. The lexicon names correspond to the
+declension codes in the dictionary.
+
+
+ * fakturera:fakturer s30 ;   
+ * formturka:form#turk s30 ;   
+ * svørja:svør s10 ;   
+ * almannakunngera:al#manna#kunng s31 ;    
+ * gjøgnumføra:gjøgnum#før s1 ;   
+ * innføra:inn#før s1 ;   
+ * útføra:út#før s1 ;   
+ * innvíga:inn#víg s1 ;   
+ * annleggja:ann#l s20 ;   ... and more than 6000 more.
+
+
+
+
+
+
+
+
+
+
+Simple declension class verbs
+
+
+
+
+
+
+
+
+Still to be classified
+
+
+
+
+Double declension class verbs
+
+
+
+
+
+Finally some candidates to be considered for verb compounding.
+
+# The Faroese conjunctions
+
+   **CCtag** for the +CC tag.
+
+   **Conjunction** for the list of 10 or so conjunctions.
+# Faroese prepositions
+
+We should eventually have syntactic tags here...
+
+## Tags
+**p** for the tag +Pr
+
+## The list of prepositions
+
+**Preposition** for the list of prepositions, ordered according to case they select for.
+
+
+
+### Several cases
+
+
+### Accusative or dative
+| --- 
+
+### Accusative or genitive
+
+
+### Accusative
+
+###  Dative
+
+
+# Faroese Numerals
+
+
+
+**Numeral** splitting in types
+ * Textual ;  
+ * ARABICS ;  
+ * ARABICORD ;  
+ * ROMAN ;  
+ * ISOLATED-NUMEXP ;  
+ * NUM-PREFIXES ;  
+
+
+
+
+   **1-9** 
+
+
+
+   **TRÝsplit** 
+
+   **nsplit** 
+
+   **TEXTTENS** 
+
+
+   **TEXTTEENS** 
+
+   **basic** 
+
+
+
+   **EITT** 
+
+   **TVEY** 
+
+   **TRÝ** 
+
+   **PAIRNUM** 
+
+   **n** 
+
+
+## Ordinals
+
+   **ordinals** 
+
+   **ord_decl** 
+
+   **ANNAR** 
+
+   **ANNARMORPH** 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% komma% :,      Root ;
+% tjuohkkis% :%. Root ;
+% kolon% :%:     Root ;
+% sárggis% :%-   Root ; 
+% násti% :%*     Root ; 
+
+
+
+
+We describe here how abbreviations are in Faroese are read out, e.g.
+for text-to-speech systems.
+
+For example:
+
+ * s.:syntynyt # ;  
+ * os.:omaa% sukua # ;  
+ * v.:vuosi # ;  
+ * v.:vuonna # ;  
+ * esim.:esimerkki # ; 
+ * esim.:esimerkiksi # ; 
 
 

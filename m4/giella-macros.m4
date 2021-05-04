@@ -312,8 +312,16 @@ AC_CACHE_CHECK([for awk that supports gensub], [ac_cv_path_GAWK],
     [[awkout=`$ac_path_GAWK 'BEGIN{gensub(/a/,"b","g");}'; exvalue=$?; echo $exvalue`
       test "x$awkout" = x0 \
       && ac_cv_path_GAWK=$ac_path_GAWK ac_path_GAWK_found=:]],
-    [AC_MSG_ERROR([could not find awk that supports gensub - please install GNU awk])])])
+    [AC_MSG_ERROR([could not find awk that supports gensub - please install GNU awk. hint: sudo port install gawk])])])
 AC_SUBST([GAWK], [$ac_cv_path_GAWK])
+# Check for sed with required feature:
+AC_CACHE_CHECK([for sed that supports newlines and pipes], [ac_cv_path_SED],
+  [AC_PATH_PROGS_FEATURE_CHECK([SED], [sed gsed gnused],
+              [[m4out=`echo aaa | $ac_path_SED 's/a/\n/g' | wc -l | tr -d '[:space:] '`
+                test "x$m4out" = x4\
+      && ac_cv_path_SED=$ac_path_SED ac_path_SED_found=:]],
+    [AC_MSG_ERROR([could not find sed that supports stuff - please install GNU sed. hint: sudo port install gsed./c])])])
+AC_SUBST([SED], [$ac_cv_path_SED])
 
 # Check for Forrest:
 AC_ARG_WITH([forrest],
@@ -1072,7 +1080,7 @@ cat<<EOF
   * transcriptors enabled: $enable_transcriptors
   * syntactic tools enabled: $enable_syntax
   * yaml tests enabled: $enable_yamltests
-  * generated documentation enabled: $giellalt_forrest_validation
+  * generated documentation enabled: always
 
 For more ./configure options, run ./configure --help
 
@@ -1087,9 +1095,6 @@ AS_IF([test x$gt_prog_xslt = xno -a \
 disabled. Please check the output of configure to locate any problems. The LexC
 files will still compile though.
 ])])
-
-AS_IF([test "x$giellalt_forrest_validation" = "xno" -a "x$with_forrest" = "xyes"],
-      [AC_MSG_WARN([Could not find gawk, java or forrest. In-source documentation will not be extracted and validated. Please install the required tools. Alternatively, silence this message by disabling forrest validation: --without-forrest])])
 
 AS_IF([test x$can_local_sync = xno -a x$can_wget_giella_libs = xno],
       [AC_MSG_WARN([Could not find GIELLA_LIBS, rsync or wget - speller installers will not be built, only zhfst files.])])

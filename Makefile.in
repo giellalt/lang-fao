@@ -337,6 +337,7 @@ R = @R@
 RSYNC = @RSYNC@
 SAXON = @SAXON@
 SAXONJAR = @SAXONJAR@
+SED = @SED@
 SEE = @SEE@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
@@ -851,52 +852,73 @@ regenerate-markdown: generate-markdown
 @WANT_SPELLERS_FALSE@	@echo need to configure --enable-spellers to generate statistics
 @WANT_SPELLERS_FALSE@	touch $@
 
-$(srcdir)/%-syntax.md: $(top_srcdir)/src/cg3/%.cg3
+$(srcdir)/%-cg3-src.md: $(top_srcdir)/src/cg3/%.cg3
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 
-$(srcdir)/%-morphology.md: $(top_srcdir)/src/fst/%.lexc
+$(srcdir)/%-fst-src.md: $(top_srcdir)/src/fst/%.lexc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 
-$(srcdir)/%.md: $(top_srcdir)/src/fst/oahpa-filer/%.lexc
+# lang-smn
+$(srcdir)/%-oahpa-filer-fst-src.md: $(top_srcdir)/src/fst/oahpa-filer/%.lexc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 
-$(srcdir)/%-morphology.md: $(top_srcdir)/src/fst/%.twolc
+# lang-crk
+$(srcdir)/%-derivation-src.md: $(top_srcdir)/src/derivation/%.lexc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 
-$(srcdir)/%-generated.md: $(top_srcdir)/src/fst/generated_files/%.lexc
+$(srcdir)/%-fst-src.md: $(top_srcdir)/src/fst/%.lexc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 
-$(srcdir)/%-stems.md: $(top_srcdir)/src/fst/stems/%.lexc
+$(srcdir)/%-fst-src.md: $(top_srcdir)/src/fst/%.twolc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 
-$(srcdir)/%-affixes.md: $(top_srcdir)/src/fst/affixes/%.lexc
+$(srcdir)/%-generated_files-fst-src.md: $(top_srcdir)/src/fst/generated_files/%.lexc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 
-$(srcdir)/%.md: $(top_srcdir)/src/transcriptions/%.lexc
+$(srcdir)/%-stems-fst-src.md: $(top_srcdir)/src/fst/stems/%.lexc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 
-$(srcdir)/%.md: $(top_srcdir)/tools/grammarcheckers/%.cg3
+$(srcdir)/%-affixes-fst-src.md: $(top_srcdir)/src/fst/affixes/%.lexc
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+
+$(srcdir)/%-transcriptions-src.md: $(top_srcdir)/src/transcriptions/%.lexc
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+
+$(srcdir)/%-grammarcheckers-tools.md: $(top_srcdir)/tools/grammarcheckers/%.cg3
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 
 generated-markdowns.sources:
 	$(AM_V_GEN)fgrep -rl --include '*.lexc' --include '*.twolc' --include '*.twolc' \
 		--exclude 'Makefile*' --exclude '*.pmscript' --exclude '*.xfscript'\
 		--exclude lexicon.tmp.lexc \
-		'!! ' $(top_srcdir)/src/* $(top_srcdir)/tools/* > $@
+		'!! ' $(top_srcdir)/src/* $(top_srcdir)/tools/* |\
+		fgrep -v incoming/ > $@
 
+# ../src/fst/incoming/affixes/nouns.lexc
 generated-markdowns.targets: generated-markdowns.sources
 	$(AM_V_GEN)for f in `cat $<` ; do \
-		x=`basename $$f | sed -E -e 's/\.(lexc|twolc|cg3)$$//'` ; \
 		case $$f in \
-		*fst/stems*) echo $$x-stems.md;;\
-		*fst/affixes*) echo $$x-affixes.md;;\
-		*fst/generated*) echo $$x-generated.md;;\
-		*fst/root*) echo root-morphology.md;;\
-		*fst/compounding*) echo compounding-morphology.md;;\
-		*fst/clitics*) echo clitics-morphology.md;;\
-		*fst/phonology*) echo phonology-morphology.md;;\
-		*) echo $$x.md;;\
-		esac;\
+		*.lexc) x=`basename $$f .lexc` ;; \
+		*.cg3) x=`basename $$f .cg3` ;; \
+		*.twolc) x=`basename $$f .twolc` ;; \
+		esac ;\
+		d=`dirname $$f` ;\
+		p=`basename $$d xxx` ;\
+		dd=`dirname $$d` ;\
+		gp=`basename $$dd xxx` ;\
+		ddd=`dirname $$dd` ;\
+		ggp=`basename $$ddd xxx` ;\
+		dddd=`dirname $$ddd`;\
+		gggp=`basename $$ddddd xxx`;\
+		if test x$$gggp = xsrc -o x$$gggp = xtools ; then \
+			echo $$x-$$p-$$gp-$$ggp-$$gggp.md;\
+		elif test x$$ggp = xsrc -o x$$ggp = xtools ; then \
+			echo $$x-$$p-$$gp-$$ggp.md;\
+		elif test x$$gp = xsrc -o x$$gp = xtools ; then \
+			echo $$x-$$p-$$gp.md ;\
+		else \
+			echo $$x-$$p.md ;\
+		fi ;\
 	done > $@
 
 generate-markdown: generated-markdowns.targets

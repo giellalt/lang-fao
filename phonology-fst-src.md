@@ -9,6 +9,7 @@ Here we declare all symbols.
  *  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å    
  *  Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð            
 
+
  *  a2:a    for da2n -> dønum
  *  g2:g   for invariant g
  *  i2:i   for invariant i
@@ -19,7 +20,7 @@ Here we declare all symbols.
  *  %^UUML:0 %^IUML:0 %^eIUML:0 %^ØUML:0    : Umlaut types ,
  *  %^W:0 %^JI:0                   : Cns changes ,
  *  %^EPH:0                        : Epenthesis,  ,
- *  %^OEA:0                        : 
+ *  %^OEA:0                        : ø to a
 
  *  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0 	 : Cns deletion triggers,
  *  %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0	 : Ablaut series ,
@@ -30,6 +31,7 @@ Here we declare all symbols.
 
 ## Sets
 Here we define some convenient sets.
+
 
  *  Vow = a e i o u y æ ø å                                 
          á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;     
@@ -45,8 +47,11 @@ Here we define some convenient sets.
               %^GVDEL %^VDEL  %^JDEL %^RDEL ;                       
 Forgot why these are special...
 
+
 # Rules
 These are the rules. After each rule (or rather: after many of the rules) there are test cases that are there to test whether the rules work.
+
+
 
 ## Verschärfung
 
@@ -55,49 +60,64 @@ These are the rules. After each rule (or rather: after many of the rules) there 
 * Deleting gg in ggj Genitive I
 * Deleting gg in ggj Genitive II
 
+
+* *sting^NGKK^aAB>st*
+* *stak0000st*
+
+
+
+**ng to kk Part 1** 
+
+**ng to kk Part 2** 
+
+
+
 **Deleting v in gv sequences** 
 
 Verschärfung tests
 
-* **bógv^IUML>i**
-* **bøg000i**
+* *bógv^IUML>i*
+* *bøg000i*
 
-* **flúgv^IUML^VDEL**
-* **flýg000**
+* *flúgv^IUML^VDEL*
+* *flýg000*
 
-* **flúgv^VSH^VDEL>u**
-* **flug0000u**
+* *flúgv^VSH^VDEL>u*
+* *flug0000u*
 
-* **búgv^GVDEL>s**
-* **bú0000s**
+* *búgv^GVDEL>s*
+* *bú0000s*
 
-* **bógv^VDEL>s**
-* **bóg000s**
+* *bógv^VDEL>s*
+* *bóg000s*
 
-* **skógv^GVDEL>m**
-* **skó0000m**
+* *skógv^GVDEL>m*
+* *skó0000m*
 
-* **skýggj^GGDEL>s**
-* **ský00000s**
+* *skýggj^GGDEL>s*
+* *ský00000s*
 
-* **kríggj^GDEL>s**
-* **kríg0000s**
+* *kríggj^GDEL>s*
+* *kríg0000s*
 
-* **sjógv^GDEL>ar**
-* **sjó0v00ar**
+* *sjógv^GDEL>ar*
+* *sjó0v00ar*
 
 **Deleting r in Genitive of ur stems** 
 
-* **brúður^EPH^RDEL>ar**
-* **brúð00000ar**
+* *brúður^EPH^RDEL>ar*
+* *brúð00000ar*
 
-**Deleting m in um%>num** 
 
-* **ris>um>num**
-* **ris00u000num**
+**Deleting m in um%>num ** 
 
-* **skógv>m>num**
-* **skó0000000num**
+* *ris>um>num*
+* *ris0u00num*
+
+* *skógv^GVDEL>m>num*
+* *skó000000num*
+
+
 
 **Deleting Double Consonant in Front of Consonant** 
 
@@ -106,17 +126,24 @@ requirements, and the >s# in the right context seems to indicate passive.
 The rule conflicts with the "Cns Deletion in front of Pass" rule at the
 end of the file - but only when using the Xerox tools! XXX - please have a look!
 
-* **hjall>s**
-* **hjal00s**
+* *hjall>s*
+* *hjal00s*
 
-* **rygg>s**
-* **ryg00s**
+* *rygg>s*
+* *ryg00s*
 
-* **hjall>ar**
-* **hjall0ar**
+* *hjall>ar*
+* *hjall0ar*
 
-* **all>t**
-* **al00t**
+
+
+
+* *all>t*
+* *al00t*
+
+
+
+
 
 ## Verbal Sandhi rules
 
@@ -124,53 +151,71 @@ end of the file - but only when using the Xerox tools! XXX - please have a look!
 
 **Geminate Assimilation in Past Tense t** 
 
-* **send>di**
-* **sen00di**
+* *send>di*
+* *sen00di*
 
-* **hirð>di**
-* **hir00di**
+* *hirð>di*
+* *hir00di*
 
-* **sett>ti**
-* **set00ti**
+
+* *sett>ti*
+* *set00ti*
+
 
 **ð Assimilation in Front of Dental Past Suffix -d(i)** 
 
-* **leið>di**
-* **leid0di**
+* *leið>di*
+* *leid0di*
+
+
+* *leið>di*
+* *leid0di*
+
+* *greið>di*
+* *greid0di*
+
+
+* *ryð^WVV>di*
+* *rud00di*
+
 
 **Deleting Double Consonant in Front of Epenthesis mark** 
 
-* **summar^EPH>i**
-* **sum00r00i**
+* *summar^EPH>i*
+* *sum00r00i*
 
-* **himmal^EPH^UUML>um**
-* **him00l000um**
+* *himmal^EPH^UUML>um*
+* *him00l000um*
+
+
 
 **Deleting stem-final s in s genitive** 
 
-* **primus>s**
-* **primus00**
+* *primus>s*
+* *primus00*
 
-* **primus>s**
-* **primus00**
+* *primus>s*
+* *primus00*
 
-* **grís>s**
-* **grís00**
+* *grís>s*
+* *grís00*
+
 
 **Double ð Deletion** 
 
+
 **ð Assimilation in Front of Supine Suffix -t** 
 
-* **leið>t**
-* **leit0t**
+* *leið>t*
+* *leit0t*
 
 **Adjusting Dental Past Suffix -d(i)** 
 
-* **keyp>di**
-* **keyp0ti**
+* *keyp>di*
+* *keyp0ti*
 
-* **merk>di**
-* **merk0ti**
+* *merk>di*
+* *merk0ti*
 
 ## Adjectival sandhi rules
 
@@ -178,183 +223,230 @@ end of the file - but only when using the Xerox tools! XXX - please have a look!
 
 **Adjective neuter after nlr 2** 
 
-* **mikil^EPH>t**
-* **miki000ð**
+* *mikil^EPH>t*
+* *miki000ð*
 
-* **gamal^EPH>t**
-* **gamal00t**
+* *gamal^EPH>t*
+* *gamal00t*
 
 **t Deletion in Neuter** 
 
-**ng to kk Part 1** 
 
-**ng to kk Part 2** 
 
 j rules
 
 **Deleting j** 
 
-* **kríggj^GDEL>num**
-* **kríg0000num**
+* *kríggj^GDEL>num*
+* *kríg0000num*
 
-* **beiggj^JI>i**
-* **beigg000i**
+* *beiggj^JI>i*
+* *beigg000i*
 
-* **verkj^JDEL>ur**
-* **verk000ur**
+* *verkj^JDEL>ur*
+* *verk000ur*
 
-* **heyggj>i**
-* **heygg00i**
+* *heyggj>i*
+* *heygg00i*
+
 
 **Realising j in front of vowels** 
 
-* **hylj2>ar**
-* **hylj0ar**
+* *hylj2>ar*
+* *hylj0ar*
+
+
+
 
 Vowel rules  
 
+
 **Realising i2 as i** 
+
 
 ###  Epenthetic vowel rules
 
 **Epenthetic deletion** 
 
-* **økur^EPH^UUML>um**
-* **øk0r000um**
 
-* **lykil^EPH>an**
-* **lyk0l00an**
+* *økur^EPH^UUML>um*
+* *øk0r000um*
 
-* **aftan^EPH>**
-* **aftan00**
+* *lykil^EPH>an*
+* *lyk0l00an*
 
-* **vakin^EPH>ir**
-* **vak0n00ir**
+* *aftan^EPH>*
+* *aftan00*
+
+* *vakin^EPH>ir*
+* *vak0n00ir*
+
+
 
 **U-umlaut of Epenthetic vowel** 
 
-* **gamal^EPH^UUML**
-* **gomul00**
+* *gamal^EPH^UUML*
+* *gomul00*
 
-* **gamal^EPH^UUML>u**
-* **goml000u**
+* *gamal^EPH^UUML>u*
+* *goml000u*
+
 
 ### Umlaut rules
 
 **U-umlaut in Front of Nasal** 
 
-* **tank^UUML**
-* **tonk0**
+* *tank^UUML*
+* *tonk0*
 
-* **band^UUML**
-* **bond00**
+* *band^UUML*
+* *bond00*
 
-* **hamar^EPH^UUML>um**
-* **hom0r000um**
+* *hamar^EPH^UUML>um*
+* *hom0r000um*
 
 **General U-umlaut** 
 
-* **dag^UUML>um**
-* **døg00um**
+* *dag^UUML>um*
+* *døg00um*
 
-* **sag^UUML>a**
-* **søg00a**
+* *sag^UUML>a*
+* *søg00a*
 
-* **all^UUML>**
-* **øll00**
+* *all^UUML>*
+* *øll00*
+
 
 **U-umlaut for akur** 
 
-* **akur^EPH^UUML>um**
-* **øk0r000um**
+* *akur^EPH^UUML>um*
+* *øk0r000um*
 
 **I-umlaut** 
 
-* **dag^IUML>i**
-* **deg00i**
+* *dag^IUML>i*
+* *deg00i*
 
-* **son^IUML>i**
-* **syn00i**
+* *son^IUML>i*
+* *syn00i*
 
-* **bógv^IUML>i**
-* **bøg000i**
+* *bógv^IUML>i*
+* *bøg000i*
 
-* **ung^IUMLr>i**
-* **yng0r0i**
+* *ung^IUMLr>i*
+* *yng0r0i*
 
-* **fjørð^IUML>i**
-* **f0irð00i**
+* *fjørð^IUML>i*
+* *f0irð00i*
+
+
 
 **eI-umlaut** for o:e, á:e, i:e
 
-**I-umlaut for bróðir** 
+**I-umlaut for bróðir ** 
+
 
 **Inverted U-umlaut from ø** 
 
-* **fløtt^ØAa**
-* **flatt0a**
+* *fløtt^OEAa*
+* *flatt0a*
 
 **Inverted U-umlaut from o** 
 
-* **fonn^OA>ar**
-* **fann00ar**
+* *fonn^OA>ar*
+* *fann00ar*
+
 
 **o/ei-Umlaut I** 
 
 **o/ei-Umlaut II** 
 
-* **dreing^EIO>i**
-* **dro0ng00i**
+* *dreing^EIO>i*
+* *dro0ng00i*
+
+
+
+
+
+
 
 ### Vowel deletion rules
 
 **Vowel deletion in front of na** 
 
+
+
+
+
+
+
+
 ### Verbal vowel alternation rules
 
 **Stem vowel change in Weak Verbs** 
 
-* **flek^WVV>t**
-* **flak00t**
+* *flek^WVV>t*
+* *flak00t*
 
-* **flek^WVV>t**
-* **flak00t**
+* *flek^WVV>t*
+* *flak00t*
 
-* **vel^WVV>di**
-* **val00di**
+* *vel^WVV>di*
+* *val00di*
+
 
 **Stem Vowel Shortening in Supine and Participle** 
+
+* *bít^VSHin>a*
+* *bit00n>a*
+
+
+
 
 **Past tense singular diphthongs I** 
 
 **Past tense singular diphthongs II** 
 
+* *b0ít^AB1*
+* *beit0*
+
+
 **Past tense singular monophthongs** 
 
-* **gev^AB3**
-* **gav0**
+* *gev^AB3*
+* *gav0*
 
 **Past tense plural monophthongs** 
 
+
 **Past tense plural monophthongs to a** 
+
+
 
 **Supine u** 
 
+
 **Supine o** 
+
 
 **Supine i** 
 
+
 **Present tense ý** 
+
+
+
 
 ### Adjectival Sandhi rule
 
 **Vowel shortening in Neuter** 
 
-* **góð>t**
-* **got0t**
+* *góð>t*
+* *got0t*
 
-* **skjót>t**
-* **skjót0t**
+* *skjót>t*
+* *skjót0t*
+
 
 ## Other rules
 
@@ -365,3 +457,6 @@ Vowel rules
 **r Deletion in front of Pass** 
 
 **ð Deletion in front of Pass** 
+
+
+

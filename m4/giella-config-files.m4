@@ -54,7 +54,7 @@ AC_CONFIG_FILES([Makefile \
                  tools/shellscripts/Makefile \
                  tools/spellcheckers/Makefile \
                  tools/spellcheckers/filters/Makefile \
-                 tools/spellcheckers/weights/Makefilen \
+                 tools/spellcheckers/weights/Makefile \
                  tools/tts/Makefile \
                  tools/tts/pipespec.xml])
 # Add one AC_CONFIG_FILES for each script file that needs processing. This gives

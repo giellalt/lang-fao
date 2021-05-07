@@ -1,22 +1,44 @@
 # The Faroese conjunctions
 
-   **CCtag** for the +CC tag.
+The file `stems/conjunctions.lexc` contains two lexica:
 
-   **Conjunction** for the list of 10 or so conjunctions.
+**LEXICON CCtag** for assigning the +CC tag to all the conjunctions below. It has one entry:
+ * +CC: # ;
 
+**LEXICON Conjunction** for the list of 10 or so conjunctions that are found in the file. Here are the first entries:
+ * antin CCtag ;
+ * annaðhvørt CCtag ;
+ * bæði CCtag ;
+ * og CCtag ;
 # Faroese subjunctions
 
-   **CStag** FOR THE +CS TAG
+The file `stems/subjunctions.lexc` contains three lexica:
 
-   **IMtag** FOR THE +MM tag of the infinitive marker
+**LEXICON CStag** assigns the **+CS** TAG. It has one entry:
+ +CS: # ;
 
-   **Subjunction** the list, some 10-20 CSs.
- * tí CStag ;    
- * tá% ið CStag ;    
-# Akronymer !
+**LEXICON IMtag** assigns the  **+IM** tag for the infinitive marker. The entry is:
+ +IM: # ;
 
-   **Acronym-fao** 
+**LEXICON Subjunction** contains the list of some 10-20 CSs. Here are the first 4:
+ * at IMtag ;  
+ * at CStag ;  
+ * tí CStag ;  
+ * tá% ið CStag ;  
+...
+# Akronymer 
 
+This documents the `stems/fao-acronyms.lexc` file.
+Most acronyms are taken from a common generated file, this file is for the Faroese-specific acronyms.
+
+
+   **LEXICON Acronym-fao** pointing to the lexica 
+ * Akronymnumeralier ; (Nogle tal først, måskje?)
+ * Acronym-fao-list ; 
+
+   **LEXICON Acronym-fao-list** for selve listen, i øjeblikket 2:
+ * StÍF ACRO ; 
+ * T5PC ACRO ; 
 
 
 
@@ -24,7 +46,7 @@
 
    **Akronymnumeralier**  for 0-9
 
-   **anl**  send numvers too letterloops
+   **anl**  send numvers too letterloops -- this might be too liberal.
 
 
 

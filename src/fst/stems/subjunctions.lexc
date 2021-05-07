@@ -1,24 +1,25 @@
-
 !! # Faroese subjunctions
 
+!! The file `stems/subjunctions.lexc` contains three lexica:
+
 LEXICON CStag 
- !!= **@LEXNAME@** FOR THE +CS TAG
- +CS: # ;
+!! **LEXICON @LEXNAME@** assigns the **+CS** TAG. It has one entry:
+ +CS: # ; !!≈ @CODE@
 
 LEXICON IMtag
- !!= **@LEXNAME@** FOR THE +MM tag of the infinitive marker
-  +IM: # ;
+!! **LEXICON @LEXNAME@** assigns the  **+IM** tag for the infinitive marker. The entry is:
+  +IM: # ; !!≈ @CODE@
 
 LEXICON Subjunction
- !!= **@LEXNAME@** the list, some 10-20 CSs.
-tí CStag ;  !!= * @CODE@  
-tá% ið CStag ;  !!= * @CODE@  
+!! **LEXICON @LEXNAME@** contains the list of some 10-20 CSs. Here are the first 4:
+at IMtag ;  !!≈ * @CODE@  
+at CStag ;  !!≈ * @CODE@  
+tí CStag ;  !!≈ * @CODE@  
+tá% ið CStag ;  !!≈ * @CODE@  
+meðan CStag ; !! ...
 ið CStag ; ! XXX check this.
-at CStag ;
-at IMtag ;
 um CStag ;  !XXX sjálf um.
 áðrenn CStag ; !XXX
-meðan CStag ;
 meðani CStag ;
 so% at CStag ;
 sum CStag ;

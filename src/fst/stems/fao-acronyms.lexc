@@ -1,13 +1,20 @@
 ! ========= !
-!! # Akronymer !
+!! # Akronymer 
 ! ========= !
 
-LEXICON Acronym-fao
- !!= **@LEXNAME@** 
-Akronymnumeralier ; ! Nogle tal först, måskje=?
+!! This documents the `stems/fao-acronyms.lexc` file.
+!! Most acronyms are taken from a common generated file, this file is for the Faroese-specific acronyms.
 
-StÍF ACRO ;
-T5PC ACRO ;
+
+LEXICON Acronym-fao
+ !!= **LEXICON @LEXNAME@** pointing to the lexica 
+Akronymnumeralier ; !!≈ * @CODE@ (Nogle tal først, måskje?)
+Acronym-fao-list ;  !!≈ * @CODE@ 
+
+LEXICON Acronym-fao-list
+ !!= **LEXICON @LEXNAME@** for selve listen, i øjeblikket 2:
+StÍF ACRO ; !!≈ * @CODE@ 
+T5PC ACRO ; !!≈ * @CODE@ 
 
 
 
@@ -18,7 +25,7 @@ LEXICON Akronymnumeralier
 %0 anl ; 1 anl ; 2 anl ; 3 anl ; 4 anl ; 5 anl ; 6 anl ; 7 anl ; 8 anl ; 9 anl ; 
 
 LEXICON anl ! akronymloop
- !!= **@LEXNAME@**  send numvers too letterloops
+ !!= **@LEXNAME@**  send numvers too letterloops -- this might be too liberal.
      Akronymnumeralier ; ! loop
      FIRSTLETTER ;       ! Over til bogstaverne
  :%- FIRSTLETTER ;       ! ... med stræg først

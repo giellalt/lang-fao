@@ -1,16 +1,18 @@
 !! # The Faroese conjunctions
 
+!! The file `stems/conjunctions.lexc` contains two lexica:
+
 LEXICON CCtag
- !!= **@LEXNAME@** for the +CC tag.
- +CC: # ;
+!! **LEXICON @LEXNAME@** for assigning the +CC tag to all the conjunctions below. It has one entry:
+ +CC: # ; !!≈ * @CODE@
 
 LEXICON Conjunction
- !!= **@LEXNAME@** for the list of 10 or so conjunctions.
- antin CCtag ;
-annaðhvørt CCtag ;
-bæði CCtag ;
-og CCtag ;
-men  CCtag ;
+!! **LEXICON @LEXNAME@** for the list of 10 or so conjunctions that are found in the file. Here are the first entries:
+antin CCtag ; !!≈ * @CODE@
+annaðhvørt CCtag ; !!≈ * @CODE@
+bæði CCtag ; !!≈ * @CODE@
+og CCtag ; !!≈ * @CODE@
+men  CCtag ; !1 ...see
 ella CCtag ;
 ti CCtag ;
 eller CCtag ;

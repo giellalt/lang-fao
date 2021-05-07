@@ -884,6 +884,9 @@ $(srcdir)/%-affixes-fst-src.md: $(top_srcdir)/src/fst/affixes/%.lexc
 $(srcdir)/%-transcriptions-src.md: $(top_srcdir)/src/transcriptions/%.lexc
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 
+$(srcdir)/%-transcriptions-src.md: $(top_srcdir)/src/transcriptions/%.twolc
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+
 $(srcdir)/%-grammarcheckers-tools.md: $(top_srcdir)/tools/grammarcheckers/%.cg3
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 

@@ -928,6 +928,7 @@ clean-local:
 	$(AM_V_at)-rm -f $(doc_DATA)
 	$(AM_V_at)-rm -f *-src.md
 	$(AM_V_at)-rm -f *-tools.md
+	$(AM_V_at)-rm -f generated-markdowns.*
 
 # vim: set ft=automake:
 

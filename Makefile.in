@@ -947,9 +947,9 @@ $(INDEX): $(HEADER) $(LINKS)
 clean-local:
 	$(AM_V_at)-rm -rf $(builddir)/build
 	$(AM_V_at)-rm -rf $(srcdir)/build
-
-maintainerclean-local:
-	$(AM_V_at)-rm -rf $(ALLINONE_MD_PAGE)
+	$(AM_V_at)-rm -f $(doc_DATA)
+	$(AM_V_at)-rm -f *-src.md
+	$(AM_V_at)-rm -f *-tools.md
 
 # vim: set ft=automake:
 

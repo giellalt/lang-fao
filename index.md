@@ -1,7 +1,7 @@
 # Faroese documentation
 
 [![Maturity: Experiment](https://img.shields.io/badge/Maturity-Experiment-black.svg)](https://giellalt.github.io/MaturityClassification.html)
-[![License](https://img.shields.io/github/license/giellalt/lang-fao)](https://raw.githubusercontent.com/giellalt/lang-fao/develop/LICENSE)
+[![License](https://img.shields.io/github/license/giellalt/lang-fao)](https://raw.githubusercontent.com/giellalt/lang-fao/main/LICENSE)
 [![Issues](https://img.shields.io/github/issues/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/issues)
 [![Build status](https://github.com/giellalt/lang-fao/workflows/Speller%20CI+CD/badge.svg)](https://github.com/giellalt/lang-fao/actions)
 

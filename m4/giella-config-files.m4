@@ -56,7 +56,8 @@ AC_CONFIG_FILES([Makefile \
                  tools/spellcheckers/filters/Makefile \
                  tools/spellcheckers/weights/Makefile \
                  tools/tts/Makefile \
-                 tools/tts/pipespec.xml])
+                 tools/tts/pipespec.xml \
+                 tools/tts/test/Makefile])
 # Add one AC_CONFIG_FILES for each script file that needs processing. This gives
 # the most pleasant user experience and most readable autoconf code to maintain.
 # Spell checker tests, all languages:

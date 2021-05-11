@@ -1,10 +1,25 @@
-DEtte dokumnetet inneheld alle genererte former, deretter kommentarar.
+# Testing av den færøyske analysatoren
 
-* Scriptet er i src/scripts-katalogen.
 
-# Genererte böyngsformer
 
-##  Substantiv 
+## Ulike testslider
+
+-   Generering av morfologiske paradigme:
+    [Mask.](word_form_nouns_generator-gt-norm_table_k.html),
+    [Fem.](word_form_nouns_generator-gt-norm_table_kv.html),
+    [Neu.](word_form_nouns_generator-gt-norm_table_h.html),
+    [Adj.](word_form_nouns_generator-gt-norm_table_l.html),
+    [Verb](word_form_nouns_generator-gt-norm_table_s.html)
+-   [Testresult frå dei morfologiske testfilene](YamlResults.md)
+-   [Gammal testdagbok](fao-testdiary.md)
+
+
+## Genererte bøyngsformer
+
+Her følgjer alle genererte former av alle orda i analysatoren, deretter kjem det kommentarar. Poenget er å lese gjennom paradigmene og sjekke om det er feil der. Scriptet som genererer desse filene er i `src/scripts`-katalogen.
+
+
+###  Substantiv 
 * Msc
  [Sg Nom](testir/TestMscSgNom.html)  //  
  [Sg Acc](testir/TestMscSgAcc.html)  //  
@@ -33,7 +48,7 @@ DEtte dokumnetet inneheld alle genererte former, deretter kommentarar.
  [Pl Dat](testir/TestNeuPlDat.html)  //  
  [Pl Gen](testir/TestNeuPlGen.html)
 
-##  Adjektiv
+###  Adjektiv
 * Msc
      [Adj Msc SgAcc](testir/AdjTestMscSgAcc.html)
  //  [Adj Msc SgGen](testir/AdjTestMscSgGen.html)
@@ -56,7 +71,7 @@ DEtte dokumnetet inneheld alle genererte former, deretter kommentarar.
  //  [Adj Neu SgGen](testir/AdjTestNeuSgGen.html)
  //  [Adj Neu SuperlSgNom](testir/AdjTestNeuSuperlSgNom.html)
 
-#  Verb
+###  Verb
 
 * Finitte [Ind Prs1Sg](testir/VerbTestIndPrs1Sg.html)
  //  [Ind Prs3Sg](testir/VerbTestIndPrs3Sg.html)
@@ -69,22 +84,10 @@ DEtte dokumnetet inneheld alle genererte former, deretter kommentarar.
 * Infinitte [Act PrfPtc](testir/VerbTestActPrfPtc.html)
  //  [Act PrsPtc](testir/VerbTestActPrsPtc.html)
 
-# Korleis handsame feil
 
-Analysatoren består av
-* ei liste av lemma, stamme og suffiks
-* eit sett av reglar for morfofonologiske vekslingar
+## Making new types of tests
 
-Feil kan oppstå t.d. ved at
-* det kan vere skrivefeil i alle delane av koden
-* orda kan vere klassifisert feil
-* orda kan peike til feil kontinuasjonsleksikon (bøyingsmønster)
-* bøyingsleksikonet kan innehalde feil suffiks
-* det kan vere feil i dei morfofonologiske reglane
-* det kan hende at styringssymbol (`^EDH`, ..) ikkje er deklarert i `src/fst/root.lexc`
+-   [Making new tests: Adding morphological test data](/infra/infraremake/AddingMorphologicalTestData.html)
+-   [Technical documentation for test scripts](/infra/infraremake/TestScriptsInTheNewInfra.html)
 
-Ver serleg merksam på
-* komparativ og superlativ
-* verbas partisippformer
-* ord med uregelrett böying
-* eit godt råd er å lese nedover i god fart og sjå etter rare bokstavkombinasjonar
+

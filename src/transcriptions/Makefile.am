@@ -27,6 +27,15 @@ GT_TRANSCRIPTIONS_SRCS=\
 #! @param GT_ABBREV_SRCS required, for abbreviation expansions
 GT_ABBREV_SRCS=transcriptor-abbrevs2text.lexc
 
+GT_TRANSCRIPTIONS_REGEX_SRCS=
+
+GT_CUSTOM_TARGETS=
+
+### BEGIN: Custom build rules: ###
+
+
+### END: Custom build rules: ###
+
 include $(top_srcdir)/../giella-core/am-shared/src-transcriptions-dir-include.am
 
 # vim: set ft=automake:

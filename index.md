@@ -36,11 +36,11 @@ For a presentation, see
 
 ## Stavekontrollen
 
--   [Lista over skrivefeil + korrekte ord i testen](https://github.com/giellalt/lang-fao/tree/develop/test/data/typos.txt)
+-   [Lista over skrivefeil + korrekte ord i testen](https://github.com/giellalt/lang-fao/tree/main/test/data/typos.txt)
 -   Testresultat for:
-    [ospell](https://github.com/giellalt/lang-fao/tree/develop/devtools/speller_result_typos.to.html)
+    [ospell](https://github.com/giellalt/lang-fao/tree/main/devtools/speller_result_typos.to.html)
     og
-    [voikkospell](https://github.com/giellalt/lang-fao/tree/develop/devtools/speller_result_typos.vk.html)
+    [voikkospell](https://github.com/giellalt/lang-fao/tree/main/devtools/speller_result_typos.vk.html)
 
 ## Møtereferat
 

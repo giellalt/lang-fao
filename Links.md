@@ -1,3 +1,5 @@
+* [disambiguator-cg3-src.md](disambiguator-cg3-src.md)
+* [functions-cg3-src.md](functions-cg3-src.md)
 * [conjunctions-stems-fst-src.md](conjunctions-stems-fst-src.md)
 * [subjunctions-stems-fst-src.md](subjunctions-stems-fst-src.md)
 * [fao-acronyms-stems-fst-src.md](fao-acronyms-stems-fst-src.md)
@@ -25,3 +27,4 @@
 * [compounding-fst-src.md](compounding-fst-src.md)
 * [transcriptor-abbrevs2text-transcriptions-src.md](transcriptor-abbrevs2text-transcriptions-src.md)
 * [transcriptor-numbers-digit2text-transcriptions-src.md](transcriptor-numbers-digit2text-transcriptions-src.md)
+* [grammarchecker-grammarcheckers-tools.md](grammarchecker-grammarcheckers-tools.md)

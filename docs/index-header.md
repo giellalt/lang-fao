@@ -5,7 +5,7 @@
 [![Issues](https://img.shields.io/github/issues/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/issues)
 [![Build status](https://github.com/giellalt/lang-fao/workflows/Speller%20CI+CD/badge.svg)](https://github.com/giellalt/lang-fao/actions)
 
-This page documents the work on the [Faroese language model](https://github.com/giellalt/lang-fao), how to build it and how to use it.
+This page documents the work on the [Faroese language model](https://github.com/giellalt/lang-fao), how to build analysers and other tools and how to use them.
 
 The language model is a finite state transducer, capable of analysing and generating any
 Faroese wordform. The model contains the lemmas from *Føroysk orðabók* and the grammatical part 

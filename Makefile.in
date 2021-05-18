@@ -873,7 +873,7 @@ $(srcdir)/%-apertium-mt-tools.md: $(top_srcdir)/tools/mt/apertium/%.cg3
 
 generated-markdowns.sources:
 	$(AM_V_GEN)fgrep -rl \
-		--include '*.lexc' --include '*.twolc' --include '*.twolc' --include '*.cg3' \
+		--include '*.lexc' --include '*.twolc' --include '*.cg3' \
 		--exclude 'Makefile*' --exclude '*.pmscript' --exclude '*.xfscript'\
 		--exclude lexicon.tmp.lexc \
 		'!! ' $(top_srcdir)/src/* $(top_srcdir)/tools/* |\

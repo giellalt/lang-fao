@@ -48,7 +48,6 @@
 # hfst-multiply
 # hfst-pair-test
 # hfst-pmatch
-# hfst-prune-alphabet
 # hfst-push-weights
 # hfst-remove-epsilons
 # hfst-shuffle
@@ -500,6 +499,11 @@ AM_V_PM2FST_0 = @echo "  HPM2FST  $@";
 AM_V_PROJECT = $(AM_V_PROJECT_@AM_V@)
 AM_V_PROJECT_ = $(AM_V_PROJECT_@AM_DEFAULT_V@)
 AM_V_PROJECT_0 = @echo "  HPROJECT $@";
+
+# hfst-prune-alphabet
+AM_V_HPRUNE = $(AM_V_HPRUNE_@AM_V@)
+AM_V_HPRUNE_ = $(AM_V_HPRUNE_@AM_DEFAULT_V@)
+AM_V_HPRUNE_0 = @echo "  HPRUNE   $@";
 
 # hfst-reverse
 AM_V_REVERSE = $(AM_V_REVERSE_@AM_V@)

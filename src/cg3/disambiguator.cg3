@@ -2,9 +2,15 @@
 
 
 # ===================== #
-# Faroese disambiguator #
+#!! # Faroese disambiguator 
 # ===================== #
 
+#!! Usage, in `lang-fao`:
+#!! `cat text.txt|hfst-tokenize -cg tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst |vislcg3 -g src/cg3/disambiguator.cg3`
+
+#!! This file documents the [Faroese disambiguator file](http://github.com/giellalt/lang-fao/blob/main/src/cg3/disambiguator.cg3) .
+
+#!! ## Delimiters, tags and sets
 
 # ========== #
 # Delimiters #
@@ -112,10 +118,10 @@ Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPtc
 PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Sem/Fem Sem/Mal Sem/Plc Sem/Sur Sem/Org Sem/Veh Guess ;
 
 
-LIST NAGD = Nom Acc Gen Dat ;
-LIST AGD = Acc Gen Dat ;
-LIST GENDER = Msc Fem Neu ;
-LIST NUMBER = Sg Pl ;
+LIST NAGD = Nom Acc Gen Dat ; #!!≈ * @CODE@ 
+LIST AGD = Acc Gen Dat ; #!!≈ * @CODE@ 
+LIST GENDER = Msc Fem Neu ; #!!≈ * @CODE@ 
+LIST NUMBER = Sg Pl ; #!!≈ * @CODE@ 
 SET NAGDNUMBERGENDER = (Msc Sg Nom) OR (Msc Sg Acc) OR (Msc Sg Gen) OR (Msc Sg Dat) OR (Msc Pl Nom) OR (Msc Pl Acc) OR (Msc Pl Gen) OR (Msc Pl Dat) OR (Fem Sg Nom) OR (Fem Sg Acc) OR (Fem Sg Gen) OR (Fem Sg Dat) OR (Fem Pl Nom) OR (Fem Pl Acc) OR (Fem Pl Gen) OR (Fem Pl Dat) OR (Neu Sg Nom) OR (Neu Sg Acc) OR (Neu Sg Gen) OR (Neu Sg Dat) OR (Neu Pl Nom) OR (Neu Pl Acc) OR (Neu Pl Gen) OR (Neu Pl Dat) ;
 
 LIST CmpNP/None = CmpNP/None ;

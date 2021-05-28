@@ -1599,333 +1599,351 @@ The analysis give double analysis because of optional semtags. We go for the one
 
 
 
-# The Faroese conjunctions
+# Compounding morphology
 
-The file `stems/conjunctions.lexc` contains two lexica:
 
-**LEXICON CCtag** for assigning the +CC tag to all the conjunctions below. It has one entry:
- * +CC: # ;
 
-**LEXICON Conjunction** for the list of 10 or so conjunctions that are found in the file. Here are the first entries:
- * antin CCtag ;
- * annaðhvørt CCtag ;
- * bæði CCtag ;
- * og CCtag ;
-# Faroese subjunctions
+# Lexicon R gets flags and sends compounds over to RReal
+ @P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ;  are Flags to control compounding
 
-The file `stems/subjunctions.lexc` contains three lexica:
+# Lexicon RReal is the lexicon for the Cmp tag and resending to N, A
+ *  +Cmp#: Nouns ;          
+ *  +Cmp#: Adjectives ;    
+           R-    ;        
 
-**LEXICON CStag** assigns the **+CS** TAG. It has one entry:
- +CS: # ;
+# Lexicon R- for compounds with hyphen
+  +Cmp#:%- Nouns ;    
+  +Cmp#:%- Adjectives ;    
 
-**LEXICON IMtag** assigns the  **+IM** tag for the infinitive marker. The entry is:
- +IM: # ;
+# Lexicon RNum for compounds numeral + noun
+       +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ;    For Num Cmp Noun, vi vil ikke ha Num Cmp Num
 
-**LEXICON Subjunction** contains the list of some 10-20 CSs. Here are the first 4:
- * at IMtag ;  
- * at CStag ;  
- * tí CStag ;  
- * tá% ið CStag ;  
-...
-# Akronymer 
 
-This documents the `stems/fao-acronyms.lexc` file.
-Most acronyms are taken from a common generated file, this file is for the Faroese-specific acronyms.
 
 
-   **LEXICON Acronym-fao** pointing to the lexica 
- * Akronymnumeralier ; (Nogle tal først, måskje?)
- * Acronym-fao-list ; 
+# Verb morphology !
 
-   **LEXICON Acronym-fao-list** for selve listen, i øjeblikket 2:
- * StÍF ACRO ; 
- * T5PC ACRO ; 
 
+**s1** nevna = riggar!
 
 
+**s2** keypa = riggar!
 
+**SETA** seta = riggar!
 
-   **Akronymnumeralier**  for 0-9
 
-   **anl**  send numvers too letterloops -- this might be too liberal.
 
+**s3** leiða = riggar!
 
+**s4** frøa = riggar!
 
-# File containing Faroese abbreviations 
+**s5** senda = riggar!
 
-Lexica for adding tags and periods
+**s6** hirða = riggar!
 
-The idea is (or may be) to use both common and language-speicfic abbreviations.
+**s7** gista = riggar!
 
-Splitting in 3 groups, because of the preprocessor
 
-**Abbreviation**
+**s8** kenna = riggar!
 
+**s9** klippa = riggar!
 
 
+**s10** fylgja = riggar!
 
+**s11**  roykja = riggar!
 
 
+**s12** boyggja = riggar!
 
 
+**s13** søkkja = riggar!
 
 
+**s14** heingja = riggar!
 
 
+**s15** skeinkja = riggar!
 
+**s15_2** steikja = riggar!
 
-dot% noStb.db
-Abbreviations that never induce sentence boundaries
-The file is too large and should be shrinked
+**s16** flekja = riggar!
 
+**s17** berja = riggar!
 
+**s18** krevja = riggar!
 
-# Faroese noun stem file
+**s19** dylja = riggar!
 
-The lexicon names are taken from
-Føroysk orðabók I-II (FO). Reference is
-made to Thráinsson & al ("fg").
+**s20** leggja = riggar!
 
-Note that in some cases, the lexicon names and stems here
-deviate from FO. In that case the lexica have names ending
-in wordforms, written in capital lettes.
+**s21** selja = riggar!
 
-## Short lexica
+**s22** ryðja = riggar ikki í sup og prfptc!
 
-**Shortnouns** for  1, 2 and 3 letter nouns excluded from compounding
+**s22_1** ýðja = riggar!
 
-These are now always excluded from lastpart compound
-and in norm from first-part compounding as well
+**s23** smyrja = riggar!
 
+**s24** flysa = riggar ikki í pass!
 
+**s25** liva = riggar!
 
 
+**s26** plaga = riggar (formurin plagdur manglar)!
 
 
 
+**s26_1** mála->máldi
 
+**s27** spáa = riggar!
 
-## The main list of nouns
+**s28** skaða = riggar ikki í prfptc!
 
-Her kjem alle substantiva. Dei er baklengssortert.
-leksikon som byrjar med x er ikkje manuelt sjekka.
+**s29** brúka = riggar!
 
-**Nouns**
+**s30** kalla = riggar!
 
-Fila inneheld i underkant av 50000 lemma.
+**s31** only gera and *gera = riggar!
 
+**s32/30** útbúgva = riggar!
 
+**s32** búgva = riggar!
 
+**s33** rógva
 
 
+**s34** goyggja = riggar!
 
 
 
 
+## Strong verbs starting here
 
+**s35** bíta riggar!
 
+**s36** svíkja riggar!
 
 
+**s37** bróta riggar!
 
+**s38** skjóta riggar!
 
 
+**s39d**
 
-# Faroese deternminers
+**s39s**
 
+**s39** 
 
+**s40** fúka
 
+**s41** flúgva
 
+**s42** klúgva
 
+**s44** finna
 
+**s45** binda = riggar!
 
+**s46** stinga = riggar!
 
+**s47** svimja = riggar ... men kanska skal tað ikki hava passiv
 
 
+**s48** drekka = riggar ikki í adj pga dpkons
 
+**s48_2** renna = riggar ikki í adj pga dpkons
 
+**s49** detta = riggar ikki í adj pga dpkons
 
+**s49_2** treffa = riggar ikki í adj pga dpkons
 
+**s49_3** sleppa = riggar ikki í adj pga dpkons
 
+**s49_4** verpa = riggar!
 
+**s50** røkka = riggar ikki í adj pga dpkons
 
+**s51** ganga = riggar!
 
 
+**s52** veva = riggar!
 
+**s53** leypa = riggar!
 
+**s54** bera = riggar!
 
+**s55** fara = riggar!
 
+**s56** geva = riggar!
 
+**s57** sita = riggar ikki + skal nokk ikki hava passiv
 
+**s58** mala
 
+**s59** stjala
 
+**s60** taka, aka
 
+**s61** halda
 
+**s62** sova
 
+**s63** koma
 
+**s64** lata
 
+**s64_1** láta
 
+**s65** standa
 
+**s66** biðja
 
+**s67** draga
 
+**s68** hvørva
 
+**s69** sláa
 
 
-# Faroese Numerals
+**s70** siga
 
+**s71** skerja
 
+**s72** eta
 
-**Numeral** splitting in types
- * Textual ;  
- * ARABICS ;  
- * ARABICORD ;  
- * ROMAN ;  
- * ISOLATED-NUMEXP ;  
- * NUM-PREFIXES ;  
+**s73** læa
 
 
+## Ad hoc, irregular
 
+**BLÍVA**
 
-   **1-9** 
+**EIGA**
 
+**EITA**
 
+**GRÁTA**
 
-   **TRÝsplit** 
+**HAVA**
 
-   **nsplit** 
+**KUNNA**
 
-   **TEXTTENS** 
+**MEGA**
 
+**MUNNA**
 
-   **TEXTTEENS** 
+**SKULA**
 
-   **basic** 
+**TYKJA**
 
+**VERA**
 
+**VERÐA**
 
-   **EITT** 
 
-   **TVEY** 
+**VILJA**
 
-   **TRÝ** 
+**VITA**
 
-   **PAIRNUM** 
 
-   **n** 
+**SÍGGJA**
 
+**FÁA**
 
-## Ordinals
+**NÁA** XXX check
 
-   **ordinals** 
+**LIGGJA**
 
-   **ord_decl** 
 
-   **ANNAR** 
+**RADA**
 
-   **ANNARMORPH** 
+**BURDA**
 
+**GJALDA**
 
+**VALDA**
 
-# Faroese adverbs
+**FALLA**
 
+**GJALLA**
 
-   **adv** for the tag +Adv
+**BREGDA**
 
-   **advcomp** for the tag +Adv+Cmp
+**SYNGJA** XXX check
 
-   **advsuperl** for the tag +Adv+Superl
 
-   **Adverb** for the list of appr 1000 adverbs
 
+**HOGGA** høgga
 
- * í% gjár adv ; 
- * í% fjør adv ; 
- * ókynjað adv ; 
- * suðuri adv ; 
- * eystarlaga adv ; 
- * útúr adv ; 
- * hvaðani adv ; 
- * síðla adv ; 
- * allastaðnar adv ; 
- * forskelligastaðnar adv ; 
- * nógvastaðnar adv ; 
- * onkrastaðnar adv ; 
- * ymsastaðnis adv ; 
- * líkafram adv ; 
- * aftanáaftur adv ; 
-...
+**KVODA**
 
-# Proper nouns 
 
-Table of content
-* The name lexica
-    -   - mal
-    -   - fem
-    -   - plc
-    -   - sur       
 
-## Splitting into name types
+**FLYGGJA**
 
 
-   **Propernouns** splitting in 3 lexica: **multipartnames, names, guess**
+**VAKSA**
 
+**VEKSA**
 
-   **multipartnames** contains only 3 names for now
 
-   **names** gives the list of names.
+**s30/26_1** dáma
 
+**HYGGJA**
 
+**TYGGJA**
 
+**MYLA**
 
+**BLASA**
 
+**TYSJA**
 
+**GROA**
 
+**KVOTTA**
 
+**GALDA**
 
-# Interjections
 
-The tag +Interj
 
-   **Interj** 
 
-The words
 
-   **Interjection** okey, ááá, aj, huff, ...
 
+**TAKAST** 
 
-# Faroese verbs 
+**LOYPAST** loypast
 
-**Verbs**
+**sxrefl** This is an ad hoc lexicon
 
-## Some irregular verbs
-*mega, eiga, eita, gráta, ...* and 15 more
+**s74** grindast
 
+**s75** balast
 
-some irregular passive verbs: høggast, loypast
+**s76** ræðast
 
+**s77** skiftast
 
+**s78** farast
 
+**s79** skjótast
 
+**s80** trivast
 
+**s81** kíkjast
 
+**s82** fýlast
 
+**s83** samsinnast
 
+**FYRIB** kopi, s83
 
-## The long verb list
 
-The lexica listed here represent the declension patterns
-presented in Føroysk orðabók. The lexicon names correspond to the
-declension codes in the dictionary.
 
+## Split lexica
 
- * fakturera:fakturer s30 ;   
- * formturka:form#turk s30 ;   
- * svørja:svør s10 ;   
- * almannakunngera:al#manna#kunng s31 ;    
- * gjøgnumføra:gjøgnum#før s1 ;   
- * innføra:inn#før s1 ;   
- * útføra:út#før s1 ;   
- * innvíga:inn#víg s1 ;   
- * annleggja:ann#l s20 ;   ... and more than 6000 more.
 
 
 
@@ -1936,649 +1954,228 @@ declension codes in the dictionary.
 
 
 
-Simple declension class verbs
 
+**s8/48_2**
+**s9/30**
 
 
 
 
 
+## Intermediate lexicon groups
 
+**standard_ir**
 
-Still to be classified
+**standard_ir_t**
 
 
 
 
-Double declension class verbs
 
 
+**ir_verb**
 
+**ir_verb_t**
 
+## Suffix lexica
 
-Finally some candidates to be considered for verb compounding.
+### Infinitive
 
-# Faroese prepositions
+**jinf**
 
-We should eventually have syntactic tags here...
+**inf**
 
-## Tags
-**p** for the tag +Pr
+**reflinf**
 
-## The list of prepositions
 
-**Preposition** for the list of prepositions, ordered according to case they select for.
+### Present
 
+**pres_ir**
 
+**pres_ir_j2**
 
-### Several cases
+**pres_jir**
 
+**pres_ir_sg**
 
-### Accusative or dative
-| --- 
+**pres_ar**
 
-### Accusative or genitive
+**pres_ur**
 
+**pres_iur**
 
-### Accusative
+**pres_ur_j**
 
-###  Dative
+**pres_ur_j2**
 
 
-# Faroese adjectives 
+**pres_strong_s1**
 
+**pres_strong_s23**
 
-The adjectives and their inflectional codes 
-are taken from "Føroysk orðabók".
+**pres_strong_s23_t**
 
-## The list of ajectives
+**pres_strong_s23_t0**
 
+**pres_strong_s23_t1**
 
+**pres_pl**
 
 
 
-**Adjectives** for the list of adjectives
 
-### Irregular comparatives and superlatives
 
 
+**pres_ast**
 
-### Prefixed present participles
+**pres_ist**
 
+**pres_1ist**
 
-### Regular adjectives, systematic list
+**pres_23st**
 
+**pres_plast**
 
 
 
 
+**pret_adist**
 
+**pret_dist**
 
+**pret_tist**
 
+**pret_ist**
 
+**pret_st**
 
+**pret_plust**
 
+**pret_pltust**
 
+### Preterite
 
+**prt_d**
 
+**prt_ð**
 
+**prt_t**
 
 
-# Faroese pronouns
+**prt_ði**
 
+**prt_ti**
 
-   **Pronoun** splitting into 3 sublexica:
- 1. Personal ;        
- 1. Reflexive ;        
- 1. Interrogative ;    
- 1. Indefinite ;       
+**prt_du**
 
-   **Personal** for the personal pronouns
+**prt_tu**
 
+**prt_ðu**
 
+**prt_dd**
 
+**prt_a**
 
+**prt_null**
 
-   **egtu-obl** 
+**prt_null_s**
 
-   **okkumtykkum** 
+**prt_null_s2**
 
-   **S_okkumtykkum** 
+**prt_null_s2_t**
 
+**prt_u_p**
 
-   **3obl** 
 
-   **Reflexive** 
+## Passive lexica
 
 
 
-   **Interrogative** 
 
 
-   **EIN** 
 
-   **ANNAR_P** 
 
-   **EINHVOR** 
 
-   **ANNARHVOR** 
 
-   **HANNSJALVUR** 
 
 
-   **Indefinite** 
 
 
 
 
+### Imperative and present participle
 
+**imp_prsptc**
 
-   **ONKUR** 
+**imp_prsptc_j**
 
-   **NAKAR** 
+**imp**
 
-   **BADIR** 
+**imp_j**
 
-   **HVORGIN** 
+**impsg**
 
-   **EINGIN** 
+**imppl**
 
+**imppl_j**
 
+**prsptc**
 
+### Supine and preterite participle
 
+**sup**
 
+**sup_t**
 
-# The Faroese morphophonological file 
+**sup_tt**
 
-## Alphabet
-Here we declare all symbols.
+**sup_a** kalla
 
- *  a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å    
- *  á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý þ ñ ð ß ç        
+**sup_null**  stungið
 
- *  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å    
- *  Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð            
+**sup_in** kalla
 
+**sup_ið_in**  stungið
 
- *  a2:a    for da2n -> dønum
- *  g2:g   for invariant g
- *  i2:i   for invariant i
- *  j2:j   for invariant j
- *  t2:t   for invariant, non-deleted t, dráttri pro *drátri
- *  v2:v   for invariant v
 
- *  %^UUML:0 %^IUML:0 %^eIUML:0 %^ØUML:0    : Umlaut types ,
- *  %^W:0 %^JI:0                   : Cns changes ,
- *  %^EPH:0                        : Epenthesis,  ,
- *  %^OEA:0                        : ø to a
 
- *  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0 	 : Cns deletion triggers,
- *  %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0	 : Ablaut series ,
- *  %^aAB:0 %^uAB:0	 : Ablaut series subcases
- *  %>:0 	 : Suffix border
 
- *  « » 	 : hmm, in use?
 
-## Sets
-Here we define some convenient sets.
+### Middle lexicon
 
+**VANDI**
 
- *  Vow = a e i o u y æ ø å                                 
-         á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;     
- *  Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;     
- *  Nas = m n ;                                             
- *  NonNas = b c d f g h j k l p q r s t v w x z ð þ ;      
- *  Dummy = %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^OEA      
- *  %^EDH %^VSH %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL        
-   %^RDEL %^EIO %^OA %^WVV %^NGKK %^AB1 %^AB2 %^AB3        
-   %^AB4 %^AB5 %^AB6 %^AB7 %^aAB %^uAB %^PASS %> ;         
 
- *  Special =  %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL     
-              %^GVDEL %^VDEL  %^JDEL %^RDEL ;                       
-Forgot why these are special...
 
+## Perfect Participles !
 
-# Rules
-These are the rules. After each rule (or rather: after many of the rules) there are test cases that are there to test whether the rules work.
 
 
+**p18**
 
-## Verschärfung
+**p26**
 
-**Deleting g** 
-* Deleting the gv Verschärfung 1
-* Deleting gg in ggj Genitive I
-* Deleting gg in ggj Genitive II
+**p26_2**
 
 
-* *sting^NGKK^aAB>st*
-* *stak0000st*
+**p34_6**
 
+**p34_7**
 
 
-**ng to kk Part 1** 
+**p32**
 
-**ng to kk Part 2** 
+**p39**
 
+**p5pos**
 
+**p5**
 
-**Deleting v in gv sequences** 
+**p6**
 
-Verschärfung tests
+**p7**
 
-* *bógv^IUML>i*
-* *bøg000i*
-
-* *flúgv^IUML^VDEL*
-* *flýg000*
-
-* *flúgv^VSH^VDEL>u*
-* *flug0000u*
-
-* *búgv^GVDEL>s*
-* *bú0000s*
-
-* *bógv^VDEL>s*
-* *bóg000s*
-
-* *skógv^GVDEL>m*
-* *skó0000m*
-
-* *skýggj^GGDEL>s*
-* *ský00000s*
-
-* *kríggj^GDEL>s*
-* *kríg0000s*
-
-* *sjógv^GDEL>ar*
-* *sjó0v00ar*
-
-**Deleting r in Genitive of ur stems** 
-
-* *brúður^EPH^RDEL>ar*
-* *brúð00000ar*
-
-
-**Deleting m in um%>num ** 
-
-* *ris>um>num*
-* *ris0u00num*
-
-* *skógv^GVDEL>m>num*
-* *skó000000num*
-
-
-
-**Deleting Double Consonant in Front of Consonant** 
-
-The preceeding rule is fishy - the test cases below don't fit the context
-requirements, and the >s# in the right context seems to indicate passive.
-The rule conflicts with the "Cns Deletion in front of Pass" rule at the
-end of the file - but only when using the Xerox tools! XXX - please have a look!
-
-* *hjall>s*
-* *hjal00s*
-
-* *rygg>s*
-* *ryg00s*
-
-* *hjall>ar*
-* *hjall0ar*
-
-
-
-
-* *all>t*
-* *al00t*
-
-
-
-
-
-## Verbal Sandhi rules
-
-**Geminate Assimilation in Past Tense d** 
-
-**Geminate Assimilation in Past Tense t** 
-
-* *send>di*
-* *sen00di*
-
-* *hirð>di*
-* *hir00di*
-
-
-* *sett>ti*
-* *set00ti*
-
-
-**ð Assimilation in Front of Dental Past Suffix -d(i)** 
-
-* *leið>di*
-* *leid0di*
-
-
-* *leið>di*
-* *leid0di*
-
-* *greið>di*
-* *greid0di*
-
-
-* *ryð^WVV>di*
-* *rud00di*
-
-
-**Deleting Double Consonant in Front of Epenthesis mark** 
-
-* *summar^EPH>i*
-* *sum00r00i*
-
-* *himmal^EPH^UUML>um*
-* *him00l000um*
-
-
-
-**Deleting stem-final s in s genitive** 
-
-* *primus>s*
-* *primus00*
-
-* *primus>s*
-* *primus00*
-
-* *grís>s*
-* *grís00*
-
-
-**Double ð Deletion** 
-
-
-**ð Assimilation in Front of Supine Suffix -t** 
-
-* *leið>t*
-* *leit0t*
-
-**Adjusting Dental Past Suffix -d(i)** 
-
-* *keyp>di*
-* *keyp0ti*
-
-* *merk>di*
-* *merk0ti*
-
-## Adjectival sandhi rules
-
-**Adjective neuter after nlr 1** 
-
-**Adjective neuter after nlr 2** 
-
-* *mikil^EPH>t*
-* *miki000ð*
-
-* *gamal^EPH>t*
-* *gamal00t*
-
-**t Deletion in Neuter** 
-
-
-
-j rules
-
-**Deleting j** 
-
-* *kríggj^GDEL>num*
-* *kríg0000num*
-
-* *beiggj^JI>i*
-* *beigg000i*
-
-* *verkj^JDEL>ur*
-* *verk000ur*
-
-* *heyggj>i*
-* *heygg00i*
-
-
-**Realising j in front of vowels** 
-
-* *hylj2>ar*
-* *hylj0ar*
-
-
-
-
-Vowel rules  
-
-
-**Realising i2 as i** 
-
-
-###  Epenthetic vowel rules
-
-**Epenthetic deletion** 
-
-
-* *økur^EPH^UUML>um*
-* *øk0r000um*
-
-* *lykil^EPH>an*
-* *lyk0l00an*
-
-* *aftan^EPH>*
-* *aftan00*
-
-* *vakin^EPH>ir*
-* *vak0n00ir*
-
-
-
-**U-umlaut of Epenthetic vowel** 
-
-* *gamal^EPH^UUML*
-* *gomul00*
-
-* *gamal^EPH^UUML>u*
-* *goml000u*
-
-
-### Umlaut rules
-
-**U-umlaut in Front of Nasal** 
-
-* *tank^UUML*
-* *tonk0*
-
-* *band^UUML*
-* *bond00*
-
-* *hamar^EPH^UUML>um*
-* *hom0r000um*
-
-**General U-umlaut** 
-
-* *dag^UUML>um*
-* *døg00um*
-
-* *sag^UUML>a*
-* *søg00a*
-
-* *all^UUML>*
-* *øll00*
-
-
-**U-umlaut for akur** 
-
-* *akur^EPH^UUML>um*
-* *øk0r000um*
-
-**I-umlaut** 
-
-* *dag^IUML>i*
-* *deg00i*
-
-* *son^IUML>i*
-* *syn00i*
-
-* *bógv^IUML>i*
-* *bøg000i*
-
-* *ung^IUMLr>i*
-* *yng0r0i*
-
-* *fjørð^IUML>i*
-* *f0irð00i*
-
-
-
-**eI-umlaut** for o:e, á:e, i:e
-
-**I-umlaut for bróðir ** 
-
-
-**Inverted U-umlaut from ø** 
-
-* *fløtt^OEAa*
-* *flatt0a*
-
-**Inverted U-umlaut from o** 
-
-* *fonn^OA>ar*
-* *fann00ar*
-
-
-**o/ei-Umlaut I** 
-
-**o/ei-Umlaut II** 
-
-* *dreing^EIO>i*
-* *dro0ng00i*
-
-
-
-
-
-
-
-### Vowel deletion rules
-
-**Vowel deletion in front of na** 
-
-
-
-
-
-
-
-
-### Verbal vowel alternation rules
-
-**Stem vowel change in Weak Verbs** 
-
-* *flek^WVV>t*
-* *flak00t*
-
-* *flek^WVV>t*
-* *flak00t*
-
-* *vel^WVV>di*
-* *val00di*
-
-
-**Stem Vowel Shortening in Supine and Participle** 
-
-* *bít^VSHin>a*
-* *bit00n>a*
-
-
-
-
-**Past tense singular diphthongs I** 
-
-**Past tense singular diphthongs II** 
-
-* *b0ít^AB1*
-* *beit0*
-
-
-**Past tense singular monophthongs** 
-
-* *gev^AB3*
-* *gav0*
-
-**Past tense plural monophthongs** 
-
-
-**Past tense plural monophthongs to a** 
-
-
-
-**Supine u** 
-
-
-**Supine o** 
-
-
-**Supine i** 
-
-
-**Present tense ý** 
-
-
-
-
-### Adjectival Sandhi rule
-
-**Vowel shortening in Neuter** 
-
-* *góð>t*
-* *got0t*
-
-* *skjót>t*
-* *skjót0t*
-
-
-## Other rules
-
-### Morphological passive rules
-
-**u in ur Deletion in front of Pass** 
-
-**r Deletion in front of Pass** 
-
-**ð Deletion in front of Pass** 
-
-
-
-
-
-# North Saami acronyms - affix part
-
-## The lexica giving tags and suffixes to the acronyms
-
-
-
-
- * **LEXICON ACRONOUN   ** is the lexicon for **nouns** (not +Prop) like ATV
-
- * **LEXICON UNIT   **  As acro, but without paradigm
-
-
-
-
-
-
-
-
-
- * **LEXICON acroconnector   ** Here comes a set of possible symbols to
-put between the abbreviation and its suffix
-
- * **LEXICON acronull   **  for suffixless forms, redirecting to K_only for clitic forms
-
-
-
-# Symbol affixes
+**p8**
 
 
 
@@ -2616,6 +2213,532 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
  * **LEXICON dot-infl   **
 
  * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+
+
+
+
+
+
+
+# Proper nouns 
+
+## Table of content
+* _ The guessed ones
+* _ The morphological tags
+    - _ _ Male first names
+    - _ _ Female first names
+    - _ _ Surnames
+    - _ _ Place names and other names
+
+
+
+
+
+
+## The morphological tags
+
+For each group, the maltag etc. lexicon functions as a default
+lexicon. The other lexica are there for specific subgroups of the names.
+
+### Indeclineables
+
+
+
+
+
+
+
+###  Male first names
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Female first names
+
+
+
+
+
+###  Surnames
+
+
+
+###  Place names and other names
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Numeral affixess
+
+This lexicon just goes to #, this in order to coexist with number files in giella-shared.
+They are relevant for Sámi, not for faroese.
+
+Lexica: 
+
+ * LEXICON DIGITCASE 				 # ;		 
+ * LEXICON ARABICCASE 				 # ;		 
+ * LEXICON ARABICCASE0 				 # ;	 
+ * LEXICON ARABICCASECOLL 				 # ;	 
+ * LEXICON ARABICCASEORD 				 # ;	 
+ * LEXICON ARABICCASEORD-ERR 				 # ; 
+ * LEXICON ARABICCASES 				 # ;	 
+ * LEXICON ARABICCOMPOUNDS 			 # ;	 
+ * LEXICON ROMNUMTAGOBL 				 # ;	 
+ * LEXICON dateyearcase 				 # ;	 
+ * LEXICON dateyearcase_fullsuff 		 # ;	 
+ * LEXICON dateyearcase_nullsuff_w_dot  # ;	 
+
+
+
+
+
+
+
+
+# North Saami acronyms - affix part
+
+## The lexica giving tags and suffixes to the acronyms
+
+
+
+
+ * **LEXICON ACRONOUN   ** is the lexicon for **nouns** (not +Prop) like ATV
+
+ * **LEXICON UNIT   **  As acro, but without paradigm
+
+
+
+
+
+
+
+
+
+ * **LEXICON acroconnector   ** Here comes a set of possible symbols to
+put between the abbreviation and its suffix
+
+ * **LEXICON acronull   **  for suffixless forms, redirecting to K_only for clitic forms
+
+
+# Adjective morphology !
+
+## Ad hoc lexica
+
+
+
+## The lexicons
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Irregular adjectives
+
+
+
+
+
+
+
+
+###  Irregular comparatives
+
+
+
+
+
+
+
+
+
+# Intermediate adjectival lexica
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Adjectival case lexica
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Msc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Neu
+
+
+
+
+
+
+
+
+
+
+
+###  Definite declension
+
+
+
+Positiv, def, u-umlj
+Msc
+
+Fem
+
+
+
+Neu
+
+
+Positiv, def, ø-umlj
+Msc
+
+Fem
+Neu
+
+
+
+Gender tags
+
+
+
+
+
+Case tags
+
+
+
+
+
+
+
+
+Compound flags
+
+
+
+
+
+
+
+
+
+
+
+
+# Comparative
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Superlative
+
+
+
+
+
+
+
 
 
 
@@ -3363,96 +3486,655 @@ the ways stems may be combined.
 * **LEXICON Neu_Flag** for 
 * **LEXICON Pl_Flag** for 
 * **LEXICON p24** 
-# Numeral affixess
 
-This lexicon just goes to #, this in order to coexist with number files in giella-shared.
-They are relevant for Sámi, not for faroese.
-
-Lexica: 
-
- * LEXICON DIGITCASE 				 # ;		 
- * LEXICON ARABICCASE 				 # ;		 
- * LEXICON ARABICCASE0 				 # ;	 
- * LEXICON ARABICCASECOLL 				 # ;	 
- * LEXICON ARABICCASEORD 				 # ;	 
- * LEXICON ARABICCASEORD-ERR 				 # ; 
- * LEXICON ARABICCASES 				 # ;	 
- * LEXICON ARABICCOMPOUNDS 			 # ;	 
- * LEXICON ROMNUMTAGOBL 				 # ;	 
- * LEXICON dateyearcase 				 # ;	 
- * LEXICON dateyearcase_fullsuff 		 # ;	 
- * LEXICON dateyearcase_nullsuff_w_dot  # ;	 
+# Symbol affixes
 
 
 
+
+
+# The Faroese morphophonological file 
+
+## Alphabet
+Here we declare all symbols.
+
+ *  a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å    
+ *  á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý þ ñ ð ß ç        
+
+ *  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å    
+ *  Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð            
+
+
+ *  a2:a    for da2n -> dønum
+ *  g2:g   for invariant g
+ *  i2:i   for invariant i
+ *  j2:j   for invariant j
+ *  t2:t   for invariant, non-deleted t, dráttri pro *drátri
+ *  v2:v   for invariant v
+
+ *  %^UUML:0 %^IUML:0 %^eIUML:0 %^ØUML:0    : Umlaut types ,
+ *  %^W:0 %^JI:0                   : Cns changes ,
+ *  %^EPH:0                        : Epenthesis,  ,
+ *  %^OEA:0                        : ø to a
+
+ *  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0 	 : Cns deletion triggers,
+ *  %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0	 : Ablaut series ,
+ *  %^aAB:0 %^uAB:0	 : Ablaut series subcases
+ *  %>:0 	 : Suffix border
+
+ *  « » 	 : hmm, in use?
+
+## Sets
+Here we define some convenient sets.
+
+
+ *  Vow = a e i o u y æ ø å                                 
+         á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;     
+ *  Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;     
+ *  Nas = m n ;                                             
+ *  NonNas = b c d f g h j k l p q r s t v w x z ð þ ;      
+ *  Dummy = %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^OEA      
+ *  %^EDH %^VSH %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL        
+   %^RDEL %^EIO %^OA %^WVV %^NGKK %^AB1 %^AB2 %^AB3        
+   %^AB4 %^AB5 %^AB6 %^AB7 %^aAB %^uAB %^PASS %> ;         
+
+ *  Special =  %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL     
+              %^GVDEL %^VDEL  %^JDEL %^RDEL ;                       
+Forgot why these are special...
+
+
+# Rules
+These are the rules. After each rule (or rather: after many of the rules) there are test cases that are there to test whether the rules work.
+
+
+
+## Verschärfung
+
+**Deleting g** 
+* Deleting the gv Verschärfung 1
+* Deleting gg in ggj Genitive I
+* Deleting gg in ggj Genitive II
+
+
+* *sting^NGKK^aAB>st*
+* *stak0000st*
+
+
+
+**ng to kk Part 1** 
+
+**ng to kk Part 2** 
+
+
+
+**Deleting v in gv sequences** 
+
+Verschärfung tests
+
+* *bógv^IUML>i*
+* *bøg000i*
+
+* *flúgv^IUML^VDEL*
+* *flýg000*
+
+* *flúgv^VSH^VDEL>u*
+* *flug0000u*
+
+* *búgv^GVDEL>s*
+* *bú0000s*
+
+* *bógv^VDEL>s*
+* *bóg000s*
+
+* *skógv^GVDEL>m*
+* *skó0000m*
+
+* *skýggj^GGDEL>s*
+* *ský00000s*
+
+* *kríggj^GDEL>s*
+* *kríg0000s*
+
+* *sjógv^GDEL>ar*
+* *sjó0v00ar*
+
+**Deleting r in Genitive of ur stems** 
+
+* *brúður^EPH^RDEL>ar*
+* *brúð00000ar*
+
+
+**Deleting m in um%>num ** 
+
+* *ris>um>num*
+* *ris0u00num*
+
+* *skógv^GVDEL>m>num*
+* *skó000000num*
+
+
+
+**Deleting Double Consonant in Front of Consonant** 
+
+The preceeding rule is fishy - the test cases below don't fit the context
+requirements, and the >s# in the right context seems to indicate passive.
+The rule conflicts with the "Cns Deletion in front of Pass" rule at the
+end of the file - but only when using the Xerox tools! XXX - please have a look!
+
+* *hjall>s*
+* *hjal00s*
+
+* *rygg>s*
+* *ryg00s*
+
+* *hjall>ar*
+* *hjall0ar*
+
+
+
+
+* *all>t*
+* *al00t*
+
+
+
+
+
+## Verbal Sandhi rules
+
+**Geminate Assimilation in Past Tense d** 
+
+**Geminate Assimilation in Past Tense t** 
+
+* *send>di*
+* *sen00di*
+
+* *hirð>di*
+* *hir00di*
+
+
+* *sett>ti*
+* *set00ti*
+
+
+**ð Assimilation in Front of Dental Past Suffix -d(i)** 
+
+* *leið>di*
+* *leid0di*
+
+
+* *leið>di*
+* *leid0di*
+
+* *greið>di*
+* *greid0di*
+
+
+* *ryð^WVV>di*
+* *rud00di*
+
+
+**Deleting Double Consonant in Front of Epenthesis mark** 
+
+* *summar^EPH>i*
+* *sum00r00i*
+
+* *himmal^EPH^UUML>um*
+* *him00l000um*
+
+
+
+**Deleting stem-final s in s genitive** 
+
+* *primus>s*
+* *primus00*
+
+* *primus>s*
+* *primus00*
+
+* *grís>s*
+* *grís00*
+
+
+**Double ð Deletion** 
+
+
+**ð Assimilation in Front of Supine Suffix -t** 
+
+* *leið>t*
+* *leit0t*
+
+**Adjusting Dental Past Suffix -d(i)** 
+
+* *keyp>di*
+* *keyp0ti*
+
+* *merk>di*
+* *merk0ti*
+
+## Adjectival sandhi rules
+
+**Adjective neuter after nlr 1** 
+
+**Adjective neuter after nlr 2** 
+
+* *mikil^EPH>t*
+* *miki000ð*
+
+* *gamal^EPH>t*
+* *gamal00t*
+
+**t Deletion in Neuter** 
+
+
+
+j rules
+
+**Deleting j** 
+
+* *kríggj^GDEL>num*
+* *kríg0000num*
+
+* *beiggj^JI>i*
+* *beigg000i*
+
+* *verkj^JDEL>ur*
+* *verk000ur*
+
+* *heyggj>i*
+* *heygg00i*
+
+
+**Realising j in front of vowels** 
+
+* *hylj2>ar*
+* *hylj0ar*
+
+
+
+
+Vowel rules  
+
+
+**Realising i2 as i** 
+
+
+###  Epenthetic vowel rules
+
+**Epenthetic deletion** 
+
+
+* *økur^EPH^UUML>um*
+* *øk0r000um*
+
+* *lykil^EPH>an*
+* *lyk0l00an*
+
+* *aftan^EPH>*
+* *aftan00*
+
+* *vakin^EPH>ir*
+* *vak0n00ir*
+
+
+
+**U-umlaut of Epenthetic vowel** 
+
+* *gamal^EPH^UUML*
+* *gomul00*
+
+* *gamal^EPH^UUML>u*
+* *goml000u*
+
+
+### Umlaut rules
+
+**U-umlaut in Front of Nasal** 
+
+* *tank^UUML*
+* *tonk0*
+
+* *band^UUML*
+* *bond00*
+
+* *hamar^EPH^UUML>um*
+* *hom0r000um*
+
+**General U-umlaut** 
+
+* *dag^UUML>um*
+* *døg00um*
+
+* *sag^UUML>a*
+* *søg00a*
+
+* *all^UUML>*
+* *øll00*
+
+
+**U-umlaut for akur** 
+
+* *akur^EPH^UUML>um*
+* *øk0r000um*
+
+**I-umlaut** 
+
+* *dag^IUML>i*
+* *deg00i*
+
+* *son^IUML>i*
+* *syn00i*
+
+* *bógv^IUML>i*
+* *bøg000i*
+
+* *ung^IUMLr>i*
+* *yng0r0i*
+
+* *fjørð^IUML>i*
+* *f0irð00i*
+
+
+
+**eI-umlaut** for o:e, á:e, i:e
+
+**I-umlaut for bróðir ** 
+
+
+**Inverted U-umlaut from ø** 
+
+* *fløtt^OEAa*
+* *flatt0a*
+
+**Inverted U-umlaut from o** 
+
+* *fonn^OA>ar*
+* *fann00ar*
+
+
+**o/ei-Umlaut I** 
+
+**o/ei-Umlaut II** 
+
+* *dreing^EIO>i*
+* *dro0ng00i*
+
+
+
+
+
+
+
+### Vowel deletion rules
+
+**Vowel deletion in front of na** 
+
+
+
+
+
+
+
+
+### Verbal vowel alternation rules
+
+**Stem vowel change in Weak Verbs** 
+
+* *flek^WVV>t*
+* *flak00t*
+
+* *flek^WVV>t*
+* *flak00t*
+
+* *vel^WVV>di*
+* *val00di*
+
+
+**Stem Vowel Shortening in Supine and Participle** 
+
+* *bít^VSHin>a*
+* *bit00n>a*
+
+
+
+
+**Past tense singular diphthongs I** 
+
+**Past tense singular diphthongs II** 
+
+* *b0ít^AB1*
+* *beit0*
+
+
+**Past tense singular monophthongs** 
+
+* *gev^AB3*
+* *gav0*
+
+**Past tense plural monophthongs** 
+
+
+**Past tense plural monophthongs to a** 
+
+
+
+**Supine u** 
+
+
+**Supine o** 
+
+
+**Supine i** 
+
+
+**Present tense ý** 
+
+
+
+
+### Adjectival Sandhi rule
+
+**Vowel shortening in Neuter** 
+
+* *góð>t*
+* *got0t*
+
+* *skjót>t*
+* *skjót0t*
+
+
+## Other rules
+
+### Morphological passive rules
+
+**u in ur Deletion in front of Pass** 
+
+**r Deletion in front of Pass** 
+
+**ð Deletion in front of Pass** 
+
+
+
+
+# Faroese verbs 
+
+**Verbs**
+
+## Some irregular verbs
+*mega, eiga, eita, gráta, ...* and 15 more
+
+
+some irregular passive verbs: høggast, loypast
+
+
+
+
+
+
+
+
+
+## The long verb list
+
+The lexica listed here represent the declension patterns
+presented in Føroysk orðabók. The lexicon names correspond to the
+declension codes in the dictionary.
+
+
+ * fakturera:fakturer s30 ;   
+ * formturka:form#turk s30 ;   
+ * svørja:svør s10 ;   
+ * almannakunngera:al#manna#kunng s31 ;    
+ * gjøgnumføra:gjøgnum#før s1 ;   
+ * innføra:inn#før s1 ;   
+ * útføra:út#før s1 ;   
+ * innvíga:inn#víg s1 ;   
+ * annleggja:ann#l s20 ;   ... and more than 6000 more.
+
+
+
+
+
+
+
+
+
+
+Simple declension class verbs
+
+
+
+
+
+
+
+
+Still to be classified
+
+
+
+
+Double declension class verbs
+
+
+
+
+
+Finally some candidates to be considered for verb compounding.
+
+# File containing Faroese abbreviations 
+
+Lexica for adding tags and periods
+
+The idea is (or may be) to use both common and language-speicfic abbreviations.
+
+Splitting in 3 groups, because of the preprocessor
+
+**Abbreviation**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dot% noStb.db
+Abbreviations that never induce sentence boundaries
+The file is too large and should be shrinked
 
 
 
 # Proper nouns 
 
-## Table of content
-* _ The guessed ones
-* _ The morphological tags
-    - _ _ Male first names
-    - _ _ Female first names
-    - _ _ Surnames
-    - _ _ Place names and other names
+Table of content
+* The name lexica
+    -   - mal
+    -   - fem
+    -   - plc
+    -   - sur       
 
+## Splitting into name types
 
 
+   **Propernouns** splitting in 3 lexica: **multipartnames, names, guess**
 
 
+   **multipartnames** contains only 3 names for now
 
-## The morphological tags
+   **names** gives the list of names.
 
-For each group, the maltag etc. lexicon functions as a default
-lexicon. The other lexica are there for specific subgroups of the names.
 
-### Indeclineables
 
 
 
 
 
 
+# Faroese pronouns
 
-###  Male first names
 
+   **Pronoun** splitting into 3 sublexica:
+ 1. Personal ;        
+ 1. Reflexive ;        
+ 1. Interrogative ;    
+ 1. Indefinite ;       
 
+   **Personal** for the personal pronouns
 
 
 
 
 
+   **egtu-obl** 
 
+   **okkumtykkum** 
 
+   **S_okkumtykkum** 
 
 
+   **3obl** 
 
+   **Reflexive** 
 
 
-### Female first names
 
+   **Interrogative** 
 
 
+   **EIN** 
 
+   **ANNAR_P** 
 
-###  Surnames
+   **EINHVOR** 
 
+   **ANNARHVOR** 
 
+   **HANNSJALVUR** 
 
-###  Place names and other names
 
+   **Indefinite** 
 
 
 
 
 
 
+   **ONKUR** 
 
+   **NAKAR** 
 
+   **BADIR** 
 
+   **HVORGIN** 
 
+   **EINGIN** 
 
 
 
@@ -3460,59 +4142,105 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 
 
+# Interjections
 
+The tag +Interj
 
+   **Interj** 
 
+The words
 
+   **Interjection** okey, ááá, aj, huff, ...
 
+# Faroese Numerals
 
 
 
+**Numeral** splitting in types
+ * Textual ;  
+ * ARABICS ;  
+ * ARABICORD ;  
+ * ROMAN ;  
+ * ISOLATED-NUMEXP ;  
+ * NUM-PREFIXES ;  
 
 
 
 
+   **1-9** 
 
 
 
+   **TRÝsplit** 
 
+   **nsplit** 
 
+   **TEXTTENS** 
 
 
+   **TEXTTEENS** 
 
+   **basic** 
 
 
 
+   **EITT** 
 
+   **TVEY** 
 
+   **TRÝ** 
 
+   **PAIRNUM** 
 
+   **n** 
 
 
+## Ordinals
 
+   **ordinals** 
 
+   **ord_decl** 
 
+   **ANNAR** 
 
+   **ANNARMORPH** 
 
 
 
+# The Faroese conjunctions
 
+The file `stems/conjunctions.lexc` contains two lexica:
 
+**LEXICON CCtag** for assigning the +CC tag to all the conjunctions below. It has one entry:
+ * +CC: # ;
 
+**LEXICON Conjunction** for the list of 10 or so conjunctions that are found in the file. Here are the first entries:
+ * antin CCtag ;
+ * annaðhvørt CCtag ;
+ * bæði CCtag ;
+ * og CCtag ;
+# Faroese adjectives 
 
 
+The adjectives and their inflectional codes 
+are taken from "Føroysk orðabók".
 
+## The list of ajectives
 
 
 
 
 
+**Adjectives** for the list of adjectives
 
+### Irregular comparatives and superlatives
 
 
 
+### Prefixed present participles
 
 
+### Regular adjectives, systematic list
 
 
 
@@ -3530,6 +4258,7 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 
 
+# Faroese deternminers
 
 
 
@@ -3550,882 +4279,171 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 
 
-# Verb morphology !
 
 
-**s1** nevna = riggar!
 
 
-**s2** keypa = riggar!
 
-**SETA** seta = riggar!
 
 
 
-**s3** leiða = riggar!
 
-**s4** frøa = riggar!
 
-**s5** senda = riggar!
 
-**s6** hirða = riggar!
 
-**s7** gista = riggar!
 
 
-**s8** kenna = riggar!
 
-**s9** klippa = riggar!
 
 
-**s10** fylgja = riggar!
 
-**s11**  roykja = riggar!
 
+# Faroese prepositions
 
-**s12** boyggja = riggar!
+We should eventually have syntactic tags here...
 
+## Tags
+**p** for the tag +Pr
 
-**s13** søkkja = riggar!
+## The list of prepositions
 
+**Preposition** for the list of prepositions, ordered according to case they select for.
 
-**s14** heingja = riggar!
 
 
-**s15** skeinkja = riggar!
+### Several cases
 
-**s15_2** steikja = riggar!
 
-**s16** flekja = riggar!
+### Accusative or dative
+| --- 
 
-**s17** berja = riggar!
+### Accusative or genitive
 
-**s18** krevja = riggar!
 
-**s19** dylja = riggar!
+### Accusative
 
-**s20** leggja = riggar!
+###  Dative
 
-**s21** selja = riggar!
 
-**s22** ryðja = riggar ikki í sup og prfptc!
+# Faroese adverbs
 
-**s22_1** ýðja = riggar!
 
-**s23** smyrja = riggar!
+   **adv** for the tag +Adv
 
-**s24** flysa = riggar ikki í pass!
+   **advcomp** for the tag +Adv+Cmp
 
-**s25** liva = riggar!
+   **advsuperl** for the tag +Adv+Superl
 
+   **Adverb** for the list of appr 1000 adverbs
 
-**s26** plaga = riggar (formurin plagdur manglar)!
 
+ * í% gjár adv ; 
+ * í% fjør adv ; 
+ * ókynjað adv ; 
+ * suðuri adv ; 
+ * eystarlaga adv ; 
+ * útúr adv ; 
+ * hvaðani adv ; 
+ * síðla adv ; 
+ * allastaðnar adv ; 
+ * forskelligastaðnar adv ; 
+ * nógvastaðnar adv ; 
+ * onkrastaðnar adv ; 
+ * ymsastaðnis adv ; 
+ * líkafram adv ; 
+ * aftanáaftur adv ; 
+...
 
+# Akronymer 
 
-**s26_1** mála->máldi
+This documents the `stems/fao-acronyms.lexc` file.
+Most acronyms are taken from a common generated file, this file is for the Faroese-specific acronyms.
 
-**s27** spáa = riggar!
 
-**s28** skaða = riggar ikki í prfptc!
+   **LEXICON Acronym-fao** pointing to the lexica 
+ * Akronymnumeralier ; (Nogle tal først, måskje?)
+ * Acronym-fao-list ; 
 
-**s29** brúka = riggar!
+   **LEXICON Acronym-fao-list** for selve listen, i øjeblikket 2:
+ * StÍF ACRO ; 
+ * T5PC ACRO ; 
 
-**s30** kalla = riggar!
 
-**s31** only gera and *gera = riggar!
 
-**s32/30** útbúgva = riggar!
 
-**s32** búgva = riggar!
 
-**s33** rógva
+   **Akronymnumeralier**  for 0-9
 
+   **anl**  send numvers too letterloops -- this might be too liberal.
 
-**s34** goyggja = riggar!
 
 
+# Faroese noun stem file
 
+The lexicon names are taken from
+Føroysk orðabók I-II (FO). Reference is
+made to Thráinsson & al ("fg").
 
-## Strong verbs starting here
+Note that in some cases, the lexicon names and stems here
+deviate from FO. In that case the lexica have names ending
+in wordforms, written in capital lettes.
 
-**s35** bíta riggar!
+## Short lexica
 
-**s36** svíkja riggar!
+**Shortnouns** for  1, 2 and 3 letter nouns excluded from compounding
 
+These are now always excluded from lastpart compound
+and in norm from first-part compounding as well
 
-**s37** bróta riggar!
 
-**s38** skjóta riggar!
 
 
-**s39d**
 
-**s39s**
 
-**s39** 
 
-**s40** fúka
 
-**s41** flúgva
 
-**s42** klúgva
+## The main list of nouns
 
-**s44** finna
+Her kjem alle substantiva. Dei er baklengssortert.
+leksikon som byrjar med x er ikkje manuelt sjekka.
 
-**s45** binda = riggar!
+**Nouns**
 
-**s46** stinga = riggar!
+Fila inneheld i underkant av 50000 lemma.
 
-**s47** svimja = riggar ... men kanska skal tað ikki hava passiv
 
 
-**s48** drekka = riggar ikki í adj pga dpkons
 
-**s48_2** renna = riggar ikki í adj pga dpkons
 
-**s49** detta = riggar ikki í adj pga dpkons
 
-**s49_2** treffa = riggar ikki í adj pga dpkons
 
-**s49_3** sleppa = riggar ikki í adj pga dpkons
 
-**s49_4** verpa = riggar!
 
-**s50** røkka = riggar ikki í adj pga dpkons
 
-**s51** ganga = riggar!
 
 
-**s52** veva = riggar!
 
-**s53** leypa = riggar!
 
-**s54** bera = riggar!
 
-**s55** fara = riggar!
 
-**s56** geva = riggar!
 
-**s57** sita = riggar ikki + skal nokk ikki hava passiv
+# Faroese subjunctions
 
-**s58** mala
+The file `stems/subjunctions.lexc` contains three lexica:
 
-**s59** stjala
+**LEXICON CStag** assigns the **+CS** TAG. It has one entry:
+ +CS: # ;
 
-**s60** taka, aka
+**LEXICON IMtag** assigns the  **+IM** tag for the infinitive marker. The entry is:
+ +IM: # ;
 
-**s61** halda
-
-**s62** sova
-
-**s63** koma
-
-**s64** lata
-
-**s64_1** láta
-
-**s65** standa
-
-**s66** biðja
-
-**s67** draga
-
-**s68** hvørva
-
-**s69** sláa
-
-
-**s70** siga
-
-**s71** skerja
-
-**s72** eta
-
-**s73** læa
-
-
-## Ad hoc, irregular
-
-**BLÍVA**
-
-**EIGA**
-
-**EITA**
-
-**GRÁTA**
-
-**HAVA**
-
-**KUNNA**
-
-**MEGA**
-
-**MUNNA**
-
-**SKULA**
-
-**TYKJA**
-
-**VERA**
-
-**VERÐA**
-
-
-**VILJA**
-
-**VITA**
-
-
-**SÍGGJA**
-
-**FÁA**
-
-**NÁA** XXX check
-
-**LIGGJA**
-
-
-**RADA**
-
-**BURDA**
-
-**GJALDA**
-
-**VALDA**
-
-**FALLA**
-
-**GJALLA**
-
-**BREGDA**
-
-**SYNGJA** XXX check
-
-
-
-**HOGGA** høgga
-
-**KVODA**
-
-
-
-**FLYGGJA**
-
-
-**VAKSA**
-
-**VEKSA**
-
-
-**s30/26_1** dáma
-
-**HYGGJA**
-
-**TYGGJA**
-
-**MYLA**
-
-**BLASA**
-
-**TYSJA**
-
-**GROA**
-
-**KVOTTA**
-
-**GALDA**
-
-
-
-
-
-
-**TAKAST** 
-
-**LOYPAST** loypast
-
-**sxrefl** This is an ad hoc lexicon
-
-**s74** grindast
-
-**s75** balast
-
-**s76** ræðast
-
-**s77** skiftast
-
-**s78** farast
-
-**s79** skjótast
-
-**s80** trivast
-
-**s81** kíkjast
-
-**s82** fýlast
-
-**s83** samsinnast
-
-**FYRIB** kopi, s83
-
-
-
-## Split lexica
-
-
-
-
-
-
-
-
-
-
-
-
-**s8/48_2**
-**s9/30**
-
-
-
-
-
-## Intermediate lexicon groups
-
-**standard_ir**
-
-**standard_ir_t**
-
-
-
-
-
-
-**ir_verb**
-
-**ir_verb_t**
-
-## Suffix lexica
-
-### Infinitive
-
-**jinf**
-
-**inf**
-
-**reflinf**
-
-
-### Present
-
-**pres_ir**
-
-**pres_ir_j2**
-
-**pres_jir**
-
-**pres_ir_sg**
-
-**pres_ar**
-
-**pres_ur**
-
-**pres_iur**
-
-**pres_ur_j**
-
-**pres_ur_j2**
-
-
-**pres_strong_s1**
-
-**pres_strong_s23**
-
-**pres_strong_s23_t**
-
-**pres_strong_s23_t0**
-
-**pres_strong_s23_t1**
-
-**pres_pl**
-
-
-
-
-
-
-**pres_ast**
-
-**pres_ist**
-
-**pres_1ist**
-
-**pres_23st**
-
-**pres_plast**
-
-
-
-
-**pret_adist**
-
-**pret_dist**
-
-**pret_tist**
-
-**pret_ist**
-
-**pret_st**
-
-**pret_plust**
-
-**pret_pltust**
-
-### Preterite
-
-**prt_d**
-
-**prt_ð**
-
-**prt_t**
-
-
-**prt_ði**
-
-**prt_ti**
-
-**prt_du**
-
-**prt_tu**
-
-**prt_ðu**
-
-**prt_dd**
-
-**prt_a**
-
-**prt_null**
-
-**prt_null_s**
-
-**prt_null_s2**
-
-**prt_null_s2_t**
-
-**prt_u_p**
-
-
-## Passive lexica
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Imperative and present participle
-
-**imp_prsptc**
-
-**imp_prsptc_j**
-
-**imp**
-
-**imp_j**
-
-**impsg**
-
-**imppl**
-
-**imppl_j**
-
-**prsptc**
-
-### Supine and preterite participle
-
-**sup**
-
-**sup_t**
-
-**sup_tt**
-
-**sup_a** kalla
-
-**sup_null**  stungið
-
-**sup_in** kalla
-
-**sup_ið_in**  stungið
-
-
-
-
-
-### Middle lexicon
-
-**VANDI**
-
-
-
-## Perfect Participles !
-
-
-
-**p18**
-
-**p26**
-
-**p26_2**
-
-
-**p34_6**
-
-**p34_7**
-
-
-**p32**
-
-**p39**
-
-**p5pos**
-
-**p5**
-
-**p6**
-
-**p7**
-
-**p8**
-
-
-
-
-
-# Adjective morphology !
-
-## Ad hoc lexica
-
-
-
-## The lexicons
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Irregular adjectives
-
-
-
-
-
-
-
-
-###  Irregular comparatives
-
-
-
-
-
-
-
-
-
-# Intermediate adjectival lexica
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Adjectival case lexica
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Msc
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Neu
-
-
-
-
-
-
-
-
-
-
-
-###  Definite declension
-
-
-
-Positiv, def, u-umlj
-Msc
-
-Fem
-
-
-
-Neu
-
-
-Positiv, def, ø-umlj
-Msc
-
-Fem
-Neu
-
-
-
-Gender tags
-
-
-
-
-
-Case tags
-
-
-
-
-
-
-
-
-Compound flags
-
-
-
-
-
-
-
-
-
-
-
-
-# Comparative
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Superlative
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**LEXICON Subjunction** contains the list of some 10-20 CSs. Here are the first 4:
+ * at IMtag ;  
+ * at CStag ;  
+ * tí CStag ;  
+ * tá% ið CStag ;  
+...
 # Faroese morphological analyser
 
  # Definitions for Multichar_Symbols
@@ -4780,40 +4798,6 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 
 
-# Compounding morphology
-
-
-
-# Lexicon R gets flags and sends compounds over to RReal
- @P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ;  are Flags to control compounding
-
-# Lexicon RReal is the lexicon for the Cmp tag and resending to N, A
- *  +Cmp#: Nouns ;          
- *  +Cmp#: Adjectives ;    
-           R-    ;        
-
-# Lexicon R- for compounds with hyphen
-  +Cmp#:%- Nouns ;    
-  +Cmp#:%- Adjectives ;    
-
-# Lexicon RNum for compounds numeral + noun
-       +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ;    For Num Cmp Noun, vi vil ikke ha Num Cmp Num
-
-
-
-We describe here how abbreviations are in Faroese are read out, e.g.
-for text-to-speech systems.
-
-For example:
-
- * s.:syntynyt # ;  
- * os.:omaa% sukua # ;  
- * v.:vuosi # ;  
- * v.:vuonna # ;  
- * esim.:esimerkki # ; 
- * esim.:esimerkiksi # ; 
-
-
 
 
 
@@ -4867,6 +4851,22 @@ For example:
 % kolon% :%:     Root ;
 % sárggis% :%-   Root ; 
 % násti% :%*     Root ; 
+
+
+
+
+We describe here how abbreviations are in Faroese are read out, e.g.
+for text-to-speech systems.
+
+For example:
+
+ * s.:syntynyt # ;  
+ * os.:omaa% sukua # ;  
+ * v.:vuosi # ;  
+ * v.:vuonna # ;  
+ * esim.:esimerkki # ; 
+ * esim.:esimerkiksi # ; 
+
 
 
 

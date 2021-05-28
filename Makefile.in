@@ -875,11 +875,21 @@ $(srcdir)/%-grammarcheckers-tools.md: $(top_srcdir)/tools/grammarcheckers/%.cg3
 $(srcdir)/%-apertium-mt-tools.md: $(top_srcdir)/tools/mt/apertium/%.cg3
 	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
 
+$(srcdir)/%-tts-tools.md: $(top_srcdir)/tools/tts/%.cg3
+	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+
 generated-markdowns.sources:
 	$(AM_V_GEN)fgrep -rl \
-		--include '*.lexc' --include '*.twolc' --include '*.cg3' \
-		--exclude 'Makefile*' --exclude '*.pmscript' --exclude '*.xfscript'\
+		--include '*.lexc' \
+		--include '*.twolc' \
+		--include '*.cg3' \
+		--exclude 'Makefile*' \
+		--exclude '*.pmscript' \
+		--exclude '*.xfscript'\
 		--exclude lexicon.tmp.lexc \
+		--exclude-dir generated_files \
+		--exclude-dir orig \
+		--exclude-dir incoming \
 		'!! ' $(top_srcdir)/src/* $(top_srcdir)/tools/* |\
 		fgrep -v incoming/ > $@
 

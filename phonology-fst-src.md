@@ -3,48 +3,48 @@
 ## Alphabet
 Here we declare all symbols.
 
- * ** a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å   ** 
- * ** á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý þ ñ ð ß ç       ** 
+ * **a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å** 
+ * **á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý þ ñ ð ß ç** 
 
- * ** A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å   ** 
- * ** Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð           ** 
+ * **A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å** 
+ * **Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð** 
 
 
- * ** a2:a  **  for da2n -> dønum
- * ** g2:g  ** for invariant g
- * ** i2:i  ** for invariant i
- * ** j2:j  ** for invariant j
- * ** t2:t  ** for invariant, non-deleted t, dráttri pro *drátri
- * ** v2:v  ** for invariant v
+ * **a2:a**  for da2n -> dønum
+ * **g2:g** for invariant g
+ * **i2:i** for invariant i
+ * **j2:j** for invariant j
+ * **t2:t** for invariant, non-deleted t, dráttri pro *drátri
+ * **v2:v** for invariant v
 
- * ** %^UUML:0 %^IUML:0 %^eIUML:0 %^ØUML:0   ** : Umlaut types ,
- * ** %^W:0 %^JI:0                  ** : Cns changes ,
- * ** %^EPH:0                       ** : Epenthesis,  ,
- * ** %^OEA:0                       ** : ø to a
+ * **%^UUML:0 %^IUML:0 %^eIUML:0 %^ØUML:0** : Umlaut types ,
+ * **%^W:0 %^JI:0** : Cns changes ,
+ * **%^EPH:0** : Epenthesis,  ,
+ * **%^OEA:0** : ø to a
 
- * ** %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0 	** : Cns deletion triggers,
- * ** %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0	** : Ablaut series ,
- * ** %^aAB:0 %^uAB:0	** : Ablaut series subcases
- * ** %>:0 	** : Suffix border
+ * **%^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0** : Cns deletion triggers,
+ * **%^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0** : Ablaut series ,
+ * **%^aAB:0 %^uAB:0** : Ablaut series subcases
+ * **%>:0** : Suffix border
 
- * ** « » 	** : hmm, in use?
+ * **« »** : hmm, in use?
 
 ## Sets
 Here we define some convenient sets.
 
 
- * ** Vow = a e i o u y æ ø å                                ** 
-  **       á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;    ** 
- * ** Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;    ** 
- * ** Nas = m n ;                                            ** 
- * ** NonNas = b c d f g h j k l p q r s t v w x z ð þ ;     ** 
- * ** Dummy = %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^OEA     ** 
- * ** %^EDH %^VSH %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL       ** 
-  ** %^RDEL %^EIO %^OA %^WVV %^NGKK %^AB1 %^AB2 %^AB3       ** 
-  ** %^AB4 %^AB5 %^AB6 %^AB7 %^aAB %^uAB %^PASS %> ;        ** 
+ * **Vow = a e i o u y æ ø å** 
+  **á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;** 
+ * **Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;** 
+ * **Nas = m n ;** 
+ * **NonNas = b c d f g h j k l p q r s t v w x z ð þ ;** 
+ * **Dummy = %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^OEA** 
+ * **%^EDH %^VSH %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL** 
+  **%^RDEL %^EIO %^OA %^WVV %^NGKK %^AB1 %^AB2 %^AB3** 
+  **%^AB4 %^AB5 %^AB6 %^AB7 %^aAB %^uAB %^PASS %> ;** 
 
- * ** Special =  %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL    ** 
-  **            %^GVDEL %^VDEL  %^JDEL %^RDEL ;                      ** 
+ * **Special = %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL** 
+  **%^GVDEL %^VDEL %^JDEL %^RDEL ;** 
 Forgot why these are special...
 
 

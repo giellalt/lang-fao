@@ -1,13 +1,17 @@
 
 ! ============= !
-!! # Faroese verbs 
+!! # Faroese verb stems 
 ! ============= !
 
+!! This file documents the file [stems/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/verbs.lexc)
+
+!! The file contains one lexicon:
+
 LEXICON Verbs
-!! **@LEXNAME@**
+!! **LEXICON @LEXNAME@** = the lexicon containing all verb stems
 
 !! ## Some irregular verbs
-!! *mega, eiga, eita, gráta, ...* and 15 more
+!! *mega, eiga, eita, gráta, liggja, ...* and 15 more
 
 kvøtta: KVOTTA ;
 gróa: GROA ;
@@ -42,15 +46,17 @@ náa: NÁA ;
 verða: VERÐA ;
 ráða: RADA ;
 syngja: SYNGJA ;
+fyriliggja:fyri#l LIGGJA ; ! strong verb to lie
 
-!! some irregular passive verbs: høggast, loypast
 
-høggast:høgg FYRIB ;
-munnhøggast:munn#høgg FYRIB ;
+!! ## some irregular passive verbs
+
+høggast:høgg FYRIB ;  !!≈ * @CODE@ 
+munnhøggast:munn#høgg FYRIB ;  !!≈ * @CODE@ 
 grovhøggast:grov#høgg FYRIB ;
-bilgjast:bilgj FYRIB ;
-bylgjast:bylgj sxrefl ;
-skelloypast:skel#loyp LOYPAST ;
+bilgjast:bilgj FYRIB ;  !!≈ * @CODE@ 
+bylgjast:bylgj sxrefl ;  !!≈ * @CODE@ 
+skelloypast:skel#loyp LOYPAST ; !! * ... etc. 15 more
 loypast:loyp LOYPAST ;
 takast: TAKAST ;
 átakast:á# TAKAST ;
@@ -85,7 +91,6 @@ yvirtakast:yvir# TAKAST ;
 !! presented in Føroysk orðabók. The lexicon names correspond to the
 !! declension codes in the dictionary.
 
-fyriliggja:fyri#l LIGGJA ; ! strong verb to lie
 
 fakturera:fakturer s30 ; !!= * @CODE@  
 referera:referer s30 ;

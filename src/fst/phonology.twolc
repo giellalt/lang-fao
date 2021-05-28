@@ -4,34 +4,34 @@
 !! Here we declare all symbols.
 
 Alphabet
- a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å   !!= * @CODE@ 
- á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý þ ñ ð ß ç       !!= * @CODE@ 
+ a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å   !!= * **@CODE@** 
+ á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý þ ñ ð ß ç       !!= * **@CODE@** 
 
- A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å   !!= * @CODE@ 
- Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð           !!= * @CODE@ 
+ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å   !!= * **@CODE@** 
+ Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð           !!= * **@CODE@** 
 
 
- a2:a  !!= * @CODE@  for da2n -> dønum
- g2:g  !!= * @CODE@ for invariant g
- i2:i  !!= * @CODE@ for invariant i
- j2:j  !!= * @CODE@ for invariant j
- t2:t  !!= * @CODE@ for invariant, non-deleted t, dráttri pro *drátri
- v2:v  !!= * @CODE@ for invariant v
+ a2:a  !!= * **@CODE@**  for da2n -> dønum
+ g2:g  !!= * **@CODE@** for invariant g
+ i2:i  !!= * **@CODE@** for invariant i
+ j2:j  !!= * **@CODE@** for invariant j
+ t2:t  !!= * **@CODE@** for invariant, non-deleted t, dráttri pro *drátri
+ v2:v  !!= * **@CODE@** for invariant v
  
- %^UUML:0 %^IUML:0 %^eIUML:0 %^ØUML:0   !!= * @CODE@ : Umlaut types ,
- %^W:0 %^JI:0                  !!= * @CODE@ : Cns changes ,
- %^EPH:0                       !!= * @CODE@ : Epenthesis,  ,
- %^OEA:0                       !!= * @CODE@ : ø to a
+ %^UUML:0 %^IUML:0 %^eIUML:0 %^ØUML:0   !!= * **@CODE@** : Umlaut types ,
+ %^W:0 %^JI:0                  !!= * **@CODE@** : Cns changes ,
+ %^EPH:0                       !!= * **@CODE@** : Epenthesis,  ,
+ %^OEA:0                       !!= * **@CODE@** : ø to a
  %^EDH:0 
  %^VSH:0  
 
- %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0 	!!= * @CODE@ : Cns deletion triggers,
+ %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0 	!!= * **@CODE@** : Cns deletion triggers,
  %^EIO:0 %^OA:0 %^WVV:0 %^NGKK:0 %^PASS:0
- %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0	!!= * @CODE@ : Ablaut series ,
- %^aAB:0 %^uAB:0	!!= * @CODE@ : Ablaut series subcases
- %>:0 	!!= * @CODE@ : Suffix border
+ %^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0	!!= * **@CODE@** : Ablaut series ,
+ %^aAB:0 %^uAB:0	!!= * **@CODE@** : Ablaut series subcases
+ %>:0 	!!= * **@CODE@** : Suffix border
  
- « » 	!!= * @CODE@ : hmm, in use?
+ « » 	!!= * **@CODE@** : hmm, in use?
  ;
 
 !! ## Sets
@@ -39,18 +39,18 @@ Alphabet
 Sets
 
 
- Vow = a e i o u y æ ø å                                !!= * @CODE@ 
-       á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;    !!=  @CODE@ 
- Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;    !!= * @CODE@ 
- Nas = m n ;                                            !!= * @CODE@ 
- NonNas = b c d f g h j k l p q r s t v w x z ð þ ;     !!= * @CODE@ 
- Dummy = %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^OEA     !!= * @CODE@ 
- %^EDH %^VSH %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL       !!= * @CODE@ 
- %^RDEL %^EIO %^OA %^WVV %^NGKK %^AB1 %^AB2 %^AB3       !!=  @CODE@ 
- %^AB4 %^AB5 %^AB6 %^AB7 %^aAB %^uAB %^PASS %> ;        !!=  @CODE@ 
+ Vow = a e i o u y æ ø å                                !!= * **@CODE@** 
+       á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;    !!=  **@CODE@** 
+ Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;    !!= * **@CODE@** 
+ Nas = m n ;                                            !!= * **@CODE@** 
+ NonNas = b c d f g h j k l p q r s t v w x z ð þ ;     !!= * **@CODE@** 
+ Dummy = %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^OEA     !!= * **@CODE@** 
+ %^EDH %^VSH %^GDEL %^GGDEL %^GVDEL %^VDEL %^JDEL       !!= * **@CODE@** 
+ %^RDEL %^EIO %^OA %^WVV %^NGKK %^AB1 %^AB2 %^AB3       !!=  **@CODE@** 
+ %^AB4 %^AB5 %^AB6 %^AB7 %^aAB %^uAB %^PASS %> ;        !!=  **@CODE@** 
 
- Special =  %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL    !!= * @CODE@ 
-            %^GVDEL %^VDEL  %^JDEL %^RDEL ;                      !!=  @CODE@ 
+ Special =  %^UUML %^IUML %^W %^EPH %^JI %^OEA %^GDEL %^GGDEL    !!= * **@CODE@** 
+            %^GVDEL %^VDEL  %^JDEL %^RDEL ;                      !!=  **@CODE@** 
                                           !! Forgot why these are special...
 
 

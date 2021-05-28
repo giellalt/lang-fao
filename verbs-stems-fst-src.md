@@ -1,14 +1,24 @@
 
-# Faroese verbs 
+# Faroese verb stems 
 
-**Verbs**
+This file documents the file [stems/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/verbs.lexc)
+
+The file contains one lexicon:
+
+**LEXICON Verbs** = the lexicon containing all verb stems
 
 ## Some irregular verbs
-*mega, eiga, eita, gráta, ...* and 15 more
+*mega, eiga, eita, gráta, liggja, ...* and 15 more
 
 
-some irregular passive verbs: høggast, loypast
 
+## some irregular passive verbs
+
+ * høggast:høgg FYRIB ; 
+ * munnhøggast:munn#høgg FYRIB ; 
+ * bilgjast:bilgj FYRIB ; 
+ * bylgjast:bylgj sxrefl ; 
+* ... etc. 15 more
 
 
 

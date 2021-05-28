@@ -1,5 +1,13 @@
 
 
+# Faroese disambiguator 
+
+Usage, in `lang-fao`:
+`cat text.txt|hfst-tokenize -cg tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst |vislcg3 -g src/cg3/disambiguator.cg3`
+
+This file documents the [Faroese disambiguator file](http://github.com/giellalt/lang-fao/blob/main/src/cg3/disambiguator.cg3) .
+
+## Delimiters, tags and sets
 
 
 
@@ -19,7 +27,10 @@
 
 
 
-
+ * LIST NAGD = Nom Acc Gen Dat ; # 
+ * LIST AGD = Acc Gen Dat ; # 
+ * LIST GENDER = Msc Fem Neu ; # 
+ * LIST NUMBER = Sg Pl ; # 
 
 
 

@@ -12,29 +12,31 @@ Faroese wordform. The model contains the lemmas from *Føroysk orðabók* and th
 is written at the University of Tromsø in cooperation with Fróðskaparsetur Føroya.
 
 
-## Det færøyske analyseprogrammet
+
+## Resources  based upon the Faroese language model
+
+- [Faroese linguistic tools](https://giellatekno.uit.no/cgi/index.fao.eng.html)
+- [Faroese spellchecker online](https://divvun.org/proofing/online-speller.html) (click **ABC** and choose **Faroese** from the menu *Languages*)
+- Downloadable spellchecker: Download the [Installer for Windows](http://divvun.org/proofing/online-speller.html)
 
 
-### Utviklingsarbeid
+## Developmental work
+
+### The Faroese language model
 
 -   [Framgangsmåtar for å arbeide med analysatoren](arbeide-med-analysatoren.html)
 -   [Arbeidsplan for færøysk stavekontroll](Stavekontroll.html)
 -   [Testing av analysatoren](AlleGenererteParadigmer.html)
 -   [Víllur i rættstavaranum](vill.html)
 
-### Bruk av analysatoren
-
--   [Grammatisk analyse av tekst (lim inn)](http://giellatekno.uit.no/cgi/d-fao.nob.html)
--   [Stavekontroll (online og nedlastbar)](http://divvun.org/proofing/online-speller.html)
-
-### Syntaktisk analyse
+### Syntactic analysis
 
 The project also contains a syntactic analyser, built upon constraint
 grammar technology. The Faroese disambiguator is still in an early stage.
 For a presentation, see
 [Trond Trosterud: A Constraint Grammar for Faroese](http://dspace.ut.ee/bitstream/handle/10062/14289/proceedings.pdf?sequence=1").
 
-## Stavekontrollen
+### The Spellchecker
 
 -   [Lista over skrivefeil + korrekte ord i testen](https://github.com/giellalt/lang-fao/tree/main/test/data/typos.txt)
 -   Testresultat for:

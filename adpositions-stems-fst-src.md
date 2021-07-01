@@ -25,3 +25,5 @@ We should eventually have syntactic tags here...
 ###  Dative
 
 
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/adpositions.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/adpositions.lexc)</small>

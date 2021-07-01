@@ -738,3 +738,5 @@ the ways stems may be combined.
 * **LEXICON Neu_Flag** for 
 * **LEXICON Pl_Flag** for 
 * **LEXICON p24** 
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/nouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/nouns.lexc)</small>

@@ -37,3 +37,5 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
 
 
 
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/abbreviations.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/abbreviations.lexc)</small>

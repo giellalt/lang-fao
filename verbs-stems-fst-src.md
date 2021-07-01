@@ -75,3 +75,5 @@ Double declension class verbs
 
 Finally some candidates to be considered for verb compounding.
 
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/verbs.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/verbs.lexc)</small>

@@ -22,3 +22,5 @@ Most acronyms are taken from a common generated file, this file is for the Faroe
 
 
 
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/fao-acronyms.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/fao-acronyms.lexc)</small>

@@ -835,48 +835,48 @@ regenerate-markdown: generate-markdown
 @WANT_SPELLERS_FALSE@	touch $@
 
 $(srcdir)/%-cg3-src.md: $(top_srcdir)/src/cg3/%.cg3
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 $(srcdir)/%-fst-src.md: $(top_srcdir)/src/fst/%.lexc
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 # lang-smn
 $(srcdir)/%-oahpa-filer-fst-src.md: $(top_srcdir)/src/fst/oahpa-filer/%.lexc
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 # lang-crk
 $(srcdir)/%-derivation-src.md: $(top_srcdir)/src/derivation/%.lexc
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 $(srcdir)/%-fst-src.md: $(top_srcdir)/src/fst/%.lexc
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 $(srcdir)/%-fst-src.md: $(top_srcdir)/src/fst/%.twolc
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 $(srcdir)/%-generated_files-fst-src.md: $(top_srcdir)/src/fst/generated_files/%.lexc
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 $(srcdir)/%-stems-fst-src.md: $(top_srcdir)/src/fst/stems/%.lexc
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 $(srcdir)/%-affixes-fst-src.md: $(top_srcdir)/src/fst/affixes/%.lexc
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 $(srcdir)/%-transcriptions-src.md: $(top_srcdir)/src/transcriptions/%.lexc
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 $(srcdir)/%-transcriptions-src.md: $(top_srcdir)/src/transcriptions/%.twolc
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 $(srcdir)/%-grammarcheckers-tools.md: $(top_srcdir)/tools/grammarcheckers/%.cg3
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 $(srcdir)/%-apertium-mt-tools.md: $(top_srcdir)/tools/mt/apertium/%.cg3
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 $(srcdir)/%-tts-tools.md: $(top_srcdir)/tools/tts/%.cg3
-	$(AM_V_AWK)"$(GAWK)" -f $(DOCC2MDWIKI) < $< > $@
+	$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $< > $@
 
 generated-markdowns.sources:
 	$(AM_V_GEN)fgrep -rl \

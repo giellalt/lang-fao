@@ -16,3 +16,5 @@
 
 # Lexicon RNum for compounds numeral + noun
        +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ;    For Num Cmp Noun, vi vil ikke ha Num Cmp Num
+* * *
+<small>This (part of) documentation was generated from [../src/fst/compounding.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/compounding.lexc)</small>

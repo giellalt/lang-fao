@@ -111,10 +111,10 @@
 
  * **+Gram/TAbbr**:  Transitive abbreviation (it needs an argument)
  * **+Gram/NoAbbr**:  Intransitive abbreviations that are homonymous
-   with more frequent words. They should only be considered
-   abbreviations in the middle of a sentence.
+with more frequent words. They should only be considered
+abbreviations in the middle of a sentence.
  * **+Gram/TNumAbbr**:  Transitive abbreviation if the following
-            constituent is numeric
+constituent is numeric
  * **+Gram/NumNoAbbr**:  Transitive abbreviations for which numerals
 are complements and normal words. The abbreviation usage
 is less common and thus only the occurences in the middle of
@@ -172,11 +172,11 @@ Language tags
 
 The tags are of the following form:
 * **+CmpNP/xxx** - Normative (N), Position (P), ie the tag describes what
-                   position the tagged word can be in in a compound
+position the tagged word can be in in a compound
 * **+CmpN/xxx**  - Normative (N) **form** ie the tag describes what
-                   form the tagged word should use when making compounds
+form the tagged word should use when making compounds
 * **+Cmp/xxx**   - Descriptive compounding tags, ie tags that *describes*
-                   what form a word actually is using in a compound
+what form a word actually is using in a compound
 
 This entry / word should be in the following position(s):
 
@@ -187,7 +187,7 @@ This entry / word should be in the following position(s):
  * **+CmpNP/Suff** - ... only **last** part in a compound, NEVER alone
  * **+CmpNP/None** - ... does not take part in compounds
  * **+CmpNP/Only** - ... only be part of a compound, i.e. can never
-                    be used alone, but can appear in any position
+be used alone, but can appear in any position
 
 
 ## Usage tags
@@ -352,3 +352,5 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 
 
+* * *
+<small>This (part of) documentation was generated from [../src/fst/root.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/root.lexc)</small>

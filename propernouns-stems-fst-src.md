@@ -2,10 +2,10 @@
 
 Table of content
 * The name lexica
-    -   - mal
-    -   - fem
-    -   - plc
-    -   - sur       
+-   - mal
+-   - fem
+-   - plc
+-   - sur       
 
 ## Splitting into name types
 
@@ -24,3 +24,5 @@ Table of content
 
 
 
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/propernouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/propernouns.lexc)</small>

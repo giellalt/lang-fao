@@ -14,3 +14,5 @@ The file `stems/subjunctions.lexc` contains three lexica:
  * tí CStag ;  
  * tá% ið CStag ;  
 ...
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/subjunctions.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/subjunctions.lexc)</small>

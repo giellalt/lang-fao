@@ -167,3 +167,5 @@ líti should be lítið
 
 
 
+* * *
+<small>This (part of) documentation was generated from [../tools/grammarcheckers/grammarchecker.cg3](http://github.com/giellalt/lang-fao/blob/main/../tools/grammarcheckers/grammarchecker.cg3)</small>

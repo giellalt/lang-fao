@@ -111,6 +111,43 @@ Define alphabet "a-z"
                |{Š}|{Ž}|{Č}|{Đ}|{Í}|{Ŋ}|{Ň}|{Ŧ}|{Ň}
                | "0-9"
                |{_}|{§}|{°}
+               ! Combining diacritics as individual symbols,
+               ! to be able to analyse unknown words with
+               ! decomposed diacritics. All combining diacritics
+               ! U+0300—U+036F, U+20D0—U+20F0. Grouped according
+               ! to position relative to base char, then more or
+               ! less according to Unicode number.
+
+               ! Combining diacritics above:
+               |{̀}|{́}|{̂}|{̌}|{̃}|{̄}|{̅}|{̶}|{̆}|{̇}|{̈}|{⃰}|{̉}
+               |{̊}|{̋}|{̍}|{̎}|{̏}|{̐}|{̑}|{̒}|{̓}|{̔}|{̕}|{̚}|{̛}
+               |{̽}|{̾}|{̿}|{̀}|{́}|{͂}|{̓}|{̈́}|{͆}|{͊}|{͋}|{͌}|{͐}
+               |{͑}|{͒}|{͗}|{͘}|{͛}|{͝}|{͞}|{͠}|{͡}
+               |{⃐}|{⃑}|{⃔}|{⃕}|{⃖}|{⃗}|{⃛}|{⃜}|{⃡}|{⃧}|{⃩}
+               |{᷀}|{᷁}|{᷃}|{᷄}|{᷅}|{᷆}|{᷇}|{᷈}|{᷉}|{᷋}|{᷌}|{᷍}|{᷎}
+               |{᷵}|{᷶}|{᷷}|{᷸}|{᷹}|{᷻}|{᷾}
+
+               ! Combining diacritics below:
+               |{̖}|{̗}|{̘}|{̙}|{̜}|{̝}|{̟}|{̠}|{̡}|{̢}|{̣}|{̤}|{̥}
+               |{̦}|{̧}|{̨}|{̩}|{̪}|{̫}|{̬}|{̭}|{̮}|{̯}|{̰}|{̱}|{̲}|{̳}
+               |{̹}|{̺}|{̻}|{̼}|{ͅ}|{͇}|{͈}|{͉}|{͍}|{͎}|{͙}|{͚}|{͜}|{͟}
+               |{͓}|{͔}|{͕}|{͖}|{͢}|{⃨}|{⃬}|{⃭}|{⃮}|{⃯}|{᷂}|{᷏}|{᷹}|{᷼}
+               |{᷽}|{᷿}
+
+               ! Combining letters above:
+               |{ͣ}|{ͤ}|{ͥ}|{ͦ}|{ͧ}|{ͨ}|{ͩ}|{ͪ}|{ͫ}|{ͬ}|{ͭ}|{ͮ}|{ͯ}
+               |{᷑}|{᷒}|{ᷓ}|{ᷔ}|{ᷕ}|{ᷖ}|{ᷗ}|{ᷘ}|{ᷙ}|{ᷚ}|{ᷛ}|{ᷜ}|{ᷝ}|{ᷞ}
+               |{ᷟ}|{ᷠ}|{ᷡ}|{ᷢ}|{ᷣ}|{ᷤ}|{ᷥ}|{ᷦ}|{ᷧ}|{ᷨ}|{ᷩ}|{ᷪ}
+               |{ᷫ}|{ᷬ}|{ᷭ}|{ᷮ}|{ᷯ}|{ᷰ}|{ᷱ}|{ᷲ}|{ᷳ}|{ᷴ}
+
+               ! Combining letters below:
+               |{᷊}|{᷐}
+
+               ! Combining overlays:
+               |{̴}|{̵}|{̶}|{̷}|{̸}|{⃥}|{⃦}|{⃪}|{⃫}|{⃒}|{⃓}|{⃘}|{⃙}|{⃚}
+
+               ! Combining enclosing:
+               |{⃝}|{⃞}|{⃟}|{⃠}|{⃢}|{⃣}|{⃤}
                ;
 Define alphamiddle {'}|{-} ; ! Treat foo-bar as one big unknown, but -foo (or bar-) as two tokens
 Define alphaword alphabet+ ( alphamiddle alphabet+ );

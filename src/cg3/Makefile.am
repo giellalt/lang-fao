@@ -8,7 +8,7 @@
 
 #############################################
 #### Add language-specific sources here: ####
-GT_CG_LOCAL_SRCS=
+GT_CG_LOCAL_SRCS=functions.cg3
 
 #############################################################
 #### Add language-specific targets to be installed here: ####

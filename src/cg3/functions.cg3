@@ -553,7 +553,7 @@ MAP:hnum (@HNOUN) TARGET Num ;
 
 #!! ! __missingX__ adds @X to all missings
 MAP:missingX (@X) TARGET (?) ;
-MAP:leftoversX (@X) TARGET WORD ;
+#MAP:leftoversX (@X) TARGET WORD - CLB;
 
 REMOVE:nox (@X) ;
 

@@ -605,7 +605,7 @@ AC_CHECK_FILE([$HOME/lib/saxon9he.jar],
                     [_saxonjar=no])
                     ])])])]
 )
-AS_IF([test "x$_saxonjar" != xno], [
+AS_IF([test "x$with_saxon" != xno], [
 _saxon_min_version="8.0"
 _saxon_version=$( java -jar $SAXONJAR -? 2>&1 | fgrep -i 'saxon' | grep -Eo '@<:@0-9@:>@+\.@<:@0-9.@:>@+' )
 AC_MSG_CHECKING([whether the Saxon JAR is at least $_saxon_min_version])

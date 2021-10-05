@@ -34,6 +34,7 @@ allur+Det:all adj_def ;
 summur+Det:summ summ ;
 summur+Det:summ posspl ;
 
+einhvør+Det: EINHVOR ;
 
 LEXICON summ ! XXX check
 !!= **@LEXNAME@** 
@@ -288,3 +289,12 @@ LEXICON EINGINd ! XXX check this lexicon
 +Neu+Pl+Dat:ongum # ;
 !+Neu+Pl+Gen:onga # ;
 
+LEXICON EINHVOR ! TODO correct
++Msc+Sg+Nom+Indef:einhvør # ;
++Neu+Sg+Nom+Indef:eitthvørt # ;
++Msc+Pl+Nom+Indef:einhvørjir # ;
++Msc+Pl+Nom+Indef:einirhvørjir # ;
++Msc+Pl+Acc+Indef:einhvørjar # ;
++Msc+Pl+Acc+Indef:einarhvørjar # ;
++Msc+Pl+Dat+Indef:einhvørji # ;
++Msc+Pl+Dat+Indef:einihvørji # ;

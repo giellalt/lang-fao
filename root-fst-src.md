@@ -127,8 +127,9 @@ the sentence can be considered as true cases.
 
 
 ## Non-changing letters
- * a2 This is for a special a Umlaut case
- * g2 i2 j2 t2 v2 
+ * a2 invariant a
+ * g2 i2 j2 t2 v2 invariant g, i, j, t, v 
+ * a3 This is for a special a Umlaut case a3:ø (normal: a:o)
 
  * +v1 +v2 : different paradigms   ,
 

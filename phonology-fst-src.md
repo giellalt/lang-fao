@@ -13,12 +13,14 @@ Here we declare all symbols.
  * **Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð** 
 
 
- * **a2:a**  for da2n -> dønum
+ * **a2:a** for invariant a, d.g. vulka2nskur -> vulkanskum
  * **g2:g** for invariant g
  * **i2:i** for invariant i
  * **j2:j** for invariant j
  * **t2:t** for invariant, non-deleted t, dráttri pro *drátri
  * **v2:v** for invariant v
+
+ * **a3:a** a:ø for da3n -> dønum, where normal a:o.
 
  * **%^UUML:0 %^IUML:0 %^eIUML:0 %^ØUML:0** : Umlaut types ,
  * **%^W:0 %^JI:0** : Cns changes ,

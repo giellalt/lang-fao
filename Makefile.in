@@ -908,7 +908,7 @@ generated-markdowns.targets: generated-markdowns.sources
 		ddd=`dirname $$dd` ;\
 		ggp=`basename $$ddd xxx` ;\
 		dddd=`dirname $$ddd`;\
-		gggp=`basename $$ddddd xxx`;\
+		gggp=`basename $$dddd xxx`;\
 		if test x$$gggp = xsrc -o x$$gggp = xtools ; then \
 			echo $$x-$$p-$$gp-$$ggp-$$gggp.md;\
 		elif test x$$ggp = xsrc -o x$$ggp = xtools ; then \

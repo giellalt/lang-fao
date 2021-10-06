@@ -25,13 +25,16 @@ endif # WANT_SYNTAX
 #################################################
 #### Add language-specific build rules here: ####
 
+dependency.cg3: $(GIELLA_SHARED)/smi/src/cg3/dependency.cg3
+	$(AM_V_CP)cp -f $< $@
+
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.bin
+	-rm -f *.bin dependency.cg3
 
 ####### Build rules via include: ########
 

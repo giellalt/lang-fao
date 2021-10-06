@@ -13,7 +13,7 @@ Here we declare all symbols.
  * **Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð** 
 
 
- * **a2:a** for invariant a, d.g. vulka2nskur -> vulkanskum
+ * **a2:a** for invariant a, d.g. vulka3nskur -> vulkanskum
  * **g2:g** for invariant g
  * **i2:i** for invariant i
  * **j2:j** for invariant j

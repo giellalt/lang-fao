@@ -365,21 +365,23 @@ COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Imp Pl &msyn-sup-sg1) TARGET (V
 
 #!! ### Plural forms
 #!! Sup should be Pl
+
 ADD:msyn-sup-prspl (&msyn-sup-prspl) TARGET (V Sup) IF (*-1 ("eg") + Pron + Pers + Pl + Nom BARRIER NOT-ADV LINK NOT -1 V + Pl);
 COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V Sup &msyn-sup-prspl) ;
 
 ## Vit skrivað til tín í dag um hetta málið.
 #$ Vit skriva til tín í dag um hetta málið.
 
-#$ Hava vit skrivað til tín í dag um hetta málið?
-
-
-
 #!! ### Supine forms
+#!! Pl should be Sup
 
 #!! Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (Inf) IF (-1 ("hava" V Ind))(NOT 0 Pass)(NOT *1 Sup)(NOT 0 A LINK 1 N);
 COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (&msyn-inf-sup) ;
+
+## Hava vit skriva til tín í dag um hetta málið?
+#$ Hava vit skrivað til tín í dag um hetta málið?
+
 
 
 #!! ## Specific verbs

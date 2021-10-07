@@ -24,7 +24,6 @@ endif # WANT_SYNTAX
 
 #################################################
 #### Add language-specific build rules here: ####
-
 dependency.cg3: $(GIELLA_SHARED)/smi/src/cg3/dependency.cg3
 	$(AM_V_CP)cp -f $< $@
 

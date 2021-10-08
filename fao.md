@@ -4268,11 +4268,12 @@ Sup should be Pl
 
 
 
-
-
 ### Supine forms
+Pl should be Sup
 
 Inf should be Sup
+
+
 
 
 ## Specific verbs

@@ -13,7 +13,7 @@
 ! giellatekno@hum.uit.no or feedback@divvun.no
 
 ! ===================================== !
-! Phonological converter for South Sámi !
+! Phonological converter for Faroese    !
 ! ===================================== !
 
 ! This file tries out conversion from Sámi orthography to a phonetic
@@ -36,27 +36,27 @@
 
 echo <<defining Cns and Vow...>>
 
-define Vow       [ a | á | e | i | o | u | y | æ | ø | å | ä | ö | 
-                   A | Á | E | I | O | U | Y | Æ | Ø | Å | Ä | Ö | 
-                   é | ó | ú | í | à | è | ò | ù | ì | ë | ü | ï | 
+define Vow       [ a | e | i | o | u | y | æ | ø | å | ö | 
+                   A | E | I | O | U | Y | Æ | Ø | Å | Ö | 
+                   á | é | ó | ú | í | à | 
                    â | ê | ô | û | î | ã | ý |
-                   É | Ó | Ú | Í | À | È | Ò | Ù | Ì | Ë | Ü | Ï | 
+                   Á | É | Ó | Ú | Í | À | 
                    Â | Ê | Ô | Û | Î | Ã | Ý |
                    ʉ | ə ] ;
 
-define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | 
-             B | C | Č | D | Đ | F | G | H | J | K | L | M | N | Ŋ | 
-             p | q | r | s | š | t | ŧ | v | w | x | z | ž |   
-             P | Q | R | S | Š | T | Ŧ | V | W | X | Z | Ž | 
+define Cns [ b | c | d | ð | f | g | h | j | k | l | m | n | ŋ |
+             B | C | D | Ð | F | G | H | J | K | L | M | N | Ŋ | 
+             p | q | r | s | t | v | w | x | z |   
+             P | Q | R | S | T | V | W | X | Z | 
              ɟ | ʎ | ɲ | ʧ ] ; 
 
 define Sgm [ Vow | Cns ] ;
 
-define Stop [ p | t | k | c | č | ʧ ] ;
+define Stop [ p | t | k | c | ʧ ] ;
 
-define Alv [ t | T | d | D | ŧ | Ŧ | đ | Đ | s | S | l | L | r | R | n | N ] ;
+define Alv [ t | T | d | D | ð | Ð | s | S | l | L | r | R | n | N ] ;
 
-define Son [ m | n | ŋ | ɲ | l | r | j | v | đ ] ;
+define Son [ m | n | ŋ | ɲ | l | r | j | v | ð ] ;
 
 define Nas [ m | M | n | N | ŋ | Ŋ | ɲ ] ;
 
@@ -68,75 +68,32 @@ define Syll Cns* Vow+ (ː) Cns*  ;
 
 echo << Rules>>
 
-define down [ A -> a, Á -> á, B -> b, C -> c, Č -> č, D -> d, E -> e, F -> f, 
+define down [ A -> a, Á -> á, B -> b, C -> c, D -> d, Ð -> ð, E -> e, F -> f, 
               G -> g, H -> h, I -> i, J -> j, K -> k, L -> l, M -> m, N -> n, 
-              Ŋ -> ŋ, O -> o, P -> p, Q -> q, R -> r, S -> s, Š -> š, T -> t, 
-              U -> u, V -> v, W -> w, X -> x, Y -> y, Z -> z, Ž -> ž, Æ -> æ, 
-              Ø -> ø, Å -> å, Ö -> ö, Ä -> ä, Ï -> i  ] ;
+              Ŋ -> ŋ, O -> o, P -> p, Q -> q, R -> r, S -> s, T -> t, 
+              U -> u, V -> v, W -> w, X -> x, Y -> y, Z -> z, Æ -> æ, 
+              Ø -> ø, Å -> å, Ö -> ö ] ;
 
 define LexicalRules j ï h   -> j e h || .#. _ .#. ;
 
-define LoanwordAssimilation c h -> ʧ  ; ! n d -> ɲ ɲ ;
+define ShortVow i -> ɪ , y -> ʏ , e -> ɛ , ø -> œ , u -> ʊ , o -> ɔ ;
 
-define InitialAspiration p -> p ʰ , t -> t ʰ , k -> k ʰ || [.#.|%-] _ ( [ l | r | v | n ] ) Vow ;
+define LongVow ɪ -> i ː , ʏ -> i ː , ɛ -> e ː , œ -> ø ː , ɔ -> o ː , a -> a ː ||
+               .#. Cns* _ Cns Vow ;
+               
 
-define Geminates b p -> p p , d t -> t t , g k -> k k , g n -> ŋ ŋ , n n g -> ŋ ŋ ;
+define ShortDiphthong í -> ʊ i , ý -> ʊ i , ə ʏ -> ɛ i , ɔ ʏ -> ɔ i ; 
 
-define ngRule n g -> ŋ ;
+define LongDiphthong ʊ i -> ʊ i ː , ʊ i -> ʊ i ː , ɛ i -> ɛ i ː , ɔ i -> ɔ i ː ||
+               .#. Cns* _ Cns Vow ;
 
-!define eApocope e -> 0 || Syll [o|i] _ [.#.| m i n i e ] ; ! berkoe > berko
+define LongUADiphthong ú -> ʉ u ː , ó -> ɛ u ː , æ -> ɛ a ː , á -> ɔ ɑ ː ;
 
-define ueDiph u e -> ʉ ə ;
-
-define uRule u -> ʉ ;
-
-define oeDiph o e -> u ə ;
-
-!define uvLengthening o v -> u u v ;
-
-define aeRule  a e -> æ ː ;
-
-define Diphthong a -> æ || e _ ;
-
-define ïeDiphthong ï e -> i ə ;
-
-define ijRule j -> i || .#. Cns+ i _ [\j] ,,
-              v -> ʉ || .#. Cns+ ʉ _ [\v] ,,
-              j -> y || .#. Cns+ y _ [\j] ;
-
-
-define slRule s l -> ʃ l̥ , s k j -> ʃ || [.#.|%#|%-] _ ;
-
-define snjRule s -> ʃ || [.#.|%#|%-] _ n j ;
-
-define oRule o -> u ;
-
-define wRule v -> w || [ Vow - ʉ ] _ [ [ Cns - v ] Vow | .#. ] ;
-
-define wRule2 v -> ɥ || ʉ _ [ [ Cns - v] Vow | .#. ] ;
-
-define SyllShortening b b -> b , d d -> d , f f -> f , g g -> g , j j -> j , 
-	                  k k -> k , l l -> l , m m -> m , n n -> n , p p -> p ,
-	                  r r -> r , s s -> s , t t -> t , v v -> v || Vow Vow _ ;
+define ShortUADiphthong ʉ u ː -> ʏ , ɛ u ː -> œ , ɛ a ː -> a , ɔ ɑ ː -> ɔ ||
+                .#. Cns* _ Cns Cns [ Cns | .#. ] ;
 
 ! Late rules
 
-define åASo å -> ɔ ;
-
-define schwa e -> ə || Syll Cns _  ;
-
-define LongAffricates s s j -> š š ;
-
-define Affricates t j -> ʧ , s j -> š ; 
-
-define WeakPenultimate ə -> 0 || Syll Cns [Cns - l]  _ [s|h] ə .#. ,, 
-                       ə -> 0 || Alv _ n .#. ;
-
-define Auslaut d h -> t ʰ , g h -> k ʰ , r h -> r̥ , l h -> l̥ , m h -> m̥ , s h -> s ʰ || _ .#. ;
-
-!define SchwaBetweenCons [..] -> ə || v _ l ,
-!                                     l _ m ,
-!                                     m _ s ;
 
 echo << And now we go for IPA OUTPUTFORMAT >>
 
@@ -153,6 +110,10 @@ define COLONLENGTH   ɑ ɑ -> ɑ ː , e e -> e ː , i i -> i ː , o o -> o ː , 
                     ŋ̊ ŋ̊ -> ŋ̊ ː , v̥ v̥ -> v̥ ː ,
                      ŋ ŋ -> ŋ ː ;
 
+
+define dhDeletion ð -> 0 ;
+define FinalE ɪ -> ə || _ .#. ;
+
 ! Cleaning up
 ! define DummyDeletion Dummy -> 0 ;
 
@@ -161,32 +122,15 @@ echo <<Combining...>>
 
 read regex [ 
     down 
-.o. LexicalRules    
-.o. LoanwordAssimilation    
-.o. InitialAspiration    
-.o. Geminates    
-.o. ngRule
-!.o. eApocope
-.o. ueDiph
-.o. uRule
-.o. oeDiph
-!.o. uvLengthening
-.o. aeRule
-.o. Diphthong
-.o. ïeDiphthong
-!.o. ijRule
-.o. slRule
-.o. snjRule
-.o. oRule
-.o. wRule
-.o. wRule2
-!.o. SyllShortening
-.o. åASo
-.o. schwa
-.o. LongAffricates
-.o. Affricates
-.o. WeakPenultimate
-.o. Auslaut
+.o. LexicalRules  
+.o. ShortVow
+.o. LongVow
+.o. ShortDiphthong
+.o. LongDiphthong
+.o. ShortUADiphthong
+.o. LongUADiphthong
+.o. dhDeletion
+.o. FinalE
 .o. OUTPUTFORMAT
 .o. COLONLENGTH
 

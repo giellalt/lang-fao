@@ -540,6 +540,7 @@ Test: Go for minimal weight. This rules gives priority to lexicalised forms.
 
 
 
+
 # MAPPING OF CC AND CS
 
 Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them so @CVP remains

@@ -1256,6 +1256,11 @@ REMOVE:r66b (Pl Nom Indef) IF (1 (N Sg) OR (V Sg) OR (V 3Sg))(NOT 1 (V Pl));
 REMOVE ("vit") IF (*-1 V + Pl BARRIER V)(0 (Pron Pers Pl Nom));
 	## Eru vit helst...
 
+# seg
+REMOVE:notsiggja V IF (-1 Pr OR V)(0 ("seg"));
+REMOVE:siggja Refl IF (NOT -1 V OR Pr)(0 ("síggja"))(1 Nom);
+## Hon hyggur út gjøgnum vindeygað og sær Jákup og Mariu spæla.
+
 # Verb disambiguation
 # ===================
 

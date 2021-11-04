@@ -575,6 +575,8 @@ REMOVE:Eg Prop IF (-1 BOS)(0 ("Eg"))(1 1Sg);
 REMOVE Pers IF (-1 Pr)(0 (Det Gen))(*1 N OR A BARRIER NPNH);
        ## vendu móti hansara bygd.
 
+SELECT Dem + $$GENDER + Gen IF (-1 N + $$GENDER);
+ 
 REMOVE Det IF (0 Pers)(1C EOS OR VFIN OR Pr OR CC OR S-BOUNDARY);
 REMOVE Dem IF (0 Pers)(1C EOS OR VFIN OR Pr OR CC OR Num OR S-BOUNDARY);
 

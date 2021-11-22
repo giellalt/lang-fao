@@ -1,248 +1,4 @@
 
-S Y N T A C T I C   F U N C T I O N S   F O R   F A R O E S E
-
-Sámi language technology project 2003-2014, University of Tromsø # 
-
-This file adds syntactic functions. It was copied from sme.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Syntactic sets
-
-
-* <cs> : 
-* @+FAUXV : finite auxiliary verb 
-* @+FMAINV : finite main verb
-* @-F<OBJ : Subject of infinite verb outside the verbal.
-* @-F<PRED : Predicative complement of infinite verb outside the verbal.
-* @-FADVL : Adverbial complement of infinite verb outside the verbal.
-* @-FAUXV : infinite auxiliary verb
-* @-FMAINV : infinite main verb
-* @-FOBJ> : Object of infinite verb outside the verbal.
-* @-FSUBJ> : Subject of infinite verb outside the verbal.
-* @<ADVL : Adverbial after the main verb.
-* @<OBJ : Object, the verb is to the left.
-* @<OPRED : Object predicative, the verb is to the left.
-* @<SPRED : Subject predicative, the verb is to the left.
-* @<SUBJ : Subject, the finite verb is to the left.
-* @>A : Modifier of an adjective to the right.
-* @>ADVL : Modifier of an adverbial to the right.
-* @>N : Modifier of a noun to the right.
-* @>Num : Attribute of numeral to the right.
-* @>Pron : Modifyer of pronoun to the right.
-* @ADVL< : Komplement for adverbial.
-* @ADVL> : Adverbial to the left of the main verb
-* @ADVL>CS : Adverbial modifying subjunction.
-* @APP : Apposition
-* @APP-ADVL< : Apposition to adverbial to the left.
-* @APP-N< : Apposition to noun to the left.
-* @APP-Num< : Apposition to numeral to the left.
-* @APP-Pron< : Apposition to pronoun to the left.
-* @APP>Pron : Apposition to noun to the right.
-* @CMPND
-* @CNP : Local conjunction or subjunction.
-* @COMP-CS< : Complement of subjunction.
-* @CVP : Conjunction or subjunction that conjoins finite verb phrases.
-* @HNOUN : Stray noun in sentence fragment.
-* @INTERJ : Interjection.
-* @N< : Complement of noun to the left.
-* @Num< : Complement of numeral to the left.
-* @OBJ : Object, the verb is not in the sentence (ellipse)
-* @OBJ> : Object, the verb is to the right.
-* @OPRED : Object predicative, the verb is not in the sentence (ellipse).
-* @OPRED> : Object predicative, the verb is to the right.
-* @P< : Complement of preposition.
-* @PCLE : Particle.
-* @PPRED : Predicative for predicative.
-* @Pron< : Complement of pronoun to the left.
-* @SPRED : Subject predicative, the verb is not in the sentence (ellipse).
-* @SPRED<OBJ : Object of an subsject predicative. (some adjectives are transitive)
-* @SPRED> : Subject predicative, the verb is to the left.
-* @SUBJ : Subject, the finite verb is not in the sentence (ellipse).
-* @SUBJ> : Subject, the finite verb is to the right.
-* @VOC : Vocative
-* @X : The function is unknown, e.g. because of that the word is unknown
-
-
-
-
-
-
-
-* NP sets defined according to their morphosyntactic features
-
-
-* The PRE-NP-HEAD family of sets
-
-These sets model noun phrases (NPs). The idea is to first define whatever can
-occur in front of the head of the NP, and thereafter negate that with the
-expression __WORD - premodifiers__.
-
-
-
-
-
-
-
-
-
-
-
-
-The set __NOT-NPMOD__ is used to find barriers between NPs.
-Typical usage: ... (*1 N BARRIER NPT-NPMOD) ...
-meaning: Scan to the first noun, ignoring anything that can be
-part of the noun phrase of that noun (i.e., "scan to the next NP head")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-HNOUN MAPPING
-
-
-
-
-
-
-
-
-
-
-
-
-The leftovers are tagged @X
-
-! __missingX__ adds @X to all missings
-
-
-
-
-! __therestX__ adds @X to all what is left, often errouneus disambiguated forms
-* * *
-<small>This (part of) documentation was generated from [../src/cg3/functions.cg3](http://github.com/giellalt/lang-fao/blob/main/../src/cg3/functions.cg3)</small>
 
 # Faroese disambiguator 
 
@@ -817,7 +573,270 @@ Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them
 * **X** removes readings with no syntax
 
 * * *
-<small>This (part of) documentation was generated from [../src/cg3/disambiguator.cg3](http://github.com/giellalt/lang-fao/blob/main/../src/cg3/disambiguator.cg3)</small># The Faroese morphophonological file 
+<small>This (part of) documentation was generated from [../src/cg3/disambiguator.cg3](http://github.com/giellalt/lang-fao/blob/main/../src/cg3/disambiguator.cg3)</small>
+S Y N T A C T I C   F U N C T I O N S   F O R   F A R O E S E
+
+Sámi language technology project 2003-2014, University of Tromsø # 
+
+This file adds syntactic functions. It was copied from sme.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Syntactic sets
+
+
+* <cs> : 
+* @+FAUXV : finite auxiliary verb 
+* @+FMAINV : finite main verb
+* @-F<OBJ : Subject of infinite verb outside the verbal.
+* @-F<PRED : Predicative complement of infinite verb outside the verbal.
+* @-FADVL : Adverbial complement of infinite verb outside the verbal.
+* @-FAUXV : infinite auxiliary verb
+* @-FMAINV : infinite main verb
+* @-FOBJ> : Object of infinite verb outside the verbal.
+* @-FSUBJ> : Subject of infinite verb outside the verbal.
+* @<ADVL : Adverbial after the main verb.
+* @<OBJ : Object, the verb is to the left.
+* @<OPRED : Object predicative, the verb is to the left.
+* @<SPRED : Subject predicative, the verb is to the left.
+* @<SUBJ : Subject, the finite verb is to the left.
+* @>A : Modifier of an adjective to the right.
+* @>ADVL : Modifier of an adverbial to the right.
+* @>N : Modifier of a noun to the right.
+* @>Num : Attribute of numeral to the right.
+* @>Pron : Modifyer of pronoun to the right.
+* @ADVL< : Komplement for adverbial.
+* @ADVL> : Adverbial to the left of the main verb
+* @ADVL>CS : Adverbial modifying subjunction.
+* @APP : Apposition
+* @APP-ADVL< : Apposition to adverbial to the left.
+* @APP-N< : Apposition to noun to the left.
+* @APP-Num< : Apposition to numeral to the left.
+* @APP-Pron< : Apposition to pronoun to the left.
+* @APP>Pron : Apposition to noun to the right.
+* @CMPND
+* @CNP : Local conjunction or subjunction.
+* @COMP-CS< : Complement of subjunction.
+* @CVP : Conjunction or subjunction that conjoins finite verb phrases.
+* @HNOUN : Stray noun in sentence fragment.
+* @INTERJ : Interjection.
+* @N< : Complement of noun to the left.
+* @Num< : Complement of numeral to the left.
+* @OBJ : Object, the verb is not in the sentence (ellipse)
+* @OBJ> : Object, the verb is to the right.
+* @OPRED : Object predicative, the verb is not in the sentence (ellipse).
+* @OPRED> : Object predicative, the verb is to the right.
+* @P< : Complement of preposition.
+* @PCLE : Particle.
+* @PPRED : Predicative for predicative.
+* @Pron< : Complement of pronoun to the left.
+* @SPRED : Subject predicative, the verb is not in the sentence (ellipse).
+* @SPRED<OBJ : Object of an subsject predicative. (some adjectives are transitive)
+* @SPRED> : Subject predicative, the verb is to the left.
+* @SUBJ : Subject, the finite verb is not in the sentence (ellipse).
+* @SUBJ> : Subject, the finite verb is to the right.
+* @VOC : Vocative
+* @X : The function is unknown, e.g. because of that the word is unknown
+
+
+
+
+
+
+
+* NP sets defined according to their morphosyntactic features
+
+
+* The PRE-NP-HEAD family of sets
+
+These sets model noun phrases (NPs). The idea is to first define whatever can
+occur in front of the head of the NP, and thereafter negate that with the
+expression __WORD - premodifiers__.
+
+
+
+
+
+
+
+
+
+
+
+
+The set __NOT-NPMOD__ is used to find barriers between NPs.
+Typical usage: ... (*1 N BARRIER NPT-NPMOD) ...
+meaning: Scan to the first noun, ignoring anything that can be
+part of the noun phrase of that noun (i.e., "scan to the next NP head")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HNOUN MAPPING
+
+
+
+
+
+
+
+
+
+
+
+
+The leftovers are tagged @X
+
+! __missingX__ adds @X to all missings
+
+
+
+
+! __therestX__ adds @X to all what is left, often errouneus disambiguated forms
+* * *
+<small>This (part of) documentation was generated from [../src/cg3/functions.cg3](http://github.com/giellalt/lang-fao/blob/main/../src/cg3/functions.cg3)</small># Compounding morphology
+
+
+
+# Lexicon R gets flags and sends compounds over to RReal
+ @P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ;  are Flags to control compounding
+
+# Lexicon RReal is the lexicon for the Cmp tag and resending to N, A
+ *  +Cmp#: Nouns ;          
+ *  +Cmp#: Adjectives ;    
+           R-    ;        
+
+# Lexicon R- for compounds with hyphen
+  +Cmp#:%- Nouns ;    
+  +Cmp#:%- Adjectives ;    
+
+# Lexicon RNum for compounds numeral + noun
+       +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ;    For Num Cmp Noun, vi vil ikke ha Num Cmp Num
+* * *
+<small>This (part of) documentation was generated from [../src/fst/compounding.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/compounding.lexc)</small># The Faroese morphophonological file 
 
 This file documents the [phonology.twolc file](http://github.com/giellalt/lang-fao/blob/main/src/fst/phonology.twolc) 
 
@@ -1298,77 +1317,25 @@ Rule: **ð Deletion in front of Pass**
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/phonology.twolc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/phonology.twolc)</small># The Faroese conjunctions
+<small>This (part of) documentation was generated from [../src/fst/phonology.twolc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/phonology.twolc)</small># Numeral affixess
 
-The file `stems/conjunctions.lexc` contains two lexica:
+This lexicon just goes to #, this in order to coexist with number files in giella-shared.
+They are relevant for Sámi, not for faroese.
 
-**LEXICON CCtag** for assigning the +CC tag to all the conjunctions below. It has one entry:
- * +CC: # ;
+Lexica: 
 
-**LEXICON Conjunction** for the list of 10 or so conjunctions that are found in the file. Here are the first entries:
- * antin CCtag ;
- * annaðhvørt CCtag ;
- * bæði CCtag ;
- * og CCtag ;
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/conjunctions.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/conjunctions.lexc)</small># Faroese pronouns
-
-
-   **Pronoun** splitting into 3 sublexica:
- 1. Personal ;        
- 1. Reflexive ;        
- 1. Interrogative ;    
- 1. Indefinite ;       
-
-   **Personal** for the personal pronouns
-
-
-
-
-
-   **egtu-obl** 
-
-   **okkumtykkum** 
-
-   **S_okkumtykkum** 
-
-
-   **3obl** 
-
-   **Reflexive** 
-
-
-
-   **Interrogative** 
-
-
-   **EIN** 
-
-   **ANNAR_P** 
-
-   **EINHVOR** 
-
-   **ANNARHVOR** 
-
-   **HANNSJALVUR** 
-
-
-   **Indefinite** 
-
-
-
-
-
-
-   **ONKUR** 
-
-   **NAKAR** 
-
-   **BADIR** 
-
-   **HVORGIN** 
-
-   **EINGIN** 
+ * LEXICON DIGITCASE 				 # ;		 
+ * LEXICON ARABICCASE 				 # ;		 
+ * LEXICON ARABICCASE0 				 # ;	 
+ * LEXICON ARABICCASECOLL 				 # ;	 
+ * LEXICON ARABICCASEORD 				 # ;	 
+ * LEXICON ARABICCASEORD-ERR 				 # ; 
+ * LEXICON ARABICCASES 				 # ;	 
+ * LEXICON ARABICCOMPOUNDS 			 # ;	 
+ * LEXICON ROMNUMTAGOBL 				 # ;	 
+ * LEXICON dateyearcase 				 # ;	 
+ * LEXICON dateyearcase_fullsuff 		 # ;	 
+ * LEXICON dateyearcase_nullsuff_w_dot  # ;	 
 
 
 
@@ -1376,452 +1343,7 @@ The file `stems/conjunctions.lexc` contains two lexica:
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/pronouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/pronouns.lexc)</small># Faroese subjunctions
-
-The file `stems/subjunctions.lexc` contains three lexica:
-
-**LEXICON CStag** assigns the **+CS** TAG. It has one entry:
- +CS: # ;
-
-**LEXICON IMtag** assigns the  **+IM** tag for the infinitive marker. The entry is:
- +IM: # ;
-
-**LEXICON Subjunction** contains the list of some 10-20 CSs. Here are the first 4:
- * at IMtag ;  
- * at CStag ;  
- * tí CStag ;  
- * tá% ið CStag ;  
-...
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/subjunctions.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/subjunctions.lexc)</small># Faroese deternminers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/determiners.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/determiners.lexc)</small>
-# Faroese verb stems 
-
-This file documents the file [stems/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/verbs.lexc)
-
-The file contains one lexicon:
-
-**LEXICON Verbs** = the lexicon containing all verb stems
-
-## Some irregular verbs
-*mega, eiga, eita, gráta, liggja, ...* and 15 more
-
-
-
-## some irregular passive verbs
-
- * høggast:høgg FYRIB ; 
- * munnhøggast:munn#høgg FYRIB ; 
- * bilgjast:bilgj FYRIB ; 
- * bylgjast:bylgj sxrefl ; 
-* ... etc. 15 more
-
-
-
-
-
-
-
-
-## The long verb list
-
-The lexica listed here represent the declension patterns
-presented in Føroysk orðabók. The lexicon names correspond to the
-declension codes in the dictionary.
-
-
- * fakturera:fakturer s30 ;   
- * formturka:form#turk s30 ;   
- * svørja:svør s10 ;   
- * almannakunngera:al#manna#kunng s31 ;    
- * gjøgnumføra:gjøgnum#før s1 ;   
- * innføra:inn#før s1 ;   
- * útføra:út#før s1 ;   
- * innvíga:inn#víg s1 ;   
- * annleggja:ann#l s20 ;   ... and more than 6000 more.
-
-
-
-
-
-
-
-
-
-
-Simple declension class verbs
-
-
-
-
-
-
-
-
-Still to be classified
-
-
-
-
-Double declension class verbs
-
-
-
-
-
-Finally some candidates to be considered for verb compounding.
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/verbs.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/verbs.lexc)</small># Faroese prepositions
-
-We should eventually have syntactic tags here...
-
-## Tags
-**p** for the tag +Pr
-
-## The list of prepositions
-
-**Preposition** for the list of prepositions, ordered according to case they select for.
-
-
-
-### Several cases
-
-
-### Accusative or dative
-| --- 
-
-### Accusative or genitive
-
-
-### Accusative
-
-###  Dative
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adpositions.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/adpositions.lexc)</small># Faroese Numerals
-
-
-
-**Numeral** splitting in types
- * Textual ;  
- * ARABICS ;  
- * ARABICORD ;  
- * ROMAN ;  
- * ISOLATED-NUMEXP ;  
- * NUM-PREFIXES ;  
-
-
-
-
-   **1-9** 
-
-
-
-   **TRÝsplit** 
-
-   **nsplit** 
-
-   **TEXTTENS** 
-
-
-   **TEXTTEENS** 
-
-   **basic** 
-
-
-
-   **EITT** 
-
-   **TVEY** 
-
-   **TRÝ** 
-
-   **PAIRNUM** 
-
-   **n** 
-
-
-## Ordinals
-
-   **ordinals** 
-
-   **ord_decl** 
-
-   **ANNAR** 
-
-   **ANNARMORPH** 
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/numerals.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/numerals.lexc)</small># Faroese noun stem file
-
-The lexicon names are taken from
-Føroysk orðabók I-II (FO). Reference is
-made to Thráinsson & al ("fg").
-
-Note that in some cases, the lexicon names and stems here
-deviate from FO. In that case the lexica have names ending
-in wordforms, written in capital lettes.
-
-## Short lexica
-
-**Shortnouns** for  1, 2 and 3 letter nouns excluded from compounding
-
-These are now always excluded from lastpart compound
-and in norm from first-part compounding as well
-
-
-
-
-
-
-
-
-
-## The main list of nouns
-
-Her kjem alle substantiva. Dei er baklengssortert.
-leksikon som byrjar med x er ikkje manuelt sjekka.
-
-**Nouns**
-
-Fila inneheld i underkant av 50000 lemma.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/nouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/nouns.lexc)</small># Faroese adjectives 
-
-
-The adjectives and their inflectional codes 
-are taken from "Føroysk orðabók".
-
-## The list of ajectives
-
-
-
-
-
-**Adjectives** for the list of adjectives
-
-### Irregular comparatives and superlatives
-
-
-
-### Prefixed present participles
-
-
-### Regular adjectives, systematic list
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adjectives.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/adjectives.lexc)</small># Faroese adverbs
-
-
-   **adv** for the tag +Adv
-
-   **advcomp** for the tag +Adv+Cmp
-
-   **advsuperl** for the tag +Adv+Superl
-
-   **Adverb** for the list of appr 1000 adverbs
-
-
- * í% gjár adv ; 
- * í% fjør adv ; 
- * ókynjað adv ; 
- * suðuri adv ; 
- * eystarlaga adv ; 
- * útúr adv ; 
- * hvaðani adv ; 
- * síðla adv ; 
- * allastaðnar adv ; 
- * forskelligastaðnar adv ; 
- * nógvastaðnar adv ; 
- * onkrastaðnar adv ; 
- * ymsastaðnis adv ; 
- * líkafram adv ; 
- * aftanáaftur adv ; 
-...
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adverbs.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/adverbs.lexc)</small># Proper nouns 
-
-Table of content
-* The name lexica
--   - mal
--   - fem
--   - plc
--   - sur       
-
-## Splitting into name types
-
-
-   **Propernouns** splitting in 3 lexica: **multipartnames, names, guess**
-
-
-   **multipartnames** contains only 3 names for now
-
-   **names** gives the list of names.
-
-
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/propernouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/propernouns.lexc)</small>
-# Interjections
-
-The tag +Interj
-
-   **Interj** 
-
-The words
-
-   **Interjection** okey, ááá, aj, huff, ...
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/interjections.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/interjections.lexc)</small># Akronymer 
-
-This documents the `stems/fao-acronyms.lexc` file.
-Most acronyms are taken from a common generated file, this file is for the Faroese-specific acronyms.
-
-
-   **LEXICON Acronym-fao** pointing to the lexica 
- * Akronymnumeralier ; (Nogle tal først, måskje?)
- * Acronym-fao-list ; 
-
-   **LEXICON Acronym-fao-list** for selve listen, i øjeblikket 2:
- * StÍF ACRO ; 
- * T5PC ACRO ; 
-
-
-
-
-
-   **Akronymnumeralier**  for 0-9
-
-   **anl**  send numvers too letterloops -- this might be too liberal.
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/fao-acronyms.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/fao-acronyms.lexc)</small># File containing Faroese abbreviations 
-
-Lexica for adding tags and periods
-
-The idea is (or may be) to use both common and language-speicfic abbreviations.
-
-Splitting in 3 groups, because of the preprocessor
-
-**Abbreviation**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-dot% noStb.db
-Abbreviations that never induce sentence boundaries
-The file is too large and should be shrinked
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/abbreviations.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/abbreviations.lexc)</small>
-# Symbol affixes
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/symbols.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/symbols.lexc)</small>
+<small>This (part of) documentation was generated from [../src/fst/affixes/numerals.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/numerals.lexc)</small>
 
 
 
@@ -2386,61 +1908,166 @@ The file is too large and should be shrinked
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/verbs.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/verbs.lexc)</small>
+<small>This (part of) documentation was generated from [../src/fst/affixes/verbs.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/verbs.lexc)</small># Proper nouns 
 
-# North Saami acronyms - affix part
-
-## The lexica giving tags and suffixes to the acronyms
-
-
-
-
- * **LEXICON ACRONOUN   ** is the lexicon for **nouns** (not +Prop) like ATV
-
- * **LEXICON UNIT   **  As acro, but without paradigm
+## Table of content
+* _ The guessed ones
+* _ The morphological tags
+- _ _ Male first names
+- _ _ Female first names
+- _ _ Surnames
+- _ _ Place names and other names
 
 
 
 
 
 
+## The morphological tags
+
+For each group, the maltag etc. lexicon functions as a default
+lexicon. The other lexica are there for specific subgroups of the names.
+
+### Indeclineables
 
 
 
- * **LEXICON acroconnector   ** Here comes a set of possible symbols to
-put between the abbreviation and its suffix
 
- * **LEXICON acronull   **  for suffixless forms, redirecting to K_only for clitic forms
+
+
+
+###  Male first names
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Female first names
+
+
+
+
+
+###  Surnames
+
+
+
+###  Place names and other names
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/acronyms.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/acronyms.lexc)</small># Numeral affixess
-
-This lexicon just goes to #, this in order to coexist with number files in giella-shared.
-They are relevant for Sámi, not for faroese.
-
-Lexica: 
-
- * LEXICON DIGITCASE 				 # ;		 
- * LEXICON ARABICCASE 				 # ;		 
- * LEXICON ARABICCASE0 				 # ;	 
- * LEXICON ARABICCASECOLL 				 # ;	 
- * LEXICON ARABICCASEORD 				 # ;	 
- * LEXICON ARABICCASEORD-ERR 				 # ; 
- * LEXICON ARABICCASES 				 # ;	 
- * LEXICON ARABICCOMPOUNDS 			 # ;	 
- * LEXICON ROMNUMTAGOBL 				 # ;	 
- * LEXICON dateyearcase 				 # ;	 
- * LEXICON dateyearcase_fullsuff 		 # ;	 
- * LEXICON dateyearcase_nullsuff_w_dot  # ;	 
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/numerals.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/numerals.lexc)</small># Faroese Noun morphology 
+<small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/propernouns.lexc)</small># Faroese Noun morphology 
 
 This file contains the inflection suffixes for the Faroese nowns
 The infection classes are identical to the ones in *Føroysk orðabók*.
@@ -3181,7 +2808,83 @@ the ways stems may be combined.
 * **LEXICON Pl_Flag** for 
 * **LEXICON p24** 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/nouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/nouns.lexc)</small># Adjective morphology !
+<small>This (part of) documentation was generated from [../src/fst/affixes/nouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/nouns.lexc)</small>
+
+# North Saami acronyms - affix part
+
+## The lexica giving tags and suffixes to the acronyms
+
+
+
+
+ * **LEXICON ACRONOUN   ** is the lexicon for **nouns** (not +Prop) like ATV
+
+ * **LEXICON UNIT   **  As acro, but without paradigm
+
+
+
+
+
+
+
+
+
+ * **LEXICON acroconnector   ** Here comes a set of possible symbols to
+put between the abbreviation and its suffix
+
+ * **LEXICON acronull   **  for suffixless forms, redirecting to K_only for clitic forms
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/acronyms.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/acronyms.lexc)</small># Abbreviation affixes
+
+Now splitting according to POS, and according to dot or not
+
+First collecting POS info, *-noun, *-adv, etc.
+Also splitting when in doubt: -noun-adj => -noun and -adj
+Then pointing to two contlexes, a dot-one and a non-dot-one.
+
+
+
+
+
+
+### Lexicons without final period
+
+
+
+
+### Lexicons with final period
+
+ * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
+
+
+
+
+ * **LEXICON nodot-infl   **
+
+ * **LEXICON dot-infl   **
+
+ * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/abbreviations.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/abbreviations.lexc)</small>
+# Symbol affixes
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/symbols.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/symbols.lexc)</small># Adjective morphology !
 
 ## Ad hoc lexica
 
@@ -3498,126 +3201,37 @@ Compound flags
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/adjectives.lexc)</small># Proper nouns 
+<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/adjectives.lexc)</small># Faroese adverbs
 
-## Table of content
-* _ The guessed ones
-* _ The morphological tags
-- _ _ Male first names
-- _ _ Female first names
-- _ _ Surnames
-- _ _ Place names and other names
 
+   **adv** for the tag +Adv
 
+   **advcomp** for the tag +Adv+Cmp
 
+   **advsuperl** for the tag +Adv+Superl
 
+   **Adverb** for the list of appr 1000 adverbs
 
 
-## The morphological tags
+ * í% gjár adv ; 
+ * í% fjør adv ; 
+ * ókynjað adv ; 
+ * suðuri adv ; 
+ * eystarlaga adv ; 
+ * útúr adv ; 
+ * hvaðani adv ; 
+ * síðla adv ; 
+ * allastaðnar adv ; 
+ * forskelligastaðnar adv ; 
+ * nógvastaðnar adv ; 
+ * onkrastaðnar adv ; 
+ * ymsastaðnis adv ; 
+ * líkafram adv ; 
+ * aftanáaftur adv ; 
+...
 
-For each group, the maltag etc. lexicon functions as a default
-lexicon. The other lexica are there for specific subgroups of the names.
-
-### Indeclineables
-
-
-
-
-
-
-
-###  Male first names
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Female first names
-
-
-
-
-
-###  Surnames
-
-
-
-###  Place names and other names
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/adverbs.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/adverbs.lexc)</small># Faroese deternminers
 
 
 
@@ -3657,38 +3271,294 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/propernouns.lexc)</small># Abbreviation affixes
-
-Now splitting according to POS, and according to dot or not
-
-First collecting POS info, *-noun, *-adv, etc.
-Also splitting when in doubt: -noun-adj => -noun and -adj
-Then pointing to two contlexes, a dot-one and a non-dot-one.
+<small>This (part of) documentation was generated from [../src/fst/stems/determiners.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/determiners.lexc)</small># Faroese pronouns
 
 
+   **Pronoun** splitting into 3 sublexica:
+ 1. Personal ;        
+ 1. Reflexive ;        
+ 1. Interrogative ;    
+ 1. Indefinite ;       
 
-
-
-
-### Lexicons without final period
+   **Personal** for the personal pronouns
 
 
 
 
-### Lexicons with final period
 
- * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
+   **egtu-obl** 
 
- * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
+   **okkumtykkum** 
+
+   **S_okkumtykkum** 
+
+
+   **3obl** 
+
+   **Reflexive** 
+
+
+
+   **Interrogative** 
+
+
+   **EIN** 
+
+   **ANNAR_P** 
+
+   **EINHVOR** 
+
+   **ANNARHVOR** 
+
+   **HANNSJALVUR** 
+
+
+   **Indefinite** 
 
 
 
 
- * **LEXICON nodot-infl   **
 
- * **LEXICON dot-infl   **
 
- * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+   **ONKUR** 
+
+   **NAKAR** 
+
+   **BADIR** 
+
+   **HVORGIN** 
+
+   **EINGIN** 
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/pronouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/pronouns.lexc)</small># Faroese prepositions
+
+We should eventually have syntactic tags here...
+
+## Tags
+**p** for the tag +Pr
+
+## The list of prepositions
+
+**Preposition** for the list of prepositions, ordered according to case they select for.
+
+
+
+### Several cases
+
+
+### Accusative or dative
+| --- 
+
+### Accusative or genitive
+
+
+### Accusative
+
+###  Dative
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/adpositions.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/adpositions.lexc)</small># Faroese Numerals
+
+
+
+**Numeral** splitting in types
+ * Textual ;  
+ * ARABICS ;  
+ * ARABICORD ;  
+ * ROMAN ;  
+ * ISOLATED-NUMEXP ;  
+ * NUM-PREFIXES ;  
+
+
+
+
+   **1-9** 
+
+
+
+   **TRÝsplit** 
+
+   **nsplit** 
+
+   **TEXTTENS** 
+
+
+   **TEXTTEENS** 
+
+   **basic** 
+
+
+
+   **EITT** 
+
+   **TVEY** 
+
+   **TRÝ** 
+
+   **PAIRNUM** 
+
+   **n** 
+
+
+## Ordinals
+
+   **ordinals** 
+
+   **ord_decl** 
+
+   **ANNAR** 
+
+   **ANNARMORPH** 
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/numerals.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/numerals.lexc)</small>
+# Faroese verb stems 
+
+This file documents the file [stems/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/verbs.lexc)
+
+The file contains one lexicon:
+
+**LEXICON Verbs** = the lexicon containing all verb stems
+
+## Some irregular verbs
+*mega, eiga, eita, gráta, liggja, ...* and 15 more
+
+
+
+## some irregular passive verbs
+
+ * høggast:høgg FYRIB ; 
+ * munnhøggast:munn#høgg FYRIB ; 
+ * bilgjast:bilgj FYRIB ; 
+ * bylgjast:bylgj sxrefl ; 
+* ... etc. 15 more
+
+
+
+
+
+
+
+
+## The long verb list
+
+The lexica listed here represent the declension patterns
+presented in Føroysk orðabók. The lexicon names correspond to the
+declension codes in the dictionary.
+
+
+ * fakturera:fakturer s30 ;   
+ * formturka:form#turk s30 ;   
+ * svørja:svør s10 ;   
+ * almannakunngera:al#manna#kunng s31 ;    
+ * gjøgnumføra:gjøgnum#før s1 ;   
+ * innføra:inn#før s1 ;   
+ * útføra:út#før s1 ;   
+ * innvíga:inn#víg s1 ;   
+ * annleggja:ann#l s20 ;   ... and more than 6000 more.
+
+
+
+
+
+
+
+
+
+
+Simple declension class verbs
+
+
+
+
+
+
+
+
+Still to be classified
+
+
+
+
+Double declension class verbs
+
+
+
+
+
+Finally some candidates to be considered for verb compounding.
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/verbs.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/verbs.lexc)</small># Faroese subjunctions
+
+The file `stems/subjunctions.lexc` contains three lexica:
+
+**LEXICON CStag** assigns the **+CS** TAG. It has one entry:
+ +CS: # ;
+
+**LEXICON IMtag** assigns the  **+IM** tag for the infinitive marker. The entry is:
+ +IM: # ;
+
+**LEXICON Subjunction** contains the list of some 10-20 CSs. Here are the first 4:
+ * at IMtag ;  
+ * at CStag ;  
+ * tí CStag ;  
+ * tá% ið CStag ;  
+...
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/subjunctions.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/subjunctions.lexc)</small># The Faroese conjunctions
+
+The file `stems/conjunctions.lexc` contains two lexica:
+
+**LEXICON CCtag** for assigning the +CC tag to all the conjunctions below. It has one entry:
+ * +CC: # ;
+
+**LEXICON Conjunction** for the list of 10 or so conjunctions that are found in the file. Here are the first entries:
+ * antin CCtag ;
+ * annaðhvørt CCtag ;
+ * bæði CCtag ;
+ * og CCtag ;
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/conjunctions.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/conjunctions.lexc)</small>
+# Interjections
+
+The tag +Interj
+
+   **Interj** 
+
+The words
+
+   **Interjection** okey, ááá, aj, huff, ...
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/interjections.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/interjections.lexc)</small># Proper nouns 
+
+Table of content
+* The name lexica
+-   - mal
+-   - fem
+-   - plc
+-   - sur       
+
+## Splitting into name types
+
+
+   **Propernouns** splitting in 3 lexica: **multipartnames, names, guess**
+
+
+   **multipartnames** contains only 3 names for now
+
+   **names** gives the list of names.
+
 
 
 
@@ -3697,26 +3567,156 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/abbreviations.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/abbreviations.lexc)</small># Compounding morphology
+<small>This (part of) documentation was generated from [../src/fst/stems/propernouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/propernouns.lexc)</small># Faroese noun stem file
+
+The lexicon names are taken from
+Føroysk orðabók I-II (FO). Reference is
+made to Thráinsson & al ("fg").
+
+Note that in some cases, the lexicon names and stems here
+deviate from FO. In that case the lexica have names ending
+in wordforms, written in capital lettes.
+
+## Short lexica
+
+**Shortnouns** for  1, 2 and 3 letter nouns excluded from compounding
+
+These are now always excluded from lastpart compound
+and in norm from first-part compounding as well
 
 
 
-# Lexicon R gets flags and sends compounds over to RReal
- @P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ;  are Flags to control compounding
 
-# Lexicon RReal is the lexicon for the Cmp tag and resending to N, A
- *  +Cmp#: Nouns ;          
- *  +Cmp#: Adjectives ;    
-           R-    ;        
 
-# Lexicon R- for compounds with hyphen
-  +Cmp#:%- Nouns ;    
-  +Cmp#:%- Adjectives ;    
 
-# Lexicon RNum for compounds numeral + noun
-       +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ;    For Num Cmp Noun, vi vil ikke ha Num Cmp Num
+
+
+
+## The main list of nouns
+
+Her kjem alle substantiva. Dei er baklengssortert.
+leksikon som byrjar med x er ikkje manuelt sjekka.
+
+**Nouns**
+
+Fila inneheld i underkant av 50000 lemma.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 * * *
-<small>This (part of) documentation was generated from [../src/fst/compounding.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/compounding.lexc)</small># Faroese morphological analyser
+<small>This (part of) documentation was generated from [../src/fst/stems/nouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/nouns.lexc)</small># File containing Faroese abbreviations 
+
+Lexica for adding tags and periods
+
+The idea is (or may be) to use both common and language-speicfic abbreviations.
+
+Splitting in 3 groups, because of the preprocessor
+
+**Abbreviation**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dot% noStb.db
+Abbreviations that never induce sentence boundaries
+The file is too large and should be shrinked
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/abbreviations.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/abbreviations.lexc)</small># Faroese adjectives 
+
+
+The adjectives and their inflectional codes 
+are taken from "Føroysk orðabók".
+
+## The list of ajectives
+
+
+
+
+
+**Adjectives** for the list of adjectives
+
+### Irregular comparatives and superlatives
+
+
+
+### Prefixed present participles
+
+
+### Regular adjectives, systematic list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/adjectives.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/adjectives.lexc)</small># Akronymer 
+
+This documents the `stems/fao-acronyms.lexc` file.
+Most acronyms are taken from a common generated file, this file is for the Faroese-specific acronyms.
+
+
+   **LEXICON Acronym-fao** pointing to the lexica 
+ * Akronymnumeralier ; (Nogle tal først, måskje?)
+ * Acronym-fao-list ; 
+
+   **LEXICON Acronym-fao-list** for selve listen, i øjeblikket 2:
+ * StÍF ACRO ; 
+ * T5PC ACRO ; 
+
+
+
+
+
+   **Akronymnumeralier**  for 0-9
+
+   **anl**  send numvers too letterloops -- this might be too liberal.
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/fao-acronyms.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/fao-acronyms.lexc)</small># Faroese morphological analyser
 
  # Definitions for Multichar_Symbols
 
@@ -4075,6 +4075,23 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 <small>This (part of) documentation was generated from [../src/fst/root.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/root.lexc)</small>
 
 
+We describe here how abbreviations are in Faroese are read out, e.g.
+for text-to-speech systems.
+
+For example:
+
+ * s.:syntynyt # ;  
+ * os.:omaa% sukua # ;  
+ * v.:vuosi # ;  
+ * v.:vuonna # ;  
+ * esim.:esimerkki # ; 
+ * esim.:esimerkiksi # ; 
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-abbrevs2text.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+
+
 
 
 
@@ -4128,23 +4145,6 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 * * *
 <small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-numbers-digit2text.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
-
-
-We describe here how abbreviations are in Faroese are read out, e.g.
-for text-to-speech systems.
-
-For example:
-
- * s.:syntynyt # ;  
- * os.:omaa% sukua # ;  
- * v.:vuosi # ;  
- * v.:vuonna # ;  
- * esim.:esimerkki # ; 
- * esim.:esimerkiksi # ; 
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-abbrevs2text.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
 
 
 

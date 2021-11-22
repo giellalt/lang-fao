@@ -15,6 +15,8 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+SUBDIRS = . tests
+
 ####### Source file defs: ########
 
 #! @param GT_PHONETICS_MAIN required, the source of phonetic transcription

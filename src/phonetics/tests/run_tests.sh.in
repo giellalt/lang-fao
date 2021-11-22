@@ -1,0 +1,89 @@
+#!/bin/bash
+## Process this file with configure to produce the actual shell script
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+# Test runner to test conversion to IPA.
+
+# Use autotools mechanisms to only run the configured fst types in the tests:
+fsttype=
+@CAN_HFST_TRUE@fsttype="$fsttype hfst"
+@CAN_XFST_TRUE@fsttype="$fsttype xfst"
+@CAN_FOMA_TRUE@fsttype="$fsttype foma"
+
+# Exit if all fst types have been shut off:
+if [[ "x$fsttype" == "x" ]]; then
+    echo "All transducer types have been shut off at configure time."
+    echo "Nothing to test. SKIPPED."
+    exit 77
+fi
+
+fst_num=$(echo "$fsttype" | wc -w)
+# Debug: echo Number of fst´s: $fst_num
+
+fst=$(grep -v '^#' $1 | grep -v '^\s*$' | grep 'fst' | cut -f2)
+
+# Debug:
+# echo FST: $fst
+
+grep -v '^#' $1 | grep -v '^\s*$' | tail -n +2 | cut -f1 > innput.txt
+grep -v '^#' $1 | grep -v '^\s*$' | tail -n +2 | cut -f2 > expect.txt
+
+###### Start testing: #######
+transducer_found=0
+fails=0
+
+#    .---------- constant part!
+#    vvvv vvvv-- colour code
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color
+
+
+# Loop over the transducer types first - we test both hfst, xfst and foma
+# according to the configuration:
+for f in $fsttype; do
+    # DEBUG: echo "Fst loop 35: $f"
+    if test $f == "xfst"; then
+        lookuptool="@LOOKUP@ -flags mbTT"
+    elif test $f == "foma"; then
+        lookuptool="@FLOOKUP@"
+    elif test $f == "hfst"; then
+        lookuptool="@HFST_LOOKUP@ -q"
+    else
+        let "Fail += 1"
+        echo "FAIL: Unknown fst type! FST=$f"
+        continue
+    fi
+    # Run lookup, then clean the output as follows before saving:
+    # 1. remove extra empty lines
+    # 2. convert two or more newlines to XXYYZZ (two newlines are cohort separators)
+    # 3. convert single newlines to ' XXXX ' - marks multiple outputs from single inut
+    # 4. convert XXYYZZ back to a single newline
+    # 5. cleanup on the last line
+    $lookuptool ../$fst.$f < innput.txt | cut -f1-2 \
+    | sed '${/^[[:space:]]*$/d;}' \
+    | perl -0pe 's/\n\n+/XXYYZZ/g;' \
+    | perl -0pe 's/\n/ XXXX /g;' \
+    | perl -pe 's/XXYYZZ/\n/g' \
+    | sed '$ s/ XXXX $/\n/' > output.${f}.txt
+
+    # The actual test:
+    diff expect.txt <(cut -f2- output.hfst.txt)
+
+    # Just to be sure, capture the output value - it might give different
+    # results for hfst, foma and xfst (that would be a bug in the offending
+    # one, but one never knows). This way the test will fail even if the last
+    # fst type being tested was successful if one of the earlier types failed.
+    #
+    # And if more than one fst type is tested, print output status for each:
+    if (($? > 0)) ; then
+        fails=$((fails+1))
+        (($fst_num > 1)) && echo -e "    ${BOLD}FAILED: ${RED}$f${NC}"
+    else
+        (($fst_num > 1)) && echo -e "    ${BOLD}PASSED: ${GREEN}$f${NC}"
+    fi
+done
+
+exit $fails

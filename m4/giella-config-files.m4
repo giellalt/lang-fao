@@ -52,6 +52,7 @@ AC_CONFIG_FILES([Makefile \
                  tools/mt/cgbased/Makefile \
                  tools/tokenisers/Makefile \
                  tools/tokenisers/filters/Makefile \
+                 tools/tokenisers/tests/Makefile \
                  tools/shellscripts/Makefile \
                  tools/spellcheckers/Makefile \
                  tools/spellcheckers/filters/Makefile \

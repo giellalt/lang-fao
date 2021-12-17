@@ -22,7 +22,7 @@ SUBDIRS = . tests
 #! @param GT_PHONETICS_MAIN required, the source of phonetic transcription
 #! @param GT_PHONETICS_SUPPLEMENTS optional, other sources to distribute and
 #! 		  compile for other things
-GT_PHONETICS_MAIN=text2ipa-$(GTLANG).xfscript
+GT_PHONETICS_MAIN=txt2ipa.xfscript
 GT_PHONETICS_SUPPLEMENTS=
 
 ##########################################

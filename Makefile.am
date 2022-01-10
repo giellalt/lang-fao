@@ -5,18 +5,15 @@
 ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = . src tools docs test
 
-EXTRA_DIST = und.timestamp
-
 pkgconfigdir = $(prefix)/share/pkgconfig
 pkgconfig_DATA = giella-$(GTLANG).pc
 
-
-configure: banner und.timestamp
+configure: banner
 
 .PHONY: banner test
 banner:
 	@echo
-	@echo "*** Compiling the $(GTLANG) language. ***"
+	@echo "*** Compiling $(GLANG) - $(GLANGUAGE). ***"
 	@echo
 
 # On some systems it will try to run 'make test', and claim

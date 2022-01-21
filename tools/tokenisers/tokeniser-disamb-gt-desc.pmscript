@@ -93,7 +93,7 @@ Define alphaword alphabet+ ( alphamiddle alphabet+ );
 !! ## Unknown handling
 Define unknownform [alphaword].u ;
 !! Unknowns are tagged ?? and treated specially with `hfst-tokenise`
-Define unknownword unknownform 0:% %?%? 
+Define unknownword unknownform 0:% %?%?::280284
                         LC([blank | #]) RC([[blank ] | # ]);
 !! hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
 !! remove empty analyses from other readings. Empty readings are also

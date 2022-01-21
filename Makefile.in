@@ -411,7 +411,6 @@ INDEX = $(srcdir)/index.md
 # no regenerations while debugging
 doc_DATA = $(INDEX) $(LINKS) $(ALLINONE_MD_PAGE)
 DOCC2MDWIKI = $(GTCORE)/scripts/doccomments2ghpages.awk
-JSPWIKI2MD = $(GTCORE)/scripts/jspwiki2md.awk
 GRAPHPLOTTER = $(GTCORE)/scripts/plot-speller-progress.R
 
 # hfst-compose:
@@ -936,9 +935,6 @@ $(LINKS): generate-markdown generated-markdowns.targets
 # FIXME: some temporary stuff to have index page
 $(INDEX): $(HEADER) $(LINKS)
 	$(AM_V_GEN)cat $^ > $@
-
-%.md: %.jspwiki
-	$(AM_V_AWK)"$(GAWK)" -f $(JSPWIKI2MD) < $< > $@
 
 clean-local:
 	$(AM_V_at)-rm -rf $(builddir)/build

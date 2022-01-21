@@ -18,18 +18,18 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
 
 ### Lexicons with final period
 
- * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
+* **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
 
- * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
-
-
+* **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
 
 
- * **LEXICON nodot-infl   **
 
- * **LEXICON dot-infl   **
 
- * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+* **LEXICON nodot-infl   **
+
+* **LEXICON dot-infl   **
+
+* **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
 
 
 

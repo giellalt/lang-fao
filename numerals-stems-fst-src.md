@@ -3,53 +3,53 @@
 
 
 **Numeral** splitting in types
- * Textual ;  
- * ARABICS ;  
- * ARABICORD ;  
- * ROMAN ;  
- * ISOLATED-NUMEXP ;  
- * NUM-PREFIXES ;  
+* Textual ;  
+* ARABICS ;  
+* ARABICORD ;  
+* ROMAN ;  
+* ISOLATED-NUMEXP ;  
+* NUM-PREFIXES ;  
 
 
 
 
-   **1-9** 
+  **1-9** 
 
 
 
-   **TRÝsplit** 
+  **TRÝsplit** 
 
-   **nsplit** 
+  **nsplit** 
 
-   **TEXTTENS** 
-
-
-   **TEXTTEENS** 
-
-   **basic** 
+  **TEXTTENS** 
 
 
+  **TEXTTEENS** 
 
-   **EITT** 
+  **basic** 
 
-   **TVEY** 
 
-   **TRÝ** 
 
-   **PAIRNUM** 
+  **EITT** 
 
-   **n** 
+  **TVEY** 
+
+  **TRÝ** 
+
+  **PAIRNUM** 
+
+  **n** 
 
 
 ## Ordinals
 
-   **ordinals** 
+  **ordinals** 
 
-   **ord_decl** 
+  **ord_decl** 
 
-   **ANNAR** 
+  **ANNAR** 
 
-   **ANNARMORPH** 
+  **ANNARMORPH** 
 
 
 

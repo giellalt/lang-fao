@@ -14,10 +14,10 @@ The file contains one lexicon:
 
 ## some irregular passive verbs
 
- * høggast:høgg FYRIB ; 
- * munnhøggast:munn#høgg FYRIB ; 
- * bilgjast:bilgj FYRIB ; 
- * bylgjast:bylgj sxrefl ; 
+* høggast:høgg FYRIB ; 
+* munnhøggast:munn#høgg FYRIB ; 
+* bilgjast:bilgj FYRIB ; 
+* bylgjast:bylgj sxrefl ; 
 * ... etc. 15 more
 
 
@@ -34,15 +34,15 @@ presented in Føroysk orðabók. The lexicon names correspond to the
 declension codes in the dictionary.
 
 
- * fakturera:fakturer s30 ;   
- * formturka:form#turk s30 ;   
- * svørja:svør s10 ;   
- * almannakunngera:al#manna#kunng s31 ;    
- * gjøgnumføra:gjøgnum#før s1 ;   
- * innføra:inn#før s1 ;   
- * útføra:út#før s1 ;   
- * innvíga:inn#víg s1 ;   
- * annleggja:ann#l s20 ;   ... and more than 6000 more.
+* fakturera:fakturer s30 ;   
+* formturka:form#turk s30 ;   
+* svørja:svør s10 ;   
+* almannakunngera:al#manna#kunng s31 ;    
+* gjøgnumføra:gjøgnum#før s1 ;   
+* innføra:inn#før s1 ;   
+* útføra:út#før s1 ;   
+* innvíga:inn#víg s1 ;   
+* annleggja:ann#l s20 ;   ... and more than 6000 more.
 
 
 

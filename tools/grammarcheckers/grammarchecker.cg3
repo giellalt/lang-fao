@@ -344,11 +344,14 @@ COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sup-sg1) TARGET (V Su
 
 
 #!! Sup  should be Inf
-ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V Sup) IF (-1 MODV);
+ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V Sup) IF (-1 ("hava"));
 COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (Sup &msyn-sup-inf) TARGET (V Sup &msyn-sup-inf) ;
+ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V PrfPtc) IF (-1 MODV);
+COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Neu Pl Acc Indef &msyn-sup-inf) TARGET (V PrfPtc &msyn-sup-inf) ;
 ## - Eg vil komað.
 #$ - Eg vil koma.
 
+#PrfPtc Neu Pl Acc Indef
 
 #!! Neu should be 1Sg
 ADD:msyn-prfptc-sg1 (&msyn-prfptc-sg1) TARGET (V PrfPtc Neu Sg Nom Indef) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);

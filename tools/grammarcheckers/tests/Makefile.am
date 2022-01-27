@@ -7,13 +7,26 @@
 if WANT_GRAMCHECK
 
 # List here (space separated) all yaml files to be run as part of make check:
-TESTS=
+TESTS=\
+	msyn-inf-sup.yaml \
+	msyn-nomindef-nomdef.yaml \
+	msyn-prfptc-sg1.yaml \
+	msyn-sup-inf.yaml \
+	msyn-sup-prspl.yaml \
+	msyn-sup-sg1.yaml
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=
+XFAIL_TESTS=\
+	msyn-inf-sup.yaml \
+	msyn-prfptc-sg1.yaml \
+	msyn-sup-prspl.yaml \
+	msyn-sup-sg1.yaml
 
 endif # WANT_GRAMCHECK
+
+# XPASS: msyn-nomindef-nomdef.yaml
+# XPASS: msyn-sup-inf.yaml
 
 #### Do NOT edit below here: ####
 include $(top_srcdir)/../giella-core/am-shared/tools-grammarcheckers-tests-dir-include.am

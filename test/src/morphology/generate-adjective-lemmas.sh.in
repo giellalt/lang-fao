@@ -126,7 +126,7 @@ for f in $fsttype; do
                 $EXTEDITOR $gen_result_file.$f.txt
                 $EXTEDITOR $ana_result_file.$f.txt
             else
-                echo "There where problem lemmas. Details in:"
+                echo "There were problem lemmas. Details in:"
                 echo "* $result_file.$f.txt    "
                 echo "* $gen_result_file.$f.txt"
                 echo "* $ana_result_file.$f.txt"

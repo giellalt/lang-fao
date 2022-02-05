@@ -379,6 +379,10 @@ COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V
 #!! Pl should be Sup
 
 #!! Inf should be Sup
+ADD:msyn-inf-sup (&msyn-inf-sup) TARGET V IF (-2 ("hava" V Ind Prs Pl))(-1 ("eg" Pron Pers Pl Nom)) (NOT *1 Sup) (0 (Ind Prs Pl)) (NOT 0 Pass);
+COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Ind Prs Pl &msyn-inf-sup) TARGET (V &msyn-inf-sup) ;
+
+ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF (-1 ("hava" V Ind))(NOT 0 Pass)(NOT *1 Sup)(0 (Ind Prs Pl));
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (Inf) IF (-1 ("hava" V Ind))(NOT 0 Pass)(NOT *1 Sup)(NOT 0 A LINK 1 N);
 COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (&msyn-inf-sup) ;
 

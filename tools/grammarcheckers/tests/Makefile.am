@@ -18,13 +18,13 @@ TESTS=\
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
-	msyn-inf-sup.yaml \
 	msyn-prfptc-sg1.yaml \
 	msyn-sup-prspl.yaml \
 	msyn-sup-sg1.yaml
 
 endif # WANT_GRAMCHECK
 
+# XPASS:	msyn-inf-sup.yaml \
 # XPASS: msyn-nomindef-nomdef.yaml
 # XPASS: msyn-sup-inf.yaml
 

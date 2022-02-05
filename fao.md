@@ -4494,6 +4494,7 @@ Inf should be Sup
 
 
 
+
 ## Specific verbs
 
 Past tens of láta is læt not lat

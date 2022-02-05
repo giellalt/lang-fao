@@ -3800,6 +3800,7 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
 * +Sem/Domain
 * +Sem/Domain_Hum
 * +Sem/Dummytag
+* +Sem/Edu
 * +Sem/Edu_Hum
 * +Sem/Event
 * +Sem/Food-med
@@ -3925,6 +3926,8 @@ be used alone, but can appear in any position
 * +Use/NGA
 * +Use/SpellNoSugg
 * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
+
+
 
 * +Err/Guess : Tag for Name Guesser component
 * +Err/Orth : Marking forms that are orthographical errors

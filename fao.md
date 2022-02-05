@@ -3928,7 +3928,6 @@ be used alone, but can appear in any position
 * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
 
 
-
 * +Err/Guess : Tag for Name Guesser component
 * +Err/Orth : Marking forms that are orthographical errors
 * +Err/Hyph

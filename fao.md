@@ -4473,7 +4473,9 @@ Sup should be 1Sg
 Sup  should be 1Sg
 
 
-Sup  should be Inf
+Sup  should be Inf (men hava vil (vel) ha Sup)
+
+
 
 
 Neu should be 1Sg

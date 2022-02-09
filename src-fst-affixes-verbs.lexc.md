@@ -1,18 +1,12 @@
 
 
-
-
 # Verb morphology !
 
-
 **s1** nevna = riggar!
-
 
 **s2** keypa = riggar!
 
 **SETA** seta = riggar!
-
-
 
 **s3** leiða = riggar!
 
@@ -24,25 +18,19 @@
 
 **s7** gista = riggar!
 
-
 **s8** kenna = riggar!
 
 **s9** klippa = riggar!
-
 
 **s10** fylgja = riggar!
 
 **s11**  roykja = riggar!
 
-
 **s12** boyggja = riggar!
-
 
 **s13** søkkja = riggar!
 
-
 **s14** heingja = riggar!
-
 
 **s15** skeinkja = riggar!
 
@@ -70,10 +58,7 @@
 
 **s25** liva = riggar!
 
-
 **s26** plaga = riggar (formurin plagdur manglar)!
-
-
 
 **s26_1** mála->máldi
 
@@ -93,11 +78,7 @@
 
 **s33** rógva
 
-
 **s34** goyggja = riggar!
-
-
-
 
 ## Strong verbs starting here
 
@@ -105,11 +86,9 @@
 
 **s36** svíkja riggar!
 
-
 **s37** bróta riggar!
 
 **s38** skjóta riggar!
-
 
 **s39d**
 
@@ -131,7 +110,6 @@
 
 **s47** svimja = riggar ... men kanska skal tað ikki hava passiv
 
-
 **s48** drekka = riggar ikki í adj pga dpkons
 
 **s48_2** renna = riggar ikki í adj pga dpkons
@@ -147,7 +125,6 @@
 **s50** røkka = riggar ikki í adj pga dpkons
 
 **s51** ganga = riggar!
-
 
 **s52** veva = riggar!
 
@@ -187,7 +164,6 @@
 
 **s69** sláa
 
-
 **s70** siga
 
 **s71** skerja
@@ -195,7 +171,6 @@
 **s72** eta
 
 **s73** læa
-
 
 ## Ad hoc, irregular
 
@@ -223,11 +198,9 @@
 
 **VERÐA**
 
-
 **VILJA**
 
 **VITA**
-
 
 **SÍGGJA**
 
@@ -236,7 +209,6 @@
 **NÁA** XXX check
 
 **LIGGJA**
-
 
 **RADA**
 
@@ -254,21 +226,15 @@
 
 **SYNGJA** XXX check
 
-
-
 **HOGGA** høgga
 
 **KVODA**
 
-
-
 **FLYGGJA**
-
 
 **VAKSA**
 
 **VEKSA**
-
 
 **s30/26_1** dáma
 
@@ -287,11 +253,6 @@
 **KVOTTA**
 
 **GALDA**
-
-
-
-
-
 
 **TAKAST** 
 
@@ -321,38 +282,16 @@
 
 **FYRIB** kopi, s83
 
-
-
 ## Split lexica
-
-
-
-
-
-
-
-
-
-
-
 
 **s8/48_2**
 **s9/30**
-
-
-
-
 
 ## Intermediate lexicon groups
 
 **standard_ir**
 
 **standard_ir_t**
-
-
-
-
-
 
 **ir_verb**
 
@@ -367,7 +306,6 @@
 **inf**
 
 **reflinf**
-
 
 ### Present
 
@@ -389,7 +327,6 @@
 
 **pres_ur_j2**
 
-
 **pres_strong_s1**
 
 **pres_strong_s23**
@@ -402,11 +339,6 @@
 
 **pres_pl**
 
-
-
-
-
-
 **pres_ast**
 
 **pres_ist**
@@ -416,9 +348,6 @@
 **pres_23st**
 
 **pres_plast**
-
-
-
 
 **pret_adist**
 
@@ -441,7 +370,6 @@
 **prt_ð**
 
 **prt_t**
-
 
 **prt_ði**
 
@@ -467,22 +395,7 @@
 
 **prt_u_p**
 
-
 ## Passive lexica
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### Imperative and present participle
 
@@ -518,19 +431,11 @@
 
 **sup_ið_in**  stungið
 
-
-
-
-
 ### Middle lexicon
 
 **VANDI**
 
-
-
 ## Perfect Participles !
-
-
 
 **p18**
 
@@ -538,11 +443,9 @@
 
 **p26_2**
 
-
 **p34_6**
 
 **p34_7**
-
 
 **p32**
 
@@ -558,9 +461,9 @@
 
 **p8**
 
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/verbs.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/verbs.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/verbs.lexc)</small>
+
+---
+

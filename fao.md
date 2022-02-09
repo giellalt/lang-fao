@@ -1,3 +1,7 @@
+# Faroese description 
+
+All documents in one file
+
 
 
 # Faroese disambiguator 
@@ -9,553 +13,22 @@ This file documents the [Faroese disambiguator file](http://github.com/giellalt/
 
 ## Delimiters, tags and sets
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * LIST NAGD = Nom Acc Gen Dat ; # 
 * LIST AGD = Acc Gen Dat ; # 
 * LIST GENDER = Msc Fem Neu ; # 
 * LIST NUMBER = Sg Pl ; # 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Test: Go for minimal weight. This rules gives priority to lexicalised forms.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * **NumRom** in beginning of sentence
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # MAPPING OF CC AND CS
 
 Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them so @CVP remains
 
-
 * **CCasCNPCVP** Map (@CNP @CVP) to CC
 
 * **killAllahtenotCS** All occurrences of "at" are CSs.
-
-
-
-
-
-
 
 * Kill Sem/ID
 
@@ -565,102 +38,22 @@ Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them
 
 * **ErrOrth** goes for correct forms
 
-
-
-
-
-
 * **X** removes readings with no syntax
 
 * * *
-<small>This (part of) documentation was generated from [../src/cg3/disambiguator.cg3](http://github.com/giellalt/lang-fao/blob/main/../src/cg3/disambiguator.cg3)</small>
+
+<small>This (part of) documentation was generated from [src/cg3/disambiguator.cg3](https://github.com/giellalt/lang-fao/blob/main/src/cg3/disambiguator.cg3)</small>
+
+---
+
+
 S Y N T A C T I C   F U N C T I O N S   F O R   F A R O E S E
 
 Sámi language technology project 2003-2014, University of Tromsø # 
 
 This file adds syntactic functions. It was copied from sme.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Syntactic sets
-
 
 * <cs> : 
 * @+FAUXV : finite auxiliary verb 
@@ -715,14 +108,7 @@ Syntactic sets
 * @VOC : Vocative
 * @X : The function is unknown, e.g. because of that the word is unknown
 
-
-
-
-
-
-
 * NP sets defined according to their morphosyntactic features
-
 
 * The PRE-NP-HEAD family of sets
 
@@ -730,96 +116,26 @@ These sets model noun phrases (NPs). The idea is to first define whatever can
 occur in front of the head of the NP, and thereafter negate that with the
 expression __WORD - premodifiers__.
 
-
-
-
-
-
-
-
-
-
-
-
 The set __NOT-NPMOD__ is used to find barriers between NPs.
 Typical usage: ... (*1 N BARRIER NPT-NPMOD) ...
 meaning: Scan to the first noun, ignoring anything that can be
 part of the noun phrase of that noun (i.e., "scan to the next NP head")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 HNOUN MAPPING
-
-
-
-
-
-
-
-
-
-
-
 
 The leftovers are tagged @X
 
 ! __missingX__ adds @X to all missings
 
-
-
-
 ! __therestX__ adds @X to all what is left, often errouneus disambiguated forms
+
 * * *
-<small>This (part of) documentation was generated from [../src/cg3/functions.cg3](http://github.com/giellalt/lang-fao/blob/main/../src/cg3/functions.cg3)</small># Compounding morphology
 
+<small>This (part of) documentation was generated from [src/cg3/functions.cg3](https://github.com/giellalt/lang-fao/blob/main/src/cg3/functions.cg3)</small>
 
+---
+
+# Compounding morphology
 
 # Lexicon R gets flags and sends compounds over to RReal
 @P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ;  are Flags to control compounding
@@ -835,11 +151,16 @@ The leftovers are tagged @X
 
 # Lexicon RNum for compounds numeral + noun
       +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ;    For Num Cmp Noun, vi vil ikke ha Num Cmp Num
+
 * * *
-<small>This (part of) documentation was generated from [../src/fst/compounding.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/compounding.lexc)</small># The Faroese morphophonological file 
+
+<small>This (part of) documentation was generated from [src/fst/compounding.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/compounding.lexc)</small>
+
+---
+
+# The Faroese morphophonological file 
 
 This file documents the [phonology.twolc file](http://github.com/giellalt/lang-fao/blob/main/src/fst/phonology.twolc) 
-
 
 ## Alphabet
 Here we declare all symbols.
@@ -849,7 +170,6 @@ Here we declare all symbols.
 
 * **A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å** 
 * **Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð** 
-
 
 * **a2:a** for invariant a, d.g. vulka2nskur -> vulkanskum
 * **g2:g** for invariant g
@@ -878,7 +198,6 @@ Here we declare all symbols.
 ## Sets
 Here we define some convenient sets.
 
-
 * **Vow = a e i o u y æ ø å** 
  **á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;** 
 * **Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;** 
@@ -892,11 +211,8 @@ Here we define some convenient sets.
  **%^GVDEL %^VDEL %^JDEL %^RDEL ;** 
 Forgot why these are special...
 
-
 # Rules
 These are the rules. After each rule (or rather: after many of the rules) there are test cases that are there to test whether the rules work.
-
-
 
 ## Verschärfung
 
@@ -906,17 +222,12 @@ Rule: **Deleting g**
 * Deleting second g in ggj Genitive II
 * Deleting g in sting:stakst
 
-
 * *sting^NGKK^aAB>st*
 * *stak0000st*
-
-
 
 Rule: **ng to kk Part 1** changes n to k in ng:kk before ^NGKK trigger
 
 Rule: **ng to kk Part 2** changes g to k in ng:kk before ^NGKK trigger
-
-
 
 Rule: **Deleting v in gv sequences** Verschärverung II gives v:0 for gv:00 before ^GVDEL and in some other contexts
 
@@ -946,7 +257,6 @@ Rule: **Deleting r in Genitive of ur stems**
 * *brúður^EPH^RDEL>ar*
 * *brúð00000ar*
 
-
 Rule: **Deleting m in um%>num ** 
 
 **Tests:**
@@ -955,8 +265,6 @@ Rule: **Deleting m in um%>num **
 * *ris0u00num*
 * *skógv^GVDEL>m>num*
 * *skó000000num*
-
-
 
 Rule: **Deleting Double Consonant in Front of Consonant** 
 
@@ -974,15 +282,8 @@ end of the file - but only when using the Xerox tools! XXX - please have a look!
 * *hjall>ar*
 * *hjall0ar*
 
-
-
-
 * *all>t*
 * *al00t*
-
-
-
-
 
 ## Verbal Sandhi rules
 
@@ -998,13 +299,10 @@ Rule: **Geminate Assimilation in Past Tense t**
 * *sett>ti*
 * *set00ti*
 
-
-
 Rule: **ð Assimilation in Front of Dental Past Suffix -d(i)** 
 
 * *leið>di*
 * *leid0di*
-
 
 **Tests:**
 
@@ -1015,10 +313,7 @@ Rule: **ð Assimilation in Front of Dental Past Suffix -d(i)**
 * *ryð^WVV>di*
 * *rud00di*
 
-
 Rule: **Deleting Double Consonant in Front of Epenthesis mark** 
-
-
 
 **Tests:**
 
@@ -1026,7 +321,6 @@ Rule: **Deleting Double Consonant in Front of Epenthesis mark**
 * *sum00r00i*
 * *himmal^EPH^UUML>um*
 * *him00l000um*
-
 
 Rule: **Deleting stem-final s in s genitive** 
 
@@ -1039,9 +333,7 @@ Rule: **Deleting stem-final s in s genitive**
 * *grís>s*
 * *grís00*
 
-
 Rule: **Double ð Deletion** 
-
 
 Rule: **ð Assimilation in Front of Supine Suffix -t** 
 
@@ -1074,8 +366,6 @@ Rule: **Adjective neuter after nlr 2**
 
 Rule: **t Deletion in Neuter** 
 
-
-
 j rules
 
 Rule: **Deleting j** 
@@ -1091,7 +381,6 @@ Rule: **Deleting j**
 * *heyggj>i*
 * *heygg00i*
 
-
 Rule: **Realising j in front of vowels** 
 
 **Tests:**
@@ -1099,16 +388,11 @@ Rule: **Realising j in front of vowels**
 * *hylj2>ar*
 * *hylj0ar*
 
-
-
-
 Vowel rules  
-
 
 Rule: **Realising i2 as i** 
 
 **Tests:**
-
 
 ###  Epenthetic vowel rules
 
@@ -1125,8 +409,6 @@ Rule: **Epenthetic deletion**
 * *vakin^EPH>ir*
 * *vak0n00ir*
 
-
-
 Rule: **U-umlaut of Epenthetic vowel** 
 
 **Tests:**
@@ -1135,7 +417,6 @@ Rule: **U-umlaut of Epenthetic vowel**
 * *gomul00*
 * *gamal^EPH^UUML>u*
 * *goml000u*
-
 
 ### Umlaut rules
 
@@ -1162,7 +443,6 @@ Rule: **General U-umlaut**
 * *all^UUML>*
 * *øll00*
 
-
 Rule: **U-umlaut for akur** 
 
 **Tests:**
@@ -1185,12 +465,9 @@ Rule: **I-umlaut**
 * *fjørð^IUML>i*
 * *f0irð00i*
 
-
-
 Rule: **eI-umlaut** for o:e, á:e, i:e
 
 Rule: **I-umlaut for bróðir ** 
-
 
 Rule: **Inverted U-umlaut from ø** 
 
@@ -1206,7 +483,6 @@ Rule: **Inverted U-umlaut from o**
 * *fonn^OA>ar*
 * *fann00ar*
 
-
 Rule: **o/ei-Umlaut I** 
 
 Rule: **o/ei-Umlaut II** 
@@ -1216,22 +492,9 @@ Rule: **o/ei-Umlaut II**
 * *dreing^EIO>i*
 * *dro0ng00i*
 
-
-
-
-
-
-
 ### Vowel deletion rules
 
 Rule: **Vowel deletion in front of na** 
-
-
-
-
-
-
-
 
 ### Verbal vowel alternation rules
 
@@ -1246,16 +509,12 @@ Rule: **Stem vowel change in Weak Verbs**
 * *vel^WVV>di*
 * *val00di*
 
-
 Rule: **Stem Vowel Shortening in Supine and Participle** 
 
 **Tests:**
 
 * *bít^VSHin>a*
 * *bit00n>a*
-
-
-
 
 Rule: **Past tense singular diphthongs I** 
 
@@ -1266,7 +525,6 @@ Rule: **Past tense singular diphthongs II**
 * *b0ít^AB1*
 * *beit0*
 
-
 Rule: **Past tense singular monophthongs** 
 
 **Tests:**
@@ -1276,24 +534,15 @@ Rule: **Past tense singular monophthongs**
 
 Rule: **Past tense plural monophthongs** 
 
-
 Rule: **Past tense plural monophthongs to a** 
-
-
 
 Rule: **Supine u** 
 
-
 Rule: **Supine o** 
-
 
 Rule: **Supine i** 
 
-
 Rule: **Present tense ý** 
-
-
-
 
 ### Adjectival Sandhi rule
 
@@ -1306,7 +555,6 @@ Rule: **Vowel shortening in Neuter**
 * *skjót>t*
 * *skjót0t*
 
-
 ## Other rules
 
 ### Morphological passive rules
@@ -1317,14 +565,16 @@ Rule: **r Deletion in front of Pass**
 
 Rule: **ð Deletion in front of Pass** 
 
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/phonology.twolc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/phonology.twolc)</small># Akronymer 
+
+<small>This (part of) documentation was generated from [src/fst/phonology.twolc](https://github.com/giellalt/lang-fao/blob/main/src/fst/phonology.twolc)</small>
+
+---
+
+# Akronymer 
 
 This documents the `stems/fao-acronyms.lexc` file.
 Most acronyms are taken from a common generated file, this file is for the Faroese-specific acronyms.
-
 
   **LEXICON Acronym-fao** pointing to the lexica 
 * Akronymnumeralier ; (Nogle tal først, måskje?)
@@ -1334,18 +584,17 @@ Most acronyms are taken from a common generated file, this file is for the Faroe
 * StÍF ACRO ; 
 * T5PC ACRO ; 
 
-
-
-
-
   **Akronymnumeralier**  for 0-9
 
   **anl**  send numvers too letterloops -- this might be too liberal.
 
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/fao-acronyms.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/fao-acronyms.lexc)</small># Faroese noun stem file
+
+<small>This (part of) documentation was generated from [src/fst/stems/fao-acronyms.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/fao-acronyms.lexc)</small>
+
+---
+
+# Faroese noun stem file
 
 The lexicon names are taken from
 Føroysk orðabók I-II (FO). Reference is
@@ -1362,14 +611,6 @@ in wordforms, written in capital lettes.
 These are now always excluded from lastpart compound
 and in norm from first-part compounding as well
 
-
-
-
-
-
-
-
-
 ## The main list of nouns
 
 Her kjem alle substantiva. Dei er baklengssortert.
@@ -1379,25 +620,13 @@ leksikon som byrjar med x er ikkje manuelt sjekka.
 
 Fila inneheld i underkant av 50000 lemma.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/nouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/nouns.lexc)</small># Faroese prepositions
+
+<small>This (part of) documentation was generated from [src/fst/stems/nouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/nouns.lexc)</small>
+
+---
+
+# Faroese prepositions
 
 We should eventually have syntactic tags here...
 
@@ -1408,25 +637,24 @@ We should eventually have syntactic tags here...
 
 **Preposition** for the list of prepositions, ordered according to case they select for.
 
-
-
 ### Several cases
-
 
 ### Accusative or dative
 | --- 
 
 ### Accusative or genitive
 
-
 ### Accusative
 
 ###  Dative
 
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adpositions.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/adpositions.lexc)</small># Faroese adverbs
 
+<small>This (part of) documentation was generated from [src/fst/stems/adpositions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/adpositions.lexc)</small>
+
+---
+
+# Faroese adverbs
 
   **adv** for the tag +Adv
 
@@ -1435,7 +663,6 @@ We should eventually have syntactic tags here...
   **advsuperl** for the tag +Adv+Superl
 
   **Adverb** for the list of appr 1000 adverbs
-
 
 * í% gjár adv ; 
 * í% fjør adv ; 
@@ -1455,47 +682,20 @@ We should eventually have syntactic tags here...
 ...
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adverbs.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/adverbs.lexc)</small># Faroese deternminers
 
+<small>This (part of) documentation was generated from [src/fst/stems/adverbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/adverbs.lexc)</small>
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Faroese deternminers
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/determiners.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/determiners.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/stems/determiners.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/determiners.lexc)</small>
+
+---
+
+
 # Interjections
 
 The tag +Interj
@@ -1507,8 +707,12 @@ The words
   **Interjection** okey, ááá, aj, huff, ...
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/interjections.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/interjections.lexc)</small># Faroese pronouns
 
+<small>This (part of) documentation was generated from [src/fst/stems/interjections.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/interjections.lexc)</small>
+
+---
+
+# Faroese pronouns
 
   **Pronoun** splitting into 3 sublexica:
 1. Personal ;        
@@ -1518,25 +722,17 @@ The words
 
   **Personal** for the personal pronouns
 
-
-
-
-
   **egtu-obl** 
 
   **okkumtykkum** 
 
   **S_okkumtykkum** 
 
-
   **3obl** 
 
   **Reflexive** 
 
-
-
   **Interrogative** 
-
 
   **EIN** 
 
@@ -1548,13 +744,7 @@ The words
 
   **HANNSJALVUR** 
 
-
   **Indefinite** 
-
-
-
-
-
 
   **ONKUR** 
 
@@ -1566,13 +756,13 @@ The words
 
   **EINGIN** 
 
-
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/pronouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/pronouns.lexc)</small># Faroese subjunctions
+
+<small>This (part of) documentation was generated from [src/fst/stems/pronouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/pronouns.lexc)</small>
+
+---
+
+# Faroese subjunctions
 
 The file `stems/subjunctions.lexc` contains three lexica:
 
@@ -1588,10 +778,14 @@ The file `stems/subjunctions.lexc` contains three lexica:
 * tí CStag ;  
 * tá% ið CStag ;  
 ...
+
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/subjunctions.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/subjunctions.lexc)</small># Faroese Numerals
 
+<small>This (part of) documentation was generated from [src/fst/stems/subjunctions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/subjunctions.lexc)</small>
 
+---
+
+# Faroese Numerals
 
 **Numeral** splitting in types
 * Textual ;  
@@ -1601,12 +795,7 @@ The file `stems/subjunctions.lexc` contains three lexica:
 * ISOLATED-NUMEXP ;  
 * NUM-PREFIXES ;  
 
-
-
-
   **1-9** 
-
-
 
   **TRÝsplit** 
 
@@ -1614,12 +803,9 @@ The file `stems/subjunctions.lexc` contains three lexica:
 
   **TEXTTENS** 
 
-
   **TEXTTEENS** 
 
   **basic** 
-
-
 
   **EITT** 
 
@@ -1631,7 +817,6 @@ The file `stems/subjunctions.lexc` contains three lexica:
 
   **n** 
 
-
 ## Ordinals
 
   **ordinals** 
@@ -1642,10 +827,13 @@ The file `stems/subjunctions.lexc` contains three lexica:
 
   **ANNARMORPH** 
 
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/numerals.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/numerals.lexc)</small># Proper nouns 
+
+<small>This (part of) documentation was generated from [src/fst/stems/numerals.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/numerals.lexc)</small>
+
+---
+
+# Proper nouns 
 
 Table of content
 * The name lexica
@@ -1656,65 +844,40 @@ Table of content
 
 ## Splitting into name types
 
-
   **Propernouns** splitting in 3 lexica: **multipartnames, names, guess**
-
 
   **multipartnames** contains only 3 names for now
 
   **names** gives the list of names.
 
-
-
-
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/propernouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/propernouns.lexc)</small># Faroese adjectives 
 
+<small>This (part of) documentation was generated from [src/fst/stems/propernouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/propernouns.lexc)</small>
+
+---
+
+# Faroese adjectives 
 
 The adjectives and their inflectional codes 
 are taken from "Føroysk orðabók".
 
 ## The list of ajectives
 
-
-
-
-
 **Adjectives** for the list of adjectives
 
 ### Irregular comparatives and superlatives
 
-
-
 ### Prefixed present participles
-
 
 ### Regular adjectives, systematic list
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adjectives.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/adjectives.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/stems/adjectives.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/adjectives.lexc)</small>
+
+---
+
+
 # Faroese verb stems 
 
 This file documents the file [stems/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/verbs.lexc)
@@ -1726,8 +889,6 @@ The file contains one lexicon:
 ## Some irregular verbs
 *mega, eiga, eita, gráta, liggja, ...* and 15 more
 
-
-
 ## some irregular passive verbs
 
 * høggast:høgg FYRIB ; 
@@ -1736,19 +897,11 @@ The file contains one lexicon:
 * bylgjast:bylgj sxrefl ; 
 * ... etc. 15 more
 
-
-
-
-
-
-
-
 ## The long verb list
 
 The lexica listed here represent the declension patterns
 presented in Føroysk orðabók. The lexicon names correspond to the
 declension codes in the dictionary.
-
 
 * fakturera:fakturer s30 ;   
 * formturka:form#turk s30 ;   
@@ -1760,39 +913,21 @@ declension codes in the dictionary.
 * innvíga:inn#víg s1 ;   
 * annleggja:ann#l s20 ;   ... and more than 6000 more.
 
-
-
-
-
-
-
-
-
-
 Simple declension class verbs
-
-
-
-
-
-
-
 
 Still to be classified
 
-
-
-
 Double declension class verbs
-
-
-
-
 
 Finally some candidates to be considered for verb compounding.
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/verbs.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/verbs.lexc)</small># File containing Faroese abbreviations 
+
+<small>This (part of) documentation was generated from [src/fst/stems/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/verbs.lexc)</small>
+
+---
+
+# File containing Faroese abbreviations 
 
 Lexica for adding tags and periods
 
@@ -1802,27 +937,17 @@ Splitting in 3 groups, because of the preprocessor
 
 **Abbreviation**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 dot% noStb.db
 Abbreviations that never induce sentence boundaries
 The file is too large and should be shrinked
 
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/abbreviations.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/abbreviations.lexc)</small># The Faroese conjunctions
+
+<small>This (part of) documentation was generated from [src/fst/stems/abbreviations.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/abbreviations.lexc)</small>
+
+---
+
+# The Faroese conjunctions
 
 The file `stems/conjunctions.lexc` contains two lexica:
 
@@ -1834,8 +959,14 @@ The file `stems/conjunctions.lexc` contains two lexica:
 * annaðhvørt CCtag ;
 * bæði CCtag ;
 * og CCtag ;
+
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/conjunctions.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/conjunctions.lexc)</small># Faroese Noun morphology 
+
+<small>This (part of) documentation was generated from [src/fst/stems/conjunctions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/conjunctions.lexc)</small>
+
+---
+
+# Faroese Noun morphology 
 
 This file contains the inflection suffixes for the Faroese nowns
 The infection classes are identical to the ones in *Føroysk orðabók*.
@@ -1849,7 +980,6 @@ In this **first layer** we add gender tags and morphophonological
 diacritics.
 The next two layers are for indefinite and definite
 suffixes, respectively.
-
 
 ## Lexicons still to be allocated
 
@@ -1866,7 +996,6 @@ These are lexica with number 0, they have no inflectional morphology.!
 * **@LEXICON LEXNAME@** for ommudidd
 * **@LEXICON LEXNAME@** for indeclinable neuters
 * **@LEXICON LEXNAME@** just gives the tags for the indeclinables
-
 
 ## Lexica for words belonging to two paradigms.
 These are simply split (h11/12 to h11 and h12, etc).!
@@ -1893,13 +1022,10 @@ These are simply split (h11/12 to h11 and h12, etc).!
 * **LEXICON k8/17** 
 * **LEXICON k8/6** 
 
-
-
 ## The ordinary lexica
 
 These lexica split into sg and pl lexica, and add +N and gender tags.
 Thereafter it points to Layer 2, the case suffixes
-
 
 ### Lexica for weak masculines.
 * **LEXICON k1** , risi, is the basic Msc lexicon, split in sg and pl
@@ -1912,7 +1038,6 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON k_flt3** for pl
 * **LEXICON k4** for  tanki, just pointing to k3 (identical). Same u_umlaut, but nasal cns
 * **LEXICON k5** for bóndi
-
 
 ### Lexica for strong masculines
 
@@ -2073,11 +1198,6 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON k_flt52** for pl
 * **LEXICON k53** for  aðal
 
-
-
-
-
-
 ### Lexica for feminines
 
 * **LEXICON kv1/2** 
@@ -2215,7 +1335,6 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON kv40** 
 * **LEXICON kv40e** 
 * **LEXICON kv_flt40** 
-
 
 ###  Lexica for Neuter nouns
 
@@ -2368,10 +1487,6 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON h41e** 
 * **LEXICON h_flt41** 
 
-
-
-
-
 # Layer 2: Case inflection 
 
 This is the second layer. Here we do indefinite
@@ -2388,8 +1503,6 @@ forms and compounds.
 * **LEXICON W_M_SGDAT_mixed** for felagnum
 * **LEXICON W_M_SGGEN** for 
 
-
-
 #### Plural
 * **LEXICON W_M_PLNOM** for -ar-
 * **LEXICON W_M_PLNOM_UR** for -ur-
@@ -2398,16 +1511,11 @@ forms and compounds.
 * **LEXICON W_M_PLDAT** for -u-
 * **LEXICON W_M_PLGEN** for -a-
 
-
-
-
 ### Strong case suffixes
-
 
 #### Nominative Sg
 * **LEXICON S_M_SGNOM** 
 * **LEXICON S_M_SGNOM_NULL** 
-
 
 #### Accusative Sg
 * **LEXICON S_M_SGACC** 
@@ -2431,7 +1539,6 @@ forms and compounds.
 * **LEXICON S_M_PLNOM_NULL** 
 * **LEXICON S_M_PLNOM_NULL_NULL** 
 
-
 #### Accusative
 * **LEXICON S_M_PLACC** 
 * **LEXICON S_M_PLACC_IR** 
@@ -2439,14 +1546,12 @@ forms and compounds.
 * **LEXICON S_M_PLACC_NULL** 
 * **LEXICON S_M_PLACC_NULL_NULL** 
 
-
 #### Dative
 * **LEXICON S_M_PLDAT** 
 * **LEXICON S_M_PLDATm** skóm
 
 #### Genitive
 * **LEXICON S_M_PLGEN** 
-
 
 ## Feminine forms
 
@@ -2461,9 +1566,6 @@ forms and compounds.
 * **LEXICON S_F_SGGEN** 
 * **LEXICON S_F_SGGEN_NULL** 
 
-
-
-
 ### Plural case suffixes
 * **LEXICON F_PLNA_UR** 
 * **LEXICON F_PLNA_IR** 
@@ -2471,7 +1573,6 @@ forms and compounds.
 * **LEXICON F_PLNA_NULL** 
 * **LEXICON F_PLDAT** 
 * **LEXICON F_PLGEN** 
-
 
 ## Neuter forms
 ### Singular
@@ -2496,12 +1597,6 @@ forms and compounds.
 * **LEXICON DF_D_PL** 
 * **LEXICON DF_G_PL** 
 
-
-
-
-
-
-
 # Layer 3: Definite inflection 
 
 This is the **third layer**. Here we do the indefinite and definite forms.
@@ -2520,7 +1615,6 @@ gathered here.
 * **LEXICON DF_D_SGm** for 
 * **LEXICON DF_G_SGm** for 
 
-
 ### Masc def pl
 * **LEXICON DF_N_PLm** for 
 * **LEXICON DF_N_PLm_indef** for 
@@ -2528,8 +1622,6 @@ gathered here.
 * **LEXICON DF_A_PLm** for 
 * **LEXICON DF_A_PLm_indef** for 
 * **LEXICON DF_A_PLm_def** for 
-
-
 
 ## Feminine forms
 
@@ -2547,7 +1639,6 @@ gathered here.
 * **LEXICON DF_NA_PLf** for *nar
 * **LEXICON DF_NA_PLf_inar** for *inar
 
-
 ## Neuter forms
 
 ### Neuter sg
@@ -2561,9 +1652,7 @@ gathered here.
 * **LEXICON DF_NA_PLn** 
 * **LEXICON DF_NA_PLn_W** 
 
-
 This concludes the nominal morphology.
-
 
 # Compound flags
 The rest of the file contains **flags**, that govern
@@ -2575,36 +1664,35 @@ the ways stems may be combined.
 * **LEXICON Neu_Flag** for 
 * **LEXICON Pl_Flag** for 
 * **LEXICON p24** 
+
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/nouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/nouns.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/nouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/nouns.lexc)</small>
+
+---
+
+
 
 # North Saami acronyms - affix part
 
 ## The lexica giving tags and suffixes to the acronyms
 
-
-
-
 * **LEXICON ACRONOUN   ** is the lexicon for **nouns** (not +Prop) like ATV
 
 * **LEXICON UNIT   **  As acro, but without paradigm
-
-
-
-
-
-
-
-
 
 * **LEXICON acroconnector   ** Here comes a set of possible symbols to
 put between the abbreviation and its suffix
 
 * **LEXICON acronull   **  for suffixless forms, redirecting to K_only for clitic forms
 
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/acronyms.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/acronyms.lexc)</small># Numeral affixess
+
+<small>This (part of) documentation was generated from [src/fst/affixes/acronyms.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/acronyms.lexc)</small>
+
+---
+
+# Numeral affixess
 
 This lexicon just goes to #, this in order to coexist with number files in giella-shared.
 They are relevant for Sámi, not for faroese.
@@ -2624,13 +1712,13 @@ Lexica:
 * LEXICON dateyearcase_fullsuff 		 # ;	 
 * LEXICON dateyearcase_nullsuff_w_dot  # ;	 
 
-
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/numerals.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/numerals.lexc)</small># Proper nouns 
+
+<small>This (part of) documentation was generated from [src/fst/affixes/numerals.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/numerals.lexc)</small>
+
+---
+
+# Proper nouns 
 
 ## Table of content
 * _ The guessed ones
@@ -2640,11 +1728,6 @@ Lexica:
 - _ _ Surnames
 - _ _ Place names and other names
 
-
-
-
-
-
 ## The morphological tags
 
 For each group, the maltag etc. lexicon functions as a default
@@ -2652,385 +1735,46 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 ### Indeclineables
 
-
-
-
-
-
-
 ###  Male first names
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### Female first names
 
-
-
-
-
 ###  Surnames
-
-
 
 ###  Place names and other names
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/propernouns.lexc)</small># Adjective morphology !
+
+<small>This (part of) documentation was generated from [src/fst/affixes/propernouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/propernouns.lexc)</small>
+
+---
+
+# Adjective morphology !
 
 ## Ad hoc lexica
 
-
-
 ## The lexicons
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Irregular adjectives
 
-
-
-
-
-
-
-
 ###  Irregular comparatives
-
-
-
-
-
-
-
-
 
 # Intermediate adjectival lexica
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 Adjectival case lexica
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Msc
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Neu
 
-
-
-
-
-
-
-
-
-
-
 ###  Definite declension
-
-
 
 Positiv, def, u-umlj
 Msc
 
 Fem
 
-
-
 Neu
-
 
 Positiv, def, ø-umlj
 Msc
@@ -3038,89 +1782,31 @@ Msc
 Fem
 Neu
 
-
-
 Gender tags
-
-
-
-
 
 Case tags
 
-
-
-
-
-
-
-
 Compound flags
-
-
-
-
-
-
-
-
-
-
-
 
 # Comparative
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Superlative
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/adjectives.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/adjectives.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/adjectives.lexc)</small>
+
+---
 
 
 
 # Verb morphology !
 
-
 **s1** nevna = riggar!
-
 
 **s2** keypa = riggar!
 
 **SETA** seta = riggar!
-
-
 
 **s3** leiða = riggar!
 
@@ -3132,25 +1818,19 @@ Compound flags
 
 **s7** gista = riggar!
 
-
 **s8** kenna = riggar!
 
 **s9** klippa = riggar!
-
 
 **s10** fylgja = riggar!
 
 **s11**  roykja = riggar!
 
-
 **s12** boyggja = riggar!
-
 
 **s13** søkkja = riggar!
 
-
 **s14** heingja = riggar!
-
 
 **s15** skeinkja = riggar!
 
@@ -3178,10 +1858,7 @@ Compound flags
 
 **s25** liva = riggar!
 
-
 **s26** plaga = riggar (formurin plagdur manglar)!
-
-
 
 **s26_1** mála->máldi
 
@@ -3201,11 +1878,7 @@ Compound flags
 
 **s33** rógva
 
-
 **s34** goyggja = riggar!
-
-
-
 
 ## Strong verbs starting here
 
@@ -3213,11 +1886,9 @@ Compound flags
 
 **s36** svíkja riggar!
 
-
 **s37** bróta riggar!
 
 **s38** skjóta riggar!
-
 
 **s39d**
 
@@ -3239,7 +1910,6 @@ Compound flags
 
 **s47** svimja = riggar ... men kanska skal tað ikki hava passiv
 
-
 **s48** drekka = riggar ikki í adj pga dpkons
 
 **s48_2** renna = riggar ikki í adj pga dpkons
@@ -3255,7 +1925,6 @@ Compound flags
 **s50** røkka = riggar ikki í adj pga dpkons
 
 **s51** ganga = riggar!
-
 
 **s52** veva = riggar!
 
@@ -3295,7 +1964,6 @@ Compound flags
 
 **s69** sláa
 
-
 **s70** siga
 
 **s71** skerja
@@ -3303,7 +1971,6 @@ Compound flags
 **s72** eta
 
 **s73** læa
-
 
 ## Ad hoc, irregular
 
@@ -3331,11 +1998,9 @@ Compound flags
 
 **VERÐA**
 
-
 **VILJA**
 
 **VITA**
-
 
 **SÍGGJA**
 
@@ -3344,7 +2009,6 @@ Compound flags
 **NÁA** XXX check
 
 **LIGGJA**
-
 
 **RADA**
 
@@ -3362,21 +2026,15 @@ Compound flags
 
 **SYNGJA** XXX check
 
-
-
 **HOGGA** høgga
 
 **KVODA**
 
-
-
 **FLYGGJA**
-
 
 **VAKSA**
 
 **VEKSA**
-
 
 **s30/26_1** dáma
 
@@ -3395,11 +2053,6 @@ Compound flags
 **KVOTTA**
 
 **GALDA**
-
-
-
-
-
 
 **TAKAST** 
 
@@ -3429,38 +2082,16 @@ Compound flags
 
 **FYRIB** kopi, s83
 
-
-
 ## Split lexica
-
-
-
-
-
-
-
-
-
-
-
 
 **s8/48_2**
 **s9/30**
-
-
-
-
 
 ## Intermediate lexicon groups
 
 **standard_ir**
 
 **standard_ir_t**
-
-
-
-
-
 
 **ir_verb**
 
@@ -3475,7 +2106,6 @@ Compound flags
 **inf**
 
 **reflinf**
-
 
 ### Present
 
@@ -3497,7 +2127,6 @@ Compound flags
 
 **pres_ur_j2**
 
-
 **pres_strong_s1**
 
 **pres_strong_s23**
@@ -3510,11 +2139,6 @@ Compound flags
 
 **pres_pl**
 
-
-
-
-
-
 **pres_ast**
 
 **pres_ist**
@@ -3524,9 +2148,6 @@ Compound flags
 **pres_23st**
 
 **pres_plast**
-
-
-
 
 **pret_adist**
 
@@ -3549,7 +2170,6 @@ Compound flags
 **prt_ð**
 
 **prt_t**
-
 
 **prt_ði**
 
@@ -3575,22 +2195,7 @@ Compound flags
 
 **prt_u_p**
 
-
 ## Passive lexica
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### Imperative and present participle
 
@@ -3626,19 +2231,11 @@ Compound flags
 
 **sup_ið_in**  stungið
 
-
-
-
-
 ### Middle lexicon
 
 **VANDI**
 
-
-
 ## Perfect Participles !
-
-
 
 **p18**
 
@@ -3646,11 +2243,9 @@ Compound flags
 
 **p26_2**
 
-
 **p34_6**
 
 **p34_7**
-
 
 **p32**
 
@@ -3666,20 +2261,22 @@ Compound flags
 
 **p8**
 
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/verbs.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/verbs.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/verbs.lexc)</small>
+
+---
+
+
 # Symbol affixes
 
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/symbols.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/symbols.lexc)</small># Abbreviation affixes
+
+<small>This (part of) documentation was generated from [src/fst/affixes/symbols.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/symbols.lexc)</small>
+
+---
+
+# Abbreviation affixes
 
 Now splitting according to POS, and according to dot or not
 
@@ -3687,15 +2284,7 @@ First collecting POS info, *-noun, *-adv, etc.
 Also splitting when in doubt: -noun-adj => -noun and -adj
 Then pointing to two contlexes, a dot-one and a non-dot-one.
 
-
-
-
-
-
 ### Lexicons without final period
-
-
-
 
 ### Lexicons with final period
 
@@ -3703,28 +2292,21 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
 
 * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
 
-
-
-
 * **LEXICON nodot-infl   **
 
 * **LEXICON dot-infl   **
 
 * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
 
-
-
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/abbreviations.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/abbreviations.lexc)</small># Faroese morphological analyser
+
+<small>This (part of) documentation was generated from [src/fst/affixes/abbreviations.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/abbreviations.lexc)</small>
+
+---
+
+# Faroese morphological analyser
 
 # Definitions for Multichar_Symbols
-
-
-
 
 ## Tags for POS	
 * +N +V +A +Adv +Prop +Num : Open POS's	
@@ -3746,7 +2328,6 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
 * +Symbol : independent symbols in the text stream, like £, €, ©
 * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 
-
 * +Sg3 : This is inherited from common files, should be changed to +3Sg.
 
 * +ABBR sub-pos
@@ -3766,8 +2347,6 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
 
 * +Pos sjekk desse XXX
 * +Rom sjekk desse XXX
-
-
 
 * +Der/heit Derivation with -heit
 
@@ -3789,7 +2368,6 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
 * +Sem/Fem
 
 * +Sem/Year - year (i.e. 1000 - 2999), used only for numerals 
-
 
 * +Sem/Amount
 * +Sem/Build
@@ -3829,8 +2407,6 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
 * +Sem/Tool-it
 * +Sem/Txt
 
-
-
 * **+Gram/TAbbr**:  Transitive abbreviation (it needs an argument)
 * **+Gram/NoAbbr**:  Intransitive abbreviations that are homonymous
 with more frequent words. They should only be considered
@@ -3843,10 +2419,6 @@ is less common and thus only the occurences in the middle of
 the sentence can be considered as true cases.
 * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
 * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
-
-
-
-
 
 ## Non-changing letters
 * a2 invariant a
@@ -3871,8 +2443,6 @@ the sentence can be considered as true cases.
 * **+v1** - Paradigm identifier (e.g. gera+v1 = ger)
 * **+v2** - Paradigm identifier (e.g. gera+v2 = gerar)
 
-
-
 Language tags
 
 * +OLang/ENG
@@ -3884,7 +2454,6 @@ Language tags
 * +OLang/SME
 * +OLang/SWE
 * +OLang/UND
-
 
 ## Non-ascii letters, perhaps needed as multichar symbols
 * æ ø å
@@ -3912,7 +2481,6 @@ This entry / word should be in the following position(s):
 * **+CmpNP/Only** - ... only be part of a compound, i.e. can never
 be used alone, but can appear in any position
 
-
 ## Usage tags
 
 * +Use/Disamb = Use only in disambiguator/tokeniser analyser
@@ -3926,7 +2494,6 @@ be used alone, but can appear in any position
 * +Use/NGA
 * +Use/SpellNoSugg
 * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
-
 
 * +Err/Guess : Tag for Name Guesser component
 * +Err/Orth : Marking forms that are orthographical errors
@@ -3944,7 +2511,6 @@ Todo: Check whether these can be removed. They are probably obsolete.
 %[%>%] - Literal >
 %[%<%] - Literal <
 ```
-
 
 ## Flag diacritics
 
@@ -4005,7 +2571,6 @@ Flag diacritic look-alikes for grammar checker & tokenisation purposes
 |  @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
 |  @P.Pmatch.Backtrack@ | Also for hfst-pmatch 
 
-
 ### Flags for compound restriction
 
 For languages that allow compounding, the following flag diacritics are needed
@@ -4031,13 +2596,9 @@ given the proper use of these flags.
 |  @U.Cap.Obl@ | Allowing downcasing of derived names: deatnulasj.
 |  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
 
-
-
-
 # Lexicon Root
 This is the beginning of everything. The **Root** lexicon is reserved in the
 LexC language, and must be the first lexicon defined.
-
 
 * Nouns ; 
 * Shortnouns ;  1- and 2-letter nouns excluded from compounding
@@ -4062,7 +2623,6 @@ Lexicon Acronyms is split in two:
 * Acronym-fao ; for fao acronyms
 * Acronym-smi ; for language independent acronums
 
-
 # Lexicon ENDLEX
 And this is the ENDLEX of everything:
 ```
@@ -4072,58 +2632,11 @@ The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
 with +CmpNP/Only to end here.
 The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/root.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/root.lexc)</small>
 
+<small>This (part of) documentation was generated from [src/fst/root.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/root.lexc)</small>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 
 
@@ -4285,52 +2798,12 @@ raised							_r
 lowered							_o 
 advanced tongue root				_A 
 retracted tongue root			_q
+
 * * *
-<small>This (part of) documentation was generated from [../src/phonetics/txt2ipa.xfscript](http://github.com/giellalt/lang-fao/blob/main/../src/phonetics/txt2ipa.xfscript)</small>
 
+<small>This (part of) documentation was generated from [src/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-fao/blob/main/src/phonetics/txt2ipa.xfscript)</small>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 
 
@@ -4341,7 +2814,11 @@ retracted tongue root			_q
 % násti% :%*     Root ; 
 
 * * *
-<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-numbers-digit2text.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
+
+---
+
 
 
 We describe here how abbreviations are in Faroese are read out, e.g.
@@ -4356,146 +2833,39 @@ For example:
 * esim.:esimerkki # ; 
 * esim.:esimerkiksi # ; 
 
-
 * * *
-<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-abbrevs2text.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
 
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 
 
 Declaring all the error tags
 
-
 # Rule section
 
-
-
-
 ## Verbs
-
 
 ### Sg1 target forms
 
 Sup should be 1Sg
 
-
 Sup  should be 1Sg
 
-
 Sup  should be Inf (men hava vil (vel) ha Sup)
-
-
-
 
 Neu should be 1Sg
 
 Imp Pl should be 1Sg
 
-
 ### Plural forms
 Sup should be Pl
-
-
 
 ### Supine forms
 Pl should be Sup
 
 Inf should be Sup
-
-
-
-
 
 ## Specific verbs
 
@@ -4503,12 +2873,9 @@ Past tens of láta is læt not lat
 
 ## Nouns
 
-
 ### Definiteness
 
 Neu Indef should be Neu Def
-
-
 
 ### Quantor phrases
 
@@ -4516,60 +2883,38 @@ Num + N Sg should be Num + N Pl
 
 Num + N Sg should be Num + N Pl (We need arabic tag here)
 
-
 ## Subjunctives
 
-
 ta should be tað
-
-
 
 ## Adjectives
 
 líti should be lítið
 
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../tools/grammarcheckers/grammarchecker.cg3](http://github.com/giellalt/lang-fao/blob/main/../tools/grammarcheckers/grammarchecker.cg3)</small>Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
+
+<small>This (part of) documentation was generated from [tools/grammarcheckers/grammarchecker.cg3](https://github.com/giellalt/lang-fao/blob/main/tools/grammarcheckers/grammarchecker.cg3)</small>
+
+---
+
+# Grammar checker tokenisation for fao
+
+Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
 Then just:
+```
 $ make
 $ echo "ja, ja" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-
-Issues:
-- [X] Ambiguous input
-- Seems to work fine
-- [X] Ambiguous multiword expessions with ambiguous tokenisation
-- Seems to work – represented within lexc now; hfst-tokenise also
-supports forms on the analyses now
-- [X] Ambiguous multiword expessions need reorganising after CG
-- The module cg-mwesplit takes wordforms from readings and turns them into
-new cohorts
-- [X] Unknown words
-- The set-difference method only works for words without
-flag diacritics (even though we should be working only on the form-side?)
-and leads to binary blow-up: With only lower unknowns, we get 45M;
-lower+upper gives 67M, while no unknowns gives 27M
-- Fixed instead by treating empty analyses as unknown-tokens in
-hfst-tokenise, and outputting unmatched strings with a prefix
-- [ ] Treat input that's within superblanks as unmatched
-- probably requires a change in hfst-tokenise itself
-- [X] Try >1 space for ambiguous MWE's? – represented within lexc now
-- [ ] Try set-difference-unknowns method with regular hfst commands?
+```
 
 More usage examples:
+```
 $ echo "Juos gorreválggain lea (dárbbašlaš) deavdit gáibádusa boasttu olmmoš, man mielde lahtuid." | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
 $ echo "(gáfe) 'ja' ja 3. ja? ц jaja ukjend \"ukjend\"" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
 $ echo "márffibiillagáffe" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+```
 
 Pmatch documentation:
-https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch
-
-
-
-
-
+<https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch>
 
 Characters which have analyses in the lexicon, but can appear without spaces
 before/after, that is, with no context conditions, and adjacent to words:
@@ -4584,9 +2929,6 @@ the List contains some unicode white space characters
 * Narrow No-Break Space U+202F
 * Medium Mathematical Space U+205F
 * Word joiner U+2060
-
-
-
 
 Apart from what's in our morphology, there are
 1) unknown word-like forms, and
@@ -4600,14 +2942,11 @@ so far:
 
 TODO: Could use something like this, but built-in's don't include šžđčŋ:
 
-
 Simply give an empty reading when something is unknown:
 hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
 remove empty analyses from other readings. Empty readings are also
 legal in CG, they get a default baseform equal to the wordform, but
 no tag to check, so it's safer to let hfst-tokenise handle them.
-
-
 
 Finally we mark as a token any sequence making up a:
 * known word in context
@@ -4616,7 +2955,12 @@ Finally we mark as a token any sequence making up a:
 * URL in context
 
 * * *
-<small>This (part of) documentation was generated from [../tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript](http://github.com/giellalt/lang-fao/blob/main/../tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript)</small># Tokeniser for fao
+
+<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript](https://github.com/giellalt/lang-fao/blob/main/tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript)</small>
+
+---
+
+# Tokeniser for fao
 
 Usage:
 ```
@@ -4628,12 +2972,7 @@ $ echo "márffibiillagáffe" | hfst-tokenise --giella-cg tokeniser-disamb-gt-des
 ```
 
 Pmatch documentation:
-https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch
-
-
-
-
-
+<https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch>
 
 Characters which have analyses in the lexicon, but can appear without spaces
 before/after, that is, with no context conditions, and adjacent to words:
@@ -4648,9 +2987,6 @@ the List contains some unicode white space characters
 * Narrow No-Break Space U+202F
 * Medium Mathematical Space U+205F
 * Word joiner U+2060
-
-
-
 
 Apart from what's in our morphology, there are
 1. unknown word-like forms, and
@@ -4669,16 +3005,12 @@ ASCII digits
 so far:
 * U+F0B7 for "x in box"
 
-
-
 ## Unknown handling
 Unknowns are tagged ?? and treated specially with `hfst-tokenise`
 hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
 remove empty analyses from other readings. Empty readings are also
 legal in CG, they get a default baseform equal to the wordform, but
 no tag to check, so it's safer to let hfst-tokenise handle them.
-
-
 
 Finally we mark as a token any sequence making up a:
 * known word in context
@@ -4687,4 +3019,8 @@ Finally we mark as a token any sequence making up a:
 * URL in context
 
 * * *
-<small>This (part of) documentation was generated from [../tools/tokenisers/tokeniser-disamb-gt-desc.pmscript](http://github.com/giellalt/lang-fao/blob/main/../tools/tokenisers/tokeniser-disamb-gt-desc.pmscript)</small>
+
+<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-disamb-gt-desc.pmscript](https://github.com/giellalt/lang-fao/blob/main/tools/tokenisers/tokeniser-disamb-gt-desc.pmscript)</small>
+
+---
+

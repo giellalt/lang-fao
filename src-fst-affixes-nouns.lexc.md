@@ -13,7 +13,6 @@ diacritics.
 The next two layers are for indefinite and definite
 suffixes, respectively.
 
-
 ## Lexicons still to be allocated
 
 We first list 4 lexica for words waiting to be checked.!
@@ -29,7 +28,6 @@ These are lexica with number 0, they have no inflectional morphology.!
 * **@LEXICON LEXNAME@** for ommudidd
 * **@LEXICON LEXNAME@** for indeclinable neuters
 * **@LEXICON LEXNAME@** just gives the tags for the indeclinables
-
 
 ## Lexica for words belonging to two paradigms.
 These are simply split (h11/12 to h11 and h12, etc).!
@@ -56,13 +54,10 @@ These are simply split (h11/12 to h11 and h12, etc).!
 * **LEXICON k8/17** 
 * **LEXICON k8/6** 
 
-
-
 ## The ordinary lexica
 
 These lexica split into sg and pl lexica, and add +N and gender tags.
 Thereafter it points to Layer 2, the case suffixes
-
 
 ### Lexica for weak masculines.
 * **LEXICON k1** , risi, is the basic Msc lexicon, split in sg and pl
@@ -75,7 +70,6 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON k_flt3** for pl
 * **LEXICON k4** for  tanki, just pointing to k3 (identical). Same u_umlaut, but nasal cns
 * **LEXICON k5** for bóndi
-
 
 ### Lexica for strong masculines
 
@@ -236,11 +230,6 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON k_flt52** for pl
 * **LEXICON k53** for  aðal
 
-
-
-
-
-
 ### Lexica for feminines
 
 * **LEXICON kv1/2** 
@@ -378,7 +367,6 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON kv40** 
 * **LEXICON kv40e** 
 * **LEXICON kv_flt40** 
-
 
 ###  Lexica for Neuter nouns
 
@@ -531,10 +519,6 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON h41e** 
 * **LEXICON h_flt41** 
 
-
-
-
-
 # Layer 2: Case inflection 
 
 This is the second layer. Here we do indefinite
@@ -551,8 +535,6 @@ forms and compounds.
 * **LEXICON W_M_SGDAT_mixed** for felagnum
 * **LEXICON W_M_SGGEN** for 
 
-
-
 #### Plural
 * **LEXICON W_M_PLNOM** for -ar-
 * **LEXICON W_M_PLNOM_UR** for -ur-
@@ -561,16 +543,11 @@ forms and compounds.
 * **LEXICON W_M_PLDAT** for -u-
 * **LEXICON W_M_PLGEN** for -a-
 
-
-
-
 ### Strong case suffixes
-
 
 #### Nominative Sg
 * **LEXICON S_M_SGNOM** 
 * **LEXICON S_M_SGNOM_NULL** 
-
 
 #### Accusative Sg
 * **LEXICON S_M_SGACC** 
@@ -594,7 +571,6 @@ forms and compounds.
 * **LEXICON S_M_PLNOM_NULL** 
 * **LEXICON S_M_PLNOM_NULL_NULL** 
 
-
 #### Accusative
 * **LEXICON S_M_PLACC** 
 * **LEXICON S_M_PLACC_IR** 
@@ -602,14 +578,12 @@ forms and compounds.
 * **LEXICON S_M_PLACC_NULL** 
 * **LEXICON S_M_PLACC_NULL_NULL** 
 
-
 #### Dative
 * **LEXICON S_M_PLDAT** 
 * **LEXICON S_M_PLDATm** skóm
 
 #### Genitive
 * **LEXICON S_M_PLGEN** 
-
 
 ## Feminine forms
 
@@ -624,9 +598,6 @@ forms and compounds.
 * **LEXICON S_F_SGGEN** 
 * **LEXICON S_F_SGGEN_NULL** 
 
-
-
-
 ### Plural case suffixes
 * **LEXICON F_PLNA_UR** 
 * **LEXICON F_PLNA_IR** 
@@ -634,7 +605,6 @@ forms and compounds.
 * **LEXICON F_PLNA_NULL** 
 * **LEXICON F_PLDAT** 
 * **LEXICON F_PLGEN** 
-
 
 ## Neuter forms
 ### Singular
@@ -659,12 +629,6 @@ forms and compounds.
 * **LEXICON DF_D_PL** 
 * **LEXICON DF_G_PL** 
 
-
-
-
-
-
-
 # Layer 3: Definite inflection 
 
 This is the **third layer**. Here we do the indefinite and definite forms.
@@ -683,7 +647,6 @@ gathered here.
 * **LEXICON DF_D_SGm** for 
 * **LEXICON DF_G_SGm** for 
 
-
 ### Masc def pl
 * **LEXICON DF_N_PLm** for 
 * **LEXICON DF_N_PLm_indef** for 
@@ -691,8 +654,6 @@ gathered here.
 * **LEXICON DF_A_PLm** for 
 * **LEXICON DF_A_PLm_indef** for 
 * **LEXICON DF_A_PLm_def** for 
-
-
 
 ## Feminine forms
 
@@ -710,7 +671,6 @@ gathered here.
 * **LEXICON DF_NA_PLf** for *nar
 * **LEXICON DF_NA_PLf_inar** for *inar
 
-
 ## Neuter forms
 
 ### Neuter sg
@@ -724,9 +684,7 @@ gathered here.
 * **LEXICON DF_NA_PLn** 
 * **LEXICON DF_NA_PLn_W** 
 
-
 This concludes the nominal morphology.
-
 
 # Compound flags
 The rest of the file contains **flags**, that govern
@@ -738,5 +696,10 @@ the ways stems may be combined.
 * **LEXICON Neu_Flag** for 
 * **LEXICON Pl_Flag** for 
 * **LEXICON p24** 
+
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/nouns.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/affixes/nouns.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/nouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/nouns.lexc)</small>
+
+---
+

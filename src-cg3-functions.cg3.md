@@ -5,87 +5,7 @@ Sámi language technology project 2003-2014, University of Tromsø #
 
 This file adds syntactic functions. It was copied from sme.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Syntactic sets
-
 
 * <cs> : 
 * @+FAUXV : finite auxiliary verb 
@@ -140,14 +60,7 @@ Syntactic sets
 * @VOC : Vocative
 * @X : The function is unknown, e.g. because of that the word is unknown
 
-
-
-
-
-
-
 * NP sets defined according to their morphosyntactic features
-
 
 * The PRE-NP-HEAD family of sets
 
@@ -155,91 +68,22 @@ These sets model noun phrases (NPs). The idea is to first define whatever can
 occur in front of the head of the NP, and thereafter negate that with the
 expression __WORD - premodifiers__.
 
-
-
-
-
-
-
-
-
-
-
-
 The set __NOT-NPMOD__ is used to find barriers between NPs.
 Typical usage: ... (*1 N BARRIER NPT-NPMOD) ...
 meaning: Scan to the first noun, ignoring anything that can be
 part of the noun phrase of that noun (i.e., "scan to the next NP head")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 HNOUN MAPPING
-
-
-
-
-
-
-
-
-
-
-
 
 The leftovers are tagged @X
 
 ! __missingX__ adds @X to all missings
 
-
-
-
 ! __therestX__ adds @X to all what is left, often errouneus disambiguated forms
+
 * * *
-<small>This (part of) documentation was generated from [../src/cg3/functions.cg3](http://github.com/giellalt/lang-fao/blob/main/../src/cg3/functions.cg3)</small>
+
+<small>This (part of) documentation was generated from [src/cg3/functions.cg3](https://github.com/giellalt/lang-fao/blob/main/src/cg3/functions.cg3)</small>
+
+---
+

@@ -2,9 +2,6 @@
 
 # Definitions for Multichar_Symbols
 
-
-
-
 ## Tags for POS	
 * +N +V +A +Adv +Prop +Num : Open POS's	
 * +CC +CS +Interj +Pr +Pron +IM : Closed POS's	
@@ -24,7 +21,6 @@
 * +CLB +PUNCT +LEFT +RIGHT : Punctuation, parentheses
 * +Symbol : independent symbols in the text stream, like £, €, ©
 * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
-
 
 * +Sg3 : This is inherited from common files, should be changed to +3Sg.
 
@@ -46,8 +42,6 @@
 * +Pos sjekk desse XXX
 * +Rom sjekk desse XXX
 
-
-
 * +Der/heit Derivation with -heit
 
 * +Der/A derivation to Adjective
@@ -68,7 +62,6 @@
 * +Sem/Fem
 
 * +Sem/Year - year (i.e. 1000 - 2999), used only for numerals 
-
 
 * +Sem/Amount
 * +Sem/Build
@@ -108,8 +101,6 @@
 * +Sem/Tool-it
 * +Sem/Txt
 
-
-
 * **+Gram/TAbbr**:  Transitive abbreviation (it needs an argument)
 * **+Gram/NoAbbr**:  Intransitive abbreviations that are homonymous
 with more frequent words. They should only be considered
@@ -122,10 +113,6 @@ is less common and thus only the occurences in the middle of
 the sentence can be considered as true cases.
 * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
 * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
-
-
-
-
 
 ## Non-changing letters
 * a2 invariant a
@@ -150,8 +137,6 @@ the sentence can be considered as true cases.
 * **+v1** - Paradigm identifier (e.g. gera+v1 = ger)
 * **+v2** - Paradigm identifier (e.g. gera+v2 = gerar)
 
-
-
 Language tags
 
 * +OLang/ENG
@@ -163,7 +148,6 @@ Language tags
 * +OLang/SME
 * +OLang/SWE
 * +OLang/UND
-
 
 ## Non-ascii letters, perhaps needed as multichar symbols
 * æ ø å
@@ -191,7 +175,6 @@ This entry / word should be in the following position(s):
 * **+CmpNP/Only** - ... only be part of a compound, i.e. can never
 be used alone, but can appear in any position
 
-
 ## Usage tags
 
 * +Use/Disamb = Use only in disambiguator/tokeniser analyser
@@ -205,7 +188,6 @@ be used alone, but can appear in any position
 * +Use/NGA
 * +Use/SpellNoSugg
 * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
-
 
 * +Err/Guess : Tag for Name Guesser component
 * +Err/Orth : Marking forms that are orthographical errors
@@ -223,7 +205,6 @@ Todo: Check whether these can be removed. They are probably obsolete.
 %[%>%] - Literal >
 %[%<%] - Literal <
 ```
-
 
 ## Flag diacritics
 
@@ -284,7 +265,6 @@ Flag diacritic look-alikes for grammar checker & tokenisation purposes
 |  @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
 |  @P.Pmatch.Backtrack@ | Also for hfst-pmatch 
 
-
 ### Flags for compound restriction
 
 For languages that allow compounding, the following flag diacritics are needed
@@ -310,13 +290,9 @@ given the proper use of these flags.
 |  @U.Cap.Obl@ | Allowing downcasing of derived names: deatnulasj.
 |  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
 
-
-
-
 # Lexicon Root
 This is the beginning of everything. The **Root** lexicon is reserved in the
 LexC language, and must be the first lexicon defined.
-
 
 * Nouns ; 
 * Shortnouns ;  1- and 2-letter nouns excluded from compounding
@@ -341,7 +317,6 @@ Lexicon Acronyms is split in two:
 * Acronym-fao ; for fao acronyms
 * Acronym-smi ; for language independent acronums
 
-
 # Lexicon ENDLEX
 And this is the ENDLEX of everything:
 ```
@@ -351,9 +326,9 @@ The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
 with +CmpNP/Only to end here.
 The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
-
-
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/root.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/root.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/root.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/root.lexc)</small>
+
+---
+

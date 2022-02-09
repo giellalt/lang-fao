@@ -413,7 +413,7 @@ doc_DATA = $(INDEX) $(LINKS) $(ALLINONE_MD_PAGE)
 DOCC2MDWIKI = $(GTCORE)/scripts/doccomments2ghpages.awk
 GRAPHPLOTTER = $(GTCORE)/scripts/plot-speller-progress.R
 
-# Define all source files in a variable:
+# Define all doccomment source files in a variable:
 DOCSRC := $(shell fgrep -rl \
 		--include '*.lexc' \
 		--include '*.twolc' \
@@ -442,6 +442,48 @@ VPATH_MDFILES = $(addprefix $(top_srcdir)/docs/,$(MDFILES))
 DOCSRC_MDFILES = $(shell echo $(BARE_DOCSRC) | tr ' ' '\n' > docsrc.tmp; \
 					   echo $(MDFILES) | tr ' ' '\n' > mdfiles.tmp; \
 					   paste -d '@' docsrc.tmp mdfiles.tmp; )
+
+
+# The variable DOCSRC_MDFILES contains a list of all source files and the
+# corresponding md file in the following format:
+#
+# src/fst/root.lexc@src-fst-root.lexc.md
+#
+# From this we want to construct a nested Markdown bullet list as follows
+# - src
+#     - fst
+#         - [root.lexc](src-fst-root.lexc.md)
+#
+# The resulting list should be the content in the $(LINKS) file.
+
+# src file links: target should be:
+#    https://github.com/giellalt/lang-sma/blob/main/src/fst/root.lexc
+# host:      --------^
+# owner/org: ------------^^^
+# repo:      ----------------------^^^
+# branch:    ----------------------------------^^^
+# filepath:  ---------------------------------------^^^^^^^^^^^^^^^^
+HOST = https://github.com
+ORG = giellalt
+SH_REPO_NAME = $(shell cd $(top_srcdir); \
+		if test -d ./.git; then \
+			git config --get remote.origin.url | cut -d'/' -f2 | cut -d'.' -f1; \
+		elif test -d ./.svn; then \
+			svn info . | grep 'Repository Root' | rev | cut -d'/' -f1 | rev | cut -d'.' -f1; \
+		else \
+			pwd | rev | cut -d'/' -f1 | rev; \
+		fi )
+
+# When running via GitHub Actions, get org/owner + reponame from the environment:
+GH_REPO = $(GITHUB_REPOSITORY)
+# The branch name is presently hard-coded, could be taken from the commit:
+BRANCH = main
+# Use GitHub info if available, fall back to shell otherwise:
+REPOURL = $(shell if test "x$(GH_REPO)" != x ; then \
+				echo "$(HOST)/$(GH_REPO)/blob/$(BRANCH)"; \
+			else \
+				echo "$(HOST)/$(ORG)/$(SH_REPO_NAME)/blob/$(BRANCH)" ; \
+			fi)
 
 
 # hfst-compose:
@@ -873,36 +915,57 @@ endef
 # Extract Markdown doccomments:
 define make_md_files
 $$(top_srcdir)/docs/$$(call src2md,$(1)): $(1)
-	$$(AM_V_AWK)"$(GAWK)" -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $$< > $$@
+	$$(AM_V_AWK)"$(GAWK)" -v REPOURL=$(REPOURL) -v GLANG=$(GLANG) -f $(DOCC2MDWIKI) $$< |\
+		$(SED) -e 's/@/REALLY_AT/g' |\
+		tr '\n' '@' |\
+		$(SED) -e 's/@@@*/@@/g' |\
+		tr '@' '\n' |\
+		$(SED) -e 's/REALLY_AT/@/g' > $$@
 endef
 
 # Build each MD file:
 $(foreach f,$(DOCSRC),$(eval $(call make_md_files,$(f))))
 
-# The variable DOCSRC_MDFILES contains a list of all source files and the
-# corresponding md file in the following format:
-#
-# src/fst/root.lexc@src-fst-root.lexc.md
-#
-# From this we want to construct a nested Markdown bullet list as follows
-# - src
-#     - fst
-#         - [root.lexc](src-fst-root.lexc.md)
-#
-# The resulting list should be the content in the $(LINKS) file.
-
-# Generate list of targets:
-generated-markdowns.targets: $(VPATH_MDFILES)
-	$(AM_V_GEN)echo $(MDFILES) | tr ' ' '\n' > $@
-
 # Collect all target files into one big MD file:
-$(ALLINONE_MD_PAGE): generated-markdowns.targets
-	$(AM_V_GEN)cat `cat generated-markdowns.targets | sed -e 's@^@$(srcdir)/@'` > $@
+$(ALLINONE_MD_PAGE): $(VPATH_MDFILES)
+	$(AM_V_GEN)printf "# $(GLANGUAGE) description \n\nAll documents in one file\n\n" \
+	| cat - $(VPATH_MDFILES) > $@
 
-$(LINKS): generated-markdowns.targets
-	$(AM_V_GEN)cat generated-markdowns.targets |\
-				LC_COLLATE=C sed 's/[a-zA-Z0-9._-]*/* [&]\(&\)/g' \
-				> $@
+$(LINKS):
+	$(AM_V_GEN)for doc2md in $(DOCSRC_MDFILES) ; do \
+		doc=`echo "$$doc2md" | cut -d '@' -f 1` ;\
+		md=`echo "$$doc2md" | cut -d '@' -f 2` ;\
+		d=`dirname "$$doc"` ;\
+		docname=`basename "$$doc" .md` ;\
+		b=`basename "$$md" .md` ;\
+		html=$$b.html ;\
+		d1=`echo "$$d" | cut -d '/' -f 1` ;\
+		d2=`echo "$$d" | cut -d '/' -f 2` ;\
+		d3=`echo "$$d" | cut -d '/' -f 3` ;\
+		d4=`echo "$$d" | cut -d '/' -f 4` ;\
+		if test "x$$d1" != "x$$oldd1" ; then \
+			echo "* \`$$d1/\`" ;\
+			oldd1=$$d1 ;\
+		fi ; \
+		if test "x$$d2" = x ; then \
+			echo "    * [$$docname]($$html) ([src]($(REPOURL)/$$doc))" ;\
+		elif test "x$$d2" != "x$$oldd2" ; then \
+			echo "    * \`$$d2/\`" ;\
+			oldd2=$$d2 ;\
+		fi ; \
+		if test "x$$d3" = x -a "x$$d2" != x; then \
+			echo "        * [$$docname]($$html) ([src]($(REPOURL)/$$doc))" ;\
+		elif test "x$$d3" != "x$$oldd3" ; then \
+			echo "        * \`$$d3/\`" ;\
+			oldd3=$$d3 ;\
+		fi ; \
+		if test "x$$d4" = x -a "x$$d3" != x ; then \
+			echo "            * [$$docname]($$html) ([src]($(REPOURL)/$$doc))" ;\
+		elif test "x$$d4" != "x$$oldd4" ; then \
+			echo "            * \`$$d4/\`" ;\
+			oldd4=$$d4 ;\
+		fi ; \
+	done > $@
 
 empty.md:
 	$(AM_V_GEN)echo > $@

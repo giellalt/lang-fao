@@ -1,7 +1,5 @@
 # Faroese Numerals
 
-
-
 **Numeral** splitting in types
 * Textual ;  
 * ARABICS ;  
@@ -10,12 +8,7 @@
 * ISOLATED-NUMEXP ;  
 * NUM-PREFIXES ;  
 
-
-
-
   **1-9** 
-
-
 
   **TRÝsplit** 
 
@@ -23,12 +16,9 @@
 
   **TEXTTENS** 
 
-
   **TEXTTEENS** 
 
   **basic** 
-
-
 
   **EITT** 
 
@@ -40,7 +30,6 @@
 
   **n** 
 
-
 ## Ordinals
 
   **ordinals** 
@@ -51,7 +40,9 @@
 
   **ANNARMORPH** 
 
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/numerals.lexc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/stems/numerals.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/stems/numerals.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/numerals.lexc)</small>
+
+---
+

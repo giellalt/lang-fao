@@ -2,7 +2,6 @@
 
 This file documents the [phonology.twolc file](http://github.com/giellalt/lang-fao/blob/main/src/fst/phonology.twolc) 
 
-
 ## Alphabet
 Here we declare all symbols.
 
@@ -11,7 +10,6 @@ Here we declare all symbols.
 
 * **A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å** 
 * **Á É Ó Ú Í À È Ò Ù Ì Ä Ë Ö Ü Ï Â Ê Ô Û Î Ã Ý þ Ñ Ð** 
-
 
 * **a2:a** for invariant a, d.g. vulka2nskur -> vulkanskum
 * **g2:g** for invariant g
@@ -40,7 +38,6 @@ Here we declare all symbols.
 ## Sets
 Here we define some convenient sets.
 
-
 * **Vow = a e i o u y æ ø å** 
  **á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;** 
 * **Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;** 
@@ -54,11 +51,8 @@ Here we define some convenient sets.
  **%^GVDEL %^VDEL %^JDEL %^RDEL ;** 
 Forgot why these are special...
 
-
 # Rules
 These are the rules. After each rule (or rather: after many of the rules) there are test cases that are there to test whether the rules work.
-
-
 
 ## Verschärfung
 
@@ -68,17 +62,12 @@ Rule: **Deleting g**
 * Deleting second g in ggj Genitive II
 * Deleting g in sting:stakst
 
-
 * *sting^NGKK^aAB>st*
 * *stak0000st*
-
-
 
 Rule: **ng to kk Part 1** changes n to k in ng:kk before ^NGKK trigger
 
 Rule: **ng to kk Part 2** changes g to k in ng:kk before ^NGKK trigger
-
-
 
 Rule: **Deleting v in gv sequences** Verschärverung II gives v:0 for gv:00 before ^GVDEL and in some other contexts
 
@@ -108,7 +97,6 @@ Rule: **Deleting r in Genitive of ur stems**
 * *brúður^EPH^RDEL>ar*
 * *brúð00000ar*
 
-
 Rule: **Deleting m in um%>num ** 
 
 **Tests:**
@@ -117,8 +105,6 @@ Rule: **Deleting m in um%>num **
 * *ris0u00num*
 * *skógv^GVDEL>m>num*
 * *skó000000num*
-
-
 
 Rule: **Deleting Double Consonant in Front of Consonant** 
 
@@ -136,15 +122,8 @@ end of the file - but only when using the Xerox tools! XXX - please have a look!
 * *hjall>ar*
 * *hjall0ar*
 
-
-
-
 * *all>t*
 * *al00t*
-
-
-
-
 
 ## Verbal Sandhi rules
 
@@ -160,13 +139,10 @@ Rule: **Geminate Assimilation in Past Tense t**
 * *sett>ti*
 * *set00ti*
 
-
-
 Rule: **ð Assimilation in Front of Dental Past Suffix -d(i)** 
 
 * *leið>di*
 * *leid0di*
-
 
 **Tests:**
 
@@ -177,10 +153,7 @@ Rule: **ð Assimilation in Front of Dental Past Suffix -d(i)**
 * *ryð^WVV>di*
 * *rud00di*
 
-
 Rule: **Deleting Double Consonant in Front of Epenthesis mark** 
-
-
 
 **Tests:**
 
@@ -188,7 +161,6 @@ Rule: **Deleting Double Consonant in Front of Epenthesis mark**
 * *sum00r00i*
 * *himmal^EPH^UUML>um*
 * *him00l000um*
-
 
 Rule: **Deleting stem-final s in s genitive** 
 
@@ -201,9 +173,7 @@ Rule: **Deleting stem-final s in s genitive**
 * *grís>s*
 * *grís00*
 
-
 Rule: **Double ð Deletion** 
-
 
 Rule: **ð Assimilation in Front of Supine Suffix -t** 
 
@@ -236,8 +206,6 @@ Rule: **Adjective neuter after nlr 2**
 
 Rule: **t Deletion in Neuter** 
 
-
-
 j rules
 
 Rule: **Deleting j** 
@@ -253,7 +221,6 @@ Rule: **Deleting j**
 * *heyggj>i*
 * *heygg00i*
 
-
 Rule: **Realising j in front of vowels** 
 
 **Tests:**
@@ -261,16 +228,11 @@ Rule: **Realising j in front of vowels**
 * *hylj2>ar*
 * *hylj0ar*
 
-
-
-
 Vowel rules  
-
 
 Rule: **Realising i2 as i** 
 
 **Tests:**
-
 
 ###  Epenthetic vowel rules
 
@@ -287,8 +249,6 @@ Rule: **Epenthetic deletion**
 * *vakin^EPH>ir*
 * *vak0n00ir*
 
-
-
 Rule: **U-umlaut of Epenthetic vowel** 
 
 **Tests:**
@@ -297,7 +257,6 @@ Rule: **U-umlaut of Epenthetic vowel**
 * *gomul00*
 * *gamal^EPH^UUML>u*
 * *goml000u*
-
 
 ### Umlaut rules
 
@@ -324,7 +283,6 @@ Rule: **General U-umlaut**
 * *all^UUML>*
 * *øll00*
 
-
 Rule: **U-umlaut for akur** 
 
 **Tests:**
@@ -347,12 +305,9 @@ Rule: **I-umlaut**
 * *fjørð^IUML>i*
 * *f0irð00i*
 
-
-
 Rule: **eI-umlaut** for o:e, á:e, i:e
 
 Rule: **I-umlaut for bróðir ** 
-
 
 Rule: **Inverted U-umlaut from ø** 
 
@@ -368,7 +323,6 @@ Rule: **Inverted U-umlaut from o**
 * *fonn^OA>ar*
 * *fann00ar*
 
-
 Rule: **o/ei-Umlaut I** 
 
 Rule: **o/ei-Umlaut II** 
@@ -378,22 +332,9 @@ Rule: **o/ei-Umlaut II**
 * *dreing^EIO>i*
 * *dro0ng00i*
 
-
-
-
-
-
-
 ### Vowel deletion rules
 
 Rule: **Vowel deletion in front of na** 
-
-
-
-
-
-
-
 
 ### Verbal vowel alternation rules
 
@@ -408,16 +349,12 @@ Rule: **Stem vowel change in Weak Verbs**
 * *vel^WVV>di*
 * *val00di*
 
-
 Rule: **Stem Vowel Shortening in Supine and Participle** 
 
 **Tests:**
 
 * *bít^VSHin>a*
 * *bit00n>a*
-
-
-
 
 Rule: **Past tense singular diphthongs I** 
 
@@ -428,7 +365,6 @@ Rule: **Past tense singular diphthongs II**
 * *b0ít^AB1*
 * *beit0*
 
-
 Rule: **Past tense singular monophthongs** 
 
 **Tests:**
@@ -438,24 +374,15 @@ Rule: **Past tense singular monophthongs**
 
 Rule: **Past tense plural monophthongs** 
 
-
 Rule: **Past tense plural monophthongs to a** 
-
-
 
 Rule: **Supine u** 
 
-
 Rule: **Supine o** 
-
 
 Rule: **Supine i** 
 
-
 Rule: **Present tense ý** 
-
-
-
 
 ### Adjectival Sandhi rule
 
@@ -468,7 +395,6 @@ Rule: **Vowel shortening in Neuter**
 * *skjót>t*
 * *skjót0t*
 
-
 ## Other rules
 
 ### Morphological passive rules
@@ -479,7 +405,9 @@ Rule: **r Deletion in front of Pass**
 
 Rule: **ð Deletion in front of Pass** 
 
-
-
 * * *
-<small>This (part of) documentation was generated from [../src/fst/phonology.twolc](http://github.com/giellalt/lang-fao/blob/main/../src/fst/phonology.twolc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/phonology.twolc](https://github.com/giellalt/lang-fao/blob/main/src/fst/phonology.twolc)</small>
+
+---
+

@@ -24,10 +24,10 @@ We first list 4 lexica for words waiting to be checked.!
 ## Irregular nouns
 
 These are lexica with number 0, they have no inflectional morphology.!
-* **@LEXICON LEXNAME@** for januar etc.
-* **@LEXICON LEXNAME@** for ommudidd
-* **@LEXICON LEXNAME@** for indeclinable neuters
-* **@LEXICON LEXNAME@** just gives the tags for the indeclinables
+* **LEXICON k0** for januar etc.
+* **LEXICON kv0** for ommudidd
+* **LEXICON h0** for indeclinable neuters
+* **LEXICON irregular_nouns** just gives the tags for the indeclinables
 
 ## Lexica for words belonging to two paradigms.
 These are simply split (h11/12 to h11 and h12, etc).!

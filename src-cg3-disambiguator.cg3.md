@@ -9,10 +9,10 @@ This file documents the [Faroese disambiguator file](http://github.com/giellalt/
 
 ## Delimiters, tags and sets
 
-* LIST NAGD = Nom Acc Gen Dat ; # 
-* LIST AGD = Acc Gen Dat ; # 
-* LIST GENDER = Msc Fem Neu ; # 
-* LIST NUMBER = Sg Pl ; # 
+* LIST NAGD = Nom Acc Gen Dat ; 
+* LIST AGD = Acc Gen Dat ; 
+* LIST GENDER = Msc Fem Neu ; 
+* LIST NUMBER = Sg Pl ; 
 
 Test: Go for minimal weight. This rules gives priority to lexicalised forms.
 
@@ -37,8 +37,4 @@ Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them
 * **X** removes readings with no syntax
 
 * * *
-
 <small>This (part of) documentation was generated from [src/cg3/disambiguator.cg3](https://github.com/giellalt/lang-fao/blob/main/src/cg3/disambiguator.cg3)</small>
-
----
-

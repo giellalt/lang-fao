@@ -5,7 +5,7 @@ Sámi language technology project 2003-2014, University of Tromsø #
 
 This file adds syntactic functions. It was copied from sme.
 
-Syntactic sets
+!! Syntactic sets
 
 * <cs> : 
 * @+FAUXV : finite auxiliary verb 
@@ -73,17 +73,13 @@ Typical usage: ... (*1 N BARRIER NPT-NPMOD) ...
 meaning: Scan to the first noun, ignoring anything that can be
 part of the noun phrase of that noun (i.e., "scan to the next NP head")
 
-HNOUN MAPPING
+!!HNOUN MAPPING
 
-The leftovers are tagged @X
+!! The leftovers are tagged @X
 
 ! __missingX__ adds @X to all missings
 
 ! __therestX__ adds @X to all what is left, often errouneus disambiguated forms
 
 * * *
-
 <small>This (part of) documentation was generated from [src/cg3/functions.cg3](https://github.com/giellalt/lang-fao/blob/main/src/cg3/functions.cg3)</small>
-
----
-

@@ -24,6 +24,34 @@ jobs:
         with:
           spellers: false
           fst: hfst
+
+# Mermaid processing starts here:
+      - name: get list of files
+        id: getfile
+        run: |
+          echo "::set-output name=files::$(find lang/docs -name '*.md' | xargs)"
+
+      - name: print list of files for debugging
+        run: |
+          echo ${{ steps.getfile.outputs.files }}
+
+# The actual Mermaid compilation
+      - name: compile mermaid
+        uses: neenjaw/compile-mermaid-markdown-action@3e7d651f458f723ac67d1b18431bf77f06fbb068
+        with:
+          files: ${{ steps.getfile.outputs.files }}
+          output: 'lang/docs/mermaid-svgs'
+        env:
+          HIDE_CODEBLOCKS: 1
+# The next one must be declared, with an empty value, for paths to work for us:
+          ABSOLUTE_IMAGE_LINKS:
+          OUTPUT_FILE_TYPE: "svg"
+
+      - name: list generated svg fils
+        run: |
+          cd lang && ls -l docs/mermaid-svgs
+# Mermaid processing ends here
+
       - name: deploy gh pages
         uses: peaceiris/actions-gh-pages@v3
         with:

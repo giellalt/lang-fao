@@ -34,7 +34,7 @@ AC_DEFUN([gt_PROG_HFST],
 [
 
 ### Required version of the Hfst tools:
-_required_hfst_version=3.12.2
+_required_hfst_version=3.16.0
 
 AC_ARG_WITH([hfst],
             [AS_HELP_STRING([--with-hfst=DIRECTORY],

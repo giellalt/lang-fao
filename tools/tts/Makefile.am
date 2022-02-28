@@ -15,6 +15,9 @@ GIELLA_ANL_DISAMBIGUATOR_SRC=disambiguator.cg3
 GIELLA_ANL_FUNCTIONS_SRC=functions.cg3
 GIELLA_ANL_DEPENDENCY_SRC=dependency.cg3
 
+# Tokeniser:
+GIELLA_ANL_TOKENISER=tokeniser-disamb-gt-desc.pmhfst
+
 # List transcriptor source files from src/transcriptions/ (without extension)
 # that should NOT be included in the tts text processing (by default everything
 # is included):

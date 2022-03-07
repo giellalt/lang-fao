@@ -21,6 +21,8 @@ We first list 4 lexica for words waiting to be checked.!
 * **LEXICON xh3**. TOOD: classify xkv2. They are all f and end in a consonant
 * **LEXICON xh25**. TOOD: classify xkv2. They are all f and end in a consonant
 
+* **LEXICON f** 
+
 ## Irregular nouns
 
 These are lexica with number 0, they have no inflectional morphology.!

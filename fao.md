@@ -246,6 +246,8 @@ We first list 4 lexica for words waiting to be checked.!
 * **LEXICON xh3**. TOOD: classify xkv2. They are all f and end in a consonant
 * **LEXICON xh25**. TOOD: classify xkv2. They are all f and end in a consonant
 
+* **LEXICON f** 
+
 ## Irregular nouns
 
 These are lexica with number 0, they have no inflectional morphology.!
@@ -2812,20 +2814,6 @@ For example:
 * * *
 
 <small>This (part of) documentation was generated from [src/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
-
----
-
-
-
-% komma% :,      Root ;
-% tjuohkkis% :%. Root ;
-% kolon% :%:     Root ;
-% sárggis% :%-   Root ; 
-% násti% :%*     Root ; 
-
-* * *
-
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
 
 ---
 

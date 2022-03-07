@@ -5,6 +5,8 @@
 We describe here how abbreviations are in Faroese are read out, e.g.
 for text-to-speech systems.
 
+**LEXICON Root**
+
 For example:
 
 * t.d.:til% dømis # ;  

@@ -2804,6 +2804,8 @@ retracted tongue root			_q
 We describe here how abbreviations are in Faroese are read out, e.g.
 for text-to-speech systems.
 
+**LEXICON Root**
+
 For example:
 
 * t.d.:til% dømis # ;  
@@ -2815,11 +2817,215 @@ For example:
 ---
 
 
-# The Russian dates 
+# The Faroese clock
+
+Multichar_Symbols defines flags and +Use/NG and Úse/NA.
+
+**LEXICON Root** where it all begins
+
+**LEXICON smallhour** giving the 30-day
+
+**LEXICON largehour** giving the 30-day
+
+**LEXICON BEFpunkt** before punct
+
+**LEXICON AFTpunkt** after punct
+
+**LEXICON BEF** 
+
+**LEXICON AFT** after
+
+**LEXICON TOHALF** before half
+
+**LEXICON OVERHALF** after half
+
+**LEXICON TO** í
+
+**LEXICON OVER** yvir
+
+**LEXICON HOUR** split in cases (not in use)
+
+**LEXICON NOMHOUR** hours 1-12 in nominative
+
+* * *
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-clock-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-clock-digit2text.lexc)</small>
+
+---
+
+
+# Faroese dates 
+
+Defining one tag: +Use/NG for do not generate
+
+**LEXICON Root** starts.
+
+**LEXICON DAY** splits days 1-9 in nominative and accusative
+
+**LEXICON DAY10** splits days 10-31 in nominative and accusative
+
+**LEXICON DAY_NOM** the nominative ones (fyrsti...)
+
+**LEXICON DAY_ACC** the accusative ones (fyrsta...)
+
+**LEXICON DAY10_NOM** nominative tiggjundi...
+
+**LEXICON DAY10_ACC** accusative tiggjunda...
+
+**LEXICON 29MONTH** splits in 3 month types
+- 2:februar PUNCT ;  for february
+- %02:februar PUNCT ;   for february with leading zero
+- 30MONTH ;  pointing to 30-day months
+- 31MONTH ;  pointing to 31-day months
+
+**LEXICON 30MONTH** giving the 30-day
+
+**LEXICON 31MONTH** giving the 31-day months
+
+**LEXICON PUNCT** gives punctiation
 
 * * *
 
 <small>This (part of) documentation was generated from [src/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-date-digit2text.lexc)</small>
+
+---
+
+# Faroese numbers
+
+digits are translated to text and vice versa
+
+It starts with lexicon Root, which splits into
+thousands, hundreds, tens, ones.
+**LEXICON @ØLEXNAME@**
+
+**LEXICON THOUSANDS**
+- 1: THOUSAND ;  = one thousand
+- 2to9T ;  = two to nine thousands
+- 10to99T ;  = tens of thousands
+- HUNDREDST ;  = hundreds of thousands
+
+**LEXICON 2to9T** for two to nine thousand, pointing to **THOUSAND**.
+
+**LEXICON 10to99T** for 10t and up
+- 1 TEENT ;   = teens of thousands
+- TENST ;     = tens of thousand
+- OLDTENST ;  = Danish system
+
+**LEXICON TEENT** for 10-19 thousands
+- %0:tíggju THOUSAND ;  = 10000
+- 1:ellivu THOUSAND ;   = 11000
+
+**LEXICON TENST**
+- 2:tjúgu TENCOUNTT ;    = 20000...
+- 3:tríati TENCOUNTT ;   = 30000...
+
+**LEXICON TENCOUNTT**
+
+**LEXICON OLDTENST**
+
+**LEXICON OLDTEN-1T**
+
+**LEXICON OLDTEN-2T**
+
+**LEXICON OLDTEN-3T**
+
+**LEXICON OLDTEN-4T**
+
+**LEXICON OLDTEN-5T**
+
+**LEXICON OLDTEN-6T**
+
+**LEXICON OLDTEN-7T**
+
+**LEXICON OLDTEN-8T**
+
+**LEXICON OLDTEN-9T**
+
+**LEXICON END1T**
+
+**LEXICON END2T**
+
+**LEXICON END3T**
+
+**LEXICON END4T**
+
+**LEXICON END5T**
+
+**LEXICON END6T**
+
+**LEXICON END7T**
+
+**LEXICON END8T**
+
+**LEXICON END9T**
+
+**LEXICON HUNDREDST**
+
+**LEXICON HUNDREDT**
+
+**LEXICON 1to99T**
+
+**LEXICON THOUSAND**
+
+**LEXICON HUNDREDS**
+
+**LEXICON HUNDRED**
+
+**LEXICON 1to99**
+
+**LEXICON 1to9**
+
+**LEXICON 10to99**
+
+**LEXICON TEEN**
+
+**LEXICON TENS**
+
+**LEXICON TENCOUNT**
+
+**LEXICON ZERO**
+
+**LEXICON OLDTENS**
+
+**LEXICON OLDTEN-1**
+
+**LEXICON OLDTEN-2**
+
+**LEXICON OLDTEN-3**
+
+**LEXICON OLDTEN-4**
+
+**LEXICON OLDTEN-5**
+
+**LEXICON OLDTEN-6**
+
+**LEXICON OLDTEN-7**
+
+**LEXICON OLDTEN-8**
+
+**LEXICON OLDTEN-9**
+
+**LEXICON END1**
+
+**LEXICON END2**
+
+**LEXICON END3**
+
+**LEXICON END4**
+
+**LEXICON END5**
+
+**LEXICON END6**
+
+**LEXICON END7**
+
+**LEXICON END8**
+
+**LEXICON END9**
+
+* * *
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
 
 ---
 

@@ -12,7 +12,7 @@ HUNDREDST ;
 
 LEXICON 2to9T
 2:tvey THOUSAND ;
-3:tríggir THOUSAND ;
+3:trý THOUSAND ;
 4:fýra THOUSAND ;
 5:fimm THOUSAND ;
 6:seks THOUSAND ;
@@ -55,19 +55,19 @@ LEXICON TENST
 
 LEXICON TENCOUNTT
 2to9T ;
-1:ein THOUSAND ;
+  1:eitt THOUSAND ;
  %0: THOUSAND ;
 
 LEXICON OLDTENST
-:ein% og%  OLDTEN-1T ;
-:tveir% og%  OLDTEN-2T ;
-:tríggir% og%  OLDTEN-3T ;
-:fýra% og%  OLDTEN-4T ;
-:fimm% og%  OLDTEN-5T ;
-:seks% og%  OLDTEN-6T ;
-:sjey% og%  OLDTEN-7T ;
-:átta% og%  OLDTEN-8T ;
-:níggju% og%  OLDTEN-9T ;
+ :eittog  OLDTEN-1T ;
+ :tveirog  OLDTEN-2T ;
+ :trýog  OLDTEN-3T ;
+ :fýraog  OLDTEN-4T ;
+ :fimmog  OLDTEN-5T ;
+ :seksog  OLDTEN-6T ;
+ :sjeyog  OLDTEN-7T ;
+ :áttaog  OLDTEN-8T ;
+ :níggjuog  OLDTEN-9T ;
 
 LEXICON OLDTEN-1T
 2:tjúgu END1T ;
@@ -241,7 +241,7 @@ LEXICON END9T
 LEXICON HUNDREDST
 1: HUNDREDT ;
 2:tvey HUNDREDT ;
-3:tríggir HUNDREDT ;
+3:trý HUNDREDT ;
 4:fýra HUNDREDT ;
 5:fimm HUNDREDT ;
 6:seks HUNDREDT ;
@@ -250,21 +250,21 @@ LEXICON HUNDREDST
 9:níggju HUNDREDT ;
 
 LEXICON HUNDREDT
-:hundrað% og%  1to99T ;
+:% hundraðog  1to99T ;
 
 LEXICON 1to99T
 %0: 2to9T ;
-1:ein THOUSAND ;
+1:eitt THOUSAND ;
 10to99T ;
 
 LEXICON THOUSAND
-:tusen HUNDREDS ;
-%0:tusen% og%  1to99 ;
+:% túsund HUNDREDS ;
+%0:% túsundog  1to99 ;
 
 LEXICON HUNDREDS
 1: HUNDRED ;
 2:tvey HUNDRED ;
-3:tríggir HUNDRED ;
+3:trý HUNDRED ;
 4:fýra HUNDRED ;
 5:fimm HUNDRED ;
 6:seks HUNDRED ;
@@ -273,18 +273,18 @@ LEXICON HUNDREDS
 9:níggju HUNDRED ;
 
 LEXICON HUNDRED
-:hundrað% og%   10to99 ;
-%0:hundrað% og%   1to9 ;
-%0%0:hundrað # ;
+    :% hundraðog   10to99 ;
+  %0:% hundraðog   1to9 ;
+%0%0:% hundrað # ;
 
 LEXICON 1to99
 ! 1to9 ;
 10to99 ;
 
 LEXICON 1to9
-1:ein # ;
+1:eitt # ;
 2:tvey # ;
-3:tríggir # ;
+3:trý # ;
 4:fýra # ;
 5:fimm # ;
 6:seks # ;
@@ -331,15 +331,15 @@ LEXICON TENCOUNT
 %0: # ;
 
 LEXICON OLDTENS
-:ein% og%  OLDTEN-1 ;
-:to% og%  OLDTEN-2 ;
-:tre% og%  OLDTEN-3 ;
-:fire% og%  OLDTEN-4 ;
-:fem% og%  OLDTEN-5 ;
-:seks% og%  OLDTEN-6 ;
-:sju% og%  OLDTEN-7 ;
-:åtte% og%  OLDTEN-8 ;
-:ni% og%  OLDTEN-9 ;
+ :eittog  OLDTEN-1 ;
+ :tveirog  OLDTEN-2 ;
+ :trýog  OLDTEN-3 ;
+ :fýraog  OLDTEN-4 ;
+ :fimmog  OLDTEN-5 ;
+ :seksog  OLDTEN-6 ;
+ :sjeyog  OLDTEN-7 ;
+ :áttaog  OLDTEN-8 ;
+ :níggjuog  OLDTEN-9 ;
 
 LEXICON OLDTEN-1
 2:tjúgu END1 ;
@@ -508,5 +508,5 @@ LEXICON END8
  8: #;
 
 LEXICON END9
- 8: #;
+ 9: #;
 

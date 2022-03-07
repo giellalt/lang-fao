@@ -2799,21 +2799,27 @@ retracted tongue root			_q
 
 
 
+# Faroese abbreviations                               
+
 We describe here how abbreviations are in Faroese are read out, e.g.
 for text-to-speech systems.
 
 For example:
 
-* s.:syntynyt # ;  
-* os.:omaa% sukua # ;  
-* v.:vuosi # ;  
-* v.:vuonna # ;  
-* esim.:esimerkki # ; 
-* esim.:esimerkiksi # ; 
+* t.d.:til% dømis # ;  
 
 * * *
 
 <small>This (part of) documentation was generated from [src/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+
+---
+
+
+# The Russian dates 
+
+* * *
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-date-digit2text.lexc)</small>
 
 ---
 

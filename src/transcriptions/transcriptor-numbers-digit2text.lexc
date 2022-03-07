@@ -59,15 +59,15 @@ ein:1 THOUSAND ;
  :%0 THOUSAND ;
 
 LEXICON OLDTENST
-ein% og: OLDTEN-1T ;
-tveir% og: OLDTEN-2T ;
-tríggir% og: OLDTEN-3T ;
-fýra% og: OLDTEN-4T ;
-fimm% og: OLDTEN-5T ;
-seks% og: OLDTEN-6T ;
-sjey% og: OLDTEN-7T ;
-átta% og: OLDTEN-8T ;
-níggju% og: OLDTEN-9T ;
+ein% og% : OLDTEN-1T ;
+tveir% og% : OLDTEN-2T ;
+tríggir% og% : OLDTEN-3T ;
+fýra% og% : OLDTEN-4T ;
+fimm% og% : OLDTEN-5T ;
+seks% og% : OLDTEN-6T ;
+sjey% og% : OLDTEN-7T ;
+átta% og% : OLDTEN-8T ;
+níggju% og% : OLDTEN-9T ;
 
 LEXICON OLDTEN-1T
 tjúgu:2 END1T ;
@@ -250,7 +250,7 @@ sjey:7 HUNDREDT ;
 níggju:9 HUNDREDT ;
 
 LEXICON HUNDREDT
-hundrað% og: 1to99T ;
+hundrað% og% : 1to99T ;
 
 LEXICON 1to99T
  :%0 2to9T ;
@@ -259,7 +259,7 @@ ein:1 THOUSAND ;
 
 LEXICON THOUSAND
 tusen: HUNDREDS ;
-tusen% og:%0 1to99 ;
+tusen% og% :%0 1to99 ;
 
 LEXICON HUNDREDS
  :1 HUNDRED ;
@@ -273,8 +273,8 @@ sjey:7 HUNDRED ;
 níggju:9 HUNDRED ;
 
 LEXICON HUNDRED
-hundrað% og: 10to99 ;
-hundrað% og:%0 1to9 ;
+hundrað% og% : 10to99 ;
+hundrað% og% :%0 1to9 ;
 hundrað:%0%0 # ;
 
 LEXICON 1to99
@@ -312,30 +312,34 @@ nítjan:9 # ;
 
 LEXICON TENS
 tjúgu:2 TENCOUNT ;
-trettíggju:3 TENCOUNT ;
-tredve:3%0 # ;
-førtíggju:4 TENCOUNT ;
-femtíggju:5 TENCOUNT ;
-sekstíggju:6 TENCOUNT ;
-syttíggju:7 TENCOUNT ;
-søttíggju:7 TENCOUNT ;
-åttíggju:8 TENCOUNT ;
-nittíggju:9  TENCOUNT ;
+tríati:3 TENCOUNT ;
+fýrati:4 TENCOUNT ;
+fimmti:5 TENCOUNT ;
+hálvtrýss:5 TENCOUNT ;
+seksti:6 TENCOUNT ;
+trýss:6 TENCOUNT ;
+sjeyti:7 TENCOUNT ;
+hálvfjerðs:7 TENCOUNT ;
+áttati:8 TENCOUNT ;
+fýrs:8 TENCOUNT ;
+níti:9  TENCOUNT ;
+hálvfems:9  TENCOUNT ;
+
 
 LEXICON TENCOUNT
-1to9 ;
+!1to9 ; ! old only
  :%0 # ;
 
 LEXICON OLDTENS
-ein% og: OLDTEN-1 ;
-to% og: OLDTEN-2 ;
-tre% og: OLDTEN-3 ;
-fire% og: OLDTEN-4 ;
-fem% og: OLDTEN-5 ;
-seks% og: OLDTEN-6 ;
-sju% og: OLDTEN-7 ;
-åtte% og: OLDTEN-8 ;
-ni% og: OLDTEN-9 ;
+ein% og% : OLDTEN-1 ;
+to% og% : OLDTEN-2 ;
+tre% og% : OLDTEN-3 ;
+fire% og% : OLDTEN-4 ;
+fem% og% : OLDTEN-5 ;
+seks% og% : OLDTEN-6 ;
+sju% og% : OLDTEN-7 ;
+åtte% og% : OLDTEN-8 ;
+ni% og% : OLDTEN-9 ;
 
 LEXICON OLDTEN-1
 tjúgu:2 END1 ;

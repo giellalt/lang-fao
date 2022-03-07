@@ -12,140 +12,144 @@
 ! Other licensing options are available upon request, please contact
 ! giellatekno@hum.uit.no or feedback@divvun.no
 
-! ==================== !
-! The North Sámi dates !
-! ==================== !
+!    ================= !
+!! # The Russian dates 
+!    ================= !
 
 
-! 12.8.
-! Borgemánu guoktenuppelot beaivi
+! Note that the months (but not all :-( are stress marked.
 
 Multichar_Symbols
 
-@U.MONTH.1@
-@U.MONTH.2@
-@U.MONTH.3@
-@U.MONTH.4@
-@U.MONTH.5@
-@U.MONTH.6@
-@U.MONTH.7@
-@U.MONTH.8@
-@U.MONTH.9@
-@U.MONTH.10@
-@U.MONTH.11@
-@U.MONTH.12@
-
-+Use/NG ! For substandard month names used in Oahpa
-        ! They will be accepted but not generated.
++Use/NG
 
 LEXICON Root
+DAY ;
+DAY10 ;
+%0: DAY ;
 
-         @U.MONTH.1@:ođđajagemánu% @U.MONTH.1@ 31DAYS ;
-  @U.MONTH.1@+Use/NG:garjjámánu% @U.MONTH.1@   31DAYS ;
-  @U.MONTH.1@+Use/NG:Ođđajagemánu% @U.MONTH.1@ 31DAYS ;
-  @U.MONTH.1@+Use/NG:Garjjámánu% @U.MONTH.1@   31DAYS ;
+LEXICON DAY
+DAY_NOM ;
+DAY_ACC ;
 
-         @U.MONTH.2@:guovvamánu% @U.MONTH.2@   29DAYS ;
-  @U.MONTH.2@+Use/NG:Guovvamánu% @U.MONTH.2@   29DAYS ;
+LEXICON DAY10
+DAY10_NOM ;
+DAY10_ACC ;
 
-         @U.MONTH.3@:njukčamánu% @U.MONTH.3@   31DAYS ;
-  @U.MONTH.3@+Use/NG:Njukčamánu% @U.MONTH.3@   31DAYS ;
+LEXICON DAY_NOM
+1.:fyrsti%  29MONTH ;
+2.:annar%  29MONTH ;
+3.:triði%  29MONTH ;
+4.:fjórði%  29MONTH ;
+5.:fimti%  29MONTH ;
+6.:sætti%  29MONTH ;
+7.:sjeyndi%  29MONTH ;
+8.:áttandi%  29MONTH ;
+9.:níggjundi%  29MONTH ;
 
-         @U.MONTH.4@:cuoŋománu% @U.MONTH.4@    30DAYS ;
-  @U.MONTH.4@+Use/NG:gáranasmánu% @U.MONTH.4@  30DAYS ;
-  @U.MONTH.4@+Use/NG:vuoražismánu% @U.MONTH.4@ 30DAYS ;
-  @U.MONTH.4@+Use/NG:Cuoŋománu% @U.MONTH.4@    30DAYS ;
-  @U.MONTH.4@+Use/NG:Gáranasmánu% @U.MONTH.4@  30DAYS ;
-  @U.MONTH.4@+Use/NG:Vuoražismánu% @U.MONTH.4@ 30DAYS ;
+LEXICON DAY_ACC
+1.:fyrsta%  29MONTH ;
+2.:annar%  29MONTH ;
+3.:triðja%  29MONTH ;
+4.:fjórða%  29MONTH ;
+5.:fimta%  29MONTH ;
+6.:sætta%  29MONTH ;
+7.:sjeynda%  29MONTH ;
+8.:áttanda%  29MONTH ;
+9.:níggjunda%  29MONTH ;
 
-         @U.MONTH.5@:miessemánu% @U.MONTH.5@   31DAYS ;
-  @U.MONTH.5@+Use/NG:Miessemánu% @U.MONTH.5@   31DAYS ;
+LEXICON DAY10_NOM
+1%0.:tíggjundi%  29MONTH ;
+11.:ellivti%  29MONTH ;
+12.:tólvti%  29MONTH ;
+13.:trettandi%  29MONTH ;
+14.:fjúrtandi%  29MONTH ;
+15.:fimtandi%  29MONTH ;
+16.:sekstandi%  29MONTH ;
+17.:seytjandi%  29MONTH ;
+18.:átjandi%  29MONTH ;
+19.:nítjandi%  29MONTH ;
+2%0.:tjúgundi%  29MONTH ;
+21.:einogtjúgundi%  29MONTH ;
+22.:tveyogtjúgundi%  29MONTH ;
+23.:trýogtjúgundi%  29MONTH ;
+24.:fýraogtjúgundi%  29MONTH ;
+25.:fimmogtjúgundi%  29MONTH ;
+26.:seksogtjúgundi%  29MONTH ;
+27.:sjeyogtjúgundi%  29MONTH ;
+28.:áttaogtjúgundi%  29MONTH ;
+29.:níggjuogtjúgundi%  29MONTH ;
+3%0.:tretivti%  30MONTH ;
+3%0.:tríatiundi%  30MONTH ;
+31.:einogtretivti%  31MONTH ;
+31.:tríatifyrsti%  31MONTH ;
 
-         @U.MONTH.6@:geassemánu% @U.MONTH.6@   30DAYS ;
-  @U.MONTH.6@+Use/NG:Geassemánu% @U.MONTH.6@   30DAYS ;
-
-         @U.MONTH.7@:suoidnemánu% @U.MONTH.7@  31DAYS ;
-  @U.MONTH.7@+Use/NG:Suoidnemánu% @U.MONTH.7@  31DAYS ;
-
-         @U.MONTH.8@:borgemánu% @U.MONTH.8@    31DAYS ;
-  @U.MONTH.8@+Use/NG:šnjilčamánu% @U.MONTH.8@  31DAYS ;
-  @U.MONTH.8@+Use/NG:Borgemánu% @U.MONTH.8@    31DAYS ;
-  @U.MONTH.8@+Use/NG:Šnjilčamánu% @U.MONTH.8@  31DAYS ;
-
-         @U.MONTH.9@:čakčamánu% @U.MONTH.9@    30DAYS ;
-  @U.MONTH.9@+Use/NG:Čakčamánu% @U.MONTH.9@    30DAYS ;
-
-        @U.MONTH.10@:golggotmánu% @U.MONTH.10@ 31DAYS ;
- @U.MONTH.10@+Use/NG:ragatmánu% @U.MONTH.10@   31DAYS ;
- @U.MONTH.10@+Use/NG:Golggotmánu% @U.MONTH.10@ 31DAYS ;
- @U.MONTH.10@+Use/NG:Ragatmánu% @U.MONTH.10@   31DAYS ;
-
-        @U.MONTH.11@:skábmamánu% @U.MONTH.11@  30DAYS ;
- @U.MONTH.11@+Use/NG:Skábmamánu% @U.MONTH.11@  30DAYS ;
-
-        @U.MONTH.12@:juovlamánu% @U.MONTH.12@  31DAYS ;
- @U.MONTH.12@+Use/NG:Juovlamánu% @U.MONTH.12@  31DAYS ;
-
-
-LEXICON 29DAYS
-
-    1                    B ;
-    2                    B ;
-    3                    B ;
-    4                    B ;
-    5                    B ;
-    6                    B ;
-    7                    B ;
-    8                    B ;
-    9                    B ;
-  1%0                    B ;
-   11                    B ;
-   12                    B ;
-   13                    B ;
-   14                    B ;
-   15                    B ;
-   16                    B ;
-   17                    B ;
-   18                    B ;
-   19                    B ;
-  2%0                    B ;
-   21                    B ;
-   22                    B ;
-   23                    B ;
-   24                    B ;
-   25                    B ;
-   26                    B ;
-   27                    B ;
-   28                    B ;
-   29                    B ;
-
-LEXICON 30DAYS
-  3%0             B      ;
-                  29DAYS ;
-
-LEXICON 31DAYS
-  31                    B      ;
-                        30DAYS ;
-
-LEXICON B
-         %.:%.% b%.  MONTH ; ! written form: 12. b.
-  %.+Use/NG:%.b%.    MONTH ; ! sloppy form: 12.b.
-
-LEXICON MONTH
-    1@U.MONTH.1@:@U.MONTH.1@  X ;
-    2@U.MONTH.2@:@U.MONTH.2@  X ;
-    3@U.MONTH.3@:@U.MONTH.3@  X ;
-    4@U.MONTH.4@:@U.MONTH.4@  X ;
-    5@U.MONTH.5@:@U.MONTH.5@  X ;
-    6@U.MONTH.6@:@U.MONTH.6@  X ;
-    7@U.MONTH.7@:@U.MONTH.7@  X ;
-    8@U.MONTH.8@:@U.MONTH.8@  X ;
-    9@U.MONTH.9@:@U.MONTH.9@  X ;
- 1%0@U.MONTH.10@:@U.MONTH.10@ X ;
-  11@U.MONTH.11@:@U.MONTH.11@ X ;
-  12@U.MONTH.12@:@U.MONTH.12@ X ;
-
-LEXICON X
-       %.: # ;
-  +Use/NG: # ;
-!          # ; ! sloppy punctuation
+LEXICON DAY10_ACC
+1%0.:tíggjunda%  29MONTH ;
+11.:ellivta%  29MONTH ;
+12.:tólvta%  29MONTH ;
+13.:trettanda%  29MONTH ;
+14.:fjúrtanda%  29MONTH ;
+15.:fimtanda%  29MONTH ;
+16.:sekstanda%  29MONTH ;
+17.:seytjanda%  29MONTH ;
+18.:átjanda%  29MONTH ;
+19.:nítjanda%  29MONTH ;
+2%0.:tjúgunda%  29MONTH ;
+21.:einogtjugunda%  29MONTH ;
+22.:tveyogtjúgunda%  29MONTH ;
+23.:trýogtjúgunda%  29MONTH ;
+24.:fýraogtjúgunda%  29MONTH ;
+25.:fimmogtjúgunda%  29MONTH ;
+26.:seksogtjúgunda%  29MONTH ;
+27.:sjeyogtjúgunda%  29MONTH ;
+28.:áttaogtjúgunda%  29MONTH ;
+29.:níggjuogtjúgunda%  29MONTH ;
+3%0.:tretivta%  30MONTH ;
+3%0.:tríatiunda%  30MONTH ;
+31.:einogtretivta%  31MONTH ;
+31.:tríatifyrsta%  31MONTH ;
+ 
+ 
+ 
+LEXICON 29MONTH
+2:februar PUNCT ;
+%02:februar PUNCT ;
+30MONTH ;
+31MONTH ;
+ 
+LEXICON 30MONTH
+4:april PUNCT ;
+6:juni PUNCT ;
+9:september PUNCT ;
+9:septembur PUNCT ;
+11:november PUNCT ;
+11:novembur PUNCT ;
+%04:apríl PUNCT ;
+%06:juni PUNCT ;
+%09:september PUNCT ;
+%09:septembur PUNCT ;
+31MONTH ;
+ 
+LEXICON 31MONTH
+1:januar PUNCT ;
+3:mars PUNCT ;
+5:mai PUNCT ;
+5:mei PUNCT ;
+7:juli PUNCT ;
+8:august PUNCT ;
+1%0:oktober PUNCT ;
+1%0:oktobur PUNCT ;
+12:desember PUNCT ;
+12:desembur PUNCT ;
+%01:januar PUNCT ;
+%03:mars PUNCT ;
+%05:mai PUNCT ;
+%07:juli PUNCT ;
+%08:august PUNCT ;
+ 
+LEXICON PUNCT 
+     %.: # ; ! STRICT 12.3.
+       : # ; ! SLOPPY 12.3
+!+Use/NG: # ; ! SLOPPY 12.3
+ 

@@ -1,355 +1,442 @@
-! Divvun & Giellatekno - open source grammars for Sámi and other languages
-! Copyright © 2000-2015 The University of Tromsø & the Norwegian Sámi Parliament
-! http://giellatekno.uit.no & http://divvun.no
-!
-! This program is free software; you can redistribute and/or modify
-! this file under the terms of the GNU General Public License as published by
-! the Free Software Foundation, either version 3 of the License, or
-! (at your option) any later version. The GNU General Public License
-! is found at http://www.gnu.org/licenses/gpl.html. It is
-! also available in the file $GTHOME/LICENSE.txt.
-!
-! Other licensing options are available upon request, please contact
-! giellatekno@uit.no or divvun@hum.uit.no
-
-Multichar_Symbols
-
-  +Use/NG    ! Do not generate, for isme-ped.fst and apertium
-  +String    ! Tag to denote non-numeric strings
-  +NumNum    ! Tag to denote real numbers in one form or another
-
 LEXICON Root
+THOUSANDS ;
+HUNDREDS ;
+10to99 ;
+1to9 ;
 
-!These 4 lines are for TTS, they are commented out.
-!< %+String [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|q|y|z|â|ê|î|ô|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|Â|Ê|Î|Ô]* > ENDLEX ; ! This first line is to allow all letter strings.
-!+NumNum NUMBERSECTION ;
-!+NumNum ENDLEXSECTION ;
-!LEXICON NUMBERSECTION
+LEXICON THOUSANDS
+ :1 THOUSAND ;
+2to9T ;
+10to99T ;
+HUNDREDST ;
 
-HUNDREDSM ;		! 200M
-1:mitâtahtomitanaw%   HUNDREDM ;	! 100M
-1:mitâtahtomtanaw%   HUNDREDM ;	! 100M
-TENSM ;			! 20-99M
-TEENSM ;		! 10-19M
-ONESM ;			! 1-9M
-!HUNDREDST ;		! 200000-999999 NB
-1:mitâtahtomitanaw  HUNDREDT ;	! 100000-100999
-1:mitâtahtomtanaw HUNDREDT ;	! 100000-100999
-TENST ;			! 20000-99999,10000-10999
-TEENST ;		! 11000-19999
-ONEST ;			! 2000-9999
-1:peyak% kihci% mitâtahtomtanaw THOUSAND ;
-1:peyak% kihci% mitâtahtomitanaw THOUSAND ;
-UNDERTHOUSAND ;		! 100-999
-TENS ;			! 20-99
-TEENS ;			! 10-19
-ONES ;			! 1-9
-NEARLY ;			! 29-99
+LEXICON 2to9T
+to:2 THOUSAND ;
+tre:3 THOUSAND ;
+fire:4 THOUSAND ;
+fem:5 THOUSAND ;
+seks:6 THOUSAND ;
+sju:7 THOUSAND ;
+åtte:8 THOUSAND;
+ni:9 THOUSAND ;
 
-LEXICON HUNDREDSM
-2:nîso  CUODIM ;
-3:nisto CUODIM ;
-4:newo CUODIM ; ! Google: 459
-5:nîyânan CUODIM ;
-6:nikotwâsik CUODIM ;
-7:tepakohp CUODIM ;
-8:ayinânew CUODIM ;
-9:kekâmitâtaht CUODIM ;
-
-LEXICON CUODIM
-:mitâtahtomitanaw HUNDREDM ;
-:mitâtahtomtanaw HUNDREDM ;
-
-LEXICON HUNDREDM
-      TENSM ;
-      TEENSM ;
-%0:   ONESM ;
-%0%0: MILJON ;
-
-LEXICON TEENSM
-1:luhkie TEENM ;
-
-LEXICON TEENM
-1:peyak     LOHKAIM ;
-2:nîso   LOHKAIM ;
-3:nisto    LOHKAIM ;
-4:newo LOHKAIM ;
-5:nîyânan   LOHKAIM ;
-6:nikotwâsik   LOHKAIM ;
-7:tepakohp LOHKAIM ;
-8:ayinânew LOHKAIM ;
-9:kekâmitâtaht   LOHKAIM ;
-
-LEXICON LOHKAIM
-MILJON ;
-
-LEXICON TENSM
-1%0:luhkie MILJON ;
-2:nîso   TENM ;
-3:nisto    TENM ;
-4:newo TENM ;
-5:nîyânan   TENM ;
-6:nikotwâsik   TENM ;
-7:tepakohp TENM ;
-8:ayinânew TENM ;
-9:kekâmitâtaht   TENM ;
-
-LEXICON TENM
-%0:luhkie MILJON ;
-:luhkie   ONESM ;
-
-LEXICON ONESM
-1:akte% miljon%  OVERTHOUSANDS ;
-2:nîso         MILJON ;
-3:nisto          MILJON ;
-4:newo       MILJON ;
-5:nîyânan         MILJON ;
-6:nikotwâsik         MILJON ;
-7:tepakohp       MILJON ;
-8:ayinânew       MILJON ;
-9:kekâmitâtaht         MILJON ; 
-
-LEXICON MILJON
-:% miljona%  OVERTHOUSANDS ;
-
-! =================
-! Under the million
-! =================
-
-LEXICON OVERTHOUSANDS
-HUNDREDST ;		! x00.000.000
-1:mitâtahtomitanaw HUNDREDT ;	! 100.000.000
-1:mitâtahtomtanaw HUNDREDT ;	! 100.000.000
-%0: TENST ;		!  20.000.000
-%0: TEENST ;		!  10.000.000
-%0%0: ONEST ;		!   2.000.000
-%0%01:peyak% kihci% mitâtahtomtanaw THOUSAND ;
-%0%01:peyak% kihci% mitâtahtomitanaw THOUSAND ;
-%0%0%0: UNDERTHOUSAND ;	
-%0%0%0%0: TENS ;
-%0%0%0%0: TEENS ;
-%0%0%0%0%0: ONES ;
-%0%0%0%0%0%0: ENDLEX ;	!  x000000
-
-LEXICON HUNDREDST
-2:nîso   CUODIT ;	! 200000-299999
-3:nisto    CUODIT ;	! 300000-399999
-4:newo CUODIT ;	! 400000-499999
-5:nîyânan   CUODIT ;	! 500000-599999
-6:nikotwâsik   CUODIT ;	! 600000-699999
-7:tepakohp CUODIT ;	! 700000-799999
-8:ayinânew CUODIT ;	! 800000-899999
-9:kekâmitâtaht   CUODIT ;	! 900000-999999
-
-LEXICON CUODIT
-:mitâtahtomitanaw HUNDREDT ;	! 100000-199999
-:mitâtahtomtanaw HUNDREDT ;	! 100000-199999
-
-LEXICON HUNDREDT	! X = 1-9, Y = 0-9
-:%  TENST ;			! X2XYYY, X10YYY
-TEENST ;		! X1XYYY
-%01:akte THOUSANDS ;
-%0: ONEST ;		! XX0YYY
-%0%0: THOUSANDS ;	! X00YYY
-
-LEXICON TEENST
-1:luhkie   TEENT ;
-1%0:luhkie THOUSANDS ;
+LEXICON 10to99T
+ :1 TEENT ;
+TENST ;
+OLDTENST ;
 
 LEXICON TEENT
-1:peyak     LOHKAIT ;
-2:nîso   LOHKAIT ;
-3:nisto    LOHKAIT ;
-4:newo LOHKAIT ;
-5:nîyânan   LOHKAIT ;
-6:nikotwâsik   LOHKAIT ;
-7:tepakohp LOHKAIT ;
-8:ayinânew LOHKAIT ;
-9:kekâmitâtaht   LOHKAIT ;
+ti:%0 THOUSAND ;
+elve:1 THOUSAND ;
+tolv:2 THOUSAND ;
+tretten:3 THOUSAND ;
+fjorten:4 THOUSAND ;
+femten:5 THOUSAND ;
+seksten:6 THOUSAND ;
+søtten:7 THOUSAND ;
+atten:8 THOUSAND ;
+nitten:9 THOUSAND ;
 
-LEXICON LOHKAIT
-THOUSANDS ;
 
 LEXICON TENST
-2:nîs   TANAW ;
-3:nistomi    TANAW ;
-4:nemi TANAW ;
-5:nîyânanomi   TANAW ;
-6:nikotwâsomi   TANAW ;
-7:tepakohpimi TANAW ;
-8:ayinânewomi TANAW ;
-9:kekâmitâtahtomi   TANAW ;
-9:kâmitâtahtomi   TANAW ;
+tjue:2 TENCOUNTT ;
+tretti:3 TENCOUNTT ;
+tredve:30 THOUSAND ;
+førti:4 TENCOUNTT ;
+femti:5 TENCOUNTT ;
+seksti:6 TENCOUNTT ;
+sytti:7 TENCOUNTT ;
+søtti:7 TENCOUNTT ;
+åtti:8 TENCOUNTT ;
+nitti:9  TENCOUNTT ;
 
-LEXICON TANAW
-%0:tanaw%  ENDLEX ;
-:tanaw%  ONESTONEXT ;
+LEXICON TENCOUNTT
+2to9T ;
+ein:1 THOUSAND ;
+ :%0 THOUSAND ;
 
-LEXICON TENT
-%0: THOUSANDS ;
-1:akte THOUSANDS ; ! error sma
-ONEST ;
+LEXICON OLDTENST
+einog: OLDTEN-1T ;
+toog: OLDTEN-2T ;
+treog: OLDTEN-3T ;
+fireog: OLDTEN-4T ;
+femog: OLDTEN-5T ;
+seksog: OLDTEN-6T ;
+sjuog: OLDTEN-7T ;
+åtteog: OLDTEN-8T ;
+niog: OLDTEN-9T ;
 
-LEXICON ONEST
-2:nîso%  THOUSANDS ;
-3:nisto%  THOUSANDS ;
-4:newo%  THOUSANDS ;
-5:nîyânan%  THOUSANDS ;
-6:nikotwâsik%  THOUSANDS ;
-7:tepakohp%  THOUSANDS ;
-8:ayinânew%  THOUSANDS ;
-9:kekâmitâtaht%  THOUSANDS ;
+LEXICON OLDTEN-1T
+tjue:2 END1T ;
+tretti:3 END1T ;
+tredve:3 END1T ;
+førti:4 END1T ;
+femti:5 END1T ;
+seksti:6 END1T ;
+sytti:7 END1T ;
+søtti:7 END1T ;
+åtti:8 END1T ;
+nitti:9  END1T ;
 
-LEXICON THOUSANDS      ! x > 1
-:kihci% mitâtahtomtanaw THOUSAND ;
-:kihci% mitâtahtomitanaw THOUSAND ;
+
+LEXICON OLDTEN-2T
+tjue:2 END2T ;
+tretti:3 END2T ;
+tredve:3 END2T ;
+førti:4 END2T ;
+femti:5 END2T ;
+seksti:6 END2T ;
+sytti:7 END2T ;
+søtti:7 END2T ;
+åtti:8 END2T ;
+nitti:9  END2T ;
+
+
+LEXICON OLDTEN-3T
+tjue:2 END3T ;
+tretti:3 END3T ;
+tredve:3 END3T ;
+førti:4 END3T ;
+femti:5 END3T ;
+seksti:6 END3T ;
+sytti:7 END3T ;
+søtti:7 END3T ;
+åtti:8 END3T ;
+nitti:9  END3T ;
+
+
+LEXICON OLDTEN-4T
+tjue:2 END4T ;
+tretti:3 END4T ;
+tredve:3 END4T ;
+førti:4 END4T ;
+femti:5 END4T ;
+seksti:6 END4T ;
+sytti:7 END4T ;
+søtti:7 END4T ;
+åtti:8 END4T ;
+nitti:9  END4T ;
+
+
+LEXICON OLDTEN-5T
+tjue:2 END5T ;
+tretti:3 END5T ;
+tredve:3 END5T ;
+førti:4 END5T ;
+femti:5 END5T ;
+seksti:6 END5T ;
+sytti:7 END5T ;
+søtti:7 END5T ;
+åtti:8 END5T ;
+nitti:9  END5T ;
+
+
+LEXICON OLDTEN-6T
+tjue:2 END6T ;
+tretti:3 END6T ;
+tredve:3 END6T ;
+førti:4 END6T ;
+femti:5 END6T ;
+seksti:6 END6T ;
+sytti:7 END6T ;
+søtti:7 END6T ;
+åtti:8 END6T ;
+nitti:9  END6T ;
+
+LEXICON OLDTEN-7T
+tjue:2 END7T ;
+tretti:3 END7T ;
+tredve:3 END7T ;
+førti:4 END7T ;
+femti:5 END7T ;
+seksti:6 END7T ;
+sytti:7 END7T ;
+søtti:7 END7T ;
+åtti:8 END7T ;
+nitti:9  END7T ;
+
+
+LEXICON OLDTEN-8T
+tjue:2 END8T ;
+tretti:3 END8T ;
+tredve:3 END8T ;
+førti:4 END8T ;
+femti:5 END8T ;
+seksti:6 END8T ;
+sytti:7 END8T ;
+søtti:7 END8T ;
+åtti:8 END8T ;
+nitti:9  END8T ;
+
+
+LEXICON OLDTEN-9T
+tjue:2 END9T ;
+tretti:3 END9T ;
+tredve:3 END9T ;
+førti:4 END9T ;
+femti:5 END9T ;
+seksti:6 END9T ;
+sytti:7 END9T ;
+søtti:7 END9T ;
+åtti:8 END9T ;
+nitti:9  END9T ;
+
+LEXICON END1T
+ :1 THOUSAND;
+
+LEXICON END2T
+ :2 THOUSAND;
+
+LEXICON END3T
+ :3 THOUSAND;
+
+LEXICON END4T
+ :4 THOUSAND;
+
+LEXICON END5T
+ :5 THOUSAND;
+
+LEXICON END6T
+ :6 THOUSAND;
+
+LEXICON END7T
+ :7 THOUSAND;
+
+LEXICON END8T
+ :8 THOUSAND;
+
+LEXICON END9T
+ :9 THOUSAND;
+
+LEXICON HUNDREDST
+ :1 HUNDREDT ;
+to:2 HUNDREDT ;
+tre:3 HUNDREDT ;
+fire:4 HUNDREDT ;
+fem:5 HUNDREDT ;
+seks:6 HUNDREDT ;
+sju:7 HUNDREDT ;
+åtte:8 HUNDRED;
+ni:9 HUNDREDT ;
+
+LEXICON HUNDREDT
+hundreog: 1to99T ;
+
+LEXICON 1to99T
+ :%0 2to9T ;
+ein:1 THOUSAND ;
+10to99T ;
 
 LEXICON THOUSAND
-:% ayiwâk%  UNDERTHOUSAND ;	   ! 1100-1999
-%0:% ayiwâk%  TENS ;	   ! 1020-1099
-%0:% ayiwâk%  TEENS ;	   ! 1010-1019
-%0%0:% ayiwâk%  ONES ;	   ! 1001-1009
-%0%0%0: ENDLEX ;	   ! 1000
-
-!===========================
-!Here starts the 999 numbers
-!===========================
-
-LEXICON UNDERTHOUSAND
-HUNDREDS ;
-1:mitâtahtomitanaw%  HUNDRED ;
-1:mitâtahtomtanaw%  HUNDRED ;
+tusen: HUNDREDS ;
+tusenog:%0 1to99 ;
 
 LEXICON HUNDREDS
-2:nîso%    CUODI ;
-3:nisto%     CUODI ;
-4:newo%  CUODI ;
-5:nîyânano%    CUODI ;  !OBS
-6:nikotwâsiko%    CUODI ;
-7:tepakohpo%  CUODI ;
-8:ayinânewo%  CUODI ;
-9:kekâmitâtahto%    CUODI ;
-
-LEXICON CUODI
-:mitâtahtomitanaw%    HUNDRED ;
-:mitâtahtomtanaw%   HUNDRED ;
+ :1 HUNDRED ;
+to:2 HUNDRED ;
+tre:3 HUNDRED ;
+fire:4 HUNDRED ;
+fem:5 HUNDRED ;
+seks:6 HUNDRED ;
+sju:7 HUNDRED ;
+åtte:8 HUNDRED;
+ni:9 HUNDRED ;
 
 LEXICON HUNDRED
-:ayiwâk%   TENS ;
-:ayiwâk%   TEENS ;
-%0:ayiwâk%    ONES ;
-%0%0: ENDLEX ;
+hundreog: 10to99 ;
+hundreog:%0 1to9 ;
+hundre:%0%0 # ;
+
+LEXICON 1to99
+!:%0 1to9 ;
+10to99 ;
+
+LEXICON 1to9
+ein:1 # ;
+to:2 # ;
+tre:3 # ;
+fire:4 # ;
+fem:5 # ;
+seks:6 # ;
+sju:7 # ;
+åtte:8 #;
+ni:9 # ;
+
+LEXICON 10to99
+ :1 TEEN ;
+TENS ;
+OLDTENS ;
+
+LEXICON TEEN
+ti:%0 # ;
+elve:1 # ;
+tolv:2 # ;
+tretten:3 # ;
+fjorten:4 # ;
+femten:5 # ;
+seksten:6 # ;
+søtten:7 # ;
+atten:8 # ;
+nitten:9 # ;
 
 
 LEXICON TENS
-1%0:mitâtaht ENDLEX ;
-1%0%.:låhkede ENDLEX ;
-2:nîs TEN ;
-2:nîsi TEN ;
-3:nistomi TEN ;
-4:nemi TEN ;
-5:nîyânanomi TEN ;
-6:nikotwâsomi TEN ;
-7:tepakohpimi TEN ;
-8:ayinânewomi TEN ;
-9:kekâmitâtahtomi TEN ;
+tjue:2 TENCOUNT ;
+tretti:3 TENCOUNT ;
+tredve:3%0 # ;
+førti:4 TENCOUNT ;
+femti:5 TENCOUNT ;
+seksti:6 TENCOUNT ;
+sytti:7 TENCOUNT ;
+søtti:7 TENCOUNT ;
+åtti:8 TENCOUNT ;
+nitti:9  TENCOUNT ;
 
-LEXICON TEN 
-%0%.:låhkede ENDLEX ; ! låhkede to be removed or replaced
-:tanaw%  ONESTONEXT ;
-%0:tanaw%  ENDLEX ;
+LEXICON TENCOUNT
+1to9 ;
+ :%0 # ;
 
-LEXICON NEARLY
-29:kekâc% nistôm NEARLY-TEN ;
-39:kekâc% newôm NEARLY-TEN ;
-49:kekâc% nîyânôm NEARLY-TEN ;
-59:kekâc% nikotwâsom NEARLY-TEN ;
-69:kekâc% tepakohpim NEARLY-TEN ;
-79:kekâc% ayinânewom NEARLY-TEN ;
-89:kekâc% kekâ% mitâtahtom NEARLY-TEN ;
-90:kekâ% mitâtahtom NEARLY-TEN ;
-99:kekâ% mitatahtomtanaw% ayiwâk% kekâ% mitâtaht ENDLEX ;
-29:kekâc-nistomi NEARLY-TEN ;
-39:kekâc-nemi NEARLY-TEN ;
-49:kekâc-nîyânanomi NEARLY-TEN ;
-59:kekâc-nikotwâsomi NEARLY-TEN ;
-69:kekâc-tepakohpimi NEARLY-TEN ;
-79:kekâc-ayinânewomi NEARLY-TEN ;
-79:kekâc-ayenânewomi NEARLY-TEN ;
-89:kekâc-kekâ-mitâtahtomi NEARLY-TEN ;
-90:kekâ-mitatahtomi NEARLY-TEN ;
-99:kekâ-mitatahtomitanaw% kekâ-mitâtaht ENDLEX ;
+LEXICON OLDTENS
+einog: OLDTEN-1 ;
+toog: OLDTEN-2 ;
+treog: OLDTEN-3 ;
+fireog: OLDTEN-4 ;
+femog: OLDTEN-5 ;
+seksog: OLDTEN-6 ;
+sjuog: OLDTEN-7 ;
+åtteog: OLDTEN-8 ;
+niog: OLDTEN-9 ;
 
-LEXICON NEARLY-TEN
-:tanaw ENDLEX ;
+LEXICON OLDTEN-1
+tjue:2 END1 ;
+tredve:3 END1 ;
+førti:4 END1 ;
+femti:5 END1 ;
+seksti:6 END1 ;
+sytti:7 END1 ;
+søtti:7 END1 ;
+åtti:8 END1 ;
+nitti:9  END1 ;
 
 
-
-LEXICON ONESTONEXT
-1:peyakosâp ENDLEX ;
-2:nîsosâp ENDLEX ;
-3:nistosâp ENDLEX ;
-4:newosâp ENDLEX ;
-5:niyânanosâp ENDLEX ;
-6:nikotwâsosâp ENDLEX ;
-7:tepakohposâp ENDLEX ;
-8:ayinânewosâp ENDLEX ;
-9:kekâmitâtahtosâp ENDLEX ;
-1:peyako-sâp ENDLEX ;
-2:nîso-sâp ENDLEX ;
-3:nisto-sâp ENDLEX ;
-4:newo-sâp ENDLEX ;
-5:niyânano-sâp ENDLEX ;
-6:nikotwâso-sâp ENDLEX ;
-7:tepakohp-sâp ENDLEX ;
-8:ayinânewo-sâp ENDLEX ;
-9:kekâc% nîstanaw ENDLEX ;
-:ayiwâk%  CARDINAL ;
+LEXICON OLDTEN-2
+tjue:2 END2 ;
+tredve:3 END2 ;
+førti:4 END2 ;
+femti:5 END2 ;
+seksti:6 END2 ;
+sytti:7 END2 ;
+søtti:7 END2 ;
+åtti:8 END2 ;
+nitti:9  END2 ;
 
 
-LEXICON TEENS
-11:peyakosâp ENDLEX ;
-12:nîsosâp ENDLEX ;
-13:nistosâp ENDLEX ;
-14:newosâp ENDLEX ;
-15:niyânanosâp ENDLEX ;
-16:nikotwâsosâp ENDLEX ;
-17:tepakohposâp ENDLEX ;
-18:ayinânewosâp ENDLEX ;
-19:kekâmitâtahtosâp ENDLEX ;
-19:kekâc% nîstanaw ENDLEX ;
-
-LEXICON ONES
-CARDINAL ;
-
-LEXICON CARDINAL
-1:peyak ENDLEX ;
-2:nîso ENDLEX ;
-3:nisto ENDLEX ;
-4:newo ENDLEX ;
-5:niyânan ENDLEX ;
-6:nikotwâsik ENDLEX ;
-7:tepakohp ENDLEX ;
-8:ayinânew ENDLEX ;
-8:ayenânew ENDLEX ;
-9:kekâmitâtaht ENDLEX ;
+LEXICON OLDTEN-3
+tjue:2 END3 ;
+tredve:3 END3 ;
+førti:4 END3 ;
+femti:5 END3 ;
+seksti:6 END3 ;
+sytti:7 END3 ;
+søtti:7 END3 ;
+åtti:8 END3 ;
+nitti:9  END3 ;
 
 
-!LEXICON ENDLEX
-! ENDLEX ;
-! ENDLEXSECTION ;
-!
-!LEXICON ENDLEXSECTION  ! these are not spellchecked!!!
-!                  ENDLEX ;
-!! % komma% :,      Root ;
-!! % tjuohkkis% :%. Root ;
-!! % kolon% :%:     Root ;
-!! % sárggis% :%-   Root ; 
-! % la% :%=         Root ; 
-! % gráda% :%°      Root ; 
-! % paragráfa% :§   Root ; 
-!! % násti% :%*     Root ; 
-! % ja% :&          Root ; 
+LEXICON OLDTEN-4
+tjue:2 END4 ;
+tredve:3 END4 ;
+førti:4 END4 ;
+femti:5 END4 ;
+seksti:6 END4 ;
+sytti:7 END4 ;
+søtti:7 END4 ;
+åtti:8 END4 ;
+nitti:9  END4 ;
 
-LEXICON ENDLEX
- # ;
+
+LEXICON OLDTEN-5
+tjue:2 END5 ;
+tredve:3 END5 ;
+førti:4 END5 ;
+femti:5 END5 ;
+seksti:6 END5 ;
+sytti:7 END5 ;
+søtti:7 END5 ;
+åtti:8 END5 ;
+nitti:9  END5 ;
+
+
+LEXICON OLDTEN-6
+tjue:2 END6 ;
+tredve:3 END6 ;
+førti:4 END6 ;
+femti:5 END6 ;
+seksti:6 END6 ;
+sytti:7 END6 ;
+søtti:7 END6 ;
+åtti:8 END6 ;
+nitti:9  END6 ;
+
+LEXICON OLDTEN-7
+tjue:2 END7 ;
+tredve:3 END7 ;
+førti:4 END7 ;
+femti:5 END7 ;
+seksti:6 END7 ;
+sytti:7 END7 ;
+søtti:7 END7 ;
+åtti:8 END7 ;
+nitti:9  END7 ;
+
+
+LEXICON OLDTEN-8
+tjue:2 END8 ;
+tredve:3 END8 ;
+førti:4 END8 ;
+femti:5 END8 ;
+seksti:6 END8 ;
+sytti:7 END8 ;
+søtti:7 END8 ;
+åtti:8 END8 ;
+nitti:9  END8 ;
+
+
+LEXICON OLDTEN-9
+tjue:2 END9 ;
+tredve:3 END9 ;
+førti:4 END9 ;
+femti:5 END9 ;
+seksti:6 END9 ;
+sytti:7 END9 ;
+søtti:7 END9 ;
+åtti:8 END9 ;
+nitti:9  END9 ;
+
+LEXICON END1
+ :1 #;
+
+LEXICON END2
+ :2 #;
+
+LEXICON END3
+ :3 #;
+
+LEXICON END4
+ :4 #;
+
+LEXICON END5
+ :5 #;
+
+LEXICON END6
+ :6 #;
+
+LEXICON END7
+ :7 #;
+
+LEXICON END8
+ :8 #;
+
+LEXICON END9
+ :9 #;
+

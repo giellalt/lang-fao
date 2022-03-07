@@ -59,7 +59,7 @@ LEXICON TENCOUNTT
  %0: THOUSAND ;
 
 LEXICON OLDTENST
- :eittog  OLDTEN-1T ;
+ :einog  OLDTEN-1T ;
  :tveirog  OLDTEN-2T ;
  :trýog  OLDTEN-3T ;
  :fýraog  OLDTEN-4T ;
@@ -311,27 +311,32 @@ LEXICON TEEN
 
 
 LEXICON TENS
+
 2:tjúgu TENCOUNT ;
 3:tríati TENCOUNT ;
 4:fýrati TENCOUNT ;
 5:fimmti TENCOUNT ;
-5:hálvtrýss TENCOUNT ;
 6:seksti TENCOUNT ;
-6:trýss TENCOUNT ;
 7:sjeyti TENCOUNT ;
-7:hálvfjerðs TENCOUNT ;
 8:áttati TENCOUNT ;
 8:fýrs TENCOUNT ;
 9:níti  TENCOUNT ;
-9:hálvfems  TENCOUNT ;
+
+5:hálvtrýss ZERO ;
+6:trýss ZERO ;
+7:hálvfjerðs ZERO ;
+9:hálvfems  ZERO ;
 
 
 LEXICON TENCOUNT
 1to9 ; ! also new
+ZERO ;
+
+LEXICON ZERO
 %0: # ;
 
 LEXICON OLDTENS
- :eittog  OLDTEN-1 ;
+ :einog  OLDTEN-1 ;
  :tveirog  OLDTEN-2 ;
  :trýog  OLDTEN-3 ;
  :fýraog  OLDTEN-4 ;

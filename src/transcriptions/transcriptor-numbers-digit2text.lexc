@@ -1,16 +1,26 @@
+!! # Faroese numbers
+
+!! digits are translated to text and vice versa
+
+
+!! It starts with lexicon Root, which splits into
+!! thousands, hundreds, tens, ones.
 LEXICON Root
+!! **LEXICON @ØLEXNAME@**
 THOUSANDS ;
 HUNDREDS ;
 10to99 ;
 1to9 ;
 
 LEXICON THOUSANDS
-1: THOUSAND ;
-2to9T ;
-10to99T ;
-HUNDREDST ;
+!! **LEXICON @LEXNAME@**
+1: THOUSAND ; !!= - @CODE@ = one thousand
+2to9T ; !!= - @CODE@ = two to nine thousands
+10to99T ; !!= - @CODE@ = tens of thousands
+HUNDREDST ; !!= - @CODE@ = hundreds of thousands
 
 LEXICON 2to9T
+!! **LEXICON @LEXNAME@** for two to nine thousand, pointing to **THOUSAND**.
 2:tvey THOUSAND ;
 3:trý THOUSAND ;
 4:fýra THOUSAND ;
@@ -21,13 +31,15 @@ LEXICON 2to9T
 9:níggju THOUSAND ;
 
 LEXICON 10to99T
-1 TEENT ;
-TENST ;
-OLDTENST ;
+!! **LEXICON @LEXNAME@** for 10t and up
+1 TEENT ;  !!= - @CODE@ = teens of thousands
+TENST ;    !!= - @CODE@ = tens of thousand
+OLDTENST ; !!= - @CODE@ = Danish system
 
 LEXICON TEENT
-%0:tíggju THOUSAND ;
-1:ellivu THOUSAND ;
+!! **LEXICON @LEXNAME@** for 10-19 thousands
+%0:tíggju THOUSAND ; !!= - @CODE@ = 10000
+1:ellivu THOUSAND ;  !!= - @CODE@ = 11000
 2:tólv THOUSAND ;
 3:trettan THOUSAND ;
 4:fjúrtan THOUSAND ;
@@ -39,8 +51,9 @@ LEXICON TEENT
 
 
 LEXICON TENST
-2:tjúgu TENCOUNTT ;
-3:tríati TENCOUNTT ;
+!! **LEXICON @LEXNAME@**
+2:tjúgu TENCOUNTT ;   !!= - @CODE@ = 20000...
+3:tríati TENCOUNTT ;  !!= - @CODE@ = 30000...
 4:fýrati TENCOUNTT ;
 5:fimmti TENCOUNTT ;
 5:hálvtrýss TENCOUNTT ;
@@ -54,11 +67,13 @@ LEXICON TENST
 9:hálvfems  TENCOUNTT ;
 
 LEXICON TENCOUNTT
+!! **LEXICON @LEXNAME@**
 2to9T ;
   1:eitt THOUSAND ;
  %0: THOUSAND ;
 
 LEXICON OLDTENST
+!! **LEXICON @LEXNAME@**
  :einog  OLDTEN-1T ;
  :tveirog  OLDTEN-2T ;
  :trýog  OLDTEN-3T ;
@@ -70,6 +85,7 @@ LEXICON OLDTENST
  :níggjuog  OLDTEN-9T ;
 
 LEXICON OLDTEN-1T
+!! **LEXICON @LEXNAME@**
 2:tjúgu END1T ;
 3:tríati END1T ;
 4:fýrati END1T ;
@@ -86,6 +102,7 @@ LEXICON OLDTEN-1T
 
 
 LEXICON OLDTEN-2T
+!! **LEXICON @LEXNAME@**
 2:tjúgu END2T ;
 3:tríati END2T ;
 4:fýrati END2T ;
@@ -102,6 +119,7 @@ LEXICON OLDTEN-2T
 
 
 LEXICON OLDTEN-3T
+!! **LEXICON @LEXNAME@**
 2:tjúgu END3T ;
 3:tríati END3T ;
 4:fýrati END3T ;
@@ -118,6 +136,7 @@ LEXICON OLDTEN-3T
 
 
 LEXICON OLDTEN-4T
+!! **LEXICON @LEXNAME@**
 2:tjúgu END4T ;
 3:tríati END4T ;
 4:fýrati END4T ;
@@ -134,6 +153,7 @@ LEXICON OLDTEN-4T
 
 
 LEXICON OLDTEN-5T
+!! **LEXICON @LEXNAME@**
 2:tjúgu END5T ;
 3:tríati END5T ;
 4:fýrati END5T ;
@@ -150,6 +170,7 @@ LEXICON OLDTEN-5T
 
 
 LEXICON OLDTEN-6T
+!! **LEXICON @LEXNAME@**
 2:tjúgu END6T ;
 3:tríati END6T ;
 4:fýrati END6T ;
@@ -165,6 +186,7 @@ LEXICON OLDTEN-6T
 9:hálvfems  END6T ;
 
 LEXICON OLDTEN-7T
+!! **LEXICON @LEXNAME@**
 2:tjúgu END7T ;
 3:tríati END7T ;
 4:fýrati END7T ;
@@ -181,6 +203,7 @@ LEXICON OLDTEN-7T
 
 
 LEXICON OLDTEN-8T
+!! **LEXICON @LEXNAME@**
 2:tjúgu END8T ;
 3:tríati END8T ;
 4:fýrati END8T ;
@@ -197,6 +220,7 @@ LEXICON OLDTEN-8T
 
 
 LEXICON OLDTEN-9T
+!! **LEXICON @LEXNAME@**
 2:tjúgu END9T ;
 3:tríati END9T ;
 4:fýrati END9T ;
@@ -212,33 +236,43 @@ LEXICON OLDTEN-9T
 9:hálvfems  END9T ;
 
 LEXICON END1T
+!! **LEXICON @LEXNAME@**
 1: THOUSAND;
 
 LEXICON END2T
+!! **LEXICON @LEXNAME@**
 2: THOUSAND;
 
 LEXICON END3T
+!! **LEXICON @LEXNAME@**
 3: THOUSAND;
 
 LEXICON END4T
+!! **LEXICON @LEXNAME@**
 4: THOUSAND;
 
 LEXICON END5T
+!! **LEXICON @LEXNAME@**
 5: THOUSAND;
 
 LEXICON END6T
+!! **LEXICON @LEXNAME@**
 6: THOUSAND;
 
 LEXICON END7T
+!! **LEXICON @LEXNAME@**
 7: THOUSAND;
 
 LEXICON END8T
+!! **LEXICON @LEXNAME@**
 8: THOUSAND;
 
 LEXICON END9T
+!! **LEXICON @LEXNAME@**
 9: THOUSAND;
 
 LEXICON HUNDREDST
+!! **LEXICON @LEXNAME@**
 1: HUNDREDT ;
 2:tvey HUNDREDT ;
 3:trý HUNDREDT ;
@@ -250,18 +284,22 @@ LEXICON HUNDREDST
 9:níggju HUNDREDT ;
 
 LEXICON HUNDREDT
+!! **LEXICON @LEXNAME@**
 :% hundraðog  1to99T ;
 
 LEXICON 1to99T
+!! **LEXICON @LEXNAME@**
 %0: 2to9T ;
 1:eitt THOUSAND ;
 10to99T ;
 
 LEXICON THOUSAND
+!! **LEXICON @LEXNAME@**
 :% túsund HUNDREDS ;
 %0:% túsundog  1to99 ;
 
 LEXICON HUNDREDS
+!! **LEXICON @LEXNAME@**
 1: HUNDRED ;
 2:tvey HUNDRED ;
 3:trý HUNDRED ;
@@ -273,15 +311,18 @@ LEXICON HUNDREDS
 9:níggju HUNDRED ;
 
 LEXICON HUNDRED
+!! **LEXICON @LEXNAME@**
     :% hundraðog   10to99 ;
   %0:% hundraðog   1to9 ;
 %0%0:% hundrað # ;
 
 LEXICON 1to99
+!! **LEXICON @LEXNAME@**
 ! 1to9 ;
 10to99 ;
 
 LEXICON 1to9
+!! **LEXICON @LEXNAME@**
 1:eitt # ;
 2:tvey # ;
 3:trý # ;
@@ -293,11 +334,13 @@ LEXICON 1to9
 9:níggju # ;
 
 LEXICON 10to99
+!! **LEXICON @LEXNAME@**
 1: TEEN ;
 TENS ;
 OLDTENS ;
 
 LEXICON TEEN
+!! **LEXICON @LEXNAME@**
 %0:tíggju # ;
 1:ellivu # ;
 2:tólv # ;
@@ -311,7 +354,7 @@ LEXICON TEEN
 
 
 LEXICON TENS
-
+!! **LEXICON @LEXNAME@**
 2:tjúgu TENCOUNT ;
 3:tríati TENCOUNT ;
 4:fýrati TENCOUNT ;
@@ -329,13 +372,16 @@ LEXICON TENS
 
 
 LEXICON TENCOUNT
+!! **LEXICON @LEXNAME@**
 1to9 ; ! also new
 ZERO ;
 
 LEXICON ZERO
+!! **LEXICON @LEXNAME@**
 %0: # ;
 
 LEXICON OLDTENS
+!! **LEXICON @LEXNAME@**
  :einog  OLDTEN-1 ;
  :tveirog  OLDTEN-2 ;
  :trýog  OLDTEN-3 ;
@@ -347,6 +393,7 @@ LEXICON OLDTENS
  :níggjuog  OLDTEN-9 ;
 
 LEXICON OLDTEN-1
+!! **LEXICON @LEXNAME@**
 2:tjúgu END1 ;
 3:tríati END1 ;
 4:fýrati END1 ;
@@ -363,6 +410,7 @@ LEXICON OLDTEN-1
 
 
 LEXICON OLDTEN-2
+!! **LEXICON @LEXNAME@**
 2:tjúgu END2 ;
 3:tríati END2 ;
 4:fýrati END2 ;
@@ -379,6 +427,7 @@ LEXICON OLDTEN-2
 
 
 LEXICON OLDTEN-3
+!! **LEXICON @LEXNAME@**
 2:tjúgu END3 ;
 3:tríati END3 ;
 4:fýrati END3 ;
@@ -395,6 +444,7 @@ LEXICON OLDTEN-3
 
 
 LEXICON OLDTEN-4
+!! **LEXICON @LEXNAME@**
 2:tjúgu END4 ;
 3:tríati END4 ;
 4:fýrati END4 ;
@@ -411,6 +461,7 @@ LEXICON OLDTEN-4
 
 
 LEXICON OLDTEN-5
+!! **LEXICON @LEXNAME@**
 2:tjúgu END5 ;
 3:tríati END5 ;
 4:fýrati END5 ;
@@ -427,6 +478,7 @@ LEXICON OLDTEN-5
 
 
 LEXICON OLDTEN-6
+!! **LEXICON @LEXNAME@**
 2:tjúgu END6 ;
 3:tríati END6 ;
 4:fýrati END6 ;
@@ -442,6 +494,7 @@ LEXICON OLDTEN-6
 9:hálvfems  END6 ;
 
 LEXICON OLDTEN-7
+!! **LEXICON @LEXNAME@**
 2:tjúgu END7 ;
 3:tríati END7 ;
 4:fýrati END7 ;
@@ -458,6 +511,7 @@ LEXICON OLDTEN-7
 
 
 LEXICON OLDTEN-8
+!! **LEXICON @LEXNAME@**
 2:tjúgu END8 ;
 3:tríati END8 ;
 4:fýrati END8 ;
@@ -474,6 +528,7 @@ LEXICON OLDTEN-8
 
 
 LEXICON OLDTEN-9
+!! **LEXICON @LEXNAME@**
 2:tjúgu END9 ;
 3:tríati END9 ;
 4:fýrati END9 ;
@@ -489,29 +544,38 @@ LEXICON OLDTEN-9
 9:hálvfems  END9 ;
 
 LEXICON END1
+!! **LEXICON @LEXNAME@**
  1: #;
 
 LEXICON END2
+!! **LEXICON @LEXNAME@**
  2: #;
 
 LEXICON END3
+!! **LEXICON @LEXNAME@**
  3: #;
 
 LEXICON END4
+!! **LEXICON @LEXNAME@**
  4: #;
 
 LEXICON END5
+!! **LEXICON @LEXNAME@**
  5: #;
 
 LEXICON END6
+!! **LEXICON @LEXNAME@**
  6: #;
 
 LEXICON END7
+!! **LEXICON @LEXNAME@**
  7: #;
 
 LEXICON END8
+!! **LEXICON @LEXNAME@**
  8: #;
 
 LEXICON END9
+!! **LEXICON @LEXNAME@**
  9: #;
 

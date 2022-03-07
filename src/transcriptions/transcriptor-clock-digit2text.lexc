@@ -12,11 +12,11 @@
 ! Other licensing options are available upon request, please contact
 ! giellatekno@hum.uit.no or feedback@divvun.no
 
-! ==================== !
-! The North Sámi clock !
-! ==================== !
+!    ==================== !
+!! # The Faroese clock
+!    ==================== !
 
-
+!! Multichar_Symbols defines flags and +Use/NG and Úse/NA.
 Multichar_Symbols
 
 @U.TIME.1@
@@ -37,11 +37,14 @@ Multichar_Symbols
 
 
 LEXICON Root
+!! **LEXICON @LEXNAME@** where it all begins
+
       %0: smallhour ;
  +Use/NA: smallhour ;
           largehour ;
 
 LEXICON smallhour
+!! **LEXICON @LEXNAME@** giving the 30-day
   @U.TIME.1@1:@U.TIME.1@  AFTpunkt ; !01:00 - 01:19
   @U.TIME.2@1:@U.TIME.2@  BEFpunkt ; !01:20 - 01:59
   @U.TIME.2@2:@U.TIME.2@  AFTpunkt ; !02:00 - 02:19
@@ -62,6 +65,7 @@ LEXICON smallhour
  @U.TIME.10@9:@U.TIME.10@ BEFpunkt ; !09:20 - 09:59
 
 LEXICON largehour
+!! **LEXICON @LEXNAME@** giving the 30-day
   @U.TIME.10@1%0:@U.TIME.10@            AFTpunkt ; !10:00 - 10:19
   @U.TIME.11@1%0:@U.TIME.11@            BEFpunkt ; !10:20 - 10:59
    @U.TIME.11@11:@U.TIME.11@            AFTpunkt ; !11:00 - 11:59
@@ -98,16 +102,19 @@ LEXICON largehour
 
 
 LEXICON BEFpunkt
+!! **LEXICON @LEXNAME@** before punct
          %:: BEF ; ! +Use/NA
  %.+Use/NA:  BEF ;
 
 LEXICON AFTpunkt
+!! **LEXICON @LEXNAME@** after punct
          %:: AFT  ; ! 2:00 = göökte ! +Use/NA
  %.+Use/NA:  AFT  ; ! 2.00 = göökte
    +Use/NA:  HOUR ; ! 2 = göökte
 
 
 LEXICON BEF
+!! **LEXICON @LEXNAME@** 
        2%0:tíggju%                 TOHALF   ;
         21:níggju%                TOHALF   ;
         22:átta%               TOHALF   ;
@@ -153,6 +160,7 @@ LEXICON BEF
  59+Use/NG:minutt%              TO       ;
 
 LEXICON AFT
+!! **LEXICON @LEXNAME@** after
        %0%0:                      HOUR ;
         %01:eitt%                 OVER ;
  %01+Use/NG:minutt%              OVER ;
@@ -176,22 +184,28 @@ LEXICON AFT
          19:nítjan%     OVER ;
 
 LEXICON TOHALF
+!! **LEXICON @LEXNAME@** before half
  :á% halv%  HOUR ;
 
 LEXICON OVERHALF
+!! **LEXICON @LEXNAME@** after half
  :ývir% halv%  HOUR ;
 
 LEXICON TO
- :á%  HOUR ;
+!! **LEXICON @LEXNAME@** í
+ :í%  HOUR ;
 
 LEXICON OVER
- :ývir%  HOUR ;
+!! **LEXICON @LEXNAME@** yvir
+ :yvir%  HOUR ;
 
 LEXICON HOUR
+!! **LEXICON @LEXNAME@** split in cases (not in use)
   NOMHOUR  ; !^N^
   !LOCHOUR ; !^L^
 
 LEXICON NOMHOUR
+!! **LEXICON @LEXNAME@** hours 1-12 in nominative
    @U.TIME.1@:@U.TIME.1@eitt               # ;
    @U.TIME.2@:@U.TIME.2@tvey             # ;
    @U.TIME.3@:@U.TIME.3@trý             # ;

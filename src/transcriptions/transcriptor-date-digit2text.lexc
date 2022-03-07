@@ -13,30 +13,33 @@
 ! giellatekno@hum.uit.no or feedback@divvun.no
 
 !    ================= !
-!! # The Russian dates 
+!! # Faroese dates 
 !    ================= !
 
-
-! Note that the months (but not all :-( are stress marked.
+!! Defining one tag: +Use/NG for do not generate
 
 Multichar_Symbols
 
 +Use/NG
 
 LEXICON Root
+!! **LEXICON @LEXNAME@** starts.
 DAY ;
 DAY10 ;
 %0: DAY ;
 
 LEXICON DAY
+!! **LEXICON @LEXNAME@** splits days 1-9 in nominative and accusative
 DAY_NOM ;
 DAY_ACC ;
 
 LEXICON DAY10
+!! **LEXICON @LEXNAME@** splits days 10-31 in nominative and accusative
 DAY10_NOM ;
 DAY10_ACC ;
 
 LEXICON DAY_NOM
+!! **LEXICON @LEXNAME@** the nominative ones (fyrsti...)
 1.:fyrsti%  29MONTH ;
 2.:annar%  29MONTH ;
 3.:triði%  29MONTH ;
@@ -48,6 +51,7 @@ LEXICON DAY_NOM
 9.:níggjundi%  29MONTH ;
 
 LEXICON DAY_ACC
+!! **LEXICON @LEXNAME@** the accusative ones (fyrsta...)
 1.:fyrsta%  29MONTH ;
 2.:annar%  29MONTH ;
 3.:triðja%  29MONTH ;
@@ -59,6 +63,7 @@ LEXICON DAY_ACC
 9.:níggjunda%  29MONTH ;
 
 LEXICON DAY10_NOM
+!! **LEXICON @LEXNAME@** nominative tiggjundi...
 1%0.:tíggjundi%  29MONTH ;
 11.:ellivti%  29MONTH ;
 12.:tólvti%  29MONTH ;
@@ -85,6 +90,7 @@ LEXICON DAY10_NOM
 31.:tríatifyrsti%  31MONTH ;
 
 LEXICON DAY10_ACC
+!! **LEXICON @LEXNAME@** accusative tiggjunda...
 1%0.:tíggjunda%  29MONTH ;
 11.:ellivta%  29MONTH ;
 12.:tólvta%  29MONTH ;
@@ -113,12 +119,14 @@ LEXICON DAY10_ACC
  
  
 LEXICON 29MONTH
-2:februar PUNCT ;
-%02:februar PUNCT ;
-30MONTH ;
-31MONTH ;
+!! **LEXICON @LEXNAME@** splits in 3 month types
+2:februar PUNCT ; !!= - @CODE@ for february
+%02:februar PUNCT ;  !!= - @CODE@ for february with leading zero
+30MONTH ; !!= - @CODE@ pointing to 30-day months
+31MONTH ; !!= - @CODE@ pointing to 31-day months
  
 LEXICON 30MONTH
+!! **LEXICON @LEXNAME@** giving the 30-day
 4:april PUNCT ;
 6:juni PUNCT ;
 9:september PUNCT ;
@@ -132,6 +140,7 @@ LEXICON 30MONTH
 31MONTH ;
  
 LEXICON 31MONTH
+!! **LEXICON @LEXNAME@** giving the 31-day months
 1:januar PUNCT ;
 3:mars PUNCT ;
 5:mai PUNCT ;
@@ -149,6 +158,7 @@ LEXICON 31MONTH
 %08:august PUNCT ;
  
 LEXICON PUNCT 
+!! **LEXICON @LEXNAME@** gives punctiation
      %.: # ; ! STRICT 12.3.
        : # ; ! SLOPPY 12.3
 !+Use/NG: # ; ! SLOPPY 12.3

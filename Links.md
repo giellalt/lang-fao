@@ -2,6 +2,7 @@
     * `cg3/`
         * [disambiguator.cg3](src-cg3-disambiguator.cg3.html) ([src](https://github.com/giellalt/lang-fao/blob/main/src/cg3/disambiguator.cg3))
         * [functions.cg3](src-cg3-functions.cg3.html) ([src](https://github.com/giellalt/lang-fao/blob/main/src/cg3/functions.cg3))
+        * [korp.cg3](src-cg3-korp.cg3.html) ([src](https://github.com/giellalt/lang-fao/blob/main/src/cg3/korp.cg3))
     * `fst/`
         * `affixes/`
             * [abbreviations.lexc](src-fst-affixes-abbreviations.lexc.html) ([src](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/abbreviations.lexc))

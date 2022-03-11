@@ -1,4 +1,16 @@
+# Faroese grammarchecker
 
+This is work in progress. The main focus is on **ð** errors, 
+
+This file contains two parts: **Definitions** and **rules**
+
+# Definition section
+
+## Delimiters 
+
+## Grammatical tags
+
+Here we declare all grammatical tags
 
 Declaring all the error tags
 
@@ -8,47 +20,57 @@ Declaring all the error tags
 
 ### Sg1 target forms
 
-Sup should be 1Sg
+### **RULE:** Sup should be 1Sg
 
-Sup  should be 1Sg
+### **RULE:** Sup  should be 1Sg
 
-Sup  should be Inf (men hava vil (vel) ha Sup)
+### **RULE:** sup > inf
 
-Neu should be 1Sg
+### **RULE:** Neu should be 1Sg
 
-Imp Pl should be 1Sg
+### **RULE:** Imp Pl should be 1Sg
 
 ### Plural forms
-Sup should be Pl
+
+### **RULE:** Sup should be Pl
 
 ### Supine forms
-Pl should be Sup
 
-Inf should be Sup
+### **RULE:**s for Pl should be Sup are not written
+
+### **RULE:** Inf should be Sup
+
+### **RULE:** Inf should be Sup
+
+### **RULE:** Inf should be Sup
 
 ## Specific verbs
 
-Past tens of láta is læt not lat
+### **RULE:** Past tens of láta is læt not lat
 
 ## Nouns
 
 ### Definiteness
 
-Neu Indef should be Neu Def
+### **RULE:** Neu Indef should be Neu Def
 
 ### Quantor phrases
 
-Num + N Sg should be Num + N Pl
+### **RULE:** Num + N Sg should be Num + N Pl
 
 Num + N Sg should be Num + N Pl (We need arabic tag here)
 
 ## Subjunctives
 
-ta should be tað
+Nothing here.
+
+## ta / tað rules
+
+### **RULE:** ta should be tað
 
 ## Adjectives
 
-líti should be lítið
+### **RULE:** líti should be lítið
 
 * * *
 <small>This (part of) documentation was generated from [tools/grammarcheckers/grammarchecker.cg3](https://github.com/giellalt/lang-fao/blob/main/tools/grammarcheckers/grammarchecker.cg3)</small>

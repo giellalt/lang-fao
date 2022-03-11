@@ -1,6 +1,9 @@
 # ===================== #
-# Faroese grammarchecker
+#!! # Faroese grammarchecker
 # ===================== #
+
+#!! This is work in progress. The main focus is on **ð** errors, 
+#!! 
 
 # ---------------------- #
 #   Development setup:   #
@@ -31,8 +34,12 @@
 # echo "Hei." | hfst-tokenise -g ../tokenisers/tokeniser-gramcheck-gt-desc.pmhfst | vislcg3 -g disambiguator.cg3 -t | vislcg3 -g grammarchecker.cg3 -t  
 
 
+#!! This file contains two parts: **Definitions** and **rules**
+
+#!! # Definition section
+
 # ========== #
-# Delimiters #
+#!! ## Delimiters 
 # ========== #
 
 
@@ -41,8 +48,10 @@ DELIMITERS = "<.>" "<!>" "<?>" "<¶>" sent ;
 
 
 # ============= #
-# Tags and sets #
+#!! ## Grammatical tags
 # ============= #
+
+#!! Here we declare all grammatical tags
 
 
 # ========
@@ -329,7 +338,7 @@ ADD (&typo &SUGGESTWF) (<spelled>) ;
 
 #!! ### Sg1 target forms
 
-#!! Sup should be 1Sg
+#!! ### **RULE:** Sup should be 1Sg
 ADD:msyn-sup-sg1 (&msyn-sup-sg1) TARGET (V Sup) IF (*-1 ("eg" Pron Pers Sg Nom BARRIER NOT-ADV LINK -1 NOT-1SG));
 COPY:msyn-sup-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sup-sg1) TARGET (V Sup &msyn-sup-sg1) ;
 
@@ -338,16 +347,16 @@ COPY:msyn-sup-sg1 (Ind 1Sg &SUGGEST) EXCEPT (Sup &msyn-sup-sg1) TARGET (V Sup &m
 ## - Eg farið avstað.
 #$ - Eg fari avstað.
 
-#!! Sup  should be 1Sg
+#!! ### **RULE:** Sup  should be 1Sg
 ADD:msyn-sup-sg1 (&msyn-sup-sg1) TARGET (V Sup) IF (-1 ("eg" Pron Pers Sg Nom))(NOT -2 (V Prs) OR (V Prt));
 COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sup-sg1) TARGET (V Sup &msyn-sup-sg1) ;
 
 
-#!! Sup  should be Inf (men hava vil (vel) ha Sup)
+#! Sup  should be Inf (men hava vil (vel) ha Sup)
 #ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V Sup) IF (-1 ("hava") + Prs);
 #COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (Sup &msyn-sup-inf) TARGET (V Sup &msyn-sup-inf) ;
 
-
+#!! ### **RULE:** sup > inf
 ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V PrfPtc) IF (-1 MODV + Prs)(NOT -1 Sup)(0 ("<(.*)að>"r));
 COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Neu Pl Acc Indef &msyn-sup-inf) TARGET (V PrfPtc &msyn-sup-inf) ;
 ## - Eg vil komað.
@@ -355,13 +364,13 @@ COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Neu Pl Acc Indef &msyn-sup-inf) 
 
 #PrfPtc Neu Pl Acc Indef
 
-#!! Neu should be 1Sg
+#!! ### **RULE:** Neu should be 1Sg
 ADD:msyn-prfptc-sg1 (&msyn-prfptc-sg1) TARGET (V PrfPtc Neu Sg Nom Indef) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
 COPY:msyn-prfptc-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (PrfPtc Neu Sg Nom Indef &msyn-prfptc-sg1) TARGET (&msyn-prfptc-sg1) ;
 ## Eg takið tað.
 #$ Eg taki tað.
 
-#!! Imp Pl should be 1Sg
+#!! ### **RULE:** Imp Pl should be 1Sg
 ADD:msyn-sup-sg1 (&msyn-sup-sg1) TARGET (V Imp Pl) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
 COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Imp Pl &msyn-sup-sg1) TARGET (V &msyn-sup-sg1) ;
 ## Eg lesið tað.
@@ -369,8 +378,8 @@ COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Imp Pl &msyn-sup-sg1) TARGET (V
 
 
 #!! ### Plural forms
-#!! Sup should be Pl
 
+#!! ### **RULE:** Sup should be Pl
 ADD:msyn-sup-prspl (&msyn-sup-prspl) TARGET (V Sup) IF (*-1 ("eg") + Pron + Pers + Pl + Nom BARRIER NOT-ADV LINK NOT -1 V + Pl);
 COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V Sup &msyn-sup-prspl) ;
 
@@ -378,13 +387,17 @@ COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V
 #$ Vit skriva til tín í dag um hetta málið.
 
 #!! ### Supine forms
-#!! Pl should be Sup
 
-#!! Inf should be Sup
+#!! ### **RULE:**s for Pl should be Sup are not written
+
+#!! ### **RULE:** Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET V IF (-2 ("hava" V Ind Prs Pl))(-1 ("eg" Pron Pers Pl Nom)) (NOT *1 Sup) (0 (Ind Prs Pl)) (NOT 0 Pass);
 COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Ind Prs Pl &msyn-inf-sup) TARGET (V &msyn-inf-sup) ;
 
+#!! ### **RULE:** Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF (-1 ("hava" V Ind))(NOT 0 Pass OR A)(NOT *1 Sup)(0 (Ind Prs Pl));
+
+#!! ### **RULE:** Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (Inf) IF (-1 ("hava" V Ind))(NOT 0 Pass)(NOT *1 Sup)(NOT 0 A LINK 1 N);
 COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (&msyn-inf-sup) ;
 
@@ -395,7 +408,7 @@ COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (&msyn-inf-su
 
 #!! ## Specific verbs
 
-#!! Past tens of láta is læt not lat
+#!! ### **RULE:** Past tens of láta is læt not lat
 ADD:lex-lat-laet (&lex-lat-laet) TARGET ("lata" V Imp Sg) IF (-1 Adv OR Nom) ;
 COPY:lex-lat-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-lat-laet) TARGET ("lata");
 ## Tað lat stygt.
@@ -406,7 +419,7 @@ COPY:lex-lat-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-
 
 #!! ### Definiteness
 
-#!! Neu Indef should be Neu Def
+#!! ### **RULE:** Neu Indef should be Neu Def
 ADD:msyn-nomindef-nomdef (&msyn-nomindef-nomdef) TARGET (N Neu Sg Dat Indef) IF (NOT 0 Prop)(-1 ("at"))(1 VFIN OR CS OR Pr) ;
 COPY:msyn-nomindef-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef &msyn-nomindef-nomdef) TARGET (N Neu &msyn-nomindef-nomdef) ;
 ## .. fyri at samfelagi skal fylgja altjóða menningini.
@@ -418,7 +431,7 @@ COPY:msyn-nomindef-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef &msyn-nomindef-no
 
 #!! ### Quantor phrases
 
-#!! Num + N Sg should be Num + N Pl
+#!! ### **RULE:** Num + N Sg should be Num + N Pl
 ADD:msyn-nsg-npl (&msyn-nsg-npl) TARGET N  IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year OR Sem/ID OR Rom)(0 (N Msc Sg Acc Indef) LINK NOT 0 Pl OR SGMEASURE) ;
 COPY:msyn-nsg-npl (Pl Acc Indef  &SUGGEST) EXCEPT (Sg Acc Indef &msyn-nsg-npl) TARGET (N Msc &msyn-nsg-npl) ;
 ADDRELATION:msyn-nsg-npl ($2)  (&msyn-nsg-npl)  TO (*-1 Num) ; # this ADDRELATION rule is to be able to refer to two words to the user.
@@ -434,20 +447,24 @@ ADDRELATION:msyn-nsg-npl ($2)  (&msyn-nsg-npl)  TO (*-1 Num) ; # this ADDRELATIO
 
 #!! ## Subjunctives
 
+#!! Nothing here.
+
 ## Tey, ið hava manna arbeiðsbólkin, eru:
 #$ Tey, ið hava mannað arbeiðsbólkin, eru:
 
-#!! ta should be tað
+#!! ## ta / tað rules
+
+#!! ### **RULE:** ta should be tað
 ADD:lex-ta-tad (&lex-ta-tad) TARGET ("tann" Pron Dem Fem Sg Acc) IF (-1 (Ind))(1 Det OR Pron)(NOT 0 ("tí" CS)) ;
 COPY:lex-ta-tad ("tað" Det Neu Sg Nom &SUGGEST) EXCEPT ("tann" Pron Dem Fem Sg Acc &lex-ta-tad) TARGET (&lex-ta-tad) ;
 
-## Er ta onkur sum hevur eina troyggju til føroyskan búna til sølu?
+## Er ta onkur sum hevur eina troyggju til føroyskan búna til sølu? 
 #$ Er tað onkur sum hevur eina troyggju til føroyskan búna til sølu?
 
 
 #!! ## Adjectives
 
-#!! líti should be lítið
+#!! ### **RULE:** líti should be lítið
 ADD:lex-liti-litid (&lex-liti-litid) TARGET ("líta" V Ind Prs 1Sg) IF (-1 Det OR Adv OR Pr)(1 N + Neu + Indef);
 COPY:lex-liti-litid ("lítil" A Neu Sg Nom Indef &SUGGEST) EXCEPT ("líta" V Ind Prs 1Sg &lex-litid) TARGET (&lex-liti-litid) ;
 

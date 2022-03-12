@@ -2,7 +2,7 @@ The Faroese morphology and tools
 ==========================================
 
 [![GitHub issues](https://img.shields.io/github/issues-raw/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/issues)
-[![Build Status](https://github.com/giellalt/lang-fao/workflows/Speller%20CI+CD/badge.svg)](https://github.com/giellalt/lang-fao/actions)
+[![Build Status](https://divvun-tc.thetc.se/api/github/v1/repository/giellalt/lang-fao/main/badge.svg)](https://github.com/giellalt/lang-fao/actions)
 [![License](https://img.shields.io/github/license/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/blob/main/LICENSE)
 
 This repository contains finite state source files for the Faroese language,

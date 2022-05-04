@@ -8,37 +8,37 @@
 * ISOLATED-NUMEXP ;  
 * NUM-PREFIXES ;  
 
-  **1-9** 
+**1-9** 
 
-  **TRÝsplit** 
+**TRÝsplit** 
 
-  **nsplit** 
+**nsplit** 
 
-  **TEXTTENS** 
+**TEXTTENS** 
 
-  **TEXTTEENS** 
+**TEXTTEENS** 
 
-  **basic** 
+**basic** 
 
-  **EITT** 
+**EITT** 
 
-  **TVEY** 
+**TVEY** 
 
-  **TRÝ** 
+**TRÝ** 
 
-  **PAIRNUM** 
+**PAIRNUM** 
 
-  **n** 
+**n** 
 
 ## Ordinals
 
-  **ordinals** 
+**ordinals** 
 
-  **ord_decl** 
+**ord_decl** 
 
-  **ANNAR** 
+**ANNAR** 
 
-  **ANNARMORPH** 
+**ANNARMORPH** 
 
 * * *
 

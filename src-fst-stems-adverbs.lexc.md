@@ -1,12 +1,12 @@
 # Faroese adverbs
 
-  **adv** for the tag +Adv
+**adv** for the tag +Adv
 
-  **advcomp** for the tag +Adv+Cmp
+**advcomp** for the tag +Adv+Cmp
 
-  **advsuperl** for the tag +Adv+Superl
+**advsuperl** for the tag +Adv+Superl
 
-  **Adverb** for the list of appr 1000 adverbs
+**Adverb** for the list of appr 1000 adverbs
 
 * í% gjár adv ; 
 * í% fjør adv ; 

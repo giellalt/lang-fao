@@ -2390,13 +2390,13 @@ We should eventually have syntactic tags here...
 
 # Faroese adverbs
 
-  **adv** for the tag +Adv
+**adv** for the tag +Adv
 
-  **advcomp** for the tag +Adv+Cmp
+**advcomp** for the tag +Adv+Cmp
 
-  **advsuperl** for the tag +Adv+Superl
+**advsuperl** for the tag +Adv+Superl
 
-  **Adverb** for the list of appr 1000 adverbs
+**Adverb** for the list of appr 1000 adverbs
 
 * í% gjár adv ; 
 * í% fjør adv ; 
@@ -2453,17 +2453,17 @@ The file `stems/conjunctions.lexc` contains two lexica:
 This documents the `stems/fao-acronyms.lexc` file.
 Most acronyms are taken from a common generated file, this file is for the Faroese-specific acronyms.
 
-  **LEXICON Acronym-fao** pointing to the lexica 
+**LEXICON Acronym-fao** pointing to the lexica 
 * Akronymnumeralier ; (Nogle tal først, måskje?)
 * Acronym-fao-list ; 
 
-  **LEXICON Acronym-fao-list** for selve listen, i øjeblikket 2:
+**LEXICON Acronym-fao-list** for selve listen, i øjeblikket 2:
 * StÍF ACRO ; 
 * T5PC ACRO ; 
 
-  **Akronymnumeralier**  for 0-9
+**Akronymnumeralier**  for 0-9
 
-  **anl**  send numvers too letterloops -- this might be too liberal.
+**anl**  send numvers too letterloops -- this might be too liberal.
 
 * * *
 
@@ -2476,11 +2476,11 @@ Most acronyms are taken from a common generated file, this file is for the Faroe
 
 The tag +Interj
 
-  **Interj** 
+**Interj** 
 
 The words
 
-  **Interjection** okey, ááá, aj, huff, ...
+**Interjection** okey, ááá, aj, huff, ...
 
 * * *
 
@@ -2530,37 +2530,37 @@ Fila inneheld i underkant av 50000 lemma.
 * ISOLATED-NUMEXP ;  
 * NUM-PREFIXES ;  
 
-  **1-9** 
+**1-9** 
 
-  **TRÝsplit** 
+**TRÝsplit** 
 
-  **nsplit** 
+**nsplit** 
 
-  **TEXTTENS** 
+**TEXTTENS** 
 
-  **TEXTTEENS** 
+**TEXTTEENS** 
 
-  **basic** 
+**basic** 
 
-  **EITT** 
+**EITT** 
 
-  **TVEY** 
+**TVEY** 
 
-  **TRÝ** 
+**TRÝ** 
 
-  **PAIRNUM** 
+**PAIRNUM** 
 
-  **n** 
+**n** 
 
 ## Ordinals
 
-  **ordinals** 
+**ordinals** 
 
-  **ord_decl** 
+**ord_decl** 
 
-  **ANNAR** 
+**ANNAR** 
 
-  **ANNARMORPH** 
+**ANNARMORPH** 
 
 * * *
 
@@ -2570,47 +2570,47 @@ Fila inneheld i underkant av 50000 lemma.
 
 # Faroese pronouns
 
-  **Pronoun** splitting into 3 sublexica:
+**Pronoun** splitting into 3 sublexica:
 1. Personal ;        
 1. Reflexive ;        
 1. Interrogative ;    
 1. Indefinite ;       
 
-  **Personal** for the personal pronouns
+**Personal** for the personal pronouns
 
-  **egtu-obl** 
+**egtu-obl** 
 
-  **okkumtykkum** 
+**okkumtykkum** 
 
-  **S_okkumtykkum** 
+**S_okkumtykkum** 
 
-  **3obl** 
+**3obl** 
 
-  **Reflexive** 
+**Reflexive** 
 
-  **Interrogative** 
+**Interrogative** 
 
-  **EIN** 
+**EIN** 
 
-  **ANNAR_P** 
+**ANNAR_P** 
 
-  **EINHVOR** 
+**EINHVOR** 
 
-  **ANNARHVOR** 
+**ANNARHVOR** 
 
-  **HANNSJALVUR** 
+**HANNSJALVUR** 
 
-  **Indefinite** 
+**Indefinite** 
 
-  **ONKUR** 
+**ONKUR** 
 
-  **NAKAR** 
+**NAKAR** 
 
-  **BADIR** 
+**BADIR** 
 
-  **HVORGIN** 
+**HVORGIN** 
 
-  **EINGIN** 
+**EINGIN** 
 
 * * *
 
@@ -2629,11 +2629,11 @@ Table of content
 
 ## Splitting into name types
 
-  **Propernouns** splitting in 3 lexica: **multipartnames, names, guess**
+**Propernouns** splitting in 3 lexica: **multipartnames, names, guess**
 
-  **multipartnames** contains only 3 names for now
+**multipartnames** contains only 3 names for now
 
-  **names** gives the list of names.
+**names** gives the list of names.
 
 * * *
 

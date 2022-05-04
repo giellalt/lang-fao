@@ -623,6 +623,11 @@ AM_V_UNION = $(AM_V_UNION_@AM_V@)
 AM_V_UNION_ = $(AM_V_UNION_@AM_DEFAULT_V@)
 AM_V_UNION_0 = @echo "  HUNION   $@";
 
+#### LexD (Apertium)
+AM_V_LEXD = $(AM_V_LEXD_@AM_V@)
+AM_V_LEXD_ = $(AM_V_LEXD_@AM_DEFAULT_V@)
+AM_V_LEXD_0 = @echo "  LEXD     $@";
+
 #### Foma
 AM_V_FOMA = $(AM_V_FOMA_@AM_V@)
 AM_V_FOMA_ = $(AM_V_FOMA_@AM_DEFAULT_V@)

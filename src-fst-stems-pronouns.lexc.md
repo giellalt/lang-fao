@@ -1,46 +1,46 @@
 # Faroese pronouns
 
-  **Pronoun** splitting into 3 sublexica:
+**Pronoun** splitting into 3 sublexica:
 1. Personal ;        
 1. Reflexive ;        
 1. Interrogative ;    
 1. Indefinite ;       
 
-  **Personal** for the personal pronouns
+**Personal** for the personal pronouns
 
-  **egtu-obl** 
+**egtu-obl** 
 
-  **okkumtykkum** 
+**okkumtykkum** 
 
-  **S_okkumtykkum** 
+**S_okkumtykkum** 
 
-  **3obl** 
+**3obl** 
 
-  **Reflexive** 
+**Reflexive** 
 
-  **Interrogative** 
+**Interrogative** 
 
-  **EIN** 
+**EIN** 
 
-  **ANNAR_P** 
+**ANNAR_P** 
 
-  **EINHVOR** 
+**EINHVOR** 
 
-  **ANNARHVOR** 
+**ANNARHVOR** 
 
-  **HANNSJALVUR** 
+**HANNSJALVUR** 
 
-  **Indefinite** 
+**Indefinite** 
 
-  **ONKUR** 
+**ONKUR** 
 
-  **NAKAR** 
+**NAKAR** 
 
-  **BADIR** 
+**BADIR** 
 
-  **HVORGIN** 
+**HVORGIN** 
 
-  **EINGIN** 
+**EINGIN** 
 
 * * *
 

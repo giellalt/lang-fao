@@ -3,11 +3,11 @@
 
 The tag +Interj
 
-  **Interj** 
+**Interj** 
 
 The words
 
-  **Interjection** okey, ááá, aj, huff, ...
+**Interjection** okey, ááá, aj, huff, ...
 
 * * *
 

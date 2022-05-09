@@ -322,6 +322,7 @@ LIST &msyn-nomindef-nomdef = &msyn-nomindef-nomdef ;
 LIST &msyn-nsg-npl = &msyn-nsg-npl ;
 LIST &msyn-prfptc-sg1 = &msyn-prfptc-sg1 ;
 LIST &msyn-sup-inf = &msyn-sup-inf ;
+LIST &msyn-supsup-supinf = &msyn-supsup-supinf ;
 LIST &msyn-sup-prspl = &msyn-sup-prspl ;
 LIST &msyn-sup-sg1 = &msyn-sup-sg1 ;
 
@@ -357,10 +358,16 @@ COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sup-sg1) TARGET (V Su
 #COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (Sup &msyn-sup-inf) TARGET (V Sup &msyn-sup-inf) ;
 
 #!! ### **RULE:** sup > inf
-ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V PrfPtc) IF (-1 MODV + Prs)(NOT -1 Sup)(0 ("<(.*)að>"r));
+ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V PrfPtc) IF (*-1 MODV + Prs BARRIER NOT-ADV LINK NOT 0 Sup)(0 ("<(.*)að>"r));
 COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Neu Pl Acc Indef &msyn-sup-inf) TARGET (V PrfPtc &msyn-sup-inf) ;
 ## - Eg vil komað.
 #$ - Eg vil koma.
+
+ADD:msyn-supsup-supinf (&msyn-supsup-supinf) TARGET (V Sup) IF (*-2 MODV + Ind OR HAVA + Ind LINK NOT 0 Sup)(-1 Sup)(0 ("<(.*)að>"r));
+COPY:msyn-supsup-supinf (Inf &SUGGEST) EXCEPT (Sup &msyn-supsup-supinf) TARGET (V &msyn-supsup-supinf) ;
+ADDRELATION:msyn-supsup-supinf ($2) Sup FROM (1 V LINK 0 (&msyn-supsup-supinf));
+## - Eg hevur ikki kunnað kastað tann.
+#$ -  Eg hevur ikki kunnað kasta tann.
 
 #PrfPtc Neu Pl Acc Indef
 

@@ -1033,9 +1033,10 @@ enableval=''
 ################################################################################
 # Define function to enable optional shared targets
 ################################################################################
-# Usage: gt_USE_SHARED([NAME], [SHARED REPONAME])
+# Usage: gt_USE_SHARED(NAME, SHARED REPONAME, [PKG-CONFIG NAME])
 # where, NAME is used as the variable name: gt_SHARED_$NAME, and
 #        REPONAME is used as directory name and pkg-config name
+#        PKG-CONFIG NAME is pkg-config name of dependency if different from $2
 AC_DEFUN([gt_USE_SHARED],
 [
 THIS_TOP_SRC_DIR=$BUILD_DIR_PATH/$MYSRCDIR
@@ -1052,8 +1053,9 @@ AS_IF([test x$with_shared_$1 != xfalse], [
     AS_IF([test -d "$THIS_TOP_SRC_DIR"/../$2 ], [
         gt_SHARED_$1="$THIS_TOP_SRC_DIR"/../$2
         ], [
-            AS_IF([pkg-config --exists $2], [
-                gt_SHARED_$1="$(pkg-config --variable=dir $2)"
+            _gt_pkg_name=m4_default([$3], [$2])
+            AS_IF([pkg-config --exists $_gt_pkg_name], [
+                gt_SHARED_$1="$(pkg-config --variable=dir $_gt_pkg_name)"
             ],
             [
                 gt_SHARED_$1=false

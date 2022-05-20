@@ -118,9 +118,19 @@ fi
 HTTPS_REPO_HOST=https://github.com/giellalt
 SSH_REPO_HOST=git@github.com:giellalt
 
-get_dep_repo "giella-core" "giella-core" "$repoformat"
-get_dep_repo "giella-shared" "giella-common" "$repoformat"
 
+get_dep_repo "giella-core" "giella-core" "$repoformat"
+## TODO: remove after shared-mul is in place for long enough
+get_dep_repo "giella-shared" "giella-common" "$repoformat"
+get_dep_repo "shared-mul" "giella-shared-mul" "$repoformat"
+if grep -F -q 'gt_USE_SHARED' configure.ac ; then
+    grep -F 'gt_USE_SHARED' configure.ac |\
+            sed -e 's/^.*gt_USE_SHARED//' | tr -d '[( )]' |\
+            while read -r r ; do
+        get_dep_repo "$(echo "$r" | cut -d , -f 2)" \
+            "$(echo "$r" | cut -d , -f 3)" $repoformat
+    done
+fi
 # Find the login file:
 if [[ -r ~/.bash_profile ]]; then
     LOGINFILE=~/.bash_profile
@@ -185,7 +195,6 @@ fi
 ### if   test x${!GTLANG_langenv} = x ; then
 ###     echo "WARNING: The variable ${GTLANG_langenv} has not been defined. You"
 ###     echo "will not be able to use your own fst's with the analyser and"
-###     echo "generator scripts if not defined. Please consider rerunning this"
 ###     echo "script with option -l:"
 ###     echo
 ###     echo "$0 -l"

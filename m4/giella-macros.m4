@@ -167,7 +167,7 @@ AS_IF([test "x$with_giella_shared" != "xfalse" -a \
             GIELLA_SHARED="$(pkg-config --variable=dir giella-common)"
         ],
         [
-     AC_MSG_ERROR([Could not find giella-common data dir to set GIELLA_SHARED])
+     AC_MSG_WARN([Could not find giella-common data dir to set GIELLA_SHARED])
         ])
     ])
 ])
@@ -217,7 +217,7 @@ AS_IF([test "x$_giella_shared_version_found" = xno ], [
     _giella_shared_version=$( pkg-config --modversion giella-common )
 ], [test "x$_giella_shared_version_found" = xyes ], [
     true
-], [AC_MSG_ERROR([Could not identify version of giella-common shared data])])
+], [AC_MSG_WARN([Could not identify version of giella-common shared data])])
 
 AC_MSG_RESULT([$_giella_shared_version])
 
@@ -226,7 +226,7 @@ AC_MSG_CHECKING([whether the version of Giella Shared is at least $_giella_share
 AX_COMPARE_VERSION([$_giella_shared_version], [ge], [$_giella_shared_min_version],
                    [giella_shared_version_ok=yes], [giella_shared_version_ok=no])
 AS_IF([test "x${giella_shared_version_ok}" != xno], [AC_MSG_RESULT([$giella_shared_version_ok])],
-[AC_MSG_ERROR([$giella_shared_too_old_message])])
+[AC_MSG_WARN([$giella_shared_too_old_message])])
 
 
 ################################

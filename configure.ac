@@ -185,7 +185,7 @@ gt_ENABLE_TARGETS
 # Add usage of optional shared data here
 # Comment out if shared punctuation not in use!
 gt_USE_SHARED([common], [shared-mul], [giella-shared-mul])
-AM_CONDITIONAL([HAVE_SHARED_COMMON], [test x$gt_SHARED_mul != xfalse])
+AM_CONDITIONAL([HAVE_SHARED_COMMON], [test x$gt_SHARED_common != xfalse])
 # Add locally used shares below this line:
 gt_USE_SHARED([smi], [shared-smi], [giella-shared-smi])
 AM_CONDITIONAL([HAVE_SHARED_SMI], [test x$gt_SHARED_smi != xfalse])

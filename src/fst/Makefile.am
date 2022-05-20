@@ -88,11 +88,11 @@ else
 # this is "safe" fallback (compiles but you miss everything)
 url.tmp.lexc:
 	echo "LEXICON Root" > $@
-	echo "< h t t p (s) : / / ?*> # ;" >> $@
+	echo "< h t t p (s) %: %/ %/ ?*> # ;" >> $@
 
 generated_files/mul-$(GLANG)-%.lexc:
 	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_C_GEN)echo "! Missing shared common data" > $@
+	$(AM_V_GEN)echo "! Missing shared common data" > $@
 endif
 # add other lexical shared data handling here
 

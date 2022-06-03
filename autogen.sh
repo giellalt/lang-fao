@@ -12,8 +12,8 @@ LOGINFILE=
 
 function print_usage() {
     echo "Usage: $0 [OPTIONS...]"
-    echo "Prepare Autotools build infrastructure, ensure that giella-shared and"
-    echo "giella-core is available before setting up Autotools."
+    echo "Prepare Autotools build infrastructure, ensure that giella-core"
+    echo "is available before setting up Autotools."
     echo
     echo "  -h, --help          print this usage info"
     echo "  -l, --add-langvar   Add env. variable \$GTLANG_$GTLANG to login script."
@@ -33,22 +33,6 @@ function git_clone() {
         git clone "$HTTPS_REPO_HOST/$reponame.git"
     else # ssh:
         git clone "$SSH_REPO_HOST/$reponame.git"
-    fi
-}
-
-function make_symlink() {
-    origdir=$1
-    envvar=$2
-    reponame=$3
-    packagename=$4
-    # Check that the dir contains the packagename.pc.in file, if yes, create symlink:
-    if test -f "$origdir/$packagename.pc.in" ; then
-        echo "Found $envvar => $origdir, creating symbolic link to $reponame in $LANGDIR/../"
-        ln -s "$origdir" ../"$reponame"
-    else # If not, error out with a message that the repo is broken:
-        echo "ERROR: Found $origdir, but it seems to be broken:"
-        echo "It does not contain $packagename.pc.in"
-        exit 1
     fi
 }
 
@@ -75,12 +59,12 @@ function get_dep_repo() {
         if test "$repoformat" == "git" ; then
             echo "Nothing found, cloning $reponame in ../"
             gitprotocol=$(git remote get-url origin )
-            cd "$LANGDIR/../" || exit 2
-            git_clone "$reponame"
+            cd "$LANGDIR/../" && git_clone "$reponame" || exit 2
             cd "$LANGDIR" || exit 2
         elif test "$repoformat" == "svn" ; then
             echo "Nothing found, checking out $reponame in ../"
-            cd "$LANGDIR/../" && svn_check_out "$reponame"
+            cd "$LANGDIR/../" && svn_check_out "$reponame" || exit 2
+            cd "$LANGDIR" || exit 2
         else
             echo "ERROR: Not possible to find or get $reponame. Giving up."
             exit 1
@@ -120,9 +104,6 @@ SSH_REPO_HOST=git@github.com:giellalt
 
 
 get_dep_repo "giella-core" "giella-core" "$repoformat"
-## TODO: remove after shared-mul is in place for long enough
-get_dep_repo "giella-shared" "giella-common" "$repoformat"
-get_dep_repo "shared-mul" "giella-shared-mul" "$repoformat"
 if grep -F -q 'gt_USE_SHARED' configure.ac ; then
     grep -F 'gt_USE_SHARED' configure.ac |\
             sed -e 's/^.*gt_USE_SHARED//' | tr -d '[( )]' |\

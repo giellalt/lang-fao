@@ -33,3 +33,17 @@ APERTIUM_CG_INCLUDE_SRC=
 
 ##################################################################
 #### Build rules - add targets and their build rules below:
+
+if HAVE_SHARED_SMI
+dependency-mt-gt.cg3: $(gt_SHARED_smi)/src/cg3/dependency.cg3
+	$(AM_V_CP)cp -f $< $@
+
+functions-mt-gt.cg3: $(gt_SHARED_smi)/src/cg3/functions.cg3
+	$(AM_V_CP)cp -f $< $@
+else
+dependency-mt-gt.cg3: $(topsrcdir)/src/cg3/dependency.cg3
+	$(AM_V_GEN)cp -f $< $@
+
+functions-mt-gt.cg3: $(topsrcdir)/src/cg3/functions.cg3
+	$(AM_V_GEN)cp -f $< $@
+endif

@@ -24,8 +24,13 @@ endif # WANT_SYNTAX
 
 #################################################
 #### Add language-specific build rules here: ####
-dependency.cg3: $(GIELLA_SHARED)/smi/src/cg3/dependency.cg3
+if HAVE_SHARED_SMI
+dependency.cg3: $(gt_SHARED_smi)/src/cg3/dependency.cg3
 	$(AM_V_CP)cp -f $< $@
+else
+%.cg3:
+	$(AM_V_GEN)echo "! missing dependency $@" > $@
+endif
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######

@@ -76,7 +76,7 @@
             language="@GLANG2@"
             type="Grammar error">
     <tokenize><tokenizer n="tokeniser-gramcheck-gt-desc.pmhfst"/></tokenize>
-    <cg><grammar n="mwe-dis.cg3"/></cg>
+    <cg><grammar n="@srcdis@/../tokenisers/mwe-dis.cg3"/></cg>
     <mwesplit/>
     <cgspell>
       <lexicon n="acceptor.default.hfst"/>
@@ -85,9 +85,9 @@
     <blanktag>
       <blanktagger n="analyser-gt-whitespace.hfst"/>
     </blanktag>
-    <cg><grammar n="grc-disambiguator.cg3"/></cg>
-    <cg><grammar n="spellchecker.cg3"/></cg>
-<!--    <cg><grammar n="grc-disambiguator.cg3"/></cg>-->
+    <cg><grammar n="@srcdir@/grc-disambiguator.cg3"/></cg>
+    <cg><grammar n="@srcdir@/spellchecker.cg3"/></cg>
+    <cg><grammar n="@srcdir@/after-speller-disambiguator.cg3"/></cg>-->
   </pipeline>
 
   <pipeline name="@GLANG@gram-dev"
@@ -97,16 +97,16 @@
     <blanktag>
       <blanktagger n="analyser-gt-whitespace.hfst"/>
     </blanktag>
-    <cg><grammar n="mwe-dis.cg3"/></cg>
+    <cg><grammar n="@srcdir@/../tokenisers/mwe-dis.cg3"/></cg>
     <mwesplit/>
     <cgspell>
       <lexicon n="acceptor.default.hfst"/>
       <errmodel n="errmodel.default.hfst"/>
     </cgspell>
-    <cg><grammar n="grc-disambiguator.cg3"/></cg>
-    <cg><grammar n="spellchecker.cg3"/></cg>
-<!--    <cg><grammar n="grc-disambiguator.cg3"/></cg>-->
-    <cg><grammar n="grammarchecker.cg3"/></cg>
+    <cg><grammar n="@srcdir@/grc-disambiguator.cg3"/></cg>
+    <cg><grammar n="@srcdir@/spellchecker.cg3"/></cg>
+    <cg><grammar n="@srcdir@/after-speller-disambiguator.cg3"/></cg>-->
+    <cg><grammar n="@srcdir@/grammarchecker.cg3"/></cg>
     <suggest>
       <generator n="generator-gramcheck-gt-norm.hfstol"/>
       <messages n="errors.xml"/>

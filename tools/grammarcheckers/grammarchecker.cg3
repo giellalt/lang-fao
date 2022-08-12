@@ -372,7 +372,8 @@ ADDRELATION:msyn-supsup-supinf ($2) Sup FROM (1 V LINK 0 (&msyn-supsup-supinf));
 #PrfPtc Neu Pl Acc Indef
 
 #!! ### **RULE:** Neu should be 1Sg
-ADD:msyn-prfptc-sg1 (&msyn-prfptc-sg1) TARGET (V PrfPtc Neu Sg Nom Indef) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
+ADD:msyn-prfptc-sg1 (&msyn-prfptc-sg1) TARGET (V PrfPtc Neu Sg Nom Indef) IF
+	(*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
 COPY:msyn-prfptc-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (PrfPtc Neu Sg Nom Indef &msyn-prfptc-sg1) TARGET (&msyn-prfptc-sg1) ;
 ## Eg takið tað.
 #$ Eg taki tað.

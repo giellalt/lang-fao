@@ -19,9 +19,6 @@ TESTS=\
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
-	msyn-prfptc-sg1.yaml \
-	msyn-sup-prspl.yaml \
-	msyn-sup-sg1.yaml \
 	neg-sup-inf.yaml
 
 endif # WANT_GRAMCHECK

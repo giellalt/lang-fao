@@ -389,7 +389,8 @@ REMOVE Dem IF (0 TAD + $$NAGD)(1C $$NAGD);
 REMOVE:ANotInf Inf IF (-1 HAVA + V + Ind)(0 A + Neu + Sg + Nom + Def)(1 N + Neu + Sg + Nom + Def);
 REMOVE:ANotVPl Ind + Prs + Pl IF (-1 HAVA + V + Ind)(0 A + Neu + Sg + Nom + Def)(1 N + Neu + Sg + Nom + Def);
 
-REMOVE:ANotPrfPtc PrfPtc IF (0 A + $$NUMBER + $$NAGD)(1 N + $$NUMBER + $$NAGD);
+# grc restored
+#REMOVE:ANotPrfPtc PrfPtc IF (0 A + $$NUMBER + $$NAGD)(1 N + $$NUMBER + $$NAGD);
 
 REMOVE:r18 A + Fem IF (0  $$NAGD) (*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 REMOVE:r19 A + Msc IF (0  $$NAGD) (*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
@@ -1105,8 +1106,8 @@ REMOVE:PlandPPandV Inf IF (*-1 Pl + Nom BARRIER VFIN) ;
 
 SELECT:CoordImp Imp IF (*-1 CC OR COMMA BARRIER VFIN LINK *-1C Imp BARRIER VFIN);
 
-# Then we remove the remaining ones.
-REMOVE Imp ;
+# Then we remove the remaining ones. -- but not for the grc
+# REMOVE Imp ;
 
 #REMOVE:r52 Imp IF (NOT *-1 CC OR COMMA LINK *-1 Imp)(NOT *-1 BOS OR PUNCT BARRIER WORD); # hmm
 
@@ -1129,7 +1130,8 @@ REMOVE:PrsPtcNotA Der/A IF (0 PrsPrc)(NOT 1 A OR N);
 
 # Supine
 
-REMOVE:NoSupIfNoHava Sup IF (NOT *0 HAVA OR VERDA);
+# grc
+#REMOVE:NoSupIfNoHava Sup IF (NOT *0 HAVA OR VERDA);
 	
 SELECT Sup IF (*-1 HAVA BARRIER NOT-ADV LINK *-1 Nom);
 
@@ -1173,8 +1175,9 @@ SELECT:r60b (V 2Sg) IF (-1 ("og") LINK *-1C (V 2Sg) BARRIER S-BOUNDARY);
 
 # Present plural
 
-SELECT:r61a (V Pl) IF (-1 (N Pl Nom))(NOT -1 (Acc) LINK *-1 VFIN BARRIER NPNH);
-SELECT:r61b (V Pl) IF (-1 ("eg" Pron Pers Pl Nom));
+# grc
+#SELECT:r61a (V Pl) IF (-1 (N Pl Nom))(NOT -1 (Acc) LINK *-1 VFIN BARRIER NPNH);
+#SELECT:r61b (V Pl) IF (-1 ("eg" Pron Pers Pl Nom));
 
 REMOVE:PrsPl (V Inf) IF (*-1 ("sum") LINK -1 COMMA LINK *-1 Pl BARRIER VFIN);
 

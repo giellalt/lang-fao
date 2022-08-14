@@ -363,7 +363,10 @@ COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Neu Pl Acc Indef &msyn-sup-inf) 
 ## - Eg vil komað.
 #$ - Eg vil koma.
 
-ADD:msyn-supsup-supinf (&msyn-supsup-supinf) TARGET (V Sup) IF (*-2 MODV + Ind OR HAVA + Ind LINK NOT 0 Sup)(-1 Sup)(0 ("<(.*)að>"r));
+ADD:msyn-supsup-supinf (&msyn-supsup-supinf) TARGET (V Sup) IF
+	(*-2 MODV + Ind OR HAVA + Ind BARRIER NOT-ADV LINK NOT 0 Sup)
+	(-1 Sup - COPULA - MODV - ("fáa"))
+	(0 ("<(.*)að>"r));
 COPY:msyn-supsup-supinf (Inf &SUGGEST) EXCEPT (Sup &msyn-supsup-supinf) TARGET (V &msyn-supsup-supinf) ;
 ADDRELATION:msyn-supsup-supinf ($2) Sup FROM (1 V LINK 0 (&msyn-supsup-supinf));
 ## - Eg hevur ikki kunnað kastað tann.

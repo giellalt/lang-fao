@@ -357,8 +357,13 @@ COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sup-sg1) TARGET (V Su
 #ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V Sup) IF (-1 ("hava") + Prs);
 #COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (Sup &msyn-sup-inf) TARGET (V Sup &msyn-sup-inf) ;
 
+LIST noun-inf-lookalike = ("ótti" N) ;
+	
 #!! ### **RULE:** sup > inf
-ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V PrfPtc) IF (*-1 MODV + Prs BARRIER NOT-ADV LINK NOT 0 Sup)(0 ("<(.*)að>"r));
+ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V PrfPtc) IF
+	(*-1 MODV + Prs BARRIER NOT-ADV LINK NOT 0 Sup)
+	(0 ("<(.*)að>"r))
+	(NOT 0 noun-inf-lookalike);
 COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Neu Pl Acc Indef &msyn-sup-inf) TARGET (V PrfPtc &msyn-sup-inf) ;
 ## - Eg vil komað.
 #$ - Eg vil koma.
@@ -406,10 +411,18 @@ ADD:msyn-inf-sup (&msyn-inf-sup) TARGET V IF (-2 ("hava" V Ind Prs Pl))(-1 ("eg"
 COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Ind Prs Pl &msyn-inf-sup) TARGET (V &msyn-inf-sup) ;
 
 #!! ### **RULE:** Inf should be Sup
-ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF (-1 ("hava" V Ind))(NOT 0 Pass OR A)(NOT *1 Sup)(0 (Ind Prs Pl));
+ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF
+	(-1 ("hava" V Ind))
+	(NOT 0 Pass OR A OR noun-inf-lookalike)
+	(NOT *1 Sup)
+	(0 (Ind Prs Pl));
 
 #!! ### **RULE:** Inf should be Sup
-ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (Inf) IF (-1 ("hava" V Ind))(NOT 0 Pass)(NOT *1 Sup)(NOT 0 A LINK 1 N);
+ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (Inf) IF
+	(-1 ("hava" V Ind))
+	(NOT 0 Pass OR noun-inf-lookalike)
+	(NOT *1 Sup)
+	(NOT 0 A LINK 1 N);
 COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (&msyn-inf-sup) ;
 
 ## Hava vit skriva til tín í dag um hetta málið?

@@ -8,13 +8,15 @@ if WANT_GRAMCHECK
 
 # List here (space separated) all yaml files to be run as part of make check:
 TESTS=\
-	neg-sup-inf.yaml \
 	msyn-inf-sup.yaml \
 	msyn-nomindef-nomdef.yaml \
 	msyn-prfptc-sg1.yaml \
 	msyn-sup-inf.yaml \
 	msyn-sup-prspl.yaml \
-	msyn-sup-sg1.yaml
+	msyn-sup-sg1.yaml \
+	neg-inf-sup.yaml \
+	neg-sup-inf.yaml \
+	neg-supsup-supinf.yaml
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:

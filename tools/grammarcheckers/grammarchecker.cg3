@@ -406,28 +406,35 @@ COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V
 
 #!! ### **RULE:**s for Pl should be Sup are not written
 
-#!! ### **RULE:** Inf should be Sup
-ADD:msyn-inf-sup (&msyn-inf-sup) TARGET V IF (-2 ("hava" V Ind Prs Pl))(-1 ("eg" Pron Pers Pl Nom)) (NOT *1 Sup) (0 (Ind Prs Pl)) (NOT 0 Pass);
-COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Ind Prs Pl &msyn-inf-sup) TARGET (V &msyn-inf-sup) ;
 
 #!! ### **RULE:** Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF
-	(-1 ("hava" V Ind))
+	(*-1 ("hava" V Ind) BARRIER NOT-ADV)
 	(NOT 0 Pass OR A OR noun-inf-lookalike)
-	(NOT *1 Sup)
-	(0 (Ind Prs Pl));
+	(0 (Ind Prs Pl) OR Inf)
+#	(NOT *1 Sup BARRIER CC )
+	;
 
 #!! ### **RULE:** Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (Inf) IF
-	(-1 ("hava" V Ind))
+	(*-1 ("hava" V Ind) BARRIER NOT-ADV)
 	(NOT 0 Pass OR noun-inf-lookalike)
-	(NOT *1 Sup)
+#	(NOT *1 Sup BARRIER CC)
 	(NOT 0 A LINK 1 N);
-COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (&msyn-inf-sup) ;
+COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (Inf &msyn-inf-sup) ;
+COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Ind Prs Pl &msyn-inf-sup) TARGET (Ind &msyn-inf-sup) ;
 
 ## Hava vit skriva til tín í dag um hetta málið?
 #$ Hava vit skrivað til tín í dag um hetta málið?
 
+#!! ### **RULE:** Inf should be Sup
+ADD:msyn-inf-sup (&msyn-inf-sup) TARGET V IF 
+	(*-1 ("eg" Pron Pers Pl Nom) BARRIER NOT-ADV LINK -1 ("hava" V Ind)) 
+	(0 (Ind Prs Pl) OR Inf) 
+	(NOT 0 Pass)
+#	(NOT *1 Sup BARRIER CC ) 
+	;
+COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Ind Prs Pl &msyn-inf-sup) TARGET (V &msyn-inf-sup) ;
 
 
 #!! ## Specific verbs

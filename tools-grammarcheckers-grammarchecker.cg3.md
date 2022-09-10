@@ -53,6 +53,7 @@ Declaring all the error tags
 ### Definiteness
 
 ### **RULE:** Neu Indef should be Neu Def
+We turn off this rule for now, it is too hard to avoid false alarms.
 
 ### Quantor phrases
 

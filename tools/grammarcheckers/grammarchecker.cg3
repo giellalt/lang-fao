@@ -451,11 +451,12 @@ COPY:lex-lat-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-
 #!! ### Definiteness
 
 #!! ### **RULE:** Neu Indef should be Neu Def
-ADD:msyn-nomindef-nomdef (&msyn-nomindef-nomdef) TARGET (N Neu Sg Dat Indef) IF
-	(NOT 0 Prop)
-	(-1 ("at"))
-	(1 VFIN OR CS OR Pr) ;
-COPY:msyn-nomindef-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef &msyn-nomindef-nomdef) TARGET (N Neu &msyn-nomindef-nomdef) ;
+#!! We turn off this rule for now, it is too hard to avoid false alarms.
+#ADD:msyn-nomindef-nomdef (&msyn-nomindef-nomdef) TARGET (N Neu Sg Dat Indef) IF
+#	(NOT 0 Prop)
+#	(-1 ("at"))
+#	(1 VFIN OR CS OR Pr) ;
+#COPY:msyn-nomindef-nomdef (Nom Def &SUGGEST) EXCEPT (Dat Indef &msyn-nomindef-nomdef) TARGET (N Neu &msyn-nomindef-nomdef) ;
 ## .. fyri at samfelagi skal fylgja altjóða menningini.
 #$ .. fyri at samfelagið skal fylgja altjóða menningini.
 

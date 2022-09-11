@@ -9,7 +9,6 @@ if WANT_GRAMCHECK
 # List here (space separated) all yaml files to be run as part of make check:
 TESTS=\
 	msyn-inf-sup.yaml \
-	msyn-nomindef-nomdef.yaml \
 	msyn-prfptc-sg1.yaml \
 	msyn-sup-inf.yaml \
 	msyn-sup-prspl.yaml \

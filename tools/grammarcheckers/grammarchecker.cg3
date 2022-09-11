@@ -409,7 +409,7 @@ COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V
 
 #!! ### **RULE:** Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF
-	(*-1 ("hava" V Ind) BARRIER NOT-ADV)
+	(*-1 ("hava" V Ind) BARRIER NOT-ADV OR ("at")) # Linda: Warum: OR ("at")
 	(NOT 0 Pass OR A OR noun-inf-lookalike OR ("verða"))
 	(0 (Ind Prs Pl) OR Inf)
 #	(NOT *1 Sup BARRIER CC )
@@ -421,8 +421,8 @@ ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (Inf) IF
 	(NOT 0 Pass OR noun-inf-lookalike OR ("verða"))
 #	(NOT *1 Sup BARRIER CC)
 	(NOT 0 A LINK 1 N);
-COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (Inf &msyn-inf-sup) ;
 COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Ind Prs Pl &msyn-inf-sup) TARGET (Ind &msyn-inf-sup) ;
+COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (Inf &msyn-inf-sup) ;
 
 ## Hava vit skriva til tín í dag um hetta málið?
 #$ Hava vit skrivað til tín í dag um hetta málið?

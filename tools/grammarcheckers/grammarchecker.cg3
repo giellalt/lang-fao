@@ -353,11 +353,9 @@ ADD:msyn-sup-sg1 (&msyn-sup-sg1) TARGET (V Sup) IF (-1 ("eg" Pron Pers Sg Nom))(
 COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sup-sg1) TARGET (V Sup &msyn-sup-sg1) ;
 
 
-#! Sup  should be Inf (men hava vil (vel) ha Sup)
-#ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V Sup) IF (-1 ("hava") + Prs);
-#COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (Sup &msyn-sup-inf) TARGET (V Sup &msyn-sup-inf) ;
 
 LIST noun-inf-lookalike = ("ótti" N) ;
+
 	
 #!! ### **RULE:** sup > inf
 ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V PrfPtc) IF

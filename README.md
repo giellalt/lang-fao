@@ -19,11 +19,14 @@ Install proofing tools and [keyboards](https://github.com/giellalt/keyboard-fao)
 for the Faroese language by using the [Divvun Installer](http://divvun.no)
 (some languages are only available via the nightly channel).
 
-Use and test spellers
----------------------
+Download and test speller files
+-------------------------------
 
-The spellers downloadable at the top of this page (the `*.bhfst` files) can be
-used with [divvunspell](https://github.com/divvun/divvunspell).
+The speller files downloadable at the top of this page (the `*.bhfst` files) can
+be used with [divvunspell](https://github.com/divvun/divvunspell), to test their
+performance. These files are the exact same ones as installed on users' computers
+and mobile phones. Desktop and mobile speller files differ from each other in the
+error model and should be tested separately — thus also two different downloads.
 
 Documentation
 -------------

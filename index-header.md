@@ -5,55 +5,37 @@
 [![Issues](https://img.shields.io/github/issues/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/issues)
 [![Build Status](https://divvun-tc.thetc.se/api/github/v1/repository/giellalt/lang-fao/main/badge.svg)](https://github.com/giellalt/lang-fao/actions)
 
-This page documents the work on the [Faroese language model](https://github.com/giellalt/lang-fao), how to build analysers and other tools and how to use them.
+This page documents work on [Faroese language technology](https://github.com/giellalt/lang-fao), how to build the Faroese language model and and how to use it.
+
+
+
+## The Faroese language model
 
 The language model is a finite state transducer, capable of analysing and generating any
-Faroese wordform. The model contains the lemmas from *Føroysk orðabók* and the grammatical part 
+Faroese wordform. It contains the lemmas from *Føroysk orðabók* and the grammatical part 
 is written at the University of Tromsø in cooperation with Fróðskaparsetur Føroya.
-
-
-
-## Resources  based upon the Faroese language model
-
-- [Faroese linguistic tools](https://giellatekno.uit.no/cgi/index.fao.eng.html)
-- [Faroese spellchecker online](https://divvun.org/proofing/online-speller.html) (click **ABC** and choose **Faroese** from the menu *Languages*)
-- Downloadable spellchecker: Download the [Installer for Windows](http://divvun.org/proofing/online-speller.html)
-
-
-## Developmental work
-
-### The Faroese language model
 
 -   [Framgangsmåtar for å arbeide med analysatoren](arbeide-med-analysatoren.html)
 -   [Arbeidsplan for færøysk stavekontroll](Stavekontroll.html)
 -   [Testing av analysatoren](AlleGenererteParadigmer.html)
 -   [Víllur i rættstavaranum](vill.html)
 
-### Syntactic analysis
-
 The project also contains a syntactic analyser, built upon constraint
 grammar technology. The Faroese disambiguator is still in an early stage.
 For a presentation, see
 [Trond Trosterud: A Constraint Grammar for Faroese](http://dspace.ut.ee/bitstream/handle/10062/14289/proceedings.pdf?sequence=1").
 
-### The Spellchecker
+## Projects based upon the Faroese language model
 
--   [Lista over skrivefeil + korrekte ord i testen](https://github.com/giellalt/lang-fao/tree/main/test/data/typos.txt)
--   Testresultat for:
-    [ospell](https://github.com/giellalt/lang-fao/tree/main/devtools/speller_result_typos.to.html)
-    og
-    [voikkospell](https://github.com/giellalt/lang-fao/tree/main/devtools/speller_result_typos.vk.html)
-
-### The Faroese grammar checker
+- [The Faorese spellchecker](spellchecker.md)
+- [The Faroese grammar checker](gramcheck/)
 
 
-The idea is to make a grammarchecker primarily concerned with errors related to the letter **ð**. The target group is native speakers.
+## Resources based upon the Faroese language model
 
-#### Links
-
-- [Documentation](https://giellalt.github.io/lang-fao/tools-grammarcheckers-grammarchecker.cg3.html) of the [grammarchecker file](https://github.com/giellalt/lang-fao/blob/main/tools/grammarcheckers/grammarchecker.cg3)
-- [Test files](https://github.com/giellalt/lang-fao/tree/main/tools/grammarcheckers/tests)
-
+- [Faroese linguistic tools](https://giellatekno.uit.no/cgi/index.fao.eng.html)
+- [Downloadable spellchecker](https://divvun.no/korrektur/gramcheck.html)
+- [Faroese spellchecker online](https://divvun.org/proofing/online-speller.html) (cf. the **Help text** on the page)
 
 ## Møtereferat
 

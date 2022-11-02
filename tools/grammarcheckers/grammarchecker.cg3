@@ -363,8 +363,18 @@ ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V PrfPtc) IF
 	(0 ("<(.*)að>"r))
 	(NOT 0 noun-inf-lookalike);
 COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Neu Pl Acc Indef &msyn-sup-inf) TARGET (V PrfPtc &msyn-sup-inf) ;
+COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Neu Pl Nom Indef &msyn-sup-inf) TARGET (V PrfPtc &msyn-sup-inf) ;
+COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Fem Sg Nom Indef &msyn-sup-inf) TARGET (V PrfPtc &msyn-sup-inf) ;
 ## - Eg vil komað.
 #$ - Eg vil koma.
+
+#"<dálkað>"
+#	"dálka" V PrfPtc Fem Sg Nom Indef <W:0.0> &msyn-sup-inf ADD:361:msyn-sup-inf
+#msyn-sup-inf
+#	"dálka" V Fem Sg <W:0.0> Inf &SUGGEST ADD:361:msyn-sup-inf COPY:366:msyn-sup-inf
+#dálka+V+Fem+Sg+Inf	?
+#	"dálka" V Fem Sg Nom <W:0.0> Inf &SUGGEST ADD:361:msyn-sup-inf COPY:365:msyn-sup-inf
+#dálka+V+Fem+Sg+Nom+Inf	?
 
 ADD:msyn-supsup-supinf (&msyn-supsup-supinf) TARGET (V Sup) IF
 	(*-2 MODV + Ind OR HAVA + Ind BARRIER NOT-ADV LINK NOT 0 Sup)
@@ -488,7 +498,7 @@ ADDRELATION:msyn-nsg-npl ($2)  (&msyn-nsg-npl)  TO (*-1 Num) ; # this ADDRELATIO
 #!! ## ta / tað rules
 
 #!! ### **RULE:** ta should be tað
-ADD:lex-ta-tad (&lex-ta-tad) TARGET ("tann" Pron Dem Fem Sg Acc) IF (-1 (Ind))(1 Det OR Pron)(NOT 0 ("tí" CS)) ;
+ADD:lex-ta-tad (&lex-ta-tad) TARGET ("tann" Pron Dem Fem Sg Acc) IF (-1 (Ind))(1 Det OR Pron)(NOT 0 ("<tí>r")) ;
 COPY:lex-ta-tad ("tað" Det Neu Sg Nom &SUGGEST) EXCEPT ("tann" Pron Dem Fem Sg Acc &lex-ta-tad) TARGET (&lex-ta-tad) ;
 
 ## Er ta onkur sum hevur eina troyggju til føroyskan búna til sølu? 

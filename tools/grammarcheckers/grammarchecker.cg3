@@ -103,8 +103,8 @@ LIST 1Sg = 1Sg ;
 LIST 2Sg = 2Sg ;
 LIST 3Sg = 3Sg ;
 LIST Inf = Inf ;
-LIST PrfPrc = PrfPrc ;
-LIST PrsPrc = PrsPrc ;
+LIST PrfPtc = PrfPrc PrfPtc ;
+LIST PrsPtc = PrsPrc PrfPtc ;
 LIST Ind = Ind ;
 LIST Imp = Imp ;
 LIST Pass = Pass ;
@@ -128,8 +128,8 @@ LIST Sem/Year = Sem/Year ;
 LIST Sem/ID = Sem/ID ;
 
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
-Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPrc
-PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Sem/Fem Sem/Mal Sem/Plc Sem/Sur Sem/Org Sem/Veh Guess ;
+Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPtc
+PrsPtc Sup Imp CLB PUNCT LEFT RIGHT Sem/Fem Sem/Mal Sem/Plc Sem/Sur Sem/Org Sem/Veh Guess ;
 
 
 LIST NAGD = Nom Acc Gen Dat ;
@@ -192,7 +192,7 @@ LIST INDSBJ = Ind Sbj ;
 
 LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
 
-LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
+LIST VINFIN = Inf Sup PrfPtc PrsPtc ;
 
 
 LIST DATV = "bjóða" "hýsa" "sleppa" "smakka" "takka" ; # "undirvísa" 
@@ -354,7 +354,7 @@ COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sup-sg1) TARGET (V Su
 
 
 
-LIST noun-inf-lookalike = ("ótti" N) ;
+LIST noun-inf-lookalike = ("manna" N) ("ótti" N) ("endi" N) ;
 
 	
 #!! ### **RULE:** sup > inf
@@ -379,6 +379,7 @@ COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Fem Sg Nom Indef &msyn-sup-inf) 
 ADD:msyn-supsup-supinf (&msyn-supsup-supinf) TARGET (V Sup) IF
 	(*-2 MODV + Ind OR HAVA + Ind BARRIER NOT-ADV LINK NOT 0 Sup)
 	(-1 Sup - COPULA - MODV - ("fáa"))
+	(NOT -1 (N Neu Sg Nom Def))
 	(0 ("<(.*)að>"r));
 COPY:msyn-supsup-supinf (Inf &SUGGEST) EXCEPT (Sup &msyn-supsup-supinf) TARGET (V &msyn-supsup-supinf) ;
 ADDRELATION:msyn-supsup-supinf ($2) Sup FROM (1 V LINK 0 (&msyn-supsup-supinf));
@@ -415,13 +416,26 @@ COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V
 #!! ### **RULE:**s for Pl should be Sup are not written
 
 
+
+
+
+
 #!! ### **RULE:** Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF
-	(*-1 ("hava" V Ind) BARRIER NOT-ADV OR ("at")) # Linda: Warum: OR ("at")
+	(*-1 ("hava" V Ind) BARRIER NOT-ADV OR PrfPtc OR ("at") OR CC) # Linda: Warum: OR ("at"). Weil wir brauchen es. T.
+	(0 ("verða" V Ind Prs Pl) OR ("verða" V Inf))
 	(NOT 0 Pass OR A OR noun-inf-lookalike OR ("verða"))
-	(0 (Ind Prs Pl) OR Inf)
-#	(NOT *1 Sup BARRIER CC )
 	;
+COPY:msyn-inf-sup ("vera" Sup &SUGGEST) EXCEPT ("verða" Ind Prs Pl &msyn-inf-sup) TARGET ("verða" &msyn-inf-sup) ;
+#% Nøkur hava eisini ein hest uttanum hylki, tey ið ikki hava verða kallaði nakin virus.
+#$ Nøkur hava eisini ein hest uttanum hylki, tey ið ikki hava verið kallaði nakin virus.
+
+ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF
+	(*-1 ("hava" V Ind) BARRIER NOT-ADV OR PrfPtc OR ("at") OR CC) # Linda: Warum: OR ("at"). Weil wir brauchen es. T.
+	(0 Ind + Prs + Pl OR Inf)
+	(NOT 0 Pass OR A OR noun-inf-lookalike OR ("verða"))
+	;
+#$ ... at virða tær grundleggjandi reglur, ið náttúran og tað náttúruskapta umhvørvið hava at laga seg eftir. # at !
 
 #!! ### **RULE:** Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (Inf) IF

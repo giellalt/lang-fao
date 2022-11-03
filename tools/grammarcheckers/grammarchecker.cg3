@@ -423,15 +423,6 @@ COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V
 #!! ### **RULE:** Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF
 	(*-1 ("hava" V Ind) BARRIER NOT-ADV OR PrfPtc OR ("at") OR CC) # Linda: Warum: OR ("at"). Weil wir brauchen es. T.
-	(0 ("verða" V Ind Prs Pl) OR ("verða" V Inf))
-	(NOT 0 Pass OR A OR noun-inf-lookalike OR ("verða"))
-	;
-COPY:msyn-inf-sup ("vera" Sup &SUGGEST) EXCEPT ("verða" Ind Prs Pl &msyn-inf-sup) TARGET ("verða" &msyn-inf-sup) ;
-#% Nøkur hava eisini ein hest uttanum hylki, tey ið ikki hava verða kallaði nakin virus.
-#$ Nøkur hava eisini ein hest uttanum hylki, tey ið ikki hava verið kallaði nakin virus.
-
-ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF
-	(*-1 ("hava" V Ind) BARRIER NOT-ADV OR PrfPtc OR ("at") OR CC) # Linda: Warum: OR ("at"). Weil wir brauchen es. T.
 	(0 Ind + Prs + Pl OR Inf)
 	(NOT 0 Pass OR A OR noun-inf-lookalike OR ("verða"))
 	;

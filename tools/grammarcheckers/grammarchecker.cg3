@@ -419,7 +419,8 @@ COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Imp Pl &msyn-sup-sg1) TARGET (V
 #!! ### Plural forms
 
 #!! ### **RULE:** Sup should be Pl
-ADD:msyn-sup-prspl (&msyn-sup-prspl) TARGET (V Sup) IF (*-1 ("eg") + Pron + Pers + Pl + Nom BARRIER NOT-ADV LINK NOT -1 V + Pl);
+ADD:msyn-sup-prspl (&msyn-sup-prspl) TARGET (V Sup) IF
+	(*-1 ("eg") + Pron + Pers + Pl + Nom BARRIER NOT-ADV LINK NOT -1 V + Pl);
 COPY:msyn-sup-prspl (Ind Prs Pl &SUGGEST) EXCEPT (Sup &msyn-sup-prspl) TARGET (V Sup &msyn-sup-prspl) ;
 
 ## Vit skrivað til tín í dag um hetta málið.

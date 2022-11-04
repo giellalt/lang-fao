@@ -126,6 +126,7 @@ LIST Sem/Org = Sem/Org ;
 LIST Sem/Veh = Sem/Veh ;
 LIST Sem/Year = Sem/Year ;
 LIST Sem/ID = Sem/ID ;
+LIST Sem/Time-clock = Sem/Time-clock ;
 
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
 Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPtc
@@ -323,6 +324,7 @@ LIST &msyn-nsg-npl = &msyn-nsg-npl ;
 LIST &msyn-prfptc-sg1 = &msyn-prfptc-sg1 ;
 LIST &msyn-sup-inf = &msyn-sup-inf ;
 LIST &msyn-supsup-supinf = &msyn-supsup-supinf ;
+LIST &msyn-supinf-supsup = &msyn-supinf-supsup ;
 LIST &msyn-sup-prspl = &msyn-sup-prspl ;
 LIST &msyn-sup-sg1 = &msyn-sup-sg1 ;
 
@@ -354,7 +356,7 @@ COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Sup &msyn-sup-sg1) TARGET (V Su
 
 
 
-LIST noun-inf-lookalike = ("manna" N) ("ótti" N) ("endi" N) ;
+LIST noun-inf-lookalike = ("manna" N) ("ótti" N) ("endi" N) ("skúli" N) ;
 
 	
 #!! ### **RULE:** sup > inf
@@ -385,6 +387,18 @@ COPY:msyn-supsup-supinf (Inf &SUGGEST) EXCEPT (Sup &msyn-supsup-supinf) TARGET (
 ADDRELATION:msyn-supsup-supinf ($2) Sup FROM (1 V LINK 0 (&msyn-supsup-supinf));
 ## - Eg hevur ikki kunnað kastað tann.
 #$ -  Eg hevur ikki kunnað kasta tann.
+
+
+ADD:msyn-supinf-supsup (&msyn-supinf-supsup) TARGET (V Inf) IF
+	(*-2 MODV + Ind OR HAVA + Ind BARRIER NOT-ADV LINK NOT 0 Sup)
+	(-1 Sup - COPULA - MODV - ("fáa"))
+	(NOT -1 (N Neu Sg Nom Def))
+	(0 ("<(.*)að>"r));
+COPY:msyn-supsup-supinf (Inf &SUGGEST) EXCEPT (Sup &msyn-supsup-supinf) TARGET (V &msyn-supsup-supinf) ;
+ADDRELATION:msyn-supsup-supinf ($2) Sup FROM (1 V LINK 0 (&msyn-supsup-supinf));
+## Fólk høvdu kunnað klára seg
+#$ Fólk høvdu kunnað klárað seg
+
 
 #PrfPtc Neu Pl Acc Indef
 
@@ -430,7 +444,7 @@ ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF
 
 #!! ### **RULE:** Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (Inf) IF
-	(*-1 ("hava" V Ind) BARRIER NOT-ADV)
+	(*-1 ("hava" V Ind) BARRIER NOT-ADV OR CC OR ("at"))
 	(NOT 0 Pass OR noun-inf-lookalike OR ("verða"))
 #	(NOT *1 Sup BARRIER CC)
 	(NOT 0 A LINK 1 N);
@@ -442,7 +456,7 @@ COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Inf &msyn-inf-sup) TARGET (Inf &msyn-in
 
 #!! ### **RULE:** Inf should be Sup
 ADD:msyn-inf-sup (&msyn-inf-sup) TARGET V IF 
-	(*-1 ("eg" Pron Pers Pl Nom) BARRIER NOT-ADV LINK -1 ("hava" V Ind)) 
+	(*-1 ("eg" Pron Pers Pl Nom) BARRIER NOT-ADV OR ("at") LINK -1 ("hava" V Ind)) 
 	(0 (Ind Prs Pl) OR Inf) 
 	(NOT 0 Pass OR ("verða"))
 #	(NOT *1 Sup BARRIER CC ) 
@@ -480,7 +494,9 @@ COPY:lex-lat-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-
 #!! ### Quantor phrases
 
 #!! ### **RULE:** Num + N Sg should be Num + N Pl
-ADD:msyn-nsg-npl (&msyn-nsg-npl) TARGET N  IF (*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eitt") OR ("1") OR Sem/Year OR Sem/ID OR Rom)(0 (N Msc Sg Acc Indef) LINK NOT 0 Pl OR SGMEASURE) ;
+ADD:msyn-nsg-npl (&msyn-nsg-npl) TARGET N  IF
+	(*-1 Num BARRIER NOT-A LINK NOT 0 ("ein") OR ("eini") OR ("einir") OR ("eitt") OR ("1") OR Sem/Year OR Sem/ID OR Rom OR Sem/Time-clock)
+	(0 (N Msc Sg Acc Indef) LINK NOT 0 Pl OR SGMEASURE) ;
 COPY:msyn-nsg-npl (Pl Acc Indef  &SUGGEST) EXCEPT (Sg Acc Indef &msyn-nsg-npl) TARGET (N Msc &msyn-nsg-npl) ;
 ADDRELATION:msyn-nsg-npl ($2)  (&msyn-nsg-npl)  TO (*-1 Num) ; # this ADDRELATION rule is to be able to refer to two words to the user.
 ##  6 skipara hljópu fyrir borð með kistur sinar ok våru allir drepnir
@@ -503,7 +519,7 @@ ADDRELATION:msyn-nsg-npl ($2)  (&msyn-nsg-npl)  TO (*-1 Num) ; # this ADDRELATIO
 #!! ## ta / tað rules
 
 #!! ### **RULE:** ta should be tað
-ADD:lex-ta-tad (&lex-ta-tad) TARGET ("tann" Pron Dem Fem Sg Acc) IF (-1 (Ind))(1 Det OR Pron)(NOT 0 ("<tí>r")) ;
+ADD:lex-ta-tad (&lex-ta-tad) TARGET (<ta> "tann" Pron Dem Fem Sg Acc) IF (-1 (Ind))(1 Det OR Pron)(NOT 0 ("<tí>"r)) ;
 COPY:lex-ta-tad ("tað" Det Neu Sg Nom &SUGGEST) EXCEPT ("tann" Pron Dem Fem Sg Acc &lex-ta-tad) TARGET (&lex-ta-tad) ;
 
 ## Er ta onkur sum hevur eina troyggju til føroyskan búna til sølu? 

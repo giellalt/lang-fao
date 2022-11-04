@@ -185,6 +185,7 @@ LIST NONTHIRDV = 1Sg 2Sg 1Pl 2Pl ;
 
 LIST VINFIN = Inf Sup PrfPrs PrsPrc ;
 
+LIST SUP-LOOKALIKE = ("alt" Adv) ;
 
 LIST DATV = "bjóða" "hýsa" "sleppa" "smakka" "takka" ; # "undirvísa" 
  # sleppa3 = sleppa manninum leysum
@@ -1133,7 +1134,7 @@ REMOVE:PrsPtcNotA Der/A IF (0 PrsPrc)(NOT 1 A OR N);
 # grc
 #REMOVE:NoSupIfNoHava Sup IF (NOT *0 HAVA OR VERDA);
 	
-SELECT Sup IF (*-1 HAVA BARRIER NOT-ADV LINK *-1 Nom);
+SELECT Sup IF (*-1 HAVA BARRIER NOT-ADV LINK *-1 Nom)(NOT 0 SUP-LOOKALIKE) ;
 
 #SELECT:r55 Sup IF (*-1 ("fáa" V) OR ("hava" V Ind) BARRIER NOT-ADV);
 #check 

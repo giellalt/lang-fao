@@ -1,0 +1,17 @@
+save_data: ./speller.charbased.data
+src_vocab: ./typos.vocab.chars.src
+tgt_vocab: ./typos.vocab.chars.tgt
+overwrite: False
+world_size: 1
+gpu_ranks: [0]
+save_model: ./speller.charbased.model
+seed: 3435
+
+
+data:
+  corpus_1:
+    path_src: train.correct.chars
+    path_tgt: train.incorrect.chars
+  valid:
+    path_src: validate.incorrect.chars
+    path_tgt: validate.correct.chars

@@ -358,7 +358,14 @@ AC_ARG_WITH([divvunspell],
             [with_divvunspell=no])
 AC_PATH_PROG([DIVVUN_ACCURACY], [accuracy], [], [$PATH$PATH_SEPARATOR$with_divvunspell])
 
-
+# Check for opennmt for neural models
+AC_ARG_WITH([opennmt-py],
+            [AS_HELP_STRING([--with-opennmt-py=DIRECTORY],
+                            [search opennmt in DIRECTORY @<:@default=PATH@:>@])],
+            [with_opennmtpy=$withval],
+            [with_opennmtpy=no])
+AC_PATH_PROG([ONMT_BUILD_VOCAB], [onmt_build_vocab], [], [$PATH$PATH_SEPARATOR$with_opennmtpy])
+AC_PATH_PROG([ONMT_TRAIN], [onmt_train], [], [$PATH$PATH_SEPARATOR$with_opennmtpy])
 
 ################ can rsync oxt template? ################
 AC_PATH_PROG([RSYNC], [rsync], [no], [$PATH$PATH_SEPARATOR$with_rsync])
@@ -844,6 +851,15 @@ AS_IF([test "x$enable_vfstspeller" = "xyes" -a "x$enable_mobile_hfstspeller" = x
               [enable_vfstspeller=no])
 AM_CONDITIONAL([WANT_VFST_SPELLER], [test "x$enable_vfstspeller" != xno])
 
+AC_ARG_ENABLE([neural-speller],
+              [AS_HELP_STRING([--enable-neural-speller],
+                              [build neural speller with opennmt-py @<:@default=no@:>@])],
+              [enable_neural_speller=$enableval],
+              [enable_neural_speller=no])
+AS_IF([test "x$enable_neural_speller" = xyes -a x$ONMT_TRAIN = xno],
+      [AC_MSG_ERROR([onmt_train is required for --enable-neural-speller: use pip install opennmt-py])])
+AM_CONDITIONAL([WANT_NEURAL_SPELLERS], [test "x$enable_neural_speller" != xno])
+
 ## Disable Hunspell production by default:
 #AC_ARG_ENABLE([hunspell],
 #              [AS_HELP_STRING([--enable-hunspell],
@@ -1105,6 +1121,7 @@ cat<<EOF
     * mobile spellers (off by default, even with spellers enabled):
       * hfst speller enabled: $enable_mobile_hfstspeller
       * vfst speller enabled: $enable_vfstspeller
+    * neural speller enabled: $enable_neural_speller
   * grammar checker enabled: $enable_grammarchecker
 
 -- Building $PACKAGE_STRING (more specialised build targets listed above):
@@ -1155,10 +1172,11 @@ dnl YAML test warning:
 AS_IF([test "x$enable_yamltests" = "xno"],
       [AC_MSG_WARN([YAML testing could not be automatically enabled. To enable it, on MacOSX please do:
 
-sudo port install python35 py35-pip
-sudo pip-3.5 install PyYAML
+sudo port install python38 py38-pip
+sudo pip-3.8 install PyYAML
 
-On other systems, install python 3.5+ and the corresponding py-yaml using suitable tools for those systems.])])
+3.8 may be newer in the future.
+On other systems, install python 3 and the corresponding py-yaml using suitable tools for those systems.])])
 
 AS_IF([test "x$gt_SHARED_FAILS" != "x"],
       [AC_MSG_WARN([This language depends on $gt_SHARED_FAILS which is missing, some parts of language models may be missing.

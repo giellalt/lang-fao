@@ -90,7 +90,8 @@
 /tools/grammarcheckers/modes
 /tools/grammarcheckers/pipespec.xml
 /tools/grammarcheckers/schemas.xml
-/tools/hyphenators/all_tags.txt
+/tools/hyphenators/*.txt
+/tools/hyphenators/*.pat
 /tools/mt/apertium/*.cg3
 /tools/mt/apertium/tagsets/apertium.relabel
 /tools/mt/apertium/tagsets/apertium.postproc.relabel
@@ -119,9 +120,10 @@
 /tools/tts/functions.cg3
 /tools/tts/mwe-dis.cg3
 /tools/tts/pipespec.xml
+/tools/tts/convert-*.sh
 /tools/tts/test/run_tests.sh
 Makefile
 Makefile.in
 build
 bygg
-generated-tag-list.*
+generated*

@@ -9,8 +9,7 @@
 # List any local additions here:
 GT_LOCAL_FSTSPELLER_FILTER_SRCS=
 
-# Source files copied from src/filters/ OR from
-# $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters:
+# Source files copied from src/filters/ OR from $(GIELLA_CORE)/fst-filters/:
 GIELLA_LOCAL_COPY_FSTBASED_FILTER_SRCS=\
 	convert_to_flags-CmpNP-tags.regex \
 	split-CmpNP-tags.regex

@@ -57,23 +57,11 @@ Could not set GIELLA_CORE and thus not find required scripts in:
        $PATH
 
        Please do the following:
-       1. svn co https://github.com/giellalt/giella-core.git/trunk
-       2. then either:
-         a: cd giella-core && ./autogen.sh && ./configure && make
+       0. cd ..
+       1. git clone https://github.com/giellalt/giella-core.git # or similar using svn
+       2. cd giella-core && ./autogen.sh && ./configure && make
 
-          or:
-         b: add the following to your ~/.bash_profile or ~/.profile:
-
-       export \$GIELLA_CORE=/path/to/giella-core/checkout/dir
-
-       (replace the path with the real path from 1. above)
-
-          or:
-         c: run configure as follows
-
-       ./configure --with-giella-core=/path/to/giella-core/checkout/dir
-
-       (replace the path with the real path from 1. above)
+       Then retry this script.
 "
 
 AC_MSG_CHECKING([whether we can set GIELLA_CORE])
@@ -97,9 +85,10 @@ AS_IF([test "x$with_giella_core" != "xfalse" -a \
 ])
 AC_MSG_RESULT([$GIELLA_CORE])
 
-### This is the version of the Giella Core that we require. Update as needed.
-### It is possible to specify also subversion revision: 0.1.2-12345
-_giella_core_min_version=0.15.0
+###############################################################
+### This is the version of the Giella Core that we require. ###
+### UPDATE AS NEEDED.
+_giella_core_min_version=0.16.5
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -116,10 +105,10 @@ The giella-core is too old, we require at least $_giella_core_min_version.
 *** ==> PLEASE ENTER THE FOLLOWING COMMANDS: <== ***
 
 cd $GTCORE
-svn up
-./autogen.sh # required only the first time
-./configure  # required only the first time
+git pull --rebase # or: `svn up` if you are using svn
 make
+
+Then retry.
 "
 
 # Identify the version of giella-core:
@@ -138,138 +127,6 @@ AX_COMPARE_VERSION([$_giella_core_version], [ge], [$_giella_core_min_version],
                    [giella_core_version_ok=yes], [giella_core_version_ok=no])
 AS_IF([test "x${giella_core_version_ok}" != xno], [AC_MSG_RESULT([$giella_core_version_ok])],
 [AC_MSG_ERROR([$giella_core_too_old_message])])
-
-################################
-### Giella-shared dir:
-################
-# 1. check --with-giella-shared option
-# 2. check env GIELLA_SHARED, then GIELLA_HOME, then GTHOME, then GTCORE
-# 3. check using pkg-config
-# 4. error if not found
-
-AC_ARG_WITH([giella-shared],
-            [AS_HELP_STRING([--with-giella-shared=DIRECTORY],
-                            [search giella-shared data in DIRECTORY @<:@default=PATH@:>@])],
-            [with_giella_shared=$withval],
-            [with_giella_shared=false])
-
-AC_MSG_CHECKING([whether we can set GIELLA_SHARED])
-# --with-giella-shared overrides everything:
-AS_IF([test "x$with_giella_shared" != "xfalse" -a \
-    -d "$with_giella_shared"/all_langs ], [
-    GIELLA_SHARED="$with_giella_shared"
-    ], [
-    # Check in the parent directory:
-    AS_IF([test -d "$THIS_TOP_SRC_DIR"/../giella-shared/all_langs ], [
-        GIELLA_SHARED="$THIS_TOP_SRC_DIR"/../giella-shared
-    ], [
-        AS_IF([pkg-config --exists giella-common], [
-            GIELLA_SHARED="$(pkg-config --variable=dir giella-common)"
-        ],
-        [
-     AC_MSG_WARN([Could not find giella-common data dir to set GIELLA_SHARED])
-        ])
-    ])
-])
-AC_MSG_RESULT([$GIELLA_SHARED])
-
-### This is the version of the Giella Shared that we require. Update as needed.
-### It is possible to specify also subversion revision: 0.1.2-12345
-_giella_shared_min_version=0.2.0
-
-# GIELLA_SHARED is required by the infrastructure to find shared data:
-AC_ARG_VAR([GIELLA_SHARED], [directory for giella shared data, like proper nouns and regexes])
-
-##### Check the version of giella-shared, and stop with error message if too old:
-# This is the error message:
-giella_shared_too_old_message="
-
-The giella-shared is too old, we require at least $_giella_shared_min_version.
-
-*** ==> PLEASE ENTER THE FOLLOWING COMMANDS: <== ***
-
-cd $GIELLA_SHARED
-svn up
-./autogen.sh # required only the first time
-./configure  # required only the first time
-make
-"
-
-# Identify the version of giella-shared:
-AC_MSG_CHECKING([the version of Giella Shared])
-_giella_shared_version=$( pkg-config --modversion "$GIELLA_SHARED"/giella-common.pc )
-
-# Check whether a version info string was found:
-case "$_giella_shared_version" in    # branch to the first pattern
-  "")
-    _giella_shared_version_found=no  # do this if empty string
-    ;;                               # end of this case branch
-  *[!0-9.]*)                         # pattern = anything containing a non-digit
-    _giella_shared_version_found=no  # do this if the pattern triggered
-    ;;                               # end of this case branch
-  *)                                 # pattern = anything (else)
-    _giella_shared_version_found=yes # do this when matching a version string
-    ;;                               # end of this case branch
-esac
-
-# If not, recheck using standard pkg-config locations:
-AS_IF([test "x$_giella_shared_version_found" = xno ], [
-    _giella_shared_version=$( pkg-config --modversion giella-common )
-], [test "x$_giella_shared_version_found" = xyes ], [
-    true
-], [AC_MSG_WARN([Could not identify version of giella-common shared data])])
-
-AC_MSG_RESULT([$_giella_shared_version])
-
-AC_MSG_CHECKING([whether the version of Giella Shared is at least $_giella_shared_min_version])
-# Compare it to the required version, and error out if too old:
-AX_COMPARE_VERSION([$_giella_shared_version], [ge], [$_giella_shared_min_version],
-                   [giella_shared_version_ok=yes], [giella_shared_version_ok=no])
-AS_IF([test "x${giella_shared_version_ok}" != xno], [AC_MSG_RESULT([$giella_shared_version_ok])],
-[AC_MSG_WARN([$giella_shared_too_old_message])])
-
-
-################################
-### Giella-libs dir:
-################
-# 1. check --with-giella-libs option
-# 2. check env GIELLA_LIBS, then GIELLA_HOME, then GTHOME
-# 3. empty if not found
-
-AC_ARG_WITH([giella-libs],
-            [AS_HELP_STRING([--with-giella-libs=DIRECTORY],
-                            [search giella-libs data in DIRECTORY @<:@default=PATH@:>@])],
-            [with_giella_libs=$withval],
-            [with_giella_libs=false])
-
-AC_MSG_CHECKING([whether we can set GIELLA_LIBS])
-# --with-giella-libs overrides everything:
-AS_IF([test "x$with_giella_libs" != "xfalse" -a \
-          -d "$with_giella_libs" ], [
-    GIELLA_LIBS=$with_giella_libs
-    ],[
-    # GIELLA_LIBS is the env. variable for this dir:
-    AS_IF([test "x$GIELLA_LIBS" != "x" -a \
-              -d "$GIELLA_LIBS"], [], [
-        # GIELLA_HOME is the new GTHOME:
-        AS_IF([test "x$GIELLA_HOME" != "x" -a \
-                  -d "$GIELLA_HOME/giella-libs" ], [
-            GIELLA_LIBS=$GIELLA_HOME/giella-libs
-        ], [
-            # GTHOME for backwards compatibility - it is deprecated:
-            AS_IF([test "x$GTHOME" != "x" -a \
-                      -d "$GTHOME/giella-libs" ], [
-                GIELLA_LIBS=$GTHOME/giella-libs
-            ], [
-                GIELLA_LIBS=no
-            ])
-        ])
-    ])
-])
-AC_MSG_RESULT([$GIELLA_LIBS])
-
-# GIELLA_LIBS is needed for speller builds, but if not found, we'll try to fetch over the net:
-AC_ARG_VAR([GIELLA_LIBS], [directory containing precompiled libraries for proofing tools])
 
 ################################
 ### Some software that we either depend on or we need for certain functionality:

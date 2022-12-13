@@ -9,8 +9,7 @@
 # List any local additions here:
 GIELLA_LOCAL_FSTHYPHENATOR_FILTER_SRCS=
 
-# Source files copied from src/filters/ OR from
-# $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters:
+# Source files copied from src/filters/ OR from $(GIELLA_CORE)/fst-filters/:
 GT_LOCAL_COPY_FILTER_SRCS=
 
 # Only build these things if fst-based hyphenators are enabled:

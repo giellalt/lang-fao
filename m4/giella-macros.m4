@@ -88,7 +88,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=0.16.5
+_giella_core_min_version=0.17.0
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -648,19 +648,6 @@ AS_IF([test "x$enable_grammarchecker" != xno],[enable_spellers=yes])
 AS_IF([test "x$enable_spellers" != xno -a "x$BC" = xfalse],
       [AC_MSG_ERROR([counting statistics for spell-checkers requires bc, install or disable spellers])])
 AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
-
-# Enable hfst desktop spellers - default is 'yes' (but dependent on
-# --enable-spellers)
-AC_ARG_ENABLE([hfst-desktop-spellers],
-              [AS_HELP_STRING([--enable-hfst-desktop-spellers],
-                              [build hfst desktop spellers (dependent on --enable-spellers) @<:@default=yes@:>@])],
-              [enable_desktop_hfstspellers=$enableval],
-              [enable_desktop_hfstspellers=yes])
-AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_desktop_hfstspellers=no],
-      [AS_IF([test "x$ZIP" = "xfalse"],
-             [enable_desktop_hfstspellers=no
-              AC_MSG_ERROR([zip missing - required for desktop zhfst spellers])])])
-AM_CONDITIONAL([WANT_HFST_DESKTOP_SPELLER], [test "x$enable_desktop_hfstspellers" != xno])
 
 # Enable minimised fst-spellers by default:
 AC_ARG_ENABLE([minimised-spellers],

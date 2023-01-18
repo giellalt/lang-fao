@@ -2,6 +2,8 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
+TESTS_ENVIRONMENT = export GIELLA_CORE=$(GIELLA_CORE);
+
 ######## Test targets: ###########
 
 # List here (space separated) all test scripts that should be run

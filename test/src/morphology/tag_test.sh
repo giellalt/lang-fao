@@ -23,7 +23,7 @@ sed -e '1,/LEXICON Root/d' < \
     cut -d'!' -f1                     | # get rid of comments
     grep ';'                          | # Get only lines with 
     cut -d';' -f1                     | # get everything in front of ;
-    tr ' ' '\n'                       | # turn all whitespace into newlines
+    tr ' \t' '\n'                     | # turn all spaces and tabs into newlines
     grep -E '[\+|@]'                  | # grep relevant stuff only
     cut -d':' -f1                     | # get rid of surface side
     sed 's/+/¢+/g'                    | # prepare for tag isolation
@@ -34,18 +34,19 @@ sed -e '1,/LEXICON Root/d' < \
     perl -pe "s#^(@[^@]+@)#\1\n#g"    | # do a final cleanup of @C.FLAG@abc
     grep -E '^(\+|@)[A-Za-z]'         | # grep only relevant lines / symbols
     sed 's/\-$//'                     | # Get rid of final hyphens, they are bogus
-    sort -u                           \
+    LC_ALL=no_NO.UTF8 sort -u         \
     > "${lexctags}"
 
 sed -n '/LEXICON Root/q;p' \
     ../../../src/fst/lexicon.tmp.lexc | # Extract all lines before LEXICON Root
     cut -d'!' -f1                     | # Remove comments
     sed 's/Multichar_Symbols//'       | # Remove the string Multichar_Symbols
-    tr ' ' '\n'                       | # Change all spaces to newlines
+    tr ' \t' '\n'                     | # Change all spaces and tabs to newlines
     grep -E '^(\+|@)'                 | # Extract tags and flag diacritics
-    sort -u > "${roottags}"
+    LC_ALL=no_NO.UTF8 sort -u         \
+    > "${roottags}"
 
-check=$(comm -23 "${lexctags}" "${roottags}")
+check=$(LC_ALL=no_NO.UTF8 comm -23 "${lexctags}" "${roottags}")
 if [[ -n "${check}" ]]; then
     echo "$0: Have a look at these:"
     echo "${check}"

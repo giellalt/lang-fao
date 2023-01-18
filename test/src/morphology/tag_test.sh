@@ -18,32 +18,32 @@ if [[ $1 == "-v" ]]; then
     echo "$0: Are there tags not declared in root.lexc or misspelled?"
 fi
 
-sed -e '1,/LEXICON Root/ d' < ../../../src/fst/lexicon.tmp.lexc \
-    | cut -d '!' -f1   \
-    | grep ' ;'        \
-    | cut -d ':' -f1   \
-    | tr -s ' '        \
-    | sed 's/^ //'     \
-    | cut -d ' ' -f1   \
-    | sed 's/+/¢+/g'   \
-    | sed 's/@/¢@/g'   \
-    | tr '¢' '\n'      \
-    | tr '#"%' '\n'    \
-    | grep -E '(\+|@)' \
-    | sort -u          \
-    | grep -E -v '^(\+|\+%|\+\/\-|\+Cmp\-|\+Cmp%\-|\@0|\@%)$' \
-    | grep -v '\+konto' \
+sed -e '1,/LEXICON Root/d' < \
+    ../../../src/fst/lexicon.tmp.lexc | # Extract all lines after LEXICON Root
+    cut -d'!' -f1                     | # get rid of comments
+    grep ';'                          | # Get only lines with 
+    cut -d';' -f1                     | # get everything in front of ;
+    tr ' ' '\n'                       | # turn all whitespace into newlines
+    grep -E '[\+|@]'                  | # grep relevant stuff only
+    cut -d':' -f1                     | # get rid of surface side
+    sed 's/+/¢+/g'                    | # prepare for tag isolation
+    sed 's/@@/@¢@/g'                  | # prepare for flag diacritic splitting
+    tr '¢"#' '\n'                     | # replace some symbols with newlines = split tags
+    grep -E '^(\+|@)[A-Za-z]'         | # grep only relevant lines / symbols
+    perl -pe "s#^(\+[^@]+)@#\1\n@#g"  | # do a final split of +Tag@C.FLAG@
+    perl -pe "s#^(@[^@]+@)#\1\n#g"    | # do a final cleanup of @C.FLAG@abc
+    grep -E '^(\+|@)[A-Za-z]'         | # grep only relevant lines / symbols
+    sed 's/\-$//'                     | # Get rid of final hyphens, they are bogus
+    sort -u                           \
     > "${lexctags}"
 
-cut -d '!' -f1 $srcdir/../../../src/fst/root.lexc \
-    | cut -d ':' -f1                    \
-    | sed 's/+/¢+/g'                    \
-    | sed 's/@/¢@/g'                    \
-    | tr '¢' '\n'                       \
-    | grep -E '(\+|@)'                  \
-    | tr -d ' '                         \
-    | tr -d '\t'                        \
-    | sort -u > "${roottags}"
+sed -n '/LEXICON Root/q;p' \
+    ../../../src/fst/lexicon.tmp.lexc | # Extract all lines before LEXICON Root
+    cut -d'!' -f1                     | # Remove comments
+    sed 's/Multichar_Symbols//'       | # Remove the string Multichar_Symbols
+    tr ' ' '\n'                       | # Change all spaces to newlines
+    grep -E '^(\+|@)'                 | # Extract tags and flag diacritics
+    sort -u > "${roottags}"
 
 check=$(comm -23 "${lexctags}" "${roottags}")
 if [[ -n "${check}" ]]; then

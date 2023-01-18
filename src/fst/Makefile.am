@@ -92,7 +92,7 @@ url.tmp.lexc:
 
 generated_files/mul-$(GLANG)-%.lexc:
 	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)echo "! Missing shared common data" > $@
+	echo "! Missing shared common data" > $@
 endif
 # add other lexical shared data handling here
 

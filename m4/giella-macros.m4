@@ -88,7 +88,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=0.18.1
+_giella_core_min_version=0.18.2
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -180,6 +180,16 @@ AC_CACHE_CHECK([for sed that supports newlines and pipes], [ac_cv_path_SED],
       && ac_cv_path_SED=$ac_path_SED ac_path_SED_found=:]],
     [AC_MSG_ERROR([could not find sed that supports newlines - please install GNU sed. Hint: sudo port install gsed./c])])])
 AC_SUBST([SED], [$ac_cv_path_SED])
+
+# Check for uconv for some automated unicode recoding
+AC_PATH_PROG([UCONV], [uconv], [false])
+AS_IF([test x$UCONV = xfalse], 
+      [AC_MSG_ERROR([needs uconv for unicode support
+       uconv is a part of ICU 
+       on debian/ubuntu: apt install icu-devtools
+       on macports: port install icu
+       on macbrew: brew install icu4c (and follow instructions)
+       ])])
 
 # Check for Forrest:
 AC_ARG_WITH([forrest],

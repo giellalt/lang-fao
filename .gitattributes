@@ -1,13 +1,25 @@
 # List of files to be included in GitHub statistics.
 # DO NOT EDIT - the file is updated via the template system.
 
+# Some defaults:
+* text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+
+# Include in statistics, no syntax colour ATM:
 *.lexc     linguist-detectable=true
 *.twolc    linguist-detectable=true
 *.cg3      linguist-detectable=true
-*.xfscript linguist-detectable=true
-*.pmscript linguist-detectable=true
-*.regex    linguist-detectable=true
-*.yaml     linguist-detectable=true
-*.yml      linguist-detectable=true
-*.am     linguist-language=Makefile linguist-detectable=true
-*.xml.am linguist-language=XML      linguist-detectable=true
+
+# Use regex syntax colouring on these files:
+*.xfscript linguist-language=regex    linguist-detectable=true
+*.pmscript linguist-language=regex    linguist-detectable=true
+
+# Make sure these file types are included with syntax colouring:
+*.am       linguist-language=Makefile linguist-detectable=true
+*.xml.in   linguist-language=XML      linguist-detectable=true
+
+# Exclude from statistics:
+docs/*.html linguist-documentation
+devtools/*.html linguist-generated

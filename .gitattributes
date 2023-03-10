@@ -7,10 +7,14 @@
 *.jpg binary
 *.jpeg binary
 
-# Include in statistics, no syntax colour ATM:
-*.lexc     linguist-detectable=true
-*.twolc    linguist-detectable=true
-*.cg3      linguist-detectable=true
+# Include in statistics, no syntax colour ATM, classified as text instead:
+*.lexc   linguist-language=Text linguist-detectable=true
+*.twolc  linguist-language=Text linguist-detectable=true
+*.cg3    linguist-language=Text linguist-detectable=true
+
+# Include in statistics:
+*.yaml     linguist-detectable=true
+*.yml      linguist-detectable=true
 
 # Use regex syntax colouring on these files:
 *.xfscript linguist-language=regex    linguist-detectable=true

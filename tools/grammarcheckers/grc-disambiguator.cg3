@@ -1151,8 +1151,9 @@ REMOVE:SFregel N IF (0 Sup)(1 VFIN);
 SELECT:r57 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) OR (3PRON Pers Sg Nom) LINK NOT *-1 CC BARRIER NPNHA)(1 (Pron Refl Acc)) ;
 
 
-REMOVE:test1 (V Ind 1Sg) IF (NEGATE 0* ("eg" Pron Pers Sg Nom)); 
-REMOVE:test2 (V Ind 2Sg) IF (NEGATE 0* ("tú" Pron Pers Sg Nom)); # Tino!
+# Keep rule to keep errors
+#REMOVE:test1 (V Ind 1Sg) IF (NEGATE 0* ("eg" Pron Pers Sg Nom)); 
+#REMOVE:test2 (V Ind 2Sg) IF (NEGATE 0* ("tú" Pron Pers Sg Nom)); # Tino!
 
 REMOVE (V Ind 2Sg) IF (*-1 CLB LINK *-1 2Sg OR Prt + Sg LINK -1 ("tú" Pron Pers Sg Nom) LINK -1 ("sum") OR ("ið"));
 

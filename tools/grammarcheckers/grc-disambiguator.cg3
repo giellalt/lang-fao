@@ -1159,7 +1159,7 @@ REMOVE (V Ind 2Sg) IF (*-1 CLB LINK *-1 2Sg OR Prt + Sg LINK -1 ("tú" Pron Pers
 
 SELECT 1Sg IF (-1 ("eg" Pron Pers Sg Nom));
 
-REMOVE:r58b (V Ind 1Sg) IF (*-1 (N Sg Nom) BARRIER NOT-ADV LINK NOT *1 Pron + 1Sg BARRIER CLB) ;
+REMOVE:r58b (V Ind 1Sg) IF (*-1 (N Sg Nom) BARRIER NOT-ADV LINK NOT *1 ("eg" Pron Pers Sg Nom) BARRIER CLB) ;
 SELECT:r59 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) LINK NOT *-1 CC BARRIER NPNHA OR S-BOUNDARY) ;
 
 REMOVE 1Sg IF (-1 V)(0 Acc);

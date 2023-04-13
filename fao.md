@@ -3147,7 +3147,9 @@ Declaring all the error tags
 
 ### Plural forms
 
-### **RULE:** Sup should be Pl
+### **RULE:** Sup should be Pl -- marginal??
+
+### **RULE:** Sup should be Pl -- marginal??
 
 ### Supine forms
 

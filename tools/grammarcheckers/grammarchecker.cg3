@@ -386,8 +386,8 @@ ADD:msyn-supsup-supinf (&msyn-supsup-supinf) TARGET (V Sup) IF
 	(NOT 0 ("virka"));
 COPY:msyn-supsup-supinf (Inf &SUGGEST) EXCEPT (Sup &msyn-supsup-supinf) TARGET (V &msyn-supsup-supinf) ;
 ADDRELATION:msyn-supsup-supinf ($2) Sup FROM (1 V LINK 0 (&msyn-supsup-supinf));
-## - Eg hevur ikki kunnað kastað tann.
-#$ -  Eg hevur ikki kunnað kasta tann.
+## - Eg havi ikki kunnað kastað tann.
+#$ -  Eg havi ikki kunnað kasta tann.
 
 
 ADD:msyn-supinf-supsup (&msyn-supinf-supsup) TARGET (V Inf) IF
@@ -476,10 +476,14 @@ COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Ind Prs Pl &msyn-inf-sup) TARGET (V &ms
 #!! ## Specific verbs
 
 #!! ### **RULE:** Past tens of láta is læt not lat
-ADD:lex-lat-laet (&lex-lat-laet) TARGET ("lata" V Imp Sg) IF (-1 Adv OR Nom) ;
-COPY:lex-lat-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-lat-laet) TARGET ("lata");
+#ADD:lex-lat-laet (&lex-lat-laet) TARGET ("lata" V Imp Sg) IF (-1 Adv OR Nom) ;
+#COPY:lex-lat-laet ("láta" V Ind Prt 3Sg &SUGGEST) EXCEPT ("lata" V Imp Sg &lex-lat-laet) TARGET ("lata");
 ## Tað lat stygt.
 ## Tað læt stygt.
+
+# Problem: láta - letur - læt - látu  men lata - letur - læt - lótu (la)t.
+# "lata" V Imp Sg = "lata" V Prt 1Sg 2Sg 3Sg = lat
+# Vi klarer ikkje skilje láta frå lata.
 
 #!! ## Nouns
 

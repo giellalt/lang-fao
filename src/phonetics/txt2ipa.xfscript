@@ -16,22 +16,18 @@
 ! Phonological converter for Faroese    !
 ! ===================================== !
 
-! This file tries out conversion from Sámi orthography to a phonetic
+! This file tries out conversion from Faroese orthography to a phonetic
 ! translation based upon IPA. There is a switch at the end to get 
 ! SAMPA instaead
 
+! The file is just experimental.
+
 ! Usage:
-! make GTLANG=sma
-! cat text | preprocess | lookup -flags mbTT bin/phon-sma.fst | ..
+! standing in the catalogue lang-fao:
+! ./configure --enable-phonetic
+! make -j
+! cat text | tr ' ' '\n' | hfst-lookup src/phonetics/txt2ipa.lookup.hfst
 
-
-! We might also add syllable boundaries. Here the simple version:
-!cat text | preprocess | lookup -flags mbTT -utf8 bin/hyphrules-sma.fst | cut -f2 | lookup -flags mbTT -utf8 bin/phon-sma.fst | cut -f2 | tr '\n' ' '  | see
-
-! echo "dïhte lea 123" | preprocess | 
-! lookup -flags mbTT -utf8 bin/sma-num.fst | cut -f2 |
-! lookup -flags mbTT -utf8 bin/hyphrules-sma.fst | cut -f2 | 
-! lookup -flags mbTT -utf8 bin/phon-sma.fst | cut -f2 | tr '\n' ' ' | l
 
 
 echo <<defining Cns and Vow...>>
@@ -42,7 +38,7 @@ define Vow       [ a | e | i | o | u | y | æ | ø | å | ö |
                    â | ê | ô | û | î | ã | ý |
                    Á | É | Ó | Ú | Í | À | 
                    Â | Ê | Ô | Û | Î | Ã | Ý |
-                   ʉ | ə ] ;
+                   ɪ | ʏ | ɛ | œ | ʊ | ɔ | ʉ | ə ] ;
 
 define Cns [ b | c | d | ð | f | g | h | j | k | l | m | n | ŋ |
              B | C | D | Ð | F | G | H | J | K | L | M | N | Ŋ | 
@@ -74,11 +70,15 @@ define down [ A -> a, Á -> á, B -> b, C -> c, D -> d, Ð -> ð, E -> e, F -> f
               U -> u, V -> v, W -> w, X -> x, Y -> y, Z -> z, Æ -> æ, 
               Ø -> ø, Å -> å, Ö -> ö ] ;
 
+define odi ð -> j || [Vow|ː] _ [ɪ|i] ;
+
+define egi g -> j || [Vow|ː] _ [ɪ|i] ;
+
 define LexicalRules j ï h   -> j e h || .#. _ .#. ;
 
 define ShortVow i -> ɪ , y -> ʏ , e -> ɛ , ø -> œ , u -> ʊ , o -> ɔ ;
 
-define LongVow ɪ -> i ː , ʏ -> i ː , ɛ -> e ː , œ -> ø ː , ɔ -> o ː , a -> a ː ||
+define LongVow ɪ -> i ː , ʏ -> i ː , ɛ -> e ː , e -> e ː , œ -> ø ː , ɔ -> o ː , o -> o ː , a -> a ː ||
                .#. Cns* _ Cns Vow ;
                
 
@@ -122,6 +122,8 @@ echo <<Combining...>>
 
 read regex [ 
     down 
+.o. odi 
+.o. egi 
 .o. LexicalRules  
 .o. ShortVow
 .o. LongVow

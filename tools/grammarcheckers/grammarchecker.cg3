@@ -327,6 +327,7 @@ LIST &msyn-supsup-supinf = &msyn-supsup-supinf ;
 LIST &msyn-supinf-supsup = &msyn-supinf-supsup ;
 LIST &msyn-sup-prspl = &msyn-sup-prspl ;
 LIST &msyn-sup-sg1 = &msyn-sup-sg1 ;
+LIST &msyn-imppl-sg1 = &msyn-imppl-sg1 ;
 
 #!! # Rule section
 
@@ -411,8 +412,8 @@ COPY:msyn-prfptc-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (PrfPtc Neu Sg Nom Indef &msy
 #$ Eg taki tað.
 
 #!! ### **RULE:** Imp Pl should be 1Sg
-ADD:msyn-sup-sg1 (&msyn-sup-sg1) TARGET (V Imp Pl) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
-COPY:msyn-sup-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Imp Pl &msyn-sup-sg1) TARGET (V &msyn-sup-sg1) ;
+ADD:msyn-imppl-sg1 (&msyn-imppl-sg1) TARGET (V Imp Pl) IF (*-1 ("eg" Pron Pers Sg Nom ) BARRIER NOT-ADV LINK -1 BOS OR CS OR Adv OR PUNCT);
+COPY:msyn-imppl-sg1 (Ind Prs 1Sg &SUGGEST) EXCEPT (Imp Pl &msyn-imppl-sg1) TARGET (V &msyn-imppl-sg1) ;
 ## Eg lesið tað.
 #$ Eg lesi tað.
 

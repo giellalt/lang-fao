@@ -3453,8 +3453,10 @@ LEXICON S_F_SGGEN_NULL
 !
 LEXICON F_PLNA_UR
 !! * **LEXICON @LEXNAME@** 
- +Pl+Nom:%>ur DF_NA_PLf ;
- +Pl+Acc:%>ur DF_NA_PLf ;
+ +Pl+Nom:%>ur DF_NA_PLf ;          ! kommunur
+ +Pl+Nom+Err/Orth:%>ar DF_NA_PLf ; ! kommunar (wrong)
+ +Pl+Acc:%>ur DF_NA_PLf ;          ! kommunurnar
+ +Pl+Acc+Err/Orth:%>u DF_NA_PLf ;  ! kommununar (wrong)
 !
 LEXICON F_PLNA_IR
 !! * **LEXICON @LEXNAME@** 

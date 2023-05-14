@@ -101,6 +101,8 @@ LIST Arab = Arab ;
 LIST Ord = Ord ;
 LIST Err/Orth = Err/Orth ;
 
+LIST CmpNP/None = CmpNP/None ;
+     
 LIST CURRENCY = "dinar" "dollar" "euro" "krona" "kr" "rubel" "¢" "€" "$";
 	
 	
@@ -1046,6 +1048,10 @@ REMOVE:annar ("annar" Pron) + $$NAGD IF (1 N + $$NAGD);
 REMOVE:CCPrs Prs + 3Sg IF (0 Pl + Nom)(1 CC)(*2 Pl + Nom BARRIER NPNH OR OBL);
 
 
+REMOVE:AccNotNom1 Nom IF (0 ("tað" Pron Pers Sg Acc))(1 V + 1Sg)(2 ("eg" Pron Pers Sg Nom));
+REMOVE:AccNotNom2 Nom IF (0 ("tað" Pron Pers Sg Acc))(1 V + 2Sg)(2 ("tú" Pron Pers Sg Nom));
+REMOVE:AccNotNom3 Nom IF (0 ("tað" Pron Pers Sg Acc))(1 V + 3Sg)(2 ("hann" Pron Pers Sg Nom) OR ("hon" Pron Pers Sg Nom));
+
 
 # VP disambiguation
 # =================
@@ -1269,7 +1275,7 @@ REMOVE:siggja Refl IF (NOT -1 V OR Pr)(0 ("síggja"))(1 Nom);
 SELECT:2Sg 2Sg IF (-1C ("tú" Pron Nom));
 	   ## Tú ert.
 
-SELECT:1Sg 1Sg IF (-1C Adv)(0C V)(1 ("eg" Pron Nom))(NOT 2 CC);
+SELECT:1Sg 1Sg IF (-1C Adv OR TAD OR Acc)(NOT 0 N)(1 ("eg" Pron Nom))(NOT 2 CC);
 	## Fyrst vil eg, ...
 	
 REMOVE:sumAndFIN N IF (-1 ("sum" CS))(0 INDSBJ)(NOT 1 INDSBJ);
@@ -1277,7 +1283,19 @@ REMOVE:sumAndFIN N IF (-1 ("sum" CS))(0 INDSBJ)(NOT 1 INDSBJ);
 REMOVE:IdV N IF (-1 ("ið" CS))(0 VFIN)(NOT 1 VFIN);
 	## Viðhvørt kom eitt suff frá stavinum, ið stakk i bleyta jørð.
 
-	
+REMOVE:Not1Sg 1Sg IF (-1 TAD)(0 3Sg)(1 PrfPtc);
+	      ## Eg minnist, hvussu nógv tað bleiv tosað um akkurát tað.
+
+REMOVE:Not1Sg 1Sg IF (-1 Adv)(0 3Sg)(1 TAD)(1 V + Inf);
+
+REMOVE:Not1Sg 1Sg IF (-1 ("hann") + Nom)(1 Pr OR Acc OR Adv);
+	      ## Han kom til verðina.
+	      
+REMOVE:3sgNotPrfPtc PrfPtc IF (-1 Pron + Nom OR N + Sg + Nom)(0 3Sg)(1 Acc);
+		    ## Hann snýtti seg fram.
+
+SELECT:PrtPl Prt IF (-1 Pl + Nom)(1 IM)(2 Inf);
+
 # VP disambiguation
 REMOVE:r113 V IF (-1 (Det Nom))(0 (N Nom));
 
@@ -1285,6 +1303,7 @@ REMOVE:r113 V IF (-1 (Det Nom))(0 (N Nom));
 REMOVE:PrtAndPrc PrfPtc IF (0 Prt)(-1 CLB LINK *-1 Prt BARRIER VFIN);
 	## Skógvarnir gingu sáttliga, skróvaðu eitt sindur.
 	
+REMOVE:PrsPrsAndi ("andi") IF (0 PrsPrc);
 
 # Number disambiguation
 
@@ -1436,7 +1455,10 @@ REMOVE:NoCmp SUB:1 (0/1 Cmp);
 
 REMOVE:LeksNotDyn Dyn ;
 
-
+REMOVE:CmpNPNone CmpNP/None ;
+REMOVE:CmpNPNone (0/1 CmpNP/None) ;
+REMOVE:CmpNPNone (0/2 CmpNP/None) ;
+REMOVE:CmpNPNone (0/3 CmpNP/None) ;
 
 
 #!! * **X** removes readings with no syntax

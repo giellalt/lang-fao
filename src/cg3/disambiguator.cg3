@@ -123,7 +123,8 @@ PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Sem/Fem Sem/Mal Sem/Plc Sem/Sur Sem/Org Sem/
 LIST NAGD = Nom Acc Gen Dat ; #!!≈ * @CODE@ 
 LIST AGD = Acc Gen Dat ; #!!≈ * @CODE@ 
 LIST GENDER = Msc Fem Neu ; #!!≈ * @CODE@ 
-LIST NUMBER = Sg Pl ; #!!≈ * @CODE@ 
+LIST NUMBER = Sg Pl ; #!!≈ * @CODE@
+LIST DEFNESS = Indef Def ; #!!≈ * @CODE 
 SET NAGDNUMBERGENDER = (Msc Sg Nom) OR (Msc Sg Acc) OR (Msc Sg Gen) OR (Msc Sg Dat) OR (Msc Pl Nom) OR (Msc Pl Acc) OR (Msc Pl Gen) OR (Msc Pl Dat) OR (Fem Sg Nom) OR (Fem Sg Acc) OR (Fem Sg Gen) OR (Fem Sg Dat) OR (Fem Pl Nom) OR (Fem Pl Acc) OR (Fem Pl Gen) OR (Fem Pl Dat) OR (Neu Sg Nom) OR (Neu Sg Acc) OR (Neu Sg Gen) OR (Neu Sg Dat) OR (Neu Pl Nom) OR (Neu Pl Acc) OR (Neu Pl Gen) OR (Neu Pl Dat) ;
 
 LIST CmpNP/None = CmpNP/None ;
@@ -299,6 +300,8 @@ LIST BAREPLURALS = "barn" "fólk" "bygdafólk" "konufólk" ;
 
 LIST PLACEADVERB = "ímillum" ;
 	
+LIST AMOUNT = "mm" "cm" "dm" "m" "km" "mm2" "cm2" "dm2" "m2" "km2" "mm3" "cm3" "dm3" "m3" "km3" "kr" "króna" ;
+
 # Word sets
 
 LIST TAD = "tað" ;
@@ -857,7 +860,12 @@ SELECT ("innast" Adv) IF (1 ("inni"));
 # Numerals and number symbols
 # ===========================
 
-SELECT:year Sem/Year IF (-1 MONTH);
+REMOVE:noyear Sem/Year IF (1 AMOUNT);
+	      ## 1400 m2
+
+SELECT:year Sem/Year IF (-1 MONTH OR Pr OR BOS);
+
+
 
 SELECT:ArabNom (Arab Nom) (-1 BOS)(NOT 0 Prop OR Sem/ID) ;
 
@@ -954,7 +962,8 @@ REMOVE:AdvErTad Acc IF (-2 Adv)(-1 VFIN)(0 ("tað"))(1 Adv);
 
 REMOVE V IF (-1 SOMEGENPREP)(0 N + Gen);
 	
-
+#REMOVE V IF (0 (A $$NAGD $$GENDER $$NUMBER $$DEFNESS)) (1 (N $$NAGD $$GENDER $$NUMBER $$DEFNESS));
+SELECT:anagr $$NAGDNUMBERGENDER IF (0 A) (1 N + $$NAGDNUMBERGENDER)(NOT 1 Prop);
 
 # Noun disambiguation
 # -------------------

@@ -16,7 +16,8 @@ This file documents the [Faroese disambiguator file](http://github.com/giellalt/
 * LIST NAGD = Nom Acc Gen Dat ; 
 * LIST AGD = Acc Gen Dat ; 
 * LIST GENDER = Msc Fem Neu ; 
-* LIST NUMBER = Sg Pl ; 
+* LIST NUMBER = Sg Pl ;
+* @CODE 
 
 Test: Go for minimal weight. This rules gives priority to lexicalised forms.
 

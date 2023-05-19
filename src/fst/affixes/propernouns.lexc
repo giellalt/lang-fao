@@ -233,7 +233,7 @@ LEXICON ASTA
 ! ________
 
 
-LEXICON surtag
+LEXICON surtagc
 !!= **@LEXNAME@** 
   +N+Prop+Sem/Sur+Sg+Nom:          # ;
   +N+Prop+Sem/Sur+Sg+Acc:          # ;
@@ -241,6 +241,14 @@ LEXICON surtag
   +N+Prop+Sem/Sur+Sg+Dat:%^IUML%>i # ; ! ..ssyni
   +N+Prop+Sem/Sur+Sg+Gen:%>s       # ;
  +N+Prop+Sem/Sur+Sg+Poss:%>asa     # ; !SAFORM
+
+LEXICON surtagv
+!!= **@LEXNAME@** 
+  +N+Prop+Sem/Sur+Sg+Nom:          # ;
+  +N+Prop+Sem/Sur+Sg+Acc:          # ;
+  +N+Prop+Sem/Sur+Sg+Dat:       # ; ! ..ssoni
+  +N+Prop+Sem/Sur+Sg+Gen:%>s       # ;
+ +N+Prop+Sem/Sur+Sg+Poss:%>sa     # ; !SAFORM
 
 !! ###  Place names and other names
 ! ___________________________

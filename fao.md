@@ -1556,8 +1556,8 @@ lexicon. The other lexica are there for specific subgroups of the names.
 @P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ;  are Flags to control compounding
 
 # Lexicon RReal is the lexicon for the Cmp tag and resending to N, A
-*  +Cmp#: Nouns ;          
-*  +Cmp#: Adjectives ;    
+*  +Cmp#:# Nouns ;          
+*  +Cmp#:# Adjectives ;    
           R-    ;        
 
 # Lexicon R- for compounds with hyphen
@@ -1609,6 +1609,7 @@ Here we declare all symbols.
 * **«7** : Real quote mark
 * **»7** : Real quote mark
 * **« »** : Derivational morpheme borders
+* **%-** : hyphen at word boundaries
 
 ## Sets
 Here we define some convenient sets.

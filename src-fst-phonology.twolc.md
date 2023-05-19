@@ -34,6 +34,7 @@ Here we declare all symbols.
 * **«7** : Real quote mark
 * **»7** : Real quote mark
 * **« »** : Derivational morpheme borders
+* **%-** : hyphen at word boundaries
 
 ## Sets
 Here we define some convenient sets.

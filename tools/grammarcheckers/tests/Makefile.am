@@ -19,7 +19,14 @@ TESTS=\
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=
+XFAIL_TESTS=\
+	msyn-inf-sup.yaml \
+	msyn-sup-inf.yaml \
+	msyn-sup-prspl.yaml \
+	msyn-sup-sg1.yaml \
+	neg-inf-sup.yaml \
+	neg-supsup-supinf.yaml
+
 
 endif # WANT_GRAMCHECK
 

@@ -100,7 +100,32 @@ for f in $fsttype; do
             | fgrep -v "+?" | grep -v "^$" | cut -f2 | sort -u \
             > $generated_lemmas.$f.txt 
 
-        # Add more variants as needed, e.g. comparative, superlative only adjs.
+        # Definite only adjs. (= vinstri, høgri)
+        sed 's/$/+A+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -f2 | cut -d'+' -f1 | sed 's/$/+A+Msc+Sg+Nom+Def/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep -v "+?" | grep -v "^$" | cut -f2 | sort -u \
+            >> $generated_lemmas.$f.txt 
+
+        # Comparative only adjs.
+        sed 's/$/+A+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -f2 | cut -d'+' -f1 | sed 's/$/+A+Msc+Sg+Nom+Def/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -f2 | cut -d'+' -f1 | sed 's/$/+A+Comp+Msc+Sg+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep -v "+?" | grep -v "^$" | cut -f2 | sort -u \
+            >> $generated_lemmas.$f.txt 
+
+        # Superlative only adjs.
+        sed 's/$/+A+Msc+Sg+Nom+Indef/' $lemmas | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -f2 | cut -d'+' -f1 | sed 's/$/+A+Msc+Sg+Nom+Def/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -f2 | cut -d'+' -f1 | sed 's/$/+A+Comp+Msc+Sg+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep "+?" | cut -f2 | cut -d'+' -f1 | sed 's/$/+A+Superl+Msc+Sg+Nom+Indef/' \
+            | $lookup_tool $generator_file.$suffix \
+            | fgrep -v "+?" | grep -v "^$" | cut -f2 | sort -u \
+            >> $generated_lemmas.$f.txt 
 
 ###### Collect results, and generate debug info if FAIL: #######
         # Sort and compare original input with resulting output - the diff is

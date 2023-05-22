@@ -388,9 +388,9 @@ LIST noun-inf-lookalike = ("manna" N) ("ótti" N) ("endi" N) ("skúli" N) ("vei�
 	
 #!! ### **RULE:** sup > inf
 ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V PrfPtc) IF
-	(*-1 MODV + Prs 
+	(*-1 MODV + Ind 
 		BARRIER NOT-ADV LINK NOT 0 Sup OR Pron + Indef + Msc + Sg + Nom
-		LINK NOT *-1 ("hava"))
+		LINK NOT *-1 ("hava") BARRIER S-BOUNDARY)
 	(0 ("<(.*)að>"r))
 	(NOT 0 noun-inf-lookalike OR ("virka")); # auxiliaries ok: kunnu virkað
 COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Neu Pl Acc Indef &msyn-sup-inf) TARGET (V PrfPtc &msyn-sup-inf) ;

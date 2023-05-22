@@ -74,6 +74,8 @@ define odi ð -> j || [Vow|ː] _ [ɪ|i] ;
 
 define egi g -> j || [Vow|ː] _ [ɪ|i] ;
 
+define ng  n -> ŋ || _ g ,,  n -> ŋ̊ || _ k ;;
+
 define LexicalRules j ï h   -> j e h || .#. _ .#. ;
 
 define ShortVow i -> ɪ , y -> ʏ , e -> ɛ , ø -> œ , u -> ʊ , o -> ɔ ;
@@ -92,6 +94,8 @@ define LongUADiphthong ú -> ʉ u ː , ó -> ɛ u ː , æ -> ɛ a ː , á -> ɔ 
 define ShortUADiphthong ʉ u ː -> ʏ , ɛ u ː -> œ , ɛ a ː -> a , ɔ ɑ ː -> ɔ ||
                 .#. Cns* _ Cns Cns [ Cns | .#. ] ;
 
+define FrontPal g -> d z , k -> t ʃ  || .#. _ [ i | e | ɛ ] ;
+
 ! Late rules
 
 
@@ -103,9 +107,9 @@ define COLONLENGTH   ɑ ɑ -> ɑ ː , e e -> e ː , i i -> i ː , o o -> o ː , 
                      y y -> y ː , ø ø -> ø ː , æ æ -> æ ː , ʉ ʉ -> ʉ ː , ɔ ɔ -> ɔ ː ,
                      b b -> b ː , β β -> β ː , ɸ ɸ -> ɸ ː , ɟ ɟ -> ɟ ː , c c -> c ː , 
                      d d -> d ː , ð ð -> ð ː , f f -> f ː , g g -> g ː , 
-                     h h -> h ː , j j -> j ː , k k -> k ː , l l -> l ː , ʎ ʎ -> ʎ ː ,
-                     m m -> m ː , n n -> n ː , ɲ ɲ -> ɲ ː , p p -> p ː , r r -> r ː , 
-                     s s -> s ː , t t -> t ː , ʃ ʃ -> ʃ ː , v v -> v ː ,
+                     h h -> h ː , j j -> j ː , k k -> ʰ g , l l -> l ː , ʎ ʎ -> ʎ ː ,
+                     m m -> m ː , n n -> n ː , ɲ ɲ -> ɲ ː , p p -> ʰ b ː , r r -> r ː , 
+                     s s -> s ː , t t -> ʰ d , ʃ ʃ -> ʃ ː , v v -> v ː ,
                     l̥ l̥  -> l̥ ː , r̥ r̥  -> r̥ ː , m̥ m̥ -> m̥ ː , n̥ n̥ -> n̥ ː , 
                     ŋ̊ ŋ̊ -> ŋ̊ ː , v̥ v̥ -> v̥ ː ,
                      ŋ ŋ -> ŋ ː ;
@@ -123,13 +127,15 @@ echo <<Combining...>>
 read regex [ 
     down 
 .o. odi 
-.o. egi 
+.o. egi
+.o. ng
 .o. LexicalRules  
 .o. ShortVow
 .o. LongVow
 .o. ShortDiphthong
 .o. LongDiphthong
 .o. ShortUADiphthong
+.o. FrontPal
 .o. LongUADiphthong
 .o. dhDeletion
 .o. FinalE

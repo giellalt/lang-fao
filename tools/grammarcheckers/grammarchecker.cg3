@@ -396,6 +396,7 @@ ADD:msyn-sup-inf (&msyn-sup-inf) TARGET (V PrfPtc) IF
 COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Neu Pl Acc Indef &msyn-sup-inf) TARGET (V PrfPtc &msyn-sup-inf) ;
 COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Neu Pl Nom Indef &msyn-sup-inf) TARGET (V PrfPtc &msyn-sup-inf) ;
 COPY:msyn-sup-inf (Inf &SUGGEST) EXCEPT (PrfPtc Fem Sg Nom Indef &msyn-sup-inf) TARGET (V PrfPtc &msyn-sup-inf) ;
+ADDRELATION:msyn-sup-inf ($2) MODV + Ind FROM (*1 V LINK 0 &msyn-sup-inf);
 ## - Eg vil komað.
 #$ - Eg vil koma.
 
@@ -483,6 +484,7 @@ ADD:msyn-inf-sup (&msyn-inf-sup) TARGET (V) IF
 	(NOT 0 ("<[A-ZÄÖÅÁÉIÓÚ].*>"r) OR Pass OR Sup OR Adv OR NOT-AD-SUP OR A + Acc OR N + Acc OR noun-inf-lookalike OR ("verða"))
 	(NEGATE 0 A + $$NAGD LINK 1 N + $$NAGD) # norska toskakvotan
 	;
+
 #$ ... at virða tær grundleggjandi reglur, ið náttúran og tað náttúruskapta umhvørvið hava at laga seg eftir. # at !
 
 #!! ### **RULE:** Inf should be Sup

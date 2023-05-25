@@ -31,7 +31,7 @@ For a presentation, see
 - [Faroese spellchecker online](https://divvun.org/proofing/online-speller.html) (cf. the **Help text** on the page)
 
 ### Linguistic resources
-- [Faroese online tagged corpus](http://gtweb.uit.no/f_korp/?mode=fao#?lang=nb&stats_reduce=word&cqp=%5B%5D) (25 mill words)
+- [Faroese online tagged corpus](http://gtweb.uit.no/f_korp/?mode=fao#?lang=nb&stats_reduce=word&cqp=%5B%5D) (25 mill words), cf. also the [documentation](https://giellalt.github.io/lang/common/Korp_usage.html) for how to search with it
 - The corpus texts for download: [original documents](https://github.com/giellalt/corpus-fao-orig) or [converted text](https://github.com/giellalt/corpus-fao)
 - [Faroese linguistic tools](https://giellatekno.uit.no/cgi/index.fao.eng.html) for online morphological or syntactic analysis
 - [Faroese downloadable parser (tagger)](https://giellalt.github.io/ling/LinguisticAnalysis.html)

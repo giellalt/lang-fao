@@ -2373,6 +2373,8 @@ We should eventually have syntactic tags here...
 
 **Preposition** for the list of prepositions, ordered according to case they select for.
 
+### Foreign
+
 ### Several cases
 
 ### Accusative or dative

@@ -40,8 +40,8 @@ For a presentation, see
 ## Møtereferat
 
 - 2020: [18.8](meetings/200818.md)
-- 2021: [19.4.](210419.md) 
-- 20232 [25.5.](30525.md)
+- 2021: [19.4.](meetings/210419.md) 
+- 20232 [25.5.](meetings/230525.md)
 
 
 

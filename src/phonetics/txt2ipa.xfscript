@@ -13,8 +13,8 @@
 ! giellatekno@uit.no or feedback@divvun.no
 
 ! ===================================== !
-! Phonological converter for Faroese    !
-! ===================================== !
+!! Phonological converter for Faroese
+!! ==================================
 
 ! This file tries out conversion from Faroese orthography to a phonetic
 ! translation based upon IPA. There is a switch at the end to get 
@@ -28,7 +28,71 @@
 ! make -j
 ! cat text | tr ' ' '\n' | hfst-lookup src/phonetics/txt2ipa.lookup.hfst
 
+!! Table below taken from:
+!! > Standardising Pronunciation for a Grapheme-to-Phoneme Converter for Faroese
 
+!! ## FARSAMPA/IPA table
+
+!! | Phoneme class| Orthography  | FARSAMPA | IPA |
+!! |:------------ |:------------ |:-------- |:--- |
+!! | Stops        | p            | p        | pʰ  |
+!! |              | b            | b        | p   |
+!! |              | b            | t        | tʰ  |
+!! |              | b            | d        | t   |
+!! |              | b            | k        | kʰ  |
+!! |              | b            | g        | k   |
+!! | Fricatives   | f            | f        | f   |
+!! |              | b            | v        | v   |
+!! |              | b            | 4        | ð   |
+!! |              | b            | 5        | θ   |
+!! |              | b            | s        | s   |
+!! |              | b            | S        | ʃ   |
+!! |              | b            | z        | ʂ   |
+!! |              | b            | h        | h   |
+!! | Affricates   | b            | tS       | tʃʰ |
+!! |              | b            | dZ       | tʃ  |
+!! | Nasals       | b            | m        | m   |
+!! |              | b            | M        | m̥   |
+!! |              | b            | n        | n   |
+!! |              | b            | x        | n̥   |
+!! |              | b            | N        | ŋ   |
+!! |              | b            | X        | ŋ̊   |
+!! | Laterals     | b            | l        | l   |
+!! |              | b            | L        | l̥   |
+!! | Approximants | b            | w        | w   |
+!! |              | b            | j        | j   |
+!! |              | b            | r        | ɹ   |
+!! | Monophthongs | p            | i        | i   |
+!! |              | b            | I        | ɪ   |
+!! |              | b            | e        | e   |
+!! |              | b            | E        | ɛ   |
+!! |              | b            | a        | a   |
+!! |              | b            | y        | y   |
+!! |              | b            | Y        | ʏ   |
+!! |              | b            | 2        | ø   |
+!! |              | b            | 9        | œ   |
+!! |              | b            | u        | u   |
+!! |              | b            | U        | ʊ   |
+!! |              | b            | o        | o   |
+!! |              | b            | O        | ɔ   |
+!! |              | b            | 8        | ə   |
+!! | Diphthongs   | b            | EA       | ɛa  |
+!! |              | b            | OA       | ɔa  |
+!! |              | b            | OJ       | ʊi  |
+!! |              | b            | UJ       | ɛi  |
+!! |              | b            | EJ       | ai  |
+!! |              | b            | aJ       | ai  |
+!! |              | b            | aW       | au  |
+!! |              | b            | OJ       | ɔi  |
+!! |              | b            | OW       | ɔu  |
+!! |              | b            | 3W       | ʉu  |
+!! |              | b            | EW       | ɛu  |
+!! |              | b            | 9W       | œu  |
+!! |              | b            | 9J       | œi  |
+!! | Diacritics   | b            | H        | ʰ   |
+!! | Others       | (length)     | :        | ː   |
+!! |              | (prim. stress| %        | ˈ   |
+!! |              | (sec. stress)| ~        | ˌ   |
 
 echo <<defining Cns and Vow...>>
 
@@ -76,11 +140,16 @@ define egi g -> j || [Vow|ː] _ [ɪ|i] ;
 
 define ng  n -> ŋ || _ g ,,  n -> ŋ̊ || _ k ;
 
-define LexicalRules j ï h   -> j e h || .#. _ .#. ;
-
 define ShortVow i -> ɪ , y -> ʏ , e -> ɛ , ø -> œ , u -> ʊ , o -> ɔ ;
 
-define LongVow ɪ -> i ː , ʏ -> i ː , ɛ -> e ː , e -> e ː , œ -> ø ː , ɔ -> o ː , o -> o ː , a -> a ː ||
+define LongVow ɪ -> i ː ,
+               ʏ -> i ː ,
+               ɛ -> e ː ,
+               e -> e ː ,
+               œ -> ø ː ,
+               ɔ -> o ː ,
+               o -> o ː ,
+               a -> a ː ||
                .#. Cns* _ Cns Vow ;
                
 
@@ -129,7 +198,6 @@ read regex [
 .o. odi 
 .o. egi
 .o. ng
-.o. LexicalRules  
 .o. ShortVow
 .o. LongVow
 .o. ShortDiphthong

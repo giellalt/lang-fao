@@ -25,17 +25,25 @@ grammar technology. The Faroese disambiguator is still in an early stage.
 For a presentation, see
 [Trond Trosterud: A Constraint Grammar for Faroese](http://dspace.ut.ee/bitstream/handle/10062/14289/proceedings.pdf?sequence=1").
 
-## Projects based upon the Faroese language model
-
-- [The Faorese spellchecker](spellchecker.md)
-- [The Faroese grammar checker](gramcheck/)
-
-
 ## Resources based upon the Faroese language model
 
-- [Faroese linguistic tools](https://giellatekno.uit.no/cgi/index.fao.eng.html)
-- [Downloadable spellchecker](https://divvun.no/korrektur/gramcheck.html)
+### Proofing tools
+- [Downloadable spell checker](https://divvun.no/no/index.html) (download **Divvun-installer**)
+- [Downloadable grammar checker](https://divvun.no/korrektur/gramcheck.html) (for MS Word and Googledocs)
 - [Faroese spellchecker online](https://divvun.org/proofing/online-speller.html) (cf. the **Help text** on the page)
+
+### Linguistic resources
+- [Faroese online tagged corpus](http://gtweb.uit.no/f_korp/?mode=fao#?lang=nb&stats_reduce=word&cqp=%5B%5D) (25 mill words)
+- The corpus texts for download: [original documents](https://github.com/giellalt/corpus-fao-orig) or [converted text](https://github.com/giellalt/corpus-fao)
+- [Faroese linguistic tools](https://giellatekno.uit.no/cgi/index.fao.eng.html) for online morphological or syntactic analysis
+- [Faroese downloadable parser (tagger)](https://giellalt.github.io/ling/LinguisticAnalysis.html)
+
+
+## Projects based upon the Faroese language model
+
+- [The Faroese spell checker project Rættstavari](spellchecker.md)
+- [The Faroese grammar checker project](gramcheck/)
+
 
 ## Møtereferat
 

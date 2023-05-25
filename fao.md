@@ -2783,8 +2783,8 @@ Table below taken from:
 |              | b            | 9J       | œi  |
 | Diacritics   | b            | H        | ʰ   |
 | Others       | (length)     | :        | ː   |
-|              | (prim. stress| %        | p   |
-|              | (sec. stress)| ~        | p   |
+|              | (prim. stress| %        | ˈ   |
+|              | (sec. stress)| ~        | ˌ   |
 
 retroflex plosive, voiceless			t`  ʈ	    0288, 648 (` = ASCII 096)
 retroflex plosive, voiced			d`	ɖ		0256, 598

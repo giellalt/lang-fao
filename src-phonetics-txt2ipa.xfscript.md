@@ -1,4 +1,72 @@
 
+Phonological converter for Faroese
+==================================
+
+Table below taken from:
+> Standardising Pronunciation for a Grapheme-to-Phoneme Converter for Faroese
+
+## FARSAMPA/IPA table
+
+| Consonants   | Orthography | FARSAMPA | IPA |
+|:------------ |:----------- |:-------- |:--- |
+| Stops        | p           | p        | ph  |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+| Fricatives   | f           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+| Affricates   | b           | b        | p   |
+|              | b           | b        | p   |
+| Nasals       | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+| Laterals     | b           | b        | p   |
+|              | b           | b        | p   |
+| Approximants | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+
+| Vowels       | Orthography | FARSAMPA | IPA |
+|:------------ |:----------- |:-------- |:--- |
+| Monophthongs | p           | p        | ph  |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+|              | b           | b        | p   |
+| Diphthongs   | b           | EA       | p   |
+|              | b           | OA       | p   |
+|              | b           | OJ       | p   |
+|              | b           | UJ       | p   |
+|              | b           | EJ       | p   |
+|              | b           | aJ       | p   |
+|              | b           | aW       | p   |
+|              | b           | OJ       | p   |
+|              | b           | OW       | p   |
+|              | b           | 3W       | p   |
+|              | b           | EW       | p   |
+|              | b           | 9W       | p   |
+|              | b           | 9J       | p   |
+| Diacritics   | b           | H        | p   |
 
 retroflex plosive, voiceless			t`  ʈ	    0288, 648 (` = ASCII 096)
 retroflex plosive, voiced			d`	ɖ		0256, 598

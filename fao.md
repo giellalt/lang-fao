@@ -2725,66 +2725,66 @@ Table below taken from:
 
 ## FARSAMPA/IPA table
 
-| Consonants   | Orthography | FARSAMPA | IPA |
-|:------------ |:----------- |:-------- |:--- |
-| Stops        | p           | p        | ph  |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-| Fricatives   | f           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-| Affricates   | b           | b        | p   |
-|              | b           | b        | p   |
-| Nasals       | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-| Laterals     | b           | b        | p   |
-|              | b           | b        | p   |
-| Approximants | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-
-| Vowels       | Orthography | FARSAMPA | IPA |
-|:------------ |:----------- |:-------- |:--- |
-| Monophthongs | p           | p        | ph  |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-|              | b           | b        | p   |
-| Diphthongs   | b           | EA       | p   |
-|              | b           | OA       | p   |
-|              | b           | OJ       | p   |
-|              | b           | UJ       | p   |
-|              | b           | EJ       | p   |
-|              | b           | aJ       | p   |
-|              | b           | aW       | p   |
-|              | b           | OJ       | p   |
-|              | b           | OW       | p   |
-|              | b           | 3W       | p   |
-|              | b           | EW       | p   |
-|              | b           | 9W       | p   |
-|              | b           | 9J       | p   |
-| Diacritics   | b           | H        | p   |
+| Phoneme class| Orthography  | FARSAMPA | IPA |
+|:------------ |:------------ |:-------- |:--- |
+| Stops        | p            | p        | pʰ  |
+|              | b            | b        | p   |
+|              | b            | t        | tʰ  |
+|              | b            | d        | t   |
+|              | b            | k        | kʰ  |
+|              | b            | g        | k   |
+| Fricatives   | f            | f        | f   |
+|              | b            | v        | v   |
+|              | b            | 4        | ð   |
+|              | b            | 5        | θ   |
+|              | b            | s        | s   |
+|              | b            | S        | ʃ   |
+|              | b            | z        | ʂ   |
+|              | b            | h        | h   |
+| Affricates   | b            | tS       | tʃʰ |
+|              | b            | dZ       | tʃ  |
+| Nasals       | b            | m        | m   |
+|              | b            | M        | m̥   |
+|              | b            | n        | n   |
+|              | b            | x        | n̥   |
+|              | b            | N        | ŋ   |
+|              | b            | X        | ŋ̊   |
+| Laterals     | b            | l        | l   |
+|              | b            | L        | l̥   |
+| Approximants | b            | w        | w   |
+|              | b            | j        | j   |
+|              | b            | r        | ɹ   |
+| Monophthongs | p            | i        | i   |
+|              | b            | I        | ɪ   |
+|              | b            | e        | e   |
+|              | b            | E        | ɛ   |
+|              | b            | a        | a   |
+|              | b            | y        | y   |
+|              | b            | Y        | ʏ   |
+|              | b            | 2        | ø   |
+|              | b            | 9        | œ   |
+|              | b            | u        | u   |
+|              | b            | U        | ʊ   |
+|              | b            | o        | o   |
+|              | b            | O        | ɔ   |
+|              | b            | 8        | ə   |
+| Diphthongs   | b            | EA       | ɛa  |
+|              | b            | OA       | ɔa  |
+|              | b            | OJ       | ʊi  |
+|              | b            | UJ       | ɛi  |
+|              | b            | EJ       | ai  |
+|              | b            | aJ       | ai  |
+|              | b            | aW       | au  |
+|              | b            | OJ       | ɔi  |
+|              | b            | OW       | ɔu  |
+|              | b            | 3W       | ʉu  |
+|              | b            | EW       | ɛu  |
+|              | b            | 9W       | œu  |
+|              | b            | 9J       | œi  |
+| Diacritics   | b            | H        | ʰ   |
+| Others       | (length)     | :        | ː   |
+|              | (prim. stress| %        | p   |
+|              | (sec. stress)| ~        | p   |
 
 retroflex plosive, voiceless			t`  ʈ	    0288, 648 (` = ASCII 096)
 retroflex plosive, voiced			d`	ɖ		0256, 598

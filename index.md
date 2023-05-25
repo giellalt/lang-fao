@@ -16,9 +16,7 @@ Faroese wordform. It contains the lemmas from *Føroysk orðabók* and the gramm
 is written at the University of Tromsø in cooperation with Fróðskaparsetur Føroya.
 
 -   [Framgangsmåtar for å arbeide med analysatoren](arbeide-med-analysatoren.html)
--   [Arbeidsplan for færøysk stavekontroll](Stavekontroll.html)
 -   [Testing av analysatoren](AlleGenererteParadigmer.html)
--   [Víllur i rættstavaranum](vill.html)
 
 The project also contains a syntactic analyser, built upon constraint
 grammar technology. The Faroese disambiguator is still in an early stage.

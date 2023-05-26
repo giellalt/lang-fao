@@ -217,71 +217,73 @@ echo <<Inverting...>>
 
 
 
-!  For reference: The SAMPA - IPA correspondence
+!! # For reference: The SAMPA - IPA correspondence
 
-!  SAMPA   IPA  Description
-!  p       p    voiceless bilabial stop
-!  b       b    voiced bilabial stop
-!  t       t    voiceless alveolar or dental stop
-!  d       d    voiced alveolar or dental stop
-!  ts      ʦ    voiceless alveolar affricate
-!  dz      ʣ    voiced alveolar affricate
-!  tS      ʧ    voiceless postalveolar affricate
-!  dZ      ʤ    voiced postalveolar affricate
-!  c       c    voiceless palatal stop
-!  J\      ɟ    (overstroked j)    voiced palatal stop
-!  k       k    voiceless velar stop
-!  g       g    voiced velar stop
-!  q       q    voiceless uvular stop
-!  p\      ɸ    (Greek phi)    voiceless bilabial fricative
-!  B       β    (Greek beta)    voiced bilabial fricative
-!          ϐ    (Greek beta alt)    voiced bilabial approximant
-!  f       f    voiceless labiodental fricative
-!  v       v    voiced labiodental fricative
-!  T       θ    (Greek theta)    voiceless dental fricative
-!          ϑ    (Greek theta alt)    voiceless dental approximant
-!  D       ð    (Icelandic eth)    voiced dental fricative
-!          δ    (Greek delta)    voiced dental approximant
-!  s       s    voiceless alveolar fricative
-!  z       z    voiced alveolar fricative
-!  S       ʃ    voiceless postalveolar fricative
-!  Z       ʒ    voiced postalveolar fricative
-!  C       ç    (cedilla)    voiceless palatal fricative
-!  j\ (jj) ʝ    (j with crossed tail)    voiced palatal fricative
-!  x       x    voiceless velar fricative
-!  G       γ    (Greek gamma)    voiced velar fricative
-!          ɰ    voiced velar approximant
-!  X\      ħ    (overstroked h)    voiceless pharyngeal fricative
-!  ?\      ʕ    (Inverted ?)    voiced pharyngeal fricative
-!  h       h    voiceless glottal approximant
-!  h\      ɦ    (h with upper tail to the right)    voiced glottal approximant
-!  m       m    bilabial nasal
-!  F       ɱ    (m with downward right tail)    labiodental nasal
-!  n       n    alveolar or dental nasal
-!  J       ɲ    (n with downward left tail)    palatal nasal
-!  N       ŋ    (n with downward right tail)    velar nasal
-!  l       l    alveolar lateral
-!  L       ʎ    turned down y, alt. λ (Greek lambda)    palatal lateral
-!  5       ɫ    (l with middle tilde)    velarized dental lateral
-!  4 (r)   ɾ    (r without upper-left serif)    alveolar flap
-!  r (rr)  r    alveolar trill
-!  r\      ɹ    (r rotated 180°)    retroflexed alveolar approximant
-!  R       ʀ    (small capital R)    uvular trill
-!  P       ʋ    labiodental approximant
-!  w       w    velo-labial approximant
-!  H       ɥ    (turned down h)    palato-labial approximant
-!  j       j    palatal approximant
-!  
-!  Vowels
-!                front   near-front    central   near-back   back
-!  close          i • y               1 • }                 M • u
-!  near-close              I • Y                    U
-!  close-mid      e • 2              @\ • 8                 7 • o
-!  mid                                  @            
-!  open-mid       E • 9               3 • 3\                V • O
-!  near-open        {                    6           
-!  open           a • &                                     A • Q
+!! | SAMPA   |  IPA  |  Description
+!! | ------- | ----- | ------------
+!! | p       |  p    |  voiceless bilabial stop
+!! | b       |  b    |  voiced bilabial stop
+!! | t       |  t    |  voiceless alveolar or dental stop
+!! | d       |  d    |  voiced alveolar or dental stop
+!! | ts      |  ʦ    |  voiceless alveolar affricate
+!! | dz      |  ʣ    |  voiced alveolar affricate
+!! | tS      |  ʧ    |  voiceless postalveolar affricate
+!! | dZ      |  ʤ    |  voiced postalveolar affricate
+!! | c       |  c    |  voiceless palatal stop
+!! | J\      |  ɟ    |  (overstroked j)    voiced palatal stop
+!! | k       |  k    |  voiceless velar stop
+!! | g       |  g    |  voiced velar stop
+!! | q       |  q    |  voiceless uvular stop
+!! | p\      |  ɸ    |  (Greek phi)    voiceless bilabial fricative
+!! | B       |  β    |  (Greek beta)    voiced bilabial fricative
+!! |         |  ϐ    |  (Greek beta alt)    voiced bilabial approximant
+!! | f       |  f    |  voiceless labiodental fricative
+!! | v       |  v    |  voiced labiodental fricative
+!! | T       |  θ    |  (Greek theta)    voiceless dental fricative
+!! |         |  ϑ    |  (Greek theta alt)    voiceless dental approximant
+!! | D       |  ð    |  (Icelandic eth)    voiced dental fricative
+!! |         |  δ    |  (Greek delta)    voiced dental approximant
+!! | s       |  s    |  voiceless alveolar fricative
+!! | z       |  z    |  voiced alveolar fricative
+!! | S       |  ʃ    |  voiceless postalveolar fricative
+!! | Z       |  ʒ    |  voiced postalveolar fricative
+!! | C       |  ç    |  (cedilla)    voiceless palatal fricative
+!! | j\ (jj) |  ʝ    |  (j with crossed tail)    voiced palatal fricative
+!! | x       |  x    |  voiceless velar fricative
+!! | G       |  γ    |  (Greek gamma)    voiced velar fricative
+!! |         |  ɰ    |  voiced velar approximant
+!! | X\      |  ħ    |  (overstroked h)    voiceless pharyngeal fricative
+!! | ?\      |  ʕ    |  (Inverted ?)    voiced pharyngeal fricative
+!! | h       |  h    |  voiceless glottal approximant
+!! | h\      |  ɦ    |  (h with upper tail to the right)    voiced glottal approximant
+!! | m       |  m    |  bilabial nasal
+!! | F       |  ɱ    |  (m with downward right tail)    labiodental nasal
+!! | n       |  n    |  alveolar or dental nasal
+!! | J       |  ɲ    |  (n with downward left tail)    palatal nasal
+!! | N       |  ŋ    |  (n with downward right tail)    velar nasal
+!! | l       |  l    |  alveolar lateral
+!! | L       |  ʎ    |  turned down y, alt. λ (Greek lambda)    palatal lateral
+!! | 5       |  ɫ    |  (l with middle tilde)    velarized dental lateral
+!! | 4 (r)   |  ɾ    |  (r without upper-left serif)    alveolar flap
+!! | r (rr)  |  r    |  alveolar trill
+!! | r\      |  ɹ    |  (r rotated 180°)    retroflexed alveolar approximant
+!! | R       |  ʀ    |  (small capital R)    uvular trill
+!! | P       |  ʋ    |  labiodental approximant
+!! | w       |  w    |  velo-labial approximant
+!! | H       |  ɥ    |  (turned down h)    palato-labial approximant
+!! | j       |  j    |  palatal approximant
 
+!! ## Vowels
+!! ```
+!! .             front   near-front    central   near-back   back
+!! close          i • y               1 • }                 M • u
+!! near-close              I • Y                    U
+!! close-mid      e • 2              @\ • 8                 7 • o
+!! mid                                  @            
+!! open-mid       E • 9               3 • 3\                V • O
+!! near-open        {                    6           
+!! open           a • &                                     A • Q
+!! ```
 
 
 !! ## More SAMPA/IPA documentation

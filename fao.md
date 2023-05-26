@@ -2862,7 +2862,7 @@ open           a • &                                     A • Q
 
 |   Description                       |SAMPA| IPA |  Unicode
 | ----------------------------------- | --- | --- | ---------
-|   retroflex plosive, voiceless		 | t`  |  ʈ  | 0288, 648 (`` = ASCII 096)
+|   retroflex plosive, voiceless		 | t\` |  ʈ  | 0288, 648 (\` = ASCII 096)
 |   retroflex plosive, voiced		 | d`  |  ɖ  | 0256, 598
 |   labiodental nasal				 | F   |  ɱ  | 0271, 625
 |   retroflex nasal					 | n`  |  ɳ  | 0273, 627
@@ -2901,8 +2901,8 @@ open           a • &                                     A • Q
 |   retroflex lateral approximant	 | l` 
 |   palatal lateral approximant		 | L 
 |   velar lateral approximant		 | L\
-|   Clicks                            | 
 |                                     | 
+|   **Clicks**                        | 
 |   bilabial							 | O\	(O = capital letter) 
 |   dental							 | \|\
 |   (post)alveolar					 | !\ 
@@ -2912,8 +2912,8 @@ open           a • &                                     A • Q
 |                                     | 
 |   ejective							 | \_>	e.g. ejective p		p\_>
 |   implosive						 | \_<	e.g. implosive b	b\_<
-|   Vowels                            | 
 |                                     | 
+|   **Vowels**                        | 
 |   close back unrounded				 | M
 |   close central unrounded 			 | 1 
 |   close central rounded			 | } 
@@ -2941,8 +2941,8 @@ open           a • &                                     A • Q
 |   open front rounded				 | & 
 |   open back unrounded	        	 | A 
 |   open back rounded				 | Q
-|   Other symbols                     | 
 |                                     | 
+|   **Other symbols**                 | 
 |   voiceless labial-velar fricative	 | W 
 |   voiced labial-palatal approx.	 | H 
 |   voiceless epiglottal fricative	 | H\ 
@@ -2954,16 +2954,16 @@ open           a • &                                     A • Q
 |   alveolar lateral flap			 | l\ 
 |   simultaneous S and x				 | x\ 
 |   tie bar							 | _
-|   Suprasegmentals                   | 
 |                                     | 
+|   **Suprasegmentals**               | 
 |   primary stress					 | " 
 |   secondary stress					 | % 
 |   long								 | : 
 |   half-long						 | :\ 
 |   extra-short						 | _X 
 |   linking mark						 | -\
-|   Tones and word accents            | 
 |                                     | 
+|   **Tones and word accents**        | 
 |   level extra high					 | _T 
 |   level high						 | _H
 |   level mid						 | _M 
@@ -2982,7 +2982,7 @@ open           a • &                                     A • Q
 |   global rise						 | <R> 
 |   global fall						 | <F>
 |   									 | 
-|   Diacritics						 | 
+|   **Diacritics**					 | 
 |   									 | 
 |   voiceless						 | _0	(0 = figure), e.g. n_0
 |   voiced							 | _v 

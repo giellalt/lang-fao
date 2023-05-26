@@ -288,9 +288,11 @@ echo <<Inverting...>>
 
 !! ## More SAMPA/IPA documentation
 
+!! (Some symbols are doubled or escaped with \ in the source to escape Markdown (mis)interpretation, they will mostly appear correct in the rendered HTML.)
+
 !! |   Description                       |SAMPA| IPA |  Unicode
 !! | ----------------------------------- | --- | --- | ---------
-!! |   retroflex plosive, voiceless		 | t\` |  ʈ  | 0288, 648 (` = ASCII 096)
+!! |   retroflex plosive, voiceless		 | t`  |  ʈ  | 0288, 648 (`` = ASCII 096)
 !! |   retroflex plosive, voiced		 | d`  |  ɖ  | 0256, 598
 !! |   labiodental nasal				 | F   |  ɱ  | 0271, 625
 !! |   retroflex nasal					 | n`  |  ɳ  | 0273, 627
@@ -321,9 +323,9 @@ echo <<Inverting...>>
 !! |   alveolar lateral fricative, vl.	 | K 
 !! |   alveolar lateral fricative, vd.	 | K\
 !! |                                     | 
-!! |   labiodental approximant			 | P (or v\) 
+!! |   labiodental approximant			 | P (or v\ ) 
 !! |   alveolar approximant				 | r\ 
-!! |   retroflex approximant			 | r\` 
+!! |   retroflex approximant			 | r\\` 
 !! |   velar approximant				 | M\
 !! |                                     | 
 !! |   retroflex lateral approximant	 | l` 
@@ -338,8 +340,8 @@ echo <<Inverting...>>
 !! |   alveolar lateral					 | \|\|\
 !! |   Ejectives, implosives             | 
 !! |                                     | 
-!! |   ejective							 | _>	e.g. ejective p		p_>
-!! |   implosive						 | _<	e.g. implosive b	b_<
+!! |   ejective							 | \_>	e.g. ejective p		p\_>
+!! |   implosive						 | \_<	e.g. implosive b	b\_<
 !! |   Vowels                            | 
 !! |                                     | 
 !! |   close back unrounded				 | M

@@ -2858,11 +2858,11 @@ open           a • &                                     A • Q
 
 ## More SAMPA/IPA documentation
 
-(Some symbols are doubled or escaped with \ in the source to escape Markdown (mis)interpretation, they will mostly appear correct in the rendered HTML.)
+(Some symbols are doubled or escaped with \ in the source to escape Markdown (mis)interpretation, they will mostly appear correct in the rendered HTML[^1].)
 
 |   Description                       |SAMPA| IPA |  Unicode
 | ----------------------------------- | --- | --- | ---------
-|   retroflex plosive, voiceless		 | t\` [^1] |  ʈ  | 0288, 648
+|   retroflex plosive, voiceless		 | t\` |  ʈ  | 0288, 648
 |   retroflex plosive, voiced		 | d`  |  ɖ  | 0256, 598
 |   labiodental nasal				 | F   |  ɱ  | 0271, 625
 |   retroflex nasal					 | n`  |  ɳ  | 0273, 627

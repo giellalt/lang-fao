@@ -142,7 +142,7 @@ open           a • &                                     A • Q
 
 |   Description                       |SAMPA| IPA |  Unicode
 | ----------------------------------- | --- | --- | ---------
-|   retroflex plosive, voiceless		 | t\` |  ʈ  | 0288, 648 (\` = ASCII 096)
+|   retroflex plosive, voiceless		 | t\`[^1] |  ʈ  | 0288, 648
 |   retroflex plosive, voiced		 | d`  |  ɖ  | 0256, 598
 |   labiodental nasal				 | F   |  ɱ  | 0271, 625
 |   retroflex nasal					 | n`  |  ɳ  | 0273, 627
@@ -190,8 +190,8 @@ open           a • &                                     A • Q
 |   alveolar lateral					 | \|\|\
 |                                     | 
 |   **Ejectives, implosives**         | 
-|   ejective							 | \_>	e.g. ejective p		p\_>
-|   implosive						 | \_<	e.g. implosive b	b\_<
+|   ejective							 | \_>	e.g. ejective p  = p\_>
+|   implosive						 | \_<	e.g. implosive b = b\_<
 |                                     | 
 |   **Vowels**                        | 
 |   close back unrounded				 | M

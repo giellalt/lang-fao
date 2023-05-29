@@ -2862,7 +2862,7 @@ open           a • &                                     A • Q
 
 |   Description                       |SAMPA| IPA |  Unicode
 | ----------------------------------- | --- | --- | ---------
-|   retroflex plosive, voiceless		 | t\`[^1] |  ʈ  | 0288, 648
+|   retroflex plosive, voiceless		 | t\`  [^1] |  ʈ  | 0288, 648
 |   retroflex plosive, voiced		 | d`  |  ɖ  | 0256, 598
 |   labiodental nasal				 | F   |  ɱ  | 0271, 625
 |   retroflex nasal					 | n`  |  ɳ  | 0273, 627

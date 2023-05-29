@@ -188,8 +188,8 @@ open           a • &                                     A • Q
 |   (post)alveolar					 | !\ 
 |   palatoalveolar					 | =\ 
 |   alveolar lateral					 | \|\|\
-|   Ejectives, implosives             | 
 |                                     | 
+|   **Ejectives, implosives**         | 
 |   ejective							 | \_>	e.g. ejective p		p\_>
 |   implosive						 | \_<	e.g. implosive b	b\_<
 |                                     | 
@@ -259,8 +259,8 @@ open           a • &                                     A • Q
 |                                     | 
 |   contour, rising-falling			 | _R_F (NB Instead of being written as diacritics with _, all prosodic marks can alternatively be placed in a separate tier, set off by < >, as recommended for the next two symbols.)
 |                                     | 
-|   global rise						 | <R> 
-|   global fall						 | <F>
+|   global rise						 | \<R> 
+|   global fall						 | \<F>
 |   									 | 
 |   **Diacritics**					 | 
 |   									 | 

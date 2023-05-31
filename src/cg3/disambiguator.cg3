@@ -454,6 +454,9 @@ SELECT V + Pl IF (-3 Pl + Nom)(-2 COMMA)(-1 ("sum"));
 SELECT V IF (-1 Adv)(0 ("bar"))(1 ("til"));
        ## Soleiðis bar til.
 
+# síggja
+REMOVE:sær Refl IF (*0 N + Sg + Nom OR Pron + Sg + Nom)(NOT *0 3Sg);
+
 # vera
 SELECT:vera ("vera") IF (0 ("ver"))(*-1 HAVA BARRIER V);
 SELECT:RealVarur A IF (-1 Det + Acc)(0 ("varur") + Acc + Sg)(1 N + Acc); # awaiting a real example

@@ -3019,9 +3019,7 @@ open           a • &                                     A • Q
 |   advanced tongue root				 | _A 
 |   retracted tongue root			 | _q
 
-Fotnoter:
-
-[^1]: \` = ASCII 096
+[^1]: `` ` ``  = ASCII 096
 
 * * *
 

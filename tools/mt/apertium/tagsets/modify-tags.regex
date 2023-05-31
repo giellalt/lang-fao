@@ -1,6 +1,9 @@
 [
   [ "<n>" "<prop>" "<sem_plc>" -> "<np>" "<top>" ] .o.
   [ "<n>" "<prop>" -> "<np>" ] .o.
+  [ "<n>" "<prop>" "<neu>" "<pl>" "<gen>" "<indef>" -> "<np>" "<top>" "<gen>" ] .o.
+  [ "<n>" "<prop>" "<fem>" "<pl>" "<gen>" "<indef>" -> "<np>" "<ant>" "<f>" "<gen>" ] .o.
+  [ "<n>" "<prop>" "<fem>" "<pl>" "<indef>" -> "<np>" "<ant>" "<f>" ] .o.
   [ "<g3>" "<n>"   -> "<n>" "<g3>" ] .o.
   [ "<sem_fem>" -> "<ant>" "<f>"  ] .o.
   [ "<sem_mal>" -> "<ant>" "<m>"  ] .o.

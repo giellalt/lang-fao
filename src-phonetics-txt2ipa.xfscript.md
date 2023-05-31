@@ -299,6 +299,10 @@ open           a • &                                     A • Q
 |   advanced tongue root				 | _A 
 |   retracted tongue root			 | _q
 
+Fotnoter:
+
+[^1]: \` = ASCII 096
+
 * * *
 
 <small>This (part of) documentation was generated from [src/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-fao/blob/main/src/phonetics/txt2ipa.xfscript)</small>

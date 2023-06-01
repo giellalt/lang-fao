@@ -454,6 +454,9 @@ AC_MSG_CHECKING([whether we can enable vislcg3 targets])
 AS_IF([test "x$gt_prog_vislcg3" != xno], [AC_MSG_RESULT([yes])],
       [AC_MSG_RESULT([no])])
 AM_CONDITIONAL([CAN_VISLCG], [test "x$gt_prog_vislcg3" != xno])
+PKG_CHECK_MODULES([CG3], [cg3 > 1.4.0], [vislcg_filters=true],
+                  [vislcg_filters=false])
+AM_CONDITIONAL([HAVE_VISLCG_FILTER], [test "x$vislcg_filters" = xtrue])
 ]) # gt_PROG_VISLCG3
 
 ################################################################################

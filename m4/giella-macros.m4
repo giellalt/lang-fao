@@ -105,7 +105,7 @@ The giella-core is too old, we require at least $_giella_core_min_version.
 *** ==> PLEASE ENTER THE FOLLOWING COMMANDS: <== ***
 
 cd $GTCORE
-git pull --rebase # or: `svn up` if you are using svn
+git pull --rebase # or: 'svn up' if you are using svn
 make
 
 Then retry.

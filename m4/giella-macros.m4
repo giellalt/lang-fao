@@ -1014,14 +1014,20 @@ AS_IF([test "x$fallback_to_foma" != x ],
 
 dnl stick important warnings to bottom
 dnl YAML test warning:
+
 AS_IF([test "x$enable_yamltests" = "xno"],
-      [AC_MSG_WARN([YAML testing could not be automatically enabled. To enable it, on MacOSX please do:
+      [AS_CASE([$host_os], 
+               [*darwin*], [AC_MSG_WARN([YAML testing could not be automatically enabled. 
+To enable it, on MacOSX please do:
 
-sudo port install python38 py38-pip
-sudo pip-3.8 install PyYAML
+    sudo port install python38 py38-pip
+    sudo python3 -m pip install PyYAML
 
-3.8 may be newer in the future.
-On other systems, install python 3 and the corresponding py-yaml using suitable tools for those systems.])])
+replace 38 in python38 with current python])],
+               [*linux*], [AC_MSG_WARN([YAML testing could not be automatically enabled. 
+                To enable it on linux please use your package manager to install python an pyyaml,
+                or install pip and use it to install pyyaml.])],
+               [AC_MSG_WARN([YAML testing requires python3 and py-yaml.])])])
 
 AS_IF([test "x$gt_SHARED_FAILS" != "x"],
       [AC_MSG_WARN([This language depends on $gt_SHARED_FAILS which is missing, some parts of language models may be missing.

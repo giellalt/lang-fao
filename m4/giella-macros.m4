@@ -783,7 +783,7 @@ AC_ARG_ENABLE([phonetic],
               [AS_HELP_STRING([--enable-phonetic],
                               [enable phonetic transducers @<:@default=no@:>@])],
               [enable_phonetic=$enableval],
-              [enable_phonetic=no])
+              [enable_phonetic=$enable_all_tools])
 AM_CONDITIONAL([WANT_PHONETIC], [test "x$enable_phonetic" != xno])
 
 # Enable Apertium transducers - default is 'no'

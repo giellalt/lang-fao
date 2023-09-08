@@ -188,6 +188,8 @@ be used alone, but can appear in any position
 * +Use/NGA
 * +Use/SpellNoSugg
 * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
+* **+Use/TTS** – **only** retained in the HFST Text-To-Speech disambiguation tokeniser
+* **+Use/-TTS** – **never** retained in the HFST Text-To-Speech disambiguation tokeniser
 
 * +Err/Guess : Tag for Name Guesser component
 * +Err/Orth : Marking forms that are orthographical errors

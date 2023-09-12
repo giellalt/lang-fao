@@ -88,7 +88,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=0.18.2
+_giella_core_min_version=0.19.0
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -568,7 +568,7 @@ enableval=''
 
 AC_ARG_ENABLE([all_tools],
 			  [AS_HELP_STRING([--enable-all-tools],
-			  [build all tools (excluding unstable or experimental tools, which must be explicitly enabled with --enable-dialects, --enable-glossers, --enable-phonetic, --enable-downcaseerror, --enable-L2, --enable-pattern-hyphenators, --enable-fomaspeller, --enable-vfstspeller) @<:@default=no@:>@])],
+			  [build all tools (excluding unstable or experimental tools, which must be explicitly enabled with --enable-dialects, --enable-glossers, --enable-phonetic, --enable-downcaseerror, --enable-L2, --enable-pattern-hyphenators, --enable-fomaspeller) @<:@default=no@:>@])],
 			  [enable_all_tools=$enableval],
 			  [enable_all_tools=no])
 enableval=''
@@ -599,6 +599,15 @@ AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_generators=n
 AM_CONDITIONAL([WANT_GENERATION], [test "x$enable_generators" != xno])
 enableval=''
 
+# Enable TTS text processing - default is 'no' (via $enable_all_tools)
+AC_ARG_ENABLE([tts],
+              [AS_HELP_STRING([--enable-tts],
+                              [enable tts transcriptors @<:@default=no@:>@])],
+              [enable_tts=$enableval],
+              [enable_tts=$enable_all_tools])
+AM_CONDITIONAL([WANT_TTS], [test "x$enable_tts" != xno])
+enableval=''
+
 # Enable glossing morphological analysers - default is 'no'
 AC_ARG_ENABLE([glossers],
               [AS_HELP_STRING([--enable-glossers],
@@ -616,6 +625,7 @@ AC_ARG_ENABLE([transcriptors],
               [enable_transcriptors=$enableval],
               [enable_transcriptors=yes])
 AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_transcriptors=no])
+AS_IF([test "x$enable_tts" != xno],[enable_transcriptors=yes])
 AM_CONDITIONAL([WANT_TRANSCRIPTORS], [test "x$enable_transcriptors" != xno])
 enableval=''
 
@@ -784,6 +794,7 @@ AC_ARG_ENABLE([phonetic],
                               [enable phonetic transducers @<:@default=no@:>@])],
               [enable_phonetic=$enableval],
               [enable_phonetic=$enable_all_tools])
+AS_IF([test "x$enable_tts" != xno],[enable_phonetic=yes])
 AM_CONDITIONAL([WANT_PHONETIC], [test "x$enable_phonetic" != xno])
 
 # Enable Apertium transducers - default is 'no'
@@ -875,22 +886,6 @@ AC_ARG_ENABLE([custom-fsts],
               [enable_custom_fsts=$enableval],
               [enable_custom_fsts=$DEFAULT_CUSTOM_FSTS])
 AM_CONDITIONAL([WANT_CUSTOM_FSTS], [test "x$enable_custom_fsts" != xno])
-
-# Enable TTS transcriptors - default is 'no' (via $enable_all_tools)
-AC_ARG_ENABLE([tts],
-              [AS_HELP_STRING([--enable-tts],
-                              [enable tts transcriptors @<:@default=no@:>@])],
-              [enable_tts=$enableval],
-              [enable_tts=$enable_all_tools])
-AS_IF([test x$enable_tts = xyes -a x$enable_transcriptors = xno],
-    [AC_MSG_ERROR([You need to enable transcriptors to build tts])])
-AS_IF([test x$enable_tts = xyes -a x$enable_phonetic = xno],
-    [AC_MSG_ERROR([You need to enable phonetic to build tts])])
-AS_IF([test x$enable_tts = xyes -a x$enable_tokenisers = xno],
-    [AC_MSG_ERROR([You need to enable phonetic to build tts])])
-AM_CONDITIONAL([WANT_TTS], [test "x$enable_tts" != xno])
-enableval=''
-
 
 ]) # gt_ENABLE_TARGETS
 

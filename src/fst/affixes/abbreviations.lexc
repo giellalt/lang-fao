@@ -95,12 +95,58 @@ DOT ;
 
 LEXICON DOT   !!= * **@CODE@** - Adds the dot to dotted abbreviations.
 !!= **@LEXNAME@** 
+!! we also allow different variations of dotted abbreviations at
+!! the end of the sentence (especially for tokenisers)
+!! * "kvæð." gets analysed as `"kvæð" ABBR Gram/IAbbr N Abbr`
+!! in tokeniser mode also:
+!! * "kvæð." -> `"ABBR Gram/IAbbr N Abbr` + `"." CLB` to account for sentence
+!!    final kvæð with no extra full stop.
+!! * also `"kvæða" V Imp Sg` + `"." CLB` due to
+!!   homonymy.
+!! Same treatment is done with two and three full stops after abbreviation in
+!! the end of the sentence:
+!! * "kvæð.." -> `"su" Adv Abbr` + `"." CLB Err/Orth`
+!! * "kvæð..." -> `"su" Adv Abbr` + `"..." CLB`
 
- +Use/-PMatch:%. # ; ! We need the dot here for regular fsts
+ +Use/-PMatch.:. # ; ! We need the dot here for regular fsts
+ +Err/Orth+Use/-PMatch.:.. # ; ! We need the dot here for regular fsts
+
 ! Split the abbr + full stop in two segments, but only when using pmatch:
 < "@P.Pmatch.Loc@" {.} "+CLB":0 "+Use/PMatch":0 > # ;
+
 ! Make a regular ABBR analysis AND backtrack to find alternative analyses:
+! NB! Not all backtracking will give alternative analyses, and those
+! cases will give a warning about missing substring analysis. The warnings
+! can be ignored.
 < "+Use/PMatch":0 "@P.Pmatch.Backtrack@" 0:%. > # ;
+
+! Error variants for cases with two full stops:
+< "@P.Pmatch.Loc@" {.} "+CLB":0 "+Use/PMatch":0 "+Err/Orth":"." > # ;
+< "+Use/PMatch":0 "@P.Pmatch.Backtrack@" 0:%. "+Err/Orth":"." > # ;
+
+! folded three full-stops?
+< "@P.Pmatch.Loc@" {...} "+CLB":0 "+Use/PMatch":0 > # ;
+< "+Use/PMatch":0 "@P.Pmatch.Backtrack@" 0:"." 0:%. 0:%. > # ;
+
+! Gives:
+!$ echo 'kvæð.' \
+!| hfst-tokenise -g tools/tokenisers/tokeniser-gramcheck-gt-desc.pmhfst
+!"<kvæð.>"
+!	"." CLB <W:0.0> "<.>"
+!		"kvæð" ABBR Gram/IAbbr N Abbr <W:0.0> "<kvæð>"
+!	"kvæð" ABBR Gram/IAbbr N Abbr <W:0.0>
+!	"." CLB <W:0.0> "<.>"
+!		"kvæða" V Imp Sg <W:0.0> "<kvæð>"
+!:\n
+!
+! which is exactly what we want. After mwedis and cg-mwesplit, this will be
+! reformatted as:
+!
+!"<kvæð.>"
+!	"kvæð" ABBR Gram/IAbbr N Abbr <W:0.0>
+!:\n
+!
+! hm - with lost CLB analysis. That is a bug, and must be looked into.
 
 ! =================
 

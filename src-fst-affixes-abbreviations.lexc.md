@@ -19,6 +19,18 @@ Then pointing to two contlexes, a dot-one and a non-dot-one.
 * **LEXICON dot-infl   **
 
 * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+we also allow different variations of dotted abbreviations at
+the end of the sentence (especially for tokenisers)
+* "kvæð." gets analysed as `"kvæð" ABBR Gram/IAbbr N Abbr`
+in tokeniser mode also:
+* "kvæð." -> `"ABBR Gram/IAbbr N Abbr` + `"." CLB` to account for sentence
+final kvæð with no extra full stop.
+* also `"kvæða" V Imp Sg` + `"." CLB` due to
+homonymy.
+Same treatment is done with two and three full stops after abbreviation in
+the end of the sentence:
+* "kvæð.." -> `"su" Adv Abbr` + `"." CLB Err/Orth`
+* "kvæð..." -> `"su" Adv Abbr` + `"..." CLB`
 
 * * *
 

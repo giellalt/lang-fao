@@ -421,7 +421,7 @@ HEADER = $(srcdir)/index-header.md
 INDEX = $(srcdir)/index.md
 
 # no regenerations while debugging
-doc_DATA = $(INDEX) $(LINKS) $(ALLINONE_MD_PAGE)
+doc_DATA = $(INDEX) $(LINKS) $(ALLINONE_MD_PAGE) lemmacount.json
 DOCC2MDWIKI = $(GTCORE)/scripts/doccomments2ghpages.awk
 DOCC2MDWIKI_CG3 = $(GTCORE)/scripts/doccomments2ghpages-vislcg.awk
 GRAPHPLOTTER = $(GTCORE)/scripts/plot-speller-progress.R
@@ -932,6 +932,11 @@ regenerate-markdown: generate-markdown
 @WANT_SPELLERS_FALSE@report.json: 
 @WANT_SPELLERS_FALSE@	@echo need to configure --enable-spellers to generate statistics
 @WANT_SPELLERS_FALSE@	touch $@
+
+# Generate endpoint json file for shield.io lemma count badge.
+# Only to be stored in the gh-pages branch, ignored in main.
+$(srcdir)/lemmacount.json: $(top_srcdir)/src/fst/stems/*.lexc
+	$(AM_V_GEN)$(GTCORE)/scripts/make-lemmacount.json.sh $(abs_top_srcdir) > $@
 
 # Convert source filenames to extracted documentation filenames, VPATH safe:
 # ../../../src/fst/stems/adverbs.lexc => src-fst-stems-adverbs.lexc.md

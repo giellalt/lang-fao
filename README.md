@@ -1,6 +1,7 @@
 The Faroese morphology and tools
 ==========================================
 
+![Lemma count](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-fao%2Fgh-pages%2Flemmacount.json)
 [![GitHub issues](https://img.shields.io/github/issues-raw/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/issues)
 [![Build Status](https://divvun-tc.giellalt.org/api/github/v1/repository/giellalt/lang-fao/main/badge.svg)](https://github.com/giellalt/lang-fao/actions)
 [![License](https://img.shields.io/github/license/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/blob/main/LICENSE)

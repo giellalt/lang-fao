@@ -1,5 +1,6 @@
 # Faroese documentation
 
+[![Maturity](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-fao%2Fgh-pages%2Fmaturity.json)](https://giellalt.github.io/MaturityClassification.html)
 ![Lemma count](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-fao%2Fgh-pages%2Flemmacount.json)
 [![License](https://img.shields.io/github/license/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/blob/main/LICENSE)
 [![Issues](https://img.shields.io/github/issues/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/issues)

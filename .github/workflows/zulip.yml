@@ -1,0 +1,52 @@
+name: Send Zulip message
+on: [push, pull_request]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout files
+        with:
+          fetch-depth: '2'
+          persist-credentials: 'true'
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const commits = ${{ toJSON(github.event.commits) }}
+            for (const commit of commits) {
+              console.log(commit);
+            };
+            const event = ${{ toJSON(github.event) }};
+            console.log(event);
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+      - name: Get branch name
+        id: branchname
+        run: |
+          BRANCH=$(echo ${{github.event.ref}} | cut -d'/' -f3)
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+      - name: Get ISO code
+        id: isocode
+        run: |
+          ISO=$(echo ${{github.event.repository.name}} | cut -d'-' -f2)
+          echo "ISO=$ISO" >> $GITHUB_ENV
+      - name: Logging
+        id: log
+        run: |
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "text<<$EOF" >> $GITHUB_OUTPUT
+          for file in ${{steps.changed-files.outputs.all_modified_files}} ; do
+            echo "- $file" >> $GITHUB_OUTPUT
+          done
+          echo "$EOF" >> $GITHUB_OUTPUT
+      - name: Send a stream message
+        uses: zulip/github-actions-zulip/send-message@v1
+        with:
+          api-key: ${{ secrets.ZULIP_API_KEY }}
+          email: "github-bot@giella.zulipchat.com"
+          organization-url: "https://giella.zulipchat.com"
+          to: "${{env.ISO}}"
+          type: "stream"
+          topic: "${{github.event.repository.name}} / ${{env.BRANCH}}"
+          content: "Changed files in last commit:\n\n${{steps.log.outputs.text}}"

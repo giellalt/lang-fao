@@ -88,7 +88,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=0.19.0
+_giella_core_min_version=0.20.1
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -162,6 +162,21 @@ AS_IF([test "x$enable_yamltests" = "xcheck"],
 
 AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
 
+################ LXML or pip ################
+AS_IF([test "x$enable_grammarchecker" != "xno"],
+     [AM_PATH_PYTHON([3.5],, [:])
+     AX_PYTHON_MODULE(lxml)
+     AX_PYTHON_MODULE(pip)
+     AC_MSG_CHECKING([whether we can use lxml])
+     AS_IF([test "x$HAVE_PYMOD_LXML" != "xyes"],
+           AS_IF([test "x$HAVE_PYMOD_PIP" != "xno"],
+                 AC_MSG_RESULT(no)
+                 AC_MSG_WARN([lxml or pip is needed for grammarcheckers]),
+                 AC_MSG_RESULT([no but using pip])),
+           AC_MSG_RESULT(yes))])
+
+AM_CONDITIONAL([CAN_LXML], [test "x$HAVE_PYMOD_LXML" != xno])
+AM_CONDITIONAL([CAN_PIP], [test "x$HAVE_PYMOD_LXML" != xno])
 ################ Generated documentation ################
 # Check for awk with required feature:
 AC_CACHE_CHECK([for awk that supports gensub], [ac_cv_path_GAWK],

@@ -37,7 +37,7 @@ jobs:
       - name: Get ISO code
         id: isocode
         run: |
-          ISO=$(echo ${{github.event.repository.name}} | cut -d'-' -f2)
+          ISO=$(echo ${{github.event.repository.name}} | cut -d'-' -f2- | sed -e 's/-.*private.*$/-priv/' | sed '/-priv/!s/-.*//')
           echo "ISO=$ISO" >> $GITHUB_ENV
       - name: Logging
         id: log
@@ -57,4 +57,4 @@ jobs:
           to: "${{env.ISO}}"
           type: "stream"
           topic: "${{github.event.repository.name}} / ${{env.BRANCH}}"
-          content: "Changed files in last commit:\n\n${{steps.log.outputs.text}}"
+          content: "${{github.event.pusher.name}} [pushed](${{github.event.compare}}) to branch ${{env.BRANCH}}.\n\n##### - ${{github.event.commits[0].message}}\n---\n##### Changed files:\n\n${{steps.log.outputs.text}}"

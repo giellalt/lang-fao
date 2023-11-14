@@ -60,10 +60,12 @@ function get_dep_repo() {
             echo "Nothing found, cloning $reponame in ../"
             gitprotocol=$(git remote get-url origin )
             cd "$LANGDIR/../" && git_clone "$reponame" || exit 2
+            cd "$LANGDIR/../$reponame" && ./autogen.sh && ./configure || exit 2
             cd "$LANGDIR" || exit 2
         elif test "$repoformat" == "svn" ; then
             echo "Nothing found, checking out $reponame in ../"
             cd "$LANGDIR/../" && svn_check_out "$reponame" || exit 2
+            cd "$LANGDIR/../$reponame" && ./autogen.sh && ./configure || exit 2
             cd "$LANGDIR" || exit 2
         else
             echo "ERROR: Not possible to find or get $reponame. Giving up."

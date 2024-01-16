@@ -8,15 +8,16 @@ AC_CONFIG_FILES([Makefile \
                  giella-fao.pc \
                  manifest.toml \
                  src/Makefile \
-                 src/filters/Makefile \
-                 src/hyphenation/Makefile \
+                 src/fst/filters/Makefile \
+                 src/fst/syllabification/Makefile \
                  src/fst/Makefile \
-                 src/orthography/Makefile \
-                 src/phonetics/Makefile \
-                 src/phonetics/tests/Makefile \
+                 src/fst/morphology/Makefile \
+                 src/fst/orthography/Makefile \
+                 src/fst/phonetics/Makefile \
+                 src/fst/phonetics/tests/Makefile \
                  src/cg3/Makefile \
-                 src/tagsets/Makefile \
-                 src/transcriptions/Makefile \
+                 src/fst/tagsets/Makefile \
+                 src/fst/transcriptions/Makefile \
                  docs/Makefile \
                  test/Makefile \
                  test/tools/Makefile \
@@ -64,8 +65,8 @@ AC_CONFIG_FILES([Makefile \
 # Add one AC_CONFIG_FILES for each script file that needs processing. This gives
 # the most pleasant user experience and most readable autoconf code to maintain.
 # Spell checker tests, all languages:
-AC_CONFIG_FILES([src/phonetics/tests/run_tests.sh],
-      [chmod a+x src/phonetics/tests/run_tests.sh])
+AC_CONFIG_FILES([src/fst/phonetics/tests/run_tests.sh],
+      [chmod a+x src/fst/phonetics/tests/run_tests.sh])
 AC_CONFIG_FILES([test/tools/spellcheckers/test-zhfst-file.sh], \
       [chmod a+x test/tools/spellcheckers/test-zhfst-file.sh])
 AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh], \

@@ -1,0 +1,34 @@
+## Process this file with automake to produce Makefile.in
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Add local build rules and shared here...
+
+if HAVE_SHARED_SMI
+generated_files/smi-$(GLANG)-%.lexc: $(gt_SHARED_smi)/src/fst/stems/%.lexc
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)cp -f $< $@
+
+
+generated_files/smi-$(GLANG)-%.lexc: $(gt_SHARED_smi)/src/fst/stems/smi-%.lexc
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)cp -f $< $@
+else
+generated_files/smi-$(GLANG)-%.lexc:
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_C_GEN)echo "! Missing shared common data" > $@
+endif
+

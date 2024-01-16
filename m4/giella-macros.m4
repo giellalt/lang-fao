@@ -88,7 +88,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=0.20.1
+_giella_core_min_version=0.21.0
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -845,9 +845,9 @@ AC_ARG_ENABLE([abbr],
               [enable_abbr=$enableval],
               [enable_abbr=no])
 AS_IF([test x$enable_abbr != xno -a \
-    "$(find ${srcdir}/src/fst/stems/ -name "abbreviations.lexc" | head -n 1)" = "" ],
+    "$(find ${srcdir}/src/fst/morphology/stems/ -name "abbreviations.lexc" | head -n 1)" = "" ],
     [AC_MSG_ERROR([You asked for abbr.txt generation, but have no file \
-src/fst/stems/abbreviations.lexc])])
+src/fst/morphoogy/stems/abbreviations.lexc])])
 AS_IF([test x$enable_abbr = xyes -a x$enable_generators = xno],
     [AC_MSG_ERROR([You need to enable generators to build the abbr file])])
 AM_CONDITIONAL([WANT_ABBR], [test "x$enable_abbr" != xno])
@@ -1002,7 +1002,7 @@ To build, test and install:
     make install
 EOF
 AS_IF([test x$gt_prog_xslt = xno -a \
-      "$(find ${srcdir}/src/fst/stems -name "*.xml" | head -n 1)" != "" ],
+      "$(find ${srcdir}/src/fst/morphology/stems -name "*.xml" | head -n 1)" != "" ],
       [AC_MSG_WARN([You have XML source files, but XML transformation to LexC is
 disabled. Please check the output of configure to locate any problems. The LexC
 files will still compile though.
@@ -1048,5 +1048,7 @@ cd ..
 git clone git@github.com:giellalt/$gt_SHARED_FAILS
 cd $gt_SHARED_FAILS
 ./autogen.sh && ./configure && make])])
+AC_MSG_WARN([January 2024: the lexc files and fsts have been moved up to src/fst/morphology])
 ]) # gt_PRINT_FOOTER
+
 # vim: set ft=config:

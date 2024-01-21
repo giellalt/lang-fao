@@ -31,7 +31,7 @@ Defining one tag: +Use/NG for do not generate
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-date-digit2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/transcriptions/transcriptor-date-digit2text.lexc)</small>
 
 ---
 

@@ -13,7 +13,7 @@ The file `stems/conjunctions.lexc` contains two lexica:
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/conjunctions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/conjunctions.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/conjunctions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/conjunctions.lexc)</small>
 
 ---
 

@@ -20,7 +20,7 @@ Lexica:
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/numerals.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/numerals.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/numerals.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/numerals.lexc)</small>
 
 ---
 

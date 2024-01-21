@@ -246,7 +246,7 @@ the end of the sentence:
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/abbreviations.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/abbreviations.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/abbreviations.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/abbreviations.lexc)</small>
 
 ---
 
@@ -267,7 +267,7 @@ put between the abbreviation and its suffix
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/acronyms.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/acronyms.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/acronyms.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/acronyms.lexc)</small>
 
 ---
 
@@ -316,7 +316,7 @@ Compound flags
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/adjectives.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/adjectives.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/adjectives.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/adjectives.lexc)</small>
 
 ---
 
@@ -1023,7 +1023,7 @@ the ways stems may be combined.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/nouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/nouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/nouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/nouns.lexc)</small>
 
 ---
 
@@ -1049,7 +1049,7 @@ Lexica:
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/numerals.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/numerals.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/numerals.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/numerals.lexc)</small>
 
 ---
 
@@ -1080,7 +1080,7 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/propernouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/propernouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/propernouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/propernouns.lexc)</small>
 
 ---
 
@@ -1089,7 +1089,7 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/symbols.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/symbols.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/symbols.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/symbols.lexc)</small>
 
 ---
 
@@ -1558,7 +1558,7 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/affixes/verbs.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/verbs.lexc)</small>
 
 ---
 
@@ -1581,7 +1581,7 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/compounding.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/compounding.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/compounding.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/compounding.lexc)</small>
 
 ---
 
@@ -1995,7 +1995,7 @@ Rule: **ð Deletion in front of Pass**
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/phonology.twolc](https://github.com/giellalt/lang-fao/blob/main/src/fst/phonology.twolc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/phonology.twolc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/phonology.twolc)</small>
 
 ---
 
@@ -2331,7 +2331,7 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/root.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/root.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/root.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/root.lexc)</small>
 
 ---
 
@@ -2351,7 +2351,7 @@ The file is too large and should be shrinked
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/abbreviations.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/abbreviations.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/abbreviations.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/abbreviations.lexc)</small>
 
 ---
 
@@ -2372,7 +2372,7 @@ are taken from "Føroysk orðabók".
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/adjectives.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/adjectives.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/adjectives.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/adjectives.lexc)</small>
 
 ---
 
@@ -2402,7 +2402,7 @@ We should eventually have syntactic tags here...
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/adpositions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/adpositions.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/adpositions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/adpositions.lexc)</small>
 
 ---
 
@@ -2435,7 +2435,7 @@ We should eventually have syntactic tags here...
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/adverbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/adverbs.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/adverbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/adverbs.lexc)</small>
 
 ---
 
@@ -2454,7 +2454,7 @@ The file `stems/conjunctions.lexc` contains two lexica:
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/conjunctions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/conjunctions.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/conjunctions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/conjunctions.lexc)</small>
 
 ---
 
@@ -2462,7 +2462,7 @@ The file `stems/conjunctions.lexc` contains two lexica:
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/determiners.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/determiners.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/determiners.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/determiners.lexc)</small>
 
 ---
 
@@ -2485,7 +2485,7 @@ Most acronyms are taken from a common generated file, this file is for the Faroe
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/fao-acronyms.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/fao-acronyms.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/fao-acronyms.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/fao-acronyms.lexc)</small>
 
 ---
 
@@ -2502,7 +2502,7 @@ The words
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/interjections.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/interjections.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/interjections.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/interjections.lexc)</small>
 
 ---
 
@@ -2534,7 +2534,7 @@ Fila inneheld i underkant av 50000 lemma.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/nouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/nouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/nouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/nouns.lexc)</small>
 
 ---
 
@@ -2582,7 +2582,7 @@ Fila inneheld i underkant av 50000 lemma.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/numerals.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/numerals.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/numerals.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/numerals.lexc)</small>
 
 ---
 
@@ -2632,7 +2632,7 @@ Fila inneheld i underkant av 50000 lemma.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/pronouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/pronouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/pronouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/pronouns.lexc)</small>
 
 ---
 
@@ -2655,7 +2655,7 @@ Table of content
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/propernouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/propernouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/propernouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/propernouns.lexc)</small>
 
 ---
 
@@ -2678,7 +2678,7 @@ The file `stems/subjunctions.lexc` contains three lexica:
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/subjunctions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/subjunctions.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/subjunctions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/subjunctions.lexc)</small>
 
 ---
 
@@ -2728,7 +2728,7 @@ Finally some candidates to be considered for verb compounding.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/verbs.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/verbs.lexc)</small>
 
 ---
 
@@ -3037,7 +3037,7 @@ open           a • &                                     A • Q
 
 * * *
 
-<small>This (part of) documentation was generated from [src/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-fao/blob/main/src/phonetics/txt2ipa.xfscript)</small>
+<small>This (part of) documentation was generated from [src/fst/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-fao/blob/main/src/fst/phonetics/txt2ipa.xfscript)</small>
 
 ---
 
@@ -3056,7 +3056,7 @@ For example:
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/transcriptions/transcriptor-abbrevs2text.lexc)</small>
 
 ---
 
@@ -3093,7 +3093,7 @@ Multichar_Symbols defines flags and +Use/NG and Úse/NA.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-clock-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-clock-digit2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-clock-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/transcriptions/transcriptor-clock-digit2text.lexc)</small>
 
 ---
 
@@ -3130,7 +3130,7 @@ Defining one tag: +Use/NG for do not generate
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-date-digit2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/transcriptions/transcriptor-date-digit2text.lexc)</small>
 
 ---
 
@@ -3269,7 +3269,7 @@ thousands, hundreds, tens, ones.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
 
 ---
 

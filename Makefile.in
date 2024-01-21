@@ -937,7 +937,7 @@ regenerate-markdown: generate-markdown
 
 # Generate endpoint json file for shield.io lemma count badge.
 # Only to be stored in the gh-pages branch, ignored in main.
-$(srcdir)/lemmacount.json: $(top_srcdir)/src/fst/stems/*.lexc
+$(srcdir)/lemmacount.json: $(top_srcdir)/src/fst/morphology/stems/*.lexc
 	$(AM_V_GEN)$(GTCORE)/scripts/make-lemmacount.json.sh $(abs_top_srcdir) > $@
 
 # Generate a maturity.json file as endpoint for the maturity badge.

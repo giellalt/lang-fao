@@ -303,7 +303,7 @@ open           a • &                                     A • Q
 
 * * *
 
-<small>This (part of) documentation was generated from [src/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-fao/blob/main/src/phonetics/txt2ipa.xfscript)</small>
+<small>This (part of) documentation was generated from [src/fst/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-fao/blob/main/src/fst/phonetics/txt2ipa.xfscript)</small>
 
 ---
 

@@ -25,7 +25,7 @@ while test ! -x $relpath/$testrunner ; do
 done
 
 # Get list of source files:
-source_files="$(find ${srcdir}/$relpath/../src/fst -name '*.lexc' \
+source_files="$(find ${srcdir}/$relpath/../src/fst/morphology -name '*.lexc' \
 				-not -name '$concat_lexc_file')"
 
 # One empty line in the beginning:

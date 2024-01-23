@@ -9,7 +9,7 @@ on:
     branches:
       - '**'
 jobs:
-  build-and-deploy:
+  send-push-info-to-zulip:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

@@ -88,7 +88,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=0.21.0
+_giella_core_min_version=0.21.1
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -790,7 +790,7 @@ AC_ARG_ENABLE([L2],
               [enable_L2=no])
 AS_IF([test x$enable_oahpa = xno], [enable_L2=no],
     [AS_IF([test x$enable_L2 != xno -a \
-      "$(find ${srcdir}/src -name "*-L2.*" | head -n 1)" = "" ],
+      "$(find ${srcdir}/src/fst -name "*-L2.*" | head -n 1)" = "" ],
       [AC_MSG_ERROR([You asked for the L2 analyser, but no L2 files were found])])])
 AM_CONDITIONAL([WANT_L2], [test "x$enable_L2" != xno])
 
@@ -845,9 +845,9 @@ AC_ARG_ENABLE([abbr],
               [enable_abbr=$enableval],
               [enable_abbr=no])
 AS_IF([test x$enable_abbr != xno -a \
-    "$(find ${srcdir}/src/fst/morphology/stems/ -name "abbreviations.lexc" | head -n 1)" = "" ],
+    "$(find ${srcdir}/src/fst/morphology/stems -name "abbreviations.lexc" | head -n 1)" = "" ],
     [AC_MSG_ERROR([You asked for abbr.txt generation, but have no file \
-src/fst/morphoogy/stems/abbreviations.lexc])])
+src/fst/morphology/stems/abbreviations.lexc])])
 AS_IF([test x$enable_abbr = xyes -a x$enable_generators = xno],
     [AC_MSG_ERROR([You need to enable generators to build the abbr file])])
 AM_CONDITIONAL([WANT_ABBR], [test "x$enable_abbr" != xno])

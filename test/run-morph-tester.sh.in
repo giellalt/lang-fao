@@ -62,7 +62,7 @@ abs_srcdir=$(cd $srcdir && pwd)
 # remaining intervening dirs equals the path to the fst dir as long as the
 # directory structure within $GTLANG/test/ mirrors the structure of the other
 # directories - this mirroring thus becomes imperative for the yaml testing:
-fstdir=${abs_srcdir:${#roottestdir}:${#roottestdir}}
+fstdir=${abs_srcdir:${#roottestdir}:${#roottestdir}}/fst/
 
 # The analyser files are built $relpath relative to the test dir, one further
 # dir up, and then in the identified fst dir (see above):

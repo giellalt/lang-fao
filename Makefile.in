@@ -945,7 +945,7 @@ $(srcdir)/maturity.json:
 	$(AM_V_GEN)$(GTCORE)/scripts/make-maturity.json.sh $(REPONAME) > $@
 
 # Convert source filenames to extracted documentation filenames, VPATH safe:
-# ../../../src/fst/stems/adverbs.lexc => src-fst-stems-adverbs.lexc.md
+# ../../../src/fst/morphology/stems/adverbs.lexc => src-fst-morphology-stems-adverbs.lexc.md
 define src2md
 $(addsuffix .md,$(subst /,-,$(subst $(top_srcdir)/,,$(1))))
 endef

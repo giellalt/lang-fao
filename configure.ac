@@ -70,7 +70,7 @@ AC_SUBST([GTLANGUAGE], $GLANGUAGE)
 ### The AC variables SPELLER_NAME_xxx and SPELLER_DESC_xxx are used in:
 ### - manifest.toml.in
 ### - tools/spellcheckers/index.*.xml.in
-AC_SUBST([SPELLERVERSION], [0.1.0])
+AC_SUBST([SPELLERVERSION], [1.1.1])
 AC_SUBST([SPELLER_NAME_ENG], ["$GLANGUAGE spellchecker"])
 AC_SUBST([SPELLER_NAME_NATIVE], ["Autonym spellchecker"])
 AC_SUBST([SPELLER_DESC_ENG], ["A spellchecker for $GLANGUAGE, made by members of the language community, and by the Divvun and Giellatekno groups at UiT The Arctic University of Norway"])

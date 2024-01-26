@@ -45,9 +45,6 @@ AM_INIT_AUTOMAKE(
 )
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
-AC_SUBST([SPELLERVERSION], [1.1.1])
-AC_SUBST([GRAMCHECKVERSION], [0.1.0])
-
 ########## LANGUAGE SPECIFIC SETTINGS ##########
 # GLANG is the language code used to identify this project; it is the
 # ISO 639-3 three-letter code for the language.

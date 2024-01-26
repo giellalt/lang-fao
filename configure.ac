@@ -55,9 +55,9 @@ AC_SUBST([SPELLERVERSION], [1.1.1])
 AC_SUBST([GRAMCHECKVERSION], [0.1.0])
 
 ########## LANGUAGE SPECIFIC SETTINGS ##########
-# GLANG is the language code used to identify this project; it should be the
-# same as the directory name in $GIELLA_HOME/*langs/ and the same as the ISO 639
-# three-letter code for the language.
+# GLANG is the language code used to identify this project; it is the
+# ISO 639-3 three-letter code for the language.
+# It is also the second part of the repo name lang-XXX.
 # GTLANG is deprecated, defined for backwards compatibility.
 AC_SUBST([GLANG], [fao])
 AC_SUBST([GTLANG], $GLANG)
@@ -71,6 +71,24 @@ AC_SUBST([GTLANG2], $GLANG2)
 # GTLANGUAGE is deprecated, defined for backwards compatibility.
 AC_SUBST([GLANGUAGE], ["Faroese"])
 AC_SUBST([GTLANGUAGE], $GLANGUAGE)
+
+### Speller release version (usually different from the package version,
+### typically spellers are released more often than the language package):
+### Translate the *_NAT placeholder contents into
+### the native language of this repo.
+### The AC variables SPELLER_NAME_xxx and SPELLER_DESC_xxx are used in:
+### - manifest.toml.in
+### - tools/spellcheckers/index.*.xml.in
+AC_SUBST([SPELLERVERSION], [0.1.0])
+AC_SUBST([SPELLER_NAME_ENG], ["$GLANGUAGE spellchecker"])
+AC_SUBST([SPELLER_NAME_NATIVE], ["Autonym spellchecker"])
+AC_SUBST([SPELLER_DESC_ENG], ["A spellchecker for $GLANGUAGE, made by members of the language community, and by the Divvun and Giellatekno groups at UiT The Arctic University of Norway"])
+AC_SUBST([SPELLER_DESC_NATIVE], ["TRANSLATE: A spellchecker for $GLANGUAGE, made by members of the language community, and by the Divvun and Giellatekno groups at UiT The Arctic University of Norway"])
+
+### Grammar checker release version (usually different from the package version,
+### typically grammar checkers are released more often than the language
+### package, and also different from the speller release version):
+AC_SUBST([GRAMCHECKVERSION], [0.1.0])
 
 # Alternate writing system(s) should be listed here using the ISO 15924 code.
 # Multiple alternate WS's should be space separated. For a list of such codes

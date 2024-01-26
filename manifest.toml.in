@@ -1,6 +1,18 @@
 name = "Faroese"
 version = "@SPELLERVERSION@"
 
+# Name of the speller package in various languages.
+# The default is English + autonym:
+[speller.name]
+en = "@SPELLER_NAME_ENG@"
+fo = "@SPELLER_NAME_NATIVE@"
+
+# Description of the speller package in various languages.
+# The default is English + autonym:
+[speller.description]
+en = "@SPELLER_DESC_ENG@"
+fo = "@SPELLER_DESC_NATIVE@"
+
 [macos]
 system_pkg_id = "no.divvun.MacDivvun.fo"
 

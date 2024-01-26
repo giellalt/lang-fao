@@ -1,6 +1,18 @@
 name = "Faroese"
 version = "1.1.1"
 
+# Name of the speller package in various languages.
+# The default is English + autonym:
+[speller.name]
+en = "Faroese spellchecker"
+fo = "Autonym spellchecker"
+
+# Description of the speller package in various languages.
+# The default is English + autonym:
+[speller.description]
+en = "A spellchecker for Faroese, made by members of the language community, and by the Divvun and Giellatekno groups at UiT The Arctic University of Norway"
+fo = "TRANSLATE: A spellchecker for Faroese, made by members of the language community, and by the Divvun and Giellatekno groups at UiT The Arctic University of Norway"
+
 [macos]
 system_pkg_id = "no.divvun.MacDivvun.fo"
 

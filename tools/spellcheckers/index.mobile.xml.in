@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hfstspeller dtdversion="1.0" hfstversion="3">
+  <info>
+    <locale>@GLANG2@</locale>
+    <title>@SPELLER_NAME_ENG@ (mobile)</title>
+    <description>@SPELLER_DESC_ENG@. Mobile phone version.</description>
+    <version>@SPELLERVERSION@</version>
+    <date>DATE</date>
+    <producer>Giellatekno/Divvun/UiT contributors</producer>
+    <contact email="feedback@divvun.no" website="http://divvun.no"/>
+  </info>
+  <acceptor type="general" id="acceptor.default.hfst">
+    <title>@GLANGUAGE@ speller lexicon</title>
+    <description>@GLANGUAGE@ speller lexicon compiled with HFST.</description>
+  </acceptor>
+  <errmodel id="errmodel.default.hfst">
+    <title>@GLANGUAGE@ error model</title>
+    <description>Error model for @GLANGUAGE@, possibly with adaptions to mobile phone keyboards.</description>
+        <type type="default"/>
+        <model>errormodel.default.hfst</model>
+    </errmodel>
+</hfstspeller>

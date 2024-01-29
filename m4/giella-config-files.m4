@@ -56,6 +56,8 @@ AC_CONFIG_FILES([Makefile \
                  tools/tokenisers/tests/Makefile \
                  tools/shellscripts/Makefile \
                  tools/spellcheckers/Makefile \
+                 tools/spellcheckers/index.xml \
+                 tools/spellcheckers/index.mobile.xml \
                  tools/spellcheckers/filters/Makefile \
                  tools/spellcheckers/neural/Makefile \
                  tools/spellcheckers/weights/Makefile \

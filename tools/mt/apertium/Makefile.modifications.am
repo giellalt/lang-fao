@@ -41,9 +41,9 @@ dependency-mt-gt.cg3: $(gt_SHARED_smi)/src/cg3/dependency.cg3
 functions-mt-gt.cg3: $(gt_SHARED_smi)/src/cg3/functions.cg3
 	$(AM_V_CP)cp -f $< $@
 else
-dependency-mt-gt.cg3: $(topsrcdir)/src/cg3/dependency.cg3
+dependency-mt-gt.cg3: $(top_srcdir)/src/cg3/dependency.cg3
 	$(AM_V_GEN)cp -f $< $@
 
-functions-mt-gt.cg3: $(topsrcdir)/src/cg3/functions.cg3
+functions-mt-gt.cg3: $(top_srcdir)/src/cg3/functions.cg3
 	$(AM_V_GEN)cp -f $< $@
 endif

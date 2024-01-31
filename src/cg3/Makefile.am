@@ -29,7 +29,7 @@ dependency.cg3: $(gt_SHARED_smi)/src/cg3/dependency.cg3
 	$(AM_V_CP)cp -f $< $@
 else
 %.cg3:
-	$(AM_V_GEN)echo "! missing dependency $@" > $@
+	$(AM_V_GEN)echo "# missing dependency $@" > $@
 endif
 
 ##################################################################

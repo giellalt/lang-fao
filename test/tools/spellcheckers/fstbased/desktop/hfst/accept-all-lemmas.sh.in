@@ -28,9 +28,13 @@ checked_lemmas=checked_lemmas.txt
 ##### Extract lemmas - add additional egrep pattern as parameters: #####
 ##### --include "(pattern1|pattern2|...)"                          #####
 ##### --exclude "(pattern1|pattern2|...)"                          #####
-@GTCORE@/scripts/extract-lemmas.sh \
+rm -f $lemmas
+touch $lemmas
+for f in $source_files; do
+    @GTCORE@/scripts/extract-lemmas.sh \
     --exclude "(CmpN/Only|ShCmp|\+Cmp\/SplitR| Rreal | R | Rnoun |\+V\+|NOT-TO-LEMMATEST)" \
-    $source_files > $lemmas
+    $f >> $lemmas
+done
 
 ####### Start testing: #######
 

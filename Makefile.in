@@ -995,6 +995,7 @@ $(LINKS):
 		d2=`echo "$$d" | cut -d '/' -f 2` ;\
 		d3=`echo "$$d" | cut -d '/' -f 3` ;\
 		d4=`echo "$$d" | cut -d '/' -f 4` ;\
+		d5=`echo "$$d" | cut -d '/' -f 5` ;\
 		if test "x$$d1" != "x$$oldd1" ; then \
 			echo "* \`$$d1/\`" ;\
 			oldd1=$$d1 ;\
@@ -1016,6 +1017,12 @@ $(LINKS):
 		elif test "x$$d4" != "x$$oldd4" ; then \
 			echo "            * \`$$d4/\`" ;\
 			oldd4=$$d4 ;\
+		fi ; \
+		if test "x$$d5" = x -a "x$$d4" != x ; then \
+			echo "                * [$$docname]($$html) ([src]($(REPOURL)/$$doc))" ;\
+		elif test "x$$d5" != "x$$oldd5" ; then \
+			echo "                * \`$$d5/\`" ;\
+			oldd5=$$d5 ;\
 		fi ; \
 	done > $@
 

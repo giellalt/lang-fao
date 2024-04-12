@@ -16,6 +16,3 @@ put between the abbreviation and its suffix
 * * *
 
 <small>This (part of) documentation was generated from [src/fst/morphology/affixes/acronyms.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/acronyms.lexc)</small>
-
----
-

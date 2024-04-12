@@ -250,6 +250,7 @@ GLANGUAGE = @GLANGUAGE@
 GRAMCHECKVERSION = @GRAMCHECKVERSION@
 GTCORE = @GTCORE@
 GTCORESH = @GTCORESH@
+GTGRAMTOOL = @GTGRAMTOOL@
 GTLANG = @GTLANG@
 GTLANG2 = @GTLANG2@
 GTLANGUAGE = @GTLANGUAGE@
@@ -979,9 +980,14 @@ $(foreach f,$(DOCSRC_XEROX),$(eval $(call make_md_files,$(f))))
 $(foreach f,$(DOCSRC_CG3),$(eval $(call make_md_files_cg3,$(f))))
 
 # Collect all target files into one big MD file:
+# Remove the VPATH prefix to create the header for each file/chapter:
 $(ALLINONE_MD_PAGE): $(VPATH_MDFILES)
-	$(AM_V_GEN)printf "# $(GLANGUAGE) description \n\nAll documents in one file\n\n" \
-	| cat - $(VPATH_MDFILES) > $@
+	$(AM_V_GEN)printf "# $(GLANGUAGE) language model documentation\n\nAll doc-comment documentation in one large file.\n" > $@
+	for f in $(VPATH_MDFILES); do \
+		header=$${f#"$(top_srcdir)/docs/"};\
+		printf "\n---\n\n# $$header \n\n" >> $@ ;\
+		cat $$f >> $@ ;\
+	done
 
 $(LINKS):
 	$(AM_V_GEN)for doc2md in $(DOCSRC_MDFILES) ; do \
@@ -999,24 +1005,32 @@ $(LINKS):
 		if test "x$$d1" != "x$$oldd1" ; then \
 			echo "* \`$$d1/\`" ;\
 			oldd1=$$d1 ;\
+			oldd2="";\
+			oldd3="";\
+			oldd4="";\
 		fi ; \
 		if test "x$$d2" = x ; then \
 			echo "    * [$$docname]($$html) ([src]($(REPOURL)/$$doc))" ;\
 		elif test "x$$d2" != "x$$oldd2" ; then \
 			echo "    * \`$$d2/\`" ;\
 			oldd2=$$d2 ;\
+			oldd3="";\
+			oldd4="";\
+			oldd5="";\
 		fi ; \
 		if test "x$$d3" = x -a "x$$d2" != x; then \
 			echo "        * [$$docname]($$html) ([src]($(REPOURL)/$$doc))" ;\
 		elif test "x$$d3" != "x$$oldd3" ; then \
 			echo "        * \`$$d3/\`" ;\
 			oldd3=$$d3 ;\
+			oldd4="";\
 		fi ; \
 		if test "x$$d4" = x -a "x$$d3" != x ; then \
 			echo "            * [$$docname]($$html) ([src]($(REPOURL)/$$doc))" ;\
 		elif test "x$$d4" != "x$$oldd4" ; then \
 			echo "            * \`$$d4/\`" ;\
 			oldd4=$$d4 ;\
+			oldd5="";\
 		fi ; \
 		if test "x$$d5" = x -a "x$$d4" != x ; then \
 			echo "                * [$$docname]($$html) ([src]($(REPOURL)/$$doc))" ;\

@@ -82,4 +82,5 @@ part of the noun phrase of that noun (i.e., "scan to the next NP head")
 ! __therestX__ adds @X to all what is left, often errouneus disambiguated forms
 
 * * *
+
 <small>This (part of) documentation was generated from [src/cg3/functions.cg3](https://github.com/giellalt/lang-fao/blob/main/src/cg3/functions.cg3)</small>

@@ -1,6 +1,10 @@
-# Faroese description 
+# Faroese language model documentation
 
-All documents in one file
+All doc-comment documentation in one large file.
+
+---
+
+# src-cg3-disambiguator.cg3.md 
 
 
 
@@ -42,7 +46,14 @@ Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them
 * **X** removes readings with no syntax
 
 * * *
+
 <small>This (part of) documentation was generated from [src/cg3/disambiguator.cg3](https://github.com/giellalt/lang-fao/blob/main/src/cg3/disambiguator.cg3)</small>
+
+---
+
+# src-cg3-functions.cg3.md 
+
+
 S Y N T A C T I C   F U N C T I O N S   F O R   F A R O E S E
 
 Sámi language technology project 2003-2014, University of Tromsø # 
@@ -126,7 +137,14 @@ part of the noun phrase of that noun (i.e., "scan to the next NP head")
 ! __therestX__ adds @X to all what is left, often errouneus disambiguated forms
 
 * * *
+
 <small>This (part of) documentation was generated from [src/cg3/functions.cg3](https://github.com/giellalt/lang-fao/blob/main/src/cg3/functions.cg3)</small>
+
+---
+
+# src-cg3-korp.cg3.md 
+
+
 S Y N T A C T I C   F U N C T I O N S   F O R   F A R O E S E
 
 Sámi language technology project 2003-2014, University of Tromsø # 
@@ -210,7 +228,14 @@ part of the noun phrase of that noun (i.e., "scan to the next NP head")
 ! __therestX__ adds @X to all what is left, often errouneus disambiguated forms
 
 * * *
-<small>This (part of) documentation was generated from [src/cg3/korp.cg3](https://github.com/giellalt/lang-fao/blob/main/src/cg3/korp.cg3)</small># Abbreviation affixes
+
+<small>This (part of) documentation was generated from [src/cg3/korp.cg3](https://github.com/giellalt/lang-fao/blob/main/src/cg3/korp.cg3)</small>
+
+---
+
+# src-fst-morphology-affixes-abbreviations.lexc.md 
+
+# Abbreviation affixes
 
 Now splitting according to POS, and according to dot or not
 
@@ -250,6 +275,8 @@ the end of the sentence:
 
 ---
 
+# src-fst-morphology-affixes-acronyms.lexc.md 
+
 
 
 # North Saami acronyms - affix part
@@ -270,6 +297,8 @@ put between the abbreviation and its suffix
 <small>This (part of) documentation was generated from [src/fst/morphology/affixes/acronyms.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/acronyms.lexc)</small>
 
 ---
+
+# src-fst-morphology-affixes-adjectives.lexc.md 
 
 # Adjective morphology !
 
@@ -319,6 +348,8 @@ Compound flags
 <small>This (part of) documentation was generated from [src/fst/morphology/affixes/adjectives.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/adjectives.lexc)</small>
 
 ---
+
+# src-fst-morphology-affixes-nouns.lexc.md 
 
 # Faroese Noun morphology 
 
@@ -1027,6 +1058,8 @@ the ways stems may be combined.
 
 ---
 
+# src-fst-morphology-affixes-numerals.lexc.md 
+
 # Numeral affixess
 
 This lexicon just goes to #, this in order to coexist with number files in giella-shared.
@@ -1052,6 +1085,8 @@ Lexica:
 <small>This (part of) documentation was generated from [src/fst/morphology/affixes/numerals.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/numerals.lexc)</small>
 
 ---
+
+# src-fst-morphology-affixes-propernouns.lexc.md 
 
 # Proper nouns 
 
@@ -1084,6 +1119,8 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 ---
 
+# src-fst-morphology-affixes-symbols.lexc.md 
+
 
 # Symbol affixes
 
@@ -1092,6 +1129,8 @@ lexicon. The other lexica are there for specific subgroups of the names.
 <small>This (part of) documentation was generated from [src/fst/morphology/affixes/symbols.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/affixes/symbols.lexc)</small>
 
 ---
+
+# src-fst-morphology-affixes-verbs.lexc.md 
 
 
 
@@ -1562,6 +1601,8 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 ---
 
+# src-fst-morphology-compounding.lexc.md 
+
 # Compounding morphology
 
 # Lexicon R gets flags and sends compounds over to RReal
@@ -1584,6 +1625,8 @@ lexicon. The other lexica are there for specific subgroups of the names.
 <small>This (part of) documentation was generated from [src/fst/morphology/compounding.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/compounding.lexc)</small>
 
 ---
+
+# src-fst-morphology-phonology.twolc.md 
 
 # The Faroese morphophonological file 
 
@@ -1999,6 +2042,8 @@ Rule: **ð Deletion in front of Pass**
 
 ---
 
+# src-fst-morphology-root.lexc.md 
+
 # Faroese morphological analyser
 
 # Definitions for Multichar_Symbols
@@ -2335,6 +2380,8 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 ---
 
+# src-fst-morphology-stems-abbreviations.lexc.md 
+
 # File containing Faroese abbreviations 
 
 Lexica for adding tags and periods
@@ -2354,6 +2401,8 @@ The file is too large and should be shrinked
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/abbreviations.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/abbreviations.lexc)</small>
 
 ---
+
+# src-fst-morphology-stems-adjectives.lexc.md 
 
 # Faroese adjectives 
 
@@ -2375,6 +2424,8 @@ are taken from "Føroysk orðabók".
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/adjectives.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/adjectives.lexc)</small>
 
 ---
+
+# src-fst-morphology-stems-adpositions.lexc.md 
 
 # Faroese prepositions
 
@@ -2405,6 +2456,8 @@ We should eventually have syntactic tags here...
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/adpositions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/adpositions.lexc)</small>
 
 ---
+
+# src-fst-morphology-stems-adverbs.lexc.md 
 
 # Faroese adverbs
 
@@ -2439,6 +2492,8 @@ We should eventually have syntactic tags here...
 
 ---
 
+# src-fst-morphology-stems-conjunctions.lexc.md 
+
 # The Faroese conjunctions
 
 The file `stems/conjunctions.lexc` contains two lexica:
@@ -2458,6 +2513,8 @@ The file `stems/conjunctions.lexc` contains two lexica:
 
 ---
 
+# src-fst-morphology-stems-determiners.lexc.md 
+
 # Faroese deternminers
 
 * * *
@@ -2465,6 +2522,8 @@ The file `stems/conjunctions.lexc` contains two lexica:
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/determiners.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/determiners.lexc)</small>
 
 ---
+
+# src-fst-morphology-stems-fao-acronyms.lexc.md 
 
 # Akronymer 
 
@@ -2489,6 +2548,8 @@ Most acronyms are taken from a common generated file, this file is for the Faroe
 
 ---
 
+# src-fst-morphology-stems-interjections.lexc.md 
+
 
 # Interjections
 
@@ -2505,6 +2566,8 @@ The words
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/interjections.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/interjections.lexc)</small>
 
 ---
+
+# src-fst-morphology-stems-nouns.lexc.md 
 
 # Faroese noun stem file
 
@@ -2537,6 +2600,8 @@ Fila inneheld i underkant av 50000 lemma.
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/nouns.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/nouns.lexc)</small>
 
 ---
+
+# src-fst-morphology-stems-numerals.lexc.md 
 
 # Faroese Numerals
 
@@ -2585,6 +2650,8 @@ Fila inneheld i underkant av 50000 lemma.
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/numerals.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/numerals.lexc)</small>
 
 ---
+
+# src-fst-morphology-stems-pronouns.lexc.md 
 
 # Faroese pronouns
 
@@ -2636,6 +2703,8 @@ Fila inneheld i underkant av 50000 lemma.
 
 ---
 
+# src-fst-morphology-stems-propernouns.lexc.md 
+
 # Proper nouns 
 
 Table of content
@@ -2659,6 +2728,8 @@ Table of content
 
 ---
 
+# src-fst-morphology-stems-subjunctions.lexc.md 
+
 # Faroese subjunctions
 
 The file `stems/subjunctions.lexc` contains three lexica:
@@ -2681,6 +2752,8 @@ The file `stems/subjunctions.lexc` contains three lexica:
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/subjunctions.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/subjunctions.lexc)</small>
 
 ---
+
+# src-fst-morphology-stems-verbs.lexc.md 
 
 
 # Faroese verb stems 
@@ -2731,6 +2804,8 @@ Finally some candidates to be considered for verb compounding.
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/morphology/stems/verbs.lexc)</small>
 
 ---
+
+# src-fst-phonetics-txt2ipa.xfscript.md 
 
 
 Phonological converter for Faroese
@@ -3041,6 +3116,8 @@ open           a • &                                     A • Q
 
 ---
 
+# src-fst-transcriptions-transcriptor-abbrevs2text.lexc.md 
+
 
 
 # Faroese abbreviations                               
@@ -3059,6 +3136,8 @@ For example:
 <small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/transcriptions/transcriptor-abbrevs2text.lexc)</small>
 
 ---
+
+# src-fst-transcriptions-transcriptor-clock-digit2text.lexc.md 
 
 
 # The Faroese clock
@@ -3097,6 +3176,8 @@ Multichar_Symbols defines flags and +Use/NG and Úse/NA.
 
 ---
 
+# src-fst-transcriptions-transcriptor-date-digit2text.lexc.md 
+
 
 # Faroese dates 
 
@@ -3133,6 +3214,8 @@ Defining one tag: +Use/NG for do not generate
 <small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/transcriptions/transcriptor-date-digit2text.lexc)</small>
 
 ---
+
+# src-fst-transcriptions-transcriptor-numbers-digit2text.lexc.md 
 
 # Faroese numbers
 
@@ -3273,6 +3356,8 @@ thousands, hundreds, tens, ones.
 
 ---
 
+# tools-grammarcheckers-grammarchecker.cg3.md 
+
 # Faroese grammarchecker
 
 This is work in progress. The main focus is on **ð** errors, 
@@ -3351,7 +3436,14 @@ Nothing here.
 ### **RULE:** líti should be lítið
 
 * * *
+
 <small>This (part of) documentation was generated from [tools/grammarcheckers/grammarchecker.cg3](https://github.com/giellalt/lang-fao/blob/main/tools/grammarcheckers/grammarchecker.cg3)</small>
+
+---
+
+# tools-grammarcheckers-grc-disambiguator.cg3.md 
+
+
 
 # Faroese disambiguator 
 
@@ -3390,7 +3482,14 @@ Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them
 * **X** removes readings with no syntax
 
 * * *
-<small>This (part of) documentation was generated from [tools/grammarcheckers/grc-disambiguator.cg3](https://github.com/giellalt/lang-fao/blob/main/tools/grammarcheckers/grc-disambiguator.cg3)</small># Tokeniser for fao
+
+<small>This (part of) documentation was generated from [tools/grammarcheckers/grc-disambiguator.cg3](https://github.com/giellalt/lang-fao/blob/main/tools/grammarcheckers/grc-disambiguator.cg3)</small>
+
+---
+
+# tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.md 
+
+# Tokeniser for fao
 
 Usage:
 ```
@@ -3453,6 +3552,8 @@ Finally we mark as a token any sequence making up a:
 <small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-disamb-gt-desc.pmscript](https://github.com/giellalt/lang-fao/blob/main/tools/tokenisers/tokeniser-disamb-gt-desc.pmscript)</small>
 
 ---
+
+# tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.md 
 
 # Grammar checker tokenisation for fao
 
@@ -3517,6 +3618,8 @@ Finally we mark as a token any sequence making up a:
 
 ---
 
+# tools-tokenisers-tokeniser-tts-cggt-desc.pmscript.md 
+
 # TTS tokenisation for smj
 
 Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
@@ -3578,6 +3681,3 @@ Needs hfst-tokenise to output things differently depending on the tag they get
 * * *
 
 <small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-tts-cggt-desc.pmscript](https://github.com/giellalt/lang-fao/blob/main/tools/tokenisers/tokeniser-tts-cggt-desc.pmscript)</small>
-
----
-

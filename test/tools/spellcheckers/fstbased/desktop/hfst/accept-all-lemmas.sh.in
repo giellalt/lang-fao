@@ -32,6 +32,10 @@ checked_lemmas=checked_lemmas.txt
     --exclude "(CmpN/Only|ShCmp|\+Cmp\/SplitR| Rreal | R | Rnoun |\+V\+|NOT-TO-LEMMATEST)" \
     $source_files > $lemmas
 
+if ! test -f $speller_dir/${GIELLA_LANG}.zhfst ; then
+    echo missing $speller_dir/${GIELLA_LANG}.zhfst
+fi
+
 ####### Start testing: #######
 
 $ospell $speller_dir/${GIELLA_LANG}.zhfst < $lemmas > $checked_lemmas
@@ -39,6 +43,8 @@ $ospell $speller_dir/${GIELLA_LANG}.zhfst < $lemmas > $checked_lemmas
 grep 'is NOT in the lexicon' $checked_lemmas > $rejected_lemmas
 
 if [ -s $rejected_lemmas ] ; then
+    head $rejected_lemmas
+    echo see $rejected_lemmas for more
     exit 1
 fi
 

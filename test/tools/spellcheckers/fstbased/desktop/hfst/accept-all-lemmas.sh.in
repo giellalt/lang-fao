@@ -29,7 +29,7 @@ checked_lemmas=checked_lemmas.txt
 ##### --include "(pattern1|pattern2|...)"                          #####
 ##### --exclude "(pattern1|pattern2|...)"                          #####
 @GTCORE@/scripts/extract-lemmas.sh \
-    --exclude "(CmpN/Only|ShCmp|\+Cmp\/SplitR| Rreal | R | Rnoun |\+V\+|NOT-TO-LEMMATEST|ab-dot-)" \
+    --exclude "(CmpN/Only|ShCmp|\+Cmp\/SplitR| Rreal | R | Rnoun |\+V\+|NOT-TO-LEMMATEST|ab-dot-| TEXTTENS |trab ;)" \
     $source_files > $lemmas
 
 if ! test -f $speller_dir/${GIELLA_LANG}.zhfst ; then

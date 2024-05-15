@@ -12,7 +12,7 @@ Skipped=no
 testtype=full
 concat_lexc_file="lexicon.lexc"
 
-relpath=.
+relpath=../../../test/
 testrunner=run-morph-tester.sh
 
 while test ! -x $relpath/$testrunner ; do
@@ -25,8 +25,8 @@ while test ! -x $relpath/$testrunner ; do
 done
 
 # Get list of source files:
-source_files="$(find ${srcdir}/$relpath/../src/fst/morphology -name '*.lexc' \
-				-not -name '$concat_lexc_file')"
+source_files="$(find ${srcdir}/../ -name '*.lexc' \
+				-not -name "$concat_lexc_file")"
 
 # One empty line in the beginning:
 echo ""
@@ -70,7 +70,7 @@ for file in ${source_files}; do
 			# Empty line before each new fst:
 			echo
 		    leadtext=$(echo "LEXC test $i: ")
-		    
+
 		    # Check for possible one-sided tests (default is two-sided/full):
 		    if [[ "$fst" == *.gen ]]; then
 		      testtype="gen"
@@ -79,10 +79,10 @@ for file in ${source_files}; do
 		      testtype="ana"
 		      fst=$(basename $fst .ana)
 		    fi
-		    
+
 		    # Run the actual tests for the given fst:
 			source $relpath/run-morph-tester.sh \
-				$fst $file $relpath $testtype all $leadtext
+				$fst $file $relpath $testtype ../../../test all $leadtext
 #		    echo "The $fst testing is done using $testtype testing."    # debug
 
 		    # Reset testtype to default:

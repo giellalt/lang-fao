@@ -31,7 +31,7 @@
 
 ##########################################
 # Subdirs:
-SUBDIRS = filters tagsets .
+SUBDIRS = filters tagsets . test
 
 ##########################################
 # Variable declarations:

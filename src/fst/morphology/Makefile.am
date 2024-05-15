@@ -15,6 +15,9 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# build before test
+SUBDIRS=. test
+
 # Add language-specific flags for hfst-lexc compilation here:
 if HAVE_SHARED_COMMON
 HFST_LEXC_LOCAL_FLAGS=  # --Werror # uncomment if lexc is good enough

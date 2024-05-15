@@ -2,8 +2,6 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = phonology orthography morphology syntax
-
 ######## Test targets: ###########
 
 # List here (space separated) all test scripts that should be run

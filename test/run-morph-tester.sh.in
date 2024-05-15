@@ -62,13 +62,14 @@ abs_srcdir=$(cd $srcdir && pwd)
 # remaining intervening dirs equals the path to the fst dir as long as the
 # directory structure within $GTLANG/test/ mirrors the structure of the other
 # directories - this mirroring thus becomes imperative for the yaml testing:
-fstdir=${abs_srcdir:${#roottestdir}:${#roottestdir}}/fst/
+#fstdir=${abs_srcdir:${#roottestdir}:${#roottestdir}}/fst/
+fstdir=${abs_srcdir%/test}
 
 # The analyser files are built $relpath relative to the test dir, one further
 # dir up, and then in the identified fst dir (see above):
-analyserfile=./$relpath/../$fstdir/analyser-$transducer
-generatorfile=./$relpath/../$fstdir/generator-$transducer
-bare_fst_file=./$relpath/../$fstdir/$transducer
+analyserfile=$fstdir/analyser-$transducer
+generatorfile=$fstdir/generator-$transducer
+bare_fst_file=$fstdir/$transducer
 pythonbin=@PYTHON@
 runtests="$pythonbin @GTCORE@/scripts/morph-test.py"
 testtotalsfile=testtotals.tmp.txt
@@ -210,6 +211,7 @@ for f in $fsttype; do
 	# First check for analysis tests only:
     if test "$halftest" == "ana" ; then
 		for suff in $fstsuffix; do
+            echo debug trying $analyserfile.$suff
 			if test -f "$analyserfile.$suff"; then
 				analyser=$analyserfile.$suff
 				let "transducer_found += 1"
@@ -229,6 +231,8 @@ for f in $fsttype; do
 	elif test "$halftest" == "gen" ; then
 		for suff in $fstsuffix; do
 			# Regular word form generation tests:
+            echo debug trying $generatorfile.$suff
+            echo maybe $bare_fst_file.lookup.$suff
 			if test -f "$generatorfile.$suff"; then
 				generator=$generatorfile.$suff
 				let "transducer_found += 1"
@@ -255,6 +259,7 @@ for f in $fsttype; do
 	# Then check for speller acceptor tests:
     elif test "$halftest" == "speller" ; then
 		for suff in $fstsuffix; do
+            echo debug trying $bare_fst_file.$suff
 			if test -f "$bare_fst_file.$suff"; then
 				analyser=$bare_fst_file.$suff
 				let "transducer_found += 1"
@@ -271,6 +276,7 @@ for f in $fsttype; do
 	# Finally check the full analysis + generation tests:
 	elif test "$halftest" == "full" ; then
 		for suff in $fstsuffix; do
+            echo debug trying $analyserfile.$suff and $generatorfile.$suff
 			if test -f "$analyserfile.$suff"    \
 				 -a -f "$generatorfile.$suff"; then
 				analyser=$analyserfile.$suff

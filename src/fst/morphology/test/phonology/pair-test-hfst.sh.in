@@ -10,8 +10,8 @@
 
 HTWOLC=@HFST_PAIR_TEST@
 GTLANG=@GTLANG@
-SOURCEFILE=${srcdir}/../../../src/fst/phonology.twolc
-HFSTFILE=../../../src/fst/phonology.compose.hfst
+SOURCEFILE=${srcdir}/../../phonology.twolc
+HFSTFILE=../../.generated/phonology.compose.hfst
 TESTRESULT=pair-test-out.hfst.txt
 EXTEDITOR=@SEE@
 
@@ -41,7 +41,7 @@ if test -f ${SOURCEFILE} ; then
             exit 77
         fi
     else
-        echo The compiled rule file ${XFSTFILE} was not found
+        echo The compiled rule file ${HFSTFILE} was not found
         exit 77
     fi
 else

@@ -3,7 +3,7 @@
 ## Licence: GPL v3+
 
 # Subdirs in build order:
-SUBDIRS = filters weights neural .
+SUBDIRS = filters weights neural . test
 
 include $(srcdir)/Makefile.mod-spellcheckers.am
 include $(srcdir)/Makefile.mod-fstbased.am

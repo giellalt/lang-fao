@@ -2,6 +2,9 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
+# build before test
+SUBDIRS=. test
+
 ####### Source file defs: ########
 
 # Set these to names of available orthographic rules in regex and

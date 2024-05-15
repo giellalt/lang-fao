@@ -12,30 +12,19 @@ AC_CONFIG_FILES([Makefile \
                  src/fst/syllabification/Makefile \
                  src/fst/Makefile \
                  src/fst/morphology/Makefile \
+                 src/fst/morphology/test/Makefile \
+                 src/fst/morphology/test/phonology/Makefile \
                  src/fst/orthography/Makefile \
+                 src/fst/orthography/test/Makefile \
                  src/fst/phonetics/Makefile \
                  src/fst/phonetics/tests/Makefile \
+                 src/fst/test/Makefile \
                  src/cg3/Makefile \
+                 src/cg3/test/Makefile \
                  src/fst/tagsets/Makefile \
                  src/fst/transcriptions/Makefile \
                  docs/Makefile \
                  test/Makefile \
-                 test/tools/Makefile \
-                 test/tools/hyphenators/Makefile \
-                 test/tools/hyphenators/fstbased/Makefile \
-                 test/tools/hyphenators/patternbased/Makefile \
-                 test/tools/mt/Makefile \
-                 test/tools/mt/apertium/Makefile \
-                 test/tools/spellcheckers/Makefile \
-                 test/tools/spellcheckers/fstbased/Makefile \
-                 test/tools/spellcheckers/fstbased/desktop/Makefile \
-                 test/tools/spellcheckers/fstbased/desktop/hfst/Makefile \
-                 test/tools/spellcheckers/fstbased/mobile/Makefile \
-                 test/src/Makefile \
-                 test/src/morphology/Makefile \
-                 test/src/orthography/Makefile \
-                 test/src/phonology/Makefile \
-                 test/src/syntax/Makefile \
                  tools/Makefile \
                  tools/analysers/Makefile \
                  tools/analysers/pipespec.xml \
@@ -45,11 +34,15 @@ AC_CONFIG_FILES([Makefile \
                  tools/grammarcheckers/tests/Makefile \
                  tools/hyphenators/Makefile \
                  tools/hyphenators/filters/Makefile \
+                 tools/hyphenators/test/Makefile \
+                 tools/hyphenators/test/fstbased/Makefile \
+                 tools/hyphenators/test/patternbased/Makefile \
                  tools/mt/Makefile \
                  tools/mt/filters/Makefile \
                  tools/mt/apertium/Makefile \
                  tools/mt/apertium/filters/Makefile \
                  tools/mt/apertium/tagsets/Makefile \
+                 tools/mt/apertium/test/Makefile \
                  tools/mt/cgbased/Makefile \
                  tools/tokenisers/Makefile \
                  tools/tokenisers/filters/Makefile \
@@ -60,6 +53,11 @@ AC_CONFIG_FILES([Makefile \
                  tools/spellcheckers/index.mobile.xml \
                  tools/spellcheckers/filters/Makefile \
                  tools/spellcheckers/neural/Makefile \
+                 tools/spellcheckers/test/Makefile \
+                 tools/spellcheckers/test/fstbased/Makefile \
+                 tools/spellcheckers/test/fstbased/desktop/Makefile \
+                 tools/spellcheckers/test/fstbased/desktop/hfst/Makefile \
+                 tools/spellcheckers/test/fstbased/mobile/Makefile \
                  tools/spellcheckers/weights/Makefile \
                  tools/tts/Makefile \
                  tools/tts/pipespec.xml \
@@ -69,33 +67,33 @@ AC_CONFIG_FILES([Makefile \
 # Spell checker tests, all languages:
 AC_CONFIG_FILES([src/fst/phonetics/tests/run_tests.sh],
       [chmod a+x src/fst/phonetics/tests/run_tests.sh])
-AC_CONFIG_FILES([test/tools/spellcheckers/test-zhfst-file.sh], \
-      [chmod a+x test/tools/spellcheckers/test-zhfst-file.sh])
-AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh], \
-      [chmod a+x test/tools/spellcheckers/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh])
+AC_CONFIG_FILES([tools/spellcheckers/test/test-zhfst-file.sh], \
+      [chmod a+x tools/spellcheckers/test/test-zhfst-file.sh])
+AC_CONFIG_FILES([tools/spellcheckers/test/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh], \
+      [chmod a+x tools/spellcheckers/test/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh])
 AC_CONFIG_FILES([test/run-yaml-testcases.sh], \
       [chmod a+x test/run-yaml-testcases.sh])
 AC_CONFIG_FILES([test/run-morph-tester.sh], \
       [chmod a+x test/run-morph-tester.sh])
 # Phonology tests, all languages:
-AC_CONFIG_FILES([test/src/phonology/pair-test-positive.sh], \
-      [chmod a+x test/src/phonology/pair-test-positive.sh])
-AC_CONFIG_FILES([test/src/phonology/pair-test-negative.sh], \
-      [chmod a+x test/src/phonology/pair-test-negative.sh])
-AC_CONFIG_FILES([test/src/phonology/pair-test-hfst.sh], \
-      [chmod a+x test/src/phonology/pair-test-hfst.sh])
+AC_CONFIG_FILES([src/fst/morphology/test/phonology/pair-test-positive.sh], \
+      [chmod a+x src/fst/morphology/test/phonology/pair-test-positive.sh])
+AC_CONFIG_FILES([src/fst/morphology/test/phonology/pair-test-negative.sh], \
+      [chmod a+x src/fst/morphology/test/phonology/pair-test-negative.sh])
+AC_CONFIG_FILES([src/fst/morphology/test/phonology/pair-test-hfst.sh], \
+      [chmod a+x src/fst/morphology/test/phonology/pair-test-hfst.sh])
 # Lemma generation tests, all languages:
-AC_CONFIG_FILES([test/src/morphology/generate-adjective-lemmas.sh], \
-      [chmod a+x test/src/morphology/generate-adjective-lemmas.sh])
-AC_CONFIG_FILES([test/src/morphology/generate-noun-lemmas.sh], \
-      [chmod a+x test/src/morphology/generate-noun-lemmas.sh])
-AC_CONFIG_FILES([test/src/morphology/generate-propernoun-lemmas.sh], \
-      [chmod a+x test/src/morphology/generate-propernoun-lemmas.sh])
-AC_CONFIG_FILES([test/src/morphology/generate-verb-lemmas.sh], \
-      [chmod a+x test/src/morphology/generate-verb-lemmas.sh])
+AC_CONFIG_FILES([src/fst/morphology/test/generate-adjective-lemmas.sh], \
+      [chmod a+x src/fst/morphology/test/generate-adjective-lemmas.sh])
+AC_CONFIG_FILES([src/fst/morphology/test/generate-noun-lemmas.sh], \
+      [chmod a+x src/fst/morphology/test/generate-noun-lemmas.sh])
+AC_CONFIG_FILES([src/fst/morphology/test/generate-propernoun-lemmas.sh], \
+      [chmod a+x src/fst/morphology/test/generate-propernoun-lemmas.sh])
+AC_CONFIG_FILES([src/fst/morphology/test/generate-verb-lemmas.sh], \
+      [chmod a+x src/fst/morphology/test/generate-verb-lemmas.sh])
 # Lemma acceptance test for spellers, all languages:
-AC_CONFIG_FILES([test/tools/spellcheckers/fstbased/desktop/hfst/accept-all-lemmas.sh], \
-      [chmod a+x test/tools/spellcheckers/fstbased/desktop/hfst/accept-all-lemmas.sh])
+AC_CONFIG_FILES([tools/spellcheckers/test/fstbased/desktop/hfst/accept-all-lemmas.sh], \
+      [chmod a+x tools/spellcheckers/test/fstbased/desktop/hfst/accept-all-lemmas.sh])
 # Shorthand shell scripts instead of the old-type aliases - all languages:
 AC_CONFIG_FILES([tools/shellscripts/ufao-gt.sh], \
       [chmod a+x tools/shellscripts/ufao-gt.sh])

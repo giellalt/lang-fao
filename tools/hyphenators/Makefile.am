@@ -31,7 +31,7 @@
 
 ##########################################
 # Subdirs:
-SUBDIRS = filters .
+SUBDIRS = filters . test
 
 
 #### Do NOT edit below here: ####

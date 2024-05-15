@@ -21,5 +21,5 @@ yaml_file_subdir=.
 
 ####### Include/source helper script from dir above - DO NOT CHANGE: ########
 # Relative path from test script to test runner:
-testrunner="../../../run-yaml-testcases.sh"
-source $testrunner $transducer $yaml_file_subdir $halftest
+testrunner="../../../../test/run-yaml-testcases.sh"
+source $testrunner $transducer $yaml_file_subdir ../../../../test  $halftest

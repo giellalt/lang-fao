@@ -2,6 +2,8 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
+SUBDIRS=phonology
+
 TESTS_ENVIRONMENT = export GIELLA_CORE=$(GIELLA_CORE);
 
 ######## Test targets: ###########

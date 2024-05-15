@@ -2,6 +2,9 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
+# build before test
+SUBDIRS=. test
+
 ##################################################################
 #### BEGIN: Add local processing instructions BELOW this line ####
 ##################################################################

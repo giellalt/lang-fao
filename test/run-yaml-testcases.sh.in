@@ -27,6 +27,7 @@ if ! test $# -ge 2 ; then
     echo "            dir). This makes it possible to move all yaml files"
     echo "            out of the test dir, making for a much cleaner"
     echo "            directory."
+    echo " SCRIPTDIR  directory of yaml runner stuff"
     echo " [HALFTEST] (optional) is one of the strings 'ana' or 'gen',"
     echo "            indicating that the test runs should only run"
     echo "            the analyser or generator tests respectively."
@@ -37,7 +38,9 @@ fi
 ###### Variables: #######
 transducer=$1
 yaml_file_subdir=$2
-halftest=$3
+testerpath=$3
+halftest=$4
+
 Fail=0
 testtotalsfile=testtotals.tmp.txt
 
@@ -48,10 +51,11 @@ if test "x$yaml_file_subdir" = "x" ; then
     yaml_file_subdir=.
 fi
 
-relpath=.
+# relpath=$(cd -P "$(dirname "$0")" && pwd)
 testrunner=run-morph-tester.sh
+relpath=.
 
-while test ! -x $relpath/$testrunner ; do
+while test ! -x $testerpath/$testrunner ; do
     relpath="$relpath/.."
 #    echo relpath: $relpath     # debug
     if test "$(cd $relpath && pwd)" = "/" ; then
@@ -109,8 +113,8 @@ i=0
 for file in $testfiles; do
     (( i += 1 ))
     leadtext=$(echo "YAML test $i: ")
-    source ./$relpath/run-morph-tester.sh \
-        $transducer $file $relpath $halftest all $leadtext
+    source $testerpath/run-morph-tester.sh \
+        $transducer $file $testerpath $halftest all $leadtext
 done
 
 # Machinery to be able to handle yaml tests for specific fst technologies:
@@ -174,8 +178,8 @@ for file in ${filepattern[@]}; do
     fi
     (( i += 1 ))
     leadtext=$(echo "YAML test $i: ")
-    source ./$relpath/run-morph-tester.sh \
-        $transducer $file $relpath $halftest specified $leadtext
+    source $testerpath/run-morph-tester.sh \
+        $transducer $file $testerpath $halftest specified $leadtext
 done
 
 totalpasses=$( echo $( cat $testtotalsfile | tr ' ' '\n' | cut -d'/' -f1 \
@@ -204,4 +208,4 @@ printf "${green}PASSES: ${totalpasses}${reset} / "
 printf "${red}FAILS: ${totalfails}${reset} / "
 printf "${blue}TOTAL: ${totaltotals}${reset}\n"
 
-source $srcdir/$relpath/error-handling-stubs.sh
+source $testerpath/error-handling-stubs.sh

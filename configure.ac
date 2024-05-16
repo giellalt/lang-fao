@@ -34,14 +34,6 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE(
   1.11.6 tar-pax -Wall -Werror
   foreign -Wno-portability
-  dnl Automake versions before 1.13 (when the serial-tests option was
-  dnl still the default) still defined the badly obsolete macro
-  dnl 'AM_PROG_CC_STDC'. By checking for the non-existence of this macro,
-  dnl we can now force serial testing for newer automakes (with prettier
-  dnl output) and at the same time work reasonably with older automakes.
-  dnl Code based on:
-  dnl https://lists.gnu.org/archive/html/automake/2013-01/msg00060.html
-  m4_ifndef([AM_PROG_CC_STDC], [serial-tests])
 )
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 

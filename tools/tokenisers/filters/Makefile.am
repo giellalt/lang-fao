@@ -31,3 +31,4 @@ clean-local:
 	-rm -f *fst *.txt *.regex $(GT_LOCAL_COPY_FILTER_SRCS)
 
 include $(top_srcdir)/../giella-core/am-shared/tools-tokenisers-filters-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

@@ -30,3 +30,4 @@ GT_PHONETICS_SUPPLEMENTS=
 include $(top_srcdir)/../giella-core/am-shared/src-phonetics-dir-include.am
 
 # vim: set ft=automake:
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

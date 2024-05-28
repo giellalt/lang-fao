@@ -39,3 +39,4 @@ endif # WANT_APERTIUM
 include $(top_srcdir)/../giella-core/am-shared/tools-mt-filters-dir-include.am
 
 # vim: set ft=automake:
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

@@ -3,3 +3,4 @@
 ## Licence: GPL v3+
 
 SUBDIRS = fstbased patternbased
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

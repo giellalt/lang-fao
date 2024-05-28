@@ -31,3 +31,4 @@ clean-local:
 	-rm -f *.hfst *.xfst *.foma
 
 include $(top_srcdir)/../giella-core/am-shared/tools-hyphenators-filters-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

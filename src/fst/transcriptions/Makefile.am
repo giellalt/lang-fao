@@ -39,3 +39,4 @@ GT_CUSTOM_TARGETS=
 include $(top_srcdir)/../giella-core/am-shared/src-transcriptions-dir-include.am
 
 # vim: set ft=automake:
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

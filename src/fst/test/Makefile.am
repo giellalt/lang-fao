@@ -53,3 +53,4 @@ XFAIL_TESTS=run-dict-gt-desc-anayaml-testcases.sh \
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.txt
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

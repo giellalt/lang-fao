@@ -33,3 +33,4 @@ clean-local:
 include $(top_srcdir)/../giella-core/am-shared/src-tagsets-dir-include.am
 
 # vim: set ft=automake:
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

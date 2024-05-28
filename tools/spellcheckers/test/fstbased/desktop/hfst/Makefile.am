@@ -43,3 +43,4 @@ EXTRA_DIST=$(OTHER_TEST_RUNNERS_IN) \
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.txt
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

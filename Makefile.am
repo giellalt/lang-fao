@@ -29,3 +29,4 @@ dev:
 # Remove html tables created by some of the developer tools:
 clean-local:
 	rm -f *.html
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

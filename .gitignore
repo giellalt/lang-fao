@@ -21,8 +21,12 @@
 *.zhfst
 *.zip
 *.zpipe
+*.py.log
+*.py.trs
 *.sh.log
 *.sh.trs
+*.yaml.log
+*.yaml.trs
 .DS_Store
 .bundle
 .~lock.*#
@@ -79,6 +83,7 @@
 /src/fst/phonetics/tests/tests/*.sh
 /test/run-morph-tester.sh
 /test/run-yaml-testcases.sh
+/src/fst/morphology/test/*-adjective.txt
 /src/fst/morphology/test/all*.txt
 /src/fst/morphology/test/analysed*.txt
 /src/fst/morphology/test/filtered*

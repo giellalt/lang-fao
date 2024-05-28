@@ -33,3 +33,4 @@ LOCAL_ANL_ZIP_FILES=
 
 #### Do NOT edit below here: ####
 include $(top_srcdir)/../giella-core/am-shared/tools-tts-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

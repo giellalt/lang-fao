@@ -25,3 +25,4 @@ clean-local:
 # General build rules included from here:#
 
 include $(top_srcdir)/../giella-core/am-shared/tools-mt-cgbased-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

@@ -5,3 +5,4 @@
 # The generated docs are automatically detected by the automake script
 
 include $(top_srcdir)/../giella-core/am-shared/docs-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

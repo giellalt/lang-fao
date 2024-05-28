@@ -217,3 +217,4 @@ $(foreach fst,hfst xfst foma,$(eval $(call giella_generators,$(fst))))
 ##################################################################
 
 include $(top_srcdir)/../giella-core/am-shared/src-fst-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

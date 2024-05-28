@@ -193,6 +193,7 @@ am__installdirs = "$(DESTDIR)$(docdir)"
 DATA = $(doc_DATA)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 am__DIST_COMMON = $(srcdir)/Makefile.in \
+	$(top_srcdir)/../giella-core/am-shared/devtest-include.am \
 	$(top_srcdir)/../giella-core/am-shared/docs-dir-include.am \
 	$(top_srcdir)/../giella-core/am-shared/silent_build-include.am
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -705,7 +706,7 @@ MORE_VERBOSITY = $(if $(strip $(filter-out false,$(AM_V_P))),-v,-q)
 all: all-am
 
 .SUFFIXES:
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/../giella-core/am-shared/docs-dir-include.am $(top_srcdir)/../giella-core/am-shared/silent_build-include.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/../giella-core/am-shared/docs-dir-include.am $(top_srcdir)/../giella-core/am-shared/silent_build-include.am $(top_srcdir)/../giella-core/am-shared/devtest-include.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -725,7 +726,7 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__maybe_remake_depfiles)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__maybe_remake_depfiles);; \
 	esac;
-$(top_srcdir)/../giella-core/am-shared/docs-dir-include.am $(top_srcdir)/../giella-core/am-shared/silent_build-include.am $(am__empty):
+$(top_srcdir)/../giella-core/am-shared/docs-dir-include.am $(top_srcdir)/../giella-core/am-shared/silent_build-include.am $(top_srcdir)/../giella-core/am-shared/devtest-include.am $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
@@ -1057,6 +1058,23 @@ clean-local:
 	$(AM_V_at)-rm -f docsrc.tmp mdfiles.tmp empty.md
 
 # vim: set ft=automake:
+
+devtest: devtest-recursive
+
+devtest-recursive:
+	@for subdir in $(SUBDIRS); do \
+		if test "$$subdir" = . ; then \
+			continue; \
+		else   \
+			($(am__cd) $$subdir && $(MAKE) $(AM_MAKEFLAGS) $@) \
+		fi; \
+	done; \
+	$(MAKE) $(AM_FLAGS) devtest-local
+
+devtest-local:
+	@for t in $(TESTS) ; do \
+		srcdir=$(srcdir) $(srcdir)/$$t ;\
+	done
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

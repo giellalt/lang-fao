@@ -29,7 +29,8 @@ endif # WANT_SPELLERS
 
 # List tests that are presently (expected) failures here (in addition to above),
 # ie things that should be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=run-acceptor-yaml-testcases.sh
+XFAIL_TESTS=run-acceptor-yaml-testcases.sh \
+			accept-all-lemmas.sh
 
 # Make sure all required files are included in the distribution:
 YAML_FILES=$(wildcard *.yaml)
@@ -40,7 +41,5 @@ EXTRA_DIST=$(OTHER_TEST_RUNNERS_IN) \
            $(YAML_FILES) \
            $(YAML_DIRS)
 
-####### Other targets: ###########
-clean-local:
-	-rm -f *.txt
+include $(top_srcdir)/../giella-core/am-shared/tools-spellcheckers-fstbased-desktop-hfst-test-include.am
 include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

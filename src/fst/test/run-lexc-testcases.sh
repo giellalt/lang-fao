@@ -4,6 +4,19 @@
 # specified transducer for each lexc file and for each transducer specified in
 # the test cases.
 
+# ensure that we are ran from make or setup properly
+if test -z "${srcdir}" ; then
+    echo "srcdir= not set, this must be run from make check or with srcdir=."
+    exit 2
+fi
+if test -z "$TESTKITS" ; then
+    TESTKITS=hfst
+fi
+if test -z "$GIELLA_CORE" ; then
+    echo "GIELLA_CORE= must point to giella-core"
+    exit 2
+fi
+
 ###### Variables: #######
 transducer=gt-norm
 Fail=0
@@ -12,17 +25,13 @@ Skipped=no
 testtype=full
 concat_lexc_file="lexicon.lexc"
 
-relpath=../../../test/
+relpath=$GIELLA_CORE/scripts/
 testrunner=run-morph-tester.sh
 
-while test ! -x $relpath/$testrunner ; do
-    relpath="$relpath/.."
-#    echo relpath: $relpath     # debug
-    if test "$(cd $relpath && pwd)" = "/" ; then
-        echo "$0: No test runner found!"
-        exit 77
-    fi
-done
+if ! test -x "$relpath/$testrunner" ; then
+    echo "$0: No test runner found in $relpath/$testrunner!"
+    exit 77
+fi
 
 # Get list of source files:
 source_files="$(find ${srcdir}/../ -name '*.lexc' \
@@ -69,20 +78,22 @@ for file in ${source_files}; do
 		    echo "Running $fst tests:"
 			# Empty line before each new fst:
 			echo
-		    leadtext=$(echo "LEXC test $i: ")
+		    leadtext="LEXC test $i: "
 
 		    # Check for possible one-sided tests (default is two-sided/full):
 		    if [[ "$fst" == *.gen ]]; then
 		      testtype="gen"
-		      fst=$(basename $fst .gen)
+		      fst=$(basename "$fst" .gen)
 		    elif [[ "$fst" == *.ana ]] ; then
 		      testtype="ana"
-		      fst=$(basename $fst .ana)
+		      fst=$(basename "$fst" .ana)
 		    fi
 
 		    # Run the actual tests for the given fst:
-			source $relpath/run-morph-tester.sh \
-				$fst $file $relpath $testtype ../../../test all $leadtext
+            for tk in $TESTKITS ; do
+    			"$relpath"/run-morph-tester.sh \
+		    		"$fst" "$file" "$relpath" "$testtype" all "$srcdir" "$tk" "$leadtext"
+            done
 #		    echo "The $fst testing is done using $testtype testing."    # debug
 
 		    # Reset testtype to default:
@@ -91,4 +102,19 @@ for file in ${source_files}; do
 	fi
 done
 
-source $srcdir/$relpath/error-handling-stubs.sh
+
+if test "$Skipped" == "yes" ; then
+    exit 77
+fi
+
+# At least one of the Xerox or HFST tests failed:
+if test "$Fail" -ge 1; then
+    exit 1
+fi
+
+# Skip if no transducer were found - failing is problematic for lexc tests:
+if test "$Tests_found" = 0 ; then
+    echo "No lexcy tests found"
+    exit 77
+fi
+

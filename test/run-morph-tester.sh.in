@@ -15,6 +15,8 @@
 #
 # This file must be processed by ./configure before being used.
 
+echo "DEPRECATED run-morph-tester.sh MAYBE CALLED FROM $0"
+
 # Wrong usage - short instruction:
 if ! test $# -ge 5 ; then
     echo
@@ -311,3 +313,5 @@ for f in $fsttype; do
 	    continue
 	fi
 done
+
+echo "DEPRECATED run-morph-tester.sh MAYBE CALLED FROM $0"

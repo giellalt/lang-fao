@@ -21,7 +21,7 @@ fi
 
 # Extract USED tags:
 sed -e '1,/LEXICON Root/d' < \
-    ../../../src/fst/lexicon.tmp.lexc | # Extract all lines after LEXICON Root
+    ../lexicon.tmp.lexc | # Extract all lines after LEXICON Root
     ${giella_core}/scripts/extract-used-tags.sh | # Extract tags, local mods after this line:
     grep -v '\+konto' | # Remove tag like entries found only in FAO
     LC_ALL=no_NO.UTF8 sort -u         \
@@ -29,7 +29,7 @@ sed -e '1,/LEXICON Root/d' < \
 
 # Extract DEFINED tags:
 sed -n '/LEXICON Root/q;p' \
-    ../../../src/fst/lexicon.tmp.lexc | # Extract all lines before LEXICON Root
+    ../lexicon.lexc | # Extract all lines before LEXICON Root
     ${giella_core}/scripts/extract-defined-tags.sh | # Extract tags, local mods after this line:
     LC_ALL=no_NO.UTF8 sort -u         \
     > "${roottags}"

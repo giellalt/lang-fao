@@ -2,11 +2,16 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-######## Test targets: ###########
+######## Local test targets: ###########
 
-# List here (space separated) all test scripts that should be run
-# _unconditionally_:
+# Add local tests here that will be run always 
 TESTS=
+
+# Add local yaml testers here:
+YAML_TEST_RUNNERS=
+
+# Add other local tests here:
+OTHER_TEST_RUNNERS=
 
 if CAN_YAML_TEST
 # Add your shell scripts for running python-based tests below here, so that
@@ -16,12 +21,11 @@ if CAN_YAML_TEST
 if WANT_MORPHOLOGY
 TESTS+=run-gt-norm-anayaml-testcases.sh \
        run-gt-desc-anayaml-testcases.sh
-
 # This is for yaml tests requiring BOTH an analyser AND a generator:
 if WANT_GENERATION
 TESTS+=run-gt-norm-yaml-testcases.sh \
-       run-gt-desc-yaml-testcases.sh \
-       run-lexc-testcases.sh
+       run-gt-desc-yaml-testcases.sh
+
 endif # WANT_GENERATION
 endif # WANT_MORPHOLOGY
 
@@ -50,7 +54,9 @@ XFAIL_TESTS=run-dict-gt-desc-anayaml-testcases.sh \
             run-gt-norm-yaml-testcases.sh \
             run-lexc-testcases.sh
 
+
+
 ####### Other targets: ###########
-clean-local:
-	-rm -f *.txt
+
+include $(top_srcdir)/../giella-core/am-shared/src-fst-test-include.am
 include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

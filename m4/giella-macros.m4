@@ -88,7 +88,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=0.23.0
+_giella_core_min_version=1.0.0
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -998,6 +998,9 @@ To build, test and install:
     make
     make check
     make install
+The developers’ version of the test suite is available under:
+    make devtest
+this version does not halt on errors and should be useful when fixing bugs
 EOF
 AS_IF([test x$gt_prog_xslt = xno -a \
       "$(find ${srcdir}/src/fst/morphology/stems -name "*.xml" | head -n 1)" != "" ],

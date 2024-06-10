@@ -13,6 +13,8 @@
 # This script only contains the loop, and will for each found yaml file call
 # the actual test runner.
 
+echo "DEPRECATED run-yaml-testcases.sh MAYBE CALLED FROM $0"
+
 # Wrong usage - short instruction:
 if ! test $# -ge 2 ; then
     echo
@@ -209,3 +211,5 @@ printf "${red}FAILS: ${totalfails}${reset} / "
 printf "${blue}TOTAL: ${totaltotals}${reset}\n"
 
 source $testerpath/error-handling-stubs.sh
+
+echo "DEPRECATED run-yaml-testcases.sh MAYBE CALLED FROM $0"

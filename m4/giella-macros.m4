@@ -674,6 +674,23 @@ AS_IF([test "x$enable_grammarchecker" != "xno"],
         then: pipx install git+https://github.com/divvun/giellaltgramtools
       ])]),
     AC_MSG_RESULT(yes))
+_gtgramtool_min_version=0.7.0
+gtgramtool_too_old_message="gtgramtool needs to be updated.
+    If you installed it with pipx, run:
+        pipx upgrade GiellaLTGramTools"
+AC_MSG_CHECKING([the version of gtgramtool])
+AS_IF([test "x${GTGRAMTOOL}" != xno],
+        [_gtgramtool_version=$( "${GTGRAMTOOL}" --version | sed -e 's/^.*version //')],
+        [_gtgramtool_version=0])
+AC_MSG_RESULT([$_gtgramtool_version])
+AS_IF([test "x$enable_grammarchecker" != "xno"], 
+      AC_MSG_CHECKING([whether the gtgramtool version is at least $_gtgramtool_min_version])
+      AX_COMPARE_VERSION([$_gtgramtool_version], [ge], [$_gtgramtool_min_version],
+                         [gtgramtool_version_ok=yes], [gtgramtool_version_ok=no])
+    AS_IF([test "x${gtgramtool_version_ok}" != xno],
+          [AC_MSG_RESULT([$gtgramtool_version_ok])],
+          [AC_MSG_ERROR([$gtgramtool_too_old_message])]))
+
 
 # Enable all spellers - default is 'no'
 AC_ARG_ENABLE([spellers],

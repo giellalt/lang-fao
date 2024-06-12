@@ -2675,10 +2675,6 @@ Fila inneheld i underkant av 50000 lemma.
 
 **Interrogative** 
 
-**EIN** 
-
-**ANNAR_P** 
-
 **EINHVOR** 
 
 **ANNARHVOR** 

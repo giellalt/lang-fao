@@ -20,10 +20,6 @@
 
 **Interrogative** 
 
-**EIN** 
-
-**ANNAR_P** 
-
 **EINHVOR** 
 
 **ANNARHVOR** 

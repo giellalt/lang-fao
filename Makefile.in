@@ -1073,7 +1073,12 @@ devtest-recursive:
 
 devtest-local:
 	@for t in $(TESTS) ; do \
-		srcdir=$(srcdir) $(srcdir)/$$t ;\
+		echo "TEST: $$t" ;\
+		if test -f "./$$t" ; then \
+			srcdir=$(srcdir) "./$$t" ;\
+		else \
+			srcdir=$(srcdir) "$(srcdir)/$$t" ;\
+		fi ;\
 	done
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

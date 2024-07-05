@@ -15,37 +15,23 @@
 
 ###### Variables: #######
 GIELLA_LANG=@GTLANG2@
-ospell=@HFST_OSPELL@
 ### in ###
-source_files=${srcdir}/../../../../../../src/fst/morphology/stems/*.lexc
-speller_dir=./../../../../../../tools/spellcheckers
-
-### out ###
-lemmas=./filtered-lemmas.txt
-rejected_lemmas=rejected_lemmas.txt
-checked_lemmas=checked_lemmas.txt
+source_files=@abs_top_srcdir@/src/fst/morphology/stems/*.lexc
+speller_dir=@abs_builddir@/../../../../
+exclusions="(CmpN/Only|ShCmp|\+Cmp/SplitR| Rreal | R | Rnoun |\+V\+|NOT-TO-LEMMATEST)"
 
 ##### Extract lemmas - add additional egrep pattern as parameters: #####
 ##### --include "(pattern1|pattern2|...)"                          #####
 ##### --exclude "(pattern1|pattern2|...)"                          #####
-@GTCORE@/scripts/extract-lemmas.sh \
-    --exclude "(CmpN/Only|ShCmp|\+Cmp\/SplitR| Rreal | R | Rnoun |\+V\+|NOT-TO-LEMMATEST)" \
-    $source_files > $lemmas
+@GTCORE@/scripts/accept-all-lemmas.sh "$speller_dir/$GIELLA_LANG.zhfst" \
+    "$exclusions" \
+    "$source_files"
 
-if ! test -f $speller_dir/${GIELLA_LANG}.zhfst ; then
-    echo missing $speller_dir/${GIELLA_LANG}.zhfst
-fi
-
-####### Start testing: #######
-
-$ospell $speller_dir/${GIELLA_LANG}.zhfst < $lemmas > $checked_lemmas
-
-grep 'is NOT in the lexicon' $checked_lemmas > $rejected_lemmas
-
-if [ -s $rejected_lemmas ] ; then
-    head $rejected_lemmas
-    echo see $rejected_lemmas for more
+rv=$?
+if test $rv = 77 ; then
+    echo skipped
+    exit 77
+elif test $rv -ge 1 ; then
+    echo failed
     exit 1
 fi
-
-rm -f $lemmas $rejected_lemmas

@@ -88,7 +88,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=1.0.1
+_giella_core_min_version=1.0.2
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -1048,10 +1048,8 @@ AS_IF([test "x$enable_yamltests" = "xno"],
                [*darwin*], [AC_MSG_WARN([YAML testing could not be automatically enabled. 
 To enable it, on MacOSX please do:
 
-    sudo port install python38 py38-pip
-    sudo python3 -m pip install PyYAML
-
-replace 38 in python38 with current python])],
+    sudo brew install python pyyaml
+    sudo python3 -m pip install PyYAML])],
                [*linux*], [AC_MSG_WARN([YAML testing could not be automatically enabled. 
                 To enable it on linux please use your package manager to install python an pyyaml,
                 or install pip and use it to install pyyaml.])],

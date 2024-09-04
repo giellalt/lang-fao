@@ -1,45 +1,25 @@
 #!/bin/bash
 
-# Check if there are tags which are not declared in root.lexc or if
-# tags are misspelled.
-#
-# Exit with 0 if and only if all tests pass.
-#
-# Run with -v to be a bit more verbose.
+# FIXME: exclude +konto
 
-lexctags=$(mktemp -t giella-tag_test.XXXXXXXXXXX)
-roottags=$(mktemp -t giella-tag_test.XXXXXXXXXXX)
-trap 'rm -f "${lexctags}" "${roottags}"' EXIT
-
-# Get giella-core from the test environment:
-giella_core=$GIELLA_CORE
-
-# If verbose:
-if [[ $1 == "-v" ]]; then
-    echo "$0: Are there tags not declared in root.lexc or misspelled?"
+# ensure that we are ran from make or setup properly
+if test -z "$srcdir" ; then
+    echo "srcdir= not set, this must be run from make or set srcdir=."
+    exit 2
 fi
-
-# Extract USED tags:
-sed -e '1,/LEXICON Root/d' < \
-    ../lexicon.tmp.lexc | # Extract all lines after LEXICON Root
-    ${giella_core}/scripts/extract-used-tags.sh | # Extract tags, local mods after this line:
-    grep -v '\+konto' | # Remove tag like entries found only in FAO
-    LC_ALL=no_NO.UTF8 sort -u         \
-    > "${lexctags}"
-
-# Extract DEFINED tags:
-sed -n '/LEXICON Root/q;p' \
-    ../lexicon.lexc | # Extract all lines before LEXICON Root
-    ${giella_core}/scripts/extract-defined-tags.sh | # Extract tags, local mods after this line:
-    LC_ALL=no_NO.UTF8 sort -u         \
-    > "${roottags}"
-
-# Compare the two sets of tags, report and fail if there is a diff:
-check=$(LC_ALL=no_NO.UTF8 comm -23 "${lexctags}" "${roottags}")
-if [[ -n "${check}" ]]; then
-    echo "$0: Have a look at these:"
-    echo "${check}"
+if test -z "$GIELLA_CORE" ; then
+    echo "GIELLA_CORE= must point to giella-core"
+    exit 2
+fi
+relpath="$GIELLA_CORE/scripts/"
+testrunner="$relpath/tag_test.sh"
+if ! test -x "$testrunner" ; then
+    echo "missing test runner in $testrunner"
+    exit 77
+fi
+lexc=$srcdir/../lexicon.lexc
+if ! test -f $lexc ; then
+    echo combined $lexc missing or disappeared
     exit 1
-elif [[ $1 == "-v" ]]; then
-    echo "$0: No errors found."
 fi
+$testrunner $lexc

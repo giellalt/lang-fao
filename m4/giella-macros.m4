@@ -674,7 +674,7 @@ AS_IF([test "x$enable_grammarchecker" != "xno"],
         then: pipx install git+https://github.com/divvun/giellaltgramtools
       ])]),
     AC_MSG_RESULT(yes))
-_gtgramtool_min_version=0.7.0
+_gtgramtool_min_version=1.0.1
 gtgramtool_too_old_message="gtgramtool needs to be updated.
     If you installed it with pipx, run:
         pipx upgrade GiellaLTGramTools"
@@ -683,10 +683,25 @@ AS_IF([test "x${GTGRAMTOOL}" != xno],
         [_gtgramtool_version=$( "${GTGRAMTOOL}" --version | sed -e 's/^.*version //')],
         [_gtgramtool_version=0])
 AC_MSG_RESULT([$_gtgramtool_version])
+
+# Function to compare version numbers
+m4_define([compare_versions], [
+  m4_split([_gtgramtool_version], [gtgramtool_version_parts], [\[\.\]])
+  m4_split([_gtgramtool_min_version], [min_version_parts], [\[\.\]])
+  gtgramtool_version_ok=yes
+  for i in 1 2 3; do
+    if test ${gtgramtool_version_parts[$i]} -lt ${min_version_parts[$i]}; then
+      gtgramtool_version_ok=no
+      break
+    elif test ${gtgramtool_version_parts[$i]} -gt ${min_version_parts[$i]}; then
+      break
+    fi
+  done
+])
+
 AS_IF([test "x$enable_grammarchecker" != "xno"], 
       AC_MSG_CHECKING([whether the gtgramtool version is at least $_gtgramtool_min_version])
-      AX_COMPARE_VERSION([$_gtgramtool_version], [ge], [$_gtgramtool_min_version],
-                         [gtgramtool_version_ok=yes], [gtgramtool_version_ok=no])
+      compare_versions
     AS_IF([test "x${gtgramtool_version_ok}" != xno],
           [AC_MSG_RESULT([$gtgramtool_version_ok])],
           [AC_MSG_ERROR([$gtgramtool_too_old_message])]))

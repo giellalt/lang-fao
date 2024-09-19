@@ -667,13 +667,13 @@ AC_PATH_PROG([GTGRAMTOOL], [gtgramtool], [false])
 AS_IF([test "x$enable_grammarchecker" != "xno"],
     AX_PYTHON_MODULE(pip)
     AC_MSG_CHECKING([whether we have gtgramtool])
-    AS_IF([test x$GTGRAMTOOL = xfalse], 
+    AS_IF([test x$GTGRAMTOOL = xfalse],
     [AC_MSG_ERROR([gtgramtool is needed for --enable grammarchecker.
         on debian/ubuntu: sudo apt update; sudo apt install pipx; pipx ensurepath
         on macbrew: brew install pipx; pipx ensurepath
         then: pipx install git+https://github.com/divvun/giellaltgramtools
       ])]),
-    AC_MSG_RESULT(yes))
+    AC_MSG_RESULT([yes]))
 _gtgramtool_min_version=0.7.0
 gtgramtool_too_old_message="gtgramtool needs to be updated.
     If you installed it with pipx, run:
@@ -683,12 +683,12 @@ AS_IF([test "x${GTGRAMTOOL}" != xno],
         [_gtgramtool_version=$( "${GTGRAMTOOL}" --version | sed -e 's/^.*version //')],
         [_gtgramtool_version=0])
 AC_MSG_RESULT([$_gtgramtool_version])
+AC_MSG_CHECKING([whether the gtgramtool version is at least $_gtgramtool_min_version])
+AX_COMPARE_VERSION([$_gtgramtool_version], [ge], [$_gtgramtool_min_version],
+                   [gtgramtool_version_ok=yes], [gtgramtool_version_ok=no])
+AC_MSG_RESULT([$gtgramtool_version_ok])
 AS_IF([test "x$enable_grammarchecker" != "xno"], 
-      AC_MSG_CHECKING([whether the gtgramtool version is at least $_gtgramtool_min_version])
-      AX_COMPARE_VERSION([$_gtgramtool_version], [ge], [$_gtgramtool_min_version],
-                         [gtgramtool_version_ok=yes], [gtgramtool_version_ok=no])
-    AS_IF([test "x${gtgramtool_version_ok}" != xno],
-          [AC_MSG_RESULT([$gtgramtool_version_ok])],
+    AS_IF([test "x${gtgramtool_version_ok}" != xno],,
           [AC_MSG_ERROR([$gtgramtool_too_old_message])]))
 
 

@@ -1,7 +1,11 @@
+---
 name: Docs
-on: [push]
+on:
+  push:
+    branches:
+      - 'main'
 jobs:
-  build-and-deploy:
+  build-and-docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -25,7 +29,7 @@ jobs:
           spellers: false
           fst: hfst
 
-# Mermaid processing starts here:
+      # Mermaid processing starts here:
       - name: get list of files
         id: getfile
         run: |
@@ -35,7 +39,7 @@ jobs:
         run: |
           echo ${{ steps.getfile.outputs.files }}
 
-# The actual Mermaid compilation
+      # The actual Mermaid compilation
       - name: compile mermaid
         uses: divvun/compile-mermaid-markdown-action@main
         with:
@@ -43,14 +47,14 @@ jobs:
           output: 'lang/docs/mermaid-svgs'
         env:
           HIDE_CODEBLOCKS: 1
-# The next one must be declared, with an empty value, for paths to work for us:
+          # The next one must be declared, with an empty value, for paths to work for us:
           ABSOLUTE_IMAGE_LINKS:
           OUTPUT_FILE_TYPE: "svg"
 
       - name: list generated svg fils
         run: |
           cd lang && ls -l docs/mermaid-svgs
-# Mermaid processing ends here
+      # Mermaid processing ends here
 
       - name: deploy gh pages
         uses: peaceiris/actions-gh-pages@v3

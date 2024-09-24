@@ -17,7 +17,7 @@ if ! test -x "$testrunner" ; then
     echo "missing test runner in $testrunner"
     exit 77
 fi
-lexc=$srcdir/../lexicon.lexc
+lexc=../lexicon.lexc
 if ! test -f $lexc ; then
     echo combined $lexc missing or disappeared
     exit 1

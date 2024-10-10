@@ -1064,7 +1064,7 @@ clean-local:
 devtest: devtest-recursive
 
 devtest-recursive:
-	-for subdir in $(SUBDIRS); do \
+	@-for subdir in $(SUBDIRS); do \
 		if test "$$subdir" = . ; then \
 			continue; \
 		else   \
@@ -1074,7 +1074,7 @@ devtest-recursive:
 	$(MAKE) $(AM_FLAGS) devtest-local
 
 devtest-local:
-	-for t in $(TESTS) ; do \
+	@-for t in $(TESTS) ; do \
 		echo "TEST: $$t" ;\
 		if test -f "./$$t" ; then \
 			srcdir=$(srcdir) GIELLA_CORE=$(GIELLA_CORE) "./$$t" ;\

@@ -2338,6 +2338,19 @@ given the proper use of these flags.
 |  @U.Cap.Obl@ | Allowing downcasing of derived names: deatnulasj.
 |  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
 
+| Flag diacritic | Explanation
+| :------------- |:-----------
+| @U.number.one@ | Flag used to give arabic numerals in smj different cases ;
+| @U.number.two@ | Flag used to give arabic numerals in smj different cases ;
+| @U.number.three@ | Flag used to give arabic numerals in smj different cases ;
+| @U.number.four@ | Flag used to give arabic numerals in smj different cases ;
+| @U.number.five@ | Flag used to give arabic numerals in smj different cases ;
+| @U.number.six@ | Flag used to give arabic numerals in smj different cases ;
+| @U.number.seven@ | Flag used to give arabic numerals in smj different cases ;
+| @U.number.eight@ | Flag used to give arabic numerals in smj different cases ;
+| @U.number.nine@ | Flag used to give arabic numerals in smj different cases ;
+| @U.number.zero@ | Flag used to give arabic numerals in smj different cases ;
+
 # Lexicon Root
 This is the beginning of everything. The **Root** lexicon is reserved in the
 LexC language, and must be the first lexicon defined.

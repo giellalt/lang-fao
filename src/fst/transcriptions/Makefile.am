@@ -26,6 +26,7 @@ GT_TRANSCRIPTIONS_SRCS=\
 		transcriptor-numbers-digit2text.lexc
 #! @param GT_ABBREV_SRCS required, for abbreviation expansions
 GT_ABBREV_SRCS=transcriptor-abbrevs2text.lexc
+GT_EMOJIS_SRCS=transcriptor-emoji2text.lexc
 
 GT_TRANSCRIPTIONS_REGEX_SRCS=
 

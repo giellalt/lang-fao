@@ -88,7 +88,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=1.0.4
+_giella_core_min_version=1.0.7
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -867,6 +867,16 @@ AS_IF([test x$enable_abbr = xyes -a x$enable_generators = xno],
     [AC_MSG_ERROR([You need to enable generators to build the abbr file])])
 AM_CONDITIONAL([WANT_ABBR], [test "x$enable_abbr" != xno])
 
+# Enable emojis in various stuffs - default is 'no' (because slow)
+AC_ARG_ENABLE([emoji],
+              [AS_HELP_STRING([--enable-emoji],
+                              [enable emoji @<:@default=no@:>@])],
+              [enable_emoji=$enableval],
+              [enable_emoji=no])
+AS_IF([test x$enable_emoji = xyes -a x$enable_transcriptors = xno],
+    [AC_MSG_ERROR([You need to enable transcriptors to build emojis for spellers])])
+AM_CONDITIONAL([WANT_EMOJIS], [test "x$enable_emoji" != xno])
+
 # Enable building tokenisers - default is 'no'
 AC_ARG_ENABLE([tokenisers],
               [AS_HELP_STRING([--enable-tokenisers],
@@ -956,6 +966,32 @@ AS_IF([test x$with_shared_$1 != xfalse], [
 AC_MSG_RESULT([$gt_SHARED_$1])
 AC_ARG_VAR([gt_SHARED_$1], [directory for shared $1 data])
 ]) # gt_USE_SHARED
+
+################################################################################
+# Define function to require version for shared targets
+################################################################################
+# Usage: gt_USE_SHARED(NAME, SHARED REPONAME, [PKG-CONFIG NAME], VERSION)
+# where, NAME is used as the variable name: gt_SHARED_$NAME, and
+#        REPONAME is used as directory name and pkg-config name
+#        PKG-CONFIG NAME is pkg-config name of dependency if different from $2
+#        VERSION is pkg-config atleast version spec
+
+AC_DEFUN([gt_NEED_SHARED],[
+gt_USE_SHARED([$1])
+THIS_TOP_SRC_DIR=$BUILD_DIR_PATH/$MYSRCDIR
+_gt_shared_$1_min_version=$4
+_gt_pkg_name=m4_default([$3], [$2])
+AC_MSG_CHECKING([whether shared-$1 is at least $_gt_shared_$1_min_version])
+AS_IF([test -d "$THIS_TOP_SRC_DIR"/../$2],
+      [AS_IF([pkg-config --atleast-version=$_gt_shared_$1_min_version --with-path="$THIS_TOP_SRC_DIR/"../$2 $_gt_pkg_name],
+             [AC_MSG_RESULT([yes])],
+             [AC_MSG_RESULT([no])
+              AC_MSG_ERROR([$2 needs to be updated, cd ../$1 and git pull and build])])],
+      [AS_IF([pkg-config --atleast-version=$_gt_shared_$1_min_version $_gt_pkg_name],
+             [AC_MSG_RESULT([yes])],
+             [AC_MSG_RESULT([no])
+              AC_MSG_ERROR([$3 needs to be updated and installed])])])
+]) # gt_NEED_SHARED
 
 ################################################################################
 # Define function to print the configure footer

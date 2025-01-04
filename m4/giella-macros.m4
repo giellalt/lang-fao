@@ -981,16 +981,16 @@ gt_USE_SHARED([$1])
 THIS_TOP_SRC_DIR=$BUILD_DIR_PATH/$MYSRCDIR
 _gt_shared_$1_min_version=$4
 _gt_pkg_name=m4_default([$3], [$2])
-AC_MSG_CHECKING([whether shared-$1 is at least $_gt_shared_$1_min_version])
 AS_IF([test -d "$THIS_TOP_SRC_DIR"/../$2],
-      [AS_IF([pkg-config --atleast-version=$_gt_shared_$1_min_version --with-path="$THIS_TOP_SRC_DIR/"../$2 $_gt_pkg_name],
-             [AC_MSG_RESULT([yes])],
-             [AC_MSG_RESULT([no])
-              AC_MSG_ERROR([$2 needs to be updated, cd ../$1 and git pull and build])])],
-      [AS_IF([pkg-config --atleast-version=$_gt_shared_$1_min_version $_gt_pkg_name],
-             [AC_MSG_RESULT([yes])],
-             [AC_MSG_RESULT([no])
-              AC_MSG_ERROR([$3 needs to be updated and installed])])])
+      [flub=$PKG_CONFIG_PATH
+       export PKG_CONFIG_PATH=$THIS_TOP_SRC_DIR/../$2:$PKG_CONFIG_PATH
+       PKG_CHECK_MODULES([SHARED_STUFF], [$_gt_pkg_name >= $_gt_shared_$1_min_version],
+             [AC_MSG_NOTICE([NB using $2 in $THIS_TOP_SRC_DIR/../$2])],
+             [AC_MSG_ERROR([$2 needs to be updated, cd ../$2 and git pull and build])])
+       export PKG_CONFIG_PATH=$flub],
+      [PKG_CHECK_MODULES([SHARED_STUFF], [$_gt_pkg_name >= $_gt_shared_$1_min_version],
+             [AC_MSG_RESULT([NB using system $2])],
+             [AC_MSG_ERROR([$3 needs to be updated and installed])])])
 ]) # gt_NEED_SHARED
 
 ################################################################################

@@ -43,7 +43,6 @@
 * +Rom sjekk desse XXX
 
 * +Der/heit Derivation with -heit
-
 * +Der/A derivation to Adjective
 * +Der/Adv derivation to Adverb
 

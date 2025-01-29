@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# colours
+if test -f "$GIELLA_CORE/scripts/termcolors.bash" ; then
+    . "$GIELLA_CORE/scripts/termcolors.bash"
+fi
+# settings:
+TESTER=@DIVVUN_ACCURACY@
+THRESHOLD=75
+TYPOS="@top_srcdir@/test/data/typos.txt"
+ZHFST="@builddir@/../@GTLANG2@.zhfst"
+
+if test x$TESTER = xfalse ; then
+    printf "%sSKIP%s: missing divvunspell accuracy\n" "$light_blue" "$reset"
+    exit 77
+fi
+if test ! -f "$ZHFST" ; then
+    printf "%sSKIP%s: spellchecker %s not found\n" \
+        "$light_blue" "$reset" "$ZHFST"
+    exit 77
+fi
+if test ! -f "$TYPOS" ; then
+    printf "%sSKIP%s: test data %s not found\n" "$light_blue" "$reset" "$TYPOS"
+    exit 77
+fi
+# run accuracy on typos
+$TESTER -T $THRESHOLD "$TYPOS" "$ZHFST"
+rv=$?
+if test $rv == 77 ; then
+    printf "%sSKIP%s\n" "$light_blue" "$reset"
+    exit 77
+elif test $rv -gt 0 ; then
+    printf "%sFAIL%s\n" "$red" "$reset"
+    exit 1
+else
+    printf "%sPASS%s\n" "$green" "$reset"
+    exit 0
+fi

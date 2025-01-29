@@ -24,7 +24,7 @@ endif # WANT_SPELLERS
 
 # List tests that are presently (expected) failures here (in addition to above),
 # ie things that should be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=run-spellers-gt-norm-yaml-testcases.sh
+XFAIL_TESTS=run-spellers-gt-norm-yaml-testcases.sh suggestion-quality.sh
 
 
 include $(top_srcdir)/../giella-core/am-shared/tools-spellcheckers-test-include.am

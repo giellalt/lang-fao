@@ -69,6 +69,8 @@ AC_CONFIG_FILES([src/fst/phonetics/tests/run_tests.sh],
       [chmod a+x src/fst/phonetics/tests/run_tests.sh])
 AC_CONFIG_FILES([tools/spellcheckers/test/test-zhfst-file.sh], \
       [chmod a+x tools/spellcheckers/test/test-zhfst-file.sh])
+AC_CONFIG_FILES([tools/spellcheckers/test/suggestion-quality.sh], \
+      [chmod a+x tools/spellcheckers/test/suggestion-quality.sh])
 AC_CONFIG_FILES([tools/spellcheckers/test/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh], \
       [chmod a+x tools/spellcheckers/test/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh])
 AC_CONFIG_FILES([test/run-yaml-testcases.sh], \

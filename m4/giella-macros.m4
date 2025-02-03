@@ -88,7 +88,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=1.1.2
+_giella_core_min_version=1.2.0
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -919,7 +919,18 @@ AS_IF([test "x$enable_dialects" = "xyes" -a "x$DIALECTS" = "x"],
        AC_MSG_ERROR([You have not defined any dialects. Please see the documentation.])])
 AM_CONDITIONAL([WANT_DIALECTS], [test "x$enable_dialects" != xno])
 
-# Enable dialect-specific analysers and tools, such as spellers:
+# Enable alternative orthographies, OFF by default, even when defined:
+# Use AM_COND_IF to only show this option if alternative orthographies are defined.
+AM_COND_IF([HAVE_ALT_ORTHS],[
+AC_ARG_ENABLE([altorths],
+              [AS_HELP_STRING([--enable-altorths],
+                              [build tools for alternative orthographies @<:@default=no@:>@])],
+              [enable_altorths=$enableval],
+              [enable_altorths=no])
+AM_CONDITIONAL([WANT_ALT_ORTHS], [test "x$enable_altorths" != xno])
+])
+
+# Enable custom fst's:
 AC_ARG_ENABLE([custom-fsts],
               [AS_HELP_STRING([--enable-custom-fsts],
                               [build custom fst’s @<:@default=no@:>@])],

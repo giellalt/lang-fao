@@ -920,15 +920,12 @@ AS_IF([test "x$enable_dialects" = "xyes" -a "x$DIALECTS" = "x"],
 AM_CONDITIONAL([WANT_DIALECTS], [test "x$enable_dialects" != xno])
 
 # Enable alternative orthographies, OFF by default, even when defined:
-# Use AM_COND_IF to only show this option if alternative orthographies are defined.
-AM_COND_IF([HAVE_ALT_ORTHS],[
 AC_ARG_ENABLE([altorths],
               [AS_HELP_STRING([--enable-altorths],
                               [build tools for alternative orthographies @<:@default=no@:>@])],
               [enable_altorths=$enableval],
               [enable_altorths=no])
 AM_CONDITIONAL([WANT_ALT_ORTHS], [test "x$enable_altorths" != xno])
-])
 
 # Enable custom fst's:
 AC_ARG_ENABLE([custom-fsts],

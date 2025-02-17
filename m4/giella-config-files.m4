@@ -93,6 +93,9 @@ AC_CONFIG_FILES([src/fst/morphology/test/generate-propernoun-lemmas.sh], \
       [chmod a+x src/fst/morphology/test/generate-propernoun-lemmas.sh])
 AC_CONFIG_FILES([src/fst/morphology/test/generate-verb-lemmas.sh], \
       [chmod a+x src/fst/morphology/test/generate-verb-lemmas.sh])
+# Multichar symbol consistency
+AC_CONFIG_FILES([src/fst/morphology/test/missing-multichars.sh], \
+      [chmod a+x src/fst/morphology/test/missing-multichars.sh])
 # Lemma acceptance test for spellers, all languages:
 AC_CONFIG_FILES([tools/spellcheckers/test/fstbased/desktop/hfst/accept-all-lemmas.sh], \
       [chmod a+x tools/spellcheckers/test/fstbased/desktop/hfst/accept-all-lemmas.sh])

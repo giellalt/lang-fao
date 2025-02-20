@@ -274,31 +274,24 @@ AM_CONDITIONAL([CAN_MERGE], [test "x$can_merge" != xno ])
 AC_CANONICAL_HOST
 # Check for which host we are on and setup a few things
 # specifically based on the host
-# This is the minimum GNU Make version required (except on OSX):
+# This is the minimum GNU Make version required
 _GNU_make_min_version=m4_default([$1], [3.82])
 
-# Then we check against different hosts:
-case $host_os in
-  darwin* )
-        # Do nothing for mac: the included make is fine
-        true
-        ;;
-    *)
-        # Default Case: in all other cases check that we are using GNU make
-        # and that it is new enough:
-        AX_CHECK_GNU_MAKE()
-        AC_MSG_CHECKING([whether GNU make is at least $_GNU_make_min_version])
-        AX_COMPARE_VERSION([$ax_check_gnu_make_version], [ge],
-                           [$_GNU_make_min_version],
-                   [
-                    AC_MSG_RESULT([yes])
-                    # Reset the MAKE variable, to ensure we're using GNU make:
-                    MAKE=$_cv_gnu_make_command
-                   ],
-                   [AC_MSG_ERROR([GNU Make too old ($ax_check_gnu_make_version), please install at least $_GNU_make_min_version])
-                   ])
-        ;;
-esac
+AX_CHECK_GNU_MAKE(,
+                  [AC_MSG_WARN([GNU make will be required])])
+AC_MSG_CHECKING([whether GNU make is at least $_GNU_make_min_version])
+AX_COMPARE_VERSION([$ax_check_gnu_make_version], [ge],
+                   [$_GNU_make_min_version],
+           [
+            AC_MSG_RESULT([yes])
+            # Reset the MAKE variable, to ensure we're using GNU make:
+            MAKE=$_cv_gnu_make_command
+           ],
+           [AC_MSG_RESULT([no])
+            AC_MSG_WARN([GNU Make too old ($ax_check_gnu_make_version), please install at least $_GNU_make_min_version])
+            gt_need_gnu_make=yes
+           ])
+
 ################ END of GNU Make check ################
 
 # We need special treatment of Java paths in Cygwin:
@@ -1108,6 +1101,12 @@ cd ..
 git clone git@github.com:giellalt/$gt_SHARED_FAILS
 cd $gt_SHARED_FAILS
 ./autogen.sh && ./configure && make])])
+AS_IF([test "x$gt_need_gnu_make" = xyes],
+      [AC_MSG_WARN([GNU make will be required to build giellalt from now on (Feb 2025):
+
+if you are using a MacOS do:
+    sudo brew install make
+see https://github.com/giellalt/giella-core/issues/79 for background and further instructions])])
 ]) # gt_PRINT_FOOTER
 
 # vim: set ft=config:

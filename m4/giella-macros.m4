@@ -1102,11 +1102,16 @@ git clone git@github.com:giellalt/$gt_SHARED_FAILS
 cd $gt_SHARED_FAILS
 ./autogen.sh && ./configure && make])])
 AS_IF([test "x$gt_need_gnu_make" = xyes],
-      [AC_MSG_WARN([GNU make will be required to build giellalt from now on (Feb 2025):
+      [tput setaf 1
+       AC_MSG_WARN([GNU make will be required to build giellalt from now on (Feb 2025):
 
 if you are using a MacOS do:
-    sudo brew install make
-see https://github.com/giellalt/giella-core/issues/79 for background and further instructions])])
+    brew install make
+and setup following the instructions given or at https://formulae.brew.sh/formula/make:
+    PATH="\$HOMEBREW_PREFIX/opt/make/libexec/gnubin:\$PATH"
+into your .zshrc or .bashrc.
+See https://github.com/giellalt/giella-core/issues/79 for background and further instructions])
+       tput sgr0])
 ]) # gt_PRINT_FOOTER
 
 # vim: set ft=config:

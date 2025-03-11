@@ -256,8 +256,9 @@ Rule: **U-umlaut of Epenthetic vowel**
 
 * *gamal^EPH^UUML*
 * *gomul00*
+
 * *gamal^EPH^UUML>u*
-* *goml000u*
+* *gom0l00>u*
 
 ### Umlaut rules
 
@@ -269,7 +270,8 @@ Rule: **U-umlaut in Front of Nasal**
 **Tests:**
 
 * *band^UUML*
-* *bond00*
+* *bond0*
+
 * *hamar^EPH^UUML>um*
 * *hom0r000um*
 

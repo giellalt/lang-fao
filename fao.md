@@ -1609,13 +1609,13 @@ lexicon. The other lexica are there for specific subgroups of the names.
 @P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ;  are Flags to control compounding
 
 # Lexicon RReal is the lexicon for the Cmp tag and resending to N, A
-*  +Cmp#:# Nouns ;          
-*  +Cmp#:# Adjectives ;    
-          R-    ;        
+*  +Cmp#:# Nouns ;           direct to nouns
+*  +Cmp#:# Adjectives ;      direct to adjectives
+ +Use/NG:         R-    ;        add hyphen, but do not generate
 
 # Lexicon R- for compounds with hyphen
- +Cmp#:%- Nouns ;    
- +Cmp#:%- Adjectives ;    
+ +Cmp#:%- Nouns ;    for nouns
+ +Cmp#:%- Adjectives ;     for adjectives
 
 # Lexicon RNum for compounds numeral + noun
       +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ;    For Num Cmp Noun, vi vil ikke ha Num Cmp Num
@@ -1886,8 +1886,9 @@ Rule: **U-umlaut of Epenthetic vowel**
 
 * *gamal^EPH^UUML*
 * *gomul00*
+
 * *gamal^EPH^UUML>u*
-* *goml000u*
+* *gom0l00>u*
 
 ### Umlaut rules
 
@@ -1899,7 +1900,8 @@ Rule: **U-umlaut in Front of Nasal**
 **Tests:**
 
 * *band^UUML*
-* *bond00*
+* *bond0*
+
 * *hamar^EPH^UUML>um*
 * *hom0r000um*
 
@@ -2580,6 +2582,12 @@ Most acronyms are taken from a common generated file, this file is for the Faroe
 **LEXICON Acronym-fao-list** for selve listen, i øjeblikket 2:
 * StÍF ACRO ; 
 * T5PC ACRO ; 
+* TB ACRO ; 
+* VB ACRO ; 
+* NSÍ ACRO ; 
+* GÍ ACRO ; 
+* ÍF ACRO ; 
+* KÍ ACRO ; 
 
 **Akronymnumeralier**  for 0-9
 

@@ -10,6 +10,12 @@ Most acronyms are taken from a common generated file, this file is for the Faroe
 **LEXICON Acronym-fao-list** for selve listen, i øjeblikket 2:
 * StÍF ACRO ; 
 * T5PC ACRO ; 
+* TB ACRO ; 
+* VB ACRO ; 
+* NSÍ ACRO ; 
+* GÍ ACRO ; 
+* ÍF ACRO ; 
+* KÍ ACRO ; 
 
 **Akronymnumeralier**  for 0-9
 

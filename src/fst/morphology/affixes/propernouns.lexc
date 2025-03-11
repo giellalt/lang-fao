@@ -231,33 +231,36 @@ LEXICON ASTA
 !! ###  Surnames
 ! ________
 
+LEXICON proptagv
+  +Nom:          # ;
+  +Acc:          # ;
+  +Dat:       # ; ! ..ssoni
+  +Gen:%>s       # ;
+ +Poss:%>sa     # ; !SAFORM
+  R- ;
 
+LEXICON proptagc
+  +Nom:          # ;
+  +Acc:          # ;
+  +Dat:%>i       # ; ! ..ssoni
+  +Dat:%^IUML%>i # ; ! ..ssyni
+  +Gen:%>s       # ;
+ +Poss:%>asa     # ; !SAFORM
+ R- ;
+ 
 LEXICON surtagc
 !!= **@LEXNAME@** 
-  +N+Prop+Sem/Sur+Sg+Nom:          # ;
-  +N+Prop+Sem/Sur+Sg+Acc:          # ;
-  +N+Prop+Sem/Sur+Sg+Dat:%>i       # ; ! ..ssoni
-  +N+Prop+Sem/Sur+Sg+Dat:%^IUML%>i # ; ! ..ssyni
-  +N+Prop+Sem/Sur+Sg+Gen:%>s       # ;
- +N+Prop+Sem/Sur+Sg+Poss:%>asa     # ; !SAFORM
++N+Prop+Sem/Sur+Sg: proptagc  ;
 
 LEXICON surtagv
 !!= **@LEXNAME@** 
-  +N+Prop+Sem/Sur+Sg+Nom:          # ;
-  +N+Prop+Sem/Sur+Sg+Acc:          # ;
-  +N+Prop+Sem/Sur+Sg+Dat:       # ; ! ..ssoni
-  +N+Prop+Sem/Sur+Sg+Gen:%>s       # ;
- +N+Prop+Sem/Sur+Sg+Poss:%>sa     # ; !SAFORM
++N+Prop+Sem/Sur+Sg: proptagv ;
 
 !! ###  Place names and other names
 ! ___________________________
 LEXICON plctag
 !!= **@LEXNAME@** 
- +N+Prop+Sem/Plc+Sg+Nom:    # ;
- +N+Prop+Sem/Plc+Sg+Acc:    # ;
- +N+Prop+Sem/Plc+Sg+Dat:%>i # ;
- +N+Prop+Sem/Plc+Sg+Gen:%>s # ;
-+N+Prop+Sem/Plc: R- ;
+ +N+Prop+Sem/Plc+Sg: proptagc ;
 
 LEXICON fplctag !fem
 !!= **@LEXNAME@** 
@@ -269,19 +272,11 @@ LEXICON fplctag !fem
 
 LEXICON orgtag ! XXXcheck
 !!= **@LEXNAME@** 
- +N+Prop+Sem/Org+Sg+Nom:    # ;
- +N+Prop+Sem/Org+Sg+Acc:    # ;
- +N+Prop+Sem/Org+Sg+Dat:%>i # ;
- +N+Prop+Sem/Org+Sg+Gen:%>s # ;
-+N+Prop+Sem/Org: R- ;
+ +N+Prop+Sem/Org+Sg: proptagc ;
 
 LEXICON vehtag ! XXXcheck
 !!= **@LEXNAME@** 
- +N+Prop+Sem/Veh+Sg+Nom:    # ;
- +N+Prop+Sem/Veh+Sg+Acc:    # ;
- +N+Prop+Sem/Veh+Sg+Dat:%>i # ;
- +N+Prop+Sem/Veh+Sg+Gen:%>s # ;
-+N+Prop+Sem/Veh: R- ;
+ +N+Prop+Sem/Veh+Sg proptagc ;
 
 !LEXICON mscorgtag ! XXXcheck
 ! +N+Prop+Msc: S_M_SGNOM ;

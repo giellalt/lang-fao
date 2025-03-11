@@ -169,9 +169,9 @@ for f in $fsttype; do
             fi
             # Only open the failed lemmas in see if @SEE@ is defined:
             if [ "$EXTEDITOR" ]; then
-                $EXTEDITOR $result_file.$f.txt
-#                $EXTEDITOR $gen_result_file.$f.txt
-                $EXTEDITOR $ana_result_file.$f.txt
+                $EXTEDITOR $result_file.$f.txt &
+#                $EXTEDITOR $gen_result_file.$f.txt &
+                $EXTEDITOR $ana_result_file.$f.txt &
             else
                 echo "There were problem lemmas. Details in:"
                 echo "* $result_file.$f.txt    "

@@ -26,7 +26,7 @@ if test -f ${SOURCEFILE} ; then
                 hfst_exit=$?
                 if test $hfst_exit != 0; then
                     if test x$EXTEDITOR != "x"; then
-                        $EXTEDITOR ${TESTRESULT}
+                        $EXTEDITOR ${TESTRESULT} &
                     fi
                     exit 1
                 fi

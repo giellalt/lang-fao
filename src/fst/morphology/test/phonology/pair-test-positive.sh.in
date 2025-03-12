@@ -41,7 +41,7 @@ quit\n" \
     # If there are errors and fails, open the output file in SEE and exit w fail
     if grep -E '(REJECTED|Error)' ${TESTRESULT} > /dev/null ; then
         if test x$EXTEDITOR != "x"; then
-            $EXTEDITOR ${TESTRESULT}
+            $EXTEDITOR ${TESTRESULT} &
         fi
         exit 1
     fi

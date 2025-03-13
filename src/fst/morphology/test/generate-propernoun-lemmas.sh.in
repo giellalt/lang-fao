@@ -117,7 +117,7 @@ for f in $fsttype; do
 
         # extract propers that do not generate in  in singular masculine, feminine 
         # or neuter, try with genderless, store it:
-        sed 's/$/+N+Prop+Msc+Sg+Nom/' $lemmas | $lookup_tool $generator_file.$suffix \
+        sed 's/$/+N+Prop+Sg+Nom/' $lemmas | $lookup_tool $generator_file.$suffix \
 			| fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Prop+Fem+Sg+Nom/' \
 			| $lookup_tool $generator_file.$suffix \
 			| fgrep -v "+?" | cut -d "+" -f1 | sed 's/$/+N+Prop+Neu+Sg+Nom/'  \

@@ -1103,14 +1103,19 @@ cd $gt_SHARED_FAILS
 ./autogen.sh && ./configure && make])])
 AS_IF([test "x$gt_need_gnu_make" = xyes],
       [tput setaf 1
-       AC_MSG_WARN([GNU make will be required to build giellalt from now on (Feb 2025):
+       AC_MSG_WARN([GNU make 4+ will be required to build giellalt from now on (Feb 2025):
 
 if you are using a MacOS do:
     brew install make
 and setup following the instructions given or at https://formulae.brew.sh/formula/make:
     PATH="\$HOMEBREW_PREFIX/opt/make/libexec/gnubin:\$PATH"
 into your .zshrc or .bashrc.
-See https://github.com/giellalt/giella-core/issues/79 for background and further instructions])
+See https://github.com/giellalt/giella-core/issues/79 for background and further instructions
+
+If you see this message it means that we have detected old GNU make or apple’s
+make on your system and you will need to fix this or the make will likely fail.
+also this message will be turned into fatal error soon...
+])
        tput sgr0])
 ]) # gt_PRINT_FOOTER
 

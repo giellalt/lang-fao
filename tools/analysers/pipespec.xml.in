@@ -7,7 +7,7 @@
                        hfst >= 3.13.0
                        divvun-gramcheck >= 0.2.0">
 
-  <pipeline name="@GLANG@-analyser"
+  <pipeline name="analyser"
             language="@GLANG2@"
             type="Analyser">
     <tokenize><tokenizer n="tokeniser-disamb-gt-desc.pmhfst"/></tokenize>

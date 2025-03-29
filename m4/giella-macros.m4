@@ -225,7 +225,8 @@ AC_ARG_WITH([divvunspell],
                             [search divvunspell in DIRECTORY @<:@default=PATH@:>@])],
             [with_divvunspell=$withval],
             [with_divvunspell=no])
-AC_PATH_PROG([DIVVUN_ACCURACY], [accuracy], [], [$PATH$PATH_SEPARATOR$with_divvunspell])
+AC_PATH_PROG([DIVVUN_ACCURACY], [accuracy], [false],
+             [$PATH$PATH_SEPARATOR$with_divvunspell])
 
 # Check for opennmt for neural models
 AC_ARG_WITH([opennmt-py],
@@ -233,8 +234,10 @@ AC_ARG_WITH([opennmt-py],
                             [search opennmt in DIRECTORY @<:@default=PATH@:>@])],
             [with_opennmtpy=$withval],
             [with_opennmtpy=no])
-AC_PATH_PROG([ONMT_BUILD_VOCAB], [onmt_build_vocab], [], [$PATH$PATH_SEPARATOR$with_opennmtpy])
-AC_PATH_PROG([ONMT_TRAIN], [onmt_train], [], [$PATH$PATH_SEPARATOR$with_opennmtpy])
+AC_PATH_PROG([ONMT_BUILD_VOCAB], [onmt_build_vocab], [false],
+             [$PATH$PATH_SEPARATOR$with_opennmtpy])
+AC_PATH_PROG([ONMT_TRAIN], [onmt_train], [false],
+             [$PATH$PATH_SEPARATOR$with_opennmtpy])
 
 ################ can rsync oxt template? ################
 AC_PATH_PROG([RSYNC], [rsync], [no], [$PATH$PATH_SEPARATOR$with_rsync])

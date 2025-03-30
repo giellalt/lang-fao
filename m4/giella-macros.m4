@@ -29,6 +29,18 @@
 ################################################################################
 # Define functions for checking paths and the GIELLA core environment:
 ################################################################################
+
+# Colourised versions of autoconf messaging... add some checks here if it looks
+# too bad in logs and stuffs
+AC_DEFUN([gt_MSG_ERROR],
+         [tput setaf 1
+          AC_MSG_ERROR([$1])
+          tput sgr0])
+AC_DEFUN([gt_MSG_WARN],
+         [tput setaf 3
+          AC_MSG_WARN([$1])
+          tput sgr0])
+
 AC_DEFUN([gt_PROG_SCRIPTS_PATHS],
 [
 
@@ -79,7 +91,7 @@ AS_IF([test "x$with_giella_core" != "xfalse" -a \
         AS_IF([pkg-config --exists giella-core], [
             GIELLA_CORE=$(pkg-config --variable=dir giella-core)
         ], [
-            AC_MSG_ERROR([${_giella_core_not_found_message}])
+            gt_MSG_ERROR([${_giella_core_not_found_message}])
         ])
     ])
 ])
@@ -117,7 +129,7 @@ AC_PATH_PROG([GIELLA_CORE_VERSION], [gt-version.sh], [no],
 AC_MSG_CHECKING([the version of the Giella Core])
 AS_IF([test "x${GIELLA_CORE_VERSION}" != xno],
         [_giella_core_version=$( "${GIELLA_CORE_VERSION}" )],
-        [AC_MSG_ERROR([gt-version.sh could not be found, installation is incomplete!])
+        [gt_MSG_ERROR([gt-version.sh could not be found, installation is incomplete!])
     ])
 AC_MSG_RESULT([$_giella_core_version])
 
@@ -126,7 +138,7 @@ AC_MSG_CHECKING([whether the Giella Core version is at least $_giella_core_min_v
 AX_COMPARE_VERSION([$_giella_core_version], [ge], [$_giella_core_min_version],
                    [giella_core_version_ok=yes], [giella_core_version_ok=no])
 AS_IF([test "x${giella_core_version_ok}" != xno], [AC_MSG_RESULT([$giella_core_version_ok])],
-[AC_MSG_ERROR([$giella_core_too_old_message])])
+[gt_MSG_ERROR([$giella_core_too_old_message])])
 
 ################################
 ### Some software that we either depend on or we need for certain functionality:
@@ -170,7 +182,7 @@ AC_CACHE_CHECK([for awk that supports gensub], [ac_cv_path_GAWK],
     [[awkout=`$ac_path_GAWK 'BEGIN{gensub(/a/,"b","g");}'; exvalue=$?; echo $exvalue`
       test "x$awkout" = x0 \
       && ac_cv_path_GAWK=$ac_path_GAWK ac_path_GAWK_found=:]],
-    [AC_MSG_ERROR([could not find awk that supports gensub - please install GNU awk. hint: sudo port install gawk])])])
+    [gt_MSG_ERROR([could not find awk that supports gensub - please install GNU awk. hint: sudo port install gawk])])])
 AC_SUBST([GAWK], [$ac_cv_path_GAWK])
 
 # Check for sed with required feature:
@@ -179,13 +191,13 @@ AC_CACHE_CHECK([for sed that supports newlines and pipes], [ac_cv_path_SED],
               [[m4out=`echo aaa | $ac_path_SED 's/a/\n/g' | wc -l | tr -d '[:space:] '`
                 test "x$m4out" = x4\
       && ac_cv_path_SED=$ac_path_SED ac_path_SED_found=:]],
-    [AC_MSG_ERROR([could not find sed that supports newlines - please install GNU sed. Hint: sudo port install gsed./c])])])
+    [gt_MSG_ERROR([could not find sed that supports newlines - please install GNU sed. Hint: sudo port install gsed./c])])])
 AC_SUBST([SED], [$ac_cv_path_SED])
 
 # Check for uconv for some automated unicode recoding
 AC_PATH_PROG([UCONV], [uconv], [false])
 AS_IF([test x$UCONV = xfalse], 
-      [AC_MSG_ERROR([needs uconv for unicode support
+      [gt_MSG_ERROR([needs uconv for unicode support
        uconv is a part of ICU 
        on debian/ubuntu: apt install icu-devtools
        on macports: port install icu
@@ -281,7 +293,7 @@ AC_CANONICAL_HOST
 _GNU_make_min_version=m4_default([$1], [3.82])
 
 AX_CHECK_GNU_MAKE(,
-                  [AC_MSG_WARN([GNU make will be required])])
+                  [gt_MSG_WARN([GNU make will be required])])
 AC_MSG_CHECKING([whether GNU make is at least $_GNU_make_min_version])
 AX_COMPARE_VERSION([$ax_check_gnu_make_version], [ge],
                    [$_GNU_make_min_version],
@@ -291,7 +303,7 @@ AX_COMPARE_VERSION([$ax_check_gnu_make_version], [ge],
             MAKE=$_cv_gnu_make_command
            ],
            [AC_MSG_RESULT([no])
-            AC_MSG_WARN([GNU Make too old ($ax_check_gnu_make_version), please install at least $_GNU_make_min_version])
+            gt_MSG_WARN([GNU Make too old ($ax_check_gnu_make_version), please install at least $_GNU_make_min_version])
             gt_need_gnu_make=yes
            ])
 
@@ -411,7 +423,7 @@ AC_MSG_RESULT([$gt_prog_foma])
 AS_IF([test x$gt_prog_foma = xyes \
       -a "x$(grep 'GT_PHONOLOGY_MAIN' ${srcdir}/src/fst/Makefile*.am \
       	| grep 'twolc')" != "x" ],
-      [AC_MSG_ERROR([You only have Foma, or you requested to use Foma, but \
+      [gt_MSG_ERROR([You only have Foma, or you requested to use Foma, but \
 your main phonology file is a twolc file, which Foma can not compile. You need \
 to use either Hfst or the Xerox FSM tools when compiling transducers for \
 $GLANG ($GLANGUAGE).
@@ -634,7 +646,7 @@ AC_ARG_ENABLE([syntax],
               [enable_syntax=yes])
 AS_IF([test "x$enable_syntax" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
              [enable_syntax=no
-              AC_MSG_ERROR([vislcg3 tools missing or too old, please install or disable syntax tools!])])
+              gt_MSG_ERROR([vislcg3 tools missing or too old, please install or disable syntax tools!])])
 AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_syntax=no])
 AM_CONDITIONAL([WANT_SYNTAX], [test "x$enable_syntax" != xno])
 enableval=''
@@ -648,13 +660,13 @@ AC_ARG_ENABLE([grammarchecker],
               [enable_grammarchecker=$enable_all_tools])
 AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
       [enable_grammarchecker=no
-       AC_MSG_ERROR([vislcg3 missing or too old - required for the grammar checker])],
+       gt_MSG_ERROR([vislcg3 missing or too old - required for the grammar checker])],
       [AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$DIVVUN_VALIDATE_SUGGEST" = "xno"],
           [enable_grammarchecker=no
-           AC_MSG_ERROR([divvun-validate-suggest required for building grammar checkers])])]
+           gt_MSG_ERROR([divvun-validate-suggest required for building grammar checkers])])]
       [AS_IF([test "x$enable_grammarchecker" = "xyes" -a "x$DIVVUN_CHECKER" = "xno"],
           [enable_grammarchecker=no
-           AC_MSG_ERROR([divvun-checker required for testing grammar checkers])])])
+           gt_MSG_ERROR([divvun-checker required for testing grammar checkers])])])
 AS_IF([test "x$enable_ci" = "xyes" -a "x$enableval" = "x"], [enable_grammarchecker=no])
 AM_CONDITIONAL([WANT_GRAMCHECK], [test "x$enable_grammarchecker" != xno])
 enableval=''
@@ -664,7 +676,7 @@ AS_IF([test "x$enable_grammarchecker" != "xno"],
     AX_PYTHON_MODULE(pip)
     AC_MSG_CHECKING([whether we have gtgramtool])
     AS_IF([test x$GTGRAMTOOL = xfalse],
-    [AC_MSG_ERROR([gtgramtool is needed for --enable grammarchecker.
+    [gt_MSG_ERROR([gtgramtool is needed for --enable grammarchecker.
         on debian/ubuntu: sudo apt update; sudo apt install pipx; pipx ensurepath
         on macbrew: brew install pipx; pipx ensurepath
         then: pipx install git+https://github.com/divvun/giellaltgramtools
@@ -685,7 +697,7 @@ AX_COMPARE_VERSION([$_gtgramtool_version], [ge], [$_gtgramtool_min_version],
 AC_MSG_RESULT([$gtgramtool_version_ok])
 AS_IF([test "x$enable_grammarchecker" != "xno"], 
     AS_IF([test "x${gtgramtool_version_ok}" != xno],,
-          [AC_MSG_ERROR([$gtgramtool_too_old_message])]))
+          [gt_MSG_ERROR([$gtgramtool_too_old_message])]))
 
 
 # Enable all spellers - default is 'no'
@@ -696,7 +708,7 @@ AC_ARG_ENABLE([spellers],
               [enable_spellers=$enable_all_tools])
 AS_IF([test "x$enable_grammarchecker" != xno],[enable_spellers=yes])
 AS_IF([test "x$enable_spellers" != xno -a "x$BC" = xfalse],
-      [AC_MSG_ERROR([counting statistics for spell-checkers requires bc, install or disable spellers])])
+      [gt_MSG_ERROR([counting statistics for spell-checkers requires bc, install or disable spellers])])
 AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
 
 # Enable minimised fst-spellers by default:
@@ -720,7 +732,7 @@ AC_ARG_ENABLE([fomaspeller],
 AS_IF([test "x$enable_fomaspeller" = "xyes" -a "x$gt_prog_hfst" != xno],
       [AS_IF([test "x$GZIP" = "xfalse"],
              [enable_fomaspeller=no
-              AC_MSG_ERROR([gzip missing - required for foma spellers])])])
+              gt_MSG_ERROR([gzip missing - required for foma spellers])])])
 AM_CONDITIONAL([CAN_FOMA_SPELLER], [test "x$enable_fomaspeller" != xno])
 
 # Enable hfst mobile spellers - default is 'no' (dependent on --enable-spellers)
@@ -732,7 +744,7 @@ AC_ARG_ENABLE([hfst-mobile-speller],
 AS_IF([test "x$enable_spellers" = xno -o "x$gt_prog_hfst" = xno], [enable_mobile_hfstspeller=no],
       [AS_IF([test "x$XZ" = "xfalse"],
              [enable_mobile_hfstspeller=no
-              AC_MSG_ERROR([xz is missing - required for mobile zhfst spellers])])])
+              gt_MSG_ERROR([xz is missing - required for mobile zhfst spellers])])])
 AM_CONDITIONAL([WANT_HFST_MOBILE_SPELLER], [test "x$enable_mobile_hfstspeller" != xno])
 
 AC_ARG_ENABLE([neural-speller],
@@ -741,7 +753,7 @@ AC_ARG_ENABLE([neural-speller],
               [enable_neural_speller=$enableval],
               [enable_neural_speller=no])
 AS_IF([test "x$enable_neural_speller" = xyes -a x$ONMT_TRAIN = xno],
-      [AC_MSG_ERROR([onmt_train is required for --enable-neural-speller: use pip install opennmt-py])])
+      [gt_MSG_ERROR([onmt_train is required for --enable-neural-speller: use pip install opennmt-py])])
 AM_CONDITIONAL([WANT_NEURAL_SPELLERS], [test "x$enable_neural_speller" != xno])
 
 ## Disable Hunspell production by default:
@@ -761,7 +773,7 @@ AC_ARG_ENABLE([pattern-hyphenators],
               [enable_pattern_hyphenators=no])
 AS_IF([test "x$enable_pattern_hyphenators" = "xyes" -a "x$PATGEN" = "xfalse"],
       [enable_pattern_hyphenators=no
-       AC_MSG_ERROR([patgen required for building pattern hyphenators])])
+       gt_MSG_ERROR([patgen required for building pattern hyphenators])])
 
 # Enable fst hyphenator - default is 'no'
 AC_ARG_ENABLE([fst-hyphenator],
@@ -802,7 +814,7 @@ AC_ARG_ENABLE([L2],
 AS_IF([test x$enable_oahpa = xno], [enable_L2=no],
     [AS_IF([test x$enable_L2 != xno -a \
       "$(find ${srcdir}/src/fst -name "*-L2.*" | head -n 1)" = "" ],
-      [AC_MSG_ERROR([You asked for the L2 analyser, but no L2 files were found])])])
+      [gt_MSG_ERROR([You asked for the L2 analyser, but no L2 files were found])])])
 AM_CONDITIONAL([WANT_L2], [test "x$enable_L2" != xno])
 
 # Enable downcasing error fst's for Oahpa:
@@ -831,10 +843,10 @@ AC_ARG_ENABLE([apertium],
               [enable_apertium=$enable_all_tools])
 AS_IF([test "x$enable_apertium" = "xyes" -a "x$new_enough_python_available" = "xno"],
       [enable_apertium=no
-       AC_MSG_ERROR([Python3 missing or too old, Python 3.5 or newer required])])
+       gt_MSG_ERROR([Python3 missing or too old, Python 3.5 or newer required])])
 AS_IF([test "x$enable_apertium" = "xyes" -a "x$CG_RELABEL" = "xno"],
       [enable_apertium=no
-       AC_MSG_ERROR([Apertium enabled but cg-relabel not found. Please install Vislcg3.])])
+       gt_MSG_ERROR([Apertium enabled but cg-relabel not found. Please install Vislcg3.])])
 AM_CONDITIONAL([WANT_APERTIUM], [test "x$enable_apertium" != xno])
 
 # Enable CG-based MT - default is 'no'
@@ -844,9 +856,9 @@ AC_ARG_ENABLE([cgmt],
               [enable_cgmt=$enableval],
               [enable_cgmt=no])
 AS_IF([test "x$enable_cgmt" = "xyes" -a "x$GTPRIV" = "x"],
-      [AC_MSG_ERROR([\$\$GTPRIV not set! CG-based MT requires access to closed-source tools in GTPRIV])])
+      [gt_MSG_ERROR([\$\$GTPRIV not set! CG-based MT requires access to closed-source tools in GTPRIV])])
 AS_IF([test x$enable_tokenisers = xno -a x$enable_cgmt = xyes],
-    [AC_MSG_ERROR([You need to enable tokenisers to build CG-based MT])])
+    [gt_MSG_ERROR([You need to enable tokenisers to build CG-based MT])])
 AM_CONDITIONAL([CAN_CGMT], [test "x$enable_cgmt" != xno])
 
 # Enable building of abbr.txt:
@@ -857,10 +869,10 @@ AC_ARG_ENABLE([abbr],
               [enable_abbr=no])
 AS_IF([test x$enable_abbr != xno -a \
     "$(find ${srcdir}/src/fst/morphology/stems -name "abbreviations.lexc" | head -n 1)" = "" ],
-    [AC_MSG_ERROR([You asked for abbr.txt generation, but have no file \
+    [gt_MSG_ERROR([You asked for abbr.txt generation, but have no file \
 src/fst/morphology/stems/abbreviations.lexc])])
 AS_IF([test x$enable_abbr = xyes -a x$enable_generators = xno],
-    [AC_MSG_ERROR([You need to enable generators to build the abbr file])])
+    [gt_MSG_ERROR([You need to enable generators to build the abbr file])])
 AM_CONDITIONAL([WANT_ABBR], [test "x$enable_abbr" != xno])
 
 # Enable emojis in various stuffs - default is 'no' (because slow)
@@ -870,7 +882,7 @@ AC_ARG_ENABLE([emoji],
               [enable_emoji=$enableval],
               [enable_emoji=no])
 AS_IF([test x$enable_emoji = xyes -a x$enable_transcriptors = xno],
-    [AC_MSG_ERROR([You need to enable transcriptors to build emojis for spellers])])
+    [gt_MSG_ERROR([You need to enable transcriptors to build emojis for spellers])])
 AM_CONDITIONAL([WANT_EMOJIS], [test "x$enable_emoji" != xno])
 
 # Enable building tokenisers - default is 'no'
@@ -880,7 +892,7 @@ AC_ARG_ENABLE([tokenisers],
               [enable_tokenisers=$enableval],
               [enable_tokenisers=$enable_all_tools])
 AS_IF([test x$enable_tokenisers = xyes -a x$enable_analysers = xno],
-    [AC_MSG_ERROR([You need to enable analysers to build tokenisers])])
+    [gt_MSG_ERROR([You need to enable analysers to build tokenisers])])
 AM_CONDITIONAL([WANT_TOKENISERS], [test "x$enable_tokenisers" != xno])
 
 # Enable analyser tool - default is 'no' (via $enable_all_tools)
@@ -891,9 +903,9 @@ AC_ARG_ENABLE([analyser-tool],
               [enable_analyser_tool=$enable_all_tools])
 AS_IF([test "x$enable_analyser_tool" = "xyes" -a "x$gt_prog_vislcg3" = "xno"],
       [enable_analyser_tool=no
-       AC_MSG_ERROR([vislcg3 missing or too old - required for the analyser tool])])
+       gt_MSG_ERROR([vislcg3 missing or too old - required for the analyser tool])])
 AS_IF([test x$enable_tokenisers = xno -a x$enable_analyser_tool = xyes],
-    [AC_MSG_ERROR([You need to enable tokenisers to build the analyser tool])])
+    [gt_MSG_ERROR([You need to enable tokenisers to build the analyser tool])])
 AM_CONDITIONAL([WANT_ANL_TOOL], [test "x$enable_analyser_tool" != xno])
 
 # Enable building morphers - default is 'no'
@@ -912,7 +924,7 @@ AC_ARG_ENABLE([dialects],
               [enable_dialects=no])
 AS_IF([test "x$enable_dialects" = "xyes" -a "x$DIALECTS" = "x"],
       [enable_dialects=no
-       AC_MSG_ERROR([You have not defined any dialects. Please see the documentation.])])
+       gt_MSG_ERROR([You have not defined any dialects. Please see the documentation.])])
 AM_CONDITIONAL([WANT_DIALECTS], [test "x$enable_dialects" != xno])
 
 # Enable alternative orthographies, OFF by default, even when defined:
@@ -962,7 +974,7 @@ AS_IF([test x$with_shared_$1 != xfalse], [
             ],
             [
                 gt_SHARED_$1=false
-                AC_MSG_WARN([Could not find $2 data dir to set $1])
+                gt_MSG_WARN([Could not find $2 data dir to set $1])
                 gt_SHARED_FAILS="$2"
             ])
         ])
@@ -990,11 +1002,11 @@ AS_IF([test -d "$THIS_TOP_SRC_DIR"/../$2],
        export PKG_CONFIG_PATH=$THIS_TOP_SRC_DIR/../$2:$PKG_CONFIG_PATH
        PKG_CHECK_MODULES([SHARED_STUFF], [$_gt_pkg_name >= $_gt_shared_$1_min_version],
              [AC_MSG_NOTICE([NB using $2 in $THIS_TOP_SRC_DIR/../$2])],
-             [AC_MSG_ERROR([$2 needs to be updated, cd ../$2 and git pull and build])])
+             [gt_MSG_ERROR([$2 needs to be updated, cd ../$2 and git pull and build])])
        export PKG_CONFIG_PATH=$flub],
       [PKG_CHECK_MODULES([SHARED_STUFF], [$_gt_pkg_name >= $_gt_shared_$1_min_version],
              [AC_MSG_RESULT([NB using system $2])],
-             [AC_MSG_ERROR([$3 needs to be updated and installed])])])
+             [gt_MSG_ERROR([$3 needs to be updated and installed])])])
 ]) # gt_NEED_SHARED
 
 ################################################################################
@@ -1061,13 +1073,13 @@ this version does not halt on errors and should be useful when fixing bugs
 EOF
 AS_IF([test x$gt_prog_xslt = xno -a \
       "$(find ${srcdir}/src/fst/morphology/stems -name "*.xml" | head -n 1)" != "" ],
-      [AC_MSG_WARN([You have XML source files, but XML transformation to LexC is
+      [gt_MSG_WARN([You have XML source files, but XML transformation to LexC is
 disabled. Please check the output of configure to locate any problems. The LexC
 files will still compile though.
 ])])
 
 AS_IF([test x$can_local_sync = xno -a x$can_wget_giella_libs = xno],
-      [AC_MSG_WARN([Could not find GIELLA_LIBS, rsync or wget - speller installers will not be built, only zhfst files.])])
+      [gt_MSG_WARN([Could not find GIELLA_LIBS, rsync or wget - speller installers will not be built, only zhfst files.])])
 
 AS_IF([test x$can_wget_giella_libs = xyes],
       [AC_MSG_NOTICE([Could not find GIELLA_LIBS, but found wget - speller installers will be built, but requires a live Internet connection.])])
@@ -1085,18 +1097,18 @@ dnl YAML test warning:
 
 AS_IF([test "x$enable_yamltests" = "xno"],
       [AS_CASE([$host_os], 
-               [*darwin*], [AC_MSG_WARN([YAML testing could not be automatically enabled. 
+               [*darwin*], [gt_MSG_WARN([YAML testing could not be automatically enabled. 
 To enable it, on MacOSX please do:
 
     sudo brew install python pyyaml
     sudo python3 -m pip install PyYAML])],
-               [*linux*], [AC_MSG_WARN([YAML testing could not be automatically enabled. 
+               [*linux*], [gt_MSG_WARN([YAML testing could not be automatically enabled. 
                 To enable it on linux please use your package manager to install python an pyyaml,
                 or install pip and use it to install pyyaml.])],
-               [AC_MSG_WARN([YAML testing requires python3 and py-yaml.])])])
+               [gt_MSG_WARN([YAML testing requires python3 and py-yaml.])])])
 
 AS_IF([test "x$gt_SHARED_FAILS" != "x"],
-      [AC_MSG_WARN([This language depends on $gt_SHARED_FAILS which is missing, some parts of language models may be missing.
+      [gt_MSG_WARN([This language depends on $gt_SHARED_FAILS which is missing, some parts of language models may be missing.
 
 to get missing components fetch and build https://github.com/giellalt/$gt_SHARED_FAILS:
 

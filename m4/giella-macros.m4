@@ -332,31 +332,6 @@ AC_PATH_PROG([DIVVUN_CHECKER], [divvun-checker], [no], [$PATH$PATH_SEPARATOR$wit
 
 ]) # gt_PROG_SCRIPTS_PATHS
 
-################################################################################
-# Define functions for checking the availability of the Xerox tools:
-################################################################################
-AC_DEFUN([gt_PROG_XFST],
-[AC_ARG_WITH([xfst],
-            [AS_HELP_STRING([--with-xfst=DIRECTORY],
-                            [search xfst in DIRECTORY @<:@default=PATH@:>@])],
-            [with_xfst=$withval],
-            [with_xfst=$DEFAULT_XFST])
-AC_PATH_PROG([PRINTF], [printf], [echo -n])
-AC_PATH_PROG([XFST], [xfst], [false], [$PATH$PATH_SEPARATOR$with_xfst])
-AC_PATH_PROG([TWOLC], [twolc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
-AC_PATH_PROG([LEXC], [lexc], [false], [$PATH$PATH_SEPARATOR$with_xfst])
-AC_PATH_PROG([LOOKUP], [lookup], [false], [$PATH$PATH_SEPARATOR$with_xfst])
-AC_MSG_CHECKING([whether to enable xfst building])
-AS_IF([test x$with_xfst != xno], [
-    AS_IF([test "x$XFST"   != xfalse -a \
-                "x$TWOLC"  != xfalse -a \
-                "x$LEXC"   != xfalse -a \
-                "x$LOOKUP" != xfalse  ], [gt_prog_xfst=yes],
-          [gt_prog_xfst=no])
-], [gt_prog_xfst=no])
-AC_MSG_RESULT([$gt_prog_xfst])
-AM_CONDITIONAL([CAN_XFST], [test "x$gt_prog_xfst" != xno])
-]) # gt_PROG_XFST
 
 ################################################################################
 # Define functions for checking the availability of Voikko tools:
@@ -1049,7 +1024,7 @@ cat<<EOF
 -- Building $PACKAGE_STRING (more specialised build targets listed above):
 
   -- Fst build tools: Xerox, Hfst or Foma - at least one must be installed
-  * build Xerox fst’s: $gt_prog_xfst (default: $DEFAULT_XFST)
+  * build Xerox fst’s: discontinued 2025
   * build HFST fst’s: $gt_prog_hfst (default: $DEFAULT_HFST)
   * build Foma fst’s: $gt_prog_foma (default: $DEFAULT_FOMA)
 

@@ -52,7 +52,6 @@ difftool=@DIFFTOOL@
 # Use autotools mechanisms to only run the configured fst types in the tests:
 fsttype=
 @CAN_HFST_TRUE@fsttype="$fsttype hfst"
-@CAN_XFST_TRUE@fsttype="$fsttype xfst"
 @CAN_FOMA_TRUE@fsttype="$fsttype foma"
 
 # Use autotools mechanisms to check for hfst-tokenise:

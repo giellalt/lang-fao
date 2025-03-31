@@ -132,7 +132,6 @@ allfsttypes="hfst foma xfst"
 # Define fst types currently being enabled, to be replaced with autoconf stuff:
 current_fsttypes=
 @CAN_HFST_TRUE@current_fsttypes="$current_fsttypes hfst"
-@CAN_XFST_TRUE@current_fsttypes="$current_fsttypes xfst"
 @CAN_FOMA_TRUE@current_fsttypes="$current_fsttypes foma"
 
 # Turn the list into an array, while also removing the current fst type:

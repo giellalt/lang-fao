@@ -1,13 +1,9 @@
-## Process this file with automake to produce Makefile.in
+# Process this file with automake to produce Makefile.in
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
 # Uncomment and list here (space separated) all test scripts that should be run:
 TESTS=
-
-if CAN_XFST
-TESTS+=pair-test-positive.sh pair-test-negative.sh
-endif # CAN_XFST
 
 if CAN_HFST
 TESTS+=pair-test-hfst.sh

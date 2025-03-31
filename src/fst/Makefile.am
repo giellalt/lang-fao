@@ -43,17 +43,6 @@ CUSTOM_FSTS=
 ########################################################
 #### Add language-specific transducer targets here: ####
 
-#### Xerox transducers:
-if CAN_XFST
-GT_ANALYSERS+=
-GT_GENERATORS+=
-
-if WANT_CUSTOM_FSTS
-CUSTOM_FSTS+=
-endif # WANT_CUSTOM_FSTS
-
-endif # CAN_XFST
-
 #### HFST transducers
 if CAN_HFST
 GT_ANALYSERS+=

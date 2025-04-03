@@ -21,4 +21,21 @@
     <cg><grammar n="dependency.bin"/></cg>
   </pipeline>
 
+  <pipeline name="korp-analyser"
+            language="@GLANG2@"
+            type="Analyser">
+    <tokenize><tokenizer n="tokeniser-disamb-gt-desc.pmhfst"/></tokenize>
+    <cg><grammar n="mwe-dis.bin"/></cg>
+    <mwesplit/>
+    <cg><grammar n="disambiguator.bin"/></cg>
+    <cg><grammar n="functions.bin"/></cg>
+    <cg><grammar n="dependency.bin"/></cg>
+  </pipeline>
+
+  <pipeline name="tokeniser"
+            language="@GLANG2@"
+            type="Tokeniser">
+    <tokenize><tokenizer n="tokeniser-disamb-gt-desc.pmhfst"/></tokenize>
+  </pipeline>
+
 </pipespec>

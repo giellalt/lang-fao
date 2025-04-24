@@ -3,7 +3,7 @@
 ## Licence: GPL v3+
 
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = . src tools docs test
+SUBDIRS = . src tools docs
 
 pkgconfigdir = $(prefix)/share/pkgconfig
 pkgconfig_DATA = giella-$(GTLANG).pc

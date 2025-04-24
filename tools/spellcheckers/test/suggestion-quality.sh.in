@@ -7,7 +7,7 @@ fi
 # settings:
 TESTER=@DIVVUN_ACCURACY@
 THRESHOLD=75
-TYPOS="@top_srcdir@/test/data/typos.txt"
+TYPOS="typos.tsv"
 ZHFST="@builddir@/../@GTLANG2@.zhfst"
 
 if test x$TESTER = xfalse ; then

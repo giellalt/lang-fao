@@ -24,10 +24,10 @@ AC_CONFIG_FILES([Makefile \
                  src/fst/tagsets/Makefile \
                  src/fst/transcriptions/Makefile \
                  docs/Makefile \
-                 test/Makefile \
                  tools/Makefile \
                  tools/analysers/Makefile \
                  tools/analysers/pipespec.xml \
+                 tools/analysers/test/Makefile \
                  tools/grammarcheckers/Makefile \
                  tools/grammarcheckers/pipespec.xml \
                  tools/grammarcheckers/filters/Makefile \
@@ -73,10 +73,6 @@ AC_CONFIG_FILES([tools/spellcheckers/test/suggestion-quality.sh], \
       [chmod a+x tools/spellcheckers/test/suggestion-quality.sh])
 AC_CONFIG_FILES([tools/spellcheckers/test/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh], \
       [chmod a+x tools/spellcheckers/test/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh])
-AC_CONFIG_FILES([test/run-yaml-testcases.sh], \
-      [chmod a+x test/run-yaml-testcases.sh])
-AC_CONFIG_FILES([test/run-morph-tester.sh], \
-      [chmod a+x test/run-morph-tester.sh])
 # Phonology tests, all languages:
 AC_CONFIG_FILES([src/fst/morphology/test/phonology/pair-test-positive.sh], \
       [chmod a+x src/fst/morphology/test/phonology/pair-test-positive.sh])

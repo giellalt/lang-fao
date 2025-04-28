@@ -22,7 +22,7 @@ spellerdir=tools/spellcheckers
 
 # File variables:
 engine=vk
-typos_file="$top_srcdir/test/data/typos.txt"
+typos_file="$top_srcdir/tools/spellcheckers/test/typos.txt"
 file_spesifier="$(basename ${typos_file} .txt)"
 speller_test_data=speller_test_data.txt
 speller_input=speller_input.${engine}.txt

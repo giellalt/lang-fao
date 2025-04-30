@@ -54,10 +54,6 @@ AC_CONFIG_FILES([Makefile \
                  tools/spellcheckers/filters/Makefile \
                  tools/spellcheckers/neural/Makefile \
                  tools/spellcheckers/test/Makefile \
-                 tools/spellcheckers/test/fstbased/Makefile \
-                 tools/spellcheckers/test/fstbased/desktop/Makefile \
-                 tools/spellcheckers/test/fstbased/desktop/hfst/Makefile \
-                 tools/spellcheckers/test/fstbased/mobile/Makefile \
                  tools/spellcheckers/weights/Makefile \
                  tools/tts/Makefile \
                  tools/tts/pipespec.xml \
@@ -71,8 +67,8 @@ AC_CONFIG_FILES([tools/spellcheckers/test/test-zhfst-file.sh], \
       [chmod a+x tools/spellcheckers/test/test-zhfst-file.sh])
 AC_CONFIG_FILES([tools/spellcheckers/test/suggestion-quality.sh], \
       [chmod a+x tools/spellcheckers/test/suggestion-quality.sh])
-AC_CONFIG_FILES([tools/spellcheckers/test/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh], \
-      [chmod a+x tools/spellcheckers/test/fstbased/desktop/hfst/test-zhfst-basic-sugg-speed.sh])
+AC_CONFIG_FILES([tools/spellcheckers/test/test-zhfst-basic-sugg-speed.sh], \
+      [chmod a+x tools/spellcheckers/test/test-zhfst-basic-sugg-speed.sh])
 # Phonology tests, all languages:
 AC_CONFIG_FILES([src/fst/morphology/test/phonology/pair-test-positive.sh], \
       [chmod a+x src/fst/morphology/test/phonology/pair-test-positive.sh])
@@ -93,8 +89,8 @@ AC_CONFIG_FILES([src/fst/morphology/test/generate-verb-lemmas.sh], \
 AC_CONFIG_FILES([src/fst/morphology/test/missing-multichars.sh], \
       [chmod a+x src/fst/morphology/test/missing-multichars.sh])
 # Lemma acceptance test for spellers, all languages:
-AC_CONFIG_FILES([tools/spellcheckers/test/fstbased/desktop/hfst/accept-all-lemmas.sh], \
-      [chmod a+x tools/spellcheckers/test/fstbased/desktop/hfst/accept-all-lemmas.sh])
+AC_CONFIG_FILES([tools/spellcheckers/test/accept-all-lemmas.sh], \
+      [chmod a+x tools/spellcheckers/test/accept-all-lemmas.sh])
 # Shorthand shell scripts instead of the old-type aliases - all languages:
 AC_CONFIG_FILES([tools/shellscripts/ufao-gt.sh], \
       [chmod a+x tools/shellscripts/ufao-gt.sh])

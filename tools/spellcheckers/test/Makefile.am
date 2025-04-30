@@ -2,8 +2,6 @@
 ## Copyright: Sámediggi/Divvun/UiT
 ## Licence: GPL v3+
 
-SUBDIRS = fstbased
-
 # Uncomment and list here (space separated) all test scripts that should be run:
 TESTS=
 
@@ -24,7 +22,9 @@ endif # WANT_SPELLERS
 
 # List tests that are presently (expected) failures here (in addition to above),
 # ie things that should be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=run-spellers-gt-norm-yaml-testcases.sh suggestion-quality.sh
+XFAIL_TESTS=run-desktopspeller-gt-norm-yaml-testcases.sh \
+			suggestion-quality.sh \
+			accept-all-lemmas.sh
 
 
 include $(top_srcdir)/../giella-core/am-shared/tools-spellcheckers-test-include.am

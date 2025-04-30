@@ -2,7 +2,7 @@
 
 HFST_OSPELL=@HFST_OSPELL@
 GLANG=@GLANG2@
-ZHFSTFILE=../../../tools/spellcheckers/${GLANG}.zhfst
+ZHFSTFILE=../${GLANG}.zhfst
 
 if test -x ${HFST_OSPELL} ; then
   if test -f ${ZHFSTFILE} ; then

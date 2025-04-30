@@ -17,7 +17,7 @@
 GIELLA_LANG=@GTLANG2@
 ### in ###
 source_files=@abs_top_srcdir@/src/fst/morphology/stems/*.lexc
-speller_dir=@abs_builddir@/../../../../
+speller_dir=@abs_builddir@/../
 exclusions="(CmpN/Only|ShCmp|\+Cmp/SplitR| Rreal | R | Rnoun |\+V\+|NOT-TO-LEMMATEST)"
 
 ##### Extract lemmas - add additional egrep pattern as parameters: #####

@@ -3,6 +3,8 @@
 # This is a shell script that will call the actual test runner with the
 # specified transducer. This determines also the set of yaml test files looped
 # over by the test runner.
+
+# ensure that we are ran from make or setup properly
 if test -z "$srcdir" ; then
     echo "srcdir= not set, this must be run from make or set srcdir=."
     exit 2
@@ -23,18 +25,18 @@ fi
 
 ###### User variables - adjust as needed: #######
 # Specify the invariable part of the transducer name:
-transducer=acceptor.default
+transducer=desktopspeller-gt-norm
 
 # Specify whether the test runner should test only generation, analysis or both:
 # gen = generation test
 # ana = analysis test
 # full / both / "" (ie nothing) = test both directions
 # speller = to test one-tape automatons, like a speller acceptor
-halftest=speller
+halftest=
 
 # Specify the name of the subdir where the yaml files are, use '.' if it is the
 # same dir as this script:
-yaml_file_subdir=hfst-acceptor-yamls
+yaml_file_subdir=desktopspeller-gt-norm-yamls
 
 ####### Include/source helper script from dir above - DO NOT CHANGE: ########
 # Relative path from test script to test runner:

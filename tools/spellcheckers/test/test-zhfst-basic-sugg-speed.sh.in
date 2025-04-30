@@ -3,7 +3,7 @@
 MAXTIME=0.8
 HFST_OSPELL=@HFST_OSPELL@
 LANG=@GTLANG2@
-ZHFSTFILE=../../../../../../tools/spellcheckers/${LANG}.zhfst
+ZHFSTFILE=../${LANG}.zhfst
 
 if test -x ${HFST_OSPELL} ; then
   if test -f ${ZHFSTFILE} ; then

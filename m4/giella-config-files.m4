@@ -85,6 +85,13 @@ AC_CONFIG_FILES([src/fst/morphology/test/generate-propernoun-lemmas.sh], \
       [chmod a+x src/fst/morphology/test/generate-propernoun-lemmas.sh])
 AC_CONFIG_FILES([src/fst/morphology/test/generate-verb-lemmas.sh], \
       [chmod a+x src/fst/morphology/test/generate-verb-lemmas.sh])
+# Lemma generation tests, all languages:
+AC_CONFIG_FILES([src/fst/morphology/test/generate-adjective-paradigm.sh], \
+      [chmod a+x src/fst/morphology/test/generate-adjective-paradigm.sh])
+AC_CONFIG_FILES([src/fst/morphology/test/generate-noun-paradigm.sh], \
+      [chmod a+x src/fst/morphology/test/generate-noun-paradigm.sh])
+AC_CONFIG_FILES([src/fst/morphology/test/generate-verb-paradigm.sh], \
+      [chmod a+x src/fst/morphology/test/generate-verb-paradigm.sh])
 # Multichar symbol consistency
 AC_CONFIG_FILES([src/fst/morphology/test/missing-multichars.sh], \
       [chmod a+x src/fst/morphology/test/missing-multichars.sh])

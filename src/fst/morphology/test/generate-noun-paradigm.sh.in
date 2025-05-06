@@ -1,0 +1,57 @@
+#!/bin/bash
+# Test script for noun paradigm generation coverage
+#
+# change settings here:
+
+PARADIGM=testnounparadigm.txt
+LEXC=$srcdir/../stems/nouns.lexc
+THRESHOLD=99
+#EXCLUDETAGS=-X f -X m -X nt -ut
+#EXCLUDEFORMS=-Z nouns-whitelist.txt
+
+# avoid changing the common script stuffs here:
+
+. "$GIELLA_CORE/scripts/termcolors.bash"
+PYTHON=@PYTHON@
+TESTSCRIPT=$GIELLA_CORE/scripts/generate-paradigms.py
+GENERATOR=@builddir@/../../generator-gt-desc.hfstol
+
+if ! test -d $srcdir ; then
+    printf "%sfail%s use make check to run %s or set srcdir=.\n" \
+        "$red" "$reset" "$0"
+    exit 1
+fi
+if ! test -f "$PARADIGM" ; then
+    printf "%sskip%s missing paradigm file %s\n" "$light_blue" "$reset"\
+        "$PARADIGM"
+    exit 77
+fi
+if ! test -f "$TESTSCRIPT" ; then
+    printf "%sskip%s missing script file %s\n" "$light_blue" "$reset"\
+        "$TESTSCRIPT"
+    exit 77
+fi
+if ! test -f "$GENERATOR" ; then
+    printf "%sskip%s missing generator FSA %s\n" "$light_blue" "$reset"\
+        "$GENERATOR"
+    exit 77
+fi
+if ! test -f "$LEXC" ; then
+    printf "%sskip%s missing lexc file %s\n" "$light_blue" "$reset"\
+        "$LEXC"
+    exit 77
+fi
+
+$PYTHON -- "$TESTSCRIPT" -p "$PARADIGM" -l "$LEXC" -T "$THRESHOLD" \
+    -g "$GENERATOR" $EXCLUDETAGS $EXCLUDEFORMS
+rv=$?
+if test $rv = 77 ; then
+    printf "%sskip%s\n" "$lightblue" "$reset"
+    exit 77
+elif test $rv -gt 0 ; then
+    printf "%sfail%s\n" "$red" "$reset"
+    exit $rv
+else
+    printf "%spass%s\n" "$green" "$reset"
+    exit 0
+fi

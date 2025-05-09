@@ -6,9 +6,9 @@ POS=nouns
 source_file=@abs_srcdir@/../stems/${POS}.lexc
 generator_file=@abs_builddir@/../../generator-gt-norm
 analyser_file=@abs_builddir@/../../analyser-gt-norm
-tags="+N+Neu+Sg+Nom"
+tags="+N+Neu+Sg+Nom+Indef"
 # advanced settings (leave empty or write full args)
-xtags="-t +N+Neu+Pl+Nom -t +N+Fem+Sg+Nom -t +N+Fem+Pl+Nom -t +N+Msc+Sg+Nom -t +N+Msc+Pl+Nom"
+xtags="-t +N+Neu+Pl+Nom+Indef -t +N+Fem+Sg+Nom+Indef -t +N+Fem+Pl+Nom+Indef -t +N+Msc+Sg+Nom+Indef -t +N+Msc+Pl+Nom+Indef"
 inclusions=
 exclusions=
 

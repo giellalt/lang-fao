@@ -1,53 +1,57 @@
 #!/bin/bash
-# @configure_input@
-
-# To run this test script only, do:
+# Test script for verb lemma generation
 #
-# make check TESTS=generate-verb-lemmas.sh
-
-# ensure this is proper run from make check or otherwise set up
-if test -z "$srcdir" ; then
-    echo needs to run from make check or set srcdir=.
-    exit 1
-fi
-genscript=$GIELLA_CORE/scripts/generate-lemmas.sh
-if ! test -x "$genscript" ; then
-    echo "missing generator script $genscript"
-    exit 1
-fi
-if test -z "$TOOLKITS" ; then
-    TOOLKITS=hfst
-fi
-
-# This test script will test that all noun lemmas do generate as themselves.
-# Extend as needed, and copy to new files to adapt to other parts of speech.
-# The changes usually needed are:
-#
-# 1. change the reference to the source file (line 33)
-# 2. extend the extract lemmas egrep expression (lines 36–37)
-# 3. adapt the tag addition and lemma generation instructions (lines 38–39)
-
-###### Variables: #######
+# change settings here:
 POS=verbs
-### in ###
 source_file=@abs_srcdir@/../stems/${POS}.lexc
 generator_file=@abs_builddir@/../../generator-gt-norm
 analyser_file=@abs_builddir@/../../analyser-gt-norm
 tags=+V+Inf
-xtags=+V+Inf+Pass
+# advanced settings (leave empty or write full args)
+xtags="-t +V+Inf+Pass"
 inclusions=
 exclusions=
 
-# call the generator script in giella core
-for tk in $TOOLKITS ; do
-    "$genscript" "$POS" "$source_file" "$generator_file" "$analyser_file" \
-        "$tk" "$tags" "$xtags" "$inclusions" "$exclusions"
-    rv=$?
-    if test $rv = 77 ; then
-        echo skipped
-        exit 77
-    elif test $rv -gt 0 ; then
-        echo failed
-        exit 1
-    fi
-done
+# avoid changing common scripting stuff here:
+
+. "$GIELLA_CORE/scripts/termcolors.bash"
+PYTHON=@PYTHON@
+genscript=$GIELLA_CORE/scripts/generate-lemmas.py
+
+# ensure this is proper run from make check or otherwise set up
+if test -z "$srcdir" ; then
+    printf "%sfail%s %s needs to run from make check or set srcdir=.\n" \
+        "$red" "$reset" "$0"
+    exit 1
+fi
+if ! test -f "$genscript" ; then
+    printf "%sfail%s missing generator script $genscript\n" "$red" "$reset" \
+        "$genscript"
+    exit 1
+fi
+if ! test -f "$generator_file.hfstol" ; then
+    printf "%sfail%s missing generator FSA %s.hfstol\n" "$red" "$reset" \
+        "$generator_file"
+    exit 1
+fi
+if ! test -f "$analyser_file.hfstol" ; then
+    printf "%sfail%s missing analyser FSA %s.hfstol\n" "$red" "$reset" \
+        "$analyser_file"
+    exit 1
+fi
+if ! test -f "$source_file" ; then
+    printf "%sfail%s missing lexc file %s\n" "$red" "$reset" \
+        "$source_file"
+fi
+
+"$PYTHON" -- "$genscript" -l "$source_file" \
+    -g "$generator_file.hfstol" -a "$analyser_file.hfstol" \
+        -t "$tags" $xtags $inclusions $exclusions
+rv=$?
+if test $rv = 77 ; then
+    printf "%sskipped%s" "$light_blue" "$reset"
+    exit 77
+elif test $rv -gt 0 ; then
+    printf "%sfailed%s" "$red" "$reset"
+    exit 1
+fi

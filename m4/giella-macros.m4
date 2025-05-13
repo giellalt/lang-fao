@@ -237,6 +237,8 @@ AC_ARG_WITH([divvunspell],
                             [search divvunspell in DIRECTORY @<:@default=PATH@:>@])],
             [with_divvunspell=$withval],
             [with_divvunspell=no])
+AC_PATH_PROG([DIVVUNSPELL], [divvunspell], [false],
+             [$PATH$PATH_SEPARATOR$with_divvunspell])
 AC_PATH_PROG([DIVVUN_ACCURACY], [accuracy], [false],
              [$PATH$PATH_SEPARATOR$with_divvunspell])
 

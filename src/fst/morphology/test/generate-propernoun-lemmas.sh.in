@@ -15,8 +15,7 @@ exclusions=
 # avoid changing common sritping stuff here:
 
 . "$GIELLA_CORE/scripts/termcolors.bash"
-PYTHON=@PYTHON@
-genscript=$GIELLA_CORE/scripts/generate-lemmas.py
+genscript=@GTLEMMATEST@
 
 # ensure this is proper run from make check or otherwise set up
 if test -z "$srcdir" ; then
@@ -25,9 +24,9 @@ if test -z "$srcdir" ; then
     exit 1
 fi
 if ! test -f "$genscript" ; then
-    printf "%sfail%s missing generator script %s\n" "$red" "$reset" \
+    printf "%sskip%s missing generator script %s\n" "$light_blue" "$reset" \
         "$genscript"
-    exit 1
+    exit 77
 fi
 if ! test -f "$generator_file.hfstol" ; then
     printf "%sfail%s missing generator FSA %s.hfstol\n" "$red" "$reset" \
@@ -44,7 +43,7 @@ if ! test -f "$source_file" ; then
         "$source_file"
 fi
 
-"$PYTHON" -- "$genscript" -l "$source_file" \
+"$genscript" -l "$source_file" \
     -g "$generator_file.hfstol" -a "$analyser_file.hfstol" \
         -t "$tags" $xtags $inclusions $exclusions
 rv=$?

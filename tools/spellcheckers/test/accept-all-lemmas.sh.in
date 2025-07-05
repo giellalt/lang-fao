@@ -11,8 +11,7 @@ speller_archive=$speller_dir/$GIELLA_LANG.zhfst
 
 # avoid changing common scripting stuff here
 . "$GIELLA_CORE/scripts/termcolors.bash"
-PYTHON=@PYTHON@
-genscript=$GIELLA_CORE/scripts/accept-all-lemmas.py
+genscript=@GTSPELLTEST@
 divvunspell=@DIVVUNSPELL@
 
 # ensure this is proper run from make check or otherwise set up
@@ -37,7 +36,7 @@ for f in $source_files ; do
     fi
 done
 
-$PYTHON -- "$genscript" -z "$speller_archive" \
+"$genscript" -z "$speller_archive" \
     -D "$divvunspell" \
     $exclusions \
     $source_files

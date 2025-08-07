@@ -60,15 +60,26 @@ AC_CONFIG_FILES([Makefile \
                  tools/tts/test/Makefile])
 # Add one AC_CONFIG_FILES for each script file that needs processing. This gives
 # the most pleasant user experience and most readable autoconf code to maintain.
-# Spell checker tests, all languages:
+# IF you need to add language specific scripts, put them in the end of the file
+# phonetics tests, all languages
 AC_CONFIG_FILES([src/fst/phonetics/tests/run_tests.sh],
       [chmod a+x src/fst/phonetics/tests/run_tests.sh])
+# analyser tests, all langauges
+AC_CONFIG_FILES([tools/analysers/test/regresstest.sh], \
+      [chmod a+x tools/analysers/test/regresstest.sh])
+# tts tests, all langauges
+AC_CONFIG_FILES([tools/tts/test/regresstest.sh], \
+      [chmod a+x tools/tts/test/regresstest.sh])
+# Spell checker tests, all languages:
 AC_CONFIG_FILES([tools/spellcheckers/test/test-zhfst-file.sh], \
       [chmod a+x tools/spellcheckers/test/test-zhfst-file.sh])
 AC_CONFIG_FILES([tools/spellcheckers/test/suggestion-quality.sh], \
       [chmod a+x tools/spellcheckers/test/suggestion-quality.sh])
 AC_CONFIG_FILES([tools/spellcheckers/test/test-zhfst-basic-sugg-speed.sh], \
       [chmod a+x tools/spellcheckers/test/test-zhfst-basic-sugg-speed.sh])
+# Lemma acceptance test for spellers, all languages:
+AC_CONFIG_FILES([tools/spellcheckers/test/accept-all-lemmas.sh], \
+      [chmod a+x tools/spellcheckers/test/accept-all-lemmas.sh])
 # Phonology tests, all languages:
 AC_CONFIG_FILES([src/fst/morphology/test/phonology/pair-test-positive.sh], \
       [chmod a+x src/fst/morphology/test/phonology/pair-test-positive.sh])
@@ -95,9 +106,6 @@ AC_CONFIG_FILES([src/fst/morphology/test/generate-verb-paradigm.sh], \
 # Multichar symbol consistency
 AC_CONFIG_FILES([src/fst/morphology/test/missing-multichars.sh], \
       [chmod a+x src/fst/morphology/test/missing-multichars.sh])
-# Lemma acceptance test for spellers, all languages:
-AC_CONFIG_FILES([tools/spellcheckers/test/accept-all-lemmas.sh], \
-      [chmod a+x tools/spellcheckers/test/accept-all-lemmas.sh])
 # Shorthand shell scripts instead of the old-type aliases - all languages:
 AC_CONFIG_FILES([tools/shellscripts/ufao-gt.sh], \
       [chmod a+x tools/shellscripts/ufao-gt.sh])
@@ -110,5 +118,5 @@ AC_CONFIG_FILES([devtools/test_voikkospell_suggestions.sh], \
       [chmod a+x devtools/test_voikkospell_suggestions.sh])
 AC_CONFIG_FILES([devtools/test_grammar_checker.sh], \
       [chmod a+x devtools/test_grammar_checker.sh])
-
+# add language specific local tests in the end:
 ]) # gt_CONFIG_FILES

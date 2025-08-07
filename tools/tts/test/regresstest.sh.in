@@ -1,0 +1,55 @@
+#!/bin/bash
+# test script for ensuring that tts pipe output don't change
+
+# change settings here:
+corpus=@abs_srcdir@/corpus.txt
+gold=@abs_srcdir@/corpus.gold.cg3text
+variant=sme-normaliser
+tts_dir=@abs_builddir@/../
+tts_archive=$tts_dir/@GTLANG2@-tts.zpipe
+level=suffixed  # we only care about "phon
+threshold=99
+
+# avoid changing common scripts from here:
+. "@GIELLA_CORE@/scripts/termcolors.bash"
+testscript=@GIELLA_CORE@/scripts/regresstest-pipespec.sh
+
+# ensure this is run from make check and other things
+if test -z "$srcdir" ; then
+    printf "%sfail%s %s needs to run from make check or set srcdir=.\n" \
+        "$red" "$reset" "$0"
+    exit 1
+fi
+if ! test -f "$testscript" ; then
+    printf "%sskip%s  missing tester script from core %s\n" "$light_blue" \
+        "$reset" "$testscript"
+    exit 77
+fi
+if ! test -f "$corpus" ; then
+    printf "%sskip%s missing test data %s\n" "$light_blue" \
+        "$reset" "$corpus"
+    exit 77
+fi
+if ! test -f "$gold" ; then
+    printf "%sskip%s missing gold corpus %s\n" "$light_blue" "$reset"\
+        "$gold"
+    echo "you can use divvun-checker to create initial gold data..."
+    exit 1
+fi
+if ! test -f "$tts_archive" ; then
+    printf "%sskip%s missing pipe archive %s\n" "$light_blue" "$reset" \
+        "$tts_archive"
+    exit 77
+fi
+
+"$testscript" "$tts_archive" "$corpus" "$gold" "$variant" "$level" "$threshold"
+rv=$?
+if test $rv -eq 77 ; then
+    printf "%sskip%s\n" "$light_blue" "$reset"
+    exit 77
+elif test $rv -gt 0 ; then
+    printf "%sfail%s\n" "$red" "$reset"
+    exit $rv
+else
+    printf "%spass%s\n" "$green" "$reset"
+fi

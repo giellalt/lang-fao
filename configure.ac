@@ -122,10 +122,10 @@ AM_CONDITIONAL([DEFAULT_CASE_HANDLING], [ true ])
 AC_SUBST([DIALECTS], [""])
 AM_CONDITIONAL([HAVE_DIALECTS], [test "x$DIALECTS" != "x"])
 
-########## LANGUAGE SPECIFIC BUILD SETTINGS ##########
+########## LANGUAGE SPECIFIC _BUILD_ SETTINGS ##########
 
 # NO_PHONOLOGY = yes
-# ... makes the bulid process skip compilation of anything in the fst/
+# ... makes the build process skip compilation of phonology.* in the fst/
 # dir. This is mainly useful when building from external sources such that the
 # lexical fst built in the fst/ dir is actually the full analyser.
 # The variable can also be set if a language is such that everything is
@@ -141,8 +141,8 @@ AM_CONDITIONAL([SKIP_PHONOLOGY], [test "x$NO_PHONOLOGY" != "x"])
 #
 # load stack fst/lexicon.&FST&
 #
-# where &FST& will be automatically replaced with the relevant fst suffix (xfst,
-# hfst, foma). When done like that, the phonology rules will be composed with
+# where &FST& will be automatically replaced with the relevant fst suffix
+# (hfst, foma). When done like that, the phonology rules will be composed with
 # the lexicon directly, which should lead to much faster compilaton of xfst
 # rewrite rules.
 AC_SUBST([LEXREF_IN_XFSCRIPT], [""])
@@ -163,7 +163,6 @@ AC_SUBST([DEFAULT_CUSTOM_FSTS], [yes])
 
 # Tests and sets up giella-core directories and scripts
 gt_PROG_SCRIPTS_PATHS
-
 
 # Tests and sets up FOMA
 gt_PROG_FOMA

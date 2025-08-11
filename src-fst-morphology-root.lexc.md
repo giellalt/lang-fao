@@ -18,7 +18,7 @@
 * +Inf +PrfPtc +PrsPrc +Sup +Imp +Sbj +Subj : Verb forms	
 * +Cmp : Compound		
 * +Abbr +ABBR +ACR : Abbreviations, acronyms ,
-* +CLB +PUNCT +LEFT +RIGHT : Punctuation, parentheses
+* +CLB +PUNCT +LEFT +RIGHT +MIDDLE : Punctuation, parentheses
 * +Symbol : independent symbols in the text stream, like £, €, ©
 * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 

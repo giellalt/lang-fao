@@ -4,7 +4,7 @@
 # change settings here:
 corpus=@abs_srcdir@/corpus.txt
 gold=@abs_srcdir@/corpus.gold.cg3text
-variant=sme-normaliser
+variant=@GLANG@-normaliser
 tts_dir=@abs_builddir@/../
 tts_archive=$tts_dir/@GTLANG2@-tts.zpipe
 level=suffixed  # we only care about "phon

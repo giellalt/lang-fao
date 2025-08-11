@@ -8,6 +8,7 @@ SUBDIRS = . test
 # NB! If any of the filenames below are changed, then remember to also update
 # the corresponding filename in `pipespec.xml.in`
 
+GIELLA_ANL_IPA_FST_FILE=
 GIELLA_ANL_VALENCY_SRC=
 GIELLA_ANL_WHSPACE_ANAL_SRC=analyser-gt-whitespace.regex
 GIELLA_ANL_MWEDIS_SRC=mwe-dis.cg3

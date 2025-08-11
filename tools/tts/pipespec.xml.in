@@ -7,7 +7,7 @@
                        hfst >= 3.13.0
                        divvun-gramcheck >= 0.2.0">
 
-  <pipeline name="@GLANG@-analyser"
+  <pipeline name="@GLANG@-normaliser"
             language="@GLANG2@"
             type="Analyser">
     <tokenize><tokenizer n="tokeniser-disamb-gt-desc.pmhfst"/></tokenize>
@@ -21,10 +21,15 @@
     <cg><grammar n="functions.bin"/></cg>
     <cg><grammar n="dependency.bin"/></cg>
     <normalise>
-      <normaliser n="transcriptor-gt-desc.hfstol"/>
       <analyser n="analyser-gt-norm.hfstol"/>
       <generator n="generator-gt-norm.hfstol"/>
-      <tags><tag n="ABBR"/><tag n="Roman"/><tag n="Arab"/></tags>
+      <normaliser s="ABBR"   n="transcriptor-abbrevs2text.filtered.lookup.hfstol"/>
+      <normaliser s="Arab"   n="transcriptor-numbers-digit2text.filtered.lookup.hfstol"/>
+      <normaliser s="Roman"  n="transcriptor-numbers-digit2text.filtered.lookup.hfstol"/>
+      <normaliser s="Emoji"  n="transcriptor-emoji2text.filtered.lookup.hfstol"/>
+      <normaliser s="Sem/Date" n="transcriptor-date-digit2text.filtered.lookup.hfstol"/>
+      <normaliser s="Sem/Year" n="transcriptor-date-digit2text.filtered.lookup.hfstol"/>
+      <normaliser s="Sem/Time-clock" n="transcriptor-clock-digit2text.filtered.lookup.hfstol"/>
     </normalise>
     <!-- Add expansion of abbr expressions, digits etc -->
     <!-- Add conversion to IPA as the last step:

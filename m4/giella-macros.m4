@@ -144,6 +144,18 @@ AS_IF([test "x${giella_core_version_ok}" != xno], [AC_MSG_RESULT([$giella_core_v
 ### Some software that we either depend on or we need for certain functionality:
 ################
 
+# check on python and pipx regardless of stuff...
+AM_PATH_PYTHON([3.5],, [:])
+AC_PATH_PROG([PIPX], [pipx], [false])
+AS_IF([test x$PIPX = xfalse],
+      [gt_MSG_WARN([we recommend using pipx for python stuffs
+       on debian/ubuntu run: sudo apt update
+            sudo apt install pipx
+            pipx ensurepath
+       on mac (brew) run: brew install pipx
+            pipx ensurepath
+       on other systems, install pipx and run: pipx ensurepath])])
+
 ################ Weighted fst's ################
 AC_PATH_PROG([BC], [bc], [false], [$PATH$PATH_SEPARATOR$with_bc])
 
@@ -154,25 +166,13 @@ AC_ARG_ENABLE([yamltests],
               [enable_yamltests=$enableval],
               [enable_yamltests=check])
 
-AS_IF([test "x$enable_yamltests" = "xcheck"],
-     [AM_PATH_PYTHON([3.5],, [:])
-     AX_PYTHON_MODULE(yaml)
-     AC_MSG_CHECKING([whether to enable yaml-based test])
-     AS_IF([test "$PYTHON" = ":"],
-           [enable_yamltests=no
-            new_enough_python_available=no
-            AC_MSG_RESULT([no, python is missing or old])
-            ],
-           [AS_IF([test "x$HAVE_PYMOD_YAML" != "xyes"],
-                  [enable_yamltests=no
-                   new_enough_python_available=yes
-                   AC_MSG_RESULT([no, yaml is missing])
-                   ],
-                  [enable_yamltests=yes
-                   new_enough_python_available=yes
-                   AC_MSG_RESULT([yes])])])])
-
-AM_CONDITIONAL([CAN_YAML_TEST], [test "x$enable_yamltests" != xno])
+AC_PATH_PROG([GTMORPHTEST], [gtmorphtest], [false])
+AM_CONDITIONAL([CAN_YAML_TEST], [test "x$GTMORPHTEST" != xfalse])
+AS_IF([test x$GTMORPHTEST = xfalse],
+      [gt_MSG_WARN([gtmorphtest is needed for YAML testings
+        on debian/ubuntu: sudo apt update; sudo apt install pipx; pipx ensurepath
+        on macbrew: brew install pipx; pipx ensurepath
+        then: pipx install git+https://github.com/divvun/morph-test])])
 
 
 ################ Generated documentation ################
@@ -650,7 +650,6 @@ enableval=''
 ################ gtgramtool for grammarchecking ################
 AC_PATH_PROG([GTGRAMTOOL], [gtgramtool], [false])
 AS_IF([test "x$enable_grammarchecker" != "xno"],
-    AX_PYTHON_MODULE(pip)
     AC_MSG_CHECKING([whether we have gtgramtool])
     AS_IF([test x$GTGRAMTOOL = xfalse],
     [gt_MSG_ERROR([gtgramtool is needed for --enable grammarchecker.
@@ -1080,21 +1079,6 @@ AS_IF([test "x$fallback_to_hfst" != x ],
 # Notify of fallback to Foma
 AS_IF([test "x$fallback_to_foma" != x ],
       [AC_MSG_NOTICE([$fallback_to_foma])])
-
-dnl stick important warnings to bottom
-dnl YAML test warning:
-
-AS_IF([test "x$enable_yamltests" = "xno"],
-      [AS_CASE([$host_os], 
-               [*darwin*], [gt_MSG_WARN([YAML testing could not be automatically enabled. 
-To enable it, on MacOSX please do:
-
-    sudo brew install python pyyaml
-    sudo python3 -m pip install PyYAML])],
-               [*linux*], [gt_MSG_WARN([YAML testing could not be automatically enabled. 
-                To enable it on linux please use your package manager to install python an pyyaml,
-                or install pip and use it to install pyyaml.])],
-               [gt_MSG_WARN([YAML testing requires python3 and py-yaml.])])])
 
 AS_IF([test "x$gt_SHARED_FAILS" != "x"],
       [gt_MSG_WARN([This language depends on $gt_SHARED_FAILS which is missing, some parts of language models may be missing.

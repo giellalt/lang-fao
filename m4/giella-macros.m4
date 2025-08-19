@@ -166,13 +166,15 @@ AC_ARG_ENABLE([yamltests],
               [enable_yamltests=$enableval],
               [enable_yamltests=check])
 
-AC_PATH_PROG([GTMORPHTEST], [gtmorphtest], [false])
+AC_PATH_PROGS([GTMORPHTEST], [gtmorphtest morph-test2], [false])
 AM_CONDITIONAL([CAN_YAML_TEST], [test "x$GTMORPHTEST" != xfalse])
 AS_IF([test x$GTMORPHTEST = xfalse],
-      [gt_MSG_WARN([gtmorphtest is needed for YAML testings
+      [gt_MSG_WARN([gtmorphtest or morph-test2 is needed for YAML testings
         on debian/ubuntu: sudo apt update; sudo apt install pipx; pipx ensurepath
         on macbrew: brew install pipx; pipx ensurepath
-        then: pipx install git+https://github.com/divvun/morph-test])])
+        then: pipx install git+https://github.com/divvun/morph-test
+        
+        Alternatively, install morph-test2, see https://github.com/divvun/morph-test-rs])])
 
 
 ################ Generated documentation ################

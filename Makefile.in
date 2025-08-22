@@ -133,7 +133,6 @@ subdir = docs
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_check_gnu_make.m4 \
 	$(top_srcdir)/m4/ax_compare_version.m4 \
-	$(top_srcdir)/m4/ax_python_module.m4 \
 	$(top_srcdir)/m4/giella-config-files.m4 \
 	$(top_srcdir)/m4/giella-macros.m4 $(top_srcdir)/m4/hfst.m4 \
 	$(top_srcdir)/configure.ac
@@ -256,6 +255,7 @@ GTLANG = @GTLANG@
 GTLANG2 = @GTLANG2@
 GTLANGUAGE = @GTLANGUAGE@
 GTLEMMATEST = @GTLEMMATEST@
+GTMORPHTEST = @GTMORPHTEST@
 GTPARADIGMTEST = @GTPARADIGMTEST@
 GTSPELLTEST = @GTSPELLTEST@
 GZIP = @GZIP@
@@ -328,6 +328,7 @@ PACKAGE_VERSION = @PACKAGE_VERSION@
 PATGEN = @PATGEN@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PERL = @PERL@
+PIPX = @PIPX@
 PKG_CONFIG = @PKG_CONFIG@
 PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
 PKG_CONFIG_PATH = @PKG_CONFIG_PATH@

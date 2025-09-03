@@ -8,6 +8,50 @@
 
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+      // Initialiser Mermaid med rett tema
+      function updateMermaidTheme() {
+        const theme = document.documentElement.getAttribute('data-theme');
+        const isDark = theme === 'dark' || 
+                      (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        mermaid.initialize({
+          startOnLoad: false, // Endra til false for å handtera oppteikning sjølv
+          theme: isDark ? 'dark' : 'default',
+          darkMode: isDark
+        });
+
+        // Finn alle pre-element med mermaid klasse og teikn diagramma
+        document.querySelectorAll('pre > code.language-mermaid').forEach(el => {
+          // Fjern Prism-formatering
+          el.parentElement.classList.remove('language-mermaid');
+          el.className = '';
+          
+          // Lag ny div for Mermaid-diagram
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+          div.textContent = el.textContent;
+          
+          // Byt ut pre-elementet med den nye div-en
+          el.parentElement.parentNode.replaceChild(div, el.parentElement);
+        });
+
+        // Teikn alle Mermaid-diagram på nytt
+        mermaid.init();
+      }
+      
+      // Køyr før Prism for å unngå konfliktar
+      document.addEventListener('DOMContentLoaded', () => {
+        updateMermaidTheme();
+      }, { once: true });
+      
+      // Oppdater ved tema-endringar
+      document.addEventListener('themeChanged', updateMermaidTheme);
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(updateMermaidTheme);
+    </script>
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
@@ -22,6 +66,11 @@
         {% endif %}
 
         <p>{{ site.description | default: site.github.project_tagline }}</p>
+
+        <p><form method="get" action="https://www.google.com/search">
+            <input type="hidden" name="sitesearch" value="{{ "/" | absolute_url }}" />
+            <input type="text" name="q" maxlength="255" placeholder="Search site with Google" />
+        </form></p>
 
         {% if site.github.is_project_page %}
         <p class="view"><a href="{{ site.github.repository_url }}">View the project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
@@ -54,9 +103,47 @@
         More information on the <a href="{{ "/" }}">GiellaLT site</a>.</p>
         {% endif %}
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <div class="theme-toggle">
+          <button id="theme-light" title="Ljos modus" aria-label="Ljos modus">☀️</button>
+          <button id="theme-dark" title="Myrk modus" aria-label="Myrk modus">🌙</button>
+          <button id="theme-system" title="System" aria-label="System">🖥️</button>
+        </div>
       </footer>
     </div>
-    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    <script src="{{ "/assets/js/theme-toggle.js" | relative_url }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script>
+      // Automatisk oppdatering av tema basert på systeminnstillingar
+      function updatePrismTheme() {
+        const theme = document.documentElement.getAttribute('data-theme');
+        const isDark = theme === 'dark' || 
+                      (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        const themeLink = document.querySelector('link[href*="prism"]');
+        if (isDark) {
+          themeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css';
+        } else {
+          themeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css';
+        }
+        
+        // Oppdater Prism
+        if (typeof Prism !== 'undefined') {
+          Prism.highlightAll();
+        }
+      }
+
+      // Køyr ved oppstart
+      updatePrismTheme();
+
+      // Lytt etter system tema-endringar
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(updatePrismTheme);
+
+      // Lytt etter lokale tema-endringar
+      document.addEventListener('themeChanged', updatePrismTheme);
+    </script>
     {% if site.google_analytics %}
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -67,5 +154,12 @@
       ga('send', 'pageview');
     </script>
     {% endif %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-mermaid.min.js"></script>
   </body>
 </html>

@@ -1,0 +1,267 @@
+{% comment %}Bygg hierarkisk sitemap{% endcomment %}
+
+{% assign root_items = "" | split: "" %}
+{% assign dir_items = "" | split: "" %}
+
+{% comment %}Hent og sorter sider{% endcomment %}
+{% for page in site.pages %}
+    {% assign url_parts = page.url | split: '/' %}
+    {% assign filename = url_parts.last %}
+    {% unless filename contains 'google' or page.url contains '.xml' or page.url contains '.css' or page.url contains 'assets/' or page.url contains '.json' or filename == '' %}
+        {% capture title %}
+            {% if page.title %}
+                {{ page.title }}
+            {% else %}
+                {% if filename == 'index.html' or filename == 'index.md' %}
+                    {% assign dir_title = page.title | default: "Index" %}
+                    {{ dir_title }}
+                {% else %}
+                    {% assign words = filename | remove: '.html' | remove: '.md' | replace: '/([A-Z])/g', ' $1' | replace: '([a-z])([A-Z])', '$1 $2' %}
+                    {{ words | capitalize }}
+                {% endif %}
+            {% endif %}
+        {% endcapture %}
+        {% assign item = "" | split: "" %}
+        {% assign item = item | push: page.url %}
+        {% assign item = item | push: title %}
+        
+        {% assign url_parts_size = url_parts | size %}
+        {% if url_parts_size < 3 %}
+            {% assign root_items = root_items | push: item %}
+        {% else %}
+            {% assign dir_items = dir_items | push: item %}
+        {% endif %}
+    {% endunless %}
+{% endfor %}
+
+<!-- Debug: Start -->
+<div style="display:none">
+<p>Debugging site.pages:</p>
+{% for page in site.pages %}
+  <p>URL: {{ page.url }} - Title: {{ page.title }}</p>
+{% endfor %}
+
+<p>Root items:</p>
+{% for item in root_items %}
+  <p>URL: {{ item[0] }} - Title: {{ item[1] }}</p>
+{% endfor %}
+
+<p>Directory items:</p>
+{% for item in dir_items %}
+  <p>URL: {{ item[0] }} - Title: {{ item[1] }}</p>
+{% endfor %}
+</div>
+<!-- Debug: End -->
+
+<ul>
+{% comment %}Rotfiler{% endcomment %}
+{% for item in root_items %}
+    <li>
+        <a href="{{ site.baseurl }}{{ item[0] | remove: 'index.html' | remove: 'index.md' }}">{{ item[1] }}</a>
+    </li>
+{% endfor %}
+
+{% comment %}Samle alle unike katalogar{% endcomment %}
+{% assign all_dirs = "" | split: "" %}
+{% for item in dir_items %}
+    {% assign url = item[0] %}
+    {% assign url_parts = url | split: '/' %}
+    {% assign current_path = "" %}
+    {% assign url_parts_size = url_parts | size %}
+    {% assign max_index = url_parts_size | minus: 1 %}
+    {% for i in (1..max_index) %}
+        {% assign current_path = current_path | append: '/' | append: url_parts[i] %}
+        {% assign all_dirs = all_dirs | push: current_path %}
+    {% endfor %}
+{% endfor %}
+{% assign all_dirs = all_dirs | uniq | sort %}
+
+{% comment %}Finn toppnivå-katalogar{% endcomment %}
+{% assign top_level_dirs = "" | split: "" %}
+{% for dir in all_dirs %}
+    {% assign parts = dir | split: '/' %}
+    {% assign dir_depth = parts | size %}
+    {% if dir_depth < 3 %}
+        {% assign top_level_dirs = top_level_dirs | push: dir %}
+    {% endif %}
+{% endfor %}
+
+{% comment %}Start med toppnivå-katalogar{% endcomment %}
+{% assign sorted_dir = dir_items | sort %}
+
+{% for top_dir in top_level_dirs %}
+    {% assign dir_name = top_dir | split: '/' | last %}
+    <li>
+        <strong>{{ dir_name | capitalize }}</strong>
+        <ul>
+        {% comment %}Filer direkte i denne katalogen{% endcomment %}
+        {% for item in dir_items %}
+            {% assign url_parts = item[0] | split: '/' %}
+            {% assign item_dir_parts = url_parts | pop %}
+            {% assign item_dir = item_dir_parts | join: '/' %}
+            {% if item_dir == top_dir %}
+                <li>
+                    <a href="{{ site.baseurl }}{{ item[0] | remove: 'index.html' | remove: 'index.md' }}">{{ item[1] }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% comment %}Debug nivå 2{% endcomment %}
+        <div style="display:none">
+            <p>Debug START nivå 2: for {{ top_dir }}:</p>
+            <p>Files in this dir:</p>
+            {% for item in sorted_dir %}
+                {% assign url = item[0] %}
+                {% assign url_parts = url | split: '/' %}
+                {% assign item_dir_parts = url_parts | pop %}
+                {% assign item_dir = item_dir_parts | join: '/' %}
+                {% if item_dir == top_dir %}
+                    <p>URL: {{ url }} - Title: {{ item[1] }}</p>
+                {% endif %}
+            {% endfor %}
+            
+            <p>Debug: Potential subdirs:</p>
+            {% for dir in all_dirs %}
+                {% if dir contains top_dir and dir != top_dir %}
+                    <p>{{ dir }}</p>
+                {% endif %}
+            {% endfor %}
+            <p>Debug SLUTT nivå 2</p>
+        </div>
+
+        {% comment %}Underkatalogar{% endcomment %}
+        {% assign subdirs = "" | split: "" %}
+        {% for dir in all_dirs %}
+            {% if dir contains top_dir and dir != top_dir %}
+                {% assign dir_parts = dir | split: '/' %}
+                {% assign last_part = dir_parts | last %}
+                {% unless last_part contains '.html' or last_part contains '.md' %}
+                    {% assign parent_path = dir_parts | pop | join: '/' %}
+                    {% if parent_path == top_dir %}
+                        {% assign subdirs = subdirs | push: dir %}
+                    {% endif %}
+                {% endunless %}
+            {% endif %}
+        {% endfor %}
+
+        {% for subdir in subdirs %}
+            {% assign subdir_name = subdir | split: '/' | last %}
+            <li>
+                <strong>{{ subdir_name | capitalize }}</strong>
+                <ul>
+                {% comment %}Filer i denne underkatalogen{% endcomment %}
+                {% for item in sorted_dir %}
+                    {% assign url = item[0] %}
+                    {% assign title = item[1] | strip %}
+                    {% assign url_parts = url | split: '/' %}
+                    {% assign item_dir_parts = url_parts | pop %}
+                    {% assign item_dir = item_dir_parts | join: '/' %}
+                    {% if item_dir == subdir %}
+                        {% assign filename = url_parts | last %}
+                        <li>
+                            <a href="{{ site.baseurl }}{{ url | remove: 'index.html' | remove: 'index.md' }}">{{ title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% comment %}Debug nivå 3{% endcomment %}
+                <div style="display:none">
+                    <p>Debug START nivå 3: for {{ subdir }}:</p>
+                    <p>Files in this dir:</p>
+                    {% for item in sorted_dir %}
+                        {% assign url = item[0] %}
+                        {% assign url_parts = url | split: '/' %}
+                        {% assign item_dir_parts = url_parts | pop %}
+                        {% assign item_dir = item_dir_parts | join: '/' %}
+                        {% if item_dir == subdir %}
+                            <p>URL: {{ url }} - Title: {{ item[1] }} (Raw filename: {{ url_parts | last }})</p>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    <p>Potential level 3 subdirs:</p>
+                    {% for dir in all_dirs %}
+                        {% if dir contains subdir and dir != subdir %}
+                            {% assign dir_parts = dir | split: '/' %}
+                            {% assign parent_path = dir_parts | pop | join: '/' %}
+                            {% if parent_path == subdir %}
+                                <p>{{ dir }} (Last part: {{ dir_parts | last }})</p>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                <p>Debug SLUTT nivå 3</p>
+                </div>
+
+                {% comment %}Debug nivå 3{% endcomment %}
+                <div style="display:none">
+                    <p>Debug START nivå 3: for {{ subdir }}:</p>
+                    <p>Files in this dir:</p>
+                    {% for item in sorted_dir %}
+                        {% assign url = item[0] %}
+                        {% assign title = item[1] %}
+                        {% assign url_parts = url | split: '/' %}
+                        {% assign item_dir_parts = url_parts | pop %}
+                        {% assign item_dir = item_dir_parts | join: '/' %}
+                        {% if item_dir == subdir %}
+                            <p>URL: {{ url }} - Title: {{ title | strip }}</p>
+                        {% endif %}
+                    {% endfor %}
+                    <p>Potential level 3 subdirs:</p>
+                    {% for dir in all_dirs %}
+                        {% if dir contains subdir and dir != subdir %}
+                            {% assign dir_parts = dir | split: '/' %}
+                            {% assign last_part = dir_parts | last %}
+                            {% unless last_part contains '.html' or last_part contains '.md' %}
+                                {% assign parent_path = dir_parts | pop | join: '/' %}
+                                {% if parent_path == subdir %}
+                                    <p>{{ dir }} (Last part: {{ last_part }})</p>
+                                {% endif %}
+                            {% endunless %}
+                        {% endif %}
+                    {% endfor %}
+                    <p>Debug SLUTT nivå 3</p>
+                </div>
+
+                {% comment %}Under-underkatalogar{% endcomment %}
+                {% assign subsubdirs = "" | split: "" %}
+                {% for dir in all_dirs %}
+                    {% if dir contains subdir and dir != subdir %}
+                        {% assign dir_parts = dir | split: '/' %}
+                        {% assign last_part = dir_parts | last %}
+                        {% unless last_part contains '.html' or last_part contains '.md' %}
+                            {% assign parent_path = dir_parts | pop | join: '/' %}
+                            {% if parent_path == subdir %}
+                                {% assign subsubdirs = subsubdirs | push: dir %}
+                            {% endif %}
+                        {% endunless %}
+                    {% endif %}
+                {% endfor %}
+
+                {% for subsubdir in subsubdirs %}
+                    {% assign subsubdir_name = subsubdir | split: '/' | last %}
+                    <li>
+                        <strong>{{ subsubdir_name | capitalize }}</strong>
+                        <ul>
+                        {% comment %}Filer i denne under-underkatalogen{% endcomment %}
+                        {% for item in sorted_dir %}
+                            {% assign url = item[0] %}
+                            {% assign title = item[1] %}
+                            {% assign url_parts = url | split: '/' %}
+                            {% assign item_dir_parts = url_parts | pop %}
+                            {% assign item_dir = item_dir_parts | join: '/' %}
+                            {% if item_dir == subsubdir %}
+                                {% assign filename = url_parts | last %}
+                                <li>
+                                    <a href="{{ site.baseurl }}{{ url | remove: 'index.html' | remove: 'index.md' }}">{{ title }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+        </ul>
+    </li>
+{% endfor %}
+</ul>

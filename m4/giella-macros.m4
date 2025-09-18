@@ -332,7 +332,13 @@ AC_PATH_PROG([SEE], [see], [], [$PATH$PATH_SEPARATOR$with_see])
 # Check for grammar checker validation tool:
 AC_PATH_PROG([DIVVUN_VALIDATE_SUGGEST], [divvun-validate-suggest], [no], [$PATH$PATH_SEPARATOR$with_divvun_validate_suggest])
 # Check for grammar checker (for self-test)
-AC_PATH_PROG([DIVVUN_CHECKER], [divvun-checker], [no], [$PATH$PATH_SEPARATOR$with_divvun_validate_suggest])
+AC_PATH_PROG([DIVVUN_CHECKER], [divvun-checker], [no], [$PATH$PATH_SEPARATOR$with_divvun_checker])
+
+# Check for divvun-runtime:
+AC_PATH_PROG([DIVVUN_RUNTIME], [divvun-runtime], [false], [$PATH$PATH_SEPARATOR$with_divvun_runtime])
+
+# Enable .drb support if divvun-runtime is available
+AM_CONDITIONAL([HAVE_DIVVUN_RUNTIME], [test x$DIVVUN_RUNTIME != xfalse])
 
 ]) # gt_PROG_SCRIPTS_PATHS
 

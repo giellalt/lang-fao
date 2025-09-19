@@ -233,6 +233,7 @@ DIFFTOOL = @DIFFTOOL@
 DIVVUNSPELL = @DIVVUNSPELL@
 DIVVUN_ACCURACY = @DIVVUN_ACCURACY@
 DIVVUN_CHECKER = @DIVVUN_CHECKER@
+DIVVUN_RUNTIME = @DIVVUN_RUNTIME@
 DIVVUN_VALIDATE_SUGGEST = @DIVVUN_VALIDATE_SUGGEST@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
@@ -990,8 +991,8 @@ $(ALLINONE_MD_PAGE): $(VPATH_MDFILES)
 	$(AM_V_GEN)printf "# $(GLANGUAGE) language model documentation\n\nAll doc-comment documentation in one large file.\n" > $@
 	for f in $(VPATH_MDFILES); do \
 		header=$${f#"$(top_srcdir)/docs/"};\
-		printf "\n---\n\n# $$header \n\n" >> $@ ;\
-		cat $$f >> $@ ;\
+		printf "\n---\n\n## $$header \n\n" >> $@ ;\
+		sed -e 's|^#|##|g' $$f >> $@ ;\
 	done
 
 $(LINKS):

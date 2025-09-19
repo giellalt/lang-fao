@@ -3,3 +3,168 @@
 
 @import "{{ site.theme }}";
 @import "/assets/css/giellalt-site-global.css" ;
+
+:root {
+  --left-menu-width: 250px;
+  
+  /* Standardfargar for ljos modus */
+  --bg-color: #fff;
+  --text-color: #222;
+  --header-bg: #fff;
+  --link-color: #0066cc;
+  --link-hover-bg: #efefef;
+  --link-hover-color: #222;
+  --border-color: #e0e0e0;
+  --heading-color: #222;
+  --code-bg: #f8f8f8;
+  --menu-bg: #fff;
+  --menu-text: #222;
+  --menu-hover-bg: #f0f0f0;
+  --menu-hover-text: #000;
+  --menu-shadow: rgba(0,0,0,0.05);
+  --gradient-shadow: rgba(0,0,0,0.08);
+}
+
+/* Mørkt tema - identisk for både system og eksplisitt val */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg-color: #0a0a0a;
+    --text-color: #e0e0e0;
+    --header-bg: #000;
+    --link-color: #66b3ff;
+    --link-hover-bg: #1a1a1a;
+    --link-hover-color: #fff;
+    --border-color: #30363d;
+    --heading-color: #aaa;
+    --code-bg: #161b22;
+    --code-text: #e6edf3;
+    --code-border: #30363d;
+    --code-inline-bg: rgba(110,118,129,0.4);
+    --code-link-color: #96d0ff;
+    --menu-bg: #000;
+    --menu-text: #e0e0e0;
+    --menu-hover-bg: #1a1a1a;
+    --menu-hover-text: #fff;
+    --menu-shadow: rgba(0,0,0,0.3);
+    --gradient-shadow: rgba(0,0,0,0.2);
+    --search-bg: #1a1a1a;
+    --table-header-bg: #161b22;
+    --table-row-odd: #161b22;
+    --table-row-even: #0d1117;
+    --kbd-border: #555;
+    --kbd-bg: #2a2a2a;
+    --kbd-color: #e6edf3;
+  }
+}
+
+/* Eksplisitt mørkt tema - identisk med systemmyrk */
+:root[data-theme='dark'] {
+  --bg-color: #0a0a0a;
+  --text-color: #e0e0e0;
+  --header-bg: #000;
+  --link-color: #66b3ff;
+  --link-hover-bg: #1a1a1a;
+  --link-hover-color: #fff;
+  --border-color: #30363d;
+  --heading-color: #aaa;
+  --code-bg: #161b22;
+  --code-text: #e6edf3;
+  --code-border: #30363d;
+  --code-inline-bg: rgba(110,118,129,0.4);
+  --code-link-color: #96d0ff;
+  --menu-bg: #000;
+  --menu-text: #e0e0e0;
+  --menu-hover-bg: #1a1a1a;
+  --menu-hover-text: #fff;
+  --menu-shadow: rgba(0,0,0,0.3);
+  --gradient-shadow: rgba(0,0,0,0.2);
+  --search-bg: #1a1a1a;
+  --table-header-bg: #161b22;
+  --table-row-odd: #161b22;
+  --table-row-even: #0d1117;
+  --kbd-border: #555;
+  --kbd-bg: #2a2a2a;
+  --kbd-color: #e6edf3;
+}
+
+/* Farge-overstyring */
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  color: var(--link-hover-color);
+  background-color: var(--link-hover-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color);
+}
+
+/* Kodeblokkar */
+pre, pre.highlight {
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  color: var(--code-text);
+}
+
+/* Inline kode */
+code {
+  background-color: var(--code-inline-bg);
+  border-radius: 3px;
+  color: var(--code-text);
+  padding: 0.2em 0.4em;
+}
+
+/* Kode med lenkjer */
+code a {
+  color: var(--code-link-color);
+}
+
+/* Tabellar */
+table {
+  border-color: var(--border-color);
+}
+
+table tr {
+  background-color: var(--table-row-odd);
+  border-color: var(--border-color);
+}
+
+table tr:nth-child(2n) {
+  background-color: var(--table-row-even);
+}
+
+table th {
+  background-color: var(--table-header-bg);
+  border-color: var(--border-color);
+}
+
+table td {
+  border-color: var(--border-color);
+}
+
+/* Tastatur-kommandoar */
+kbd {
+  background-color: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  box-shadow: inset 0 -1px 0 var(--kbd-border);
+  color: var(--kbd-color);
+  display: inline-block;
+  font-size: 0.9em;
+  line-height: 1;
+  padding: 0.2em 0.4em;
+  vertical-align: middle;
+}
+
+input[type="text"] {
+  background-color: var(--search-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}

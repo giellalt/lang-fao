@@ -4,18 +4,18 @@ All doc-comment documentation in one large file.
 
 ---
 
-# src-cg3-disambiguator.cg3.md 
+## src-cg3-disambiguator.cg3.md 
 
 
 
-# Faroese disambiguator 
+## Faroese disambiguator 
 
 Usage, in `lang-fao`:
 `cat text.txt|hfst-tokenize -cg tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst |vislcg3 -g src/cg3/disambiguator.cg3`
 
 This file documents the [Faroese disambiguator file](http://github.com/giellalt/lang-fao/blob/main/src/cg3/disambiguator.cg3) .
 
-## Delimiters, tags and sets
+### Delimiters, tags and sets
 
 * LIST NAGD = Nom Acc Gen Dat ; 
 * LIST AGD = Acc Gen Dat ; 
@@ -27,7 +27,7 @@ Test: Go for minimal weight. This rules gives priority to lexicalised forms.
 
 * **NumRom** in beginning of sentence
 
-# MAPPING OF CC AND CS
+## MAPPING OF CC AND CS
 
 Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them so @CVP remains
 
@@ -51,7 +51,7 @@ Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them
 
 ---
 
-# src-cg3-functions.cg3.md 
+## src-cg3-functions.cg3.md 
 
 
 S Y N T A C T I C   F U N C T I O N S   F O R   F A R O E S E
@@ -142,9 +142,9 @@ part of the noun phrase of that noun (i.e., "scan to the next NP head")
 
 ---
 
-# src-fst-morphology-affixes-abbreviations.lexc.md 
+## src-fst-morphology-affixes-abbreviations.lexc.md 
 
-# Abbreviation affixes
+## Abbreviation affixes
 
 Now splitting according to POS, and according to dot or not
 
@@ -152,9 +152,9 @@ First collecting POS info, *-noun, *-adv, etc.
 Also splitting when in doubt: -noun-adj => -noun and -adj
 Then pointing to two contlexes, a dot-one and a non-dot-one.
 
-### Lexicons without final period
+#### Lexicons without final period
 
-### Lexicons with final period
+#### Lexicons with final period
 
 * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
 
@@ -184,13 +184,13 @@ the end of the sentence:
 
 ---
 
-# src-fst-morphology-affixes-acronyms.lexc.md 
+## src-fst-morphology-affixes-acronyms.lexc.md 
 
 
 
-# North Saami acronyms - affix part
+## North Saami acronyms - affix part
 
-## The lexica giving tags and suffixes to the acronyms
+### The lexica giving tags and suffixes to the acronyms
 
 * **LEXICON ACRONOUN   ** is the lexicon for **nouns** (not +Prop) like ATV
 
@@ -207,19 +207,19 @@ put between the abbreviation and its suffix
 
 ---
 
-# src-fst-morphology-affixes-adjectives.lexc.md 
+## src-fst-morphology-affixes-adjectives.lexc.md 
 
-# Adjective morphology !
+## Adjective morphology !
 
-## Ad hoc lexica
+### Ad hoc lexica
 
-## The lexicons
+### The lexicons
 
-## Irregular adjectives
+### Irregular adjectives
 
-###  Irregular comparatives
+####  Irregular comparatives
 
-# Intermediate adjectival lexica
+## Intermediate adjectival lexica
 
 Adjectival case lexica
 
@@ -227,7 +227,7 @@ Msc
 
 Neu
 
-###  Definite declension
+####  Definite declension
 
 Positiv, def, u-umlj
 Msc
@@ -248,9 +248,9 @@ Case tags
 
 Compound flags
 
-# Comparative
+## Comparative
 
-# Superlative
+## Superlative
 
 * * *
 
@@ -258,16 +258,16 @@ Compound flags
 
 ---
 
-# src-fst-morphology-affixes-nouns.lexc.md 
+## src-fst-morphology-affixes-nouns.lexc.md 
 
-# Faroese Noun morphology 
+## Faroese Noun morphology 
 
 This file contains the inflection suffixes for the Faroese nowns
 The infection classes are identical to the ones in *Føroysk orðabók*.
 
 The morphology is ordered in three layers.
 
-# Layer 1: Basic noun lexica 
+## Layer 1: Basic noun lexica 
 
 The nominal morphology is added in three layers.
 In this **first layer** we add gender tags and morphophonological
@@ -275,7 +275,7 @@ diacritics.
 The next two layers are for indefinite and definite
 suffixes, respectively.
 
-## Lexicons still to be allocated
+### Lexicons still to be allocated
 
 We first list 4 lexica for words waiting to be checked.!
 * **LEXICON xi** . TOOD: classify words in **xi**. They are all m
@@ -285,7 +285,7 @@ We first list 4 lexica for words waiting to be checked.!
 
 * **LEXICON f** 
 
-## Irregular nouns
+### Irregular nouns
 
 These are lexica with number 0, they have no inflectional morphology.!
 * **LEXICON k0** for januar etc.
@@ -293,7 +293,7 @@ These are lexica with number 0, they have no inflectional morphology.!
 * **LEXICON h0** for indeclinable neuters
 * **LEXICON irregular_nouns** just gives the tags for the indeclinables
 
-## Lexica for words belonging to two paradigms.
+### Lexica for words belonging to two paradigms.
 These are simply split (h11/12 to h11 and h12, etc).!
 * **LEXICON h11/12** 
 * **LEXICON h11/41** 
@@ -318,12 +318,12 @@ These are simply split (h11/12 to h11 and h12, etc).!
 * **LEXICON k8/17** 
 * **LEXICON k8/6** 
 
-## The ordinary lexica
+### The ordinary lexica
 
 These lexica split into sg and pl lexica, and add +N and gender tags.
 Thereafter it points to Layer 2, the case suffixes
 
-### Lexica for weak masculines.
+#### Lexica for weak masculines.
 * **LEXICON k1** , risi, is the basic Msc lexicon, split in sg and pl
 * **LEXICON k1e** for sg
 * **LEXICON k_flt1** for pl
@@ -335,7 +335,7 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON k4** for  tanki, just pointing to k3 (identical). Same u_umlaut, but nasal cns
 * **LEXICON k5** for bóndi
 
-### Lexica for strong masculines
+#### Lexica for strong masculines
 
 * **LEXICON k6_null** for  antikrist
 * **LEXICON k6e_null** for sg
@@ -494,7 +494,7 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON k_flt52** for pl
 * **LEXICON k53** for  aðal
 
-### Lexica for feminines
+#### Lexica for feminines
 
 * **LEXICON kv1/2** 
 * **LEXICON kv1**  genta
@@ -632,7 +632,7 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON kv40e** 
 * **LEXICON kv_flt40** 
 
-###  Lexica for Neuter nouns
+####  Lexica for Neuter nouns
 
 * **LEXICON h1** eyga
 * **LEXICON h1e** 
@@ -783,23 +783,23 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON h41e** 
 * **LEXICON h_flt41** 
 
-# Layer 2: Case inflection 
+## Layer 2: Case inflection 
 
 This is the second layer. Here we do indefinite
 forms and compounds.
 
-## Lexica for masculine nouns
+### Lexica for masculine nouns
 
-### Lexica for weak case suffixes.
+#### Lexica for weak case suffixes.
 
-#### Singular
+##### Singular
 * **LEXICON W_M_SGNOM** for weak masculines, pointing to definites
 * **LEXICON W_M_SGACC** etc for risan
 * **LEXICON W_M_SGDAT** for 
 * **LEXICON W_M_SGDAT_mixed** for felagnum
 * **LEXICON W_M_SGGEN** for 
 
-#### Plural
+##### Plural
 * **LEXICON W_M_PLNOM** for -ar-
 * **LEXICON W_M_PLNOM_UR** for -ur-
 * **LEXICON W_M_PLACC** for -ar-
@@ -807,62 +807,62 @@ forms and compounds.
 * **LEXICON W_M_PLDAT** for -u-
 * **LEXICON W_M_PLGEN** for -a-
 
-### Strong case suffixes
+#### Strong case suffixes
 
-#### Nominative Sg
+##### Nominative Sg
 * **LEXICON S_M_SGNOM** 
 * **LEXICON S_M_SGNOM_NULL** 
 
-#### Accusative Sg
+##### Accusative Sg
 * **LEXICON S_M_SGACC** 
 
-#### Dative Sg
+##### Dative Sg
 * **LEXICON S_M_SGDAT** 
 * **LEXICON S_M_SGDAT_2** 
 * **LEXICON S_M_SGDAT_NULL** 
 
-#### Genitive Sg
+##### Genitive Sg
 * **LEXICON S_M_SGGEN** 
 * **LEXICON S_M_SGGEN_NULL** 
 * **LEXICON S_M_SGGEN_AR** 
 
-### Plural forms
+#### Plural forms
 
-#### Nominative
+##### Nominative
 * **LEXICON S_M_PLNOM** 
 * **LEXICON S_M_PLNOM_IR** 
 * **LEXICON S_M_PLNOM_UR** 
 * **LEXICON S_M_PLNOM_NULL** 
 * **LEXICON S_M_PLNOM_NULL_NULL** 
 
-#### Accusative
+##### Accusative
 * **LEXICON S_M_PLACC** 
 * **LEXICON S_M_PLACC_IR** 
 * **LEXICON S_M_PLACC_UR** 
 * **LEXICON S_M_PLACC_NULL** 
 * **LEXICON S_M_PLACC_NULL_NULL** 
 
-#### Dative
+##### Dative
 * **LEXICON S_M_PLDAT** 
 * **LEXICON S_M_PLDATm** skóm
 
-#### Genitive
+##### Genitive
 * **LEXICON S_M_PLGEN** 
 
-## Feminine forms
+### Feminine forms
 
-### Singular case suffixes.
+#### Singular case suffixes.
 
-#### Nominative
+##### Nominative
 * **LEXICON W_F_SGNOM** 
 * **LEXICON S_F_SGNAD** 
 
-#### Oblique
+##### Oblique
 * **LEXICON W_F_SGOBL** 
 * **LEXICON S_F_SGGEN** 
 * **LEXICON S_F_SGGEN_NULL** 
 
-### Plural case suffixes
+#### Plural case suffixes
 * **LEXICON F_PLNA_UR** 
 * **LEXICON F_PLNA_IR** 
 * **LEXICON F_PLNA_AR** 
@@ -870,8 +870,8 @@ forms and compounds.
 * **LEXICON F_PLDAT** 
 * **LEXICON F_PLGEN** 
 
-## Neuter forms
-### Singular
+### Neuter forms
+#### Singular
 * **LEXICON S_N_SGNA** 
 * **LEXICON S_N_SGDG** 
 * **LEXICON S_N_SGD** 
@@ -882,26 +882,26 @@ forms and compounds.
 * **LEXICON S_N_SGG_is** 
 * **LEXICON 0_N_SGNA** 
 * **LEXICON i_N_SGNA** 
-### Plural
+#### Plural
 * **LEXICON N_PLNA_u_ur** 
 * **LEXICON N_PLNA_i_ir** 
 * **LEXICON N_PLNA** 
 * **LEXICON N_PLD** 
 * **LEXICON N_PLG** 
 * **LEXICON N_PLG_na** 
-## Common cases
+### Common cases
 * **LEXICON DF_D_PL** 
 * **LEXICON DF_G_PL** 
 
-# Layer 3: Definite inflection 
+## Layer 3: Definite inflection 
 
 This is the **third layer**. Here we do the indefinite and definite forms.
 These are common to (almost) all different paradigms, hence they are 
 gathered here.
 
-## Masculine forms
+### Masculine forms
 
-### Masc def sg
+#### Masc def sg
 * **LEXICON DF_N_SGm** for 
 * **LEXICON DF_N_SGm_indef** for 
 * **LEXICON DF_N_SGm_def** for 
@@ -911,7 +911,7 @@ gathered here.
 * **LEXICON DF_D_SGm** for 
 * **LEXICON DF_G_SGm** for 
 
-### Masc def pl
+#### Masc def pl
 * **LEXICON DF_N_PLm** for 
 * **LEXICON DF_N_PLm_indef** for 
 * **LEXICON DF_N_PLm_def** for 
@@ -919,9 +919,9 @@ gathered here.
 * **LEXICON DF_A_PLm_indef** for 
 * **LEXICON DF_A_PLm_def** for 
 
-## Feminine forms
+### Feminine forms
 
-###  Fem Sg
+####  Fem Sg
 * **LEXICON DF_N_SGf_W** for 
 * **LEXICON DF_N_SGf_S** for 
 * **LEXICON DF_A_SGf_W** for 
@@ -931,13 +931,13 @@ gathered here.
 * **LEXICON DF_G_SGf_W** for 
 * **LEXICON DF_G_SGf_S** for 
 
-### Feminine plural forms
+#### Feminine plural forms
 * **LEXICON DF_NA_PLf** for *nar
 * **LEXICON DF_NA_PLf_inar** for *inar
 
-## Neuter forms
+### Neuter forms
 
-### Neuter sg
+#### Neuter sg
 * **LEXICON DF_NA_SGn** 
 * **LEXICON DF_NA_SGn_indef** 
 * **LEXICON DF_NA_SGn_def** 
@@ -950,7 +950,7 @@ gathered here.
 
 This concludes the nominal morphology.
 
-# Compound flags
+## Compound flags
 The rest of the file contains **flags**, that govern
 the ways stems may be combined.
 * **LEXICON MscNom_Flag** for 
@@ -967,9 +967,9 @@ the ways stems may be combined.
 
 ---
 
-# src-fst-morphology-affixes-numerals.lexc.md 
+## src-fst-morphology-affixes-numerals.lexc.md 
 
-# Numeral affixess
+## Numeral affixess
 
 This lexicon just goes to #, this in order to coexist with number files in giella-shared.
 They are relevant for Sámi, not for faroese.
@@ -995,11 +995,11 @@ Lexica:
 
 ---
 
-# src-fst-morphology-affixes-propernouns.lexc.md 
+## src-fst-morphology-affixes-propernouns.lexc.md 
 
-# Proper nouns 
+## Proper nouns 
 
-## Table of content
+### Table of content
 * _ The guessed ones
 * _ The morphological tags
 - _ _ Male first names
@@ -1007,20 +1007,20 @@ Lexica:
 - _ _ Surnames
 - _ _ Place names and other names
 
-## The morphological tags
+### The morphological tags
 
 For each group, the maltag etc. lexicon functions as a default
 lexicon. The other lexica are there for specific subgroups of the names.
 
-### Indeclineables
+#### Indeclineables
 
-###  Male first names
+####  Male first names
 
-### Female first names
+#### Female first names
 
-###  Surnames
+####  Surnames
 
-###  Place names and other names
+####  Place names and other names
 
 * * *
 
@@ -1028,10 +1028,10 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 ---
 
-# src-fst-morphology-affixes-symbols.lexc.md 
+## src-fst-morphology-affixes-symbols.lexc.md 
 
 
-# Symbol affixes
+## Symbol affixes
 
 * * *
 
@@ -1039,11 +1039,11 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 ---
 
-# src-fst-morphology-affixes-verbs.lexc.md 
+## src-fst-morphology-affixes-verbs.lexc.md 
 
 
 
-# Verb morphology !
+## Verb morphology !
 
 **s1** nevna = riggar!
 
@@ -1123,7 +1123,7 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 **s34** goyggja = riggar!
 
-## Strong verbs starting here
+### Strong verbs starting here
 
 **s35** bíta riggar!
 
@@ -1215,7 +1215,7 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 **s73** læa
 
-## Ad hoc, irregular
+### Ad hoc, irregular
 
 **BLÍVA**
 
@@ -1325,12 +1325,12 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 **FYRIB** kopi, s83
 
-## Split lexica
+### Split lexica
 
 **s8/48_2**
 **s9/30**
 
-## Intermediate lexicon groups
+### Intermediate lexicon groups
 
 **standard_ir**
 
@@ -1340,9 +1340,9 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 **ir_verb_t**
 
-## Suffix lexica
+### Suffix lexica
 
-### Infinitive
+#### Infinitive
 
 **jinf**
 
@@ -1350,7 +1350,7 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 **reflinf**
 
-### Present
+#### Present
 
 **pres_ir**
 
@@ -1406,7 +1406,7 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 **pret_pltust**
 
-### Preterite
+#### Preterite
 
 **prt_d**
 
@@ -1438,9 +1438,9 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 **prt_u_p**
 
-## Passive lexica
+### Passive lexica
 
-### Imperative and present participle
+#### Imperative and present participle
 
 **imp_prsptc**
 
@@ -1458,7 +1458,7 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 **prsptc**
 
-### Supine and preterite participle
+#### Supine and preterite participle
 
 **sup**
 
@@ -1474,11 +1474,11 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 **sup_ið_in**  stungið
 
-### Middle lexicon
+#### Middle lexicon
 
 **VANDI**
 
-## Perfect Participles !
+### Perfect Participles !
 
 **p18**
 
@@ -1510,23 +1510,23 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 ---
 
-# src-fst-morphology-compounding.lexc.md 
+## src-fst-morphology-compounding.lexc.md 
 
-# Compounding morphology
+## Compounding morphology
 
-# Lexicon R gets flags and sends compounds over to RReal
+## Lexicon R gets flags and sends compounds over to RReal
 @P.CmpFrst.FALSE@@P.CmpPref.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@@P.CmpOnly.TRUE@ RReal ;  are Flags to control compounding
 
-# Lexicon RReal is the lexicon for the Cmp tag and resending to N, A
+## Lexicon RReal is the lexicon for the Cmp tag and resending to N, A
 *  +Cmp#:# Nouns ;           direct to nouns
 *  +Cmp#:# Adjectives ;      direct to adjectives
  +Use/NG:         R-    ;        add hyphen, but do not generate
 
-# Lexicon R- for compounds with hyphen
+## Lexicon R- for compounds with hyphen
  +Cmp#:%- Nouns ;    for nouns
  +Cmp#:%- Adjectives ;     for adjectives
 
-# Lexicon RNum for compounds numeral + noun
+## Lexicon RNum for compounds numeral + noun
       +Use/SpellNoSugg+Cmp/Hyph+Cmp#:-# Nouns ;    For Num Cmp Noun, vi vil ikke ha Num Cmp Num
 
 * * *
@@ -1535,13 +1535,13 @@ lexicon. The other lexica are there for specific subgroups of the names.
 
 ---
 
-# src-fst-morphology-phonology.twolc.md 
+## src-fst-morphology-phonology.twolc.md 
 
-# The Faroese morphophonological file 
+## The Faroese morphophonological file 
 
 This file documents the [phonology.twolc file](http://github.com/giellalt/lang-fao/blob/main/src/fst/phonology.twolc) 
 
-## Alphabet
+### Alphabet
 Here we declare all symbols.
 
 * **a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å** 
@@ -1575,7 +1575,7 @@ Here we declare all symbols.
 * **« »** : Derivational morpheme borders
 * **%-** : hyphen at word boundaries
 
-## Sets
+### Sets
 Here we define some convenient sets.
 
 * **Vow = a e i o u y æ ø å** 
@@ -1591,10 +1591,10 @@ Here we define some convenient sets.
  **%^GVDEL %^VDEL %^JDEL %^RDEL ;** 
 Forgot why these are special...
 
-# Rules
+## Rules
 These are the rules. After each rule (or rather: after many of the rules) there are test cases that are there to test whether the rules work.
 
-## Verschärfung
+### Verschärfung
 
 Rule: **Deleting g** 
 * Deleting g in gv Verschärfung I
@@ -1665,7 +1665,7 @@ end of the file - but only when using the Xerox tools! XXX - please have a look!
 * *all>t*
 * *al00t*
 
-## Verbal Sandhi rules
+### Verbal Sandhi rules
 
 Rule: **Geminate Assimilation in Past Tense d** 
 
@@ -1731,7 +1731,7 @@ Rule: **Adjusting Dental Past Suffix -d(i)**
 * *merk>di*
 * *merk0ti*
 
-## Adjectival sandhi rules
+### Adjectival sandhi rules
 
 Rule: **Adjective neuter after nlr 1** 
 
@@ -1774,7 +1774,7 @@ Rule: **Realising i2 as i**
 
 **Tests:**
 
-###  Epenthetic vowel rules
+####  Epenthetic vowel rules
 
 Rule: **Epenthetic deletion** 
 
@@ -1799,7 +1799,7 @@ Rule: **U-umlaut of Epenthetic vowel**
 * *gamal^EPH^UUML>u*
 * *gom0l00>u*
 
-### Umlaut rules
+#### Umlaut rules
 
 Rule: **U-umlaut in Front of Nasal** 
 
@@ -1874,11 +1874,11 @@ Rule: **o/ei-Umlaut II**
 * *dreing^EIO>i*
 * *dro0ng00i*
 
-### Vowel deletion rules
+#### Vowel deletion rules
 
 Rule: **Vowel deletion in front of na** 
 
-### Verbal vowel alternation rules
+#### Verbal vowel alternation rules
 
 Rule: **Stem vowel change in Weak Verbs** 
 
@@ -1926,7 +1926,7 @@ Rule: **Supine i**
 
 Rule: **Present tense ý** 
 
-### Adjectival Sandhi rule
+#### Adjectival Sandhi rule
 
 Rule: **Vowel shortening in Neuter** 
 
@@ -1937,9 +1937,9 @@ Rule: **Vowel shortening in Neuter**
 * *skjót>t*
 * *skjót0t*
 
-## Other rules
+### Other rules
 
-### Morphological passive rules
+#### Morphological passive rules
 
 Rule: **u in ur Deletion in front of Pass** 
 
@@ -1953,13 +1953,13 @@ Rule: **ð Deletion in front of Pass**
 
 ---
 
-# src-fst-morphology-root.lexc.md 
+## src-fst-morphology-root.lexc.md 
 
-# Faroese morphological analyser
+## Faroese morphological analyser
 
-# Definitions for Multichar_Symbols
+## Definitions for Multichar_Symbols
 
-## Tags for POS	
+### Tags for POS	
 * +N +V +A +Adv +Prop +Num : Open POS's	
 * +CC +CS +Interj +Pr +Pron +IM : Closed POS's	
 * +Pers +Det +Refl +Recipr +Poss +Dem : Pron types	
@@ -2008,7 +2008,7 @@ Rule: **ð Deletion in front of Pass**
 * +Interr
 * +Ord
 
-## Semantic tags
+### Semantic tags
 * +Sem/Sur
 * +Sem/Mal
 * +Sem/Fem
@@ -2070,14 +2070,14 @@ the sentence can be considered as true cases.
 * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
 * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
 
-## Non-changing letters
+### Non-changing letters
 * a2 invariant a
 * g2 i2 j2 t2 v2 invariant g, i, j, t, v 
 * a3 This is for a special a Umlaut case a3:ø (normal: a:o)
 
 * +v1 +v2 : different paradigms   ,
 
-## Triggers for Morphophonology
+### Triggers for Morphophonology
 * %^UUML %^IUML %^eIUML %^ØUML : Umlaut types ,
 * %^W %^JI : Cns changes ,
 * %^EPH %^OEA : Epenthesis,  ,
@@ -2105,12 +2105,12 @@ Language tags
 * +OLang/SWE
 * +OLang/UND
 
-## Non-ascii letters, perhaps needed as multichar symbols
+### Non-ascii letters, perhaps needed as multichar symbols
 * æ ø å
 * á é í ó ú ý Á É Í Ó Ý
 * ä ö ü Ä Ö Ö
 
-## Compounding tags
+### Compounding tags
 
 The tags are of the following form:
 * **+CmpNP/xxx** - Normative (N), Position (P), ie the tag describes what
@@ -2131,7 +2131,7 @@ This entry / word should be in the following position(s):
 * **+CmpNP/Only** - ... only be part of a compound, i.e. can never
 be used alone, but can appear in any position
 
-## Usage tags
+### Usage tags
 
 * +Use/Disamb = Use only in disambiguator/tokeniser analyser
 * +Use/Circ = for compound restrictions
@@ -2154,7 +2154,7 @@ be used alone, but can appear in any position
 * +Err/SpaceCmp
 * +Err/MissingSpace
 
-## Symbols that need to be escaped on the lower side (towards twolc):
+### Symbols that need to be escaped on the lower side (towards twolc):
 Todo: Check whether these can be removed. They are probably obsolete.
 
 * »7 : Literal » 
@@ -2164,7 +2164,7 @@ Todo: Check whether these can be removed. They are probably obsolete.
 %[%<%] - Literal <
 ```
 
-## Flag diacritics
+### Flag diacritics
 
 We have manually optimised the structure of our lexicon using following
 flag diacritics to restrict morhpological combinatorics - only allow compounds
@@ -2174,14 +2174,14 @@ with verbs if the verb is further derived into a noun again:
 |  @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
 |  @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
 
-### Flags for speller suggestions
+#### Flags for speller suggestions
 
 |  @D.ErrOrth.ON@ 
 |  @C.ErrOrth@ 
 |  @P.ErrOrth.ON@ 
 |  @R.ErrOrth.ON@ 
 
-### Flag for case harmony in compounds
+#### Flag for case harmony in compounds
 
 Set flag for compounds
 
@@ -2223,7 +2223,7 @@ Flag diacritic look-alikes for grammar checker & tokenisation purposes
 |  @P.Pmatch.Loc@ | Location in string used or parsed by hfst-pmatch
 |  @P.Pmatch.Backtrack@ | Also for hfst-pmatch 
 
-### Flags for compound restriction
+#### Flags for compound restriction
 
 For languages that allow compounding, the following flag diacritics are needed
 to control position-based compounding restrictions for nominals. Their use is
@@ -2292,7 +2292,7 @@ given the proper use of these flags.
 | @P.number.nine@ | Flag used to give arabic numerals in smj different cases ;
 | @P.number.ten@ | Flag used to give arabic numerals in smj different cases ;
 
-# Lexicon Root
+## Lexicon Root
 This is the beginning of everything. The **Root** lexicon is reserved in the
 LexC language, and must be the first lexicon defined.
 
@@ -2319,7 +2319,7 @@ Lexicon Acronyms is split in two:
 * Acronym-fao ; for fao acronyms
 * Acronym-smi ; for language independent acronums
 
-# Lexicon ENDLEX
+## Lexicon ENDLEX
 And this is the ENDLEX of everything:
 ```
 @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ ENDLEX2 ;
@@ -2334,9 +2334,9 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 ---
 
-# src-fst-morphology-stems-abbreviations.lexc.md 
+## src-fst-morphology-stems-abbreviations.lexc.md 
 
-# File containing Faroese abbreviations 
+## File containing Faroese abbreviations 
 
 Lexica for adding tags and periods
 
@@ -2356,22 +2356,22 @@ The file is too large and should be shrinked
 
 ---
 
-# src-fst-morphology-stems-adjectives.lexc.md 
+## src-fst-morphology-stems-adjectives.lexc.md 
 
-# Faroese adjectives 
+## Faroese adjectives 
 
 The adjectives and their inflectional codes 
 are taken from "Føroysk orðabók".
 
-## The list of ajectives
+### The list of ajectives
 
 **Adjectives** for the list of adjectives
 
-### Irregular comparatives and superlatives
+#### Irregular comparatives and superlatives
 
-### Prefixed present participles
+#### Prefixed present participles
 
-### Regular adjectives, systematic list
+#### Regular adjectives, systematic list
 
 * * *
 
@@ -2379,31 +2379,31 @@ are taken from "Føroysk orðabók".
 
 ---
 
-# src-fst-morphology-stems-adpositions.lexc.md 
+## src-fst-morphology-stems-adpositions.lexc.md 
 
-# Faroese prepositions
+## Faroese prepositions
 
 We should eventually have syntactic tags here...
 
-## Tags
+### Tags
 **p** for the tag +Pr
 
-## The list of prepositions
+### The list of prepositions
 
 **Preposition** for the list of prepositions, ordered according to case they select for.
 
-### Foreign
+#### Foreign
 
-### Several cases
+#### Several cases
 
-### Accusative or dative
+#### Accusative or dative
 | --- 
 
-### Accusative or genitive
+#### Accusative or genitive
 
-### Accusative
+#### Accusative
 
-###  Dative
+####  Dative
 
 * * *
 
@@ -2411,9 +2411,9 @@ We should eventually have syntactic tags here...
 
 ---
 
-# src-fst-morphology-stems-adverbs.lexc.md 
+## src-fst-morphology-stems-adverbs.lexc.md 
 
-# Faroese adverbs
+## Faroese adverbs
 
 **adv** for the tag +Adv
 
@@ -2446,9 +2446,9 @@ We should eventually have syntactic tags here...
 
 ---
 
-# src-fst-morphology-stems-conjunctions.lexc.md 
+## src-fst-morphology-stems-conjunctions.lexc.md 
 
-# The Faroese conjunctions
+## The Faroese conjunctions
 
 The file `stems/conjunctions.lexc` contains two lexica:
 
@@ -2467,9 +2467,9 @@ The file `stems/conjunctions.lexc` contains two lexica:
 
 ---
 
-# src-fst-morphology-stems-determiners.lexc.md 
+## src-fst-morphology-stems-determiners.lexc.md 
 
-# Faroese deternminers
+## Faroese deternminers
 
 * * *
 
@@ -2477,9 +2477,9 @@ The file `stems/conjunctions.lexc` contains two lexica:
 
 ---
 
-# src-fst-morphology-stems-fao-acronyms.lexc.md 
+## src-fst-morphology-stems-fao-acronyms.lexc.md 
 
-# Akronymer 
+## Akronymer 
 
 This documents the `stems/fao-acronyms.lexc` file.
 Most acronyms are taken from a common generated file, this file is for the Faroese-specific acronyms.
@@ -2508,10 +2508,10 @@ Most acronyms are taken from a common generated file, this file is for the Faroe
 
 ---
 
-# src-fst-morphology-stems-interjections.lexc.md 
+## src-fst-morphology-stems-interjections.lexc.md 
 
 
-# Interjections
+## Interjections
 
 The tag +Interj
 
@@ -2527,9 +2527,9 @@ The words
 
 ---
 
-# src-fst-morphology-stems-nouns.lexc.md 
+## src-fst-morphology-stems-nouns.lexc.md 
 
-# Faroese noun stem file
+## Faroese noun stem file
 
 The lexicon names are taken from
 Føroysk orðabók I-II (FO). Reference is
@@ -2539,14 +2539,14 @@ Note that in some cases, the lexicon names and stems here
 deviate from FO. In that case the lexica have names ending
 in wordforms, written in capital lettes.
 
-## Short lexica
+### Short lexica
 
 **Shortnouns** for  1, 2 and 3 letter nouns excluded from compounding
 
 These are now always excluded from lastpart compound
 and in norm from first-part compounding as well
 
-## The main list of nouns
+### The main list of nouns
 
 Her kjem alle substantiva. Dei er baklengssortert.
 leksikon som byrjar med x er ikkje manuelt sjekka.
@@ -2561,9 +2561,9 @@ Fila inneheld i underkant av 50000 lemma.
 
 ---
 
-# src-fst-morphology-stems-numerals.lexc.md 
+## src-fst-morphology-stems-numerals.lexc.md 
 
-# Faroese Numerals
+## Faroese Numerals
 
 **Numeral** splitting in types
 * Textual ;  
@@ -2595,7 +2595,7 @@ Fila inneheld i underkant av 50000 lemma.
 
 **n** 
 
-## Ordinals
+### Ordinals
 
 **ordinals** 
 
@@ -2611,9 +2611,9 @@ Fila inneheld i underkant av 50000 lemma.
 
 ---
 
-# src-fst-morphology-stems-pronouns.lexc.md 
+## src-fst-morphology-stems-pronouns.lexc.md 
 
-# Faroese pronouns
+## Faroese pronouns
 
 **Pronoun** splitting into 3 sublexica:
 1. Personal ;        
@@ -2659,9 +2659,9 @@ Fila inneheld i underkant av 50000 lemma.
 
 ---
 
-# src-fst-morphology-stems-propernouns.lexc.md 
+## src-fst-morphology-stems-propernouns.lexc.md 
 
-# Proper nouns 
+## Proper nouns 
 
 Table of content
 * The name lexica
@@ -2670,7 +2670,7 @@ Table of content
 -   - plc
 -   - sur       
 
-## Splitting into name types
+### Splitting into name types
 
 **Propernouns** splitting in 3 lexica: **multipartnames, names, guess**
 
@@ -2684,9 +2684,9 @@ Table of content
 
 ---
 
-# src-fst-morphology-stems-subjunctions.lexc.md 
+## src-fst-morphology-stems-subjunctions.lexc.md 
 
-# Faroese subjunctions
+## Faroese subjunctions
 
 The file `stems/subjunctions.lexc` contains three lexica:
 
@@ -2709,10 +2709,10 @@ The file `stems/subjunctions.lexc` contains three lexica:
 
 ---
 
-# src-fst-morphology-stems-verbs.lexc.md 
+## src-fst-morphology-stems-verbs.lexc.md 
 
 
-# Faroese verb stems 
+## Faroese verb stems 
 
 This file documents the file [stems/verbs.lexc](https://github.com/giellalt/lang-fao/blob/main/src/fst/stems/verbs.lexc)
 
@@ -2720,10 +2720,10 @@ The file contains one lexicon:
 
 **LEXICON Verbs** = the lexicon containing all verb stems
 
-## Some irregular verbs
+### Some irregular verbs
 *mega, eiga, eita, gráta, liggja, ...* and 15 more
 
-## some irregular passive verbs
+### some irregular passive verbs
 
 * høggast:høgg FYRIB ; 
 * munnhøggast:munn#høgg FYRIB ; 
@@ -2731,7 +2731,7 @@ The file contains one lexicon:
 * bylgjast:bylgj sxrefl ; 
 * ... etc. 15 more
 
-## The long verb list
+### The long verb list
 
 The lexica listed here represent the declension patterns
 presented in Føroysk orðabók. The lexicon names correspond to the
@@ -2761,7 +2761,7 @@ Finally some candidates to be considered for verb compounding.
 
 ---
 
-# src-fst-phonetics-txt2ipa.xfscript.md 
+## src-fst-phonetics-txt2ipa.xfscript.md 
 
 
 Phonological converter for Faroese
@@ -2770,7 +2770,7 @@ Phonological converter for Faroese
 Table below taken from:
 > Standardising Pronunciation for a Grapheme-to-Phoneme Converter for Faroese
 
-## FARSAMPA/IPA table
+### FARSAMPA/IPA table
 
 | Phoneme class| Orthography  | FARSAMPA | IPA |
 |:------------ |:------------ |:-------- |:--- |
@@ -2833,7 +2833,7 @@ Table below taken from:
 |              | (prim. stress| %        | ˈ   |
 |              | (sec. stress)| ~        | ˌ   |
 
-# For reference: The SAMPA - IPA correspondence
+## For reference: The SAMPA - IPA correspondence
 
 | SAMPA   |  IPA  |  Description
 | ------- | ----- | ------------
@@ -2889,7 +2889,7 @@ Table below taken from:
 | H       |  ɥ    |  (turned down h)    palato-labial approximant
 | j       |  j    |  palatal approximant
 
-## Vowels
+### Vowels
 ```
 .             front   near-front    central   near-back   back
 close          i • y               1 • }                 M • u
@@ -2901,7 +2901,7 @@ near-open        {                    6
 open           a • &                                     A • Q
 ```
 
-## More SAMPA/IPA documentation
+### More SAMPA/IPA documentation
 
 (Some symbols are doubled or escaped with \ in the source to escape Markdown (mis)interpretation, they will appear correct in the rendered HTML.)
 
@@ -3072,11 +3072,11 @@ open           a • &                                     A • Q
 
 ---
 
-# src-fst-transcriptions-transcriptor-abbrevs2text.lexc.md 
+## src-fst-transcriptions-transcriptor-abbrevs2text.lexc.md 
 
 
 
-# Faroese abbreviations                               
+## Faroese abbreviations                               
 
 We describe here how abbreviations are in Faroese are read out, e.g.
 for text-to-speech systems.
@@ -3093,10 +3093,10 @@ For example:
 
 ---
 
-# src-fst-transcriptions-transcriptor-clock-digit2text.lexc.md 
+## src-fst-transcriptions-transcriptor-clock-digit2text.lexc.md 
 
 
-# The Faroese clock
+## The Faroese clock
 
 Multichar_Symbols defines flags and +Use/NG and Úse/NA.
 
@@ -3132,10 +3132,10 @@ Multichar_Symbols defines flags and +Use/NG and Úse/NA.
 
 ---
 
-# src-fst-transcriptions-transcriptor-date-digit2text.lexc.md 
+## src-fst-transcriptions-transcriptor-date-digit2text.lexc.md 
 
 
-# Faroese dates 
+## Faroese dates 
 
 Defining one tag: +Use/NG for do not generate
 
@@ -3171,9 +3171,9 @@ Defining one tag: +Use/NG for do not generate
 
 ---
 
-# src-fst-transcriptions-transcriptor-numbers-digit2text.lexc.md 
+## src-fst-transcriptions-transcriptor-numbers-digit2text.lexc.md 
 
-# Faroese numbers
+## Faroese numbers
 
 digits are translated to text and vice versa
 
@@ -3312,84 +3312,84 @@ thousands, hundreds, tens, ones.
 
 ---
 
-# tools-grammarcheckers-grammarchecker.cg3.md 
+## tools-grammarcheckers-grammarchecker.cg3.md 
 
-# Faroese grammarchecker
+## Faroese grammarchecker
 
 This is work in progress. The main focus is on **ð** errors, 
 
 This file contains two parts: **Definitions** and **rules**
 
-# Definition section
+## Definition section
 
-## Delimiters 
+### Delimiters 
 
-## Grammatical tags
+### Grammatical tags
 
 Here we declare all grammatical tags
 
 Declaring all the error tags
 
-# Rule section
+## Rule section
 
-## Verbs
+### Verbs
 
-### Sg1 target forms
+#### Sg1 target forms
 
-### **RULE:** Sup should be 1Sg
+#### **RULE:** Sup should be 1Sg
 
-### **RULE:** Sup  should be 1Sg
+#### **RULE:** Sup  should be 1Sg
 
-### **RULE:** sup > inf
+#### **RULE:** sup > inf
 
-### **RULE:** Neu should be 1Sg
+#### **RULE:** Neu should be 1Sg
 
-### **RULE:** Imp Pl should be 1Sg
+#### **RULE:** Imp Pl should be 1Sg
 
-### Plural forms
+#### Plural forms
 
-### **RULE:** Sup should be Pl -- marginal??
+#### **RULE:** Sup should be Pl -- marginal??
 
-### **RULE:** Sup should be Pl -- marginal??
+#### **RULE:** Sup should be Pl -- marginal??
 
-### Supine forms
+#### Supine forms
 
-### **RULE:**s for Pl should be Sup are not written
+#### **RULE:**s for Pl should be Sup are not written
 
-### **RULE:** Inf should be Sup
+#### **RULE:** Inf should be Sup
 
-### **RULE:** Inf should be Sup
+#### **RULE:** Inf should be Sup
 
-### **RULE:** Inf should be Sup
+#### **RULE:** Inf should be Sup
 
-## Specific verbs
+### Specific verbs
 
-### **RULE:** Past tens of láta is læt not lat
+#### **RULE:** Past tens of láta is læt not lat
 
-## Nouns
+### Nouns
 
-### Definiteness
+#### Definiteness
 
-### **RULE:** Neu Indef should be Neu Def
+#### **RULE:** Neu Indef should be Neu Def
 We turn off this rule for now, it is too hard to avoid false alarms.
 
-### Quantor phrases
+#### Quantor phrases
 
-### **RULE:** Num + N Sg should be Num + N Pl
+#### **RULE:** Num + N Sg should be Num + N Pl
 
 Num + N Sg should be Num + N Pl (We need arabic tag here)
 
-## Subjunctives
+### Subjunctives
 
 Nothing here.
 
-## ta / tað rules
+### ta / tað rules
 
-### **RULE:** ta should be tað
+#### **RULE:** ta should be tað
 
-## Adjectives
+### Adjectives
 
-### **RULE:** líti should be lítið
+#### **RULE:** líti should be lítið
 
 * * *
 
@@ -3397,18 +3397,18 @@ Nothing here.
 
 ---
 
-# tools-grammarcheckers-grc-disambiguator.cg3.md 
+## tools-grammarcheckers-grc-disambiguator.cg3.md 
 
 
 
-# Faroese disambiguator 
+## Faroese disambiguator 
 
 Usage, in `lang-fao`:
 `cat text.txt|hfst-tokenize -cg tools/tokenisers/tokeniser-disamb-gt-desc.pmhfst |vislcg3 -g src/cg3/disambiguator.cg3`
 
 This file documents the [Faroese disambiguator file](http://github.com/giellalt/lang-fao/blob/main/src/cg3/disambiguator.cg3) .
 
-## Delimiters, tags and sets
+### Delimiters, tags and sets
 
 * LIST NAGD = Nom Acc Gen Dat ; 
 * LIST AGD = Acc Gen Dat ; 
@@ -3419,7 +3419,7 @@ Test: Go for minimal weight. This rules gives priority to lexicalised forms.
 
 * **NumRom** in beginning of sentence
 
-# MAPPING OF CC AND CS
+## MAPPING OF CC AND CS
 
 Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them so @CVP remains
 
@@ -3443,9 +3443,9 @@ Mostly we map both @CNP and @CVP, then we select @CNP, after that we remove them
 
 ---
 
-# tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.md 
+## tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.md 
 
-# Tokeniser for fao
+## Tokeniser for fao
 
 Usage:
 ```
@@ -3490,7 +3490,7 @@ ASCII digits
 so far:
 * U+F0B7 for "x in box"
 
-## Unknown handling
+### Unknown handling
 Unknowns are tagged ?? and treated specially with `hfst-tokenise`
 hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
 remove empty analyses from other readings. Empty readings are also
@@ -3509,9 +3509,9 @@ Finally we mark as a token any sequence making up a:
 
 ---
 
-# tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.md 
+## tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.md 
 
-# Grammar checker tokenisation for fao
+## Grammar checker tokenisation for fao
 
 Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
 Then just:
@@ -3574,9 +3574,9 @@ Finally we mark as a token any sequence making up a:
 
 ---
 
-# tools-tokenisers-tokeniser-tts-cggt-desc.pmscript.md 
+## tools-tokenisers-tokeniser-tts-cggt-desc.pmscript.md 
 
-# TTS tokenisation for smj
+## TTS tokenisation for smj
 
 Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
 Then just:

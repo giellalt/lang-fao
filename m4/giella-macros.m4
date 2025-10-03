@@ -686,12 +686,19 @@ AS_IF([test "x$enable_grammarchecker" != "xno"],
 AC_PATH_PROG([GTLEMMATEST], [gtlemmatest], [false])
 AC_PATH_PROG([GTSPELLTEST], [gtspelltest], [false])
 AC_PATH_PROG([GTPARADIGMTEST], [gtparadigmtest], [false])
+AC_PATH_PROG([GTMULTICHARTEST], [gtmultichartest], [false])
 AC_MSG_CHECKING([if gtlextools is usable])
 AS_IF([test x$GTLEMMATEST = xfalse],
       [gt_MSG_WARN([gtlextools is needed for many tests
         on debian/ubuntu: sudo apt update; sudo apt install pipx; pipx ensurepath
         on macbrew: brew install pipx; pipx ensurepath
         then: pipx install git+https://github.com/divvun/giellaltlextools
+      ])],
+      AC_MSG_RESULT([yes]))
+AC_MSG_CHECKING([if gtlextools is up-to-date])
+AS_IF([test x$GTMULTICHARTEST = xfalse],
+      [gt_MSG_WARN([gtlextools is too old and missing some stuff, do:
+        pipx upgrade giellaltlextools
       ])],
       AC_MSG_RESULT([yes]))
 

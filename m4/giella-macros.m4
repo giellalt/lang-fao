@@ -169,10 +169,8 @@ AC_ARG_ENABLE([yamltests],
 AC_PATH_PROGS([GTMORPHTEST], [gtmorphtest morph-test2], [false])
 AM_CONDITIONAL([CAN_YAML_TEST], [test "x$GTMORPHTEST" != xfalse])
 AS_IF([test x$GTMORPHTEST = xfalse],
-      [gt_MSG_WARN([gtmorphtest or morph-test2 is needed for YAML testings
-        on debian/ubuntu: sudo apt update; sudo apt install pipx; pipx ensurepath
-        on macbrew: brew install pipx; pipx ensurepath
-        then: pipx install git+https://github.com/divvun/morph-test
+      [gt_MSG_ERROR([gtmorphtest or morph-test2 is needed for YAML testings
+        pipx install git+https://github.com/divvun/morph-test
         
         Alternatively, install morph-test2, see https://github.com/divvun/morph-test-rs])])
 
@@ -689,15 +687,13 @@ AC_PATH_PROG([GTPARADIGMTEST], [gtparadigmtest], [false])
 AC_PATH_PROG([GTMULTICHARTEST], [gtmultichartest], [false])
 AC_MSG_CHECKING([if gtlextools is usable])
 AS_IF([test x$GTLEMMATEST = xfalse],
-      [gt_MSG_WARN([gtlextools is needed for many tests
-        on debian/ubuntu: sudo apt update; sudo apt install pipx; pipx ensurepath
-        on macbrew: brew install pipx; pipx ensurepath
-        then: pipx install git+https://github.com/divvun/giellaltlextools
+      [gt_MSG_ERROR([gtlextools is needed for many tests
+        pipx install git+https://github.com/divvun/giellaltlextools
       ])],
       AC_MSG_RESULT([yes]))
 AC_MSG_CHECKING([if gtlextools is up-to-date])
 AS_IF([test x$GTMULTICHARTEST = xfalse],
-      [gt_MSG_WARN([gtlextools is too old and missing some stuff, do:
+      [gt_MSG_ERROR([gtlextools is too old and missing some stuff, do:
         pipx upgrade giellaltlextools
       ])],
       AC_MSG_RESULT([yes]))

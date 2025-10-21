@@ -32,10 +32,21 @@
 
 # Colourised versions of autoconf messaging... add some checks here if it looks
 # too bad in logs and stuffs
+# we allow some CI builds to blatantly ignore errors but if users use this 
+# feature they are on their own
+
+AC_ARG_ENABLE([configure-errors],
+              [AS_HELP_STRING([--disable-configure-errors].
+                              [disables fatal errors in configure script @<:@default=enabled@:>@])],
+                              [enable_configure_errors=$enableval],
+                              [enable_configure_errors=yes])
+
 AC_DEFUN([gt_MSG_ERROR],
-         [tput setaf 1
-          AC_MSG_ERROR([$1])
-          tput sgr0])
+         [AS_IF([test x$enable_configure_errors != xno],
+                [tput setaf 1
+                 AC_MSG_ERROR([$1])
+                 tput sgr0],
+                [AC_MSG_NOTICE([ignored error: $1])])])
 AC_DEFUN([gt_MSG_WARN],
          [tput setaf 3
           AC_MSG_WARN([$1])
@@ -1125,6 +1136,8 @@ if it shows you:
 it means that it uses Apple's make version. (sometimes restart after changing zshrc or bashrc can help)
 ])
        tput sgr0])
+AS_IF([test x$enable_configure_errors = xno],
+      [AC_MSG_NOTICE([THIS BUILD HAS CONFIGURE ERRORS DISABLED AND YOU MAY NOT REPORT BUGS ABOUT IT])])
 ]) # gt_PRINT_FOOTER
 
 # vim: set ft=config:

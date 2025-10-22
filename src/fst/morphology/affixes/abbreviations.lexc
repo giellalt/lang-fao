@@ -18,11 +18,11 @@ LEXICON ab-trnumab ab-noun-trnumab ; ! assuming noun
 !!= **@LEXNAME@** 
 
 ! The nouns
-LEXICON ab-noun-itrab +ABBR+Gram/IAbbr: ab-noun ;
+LEXICON ab-noun-itrab +Gram/IAbbr: ab-noun ;
 !!= **@LEXNAME@**
-LEXICON ab-noun-trab    +ABBR+Gram/TAbbr:    ab-noun ;
+LEXICON ab-noun-trab    +Gram/TAbbr:    ab-noun ;
 !!= **@LEXNAME@** 
-LEXICON ab-noun-trnumab +ABBR+Gram/TNumAbbr: ab-noun ;
+LEXICON ab-noun-trnumab +Gram/TNumAbbr: ab-noun ;
 !!= **@LEXNAME@** 
 LEXICON ab-noun
 !!= **@LEXNAME@** 
@@ -30,16 +30,16 @@ LEXICON ab-noun
 +Use/NG: ab-dot-noun   ;
 
 ! The adjectives
-!LEXICON ab-adj-itrab +ABBR+Gram/IAbbr: ab-adj ;
-!LEXICON ab-adj-trab  +ABBR+Gram/TAbbr: ab-adj ;
+!LEXICON ab-adj-itrab +Gram/IAbbr: ab-adj ;
+!LEXICON ab-adj-trab  +Gram/TAbbr: ab-adj ;
 !LEXICON ab-adj 
 !         ab-nodot-adj ;
 !+Use/NG: ab-dot-adj   ;
 
 ! The adverbs
-!LEXICON ab-adv-itrab   +ABBR+Gram/IAbbr:    ab-adv ;
-!LEXICON ab-adv-trab    +ABBR+Gram/TAbbr:    ab-adv ;
-!LEXICON ab-adv-numnoab  +ABBR+Gram/NoAbbr:   ab-adv ;
+!LEXICON ab-adv-itrab   +Gram/IAbbr:    ab-adv ;
+!LEXICON ab-adv-trab    +Gram/TAbbr:    ab-adv ;
+!LEXICON ab-adv-numnoab  +Gram/NoAbbr:   ab-adv ;
 !LEXICON ab-adv
 !         ab-nodot-adv ;
 !+Use/NG: ab-dot-adv   ;
@@ -47,7 +47,7 @@ LEXICON ab-noun
 ! The numerals
 
 !! ### Lexicons without final period
-LEXICON ab-nodot-noun-itrab   +ABBR+Gram/IAbbr:    ab-nodot-noun ;
+LEXICON ab-nodot-noun-itrab   +Gram/IAbbr:    ab-nodot-noun ;
 !!= **@LEXNAME@** 
 LEXICON ab-nodot-noun 
 !!= **@LEXNAME@** 
@@ -62,16 +62,16 @@ LEXICON ab-nodot-noun
 
 !! ### Lexicons with final period
 
-LEXICON ab-dot-noun-itrab   +ABBR+Gram/IAbbr:    ab-dot-noun ;
+LEXICON ab-dot-noun-itrab   +Gram/IAbbr:    ab-dot-noun ;
 !!= **@LEXNAME@** 
-LEXICON ab-dot-noun-trab    +ABBR+Gram/TAbbr:    ab-dot-noun ;
+LEXICON ab-dot-noun-trab    +Gram/TAbbr:    ab-dot-noun ;
 !!= **@LEXNAME@** 
-LEXICON ab-dot-noun-trnumab +ABBR+Gram/TNumAbbr: ab-dot-noun ;
+LEXICON ab-dot-noun-trnumab +Gram/TNumAbbr: ab-dot-noun ;
 !!= **@LEXNAME@** 
 LEXICON ab-dot-noun   !!= * **@CODE@**  This is the lexicon for abbrs that must have a period.
 +N+Abbr:  dot-infl ;
 
-LEXICON ab-dot-adj-trab    +ABBR+Gram/TAbbr:    ab-dot-adj ;
+LEXICON ab-dot-adj-trab    +Gram/TAbbr:    ab-dot-adj ;
 !!= **@LEXNAME@** 
 LEXICON ab-dot-adj   !!= * **@CODE@**  This is the lexicon for abbrs that must have a period.
 +A+Abbr:   dot-infl ;
@@ -150,19 +150,19 @@ LEXICON DOT   !!= * **@CODE@** - Adds the dot to dotted abbreviations.
 
 ! =================
 
-!LEXICON ab-dot-adv-itrab   +ABBR+Gram/IAbbr:     ab-dot-adv ;
-!LEXICON ab-dot-adv-trab    +ABBR+Gram/TAbbr:     ab-dot-adv ;
-!LEXICON ab-dot-adv-trnumab +ABBR+Gram/TNumAbbr:  ab-dot-adv ;
+!LEXICON ab-dot-adv-itrab   +Gram/IAbbr:     ab-dot-adv ;
+!LEXICON ab-dot-adv-trab    +Gram/TAbbr:     ab-dot-adv ;
+!LEXICON ab-dot-adv-trnumab +Gram/TNumAbbr:  ab-dot-adv ;
 !LEXICON ab-dot-adv   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
 !+Adv+Abbr:  DOT ; ! Adv without case.
 
-!LEXICON ab-dot-num-itrab +Num+ABBR+Gram/IAbbr: ab-dot-num ;
-!LEXICON ab-dot-num-trab  +Num+ABBR+Gram/TAbbr: ab-dot-num ;
+!LEXICON ab-dot-num-itrab +Num+Gram/IAbbr: ab-dot-num ;
+!LEXICON ab-dot-num-trab  +Num+Gram/TAbbr: ab-dot-num ;
 !LEXICON ab-dot-num   !!= * __@CODE@__  This is the lexicon for abbrs that must have a period.
 !+Num+Abbr:  dot-infl ;
 
-!LEXICON ab-dot-cc-itrab +CC+ABBR+Gram/IAbbr: ab-dot-cc ;
-!LEXICON ab-dot-cc-trab  +CC+ABBR+Gram/TAbbr: ab-dot-cc ;
+!LEXICON ab-dot-cc-itrab +CC+Gram/IAbbr: ab-dot-cc ;
+!LEXICON ab-dot-cc-trab  +CC+Gram/TAbbr: ab-dot-cc ;
 !LEXICON ab-dot-cc   !!= * __@CODE@__
 !+CC+Abbr:  DOT ;
 

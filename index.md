@@ -4,7 +4,8 @@
 ![Lemma count](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-fao%2Fgh-pages%2Flemmacount.json)
 [![License](https://img.shields.io/github/license/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/blob/main/LICENSE)
 [![Issues](https://img.shields.io/github/issues/giellalt/lang-fao)](https://github.com/giellalt/lang-fao/issues)
-[![Build Status](https://divvun-tc.giellalt.org/api/github/v1/repository/giellalt/lang-fao/main/badge.svg)](https://github.com/giellalt/lang-fao/actions)
+[![Build Status](https://builds.giellalt.org/api/badge/lang-fao?label=CI)](https://builds.giellalt.org/pipelines/lang-fao/builds/latest)
+[![Glottolog](https://img.shields.io/badge/Glottolog-green)](https://glottolog.org/resource/languoid/id/faro1244)
 
 This page documents work on [Faroese language technology](https://github.com/giellalt/lang-fao), how to build the Faroese language model and and how to use it.
 

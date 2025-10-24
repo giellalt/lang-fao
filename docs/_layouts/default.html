@@ -47,6 +47,15 @@
       // Køyr før Prism for å unngå konfliktar
       document.addEventListener('DOMContentLoaded', () => {
         updateMermaidTheme();
+        
+        // Automatisk fokus på hovudinnhald for tastaturnavigasjon
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+          // Set ein liten forseinking for å sikre at alt er lasta
+          setTimeout(() => {
+            mainContent.focus();
+          }, 100);
+        }
       }, { once: true });
       
       // Oppdater ved tema-endringar
@@ -93,7 +102,7 @@
           {% include toc.html html=content sanitize=true class="left_toc" id="left_toc" h_min=2 h_max=6 %}
         </div>
       </header>
-      <section>
+      <section tabindex="0" id="main-content">
         {{ content }}
         <div id="left_toc_shadow"></div>
       </section>
@@ -121,9 +130,18 @@
       </footer>
 
     </div>
-    <script src="{{ "/assets/js/theme-toggle.js" | relative_url }}"></script>
+    <script src="https://giellalt.github.io/assets/js/geography-support-clean.js"></script>
+    <script src="https://giellalt.github.io/assets/js/theme-toggle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <!-- Last språk manuelt i staden for autoloader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
     <script>

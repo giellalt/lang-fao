@@ -73,6 +73,9 @@ AC_SUBST([SPELLER_DESC_NATIVE], ["TRANSLATE: A spellchecker for $GLANGUAGE, made
 ### package, and also different from the speller release version):
 AC_SUBST([GRAMCHECKVERSION], [0.1.0])
 
+### TTS text processing release version
+AC_SUBST([TTSTEXTPROCVERSION], [0.1.0])
+
 # Alternate writing system(s) should be listed here using the ISO 15924 code.
 # Multiple alternate WS's should be space separated. For a list of such codes
 # see http://en.wikipedia.org/wiki/ISO_15924 and

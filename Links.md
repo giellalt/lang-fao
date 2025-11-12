@@ -38,6 +38,7 @@
             * [transcriptor-clock-digit2text.lexc](src-fst-transcriptions-transcriptor-clock-digit2text.lexc.html) ([src](https://github.com/giellalt/lang-fao/blob/main/src/fst/transcriptions/transcriptor-clock-digit2text.lexc))
             * [transcriptor-date-digit2text.lexc](src-fst-transcriptions-transcriptor-date-digit2text.lexc.html) ([src](https://github.com/giellalt/lang-fao/blob/main/src/fst/transcriptions/transcriptor-date-digit2text.lexc))
             * [transcriptor-numbers-digit2text.lexc](src-fst-transcriptions-transcriptor-numbers-digit2text.lexc.html) ([src](https://github.com/giellalt/lang-fao/blob/main/src/fst/transcriptions/transcriptor-numbers-digit2text.lexc))
+            * [transcriptor-symbols2text.lexc](src-fst-transcriptions-transcriptor-symbols2text.lexc.html) ([src](https://github.com/giellalt/lang-fao/blob/main/src/fst/transcriptions/transcriptor-symbols2text.lexc))
 * `tools/`
     * `grammarcheckers/`
         * [grammarchecker.cg3](tools-grammarcheckers-grammarchecker.cg3.html) ([src](https://github.com/giellalt/lang-fao/blob/main/tools/grammarcheckers/grammarchecker.cg3))

@@ -1,0 +1,59 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@uit.no or feedback@divvun.no
+
+!  =====================================
+!! Phonological converter for Faroese ACRO words
+!! =====================================
+
+!! This version only turns each letter into a "word" by itself, to be read out loud.
+!! Later more advanced processing can be added, to count for cases where the acronym is
+!! read as a regular word, like "YLE" and "NATO".
+
+!! - Downcase uppercase letters, read each consonant out as a separate word
+  A -> a a " ",
+  Á -> á á " ",
+  E -> e e " ",
+  I -> i i " ",
+  O -> o o " ",
+  U -> u u " ",
+  Y -> y y " ",
+  Æ -> æ æ " ",
+  Ø -> ø ø " ",
+  Å -> å å " ",
+  B -> b e e " ",
+  C -> c e e " ",
+  Č -> č e e " ",
+  D -> d e e " ",
+  Đ -> đ e e " ",
+  F -> æ f f " ",
+  G -> g e e " ",
+  H -> h o o " ",
+  J -> j e e " ",
+  K -> k o o " ",
+  L -> æ l l " ",
+  M -> æ m m " ",
+  N -> æ n n " ",
+  Ŋ -> æ ŋ ŋ " ",
+  P -> p e e " ",
+  Q -> k u u " ",
+  R -> æ r r " ",
+  S -> æ s s " ",
+  Š -> æ š š " ",
+  T -> t e e " ",
+  Ŧ -> ŧ e e " ",
+  V -> v e e " ",
+  W -> d u p p a l v e e " ",
+  X -> e a k s a " ",
+  Z -> e a z z a " ",
+  Ž -> e a ž ž a " ";

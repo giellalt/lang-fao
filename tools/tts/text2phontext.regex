@@ -1,0 +1,63 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@uit.no or feedback@divvun.no
+
+!  =====================================
+!! Phonological converter for Faroese regular text
+!! =====================================
+
+!! This is a very simple start, it can be expanded to whatever is needed for
+!! the language.
+!!
+!! Usually it is wise to keep the "phonological" transcription as close to
+!! the standard orthography as possible, but to downcase everything, and
+!! expand abbreviated expressions to their full form. Expansion of abbreviated
+!! expressions is handled elsewhere.
+
+!! - Downcase uppercase letters
+  A -> a ,
+  Á -> á ,
+  E -> e ,
+  I -> i ,
+  O -> o ,
+  U -> u ,
+  Y -> y ,
+  Æ -> æ ,
+  Ø -> ø ,
+  Å -> å ,
+  B -> b ,
+  C -> c ,
+  Č -> č ,
+  D -> d ,
+  Đ -> đ ,
+  F -> f ,
+  G -> g ,
+  H -> h ,
+  J -> j ,
+  K -> k ,
+  L -> l ,
+  M -> m ,
+  N -> n ,
+  Ŋ -> ŋ ,
+  P -> p ,
+  Q -> k ,
+  R -> r ,
+  S -> s ,
+  Š -> š ,
+  T -> t ,
+  Ŧ -> ŧ ,
+  V -> v ,
+  W -> w ,
+  X -> x ,
+  Z -> z ,
+  Ž -> ž ;

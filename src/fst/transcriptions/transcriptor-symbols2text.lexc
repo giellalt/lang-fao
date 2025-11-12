@@ -1,0 +1,133 @@
+! Divvun & Giellatekno - open source grammars for Lule Sami language
+! Copyright © 2021 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@uit.no or feedback@divvun.no
+
+! ========================================================================== !
+! !! # Faroese abbreviations
+! ========================================================================== !
+
+!! This file contains mappings from abbreviations and some acronyms to full
+!! forms for text-to-speech purposes. This is a supplement to the analyser;
+!! the analyser must tag the strings as +ABBR or similar for the transcriptions
+!! to work. The resulting full form must be lemmas known to the analyser,
+!! for further processing.
+
+!! We describe here how abbreviations in Faroese are read out,
+!! for text-to-speech systems.
+
+! The transcriptions below are mostly in North Sámi, replace with whatever
+! is suitable for your language. Expand the list as necessary.
+
+LEXICON Root
+
+! ============ Symbols: ============
+!! The file contains:
+
+!! - miscellaneous symbols
+  §:paragráfa  # ;
+ §§:paragráfat # ;
+  ¥:yen        # ;
+  $:dollar     # ; ! _$	dOllA:R
+  €:euro       # ;
+  £:pund       # ;
+ %%:proseanta  # ; ! %	pR'u:s'Ent	$max3
+! ®:dollar     # ;
+! ©:dollar     # ;
+! √:dollar     # ;
+! ◊:dollar     # ;
+! ♦:dollar     # ;
+! ☐:dollar     # ;
+! ⚬:dollar     # ;
+!%#:dollar     # ; ! #	nu-mm@RtENn	$max3
+! №:dollar     # ;
+! „:dollar     # ;
+! ‰:dollar     # ;
+! ●:dollar     # ;
+! −:dollar     # ;
+! ¬:dollar     # ;
+! %@:sejbak-a  # ; ! @	sejbak-A: //
+
+!! - smileys
+ %:-):smil # ;
+  %:):smil # ;
+!%:-|:smil # ;
+! %:|:smil # ;
+!%:-(:smil # ;
+! %:(:smil # ;
+
+!! - Clause boundary symbols
+   ,:rihkku          # ;
+   .:čuokkis         # ;
+  ..:guokte% čuoggá  # ;
+ ...:golbma% čuoggá  # ;
+   …:golbma% čuoggá  # ;
+  %::duppalčuokkis   # ;
+  %;:beallečuokkis   # ;
+  %!:čuorvvasmearka  # ;
+!  |:sárggissáhtso   # ;
+   ?:gažaldatmearka  # ;
+
+!  ¿:¿               # ;
+!  ¬:¬               # ;
+!  ¥:¥               # ;
+
+!! - Single punctuation marks
+
+!  •:•      # ;
+!  ●:●      # ;
+!  ·:·      # ;
+!  ·:·      # ;
+   -:goallossáhcu # ; ! vanleg bindestrek
+   –:jurddasáhcu  # ; ! endash
+! --:ájádussáhtso # ; ! double hyphen
+!  —:ájádussáhtso # ; ! emdash
+!  ―:ájádussáhtso # ; ! horizontal bar (U+2015)
+   −:minus        # ; ! minus sign (U+2212)
+!  _:vuollesáhtso # ;
+!  =:jæbddásasjmærkka # ;
+!  ≈:≈       # ;
+   &:ja      # ;
+  %":sitáhtamearka  # ;
+   ':apostrofa      # ; ! Reset syntax colouring
+!  *:násste      # ; ! nA:sste // not sure
+   +:plussa      # ;
+!  ±:±           # ;
+!+/-:+/-         # ;
+   `:gravismearka # ;
+   ´:akseantamearka # ;
+   /:finju-% dahjege% njagusáhcu # ;
+!  \:snjaktjesáhtso # ;
+!  ~:bárrosáhtso # ;
+!  ‐:sáhtso # ;
+   °:gráda  # ;
+!  ^:cirkumflæksa # ; ! ^	sIRku-mflEks
+
+!! - Paired punctuation marks
+
+  «:aisttonmearka # ;
+  »:aisttonmearka # ;
+  “:aisttonmearka # ;
+  ”:aisttonmearka # ;
+  ‘:aisttonmearka # ;
+  ’:aisttonmearka # ;
+  „:aisttonmearka # ;
+  ‹:aisttonmearka # ;
+  ›:aisttonmearka # ;
+  (:dávgeruohtu   # ;
+  ):dávgeruohtu   # ;
+  [:roahkkeruohtu # ;
+  ]:roahkkeruohtu # ;
+  {:bárroruohtu   # ;
+  }:bárroruohtu   # ;
+ %<:čiehkaruohtu  # ;
+ %>:čiehkaruohtu  # ;

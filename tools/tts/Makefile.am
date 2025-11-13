@@ -8,25 +8,25 @@ SUBDIRS = . test
 # NB! If any of the filenames below are changed, then remember to also update
 # the corresponding filename in `pipespec.xml.in`
 
-GIELLA_ANL_IPA_FST_FILE=
-GIELLA_ANL_VALENCY_SRC=
-GIELLA_ANL_WHSPACE_ANAL_SRC=analyser-gt-whitespace.regex
-GIELLA_ANL_MWEDIS_SRC=mwe-dis.cg3
-GIELLA_ANL_DISAMBIGUATOR_SRC=disambiguator.cg3
-GIELLA_ANL_FUNCTIONS_SRC=functions.cg3
-GIELLA_ANL_DEPENDENCY_SRC=dependency.cg3
+GIELLA_TTS_IPA_FST_FILE=
+GIELLA_TTS_VALENCY_SRC=
+GIELLA_TTS_WHSPACE_ANAL_SRC=analyser-gt-whitespace.regex
+GIELLA_TTS_MWEDIS_SRC=mwe-dis.cg3
+GIELLA_TTS_DISAMBIGUATOR_SRC=disambiguator.cg3
+GIELLA_TTS_FUNCTIONS_SRC=functions.cg3
+GIELLA_TTS_DEPENDENCY_SRC=dependency.cg3
 
 # Tokeniser:
-GIELLA_ANL_TOKENISER=tokeniser-disamb-gt-desc.pmhfst
+GIELLA_TTS_TOKENISER=tokeniser-disamb-gt-desc.pmhfst
 
 # List transcriptor source files from src/transcriptions/ (without extension)
 # that should NOT be included in the tts text processing (by default everything
 # is included):
-GIELLA_ANL_REMOVE_TRANSCRIPTORS=
+GIELLA_TTS_REMOVE_TRANSCRIPTORS=
 
 # If there are additional, language specific files used in the GC archive,
 # specify here:
-LOCAL_ANL_ZIP_FILES=
+LOCAL_TTS_ZIP_FILES=
 
 #### BEGIN: Local build targets: ####
 

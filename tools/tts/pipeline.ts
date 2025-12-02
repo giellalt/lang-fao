@@ -67,4 +67,4 @@ export function localTTSTest_dev(entry: StringEntry): Command {
   x = speech.phon("text2phon", x, { model: "@./text2phontext.hfstol", tag_models: { "ACR": "@./acro2text.hfstol" } });
   x = cg3.sentences("phon",    x, { mode: "phonological" });
   return x;
-}diff --git a/tools/tts/text2phontext.regex b/tools/tts/text2phontext.regex
+}

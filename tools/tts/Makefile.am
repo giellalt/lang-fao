@@ -8,6 +8,8 @@ SUBDIRS = . test
 # NB! If any of the filenames below are changed, then remember to also update
 # the corresponding filename in `pipespec.xml.in`
 
+GIELLA_TTS_PHONEMISER_SRC=text2phontext.regex
+GIELLA_TTS_ACRO_PHONEMISER_SRC=acro2text.regex
 GIELLA_TTS_IPA_FST_FILE=
 GIELLA_TTS_VALENCY_SRC=
 GIELLA_TTS_WHSPACE_ANAL_SRC=analyser-gt-whitespace.regex

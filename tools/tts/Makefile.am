@@ -17,6 +17,7 @@ GIELLA_TTS_MWEDIS_SRC=mwe-dis.cg3
 GIELLA_TTS_DISAMBIGUATOR_SRC=disambiguator.cg3
 GIELLA_TTS_FUNCTIONS_SRC=functions.cg3
 GIELLA_TTS_DEPENDENCY_SRC=dependency.cg3
+GIELLA_TTS_SEMSETS_SRC=
 
 # Tokeniser:
 GIELLA_TTS_TOKENISER=tokeniser-tts-cggt-desc.pmhfst

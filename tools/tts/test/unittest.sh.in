@@ -3,16 +3,13 @@
 
 # change settings here:
 corpus=@abs_srcdir@/corpus.txt
-gold=@abs_srcdir@/corpus.gold.cg3text
-variant=@GLANG@-normaliser
+gold=@abs_srcdir@/corpus.expected.txt
 tts_dir=@abs_builddir@/../
-tts_archive=$tts_dir/@GTLANG2@-tts.zpipe
-level=suffixed  # we only care about "phon
-threshold=99
+tts_archive=$tts_dir/bundle.drb
 
 # avoid changing common scripts from here:
 . "@GIELLA_CORE@/scripts/termcolors.bash"
-testscript=@GIELLA_CORE@/scripts/regresstest-pipespec.sh
+testscript=@GIELLA_CORE@/scripts/difftest-pipeline.sh
 
 # ensure this is run from make check and other things
 if test -z "$srcdir" ; then
@@ -33,7 +30,7 @@ fi
 if ! test -f "$gold" ; then
     printf "%sskip%s missing gold corpus %s\n" "$light_blue" "$reset"\
         "$gold"
-    echo "you can use divvun-checker to create initial gold data..."
+    echo "you can use divvun-runtime to create initial gold data..."
     exit 77
 fi
 if ! test -f "$tts_archive" ; then

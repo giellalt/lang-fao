@@ -70,6 +70,8 @@ AC_CONFIG_FILES([tools/analysers/test/regresstest.sh], \
 # tts tests, all langauges
 AC_CONFIG_FILES([tools/tts/test/regresstest.sh], \
       [chmod a+x tools/tts/test/regresstest.sh])
+AC_CONFIG_FILES([tools/tts/test/unittest.sh], \
+      [chmod a+x tools/tts/test/unittest.sh])
 # Spell checker tests, all languages:
 AC_CONFIG_FILES([tools/spellcheckers/test/test-zhfst-file.sh], \
       [chmod a+x tools/spellcheckers/test/test-zhfst-file.sh])

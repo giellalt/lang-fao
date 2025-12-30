@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# This is a shell script that will call the actual test runner with the
+# specified transducer. This determines also the set of yaml test files looped
+# over by the test runner.
+
+# settings that can be changed:
+yamls="yamls/*.yaml"
+fsa=@abs_srcdir@/../generator-tts-gt-norm.hfstol
+
+# ensure that we are ran from make or setup properly
+if test -z "$srcdir" ; then
+    echo "srcdir= not set, this must be run from make or set srcdir=."
+    exit 2
+fi
+testrunner="@GIELLA_CORE@/scripts/simpler-yaml-runner.sh"
+if ! test -x "$testrunner" ; then
+    echo "missing test runner in $testrunner"
+    exit 77
+fi
+if ! test -f $fsa ; then
+    echo "missing fsa in $fsa"
+    exit 77
+fi
+for yaml in $yamls ; do
+    if ! test -f "$yaml" ; then
+        echo "no tests matching $yaml found"
+        exit 77
+    fi
+done
+####### Run the helper script from giella core - DO NOT CHANGE: ########
+"$testrunner" "$fsa" $yamls
+rv=$?
+if test $rv == 77 ; then
+    exit 77
+elif test $rv -gt 0 ; then
+    exit 1
+fi
+

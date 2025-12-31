@@ -953,6 +953,13 @@ AC_ARG_ENABLE([custom-fsts],
               [enable_custom_fsts=$DEFAULT_CUSTOM_FSTS])
 AM_CONDITIONAL([WANT_CUSTOM_FSTS], [test "x$enable_custom_fsts" != xno])
 
+AC_ARG_ENABLE([slow-tests],
+              [AS_HELP_STRING([--enable-slow-tests],
+                              [run slow tests in check @<:@default=no@:>@])],
+              [enable_slow_tests=$enableval],
+              [enable_slow_tests=no])
+AM_CONDITIONAL([WANT_SLOW_TESTS], [test "x$enable_slow_tests" != xno])
+
 ]) # gt_ENABLE_TARGETS
 
 ################################################################################

@@ -1,0 +1,155 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2015 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@uit.no or feedback@divvun.no
+
+! ================= !
+! The Finnish dates !
+! ================= !
+
+
+! 12.8.
+! Borgekuun guoktelot beaivi
+
+Multichar_Symbols
+
+
++Use/NG ! For substandard month names used in Oahpa
++Use/NA ! For substandard month names used in Oahpa
+! They will be accepted but not generated.
+ 
+LEXICON Root
+ DAYS ;
+! ZERODAY ; !If we want digits, this path adds 0
+
+!LEXICON ZERODAY !If we want digits, this lexicon adds 0
+! :%0 SINGLEDAYS ; 
+ 
+LEXICON DAYS !This lexicon makes it possible to add 0
+1:1%  EHAKIMIHT-1 ;
+1st:1%  EHAKIMIHT-ST ;
+2:2%  EHAKIMIHT-1 ;
+2nd:2%  EHAKIMIHT-ST ;
+3:3%  EHAKIMIHT-1 ;
+3rd:3%  EHAKIMIHT-ST ;
+4:4%  EHAKIMIHT ;
+5:5%  EHAKIMIHT ;
+6:6%  EHAKIMIHT ;
+7:7%  EHAKIMIHT ;
+8:8%  EHAKIMIHT ;
+9:9%  EHAKIMIHT ;
+1%0:1%0%  EHAKIMIHT ;
+11:11%  EHAKIMIHT ;
+12:12%  EHAKIMIHT ;
+13:13%  EHAKIMIHT ;
+14:14%  EHAKIMIHT ;
+15:15%  EHAKIMIHT ;
+16:16%  EHAKIMIHT ;
+17:17%  EHAKIMIHT ;
+18:18%  EHAKIMIHT ;
+19:19%  EHAKIMIHT ;
+2%0:2%0%  EHAKIMIHT ;
+21:21%  EHAKIMIHT-1 ;
+21st:21%  EHAKIMIHT-ST ;
+22:22%  EHAKIMIHT-1 ;
+22nd:22%  EHAKIMIHT-ST ;
+23:23%  EHAKIMIHT-1 ;
+23rd:23%  EHAKIMIHT-ST ;
+24:24%  EHAKIMIHT ;
+25:25%  EHAKIMIHT ;
+26:26%  EHAKIMIHT ;
+27:27%  EHAKIMIHT ;
+28:28%  EHAKIMIHT ;
+29:29%  EHAKIMIHT ;
+3%0:3%0%  EHAKIMIHT30 ;
+3%0th:3%0%  EHAKIMIHT30-ST ;
+3%1:3%1%  EHAKIMIHT31 ;
+3%1st:3%1%  EHAKIMIHT31-ST ;
+
+LEXICON EHAKIMIHT
+  EHAKIMIHT-1 ;
+th:  EHAKIMIHT-ST ;
+
+LEXICON EHAKIMIHT-1
+%.% :ehakimiht%  29MONTHS ; !5. September
+%.:ehakimiht%  29MONTHS ; !5.September
+% :ehakimiht%  29MONTHS ; !5 September
+
+LEXICON EHAKIMIHT-ST
+% of% :ehakimiht%  29MONTHS ; !5 September
+
+
+LEXICON 29MONTHS
+February:mikisowipîsimohk ENDLEX ; 
+April:ayikipîsimohk ENDLEX ;
+June:opâskâwewowipîsimohk ENDLEX ; 
+September:onôcihitowipîsimohk ENDLEX ; 
+January:kisepîsimohk ENDLEX ; 
+March:niskipîsimohk ENDLEX ; 
+May:opiniyâwewowipîsimohk ENDLEX ;
+July:opaskowipîsimohk ENDLEX ;
+August:ohpahowipîsimohk ENDLEX ; 
+October:kaskatinowipîsimohk ENDLEX ;
+December:manitow% kîsikan% pîsimohk ENDLEX ; 
+December:pawahcakinasîs ENDLEX ; 
+November:iyikopîwipîsimohk ENDLEX ; 
+
+LEXICON EHAKIMIHT30
+%.%  :ehakimiht%  30MONTHS ; !5. September
+%.:ehakimiht%  30MONTHS ;!5.September
+% :ehakimiht%  30MONTHS ; !5 September
+
+LEXICON EHAKIMIHT30-ST
+% of% :ehakimiht%  30MONTHS ; !5 September
+
+
+LEXICON 30MONTHS
+April:ayikipîsimohk ENDLEX ;
+June:opâskâwewowipîsimohk ENDLEX ; 
+September:onôcihitowipîsimohk ENDLEX ;
+November:iyikopîwipîsimohk ENDLEX ; 
+January:kisepîsimohk ENDLEX ; 
+March:niskipîsimohk ENDLEX ; 
+May:opiniyâwewowipîsimohk ENDLEX ;
+July:opaskowipîsimohk ENDLEX ;
+August:ohpahowipîsimohk ENDLEX ; 
+October:kaskatinowipîsimohk ENDLEX ; 
+December:manitow% kîsikan% pîsimohk ENDLEX ;
+December:pawahcakinasîs ENDLEX ;
+October:kaskatinowipîsimohk ENDLEX ; 
+December:manitow% kîsikan% pîsimohk ENDLEX ;
+December:pawahcakinasîs ENDLEX ;
+
+
+LEXICON EHAKIMIHT31
+%.% :ehakimiht%   31MONTHS ; !5. January
+%.:ehakimiht%   31MONTHS ; !5.January
+% :ehakimiht%  31MONTHS ; !5 January
+
+LEXICON EHAKIMIHT31-ST
+% of% :ehakimiht%  31MONTHS ; !5 September
+
+
+LEXICON 31MONTHS
+January:kisepîsimohk ENDLEX ;
+March:niskipîsimohk ENDLEX ;
+May:opiniyâwewowipîsimohk ENDLEX ;
+July:opaskowipîsimohk ENDLEX ;
+August:ohpahowipîsimohk ENDLEX ;
+October:kaskatinowipîsimohk ENDLEX ;
+December:manitow% kîsikan% pîsimohk ENDLEX ;
+December:pawahcakinasîs ENDLEX ;
+
+  
+LEXICON ENDLEX
+ # ;
+! # ; ! sloppy punctuation

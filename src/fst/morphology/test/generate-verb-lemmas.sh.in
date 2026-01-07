@@ -41,6 +41,7 @@ fi
 if ! test -f "$source_file" ; then
     printf "%sfail%s missing lexc file %s\n" "$red" "$reset" \
         "$source_file"
+    exit 1
 fi
 
 "$genscript" -l "$source_file" \

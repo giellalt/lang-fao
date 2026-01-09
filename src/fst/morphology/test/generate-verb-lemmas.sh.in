@@ -9,8 +9,10 @@ analyser_file=@abs_builddir@/../../analyser-gt-norm
 tags=+V+Inf
 # advanced settings (leave empty or write full args)
 xtags="-t +V+Inf+Pass"
-inclusions=
-exclusions=
+# {in,ex}clusions are given in arrays to retain spaces, for example:
+# inclusions=("--include" "REG EX" "--include" "EGERG XEX")
+inclusions=()
+exclusions=()
 
 # avoid changing common scripting stuff here:
 
@@ -46,7 +48,7 @@ fi
 
 "$genscript" -l "$source_file" \
     -g "$generator_file.hfstol" -a "$analyser_file.hfstol" \
-        -t "$tags" $xtags $inclusions $exclusions
+        -t "$tags" $xtags "${inclusions[@]}" "${exclusions[@]}"
 rv=$?
 if test $rv = 77 ; then
     printf "%sskipped%s" "$light_blue" "$reset"

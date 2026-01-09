@@ -10,8 +10,10 @@ analyser_file=@abs_builddir@/../../analyser-gt-norm
 tags="+A+Msc+Sg+Nom+Indef"
 # advanced settings (leave empty or write full args)
 xtags="-t +A+Msc+Sg+Nom+Def -t +A+Comp+Msc+Sg+Nom+Def -t +A+Superl+Msc+Sg+Nom+Def"
-inclusions=
-exclusions="--exclude (adjcmp1|ELDRI|ELSTUR|adj_def)"
+# {in,ex}clusions are given in arrays to retain spaces, for example:
+# inclusions=("--include" "REG EX" "--include" "EGERG XEX")
+inclusions=()
+exclusions=("--exclude" "(adjcmp1|ELDRI|ELSTUR|adj_def")
 
 # avoid changing common scripting stuff here:
 
@@ -47,7 +49,7 @@ fi
 
 "$genscript" -l "$source_file" \
     -g "$generator_file.hfstol" -a "$analyser_file.hfstol" \
-    -t "$tags" $xtags $inclusions $exclusions
+    -t "$tags" $xtags "${inclusions[@]}" "${exclusions[@]}"
 rv=$?
 if test $rv = 77 ; then
     printf "%sskipped%s\n" "$light_blue" "$reset"

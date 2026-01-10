@@ -354,7 +354,7 @@ AC_ARG_WITH([log-viewer],
             [AS_HELP_STRING([--with-log-viewer=VIEWER],
                             [open test logs in VIEWER @<:@default=head@:>@])],
             [with_log_viewer=$withval],
-            [with_log_viewer=$ac_cv_prog_HEAD])
+            [with_log_viewer=$ac_cv_path_HEAD])
 AC_SUBST([LOG_VIEWER], [$with_log_viewer])
 ]) # gt_PROG_SCRIPTS_PATHS
 

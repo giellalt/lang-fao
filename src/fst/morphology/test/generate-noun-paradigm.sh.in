@@ -42,7 +42,8 @@ if ! test -f "$LEXC" ; then
 fi
 
 "$TESTSCRIPT" -p "$PARADIGM" -l "$LEXC" -T "$THRESHOLD" \
-    -g "$GENERATOR" $EXCLUDETAGS $EXCLUDEFORMS
+    -g "$GENERATOR" $EXCLUDETAGS $EXCLUDEFORMS \
+    -E @LOG_VIEWER@ 
 rv=$?
 if test $rv = 77 ; then
     printf "%sskip%s\n" "$lightblue" "$reset"

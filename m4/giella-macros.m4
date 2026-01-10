@@ -349,6 +349,13 @@ AC_PATH_PROG([DIVVUN_RUNTIME], [divvun-runtime], [false], [$PATH$PATH_SEPARATOR$
 # Enable .drb support if divvun-runtime is available
 AM_CONDITIONAL([HAVE_DIVVUN_RUNTIME], [test x$DIVVUN_RUNTIME != xfalse])
 
+AC_PATH_PROG([HEAD], [head], [cat])
+AC_ARG_WITH([log-viewer],
+            [AS_HELP_STRING([--with-log-viewer=VIEWER],
+                            [open test logs in VIEWER @<:@default=head@:>@])],
+            [with_log_viewer=$withval],
+            [with_log_viewer=$ac_cv_prog_HEAD])
+AC_SUBST([LOG_VIEWER], [$with_log_viewer])
 ]) # gt_PROG_SCRIPTS_PATHS
 
 
@@ -702,12 +709,27 @@ AS_IF([test x$GTLEMMATEST = xfalse],
         pipx install git+https://github.com/divvun/giellaltlextools
       ])],
       AC_MSG_RESULT([yes]))
+_gtlextools_min_version=0.4.0
+gtlextools_too_old_message="gtlextools needs to be updated.
+    If you installed it with pipx, run:
+        pipx upgrade GiellaLTLexTools"
 AC_MSG_CHECKING([if gtlextools is up-to-date])
 AS_IF([test x$GTMULTICHARTEST = xfalse],
       [gt_MSG_ERROR([gtlextools is too old and missing some stuff, do:
         pipx upgrade giellaltlextools
       ])],
       AC_MSG_RESULT([yes]))
+AS_IF([test "x${GTLEMMATEST}" != xno],
+        [_gtlextools_version=$( "${GTLEMMATEST}" --version | sed -e 's/^.*gtlemmatest //')],
+        [_gtlextools_version=0])
+AC_MSG_RESULT([$_gtlextools_version])
+AC_MSG_CHECKING([whether the gtlextools version is at least $_gtlextools_min_version])
+AX_COMPARE_VERSION([$_gtlextools_version], [ge], [$_gtlextools_min_version],
+                   [gtlextools_version_ok=yes], [gtlextools_version_ok=no])
+AC_MSG_RESULT([$gtlextools_version_ok])
+AS_IF([test "x$enable_grammarchecker" != "xno"], 
+    AS_IF([test "x${gtlextools_version_ok}" != xno],,
+          [gt_MSG_ERROR([$gtlextools_too_old_message])]))
 
 
 # Enable all spellers - default is 'no'

@@ -43,14 +43,14 @@ AC_ARG_ENABLE([configure-errors],
 
 AC_DEFUN([gt_MSG_ERROR],
          [AS_IF([test x$enable_configure_errors != xno],
-                [tput setaf 1
-                 AC_MSG_ERROR([$1])
-                 tput sgr0],
+                [_red=`tput setaf 1`
+                 _reset=`tput sgr0`
+                 AC_MSG_ERROR([$_red $1 $_reset])],
                 [AC_MSG_NOTICE([ignored error: $1])])])
 AC_DEFUN([gt_MSG_WARN],
-         [tput setaf 3
-          AC_MSG_WARN([$1])
-          tput sgr0])
+         [_yellow=`tput setaf 3`
+          _reset=`tput sgr0`
+          AC_MSG_WARN([$_yellow $1 $_reset])])
 
 AC_DEFUN([gt_PROG_SCRIPTS_PATHS],
 [

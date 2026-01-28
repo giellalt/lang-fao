@@ -280,7 +280,7 @@ Rule: **General U-umlaut**
 **Tests:**
 
 * *dag^UUML>um*
-* *døg00um*
+* *døg0>um*
 * *sag^UUML>a*
 * *søg00a*
 * *all^UUML>*
@@ -347,8 +347,6 @@ Rule: **Stem vowel change in Weak Verbs**
 
 * *flek^WVV>t*
 * *flak00t*
-* *flek^WVV>t*
-* *flak00t*
 * *vel^WVV>di*
 * *val00di*
 
@@ -396,7 +394,7 @@ Rule: **Vowel shortening in Neuter**
 * *góð>t*
 * *got0t*
 * *skjót>t*
-* *skjót0t*
+* *skjót0t* `???` (Eng. XXX check)
 
 ## Other rules
 

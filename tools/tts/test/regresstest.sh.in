@@ -4,10 +4,10 @@
 # change settings here:
 corpus=@abs_srcdir@/corpus.txt
 gold=@abs_srcdir@/corpus.gold.cg3text
-variant=@GLANG@-normaliser
+variant=@GLANG@-analyser
 tts_dir=@abs_builddir@/../
 tts_archive=$tts_dir/@GTLANG2@-tts.zpipe
-level=suffixed  # we only care about "phon
+level=tags
 threshold=99
 
 # avoid changing common scripts from here:

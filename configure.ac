@@ -71,7 +71,7 @@ AC_SUBST([SPELLER_DESC_NATIVE], ["TRANSLATE: A spellchecker for $GLANGUAGE, made
 ### Grammar checker release version (usually different from the package version,
 ### typically grammar checkers are released more often than the language
 ### package, and also different from the speller release version):
-AC_SUBST([GRAMCHECKVERSION], [0.2.0])
+AC_SUBST([GRAMCHECKVERSION], [1.0.0])
 
 ### Hyphenation release version
 AC_SUBST([HYPHVERSION], [0.1.0])

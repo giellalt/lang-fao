@@ -82,6 +82,14 @@ LEXICON maltag
    sonur+N+Prop+Sem/Mal+Sg:son   k47   ;
 +N+Prop+Sem/Mal: R- ;
 
+LEXICON femtag
+!!= **@LEXNAME@**
+ +N+Prop+Sem/Fem+Sg+Nom:    #  ;
+ +N+Prop+Sem/Fem+Sg+Acc:    #  ;
+ +N+Prop+Sem/Fem+Sg+Dat:    #  ;
+ +N+Prop+Sem/Fem+Sg+Gen:%>s #  ;
+        +N+Prop+Sem/Fem:    R- ;
+
 LEXICON MUSTAFA
 !!= **@LEXNAME@** 
  +N+Prop+Sem/Mal+Sg+Nom:     #     ;
@@ -277,6 +285,14 @@ LEXICON orgtag ! XXXcheck
 LEXICON vehtag ! XXXcheck
 !!= **@LEXNAME@** 
  +N+Prop+Sem/Veh+Sg proptagc ;
+
+LEXICON objtagv ! XXXcheck
+!!= **@LEXNAME@** 
+ +N+Prop+Sem/Obj+Sg proptagv ;
+
+LEXICON objtagc ! XXXcheck
+!!= **@LEXNAME@** 
+ +N+Prop+Sem/Obj+Sg proptagc ;
 
 !LEXICON mscorgtag ! XXXcheck
 ! +N+Prop+Msc: S_M_SGNOM ;

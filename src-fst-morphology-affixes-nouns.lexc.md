@@ -505,19 +505,33 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON h33** høvur
 * **LEXICON h34** fæ
 * **LEXICON h34e** 
+
 * **LEXICON h_flt34** 
+
 * **LEXICON h3e/kv2** 
+
 * **LEXICON h36** 
-* **LEXICON h36e** 
-* **LEXICON h_flt36** 
-* **LEXICON h37** 
-* **LEXICON h37e** 
-* **LEXICON h_flt37** 
-* **LEXICON h38** 
-* **LEXICON h40** 
-* **LEXICON h40_2** 
-* **LEXICON h41/9** 
-* **LEXICON h41** 
+
+* **LEXICON h36e**
+
+* **LEXICON h_flt36**
+
+* **LEXICON h37**
+
+* **LEXICON h37e**
+
+* **LEXICON h_flt37**
+
+* **LEXICON h38**
+
+* **LEXICON h40**
+
+* **LEXICON h40_2**
+
+* **LEXICON h41/9**
+
+* **LEXICON h41**
+
 * **LEXICON h41e** 
 * **LEXICON h_flt41** 
 

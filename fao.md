@@ -767,19 +767,33 @@ Thereafter it points to Layer 2, the case suffixes
 * **LEXICON h33** høvur
 * **LEXICON h34** fæ
 * **LEXICON h34e** 
+
 * **LEXICON h_flt34** 
+
 * **LEXICON h3e/kv2** 
+
 * **LEXICON h36** 
-* **LEXICON h36e** 
-* **LEXICON h_flt36** 
-* **LEXICON h37** 
-* **LEXICON h37e** 
-* **LEXICON h_flt37** 
-* **LEXICON h38** 
-* **LEXICON h40** 
-* **LEXICON h40_2** 
-* **LEXICON h41/9** 
-* **LEXICON h41** 
+
+* **LEXICON h36e**
+
+* **LEXICON h_flt36**
+
+* **LEXICON h37**
+
+* **LEXICON h37e**
+
+* **LEXICON h_flt37**
+
+* **LEXICON h38**
+
+* **LEXICON h40**
+
+* **LEXICON h40_2**
+
+* **LEXICON h41/9**
+
+* **LEXICON h41**
+
 * **LEXICON h41e** 
 * **LEXICON h_flt41** 
 
@@ -974,20 +988,7 @@ the ways stems may be combined.
 This lexicon just goes to #, this in order to coexist with number files in giella-shared.
 They are relevant for Sámi, not for faroese.
 
-Lexica: 
-
-* LEXICON DIGITCASE 				 # ;		 
-* LEXICON ARABICCASE 				 # ;		 
-* LEXICON ARABICCASE0 				 # ;	 
-* LEXICON ARABICCASECOLL 				 # ;	 
-* LEXICON ARABICCASEORD 				 # ;	 
-* LEXICON ARABICCASEORD-ERR 				 # ; 
-* LEXICON ARABICCASES 				 # ;	 
-* LEXICON ARABICCOMPOUNDS 			 # ;	 
-* LEXICON ROMNUMTAGOBL 				 # ;	 
-* LEXICON dateyearcase 				 # ;	 
-* LEXICON dateyearcase_fullsuff 		 # ;	 
-* LEXICON dateyearcase_nullsuff_w_dot  # ;	 
+Lexica:
 
 * * *
 
@@ -2135,15 +2136,17 @@ be used alone, but can appear in any position
 * +Use/Circ = for compound restrictions
 
 * **+Use/PMatch** means that the following is only used in the analyser feeding the disambiguator. This is missing.
-
 * +Use/-PMatch
 * +Use/-Spell
 * +Use/NG
 * +Use/NGA
 * +Use/SpellNoSugg
-* **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
+* **+Use/GC** — **only** retained in the HFST Grammar Checker disambiguation analyser
+* **+Use/-GC** — **never** retained in the HFST Grammar Checker disambiguation analyser
 * **+Use/TTS** – **only** retained in the HFST Text-To-Speech disambiguation tokeniser
 * **+Use/-TTS** – **never** retained in the HFST Text-To-Speech disambiguation tokeniser
+
+* **+Span** – used to designate numerical spans, like date or length ranges
 
 * +Err/Guess : Tag for Name Guesser component
 * +Err/Orth : Marking forms that are orthographical errors
@@ -2477,24 +2480,24 @@ The file `stems/conjunctions.lexc` contains two lexica:
 
 ## src-fst-morphology-stems-fao-acronyms.lexc.md 
 
-## Akronymer 
+## Akronymer
 
 This documents the `stems/fao-acronyms.lexc` file.
 Most acronyms are taken from a common generated file, this file is for the Faroese-specific acronyms.
 
-**LEXICON Acronym-fao** pointing to the lexica 
+**LEXICON Acronym-fao** pointing to the lexica
 * Akronymnumeralier ; (Nogle tal først, måskje?)
-* Acronym-fao-list ; 
+* Acronym-fao-list ;
 
 **LEXICON Acronym-fao-list** for selve listen, i øjeblikket 2:
-* StÍF ACRO ; 
-* T5PC ACRO ; 
-* TB ACRO ; 
-* VB ACRO ; 
-* NSÍ ACRO ; 
-* GÍ ACRO ; 
-* ÍF ACRO ; 
-* KÍ ACRO ; 
+* StÍF ACRO ;
+* T5PC ACRO ;
+* TB ACRO ;
+* VB ACRO ;
+* NSÍ ACRO ;
+* GÍ ACRO ;
+* ÍF ACRO ;
+* KÍ ACRO ;
 
 **Akronymnumeralier**  for 0-9
 

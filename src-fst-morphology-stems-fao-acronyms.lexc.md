@@ -1,21 +1,21 @@
-# Akronymer 
+# Akronymer
 
 This documents the `stems/fao-acronyms.lexc` file.
 Most acronyms are taken from a common generated file, this file is for the Faroese-specific acronyms.
 
-**LEXICON Acronym-fao** pointing to the lexica 
+**LEXICON Acronym-fao** pointing to the lexica
 * Akronymnumeralier ; (Nogle tal først, måskje?)
-* Acronym-fao-list ; 
+* Acronym-fao-list ;
 
 **LEXICON Acronym-fao-list** for selve listen, i øjeblikket 2:
-* StÍF ACRO ; 
-* T5PC ACRO ; 
-* TB ACRO ; 
-* VB ACRO ; 
-* NSÍ ACRO ; 
-* GÍ ACRO ; 
-* ÍF ACRO ; 
-* KÍ ACRO ; 
+* StÍF ACRO ;
+* T5PC ACRO ;
+* TB ACRO ;
+* VB ACRO ;
+* NSÍ ACRO ;
+* GÍ ACRO ;
+* ÍF ACRO ;
+* KÍ ACRO ;
 
 **Akronymnumeralier**  for 0-9
 

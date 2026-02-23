@@ -180,15 +180,17 @@ be used alone, but can appear in any position
 * +Use/Circ = for compound restrictions
 
 * **+Use/PMatch** means that the following is only used in the analyser feeding the disambiguator. This is missing.
-
 * +Use/-PMatch
 * +Use/-Spell
 * +Use/NG
 * +Use/NGA
 * +Use/SpellNoSugg
-* **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
+* **+Use/GC** — **only** retained in the HFST Grammar Checker disambiguation analyser
+* **+Use/-GC** — **never** retained in the HFST Grammar Checker disambiguation analyser
 * **+Use/TTS** – **only** retained in the HFST Text-To-Speech disambiguation tokeniser
 * **+Use/-TTS** – **never** retained in the HFST Text-To-Speech disambiguation tokeniser
+
+* **+Span** – used to designate numerical spans, like date or length ranges
 
 * +Err/Guess : Tag for Name Guesser component
 * +Err/Orth : Marking forms that are orthographical errors

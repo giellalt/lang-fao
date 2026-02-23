@@ -201,17 +201,18 @@ Multichar_Symbols  !!≈ # Definitions for @CODE@
 +Use/Disamb  !!≈ * @CODE@ = Use only in disambiguator/tokeniser analyser
 +Use/Circ    !!≈ * @CODE@ = for compound restrictions
 
- +Use/PMatch       !!≈ * **@CODE@** means that the following is only used in the analyser feeding the disambiguator. This is missing.
++Use/PMatch       !!≈ * **@CODE@** means that the following is only used in the analyser feeding the disambiguator. This is missing.
++Use/-PMatch      !!≈ * @CODE@
++Use/-Spell       !!≈ * @CODE@
++Use/NG           !!≈ * @CODE@
++Use/NGA          !!≈ * @CODE@
++Use/SpellNoSugg  !!≈ * @CODE@
++Use/GC           !!≈ * **@CODE@** — **only** retained in the HFST Grammar Checker disambiguation analyser
++Use/-GC          !!≈ * **@CODE@** — **never** retained in the HFST Grammar Checker disambiguation analyser
++Use/TTS          !!≈ * **@CODE@** – **only** retained in the HFST Text-To-Speech disambiguation tokeniser
++Use/-TTS         !!≈ * **@CODE@** – **never** retained in the HFST Text-To-Speech disambiguation tokeniser
 
-+Use/-PMatch	       !!≈ * @CODE@
-+Use/-Spell		       !!≈ * @CODE@
-+Use/NG			       !!≈ * @CODE@
-+Use/NGA		       !!≈ * @CODE@
-+Use/SpellNoSugg       !!≈ * @CODE@
-+Use/GC           !!≈ * **@CODE@** only retained in the HFST Grammar Checker disambiguation analyser
- +Use/TTS          !!≈ * **@CODE@** – **only** retained in the HFST Text-To-Speech disambiguation tokeniser
- +Use/-TTS         !!≈ * **@CODE@** – **never** retained in the HFST Text-To-Speech disambiguation tokeniser
-
++Span         !!≈ * **@CODE@** – used to designate numerical spans, like date or length ranges
 
 +Err/Guess								!!≈ * @CODE@ : Tag for Name Guesser component
 +Err/Orth								!!≈ * @CODE@ : Marking forms that are orthographical errors

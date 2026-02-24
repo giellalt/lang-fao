@@ -91,17 +91,6 @@ endif
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-# The operation 'twosided flag-diacritics" crashes Xerox badly, so we do with
-# a simpler, less restrictive normative fst when building with Xerox:
-.generated/analyser-gt-norm.xfst: .generated/analyser-gt-norm.tmp.xfst \
-					filters/remove-norm-comp-tags.xfst             
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/remove-norm-comp-tags.xfst\"             \
-			.o. @\"$<\"                                         \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
 # ... and also in the Oahpa analyser:
 .generated/analyser-oahpa-gt-norm.%: .generated/analyser-oahpa-gt-norm.tmp.% \
 					filters/remove-norm-comp-tags.%             

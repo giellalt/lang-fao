@@ -12,8 +12,8 @@
 # 2. Split multiple tags into separate paths
 # 3. Convert tags to flags
 # 4. Make flags two-sided
-generator-fstspeller-gt-norm.hfst: \
-		generator-fstspeller-gt-norm.tmp.hfst \
+.generated/generator-fstspeller-gt-norm.hfst: \
+		.generated/generator-fstspeller-gt-norm.tmp.hfst \
 		filters/convert_to_flags-CmpNP-tags.hfst \
 		filters/split-CmpNP-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "\

@@ -8,7 +8,7 @@ export default function smeGramRelease(entry: StringEntry): Command {
   x = divvun.blanktag("whitespace", x, { model_path: "analyser-gt-whitespace.hfst" });
   x = cg3.vislcg3("mwe-dis", x, { model_path: "mwe-dis.bin" });
   x = cg3.mwesplit("mwesplit", x);
-  x = divvun.blanktag("whitespace", x, { model_path: "analyser-gt-whitespace.hfst" });
+  x = divvun.blanktag("errorwhitespace", x, { model_path: "analyser-gt-errorwhitespace.hfst" });
   x = divvun.cgspell("speller", x, {
         acc_model_path: "acceptor.default.hfst",
         err_model_path: "errmodel.default.hfst"

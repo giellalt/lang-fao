@@ -11,7 +11,8 @@ SUBDIRS = filters . tests
 GIELLA_GC_MWEDIS_SRC=mwe-dis.cg3
 GIELLA_GC_SPELLER_CG_SRC=spellchecker.cg3
 GIELLA_GC_GRAMCHECKER_SRC=grammarchecker.cg3
-GIELLA_GC_WHSPACE_ANAL_SRC=analyser-gt-whitespace.regex
+GIELLA_GC_WHSPACE_ANAL_SRC=analyser-gt-whitespace.regex \
+						   analyser-gt-errorwhitespace.regex
 
 # Will by default use the one in src/cg3/disambiguator.cg3. To use a
 # different file, specify anther filename here:

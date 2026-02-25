@@ -1,0 +1,28 @@
+[ { }* {  } {"<} ?* {>"}  ?* ]:[ "<doubleSpaceBefore>"    ]
+
+[ ?*        {"<(>"}      { } ]:[ "<spaceAfterParenBeg>"   ]
+[ { }       {"<)>"}       ?* ]:[ "<spaceBeforeParenEnd>"  ]
+[ ?*        {"<[>"}      { } ]:[ "<spaceAfterParenBeg>"   ]
+[ { }       {"<]>"}       ?* ]:[ "<spaceBeforeParenEnd>"  ]
+[ ?*        {"<{>"}      { } ]:[ "<spaceAfterParenBeg>"   ]
+[ { }       {"<} "}" {>"} ?* ]:[ "<spaceBeforeParenEnd>"  ]
+[ ?*        {"<<>"}      { } ]:[ "<spaceAfterParenBeg>"   ]
+[ { }       {"<>>"}       ?* ]:[ "<spaceBeforeParenEnd>"  ]
+
+[ { }       {"<,>"}       ?* ]:[ "<SpaceBeforePunctMark>" ]
+[ { }       {"<?>"}       ?* ]:[ "<SpaceBeforePunctMark>" ]
+[ { }       {"<!>"}       ?* ]:[ "<SpaceBeforePunctMark>" ]
+[ { }       {"<.>"}       ?* ]:[ "<SpaceBeforePunctMark>" ]
+[ { }       {"<:>"}       ?* ]:[ "<SpaceBeforePunctMark>" ]
+[ { }       {"<;>"}       ?* ]:[ "<SpaceBeforePunctMark>" ]
+
+[ ?*        {"<,>"}          ]:[ "<NoSpaceAfterPunctMark>"]
+[ ?*        {"<;>"}          ]:[ "<NoSpaceAfterPunctMark>"]
+[ ?*        {"<.>"}          ]:[ "<NoSpaceAfterPunctMark>"]
+[ ?*        {"<:>"}          ]:[ "<NoSpaceAfterPunctMark>"]
+[ ?*        {"<!>"}          ]:[ "<NoSpaceAfterPunctMark>"]
+[ ?*        {"<?>"}          ]:[ "<NoSpaceAfterPunctMark>"]
+[ ?*        {"<} ?* {.>"}    ]:[ "<NoSpaceAfterPunctMark>"]
+
+[ ?*        {"<)>"}          ]:[ "<NoSpaceAfterParenEnd>" ]
+[           {"<(>"}       ?* ]:[ "<NoSpaceBeforeParenBeg>"]

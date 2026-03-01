@@ -1568,6 +1568,7 @@ Here we declare all symbols.
 * **%^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0** : Cns deletion triggers,
 * **%^AB1:0 %^AB2:0 %^AB3:0 %^AB4:0 %^AB5:0 %^AB6:0 %^AB7:0** : Ablaut series ,
 * **%^aAB:0 %^uAB:0** : Ablaut series subcases
+* **%>** : Suffix border
 
 * **%[<%]** : Real less than
 * **%[>%]** : Real greater than

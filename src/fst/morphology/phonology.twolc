@@ -128,7 +128,7 @@ Rules
 
 !!€ brúður^EPH^RDEL>ar
 !!€ brúð00000ar
-
+!€ b r ú ð u:0 r:0 ^EPH:0 ^RDEL:0 > a r
 
 "Deleting m in um%>num "
 !! Rule: **@RULENAME@** 
@@ -139,9 +139,10 @@ Rules
 
 !!€ ris>um>num
 !!€ ris0u00num
+!€ r i s > u m:0 > n u m
 !!€ skógv^GVDEL>m>num
 !!€ skó000000num
-
+!€ s k ó g:0 v:0 ^GVDEL:0 > m:0 > n u m
 
 
 "Deleting Double Consonant in Front of Consonant"
@@ -161,11 +162,13 @@ Rules
 
 !!€ hjall>s
 !!€ hjal00s
+!€ h j a l l:0 > s
 !!€ rygg>s
 !!€ ryg00s
+!€ r y g g:0 > s
 !!€ hjall>ar
 !!€ hjall0ar
-
+!€ h j a l l > a r
 
 
 !"Double consonant simplification in front of t"
@@ -174,7 +177,7 @@ Rules
 
 !!€ all>t
 !!€ al00t
-
+!€ a l l:0 > t
 
 !"Deleting Double Consonant in Front of t + vow"
 ! Cx:0 <=> Vow Cx _ ( (%>) ( u: r: ) Dummy:) %> t [a|i|u]  ; 
@@ -204,10 +207,13 @@ Rules
 !! **Tests:**
 !!€ send>di
 !!€ sen00di
+!€ s e n d:0 > d i
 !!€ hirð>di
 !!€ hir00di
+!€ h i r ð:0 > d i
 !!€ sett>ti
 !!€ set00ti 	      
+!€ s e t t:0 > t i
 
 !"Geminate Assimilation After t Final Stem Cluster"
 ! t:0 <=> Vow Cns _ %> t ;
@@ -230,11 +236,13 @@ Rules
 
 !!€ leið>di
 !!€ leid0di
+!€ l e i ð:d > d i
 !!€ greið>di
 !!€ greid0di
+!€ g r e i ð:d > d i
 !!€ ryð^WVV>di
 !!€ rud00di
-
+!€ r y:u ð:d ^WVV:0 > d i
 
 "Deleting Double Consonant in Front of Epenthesis mark"
 !! Rule: **@RULENAME@** 
@@ -247,8 +255,11 @@ Rules
 
 !!€ summar^EPH>i
 !!€ sum00r00i
+!€ s u m m:0 a:0 r ^EPH:0 > i
+
 !!€ himmal^EPH^UUML>um
 !!€ him00l000um
+!€ h i m m:0 a:0 l ^EPH:0 ^UUML:0 > u m
 
 !tunnil>i
 !tun00l>i
@@ -263,8 +274,7 @@ Rules
 
 !!€ primus>s
 !!€ primus00
-!!€ primus>s
-!!€ primus00
+!€ p r i m u s > s:0
 !!€ grís>s
 !!€ grís00
 
@@ -283,6 +293,7 @@ Rules
 
 !!€ leið>t
 !!€ leit0t
+!€ l e i ð:t > t
 
 "Adjusting Dental Past Suffix -d(i)"
 !! Rule: **@RULENAME@** 
@@ -292,8 +303,11 @@ Rules
 
 !!€ keyp>di
 !!€ keyp0ti
+!€ k e y p > d:t i
 !!€ merk>di
 !!€ merk0ti
+!€ m e r k > d:t i
+
 
 !! ## Adjectival sandhi rules
 
@@ -312,8 +326,10 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 
 !!€ mikil^EPH>t
 !!€ miki000ð
+!€ m i k i l:0 ^EPH:0 > t:ð
 !!€ gamal^EPH>t
 !!€ gamal00t
+!€ g a m a l ^EPH:0 > t
 
 "t Deletion in Neuter"
 !! Rule: **@RULENAME@** 
@@ -335,13 +351,17 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 
 !!€ kríggj^GDEL>num
 !!€ kríg0000num	
+!€ k r í g g:0 j:0 ^GDEL:0 > n u m
 !!€ beiggj^JI>i
 !!€ beigg000i
+!€ b e i g g j:0 ^JI:0 > i
+
 !!€ verkj^JDEL>ur
-!!€ verk000ur
+!!€ verk000u
+!€ v e r k j:0 ^JDEL:0 > u r
 !!€ heyggj>i
 !!€ heygg00i
-
+!€ h e y g g j:0 > i
 
 "Realising j in front of vowels"
 !! Rule: **@RULENAME@** 
@@ -368,6 +388,8 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 
 !svii2>
 !svii>
+!€ s v i i2:i >
+
 
 !! ###  Epenthetic vowel rules
 
@@ -381,13 +403,16 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 
 !!€ økur^EPH^UUML>um
 !!€ øk0r000um
+!€ ø k u:0 r ^EPH:0 ^UUML:0 > u m
 !!€ lykil^EPH>an
 !!€ lyk0l00an
+!€ l y k i:0 l ^EPH:0 > a n
 !!€ aftan^EPH>
 !!€ aftan00
+!€ a f t a n ^EPH:0 >
 !!€ vakin^EPH>ir
 !!€ vak0n00ir
-
+!€ v a k i:0 n ^EPH:0 > i r
 
 
 "U-umlaut of Epenthetic vowel"
@@ -713,12 +738,13 @@ Vx:ý <=> _ Cns:+ %^AB7: ;
 
 !! **Tests:**
 
-!€ g ó:o ð:t > t
+!€ g ó:o ð:s > t
 !!€ góð>t
 !!€ got0t
 !€ s k j ó t > t
 !!€ skjót>t
 !!€ skjót0t ??? XXX check
+
 
 
 !! ## Other rules

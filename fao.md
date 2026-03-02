@@ -1701,6 +1701,7 @@ Rule: **Deleting Double Consonant in Front of Epenthesis mark**
 
 * *summar^EPH>i*
 * *sum00r00i*
+
 * *himmal^EPH^UUML>um*
 * *him00l000um*
 
@@ -1708,8 +1709,6 @@ Rule: **Deleting stem-final s in s genitive**
 
 **Tests:**
 
-* *primus>s*
-* *primus00*
 * *primus>s*
 * *primus00*
 * *grís>s*
@@ -1758,8 +1757,9 @@ Rule: **Deleting j**
 * *kríg0000num*
 * *beiggj^JI>i*
 * *beigg000i*
+
 * *verkj^JDEL>ur*
-* *verk000ur*
+* *verk000u*
 * *heyggj>i*
 * *heygg00i*
 

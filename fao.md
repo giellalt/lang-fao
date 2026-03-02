@@ -1604,9 +1604,6 @@ Rule: **Deleting g**
 * Deleting second g in ggj Genitive II
 * Deleting g in sting:stakst
 
-* *sting^NGKK^aAB>st*
-* *stak0000st*
-
 Rule: **ng to kk Part 1** changes n to k in ng:kk before ^NGKK trigger
 
 Rule: **ng to kk Part 2** changes g to k in ng:kk before ^NGKK trigger
@@ -1615,38 +1612,11 @@ Rule: **Deleting v in gv sequences** Verschärverung II gives v:0 for gv:00 befo
 
 **Verschärfung tests:***
 
-* *bógv^IUML>i*
-* *bøg000i*
-* *flúgv^IUML^VDEL*
-* *flýg000*
-* *flúgv^VSH^VDEL>u*
-* *flug0000u*
-* *búgv^GVDEL>s*
-* *bú0000s*
-* *bógv^VDEL>s*
-* *bóg000s*
-* *skógv^GVDEL>m*
-* *skó0000m*
-* *skýggj^GGDEL>s*
-* *ský00000s*
-* *kríggj^GDEL>s*
-* *kríg0000s*
-* *sjógv^GDEL>ar*
-* *sjó0v00ar*
-
 Rule: **Deleting r in Genitive of ur stems** 
-
-* *brúður^EPH^RDEL>ar*
-* *brúð00000ar*
 
 Rule: **Deleting m in um%>num ** 
 
 **Tests:**
-
-* *ris>um>num*
-* *ris0u00num*
-* *skógv^GVDEL>m>num*
-* *skó000000num*
 
 Rule: **Deleting Double Consonant in Front of Consonant** 
 
@@ -1657,16 +1627,6 @@ end of the file - but only when using the Xerox tools! XXX - please have a look!
 
 **Tests:**
 
-* *hjall>s*
-* *hjal00s*
-* *rygg>s*
-* *ryg00s*
-* *hjall>ar*
-* *hjall0ar*
-
-* *all>t*
-* *al00t*
-
 ### Verbal Sandhi rules
 
 Rule: **Geminate Assimilation in Past Tense d** 
@@ -1674,12 +1634,6 @@ Rule: **Geminate Assimilation in Past Tense d**
 Rule: **Geminate Assimilation in Past Tense t** 
 
 **Tests:**
-* *send>di*
-* *sen00di*
-* *hirð>di*
-* *hir00di*
-* *sett>ti*
-* *set00ti*
 
 Rule: **ð Assimilation in Front of Dental Past Suffix -d(i)** 
 
@@ -1688,31 +1642,13 @@ Rule: **ð Assimilation in Front of Dental Past Suffix -d(i)**
 
 **Tests:**
 
-* *leið>di*
-* *leid0di*
-* *greið>di*
-* *greid0di*
-* *ryð^WVV>di*
-* *rud00di*
-
 Rule: **Deleting Double Consonant in Front of Epenthesis mark** 
 
 **Tests:**
 
-* *summar^EPH>i*
-* *sum00r00i*
-
-* *himmal^EPH^UUML>um*
-* *him00l000um*
-
 Rule: **Deleting stem-final s in s genitive** 
 
 **Tests:**
-
-* *primus>s*
-* *primus00*
-* *grís>s*
-* *grís00*
 
 Rule: **Double ð Deletion** 
 
@@ -1720,17 +1656,9 @@ Rule: **ð Assimilation in Front of Supine Suffix -t**
 
 **Tests:**
 
-* *leið>t*
-* *leit0t*
-
 Rule: **Adjusting Dental Past Suffix -d(i)** 
 
 **Tests:**
-
-* *keyp>di*
-* *keyp0ti*
-* *merk>di*
-* *merk0ti*
 
 ### Adjectival sandhi rules
 
@@ -1740,11 +1668,6 @@ Rule: **Adjective neuter after nlr 2**
 
 **Tests:**
 
-* *mikil^EPH>t*
-* *miki000ð*
-* *gamal^EPH>t*
-* *gamal00t*
-
 Rule: **t Deletion in Neuter** 
 
 j rules
@@ -1753,22 +1676,9 @@ Rule: **Deleting j**
 
 **Tests:**
 
-* *kríggj^GDEL>num*
-* *kríg0000num*
-* *beiggj^JI>i*
-* *beigg000i*
-
-* *verkj^JDEL>ur*
-* *verk000u*
-* *heyggj>i*
-* *heygg00i*
-
 Rule: **Realising j in front of vowels** 
 
 **Tests:**
-
-* *hylj2>ar*
-* *hylj0ar*
 
 Vowel rules  
 
@@ -1782,72 +1692,29 @@ Rule: **Epenthetic deletion**
 
 **Tests:**
 
-* *økur^EPH^UUML>um*
-* *øk0r000um*
-* *lykil^EPH>an*
-* *lyk0l00an*
-* *aftan^EPH>*
-* *aftan00*
-* *vakin^EPH>ir*
-* *vak0n00ir*
-
 Rule: **U-umlaut of Epenthetic vowel** 
 
 **Tests:**
-
-* *gamal^EPH^UUML*
-* *gomul00*
-
-* *gamal^EPH^UUML>u*
-* *gom0l00>u*
 
 #### Umlaut rules
 
 Rule: **U-umlaut in Front of Nasal** 
 
-* *tank^UUML*
-* *tonk0*
-
 **Tests:**
-
-* *band^UUML*
-* *bond0*
-
-* *hamar^EPH^UUML>um*
-* *hom0r000um*
 
 Rule: **General U-umlaut** 
 
 **Tests:**
 
-* *dag^UUML>um*
-* *døg0>um*
-* *sag^UUML>a*
-* *søg00a*
-* *all^UUML>*
-* *øll00*
-
 Rule: **U-umlaut for akur** 
 
 **Tests:**
-
-* *akur^EPH^UUML>um*
-* *øk0r000um*
 
 Rule: **I-umlaut** 
 
 **Tests:**
 
-* *dag^IUML>i*
-* *deg00i*
-* *son^IUML>i*
 * *syn00i*
-* *bógv^IUML>i*
-* *bøg000i*
-* *ung^IUMLr>i*
-* *yng0r0i*
-* *fjørð^IUML>i*
-* *f0irð00i*
 
 Rule: **eI-umlaut** for o:e, á:e, i:e
 
@@ -1857,24 +1724,15 @@ Rule: **Inverted U-umlaut from ø**
 
 **Tests:**
 
-* *fløtt^OEAa*
-* *flatt0a*
-
 Rule: **Inverted U-umlaut from o** 
 
 **Tests:**
-
-* *fonn^OA>ar*
-* *fann00ar*
 
 Rule: **o/ei-Umlaut I** 
 
 Rule: **o/ei-Umlaut II** 
 
 **Tests:**
-
-* *dreing^EIO>i*
-* *dro0ng00i*
 
 #### Vowel deletion rules
 
@@ -1886,17 +1744,9 @@ Rule: **Stem vowel change in Weak Verbs**
 
 **Tests:**
 
-* *flek^WVV>t*
-* *flak00t*
-* *vel^WVV>di*
-* *val00di*
-
 Rule: **Stem Vowel Shortening in Supine and Participle** 
 
 **Tests:**
-
-* *bít^VSHin>a*
-* *bit00n>a*
 
 Rule: **Past tense singular diphthongs I** 
 
@@ -1904,15 +1754,9 @@ Rule: **Past tense singular diphthongs II**
 
 **Tests:**
 
-* *b0ít^AB1*
-* *beit0*
-
 Rule: **Past tense singular monophthongs** 
 
 **Tests:**
-
-* *gev^AB3*
-* *gav0*
 
 Rule: **Past tense plural monophthongs** 
 
@@ -1931,11 +1775,6 @@ Rule: **Present tense ý**
 Rule: **Vowel shortening in Neuter** 
 
 **Tests:**
-
-* *góð>t*
-* *got0t*
-* *skjót>t*
-* *skjót0t* `???` (Eng. XXX check)
 
 ### Other rules
 

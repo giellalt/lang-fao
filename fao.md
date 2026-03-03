@@ -1637,9 +1637,6 @@ Rule: **Geminate Assimilation in Past Tense t**
 
 Rule: **ð Assimilation in Front of Dental Past Suffix -d(i)** 
 
-* *leið>di*
-* *leid0di*
-
 **Tests:**
 
 Rule: **Deleting Double Consonant in Front of Epenthesis mark** 
@@ -1682,10 +1679,6 @@ Rule: **Realising j in front of vowels**
 
 Vowel rules  
 
-Rule: **Realising i2 as i** 
-
-**Tests:**
-
 ####  Epenthetic vowel rules
 
 Rule: **Epenthetic deletion** 
@@ -1713,8 +1706,6 @@ Rule: **U-umlaut for akur**
 Rule: **I-umlaut** 
 
 **Tests:**
-
-* *syn00i*
 
 Rule: **eI-umlaut** for o:e, á:e, i:e
 

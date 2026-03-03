@@ -78,6 +78,9 @@ Rules
          Vow g:  _     j:0 [ %^GDEL: | %^GGDEL: ] %> [s|n] ; !! * Deleting second g in ggj Genitive II
          Vow :k _ (%>)  (u: r:) ([Dummy: - %^EPH:]) (Dummy:*) %> [d|ð|s|t] ([a|i|u]) ; !! * Deleting g in sting:stakst
 
+! Feilmelding:
+! The correspondence          Vow :k _ (%>)  (u: r:) ([Dummy: - %^EPH:]) (Dummy:*) %> [d|ð|s|t] ([a|i|u]) ; !! * Deleting g in sting:stakst contains unquoted colon-symbols. If you want to input pairs where either symbol is epsilon, use 0 e.g. "m a s s 0:e s".	 
+
 ! "Deleting Double Consonant kk etc. in Front of Consonant"
 ! !! __@RULENAME@__
 !  g:0 <=> Vow :k _ (%>)  (u: r:) ([Dummy: - %^EPH:]) %> [d|ð|s|t] ([a|i|u]) ;
@@ -192,8 +195,7 @@ Rules
 !! Rule: **@RULENAME@** 
  ð:d <=> Vow _(%^WVV:) %> d \d ; ! fjern dette: (%>) [ #: | Vow ] ;
  
-!!€ leið>di
-!!€ leid0di 
+!€ l e i ð:d > d i
 
 !"ð Assimilation in Front of Dental Past Suffix -d(i)"
 !!! __@RULENAME@__ 
@@ -317,20 +319,19 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 !  ===========  !
 
 
-"Realising i2 as i"
-!! Rule: **@RULENAME@** 
- i2:i => _ %> ;
+!"Realising i2 as i"
+! Rule: **@RULENAME@** 
+!" i2:i => _ %> ;
 
-!! **Tests:**
-
-!€ s v i i2:i >
+! **Tests:** i2 always i
+! s v i i2:i >
 
 
 !! ###  Epenthetic vowel rules
 
 "Epenthetic deletion"
 !! Rule: **@RULENAME@** 
- Vx:0 <=> Vow: Cns:* (%^VSH:|%^AB5:) (%>) _ (%>) [ r: | l | n ] %^EPH: ( Special:* ) %> Vow ; !Vow ;
+ Vx:0 <=> Vow: Cns:* (%^VSH:|%^AB5:) (%>) _ (%>) [r:|l|n] %^EPH: ( Special:* ) %> Vow ; !Vow ;
       where Vx in (a i u) ;
  !Vow was commented out?
 
@@ -404,7 +405,6 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 !! **Tests:**
 
 !€ d a:e g ^IUML:0 > i
-!!€ syn00i
 !€ b ó:ø g v:0 ^IUML:0 > i
 !€ u:y n g ^IUML:0 r > i
 !€ f j:0 ø:i r ð ^IUML:0 > i

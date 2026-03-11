@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='utf8'>
+	<meta name='viewport' content='width=device-width'>
+
+	<title>Accuracy test</title>
+
+	<link rel='icon' type='image/png' href='/favicon.png'>
+	<link rel='stylesheet' href='/typosreport/global.css'>
+	<link rel='stylesheet' href='/typosreport/bundle.css'>
+
+	<script>
+		// Apply theme immediately before page renders to avoid flash
+		(function() {
+			try {
+				const savedTheme = localStorage.getItem('theme');
+				const allowedThemes = ['light', 'dark', 'auto'];
+				const validTheme = allowedThemes.includes(savedTheme) ? savedTheme : 'auto';
+				let themeToApply;
+				
+				if (validTheme === 'auto') {
+					const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+					themeToApply = prefersDark ? 'dark' : 'light';
+				} else {
+					themeToApply = validTheme;
+				}
+				
+				document.documentElement.setAttribute('data-theme', themeToApply);
+			} catch (e) {
+				// If localStorage is blocked or throws, default to light theme
+				document.documentElement.setAttribute('data-theme', 'light');
+			}
+		})();
+	</script>
+
+	<script defer src='/typosreport/bundle.js'></script>
+</head>
+
+<body>
+</body>
+</html>

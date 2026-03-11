@@ -255,7 +255,7 @@ AC_PATH_PROG([DIVVUN_ACCURACY], [accuracy], [false],
              [$PATH$PATH_SEPARATOR$with_divvunspell])
 # Make sure that accuracy is new enough:
 AS_IF([test "x$DIVVUN_ACCURACY" != xfalse], [
-_accuracy_min_version=m4_default([$1], [1.0.0-beta.2])
+_accuracy_min_version=m4_default([$1], [1.0.0-beta.8])
 AC_MSG_CHECKING([whether accuracy is at least $_accuracy_min_version])
 _accuracy_version=$( ${DIVVUN_ACCURACY} --version 2>&1 | cut -d' ' -f2 )
 AX_COMPARE_VERSION([$_accuracy_version], [ge], [$_accuracy_min_version],

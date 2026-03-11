@@ -9,6 +9,7 @@ TESTER=@DIVVUN_ACCURACY@
 THRESHOLD=75
 TYPOS="@srcdir@/typos.tsv"
 ZHFST="@builddir@/../@GTLANG2@.zhfst"
+REPORT="@top_srcdir@/docs/typosreport/report.json"
 
 if test x$TESTER = xfalse ; then
     printf "%sSKIP%s: missing divvunspell accuracy\n" "$light_blue" "$reset"
@@ -24,7 +25,7 @@ if test ! -f "$TYPOS" ; then
     exit 77
 fi
 # run accuracy on typos
-$TESTER -T $THRESHOLD "$TYPOS" "$ZHFST"
+$TESTER -T $THRESHOLD --verbose -o "$REPORT" "$TYPOS" "$ZHFST"
 rv=$?
 if test $rv == 77 ; then
     printf "%sSKIP%s\n" "$light_blue" "$reset"

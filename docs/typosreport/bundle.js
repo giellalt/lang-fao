@@ -3612,7 +3612,7 @@ var app = (function () {
     	}
 
     	function fetchReport() {
-    		return fetch(`/typosreport/report.json`).then(r => r.json()).then(data => {
+    		return fetch(`./report.json`).then(r => r.json()).then(data => {
     			$$invalidate(0, report = data);
     			originalResults = report.results.slice();
     			$$invalidate(1, results = report.results.slice());

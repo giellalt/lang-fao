@@ -8,15 +8,15 @@ jobs:
   build-and-docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           repository: giellalt/giella-core
           path: giella-core
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           repository: giellalt/giella-shared
           path: giella-shared
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           path: lang
       - name: Install dev dependencies

@@ -33,7 +33,7 @@ jobs:
       - name: get list of files
         id: getfile
         run: |
-          echo "::set-output name=files::$(find lang/docs -name '*.md' | xargs)"
+          echo "files=$(find lang/docs -name '*.md' | xargs)" >> $GITHUB_OUTPUT
 
       - name: print list of files for debugging
         run: |

@@ -7,7 +7,7 @@ ZHFSTFILE=../${LANG}.zhfst
 
 if test -x ${HFST_OSPELL} ; then
   if test -f ${ZHFSTFILE} ; then
-    mytime="$(time -p ( echo nuvviDspeller \
+    mytime="LC_TIME=C $(time -p ( echo nuvviDspeller \
             | ${HFST_OSPELL} -S ${ZHFSTFILE} ) 2>&1 1>/dev/null )"
     suggtime="$(printf "$mytime" | fgrep 'real' | cut -d' ' -f2 )"
 

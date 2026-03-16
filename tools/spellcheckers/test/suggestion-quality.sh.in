@@ -10,6 +10,7 @@ THRESHOLD=75
 TYPOS="@srcdir@/typos.tsv"
 ZHFST="@builddir@/../@GTLANG2@.zhfst"
 REPORT="@top_srcdir@/docs/typosreport/report.json"
+CONFIG="@srcdir@/../config.json"
 
 if test x$TESTER = xfalse ; then
     printf "%sSKIP%s: missing divvunspell accuracy\n" "$light_blue" "$reset"
@@ -24,8 +25,11 @@ if test ! -f "$TYPOS" ; then
     printf "%sSKIP%s: test data %s not found\n" "$light_blue" "$reset" "$TYPOS"
     exit 77
 fi
+if test -f "$CONFIG" ; then
+    CONFIGOPTION=" -c $CONFIG "
+fi
 # run accuracy on typos
-$TESTER -T $THRESHOLD --verbose -o "$REPORT" "$TYPOS" "$ZHFST"
+$TESTER -T $THRESHOLD --verbose $CONFIGOPTION -o "$REPORT" "$TYPOS" "$ZHFST"
 rv=$?
 if test $rv == 77 ; then
     printf "%sSKIP%s\n" "$light_blue" "$reset"

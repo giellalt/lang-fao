@@ -5,7 +5,7 @@ if test -f "$GIELLA_CORE/scripts/termcolors.bash" ; then
     . "$GIELLA_CORE/scripts/termcolors.bash"
 fi
 # settings:
-TESTER=@DIVVUN_ACCURACY@
+TESTER=@DIVVUNSPELL@
 THRESHOLD=75
 TYPOS="@srcdir@/typos.tsv"
 ZHFST="@builddir@/../@GTLANG2@.zhfst"
@@ -29,7 +29,7 @@ if test -f "$CONFIG" ; then
     CONFIGOPTION=" -c $CONFIG "
 fi
 # run accuracy on typos
-$TESTER -T $THRESHOLD --verbose $CONFIGOPTION -o "$REPORT" "$TYPOS" "$ZHFST"
+$TESTER accuracy -T $THRESHOLD --verbose $CONFIGOPTION -o "$REPORT" "$TYPOS" "$ZHFST"
 rv=$?
 if test $rv == 77 ; then
     printf "%sSKIP%s\n" "$light_blue" "$reset"

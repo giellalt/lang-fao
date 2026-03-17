@@ -251,18 +251,16 @@ AC_ARG_WITH([divvunspell],
             [with_divvunspell=no])
 AC_PATH_PROG([DIVVUNSPELL], [divvunspell], [false],
              [$PATH$PATH_SEPARATOR$with_divvunspell])
-AC_PATH_PROG([DIVVUN_ACCURACY], [accuracy], [false],
-             [$PATH$PATH_SEPARATOR$with_divvunspell])
-# Make sure that accuracy is new enough:
-AS_IF([test "x$DIVVUN_ACCURACY" != xfalse], [
-_accuracy_min_version=m4_default([$1], [1.0.0-beta.8])
-AC_MSG_CHECKING([whether accuracy is at least $_accuracy_min_version])
-_accuracy_version=$( ${DIVVUN_ACCURACY} --version 2>&1 | cut -d' ' -f2 )
-AX_COMPARE_VERSION([$_accuracy_version], [ge], [$_accuracy_min_version],
-                   [accuracy_version_ok=yes
-                    AC_MSG_RESULT([yes - $_accuracy_version])
-                   ], [accuracy_version_ok=no
-                    gt_MSG_ERROR([no - $_accuracy_version, please update])
+# Make sure that divvunspell is new enough:
+AS_IF([test "x$DIVVUNSPELL" != xfalse], [
+_divvunspell_min_version=m4_default([$1], [1.0.0-beta.11])
+AC_MSG_CHECKING([whether divvunspell is at least $_divvunspell_min_version])
+_divvunspell_version=$( ${DIVVUNSPELL} --version 2>&1 | cut -d' ' -f2 )
+AX_COMPARE_VERSION([$_divvunspell_version], [ge], [$_divvunspell_min_version],
+                   [divvunspell_version_ok=yes
+                    AC_MSG_RESULT([yes - $_divvunspell_version])
+                   ], [divvunspell_version_ok=no
+                    gt_MSG_ERROR([no - $_divvunspell_version, please update])
                    ])
 ])
 

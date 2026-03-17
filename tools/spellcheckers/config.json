@@ -1,0 +1,13 @@
+{
+  "n-best": 15,
+  "max-weight": 10000,
+  "beam": 49,
+  "reweight": {
+    "start-penalty": 20,
+    "mid-penalty": 5,
+    "end-penalty": 10
+  },
+  "node-pool-size": 128,
+  "recase": true,
+  "completion-marker": null
+}

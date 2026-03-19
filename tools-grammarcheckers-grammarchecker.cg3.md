@@ -52,6 +52,10 @@ Declaring all the error tags
 
 ## Nouns
 
+## tí / tíð rules
+
+### **RULE:** tí should be tíð
+
 ### Definiteness
 
 ### **RULE:** Neu Indef should be Neu Def

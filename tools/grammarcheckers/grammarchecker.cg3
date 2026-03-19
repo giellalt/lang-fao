@@ -337,12 +337,13 @@ SET NOT-1SG = WORD - 1Sg - (Prt Sg) ;
 
 #!! Declaring all the error tags
 
-LIST &lex-lat-laet = &lex-lat-laet ;
+#LIST &lex-lat-laet = &lex-lat-laet ;
 LIST &lex-liti-litid = &lex-liti-litid ;
 LIST &lex-ta-tad = &lex-ta-tad ;
+LIST $lex-ti-tid = &lex-ti-tid ;
 LIST &msyn-inf-sup = &msyn-inf-sup ;
-LIST &msyn-nomindef-nomdef = &msyn-nomindef-nomdef ;
-LIST &msyn-nsg-npl = &msyn-nsg-npl ;
+#LIST &msyn-nomindef-nomdef = &msyn-nomindef-nomdef ;
+#LIST &msyn-nsg-npl = &msyn-nsg-npl ;
 LIST &msyn-prfptc-sg1 = &msyn-prfptc-sg1 ;
 LIST &msyn-sup-inf = &msyn-sup-inf ;
 LIST &msyn-supsup-supinf = &msyn-supsup-supinf ;
@@ -530,6 +531,12 @@ COPY:msyn-inf-sup (Sup &SUGGEST) EXCEPT (Ind Prs Pl &msyn-inf-sup) TARGET (V &ms
 
 #!! ## Nouns
 
+
+#!! ## tí / tíð rules
+
+#!! ### **RULE:** tí should be tíð
+ADD:lex-ti-tid (&lex-ti-tid) TARGET (<tí> "tað" Pron Pers Sg Dat); # IF (-1 (Det Fem Acc));
+COPY:lex-ti-tid ("tíð" N Fem Acc Sg Indef  &SUGGEST) EXCEPT ("tað" Pron Pers Sg Dat &lex-ti-tid) TARGET (&lex-ti-tid) ;
 
 #!! ### Definiteness
 

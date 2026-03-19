@@ -52,7 +52,7 @@ jobs:
         uses: zulip/github-actions-zulip/send-message@v1
         with:
           api-key: ${{ secrets.ZULIP_API_KEY }}
-          email: "github-bot@giella.zulipchat.com"
+          email: "github-2-bot@giella.zulipchat.com"
           organization-url: "https://giella.zulipchat.com"
           to: "${{env.ISO}}"
           type: "stream"

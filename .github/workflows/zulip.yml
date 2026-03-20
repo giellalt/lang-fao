@@ -5,9 +5,6 @@ on:
       - '**'
     tags-ignore:
       - '**'
-  pull_request:
-    branches:
-      - '**'
 jobs:
   send-push-info-to-zulip:
     runs-on: ubuntu-latest

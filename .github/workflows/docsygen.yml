@@ -8,11 +8,11 @@ jobs:
   generate-docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           repository: giellalt/giella-core
           path: giella-core
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           path: lang
 

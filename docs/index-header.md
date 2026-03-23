@@ -38,9 +38,8 @@ For a presentation, see
 ## Resources based upon the Faroese language model
 
 ### Proofing tools
-- [Downloadable spell checker](https://divvun.no/no/index.html) (download **Divvun-installer**)
-- [Downloadable grammar checker](https://divvun.no/korrektur/gramcheck.html) (for MS Word and Googledocs)
-- [Faroese spellchecker online](https://divvun.org/proofing/online-speller.html) (cf. the **Help text** on the page)
+- [Downloadable Faroese spell checker and grammarchecker](https://borealium.org/en/language/fo/) 
+- [Faroese spellchecker and grammarchecker online](https://divvun.uit.no/?lang=fo&environment=dev&checkerType=grammar)
 
 ### Linguistic resources
 - [Faroese online tagged corpus](http://gtweb.uit.no/f_korp/?mode=fao#?lang=nb&stats_reduce=word&cqp=%5B%5D) (25 mill words), cf. also the [documentation](https://giellalt.github.io/lang/common/Korp_usage.html) for how to search with it

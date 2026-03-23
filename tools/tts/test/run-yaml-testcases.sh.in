@@ -5,8 +5,8 @@
 # over by the test runner.
 
 # settings that can be changed:
-yamls="yamls/*.yaml"
-fsa=@abs_srcdir@/../generator-tts-gt-norm.hfstol
+yamls="@abs_srcdir@/yamls/*.yaml"
+fsa="@abs_builddir@/../generator-tts-gt-norm.hfstol"
 
 # ensure that we are ran from make or setup properly
 if test -z "$srcdir" ; then

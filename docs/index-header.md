@@ -40,6 +40,7 @@ For a presentation, see
 ### Proofing tools
 - [Downloadable Faroese spell checker and grammarchecker](https://borealium.org/en/language/fo/) 
 - [Faroese spellchecker and grammarchecker online](https://divvun.uit.no/?lang=fo&environment=dev&checkerType=grammar)
+- [Accuracy report (for developers)](typosreport/index.html)
 
 ### Linguistic resources
 - [Faroese online tagged corpus](http://gtweb.uit.no/f_korp/?mode=fao#?lang=nb&stats_reduce=word&cqp=%5B%5D) (25 mill words), cf. also the [documentation](https://giellalt.github.io/lang/common/Korp_usage.html) for how to search with it

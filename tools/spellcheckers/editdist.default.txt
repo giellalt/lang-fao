@@ -35,6 +35,12 @@ z
 ø
 æ
 å
+à
+è
+ì
+ò
+ù
+ỳ
 -	20
 
 ## Transition pairs + weight - section separator:
@@ -57,7 +63,6 @@ i	e	4
 i	u	5
 i	y	3
 i	í	3
-í	i	5
 n	m	7
 o	ð	5
 o	ó	3
@@ -67,26 +72,33 @@ u	i	5
 u	ú	3
 v	g	7
 v	ð	7
-y	i	3
+y	i	2
 y	ý	3
-á	ó	3
+à	á	0
 á	a	3
+á	ó	3
 æ	a	2
 æ	á	2
 æ	ø	3
-í	ý	3
+è	e	0
+ì	í	0
 í	i	3
+í	i	5
+í	ý	3
 ð	d	5
 ð	g	5
 ð	v	6
 ð	å	5
+ò	ó	0
 ó	o	3
 ó	ø	3
 ø	æ	5
 ø	ó	3
+ù	ú	0
 ú	u	6
-ý	í	3
 ý	y	3
+ý	í	3
+ỳ	ý	0
 
 ## Swaps. NB! Please note that these depend on the variable
 ## USE_SWAPS in Makefile.am in this directory. Also note that

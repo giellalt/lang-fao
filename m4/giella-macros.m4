@@ -111,7 +111,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=1.5.0
+_giella_core_min_version=1.7.1
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -720,7 +720,7 @@ AS_IF([test x$GTLEMMATEST = xfalse],
         pipx install git+https://github.com/divvun/giellaltlextools
       ])],
       AC_MSG_RESULT([yes]))
-_gtlextools_min_version=0.4.0
+_gtlextools_min_version=0.4.1
 gtlextools_too_old_message="gtlextools needs to be updated.
     If you installed it with pipx, run:
         pipx upgrade GiellaLTLexTools"

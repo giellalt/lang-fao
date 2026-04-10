@@ -49,44 +49,78 @@
   },
   "summary": {
     "total_words": 338,
-    "first_position": 276,
-    "top_five": 319,
-    "any_position": 319,
-    "no_suggestions": 1,
-    "only_wrong": 12,
+    "first_position": 280,
+    "top_five": 322,
+    "any_position": 322,
+    "no_suggestions": 0,
+    "only_wrong": 13,
     "false_accept": 0,
-    "true_positive": 332,
-    "false_negative": 6,
+    "true_positive": 335,
+    "false_negative": 3,
     "true_negative": 0,
     "slowest_lookup": {
       "secs": 0,
-      "subsec_nanos": 61693209
+      "subsec_nanos": 40236083
     },
     "fastest_lookup": {
       "secs": 0,
-      "subsec_nanos": 3708
+      "subsec_nanos": 3917
     },
     "average_time": {
       "secs": 0,
-      "subsec_nanos": 5763596
+      "subsec_nanos": 5148807
     },
     "average_time_95pc": {
       "secs": 0,
-      "subsec_nanos": 4696558
+      "subsec_nanos": 4276696
     },
-    "average_position_of_correct": 1.184953,
-    "average_suggestions_for_correct": 7.37931
+    "average_position_of_correct": 1.1832298,
+    "average_suggestions_for_correct": 7.388199
   },
   "results": [
     {
       "input": " idiologiuna",
       "expected": "ideologiina",
       "distance": 3,
-      "suggestions": [],
+      "suggestions": [
+        {
+          "value": "Ideologiina",
+          "weight": 32.449604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 11.999999,
+            "reweight_start": 3.5,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "Radiologiina",
+          "weight": 33.949604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 15.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 3.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "Audiologiina",
+          "weight": 34.949604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 17.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 3.0,
+            "reweight_end": 0.0
+          }
+        }
+      ],
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7501084
+        "subsec_nanos": 6670416
       },
       "false_accept": false
     },
@@ -98,7 +132,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 16166
+        "subsec_nanos": 13667
       },
       "false_accept": true
     },
@@ -221,7 +255,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 826875
+        "subsec_nanos": 698125
       },
       "false_accept": false
     },
@@ -233,7 +267,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3708
+        "subsec_nanos": 3917
       },
       "false_accept": true
     },
@@ -279,7 +313,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7783375
+        "subsec_nanos": 4796875
       },
       "false_accept": false
     },
@@ -347,7 +381,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 17484708
+        "subsec_nanos": 8049958
       },
       "false_accept": false
     },
@@ -393,7 +427,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2481583
+        "subsec_nanos": 2373542
       },
       "false_accept": false
     },
@@ -428,7 +462,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 11472125
+        "subsec_nanos": 8609500
       },
       "false_accept": false
     },
@@ -540,7 +574,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2787250
+        "subsec_nanos": 2565292
       },
       "false_accept": false
     },
@@ -564,7 +598,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1326375
+        "subsec_nanos": 1434292
       },
       "false_accept": false
     },
@@ -632,7 +666,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 17186083
+        "subsec_nanos": 17995833
       },
       "false_accept": false
     },
@@ -667,7 +701,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 10942208
+        "subsec_nanos": 5714083
       },
       "false_accept": false
     },
@@ -702,7 +736,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 14082666
+        "subsec_nanos": 11549959
       },
       "false_accept": false
     },
@@ -781,7 +815,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 10488583
+        "subsec_nanos": 9134708
       },
       "false_accept": false
     },
@@ -827,7 +861,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2929250
+        "subsec_nanos": 3206292
       },
       "false_accept": false
     },
@@ -851,7 +885,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2920125
+        "subsec_nanos": 3441625
       },
       "false_accept": false
     },
@@ -974,7 +1008,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2075333
+        "subsec_nanos": 2241667
       },
       "false_accept": false
     },
@@ -1009,7 +1043,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2974084
+        "subsec_nanos": 4743958
       },
       "false_accept": false
     },
@@ -1132,7 +1166,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2194375
+        "subsec_nanos": 2074875
       },
       "false_accept": false
     },
@@ -1244,7 +1278,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2317750
+        "subsec_nanos": 1942042
       },
       "false_accept": false
     },
@@ -1367,7 +1401,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2404625
+        "subsec_nanos": 2313167
       },
       "false_accept": false
     },
@@ -1402,7 +1436,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4218500
+        "subsec_nanos": 4536833
       },
       "false_accept": false
     },
@@ -1503,7 +1537,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6278833
+        "subsec_nanos": 1574416
       },
       "false_accept": false
     },
@@ -1626,7 +1660,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1944875
+        "subsec_nanos": 1975792
       },
       "false_accept": false
     },
@@ -1705,7 +1739,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5510458
+        "subsec_nanos": 5936584
       },
       "false_accept": false
     },
@@ -1773,7 +1807,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5557708
+        "subsec_nanos": 5501250
       },
       "false_accept": false
     },
@@ -1808,7 +1842,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3251500
+        "subsec_nanos": 3396167
       },
       "false_accept": false
     },
@@ -1931,7 +1965,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1882542
+        "subsec_nanos": 1791667
       },
       "false_accept": false
     },
@@ -2010,7 +2044,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1932125
+        "subsec_nanos": 3830667
       },
       "false_accept": false
     },
@@ -2078,7 +2112,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2164125
+        "subsec_nanos": 4549958
       },
       "false_accept": false
     },
@@ -2201,7 +2235,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 813875
+        "subsec_nanos": 928667
       },
       "false_accept": false
     },
@@ -2324,7 +2358,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8894667
+        "subsec_nanos": 4494750
       },
       "false_accept": false
     },
@@ -2447,7 +2481,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 12446667
+        "subsec_nanos": 6687292
       },
       "false_accept": false
     },
@@ -2548,7 +2582,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1433292
+        "subsec_nanos": 2921708
       },
       "false_accept": false
     },
@@ -2616,7 +2650,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 13724417
+        "subsec_nanos": 14521583
       },
       "false_accept": false
     },
@@ -2728,7 +2762,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 41968875
+        "subsec_nanos": 28315000
       },
       "false_accept": false
     },
@@ -2807,7 +2841,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6783000
+        "subsec_nanos": 3851583
       },
       "false_accept": false
     },
@@ -2853,7 +2887,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 29503125
+        "subsec_nanos": 10779875
       },
       "false_accept": false
     },
@@ -2910,7 +2944,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3872500
+        "subsec_nanos": 2554541
       },
       "false_accept": false
     },
@@ -2967,7 +3001,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2307167
+        "subsec_nanos": 2689875
       },
       "false_accept": false
     },
@@ -3035,7 +3069,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5002709
+        "subsec_nanos": 2104292
       },
       "false_accept": false
     },
@@ -3147,7 +3181,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5806250
+        "subsec_nanos": 1356708
       },
       "false_accept": false
     },
@@ -3270,7 +3304,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 9744083
+        "subsec_nanos": 7181541
       },
       "false_accept": false
     },
@@ -3393,7 +3427,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1940542
+        "subsec_nanos": 2277750
       },
       "false_accept": false
     },
@@ -3425,6 +3459,17 @@
           }
         },
         {
+          "value": "trog",
+          "weight": 22.04414,
+          "weight_details": {
+            "lexicon_weight": 13.54414,
+            "mutator_weight": 4.0,
+            "reweight_start": 3.5,
+            "reweight_mid": 1.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
           "value": "drag",
           "weight": 23.850994,
           "weight_details": {
@@ -3447,13 +3492,13 @@
           }
         },
         {
-          "value": "trog",
-          "weight": 24.04414,
+          "value": "drong",
+          "weight": 24.50726,
           "weight_details": {
-            "lexicon_weight": 13.54414,
-            "mutator_weight": 6.0,
-            "reweight_start": 3.5,
-            "reweight_mid": 1.0,
+            "lexicon_weight": 11.507259,
+            "mutator_weight": 11.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
             "reweight_end": 0.0
           }
         },
@@ -3494,7 +3539,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1611500
+        "subsec_nanos": 1497250
       },
       "false_accept": false
     },
@@ -3551,7 +3596,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4956250
+        "subsec_nanos": 4995917
       },
       "false_accept": false
     },
@@ -3575,7 +3620,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8841416
+        "subsec_nanos": 3526625
       },
       "false_accept": false
     },
@@ -3632,7 +3677,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5932292
+        "subsec_nanos": 1722709
       },
       "false_accept": false
     },
@@ -3656,7 +3701,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 61693209
+        "subsec_nanos": 3609875
       },
       "false_accept": false
     },
@@ -3779,7 +3824,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6388541
+        "subsec_nanos": 3448791
       },
       "false_accept": false
     },
@@ -3847,7 +3892,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3471334
+        "subsec_nanos": 3085334
       },
       "false_accept": false
     },
@@ -3970,7 +4015,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3826541
+        "subsec_nanos": 1108875
       },
       "false_accept": false
     },
@@ -4027,7 +4072,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7840250
+        "subsec_nanos": 7184584
       },
       "false_accept": false
     },
@@ -4128,7 +4173,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7335833
+        "subsec_nanos": 2682291
       },
       "false_accept": false
     },
@@ -4240,7 +4285,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1796625
+        "subsec_nanos": 1999750
       },
       "false_accept": false
     },
@@ -4363,7 +4408,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2249875
+        "subsec_nanos": 2580792
       },
       "false_accept": false
     },
@@ -4486,7 +4531,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1511917
+        "subsec_nanos": 1680000
       },
       "false_accept": false
     },
@@ -4609,7 +4654,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1637584
+        "subsec_nanos": 1782417
       },
       "false_accept": false
     },
@@ -4620,10 +4665,10 @@
       "suggestions": [
         {
           "value": "flovislig",
-          "weight": 18.949604,
+          "weight": 16.949604,
           "weight_details": {
             "lexicon_weight": 14.949605,
-            "mutator_weight": 2.999999,
+            "mutator_weight": 1.0,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 0.0
@@ -4631,10 +4676,10 @@
         },
         {
           "value": "flovisligt",
-          "weight": 20.04414,
+          "weight": 18.04414,
           "weight_details": {
             "lexicon_weight": 13.54414,
-            "mutator_weight": 3.0,
+            "mutator_weight": 0.99999905,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 2.5
@@ -4642,10 +4687,10 @@
         },
         {
           "value": "flovisliga",
-          "weight": 31.449604,
+          "weight": 29.449604,
           "weight_details": {
             "lexicon_weight": 14.949605,
-            "mutator_weight": 12.999999,
+            "mutator_weight": 10.999999,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 2.5
@@ -4653,10 +4698,10 @@
         },
         {
           "value": "flovisligi",
-          "weight": 31.449604,
+          "weight": 29.449604,
           "weight_details": {
             "lexicon_weight": 14.949605,
-            "mutator_weight": 12.999999,
+            "mutator_weight": 10.999999,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 2.5
@@ -4664,10 +4709,10 @@
         },
         {
           "value": "flovisligu",
-          "weight": 31.449604,
+          "weight": 29.449604,
           "weight_details": {
             "lexicon_weight": 14.949605,
-            "mutator_weight": 12.999999,
+            "mutator_weight": 10.999999,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 2.5
@@ -4675,10 +4720,10 @@
         },
         {
           "value": "flovisligs",
-          "weight": 33.449604,
+          "weight": 31.449604,
           "weight_details": {
             "lexicon_weight": 16.949604,
-            "mutator_weight": 13.0,
+            "mutator_weight": 11.0,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 2.5
@@ -4688,7 +4733,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2794916
+        "subsec_nanos": 2714875
       },
       "false_accept": false
     },
@@ -4699,10 +4744,10 @@
       "suggestions": [
         {
           "value": "flovisligt",
-          "weight": 17.54414,
+          "weight": 15.544139,
           "weight_details": {
             "lexicon_weight": 13.54414,
-            "mutator_weight": 3.0,
+            "mutator_weight": 0.99999905,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 0.0
@@ -4710,10 +4755,10 @@
         },
         {
           "value": "flovislig",
-          "weight": 31.449604,
+          "weight": 29.449604,
           "weight_details": {
             "lexicon_weight": 14.949605,
-            "mutator_weight": 12.999999,
+            "mutator_weight": 10.999999,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 2.5
@@ -4721,10 +4766,10 @@
         },
         {
           "value": "flovisliga",
-          "weight": 31.449604,
+          "weight": 29.449604,
           "weight_details": {
             "lexicon_weight": 14.949605,
-            "mutator_weight": 12.999999,
+            "mutator_weight": 10.999999,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 2.5
@@ -4732,10 +4777,10 @@
         },
         {
           "value": "flovisligi",
-          "weight": 31.449604,
+          "weight": 29.449604,
           "weight_details": {
             "lexicon_weight": 14.949605,
-            "mutator_weight": 12.999999,
+            "mutator_weight": 10.999999,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 2.5
@@ -4743,10 +4788,10 @@
         },
         {
           "value": "flovisligu",
-          "weight": 31.449604,
+          "weight": 29.449604,
           "weight_details": {
             "lexicon_weight": 14.949605,
-            "mutator_weight": 12.999999,
+            "mutator_weight": 10.999999,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 2.5
@@ -4756,7 +4801,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2775833
+        "subsec_nanos": 2154250
       },
       "false_accept": false
     },
@@ -4766,22 +4811,22 @@
       "distance": 1,
       "suggestions": [
         {
-          "value": "fløvur",
-          "weight": 17.949604,
+          "value": "flovur",
+          "weight": 16.949604,
           "weight_details": {
-            "lexicon_weight": 13.949604,
-            "mutator_weight": 3.0,
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 1.0,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 0.0
           }
         },
         {
-          "value": "flovur",
-          "weight": 18.949604,
+          "value": "fløvur",
+          "weight": 17.949604,
           "weight_details": {
-            "lexicon_weight": 14.949605,
-            "mutator_weight": 2.999999,
+            "lexicon_weight": 13.949604,
+            "mutator_weight": 3.0,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 0.0
@@ -4811,10 +4856,10 @@
         },
         {
           "value": "flovir",
-          "weight": 24.949604,
+          "weight": 22.949604,
           "weight_details": {
             "lexicon_weight": 14.949605,
-            "mutator_weight": 7.999999,
+            "mutator_weight": 5.999999,
             "reweight_start": 0.0,
             "reweight_mid": 2.0,
             "reweight_end": 0.0
@@ -4865,7 +4910,7 @@
           }
         },
         {
-          "value": "flógvir",
+          "value": "florur",
           "weight": 27.949604,
           "weight_details": {
             "lexicon_weight": 14.949605,
@@ -4876,10 +4921,10 @@
           }
         }
       ],
-      "position": 1,
+      "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2339917
+        "subsec_nanos": 2103042
       },
       "false_accept": false
     },
@@ -5002,7 +5047,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8567666
+        "subsec_nanos": 7554417
       },
       "false_accept": false
     },
@@ -5059,7 +5104,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6790500
+        "subsec_nanos": 4335708
       },
       "false_accept": false
     },
@@ -5116,7 +5161,7 @@
       "position": 3,
       "time": {
         "secs": 0,
-        "subsec_nanos": 13079583
+        "subsec_nanos": 11300083
       },
       "false_accept": false
     },
@@ -5151,7 +5196,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3646083
+        "subsec_nanos": 5401250
       },
       "false_accept": false
     },
@@ -5274,7 +5319,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3095041
+        "subsec_nanos": 2983125
       },
       "false_accept": false
     },
@@ -5375,7 +5420,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7004208
+        "subsec_nanos": 13768792
       },
       "false_accept": false
     },
@@ -5410,7 +5455,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 9718875
+        "subsec_nanos": 8026375
       },
       "false_accept": false
     },
@@ -5522,7 +5567,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4019542
+        "subsec_nanos": 11345792
       },
       "false_accept": false
     },
@@ -5634,7 +5679,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3954417
+        "subsec_nanos": 6205583
       },
       "false_accept": false
     },
@@ -5735,7 +5780,7 @@
       "position": 4,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7149834
+        "subsec_nanos": 11117916
       },
       "false_accept": false
     },
@@ -5836,7 +5881,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1324292
+        "subsec_nanos": 1417208
       },
       "false_accept": false
     },
@@ -5959,7 +6004,7 @@
       "position": 2,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1598083
+        "subsec_nanos": 1746750
       },
       "false_accept": false
     },
@@ -6038,7 +6083,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2530750
+        "subsec_nanos": 4659166
       },
       "false_accept": false
     },
@@ -6106,7 +6151,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3927500
+        "subsec_nanos": 4325167
       },
       "false_accept": false
     },
@@ -6185,7 +6230,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2492958
+        "subsec_nanos": 3634541
       },
       "false_accept": false
     },
@@ -6209,7 +6254,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2838750
+        "subsec_nanos": 4817458
       },
       "false_accept": false
     },
@@ -6244,7 +6289,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4290833
+        "subsec_nanos": 4926250
       },
       "false_accept": false
     },
@@ -6367,7 +6412,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2173542
+        "subsec_nanos": 2762875
       },
       "false_accept": false
     },
@@ -6490,7 +6535,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2359292
+        "subsec_nanos": 2793333
       },
       "false_accept": false
     },
@@ -6544,6 +6589,17 @@
           }
         },
         {
+          "value": "gotar",
+          "weight": 19.54414,
+          "weight_details": {
+            "lexicon_weight": 13.54414,
+            "mutator_weight": 4.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
           "value": "góta",
           "weight": 19.756458,
           "weight_details": {
@@ -6566,14 +6622,14 @@
           }
         },
         {
-          "value": "gotar",
-          "weight": 21.54414,
+          "value": "koda",
+          "weight": 21.756458,
           "weight_details": {
-            "lexicon_weight": 13.54414,
-            "mutator_weight": 6.0,
+            "lexicon_weight": 13.256458,
+            "mutator_weight": 4.0,
             "reweight_start": 0.0,
             "reweight_mid": 2.0,
-            "reweight_end": 0.0
+            "reweight_end": 2.5
           }
         },
         {
@@ -6588,22 +6644,11 @@
           }
         },
         {
-          "value": "koda",
-          "weight": 23.756458,
+          "value": "gota",
+          "weight": 22.449604,
           "weight_details": {
-            "lexicon_weight": 13.256458,
-            "mutator_weight": 6.0,
-            "reweight_start": 0.0,
-            "reweight_mid": 2.0,
-            "reweight_end": 2.5
-          }
-        },
-        {
-          "value": "gøða",
-          "weight": 24.04414,
-          "weight_details": {
-            "lexicon_weight": 13.54414,
-            "mutator_weight": 6.0,
+            "lexicon_weight": 13.949605,
+            "mutator_weight": 3.999999,
             "reweight_start": 0.0,
             "reweight_mid": 2.0,
             "reweight_end": 2.5
@@ -6613,7 +6658,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1324875
+        "subsec_nanos": 1582333
       },
       "false_accept": false
     },
@@ -6736,7 +6781,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1956583
+        "subsec_nanos": 2279500
       },
       "false_accept": false
     },
@@ -6859,7 +6904,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2190167
+        "subsec_nanos": 2604458
       },
       "false_accept": false
     },
@@ -6982,7 +7027,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8450459
+        "subsec_nanos": 3709208
       },
       "false_accept": false
     },
@@ -7105,7 +7150,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5020875
+        "subsec_nanos": 6650958
       },
       "false_accept": false
     },
@@ -7228,7 +7273,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3267583
+        "subsec_nanos": 3489417
       },
       "false_accept": false
     },
@@ -7274,7 +7319,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2941417
+        "subsec_nanos": 3110042
       },
       "false_accept": false
     },
@@ -7386,7 +7431,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5539834
+        "subsec_nanos": 1617042
       },
       "false_accept": false
     },
@@ -7498,7 +7543,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5704333
+        "subsec_nanos": 5080375
       },
       "false_accept": false
     },
@@ -7621,7 +7666,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 15672708
+        "subsec_nanos": 4681125
       },
       "false_accept": false
     },
@@ -7656,7 +7701,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 15283375
+        "subsec_nanos": 18663041
       },
       "false_accept": false
     },
@@ -7713,7 +7758,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 24282792
+        "subsec_nanos": 21717334
       },
       "false_accept": false
     },
@@ -7748,7 +7793,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 13622208
+        "subsec_nanos": 18499000
       },
       "false_accept": false
     },
@@ -7794,7 +7839,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 12067209
+        "subsec_nanos": 20666417
       },
       "false_accept": false
     },
@@ -7917,7 +7962,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1701417
+        "subsec_nanos": 1799500
       },
       "false_accept": false
     },
@@ -8040,7 +8085,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2935542
+        "subsec_nanos": 3314667
       },
       "false_accept": false
     },
@@ -8141,7 +8186,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2128500
+        "subsec_nanos": 2083875
       },
       "false_accept": false
     },
@@ -8187,7 +8232,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4426167
+        "subsec_nanos": 6798875
       },
       "false_accept": false
     },
@@ -8211,7 +8256,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7694834
+        "subsec_nanos": 4578833
       },
       "false_accept": false
     },
@@ -8290,7 +8335,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1532500
+        "subsec_nanos": 2171208
       },
       "false_accept": false
     },
@@ -8413,7 +8458,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8377500
+        "subsec_nanos": 3783917
       },
       "false_accept": false
     },
@@ -8481,7 +8526,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3836541
+        "subsec_nanos": 1937208
       },
       "false_accept": false
     },
@@ -8549,7 +8594,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4319375
+        "subsec_nanos": 2902375
       },
       "false_accept": false
     },
@@ -8617,7 +8662,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2199417
+        "subsec_nanos": 3977000
       },
       "false_accept": false
     },
@@ -8649,6 +8694,17 @@
           }
         },
         {
+          "value": "honunum",
+          "weight": 24.949604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 7.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
           "value": "høpinum",
           "weight": 25.949604,
           "weight_details": {
@@ -8671,13 +8727,24 @@
           }
         },
         {
-          "value": "høsninum",
-          "weight": 25.949604,
+          "value": "holinum",
+          "weight": 26.50726,
           "weight_details": {
-            "lexicon_weight": 14.949605,
-            "mutator_weight": 9.999999,
+            "lexicon_weight": 11.507258,
+            "mutator_weight": 13.000001,
             "reweight_start": 0.0,
-            "reweight_mid": 1.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "soninum",
+          "weight": 26.647022,
+          "weight_details": {
+            "lexicon_weight": 11.647021,
+            "mutator_weight": 13.000001,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
             "reweight_end": 0.0
           }
         },
@@ -8693,6 +8760,17 @@
           }
         },
         {
+          "value": "horninum",
+          "weight": 26.809542,
+          "weight_details": {
+            "lexicon_weight": 11.80954,
+            "mutator_weight": 13.000002,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
           "value": "hóminum",
           "weight": 26.949604,
           "weight_details": {
@@ -8702,45 +8780,12 @@
             "reweight_mid": 2.0,
             "reweight_end": 0.0
           }
-        },
-        {
-          "value": "hølunum",
-          "weight": 28.423876,
-          "weight_details": {
-            "lexicon_weight": 11.423876,
-            "mutator_weight": 15.0,
-            "reweight_start": 0.0,
-            "reweight_mid": 2.0,
-            "reweight_end": 0.0
-          }
-        },
-        {
-          "value": "øninum",
-          "weight": 28.449604,
-          "weight_details": {
-            "lexicon_weight": 14.949605,
-            "mutator_weight": 9.999999,
-            "reweight_start": 3.5,
-            "reweight_mid": 0.0,
-            "reweight_end": 0.0
-          }
-        },
-        {
-          "value": "hananum",
-          "weight": 28.949604,
-          "weight_details": {
-            "lexicon_weight": 14.949605,
-            "mutator_weight": 11.999999,
-            "reweight_start": 0.0,
-            "reweight_mid": 2.0,
-            "reweight_end": 0.0
-          }
         }
       ],
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 12014625
+        "subsec_nanos": 3330792
       },
       "false_accept": false
     },
@@ -8772,6 +8817,17 @@
           }
         },
         {
+          "value": "horum",
+          "weight": 21.449604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 2.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
           "value": "hærum",
           "weight": 23.449604,
           "weight_details": {
@@ -8790,6 +8846,17 @@
             "mutator_weight": 10.0,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
+          "value": "honum",
+          "weight": 24.762497,
+          "weight_details": {
+            "lexicon_weight": 7.262497,
+            "mutator_weight": 13.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
             "reweight_end": 2.5
           }
         },
@@ -8816,17 +8883,6 @@
           }
         },
         {
-          "value": "høvum",
-          "weight": 25.94553,
-          "weight_details": {
-            "lexicon_weight": 12.445528,
-            "mutator_weight": 10.000002,
-            "reweight_start": 0.0,
-            "reweight_mid": 1.0,
-            "reweight_end": 2.5
-          }
-        },
-        {
           "value": "vørum",
           "weight": 26.154116,
           "weight_details": {
@@ -8847,23 +8903,12 @@
             "reweight_mid": 1.0,
             "reweight_end": 2.5
           }
-        },
-        {
-          "value": "pørum",
-          "weight": 28.56331,
-          "weight_details": {
-            "lexicon_weight": 12.563311,
-            "mutator_weight": 10.0,
-            "reweight_start": 3.5,
-            "reweight_mid": 0.0,
-            "reweight_end": 2.5
-          }
         }
       ],
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1647125
+        "subsec_nanos": 1366125
       },
       "false_accept": false
     },
@@ -8887,7 +8932,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6147042
+        "subsec_nanos": 10199250
       },
       "false_accept": false
     },
@@ -9010,7 +9055,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7246542
+        "subsec_nanos": 7075666
       },
       "false_accept": false
     },
@@ -9133,7 +9178,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3332125
+        "subsec_nanos": 10246292
       },
       "false_accept": false
     },
@@ -9256,7 +9301,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 15208500
+        "subsec_nanos": 2702333
       },
       "false_accept": false
     },
@@ -9379,7 +9424,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2459125
+        "subsec_nanos": 2286542
       },
       "false_accept": false
     },
@@ -9502,7 +9547,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2182000
+        "subsec_nanos": 2101083
       },
       "false_accept": false
     },
@@ -9625,7 +9670,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 17475292
+        "subsec_nanos": 10109667
       },
       "false_accept": false
     },
@@ -9737,7 +9782,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5156292
+        "subsec_nanos": 2888417
       },
       "false_accept": false
     },
@@ -9860,7 +9905,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 13588209
+        "subsec_nanos": 19503292
       },
       "false_accept": false
     },
@@ -9983,7 +10028,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2148875
+        "subsec_nanos": 2389333
       },
       "false_accept": false
     },
@@ -10106,7 +10151,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1007416
+        "subsec_nanos": 1167958
       },
       "false_accept": false
     },
@@ -10229,7 +10274,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1189167
+        "subsec_nanos": 1394375
       },
       "false_accept": false
     },
@@ -10297,7 +10342,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4163500
+        "subsec_nanos": 3606750
       },
       "false_accept": false
     },
@@ -10321,7 +10366,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2470834
+        "subsec_nanos": 3116333
       },
       "false_accept": false
     },
@@ -10411,7 +10456,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1950375
+        "subsec_nanos": 2063625
       },
       "false_accept": false
     },
@@ -10534,7 +10579,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2361750
+        "subsec_nanos": 2804083
       },
       "false_accept": false
     },
@@ -10613,7 +10658,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3054667
+        "subsec_nanos": 3825875
       },
       "false_accept": false
     },
@@ -10703,7 +10748,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5574541
+        "subsec_nanos": 2112375
       },
       "false_accept": false
     },
@@ -10826,7 +10871,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4059292
+        "subsec_nanos": 1590750
       },
       "false_accept": false
     },
@@ -10949,7 +10994,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 507791
+        "subsec_nanos": 397375
       },
       "false_accept": false
     },
@@ -11072,7 +11117,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 10316875
+        "subsec_nanos": 2341583
       },
       "false_accept": false
     },
@@ -11151,7 +11196,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3415375
+        "subsec_nanos": 3463875
       },
       "false_accept": false
     },
@@ -11160,17 +11205,6 @@
       "expected": "um",
       "distance": 1,
       "suggestions": [
-        {
-          "value": "in",
-          "weight": 11.657956,
-          "weight_details": {
-            "lexicon_weight": 9.157956,
-            "mutator_weight": 0.0,
-            "reweight_start": 0.0,
-            "reweight_mid": -1.0,
-            "reweight_end": 2.5
-          }
-        },
         {
           "value": "um",
           "weight": 13.322483,
@@ -11269,12 +11303,23 @@
             "reweight_mid": 0.0,
             "reweight_end": 2.5
           }
+        },
+        {
+          "value": "at",
+          "weight": 23.855642,
+          "weight_details": {
+            "lexicon_weight": 3.855642,
+            "mutator_weight": 14.0,
+            "reweight_start": 3.5,
+            "reweight_mid": -1.0,
+            "reweight_end": 2.5
+          }
         }
       ],
-      "position": 1,
+      "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 935667
+        "subsec_nanos": 715916
       },
       "false_accept": false
     },
@@ -11282,13 +11327,124 @@
       "input": "in",
       "expected": "inn",
       "distance": 1,
-      "suggestions": [],
-      "position": null,
+      "suggestions": [
+        {
+          "value": "inn",
+          "weight": 13.84218,
+          "weight_details": {
+            "lexicon_weight": 6.8421803,
+            "mutator_weight": 6.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "ið",
+          "weight": 17.703842,
+          "weight_details": {
+            "lexicon_weight": 5.203843,
+            "mutator_weight": 9.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": -1.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
+          "value": "ein",
+          "weight": 18.543076,
+          "weight_details": {
+            "lexicon_weight": 5.043076,
+            "mutator_weight": 10.0,
+            "reweight_start": 3.5,
+            "reweight_mid": 0.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "an",
+          "weight": 18.646244,
+          "weight_details": {
+            "lexicon_weight": 11.146245,
+            "mutator_weight": 4.0,
+            "reweight_start": 3.5,
+            "reweight_mid": -1.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "ogn",
+          "weight": 19.81411,
+          "weight_details": {
+            "lexicon_weight": 10.814111,
+            "mutator_weight": 6.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "í",
+          "weight": 19.818207,
+          "weight_details": {
+            "lexicon_weight": 3.318207,
+            "mutator_weight": 13.0,
+            "reweight_start": 3.5,
+            "reweight_mid": -1.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "enn",
+          "weight": 20.813818,
+          "weight_details": {
+            "lexicon_weight": 6.313818,
+            "mutator_weight": 10.0,
+            "reweight_start": 3.5,
+            "reweight_mid": 1.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "hin",
+          "weight": 21.329308,
+          "weight_details": {
+            "lexicon_weight": 7.829308,
+            "mutator_weight": 10.0,
+            "reweight_start": 3.5,
+            "reweight_mid": 0.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "um",
+          "weight": 22.822483,
+          "weight_details": {
+            "lexicon_weight": 4.822483,
+            "mutator_weight": 12.0,
+            "reweight_start": 3.5,
+            "reweight_mid": -1.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
+          "value": "og",
+          "weight": 23.455833,
+          "weight_details": {
+            "lexicon_weight": 3.455834,
+            "mutator_weight": 14.0,
+            "reweight_start": 3.5,
+            "reweight_mid": -1.0,
+            "reweight_end": 2.5
+          }
+        }
+      ],
+      "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3750
+        "subsec_nanos": 889250
       },
-      "false_accept": true
+      "false_accept": false
     },
     {
       "input": "innar",
@@ -11409,7 +11565,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6754667
+        "subsec_nanos": 2435834
       },
       "false_accept": false
     },
@@ -11444,7 +11600,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 15189292
+        "subsec_nanos": 13369875
       },
       "false_accept": false
     },
@@ -11567,7 +11723,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2724334
+        "subsec_nanos": 3195375
       },
       "false_accept": false
     },
@@ -11591,7 +11747,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 16183541
+        "subsec_nanos": 8055708
       },
       "false_accept": false
     },
@@ -11599,13 +11755,113 @@
       "input": "Israel",
       "expected": "Ísrael",
       "distance": 1,
-      "suggestions": [],
+      "suggestions": [
+        {
+          "value": "Ismael",
+          "weight": 25.949604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 9.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "Ísraela",
+          "weight": 33.949604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 12.999999,
+            "reweight_start": 3.5,
+            "reweight_mid": 0.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
+          "value": "Ísraeli",
+          "weight": 33.949604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 12.999999,
+            "reweight_start": 3.5,
+            "reweight_mid": 0.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
+          "value": "Isabel",
+          "weight": 35.25646,
+          "weight_details": {
+            "lexicon_weight": 13.256459,
+            "mutator_weight": 20.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "Ismail",
+          "weight": 35.949608,
+          "weight_details": {
+            "lexicon_weight": 13.949606,
+            "mutator_weight": 20.000002,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "Isdahl",
+          "weight": 36.949604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 20.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "Isdal",
+          "weight": 36.949604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 20.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "Ismaeli",
+          "weight": 38.449604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 20.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
+          "value": "Ismaels",
+          "weight": 40.449604,
+          "weight_details": {
+            "lexicon_weight": 16.949604,
+            "mutator_weight": 20.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 2.5
+          }
+        }
+      ],
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8291
+        "subsec_nanos": 9823250
       },
-      "false_accept": true
+      "false_accept": false
     },
     {
       "input": "ístadin",
@@ -11660,7 +11916,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7515209
+        "subsec_nanos": 7769250
       },
       "false_accept": false
     },
@@ -11706,7 +11962,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6559750
+        "subsec_nanos": 4393542
       },
       "false_accept": false
     },
@@ -11796,7 +12052,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 13799750
+        "subsec_nanos": 9722500
       },
       "false_accept": false
     },
@@ -11853,7 +12109,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6320500
+        "subsec_nanos": 14172709
       },
       "false_accept": false
     },
@@ -11921,7 +12177,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5712250
+        "subsec_nanos": 6761375
       },
       "false_accept": false
     },
@@ -12044,7 +12300,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 9549750
+        "subsec_nanos": 8173875
       },
       "false_accept": false
     },
@@ -12167,7 +12423,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2864584
+        "subsec_nanos": 3620875
       },
       "false_accept": false
     },
@@ -12290,7 +12546,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 687500
+        "subsec_nanos": 826417
       },
       "false_accept": false
     },
@@ -12413,7 +12669,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1222167
+        "subsec_nanos": 1469333
       },
       "false_accept": false
     },
@@ -12470,7 +12726,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4612958
+        "subsec_nanos": 5063875
       },
       "false_accept": false
     },
@@ -12593,7 +12849,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7584041
+        "subsec_nanos": 4463250
       },
       "false_accept": false
     },
@@ -12716,7 +12972,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3136208
+        "subsec_nanos": 1221083
       },
       "false_accept": false
     },
@@ -12839,7 +13095,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8399167
+        "subsec_nanos": 1736542
       },
       "false_accept": false
     },
@@ -12962,7 +13218,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4954792
+        "subsec_nanos": 1445291
       },
       "false_accept": false
     },
@@ -13019,7 +13275,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 12566375
+        "subsec_nanos": 19707583
       },
       "false_accept": false
     },
@@ -13043,7 +13299,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4995291
+        "subsec_nanos": 4892625
       },
       "false_accept": false
     },
@@ -13155,7 +13411,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1813791
+        "subsec_nanos": 2197042
       },
       "false_accept": false
     },
@@ -13201,7 +13457,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6554625
+        "subsec_nanos": 11237292
       },
       "false_accept": false
     },
@@ -13247,7 +13503,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2677250
+        "subsec_nanos": 2151750
       },
       "false_accept": false
     },
@@ -13370,7 +13626,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3203416
+        "subsec_nanos": 1908958
       },
       "false_accept": false
     },
@@ -13438,7 +13694,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 42831750
+        "subsec_nanos": 35181792
       },
       "false_accept": false
     },
@@ -13561,7 +13817,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5444500
+        "subsec_nanos": 2113000
       },
       "false_accept": false
     },
@@ -13684,7 +13940,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6548916
+        "subsec_nanos": 2513375
       },
       "false_accept": false
     },
@@ -13807,7 +14063,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5070375
+        "subsec_nanos": 1484708
       },
       "false_accept": false
     },
@@ -13919,7 +14175,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6259375
+        "subsec_nanos": 3758166
       },
       "false_accept": false
     },
@@ -14031,7 +14287,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 740750
+        "subsec_nanos": 687041
       },
       "false_accept": false
     },
@@ -14154,7 +14410,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1618250
+        "subsec_nanos": 1715750
       },
       "false_accept": false
     },
@@ -14277,7 +14533,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7626291
+        "subsec_nanos": 4312584
       },
       "false_accept": false
     },
@@ -14400,7 +14656,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2064208
+        "subsec_nanos": 2066792
       },
       "false_accept": false
     },
@@ -14523,7 +14779,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3629916
+        "subsec_nanos": 6195000
       },
       "false_accept": false
     },
@@ -14646,7 +14902,7 @@
       "position": 2,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4654292
+        "subsec_nanos": 7258542
       },
       "false_accept": false
     },
@@ -14736,7 +14992,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4768000
+        "subsec_nanos": 5029959
       },
       "false_accept": false
     },
@@ -14771,7 +15027,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6932958
+        "subsec_nanos": 6528583
       },
       "false_accept": false
     },
@@ -14880,13 +15136,13 @@
           }
         },
         {
-          "value": "in",
-          "weight": 22.657955,
+          "value": "hon",
+          "weight": 21.927692,
           "weight_details": {
-            "lexicon_weight": 9.157956,
-            "mutator_weight": 9.999999,
-            "reweight_start": 3.5,
-            "reweight_mid": 0.0,
+            "lexicon_weight": 5.927692,
+            "mutator_weight": 14.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
             "reweight_end": 0.0
           }
         }
@@ -14894,7 +15150,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1370167
+        "subsec_nanos": 1166583
       },
       "false_accept": false
     },
@@ -14973,7 +15229,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 19171959
+        "subsec_nanos": 13641292
       },
       "false_accept": false
     },
@@ -15096,7 +15352,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1224250
+        "subsec_nanos": 1628292
       },
       "false_accept": false
     },
@@ -15164,7 +15420,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4978958
+        "subsec_nanos": 6837125
       },
       "false_accept": false
     },
@@ -15221,7 +15477,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 9376291
+        "subsec_nanos": 5272875
       },
       "false_accept": false
     },
@@ -15322,7 +15578,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6282541
+        "subsec_nanos": 3013083
       },
       "false_accept": false
     },
@@ -15368,7 +15624,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1885042
+        "subsec_nanos": 2103750
       },
       "false_accept": false
     },
@@ -15436,7 +15692,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5999542
+        "subsec_nanos": 8281792
       },
       "false_accept": false
     },
@@ -15559,7 +15815,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1546667
+        "subsec_nanos": 1468125
       },
       "false_accept": false
     },
@@ -15682,7 +15938,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1901292
+        "subsec_nanos": 1690833
       },
       "false_accept": false
     },
@@ -15794,7 +16050,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2592209
+        "subsec_nanos": 2848583
       },
       "false_accept": false
     },
@@ -15862,7 +16118,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8107750
+        "subsec_nanos": 7998000
       },
       "false_accept": false
     },
@@ -15870,13 +16126,124 @@
       "input": "nemmiliga",
       "expected": "nemliga",
       "distance": 2,
-      "suggestions": [],
-      "position": null,
+      "suggestions": [
+        {
+          "value": "nemiliga",
+          "weight": 18.949604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 2.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "nemliga",
+          "weight": 28.256458,
+          "weight_details": {
+            "lexicon_weight": 13.256459,
+            "mutator_weight": 12.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "hemmiliga",
+          "weight": 28.449604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 9.999999,
+            "reweight_start": 3.5,
+            "reweight_mid": 0.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "temmiliga",
+          "weight": 28.449604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 9.999999,
+            "reweight_start": 3.5,
+            "reweight_mid": 0.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "vemmiliga",
+          "weight": 28.449604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 9.999999,
+            "reweight_start": 3.5,
+            "reweight_mid": 0.0,
+            "reweight_end": 0.0
+          }
+        },
+        {
+          "value": "nemilig",
+          "weight": 31.449604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 12.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
+          "value": "nemiligan",
+          "weight": 31.449604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 12.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
+          "value": "nemiligar",
+          "weight": 31.449604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 12.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
+          "value": "nemiligi",
+          "weight": 31.449604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 12.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
+          "value": "nemiligt",
+          "weight": 31.449604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 12.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 2.5
+          }
+        }
+      ],
+      "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8125
+        "subsec_nanos": 5890959
       },
-      "false_accept": true
+      "false_accept": false
     },
     {
       "input": "ner",
@@ -15997,7 +16364,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1196667
+        "subsec_nanos": 2441500
       },
       "false_accept": false
     },
@@ -16120,7 +16487,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1721959
+        "subsec_nanos": 4655250
       },
       "false_accept": false
     },
@@ -16221,7 +16588,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2380000
+        "subsec_nanos": 5645333
       },
       "false_accept": false
     },
@@ -16278,7 +16645,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1840500
+        "subsec_nanos": 1945333
       },
       "false_accept": false
     },
@@ -16368,7 +16735,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2406875
+        "subsec_nanos": 2169084
       },
       "false_accept": false
     },
@@ -16436,7 +16803,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2366166
+        "subsec_nanos": 1876583
       },
       "false_accept": false
     },
@@ -16548,7 +16915,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1876584
+        "subsec_nanos": 1684834
       },
       "false_accept": false
     },
@@ -16649,7 +17016,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2147459
+        "subsec_nanos": 2034709
       },
       "false_accept": false
     },
@@ -16772,7 +17139,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2986833
+        "subsec_nanos": 2081709
       },
       "false_accept": false
     },
@@ -16895,7 +17262,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3188583
+        "subsec_nanos": 3172250
       },
       "false_accept": false
     },
@@ -16996,7 +17363,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 997209
+        "subsec_nanos": 1775875
       },
       "false_accept": false
     },
@@ -17042,7 +17409,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1111417
+        "subsec_nanos": 1853459
       },
       "false_accept": false
     },
@@ -17165,7 +17532,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8627333
+        "subsec_nanos": 2865583
       },
       "false_accept": false
     },
@@ -17255,7 +17622,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4457792
+        "subsec_nanos": 3365583
       },
       "false_accept": false
     },
@@ -17267,7 +17634,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4250
+        "subsec_nanos": 4167
       },
       "false_accept": true
     },
@@ -17335,7 +17702,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4384208
+        "subsec_nanos": 4158458
       },
       "false_accept": false
     },
@@ -17414,7 +17781,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7669875
+        "subsec_nanos": 3092750
       },
       "false_accept": false
     },
@@ -17471,7 +17838,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7189000
+        "subsec_nanos": 3018875
       },
       "false_accept": false
     },
@@ -17594,7 +17961,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3272417
+        "subsec_nanos": 4145041
       },
       "false_accept": false
     },
@@ -17695,7 +18062,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5387541
+        "subsec_nanos": 2926125
       },
       "false_accept": false
     },
@@ -17719,7 +18086,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2265750
+        "subsec_nanos": 2008166
       },
       "false_accept": false
     },
@@ -17798,7 +18165,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5174542
+        "subsec_nanos": 4725542
       },
       "false_accept": false
     },
@@ -17844,7 +18211,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3460333
+        "subsec_nanos": 4266500
       },
       "false_accept": false
     },
@@ -17890,7 +18257,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5645292
+        "subsec_nanos": 12809917
       },
       "false_accept": false
     },
@@ -17936,7 +18303,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2961459
+        "subsec_nanos": 2880125
       },
       "false_accept": false
     },
@@ -18059,7 +18426,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2048625
+        "subsec_nanos": 2023208
       },
       "false_accept": false
     },
@@ -18182,7 +18549,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3019125
+        "subsec_nanos": 4797625
       },
       "false_accept": false
     },
@@ -18305,7 +18672,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2223709
+        "subsec_nanos": 5741125
       },
       "false_accept": false
     },
@@ -18428,7 +18795,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1267125
+        "subsec_nanos": 1586292
       },
       "false_accept": false
     },
@@ -18474,7 +18841,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 11161750
+        "subsec_nanos": 13203000
       },
       "false_accept": false
     },
@@ -18597,7 +18964,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5716375
+        "subsec_nanos": 5129292
       },
       "false_accept": false
     },
@@ -18654,7 +19021,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5821792
+        "subsec_nanos": 5094958
       },
       "false_accept": false
     },
@@ -18777,7 +19144,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2143417
+        "subsec_nanos": 1664125
       },
       "false_accept": false
     },
@@ -18900,7 +19267,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2679583
+        "subsec_nanos": 2723959
       },
       "false_accept": false
     },
@@ -18946,7 +19313,7 @@
       "position": 2,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7425125
+        "subsec_nanos": 10789875
       },
       "false_accept": false
     },
@@ -19058,7 +19425,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4607917
+        "subsec_nanos": 3832417
       },
       "false_accept": false
     },
@@ -19181,7 +19548,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1048083
+        "subsec_nanos": 1276167
       },
       "false_accept": false
     },
@@ -19282,7 +19649,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6386417
+        "subsec_nanos": 13394459
       },
       "false_accept": false
     },
@@ -19372,7 +19739,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3762667
+        "subsec_nanos": 3501875
       },
       "false_accept": false
     },
@@ -19495,7 +19862,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2913834
+        "subsec_nanos": 4774417
       },
       "false_accept": false
     },
@@ -19563,7 +19930,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6489334
+        "subsec_nanos": 6921750
       },
       "false_accept": false
     },
@@ -19686,7 +20053,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6811209
+        "subsec_nanos": 9776875
       },
       "false_accept": false
     },
@@ -19809,7 +20176,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2337000
+        "subsec_nanos": 2172416
       },
       "false_accept": false
     },
@@ -19844,7 +20211,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4277917
+        "subsec_nanos": 3888083
       },
       "false_accept": false
     },
@@ -19967,7 +20334,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2125208
+        "subsec_nanos": 1783292
       },
       "false_accept": false
     },
@@ -20090,7 +20457,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1061791
+        "subsec_nanos": 1192917
       },
       "false_accept": false
     },
@@ -20213,7 +20580,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1241083
+        "subsec_nanos": 1137792
       },
       "false_accept": false
     },
@@ -20270,7 +20637,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 15366042
+        "subsec_nanos": 23873416
       },
       "false_accept": false
     },
@@ -20393,7 +20760,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1725792
+        "subsec_nanos": 1878834
       },
       "false_accept": false
     },
@@ -20417,7 +20784,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 17434166
+        "subsec_nanos": 15169917
       },
       "false_accept": false
     },
@@ -20485,7 +20852,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 19364583
+        "subsec_nanos": 22778625
       },
       "false_accept": false
     },
@@ -20597,7 +20964,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7349959
+        "subsec_nanos": 16283334
       },
       "false_accept": false
     },
@@ -20720,7 +21087,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1801875
+        "subsec_nanos": 5034542
       },
       "false_accept": false
     },
@@ -20843,7 +21210,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2481125
+        "subsec_nanos": 4118958
       },
       "false_accept": false
     },
@@ -20900,7 +21267,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2639292
+        "subsec_nanos": 2801625
       },
       "false_accept": false
     },
@@ -21023,7 +21390,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2616541
+        "subsec_nanos": 2820208
       },
       "false_accept": false
     },
@@ -21146,7 +21513,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3065041
+        "subsec_nanos": 4627500
       },
       "false_accept": false
     },
@@ -21269,7 +21636,7 @@
       "position": 3,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3221542
+        "subsec_nanos": 2971833
       },
       "false_accept": false
     },
@@ -21392,7 +21759,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1607500
+        "subsec_nanos": 1427583
       },
       "false_accept": false
     },
@@ -21515,7 +21882,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4915833
+        "subsec_nanos": 4636833
       },
       "false_accept": false
     },
@@ -21638,7 +22005,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2068041
+        "subsec_nanos": 2497000
       },
       "false_accept": false
     },
@@ -21717,7 +22084,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3725958
+        "subsec_nanos": 7956166
       },
       "false_accept": false
     },
@@ -21840,7 +22207,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2066958
+        "subsec_nanos": 1900167
       },
       "false_accept": false
     },
@@ -21963,7 +22330,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2891708
+        "subsec_nanos": 2677542
       },
       "false_accept": false
     },
@@ -22086,7 +22453,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2707500
+        "subsec_nanos": 2615084
       },
       "false_accept": false
     },
@@ -22209,7 +22576,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1996584
+        "subsec_nanos": 2206000
       },
       "false_accept": false
     },
@@ -22310,7 +22677,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7235625
+        "subsec_nanos": 3715625
       },
       "false_accept": false
     },
@@ -22378,7 +22745,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3151084
+        "subsec_nanos": 4251167
       },
       "false_accept": false
     },
@@ -22387,6 +22754,17 @@
       "expected": "skødd",
       "distance": 1,
       "suggestions": [
+        {
+          "value": "skot",
+          "weight": 19.031834,
+          "weight_details": {
+            "lexicon_weight": 11.031834,
+            "mutator_weight": 6.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
         {
           "value": "skøð",
           "weight": 20.449604,
@@ -22426,17 +22804,6 @@
           "weight_details": {
             "lexicon_weight": 10.881552,
             "mutator_weight": 12.999998,
-            "reweight_start": 0.0,
-            "reweight_mid": 2.0,
-            "reweight_end": 0.0
-          }
-        },
-        {
-          "value": "skot",
-          "weight": 26.031834,
-          "weight_details": {
-            "lexicon_weight": 11.031834,
-            "mutator_weight": 13.0,
             "reweight_start": 0.0,
             "reweight_mid": 2.0,
             "reweight_end": 0.0
@@ -22498,10 +22865,10 @@
           }
         }
       ],
-      "position": 1,
+      "position": 2,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1911333
+        "subsec_nanos": 1850541
       },
       "false_accept": false
     },
@@ -22624,7 +22991,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1373750
+        "subsec_nanos": 1136583
       },
       "false_accept": false
     },
@@ -22747,7 +23114,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2916417
+        "subsec_nanos": 2741792
       },
       "false_accept": false
     },
@@ -22870,7 +23237,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2543166
+        "subsec_nanos": 2033958
       },
       "false_accept": false
     },
@@ -22993,7 +23360,7 @@
       "position": 2,
       "time": {
         "secs": 0,
-        "subsec_nanos": 18117666
+        "subsec_nanos": 19049500
       },
       "false_accept": false
     },
@@ -23116,7 +23483,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1599583
+        "subsec_nanos": 1530917
       },
       "false_accept": false
     },
@@ -23239,7 +23606,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1729750
+        "subsec_nanos": 1379250
       },
       "false_accept": false
     },
@@ -23362,7 +23729,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2561500
+        "subsec_nanos": 1527417
       },
       "false_accept": false
     },
@@ -23408,7 +23775,7 @@
       "position": 2,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7598875
+        "subsec_nanos": 5766500
       },
       "false_accept": false
     },
@@ -23531,7 +23898,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 12219667
+        "subsec_nanos": 3082042
       },
       "false_accept": false
     },
@@ -23654,7 +24021,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8407084
+        "subsec_nanos": 2314375
       },
       "false_accept": false
     },
@@ -23777,7 +24144,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 19872875
+        "subsec_nanos": 13443708
       },
       "false_accept": false
     },
@@ -23900,7 +24267,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7075125
+        "subsec_nanos": 2890541
       },
       "false_accept": false
     },
@@ -24023,7 +24390,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 12293875
+        "subsec_nanos": 18257667
       },
       "false_accept": false
     },
@@ -24146,7 +24513,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3198291
+        "subsec_nanos": 3866250
       },
       "false_accept": false
     },
@@ -24269,7 +24636,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8715417
+        "subsec_nanos": 10667834
       },
       "false_accept": false
     },
@@ -24293,7 +24660,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1917792
+        "subsec_nanos": 2202584
       },
       "false_accept": false
     },
@@ -24339,7 +24706,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2699000
+        "subsec_nanos": 2330125
       },
       "false_accept": false
     },
@@ -24407,7 +24774,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6396125
+        "subsec_nanos": 8824292
       },
       "false_accept": false
     },
@@ -24497,7 +24864,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1526333
+        "subsec_nanos": 3986917
       },
       "false_accept": false
     },
@@ -24554,7 +24921,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3857000
+        "subsec_nanos": 5965167
       },
       "false_accept": false
     },
@@ -24677,7 +25044,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2114541
+        "subsec_nanos": 2284083
       },
       "false_accept": false
     },
@@ -24800,7 +25167,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1942000
+        "subsec_nanos": 1902042
       },
       "false_accept": false
     },
@@ -24923,7 +25290,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2573333
+        "subsec_nanos": 2404666
       },
       "false_accept": false
     },
@@ -25046,7 +25413,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7475459
+        "subsec_nanos": 8638708
       },
       "false_accept": false
     },
@@ -25158,7 +25525,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2456042
+        "subsec_nanos": 2547542
       },
       "false_accept": false
     },
@@ -25281,7 +25648,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2702166
+        "subsec_nanos": 2481208
       },
       "false_accept": false
     },
@@ -25404,7 +25771,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1589000
+        "subsec_nanos": 1444916
       },
       "false_accept": false
     },
@@ -25527,7 +25894,7 @@
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2424292
+        "subsec_nanos": 1749833
       },
       "false_accept": false
     },
@@ -25639,7 +26006,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 15136250
+        "subsec_nanos": 11416750
       },
       "false_accept": false
     },
@@ -25751,7 +26118,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5365875
+        "subsec_nanos": 2104250
       },
       "false_accept": false
     },
@@ -25874,7 +26241,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 10747250
+        "subsec_nanos": 14163584
       },
       "false_accept": false
     },
@@ -25997,7 +26364,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3747792
+        "subsec_nanos": 2565042
       },
       "false_accept": false
     },
@@ -26120,7 +26487,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 783209
+        "subsec_nanos": 840833
       },
       "false_accept": false
     },
@@ -26243,7 +26610,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3613083
+        "subsec_nanos": 1770458
       },
       "false_accept": false
     },
@@ -26366,7 +26733,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1333791
+        "subsec_nanos": 1529791
       },
       "false_accept": false
     },
@@ -26489,7 +26856,7 @@
       "position": 2,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5305750
+        "subsec_nanos": 7282750
       },
       "false_accept": false
     },
@@ -26546,7 +26913,7 @@
       "position": 3,
       "time": {
         "secs": 0,
-        "subsec_nanos": 16438959
+        "subsec_nanos": 20139209
       },
       "false_accept": false
     },
@@ -26603,7 +26970,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8540916
+        "subsec_nanos": 7233209
       },
       "false_accept": false
     },
@@ -26726,7 +27093,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1211167
+        "subsec_nanos": 1405542
       },
       "false_accept": false
     },
@@ -26849,7 +27216,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2642375
+        "subsec_nanos": 3911500
       },
       "false_accept": false
     },
@@ -26972,7 +27339,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2873542
+        "subsec_nanos": 3253667
       },
       "false_accept": false
     },
@@ -27040,7 +27407,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3837875
+        "subsec_nanos": 5865541
       },
       "false_accept": false
     },
@@ -27097,7 +27464,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 6539125
+        "subsec_nanos": 3810041
       },
       "false_accept": false
     },
@@ -27209,7 +27576,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2075667
+        "subsec_nanos": 2070083
       },
       "false_accept": false
     },
@@ -27332,7 +27699,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2393084
+        "subsec_nanos": 3997625
       },
       "false_accept": false
     },
@@ -27455,7 +27822,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7018625
+        "subsec_nanos": 4016542
       },
       "false_accept": false
     },
@@ -27484,6 +27851,17 @@
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 2.5
+          }
+        },
+        {
+          "value": "tjykkrri",
+          "weight": 28.949604,
+          "weight_details": {
+            "lexicon_weight": 14.949605,
+            "mutator_weight": 11.999999,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
           }
         },
         {
@@ -27562,23 +27940,12 @@
             "reweight_mid": 2.0,
             "reweight_end": 0.0
           }
-        },
-        {
-          "value": "tjóðri",
-          "weight": 35.949604,
-          "weight_details": {
-            "lexicon_weight": 13.949605,
-            "mutator_weight": 20.0,
-            "reweight_start": 0.0,
-            "reweight_mid": 2.0,
-            "reweight_end": 0.0
-          }
         }
       ],
       "position": null,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2926125
+        "subsec_nanos": 2599291
       },
       "false_accept": false
     },
@@ -27587,6 +27954,17 @@
       "expected": "toyi",
       "distance": 2,
       "suggestions": [
+        {
+          "value": "toyi",
+          "weight": 18.033314,
+          "weight_details": {
+            "lexicon_weight": 13.033314,
+            "mutator_weight": 3.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 2.0,
+            "reweight_end": 0.0
+          }
+        },
         {
           "value": "tøvi",
           "weight": 24.949604,
@@ -27610,24 +27988,24 @@
           }
         },
         {
-          "value": "tøli",
-          "weight": 25.949604,
+          "value": "toki",
+          "weight": 26.752382,
           "weight_details": {
-            "lexicon_weight": 14.949605,
-            "mutator_weight": 9.999999,
+            "lexicon_weight": 11.752381,
+            "mutator_weight": 13.000001,
             "reweight_start": 0.0,
-            "reweight_mid": 1.0,
+            "reweight_mid": 2.0,
             "reweight_end": 0.0
           }
         },
         {
-          "value": "tømi",
-          "weight": 25.949604,
+          "value": "tori",
+          "weight": 26.9347,
           "weight_details": {
-            "lexicon_weight": 14.949605,
-            "mutator_weight": 9.999999,
+            "lexicon_weight": 11.934702,
+            "mutator_weight": 12.999998,
             "reweight_start": 0.0,
-            "reweight_mid": 1.0,
+            "reweight_mid": 2.0,
             "reweight_end": 0.0
           }
         },
@@ -27676,32 +28054,21 @@
           }
         },
         {
-          "value": "tølið",
-          "weight": 28.449604,
+          "value": "tolin",
+          "weight": 29.434702,
           "weight_details": {
-            "lexicon_weight": 14.949605,
-            "mutator_weight": 9.999999,
+            "lexicon_weight": 11.934702,
+            "mutator_weight": 13.0,
             "reweight_start": 0.0,
-            "reweight_mid": 1.0,
-            "reweight_end": 2.5
-          }
-        },
-        {
-          "value": "tømið",
-          "weight": 28.449604,
-          "weight_details": {
-            "lexicon_weight": 14.949605,
-            "mutator_weight": 9.999999,
-            "reweight_start": 0.0,
-            "reweight_mid": 1.0,
+            "reweight_mid": 2.0,
             "reweight_end": 2.5
           }
         }
       ],
-      "position": null,
+      "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2654208
+        "subsec_nanos": 2952666
       },
       "false_accept": false
     },
@@ -27769,7 +28136,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8313167
+        "subsec_nanos": 16722291
       },
       "false_accept": false
     },
@@ -27892,7 +28259,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1535792
+        "subsec_nanos": 1333625
       },
       "false_accept": false
     },
@@ -28015,7 +28382,7 @@
       "position": 2,
       "time": {
         "secs": 0,
-        "subsec_nanos": 10944041
+        "subsec_nanos": 14854458
       },
       "false_accept": false
     },
@@ -28094,7 +28461,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2738000
+        "subsec_nanos": 2743917
       },
       "false_accept": false
     },
@@ -28217,7 +28584,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2529791
+        "subsec_nanos": 2733333
       },
       "false_accept": false
     },
@@ -28340,7 +28707,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1514000
+        "subsec_nanos": 1793833
       },
       "false_accept": false
     },
@@ -28463,7 +28830,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 738792
+        "subsec_nanos": 879333
       },
       "false_accept": false
     },
@@ -28575,7 +28942,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 758917
+        "subsec_nanos": 792166
       },
       "false_accept": false
     },
@@ -28698,7 +29065,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1141042
+        "subsec_nanos": 1169292
       },
       "false_accept": false
     },
@@ -28755,7 +29122,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 22438708
+        "subsec_nanos": 15397542
       },
       "false_accept": false
     },
@@ -28878,7 +29245,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 7134125
+        "subsec_nanos": 2979834
       },
       "false_accept": false
     },
@@ -28979,7 +29346,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2584833
+        "subsec_nanos": 2167417
       },
       "false_accept": false
     },
@@ -29025,7 +29392,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5468541
+        "subsec_nanos": 2114125
       },
       "false_accept": false
     },
@@ -29126,7 +29493,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2375041
+        "subsec_nanos": 2318375
       },
       "false_accept": false
     },
@@ -29249,7 +29616,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5316459
+        "subsec_nanos": 3668250
       },
       "false_accept": false
     },
@@ -29273,7 +29640,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1458500
+        "subsec_nanos": 1364458
       },
       "false_accept": false
     },
@@ -29341,7 +29708,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 9034917
+        "subsec_nanos": 4612292
       },
       "false_accept": false
     },
@@ -29420,7 +29787,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 11544458
+        "subsec_nanos": 12257875
       },
       "false_accept": false
     },
@@ -29543,7 +29910,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 8631916
+        "subsec_nanos": 1364583
       },
       "false_accept": false
     },
@@ -29578,7 +29945,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 5040041
+        "subsec_nanos": 3945792
       },
       "false_accept": false
     },
@@ -29668,7 +30035,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 797250
+        "subsec_nanos": 675666
       },
       "false_accept": false
     },
@@ -29791,7 +30158,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1292125
+        "subsec_nanos": 1138583
       },
       "false_accept": false
     },
@@ -29815,7 +30182,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 14856541
+        "subsec_nanos": 12197792
       },
       "false_accept": false
     },
@@ -29938,7 +30305,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 10811000
+        "subsec_nanos": 10224333
       },
       "false_accept": false
     },
@@ -30017,7 +30384,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3658666
+        "subsec_nanos": 2815333
       },
       "false_accept": false
     },
@@ -30140,7 +30507,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 28550916
+        "subsec_nanos": 16066000
       },
       "false_accept": false
     },
@@ -30230,7 +30597,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 34878250
+        "subsec_nanos": 40236083
       },
       "false_accept": false
     },
@@ -30353,7 +30720,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 9612500
+        "subsec_nanos": 2940958
       },
       "false_accept": false
     },
@@ -30443,7 +30810,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 20734750
+        "subsec_nanos": 14100625
       },
       "false_accept": false
     },
@@ -30566,7 +30933,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 4017167
+        "subsec_nanos": 3048875
       },
       "false_accept": false
     },
@@ -30678,7 +31045,7 @@
       "position": 1,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2991958
+        "subsec_nanos": 3467750
       },
       "false_accept": false
     },
@@ -30801,7 +31168,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1242583
+        "subsec_nanos": 1556500
       },
       "false_accept": false
     },
@@ -30924,7 +31291,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1013625
+        "subsec_nanos": 983834
       },
       "false_accept": false
     },
@@ -30935,10 +31302,10 @@
       "suggestions": [
         {
           "value": "video",
-          "weight": 16.464699,
+          "weight": 12.464699,
           "weight_details": {
             "lexicon_weight": 11.464699,
-            "mutator_weight": 4.0,
+            "mutator_weight": 0.0,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 0.0
@@ -30965,78 +31332,12 @@
             "reweight_mid": 1.0,
             "reweight_end": 2.5
           }
-        },
-        {
-          "value": "viði",
-          "weight": 27.531834,
-          "weight_details": {
-            "lexicon_weight": 11.031834,
-            "mutator_weight": 13.0,
-            "reweight_start": 0.0,
-            "reweight_mid": 1.0,
-            "reweight_end": 2.5
-          }
-        },
-        {
-          "value": "viti",
-          "weight": 28.370165,
-          "weight_details": {
-            "lexicon_weight": 11.870163,
-            "mutator_weight": 13.000002,
-            "reweight_start": 0.0,
-            "reweight_mid": 1.0,
-            "reweight_end": 2.5
-          }
-        },
-        {
-          "value": "radio",
-          "weight": 28.696844,
-          "weight_details": {
-            "lexicon_weight": 12.696843,
-            "mutator_weight": 14.000001,
-            "reweight_start": 0.0,
-            "reweight_mid": 2.0,
-            "reweight_end": 0.0
-          }
-        },
-        {
-          "value": "vitin",
-          "weight": 29.533314,
-          "weight_details": {
-            "lexicon_weight": 13.033313,
-            "mutator_weight": 13.000001,
-            "reweight_start": 0.0,
-            "reweight_mid": 1.0,
-            "reweight_end": 2.5
-          }
-        },
-        {
-          "value": "viðin",
-          "weight": 29.533314,
-          "weight_details": {
-            "lexicon_weight": 13.033314,
-            "mutator_weight": 13.0,
-            "reweight_start": 0.0,
-            "reweight_mid": 1.0,
-            "reweight_end": 2.5
-          }
-        },
-        {
-          "value": "vitig",
-          "weight": 31.449604,
-          "weight_details": {
-            "lexicon_weight": 14.949605,
-            "mutator_weight": 12.999999,
-            "reweight_start": 0.0,
-            "reweight_mid": 1.0,
-            "reweight_end": 2.5
-          }
         }
       ],
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 3325541
+        "subsec_nanos": 2538916
       },
       "false_accept": false
     },
@@ -31082,7 +31383,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 12514708
+        "subsec_nanos": 18616834
       },
       "false_accept": false
     },
@@ -31106,7 +31407,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 11049375
+        "subsec_nanos": 10692917
       },
       "false_accept": false
     },
@@ -31152,7 +31453,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 10390916
+        "subsec_nanos": 7746791
       },
       "false_accept": false
     },
@@ -31206,6 +31507,17 @@
           }
         },
         {
+          "value": "vora",
+          "weight": 25.449604,
+          "weight_details": {
+            "lexicon_weight": 16.949604,
+            "mutator_weight": 5.0,
+            "reweight_start": 0.0,
+            "reweight_mid": 1.0,
+            "reweight_end": 2.5
+          }
+        },
+        {
           "value": "vóna",
           "weight": 26.92918,
           "weight_details": {
@@ -31228,11 +31540,11 @@
           }
         },
         {
-          "value": "vora",
-          "weight": 27.449604,
+          "value": "vor",
+          "weight": 28.04414,
           "weight_details": {
-            "lexicon_weight": 16.949604,
-            "mutator_weight": 7.0,
+            "lexicon_weight": 13.54414,
+            "mutator_weight": 11.0,
             "reweight_start": 0.0,
             "reweight_mid": 1.0,
             "reweight_end": 2.5
@@ -31259,23 +31571,12 @@
             "reweight_mid": 1.0,
             "reweight_end": 2.5
           }
-        },
-        {
-          "value": "hóra",
-          "weight": 31.55171,
-          "weight_details": {
-            "lexicon_weight": 11.55171,
-            "mutator_weight": 14.0,
-            "reweight_start": 3.5,
-            "reweight_mid": 0.0,
-            "reweight_end": 2.5
-          }
         }
       ],
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2243584
+        "subsec_nanos": 1437583
       },
       "false_accept": false
     },
@@ -31343,7 +31644,7 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 1381750
+        "subsec_nanos": 1202792
       },
       "false_accept": false
     },
@@ -31466,17 +31767,17 @@
       "position": 0,
       "time": {
         "secs": 0,
-        "subsec_nanos": 2714667
+        "subsec_nanos": 1696208
       },
       "false_accept": false
     }
   ],
   "start_timestamp": {
-    "secs": 1775806637,
-    "subsec_nanos": 670748000
+    "secs": 1775810942,
+    "subsec_nanos": 358122000
   },
   "total_time": {
     "secs": 0,
-    "subsec_nanos": 149378000
+    "subsec_nanos": 134693042
   }
 }

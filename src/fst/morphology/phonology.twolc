@@ -51,7 +51,8 @@ Sets
 
  Vow = a e i o u y æ ø å                                !!≈ * **@CODE@** 
        á é ó ú í à è ò ù ì ä ë ö ü ï â ê ô û î ã ý ;    !!≈  **@CODE@** 
- Cns = b c d f g h j k l m n p q r s t v w x z ð þ ;    !!≈ * **@CODE@** 
+ Cns = b c d f g h j k l m n p q r s t v w x z ð þ      !!≈ * **@CODE@** 
+       g2 j3 t2 v2 ;                                    !!≈   **@CODE@** 
  Nas = m n ;                                            !!≈ * **@CODE@** 
  NonNas = b c d f g h j k l p q r s t v w x z ð þ ;     !!≈ * **@CODE@** 
  Dummy = %^UUML %^IUML %^eIUML %^W %^EPH %^JI %^OEA     !!≈ * **@CODE@** 
@@ -303,9 +304,9 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 !€ v e r k j:0 ^JDEL:0 > u r
 !€ h e y g g j:0 > i
 
-"Realising j in front of vowels"
-!! Rule: **@RULENAME@** 
- j2:j => _ %> [ a | u ] ;
+! "Realising j in front of vowels"  ! butj2 is always j.
+! !! Rule: **@RULENAME@** 
+!  j2:j => _ %> [ a | u ] ;
 
 !! **Tests:**
 
@@ -399,7 +400,7 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 !! Rule: **@RULENAME@** 
  Vx:Vy <=> _ Cns:* %^IUML: ; !(Dummy:) [ %> i | %> u r | (%> Cns:*) #: | %> g ] ;
      where Vx in ( a o u ø á ó ú )
-	       Vy in ( e y y i æ ø ý )
+	   Vy in ( e y y i æ ø ý )
 	   matched ;
 
 !! **Tests:**

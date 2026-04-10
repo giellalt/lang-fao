@@ -4,9 +4,21 @@ on:
   push:
     branches:
       - 'main'
+
+permissions:
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -61,9 +73,18 @@ jobs:
           cd lang && ls -l docs/mermaid-svgs
       # Mermaid processing ends here
 
-      - name: deploy gh pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: lang/docs/
-          enable_jekyll: true
+          source: lang/docs/
+          destination: ./_site
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v5

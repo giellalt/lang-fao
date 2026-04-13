@@ -7,10 +7,10 @@ GT_NEURAL_MODELS=speller.charbased.model
 noinst_DATA=$(GT_NEURAL_MODELS)
 endif
 
-typos.txt: $(top_srcdir)/test/data/typos.txt
+typos.tsv: $(srcdir)/../test/typos.tsv
 	cp -v $< $@
 
-typos.unsorted: typos.txt
+typos.unsorted: typos.tsv
 	grep -v -E '^#' < $< | grep -v -E '^$$' | sort -R | cut -f 1,2 -d '	' > $@
 
 # TODO:

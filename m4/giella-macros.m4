@@ -720,7 +720,7 @@ AS_IF([test x$GTLEMMATEST = xfalse],
         pipx install git+https://github.com/divvun/giellaltlextools
       ])],
       AC_MSG_RESULT([yes]))
-_gtlextools_min_version=0.4.1
+_gtlextools_min_version=0.6.4
 gtlextools_too_old_message="gtlextools needs to be updated.
     If you installed it with pipx, run:
         pipx upgrade GiellaLTLexTools"
@@ -733,14 +733,12 @@ AS_IF([test x$GTMULTICHARTEST = xfalse],
 AS_IF([test "x${GTLEMMATEST}" != xno],
         [_gtlextools_version=$( "${GTLEMMATEST}" --version | sed -e 's/^.*gtlemmatest //')],
         [_gtlextools_version=0])
-AC_MSG_RESULT([$_gtlextools_version])
 AC_MSG_CHECKING([whether the gtlextools version is at least $_gtlextools_min_version])
 AX_COMPARE_VERSION([$_gtlextools_version], [ge], [$_gtlextools_min_version],
                    [gtlextools_version_ok=yes], [gtlextools_version_ok=no])
-AC_MSG_RESULT([$gtlextools_version_ok])
-AS_IF([test "x$enable_grammarchecker" != "xno"], 
-    AS_IF([test "x${gtlextools_version_ok}" != xno],,
-          [gt_MSG_ERROR([$gtlextools_too_old_message])]))
+AS_IF([test "x${gtlextools_version_ok}" != xno],
+      [AC_MSG_RESULT([yes: $_gtlextools_version])],
+      [gt_MSG_ERROR([$gtlextools_too_old_message])])
 
 
 # Enable all spellers - default is 'no'

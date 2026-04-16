@@ -7,10 +7,17 @@ fi
 # settings:
 TESTER=@DIVVUNSPELL@
 THRESHOLD=75
-TYPOS="@srcdir@/typos.tsv"
+TYPOS_GENERATED="@builddir@/typos-default-generated.tsv"
+TYPOS_FALLBACK="@srcdir@/typos.tsv"
 ZHFST="@builddir@/../@GTLANG2@.zhfst"
 REPORT="@top_srcdir@/docs/typosreport/report.json"
 CONFIG="@srcdir@/../config.json"
+
+if test -f "$TYPOS_GENERATED" ; then
+    TYPOS="$TYPOS_GENERATED"
+else
+    TYPOS="$TYPOS_FALLBACK"
+fi
 
 if test x$TESTER = xfalse ; then
     printf "%sSKIP%s: missing divvunspell accuracy\n" "$light_blue" "$reset"

@@ -1,9 +1,17 @@
-theme: jekyll-theme-minimal
+remote_theme: giellalt/jekyll-theme-giellalt@main
 title: Faroese NLP Grammar
 description: Finite state and Constraint Grammar based analysers, proofing tools and other resources
 plugins:
-  - jemoji
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-github-metadata
   - jekyll-include-cache
+  - jemoji
+
+defaults:
+  - scope: { path: "" }
+    values:
+      layout: default
 
 markdown: kramdown
 kramdown:

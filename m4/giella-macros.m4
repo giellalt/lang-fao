@@ -111,7 +111,7 @@ AC_MSG_RESULT([$GIELLA_CORE])
 ###############################################################
 ### This is the version of the Giella Core that we require. ###
 ### UPDATE AS NEEDED.
-_giella_core_min_version=1.10.3
+_giella_core_min_version=1.11.0
 
 # GIELLA_CORE/GTCORE env. variable, required by the infrastructure to find scripts:
 AC_ARG_VAR([GIELLA_CORE], [directory for the Giella infra core scripts and other required resources])
@@ -169,6 +169,7 @@ AS_IF([test x$PIPX = xfalse],
 
 ################ Weighted fst's ################
 AC_PATH_PROG([BC], [bc], [false], [$PATH$PATH_SEPARATOR$with_bc])
+AC_PATH_PROG([CORPUS2UNIGRAMLM], [corpus2unigramlm.py], [false], [$PATH$PATH_SEPARATOR$GIELLA_CORE/scripts])
 
 ################ YAML-based testing ################
 AC_ARG_ENABLE([yamltests],
@@ -750,6 +751,8 @@ AC_ARG_ENABLE([spellers],
 AS_IF([test "x$enable_grammarchecker" != xno],[enable_spellers=yes])
 AS_IF([test "x$enable_spellers" != xno -a "x$BC" = xfalse],
       [gt_MSG_ERROR([counting statistics for spell-checkers requires bc, install or disable spellers])])
+AS_IF([test "x$enable_spellers" != xno -a "x$CORPUS2UNIGRAMLM" = xfalse],
+      [gt_MSG_ERROR([counting statistics for spell-checkers requires updated giella-core])])
 AM_CONDITIONAL([WANT_SPELLERS], [test "x$enable_spellers" != xno])
 
 # Enable minimised fst-spellers by default:

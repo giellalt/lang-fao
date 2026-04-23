@@ -38,6 +38,7 @@ done
 
 "$genscript" -z "$speller_archive" \
     -D "$divvunspell" \
+    -E @LOG_VIEWER@ \
     $exclusions \
     $source_files
 

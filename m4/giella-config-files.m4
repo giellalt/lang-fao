@@ -13,6 +13,7 @@ AC_CONFIG_FILES([Makefile \
                  src/fst/Makefile \
                  src/fst/morphology/Makefile \
                  src/fst/morphology/test/Makefile \
+                 src/fst/morphology/test/config.json \
                  src/fst/morphology/test/phonology/Makefile \
                  src/fst/orthography/Makefile \
                  src/fst/orthography/test/Makefile \

@@ -721,7 +721,7 @@ AS_IF([test x$GTLEMMATEST = xfalse],
         pipx install git+https://github.com/divvun/giellaltlextools
       ])],
       AC_MSG_RESULT([yes]))
-_gtlextools_min_version=0.6.7
+_gtlextools_min_version=0.7.0
 gtlextools_too_old_message="gtlextools needs to be updated.
     If you installed it with pipx, run:
         pipx upgrade GiellaLTLexTools"

@@ -1,0 +1,21 @@
+{
+    "analyser": "@abs_builddir@/../../analyser-gt-norm.hfstol",
+    "generator": "@abs_builddir@/../../generator-gt-norm.hfstol",
+    "nouns": {
+        "lexcfile": "@abs_srcdir@/../stems/nouns.lexc",
+        "lemmatags": ["+N+Neus+Sg+Nom+Indef", "+N+Neu+Pl+Nom+Indef", "+N+Fem+Sg+Nom+Indef", "+N+Fem+Pl+Nom+Indef", "+N+Msc+Sg+Nom+Indef", "+N+Msc+Pl+Nom+Indef"]
+    },
+    "adjectives": {
+        "lexcfile": "@abs_srcdir@/../stems/adjectives.lexc",
+        "lemmatags": ["+A+Msc+Sg+Nom+Indef", "+A+Msc+Sg+Nom+Def", "+A+Comp+Msc+Sg+Nom+Def", "+A+Superl+Msc+Sg+Nom+Def"],
+        "exclusions": ["(adjcmp1|ELDRI|ELSTUR|adj_def)"]
+    },
+    "propernouns": {
+        "lexcfile": "@abs_srcdir@/../stems/propernouns.lexc",
+        "lemmatags": ["+N+Prop+Sg+Nom", "+N+Prop+Msc+Sg+Nom", "+N+Prop+Fem+Sg+Nom", "+N+Prop+Neu+Sg+Nom", "+N+Prop+Msc+Sg+Nom+Indef", "+N+Prop+Fem+Sg+Nom+Indef", "+N+Prop+Neu+Sg+Nom+Indef", "+N+Prop+Msc+Pl+Nom+Indef", "+N+Prop+Fem+Pl+Nom+Indef", "+N+Prop+Neu+Pl+Nom+Indef"]
+    },
+    "verbs": {
+        "lexcfile": "@abs_srcdir@/../stems/verbs.lexc",
+        "lemmatags": ["+V+Inf", "+V+Inf+Pass"]
+    }
+}

@@ -1,20 +1,10 @@
 #!/bin/bash
 # Test script for verb lemma generation
 #
-# change settings here:
+# change settings in config.json.in
+# do not touch this file
 POS=verbs
-source_file=@abs_srcdir@/../stems/${POS}.lexc
-generator_file=@abs_builddir@/../../generator-gt-norm
-analyser_file=@abs_builddir@/../../analyser-gt-norm
-tags=+V+Inf
-# advanced settings (leave empty or write full args)
-xtags="-t +V+Inf+Pass"
-# {in,ex}clusions are given in arrays to retain spaces, for example:
-# inclusions=("--include" "REG EX" "--include" "EGERG XEX")
-inclusions=()
-exclusions=()
-
-# avoid changing common scripting stuff here:
+CONFIG=@abs_builddir@/config.json
 
 . "$GIELLA_CORE/scripts/termcolors.bash"
 genscript=@GTLEMMATEST@
@@ -30,26 +20,14 @@ if ! test -f "$genscript" ; then
         "$reset" "$genscript"
     exit 77
 fi
-if ! test -f "$generator_file.hfstol" ; then
-    printf "%sfail%s missing generator FSA %s.hfstol\n" "$red" "$reset" \
-        "$generator_file"
-    exit 1
-fi
-if ! test -f "$analyser_file.hfstol" ; then
-    printf "%sfail%s missing analyser FSA %s.hfstol\n" "$red" "$reset" \
-        "$analyser_file"
-    exit 1
-fi
-if ! test -f "$source_file" ; then
-    printf "%sfail%s missing lexc file %s\n" "$red" "$reset" \
-        "$source_file"
+if ! test -f "$CONFIG" ; then
+    printf "%sfail%s missing config file %s\n" "$red" "$reset" \
+        "$CONFIG"
     exit 1
 fi
 
-"$genscript" -l "$source_file" \
-    -g "$generator_file.hfstol" -a "$analyser_file.hfstol" \
-    -t "$tags" $xtags "${inclusions[@]}" "${exclusions[@]}" \
-    -E @LOG_VIEWER@ 
+"$genscript" -c "$CONFIG" -P "$POS" -E "@LOG_VIEWER@" \
+    -L "@abs_top_builddir@/docs/testlogs/$POS-lemmas.md"
 rv=$?
 if test $rv = 77 ; then
     printf "%sskipped%s" "$light_blue" "$reset"
@@ -57,4 +35,6 @@ if test $rv = 77 ; then
 elif test $rv -gt 0 ; then
     printf "%sfailed%s" "$red" "$reset"
     exit 1
+else
+    printf "%spassed%s" "$green" "$reset"
 fi

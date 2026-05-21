@@ -55,6 +55,7 @@ AC_CONFIG_FILES([Makefile \
                  tools/spellcheckers/filters/Makefile \
                  tools/spellcheckers/neural/Makefile \
                  tools/spellcheckers/test/Makefile \
+                 tools/spellcheckers/test/config.json \
                  tools/spellcheckers/weights/Makefile \
                  tools/tts/Makefile \
                  tools/tts/pipespec.xml \

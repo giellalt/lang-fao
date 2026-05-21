@@ -8,4 +8,5 @@ detailed results of failed tests here:
     * [nouns](nouns-lemmas.html)
     * [proper nouns](propernouns-lemmas.html)
     * [verbs](verbs-lemmas.html)
+    * [speller-based: all poses](speller-lemmas.html)
 * TBD

@@ -1,15 +1,9 @@
 #!/bin/bash
 # test script for speller accepting all lemmas
 #
-# change settings here:
-source_files=@abs_top_srcdir@/src/fst/morphology/stems/*.lexc
-# advanced settings
-exclusions=""
-GIELLA_LANG=@GTLANG2@
-speller_dir=@abs_builddir@/../
-speller_archive=$speller_dir/$GIELLA_LANG.zhfst
-
-# avoid changing common scripting stuff here
+# change settings in config.json.in
+# avoid touching this file
+CONFIG=@abs_builddir@/config.json
 . "$GIELLA_CORE/scripts/termcolors.bash"
 genscript=@GTSPELLTEST@
 divvunspell=@DIVVUNSPELL@
@@ -29,18 +23,13 @@ if ! test -f "$divvunspell" ; then
     printf "%sskip%s missing divvunspell\n" "$light_blue" "$reset"
     exit 77
 fi
-for f in $source_files ; do
-    if ! test -f "$f" ; then
-        printf "%sfail%s no lexc files matching %s\n" "$red" "$reset" "$f"
-        exit 1
-    fi
-done
+if ! test -f "$CONFIG" ; then
+    printf "%sfail%s missing config %s\n" "$red" "$reset" "$CONFIG"
+    exit 1
+fi
 
-"$genscript" -z "$speller_archive" \
-    -D "$divvunspell" \
-    -E @LOG_VIEWER@ \
-    $exclusions \
-    $source_files
+"$genscript" -c "$CONFIG" -D "$divvunspell" -E "@LOG_VIEWER@" \
+    -L "@abs_top_builddir@/docs/testlogs/speller-lemmas.md" 
 
 rv=$?
 if test $rv = 77 ; then
@@ -49,4 +38,6 @@ if test $rv = 77 ; then
 elif test $rv -ge 1 ; then
     printf "%sfailed%s\n" "$red" "$reset"
     exit 1
+else
+    printf "%spassed%s\n" "$green" "$reset"
 fi

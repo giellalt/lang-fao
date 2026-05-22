@@ -13,7 +13,7 @@
 #!! ## Delimiters, tags and sets
 
 # ========== #
-# Delimiters #
+#!! ##  Delimiters #
 # ========== #
 
 
@@ -22,7 +22,7 @@ DELIMITERS = "<.>" "<!>" "<?>" "<¶>" sent ;
 
 
 # ============= #
-# Tags and sets #
+#!! ## Tags and sets #
 # ============= #
 
 
@@ -173,6 +173,7 @@ SET NOT-ACC = TAG - Acc ;
 
 LIST COPULA = "vera" "verða" ;
 
+LIST COPULALIKE = "vera" "verða" "líggja" ;
 LIST HAVA = "hava" ;
 LIST VERDA = "verða" ;
 
@@ -396,6 +397,8 @@ REMOVE:ANotVPl Ind + Prs + Pl IF (-1 HAVA + V + Ind)(0 A + Neu + Sg + Nom + Def)
 
 REMOVE:ANotPrfPtc PrfPtc IF (0 A + $$NUMBER + $$NAGD)(1 N + $$NUMBER + $$NAGD);
 
+REMOVE:XNotPrfPtc PrfPtc IF (-1 Inf)(0 Adv);
+
 REMOVE:r18 A + Fem IF (0  $$NAGD) (*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 REMOVE:r19 A + Msc IF (0  $$NAGD) (*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
 REMOVE:r20 A + Neu IF (0  $$NAGD) (*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
@@ -568,6 +571,8 @@ REMOVE:STRONGDATPREPVERB Acc IF (*-1 SOMEACCDATPREP BARRIER NPNH LINK *-1 S-BOUN
 # ==================
 
 # Adjectives
+
+REMOVE:AdjNotPrfPtc PrfPtc IF (*-1 COPULALIKE BARRIER NPNHA)(0 A);
 
 #kalur
 
@@ -1089,6 +1094,7 @@ REMOVE:ErtTu ("erur") + Adv IF (*0 ("tú"));
  
 # Infinitive
 
+REMOVE:NnotInf Inf IF (-1 ("ein") + Det)(0 N);	
 SELECT:AdInf Inf IF (-1 ("so at") OR ("at"));
 
 SELECT:r51 Inf IF (*-1 MODV BARRIER V);
@@ -1336,6 +1342,14 @@ SELECT (Num Nom) IF (-1 BOS)(1 EOS);
 
 SELECT:PostverbalSubj (Pl Nom) IF (-1 V + Pl)(-2 Adv OR Acc);
 
+# Gender disamb of adjectives
+
+SELECT:PredNeu Neu if (0 A)(*-1 COPULALIKE BARRIER NPNHA LINK -1 ("tað") OR Neu);
+SELECT:PredNeu Neu if (0 PrfPtc)(*-1 COPULALIKE BARRIER NPNHA LINK -1 ("tað") OR Neu);
+## tað vóru so hugalig.
+
+
+
 # Gender disamb of numerals
 
 SELECT:r26 $$GENDER IF (0 Num)(*1C N + $$GENDER BARRIER NOT-A);
@@ -1386,6 +1400,9 @@ SELECT A IF (0 (A $$GENDER $$NAGD))(-1 CC)(-2 (A $$GENDER $$NAGD));
 # Adjective disambiguation outside NP
 # -----------------------------------
 
+
+REMOVE N IF (0 ("liga"))(0 A);
+
 SELECT:copular A + Neu + Sg + Nom + Indef IF (*-1 COPULA BARRIER NPNHA  LINK -1 TAD);
 ## Tað er ógvuliga heitt
 
@@ -1405,6 +1422,9 @@ REMOVE (A Sg) IF (*-1 ("vera" Pl) BARRIER NOT-ADV)(1 CLB OR EOS OR Pr);
 
 SUBSTITUTE:sumPr (CS) (Pr) TARGET ("sum") (NOT -1 BOS OR COMMA);
 
+# Titles
+
+SELECT Nom IF (-1 BOS)(0 N)(1 Pr LINK *1 N OR Pron BARRIER VFIN LINK 1 EOS OR (":"));
 
 # CC Coordinate NPs
 

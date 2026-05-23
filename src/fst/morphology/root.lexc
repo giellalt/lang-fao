@@ -209,15 +209,16 @@ Multichar_Symbols  !!≈ # Definitions for @CODE@
 
 +Span         !!≈ * **@CODE@** – used to designate numerical spans, like date or length ranges
 
-+Err/Guess								!!≈ * @CODE@ : Tag for Name Guesser component
-+Err/Orth								!!≈ * @CODE@ : Marking forms that are orthographical errors
-+Err/Hyph		   	!!≈ * @CODE@
-+Err/Lex		   	!!≈ * @CODE@
-+Err/SpaceCmp	   	!!≈ * @CODE@
-+Err/MissingSpace  	!!≈ * @CODE@
++Err/Guess	    !!≈ * @CODE@ : Tag for Name Guesser component
++Err/Orth	    !!≈ * @CODE@ : Marking forms that are orthographical errors
++Err/Hyph	    !!≈ * @CODE@
++Err/Lex	    !!≈ * @CODE@
++Err/SpaceCmp	    !!≈ * @CODE@
++Err/MissingSpace   !!≈ * @CODE@
 
 !! ## Symbols that need to be escaped on the lower side (towards twolc):
-!! Todo: Check whether these can be removed. They are probably obsolete.
+!! The «7 »7 are meant to capture real quotation marks,
+!! they are found in punctuation.. in generated_files
 
  »7     !!≈ * @CODE@ : Literal » 
  «7     !!≈ * @CODE@ : Literal «
@@ -243,6 +244,7 @@ Multichar_Symbols  !!≈ # Definitions for @CODE@
  @C.ErrOrth@	     !!≈ |  @CODE@ 
  @P.ErrOrth.ON@      !!≈ |  @CODE@ 
  @R.ErrOrth.ON@      !!≈ |  @CODE@ 
+
 
 !! ### Flag for case harmony in compounds
 

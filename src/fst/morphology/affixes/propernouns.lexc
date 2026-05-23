@@ -20,7 +20,7 @@ LEXICON guess
    [a|e|i|o|u|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü]
    [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|æ|ø|å]*
    [b|c|d|e|f|g|h|j|k|l|o|q|v|w|x|y|z|æ|ø|å|á|é|í|ó|ú|ý|ä|ö|ü]
-   "+N":0 "+Prop":0 "+Sg":0 "+Err/Orth":0
+   "+N":0 "+Prop":0 "+Sg":0 "+Err/Guess":0
  > guesstag ;
 
 LEXICON guesstag
@@ -247,6 +247,15 @@ LEXICON proptagv
  +Poss:%>sa     # ; !SAFORM
   R- ;
 
+
+LEXICON proptagsen
+  +Nom:          # ;
+  +Acc:          # ;
+  +Dat:          # ; 
+  +Gen:%>s       # ;
+! +Poss:%>sa      # ; !SAFORM
+  R- ;
+
 LEXICON proptagc
   +Nom:          # ;
   +Acc:          # ;
@@ -259,6 +268,10 @@ LEXICON proptagc
 LEXICON surtagc
 !!= **@LEXNAME@** 
 +N+Prop+Sem/Sur+Sg: proptagc  ;
+
+LEXICON surtagsen
+!!= **@LEXNAME@** 
++N+Prop+Sem/Sur+Sg: proptagsen  ;
 
 LEXICON surtagv
 !!= **@LEXNAME@** 

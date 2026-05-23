@@ -104,8 +104,7 @@ LIST Err/Orth = Err/Orth ;
 LIST CmpNP/None = CmpNP/None ;
      
 LIST CURRENCY = "dinar" "dollar" "euro" "krona" "kr" "rubel" "¢" "€" "$";
-	
-	
+
 LIST Sem/Fem = Sem/Fem ;
 LIST Sem/Mal = Sem/Mal ;
 LIST Sem/Plc = Sem/Plc ;
@@ -115,13 +114,17 @@ LIST Sem/Veh = Sem/Veh ;
 LIST Sem/Year = Sem/Year ;
 LIST Sem/Time-clock =  Sem/Time-clock ;
 
+LIST Givenname = Sem/Fem Sem/Mal ;
+
 LIST TAG = N V A Adv CC CS Interj Pr Pron Pers Det Refl Recipr Poss Nom Acc Gen
 Dat Msc Fem Neu Sg Pl Def Indef Cmp Sup Prs Prt 1Sg 2Sg 3Sg Inf PrfPtc
 PrsPrc Sup Imp CLB PUNCT LEFT RIGHT Sem/Fem Sem/Mal Sem/Plc Sem/Sur Sem/Org Sem/Veh Guess ;
 
 
 LIST NAGD = Nom Acc Gen Dat ; #!!≈ * @CODE@ 
-LIST AGD = Acc Gen Dat ; #!!≈ * @CODE@ 
+LIST AGD = Acc Gen Dat ; #!!≈ * @CODE@
+LIST AD = Acc Dat ; #!!≈ * @CODE@
+LIST ND = Nom Dat ; #!!≈ * @CODE@
 LIST GENDER = Msc Fem Neu ; #!!≈ * @CODE@ 
 LIST NUMBER = Sg Pl ; #!!≈ * @CODE@
 LIST DEFNESS = Indef Def ; #!!≈ * @CODE 
@@ -217,7 +220,7 @@ SET NUMBERS = Num - ("eitt") - ("1") - Sem/Year ;
 
 # Preposition sets
 
-LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum" "íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin" "hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin" "vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "sum" "vestan" ;
+LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum" "íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin" "hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin" "vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" ("sum" Pr) "vestan" ;
 
 LIST DATPREP = "hjá" "með" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "frá" "mótvegis" "nær" "sambært" "viðvíkjandi" "úr" ; # úr?
 
@@ -345,6 +348,8 @@ LIST AP_CMP = cmp; # Apertium tag, so should not match outside Apertium
 REMOVE:ApShortCompoundParts SUB:* AP_CMP + MAX2LETTERS ;
 "<7>" REMOVE:ApWeirdLemma ("«" lquot) OR ("»" rquot) ;
 
+
+REMOVE:TestNoCmp Cmp IF (NOT 0 Cmp);
 
 REMOVE Guess ; # If any other reading is possible.
 REMOVE Err/Guess ; # If any other reading is possible.
@@ -540,8 +545,8 @@ REMOVE:vid ("viður") IF (0 ("við") + Pr);
 
 # Case within PP phrases
 
-SELECT:r40 Acc IF (*-1 ACCPREP BARRIER NOTACC OR V OR Pr OR Adv)(NOT 0 VFIN);
-SELECT:r41 Dat IF (*-1 DATPREP BARRIER NOTDAT OR V OR Pr OR Adv)(NOT 0 VFIN);
+SELECT:r40 Acc IF (*-1 ACCPREP BARRIER NOTACC OR V OR Pr OR Adv OR CS)(NOT 0 VFIN);
+SELECT:r41 Dat IF (*-1 DATPREP BARRIER NOTDAT OR V OR Pr OR Adv OR CS)(NOT 0 VFIN);
 
 REMOVE:r42 NOTDAT IF (*-1 DATPREP BARRIER NOTDAT OR S-BOUNDARY OR V OR Pr OR Adv OR CLB);
 #REMOVE Acc IF (*-1 DATPREP BARRIER NOTDAT);
@@ -625,8 +630,12 @@ REMOVE ("hannur") IF (NOT -1 NPNH) ;
 
 #REMOVE:InternalProp Guess IF (NOT -1 CLB OR PUNCT OR LEFT)(NOT 0 Guess);
 
-REMOVE:SgProp Pl IF (0C Prop);
+SELECT:GivenFamily  $$NAGD IF (-1C Prop + Givenname + $$NAGD)(0C Prop);
 
+REMOVE:SgProp Pl IF (0C Prop);
+SELECT:eita Nom IF (-1 ("eita"))(0 Prop);
+
+SELECT:PropProp $$NAGD IF (-1C Prop + $$NAGD);
 
 # Specific lexemes, words 
 # =======================
@@ -638,7 +647,9 @@ SELECT Pr IF (0 ("aftan"))(1 Pr);
 
 # allur
 SELECT:ØllumSum Det + Neu + Sg + Dat IF (0 ("allur"))(1 COMMA)(2 ("sum")); 
-	
+
+REMOVE:NotAllur ("allur") IF (-1 V)(0 Adv)(1 Adv);
+## lesa alt ígjøgnum
 
 # at
 SELECT CS IF (-2 ("av"))(-1 ("tað"))(0 ("at"));
@@ -1097,6 +1108,8 @@ REMOVE:ErtTu ("erur") + Adv IF (*0 ("tú"));
 REMOVE:NnotInf Inf IF (-1 ("ein") + Det)(0 N);	
 SELECT:AdInf Inf IF (-1 ("so at") OR ("at"));
 
+SELECT:haldaInf Inf IF (-2 ("halda"))(-1 ("tað"));
+
 SELECT:r51 Inf IF (*-1 MODV BARRIER V);
 
 REMOVE (V Pl) IF (-2 VFIN + Sg)(-1 (Pron Sg))(0 Inf);
@@ -1148,6 +1161,8 @@ REMOVE:PrsPtcNotA Der/A IF (0 PrsPrc)(NOT 1 A OR N);
 
 # Present participle 
 
+SELECT Neu IF (*-1 ("vera") LINK *-1 ("tað"))(0 PrsPrc);
+SELECT Nom IF (*-1 ("vera") LINK *-1 ("tað"))(0 PrsPrc + Neu)(NOT 1C Acc OR Dat);
 
 
 
@@ -1176,6 +1191,8 @@ REMOVE:test1 (V Ind 1Sg) IF (NEGATE 0* ("eg" Pron Pers Sg Nom));
 REMOVE:test2 (V Ind 2Sg) IF (NEGATE 0* ("tú" Pron Pers Sg Nom)); # Tino!
 
 REMOVE (V Ind 2Sg) IF (*-1 CLB LINK *-1 2Sg OR Prt + Sg LINK -1 ("tú" Pron Pers Sg Nom) LINK -1 ("sum") OR ("ið"));
+
+SELECT:SumPrt 3Sg IF (-1 ("sum"))(0 Prt) ;
 
 SELECT 1Sg IF (-1 ("eg" Pron Pers Sg Nom));
 
@@ -1218,14 +1235,11 @@ REMOVE:PrtNotPfPtc PrfPtc IF (-1 Nom)(0 Prt)(1 IM OR CS);
 # hmm
 # Fjallið lá stilt, tað ikki so mikið sum andi.
 
-REMOVE:NotTopAcc Acc IF (*-1 S-BOUNDARY BARRIER NPNH)(*1 VFIN)(NEGATE *1 SOMEACCPREP LINK 1 EOS);
+REMOVE:NotTopAcc Acc IF (*-1 S-BOUNDARY OR CLB  BARRIER NPNH)(*1 VFIN)(NEGATE *1 SOMEACCPREP LINK 1 EOS);
 
 REMOVE:NotTopAcc2 Acc  IF (*-1 S-BOUNDARY BARRIER NPNH)(0 Nom + Pl)(1 V + Pl)(NOT 2 Nom + Pl);
 
 REMOVE:NomV3 Acc IF (-3 BOS OR CLB)(-2 Adv)(-1 VFIN)(0 N OR Pron + Pers);
-
-REMOVE:NomFragment Acc IF (0 Nom)(NOT *0 V)(NOT *-1 SOMEACCPREP);
-REMOVE:NomFragment Dat IF (0 Nom)(NOT *0 V)(NOT *-1 SOMEDATPREP);
 
 REMOVE Dat IF (1 SAFETV)(*2 N + Acc BARRIER NPNH);
 
@@ -1243,8 +1257,14 @@ REMOVE:AdInfAcc Nom IF (*-1 Inf BARRIER NPNH LINK -1 IM);
 REMOVE Nom IF (*-1 SAFETV LINK -1 Nom)(0 N + Acc);
 REMOVE Dat IF (*-1 SAFETV LINK -1 Nom)(0 N + Acc);
 
+REMOVE:Aobj ND IF (-1 TV);
+
 SELECT:Aobj Acc IF (-1 TV)(0 A)(1 Pr);
 ## sum tey toldu lítið av.
+
+SELECT:Aobjpron Acc IF (-2 TV)(-1 Nom)(0C Pron);
+
+SELECT:Aobjb Acc IF (-1 Nom)(-2 TV)(-3 Adv);
 
 # Genitive
 # ========
@@ -1491,6 +1511,10 @@ REMOVE:CmpNPNone CmpNP/None ;
 REMOVE:CmpNPNone (0/1 CmpNP/None) ;
 REMOVE:CmpNPNone (0/2 CmpNP/None) ;
 REMOVE:CmpNPNone (0/3 CmpNP/None) ;
+
+
+REMOVE:NomFragment Acc IF (0 Nom)(NEGATE *0 V)(NOT *-1 SOMEACCPREP);
+REMOVE:NomFragment Dat IF (0 Nom)(NEGATE *0 V)(NOT *-1 SOMEDATPREP);
 
 
 #!! * **X** removes readings with no syntax

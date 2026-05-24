@@ -332,7 +332,8 @@ SELECT:Arab Arab IF (NOT 0 Ord OR Prop OR Arab + Err/Orth) ; # In Apertium we ge
 SELECT:NumOrd CLB IF (0/1 (Num Ord));
 
 REMOVE:dyn  Arab (0 Prop) ; # foreløpig løsning, til vi har ny løsning for numerals.lexc
-	
+
+
 SECTION
 
 # Bruk MIN i staden
@@ -358,27 +359,30 @@ REMOVE Err/Guess ; # If any other reading is possible.
 REMOVE:NotErur ("erur") ;
 
 
-# Early and popular rules
+#!! Early and popular rules
 
 REMOVE:Lexicalised N IF (0/1 Cmpnd) ;
 	
 
 SELECT:r50 Inf IF (-1 ("at"));
-SELECT:r4 IM IF (0 ("at"))(1C Inf);# TODO: was SELECT CS... should it be? -KBU
+SELECT:IM1 IM IF (0 ("at"))(1 Inf);
+SELECT:IM2 IM IF (0 ("at"))(1 Adv)(2 Inf);
 SELECT:r2 Pr IF (0 ("á"))(1 Dat OR Acc);
 
 # at
 REMOVE:r36 Pr IF (0 ("at"))(NOT *1 Acc OR Gen OR Dat BARRIER V);
 SELECT:r37 CS IF (0 ("at"))(*1 Nom BARRIER NPNHA LINK *1 V BARRIER OBL);
-REMOVE:ImForV IM IF (0 ("at"))(NOT 1 Inf); # too strict?
+REMOVE:ImForV IM IF (0 ("at"))(NOT 1 Inf)(NEGATE *1 Inf BARRIER NOT-ADV); # too strict?
 
 REMOVE:rAtN N IF (0 ("at"))(NOT -1 PRE-N) ;
 	## soleiðis at kvøða einsamallur.
 
 SELECT:CapitalPropInMiddle Prop IF (-1 WORD);
 
-# A or N
+#!! A or N
 # ======
+#!! Disambiguate A, N due to context.
+
 REMOVE:r35 A IF (*-1 Pr OR CLB BARRIER NPNH)(0 N)(1 S-BOUNDARY OR V);
 
 REMOVE (A Fem) IF (0 (N Neu))(-1 COPULA)(-2 ("tað" Nom));
@@ -389,14 +393,15 @@ REMOVE N IF (*-1 SOMEACCPREP CBARRIER NPNH)(0 A + Acc)(1 N + Acc) ;
 REMOVE N IF (*-1 SOMEACCDATPREP CBARRIER NPNH)(0 A + Dat OR A + Acc)(1 N + Dat OR N + Acc) ;
 
 
-# TAD
+#!! TAD, Pron or Det
 
 REMOVE Dem IF (NOT -2 Nom)(-1 V)(0 Pron + Nom)(NOT *1 N + Def BARRIER NPNHA);
 REMOVE Dem IF (0 TAD + $$NAGD)(1C $$NAGD);
 
 
-# Adjective disambiguation in NP
+#!! Adjective disambiguation in NP
 # ------------------------------
+
 REMOVE:ANotInf Inf IF (-1 HAVA + V + Ind)(0 A + Neu + Sg + Nom + Def)(1 N + Neu + Sg + Nom + Def);
 REMOVE:ANotVPl Ind + Prs + Pl IF (-1 HAVA + V + Ind)(0 A + Neu + Sg + Nom + Def)(1 N + Neu + Sg + Nom + Def);
 
@@ -409,9 +414,8 @@ REMOVE:r19 A + Msc IF (0  $$NAGD) (*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT
 REMOVE:r20 A + Neu IF (0  $$NAGD) (*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
 
 
-# Case disambiguation
+#!! Case disambiguation
 SELECT:TadNom Nom IF (0 TAD)(1 COPULA + 3Sg);
-
 
 SELECT:r21 $$NAGD IF (0C A)(*1C $$NAGD BARRIER NPNHA)(NOT 0 V); #XXX C?
 SELECT:r21b $$NAGD IF (0C A)(-*1C $$NAGD BARRIER NPNHA)(NOT 0 V); #XXX C?
@@ -435,15 +439,16 @@ REMOVE:NotAccPredic Acc IF (*-1 COPULA BARRIER NPNH)(0 Nom);
 REMOVE:SgSgNP Pl IF (-1C Det + Sg)(0 A)(1 N + Sg);
 REMOVE:PlPlNP Sg IF (-1C Det + Pl)(0 A)(1 N + Pl);
 
-# Noun disambiguation
+#!! Noun disambiguation
 
 SELECT ("hús") IF (0 ("húsi"));
 # Awaiting real examples with 'húsi'
 
-# Conjunctions
+#!! Conjunctions
 
+#!! No rules so far
 
-# Subjunctions
+#!! Subjunctions
 
 SELECT CS IF (-1 BOS)(0 ("tí"));
 # tí is also a dative pronoun. No instances have been observed
@@ -451,49 +456,54 @@ SELECT CS IF (-1 BOS)(0 ("tí"));
 # before going for CS.
 
 
-# Verbs
+#!! Verbs
 
-# hava
+#!! -st
+REMOVE:stpass ("<.*a>r") IF (0 ("<.*ast>r") + Pass);
+
+
+#!! hava
+
 REMOVE ("havi") IF (0 HAVA + V)(0* Pl + Nom BARRIER Det);
 SELECT V + Pl IF (-3 Pl + Nom)(-2 COMMA)(-1 ("sum"));
        ## tey, sum hava
 
-# bera
+#!! bera
 SELECT V IF (-1 Adv)(0 ("bar"))(1 ("til"));
        ## Soleiðis bar til.
 
-# síggja
+#!! síggja
 REMOVE:sær Refl IF (*0 N + Sg + Nom OR Pron + Sg + Nom)(NOT *0 3Sg);
 
-# vera
+#!! vera
 SELECT:vera ("vera") IF (0 ("ver"))(*-1 HAVA BARRIER V);
 SELECT:RealVarur A IF (-1 Det + Acc)(0 ("varur") + Acc + Sg)(1 N + Acc); # awaiting a real example
 SELECT:NeverVarur Prt IF (0 ("varur")); # todo: find examples of the adjective form "var"
 SELECT:NotVarur Prt IF (0 ("vera"))(1 Sup);
 SELECT:NotVarur Prt IF (0 ("vera"))(-1 Sup);
 
-# verða
+#!! verða
 # TODO: 
 # find sentences with verður N = portion mad, eta tveir verðir spise to portioner
 SELECT:verda ("verða") IF (0 ("verður"));
 	     ## ... sum av tær verður gitin.
 
-# kunna
+#!! kunna
 SELECT:vfinkunna Inf IF (-1 VFIN) (0 ("kunna"));
 SELECT:kunna Inf IF (0 ("kunna"))(*1 Inf BARRIER NOT-ADV);
 
-# koma
+#!! koma
 SELECT Prt  IF (-1 Pl)(0 ("koma"));
 
-# Plural
+#!! Plural
 
 SELECT V + Pl IF (-1 ("summur") + Pl + Nom);
 SELECT V + Ind + Pl IF (-3 ("tað") + Pl + Nom)(-2 COMMA)(-1 ("sum"));
 
-# PP disambiguation
+#!! ## PP disambiguation
 # =================
 
-# Preposition or not?
+#!! Preposition or not?
 
 #REMOVE Pr IF (NOT *-1 S-BOUNDARY LINK *1 OBL BARRIER NPNH)(0 Adv)(NOT *1 OBL BARRIER NPNH);
 REMOVE Pr IF (0 Adv)(NOT *1 OBL OR Num BARRIER NPNH);
@@ -506,44 +516,46 @@ REMOVE:PrAdv Adv IF (*-1 N BARRIER V)(0 Pr + SOMEACCPREP)(*1 Acc BARRIER NPNH);
 REMOVE:PrCS Pr IF (0 CS)(1C Nom OR VFIN);
 
 
-# á
+#!! á
 REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
 REMOVE:AArule N IF (0 ("á" Indef))(-1C NOMINALHEAD OR V);
 
-# av
+#!! av
 REMOVE:av Interj IF (0 ("av")); # TODO: Find genuine examples with Interj av.
 
-# millum
+#!! millum
 REMOVE:r38 Adv IF (0 Dat OR Acc)(*-1 ("millum") BARRIER NPNH);
 REMOVE:millum Prop IF (0 ("millum"))(*1 Gen BARRIER NPNH);
 
-# móti
+#!! móti
 SELECT:moti Pr if (0 ("móti"))(1 Num)(2 Dat);
 SELECT:moti Pr if (0 ("móti"))(1 Dat);
 
-# til
+#!! til
 SELECT:r39 Pr IF (0 ("til"))(*1 N OR NPNH OR ("at") BARRIER NPNHA);
-
 SELECT:r3 Pr IF (0 ("til"))(*1 (N Gen) BARRIER NPNHA);
 
-# tíður
+REMOVE:til Nom IF (-1 ("til"));
+## til tað
+
+#!! tíður
 SELECT ("tíður" A* Adv) IF (-1 VFIN); #(NOT 0 (Det $$NAGD) LINK 1 N + $$NAGD OR A + $$NAGD);
 	## Tú hugsar títt um bygdafólk.
 	
-# um
+#!! um
 SELECT:um1 CS IF (-1 ("sjálvur"))(0 ("um"));
 SELECT:umCS CS IF (*-1 BOS OR COMMA BARRIER NOT-CC)(0 ("um"))(*1 Nom BARRIER NPNH LINK 1 VFIN);
 	## Vita, um tú fært talt stjørnumar har!
 REMOVE:um2 CS IF (0 ("um"));
 
-# undir 
+#!! undir 
 REMOVE:undirprep Adv IF (0 ("undir"))(1 Acc OR Dat OR Num);
  
-# við
+#!! við
 SELECT:vidur  ("viður") IF (-1 ("høgga") OR ("brenna"))(0 ("við") + Acc);
 REMOVE:vid ("viður") IF (0 ("við") + Pr);
 
-# Case within PP phrases
+#!! ## Case within PP phrases
 
 SELECT:r40 Acc IF (*-1 ACCPREP BARRIER NOTACC OR V OR Pr OR Adv OR CS)(NOT 0 VFIN);
 SELECT:r41 Dat IF (*-1 DATPREP BARRIER NOTDAT OR V OR Pr OR Adv OR CS)(NOT 0 VFIN);
@@ -572,23 +584,26 @@ REMOVE:DATPREPVERB Acc IF (*-1 ACCDATPREP BARRIER NPNH LINK *-1 DATPREPV BARRIER
 REMOVE:STRONGDATPREPVERB Acc IF (*-1 SOMEACCDATPREP BARRIER NPNH LINK *-1 S-BOUNDARY BARRIER ACCPREPV)(0 Dat);
 #REMOVE:STRONGDATPREPVERB Acc IF (*-1 ACCDATPREP BARRIER NPNH LINK *-1 Pr BARRIER ACCPREPV); # BARRIER NOT-ADV)(0 Dat);
 
-# POS disambiguation
+#!! ## POS disambiguation
 # ==================
 
-# Adjectives
+#!! Adjectives
 
 REMOVE:AdjNotPrfPtc PrfPtc IF (*-1 COPULALIKE BARRIER NPNHA)(0 A);
 
-#kalur
+#!! kalur
 
 REMOVE ("kala") IF (*-1 TAD + Dem)(0 ("kalur"));
 
-# Pronouns
+#!!  Pronouns
 
 REMOVE:eg Prop IF (0 ("eg"))(1 1Sg);
 REMOVE:Eg Prop IF (-1 BOS)(0 ("Eg"))(1 1Sg);
 
-# Pron Pers or Det
+
+
+
+#!! Pron Pers or Det
 
 REMOVE Pers IF (-1 Pr)(0 (Det Gen))(*1 N OR A BARRIER NPNH);
        ## vendu móti hansara bygd.
@@ -601,7 +616,8 @@ REMOVE Dem IF (0 Pers)(1C EOS OR VFIN OR Pr OR CC OR Num OR S-BOUNDARY);
 REMOVE:DemNotPron (Pron Pers) IF (0 Dem + $$GENDER + $$NUMBER + $$NAGD)(1 NorA + $$GENDER + $$NUMBER + $$NAGD);
 #REMOVE:DemNotPron (Pron Pers) IF (0 Det + $$GENDER + $$NUMBER + $$NAGD)(1 NorA + $$GENDER + $$NUMBER + $$NAGD);
 
-# Det (no idea why $$ does not work)
+#!! Det
+# (no idea why $$ does not work)
 
 REMOVE (Num Msc Nom) IF (0 (Det Msc Nom))(1 (N Msc Nom) OR (A Msc Nom));
 REMOVE (Num Msc Acc) IF (0 (Det Msc Acc))(1 (N Msc Acc) OR (A Msc Acc));
@@ -620,13 +636,13 @@ REMOVE (Num Neu Dat) IF (0 (Det Neu Dat))(1 (N Neu Dat) OR (A Neu Dat));
 
 	## eina mynd
 
-# Pron not N
+#!! Pron not N
 
 REMOVE ("hannur") IF (NOT -1 NPNH) ;
 
 
 
-# Proper nouns
+#!! Proper nouns
 
 #REMOVE:InternalProp Guess IF (NOT -1 CLB OR PUNCT OR LEFT)(NOT 0 Guess);
 
@@ -637,120 +653,121 @@ SELECT:eita Nom IF (-1 ("eita"))(0 Prop);
 
 SELECT:PropProp $$NAGD IF (-1C Prop + $$NAGD);
 
-# Specific lexemes, words 
+#!! ## Specific lexemes, words 
 # =======================
 
-# aftan
+#!! aftan
 SELECT Pr IF (0 ("aftan"))(1 Pr);
 	## aftan fyri sparikassan...
 	
 
-# allur
+#!! allur
 SELECT:ØllumSum Det + Neu + Sg + Dat IF (0 ("allur"))(1 COMMA)(2 ("sum")); 
 
 REMOVE:NotAllur ("allur") IF (-1 V)(0 Adv)(1 Adv);
 ## lesa alt ígjøgnum
 
-# at
+#!! at
 SELECT CS IF (-2 ("av"))(-1 ("tað"))(0 ("at"));
 REMOVE Pr IF (0 ("at"))(NEGATE 1 NP-MEMBER);
 
-# á 
+#!! á 
 SELECT Interj IF (-1 BOS)(0 ("á"))(1 COMMA OR CC);
        ## Á, eg veit ikki.
 
 REMOVE:RemoveInterjAa Interj IF (NOT -1 BOS)(0 ("á"));
 
-# ár
+#!! ár
 SELECT (Neu Sg Acc) IF (-1 ("i"))(0 ("ár"));
 
-# bara
+#!! bara
 SELECT ("bara" Adv) IF (1 Pron);
 SELECT ("bara" Adv) IF (*1 N OR A BARRIER NPNH);
        ## Bara eygað sá roykin fara uppeftir sum óljóð.
+SELECT:tosabara ("bara" Adv) IF (*-1 V BARRIER NOT-ADV);
 
-# eg
+#!! eg
 SELECT:eg ("eg" Pron Pers Pl Nom) IF (*1 (V Pl) BARRIER NOT-ADV); #(*1 V + Pl BARRIER NOT-ADV);
 	  ## Vit mugu sleppa.
 
-# ein
+#!! ein
 REMOVE ("eini") IF (0 Dat + Dat )(1 A + Dat OR N + Dat) ;
 
 
-# eingin
+#!! eingin
 SELECT:eingin ("eingin") IF (-1 ("til"))(0 Gen);
 	      ## til einkis.
 
-# hava
+#!! hava
 SELECT HAVA IF (0 ("høva"))(*1 Sup BARRIER NOT-ADV);
 SELECT HAVA IF (0 ("høva"))(-1 Sup);
        ## Teir høvdu lýtt á kongin.
 
-# hann
+#!! hann
 REMOVE:hannur ("hannur") IF (NOT -1 PRE-N)(0 ("hann")); # hannur must be ein hannur or smth
 
-# her
+#!! her
 REMOVE ("hera" Imp) IF (0 ("her"));
 	# Cannot come up with a condition calling for Imp of "hera"
 	
-# hetta	
+#!! hetta	
 SELECT:hesinNom ("hesin" Pron Dem Neu Sg Nom) IF (1 VFIN)(NOT 2 Nom);
 SELECT:hesinAcc ("hesin" Pron Dem Neu Sg Acc) IF (1 VFIN)(2C Nom);
 
 REMOVE:Hetta ("Hetta" Prop) IF (NOT -1 Sem/Mal);
 
-# hon
+#!! hon
 SELECT:hon Pron IF (0 ("hon"))(NOT 0 PRE-N);
 
-# húsi
+#!! húsi
 REMOVE:húsi ("húsi") IF (*-1 MOVEMENTVERB)(0 ("hús"));
 	    ## koma til húsa.
 
-# ið
+#!! ið
 SELECT CS IF (-1 CLB)(0 ("ið"));
 
-# innan
+#!! innan
 REMOVE ("inni") IF (0 ("innan" Pr))(*1 Acc BARRIER NPNH);
 	## Samstarv innan gransking.
 	
-# liggja
+#!1 liggja
 SELECT ("liggja") + Prt IF (-1 N OR Pron) ;
 SELECT ("liggja") + Prt IF (1 Pr);
 
-# men
+#!! men
 SELECT CC IF (*-1 CLB OR BOS OR PUNCT BARRIER WORD)(0 ("men"));
 
-# munandi
+#!! munandi
 SELECT:munandi Adv IF (0 ("munandi"))(1 Adv);
 
-# niðan
+#!! niðan
 SELECT Adv IF (0 ("niðan"))(1 Pr);
 
-# nú
+#!! nú
 REMOVE N IF (0 ("nú" Adv));
 	## í núið.
 	
-# ruður
+#!! ruður
 REMOVE ("ruður") IF (0 ("runnur"));
 # Synonyms
 
-# seg
+#!! seg
 SELECT Refl IF (0 ("seg" Refl $$NAGD))(1 ("sjálvur" $$NAGD));
 
-# sjalvur
+#!! sjalvur
 SELECT Adv IF (0 ("sjálvt"))(1 ("um") OR EOS);
        ## Tey vóru so hugnalig, sjálft um tey sóu hjálparleys út.
 
 SELECT:SærSjalvari Dat IF (-1 ("seg" Dat))(0 ("sjálvur"));
 
-# skal
+#!! skal
 REMOVE ("skal") IF (0 ("skula"))(1 Inf);
 
-# tann
+#!! tann
 SELECT ("tann" Det) IF (1 ("sum"));
 SELECT ("tann" Det $$NAGD) IF (*1 N + $$NAGD OR A + $$NAGD BARRIER NPNH); 
 
-# tá and tá ið
+#!! tá and tá ið
 SELECT Adv IF  (0 ("tá"))(1 ("ið") OR V OR Det OR Pron OR N);
 SELECT Adv IF (-1 ("tá"))(0 ("ið"));
 SELECT Adv IF (-1 Adv OR NPNH OR COMMA)(0 ("tá"))(1 Det OR Pron OR V);
@@ -762,11 +779,11 @@ SELECT Adv IF (-1 NPNH)(1 Ind OR Sbj);
 REMOVE:r5 Det IF (0 Pers)(NEGATE 0 Gen LINK -1 N)(NOT 1 NPNHA OR N);
 
 
-# frammanfyri
+#!! frammanfyri
 REMOVE Adv IF (0 ("frammanfyri"))(1 Dat);
 ## frammanfyri teimum húsinum
 
-# um
+#!! um
 REMOVE Imp IF (0 ("um")) ;
 # This is against the verb ymja, súsa, brúsa, dynja, (kvæð.) munnur og nasar umdu í blóði 
 # (blóðið fossaði)
@@ -774,24 +791,24 @@ REMOVE Imp IF (0 ("um")) ;
 # I did not intend to write a 'remove all ymja' rule, but simply cannot come up with good 
 # contexts including 'ymja' but excluding 'um'.
 
-# unglingi
+#!! unglingi
 REMOVE ("unglingi") IF (0 ("unglingur"));
 # perhaps with regex *lingi vs *lingur
 
-# væl
+#! væl
 REMOVE Imp IF (NOT -1 BOS)(0 ("væl"))(NOT 1 ("um"));
 # Again, we need real-life examples for imperative of
 # væla 2 -di s 1: ~ um 1 bøta um, hjálpa upp á, umvæla, ~ um húsini 
 #     2 (sj.) hjúkla um, hugsa ikki um at ~ um meg
 
-# inni
+#!! inni
 SELECT Adv IF (-1 V)(0 ("inni"))(1 Pr);
 
-# á
+#!! á
 REMOVE Interj IF (1 WORD)(0 ("á" Pr));
 REMOVE Interj IF (-1 V)(0 ("á" Pr));
 
-# ver "ver" CmpNP/None N Neu Sg Acc Def = verið
+#!! ver "ver" CmpNP/None N Neu Sg Acc Def = verið
 REMOVE:verid ("ver") IF (-1 A + Indef)(0 Sup);
 
 
@@ -801,12 +818,12 @@ REMOVE:verid ("ver") IF (-1 A + Indef)(0 Sup);
 
 
 
-# Adverbs
+#!! ## Adverbs
 
 LIST COMMONADVERB = "næstan" "lítill" ;
 
 
-# General adverb
+#!! ###  General adverb
 
 REMOVE:AdvNotA (A Sg) IF (-1 V + Pl)(0 Adv)(NOT 1 N + Pl);
 
@@ -820,7 +837,10 @@ SELECT:r6 Adv IF (-1 DATPREP)(*1 Dat BARRIER NPNHA);
 SELECT:r7 Adv IF (-1 VFIN)(1 Inf);
 
 
-# Specific adverbs
+#!! ### Specific adverbs
+
+SELECT:bara Adv IF (-1 V)(0 ("bara"))(1 IM);
+## at ballast bara at vera
 
 SELECT:næstan Adv IF (0 ("næstan"))(NOT 1 Fem + Nom + Def);
 	## Hann hevði næstan kvalt ...
@@ -841,28 +861,28 @@ SELECT Adv IF (-4 V)(-3 Pron + Refl)(-2 Adv)(-1 CC)(1 EOS);
 SELECT Adv IF (-1 VFIN - AUX)(1 CLB);
 #$ Skógvarnir gingu sáttiliga.
 
-# Lexicalised adverbs.
+#!! ### Lexicalised adverbs.
 REMOVE:r566 (A* Adv) IF (0 LEX-ADV) ;
 	## Serliga er tað ein.
 
-# bara
+#!! bara
 SELECT Adv IF (-1 VFIN)(0 ("bara"));
 
-#heldur
+#!! heldur
 SELECT Adv IF (-1 VFIN)(0 ("heldur"))(1 V);
 
 
-# væl
+#!   væl
 SELECT Adv IF (-1 VFIN)(0 ("væl"))(1 IM);
 
-# saman (not samur)
+#!!  saman (not samur)
 REMOVE A if (0 ("saman"))(NOT 1 Msc + Sg + Acc + Indef);
 
-# Adverb verbs
+#!! ###  Adverb verbs
 
 SELECT:umleid Adv IF (0 ("umleið"))(1 Num);
 	
-# Idioms
+#!! ### Idioms
 
 SELECT ("stórur" A Neu Sg Dat) IF (-2 ("í"))(-1 ("tað"))(1 ("og"))(2 ("heilur"));
 SELECT ("heilur" A Neu Sg Dat) IF (-4 ("í"))(-3 ("tað"))(-2 ("stórur"))(-1 ("og"));
@@ -876,7 +896,7 @@ SELECT ("innast" Adv) IF (1 ("inni"));
 
 
 
-# Numerals and number symbols
+#!! ##  Numerals and number symbols
 # ===========================
 
 REMOVE:noyear Sem/Year IF (1 AMOUNT);
@@ -920,10 +940,10 @@ SELECT:ein ("ein") IF (1 Adv);
 
 
 	
-# NP internal constraints
+#!! ## NP internal constraints
 # =======================
 
-# Determiner disambiguation
+#!! ### Determiner disambiguation
 
 REMOVE:r8 Neu IF (0 Det + $$NAGD)(NOT 0 Poss + $$NAGD LINK -1 N + $$NAGD)(*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
 REMOVE:r9 Msc IF (0 Det + $$NAGD)(NOT 0 Poss + $$NAGD LINK -1 N + $$NAGD)(*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
@@ -943,11 +963,11 @@ REMOVE Det + $$GENDER IF (*1C N BARRIER V LINK NOT 0 $$GENDER);
 SELECT Det + $$GENDER IF (1C A OR N + $$GENDER);
 
 
-# summi
+#!! summi
 SELECT Det IF (-1 BOS OR CLB)(0 ("summur"))(1 Pl);
 
 
-# Postnominal determiner disambiguation
+#!! #### Postnominal determiner disambiguation
 
 SELECT:PossNum Sg IF (0 Poss)(-1C N + Sg);
 SELECT:PossNum Pl IF (0 Poss)(-1C N + Pl);
@@ -961,13 +981,13 @@ REMOVE:r10b Fem IF (0 Poss + $$NAGD)(-1 NounMscNeu + $$NAGD LINK NOT 0 Fem);
 #REMOVE:r12b Msc IF (0 A + $$NAGD)(-1 NounFemNeu + $$NAGD LINK NOT 0 Msc);
 #REMOVE:r13b Fem IF (0 A + $$NAGD)(-1 NounMscNeu + $$NAGD LINK NOT 0 Fem);
 
-# Definiteness disambiguation
+#!! ### Definiteness disambiguation
 
 REMOVE Def IF (0 A + Indef + $$NAGD)(1C N + Indef + $$NAGD);
 REMOVE Indef IF (0 A + Def + $$NAGD)(1C N + Def + $$NAGD);
 
 
-# Case disambiguation
+#!! ## Case disambiguation
 
 
 SELECT:r14 $$NAGD IF (0 Det)(NOT 0 Poss LINK -1 N)(*1C $$NAGD BARRIER NPNHA);
@@ -984,7 +1004,7 @@ REMOVE V IF (-1 SOMEGENPREP)(0 N + Gen);
 #REMOVE V IF (0 (A $$NAGD $$GENDER $$NUMBER $$DEFNESS)) (1 (N $$NAGD $$GENDER $$NUMBER $$DEFNESS));
 SELECT:anagr $$NAGDNUMBERGENDER IF (0 A) (1 N + $$NAGDNUMBERGENDER)(NOT 1 Prop);
 
-# Noun disambiguation
+#!! ### Noun disambiguation
 # -------------------
 
 SELECT:r28 $$GENDER IF (-1C (A) + $$GENDER)(0 N)(NOT 0 V + 1Sg LINK *1 Pron + Nom + 1Sg);
@@ -1003,7 +1023,7 @@ SELECT:r30c $$NUMBER IF (-1C (Pron Indef) + $$NUMBER)(0 N);
 REMOVE:Subj3position Acc IF (*-1 VFIN BARRIER NPNHA LINK *-1 BOS BARRIER Nom)(0 Nom);
 
 
-# Poss disambiguation
+#!! ###  Poss disambiguation
 
 REMOVE:r31 $$GENDER IF (-1 N LINK NOT 0 $$GENDER)(0 Poss);
 
@@ -1026,7 +1046,7 @@ SELECT:AdjSg (A Sg Dat) IF (-1 Pr)(0 A + Pl + Dat)(NOT 1 N + Sg);
 
 
 
-# Coordination
+#!! ### Coordination
 
 
 REMOVE Def   IF (0 N + Indef)(1 CC)(2C N + Indef);
@@ -1037,26 +1057,26 @@ SELECT:UniformCC N + $$NAGD IF (*-1 CC BARRIER NPNH LINK -1C N + $$NAGD);
 SELECT $$NAGD IF (1 CC)(2C $$NAGD);
 SELECT $$NAGD IF (-11 CC)(-12C $$NAGD);
 
-# NP head disambiguation
+#!! ### NP head disambiguation
 # ======================
 
-# Inversion
+#!! Inversion
 
 REMOVE:r34 Acc IF (-2 CS)(-1 (V Pl))(0 (Pl Nom)) ;
 	## Tað var, sum váru tey sett út úr luftini.
 
 
-# Elliptic AP as NP
+#!! ### Elliptic AP as NP
 # =================
 
 SELECT:DefectAP Msc IF (0C REALADJ)(1 S-BOUNDARY) ;
 
-# P chains or not
+#!! #### P chains or not
 
 SELECT:r45 Adv IF (0 Pr)(1C Pr);
 	## Hann fór niðan um Danmark.
 
-# Pronoun disambiguation
+#!! ### Pronoun disambiguation
 
 REMOVE:r46 Det IF (0 Pers)(1C V OR CLB OR Adv);
 	## Tey vóru so hugnalig.
@@ -1071,7 +1091,7 @@ REMOVE:r47 Det IF (0 Pers)(NEGATE *1 Def OR ("báðir") BARRIER NPNH)(NEGATE 0 G
 #REMOVE:annar ("annar" Pron $$NAGD) IF (1 (N $$NAGD));
 REMOVE:annar ("annar" Pron) + $$NAGD IF (1 N + $$NAGD);
 
-#NP Coordination
+#!! ### NP Coordination
 
 REMOVE:CCPrs Prs + 3Sg IF (0 Pl + Nom)(1 CC)(*2 Pl + Nom BARRIER NPNH OR OBL);
 
@@ -1081,10 +1101,10 @@ REMOVE:AccNotNom2 Nom IF (0 ("tað" Pron Pers Sg Acc))(1 V + 2Sg)(2 ("tú" Pron 
 REMOVE:AccNotNom3 Nom IF (0 ("tað" Pron Pers Sg Acc))(1 V + 3Sg)(2 ("hann" Pron Pers Sg Nom) OR ("hon" Pron Pers Sg Nom));
 
 
-# VP disambiguation
+#!! ## VP disambiguation
 # =================
 
-# V or A
+#!! ### V or A
 
 
 REMOVE:r48 A IF (0 ("vera"))(1 Sg);
@@ -1103,10 +1123,11 @@ REMOVE:ErtTu ("erur") + Adv IF (*0 ("tú"));
 
 #REMOVE 
  
-# Infinitive
+#!! ### Infinitive
 
 REMOVE:NnotInf Inf IF (-1 ("ein") + Det)(0 N);	
-SELECT:AdInf Inf IF (-1 ("so at") OR ("at"));
+SELECT:AdInf1 Inf IF (-1 ("so at") OR ("at"));
+SELECT:AdInf2 Inf IF (*-1 ("so at") OR ("at") BARRIER NOT-ADV);
 
 SELECT:haldaInf Inf IF (-2 ("halda"))(-1 ("tað"));
 
@@ -1159,14 +1180,14 @@ REMOVE:PrsPtcNotA Der/A IF (0 PrsPrc)(NOT 1 A OR N);
 	## Húsið er stórt.
 
 
-# Present participle 
+#!! ### Present participle 
 
 SELECT Neu IF (*-1 ("vera") LINK *-1 ("tað"))(0 PrsPrc);
 SELECT Nom IF (*-1 ("vera") LINK *-1 ("tað"))(0 PrsPrc + Neu)(NOT 1C Acc OR Dat);
 
 
 
-# Supine
+#!! ### Supine
 
 REMOVE:NoSupIfNoHava Sup IF (NOT *0 HAVA OR VERDA);
 	
@@ -1182,7 +1203,7 @@ REMOVE:r56 Sup IF (0 Ind)(NOT *-1C VFIN BARRIER S-BOUNDARY)(NOT *1C VFIN BARRIER
 
 REMOVE:SFregel N IF (0 Sup)(1 VFIN);
 
-# Present singular
+#!! ### Present singular
 
 SELECT:r57 (V Ind 3Sg) IF (-1 (N Prop Nom) OR (N Sg Nom) OR (3PRON Pers Sg Nom) LINK NOT *-1 CC BARRIER NPNHA)(1 (Pron Refl Acc)) ;
 
@@ -1212,14 +1233,14 @@ REMOVE:CoordVerb (V Ind 1Sg) IF (-1 CS OR CC LINK *-1C (V Ind Sg) OR (V Ind 3Sg)
 SELECT:r60 (V 2Sg) IF (*-1 ("tú" Pron Pers Sg Nom) BARRIER NOT-ADV);
 SELECT:r60b (V 2Sg) IF (-1 ("og") LINK *-1C (V 2Sg) BARRIER S-BOUNDARY);
 
-# Present plural
+#!! ### Present plural
 
 SELECT:r61a (V Pl) IF (-1 (N Pl Nom))(NOT -1 (Acc) LINK *-1 VFIN BARRIER NPNH);
 SELECT:r61b (V Pl) IF (-1 ("eg" Pron Pers Pl Nom));
 
 REMOVE:PrsPl (V Inf) IF (*-1 ("sum") LINK -1 COMMA LINK *-1 Pl BARRIER VFIN);
 
-# V + Refl
+#!! ### V + Refl
 
 SELECT:r62 ("seg" Refl) IF (-1 Inf OR 3Sg OR Pl) ;
 
@@ -1244,7 +1265,7 @@ REMOVE:NomV3 Acc IF (-3 BOS OR CLB)(-2 Adv)(-1 VFIN)(0 N OR Pron + Pers);
 REMOVE Dat IF (1 SAFETV)(*2 N + Acc BARRIER NPNH);
 
 
-# Not Nominative
+#!! ###  Not Nominative
 
 REMOVE:NotNom Nom IF (-1C Pr)(0C Det OR A OR N);
 
@@ -1254,8 +1275,11 @@ REMOVE:NotNom Nom IF (-1C Pr)(0C Det OR A OR N);
 REMOVE:r63 Nom IF (*-1 AUX OR MODV BARRIER NPNH LINK -1 CC OR Nom)(1 Inf)(NOT *1 Pr LINK 1 BOS);
 REMOVE:AdInfAcc Nom IF (*-1 Inf BARRIER NPNH LINK -1 IM);
 
-REMOVE Nom IF (*-1 SAFETV LINK -1 Nom)(0 N + Acc);
-REMOVE Dat IF (*-1 SAFETV LINK -1 Nom)(0 N + Acc);
+REMOVE:safetv Nom IF (*-1 SAFETV LINK -1 Nom)(0 N + Acc);
+REMOVE:safetv Dat IF (*-1 SAFETV LINK -1 Nom)(0 N + Acc);
+
+REMOVE:unsafetv Nom IF (*-1 TV LINK -1 Nom)(0 N + Acc);
+#REMOVE:unsafetv Dat IF (*-1 TV LINK -1 Nom)(0 N + Acc);
 
 REMOVE:Aobj ND IF (-1 TV);
 
@@ -1266,7 +1290,7 @@ SELECT:Aobjpron Acc IF (-2 TV)(-1 Nom)(0C Pron);
 
 SELECT:Aobjb Acc IF (-1 Nom)(-2 TV)(-3 Adv);
 
-# Genitive
+#!! ### Genitive
 # ========
 
 # Genitive is marginal in Faroese. The strategy should be  
@@ -1282,7 +1306,7 @@ SELECT:r64 Gen IF (*-1 ACCGENPREP BARRIER NPNHA)(NOT 0 Acc);
 REMOVE:r65 Gen IF (NOT *-1 ACCGENPREP BARRIER NPNHA);
 
 
-# Pronoun disambiguation
+#!! ## Pronoun disambiguation
 # =======================
 
 REMOVE Det IF (0 Pron)(NOT 1 A OR N OR ("báðir"));
@@ -1302,12 +1326,12 @@ REMOVE:r66b (Pl Nom Indef) IF (1 (N Sg) OR (V Sg) OR (V 3Sg))(NOT 1 (V Pl));
 REMOVE ("vit") IF (*-1 V + Pl BARRIER V)(0 (Pron Pers Pl Nom));
 	## Eru vit helst...
 
-# seg
+#!! seg
 REMOVE:notsiggja V IF (-1 Pr OR V)(0 ("seg"));
 REMOVE:siggja Refl IF (NOT -1 V OR Pr)(0 ("síggja"))(1 Nom);
 ## Hon hyggur út gjøgnum vindeygað og sær Jákup og Mariu spæla.
 
-# Verb disambiguation
+#!! ## Verb disambiguation
 # ===================
 
 SELECT:2Sg 2Sg IF (-1C ("tú" Pron Nom));
@@ -1343,7 +1367,7 @@ REMOVE:PrtAndPrc PrfPtc IF (0 Prt)(-1 CLB LINK *-1 Prt BARRIER VFIN);
 	
 REMOVE:PrsPrsAndi ("andi") IF (0 PrsPrc);
 
-# Number disambiguation
+#!! ### Number disambiguation
 
 #SELECT $$NUMBER IF (0 A)(1 N + $$NUMBER);
 REMOVE:r23 (A Sg) IF (1C N + Pl);
@@ -1358,11 +1382,11 @@ SELECT:r25 $$NUMBER IF (0 Det)(*1 N + $$NUMBER OR  A + $$NUMBER BARRIER NOT-A);
 
 SELECT (Num Nom) IF (-1 BOS)(1 EOS);
 
-# Postverbal subject
+#!! ### Postverbal subject
 
 SELECT:PostverbalSubj (Pl Nom) IF (-1 V + Pl)(-2 Adv OR Acc);
 
-# Gender disamb of adjectives
+#!! ### Gender disamb of adjectives
 
 SELECT:PredNeu Neu if (0 A)(*-1 COPULALIKE BARRIER NPNHA LINK -1 ("tað") OR Neu);
 SELECT:PredNeu Neu if (0 PrfPtc)(*-1 COPULALIKE BARRIER NPNHA LINK -1 ("tað") OR Neu);
@@ -1370,13 +1394,13 @@ SELECT:PredNeu Neu if (0 PrfPtc)(*-1 COPULALIKE BARRIER NPNHA LINK -1 ("tað") O
 
 
 
-# Gender disamb of numerals
+#!! ### Gender disamb of numerals
 
 SELECT:r26 $$GENDER IF (0 Num)(*1C N + $$GENDER BARRIER NOT-A);
 	## eit sindur
 
 
-# Case disamb of numerals
+#!! ### Case disamb of numerals
 
 SELECT:r27 $$NAGD IF (0 Num)(*1C N + $$NAGD BARRIER NOT-A);
 
@@ -1384,7 +1408,7 @@ SELECT:r27 $$NAGD IF (0 Num)(*1C N + $$NAGD BARRIER NOT-A);
 # Perhaps also rules that remove Neu if Msc or Fem, etc.
 
 
-# Ordinals
+#!! ### Ordinals
 REMOVE:r114 (A Sg) IF (1 (Num Sg));
 	## fyrstu tríggjar mánðirnar.
 
@@ -1392,7 +1416,7 @@ SELECT:Dato Ord IF (0/1 A + Arab + Ord)(1 MONTH);
 	    ## 28. april.
 
 
-# Coordination
+#!! ### Coordination
 
 SUBSTITUTE:einsog (CC) (CS) TARGET ("og") IF (-1 ("ein" Det Neu Sg Gen));
 
@@ -1417,7 +1441,7 @@ SELECT A IF (0 (A $$GENDER $$NAGD))(-1 CC)(-2 (A $$GENDER $$NAGD));
 
 
 
-# Adjective disambiguation outside NP
+#!! ### Adjective disambiguation outside NP
 # -----------------------------------
 
 
@@ -1438,23 +1462,25 @@ REMOVE:NotPrtWhenA (V Ind Prt Pl) IF (-1 Det OR A)(0 A + $$NAGD)(*1 N + $$NAGD B
 REMOVE (A Sg) IF (*-1 ("vera" Pl) BARRIER NOT-ADV)(1 CLB OR EOS OR Pr);
 	## Tey vóru so hugnalig,
 
-# Substituting tags
+#!! ## Substituting tags
 
 SUBSTITUTE:sumPr (CS) (Pr) TARGET ("sum") (NOT -1 BOS OR COMMA);
 
-# Titles
+#!! ### Titles
 
 SELECT Nom IF (-1 BOS)(0 N)(1 Pr LINK *1 N OR Pron BARRIER VFIN LINK 1 EOS OR (":"));
 
-# CC Coordinate NPs
+#!! ### CC Coordinate NPs
 
 SELECT (V Pl) IF (-1 NOMINALHEAD + Nom LINK *-1 CC BARRIER NPNH LINK -1 NOMINALHEAD + Nom);
 
 REMOVE:Dangerous (V Ind 2Sg) IF (0 (V Ind 3Sg))(NOT 0 Pass); #
 
+#!! # AFTER-section
+
 #AFTER-SECTIONS
 
-## For Apertium
+#!! ## For Apertium
 REMOVE SUB:1 (cmp) ; 
 
 REMOVE (adj cmp) IF (0 (adj)) ;
@@ -1484,6 +1510,11 @@ SELECT:killAllahtenotCS ("at" CS) ;
 REMOVE:CS (@CVP)  IF (-1 CS)(1 CS) ;
 	#$ Jos ja go suodjalus ii šat dárbbaš guovllu, dat galgá máhcahuvvot sámi geavahussii, Skum cealká.
 
+REMOVE:CmpNPNone CmpNP/None ;
+REMOVE:CmpNPNone (0/1 CmpNP/None) ;
+REMOVE:CmpNPNone (0/2 CmpNP/None) ;
+REMOVE:CmpNPNone (0/3 CmpNP/None) ;
+
 
 
 REMOVE:ja (@CVP)  IF (-1 Num LINK -1 Pr)(1 Num) ;
@@ -1507,10 +1538,7 @@ REMOVE:NoCmp SUB:1 (0/1 Cmp);
 
 REMOVE:LeksNotDyn Dyn ;
 
-REMOVE:CmpNPNone CmpNP/None ;
-REMOVE:CmpNPNone (0/1 CmpNP/None) ;
-REMOVE:CmpNPNone (0/2 CmpNP/None) ;
-REMOVE:CmpNPNone (0/3 CmpNP/None) ;
+REMOVE:LeksNotCmp NorA IF (0/1 Cmp) ;
 
 
 REMOVE:NomFragment Acc IF (0 Nom)(NEGATE *0 V)(NOT *-1 SOMEACCPREP);

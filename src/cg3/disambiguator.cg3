@@ -336,12 +336,16 @@ REMOVE:dyn  Arab (0 Prop) ; # foreløpig løsning, til vi har ny løsning for nu
 
 SECTION
 
-# Bruk MIN i staden
-#REMOVE:CmpNone N IF (0/1 CmpNP/None);
+REMOVE:sub1 SUB:1 Cmp (0/1 Cmp) ;
+
+REMOVE:CmpNone SUB:1 CmpNP/None IF (0/1 CmpNP/None);
+
+# Bruk MIN i staden (??)
 #REMOVE:CmpNone N IF (0 CmpNP/None);
 
 #!! Test: Go for minimal weight. This rules gives priority to lexicalised forms.
-SELECT:minweight (<W=MIN>);
+# ... but it needs weigth to work, now the SUB:1 do work.
+#SELECT:minweight (<W=MIN>);
 
 ## For Apertium
 LIST MAX2LETTERS = (".."r) ("."r);
@@ -350,7 +354,6 @@ REMOVE:ApShortCompoundParts SUB:* AP_CMP + MAX2LETTERS ;
 "<7>" REMOVE:ApWeirdLemma ("«" lquot) OR ("»" rquot) ;
 
 
-REMOVE:TestNoCmp Cmp IF (NOT 0 Cmp);
 
 REMOVE Guess ; # If any other reading is possible.
 REMOVE Err/Guess ; # If any other reading is possible.
@@ -361,7 +364,6 @@ REMOVE:NotErur ("erur") ;
 
 #!! Early and popular rules
 
-REMOVE:Lexicalised N IF (0/1 Cmpnd) ;
 	
 
 SELECT:r50 Inf IF (-1 ("at"));
@@ -557,8 +559,8 @@ REMOVE:vid ("viður") IF (0 ("við") + Pr);
 
 #!! ## Case within PP phrases
 
-SELECT:r40 Acc IF (*-1 ACCPREP BARRIER NOTACC OR V OR Pr OR Adv OR CS)(NOT 0 VFIN);
-SELECT:r41 Dat IF (*-1 DATPREP BARRIER NOTDAT OR V OR Pr OR Adv OR CS)(NOT 0 VFIN);
+SELECT:r40 Acc IF (*-1 ACCPREP BARRIER NOTACC OR V OR Pr OR Adv OR CS)(NOT 0 VFIN OR Adv);
+SELECT:r41 Dat IF (*-1 DATPREP BARRIER NOTDAT OR V OR Pr OR Adv OR CS)(NOT 0 VFIN OR Adv);
 
 REMOVE:r42 NOTDAT IF (*-1 DATPREP BARRIER NOTDAT OR S-BOUNDARY OR V OR Pr OR Adv OR CLB);
 #REMOVE Acc IF (*-1 DATPREP BARRIER NOTDAT);
@@ -1264,6 +1266,8 @@ REMOVE:NomV3 Acc IF (-3 BOS OR CLB)(-2 Adv)(-1 VFIN)(0 N OR Pron + Pers);
 
 REMOVE Dat IF (1 SAFETV)(*2 N + Acc BARRIER NPNH);
 
+SELECT:atNom Nom IF (*-1 CS BARRIER NPNH) (1 ("vera"));
+
 
 #!! ###  Not Nominative
 
@@ -1289,6 +1293,11 @@ SELECT:Aobj Acc IF (-1 TV)(0 A)(1 Pr);
 SELECT:Aobjpron Acc IF (-2 TV)(-1 Nom)(0C Pron);
 
 SELECT:Aobjb Acc IF (-1 Nom)(-2 TV)(-3 Adv);
+
+#!! #### Mær dámar 
+SELECT:DatDamarAcc Acc IF (*-1 ("dáma" Ind) BARRIER NOT-ADV LINK -1 Dat)(0 N OR Pron OR Det OR A);
+	## Mær dámar væl sodavatn.
+
 
 #!! ### Genitive
 # ========
@@ -1359,7 +1368,7 @@ REMOVE:3sgNotPrfPtc PrfPtc IF (-1 Pron + Nom OR N + Sg + Nom)(0 3Sg)(1 Acc);
 SELECT:PrtPl Prt IF (-1 Pl + Nom)(1 IM)(2 Inf);
 
 # VP disambiguation
-REMOVE:r113 V IF (-1 (Det Nom))(0 (N Nom));
+REMOVE:r113 V IF (-1 (Det Nom))(0 (N Nom))(*0 VFIN);
 
 
 REMOVE:PrtAndPrc PrfPtc IF (0 Prt)(-1 CLB LINK *-1 Prt BARRIER VFIN);
@@ -1538,7 +1547,6 @@ REMOVE:NoCmp SUB:1 (0/1 Cmp);
 
 REMOVE:LeksNotDyn Dyn ;
 
-REMOVE:LeksNotCmp NorA IF (0/1 Cmp) ;
 
 
 REMOVE:NomFragment Acc IF (0 Nom)(NEGATE *0 V)(NOT *-1 SOMEACCPREP);

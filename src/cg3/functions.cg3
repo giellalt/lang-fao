@@ -497,10 +497,6 @@ MAP:advl (@ADVL) TARGET Pr ;
 MAP:advl (@<ADVL) TARGET Adv IF (0 Adv LINK *-1 VFIN) ;
 MAP:advl (@ADVL>) TARGET Adv IF (0 Adv LINK *1 VFIN) ;
 
-MAP:p< (@P<) Gen (*-1 Pr BARRIER NOT-NPMOD)(NEGATE 1 Gen);
-MAP:p< (@P<) Acc (*-1 Pr BARRIER NOT-NPMOD)(NEGATE *1 Acc BARRIER NOT-NPMOD) ;
-MAP:p< (@P<) Dat (*-1 Pr BARRIER NOT-NPMOD)(NEGATE *1 Dat BARRIER NOT-NPMOD) ;
-
 MAP:nump< (@P<) Num (-1 Pr)(0 Arab or Sem/Year);
 
 MAP:p<coor (@P<) Gen (-1 CRD OR CC LINK -1 @P<) ;
@@ -514,8 +510,11 @@ MAP:ngen (@N<) TARGET Gen IF (-1 N);
 
 MAP:ngen (@N<) TARGET Gen IF (-1 N);
 
+MAP:obj (@<OBJ) TARGET Acc IF (*-1 TV BARRIER VFIN OR S-BOUNDARY);
 
+MAP:im (@IM) TARGET IM ;
 
+MAP:vobj (@<OBJ) TARGET Inf IF (*-1 TV BARRIER VFIN OR S-BOUNDARY);
 
 #!! !!HNOUN MAPPING
 
@@ -548,14 +547,20 @@ MAP:Superlheadliner (@HNOUN) TARGET Superl (NEGATE 0 VFIN)(*-1 BOS BARRIER WORD)
 MAP:fo (@>Num) TARGET ("FO") IF (1 Num);
 MAP:hnum (@HNOUN) TARGET Num ;
 
+MAP:p< (@P<) Gen (*-1 Pr BARRIER NOT-NPMOD)(NEGATE 1 Gen);
+MAP:p< (@P<) Acc (*-1 Pr BARRIER NOT-NPMOD)(NEGATE *1 Acc BARRIER NOT-NPMOD) ;
+MAP:p< (@P<) Dat (*-1 DATPREP BARRIER NOT-NPMOD);#(NEGATE *1 Dat BARRIER NOT-NPMOD) ;
+MAP:p< (@P<) Dat (-2 DATPREP)(-1 N + Prop + Dat)(0 Prop);# BARRIER NOT-NPMOD);#(NEGATE *1 Dat BARRIER NOT-NPMOD) ;
+
 
 #!! !! The leftovers are tagged @X
 
 #!! ! __missingX__ adds @X to all missings
 MAP:missingX (@X) TARGET (?) ;
-#MAP:leftoversX (@X) TARGET WORD - CLB;
+MAP:leftoversX (@X) TARGET WORD - CLB;
 
 REMOVE:nox (@X) ;
+
 
 AFTER-SECTIONS
 

@@ -156,7 +156,7 @@ SET NOT-ACC = TAG - Acc ;
 
 # Verb sets
 
-LIST COPULA = "vera" "verða" ;
+LIST COPULA = "vera" "verða" "eita" ;
 
 LIST HAVA = "hava" ;
 
@@ -197,7 +197,7 @@ SET NUMBERS = Num - ("eitt") - ("1") ;
 
 # Preposition sets
 
-LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum" "íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin" "hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin" "vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "sum" "vestan" ;
+LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hóast" "inntil" "ígjøgnum" "íkring" "kring" "niðan" "oman" "síðan" "umframt" "umhvørvis" "umkring" "báðumegin" "hasumegin" "hvørgumegin" "høgrumegin" "sínumegin" "skeivumegin" "somumegin" "vinstrumegin" "øðrumegin" "eystan" "norðan" "sunnan" "vestan" ;
 
 LIST DATPREP = "hjá" "með" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "frá" "mótvegis" "nær" "sambært" "viðvíkjandi" "úr" ; # úr?
 
@@ -474,22 +474,17 @@ MAP:GN (@>N) TARGET Gen IF (NOT -1 N OR Pr)(1 N);
 #MAP:tulltest (@ADVL) TARGET N IF (0/1 Cmp);
 
 MAP:fmv (@FMV) TARGET VFIN ;
-MAP:subj (@SUBJ>) TARGET Nom + Pl IF (*1 VFIN + Pl);
-MAP:subj (@SUBJ>) TARGET Nom + Sg IF (*1 VFIN + Sg);
-MAP:subj (@SUBJ>) TARGET Nom + 1Sg IF (*1 VFIN + 1Sg);
-MAP:subj (@SUBJ>) TARGET Nom + 2Sg IF (*1 VFIN + 2Sg);
-MAP:subj (@SUBJ>) TARGET Nom + 3Sg IF (*1 VFIN + 3Sg);
 
-MAP:subj (@<SUBJ) TARGET Nom + Pl IF (*-1 VFIN + Pl);
-MAP:subj (@<SUBJ) TARGET Nom + Sg IF (*-1 VFIN + Sg);
-MAP:subj (@<SUBJ) TARGET Nom + 1Sg IF (*-1 VFIN + 1Sg);
-MAP:subj (@<SUBJ) TARGET Nom + 2Sg IF (*-1 VFIN + 2Sg);
-MAP:subj (@<SUBJ) TARGET Nom + 3Sg IF (*-1 VFIN + 3Sg);
+MAP:sup (@IMV) TARGET Sup IF (*-1 VFIN);
 
-MAP:spred (@<SPRED) TARGET N + Nom IF (*-1 ("vera") + VFIN BARRIER NOT-NPMOD);
-MAP:npmod (@>N) TARGET Det IF (0 (Det $$GENDER $$NUMBER $$NAGD $$DEFNESS))(1 (N $$GENDER $$NUMBER $$NAGD $$DEFNESS));
-#MAP:npmod (@>N) TARGET A   IF (0 (A $$GENDER $$NUMBER $$NAGD $$DEFNESS))(1 (N $$GENDER $$NUMBER $$NAGD $$DEFNESS));
-#MAP:npmod (@>N) TARGET A +  $$GENDER $$NUMBER $$NAGD $$DEFNESS))(1 (N $$GENDER $$NUMBER $$NAGD $$DEFNESS));
+#!! NP
+
+MAP (@>N) TARGET Det IF (0 $$GENDER + $$NUMBER + $$NAGD) (*1 N + $$GENDER + $$NUMBER + $$NAGD);
+MAP:npmod (@>N) TARGET A  IF (0  $$GENDER  )(1 N + $$GENDER );
+MAP:npmod (@>N) TARGET Det IF (0 (Det $$GENDER $$NUMBER $$NAGD))(1 (N $$GENDER $$NUMBER $$NAGD));
+MAP:npmod (@>N) TARGET Det IF (0 (Det $$GENDER $$NUMBER $$NAGD))(*1 (N $$GENDER $$NUMBER $$NAGD));# BARRIER NOT-NPMOD);
+MAP:npmod (@>N) TARGET A   IF (0 (A $$GENDER $$NUMBER $$NAGD $$DEFNESS))(1 (N $$GENDER $$NUMBER $$NAGD $$DEFNESS));
+
 MAP:npmod (@>N) TARGET A + $$GENDER + $$NUMBER + $$NAGD + $$DEFNESS IF (1 CC)(2 A + $$GENDER + $$NUMBER + $$NAGD + $$DEFNESS)(3 N + $$GENDER + $$NUMBER + $$NAGD + $$DEFNESS);
 MAP:npmod (@>N) TARGET A + $$GENDER + $$NUMBER + $$NAGD + $$DEFNESS IF (1 N + $$GENDER + $$NUMBER + $$NAGD + $$DEFNESS);
 MAP:npmodgenn (@>N) TARGET Det + $$GENDER + $$NUMBER + $$NAGD + $$DEFNESS IF (1 N + $$GENDER + $$NUMBER + $$NAGD + $$DEFNESS);
@@ -498,9 +493,32 @@ MAP:npmod (@>N) TARGET A + $$GENDER + $$NUMBER + $$NAGD + $$DEFNESS IF (1 CC)(2 
 
 MAP:npmod (@>N) TARGET A + $$GENDER + $$NUMBER + $$NAGD  IF (1 N + $$GENDER + $$NUMBER + $$NAGD);
 MAP:npmod (@>N) TARGET Det + $$GENDER + $$NUMBER + $$NAGD  IF (1 N + $$GENDER + $$NUMBER + $$NAGD);
+MAP:sur (@>N) TARGET Sem/Mal OR Sem/Fem IF (1 Sem/Sur);
 
 
+
+
+#!! ## Subject
+
+#!! * **subj>** when an agreeing verb to the right
+MAP:subj> (@SUBJ>) TARGET ("eg") + Nom + Sg IF (*1 VFIN + 1Sg);
+MAP:subj> (@SUBJ>) TARGET ("tú") + Nom + Sg IF (*1 VFIN + 2Sg);
+MAP:subj> (@SUBJ>) TARGET Nom + Sg IF (*1 VFIN + 3Sg);
+MAP:subj> (@SUBJ>) TARGET Nom + Pl IF (*1 VFIN + Pl);
+
+#!! * **<subj** when an agreeing verb to the left
+MAP:<subj (@<SUBJ) TARGET ("eg") + Nom + Sg IF (*-1 VFIN + 1Sg BARRIER Acc OR Dat);
+MAP:<subj (@<SUBJ) TARGET ("tú") + Nom + Sg IF (*-1 VFIN + 2Sg BARRIER Acc OR Dat);
+MAP:<subj (@<SUBJ) TARGET Nom + Sg IF (*-1 VFIN + 3Sg  BARRIER Acc OR Dat OR Pr);
+MAP:<subj (@<SUBJ) TARGET Nom + Pl IF (*-1 VFIN + Pl BARRIER Acc OR Dat OR Pr);
+
+
+MAP:spred (@<SPRED) TARGET N + Nom IF (*-1 COPULA + Ind BARRIER NOT-NPMOD);
+
+#MAP:opred (@<OPRED) TARGET A
+	
 MAP:interj (@INTERJ) TARGET Interj ;
+
 MAP:advl (@<ADVL) TARGET Pr IF (0 Pr LINK *-1 VFIN);
 MAP:hnounadvl (@N<) TARGET Pr IF (NOT *0 VFIN);
 MAP:advl (@ADVL) TARGET Pr ;
@@ -519,13 +537,20 @@ MAP:n<titel1 (@N<) TARGET ("jr") OR ("sr") (-1 Prop) ;
 MAP:ngen (@N<) TARGET Gen IF (-1 N);
 
 
-MAP:ngen (@N<) TARGET Gen IF (-1 N);
 
-MAP:obj (@<OBJ) TARGET Acc IF (*-1 TV BARRIER VFIN OR S-BOUNDARY);
+#!! IM
 
 MAP:im (@IM) TARGET IM ;
 
-MAP:vobj (@<OBJ) TARGET Inf IF (*-1 TV BARRIER VFIN OR S-BOUNDARY);
+
+
+#!! ## Sentence functions
+
+MAP:obj (@<OBJ) TARGET Acc IF (*-1 TV BARRIER VFIN OR Pr OR S-BOUNDARY);
+
+
+MAP:vobj (@<OBJ) TARGET Inf IF (*-1 TV BARRIER VFIN OR Pr OR S-BOUNDARY);
+
 
 #!! !!HNOUN MAPPING
 
@@ -535,7 +560,6 @@ MAP:hnounNom (@HNOUN) TARGET (N Nom) OR (Pron N) OR (Num Nom)
 
 MAP:hnounNom (@HNOUN) TARGET A OR (Num Nom) (*-1 BOS BARRIER WORD)(*1 EOS BARRIER WORD) ;
 
-MAP:sur (@>N) TARGET Sem/Mal OR Sem/Fem IF (1 Sem/Sur);
 
 MAP:HNOUN<advl (@<SPRED) TARGET Sem/Adr (-1 (":") LINK -1 Nom) ;
 	#$ Fiskes, rukses, alit, ruoná ja muđui buotlágaš ivnnit.
@@ -558,10 +582,15 @@ MAP:Superlheadliner (@HNOUN) TARGET Superl (NEGATE 0 VFIN)(*-1 BOS BARRIER WORD)
 MAP:fo (@>Num) TARGET ("FO") IF (1 Num);
 MAP:hnum (@HNOUN) TARGET Num ;
 
-MAP:p< (@P<) Gen (*-1 Pr BARRIER NOT-NPMOD)(NEGATE 1 Gen);
-MAP:p< (@P<) Acc (*-1 Pr BARRIER NOT-NPMOD)(NEGATE *1 Acc BARRIER NOT-NPMOD) ;
-MAP:p< (@P<) Dat (*-1 DATPREP BARRIER NOT-NPMOD);#(NEGATE *1 Dat BARRIER NOT-NPMOD) ;
-MAP:p< (@P<) Dat (-2 DATPREP)(-1 N + Prop + Dat)(0 Prop);# BARRIER NOT-NPMOD);#(NEGATE *1 Dat BARRIER NOT-NPMOD) ;
+MAP:p<g (@P<) Gen (*-1 Pr BARRIER NOT-NPMOD)(NEGATE 1 Gen);
+MAP:p<a (@P<) Acc (*-1 SOMEACCPREP BARRIER NOT-NPMOD)(NEGATE *1 Acc BARRIER NOT-NPMOD) ;
+MAP:p<d (@P<) Dat (*-1 SOMEDATPREP BARRIER NOT-NPMOD);#(NEGATE *1 Dat BARRIER NOT-NPMOD) ;
+MAP:p<propd (@P<) Dat (-2 SOMEDATPREP)(-1 N + Prop + Dat)(0 Prop);# BARRIER NOT-NPMOD);#(NEGATE *1 Dat BARRIER NOT-NPMOD) ;
+
+MAP:cpv (@CVP) (CS) ; 
+
+
+AFTER-SECTIONS
 
 
 #!! !! The leftovers are tagged @X
@@ -572,8 +601,6 @@ MAP:leftoversX (@X) TARGET WORD - CLB;
 
 REMOVE:nox (@X) ;
 
-
-AFTER-SECTIONS
 
 #REMOVE:WORD WORD - ALLSYNTAG ;
 

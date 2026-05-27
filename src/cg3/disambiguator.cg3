@@ -430,9 +430,11 @@ REMOVE:ANotPrfPtc PrfPtc IF (0 A + $$NUMBER + $$NAGD)(1 N + $$NUMBER + $$NAGD);
 
 REMOVE:XNotPrfPtc PrfPtc IF (-1 Inf)(0 Adv);
 
-REMOVE:r18 A + Fem IF (0  $$NAGD) (*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
-REMOVE:r19 A + Msc IF (0  $$NAGD) (*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
-REMOVE:r20 A + Neu IF (0  $$NAGD) (*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE:ANfem A + Neu IF (0 A + Fem + Nom)(1C N + Fem LINK 0 Nom);
+
+REMOVE:ANr18 A + Fem IF (0  $$NAGD) (*1C NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE:ANr19 A + Msc IF (0  $$NAGD) (*1C NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE:ANr20 A + Neu IF (0  $$NAGD) (*1C NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
 
 
 #!! Case disambiguation
@@ -740,7 +742,7 @@ REMOVE ("hera" Imp) IF (0 ("her"));
 	
 #!! * hetta	
 SELECT:hesinNom ("hesin" Pron Dem Neu Sg Nom) IF (1 VFIN)(NOT 2 Nom);
-SELECT:hesinAcc ("hesin" Pron Dem Neu Sg Acc) IF (1 VFIN)(2C Nom);
+SELECT:hesinAcc ("hesin" Pron Dem Neu Sg Acc) IF (1 VFIN - ("vera"))(2C Nom);
 
 REMOVE:Hetta ("Hetta" Prop) IF (NOT -1 Sem/Mal);
 
@@ -985,9 +987,9 @@ REMOVE:r9 Msc IF (0 Det + $$NAGD)(NOT 0 Poss + $$NAGD LINK -1 N + $$NAGD)(*1 Nou
 REMOVE:r10 Fem IF (0 Det + $$NAGD)(NOT 0 Poss + $$NAGD LINK -1 N + $$NAGD)(*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 
 
-REMOVE:r11 Neu IF (0 A + $$NAGD)(*1 NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
-REMOVE:r12 Msc IF (0 A + $$NAGD)(*1 NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
-REMOVE:r13 Fem IF (0 A + $$NAGD)(*1 NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
+REMOVE:r11 Neu IF (0 A + $$NAGD)(*1C NounMscFem + $$NAGD BARRIER NPNHA LINK NOT 0 Neu);
+REMOVE:r12 Msc IF (0 A + $$NAGD)(*1C NounFemNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Msc);
+REMOVE:r13 Fem IF (0 A + $$NAGD)(*1C NounMscNeu + $$NAGD BARRIER NPNHA LINK NOT 0 Fem);
 
 REMOVE:Def Def IF (0 A + $$NAGD)(*1 A OR N BARRIER NPNHA LINK 0C $$NAGD + Indef);
 REMOVE:Def Indef IF (0 A + $$NAGD)(*1 A OR N BARRIER NPNHA LINK 0C $$NAGD + Def);
@@ -1040,7 +1042,7 @@ REMOVE:AdvErTad Acc IF (-2 Adv)(-1 VFIN)(0 ("tað"))(1 Adv);
 REMOVE V IF (-1 SOMEGENPREP)(0 N + Gen);
 	
 
-SELECT:anagr $$NAGDNUMBERGENDER IF (0 A) (1 N + $$NAGDNUMBERGENDER)(NOT 1 Prop);
+SELECT:anagr $$NAGDNUMBERGENDER IF (0 A) (1C N + $$NAGDNUMBERGENDER)(NOT 1 Prop);
 
 #!! ### Noun disambiguation
 
@@ -1108,7 +1110,7 @@ REMOVE:r34 Acc IF (-2 CS)(-1 (V Pl))(0 (Pl Nom)) ;
 #!! ### Elliptic AP as NP
 
 
-SELECT:DefectAP Msc IF (0C REALADJ)(1 S-BOUNDARY) ;
+#SELECT:DefectAP Msc IF (0C REALADJ)(1 S-BOUNDARY) ;
 
 #!! ### P chains or not
 
@@ -1427,7 +1429,8 @@ REMOVE:Not1Sg 1Sg IF (-1 Adv)(0 3Sg)(1 TAD)(1 V + Inf);
 
 REMOVE:Not1Sg 1Sg IF (-1 ("hann") + Nom)(1 Pr OR Acc OR Adv);
 	      ## Han kom til verðina.
-	      
+REMOVE:TAD3Sg 1Sg IF (-1 ("tað"))(0 3Sg);
+
 REMOVE:3sgNotPrfPtc PrfPtc IF (-1 Pron + Nom OR N + Sg + Nom)(0 3Sg)(1 Acc);
 		    ## Hann snýtti seg fram.
 
@@ -1564,6 +1567,8 @@ REMOVE:adjcmp (adj cmp) IF (0 (adj)) ;
 #!! * **NotDat** removes Dat when we did not find Dat assigners
 REMOVE:NotDat Dat IF (NEGATE *0 SOMEDATPREP OR ("geva") OR DATV)(0 N);
 
+SELECT:vpadv Adv IF (-1 Acc LINK *-1 TV BARRIER NPNH)(1 EOS OR Pr OR S-BOUNDARY);
+
 
 #SECTION
 
@@ -1601,8 +1606,6 @@ REMOVE Sem/ID IF (0 Num) ;
 #!! * **killAllCNP** removes all remaining @CNP
 REMOVE:killAllCNP @CNP IF (0 @CVP) ;
 
-#!! * **XCC-CS** removes CC and CS with no synttag
-MAP:CC-CS (@X) TARGET CC OR CS ;
 
 #!! * **ErrOrth** goes for correct forms
 REMOVE:ErrOrth Err/Orth ;

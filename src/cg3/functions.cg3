@@ -474,7 +474,18 @@ MAP:GN (@>N) TARGET Gen IF (NOT -1 N OR Pr)(1 N);
 #MAP:tulltest (@ADVL) TARGET N IF (0/1 Cmp);
 
 MAP:fmv (@FMV) TARGET VFIN ;
-MAP:subj (@SUBJ>) TARGET Nom IF (*1 VFIN);
+MAP:subj (@SUBJ>) TARGET Nom + Pl IF (*1 VFIN + Pl);
+MAP:subj (@SUBJ>) TARGET Nom + Sg IF (*1 VFIN + Sg);
+MAP:subj (@SUBJ>) TARGET Nom + 1Sg IF (*1 VFIN + 1Sg);
+MAP:subj (@SUBJ>) TARGET Nom + 2Sg IF (*1 VFIN + 2Sg);
+MAP:subj (@SUBJ>) TARGET Nom + 3Sg IF (*1 VFIN + 3Sg);
+
+MAP:subj (@<SUBJ) TARGET Nom + Pl IF (*-1 VFIN + Pl);
+MAP:subj (@<SUBJ) TARGET Nom + Sg IF (*-1 VFIN + Sg);
+MAP:subj (@<SUBJ) TARGET Nom + 1Sg IF (*-1 VFIN + 1Sg);
+MAP:subj (@<SUBJ) TARGET Nom + 2Sg IF (*-1 VFIN + 2Sg);
+MAP:subj (@<SUBJ) TARGET Nom + 3Sg IF (*-1 VFIN + 3Sg);
+
 MAP:spred (@<SPRED) TARGET N + Nom IF (*-1 ("vera") + VFIN BARRIER NOT-NPMOD);
 MAP:npmod (@>N) TARGET Det IF (0 (Det $$GENDER $$NUMBER $$NAGD $$DEFNESS))(1 (N $$GENDER $$NUMBER $$NAGD $$DEFNESS));
 #MAP:npmod (@>N) TARGET A   IF (0 (A $$GENDER $$NUMBER $$NAGD $$DEFNESS))(1 (N $$GENDER $$NUMBER $$NAGD $$DEFNESS));

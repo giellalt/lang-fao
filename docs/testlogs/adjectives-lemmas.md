@@ -1,6 +1,12 @@
 # Lemma-tests for *adjectives* in ...`adjectives.lexc`
 
 
+**næststørstur** failures:
+
+* `næststørstur+A+Superl+Msc+Sg+Nom+Def` => `næststørsti`
+* `næststørstur` has following analyses:
+  * `næststørstur+A+Superl+Msc+Sg+Nom+Indef`
+
 **næsthægstur** failures:
 
 * `næsthægstur+A+Superl+Msc+Sg+Nom+Def` => `næsthægsti`
@@ -18,12 +24,6 @@
 * `fjórðstørstur+A+Superl+Msc+Sg+Nom+Def` => `fjórðstørsti`
 * `fjórðstørstur` has following analyses:
   * `fjórðstørstur+A+Superl+Msc+Sg+Nom+Indef`
-
-**næststørstur** failures:
-
-* `næststørstur+A+Superl+Msc+Sg+Nom+Def` => `næststørsti`
-* `næststørstur` has following analyses:
-  * `næststørstur+A+Superl+Msc+Sg+Nom+Indef`
 
 ## Lemma statistics
 * 14093 lemmas

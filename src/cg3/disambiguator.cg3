@@ -165,6 +165,8 @@ SET REALADJ = A OR A* ;
 
 LIST NOMINALHEAD = N Prop Num Pers Refl Recipr (Pron Interr) (Pron Indef) ;
 
+LIST NOMINALSUBJ = N Pers Det ;
+
 LIST NorA = N A ;
 
 LIST PRENAGR = Det A ;
@@ -345,12 +347,12 @@ REMOVE:dyn  Arab (0 Prop) ; # foreløpig løsning, til vi har ny løsning for nu
 SECTION
 
 #!! * **sub3, sub2, sub1** removes non-lexicalised compounds, the most complex ones first
-REMOVE:sub3 SUB:2 Cmp (0/3 Cmp) ;
-REMOVE:sub2 SUB:2 Cmp (0/2 Cmp) ;
-REMOVE:sub1 SUB:1 Cmp (0/1 Cmp) ;
+REMOVE:sub3 SUB:2 Cmp (0/3 Cmp)(NOT 0 Err/Guess) ;
+REMOVE:sub2 SUB:2 Cmp (0/2 Cmp) (NOT 0 Err/Guess) ;
+REMOVE:sub1 SUB:1 Cmp (0/1 Cmp) (NOT 0 Err/Guess) ;
 
 
-REMOVE:CmpNone SUB:1 CmpNP/None IF (0/1 CmpNP/None);
+REMOVE:CmpNone SUB:1 CmpNP/None IF (0/1 CmpNP/None)(NOT 0 Err/Guess);
 
 # Bruk MIN i staden (??)
 #REMOVE:CmpNone N IF (0 CmpNP/None);
@@ -384,6 +386,8 @@ SELECT:r50 Inf IF (-1 ("at"));
 SELECT:IM1 IM IF (0 ("at"))(1 Inf);
 SELECT:IM2 IM IF (0 ("at"))(1 Adv)(2 Inf);
 SELECT:InfAndInf Inf IF (-1 CC)(-2C Inf);
+
+SELECT:VmegInf Inf IF (-3 NOMINALSUBJ)(-2 VFIN)(-1 Acc);
 
 #!! * **r36, r37, ImForV** choosing CS over IM and Pr**  at (Pr, CS, IM)
 REMOVE:r36 Pr IF (0 ("at"))(NOT *1 Acc OR Gen OR Dat BARRIER V);
@@ -524,8 +528,11 @@ SELECT Prt  IF (-1 Pl)(0 ("koma"));
 
 #!! Plural
 
-SELECT V + Pl IF (-1 ("summur") + Pl + Nom);
-SELECT V + Ind + Pl IF (-3 ("tað") + Pl + Nom)(-2 COMMA)(-1 ("sum"));
+SELECT:vpla V + Pl IF (-1 Det + Pl + Nom);
+SELECT:vplb V + Pl IF (-1C N + Pl + Nom)(NEGATE 1 Pl + Nom);
+SELECT:vplc V + Ind + Pl IF (-3 ("tað") + Pl + Nom)(-2 COMMA)(-1 ("sum"));
+
+
 
 #!! ## PP disambiguation
 # =================
@@ -903,17 +910,19 @@ REMOVE:r566 (A* Adv) IF (0 LEX-ADV) ;
 	## Serliga er tað ein.
 
 #!! * bara
-SELECT Adv IF (-1 VFIN)(0 ("bara"));
+SELECT:bara Adv IF (-1 VFIN)(0 ("bara"));
 
 #!! * heldur
-SELECT Adv IF (-1 VFIN)(0 ("heldur"))(1 V);
+SELECT:heldur Adv IF (-1 VFIN)(0 ("heldur"))(1 V);
 
+#!! * líka
+SELECT:lika Adv IF (-1 V)(0 ("líka"))(1 Adv OR A);
 
 #!! *  væl
-SELECT Adv IF (-1 VFIN)(0 ("væl"))(1 IM);
+SELECT:vael Adv IF (-1 VFIN)(0 ("væl"))(1 IM);
 
 #!! * saman (not samur)
-REMOVE A if (0 ("saman"))(NOT 1 Msc + Sg + Acc + Indef);
+REMOVE:saman A if (0 ("saman"))(NOT 1 Msc + Sg + Acc + Indef);
 
 #!! ###  Adverb verbs
 
@@ -1295,7 +1304,7 @@ SELECT:r60b (V 2Sg) IF (-1 ("og") LINK *-1C (V 2Sg) BARRIER S-BOUNDARY);
 SELECT:r61a (V Pl) IF (-1 (N Pl Nom))(NOT -1 (Acc) LINK *-1 VFIN BARRIER NPNH);
 SELECT:r61b (V Pl) IF (-1 ("eg" Pron Pers Pl Nom));
 
-REMOVE:PrsPl (V Inf) IF (*-1 ("sum") LINK -1 COMMA LINK *-1 Pl BARRIER VFIN);
+REMOVE:PrsPl (V Inf) IF (*-1 ("sum") BARRIER VFIN LINK -1 COMMA LINK *-1 Pl BARRIER VFIN);
 
 #!! ### V + Refl
 
@@ -1310,6 +1319,9 @@ REMOVE:PrtNotPfPtc PrfPtc IF (-1 Nom)(0 Prt)(1 IM OR CS);
 #!! ## Case disambiguation
 
 #!! ### Nominative
+
+REMOVE:TadCopNom NOTNOM if (-2 ("tað") + Pron + Pers + Sg + Nom)(-1 COPULA + Ind)(0 Neu);
+REMOVE:TadCopSg Pl if (-2 ("tað") + Pron + Pers + Sg + Nom)(-1 COPULA + Ind)(0 Neu);
 
 
 #REMOVE Acc IF (-1 CS OR BOS)(0 Nom)(1 VFIN OR Adv)(*2 S-BOUNDARY OR CLB OR ("sum") BARRIER NOMINALHEAD + Nom);
@@ -1414,7 +1426,7 @@ REMOVE:VnotA A IF (-1 N + Pl + Nom OR Pron + Pers + Pl + Nom)(0 V + Pl);
 SELECT:2Sg 2Sg IF (-1C ("tú" Pron Nom));
 	   ## Tú ert.
 
-SELECT:1Sg 1Sg IF (-1C Adv OR TAD OR Acc)(NOT 0 N)(1 ("eg" Pron Nom))(NOT 2 CC);
+SELECT:1Sg 1Sg IF (-1C Adv OR TAD OR Acc)(1 ("eg" Pron Nom))(NOT 2 CC);#(NOT 0 N)
 	## Fyrst vil eg, ...
 	
 REMOVE:sumAndFIN N IF (-1 ("sum" CS))(0 INDSBJ)(NOT 1 INDSBJ);

@@ -1540,10 +1540,14 @@ SELECT A IF (0 (A $$GENDER $$NAGD))(-1 CC)(-2 (A $$GENDER $$NAGD));
 # The first sentence indicates the 0* does not work.
 # The second sentence indicates the rule is too strict.
 
-
+#!! * **PrtNotPtc, PrtNotA** gives Prt instead of participle. TODO: Find counter examples and write rules (still not found).
+REMOVE:PrtNotPtc  PrfPtc + Msc + Sg + Nom + Def IF (0 Prt);
+REMOVE:PrtNotA    A + Msc + Sg + Nom + Def IF (0 Prt);
 
 #!! ### Adjective disambiguation outside NP
 # -----------------------------------
+
+SELECT:DetNeuA Neu IF (-1 ("tað") LINK *-1 VFIN BARRIER NOT-ADV)(0C A)(1 V OR S-BOUNDARY);
 
 
 REMOVE:ligaA N IF (0 ("liga"))(0 A);

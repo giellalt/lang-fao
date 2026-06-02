@@ -3,7 +3,8 @@
 
 # change settings here:
 corpus=@abs_srcdir@/corpus.txt
-gold=@abs_srcdir@/corpus.gold.cg3text
+gold=@abs_srcdir@/corpus.disamb.hfstol.goldst.txt
+#gold=@abs_srcdir@/corpus.gold.cg3text # Flammie
 variant=analyser
 analyser_dir=@abs_builddir@/../
 analyser_archive=$analyser_dir/@GTLANG2@.zpipe

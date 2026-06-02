@@ -230,7 +230,7 @@ LIST ACCPREP = "aftan" "aftanvert" "ábeint" "áraka" "foruttan" "gjøgnum" "hó
 
 LIST DATPREP = "hjá" "með" "aftrat" "afturat" "afturímóti" "andstøðis" "andsýnis" "frá" "mótvegis" "nær" "sambært" "viðvíkjandi" "úr" ; # úr?
 
-LIST ACCDATPREP = "í" "á" "undir" "yvir" "eftir" "fyri" "við" ;
+LIST ACCDATPREP = "á" "eftir" "frammanfyri" "fyri" "í" "undir" "yvir" "við" ;
 
 LIST ACCGENPREP = "innan" "uttan" "millum" "til" "vegna" ;
 
@@ -817,8 +817,9 @@ SELECT Adv IF (-1 NPNH)(1 Ind OR Sbj);
 REMOVE:r5 Det IF (0 Pers)(NEGATE 0 Gen LINK -1 N)(NOT 1 NPNHA OR N);
 
 
-#!! * frammanfyri
-REMOVE Adv IF (0 ("frammanfyri"))(1 Dat);
+#!! * frammanfyri and others
+REMOVE:AccPrepNotAdv Adv IF (0 SOMEACCPREP)(1 Acc );
+REMOVE:DatPrepNotAdv Adv IF (0 SOMEDATPREP)(1 Dat );
 ## frammanfyri teimum húsinum
 
 #!! * um
@@ -928,7 +929,13 @@ REMOVE:saman A if (0 ("saman"))(NOT 1 Msc + Sg + Acc + Indef);
 #!! ###  Adverb verbs
 
 SELECT:umleid Adv IF (0 ("umleið"))(1 Num);
-	
+
+
+
+
+
+
+
 #!! ### Idioms
 
 SELECT ("stórur" A Neu Sg Dat) IF (-2 ("í"))(-1 ("tað"))(1 ("og"))(2 ("heilur"));
@@ -1310,7 +1317,7 @@ SELECT:r62 ("seg" Refl) IF (-1 Inf OR 3Sg OR Pl) ;
 
 #!! ### Past indicative
 	
-REMOVE:PrtNotPrfPtc PrfPtc IF (-1 Nom)(0 Prt)(1 IM OR CS);
+REMOVE:PrtNotPrfPtc PrfPtc IF (-1 Nom)(0 Prt)(1 IM OR CS OR Pr);
 
 
 #!! Perfect participle
@@ -1427,8 +1434,11 @@ REMOVE:VnotA A IF (-1 N + Pl + Nom OR Pron + Pers + Pl + Nom)(0 V + Pl);
 SELECT:2Sg 2Sg IF (-1C ("tú" Pron Nom));
 	   ## Tú ert.
 
-SELECT:1Sg 1Sg IF (-1C Adv OR TAD OR Acc)(1 ("eg" Pron Nom))(NOT 2 CC);#(NOT 0 N)
+SELECT:1Sg 1Sg IF (-1 Adv OR TAD OR Acc)(1 ("eg" Pron Nom))(NOT 2 CC);#(NOT 0 N)
 	## Fyrst vil eg, ...
+
+
+#SELECT:1Sg 1Sg IF
 	
 REMOVE:sumAndFIN N IF (-1 ("sum" CS))(0 INDSBJ)(NOT 1 INDSBJ);
 

@@ -51,9 +51,9 @@
 "<í>"
 	"í" Pr
 "<teir>"
-	"hann" Pron Pers Pl Acc
+	"tann" Det Dem Msc Pl Acc
 "<turrløgdu>"
-	"turrleggja" V Ind Prt Pl
+	"turrlagdur" A Msc Pl Acc Def
 "<hyljarnar>"
 	"hylur" N Msc Pl Acc Def
 "<.>"
@@ -220,8 +220,14 @@
 "<tey>"
 	"tað" Pron Pers Pl Nom
 "<sett>"
+	"seta" V PrfPtc Adv
+	"seta" V PrfPtc Fem Sg Nom Indef
 	"seta" V PrfPtc Neu Pl Acc Indef
 	"seta" V PrfPtc Neu Pl Nom Indef
+	"seta" V PrfPtc Neu Sg Acc Indef
+	"seta" V PrfPtc Neu Sg Nom Indef
+	"sett" N Neu Pl Acc Indef
+	"sett" N Neu Pl Nom Indef
 "<av>"
 	"av" Pr
 "<tilvild>"
@@ -3854,7 +3860,7 @@
 "<onkur>"
 	"onkur" Pron Indef Neu Pl Acc
 "<hvirla>"
-	"hvirla" V Ind Prs Pl
+	"hvirla" N Fem Sg Nom Indef
 "<ýlandi>"
 	"ýla" V Der/A A Msc Sg Acc Def
 	"ýla" V PrsPrc Msc Sg Acc Def
@@ -3882,11 +3888,8 @@
 "<stilli>"
 	"stilla" V Subj Prs 3Sg
 	"stilli" N Neu Pl Acc Indef
-	"stilli" N Neu Pl Nom Indef
 	"stilli" N Neu Sg Acc Indef
 	"stilli" N Neu Sg Dat Indef
-	"stilli" N Neu Sg Nom Indef
-	"stillur" A Msc Sg Nom Def
 "<,>"
 	"," CLB
 "<bara>"
@@ -7247,18 +7250,13 @@
 "<.>"
 	"." CLB
 "<Tey>"
-	"tað" Pron Pers Pl Nom
+	"tað" Det Neu Pl Nom
+	"tað" Pron Dem Neu Pl Nom
 "<tveittu>"
-	"tveita" V Ind Prt Pl
 	"tveita" V PrfPtc Fem Pl Acc Def
-	"tveita" V PrfPtc Fem Pl Dat Def
-	"tveita" V PrfPtc Fem Pl Nom Def
-	"tveita" V PrfPtc Msc Pl Acc Def
-	"tveita" V PrfPtc Msc Pl Dat Def
-	"tveita" V PrfPtc Msc Pl Nom Def
-	"tveita" V PrfPtc Neu Pl Acc Def
-	"tveita" V PrfPtc Neu Pl Dat Def
-	"tveita" V PrfPtc Neu Pl Nom Def
+	"tveita" V PrfPtc Fem Sg Acc Def
+	"tveittur" A Fem Pl Acc Def
+	"tveittur" A Fem Sg Acc Def
 "<hesar>"
 	"hesin" Det Fem Pl Acc
 "<ólukku>"
@@ -8629,11 +8627,8 @@
 	"við" Pr
 "<eini>"
 	"ein" Det Fem Sg Dat
-	"eini" N Neu Sg Dat Indef
-	"eini" Num
-	"eitt" Num Fem Sg Dat
 "<rødd>"
-	"røða" V PrfPtc Neu Pl Acc Indef
+	"rødd" N Fem Sg Dat Indef
 "<,>"
 	"," CLB
 "<sum>"
@@ -9806,9 +9801,9 @@
 	"," CLB
 "<summi>"
 	"summur" Det Fem Sg Dat
-	"summur" Det Neu Pl Nom
 "<fáa>"
-	"fáa" V Ind Prs Pl
+	"fáur" A Msc Sg Dat Def
+	"fáur" A Neu Sg Dat Def
 "<toyggið>"
 	"toyggin" A Neu Sg Acc Indef
 	"toyggj" N Neu Sg Acc Def
@@ -13493,18 +13488,31 @@
 "<,>"
 	"," CLB
 "<báðir>"
+	"báðir" Det Indef Msc Pl Nom
 	"báðir" Pron Indef Msc Pl Nom
 "<kastaðu>"
-	"kasta" V Ind Prt Pl
 	"kasta" V PrfPtc Fem Pl Acc Def
 	"kasta" V PrfPtc Fem Pl Dat Def
 	"kasta" V PrfPtc Fem Pl Nom Def
+	"kasta" V PrfPtc Fem Sg Acc Def
+	"kasta" V PrfPtc Fem Sg Dat Def
 	"kasta" V PrfPtc Msc Pl Acc Def
 	"kasta" V PrfPtc Msc Pl Dat Def
 	"kasta" V PrfPtc Msc Pl Nom Def
 	"kasta" V PrfPtc Neu Pl Acc Def
 	"kasta" V PrfPtc Neu Pl Dat Def
 	"kasta" V PrfPtc Neu Pl Nom Def
+	"kastaður" A Fem Pl Acc Def
+	"kastaður" A Fem Pl Dat Def
+	"kastaður" A Fem Pl Nom Def
+	"kastaður" A Fem Sg Acc Def
+	"kastaður" A Fem Sg Dat Def
+	"kastaður" A Msc Pl Acc Def
+	"kastaður" A Msc Pl Dat Def
+	"kastaður" A Msc Pl Nom Def
+	"kastaður" A Neu Pl Acc Def
+	"kastaður" A Neu Pl Dat Def
+	"kastaður" A Neu Pl Nom Def
 "<og>"
 	"og" CC @CVP
 "<fóru>"
@@ -15367,18 +15375,9 @@
 "<.>"
 	"." CLB
 "<Teir>"
-	"hann" Pron Pers Pl Nom
+	"tann" Pron Dem Msc Pl Nom
 "<løgdu>"
-	"leggja" V Ind Prt Pl
-	"leggja" V PrfPtc Fem Pl Acc Def
-	"leggja" V PrfPtc Fem Pl Dat Def
-	"leggja" V PrfPtc Fem Pl Nom Def
-	"leggja" V PrfPtc Msc Pl Acc Def
-	"leggja" V PrfPtc Msc Pl Dat Def
-	"leggja" V PrfPtc Msc Pl Nom Def
-	"leggja" V PrfPtc Neu Pl Acc Def
-	"leggja" V PrfPtc Neu Pl Dat Def
-	"leggja" V PrfPtc Neu Pl Nom Def
+	"lagdur" A Fem Sg Acc Def
 "<stevnið>"
 	"stevni" N Neu Sg Acc Def
 "<ímóti>"
@@ -15412,13 +15411,28 @@
 "<ið>"
 	"ið" Adv
 "<teir>"
-	"hann" Pron Pers Pl Acc
-	"hann" Pron Pers Pl Nom
+	"tann" Det Dem Msc Pl Acc
+	"tann" Det Dem Msc Pl Nom
+	"tann" Pron Dem Msc Pl Acc
+	"tann" Pron Dem Msc Pl Nom
 "<spurdu>"
+	"spurdur" A Fem Pl Acc Def
+	"spurdur" A Fem Pl Dat Def
+	"spurdur" A Fem Pl Nom Def
+	"spurdur" A Fem Sg Acc Def
+	"spurdur" A Fem Sg Dat Def
+	"spurdur" A Msc Pl Acc Def
+	"spurdur" A Msc Pl Dat Def
+	"spurdur" A Msc Pl Nom Def
+	"spurdur" A Neu Pl Acc Def
+	"spurdur" A Neu Pl Dat Def
+	"spurdur" A Neu Pl Nom Def
 	"spyrja" V Ind Prt Pl
 	"spyrja" V PrfPtc Fem Pl Acc Def
 	"spyrja" V PrfPtc Fem Pl Dat Def
 	"spyrja" V PrfPtc Fem Pl Nom Def
+	"spyrja" V PrfPtc Fem Sg Acc Def
+	"spyrja" V PrfPtc Fem Sg Dat Def
 	"spyrja" V PrfPtc Msc Pl Acc Def
 	"spyrja" V PrfPtc Msc Pl Dat Def
 	"spyrja" V PrfPtc Msc Pl Nom Def
@@ -15469,6 +15483,7 @@
 	"banna" V Ind Prt Pl
 	"banna" V PrfPtc Fem Pl Dat Def
 	"banna" V PrfPtc Fem Pl Nom Def
+	"banna" V PrfPtc Fem Sg Dat Def
 	"banna" V PrfPtc Msc Pl Dat Def
 	"banna" V PrfPtc Msc Pl Nom Def
 	"banna" V PrfPtc Neu Pl Dat Def
@@ -15534,12 +15549,10 @@
 "<.>"
 	"." CLB
 "<Teir>"
-	"hann" Pron Pers Pl Nom
+	"tann" Pron Dem Msc Pl Nom
 "<díktu>"
 	"díkja" V Ind Prt Pl
-	"díkja" V PrfPtc Fem Pl Acc Def
 	"díkja" V PrfPtc Msc Pl Acc Def
-	"díkja" V PrfPtc Neu Pl Acc Def
 "<stavnin>"
 	"stavnur" N Msc Sg Acc Def
 "<undir>"
@@ -15739,15 +15752,13 @@
 "<.>"
 	"." CLB
 "<Teir>"
-	"hann" Pron Pers Pl Nom
+	"tann" Det Dem Msc Pl Nom
+	"tann" Pron Dem Msc Pl Nom
 "<gjørdu>"
-	"gera" V Ind Prt Pl
 	"gera" V PrfPtc Fem Pl Acc Def
-	"gera" V PrfPtc Fem Pl Dat Def
-	"gera" V PrfPtc Msc Pl Acc Def
-	"gera" V PrfPtc Msc Pl Dat Def
-	"gera" V PrfPtc Neu Pl Acc Def
-	"gera" V PrfPtc Neu Pl Dat Def
+	"gera" V PrfPtc Fem Sg Acc Def
+	"gjørdur" A Fem Pl Acc Def
+	"gjørdur" A Fem Sg Acc Def
 "<eina>"
 	"ein" Det Fem Sg Acc
 "<legu>"
@@ -16465,9 +16476,21 @@
 "<,>"
 	"," CLB
 "<teir>"
-	"hann" Pron Pers Pl Nom
+	"tann" Det Dem Msc Pl Nom
+	"tann" Pron Dem Msc Pl Nom
 "<kunnu>"
 	"kunna" V Ind Prs Pl
+	"kunnur" A Fem Pl Acc Def
+	"kunnur" A Fem Pl Dat Def
+	"kunnur" A Fem Pl Nom Def
+	"kunnur" A Fem Sg Acc Def
+	"kunnur" A Fem Sg Dat Def
+	"kunnur" A Msc Pl Acc Def
+	"kunnur" A Msc Pl Dat Def
+	"kunnur" A Msc Pl Nom Def
+	"kunnur" A Neu Pl Acc Def
+	"kunnur" A Neu Pl Dat Def
+	"kunnur" A Neu Pl Nom Def
 "<gera>"
 	"gera" V Inf
 "<mekaniskar>"
@@ -16789,9 +16812,8 @@
 	"." CLB
 "<Summi>"
 	"summur" Det Fem Sg Dat
-	"summur" Det Neu Pl Nom
 "<flenna>"
-	"flenna" V Ind Prs Pl
+	"flenna" N Fem Sg Nom Indef
 "<.>"
 	"." CLB
 "<Aftan>"
@@ -18615,7 +18637,7 @@
 	"allur" Det Fem Sg Nom Indef
 	"allur" Det Neu Pl Nom Indef
 "<hava>"
-	"hava" V Ind Prs Pl
+	"hava" V Inf
 "<tað>"
 	"tað" Det Neu Sg Acc
 "<gott>"
@@ -20429,8 +20451,6 @@
 	"svíkja" V PrfPtc Fem Pl Acc Def
 	"svíkja" V PrfPtc Fem Pl Dat Def
 	"svíkja" V PrfPtc Fem Pl Nom Def
-	"svíkja" V PrfPtc Fem Sg Acc Def
-	"svíkja" V PrfPtc Fem Sg Dat Def
 	"svíkja" V PrfPtc Msc Pl Acc Def
 	"svíkja" V PrfPtc Msc Pl Dat Def
 	"svíkja" V PrfPtc Msc Pl Nom Def
@@ -21733,8 +21753,6 @@
 	"svíkja" V PrfPtc Fem Pl Acc Def
 	"svíkja" V PrfPtc Fem Pl Dat Def
 	"svíkja" V PrfPtc Fem Pl Nom Def
-	"svíkja" V PrfPtc Fem Sg Acc Def
-	"svíkja" V PrfPtc Fem Sg Dat Def
 	"svíkja" V PrfPtc Msc Pl Acc Def
 	"svíkja" V PrfPtc Msc Pl Dat Def
 	"svíkja" V PrfPtc Msc Pl Nom Def
@@ -24031,15 +24049,10 @@
 "<á>"
 	"á" Pr
 "<eini>"
-	"ein" Det Fem Sg Dat
-	"ein" Det Neu Pl Acc
 	"eini" N Neu Sg Acc Indef
 	"eini" N Neu Sg Dat Indef
-	"eini" Num
-	"einir" Num Neu Sg Pl Acc
-	"eitt" Num Fem Sg Dat
 "<høvd>"
-	"høva" V PrfPtc Neu Pl Acc Indef
+	"høvd" N Neu Sg Acc Indef
 "<og>"
 	"og" CC @CVP
 "<hyggur>"

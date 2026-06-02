@@ -1238,10 +1238,6 @@ REMOVE:RemoveImp Imp ;
 
 
 
-#!! ### Supine
-
-
-
 
 #!! ### Present participle 
 
@@ -1312,10 +1308,14 @@ REMOVE:PrsPl (V Inf) IF (*-1 ("sum") BARRIER VFIN LINK -1 COMMA LINK *-1 Pl BARR
 SELECT:r62 ("seg" Refl) IF (-1 Inf OR 3Sg OR Pl) ;
 
 
-#!! ### Past indicative or perfect participle
+#!! ### Past indicative
 	
-REMOVE:PrtNotPfPtc PrfPtc IF (-1 Nom)(0 Prt)(1 IM OR CS);
+REMOVE:PrtNotPrfPtc PrfPtc IF (-1 Nom)(0 Prt)(1 IM OR CS);
 
+
+#!! Perfect participle
+
+SELECT:PrfPtc PrfPtc IF (-2 V + Pl)(-1 Pl + Nom)(0 PrfPtc + Pl + Nom);
 
 #!! ## Case disambiguation
 

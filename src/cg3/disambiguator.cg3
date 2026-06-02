@@ -528,7 +528,8 @@ SELECT Prt  IF (-1 Pl)(0 ("koma"));
 
 #!! Plural
 
-SELECT:vpla V + Pl IF (-1 Det + Pl + Nom);
+SELECT:vpla1 V + Pl IF (-1 Pron + Pl + Nom)(NOT 0 A or N);
+SELECT:vpla2 V + Pl IF (-1 Pron + Pl + Nom)(NOT 0 A or N);
 SELECT:vplb V + Pl IF (-1C N + Pl + Nom)(NEGATE 1 Pl + Nom);
 SELECT:vplc V + Ind + Pl IF (-3 ("tað") + Pl + Nom)(-2 COMMA)(-1 ("sum"));
 

@@ -2378,11 +2378,7 @@ LEXICON h2 !
  +N+Neu:^UUML N_PLNA_u_ur ;
  +N+Neu:^UUML N_PLD       ;
  +N+Neu:	  N_PLG_na    ;
-!
-LEXICON h2e
-!! * **LEXICON @LEXNAME@** 
-h1e ;
-!
+!!
 LEXICON h3/41
 !! * **LEXICON @LEXNAME@** 
  h3 ;
@@ -3455,6 +3451,7 @@ LEXICON S_F_SGGEN
 !! * **LEXICON @LEXNAME@** 
  +Sg+Gen:%>ar DF_G_SGf_S ;
  +Sg+Gen:%>ar R ; ! gen compound!
+ +Sg+Gen+Err/Orth:%>s R ; ! substandard gen compound! men!! vinglas / raudvinsglas!!
 LEXICON S_F_SGGEN_NULL
 !! * **LEXICON @LEXNAME@** 
  +Sg+Gen: DF_G_SGf_S ;
@@ -3638,7 +3635,7 @@ LEXICON DF_N_SGm_indef
  +Indef: MscNom_Flag ; !risi !
 LEXICON DF_N_SGm_def
 !! * **LEXICON @LEXNAME@** for 
- +Def:%>n MscNom_Flag ; ! risin!
+ +Def:%>n MscObl_Flag  ; ! risin!
 LEXICON DF_A_SGm
 !! * **LEXICON @LEXNAME@** for 
   DF_A_SGm_indef ;

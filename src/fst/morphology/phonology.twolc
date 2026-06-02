@@ -27,8 +27,8 @@ Alphabet
  %^W:0 %^JI:0                  !!≈ * **@CODE@** : Cns changes ,
  %^EPH:0                       !!≈ * **@CODE@** : Epenthesis,  ,
  %^OEA:0                       !!≈ * **@CODE@** : ø to a
- %^EDH:0 
- %^VSH:0  
+ %^EDH:0                        !!≈ * **@CODE@** :
+ %^VSH:0                         !!≈ * **@CODE@** :
 
  %^GDEL:0 %^GGDEL:0 %^GVDEL:0 %^VDEL:0 %^JDEL:0 %^RDEL:0 	!!≈ * **@CODE@** : Cns deletion triggers,
  %^EIO:0 %^OA:0 %^WVV:0 %^NGKK:0 %^PASS:0
@@ -79,15 +79,6 @@ Rules
          Vow g:  _     j:0 [ %^GDEL: | %^GGDEL: ] %> [s|n] ; !! * Deleting second g in ggj Genitive II
          Vow :k _ (%>)  (u: r:) ([Dummy: - %^EPH:]) (Dummy:*) %> [d|ð|s|t] ([a|i|u]) ; !! * Deleting g in sting:stakst
 
-! Feilmelding:
-! The correspondence          Vow :k _ (%>)  (u: r:) ([Dummy: - %^EPH:]) (Dummy:*) %> [d|ð|s|t] ([a|i|u]) ; !! * Deleting g in sting:stakst contains unquoted colon-symbols. If you want to input pairs where either symbol is epsilon, use 0 e.g. "m a s s 0:e s".	 
-
-! "Deleting Double Consonant kk etc. in Front of Consonant"
-! !! __@RULENAME@__
-!  g:0 <=> Vow :k _ (%>)  (u: r:) ([Dummy: - %^EPH:]) %> [d|ð|s|t] ([a|i|u]) ;
-
-!€ s t i:a n:k g:0 ^NGKK:0 ^aAB:0 > s t
-
  
 "ng to kk Part 1"
 !! Rule: **@RULENAME@** changes n to k in ng:kk before ^NGKK trigger
@@ -115,13 +106,14 @@ Rules
 !€ k r í g g:0 j:0 ^GDEL:0 > s
 !€ s j ó g:0 v ^GDEL:0 > a r
 
+
 "Deleting r in Genitive of ur stems"
 !! Rule: **@RULENAME@** 
  r:0 <=> u: _ %^EPH: %^RDEL: %> a r ;
 
 !€ b r ú ð u:0 r:0 ^EPH:0 ^RDEL:0 > a r
 
-"Deleting m in um%>num "
+"Deleting m in um>num "
 !! Rule: **@RULENAME@** 
  m:0 <=> Cns: Dummy:* %> u _ %> n u m ; 
          g: v:  Dummy:* %>   _ %> n u m ; 
@@ -136,14 +128,8 @@ Rules
 !! Rule: **@RULENAME@** 
  Cx:0 <=> Vow Cx _ (%>)  (u: r:) ([Dummy: - %^EPH:]) %> [d|ð|s|t] ([a|i|u]) ;
           Vow Cx _ Dummy:* %> n (%>) [a|i|u] ; ! drukk>num
-! Cx:0 <=> Vow Cx _ (%>) (u: r:) (Dummy:) %> [d|ð|s|(s) t] ([a|i|u]) #:0 ; 
-! Cx:0 <=> Vow Cx _ ( %> u: r: ) ([Dummy: - %^PASS:]) %> [s|t] #:0 ; 
       where Cx in ( b d f g k l m n p r s t v ) ;
 
-!! The preceeding rule is fishy - the test cases below don't fit the context
-!! requirements, and the >s# in the right context seems to indicate passive.
-!! The rule conflicts with the "Cns Deletion in front of Pass" rule at the
-!! end of the file - but only when using the Xerox tools! XXX - please have a look!
 
 !! **Tests:**
 
@@ -151,17 +137,6 @@ Rules
 !€ r y g g:0 > s
 !€ h j a l l > a r
 
-
-!"Double consonant simplification in front of t"
-!Cx:0 <=> Vow Cx _ >: t ;
-!     where Cx in ( b g l m n p r k ) ;
-
-!€ a l l:0 > t
-
-!"Deleting Double Consonant in Front of t + vow"
-! Cx:0 <=> Vow Cx _ ( (%>) ( u: r: ) Dummy:) %> t [a|i|u]  ; 
-!      where Cx in ( b d f g k l m n p r s t v ) ;
-! added t to right context, check this!!
 
 
 
@@ -196,13 +171,6 @@ Rules
 !! Rule: **@RULENAME@** 
  ð:d <=> Vow _(%^WVV:) %> d \d ; ! fjern dette: (%>) [ #: | Vow ] ;
  
-!€ l e i ð:d > d i
-
-!"ð Assimilation in Front of Dental Past Suffix -d(i)"
-!!! __@RULENAME@__ 
-! ð:d <=> Vow  _        %>0 d  [ #: | Vow ] ;
-!         Vow: _ %^WVV: %>0 d  [ #: | Vow ] ;
-!         Vow: _        %>0 d (%>) [ #: | Vow ] ;
  
  !! **Tests:**
 
@@ -222,10 +190,9 @@ Rules
 !€ s u m m:0 a:0 r ^EPH:0 > i
 !€ h i m m:0 a:0 l ^EPH:0 ^UUML:0 > u m
 
-!tunnil>i
-!tun00l>i
-!himmal>i
-!him00l0i
+!€ t u n n:0 i:0 l > i
+!€ h i m m:0 a:0 l > i
+
 
 "Deleting stem-final s in s genitive"
 !! Rule: **@RULENAME@** 
@@ -252,6 +219,7 @@ Rules
 
 !€ l e i ð:t > t
 
+
 "Adjusting Dental Past Suffix -d(i)"
 !! Rule: **@RULENAME@** 
  d:t <=> Vow ([r|l|n]) [ p | t | k | s ] (Dummy:) %> _ (%>) [ #: | Vow ] ;
@@ -266,7 +234,6 @@ Rules
 
 "Adjective neuter after nlr 1"
 !! Rule: **@RULENAME@** 
-!t:ð <=> Vow Cns+ i [ r: | l: | n: ] ( %^EPH: ) %> _ #:  ;
 t:ð <=> Vow: Cns+ i [ r: | l: | n: ]  %^EPH:  %> _ #:  ;
 
 "Adjective neuter after nlr 2"
@@ -287,7 +254,7 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 
 
 
-!! j rules
+!! ### j rules
 
 "Deleting j"
 !! Rule: **@RULENAME@** 
@@ -300,13 +267,9 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 
 !€ k r í g g:0 j:0 ^GDEL:0 > n u m
 !€ b e i g g j:0 ^JI:0 > i
-
 !€ v e r k j:0 ^JDEL:0 > u r
 !€ h e y g g j:0 > i
 
-! "Realising j in front of vowels"  ! butj2 is always j.
-! !! Rule: **@RULENAME@** 
-!  j2:j => _ %> [ a | u ] ;
 
 !! **Tests:**
 
@@ -316,7 +279,7 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 
 
 !  ===========  !
-!! Vowel rules  
+!! ## Vowel rules  
 !  ===========  !
 
 
@@ -361,13 +324,14 @@ Cx:0 <=> Vow Cns+ i _  %^EPH:  %> :ð ;
 "U-umlaut in Front of Nasal"
 !! Rule: **@RULENAME@** 
  Vx:Vy <=> _ Nas (Cns:)  Vow: (Cns:)  %^EPH: %^UUML: ;
-         _ Nas (Cns:)       (Cns:)         %^UUML: ;
-!        _ Nas (Cns:)  Vow: (Cns:)         %^UUML: ; !Needed???
+           _ Nas (Cns:)       (Cns:)         %^UUML: ;
 	where Vx in ( a a3 )
 	      Vy in ( o ø  )
 		  matched ;
 	
 !€ t a:o n k ^UUML:0
+!€ d a3:ø n > u m
+
 
 !den skal heller ikke klare det. den skal klare tonkum, og det gjør den.
 
@@ -657,40 +621,16 @@ Vx:ý <=> _ Cns:+ %^AB7: ;
 !         Vow: [ ð | g ] (Special:*) %>             _ %>  i: n u m #: ;
 
 ! Test pairs added from an old file pair-fao.txt, seems obsolete, butt should
-! be checked:
-!
-! aku2r%>a
-! ak0r0a
-! 
-! lyki2l%>a
-! lyk0l0a
-! 
-! afta2n%>a
-! aft0n0a
-! 
-! da3g%>um
-! døg0um
-! 
-! da3g%>i 
-! deg0i
-! 
-! hjall%>s
-! hjal00s
-! 
-! summa2r%>i
-! sum00r0i
-! 
-! hjall%>ar
-! hjall0ar
-! 
-! heyggj%>i
-! heygg00i
-! 
-! hylj2%>ar
-! hylj0ar
-! 
-! dømi%>ið
-! dømi00ð
-! 
-! dømi%>um
-! døm00um
+! be checked. Here goes:
+
+!€ a k u2:0 r > a 
+!€ l y k i2:0 l > a 
+!€ a f t a2:0 n > a 
+!€ h j a l l:0 > s 
+!€ s u m m:0 a2:0 r > i
+!€ h j a l l > a r
+!€ h e y g g j:0 > i 
+!€ h y l j2:j > a r 
+!€ d ø m i > i:0 ð
+!€ d ø m i:0 > u m
+

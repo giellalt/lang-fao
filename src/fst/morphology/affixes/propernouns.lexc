@@ -297,15 +297,15 @@ LEXICON orgtag ! XXXcheck
 
 LEXICON vehtag ! XXXcheck
 !!= **@LEXNAME@** 
- +N+Prop+Sem/Veh+Sg proptagc ;
+ +N+Prop+Sem/Veh+Sg: proptagc ;
 
 LEXICON objtagv ! XXXcheck
 !!= **@LEXNAME@** 
- +N+Prop+Sem/Obj+Sg proptagv ;
+ +N+Prop+Sem/Obj+Sg: proptagv ;
 
 LEXICON objtagc ! XXXcheck
 !!= **@LEXNAME@** 
- +N+Prop+Sem/Obj+Sg proptagc ;
+ +N+Prop+Sem/Obj+Sg: proptagc ;
 
 !LEXICON mscorgtag ! XXXcheck
 ! +N+Prop+Msc: S_M_SGNOM ;
@@ -354,7 +354,7 @@ LEXICON SUDUROY
 
 LEXICON FLOKKUR
 !!= **@LEXNAME@** 
- flokkur:flokk propnoun_org_k9 ;
+:flokk propnoun_org_k9 ;
 
 ! These are the lexica taken from the noun_fao_lex.txt file.
 
@@ -382,9 +382,9 @@ LEXICON propnoun_plc_h11e
 !!= **@LEXNAME@** 
  +Prop+Sem/Plc: h11e ;
 
-LEXICON propnoun_plc_h22e
-!!= **@LEXNAME@** 
- +Prop+Sem/Plc: h2e ;
+!LEXICON propnoun_plc_h22e
+!= **@LEXNAME@** 
+! +Prop+Sem/Plc: h2e ;
 
 LEXICON propnoun_h11
 !!= **@LEXNAME@** 

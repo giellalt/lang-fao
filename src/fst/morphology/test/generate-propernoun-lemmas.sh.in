@@ -26,7 +26,7 @@ if ! test -f "$CONFIG" ; then
 fi
 
 "$genscript" -c "$CONFIG" -P "$POS" -E "@LOG_VIEWER@" \
-    -L "@abs_top_builddir@/docs/testlogs/$POS-lemmas.md"
+    -L "@abs_top_srcdir@/docs/testlogs/$POS-lemmas.md"
 rv=$?
 if test $rv = 77 ; then
     printf "%sskipped%s" "$light_blue" "$reset"

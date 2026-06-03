@@ -5,15 +5,15 @@
 corpus=@abs_srcdir@/corpus.txt
 gold=@abs_srcdir@/corpus.disamb.hfstol.goldst.txt
 #gold=@abs_srcdir@/corpus.gold.cg3text # Flammie
-variant=analyser
+variant=@GLANG2@-analyser
 analyser_dir=@abs_builddir@/../
-analyser_archive=$analyser_dir/@GTLANG2@.zpipe
+analyser_archive=$analyser_dir/bundle.drb
 level=tags
 threshold=99
 
 # avoid changing common scripts from here:
 . "@GIELLA_CORE@/scripts/termcolors.bash"
-testscript=@GIELLA_CORE@/scripts/regresstest-pipespec.sh
+testscript=@GIELLA_CORE@/scripts/regresstest-pipeline.sh
 
 # ensure this is run from make check and other things
 if test -z "$srcdir" ; then

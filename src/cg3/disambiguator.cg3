@@ -205,9 +205,10 @@ LIST ACCPREPV = "leggja" "fara" "renda" "koma" "liða" "seta" ;
 
 LIST OBJPREDVERB = "kalla" "doypa" "nevna" "taka"  ;
 
+LIST IV = "liggja" "sova" "koma" "fara" "ganga" "standa" "danska" "arbeiða" "tosa" "sita" "búgva" "duga" ; 
 LIST MOVEMENTVERB = "koma" "koyra" ;
 
-SET TV = V - COPULA - MODV - DATV ;
+SET TV = V - COPULA - MODV - DATV - IV ;
 
 LIST SAFETV = "eiga" ;
 
@@ -460,7 +461,7 @@ REMOVE Nom IF (-2 V)(-1C Pr)(0 N)(1 CLB); # Too specific, this.
 REMOVE Dat IF (*-1 V BARRIER NPNH LINK NOT 0 DATV)(0 Acc)(1 EOS OR CS);
 	## at fáa høvi at...
 
-REMOVE:NotAccPredic Acc IF (*-1 COPULA BARRIER NPNH)(0 Nom);
+REMOVE:NotAccPredic Acc IF (*-1 COPULA BARRIER NPNHA)(0 Nom);
 		    ## Í fyrstuni var orðið.
 
 REMOVE:SgSgNP Pl IF (-1C Det + Sg)(0 A)(1 N + Sg);
@@ -1328,13 +1329,19 @@ SELECT:PrfPtc PrfPtc IF (-2 V + Pl)(-1 Pl + Nom)(0 PrfPtc + Pl + Nom);
 
 #!! ### Nominative
 
+#!! #### Predicative
+
+#!! * **TadCopNom, TadCopSg** for tað + copula + nominative
 REMOVE:TadCopNom NOTNOM if (-2 ("tað") + Pron + Pers + Sg + Nom)(-1 COPULA + Ind)(0 Neu);
 REMOVE:TadCopSg Pl if (-2 ("tað") + Pron + Pers + Sg + Nom)(-1 COPULA + Ind)(0 Neu);
+
 
 
 #REMOVE Acc IF (-1 CS OR BOS)(0 Nom)(1 VFIN OR Adv)(*2 S-BOUNDARY OR CLB OR ("sum") BARRIER NOMINALHEAD + Nom);
 # hmm
 # Fjallið lá stilt, tað ikki so mikið sum andi.
+
+#!! #### Subject
 
 #!! * **NotTopAcc** when sentence-initial NP cannot be Acc
 REMOVE:NotTopAcc Acc IF (*-1 S-BOUNDARY OR CLB  BARRIER NPNH)(*1 VFIN)(NEGATE *1 SOMEACCPREP LINK 1 EOS);
@@ -1348,10 +1355,14 @@ REMOVE:NomV3 Acc IF (-3 BOS OR CLB)(-2 Adv)(-1 VFIN)(0 N OR Pron + Pers);
 #!! * **atNom** gives Nom between CC and vera.
 SELECT:atNom Nom IF (*-1 CS BARRIER NPNH) (1 ("vera"));
 
+#!! #### Miscellanious
+
 SELECT:GuessNom Nom IF (0 Prop + Sg)(1 V + 3Sg);
 ## , var tá Schumie bleiv heims-meistari.
 
 REMOVE:NotNom Nom IF (-1C Pr)(0C Det OR A OR N);
+
+
 
 #!! ### Accusative
 

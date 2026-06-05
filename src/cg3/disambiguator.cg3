@@ -469,6 +469,9 @@ REMOVE:PlPlNP Sg IF (-1C Det + Pl)(0 A)(1 N + Pl);
 
 #!! Noun disambiguation
 
+REMOVE:hansaraN V IF (-2 V OR Pr)(-1 ("hansara"));
+    ## hansara bygd
+
 SELECT ("hús") IF (0 ("húsi"));
 # Awaiting real examples with 'húsi'
 

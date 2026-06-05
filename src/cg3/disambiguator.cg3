@@ -875,7 +875,8 @@ LIST COMMONADVERB = "næstan" "lítill" ;
 REMOVE:AdvNotA (A Sg) IF (-1 V + Pl)(0 Adv)(NOT 1 N + Pl);
 
 REMOVE:AdvPlaceNotA A IF (-1 V)(0 PLACEADVERB)(NOT 1 N);	
-	
+
+
 SELECT:CommonAdverb  COMMONADVERB IF (-1 VFIN OR N OR Pron OR CS)(1 Adv OR N OR PRE-N) ;
 ## ... ið hann næstan ikke mundi funnið.
 
@@ -1265,7 +1266,7 @@ REMOVE:PrsPtcNotA Der/A IF (0 PrsPrc)(NOT 1 A OR N);
 SELECT Neu IF (*-1 ("vera") LINK *-1 ("tað"))(0 PrsPrc);
 SELECT Nom IF (*-1 ("vera") LINK *-1 ("tað"))(0 PrsPrc + Neu)(NOT 1C Acc OR Dat);
 
-
+SELECT:andiNeu Neu + Sg + Nom IF (*-1 IV BARRIER NOT-ADV LINK -1 Nom)(0 PrsPrc);
 
 #!! ### Supine
 

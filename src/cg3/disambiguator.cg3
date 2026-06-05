@@ -350,7 +350,7 @@ SECTION
 #!! * **sub3, sub2, sub1** removes non-lexicalised compounds, the most complex ones first
 REMOVE:sub3 SUB:2 Cmp (0/3 Cmp)(NOT 0 Err/Guess) ;
 REMOVE:sub2 SUB:2 Cmp (0/2 Cmp) (NOT 0 Err/Guess) ;
-REMOVE:sub1 SUB:1 Cmp (0/1 Cmp) (NOT 0 Err/Guess) ;
+REMOVE:sub1 SUB:1 Cmp (0/1 Cmp) (NOT 0 Err/Guess)(0 N LINK NOT 0/1 Cmp) ;
 
 
 REMOVE:CmpNone SUB:1 CmpNP/None IF (0/1 CmpNP/None)(NOT 0 Err/Guess);
@@ -889,6 +889,9 @@ SELECT:akkurat Adv IF (-1 COMMA OR BOS)(0 ("akkurát"))(NOT 1 A OR N);
 #!! * bara
 SELECT:bara Adv IF (-1 V)(0 ("bara"))(1 IM);
 ## at ballast bara at vera
+
+#!! * mikið
+SELECT:mikid Adv IF (-1 ("so"))(0 ("mikið"))(1 ("sum"));
 
 #!! * næstan
 SELECT:næstan Adv IF (0 ("næstan"))(NOT 1 Fem + Nom + Def);

@@ -7,12 +7,6 @@
 * `triðstørstur` has following analyses:
   * `triðstørstur+A+Superl+Msc+Sg+Nom+Indef`
 
-**fjórðstørstur** failures:
-
-* `fjórðstørstur+A+Superl+Msc+Sg+Nom+Def` => `fjórðstørsti`
-* `fjórðstørstur` has following analyses:
-  * `fjórðstørstur+A+Superl+Msc+Sg+Nom+Indef`
-
 **næststørstur** failures:
 
 * `næststørstur+A+Superl+Msc+Sg+Nom+Def` => `næststørsti`
@@ -24,6 +18,12 @@
 * `næsthægstur+A+Superl+Msc+Sg+Nom+Def` => `næsthægsti`
 * `næsthægstur` has following analyses:
   * `næsthægstur+A+Superl+Msc+Sg+Nom+Indef`
+
+**fjórðstørstur** failures:
+
+* `fjórðstørstur+A+Superl+Msc+Sg+Nom+Def` => `fjórðstørsti`
+* `fjórðstørstur` has following analyses:
+  * `fjórðstørstur+A+Superl+Msc+Sg+Nom+Indef`
 
 ## Lemma statistics
 * 14093 lemmas

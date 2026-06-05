@@ -319,9 +319,12 @@
 "<lá>"
 	"liggja" V Ind Prt 3Sg @FMV
 "<stilt>"
+	"stilla" V PrfPtc Fem Sg Nom Indef @SUBJ>
 	"stilla" V PrfPtc Neu Pl Acc Indef @<OBJ
 	"stilla" V PrfPtc Neu Sg Acc Indef @<OBJ
+	"stilla" V PrfPtc Neu Sg Nom Indef @SUBJ>
 	"stillur" A Neu Sg Acc Indef @<OBJ
+	"stillur" A Neu Sg Nom Indef @SUBJ>
 "<,>"
 	"," CLB
 "<tað>"
@@ -571,16 +574,28 @@
 "<brennandi>"
 	"brenna" V PrsPrc Fem Pl Acc Def @<OBJ
 	"brenna" V PrsPrc Fem Pl Acc Indef @<OBJ
+	"brenna" V PrsPrc Fem Pl Nom Def @SUBJ>
+	"brenna" V PrsPrc Fem Pl Nom Indef @SUBJ>
 	"brenna" V PrsPrc Fem Sg Acc Def @<OBJ
 	"brenna" V PrsPrc Fem Sg Acc Indef @<OBJ
+	"brenna" V PrsPrc Fem Sg Nom Def @SUBJ>
+	"brenna" V PrsPrc Fem Sg Nom Indef @SUBJ>
 	"brenna" V PrsPrc Msc Pl Acc Def @<OBJ
 	"brenna" V PrsPrc Msc Pl Acc Indef @<OBJ
+	"brenna" V PrsPrc Msc Pl Nom Def @SUBJ>
+	"brenna" V PrsPrc Msc Pl Nom Indef @SUBJ>
 	"brenna" V PrsPrc Msc Sg Acc Def @<OBJ
 	"brenna" V PrsPrc Msc Sg Acc Indef @<OBJ
+	"brenna" V PrsPrc Msc Sg Nom Def @SUBJ>
+	"brenna" V PrsPrc Msc Sg Nom Indef @SUBJ>
 	"brenna" V PrsPrc Neu Pl Acc Def @<OBJ
 	"brenna" V PrsPrc Neu Pl Acc Indef @<OBJ
+	"brenna" V PrsPrc Neu Pl Nom Def @SUBJ>
+	"brenna" V PrsPrc Neu Pl Nom Indef @SUBJ>
 	"brenna" V PrsPrc Neu Sg Acc Def @<OBJ
 	"brenna" V PrsPrc Neu Sg Acc Indef @<OBJ
+	"brenna" V PrsPrc Neu Sg Nom Def @SUBJ>
+	"brenna" V PrsPrc Neu Sg Nom Indef @SUBJ>
 	"brennandi" Adv @<ADVL
 "<niður>"
 	"niður" Adv @<ADVL
@@ -676,8 +691,8 @@
 "<og>"
 	"og" CC @CVP
 "<fólk>"
-	"fólk" N Neu Pl Acc Indef @X
-	"fólk" N Neu Sg Acc Indef @X
+	"fólk" N Neu Pl Nom Indef @SUBJ>
+	"fólk" N Neu Sg Nom Indef @<SUBJ
 "<eru>"
 	"vera" V Ind Prs Pl @FMV
 "<von>"
@@ -1102,6 +1117,7 @@
 	"fara" V Ind Prt 3Sg @FMV
 "<hann>"
 	"hann" Pron Pers Sg Acc @<OBJ
+	"hann" Pron Pers Sg Nom @<SUBJ
 "<aftur>"
 	"aftur" Adv @<ADVL
 "<til>"
@@ -1797,6 +1813,9 @@
 	"fara" V Ind Prt Pl @FMV
 "<heim>"
 	"heim" N Neu Pl Acc Indef @<OBJ
+	"heim" N Neu Pl Nom Indef @<SUBJ
+	"heim" N Neu Sg Acc Indef @<OBJ
+	"heimur" N Msc Sg Acc Indef @<OBJ
 "<til>"
 	"til" Pr @<ADVL
 "<bygdina>"
@@ -2416,6 +2435,7 @@
 	"fara" V Ind Prt 3Sg @FMV
 "<hann>"
 	"hann" Pron Pers Sg Acc @<OBJ
+	"hann" Pron Pers Sg Nom @<SUBJ
 "<inn>"
 	"inn" Adv @<ADVL
 "<í>"
@@ -3499,6 +3519,9 @@
 	"aftur" Adv @<ADVL
 "<stilli>"
 	"stilla" V Subj Prs 3Sg @FMV
+	"stilli" N Neu Pl Nom Indef @SUBJ>
+	"stilli" N Neu Sg Nom Indef @<SUBJ
+	"stillur" A Msc Sg Nom Def @<SUBJ
 "<,>"
 	"," CLB
 "<bara>"
@@ -3622,6 +3645,7 @@
 	"fara" V Ind Prt 3Sg @FMV
 "<fram>"
 	"fram" Adv @<ADVL
+	"framur" A Fem Sg Nom Indef @<SUBJ
 "<eftir>"
 	"eftir" Pr @<ADVL
 "<rommum>"
@@ -3996,14 +4020,20 @@
 	"rapla" V PrsPrc Fem Pl Acc Indef @<OBJ
 	"rapla" V PrsPrc Fem Sg Acc Def @<OBJ
 	"rapla" V PrsPrc Fem Sg Acc Indef @<OBJ
+	"rapla" V PrsPrc Fem Sg Nom Def @<SUBJ
+	"rapla" V PrsPrc Fem Sg Nom Indef @<SUBJ
 	"rapla" V PrsPrc Msc Pl Acc Def @<OBJ
 	"rapla" V PrsPrc Msc Pl Acc Indef @<OBJ
 	"rapla" V PrsPrc Msc Sg Acc Def @<OBJ
 	"rapla" V PrsPrc Msc Sg Acc Indef @<OBJ
+	"rapla" V PrsPrc Msc Sg Nom Def @<SUBJ
+	"rapla" V PrsPrc Msc Sg Nom Indef @<SUBJ
 	"rapla" V PrsPrc Neu Pl Acc Def @<OBJ
 	"rapla" V PrsPrc Neu Pl Acc Indef @<OBJ
 	"rapla" V PrsPrc Neu Sg Acc Def @<OBJ
 	"rapla" V PrsPrc Neu Sg Acc Indef @<OBJ
+	"rapla" V PrsPrc Neu Sg Nom Def @<SUBJ
+	"rapla" V PrsPrc Neu Sg Nom Indef @<SUBJ
 "<niður>"
 	"niður" Adv @<ADVL
 "<við>"
@@ -4294,11 +4324,16 @@
 	"fara" V Ind Prt 3Sg @FMV
 "<beint>"
 	"beina" V PrfPtc Neu Sg Acc Indef @<OBJ
+	"beina" V PrfPtc Neu Sg Nom Indef @<SUBJ
 	"beindur" A Neu Sg Acc Indef @<OBJ
+	"beindur" A Neu Sg Nom Indef @<SUBJ
 	"beint" Adv @<ADVL
+	"beintur" A Fem Sg Nom Indef @<SUBJ
 	"beintur" A Neu Pl Acc Indef @<OBJ
 	"beintur" A Neu Sg Acc Indef @<OBJ
+	"beintur" A Neu Sg Nom Indef @<SUBJ
 	"beinur" A Neu Sg Acc Indef @<OBJ
+	"beinur" A Neu Sg Nom Indef @<SUBJ
 "<at>"
 	"at" IM @IM
 "<grunda>"
@@ -4778,14 +4813,11 @@
 "<so>"
 	"so" Adv @<ADVL
 "<ónatúrliga>"
-	"ónatúrligur" A Der/Adv Adv @<ADVL
 	"ónatúrligur" A Fem Sg Nom Def @<SUBJ
 	"ónatúrligur" A Neu Sg Nom Def @<SUBJ
 "<smæðin>"
-	"smæðin" A Fem Sg Nom Indef @X
-	"smæðin" A Msc Sg Nom Indef @X
-	"smæðin" A Neu Pl Acc Indef @X
-	"smæðin" A Neu Pl Nom Indef @X
+	"smæðin" A Fem Sg Nom Indef @<SUBJ
+	"smæðin" A Msc Sg Nom Indef @<SUBJ
 "<.>"
 	"." CLB
 "<Tað>"
@@ -4817,11 +4849,17 @@
 	"stóð" N Neu Sg Nom Indef @SUBJ>
 "<beint>"
 	"beina" V PrfPtc Neu Sg Acc Indef @<OBJ
+	"beina" V PrfPtc Neu Sg Nom Indef @SUBJ>
 	"beindur" A Neu Sg Acc Indef @<OBJ
+	"beindur" A Neu Sg Nom Indef @SUBJ>
 	"beint" Adv @<ADVL
+	"beintur" A Fem Sg Nom Indef @SUBJ>
 	"beintur" A Neu Pl Acc Indef @<OBJ
+	"beintur" A Neu Pl Nom Indef @SUBJ>
 	"beintur" A Neu Sg Acc Indef @<OBJ
+	"beintur" A Neu Sg Nom Indef @SUBJ>
 	"beinur" A Neu Sg Acc Indef @<OBJ
+	"beinur" A Neu Sg Nom Indef @SUBJ>
 "<framman>"
 	"framman" Adv @<ADVL
 "<fyri>"
@@ -5459,16 +5497,22 @@
 "<ginandi>"
 	"gina" V Der/A A Fem Pl Acc Indef @<OBJ
 	"gina" V Der/A A Fem Sg Acc Indef @<OBJ
+	"gina" V Der/A A Fem Sg Nom Indef @<SUBJ
 	"gina" V Der/A A Msc Pl Acc Indef @<OBJ
 	"gina" V Der/A A Msc Sg Acc Indef @<OBJ
+	"gina" V Der/A A Msc Sg Nom Indef @<SUBJ
 	"gina" V Der/A A Neu Pl Acc Indef @<OBJ
 	"gina" V Der/A A Neu Sg Acc Indef @<OBJ
+	"gina" V Der/A A Neu Sg Nom Indef @<SUBJ
 	"gina" V PrsPrc Fem Pl Acc Indef @<OBJ
 	"gina" V PrsPrc Fem Sg Acc Indef @<OBJ
+	"gina" V PrsPrc Fem Sg Nom Indef @<SUBJ
 	"gina" V PrsPrc Msc Pl Acc Indef @<OBJ
 	"gina" V PrsPrc Msc Sg Acc Indef @<OBJ
+	"gina" V PrsPrc Msc Sg Nom Indef @<SUBJ
 	"gina" V PrsPrc Neu Pl Acc Indef @<OBJ
 	"gina" V PrsPrc Neu Sg Acc Indef @<OBJ
+	"gina" V PrsPrc Neu Sg Nom Indef @<SUBJ
 "<langt>"
 	"langur" A Neu Sg Acc Indef @<OBJ
 "<undan>"
@@ -5791,6 +5835,7 @@
 "<kemur>"
 	"koma" V Ind Prs 3Sg @FMV
 "<man>"
+	"man" Pron Indef Msc Sg Nom @SUBJ>
 	"munna" V Ind Prs 3Sg @FMV
 "<grøvandi>"
 	"grøva" V PrsPrc Fem Sg Nom Def @SUBJ>
@@ -6704,14 +6749,20 @@
 	"floyta" V PrsPrc Fem Pl Acc Indef @<OBJ
 	"floyta" V PrsPrc Fem Sg Acc Def @<OBJ
 	"floyta" V PrsPrc Fem Sg Acc Indef @<OBJ
+	"floyta" V PrsPrc Fem Sg Nom Def @<SUBJ
+	"floyta" V PrsPrc Fem Sg Nom Indef @<SUBJ
 	"floyta" V PrsPrc Msc Pl Acc Def @<OBJ
 	"floyta" V PrsPrc Msc Pl Acc Indef @<OBJ
 	"floyta" V PrsPrc Msc Sg Acc Def @<OBJ
 	"floyta" V PrsPrc Msc Sg Acc Indef @<OBJ
+	"floyta" V PrsPrc Msc Sg Nom Def @<SUBJ
+	"floyta" V PrsPrc Msc Sg Nom Indef @<SUBJ
 	"floyta" V PrsPrc Neu Pl Acc Def @<OBJ
 	"floyta" V PrsPrc Neu Pl Acc Indef @<OBJ
 	"floyta" V PrsPrc Neu Sg Acc Def @<OBJ
 	"floyta" V PrsPrc Neu Sg Acc Indef @<OBJ
+	"floyta" V PrsPrc Neu Sg Nom Def @<SUBJ
+	"floyta" V PrsPrc Neu Sg Nom Indef @<SUBJ
 "<inn>"
 	"inn" Adv @<ADVL
 "<á>"
@@ -7855,8 +7906,10 @@
 	"standa" V Ind Prt Pl @FMV
 "<bleik>"
 	"bleikur" A Neu Pl Acc Indef @>N
+	"bleikur" A Neu Pl Nom Indef @>N
 "<børn>"
 	"barn" N Neu Pl Acc Indef @<OBJ
+	"barn" N Neu Pl Nom Indef @SUBJ>
 "<uttan>"
 	"uttan" Pr @<ADVL
 "<fyri>"
@@ -7912,10 +7965,14 @@
 "<fór>"
 	"fara" V Ind Prt 3Sg @FMV
 "<lætt>"
+	"lætta" V PrfPtc Fem Sg Nom Indef @<SUBJ
 	"lætta" V PrfPtc Neu Pl Acc Indef @<OBJ
 	"lætta" V PrfPtc Neu Sg Acc Indef @<OBJ
+	"lætta" V PrfPtc Neu Sg Nom Indef @<SUBJ
+	"lættur" A Fem Sg Nom Indef @<SUBJ
 	"lættur" A Neu Pl Acc Indef @<OBJ
 	"lættur" A Neu Sg Acc Indef @<OBJ
+	"lættur" A Neu Sg Nom Indef @<SUBJ
 "<um>"
 	"um" Pr @<ADVL
 "<hjartað>"
@@ -8210,9 +8267,8 @@
 "<og>"
 	"og" CC @CVP
 "<dámlig>"
-	"dámligur" A Fem Sg Nom Indef @X
-	"dámligur" A Neu Pl Acc Indef @X
-	"dámligur" A Neu Pl Nom Indef @X
+	"dámligur" A Fem Sg Nom Indef @<SUBJ
+	"dámligur" A Neu Pl Nom Indef @<SUBJ
 "<at>"
 	"at" IM @IM
 "<tosa>"
@@ -8890,13 +8946,11 @@
 "<kemur>"
 	"koma" V Ind Prs 3Sg @FMV
 "<ein>"
-	"ein" Num @HNOUN
-	"eitt" Num Msc Sg Acc @<OBJ
+	"eitt" Num Fem Sg Nom @<SUBJ
 "<ólukka>"
-	"ólukka" N Fem Sg Nom Indef @X
+	"ólukka" N Fem Sg Nom Indef @<SUBJ
 "<einsamøll>"
-	"einsamallur" A Fem Sg Nom Indef @X
-	"einsamallur" A Neu Pl Nom Indef @X
+	"einsamallur" A Fem Sg Nom Indef @<SUBJ
 "<.>"
 	"." CLB
 "<Nú>"
@@ -8907,6 +8961,7 @@
 	"pápi" N Msc Sg Nom Indef @SUBJ>
 "<mín>"
 	"mín" Det Poss Msc Sg Acc @>N
+	"mín" Det Poss Msc Sg Nom @>N
 "<eisini>"
 	"eisini" Adv @<ADVL
 "<og>"
@@ -9370,6 +9425,7 @@
 	"tann" Pron Dem Fem Pl Acc @<OBJ
 "<dýrt>"
 	"dýrur" A Neu Sg Acc Indef @<OBJ
+	"dýrur" A Neu Sg Nom Indef @SUBJ>
 "<at>"
 	"at" IM @IM
 "<standa>"
@@ -9779,10 +9835,18 @@
 	"hann" Pron Pers Sg Nom @SUBJ>
 "<beint>"
 	"beina" V PrfPtc Neu Sg Acc Indef @<OBJ
+	"beina" V PrfPtc Neu Sg Nom Indef @SUBJ>
+	"beina" V Sup @IMV
 	"beindur" A Neu Sg Acc Indef @<OBJ
+	"beindur" A Neu Sg Nom Indef @SUBJ>
+	"beint" Adv @<ADVL
+	"beintur" A Fem Sg Nom Indef @SUBJ>
 	"beintur" A Neu Pl Acc Indef @<OBJ
+	"beintur" A Neu Pl Nom Indef @SUBJ>
 	"beintur" A Neu Sg Acc Indef @<OBJ
+	"beintur" A Neu Sg Nom Indef @SUBJ>
 	"beinur" A Neu Sg Acc Indef @<OBJ
+	"beinur" A Neu Sg Nom Indef @SUBJ>
 "<yvir>"
 	"yvir" Pr @<ADVL
 "<av>"
@@ -10610,7 +10674,6 @@
 	"standa" V Ind Prt 3Sg @FMV
 	"stóð" N Neu Pl Acc Indef @<OBJ
 	"stóð" N Neu Sg Acc Indef @<OBJ
-	"stóð" N Neu Sg Nom Indef @SUBJ>
 "<bara>"
 	"bara" Adv @<ADVL
 "<og>"
@@ -10779,7 +10842,6 @@
 	"bara" Adv @<ADVL
 "<erlig>"
 	"erligur" A Fem Sg Nom Indef @X
-	"erligur" A Neu Pl Acc Indef @X
 	"erligur" A Neu Pl Nom Indef @X
 "<,>"
 	"," CLB
@@ -11239,14 +11301,20 @@
 	"bríksla" V PrsPrc Fem Pl Acc Indef @<OBJ
 	"bríksla" V PrsPrc Fem Sg Acc Def @<OBJ
 	"bríksla" V PrsPrc Fem Sg Acc Indef @<OBJ
+	"bríksla" V PrsPrc Fem Sg Nom Def @<SUBJ
+	"bríksla" V PrsPrc Fem Sg Nom Indef @<SUBJ
 	"bríksla" V PrsPrc Msc Pl Acc Def @<OBJ
 	"bríksla" V PrsPrc Msc Pl Acc Indef @<OBJ
 	"bríksla" V PrsPrc Msc Sg Acc Def @<OBJ
 	"bríksla" V PrsPrc Msc Sg Acc Indef @<OBJ
+	"bríksla" V PrsPrc Msc Sg Nom Def @<SUBJ
+	"bríksla" V PrsPrc Msc Sg Nom Indef @<SUBJ
 	"bríksla" V PrsPrc Neu Pl Acc Def @<OBJ
 	"bríksla" V PrsPrc Neu Pl Acc Indef @<OBJ
 	"bríksla" V PrsPrc Neu Sg Acc Def @<OBJ
 	"bríksla" V PrsPrc Neu Sg Acc Indef @<OBJ
+	"bríksla" V PrsPrc Neu Sg Nom Def @<SUBJ
+	"bríksla" V PrsPrc Neu Sg Nom Indef @<SUBJ
 "<við>"
 	"við" Pr @<ADVL
 "<tí>"
@@ -11391,7 +11459,9 @@
 	"liggja" V Ind Prt Pl @FMV
 "<slødd>"
 	"sløddur" A Neu Pl Acc Indef @<OBJ
+	"sløddur" A Neu Pl Nom Indef @<SUBJ
 	"sløða" V PrfPtc Neu Pl Acc Indef @<OBJ
+	"sløða" V PrfPtc Neu Pl Nom Indef @<SUBJ
 "<hultur>"
 	"hultur" ? @X
 "<um>"
@@ -11894,7 +11964,18 @@
 "<fóru>"
 	"fara" V Ind Prt Pl @FMV
 "<flagsandi>"
-	"flagsa" V PrsPrc @X
+	"flagsa" V PrsPrc Fem Pl Nom Def @SUBJ>
+	"flagsa" V PrsPrc Fem Pl Nom Indef @SUBJ>
+	"flagsa" V PrsPrc Fem Sg Nom Def @SUBJ>
+	"flagsa" V PrsPrc Fem Sg Nom Indef @SUBJ>
+	"flagsa" V PrsPrc Msc Pl Nom Def @SUBJ>
+	"flagsa" V PrsPrc Msc Pl Nom Indef @SUBJ>
+	"flagsa" V PrsPrc Msc Sg Nom Def @SUBJ>
+	"flagsa" V PrsPrc Msc Sg Nom Indef @SUBJ>
+	"flagsa" V PrsPrc Neu Pl Nom Def @SUBJ>
+	"flagsa" V PrsPrc Neu Pl Nom Indef @SUBJ>
+	"flagsa" V PrsPrc Neu Sg Nom Def @SUBJ>
+	"flagsa" V PrsPrc Neu Sg Nom Indef @SUBJ>
 "<eftir>"
 	"eftir" Pr @<ADVL
 "<sjónum>"
@@ -12096,8 +12177,7 @@
 "<so>"
 	"so" Adv @<ADVL
 "<høgt>"
-	"høgur" A Neu Sg Acc Indef @X
-	"høgur" A Neu Sg Nom Indef @X
+	"høgur" A Neu Sg Nom Indef @<SUBJ
 "<sum>"
 	"sum" Pr @<ADVL
 "<at>"
@@ -12134,11 +12214,10 @@
 "<so>"
 	"so" Adv @<ADVL
 "<stórt>"
-	"stórur" A Neu Sg Nom Indef @SUBJ>
+	"stórur" A Adv @<ADVL
 "<og>"
 	"og" CC @CVP
 "<oyggjarnar>"
-	"oyggj" N Fem Pl Acc Def @X
 	"oyggj" N Fem Pl Nom Def @X
 "<so>"
 	"so" Adv @<ADVL
@@ -12223,6 +12302,7 @@
 	"lá" N Fem Sg Nom Indef @SUBJ>
 "<hann>"
 	"hann" Pron Pers Sg Acc @<OBJ
+	"hann" Pron Pers Sg Nom @SUBJ>
 "<ov>"
 	"ov" Adv @<ADVL
 "<leingi>"
@@ -12787,7 +12867,7 @@
 "<hann>"
 	"hann" Pron Pers Sg Nom @SUBJ>
 "<snørið>"
-	"snøri" N Neu Sg Nom Def @SUBJ>
+	"snøri" N Neu Sg Acc Def @X
 "<rennna>"
 	"rennna" ? @X
 "<út>"
@@ -13448,18 +13528,12 @@
 "<koma>"
 	"koma" V Ind Prs Pl @FMV
 "<stimandi>"
-	"stima" V PrsPrc Fem Pl Acc Def @<OBJ
-	"stima" V PrsPrc Fem Pl Acc Indef @<OBJ
-	"stima" V PrsPrc Fem Sg Acc Def @<OBJ
-	"stima" V PrsPrc Fem Sg Acc Indef @<OBJ
-	"stima" V PrsPrc Msc Pl Acc Def @<OBJ
-	"stima" V PrsPrc Msc Pl Acc Indef @<OBJ
-	"stima" V PrsPrc Msc Sg Acc Def @<OBJ
-	"stima" V PrsPrc Msc Sg Acc Indef @<OBJ
-	"stima" V PrsPrc Neu Pl Acc Def @<OBJ
-	"stima" V PrsPrc Neu Pl Acc Indef @<OBJ
-	"stima" V PrsPrc Neu Sg Acc Def @<OBJ
-	"stima" V PrsPrc Neu Sg Acc Indef @<OBJ
+	"stima" V PrsPrc Fem Pl Nom Def @<SUBJ
+	"stima" V PrsPrc Fem Pl Nom Indef @<SUBJ
+	"stima" V PrsPrc Msc Pl Nom Def @<SUBJ
+	"stima" V PrsPrc Msc Pl Nom Indef @<SUBJ
+	"stima" V PrsPrc Neu Pl Nom Def @<SUBJ
+	"stima" V PrsPrc Neu Pl Nom Indef @<SUBJ
 "<,>"
 	"," CLB
 "<undraðist>"
@@ -13724,6 +13798,7 @@
 	"seg" Pron Refl Acc @<OBJ
 "<fram>"
 	"fram" Adv @<ADVL
+	"framur" A Fem Sg Nom Indef @SUBJ>
 "<ímóti>"
 	"ímóti" Pr @<ADVL
 "<bógbekki>"
@@ -13835,7 +13910,9 @@
 	"koma" V Ind Prt 3Sg @FMV
 "<heim>"
 	"heim" N Neu Pl Acc Indef @<OBJ
+	"heim" N Neu Pl Nom Indef @SUBJ>
 	"heim" N Neu Sg Acc Indef @<OBJ
+	"heim" N Neu Sg Nom Indef @SUBJ>
 	"heimur" N Msc Sg Acc Indef @<OBJ
 "<,>"
 	"," CLB
@@ -14115,6 +14192,7 @@
 	"fara" V Ind Prt Pl @FMV
 "<teir>"
 	"hann" Pron Pers Pl Acc @<OBJ
+	"hann" Pron Pers Pl Nom @SUBJ>
 "<at>"
 	"at" IM @IM
 "<rópa>"
@@ -14777,6 +14855,7 @@
 	"koma" V Ind Prt 3Sg @FMV
 "<hann>"
 	"hann" Pron Pers Sg Acc @<OBJ
+	"hann" Pron Pers Sg Nom @<SUBJ
 "<aftur>"
 	"aftur" Adv @<ADVL
 "<av>"
@@ -15183,14 +15262,14 @@
 "<skjótt>"
 	"skjótt" Adv @<ADVL
 "<tvey>"
-	"tvey" Num Neu Sg Acc @HNOUN
 	"tvey" Num Neu Sg Nom @SUBJ>
 "<eina>"
 	"ein" Det Fem Sg Acc @>N
+	"eitt" Num Fem Sg Acc @HNOUN
 "<slavna>"
-	"slavin" A Fem Sg Acc Indef @>N
+	"slavna" V Ind Prs Pl @FMV
 "<hósnátt>"
-	"hósnátt" N Fem Sg Acc Indef @X
+	"hósnátt" N Fem Sg Acc Indef @<OBJ
 "<,>"
 	"," CLB
 "<og>"
@@ -15851,6 +15930,7 @@
 	"ganga" V Ind Prt 3Sg @FMV
 "<hann>"
 	"hann" Pron Pers Sg Acc @<OBJ
+	"hann" Pron Pers Sg Nom @<SUBJ
 "<út>"
 	"út" Adv @<ADVL
 "<eftir>"
@@ -16255,11 +16335,11 @@
 "<sat>"
 	"sita" V Ind Prt 3Sg @FMV
 "<ein>"
-	"ein" Num @HNOUN
-	"eitt" Num Msc Sg Acc @<OBJ
+	"eitt" Num Fem Sg Nom @<SUBJ
+	"eitt" Num Msc Sg Nom @<SUBJ
 "<menniskja>"
-	"menniskja" N Fem Sg Nom Indef @X
-	"menniskja" N Neu Sg Nom Indef @X
+	"menniskja" N Fem Sg Nom Indef @<SUBJ
+	"menniskja" N Neu Sg Nom Indef @<SUBJ
 "<.>"
 	"." CLB
 "<Hann>"
@@ -16282,8 +16362,7 @@
 "<ikki>"
 	"ikki" Adv @<ADVL
 "<nakað>"
-	"nakar" Det Indef Neu Sg Acc @>N
-	"nakar" Det Indef Neu Sg Nom @>N
+	"nakar" Det Indef Neu Sg Nom @<SUBJ
 "<vanligt>"
 	"vanligur" A Neu Sg Acc Indef @>N
 "<fólk>"
@@ -16522,13 +16601,14 @@
 "<lógu>"
 	"liggja" V Ind Prt Pl @FMV
 "<sigarettir>"
-	"sigarett" N Fem Pl Acc Indef @<OBJ
+	"sigarett" N Fem Pl Nom Indef @<SUBJ
 "<og>"
 	"og" CC @CVP
 "<tómar>"
-	"tómur" A Fem Pl Acc Indef @>N
+	"tómi" N Msc Pl Nom Indef @<SUBJ
 "<fløskur>"
 	"fløska" N Fem Pl Acc Indef @<OBJ
+	"fløska" N Fem Pl Nom Indef @<SUBJ
 "<.>"
 	"." CLB
 "<Hann>"
@@ -16785,11 +16865,11 @@
 "<er>"
 	"vera" V Ind Prs 3Sg @FMV
 "<skjótt>"
-	"skjótt" Adv @<ADVL
+	"skjótur" A Neu Sg Nom Indef @>N
 "<lík>"
-	"lík" N Neu Pl Acc Indef @X
-	"lík" N Neu Sg Acc Indef @X
-	"líkur" A Neu Pl Acc Indef @X
+	"lík" N Neu Pl Nom Indef @<SPRED
+	"lík" N Neu Sg Nom Indef @<SUBJ
+	"líkur" A Fem Sg Nom Indef @<SUBJ
 "<.>"
 	"." CLB
 "<,>"
@@ -17352,9 +17432,8 @@
 "<men>"
 	"men" CC @CVP
 "<hin>"
-	"hin" Det Fem Sg Nom @X
-	"hin" Det Msc Sg Acc @X
-	"hin" Det Msc Sg Nom @X
+	"hin" Det Fem Sg Nom @<SUBJ
+	"hin" Det Msc Sg Nom @<SUBJ
 "<versti>"
 	"illur" A Superl Msc Sg Nom Def @X
 	"ringur" A Superl Msc Sg Nom Def @X
@@ -17718,7 +17797,7 @@
 "<ikki>"
 	"ikki" Adv @<ADVL
 "<nakað>"
-	"nakar" Det Indef Neu Sg Nom @<SUBJ
+	"nakar" Det Indef Neu Sg Nom @>N
 "<hugnaligt>"
 	"hugnaligur" A Neu Sg Nom Indef @>N
 "<og>"
@@ -17726,7 +17805,7 @@
 "<barnsligt>"
 	"barnsligur" A Neu Sg Nom Indef @>N
 "<sirm>"
-	"sirm" N Neu Sg Nom Indef @X
+	"sirm" N Neu Sg Nom Indef @<SUBJ
 "<,>"
 	"," CLB
 "<men>"
@@ -17772,6 +17851,7 @@
 	"koma" V Ind Prs 3Sg @FMV
 "<tað>"
 	"tað" Pron Pers Sg Acc @<OBJ
+	"tað" Pron Pers Sg Nom @SUBJ>
 "<frá>"
 	"frá" Pr @<ADVL
 "<tómrúminum>"
@@ -17821,9 +17901,9 @@
 	"koma" N Neu Sg Acc Indef @<OBJ
 	"koma" V Ind Prs Pl @FMV
 "<hasi>"
-	"hasin" Det Neu Pl Acc @<OBJ
+	"hasin" Det Neu Pl Nom @<SUBJ
 "<ljóðini>"
-	"ljóð" N Neu Pl Nom Def @X
+	"ljóð" N Neu Pl Acc Def @<OBJ
 "<oman>"
 	"oman" Adv @<ADVL
 "<móti>"
@@ -18539,6 +18619,7 @@
 "<kom>"
 	"koma" V Ind Prt 3Sg @FMV
 "<niðan>"
+	"niða" N Fem Sg Nom Def @SUBJ>
 	"niðan" Adv @<ADVL
 	"niðan" Pr @<ADVL
 "<aftur>"
@@ -19458,8 +19539,7 @@
 "<men>"
 	"men" CC @CVP
 "<hósnátt>"
-	"hósnátt" N Fem Sg Acc Indef @X
-	"hósnátt" N Fem Sg Nom Indef @X
+	"hósnátt" N Fem Sg Nom Indef @<SUBJ
 "<.>"
 	"." CLB
 "<Tú>"
@@ -19491,6 +19571,7 @@
 	"ganga" V Ind Prs 2Sg @FMV
 "<fram>"
 	"fram" Adv @<ADVL
+	"framur" A Fem Sg Nom Indef @SUBJ>
 "<við>"
 	"við" Pr @<ADVL
 "<einum>"
@@ -20534,10 +20615,16 @@
 "<knuggandi>"
 	"knugga" V PrsPrc Fem Pl Acc Def @<OBJ
 	"knugga" V PrsPrc Fem Pl Acc Indef @<OBJ
+	"knugga" V PrsPrc Fem Pl Nom Def @<SUBJ
+	"knugga" V PrsPrc Fem Pl Nom Indef @<SUBJ
 	"knugga" V PrsPrc Msc Pl Acc Def @<OBJ
 	"knugga" V PrsPrc Msc Pl Acc Indef @<OBJ
+	"knugga" V PrsPrc Msc Pl Nom Def @<SUBJ
+	"knugga" V PrsPrc Msc Pl Nom Indef @<SUBJ
 	"knugga" V PrsPrc Neu Pl Acc Def @<OBJ
 	"knugga" V PrsPrc Neu Pl Acc Indef @<OBJ
+	"knugga" V PrsPrc Neu Pl Nom Def @<SUBJ
+	"knugga" V PrsPrc Neu Pl Nom Indef @<SUBJ
 "<avstað>"
 	"avstað" Adv @<ADVL
 "<,>"
@@ -20600,10 +20687,10 @@
 	"ikki" Adv @<ADVL
 "<meira>"
 	"meira" Adv @<ADVL
-	"nógvur" A A Comp Neu Sg Nom Def @SUBJ>
 "<enn>"
 	"enn" Adv @<ADVL
 "<hálvur>"
+	"hálva" N Fem Pl Nom Indef @<SUBJ
 	"hálvur" A Msc Sg Nom Indef @SUBJ>
 "<,>"
 	"," CLB
@@ -20784,6 +20871,7 @@
 "<norður>"
 	"norður" Adv @ADVL>
 	"norður" N Neu Sg Acc Indef @<OBJ
+	"norður" N Neu Sg Nom Indef @SUBJ>
 "<í>"
 	"í" Pr @ADVL
 "<Sundið>"
@@ -20794,8 +20882,10 @@
 	"ganga" V Ind Prt Pl @FMV
 "<teir>"
 	"hann" Pron Pers Pl Acc @<OBJ
+	"hann" Pron Pers Pl Nom @SUBJ>
 "<fram>"
 	"fram" Adv @<ADVL
+	"framur" A Fem Sg Nom Indef @SUBJ>
 "<við>"
 	"við" Pr @<ADVL
 "<bakkanum>"
@@ -21325,11 +21415,10 @@
 "<gongur>"
 	"ganga" V Ind Prs 3Sg @FMV
 "<ein>"
-	"ein" Num @HNOUN
+	"eitt" Num Fem Sg Nom @SUBJ>
 "<svørt>"
 	"svartur" A Fem Sg Nom Indef @>N
 "<geldær>"
-	"geldær" N Fem Pl Nom Indef @SUBJ>
 	"geldær" N Fem Sg Nom Indef @SUBJ>
 "<,>"
 	"," CLB
@@ -21711,14 +21800,20 @@
 	"stuna" V PrsPrc Fem Pl Acc Indef @<OBJ
 	"stuna" V PrsPrc Fem Sg Acc Def @<OBJ
 	"stuna" V PrsPrc Fem Sg Acc Indef @<OBJ
+	"stuna" V PrsPrc Fem Sg Nom Def @<SUBJ
+	"stuna" V PrsPrc Fem Sg Nom Indef @<SUBJ
 	"stuna" V PrsPrc Msc Pl Acc Def @<OBJ
 	"stuna" V PrsPrc Msc Pl Acc Indef @<OBJ
 	"stuna" V PrsPrc Msc Sg Acc Def @<OBJ
 	"stuna" V PrsPrc Msc Sg Acc Indef @<OBJ
+	"stuna" V PrsPrc Msc Sg Nom Def @<SUBJ
+	"stuna" V PrsPrc Msc Sg Nom Indef @<SUBJ
 	"stuna" V PrsPrc Neu Pl Acc Def @<OBJ
 	"stuna" V PrsPrc Neu Pl Acc Indef @<OBJ
 	"stuna" V PrsPrc Neu Sg Acc Def @<OBJ
 	"stuna" V PrsPrc Neu Sg Acc Indef @<OBJ
+	"stuna" V PrsPrc Neu Sg Nom Def @<SUBJ
+	"stuna" V PrsPrc Neu Sg Nom Indef @<SUBJ
 "<aftaná>"
 	"aftaná" Adv @<ADVL
 "<við>"
@@ -21741,8 +21836,10 @@
 	"komin" A Msc Sg Nom Indef @SUBJ>
 "<eitt>"
 	"ein" Det Neu Sg Acc @>N
+	"ein" Det Neu Sg Nom @>N
 "<sindur>"
 	"sindur" N Neu Sg Acc Indef @<OBJ
+	"sindur" N Neu Sg Nom Indef @SUBJ>
 "<burtur>"
 	"burtur" Adv @ADVL>
 "<frá>"
@@ -22151,7 +22248,9 @@
 "<stendur>"
 	"standa" V Ind Prs 3Sg @FMV
 "<still>"
+	"stillur" A Fem Sg Nom Indef @SUBJ>
 	"stillur" A Neu Pl Acc Indef @<OBJ
+	"stillur" A Neu Pl Nom Indef @SUBJ>
 "<uppi>"
 	"uppi" Adv @<ADVL
 "<á>"
@@ -22296,11 +22395,8 @@
 "<ikki>"
 	"ikki" Adv @<ADVL
 "<fyrstu>"
-	"fyrri" A Superl Fem Sg Acc Def @>N
 	"fyrri" A Superl Fem Sg Dat Def @>N
-	"fyrsti" A Fem Sg Acc Def @>N
 	"fyrsti" A Fem Sg Dat Def @>N
-	"fyrstur" A Fem Sg Acc Def @>N
 	"fyrstur" A Fem Sg Dat Def @>N
 "<ferð>"
 	"ferð" N Fem Sg Acc Indef @X

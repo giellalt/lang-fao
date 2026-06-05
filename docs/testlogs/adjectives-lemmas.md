@@ -1,17 +1,11 @@
 # Lemma-tests for *adjectives* in ...`adjectives.lexc`
 
 
-**triðstørstur** failures:
+**fjórðstørstur** failures:
 
-* `triðstørstur+A+Superl+Msc+Sg+Nom+Def` => `triðstørsti`
-* `triðstørstur` has following analyses:
-  * `triðstørstur+A+Superl+Msc+Sg+Nom+Indef`
-
-**næststørstur** failures:
-
-* `næststørstur+A+Superl+Msc+Sg+Nom+Def` => `næststørsti`
-* `næststørstur` has following analyses:
-  * `næststørstur+A+Superl+Msc+Sg+Nom+Indef`
+* `fjórðstørstur+A+Superl+Msc+Sg+Nom+Def` => `fjórðstørsti`
+* `fjórðstørstur` has following analyses:
+  * `fjórðstørstur+A+Superl+Msc+Sg+Nom+Indef`
 
 **næsthægstur** failures:
 
@@ -19,11 +13,17 @@
 * `næsthægstur` has following analyses:
   * `næsthægstur+A+Superl+Msc+Sg+Nom+Indef`
 
-**fjórðstørstur** failures:
+**næststørstur** failures:
 
-* `fjórðstørstur+A+Superl+Msc+Sg+Nom+Def` => `fjórðstørsti`
-* `fjórðstørstur` has following analyses:
-  * `fjórðstørstur+A+Superl+Msc+Sg+Nom+Indef`
+* `næststørstur+A+Superl+Msc+Sg+Nom+Def` => `næststørsti`
+* `næststørstur` has following analyses:
+  * `næststørstur+A+Superl+Msc+Sg+Nom+Indef`
+
+**triðstørstur** failures:
+
+* `triðstørstur+A+Superl+Msc+Sg+Nom+Def` => `triðstørsti`
+* `triðstørstur` has following analyses:
+  * `triðstørstur+A+Superl+Msc+Sg+Nom+Indef`
 
 ## Lemma statistics
 * 14093 lemmas

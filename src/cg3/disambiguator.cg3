@@ -475,11 +475,11 @@ REMOVE:hansaraN V IF (-2 V OR Pr)(-1 ("hann") + Pron + Pers + Sg + Gen)(0 N);
 SELECT ("hús") IF (0 ("húsi"));
 # Awaiting real examples with 'húsi'
 
-#!! Conjunctions
+#!! ### Conjunctions
 
 #!! No rules so far
 
-#!! Subjunctions
+#!! ### Subjunctions
 
 SELECT CS IF (-1 BOS)(0 ("tí"));
 # tí is also a dative pronoun. No instances have been observed
@@ -487,9 +487,15 @@ SELECT CS IF (-1 BOS)(0 ("tí"));
 # before going for CS.
 
 
-#!! Verbs
+#!! ### Verbs
 
-#!! -st
+#!! #### Passive
+
+#REMOVE:stPass ("<.*st>r") + V + Inf + Pass) IF (0 ("<.*a>r") + V + Inf + Pass); 
+REMOVE:staPass ("<.*st>r") IF (0  V + Inf + Pass LINK 0 ("<.*a>r"));
+REMOVE:staPass ("<.*st>"i) IF (0  V + Ind + Prs + Pl + Pass)(0 ("<.*a>r"));
+
+	#!! -st
 REMOVE:stpass ("<.*a>r") IF (0 ("<.*ast>r") + Pass);
 
 
@@ -1216,6 +1222,10 @@ REMOVE Inf IF (-1 (Pl Nom))(0 (V Pl))(NOT -1 Acc)(NOT -2 VFIN);
 REMOVE Inf IF (-1 Adv OR RIGHT OR Acc)(0 V + Pl)(1 Pl + Nom) ;
 
 REMOVE:PlandPPandV Inf IF (*-1 Pl + Nom BARRIER VFIN) ;
+
+
+REMOVE:InfogatInf Pl IF (0 Inf LINK -1 ("at") LINK *-1 ("og") LINK *-1 Inf BARRIER VFIN);
+REMOVE:InfogInf Pl IF (0 Inf LINK *-1 ("og") LINK *-1 Inf BARRIER VFIN);
 
 #!! ### Imperative
 

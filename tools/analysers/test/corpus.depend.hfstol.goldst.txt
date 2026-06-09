@@ -317,11 +317,6 @@
 "<lá>"
 	"liggja" <mv> V Ind Prt 3Sg @FMV #2->0
 "<stilt>"
-	"stilla" V PrfPtc Fem Sg Nom Indef @SUBJ> #3->10
-	"stilla" V PrfPtc Neu Pl Acc Indef @<OBJ #3->10
-	"stilla" V PrfPtc Neu Sg Acc Indef @<OBJ #3->10
-	"stilla" V PrfPtc Neu Sg Nom Indef @SUBJ> #3->10
-	"stillur" A Neu Sg Acc Indef @<OBJ #3->10
 	"stillur" A Neu Sg Nom Indef @SUBJ> #3->10
 "<,>"
 	"," CLB #4->3
@@ -5487,25 +5482,12 @@
 "<hann>"
 	"hann" Pron Pers Sg Nom @SUBJ> #21->22
 "<fór>"
+	"fara" <mv> V Ind Prt 1Sg @FS-<ADVL #22->17
 	"fara" <mv> V Ind Prt 3Sg @FS-<ADVL #22->17
 "<ginandi>"
-	"gina" V Der/A A Fem Pl Acc Indef @<OBJ #23->22
-	"gina" V Der/A A Fem Sg Acc Indef @<OBJ #23->22
-	"gina" V Der/A A Fem Sg Nom Indef @<SUBJ #23->22
-	"gina" V Der/A A Msc Pl Acc Indef @<OBJ #23->22
-	"gina" V Der/A A Msc Sg Acc Indef @<OBJ #23->22
-	"gina" V Der/A A Msc Sg Nom Indef @<SUBJ #23->22
-	"gina" V Der/A A Neu Pl Acc Indef @<OBJ #23->22
-	"gina" V Der/A A Neu Sg Acc Indef @<OBJ #23->22
+	"gina" V Der/A A Neu Sg Nom Def @<SUBJ #23->22
 	"gina" V Der/A A Neu Sg Nom Indef @<SUBJ #23->22
-	"gina" V PrsPrc Fem Pl Acc Indef @<OBJ #23->22
-	"gina" V PrsPrc Fem Sg Acc Indef @<OBJ #23->22
-	"gina" V PrsPrc Fem Sg Nom Indef @<SUBJ #23->22
-	"gina" V PrsPrc Msc Pl Acc Indef @<OBJ #23->22
-	"gina" V PrsPrc Msc Sg Acc Indef @<OBJ #23->22
-	"gina" V PrsPrc Msc Sg Nom Indef @<SUBJ #23->22
-	"gina" V PrsPrc Neu Pl Acc Indef @<OBJ #23->22
-	"gina" V PrsPrc Neu Sg Acc Indef @<OBJ #23->22
+	"gina" V PrsPrc Neu Sg Nom Def @<SUBJ #23->22
 	"gina" V PrsPrc Neu Sg Nom Indef @<SUBJ #23->22
 "<langt>"
 	"langur" A Neu Sg Acc Indef @<OBJ #24->22
@@ -5674,24 +5656,8 @@
 "<altíð>"
 	"altíð" Adv @<ADVL #3->2
 "<brestandi>"
-	"bresta" V PrsPrc Fem Pl Acc Def @<OBJ #4->2
-	"bresta" V PrsPrc Fem Pl Acc Indef @<OBJ #4->2
-	"bresta" V PrsPrc Fem Sg Acc Def @<OBJ #4->2
-	"bresta" V PrsPrc Fem Sg Acc Indef @<OBJ #4->2
-	"bresta" V PrsPrc Fem Sg Nom Def @SUBJ> #4->2
-	"bresta" V PrsPrc Fem Sg Nom Indef @SUBJ> #4->2
-	"bresta" V PrsPrc Msc Pl Acc Def @<OBJ #4->2
-	"bresta" V PrsPrc Msc Pl Acc Indef @<OBJ #4->2
-	"bresta" V PrsPrc Msc Sg Acc Def @<OBJ #4->2
-	"bresta" V PrsPrc Msc Sg Acc Indef @<OBJ #4->2
-	"bresta" V PrsPrc Msc Sg Nom Def @SUBJ> #4->2
-	"bresta" V PrsPrc Msc Sg Nom Indef @SUBJ> #4->2
-	"bresta" V PrsPrc Neu Pl Acc Def @<OBJ #4->2
-	"bresta" V PrsPrc Neu Pl Acc Indef @<OBJ #4->2
-	"bresta" V PrsPrc Neu Sg Acc Def @<OBJ #4->2
-	"bresta" V PrsPrc Neu Sg Acc Indef @<OBJ #4->2
-	"bresta" V PrsPrc Neu Sg Nom Def @SUBJ> #4->2
-	"bresta" V PrsPrc Neu Sg Nom Indef @SUBJ> #4->2
+	"bresta" V PrsPrc Neu Sg Nom Def @SUBJ> #4->7
+	"bresta" V PrsPrc Neu Sg Nom Indef @SUBJ> #4->7
 "<inn>"
 	"inn" Adv @<ADVL #5->2
 "<og>"
@@ -6017,11 +5983,11 @@
 "<og>"
 	"og" CC @CVP #5->1
 "<koyra>"
-	"koyra" <mv> V Ind Prs Pl @FMV #6->1
+	"koyra" V Inf @X #6->0
 "<kaku>"
-	"kaka" N Fem Pl Acc Err/Orth Indef @<OBJ #7->6
+	"kaka" N Fem Pl Acc Err/Orth Indef @<OBJ #7->7
 "<í>"
-	"í" Pr @<ADVL #8->6
+	"í" Pr @<ADVL #8->1
 "<seg>"
 	"seg" Pron Refl Acc @P< #9->8
 "<.>"
@@ -7716,8 +7682,7 @@
 "<og>"
 	"og" CC @CVP #14->13
 "<eggja>"
-	"eggja" <mv> V Ind Prs Pl @FMV #15->13
-	"eggja" V Inf @<OBJ #15->13
+	"eggja" V Inf @<OBJ #15->15
 "<.>"
 	"." CLB #16->2
 "<Tá>"
@@ -10998,10 +10963,9 @@
 "<og>"
 	"og" CC @CVP #14->2
 "<fornerma>"
-	"fornerma" <mv> V Ind Prs Pl @FMV #15->2
-	"fornerma" V Inf @<OBJ #15->2
+	"fornerma" V Inf @<OBJ #15->15
 "<fólk>"
-	"fólk" N Neu Pl Acc Indef @<OBJ #16->15
+	"fólk" N Neu Pl Acc Indef @<OBJ #16->16
 "<->"
 	"-" PUNCT MIDDLE #17->18
 "<góðar>"
@@ -11013,7 +10977,7 @@
 "<sum>"
 	"sum" CS @CVP #21->22
 "<keypa>"
-	"keypa" <mv> V Ind Prs Pl @FS-<ADVL #22->15
+	"keypa" <mv> V Ind Prs Pl @FS-<ADVL #22->2
 "<alt>"
 	"alt" Adv @<ADVL #23->22
 	"alt" N Fem Sg Acc Indef @<OBJ #23->22
@@ -14768,7 +14732,6 @@
 "<fegin>"
 	"fegin" A Fem Sg Nom Indef @SUBJ> #48->57
 	"fegin" A Msc Sg Nom Indef @SUBJ> #48->57
-	"fegin" A Neu Pl Nom Indef @SUBJ> #48->57
 "<um>"
 	"um" Pr @<ADVL #49->46
 "<,>"
@@ -14822,13 +14785,12 @@
 "<vera>"
 	"vera" V Inf @X #73->0
 "<illa>"
-	"illa" Adv @<ADVL #74->2
-	"illa" <mv> V Ind Prs Pl @FMV #74->2
-	"illur" A Fem Sg Nom Def @<SUBJ #74->2
-	"illur" A Neu Sg Nom Def @<SUBJ #74->2
+	"illa" Adv @<ADVL #74->71
+	"illur" A Fem Sg Nom Def @<SUBJ #74->71
+	"illur" A Neu Sg Nom Def @<SUBJ #74->71
 "<farin>"
-	"fara" V PrfPtc Neu Pl Acc Indef @<OBJ #75->74
-	"farin" A Neu Pl Acc Indef @<OBJ #75->74
+	"fara" V PrfPtc Neu Pl Acc Indef @<OBJ #75->71
+	"farin" A Neu Pl Acc Indef @<OBJ #75->71
 "<.>"
 	"." CLB #76->2
 "<Nakrar>"
@@ -21154,16 +21116,6 @@
 "<kom>"
 	"koma" <mv> V Ind Prt 3Sg @FMV #14->2
 "<høggandi>"
-	"høgga" V PrsPrc Fem Pl Nom Def @SUBJ> #15->20
-	"høgga" V PrsPrc Fem Pl Nom Indef @SUBJ> #15->20
-	"høgga" V PrsPrc Fem Sg Nom Def @SUBJ> #15->20
-	"høgga" V PrsPrc Fem Sg Nom Indef @SUBJ> #15->20
-	"høgga" V PrsPrc Msc Pl Nom Def @SUBJ> #15->20
-	"høgga" V PrsPrc Msc Pl Nom Indef @SUBJ> #15->20
-	"høgga" V PrsPrc Msc Sg Nom Def @SUBJ> #15->20
-	"høgga" V PrsPrc Msc Sg Nom Indef @SUBJ> #15->20
-	"høgga" V PrsPrc Neu Pl Nom Def @SUBJ> #15->20
-	"høgga" V PrsPrc Neu Pl Nom Indef @SUBJ> #15->20
 	"høgga" V PrsPrc Neu Sg Nom Def @SUBJ> #15->20
 	"høgga" V PrsPrc Neu Sg Nom Indef @SUBJ> #15->20
 "<gjøgnum>"

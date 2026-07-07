@@ -271,9 +271,9 @@ LEXICON k5
  +N+Msc:       W_M_SGDAT    ;
  +N+Msc:       W_M_SGGEN    ;
  +N+Msc:^IUML W_M_PLNOM_UR  ;
- +N+Msc+Pl+Nom+Def:^IUML%>rinir MscObl_Flag ;
+ +N+Msc+Pl+Nom+Def:^IUML%>urnir MscObl_Flag ;
  +N+Msc:^IUML W_M_PLACC_UR  ;
- +N+Msc+Pl+Acc+Def:^IUML%>rinar MscObl_Flag ;
+ +N+Msc+Pl+Acc+Def:^IUML%>urnar MscObl_Flag ;
  +N+Msc:       W_M_PLDAT    ; ! bóndum
  +N+Msc:r      W_M_PLDAT    ; ! bóndrum
  +N+Msc:       W_M_PLGEN    ;
@@ -1256,14 +1256,24 @@ LEXICON k_flt49
 !
 LEXICON k50 
 !! * **LEXICON @LEXNAME@** for  skjøldur (non_poetic)
- +N+Msc:           S_M_SGNOM_NULL ;
- +N+Msc:           S_M_SGACC      ;
- +N+Msc:^EPH      S_M_SGDAT      ;
- +N+Msc:^EPH^OEA S_M_SGGEN_AR   ;
- +N+Msc:^EPH      S_M_PLNOM      ;
- +N+Msc:^EPH      S_M_PLACC      ;
- +N+Msc:^EPH      S_M_PLDAT      ;
- +N+Msc:^EPH^OEA S_M_PLGEN      ;
+ +N+Msc:           S_M_SGNOM  ; ! skjøldur   
+ +N+Msc:           S_M_SGACC  ; ! skjøld
+ +N+Msc:%>ur       S_M_SGACC  ; ! skjøldur
+ +N+Msc:%>r        S_M_SGDAT  ; ! skjøldri
+ +N+Msc:%>r^IUML   S_M_SGDAT  ; ! skildri
+ +N+Msc:^IUML      S_M_SGDAT  ; ! skildi
+ +N+Msc:%>r^OEA    S_M_SGGEN_AR ; ! skjaldrar
+ +N+Msc:^OEA       S_M_SGGEN_AR ; ! skjaldar
+ +N+Msc:%>r        S_M_PLNOM   ;
+ +N+Msc:           S_M_PLNOM_IR   ;
+ +N+Msc:^IUML      S_M_PLNOM_IR   ;
+ +N+Msc:%>r        S_M_PLACC   ;
+ +N+Msc:           S_M_PLACC_IR   ;
+ +N+Msc:^IUML      S_M_PLACC_IR   ;
+ +N+Msc:%>r        S_M_PLDAT   ;
+ +N+Msc:           S_M_PLDAT   ;
+ +N+Msc:%>r^OEA S_M_PLGEN    ;
+ +N+Msc:%>r^OEA S_M_PLGEN_AR    ;
 !
 LEXICON k51 
 !! * **LEXICON @LEXNAME@** for  luður
@@ -3420,6 +3430,10 @@ LEXICON S_M_PLGEN
  +Pl+Gen:%>a DF_G_PL ;
  +Pl+Gen:%>a R       ; ! gen pl compound
 
+LEXICON S_M_PLGEN_AR
+!! * **LEXICON @LEXNAME@** 
+ +Pl+Gen:%>ar DF_G_PL_AR ;
+ +Pl+Gen:%>ar R       ; ! gen pl compound
 
 !! ## Feminine forms
 ! ______________
@@ -3605,6 +3619,11 @@ LEXICON DF_G_PL
 !! * **LEXICON @LEXNAME@** 
  +Indef:      ENDLEX ;
    +Def:%>nna ENDLEX ;
+
+LEXICON DF_G_PL_AR
+!! * **LEXICON @LEXNAME@** 
+ +Indef:      ENDLEX ;
+   +Def:%>anna ENDLEX ;
 
 
 

@@ -1,37 +1,9 @@
 # Lemma-tests for *nouns* in ...`nouns.lexc`
 
 
-**homepage** failures:
-
-* `homepage+N+Msc+Pl+Nom+Indef` does not generate!
-* `homepage+N+Msc+Sg+Nom+Indef` does not generate!
-* `homepage+N+Neu+Pl+Nom+Indef` does not generate!
-* `homepage+N+Fem+Pl+Nom+Indef` does not generate!
-* `homepage+N+Neu+Sg+Nom+Indef` does not generate!
-* `homepage+N+Fem+Sg+Nom+Indef` does not generate!
-* `homepage` has following analyses:
-  * `homepage+Sg+Gen+Indef`
-  * `homepage+Sg+Acc+Indef`
-  * `homepage+Sg+Dat+Indef`
-  * `homepage+Sg+Nom+Indef`
-
-**hyperlink** failures:
-
-* `hyperlink+N+Neu+Sg+Nom+Indef` does not generate!
-* `hyperlink+N+Fem+Sg+Nom+Indef` does not generate!
-* `hyperlink+N+Neu+Pl+Nom+Indef` does not generate!
-* `hyperlink+N+Msc+Pl+Nom+Indef` does not generate!
-* `hyperlink+N+Fem+Pl+Nom+Indef` does not generate!
-* `hyperlink+N+Msc+Sg+Nom+Indef` does not generate!
-* `hyperlink` has following analyses:
-  * `hyperlink+Sg+Dat+Indef`
-  * `hyperlink+Sg+Nom+Indef`
-  * `hyperlink+Sg+Gen+Indef`
-  * `hyperlink+Sg+Acc+Indef`
-
 ## Lemma statistics
-* 49959 lemmas
-* 99.99199343461639 % success
+* 49957 lemmas
+* 100.0 % success
 
 ## Settings used
 
@@ -52,6 +24,9 @@
     "analyser": ".../analyser-gt-norm.hfstol",
     "generator": ".../generator-gt-norm.hfstol",
     "nouns": {
+        "exclusions": [
+            "englishloans"
+        ],
         "lemmatags": [
             "+N+Neu+Sg+Nom+Indef",
             "+N+Neu+Pl+Nom+Indef",
@@ -63,6 +38,9 @@
         "lexcfile": ".../nouns.lexc"
     },
     "propernouns": {
+        "exclusions": [
+            "(Err/Orth|Lakjuni|indeclattr|Sv\u00edn\u00e1ir)"
+        ],
         "lemmatags": [
             "+N+Prop+Sg+Nom",
             "+N+Prop+Msc+Sg+Nom",

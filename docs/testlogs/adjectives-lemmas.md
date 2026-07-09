@@ -24,6 +24,9 @@
     "analyser": ".../analyser-gt-norm.hfstol",
     "generator": ".../generator-gt-norm.hfstol",
     "nouns": {
+        "exclusions": [
+            "englishloans"
+        ],
         "lemmatags": [
             "+N+Neu+Sg+Nom+Indef",
             "+N+Neu+Pl+Nom+Indef",
@@ -35,6 +38,9 @@
         "lexcfile": ".../nouns.lexc"
     },
     "propernouns": {
+        "exclusions": [
+            "(Err/Orth|Lakjuni|indeclattr|Sv\u00edn\u00e1ir)"
+        ],
         "lemmatags": [
             "+N+Prop+Sg+Nom",
             "+N+Prop+Msc+Sg+Nom",

@@ -11,7 +11,7 @@
 {
     "adjectives": {
         "exclusions": [
-            "(adjcmp1|ELDRI|ELSTUR|adj_def)"
+            "(adjcmp1|ELDRI|ELSTUR|adj_def|SRi)"
         ],
         "lemmatags": [
             "+A+Msc+Sg+Nom+Indef",
@@ -25,7 +25,7 @@
     "generator": ".../generator-gt-norm.hfstol",
     "nouns": {
         "lemmatags": [
-            "+N+Neus+Sg+Nom+Indef",
+            "+N+Neu+Sg+Nom+Indef",
             "+N+Neu+Pl+Nom+Indef",
             "+N+Fem+Sg+Nom+Indef",
             "+N+Fem+Pl+Nom+Indef",
@@ -45,7 +45,13 @@
             "+N+Prop+Neu+Sg+Nom+Indef",
             "+N+Prop+Msc+Pl+Nom+Indef",
             "+N+Prop+Fem+Pl+Nom+Indef",
-            "+N+Prop+Neu+Pl+Nom+Indef"
+            "+N+Prop+Neu+Pl+Nom+Indef",
+            "+N+Prop+Msc+Sg+Nom+Def",
+            "+N+Prop+Fem+Sg+Nom+Def",
+            "+N+Prop+Neu+Sg+Nom+Def",
+            "+N+Prop+Msc+Pl+Nom+Def",
+            "+N+Prop+Fem+Pl+Nom+Def",
+            "+N+Prop+Neu+Pl+Nom+Def"
         ],
         "lexcfile": ".../propernouns.lexc"
     },

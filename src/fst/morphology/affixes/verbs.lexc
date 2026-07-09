@@ -2,9 +2,9 @@
 
 
 
-! =============== !
-!! # Verb morphology !
-! =============== !
+! ================== !
+!! # Verb morphology 
+! ================== !
 
 !LEXICON sx ! this is an ad hoc lexicon waiting for classification.
 !s1 ;
@@ -334,9 +334,18 @@ LEXICON s29 !
              sup        ;
           :t p5         ;
 
-LEXICON s30 !
+LEXICON s3/30
+!! **@LEXNAME@** for double inflection pattern
+s3 ; ! including +Inf
+s30_infl ; ! excluding +Inf
+
+LEXICON s30 
 !! **@LEXNAME@** kalla = riggar!
      inf     ;
+     s30_infl ;
+
+LEXICON s30_infl
+!! **@LEXNAME@** brúka = riggar!
      pres_ar ;
      prt_a   ;
  :a  impsg   ; !deviant kalla
@@ -2529,8 +2538,9 @@ LEXICON p5
 
 LEXICON p6
 !! **@LEXNAME@**
- +V+PrfPtc:ð%^EDH adj_a ; ! no ð deletion, ptc. livaður
- +V+PrfPtc:      zl6   ; ! > skaftur
+! +V+PrfPtc:ð%^EDH adj_a ; ! no ð deletion, ptc. livaður
+! adj_a and zl6 are doublets, test with latter.
++V+PrfPtc:ð      zl6   ; ! > skaftur
 
 LEXICON p7
 !! **@LEXNAME@**

@@ -552,7 +552,7 @@ LEXICON k18e
  +N+Msc: S_M_SGNOM      ;
  +N+Msc: S_M_SGACC      ;
  +N+Msc: S_M_SGDAT      ;
- +N+Msc+Sg+Dat+Indef:      MscObl_Flag ; ! dans
+ +N+Msc+Sg+Dat+Indef+Err/Orth:   MscObl_Flag ; ! dans
  +N+Msc: S_M_SGGEN_NULL ; ! s_final
 !
 LEXICON k_flt18
@@ -1628,10 +1628,10 @@ LEXICON kv10 !
  +N+Fem:        S_F_SGNAD ;
  +N+Fem:        S_F_SGGEN ;
  +N+Fem:^eIUML  F_PLNA_UR ;
- +N+Fem+Pl+Nom+Def:^eIUMLrinar FemObl_Flag ;
+ +N+Fem+Pl+Nom+Def+Err/Orth:^IUMLrinar FemObl_Flag ; ! Sso
  +N+Fem+Pl+Acc+Def:^eIUMLrinar FemObl_Flag ;
  +N+Fem:        F_PLDAT   ; ! dorgum
- +N+Fem:^eIUMLr F_PLDAT   ; ! dergrum, dergrunum
+ +N+Fem+Err/Orth:^eIUMLr F_PLDAT   ; ! dergrum, dergrunum, not Sso
  +N+Fem:        F_PLGEN   ;
  !
 LEXICON kv11 ! 
@@ -1643,29 +1643,32 @@ LEXICON kv11e
 !! * **LEXICON @LEXNAME@** 
  +N+Fem+Sg+Nom:song DF_N_SGf_S ; ! song, songin
  +N+Fem+Sg+Nom+Def:seingin FemObl_Flag ; ! seingin
- +N+Fem+Sg+Acc:song DF_A_SGf_S ; ! song, songina
+
++N+Fem+Sg+Acc:song DF_A_SGf_S ; ! song, songina
  +N+Fem+Sg+Acc+Def:seingina FemObl_Flag ; ! seingina
- +N+Fem+Sg+Dat:song DF_D_SGf_S ; ! song, songini
+
++N+Fem+Sg+Dat:song DF_D_SGf_S ; ! song, songini
  +N+Fem+Sg+Dat+Def:seingini FemObl_Flag ; ! seingini
- +N+Fem+Sg+Gen:songar DF_G_SGf_S ; ! songar, songarinnar
+
++N+Fem+Sg+Gen:songar DF_G_SGf_S ; ! songar, songarinnar
  +N+Fem+Sg+Gen:seingjar DF_G_SGf_S ; ! seingjar, seingjarinnar
- +N+Fem+Sg+Gen:songjar DF_G_SGf_S ; ! songjar, songjarinnar
+ +N+Fem+Sg+Gen+Err/Orth:songjar DF_G_SGf_S ; ! songjar, songjarinnar not in Sso
 !
 LEXICON kv_flt11
 !! * **LEXICON @LEXNAME@** 
- +N+Fem+Pl+Nom:songir     DF_NA_PLf ;
+ +N+Fem+Pl+Nom+Err/Orth:songir     DF_NA_PLf ;
  +N+Fem+Pl+Nom:seingir    DF_NA_PLf ;
  +N+Fem+Pl+Nom:sengur     DF_NA_PLf ;
- +N+Fem+Pl+Nom+Def:sengrinar FemObl_Flag ;
- +N+Fem+Pl+Acc+Def:sengrinar FemObl_Flag ;
- +N+Fem+Pl+Acc:songir     DF_NA_PLf ;
++N+Fem+Pl+Nom+Def+Err/Orth:sengrinar FemObl_Flag ; !not Sso
+ +N+Fem+Pl+Acc+Def+Err/Orth:sengrinar FemObl_Flag ; !not Sso
+ +N+Fem+Pl+Acc+Err/Orth:songir     DF_NA_PLf ; !not Sso
  +N+Fem+Pl+Acc:seingir    DF_NA_PLf ;
  +N+Fem+Pl+Acc:sengur     DF_NA_PLf ;
  +N+Fem+Pl+Dat:seingju    DF_D_PL ;
- +N+Fem+Pl+Dat:songju     DF_D_PL ;
- +N+Fem+Pl+Dat:sengru     DF_D_PL ; ! sengrum, sengrunum
+ +N+Fem+Pl+Dat+Err/Orth:songju     DF_D_PL ; !not Sso
+ +N+Fem+Pl+Dat+Err/Orth:sengru     DF_D_PL ; ! sengrum, sengrunum
  +N+Fem+Pl+Gen:seingja    DF_G_PL ;
- +N+Fem+Pl+Gen:songja    DF_G_PL ;
+ +N+Fem+Pl+Gen+Err/Orth:songja    DF_G_PL ;
 !
 LEXICON kv12 ! 
 !! * **LEXICON @LEXNAME@** glóð
@@ -2148,7 +2151,7 @@ LEXICON kv33e
  +N+Fem+Sg+Acc+Indef:       FemObl_Flag ;
  +N+Fem+Sg+Dat+Indef:       FemObl_Flag ;
  +N+Fem+Sg+Gen+Indef:       FemObl_Flag ;
- +N+Fem+Sg+Gen+Indef:s      FemObl_Flag ;
+ +N+Fem+Sg+Gen+Indef+Err/Orth:s FemObl_Flag ; ! Sso
    +N+Fem+Sg+Nom+Def:%>n    FemObl_Flag ;
    +N+Fem+Sg+Acc+Def:%>na   FemObl_Flag ;
    +N+Fem+Sg+Dat+Def:%>ni   FemObl_Flag ;

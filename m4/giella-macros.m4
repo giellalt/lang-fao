@@ -473,15 +473,24 @@ AC_PATH_PROG([CG_RELABEL], [cg-relabel], [no], [$PATH$PATH_SEPARATOR$with_vislcg
 AC_PATH_PROG([CG_MWESPLIT], [cg-mwesplit], [no], [$PATH$PATH_SEPARATOR$with_vislcg3])
 
 AS_IF([test "x$VISLCG3" != xno], [
-_giella_core_vislcg3_min_version=m4_default([$1], [1.0.0])
-AC_MSG_CHECKING([whether vislcg3 is at least $_giella_core_vislcg3_min_version])
-_vislcg3_version=$( ${VISLCG3} --version 2>&1 | grep -Eo '@<:@0-9@:>@+\.@<:@0-9.@:>@+' )
-AX_COMPARE_VERSION([$_vislcg3_version], [ge], [$_giella_core_vislcg3_min_version],
-                   [gt_prog_vislcg3=yes
-                    AC_MSG_RESULT([yes - $_vislcg3_version])
-                   ], [gt_prog_vislcg3=no
-                    AC_MSG_RESULT([no - $_vislcg3_version])
-                   ])
+_giella_core_vislcg3_min_version=m4_default([$1], [1.4.0])
+AC_MSG_CHECKING([whether vislcg3 is compatible with at least $_giella_core_vislcg3_min_version])
+_vislcg3_version_output=$( ${VISLCG3} --version 2>&1 )
+_vislcg3_version=$( printf '%s\n' "$_vislcg3_version_output" \
+    | grep -Eo '@<:@0-9@:>@+\.@<:@0-9.@:>@+' )
+# Divvun CG-3 is a compatible implementation with its own product version.
+if printf '%s\n' "$_vislcg3_version_output" \
+        | grep '^Divvun CG-3 ' >/dev/null ; then
+    gt_prog_vislcg3=yes
+    AC_MSG_RESULT([yes - Divvun CG-3 $_vislcg3_version])
+else
+    AX_COMPARE_VERSION([$_vislcg3_version], [ge], [$_giella_core_vislcg3_min_version],
+                       [gt_prog_vislcg3=yes
+                        AC_MSG_RESULT([yes - $_vislcg3_version])
+                       ], [gt_prog_vislcg3=no
+                        AC_MSG_RESULT([no - $_vislcg3_version])
+                       ])
+fi
 ],
 [gt_prog_vislcg3=no])
 AC_MSG_CHECKING([whether we can enable vislcg3 targets])

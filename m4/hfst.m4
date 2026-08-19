@@ -1,5 +1,5 @@
 # hfst.m4 - Macros to locate and utilise HFST scripts -*- Autoconf -*-
-# serial 1 (gtsvn-1)
+# serial 2 (gtsvn-1)
 # 
 # Copyright © 2011 Divvun/Samediggi/UiT <bugs@divvun.no>.
 #
@@ -96,9 +96,20 @@ AC_PATH_PROG(HFST_OSPELL,            hfst-ospell,            false, $PATH$PATH_S
 
 AS_IF([test x$with_hfst != xno], [
 _gtd_hfst_min_version=m4_default([$1], [$_required_hfst_version])
-AC_MSG_CHECKING([whether hfst is at least $_gtd_hfst_min_version and has the required tools])
+AC_MSG_CHECKING([whether hfst is compatible with at least $_gtd_hfst_min_version and has the required tools])
 if test x$HFST_INFO != xfalse; then
-    if $HFST_INFO --atleast-version=$_gtd_hfst_min_version ; then
+    _gtd_hfst_version_ok=no
+    # Divvun HFST is a compatible implementation with its own product version.
+    # Test its packaging identity before asking upstream HFST to compare versions,
+    # so an expected version mismatch does not leak into configure's output.
+    if $HFST_INFO 2>/dev/null \
+            | grep '^HFST packaging: Divvun HFST ' >/dev/null ; then
+        _gtd_hfst_version_ok=yes
+    elif $HFST_INFO --atleast-version=$_gtd_hfst_min_version \
+            >/dev/null 2>&1 ; then
+        _gtd_hfst_version_ok=yes
+    fi
+    if test x$_gtd_hfst_version_ok = xyes; then
         if test x$HFST_COMPOSE         = "xfalse" \
              -o x$HFST_DETERMINIZE     = "xfalse" \
              -o x$HFST_FST2FST         = "xfalse" \
@@ -119,7 +130,7 @@ if test x$HFST_INFO != xfalse; then
             gt_prog_hfst=yes
         fi
     else
-        AC_MSG_ERROR([You requested --with-hfst: hfst is too old. OR: no other fst tools were found (Xerox, Foma).])
+        AC_MSG_ERROR([You requested --with-hfst: hfst is not compatible with the required version. OR: no other fst tools were found (Xerox, Foma).])
     fi
 else
     AC_MSG_RESULT([no])

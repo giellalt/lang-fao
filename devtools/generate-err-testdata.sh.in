@@ -35,7 +35,7 @@ speller_analyser=$top_builddir/tools/spellcheckers/analyser-desktopspeller-gt-no
 # finnast (på leksikon som lemma i stem-fila kan peika til):
 lexc_and_paradigms=(
     "N=$top_srcdir/src/fst/morphology/stems/nouns.lexc:$top_srcdir/src/fst/morphology/test/testnounparadigm.txt::$top_srcdir/src/fst/morphology/affixes/nouns.lexc"
-    "Prop=$top_srcdir/src/fst/morphology/stems/sma-propernouns.lexc:$top_srcdir/src/fst/morphology/test/testpropparadigm.txt:+N+Prop:$top_srcdir/src/fst/morphology/affixes/propernouns.lexc"
+    "Prop=$top_srcdir/src/fst/morphology/stems/fao-propernouns.lexc:$top_srcdir/src/fst/morphology/test/testpropparadigm.txt:+N+Prop:$top_srcdir/src/fst/morphology/affixes/propernouns.lexc"
     "A=$top_srcdir/src/fst/morphology/stems/adjectives.lexc:$top_srcdir/src/fst/morphology/test/testadjparadigm.txt::$top_srcdir/src/fst/morphology/affixes/adjectives.lexc"
     "V=$top_srcdir/src/fst/morphology/stems/verbs.lexc:$top_srcdir/src/fst/morphology/test/testverbparadigm.txt::$top_srcdir/src/fst/morphology/affixes/verbs.lexc"
 )

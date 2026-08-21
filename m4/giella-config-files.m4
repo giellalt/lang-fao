@@ -126,5 +126,7 @@ AC_CONFIG_FILES([devtools/test_voikkospell_suggestions.sh], \
       [chmod a+x devtools/test_voikkospell_suggestions.sh])
 AC_CONFIG_FILES([devtools/test_grammar_checker.sh], \
       [chmod a+x devtools/test_grammar_checker.sh])
+AC_CONFIG_FILES([devtools/generate-err-testdata.sh], \
+      [chmod a+x devtools/generate-err-testdata.sh])
 # add language specific local tests in the end:
 ]) # gt_CONFIG_FILES

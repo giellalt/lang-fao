@@ -1,0 +1,65 @@
+#!/bin/bash
+#
+# Generate spellchecker test data (typos.tsv format) from lexicalised
+# +Err/-tagged entries in the LEXC stem/affix files of the open word
+# classes.
+#
+# Run manually after configuring and building, e.g. from bygg/rett:
+#
+#   devtools/generate-err-testdata.sh
+#
+# The result is written to tools/spellcheckers/test/typos-generated-err.tsv
+# in the source tree. Review the file before using it - move anything
+# that needs hand-editing to a manually maintained typos file instead.
+
+set -eu
+
+# Directory variables, filled in by autoconf/configure:
+top_srcdir=@abs_top_srcdir@
+top_builddir=@abs_top_builddir@
+giella_core=@GIELLA_CORE@
+
+######### USER Variables - change these to your liking: #########
+
+# Descriptive generator, disambiguating analyser and the real speller
+# analyser (used to verify the generated testdata), built with 'make'
+# after configuring with --enable-spellers:
+generator=$top_builddir/src/fst/generator-gt-desc.hfstol
+disamb_analyser=$top_builddir/src/fst/analyser-disamb-gt-desc.hfstol
+speller_analyser=$top_builddir/tools/spellcheckers/analyser-desktopspeller-gt-norm.hfst
+
+# Open word classes with inflection: LEXC stem file + paradigm file of
+# tag suffixes to test (from src/fst/morphology/test/), pluss POS-prefix
+# already present in the LEXC analyses (only needed when it differs from
+# the default "+CLASS"), pluss affiksfila der Err/Orth-taggar òg kan
+# finnast (på leksikon som lemma i stem-fila kan peika til):
+lexc_and_paradigms=(
+    "N=$top_srcdir/src/fst/morphology/stems/nouns.lexc:$top_srcdir/src/fst/morphology/test/testnounparadigm.txt::$top_srcdir/src/fst/morphology/affixes/nouns.lexc"
+    "Prop=$top_srcdir/src/fst/morphology/stems/sma-propernouns.lexc:$top_srcdir/src/fst/morphology/test/testpropparadigm.txt:+N+Prop:$top_srcdir/src/fst/morphology/affixes/propernouns.lexc"
+    "A=$top_srcdir/src/fst/morphology/stems/adjectives.lexc:$top_srcdir/src/fst/morphology/test/testadjparadigm.txt::$top_srcdir/src/fst/morphology/affixes/adjectives.lexc"
+    "V=$top_srcdir/src/fst/morphology/stems/verbs.lexc:$top_srcdir/src/fst/morphology/test/testverbparadigm.txt::$top_srcdir/src/fst/morphology/affixes/verbs.lexc"
+)
+
+# Open word classes without inflection - only the literal LEXC analysis
+# is tried, no paradigm expansion:
+lexc_only=(
+    "Adv=$top_srcdir/src/fst/morphology/stems/adverbs.lexc"
+)
+
+# Output file, written into the source tree:
+output=$top_srcdir/tools/spellcheckers/test/typos-generated-err.tsv
+
+################## DO NOT CHANGE BELOW HERE!!! ##################
+
+if [ ! -e "$speller_analyser" ]; then
+    echo "ERROR: speller analyser not found: $speller_analyser" >&2
+    echo "ERROR: reconfigure with --enable-spellers and run make first" >&2
+    exit 1
+fi
+
+args=(-g "$generator" -a "$disamb_analyser" -c "$speller_analyser" -o "$output")
+for spec in "${lexc_and_paradigms[@]}" "${lexc_only[@]}"; do
+    args+=(-l "$spec")
+done
+
+"$giella_core/devtools/generate-err-testdata.sh" "${args[@]}" "$@"

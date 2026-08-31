@@ -1,6 +1,7 @@
 {
     "analyser": "@abs_builddir@/../../analyser-gt-norm.hfstol",
     "generator": "@abs_builddir@/../../generator-gt-norm.hfstol",
+    "lexcroot": "@abs_srcdir@/../root.lexc",
     "nouns": {
         "lexcfile": "@abs_srcdir@/../stems/nouns.lexc",
         "lemmatags": ["+N+Neu+Sg+Nom+Indef", "+N+Neu+Pl+Nom+Indef", "+N+Fem+Sg+Nom+Indef", "+N+Fem+Pl+Nom+Indef", "+N+Msc+Sg+Nom+Indef", "+N+Msc+Pl+Nom+Indef"],
@@ -19,5 +20,15 @@
     "verbs": {
         "lexcfile": "@abs_srcdir@/../stems/verbs.lexc",
         "lemmatags": ["+V+Inf", "+V+Inf+Pass"]
-    }
+    },
+    "otherlexcs": [
+        "@abs_srcdir@/../stems/numerals.lexc",
+        "@abs_srcdir@/../stems/pronouns.lexc",
+        "@abs_srcdir@/../affixes/adjectives.lexc",
+        "@abs_srcdir@/../affixes/nouns.lexc",
+        "@abs_srcdir@/../affixes/prefixes.lexc",
+        "@abs_srcdir@/../affixes/propernouns.lexc",
+        "@abs_srcdir@/../affixes/symbols.lexc",
+        "@abs_srcdir@/../affixes/verbs.lexc"
+    ]
 }

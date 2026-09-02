@@ -1,3 +1,8 @@
+---
+# Front matter makes Jekyll expand the Liquid tag below; layout:null keeps the
+# site-wide `defaults` layout from wrapping this standalone document.
+layout: null
+---
 <!doctype html>
 <html>
 <head>
@@ -32,6 +37,14 @@
 				document.documentElement.setAttribute('data-theme', 'light');
 			}
 		})();
+	</script>
+
+	<script>
+		// Report data lives on the repo's generated/docs-data branch, served
+		// from raw.githubusercontent (CORS-enabled). Falls back to same-origin
+		// relative fetch when unset (repo not yet migrated).
+		window.__DOCS_DATA_BASE__ =
+			"https://raw.githubusercontent.com/{{ site.github.repository_nwo }}/generated/docs-data/";
 	</script>
 
 	<script defer src='./bundle.js'></script>

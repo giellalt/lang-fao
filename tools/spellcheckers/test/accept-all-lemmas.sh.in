@@ -29,7 +29,8 @@ if ! test -f "$CONFIG" ; then
 fi
 
 "$genscript" -c "$CONFIG" -D "$divvunspell" -E "@LOG_VIEWER@" \
-    -L "@abs_top_srcdir@/docs/testlogs/speller-lemmas.md" 
+    -L "@abs_top_srcdir@/docs/testlogs/speller-lemmas.md" \
+    -J "@abs_top_srcdir@/docs/testlogs/speller-lemmas.json"
 
 rv=$?
 if test $rv = 77 ; then

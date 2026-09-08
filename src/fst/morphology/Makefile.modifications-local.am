@@ -29,6 +29,8 @@ generated_files/smi-$(GLANG)-%.lexc: $(gt_SHARED_smi)/src/fst/stems/smi-%.lexc
 else
 generated_files/smi-$(GLANG)-%.lexc:
 	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_C_GEN)echo "! Missing shared common data" > $@
+	$(AM_V_GEN)echo "! Missing shared common data" > $@
+	$(AM_V_at)echo "LEXICON smi-$(GLANG)-$*-error" >> $@
+	$(AM_V_at)echo "0 # ;" >> $@
 endif
 

@@ -97,6 +97,8 @@ else
 .generated/mul-$(GLANG)-%.lexc:
 	$(MAKE) $(GENDIR)
 	echo "! Missing shared common data" > $@
+	echo "LEXICON mul-$(GLANG)-$*-error" >> $@
+	echo "0 # ;" >> $@
 endif
 # add other lexical shared data handling here
 

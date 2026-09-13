@@ -16,9 +16,11 @@
 #   --refresh    re-download the viewer even if a cached copy exists
 #   --no-open    don't try to open a browser
 #
-# Generate the report first with:
-#   configure --enable-spellers && make -j && make check -j
-# which writes docs/typosreport/report.json (and report-<variant>.json).
+# Generate the report first, from the repo root:
+#   ./autogen.sh && ./configure --enable-spellers && make -j && make check -j
+# The suggestion-quality test writes docs/typosreport/report.json (and
+# report-<variant>.json). It needs divvunspell with the 'accuracy' subcommand;
+# without it the test is skipped and no report is written.
 
 set -euo pipefail
 
@@ -49,8 +51,9 @@ if [ ! -f "$report" ]; then
 	cat >&2 <<-EOF
 	preview.sh: no report found at docs/typosreport/report.json
 
-	Generate one first (spellers must be enabled):
-	    configure --enable-spellers && make -j && make check -j
+	Generate it from the repo root (needs divvunspell with the 'accuracy'
+	subcommand; the test is skipped without it):
+	    ./autogen.sh && ./configure --enable-spellers && make -j && make check -j
 	EOF
 	exit 1
 fi

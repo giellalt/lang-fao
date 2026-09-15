@@ -38,7 +38,6 @@ performance. These files are the exact same ones as installed on users' computer
 and mobile phones. Desktop and mobile speller files differ from each other in the
 error model and should be tested separately — thus also two different downloads.
 
-
 Documentation
 -------------
 
@@ -83,17 +82,11 @@ linux](https://wiki.apertium.org/wiki/Installation_of_grammar_libraries)
 
 Further details and dependencies are described on the GiellaLT [Getting Started](https://giellalt.uit.no/infra/GettingStarted.html) pages.
 
-Downloading
------------
+Downloading the source code
+---------------------------
 
-Using Git:
 ```
 git clone https://github.com/giellalt/lang-fao
-```
-
-Using Subversion:
-```
-svn checkout https://github.com/giellalt/lang-fao.git/trunk lang-fao
 ```
 
 Building and installation

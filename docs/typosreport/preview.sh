@@ -124,7 +124,7 @@ for v in "$script_dir"/report-*.json; do
 	cp "$v" "$preview_dir/speller-accuracy-${tag}.json"
 done
 # Variant list for the dropdown, if the docs build produced it.
-[ -f "$docs_dir/badgedata/fst-variants.json" ] && cp "$docs_dir/badgedata/fst-variants.json" "$preview_dir/"
+[ -f "$docs_dir/badgedata/pkg-variants.json" ] && cp "$docs_dir/badgedata/pkg-variants.json" "$preview_dir/"
 
 # --- Serve ------------------------------------------------------------------
 py=$(command -v python3 || command -v python || true)

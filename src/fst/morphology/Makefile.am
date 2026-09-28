@@ -88,6 +88,10 @@ if HAVE_SHARED_COMMON
 generated_files/mul-$(GLANG)-%.lexc: $(gt_SHARED_common)/src/fst/stems/%.lexc
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_CP)cp -f $< $@
+
+generated_files/mul-$(GLANG)-%.lexc: $(gt_SHARED_common)/src/fst/morphology/stems/%.lexc
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_CP)cp -f $< $@
 else
 # this is "safe" fallback (compiles but you miss everything)
 .generated/url.tmp.lexc:

@@ -18,12 +18,12 @@
 # Add local build rules and shared here...
 
 if HAVE_SHARED_SMI
-generated_files/smi-$(GLANG)-%.lexc: $(gt_SHARED_smi)/src/fst/stems/%.lexc
+generated_files/smi-$(GLANG)-%.lexc: $(gt_SHARED_smi)/src/fst/morphology/stems/%.lexc
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $< $@
 
 
-generated_files/smi-$(GLANG)-%.lexc: $(gt_SHARED_smi)/src/fst/stems/smi-%.lexc
+generated_files/smi-$(GLANG)-%.lexc: $(gt_SHARED_smi)/src/fst/morphology/stems/smi-%.lexc
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $< $@
 else
